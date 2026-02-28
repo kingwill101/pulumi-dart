@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TemplateTemplateMetadataMultiLanguageDetection {
   /// If true, multi language detection will be enabled.
   final bool enableMultiLanguageDetection;
@@ -11,15 +12,15 @@ class TemplateTemplateMetadataMultiLanguageDetection {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enableMultiLanguageDetection'] = enableMultiLanguageDetection;
-    return map;
+    return <String, dynamic>{
+      'enableMultiLanguageDetection': enableMultiLanguageDetection,
+    };
   }
 
-  factory TemplateTemplateMetadataMultiLanguageDetection.fromMap(
-      Map<String, dynamic> map) {
+  factory TemplateTemplateMetadataMultiLanguageDetection.fromMap(Map<String, dynamic> map) {
     return TemplateTemplateMetadataMultiLanguageDetection(
       enableMultiLanguageDetection: map['enableMultiLanguageDetection'] as bool,
     );
   }
 }
+

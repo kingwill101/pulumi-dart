@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ScraperRoleConfiguration {
   /// The Amazon Resource Name (ARN) of the source role configuration. Must be an IAM role ARN.
   final String? sourceRoleArn;
-
   /// The Amazon Resource Name (ARN) of the target role configuration. Must be an IAM role ARN.
   final String? targetRoleArn;
 
@@ -16,24 +16,17 @@ class ScraperRoleConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final sourceRoleArnValue = sourceRoleArn;
-    if (sourceRoleArnValue != null) {
-      map['sourceRoleArn'] = sourceRoleArnValue;
-    }
-    final targetRoleArnValue = targetRoleArn;
-    if (targetRoleArnValue != null) {
-      map['targetRoleArn'] = targetRoleArnValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'sourceRoleArn': ?sourceRoleArn,
+      'targetRoleArn': ?targetRoleArn,
+    };
   }
 
   factory ScraperRoleConfiguration.fromMap(Map<String, dynamic> map) {
     return ScraperRoleConfiguration(
-      sourceRoleArn:
-          map['sourceRoleArn'] == null ? null : map['sourceRoleArn'] as String,
-      targetRoleArn:
-          map['targetRoleArn'] == null ? null : map['targetRoleArn'] as String,
+      sourceRoleArn: map['sourceRoleArn'] == null ? null : map['sourceRoleArn'] as String,
+      targetRoleArn: map['targetRoleArn'] == null ? null : map['targetRoleArn'] as String,
     );
   }
 }
+

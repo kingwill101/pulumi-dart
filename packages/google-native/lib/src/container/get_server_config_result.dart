@@ -7,19 +7,14 @@ import 'release_channel_config_response.dart';
 class GetServerConfigResult {
   /// List of release channel configurations.
   final List<ReleaseChannelConfigResponse> channels;
-
   /// Version of Kubernetes the service deploys by default.
   final String defaultClusterVersion;
-
   /// Default image type.
   final String defaultImageType;
-
   /// List of valid image types.
   final List<String> validImageTypes;
-
   /// List of valid master versions, in descending order.
   final List<String> validMasterVersions;
-
   /// List of valid node upgrade target versions, in descending order.
   final List<String> validNodeVersions;
 
@@ -40,23 +35,19 @@ class GetServerConfigResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['channels'] = pulumi.Input.encodeList<ReleaseChannelConfigResponse,
-        Map<String, dynamic>>(channels, (value) => value.toMap());
-    map['defaultClusterVersion'] = defaultClusterVersion;
-    map['defaultImageType'] = defaultImageType;
-    map['validImageTypes'] = validImageTypes;
-    map['validMasterVersions'] = validMasterVersions;
-    map['validNodeVersions'] = validNodeVersions;
-    return map;
+    return <String, dynamic>{
+      'channels': pulumi.Input.encodeList<ReleaseChannelConfigResponse, Map<String, dynamic>>(channels, (value) => value.toMap()),
+      'defaultClusterVersion': defaultClusterVersion,
+      'defaultImageType': defaultImageType,
+      'validImageTypes': validImageTypes,
+      'validMasterVersions': validMasterVersions,
+      'validNodeVersions': validNodeVersions,
+    };
   }
 
   factory GetServerConfigResult.fromMap(Map<String, dynamic> map) {
     return GetServerConfigResult(
-      channels: pulumi.Input.decodeList<ReleaseChannelConfigResponse>(
-          map['channels'],
-          (value) => ReleaseChannelConfigResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      channels: pulumi.Input.decodeList<ReleaseChannelConfigResponse>(map['channels'], (value) => ReleaseChannelConfigResponse.fromMap((value as Map).cast<String, dynamic>())),
       defaultClusterVersion: map['defaultClusterVersion'] as String,
       defaultImageType: map['defaultImageType'] as String,
       validImageTypes: (map['validImageTypes'] as List).cast<String>(),
@@ -65,3 +56,4 @@ class GetServerConfigResult {
     );
   }
 }
+

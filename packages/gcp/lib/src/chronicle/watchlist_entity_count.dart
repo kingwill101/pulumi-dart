@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WatchlistEntityCount {
   /// (Output)
   /// Output only. Count of asset type entities in the watchlist.
   final int? asset;
-
   /// (Output)
   /// Output only. Count of user type entities in the watchlist.
   final int? user;
@@ -18,16 +18,10 @@ class WatchlistEntityCount {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final assetValue = asset;
-    if (assetValue != null) {
-      map['asset'] = assetValue;
-    }
-    final userValue = user;
-    if (userValue != null) {
-      map['user'] = userValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'asset': ?asset,
+      'user': ?user,
+    };
   }
 
   factory WatchlistEntityCount.fromMap(Map<String, dynamic> map) {
@@ -37,3 +31,4 @@ class WatchlistEntityCount {
     );
   }
 }
+

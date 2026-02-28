@@ -19,24 +19,20 @@ class GetRegionNotificationEndpointComputeV1Args {
     required String notificationEndpoint,
     String? project,
     required String region,
-  })  : notificationEndpoint =
-            pulumi.Input.asInput<String>(notificationEndpoint),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asInput<String>(region);
+  }) :
+      notificationEndpoint = pulumi.Input.asInput<String>(notificationEndpoint),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['notificationEndpoint'] = notificationEndpoint;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'notificationEndpoint': notificationEndpoint,
+      'project': ?project,
+      'region': region,
+    };
   }
 
-  factory GetRegionNotificationEndpointComputeV1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetRegionNotificationEndpointComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetRegionNotificationEndpointComputeV1Args(
       notificationEndpoint: map['notificationEndpoint'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -44,3 +40,4 @@ class GetRegionNotificationEndpointComputeV1Args {
     );
   }
 }
+

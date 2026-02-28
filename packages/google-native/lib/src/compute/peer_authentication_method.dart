@@ -14,19 +14,15 @@ class PeerAuthenticationMethod {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final mtlsValue = mtls;
-    if (mtlsValue != null) {
-      map['mtls'] = mtlsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'mtls': ?mtls == null ? null : mtls!.toMap(),
+    };
   }
 
   factory PeerAuthenticationMethod.fromMap(Map<String, dynamic> map) {
     return PeerAuthenticationMethod(
-      mtls: map['mtls'] == null
-          ? null
-          : MutualTls.fromMap((map['mtls'] as Map).cast<String, dynamic>()),
+      mtls: map['mtls'] == null ? null : MutualTls.fromMap((map['mtls'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PipelineMediationTransformation {
   /// The CEL expression template to apply to transform messages.
   /// The following CEL extension functions are provided for
@@ -86,19 +87,15 @@ class PipelineMediationTransformation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final transformationTemplateValue = transformationTemplate;
-    if (transformationTemplateValue != null) {
-      map['transformationTemplate'] = transformationTemplateValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'transformationTemplate': ?transformationTemplate,
+    };
   }
 
   factory PipelineMediationTransformation.fromMap(Map<String, dynamic> map) {
     return PipelineMediationTransformation(
-      transformationTemplate: map['transformationTemplate'] == null
-          ? null
-          : map['transformationTemplate'] as String,
+      transformationTemplate: map['transformationTemplate'] == null ? null : map['transformationTemplate'] as String,
     );
   }
 }
+

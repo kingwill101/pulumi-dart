@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTablesTable {
   /// User-provided table labels, in key/value pairs.
   final Map<String, String> labels;
-
   /// The name of the table.
   final String tableId;
 
@@ -16,10 +16,10 @@ class GetTablesTable {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['labels'] = labels;
-    map['tableId'] = tableId;
-    return map;
+    return <String, dynamic>{
+      'labels': labels,
+      'tableId': tableId,
+    };
   }
 
   factory GetTablesTable.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetTablesTable {
     );
   }
 }
+

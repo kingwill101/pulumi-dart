@@ -22,21 +22,19 @@ class GetBackupMetastoreV1betaArgs {
     required String location,
     String? project,
     required String serviceId,
-  })  : backupId = pulumi.Input.asInput<String>(backupId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        serviceId = pulumi.Input.asInput<String>(serviceId);
+  }) :
+      backupId = pulumi.Input.asInput<String>(backupId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      serviceId = pulumi.Input.asInput<String>(serviceId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['backupId'] = backupId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['serviceId'] = serviceId;
-    return map;
+    return <String, dynamic>{
+      'backupId': backupId,
+      'location': location,
+      'project': ?project,
+      'serviceId': serviceId,
+    };
   }
 
   factory GetBackupMetastoreV1betaArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetBackupMetastoreV1betaArgs {
     );
   }
 }
+

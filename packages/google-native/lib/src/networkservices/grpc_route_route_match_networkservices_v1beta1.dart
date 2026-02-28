@@ -8,7 +8,6 @@ import 'grpc_route_method_match_networkservices_v1beta1.dart';
 class GrpcRouteRouteMatchNetworkservicesV1beta1 {
   /// Optional. Specifies a collection of headers to match.
   final List<GrpcRouteHeaderMatchNetworkservicesV1beta1>? headers;
-
   /// Optional. A gRPC method to match against. If this field is empty or omitted, will match all methods.
   final GrpcRouteMethodMatchNetworkservicesV1beta1? method;
 
@@ -21,33 +20,17 @@ class GrpcRouteRouteMatchNetworkservicesV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final headersValue = headers;
-    if (headersValue != null) {
-      map['headers'] = pulumi.Input.encodeList<
-          GrpcRouteHeaderMatchNetworkservicesV1beta1,
-          Map<String, dynamic>>(headersValue, (value) => value.toMap());
-    }
-    final methodValue = method;
-    if (methodValue != null) {
-      map['method'] = methodValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'headers': ?headers == null ? null : pulumi.Input.encodeList<GrpcRouteHeaderMatchNetworkservicesV1beta1, Map<String, dynamic>>(headers!, (value) => value.toMap()),
+      'method': ?method == null ? null : method!.toMap(),
+    };
   }
 
-  factory GrpcRouteRouteMatchNetworkservicesV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory GrpcRouteRouteMatchNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return GrpcRouteRouteMatchNetworkservicesV1beta1(
-      headers: map['headers'] == null
-          ? null
-          : pulumi.Input.decodeList<GrpcRouteHeaderMatchNetworkservicesV1beta1>(
-              map['headers'],
-              (value) => GrpcRouteHeaderMatchNetworkservicesV1beta1.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      method: map['method'] == null
-          ? null
-          : GrpcRouteMethodMatchNetworkservicesV1beta1.fromMap(
-              (map['method'] as Map).cast<String, dynamic>()),
+      headers: map['headers'] == null ? null : pulumi.Input.decodeList<GrpcRouteHeaderMatchNetworkservicesV1beta1>(map['headers'], (value) => GrpcRouteHeaderMatchNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>())),
+      method: map['method'] == null ? null : GrpcRouteMethodMatchNetworkservicesV1beta1.fromMap((map['method'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

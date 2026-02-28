@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class UserProfileDetailSso {
   final String firstName;
   final String lastName;
@@ -16,11 +17,11 @@ class UserProfileDetailSso {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['firstName'] = firstName;
-    map['lastName'] = lastName;
-    map['userName'] = userName;
-    return map;
+    return <String, dynamic>{
+      'firstName': firstName,
+      'lastName': lastName,
+      'userName': userName,
+    };
   }
 
   factory UserProfileDetailSso.fromMap(Map<String, dynamic> map) {
@@ -31,3 +32,4 @@ class UserProfileDetailSso {
     );
   }
 }
+

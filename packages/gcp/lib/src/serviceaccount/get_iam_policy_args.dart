@@ -14,12 +14,13 @@ class GetIamPolicyArgs {
   /// [serviceAccountId] The fully-qualified name of the service account to apply policy to.
   GetIamPolicyArgs({
     required String serviceAccountId,
-  }) : serviceAccountId = pulumi.Input.asInput<String>(serviceAccountId);
+  }) :
+      serviceAccountId = pulumi.Input.asInput<String>(serviceAccountId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['serviceAccountId'] = serviceAccountId;
-    return map;
+    return <String, dynamic>{
+      'serviceAccountId': serviceAccountId,
+    };
   }
 
   factory GetIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -28,3 +29,4 @@ class GetIamPolicyArgs {
     );
   }
 }
+

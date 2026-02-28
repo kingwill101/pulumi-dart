@@ -166,12 +166,10 @@ import 'byte_match_set_byte_match_tuple.dart';
 class ByteMatchSet extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the byte match set.
   late final pulumi.Output<String> arn;
-
   /// Specifies the bytes (typically a string that corresponds
   /// with ASCII characters) that you want to search for in web requests,
   /// the location in requests that you want to search, and other settings.
   late final pulumi.Output<List<ByteMatchSetByteMatchTuple>?> byteMatchTuples;
-
   /// The name or description of the Byte Match Set.
   late final pulumi.Output<String> name;
 
@@ -190,8 +188,7 @@ class ByteMatchSet extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
-    this.byteMatchTuples =
-        registerOutput<List<ByteMatchSetByteMatchTuple>?>('byteMatchTuples');
+    this.byteMatchTuples = registerOutput<List<ByteMatchSetByteMatchTuple>?>('byteMatchTuples');
     this.name = registerOutput<String>('name');
   }
 }

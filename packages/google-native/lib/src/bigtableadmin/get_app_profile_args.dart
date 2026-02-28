@@ -19,19 +19,17 @@ class GetAppProfileArgs {
     required String appProfileId,
     required String instanceId,
     String? project,
-  })  : appProfileId = pulumi.Input.asInput<String>(appProfileId),
-        instanceId = pulumi.Input.asInput<String>(instanceId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      appProfileId = pulumi.Input.asInput<String>(appProfileId),
+      instanceId = pulumi.Input.asInput<String>(instanceId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['appProfileId'] = appProfileId;
-    map['instanceId'] = instanceId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'appProfileId': appProfileId,
+      'instanceId': instanceId,
+      'project': ?project,
+    };
   }
 
   factory GetAppProfileArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetAppProfileArgs {
     );
   }
 }
+

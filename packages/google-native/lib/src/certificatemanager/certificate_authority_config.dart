@@ -14,24 +14,15 @@ class CertificateAuthorityConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final certificateAuthorityServiceConfigValue =
-        certificateAuthorityServiceConfig;
-    if (certificateAuthorityServiceConfigValue != null) {
-      map['certificateAuthorityServiceConfig'] =
-          certificateAuthorityServiceConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'certificateAuthorityServiceConfig': ?certificateAuthorityServiceConfig == null ? null : certificateAuthorityServiceConfig!.toMap(),
+    };
   }
 
   factory CertificateAuthorityConfig.fromMap(Map<String, dynamic> map) {
     return CertificateAuthorityConfig(
-      certificateAuthorityServiceConfig:
-          map['certificateAuthorityServiceConfig'] == null
-              ? null
-              : CertificateAuthorityServiceConfig.fromMap(
-                  (map['certificateAuthorityServiceConfig'] as Map)
-                      .cast<String, dynamic>()),
+      certificateAuthorityServiceConfig: map['certificateAuthorityServiceConfig'] == null ? null : CertificateAuthorityServiceConfig.fromMap((map['certificateAuthorityServiceConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NodePoolNodeConfigSoleTenantConfigNodeAffinity {
   /// .
   final String key;
-
   /// .
   final String operator;
-
   /// .
   final List<String> values;
 
@@ -21,15 +20,14 @@ class NodePoolNodeConfigSoleTenantConfigNodeAffinity {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    map['operator'] = operator;
-    map['values'] = values;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'operator': operator,
+      'values': values,
+    };
   }
 
-  factory NodePoolNodeConfigSoleTenantConfigNodeAffinity.fromMap(
-      Map<String, dynamic> map) {
+  factory NodePoolNodeConfigSoleTenantConfigNodeAffinity.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigSoleTenantConfigNodeAffinity(
       key: map['key'] as String,
       operator: map['operator'] as String,
@@ -37,3 +35,4 @@ class NodePoolNodeConfigSoleTenantConfigNodeAffinity {
     );
   }
 }
+

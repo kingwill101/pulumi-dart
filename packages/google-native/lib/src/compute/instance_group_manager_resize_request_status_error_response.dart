@@ -6,8 +6,7 @@ import 'instance_group_manager_resize_request_status_error_errors_item_response.
 /// Errors encountered during the queueing or provisioning phases of the ResizeRequest.
 class InstanceGroupManagerResizeRequestStatusErrorResponse {
   /// The array of errors encountered while processing this operation.
-  final List<InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponse>
-      errors;
+  final List<InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponse> errors;
 
   /// Creates a new [InstanceGroupManagerResizeRequestStatusErrorResponse].
   /// [errors] The array of errors encountered while processing this operation.
@@ -16,22 +15,15 @@ class InstanceGroupManagerResizeRequestStatusErrorResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['errors'] = pulumi.Input.encodeList<
-        InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponse,
-        Map<String, dynamic>>(errors, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'errors': pulumi.Input.encodeList<InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponse, Map<String, dynamic>>(errors, (value) => value.toMap()),
+    };
   }
 
-  factory InstanceGroupManagerResizeRequestStatusErrorResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory InstanceGroupManagerResizeRequestStatusErrorResponse.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerResizeRequestStatusErrorResponse(
-      errors: pulumi.Input.decodeList<
-              InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponse>(
-          map['errors'],
-          (value) =>
-              InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponse
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      errors: pulumi.Input.decodeList<InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponse>(map['errors'], (value) => InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

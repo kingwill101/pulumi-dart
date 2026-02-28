@@ -6,16 +6,12 @@ import 'password_status_response_sqladmin_v1beta4.dart';
 class UserPasswordValidationPolicyResponseSqladminV1beta4 {
   /// Number of failed login attempts allowed before user get locked.
   final int allowedFailedAttempts;
-
   /// If true, failed login attempts check will be enabled.
   final bool enableFailedAttemptsCheck;
-
   /// If true, the user must specify the current password before changing the password. This flag is supported only for MySQL.
   final bool enablePasswordVerification;
-
   /// Expiration duration after password is updated.
   final String passwordExpirationDuration;
-
   /// Read-only password status.
   final PasswordStatusResponseSqladminV1beta4 status;
 
@@ -34,24 +30,23 @@ class UserPasswordValidationPolicyResponseSqladminV1beta4 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allowedFailedAttempts'] = allowedFailedAttempts;
-    map['enableFailedAttemptsCheck'] = enableFailedAttemptsCheck;
-    map['enablePasswordVerification'] = enablePasswordVerification;
-    map['passwordExpirationDuration'] = passwordExpirationDuration;
-    map['status'] = status.toMap();
-    return map;
+    return <String, dynamic>{
+      'allowedFailedAttempts': allowedFailedAttempts,
+      'enableFailedAttemptsCheck': enableFailedAttemptsCheck,
+      'enablePasswordVerification': enablePasswordVerification,
+      'passwordExpirationDuration': passwordExpirationDuration,
+      'status': status.toMap(),
+    };
   }
 
-  factory UserPasswordValidationPolicyResponseSqladminV1beta4.fromMap(
-      Map<String, dynamic> map) {
+  factory UserPasswordValidationPolicyResponseSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return UserPasswordValidationPolicyResponseSqladminV1beta4(
       allowedFailedAttempts: map['allowedFailedAttempts'] as int,
       enableFailedAttemptsCheck: map['enableFailedAttemptsCheck'] as bool,
       enablePasswordVerification: map['enablePasswordVerification'] as bool,
       passwordExpirationDuration: map['passwordExpirationDuration'] as String,
-      status: PasswordStatusResponseSqladminV1beta4.fromMap(
-          (map['status'] as Map).cast<String, dynamic>()),
+      status: PasswordStatusResponseSqladminV1beta4.fromMap((map['status'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

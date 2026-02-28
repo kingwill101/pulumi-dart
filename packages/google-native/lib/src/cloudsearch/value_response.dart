@@ -28,21 +28,20 @@ class ValueResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['booleanValue'] = booleanValue;
-    map['dateValue'] = dateValue.toMap();
-    map['doubleValue'] = doubleValue;
-    map['integerValue'] = integerValue;
-    map['stringValue'] = stringValue;
-    map['timestampValue'] = timestampValue;
-    return map;
+    return <String, dynamic>{
+      'booleanValue': booleanValue,
+      'dateValue': dateValue.toMap(),
+      'doubleValue': doubleValue,
+      'integerValue': integerValue,
+      'stringValue': stringValue,
+      'timestampValue': timestampValue,
+    };
   }
 
   factory ValueResponse.fromMap(Map<String, dynamic> map) {
     return ValueResponse(
       booleanValue: map['booleanValue'] as bool,
-      dateValue: DateResponse.fromMap(
-          (map['dateValue'] as Map).cast<String, dynamic>()),
+      dateValue: DateResponse.fromMap((map['dateValue'] as Map).cast<String, dynamic>()),
       doubleValue: map['doubleValue'] as double,
       integerValue: map['integerValue'] as String,
       stringValue: map['stringValue'] as String,
@@ -50,3 +49,4 @@ class ValueResponse {
     );
   }
 }
+

@@ -19,19 +19,17 @@ class GetClusterArgs {
     required String clusterName,
     String? project,
     required String region,
-  })  : clusterName = pulumi.Input.asInput<String>(clusterName),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asInput<String>(region);
+  }) :
+      clusterName = pulumi.Input.asInput<String>(clusterName),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clusterName'] = clusterName;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'clusterName': clusterName,
+      'project': ?project,
+      'region': region,
+    };
   }
 
   factory GetClusterArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetClusterArgs {
     );
   }
 }
+

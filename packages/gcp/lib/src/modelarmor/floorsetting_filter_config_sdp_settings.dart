@@ -7,7 +7,6 @@ class FloorsettingFilterConfigSdpSettings {
   /// Sensitive Data Protection Advanced configuration.
   /// Structure is documented below.
   final FloorsettingFilterConfigSdpSettingsAdvancedConfig? advancedConfig;
-
   /// Sensitive Data Protection basic configuration.
   /// Structure is documented below.
   final FloorsettingFilterConfigSdpSettingsBasicConfig? basicConfig;
@@ -21,29 +20,17 @@ class FloorsettingFilterConfigSdpSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final advancedConfigValue = advancedConfig;
-    if (advancedConfigValue != null) {
-      map['advancedConfig'] = advancedConfigValue.toMap();
-    }
-    final basicConfigValue = basicConfig;
-    if (basicConfigValue != null) {
-      map['basicConfig'] = basicConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'advancedConfig': ?advancedConfig == null ? null : advancedConfig!.toMap(),
+      'basicConfig': ?basicConfig == null ? null : basicConfig!.toMap(),
+    };
   }
 
-  factory FloorsettingFilterConfigSdpSettings.fromMap(
-      Map<String, dynamic> map) {
+  factory FloorsettingFilterConfigSdpSettings.fromMap(Map<String, dynamic> map) {
     return FloorsettingFilterConfigSdpSettings(
-      advancedConfig: map['advancedConfig'] == null
-          ? null
-          : FloorsettingFilterConfigSdpSettingsAdvancedConfig.fromMap(
-              (map['advancedConfig'] as Map).cast<String, dynamic>()),
-      basicConfig: map['basicConfig'] == null
-          ? null
-          : FloorsettingFilterConfigSdpSettingsBasicConfig.fromMap(
-              (map['basicConfig'] as Map).cast<String, dynamic>()),
+      advancedConfig: map['advancedConfig'] == null ? null : FloorsettingFilterConfigSdpSettingsAdvancedConfig.fromMap((map['advancedConfig'] as Map).cast<String, dynamic>()),
+      basicConfig: map['basicConfig'] == null ? null : FloorsettingFilterConfigSdpSettingsBasicConfig.fromMap((map['basicConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

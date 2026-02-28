@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RetrohuntProcessInterval {
   /// Exclusive end of the interval.
   final String endTime;
-
   /// Inclusive start of the interval.
   final String startTime;
 
@@ -16,10 +16,10 @@ class RetrohuntProcessInterval {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['endTime'] = endTime;
-    map['startTime'] = startTime;
-    return map;
+    return <String, dynamic>{
+      'endTime': endTime,
+      'startTime': startTime,
+    };
   }
 
   factory RetrohuntProcessInterval.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class RetrohuntProcessInterval {
     );
   }
 }
+

@@ -8,22 +8,16 @@ import 'page_response.dart';
 class DocumentationResponse {
   /// The URL to the root of documentation.
   final String documentationRootUrl;
-
   /// Declares a single overview page. For example: documentation: summary: ... overview: (== include overview.md ==) This is a shortcut for the following declaration (using pages style): documentation: summary: ... pages: - name: Overview content: (== include overview.md ==) Note: you cannot specify both `overview` field and `pages` field.
   final String overview;
-
   /// The top level pages for the documentation set.
   final List<PageResponse> pages;
-
   /// A list of documentation rules that apply to individual API elements. **NOTE:** All service configuration rules follow "last one wins" order.
   final List<DocumentationRuleResponse> rules;
-
   /// Specifies section and content to override boilerplate content provided by go/api-docgen. Currently overrides following sections: 1. rest.service.client_libraries
   final List<PageResponse> sectionOverrides;
-
   /// Specifies the service root url if the default one (the service name from the yaml file) is not suitable. This can be seen in any fully specified service urls as well as sections that show a base that other urls are relative to.
   final String serviceRootUrl;
-
   /// A short description of what the service does. The summary must be plain text. It becomes the overview of the service displayed in Google Cloud Console. NOTE: This field is equivalent to the standard field `description`.
   final String summary;
 
@@ -46,39 +40,27 @@ class DocumentationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['documentationRootUrl'] = documentationRootUrl;
-    map['overview'] = overview;
-    map['pages'] = pulumi.Input.encodeList<PageResponse, Map<String, dynamic>>(
-        pages, (value) => value.toMap());
-    map['rules'] = pulumi.Input.encodeList<DocumentationRuleResponse,
-        Map<String, dynamic>>(rules, (value) => value.toMap());
-    map['sectionOverrides'] =
-        pulumi.Input.encodeList<PageResponse, Map<String, dynamic>>(
-            sectionOverrides, (value) => value.toMap());
-    map['serviceRootUrl'] = serviceRootUrl;
-    map['summary'] = summary;
-    return map;
+    return <String, dynamic>{
+      'documentationRootUrl': documentationRootUrl,
+      'overview': overview,
+      'pages': pulumi.Input.encodeList<PageResponse, Map<String, dynamic>>(pages, (value) => value.toMap()),
+      'rules': pulumi.Input.encodeList<DocumentationRuleResponse, Map<String, dynamic>>(rules, (value) => value.toMap()),
+      'sectionOverrides': pulumi.Input.encodeList<PageResponse, Map<String, dynamic>>(sectionOverrides, (value) => value.toMap()),
+      'serviceRootUrl': serviceRootUrl,
+      'summary': summary,
+    };
   }
 
   factory DocumentationResponse.fromMap(Map<String, dynamic> map) {
     return DocumentationResponse(
       documentationRootUrl: map['documentationRootUrl'] as String,
       overview: map['overview'] as String,
-      pages: pulumi.Input.decodeList<PageResponse>(
-          map['pages'],
-          (value) =>
-              PageResponse.fromMap((value as Map).cast<String, dynamic>())),
-      rules: pulumi.Input.decodeList<DocumentationRuleResponse>(
-          map['rules'],
-          (value) => DocumentationRuleResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      sectionOverrides: pulumi.Input.decodeList<PageResponse>(
-          map['sectionOverrides'],
-          (value) =>
-              PageResponse.fromMap((value as Map).cast<String, dynamic>())),
+      pages: pulumi.Input.decodeList<PageResponse>(map['pages'], (value) => PageResponse.fromMap((value as Map).cast<String, dynamic>())),
+      rules: pulumi.Input.decodeList<DocumentationRuleResponse>(map['rules'], (value) => DocumentationRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      sectionOverrides: pulumi.Input.decodeList<PageResponse>(map['sectionOverrides'], (value) => PageResponse.fromMap((value as Map).cast<String, dynamic>())),
       serviceRootUrl: map['serviceRootUrl'] as String,
       summary: map['summary'] as String,
     );
   }
 }
+

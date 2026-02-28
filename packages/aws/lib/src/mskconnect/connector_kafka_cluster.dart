@@ -13,15 +13,15 @@ class ConnectorKafkaCluster {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['apacheKafkaCluster'] = apacheKafkaCluster.toMap();
-    return map;
+    return <String, dynamic>{
+      'apacheKafkaCluster': apacheKafkaCluster.toMap(),
+    };
   }
 
   factory ConnectorKafkaCluster.fromMap(Map<String, dynamic> map) {
     return ConnectorKafkaCluster(
-      apacheKafkaCluster: ConnectorKafkaClusterApacheKafkaCluster.fromMap(
-          (map['apacheKafkaCluster'] as Map).cast<String, dynamic>()),
+      apacheKafkaCluster: ConnectorKafkaClusterApacheKafkaCluster.fromMap((map['apacheKafkaCluster'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

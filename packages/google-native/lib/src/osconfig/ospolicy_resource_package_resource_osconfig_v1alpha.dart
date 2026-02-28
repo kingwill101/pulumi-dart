@@ -13,25 +13,18 @@ import 'ospolicy_resource_package_resource_zypper_osconfig_v1alpha.dart';
 class OSPolicyResourcePackageResourceOsconfigV1alpha {
   /// A package managed by Apt.
   final OSPolicyResourcePackageResourceAPTOsconfigV1alpha? apt;
-
   /// A deb package file.
   final OSPolicyResourcePackageResourceDebOsconfigV1alpha? deb;
-
   /// The desired state the agent should maintain for this package.
   final OSPolicyResourcePackageResourceDesiredStateOsconfigV1alpha desiredState;
-
   /// A package managed by GooGet.
   final OSPolicyResourcePackageResourceGooGetOsconfigV1alpha? googet;
-
   /// An MSI package.
   final OSPolicyResourcePackageResourceMSIOsconfigV1alpha? msi;
-
   /// An rpm package file.
   final OSPolicyResourcePackageResourceRPMOsconfigV1alpha? rpm;
-
   /// A package managed by YUM.
   final OSPolicyResourcePackageResourceYUMOsconfigV1alpha? yum;
-
   /// A package managed by Zypper.
   final OSPolicyResourcePackageResourceZypperOsconfigV1alpha? zypper;
 
@@ -56,73 +49,29 @@ class OSPolicyResourcePackageResourceOsconfigV1alpha {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final aptValue = apt;
-    if (aptValue != null) {
-      map['apt'] = aptValue.toMap();
-    }
-    final debValue = deb;
-    if (debValue != null) {
-      map['deb'] = debValue.toMap();
-    }
-    map['desiredState'] = desiredState.value;
-    final googetValue = googet;
-    if (googetValue != null) {
-      map['googet'] = googetValue.toMap();
-    }
-    final msiValue = msi;
-    if (msiValue != null) {
-      map['msi'] = msiValue.toMap();
-    }
-    final rpmValue = rpm;
-    if (rpmValue != null) {
-      map['rpm'] = rpmValue.toMap();
-    }
-    final yumValue = yum;
-    if (yumValue != null) {
-      map['yum'] = yumValue.toMap();
-    }
-    final zypperValue = zypper;
-    if (zypperValue != null) {
-      map['zypper'] = zypperValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'apt': ?apt == null ? null : apt!.toMap(),
+      'deb': ?deb == null ? null : deb!.toMap(),
+      'desiredState': desiredState.value,
+      'googet': ?googet == null ? null : googet!.toMap(),
+      'msi': ?msi == null ? null : msi!.toMap(),
+      'rpm': ?rpm == null ? null : rpm!.toMap(),
+      'yum': ?yum == null ? null : yum!.toMap(),
+      'zypper': ?zypper == null ? null : zypper!.toMap(),
+    };
   }
 
-  factory OSPolicyResourcePackageResourceOsconfigV1alpha.fromMap(
-      Map<String, dynamic> map) {
+  factory OSPolicyResourcePackageResourceOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourcePackageResourceOsconfigV1alpha(
-      apt: map['apt'] == null
-          ? null
-          : OSPolicyResourcePackageResourceAPTOsconfigV1alpha.fromMap(
-              (map['apt'] as Map).cast<String, dynamic>()),
-      deb: map['deb'] == null
-          ? null
-          : OSPolicyResourcePackageResourceDebOsconfigV1alpha.fromMap(
-              (map['deb'] as Map).cast<String, dynamic>()),
-      desiredState:
-          OSPolicyResourcePackageResourceDesiredStateOsconfigV1alpha.fromValue(
-              map['desiredState'] as String),
-      googet: map['googet'] == null
-          ? null
-          : OSPolicyResourcePackageResourceGooGetOsconfigV1alpha.fromMap(
-              (map['googet'] as Map).cast<String, dynamic>()),
-      msi: map['msi'] == null
-          ? null
-          : OSPolicyResourcePackageResourceMSIOsconfigV1alpha.fromMap(
-              (map['msi'] as Map).cast<String, dynamic>()),
-      rpm: map['rpm'] == null
-          ? null
-          : OSPolicyResourcePackageResourceRPMOsconfigV1alpha.fromMap(
-              (map['rpm'] as Map).cast<String, dynamic>()),
-      yum: map['yum'] == null
-          ? null
-          : OSPolicyResourcePackageResourceYUMOsconfigV1alpha.fromMap(
-              (map['yum'] as Map).cast<String, dynamic>()),
-      zypper: map['zypper'] == null
-          ? null
-          : OSPolicyResourcePackageResourceZypperOsconfigV1alpha.fromMap(
-              (map['zypper'] as Map).cast<String, dynamic>()),
+      apt: map['apt'] == null ? null : OSPolicyResourcePackageResourceAPTOsconfigV1alpha.fromMap((map['apt'] as Map).cast<String, dynamic>()),
+      deb: map['deb'] == null ? null : OSPolicyResourcePackageResourceDebOsconfigV1alpha.fromMap((map['deb'] as Map).cast<String, dynamic>()),
+      desiredState: OSPolicyResourcePackageResourceDesiredStateOsconfigV1alpha.fromValue(map['desiredState'] as String),
+      googet: map['googet'] == null ? null : OSPolicyResourcePackageResourceGooGetOsconfigV1alpha.fromMap((map['googet'] as Map).cast<String, dynamic>()),
+      msi: map['msi'] == null ? null : OSPolicyResourcePackageResourceMSIOsconfigV1alpha.fromMap((map['msi'] as Map).cast<String, dynamic>()),
+      rpm: map['rpm'] == null ? null : OSPolicyResourcePackageResourceRPMOsconfigV1alpha.fromMap((map['rpm'] as Map).cast<String, dynamic>()),
+      yum: map['yum'] == null ? null : OSPolicyResourcePackageResourceYUMOsconfigV1alpha.fromMap((map['yum'] as Map).cast<String, dynamic>()),
+      zypper: map['zypper'] == null ? null : OSPolicyResourcePackageResourceZypperOsconfigV1alpha.fromMap((map['zypper'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

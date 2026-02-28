@@ -14,20 +14,15 @@ class MetadataIntegration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dataCatalogConfigValue = dataCatalogConfig;
-    if (dataCatalogConfigValue != null) {
-      map['dataCatalogConfig'] = dataCatalogConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'dataCatalogConfig': ?dataCatalogConfig == null ? null : dataCatalogConfig!.toMap(),
+    };
   }
 
   factory MetadataIntegration.fromMap(Map<String, dynamic> map) {
     return MetadataIntegration(
-      dataCatalogConfig: map['dataCatalogConfig'] == null
-          ? null
-          : DataCatalogConfig.fromMap(
-              (map['dataCatalogConfig'] as Map).cast<String, dynamic>()),
+      dataCatalogConfig: map['dataCatalogConfig'] == null ? null : DataCatalogConfig.fromMap((map['dataCatalogConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

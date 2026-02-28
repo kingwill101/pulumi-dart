@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// For display only. Details of a Google Service sending packets to a VPC network. Although the source IP might be a publicly routable address, some Google Services use special routes within Google production infrastructure to reach Compute Engine Instances. https://cloud.google.com/vpc/docs/routes#special_return_paths
 class GoogleServiceInfoResponseNetworkmanagementV1beta1 {
   /// Recognized type of a Google Service.
   final String googleServiceType;
-
   /// Source IP address.
   final String sourceIp;
 
@@ -17,17 +17,17 @@ class GoogleServiceInfoResponseNetworkmanagementV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['googleServiceType'] = googleServiceType;
-    map['sourceIp'] = sourceIp;
-    return map;
+    return <String, dynamic>{
+      'googleServiceType': googleServiceType,
+      'sourceIp': sourceIp,
+    };
   }
 
-  factory GoogleServiceInfoResponseNetworkmanagementV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleServiceInfoResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
     return GoogleServiceInfoResponseNetworkmanagementV1beta1(
       googleServiceType: map['googleServiceType'] as String,
       sourceIp: map['sourceIp'] as String,
     );
   }
 }
+

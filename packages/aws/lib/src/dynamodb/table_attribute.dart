@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TableAttribute {
   /// Name of the attribute
   final String name;
-
   /// Attribute type. Valid values are `S` (string), `N` (number), `B` (binary).
   final String type;
 
@@ -16,10 +16,10 @@ class TableAttribute {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'type': type,
+    };
   }
 
   factory TableAttribute.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class TableAttribute {
     );
   }
 }
+

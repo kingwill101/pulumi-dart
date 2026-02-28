@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PacketMirroringNetworkInfoResponse {
   /// Unique identifier for the network; defined by the server.
   final String canonicalUrl;
-
   /// URL of the network resource.
   final String url;
 
@@ -16,10 +16,10 @@ class PacketMirroringNetworkInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['canonicalUrl'] = canonicalUrl;
-    map['url'] = url;
-    return map;
+    return <String, dynamic>{
+      'canonicalUrl': canonicalUrl,
+      'url': url,
+    };
   }
 
   factory PacketMirroringNetworkInfoResponse.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class PacketMirroringNetworkInfoResponse {
     );
   }
 }
+

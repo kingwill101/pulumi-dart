@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConnectionAuthConfigOauth2AuthCodeFlowClientSecret {
   /// The resource name of the secret version in the format,
   /// format as: projects/*/secrets/*/versions/*.
@@ -12,15 +13,15 @@ class ConnectionAuthConfigOauth2AuthCodeFlowClientSecret {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['secretVersion'] = secretVersion;
-    return map;
+    return <String, dynamic>{
+      'secretVersion': secretVersion,
+    };
   }
 
-  factory ConnectionAuthConfigOauth2AuthCodeFlowClientSecret.fromMap(
-      Map<String, dynamic> map) {
+  factory ConnectionAuthConfigOauth2AuthCodeFlowClientSecret.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthConfigOauth2AuthCodeFlowClientSecret(
       secretVersion: map['secretVersion'] as String,
     );
   }
 }
+

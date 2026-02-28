@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PipelineNotifications {
   /// The topic ARN for the Amazon SNS topic that you want to notify when Elastic Transcoder has finished processing a job in this pipeline.
   final String? completed;
-
   /// The topic ARN for the Amazon SNS topic that you want to notify when Elastic Transcoder encounters an error condition while processing a job in this pipeline.
   final String? error;
-
   /// The topic ARN for the Amazon Simple Notification Service (Amazon SNS) topic that you want to notify when Elastic Transcoder has started to process a job in this pipeline.
   final String? progressing;
-
   /// The topic ARN for the Amazon SNS topic that you want to notify when Elastic Transcoder encounters a warning condition while processing a job in this pipeline.
   ///
   /// The `thumbnail_config` object specifies information about the Amazon S3 bucket in
@@ -36,33 +34,21 @@ class PipelineNotifications {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final completedValue = completed;
-    if (completedValue != null) {
-      map['completed'] = completedValue;
-    }
-    final errorValue = error;
-    if (errorValue != null) {
-      map['error'] = errorValue;
-    }
-    final progressingValue = progressing;
-    if (progressingValue != null) {
-      map['progressing'] = progressingValue;
-    }
-    final warningValue = warning;
-    if (warningValue != null) {
-      map['warning'] = warningValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'completed': ?completed,
+      'error': ?error,
+      'progressing': ?progressing,
+      'warning': ?warning,
+    };
   }
 
   factory PipelineNotifications.fromMap(Map<String, dynamic> map) {
     return PipelineNotifications(
       completed: map['completed'] == null ? null : map['completed'] as String,
       error: map['error'] == null ? null : map['error'] as String,
-      progressing:
-          map['progressing'] == null ? null : map['progressing'] as String,
+      progressing: map['progressing'] == null ? null : map['progressing'] as String,
       warning: map['warning'] == null ? null : map['warning'] as String,
     );
   }
 }
+

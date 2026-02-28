@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDatabaseInstanceIpAddress {
   final String ipAddress;
   final String timeToRetire;
@@ -16,11 +17,11 @@ class GetDatabaseInstanceIpAddress {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ipAddress'] = ipAddress;
-    map['timeToRetire'] = timeToRetire;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'ipAddress': ipAddress,
+      'timeToRetire': timeToRetire,
+      'type': type,
+    };
   }
 
   factory GetDatabaseInstanceIpAddress.fromMap(Map<String, dynamic> map) {
@@ -31,3 +32,4 @@ class GetDatabaseInstanceIpAddress {
     );
   }
 }
+

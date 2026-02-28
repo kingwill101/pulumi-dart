@@ -107,7 +107,6 @@ import 'default_kms_key_args.dart';
 class DefaultKmsKey extends pulumi.CustomResource {
   /// The ARN of the AWS Key Management Service (AWS KMS) customer master key (CMK) to use to encrypt the EBS volume.
   late final pulumi.Output<String> keyArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

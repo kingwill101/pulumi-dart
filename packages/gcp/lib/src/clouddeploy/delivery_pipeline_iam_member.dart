@@ -25,8 +25,7 @@ class DeliveryPipelineIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.condition =
-        registerOutput<DeliveryPipelineIamMemberCondition?>('condition');
+    this.condition = registerOutput<DeliveryPipelineIamMemberCondition?>('condition');
     this.etag = registerOutput<String>('etag');
     this.location = registerOutput<String>('location');
     this.member = registerOutput<String>('member');

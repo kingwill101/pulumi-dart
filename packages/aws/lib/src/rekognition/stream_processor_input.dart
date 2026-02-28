@@ -13,15 +13,15 @@ class StreamProcessorInput {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kinesisVideoStream'] = kinesisVideoStream.toMap();
-    return map;
+    return <String, dynamic>{
+      'kinesisVideoStream': kinesisVideoStream.toMap(),
+    };
   }
 
   factory StreamProcessorInput.fromMap(Map<String, dynamic> map) {
     return StreamProcessorInput(
-      kinesisVideoStream: StreamProcessorInputKinesisVideoStream.fromMap(
-          (map['kinesisVideoStream'] as Map).cast<String, dynamic>()),
+      kinesisVideoStream: StreamProcessorInputKinesisVideoStream.fromMap((map['kinesisVideoStream'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

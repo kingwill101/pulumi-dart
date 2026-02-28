@@ -14,20 +14,15 @@ class PreviewFeatureRolloutOperation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final rolloutInputValue = rolloutInput;
-    if (rolloutInputValue != null) {
-      map['rolloutInput'] = rolloutInputValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'rolloutInput': ?rolloutInput == null ? null : rolloutInput!.toMap(),
+    };
   }
 
   factory PreviewFeatureRolloutOperation.fromMap(Map<String, dynamic> map) {
     return PreviewFeatureRolloutOperation(
-      rolloutInput: map['rolloutInput'] == null
-          ? null
-          : PreviewFeatureRolloutOperationRolloutInput.fromMap(
-              (map['rolloutInput'] as Map).cast<String, dynamic>()),
+      rolloutInput: map['rolloutInput'] == null ? null : PreviewFeatureRolloutOperationRolloutInput.fromMap((map['rolloutInput'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

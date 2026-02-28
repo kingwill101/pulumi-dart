@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VoiceConnectorGroupConnector {
   /// The priority associated with the Amazon Chime Voice Connector, with 1 being the highest priority. Higher priority Amazon Chime Voice Connectors are attempted first.
   final int priority;
-
   /// The Amazon Chime Voice Connector ID.
   final String voiceConnectorId;
 
@@ -16,10 +16,10 @@ class VoiceConnectorGroupConnector {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['priority'] = priority;
-    map['voiceConnectorId'] = voiceConnectorId;
-    return map;
+    return <String, dynamic>{
+      'priority': priority,
+      'voiceConnectorId': voiceConnectorId,
+    };
   }
 
   factory VoiceConnectorGroupConnector.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class VoiceConnectorGroupConnector {
     );
   }
 }
+

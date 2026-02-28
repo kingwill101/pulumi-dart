@@ -6,7 +6,6 @@ import 'google_cloud_discoveryengine_v1beta_conversation_context.dart';
 class GoogleCloudDiscoveryengineV1betaTextInput {
   /// Conversation context of the input.
   final GoogleCloudDiscoveryengineV1betaConversationContext? context;
-
   /// Text input.
   final String? input;
 
@@ -19,26 +18,17 @@ class GoogleCloudDiscoveryengineV1betaTextInput {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final contextValue = context;
-    if (contextValue != null) {
-      map['context'] = contextValue.toMap();
-    }
-    final inputValue = input;
-    if (inputValue != null) {
-      map['input'] = inputValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'context': ?context == null ? null : context!.toMap(),
+      'input': ?input,
+    };
   }
 
-  factory GoogleCloudDiscoveryengineV1betaTextInput.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDiscoveryengineV1betaTextInput.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDiscoveryengineV1betaTextInput(
-      context: map['context'] == null
-          ? null
-          : GoogleCloudDiscoveryengineV1betaConversationContext.fromMap(
-              (map['context'] as Map).cast<String, dynamic>()),
+      context: map['context'] == null ? null : GoogleCloudDiscoveryengineV1betaConversationContext.fromMap((map['context'] as Map).cast<String, dynamic>()),
       input: map['input'] == null ? null : map['input'] as String,
     );
   }
 }
+

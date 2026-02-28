@@ -711,48 +711,34 @@ import 'connect_peer_configuration.dart';
 class ConnectPeer extends pulumi.CustomResource {
   /// ARN of the Connect peer.
   late final pulumi.Output<String> arn;
-
   /// Connect peer BGP options. See bgp_options for more information.
   late final pulumi.Output<ConnectPeerBgpOptions> bgpOptions;
-
   /// Configuration of the Connect peer.
   late final pulumi.Output<List<ConnectPeerConfiguration>> configurations;
-
   /// ID of the connection attachment.
   late final pulumi.Output<String> connectAttachmentId;
-
   /// ID of the Connect peer.
   late final pulumi.Output<String> connectPeerId;
-
   /// Connect peer core network address.
   late final pulumi.Output<String?> coreNetworkAddress;
-
   /// ID of a core network.
   late final pulumi.Output<String> coreNetworkId;
-
   /// Timestamp when the Connect peer was created.
   late final pulumi.Output<String> createdAt;
-
   /// Region where the peer is located.
   late final pulumi.Output<String> edgeLocation;
-
   /// Inside IP addresses used for BGP peering. Required when the Connect attachment protocol is `GRE`. See `aws.networkmanager.ConnectAttachment` for details.
   late final pulumi.Output<List<String>?> insideCidrBlocks;
-
   /// Connect peer address.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> peerAddress;
-
   /// State of the Connect peer.
   late final pulumi.Output<String> state;
-
   /// Subnet ARN for the Connect peer. Required when the Connect attachment protocol is `NO_ENCAP`. See `aws.networkmanager.ConnectAttachment` for details.
   late final pulumi.Output<String?> subnetArn;
-
   /// Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -772,8 +758,7 @@ class ConnectPeer extends pulumi.CustomResource {
         ) {
     this.arn = registerOutput<String>('arn');
     this.bgpOptions = registerOutput<ConnectPeerBgpOptions>('bgpOptions');
-    this.configurations =
-        registerOutput<List<ConnectPeerConfiguration>>('configurations');
+    this.configurations = registerOutput<List<ConnectPeerConfiguration>>('configurations');
     this.connectAttachmentId = registerOutput<String>('connectAttachmentId');
     this.connectPeerId = registerOutput<String>('connectPeerId');
     this.coreNetworkAddress = registerOutput<String?>('coreNetworkAddress');

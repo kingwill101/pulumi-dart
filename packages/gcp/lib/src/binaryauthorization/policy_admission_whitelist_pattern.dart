@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PolicyAdmissionWhitelistPattern {
   /// An image name pattern to whitelist, in the form
   /// `registry/path/to/image`. This supports a trailing * as a
@@ -14,9 +15,9 @@ class PolicyAdmissionWhitelistPattern {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['namePattern'] = namePattern;
-    return map;
+    return <String, dynamic>{
+      'namePattern': namePattern,
+    };
   }
 
   factory PolicyAdmissionWhitelistPattern.fromMap(Map<String, dynamic> map) {
@@ -25,3 +26,4 @@ class PolicyAdmissionWhitelistPattern {
     );
   }
 }
+

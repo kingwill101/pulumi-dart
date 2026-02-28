@@ -19,19 +19,17 @@ class GetRegistrationArgs {
     required String location,
     String? project,
     required String registrationId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        registrationId = pulumi.Input.asInput<String>(registrationId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      registrationId = pulumi.Input.asInput<String>(registrationId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['registrationId'] = registrationId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+      'registrationId': registrationId,
+    };
   }
 
   factory GetRegistrationArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetRegistrationArgs {
     );
   }
 }
+

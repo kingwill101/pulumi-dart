@@ -172,7 +172,6 @@ import 'user_policy_attachment_args.dart';
 class UserPolicyAttachment extends pulumi.CustomResource {
   /// The ARN of the policy you want to apply
   late final pulumi.Output<String> policyArn;
-
   /// The user the policy should be applied to
   late final pulumi.Output<String> user;
 

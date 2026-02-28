@@ -7,15 +7,13 @@ enum SchemaPackageSchematizedParsingTypeHealthcareV1beta1 {
   const SchemaPackageSchematizedParsingTypeHealthcareV1beta1(this.value);
   final String value;
 
-  static SchemaPackageSchematizedParsingTypeHealthcareV1beta1 fromValue(
-      String value) {
-    for (final item
-        in SchemaPackageSchematizedParsingTypeHealthcareV1beta1.values) {
+  static SchemaPackageSchematizedParsingTypeHealthcareV1beta1 fromValue(String value) {
+    for (final item in SchemaPackageSchematizedParsingTypeHealthcareV1beta1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown SchemaPackageSchematizedParsingTypeHealthcareV1beta1 value: $value');
+    throw ArgumentError('Unknown SchemaPackageSchematizedParsingTypeHealthcareV1beta1 value: $value');
   }
 }
+

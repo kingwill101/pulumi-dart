@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Reference to an Execution. Use /Executions.GetExecution with the given name to get full execution including the latest status.
 class ExecutionReferenceResponse {
   /// Optional. Completion timestamp of the execution.
   final String completionTimestamp;
-
   /// Optional. Creation timestamp of the execution.
   final String creationTimestamp;
-
   /// Optional. Name of the execution.
   final String name;
 
@@ -22,11 +21,11 @@ class ExecutionReferenceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['completionTimestamp'] = completionTimestamp;
-    map['creationTimestamp'] = creationTimestamp;
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'completionTimestamp': completionTimestamp,
+      'creationTimestamp': creationTimestamp,
+      'name': name,
+    };
   }
 
   factory ExecutionReferenceResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class ExecutionReferenceResponse {
     );
   }
 }
+

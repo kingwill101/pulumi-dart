@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRegionsRegion {
   /// The Region code of a given Region
   final String regionName;
-
   /// The opt-in status of the region. Possible values are `ENABLED`, `ENABLING`, `DISABLING`, `DISABLED`, and `ENABLED_BY_DEFAULT`.
   final String regionOptStatus;
 
@@ -16,10 +16,10 @@ class GetRegionsRegion {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['regionName'] = regionName;
-    map['regionOptStatus'] = regionOptStatus;
-    return map;
+    return <String, dynamic>{
+      'regionName': regionName,
+      'regionOptStatus': regionOptStatus,
+    };
   }
 
   factory GetRegionsRegion.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetRegionsRegion {
     );
   }
 }
+

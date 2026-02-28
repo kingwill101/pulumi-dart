@@ -15,27 +15,15 @@ class GoogleCloudDocumentaiV1DocumentPageTableTableRow {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cellsValue = cells;
-    if (cellsValue != null) {
-      map['cells'] = pulumi.Input.encodeList<
-          GoogleCloudDocumentaiV1DocumentPageTableTableCell,
-          Map<String, dynamic>>(cellsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'cells': ?cells == null ? null : pulumi.Input.encodeList<GoogleCloudDocumentaiV1DocumentPageTableTableCell, Map<String, dynamic>>(cells!, (value) => value.toMap()),
+    };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentPageTableTableRow.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentPageTableTableRow.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageTableTableRow(
-      cells: map['cells'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  GoogleCloudDocumentaiV1DocumentPageTableTableCell>(
-              map['cells'],
-              (value) =>
-                  GoogleCloudDocumentaiV1DocumentPageTableTableCell.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      cells: map['cells'] == null ? null : pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageTableTableCell>(map['cells'], (value) => GoogleCloudDocumentaiV1DocumentPageTableTableCell.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

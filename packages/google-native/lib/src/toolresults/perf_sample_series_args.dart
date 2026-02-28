@@ -27,38 +27,26 @@ class PerfSampleSeriesArgs {
     required String historyId,
     String? project,
     required String stepId,
-  })  : basicPerfSampleSeries =
-            pulumi.Input.asOptionalInput<BasicPerfSampleSeries>(
-                basicPerfSampleSeries),
-        executionId = pulumi.Input.asInput<String>(executionId),
-        historyId = pulumi.Input.asInput<String>(historyId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        stepId = pulumi.Input.asInput<String>(stepId);
+  }) :
+      basicPerfSampleSeries = pulumi.Input.asOptionalInput<BasicPerfSampleSeries>(basicPerfSampleSeries),
+      executionId = pulumi.Input.asInput<String>(executionId),
+      historyId = pulumi.Input.asInput<String>(historyId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      stepId = pulumi.Input.asInput<String>(stepId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final basicPerfSampleSeriesValue = basicPerfSampleSeries;
-    if (basicPerfSampleSeriesValue != null) {
-      map['basicPerfSampleSeries'] = pulumi.Input.mapOptionalInputValue<
-              BasicPerfSampleSeries, Map<String, dynamic>>(
-          basicPerfSampleSeriesValue, (value) => value.toMap());
-    }
-    map['executionId'] = executionId;
-    map['historyId'] = historyId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['stepId'] = stepId;
-    return map;
+    return <String, dynamic>{
+      'basicPerfSampleSeries': ?pulumi.Input.mapOptionalInputValue<BasicPerfSampleSeries, Map<String, dynamic>>(basicPerfSampleSeries, (value) => value.toMap()),
+      'executionId': executionId,
+      'historyId': historyId,
+      'project': ?project,
+      'stepId': stepId,
+    };
   }
 
   factory PerfSampleSeriesArgs.fromMap(Map<String, dynamic> map) {
     return PerfSampleSeriesArgs(
-      basicPerfSampleSeries: map['basicPerfSampleSeries'] == null
-          ? null
-          : BasicPerfSampleSeries.fromMap(
-              (map['basicPerfSampleSeries'] as Map).cast<String, dynamic>()),
+      basicPerfSampleSeries: map['basicPerfSampleSeries'] == null ? null : BasicPerfSampleSeries.fromMap((map['basicPerfSampleSeries'] as Map).cast<String, dynamic>()),
       executionId: map['executionId'] as String,
       historyId: map['historyId'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -66,3 +54,4 @@ class PerfSampleSeriesArgs {
     );
   }
 }
+

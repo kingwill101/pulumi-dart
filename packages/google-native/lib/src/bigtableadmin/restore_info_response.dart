@@ -6,7 +6,6 @@ import 'backup_info_response.dart';
 class RestoreInfoResponse {
   /// Information about the backup used to restore the table. The backup may no longer exist.
   final BackupInfoResponse backupInfo;
-
   /// The type of the restore source.
   final String sourceType;
 
@@ -19,17 +18,17 @@ class RestoreInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['backupInfo'] = backupInfo.toMap();
-    map['sourceType'] = sourceType;
-    return map;
+    return <String, dynamic>{
+      'backupInfo': backupInfo.toMap(),
+      'sourceType': sourceType,
+    };
   }
 
   factory RestoreInfoResponse.fromMap(Map<String, dynamic> map) {
     return RestoreInfoResponse(
-      backupInfo: BackupInfoResponse.fromMap(
-          (map['backupInfo'] as Map).cast<String, dynamic>()),
+      backupInfo: BackupInfoResponse.fromMap((map['backupInfo'] as Map).cast<String, dynamic>()),
       sourceType: map['sourceType'] as String,
     );
   }
 }
+

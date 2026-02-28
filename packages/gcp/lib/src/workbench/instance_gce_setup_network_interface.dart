@@ -10,15 +10,12 @@ class InstanceGceSetupNetworkInterface {
   /// external IP address.
   /// Structure is documented below.
   final List<InstanceGceSetupNetworkInterfaceAccessConfig>? accessConfigs;
-
   /// Optional. The name of the VPC that this VM instance is in.
   final String? network;
-
   /// Optional. The type of vNIC to be used on this interface. This
   /// may be gVNIC or VirtioNet.
   /// Possible values are: `VIRTIO_NET`, `GVNIC`.
   final String? nicType;
-
   /// Optional. The name of the subnet that this VM instance is in.
   final String? subnet;
 
@@ -35,40 +32,21 @@ class InstanceGceSetupNetworkInterface {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final accessConfigsValue = accessConfigs;
-    if (accessConfigsValue != null) {
-      map['accessConfigs'] = pulumi.Input.encodeList<
-          InstanceGceSetupNetworkInterfaceAccessConfig,
-          Map<String, dynamic>>(accessConfigsValue, (value) => value.toMap());
-    }
-    final networkValue = network;
-    if (networkValue != null) {
-      map['network'] = networkValue;
-    }
-    final nicTypeValue = nicType;
-    if (nicTypeValue != null) {
-      map['nicType'] = nicTypeValue;
-    }
-    final subnetValue = subnet;
-    if (subnetValue != null) {
-      map['subnet'] = subnetValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'accessConfigs': ?accessConfigs == null ? null : pulumi.Input.encodeList<InstanceGceSetupNetworkInterfaceAccessConfig, Map<String, dynamic>>(accessConfigs!, (value) => value.toMap()),
+      'network': ?network,
+      'nicType': ?nicType,
+      'subnet': ?subnet,
+    };
   }
 
   factory InstanceGceSetupNetworkInterface.fromMap(Map<String, dynamic> map) {
     return InstanceGceSetupNetworkInterface(
-      accessConfigs: map['accessConfigs'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  InstanceGceSetupNetworkInterfaceAccessConfig>(
-              map['accessConfigs'],
-              (value) => InstanceGceSetupNetworkInterfaceAccessConfig.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      accessConfigs: map['accessConfigs'] == null ? null : pulumi.Input.decodeList<InstanceGceSetupNetworkInterfaceAccessConfig>(map['accessConfigs'], (value) => InstanceGceSetupNetworkInterfaceAccessConfig.fromMap((value as Map).cast<String, dynamic>())),
       network: map['network'] == null ? null : map['network'] as String,
       nicType: map['nicType'] == null ? null : map['nicType'] as String,
       subnet: map['subnet'] == null ? null : map['subnet'] as String,
     );
   }
 }
+

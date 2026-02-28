@@ -19,19 +19,17 @@ class GetResourcePolicyArgs {
     String? project,
     required String region,
     required String resourcePolicy,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asInput<String>(region),
-        resourcePolicy = pulumi.Input.asInput<String>(resourcePolicy);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asInput<String>(region),
+      resourcePolicy = pulumi.Input.asInput<String>(resourcePolicy);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['region'] = region;
-    map['resourcePolicy'] = resourcePolicy;
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'region': region,
+      'resourcePolicy': resourcePolicy,
+    };
   }
 
   factory GetResourcePolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetResourcePolicyArgs {
     );
   }
 }
+

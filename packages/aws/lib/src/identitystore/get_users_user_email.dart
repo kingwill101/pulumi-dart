@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetUsersUserEmail {
   /// When `true`, this is the primary phone number associated with the user.
   final bool primary;
-
   /// Type of phone number.
   final String type;
-
   /// User's phone number.
   final String value;
 
@@ -21,11 +20,11 @@ class GetUsersUserEmail {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['primary'] = primary;
-    map['type'] = type;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'primary': primary,
+      'type': type,
+      'value': value,
+    };
   }
 
   factory GetUsersUserEmail.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class GetUsersUserEmail {
     );
   }
 }
+

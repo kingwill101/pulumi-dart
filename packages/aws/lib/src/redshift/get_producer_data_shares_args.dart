@@ -11,10 +11,8 @@ class GetProducerDataSharesArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> producerArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Status of a datashare in the producer. Valid values are `ACTIVE`, `AUTHORIZED`, `PENDING_AUTHORIZATION`, `DEAUTHORIZED`, and `REJECTED`. Omit this argument to return all statuses.
   final pulumi.Input<String>? status;
 
@@ -26,22 +24,17 @@ class GetProducerDataSharesArgs {
     required String producerArn,
     String? region,
     String? status,
-  })  : producerArn = pulumi.Input.asInput<String>(producerArn),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        status = pulumi.Input.asOptionalInput<String>(status);
+  }) :
+      producerArn = pulumi.Input.asInput<String>(producerArn),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      status = pulumi.Input.asOptionalInput<String>(status);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['producerArn'] = producerArn;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final statusValue = status;
-    if (statusValue != null) {
-      map['status'] = statusValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'producerArn': producerArn,
+      'region': ?region,
+      'status': ?status,
+    };
   }
 
   factory GetProducerDataSharesArgs.fromMap(Map<String, dynamic> map) {
@@ -52,3 +45,4 @@ class GetProducerDataSharesArgs {
     );
   }
 }
+

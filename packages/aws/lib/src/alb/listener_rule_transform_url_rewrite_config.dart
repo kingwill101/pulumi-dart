@@ -13,21 +13,15 @@ class ListenerRuleTransformUrlRewriteConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final rewriteValue = rewrite;
-    if (rewriteValue != null) {
-      map['rewrite'] = rewriteValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'rewrite': ?rewrite == null ? null : rewrite!.toMap(),
+    };
   }
 
-  factory ListenerRuleTransformUrlRewriteConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory ListenerRuleTransformUrlRewriteConfig.fromMap(Map<String, dynamic> map) {
     return ListenerRuleTransformUrlRewriteConfig(
-      rewrite: map['rewrite'] == null
-          ? null
-          : ListenerRuleTransformUrlRewriteConfigRewrite.fromMap(
-              (map['rewrite'] as Map).cast<String, dynamic>()),
+      rewrite: map['rewrite'] == null ? null : ListenerRuleTransformUrlRewriteConfigRewrite.fromMap((map['rewrite'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

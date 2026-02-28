@@ -6,10 +6,8 @@ import 'get_virtual_cluster_container_provider_info.dart';
 class GetVirtualClusterContainerProvider {
   /// The name of the container provider that is running your EMR Containers cluster
   final String id;
-
   /// Nested list containing information about the configuration of the container provider
   final List<GetVirtualClusterContainerProviderInfo> infos;
-
   /// The type of the container provider
   final String type;
 
@@ -24,23 +22,19 @@ class GetVirtualClusterContainerProvider {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['infos'] = pulumi.Input.encodeList<
-        GetVirtualClusterContainerProviderInfo,
-        Map<String, dynamic>>(infos, (value) => value.toMap());
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'infos': pulumi.Input.encodeList<GetVirtualClusterContainerProviderInfo, Map<String, dynamic>>(infos, (value) => value.toMap()),
+      'type': type,
+    };
   }
 
   factory GetVirtualClusterContainerProvider.fromMap(Map<String, dynamic> map) {
     return GetVirtualClusterContainerProvider(
       id: map['id'] as String,
-      infos: pulumi.Input.decodeList<GetVirtualClusterContainerProviderInfo>(
-          map['infos'],
-          (value) => GetVirtualClusterContainerProviderInfo.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      infos: pulumi.Input.decodeList<GetVirtualClusterContainerProviderInfo>(map['infos'], (value) => GetVirtualClusterContainerProviderInfo.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }
 }
+

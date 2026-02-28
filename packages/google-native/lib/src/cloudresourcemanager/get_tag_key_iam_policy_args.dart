@@ -13,12 +13,13 @@ class GetTagKeyIamPolicyArgs {
   /// [tagKeyId] Required.
   GetTagKeyIamPolicyArgs({
     required String tagKeyId,
-  }) : tagKeyId = pulumi.Input.asInput<String>(tagKeyId);
+  }) :
+      tagKeyId = pulumi.Input.asInput<String>(tagKeyId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['tagKeyId'] = tagKeyId;
-    return map;
+    return <String, dynamic>{
+      'tagKeyId': tagKeyId,
+    };
   }
 
   factory GetTagKeyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -27,3 +28,4 @@ class GetTagKeyIamPolicyArgs {
     );
   }
 }
+

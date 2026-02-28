@@ -15,19 +15,15 @@ class StandardSqlStructTypeResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['fields'] =
-        pulumi.Input.encodeList<StandardSqlFieldResponse, Map<String, dynamic>>(
-            fields, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'fields': pulumi.Input.encodeList<StandardSqlFieldResponse, Map<String, dynamic>>(fields, (value) => value.toMap()),
+    };
   }
 
   factory StandardSqlStructTypeResponse.fromMap(Map<String, dynamic> map) {
     return StandardSqlStructTypeResponse(
-      fields: pulumi.Input.decodeList<StandardSqlFieldResponse>(
-          map['fields'],
-          (value) => StandardSqlFieldResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      fields: pulumi.Input.decodeList<StandardSqlFieldResponse>(map['fields'], (value) => StandardSqlFieldResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

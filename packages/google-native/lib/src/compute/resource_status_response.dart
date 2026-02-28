@@ -8,16 +8,12 @@ import 'upcoming_maintenance_response.dart';
 /// Contains output only fields. Use this sub-message for actual values set on Instance attributes as compared to the value requested by the user (intent) in their instance CRUD calls.
 class ResourceStatusResponse {
   /// Contains last termination details why the instance was terminated.
-  final ResourceStatusLastInstanceTerminationDetailsResponse
-      lastInstanceTerminationDetails;
-
+  final ResourceStatusLastInstanceTerminationDetailsResponse lastInstanceTerminationDetails;
   /// An opaque ID of the host on which the VM is running.
   final String physicalHost;
   final ResourceStatusSchedulingResponse scheduling;
-
   /// Represents the status of the service integration specs defined by the user in instance.serviceIntegrationSpecs.
   final Map<String, String> serviceIntegrationStatuses;
-
   /// Details about stopping state of instance
   final ResourceStatusShutdownDetailsResponse shutdownDetails;
   final UpcomingMaintenanceResponse upcomingMaintenance;
@@ -39,32 +35,25 @@ class ResourceStatusResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['lastInstanceTerminationDetails'] =
-        lastInstanceTerminationDetails.toMap();
-    map['physicalHost'] = physicalHost;
-    map['scheduling'] = scheduling.toMap();
-    map['serviceIntegrationStatuses'] = serviceIntegrationStatuses;
-    map['shutdownDetails'] = shutdownDetails.toMap();
-    map['upcomingMaintenance'] = upcomingMaintenance.toMap();
-    return map;
+    return <String, dynamic>{
+      'lastInstanceTerminationDetails': lastInstanceTerminationDetails.toMap(),
+      'physicalHost': physicalHost,
+      'scheduling': scheduling.toMap(),
+      'serviceIntegrationStatuses': serviceIntegrationStatuses,
+      'shutdownDetails': shutdownDetails.toMap(),
+      'upcomingMaintenance': upcomingMaintenance.toMap(),
+    };
   }
 
   factory ResourceStatusResponse.fromMap(Map<String, dynamic> map) {
     return ResourceStatusResponse(
-      lastInstanceTerminationDetails:
-          ResourceStatusLastInstanceTerminationDetailsResponse.fromMap(
-              (map['lastInstanceTerminationDetails'] as Map)
-                  .cast<String, dynamic>()),
+      lastInstanceTerminationDetails: ResourceStatusLastInstanceTerminationDetailsResponse.fromMap((map['lastInstanceTerminationDetails'] as Map).cast<String, dynamic>()),
       physicalHost: map['physicalHost'] as String,
-      scheduling: ResourceStatusSchedulingResponse.fromMap(
-          (map['scheduling'] as Map).cast<String, dynamic>()),
-      serviceIntegrationStatuses:
-          (map['serviceIntegrationStatuses'] as Map).cast<String, String>(),
-      shutdownDetails: ResourceStatusShutdownDetailsResponse.fromMap(
-          (map['shutdownDetails'] as Map).cast<String, dynamic>()),
-      upcomingMaintenance: UpcomingMaintenanceResponse.fromMap(
-          (map['upcomingMaintenance'] as Map).cast<String, dynamic>()),
+      scheduling: ResourceStatusSchedulingResponse.fromMap((map['scheduling'] as Map).cast<String, dynamic>()),
+      serviceIntegrationStatuses: (map['serviceIntegrationStatuses'] as Map).cast<String, String>(),
+      shutdownDetails: ResourceStatusShutdownDetailsResponse.fromMap((map['shutdownDetails'] as Map).cast<String, dynamic>()),
+      upcomingMaintenance: UpcomingMaintenanceResponse.fromMap((map['upcomingMaintenance'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

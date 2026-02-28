@@ -14,19 +14,15 @@ class MaintenanceExclusionOptions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final scopeValue = scope;
-    if (scopeValue != null) {
-      map['scope'] = scopeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'scope': ?scope == null ? null : scope!.value,
+    };
   }
 
   factory MaintenanceExclusionOptions.fromMap(Map<String, dynamic> map) {
     return MaintenanceExclusionOptions(
-      scope: map['scope'] == null
-          ? null
-          : MaintenanceExclusionOptionsScope.fromValue(map['scope'] as String),
+      scope: map['scope'] == null ? null : MaintenanceExclusionOptionsScope.fromValue(map['scope'] as String),
     );
   }
 }
+

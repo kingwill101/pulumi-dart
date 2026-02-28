@@ -6,16 +6,12 @@ import 'task_execution_response.dart';
 class StatusEventResponse {
   /// Description of the event.
   final String description;
-
   /// The time this event occurred.
   final String eventTime;
-
   /// Task Execution
   final TaskExecutionResponse taskExecution;
-
   /// Task State
   final String taskState;
-
   /// Type of the event.
   final String type;
 
@@ -34,23 +30,23 @@ class StatusEventResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['description'] = description;
-    map['eventTime'] = eventTime;
-    map['taskExecution'] = taskExecution.toMap();
-    map['taskState'] = taskState;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'description': description,
+      'eventTime': eventTime,
+      'taskExecution': taskExecution.toMap(),
+      'taskState': taskState,
+      'type': type,
+    };
   }
 
   factory StatusEventResponse.fromMap(Map<String, dynamic> map) {
     return StatusEventResponse(
       description: map['description'] as String,
       eventTime: map['eventTime'] as String,
-      taskExecution: TaskExecutionResponse.fromMap(
-          (map['taskExecution'] as Map).cast<String, dynamic>()),
+      taskExecution: TaskExecutionResponse.fromMap((map['taskExecution'] as Map).cast<String, dynamic>()),
       taskState: map['taskState'] as String,
       type: map['type'] as String,
     );
   }
 }
+

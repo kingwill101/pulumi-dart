@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// RoutingConfig configures the behaviour of fleet logging feature.
 class FleetObservabilityRoutingConfigResponseGkehubV1alpha {
   /// mode configures the logs routing mode.
@@ -12,15 +13,15 @@ class FleetObservabilityRoutingConfigResponseGkehubV1alpha {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['mode'] = mode;
-    return map;
+    return <String, dynamic>{
+      'mode': mode,
+    };
   }
 
-  factory FleetObservabilityRoutingConfigResponseGkehubV1alpha.fromMap(
-      Map<String, dynamic> map) {
+  factory FleetObservabilityRoutingConfigResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return FleetObservabilityRoutingConfigResponseGkehubV1alpha(
       mode: map['mode'] as String,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Installs an rpm file via the rpm utility.
 class SoftwareRecipeStepInstallRpm {
   /// The id of the relevant artifact in the recipe.
@@ -12,9 +13,9 @@ class SoftwareRecipeStepInstallRpm {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['artifactId'] = artifactId;
-    return map;
+    return <String, dynamic>{
+      'artifactId': artifactId,
+    };
   }
 
   factory SoftwareRecipeStepInstallRpm.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class SoftwareRecipeStepInstallRpm {
     );
   }
 }
+

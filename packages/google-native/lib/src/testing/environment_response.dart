@@ -7,7 +7,6 @@ import 'ios_device_response.dart';
 class EnvironmentResponse {
   /// An Android device which must be used with an Android test.
   final AndroidDeviceResponse androidDevice;
-
   /// An iOS device which must be used with an iOS test.
   final IosDeviceResponse iosDevice;
 
@@ -20,18 +19,17 @@ class EnvironmentResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['androidDevice'] = androidDevice.toMap();
-    map['iosDevice'] = iosDevice.toMap();
-    return map;
+    return <String, dynamic>{
+      'androidDevice': androidDevice.toMap(),
+      'iosDevice': iosDevice.toMap(),
+    };
   }
 
   factory EnvironmentResponse.fromMap(Map<String, dynamic> map) {
     return EnvironmentResponse(
-      androidDevice: AndroidDeviceResponse.fromMap(
-          (map['androidDevice'] as Map).cast<String, dynamic>()),
-      iosDevice: IosDeviceResponse.fromMap(
-          (map['iosDevice'] as Map).cast<String, dynamic>()),
+      androidDevice: AndroidDeviceResponse.fromMap((map['androidDevice'] as Map).cast<String, dynamic>()),
+      iosDevice: IosDeviceResponse.fromMap((map['iosDevice'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

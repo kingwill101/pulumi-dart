@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRuleGroup.
 class GetRuleGroupResult {
   /// ARN of the entity.
   final String arn;
-
   /// Description of the rule group that helps with identification.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -31,14 +30,14 @@ class GetRuleGroupResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['description'] = description;
-    map['id'] = id;
-    map['name'] = name;
-    map['region'] = region;
-    map['scope'] = scope;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'description': description,
+      'id': id,
+      'name': name,
+      'region': region,
+      'scope': scope,
+    };
   }
 
   factory GetRuleGroupResult.fromMap(Map<String, dynamic> map) {
@@ -52,3 +51,4 @@ class GetRuleGroupResult {
     );
   }
 }
+

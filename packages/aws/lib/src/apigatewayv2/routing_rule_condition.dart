@@ -6,7 +6,6 @@ import 'routing_rule_condition_match_headers.dart';
 class RoutingRuleCondition {
   /// The base path to be matched. See below.
   final RoutingRuleConditionMatchBasePaths? matchBasePaths;
-
   /// The headers to be matched. See below.
   final RoutingRuleConditionMatchHeaders? matchHeaders;
 
@@ -19,28 +18,17 @@ class RoutingRuleCondition {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final matchBasePathsValue = matchBasePaths;
-    if (matchBasePathsValue != null) {
-      map['matchBasePaths'] = matchBasePathsValue.toMap();
-    }
-    final matchHeadersValue = matchHeaders;
-    if (matchHeadersValue != null) {
-      map['matchHeaders'] = matchHeadersValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'matchBasePaths': ?matchBasePaths == null ? null : matchBasePaths!.toMap(),
+      'matchHeaders': ?matchHeaders == null ? null : matchHeaders!.toMap(),
+    };
   }
 
   factory RoutingRuleCondition.fromMap(Map<String, dynamic> map) {
     return RoutingRuleCondition(
-      matchBasePaths: map['matchBasePaths'] == null
-          ? null
-          : RoutingRuleConditionMatchBasePaths.fromMap(
-              (map['matchBasePaths'] as Map).cast<String, dynamic>()),
-      matchHeaders: map['matchHeaders'] == null
-          ? null
-          : RoutingRuleConditionMatchHeaders.fromMap(
-              (map['matchHeaders'] as Map).cast<String, dynamic>()),
+      matchBasePaths: map['matchBasePaths'] == null ? null : RoutingRuleConditionMatchBasePaths.fromMap((map['matchBasePaths'] as Map).cast<String, dynamic>()),
+      matchHeaders: map['matchHeaders'] == null ? null : RoutingRuleConditionMatchHeaders.fromMap((map['matchHeaders'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -15,7 +15,7 @@ enum ForwardingRulePscConnectionStatusComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown ForwardingRulePscConnectionStatusComputeBeta value: $value');
+    throw ArgumentError('Unknown ForwardingRulePscConnectionStatusComputeBeta value: $value');
   }
 }
+

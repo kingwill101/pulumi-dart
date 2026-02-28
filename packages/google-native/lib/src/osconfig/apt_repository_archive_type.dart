@@ -16,3 +16,4 @@ enum AptRepositoryArchiveType {
     throw ArgumentError('Unknown AptRepositoryArchiveType value: $value');
   }
 }
+

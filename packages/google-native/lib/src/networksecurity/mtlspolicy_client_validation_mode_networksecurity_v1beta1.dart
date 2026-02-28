@@ -7,15 +7,13 @@ enum MTLSPolicyClientValidationModeNetworksecurityV1beta1 {
   const MTLSPolicyClientValidationModeNetworksecurityV1beta1(this.value);
   final String value;
 
-  static MTLSPolicyClientValidationModeNetworksecurityV1beta1 fromValue(
-      String value) {
-    for (final item
-        in MTLSPolicyClientValidationModeNetworksecurityV1beta1.values) {
+  static MTLSPolicyClientValidationModeNetworksecurityV1beta1 fromValue(String value) {
+    for (final item in MTLSPolicyClientValidationModeNetworksecurityV1beta1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown MTLSPolicyClientValidationModeNetworksecurityV1beta1 value: $value');
+    throw ArgumentError('Unknown MTLSPolicyClientValidationModeNetworksecurityV1beta1 value: $value');
   }
 }
+

@@ -1,24 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDataSourceBackupConfigInfoBackupApplianceBackupConfig {
   /// The name of the application.
   final String applicationName;
-
   /// The ID of the backup appliance.
   final String backupApplianceId;
-
   /// The name of the backup appliance.
   final String backupApplianceName;
-
   /// The name of the host where the application is running.
   final String hostName;
-
   /// The ID of the SLA of this application.
   final String slaId;
-
   /// The name of the SLP associated with the application.
   final String slpName;
-
   /// The name of the SLT associated with the application.
   final String sltName;
 
@@ -41,19 +36,18 @@ class GetDataSourceBackupConfigInfoBackupApplianceBackupConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['applicationName'] = applicationName;
-    map['backupApplianceId'] = backupApplianceId;
-    map['backupApplianceName'] = backupApplianceName;
-    map['hostName'] = hostName;
-    map['slaId'] = slaId;
-    map['slpName'] = slpName;
-    map['sltName'] = sltName;
-    return map;
+    return <String, dynamic>{
+      'applicationName': applicationName,
+      'backupApplianceId': backupApplianceId,
+      'backupApplianceName': backupApplianceName,
+      'hostName': hostName,
+      'slaId': slaId,
+      'slpName': slpName,
+      'sltName': sltName,
+    };
   }
 
-  factory GetDataSourceBackupConfigInfoBackupApplianceBackupConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GetDataSourceBackupConfigInfoBackupApplianceBackupConfig.fromMap(Map<String, dynamic> map) {
     return GetDataSourceBackupConfigInfoBackupApplianceBackupConfig(
       applicationName: map['applicationName'] as String,
       backupApplianceId: map['backupApplianceId'] as String,
@@ -65,3 +59,4 @@ class GetDataSourceBackupConfigInfoBackupApplianceBackupConfig {
     );
   }
 }
+

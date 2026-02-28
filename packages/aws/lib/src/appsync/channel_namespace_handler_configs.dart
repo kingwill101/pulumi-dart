@@ -6,7 +6,6 @@ import 'channel_namespace_handler_configs_on_subscribe.dart';
 class ChannelNamespaceHandlerConfigs {
   /// Handler configuration. See Handler Config below.
   final ChannelNamespaceHandlerConfigsOnPublish? onPublish;
-
   /// Handler configuration. See Handler Config below.
   final ChannelNamespaceHandlerConfigsOnSubscribe? onSubscribe;
 
@@ -19,28 +18,17 @@ class ChannelNamespaceHandlerConfigs {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final onPublishValue = onPublish;
-    if (onPublishValue != null) {
-      map['onPublish'] = onPublishValue.toMap();
-    }
-    final onSubscribeValue = onSubscribe;
-    if (onSubscribeValue != null) {
-      map['onSubscribe'] = onSubscribeValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'onPublish': ?onPublish == null ? null : onPublish!.toMap(),
+      'onSubscribe': ?onSubscribe == null ? null : onSubscribe!.toMap(),
+    };
   }
 
   factory ChannelNamespaceHandlerConfigs.fromMap(Map<String, dynamic> map) {
     return ChannelNamespaceHandlerConfigs(
-      onPublish: map['onPublish'] == null
-          ? null
-          : ChannelNamespaceHandlerConfigsOnPublish.fromMap(
-              (map['onPublish'] as Map).cast<String, dynamic>()),
-      onSubscribe: map['onSubscribe'] == null
-          ? null
-          : ChannelNamespaceHandlerConfigsOnSubscribe.fromMap(
-              (map['onSubscribe'] as Map).cast<String, dynamic>()),
+      onPublish: map['onPublish'] == null ? null : ChannelNamespaceHandlerConfigsOnPublish.fromMap((map['onPublish'] as Map).cast<String, dynamic>()),
+      onSubscribe: map['onSubscribe'] == null ? null : ChannelNamespaceHandlerConfigsOnSubscribe.fromMap((map['onSubscribe'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

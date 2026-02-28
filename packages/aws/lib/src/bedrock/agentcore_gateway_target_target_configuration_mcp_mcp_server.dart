@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AgentcoreGatewayTargetTargetConfigurationMcpMcpServer {
   /// Endpoint for the MCP server target configuration.
   final String endpoint;
@@ -11,15 +12,15 @@ class AgentcoreGatewayTargetTargetConfigurationMcpMcpServer {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['endpoint'] = endpoint;
-    return map;
+    return <String, dynamic>{
+      'endpoint': endpoint,
+    };
   }
 
-  factory AgentcoreGatewayTargetTargetConfigurationMcpMcpServer.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentcoreGatewayTargetTargetConfigurationMcpMcpServer.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetTargetConfigurationMcpMcpServer(
       endpoint: map['endpoint'] as String,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// General identifier of a data field in a storage service.
 class GooglePrivacyDlpV2FieldIdResponse {
   /// Name describing the field.
@@ -12,9 +13,9 @@ class GooglePrivacyDlpV2FieldIdResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GooglePrivacyDlpV2FieldIdResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class GooglePrivacyDlpV2FieldIdResponse {
     );
   }
 }
+

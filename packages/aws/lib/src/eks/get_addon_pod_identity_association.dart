@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetAddonPodIdentityAssociation {
   /// ARN of the IAM role associated with the EKS add-on.
   final String roleArn;
-
   /// Service account associated with the EKS add-on.
   final String serviceAccount;
 
@@ -16,10 +16,10 @@ class GetAddonPodIdentityAssociation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['roleArn'] = roleArn;
-    map['serviceAccount'] = serviceAccount;
-    return map;
+    return <String, dynamic>{
+      'roleArn': roleArn,
+      'serviceAccount': serviceAccount,
+    };
   }
 
   factory GetAddonPodIdentityAssociation.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetAddonPodIdentityAssociation {
     );
   }
 }
+

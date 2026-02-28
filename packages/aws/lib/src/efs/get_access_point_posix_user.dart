@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetAccessPointPosixUser {
   /// Group ID
   final int gid;
-
   /// Secondary group IDs
   final List<int> secondaryGids;
-
   /// User Id
   final int uid;
 
@@ -21,11 +20,11 @@ class GetAccessPointPosixUser {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gid'] = gid;
-    map['secondaryGids'] = secondaryGids;
-    map['uid'] = uid;
-    return map;
+    return <String, dynamic>{
+      'gid': gid,
+      'secondaryGids': secondaryGids,
+      'uid': uid,
+    };
   }
 
   factory GetAccessPointPosixUser.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class GetAccessPointPosixUser {
     );
   }
 }
+

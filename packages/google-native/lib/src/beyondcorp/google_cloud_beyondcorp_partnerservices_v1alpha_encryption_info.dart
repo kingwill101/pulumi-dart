@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Message contains the JWT encryption information for the proxy server.
 class GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo {
   /// Optional. Service Account for encryption key.
   final String? encryptionSaEmail;
-
   /// Optional. JWK in string.
   final String? jwk;
 
@@ -17,25 +17,17 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final encryptionSaEmailValue = encryptionSaEmail;
-    if (encryptionSaEmailValue != null) {
-      map['encryptionSaEmail'] = encryptionSaEmailValue;
-    }
-    final jwkValue = jwk;
-    if (jwkValue != null) {
-      map['jwk'] = jwkValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'encryptionSaEmail': ?encryptionSaEmail,
+      'jwk': ?jwk,
+    };
   }
 
-  factory GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo(
-      encryptionSaEmail: map['encryptionSaEmail'] == null
-          ? null
-          : map['encryptionSaEmail'] as String,
+      encryptionSaEmail: map['encryptionSaEmail'] == null ? null : map['encryptionSaEmail'] as String,
       jwk: map['jwk'] == null ? null : map['jwk'] as String,
     );
   }
 }
+

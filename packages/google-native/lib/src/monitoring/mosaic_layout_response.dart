@@ -7,7 +7,6 @@ import 'tile_response.dart';
 class MosaicLayoutResponse {
   /// The number of columns in the mosaic grid. The number of columns must be between 1 and 12, inclusive.
   final int columns;
-
   /// The tiles to display.
   final List<TileResponse> tiles;
 
@@ -20,20 +19,17 @@ class MosaicLayoutResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['columns'] = columns;
-    map['tiles'] = pulumi.Input.encodeList<TileResponse, Map<String, dynamic>>(
-        tiles, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'columns': columns,
+      'tiles': pulumi.Input.encodeList<TileResponse, Map<String, dynamic>>(tiles, (value) => value.toMap()),
+    };
   }
 
   factory MosaicLayoutResponse.fromMap(Map<String, dynamic> map) {
     return MosaicLayoutResponse(
       columns: map['columns'] as int,
-      tiles: pulumi.Input.decodeList<TileResponse>(
-          map['tiles'],
-          (value) =>
-              TileResponse.fromMap((value as Map).cast<String, dynamic>())),
+      tiles: pulumi.Input.decodeList<TileResponse>(map['tiles'], (value) => TileResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -135,10 +135,8 @@ import 'organization_configuration_auto_enable.dart';
 class OrganizationConfiguration extends pulumi.CustomResource {
   /// Configuration block for auto enabling. See below.
   late final pulumi.Output<OrganizationConfigurationAutoEnable> autoEnable;
-
   /// Whether your configuration reached the max account limit.
   late final pulumi.Output<bool> maxAccountLimitReached;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -156,10 +154,8 @@ class OrganizationConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.autoEnable =
-        registerOutput<OrganizationConfigurationAutoEnable>('autoEnable');
-    this.maxAccountLimitReached =
-        registerOutput<bool>('maxAccountLimitReached');
+    this.autoEnable = registerOutput<OrganizationConfigurationAutoEnable>('autoEnable');
+    this.maxAccountLimitReached = registerOutput<bool>('maxAccountLimitReached');
     this.region = registerOutput<String>('region');
   }
 }

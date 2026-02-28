@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFolderArgs {
   /// The name of the Folder in the form `{folder_id}` or `folders/{folder_id}`.
   final pulumi.Input<String> folder;
-
   /// `true` to find the organization that the folder belongs, `false` to avoid the lookup. It searches up the tree. (defaults to `false`)
   final pulumi.Input<bool>? lookupOrganization;
 
@@ -19,26 +18,22 @@ class GetFolderArgs {
   GetFolderArgs({
     required String folder,
     bool? lookupOrganization,
-  })  : folder = pulumi.Input.asInput<String>(folder),
-        lookupOrganization =
-            pulumi.Input.asOptionalInput<bool>(lookupOrganization);
+  }) :
+      folder = pulumi.Input.asInput<String>(folder),
+      lookupOrganization = pulumi.Input.asOptionalInput<bool>(lookupOrganization);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['folder'] = folder;
-    final lookupOrganizationValue = lookupOrganization;
-    if (lookupOrganizationValue != null) {
-      map['lookupOrganization'] = lookupOrganizationValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'folder': folder,
+      'lookupOrganization': ?lookupOrganization,
+    };
   }
 
   factory GetFolderArgs.fromMap(Map<String, dynamic> map) {
     return GetFolderArgs(
       folder: map['folder'] as String,
-      lookupOrganization: map['lookupOrganization'] == null
-          ? null
-          : map['lookupOrganization'] as bool,
+      lookupOrganization: map['lookupOrganization'] == null ? null : map['lookupOrganization'] as bool,
     );
   }
 }
+

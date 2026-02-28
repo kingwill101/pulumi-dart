@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccessPointsArgs {
   /// AWS account ID for the account that owns the specified access points. If omitted, defaults to the caller's account ID.
   final pulumi.Input<String>? accountId;
-
   /// Name of the bucket associated with the access points.
   final pulumi.Input<String>? bucket;
-
   /// Unique identifier for the access points data source.
   final pulumi.Input<String>? dataSourceId;
-
   /// Type of the data source that the access points are attached to. To return all access points set this argument to `ALL`.
   final pulumi.Input<String>? dataSourceType;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -34,47 +30,31 @@ class GetAccessPointsArgs {
     String? dataSourceId,
     String? dataSourceType,
     String? region,
-  })  : accountId = pulumi.Input.asOptionalInput<String>(accountId),
-        bucket = pulumi.Input.asOptionalInput<String>(bucket),
-        dataSourceId = pulumi.Input.asOptionalInput<String>(dataSourceId),
-        dataSourceType = pulumi.Input.asOptionalInput<String>(dataSourceType),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      accountId = pulumi.Input.asOptionalInput<String>(accountId),
+      bucket = pulumi.Input.asOptionalInput<String>(bucket),
+      dataSourceId = pulumi.Input.asOptionalInput<String>(dataSourceId),
+      dataSourceType = pulumi.Input.asOptionalInput<String>(dataSourceType),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final accountIdValue = accountId;
-    if (accountIdValue != null) {
-      map['accountId'] = accountIdValue;
-    }
-    final bucketValue = bucket;
-    if (bucketValue != null) {
-      map['bucket'] = bucketValue;
-    }
-    final dataSourceIdValue = dataSourceId;
-    if (dataSourceIdValue != null) {
-      map['dataSourceId'] = dataSourceIdValue;
-    }
-    final dataSourceTypeValue = dataSourceType;
-    if (dataSourceTypeValue != null) {
-      map['dataSourceType'] = dataSourceTypeValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'accountId': ?accountId,
+      'bucket': ?bucket,
+      'dataSourceId': ?dataSourceId,
+      'dataSourceType': ?dataSourceType,
+      'region': ?region,
+    };
   }
 
   factory GetAccessPointsArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessPointsArgs(
       accountId: map['accountId'] == null ? null : map['accountId'] as String,
       bucket: map['bucket'] == null ? null : map['bucket'] as String,
-      dataSourceId:
-          map['dataSourceId'] == null ? null : map['dataSourceId'] as String,
-      dataSourceType: map['dataSourceType'] == null
-          ? null
-          : map['dataSourceType'] as String,
+      dataSourceId: map['dataSourceId'] == null ? null : map['dataSourceId'] as String,
+      dataSourceType: map['dataSourceType'] == null ? null : map['dataSourceType'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

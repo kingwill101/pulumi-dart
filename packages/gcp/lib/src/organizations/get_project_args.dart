@@ -14,15 +14,13 @@ class GetProjectArgs {
   /// [projectId] The project ID. If it is not provided, the provider project is used.
   GetProjectArgs({
     String? projectId,
-  }) : projectId = pulumi.Input.asOptionalInput<String>(projectId);
+  }) :
+      projectId = pulumi.Input.asOptionalInput<String>(projectId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectIdValue = projectId;
-    if (projectIdValue != null) {
-      map['projectId'] = projectIdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'projectId': ?projectId,
+    };
   }
 
   factory GetProjectArgs.fromMap(Map<String, dynamic> map) {
@@ -31,3 +29,4 @@ class GetProjectArgs {
     );
   }
 }
+

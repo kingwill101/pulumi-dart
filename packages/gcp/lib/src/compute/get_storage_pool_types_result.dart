@@ -65,36 +65,32 @@ class GetStoragePoolTypesResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['creationTimestamp'] = creationTimestamp;
-    map['deprecateds'] = pulumi.Input.encodeList<GetStoragePoolTypesDeprecated,
-        Map<String, dynamic>>(deprecateds, (value) => value.toMap());
-    map['description'] = description;
-    map['id'] = id;
-    map['kind'] = kind;
-    map['maxPoolProvisionedCapacityGb'] = maxPoolProvisionedCapacityGb;
-    map['maxPoolProvisionedIops'] = maxPoolProvisionedIops;
-    map['maxPoolProvisionedThroughput'] = maxPoolProvisionedThroughput;
-    map['minPoolProvisionedCapacityGb'] = minPoolProvisionedCapacityGb;
-    map['minPoolProvisionedIops'] = minPoolProvisionedIops;
-    map['minPoolProvisionedThroughput'] = minPoolProvisionedThroughput;
-    map['name'] = name;
-    map['project'] = project;
-    map['selfLink'] = selfLink;
-    map['selfLinkWithId'] = selfLinkWithId;
-    map['storagePoolType'] = storagePoolType;
-    map['supportedDiskTypes'] = supportedDiskTypes;
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'creationTimestamp': creationTimestamp,
+      'deprecateds': pulumi.Input.encodeList<GetStoragePoolTypesDeprecated, Map<String, dynamic>>(deprecateds, (value) => value.toMap()),
+      'description': description,
+      'id': id,
+      'kind': kind,
+      'maxPoolProvisionedCapacityGb': maxPoolProvisionedCapacityGb,
+      'maxPoolProvisionedIops': maxPoolProvisionedIops,
+      'maxPoolProvisionedThroughput': maxPoolProvisionedThroughput,
+      'minPoolProvisionedCapacityGb': minPoolProvisionedCapacityGb,
+      'minPoolProvisionedIops': minPoolProvisionedIops,
+      'minPoolProvisionedThroughput': minPoolProvisionedThroughput,
+      'name': name,
+      'project': project,
+      'selfLink': selfLink,
+      'selfLinkWithId': selfLinkWithId,
+      'storagePoolType': storagePoolType,
+      'supportedDiskTypes': supportedDiskTypes,
+      'zone': zone,
+    };
   }
 
   factory GetStoragePoolTypesResult.fromMap(Map<String, dynamic> map) {
     return GetStoragePoolTypesResult(
       creationTimestamp: map['creationTimestamp'] as String,
-      deprecateds: pulumi.Input.decodeList<GetStoragePoolTypesDeprecated>(
-          map['deprecateds'],
-          (value) => GetStoragePoolTypesDeprecated.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      deprecateds: pulumi.Input.decodeList<GetStoragePoolTypesDeprecated>(map['deprecateds'], (value) => GetStoragePoolTypesDeprecated.fromMap((value as Map).cast<String, dynamic>())),
       description: map['description'] as String,
       id: map['id'] as int,
       kind: map['kind'] as String,
@@ -114,3 +110,4 @@ class GetStoragePoolTypesResult {
     );
   }
 }
+

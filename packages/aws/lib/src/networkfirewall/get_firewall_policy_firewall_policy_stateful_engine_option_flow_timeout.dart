@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetFirewallPolicyFirewallPolicyStatefulEngineOptionFlowTimeout {
   final int tcpIdleTimeoutSeconds;
 
@@ -10,15 +11,15 @@ class GetFirewallPolicyFirewallPolicyStatefulEngineOptionFlowTimeout {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['tcpIdleTimeoutSeconds'] = tcpIdleTimeoutSeconds;
-    return map;
+    return <String, dynamic>{
+      'tcpIdleTimeoutSeconds': tcpIdleTimeoutSeconds,
+    };
   }
 
-  factory GetFirewallPolicyFirewallPolicyStatefulEngineOptionFlowTimeout.fromMap(
-      Map<String, dynamic> map) {
+  factory GetFirewallPolicyFirewallPolicyStatefulEngineOptionFlowTimeout.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyFirewallPolicyStatefulEngineOptionFlowTimeout(
       tcpIdleTimeoutSeconds: map['tcpIdleTimeoutSeconds'] as int,
     );
   }
 }
+

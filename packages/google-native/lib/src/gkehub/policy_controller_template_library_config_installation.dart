@@ -7,15 +7,13 @@ enum PolicyControllerTemplateLibraryConfigInstallation {
   const PolicyControllerTemplateLibraryConfigInstallation(this.value);
   final String value;
 
-  static PolicyControllerTemplateLibraryConfigInstallation fromValue(
-      String value) {
-    for (final item
-        in PolicyControllerTemplateLibraryConfigInstallation.values) {
+  static PolicyControllerTemplateLibraryConfigInstallation fromValue(String value) {
+    for (final item in PolicyControllerTemplateLibraryConfigInstallation.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown PolicyControllerTemplateLibraryConfigInstallation value: $value');
+    throw ArgumentError('Unknown PolicyControllerTemplateLibraryConfigInstallation value: $value');
   }
 }
+

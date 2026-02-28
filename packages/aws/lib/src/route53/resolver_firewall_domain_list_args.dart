@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResolverFirewallDomainListArgs {
   /// A array of domains for the firewall domain list.
   final pulumi.Input<List<String>>? domains;
-
   /// A name that lets you identify the domain list, to manage and use it.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// A map of tags to assign to the resource. f configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -29,42 +26,28 @@ class ResolverFirewallDomainListArgs {
     String? name,
     String? region,
     Map<String, String>? tags,
-  })  : domains = pulumi.Input.asOptionalInput<List<String>>(domains),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      domains = pulumi.Input.asOptionalInput<List<String>>(domains),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final domainsValue = domains;
-    if (domainsValue != null) {
-      map['domains'] = domainsValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'domains': ?domains,
+      'name': ?name,
+      'region': ?region,
+      'tags': ?tags,
+    };
   }
 
   factory ResolverFirewallDomainListArgs.fromMap(Map<String, dynamic> map) {
     return ResolverFirewallDomainListArgs(
-      domains: map['domains'] == null
-          ? null
-          : (map['domains'] as List).cast<String>(),
+      domains: map['domains'] == null ? null : (map['domains'] as List).cast<String>(),
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EmailIdentityFeedbackAttributesArgs {
   /// Sets the feedback forwarding configuration for the identity.
   final pulumi.Input<bool>? emailForwardingEnabled;
-
   /// The email identity.
   final pulumi.Input<String> emailIdentity;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -24,33 +22,25 @@ class EmailIdentityFeedbackAttributesArgs {
     bool? emailForwardingEnabled,
     required String emailIdentity,
     String? region,
-  })  : emailForwardingEnabled =
-            pulumi.Input.asOptionalInput<bool>(emailForwardingEnabled),
-        emailIdentity = pulumi.Input.asInput<String>(emailIdentity),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      emailForwardingEnabled = pulumi.Input.asOptionalInput<bool>(emailForwardingEnabled),
+      emailIdentity = pulumi.Input.asInput<String>(emailIdentity),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final emailForwardingEnabledValue = emailForwardingEnabled;
-    if (emailForwardingEnabledValue != null) {
-      map['emailForwardingEnabled'] = emailForwardingEnabledValue;
-    }
-    map['emailIdentity'] = emailIdentity;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'emailForwardingEnabled': ?emailForwardingEnabled,
+      'emailIdentity': emailIdentity,
+      'region': ?region,
+    };
   }
 
-  factory EmailIdentityFeedbackAttributesArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory EmailIdentityFeedbackAttributesArgs.fromMap(Map<String, dynamic> map) {
     return EmailIdentityFeedbackAttributesArgs(
-      emailForwardingEnabled: map['emailForwardingEnabled'] == null
-          ? null
-          : map['emailForwardingEnabled'] as bool,
+      emailForwardingEnabled: map['emailForwardingEnabled'] == null ? null : map['emailForwardingEnabled'] as bool,
       emailIdentity: map['emailIdentity'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

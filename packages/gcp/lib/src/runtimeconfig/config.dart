@@ -130,12 +130,10 @@ class Config extends pulumi.CustomResource {
   /// The description to associate with the runtime
   /// config.
   late final pulumi.Output<String?> description;
-
   /// The name of the runtime config.
   ///
   /// - - -
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   late final pulumi.Output<String> project;

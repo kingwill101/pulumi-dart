@@ -22,24 +22,19 @@ class GetDataScanArgs {
     required String location,
     String? project,
     String? view,
-  })  : dataScanId = pulumi.Input.asInput<String>(dataScanId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        view = pulumi.Input.asOptionalInput<String>(view);
+  }) :
+      dataScanId = pulumi.Input.asInput<String>(dataScanId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dataScanId'] = dataScanId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final viewValue = view;
-    if (viewValue != null) {
-      map['view'] = viewValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'dataScanId': dataScanId,
+      'location': location,
+      'project': ?project,
+      'view': ?view,
+    };
   }
 
   factory GetDataScanArgs.fromMap(Map<String, dynamic> map) {
@@ -51,3 +46,4 @@ class GetDataScanArgs {
     );
   }
 }
+

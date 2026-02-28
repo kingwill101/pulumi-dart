@@ -13,16 +13,15 @@ class LocationFsxOntapFileSystemProtocolNfs {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['mountOptions'] = mountOptions.toMap();
-    return map;
+    return <String, dynamic>{
+      'mountOptions': mountOptions.toMap(),
+    };
   }
 
-  factory LocationFsxOntapFileSystemProtocolNfs.fromMap(
-      Map<String, dynamic> map) {
+  factory LocationFsxOntapFileSystemProtocolNfs.fromMap(Map<String, dynamic> map) {
     return LocationFsxOntapFileSystemProtocolNfs(
-      mountOptions: LocationFsxOntapFileSystemProtocolNfsMountOptions.fromMap(
-          (map['mountOptions'] as Map).cast<String, dynamic>()),
+      mountOptions: LocationFsxOntapFileSystemProtocolNfsMountOptions.fromMap((map['mountOptions'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

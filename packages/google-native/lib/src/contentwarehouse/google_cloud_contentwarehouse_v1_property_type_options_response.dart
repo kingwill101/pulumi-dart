@@ -6,8 +6,7 @@ import 'google_cloud_contentwarehouse_v1_property_definition_response.dart';
 /// Configurations for a nested structured data property.
 class GoogleCloudContentwarehouseV1PropertyTypeOptionsResponse {
   /// List of property definitions.
-  final List<GoogleCloudContentwarehouseV1PropertyDefinitionResponse>
-      propertyDefinitions;
+  final List<GoogleCloudContentwarehouseV1PropertyDefinitionResponse> propertyDefinitions;
 
   /// Creates a new [GoogleCloudContentwarehouseV1PropertyTypeOptionsResponse].
   /// [propertyDefinitions] List of property definitions.
@@ -16,22 +15,15 @@ class GoogleCloudContentwarehouseV1PropertyTypeOptionsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['propertyDefinitions'] = pulumi.Input.encodeList<
-        GoogleCloudContentwarehouseV1PropertyDefinitionResponse,
-        Map<String, dynamic>>(propertyDefinitions, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'propertyDefinitions': pulumi.Input.encodeList<GoogleCloudContentwarehouseV1PropertyDefinitionResponse, Map<String, dynamic>>(propertyDefinitions, (value) => value.toMap()),
+    };
   }
 
-  factory GoogleCloudContentwarehouseV1PropertyTypeOptionsResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudContentwarehouseV1PropertyTypeOptionsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1PropertyTypeOptionsResponse(
-      propertyDefinitions: pulumi.Input.decodeList<
-              GoogleCloudContentwarehouseV1PropertyDefinitionResponse>(
-          map['propertyDefinitions'],
-          (value) =>
-              GoogleCloudContentwarehouseV1PropertyDefinitionResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      propertyDefinitions: pulumi.Input.decodeList<GoogleCloudContentwarehouseV1PropertyDefinitionResponse>(map['propertyDefinitions'], (value) => GoogleCloudContentwarehouseV1PropertyDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

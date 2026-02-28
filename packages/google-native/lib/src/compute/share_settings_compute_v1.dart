@@ -6,7 +6,6 @@ import 'share_settings_share_type_compute_v1.dart';
 class ShareSettingsComputeV1 {
   /// A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
   final Map<String, String>? projectMap;
-
   /// Type of sharing for this shared-reservation
   final ShareSettingsShareTypeComputeV1? shareType;
 
@@ -19,27 +18,17 @@ class ShareSettingsComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectMapValue = projectMap;
-    if (projectMapValue != null) {
-      map['projectMap'] = projectMapValue;
-    }
-    final shareTypeValue = shareType;
-    if (shareTypeValue != null) {
-      map['shareType'] = shareTypeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'projectMap': ?projectMap,
+      'shareType': ?shareType == null ? null : shareType!.value,
+    };
   }
 
   factory ShareSettingsComputeV1.fromMap(Map<String, dynamic> map) {
     return ShareSettingsComputeV1(
-      projectMap: map['projectMap'] == null
-          ? null
-          : (map['projectMap'] as Map).cast<String, String>(),
-      shareType: map['shareType'] == null
-          ? null
-          : ShareSettingsShareTypeComputeV1.fromValue(
-              map['shareType'] as String),
+      projectMap: map['projectMap'] == null ? null : (map['projectMap'] as Map).cast<String, String>(),
+      shareType: map['shareType'] == null ? null : ShareSettingsShareTypeComputeV1.fromValue(map['shareType'] as String),
     );
   }
 }
+

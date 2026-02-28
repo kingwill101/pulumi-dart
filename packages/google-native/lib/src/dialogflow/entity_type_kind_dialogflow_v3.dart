@@ -17,3 +17,4 @@ enum EntityTypeKindDialogflowV3 {
     throw ArgumentError('Unknown EntityTypeKindDialogflowV3 value: $value');
   }
 }
+

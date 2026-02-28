@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRulesPackages.
 class GetRulesPackagesResult {
   /// List of the Amazon Inspector Classic Rules Packages arns available in the AWS region.
   final List<String> arns;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -20,11 +20,11 @@ class GetRulesPackagesResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arns'] = arns;
-    map['id'] = id;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'arns': arns,
+      'id': id,
+      'region': region,
+    };
   }
 
   factory GetRulesPackagesResult.fromMap(Map<String, dynamic> map) {
@@ -35,3 +35,4 @@ class GetRulesPackagesResult {
     );
   }
 }
+

@@ -230,34 +230,26 @@ class Database extends pulumi.CustomResource {
   /// Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
   late final pulumi.Output<String> databaseDialect;
   late final pulumi.Output<List<String>?> ddls;
-
   /// The default time zone for the database. The default time zone must be a valid name
   /// from the tz database. Default value is "America/Los_angeles".
   late final pulumi.Output<String?> defaultTimeZone;
-
   /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
   /// in state, a `destroy` or `update` that would delete the instance will fail.
   late final pulumi.Output<bool?> deletionProtection;
   late final pulumi.Output<bool?> enableDropProtection;
-
   /// Encryption configuration for the database
   /// Structure is documented below.
   late final pulumi.Output<DatabaseEncryptionConfig?> encryptionConfig;
-
   /// The instance to create the database on.
   late final pulumi.Output<String> instance;
-
   /// A unique identifier for the database, which cannot be changed after the
   /// instance is created. Values are of the form `[a-z][-_a-z0-9]*[a-z0-9]`.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// An explanation of the status of the database.
   late final pulumi.Output<String> state;
-
   /// The retention period for the database. The retention period must be between 1 hour
   /// and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
   /// the values 1d, 24h, 1440m, and 86400s are equivalent. Default value is 1h.
@@ -284,13 +276,11 @@ class Database extends pulumi.CustomResource {
     this.defaultTimeZone = registerOutput<String?>('defaultTimeZone');
     this.deletionProtection = registerOutput<bool?>('deletionProtection');
     this.enableDropProtection = registerOutput<bool?>('enableDropProtection');
-    this.encryptionConfig =
-        registerOutput<DatabaseEncryptionConfig?>('encryptionConfig');
+    this.encryptionConfig = registerOutput<DatabaseEncryptionConfig?>('encryptionConfig');
     this.instance = registerOutput<String>('instance');
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
     this.state = registerOutput<String>('state');
-    this.versionRetentionPeriod =
-        registerOutput<String>('versionRetentionPeriod');
+    this.versionRetentionPeriod = registerOutput<String>('versionRetentionPeriod');
   }
 }

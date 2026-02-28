@@ -18,40 +18,28 @@ class AwsNodePoolArgs {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
-
   /// Autoscaler configuration for this node pool.
   final pulumi.Input<AwsNodePoolAutoscaling> autoscaling;
-
   /// The awsCluster for the resource
   final pulumi.Input<String> cluster;
-
   /// The configuration of the node pool.
   final pulumi.Input<AwsNodePoolConfig> config;
-
   /// The kubelet configuration for the node pool.
   final pulumi.Input<AwsNodePoolKubeletConfig>? kubeletConfig;
-
   /// The location for the resource
   final pulumi.Input<String> location;
-
   /// The Management configuration for this node pool.
   final pulumi.Input<AwsNodePoolManagement>? management;
-
   /// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
   final pulumi.Input<AwsNodePoolMaxPodsConstraint> maxPodsConstraint;
-
   /// The name of this resource.
   final pulumi.Input<String>? name;
-
   /// The project for the resource
   final pulumi.Input<String>? project;
-
   /// The subnet where the node pool node run.
   final pulumi.Input<String> subnetId;
-
   /// Optional. Update settings control the speed and disruption of the node pool update.
   final pulumi.Input<AwsNodePoolUpdateSettings>? updateSettings;
-
   /// The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
   final pulumi.Input<String> version;
 
@@ -83,102 +71,55 @@ class AwsNodePoolArgs {
     required String subnetId,
     AwsNodePoolUpdateSettings? updateSettings,
     required String version,
-  })  : annotations =
-            pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-        autoscaling = pulumi.Input.asInput<AwsNodePoolAutoscaling>(autoscaling),
-        cluster = pulumi.Input.asInput<String>(cluster),
-        config = pulumi.Input.asInput<AwsNodePoolConfig>(config),
-        kubeletConfig = pulumi.Input.asOptionalInput<AwsNodePoolKubeletConfig>(
-            kubeletConfig),
-        location = pulumi.Input.asInput<String>(location),
-        management =
-            pulumi.Input.asOptionalInput<AwsNodePoolManagement>(management),
-        maxPodsConstraint = pulumi.Input.asInput<AwsNodePoolMaxPodsConstraint>(
-            maxPodsConstraint),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        subnetId = pulumi.Input.asInput<String>(subnetId),
-        updateSettings =
-            pulumi.Input.asOptionalInput<AwsNodePoolUpdateSettings>(
-                updateSettings),
-        version = pulumi.Input.asInput<String>(version);
+  }) :
+      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
+      autoscaling = pulumi.Input.asInput<AwsNodePoolAutoscaling>(autoscaling),
+      cluster = pulumi.Input.asInput<String>(cluster),
+      config = pulumi.Input.asInput<AwsNodePoolConfig>(config),
+      kubeletConfig = pulumi.Input.asOptionalInput<AwsNodePoolKubeletConfig>(kubeletConfig),
+      location = pulumi.Input.asInput<String>(location),
+      management = pulumi.Input.asOptionalInput<AwsNodePoolManagement>(management),
+      maxPodsConstraint = pulumi.Input.asInput<AwsNodePoolMaxPodsConstraint>(maxPodsConstraint),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      subnetId = pulumi.Input.asInput<String>(subnetId),
+      updateSettings = pulumi.Input.asOptionalInput<AwsNodePoolUpdateSettings>(updateSettings),
+      version = pulumi.Input.asInput<String>(version);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final annotationsValue = annotations;
-    if (annotationsValue != null) {
-      map['annotations'] = annotationsValue;
-    }
-    map['autoscaling'] = pulumi.Input.mapInputValue<AwsNodePoolAutoscaling,
-        Map<String, dynamic>>(autoscaling, (value) => value.toMap());
-    map['cluster'] = cluster;
-    map['config'] =
-        pulumi.Input.mapInputValue<AwsNodePoolConfig, Map<String, dynamic>>(
-            config, (value) => value.toMap());
-    final kubeletConfigValue = kubeletConfig;
-    if (kubeletConfigValue != null) {
-      map['kubeletConfig'] = pulumi.Input.mapOptionalInputValue<
-          AwsNodePoolKubeletConfig,
-          Map<String, dynamic>>(kubeletConfigValue, (value) => value.toMap());
-    }
-    map['location'] = location;
-    final managementValue = management;
-    if (managementValue != null) {
-      map['management'] = pulumi.Input.mapOptionalInputValue<
-          AwsNodePoolManagement,
-          Map<String, dynamic>>(managementValue, (value) => value.toMap());
-    }
-    map['maxPodsConstraint'] = pulumi.Input.mapInputValue<
-        AwsNodePoolMaxPodsConstraint,
-        Map<String, dynamic>>(maxPodsConstraint, (value) => value.toMap());
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['subnetId'] = subnetId;
-    final updateSettingsValue = updateSettings;
-    if (updateSettingsValue != null) {
-      map['updateSettings'] = pulumi.Input.mapOptionalInputValue<
-          AwsNodePoolUpdateSettings,
-          Map<String, dynamic>>(updateSettingsValue, (value) => value.toMap());
-    }
-    map['version'] = version;
-    return map;
+    return <String, dynamic>{
+      'annotations': ?annotations,
+      'autoscaling': pulumi.Input.mapInputValue<AwsNodePoolAutoscaling, Map<String, dynamic>>(autoscaling, (value) => value.toMap()),
+      'cluster': cluster,
+      'config': pulumi.Input.mapInputValue<AwsNodePoolConfig, Map<String, dynamic>>(config, (value) => value.toMap()),
+      'kubeletConfig': ?pulumi.Input.mapOptionalInputValue<AwsNodePoolKubeletConfig, Map<String, dynamic>>(kubeletConfig, (value) => value.toMap()),
+      'location': location,
+      'management': ?pulumi.Input.mapOptionalInputValue<AwsNodePoolManagement, Map<String, dynamic>>(management, (value) => value.toMap()),
+      'maxPodsConstraint': pulumi.Input.mapInputValue<AwsNodePoolMaxPodsConstraint, Map<String, dynamic>>(maxPodsConstraint, (value) => value.toMap()),
+      'name': ?name,
+      'project': ?project,
+      'subnetId': subnetId,
+      'updateSettings': ?pulumi.Input.mapOptionalInputValue<AwsNodePoolUpdateSettings, Map<String, dynamic>>(updateSettings, (value) => value.toMap()),
+      'version': version,
+    };
   }
 
   factory AwsNodePoolArgs.fromMap(Map<String, dynamic> map) {
     return AwsNodePoolArgs(
-      annotations: map['annotations'] == null
-          ? null
-          : (map['annotations'] as Map).cast<String, String>(),
-      autoscaling: AwsNodePoolAutoscaling.fromMap(
-          (map['autoscaling'] as Map).cast<String, dynamic>()),
+      annotations: map['annotations'] == null ? null : (map['annotations'] as Map).cast<String, String>(),
+      autoscaling: AwsNodePoolAutoscaling.fromMap((map['autoscaling'] as Map).cast<String, dynamic>()),
       cluster: map['cluster'] as String,
-      config: AwsNodePoolConfig.fromMap(
-          (map['config'] as Map).cast<String, dynamic>()),
-      kubeletConfig: map['kubeletConfig'] == null
-          ? null
-          : AwsNodePoolKubeletConfig.fromMap(
-              (map['kubeletConfig'] as Map).cast<String, dynamic>()),
+      config: AwsNodePoolConfig.fromMap((map['config'] as Map).cast<String, dynamic>()),
+      kubeletConfig: map['kubeletConfig'] == null ? null : AwsNodePoolKubeletConfig.fromMap((map['kubeletConfig'] as Map).cast<String, dynamic>()),
       location: map['location'] as String,
-      management: map['management'] == null
-          ? null
-          : AwsNodePoolManagement.fromMap(
-              (map['management'] as Map).cast<String, dynamic>()),
-      maxPodsConstraint: AwsNodePoolMaxPodsConstraint.fromMap(
-          (map['maxPodsConstraint'] as Map).cast<String, dynamic>()),
+      management: map['management'] == null ? null : AwsNodePoolManagement.fromMap((map['management'] as Map).cast<String, dynamic>()),
+      maxPodsConstraint: AwsNodePoolMaxPodsConstraint.fromMap((map['maxPodsConstraint'] as Map).cast<String, dynamic>()),
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       subnetId: map['subnetId'] as String,
-      updateSettings: map['updateSettings'] == null
-          ? null
-          : AwsNodePoolUpdateSettings.fromMap(
-              (map['updateSettings'] as Map).cast<String, dynamic>()),
+      updateSettings: map['updateSettings'] == null ? null : AwsNodePoolUpdateSettings.fromMap((map['updateSettings'] as Map).cast<String, dynamic>()),
       version: map['version'] as String,
     );
   }
 }
+

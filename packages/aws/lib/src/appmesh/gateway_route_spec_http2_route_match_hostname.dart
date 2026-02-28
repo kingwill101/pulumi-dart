@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GatewayRouteSpecHttp2RouteMatchHostname {
   /// Exact host name to match on.
   final String? exact;
-
   /// Specified ending characters of the host name to match on.
   final String? suffix;
 
@@ -16,23 +16,17 @@ class GatewayRouteSpecHttp2RouteMatchHostname {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final exactValue = exact;
-    if (exactValue != null) {
-      map['exact'] = exactValue;
-    }
-    final suffixValue = suffix;
-    if (suffixValue != null) {
-      map['suffix'] = suffixValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'exact': ?exact,
+      'suffix': ?suffix,
+    };
   }
 
-  factory GatewayRouteSpecHttp2RouteMatchHostname.fromMap(
-      Map<String, dynamic> map) {
+  factory GatewayRouteSpecHttp2RouteMatchHostname.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpecHttp2RouteMatchHostname(
       exact: map['exact'] == null ? null : map['exact'] as String,
       suffix: map['suffix'] == null ? null : map['suffix'] as String,
     );
   }
 }
+

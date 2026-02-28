@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getLambdaFunctionAssociation.
 class GetLambdaFunctionAssociationResult {
   final String functionArn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instanceId;
@@ -22,12 +22,12 @@ class GetLambdaFunctionAssociationResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['functionArn'] = functionArn;
-    map['id'] = id;
-    map['instanceId'] = instanceId;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'functionArn': functionArn,
+      'id': id,
+      'instanceId': instanceId,
+      'region': region,
+    };
   }
 
   factory GetLambdaFunctionAssociationResult.fromMap(Map<String, dynamic> map) {
@@ -39,3 +39,4 @@ class GetLambdaFunctionAssociationResult {
     );
   }
 }
+

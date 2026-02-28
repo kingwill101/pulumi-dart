@@ -7,7 +7,6 @@ class TriggerBuildSource {
   /// Location of the source in a Google Cloud Source Repository.
   /// Structure is documented below.
   final TriggerBuildSourceRepoSource? repoSource;
-
   /// Location of the source in an archive file in Google Cloud Storage.
   /// Structure is documented below.
   final TriggerBuildSourceStorageSource? storageSource;
@@ -21,28 +20,17 @@ class TriggerBuildSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final repoSourceValue = repoSource;
-    if (repoSourceValue != null) {
-      map['repoSource'] = repoSourceValue.toMap();
-    }
-    final storageSourceValue = storageSource;
-    if (storageSourceValue != null) {
-      map['storageSource'] = storageSourceValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'repoSource': ?repoSource == null ? null : repoSource!.toMap(),
+      'storageSource': ?storageSource == null ? null : storageSource!.toMap(),
+    };
   }
 
   factory TriggerBuildSource.fromMap(Map<String, dynamic> map) {
     return TriggerBuildSource(
-      repoSource: map['repoSource'] == null
-          ? null
-          : TriggerBuildSourceRepoSource.fromMap(
-              (map['repoSource'] as Map).cast<String, dynamic>()),
-      storageSource: map['storageSource'] == null
-          ? null
-          : TriggerBuildSourceStorageSource.fromMap(
-              (map['storageSource'] as Map).cast<String, dynamic>()),
+      repoSource: map['repoSource'] == null ? null : TriggerBuildSourceRepoSource.fromMap((map['repoSource'] as Map).cast<String, dynamic>()),
+      storageSource: map['storageSource'] == null ? null : TriggerBuildSourceStorageSource.fromMap((map['storageSource'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

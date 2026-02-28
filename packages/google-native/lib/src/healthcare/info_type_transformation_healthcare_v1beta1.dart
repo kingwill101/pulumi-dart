@@ -8,19 +8,14 @@ import 'date_shift_config_healthcare_v1beta1.dart';
 class InfoTypeTransformationHealthcareV1beta1 {
   /// Config for character mask.
   final CharacterMaskConfigHealthcareV1beta1? characterMaskConfig;
-
   /// Config for crypto hash.
   final CryptoHashConfigHealthcareV1beta1? cryptoHashConfig;
-
   /// Config for date shift.
   final DateShiftConfigHealthcareV1beta1? dateShiftConfig;
-
   /// `InfoTypes` to apply this transformation to. If this is not specified, this transformation becomes the default transformation, and is used for any `info_type` that is not specified in another transformation.
   final List<String>? infoTypes;
-
   /// Config for text redaction.
   final Map<String, dynamic>? redactConfig;
-
   /// Config for replace with InfoType.
   final Map<String, dynamic>? replaceWithInfoTypeConfig;
 
@@ -41,58 +36,25 @@ class InfoTypeTransformationHealthcareV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final characterMaskConfigValue = characterMaskConfig;
-    if (characterMaskConfigValue != null) {
-      map['characterMaskConfig'] = characterMaskConfigValue.toMap();
-    }
-    final cryptoHashConfigValue = cryptoHashConfig;
-    if (cryptoHashConfigValue != null) {
-      map['cryptoHashConfig'] = cryptoHashConfigValue.toMap();
-    }
-    final dateShiftConfigValue = dateShiftConfig;
-    if (dateShiftConfigValue != null) {
-      map['dateShiftConfig'] = dateShiftConfigValue.toMap();
-    }
-    final infoTypesValue = infoTypes;
-    if (infoTypesValue != null) {
-      map['infoTypes'] = infoTypesValue;
-    }
-    final redactConfigValue = redactConfig;
-    if (redactConfigValue != null) {
-      map['redactConfig'] = redactConfigValue;
-    }
-    final replaceWithInfoTypeConfigValue = replaceWithInfoTypeConfig;
-    if (replaceWithInfoTypeConfigValue != null) {
-      map['replaceWithInfoTypeConfig'] = replaceWithInfoTypeConfigValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'characterMaskConfig': ?characterMaskConfig == null ? null : characterMaskConfig!.toMap(),
+      'cryptoHashConfig': ?cryptoHashConfig == null ? null : cryptoHashConfig!.toMap(),
+      'dateShiftConfig': ?dateShiftConfig == null ? null : dateShiftConfig!.toMap(),
+      'infoTypes': ?infoTypes,
+      'redactConfig': ?redactConfig,
+      'replaceWithInfoTypeConfig': ?replaceWithInfoTypeConfig,
+    };
   }
 
-  factory InfoTypeTransformationHealthcareV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory InfoTypeTransformationHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return InfoTypeTransformationHealthcareV1beta1(
-      characterMaskConfig: map['characterMaskConfig'] == null
-          ? null
-          : CharacterMaskConfigHealthcareV1beta1.fromMap(
-              (map['characterMaskConfig'] as Map).cast<String, dynamic>()),
-      cryptoHashConfig: map['cryptoHashConfig'] == null
-          ? null
-          : CryptoHashConfigHealthcareV1beta1.fromMap(
-              (map['cryptoHashConfig'] as Map).cast<String, dynamic>()),
-      dateShiftConfig: map['dateShiftConfig'] == null
-          ? null
-          : DateShiftConfigHealthcareV1beta1.fromMap(
-              (map['dateShiftConfig'] as Map).cast<String, dynamic>()),
-      infoTypes: map['infoTypes'] == null
-          ? null
-          : (map['infoTypes'] as List).cast<String>(),
-      redactConfig: map['redactConfig'] == null
-          ? null
-          : (map['redactConfig'] as Map).cast<String, dynamic>(),
-      replaceWithInfoTypeConfig: map['replaceWithInfoTypeConfig'] == null
-          ? null
-          : (map['replaceWithInfoTypeConfig'] as Map).cast<String, dynamic>(),
+      characterMaskConfig: map['characterMaskConfig'] == null ? null : CharacterMaskConfigHealthcareV1beta1.fromMap((map['characterMaskConfig'] as Map).cast<String, dynamic>()),
+      cryptoHashConfig: map['cryptoHashConfig'] == null ? null : CryptoHashConfigHealthcareV1beta1.fromMap((map['cryptoHashConfig'] as Map).cast<String, dynamic>()),
+      dateShiftConfig: map['dateShiftConfig'] == null ? null : DateShiftConfigHealthcareV1beta1.fromMap((map['dateShiftConfig'] as Map).cast<String, dynamic>()),
+      infoTypes: map['infoTypes'] == null ? null : (map['infoTypes'] as List).cast<String>(),
+      redactConfig: map['redactConfig'] == null ? null : (map['redactConfig'] as Map).cast<String, dynamic>(),
+      replaceWithInfoTypeConfig: map['replaceWithInfoTypeConfig'] == null ? null : (map['replaceWithInfoTypeConfig'] as Map).cast<String, dynamic>(),
     );
   }
 }
+

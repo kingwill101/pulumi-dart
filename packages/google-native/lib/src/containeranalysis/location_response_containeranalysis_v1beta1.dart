@@ -6,10 +6,8 @@ import 'version_response_containeranalysis_v1beta1.dart';
 class LocationResponseContaineranalysisV1beta1 {
   /// Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
   final String cpeUri;
-
   /// The path from which we gathered that this package/version is installed.
   final String path;
-
   /// Deprecated. The version installed at this location.
   final VersionResponseContaineranalysisV1beta1 version;
 
@@ -24,20 +22,19 @@ class LocationResponseContaineranalysisV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cpeUri'] = cpeUri;
-    map['path'] = path;
-    map['version'] = version.toMap();
-    return map;
+    return <String, dynamic>{
+      'cpeUri': cpeUri,
+      'path': path,
+      'version': version.toMap(),
+    };
   }
 
-  factory LocationResponseContaineranalysisV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory LocationResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return LocationResponseContaineranalysisV1beta1(
       cpeUri: map['cpeUri'] as String,
       path: map['path'] as String,
-      version: VersionResponseContaineranalysisV1beta1.fromMap(
-          (map['version'] as Map).cast<String, dynamic>()),
+      version: VersionResponseContaineranalysisV1beta1.fromMap((map['version'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

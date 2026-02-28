@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// SandboxConfig contains configurations of the sandbox to use for the node.
 class SandboxConfigResponse {
   /// Type of the sandbox to use for the node.
@@ -12,9 +13,9 @@ class SandboxConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory SandboxConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class SandboxConfigResponse {
     );
   }
 }
+

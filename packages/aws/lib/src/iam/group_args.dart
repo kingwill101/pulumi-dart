@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupArgs {
   /// The group's name. The name must consist of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: `=,.@-_.`. Group names are not distinguished by case. For example, you cannot create groups named both "ADMINS" and "admins".
   final pulumi.Input<String>? name;
-
   /// Path in which to create the group.
   final pulumi.Input<String>? path;
 
@@ -19,20 +18,15 @@ class GroupArgs {
   GroupArgs({
     String? name,
     String? path,
-  })  : name = pulumi.Input.asOptionalInput<String>(name),
-        path = pulumi.Input.asOptionalInput<String>(path);
+  }) :
+      name = pulumi.Input.asOptionalInput<String>(name),
+      path = pulumi.Input.asOptionalInput<String>(path);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final pathValue = path;
-    if (pathValue != null) {
-      map['path'] = pathValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+      'path': ?path,
+    };
   }
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +36,4 @@ class GroupArgs {
     );
   }
 }
+

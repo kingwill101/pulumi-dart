@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Settings to manage association of Dataproc Metastore with a lake.
 class GoogleCloudDataplexV1LakeMetastore {
   /// Optional. A relative reference to the Dataproc Metastore (https://cloud.google.com/dataproc-metastore/docs) service associated with the lake: projects/{project_id}/locations/{location_id}/services/{service_id}
@@ -12,12 +13,9 @@ class GoogleCloudDataplexV1LakeMetastore {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final serviceValue = service;
-    if (serviceValue != null) {
-      map['service'] = serviceValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'service': ?service,
+    };
   }
 
   factory GoogleCloudDataplexV1LakeMetastore.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class GoogleCloudDataplexV1LakeMetastore {
     );
   }
 }
+

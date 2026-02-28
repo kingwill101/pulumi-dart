@@ -10,22 +10,16 @@ import 'lifecycle_policy_policy_details.dart';
 class LifecyclePolicyArgs {
   /// Specify the type of default policy to create. valid values are `VOLUME` or `INSTANCE`.
   final pulumi.Input<String>? defaultPolicy;
-
   /// A description for the DLM lifecycle policy.
   final pulumi.Input<String> description;
-
   /// The ARN of an IAM role that is able to be assumed by the DLM service.
   final pulumi.Input<String> executionRoleArn;
-
   /// See the `policy_details` configuration block. Max of 1.
   final pulumi.Input<LifecyclePolicyPolicyDetails> policyDetails;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Whether the lifecycle policy should be enabled or disabled. `ENABLED` or `DISABLED` are valid values. Defaults to `ENABLED`.
   final pulumi.Input<String>? state;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -45,54 +39,37 @@ class LifecyclePolicyArgs {
     String? region,
     String? state,
     Map<String, String>? tags,
-  })  : defaultPolicy = pulumi.Input.asOptionalInput<String>(defaultPolicy),
-        description = pulumi.Input.asInput<String>(description),
-        executionRoleArn = pulumi.Input.asInput<String>(executionRoleArn),
-        policyDetails =
-            pulumi.Input.asInput<LifecyclePolicyPolicyDetails>(policyDetails),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        state = pulumi.Input.asOptionalInput<String>(state),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      defaultPolicy = pulumi.Input.asOptionalInput<String>(defaultPolicy),
+      description = pulumi.Input.asInput<String>(description),
+      executionRoleArn = pulumi.Input.asInput<String>(executionRoleArn),
+      policyDetails = pulumi.Input.asInput<LifecyclePolicyPolicyDetails>(policyDetails),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      state = pulumi.Input.asOptionalInput<String>(state),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final defaultPolicyValue = defaultPolicy;
-    if (defaultPolicyValue != null) {
-      map['defaultPolicy'] = defaultPolicyValue;
-    }
-    map['description'] = description;
-    map['executionRoleArn'] = executionRoleArn;
-    map['policyDetails'] = pulumi.Input.mapInputValue<
-        LifecyclePolicyPolicyDetails,
-        Map<String, dynamic>>(policyDetails, (value) => value.toMap());
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final stateValue = state;
-    if (stateValue != null) {
-      map['state'] = stateValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'defaultPolicy': ?defaultPolicy,
+      'description': description,
+      'executionRoleArn': executionRoleArn,
+      'policyDetails': pulumi.Input.mapInputValue<LifecyclePolicyPolicyDetails, Map<String, dynamic>>(policyDetails, (value) => value.toMap()),
+      'region': ?region,
+      'state': ?state,
+      'tags': ?tags,
+    };
   }
 
   factory LifecyclePolicyArgs.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyArgs(
-      defaultPolicy:
-          map['defaultPolicy'] == null ? null : map['defaultPolicy'] as String,
+      defaultPolicy: map['defaultPolicy'] == null ? null : map['defaultPolicy'] as String,
       description: map['description'] as String,
       executionRoleArn: map['executionRoleArn'] as String,
-      policyDetails: LifecyclePolicyPolicyDetails.fromMap(
-          (map['policyDetails'] as Map).cast<String, dynamic>()),
+      policyDetails: LifecyclePolicyPolicyDetails.fromMap((map['policyDetails'] as Map).cast<String, dynamic>()),
       region: map['region'] == null ? null : map['region'] as String,
       state: map['state'] == null ? null : map['state'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

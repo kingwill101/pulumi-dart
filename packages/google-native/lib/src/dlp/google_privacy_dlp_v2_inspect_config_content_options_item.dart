@@ -6,15 +6,13 @@ enum GooglePrivacyDlpV2InspectConfigContentOptionsItem {
   const GooglePrivacyDlpV2InspectConfigContentOptionsItem(this.value);
   final String value;
 
-  static GooglePrivacyDlpV2InspectConfigContentOptionsItem fromValue(
-      String value) {
-    for (final item
-        in GooglePrivacyDlpV2InspectConfigContentOptionsItem.values) {
+  static GooglePrivacyDlpV2InspectConfigContentOptionsItem fromValue(String value) {
+    for (final item in GooglePrivacyDlpV2InspectConfigContentOptionsItem.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GooglePrivacyDlpV2InspectConfigContentOptionsItem value: $value');
+    throw ArgumentError('Unknown GooglePrivacyDlpV2InspectConfigContentOptionsItem value: $value');
   }
 }
+

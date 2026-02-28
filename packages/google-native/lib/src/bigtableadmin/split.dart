@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// An initial split point for a newly created table.
 class Split {
   /// Row key to use as an initial tablet boundary.
@@ -12,12 +13,9 @@ class Split {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final keyValue = key;
-    if (keyValue != null) {
-      map['key'] = keyValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'key': ?key,
+    };
   }
 
   factory Split.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class Split {
     );
   }
 }
+

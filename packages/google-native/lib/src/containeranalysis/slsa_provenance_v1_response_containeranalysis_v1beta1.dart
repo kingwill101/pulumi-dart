@@ -17,19 +17,17 @@ class SlsaProvenanceV1ResponseContaineranalysisV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['buildDefinition'] = buildDefinition.toMap();
-    map['runDetails'] = runDetails.toMap();
-    return map;
+    return <String, dynamic>{
+      'buildDefinition': buildDefinition.toMap(),
+      'runDetails': runDetails.toMap(),
+    };
   }
 
-  factory SlsaProvenanceV1ResponseContaineranalysisV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory SlsaProvenanceV1ResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return SlsaProvenanceV1ResponseContaineranalysisV1beta1(
-      buildDefinition: BuildDefinitionResponseContaineranalysisV1beta1.fromMap(
-          (map['buildDefinition'] as Map).cast<String, dynamic>()),
-      runDetails: RunDetailsResponseContaineranalysisV1beta1.fromMap(
-          (map['runDetails'] as Map).cast<String, dynamic>()),
+      buildDefinition: BuildDefinitionResponseContaineranalysisV1beta1.fromMap((map['buildDefinition'] as Map).cast<String, dynamic>()),
+      runDetails: RunDetailsResponseContaineranalysisV1beta1.fromMap((map['runDetails'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

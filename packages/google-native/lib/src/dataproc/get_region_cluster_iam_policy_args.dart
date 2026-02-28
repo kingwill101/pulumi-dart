@@ -19,19 +19,17 @@ class GetRegionClusterIamPolicyArgs {
     required String clusterId,
     String? project,
     required String regionId,
-  })  : clusterId = pulumi.Input.asInput<String>(clusterId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        regionId = pulumi.Input.asInput<String>(regionId);
+  }) :
+      clusterId = pulumi.Input.asInput<String>(clusterId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      regionId = pulumi.Input.asInput<String>(regionId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clusterId'] = clusterId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['regionId'] = regionId;
-    return map;
+    return <String, dynamic>{
+      'clusterId': clusterId,
+      'project': ?project,
+      'regionId': regionId,
+    };
   }
 
   factory GetRegionClusterIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetRegionClusterIamPolicyArgs {
     );
   }
 }
+

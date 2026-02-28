@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetListenerRuleTransformHostHeaderRewriteConfigRewrite {
   /// Regular expression to match in the input string.
   final String regex;
-
   /// Replacement string to use when rewriting the matched input.
   final String replace;
 
@@ -16,17 +16,17 @@ class GetListenerRuleTransformHostHeaderRewriteConfigRewrite {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['regex'] = regex;
-    map['replace'] = replace;
-    return map;
+    return <String, dynamic>{
+      'regex': regex,
+      'replace': replace,
+    };
   }
 
-  factory GetListenerRuleTransformHostHeaderRewriteConfigRewrite.fromMap(
-      Map<String, dynamic> map) {
+  factory GetListenerRuleTransformHostHeaderRewriteConfigRewrite.fromMap(Map<String, dynamic> map) {
     return GetListenerRuleTransformHostHeaderRewriteConfigRewrite(
       regex: map['regex'] as String,
       replace: map['replace'] as String,
     );
   }
 }
+

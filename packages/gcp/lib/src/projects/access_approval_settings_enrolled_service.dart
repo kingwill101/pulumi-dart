@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AccessApprovalSettingsEnrolledService {
   /// The product for which Access Approval will be enrolled. Allowed values are listed (case-sensitive):
   /// all
@@ -13,7 +14,6 @@ class AccessApprovalSettingsEnrolledService {
   /// pubsub.googleapis.com
   /// storage.googleapis.com
   final String cloudProduct;
-
   /// The enrollment level of the service.
   /// Default value is `BLOCK_ALL`.
   /// Possible values are: `BLOCK_ALL`.
@@ -28,22 +28,17 @@ class AccessApprovalSettingsEnrolledService {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cloudProduct'] = cloudProduct;
-    final enrollmentLevelValue = enrollmentLevel;
-    if (enrollmentLevelValue != null) {
-      map['enrollmentLevel'] = enrollmentLevelValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cloudProduct': cloudProduct,
+      'enrollmentLevel': ?enrollmentLevel,
+    };
   }
 
-  factory AccessApprovalSettingsEnrolledService.fromMap(
-      Map<String, dynamic> map) {
+  factory AccessApprovalSettingsEnrolledService.fromMap(Map<String, dynamic> map) {
     return AccessApprovalSettingsEnrolledService(
       cloudProduct: map['cloudProduct'] as String,
-      enrollmentLevel: map['enrollmentLevel'] == null
-          ? null
-          : map['enrollmentLevel'] as String,
+      enrollmentLevel: map['enrollmentLevel'] == null ? null : map['enrollmentLevel'] as String,
     );
   }
 }
+

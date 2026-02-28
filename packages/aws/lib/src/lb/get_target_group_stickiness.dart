@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTargetGroupStickiness {
   final int cookieDuration;
   final String cookieName;
@@ -19,12 +20,12 @@ class GetTargetGroupStickiness {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cookieDuration'] = cookieDuration;
-    map['cookieName'] = cookieName;
-    map['enabled'] = enabled;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'cookieDuration': cookieDuration,
+      'cookieName': cookieName,
+      'enabled': enabled,
+      'type': type,
+    };
   }
 
   factory GetTargetGroupStickiness.fromMap(Map<String, dynamic> map) {
@@ -36,3 +37,4 @@ class GetTargetGroupStickiness {
     );
   }
 }
+

@@ -7,7 +7,6 @@ import 'security_posture_config_gkehub_v1beta.dart';
 class DefaultClusterConfigGkehubV1beta {
   /// Optional. Enable/Disable binary authorization features for the cluster.
   final BinaryAuthorizationConfigGkehubV1beta? binaryAuthorizationConfig;
-
   /// Enable/Disable Security Posture features for the cluster.
   final SecurityPostureConfigGkehubV1beta? securityPostureConfig;
 
@@ -20,29 +19,17 @@ class DefaultClusterConfigGkehubV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final binaryAuthorizationConfigValue = binaryAuthorizationConfig;
-    if (binaryAuthorizationConfigValue != null) {
-      map['binaryAuthorizationConfig'] = binaryAuthorizationConfigValue.toMap();
-    }
-    final securityPostureConfigValue = securityPostureConfig;
-    if (securityPostureConfigValue != null) {
-      map['securityPostureConfig'] = securityPostureConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'binaryAuthorizationConfig': ?binaryAuthorizationConfig == null ? null : binaryAuthorizationConfig!.toMap(),
+      'securityPostureConfig': ?securityPostureConfig == null ? null : securityPostureConfig!.toMap(),
+    };
   }
 
   factory DefaultClusterConfigGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return DefaultClusterConfigGkehubV1beta(
-      binaryAuthorizationConfig: map['binaryAuthorizationConfig'] == null
-          ? null
-          : BinaryAuthorizationConfigGkehubV1beta.fromMap(
-              (map['binaryAuthorizationConfig'] as Map)
-                  .cast<String, dynamic>()),
-      securityPostureConfig: map['securityPostureConfig'] == null
-          ? null
-          : SecurityPostureConfigGkehubV1beta.fromMap(
-              (map['securityPostureConfig'] as Map).cast<String, dynamic>()),
+      binaryAuthorizationConfig: map['binaryAuthorizationConfig'] == null ? null : BinaryAuthorizationConfigGkehubV1beta.fromMap((map['binaryAuthorizationConfig'] as Map).cast<String, dynamic>()),
+      securityPostureConfig: map['securityPostureConfig'] == null ? null : SecurityPostureConfigGkehubV1beta.fromMap((map['securityPostureConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

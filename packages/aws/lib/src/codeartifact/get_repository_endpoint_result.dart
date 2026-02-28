@@ -1,16 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRepositoryEndpoint.
 class GetRepositoryEndpointResult {
   final String domain;
   final String domainOwner;
   final String format;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
   final String repository;
-
   /// URL of the returned endpoint.
   final String repositoryEndpoint;
 
@@ -33,15 +32,15 @@ class GetRepositoryEndpointResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['domain'] = domain;
-    map['domainOwner'] = domainOwner;
-    map['format'] = format;
-    map['id'] = id;
-    map['region'] = region;
-    map['repository'] = repository;
-    map['repositoryEndpoint'] = repositoryEndpoint;
-    return map;
+    return <String, dynamic>{
+      'domain': domain,
+      'domainOwner': domainOwner,
+      'format': format,
+      'id': id,
+      'region': region,
+      'repository': repository,
+      'repositoryEndpoint': repositoryEndpoint,
+    };
   }
 
   factory GetRepositoryEndpointResult.fromMap(Map<String, dynamic> map) {
@@ -56,3 +55,4 @@ class GetRepositoryEndpointResult {
     );
   }
 }
+

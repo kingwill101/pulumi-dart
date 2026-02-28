@@ -9,15 +9,12 @@ class AppVersionSnapshotToolDataStoreToolEngineSource {
   /// If empty, the search applies to all DataStores associated with the
   /// Engine.
   /// Structure is documented below.
-  final List<AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSource>?
-      dataStoreSources;
-
+  final List<AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSource>? dataStoreSources;
   /// (Output)
   /// Full resource name of the Engine.
   /// Format:
   /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
   final String? engine;
-
   /// (Output)
   /// Filter specification for the DataStore.
   /// See:
@@ -35,38 +32,19 @@ class AppVersionSnapshotToolDataStoreToolEngineSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dataStoreSourcesValue = dataStoreSources;
-    if (dataStoreSourcesValue != null) {
-      map['dataStoreSources'] = pulumi.Input.encodeList<
-              AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSource,
-              Map<String, dynamic>>(
-          dataStoreSourcesValue, (value) => value.toMap());
-    }
-    final engineValue = engine;
-    if (engineValue != null) {
-      map['engine'] = engineValue;
-    }
-    final filterValue = filter;
-    if (filterValue != null) {
-      map['filter'] = filterValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'dataStoreSources': ?dataStoreSources == null ? null : pulumi.Input.encodeList<AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSource, Map<String, dynamic>>(dataStoreSources!, (value) => value.toMap()),
+      'engine': ?engine,
+      'filter': ?filter,
+    };
   }
 
-  factory AppVersionSnapshotToolDataStoreToolEngineSource.fromMap(
-      Map<String, dynamic> map) {
+  factory AppVersionSnapshotToolDataStoreToolEngineSource.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolDataStoreToolEngineSource(
-      dataStoreSources: map['dataStoreSources'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSource>(
-              map['dataStoreSources'],
-              (value) =>
-                  AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSource
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      dataStoreSources: map['dataStoreSources'] == null ? null : pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSource>(map['dataStoreSources'], (value) => AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSource.fromMap((value as Map).cast<String, dynamic>())),
       engine: map['engine'] == null ? null : map['engine'] as String,
       filter: map['filter'] == null ? null : map['filter'] as String,
     );
   }
 }
+

@@ -6,11 +6,8 @@ import 'allocation_specific_skuallocation_reserved_instance_properties_compute_v
 class AllocationSpecificSKUReservationComputeV1 {
   /// Specifies the number of resources that are allocated.
   final String? count;
-
   /// The instance properties for the reservation.
-  final AllocationSpecificSKUAllocationReservedInstancePropertiesComputeV1?
-      instanceProperties;
-
+  final AllocationSpecificSKUAllocationReservedInstancePropertiesComputeV1? instanceProperties;
   /// Specifies the instance template to create the reservation. If you use this field, you must exclude the instanceProperties field. This field is optional, and it can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate
   final String? sourceInstanceTemplate;
 
@@ -25,34 +22,19 @@ class AllocationSpecificSKUReservationComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final countValue = count;
-    if (countValue != null) {
-      map['count'] = countValue;
-    }
-    final instancePropertiesValue = instanceProperties;
-    if (instancePropertiesValue != null) {
-      map['instanceProperties'] = instancePropertiesValue.toMap();
-    }
-    final sourceInstanceTemplateValue = sourceInstanceTemplate;
-    if (sourceInstanceTemplateValue != null) {
-      map['sourceInstanceTemplate'] = sourceInstanceTemplateValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'count': ?count,
+      'instanceProperties': ?instanceProperties == null ? null : instanceProperties!.toMap(),
+      'sourceInstanceTemplate': ?sourceInstanceTemplate,
+    };
   }
 
-  factory AllocationSpecificSKUReservationComputeV1.fromMap(
-      Map<String, dynamic> map) {
+  factory AllocationSpecificSKUReservationComputeV1.fromMap(Map<String, dynamic> map) {
     return AllocationSpecificSKUReservationComputeV1(
       count: map['count'] == null ? null : map['count'] as String,
-      instanceProperties: map['instanceProperties'] == null
-          ? null
-          : AllocationSpecificSKUAllocationReservedInstancePropertiesComputeV1
-              .fromMap(
-                  (map['instanceProperties'] as Map).cast<String, dynamic>()),
-      sourceInstanceTemplate: map['sourceInstanceTemplate'] == null
-          ? null
-          : map['sourceInstanceTemplate'] as String,
+      instanceProperties: map['instanceProperties'] == null ? null : AllocationSpecificSKUAllocationReservedInstancePropertiesComputeV1.fromMap((map['instanceProperties'] as Map).cast<String, dynamic>()),
+      sourceInstanceTemplate: map['sourceInstanceTemplate'] == null ? null : map['sourceInstanceTemplate'] as String,
     );
   }
 }
+

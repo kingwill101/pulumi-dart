@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The Google Cloud Storage location for the input content.
 class GcsSourceTranslateV3beta1 {
   /// Source data URI. For example, `gs://my_bucket/my_object`.
@@ -12,9 +13,9 @@ class GcsSourceTranslateV3beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['inputUri'] = inputUri;
-    return map;
+    return <String, dynamic>{
+      'inputUri': inputUri,
+    };
   }
 
   factory GcsSourceTranslateV3beta1.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class GcsSourceTranslateV3beta1 {
     );
   }
 }
+

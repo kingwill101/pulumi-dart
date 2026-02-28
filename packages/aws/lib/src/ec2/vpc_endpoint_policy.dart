@@ -283,10 +283,8 @@ import 'vpc_endpoint_policy_args.dart';
 class VpcEndpointPolicy extends pulumi.CustomResource {
   /// A policy to attach to the endpoint that controls access to the service. Defaults to full access. All `Gateway` and some `Interface` endpoints support policies - see the [relevant AWS documentation](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints-access.html) for more details.
   late final pulumi.Output<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The VPC Endpoint ID.
   late final pulumi.Output<String> vpcEndpointId;
 

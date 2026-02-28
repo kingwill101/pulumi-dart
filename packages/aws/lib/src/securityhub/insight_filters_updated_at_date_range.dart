@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InsightFiltersUpdatedAtDateRange {
   /// A date range unit for the date filter. Valid values: `DAYS`.
   final String unit;
-
   /// A date range value for the date filter, provided as an Integer.
   final int value;
 
@@ -16,10 +16,10 @@ class InsightFiltersUpdatedAtDateRange {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['unit'] = unit;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'unit': unit,
+      'value': value,
+    };
   }
 
   factory InsightFiltersUpdatedAtDateRange.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class InsightFiltersUpdatedAtDateRange {
     );
   }
 }
+

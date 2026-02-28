@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class IngestionDestinationProcessingConfigurationAuditLog {
   /// The format in which the audit logs need to be formatted. Valid values: `json`, `parquet`.
   final String format;
-
   /// The event schema in which the audit logs need to be formatted. Valid values: `ocsf`, `raw`.
   final String schema;
 
@@ -16,17 +16,17 @@ class IngestionDestinationProcessingConfigurationAuditLog {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['format'] = format;
-    map['schema'] = schema;
-    return map;
+    return <String, dynamic>{
+      'format': format,
+      'schema': schema,
+    };
   }
 
-  factory IngestionDestinationProcessingConfigurationAuditLog.fromMap(
-      Map<String, dynamic> map) {
+  factory IngestionDestinationProcessingConfigurationAuditLog.fromMap(Map<String, dynamic> map) {
     return IngestionDestinationProcessingConfigurationAuditLog(
       format: map['format'] as String,
       schema: map['schema'] as String,
     );
   }
 }
+

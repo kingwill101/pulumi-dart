@@ -7,19 +7,14 @@ import 'secret_response.dart';
 class ConfigVariableResponse {
   /// Value is a bool.
   final bool boolValue;
-
   /// Value is a Encryption Key.
   final EncryptionKeyResponse encryptionKeyValue;
-
   /// Value is an integer
   final String intValue;
-
   /// Key of the config variable.
   final String key;
-
   /// Value is a secret.
   final SecretResponse secretValue;
-
   /// Value is a string.
   final String stringValue;
 
@@ -40,26 +35,25 @@ class ConfigVariableResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['boolValue'] = boolValue;
-    map['encryptionKeyValue'] = encryptionKeyValue.toMap();
-    map['intValue'] = intValue;
-    map['key'] = key;
-    map['secretValue'] = secretValue.toMap();
-    map['stringValue'] = stringValue;
-    return map;
+    return <String, dynamic>{
+      'boolValue': boolValue,
+      'encryptionKeyValue': encryptionKeyValue.toMap(),
+      'intValue': intValue,
+      'key': key,
+      'secretValue': secretValue.toMap(),
+      'stringValue': stringValue,
+    };
   }
 
   factory ConfigVariableResponse.fromMap(Map<String, dynamic> map) {
     return ConfigVariableResponse(
       boolValue: map['boolValue'] as bool,
-      encryptionKeyValue: EncryptionKeyResponse.fromMap(
-          (map['encryptionKeyValue'] as Map).cast<String, dynamic>()),
+      encryptionKeyValue: EncryptionKeyResponse.fromMap((map['encryptionKeyValue'] as Map).cast<String, dynamic>()),
       intValue: map['intValue'] as String,
       key: map['key'] as String,
-      secretValue: SecretResponse.fromMap(
-          (map['secretValue'] as Map).cast<String, dynamic>()),
+      secretValue: SecretResponse.fromMap((map['secretValue'] as Map).cast<String, dynamic>()),
       stringValue: map['stringValue'] as String,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRoutersRouterBgpAdvertisedIpRange {
   final String description;
   final String range;
@@ -13,17 +14,17 @@ class GetRoutersRouterBgpAdvertisedIpRange {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['description'] = description;
-    map['range'] = range;
-    return map;
+    return <String, dynamic>{
+      'description': description,
+      'range': range,
+    };
   }
 
-  factory GetRoutersRouterBgpAdvertisedIpRange.fromMap(
-      Map<String, dynamic> map) {
+  factory GetRoutersRouterBgpAdvertisedIpRange.fromMap(Map<String, dynamic> map) {
     return GetRoutersRouterBgpAdvertisedIpRange(
       description: map['description'] as String,
       range: map['range'] as String,
     );
   }
 }
+

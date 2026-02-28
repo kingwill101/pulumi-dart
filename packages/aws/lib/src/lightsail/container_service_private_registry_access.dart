@@ -4,8 +4,7 @@ import 'container_service_private_registry_access_ecr_image_puller_role.dart';
 
 class ContainerServicePrivateRegistryAccess {
   /// Configuration to access private container image repositories, such as Amazon Elastic Container Registry (Amazon ECR) private repositories. See below.
-  final ContainerServicePrivateRegistryAccessEcrImagePullerRole?
-      ecrImagePullerRole;
+  final ContainerServicePrivateRegistryAccessEcrImagePullerRole? ecrImagePullerRole;
 
   /// Creates a new [ContainerServicePrivateRegistryAccess].
   /// [ecrImagePullerRole] Configuration to access private container image repositories, such as Amazon Elastic Container Registry (Amazon ECR) private repositories. See below.
@@ -14,21 +13,15 @@ class ContainerServicePrivateRegistryAccess {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final ecrImagePullerRoleValue = ecrImagePullerRole;
-    if (ecrImagePullerRoleValue != null) {
-      map['ecrImagePullerRole'] = ecrImagePullerRoleValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'ecrImagePullerRole': ?ecrImagePullerRole == null ? null : ecrImagePullerRole!.toMap(),
+    };
   }
 
-  factory ContainerServicePrivateRegistryAccess.fromMap(
-      Map<String, dynamic> map) {
+  factory ContainerServicePrivateRegistryAccess.fromMap(Map<String, dynamic> map) {
     return ContainerServicePrivateRegistryAccess(
-      ecrImagePullerRole: map['ecrImagePullerRole'] == null
-          ? null
-          : ContainerServicePrivateRegistryAccessEcrImagePullerRole.fromMap(
-              (map['ecrImagePullerRole'] as Map).cast<String, dynamic>()),
+      ecrImagePullerRole: map['ecrImagePullerRole'] == null ? null : ContainerServicePrivateRegistryAccessEcrImagePullerRole.fromMap((map['ecrImagePullerRole'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

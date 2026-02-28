@@ -5,8 +5,7 @@ import 'authorization_logging_options_permission_type_gameservices_v1beta.dart';
 /// Authorization-related information used by Cloud Audit Logging.
 class AuthorizationLoggingOptionsGameservicesV1beta {
   /// The type of the permission that was checked.
-  final AuthorizationLoggingOptionsPermissionTypeGameservicesV1beta?
-      permissionType;
+  final AuthorizationLoggingOptionsPermissionTypeGameservicesV1beta? permissionType;
 
   /// Creates a new [AuthorizationLoggingOptionsGameservicesV1beta].
   /// [permissionType] The type of the permission that was checked.
@@ -15,21 +14,15 @@ class AuthorizationLoggingOptionsGameservicesV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final permissionTypeValue = permissionType;
-    if (permissionTypeValue != null) {
-      map['permissionType'] = permissionTypeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'permissionType': ?permissionType == null ? null : permissionType!.value,
+    };
   }
 
-  factory AuthorizationLoggingOptionsGameservicesV1beta.fromMap(
-      Map<String, dynamic> map) {
+  factory AuthorizationLoggingOptionsGameservicesV1beta.fromMap(Map<String, dynamic> map) {
     return AuthorizationLoggingOptionsGameservicesV1beta(
-      permissionType: map['permissionType'] == null
-          ? null
-          : AuthorizationLoggingOptionsPermissionTypeGameservicesV1beta
-              .fromValue(map['permissionType'] as String),
+      permissionType: map['permissionType'] == null ? null : AuthorizationLoggingOptionsPermissionTypeGameservicesV1beta.fromValue(map['permissionType'] as String),
     );
   }
 }
+

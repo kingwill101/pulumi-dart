@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Contains details of the listing publisher.
 class PublisherResponseAnalyticshubV1beta1 {
   /// Optional. Name of the listing publisher.
   final String name;
-
   /// Optional. Email or URL of the listing publisher. Max Length: 1000 bytes.
   final String primaryContact;
 
@@ -17,17 +17,17 @@ class PublisherResponseAnalyticshubV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['primaryContact'] = primaryContact;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'primaryContact': primaryContact,
+    };
   }
 
-  factory PublisherResponseAnalyticshubV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory PublisherResponseAnalyticshubV1beta1.fromMap(Map<String, dynamic> map) {
     return PublisherResponseAnalyticshubV1beta1(
       name: map['name'] as String,
       primaryContact: map['primaryContact'] as String,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for a Npm remote repository.
 class NpmRepositoryResponse {
   /// One of the publicly available Npm repositories supported by Artifact Registry.
@@ -12,9 +13,9 @@ class NpmRepositoryResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['publicRepository'] = publicRepository;
-    return map;
+    return <String, dynamic>{
+      'publicRepository': publicRepository,
+    };
   }
 
   factory NpmRepositoryResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class NpmRepositoryResponse {
     );
   }
 }
+

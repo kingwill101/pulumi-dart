@@ -8,63 +8,44 @@ import 'get_network_oci_dns_forwarding_config.dart';
 class GetNetworkResult {
   /// Amazon Resource Name (ARN) of the odb network resource.
   final String arn;
-
   /// The availability zone where the ODB network is located.
   final String availabilityZone;
-
   /// The AZ ID of the AZ where the ODB network is located.
   final String availabilityZoneId;
-
   /// The CIDR range of the backup subnet for the ODB network.
   final String backupSubnetCidr;
-
   /// The CIDR notation for the network resource.
   final String clientSubnetCidr;
-
   /// The date and time when the ODB network was created.
   final String createdAt;
-
   /// The name of the custom domain that the network is located.
   final String customDomainName;
-
   /// The default DNS prefix for the network resource.
   final String defaultDnsPrefix;
-
   /// Display name for the network resource.
   final String displayName;
-
   /// Unique identifier of the odb network resource.
   final String id;
-
   /// The managed services configuration for the ODB network.
   final List<GetNetworkManagedService> managedServices;
   final List<GetNetworkOciDnsForwardingConfig> ociDnsForwardingConfigs;
-
   /// The unique identifier of the OCI network anchor for the ODB network.
   final String ociNetworkAnchorId;
-
   /// The URL of the OCI network anchor for the ODB network.
   final String ociNetworkAnchorUrl;
-
   /// The name of the OCI resource anchor for the ODB network.
   final String ociResourceAnchorName;
-
   /// The unique identifier  Oracle Cloud ID (OCID) of the OCI VCN for the ODB network.
   final String ociVcnId;
-
   /// The URL of the OCI VCN for the ODB network.
   final String ociVcnUrl;
-
   /// The list of CIDR ranges from the peered VPC that are allowed access to the ODB network. Please refer odb network peering documentation.
   final List<String> peeredCidrs;
-
   /// The amount of progress made on the current operation on the ODB network, expressed as a percentage.
   final double percentProgress;
   final String region;
-
   /// The status of the network resource.
   final String status;
-
   /// Additional information about the current status of the ODB network.
   final String statusReason;
   final Map<String, String> tags;
@@ -120,35 +101,31 @@ class GetNetworkResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['availabilityZone'] = availabilityZone;
-    map['availabilityZoneId'] = availabilityZoneId;
-    map['backupSubnetCidr'] = backupSubnetCidr;
-    map['clientSubnetCidr'] = clientSubnetCidr;
-    map['createdAt'] = createdAt;
-    map['customDomainName'] = customDomainName;
-    map['defaultDnsPrefix'] = defaultDnsPrefix;
-    map['displayName'] = displayName;
-    map['id'] = id;
-    map['managedServices'] =
-        pulumi.Input.encodeList<GetNetworkManagedService, Map<String, dynamic>>(
-            managedServices, (value) => value.toMap());
-    map['ociDnsForwardingConfigs'] = pulumi.Input.encodeList<
-            GetNetworkOciDnsForwardingConfig, Map<String, dynamic>>(
-        ociDnsForwardingConfigs, (value) => value.toMap());
-    map['ociNetworkAnchorId'] = ociNetworkAnchorId;
-    map['ociNetworkAnchorUrl'] = ociNetworkAnchorUrl;
-    map['ociResourceAnchorName'] = ociResourceAnchorName;
-    map['ociVcnId'] = ociVcnId;
-    map['ociVcnUrl'] = ociVcnUrl;
-    map['peeredCidrs'] = peeredCidrs;
-    map['percentProgress'] = percentProgress;
-    map['region'] = region;
-    map['status'] = status;
-    map['statusReason'] = statusReason;
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'availabilityZone': availabilityZone,
+      'availabilityZoneId': availabilityZoneId,
+      'backupSubnetCidr': backupSubnetCidr,
+      'clientSubnetCidr': clientSubnetCidr,
+      'createdAt': createdAt,
+      'customDomainName': customDomainName,
+      'defaultDnsPrefix': defaultDnsPrefix,
+      'displayName': displayName,
+      'id': id,
+      'managedServices': pulumi.Input.encodeList<GetNetworkManagedService, Map<String, dynamic>>(managedServices, (value) => value.toMap()),
+      'ociDnsForwardingConfigs': pulumi.Input.encodeList<GetNetworkOciDnsForwardingConfig, Map<String, dynamic>>(ociDnsForwardingConfigs, (value) => value.toMap()),
+      'ociNetworkAnchorId': ociNetworkAnchorId,
+      'ociNetworkAnchorUrl': ociNetworkAnchorUrl,
+      'ociResourceAnchorName': ociResourceAnchorName,
+      'ociVcnId': ociVcnId,
+      'ociVcnUrl': ociVcnUrl,
+      'peeredCidrs': peeredCidrs,
+      'percentProgress': percentProgress,
+      'region': region,
+      'status': status,
+      'statusReason': statusReason,
+      'tags': tags,
+    };
   }
 
   factory GetNetworkResult.fromMap(Map<String, dynamic> map) {
@@ -163,15 +140,8 @@ class GetNetworkResult {
       defaultDnsPrefix: map['defaultDnsPrefix'] as String,
       displayName: map['displayName'] as String,
       id: map['id'] as String,
-      managedServices: pulumi.Input.decodeList<GetNetworkManagedService>(
-          map['managedServices'],
-          (value) => GetNetworkManagedService.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      ociDnsForwardingConfigs:
-          pulumi.Input.decodeList<GetNetworkOciDnsForwardingConfig>(
-              map['ociDnsForwardingConfigs'],
-              (value) => GetNetworkOciDnsForwardingConfig.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      managedServices: pulumi.Input.decodeList<GetNetworkManagedService>(map['managedServices'], (value) => GetNetworkManagedService.fromMap((value as Map).cast<String, dynamic>())),
+      ociDnsForwardingConfigs: pulumi.Input.decodeList<GetNetworkOciDnsForwardingConfig>(map['ociDnsForwardingConfigs'], (value) => GetNetworkOciDnsForwardingConfig.fromMap((value as Map).cast<String, dynamic>())),
       ociNetworkAnchorId: map['ociNetworkAnchorId'] as String,
       ociNetworkAnchorUrl: map['ociNetworkAnchorUrl'] as String,
       ociResourceAnchorName: map['ociResourceAnchorName'] as String,
@@ -186,3 +156,4 @@ class GetNetworkResult {
     );
   }
 }
+

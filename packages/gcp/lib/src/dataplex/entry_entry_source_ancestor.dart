@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EntryEntrySourceAncestor {
   /// The name of the ancestor resource.
   final String? name;
-
   /// The type of the ancestor resource.
   final String? type;
 
@@ -16,16 +16,10 @@ class EntryEntrySourceAncestor {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+      'type': ?type,
+    };
   }
 
   factory EntryEntrySourceAncestor.fromMap(Map<String, dynamic> map) {
@@ -35,3 +29,4 @@ class EntryEntrySourceAncestor {
     );
   }
 }
+

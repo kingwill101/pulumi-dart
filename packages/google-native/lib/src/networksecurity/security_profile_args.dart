@@ -11,21 +11,16 @@ import 'threat_prevention_profile.dart';
 class SecurityProfileArgs {
   /// Optional. An optional description of the profile. Max length 512 characters.
   final pulumi.Input<String>? description;
-
   /// Optional. Labels as key value pairs.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
-
   /// Immutable. Identifier. Name of the SecurityProfile resource. It matches pattern `projects|organizations/*/locations/{location}/securityProfiles/{security_profile}`.
   final pulumi.Input<String>? name;
   final pulumi.Input<String> organizationId;
-
   /// Required. Short name of the SecurityProfile resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "security_profile1".
   final pulumi.Input<String> securityProfileId;
-
   /// The threat prevention configuration for the SecurityProfile.
   final pulumi.Input<ThreatPreventionProfile>? threatPreventionProfile;
-
   /// Immutable. The single ProfileType that the SecurityProfile resource configures.
   final pulumi.Input<SecurityProfileType>? type;
 
@@ -47,70 +42,40 @@ class SecurityProfileArgs {
     required String securityProfileId,
     ThreatPreventionProfile? threatPreventionProfile,
     SecurityProfileType? type,
-  })  : description = pulumi.Input.asOptionalInput<String>(description),
-        labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-        location = pulumi.Input.asOptionalInput<String>(location),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        organizationId = pulumi.Input.asInput<String>(organizationId),
-        securityProfileId = pulumi.Input.asInput<String>(securityProfileId),
-        threatPreventionProfile =
-            pulumi.Input.asOptionalInput<ThreatPreventionProfile>(
-                threatPreventionProfile),
-        type = pulumi.Input.asOptionalInput<SecurityProfileType>(type);
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      organizationId = pulumi.Input.asInput<String>(organizationId),
+      securityProfileId = pulumi.Input.asInput<String>(securityProfileId),
+      threatPreventionProfile = pulumi.Input.asOptionalInput<ThreatPreventionProfile>(threatPreventionProfile),
+      type = pulumi.Input.asOptionalInput<SecurityProfileType>(type);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final labelsValue = labels;
-    if (labelsValue != null) {
-      map['labels'] = labelsValue;
-    }
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    map['organizationId'] = organizationId;
-    map['securityProfileId'] = securityProfileId;
-    final threatPreventionProfileValue = threatPreventionProfile;
-    if (threatPreventionProfileValue != null) {
-      map['threatPreventionProfile'] = pulumi.Input.mapOptionalInputValue<
-              ThreatPreventionProfile, Map<String, dynamic>>(
-          threatPreventionProfileValue, (value) => value.toMap());
-    }
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] =
-          pulumi.Input.mapOptionalInputValue<SecurityProfileType, String>(
-              typeValue, (value) => value.value);
-    }
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'labels': ?labels,
+      'location': ?location,
+      'name': ?name,
+      'organizationId': organizationId,
+      'securityProfileId': securityProfileId,
+      'threatPreventionProfile': ?pulumi.Input.mapOptionalInputValue<ThreatPreventionProfile, Map<String, dynamic>>(threatPreventionProfile, (value) => value.toMap()),
+      'type': ?pulumi.Input.mapOptionalInputValue<SecurityProfileType, String>(type, (value) => value.value),
+    };
   }
 
   factory SecurityProfileArgs.fromMap(Map<String, dynamic> map) {
     return SecurityProfileArgs(
-      description:
-          map['description'] == null ? null : map['description'] as String,
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      description: map['description'] == null ? null : map['description'] as String,
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       location: map['location'] == null ? null : map['location'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       organizationId: map['organizationId'] as String,
       securityProfileId: map['securityProfileId'] as String,
-      threatPreventionProfile: map['threatPreventionProfile'] == null
-          ? null
-          : ThreatPreventionProfile.fromMap(
-              (map['threatPreventionProfile'] as Map).cast<String, dynamic>()),
-      type: map['type'] == null
-          ? null
-          : SecurityProfileType.fromValue(map['type'] as String),
+      threatPreventionProfile: map['threatPreventionProfile'] == null ? null : ThreatPreventionProfile.fromMap((map['threatPreventionProfile'] as Map).cast<String, dynamic>()),
+      type: map['type'] == null ? null : SecurityProfileType.fromValue(map['type'] as String),
     );
   }
 }
+

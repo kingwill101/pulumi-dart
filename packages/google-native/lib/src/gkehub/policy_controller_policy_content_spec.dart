@@ -6,7 +6,6 @@ import 'policy_controller_template_library_config.dart';
 class PolicyControllerPolicyContentSpec {
   /// map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
   final Map<String, String>? bundles;
-
   /// Configures the installation of the Template Library.
   final PolicyControllerTemplateLibraryConfig? templateLibrary;
 
@@ -19,27 +18,17 @@ class PolicyControllerPolicyContentSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final bundlesValue = bundles;
-    if (bundlesValue != null) {
-      map['bundles'] = bundlesValue;
-    }
-    final templateLibraryValue = templateLibrary;
-    if (templateLibraryValue != null) {
-      map['templateLibrary'] = templateLibraryValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'bundles': ?bundles,
+      'templateLibrary': ?templateLibrary == null ? null : templateLibrary!.toMap(),
+    };
   }
 
   factory PolicyControllerPolicyContentSpec.fromMap(Map<String, dynamic> map) {
     return PolicyControllerPolicyContentSpec(
-      bundles: map['bundles'] == null
-          ? null
-          : (map['bundles'] as Map).cast<String, String>(),
-      templateLibrary: map['templateLibrary'] == null
-          ? null
-          : PolicyControllerTemplateLibraryConfig.fromMap(
-              (map['templateLibrary'] as Map).cast<String, dynamic>()),
+      bundles: map['bundles'] == null ? null : (map['bundles'] as Map).cast<String, String>(),
+      templateLibrary: map['templateLibrary'] == null ? null : PolicyControllerTemplateLibraryConfig.fromMap((map['templateLibrary'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ServicePerimeterIngressPolicyIngressFromSource {
   /// An `AccessLevel` resource name that allow resources within the
   /// `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
@@ -10,7 +11,6 @@ class ServicePerimeterIngressPolicyIngressFromSource {
   /// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
   /// If * is specified, then all IngressSources will be allowed.
   final String? accessLevel;
-
   /// A Google Cloud resource that is allowed to ingress the perimeter.
   /// Requests from these resources will be allowed to access perimeter data.
   /// Currently only projects and VPCs are allowed.
@@ -31,24 +31,17 @@ class ServicePerimeterIngressPolicyIngressFromSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final accessLevelValue = accessLevel;
-    if (accessLevelValue != null) {
-      map['accessLevel'] = accessLevelValue;
-    }
-    final resourceValue = resource;
-    if (resourceValue != null) {
-      map['resource'] = resourceValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'accessLevel': ?accessLevel,
+      'resource': ?resource,
+    };
   }
 
-  factory ServicePerimeterIngressPolicyIngressFromSource.fromMap(
-      Map<String, dynamic> map) {
+  factory ServicePerimeterIngressPolicyIngressFromSource.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterIngressPolicyIngressFromSource(
-      accessLevel:
-          map['accessLevel'] == null ? null : map['accessLevel'] as String,
+      accessLevel: map['accessLevel'] == null ? null : map['accessLevel'] as String,
       resource: map['resource'] == null ? null : map['resource'] as String,
     );
   }
 }
+

@@ -14,19 +14,15 @@ class HeaderOverride {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final headerValue = header;
-    if (headerValue != null) {
-      map['header'] = headerValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'header': ?header == null ? null : header!.toMap(),
+    };
   }
 
   factory HeaderOverride.fromMap(Map<String, dynamic> map) {
     return HeaderOverride(
-      header: map['header'] == null
-          ? null
-          : Header.fromMap((map['header'] as Map).cast<String, dynamic>()),
+      header: map['header'] == null ? null : Header.fromMap((map['header'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

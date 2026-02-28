@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WorkspaceConfigurationLimitsPerLabelSetLimits {
   /// Maximum number of active time series that can be ingested for metrics matching the label set.
   final int maxSeries;
@@ -11,15 +12,15 @@ class WorkspaceConfigurationLimitsPerLabelSetLimits {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maxSeries'] = maxSeries;
-    return map;
+    return <String, dynamic>{
+      'maxSeries': maxSeries,
+    };
   }
 
-  factory WorkspaceConfigurationLimitsPerLabelSetLimits.fromMap(
-      Map<String, dynamic> map) {
+  factory WorkspaceConfigurationLimitsPerLabelSetLimits.fromMap(Map<String, dynamic> map) {
     return WorkspaceConfigurationLimitsPerLabelSetLimits(
       maxSeries: map['maxSeries'] as int,
     );
   }
 }
+

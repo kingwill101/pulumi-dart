@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ObjectLambdaAccessPointPolicyArgs {
   /// The AWS account ID for the account that owns the Object Lambda Access Point. Defaults to automatically determined account ID of the AWS provider.
   final pulumi.Input<String>? accountId;
-
   /// The name of the Object Lambda Access Point.
   final pulumi.Input<String>? name;
-
   /// The Object Lambda Access Point resource policy document.
   final pulumi.Input<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -29,27 +26,19 @@ class ObjectLambdaAccessPointPolicyArgs {
     String? name,
     required String policy,
     String? region,
-  })  : accountId = pulumi.Input.asOptionalInput<String>(accountId),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        policy = pulumi.Input.asInput<String>(policy),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      accountId = pulumi.Input.asOptionalInput<String>(accountId),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      policy = pulumi.Input.asInput<String>(policy),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final accountIdValue = accountId;
-    if (accountIdValue != null) {
-      map['accountId'] = accountIdValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    map['policy'] = policy;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'accountId': ?accountId,
+      'name': ?name,
+      'policy': policy,
+      'region': ?region,
+    };
   }
 
   factory ObjectLambdaAccessPointPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -61,3 +50,4 @@ class ObjectLambdaAccessPointPolicyArgs {
     );
   }
 }
+

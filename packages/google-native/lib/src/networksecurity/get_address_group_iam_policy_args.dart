@@ -22,36 +22,28 @@ class GetAddressGroupIamPolicyArgs {
     required String location,
     int? optionsRequestedPolicyVersion,
     String? project,
-  })  : addressGroupId = pulumi.Input.asInput<String>(addressGroupId),
-        location = pulumi.Input.asInput<String>(location),
-        optionsRequestedPolicyVersion =
-            pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      addressGroupId = pulumi.Input.asInput<String>(addressGroupId),
+      location = pulumi.Input.asInput<String>(location),
+      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['addressGroupId'] = addressGroupId;
-    map['location'] = location;
-    final optionsRequestedPolicyVersionValue = optionsRequestedPolicyVersion;
-    if (optionsRequestedPolicyVersionValue != null) {
-      map['optionsRequestedPolicyVersion'] = optionsRequestedPolicyVersionValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'addressGroupId': addressGroupId,
+      'location': location,
+      'optionsRequestedPolicyVersion': ?optionsRequestedPolicyVersion,
+      'project': ?project,
+    };
   }
 
   factory GetAddressGroupIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAddressGroupIamPolicyArgs(
       addressGroupId: map['addressGroupId'] as String,
       location: map['location'] as String,
-      optionsRequestedPolicyVersion:
-          map['optionsRequestedPolicyVersion'] == null
-              ? null
-              : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

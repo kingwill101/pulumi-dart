@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInsightsDatasetConfigLink {
   /// Dataset name for the linked DatasetConfig.
   final String dataset;
-
   /// State of the linked DatasetConfig.
   final bool linked;
 
@@ -16,10 +16,10 @@ class GetInsightsDatasetConfigLink {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dataset'] = dataset;
-    map['linked'] = linked;
-    return map;
+    return <String, dynamic>{
+      'dataset': dataset,
+      'linked': linked,
+    };
   }
 
   factory GetInsightsDatasetConfigLink.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetInsightsDatasetConfigLink {
     );
   }
 }
+

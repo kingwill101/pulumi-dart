@@ -20,3 +20,4 @@ enum NetworkPeeringPeerNetworkType {
     throw ArgumentError('Unknown NetworkPeeringPeerNetworkType value: $value');
   }
 }
+

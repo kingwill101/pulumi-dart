@@ -14,15 +14,15 @@ class SourceHierarchyDatasetsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['datasetTemplate'] = datasetTemplate.toMap();
-    return map;
+    return <String, dynamic>{
+      'datasetTemplate': datasetTemplate.toMap(),
+    };
   }
 
   factory SourceHierarchyDatasetsResponse.fromMap(Map<String, dynamic> map) {
     return SourceHierarchyDatasetsResponse(
-      datasetTemplate: DatasetTemplateResponse.fromMap(
-          (map['datasetTemplate'] as Map).cast<String, dynamic>()),
+      datasetTemplate: DatasetTemplateResponse.fromMap((map['datasetTemplate'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

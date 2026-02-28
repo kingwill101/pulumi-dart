@@ -12,7 +12,6 @@ class GetCloudExadataInfrastructureResult {
   final Map<String, String> effectiveLabels;
   final String entitlementId;
   final String gcpOracleZone;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final Map<String, String> labels;
@@ -55,34 +54,27 @@ class GetCloudExadataInfrastructureResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cloudExadataInfrastructureId'] = cloudExadataInfrastructureId;
-    map['createTime'] = createTime;
-    map['deletionProtection'] = deletionProtection;
-    map['displayName'] = displayName;
-    map['effectiveLabels'] = effectiveLabels;
-    map['entitlementId'] = entitlementId;
-    map['gcpOracleZone'] = gcpOracleZone;
-    map['id'] = id;
-    map['labels'] = labels;
-    map['location'] = location;
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['properties'] = pulumi.Input.encodeList<
-        GetCloudExadataInfrastructureProperty,
-        Map<String, dynamic>>(properties, (value) => value.toMap());
-    map['pulumiLabels'] = pulumiLabels;
-    return map;
+    return <String, dynamic>{
+      'cloudExadataInfrastructureId': cloudExadataInfrastructureId,
+      'createTime': createTime,
+      'deletionProtection': deletionProtection,
+      'displayName': displayName,
+      'effectiveLabels': effectiveLabels,
+      'entitlementId': entitlementId,
+      'gcpOracleZone': gcpOracleZone,
+      'id': id,
+      'labels': labels,
+      'location': location,
+      'name': name,
+      'project': ?project,
+      'properties': pulumi.Input.encodeList<GetCloudExadataInfrastructureProperty, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'pulumiLabels': pulumiLabels,
+    };
   }
 
-  factory GetCloudExadataInfrastructureResult.fromMap(
-      Map<String, dynamic> map) {
+  factory GetCloudExadataInfrastructureResult.fromMap(Map<String, dynamic> map) {
     return GetCloudExadataInfrastructureResult(
-      cloudExadataInfrastructureId:
-          map['cloudExadataInfrastructureId'] as String,
+      cloudExadataInfrastructureId: map['cloudExadataInfrastructureId'] as String,
       createTime: map['createTime'] as String,
       deletionProtection: map['deletionProtection'] as bool,
       displayName: map['displayName'] as String,
@@ -94,12 +86,9 @@ class GetCloudExadataInfrastructureResult {
       location: map['location'] as String,
       name: map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      properties:
-          pulumi.Input.decodeList<GetCloudExadataInfrastructureProperty>(
-              map['properties'],
-              (value) => GetCloudExadataInfrastructureProperty.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      properties: pulumi.Input.decodeList<GetCloudExadataInfrastructureProperty>(map['properties'], (value) => GetCloudExadataInfrastructureProperty.fromMap((value as Map).cast<String, dynamic>())),
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
     );
   }
 }
+

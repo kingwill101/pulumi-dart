@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RevisionArgs {
   /// An optional comment about the revision.
   final pulumi.Input<String>? comment;
-
   /// The dataset id.
   final pulumi.Input<String> dataSetId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -29,27 +26,19 @@ class RevisionArgs {
     required String dataSetId,
     String? region,
     Map<String, String>? tags,
-  })  : comment = pulumi.Input.asOptionalInput<String>(comment),
-        dataSetId = pulumi.Input.asInput<String>(dataSetId),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      comment = pulumi.Input.asOptionalInput<String>(comment),
+      dataSetId = pulumi.Input.asInput<String>(dataSetId),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final commentValue = comment;
-    if (commentValue != null) {
-      map['comment'] = commentValue;
-    }
-    map['dataSetId'] = dataSetId;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'comment': ?comment,
+      'dataSetId': dataSetId,
+      'region': ?region,
+      'tags': ?tags,
+    };
   }
 
   factory RevisionArgs.fromMap(Map<String, dynamic> map) {
@@ -57,9 +46,8 @@ class RevisionArgs {
       comment: map['comment'] == null ? null : map['comment'] as String,
       dataSetId: map['dataSetId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

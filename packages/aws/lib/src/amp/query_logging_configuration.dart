@@ -204,13 +204,10 @@ import 'query_logging_configuration_timeouts.dart';
 /// ```
 class QueryLoggingConfiguration extends pulumi.CustomResource {
   /// Configuration block for the logging destinations. See `destinations`.
-  late final pulumi.Output<List<QueryLoggingConfigurationDestination>>
-      destinations;
-
+  late final pulumi.Output<List<QueryLoggingConfigurationDestination>> destinations;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<QueryLoggingConfigurationTimeouts?> timeouts;
-
   /// The ID of the AMP workspace for which to configure query logging.
   ///
   /// The following arguments are optional:
@@ -230,12 +227,9 @@ class QueryLoggingConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.destinations =
-        registerOutput<List<QueryLoggingConfigurationDestination>>(
-            'destinations');
+    this.destinations = registerOutput<List<QueryLoggingConfigurationDestination>>('destinations');
     this.region = registerOutput<String>('region');
-    this.timeouts =
-        registerOutput<QueryLoggingConfigurationTimeouts?>('timeouts');
+    this.timeouts = registerOutput<QueryLoggingConfigurationTimeouts?>('timeouts');
     this.workspaceId = registerOutput<String>('workspaceId');
   }
 }

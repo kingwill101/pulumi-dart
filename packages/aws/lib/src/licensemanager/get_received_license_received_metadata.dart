@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetReceivedLicenseReceivedMetadata {
   /// A list of allowed operations.
   final List<String> allowedOperations;
-
   /// Received status.
   final String receivedStatus;
-
   /// Received status reason.
   final String receivedStatusReason;
 
@@ -21,11 +20,11 @@ class GetReceivedLicenseReceivedMetadata {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allowedOperations'] = allowedOperations;
-    map['receivedStatus'] = receivedStatus;
-    map['receivedStatusReason'] = receivedStatusReason;
-    return map;
+    return <String, dynamic>{
+      'allowedOperations': allowedOperations,
+      'receivedStatus': receivedStatus,
+      'receivedStatusReason': receivedStatusReason,
+    };
   }
 
   factory GetReceivedLicenseReceivedMetadata.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class GetReceivedLicenseReceivedMetadata {
     );
   }
 }
+

@@ -16,3 +16,4 @@ enum LocationPolicyTargetShape {
     throw ArgumentError('Unknown LocationPolicyTargetShape value: $value');
   }
 }
+

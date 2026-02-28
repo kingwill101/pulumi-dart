@@ -24,24 +24,21 @@ class InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResp
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['errorInfo'] = errorInfo.toMap();
-    map['help'] = help.toMap();
-    map['localizedMessage'] = localizedMessage.toMap();
-    map['quotaInfo'] = quotaInfo.toMap();
-    return map;
+    return <String, dynamic>{
+      'errorInfo': errorInfo.toMap(),
+      'help': help.toMap(),
+      'localizedMessage': localizedMessage.toMap(),
+      'quotaInfo': quotaInfo.toMap(),
+    };
   }
 
-  factory InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponse.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponse(
-      errorInfo: ErrorInfoResponse.fromMap(
-          (map['errorInfo'] as Map).cast<String, dynamic>()),
+      errorInfo: ErrorInfoResponse.fromMap((map['errorInfo'] as Map).cast<String, dynamic>()),
       help: HelpResponse.fromMap((map['help'] as Map).cast<String, dynamic>()),
-      localizedMessage: LocalizedMessageResponse.fromMap(
-          (map['localizedMessage'] as Map).cast<String, dynamic>()),
-      quotaInfo: QuotaExceededInfoResponse.fromMap(
-          (map['quotaInfo'] as Map).cast<String, dynamic>()),
+      localizedMessage: LocalizedMessageResponse.fromMap((map['localizedMessage'] as Map).cast<String, dynamic>()),
+      quotaInfo: QuotaExceededInfoResponse.fromMap((map['quotaInfo'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

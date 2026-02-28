@@ -11,7 +11,6 @@ class PullTimeUpdateExclusionArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> principalArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -21,17 +20,15 @@ class PullTimeUpdateExclusionArgs {
   PullTimeUpdateExclusionArgs({
     required String principalArn,
     String? region,
-  })  : principalArn = pulumi.Input.asInput<String>(principalArn),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      principalArn = pulumi.Input.asInput<String>(principalArn),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['principalArn'] = principalArn;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'principalArn': principalArn,
+      'region': ?region,
+    };
   }
 
   factory PullTimeUpdateExclusionArgs.fromMap(Map<String, dynamic> map) {
@@ -41,3 +38,4 @@ class PullTimeUpdateExclusionArgs {
     );
   }
 }
+

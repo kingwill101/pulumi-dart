@@ -16,3 +16,4 @@ enum AttributeDefinitionCategory {
     throw ArgumentError('Unknown AttributeDefinitionCategory value: $value');
   }
 }
+

@@ -564,10 +564,8 @@ class DicomStore extends pulumi.CustomResource {
   /// Identifies the dataset addressed by this request. Must be in the format
   /// 'projects/{project}/locations/{location}/datasets/{dataset}'
   late final pulumi.Output<String> dataset;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// User-supplied key-value pairs used to organize DICOM stores.
   /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
   /// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -580,22 +578,17 @@ class DicomStore extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The resource name for the DicomStore.
   /// ** Changing this property may recreate the Dicom store (removing all data) **
   late final pulumi.Output<String> name;
-
   /// A nested object resource.
   /// Structure is documented below.
   late final pulumi.Output<DicomStoreNotificationConfig?> notificationConfig;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The fully qualified name of this dataset
   late final pulumi.Output<String> selfLink;
-
   /// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
   /// streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
   /// Structure is documented below.
@@ -616,15 +609,12 @@ class DicomStore extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.dataset = registerOutput<String>('dataset');
-    this.effectiveLabels =
-        registerOutput<Map<String, String>>('effectiveLabels');
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
-    this.notificationConfig =
-        registerOutput<DicomStoreNotificationConfig?>('notificationConfig');
+    this.notificationConfig = registerOutput<DicomStoreNotificationConfig?>('notificationConfig');
     this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.selfLink = registerOutput<String>('selfLink');
-    this.streamConfigs =
-        registerOutput<List<DicomStoreStreamConfig>?>('streamConfigs');
+    this.streamConfigs = registerOutput<List<DicomStoreStreamConfig>?>('streamConfigs');
   }
 }

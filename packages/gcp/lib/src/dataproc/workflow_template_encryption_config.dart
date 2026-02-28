@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WorkflowTemplateEncryptionConfig {
   /// Optional. The Cloud KMS key name to use for encryption.
   final String? kmsKey;
@@ -11,12 +12,9 @@ class WorkflowTemplateEncryptionConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final kmsKeyValue = kmsKey;
-    if (kmsKeyValue != null) {
-      map['kmsKey'] = kmsKeyValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'kmsKey': ?kmsKey,
+    };
   }
 
   factory WorkflowTemplateEncryptionConfig.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class WorkflowTemplateEncryptionConfig {
     );
   }
 }
+

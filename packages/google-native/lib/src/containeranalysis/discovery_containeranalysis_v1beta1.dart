@@ -14,15 +14,15 @@ class DiscoveryContaineranalysisV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['analysisKind'] = analysisKind.value;
-    return map;
+    return <String, dynamic>{
+      'analysisKind': analysisKind.value,
+    };
   }
 
   factory DiscoveryContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return DiscoveryContaineranalysisV1beta1(
-      analysisKind: DiscoveryAnalysisKindContaineranalysisV1beta1.fromValue(
-          map['analysisKind'] as String),
+      analysisKind: DiscoveryAnalysisKindContaineranalysisV1beta1.fromValue(map['analysisKind'] as String),
     );
   }
 }
+

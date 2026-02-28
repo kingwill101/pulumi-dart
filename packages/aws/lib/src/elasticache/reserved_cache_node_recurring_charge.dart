@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ReservedCacheNodeRecurringCharge {
   final double recurringChargeAmount;
   final String recurringChargeFrequency;
@@ -13,10 +14,10 @@ class ReservedCacheNodeRecurringCharge {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['recurringChargeAmount'] = recurringChargeAmount;
-    map['recurringChargeFrequency'] = recurringChargeFrequency;
-    return map;
+    return <String, dynamic>{
+      'recurringChargeAmount': recurringChargeAmount,
+      'recurringChargeFrequency': recurringChargeFrequency,
+    };
   }
 
   factory ReservedCacheNodeRecurringCharge.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class ReservedCacheNodeRecurringCharge {
     );
   }
 }
+

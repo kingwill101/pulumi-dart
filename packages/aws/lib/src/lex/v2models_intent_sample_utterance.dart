@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class V2modelsIntentSampleUtterance {
   /// Sample utterance that Amazon Lex uses to build its machine-learning model to recognize intents.
   final String utterance;
@@ -11,9 +12,9 @@ class V2modelsIntentSampleUtterance {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['utterance'] = utterance;
-    return map;
+    return <String, dynamic>{
+      'utterance': utterance,
+    };
   }
 
   factory V2modelsIntentSampleUtterance.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class V2modelsIntentSampleUtterance {
     );
   }
 }
+

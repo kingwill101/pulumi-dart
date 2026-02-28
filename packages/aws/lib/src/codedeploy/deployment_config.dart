@@ -565,27 +565,18 @@ import 'deployment_config_zonal_config.dart';
 class DeploymentConfig extends pulumi.CustomResource {
   /// The ARN of the deployment config.
   late final pulumi.Output<String> arn;
-
   /// The compute platform can be `Server`, `Lambda`, or `ECS`. Default is `Server`.
   late final pulumi.Output<String?> computePlatform;
-
   /// The AWS Assigned deployment config id
   late final pulumi.Output<String> deploymentConfigId;
-
   /// The name of the deployment config.
   late final pulumi.Output<String> deploymentConfigName;
-
   /// A minimum_healthy_hosts block. Required for `Server` compute platform. Minimum Healthy Hosts are documented below.
-  late final pulumi.Output<DeploymentConfigMinimumHealthyHosts?>
-      minimumHealthyHosts;
-
+  late final pulumi.Output<DeploymentConfigMinimumHealthyHosts?> minimumHealthyHosts;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A traffic_routing_config block. Traffic Routing Config is documented below.
-  late final pulumi.Output<DeploymentConfigTrafficRoutingConfig?>
-      trafficRoutingConfig;
-
+  late final pulumi.Output<DeploymentConfigTrafficRoutingConfig?> trafficRoutingConfig;
   /// A zonal_config block. Zonal Config is documented below.
   late final pulumi.Output<DeploymentConfigZonalConfig?> zonalConfig;
 
@@ -607,14 +598,9 @@ class DeploymentConfig extends pulumi.CustomResource {
     this.computePlatform = registerOutput<String?>('computePlatform');
     this.deploymentConfigId = registerOutput<String>('deploymentConfigId');
     this.deploymentConfigName = registerOutput<String>('deploymentConfigName');
-    this.minimumHealthyHosts =
-        registerOutput<DeploymentConfigMinimumHealthyHosts?>(
-            'minimumHealthyHosts');
+    this.minimumHealthyHosts = registerOutput<DeploymentConfigMinimumHealthyHosts?>('minimumHealthyHosts');
     this.region = registerOutput<String>('region');
-    this.trafficRoutingConfig =
-        registerOutput<DeploymentConfigTrafficRoutingConfig?>(
-            'trafficRoutingConfig');
-    this.zonalConfig =
-        registerOutput<DeploymentConfigZonalConfig?>('zonalConfig');
+    this.trafficRoutingConfig = registerOutput<DeploymentConfigTrafficRoutingConfig?>('trafficRoutingConfig');
+    this.zonalConfig = registerOutput<DeploymentConfigZonalConfig?>('zonalConfig');
   }
 }

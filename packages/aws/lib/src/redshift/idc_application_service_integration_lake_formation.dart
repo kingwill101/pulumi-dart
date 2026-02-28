@@ -4,8 +4,7 @@ import 'idc_application_service_integration_lake_formation_lake_formation_query.
 
 class IdcApplicationServiceIntegrationLakeFormation {
   /// Lake formation scope.
-  final IdcApplicationServiceIntegrationLakeFormationLakeFormationQuery?
-      lakeFormationQuery;
+  final IdcApplicationServiceIntegrationLakeFormationLakeFormationQuery? lakeFormationQuery;
 
   /// Creates a new [IdcApplicationServiceIntegrationLakeFormation].
   /// [lakeFormationQuery] Lake formation scope.
@@ -14,22 +13,15 @@ class IdcApplicationServiceIntegrationLakeFormation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final lakeFormationQueryValue = lakeFormationQuery;
-    if (lakeFormationQueryValue != null) {
-      map['lakeFormationQuery'] = lakeFormationQueryValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'lakeFormationQuery': ?lakeFormationQuery == null ? null : lakeFormationQuery!.toMap(),
+    };
   }
 
-  factory IdcApplicationServiceIntegrationLakeFormation.fromMap(
-      Map<String, dynamic> map) {
+  factory IdcApplicationServiceIntegrationLakeFormation.fromMap(Map<String, dynamic> map) {
     return IdcApplicationServiceIntegrationLakeFormation(
-      lakeFormationQuery: map['lakeFormationQuery'] == null
-          ? null
-          : IdcApplicationServiceIntegrationLakeFormationLakeFormationQuery
-              .fromMap(
-                  (map['lakeFormationQuery'] as Map).cast<String, dynamic>()),
+      lakeFormationQuery: map['lakeFormationQuery'] == null ? null : IdcApplicationServiceIntegrationLakeFormationLakeFormationQuery.fromMap((map['lakeFormationQuery'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

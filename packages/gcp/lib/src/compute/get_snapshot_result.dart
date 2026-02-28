@@ -13,7 +13,6 @@ class GetSnapshotResult {
   final Map<String, String> effectiveLabels;
   final String? filter;
   final bool guestFlush;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String labelFingerprint;
@@ -89,49 +88,33 @@ class GetSnapshotResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['chainName'] = chainName;
-    map['creationTimestamp'] = creationTimestamp;
-    map['description'] = description;
-    map['diskSizeGb'] = diskSizeGb;
-    map['effectiveLabels'] = effectiveLabels;
-    final filterValue = filter;
-    if (filterValue != null) {
-      map['filter'] = filterValue;
-    }
-    map['guestFlush'] = guestFlush;
-    map['id'] = id;
-    map['labelFingerprint'] = labelFingerprint;
-    map['labels'] = labels;
-    map['licenses'] = licenses;
-    final mostRecentValue = mostRecent;
-    if (mostRecentValue != null) {
-      map['mostRecent'] = mostRecentValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['pulumiLabels'] = pulumiLabels;
-    map['selfLink'] = selfLink;
-    map['snapshotEncryptionKeys'] = pulumi.Input.encodeList<
-        GetSnapshotSnapshotEncryptionKey,
-        Map<String, dynamic>>(snapshotEncryptionKeys, (value) => value.toMap());
-    map['snapshotId'] = snapshotId;
-    map['snapshotType'] = snapshotType;
-    map['sourceDisk'] = sourceDisk;
-    map['sourceDiskEncryptionKeys'] = pulumi.Input.encodeList<
-            GetSnapshotSourceDiskEncryptionKey, Map<String, dynamic>>(
-        sourceDiskEncryptionKeys, (value) => value.toMap());
-    map['sourceInstantSnapshot'] = sourceInstantSnapshot;
-    map['storageBytes'] = storageBytes;
-    map['storageLocations'] = storageLocations;
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'chainName': chainName,
+      'creationTimestamp': creationTimestamp,
+      'description': description,
+      'diskSizeGb': diskSizeGb,
+      'effectiveLabels': effectiveLabels,
+      'filter': ?filter,
+      'guestFlush': guestFlush,
+      'id': id,
+      'labelFingerprint': labelFingerprint,
+      'labels': labels,
+      'licenses': licenses,
+      'mostRecent': ?mostRecent,
+      'name': ?name,
+      'project': ?project,
+      'pulumiLabels': pulumiLabels,
+      'selfLink': selfLink,
+      'snapshotEncryptionKeys': pulumi.Input.encodeList<GetSnapshotSnapshotEncryptionKey, Map<String, dynamic>>(snapshotEncryptionKeys, (value) => value.toMap()),
+      'snapshotId': snapshotId,
+      'snapshotType': snapshotType,
+      'sourceDisk': sourceDisk,
+      'sourceDiskEncryptionKeys': pulumi.Input.encodeList<GetSnapshotSourceDiskEncryptionKey, Map<String, dynamic>>(sourceDiskEncryptionKeys, (value) => value.toMap()),
+      'sourceInstantSnapshot': sourceInstantSnapshot,
+      'storageBytes': storageBytes,
+      'storageLocations': storageLocations,
+      'zone': zone,
+    };
   }
 
   factory GetSnapshotResult.fromMap(Map<String, dynamic> map) {
@@ -152,19 +135,11 @@ class GetSnapshotResult {
       project: map['project'] == null ? null : map['project'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       selfLink: map['selfLink'] as String,
-      snapshotEncryptionKeys:
-          pulumi.Input.decodeList<GetSnapshotSnapshotEncryptionKey>(
-              map['snapshotEncryptionKeys'],
-              (value) => GetSnapshotSnapshotEncryptionKey.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      snapshotEncryptionKeys: pulumi.Input.decodeList<GetSnapshotSnapshotEncryptionKey>(map['snapshotEncryptionKeys'], (value) => GetSnapshotSnapshotEncryptionKey.fromMap((value as Map).cast<String, dynamic>())),
       snapshotId: map['snapshotId'] as int,
       snapshotType: map['snapshotType'] as String,
       sourceDisk: map['sourceDisk'] as String,
-      sourceDiskEncryptionKeys:
-          pulumi.Input.decodeList<GetSnapshotSourceDiskEncryptionKey>(
-              map['sourceDiskEncryptionKeys'],
-              (value) => GetSnapshotSourceDiskEncryptionKey.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      sourceDiskEncryptionKeys: pulumi.Input.decodeList<GetSnapshotSourceDiskEncryptionKey>(map['sourceDiskEncryptionKeys'], (value) => GetSnapshotSourceDiskEncryptionKey.fromMap((value as Map).cast<String, dynamic>())),
       sourceInstantSnapshot: map['sourceInstantSnapshot'] as String,
       storageBytes: map['storageBytes'] as int,
       storageLocations: (map['storageLocations'] as List).cast<String>(),
@@ -172,3 +147,4 @@ class GetSnapshotResult {
     );
   }
 }
+

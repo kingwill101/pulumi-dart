@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class S3LocationS3Config {
   /// ARN of the IAM Role used to connect to the S3 Bucket.
   final String bucketAccessRoleArn;
@@ -11,9 +12,9 @@ class S3LocationS3Config {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucketAccessRoleArn'] = bucketAccessRoleArn;
-    return map;
+    return <String, dynamic>{
+      'bucketAccessRoleArn': bucketAccessRoleArn,
+    };
   }
 
   factory S3LocationS3Config.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class S3LocationS3Config {
     );
   }
 }
+

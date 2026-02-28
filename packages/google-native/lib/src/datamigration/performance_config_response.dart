@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Performance configuration definition.
 class PerformanceConfigResponse {
   /// Initial dump parallelism level.
@@ -12,9 +13,9 @@ class PerformanceConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dumpParallelLevel'] = dumpParallelLevel;
-    return map;
+    return <String, dynamic>{
+      'dumpParallelLevel': dumpParallelLevel,
+    };
   }
 
   factory PerformanceConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class PerformanceConfigResponse {
     );
   }
 }
+

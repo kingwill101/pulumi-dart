@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetVpcIpamPoolCidrsIpamPoolCidr {
   /// A network CIDR.
   final String cidr;
-
   /// The provisioning state of that CIDR.
   final String state;
 
@@ -16,10 +16,10 @@ class GetVpcIpamPoolCidrsIpamPoolCidr {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cidr'] = cidr;
-    map['state'] = state;
-    return map;
+    return <String, dynamic>{
+      'cidr': cidr,
+      'state': state,
+    };
   }
 
   factory GetVpcIpamPoolCidrsIpamPoolCidr.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetVpcIpamPoolCidrsIpamPoolCidr {
     );
   }
 }
+

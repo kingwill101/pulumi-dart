@@ -14,7 +14,6 @@ class InTotoStatementResponse {
   final SlsaProvenanceResponse slsaProvenance;
   final SlsaProvenanceZeroTwoResponse slsaProvenanceZeroTwo;
   final List<SubjectResponse> subject;
-
   /// Always `https://in-toto.io/Statement/v0.1`.
   final String type;
 
@@ -35,32 +34,25 @@ class InTotoStatementResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['predicateType'] = predicateType;
-    map['provenance'] = provenance.toMap();
-    map['slsaProvenance'] = slsaProvenance.toMap();
-    map['slsaProvenanceZeroTwo'] = slsaProvenanceZeroTwo.toMap();
-    map['subject'] =
-        pulumi.Input.encodeList<SubjectResponse, Map<String, dynamic>>(
-            subject, (value) => value.toMap());
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'predicateType': predicateType,
+      'provenance': provenance.toMap(),
+      'slsaProvenance': slsaProvenance.toMap(),
+      'slsaProvenanceZeroTwo': slsaProvenanceZeroTwo.toMap(),
+      'subject': pulumi.Input.encodeList<SubjectResponse, Map<String, dynamic>>(subject, (value) => value.toMap()),
+      'type': type,
+    };
   }
 
   factory InTotoStatementResponse.fromMap(Map<String, dynamic> map) {
     return InTotoStatementResponse(
       predicateType: map['predicateType'] as String,
-      provenance: InTotoProvenanceResponse.fromMap(
-          (map['provenance'] as Map).cast<String, dynamic>()),
-      slsaProvenance: SlsaProvenanceResponse.fromMap(
-          (map['slsaProvenance'] as Map).cast<String, dynamic>()),
-      slsaProvenanceZeroTwo: SlsaProvenanceZeroTwoResponse.fromMap(
-          (map['slsaProvenanceZeroTwo'] as Map).cast<String, dynamic>()),
-      subject: pulumi.Input.decodeList<SubjectResponse>(
-          map['subject'],
-          (value) =>
-              SubjectResponse.fromMap((value as Map).cast<String, dynamic>())),
+      provenance: InTotoProvenanceResponse.fromMap((map['provenance'] as Map).cast<String, dynamic>()),
+      slsaProvenance: SlsaProvenanceResponse.fromMap((map['slsaProvenance'] as Map).cast<String, dynamic>()),
+      slsaProvenanceZeroTwo: SlsaProvenanceZeroTwoResponse.fromMap((map['slsaProvenanceZeroTwo'] as Map).cast<String, dynamic>()),
+      subject: pulumi.Input.decodeList<SubjectResponse>(map['subject'], (value) => SubjectResponse.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }
 }
+

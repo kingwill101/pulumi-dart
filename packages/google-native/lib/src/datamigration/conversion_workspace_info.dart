@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A conversion workspace's version.
 class ConversionWorkspaceInfo {
   /// The commit ID of the conversion workspace.
   final String? commitId;
-
   /// The resource name (URI) of the conversion workspace.
   final String? name;
 
@@ -17,16 +17,10 @@ class ConversionWorkspaceInfo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final commitIdValue = commitId;
-    if (commitIdValue != null) {
-      map['commitId'] = commitIdValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'commitId': ?commitId,
+      'name': ?name,
+    };
   }
 
   factory ConversionWorkspaceInfo.fromMap(Map<String, dynamic> map) {
@@ -36,3 +30,4 @@ class ConversionWorkspaceInfo {
     );
   }
 }
+

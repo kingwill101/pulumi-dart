@@ -15,23 +15,15 @@ class MigrationJobDumpFlags {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dumpFlagsValue = dumpFlags;
-    if (dumpFlagsValue != null) {
-      map['dumpFlags'] = pulumi.Input.encodeList<MigrationJobDumpFlagsDumpFlag,
-          Map<String, dynamic>>(dumpFlagsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'dumpFlags': ?dumpFlags == null ? null : pulumi.Input.encodeList<MigrationJobDumpFlagsDumpFlag, Map<String, dynamic>>(dumpFlags!, (value) => value.toMap()),
+    };
   }
 
   factory MigrationJobDumpFlags.fromMap(Map<String, dynamic> map) {
     return MigrationJobDumpFlags(
-      dumpFlags: map['dumpFlags'] == null
-          ? null
-          : pulumi.Input.decodeList<MigrationJobDumpFlagsDumpFlag>(
-              map['dumpFlags'],
-              (value) => MigrationJobDumpFlagsDumpFlag.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      dumpFlags: map['dumpFlags'] == null ? null : pulumi.Input.decodeList<MigrationJobDumpFlagsDumpFlag>(map['dumpFlags'], (value) => MigrationJobDumpFlagsDumpFlag.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

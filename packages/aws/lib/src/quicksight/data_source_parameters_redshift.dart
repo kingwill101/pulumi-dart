@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataSourceParametersRedshift {
   /// The ID of the cluster to which to connect.
   final String? clusterId;
-
   /// The database to which to connect.
   final String database;
-
   /// The host to which to connect.
   final String? host;
-
   /// The port to which to connect.
   final int? port;
 
@@ -26,21 +24,12 @@ class DataSourceParametersRedshift {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final clusterIdValue = clusterId;
-    if (clusterIdValue != null) {
-      map['clusterId'] = clusterIdValue;
-    }
-    map['database'] = database;
-    final hostValue = host;
-    if (hostValue != null) {
-      map['host'] = hostValue;
-    }
-    final portValue = port;
-    if (portValue != null) {
-      map['port'] = portValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'clusterId': ?clusterId,
+      'database': database,
+      'host': ?host,
+      'port': ?port,
+    };
   }
 
   factory DataSourceParametersRedshift.fromMap(Map<String, dynamic> map) {
@@ -52,3 +41,4 @@ class DataSourceParametersRedshift {
     );
   }
 }
+

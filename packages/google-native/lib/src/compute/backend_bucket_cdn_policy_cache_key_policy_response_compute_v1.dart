@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Message containing what to include in the cache key for a request for Cloud CDN.
 class BackendBucketCdnPolicyCacheKeyPolicyResponseComputeV1 {
   /// Allows HTTP request headers (by name) to be used in the cache key.
   final List<String> includeHttpHeaders;
-
   /// Names of query string parameters to include in cache keys. Default parameters are always included. '&' and '=' will be percent encoded and not treated as delimiters.
   final List<String> queryStringWhitelist;
 
@@ -17,18 +17,17 @@ class BackendBucketCdnPolicyCacheKeyPolicyResponseComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['includeHttpHeaders'] = includeHttpHeaders;
-    map['queryStringWhitelist'] = queryStringWhitelist;
-    return map;
+    return <String, dynamic>{
+      'includeHttpHeaders': includeHttpHeaders,
+      'queryStringWhitelist': queryStringWhitelist,
+    };
   }
 
-  factory BackendBucketCdnPolicyCacheKeyPolicyResponseComputeV1.fromMap(
-      Map<String, dynamic> map) {
+  factory BackendBucketCdnPolicyCacheKeyPolicyResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return BackendBucketCdnPolicyCacheKeyPolicyResponseComputeV1(
       includeHttpHeaders: (map['includeHttpHeaders'] as List).cast<String>(),
-      queryStringWhitelist:
-          (map['queryStringWhitelist'] as List).cast<String>(),
+      queryStringWhitelist: (map['queryStringWhitelist'] as List).cast<String>(),
     );
   }
 }
+

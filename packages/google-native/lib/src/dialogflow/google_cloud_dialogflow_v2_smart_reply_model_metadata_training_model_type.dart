@@ -4,20 +4,16 @@ enum GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType {
   smartReplyDualEncoderModel("SMART_REPLY_DUAL_ENCODER_MODEL"),
   smartReplyBertModel("SMART_REPLY_BERT_MODEL");
 
-  const GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType(
-      this.value);
+  const GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType(this.value);
   final String value;
 
-  static GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType
-      fromValue(String value) {
-    for (final item
-        in GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType
-            .values) {
+  static GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType fromValue(String value) {
+    for (final item in GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType value: $value');
+    throw ArgumentError('Unknown GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType value: $value');
   }
 }
+

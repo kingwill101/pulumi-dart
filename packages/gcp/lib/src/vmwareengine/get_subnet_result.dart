@@ -9,7 +9,6 @@ class GetSubnetResult {
   final List<GetSubnetDhcpAddressRange> dhcpAddressRanges;
   final String gatewayId;
   final String gatewayIp;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String ipCidrRange;
@@ -55,33 +54,28 @@ class GetSubnetResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['dhcpAddressRanges'] = pulumi.Input.encodeList<
-        GetSubnetDhcpAddressRange,
-        Map<String, dynamic>>(dhcpAddressRanges, (value) => value.toMap());
-    map['gatewayId'] = gatewayId;
-    map['gatewayIp'] = gatewayIp;
-    map['id'] = id;
-    map['ipCidrRange'] = ipCidrRange;
-    map['name'] = name;
-    map['parent'] = parent;
-    map['standardConfig'] = standardConfig;
-    map['state'] = state;
-    map['type'] = type;
-    map['uid'] = uid;
-    map['updateTime'] = updateTime;
-    map['vlanId'] = vlanId;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'dhcpAddressRanges': pulumi.Input.encodeList<GetSubnetDhcpAddressRange, Map<String, dynamic>>(dhcpAddressRanges, (value) => value.toMap()),
+      'gatewayId': gatewayId,
+      'gatewayIp': gatewayIp,
+      'id': id,
+      'ipCidrRange': ipCidrRange,
+      'name': name,
+      'parent': parent,
+      'standardConfig': standardConfig,
+      'state': state,
+      'type': type,
+      'uid': uid,
+      'updateTime': updateTime,
+      'vlanId': vlanId,
+    };
   }
 
   factory GetSubnetResult.fromMap(Map<String, dynamic> map) {
     return GetSubnetResult(
       createTime: map['createTime'] as String,
-      dhcpAddressRanges: pulumi.Input.decodeList<GetSubnetDhcpAddressRange>(
-          map['dhcpAddressRanges'],
-          (value) => GetSubnetDhcpAddressRange.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      dhcpAddressRanges: pulumi.Input.decodeList<GetSubnetDhcpAddressRange>(map['dhcpAddressRanges'], (value) => GetSubnetDhcpAddressRange.fromMap((value as Map).cast<String, dynamic>())),
       gatewayId: map['gatewayId'] as String,
       gatewayIp: map['gatewayIp'] as String,
       id: map['id'] as String,
@@ -97,3 +91,4 @@ class GetSubnetResult {
     );
   }
 }
+

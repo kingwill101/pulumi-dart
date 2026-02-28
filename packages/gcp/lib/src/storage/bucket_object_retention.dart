@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BucketObjectRetention {
   /// The retention policy mode. Either `Locked` or `Unlocked`.
   final String mode;
-
   /// The time to retain the object until in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
   ///
   /// <a name="nested_contexts"></a> The `contexts` block supports -
@@ -18,10 +18,10 @@ class BucketObjectRetention {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['mode'] = mode;
-    map['retainUntilTime'] = retainUntilTime;
-    return map;
+    return <String, dynamic>{
+      'mode': mode,
+      'retainUntilTime': retainUntilTime,
+    };
   }
 
   factory BucketObjectRetention.fromMap(Map<String, dynamic> map) {
@@ -31,3 +31,4 @@ class BucketObjectRetention {
     );
   }
 }
+

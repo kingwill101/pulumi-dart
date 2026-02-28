@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceOauthConfig {
   /// The client ID for the Oauth config.
   final String clientId;
-
   /// The client secret for the Oauth config.
   final String clientSecret;
 
@@ -16,10 +16,10 @@ class InstanceOauthConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clientId'] = clientId;
-    map['clientSecret'] = clientSecret;
-    return map;
+    return <String, dynamic>{
+      'clientId': clientId,
+      'clientSecret': clientSecret,
+    };
   }
 
   factory InstanceOauthConfig.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class InstanceOauthConfig {
     );
   }
 }
+

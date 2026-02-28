@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SaaSLocation {
   /// Name of location.
   final String? name;
@@ -11,12 +12,9 @@ class SaaSLocation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory SaaSLocation.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class SaaSLocation {
     );
   }
 }
+

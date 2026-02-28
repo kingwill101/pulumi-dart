@@ -14,20 +14,15 @@ class BareMetalNodePoolUpgradePolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final parallelUpgradeConfigValue = parallelUpgradeConfig;
-    if (parallelUpgradeConfigValue != null) {
-      map['parallelUpgradeConfig'] = parallelUpgradeConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'parallelUpgradeConfig': ?parallelUpgradeConfig == null ? null : parallelUpgradeConfig!.toMap(),
+    };
   }
 
   factory BareMetalNodePoolUpgradePolicy.fromMap(Map<String, dynamic> map) {
     return BareMetalNodePoolUpgradePolicy(
-      parallelUpgradeConfig: map['parallelUpgradeConfig'] == null
-          ? null
-          : BareMetalParallelUpgradeConfig.fromMap(
-              (map['parallelUpgradeConfig'] as Map).cast<String, dynamic>()),
+      parallelUpgradeConfig: map['parallelUpgradeConfig'] == null ? null : BareMetalParallelUpgradeConfig.fromMap((map['parallelUpgradeConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterManagedOpentelemetryConfig {
   /// The scope of the Managed OpenTelemetry pipeline. Supported values include: `SCOPE_UNSPECIFIED`, `NONE`, `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`.
   final String? scope;
@@ -11,12 +12,9 @@ class ClusterManagedOpentelemetryConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final scopeValue = scope;
-    if (scopeValue != null) {
-      map['scope'] = scopeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'scope': ?scope,
+    };
   }
 
   factory ClusterManagedOpentelemetryConfig.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class ClusterManagedOpentelemetryConfig {
     );
   }
 }
+

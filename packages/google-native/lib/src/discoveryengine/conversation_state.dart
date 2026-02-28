@@ -16,3 +16,4 @@ enum ConversationState {
     throw ArgumentError('Unknown ConversationState value: $value');
   }
 }
+

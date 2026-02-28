@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ReceiptRuleStopAction {
   /// The position of the action in the receipt rule
   final int position;
-
   /// The scope to apply. The only acceptable value is `RuleSet`.
   final String scope;
-
   /// The ARN of an SNS topic to notify
   final String? topicArn;
 
@@ -21,14 +20,11 @@ class ReceiptRuleStopAction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['position'] = position;
-    map['scope'] = scope;
-    final topicArnValue = topicArn;
-    if (topicArnValue != null) {
-      map['topicArn'] = topicArnValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'position': position,
+      'scope': scope,
+      'topicArn': ?topicArn,
+    };
   }
 
   factory ReceiptRuleStopAction.fromMap(Map<String, dynamic> map) {
@@ -39,3 +35,4 @@ class ReceiptRuleStopAction {
     );
   }
 }
+

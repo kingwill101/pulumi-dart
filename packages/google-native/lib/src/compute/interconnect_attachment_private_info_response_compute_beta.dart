@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Information for an interconnect attachment when this belongs to an interconnect of type DEDICATED.
 class InterconnectAttachmentPrivateInfoResponseComputeBeta {
   /// 802.1q encapsulation tag to be used for traffic between Google and the customer, going to and from this network and region.
@@ -12,15 +13,15 @@ class InterconnectAttachmentPrivateInfoResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['tag8021q'] = tag8021q;
-    return map;
+    return <String, dynamic>{
+      'tag8021q': tag8021q,
+    };
   }
 
-  factory InterconnectAttachmentPrivateInfoResponseComputeBeta.fromMap(
-      Map<String, dynamic> map) {
+  factory InterconnectAttachmentPrivateInfoResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentPrivateInfoResponseComputeBeta(
       tag8021q: map['tag8021q'] as int,
     );
   }
 }
+

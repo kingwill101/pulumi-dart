@@ -16,3 +16,4 @@ enum EngineIndustryVertical {
     throw ArgumentError('Unknown EngineIndustryVertical value: $value');
   }
 }
+

@@ -12,20 +12,15 @@ class FlowMetadataCatalogConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final glueDataCatalogValue = glueDataCatalog;
-    if (glueDataCatalogValue != null) {
-      map['glueDataCatalog'] = glueDataCatalogValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'glueDataCatalog': ?glueDataCatalog == null ? null : glueDataCatalog!.toMap(),
+    };
   }
 
   factory FlowMetadataCatalogConfig.fromMap(Map<String, dynamic> map) {
     return FlowMetadataCatalogConfig(
-      glueDataCatalog: map['glueDataCatalog'] == null
-          ? null
-          : FlowMetadataCatalogConfigGlueDataCatalog.fromMap(
-              (map['glueDataCatalog'] as Map).cast<String, dynamic>()),
+      glueDataCatalog: map['glueDataCatalog'] == null ? null : FlowMetadataCatalogConfigGlueDataCatalog.fromMap((map['glueDataCatalog'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

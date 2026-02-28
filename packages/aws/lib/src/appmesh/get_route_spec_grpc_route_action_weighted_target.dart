@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRouteSpecGrpcRouteActionWeightedTarget {
   final int port;
   final String virtualNode;
@@ -16,15 +17,14 @@ class GetRouteSpecGrpcRouteActionWeightedTarget {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['port'] = port;
-    map['virtualNode'] = virtualNode;
-    map['weight'] = weight;
-    return map;
+    return <String, dynamic>{
+      'port': port,
+      'virtualNode': virtualNode,
+      'weight': weight,
+    };
   }
 
-  factory GetRouteSpecGrpcRouteActionWeightedTarget.fromMap(
-      Map<String, dynamic> map) {
+  factory GetRouteSpecGrpcRouteActionWeightedTarget.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecGrpcRouteActionWeightedTarget(
       port: map['port'] as int,
       virtualNode: map['virtualNode'] as String,
@@ -32,3 +32,4 @@ class GetRouteSpecGrpcRouteActionWeightedTarget {
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRouterStatusBestRoutesForRouterAsPath {
   /// The AS numbers of the AS Path.
   final List<int> asLists;
-
   /// The type of the AS Path, which can be one of the following values:
   /// - 'AS_SET': unordered set of autonomous systems that the route in has traversed
   /// - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
@@ -20,17 +20,17 @@ class GetRouterStatusBestRoutesForRouterAsPath {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['asLists'] = asLists;
-    map['pathSegmentType'] = pathSegmentType;
-    return map;
+    return <String, dynamic>{
+      'asLists': asLists,
+      'pathSegmentType': pathSegmentType,
+    };
   }
 
-  factory GetRouterStatusBestRoutesForRouterAsPath.fromMap(
-      Map<String, dynamic> map) {
+  factory GetRouterStatusBestRoutesForRouterAsPath.fromMap(Map<String, dynamic> map) {
     return GetRouterStatusBestRoutesForRouterAsPath(
       asLists: (map['asLists'] as List).cast<int>(),
       pathSegmentType: map['pathSegmentType'] as String,
     );
   }
 }
+

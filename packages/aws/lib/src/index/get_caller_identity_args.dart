@@ -14,15 +14,13 @@ class GetCallerIdentityArgs {
   /// [id] Account ID number of the account that owns or contains the calling entity.
   GetCallerIdentityArgs({
     String? id,
-  }) : id = pulumi.Input.asOptionalInput<String>(id);
+  }) :
+      id = pulumi.Input.asOptionalInput<String>(id);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final idValue = id;
-    if (idValue != null) {
-      map['id'] = idValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
   factory GetCallerIdentityArgs.fromMap(Map<String, dynamic> map) {
@@ -31,3 +29,4 @@ class GetCallerIdentityArgs {
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcEndpointConnectionAccepterArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// AWS VPC Endpoint ID.
   final pulumi.Input<String> vpcEndpointId;
-
   /// AWS VPC Endpoint Service ID.
   final pulumi.Input<String> vpcEndpointServiceId;
 
@@ -24,20 +22,17 @@ class VpcEndpointConnectionAccepterArgs {
     String? region,
     required String vpcEndpointId,
     required String vpcEndpointServiceId,
-  })  : region = pulumi.Input.asOptionalInput<String>(region),
-        vpcEndpointId = pulumi.Input.asInput<String>(vpcEndpointId),
-        vpcEndpointServiceId =
-            pulumi.Input.asInput<String>(vpcEndpointServiceId);
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      vpcEndpointId = pulumi.Input.asInput<String>(vpcEndpointId),
+      vpcEndpointServiceId = pulumi.Input.asInput<String>(vpcEndpointServiceId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['vpcEndpointId'] = vpcEndpointId;
-    map['vpcEndpointServiceId'] = vpcEndpointServiceId;
-    return map;
+    return <String, dynamic>{
+      'region': ?region,
+      'vpcEndpointId': vpcEndpointId,
+      'vpcEndpointServiceId': vpcEndpointServiceId,
+    };
   }
 
   factory VpcEndpointConnectionAccepterArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +43,4 @@ class VpcEndpointConnectionAccepterArgs {
     );
   }
 }
+

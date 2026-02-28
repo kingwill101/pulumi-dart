@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Specification of the GRPC Endpoint.
 class GoogleCloudNetworksecurityV1beta1GrpcEndpoint {
   /// The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
@@ -12,15 +13,15 @@ class GoogleCloudNetworksecurityV1beta1GrpcEndpoint {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['targetUri'] = targetUri;
-    return map;
+    return <String, dynamic>{
+      'targetUri': targetUri,
+    };
   }
 
-  factory GoogleCloudNetworksecurityV1beta1GrpcEndpoint.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudNetworksecurityV1beta1GrpcEndpoint.fromMap(Map<String, dynamic> map) {
     return GoogleCloudNetworksecurityV1beta1GrpcEndpoint(
       targetUri: map['targetUri'] as String,
     );
   }
 }
+

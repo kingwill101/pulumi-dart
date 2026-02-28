@@ -1,31 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSfdcInstance.
 class GetSfdcInstanceResult {
   /// A list of AuthConfigs that can be tried to open the channel to SFDC
   final List<String> authConfigId;
-
   /// Time when the instance is created
   final String createTime;
-
   /// Time when the instance was deleted. Empty if not deleted.
   final String deleteTime;
-
   /// A description of the sfdc instance.
   final String description;
-
   /// User selected unique name/alias to easily reference an instance.
   final String displayName;
-
   /// Resource name of the SFDC instance projects/{project}/locations/{location}/sfdcInstances/{sfdcInstance}.
   final String name;
-
   /// URL used for API calls after authentication (the login authority is configured within the referenced AuthConfig).
   final String serviceAuthority;
-
   /// The SFDC Org Id. This is defined in salesforce.
   final String sfdcOrgId;
-
   /// Time when the instance was last updated
   final String updateTime;
 
@@ -52,17 +45,17 @@ class GetSfdcInstanceResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['authConfigId'] = authConfigId;
-    map['createTime'] = createTime;
-    map['deleteTime'] = deleteTime;
-    map['description'] = description;
-    map['displayName'] = displayName;
-    map['name'] = name;
-    map['serviceAuthority'] = serviceAuthority;
-    map['sfdcOrgId'] = sfdcOrgId;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'authConfigId': authConfigId,
+      'createTime': createTime,
+      'deleteTime': deleteTime,
+      'description': description,
+      'displayName': displayName,
+      'name': name,
+      'serviceAuthority': serviceAuthority,
+      'sfdcOrgId': sfdcOrgId,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetSfdcInstanceResult.fromMap(Map<String, dynamic> map) {
@@ -79,3 +72,4 @@ class GetSfdcInstanceResult {
     );
   }
 }
+

@@ -8,10 +8,8 @@ import 'notification_rate_limit_response.dart';
 class AlertStrategyResponse {
   /// If an alert policy that was active has no data for this long, any open incidents will close
   final String autoClose;
-
   /// Control how notifications will be sent out, on a per-channel basis.
   final List<NotificationChannelStrategyResponse> notificationChannelStrategy;
-
   /// Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
   final NotificationRateLimitResponse notificationRateLimit;
 
@@ -26,25 +24,19 @@ class AlertStrategyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['autoClose'] = autoClose;
-    map['notificationChannelStrategy'] = pulumi.Input.encodeList<
-            NotificationChannelStrategyResponse, Map<String, dynamic>>(
-        notificationChannelStrategy, (value) => value.toMap());
-    map['notificationRateLimit'] = notificationRateLimit.toMap();
-    return map;
+    return <String, dynamic>{
+      'autoClose': autoClose,
+      'notificationChannelStrategy': pulumi.Input.encodeList<NotificationChannelStrategyResponse, Map<String, dynamic>>(notificationChannelStrategy, (value) => value.toMap()),
+      'notificationRateLimit': notificationRateLimit.toMap(),
+    };
   }
 
   factory AlertStrategyResponse.fromMap(Map<String, dynamic> map) {
     return AlertStrategyResponse(
       autoClose: map['autoClose'] as String,
-      notificationChannelStrategy:
-          pulumi.Input.decodeList<NotificationChannelStrategyResponse>(
-              map['notificationChannelStrategy'],
-              (value) => NotificationChannelStrategyResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      notificationRateLimit: NotificationRateLimitResponse.fromMap(
-          (map['notificationRateLimit'] as Map).cast<String, dynamic>()),
+      notificationChannelStrategy: pulumi.Input.decodeList<NotificationChannelStrategyResponse>(map['notificationChannelStrategy'], (value) => NotificationChannelStrategyResponse.fromMap((value as Map).cast<String, dynamic>())),
+      notificationRateLimit: NotificationRateLimitResponse.fromMap((map['notificationRateLimit'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

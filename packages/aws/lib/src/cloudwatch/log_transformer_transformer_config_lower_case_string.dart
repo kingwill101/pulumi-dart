@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LogTransformerTransformerConfigLowerCaseString {
   /// Specifies the keys of the fields to convert to lowercase.
   final List<String> withKeys;
@@ -11,15 +12,15 @@ class LogTransformerTransformerConfigLowerCaseString {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['withKeys'] = withKeys;
-    return map;
+    return <String, dynamic>{
+      'withKeys': withKeys,
+    };
   }
 
-  factory LogTransformerTransformerConfigLowerCaseString.fromMap(
-      Map<String, dynamic> map) {
+  factory LogTransformerTransformerConfigLowerCaseString.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigLowerCaseString(
       withKeys: (map['withKeys'] as List).cast<String>(),
     );
   }
 }
+

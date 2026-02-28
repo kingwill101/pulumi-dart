@@ -16,3 +16,4 @@ enum CompositeTypeStatus {
     throw ArgumentError('Unknown CompositeTypeStatus value: $value');
   }
 }
+

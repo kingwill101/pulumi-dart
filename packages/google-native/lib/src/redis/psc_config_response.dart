@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PscConfigResponse {
   /// The network where the IP address of the discovery endpoint will be reserved, in the form of projects/{network_project}/global/networks/{network_id}.
   final String network;
@@ -11,9 +12,9 @@ class PscConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['network'] = network;
-    return map;
+    return <String, dynamic>{
+      'network': network,
+    };
   }
 
   factory PscConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class PscConfigResponse {
     );
   }
 }
+

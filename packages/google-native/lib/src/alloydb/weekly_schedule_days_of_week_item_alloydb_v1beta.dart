@@ -17,7 +17,7 @@ enum WeeklyScheduleDaysOfWeekItemAlloydbV1beta {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown WeeklyScheduleDaysOfWeekItemAlloydbV1beta value: $value');
+    throw ArgumentError('Unknown WeeklyScheduleDaysOfWeekItemAlloydbV1beta value: $value');
   }
 }
+

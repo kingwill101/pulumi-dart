@@ -477,50 +477,36 @@ class DataProduct extends pulumi.CustomResource {
   /// Custom user defined access groups at the data product level.
   /// Structure is documented below.
   late final pulumi.Output<List<DataProductAccessGroup>?> accessGroups;
-
   /// Number of associated data assets.
   late final pulumi.Output<int> assetCount;
-
   /// Creation timestamp.
   late final pulumi.Output<String> createTime;
-
   /// The ID of the data product.
   late final pulumi.Output<String> dataProductId;
-
   /// Description of the data product.
   late final pulumi.Output<String?> description;
-
   /// User-friendly display name.
   late final pulumi.Output<String> displayName;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Checksum for concurrency control.
   late final pulumi.Output<String> etag;
-
   /// User-defined labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The location for the data product.
   late final pulumi.Output<String> location;
-
   /// Emails of the owners.
   late final pulumi.Output<List<String>> ownerEmails;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// System generated unique ID.
   late final pulumi.Output<String> uid;
-
   /// Last update timestamp.
   late final pulumi.Output<String> updateTime;
 
@@ -538,15 +524,13 @@ class DataProduct extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.accessGroups =
-        registerOutput<List<DataProductAccessGroup>?>('accessGroups');
+    this.accessGroups = registerOutput<List<DataProductAccessGroup>?>('accessGroups');
     this.assetCount = registerOutput<int>('assetCount');
     this.createTime = registerOutput<String>('createTime');
     this.dataProductId = registerOutput<String>('dataProductId');
     this.description = registerOutput<String?>('description');
     this.displayName = registerOutput<String>('displayName');
-    this.effectiveLabels =
-        registerOutput<Map<String, String>>('effectiveLabels');
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     this.etag = registerOutput<String>('etag');
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.location = registerOutput<String>('location');

@@ -6,10 +6,8 @@ import 'virtual_machine_config_response.dart';
 class VirtualMachineResponse {
   /// The unique identifier of the Managed Compute Engine instance.
   final String instanceId;
-
   /// The user-friendly name of the Managed Compute Engine instance.
   final String instanceName;
-
   /// Virtual Machine configuration settings.
   final VirtualMachineConfigResponse virtualMachineConfig;
 
@@ -24,19 +22,19 @@ class VirtualMachineResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['instanceId'] = instanceId;
-    map['instanceName'] = instanceName;
-    map['virtualMachineConfig'] = virtualMachineConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'instanceId': instanceId,
+      'instanceName': instanceName,
+      'virtualMachineConfig': virtualMachineConfig.toMap(),
+    };
   }
 
   factory VirtualMachineResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineResponse(
       instanceId: map['instanceId'] as String,
       instanceName: map['instanceName'] as String,
-      virtualMachineConfig: VirtualMachineConfigResponse.fromMap(
-          (map['virtualMachineConfig'] as Map).cast<String, dynamic>()),
+      virtualMachineConfig: VirtualMachineConfigResponse.fromMap((map['virtualMachineConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

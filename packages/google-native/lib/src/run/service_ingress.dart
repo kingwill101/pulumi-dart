@@ -17,3 +17,4 @@ enum ServiceIngress {
     throw ArgumentError('Unknown ServiceIngress value: $value');
   }
 }
+

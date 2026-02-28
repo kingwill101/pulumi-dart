@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration {
   /// KMS key ARN when `sse_algorithm` is `aws:kms`.
   final String? kmsKeyArn;
-
   /// Encryption type for the metadata table. Valid values: `aws:kms`, `AES256`.
   final String sseAlgorithm;
 
@@ -16,20 +16,17 @@ class BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationE
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final kmsKeyArnValue = kmsKeyArn;
-    if (kmsKeyArnValue != null) {
-      map['kmsKeyArn'] = kmsKeyArnValue;
-    }
-    map['sseAlgorithm'] = sseAlgorithm;
-    return map;
+    return <String, dynamic>{
+      'kmsKeyArn': ?kmsKeyArn,
+      'sseAlgorithm': sseAlgorithm,
+    };
   }
 
-  factory BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration(
       kmsKeyArn: map['kmsKeyArn'] == null ? null : map['kmsKeyArn'] as String,
       sseAlgorithm: map['sseAlgorithm'] as String,
     );
   }
 }
+

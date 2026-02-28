@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration of gVNIC feature.
 class VirtualNICContainerV1beta1 {
   /// Whether gVNIC features are enabled in the node pool.
@@ -12,12 +13,9 @@ class VirtualNICContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory VirtualNICContainerV1beta1.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class VirtualNICContainerV1beta1 {
     );
   }
 }
+

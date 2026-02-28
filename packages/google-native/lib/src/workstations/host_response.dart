@@ -14,15 +14,15 @@ class HostResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gceInstance'] = gceInstance.toMap();
-    return map;
+    return <String, dynamic>{
+      'gceInstance': gceInstance.toMap(),
+    };
   }
 
   factory HostResponse.fromMap(Map<String, dynamic> map) {
     return HostResponse(
-      gceInstance: GceInstanceResponse.fromMap(
-          (map['gceInstance'] as Map).cast<String, dynamic>()),
+      gceInstance: GceInstanceResponse.fromMap((map['gceInstance'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

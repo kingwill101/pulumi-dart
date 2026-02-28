@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterClusterConfigAutoscalingConfig {
   /// The autoscaling policy used by the cluster.
   ///
@@ -19,15 +20,15 @@ class ClusterClusterConfigAutoscalingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['policyUri'] = policyUri;
-    return map;
+    return <String, dynamic>{
+      'policyUri': policyUri,
+    };
   }
 
-  factory ClusterClusterConfigAutoscalingConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterClusterConfigAutoscalingConfig.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigAutoscalingConfig(
       policyUri: map['policyUri'] as String,
     );
   }
 }
+

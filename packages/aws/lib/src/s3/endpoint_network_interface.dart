@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EndpointNetworkInterface {
   /// Identifier of the Elastic Network Interface (ENI).
   final String? networkInterfaceId;
@@ -11,19 +12,15 @@ class EndpointNetworkInterface {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final networkInterfaceIdValue = networkInterfaceId;
-    if (networkInterfaceIdValue != null) {
-      map['networkInterfaceId'] = networkInterfaceIdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'networkInterfaceId': ?networkInterfaceId,
+    };
   }
 
   factory EndpointNetworkInterface.fromMap(Map<String, dynamic> map) {
     return EndpointNetworkInterface(
-      networkInterfaceId: map['networkInterfaceId'] == null
-          ? null
-          : map['networkInterfaceId'] as String,
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : map['networkInterfaceId'] as String,
     );
   }
 }
+

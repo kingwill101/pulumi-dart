@@ -18,3 +18,4 @@ enum GlobalAddressNetworkTier {
     throw ArgumentError('Unknown GlobalAddressNetworkTier value: $value');
   }
 }
+

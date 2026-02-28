@@ -6,7 +6,6 @@ import 'domain_redirect_type.dart';
 class DomainRedirect {
   /// The domain name to redirect to.
   final String domainName;
-
   /// The redirect status code.
   final DomainRedirectType type;
 
@@ -19,10 +18,10 @@ class DomainRedirect {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['domainName'] = domainName;
-    map['type'] = type.value;
-    return map;
+    return <String, dynamic>{
+      'domainName': domainName,
+      'type': type.value,
+    };
   }
 
   factory DomainRedirect.fromMap(Map<String, dynamic> map) {
@@ -32,3 +31,4 @@ class DomainRedirect {
     );
   }
 }
+

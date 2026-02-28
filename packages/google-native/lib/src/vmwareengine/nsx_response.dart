@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Details about a NSX Manager appliance.
 class NsxResponse {
   /// Fully qualified domain name of the appliance.
   final String fqdn;
-
   /// Internal IP address of the appliance.
   final String internalIp;
-
   /// The state of the appliance.
   final String state;
-
   /// Version of the appliance.
   final String version;
 
@@ -27,12 +25,12 @@ class NsxResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['fqdn'] = fqdn;
-    map['internalIp'] = internalIp;
-    map['state'] = state;
-    map['version'] = version;
-    return map;
+    return <String, dynamic>{
+      'fqdn': fqdn,
+      'internalIp': internalIp,
+      'state': state,
+      'version': version,
+    };
   }
 
   factory NsxResponse.fromMap(Map<String, dynamic> map) {
@@ -44,3 +42,4 @@ class NsxResponse {
     );
   }
 }
+

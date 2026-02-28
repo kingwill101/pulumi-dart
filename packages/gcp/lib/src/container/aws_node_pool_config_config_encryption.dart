@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AwsNodePoolConfigConfigEncryption {
   /// The ARN of the AWS KMS key used to encrypt node pool configuration.
   final String kmsKeyArn;
@@ -11,9 +12,9 @@ class AwsNodePoolConfigConfigEncryption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kmsKeyArn'] = kmsKeyArn;
-    return map;
+    return <String, dynamic>{
+      'kmsKeyArn': kmsKeyArn,
+    };
   }
 
   factory AwsNodePoolConfigConfigEncryption.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class AwsNodePoolConfigConfigEncryption {
     );
   }
 }
+

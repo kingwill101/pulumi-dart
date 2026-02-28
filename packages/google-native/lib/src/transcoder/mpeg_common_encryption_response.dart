@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for MPEG Common Encryption (MPEG-CENC).
 class MpegCommonEncryptionResponse {
   /// Specify the encryption scheme. Supported encryption schemes: - `cenc` - `cbcs`
@@ -12,9 +13,9 @@ class MpegCommonEncryptionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['scheme'] = scheme;
-    return map;
+    return <String, dynamic>{
+      'scheme': scheme,
+    };
   }
 
   factory MpegCommonEncryptionResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class MpegCommonEncryptionResponse {
     );
   }
 }
+

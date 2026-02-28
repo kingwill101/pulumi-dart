@@ -8,7 +8,6 @@ class TlsRouteRule {
   /// Required. A detailed rule defining how to route traffic.
   /// Structure is documented below.
   final TlsRouteRuleAction action;
-
   /// Matches define the predicate used to match requests to a given action.
   /// Structure is documented below.
   final List<TlsRouteRuleMatch> matches;
@@ -22,22 +21,17 @@ class TlsRouteRule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['action'] = action.toMap();
-    map['matches'] =
-        pulumi.Input.encodeList<TlsRouteRuleMatch, Map<String, dynamic>>(
-            matches, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'action': action.toMap(),
+      'matches': pulumi.Input.encodeList<TlsRouteRuleMatch, Map<String, dynamic>>(matches, (value) => value.toMap()),
+    };
   }
 
   factory TlsRouteRule.fromMap(Map<String, dynamic> map) {
     return TlsRouteRule(
-      action: TlsRouteRuleAction.fromMap(
-          (map['action'] as Map).cast<String, dynamic>()),
-      matches: pulumi.Input.decodeList<TlsRouteRuleMatch>(
-          map['matches'],
-          (value) => TlsRouteRuleMatch.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      action: TlsRouteRuleAction.fromMap((map['action'] as Map).cast<String, dynamic>()),
+      matches: pulumi.Input.decodeList<TlsRouteRuleMatch>(map['matches'], (value) => TlsRouteRuleMatch.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

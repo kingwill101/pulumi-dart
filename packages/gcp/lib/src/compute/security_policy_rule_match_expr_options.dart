@@ -14,16 +14,15 @@ class SecurityPolicyRuleMatchExprOptions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['recaptchaOptions'] = recaptchaOptions.toMap();
-    return map;
+    return <String, dynamic>{
+      'recaptchaOptions': recaptchaOptions.toMap(),
+    };
   }
 
   factory SecurityPolicyRuleMatchExprOptions.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleMatchExprOptions(
-      recaptchaOptions:
-          SecurityPolicyRuleMatchExprOptionsRecaptchaOptions.fromMap(
-              (map['recaptchaOptions'] as Map).cast<String, dynamic>()),
+      recaptchaOptions: SecurityPolicyRuleMatchExprOptionsRecaptchaOptions.fromMap((map['recaptchaOptions'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

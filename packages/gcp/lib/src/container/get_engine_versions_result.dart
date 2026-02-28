@@ -1,33 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getEngineVersions.
 class GetEngineVersionsResult {
   /// Version of Kubernetes the service deploys by default.
   final String defaultClusterVersion;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The latest version available in the given zone for use with master instances.
   final String latestMasterVersion;
-
   /// The latest version available in the given zone for use with node instances.
   final String latestNodeVersion;
   final String? location;
   final String? project;
-
   /// A map from a release channel name to the channel's default version. See the docs on [available release channel names](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.Channel_1) for more details.
   final Map<String, String> releaseChannelDefaultVersion;
-
   /// A map from a release channel name to the channel's latest version. See the docs on [available release channel names](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.Channel_1) for more details.
   final Map<String, String> releaseChannelLatestVersion;
-
   /// A map from a release channel name to the channel's auto upgrade target version. See the docs on [available release channel names](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.Channel_1) for more details.
   final Map<String, String> releaseChannelUpgradeTargetVersion;
-
   /// A list of versions available in the given zone for use with master instances.
   final List<String> validMasterVersions;
-
   /// A list of versions available in the given zone for use with node instances.
   final List<String> validNodeVersions;
   final String? versionPrefix;
@@ -61,30 +54,20 @@ class GetEngineVersionsResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['defaultClusterVersion'] = defaultClusterVersion;
-    map['id'] = id;
-    map['latestMasterVersion'] = latestMasterVersion;
-    map['latestNodeVersion'] = latestNodeVersion;
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['releaseChannelDefaultVersion'] = releaseChannelDefaultVersion;
-    map['releaseChannelLatestVersion'] = releaseChannelLatestVersion;
-    map['releaseChannelUpgradeTargetVersion'] =
-        releaseChannelUpgradeTargetVersion;
-    map['validMasterVersions'] = validMasterVersions;
-    map['validNodeVersions'] = validNodeVersions;
-    final versionPrefixValue = versionPrefix;
-    if (versionPrefixValue != null) {
-      map['versionPrefix'] = versionPrefixValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'defaultClusterVersion': defaultClusterVersion,
+      'id': id,
+      'latestMasterVersion': latestMasterVersion,
+      'latestNodeVersion': latestNodeVersion,
+      'location': ?location,
+      'project': ?project,
+      'releaseChannelDefaultVersion': releaseChannelDefaultVersion,
+      'releaseChannelLatestVersion': releaseChannelLatestVersion,
+      'releaseChannelUpgradeTargetVersion': releaseChannelUpgradeTargetVersion,
+      'validMasterVersions': validMasterVersions,
+      'validNodeVersions': validNodeVersions,
+      'versionPrefix': ?versionPrefix,
+    };
   }
 
   factory GetEngineVersionsResult.fromMap(Map<String, dynamic> map) {
@@ -95,17 +78,13 @@ class GetEngineVersionsResult {
       latestNodeVersion: map['latestNodeVersion'] as String,
       location: map['location'] == null ? null : map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      releaseChannelDefaultVersion:
-          (map['releaseChannelDefaultVersion'] as Map).cast<String, String>(),
-      releaseChannelLatestVersion:
-          (map['releaseChannelLatestVersion'] as Map).cast<String, String>(),
-      releaseChannelUpgradeTargetVersion:
-          (map['releaseChannelUpgradeTargetVersion'] as Map)
-              .cast<String, String>(),
+      releaseChannelDefaultVersion: (map['releaseChannelDefaultVersion'] as Map).cast<String, String>(),
+      releaseChannelLatestVersion: (map['releaseChannelLatestVersion'] as Map).cast<String, String>(),
+      releaseChannelUpgradeTargetVersion: (map['releaseChannelUpgradeTargetVersion'] as Map).cast<String, String>(),
       validMasterVersions: (map['validMasterVersions'] as List).cast<String>(),
       validNodeVersions: (map['validNodeVersions'] as List).cast<String>(),
-      versionPrefix:
-          map['versionPrefix'] == null ? null : map['versionPrefix'] as String,
+      versionPrefix: map['versionPrefix'] == null ? null : map['versionPrefix'] as String,
     );
   }
 }
+

@@ -14,18 +14,19 @@ class GetOrganizationalUnitChildAccountsArgs {
   /// [parentId] The parent ID of the accounts.
   GetOrganizationalUnitChildAccountsArgs({
     required String parentId,
-  }) : parentId = pulumi.Input.asInput<String>(parentId);
+  }) :
+      parentId = pulumi.Input.asInput<String>(parentId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['parentId'] = parentId;
-    return map;
+    return <String, dynamic>{
+      'parentId': parentId,
+    };
   }
 
-  factory GetOrganizationalUnitChildAccountsArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetOrganizationalUnitChildAccountsArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationalUnitChildAccountsArgs(
       parentId: map['parentId'] as String,
     );
   }
 }
+

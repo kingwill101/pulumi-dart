@@ -1,17 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInstanceMaintenanceSchedule {
   /// Output only. The end time of any upcoming scheduled maintenance for this instance.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
   /// resolution and up to nine fractional digits.
   final String endTime;
-
   /// Output only. The deadline that the maintenance schedule start time
   /// can not go beyond, including reschedule.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
   /// resolution and up to nine fractional digits.
   final String scheduleDeadlineTime;
-
   /// Output only. The start time of any upcoming scheduled maintenance for this instance.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
   /// resolution and up to nine fractional digits.
@@ -28,11 +27,11 @@ class GetInstanceMaintenanceSchedule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['endTime'] = endTime;
-    map['scheduleDeadlineTime'] = scheduleDeadlineTime;
-    map['startTime'] = startTime;
-    return map;
+    return <String, dynamic>{
+      'endTime': endTime,
+      'scheduleDeadlineTime': scheduleDeadlineTime,
+      'startTime': startTime,
+    };
   }
 
   factory GetInstanceMaintenanceSchedule.fromMap(Map<String, dynamic> map) {
@@ -43,3 +42,4 @@ class GetInstanceMaintenanceSchedule {
     );
   }
 }
+

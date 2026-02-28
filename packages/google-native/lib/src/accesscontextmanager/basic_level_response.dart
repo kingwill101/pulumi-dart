@@ -7,7 +7,6 @@ import 'condition_response.dart';
 class BasicLevelResponse {
   /// How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
   final String combiningFunction;
-
   /// A list of requirements for the `AccessLevel` to be granted.
   final List<ConditionResponse> conditions;
 
@@ -20,21 +19,17 @@ class BasicLevelResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['combiningFunction'] = combiningFunction;
-    map['conditions'] =
-        pulumi.Input.encodeList<ConditionResponse, Map<String, dynamic>>(
-            conditions, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'combiningFunction': combiningFunction,
+      'conditions': pulumi.Input.encodeList<ConditionResponse, Map<String, dynamic>>(conditions, (value) => value.toMap()),
+    };
   }
 
   factory BasicLevelResponse.fromMap(Map<String, dynamic> map) {
     return BasicLevelResponse(
       combiningFunction: map['combiningFunction'] as String,
-      conditions: pulumi.Input.decodeList<ConditionResponse>(
-          map['conditions'],
-          (value) => ConditionResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      conditions: pulumi.Input.decodeList<ConditionResponse>(map['conditions'], (value) => ConditionResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

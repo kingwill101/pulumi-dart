@@ -6,69 +6,47 @@ import 'google_cloud_documentai_v1_document_response.dart';
 /// Creates a document.
 class Document extends pulumi.CustomResource {
   /// Document AI format to save the structured content, including OCR.
-  late final pulumi.Output<GoogleCloudDocumentaiV1DocumentResponse>
-      cloudAiDocument;
-
+  late final pulumi.Output<GoogleCloudDocumentaiV1DocumentResponse> cloudAiDocument;
   /// Indicates the category (image, audio, video etc.) of the original content.
   late final pulumi.Output<String> contentCategory;
-
   /// The time when the document is created.
   late final pulumi.Output<String> createTime;
-
   /// The user who creates the document.
   late final pulumi.Output<String> creator;
-
   /// Display name of the document given by the user. This name will be displayed in the UI. Customer can populate this field with the name of the document. This differs from the 'title' field as 'title' is optional and stores the top heading in the document.
   late final pulumi.Output<String> displayName;
-
   /// Uri to display the document, for example, in the UI.
   late final pulumi.Output<String> displayUri;
-
   /// If linked to a Collection with RetentionPolicy, the date when the document becomes mutable.
   late final pulumi.Output<String> dispositionTime;
-
   /// The Document schema name. Format: projects/{project_number}/locations/{location}/documentSchemas/{document_schema_id}.
   late final pulumi.Output<String> documentSchemaName;
-
   /// Raw document content.
   late final pulumi.Output<String> inlineRawDocument;
-
   /// Indicates if the document has a legal hold on it.
   late final pulumi.Output<bool> legalHold;
   late final pulumi.Output<String> location;
-
   /// The resource name of the document. Format: projects/{project_number}/locations/{location}/documents/{document_id}. The name is ignored when creating a document.
   late final pulumi.Output<String> name;
-
   /// Other document format, such as PPTX, XLXS
   late final pulumi.Output<String> plainText;
   late final pulumi.Output<String> project;
-
   /// List of values that are user supplied metadata.
-  late final pulumi.Output<List<GoogleCloudContentwarehouseV1PropertyResponse>>
-      properties;
-
+  late final pulumi.Output<List<GoogleCloudContentwarehouseV1PropertyResponse>> properties;
   /// This is used when DocAI was not used to load the document and parsing/ extracting is needed for the inline_raw_document. For example, if inline_raw_document is the byte representation of a PDF file, then this should be set to: RAW_DOCUMENT_FILE_TYPE_PDF.
   late final pulumi.Output<String> rawDocumentFileType;
-
   /// Raw document file in Cloud Storage path.
   late final pulumi.Output<String> rawDocumentPath;
-
   /// The reference ID set by customers. Must be unique per project and location.
   late final pulumi.Output<String> referenceId;
-
   /// If true, text extraction will not be performed.
   late final pulumi.Output<bool> textExtractionDisabled;
-
   /// If true, text extraction will be performed.
   late final pulumi.Output<bool> textExtractionEnabled;
-
   /// Title that describes the document. This can be the top heading or text that describes the document.
   late final pulumi.Output<String> title;
-
   /// The time when the document is last updated.
   late final pulumi.Output<String> updateTime;
-
   /// The user who lastly updates the document.
   late final pulumi.Output<String> updater;
 
@@ -86,9 +64,7 @@ class Document extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.cloudAiDocument =
-        registerOutput<GoogleCloudDocumentaiV1DocumentResponse>(
-            'cloudAiDocument');
+    this.cloudAiDocument = registerOutput<GoogleCloudDocumentaiV1DocumentResponse>('cloudAiDocument');
     this.contentCategory = registerOutput<String>('contentCategory');
     this.createTime = registerOutput<String>('createTime');
     this.creator = registerOutput<String>('creator');
@@ -102,14 +78,11 @@ class Document extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     this.plainText = registerOutput<String>('plainText');
     this.project = registerOutput<String>('project');
-    this.properties =
-        registerOutput<List<GoogleCloudContentwarehouseV1PropertyResponse>>(
-            'properties');
+    this.properties = registerOutput<List<GoogleCloudContentwarehouseV1PropertyResponse>>('properties');
     this.rawDocumentFileType = registerOutput<String>('rawDocumentFileType');
     this.rawDocumentPath = registerOutput<String>('rawDocumentPath');
     this.referenceId = registerOutput<String>('referenceId');
-    this.textExtractionDisabled =
-        registerOutput<bool>('textExtractionDisabled');
+    this.textExtractionDisabled = registerOutput<bool>('textExtractionDisabled');
     this.textExtractionEnabled = registerOutput<bool>('textExtractionEnabled');
     this.title = registerOutput<String>('title');
     this.updateTime = registerOutput<String>('updateTime');

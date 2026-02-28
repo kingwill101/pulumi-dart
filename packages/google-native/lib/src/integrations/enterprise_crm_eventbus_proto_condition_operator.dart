@@ -19,7 +19,7 @@ enum EnterpriseCrmEventbusProtoConditionOperator {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown EnterpriseCrmEventbusProtoConditionOperator value: $value');
+    throw ArgumentError('Unknown EnterpriseCrmEventbusProtoConditionOperator value: $value');
   }
 }
+

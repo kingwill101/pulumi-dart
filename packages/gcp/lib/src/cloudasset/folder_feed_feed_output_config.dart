@@ -14,15 +14,15 @@ class FolderFeedFeedOutputConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['pubsubDestination'] = pubsubDestination.toMap();
-    return map;
+    return <String, dynamic>{
+      'pubsubDestination': pubsubDestination.toMap(),
+    };
   }
 
   factory FolderFeedFeedOutputConfig.fromMap(Map<String, dynamic> map) {
     return FolderFeedFeedOutputConfig(
-      pubsubDestination: FolderFeedFeedOutputConfigPubsubDestination.fromMap(
-          (map['pubsubDestination'] as Map).cast<String, dynamic>()),
+      pubsubDestination: FolderFeedFeedOutputConfigPubsubDestination.fromMap((map['pubsubDestination'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

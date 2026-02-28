@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The config specifying which default library templates to install.
 class PolicyControllerTemplateLibraryConfigResponse {
   /// Configures the manner in which the template library is installed on the cluster.
@@ -12,15 +13,15 @@ class PolicyControllerTemplateLibraryConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['installation'] = installation;
-    return map;
+    return <String, dynamic>{
+      'installation': installation,
+    };
   }
 
-  factory PolicyControllerTemplateLibraryConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory PolicyControllerTemplateLibraryConfigResponse.fromMap(Map<String, dynamic> map) {
     return PolicyControllerTemplateLibraryConfigResponse(
       installation: map['installation'] as String,
     );
   }
 }
+

@@ -7,7 +7,6 @@ import 'get_datasets_dataset.dart';
 class GetDatasetsResult {
   /// A list of all retrieved BigQuery datasets. Structure is defined below.
   final List<GetDatasetsDataset> datasets;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? project;
@@ -23,26 +22,19 @@ class GetDatasetsResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['datasets'] =
-        pulumi.Input.encodeList<GetDatasetsDataset, Map<String, dynamic>>(
-            datasets, (value) => value.toMap());
-    map['id'] = id;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'datasets': pulumi.Input.encodeList<GetDatasetsDataset, Map<String, dynamic>>(datasets, (value) => value.toMap()),
+      'id': id,
+      'project': ?project,
+    };
   }
 
   factory GetDatasetsResult.fromMap(Map<String, dynamic> map) {
     return GetDatasetsResult(
-      datasets: pulumi.Input.decodeList<GetDatasetsDataset>(
-          map['datasets'],
-          (value) => GetDatasetsDataset.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      datasets: pulumi.Input.decodeList<GetDatasetsDataset>(map['datasets'], (value) => GetDatasetsDataset.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

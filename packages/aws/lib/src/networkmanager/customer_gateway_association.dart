@@ -364,15 +364,12 @@ import 'customer_gateway_association_args.dart';
 class CustomerGatewayAssociation extends pulumi.CustomResource {
   /// ARN of the customer gateway.
   late final pulumi.Output<String> customerGatewayArn;
-
   /// ID of the device.
   late final pulumi.Output<String> deviceId;
-
   /// ID of the global network.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> globalNetworkId;
-
   /// ID of the link.
   late final pulumi.Output<String?> linkId;
 

@@ -16,21 +16,17 @@ class GetPlanStage {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['durationInMinutes'] = durationInMinutes;
-    map['targets'] =
-        pulumi.Input.encodeList<GetPlanStageTarget, Map<String, dynamic>>(
-            targets, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'durationInMinutes': durationInMinutes,
+      'targets': pulumi.Input.encodeList<GetPlanStageTarget, Map<String, dynamic>>(targets, (value) => value.toMap()),
+    };
   }
 
   factory GetPlanStage.fromMap(Map<String, dynamic> map) {
     return GetPlanStage(
       durationInMinutes: map['durationInMinutes'] as int,
-      targets: pulumi.Input.decodeList<GetPlanStageTarget>(
-          map['targets'],
-          (value) => GetPlanStageTarget.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      targets: pulumi.Input.decodeList<GetPlanStageTarget>(map['targets'], (value) => GetPlanStageTarget.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

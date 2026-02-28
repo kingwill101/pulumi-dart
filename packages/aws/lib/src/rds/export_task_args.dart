@@ -10,25 +10,18 @@ import 'export_task_timeouts.dart';
 class ExportTaskArgs {
   /// Data to be exported from the snapshot. If this parameter is not provided, all the snapshot data is exported. Valid values are documented in the [AWS StartExportTask API documentation](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_StartExportTask.html#API_StartExportTask_RequestParameters).
   final pulumi.Input<List<String>>? exportOnlies;
-
   /// Unique identifier for the snapshot export task.
   final pulumi.Input<String> exportTaskIdentifier;
-
   /// ARN of the IAM role to use for writing to the Amazon S3 bucket.
   final pulumi.Input<String> iamRoleArn;
-
   /// ID of the Amazon Web Services KMS key to use to encrypt the snapshot.
   final pulumi.Input<String> kmsKeyId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Name of the Amazon S3 bucket to export the snapshot to.
   final pulumi.Input<String> s3BucketName;
-
   /// Amazon S3 bucket prefix to use as the file name and path of the exported snapshot.
   final pulumi.Input<String>? s3Prefix;
-
   /// Amazon Resource Name (ARN) of the snapshot to export.
   ///
   /// The following arguments are optional:
@@ -55,49 +48,34 @@ class ExportTaskArgs {
     String? s3Prefix,
     required String sourceArn,
     ExportTaskTimeouts? timeouts,
-  })  : exportOnlies = pulumi.Input.asOptionalInput<List<String>>(exportOnlies),
-        exportTaskIdentifier =
-            pulumi.Input.asInput<String>(exportTaskIdentifier),
-        iamRoleArn = pulumi.Input.asInput<String>(iamRoleArn),
-        kmsKeyId = pulumi.Input.asInput<String>(kmsKeyId),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        s3BucketName = pulumi.Input.asInput<String>(s3BucketName),
-        s3Prefix = pulumi.Input.asOptionalInput<String>(s3Prefix),
-        sourceArn = pulumi.Input.asInput<String>(sourceArn),
-        timeouts = pulumi.Input.asOptionalInput<ExportTaskTimeouts>(timeouts);
+  }) :
+      exportOnlies = pulumi.Input.asOptionalInput<List<String>>(exportOnlies),
+      exportTaskIdentifier = pulumi.Input.asInput<String>(exportTaskIdentifier),
+      iamRoleArn = pulumi.Input.asInput<String>(iamRoleArn),
+      kmsKeyId = pulumi.Input.asInput<String>(kmsKeyId),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      s3BucketName = pulumi.Input.asInput<String>(s3BucketName),
+      s3Prefix = pulumi.Input.asOptionalInput<String>(s3Prefix),
+      sourceArn = pulumi.Input.asInput<String>(sourceArn),
+      timeouts = pulumi.Input.asOptionalInput<ExportTaskTimeouts>(timeouts);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final exportOnliesValue = exportOnlies;
-    if (exportOnliesValue != null) {
-      map['exportOnlies'] = exportOnliesValue;
-    }
-    map['exportTaskIdentifier'] = exportTaskIdentifier;
-    map['iamRoleArn'] = iamRoleArn;
-    map['kmsKeyId'] = kmsKeyId;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['s3BucketName'] = s3BucketName;
-    final s3PrefixValue = s3Prefix;
-    if (s3PrefixValue != null) {
-      map['s3Prefix'] = s3PrefixValue;
-    }
-    map['sourceArn'] = sourceArn;
-    final timeoutsValue = timeouts;
-    if (timeoutsValue != null) {
-      map['timeouts'] = pulumi.Input.mapOptionalInputValue<ExportTaskTimeouts,
-          Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'exportOnlies': ?exportOnlies,
+      'exportTaskIdentifier': exportTaskIdentifier,
+      'iamRoleArn': iamRoleArn,
+      'kmsKeyId': kmsKeyId,
+      'region': ?region,
+      's3BucketName': s3BucketName,
+      's3Prefix': ?s3Prefix,
+      'sourceArn': sourceArn,
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<ExportTaskTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+    };
   }
 
   factory ExportTaskArgs.fromMap(Map<String, dynamic> map) {
     return ExportTaskArgs(
-      exportOnlies: map['exportOnlies'] == null
-          ? null
-          : (map['exportOnlies'] as List).cast<String>(),
+      exportOnlies: map['exportOnlies'] == null ? null : (map['exportOnlies'] as List).cast<String>(),
       exportTaskIdentifier: map['exportTaskIdentifier'] as String,
       iamRoleArn: map['iamRoleArn'] as String,
       kmsKeyId: map['kmsKeyId'] as String,
@@ -105,10 +83,8 @@ class ExportTaskArgs {
       s3BucketName: map['s3BucketName'] as String,
       s3Prefix: map['s3Prefix'] == null ? null : map['s3Prefix'] as String,
       sourceArn: map['sourceArn'] as String,
-      timeouts: map['timeouts'] == null
-          ? null
-          : ExportTaskTimeouts.fromMap(
-              (map['timeouts'] as Map).cast<String, dynamic>()),
+      timeouts: map['timeouts'] == null ? null : ExportTaskTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents an HTTP certificate challenge.
 class CertHttpChallengeResponse {
   /// The URL path on which to serve the specified token to satisfy the certificate challenge.
   final String path;
-
   /// The token to serve at the specified URL path to satisfy the certificate challenge.
   final String token;
 
@@ -17,10 +17,10 @@ class CertHttpChallengeResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['path'] = path;
-    map['token'] = token;
-    return map;
+    return <String, dynamic>{
+      'path': path,
+      'token': token,
+    };
   }
 
   factory CertHttpChallengeResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class CertHttpChallengeResponse {
     );
   }
 }
+

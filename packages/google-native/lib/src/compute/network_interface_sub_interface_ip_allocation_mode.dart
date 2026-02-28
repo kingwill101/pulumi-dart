@@ -12,7 +12,7 @@ enum NetworkInterfaceSubInterfaceIpAllocationMode {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown NetworkInterfaceSubInterfaceIpAllocationMode value: $value');
+    throw ArgumentError('Unknown NetworkInterfaceSubInterfaceIpAllocationMode value: $value');
   }
 }
+

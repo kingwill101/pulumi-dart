@@ -9,15 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataShareAuthorizationArgs {
   /// Whether to allow write operations for a datashare.
   final pulumi.Input<bool>? allowWrites;
-
   /// Identifier of the data consumer that is authorized to access the datashare. This identifier is an AWS account ID or a keyword, such as `ADX`.
   final pulumi.Input<String> consumerIdentifier;
-
   /// Amazon Resource Name (ARN) of the datashare that producers are to authorize sharing for.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> dataShareArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -31,33 +28,28 @@ class DataShareAuthorizationArgs {
     required String consumerIdentifier,
     required String dataShareArn,
     String? region,
-  })  : allowWrites = pulumi.Input.asOptionalInput<bool>(allowWrites),
-        consumerIdentifier = pulumi.Input.asInput<String>(consumerIdentifier),
-        dataShareArn = pulumi.Input.asInput<String>(dataShareArn),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      allowWrites = pulumi.Input.asOptionalInput<bool>(allowWrites),
+      consumerIdentifier = pulumi.Input.asInput<String>(consumerIdentifier),
+      dataShareArn = pulumi.Input.asInput<String>(dataShareArn),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final allowWritesValue = allowWrites;
-    if (allowWritesValue != null) {
-      map['allowWrites'] = allowWritesValue;
-    }
-    map['consumerIdentifier'] = consumerIdentifier;
-    map['dataShareArn'] = dataShareArn;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'allowWrites': ?allowWrites,
+      'consumerIdentifier': consumerIdentifier,
+      'dataShareArn': dataShareArn,
+      'region': ?region,
+    };
   }
 
   factory DataShareAuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return DataShareAuthorizationArgs(
-      allowWrites:
-          map['allowWrites'] == null ? null : map['allowWrites'] as bool,
+      allowWrites: map['allowWrites'] == null ? null : map['allowWrites'] as bool,
       consumerIdentifier: map['consumerIdentifier'] as String,
       dataShareArn: map['dataShareArn'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

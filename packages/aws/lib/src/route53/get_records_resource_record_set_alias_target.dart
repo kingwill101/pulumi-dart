@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRecordsResourceRecordSetAliasTarget {
   /// Target DNS name.
   final String dnsName;
-
   /// Whether an alias resource record set inherits the health of the referenced AWS resource.
   final bool evaluateTargetHealth;
-
   /// Target hosted zone ID.
   final String hostedZoneId;
 
@@ -21,15 +20,14 @@ class GetRecordsResourceRecordSetAliasTarget {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dnsName'] = dnsName;
-    map['evaluateTargetHealth'] = evaluateTargetHealth;
-    map['hostedZoneId'] = hostedZoneId;
-    return map;
+    return <String, dynamic>{
+      'dnsName': dnsName,
+      'evaluateTargetHealth': evaluateTargetHealth,
+      'hostedZoneId': hostedZoneId,
+    };
   }
 
-  factory GetRecordsResourceRecordSetAliasTarget.fromMap(
-      Map<String, dynamic> map) {
+  factory GetRecordsResourceRecordSetAliasTarget.fromMap(Map<String, dynamic> map) {
     return GetRecordsResourceRecordSetAliasTarget(
       dnsName: map['dnsName'] as String,
       evaluateTargetHealth: map['evaluateTargetHealth'] as bool,
@@ -37,3 +35,4 @@ class GetRecordsResourceRecordSetAliasTarget {
     );
   }
 }
+

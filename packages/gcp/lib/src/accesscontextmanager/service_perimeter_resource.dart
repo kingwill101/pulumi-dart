@@ -239,13 +239,10 @@ import 'service_perimeter_resource_args.dart';
 class ServicePerimeterResource extends pulumi.CustomResource {
   /// The name of the Access Policy this resource belongs to.
   late final pulumi.Output<String> accessPolicyId;
-
   /// The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
   late final pulumi.Output<String> etag;
-
   /// The name of the Service Perimeter to add this resource to.
   late final pulumi.Output<String> perimeterName;
-
   /// A GCP resource that is inside of the service perimeter.
   /// Currently only projects are allowed.
   /// Format: projects/{project_number}

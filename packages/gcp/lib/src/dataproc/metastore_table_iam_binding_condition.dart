@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MetastoreTableIamBindingCondition {
   final String? description;
   final String expression;
@@ -16,22 +17,19 @@ class MetastoreTableIamBindingCondition {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    map['expression'] = expression;
-    map['title'] = title;
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'expression': expression,
+      'title': title,
+    };
   }
 
   factory MetastoreTableIamBindingCondition.fromMap(Map<String, dynamic> map) {
     return MetastoreTableIamBindingCondition(
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       expression: map['expression'] as String,
       title: map['title'] as String,
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ViewDataFilterExpressionTag {
   /// Key of the tag.
   final String key;
-
   /// List of values for the tag.
   final List<String> values;
 
@@ -16,10 +16,10 @@ class ViewDataFilterExpressionTag {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    map['values'] = values;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'values': values,
+    };
   }
 
   factory ViewDataFilterExpressionTag.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class ViewDataFilterExpressionTag {
     );
   }
 }
+

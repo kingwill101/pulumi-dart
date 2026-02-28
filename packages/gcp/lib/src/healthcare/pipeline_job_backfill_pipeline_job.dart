@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PipelineJobBackfillPipelineJob {
   /// Specifies the mapping pipeline job to backfill, the name format
   /// should follow: projects/{projectId}/locations/{locationId}/datasets/{datasetId}/pipelineJobs/{pipelineJobId}.
@@ -12,19 +13,15 @@ class PipelineJobBackfillPipelineJob {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final mappingPipelineJobValue = mappingPipelineJob;
-    if (mappingPipelineJobValue != null) {
-      map['mappingPipelineJob'] = mappingPipelineJobValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'mappingPipelineJob': ?mappingPipelineJob,
+    };
   }
 
   factory PipelineJobBackfillPipelineJob.fromMap(Map<String, dynamic> map) {
     return PipelineJobBackfillPipelineJob(
-      mappingPipelineJob: map['mappingPipelineJob'] == null
-          ? null
-          : map['mappingPipelineJob'] as String,
+      mappingPipelineJob: map['mappingPipelineJob'] == null ? null : map['mappingPipelineJob'] as String,
     );
   }
 }
+

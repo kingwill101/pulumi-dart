@@ -19,19 +19,17 @@ class GetRegionCommitmentComputeV1Args {
     required String commitment,
     String? project,
     required String region,
-  })  : commitment = pulumi.Input.asInput<String>(commitment),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asInput<String>(region);
+  }) :
+      commitment = pulumi.Input.asInput<String>(commitment),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['commitment'] = commitment;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'commitment': commitment,
+      'project': ?project,
+      'region': region,
+    };
   }
 
   factory GetRegionCommitmentComputeV1Args.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetRegionCommitmentComputeV1Args {
     );
   }
 }
+

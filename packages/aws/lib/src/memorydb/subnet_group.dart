@@ -181,30 +181,22 @@ import 'subnet_group_args.dart';
 class SubnetGroup extends pulumi.CustomResource {
   /// The ARN of the subnet group.
   late final pulumi.Output<String> arn;
-
   /// Description for the subnet group. Defaults to `"Managed by Pulumi"`.
   late final pulumi.Output<String?> description;
-
   /// Name of the subnet group. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   late final pulumi.Output<String> name;
-
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Set of VPC Subnet ID-s for the subnet group. At least one subnet must be provided.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<List<String>> subnetIds;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The VPC in which the subnet group exists.
   late final pulumi.Output<String> vpcId;
 

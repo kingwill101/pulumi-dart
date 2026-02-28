@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InferenceProfileModelSource {
   /// The Amazon Resource Name (ARN) of the model.
   final String copyFrom;
@@ -11,9 +12,9 @@ class InferenceProfileModelSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['copyFrom'] = copyFrom;
-    return map;
+    return <String, dynamic>{
+      'copyFrom': copyFrom,
+    };
   }
 
   factory InferenceProfileModelSource.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class InferenceProfileModelSource {
     );
   }
 }
+

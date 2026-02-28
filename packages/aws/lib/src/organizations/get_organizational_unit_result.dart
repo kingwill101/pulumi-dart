@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getOrganizationalUnit.
 class GetOrganizationalUnitResult {
   /// ARN of the organizational unit
   final String arn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -23,12 +23,12 @@ class GetOrganizationalUnitResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['id'] = id;
-    map['name'] = name;
-    map['parentId'] = parentId;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'id': id,
+      'name': name,
+      'parentId': parentId,
+    };
   }
 
   factory GetOrganizationalUnitResult.fromMap(Map<String, dynamic> map) {
@@ -40,3 +40,4 @@ class GetOrganizationalUnitResult {
     );
   }
 }
+

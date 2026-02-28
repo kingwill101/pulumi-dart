@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ScalingPlanApplicationSourceTagFilter {
   /// Tag key.
   final String key;
-
   /// Tag values.
   final List<String>? values;
 
@@ -16,21 +16,17 @@ class ScalingPlanApplicationSourceTagFilter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    final valuesValue = values;
-    if (valuesValue != null) {
-      map['values'] = valuesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'values': ?values,
+    };
   }
 
-  factory ScalingPlanApplicationSourceTagFilter.fromMap(
-      Map<String, dynamic> map) {
+  factory ScalingPlanApplicationSourceTagFilter.fromMap(Map<String, dynamic> map) {
     return ScalingPlanApplicationSourceTagFilter(
       key: map['key'] as String,
-      values:
-          map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
     );
   }
 }
+

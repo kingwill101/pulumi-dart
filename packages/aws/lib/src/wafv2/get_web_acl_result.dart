@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getWebAcl.
 class GetWebAclResult {
   /// ARN of the entity.
   final String arn;
-
   /// Description of the WebACL that helps with identification.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? name;
@@ -34,21 +33,15 @@ class GetWebAclResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['description'] = description;
-    map['id'] = id;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    map['region'] = region;
-    final resourceArnValue = resourceArn;
-    if (resourceArnValue != null) {
-      map['resourceArn'] = resourceArnValue;
-    }
-    map['scope'] = scope;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'description': description,
+      'id': id,
+      'name': ?name,
+      'region': region,
+      'resourceArn': ?resourceArn,
+      'scope': scope,
+    };
   }
 
   factory GetWebAclResult.fromMap(Map<String, dynamic> map) {
@@ -58,9 +51,9 @@ class GetWebAclResult {
       id: map['id'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] as String,
-      resourceArn:
-          map['resourceArn'] == null ? null : map['resourceArn'] as String,
+      resourceArn: map['resourceArn'] == null ? null : map['resourceArn'] as String,
       scope: map['scope'] as String,
     );
   }
 }
+

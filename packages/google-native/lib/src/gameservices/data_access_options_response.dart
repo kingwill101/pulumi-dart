@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Write a Data Access (Gin) log
 class DataAccessOptionsResponse {
   final String logMode;
@@ -11,9 +12,9 @@ class DataAccessOptionsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['logMode'] = logMode;
-    return map;
+    return <String, dynamic>{
+      'logMode': logMode,
+    };
   }
 
   factory DataAccessOptionsResponse.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class DataAccessOptionsResponse {
     );
   }
 }
+

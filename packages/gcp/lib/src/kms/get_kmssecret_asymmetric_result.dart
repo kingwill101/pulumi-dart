@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getKMSSecretAsymmetric.
 class GetKMSSecretAsymmetricResult {
   final String ciphertext;
-
   /// Contains the crc32 checksum of the provided ciphertext.
   final String? crc32;
   final String cryptoKeyVersion;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Contains the result of decrypting the provided ciphertext.
   final String plaintext;
 
@@ -29,16 +27,13 @@ class GetKMSSecretAsymmetricResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ciphertext'] = ciphertext;
-    final crc32Value = crc32;
-    if (crc32Value != null) {
-      map['crc32'] = crc32Value;
-    }
-    map['cryptoKeyVersion'] = cryptoKeyVersion;
-    map['id'] = id;
-    map['plaintext'] = plaintext;
-    return map;
+    return <String, dynamic>{
+      'ciphertext': ciphertext,
+      'crc32': ?crc32,
+      'cryptoKeyVersion': cryptoKeyVersion,
+      'id': id,
+      'plaintext': plaintext,
+    };
   }
 
   factory GetKMSSecretAsymmetricResult.fromMap(Map<String, dynamic> map) {
@@ -51,3 +46,4 @@ class GetKMSSecretAsymmetricResult {
     );
   }
 }
+

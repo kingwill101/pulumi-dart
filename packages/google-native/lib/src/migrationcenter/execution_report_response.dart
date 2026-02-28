@@ -6,10 +6,8 @@ import 'validation_report_response.dart';
 class ExecutionReportResponse {
   /// Validation errors encountered during the execution of the import job.
   final ValidationReportResponse executionErrors;
-
   /// Total number of asset frames reported for the import job.
   final int framesReported;
-
   /// Total number of rows in the import job.
   final int totalRowsCount;
 
@@ -24,19 +22,19 @@ class ExecutionReportResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['executionErrors'] = executionErrors.toMap();
-    map['framesReported'] = framesReported;
-    map['totalRowsCount'] = totalRowsCount;
-    return map;
+    return <String, dynamic>{
+      'executionErrors': executionErrors.toMap(),
+      'framesReported': framesReported,
+      'totalRowsCount': totalRowsCount,
+    };
   }
 
   factory ExecutionReportResponse.fromMap(Map<String, dynamic> map) {
     return ExecutionReportResponse(
-      executionErrors: ValidationReportResponse.fromMap(
-          (map['executionErrors'] as Map).cast<String, dynamic>()),
+      executionErrors: ValidationReportResponse.fromMap((map['executionErrors'] as Map).cast<String, dynamic>()),
       framesReported: map['framesReported'] as int,
       totalRowsCount: map['totalRowsCount'] as int,
     );
   }
 }
+

@@ -220,13 +220,10 @@ import 'object_access_control_project_team.dart';
 class ObjectAccessControl extends pulumi.CustomResource {
   /// The name of the bucket.
   late final pulumi.Output<String> bucket;
-
   /// The domain associated with the entity.
   late final pulumi.Output<String> domain;
-
   /// The email address associated with the entity.
   late final pulumi.Output<String> email;
-
   /// The entity holding the permission, in one of the following forms:
   /// * user-{{userId}}
   /// * user-{{email}} (such as "user-liz@example.com")
@@ -237,20 +234,15 @@ class ObjectAccessControl extends pulumi.CustomResource {
   /// * allUsers
   /// * allAuthenticatedUsers
   late final pulumi.Output<String> entity;
-
   /// The ID for the entity
   late final pulumi.Output<String> entityId;
-
   /// The content generation of the object, if applied to an object.
   late final pulumi.Output<int> generation;
-
   /// The name of the object to apply the access control to.
   late final pulumi.Output<String> object;
-
   /// The project team associated with the entity
   /// Structure is documented below.
   late final pulumi.Output<List<ObjectAccessControlProjectTeam>> projectTeams;
-
   /// The access permission for the entity.
   /// Possible values are: `OWNER`, `READER`.
   late final pulumi.Output<String> role;
@@ -276,8 +268,7 @@ class ObjectAccessControl extends pulumi.CustomResource {
     this.entityId = registerOutput<String>('entityId');
     this.generation = registerOutput<int>('generation');
     this.object = registerOutput<String>('object');
-    this.projectTeams =
-        registerOutput<List<ObjectAccessControlProjectTeam>>('projectTeams');
+    this.projectTeams = registerOutput<List<ObjectAccessControlProjectTeam>>('projectTeams');
     this.role = registerOutput<String>('role');
   }
 }

@@ -7,10 +7,8 @@ import 'vmware_vm_details_response_vmmigration_v1alpha1.dart';
 class VmUtilizationInfoResponseVmmigrationV1alpha1 {
   /// Utilization metrics for this VM.
   final VmUtilizationMetricsResponseVmmigrationV1alpha1 utilization;
-
   /// The VM's ID in the source.
   final String vmId;
-
   /// The description of the VM in a Source of type Vmware.
   final VmwareVmDetailsResponseVmmigrationV1alpha1 vmwareVmDetails;
 
@@ -25,21 +23,19 @@ class VmUtilizationInfoResponseVmmigrationV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['utilization'] = utilization.toMap();
-    map['vmId'] = vmId;
-    map['vmwareVmDetails'] = vmwareVmDetails.toMap();
-    return map;
+    return <String, dynamic>{
+      'utilization': utilization.toMap(),
+      'vmId': vmId,
+      'vmwareVmDetails': vmwareVmDetails.toMap(),
+    };
   }
 
-  factory VmUtilizationInfoResponseVmmigrationV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory VmUtilizationInfoResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return VmUtilizationInfoResponseVmmigrationV1alpha1(
-      utilization: VmUtilizationMetricsResponseVmmigrationV1alpha1.fromMap(
-          (map['utilization'] as Map).cast<String, dynamic>()),
+      utilization: VmUtilizationMetricsResponseVmmigrationV1alpha1.fromMap((map['utilization'] as Map).cast<String, dynamic>()),
       vmId: map['vmId'] as String,
-      vmwareVmDetails: VmwareVmDetailsResponseVmmigrationV1alpha1.fromMap(
-          (map['vmwareVmDetails'] as Map).cast<String, dynamic>()),
+      vmwareVmDetails: VmwareVmDetailsResponseVmmigrationV1alpha1.fromMap((map['vmwareVmDetails'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

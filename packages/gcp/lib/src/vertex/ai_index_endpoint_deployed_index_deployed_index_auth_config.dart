@@ -5,8 +5,7 @@ import 'ai_index_endpoint_deployed_index_deployed_index_auth_config_auth_provide
 class AiIndexEndpointDeployedIndexDeployedIndexAuthConfig {
   /// Defines the authentication provider that the DeployedIndex uses.
   /// Structure is documented below.
-  final AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider?
-      authProvider;
+  final AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider? authProvider;
 
   /// Creates a new [AiIndexEndpointDeployedIndexDeployedIndexAuthConfig].
   /// [authProvider] Defines the authentication provider that the DeployedIndex uses.
@@ -15,21 +14,15 @@ class AiIndexEndpointDeployedIndexDeployedIndexAuthConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final authProviderValue = authProvider;
-    if (authProviderValue != null) {
-      map['authProvider'] = authProviderValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'authProvider': ?authProvider == null ? null : authProvider!.toMap(),
+    };
   }
 
-  factory AiIndexEndpointDeployedIndexDeployedIndexAuthConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory AiIndexEndpointDeployedIndexDeployedIndexAuthConfig.fromMap(Map<String, dynamic> map) {
     return AiIndexEndpointDeployedIndexDeployedIndexAuthConfig(
-      authProvider: map['authProvider'] == null
-          ? null
-          : AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider
-              .fromMap((map['authProvider'] as Map).cast<String, dynamic>()),
+      authProvider: map['authProvider'] == null ? null : AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider.fromMap((map['authProvider'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

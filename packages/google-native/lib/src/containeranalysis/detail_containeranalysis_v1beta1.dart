@@ -7,37 +7,26 @@ import 'vulnerability_location_containeranalysis_v1beta1.dart';
 class DetailContaineranalysisV1beta1 {
   /// The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
   final String cpeUri;
-
   /// A vendor-specific description of this note.
   final String? description;
-
   /// The fix for this specific package version.
   final VulnerabilityLocationContaineranalysisV1beta1? fixedLocation;
-
   /// Whether this detail is obsolete. Occurrences are expected not to point to obsolete details.
   final bool? isObsolete;
-
   /// The max version of the package in which the vulnerability exists.
   final VersionContaineranalysisV1beta1? maxAffectedVersion;
-
   /// The min version of the package in which the vulnerability exists.
   final VersionContaineranalysisV1beta1? minAffectedVersion;
-
   /// The name of the package where the vulnerability was found.
   final String package;
-
   /// The type of package; whether native or non native(ruby gems, node.js packages etc).
   final String? packageType;
-
   /// The severity (eg: distro assigned severity) for this vulnerability.
   final String? severityName;
-
   /// The source from which the information in this Detail was obtained.
   final String? source;
-
   /// The time this information was last changed at the source. This is an upstream timestamp from the underlying information source - e.g. Ubuntu security tracker.
   final String? sourceUpdateTime;
-
   /// The name of the vendor of the product.
   final String? vendor;
 
@@ -70,80 +59,37 @@ class DetailContaineranalysisV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cpeUri'] = cpeUri;
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final fixedLocationValue = fixedLocation;
-    if (fixedLocationValue != null) {
-      map['fixedLocation'] = fixedLocationValue.toMap();
-    }
-    final isObsoleteValue = isObsolete;
-    if (isObsoleteValue != null) {
-      map['isObsolete'] = isObsoleteValue;
-    }
-    final maxAffectedVersionValue = maxAffectedVersion;
-    if (maxAffectedVersionValue != null) {
-      map['maxAffectedVersion'] = maxAffectedVersionValue.toMap();
-    }
-    final minAffectedVersionValue = minAffectedVersion;
-    if (minAffectedVersionValue != null) {
-      map['minAffectedVersion'] = minAffectedVersionValue.toMap();
-    }
-    map['package'] = package;
-    final packageTypeValue = packageType;
-    if (packageTypeValue != null) {
-      map['packageType'] = packageTypeValue;
-    }
-    final severityNameValue = severityName;
-    if (severityNameValue != null) {
-      map['severityName'] = severityNameValue;
-    }
-    final sourceValue = source;
-    if (sourceValue != null) {
-      map['source'] = sourceValue;
-    }
-    final sourceUpdateTimeValue = sourceUpdateTime;
-    if (sourceUpdateTimeValue != null) {
-      map['sourceUpdateTime'] = sourceUpdateTimeValue;
-    }
-    final vendorValue = vendor;
-    if (vendorValue != null) {
-      map['vendor'] = vendorValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cpeUri': cpeUri,
+      'description': ?description,
+      'fixedLocation': ?fixedLocation == null ? null : fixedLocation!.toMap(),
+      'isObsolete': ?isObsolete,
+      'maxAffectedVersion': ?maxAffectedVersion == null ? null : maxAffectedVersion!.toMap(),
+      'minAffectedVersion': ?minAffectedVersion == null ? null : minAffectedVersion!.toMap(),
+      'package': package,
+      'packageType': ?packageType,
+      'severityName': ?severityName,
+      'source': ?source,
+      'sourceUpdateTime': ?sourceUpdateTime,
+      'vendor': ?vendor,
+    };
   }
 
   factory DetailContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return DetailContaineranalysisV1beta1(
       cpeUri: map['cpeUri'] as String,
-      description:
-          map['description'] == null ? null : map['description'] as String,
-      fixedLocation: map['fixedLocation'] == null
-          ? null
-          : VulnerabilityLocationContaineranalysisV1beta1.fromMap(
-              (map['fixedLocation'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : map['description'] as String,
+      fixedLocation: map['fixedLocation'] == null ? null : VulnerabilityLocationContaineranalysisV1beta1.fromMap((map['fixedLocation'] as Map).cast<String, dynamic>()),
       isObsolete: map['isObsolete'] == null ? null : map['isObsolete'] as bool,
-      maxAffectedVersion: map['maxAffectedVersion'] == null
-          ? null
-          : VersionContaineranalysisV1beta1.fromMap(
-              (map['maxAffectedVersion'] as Map).cast<String, dynamic>()),
-      minAffectedVersion: map['minAffectedVersion'] == null
-          ? null
-          : VersionContaineranalysisV1beta1.fromMap(
-              (map['minAffectedVersion'] as Map).cast<String, dynamic>()),
+      maxAffectedVersion: map['maxAffectedVersion'] == null ? null : VersionContaineranalysisV1beta1.fromMap((map['maxAffectedVersion'] as Map).cast<String, dynamic>()),
+      minAffectedVersion: map['minAffectedVersion'] == null ? null : VersionContaineranalysisV1beta1.fromMap((map['minAffectedVersion'] as Map).cast<String, dynamic>()),
       package: map['package'] as String,
-      packageType:
-          map['packageType'] == null ? null : map['packageType'] as String,
-      severityName:
-          map['severityName'] == null ? null : map['severityName'] as String,
+      packageType: map['packageType'] == null ? null : map['packageType'] as String,
+      severityName: map['severityName'] == null ? null : map['severityName'] as String,
       source: map['source'] == null ? null : map['source'] as String,
-      sourceUpdateTime: map['sourceUpdateTime'] == null
-          ? null
-          : map['sourceUpdateTime'] as String,
+      sourceUpdateTime: map['sourceUpdateTime'] == null ? null : map['sourceUpdateTime'] as String,
       vendor: map['vendor'] == null ? null : map['vendor'] as String,
     );
   }
 }
+

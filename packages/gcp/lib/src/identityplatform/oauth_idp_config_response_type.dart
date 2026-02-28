@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class OauthIdpConfigResponseType {
   /// If true, authorization code is returned from IdP's authorization endpoint.
   final bool? code;
-
   /// If true, ID token is returned from IdP's authorization endpoint.
   final bool? idToken;
 
@@ -16,16 +16,10 @@ class OauthIdpConfigResponseType {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final codeValue = code;
-    if (codeValue != null) {
-      map['code'] = codeValue;
-    }
-    final idTokenValue = idToken;
-    if (idTokenValue != null) {
-      map['idToken'] = idTokenValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'code': ?code,
+      'idToken': ?idToken,
+    };
   }
 
   factory OauthIdpConfigResponseType.fromMap(Map<String, dynamic> map) {
@@ -35,3 +29,4 @@ class OauthIdpConfigResponseType {
     );
   }
 }
+

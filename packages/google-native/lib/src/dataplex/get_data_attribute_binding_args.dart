@@ -19,20 +19,17 @@ class GetDataAttributeBindingArgs {
     required String dataAttributeBindingId,
     required String location,
     String? project,
-  })  : dataAttributeBindingId =
-            pulumi.Input.asInput<String>(dataAttributeBindingId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      dataAttributeBindingId = pulumi.Input.asInput<String>(dataAttributeBindingId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dataAttributeBindingId'] = dataAttributeBindingId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'dataAttributeBindingId': dataAttributeBindingId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetDataAttributeBindingArgs.fromMap(Map<String, dynamic> map) {
@@ -43,3 +40,4 @@ class GetDataAttributeBindingArgs {
     );
   }
 }
+

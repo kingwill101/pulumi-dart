@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InsightFiltersThreatIntelIndicatorCategory {
   final String comparison;
   final String value;
@@ -13,17 +14,17 @@ class InsightFiltersThreatIntelIndicatorCategory {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['comparison'] = comparison;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'comparison': comparison,
+      'value': value,
+    };
   }
 
-  factory InsightFiltersThreatIntelIndicatorCategory.fromMap(
-      Map<String, dynamic> map) {
+  factory InsightFiltersThreatIntelIndicatorCategory.fromMap(Map<String, dynamic> map) {
     return InsightFiltersThreatIntelIndicatorCategory(
       comparison: map['comparison'] as String,
       value: map['value'] as String,
     );
   }
 }
+

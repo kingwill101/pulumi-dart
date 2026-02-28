@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterLogDeliveryConfiguration {
   /// Name of either the CloudWatch Logs LogGroup or Kinesis Data Firehose resource.
   final String destination;
-
   /// For CloudWatch Logs use `cloudwatch-logs` or for Kinesis Data Firehose use `kinesis-firehose`.
   final String destinationType;
-
   /// Valid values are `json` or `text`
   final String logFormat;
-
   /// Valid values are  `slow-log` or `engine-log`. Max 1 of each.
   final String logType;
 
@@ -26,12 +24,12 @@ class ClusterLogDeliveryConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['destination'] = destination;
-    map['destinationType'] = destinationType;
-    map['logFormat'] = logFormat;
-    map['logType'] = logType;
-    return map;
+    return <String, dynamic>{
+      'destination': destination,
+      'destinationType': destinationType,
+      'logFormat': logFormat,
+      'logType': logType,
+    };
   }
 
   factory ClusterLogDeliveryConfiguration.fromMap(Map<String, dynamic> map) {
@@ -43,3 +41,4 @@ class ClusterLogDeliveryConfiguration {
     );
   }
 }
+

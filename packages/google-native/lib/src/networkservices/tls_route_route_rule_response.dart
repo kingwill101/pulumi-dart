@@ -8,7 +8,6 @@ import 'tls_route_route_match_response.dart';
 class TlsRouteRouteRuleResponse {
   /// The detailed rule defining how to route matched traffic.
   final TlsRouteRouteActionResponse action;
-
   /// RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "OR"ed for evaluation.
   final List<TlsRouteRouteMatchResponse> matches;
 
@@ -21,21 +20,17 @@ class TlsRouteRouteRuleResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['action'] = action.toMap();
-    map['matches'] = pulumi.Input.encodeList<TlsRouteRouteMatchResponse,
-        Map<String, dynamic>>(matches, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'action': action.toMap(),
+      'matches': pulumi.Input.encodeList<TlsRouteRouteMatchResponse, Map<String, dynamic>>(matches, (value) => value.toMap()),
+    };
   }
 
   factory TlsRouteRouteRuleResponse.fromMap(Map<String, dynamic> map) {
     return TlsRouteRouteRuleResponse(
-      action: TlsRouteRouteActionResponse.fromMap(
-          (map['action'] as Map).cast<String, dynamic>()),
-      matches: pulumi.Input.decodeList<TlsRouteRouteMatchResponse>(
-          map['matches'],
-          (value) => TlsRouteRouteMatchResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      action: TlsRouteRouteActionResponse.fromMap((map['action'] as Map).cast<String, dynamic>()),
+      matches: pulumi.Input.decodeList<TlsRouteRouteMatchResponse>(map['matches'], (value) => TlsRouteRouteMatchResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

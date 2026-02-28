@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Cloud Storage bucket profile.
 class GcsProfile {
   /// The Cloud Storage bucket name.
   final String bucket;
-
   /// The root path inside the Cloud Storage bucket.
   final String? rootPath;
 
@@ -17,13 +17,10 @@ class GcsProfile {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucket'] = bucket;
-    final rootPathValue = rootPath;
-    if (rootPathValue != null) {
-      map['rootPath'] = rootPathValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'bucket': bucket,
+      'rootPath': ?rootPath,
+    };
   }
 
   factory GcsProfile.fromMap(Map<String, dynamic> map) {
@@ -33,3 +30,4 @@ class GcsProfile {
     );
   }
 }
+

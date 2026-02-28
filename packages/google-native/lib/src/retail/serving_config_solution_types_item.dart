@@ -15,3 +15,4 @@ enum ServingConfigSolutionTypesItem {
     throw ArgumentError('Unknown ServingConfigSolutionTypesItem value: $value');
   }
 }
+

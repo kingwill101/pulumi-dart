@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// ContainerPort represents a network port in a single container.
 class ContainerPortResponse {
   /// Port number the container listens on. If present, this must be a valid port number, 0 < x < 65536. If not present, it will default to port 8080. For more information, see https://cloud.google.com/run/docs/container-contract#port
   final int containerPort;
-
   /// If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
   final String name;
-
   /// Protocol for port. Must be "TCP". Defaults to "TCP".
   final String protocol;
 
@@ -22,11 +21,11 @@ class ContainerPortResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['containerPort'] = containerPort;
-    map['name'] = name;
-    map['protocol'] = protocol;
-    return map;
+    return <String, dynamic>{
+      'containerPort': containerPort,
+      'name': name,
+      'protocol': protocol,
+    };
   }
 
   factory ContainerPortResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class ContainerPortResponse {
     );
   }
 }
+

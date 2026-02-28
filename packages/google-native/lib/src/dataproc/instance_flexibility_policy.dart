@@ -15,24 +15,15 @@ class InstanceFlexibilityPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final instanceSelectionListValue = instanceSelectionList;
-    if (instanceSelectionListValue != null) {
-      map['instanceSelectionList'] =
-          pulumi.Input.encodeList<InstanceSelection, Map<String, dynamic>>(
-              instanceSelectionListValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'instanceSelectionList': ?instanceSelectionList == null ? null : pulumi.Input.encodeList<InstanceSelection, Map<String, dynamic>>(instanceSelectionList!, (value) => value.toMap()),
+    };
   }
 
   factory InstanceFlexibilityPolicy.fromMap(Map<String, dynamic> map) {
     return InstanceFlexibilityPolicy(
-      instanceSelectionList: map['instanceSelectionList'] == null
-          ? null
-          : pulumi.Input.decodeList<InstanceSelection>(
-              map['instanceSelectionList'],
-              (value) => InstanceSelection.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      instanceSelectionList: map['instanceSelectionList'] == null ? null : pulumi.Input.decodeList<InstanceSelection>(map['instanceSelectionList'], (value) => InstanceSelection.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

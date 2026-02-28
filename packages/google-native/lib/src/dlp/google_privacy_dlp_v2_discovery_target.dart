@@ -14,20 +14,15 @@ class GooglePrivacyDlpV2DiscoveryTarget {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final bigQueryTargetValue = bigQueryTarget;
-    if (bigQueryTargetValue != null) {
-      map['bigQueryTarget'] = bigQueryTargetValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'bigQueryTarget': ?bigQueryTarget == null ? null : bigQueryTarget!.toMap(),
+    };
   }
 
   factory GooglePrivacyDlpV2DiscoveryTarget.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DiscoveryTarget(
-      bigQueryTarget: map['bigQueryTarget'] == null
-          ? null
-          : GooglePrivacyDlpV2BigQueryDiscoveryTarget.fromMap(
-              (map['bigQueryTarget'] as Map).cast<String, dynamic>()),
+      bigQueryTarget: map['bigQueryTarget'] == null ? null : GooglePrivacyDlpV2BigQueryDiscoveryTarget.fromMap((map['bigQueryTarget'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

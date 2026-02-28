@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PluginHostingService {
   /// The URI of the service implemented by the plugin developer, used to
   /// invoke the plugin's functionality. This information is only required for
@@ -13,18 +14,15 @@ class PluginHostingService {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final serviceUriValue = serviceUri;
-    if (serviceUriValue != null) {
-      map['serviceUri'] = serviceUriValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'serviceUri': ?serviceUri,
+    };
   }
 
   factory PluginHostingService.fromMap(Map<String, dynamic> map) {
     return PluginHostingService(
-      serviceUri:
-          map['serviceUri'] == null ? null : map['serviceUri'] as String,
+      serviceUri: map['serviceUri'] == null ? null : map['serviceUri'] as String,
     );
   }
 }
+

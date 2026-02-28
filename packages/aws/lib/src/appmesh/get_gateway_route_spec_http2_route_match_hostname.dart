@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetGatewayRouteSpecHttp2RouteMatchHostname {
   final String exact;
   final String suffix;
@@ -13,17 +14,17 @@ class GetGatewayRouteSpecHttp2RouteMatchHostname {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['exact'] = exact;
-    map['suffix'] = suffix;
-    return map;
+    return <String, dynamic>{
+      'exact': exact,
+      'suffix': suffix,
+    };
   }
 
-  factory GetGatewayRouteSpecHttp2RouteMatchHostname.fromMap(
-      Map<String, dynamic> map) {
+  factory GetGatewayRouteSpecHttp2RouteMatchHostname.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpecHttp2RouteMatchHostname(
       exact: map['exact'] as String,
       suffix: map['suffix'] as String,
     );
   }
 }
+

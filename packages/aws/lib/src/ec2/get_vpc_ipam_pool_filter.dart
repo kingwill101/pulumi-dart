@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetVpcIpamPoolFilter {
   /// The name of the filter. Filter names are case-sensitive.
   final String name;
-
   /// The filter values. Filter values are case-sensitive.
   final List<String> values;
 
@@ -16,10 +16,10 @@ class GetVpcIpamPoolFilter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['values'] = values;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'values': values,
+    };
   }
 
   factory GetVpcIpamPoolFilter.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetVpcIpamPoolFilter {
     );
   }
 }
+

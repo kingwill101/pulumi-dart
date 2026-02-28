@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSupportedInstanceTypesArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Amazon EMR release label. For more information about Amazon EMR releases and their included application versions and features, see the [Amazon EMR Release Guide](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-release-components.html).
   final pulumi.Input<String> releaseLabel;
 
@@ -19,17 +18,15 @@ class GetSupportedInstanceTypesArgs {
   GetSupportedInstanceTypesArgs({
     String? region,
     required String releaseLabel,
-  })  : region = pulumi.Input.asOptionalInput<String>(region),
-        releaseLabel = pulumi.Input.asInput<String>(releaseLabel);
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      releaseLabel = pulumi.Input.asInput<String>(releaseLabel);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['releaseLabel'] = releaseLabel;
-    return map;
+    return <String, dynamic>{
+      'region': ?region,
+      'releaseLabel': releaseLabel,
+    };
   }
 
   factory GetSupportedInstanceTypesArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +36,4 @@ class GetSupportedInstanceTypesArgs {
     );
   }
 }
+

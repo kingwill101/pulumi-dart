@@ -8,7 +8,6 @@ import 'expr.dart';
 class GoogleCloudHealthcareV1ConsentPolicy {
   /// The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
   final Expr authorizationRule;
-
   /// The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user.
   final List<Attribute>? resourceAttributes;
 
@@ -21,28 +20,17 @@ class GoogleCloudHealthcareV1ConsentPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['authorizationRule'] = authorizationRule.toMap();
-    final resourceAttributesValue = resourceAttributes;
-    if (resourceAttributesValue != null) {
-      map['resourceAttributes'] =
-          pulumi.Input.encodeList<Attribute, Map<String, dynamic>>(
-              resourceAttributesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'authorizationRule': authorizationRule.toMap(),
+      'resourceAttributes': ?resourceAttributes == null ? null : pulumi.Input.encodeList<Attribute, Map<String, dynamic>>(resourceAttributes!, (value) => value.toMap()),
+    };
   }
 
-  factory GoogleCloudHealthcareV1ConsentPolicy.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudHealthcareV1ConsentPolicy.fromMap(Map<String, dynamic> map) {
     return GoogleCloudHealthcareV1ConsentPolicy(
-      authorizationRule: Expr.fromMap(
-          (map['authorizationRule'] as Map).cast<String, dynamic>()),
-      resourceAttributes: map['resourceAttributes'] == null
-          ? null
-          : pulumi.Input.decodeList<Attribute>(
-              map['resourceAttributes'],
-              (value) =>
-                  Attribute.fromMap((value as Map).cast<String, dynamic>())),
+      authorizationRule: Expr.fromMap((map['authorizationRule'] as Map).cast<String, dynamic>()),
+      resourceAttributes: map['resourceAttributes'] == null ? null : pulumi.Input.decodeList<Attribute>(map['resourceAttributes'], (value) => Attribute.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

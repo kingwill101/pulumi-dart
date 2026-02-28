@@ -284,46 +284,32 @@ import 'workspace_saml_configuration_args.dart';
 class WorkspaceSamlConfiguration extends pulumi.CustomResource {
   /// The admin role values.
   late final pulumi.Output<List<String>?> adminRoleValues;
-
   /// The allowed organizations.
   late final pulumi.Output<List<String>?> allowedOrganizations;
-
   /// The editor role values.
   late final pulumi.Output<List<String>> editorRoleValues;
-
   /// The email assertion.
   late final pulumi.Output<String> emailAssertion;
-
   /// The groups assertion.
   late final pulumi.Output<String?> groupsAssertion;
-
   /// The IDP Metadata URL. Note that either `idp_metadata_url` or `idp_metadata_xml` (but not both) must be specified.
   late final pulumi.Output<String?> idpMetadataUrl;
-
   /// The IDP Metadata XML. Note that either `idp_metadata_url` or `idp_metadata_xml` (but not both) must be specified.
   late final pulumi.Output<String?> idpMetadataXml;
-
   /// The login assertion.
   late final pulumi.Output<String> loginAssertion;
-
   /// The login validity duration.
   late final pulumi.Output<int> loginValidityDuration;
-
   /// The name assertion.
   late final pulumi.Output<String> nameAssertion;
-
   /// The org assertion.
   late final pulumi.Output<String?> orgAssertion;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The role assertion.
   late final pulumi.Output<String?> roleAssertion;
-
   /// The status of the SAML configuration.
   late final pulumi.Output<String> status;
-
   /// The workspace id.
   ///
   /// The following arguments are optional:
@@ -344,8 +330,7 @@ class WorkspaceSamlConfiguration extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.adminRoleValues = registerOutput<List<String>?>('adminRoleValues');
-    this.allowedOrganizations =
-        registerOutput<List<String>?>('allowedOrganizations');
+    this.allowedOrganizations = registerOutput<List<String>?>('allowedOrganizations');
     this.editorRoleValues = registerOutput<List<String>>('editorRoleValues');
     this.emailAssertion = registerOutput<String>('emailAssertion');
     this.groupsAssertion = registerOutput<String?>('groupsAssertion');

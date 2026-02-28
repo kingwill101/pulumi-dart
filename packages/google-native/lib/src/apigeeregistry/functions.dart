@@ -137,8 +137,7 @@ Future<GetApiVersionIamPolicyResult> getApiVersionIamPolicy(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigeeregistry_v1_get_api_version_spec_artifact_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetApiVersionSpecArtifactIamPolicyResult>
-    getApiVersionSpecArtifactIamPolicy(
+Future<GetApiVersionSpecArtifactIamPolicyResult> getApiVersionSpecArtifactIamPolicy(
   GetApiVersionSpecArtifactIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

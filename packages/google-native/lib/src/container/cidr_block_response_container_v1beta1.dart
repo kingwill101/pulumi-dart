@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// CidrBlock contains an optional name and one CIDR block.
 class CidrBlockResponseContainerV1beta1 {
   /// cidr_block must be specified in CIDR notation.
   final String cidrBlock;
-
   /// display_name is an optional field for users to identify CIDR blocks.
   final String displayName;
 
@@ -17,10 +17,10 @@ class CidrBlockResponseContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cidrBlock'] = cidrBlock;
-    map['displayName'] = displayName;
-    return map;
+    return <String, dynamic>{
+      'cidrBlock': cidrBlock,
+      'displayName': displayName,
+    };
   }
 
   factory CidrBlockResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class CidrBlockResponseContainerV1beta1 {
     );
   }
 }
+

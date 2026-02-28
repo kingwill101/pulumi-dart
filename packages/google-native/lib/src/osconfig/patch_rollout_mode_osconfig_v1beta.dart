@@ -16,3 +16,4 @@ enum PatchRolloutModeOsconfigV1beta {
     throw ArgumentError('Unknown PatchRolloutModeOsconfigV1beta value: $value');
   }
 }
+

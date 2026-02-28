@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ImageShieldedInstanceInitialStateDbx {
   /// The raw content in the secure keys file.
   /// A base64-encoded string.
   final String content;
-
   /// The file type of source file.
   final String? fileType;
 
@@ -17,20 +17,17 @@ class ImageShieldedInstanceInitialStateDbx {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['content'] = content;
-    final fileTypeValue = fileType;
-    if (fileTypeValue != null) {
-      map['fileType'] = fileTypeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'content': content,
+      'fileType': ?fileType,
+    };
   }
 
-  factory ImageShieldedInstanceInitialStateDbx.fromMap(
-      Map<String, dynamic> map) {
+  factory ImageShieldedInstanceInitialStateDbx.fromMap(Map<String, dynamic> map) {
     return ImageShieldedInstanceInitialStateDbx(
       content: map['content'] as String,
       fileType: map['fileType'] == null ? null : map['fileType'] as String,
     );
   }
 }
+

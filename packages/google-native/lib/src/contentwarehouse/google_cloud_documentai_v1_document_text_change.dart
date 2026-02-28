@@ -8,10 +8,8 @@ import 'google_cloud_documentai_v1_document_text_anchor.dart';
 class GoogleCloudDocumentaiV1DocumentTextChange {
   /// The text that replaces the text identified in the `text_anchor`.
   final String? changedText;
-
   /// The history of this annotation.
   final List<GoogleCloudDocumentaiV1DocumentProvenance>? provenance;
-
   /// Provenance of the correction. Text anchor indexing into the Document.text. There can only be a single `TextAnchor.text_segments` element. If the start and end index of the text segment are the same, the text change is inserted before that index.
   final GoogleCloudDocumentaiV1DocumentTextAnchor? textAnchor;
 
@@ -26,39 +24,19 @@ class GoogleCloudDocumentaiV1DocumentTextChange {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final changedTextValue = changedText;
-    if (changedTextValue != null) {
-      map['changedText'] = changedTextValue;
-    }
-    final provenanceValue = provenance;
-    if (provenanceValue != null) {
-      map['provenance'] = pulumi.Input.encodeList<
-          GoogleCloudDocumentaiV1DocumentProvenance,
-          Map<String, dynamic>>(provenanceValue, (value) => value.toMap());
-    }
-    final textAnchorValue = textAnchor;
-    if (textAnchorValue != null) {
-      map['textAnchor'] = textAnchorValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'changedText': ?changedText,
+      'provenance': ?provenance == null ? null : pulumi.Input.encodeList<GoogleCloudDocumentaiV1DocumentProvenance, Map<String, dynamic>>(provenance!, (value) => value.toMap()),
+      'textAnchor': ?textAnchor == null ? null : textAnchor!.toMap(),
+    };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentTextChange.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentTextChange.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentTextChange(
-      changedText:
-          map['changedText'] == null ? null : map['changedText'] as String,
-      provenance: map['provenance'] == null
-          ? null
-          : pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentProvenance>(
-              map['provenance'],
-              (value) => GoogleCloudDocumentaiV1DocumentProvenance.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      textAnchor: map['textAnchor'] == null
-          ? null
-          : GoogleCloudDocumentaiV1DocumentTextAnchor.fromMap(
-              (map['textAnchor'] as Map).cast<String, dynamic>()),
+      changedText: map['changedText'] == null ? null : map['changedText'] as String,
+      provenance: map['provenance'] == null ? null : pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentProvenance>(map['provenance'], (value) => GoogleCloudDocumentaiV1DocumentProvenance.fromMap((value as Map).cast<String, dynamic>())),
+      textAnchor: map['textAnchor'] == null ? null : GoogleCloudDocumentaiV1DocumentTextAnchor.fromMap((map['textAnchor'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

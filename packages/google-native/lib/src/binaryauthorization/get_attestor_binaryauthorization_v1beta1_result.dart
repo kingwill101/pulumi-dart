@@ -6,16 +6,12 @@ import 'user_owned_drydock_note_response.dart';
 class GetAttestorBinaryauthorizationV1beta1Result {
   /// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
   final String description;
-
   /// Optional. A checksum, returned by the server, that can be sent on update requests to ensure the attestor has an up-to-date value before attempting to update it. See https://google.aip.dev/154.
   final String etag;
-
   /// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
   final String name;
-
   /// Time when the attestor was last updated.
   final String updateTime;
-
   /// A Drydock ATTESTATION_AUTHORITY Note, created by the user.
   final UserOwnedDrydockNoteResponse userOwnedDrydockNote;
 
@@ -34,24 +30,23 @@ class GetAttestorBinaryauthorizationV1beta1Result {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['description'] = description;
-    map['etag'] = etag;
-    map['name'] = name;
-    map['updateTime'] = updateTime;
-    map['userOwnedDrydockNote'] = userOwnedDrydockNote.toMap();
-    return map;
+    return <String, dynamic>{
+      'description': description,
+      'etag': etag,
+      'name': name,
+      'updateTime': updateTime,
+      'userOwnedDrydockNote': userOwnedDrydockNote.toMap(),
+    };
   }
 
-  factory GetAttestorBinaryauthorizationV1beta1Result.fromMap(
-      Map<String, dynamic> map) {
+  factory GetAttestorBinaryauthorizationV1beta1Result.fromMap(Map<String, dynamic> map) {
     return GetAttestorBinaryauthorizationV1beta1Result(
       description: map['description'] as String,
       etag: map['etag'] as String,
       name: map['name'] as String,
       updateTime: map['updateTime'] as String,
-      userOwnedDrydockNote: UserOwnedDrydockNoteResponse.fromMap(
-          (map['userOwnedDrydockNote'] as Map).cast<String, dynamic>()),
+      userOwnedDrydockNote: UserOwnedDrydockNoteResponse.fromMap((map['userOwnedDrydockNote'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

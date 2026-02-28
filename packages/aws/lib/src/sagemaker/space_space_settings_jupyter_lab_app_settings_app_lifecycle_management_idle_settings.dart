@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings {
   /// The time that SageMaker AI waits after the application becomes idle before shutting it down. Valid values are between `60` and `525600`.
   final int? idleTimeoutInMinutes;
@@ -11,20 +12,15 @@ class SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings 
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final idleTimeoutInMinutesValue = idleTimeoutInMinutes;
-    if (idleTimeoutInMinutesValue != null) {
-      map['idleTimeoutInMinutes'] = idleTimeoutInMinutesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'idleTimeoutInMinutes': ?idleTimeoutInMinutes,
+    };
   }
 
-  factory SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings.fromMap(
-      Map<String, dynamic> map) {
+  factory SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings.fromMap(Map<String, dynamic> map) {
     return SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings(
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null
-          ? null
-          : map['idleTimeoutInMinutes'] as int,
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : map['idleTimeoutInMinutes'] as int,
     );
   }
 }
+

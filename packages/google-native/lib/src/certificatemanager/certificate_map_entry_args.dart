@@ -11,23 +11,17 @@ class CertificateMapEntryArgs {
   /// Required. A user-provided name of the certificate map entry.
   final pulumi.Input<String> certificateMapEntryId;
   final pulumi.Input<String> certificateMapId;
-
   /// A set of Certificates defines for the given `hostname`. There can be defined up to four certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.
   final pulumi.Input<List<String>>? certificates;
-
   /// One or more paragraphs of text description of a certificate map entry.
   final pulumi.Input<String>? description;
-
   /// A Hostname (FQDN, e.g. `example.com`) or a wildcard hostname expression (`*.example.com`) for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate.
   final pulumi.Input<String>? hostname;
-
   /// Set of labels associated with a Certificate Map Entry.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
-
   /// A predefined matcher for particular cases, other than SNI selection.
   final pulumi.Input<CertificateMapEntryMatcher>? matcher;
-
   /// A user-defined name of the Certificate Map Entry. Certificate Map Entry names must be unique globally and match pattern `projects/*/locations/*/certificateMaps/*/certificateMapEntries/*`.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
@@ -54,79 +48,46 @@ class CertificateMapEntryArgs {
     CertificateMapEntryMatcher? matcher,
     String? name,
     String? project,
-  })  : certificateMapEntryId =
-            pulumi.Input.asInput<String>(certificateMapEntryId),
-        certificateMapId = pulumi.Input.asInput<String>(certificateMapId),
-        certificates = pulumi.Input.asOptionalInput<List<String>>(certificates),
-        description = pulumi.Input.asOptionalInput<String>(description),
-        hostname = pulumi.Input.asOptionalInput<String>(hostname),
-        labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-        location = pulumi.Input.asOptionalInput<String>(location),
-        matcher =
-            pulumi.Input.asOptionalInput<CertificateMapEntryMatcher>(matcher),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      certificateMapEntryId = pulumi.Input.asInput<String>(certificateMapEntryId),
+      certificateMapId = pulumi.Input.asInput<String>(certificateMapId),
+      certificates = pulumi.Input.asOptionalInput<List<String>>(certificates),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      hostname = pulumi.Input.asOptionalInput<String>(hostname),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      matcher = pulumi.Input.asOptionalInput<CertificateMapEntryMatcher>(matcher),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['certificateMapEntryId'] = certificateMapEntryId;
-    map['certificateMapId'] = certificateMapId;
-    final certificatesValue = certificates;
-    if (certificatesValue != null) {
-      map['certificates'] = certificatesValue;
-    }
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final hostnameValue = hostname;
-    if (hostnameValue != null) {
-      map['hostname'] = hostnameValue;
-    }
-    final labelsValue = labels;
-    if (labelsValue != null) {
-      map['labels'] = labelsValue;
-    }
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    final matcherValue = matcher;
-    if (matcherValue != null) {
-      map['matcher'] = pulumi.Input.mapOptionalInputValue<
-          CertificateMapEntryMatcher,
-          String>(matcherValue, (value) => value.value);
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'certificateMapEntryId': certificateMapEntryId,
+      'certificateMapId': certificateMapId,
+      'certificates': ?certificates,
+      'description': ?description,
+      'hostname': ?hostname,
+      'labels': ?labels,
+      'location': ?location,
+      'matcher': ?pulumi.Input.mapOptionalInputValue<CertificateMapEntryMatcher, String>(matcher, (value) => value.value),
+      'name': ?name,
+      'project': ?project,
+    };
   }
 
   factory CertificateMapEntryArgs.fromMap(Map<String, dynamic> map) {
     return CertificateMapEntryArgs(
       certificateMapEntryId: map['certificateMapEntryId'] as String,
       certificateMapId: map['certificateMapId'] as String,
-      certificates: map['certificates'] == null
-          ? null
-          : (map['certificates'] as List).cast<String>(),
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      certificates: map['certificates'] == null ? null : (map['certificates'] as List).cast<String>(),
+      description: map['description'] == null ? null : map['description'] as String,
       hostname: map['hostname'] == null ? null : map['hostname'] as String,
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       location: map['location'] == null ? null : map['location'] as String,
-      matcher: map['matcher'] == null
-          ? null
-          : CertificateMapEntryMatcher.fromValue(map['matcher'] as String),
+      matcher: map['matcher'] == null ? null : CertificateMapEntryMatcher.fromValue(map['matcher'] as String),
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

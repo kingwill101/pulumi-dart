@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BucketReplicationConfigRuleSourceSelectionCriteriaSseKmsEncryptedObjects {
   /// Whether the existing objects should be replicated. Either `"Enabled"` or `"Disabled"`.
   final String status;
@@ -11,15 +12,15 @@ class BucketReplicationConfigRuleSourceSelectionCriteriaSseKmsEncryptedObjects {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['status'] = status;
-    return map;
+    return <String, dynamic>{
+      'status': status,
+    };
   }
 
-  factory BucketReplicationConfigRuleSourceSelectionCriteriaSseKmsEncryptedObjects.fromMap(
-      Map<String, dynamic> map) {
+  factory BucketReplicationConfigRuleSourceSelectionCriteriaSseKmsEncryptedObjects.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfigRuleSourceSelectionCriteriaSseKmsEncryptedObjects(
       status: map['status'] as String,
     );
   }
 }
+

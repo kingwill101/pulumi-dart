@@ -116,22 +116,16 @@ import 'log_destination_args.dart';
 class LogDestination extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) specifying the log destination.
   late final pulumi.Output<String> arn;
-
   /// A name for the log destination.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ARN of an IAM role that grants Amazon CloudWatch Logs permissions to put data into the target.
   late final pulumi.Output<String> roleArn;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The ARN of the target Amazon Kinesis stream resource for the destination.
   late final pulumi.Output<String> targetArn;
 

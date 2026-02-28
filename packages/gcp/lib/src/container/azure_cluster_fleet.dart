@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AzureClusterFleet {
   /// The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/<project-number>/locations/global/membership/<cluster-id>.
   final String? membership;
-
   /// The number of the Fleet host project where this cluster will be registered.
   final String? project;
 
@@ -16,23 +16,17 @@ class AzureClusterFleet {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final membershipValue = membership;
-    if (membershipValue != null) {
-      map['membership'] = membershipValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'membership': ?membership,
+      'project': ?project,
+    };
   }
 
   factory AzureClusterFleet.fromMap(Map<String, dynamic> map) {
     return AzureClusterFleet(
-      membership:
-          map['membership'] == null ? null : map['membership'] as String,
+      membership: map['membership'] == null ? null : map['membership'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

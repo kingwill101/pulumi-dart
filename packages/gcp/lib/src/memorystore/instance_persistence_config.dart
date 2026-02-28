@@ -7,7 +7,6 @@ class InstancePersistenceConfig {
   /// Configuration for AOF based persistence.
   /// Structure is documented below.
   final InstancePersistenceConfigAofConfig? aofConfig;
-
   /// Optional. Current persistence mode.
   /// Possible values:
   /// DISABLED
@@ -15,7 +14,6 @@ class InstancePersistenceConfig {
   /// AOF
   /// Possible values are: `DISABLED`, `RDB`, `AOF`.
   final String? mode;
-
   /// Configuration for RDB based persistence.
   /// Structure is documented below.
   final InstancePersistenceConfigRdbConfig? rdbConfig;
@@ -31,33 +29,19 @@ class InstancePersistenceConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final aofConfigValue = aofConfig;
-    if (aofConfigValue != null) {
-      map['aofConfig'] = aofConfigValue.toMap();
-    }
-    final modeValue = mode;
-    if (modeValue != null) {
-      map['mode'] = modeValue;
-    }
-    final rdbConfigValue = rdbConfig;
-    if (rdbConfigValue != null) {
-      map['rdbConfig'] = rdbConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'aofConfig': ?aofConfig == null ? null : aofConfig!.toMap(),
+      'mode': ?mode,
+      'rdbConfig': ?rdbConfig == null ? null : rdbConfig!.toMap(),
+    };
   }
 
   factory InstancePersistenceConfig.fromMap(Map<String, dynamic> map) {
     return InstancePersistenceConfig(
-      aofConfig: map['aofConfig'] == null
-          ? null
-          : InstancePersistenceConfigAofConfig.fromMap(
-              (map['aofConfig'] as Map).cast<String, dynamic>()),
+      aofConfig: map['aofConfig'] == null ? null : InstancePersistenceConfigAofConfig.fromMap((map['aofConfig'] as Map).cast<String, dynamic>()),
       mode: map['mode'] == null ? null : map['mode'] as String,
-      rdbConfig: map['rdbConfig'] == null
-          ? null
-          : InstancePersistenceConfigRdbConfig.fromMap(
-              (map['rdbConfig'] as Map).cast<String, dynamic>()),
+      rdbConfig: map['rdbConfig'] == null ? null : InstancePersistenceConfigRdbConfig.fromMap((map['rdbConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'hash.dart';
 class ResourceType {
   /// The hash of the resource content. E.g., the Docker digest.
   final Hash? contentHash;
-
   /// The name of the resource. E.g., the name of a Docker image - "Debian".
   final String? name;
-
   /// The unique URI of the resource. E.g., "https://gcr.io/project/image@sha256:foo" for a Docker image.
   final String? uri;
 
@@ -24,29 +22,19 @@ class ResourceType {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final contentHashValue = contentHash;
-    if (contentHashValue != null) {
-      map['contentHash'] = contentHashValue.toMap();
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final uriValue = uri;
-    if (uriValue != null) {
-      map['uri'] = uriValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'contentHash': ?contentHash == null ? null : contentHash!.toMap(),
+      'name': ?name,
+      'uri': ?uri,
+    };
   }
 
   factory ResourceType.fromMap(Map<String, dynamic> map) {
     return ResourceType(
-      contentHash: map['contentHash'] == null
-          ? null
-          : Hash.fromMap((map['contentHash'] as Map).cast<String, dynamic>()),
+      contentHash: map['contentHash'] == null ? null : Hash.fromMap((map['contentHash'] as Map).cast<String, dynamic>()),
       name: map['name'] == null ? null : map['name'] as String,
       uri: map['uri'] == null ? null : map['uri'] as String,
     );
   }
 }
+

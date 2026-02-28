@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MediaInsightsPipelineConfigurationElementSnsTopicSinkConfiguration {
   /// SNS topic to deliver results.
   final String insightsTarget;
@@ -11,15 +12,15 @@ class MediaInsightsPipelineConfigurationElementSnsTopicSinkConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['insightsTarget'] = insightsTarget;
-    return map;
+    return <String, dynamic>{
+      'insightsTarget': insightsTarget,
+    };
   }
 
-  factory MediaInsightsPipelineConfigurationElementSnsTopicSinkConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory MediaInsightsPipelineConfigurationElementSnsTopicSinkConfiguration.fromMap(Map<String, dynamic> map) {
     return MediaInsightsPipelineConfigurationElementSnsTopicSinkConfiguration(
       insightsTarget: map['insightsTarget'] as String,
     );
   }
 }
+

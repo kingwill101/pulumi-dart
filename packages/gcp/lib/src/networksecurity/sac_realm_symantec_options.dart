@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SacRealmSymantecOptions {
   /// (Output)
   /// Symantec site IDs which the user can choose to connect to.
   final List<String>? availableSymantecSites;
-
   /// API Key used to call Symantec APIs on the user's behalf. Required if using Symantec Cloud SWG. P4SA account needs permissions granted to read this secret.
   /// A secret ID, secret name, or secret URI can be specified, but it will be parsed and stored as a secret URI in the form projects/{projectNumber}/secrets/my-secret.
   final String? secretPath;
-
   /// (Output)
   /// Connection status to Symantec API
   final String? symantecConnectionState;
@@ -24,32 +23,19 @@ class SacRealmSymantecOptions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final availableSymantecSitesValue = availableSymantecSites;
-    if (availableSymantecSitesValue != null) {
-      map['availableSymantecSites'] = availableSymantecSitesValue;
-    }
-    final secretPathValue = secretPath;
-    if (secretPathValue != null) {
-      map['secretPath'] = secretPathValue;
-    }
-    final symantecConnectionStateValue = symantecConnectionState;
-    if (symantecConnectionStateValue != null) {
-      map['symantecConnectionState'] = symantecConnectionStateValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'availableSymantecSites': ?availableSymantecSites,
+      'secretPath': ?secretPath,
+      'symantecConnectionState': ?symantecConnectionState,
+    };
   }
 
   factory SacRealmSymantecOptions.fromMap(Map<String, dynamic> map) {
     return SacRealmSymantecOptions(
-      availableSymantecSites: map['availableSymantecSites'] == null
-          ? null
-          : (map['availableSymantecSites'] as List).cast<String>(),
-      secretPath:
-          map['secretPath'] == null ? null : map['secretPath'] as String,
-      symantecConnectionState: map['symantecConnectionState'] == null
-          ? null
-          : map['symantecConnectionState'] as String,
+      availableSymantecSites: map['availableSymantecSites'] == null ? null : (map['availableSymantecSites'] as List).cast<String>(),
+      secretPath: map['secretPath'] == null ? null : map['secretPath'] as String,
+      symantecConnectionState: map['symantecConnectionState'] == null ? null : map['symantecConnectionState'] as String,
     );
   }
 }
+

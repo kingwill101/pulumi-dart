@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Digest information.
 class DigestResponse {
   /// `SHA1`, `SHA512` etc.
   final String algo;
-
   /// Value of the digest.
   final String digestBytes;
 
@@ -17,10 +17,10 @@ class DigestResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['algo'] = algo;
-    map['digestBytes'] = digestBytes;
-    return map;
+    return <String, dynamic>{
+      'algo': algo,
+      'digestBytes': digestBytes,
+    };
   }
 
   factory DigestResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class DigestResponse {
     );
   }
 }
+

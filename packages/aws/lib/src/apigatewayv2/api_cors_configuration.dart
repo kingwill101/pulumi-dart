@@ -1,21 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ApiCorsConfiguration {
   /// Whether credentials are included in the CORS request.
   final bool? allowCredentials;
-
   /// Set of allowed HTTP headers.
   final List<String>? allowHeaders;
-
   /// Set of allowed HTTP methods.
   final List<String>? allowMethods;
-
   /// Set of allowed origins.
   final List<String>? allowOrigins;
-
   /// Set of exposed HTTP headers.
   final List<String>? exposeHeaders;
-
   /// Number of seconds that the browser should cache preflight request results.
   final int? maxAge;
 
@@ -36,52 +32,25 @@ class ApiCorsConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final allowCredentialsValue = allowCredentials;
-    if (allowCredentialsValue != null) {
-      map['allowCredentials'] = allowCredentialsValue;
-    }
-    final allowHeadersValue = allowHeaders;
-    if (allowHeadersValue != null) {
-      map['allowHeaders'] = allowHeadersValue;
-    }
-    final allowMethodsValue = allowMethods;
-    if (allowMethodsValue != null) {
-      map['allowMethods'] = allowMethodsValue;
-    }
-    final allowOriginsValue = allowOrigins;
-    if (allowOriginsValue != null) {
-      map['allowOrigins'] = allowOriginsValue;
-    }
-    final exposeHeadersValue = exposeHeaders;
-    if (exposeHeadersValue != null) {
-      map['exposeHeaders'] = exposeHeadersValue;
-    }
-    final maxAgeValue = maxAge;
-    if (maxAgeValue != null) {
-      map['maxAge'] = maxAgeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'allowCredentials': ?allowCredentials,
+      'allowHeaders': ?allowHeaders,
+      'allowMethods': ?allowMethods,
+      'allowOrigins': ?allowOrigins,
+      'exposeHeaders': ?exposeHeaders,
+      'maxAge': ?maxAge,
+    };
   }
 
   factory ApiCorsConfiguration.fromMap(Map<String, dynamic> map) {
     return ApiCorsConfiguration(
-      allowCredentials: map['allowCredentials'] == null
-          ? null
-          : map['allowCredentials'] as bool,
-      allowHeaders: map['allowHeaders'] == null
-          ? null
-          : (map['allowHeaders'] as List).cast<String>(),
-      allowMethods: map['allowMethods'] == null
-          ? null
-          : (map['allowMethods'] as List).cast<String>(),
-      allowOrigins: map['allowOrigins'] == null
-          ? null
-          : (map['allowOrigins'] as List).cast<String>(),
-      exposeHeaders: map['exposeHeaders'] == null
-          ? null
-          : (map['exposeHeaders'] as List).cast<String>(),
+      allowCredentials: map['allowCredentials'] == null ? null : map['allowCredentials'] as bool,
+      allowHeaders: map['allowHeaders'] == null ? null : (map['allowHeaders'] as List).cast<String>(),
+      allowMethods: map['allowMethods'] == null ? null : (map['allowMethods'] as List).cast<String>(),
+      allowOrigins: map['allowOrigins'] == null ? null : (map['allowOrigins'] as List).cast<String>(),
+      exposeHeaders: map['exposeHeaders'] == null ? null : (map['exposeHeaders'] as List).cast<String>(),
       maxAge: map['maxAge'] == null ? null : map['maxAge'] as int,
     );
   }
 }
+

@@ -7,7 +7,6 @@ import 'google_privacy_dlp_v2_pub_sub_notification_response.dart';
 class GooglePrivacyDlpV2DataProfileActionResponse {
   /// Export data profiles into a provided location.
   final GooglePrivacyDlpV2ExportResponse exportData;
-
   /// Publish a message into the Pub/Sub topic.
   final GooglePrivacyDlpV2PubSubNotificationResponse pubSubNotification;
 
@@ -20,19 +19,17 @@ class GooglePrivacyDlpV2DataProfileActionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['exportData'] = exportData.toMap();
-    map['pubSubNotification'] = pubSubNotification.toMap();
-    return map;
+    return <String, dynamic>{
+      'exportData': exportData.toMap(),
+      'pubSubNotification': pubSubNotification.toMap(),
+    };
   }
 
-  factory GooglePrivacyDlpV2DataProfileActionResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2DataProfileActionResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DataProfileActionResponse(
-      exportData: GooglePrivacyDlpV2ExportResponse.fromMap(
-          (map['exportData'] as Map).cast<String, dynamic>()),
-      pubSubNotification: GooglePrivacyDlpV2PubSubNotificationResponse.fromMap(
-          (map['pubSubNotification'] as Map).cast<String, dynamic>()),
+      exportData: GooglePrivacyDlpV2ExportResponse.fromMap((map['exportData'] as Map).cast<String, dynamic>()),
+      pubSubNotification: GooglePrivacyDlpV2PubSubNotificationResponse.fromMap((map['pubSubNotification'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

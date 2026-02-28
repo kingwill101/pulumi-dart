@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MembershipAuthority {
   final String issuer;
 
@@ -10,9 +11,9 @@ class MembershipAuthority {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['issuer'] = issuer;
-    return map;
+    return <String, dynamic>{
+      'issuer': issuer,
+    };
   }
 
   factory MembershipAuthority.fromMap(Map<String, dynamic> map) {
@@ -21,3 +22,4 @@ class MembershipAuthority {
     );
   }
 }
+

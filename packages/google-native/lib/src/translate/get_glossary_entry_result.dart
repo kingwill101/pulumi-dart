@@ -7,13 +7,10 @@ import 'glossary_terms_set_response.dart';
 class GetGlossaryEntryResult {
   /// Describes the glossary entry.
   final String description;
-
   /// The resource name of the entry. Format: "projects/*/locations/*/glossaries/*/glossaryEntries/*"
   final String name;
-
   /// Used for an unidirectional glossary.
   final GlossaryTermsPairResponse termsPair;
-
   /// Used for an equivalent term sets glossary.
   final GlossaryTermsSetResponse termsSet;
 
@@ -30,22 +27,21 @@ class GetGlossaryEntryResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['description'] = description;
-    map['name'] = name;
-    map['termsPair'] = termsPair.toMap();
-    map['termsSet'] = termsSet.toMap();
-    return map;
+    return <String, dynamic>{
+      'description': description,
+      'name': name,
+      'termsPair': termsPair.toMap(),
+      'termsSet': termsSet.toMap(),
+    };
   }
 
   factory GetGlossaryEntryResult.fromMap(Map<String, dynamic> map) {
     return GetGlossaryEntryResult(
       description: map['description'] as String,
       name: map['name'] as String,
-      termsPair: GlossaryTermsPairResponse.fromMap(
-          (map['termsPair'] as Map).cast<String, dynamic>()),
-      termsSet: GlossaryTermsSetResponse.fromMap(
-          (map['termsSet'] as Map).cast<String, dynamic>()),
+      termsPair: GlossaryTermsPairResponse.fromMap((map['termsPair'] as Map).cast<String, dynamic>()),
+      termsSet: GlossaryTermsSetResponse.fromMap((map['termsSet'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

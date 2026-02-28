@@ -3,30 +3,22 @@ import 'organization_event_threat_detection_setting_custom_module_args.dart';
 
 /// Creates an Event Threat Detection custom module.
 /// Auto-naming is currently not supported for this resource.
-class OrganizationEventThreatDetectionSettingCustomModule
-    extends pulumi.CustomResource {
+class OrganizationEventThreatDetectionSettingCustomModule extends pulumi.CustomResource {
   /// Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.
   late final pulumi.Output<Map<String, String>> config;
-
   /// The description for the module.
   late final pulumi.Output<String> description;
-
   /// The human readable name to be displayed for the module.
   late final pulumi.Output<String> displayName;
-
   /// The state of enablement for the module at the given level of the hierarchy.
   late final pulumi.Output<String> enablementState;
-
   /// The editor the module was last updated by.
   late final pulumi.Output<String> lastEditor;
-
   /// Immutable. The resource name of the Event Threat Detection custom module. Its format is: * "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}". * "folders/{folder}/eventThreatDetectionSettings/customModules/{module}". * "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> organizationId;
-
   /// Type for the module. e.g. CONFIGURABLE_BAD_IP.
   late final pulumi.Output<String> type;
-
   /// The time the module was last updated.
   late final pulumi.Output<String> updateTime;
 

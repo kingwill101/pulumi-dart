@@ -5,12 +5,9 @@ import 'google_cloud_dataplex_v1_entity_compatibility_status_compatibility_respo
 /// Provides compatibility information for various metadata stores.
 class GoogleCloudDataplexV1EntityCompatibilityStatusResponse {
   /// Whether this entity is compatible with BigQuery.
-  final GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponse
-      bigquery;
-
+  final GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponse bigquery;
   /// Whether this entity is compatible with Hive Metastore.
-  final GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponse
-      hiveMetastore;
+  final GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponse hiveMetastore;
 
   /// Creates a new [GoogleCloudDataplexV1EntityCompatibilityStatusResponse].
   /// [bigquery] Whether this entity is compatible with BigQuery.
@@ -21,21 +18,17 @@ class GoogleCloudDataplexV1EntityCompatibilityStatusResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bigquery'] = bigquery.toMap();
-    map['hiveMetastore'] = hiveMetastore.toMap();
-    return map;
+    return <String, dynamic>{
+      'bigquery': bigquery.toMap(),
+      'hiveMetastore': hiveMetastore.toMap(),
+    };
   }
 
-  factory GoogleCloudDataplexV1EntityCompatibilityStatusResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1EntityCompatibilityStatusResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1EntityCompatibilityStatusResponse(
-      bigquery:
-          GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponse
-              .fromMap((map['bigquery'] as Map).cast<String, dynamic>()),
-      hiveMetastore:
-          GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponse
-              .fromMap((map['hiveMetastore'] as Map).cast<String, dynamic>()),
+      bigquery: GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponse.fromMap((map['bigquery'] as Map).cast<String, dynamic>()),
+      hiveMetastore: GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponse.fromMap((map['hiveMetastore'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -8,18 +8,12 @@ import 'google_cloud_aiplatform_v1beta1_model_monitoring_stats_anomalies_objecti
 class GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomalies {
   /// Number of anomalies within all stats.
   final int? anomalyCount;
-
   /// Deployed Model ID.
   final String? deployedModelId;
-
   /// A list of historical Stats and Anomalies generated for all Features.
-  final List<
-          GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies>?
-      featureStats;
-
+  final List<GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies>? featureStats;
   /// Model Monitoring Objective those stats and anomalies belonging to.
-  final GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjective?
-      objective;
+  final GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjective? objective;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomalies].
   /// [anomalyCount] Number of anomalies within all stats.
@@ -34,48 +28,21 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomalies {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final anomalyCountValue = anomalyCount;
-    if (anomalyCountValue != null) {
-      map['anomalyCount'] = anomalyCountValue;
-    }
-    final deployedModelIdValue = deployedModelId;
-    if (deployedModelIdValue != null) {
-      map['deployedModelId'] = deployedModelIdValue;
-    }
-    final featureStatsValue = featureStats;
-    if (featureStatsValue != null) {
-      map['featureStats'] = pulumi.Input.encodeList<
-          GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies,
-          Map<String, dynamic>>(featureStatsValue, (value) => value.toMap());
-    }
-    final objectiveValue = objective;
-    if (objectiveValue != null) {
-      map['objective'] = objectiveValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'anomalyCount': ?anomalyCount,
+      'deployedModelId': ?deployedModelId,
+      'featureStats': ?featureStats == null ? null : pulumi.Input.encodeList<GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies, Map<String, dynamic>>(featureStats!, (value) => value.toMap()),
+      'objective': ?objective == null ? null : objective!.value,
+    };
   }
 
-  factory GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomalies.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomalies.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomalies(
-      anomalyCount:
-          map['anomalyCount'] == null ? null : map['anomalyCount'] as int,
-      deployedModelId: map['deployedModelId'] == null
-          ? null
-          : map['deployedModelId'] as String,
-      featureStats: map['featureStats'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies>(
-              map['featureStats'],
-              (value) =>
-                  GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies
-                      .fromMap((value as Map).cast<String, dynamic>())),
-      objective: map['objective'] == null
-          ? null
-          : GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjective
-              .fromValue(map['objective'] as String),
+      anomalyCount: map['anomalyCount'] == null ? null : map['anomalyCount'] as int,
+      deployedModelId: map['deployedModelId'] == null ? null : map['deployedModelId'] as String,
+      featureStats: map['featureStats'] == null ? null : pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies>(map['featureStats'], (value) => GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies.fromMap((value as Map).cast<String, dynamic>())),
+      objective: map['objective'] == null ? null : GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjective.fromValue(map['objective'] as String),
     );
   }
 }
+

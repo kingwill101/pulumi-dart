@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A reference to a Compute Engine instance.
 class InstanceReferenceResponse {
   /// The unique identifier of the Compute Engine instance.
   final String instanceId;
-
   /// The user-friendly name of the Compute Engine instance.
   final String instanceName;
-
   /// The public ECIES key used for sharing data with this instance.
   final String publicEciesKey;
-
   /// The public RSA key used for sharing data with this instance.
   final String publicKey;
 
@@ -27,12 +25,12 @@ class InstanceReferenceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['instanceId'] = instanceId;
-    map['instanceName'] = instanceName;
-    map['publicEciesKey'] = publicEciesKey;
-    map['publicKey'] = publicKey;
-    return map;
+    return <String, dynamic>{
+      'instanceId': instanceId,
+      'instanceName': instanceName,
+      'publicEciesKey': publicEciesKey,
+      'publicKey': publicKey,
+    };
   }
 
   factory InstanceReferenceResponse.fromMap(Map<String, dynamic> map) {
@@ -44,3 +42,4 @@ class InstanceReferenceResponse {
     );
   }
 }
+

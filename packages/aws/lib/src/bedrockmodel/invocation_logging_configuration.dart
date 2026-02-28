@@ -424,9 +424,7 @@ import 'invocation_logging_configuration_logging_config.dart';
 /// ```
 class InvocationLoggingConfiguration extends pulumi.CustomResource {
   /// The logging configuration values to set. See `logging_config` Block for details.
-  late final pulumi.Output<InvocationLoggingConfigurationLoggingConfig>
-      loggingConfig;
-
+  late final pulumi.Output<InvocationLoggingConfigurationLoggingConfig> loggingConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -444,9 +442,7 @@ class InvocationLoggingConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.loggingConfig =
-        registerOutput<InvocationLoggingConfigurationLoggingConfig>(
-            'loggingConfig');
+    this.loggingConfig = registerOutput<InvocationLoggingConfigurationLoggingConfig>('loggingConfig');
     this.region = registerOutput<String>('region');
   }
 }

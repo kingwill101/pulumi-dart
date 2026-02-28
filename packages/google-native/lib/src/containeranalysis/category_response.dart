@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The category to which the update belongs.
 class CategoryResponse {
   /// The identifier of the category.
   final String categoryId;
-
   /// The localized name of the category.
   final String name;
 
@@ -17,10 +17,10 @@ class CategoryResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['categoryId'] = categoryId;
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'categoryId': categoryId,
+      'name': name,
+    };
   }
 
   factory CategoryResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class CategoryResponse {
     );
   }
 }
+

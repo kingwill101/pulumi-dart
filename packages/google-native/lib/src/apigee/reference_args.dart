@@ -10,14 +10,11 @@ class ReferenceArgs {
   /// Optional. A human-readable description of this reference.
   final pulumi.Input<String>? description;
   final pulumi.Input<String> environmentId;
-
   /// The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
   final pulumi.Input<String>? name;
   final pulumi.Input<String> organizationId;
-
   /// The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
   final pulumi.Input<String> refers;
-
   /// The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
   final pulumi.Input<String>? resourceType;
 
@@ -35,43 +32,34 @@ class ReferenceArgs {
     required String organizationId,
     required String refers,
     String? resourceType,
-  })  : description = pulumi.Input.asOptionalInput<String>(description),
-        environmentId = pulumi.Input.asInput<String>(environmentId),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        organizationId = pulumi.Input.asInput<String>(organizationId),
-        refers = pulumi.Input.asInput<String>(refers),
-        resourceType = pulumi.Input.asOptionalInput<String>(resourceType);
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      environmentId = pulumi.Input.asInput<String>(environmentId),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      organizationId = pulumi.Input.asInput<String>(organizationId),
+      refers = pulumi.Input.asInput<String>(refers),
+      resourceType = pulumi.Input.asOptionalInput<String>(resourceType);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    map['environmentId'] = environmentId;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    map['organizationId'] = organizationId;
-    map['refers'] = refers;
-    final resourceTypeValue = resourceType;
-    if (resourceTypeValue != null) {
-      map['resourceType'] = resourceTypeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'environmentId': environmentId,
+      'name': ?name,
+      'organizationId': organizationId,
+      'refers': refers,
+      'resourceType': ?resourceType,
+    };
   }
 
   factory ReferenceArgs.fromMap(Map<String, dynamic> map) {
     return ReferenceArgs(
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       environmentId: map['environmentId'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       organizationId: map['organizationId'] as String,
       refers: map['refers'] as String,
-      resourceType:
-          map['resourceType'] == null ? null : map['resourceType'] as String,
+      resourceType: map['resourceType'] == null ? null : map['resourceType'] as String,
     );
   }
 }
+

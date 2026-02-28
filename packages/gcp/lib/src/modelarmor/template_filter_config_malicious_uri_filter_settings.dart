@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TemplateFilterConfigMaliciousUriFilterSettings {
   /// Tells whether the Malicious URI filter is enabled or disabled.
   /// Possible values:
@@ -14,20 +15,15 @@ class TemplateFilterConfigMaliciousUriFilterSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final filterEnforcementValue = filterEnforcement;
-    if (filterEnforcementValue != null) {
-      map['filterEnforcement'] = filterEnforcementValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'filterEnforcement': ?filterEnforcement,
+    };
   }
 
-  factory TemplateFilterConfigMaliciousUriFilterSettings.fromMap(
-      Map<String, dynamic> map) {
+  factory TemplateFilterConfigMaliciousUriFilterSettings.fromMap(Map<String, dynamic> map) {
     return TemplateFilterConfigMaliciousUriFilterSettings(
-      filterEnforcement: map['filterEnforcement'] == null
-          ? null
-          : map['filterEnforcement'] as String,
+      filterEnforcement: map['filterEnforcement'] == null ? null : map['filterEnforcement'] as String,
     );
   }
 }
+

@@ -6,13 +6,10 @@ import 'local_object_reference.dart';
 class ConfigMapKeySelector {
   /// Not supported by Cloud Run.
   final String key;
-
   /// Not supported by Cloud Run.
   final LocalObjectReference? localObjectReference;
-
   /// Not supported by Cloud Run.
   final String name;
-
   /// Not supported by Cloud Run.
   final bool? optional;
 
@@ -29,29 +26,21 @@ class ConfigMapKeySelector {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    final localObjectReferenceValue = localObjectReference;
-    if (localObjectReferenceValue != null) {
-      map['localObjectReference'] = localObjectReferenceValue.toMap();
-    }
-    map['name'] = name;
-    final optionalValue = optional;
-    if (optionalValue != null) {
-      map['optional'] = optionalValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'localObjectReference': ?localObjectReference == null ? null : localObjectReference!.toMap(),
+      'name': name,
+      'optional': ?optional,
+    };
   }
 
   factory ConfigMapKeySelector.fromMap(Map<String, dynamic> map) {
     return ConfigMapKeySelector(
       key: map['key'] as String,
-      localObjectReference: map['localObjectReference'] == null
-          ? null
-          : LocalObjectReference.fromMap(
-              (map['localObjectReference'] as Map).cast<String, dynamic>()),
+      localObjectReference: map['localObjectReference'] == null ? null : LocalObjectReference.fromMap((map['localObjectReference'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       optional: map['optional'] == null ? null : map['optional'] as bool,
     );
   }
 }
+

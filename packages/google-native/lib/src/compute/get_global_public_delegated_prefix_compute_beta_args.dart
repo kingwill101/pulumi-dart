@@ -16,25 +16,22 @@ class GetGlobalPublicDelegatedPrefixComputeBetaArgs {
   GetGlobalPublicDelegatedPrefixComputeBetaArgs({
     String? project,
     required String publicDelegatedPrefix,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        publicDelegatedPrefix =
-            pulumi.Input.asInput<String>(publicDelegatedPrefix);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      publicDelegatedPrefix = pulumi.Input.asInput<String>(publicDelegatedPrefix);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['publicDelegatedPrefix'] = publicDelegatedPrefix;
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'publicDelegatedPrefix': publicDelegatedPrefix,
+    };
   }
 
-  factory GetGlobalPublicDelegatedPrefixComputeBetaArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetGlobalPublicDelegatedPrefixComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetGlobalPublicDelegatedPrefixComputeBetaArgs(
       project: map['project'] == null ? null : map['project'] as String,
       publicDelegatedPrefix: map['publicDelegatedPrefix'] as String,
     );
   }
 }
+

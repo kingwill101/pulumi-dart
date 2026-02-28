@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetNodeGroupTaint {
   /// The effect of the taint.
   final String effect;
-
   /// The key of the taint.
   final String key;
-
   /// The value of the taint.
   final String value;
 
@@ -21,11 +20,11 @@ class GetNodeGroupTaint {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['effect'] = effect;
-    map['key'] = key;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'effect': effect,
+      'key': key,
+      'value': value,
+    };
   }
 
   factory GetNodeGroupTaint.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class GetNodeGroupTaint {
     );
   }
 }
+

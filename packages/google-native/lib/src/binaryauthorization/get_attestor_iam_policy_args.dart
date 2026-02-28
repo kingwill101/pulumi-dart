@@ -19,33 +19,25 @@ class GetAttestorIamPolicyArgs {
     required String attestorId,
     int? optionsRequestedPolicyVersion,
     String? project,
-  })  : attestorId = pulumi.Input.asInput<String>(attestorId),
-        optionsRequestedPolicyVersion =
-            pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      attestorId = pulumi.Input.asInput<String>(attestorId),
+      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['attestorId'] = attestorId;
-    final optionsRequestedPolicyVersionValue = optionsRequestedPolicyVersion;
-    if (optionsRequestedPolicyVersionValue != null) {
-      map['optionsRequestedPolicyVersion'] = optionsRequestedPolicyVersionValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'attestorId': attestorId,
+      'optionsRequestedPolicyVersion': ?optionsRequestedPolicyVersion,
+      'project': ?project,
+    };
   }
 
   factory GetAttestorIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAttestorIamPolicyArgs(
       attestorId: map['attestorId'] as String,
-      optionsRequestedPolicyVersion:
-          map['optionsRequestedPolicyVersion'] == null
-              ? null
-              : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

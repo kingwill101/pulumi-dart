@@ -14,19 +14,15 @@ class ReleaseChannel {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final channelValue = channel;
-    if (channelValue != null) {
-      map['channel'] = channelValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'channel': ?channel == null ? null : channel!.value,
+    };
   }
 
   factory ReleaseChannel.fromMap(Map<String, dynamic> map) {
     return ReleaseChannel(
-      channel: map['channel'] == null
-          ? null
-          : ReleaseChannelChannel.fromValue(map['channel'] as String),
+      channel: map['channel'] == null ? null : ReleaseChannelChannel.fromValue(map['channel'] as String),
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInferenceProfileArgs {
   /// Inference Profile identifier.
   final pulumi.Input<String> inferenceProfileId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -19,17 +18,15 @@ class GetInferenceProfileArgs {
   GetInferenceProfileArgs({
     required String inferenceProfileId,
     String? region,
-  })  : inferenceProfileId = pulumi.Input.asInput<String>(inferenceProfileId),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      inferenceProfileId = pulumi.Input.asInput<String>(inferenceProfileId),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['inferenceProfileId'] = inferenceProfileId;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'inferenceProfileId': inferenceProfileId,
+      'region': ?region,
+    };
   }
 
   factory GetInferenceProfileArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +36,4 @@ class GetInferenceProfileArgs {
     );
   }
 }
+

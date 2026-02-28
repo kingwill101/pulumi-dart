@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetQueuesArgs {
   /// A string to use for filtering the list results. Only those queues whose name begins with the specified string are returned. Queue URLs and names are case-sensitive.
   final pulumi.Input<String>? queueNamePrefix;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -19,28 +18,22 @@ class GetQueuesArgs {
   GetQueuesArgs({
     String? queueNamePrefix,
     String? region,
-  })  : queueNamePrefix = pulumi.Input.asOptionalInput<String>(queueNamePrefix),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      queueNamePrefix = pulumi.Input.asOptionalInput<String>(queueNamePrefix),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final queueNamePrefixValue = queueNamePrefix;
-    if (queueNamePrefixValue != null) {
-      map['queueNamePrefix'] = queueNamePrefixValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'queueNamePrefix': ?queueNamePrefix,
+      'region': ?region,
+    };
   }
 
   factory GetQueuesArgs.fromMap(Map<String, dynamic> map) {
     return GetQueuesArgs(
-      queueNamePrefix: map['queueNamePrefix'] == null
-          ? null
-          : map['queueNamePrefix'] as String,
+      queueNamePrefix: map['queueNamePrefix'] == null ? null : map['queueNamePrefix'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

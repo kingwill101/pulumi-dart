@@ -19,3 +19,4 @@ enum CasePriority {
     throw ArgumentError('Unknown CasePriority value: $value');
   }
 }
+

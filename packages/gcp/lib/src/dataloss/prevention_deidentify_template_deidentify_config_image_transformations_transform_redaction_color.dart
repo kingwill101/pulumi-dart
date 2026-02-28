@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColor {
   /// The amount of blue in the color as a value in the interval [0, 1].
   final double? blue;
-
   /// The amount of green in the color as a value in the interval [0, 1].
   final double? green;
-
   /// The amount of red in the color as a value in the interval [0, 1].
   final double? red;
 
@@ -21,24 +20,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformR
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final blueValue = blue;
-    if (blueValue != null) {
-      map['blue'] = blueValue;
-    }
-    final greenValue = green;
-    if (greenValue != null) {
-      map['green'] = greenValue;
-    }
-    final redValue = red;
-    if (redValue != null) {
-      map['red'] = redValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'blue': ?blue,
+      'green': ?green,
+      'red': ?red,
+    };
   }
 
-  factory PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColor.fromMap(
-      Map<String, dynamic> map) {
+  factory PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColor.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColor(
       blue: map['blue'] == null ? null : map['blue'] as double,
       green: map['green'] == null ? null : map['green'] as double,
@@ -46,3 +35,4 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformR
     );
   }
 }
+

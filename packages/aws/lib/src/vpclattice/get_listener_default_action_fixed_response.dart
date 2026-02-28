@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetListenerDefaultActionFixedResponse {
   final int statusCode;
 
@@ -10,15 +11,15 @@ class GetListenerDefaultActionFixedResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['statusCode'] = statusCode;
-    return map;
+    return <String, dynamic>{
+      'statusCode': statusCode,
+    };
   }
 
-  factory GetListenerDefaultActionFixedResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GetListenerDefaultActionFixedResponse.fromMap(Map<String, dynamic> map) {
     return GetListenerDefaultActionFixedResponse(
       statusCode: map['statusCode'] as int,
     );
   }
 }
+

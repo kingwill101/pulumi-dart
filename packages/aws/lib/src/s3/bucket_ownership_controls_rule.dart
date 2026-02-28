@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BucketOwnershipControlsRule {
   /// Object ownership. Valid values: `BucketOwnerPreferred`, `ObjectWriter` or `BucketOwnerEnforced`
   /// * `BucketOwnerPreferred` - Objects uploaded to the bucket change ownership to the bucket owner if the objects are uploaded with the `bucket-owner-full-control` canned ACL.
@@ -14,9 +15,9 @@ class BucketOwnershipControlsRule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['objectOwnership'] = objectOwnership;
-    return map;
+    return <String, dynamic>{
+      'objectOwnership': objectOwnership,
+    };
   }
 
   factory BucketOwnershipControlsRule.fromMap(Map<String, dynamic> map) {
@@ -25,3 +26,4 @@ class BucketOwnershipControlsRule {
     );
   }
 }
+

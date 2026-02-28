@@ -17,25 +17,22 @@ class GetDistributionArgs {
   GetDistributionArgs({
     required String id,
     Map<String, String>? tags,
-  })  : id = pulumi.Input.asInput<String>(id),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      id = pulumi.Input.asInput<String>(id),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'tags': ?tags,
+    };
   }
 
   factory GetDistributionArgs.fromMap(Map<String, dynamic> map) {
     return GetDistributionArgs(
       id: map['id'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

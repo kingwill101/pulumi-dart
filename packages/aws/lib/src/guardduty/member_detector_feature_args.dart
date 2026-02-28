@@ -10,20 +10,14 @@ import 'member_detector_feature_additional_configuration.dart';
 class MemberDetectorFeatureArgs {
   /// Member account ID to be updated.
   final pulumi.Input<String> accountId;
-
   /// Additional feature configuration block. See below.
-  final pulumi.Input<List<MemberDetectorFeatureAdditionalConfiguration>>?
-      additionalConfigurations;
-
+  final pulumi.Input<List<MemberDetectorFeatureAdditionalConfiguration>>? additionalConfigurations;
   /// Amazon GuardDuty detector ID.
   final pulumi.Input<String> detectorId;
-
   /// The name of the detector feature. Valid values: `S3_DATA_EVENTS`, `EKS_AUDIT_LOGS`, `EBS_MALWARE_PROTECTION`, `RDS_LOGIN_EVENTS`, `EKS_RUNTIME_MONITORING`,`RUNTIME_MONITORING`, `LAMBDA_NETWORK_LOGS`.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The status of the detector feature. Valid values: `ENABLED`, `DISABLED`.
   final pulumi.Input<String> status;
 
@@ -36,57 +30,34 @@ class MemberDetectorFeatureArgs {
   /// [status] The status of the detector feature. Valid values: `ENABLED`, `DISABLED`.
   MemberDetectorFeatureArgs({
     required String accountId,
-    List<MemberDetectorFeatureAdditionalConfiguration>?
-        additionalConfigurations,
+    List<MemberDetectorFeatureAdditionalConfiguration>? additionalConfigurations,
     required String detectorId,
     String? name,
     String? region,
     required String status,
-  })  : accountId = pulumi.Input.asInput<String>(accountId),
-        additionalConfigurations = pulumi.Input.asOptionalInput<
-                List<MemberDetectorFeatureAdditionalConfiguration>>(
-            additionalConfigurations),
-        detectorId = pulumi.Input.asInput<String>(detectorId),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        status = pulumi.Input.asInput<String>(status);
+  }) :
+      accountId = pulumi.Input.asInput<String>(accountId),
+      additionalConfigurations = pulumi.Input.asOptionalInput<List<MemberDetectorFeatureAdditionalConfiguration>>(additionalConfigurations),
+      detectorId = pulumi.Input.asInput<String>(detectorId),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      status = pulumi.Input.asInput<String>(status);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accountId'] = accountId;
-    final additionalConfigurationsValue = additionalConfigurations;
-    if (additionalConfigurationsValue != null) {
-      map['additionalConfigurations'] = pulumi.Input.mapOptionalInputValue<
-              List<MemberDetectorFeatureAdditionalConfiguration>,
-              List<Map<String, dynamic>>>(
-          additionalConfigurationsValue,
-          (value) => pulumi.Input.encodeList<
-              MemberDetectorFeatureAdditionalConfiguration,
-              Map<String, dynamic>>(value, (value) => value.toMap()));
-    }
-    map['detectorId'] = detectorId;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['status'] = status;
-    return map;
+    return <String, dynamic>{
+      'accountId': accountId,
+      'additionalConfigurations': ?pulumi.Input.mapOptionalInputValue<List<MemberDetectorFeatureAdditionalConfiguration>, List<Map<String, dynamic>>>(additionalConfigurations, (value) => pulumi.Input.encodeList<MemberDetectorFeatureAdditionalConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'detectorId': detectorId,
+      'name': ?name,
+      'region': ?region,
+      'status': status,
+    };
   }
 
   factory MemberDetectorFeatureArgs.fromMap(Map<String, dynamic> map) {
     return MemberDetectorFeatureArgs(
       accountId: map['accountId'] as String,
-      additionalConfigurations: map['additionalConfigurations'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  MemberDetectorFeatureAdditionalConfiguration>(
-              map['additionalConfigurations'],
-              (value) => MemberDetectorFeatureAdditionalConfiguration.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      additionalConfigurations: map['additionalConfigurations'] == null ? null : pulumi.Input.decodeList<MemberDetectorFeatureAdditionalConfiguration>(map['additionalConfigurations'], (value) => MemberDetectorFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       detectorId: map['detectorId'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
@@ -94,3 +65,4 @@ class MemberDetectorFeatureArgs {
     );
   }
 }
+

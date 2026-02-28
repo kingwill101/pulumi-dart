@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInputMediaConnectFlow {
   final String flowArn;
 
@@ -10,9 +11,9 @@ class GetInputMediaConnectFlow {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['flowArn'] = flowArn;
-    return map;
+    return <String, dynamic>{
+      'flowArn': flowArn,
+    };
   }
 
   factory GetInputMediaConnectFlow.fromMap(Map<String, dynamic> map) {
@@ -21,3 +22,4 @@ class GetInputMediaConnectFlow {
     );
   }
 }
+

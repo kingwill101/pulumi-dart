@@ -804,8 +804,7 @@ Future<GetBucketsResult> getBuckets(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_control_folder_intelligence_config_get_control_folder_intelligence_config_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetControlFolderIntelligenceConfigResult>
-    getControlFolderIntelligenceConfig(
+Future<GetControlFolderIntelligenceConfigResult> getControlFolderIntelligenceConfig(
   GetControlFolderIntelligenceConfigArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -914,8 +913,7 @@ Future<GetControlFolderIntelligenceConfigResult>
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_control_organization_intelligence_config_get_control_organization_intelligence_config_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetControlOrganizationIntelligenceConfigResult>
-    getControlOrganizationIntelligenceConfig(
+Future<GetControlOrganizationIntelligenceConfigResult> getControlOrganizationIntelligenceConfig(
   GetControlOrganizationIntelligenceConfigArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1024,8 +1022,7 @@ Future<GetControlOrganizationIntelligenceConfigResult>
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_control_project_intelligence_config_get_control_project_intelligence_config_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetControlProjectIntelligenceConfigResult>
-    getControlProjectIntelligenceConfig(
+Future<GetControlProjectIntelligenceConfigResult> getControlProjectIntelligenceConfig(
   GetControlProjectIntelligenceConfigArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

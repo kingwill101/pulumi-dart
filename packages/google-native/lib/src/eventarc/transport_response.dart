@@ -14,15 +14,15 @@ class TransportResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['pubsub'] = pubsub.toMap();
-    return map;
+    return <String, dynamic>{
+      'pubsub': pubsub.toMap(),
+    };
   }
 
   factory TransportResponse.fromMap(Map<String, dynamic> map) {
     return TransportResponse(
-      pubsub: PubsubResponse.fromMap(
-          (map['pubsub'] as Map).cast<String, dynamic>()),
+      pubsub: PubsubResponse.fromMap((map['pubsub'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

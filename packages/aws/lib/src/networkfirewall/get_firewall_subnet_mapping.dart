@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetFirewallSubnetMapping {
   /// The unique identifier for the subnet.
   final String subnetId;
@@ -11,9 +12,9 @@ class GetFirewallSubnetMapping {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['subnetId'] = subnetId;
-    return map;
+    return <String, dynamic>{
+      'subnetId': subnetId,
+    };
   }
 
   factory GetFirewallSubnetMapping.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetFirewallSubnetMapping {
     );
   }
 }
+

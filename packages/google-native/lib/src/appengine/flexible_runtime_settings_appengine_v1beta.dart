@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Runtime settings for the App Engine flexible environment.
 class FlexibleRuntimeSettingsAppengineV1beta {
   /// The operating system of the application runtime.
   final String? operatingSystem;
-
   /// The runtime version of an App Engine flexible application.
   final String? runtimeVersion;
 
@@ -17,27 +17,17 @@ class FlexibleRuntimeSettingsAppengineV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final operatingSystemValue = operatingSystem;
-    if (operatingSystemValue != null) {
-      map['operatingSystem'] = operatingSystemValue;
-    }
-    final runtimeVersionValue = runtimeVersion;
-    if (runtimeVersionValue != null) {
-      map['runtimeVersion'] = runtimeVersionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'operatingSystem': ?operatingSystem,
+      'runtimeVersion': ?runtimeVersion,
+    };
   }
 
-  factory FlexibleRuntimeSettingsAppengineV1beta.fromMap(
-      Map<String, dynamic> map) {
+  factory FlexibleRuntimeSettingsAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return FlexibleRuntimeSettingsAppengineV1beta(
-      operatingSystem: map['operatingSystem'] == null
-          ? null
-          : map['operatingSystem'] as String,
-      runtimeVersion: map['runtimeVersion'] == null
-          ? null
-          : map['runtimeVersion'] as String,
+      operatingSystem: map['operatingSystem'] == null ? null : map['operatingSystem'] as String,
+      runtimeVersion: map['runtimeVersion'] == null ? null : map['runtimeVersion'] as String,
     );
   }
 }
+

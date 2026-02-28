@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A filter defining the entities that a mapping rule should be applied to. When more than one field is specified, the rule is applied only to entities which match all the fields.
 class MappingRuleFilter {
   /// Optional. The rule should be applied to specific entities defined by their fully qualified names.
   final List<String>? entities;
-
   /// Optional. The rule should be applied to entities whose non-qualified name contains the given string.
   final String? entityNameContains;
-
   /// Optional. The rule should be applied to entities whose non-qualified name starts with the given prefix.
   final String? entityNamePrefix;
-
   /// Optional. The rule should be applied to entities whose non-qualified name ends with the given suffix.
   final String? entityNameSuffix;
-
   /// Optional. The rule should be applied to entities whose parent entity (fully qualified name) matches the given value. For example, if the rule applies to a table entity, the expected value should be a schema (schema). If the rule applies to a column or index entity, the expected value can be either a schema (schema) or a table (schema.table)
   final String? parentEntity;
 
@@ -32,46 +29,23 @@ class MappingRuleFilter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final entitiesValue = entities;
-    if (entitiesValue != null) {
-      map['entities'] = entitiesValue;
-    }
-    final entityNameContainsValue = entityNameContains;
-    if (entityNameContainsValue != null) {
-      map['entityNameContains'] = entityNameContainsValue;
-    }
-    final entityNamePrefixValue = entityNamePrefix;
-    if (entityNamePrefixValue != null) {
-      map['entityNamePrefix'] = entityNamePrefixValue;
-    }
-    final entityNameSuffixValue = entityNameSuffix;
-    if (entityNameSuffixValue != null) {
-      map['entityNameSuffix'] = entityNameSuffixValue;
-    }
-    final parentEntityValue = parentEntity;
-    if (parentEntityValue != null) {
-      map['parentEntity'] = parentEntityValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'entities': ?entities,
+      'entityNameContains': ?entityNameContains,
+      'entityNamePrefix': ?entityNamePrefix,
+      'entityNameSuffix': ?entityNameSuffix,
+      'parentEntity': ?parentEntity,
+    };
   }
 
   factory MappingRuleFilter.fromMap(Map<String, dynamic> map) {
     return MappingRuleFilter(
-      entities: map['entities'] == null
-          ? null
-          : (map['entities'] as List).cast<String>(),
-      entityNameContains: map['entityNameContains'] == null
-          ? null
-          : map['entityNameContains'] as String,
-      entityNamePrefix: map['entityNamePrefix'] == null
-          ? null
-          : map['entityNamePrefix'] as String,
-      entityNameSuffix: map['entityNameSuffix'] == null
-          ? null
-          : map['entityNameSuffix'] as String,
-      parentEntity:
-          map['parentEntity'] == null ? null : map['parentEntity'] as String,
+      entities: map['entities'] == null ? null : (map['entities'] as List).cast<String>(),
+      entityNameContains: map['entityNameContains'] == null ? null : map['entityNameContains'] as String,
+      entityNamePrefix: map['entityNamePrefix'] == null ? null : map['entityNamePrefix'] as String,
+      entityNameSuffix: map['entityNameSuffix'] == null ? null : map['entityNameSuffix'] as String,
+      parentEntity: map['parentEntity'] == null ? null : map['parentEntity'] as String,
     );
   }
 }
+

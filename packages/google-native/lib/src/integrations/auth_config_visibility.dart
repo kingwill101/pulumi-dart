@@ -16,3 +16,4 @@ enum AuthConfigVisibility {
     throw ArgumentError('Unknown AuthConfigVisibility value: $value');
   }
 }
+

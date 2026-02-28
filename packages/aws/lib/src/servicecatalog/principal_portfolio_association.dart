@@ -111,18 +111,14 @@ import 'principal_portfolio_association_args.dart';
 class PrincipalPortfolioAssociation extends pulumi.CustomResource {
   /// Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.
   late final pulumi.Output<String?> acceptLanguage;
-
   /// Portfolio identifier.
   late final pulumi.Output<String> portfolioId;
-
   /// Principal ARN.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> principalArn;
-
   /// Principal type. Setting this argument empty (e.g., `principal_type = ""`) will result in an error. Valid values are `IAM` and `IAM_PATTERN`. Default is `IAM`.
   late final pulumi.Output<String?> principalType;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

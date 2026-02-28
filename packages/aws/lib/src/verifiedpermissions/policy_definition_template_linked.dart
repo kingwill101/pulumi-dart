@@ -6,10 +6,8 @@ import 'policy_definition_template_linked_resource.dart';
 class PolicyDefinitionTemplateLinked {
   /// The ID of the template.
   final String policyTemplateId;
-
   /// The principal of the template linked policy.
   final PolicyDefinitionTemplateLinkedPrincipal? principal;
-
   /// The resource of the template linked policy.
   final PolicyDefinitionTemplateLinkedResource? resource;
 
@@ -24,30 +22,19 @@ class PolicyDefinitionTemplateLinked {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['policyTemplateId'] = policyTemplateId;
-    final principalValue = principal;
-    if (principalValue != null) {
-      map['principal'] = principalValue.toMap();
-    }
-    final resourceValue = resource;
-    if (resourceValue != null) {
-      map['resource'] = resourceValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'policyTemplateId': policyTemplateId,
+      'principal': ?principal == null ? null : principal!.toMap(),
+      'resource': ?resource == null ? null : resource!.toMap(),
+    };
   }
 
   factory PolicyDefinitionTemplateLinked.fromMap(Map<String, dynamic> map) {
     return PolicyDefinitionTemplateLinked(
       policyTemplateId: map['policyTemplateId'] as String,
-      principal: map['principal'] == null
-          ? null
-          : PolicyDefinitionTemplateLinkedPrincipal.fromMap(
-              (map['principal'] as Map).cast<String, dynamic>()),
-      resource: map['resource'] == null
-          ? null
-          : PolicyDefinitionTemplateLinkedResource.fromMap(
-              (map['resource'] as Map).cast<String, dynamic>()),
+      principal: map['principal'] == null ? null : PolicyDefinitionTemplateLinkedPrincipal.fromMap((map['principal'] as Map).cast<String, dynamic>()),
+      resource: map['resource'] == null ? null : PolicyDefinitionTemplateLinkedResource.fromMap((map['resource'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SecurityActionFlagHeader {
   /// The header name to be sent to the target.
   final String? name;
-
   /// The header value to be sent to the target.
   final String? value;
 
@@ -16,16 +16,10 @@ class SecurityActionFlagHeader {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final valueValue = value;
-    if (valueValue != null) {
-      map['value'] = valueValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+      'value': ?value,
+    };
   }
 
   factory SecurityActionFlagHeader.fromMap(Map<String, dynamic> map) {
@@ -35,3 +29,4 @@ class SecurityActionFlagHeader {
     );
   }
 }
+

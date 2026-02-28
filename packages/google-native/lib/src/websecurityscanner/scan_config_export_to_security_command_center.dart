@@ -1,7 +1,6 @@
 /// Controls export of scan configurations and results to Security Command Center.
 enum ScanConfigExportToSecurityCommandCenter {
-  exportToSecurityCommandCenterUnspecified(
-      "EXPORT_TO_SECURITY_COMMAND_CENTER_UNSPECIFIED"),
+  exportToSecurityCommandCenterUnspecified("EXPORT_TO_SECURITY_COMMAND_CENTER_UNSPECIFIED"),
   enabled("ENABLED"),
   disabled("DISABLED");
 
@@ -14,7 +13,7 @@ enum ScanConfigExportToSecurityCommandCenter {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown ScanConfigExportToSecurityCommandCenter value: $value');
+    throw ArgumentError('Unknown ScanConfigExportToSecurityCommandCenter value: $value');
   }
 }
+

@@ -10,40 +10,28 @@ import 'service_external_ips_config_response.dart';
 class NetworkConfigResponse {
   /// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
   final String datapathProvider;
-
   /// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
   final DefaultSnatStatusResponse defaultSnatStatus;
-
   /// DNSConfig contains clusterDNS config for this cluster.
   final DNSConfigResponse dnsConfig;
-
   /// Whether FQDN Network Policy is enabled on this cluster.
   final bool enableFqdnNetworkPolicy;
-
   /// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
   final bool enableIntraNodeVisibility;
-
   /// Whether L4ILB Subsetting is enabled for this cluster.
   final bool enableL4ilbSubsetting;
-
   /// Whether multi-networking is enabled for this cluster.
   final bool enableMultiNetworking;
-
   /// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
   final GatewayAPIConfigResponse gatewayApiConfig;
-
   /// The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
   final String network;
-
   /// Network bandwidth tier configuration.
   final ClusterNetworkPerformanceConfigResponse networkPerformanceConfig;
-
   /// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
   final String privateIpv6GoogleAccess;
-
   /// ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
   final ServiceExternalIPsConfigResponse serviceExternalIpsConfig;
-
   /// The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
   final String subnetwork;
 
@@ -78,43 +66,39 @@ class NetworkConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['datapathProvider'] = datapathProvider;
-    map['defaultSnatStatus'] = defaultSnatStatus.toMap();
-    map['dnsConfig'] = dnsConfig.toMap();
-    map['enableFqdnNetworkPolicy'] = enableFqdnNetworkPolicy;
-    map['enableIntraNodeVisibility'] = enableIntraNodeVisibility;
-    map['enableL4ilbSubsetting'] = enableL4ilbSubsetting;
-    map['enableMultiNetworking'] = enableMultiNetworking;
-    map['gatewayApiConfig'] = gatewayApiConfig.toMap();
-    map['network'] = network;
-    map['networkPerformanceConfig'] = networkPerformanceConfig.toMap();
-    map['privateIpv6GoogleAccess'] = privateIpv6GoogleAccess;
-    map['serviceExternalIpsConfig'] = serviceExternalIpsConfig.toMap();
-    map['subnetwork'] = subnetwork;
-    return map;
+    return <String, dynamic>{
+      'datapathProvider': datapathProvider,
+      'defaultSnatStatus': defaultSnatStatus.toMap(),
+      'dnsConfig': dnsConfig.toMap(),
+      'enableFqdnNetworkPolicy': enableFqdnNetworkPolicy,
+      'enableIntraNodeVisibility': enableIntraNodeVisibility,
+      'enableL4ilbSubsetting': enableL4ilbSubsetting,
+      'enableMultiNetworking': enableMultiNetworking,
+      'gatewayApiConfig': gatewayApiConfig.toMap(),
+      'network': network,
+      'networkPerformanceConfig': networkPerformanceConfig.toMap(),
+      'privateIpv6GoogleAccess': privateIpv6GoogleAccess,
+      'serviceExternalIpsConfig': serviceExternalIpsConfig.toMap(),
+      'subnetwork': subnetwork,
+    };
   }
 
   factory NetworkConfigResponse.fromMap(Map<String, dynamic> map) {
     return NetworkConfigResponse(
       datapathProvider: map['datapathProvider'] as String,
-      defaultSnatStatus: DefaultSnatStatusResponse.fromMap(
-          (map['defaultSnatStatus'] as Map).cast<String, dynamic>()),
-      dnsConfig: DNSConfigResponse.fromMap(
-          (map['dnsConfig'] as Map).cast<String, dynamic>()),
+      defaultSnatStatus: DefaultSnatStatusResponse.fromMap((map['defaultSnatStatus'] as Map).cast<String, dynamic>()),
+      dnsConfig: DNSConfigResponse.fromMap((map['dnsConfig'] as Map).cast<String, dynamic>()),
       enableFqdnNetworkPolicy: map['enableFqdnNetworkPolicy'] as bool,
       enableIntraNodeVisibility: map['enableIntraNodeVisibility'] as bool,
       enableL4ilbSubsetting: map['enableL4ilbSubsetting'] as bool,
       enableMultiNetworking: map['enableMultiNetworking'] as bool,
-      gatewayApiConfig: GatewayAPIConfigResponse.fromMap(
-          (map['gatewayApiConfig'] as Map).cast<String, dynamic>()),
+      gatewayApiConfig: GatewayAPIConfigResponse.fromMap((map['gatewayApiConfig'] as Map).cast<String, dynamic>()),
       network: map['network'] as String,
-      networkPerformanceConfig: ClusterNetworkPerformanceConfigResponse.fromMap(
-          (map['networkPerformanceConfig'] as Map).cast<String, dynamic>()),
+      networkPerformanceConfig: ClusterNetworkPerformanceConfigResponse.fromMap((map['networkPerformanceConfig'] as Map).cast<String, dynamic>()),
       privateIpv6GoogleAccess: map['privateIpv6GoogleAccess'] as String,
-      serviceExternalIpsConfig: ServiceExternalIPsConfigResponse.fromMap(
-          (map['serviceExternalIpsConfig'] as Map).cast<String, dynamic>()),
+      serviceExternalIpsConfig: ServiceExternalIPsConfigResponse.fromMap((map['serviceExternalIpsConfig'] as Map).cast<String, dynamic>()),
       subnetwork: map['subnetwork'] as String,
     );
   }
 }
+

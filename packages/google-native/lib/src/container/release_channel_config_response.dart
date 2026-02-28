@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// ReleaseChannelConfig exposes configuration for a release channel.
 class ReleaseChannelConfigResponse {
   /// The release channel this configuration applies to.
   final String channel;
-
   /// The default version for newly created clusters on the channel.
   final String defaultVersion;
-
   /// List of valid versions for the channel.
   final List<String> validVersions;
 
@@ -22,11 +21,11 @@ class ReleaseChannelConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['channel'] = channel;
-    map['defaultVersion'] = defaultVersion;
-    map['validVersions'] = validVersions;
-    return map;
+    return <String, dynamic>{
+      'channel': channel,
+      'defaultVersion': defaultVersion,
+      'validVersions': validVersions,
+    };
   }
 
   factory ReleaseChannelConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class ReleaseChannelConfigResponse {
     );
   }
 }
+

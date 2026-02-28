@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// For display only. Metadata associated with a Cloud Function.
 class CloudFunctionInfoResponseNetworkmanagementV1beta1 {
   /// Name of a Cloud Function.
   final String displayName;
-
   /// Location in which the Cloud Function is deployed.
   final String location;
-
   /// URI of a Cloud Function.
   final String uri;
-
   /// Latest successfully deployed version id of the Cloud Function.
   final String versionId;
 
@@ -27,16 +25,15 @@ class CloudFunctionInfoResponseNetworkmanagementV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['displayName'] = displayName;
-    map['location'] = location;
-    map['uri'] = uri;
-    map['versionId'] = versionId;
-    return map;
+    return <String, dynamic>{
+      'displayName': displayName,
+      'location': location,
+      'uri': uri,
+      'versionId': versionId,
+    };
   }
 
-  factory CloudFunctionInfoResponseNetworkmanagementV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory CloudFunctionInfoResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
     return CloudFunctionInfoResponseNetworkmanagementV1beta1(
       displayName: map['displayName'] as String,
       location: map['location'] as String,
@@ -45,3 +42,4 @@ class CloudFunctionInfoResponseNetworkmanagementV1beta1 {
     );
   }
 }
+

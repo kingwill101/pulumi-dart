@@ -6,7 +6,6 @@ import 'scan_config_error_code.dart';
 class ScanConfigError {
   /// Indicates the reason code for a configuration failure.
   final ScanConfigErrorCode? code;
-
   /// Indicates the full name of the ScanConfig field that triggers this error, for example "scan_config.max_qps". This field is provided for troubleshooting purposes only and its actual value can change in the future.
   final String? fieldName;
 
@@ -19,24 +18,17 @@ class ScanConfigError {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final codeValue = code;
-    if (codeValue != null) {
-      map['code'] = codeValue.value;
-    }
-    final fieldNameValue = fieldName;
-    if (fieldNameValue != null) {
-      map['fieldName'] = fieldNameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'code': ?code == null ? null : code!.value,
+      'fieldName': ?fieldName,
+    };
   }
 
   factory ScanConfigError.fromMap(Map<String, dynamic> map) {
     return ScanConfigError(
-      code: map['code'] == null
-          ? null
-          : ScanConfigErrorCode.fromValue(map['code'] as String),
+      code: map['code'] == null ? null : ScanConfigErrorCode.fromValue(map['code'] as String),
       fieldName: map['fieldName'] == null ? null : map['fieldName'] as String,
     );
   }
 }
+

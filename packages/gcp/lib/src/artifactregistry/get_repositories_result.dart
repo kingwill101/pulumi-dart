@@ -10,7 +10,6 @@ class GetRepositoriesResult {
   final String location;
   final String? nameFilter;
   final String? project;
-
   /// A list of all retrieved Artifact Registry repositories. Structure is defined below.
   final List<GetRepositoriesRepository> repositories;
 
@@ -29,33 +28,23 @@ class GetRepositoriesResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['location'] = location;
-    final nameFilterValue = nameFilter;
-    if (nameFilterValue != null) {
-      map['nameFilter'] = nameFilterValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['repositories'] = pulumi.Input.encodeList<GetRepositoriesRepository,
-        Map<String, dynamic>>(repositories, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'location': location,
+      'nameFilter': ?nameFilter,
+      'project': ?project,
+      'repositories': pulumi.Input.encodeList<GetRepositoriesRepository, Map<String, dynamic>>(repositories, (value) => value.toMap()),
+    };
   }
 
   factory GetRepositoriesResult.fromMap(Map<String, dynamic> map) {
     return GetRepositoriesResult(
       id: map['id'] as String,
       location: map['location'] as String,
-      nameFilter:
-          map['nameFilter'] == null ? null : map['nameFilter'] as String,
+      nameFilter: map['nameFilter'] == null ? null : map['nameFilter'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      repositories: pulumi.Input.decodeList<GetRepositoriesRepository>(
-          map['repositories'],
-          (value) => GetRepositoriesRepository.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      repositories: pulumi.Input.decodeList<GetRepositoriesRepository>(map['repositories'], (value) => GetRepositoriesRepository.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

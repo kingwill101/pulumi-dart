@@ -13,7 +13,6 @@ class ServiceTemplate {
   /// annotation key.
   /// Structure is documented below.
   final ServiceTemplateMetadata? metadata;
-
   /// RevisionSpec holds the desired state of the Revision (from the client).
   /// Structure is documented below.
   final ServiceTemplateSpec? spec;
@@ -27,28 +26,17 @@ class ServiceTemplate {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final metadataValue = metadata;
-    if (metadataValue != null) {
-      map['metadata'] = metadataValue.toMap();
-    }
-    final specValue = spec;
-    if (specValue != null) {
-      map['spec'] = specValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'metadata': ?metadata == null ? null : metadata!.toMap(),
+      'spec': ?spec == null ? null : spec!.toMap(),
+    };
   }
 
   factory ServiceTemplate.fromMap(Map<String, dynamic> map) {
     return ServiceTemplate(
-      metadata: map['metadata'] == null
-          ? null
-          : ServiceTemplateMetadata.fromMap(
-              (map['metadata'] as Map).cast<String, dynamic>()),
-      spec: map['spec'] == null
-          ? null
-          : ServiceTemplateSpec.fromMap(
-              (map['spec'] as Map).cast<String, dynamic>()),
+      metadata: map['metadata'] == null ? null : ServiceTemplateMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
+      spec: map['spec'] == null ? null : ServiceTemplateSpec.fromMap((map['spec'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

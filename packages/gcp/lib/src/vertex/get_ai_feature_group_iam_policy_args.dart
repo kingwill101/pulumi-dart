@@ -9,11 +9,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAiFeatureGroupIamPolicyArgs {
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> featureGroup;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The region of feature group. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
   /// region is specified, it is taken from the provider configuration.
@@ -27,22 +25,17 @@ class GetAiFeatureGroupIamPolicyArgs {
     required String featureGroup,
     String? project,
     String? region,
-  })  : featureGroup = pulumi.Input.asInput<String>(featureGroup),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      featureGroup = pulumi.Input.asInput<String>(featureGroup),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['featureGroup'] = featureGroup;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'featureGroup': featureGroup,
+      'project': ?project,
+      'region': ?region,
+    };
   }
 
   factory GetAiFeatureGroupIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -53,3 +46,4 @@ class GetAiFeatureGroupIamPolicyArgs {
     );
   }
 }
+

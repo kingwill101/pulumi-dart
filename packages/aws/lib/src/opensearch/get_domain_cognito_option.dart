@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDomainCognitoOption {
   /// Enabled disabled toggle for off-peak update window
   final bool enabled;
-
   /// Cognito Identity pool used by the domain.
   final String identityPoolId;
-
   /// IAM Role with the AmazonOpenSearchServiceCognitoAccess policy attached.
   final String roleArn;
-
   /// Cognito User pool used by the domain.
   final String userPoolId;
 
@@ -26,12 +24,12 @@ class GetDomainCognitoOption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    map['identityPoolId'] = identityPoolId;
-    map['roleArn'] = roleArn;
-    map['userPoolId'] = userPoolId;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+      'identityPoolId': identityPoolId,
+      'roleArn': roleArn,
+      'userPoolId': userPoolId,
+    };
   }
 
   factory GetDomainCognitoOption.fromMap(Map<String, dynamic> map) {
@@ -43,3 +41,4 @@ class GetDomainCognitoOption {
     );
   }
 }
+

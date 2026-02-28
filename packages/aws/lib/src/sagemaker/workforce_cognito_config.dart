@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WorkforceCognitoConfig {
   /// The client ID for your Amazon Cognito user pool.
   final String clientId;
-
   /// ID for your Amazon Cognito user pool.
   final String userPool;
 
@@ -16,10 +16,10 @@ class WorkforceCognitoConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clientId'] = clientId;
-    map['userPool'] = userPool;
-    return map;
+    return <String, dynamic>{
+      'clientId': clientId,
+      'userPool': userPool,
+    };
   }
 
   factory WorkforceCognitoConfig.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class WorkforceCognitoConfig {
     );
   }
 }
+

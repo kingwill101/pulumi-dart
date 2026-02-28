@@ -7,7 +7,6 @@ class AuthorityConfigSubjectConfig {
   /// Contains distinguished name fields such as the location and organization.
   /// Structure is documented below.
   final AuthorityConfigSubjectConfigSubject subject;
-
   /// The subject alternative name fields.
   /// Structure is documented below.
   final AuthorityConfigSubjectConfigSubjectAltName? subjectAltName;
@@ -21,23 +20,17 @@ class AuthorityConfigSubjectConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['subject'] = subject.toMap();
-    final subjectAltNameValue = subjectAltName;
-    if (subjectAltNameValue != null) {
-      map['subjectAltName'] = subjectAltNameValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'subject': subject.toMap(),
+      'subjectAltName': ?subjectAltName == null ? null : subjectAltName!.toMap(),
+    };
   }
 
   factory AuthorityConfigSubjectConfig.fromMap(Map<String, dynamic> map) {
     return AuthorityConfigSubjectConfig(
-      subject: AuthorityConfigSubjectConfigSubject.fromMap(
-          (map['subject'] as Map).cast<String, dynamic>()),
-      subjectAltName: map['subjectAltName'] == null
-          ? null
-          : AuthorityConfigSubjectConfigSubjectAltName.fromMap(
-              (map['subjectAltName'] as Map).cast<String, dynamic>()),
+      subject: AuthorityConfigSubjectConfigSubject.fromMap((map['subject'] as Map).cast<String, dynamic>()),
+      subjectAltName: map['subjectAltName'] == null ? null : AuthorityConfigSubjectConfigSubjectAltName.fromMap((map['subjectAltName'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

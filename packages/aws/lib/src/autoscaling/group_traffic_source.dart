@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GroupTrafficSource {
   /// Identifies the traffic source. For Application Load Balancers, Gateway Load Balancers, Network Load Balancers, and VPC Lattice, this will be the Amazon Resource Name (ARN) for a target group in this account and Region. For Classic Load Balancers, this will be the name of the Classic Load Balancer in this account and Region.
   final String identifier;
-
   /// Provides additional context for the value of Identifier.
   /// The following lists the valid values:
   /// `elb` if `identifier` is the name of a Classic Load Balancer.
@@ -20,13 +20,10 @@ class GroupTrafficSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['identifier'] = identifier;
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'identifier': identifier,
+      'type': ?type,
+    };
   }
 
   factory GroupTrafficSource.fromMap(Map<String, dynamic> map) {
@@ -36,3 +33,4 @@ class GroupTrafficSource {
     );
   }
 }
+

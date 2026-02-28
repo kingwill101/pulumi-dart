@@ -14,15 +14,15 @@ class VpcNetworkSourceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['vpcSubnetwork'] = vpcSubnetwork.toMap();
-    return map;
+    return <String, dynamic>{
+      'vpcSubnetwork': vpcSubnetwork.toMap(),
+    };
   }
 
   factory VpcNetworkSourceResponse.fromMap(Map<String, dynamic> map) {
     return VpcNetworkSourceResponse(
-      vpcSubnetwork: VpcSubNetworkResponse.fromMap(
-          (map['vpcSubnetwork'] as Map).cast<String, dynamic>()),
+      vpcSubnetwork: VpcSubNetworkResponse.fromMap((map['vpcSubnetwork'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

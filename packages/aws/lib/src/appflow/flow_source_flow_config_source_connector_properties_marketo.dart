@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FlowSourceFlowConfigSourceConnectorPropertiesMarketo {
   final String object;
 
@@ -10,15 +11,15 @@ class FlowSourceFlowConfigSourceConnectorPropertiesMarketo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['object'] = object;
-    return map;
+    return <String, dynamic>{
+      'object': object,
+    };
   }
 
-  factory FlowSourceFlowConfigSourceConnectorPropertiesMarketo.fromMap(
-      Map<String, dynamic> map) {
+  factory FlowSourceFlowConfigSourceConnectorPropertiesMarketo.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorPropertiesMarketo(
       object: map['object'] as String,
     );
   }
 }
+

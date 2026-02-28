@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getAccountIdToken.
 class GetAccountIdTokenResult {
   final List<String>? delegates;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The `id_token` representing the new generated identity.
   final String idToken;
   final bool? includeEmail;
@@ -30,38 +29,25 @@ class GetAccountIdTokenResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final delegatesValue = delegates;
-    if (delegatesValue != null) {
-      map['delegates'] = delegatesValue;
-    }
-    map['id'] = id;
-    map['idToken'] = idToken;
-    final includeEmailValue = includeEmail;
-    if (includeEmailValue != null) {
-      map['includeEmail'] = includeEmailValue;
-    }
-    map['targetAudience'] = targetAudience;
-    final targetServiceAccountValue = targetServiceAccount;
-    if (targetServiceAccountValue != null) {
-      map['targetServiceAccount'] = targetServiceAccountValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'delegates': ?delegates,
+      'id': id,
+      'idToken': idToken,
+      'includeEmail': ?includeEmail,
+      'targetAudience': targetAudience,
+      'targetServiceAccount': ?targetServiceAccount,
+    };
   }
 
   factory GetAccountIdTokenResult.fromMap(Map<String, dynamic> map) {
     return GetAccountIdTokenResult(
-      delegates: map['delegates'] == null
-          ? null
-          : (map['delegates'] as List).cast<String>(),
+      delegates: map['delegates'] == null ? null : (map['delegates'] as List).cast<String>(),
       id: map['id'] as String,
       idToken: map['idToken'] as String,
-      includeEmail:
-          map['includeEmail'] == null ? null : map['includeEmail'] as bool,
+      includeEmail: map['includeEmail'] == null ? null : map['includeEmail'] as bool,
       targetAudience: map['targetAudience'] as String,
-      targetServiceAccount: map['targetServiceAccount'] == null
-          ? null
-          : map['targetServiceAccount'] as String,
+      targetServiceAccount: map['targetServiceAccount'] == null ? null : map['targetServiceAccount'] as String,
     );
   }
 }
+

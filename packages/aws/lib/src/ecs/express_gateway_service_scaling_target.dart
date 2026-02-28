@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ExpressGatewayServiceScalingTarget {
   /// Metric to use for auto-scaling. Valid values are `CPU` and `MEMORY`.
   final String autoScalingMetric;
-
   /// Target value for the auto-scaling metric (as a percentage). Defaults to `60`.
   final int autoScalingTargetValue;
-
   /// Maximum number of tasks to run.
   final int maxTaskCount;
-
   /// Minimum number of tasks to run.
   final int minTaskCount;
 
@@ -26,12 +24,12 @@ class ExpressGatewayServiceScalingTarget {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['autoScalingMetric'] = autoScalingMetric;
-    map['autoScalingTargetValue'] = autoScalingTargetValue;
-    map['maxTaskCount'] = maxTaskCount;
-    map['minTaskCount'] = minTaskCount;
-    return map;
+    return <String, dynamic>{
+      'autoScalingMetric': autoScalingMetric,
+      'autoScalingTargetValue': autoScalingTargetValue,
+      'maxTaskCount': maxTaskCount,
+      'minTaskCount': minTaskCount,
+    };
   }
 
   factory ExpressGatewayServiceScalingTarget.fromMap(Map<String, dynamic> map) {
@@ -43,3 +41,4 @@ class ExpressGatewayServiceScalingTarget {
     );
   }
 }
+

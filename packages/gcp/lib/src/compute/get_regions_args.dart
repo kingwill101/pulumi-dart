@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionsArgs {
   /// Project from which to list available regions. Defaults to project declared in the provider.
   final pulumi.Input<String>? project;
-
   /// Allows to filter list of regions based on their current status. Status can be either `UP` or `DOWN`.
   /// Defaults to no filtering (all available regions - both `UP` and `DOWN`).
   final pulumi.Input<String>? status;
@@ -20,20 +19,15 @@ class GetRegionsArgs {
   GetRegionsArgs({
     String? project,
     String? status,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        status = pulumi.Input.asOptionalInput<String>(status);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      status = pulumi.Input.asOptionalInput<String>(status);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final statusValue = status;
-    if (statusValue != null) {
-      map['status'] = statusValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'status': ?status,
+    };
   }
 
   factory GetRegionsArgs.fromMap(Map<String, dynamic> map) {
@@ -43,3 +37,4 @@ class GetRegionsArgs {
     );
   }
 }
+

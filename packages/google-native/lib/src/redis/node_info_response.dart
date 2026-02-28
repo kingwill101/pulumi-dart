@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Node specific properties.
 class NodeInfoResponse {
   /// Location of the node.
@@ -12,9 +13,9 @@ class NodeInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'zone': zone,
+    };
   }
 
   factory NodeInfoResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class NodeInfoResponse {
     );
   }
 }
+

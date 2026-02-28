@@ -14,16 +14,15 @@ class GooglePrivacyDlpV2CategoricalStatsConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['field'] = field.toMap();
-    return map;
+    return <String, dynamic>{
+      'field': field.toMap(),
+    };
   }
 
-  factory GooglePrivacyDlpV2CategoricalStatsConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2CategoricalStatsConfigResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2CategoricalStatsConfigResponse(
-      field: GooglePrivacyDlpV2FieldIdResponse.fromMap(
-          (map['field'] as Map).cast<String, dynamic>()),
+      field: GooglePrivacyDlpV2FieldIdResponse.fromMap((map['field'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

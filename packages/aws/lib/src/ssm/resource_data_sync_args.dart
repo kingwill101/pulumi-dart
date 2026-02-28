@@ -10,10 +10,8 @@ import 'resource_data_sync_s3_destination.dart';
 class ResourceDataSyncArgs {
   /// Name for the configuration.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Amazon S3 configuration details for the sync.
   final pulumi.Input<ResourceDataSyncS3Destination> s3Destination;
 
@@ -25,33 +23,25 @@ class ResourceDataSyncArgs {
     String? name,
     String? region,
     required ResourceDataSyncS3Destination s3Destination,
-  })  : name = pulumi.Input.asOptionalInput<String>(name),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        s3Destination =
-            pulumi.Input.asInput<ResourceDataSyncS3Destination>(s3Destination);
+  }) :
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      s3Destination = pulumi.Input.asInput<ResourceDataSyncS3Destination>(s3Destination);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['s3Destination'] = pulumi.Input.mapInputValue<
-        ResourceDataSyncS3Destination,
-        Map<String, dynamic>>(s3Destination, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+      'region': ?region,
+      's3Destination': pulumi.Input.mapInputValue<ResourceDataSyncS3Destination, Map<String, dynamic>>(s3Destination, (value) => value.toMap()),
+    };
   }
 
   factory ResourceDataSyncArgs.fromMap(Map<String, dynamic> map) {
     return ResourceDataSyncArgs(
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      s3Destination: ResourceDataSyncS3Destination.fromMap(
-          (map['s3Destination'] as Map).cast<String, dynamic>()),
+      s3Destination: ResourceDataSyncS3Destination.fromMap((map['s3Destination'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

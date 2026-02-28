@@ -8,13 +8,10 @@ import 'postgresql_source_config.dart';
 class SourceConfig {
   /// MySQL data source configuration.
   final MysqlSourceConfig? mysqlSourceConfig;
-
   /// Oracle data source configuration.
   final OracleSourceConfig? oracleSourceConfig;
-
   /// PostgreSQL data source configuration.
   final PostgresqlSourceConfig? postgresqlSourceConfig;
-
   /// Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
   final String sourceConnectionProfile;
 
@@ -31,38 +28,21 @@ class SourceConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final mysqlSourceConfigValue = mysqlSourceConfig;
-    if (mysqlSourceConfigValue != null) {
-      map['mysqlSourceConfig'] = mysqlSourceConfigValue.toMap();
-    }
-    final oracleSourceConfigValue = oracleSourceConfig;
-    if (oracleSourceConfigValue != null) {
-      map['oracleSourceConfig'] = oracleSourceConfigValue.toMap();
-    }
-    final postgresqlSourceConfigValue = postgresqlSourceConfig;
-    if (postgresqlSourceConfigValue != null) {
-      map['postgresqlSourceConfig'] = postgresqlSourceConfigValue.toMap();
-    }
-    map['sourceConnectionProfile'] = sourceConnectionProfile;
-    return map;
+    return <String, dynamic>{
+      'mysqlSourceConfig': ?mysqlSourceConfig == null ? null : mysqlSourceConfig!.toMap(),
+      'oracleSourceConfig': ?oracleSourceConfig == null ? null : oracleSourceConfig!.toMap(),
+      'postgresqlSourceConfig': ?postgresqlSourceConfig == null ? null : postgresqlSourceConfig!.toMap(),
+      'sourceConnectionProfile': sourceConnectionProfile,
+    };
   }
 
   factory SourceConfig.fromMap(Map<String, dynamic> map) {
     return SourceConfig(
-      mysqlSourceConfig: map['mysqlSourceConfig'] == null
-          ? null
-          : MysqlSourceConfig.fromMap(
-              (map['mysqlSourceConfig'] as Map).cast<String, dynamic>()),
-      oracleSourceConfig: map['oracleSourceConfig'] == null
-          ? null
-          : OracleSourceConfig.fromMap(
-              (map['oracleSourceConfig'] as Map).cast<String, dynamic>()),
-      postgresqlSourceConfig: map['postgresqlSourceConfig'] == null
-          ? null
-          : PostgresqlSourceConfig.fromMap(
-              (map['postgresqlSourceConfig'] as Map).cast<String, dynamic>()),
+      mysqlSourceConfig: map['mysqlSourceConfig'] == null ? null : MysqlSourceConfig.fromMap((map['mysqlSourceConfig'] as Map).cast<String, dynamic>()),
+      oracleSourceConfig: map['oracleSourceConfig'] == null ? null : OracleSourceConfig.fromMap((map['oracleSourceConfig'] as Map).cast<String, dynamic>()),
+      postgresqlSourceConfig: map['postgresqlSourceConfig'] == null ? null : PostgresqlSourceConfig.fromMap((map['postgresqlSourceConfig'] as Map).cast<String, dynamic>()),
       sourceConnectionProfile: map['sourceConnectionProfile'] as String,
     );
   }
 }
+

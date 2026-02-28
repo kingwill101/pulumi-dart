@@ -25,23 +25,21 @@ class GetSpecArgs {
     String? project,
     required String specId,
     required String versionId,
-  })  : apiId = pulumi.Input.asInput<String>(apiId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        specId = pulumi.Input.asInput<String>(specId),
-        versionId = pulumi.Input.asInput<String>(versionId);
+  }) :
+      apiId = pulumi.Input.asInput<String>(apiId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      specId = pulumi.Input.asInput<String>(specId),
+      versionId = pulumi.Input.asInput<String>(versionId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['apiId'] = apiId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['specId'] = specId;
-    map['versionId'] = versionId;
-    return map;
+    return <String, dynamic>{
+      'apiId': apiId,
+      'location': location,
+      'project': ?project,
+      'specId': specId,
+      'versionId': versionId,
+    };
   }
 
   factory GetSpecArgs.fromMap(Map<String, dynamic> map) {
@@ -54,3 +52,4 @@ class GetSpecArgs {
     );
   }
 }
+

@@ -1,18 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MigrationJobReverseSshConnectivity {
   /// The name of the virtual machine (Compute Engine) used as the bastion server
   /// for the SSH tunnel.
   final String? vm;
-
   /// The IP of the virtual machine (Compute Engine) used as the bastion server
   /// for the SSH tunnel.
   final String? vmIp;
-
   /// The forwarding port of the virtual machine (Compute Engine) used as the
   /// bastion server for the SSH tunnel.
   final int? vmPort;
-
   /// The name of the VPC to peer with the Cloud SQL private network.
   final String? vpc;
 
@@ -29,24 +27,12 @@ class MigrationJobReverseSshConnectivity {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final vmValue = vm;
-    if (vmValue != null) {
-      map['vm'] = vmValue;
-    }
-    final vmIpValue = vmIp;
-    if (vmIpValue != null) {
-      map['vmIp'] = vmIpValue;
-    }
-    final vmPortValue = vmPort;
-    if (vmPortValue != null) {
-      map['vmPort'] = vmPortValue;
-    }
-    final vpcValue = vpc;
-    if (vpcValue != null) {
-      map['vpc'] = vpcValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'vm': ?vm,
+      'vmIp': ?vmIp,
+      'vmPort': ?vmPort,
+      'vpc': ?vpc,
+    };
   }
 
   factory MigrationJobReverseSshConnectivity.fromMap(Map<String, dynamic> map) {
@@ -58,3 +44,4 @@ class MigrationJobReverseSshConnectivity {
     );
   }
 }
+

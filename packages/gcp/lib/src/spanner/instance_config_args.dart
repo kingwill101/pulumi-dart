@@ -12,25 +12,20 @@ class InstanceConfigArgs {
   /// Only set for user managed configurations.
   /// baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
   final pulumi.Input<String>? baseConfig;
-
   /// The name of this instance configuration as it appears in UIs.
   final pulumi.Input<String> displayName;
-
   /// An object containing a list of "key": value pairs.
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// A unique identifier for the instance configuration. Values are of the
   /// form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The geographic placement of nodes in this instance configuration and their replication properties.
   /// Structure is documented below.
   final pulumi.Input<List<InstanceConfigReplica>> replicas;
@@ -49,54 +44,34 @@ class InstanceConfigArgs {
     String? name,
     String? project,
     required List<InstanceConfigReplica> replicas,
-  })  : baseConfig = pulumi.Input.asOptionalInput<String>(baseConfig),
-        displayName = pulumi.Input.asInput<String>(displayName),
-        labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        replicas = pulumi.Input.asInput<List<InstanceConfigReplica>>(replicas);
+  }) :
+      baseConfig = pulumi.Input.asOptionalInput<String>(baseConfig),
+      displayName = pulumi.Input.asInput<String>(displayName),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      replicas = pulumi.Input.asInput<List<InstanceConfigReplica>>(replicas);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final baseConfigValue = baseConfig;
-    if (baseConfigValue != null) {
-      map['baseConfig'] = baseConfigValue;
-    }
-    map['displayName'] = displayName;
-    final labelsValue = labels;
-    if (labelsValue != null) {
-      map['labels'] = labelsValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['replicas'] = pulumi.Input.mapInputValue<List<InstanceConfigReplica>,
-            List<Map<String, dynamic>>>(
-        replicas,
-        (value) => pulumi.Input.encodeList<InstanceConfigReplica,
-            Map<String, dynamic>>(value, (value) => value.toMap()));
-    return map;
+    return <String, dynamic>{
+      'baseConfig': ?baseConfig,
+      'displayName': displayName,
+      'labels': ?labels,
+      'name': ?name,
+      'project': ?project,
+      'replicas': pulumi.Input.mapInputValue<List<InstanceConfigReplica>, List<Map<String, dynamic>>>(replicas, (value) => pulumi.Input.encodeList<InstanceConfigReplica, Map<String, dynamic>>(value, (value) => value.toMap())),
+    };
   }
 
   factory InstanceConfigArgs.fromMap(Map<String, dynamic> map) {
     return InstanceConfigArgs(
-      baseConfig:
-          map['baseConfig'] == null ? null : map['baseConfig'] as String,
+      baseConfig: map['baseConfig'] == null ? null : map['baseConfig'] as String,
       displayName: map['displayName'] as String,
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      replicas: pulumi.Input.decodeList<InstanceConfigReplica>(
-          map['replicas'],
-          (value) => InstanceConfigReplica.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      replicas: pulumi.Input.decodeList<InstanceConfigReplica>(map['replicas'], (value) => InstanceConfigReplica.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

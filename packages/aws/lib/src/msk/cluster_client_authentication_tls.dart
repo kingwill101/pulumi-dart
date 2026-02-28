@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterClientAuthenticationTls {
   /// List of ACM Certificate Authority Amazon Resource Names (ARNs).
   final List<String>? certificateAuthorityArns;
@@ -11,19 +12,15 @@ class ClusterClientAuthenticationTls {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final certificateAuthorityArnsValue = certificateAuthorityArns;
-    if (certificateAuthorityArnsValue != null) {
-      map['certificateAuthorityArns'] = certificateAuthorityArnsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'certificateAuthorityArns': ?certificateAuthorityArns,
+    };
   }
 
   factory ClusterClientAuthenticationTls.fromMap(Map<String, dynamic> map) {
     return ClusterClientAuthenticationTls(
-      certificateAuthorityArns: map['certificateAuthorityArns'] == null
-          ? null
-          : (map['certificateAuthorityArns'] as List).cast<String>(),
+      certificateAuthorityArns: map['certificateAuthorityArns'] == null ? null : (map['certificateAuthorityArns'] as List).cast<String>(),
     );
   }
 }
+

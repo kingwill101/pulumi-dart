@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getNetworks.
 class GetNetworksResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The list of networks in the specified project.
   final List<String> networks;
-
   /// The project name being queried.
   final String? project;
-
   /// The URI of the resource.
   final String selfLink;
 
@@ -27,15 +25,12 @@ class GetNetworksResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['networks'] = networks;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['selfLink'] = selfLink;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'networks': networks,
+      'project': ?project,
+      'selfLink': selfLink,
+    };
   }
 
   factory GetNetworksResult.fromMap(Map<String, dynamic> map) {
@@ -47,3 +42,4 @@ class GetNetworksResult {
     );
   }
 }
+

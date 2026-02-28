@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A Symptom instance.
 class SymptomResponseTpuV2alpha1 {
   /// Timestamp when the Symptom is created.
   final String createTime;
-
   /// Detailed information of the current Symptom.
   final String details;
-
   /// Type of the Symptom.
   final String symptomType;
-
   /// A string used to uniquely distinguish a worker within a TPU node.
   final String workerId;
 
@@ -27,12 +25,12 @@ class SymptomResponseTpuV2alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['details'] = details;
-    map['symptomType'] = symptomType;
-    map['workerId'] = workerId;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'details': details,
+      'symptomType': symptomType,
+      'workerId': workerId,
+    };
   }
 
   factory SymptomResponseTpuV2alpha1.fromMap(Map<String, dynamic> map) {
@@ -44,3 +42,4 @@ class SymptomResponseTpuV2alpha1 {
     );
   }
 }
+

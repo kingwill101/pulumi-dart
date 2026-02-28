@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getParameterGroup.
 class GetParameterGroupResult {
   /// ARN of the parameter group.
   final String arn;
-
   /// Description of the parameter group.
   final String description;
-
   /// Family of the parameter group.
   final String family;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -33,14 +31,14 @@ class GetParameterGroupResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['description'] = description;
-    map['family'] = family;
-    map['id'] = id;
-    map['name'] = name;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'description': description,
+      'family': family,
+      'id': id,
+      'name': name,
+      'region': region,
+    };
   }
 
   factory GetParameterGroupResult.fromMap(Map<String, dynamic> map) {
@@ -54,3 +52,4 @@ class GetParameterGroupResult {
     );
   }
 }
+

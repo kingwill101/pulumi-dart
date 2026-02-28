@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getDefaultTags.
 class GetDefaultTagsResult {
   final String id;
-
   /// Key-value mapping of provider default tags.
   final Map<String, String> tags;
 
@@ -16,10 +16,10 @@ class GetDefaultTagsResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'tags': tags,
+    };
   }
 
   factory GetDefaultTagsResult.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetDefaultTagsResult {
     );
   }
 }
+

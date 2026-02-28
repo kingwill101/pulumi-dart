@@ -7,11 +7,9 @@ class InsightsConfigRuntimeConfig {
   /// AppHubWorkload represents the App Hub Workload.
   /// Structure is documented below.
   final InsightsConfigRuntimeConfigAppHubWorkload? appHubWorkload;
-
   /// GKEWorkload represents the Google Kubernetes Engine runtime.
   /// Structure is documented below.
   final InsightsConfigRuntimeConfigGkeWorkload? gkeWorkload;
-
   /// (Output)
   /// The state of the Runtime.
   /// Possible values:
@@ -19,7 +17,6 @@ class InsightsConfigRuntimeConfig {
   /// LINKED
   /// UNLINKED
   final String? state;
-
   /// The URI of the runtime configuration.
   /// For GKE, this is the cluster name.
   /// For Cloud Run, this is the service name.
@@ -38,35 +35,21 @@ class InsightsConfigRuntimeConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final appHubWorkloadValue = appHubWorkload;
-    if (appHubWorkloadValue != null) {
-      map['appHubWorkload'] = appHubWorkloadValue.toMap();
-    }
-    final gkeWorkloadValue = gkeWorkload;
-    if (gkeWorkloadValue != null) {
-      map['gkeWorkload'] = gkeWorkloadValue.toMap();
-    }
-    final stateValue = state;
-    if (stateValue != null) {
-      map['state'] = stateValue;
-    }
-    map['uri'] = uri;
-    return map;
+    return <String, dynamic>{
+      'appHubWorkload': ?appHubWorkload == null ? null : appHubWorkload!.toMap(),
+      'gkeWorkload': ?gkeWorkload == null ? null : gkeWorkload!.toMap(),
+      'state': ?state,
+      'uri': uri,
+    };
   }
 
   factory InsightsConfigRuntimeConfig.fromMap(Map<String, dynamic> map) {
     return InsightsConfigRuntimeConfig(
-      appHubWorkload: map['appHubWorkload'] == null
-          ? null
-          : InsightsConfigRuntimeConfigAppHubWorkload.fromMap(
-              (map['appHubWorkload'] as Map).cast<String, dynamic>()),
-      gkeWorkload: map['gkeWorkload'] == null
-          ? null
-          : InsightsConfigRuntimeConfigGkeWorkload.fromMap(
-              (map['gkeWorkload'] as Map).cast<String, dynamic>()),
+      appHubWorkload: map['appHubWorkload'] == null ? null : InsightsConfigRuntimeConfigAppHubWorkload.fromMap((map['appHubWorkload'] as Map).cast<String, dynamic>()),
+      gkeWorkload: map['gkeWorkload'] == null ? null : InsightsConfigRuntimeConfigGkeWorkload.fromMap((map['gkeWorkload'] as Map).cast<String, dynamic>()),
       state: map['state'] == null ? null : map['state'] as String,
       uri: map['uri'] as String,
     );
   }
 }
+

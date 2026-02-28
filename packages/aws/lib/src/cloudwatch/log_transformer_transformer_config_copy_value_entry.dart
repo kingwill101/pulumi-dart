@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LogTransformerTransformerConfigCopyValueEntry {
   /// Specifies whether to overwrite the value if the destination key already exists. Defaults to `false`.
   /// * `renameTo` - (Required) Specifies the new name of the key.
   final bool? overwriteIfExists;
-
   /// Specifies the key to modify.
   final String source;
-
   /// Specifies the key to move to.
   final String target;
 
@@ -22,24 +21,19 @@ class LogTransformerTransformerConfigCopyValueEntry {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final overwriteIfExistsValue = overwriteIfExists;
-    if (overwriteIfExistsValue != null) {
-      map['overwriteIfExists'] = overwriteIfExistsValue;
-    }
-    map['source'] = source;
-    map['target'] = target;
-    return map;
+    return <String, dynamic>{
+      'overwriteIfExists': ?overwriteIfExists,
+      'source': source,
+      'target': target,
+    };
   }
 
-  factory LogTransformerTransformerConfigCopyValueEntry.fromMap(
-      Map<String, dynamic> map) {
+  factory LogTransformerTransformerConfigCopyValueEntry.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigCopyValueEntry(
-      overwriteIfExists: map['overwriteIfExists'] == null
-          ? null
-          : map['overwriteIfExists'] as bool,
+      overwriteIfExists: map['overwriteIfExists'] == null ? null : map['overwriteIfExists'] as bool,
       source: map['source'] as String,
       target: map['target'] as String,
     );
   }
 }
+

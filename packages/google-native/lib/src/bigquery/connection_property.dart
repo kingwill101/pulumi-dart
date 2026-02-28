@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConnectionProperty {
   /// [Required] Name of the connection property to set.
   final String? key;
-
   /// [Required] Value of the connection property.
   final String? value;
 
@@ -16,16 +16,10 @@ class ConnectionProperty {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final keyValue = key;
-    if (keyValue != null) {
-      map['key'] = keyValue;
-    }
-    final valueValue = value;
-    if (valueValue != null) {
-      map['value'] = valueValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'key': ?key,
+      'value': ?value,
+    };
   }
 
   factory ConnectionProperty.fromMap(Map<String, dynamic> map) {
@@ -35,3 +29,4 @@ class ConnectionProperty {
     );
   }
 }
+

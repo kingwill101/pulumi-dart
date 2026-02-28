@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AwsNodePoolConfigSshConfig {
   /// The name of the EC2 key pair used to login into cluster machines.
   final String ec2KeyPair;
@@ -11,9 +12,9 @@ class AwsNodePoolConfigSshConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ec2KeyPair'] = ec2KeyPair;
-    return map;
+    return <String, dynamic>{
+      'ec2KeyPair': ec2KeyPair,
+    };
   }
 
   factory AwsNodePoolConfigSshConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class AwsNodePoolConfigSshConfig {
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LocationHdfsNameNode {
   /// The hostname of the NameNode in the HDFS cluster. This value is the IP address or Domain Name Service (DNS) name of the NameNode. An agent that's installed on-premises uses this hostname to communicate with the NameNode in the network.
   final String hostname;
-
   /// The port that the NameNode uses to listen to client requests.
   final int port;
 
@@ -16,10 +16,10 @@ class LocationHdfsNameNode {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['hostname'] = hostname;
-    map['port'] = port;
-    return map;
+    return <String, dynamic>{
+      'hostname': hostname,
+      'port': port,
+    };
   }
 
   factory LocationHdfsNameNode.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class LocationHdfsNameNode {
     );
   }
 }
+

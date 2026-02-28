@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Header details for a given header to be added to Endpoint.
 class Header {
   /// Key of Header.
   final String? key;
-
   /// Value of Header.
   final String? value;
 
@@ -17,16 +17,10 @@ class Header {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final keyValue = key;
-    if (keyValue != null) {
-      map['key'] = keyValue;
-    }
-    final valueValue = value;
-    if (valueValue != null) {
-      map['value'] = valueValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'key': ?key,
+      'value': ?value,
+    };
   }
 
   factory Header.fromMap(Map<String, dynamic> map) {
@@ -36,3 +30,4 @@ class Header {
     );
   }
 }
+

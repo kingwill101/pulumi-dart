@@ -8,29 +8,20 @@ import 'google_cloud_channel_v1_cloud_identity_info_response.dart';
 /// on Google Cloud even though it will be deleted from Pulumi state.
 class ChannelPartnerLink extends pulumi.CustomResource {
   late final pulumi.Output<String> accountId;
-
   /// Cloud Identity info of the channel partner (IR).
-  late final pulumi.Output<GoogleCloudChannelV1CloudIdentityInfoResponse>
-      channelPartnerCloudIdentityInfo;
-
+  late final pulumi.Output<GoogleCloudChannelV1CloudIdentityInfoResponse> channelPartnerCloudIdentityInfo;
   /// Timestamp of when the channel partner link is created.
   late final pulumi.Output<String> createTime;
-
   /// URI of the web page where partner accepts the link invitation.
   late final pulumi.Output<String> inviteLinkUri;
-
   /// State of the channel partner link.
   late final pulumi.Output<String> linkState;
-
   /// Resource name for the channel partner link, in the format accounts/{account_id}/channelPartnerLinks/{id}.
   late final pulumi.Output<String> name;
-
   /// Public identifier that a customer must use to generate a transfer token to move to this distributor-reseller combination.
   late final pulumi.Output<String> publicId;
-
   /// Cloud Identity ID of the linked reseller.
   late final pulumi.Output<String> resellerCloudIdentityId;
-
   /// Timestamp of when the channel partner link is updated.
   late final pulumi.Output<String> updateTime;
 
@@ -49,16 +40,13 @@ class ChannelPartnerLink extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accountId = registerOutput<String>('accountId');
-    this.channelPartnerCloudIdentityInfo =
-        registerOutput<GoogleCloudChannelV1CloudIdentityInfoResponse>(
-            'channelPartnerCloudIdentityInfo');
+    this.channelPartnerCloudIdentityInfo = registerOutput<GoogleCloudChannelV1CloudIdentityInfoResponse>('channelPartnerCloudIdentityInfo');
     this.createTime = registerOutput<String>('createTime');
     this.inviteLinkUri = registerOutput<String>('inviteLinkUri');
     this.linkState = registerOutput<String>('linkState');
     this.name = registerOutput<String>('name');
     this.publicId = registerOutput<String>('publicId');
-    this.resellerCloudIdentityId =
-        registerOutput<String>('resellerCloudIdentityId');
+    this.resellerCloudIdentityId = registerOutput<String>('resellerCloudIdentityId');
     this.updateTime = registerOutput<String>('updateTime');
   }
 }

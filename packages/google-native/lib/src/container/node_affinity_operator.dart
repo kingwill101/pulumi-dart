@@ -16,3 +16,4 @@ enum NodeAffinityOperator {
     throw ArgumentError('Unknown NodeAffinityOperator value: $value');
   }
 }
+

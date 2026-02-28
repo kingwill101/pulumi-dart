@@ -25,30 +25,24 @@ class GetExecutionWorkflowexecutionsV1betaArgs {
     String? project,
     String? view,
     required String workflowId,
-  })  : executionId = pulumi.Input.asInput<String>(executionId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        view = pulumi.Input.asOptionalInput<String>(view),
-        workflowId = pulumi.Input.asInput<String>(workflowId);
+  }) :
+      executionId = pulumi.Input.asInput<String>(executionId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      view = pulumi.Input.asOptionalInput<String>(view),
+      workflowId = pulumi.Input.asInput<String>(workflowId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['executionId'] = executionId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final viewValue = view;
-    if (viewValue != null) {
-      map['view'] = viewValue;
-    }
-    map['workflowId'] = workflowId;
-    return map;
+    return <String, dynamic>{
+      'executionId': executionId,
+      'location': location,
+      'project': ?project,
+      'view': ?view,
+      'workflowId': workflowId,
+    };
   }
 
-  factory GetExecutionWorkflowexecutionsV1betaArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetExecutionWorkflowexecutionsV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetExecutionWorkflowexecutionsV1betaArgs(
       executionId: map['executionId'] as String,
       location: map['location'] as String,
@@ -58,3 +52,4 @@ class GetExecutionWorkflowexecutionsV1betaArgs {
     );
   }
 }
+

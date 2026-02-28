@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ListenerRuleActionFixedResponse {
   /// The HTTP response code.
   final int statusCode;
@@ -11,9 +12,9 @@ class ListenerRuleActionFixedResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['statusCode'] = statusCode;
-    return map;
+    return <String, dynamic>{
+      'statusCode': statusCode,
+    };
   }
 
   factory ListenerRuleActionFixedResponse.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class ListenerRuleActionFixedResponse {
     );
   }
 }
+

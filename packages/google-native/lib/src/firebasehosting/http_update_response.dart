@@ -6,16 +6,12 @@ import 'status_response.dart';
 class HttpUpdateResponse {
   /// An error encountered during the last contents check. If null, the check completed successfully.
   final StatusResponse checkError;
-
   /// A text string to serve at the path.
   final String desired;
-
   /// Whether Hosting was able to find the required file contents on the specified path during its last check.
   final String discovered;
-
   /// The last time Hosting systems checked for the file contents.
   final String lastCheckTime;
-
   /// The path to the file.
   final String path;
 
@@ -34,19 +30,18 @@ class HttpUpdateResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['checkError'] = checkError.toMap();
-    map['desired'] = desired;
-    map['discovered'] = discovered;
-    map['lastCheckTime'] = lastCheckTime;
-    map['path'] = path;
-    return map;
+    return <String, dynamic>{
+      'checkError': checkError.toMap(),
+      'desired': desired,
+      'discovered': discovered,
+      'lastCheckTime': lastCheckTime,
+      'path': path,
+    };
   }
 
   factory HttpUpdateResponse.fromMap(Map<String, dynamic> map) {
     return HttpUpdateResponse(
-      checkError: StatusResponse.fromMap(
-          (map['checkError'] as Map).cast<String, dynamic>()),
+      checkError: StatusResponse.fromMap((map['checkError'] as Map).cast<String, dynamic>()),
       desired: map['desired'] as String,
       discovered: map['discovered'] as String,
       lastCheckTime: map['lastCheckTime'] as String,
@@ -54,3 +49,4 @@ class HttpUpdateResponse {
     );
   }
 }
+

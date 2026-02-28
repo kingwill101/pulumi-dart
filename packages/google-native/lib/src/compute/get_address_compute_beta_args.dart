@@ -19,19 +19,17 @@ class GetAddressComputeBetaArgs {
     required String address,
     String? project,
     required String region,
-  })  : address = pulumi.Input.asInput<String>(address),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asInput<String>(region);
+  }) :
+      address = pulumi.Input.asInput<String>(address),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['address'] = address;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'address': address,
+      'project': ?project,
+      'region': region,
+    };
   }
 
   factory GetAddressComputeBetaArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetAddressComputeBetaArgs {
     );
   }
 }
+

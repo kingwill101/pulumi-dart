@@ -9,12 +9,9 @@ import 'security_configuration_encryption_configuration.dart';
 /// {@macro pulumi_glue_security_configuration_security_configuration_args_doc}
 class SecurityConfigurationArgs {
   /// Configuration block containing encryption configuration. Detailed below.
-  final pulumi.Input<SecurityConfigurationEncryptionConfiguration>
-      encryptionConfiguration;
-
+  final pulumi.Input<SecurityConfigurationEncryptionConfiguration> encryptionConfiguration;
   /// Name of the security configuration.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -23,39 +20,28 @@ class SecurityConfigurationArgs {
   /// [name] Name of the security configuration.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   SecurityConfigurationArgs({
-    required SecurityConfigurationEncryptionConfiguration
-        encryptionConfiguration,
+    required SecurityConfigurationEncryptionConfiguration encryptionConfiguration,
     String? name,
     String? region,
-  })  : encryptionConfiguration =
-            pulumi.Input.asInput<SecurityConfigurationEncryptionConfiguration>(
-                encryptionConfiguration),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      encryptionConfiguration = pulumi.Input.asInput<SecurityConfigurationEncryptionConfiguration>(encryptionConfiguration),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['encryptionConfiguration'] = pulumi.Input.mapInputValue<
-            SecurityConfigurationEncryptionConfiguration, Map<String, dynamic>>(
-        encryptionConfiguration, (value) => value.toMap());
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'encryptionConfiguration': pulumi.Input.mapInputValue<SecurityConfigurationEncryptionConfiguration, Map<String, dynamic>>(encryptionConfiguration, (value) => value.toMap()),
+      'name': ?name,
+      'region': ?region,
+    };
   }
 
   factory SecurityConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return SecurityConfigurationArgs(
-      encryptionConfiguration:
-          SecurityConfigurationEncryptionConfiguration.fromMap(
-              (map['encryptionConfiguration'] as Map).cast<String, dynamic>()),
+      encryptionConfiguration: SecurityConfigurationEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>()),
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

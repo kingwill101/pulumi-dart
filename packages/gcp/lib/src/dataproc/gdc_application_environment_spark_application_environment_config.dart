@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GdcApplicationEnvironmentSparkApplicationEnvironmentConfig {
   /// A map of default Spark properties to apply to workloads in this application environment. These defaults may be overridden by per-application properties.
   final Map<String, String>? defaultProperties;
-
   /// The default Dataproc version to use for applications submitted to this application environment
   final String? defaultVersion;
 
@@ -16,27 +16,17 @@ class GdcApplicationEnvironmentSparkApplicationEnvironmentConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final defaultPropertiesValue = defaultProperties;
-    if (defaultPropertiesValue != null) {
-      map['defaultProperties'] = defaultPropertiesValue;
-    }
-    final defaultVersionValue = defaultVersion;
-    if (defaultVersionValue != null) {
-      map['defaultVersion'] = defaultVersionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'defaultProperties': ?defaultProperties,
+      'defaultVersion': ?defaultVersion,
+    };
   }
 
-  factory GdcApplicationEnvironmentSparkApplicationEnvironmentConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GdcApplicationEnvironmentSparkApplicationEnvironmentConfig.fromMap(Map<String, dynamic> map) {
     return GdcApplicationEnvironmentSparkApplicationEnvironmentConfig(
-      defaultProperties: map['defaultProperties'] == null
-          ? null
-          : (map['defaultProperties'] as Map).cast<String, String>(),
-      defaultVersion: map['defaultVersion'] == null
-          ? null
-          : map['defaultVersion'] as String,
+      defaultProperties: map['defaultProperties'] == null ? null : (map['defaultProperties'] as Map).cast<String, String>(),
+      defaultVersion: map['defaultVersion'] == null ? null : map['defaultVersion'] as String,
     );
   }
 }
+

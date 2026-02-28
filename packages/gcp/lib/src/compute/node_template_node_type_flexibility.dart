@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NodeTemplateNodeTypeFlexibility {
   /// Number of virtual CPUs to use.
   final String? cpus;
-
   /// (Output)
   /// Use local SSD
   final String? localSsd;
-
   /// Physical memory available to the node, defined in MB.
   final String? memory;
 
@@ -22,20 +21,11 @@ class NodeTemplateNodeTypeFlexibility {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cpusValue = cpus;
-    if (cpusValue != null) {
-      map['cpus'] = cpusValue;
-    }
-    final localSsdValue = localSsd;
-    if (localSsdValue != null) {
-      map['localSsd'] = localSsdValue;
-    }
-    final memoryValue = memory;
-    if (memoryValue != null) {
-      map['memory'] = memoryValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cpus': ?cpus,
+      'localSsd': ?localSsd,
+      'memory': ?memory,
+    };
   }
 
   factory NodeTemplateNodeTypeFlexibility.fromMap(Map<String, dynamic> map) {
@@ -46,3 +36,4 @@ class NodeTemplateNodeTypeFlexibility {
     );
   }
 }
+

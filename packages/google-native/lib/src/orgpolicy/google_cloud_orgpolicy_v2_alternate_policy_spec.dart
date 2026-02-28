@@ -6,7 +6,6 @@ import 'google_cloud_orgpolicy_v2_policy_spec.dart';
 class GoogleCloudOrgpolicyV2AlternatePolicySpec {
   /// Reference to the launch that will be used while audit logging and to control the launch. Should be set only in the alternate policy.
   final String? launch;
-
   /// Specify constraint for configurations of Google Cloud resources.
   final GoogleCloudOrgpolicyV2PolicySpec? spec;
 
@@ -19,26 +18,17 @@ class GoogleCloudOrgpolicyV2AlternatePolicySpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final launchValue = launch;
-    if (launchValue != null) {
-      map['launch'] = launchValue;
-    }
-    final specValue = spec;
-    if (specValue != null) {
-      map['spec'] = specValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'launch': ?launch,
+      'spec': ?spec == null ? null : spec!.toMap(),
+    };
   }
 
-  factory GoogleCloudOrgpolicyV2AlternatePolicySpec.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudOrgpolicyV2AlternatePolicySpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudOrgpolicyV2AlternatePolicySpec(
       launch: map['launch'] == null ? null : map['launch'] as String,
-      spec: map['spec'] == null
-          ? null
-          : GoogleCloudOrgpolicyV2PolicySpec.fromMap(
-              (map['spec'] as Map).cast<String, dynamic>()),
+      spec: map['spec'] == null ? null : GoogleCloudOrgpolicyV2PolicySpec.fromMap((map['spec'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

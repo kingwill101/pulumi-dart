@@ -5,8 +5,7 @@ import 'anthos_observability_membership_spec_response_gkehub_v1beta.dart';
 /// **Anthos Observability**: Spec
 class AnthosObservabilityFeatureSpecResponseGkehubV1beta {
   /// Default membership spec for unconfigured memberships
-  final AnthosObservabilityMembershipSpecResponseGkehubV1beta
-      defaultMembershipSpec;
+  final AnthosObservabilityMembershipSpecResponseGkehubV1beta defaultMembershipSpec;
 
   /// Creates a new [AnthosObservabilityFeatureSpecResponseGkehubV1beta].
   /// [defaultMembershipSpec] Default membership spec for unconfigured memberships
@@ -15,17 +14,15 @@ class AnthosObservabilityFeatureSpecResponseGkehubV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['defaultMembershipSpec'] = defaultMembershipSpec.toMap();
-    return map;
+    return <String, dynamic>{
+      'defaultMembershipSpec': defaultMembershipSpec.toMap(),
+    };
   }
 
-  factory AnthosObservabilityFeatureSpecResponseGkehubV1beta.fromMap(
-      Map<String, dynamic> map) {
+  factory AnthosObservabilityFeatureSpecResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return AnthosObservabilityFeatureSpecResponseGkehubV1beta(
-      defaultMembershipSpec:
-          AnthosObservabilityMembershipSpecResponseGkehubV1beta.fromMap(
-              (map['defaultMembershipSpec'] as Map).cast<String, dynamic>()),
+      defaultMembershipSpec: AnthosObservabilityMembershipSpecResponseGkehubV1beta.fromMap((map['defaultMembershipSpec'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

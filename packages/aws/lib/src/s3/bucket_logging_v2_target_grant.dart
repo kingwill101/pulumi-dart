@@ -5,7 +5,6 @@ import 'bucket_logging_v2_target_grant_grantee.dart';
 class BucketLoggingV2TargetGrant {
   /// Configuration block for the person being granted permissions. See below.
   final BucketLoggingV2TargetGrantGrantee grantee;
-
   /// Logging permissions assigned to the grantee for the bucket. Valid values: `FULL_CONTROL`, `READ`, `WRITE`.
   final String permission;
 
@@ -18,17 +17,17 @@ class BucketLoggingV2TargetGrant {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['grantee'] = grantee.toMap();
-    map['permission'] = permission;
-    return map;
+    return <String, dynamic>{
+      'grantee': grantee.toMap(),
+      'permission': permission,
+    };
   }
 
   factory BucketLoggingV2TargetGrant.fromMap(Map<String, dynamic> map) {
     return BucketLoggingV2TargetGrant(
-      grantee: BucketLoggingV2TargetGrantGrantee.fromMap(
-          (map['grantee'] as Map).cast<String, dynamic>()),
+      grantee: BucketLoggingV2TargetGrantGrantee.fromMap((map['grantee'] as Map).cast<String, dynamic>()),
       permission: map['permission'] as String,
     );
   }
 }
+

@@ -1,25 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRoute.
 class GetRouteResult {
   /// The create time of the resource.
   final String createTime;
-
   /// Destination address for connection
   final String destinationAddress;
-
   /// Destination port for connection
   final int destinationPort;
-
   /// Display name.
   final String displayName;
-
   /// Labels.
   final Map<String, String> labels;
-
   /// The resource's name.
   final String name;
-
   /// The update time of the resource.
   final String updateTime;
 
@@ -42,15 +37,15 @@ class GetRouteResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['destinationAddress'] = destinationAddress;
-    map['destinationPort'] = destinationPort;
-    map['displayName'] = displayName;
-    map['labels'] = labels;
-    map['name'] = name;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'destinationAddress': destinationAddress,
+      'destinationPort': destinationPort,
+      'displayName': displayName,
+      'labels': labels,
+      'name': name,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetRouteResult.fromMap(Map<String, dynamic> map) {
@@ -65,3 +60,4 @@ class GetRouteResult {
     );
   }
 }
+

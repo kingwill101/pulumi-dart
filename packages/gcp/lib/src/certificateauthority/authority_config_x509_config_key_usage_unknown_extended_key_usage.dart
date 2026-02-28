@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage {
   /// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
   final List<int> objectIdPaths;
@@ -11,15 +12,15 @@ class AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['objectIdPaths'] = objectIdPaths;
-    return map;
+    return <String, dynamic>{
+      'objectIdPaths': objectIdPaths,
+    };
   }
 
-  factory AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage.fromMap(
-      Map<String, dynamic> map) {
+  factory AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage.fromMap(Map<String, dynamic> map) {
     return AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage(
       objectIdPaths: (map['objectIdPaths'] as List).cast<int>(),
     );
   }
 }
+

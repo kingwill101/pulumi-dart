@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The encryption options for the Cloud Composer environment and its dependencies.Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 class EncryptionConfigResponse {
   /// Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated. If not specified, Google-managed key will be used.
@@ -12,9 +13,9 @@ class EncryptionConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kmsKeyName'] = kmsKeyName;
-    return map;
+    return <String, dynamic>{
+      'kmsKeyName': kmsKeyName,
+    };
   }
 
   factory EncryptionConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class EncryptionConfigResponse {
     );
   }
 }
+

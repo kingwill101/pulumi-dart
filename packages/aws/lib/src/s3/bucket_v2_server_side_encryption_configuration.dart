@@ -14,21 +14,15 @@ class BucketV2ServerSideEncryptionConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['rules'] = pulumi.Input.encodeList<
-        BucketV2ServerSideEncryptionConfigurationRule,
-        Map<String, dynamic>>(rules, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'rules': pulumi.Input.encodeList<BucketV2ServerSideEncryptionConfigurationRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
+    };
   }
 
-  factory BucketV2ServerSideEncryptionConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory BucketV2ServerSideEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return BucketV2ServerSideEncryptionConfiguration(
-      rules: pulumi.Input.decodeList<
-              BucketV2ServerSideEncryptionConfigurationRule>(
-          map['rules'],
-          (value) => BucketV2ServerSideEncryptionConfigurationRule.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      rules: pulumi.Input.decodeList<BucketV2ServerSideEncryptionConfigurationRule>(map['rules'], (value) => BucketV2ServerSideEncryptionConfigurationRule.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

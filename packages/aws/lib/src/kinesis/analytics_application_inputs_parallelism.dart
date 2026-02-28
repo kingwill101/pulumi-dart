@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AnalyticsApplicationInputsParallelism {
   /// The Count of streams.
   final int? count;
@@ -11,18 +12,15 @@ class AnalyticsApplicationInputsParallelism {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final countValue = count;
-    if (countValue != null) {
-      map['count'] = countValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'count': ?count,
+    };
   }
 
-  factory AnalyticsApplicationInputsParallelism.fromMap(
-      Map<String, dynamic> map) {
+  factory AnalyticsApplicationInputsParallelism.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationInputsParallelism(
       count: map['count'] == null ? null : map['count'] as int,
     );
   }
 }
+

@@ -1,36 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getIntent.
 class GetIntentResult {
   /// ARN of the Lex intent.
   final String arn;
-
   /// Checksum identifying the version of the intent that was created. The checksum is not
   /// included as an argument because the resource will add it automatically when updating the intent.
   final String checksum;
-
   /// Date when the intent version was created.
   final String createdDate;
-
   /// Description of the intent.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Date when the $LATEST version of this intent was updated.
   final String lastUpdatedDate;
-
   /// Name of the intent, not case sensitive.
   final String name;
-
   /// A unique identifier for the built-in intent to base this
   /// intent on. To find the signature for an intent, see
   /// [Standard Built-in Intents](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents)
   /// in the Alexa Skills Kit.
   final String parentIntentSignature;
   final String region;
-
   /// Version of the bot.
   final String? version;
 
@@ -59,21 +52,18 @@ class GetIntentResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['checksum'] = checksum;
-    map['createdDate'] = createdDate;
-    map['description'] = description;
-    map['id'] = id;
-    map['lastUpdatedDate'] = lastUpdatedDate;
-    map['name'] = name;
-    map['parentIntentSignature'] = parentIntentSignature;
-    map['region'] = region;
-    final versionValue = version;
-    if (versionValue != null) {
-      map['version'] = versionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'checksum': checksum,
+      'createdDate': createdDate,
+      'description': description,
+      'id': id,
+      'lastUpdatedDate': lastUpdatedDate,
+      'name': name,
+      'parentIntentSignature': parentIntentSignature,
+      'region': region,
+      'version': ?version,
+    };
   }
 
   factory GetIntentResult.fromMap(Map<String, dynamic> map) {
@@ -91,3 +81,4 @@ class GetIntentResult {
     );
   }
 }
+

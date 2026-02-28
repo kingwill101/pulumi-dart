@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BuilderConfig {
   final String? id;
 
@@ -10,12 +11,9 @@ class BuilderConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final idValue = id;
-    if (idValue != null) {
-      map['id'] = idValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
   factory BuilderConfig.fromMap(Map<String, dynamic> map) {
@@ -24,3 +22,4 @@ class BuilderConfig {
     );
   }
 }
+

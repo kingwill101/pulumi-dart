@@ -13,20 +13,15 @@ class RuleGroupRuleActionCaptcha {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final customRequestHandlingValue = customRequestHandling;
-    if (customRequestHandlingValue != null) {
-      map['customRequestHandling'] = customRequestHandlingValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'customRequestHandling': ?customRequestHandling == null ? null : customRequestHandling!.toMap(),
+    };
   }
 
   factory RuleGroupRuleActionCaptcha.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleActionCaptcha(
-      customRequestHandling: map['customRequestHandling'] == null
-          ? null
-          : RuleGroupRuleActionCaptchaCustomRequestHandling.fromMap(
-              (map['customRequestHandling'] as Map).cast<String, dynamic>()),
+      customRequestHandling: map['customRequestHandling'] == null ? null : RuleGroupRuleActionCaptchaCustomRequestHandling.fromMap((map['customRequestHandling'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

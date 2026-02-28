@@ -5,12 +5,9 @@ import 'agent_flow_definition_node_configuration_prompt_source_configuration_inl
 
 class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationTool {
   /// Creates a cache checkpoint within a tool designation. See Cache Point for more information.
-  final AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolCachePoint?
-      cachePoint;
-
+  final AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolCachePoint? cachePoint;
   /// The specification for the tool. See Tool Specification for more information.
-  final AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpec?
-      toolSpec;
+  final AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpec? toolSpec;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationTool].
   /// [cachePoint] Creates a cache checkpoint within a tool designation. See Cache Point for more information.
@@ -21,29 +18,17 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cachePointValue = cachePoint;
-    if (cachePointValue != null) {
-      map['cachePoint'] = cachePointValue.toMap();
-    }
-    final toolSpecValue = toolSpec;
-    if (toolSpecValue != null) {
-      map['toolSpec'] = toolSpecValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'cachePoint': ?cachePoint == null ? null : cachePoint!.toMap(),
+      'toolSpec': ?toolSpec == null ? null : toolSpec!.toMap(),
+    };
   }
 
-  factory AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationTool.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationTool.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationTool(
-      cachePoint: map['cachePoint'] == null
-          ? null
-          : AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolCachePoint
-              .fromMap((map['cachePoint'] as Map).cast<String, dynamic>()),
-      toolSpec: map['toolSpec'] == null
-          ? null
-          : AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpec
-              .fromMap((map['toolSpec'] as Map).cast<String, dynamic>()),
+      cachePoint: map['cachePoint'] == null ? null : AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolCachePoint.fromMap((map['cachePoint'] as Map).cast<String, dynamic>()),
+      toolSpec: map['toolSpec'] == null ? null : AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpec.fromMap((map['toolSpec'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

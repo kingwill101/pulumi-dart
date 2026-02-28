@@ -13,15 +13,13 @@ enum WindowsUpdateSettingsClassificationsItemOsconfigV1beta {
   const WindowsUpdateSettingsClassificationsItemOsconfigV1beta(this.value);
   final String value;
 
-  static WindowsUpdateSettingsClassificationsItemOsconfigV1beta fromValue(
-      String value) {
-    for (final item
-        in WindowsUpdateSettingsClassificationsItemOsconfigV1beta.values) {
+  static WindowsUpdateSettingsClassificationsItemOsconfigV1beta fromValue(String value) {
+    for (final item in WindowsUpdateSettingsClassificationsItemOsconfigV1beta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown WindowsUpdateSettingsClassificationsItemOsconfigV1beta value: $value');
+    throw ArgumentError('Unknown WindowsUpdateSettingsClassificationsItemOsconfigV1beta value: $value');
   }
 }
+

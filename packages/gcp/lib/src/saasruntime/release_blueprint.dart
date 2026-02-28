@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ReleaseBlueprint {
   final String? engine;
-
   /// URI to a blueprint used by the Unit (required unless unitKind or release is
   /// set).
   final String? package;
-
   /// (Output)
   /// Version metadata if present on the blueprint.
   final String? version;
@@ -22,20 +21,11 @@ class ReleaseBlueprint {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final engineValue = engine;
-    if (engineValue != null) {
-      map['engine'] = engineValue;
-    }
-    final packageValue = package;
-    if (packageValue != null) {
-      map['package'] = packageValue;
-    }
-    final versionValue = version;
-    if (versionValue != null) {
-      map['version'] = versionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'engine': ?engine,
+      'package': ?package,
+      'version': ?version,
+    };
   }
 
   factory ReleaseBlueprint.fromMap(Map<String, dynamic> map) {
@@ -46,3 +36,4 @@ class ReleaseBlueprint {
     );
   }
 }
+

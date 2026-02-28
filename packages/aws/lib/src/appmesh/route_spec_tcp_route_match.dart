@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RouteSpecTcpRouteMatch {
   final int? port;
 
@@ -10,12 +11,9 @@ class RouteSpecTcpRouteMatch {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final portValue = port;
-    if (portValue != null) {
-      map['port'] = portValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'port': ?port,
+    };
   }
 
   factory RouteSpecTcpRouteMatch.fromMap(Map<String, dynamic> map) {
@@ -24,3 +22,4 @@ class RouteSpecTcpRouteMatch {
     );
   }
 }
+

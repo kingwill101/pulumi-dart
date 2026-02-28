@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing various versions of CVSS rather than making a separate proto for storing a specific version.
 class CVSSResponse {
   final String attackComplexity;
-
   /// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
   final String attackVector;
   final String authentication;
   final String availabilityImpact;
-
   /// The base score is a function of the base metric scores.
   final double baseScore;
   final String confidentialityImpact;
@@ -48,20 +47,20 @@ class CVSSResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['attackComplexity'] = attackComplexity;
-    map['attackVector'] = attackVector;
-    map['authentication'] = authentication;
-    map['availabilityImpact'] = availabilityImpact;
-    map['baseScore'] = baseScore;
-    map['confidentialityImpact'] = confidentialityImpact;
-    map['exploitabilityScore'] = exploitabilityScore;
-    map['impactScore'] = impactScore;
-    map['integrityImpact'] = integrityImpact;
-    map['privilegesRequired'] = privilegesRequired;
-    map['scope'] = scope;
-    map['userInteraction'] = userInteraction;
-    return map;
+    return <String, dynamic>{
+      'attackComplexity': attackComplexity,
+      'attackVector': attackVector,
+      'authentication': authentication,
+      'availabilityImpact': availabilityImpact,
+      'baseScore': baseScore,
+      'confidentialityImpact': confidentialityImpact,
+      'exploitabilityScore': exploitabilityScore,
+      'impactScore': impactScore,
+      'integrityImpact': integrityImpact,
+      'privilegesRequired': privilegesRequired,
+      'scope': scope,
+      'userInteraction': userInteraction,
+    };
   }
 
   factory CVSSResponse.fromMap(Map<String, dynamic> map) {
@@ -81,3 +80,4 @@ class CVSSResponse {
     );
   }
 }
+

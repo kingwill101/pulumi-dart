@@ -184,11 +184,9 @@ import 'project_args.dart';
 class Project extends pulumi.CustomResource {
   /// The GCP project display name
   late final pulumi.Output<String> displayName;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The number of the Google Project that Firebase is enabled on.
   late final pulumi.Output<String> projectNumber;
 

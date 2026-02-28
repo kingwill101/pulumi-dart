@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PlanWorkflowStepEc2AsgCapacityIncreaseConfigUngraceful {
   /// Minimum success percentage required.
   final int minimumSuccessPercentage;
@@ -11,15 +12,15 @@ class PlanWorkflowStepEc2AsgCapacityIncreaseConfigUngraceful {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['minimumSuccessPercentage'] = minimumSuccessPercentage;
-    return map;
+    return <String, dynamic>{
+      'minimumSuccessPercentage': minimumSuccessPercentage,
+    };
   }
 
-  factory PlanWorkflowStepEc2AsgCapacityIncreaseConfigUngraceful.fromMap(
-      Map<String, dynamic> map) {
+  factory PlanWorkflowStepEc2AsgCapacityIncreaseConfigUngraceful.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepEc2AsgCapacityIncreaseConfigUngraceful(
       minimumSuccessPercentage: map['minimumSuccessPercentage'] as int,
     );
   }
 }
+

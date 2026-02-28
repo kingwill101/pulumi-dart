@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataSourceParametersSnowflake {
   /// The database to which to connect.
   final String database;
-
   /// The host to which to connect.
   final String host;
-
   /// The warehouse to which to connect.
   final String warehouse;
 
@@ -21,11 +20,11 @@ class DataSourceParametersSnowflake {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['database'] = database;
-    map['host'] = host;
-    map['warehouse'] = warehouse;
-    return map;
+    return <String, dynamic>{
+      'database': database,
+      'host': host,
+      'warehouse': warehouse,
+    };
   }
 
   factory DataSourceParametersSnowflake.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class DataSourceParametersSnowflake {
     );
   }
 }
+

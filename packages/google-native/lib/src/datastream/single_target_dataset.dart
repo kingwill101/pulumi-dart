@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A single target dataset to which all data will be streamed.
 class SingleTargetDataset {
   /// The dataset ID of the target dataset. DatasetIds allowed characters: https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets#datasetreference.
@@ -12,12 +13,9 @@ class SingleTargetDataset {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final datasetIdValue = datasetId;
-    if (datasetIdValue != null) {
-      map['datasetId'] = datasetIdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'datasetId': ?datasetId,
+    };
   }
 
   factory SingleTargetDataset.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class SingleTargetDataset {
     );
   }
 }
+

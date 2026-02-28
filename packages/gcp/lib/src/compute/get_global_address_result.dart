@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getGlobalAddress.
 class GetGlobalAddressResult {
   /// The IP of the created resource.
   final String address;
   final String addressType;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -14,10 +14,8 @@ class GetGlobalAddressResult {
   final int prefixLength;
   final String project;
   final String purpose;
-
   /// The URI of the created resource.
   final String selfLink;
-
   /// Indicates if the address is used. Possible values are: RESERVED or IN_USE.
   final String status;
   final String subnetwork;
@@ -54,21 +52,21 @@ class GetGlobalAddressResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['address'] = address;
-    map['addressType'] = addressType;
-    map['id'] = id;
-    map['name'] = name;
-    map['network'] = network;
-    map['networkTier'] = networkTier;
-    map['prefixLength'] = prefixLength;
-    map['project'] = project;
-    map['purpose'] = purpose;
-    map['selfLink'] = selfLink;
-    map['status'] = status;
-    map['subnetwork'] = subnetwork;
-    map['users'] = users;
-    return map;
+    return <String, dynamic>{
+      'address': address,
+      'addressType': addressType,
+      'id': id,
+      'name': name,
+      'network': network,
+      'networkTier': networkTier,
+      'prefixLength': prefixLength,
+      'project': project,
+      'purpose': purpose,
+      'selfLink': selfLink,
+      'status': status,
+      'subnetwork': subnetwork,
+      'users': users,
+    };
   }
 
   factory GetGlobalAddressResult.fromMap(Map<String, dynamic> map) {
@@ -89,3 +87,4 @@ class GetGlobalAddressResult {
     );
   }
 }
+

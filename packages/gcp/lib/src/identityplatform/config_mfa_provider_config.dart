@@ -6,7 +6,6 @@ class ConfigMfaProviderConfig {
   /// Whether MultiFactor Authentication has been enabled for this project.
   /// Possible values are: `DISABLED`, `ENABLED`, `MANDATORY`.
   final String? state;
-
   /// TOTP MFA provider config for this project.
   /// Structure is documented below.
   final ConfigMfaProviderConfigTotpProviderConfig? totpProviderConfig;
@@ -20,25 +19,17 @@ class ConfigMfaProviderConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final stateValue = state;
-    if (stateValue != null) {
-      map['state'] = stateValue;
-    }
-    final totpProviderConfigValue = totpProviderConfig;
-    if (totpProviderConfigValue != null) {
-      map['totpProviderConfig'] = totpProviderConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'state': ?state,
+      'totpProviderConfig': ?totpProviderConfig == null ? null : totpProviderConfig!.toMap(),
+    };
   }
 
   factory ConfigMfaProviderConfig.fromMap(Map<String, dynamic> map) {
     return ConfigMfaProviderConfig(
       state: map['state'] == null ? null : map['state'] as String,
-      totpProviderConfig: map['totpProviderConfig'] == null
-          ? null
-          : ConfigMfaProviderConfigTotpProviderConfig.fromMap(
-              (map['totpProviderConfig'] as Map).cast<String, dynamic>()),
+      totpProviderConfig: map['totpProviderConfig'] == null ? null : ConfigMfaProviderConfigTotpProviderConfig.fromMap((map['totpProviderConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

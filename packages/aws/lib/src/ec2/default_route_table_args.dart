@@ -12,16 +12,12 @@ class DefaultRouteTableArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> defaultRouteTableId;
-
   /// List of virtual gateways for propagation.
   final pulumi.Input<List<String>>? propagatingVgws;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Set of objects. Detailed below
   final pulumi.Input<List<DefaultRouteTableRoute>>? routes;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -37,56 +33,31 @@ class DefaultRouteTableArgs {
     String? region,
     List<DefaultRouteTableRoute>? routes,
     Map<String, String>? tags,
-  })  : defaultRouteTableId = pulumi.Input.asInput<String>(defaultRouteTableId),
-        propagatingVgws =
-            pulumi.Input.asOptionalInput<List<String>>(propagatingVgws),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        routes =
-            pulumi.Input.asOptionalInput<List<DefaultRouteTableRoute>>(routes),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      defaultRouteTableId = pulumi.Input.asInput<String>(defaultRouteTableId),
+      propagatingVgws = pulumi.Input.asOptionalInput<List<String>>(propagatingVgws),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      routes = pulumi.Input.asOptionalInput<List<DefaultRouteTableRoute>>(routes),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['defaultRouteTableId'] = defaultRouteTableId;
-    final propagatingVgwsValue = propagatingVgws;
-    if (propagatingVgwsValue != null) {
-      map['propagatingVgws'] = propagatingVgwsValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final routesValue = routes;
-    if (routesValue != null) {
-      map['routes'] = pulumi.Input.mapOptionalInputValue<
-              List<DefaultRouteTableRoute>, List<Map<String, dynamic>>>(
-          routesValue,
-          (value) => pulumi.Input.encodeList<DefaultRouteTableRoute,
-              Map<String, dynamic>>(value, (value) => value.toMap()));
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'defaultRouteTableId': defaultRouteTableId,
+      'propagatingVgws': ?propagatingVgws,
+      'region': ?region,
+      'routes': ?pulumi.Input.mapOptionalInputValue<List<DefaultRouteTableRoute>, List<Map<String, dynamic>>>(routes, (value) => pulumi.Input.encodeList<DefaultRouteTableRoute, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'tags': ?tags,
+    };
   }
 
   factory DefaultRouteTableArgs.fromMap(Map<String, dynamic> map) {
     return DefaultRouteTableArgs(
       defaultRouteTableId: map['defaultRouteTableId'] as String,
-      propagatingVgws: map['propagatingVgws'] == null
-          ? null
-          : (map['propagatingVgws'] as List).cast<String>(),
+      propagatingVgws: map['propagatingVgws'] == null ? null : (map['propagatingVgws'] as List).cast<String>(),
       region: map['region'] == null ? null : map['region'] as String,
-      routes: map['routes'] == null
-          ? null
-          : pulumi.Input.decodeList<DefaultRouteTableRoute>(
-              map['routes'],
-              (value) => DefaultRouteTableRoute.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      routes: map['routes'] == null ? null : pulumi.Input.decodeList<DefaultRouteTableRoute>(map['routes'], (value) => DefaultRouteTableRoute.fromMap((value as Map).cast<String, dynamic>())),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

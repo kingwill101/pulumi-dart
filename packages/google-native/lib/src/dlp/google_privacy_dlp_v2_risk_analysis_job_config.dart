@@ -9,10 +9,8 @@ import 'google_privacy_dlp_v2_privacy_metric.dart';
 class GooglePrivacyDlpV2RiskAnalysisJobConfig {
   /// Actions to execute at the completion of the job. Are executed in the order provided.
   final List<GooglePrivacyDlpV2Action>? actions;
-
   /// Privacy metric to compute.
   final GooglePrivacyDlpV2PrivacyMetric? privacyMetric;
-
   /// Input dataset to compute metrics over.
   final GooglePrivacyDlpV2BigQueryTable? sourceTable;
 
@@ -27,40 +25,19 @@ class GooglePrivacyDlpV2RiskAnalysisJobConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final actionsValue = actions;
-    if (actionsValue != null) {
-      map['actions'] = pulumi.Input.encodeList<GooglePrivacyDlpV2Action,
-          Map<String, dynamic>>(actionsValue, (value) => value.toMap());
-    }
-    final privacyMetricValue = privacyMetric;
-    if (privacyMetricValue != null) {
-      map['privacyMetric'] = privacyMetricValue.toMap();
-    }
-    final sourceTableValue = sourceTable;
-    if (sourceTableValue != null) {
-      map['sourceTable'] = sourceTableValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'actions': ?actions == null ? null : pulumi.Input.encodeList<GooglePrivacyDlpV2Action, Map<String, dynamic>>(actions!, (value) => value.toMap()),
+      'privacyMetric': ?privacyMetric == null ? null : privacyMetric!.toMap(),
+      'sourceTable': ?sourceTable == null ? null : sourceTable!.toMap(),
+    };
   }
 
-  factory GooglePrivacyDlpV2RiskAnalysisJobConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2RiskAnalysisJobConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2RiskAnalysisJobConfig(
-      actions: map['actions'] == null
-          ? null
-          : pulumi.Input.decodeList<GooglePrivacyDlpV2Action>(
-              map['actions'],
-              (value) => GooglePrivacyDlpV2Action.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      privacyMetric: map['privacyMetric'] == null
-          ? null
-          : GooglePrivacyDlpV2PrivacyMetric.fromMap(
-              (map['privacyMetric'] as Map).cast<String, dynamic>()),
-      sourceTable: map['sourceTable'] == null
-          ? null
-          : GooglePrivacyDlpV2BigQueryTable.fromMap(
-              (map['sourceTable'] as Map).cast<String, dynamic>()),
+      actions: map['actions'] == null ? null : pulumi.Input.decodeList<GooglePrivacyDlpV2Action>(map['actions'], (value) => GooglePrivacyDlpV2Action.fromMap((value as Map).cast<String, dynamic>())),
+      privacyMetric: map['privacyMetric'] == null ? null : GooglePrivacyDlpV2PrivacyMetric.fromMap((map['privacyMetric'] as Map).cast<String, dynamic>()),
+      sourceTable: map['sourceTable'] == null ? null : GooglePrivacyDlpV2BigQueryTable.fromMap((map['sourceTable'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

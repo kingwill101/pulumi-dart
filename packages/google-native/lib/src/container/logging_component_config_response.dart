@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// LoggingComponentConfig is cluster logging component configuration.
 class LoggingComponentConfigResponse {
   /// Select components to collect logs. An empty set would disable all logging.
@@ -12,9 +13,9 @@ class LoggingComponentConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enableComponents'] = enableComponents;
-    return map;
+    return <String, dynamic>{
+      'enableComponents': enableComponents,
+    };
   }
 
   factory LoggingComponentConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class LoggingComponentConfigResponse {
     );
   }
 }
+

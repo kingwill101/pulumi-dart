@@ -14,20 +14,15 @@ class NodePoolDefaults {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nodeConfigDefaultsValue = nodeConfigDefaults;
-    if (nodeConfigDefaultsValue != null) {
-      map['nodeConfigDefaults'] = nodeConfigDefaultsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'nodeConfigDefaults': ?nodeConfigDefaults == null ? null : nodeConfigDefaults!.toMap(),
+    };
   }
 
   factory NodePoolDefaults.fromMap(Map<String, dynamic> map) {
     return NodePoolDefaults(
-      nodeConfigDefaults: map['nodeConfigDefaults'] == null
-          ? null
-          : NodeConfigDefaults.fromMap(
-              (map['nodeConfigDefaults'] as Map).cast<String, dynamic>()),
+      nodeConfigDefaults: map['nodeConfigDefaults'] == null ? null : NodeConfigDefaults.fromMap((map['nodeConfigDefaults'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

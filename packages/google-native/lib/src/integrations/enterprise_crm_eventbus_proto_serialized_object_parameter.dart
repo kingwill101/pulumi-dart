@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EnterpriseCrmEventbusProtoSerializedObjectParameter {
   final String? objectValue;
 
@@ -10,19 +11,15 @@ class EnterpriseCrmEventbusProtoSerializedObjectParameter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final objectValueValue = objectValue;
-    if (objectValueValue != null) {
-      map['objectValue'] = objectValueValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'objectValue': ?objectValue,
+    };
   }
 
-  factory EnterpriseCrmEventbusProtoSerializedObjectParameter.fromMap(
-      Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoSerializedObjectParameter.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoSerializedObjectParameter(
-      objectValue:
-          map['objectValue'] == null ? null : map['objectValue'] as String,
+      objectValue: map['objectValue'] == null ? null : map['objectValue'] as String,
     );
   }
 }
+

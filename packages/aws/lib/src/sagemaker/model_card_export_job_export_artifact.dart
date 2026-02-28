@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ModelCardExportJobExportArtifact {
   /// Amazon S3 URI of the exported model artifacts.
   final String s3ExportArtifacts;
@@ -11,9 +12,9 @@ class ModelCardExportJobExportArtifact {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['s3ExportArtifacts'] = s3ExportArtifacts;
-    return map;
+    return <String, dynamic>{
+      's3ExportArtifacts': s3ExportArtifacts,
+    };
   }
 
   factory ModelCardExportJobExportArtifact.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class ModelCardExportJobExportArtifact {
     );
   }
 }
+

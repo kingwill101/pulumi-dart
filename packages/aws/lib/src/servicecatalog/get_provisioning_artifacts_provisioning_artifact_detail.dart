@@ -1,24 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetProvisioningArtifactsProvisioningArtifactDetail {
   /// Indicates whether the product version is active.
   final bool active;
-
   /// The UTC time stamp of the creation time.
   final String createdTime;
-
   /// The description of the provisioning artifact.
   final String description;
-
   /// Information set by the administrator to provide guidance to end users about which provisioning artifacts to use.
   final String guidance;
-
   /// The identifier of the provisioning artifact.
   final String id;
-
   /// The name of the provisioning artifact.
   final String name;
-
   /// The type of provisioning artifact.
   final String type;
 
@@ -41,19 +36,18 @@ class GetProvisioningArtifactsProvisioningArtifactDetail {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['active'] = active;
-    map['createdTime'] = createdTime;
-    map['description'] = description;
-    map['guidance'] = guidance;
-    map['id'] = id;
-    map['name'] = name;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'active': active,
+      'createdTime': createdTime,
+      'description': description,
+      'guidance': guidance,
+      'id': id,
+      'name': name,
+      'type': type,
+    };
   }
 
-  factory GetProvisioningArtifactsProvisioningArtifactDetail.fromMap(
-      Map<String, dynamic> map) {
+  factory GetProvisioningArtifactsProvisioningArtifactDetail.fromMap(Map<String, dynamic> map) {
     return GetProvisioningArtifactsProvisioningArtifactDetail(
       active: map['active'] as bool,
       createdTime: map['createdTime'] as String,
@@ -65,3 +59,4 @@ class GetProvisioningArtifactsProvisioningArtifactDetail {
     );
   }
 }
+

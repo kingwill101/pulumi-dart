@@ -791,17 +791,12 @@ import 'configuration_policy_configuration_policy.dart';
 /// ```
 class ConfigurationPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
-
   /// Defines how Security Hub is configured. See below.
-  late final pulumi.Output<ConfigurationPolicyConfigurationPolicy>
-      configurationPolicy;
-
+  late final pulumi.Output<ConfigurationPolicyConfigurationPolicy> configurationPolicy;
   /// The description of the configuration policy.
   late final pulumi.Output<String?> description;
-
   /// The name of the configuration policy.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -820,9 +815,7 @@ class ConfigurationPolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
-    this.configurationPolicy =
-        registerOutput<ConfigurationPolicyConfigurationPolicy>(
-            'configurationPolicy');
+    this.configurationPolicy = registerOutput<ConfigurationPolicyConfigurationPolicy>('configurationPolicy');
     this.description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     this.region = registerOutput<String>('region');

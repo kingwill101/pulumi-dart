@@ -8,17 +8,13 @@ class InstanceNetworkConfig {
   /// If set, the instance IPs will be created from this allocated range and will override the IP range used by the parent cluster.
   /// The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
   final String? allocatedIpRangeOverride;
-
   /// A list of external networks authorized to access this instance. This
   /// field is only allowed to be set when `enable_public_ip` is set to
   /// true.
   /// Structure is documented below.
-  final List<InstanceNetworkConfigAuthorizedExternalNetwork>?
-      authorizedExternalNetworks;
-
+  final List<InstanceNetworkConfigAuthorizedExternalNetwork>? authorizedExternalNetworks;
   /// Enabling outbound public ip for the instance.
   final bool? enableOutboundPublicIp;
-
   /// Enabling public ip for the instance. If a user wishes to disable this,
   /// please also clear the list of the authorized external networks set on
   /// the same instance.
@@ -37,46 +33,21 @@ class InstanceNetworkConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final allocatedIpRangeOverrideValue = allocatedIpRangeOverride;
-    if (allocatedIpRangeOverrideValue != null) {
-      map['allocatedIpRangeOverride'] = allocatedIpRangeOverrideValue;
-    }
-    final authorizedExternalNetworksValue = authorizedExternalNetworks;
-    if (authorizedExternalNetworksValue != null) {
-      map['authorizedExternalNetworks'] = pulumi.Input.encodeList<
-              InstanceNetworkConfigAuthorizedExternalNetwork,
-              Map<String, dynamic>>(
-          authorizedExternalNetworksValue, (value) => value.toMap());
-    }
-    final enableOutboundPublicIpValue = enableOutboundPublicIp;
-    if (enableOutboundPublicIpValue != null) {
-      map['enableOutboundPublicIp'] = enableOutboundPublicIpValue;
-    }
-    final enablePublicIpValue = enablePublicIp;
-    if (enablePublicIpValue != null) {
-      map['enablePublicIp'] = enablePublicIpValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'allocatedIpRangeOverride': ?allocatedIpRangeOverride,
+      'authorizedExternalNetworks': ?authorizedExternalNetworks == null ? null : pulumi.Input.encodeList<InstanceNetworkConfigAuthorizedExternalNetwork, Map<String, dynamic>>(authorizedExternalNetworks!, (value) => value.toMap()),
+      'enableOutboundPublicIp': ?enableOutboundPublicIp,
+      'enablePublicIp': ?enablePublicIp,
+    };
   }
 
   factory InstanceNetworkConfig.fromMap(Map<String, dynamic> map) {
     return InstanceNetworkConfig(
-      allocatedIpRangeOverride: map['allocatedIpRangeOverride'] == null
-          ? null
-          : map['allocatedIpRangeOverride'] as String,
-      authorizedExternalNetworks: map['authorizedExternalNetworks'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  InstanceNetworkConfigAuthorizedExternalNetwork>(
-              map['authorizedExternalNetworks'],
-              (value) => InstanceNetworkConfigAuthorizedExternalNetwork.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      enableOutboundPublicIp: map['enableOutboundPublicIp'] == null
-          ? null
-          : map['enableOutboundPublicIp'] as bool,
-      enablePublicIp:
-          map['enablePublicIp'] == null ? null : map['enablePublicIp'] as bool,
+      allocatedIpRangeOverride: map['allocatedIpRangeOverride'] == null ? null : map['allocatedIpRangeOverride'] as String,
+      authorizedExternalNetworks: map['authorizedExternalNetworks'] == null ? null : pulumi.Input.decodeList<InstanceNetworkConfigAuthorizedExternalNetwork>(map['authorizedExternalNetworks'], (value) => InstanceNetworkConfigAuthorizedExternalNetwork.fromMap((value as Map).cast<String, dynamic>())),
+      enableOutboundPublicIp: map['enableOutboundPublicIp'] == null ? null : map['enableOutboundPublicIp'] as bool,
+      enablePublicIp: map['enablePublicIp'] == null ? null : map['enablePublicIp'] as bool,
     );
   }
 }
+

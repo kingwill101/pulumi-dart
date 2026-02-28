@@ -14,20 +14,15 @@ class AttachedClusterProxyConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final kubernetesSecretValue = kubernetesSecret;
-    if (kubernetesSecretValue != null) {
-      map['kubernetesSecret'] = kubernetesSecretValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'kubernetesSecret': ?kubernetesSecret == null ? null : kubernetesSecret!.toMap(),
+    };
   }
 
   factory AttachedClusterProxyConfig.fromMap(Map<String, dynamic> map) {
     return AttachedClusterProxyConfig(
-      kubernetesSecret: map['kubernetesSecret'] == null
-          ? null
-          : AttachedClusterProxyConfigKubernetesSecret.fromMap(
-              (map['kubernetesSecret'] as Map).cast<String, dynamic>()),
+      kubernetesSecret: map['kubernetesSecret'] == null ? null : AttachedClusterProxyConfigKubernetesSecret.fromMap((map['kubernetesSecret'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

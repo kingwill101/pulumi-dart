@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetLinkBandwidth {
   /// Download speed in Mbps.
   final int downloadSpeed;
-
   /// Upload speed in Mbps.
   final int uploadSpeed;
 
@@ -16,10 +16,10 @@ class GetLinkBandwidth {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['downloadSpeed'] = downloadSpeed;
-    map['uploadSpeed'] = uploadSpeed;
-    return map;
+    return <String, dynamic>{
+      'downloadSpeed': downloadSpeed,
+      'uploadSpeed': uploadSpeed,
+    };
   }
 
   factory GetLinkBandwidth.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetLinkBandwidth {
     );
   }
 }
+

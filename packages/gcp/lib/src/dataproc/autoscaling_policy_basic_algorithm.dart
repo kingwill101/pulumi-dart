@@ -7,7 +7,6 @@ class AutoscalingPolicyBasicAlgorithm {
   /// update operation from the previous event has completed.
   /// Bounds: [2m, 1d]. Default: 2m.
   final String? cooldownPeriod;
-
   /// YARN autoscaling configuration.
   /// Structure is documented below.
   final AutoscalingPolicyBasicAlgorithmYarnConfig yarnConfig;
@@ -21,22 +20,17 @@ class AutoscalingPolicyBasicAlgorithm {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cooldownPeriodValue = cooldownPeriod;
-    if (cooldownPeriodValue != null) {
-      map['cooldownPeriod'] = cooldownPeriodValue;
-    }
-    map['yarnConfig'] = yarnConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'cooldownPeriod': ?cooldownPeriod,
+      'yarnConfig': yarnConfig.toMap(),
+    };
   }
 
   factory AutoscalingPolicyBasicAlgorithm.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyBasicAlgorithm(
-      cooldownPeriod: map['cooldownPeriod'] == null
-          ? null
-          : map['cooldownPeriod'] as String,
-      yarnConfig: AutoscalingPolicyBasicAlgorithmYarnConfig.fromMap(
-          (map['yarnConfig'] as Map).cast<String, dynamic>()),
+      cooldownPeriod: map['cooldownPeriod'] == null ? null : map['cooldownPeriod'] as String,
+      yarnConfig: AutoscalingPolicyBasicAlgorithmYarnConfig.fromMap((map['yarnConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

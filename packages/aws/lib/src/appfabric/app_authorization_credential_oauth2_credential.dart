@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppAuthorizationCredentialOauth2Credential {
   /// The client ID of the client application.
   final String clientId;
-
   /// The client secret of the client application.
   final String clientSecret;
 
@@ -16,17 +16,17 @@ class AppAuthorizationCredentialOauth2Credential {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clientId'] = clientId;
-    map['clientSecret'] = clientSecret;
-    return map;
+    return <String, dynamic>{
+      'clientId': clientId,
+      'clientSecret': clientSecret,
+    };
   }
 
-  factory AppAuthorizationCredentialOauth2Credential.fromMap(
-      Map<String, dynamic> map) {
+  factory AppAuthorizationCredentialOauth2Credential.fromMap(Map<String, dynamic> map) {
     return AppAuthorizationCredentialOauth2Credential(
       clientId: map['clientId'] as String,
       clientSecret: map['clientSecret'] as String,
     );
   }
 }
+

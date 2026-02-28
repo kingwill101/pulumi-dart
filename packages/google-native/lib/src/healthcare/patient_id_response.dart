@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A patient identifier and associated type.
 class PatientIdResponse {
   /// ID type. For example, MRN or NHS.
   final String type;
-
   /// The patient's unique identifier.
   final String value;
 
@@ -17,10 +17,10 @@ class PatientIdResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['type'] = type;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'type': type,
+      'value': value,
+    };
   }
 
   factory PatientIdResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class PatientIdResponse {
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AzureNodePoolAutoscaling {
   /// Maximum number of nodes in the node pool. Must be >= min_node_count.
   final int maxNodeCount;
-
   /// Minimum number of nodes in the node pool. Must be >= 1 and <= max_node_count.
   final int minNodeCount;
 
@@ -16,10 +16,10 @@ class AzureNodePoolAutoscaling {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maxNodeCount'] = maxNodeCount;
-    map['minNodeCount'] = minNodeCount;
-    return map;
+    return <String, dynamic>{
+      'maxNodeCount': maxNodeCount,
+      'minNodeCount': minNodeCount,
+    };
   }
 
   factory AzureNodePoolAutoscaling.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class AzureNodePoolAutoscaling {
     );
   }
 }
+

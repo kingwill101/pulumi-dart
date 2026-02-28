@@ -1,21 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetReportPlanReportSetting {
   /// (Optional) Specifies the list of accounts a report covers.
   final List<String> accounts;
-
   /// ARNs of the frameworks a report covers.
   final List<String> frameworkArns;
-
   /// Specifies the number of frameworks a report covers.
   final int numberOfFrameworks;
-
   /// (Optional) Specifies the list of Organizational Units a report covers.
   final List<String> organizationUnits;
-
   /// (Optional) Specifies the list of regions a report covers.
   final List<String> regions;
-
   /// Identifies the report template for the report. Reports are built using a report template.
   final String reportTemplate;
 
@@ -36,14 +32,14 @@ class GetReportPlanReportSetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accounts'] = accounts;
-    map['frameworkArns'] = frameworkArns;
-    map['numberOfFrameworks'] = numberOfFrameworks;
-    map['organizationUnits'] = organizationUnits;
-    map['regions'] = regions;
-    map['reportTemplate'] = reportTemplate;
-    return map;
+    return <String, dynamic>{
+      'accounts': accounts,
+      'frameworkArns': frameworkArns,
+      'numberOfFrameworks': numberOfFrameworks,
+      'organizationUnits': organizationUnits,
+      'regions': regions,
+      'reportTemplate': reportTemplate,
+    };
   }
 
   factory GetReportPlanReportSetting.fromMap(Map<String, dynamic> map) {
@@ -57,3 +53,4 @@ class GetReportPlanReportSetting {
     );
   }
 }
+

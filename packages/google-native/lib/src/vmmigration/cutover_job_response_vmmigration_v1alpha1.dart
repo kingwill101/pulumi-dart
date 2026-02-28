@@ -10,46 +10,31 @@ import 'target_vmdetails_response.dart';
 /// CutoverJob message describes a cutover of a migrating VM. The CutoverJob is the operation of shutting down the VM, creating a snapshot and clonning the VM using the replicated snapshot.
 class CutoverJobResponseVmmigrationV1alpha1 {
   /// Details of the target Persistent Disks in Compute Engine.
-  final ComputeEngineDisksTargetDetailsResponseVmmigrationV1alpha1
-      computeEngineDisksTargetDetails;
-
+  final ComputeEngineDisksTargetDetailsResponseVmmigrationV1alpha1 computeEngineDisksTargetDetails;
   /// Details of the target VM in Compute Engine.
-  final ComputeEngineTargetDetailsResponseVmmigrationV1alpha1
-      computeEngineTargetDetails;
-
+  final ComputeEngineTargetDetailsResponseVmmigrationV1alpha1 computeEngineTargetDetails;
   /// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
   final TargetVMDetailsResponse computeEngineVmDetails;
-
   /// The time the cutover job was created (as an API call, not when it was actually created in the target).
   final String createTime;
-
   /// The time the cutover job had finished.
   final String endTime;
-
   /// Provides details for the errors that led to the Cutover Job's state.
   final StatusResponseVmmigrationV1alpha1 error;
-
   /// The name of the cutover job.
   final String name;
-
   /// The current progress in percentage of the cutover job.
   final int progress;
-
   /// The current progress in percentage of the cutover job.
   final int progressPercent;
-
   /// State of the cutover job.
   final String state;
-
   /// A message providing possible extra details about the current state.
   final String stateMessage;
-
   /// The time the state was last updated.
   final String stateTime;
-
   /// The cutover steps list representing its progress.
   final List<CutoverStepResponseVmmigrationV1alpha1> steps;
-
   /// Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.
   final TargetVMDetailsResponse targetDetails;
 
@@ -86,56 +71,41 @@ class CutoverJobResponseVmmigrationV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['computeEngineDisksTargetDetails'] =
-        computeEngineDisksTargetDetails.toMap();
-    map['computeEngineTargetDetails'] = computeEngineTargetDetails.toMap();
-    map['computeEngineVmDetails'] = computeEngineVmDetails.toMap();
-    map['createTime'] = createTime;
-    map['endTime'] = endTime;
-    map['error'] = error.toMap();
-    map['name'] = name;
-    map['progress'] = progress;
-    map['progressPercent'] = progressPercent;
-    map['state'] = state;
-    map['stateMessage'] = stateMessage;
-    map['stateTime'] = stateTime;
-    map['steps'] = pulumi.Input.encodeList<
-        CutoverStepResponseVmmigrationV1alpha1,
-        Map<String, dynamic>>(steps, (value) => value.toMap());
-    map['targetDetails'] = targetDetails.toMap();
-    return map;
+    return <String, dynamic>{
+      'computeEngineDisksTargetDetails': computeEngineDisksTargetDetails.toMap(),
+      'computeEngineTargetDetails': computeEngineTargetDetails.toMap(),
+      'computeEngineVmDetails': computeEngineVmDetails.toMap(),
+      'createTime': createTime,
+      'endTime': endTime,
+      'error': error.toMap(),
+      'name': name,
+      'progress': progress,
+      'progressPercent': progressPercent,
+      'state': state,
+      'stateMessage': stateMessage,
+      'stateTime': stateTime,
+      'steps': pulumi.Input.encodeList<CutoverStepResponseVmmigrationV1alpha1, Map<String, dynamic>>(steps, (value) => value.toMap()),
+      'targetDetails': targetDetails.toMap(),
+    };
   }
 
-  factory CutoverJobResponseVmmigrationV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory CutoverJobResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return CutoverJobResponseVmmigrationV1alpha1(
-      computeEngineDisksTargetDetails:
-          ComputeEngineDisksTargetDetailsResponseVmmigrationV1alpha1.fromMap(
-              (map['computeEngineDisksTargetDetails'] as Map)
-                  .cast<String, dynamic>()),
-      computeEngineTargetDetails:
-          ComputeEngineTargetDetailsResponseVmmigrationV1alpha1.fromMap(
-              (map['computeEngineTargetDetails'] as Map)
-                  .cast<String, dynamic>()),
-      computeEngineVmDetails: TargetVMDetailsResponse.fromMap(
-          (map['computeEngineVmDetails'] as Map).cast<String, dynamic>()),
+      computeEngineDisksTargetDetails: ComputeEngineDisksTargetDetailsResponseVmmigrationV1alpha1.fromMap((map['computeEngineDisksTargetDetails'] as Map).cast<String, dynamic>()),
+      computeEngineTargetDetails: ComputeEngineTargetDetailsResponseVmmigrationV1alpha1.fromMap((map['computeEngineTargetDetails'] as Map).cast<String, dynamic>()),
+      computeEngineVmDetails: TargetVMDetailsResponse.fromMap((map['computeEngineVmDetails'] as Map).cast<String, dynamic>()),
       createTime: map['createTime'] as String,
       endTime: map['endTime'] as String,
-      error: StatusResponseVmmigrationV1alpha1.fromMap(
-          (map['error'] as Map).cast<String, dynamic>()),
+      error: StatusResponseVmmigrationV1alpha1.fromMap((map['error'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       progress: map['progress'] as int,
       progressPercent: map['progressPercent'] as int,
       state: map['state'] as String,
       stateMessage: map['stateMessage'] as String,
       stateTime: map['stateTime'] as String,
-      steps: pulumi.Input.decodeList<CutoverStepResponseVmmigrationV1alpha1>(
-          map['steps'],
-          (value) => CutoverStepResponseVmmigrationV1alpha1.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      targetDetails: TargetVMDetailsResponse.fromMap(
-          (map['targetDetails'] as Map).cast<String, dynamic>()),
+      steps: pulumi.Input.decodeList<CutoverStepResponseVmmigrationV1alpha1>(map['steps'], (value) => CutoverStepResponseVmmigrationV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
+      targetDetails: TargetVMDetailsResponse.fromMap((map['targetDetails'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

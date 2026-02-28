@@ -131,7 +131,6 @@ import 'organization_admin_account_args.dart';
 class OrganizationAdminAccount extends pulumi.CustomResource {
   /// The AWS account ID for the account to designate as the delegated Amazon Macie administrator account for the organization.
   late final pulumi.Output<String> adminAccountId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

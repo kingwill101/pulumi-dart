@@ -731,42 +731,34 @@ class User extends pulumi.CustomResource {
   ///
   /// Possible values are: `ABANDON`.
   late final pulumi.Output<String?> deletionPolicy;
-
   /// The host the user can connect from. This is only supported
   /// for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
   /// Can be an IP address. Changing this forces a new resource to be created.
   late final pulumi.Output<String> host;
-
   /// The name of the Cloud SQL instance. Changing this
   /// forces a new resource to be created.
   late final pulumi.Output<String> instance;
-
   /// The name of the user. Changing this forces a new resource
   /// to be created.
   late final pulumi.Output<String> name;
-
   /// The password for the user. Can be updated. For Postgres
   /// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
   /// or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
   /// and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
   late final pulumi.Output<String?> password;
   late final pulumi.Output<UserPasswordPolicy?> passwordPolicy;
-
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
   /// either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
   late final pulumi.Output<String?> passwordWo;
-
   /// The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
   ///
   /// - - -
   late final pulumi.Output<int?> passwordWoVersion;
-
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   late final pulumi.Output<String> project;
   late final pulumi.Output<List<UserSqlServerUserDetail>> sqlServerUserDetails;
-
   /// The user type. It determines the method to authenticate the
   /// user during login. The default is the database's built-in user type. Flags
   /// include "BUILT_IN", "CLOUD_IAM_USER", "CLOUD_IAM_SERVICE_ACCOUNT", "CLOUD_IAM_GROUP",
@@ -798,8 +790,7 @@ class User extends pulumi.CustomResource {
     this.passwordWo = registerOutput<String?>('passwordWo');
     this.passwordWoVersion = registerOutput<int?>('passwordWoVersion');
     this.project = registerOutput<String>('project');
-    this.sqlServerUserDetails =
-        registerOutput<List<UserSqlServerUserDetail>>('sqlServerUserDetails');
+    this.sqlServerUserDetails = registerOutput<List<UserSqlServerUserDetail>>('sqlServerUserDetails');
     this.type = registerOutput<String?>('type');
   }
 }

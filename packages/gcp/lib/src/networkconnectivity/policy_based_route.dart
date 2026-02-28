@@ -465,62 +465,45 @@ import 'policy_based_route_warning.dart';
 class PolicyBasedRoute extends pulumi.CustomResource {
   /// Time when the policy-based route was created.
   late final pulumi.Output<String> createTime;
-
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// The filter to match L4 traffic.
   /// Structure is documented below.
   late final pulumi.Output<PolicyBasedRouteFilter> filter;
-
   /// The interconnect attachments that this policy-based route applies to.
   /// Structure is documented below.
-  late final pulumi.Output<PolicyBasedRouteInterconnectAttachment?>
-      interconnectAttachment;
-
+  late final pulumi.Output<PolicyBasedRouteInterconnectAttachment?> interconnectAttachment;
   /// Type of this resource.
   late final pulumi.Output<String> kind;
-
   /// User-defined labels.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The name of the policy based route.
   late final pulumi.Output<String> name;
-
   /// Fully-qualified URL of the network that this route applies to, for example: projects/my-project/global/networks/my-network.
   late final pulumi.Output<String> network;
-
   /// The IP address of a global-access-enabled L4 ILB that is the next hop for matching packets.
   late final pulumi.Output<String?> nextHopIlbIp;
-
   /// Other routes that will be referenced to determine the next hop of the packet.
   /// Possible values are: `DEFAULT_ROUTING`.
   late final pulumi.Output<String?> nextHopOtherRoutes;
-
   /// The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
   late final pulumi.Output<int?> priority;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Time when the policy-based route was created.
   late final pulumi.Output<String> updateTime;
-
   /// VM instances to which this policy-based route applies to.
   /// Structure is documented below.
   late final pulumi.Output<PolicyBasedRouteVirtualMachine?> virtualMachine;
-
   /// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
   /// Structure is documented below.
   late final pulumi.Output<List<PolicyBasedRouteWarning>> warnings;
@@ -541,12 +524,9 @@ class PolicyBasedRoute extends pulumi.CustomResource {
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');
-    this.effectiveLabels =
-        registerOutput<Map<String, String>>('effectiveLabels');
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     this.filter = registerOutput<PolicyBasedRouteFilter>('filter');
-    this.interconnectAttachment =
-        registerOutput<PolicyBasedRouteInterconnectAttachment?>(
-            'interconnectAttachment');
+    this.interconnectAttachment = registerOutput<PolicyBasedRouteInterconnectAttachment?>('interconnectAttachment');
     this.kind = registerOutput<String>('kind');
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
@@ -557,8 +537,7 @@ class PolicyBasedRoute extends pulumi.CustomResource {
     this.project = registerOutput<String>('project');
     this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.updateTime = registerOutput<String>('updateTime');
-    this.virtualMachine =
-        registerOutput<PolicyBasedRouteVirtualMachine?>('virtualMachine');
+    this.virtualMachine = registerOutput<PolicyBasedRouteVirtualMachine?>('virtualMachine');
     this.warnings = registerOutput<List<PolicyBasedRouteWarning>>('warnings');
   }
 }

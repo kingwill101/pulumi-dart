@@ -15,21 +15,15 @@ class OracleRdbmsResponseDatastreamV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['oracleSchemas'] = pulumi.Input.encodeList<
-        OracleSchemaResponseDatastreamV1alpha1,
-        Map<String, dynamic>>(oracleSchemas, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'oracleSchemas': pulumi.Input.encodeList<OracleSchemaResponseDatastreamV1alpha1, Map<String, dynamic>>(oracleSchemas, (value) => value.toMap()),
+    };
   }
 
-  factory OracleRdbmsResponseDatastreamV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory OracleRdbmsResponseDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return OracleRdbmsResponseDatastreamV1alpha1(
-      oracleSchemas:
-          pulumi.Input.decodeList<OracleSchemaResponseDatastreamV1alpha1>(
-              map['oracleSchemas'],
-              (value) => OracleSchemaResponseDatastreamV1alpha1.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      oracleSchemas: pulumi.Input.decodeList<OracleSchemaResponseDatastreamV1alpha1>(map['oracleSchemas'], (value) => OracleSchemaResponseDatastreamV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

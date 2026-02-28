@@ -14,7 +14,7 @@ enum SecurityPolicyUserDefinedFieldBaseComputeV1 {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown SecurityPolicyUserDefinedFieldBaseComputeV1 value: $value');
+    throw ArgumentError('Unknown SecurityPolicyUserDefinedFieldBaseComputeV1 value: $value');
   }
 }
+

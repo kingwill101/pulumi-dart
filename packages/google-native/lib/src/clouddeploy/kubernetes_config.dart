@@ -7,7 +7,6 @@ import 'service_networking.dart';
 class KubernetesConfig {
   /// Kubernetes Gateway API service mesh configuration.
   final GatewayServiceMesh? gatewayServiceMesh;
-
   /// Kubernetes Service networking configuration.
   final ServiceNetworking? serviceNetworking;
 
@@ -20,28 +19,17 @@ class KubernetesConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final gatewayServiceMeshValue = gatewayServiceMesh;
-    if (gatewayServiceMeshValue != null) {
-      map['gatewayServiceMesh'] = gatewayServiceMeshValue.toMap();
-    }
-    final serviceNetworkingValue = serviceNetworking;
-    if (serviceNetworkingValue != null) {
-      map['serviceNetworking'] = serviceNetworkingValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'gatewayServiceMesh': ?gatewayServiceMesh == null ? null : gatewayServiceMesh!.toMap(),
+      'serviceNetworking': ?serviceNetworking == null ? null : serviceNetworking!.toMap(),
+    };
   }
 
   factory KubernetesConfig.fromMap(Map<String, dynamic> map) {
     return KubernetesConfig(
-      gatewayServiceMesh: map['gatewayServiceMesh'] == null
-          ? null
-          : GatewayServiceMesh.fromMap(
-              (map['gatewayServiceMesh'] as Map).cast<String, dynamic>()),
-      serviceNetworking: map['serviceNetworking'] == null
-          ? null
-          : ServiceNetworking.fromMap(
-              (map['serviceNetworking'] as Map).cast<String, dynamic>()),
+      gatewayServiceMesh: map['gatewayServiceMesh'] == null ? null : GatewayServiceMesh.fromMap((map['gatewayServiceMesh'] as Map).cast<String, dynamic>()),
+      serviceNetworking: map['serviceNetworking'] == null ? null : ServiceNetworking.fromMap((map['serviceNetworking'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

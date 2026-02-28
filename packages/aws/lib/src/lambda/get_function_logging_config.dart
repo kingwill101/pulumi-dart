@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetFunctionLoggingConfig {
   /// Detail level of the logs your application sends to CloudWatch when using supported logging libraries.
   final String applicationLogLevel;
-
   /// Format for your function's logs. Valid values: `Text`, `JSON`.
   final String logFormat;
-
   /// CloudWatch log group your function sends logs to.
   final String logGroup;
-
   /// Detail level of the Lambda platform event logs sent to CloudWatch.
   final String systemLogLevel;
 
@@ -26,12 +24,12 @@ class GetFunctionLoggingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['applicationLogLevel'] = applicationLogLevel;
-    map['logFormat'] = logFormat;
-    map['logGroup'] = logGroup;
-    map['systemLogLevel'] = systemLogLevel;
-    return map;
+    return <String, dynamic>{
+      'applicationLogLevel': applicationLogLevel,
+      'logFormat': logFormat,
+      'logGroup': logGroup,
+      'systemLogLevel': systemLogLevel,
+    };
   }
 
   factory GetFunctionLoggingConfig.fromMap(Map<String, dynamic> map) {
@@ -43,3 +41,4 @@ class GetFunctionLoggingConfig {
     );
   }
 }
+

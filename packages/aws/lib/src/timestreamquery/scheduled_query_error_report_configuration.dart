@@ -13,17 +13,15 @@ class ScheduledQueryErrorReportConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['s3Configuration'] = s3Configuration.toMap();
-    return map;
+    return <String, dynamic>{
+      's3Configuration': s3Configuration.toMap(),
+    };
   }
 
-  factory ScheduledQueryErrorReportConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory ScheduledQueryErrorReportConfiguration.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryErrorReportConfiguration(
-      s3Configuration:
-          ScheduledQueryErrorReportConfigurationS3Configuration.fromMap(
-              (map['s3Configuration'] as Map).cast<String, dynamic>()),
+      s3Configuration: ScheduledQueryErrorReportConfigurationS3Configuration.fromMap((map['s3Configuration'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

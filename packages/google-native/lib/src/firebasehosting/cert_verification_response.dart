@@ -7,7 +7,6 @@ import 'http_update_response.dart';
 class CertVerificationResponse {
   /// A `TXT` record to add to your DNS records that confirms your intent to let Hosting create an SSL cert for your domain name.
   final DnsUpdatesResponse dns;
-
   /// A file to add to your existing, non-Hosting hosting service that confirms your intent to let Hosting create an SSL cert for your domain name.
   final HttpUpdateResponse http;
 
@@ -20,18 +19,17 @@ class CertVerificationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dns'] = dns.toMap();
-    map['http'] = http.toMap();
-    return map;
+    return <String, dynamic>{
+      'dns': dns.toMap(),
+      'http': http.toMap(),
+    };
   }
 
   factory CertVerificationResponse.fromMap(Map<String, dynamic> map) {
     return CertVerificationResponse(
-      dns: DnsUpdatesResponse.fromMap(
-          (map['dns'] as Map).cast<String, dynamic>()),
-      http: HttpUpdateResponse.fromMap(
-          (map['http'] as Map).cast<String, dynamic>()),
+      dns: DnsUpdatesResponse.fromMap((map['dns'] as Map).cast<String, dynamic>()),
+      http: HttpUpdateResponse.fromMap((map['http'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

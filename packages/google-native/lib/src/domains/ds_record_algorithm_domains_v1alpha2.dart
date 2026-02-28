@@ -28,7 +28,7 @@ enum DsRecordAlgorithmDomainsV1alpha2 {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown DsRecordAlgorithmDomainsV1alpha2 value: $value');
+    throw ArgumentError('Unknown DsRecordAlgorithmDomainsV1alpha2 value: $value');
   }
 }
+

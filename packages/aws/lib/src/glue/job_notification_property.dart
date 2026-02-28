@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class JobNotificationProperty {
   /// After a job run starts, the number of minutes to wait before sending a job run delay notification.
   final int? notifyDelayAfter;
@@ -11,19 +12,15 @@ class JobNotificationProperty {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final notifyDelayAfterValue = notifyDelayAfter;
-    if (notifyDelayAfterValue != null) {
-      map['notifyDelayAfter'] = notifyDelayAfterValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'notifyDelayAfter': ?notifyDelayAfter,
+    };
   }
 
   factory JobNotificationProperty.fromMap(Map<String, dynamic> map) {
     return JobNotificationProperty(
-      notifyDelayAfter: map['notifyDelayAfter'] == null
-          ? null
-          : map['notifyDelayAfter'] as int,
+      notifyDelayAfter: map['notifyDelayAfter'] == null ? null : map['notifyDelayAfter'] as int,
     );
   }
 }
+

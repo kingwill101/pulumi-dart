@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRecordsResourceRecordSetGeolocation {
   /// The two-letter code for the continent.
   final String continentCode;
-
   /// The two-letter code for a country.
   final String countryCode;
-
   /// The two-letter code for a state of the United States.
   final String subdivisionCode;
 
@@ -21,15 +20,14 @@ class GetRecordsResourceRecordSetGeolocation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['continentCode'] = continentCode;
-    map['countryCode'] = countryCode;
-    map['subdivisionCode'] = subdivisionCode;
-    return map;
+    return <String, dynamic>{
+      'continentCode': continentCode,
+      'countryCode': countryCode,
+      'subdivisionCode': subdivisionCode,
+    };
   }
 
-  factory GetRecordsResourceRecordSetGeolocation.fromMap(
-      Map<String, dynamic> map) {
+  factory GetRecordsResourceRecordSetGeolocation.fromMap(Map<String, dynamic> map) {
     return GetRecordsResourceRecordSetGeolocation(
       continentCode: map['continentCode'] as String,
       countryCode: map['countryCode'] as String,
@@ -37,3 +35,4 @@ class GetRecordsResourceRecordSetGeolocation {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceAdminSettings {
   final List<String>? allowedEmailDomains;
 
@@ -10,19 +11,15 @@ class InstanceAdminSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final allowedEmailDomainsValue = allowedEmailDomains;
-    if (allowedEmailDomainsValue != null) {
-      map['allowedEmailDomains'] = allowedEmailDomainsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'allowedEmailDomains': ?allowedEmailDomains,
+    };
   }
 
   factory InstanceAdminSettings.fromMap(Map<String, dynamic> map) {
     return InstanceAdminSettings(
-      allowedEmailDomains: map['allowedEmailDomains'] == null
-          ? null
-          : (map['allowedEmailDomains'] as List).cast<String>(),
+      allowedEmailDomains: map['allowedEmailDomains'] == null ? null : (map['allowedEmailDomains'] as List).cast<String>(),
     );
   }
 }
+

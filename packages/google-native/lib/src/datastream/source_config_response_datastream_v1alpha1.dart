@@ -7,10 +7,8 @@ import 'oracle_source_config_response_datastream_v1alpha1.dart';
 class SourceConfigResponseDatastreamV1alpha1 {
   /// MySQL data source configuration
   final MysqlSourceConfigResponseDatastreamV1alpha1 mysqlSourceConfig;
-
   /// Oracle data source configuration
   final OracleSourceConfigResponseDatastreamV1alpha1 oracleSourceConfig;
-
   /// Source connection profile identifier.
   final String sourceConnectionProfileName;
 
@@ -25,21 +23,19 @@ class SourceConfigResponseDatastreamV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['mysqlSourceConfig'] = mysqlSourceConfig.toMap();
-    map['oracleSourceConfig'] = oracleSourceConfig.toMap();
-    map['sourceConnectionProfileName'] = sourceConnectionProfileName;
-    return map;
+    return <String, dynamic>{
+      'mysqlSourceConfig': mysqlSourceConfig.toMap(),
+      'oracleSourceConfig': oracleSourceConfig.toMap(),
+      'sourceConnectionProfileName': sourceConnectionProfileName,
+    };
   }
 
-  factory SourceConfigResponseDatastreamV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory SourceConfigResponseDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return SourceConfigResponseDatastreamV1alpha1(
-      mysqlSourceConfig: MysqlSourceConfigResponseDatastreamV1alpha1.fromMap(
-          (map['mysqlSourceConfig'] as Map).cast<String, dynamic>()),
-      oracleSourceConfig: OracleSourceConfigResponseDatastreamV1alpha1.fromMap(
-          (map['oracleSourceConfig'] as Map).cast<String, dynamic>()),
+      mysqlSourceConfig: MysqlSourceConfigResponseDatastreamV1alpha1.fromMap((map['mysqlSourceConfig'] as Map).cast<String, dynamic>()),
+      oracleSourceConfig: OracleSourceConfigResponseDatastreamV1alpha1.fromMap((map['oracleSourceConfig'] as Map).cast<String, dynamic>()),
       sourceConnectionProfileName: map['sourceConnectionProfileName'] as String,
     );
   }
 }
+

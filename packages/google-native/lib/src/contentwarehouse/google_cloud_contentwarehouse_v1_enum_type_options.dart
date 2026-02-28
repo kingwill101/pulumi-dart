@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configurations for an enum/categorical property.
 class GoogleCloudContentwarehouseV1EnumTypeOptions {
   /// List of possible enum values.
   final List<String> possibleValues;
-
   /// Make sure the Enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
   final bool? validationCheckDisabled;
 
@@ -17,22 +17,17 @@ class GoogleCloudContentwarehouseV1EnumTypeOptions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['possibleValues'] = possibleValues;
-    final validationCheckDisabledValue = validationCheckDisabled;
-    if (validationCheckDisabledValue != null) {
-      map['validationCheckDisabled'] = validationCheckDisabledValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'possibleValues': possibleValues,
+      'validationCheckDisabled': ?validationCheckDisabled,
+    };
   }
 
-  factory GoogleCloudContentwarehouseV1EnumTypeOptions.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudContentwarehouseV1EnumTypeOptions.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1EnumTypeOptions(
       possibleValues: (map['possibleValues'] as List).cast<String>(),
-      validationCheckDisabled: map['validationCheckDisabled'] == null
-          ? null
-          : map['validationCheckDisabled'] as bool,
+      validationCheckDisabled: map['validationCheckDisabled'] == null ? null : map['validationCheckDisabled'] as bool,
     );
   }
 }
+

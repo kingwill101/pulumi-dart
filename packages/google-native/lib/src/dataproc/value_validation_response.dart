@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Validation based on a list of allowed values.
 class ValueValidationResponse {
   /// List of allowed values for the parameter.
@@ -12,9 +13,9 @@ class ValueValidationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['values'] = values;
-    return map;
+    return <String, dynamic>{
+      'values': values,
+    };
   }
 
   factory ValueValidationResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class ValueValidationResponse {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DomainAimlOptionsS3VectorsEngine {
   /// Enables S3 vectors engine features.
   final bool? enabled;
@@ -11,12 +12,9 @@ class DomainAimlOptionsS3VectorsEngine {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory DomainAimlOptionsS3VectorsEngine.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class DomainAimlOptionsS3VectorsEngine {
     );
   }
 }
+

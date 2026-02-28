@@ -7,7 +7,6 @@ import 'google_iam_v1_audit_log_config_response.dart';
 class GoogleIamV1AuditConfigResponse {
   /// The configuration for logging of each type of permission.
   final List<GoogleIamV1AuditLogConfigResponse> auditLogConfigs;
-
   /// Specifies a service that will be enabled for audit logging. For example, storage.googleapis.com, cloudsql.googleapis.com. allServices is a special value that covers all services.
   final String service;
 
@@ -20,22 +19,17 @@ class GoogleIamV1AuditConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['auditLogConfigs'] = pulumi.Input.encodeList<
-        GoogleIamV1AuditLogConfigResponse,
-        Map<String, dynamic>>(auditLogConfigs, (value) => value.toMap());
-    map['service'] = service;
-    return map;
+    return <String, dynamic>{
+      'auditLogConfigs': pulumi.Input.encodeList<GoogleIamV1AuditLogConfigResponse, Map<String, dynamic>>(auditLogConfigs, (value) => value.toMap()),
+      'service': service,
+    };
   }
 
   factory GoogleIamV1AuditConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleIamV1AuditConfigResponse(
-      auditLogConfigs:
-          pulumi.Input.decodeList<GoogleIamV1AuditLogConfigResponse>(
-              map['auditLogConfigs'],
-              (value) => GoogleIamV1AuditLogConfigResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      auditLogConfigs: pulumi.Input.decodeList<GoogleIamV1AuditLogConfigResponse>(map['auditLogConfigs'], (value) => GoogleIamV1AuditLogConfigResponse.fromMap((value as Map).cast<String, dynamic>())),
       service: map['service'] as String,
     );
   }
 }
+

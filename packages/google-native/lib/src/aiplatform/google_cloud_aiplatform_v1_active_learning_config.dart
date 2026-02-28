@@ -7,13 +7,10 @@ import 'google_cloud_aiplatform_v1_training_config.dart';
 class GoogleCloudAiplatformV1ActiveLearningConfig {
   /// Max number of human labeled DataItems.
   final String? maxDataItemCount;
-
   /// Max percent of total DataItems for human labeling.
   final int? maxDataItemPercentage;
-
   /// Active learning data sampling config. For every active learning labeling iteration, it will select a batch of data based on the sampling strategy.
   final GoogleCloudAiplatformV1SampleConfig? sampleConfig;
-
   /// CMLE training config. For every active learning labeling iteration, system will train a machine learning model on CMLE. The trained model will be used by data sampling algorithm to select DataItems.
   final GoogleCloudAiplatformV1TrainingConfig? trainingConfig;
 
@@ -30,43 +27,21 @@ class GoogleCloudAiplatformV1ActiveLearningConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final maxDataItemCountValue = maxDataItemCount;
-    if (maxDataItemCountValue != null) {
-      map['maxDataItemCount'] = maxDataItemCountValue;
-    }
-    final maxDataItemPercentageValue = maxDataItemPercentage;
-    if (maxDataItemPercentageValue != null) {
-      map['maxDataItemPercentage'] = maxDataItemPercentageValue;
-    }
-    final sampleConfigValue = sampleConfig;
-    if (sampleConfigValue != null) {
-      map['sampleConfig'] = sampleConfigValue.toMap();
-    }
-    final trainingConfigValue = trainingConfig;
-    if (trainingConfigValue != null) {
-      map['trainingConfig'] = trainingConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'maxDataItemCount': ?maxDataItemCount,
+      'maxDataItemPercentage': ?maxDataItemPercentage,
+      'sampleConfig': ?sampleConfig == null ? null : sampleConfig!.toMap(),
+      'trainingConfig': ?trainingConfig == null ? null : trainingConfig!.toMap(),
+    };
   }
 
-  factory GoogleCloudAiplatformV1ActiveLearningConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1ActiveLearningConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1ActiveLearningConfig(
-      maxDataItemCount: map['maxDataItemCount'] == null
-          ? null
-          : map['maxDataItemCount'] as String,
-      maxDataItemPercentage: map['maxDataItemPercentage'] == null
-          ? null
-          : map['maxDataItemPercentage'] as int,
-      sampleConfig: map['sampleConfig'] == null
-          ? null
-          : GoogleCloudAiplatformV1SampleConfig.fromMap(
-              (map['sampleConfig'] as Map).cast<String, dynamic>()),
-      trainingConfig: map['trainingConfig'] == null
-          ? null
-          : GoogleCloudAiplatformV1TrainingConfig.fromMap(
-              (map['trainingConfig'] as Map).cast<String, dynamic>()),
+      maxDataItemCount: map['maxDataItemCount'] == null ? null : map['maxDataItemCount'] as String,
+      maxDataItemPercentage: map['maxDataItemPercentage'] == null ? null : map['maxDataItemPercentage'] as int,
+      sampleConfig: map['sampleConfig'] == null ? null : GoogleCloudAiplatformV1SampleConfig.fromMap((map['sampleConfig'] as Map).cast<String, dynamic>()),
+      trainingConfig: map['trainingConfig'] == null ? null : GoogleCloudAiplatformV1TrainingConfig.fromMap((map['trainingConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

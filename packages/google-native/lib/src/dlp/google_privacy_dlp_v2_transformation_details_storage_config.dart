@@ -14,21 +14,15 @@ class GooglePrivacyDlpV2TransformationDetailsStorageConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final tableValue = table;
-    if (tableValue != null) {
-      map['table'] = tableValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'table': ?table == null ? null : table!.toMap(),
+    };
   }
 
-  factory GooglePrivacyDlpV2TransformationDetailsStorageConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2TransformationDetailsStorageConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2TransformationDetailsStorageConfig(
-      table: map['table'] == null
-          ? null
-          : GooglePrivacyDlpV2BigQueryTable.fromMap(
-              (map['table'] as Map).cast<String, dynamic>()),
+      table: map['table'] == null ? null : GooglePrivacyDlpV2BigQueryTable.fromMap((map['table'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

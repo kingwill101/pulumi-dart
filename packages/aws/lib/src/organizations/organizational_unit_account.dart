@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class OrganizationalUnitAccount {
   /// ARN of the organizational unit
   final String? arn;
-
   /// Email of the account
   final String? email;
-
   /// Identifier of the organization unit
   final String? id;
-
   /// The name for the organizational unit
   final String? name;
 
@@ -26,24 +24,12 @@ class OrganizationalUnitAccount {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final arnValue = arn;
-    if (arnValue != null) {
-      map['arn'] = arnValue;
-    }
-    final emailValue = email;
-    if (emailValue != null) {
-      map['email'] = emailValue;
-    }
-    final idValue = id;
-    if (idValue != null) {
-      map['id'] = idValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'arn': ?arn,
+      'email': ?email,
+      'id': ?id,
+      'name': ?name,
+    };
   }
 
   factory OrganizationalUnitAccount.fromMap(Map<String, dynamic> map) {
@@ -55,3 +41,4 @@ class OrganizationalUnitAccount {
     );
   }
 }
+

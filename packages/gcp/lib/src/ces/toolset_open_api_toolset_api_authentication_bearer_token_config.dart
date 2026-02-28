@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig {
   /// (Optional)
   final String? token;
@@ -11,18 +12,15 @@ class ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final tokenValue = token;
-    if (tokenValue != null) {
-      map['token'] = tokenValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'token': ?token,
+    };
   }
 
-  factory ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig.fromMap(Map<String, dynamic> map) {
     return ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig(
       token: map['token'] == null ? null : map['token'] as String,
     );
   }
 }
+

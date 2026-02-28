@@ -10,56 +10,39 @@ import 'get_launch_configuration_root_block_device.dart';
 class GetLaunchConfigurationResult {
   /// Amazon Resource Name of the launch configuration.
   final String arn;
-
   /// Whether a Public IP address is associated with the instance.
   final bool associatePublicIpAddress;
-
   /// EBS Block Devices attached to the instance.
   final List<GetLaunchConfigurationEbsBlockDevice> ebsBlockDevices;
-
   /// Whether the launched EC2 instance will be EBS-optimized.
   final bool ebsOptimized;
-
   /// Whether Detailed Monitoring is Enabled.
   final bool enableMonitoring;
-
   /// The Ephemeral volumes on the instance.
   final List<GetLaunchConfigurationEphemeralBlockDevice> ephemeralBlockDevices;
-
   /// The IAM Instance Profile to associate with launched instances.
   final String iamInstanceProfile;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// EC2 Image ID of the instance.
   final String imageId;
-
   /// Instance Type of the instance to launch.
   final String instanceType;
-
   /// Key Name that should be used for the instance.
   final String keyName;
-
   /// Metadata options for the instance.
   final List<GetLaunchConfigurationMetadataOption> metadataOptions;
-
   /// Name of the launch configuration.
   final String name;
-
   /// Tenancy of the instance.
   final String placementTenancy;
   final String region;
-
   /// Root Block Device of the instance.
   final List<GetLaunchConfigurationRootBlockDevice> rootBlockDevices;
-
   /// List of associated Security Group IDS.
   final List<String> securityGroups;
-
   /// Price to use for reserving Spot instances.
   final String spotPrice;
-
   /// User Data of the instance.
   final String userData;
 
@@ -106,74 +89,51 @@ class GetLaunchConfigurationResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['associatePublicIpAddress'] = associatePublicIpAddress;
-    map['ebsBlockDevices'] = pulumi.Input.encodeList<
-        GetLaunchConfigurationEbsBlockDevice,
-        Map<String, dynamic>>(ebsBlockDevices, (value) => value.toMap());
-    map['ebsOptimized'] = ebsOptimized;
-    map['enableMonitoring'] = enableMonitoring;
-    map['ephemeralBlockDevices'] = pulumi.Input.encodeList<
-        GetLaunchConfigurationEphemeralBlockDevice,
-        Map<String, dynamic>>(ephemeralBlockDevices, (value) => value.toMap());
-    map['iamInstanceProfile'] = iamInstanceProfile;
-    map['id'] = id;
-    map['imageId'] = imageId;
-    map['instanceType'] = instanceType;
-    map['keyName'] = keyName;
-    map['metadataOptions'] = pulumi.Input.encodeList<
-        GetLaunchConfigurationMetadataOption,
-        Map<String, dynamic>>(metadataOptions, (value) => value.toMap());
-    map['name'] = name;
-    map['placementTenancy'] = placementTenancy;
-    map['region'] = region;
-    map['rootBlockDevices'] = pulumi.Input.encodeList<
-        GetLaunchConfigurationRootBlockDevice,
-        Map<String, dynamic>>(rootBlockDevices, (value) => value.toMap());
-    map['securityGroups'] = securityGroups;
-    map['spotPrice'] = spotPrice;
-    map['userData'] = userData;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'associatePublicIpAddress': associatePublicIpAddress,
+      'ebsBlockDevices': pulumi.Input.encodeList<GetLaunchConfigurationEbsBlockDevice, Map<String, dynamic>>(ebsBlockDevices, (value) => value.toMap()),
+      'ebsOptimized': ebsOptimized,
+      'enableMonitoring': enableMonitoring,
+      'ephemeralBlockDevices': pulumi.Input.encodeList<GetLaunchConfigurationEphemeralBlockDevice, Map<String, dynamic>>(ephemeralBlockDevices, (value) => value.toMap()),
+      'iamInstanceProfile': iamInstanceProfile,
+      'id': id,
+      'imageId': imageId,
+      'instanceType': instanceType,
+      'keyName': keyName,
+      'metadataOptions': pulumi.Input.encodeList<GetLaunchConfigurationMetadataOption, Map<String, dynamic>>(metadataOptions, (value) => value.toMap()),
+      'name': name,
+      'placementTenancy': placementTenancy,
+      'region': region,
+      'rootBlockDevices': pulumi.Input.encodeList<GetLaunchConfigurationRootBlockDevice, Map<String, dynamic>>(rootBlockDevices, (value) => value.toMap()),
+      'securityGroups': securityGroups,
+      'spotPrice': spotPrice,
+      'userData': userData,
+    };
   }
 
   factory GetLaunchConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetLaunchConfigurationResult(
       arn: map['arn'] as String,
       associatePublicIpAddress: map['associatePublicIpAddress'] as bool,
-      ebsBlockDevices:
-          pulumi.Input.decodeList<GetLaunchConfigurationEbsBlockDevice>(
-              map['ebsBlockDevices'],
-              (value) => GetLaunchConfigurationEbsBlockDevice.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      ebsBlockDevices: pulumi.Input.decodeList<GetLaunchConfigurationEbsBlockDevice>(map['ebsBlockDevices'], (value) => GetLaunchConfigurationEbsBlockDevice.fromMap((value as Map).cast<String, dynamic>())),
       ebsOptimized: map['ebsOptimized'] as bool,
       enableMonitoring: map['enableMonitoring'] as bool,
-      ephemeralBlockDevices:
-          pulumi.Input.decodeList<GetLaunchConfigurationEphemeralBlockDevice>(
-              map['ephemeralBlockDevices'],
-              (value) => GetLaunchConfigurationEphemeralBlockDevice.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      ephemeralBlockDevices: pulumi.Input.decodeList<GetLaunchConfigurationEphemeralBlockDevice>(map['ephemeralBlockDevices'], (value) => GetLaunchConfigurationEphemeralBlockDevice.fromMap((value as Map).cast<String, dynamic>())),
       iamInstanceProfile: map['iamInstanceProfile'] as String,
       id: map['id'] as String,
       imageId: map['imageId'] as String,
       instanceType: map['instanceType'] as String,
       keyName: map['keyName'] as String,
-      metadataOptions:
-          pulumi.Input.decodeList<GetLaunchConfigurationMetadataOption>(
-              map['metadataOptions'],
-              (value) => GetLaunchConfigurationMetadataOption.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      metadataOptions: pulumi.Input.decodeList<GetLaunchConfigurationMetadataOption>(map['metadataOptions'], (value) => GetLaunchConfigurationMetadataOption.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       placementTenancy: map['placementTenancy'] as String,
       region: map['region'] as String,
-      rootBlockDevices:
-          pulumi.Input.decodeList<GetLaunchConfigurationRootBlockDevice>(
-              map['rootBlockDevices'],
-              (value) => GetLaunchConfigurationRootBlockDevice.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      rootBlockDevices: pulumi.Input.decodeList<GetLaunchConfigurationRootBlockDevice>(map['rootBlockDevices'], (value) => GetLaunchConfigurationRootBlockDevice.fromMap((value as Map).cast<String, dynamic>())),
       securityGroups: (map['securityGroups'] as List).cast<String>(),
       spotPrice: map['spotPrice'] as String,
       userData: map['userData'] as String,
     );
   }
 }
+

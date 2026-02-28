@@ -14,20 +14,15 @@ class GooglePrivacyDlpV2Export {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final profileTableValue = profileTable;
-    if (profileTableValue != null) {
-      map['profileTable'] = profileTableValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'profileTable': ?profileTable == null ? null : profileTable!.toMap(),
+    };
   }
 
   factory GooglePrivacyDlpV2Export.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2Export(
-      profileTable: map['profileTable'] == null
-          ? null
-          : GooglePrivacyDlpV2BigQueryTable.fromMap(
-              (map['profileTable'] as Map).cast<String, dynamic>()),
+      profileTable: map['profileTable'] == null ? null : GooglePrivacyDlpV2BigQueryTable.fromMap((map['profileTable'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

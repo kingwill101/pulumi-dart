@@ -25,19 +25,14 @@ import 'deployment_args.dart';
 class DeploymentType extends pulumi.CustomResource {
   /// Creation date of the deployment
   late final pulumi.Output<String> createdDate;
-
   /// Description of the deployment.
   late final pulumi.Output<String?> description;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// REST API identifier.
   late final pulumi.Output<String> restApi;
-
   /// Map of arbitrary keys and values that, when changed, will trigger a redeployment.
   late final pulumi.Output<Map<String, String>?> triggers;
-
   /// Map to set on the related stage.
   late final pulumi.Output<Map<String, String>?> variables;
 

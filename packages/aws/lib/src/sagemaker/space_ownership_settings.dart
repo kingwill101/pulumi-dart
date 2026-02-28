@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SpaceOwnershipSettings {
   /// The user profile who is the owner of the private space.
   final String ownerUserProfileName;
@@ -11,9 +12,9 @@ class SpaceOwnershipSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ownerUserProfileName'] = ownerUserProfileName;
-    return map;
+    return <String, dynamic>{
+      'ownerUserProfileName': ownerUserProfileName,
+    };
   }
 
   factory SpaceOwnershipSettings.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class SpaceOwnershipSettings {
     );
   }
 }
+

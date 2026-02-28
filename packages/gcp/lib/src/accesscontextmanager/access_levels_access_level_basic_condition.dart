@@ -10,7 +10,6 @@ class AccessLevelsAccessLevelBasicCondition {
   /// allowed.
   /// Structure is documented below.
   final AccessLevelsAccessLevelBasicConditionDevicePolicy? devicePolicy;
-
   /// A list of CIDR block IP subnetwork specification. May be IPv4
   /// or IPv6.
   /// Note that for a CIDR IP address block, the specified IP address
@@ -22,7 +21,6 @@ class AccessLevelsAccessLevelBasicCondition {
   /// listed subnets in order for this Condition to be true.
   /// If empty, all IP addresses are allowed.
   final List<String>? ipSubnetworks;
-
   /// An allowed list of members (users, service accounts).
   /// Using groups is not supported yet.
   /// The signed-in user originating the request must be a part of one
@@ -31,28 +29,23 @@ class AccessLevelsAccessLevelBasicCondition {
   /// groups, etc.).
   /// Formats: `user:{emailid}`, `serviceAccount:{emailid}`
   final List<String>? members;
-
   /// Whether to negate the Condition. If true, the Condition becomes
   /// a NAND over its non-empty fields, each field must be false for
   /// the Condition overall to be satisfied. Defaults to false.
   final bool? negate;
-
   /// The request must originate from one of the provided
   /// countries/regions.
   /// Format: A valid ISO 3166-1 alpha-2 code.
   final List<String>? regions;
-
   /// A list of other access levels defined in the same Policy,
   /// referenced by resource name. Referencing an AccessLevel which
   /// does not exist is an error. All access levels listed must be
   /// granted for the Condition to be true.
   /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
   final List<String>? requiredAccessLevels;
-
   /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
   /// Structure is documented below.
-  final List<AccessLevelsAccessLevelBasicConditionVpcNetworkSource>?
-      vpcNetworkSources;
+  final List<AccessLevelsAccessLevelBasicConditionVpcNetworkSource>? vpcNetworkSources;
 
   /// Creates a new [AccessLevelsAccessLevelBasicCondition].
   /// [devicePolicy] Device specific restrictions, all restrictions must hold for
@@ -73,69 +66,27 @@ class AccessLevelsAccessLevelBasicCondition {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final devicePolicyValue = devicePolicy;
-    if (devicePolicyValue != null) {
-      map['devicePolicy'] = devicePolicyValue.toMap();
-    }
-    final ipSubnetworksValue = ipSubnetworks;
-    if (ipSubnetworksValue != null) {
-      map['ipSubnetworks'] = ipSubnetworksValue;
-    }
-    final membersValue = members;
-    if (membersValue != null) {
-      map['members'] = membersValue;
-    }
-    final negateValue = negate;
-    if (negateValue != null) {
-      map['negate'] = negateValue;
-    }
-    final regionsValue = regions;
-    if (regionsValue != null) {
-      map['regions'] = regionsValue;
-    }
-    final requiredAccessLevelsValue = requiredAccessLevels;
-    if (requiredAccessLevelsValue != null) {
-      map['requiredAccessLevels'] = requiredAccessLevelsValue;
-    }
-    final vpcNetworkSourcesValue = vpcNetworkSources;
-    if (vpcNetworkSourcesValue != null) {
-      map['vpcNetworkSources'] = pulumi.Input.encodeList<
-              AccessLevelsAccessLevelBasicConditionVpcNetworkSource,
-              Map<String, dynamic>>(
-          vpcNetworkSourcesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'devicePolicy': ?devicePolicy == null ? null : devicePolicy!.toMap(),
+      'ipSubnetworks': ?ipSubnetworks,
+      'members': ?members,
+      'negate': ?negate,
+      'regions': ?regions,
+      'requiredAccessLevels': ?requiredAccessLevels,
+      'vpcNetworkSources': ?vpcNetworkSources == null ? null : pulumi.Input.encodeList<AccessLevelsAccessLevelBasicConditionVpcNetworkSource, Map<String, dynamic>>(vpcNetworkSources!, (value) => value.toMap()),
+    };
   }
 
-  factory AccessLevelsAccessLevelBasicCondition.fromMap(
-      Map<String, dynamic> map) {
+  factory AccessLevelsAccessLevelBasicCondition.fromMap(Map<String, dynamic> map) {
     return AccessLevelsAccessLevelBasicCondition(
-      devicePolicy: map['devicePolicy'] == null
-          ? null
-          : AccessLevelsAccessLevelBasicConditionDevicePolicy.fromMap(
-              (map['devicePolicy'] as Map).cast<String, dynamic>()),
-      ipSubnetworks: map['ipSubnetworks'] == null
-          ? null
-          : (map['ipSubnetworks'] as List).cast<String>(),
-      members: map['members'] == null
-          ? null
-          : (map['members'] as List).cast<String>(),
+      devicePolicy: map['devicePolicy'] == null ? null : AccessLevelsAccessLevelBasicConditionDevicePolicy.fromMap((map['devicePolicy'] as Map).cast<String, dynamic>()),
+      ipSubnetworks: map['ipSubnetworks'] == null ? null : (map['ipSubnetworks'] as List).cast<String>(),
+      members: map['members'] == null ? null : (map['members'] as List).cast<String>(),
       negate: map['negate'] == null ? null : map['negate'] as bool,
-      regions: map['regions'] == null
-          ? null
-          : (map['regions'] as List).cast<String>(),
-      requiredAccessLevels: map['requiredAccessLevels'] == null
-          ? null
-          : (map['requiredAccessLevels'] as List).cast<String>(),
-      vpcNetworkSources: map['vpcNetworkSources'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  AccessLevelsAccessLevelBasicConditionVpcNetworkSource>(
-              map['vpcNetworkSources'],
-              (value) =>
-                  AccessLevelsAccessLevelBasicConditionVpcNetworkSource.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      regions: map['regions'] == null ? null : (map['regions'] as List).cast<String>(),
+      requiredAccessLevels: map['requiredAccessLevels'] == null ? null : (map['requiredAccessLevels'] as List).cast<String>(),
+      vpcNetworkSources: map['vpcNetworkSources'] == null ? null : pulumi.Input.decodeList<AccessLevelsAccessLevelBasicConditionVpcNetworkSource>(map['vpcNetworkSources'], (value) => AccessLevelsAccessLevelBasicConditionVpcNetworkSource.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

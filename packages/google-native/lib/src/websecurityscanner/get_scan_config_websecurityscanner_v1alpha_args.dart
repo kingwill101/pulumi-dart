@@ -16,24 +16,22 @@ class GetScanConfigWebsecurityscannerV1alphaArgs {
   GetScanConfigWebsecurityscannerV1alphaArgs({
     String? project,
     required String scanConfigId,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        scanConfigId = pulumi.Input.asInput<String>(scanConfigId);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      scanConfigId = pulumi.Input.asInput<String>(scanConfigId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['scanConfigId'] = scanConfigId;
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'scanConfigId': scanConfigId,
+    };
   }
 
-  factory GetScanConfigWebsecurityscannerV1alphaArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetScanConfigWebsecurityscannerV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return GetScanConfigWebsecurityscannerV1alphaArgs(
       project: map['project'] == null ? null : map['project'] as String,
       scanConfigId: map['scanConfigId'] as String,
     );
   }
 }
+

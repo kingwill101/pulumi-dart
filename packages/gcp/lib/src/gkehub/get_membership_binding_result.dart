@@ -8,7 +8,6 @@ class GetMembershipBindingResult {
   final String createTime;
   final String deleteTime;
   final Map<String, String> effectiveLabels;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final Map<String, String> labels;
@@ -58,27 +57,23 @@ class GetMembershipBindingResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['deleteTime'] = deleteTime;
-    map['effectiveLabels'] = effectiveLabels;
-    map['id'] = id;
-    map['labels'] = labels;
-    map['location'] = location;
-    map['membershipBindingId'] = membershipBindingId;
-    map['membershipId'] = membershipId;
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['pulumiLabels'] = pulumiLabels;
-    map['scope'] = scope;
-    map['states'] = pulumi.Input.encodeList<GetMembershipBindingState,
-        Map<String, dynamic>>(states, (value) => value.toMap());
-    map['uid'] = uid;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'deleteTime': deleteTime,
+      'effectiveLabels': effectiveLabels,
+      'id': id,
+      'labels': labels,
+      'location': location,
+      'membershipBindingId': membershipBindingId,
+      'membershipId': membershipId,
+      'name': name,
+      'project': ?project,
+      'pulumiLabels': pulumiLabels,
+      'scope': scope,
+      'states': pulumi.Input.encodeList<GetMembershipBindingState, Map<String, dynamic>>(states, (value) => value.toMap()),
+      'uid': uid,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetMembershipBindingResult.fromMap(Map<String, dynamic> map) {
@@ -95,12 +90,10 @@ class GetMembershipBindingResult {
       project: map['project'] == null ? null : map['project'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       scope: map['scope'] as String,
-      states: pulumi.Input.decodeList<GetMembershipBindingState>(
-          map['states'],
-          (value) => GetMembershipBindingState.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      states: pulumi.Input.decodeList<GetMembershipBindingState>(map['states'], (value) => GetMembershipBindingState.fromMap((value as Map).cast<String, dynamic>())),
       uid: map['uid'] as String,
       updateTime: map['updateTime'] as String,
     );
   }
 }
+

@@ -151,8 +151,7 @@ Future<GetOrganizationJobTriggerResult> getOrganizationJobTrigger(
 /// Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dlp_v2_get_organizations_deidentify_template_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetOrganizationsDeidentifyTemplateResult>
-    getOrganizationsDeidentifyTemplate(
+Future<GetOrganizationsDeidentifyTemplateResult> getOrganizationsDeidentifyTemplate(
   GetOrganizationsDeidentifyTemplateArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

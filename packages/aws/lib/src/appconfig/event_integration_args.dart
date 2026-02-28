@@ -10,19 +10,14 @@ import 'event_integration_event_filter.dart';
 class EventIntegrationArgs {
   /// Description of the Event Integration.
   final pulumi.Input<String>? description;
-
   /// Block that defines the configuration information for the event filter. The Event Filter block is documented below.
   final pulumi.Input<EventIntegrationEventFilter> eventFilter;
-
   /// EventBridge bus.
   final pulumi.Input<String> eventbridgeBus;
-
   /// Name of the Event Integration.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Tags to apply to the Event Integration. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -40,50 +35,34 @@ class EventIntegrationArgs {
     String? name,
     String? region,
     Map<String, String>? tags,
-  })  : description = pulumi.Input.asOptionalInput<String>(description),
-        eventFilter =
-            pulumi.Input.asInput<EventIntegrationEventFilter>(eventFilter),
-        eventbridgeBus = pulumi.Input.asInput<String>(eventbridgeBus),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      eventFilter = pulumi.Input.asInput<EventIntegrationEventFilter>(eventFilter),
+      eventbridgeBus = pulumi.Input.asInput<String>(eventbridgeBus),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    map['eventFilter'] = pulumi.Input.mapInputValue<EventIntegrationEventFilter,
-        Map<String, dynamic>>(eventFilter, (value) => value.toMap());
-    map['eventbridgeBus'] = eventbridgeBus;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'eventFilter': pulumi.Input.mapInputValue<EventIntegrationEventFilter, Map<String, dynamic>>(eventFilter, (value) => value.toMap()),
+      'eventbridgeBus': eventbridgeBus,
+      'name': ?name,
+      'region': ?region,
+      'tags': ?tags,
+    };
   }
 
   factory EventIntegrationArgs.fromMap(Map<String, dynamic> map) {
     return EventIntegrationArgs(
-      description:
-          map['description'] == null ? null : map['description'] as String,
-      eventFilter: EventIntegrationEventFilter.fromMap(
-          (map['eventFilter'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : map['description'] as String,
+      eventFilter: EventIntegrationEventFilter.fromMap((map['eventFilter'] as Map).cast<String, dynamic>()),
       eventbridgeBus: map['eventbridgeBus'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

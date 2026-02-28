@@ -14,20 +14,15 @@ class GooglePrivacyDlpV2TimePartConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final partToExtractValue = partToExtract;
-    if (partToExtractValue != null) {
-      map['partToExtract'] = partToExtractValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'partToExtract': ?partToExtract == null ? null : partToExtract!.value,
+    };
   }
 
   factory GooglePrivacyDlpV2TimePartConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2TimePartConfig(
-      partToExtract: map['partToExtract'] == null
-          ? null
-          : GooglePrivacyDlpV2TimePartConfigPartToExtract.fromValue(
-              map['partToExtract'] as String),
+      partToExtract: map['partToExtract'] == null ? null : GooglePrivacyDlpV2TimePartConfigPartToExtract.fromValue(map['partToExtract'] as String),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EnvelopeSignatureResponse {
   final String keyid;
   final String sig;
@@ -13,10 +14,10 @@ class EnvelopeSignatureResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['keyid'] = keyid;
-    map['sig'] = sig;
-    return map;
+    return <String, dynamic>{
+      'keyid': keyid,
+      'sig': sig,
+    };
   }
 
   factory EnvelopeSignatureResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class EnvelopeSignatureResponse {
     );
   }
 }
+

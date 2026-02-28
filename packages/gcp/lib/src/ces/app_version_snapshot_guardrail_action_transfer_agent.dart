@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppVersionSnapshotGuardrailActionTransferAgent {
   /// (Output)
   /// The name of the agent to transfer the conversation to. The agent must be
@@ -15,18 +16,15 @@ class AppVersionSnapshotGuardrailActionTransferAgent {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final agentValue = agent;
-    if (agentValue != null) {
-      map['agent'] = agentValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'agent': ?agent,
+    };
   }
 
-  factory AppVersionSnapshotGuardrailActionTransferAgent.fromMap(
-      Map<String, dynamic> map) {
+  factory AppVersionSnapshotGuardrailActionTransferAgent.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotGuardrailActionTransferAgent(
       agent: map['agent'] == null ? null : map['agent'] as String,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A set of instance tags.
 class TagsComputeV1 {
   /// An array of tags. Each tag must be 1-63 characters long, and comply with RFC1035.
@@ -12,18 +13,15 @@ class TagsComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final itemsValue = items;
-    if (itemsValue != null) {
-      map['items'] = itemsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'items': ?items,
+    };
   }
 
   factory TagsComputeV1.fromMap(Map<String, dynamic> map) {
     return TagsComputeV1(
-      items:
-          map['items'] == null ? null : (map['items'] as List).cast<String>(),
+      items: map['items'] == null ? null : (map['items'] as List).cast<String>(),
     );
   }
 }
+

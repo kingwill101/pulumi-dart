@@ -197,8 +197,7 @@ Future<GetFederationMetastoreV1alphaResult> getFederationMetastoreV1alpha(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_metastore_v1alpha_get_federation_iam_policy_metastore_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetFederationIamPolicyMetastoreV1alphaResult>
-    getFederationIamPolicyMetastoreV1alpha(
+Future<GetFederationIamPolicyMetastoreV1alphaResult> getFederationIamPolicyMetastoreV1alpha(
   GetFederationIamPolicyMetastoreV1alphaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -214,8 +213,7 @@ Future<GetFederationIamPolicyMetastoreV1alphaResult>
 /// Gets details of a single import.
 /// [args] Arguments passed to this invoke. {@macro pulumi_metastore_v1alpha_get_metadata_import_metastore_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetMetadataImportMetastoreV1alphaResult>
-    getMetadataImportMetastoreV1alpha(
+Future<GetMetadataImportMetastoreV1alphaResult> getMetadataImportMetastoreV1alpha(
   GetMetadataImportMetastoreV1alphaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -247,8 +245,7 @@ Future<GetServiceMetastoreV1alphaResult> getServiceMetastoreV1alpha(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_metastore_v1alpha_get_service_backup_iam_policy_metastore_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetServiceBackupIamPolicyMetastoreV1alphaResult>
-    getServiceBackupIamPolicyMetastoreV1alpha(
+Future<GetServiceBackupIamPolicyMetastoreV1alphaResult> getServiceBackupIamPolicyMetastoreV1alpha(
   GetServiceBackupIamPolicyMetastoreV1alphaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -296,8 +293,7 @@ Future<GetServiceDatabaseTableIamPolicyResult> getServiceDatabaseTableIamPolicy(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_metastore_v1alpha_get_service_iam_policy_metastore_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetServiceIamPolicyMetastoreV1alphaResult>
-    getServiceIamPolicyMetastoreV1alpha(
+Future<GetServiceIamPolicyMetastoreV1alphaResult> getServiceIamPolicyMetastoreV1alpha(
   GetServiceIamPolicyMetastoreV1alphaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -345,8 +341,7 @@ Future<GetFederationMetastoreV1betaResult> getFederationMetastoreV1beta(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_metastore_v1beta_get_federation_iam_policy_metastore_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetFederationIamPolicyMetastoreV1betaResult>
-    getFederationIamPolicyMetastoreV1beta(
+Future<GetFederationIamPolicyMetastoreV1betaResult> getFederationIamPolicyMetastoreV1beta(
   GetFederationIamPolicyMetastoreV1betaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -394,8 +389,7 @@ Future<GetServiceMetastoreV1betaResult> getServiceMetastoreV1beta(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_metastore_v1beta_get_service_backup_iam_policy_metastore_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetServiceBackupIamPolicyMetastoreV1betaResult>
-    getServiceBackupIamPolicyMetastoreV1beta(
+Future<GetServiceBackupIamPolicyMetastoreV1betaResult> getServiceBackupIamPolicyMetastoreV1beta(
   GetServiceBackupIamPolicyMetastoreV1betaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -411,8 +405,7 @@ Future<GetServiceBackupIamPolicyMetastoreV1betaResult>
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_metastore_v1beta_get_service_database_iam_policy_metastore_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetServiceDatabaseIamPolicyMetastoreV1betaResult>
-    getServiceDatabaseIamPolicyMetastoreV1beta(
+Future<GetServiceDatabaseIamPolicyMetastoreV1betaResult> getServiceDatabaseIamPolicyMetastoreV1beta(
   GetServiceDatabaseIamPolicyMetastoreV1betaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -428,8 +421,7 @@ Future<GetServiceDatabaseIamPolicyMetastoreV1betaResult>
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_metastore_v1beta_get_service_database_table_iam_policy_metastore_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetServiceDatabaseTableIamPolicyMetastoreV1betaResult>
-    getServiceDatabaseTableIamPolicyMetastoreV1beta(
+Future<GetServiceDatabaseTableIamPolicyMetastoreV1betaResult> getServiceDatabaseTableIamPolicyMetastoreV1beta(
   GetServiceDatabaseTableIamPolicyMetastoreV1betaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -445,8 +437,7 @@ Future<GetServiceDatabaseTableIamPolicyMetastoreV1betaResult>
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_metastore_v1beta_get_service_iam_policy_metastore_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetServiceIamPolicyMetastoreV1betaResult>
-    getServiceIamPolicyMetastoreV1beta(
+Future<GetServiceIamPolicyMetastoreV1betaResult> getServiceIamPolicyMetastoreV1beta(
   GetServiceIamPolicyMetastoreV1betaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

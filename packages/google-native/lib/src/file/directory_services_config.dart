@@ -14,20 +14,15 @@ class DirectoryServicesConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final managedActiveDirectoryValue = managedActiveDirectory;
-    if (managedActiveDirectoryValue != null) {
-      map['managedActiveDirectory'] = managedActiveDirectoryValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'managedActiveDirectory': ?managedActiveDirectory == null ? null : managedActiveDirectory!.toMap(),
+    };
   }
 
   factory DirectoryServicesConfig.fromMap(Map<String, dynamic> map) {
     return DirectoryServicesConfig(
-      managedActiveDirectory: map['managedActiveDirectory'] == null
-          ? null
-          : ManagedActiveDirectoryConfig.fromMap(
-              (map['managedActiveDirectory'] as Map).cast<String, dynamic>()),
+      managedActiveDirectory: map['managedActiveDirectory'] == null ? null : ManagedActiveDirectoryConfig.fromMap((map['managedActiveDirectory'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

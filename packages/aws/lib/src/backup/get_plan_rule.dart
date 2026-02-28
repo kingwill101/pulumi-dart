@@ -48,58 +48,37 @@ class GetPlanRule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['completionWindow'] = completionWindow;
-    map['copyActions'] =
-        pulumi.Input.encodeList<GetPlanRuleCopyAction, Map<String, dynamic>>(
-            copyActions, (value) => value.toMap());
-    map['enableContinuousBackup'] = enableContinuousBackup;
-    map['lifecycles'] =
-        pulumi.Input.encodeList<GetPlanRuleLifecycle, Map<String, dynamic>>(
-            lifecycles, (value) => value.toMap());
-    final recoveryPointTagsValue = recoveryPointTags;
-    if (recoveryPointTagsValue != null) {
-      map['recoveryPointTags'] = recoveryPointTagsValue;
-    }
-    map['ruleName'] = ruleName;
-    map['scanActions'] =
-        pulumi.Input.encodeList<GetPlanRuleScanAction, Map<String, dynamic>>(
-            scanActions, (value) => value.toMap());
-    map['schedule'] = schedule;
-    map['scheduleExpressionTimezone'] = scheduleExpressionTimezone;
-    map['startWindow'] = startWindow;
-    map['targetLogicallyAirGappedBackupVaultArn'] =
-        targetLogicallyAirGappedBackupVaultArn;
-    map['targetVaultName'] = targetVaultName;
-    return map;
+    return <String, dynamic>{
+      'completionWindow': completionWindow,
+      'copyActions': pulumi.Input.encodeList<GetPlanRuleCopyAction, Map<String, dynamic>>(copyActions, (value) => value.toMap()),
+      'enableContinuousBackup': enableContinuousBackup,
+      'lifecycles': pulumi.Input.encodeList<GetPlanRuleLifecycle, Map<String, dynamic>>(lifecycles, (value) => value.toMap()),
+      'recoveryPointTags': ?recoveryPointTags,
+      'ruleName': ruleName,
+      'scanActions': pulumi.Input.encodeList<GetPlanRuleScanAction, Map<String, dynamic>>(scanActions, (value) => value.toMap()),
+      'schedule': schedule,
+      'scheduleExpressionTimezone': scheduleExpressionTimezone,
+      'startWindow': startWindow,
+      'targetLogicallyAirGappedBackupVaultArn': targetLogicallyAirGappedBackupVaultArn,
+      'targetVaultName': targetVaultName,
+    };
   }
 
   factory GetPlanRule.fromMap(Map<String, dynamic> map) {
     return GetPlanRule(
       completionWindow: map['completionWindow'] as int,
-      copyActions: pulumi.Input.decodeList<GetPlanRuleCopyAction>(
-          map['copyActions'],
-          (value) => GetPlanRuleCopyAction.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      copyActions: pulumi.Input.decodeList<GetPlanRuleCopyAction>(map['copyActions'], (value) => GetPlanRuleCopyAction.fromMap((value as Map).cast<String, dynamic>())),
       enableContinuousBackup: map['enableContinuousBackup'] as bool,
-      lifecycles: pulumi.Input.decodeList<GetPlanRuleLifecycle>(
-          map['lifecycles'],
-          (value) => GetPlanRuleLifecycle.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      recoveryPointTags: map['recoveryPointTags'] == null
-          ? null
-          : (map['recoveryPointTags'] as Map).cast<String, String>(),
+      lifecycles: pulumi.Input.decodeList<GetPlanRuleLifecycle>(map['lifecycles'], (value) => GetPlanRuleLifecycle.fromMap((value as Map).cast<String, dynamic>())),
+      recoveryPointTags: map['recoveryPointTags'] == null ? null : (map['recoveryPointTags'] as Map).cast<String, String>(),
       ruleName: map['ruleName'] as String,
-      scanActions: pulumi.Input.decodeList<GetPlanRuleScanAction>(
-          map['scanActions'],
-          (value) => GetPlanRuleScanAction.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      scanActions: pulumi.Input.decodeList<GetPlanRuleScanAction>(map['scanActions'], (value) => GetPlanRuleScanAction.fromMap((value as Map).cast<String, dynamic>())),
       schedule: map['schedule'] as String,
       scheduleExpressionTimezone: map['scheduleExpressionTimezone'] as String,
       startWindow: map['startWindow'] as int,
-      targetLogicallyAirGappedBackupVaultArn:
-          map['targetLogicallyAirGappedBackupVaultArn'] as String,
+      targetLogicallyAirGappedBackupVaultArn: map['targetLogicallyAirGappedBackupVaultArn'] as String,
       targetVaultName: map['targetVaultName'] as String,
     );
   }
 }
+

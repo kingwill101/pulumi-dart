@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Metadata for classification annotations.
 class GoogleCloudDatalabelingV1beta1ClassificationMetadata {
   /// Whether the classification task is multi-label or not.
@@ -12,19 +13,15 @@ class GoogleCloudDatalabelingV1beta1ClassificationMetadata {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final isMultiLabelValue = isMultiLabel;
-    if (isMultiLabelValue != null) {
-      map['isMultiLabel'] = isMultiLabelValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'isMultiLabel': ?isMultiLabel,
+    };
   }
 
-  factory GoogleCloudDatalabelingV1beta1ClassificationMetadata.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDatalabelingV1beta1ClassificationMetadata.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatalabelingV1beta1ClassificationMetadata(
-      isMultiLabel:
-          map['isMultiLabel'] == null ? null : map['isMultiLabel'] as bool,
+      isMultiLabel: map['isMultiLabel'] == null ? null : map['isMultiLabel'] as bool,
     );
   }
 }
+

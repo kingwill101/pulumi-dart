@@ -412,36 +412,25 @@ import 'agent_data_source_vector_ingestion_configuration.dart';
 class AgentDataSource extends pulumi.CustomResource {
   /// Data deletion policy for a data source. Valid values: `RETAIN`, `DELETE`.
   late final pulumi.Output<String> dataDeletionPolicy;
-
   /// Details about how the data source is stored. See `data_source_configuration` block for details.
-  late final pulumi.Output<AgentDataSourceDataSourceConfiguration>
-      dataSourceConfiguration;
-
+  late final pulumi.Output<AgentDataSourceDataSourceConfiguration> dataSourceConfiguration;
   /// Unique identifier of the data source.
   late final pulumi.Output<String> dataSourceId;
-
   /// Description of the data source.
   late final pulumi.Output<String?> description;
-
   /// Unique identifier of the knowledge base to which the data source belongs.
   late final pulumi.Output<String> knowledgeBaseId;
-
   /// Name of the data source.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Details about the configuration of the server-side encryption. See `server_side_encryption_configuration` block for details.
-  late final pulumi.Output<AgentDataSourceServerSideEncryptionConfiguration?>
-      serverSideEncryptionConfiguration;
+  late final pulumi.Output<AgentDataSourceServerSideEncryptionConfiguration?> serverSideEncryptionConfiguration;
   late final pulumi.Output<AgentDataSourceTimeouts?> timeouts;
-
   /// Details about the configuration of the server-side encryption. See `vector_ingestion_configuration` block for details.
-  late final pulumi.Output<AgentDataSourceVectorIngestionConfiguration?>
-      vectorIngestionConfiguration;
+  late final pulumi.Output<AgentDataSourceVectorIngestionConfiguration?> vectorIngestionConfiguration;
 
   /// Creates a new [AgentDataSource].
   /// [name] The Pulumi resource name.
@@ -458,20 +447,14 @@ class AgentDataSource extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.dataDeletionPolicy = registerOutput<String>('dataDeletionPolicy');
-    this.dataSourceConfiguration =
-        registerOutput<AgentDataSourceDataSourceConfiguration>(
-            'dataSourceConfiguration');
+    this.dataSourceConfiguration = registerOutput<AgentDataSourceDataSourceConfiguration>('dataSourceConfiguration');
     this.dataSourceId = registerOutput<String>('dataSourceId');
     this.description = registerOutput<String?>('description');
     this.knowledgeBaseId = registerOutput<String>('knowledgeBaseId');
     this.name = registerOutput<String>('name');
     this.region = registerOutput<String>('region');
-    this.serverSideEncryptionConfiguration =
-        registerOutput<AgentDataSourceServerSideEncryptionConfiguration?>(
-            'serverSideEncryptionConfiguration');
+    this.serverSideEncryptionConfiguration = registerOutput<AgentDataSourceServerSideEncryptionConfiguration?>('serverSideEncryptionConfiguration');
     this.timeouts = registerOutput<AgentDataSourceTimeouts?>('timeouts');
-    this.vectorIngestionConfiguration =
-        registerOutput<AgentDataSourceVectorIngestionConfiguration?>(
-            'vectorIngestionConfiguration');
+    this.vectorIngestionConfiguration = registerOutput<AgentDataSourceVectorIngestionConfiguration?>('vectorIngestionConfiguration');
   }
 }

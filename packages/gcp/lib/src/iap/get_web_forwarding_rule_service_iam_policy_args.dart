@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWebForwardingRuleServiceIamPolicyArgs {
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> forwardingRuleServiceName;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   final pulumi.Input<String>? project;
@@ -20,25 +19,22 @@ class GetWebForwardingRuleServiceIamPolicyArgs {
   GetWebForwardingRuleServiceIamPolicyArgs({
     required String forwardingRuleServiceName,
     String? project,
-  })  : forwardingRuleServiceName =
-            pulumi.Input.asInput<String>(forwardingRuleServiceName),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      forwardingRuleServiceName = pulumi.Input.asInput<String>(forwardingRuleServiceName),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['forwardingRuleServiceName'] = forwardingRuleServiceName;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'forwardingRuleServiceName': forwardingRuleServiceName,
+      'project': ?project,
+    };
   }
 
-  factory GetWebForwardingRuleServiceIamPolicyArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetWebForwardingRuleServiceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetWebForwardingRuleServiceIamPolicyArgs(
       forwardingRuleServiceName: map['forwardingRuleServiceName'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

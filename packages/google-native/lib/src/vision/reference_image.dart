@@ -7,15 +7,12 @@ class ReferenceImage extends pulumi.CustomResource {
   /// Optional. Bounding polygons around the areas of interest in the reference image. If this field is empty, the system will try to detect regions of interest. At most 10 bounding polygons will be used. The provided shape is converted into a non-rotated rectangle. Once converted, the small edge of the rectangle must be greater than or equal to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5 is not).
   late final pulumi.Output<List<BoundingPolyResponse>> boundingPolys;
   late final pulumi.Output<String> location;
-
   /// The resource name of the reference image. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is ignored when creating a reference image.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> productId;
   late final pulumi.Output<String> project;
-
   /// A user-supplied resource id for the ReferenceImage to be added. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
   late final pulumi.Output<String?> referenceImageId;
-
   /// The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
   late final pulumi.Output<String> uri;
 
@@ -33,8 +30,7 @@ class ReferenceImage extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.boundingPolys =
-        registerOutput<List<BoundingPolyResponse>>('boundingPolys');
+    this.boundingPolys = registerOutput<List<BoundingPolyResponse>>('boundingPolys');
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     this.productId = registerOutput<String>('productId');

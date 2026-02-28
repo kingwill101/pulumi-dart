@@ -18,20 +18,15 @@ class CxPageAdvancedSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dtmfSettingsValue = dtmfSettings;
-    if (dtmfSettingsValue != null) {
-      map['dtmfSettings'] = dtmfSettingsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'dtmfSettings': ?dtmfSettings == null ? null : dtmfSettings!.toMap(),
+    };
   }
 
   factory CxPageAdvancedSettings.fromMap(Map<String, dynamic> map) {
     return CxPageAdvancedSettings(
-      dtmfSettings: map['dtmfSettings'] == null
-          ? null
-          : CxPageAdvancedSettingsDtmfSettings.fromMap(
-              (map['dtmfSettings'] as Map).cast<String, dynamic>()),
+      dtmfSettings: map['dtmfSettings'] == null ? null : CxPageAdvancedSettingsDtmfSettings.fromMap((map['dtmfSettings'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

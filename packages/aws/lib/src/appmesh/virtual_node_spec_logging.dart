@@ -13,20 +13,15 @@ class VirtualNodeSpecLogging {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final accessLogValue = accessLog;
-    if (accessLogValue != null) {
-      map['accessLog'] = accessLogValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'accessLog': ?accessLog == null ? null : accessLog!.toMap(),
+    };
   }
 
   factory VirtualNodeSpecLogging.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecLogging(
-      accessLog: map['accessLog'] == null
-          ? null
-          : VirtualNodeSpecLoggingAccessLog.fromMap(
-              (map['accessLog'] as Map).cast<String, dynamic>()),
+      accessLog: map['accessLog'] == null ? null : VirtualNodeSpecLoggingAccessLog.fromMap((map['accessLog'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

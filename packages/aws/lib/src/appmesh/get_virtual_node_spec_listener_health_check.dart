@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetVirtualNodeSpecListenerHealthCheck {
   final int healthyThreshold;
   final int intervalMillis;
@@ -28,19 +29,18 @@ class GetVirtualNodeSpecListenerHealthCheck {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['healthyThreshold'] = healthyThreshold;
-    map['intervalMillis'] = intervalMillis;
-    map['path'] = path;
-    map['port'] = port;
-    map['protocol'] = protocol;
-    map['timeoutMillis'] = timeoutMillis;
-    map['unhealthyThreshold'] = unhealthyThreshold;
-    return map;
+    return <String, dynamic>{
+      'healthyThreshold': healthyThreshold,
+      'intervalMillis': intervalMillis,
+      'path': path,
+      'port': port,
+      'protocol': protocol,
+      'timeoutMillis': timeoutMillis,
+      'unhealthyThreshold': unhealthyThreshold,
+    };
   }
 
-  factory GetVirtualNodeSpecListenerHealthCheck.fromMap(
-      Map<String, dynamic> map) {
+  factory GetVirtualNodeSpecListenerHealthCheck.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecListenerHealthCheck(
       healthyThreshold: map['healthyThreshold'] as int,
       intervalMillis: map['intervalMillis'] as int,
@@ -52,3 +52,4 @@ class GetVirtualNodeSpecListenerHealthCheck {
     );
   }
 }
+

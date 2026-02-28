@@ -7,10 +7,8 @@ import 'virtual_node_spec_backend_defaults_client_policy_tls_validation_trust_sd
 class VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrust {
   /// TLS validation context trust for an AWS Certificate Manager (ACM) certificate.
   final VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustAcm? acm;
-
   /// TLS validation context trust for a local file certificate.
   final VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustFile? file;
-
   /// TLS validation context trust for a [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#secret-discovery-service-sds) certificate.
   final VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustSds? sds;
 
@@ -25,37 +23,19 @@ class VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrust {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final acmValue = acm;
-    if (acmValue != null) {
-      map['acm'] = acmValue.toMap();
-    }
-    final fileValue = file;
-    if (fileValue != null) {
-      map['file'] = fileValue.toMap();
-    }
-    final sdsValue = sds;
-    if (sdsValue != null) {
-      map['sds'] = sdsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'acm': ?acm == null ? null : acm!.toMap(),
+      'file': ?file == null ? null : file!.toMap(),
+      'sds': ?sds == null ? null : sds!.toMap(),
+    };
   }
 
-  factory VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrust.fromMap(
-      Map<String, dynamic> map) {
+  factory VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrust.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrust(
-      acm: map['acm'] == null
-          ? null
-          : VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustAcm
-              .fromMap((map['acm'] as Map).cast<String, dynamic>()),
-      file: map['file'] == null
-          ? null
-          : VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustFile
-              .fromMap((map['file'] as Map).cast<String, dynamic>()),
-      sds: map['sds'] == null
-          ? null
-          : VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustSds
-              .fromMap((map['sds'] as Map).cast<String, dynamic>()),
+      acm: map['acm'] == null ? null : VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustAcm.fromMap((map['acm'] as Map).cast<String, dynamic>()),
+      file: map['file'] == null ? null : VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustFile.fromMap((map['file'] as Map).cast<String, dynamic>()),
+      sds: map['sds'] == null ? null : VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustSds.fromMap((map['sds'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

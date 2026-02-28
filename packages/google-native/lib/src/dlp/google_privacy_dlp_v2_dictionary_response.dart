@@ -7,7 +7,6 @@ import 'google_privacy_dlp_v2_word_list_response.dart';
 class GooglePrivacyDlpV2DictionaryResponse {
   /// Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
   final GooglePrivacyDlpV2CloudStoragePathResponse cloudStoragePath;
-
   /// List of words or phrases to search for.
   final GooglePrivacyDlpV2WordListResponse wordList;
 
@@ -20,19 +19,17 @@ class GooglePrivacyDlpV2DictionaryResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cloudStoragePath'] = cloudStoragePath.toMap();
-    map['wordList'] = wordList.toMap();
-    return map;
+    return <String, dynamic>{
+      'cloudStoragePath': cloudStoragePath.toMap(),
+      'wordList': wordList.toMap(),
+    };
   }
 
-  factory GooglePrivacyDlpV2DictionaryResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2DictionaryResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DictionaryResponse(
-      cloudStoragePath: GooglePrivacyDlpV2CloudStoragePathResponse.fromMap(
-          (map['cloudStoragePath'] as Map).cast<String, dynamic>()),
-      wordList: GooglePrivacyDlpV2WordListResponse.fromMap(
-          (map['wordList'] as Map).cast<String, dynamic>()),
+      cloudStoragePath: GooglePrivacyDlpV2CloudStoragePathResponse.fromMap((map['cloudStoragePath'] as Map).cast<String, dynamic>()),
+      wordList: GooglePrivacyDlpV2WordListResponse.fromMap((map['wordList'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

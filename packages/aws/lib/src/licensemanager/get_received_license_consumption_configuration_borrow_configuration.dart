@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetReceivedLicenseConsumptionConfigurationBorrowConfiguration {
   /// Indicates whether early check-ins are allowed.
   final bool allowEarlyCheckIn;
-
   /// Maximum time for the provisional configuration, in minutes.
   final int maxTimeToLiveInMinutes;
 
@@ -16,17 +16,17 @@ class GetReceivedLicenseConsumptionConfigurationBorrowConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allowEarlyCheckIn'] = allowEarlyCheckIn;
-    map['maxTimeToLiveInMinutes'] = maxTimeToLiveInMinutes;
-    return map;
+    return <String, dynamic>{
+      'allowEarlyCheckIn': allowEarlyCheckIn,
+      'maxTimeToLiveInMinutes': maxTimeToLiveInMinutes,
+    };
   }
 
-  factory GetReceivedLicenseConsumptionConfigurationBorrowConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory GetReceivedLicenseConsumptionConfigurationBorrowConfiguration.fromMap(Map<String, dynamic> map) {
     return GetReceivedLicenseConsumptionConfigurationBorrowConfiguration(
       allowEarlyCheckIn: map['allowEarlyCheckIn'] as bool,
       maxTimeToLiveInMinutes: map['maxTimeToLiveInMinutes'] as int,
     );
   }
 }
+

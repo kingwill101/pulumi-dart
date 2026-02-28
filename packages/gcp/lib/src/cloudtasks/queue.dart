@@ -1013,29 +1013,22 @@ class Queue extends pulumi.CustomResource {
   /// Overrides for task-level appEngineRouting. These settings apply only
   /// to App Engine tasks in this queue
   /// Structure is documented below.
-  late final pulumi.Output<QueueAppEngineRoutingOverride?>
-      appEngineRoutingOverride;
-
+  late final pulumi.Output<QueueAppEngineRoutingOverride?> appEngineRoutingOverride;
   /// The desired state of the queue. Use this to pause and resume the queue.
   ///
   /// * RUNNING: The queue is running. Tasks can be dispatched.
   /// * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
   late final pulumi.Output<String?> desiredState;
-
   /// Modifies HTTP target for HTTP tasks.
   /// Structure is documented below.
   late final pulumi.Output<QueueHttpTarget?> httpTarget;
-
   /// The location of the queue
   late final pulumi.Output<String> location;
-
   /// The queue name.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Rate limits for task dispatches.
   /// The queue's actual dispatch rate is the result of:
   /// * Number of tasks in the queue
@@ -1045,16 +1038,12 @@ class Queue extends pulumi.CustomResource {
   /// smooth sudden large traffic spikes.
   /// Structure is documented below.
   late final pulumi.Output<QueueRateLimits> rateLimits;
-
   /// Settings that determine the retry behavior.
   /// Structure is documented below.
   late final pulumi.Output<QueueRetryConfig> retryConfig;
-
   /// Configuration options for writing logs to Stackdriver Logging.
   /// Structure is documented below.
-  late final pulumi.Output<QueueStackdriverLoggingConfig?>
-      stackdriverLoggingConfig;
-
+  late final pulumi.Output<QueueStackdriverLoggingConfig?> stackdriverLoggingConfig;
   /// The current state of the queue.
   late final pulumi.Output<String> state;
 
@@ -1072,9 +1061,7 @@ class Queue extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.appEngineRoutingOverride =
-        registerOutput<QueueAppEngineRoutingOverride?>(
-            'appEngineRoutingOverride');
+    this.appEngineRoutingOverride = registerOutput<QueueAppEngineRoutingOverride?>('appEngineRoutingOverride');
     this.desiredState = registerOutput<String?>('desiredState');
     this.httpTarget = registerOutput<QueueHttpTarget?>('httpTarget');
     this.location = registerOutput<String>('location');
@@ -1082,9 +1069,7 @@ class Queue extends pulumi.CustomResource {
     this.project = registerOutput<String>('project');
     this.rateLimits = registerOutput<QueueRateLimits>('rateLimits');
     this.retryConfig = registerOutput<QueueRetryConfig>('retryConfig');
-    this.stackdriverLoggingConfig =
-        registerOutput<QueueStackdriverLoggingConfig?>(
-            'stackdriverLoggingConfig');
+    this.stackdriverLoggingConfig = registerOutput<QueueStackdriverLoggingConfig?>('stackdriverLoggingConfig');
     this.state = registerOutput<String>('state');
   }
 }

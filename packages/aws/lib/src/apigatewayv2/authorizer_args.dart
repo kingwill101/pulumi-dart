@@ -10,46 +10,36 @@ import 'authorizer_jwt_configuration.dart';
 class AuthorizerArgs {
   /// API identifier.
   final pulumi.Input<String> apiId;
-
   /// Required credentials as an IAM role for API Gateway to invoke the authorizer.
   /// Supported only for `REQUEST` authorizers.
   final pulumi.Input<String>? authorizerCredentialsArn;
-
   /// Format of the payload sent to an HTTP API Lambda authorizer. Required for HTTP API Lambda authorizers.
   /// Valid values: `1.0`, `2.0`.
   final pulumi.Input<String>? authorizerPayloadFormatVersion;
-
   /// Time to live (TTL) for cached authorizer results, in seconds. If it equals 0, authorization caching is disabled.
   /// If it is greater than 0, API Gateway caches authorizer responses. The maximum value is 3600, or 1 hour. Defaults to `300`.
   /// Supported only for HTTP API Lambda authorizers.
   final pulumi.Input<int>? authorizerResultTtlInSeconds;
-
   /// Authorizer type. Valid values: `JWT`, `REQUEST`.
   /// Specify `REQUEST` for a Lambda function using incoming request parameters.
   /// For HTTP APIs, specify `JWT` to use JSON Web Tokens.
   final pulumi.Input<String> authorizerType;
-
   /// Authorizer's Uniform Resource Identifier (URI).
   /// For `REQUEST` authorizers this must be a well-formed Lambda function URI, such as the `invoke_arn` attribute of the `aws.lambda.Function` resource.
   /// Supported only for `REQUEST` authorizers. Must be between 1 and 2048 characters in length.
   final pulumi.Input<String>? authorizerUri;
-
   /// Whether a Lambda authorizer returns a response in a simple format. If enabled, the Lambda authorizer can return a boolean value instead of an IAM policy.
   /// Supported only for HTTP APIs.
   final pulumi.Input<bool>? enableSimpleResponses;
-
   /// Identity sources for which authorization is requested.
   /// For `REQUEST` authorizers the value is a list of one or more mapping expressions of the specified request parameters.
   /// For `JWT` authorizers the single entry specifies where to extract the JSON Web Token (JWT) from inbound requests.
   final pulumi.Input<List<String>>? identitySources;
-
   /// Configuration of a JWT authorizer. Required for the `JWT` authorizer type.
   /// Supported only for HTTP APIs.
   final pulumi.Input<AuthorizerJwtConfiguration>? jwtConfiguration;
-
   /// Name of the authorizer. Must be between 1 and 128 characters in length.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -77,99 +67,49 @@ class AuthorizerArgs {
     AuthorizerJwtConfiguration? jwtConfiguration,
     String? name,
     String? region,
-  })  : apiId = pulumi.Input.asInput<String>(apiId),
-        authorizerCredentialsArn =
-            pulumi.Input.asOptionalInput<String>(authorizerCredentialsArn),
-        authorizerPayloadFormatVersion = pulumi.Input.asOptionalInput<String>(
-            authorizerPayloadFormatVersion),
-        authorizerResultTtlInSeconds =
-            pulumi.Input.asOptionalInput<int>(authorizerResultTtlInSeconds),
-        authorizerType = pulumi.Input.asInput<String>(authorizerType),
-        authorizerUri = pulumi.Input.asOptionalInput<String>(authorizerUri),
-        enableSimpleResponses =
-            pulumi.Input.asOptionalInput<bool>(enableSimpleResponses),
-        identitySources =
-            pulumi.Input.asOptionalInput<List<String>>(identitySources),
-        jwtConfiguration =
-            pulumi.Input.asOptionalInput<AuthorizerJwtConfiguration>(
-                jwtConfiguration),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      apiId = pulumi.Input.asInput<String>(apiId),
+      authorizerCredentialsArn = pulumi.Input.asOptionalInput<String>(authorizerCredentialsArn),
+      authorizerPayloadFormatVersion = pulumi.Input.asOptionalInput<String>(authorizerPayloadFormatVersion),
+      authorizerResultTtlInSeconds = pulumi.Input.asOptionalInput<int>(authorizerResultTtlInSeconds),
+      authorizerType = pulumi.Input.asInput<String>(authorizerType),
+      authorizerUri = pulumi.Input.asOptionalInput<String>(authorizerUri),
+      enableSimpleResponses = pulumi.Input.asOptionalInput<bool>(enableSimpleResponses),
+      identitySources = pulumi.Input.asOptionalInput<List<String>>(identitySources),
+      jwtConfiguration = pulumi.Input.asOptionalInput<AuthorizerJwtConfiguration>(jwtConfiguration),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['apiId'] = apiId;
-    final authorizerCredentialsArnValue = authorizerCredentialsArn;
-    if (authorizerCredentialsArnValue != null) {
-      map['authorizerCredentialsArn'] = authorizerCredentialsArnValue;
-    }
-    final authorizerPayloadFormatVersionValue = authorizerPayloadFormatVersion;
-    if (authorizerPayloadFormatVersionValue != null) {
-      map['authorizerPayloadFormatVersion'] =
-          authorizerPayloadFormatVersionValue;
-    }
-    final authorizerResultTtlInSecondsValue = authorizerResultTtlInSeconds;
-    if (authorizerResultTtlInSecondsValue != null) {
-      map['authorizerResultTtlInSeconds'] = authorizerResultTtlInSecondsValue;
-    }
-    map['authorizerType'] = authorizerType;
-    final authorizerUriValue = authorizerUri;
-    if (authorizerUriValue != null) {
-      map['authorizerUri'] = authorizerUriValue;
-    }
-    final enableSimpleResponsesValue = enableSimpleResponses;
-    if (enableSimpleResponsesValue != null) {
-      map['enableSimpleResponses'] = enableSimpleResponsesValue;
-    }
-    final identitySourcesValue = identitySources;
-    if (identitySourcesValue != null) {
-      map['identitySources'] = identitySourcesValue;
-    }
-    final jwtConfigurationValue = jwtConfiguration;
-    if (jwtConfigurationValue != null) {
-      map['jwtConfiguration'] = pulumi.Input.mapOptionalInputValue<
-              AuthorizerJwtConfiguration, Map<String, dynamic>>(
-          jwtConfigurationValue, (value) => value.toMap());
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'apiId': apiId,
+      'authorizerCredentialsArn': ?authorizerCredentialsArn,
+      'authorizerPayloadFormatVersion': ?authorizerPayloadFormatVersion,
+      'authorizerResultTtlInSeconds': ?authorizerResultTtlInSeconds,
+      'authorizerType': authorizerType,
+      'authorizerUri': ?authorizerUri,
+      'enableSimpleResponses': ?enableSimpleResponses,
+      'identitySources': ?identitySources,
+      'jwtConfiguration': ?pulumi.Input.mapOptionalInputValue<AuthorizerJwtConfiguration, Map<String, dynamic>>(jwtConfiguration, (value) => value.toMap()),
+      'name': ?name,
+      'region': ?region,
+    };
   }
 
   factory AuthorizerArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizerArgs(
       apiId: map['apiId'] as String,
-      authorizerCredentialsArn: map['authorizerCredentialsArn'] == null
-          ? null
-          : map['authorizerCredentialsArn'] as String,
-      authorizerPayloadFormatVersion:
-          map['authorizerPayloadFormatVersion'] == null
-              ? null
-              : map['authorizerPayloadFormatVersion'] as String,
-      authorizerResultTtlInSeconds: map['authorizerResultTtlInSeconds'] == null
-          ? null
-          : map['authorizerResultTtlInSeconds'] as int,
+      authorizerCredentialsArn: map['authorizerCredentialsArn'] == null ? null : map['authorizerCredentialsArn'] as String,
+      authorizerPayloadFormatVersion: map['authorizerPayloadFormatVersion'] == null ? null : map['authorizerPayloadFormatVersion'] as String,
+      authorizerResultTtlInSeconds: map['authorizerResultTtlInSeconds'] == null ? null : map['authorizerResultTtlInSeconds'] as int,
       authorizerType: map['authorizerType'] as String,
-      authorizerUri:
-          map['authorizerUri'] == null ? null : map['authorizerUri'] as String,
-      enableSimpleResponses: map['enableSimpleResponses'] == null
-          ? null
-          : map['enableSimpleResponses'] as bool,
-      identitySources: map['identitySources'] == null
-          ? null
-          : (map['identitySources'] as List).cast<String>(),
-      jwtConfiguration: map['jwtConfiguration'] == null
-          ? null
-          : AuthorizerJwtConfiguration.fromMap(
-              (map['jwtConfiguration'] as Map).cast<String, dynamic>()),
+      authorizerUri: map['authorizerUri'] == null ? null : map['authorizerUri'] as String,
+      enableSimpleResponses: map['enableSimpleResponses'] == null ? null : map['enableSimpleResponses'] as bool,
+      identitySources: map['identitySources'] == null ? null : (map['identitySources'] as List).cast<String>(),
+      jwtConfiguration: map['jwtConfiguration'] == null ? null : AuthorizerJwtConfiguration.fromMap((map['jwtConfiguration'] as Map).cast<String, dynamic>()),
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

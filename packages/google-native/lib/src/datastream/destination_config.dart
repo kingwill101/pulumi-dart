@@ -7,10 +7,8 @@ import 'gcs_destination_config.dart';
 class DestinationConfig {
   /// BigQuery destination configuration.
   final BigQueryDestinationConfig? bigqueryDestinationConfig;
-
   /// Destination connection profile resource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
   final String destinationConnectionProfile;
-
   /// A configuration for how data should be loaded to Cloud Storage.
   final GcsDestinationConfig? gcsDestinationConfig;
 
@@ -25,32 +23,19 @@ class DestinationConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final bigqueryDestinationConfigValue = bigqueryDestinationConfig;
-    if (bigqueryDestinationConfigValue != null) {
-      map['bigqueryDestinationConfig'] = bigqueryDestinationConfigValue.toMap();
-    }
-    map['destinationConnectionProfile'] = destinationConnectionProfile;
-    final gcsDestinationConfigValue = gcsDestinationConfig;
-    if (gcsDestinationConfigValue != null) {
-      map['gcsDestinationConfig'] = gcsDestinationConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'bigqueryDestinationConfig': ?bigqueryDestinationConfig == null ? null : bigqueryDestinationConfig!.toMap(),
+      'destinationConnectionProfile': destinationConnectionProfile,
+      'gcsDestinationConfig': ?gcsDestinationConfig == null ? null : gcsDestinationConfig!.toMap(),
+    };
   }
 
   factory DestinationConfig.fromMap(Map<String, dynamic> map) {
     return DestinationConfig(
-      bigqueryDestinationConfig: map['bigqueryDestinationConfig'] == null
-          ? null
-          : BigQueryDestinationConfig.fromMap(
-              (map['bigqueryDestinationConfig'] as Map)
-                  .cast<String, dynamic>()),
-      destinationConnectionProfile:
-          map['destinationConnectionProfile'] as String,
-      gcsDestinationConfig: map['gcsDestinationConfig'] == null
-          ? null
-          : GcsDestinationConfig.fromMap(
-              (map['gcsDestinationConfig'] as Map).cast<String, dynamic>()),
+      bigqueryDestinationConfig: map['bigqueryDestinationConfig'] == null ? null : BigQueryDestinationConfig.fromMap((map['bigqueryDestinationConfig'] as Map).cast<String, dynamic>()),
+      destinationConnectionProfile: map['destinationConnectionProfile'] as String,
+      gcsDestinationConfig: map['gcsDestinationConfig'] == null ? null : GcsDestinationConfig.fromMap((map['gcsDestinationConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

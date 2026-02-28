@@ -22,21 +22,19 @@ class GetEvaluationArgs {
     required String evaluationId,
     required String location,
     String? project,
-  })  : conversationModelId = pulumi.Input.asInput<String>(conversationModelId),
-        evaluationId = pulumi.Input.asInput<String>(evaluationId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      conversationModelId = pulumi.Input.asInput<String>(conversationModelId),
+      evaluationId = pulumi.Input.asInput<String>(evaluationId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['conversationModelId'] = conversationModelId;
-    map['evaluationId'] = evaluationId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'conversationModelId': conversationModelId,
+      'evaluationId': evaluationId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetEvaluationArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetEvaluationArgs {
     );
   }
 }
+

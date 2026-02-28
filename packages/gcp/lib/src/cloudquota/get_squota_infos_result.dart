@@ -8,7 +8,6 @@ class GetSQuotaInfosResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String parent;
-
   /// (Output) The list of QuotaInfo.
   final List<GetSQuotaInfosQuotaInfo> quotaInfos;
   final String service;
@@ -26,25 +25,21 @@ class GetSQuotaInfosResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['parent'] = parent;
-    map['quotaInfos'] =
-        pulumi.Input.encodeList<GetSQuotaInfosQuotaInfo, Map<String, dynamic>>(
-            quotaInfos, (value) => value.toMap());
-    map['service'] = service;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'parent': parent,
+      'quotaInfos': pulumi.Input.encodeList<GetSQuotaInfosQuotaInfo, Map<String, dynamic>>(quotaInfos, (value) => value.toMap()),
+      'service': service,
+    };
   }
 
   factory GetSQuotaInfosResult.fromMap(Map<String, dynamic> map) {
     return GetSQuotaInfosResult(
       id: map['id'] as String,
       parent: map['parent'] as String,
-      quotaInfos: pulumi.Input.decodeList<GetSQuotaInfosQuotaInfo>(
-          map['quotaInfos'],
-          (value) => GetSQuotaInfosQuotaInfo.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      quotaInfos: pulumi.Input.decodeList<GetSQuotaInfosQuotaInfo>(map['quotaInfos'], (value) => GetSQuotaInfosQuotaInfo.fromMap((value as Map).cast<String, dynamic>())),
       service: map['service'] as String,
     );
   }
 }
+

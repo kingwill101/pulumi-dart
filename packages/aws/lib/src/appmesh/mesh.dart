@@ -225,31 +225,22 @@ import 'mesh_spec.dart';
 class Mesh extends pulumi.CustomResource {
   /// ARN of the service mesh.
   late final pulumi.Output<String> arn;
-
   /// Creation date of the service mesh.
   late final pulumi.Output<String> createdDate;
-
   /// Last update date of the service mesh.
   late final pulumi.Output<String> lastUpdatedDate;
-
   /// AWS account ID of the service mesh's owner.
   late final pulumi.Output<String> meshOwner;
-
   /// Name to use for the service mesh. Must be between 1 and 255 characters in length.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Resource owner's AWS account ID.
   late final pulumi.Output<String> resourceOwner;
-
   /// Service mesh specification to apply.
   late final pulumi.Output<MeshSpec?> spec;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 

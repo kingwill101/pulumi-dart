@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Describes authentication configuration that uses a Google account.
 class GoogleAccountWebsecurityscannerV1alpha {
   /// Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
   final String password;
-
   /// The user name of the Google account.
   final String username;
 
@@ -17,17 +17,17 @@ class GoogleAccountWebsecurityscannerV1alpha {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['password'] = password;
-    map['username'] = username;
-    return map;
+    return <String, dynamic>{
+      'password': password,
+      'username': username,
+    };
   }
 
-  factory GoogleAccountWebsecurityscannerV1alpha.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleAccountWebsecurityscannerV1alpha.fromMap(Map<String, dynamic> map) {
     return GoogleAccountWebsecurityscannerV1alpha(
       password: map['password'] as String,
       username: map['username'] as String,
     );
   }
 }
+

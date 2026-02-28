@@ -18,3 +18,4 @@ enum NodeHealthTpuV2alpha1 {
     throw ArgumentError('Unknown NodeHealthTpuV2alpha1 value: $value');
   }
 }
+

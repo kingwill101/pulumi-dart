@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Message to capture group information
 class GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse {
   /// The group email id
@@ -12,15 +13,15 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['email'] = email;
-    return map;
+    return <String, dynamic>{
+      'email': email,
+    };
   }
 
-  factory GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse(
       email: map['email'] as String,
     );
   }
 }
+

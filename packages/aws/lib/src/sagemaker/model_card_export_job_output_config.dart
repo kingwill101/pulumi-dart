@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ModelCardExportJobOutputConfig {
   /// Amazon S3 output path.
   final String s3OutputPath;
@@ -11,9 +12,9 @@ class ModelCardExportJobOutputConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['s3OutputPath'] = s3OutputPath;
-    return map;
+    return <String, dynamic>{
+      's3OutputPath': s3OutputPath,
+    };
   }
 
   factory ModelCardExportJobOutputConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class ModelCardExportJobOutputConfig {
     );
   }
 }
+

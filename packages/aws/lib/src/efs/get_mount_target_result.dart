@@ -1,48 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getMountTarget.
 class GetMountTargetResult {
   final String? accessPointId;
-
   /// The unique and consistent identifier of the Availability Zone (AZ) that the mount target resides in.
   final String availabilityZoneId;
-
   /// The name of the Availability Zone (AZ) that the mount target resides in.
   final String availabilityZoneName;
-
   /// DNS name for the EFS file system.
   final String dnsName;
-
   /// Amazon Resource Name of the file system for which the mount target is intended.
   final String fileSystemArn;
   final String fileSystemId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Address at which the file system may be mounted via the mount target.
   final String ipAddress;
-
   /// IP address type for the mount target.
   final String ipAddressType;
-
   /// IPv6 address at which the file system may be mounted via the mount target.
   final String ipv6Address;
-
   /// The DNS name for the given subnet/AZ per [documented convention](http://docs.aws.amazon.com/efs/latest/ug/mounting-fs-mount-cmd-dns-name.html).
   final String mountTargetDnsName;
   final String mountTargetId;
-
   /// The ID of the network interface that Amazon EFS created when it created the mount target.
   final String networkInterfaceId;
-
   /// AWS account ID that owns the resource.
   final String ownerId;
   final String region;
-
   /// List of VPC security group IDs attached to the mount target.
   final List<String> securityGroups;
-
   /// ID of the mount target's subnet.
   final String subnetId;
 
@@ -85,34 +73,30 @@ class GetMountTargetResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final accessPointIdValue = accessPointId;
-    if (accessPointIdValue != null) {
-      map['accessPointId'] = accessPointIdValue;
-    }
-    map['availabilityZoneId'] = availabilityZoneId;
-    map['availabilityZoneName'] = availabilityZoneName;
-    map['dnsName'] = dnsName;
-    map['fileSystemArn'] = fileSystemArn;
-    map['fileSystemId'] = fileSystemId;
-    map['id'] = id;
-    map['ipAddress'] = ipAddress;
-    map['ipAddressType'] = ipAddressType;
-    map['ipv6Address'] = ipv6Address;
-    map['mountTargetDnsName'] = mountTargetDnsName;
-    map['mountTargetId'] = mountTargetId;
-    map['networkInterfaceId'] = networkInterfaceId;
-    map['ownerId'] = ownerId;
-    map['region'] = region;
-    map['securityGroups'] = securityGroups;
-    map['subnetId'] = subnetId;
-    return map;
+    return <String, dynamic>{
+      'accessPointId': ?accessPointId,
+      'availabilityZoneId': availabilityZoneId,
+      'availabilityZoneName': availabilityZoneName,
+      'dnsName': dnsName,
+      'fileSystemArn': fileSystemArn,
+      'fileSystemId': fileSystemId,
+      'id': id,
+      'ipAddress': ipAddress,
+      'ipAddressType': ipAddressType,
+      'ipv6Address': ipv6Address,
+      'mountTargetDnsName': mountTargetDnsName,
+      'mountTargetId': mountTargetId,
+      'networkInterfaceId': networkInterfaceId,
+      'ownerId': ownerId,
+      'region': region,
+      'securityGroups': securityGroups,
+      'subnetId': subnetId,
+    };
   }
 
   factory GetMountTargetResult.fromMap(Map<String, dynamic> map) {
     return GetMountTargetResult(
-      accessPointId:
-          map['accessPointId'] == null ? null : map['accessPointId'] as String,
+      accessPointId: map['accessPointId'] == null ? null : map['accessPointId'] as String,
       availabilityZoneId: map['availabilityZoneId'] as String,
       availabilityZoneName: map['availabilityZoneName'] as String,
       dnsName: map['dnsName'] as String,
@@ -132,3 +116,4 @@ class GetMountTargetResult {
     );
   }
 }
+

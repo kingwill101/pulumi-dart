@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WorkstationConfigHostGceInstanceConfidentialInstanceConfig {
   /// Whether the instance has confidential compute enabled.
   final bool? enableConfidentialCompute;
@@ -11,20 +12,15 @@ class WorkstationConfigHostGceInstanceConfidentialInstanceConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enableConfidentialComputeValue = enableConfidentialCompute;
-    if (enableConfidentialComputeValue != null) {
-      map['enableConfidentialCompute'] = enableConfidentialComputeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enableConfidentialCompute': ?enableConfidentialCompute,
+    };
   }
 
-  factory WorkstationConfigHostGceInstanceConfidentialInstanceConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory WorkstationConfigHostGceInstanceConfidentialInstanceConfig.fromMap(Map<String, dynamic> map) {
     return WorkstationConfigHostGceInstanceConfidentialInstanceConfig(
-      enableConfidentialCompute: map['enableConfidentialCompute'] == null
-          ? null
-          : map['enableConfidentialCompute'] as bool,
+      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : map['enableConfidentialCompute'] as bool,
     );
   }
 }
+

@@ -5,14 +5,11 @@ import 'urlmap_path_matcher_route_rule_route_action_retry_policy_per_try_timeout
 class URLMapPathMatcherRouteRuleRouteActionRetryPolicy {
   /// Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
   final int numRetries;
-
   /// Specifies a non-zero timeout per retry attempt.
   /// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
   /// will use the largest timeout among all backend services associated with the route.
   /// Structure is documented below.
-  final URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout?
-      perTryTimeout;
-
+  final URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout? perTryTimeout;
   /// Specfies one or more conditions when this retry rule applies. Valid values are:
   /// * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
   /// or if the backend service does not respond at all, example: disconnects, reset, read timeout,
@@ -41,30 +38,19 @@ class URLMapPathMatcherRouteRuleRouteActionRetryPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['numRetries'] = numRetries;
-    final perTryTimeoutValue = perTryTimeout;
-    if (perTryTimeoutValue != null) {
-      map['perTryTimeout'] = perTryTimeoutValue.toMap();
-    }
-    final retryConditionsValue = retryConditions;
-    if (retryConditionsValue != null) {
-      map['retryConditions'] = retryConditionsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'numRetries': numRetries,
+      'perTryTimeout': ?perTryTimeout == null ? null : perTryTimeout!.toMap(),
+      'retryConditions': ?retryConditions,
+    };
   }
 
-  factory URLMapPathMatcherRouteRuleRouteActionRetryPolicy.fromMap(
-      Map<String, dynamic> map) {
+  factory URLMapPathMatcherRouteRuleRouteActionRetryPolicy.fromMap(Map<String, dynamic> map) {
     return URLMapPathMatcherRouteRuleRouteActionRetryPolicy(
       numRetries: map['numRetries'] as int,
-      perTryTimeout: map['perTryTimeout'] == null
-          ? null
-          : URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout
-              .fromMap((map['perTryTimeout'] as Map).cast<String, dynamic>()),
-      retryConditions: map['retryConditions'] == null
-          ? null
-          : (map['retryConditions'] as List).cast<String>(),
+      perTryTimeout: map['perTryTimeout'] == null ? null : URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout.fromMap((map['perTryTimeout'] as Map).cast<String, dynamic>()),
+      retryConditions: map['retryConditions'] == null ? null : (map['retryConditions'] as List).cast<String>(),
     );
   }
 }
+

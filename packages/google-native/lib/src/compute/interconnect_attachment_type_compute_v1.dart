@@ -13,7 +13,7 @@ enum InterconnectAttachmentTypeComputeV1 {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown InterconnectAttachmentTypeComputeV1 value: $value');
+    throw ArgumentError('Unknown InterconnectAttachmentTypeComputeV1 value: $value');
   }
 }
+

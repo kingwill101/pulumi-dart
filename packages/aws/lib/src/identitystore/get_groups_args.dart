@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGroupsArgs {
   /// Identity Store ID associated with the Single Sign-On (SSO) Instance.
   final pulumi.Input<String> identityStoreId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -19,17 +18,15 @@ class GetGroupsArgs {
   GetGroupsArgs({
     required String identityStoreId,
     String? region,
-  })  : identityStoreId = pulumi.Input.asInput<String>(identityStoreId),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      identityStoreId = pulumi.Input.asInput<String>(identityStoreId),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['identityStoreId'] = identityStoreId;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'identityStoreId': identityStoreId,
+      'region': ?region,
+    };
   }
 
   factory GetGroupsArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +36,4 @@ class GetGroupsArgs {
     );
   }
 }
+

@@ -119,22 +119,16 @@ import 'thing_args.dart';
 class Thing extends pulumi.CustomResource {
   /// The ARN of the thing.
   late final pulumi.Output<String> arn;
-
   /// Map of attributes of the thing.
   late final pulumi.Output<Map<String, String>?> attributes;
-
   /// The default client ID.
   late final pulumi.Output<String> defaultClientId;
-
   /// The name of the thing.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The thing type name.
   late final pulumi.Output<String?> thingTypeName;
-
   /// The current version of the thing record in the registry.
   late final pulumi.Output<int> version;
 

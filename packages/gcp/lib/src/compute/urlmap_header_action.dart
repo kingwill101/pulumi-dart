@@ -8,15 +8,12 @@ class URLMapHeaderAction {
   /// Headers to add to a matching request prior to forwarding the request to the backendService.
   /// Structure is documented below.
   final List<URLMapHeaderActionRequestHeadersToAdd>? requestHeadersToAdds;
-
   /// A list of header names for headers that need to be removed from the request prior to
   /// forwarding the request to the backendService.
   final List<String>? requestHeadersToRemoves;
-
   /// Headers to add the response prior to sending the response back to the client.
   /// Structure is documented below.
   final List<URLMapHeaderActionResponseHeadersToAdd>? responseHeadersToAdds;
-
   /// A list of header names for headers that need to be removed from the response prior to sending the
   /// response back to the client.
   final List<String>? responseHeadersToRemoves;
@@ -34,50 +31,21 @@ class URLMapHeaderAction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final requestHeadersToAddsValue = requestHeadersToAdds;
-    if (requestHeadersToAddsValue != null) {
-      map['requestHeadersToAdds'] = pulumi.Input.encodeList<
-              URLMapHeaderActionRequestHeadersToAdd, Map<String, dynamic>>(
-          requestHeadersToAddsValue, (value) => value.toMap());
-    }
-    final requestHeadersToRemovesValue = requestHeadersToRemoves;
-    if (requestHeadersToRemovesValue != null) {
-      map['requestHeadersToRemoves'] = requestHeadersToRemovesValue;
-    }
-    final responseHeadersToAddsValue = responseHeadersToAdds;
-    if (responseHeadersToAddsValue != null) {
-      map['responseHeadersToAdds'] = pulumi.Input.encodeList<
-              URLMapHeaderActionResponseHeadersToAdd, Map<String, dynamic>>(
-          responseHeadersToAddsValue, (value) => value.toMap());
-    }
-    final responseHeadersToRemovesValue = responseHeadersToRemoves;
-    if (responseHeadersToRemovesValue != null) {
-      map['responseHeadersToRemoves'] = responseHeadersToRemovesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'requestHeadersToAdds': ?requestHeadersToAdds == null ? null : pulumi.Input.encodeList<URLMapHeaderActionRequestHeadersToAdd, Map<String, dynamic>>(requestHeadersToAdds!, (value) => value.toMap()),
+      'requestHeadersToRemoves': ?requestHeadersToRemoves,
+      'responseHeadersToAdds': ?responseHeadersToAdds == null ? null : pulumi.Input.encodeList<URLMapHeaderActionResponseHeadersToAdd, Map<String, dynamic>>(responseHeadersToAdds!, (value) => value.toMap()),
+      'responseHeadersToRemoves': ?responseHeadersToRemoves,
+    };
   }
 
   factory URLMapHeaderAction.fromMap(Map<String, dynamic> map) {
     return URLMapHeaderAction(
-      requestHeadersToAdds: map['requestHeadersToAdds'] == null
-          ? null
-          : pulumi.Input.decodeList<URLMapHeaderActionRequestHeadersToAdd>(
-              map['requestHeadersToAdds'],
-              (value) => URLMapHeaderActionRequestHeadersToAdd.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      requestHeadersToRemoves: map['requestHeadersToRemoves'] == null
-          ? null
-          : (map['requestHeadersToRemoves'] as List).cast<String>(),
-      responseHeadersToAdds: map['responseHeadersToAdds'] == null
-          ? null
-          : pulumi.Input.decodeList<URLMapHeaderActionResponseHeadersToAdd>(
-              map['responseHeadersToAdds'],
-              (value) => URLMapHeaderActionResponseHeadersToAdd.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      responseHeadersToRemoves: map['responseHeadersToRemoves'] == null
-          ? null
-          : (map['responseHeadersToRemoves'] as List).cast<String>(),
+      requestHeadersToAdds: map['requestHeadersToAdds'] == null ? null : pulumi.Input.decodeList<URLMapHeaderActionRequestHeadersToAdd>(map['requestHeadersToAdds'], (value) => URLMapHeaderActionRequestHeadersToAdd.fromMap((value as Map).cast<String, dynamic>())),
+      requestHeadersToRemoves: map['requestHeadersToRemoves'] == null ? null : (map['requestHeadersToRemoves'] as List).cast<String>(),
+      responseHeadersToAdds: map['responseHeadersToAdds'] == null ? null : pulumi.Input.decodeList<URLMapHeaderActionResponseHeadersToAdd>(map['responseHeadersToAdds'], (value) => URLMapHeaderActionResponseHeadersToAdd.fromMap((value as Map).cast<String, dynamic>())),
+      responseHeadersToRemoves: map['responseHeadersToRemoves'] == null ? null : (map['responseHeadersToRemoves'] as List).cast<String>(),
     );
   }
 }
+

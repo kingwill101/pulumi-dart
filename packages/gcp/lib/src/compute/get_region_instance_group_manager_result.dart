@@ -17,25 +17,20 @@ import 'get_region_instance_group_manager_version.dart';
 
 /// Result data returned by getRegionInstanceGroupManager.
 class GetRegionInstanceGroupManagerResult {
-  final List<GetRegionInstanceGroupManagerAllInstancesConfig>
-      allInstancesConfigs;
-  final List<GetRegionInstanceGroupManagerAutoHealingPolicy>
-      autoHealingPolicies;
+  final List<GetRegionInstanceGroupManagerAllInstancesConfig> allInstancesConfigs;
+  final List<GetRegionInstanceGroupManagerAutoHealingPolicy> autoHealingPolicies;
   final String baseInstanceName;
   final String creationTimestamp;
   final String description;
   final String distributionPolicyTargetShape;
   final List<String> distributionPolicyZones;
   final String fingerprint;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  final List<GetRegionInstanceGroupManagerInstanceFlexibilityPolicy>
-      instanceFlexibilityPolicies;
+  final List<GetRegionInstanceGroupManagerInstanceFlexibilityPolicy> instanceFlexibilityPolicies;
   final String instanceGroup;
   final int instanceGroupManagerId;
-  final List<GetRegionInstanceGroupManagerInstanceLifecyclePolicy>
-      instanceLifecyclePolicies;
+  final List<GetRegionInstanceGroupManagerInstanceLifecyclePolicy> instanceLifecyclePolicies;
   final String listManagedInstancesResults;
   final String? name;
   final List<GetRegionInstanceGroupManagerNamedPort> namedPorts;
@@ -45,10 +40,8 @@ class GetRegionInstanceGroupManagerResult {
   final String? selfLink;
   final List<GetRegionInstanceGroupManagerStandbyPolicy> standbyPolicies;
   final List<GetRegionInstanceGroupManagerStatefulDisk> statefulDisks;
-  final List<GetRegionInstanceGroupManagerStatefulExternalIp>
-      statefulExternalIps;
-  final List<GetRegionInstanceGroupManagerStatefulInternalIp>
-      statefulInternalIps;
+  final List<GetRegionInstanceGroupManagerStatefulExternalIp> statefulExternalIps;
+  final List<GetRegionInstanceGroupManagerStatefulInternalIp> statefulInternalIps;
   final List<GetRegionInstanceGroupManagerStatus> statuses;
   final List<String> targetPools;
   final int targetSize;
@@ -130,171 +123,79 @@ class GetRegionInstanceGroupManagerResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allInstancesConfigs'] = pulumi.Input.encodeList<
-        GetRegionInstanceGroupManagerAllInstancesConfig,
-        Map<String, dynamic>>(allInstancesConfigs, (value) => value.toMap());
-    map['autoHealingPolicies'] = pulumi.Input.encodeList<
-        GetRegionInstanceGroupManagerAutoHealingPolicy,
-        Map<String, dynamic>>(autoHealingPolicies, (value) => value.toMap());
-    map['baseInstanceName'] = baseInstanceName;
-    map['creationTimestamp'] = creationTimestamp;
-    map['description'] = description;
-    map['distributionPolicyTargetShape'] = distributionPolicyTargetShape;
-    map['distributionPolicyZones'] = distributionPolicyZones;
-    map['fingerprint'] = fingerprint;
-    map['id'] = id;
-    map['instanceFlexibilityPolicies'] = pulumi.Input.encodeList<
-            GetRegionInstanceGroupManagerInstanceFlexibilityPolicy,
-            Map<String, dynamic>>(
-        instanceFlexibilityPolicies, (value) => value.toMap());
-    map['instanceGroup'] = instanceGroup;
-    map['instanceGroupManagerId'] = instanceGroupManagerId;
-    map['instanceLifecyclePolicies'] = pulumi.Input.encodeList<
-            GetRegionInstanceGroupManagerInstanceLifecyclePolicy,
-            Map<String, dynamic>>(
-        instanceLifecyclePolicies, (value) => value.toMap());
-    map['listManagedInstancesResults'] = listManagedInstancesResults;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    map['namedPorts'] = pulumi.Input.encodeList<
-        GetRegionInstanceGroupManagerNamedPort,
-        Map<String, dynamic>>(namedPorts, (value) => value.toMap());
-    map['params'] = pulumi.Input.encodeList<GetRegionInstanceGroupManagerParam,
-        Map<String, dynamic>>(params, (value) => value.toMap());
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final selfLinkValue = selfLink;
-    if (selfLinkValue != null) {
-      map['selfLink'] = selfLinkValue;
-    }
-    map['standbyPolicies'] = pulumi.Input.encodeList<
-        GetRegionInstanceGroupManagerStandbyPolicy,
-        Map<String, dynamic>>(standbyPolicies, (value) => value.toMap());
-    map['statefulDisks'] = pulumi.Input.encodeList<
-        GetRegionInstanceGroupManagerStatefulDisk,
-        Map<String, dynamic>>(statefulDisks, (value) => value.toMap());
-    map['statefulExternalIps'] = pulumi.Input.encodeList<
-        GetRegionInstanceGroupManagerStatefulExternalIp,
-        Map<String, dynamic>>(statefulExternalIps, (value) => value.toMap());
-    map['statefulInternalIps'] = pulumi.Input.encodeList<
-        GetRegionInstanceGroupManagerStatefulInternalIp,
-        Map<String, dynamic>>(statefulInternalIps, (value) => value.toMap());
-    map['statuses'] = pulumi.Input.encodeList<
-        GetRegionInstanceGroupManagerStatus,
-        Map<String, dynamic>>(statuses, (value) => value.toMap());
-    map['targetPools'] = targetPools;
-    map['targetSize'] = targetSize;
-    map['targetStoppedSize'] = targetStoppedSize;
-    map['targetSuspendedSize'] = targetSuspendedSize;
-    map['updatePolicies'] = pulumi.Input.encodeList<
-        GetRegionInstanceGroupManagerUpdatePolicy,
-        Map<String, dynamic>>(updatePolicies, (value) => value.toMap());
-    map['versions'] = pulumi.Input.encodeList<
-        GetRegionInstanceGroupManagerVersion,
-        Map<String, dynamic>>(versions, (value) => value.toMap());
-    map['waitForInstances'] = waitForInstances;
-    map['waitForInstancesStatus'] = waitForInstancesStatus;
-    return map;
+    return <String, dynamic>{
+      'allInstancesConfigs': pulumi.Input.encodeList<GetRegionInstanceGroupManagerAllInstancesConfig, Map<String, dynamic>>(allInstancesConfigs, (value) => value.toMap()),
+      'autoHealingPolicies': pulumi.Input.encodeList<GetRegionInstanceGroupManagerAutoHealingPolicy, Map<String, dynamic>>(autoHealingPolicies, (value) => value.toMap()),
+      'baseInstanceName': baseInstanceName,
+      'creationTimestamp': creationTimestamp,
+      'description': description,
+      'distributionPolicyTargetShape': distributionPolicyTargetShape,
+      'distributionPolicyZones': distributionPolicyZones,
+      'fingerprint': fingerprint,
+      'id': id,
+      'instanceFlexibilityPolicies': pulumi.Input.encodeList<GetRegionInstanceGroupManagerInstanceFlexibilityPolicy, Map<String, dynamic>>(instanceFlexibilityPolicies, (value) => value.toMap()),
+      'instanceGroup': instanceGroup,
+      'instanceGroupManagerId': instanceGroupManagerId,
+      'instanceLifecyclePolicies': pulumi.Input.encodeList<GetRegionInstanceGroupManagerInstanceLifecyclePolicy, Map<String, dynamic>>(instanceLifecyclePolicies, (value) => value.toMap()),
+      'listManagedInstancesResults': listManagedInstancesResults,
+      'name': ?name,
+      'namedPorts': pulumi.Input.encodeList<GetRegionInstanceGroupManagerNamedPort, Map<String, dynamic>>(namedPorts, (value) => value.toMap()),
+      'params': pulumi.Input.encodeList<GetRegionInstanceGroupManagerParam, Map<String, dynamic>>(params, (value) => value.toMap()),
+      'project': ?project,
+      'region': ?region,
+      'selfLink': ?selfLink,
+      'standbyPolicies': pulumi.Input.encodeList<GetRegionInstanceGroupManagerStandbyPolicy, Map<String, dynamic>>(standbyPolicies, (value) => value.toMap()),
+      'statefulDisks': pulumi.Input.encodeList<GetRegionInstanceGroupManagerStatefulDisk, Map<String, dynamic>>(statefulDisks, (value) => value.toMap()),
+      'statefulExternalIps': pulumi.Input.encodeList<GetRegionInstanceGroupManagerStatefulExternalIp, Map<String, dynamic>>(statefulExternalIps, (value) => value.toMap()),
+      'statefulInternalIps': pulumi.Input.encodeList<GetRegionInstanceGroupManagerStatefulInternalIp, Map<String, dynamic>>(statefulInternalIps, (value) => value.toMap()),
+      'statuses': pulumi.Input.encodeList<GetRegionInstanceGroupManagerStatus, Map<String, dynamic>>(statuses, (value) => value.toMap()),
+      'targetPools': targetPools,
+      'targetSize': targetSize,
+      'targetStoppedSize': targetStoppedSize,
+      'targetSuspendedSize': targetSuspendedSize,
+      'updatePolicies': pulumi.Input.encodeList<GetRegionInstanceGroupManagerUpdatePolicy, Map<String, dynamic>>(updatePolicies, (value) => value.toMap()),
+      'versions': pulumi.Input.encodeList<GetRegionInstanceGroupManagerVersion, Map<String, dynamic>>(versions, (value) => value.toMap()),
+      'waitForInstances': waitForInstances,
+      'waitForInstancesStatus': waitForInstancesStatus,
+    };
   }
 
-  factory GetRegionInstanceGroupManagerResult.fromMap(
-      Map<String, dynamic> map) {
+  factory GetRegionInstanceGroupManagerResult.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceGroupManagerResult(
-      allInstancesConfigs: pulumi.Input.decodeList<
-              GetRegionInstanceGroupManagerAllInstancesConfig>(
-          map['allInstancesConfigs'],
-          (value) => GetRegionInstanceGroupManagerAllInstancesConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      autoHealingPolicies: pulumi.Input.decodeList<
-              GetRegionInstanceGroupManagerAutoHealingPolicy>(
-          map['autoHealingPolicies'],
-          (value) => GetRegionInstanceGroupManagerAutoHealingPolicy.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      allInstancesConfigs: pulumi.Input.decodeList<GetRegionInstanceGroupManagerAllInstancesConfig>(map['allInstancesConfigs'], (value) => GetRegionInstanceGroupManagerAllInstancesConfig.fromMap((value as Map).cast<String, dynamic>())),
+      autoHealingPolicies: pulumi.Input.decodeList<GetRegionInstanceGroupManagerAutoHealingPolicy>(map['autoHealingPolicies'], (value) => GetRegionInstanceGroupManagerAutoHealingPolicy.fromMap((value as Map).cast<String, dynamic>())),
       baseInstanceName: map['baseInstanceName'] as String,
       creationTimestamp: map['creationTimestamp'] as String,
       description: map['description'] as String,
-      distributionPolicyTargetShape:
-          map['distributionPolicyTargetShape'] as String,
-      distributionPolicyZones:
-          (map['distributionPolicyZones'] as List).cast<String>(),
+      distributionPolicyTargetShape: map['distributionPolicyTargetShape'] as String,
+      distributionPolicyZones: (map['distributionPolicyZones'] as List).cast<String>(),
       fingerprint: map['fingerprint'] as String,
       id: map['id'] as String,
-      instanceFlexibilityPolicies: pulumi.Input.decodeList<
-              GetRegionInstanceGroupManagerInstanceFlexibilityPolicy>(
-          map['instanceFlexibilityPolicies'],
-          (value) =>
-              GetRegionInstanceGroupManagerInstanceFlexibilityPolicy.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      instanceFlexibilityPolicies: pulumi.Input.decodeList<GetRegionInstanceGroupManagerInstanceFlexibilityPolicy>(map['instanceFlexibilityPolicies'], (value) => GetRegionInstanceGroupManagerInstanceFlexibilityPolicy.fromMap((value as Map).cast<String, dynamic>())),
       instanceGroup: map['instanceGroup'] as String,
       instanceGroupManagerId: map['instanceGroupManagerId'] as int,
-      instanceLifecyclePolicies: pulumi.Input.decodeList<
-              GetRegionInstanceGroupManagerInstanceLifecyclePolicy>(
-          map['instanceLifecyclePolicies'],
-          (value) =>
-              GetRegionInstanceGroupManagerInstanceLifecyclePolicy.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      instanceLifecyclePolicies: pulumi.Input.decodeList<GetRegionInstanceGroupManagerInstanceLifecyclePolicy>(map['instanceLifecyclePolicies'], (value) => GetRegionInstanceGroupManagerInstanceLifecyclePolicy.fromMap((value as Map).cast<String, dynamic>())),
       listManagedInstancesResults: map['listManagedInstancesResults'] as String,
       name: map['name'] == null ? null : map['name'] as String,
-      namedPorts:
-          pulumi.Input.decodeList<GetRegionInstanceGroupManagerNamedPort>(
-              map['namedPorts'],
-              (value) => GetRegionInstanceGroupManagerNamedPort.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      params: pulumi.Input.decodeList<GetRegionInstanceGroupManagerParam>(
-          map['params'],
-          (value) => GetRegionInstanceGroupManagerParam.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      namedPorts: pulumi.Input.decodeList<GetRegionInstanceGroupManagerNamedPort>(map['namedPorts'], (value) => GetRegionInstanceGroupManagerNamedPort.fromMap((value as Map).cast<String, dynamic>())),
+      params: pulumi.Input.decodeList<GetRegionInstanceGroupManagerParam>(map['params'], (value) => GetRegionInstanceGroupManagerParam.fromMap((value as Map).cast<String, dynamic>())),
       project: map['project'] == null ? null : map['project'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       selfLink: map['selfLink'] == null ? null : map['selfLink'] as String,
-      standbyPolicies:
-          pulumi.Input.decodeList<GetRegionInstanceGroupManagerStandbyPolicy>(
-              map['standbyPolicies'],
-              (value) => GetRegionInstanceGroupManagerStandbyPolicy.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      statefulDisks:
-          pulumi.Input.decodeList<GetRegionInstanceGroupManagerStatefulDisk>(
-              map['statefulDisks'],
-              (value) => GetRegionInstanceGroupManagerStatefulDisk.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      statefulExternalIps: pulumi.Input.decodeList<
-              GetRegionInstanceGroupManagerStatefulExternalIp>(
-          map['statefulExternalIps'],
-          (value) => GetRegionInstanceGroupManagerStatefulExternalIp.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      statefulInternalIps: pulumi.Input.decodeList<
-              GetRegionInstanceGroupManagerStatefulInternalIp>(
-          map['statefulInternalIps'],
-          (value) => GetRegionInstanceGroupManagerStatefulInternalIp.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      statuses: pulumi.Input.decodeList<GetRegionInstanceGroupManagerStatus>(
-          map['statuses'],
-          (value) => GetRegionInstanceGroupManagerStatus.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      standbyPolicies: pulumi.Input.decodeList<GetRegionInstanceGroupManagerStandbyPolicy>(map['standbyPolicies'], (value) => GetRegionInstanceGroupManagerStandbyPolicy.fromMap((value as Map).cast<String, dynamic>())),
+      statefulDisks: pulumi.Input.decodeList<GetRegionInstanceGroupManagerStatefulDisk>(map['statefulDisks'], (value) => GetRegionInstanceGroupManagerStatefulDisk.fromMap((value as Map).cast<String, dynamic>())),
+      statefulExternalIps: pulumi.Input.decodeList<GetRegionInstanceGroupManagerStatefulExternalIp>(map['statefulExternalIps'], (value) => GetRegionInstanceGroupManagerStatefulExternalIp.fromMap((value as Map).cast<String, dynamic>())),
+      statefulInternalIps: pulumi.Input.decodeList<GetRegionInstanceGroupManagerStatefulInternalIp>(map['statefulInternalIps'], (value) => GetRegionInstanceGroupManagerStatefulInternalIp.fromMap((value as Map).cast<String, dynamic>())),
+      statuses: pulumi.Input.decodeList<GetRegionInstanceGroupManagerStatus>(map['statuses'], (value) => GetRegionInstanceGroupManagerStatus.fromMap((value as Map).cast<String, dynamic>())),
       targetPools: (map['targetPools'] as List).cast<String>(),
       targetSize: map['targetSize'] as int,
       targetStoppedSize: map['targetStoppedSize'] as int,
       targetSuspendedSize: map['targetSuspendedSize'] as int,
-      updatePolicies:
-          pulumi.Input.decodeList<GetRegionInstanceGroupManagerUpdatePolicy>(
-              map['updatePolicies'],
-              (value) => GetRegionInstanceGroupManagerUpdatePolicy.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      versions: pulumi.Input.decodeList<GetRegionInstanceGroupManagerVersion>(
-          map['versions'],
-          (value) => GetRegionInstanceGroupManagerVersion.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      updatePolicies: pulumi.Input.decodeList<GetRegionInstanceGroupManagerUpdatePolicy>(map['updatePolicies'], (value) => GetRegionInstanceGroupManagerUpdatePolicy.fromMap((value as Map).cast<String, dynamic>())),
+      versions: pulumi.Input.decodeList<GetRegionInstanceGroupManagerVersion>(map['versions'], (value) => GetRegionInstanceGroupManagerVersion.fromMap((value as Map).cast<String, dynamic>())),
       waitForInstances: map['waitForInstances'] as bool,
       waitForInstancesStatus: map['waitForInstancesStatus'] as String,
     );
   }
 }
+

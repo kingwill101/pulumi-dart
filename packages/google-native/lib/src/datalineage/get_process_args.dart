@@ -19,19 +19,17 @@ class GetProcessArgs {
     required String location,
     required String processId,
     String? project,
-  })  : location = pulumi.Input.asInput<String>(location),
-        processId = pulumi.Input.asInput<String>(processId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      processId = pulumi.Input.asInput<String>(processId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    map['processId'] = processId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'processId': processId,
+      'project': ?project,
+    };
   }
 
   factory GetProcessArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetProcessArgs {
     );
   }
 }
+

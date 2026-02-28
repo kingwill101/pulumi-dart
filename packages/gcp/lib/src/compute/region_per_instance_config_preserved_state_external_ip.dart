@@ -7,10 +7,8 @@ class RegionPerInstanceConfigPreservedStateExternalIp {
   /// Default value is `NEVER`.
   /// Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
   final String? autoDelete;
-
   /// The identifier for this object. Format specified above.
   final String interfaceName;
-
   /// Ip address representation
   /// Structure is documented below.
   final RegionPerInstanceConfigPreservedStateExternalIpIpAddress? ipAddress;
@@ -26,29 +24,19 @@ class RegionPerInstanceConfigPreservedStateExternalIp {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final autoDeleteValue = autoDelete;
-    if (autoDeleteValue != null) {
-      map['autoDelete'] = autoDeleteValue;
-    }
-    map['interfaceName'] = interfaceName;
-    final ipAddressValue = ipAddress;
-    if (ipAddressValue != null) {
-      map['ipAddress'] = ipAddressValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'autoDelete': ?autoDelete,
+      'interfaceName': interfaceName,
+      'ipAddress': ?ipAddress == null ? null : ipAddress!.toMap(),
+    };
   }
 
-  factory RegionPerInstanceConfigPreservedStateExternalIp.fromMap(
-      Map<String, dynamic> map) {
+  factory RegionPerInstanceConfigPreservedStateExternalIp.fromMap(Map<String, dynamic> map) {
     return RegionPerInstanceConfigPreservedStateExternalIp(
-      autoDelete:
-          map['autoDelete'] == null ? null : map['autoDelete'] as String,
+      autoDelete: map['autoDelete'] == null ? null : map['autoDelete'] as String,
       interfaceName: map['interfaceName'] as String,
-      ipAddress: map['ipAddress'] == null
-          ? null
-          : RegionPerInstanceConfigPreservedStateExternalIpIpAddress.fromMap(
-              (map['ipAddress'] as Map).cast<String, dynamic>()),
+      ipAddress: map['ipAddress'] == null ? null : RegionPerInstanceConfigPreservedStateExternalIpIpAddress.fromMap((map['ipAddress'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

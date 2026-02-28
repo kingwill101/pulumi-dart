@@ -25,23 +25,21 @@ class GetVersionDialogflowV3Args {
     required String location,
     String? project,
     required String versionId,
-  })  : agentId = pulumi.Input.asInput<String>(agentId),
-        flowId = pulumi.Input.asInput<String>(flowId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        versionId = pulumi.Input.asInput<String>(versionId);
+  }) :
+      agentId = pulumi.Input.asInput<String>(agentId),
+      flowId = pulumi.Input.asInput<String>(flowId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      versionId = pulumi.Input.asInput<String>(versionId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['agentId'] = agentId;
-    map['flowId'] = flowId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['versionId'] = versionId;
-    return map;
+    return <String, dynamic>{
+      'agentId': agentId,
+      'flowId': flowId,
+      'location': location,
+      'project': ?project,
+      'versionId': versionId,
+    };
   }
 
   factory GetVersionDialogflowV3Args.fromMap(Map<String, dynamic> map) {
@@ -54,3 +52,4 @@ class GetVersionDialogflowV3Args {
     );
   }
 }
+

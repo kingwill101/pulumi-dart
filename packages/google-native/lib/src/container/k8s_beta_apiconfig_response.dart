@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// K8sBetaAPIConfig , configuration for beta APIs
 class K8sBetaAPIConfigResponse {
   /// Enabled k8s beta APIs.
@@ -12,9 +13,9 @@ class K8sBetaAPIConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabledApis'] = enabledApis;
-    return map;
+    return <String, dynamic>{
+      'enabledApis': enabledApis,
+    };
   }
 
   factory K8sBetaAPIConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class K8sBetaAPIConfigResponse {
     );
   }
 }
+

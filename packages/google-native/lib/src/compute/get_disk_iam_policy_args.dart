@@ -22,36 +22,28 @@ class GetDiskIamPolicyArgs {
     String? project,
     required String resource,
     required String zone,
-  })  : optionsRequestedPolicyVersion =
-            pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        resource = pulumi.Input.asInput<String>(resource),
-        zone = pulumi.Input.asInput<String>(zone);
+  }) :
+      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      resource = pulumi.Input.asInput<String>(resource),
+      zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final optionsRequestedPolicyVersionValue = optionsRequestedPolicyVersion;
-    if (optionsRequestedPolicyVersionValue != null) {
-      map['optionsRequestedPolicyVersion'] = optionsRequestedPolicyVersionValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['resource'] = resource;
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'optionsRequestedPolicyVersion': ?optionsRequestedPolicyVersion,
+      'project': ?project,
+      'resource': resource,
+      'zone': zone,
+    };
   }
 
   factory GetDiskIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetDiskIamPolicyArgs(
-      optionsRequestedPolicyVersion:
-          map['optionsRequestedPolicyVersion'] == null
-              ? null
-              : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       resource: map['resource'] as String,
       zone: map['zone'] as String,
     );
   }
 }
+

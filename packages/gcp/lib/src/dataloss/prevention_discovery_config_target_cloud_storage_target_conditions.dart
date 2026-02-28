@@ -5,12 +5,9 @@ import 'prevention_discovery_config_target_cloud_storage_target_conditions_cloud
 class PreventionDiscoveryConfigTargetCloudStorageTargetConditions {
   /// Cloud Storage conditions.
   /// Structure is documented below.
-  final PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditions?
-      cloudStorageConditions;
-
+  final PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditions? cloudStorageConditions;
   /// File store must have been created after this date. Used to avoid backfilling. A timestamp in RFC3339 UTC "Zulu" format with nanosecond resolution and upto nine fractional digits.
   final String? createdAfter;
-
   /// Duration format.  Minimum age a resource must be before a profile can be generated. Value must be 1 hour or greater. Minimum age is not supported for Azure Blob Storage containers.
   final String? minAge;
 
@@ -25,33 +22,19 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetConditions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cloudStorageConditionsValue = cloudStorageConditions;
-    if (cloudStorageConditionsValue != null) {
-      map['cloudStorageConditions'] = cloudStorageConditionsValue.toMap();
-    }
-    final createdAfterValue = createdAfter;
-    if (createdAfterValue != null) {
-      map['createdAfter'] = createdAfterValue;
-    }
-    final minAgeValue = minAge;
-    if (minAgeValue != null) {
-      map['minAge'] = minAgeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cloudStorageConditions': ?cloudStorageConditions == null ? null : cloudStorageConditions!.toMap(),
+      'createdAfter': ?createdAfter,
+      'minAge': ?minAge,
+    };
   }
 
-  factory PreventionDiscoveryConfigTargetCloudStorageTargetConditions.fromMap(
-      Map<String, dynamic> map) {
+  factory PreventionDiscoveryConfigTargetCloudStorageTargetConditions.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetCloudStorageTargetConditions(
-      cloudStorageConditions: map['cloudStorageConditions'] == null
-          ? null
-          : PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditions
-              .fromMap((map['cloudStorageConditions'] as Map)
-                  .cast<String, dynamic>()),
-      createdAfter:
-          map['createdAfter'] == null ? null : map['createdAfter'] as String,
+      cloudStorageConditions: map['cloudStorageConditions'] == null ? null : PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditions.fromMap((map['cloudStorageConditions'] as Map).cast<String, dynamic>()),
+      createdAfter: map['createdAfter'] == null ? null : map['createdAfter'] as String,
       minAge: map['minAge'] == null ? null : map['minAge'] as String,
     );
   }
 }
+

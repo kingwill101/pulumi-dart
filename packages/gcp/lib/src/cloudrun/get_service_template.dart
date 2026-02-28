@@ -13,7 +13,6 @@ class GetServiceTemplate {
   /// connections for the revision, use the "run.googleapis.com/cloudsql-instances"
   /// annotation key.
   final List<GetServiceTemplateMetadata> metadatas;
-
   /// RevisionSpec holds the desired state of the Revision (from the client).
   final List<GetServiceTemplateSpec> specs;
 
@@ -26,25 +25,17 @@ class GetServiceTemplate {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['metadatas'] = pulumi.Input.encodeList<GetServiceTemplateMetadata,
-        Map<String, dynamic>>(metadatas, (value) => value.toMap());
-    map['specs'] =
-        pulumi.Input.encodeList<GetServiceTemplateSpec, Map<String, dynamic>>(
-            specs, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'metadatas': pulumi.Input.encodeList<GetServiceTemplateMetadata, Map<String, dynamic>>(metadatas, (value) => value.toMap()),
+      'specs': pulumi.Input.encodeList<GetServiceTemplateSpec, Map<String, dynamic>>(specs, (value) => value.toMap()),
+    };
   }
 
   factory GetServiceTemplate.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplate(
-      metadatas: pulumi.Input.decodeList<GetServiceTemplateMetadata>(
-          map['metadatas'],
-          (value) => GetServiceTemplateMetadata.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      specs: pulumi.Input.decodeList<GetServiceTemplateSpec>(
-          map['specs'],
-          (value) => GetServiceTemplateSpec.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      metadatas: pulumi.Input.decodeList<GetServiceTemplateMetadata>(map['metadatas'], (value) => GetServiceTemplateMetadata.fromMap((value as Map).cast<String, dynamic>())),
+      specs: pulumi.Input.decodeList<GetServiceTemplateSpec>(map['specs'], (value) => GetServiceTemplateSpec.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

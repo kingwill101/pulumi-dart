@@ -4,8 +4,7 @@ import 'workflow_template_placement_managed_cluster_config_gke_cluster_config_na
 
 class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig {
   /// A target for the deployment.
-  final WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget?
-      namespacedGkeDeploymentTarget;
+  final WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget? namespacedGkeDeploymentTarget;
 
   /// Creates a new [WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig].
   /// [namespacedGkeDeploymentTarget] A target for the deployment.
@@ -14,24 +13,15 @@ class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final namespacedGkeDeploymentTargetValue = namespacedGkeDeploymentTarget;
-    if (namespacedGkeDeploymentTargetValue != null) {
-      map['namespacedGkeDeploymentTarget'] =
-          namespacedGkeDeploymentTargetValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'namespacedGkeDeploymentTarget': ?namespacedGkeDeploymentTarget == null ? null : namespacedGkeDeploymentTarget!.toMap(),
+    };
   }
 
-  factory WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig(
-      namespacedGkeDeploymentTarget: map['namespacedGkeDeploymentTarget'] ==
-              null
-          ? null
-          : WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget
-              .fromMap((map['namespacedGkeDeploymentTarget'] as Map)
-                  .cast<String, dynamic>()),
+      namespacedGkeDeploymentTarget: map['namespacedGkeDeploymentTarget'] == null ? null : WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget.fromMap((map['namespacedGkeDeploymentTarget'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

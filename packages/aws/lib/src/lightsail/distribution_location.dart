@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DistributionLocation {
   /// Availability Zone. Follows the format us-east-2a (case-sensitive).
   final String availabilityZone;
-
   /// AWS Region name.
   final String regionName;
 
@@ -16,10 +16,10 @@ class DistributionLocation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['availabilityZone'] = availabilityZone;
-    map['regionName'] = regionName;
-    return map;
+    return <String, dynamic>{
+      'availabilityZone': availabilityZone,
+      'regionName': regionName,
+    };
   }
 
   factory DistributionLocation.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class DistributionLocation {
     );
   }
 }
+

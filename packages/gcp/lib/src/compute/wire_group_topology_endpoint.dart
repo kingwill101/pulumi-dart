@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WireGroupTopologyEndpoint {
   /// (Output)
   final String? city;
-
   /// (Output)
   final String? label;
 
@@ -16,16 +16,10 @@ class WireGroupTopologyEndpoint {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cityValue = city;
-    if (cityValue != null) {
-      map['city'] = cityValue;
-    }
-    final labelValue = label;
-    if (labelValue != null) {
-      map['label'] = labelValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'city': ?city,
+      'label': ?label,
+    };
   }
 
   factory WireGroupTopologyEndpoint.fromMap(Map<String, dynamic> map) {
@@ -35,3 +29,4 @@ class WireGroupTopologyEndpoint {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FrameworkControlSetControl {
   /// Unique identifier of the control.
   final String id;
@@ -11,9 +12,9 @@ class FrameworkControlSetControl {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory FrameworkControlSetControl.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class FrameworkControlSetControl {
     );
   }
 }
+

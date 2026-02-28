@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTargetGroupHealthCheck {
   final bool enabled;
   final int healthyThreshold;
@@ -34,17 +35,17 @@ class GetTargetGroupHealthCheck {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    map['healthyThreshold'] = healthyThreshold;
-    map['interval'] = interval;
-    map['matcher'] = matcher;
-    map['path'] = path;
-    map['port'] = port;
-    map['protocol'] = protocol;
-    map['timeout'] = timeout;
-    map['unhealthyThreshold'] = unhealthyThreshold;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+      'healthyThreshold': healthyThreshold,
+      'interval': interval,
+      'matcher': matcher,
+      'path': path,
+      'port': port,
+      'protocol': protocol,
+      'timeout': timeout,
+      'unhealthyThreshold': unhealthyThreshold,
+    };
   }
 
   factory GetTargetGroupHealthCheck.fromMap(Map<String, dynamic> map) {
@@ -61,3 +62,4 @@ class GetTargetGroupHealthCheck {
     );
   }
 }
+

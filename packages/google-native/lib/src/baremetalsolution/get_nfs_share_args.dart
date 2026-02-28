@@ -19,19 +19,17 @@ class GetNfsShareArgs {
     required String location,
     required String nfsShareId,
     String? project,
-  })  : location = pulumi.Input.asInput<String>(location),
-        nfsShareId = pulumi.Input.asInput<String>(nfsShareId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      nfsShareId = pulumi.Input.asInput<String>(nfsShareId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    map['nfsShareId'] = nfsShareId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'nfsShareId': nfsShareId,
+      'project': ?project,
+    };
   }
 
   factory GetNfsShareArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetNfsShareArgs {
     );
   }
 }
+

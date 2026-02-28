@@ -8,7 +8,6 @@ class RegistrationDnsSettingsCustomDns {
   /// the values to set here. If this field is empty, DNSSEC is disabled.
   /// Structure is documented below.
   final List<RegistrationDnsSettingsCustomDnsDsRecord>? dsRecords;
-
   /// Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain
   /// name, with Unicode domain names expressed in Punycode format.
   final List<String> nameServers;
@@ -22,26 +21,17 @@ class RegistrationDnsSettingsCustomDns {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dsRecordsValue = dsRecords;
-    if (dsRecordsValue != null) {
-      map['dsRecords'] = pulumi.Input.encodeList<
-          RegistrationDnsSettingsCustomDnsDsRecord,
-          Map<String, dynamic>>(dsRecordsValue, (value) => value.toMap());
-    }
-    map['nameServers'] = nameServers;
-    return map;
+    return <String, dynamic>{
+      'dsRecords': ?dsRecords == null ? null : pulumi.Input.encodeList<RegistrationDnsSettingsCustomDnsDsRecord, Map<String, dynamic>>(dsRecords!, (value) => value.toMap()),
+      'nameServers': nameServers,
+    };
   }
 
   factory RegistrationDnsSettingsCustomDns.fromMap(Map<String, dynamic> map) {
     return RegistrationDnsSettingsCustomDns(
-      dsRecords: map['dsRecords'] == null
-          ? null
-          : pulumi.Input.decodeList<RegistrationDnsSettingsCustomDnsDsRecord>(
-              map['dsRecords'],
-              (value) => RegistrationDnsSettingsCustomDnsDsRecord.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      dsRecords: map['dsRecords'] == null ? null : pulumi.Input.decodeList<RegistrationDnsSettingsCustomDnsDsRecord>(map['dsRecords'], (value) => RegistrationDnsSettingsCustomDnsDsRecord.fromMap((value as Map).cast<String, dynamic>())),
       nameServers: (map['nameServers'] as List).cast<String>(),
     );
   }
 }
+

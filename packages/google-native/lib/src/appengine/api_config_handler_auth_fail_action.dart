@@ -16,3 +16,4 @@ enum ApiConfigHandlerAuthFailAction {
     throw ArgumentError('Unknown ApiConfigHandlerAuthFailAction value: $value');
   }
 }
+

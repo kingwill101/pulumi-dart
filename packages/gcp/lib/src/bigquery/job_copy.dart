@@ -13,20 +13,15 @@ class JobCopy {
   /// Default value is `CREATE_IF_NEEDED`.
   /// Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
   final String? createDisposition;
-
   /// Custom encryption configuration (e.g., Cloud KMS keys)
   /// Structure is documented below.
-  final JobCopyDestinationEncryptionConfiguration?
-      destinationEncryptionConfiguration;
-
+  final JobCopyDestinationEncryptionConfiguration? destinationEncryptionConfiguration;
   /// The destination table.
   /// Structure is documented below.
   final JobCopyDestinationTable? destinationTable;
-
   /// Source tables to copy.
   /// Structure is documented below.
   final List<JobCopySourceTable> sourceTables;
-
   /// Specifies the action that occurs if the destination table already exists. The following values are supported:
   /// WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
   /// WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
@@ -52,53 +47,23 @@ class JobCopy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final createDispositionValue = createDisposition;
-    if (createDispositionValue != null) {
-      map['createDisposition'] = createDispositionValue;
-    }
-    final destinationEncryptionConfigurationValue =
-        destinationEncryptionConfiguration;
-    if (destinationEncryptionConfigurationValue != null) {
-      map['destinationEncryptionConfiguration'] =
-          destinationEncryptionConfigurationValue.toMap();
-    }
-    final destinationTableValue = destinationTable;
-    if (destinationTableValue != null) {
-      map['destinationTable'] = destinationTableValue.toMap();
-    }
-    map['sourceTables'] =
-        pulumi.Input.encodeList<JobCopySourceTable, Map<String, dynamic>>(
-            sourceTables, (value) => value.toMap());
-    final writeDispositionValue = writeDisposition;
-    if (writeDispositionValue != null) {
-      map['writeDisposition'] = writeDispositionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'createDisposition': ?createDisposition,
+      'destinationEncryptionConfiguration': ?destinationEncryptionConfiguration == null ? null : destinationEncryptionConfiguration!.toMap(),
+      'destinationTable': ?destinationTable == null ? null : destinationTable!.toMap(),
+      'sourceTables': pulumi.Input.encodeList<JobCopySourceTable, Map<String, dynamic>>(sourceTables, (value) => value.toMap()),
+      'writeDisposition': ?writeDisposition,
+    };
   }
 
   factory JobCopy.fromMap(Map<String, dynamic> map) {
     return JobCopy(
-      createDisposition: map['createDisposition'] == null
-          ? null
-          : map['createDisposition'] as String,
-      destinationEncryptionConfiguration:
-          map['destinationEncryptionConfiguration'] == null
-              ? null
-              : JobCopyDestinationEncryptionConfiguration.fromMap(
-                  (map['destinationEncryptionConfiguration'] as Map)
-                      .cast<String, dynamic>()),
-      destinationTable: map['destinationTable'] == null
-          ? null
-          : JobCopyDestinationTable.fromMap(
-              (map['destinationTable'] as Map).cast<String, dynamic>()),
-      sourceTables: pulumi.Input.decodeList<JobCopySourceTable>(
-          map['sourceTables'],
-          (value) => JobCopySourceTable.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      writeDisposition: map['writeDisposition'] == null
-          ? null
-          : map['writeDisposition'] as String,
+      createDisposition: map['createDisposition'] == null ? null : map['createDisposition'] as String,
+      destinationEncryptionConfiguration: map['destinationEncryptionConfiguration'] == null ? null : JobCopyDestinationEncryptionConfiguration.fromMap((map['destinationEncryptionConfiguration'] as Map).cast<String, dynamic>()),
+      destinationTable: map['destinationTable'] == null ? null : JobCopyDestinationTable.fromMap((map['destinationTable'] as Map).cast<String, dynamic>()),
+      sourceTables: pulumi.Input.decodeList<JobCopySourceTable>(map['sourceTables'], (value) => JobCopySourceTable.fromMap((value as Map).cast<String, dynamic>())),
+      writeDisposition: map['writeDisposition'] == null ? null : map['writeDisposition'] as String,
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PipelineArtifactStoreEncryptionKey {
   /// The KMS key ARN or ID
   final String id;
-
   /// The type of key; currently only `KMS` is supported
   final String type;
 
@@ -16,10 +16,10 @@ class PipelineArtifactStoreEncryptionKey {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'type': type,
+    };
   }
 
   factory PipelineArtifactStoreEncryptionKey.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class PipelineArtifactStoreEncryptionKey {
     );
   }
 }
+

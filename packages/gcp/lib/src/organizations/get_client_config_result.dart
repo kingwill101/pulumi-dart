@@ -1,20 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getClientConfig.
 class GetClientConfigResult {
   /// The OAuth2 access token used by the client to authenticate against the Google Cloud API.
   final String accessToken;
-
   /// The default labels configured on the provider.
   final Map<String, String> defaultLabels;
   final String id;
-
   /// The ID of the project to apply any resources to.
   final String project;
-
   /// The region to operate under.
   final String region;
-
   /// The zone to operate under.
   final String zone;
 
@@ -35,14 +32,14 @@ class GetClientConfigResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accessToken'] = accessToken;
-    map['defaultLabels'] = defaultLabels;
-    map['id'] = id;
-    map['project'] = project;
-    map['region'] = region;
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'accessToken': accessToken,
+      'defaultLabels': defaultLabels,
+      'id': id,
+      'project': project,
+      'region': region,
+      'zone': zone,
+    };
   }
 
   factory GetClientConfigResult.fromMap(Map<String, dynamic> map) {
@@ -56,3 +53,4 @@ class GetClientConfigResult {
     );
   }
 }
+

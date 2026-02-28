@@ -14,15 +14,15 @@ class UpdateInfoResponseContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['blueGreenInfo'] = blueGreenInfo.toMap();
-    return map;
+    return <String, dynamic>{
+      'blueGreenInfo': blueGreenInfo.toMap(),
+    };
   }
 
   factory UpdateInfoResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return UpdateInfoResponseContainerV1beta1(
-      blueGreenInfo: BlueGreenInfoResponseContainerV1beta1.fromMap(
-          (map['blueGreenInfo'] as Map).cast<String, dynamic>()),
+      blueGreenInfo: BlueGreenInfoResponseContainerV1beta1.fromMap((map['blueGreenInfo'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

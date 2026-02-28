@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetVpnConnectionRoute {
   final String destinationCidrBlock;
   final String source;
-
   /// Current state of the VPN connection.
   final String state;
 
@@ -18,11 +18,11 @@ class GetVpnConnectionRoute {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['destinationCidrBlock'] = destinationCidrBlock;
-    map['source'] = source;
-    map['state'] = state;
-    return map;
+    return <String, dynamic>{
+      'destinationCidrBlock': destinationCidrBlock,
+      'source': source,
+      'state': state,
+    };
   }
 
   factory GetVpnConnectionRoute.fromMap(Map<String, dynamic> map) {
@@ -33,3 +33,4 @@ class GetVpnConnectionRoute {
     );
   }
 }
+

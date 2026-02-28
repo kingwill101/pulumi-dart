@@ -14,15 +14,15 @@ class ConnectClusterGcpConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accessConfig'] = accessConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'accessConfig': accessConfig.toMap(),
+    };
   }
 
   factory ConnectClusterGcpConfig.fromMap(Map<String, dynamic> map) {
     return ConnectClusterGcpConfig(
-      accessConfig: ConnectClusterGcpConfigAccessConfig.fromMap(
-          (map['accessConfig'] as Map).cast<String, dynamic>()),
+      accessConfig: ConnectClusterGcpConfigAccessConfig.fromMap((map['accessConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

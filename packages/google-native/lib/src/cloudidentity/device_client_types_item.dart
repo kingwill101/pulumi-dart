@@ -4,8 +4,7 @@ enum DeviceClientTypesItem {
   fundamental("FUNDAMENTAL"),
   endpointVerification("ENDPOINT_VERIFICATION"),
   windowsAdvanced("WINDOWS_ADVANCED"),
-  googleCredentialsProviderForWindows(
-      "GOOGLE_CREDENTIALS_PROVIDER_FOR_WINDOWS");
+  googleCredentialsProviderForWindows("GOOGLE_CREDENTIALS_PROVIDER_FOR_WINDOWS");
 
   const DeviceClientTypesItem(this.value);
   final String value;
@@ -19,3 +18,4 @@ enum DeviceClientTypesItem {
     throw ArgumentError('Unknown DeviceClientTypesItem value: $value');
   }
 }
+

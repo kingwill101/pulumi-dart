@@ -109,10 +109,8 @@ import 'resource_group_args.dart';
 class ResourceGroup extends pulumi.CustomResource {
   /// The resource group ARN.
   late final pulumi.Output<String> arn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value map of tags that are used to select the EC2 instances to be included in an Amazon Inspector assessment target.
   late final pulumi.Output<Map<String, String>> tags;
 

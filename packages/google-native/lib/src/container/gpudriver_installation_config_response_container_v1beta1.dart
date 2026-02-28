@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// GPUDriverInstallationConfig specifies the version of GPU driver to be auto installed.
 class GPUDriverInstallationConfigResponseContainerV1beta1 {
   /// Mode for how the GPU driver is installed.
@@ -12,15 +13,15 @@ class GPUDriverInstallationConfigResponseContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gpuDriverVersion'] = gpuDriverVersion;
-    return map;
+    return <String, dynamic>{
+      'gpuDriverVersion': gpuDriverVersion,
+    };
   }
 
-  factory GPUDriverInstallationConfigResponseContainerV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory GPUDriverInstallationConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return GPUDriverInstallationConfigResponseContainerV1beta1(
       gpuDriverVersion: map['gpuDriverVersion'] as String,
     );
   }
 }
+

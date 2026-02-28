@@ -184,23 +184,18 @@ import 'custom_service_telemetry.dart';
 class CustomService extends pulumi.CustomResource {
   /// Name used for UI elements listing this Service.
   late final pulumi.Output<String?> displayName;
-
   /// The full resource name for this service. The syntax is:
   /// projects/[PROJECT_ID]/services/[SERVICE_ID].
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// An optional service ID to use. If not given, the server will generate a
   /// service ID.
   late final pulumi.Output<String> serviceId;
-
   /// Configuration for how to query telemetry on a Service.
   /// Structure is documented below.
   late final pulumi.Output<CustomServiceTelemetry?> telemetry;
-
   /// Labels which have been used to annotate the service. Label keys must start
   /// with a letter. Label keys and values may contain lowercase letters,
   /// numbers, underscores, and dashes. Label keys and values have a maximum

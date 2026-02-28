@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FilterFilterCriteriaEpssScore {
   /// (Optional) Lower bound of the range, inclusive.
   final double lowerInclusive;
-
   /// (Optional) Upper bound of the range, inclusive.
   final double upperInclusive;
 
@@ -16,10 +16,10 @@ class FilterFilterCriteriaEpssScore {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['lowerInclusive'] = lowerInclusive;
-    map['upperInclusive'] = upperInclusive;
-    return map;
+    return <String, dynamic>{
+      'lowerInclusive': lowerInclusive,
+      'upperInclusive': upperInclusive,
+    };
   }
 
   factory FilterFilterCriteriaEpssScore.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class FilterFilterCriteriaEpssScore {
     );
   }
 }
+

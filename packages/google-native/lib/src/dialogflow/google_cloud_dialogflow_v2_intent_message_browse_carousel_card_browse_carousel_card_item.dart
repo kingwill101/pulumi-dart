@@ -7,17 +7,12 @@ import 'google_cloud_dialogflow_v2_intent_message_image.dart';
 class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem {
   /// Optional. Description of the carousel item. Maximum of four lines of text.
   final String? description;
-
   /// Optional. Text that appears at the bottom of the Browse Carousel Card. Maximum of one line of text.
   final String? footer;
-
   /// Optional. Hero image for the carousel item.
   final GoogleCloudDialogflowV2IntentMessageImage? image;
-
   /// Action to present to the user.
-  final GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction
-      openUriAction;
-
+  final GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction openUriAction;
   /// Title of the carousel item. Maximum of two lines of text.
   final String title;
 
@@ -36,38 +31,23 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIt
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final footerValue = footer;
-    if (footerValue != null) {
-      map['footer'] = footerValue;
-    }
-    final imageValue = image;
-    if (imageValue != null) {
-      map['image'] = imageValue.toMap();
-    }
-    map['openUriAction'] = openUriAction.toMap();
-    map['title'] = title;
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'footer': ?footer,
+      'image': ?image == null ? null : image!.toMap(),
+      'openUriAction': openUriAction.toMap(),
+      'title': title,
+    };
   }
 
-  factory GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem(
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       footer: map['footer'] == null ? null : map['footer'] as String,
-      image: map['image'] == null
-          ? null
-          : GoogleCloudDialogflowV2IntentMessageImage.fromMap(
-              (map['image'] as Map).cast<String, dynamic>()),
-      openUriAction:
-          GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction
-              .fromMap((map['openUriAction'] as Map).cast<String, dynamic>()),
+      image: map['image'] == null ? null : GoogleCloudDialogflowV2IntentMessageImage.fromMap((map['image'] as Map).cast<String, dynamic>()),
+      openUriAction: GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction.fromMap((map['openUriAction'] as Map).cast<String, dynamic>()),
       title: map['title'] as String,
     );
   }
 }
+

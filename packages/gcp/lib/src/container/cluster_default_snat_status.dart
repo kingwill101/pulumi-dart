@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterDefaultSnatStatus {
   /// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
   ///
@@ -13,9 +14,9 @@ class ClusterDefaultSnatStatus {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['disabled'] = disabled;
-    return map;
+    return <String, dynamic>{
+      'disabled': disabled,
+    };
   }
 
   factory ClusterDefaultSnatStatus.fromMap(Map<String, dynamic> map) {
@@ -24,3 +25,4 @@ class ClusterDefaultSnatStatus {
     );
   }
 }
+

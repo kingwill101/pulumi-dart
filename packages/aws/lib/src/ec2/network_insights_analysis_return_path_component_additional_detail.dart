@@ -5,9 +5,7 @@ import 'network_insights_analysis_return_path_component_additional_detail_compon
 
 class NetworkInsightsAnalysisReturnPathComponentAdditionalDetail {
   final String? additionalDetailType;
-  final List<
-          NetworkInsightsAnalysisReturnPathComponentAdditionalDetailComponent>?
-      components;
+  final List<NetworkInsightsAnalysisReturnPathComponentAdditionalDetailComponent>? components;
 
   /// Creates a new [NetworkInsightsAnalysisReturnPathComponentAdditionalDetail].
   /// [additionalDetailType] Optional.
@@ -18,34 +16,17 @@ class NetworkInsightsAnalysisReturnPathComponentAdditionalDetail {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final additionalDetailTypeValue = additionalDetailType;
-    if (additionalDetailTypeValue != null) {
-      map['additionalDetailType'] = additionalDetailTypeValue;
-    }
-    final componentsValue = components;
-    if (componentsValue != null) {
-      map['components'] = pulumi.Input.encodeList<
-          NetworkInsightsAnalysisReturnPathComponentAdditionalDetailComponent,
-          Map<String, dynamic>>(componentsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'additionalDetailType': ?additionalDetailType,
+      'components': ?components == null ? null : pulumi.Input.encodeList<NetworkInsightsAnalysisReturnPathComponentAdditionalDetailComponent, Map<String, dynamic>>(components!, (value) => value.toMap()),
+    };
   }
 
-  factory NetworkInsightsAnalysisReturnPathComponentAdditionalDetail.fromMap(
-      Map<String, dynamic> map) {
+  factory NetworkInsightsAnalysisReturnPathComponentAdditionalDetail.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisReturnPathComponentAdditionalDetail(
-      additionalDetailType: map['additionalDetailType'] == null
-          ? null
-          : map['additionalDetailType'] as String,
-      components: map['components'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  NetworkInsightsAnalysisReturnPathComponentAdditionalDetailComponent>(
-              map['components'],
-              (value) =>
-                  NetworkInsightsAnalysisReturnPathComponentAdditionalDetailComponent
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      additionalDetailType: map['additionalDetailType'] == null ? null : map['additionalDetailType'] as String,
+      components: map['components'] == null ? null : pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponentAdditionalDetailComponent>(map['components'], (value) => NetworkInsightsAnalysisReturnPathComponentAdditionalDetailComponent.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

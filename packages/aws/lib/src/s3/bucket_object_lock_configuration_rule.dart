@@ -13,16 +13,15 @@ class BucketObjectLockConfigurationRule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['defaultRetention'] = defaultRetention.toMap();
-    return map;
+    return <String, dynamic>{
+      'defaultRetention': defaultRetention.toMap(),
+    };
   }
 
   factory BucketObjectLockConfigurationRule.fromMap(Map<String, dynamic> map) {
     return BucketObjectLockConfigurationRule(
-      defaultRetention:
-          BucketObjectLockConfigurationRuleDefaultRetention.fromMap(
-              (map['defaultRetention'] as Map).cast<String, dynamic>()),
+      defaultRetention: BucketObjectLockConfigurationRuleDefaultRetention.fromMap((map['defaultRetention'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

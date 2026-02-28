@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DatasetTagsItemResponse {
   /// [Required] The namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is org id.
   final String tagKey;
-
   /// [Required] Friendly short name of the tag value, e.g. "production".
   final String tagValue;
 
@@ -16,10 +16,10 @@ class DatasetTagsItemResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['tagKey'] = tagKey;
-    map['tagValue'] = tagValue;
-    return map;
+    return <String, dynamic>{
+      'tagKey': tagKey,
+      'tagValue': tagValue,
+    };
   }
 
   factory DatasetTagsItemResponse.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class DatasetTagsItemResponse {
     );
   }
 }
+

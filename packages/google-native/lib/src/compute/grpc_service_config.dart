@@ -7,10 +7,8 @@ import 'channel_credentials.dart';
 class GrpcServiceConfig {
   /// The call credentials to access the SDS server.
   final CallCredentials? callCredentials;
-
   /// The channel credentials to access the SDS server.
   final ChannelCredentials? channelCredentials;
-
   /// The target URI of the SDS server.
   final String? targetUri;
 
@@ -25,33 +23,19 @@ class GrpcServiceConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final callCredentialsValue = callCredentials;
-    if (callCredentialsValue != null) {
-      map['callCredentials'] = callCredentialsValue.toMap();
-    }
-    final channelCredentialsValue = channelCredentials;
-    if (channelCredentialsValue != null) {
-      map['channelCredentials'] = channelCredentialsValue.toMap();
-    }
-    final targetUriValue = targetUri;
-    if (targetUriValue != null) {
-      map['targetUri'] = targetUriValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'callCredentials': ?callCredentials == null ? null : callCredentials!.toMap(),
+      'channelCredentials': ?channelCredentials == null ? null : channelCredentials!.toMap(),
+      'targetUri': ?targetUri,
+    };
   }
 
   factory GrpcServiceConfig.fromMap(Map<String, dynamic> map) {
     return GrpcServiceConfig(
-      callCredentials: map['callCredentials'] == null
-          ? null
-          : CallCredentials.fromMap(
-              (map['callCredentials'] as Map).cast<String, dynamic>()),
-      channelCredentials: map['channelCredentials'] == null
-          ? null
-          : ChannelCredentials.fromMap(
-              (map['channelCredentials'] as Map).cast<String, dynamic>()),
+      callCredentials: map['callCredentials'] == null ? null : CallCredentials.fromMap((map['callCredentials'] as Map).cast<String, dynamic>()),
+      channelCredentials: map['channelCredentials'] == null ? null : ChannelCredentials.fromMap((map['channelCredentials'] as Map).cast<String, dynamic>()),
       targetUri: map['targetUri'] == null ? null : map['targetUri'] as String,
     );
   }
 }
+

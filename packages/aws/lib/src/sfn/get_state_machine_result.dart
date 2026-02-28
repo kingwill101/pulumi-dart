@@ -1,28 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getStateMachine.
 class GetStateMachineResult {
   /// Set to the arn of the state function.
   final String arn;
-
   /// Date the state machine was created.
   final String creationDate;
-
   /// Set to the state machine definition.
   final String definition;
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String region;
-
   /// The revision identifier for the state machine.
   final String revisionId;
-
   /// Set to the role_arn used by the state function.
   final String roleArn;
-
   /// Set to the current status of the state machine.
   final String status;
 
@@ -51,18 +46,18 @@ class GetStateMachineResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['creationDate'] = creationDate;
-    map['definition'] = definition;
-    map['description'] = description;
-    map['id'] = id;
-    map['name'] = name;
-    map['region'] = region;
-    map['revisionId'] = revisionId;
-    map['roleArn'] = roleArn;
-    map['status'] = status;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'creationDate': creationDate,
+      'definition': definition,
+      'description': description,
+      'id': id,
+      'name': name,
+      'region': region,
+      'revisionId': revisionId,
+      'roleArn': roleArn,
+      'status': status,
+    };
   }
 
   factory GetStateMachineResult.fromMap(Map<String, dynamic> map) {
@@ -80,3 +75,4 @@ class GetStateMachineResult {
     );
   }
 }
+

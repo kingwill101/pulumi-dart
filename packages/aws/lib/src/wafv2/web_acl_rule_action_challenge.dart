@@ -13,20 +13,15 @@ class WebAclRuleActionChallenge {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final customRequestHandlingValue = customRequestHandling;
-    if (customRequestHandlingValue != null) {
-      map['customRequestHandling'] = customRequestHandlingValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'customRequestHandling': ?customRequestHandling == null ? null : customRequestHandling!.toMap(),
+    };
   }
 
   factory WebAclRuleActionChallenge.fromMap(Map<String, dynamic> map) {
     return WebAclRuleActionChallenge(
-      customRequestHandling: map['customRequestHandling'] == null
-          ? null
-          : WebAclRuleActionChallengeCustomRequestHandling.fromMap(
-              (map['customRequestHandling'] as Map).cast<String, dynamic>()),
+      customRequestHandling: map['customRequestHandling'] == null ? null : WebAclRuleActionChallengeCustomRequestHandling.fromMap((map['customRequestHandling'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

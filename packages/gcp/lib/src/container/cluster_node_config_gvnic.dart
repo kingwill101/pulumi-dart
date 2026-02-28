@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterNodeConfigGvnic {
   /// Whether or not the Google Virtual NIC (gVNIC) is enabled
   final bool enabled;
@@ -11,9 +12,9 @@ class ClusterNodeConfigGvnic {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory ClusterNodeConfigGvnic.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class ClusterNodeConfigGvnic {
     );
   }
 }
+

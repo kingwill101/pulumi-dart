@@ -6,7 +6,6 @@ import 'google_privacy_dlp_v2_discovery_starting_location_response.dart';
 class GooglePrivacyDlpV2OrgConfigResponse {
   /// The data to scan: folder, org, or project
   final GooglePrivacyDlpV2DiscoveryStartingLocationResponse location;
-
   /// The project that will run the scan. The DLP service account that exists within this project must have access to all resources that are profiled, and the Cloud DLP API must be enabled.
   final String project;
 
@@ -19,18 +18,17 @@ class GooglePrivacyDlpV2OrgConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location.toMap();
-    map['project'] = project;
-    return map;
+    return <String, dynamic>{
+      'location': location.toMap(),
+      'project': project,
+    };
   }
 
-  factory GooglePrivacyDlpV2OrgConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2OrgConfigResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2OrgConfigResponse(
-      location: GooglePrivacyDlpV2DiscoveryStartingLocationResponse.fromMap(
-          (map['location'] as Map).cast<String, dynamic>()),
+      location: GooglePrivacyDlpV2DiscoveryStartingLocationResponse.fromMap((map['location'] as Map).cast<String, dynamic>()),
       project: map['project'] as String,
     );
   }
 }
+

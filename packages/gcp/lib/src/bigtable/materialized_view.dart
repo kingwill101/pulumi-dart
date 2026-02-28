@@ -309,20 +309,15 @@ import 'materialized_view_args.dart';
 class MaterializedView extends pulumi.CustomResource {
   /// Set to true to make the MaterializedView protected against deletion.
   late final pulumi.Output<bool?> deletionProtection;
-
   /// The name of the instance to create the materialized view within.
   late final pulumi.Output<String?> instance;
-
   /// The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
   late final pulumi.Output<String> materializedViewId;
-
   /// The unique name of the requested materialized view. Values are of the form `projects/<project>/instances/<instance>/materializedViews/<materializedViewId>`.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The materialized view's select query.
   late final pulumi.Output<String> query;
 

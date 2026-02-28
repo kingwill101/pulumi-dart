@@ -13,11 +13,9 @@ class RegionUrlMapPathMatcherRouteRule {
   /// outeAction.weightedBackendService.backendServiceWeightAction[].headerAction
   /// Structure is documented below.
   final RegionUrlMapPathMatcherRouteRuleHeaderAction? headerAction;
-
   /// The rules for determining a match.
   /// Structure is documented below.
   final List<RegionUrlMapPathMatcherRouteRuleMatchRule>? matchRules;
-
   /// For routeRules within a given pathMatcher, priority determines the order
   /// in which load balancer will interpret routeRules. RouteRules are evaluated
   /// in order of priority, from the lowest to highest number. The priority of
@@ -32,7 +30,6 @@ class RegionUrlMapPathMatcherRouteRule {
   /// you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the
   /// future without any impact on existing rules.
   final int priority;
-
   /// In response to a matching matchRule, the load balancer performs advanced routing
   /// actions like URL rewrites, header transformations, etc. prior to forwarding the
   /// request to the selected backend. If  routeAction specifies any
@@ -41,7 +38,6 @@ class RegionUrlMapPathMatcherRouteRule {
   /// or urlRedirect must be set.
   /// Structure is documented below.
   final RegionUrlMapPathMatcherRouteRuleRouteAction? routeAction;
-
   /// The region backend service resource to which traffic is
   /// directed if this rule is matched. If routeAction is additionally specified,
   /// advanced routing actions like URL Rewrites, etc. take effect prior to sending
@@ -50,7 +46,6 @@ class RegionUrlMapPathMatcherRouteRule {
   /// weightedBackendServices, service must not be specified. Only one of urlRedirect,
   /// service or routeAction.weightedBackendService must be set.
   final String? service;
-
   /// When this rule is matched, the request is redirected to a URL specified by
   /// urlRedirect. If urlRedirect is specified, service or routeAction must not be
   /// set.
@@ -74,55 +69,25 @@ class RegionUrlMapPathMatcherRouteRule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final headerActionValue = headerAction;
-    if (headerActionValue != null) {
-      map['headerAction'] = headerActionValue.toMap();
-    }
-    final matchRulesValue = matchRules;
-    if (matchRulesValue != null) {
-      map['matchRules'] = pulumi.Input.encodeList<
-          RegionUrlMapPathMatcherRouteRuleMatchRule,
-          Map<String, dynamic>>(matchRulesValue, (value) => value.toMap());
-    }
-    map['priority'] = priority;
-    final routeActionValue = routeAction;
-    if (routeActionValue != null) {
-      map['routeAction'] = routeActionValue.toMap();
-    }
-    final serviceValue = service;
-    if (serviceValue != null) {
-      map['service'] = serviceValue;
-    }
-    final urlRedirectValue = urlRedirect;
-    if (urlRedirectValue != null) {
-      map['urlRedirect'] = urlRedirectValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'headerAction': ?headerAction == null ? null : headerAction!.toMap(),
+      'matchRules': ?matchRules == null ? null : pulumi.Input.encodeList<RegionUrlMapPathMatcherRouteRuleMatchRule, Map<String, dynamic>>(matchRules!, (value) => value.toMap()),
+      'priority': priority,
+      'routeAction': ?routeAction == null ? null : routeAction!.toMap(),
+      'service': ?service,
+      'urlRedirect': ?urlRedirect == null ? null : urlRedirect!.toMap(),
+    };
   }
 
   factory RegionUrlMapPathMatcherRouteRule.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapPathMatcherRouteRule(
-      headerAction: map['headerAction'] == null
-          ? null
-          : RegionUrlMapPathMatcherRouteRuleHeaderAction.fromMap(
-              (map['headerAction'] as Map).cast<String, dynamic>()),
-      matchRules: map['matchRules'] == null
-          ? null
-          : pulumi.Input.decodeList<RegionUrlMapPathMatcherRouteRuleMatchRule>(
-              map['matchRules'],
-              (value) => RegionUrlMapPathMatcherRouteRuleMatchRule.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      headerAction: map['headerAction'] == null ? null : RegionUrlMapPathMatcherRouteRuleHeaderAction.fromMap((map['headerAction'] as Map).cast<String, dynamic>()),
+      matchRules: map['matchRules'] == null ? null : pulumi.Input.decodeList<RegionUrlMapPathMatcherRouteRuleMatchRule>(map['matchRules'], (value) => RegionUrlMapPathMatcherRouteRuleMatchRule.fromMap((value as Map).cast<String, dynamic>())),
       priority: map['priority'] as int,
-      routeAction: map['routeAction'] == null
-          ? null
-          : RegionUrlMapPathMatcherRouteRuleRouteAction.fromMap(
-              (map['routeAction'] as Map).cast<String, dynamic>()),
+      routeAction: map['routeAction'] == null ? null : RegionUrlMapPathMatcherRouteRuleRouteAction.fromMap((map['routeAction'] as Map).cast<String, dynamic>()),
       service: map['service'] == null ? null : map['service'] as String,
-      urlRedirect: map['urlRedirect'] == null
-          ? null
-          : RegionUrlMapPathMatcherRouteRuleUrlRedirect.fromMap(
-              (map['urlRedirect'] as Map).cast<String, dynamic>()),
+      urlRedirect: map['urlRedirect'] == null ? null : RegionUrlMapPathMatcherRouteRuleUrlRedirect.fromMap((map['urlRedirect'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

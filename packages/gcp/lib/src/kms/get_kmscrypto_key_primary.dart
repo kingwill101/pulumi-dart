@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetKMSCryptoKeyPrimary {
   /// The CryptoKey's name.
   /// A CryptoKey’s name belonging to the specified Google Cloud Platform KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
   final String name;
-
   /// The current state of the CryptoKeyVersion.
   final String state;
 
@@ -17,10 +17,10 @@ class GetKMSCryptoKeyPrimary {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['state'] = state;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'state': state,
+    };
   }
 
   factory GetKMSCryptoKeyPrimary.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class GetKMSCryptoKeyPrimary {
     );
   }
 }
+

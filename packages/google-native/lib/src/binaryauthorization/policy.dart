@@ -7,18 +7,14 @@ import 'policy_args.dart';
 class Policy extends pulumi.CustomResource {
   /// Optional. A description comment about the policy.
   late final pulumi.Output<String> description;
-
   /// Optional. GKE platform-specific policy.
   late final pulumi.Output<GkePolicyResponse> gkePolicy;
-
   /// The relative resource name of the Binary Authorization platform policy, in the form of `projects/*/platforms/*/policies/*`.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> platformId;
-
   /// Required. The platform policy ID.
   late final pulumi.Output<String> policyId;
   late final pulumi.Output<String> project;
-
   /// Time when the policy was last updated.
   late final pulumi.Output<String> updateTime;
 

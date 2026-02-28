@@ -16,3 +16,4 @@ enum MqttConfigMqttEnabledState {
     throw ArgumentError('Unknown MqttConfigMqttEnabledState value: $value');
   }
 }
+

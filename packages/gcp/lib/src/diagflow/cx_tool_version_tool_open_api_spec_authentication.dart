@@ -10,23 +10,18 @@ class CxToolVersionToolOpenApiSpecAuthentication {
   /// This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
   /// Structure is documented below.
   final CxToolVersionToolOpenApiSpecAuthenticationApiKeyConfig? apiKeyConfig;
-
   /// Config for bearer token auth.
   /// This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
   /// Structure is documented below.
-  final CxToolVersionToolOpenApiSpecAuthenticationBearerTokenConfig?
-      bearerTokenConfig;
-
+  final CxToolVersionToolOpenApiSpecAuthenticationBearerTokenConfig? bearerTokenConfig;
   /// Config for OAuth.
   /// This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
   /// Structure is documented below.
   final CxToolVersionToolOpenApiSpecAuthenticationOauthConfig? oauthConfig;
-
   /// Config for [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent) auth.
   /// This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
   /// Structure is documented below.
-  final CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfig?
-      serviceAgentAuthConfig;
+  final CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfig? serviceAgentAuthConfig;
 
   /// Creates a new [CxToolVersionToolOpenApiSpecAuthentication].
   /// [apiKeyConfig] Config for API key auth.
@@ -41,46 +36,21 @@ class CxToolVersionToolOpenApiSpecAuthentication {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final apiKeyConfigValue = apiKeyConfig;
-    if (apiKeyConfigValue != null) {
-      map['apiKeyConfig'] = apiKeyConfigValue.toMap();
-    }
-    final bearerTokenConfigValue = bearerTokenConfig;
-    if (bearerTokenConfigValue != null) {
-      map['bearerTokenConfig'] = bearerTokenConfigValue.toMap();
-    }
-    final oauthConfigValue = oauthConfig;
-    if (oauthConfigValue != null) {
-      map['oauthConfig'] = oauthConfigValue.toMap();
-    }
-    final serviceAgentAuthConfigValue = serviceAgentAuthConfig;
-    if (serviceAgentAuthConfigValue != null) {
-      map['serviceAgentAuthConfig'] = serviceAgentAuthConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'apiKeyConfig': ?apiKeyConfig == null ? null : apiKeyConfig!.toMap(),
+      'bearerTokenConfig': ?bearerTokenConfig == null ? null : bearerTokenConfig!.toMap(),
+      'oauthConfig': ?oauthConfig == null ? null : oauthConfig!.toMap(),
+      'serviceAgentAuthConfig': ?serviceAgentAuthConfig == null ? null : serviceAgentAuthConfig!.toMap(),
+    };
   }
 
-  factory CxToolVersionToolOpenApiSpecAuthentication.fromMap(
-      Map<String, dynamic> map) {
+  factory CxToolVersionToolOpenApiSpecAuthentication.fromMap(Map<String, dynamic> map) {
     return CxToolVersionToolOpenApiSpecAuthentication(
-      apiKeyConfig: map['apiKeyConfig'] == null
-          ? null
-          : CxToolVersionToolOpenApiSpecAuthenticationApiKeyConfig.fromMap(
-              (map['apiKeyConfig'] as Map).cast<String, dynamic>()),
-      bearerTokenConfig: map['bearerTokenConfig'] == null
-          ? null
-          : CxToolVersionToolOpenApiSpecAuthenticationBearerTokenConfig.fromMap(
-              (map['bearerTokenConfig'] as Map).cast<String, dynamic>()),
-      oauthConfig: map['oauthConfig'] == null
-          ? null
-          : CxToolVersionToolOpenApiSpecAuthenticationOauthConfig.fromMap(
-              (map['oauthConfig'] as Map).cast<String, dynamic>()),
-      serviceAgentAuthConfig: map['serviceAgentAuthConfig'] == null
-          ? null
-          : CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfig
-              .fromMap((map['serviceAgentAuthConfig'] as Map)
-                  .cast<String, dynamic>()),
+      apiKeyConfig: map['apiKeyConfig'] == null ? null : CxToolVersionToolOpenApiSpecAuthenticationApiKeyConfig.fromMap((map['apiKeyConfig'] as Map).cast<String, dynamic>()),
+      bearerTokenConfig: map['bearerTokenConfig'] == null ? null : CxToolVersionToolOpenApiSpecAuthenticationBearerTokenConfig.fromMap((map['bearerTokenConfig'] as Map).cast<String, dynamic>()),
+      oauthConfig: map['oauthConfig'] == null ? null : CxToolVersionToolOpenApiSpecAuthenticationOauthConfig.fromMap((map['oauthConfig'] as Map).cast<String, dynamic>()),
+      serviceAgentAuthConfig: map['serviceAgentAuthConfig'] == null ? null : CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfig.fromMap((map['serviceAgentAuthConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

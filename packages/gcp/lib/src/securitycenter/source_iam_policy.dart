@@ -138,7 +138,6 @@ import 'source_iam_policy_args.dart';
 /// ```
 class SourceIamPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> etag;
-
   /// The organization whose Cloud Security Command Center the Source
   /// lives in.
   late final pulumi.Output<String> organization;

@@ -1,46 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getWorkstation.
 class GetWorkstationResult {
   /// Optional. Client-specified annotations.
   final Map<String, String> annotations;
-
   /// Time when this workstation was created.
   final String createTime;
-
   /// Time when this workstation was soft-deleted.
   final String deleteTime;
-
   /// Optional. Human-readable name for this workstation.
   final String displayName;
-
   /// Optional. Environment variables passed to the workstation container's entrypoint.
   final Map<String, String> env;
-
   /// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
   final String etag;
-
   /// Host to which clients can send HTTPS traffic that will be received by the workstation. Authorized traffic will be received to the workstation as HTTP on port 80. To send traffic to a different port, clients may prefix the host with the destination port in the format `{port}-{host}`.
   final String host;
-
   /// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation and that are also propagated to the underlying Compute Engine resources.
   final Map<String, String> labels;
-
   /// Identifier. Full name of this workstation.
   final String name;
-
   /// Indicates whether this workstation is currently being updated to match its intended state.
   final bool reconciling;
-
   /// Time when this workstation was most recently successfully started, regardless of the workstation's initial state.
   final String startTime;
-
   /// Current state of the workstation.
   final String state;
-
   /// A system-assigned unique identifier for this workstation.
   final String uid;
-
   /// Time when this workstation was most recently updated.
   final String updateTime;
 
@@ -77,22 +65,22 @@ class GetWorkstationResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['annotations'] = annotations;
-    map['createTime'] = createTime;
-    map['deleteTime'] = deleteTime;
-    map['displayName'] = displayName;
-    map['env'] = env;
-    map['etag'] = etag;
-    map['host'] = host;
-    map['labels'] = labels;
-    map['name'] = name;
-    map['reconciling'] = reconciling;
-    map['startTime'] = startTime;
-    map['state'] = state;
-    map['uid'] = uid;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'annotations': annotations,
+      'createTime': createTime,
+      'deleteTime': deleteTime,
+      'displayName': displayName,
+      'env': env,
+      'etag': etag,
+      'host': host,
+      'labels': labels,
+      'name': name,
+      'reconciling': reconciling,
+      'startTime': startTime,
+      'state': state,
+      'uid': uid,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetWorkstationResult.fromMap(Map<String, dynamic> map) {
@@ -114,3 +102,4 @@ class GetWorkstationResult {
     );
   }
 }
+

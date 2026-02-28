@@ -5,8 +5,7 @@ import 'fleet_observability_fleet_observability_base_feature_state_response_gkeh
 /// Feature state for monitoring feature.
 class FleetObservabilityFleetObservabilityMonitoringStateResponseGkehubV1beta {
   /// The base feature state of fleet monitoring feature.
-  final FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1beta
-      state;
+  final FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1beta state;
 
   /// Creates a new [FleetObservabilityFleetObservabilityMonitoringStateResponseGkehubV1beta].
   /// [state] The base feature state of fleet monitoring feature.
@@ -15,17 +14,15 @@ class FleetObservabilityFleetObservabilityMonitoringStateResponseGkehubV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['state'] = state.toMap();
-    return map;
+    return <String, dynamic>{
+      'state': state.toMap(),
+    };
   }
 
-  factory FleetObservabilityFleetObservabilityMonitoringStateResponseGkehubV1beta.fromMap(
-      Map<String, dynamic> map) {
+  factory FleetObservabilityFleetObservabilityMonitoringStateResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return FleetObservabilityFleetObservabilityMonitoringStateResponseGkehubV1beta(
-      state:
-          FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1beta
-              .fromMap((map['state'] as Map).cast<String, dynamic>()),
+      state: FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1beta.fromMap((map['state'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -13,20 +13,15 @@ class DashboardSourceEntity {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final sourceTemplateValue = sourceTemplate;
-    if (sourceTemplateValue != null) {
-      map['sourceTemplate'] = sourceTemplateValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'sourceTemplate': ?sourceTemplate == null ? null : sourceTemplate!.toMap(),
+    };
   }
 
   factory DashboardSourceEntity.fromMap(Map<String, dynamic> map) {
     return DashboardSourceEntity(
-      sourceTemplate: map['sourceTemplate'] == null
-          ? null
-          : DashboardSourceEntitySourceTemplate.fromMap(
-              (map['sourceTemplate'] as Map).cast<String, dynamic>()),
+      sourceTemplate: map['sourceTemplate'] == null ? null : DashboardSourceEntitySourceTemplate.fromMap((map['sourceTemplate'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

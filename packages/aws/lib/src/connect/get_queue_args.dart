@@ -9,18 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetQueueArgs {
   /// Reference to the hosting Amazon Connect Instance
   final pulumi.Input<String> instanceId;
-
   /// Returns information on a specific Queue by name
   ///
   /// > **NOTE:** `instance_id` and one of either `name` or `queue_id` is required.
   final pulumi.Input<String>? name;
-
   /// Returns information on a specific Queue by Queue id
   final pulumi.Input<String>? queueId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Map of tags assigned to the Queue.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -36,32 +32,21 @@ class GetQueueArgs {
     String? queueId,
     String? region,
     Map<String, String>? tags,
-  })  : instanceId = pulumi.Input.asInput<String>(instanceId),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        queueId = pulumi.Input.asOptionalInput<String>(queueId),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      instanceId = pulumi.Input.asInput<String>(instanceId),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      queueId = pulumi.Input.asOptionalInput<String>(queueId),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['instanceId'] = instanceId;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final queueIdValue = queueId;
-    if (queueIdValue != null) {
-      map['queueId'] = queueIdValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'instanceId': instanceId,
+      'name': ?name,
+      'queueId': ?queueId,
+      'region': ?region,
+      'tags': ?tags,
+    };
   }
 
   factory GetQueueArgs.fromMap(Map<String, dynamic> map) {
@@ -70,9 +55,8 @@ class GetQueueArgs {
       name: map['name'] == null ? null : map['name'] as String,
       queueId: map['queueId'] == null ? null : map['queueId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

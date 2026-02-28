@@ -381,16 +381,12 @@ import 'workspace_configuration_timeouts.dart';
 /// ```
 class WorkspaceConfiguration extends pulumi.CustomResource {
   /// Configuration block for setting limits on metrics with specific label sets. Detailed below.
-  late final pulumi.Output<List<WorkspaceConfigurationLimitsPerLabelSet>?>
-      limitsPerLabelSets;
-
+  late final pulumi.Output<List<WorkspaceConfigurationLimitsPerLabelSet>?> limitsPerLabelSets;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Number of days to retain metric data in the workspace.
   late final pulumi.Output<int> retentionPeriodInDays;
   late final pulumi.Output<WorkspaceConfigurationTimeouts?> timeouts;
-
   /// ID of the workspace to configure.
   ///
   /// The following arguments are optional:
@@ -410,9 +406,7 @@ class WorkspaceConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.limitsPerLabelSets =
-        registerOutput<List<WorkspaceConfigurationLimitsPerLabelSet>?>(
-            'limitsPerLabelSets');
+    this.limitsPerLabelSets = registerOutput<List<WorkspaceConfigurationLimitsPerLabelSet>?>('limitsPerLabelSets');
     this.region = registerOutput<String>('region');
     this.retentionPeriodInDays = registerOutput<int>('retentionPeriodInDays');
     this.timeouts = registerOutput<WorkspaceConfigurationTimeouts?>('timeouts');

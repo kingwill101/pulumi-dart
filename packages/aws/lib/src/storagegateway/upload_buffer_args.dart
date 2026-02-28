@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UploadBufferArgs {
   /// Local disk identifier. For example, `pci-0000:03:00.0-scsi-0:0:0:0`.
   final pulumi.Input<String>? diskId;
-
   /// Local disk path. For example, `/dev/nvme1n1`.
   final pulumi.Input<String>? diskPath;
-
   /// The Amazon Resource Name (ARN) of the gateway.
   final pulumi.Input<String> gatewayArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -29,27 +26,19 @@ class UploadBufferArgs {
     String? diskPath,
     required String gatewayArn,
     String? region,
-  })  : diskId = pulumi.Input.asOptionalInput<String>(diskId),
-        diskPath = pulumi.Input.asOptionalInput<String>(diskPath),
-        gatewayArn = pulumi.Input.asInput<String>(gatewayArn),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      diskId = pulumi.Input.asOptionalInput<String>(diskId),
+      diskPath = pulumi.Input.asOptionalInput<String>(diskPath),
+      gatewayArn = pulumi.Input.asInput<String>(gatewayArn),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final diskIdValue = diskId;
-    if (diskIdValue != null) {
-      map['diskId'] = diskIdValue;
-    }
-    final diskPathValue = diskPath;
-    if (diskPathValue != null) {
-      map['diskPath'] = diskPathValue;
-    }
-    map['gatewayArn'] = gatewayArn;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'diskId': ?diskId,
+      'diskPath': ?diskPath,
+      'gatewayArn': gatewayArn,
+      'region': ?region,
+    };
   }
 
   factory UploadBufferArgs.fromMap(Map<String, dynamic> map) {
@@ -61,3 +50,4 @@ class UploadBufferArgs {
     );
   }
 }
+

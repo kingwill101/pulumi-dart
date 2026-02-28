@@ -1,23 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRepository.
 class GetRepositoryResult {
   /// ARN of the repository.
   final String arn;
-
   /// URL to use for cloning the repository over HTTPS.
   final String cloneUrlHttp;
-
   /// URL to use for cloning the repository over SSH.
   final String cloneUrlSsh;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The ID of the encryption key.
   final String kmsKeyId;
   final String region;
-
   /// ID of the repository.
   final String repositoryId;
   final String repositoryName;
@@ -43,16 +39,16 @@ class GetRepositoryResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['cloneUrlHttp'] = cloneUrlHttp;
-    map['cloneUrlSsh'] = cloneUrlSsh;
-    map['id'] = id;
-    map['kmsKeyId'] = kmsKeyId;
-    map['region'] = region;
-    map['repositoryId'] = repositoryId;
-    map['repositoryName'] = repositoryName;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'cloneUrlHttp': cloneUrlHttp,
+      'cloneUrlSsh': cloneUrlSsh,
+      'id': id,
+      'kmsKeyId': kmsKeyId,
+      'region': region,
+      'repositoryId': repositoryId,
+      'repositoryName': repositoryName,
+    };
   }
 
   factory GetRepositoryResult.fromMap(Map<String, dynamic> map) {
@@ -68,3 +64,4 @@ class GetRepositoryResult {
     );
   }
 }
+

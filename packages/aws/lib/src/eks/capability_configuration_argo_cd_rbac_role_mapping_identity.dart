@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CapabilityConfigurationArgoCdRbacRoleMappingIdentity {
   /// Identity ID.
   final String id;
-
   /// Identity type. Valid values: `SSO_USER`, `SSO_GROUP`.
   final String type;
 
@@ -16,17 +16,17 @@ class CapabilityConfigurationArgoCdRbacRoleMappingIdentity {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'type': type,
+    };
   }
 
-  factory CapabilityConfigurationArgoCdRbacRoleMappingIdentity.fromMap(
-      Map<String, dynamic> map) {
+  factory CapabilityConfigurationArgoCdRbacRoleMappingIdentity.fromMap(Map<String, dynamic> map) {
     return CapabilityConfigurationArgoCdRbacRoleMappingIdentity(
       id: map['id'] as String,
       type: map['type'] as String,
     );
   }
 }
+

@@ -15,18 +15,15 @@ class SystemParametersResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['rules'] = pulumi.Input.encodeList<SystemParameterRuleResponse,
-        Map<String, dynamic>>(rules, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'rules': pulumi.Input.encodeList<SystemParameterRuleResponse, Map<String, dynamic>>(rules, (value) => value.toMap()),
+    };
   }
 
   factory SystemParametersResponse.fromMap(Map<String, dynamic> map) {
     return SystemParametersResponse(
-      rules: pulumi.Input.decodeList<SystemParameterRuleResponse>(
-          map['rules'],
-          (value) => SystemParameterRuleResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      rules: pulumi.Input.decodeList<SystemParameterRuleResponse>(map['rules'], (value) => SystemParameterRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

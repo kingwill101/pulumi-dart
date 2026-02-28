@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AgentPromptVariantTemplateConfigurationChatSystemCachePoint {
   /// Indicates that the CachePointBlock is of the default type. Valid values: `default`.
   final String type;
@@ -11,15 +12,15 @@ class AgentPromptVariantTemplateConfigurationChatSystemCachePoint {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
-  factory AgentPromptVariantTemplateConfigurationChatSystemCachePoint.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentPromptVariantTemplateConfigurationChatSystemCachePoint.fromMap(Map<String, dynamic> map) {
     return AgentPromptVariantTemplateConfigurationChatSystemCachePoint(
       type: map['type'] as String,
     );
   }
 }
+

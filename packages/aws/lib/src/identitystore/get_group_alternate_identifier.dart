@@ -6,7 +6,6 @@ import 'get_group_alternate_identifier_unique_attribute.dart';
 class GetGroupAlternateIdentifier {
   /// Configuration block for filtering by the identifier issued by an external identity provider. Detailed below.
   final GetGroupAlternateIdentifierExternalId? externalId;
-
   /// An entity attribute that's unique to a specific entity. Detailed below.
   ///
   /// > Exactly one of the above arguments must be provided.
@@ -21,28 +20,17 @@ class GetGroupAlternateIdentifier {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final externalIdValue = externalId;
-    if (externalIdValue != null) {
-      map['externalId'] = externalIdValue.toMap();
-    }
-    final uniqueAttributeValue = uniqueAttribute;
-    if (uniqueAttributeValue != null) {
-      map['uniqueAttribute'] = uniqueAttributeValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'externalId': ?externalId == null ? null : externalId!.toMap(),
+      'uniqueAttribute': ?uniqueAttribute == null ? null : uniqueAttribute!.toMap(),
+    };
   }
 
   factory GetGroupAlternateIdentifier.fromMap(Map<String, dynamic> map) {
     return GetGroupAlternateIdentifier(
-      externalId: map['externalId'] == null
-          ? null
-          : GetGroupAlternateIdentifierExternalId.fromMap(
-              (map['externalId'] as Map).cast<String, dynamic>()),
-      uniqueAttribute: map['uniqueAttribute'] == null
-          ? null
-          : GetGroupAlternateIdentifierUniqueAttribute.fromMap(
-              (map['uniqueAttribute'] as Map).cast<String, dynamic>()),
+      externalId: map['externalId'] == null ? null : GetGroupAlternateIdentifierExternalId.fromMap((map['externalId'] as Map).cast<String, dynamic>()),
+      uniqueAttribute: map['uniqueAttribute'] == null ? null : GetGroupAlternateIdentifierUniqueAttribute.fromMap((map['uniqueAttribute'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

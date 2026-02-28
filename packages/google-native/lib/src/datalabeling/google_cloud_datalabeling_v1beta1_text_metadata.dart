@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Metadata for the text.
 class GoogleCloudDatalabelingV1beta1TextMetadata {
   /// The language of this text, as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Default value is en-US.
@@ -12,19 +13,15 @@ class GoogleCloudDatalabelingV1beta1TextMetadata {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final languageCodeValue = languageCode;
-    if (languageCodeValue != null) {
-      map['languageCode'] = languageCodeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'languageCode': ?languageCode,
+    };
   }
 
-  factory GoogleCloudDatalabelingV1beta1TextMetadata.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDatalabelingV1beta1TextMetadata.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatalabelingV1beta1TextMetadata(
-      languageCode:
-          map['languageCode'] == null ? null : map['languageCode'] as String,
+      languageCode: map['languageCode'] == null ? null : map['languageCode'] as String,
     );
   }
 }
+

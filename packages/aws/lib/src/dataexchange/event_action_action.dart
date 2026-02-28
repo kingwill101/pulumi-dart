@@ -14,15 +14,15 @@ class EventActionAction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['exportRevisionToS3'] = exportRevisionToS3.toMap();
-    return map;
+    return <String, dynamic>{
+      'exportRevisionToS3': exportRevisionToS3.toMap(),
+    };
   }
 
   factory EventActionAction.fromMap(Map<String, dynamic> map) {
     return EventActionAction(
-      exportRevisionToS3: EventActionActionExportRevisionToS3.fromMap(
-          (map['exportRevisionToS3'] as Map).cast<String, dynamic>()),
+      exportRevisionToS3: EventActionActionExportRevisionToS3.fromMap((map['exportRevisionToS3'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

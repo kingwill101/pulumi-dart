@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The text response message.
 class GoogleCloudDialogflowCxV3ResponseMessageText {
   /// A collection of text responses.
@@ -12,15 +13,15 @@ class GoogleCloudDialogflowCxV3ResponseMessageText {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['text'] = text;
-    return map;
+    return <String, dynamic>{
+      'text': text,
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3ResponseMessageText.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3ResponseMessageText.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3ResponseMessageText(
       text: (map['text'] as List).cast<String>(),
     );
   }
 }
+

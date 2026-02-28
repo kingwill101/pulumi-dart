@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class OptInResourceDataDatabase {
   /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
   final String? catalogId;
-
   /// Name of the table.
   final String name;
 
@@ -16,13 +16,10 @@ class OptInResourceDataDatabase {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final catalogIdValue = catalogId;
-    if (catalogIdValue != null) {
-      map['catalogId'] = catalogIdValue;
-    }
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'catalogId': ?catalogId,
+      'name': name,
+    };
   }
 
   factory OptInResourceDataDatabase.fromMap(Map<String, dynamic> map) {
@@ -32,3 +29,4 @@ class OptInResourceDataDatabase {
     );
   }
 }
+

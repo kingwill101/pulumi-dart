@@ -16,17 +16,15 @@ class GetSslCertificateComputeBetaArgs {
   GetSslCertificateComputeBetaArgs({
     String? project,
     required String sslCertificate,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        sslCertificate = pulumi.Input.asInput<String>(sslCertificate);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      sslCertificate = pulumi.Input.asInput<String>(sslCertificate);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['sslCertificate'] = sslCertificate;
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'sslCertificate': sslCertificate,
+    };
   }
 
   factory GetSslCertificateComputeBetaArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetSslCertificateComputeBetaArgs {
     );
   }
 }
+

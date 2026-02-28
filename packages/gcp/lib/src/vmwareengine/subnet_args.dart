@@ -9,11 +9,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubnetArgs {
   /// The IP address range of the subnet in CIDR format.
   final pulumi.Input<String> ipCidrRange;
-
   /// The ID of the subnet. For userDefined subnets, this name should be in the format of "service-n",
   /// where n ranges from 1 to 5.
   final pulumi.Input<String>? name;
-
   /// The resource name of the private cloud to create a new subnet in.
   /// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
   /// For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
@@ -27,19 +25,17 @@ class SubnetArgs {
     required String ipCidrRange,
     String? name,
     required String parent,
-  })  : ipCidrRange = pulumi.Input.asInput<String>(ipCidrRange),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        parent = pulumi.Input.asInput<String>(parent);
+  }) :
+      ipCidrRange = pulumi.Input.asInput<String>(ipCidrRange),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      parent = pulumi.Input.asInput<String>(parent);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ipCidrRange'] = ipCidrRange;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    map['parent'] = parent;
-    return map;
+    return <String, dynamic>{
+      'ipCidrRange': ipCidrRange,
+      'name': ?name,
+      'parent': parent,
+    };
   }
 
   factory SubnetArgs.fromMap(Map<String, dynamic> map) {
@@ -50,3 +46,4 @@ class SubnetArgs {
     );
   }
 }
+

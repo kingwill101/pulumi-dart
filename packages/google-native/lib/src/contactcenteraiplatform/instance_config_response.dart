@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Message storing the instance configuration.
 class InstanceConfigResponse {
   /// The instance size of this the instance configuration.
@@ -12,9 +13,9 @@ class InstanceConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['instanceSize'] = instanceSize;
-    return map;
+    return <String, dynamic>{
+      'instanceSize': instanceSize,
+    };
   }
 
   factory InstanceConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class InstanceConfigResponse {
     );
   }
 }
+

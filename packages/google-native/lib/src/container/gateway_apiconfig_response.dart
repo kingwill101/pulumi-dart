@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
 class GatewayAPIConfigResponse {
   /// The Gateway API release channel to use for Gateway API.
@@ -12,9 +13,9 @@ class GatewayAPIConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['channel'] = channel;
-    return map;
+    return <String, dynamic>{
+      'channel': channel,
+    };
   }
 
   factory GatewayAPIConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class GatewayAPIConfigResponse {
     );
   }
 }
+

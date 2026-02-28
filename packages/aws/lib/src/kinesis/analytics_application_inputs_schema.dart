@@ -8,10 +8,8 @@ class AnalyticsApplicationInputsSchema {
   /// The Record Column mapping for the streaming source data element.
   /// See Record Columns below for more details.
   final List<AnalyticsApplicationInputsSchemaRecordColumn> recordColumns;
-
   /// The Encoding of the record in the streaming source.
   final String? recordEncoding;
-
   /// The Record Format and mapping information to schematize a record.
   /// See Record Format below for more details.
   final AnalyticsApplicationInputsSchemaRecordFormat recordFormat;
@@ -27,30 +25,19 @@ class AnalyticsApplicationInputsSchema {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['recordColumns'] = pulumi.Input.encodeList<
-        AnalyticsApplicationInputsSchemaRecordColumn,
-        Map<String, dynamic>>(recordColumns, (value) => value.toMap());
-    final recordEncodingValue = recordEncoding;
-    if (recordEncodingValue != null) {
-      map['recordEncoding'] = recordEncodingValue;
-    }
-    map['recordFormat'] = recordFormat.toMap();
-    return map;
+    return <String, dynamic>{
+      'recordColumns': pulumi.Input.encodeList<AnalyticsApplicationInputsSchemaRecordColumn, Map<String, dynamic>>(recordColumns, (value) => value.toMap()),
+      'recordEncoding': ?recordEncoding,
+      'recordFormat': recordFormat.toMap(),
+    };
   }
 
   factory AnalyticsApplicationInputsSchema.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationInputsSchema(
-      recordColumns:
-          pulumi.Input.decodeList<AnalyticsApplicationInputsSchemaRecordColumn>(
-              map['recordColumns'],
-              (value) => AnalyticsApplicationInputsSchemaRecordColumn.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      recordEncoding: map['recordEncoding'] == null
-          ? null
-          : map['recordEncoding'] as String,
-      recordFormat: AnalyticsApplicationInputsSchemaRecordFormat.fromMap(
-          (map['recordFormat'] as Map).cast<String, dynamic>()),
+      recordColumns: pulumi.Input.decodeList<AnalyticsApplicationInputsSchemaRecordColumn>(map['recordColumns'], (value) => AnalyticsApplicationInputsSchemaRecordColumn.fromMap((value as Map).cast<String, dynamic>())),
+      recordEncoding: map['recordEncoding'] == null ? null : map['recordEncoding'] as String,
+      recordFormat: AnalyticsApplicationInputsSchemaRecordFormat.fromMap((map['recordFormat'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

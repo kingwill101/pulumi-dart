@@ -8,7 +8,6 @@ class ConnectionAuthConfigOauth2JwtBearer {
   /// This private key will be used to sign JWTs used for the jwt-bearer authorization grant.
   /// Specified in the form as: projects/*/secrets/*/versions/*.
   final ConnectionAuthConfigOauth2JwtBearerClientKey? clientKey;
-
   /// JwtClaims providers fields to generate the token.
   final ConnectionAuthConfigOauth2JwtBearerJwtClaims? jwtClaims;
 
@@ -21,29 +20,17 @@ class ConnectionAuthConfigOauth2JwtBearer {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final clientKeyValue = clientKey;
-    if (clientKeyValue != null) {
-      map['clientKey'] = clientKeyValue.toMap();
-    }
-    final jwtClaimsValue = jwtClaims;
-    if (jwtClaimsValue != null) {
-      map['jwtClaims'] = jwtClaimsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'clientKey': ?clientKey == null ? null : clientKey!.toMap(),
+      'jwtClaims': ?jwtClaims == null ? null : jwtClaims!.toMap(),
+    };
   }
 
-  factory ConnectionAuthConfigOauth2JwtBearer.fromMap(
-      Map<String, dynamic> map) {
+  factory ConnectionAuthConfigOauth2JwtBearer.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthConfigOauth2JwtBearer(
-      clientKey: map['clientKey'] == null
-          ? null
-          : ConnectionAuthConfigOauth2JwtBearerClientKey.fromMap(
-              (map['clientKey'] as Map).cast<String, dynamic>()),
-      jwtClaims: map['jwtClaims'] == null
-          ? null
-          : ConnectionAuthConfigOauth2JwtBearerJwtClaims.fromMap(
-              (map['jwtClaims'] as Map).cast<String, dynamic>()),
+      clientKey: map['clientKey'] == null ? null : ConnectionAuthConfigOauth2JwtBearerClientKey.fromMap((map['clientKey'] as Map).cast<String, dynamic>()),
+      jwtClaims: map['jwtClaims'] == null ? null : ConnectionAuthConfigOauth2JwtBearerJwtClaims.fromMap((map['jwtClaims'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

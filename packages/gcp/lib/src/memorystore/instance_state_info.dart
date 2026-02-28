@@ -16,23 +16,15 @@ class InstanceStateInfo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final updateInfosValue = updateInfos;
-    if (updateInfosValue != null) {
-      map['updateInfos'] = pulumi.Input.encodeList<InstanceStateInfoUpdateInfo,
-          Map<String, dynamic>>(updateInfosValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'updateInfos': ?updateInfos == null ? null : pulumi.Input.encodeList<InstanceStateInfoUpdateInfo, Map<String, dynamic>>(updateInfos!, (value) => value.toMap()),
+    };
   }
 
   factory InstanceStateInfo.fromMap(Map<String, dynamic> map) {
     return InstanceStateInfo(
-      updateInfos: map['updateInfos'] == null
-          ? null
-          : pulumi.Input.decodeList<InstanceStateInfoUpdateInfo>(
-              map['updateInfos'],
-              (value) => InstanceStateInfoUpdateInfo.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      updateInfos: map['updateInfos'] == null ? null : pulumi.Input.decodeList<InstanceStateInfoUpdateInfo>(map['updateInfos'], (value) => InstanceStateInfoUpdateInfo.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

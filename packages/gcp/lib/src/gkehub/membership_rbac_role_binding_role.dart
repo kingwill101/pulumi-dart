@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MembershipRbacRoleBindingRole {
   /// PredefinedRole is an ENUM representation of the default Kubernetes Roles
   /// Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
@@ -12,9 +13,9 @@ class MembershipRbacRoleBindingRole {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['predefinedRole'] = predefinedRole;
-    return map;
+    return <String, dynamic>{
+      'predefinedRole': predefinedRole,
+    };
   }
 
   factory MembershipRbacRoleBindingRole.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class MembershipRbacRoleBindingRole {
     );
   }
 }
+

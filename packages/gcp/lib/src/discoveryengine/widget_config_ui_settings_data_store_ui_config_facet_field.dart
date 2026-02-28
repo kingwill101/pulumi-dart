@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WidgetConfigUiSettingsDataStoreUiConfigFacetField {
   /// The field name that end users will see.
   final String? displayName;
-
   /// Registered field name. The format is `field.abc`.
   final String field;
 
@@ -16,21 +16,17 @@ class WidgetConfigUiSettingsDataStoreUiConfigFacetField {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final displayNameValue = displayName;
-    if (displayNameValue != null) {
-      map['displayName'] = displayNameValue;
-    }
-    map['field'] = field;
-    return map;
+    return <String, dynamic>{
+      'displayName': ?displayName,
+      'field': field,
+    };
   }
 
-  factory WidgetConfigUiSettingsDataStoreUiConfigFacetField.fromMap(
-      Map<String, dynamic> map) {
+  factory WidgetConfigUiSettingsDataStoreUiConfigFacetField.fromMap(Map<String, dynamic> map) {
     return WidgetConfigUiSettingsDataStoreUiConfigFacetField(
-      displayName:
-          map['displayName'] == null ? null : map['displayName'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
       field: map['field'] as String,
     );
   }
 }
+

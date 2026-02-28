@@ -2926,17 +2926,13 @@ import 'global_forwarding_rule_service_directory_registrations.dart';
 class GlobalForwardingRule extends pulumi.CustomResource {
   /// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
   late final pulumi.Output<bool?> allowPscGlobalAccess;
-
   /// [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
   late final pulumi.Output<String> baseForwardingRule;
-
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
   late final pulumi.Output<String?> description;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Specifies the canary migration state for the backend buckets attached to this forwarding rule.
   /// Possible values are PREPARE, TEST_BY_PERCENTAGE, and TEST_ALL_TRAFFIC.
   /// To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to
@@ -2950,18 +2946,14 @@ class GlobalForwardingRule extends pulumi.CustomResource {
   /// back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
   /// Possible values are: `PREPARE`, `TEST_BY_PERCENTAGE`, `TEST_ALL_TRAFFIC`.
   late final pulumi.Output<String?> externalManagedBackendBucketMigrationState;
-
   /// Determines the fraction of requests to backend buckets that should be processed by the Global
   /// external Application Load Balancer.
   /// The value of this field must be in the range [0, 100].
   /// This value can only be set if the loadBalancingScheme in the forwarding rule is set to
   /// EXTERNAL (when using the Classic ALB) and the migration state is TEST_BY_PERCENTAGE.
-  late final pulumi.Output<double?>
-      externalManagedBackendBucketMigrationTestingPercentage;
-
+  late final pulumi.Output<double?> externalManagedBackendBucketMigrationTestingPercentage;
   /// The unique identifier number for the resource. This identifier is defined by the server.
   late final pulumi.Output<int> forwardingRuleId;
-
   /// IP address for which this forwarding rule accepts traffic. When a client
   /// sends traffic to this IP address, the forwarding rule directs the traffic
   /// to the referenced `target`.
@@ -2994,7 +2986,6 @@ class GlobalForwardingRule extends pulumi.CustomResource {
   /// When reading an `IPAddress`, the API always returns the IP
   /// address number.
   late final pulumi.Output<String> ipAddress;
-
   /// The IP protocol to which this rule applies.
   /// For protocol forwarding, valid
   /// options are `TCP`, `UDP`, `ESP`,
@@ -3005,28 +2996,23 @@ class GlobalForwardingRule extends pulumi.CustomResource {
   /// features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
   /// Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
   late final pulumi.Output<String> ipProtocol;
-
   /// The IP Version that will be used by this global forwarding rule.
   /// Possible values are: `IPV4`, `IPV6`.
   late final pulumi.Output<String?> ipVersion;
-
   /// The fingerprint used for optimistic locking of this resource.  Used
   /// internally during updates.
   late final pulumi.Output<String> labelFingerprint;
-
   /// Labels to apply to this forwarding rule.  A list of key->value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Specifies the forwarding rule type.
   /// For more information about forwarding rules, refer to
   /// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
   /// Default value is `EXTERNAL`.
   /// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
   late final pulumi.Output<String?> loadBalancingScheme;
-
   /// Opaque filter criteria used by Loadbalancer to restrict routing
   /// configuration to a limited set xDS compliant clients. In their xDS
   /// requests to Loadbalancer, xDS clients present node metadata. If a
@@ -3042,9 +3028,7 @@ class GlobalForwardingRule extends pulumi.CustomResource {
   /// metadataFilters only applies to Loadbalancers that have their
   /// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
   /// Structure is documented below.
-  late final pulumi.Output<List<GlobalForwardingRuleMetadataFilter>?>
-      metadataFilters;
-
+  late final pulumi.Output<List<GlobalForwardingRuleMetadataFilter>?> metadataFilters;
   /// Name of the resource; provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with
   /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
@@ -3057,7 +3041,6 @@ class GlobalForwardingRule extends pulumi.CustomResource {
   /// APIs, the forwarding rule name must be a 1-20 characters string with
   /// lowercase letters and numbers and must start with a letter.
   late final pulumi.Output<String> name;
-
   /// This field is not used for external load balancing.
   /// For Internal TCP/UDP Load Balancing, this field identifies the network that
   /// the load balanced IP should belong to for this Forwarding Rule.
@@ -3067,7 +3050,6 @@ class GlobalForwardingRule extends pulumi.CustomResource {
   /// For Private Service Connect forwarding rules that forward traffic to Google
   /// APIs, a network must be provided.
   late final pulumi.Output<String> network;
-
   /// This signifies the networking tier used for configuring
   /// this load balancer and can only take the following values:
   /// `PREMIUM`, `STANDARD`.
@@ -3079,10 +3061,8 @@ class GlobalForwardingRule extends pulumi.CustomResource {
   /// networkTier of the Address.
   /// Possible values are: `PREMIUM`, `STANDARD`.
   late final pulumi.Output<String> networkTier;
-
   /// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
   late final pulumi.Output<bool?> noAutomateDnsZone;
-
   /// The `portRange` field has the following limitations:
   /// * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
   /// and
@@ -3101,33 +3081,24 @@ class GlobalForwardingRule extends pulumi.CustomResource {
   /// cannot have overlapping `portRange`s.
   /// @pattern: \d+(?:-\d+)?
   late final pulumi.Output<String?> portRange;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The PSC connection id of the PSC Forwarding Rule.
   late final pulumi.Output<String> pscConnectionId;
-
   /// The PSC connection status of the PSC Forwarding Rule. Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`
   late final pulumi.Output<String> pscConnectionStatus;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
-
   /// Service Directory resources to register this forwarding rule with.
   /// Currently, only supports a single Service Directory resource.
   /// Structure is documented below.
-  late final pulumi.Output<GlobalForwardingRuleServiceDirectoryRegistrations>
-      serviceDirectoryRegistrations;
-
+  late final pulumi.Output<GlobalForwardingRuleServiceDirectoryRegistrations> serviceDirectoryRegistrations;
   /// If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
   late final pulumi.Output<List<String>?> sourceIpRanges;
-
   /// This field identifies the subnetwork that the load balanced IP should
   /// belong to for this Forwarding Rule, used in internal load balancing and
   /// network load balancing with IPv6.
@@ -3135,7 +3106,6 @@ class GlobalForwardingRule extends pulumi.CustomResource {
   /// However, a subnetwork must be specified if the network is in custom subnet
   /// mode or when creating external forwarding rule with IPv6.
   late final pulumi.Output<String> subnetwork;
-
   /// The URL of the target resource to receive the matched traffic.  For
   /// regional forwarding rules, this target must be in the same region as the
   /// forwarding rule. For global forwarding rules, this target must be a global
@@ -3165,13 +3135,9 @@ class GlobalForwardingRule extends pulumi.CustomResource {
     this.allowPscGlobalAccess = registerOutput<bool?>('allowPscGlobalAccess');
     this.baseForwardingRule = registerOutput<String>('baseForwardingRule');
     this.description = registerOutput<String?>('description');
-    this.effectiveLabels =
-        registerOutput<Map<String, String>>('effectiveLabels');
-    this.externalManagedBackendBucketMigrationState =
-        registerOutput<String?>('externalManagedBackendBucketMigrationState');
-    this.externalManagedBackendBucketMigrationTestingPercentage =
-        registerOutput<double?>(
-            'externalManagedBackendBucketMigrationTestingPercentage');
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    this.externalManagedBackendBucketMigrationState = registerOutput<String?>('externalManagedBackendBucketMigrationState');
+    this.externalManagedBackendBucketMigrationTestingPercentage = registerOutput<double?>('externalManagedBackendBucketMigrationTestingPercentage');
     this.forwardingRuleId = registerOutput<int>('forwardingRuleId');
     this.ipAddress = registerOutput<String>('ipAddress');
     this.ipProtocol = registerOutput<String>('ipProtocol');
@@ -3179,9 +3145,7 @@ class GlobalForwardingRule extends pulumi.CustomResource {
     this.labelFingerprint = registerOutput<String>('labelFingerprint');
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.loadBalancingScheme = registerOutput<String?>('loadBalancingScheme');
-    this.metadataFilters =
-        registerOutput<List<GlobalForwardingRuleMetadataFilter>?>(
-            'metadataFilters');
+    this.metadataFilters = registerOutput<List<GlobalForwardingRuleMetadataFilter>?>('metadataFilters');
     this.name = registerOutput<String>('name');
     this.network = registerOutput<String>('network');
     this.networkTier = registerOutput<String>('networkTier');
@@ -3192,9 +3156,7 @@ class GlobalForwardingRule extends pulumi.CustomResource {
     this.pscConnectionStatus = registerOutput<String>('pscConnectionStatus');
     this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.selfLink = registerOutput<String>('selfLink');
-    this.serviceDirectoryRegistrations =
-        registerOutput<GlobalForwardingRuleServiceDirectoryRegistrations>(
-            'serviceDirectoryRegistrations');
+    this.serviceDirectoryRegistrations = registerOutput<GlobalForwardingRuleServiceDirectoryRegistrations>('serviceDirectoryRegistrations');
     this.sourceIpRanges = registerOutput<List<String>?>('sourceIpRanges');
     this.subnetwork = registerOutput<String>('subnetwork');
     this.target = registerOutput<String>('target');

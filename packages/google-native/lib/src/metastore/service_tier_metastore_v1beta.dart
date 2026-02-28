@@ -16,3 +16,4 @@ enum ServiceTierMetastoreV1beta {
     throw ArgumentError('Unknown ServiceTierMetastoreV1beta value: $value');
   }
 }
+

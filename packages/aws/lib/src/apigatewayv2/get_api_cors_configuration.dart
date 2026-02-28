@@ -1,21 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetApiCorsConfiguration {
   /// Whether credentials are included in the CORS request.
   final bool allowCredentials;
-
   /// Set of allowed HTTP headers.
   final List<String> allowHeaders;
-
   /// Set of allowed HTTP methods.
   final List<String> allowMethods;
-
   /// Set of allowed origins.
   final List<String> allowOrigins;
-
   /// Set of exposed HTTP headers.
   final List<String> exposeHeaders;
-
   /// Number of seconds that the browser should cache preflight request results.
   final int maxAge;
 
@@ -36,14 +32,14 @@ class GetApiCorsConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allowCredentials'] = allowCredentials;
-    map['allowHeaders'] = allowHeaders;
-    map['allowMethods'] = allowMethods;
-    map['allowOrigins'] = allowOrigins;
-    map['exposeHeaders'] = exposeHeaders;
-    map['maxAge'] = maxAge;
-    return map;
+    return <String, dynamic>{
+      'allowCredentials': allowCredentials,
+      'allowHeaders': allowHeaders,
+      'allowMethods': allowMethods,
+      'allowOrigins': allowOrigins,
+      'exposeHeaders': exposeHeaders,
+      'maxAge': maxAge,
+    };
   }
 
   factory GetApiCorsConfiguration.fromMap(Map<String, dynamic> map) {
@@ -57,3 +53,4 @@ class GetApiCorsConfiguration {
     );
   }
 }
+

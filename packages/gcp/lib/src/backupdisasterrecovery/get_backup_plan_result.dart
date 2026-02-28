@@ -11,7 +11,6 @@ class GetBackupPlanResult {
   final String backupVaultServiceAccount;
   final String createTime;
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
@@ -58,37 +57,29 @@ class GetBackupPlanResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['backupPlanId'] = backupPlanId;
-    map['backupRules'] =
-        pulumi.Input.encodeList<GetBackupPlanBackupRule, Map<String, dynamic>>(
-            backupRules, (value) => value.toMap());
-    map['backupVault'] = backupVault;
-    map['backupVaultServiceAccount'] = backupVaultServiceAccount;
-    map['createTime'] = createTime;
-    map['description'] = description;
-    map['id'] = id;
-    map['location'] = location;
-    map['logRetentionDays'] = logRetentionDays;
-    map['maxCustomOnDemandRetentionDays'] = maxCustomOnDemandRetentionDays;
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['resourceType'] = resourceType;
-    map['supportedResourceTypes'] = supportedResourceTypes;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'backupPlanId': backupPlanId,
+      'backupRules': pulumi.Input.encodeList<GetBackupPlanBackupRule, Map<String, dynamic>>(backupRules, (value) => value.toMap()),
+      'backupVault': backupVault,
+      'backupVaultServiceAccount': backupVaultServiceAccount,
+      'createTime': createTime,
+      'description': description,
+      'id': id,
+      'location': location,
+      'logRetentionDays': logRetentionDays,
+      'maxCustomOnDemandRetentionDays': maxCustomOnDemandRetentionDays,
+      'name': name,
+      'project': ?project,
+      'resourceType': resourceType,
+      'supportedResourceTypes': supportedResourceTypes,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetBackupPlanResult.fromMap(Map<String, dynamic> map) {
     return GetBackupPlanResult(
       backupPlanId: map['backupPlanId'] as String,
-      backupRules: pulumi.Input.decodeList<GetBackupPlanBackupRule>(
-          map['backupRules'],
-          (value) => GetBackupPlanBackupRule.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      backupRules: pulumi.Input.decodeList<GetBackupPlanBackupRule>(map['backupRules'], (value) => GetBackupPlanBackupRule.fromMap((value as Map).cast<String, dynamic>())),
       backupVault: map['backupVault'] as String,
       backupVaultServiceAccount: map['backupVaultServiceAccount'] as String,
       createTime: map['createTime'] as String,
@@ -96,14 +87,13 @@ class GetBackupPlanResult {
       id: map['id'] as String,
       location: map['location'] as String,
       logRetentionDays: map['logRetentionDays'] as int,
-      maxCustomOnDemandRetentionDays:
-          map['maxCustomOnDemandRetentionDays'] as int,
+      maxCustomOnDemandRetentionDays: map['maxCustomOnDemandRetentionDays'] as int,
       name: map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       resourceType: map['resourceType'] as String,
-      supportedResourceTypes:
-          (map['supportedResourceTypes'] as List).cast<String>(),
+      supportedResourceTypes: (map['supportedResourceTypes'] as List).cast<String>(),
       updateTime: map['updateTime'] as String,
     );
   }
 }
+

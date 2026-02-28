@@ -6,10 +6,8 @@ import 'entitlement_privileged_access_gcp_iam_access_role_binding.dart';
 class EntitlementPrivilegedAccessGcpIamAccess {
   /// Name of the resource.
   final String resource;
-
   /// The type of this resource.
   final String resourceType;
-
   /// Role bindings to be created on successful grant.
   /// Structure is documented below.
   final List<EntitlementPrivilegedAccessGcpIamAccessRoleBinding> roleBindings;
@@ -25,25 +23,19 @@ class EntitlementPrivilegedAccessGcpIamAccess {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['resource'] = resource;
-    map['resourceType'] = resourceType;
-    map['roleBindings'] = pulumi.Input.encodeList<
-        EntitlementPrivilegedAccessGcpIamAccessRoleBinding,
-        Map<String, dynamic>>(roleBindings, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'resource': resource,
+      'resourceType': resourceType,
+      'roleBindings': pulumi.Input.encodeList<EntitlementPrivilegedAccessGcpIamAccessRoleBinding, Map<String, dynamic>>(roleBindings, (value) => value.toMap()),
+    };
   }
 
-  factory EntitlementPrivilegedAccessGcpIamAccess.fromMap(
-      Map<String, dynamic> map) {
+  factory EntitlementPrivilegedAccessGcpIamAccess.fromMap(Map<String, dynamic> map) {
     return EntitlementPrivilegedAccessGcpIamAccess(
       resource: map['resource'] as String,
       resourceType: map['resourceType'] as String,
-      roleBindings: pulumi.Input.decodeList<
-              EntitlementPrivilegedAccessGcpIamAccessRoleBinding>(
-          map['roleBindings'],
-          (value) => EntitlementPrivilegedAccessGcpIamAccessRoleBinding.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      roleBindings: pulumi.Input.decodeList<EntitlementPrivilegedAccessGcpIamAccessRoleBinding>(map['roleBindings'], (value) => EntitlementPrivilegedAccessGcpIamAccessRoleBinding.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -16,3 +16,4 @@ enum KeyKeyAlgorithm {
     throw ArgumentError('Unknown KeyKeyAlgorithm value: $value');
   }
 }
+

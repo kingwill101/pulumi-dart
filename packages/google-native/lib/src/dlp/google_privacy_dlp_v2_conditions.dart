@@ -15,23 +15,15 @@ class GooglePrivacyDlpV2Conditions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final conditionsValue = conditions;
-    if (conditionsValue != null) {
-      map['conditions'] = pulumi.Input.encodeList<GooglePrivacyDlpV2Condition,
-          Map<String, dynamic>>(conditionsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<GooglePrivacyDlpV2Condition, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+    };
   }
 
   factory GooglePrivacyDlpV2Conditions.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2Conditions(
-      conditions: map['conditions'] == null
-          ? null
-          : pulumi.Input.decodeList<GooglePrivacyDlpV2Condition>(
-              map['conditions'],
-              (value) => GooglePrivacyDlpV2Condition.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<GooglePrivacyDlpV2Condition>(map['conditions'], (value) => GooglePrivacyDlpV2Condition.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

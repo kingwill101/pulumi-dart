@@ -752,19 +752,15 @@ import 'game_server_group_launch_template.dart';
 class GameServerGroup extends pulumi.CustomResource {
   /// The ARN of the GameLift Game Server Group.
   late final pulumi.Output<String> arn;
-
   /// The ARN of the created EC2 Auto Scaling group.
   late final pulumi.Output<String> autoScalingGroupArn;
   late final pulumi.Output<GameServerGroupAutoScalingPolicy?> autoScalingPolicy;
-
   /// Indicates how GameLift FleetIQ balances the use of Spot Instances and On-Demand Instances.
   /// Valid values: `SPOT_ONLY`, `SPOT_PREFERRED`, `ON_DEMAND_ONLY`. Defaults to `SPOT_PREFERRED`.
   late final pulumi.Output<String> balancingStrategy;
-
   /// Name of the game server group.
   /// This value is used to generate unique ARN identifiers for the EC2 Auto Scaling group and the GameLift FleetIQ game server group.
   late final pulumi.Output<String> gameServerGroupName;
-
   /// Indicates whether instances in the game server group are protected from early termination.
   /// Unprotected instances that have active game servers running might be terminated during a scale-down event,
   /// causing players to be dropped from the game.
@@ -772,28 +768,21 @@ class GameServerGroup extends pulumi.CustomResource {
   /// of a forced game server group deletion.
   /// Valid values: `NO_PROTECTION`, `FULL_PROTECTION`. Defaults to `NO_PROTECTION`.
   late final pulumi.Output<String> gameServerProtectionPolicy;
-  late final pulumi.Output<List<GameServerGroupInstanceDefinition>>
-      instanceDefinitions;
+  late final pulumi.Output<List<GameServerGroupInstanceDefinition>> instanceDefinitions;
   late final pulumi.Output<GameServerGroupLaunchTemplate> launchTemplate;
-
   /// The maximum number of instances allowed in the EC2 Auto Scaling group.
   /// During automatic scaling events, GameLift FleetIQ and EC2 do not scale up the group above this maximum.
   late final pulumi.Output<int> maxSize;
-
   /// The minimum number of instances allowed in the EC2 Auto Scaling group.
   /// During automatic scaling events, GameLift FleetIQ and EC2 do not scale down the group below this minimum.
   late final pulumi.Output<int> minSize;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ARN for an IAM role that allows Amazon GameLift to access your EC2 Auto Scaling groups.
   late final pulumi.Output<String> roleArn;
-
   /// Key-value map of resource tags
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// A list of VPC subnets to use with instances in the game server group.
   /// By default, all GameLift FleetIQ-supported Availability Zones are used.
   late final pulumi.Output<List<String>?> vpcSubnets;
@@ -814,17 +803,12 @@ class GameServerGroup extends pulumi.CustomResource {
         ) {
     this.arn = registerOutput<String>('arn');
     this.autoScalingGroupArn = registerOutput<String>('autoScalingGroupArn');
-    this.autoScalingPolicy =
-        registerOutput<GameServerGroupAutoScalingPolicy?>('autoScalingPolicy');
+    this.autoScalingPolicy = registerOutput<GameServerGroupAutoScalingPolicy?>('autoScalingPolicy');
     this.balancingStrategy = registerOutput<String>('balancingStrategy');
     this.gameServerGroupName = registerOutput<String>('gameServerGroupName');
-    this.gameServerProtectionPolicy =
-        registerOutput<String>('gameServerProtectionPolicy');
-    this.instanceDefinitions =
-        registerOutput<List<GameServerGroupInstanceDefinition>>(
-            'instanceDefinitions');
-    this.launchTemplate =
-        registerOutput<GameServerGroupLaunchTemplate>('launchTemplate');
+    this.gameServerProtectionPolicy = registerOutput<String>('gameServerProtectionPolicy');
+    this.instanceDefinitions = registerOutput<List<GameServerGroupInstanceDefinition>>('instanceDefinitions');
+    this.launchTemplate = registerOutput<GameServerGroupLaunchTemplate>('launchTemplate');
     this.maxSize = registerOutput<int>('maxSize');
     this.minSize = registerOutput<int>('minSize');
     this.region = registerOutput<String>('region');

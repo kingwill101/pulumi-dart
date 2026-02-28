@@ -14,15 +14,15 @@ class DiscoveryNote {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['analysisKind'] = analysisKind.value;
-    return map;
+    return <String, dynamic>{
+      'analysisKind': analysisKind.value,
+    };
   }
 
   factory DiscoveryNote.fromMap(Map<String, dynamic> map) {
     return DiscoveryNote(
-      analysisKind:
-          DiscoveryNoteAnalysisKind.fromValue(map['analysisKind'] as String),
+      analysisKind: DiscoveryNoteAnalysisKind.fromValue(map['analysisKind'] as String),
     );
   }
 }
+

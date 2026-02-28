@@ -7,7 +7,6 @@ import 'security_posture_config_vulnerability_mode_gkehub_v1beta.dart';
 class SecurityPostureConfigGkehubV1beta {
   /// Sets which mode to use for Security Posture features.
   final SecurityPostureConfigModeGkehubV1beta? mode;
-
   /// Sets which mode to use for vulnerability scanning.
   final SecurityPostureConfigVulnerabilityModeGkehubV1beta? vulnerabilityMode;
 
@@ -20,28 +19,17 @@ class SecurityPostureConfigGkehubV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final modeValue = mode;
-    if (modeValue != null) {
-      map['mode'] = modeValue.value;
-    }
-    final vulnerabilityModeValue = vulnerabilityMode;
-    if (vulnerabilityModeValue != null) {
-      map['vulnerabilityMode'] = vulnerabilityModeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'mode': ?mode == null ? null : mode!.value,
+      'vulnerabilityMode': ?vulnerabilityMode == null ? null : vulnerabilityMode!.value,
+    };
   }
 
   factory SecurityPostureConfigGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return SecurityPostureConfigGkehubV1beta(
-      mode: map['mode'] == null
-          ? null
-          : SecurityPostureConfigModeGkehubV1beta.fromValue(
-              map['mode'] as String),
-      vulnerabilityMode: map['vulnerabilityMode'] == null
-          ? null
-          : SecurityPostureConfigVulnerabilityModeGkehubV1beta.fromValue(
-              map['vulnerabilityMode'] as String),
+      mode: map['mode'] == null ? null : SecurityPostureConfigModeGkehubV1beta.fromValue(map['mode'] as String),
+      vulnerabilityMode: map['vulnerabilityMode'] == null ? null : SecurityPostureConfigVulnerabilityModeGkehubV1beta.fromValue(map['vulnerabilityMode'] as String),
     );
   }
 }
+

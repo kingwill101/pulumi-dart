@@ -19,23 +19,20 @@ class GetGrpcRouteNetworkservicesV1beta1Args {
     required String grpcRouteId,
     required String location,
     String? project,
-  })  : grpcRouteId = pulumi.Input.asInput<String>(grpcRouteId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      grpcRouteId = pulumi.Input.asInput<String>(grpcRouteId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['grpcRouteId'] = grpcRouteId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'grpcRouteId': grpcRouteId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
-  factory GetGrpcRouteNetworkservicesV1beta1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetGrpcRouteNetworkservicesV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetGrpcRouteNetworkservicesV1beta1Args(
       grpcRouteId: map['grpcRouteId'] as String,
       location: map['location'] as String,
@@ -43,3 +40,4 @@ class GetGrpcRouteNetworkservicesV1beta1Args {
     );
   }
 }
+

@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getStaticIps.
 class GetStaticIpsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
   final String? project;
-
   /// A list of static IP addresses that Datastream will connect from.
   final List<String> staticIps;
 
@@ -23,15 +23,12 @@ class GetStaticIpsResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['staticIps'] = staticIps;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'location': location,
+      'project': ?project,
+      'staticIps': staticIps,
+    };
   }
 
   factory GetStaticIpsResult.fromMap(Map<String, dynamic> map) {
@@ -43,3 +40,4 @@ class GetStaticIpsResult {
     );
   }
 }
+

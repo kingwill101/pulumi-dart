@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetAppConnectionApplicationEndpoint {
   /// Hostname or IP address of the remote application endpoint.
   final String host;
-
   /// Port of the remote application endpoint.
   final int port;
 
@@ -16,17 +16,17 @@ class GetAppConnectionApplicationEndpoint {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['host'] = host;
-    map['port'] = port;
-    return map;
+    return <String, dynamic>{
+      'host': host,
+      'port': port,
+    };
   }
 
-  factory GetAppConnectionApplicationEndpoint.fromMap(
-      Map<String, dynamic> map) {
+  factory GetAppConnectionApplicationEndpoint.fromMap(Map<String, dynamic> map) {
     return GetAppConnectionApplicationEndpoint(
       host: map['host'] as String,
       port: map['port'] as int,
     );
   }
 }
+

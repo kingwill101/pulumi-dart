@@ -14,15 +14,15 @@ class ConnectionAws {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accessRole'] = accessRole.toMap();
-    return map;
+    return <String, dynamic>{
+      'accessRole': accessRole.toMap(),
+    };
   }
 
   factory ConnectionAws.fromMap(Map<String, dynamic> map) {
     return ConnectionAws(
-      accessRole: ConnectionAwsAccessRole.fromMap(
-          (map['accessRole'] as Map).cast<String, dynamic>()),
+      accessRole: ConnectionAwsAccessRole.fromMap((map['accessRole'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

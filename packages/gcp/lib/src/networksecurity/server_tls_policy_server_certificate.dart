@@ -7,9 +7,7 @@ class ServerTlsPolicyServerCertificate {
   /// Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
   /// Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
   /// Structure is documented below.
-  final ServerTlsPolicyServerCertificateCertificateProviderInstance?
-      certificateProviderInstance;
-
+  final ServerTlsPolicyServerCertificateCertificateProviderInstance? certificateProviderInstance;
   /// gRPC specific configuration to access the gRPC server to obtain the cert and private key.
   /// Structure is documented below.
   final ServerTlsPolicyServerCertificateGrpcEndpoint? grpcEndpoint;
@@ -23,30 +21,17 @@ class ServerTlsPolicyServerCertificate {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final certificateProviderInstanceValue = certificateProviderInstance;
-    if (certificateProviderInstanceValue != null) {
-      map['certificateProviderInstance'] =
-          certificateProviderInstanceValue.toMap();
-    }
-    final grpcEndpointValue = grpcEndpoint;
-    if (grpcEndpointValue != null) {
-      map['grpcEndpoint'] = grpcEndpointValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'certificateProviderInstance': ?certificateProviderInstance == null ? null : certificateProviderInstance!.toMap(),
+      'grpcEndpoint': ?grpcEndpoint == null ? null : grpcEndpoint!.toMap(),
+    };
   }
 
   factory ServerTlsPolicyServerCertificate.fromMap(Map<String, dynamic> map) {
     return ServerTlsPolicyServerCertificate(
-      certificateProviderInstance: map['certificateProviderInstance'] == null
-          ? null
-          : ServerTlsPolicyServerCertificateCertificateProviderInstance.fromMap(
-              (map['certificateProviderInstance'] as Map)
-                  .cast<String, dynamic>()),
-      grpcEndpoint: map['grpcEndpoint'] == null
-          ? null
-          : ServerTlsPolicyServerCertificateGrpcEndpoint.fromMap(
-              (map['grpcEndpoint'] as Map).cast<String, dynamic>()),
+      certificateProviderInstance: map['certificateProviderInstance'] == null ? null : ServerTlsPolicyServerCertificateCertificateProviderInstance.fromMap((map['certificateProviderInstance'] as Map).cast<String, dynamic>()),
+      grpcEndpoint: map['grpcEndpoint'] == null ? null : ServerTlsPolicyServerCertificateGrpcEndpoint.fromMap((map['grpcEndpoint'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'channel_namespace_handler_configs_on_subscribe_integration.dart';
 class ChannelNamespaceHandlerConfigsOnSubscribe {
   /// Behavior for the handler. Valid values: `CODE`, `DIRECT`.
   final String behavior;
-
   /// Integration data source configuration for the handler. See Integration below.
   final ChannelNamespaceHandlerConfigsOnSubscribeIntegration integration;
 
@@ -18,18 +17,17 @@ class ChannelNamespaceHandlerConfigsOnSubscribe {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['behavior'] = behavior;
-    map['integration'] = integration.toMap();
-    return map;
+    return <String, dynamic>{
+      'behavior': behavior,
+      'integration': integration.toMap(),
+    };
   }
 
-  factory ChannelNamespaceHandlerConfigsOnSubscribe.fromMap(
-      Map<String, dynamic> map) {
+  factory ChannelNamespaceHandlerConfigsOnSubscribe.fromMap(Map<String, dynamic> map) {
     return ChannelNamespaceHandlerConfigsOnSubscribe(
       behavior: map['behavior'] as String,
-      integration: ChannelNamespaceHandlerConfigsOnSubscribeIntegration.fromMap(
-          (map['integration'] as Map).cast<String, dynamic>()),
+      integration: ChannelNamespaceHandlerConfigsOnSubscribeIntegration.fromMap((map['integration'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

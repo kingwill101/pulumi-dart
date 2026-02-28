@@ -16,27 +16,15 @@ class RepositoryVirtualRepositoryConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final upstreamPoliciesValue = upstreamPolicies;
-    if (upstreamPoliciesValue != null) {
-      map['upstreamPolicies'] = pulumi.Input.encodeList<
-              RepositoryVirtualRepositoryConfigUpstreamPolicy,
-              Map<String, dynamic>>(
-          upstreamPoliciesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'upstreamPolicies': ?upstreamPolicies == null ? null : pulumi.Input.encodeList<RepositoryVirtualRepositoryConfigUpstreamPolicy, Map<String, dynamic>>(upstreamPolicies!, (value) => value.toMap()),
+    };
   }
 
   factory RepositoryVirtualRepositoryConfig.fromMap(Map<String, dynamic> map) {
     return RepositoryVirtualRepositoryConfig(
-      upstreamPolicies: map['upstreamPolicies'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  RepositoryVirtualRepositoryConfigUpstreamPolicy>(
-              map['upstreamPolicies'],
-              (value) =>
-                  RepositoryVirtualRepositoryConfigUpstreamPolicy.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      upstreamPolicies: map['upstreamPolicies'] == null ? null : pulumi.Input.decodeList<RepositoryVirtualRepositoryConfigUpstreamPolicy>(map['upstreamPolicies'], (value) => RepositoryVirtualRepositoryConfigUpstreamPolicy.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

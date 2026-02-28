@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CxEnvironmentVersionConfig {
   /// Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
   final String version;
@@ -11,9 +12,9 @@ class CxEnvironmentVersionConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['version'] = version;
-    return map;
+    return <String, dynamic>{
+      'version': version,
+    };
   }
 
   factory CxEnvironmentVersionConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class CxEnvironmentVersionConfig {
     );
   }
 }
+

@@ -7,36 +7,26 @@ import 'jmsresponse.dart';
 /// Creates a new EventSubscription in a given project,location and connection.
 class EventSubscription extends pulumi.CustomResource {
   late final pulumi.Output<String> connectionId;
-
   /// Created time.
   late final pulumi.Output<String> createTime;
-
   /// Optional. The destination to hit when we receive an event
   late final pulumi.Output<EventSubscriptionDestinationResponse> destinations;
-
   /// Required. Identifier to assign to the Event Subscription. Must be unique within scope of the parent resource.
   late final pulumi.Output<String> eventSubscriptionId;
-
   /// Optional. Event type id of the event of current EventSubscription.
   late final pulumi.Output<String> eventTypeId;
-
   /// Optional. JMS is the source for the event listener.
   late final pulumi.Output<JMSResponse> jms;
   late final pulumi.Output<String> location;
-
   /// Resource name of the EventSubscription. Format: projects/{project}/locations/{location}/connections/{connection}/eventSubscriptions/{event_subscription}
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// Optional. Status indicates the status of the event subscription resource
   late final pulumi.Output<EventSubscriptionStatusResponse> status;
-
   /// Optional. name of the Subscriber for the current EventSubscription.
   late final pulumi.Output<String> subscriber;
-
   /// Optional. Link for Subscriber of the current EventSubscription.
   late final pulumi.Output<String> subscriberLink;
-
   /// Updated time.
   late final pulumi.Output<String> updateTime;
 
@@ -56,8 +46,7 @@ class EventSubscription extends pulumi.CustomResource {
         ) {
     this.connectionId = registerOutput<String>('connectionId');
     this.createTime = registerOutput<String>('createTime');
-    this.destinations =
-        registerOutput<EventSubscriptionDestinationResponse>('destinations');
+    this.destinations = registerOutput<EventSubscriptionDestinationResponse>('destinations');
     this.eventSubscriptionId = registerOutput<String>('eventSubscriptionId');
     this.eventTypeId = registerOutput<String>('eventTypeId');
     this.jms = registerOutput<JMSResponse>('jms');

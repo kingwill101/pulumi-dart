@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceArgs {
   /// ID of the project that produces and owns this service.
   final pulumi.Input<String>? producerProjectId;
-
   /// The name of the service. See the [overview](https://cloud.google.com/service-infrastructure/docs/overview) for naming requirements.
   final pulumi.Input<String>? serviceName;
 
@@ -19,30 +18,22 @@ class ServiceArgs {
   ServiceArgs({
     String? producerProjectId,
     String? serviceName,
-  })  : producerProjectId =
-            pulumi.Input.asOptionalInput<String>(producerProjectId),
-        serviceName = pulumi.Input.asOptionalInput<String>(serviceName);
+  }) :
+      producerProjectId = pulumi.Input.asOptionalInput<String>(producerProjectId),
+      serviceName = pulumi.Input.asOptionalInput<String>(serviceName);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final producerProjectIdValue = producerProjectId;
-    if (producerProjectIdValue != null) {
-      map['producerProjectId'] = producerProjectIdValue;
-    }
-    final serviceNameValue = serviceName;
-    if (serviceNameValue != null) {
-      map['serviceName'] = serviceNameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'producerProjectId': ?producerProjectId,
+      'serviceName': ?serviceName,
+    };
   }
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      producerProjectId: map['producerProjectId'] == null
-          ? null
-          : map['producerProjectId'] as String,
-      serviceName:
-          map['serviceName'] == null ? null : map['serviceName'] as String,
+      producerProjectId: map['producerProjectId'] == null ? null : map['producerProjectId'] as String,
+      serviceName: map['serviceName'] == null ? null : map['serviceName'] as String,
     );
   }
 }
+

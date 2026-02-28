@@ -19,24 +19,20 @@ class GetHyperparameterTuningJobAiplatformV1beta1Args {
     required String hyperparameterTuningJobId,
     required String location,
     String? project,
-  })  : hyperparameterTuningJobId =
-            pulumi.Input.asInput<String>(hyperparameterTuningJobId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      hyperparameterTuningJobId = pulumi.Input.asInput<String>(hyperparameterTuningJobId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['hyperparameterTuningJobId'] = hyperparameterTuningJobId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'hyperparameterTuningJobId': hyperparameterTuningJobId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
-  factory GetHyperparameterTuningJobAiplatformV1beta1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetHyperparameterTuningJobAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetHyperparameterTuningJobAiplatformV1beta1Args(
       hyperparameterTuningJobId: map['hyperparameterTuningJobId'] as String,
       location: map['location'] as String,
@@ -44,3 +40,4 @@ class GetHyperparameterTuningJobAiplatformV1beta1Args {
     );
   }
 }
+

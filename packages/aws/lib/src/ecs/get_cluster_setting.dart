@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterSetting {
   final String name;
   final String value;
@@ -13,10 +14,10 @@ class GetClusterSetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
   factory GetClusterSetting.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class GetClusterSetting {
     );
   }
 }
+

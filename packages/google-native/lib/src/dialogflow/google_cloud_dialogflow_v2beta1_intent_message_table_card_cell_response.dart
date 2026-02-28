@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Cell of TableCardRow.
 class GoogleCloudDialogflowV2beta1IntentMessageTableCardCellResponse {
   /// Text in this cell.
@@ -12,15 +13,15 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCardCellResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['text'] = text;
-    return map;
+    return <String, dynamic>{
+      'text': text,
+    };
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageTableCardCellResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageTableCardCellResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageTableCardCellResponse(
       text: map['text'] as String,
     );
   }
 }
+

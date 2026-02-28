@@ -1012,33 +1012,25 @@ import 'tls_route_rule.dart';
 class TlsRoute extends pulumi.CustomResource {
   /// Time the TlsRoute was created in UTC.
   late final pulumi.Output<String> createTime;
-
   /// A free-text description of the resource. Max length 1024 characters.
   late final pulumi.Output<String?> description;
-
   /// Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
   /// Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
   late final pulumi.Output<List<String>?> gateways;
-
   /// Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
   /// Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
   /// The attached Mesh should be of a type SIDECAR
   late final pulumi.Output<List<String>?> meshes;
-
   /// Name of the TlsRoute resource.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Rules that define how traffic is routed and handled.
   /// Structure is documented below.
   late final pulumi.Output<List<TlsRouteRule>> rules;
-
   /// Server-defined URL of this resource.
   late final pulumi.Output<String> selfLink;
-
   /// Time the TlsRoute was updated in UTC.
   late final pulumi.Output<String> updateTime;
 

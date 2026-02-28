@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AuthzPolicyHttpRuleFromNotSourceIpBlock {
   /// The length of the address range.
   final int length;
-
   /// The address prefix.
   final String prefix;
 
@@ -16,17 +16,17 @@ class AuthzPolicyHttpRuleFromNotSourceIpBlock {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['length'] = length;
-    map['prefix'] = prefix;
-    return map;
+    return <String, dynamic>{
+      'length': length,
+      'prefix': prefix,
+    };
   }
 
-  factory AuthzPolicyHttpRuleFromNotSourceIpBlock.fromMap(
-      Map<String, dynamic> map) {
+  factory AuthzPolicyHttpRuleFromNotSourceIpBlock.fromMap(Map<String, dynamic> map) {
     return AuthzPolicyHttpRuleFromNotSourceIpBlock(
       length: map['length'] as int,
       prefix: map['prefix'] as String,
     );
   }
 }
+

@@ -7,16 +7,12 @@ import 'app_engine_routing_cloudtasks_v2beta3.dart';
 class AppEngineHttpRequestCloudtasksV2beta3 {
   /// Task-level setting for App Engine routing. If set, app_engine_routing_override is used for all tasks in the queue, no matter what the setting is for the task-level app_engine_routing.
   final AppEngineRoutingCloudtasksV2beta3? appEngineRouting;
-
   /// HTTP request body. A request body is allowed only if the HTTP method is POST or PUT. It is an error to set a body on a task with an incompatible HttpMethod.
   final String? body;
-
   /// HTTP request headers. This map contains the header field names and values. Headers can be set when the task is created. Repeated headers are not supported but a header value can contain commas. Cloud Tasks sets some headers to default values: * `User-Agent`: By default, this header is `"AppEngine-Google; (+http://code.google.com/appengine)"`. This header can be modified, but Cloud Tasks will append `"AppEngine-Google; (+http://code.google.com/appengine)"` to the modified `User-Agent`. If the task has a body, Cloud Tasks sets the following headers: * `Content-Type`: By default, the `Content-Type` header is set to `"application/octet-stream"`. The default can be overridden by explicitly setting `Content-Type` to a particular media type when the task is created. For example, `Content-Type` can be set to `"application/json"`. * `Content-Length`: This is computed by Cloud Tasks. This value is output only. It cannot be changed. The headers below cannot be set or overridden: * `Host` * `X-Google-*` * `X-AppEngine-*` In addition, Cloud Tasks sets some headers when the task is dispatched, such as headers containing information about the task; see [request headers](https://cloud.google.com/tasks/docs/creating-appengine-handlers#reading_request_headers). These headers are set only when the task is dispatched, so they are not visible when the task is returned in a Cloud Tasks response. Although there is no specific limit for the maximum number of headers or the size, there is a limit on the maximum size of the Task. For more information, see the CreateTask documentation.
   final Map<String, String>? headers;
-
   /// The HTTP method to use for the request. The default is POST. The app's request handler for the task's target URL must be able to handle HTTP requests with this http_method, otherwise the task attempt fails with error code 405 (Method Not Allowed). See [Writing a push task request handler](https://cloud.google.com/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler) and the App Engine documentation for your runtime on [How Requests are Handled](https://cloud.google.com/appengine/docs/standard/python3/how-requests-are-handled).
   final AppEngineHttpRequestHttpMethodCloudtasksV2beta3? httpMethod;
-
   /// The relative URI. The relative URI must begin with "/" and must be a valid HTTP relative URI. It can contain a path and query string arguments. If the relative URI is empty, then the root path "/" will be used. No spaces are allowed, and the maximum length allowed is 2083 characters.
   final String? relativeUri;
 
@@ -35,47 +31,23 @@ class AppEngineHttpRequestCloudtasksV2beta3 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final appEngineRoutingValue = appEngineRouting;
-    if (appEngineRoutingValue != null) {
-      map['appEngineRouting'] = appEngineRoutingValue.toMap();
-    }
-    final bodyValue = body;
-    if (bodyValue != null) {
-      map['body'] = bodyValue;
-    }
-    final headersValue = headers;
-    if (headersValue != null) {
-      map['headers'] = headersValue;
-    }
-    final httpMethodValue = httpMethod;
-    if (httpMethodValue != null) {
-      map['httpMethod'] = httpMethodValue.value;
-    }
-    final relativeUriValue = relativeUri;
-    if (relativeUriValue != null) {
-      map['relativeUri'] = relativeUriValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'appEngineRouting': ?appEngineRouting == null ? null : appEngineRouting!.toMap(),
+      'body': ?body,
+      'headers': ?headers,
+      'httpMethod': ?httpMethod == null ? null : httpMethod!.value,
+      'relativeUri': ?relativeUri,
+    };
   }
 
-  factory AppEngineHttpRequestCloudtasksV2beta3.fromMap(
-      Map<String, dynamic> map) {
+  factory AppEngineHttpRequestCloudtasksV2beta3.fromMap(Map<String, dynamic> map) {
     return AppEngineHttpRequestCloudtasksV2beta3(
-      appEngineRouting: map['appEngineRouting'] == null
-          ? null
-          : AppEngineRoutingCloudtasksV2beta3.fromMap(
-              (map['appEngineRouting'] as Map).cast<String, dynamic>()),
+      appEngineRouting: map['appEngineRouting'] == null ? null : AppEngineRoutingCloudtasksV2beta3.fromMap((map['appEngineRouting'] as Map).cast<String, dynamic>()),
       body: map['body'] == null ? null : map['body'] as String,
-      headers: map['headers'] == null
-          ? null
-          : (map['headers'] as Map).cast<String, String>(),
-      httpMethod: map['httpMethod'] == null
-          ? null
-          : AppEngineHttpRequestHttpMethodCloudtasksV2beta3.fromValue(
-              map['httpMethod'] as String),
-      relativeUri:
-          map['relativeUri'] == null ? null : map['relativeUri'] as String,
+      headers: map['headers'] == null ? null : (map['headers'] as Map).cast<String, String>(),
+      httpMethod: map['httpMethod'] == null ? null : AppEngineHttpRequestHttpMethodCloudtasksV2beta3.fromValue(map['httpMethod'] as String),
+      relativeUri: map['relativeUri'] == null ? null : map['relativeUri'] as String,
     );
   }
 }
+

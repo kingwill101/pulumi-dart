@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceAccelerator {
   /// The type of an accelator for a CDF instance.
   /// Possible values are: `CDC`, `HEALTHCARE`, `CCAI_INSIGHTS`.
   final String acceleratorType;
-
   /// The type of an accelator for a CDF instance.
   /// Possible values are: `ENABLED`, `DISABLED`.
   final String state;
@@ -18,10 +18,10 @@ class InstanceAccelerator {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['acceleratorType'] = acceleratorType;
-    map['state'] = state;
-    return map;
+    return <String, dynamic>{
+      'acceleratorType': acceleratorType,
+      'state': state,
+    };
   }
 
   factory InstanceAccelerator.fromMap(Map<String, dynamic> map) {
@@ -31,3 +31,4 @@ class InstanceAccelerator {
     );
   }
 }
+

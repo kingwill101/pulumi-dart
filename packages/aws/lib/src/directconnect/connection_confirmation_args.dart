@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionConfirmationArgs {
   /// The ID of the hosted connection.
   final pulumi.Input<String> connectionId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -19,17 +18,15 @@ class ConnectionConfirmationArgs {
   ConnectionConfirmationArgs({
     required String connectionId,
     String? region,
-  })  : connectionId = pulumi.Input.asInput<String>(connectionId),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      connectionId = pulumi.Input.asInput<String>(connectionId),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['connectionId'] = connectionId;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'connectionId': connectionId,
+      'region': ?region,
+    };
   }
 
   factory ConnectionConfirmationArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +36,4 @@ class ConnectionConfirmationArgs {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getService.
 class GetServiceResult {
   final String dnsName;
@@ -9,7 +10,6 @@ class GetServiceResult {
   final String reverseDnsName;
   final String reverseDnsPrefix;
   final String serviceId;
-
   /// Whether the service is supported in the region's partition. New services may not be listed immediately as supported.
   final bool supported;
 
@@ -34,16 +34,16 @@ class GetServiceResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dnsName'] = dnsName;
-    map['id'] = id;
-    map['partition'] = partition;
-    map['region'] = region;
-    map['reverseDnsName'] = reverseDnsName;
-    map['reverseDnsPrefix'] = reverseDnsPrefix;
-    map['serviceId'] = serviceId;
-    map['supported'] = supported;
-    return map;
+    return <String, dynamic>{
+      'dnsName': dnsName,
+      'id': id,
+      'partition': partition,
+      'region': region,
+      'reverseDnsName': reverseDnsName,
+      'reverseDnsPrefix': reverseDnsPrefix,
+      'serviceId': serviceId,
+      'supported': supported,
+    };
   }
 
   factory GetServiceResult.fromMap(Map<String, dynamic> map) {
@@ -59,3 +59,4 @@ class GetServiceResult {
     );
   }
 }
+

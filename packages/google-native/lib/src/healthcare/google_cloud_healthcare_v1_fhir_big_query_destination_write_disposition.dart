@@ -5,20 +5,16 @@ enum GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition {
   writeTruncate("WRITE_TRUNCATE"),
   writeAppend("WRITE_APPEND");
 
-  const GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition(
-      this.value);
+  const GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition(this.value);
   final String value;
 
-  static GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition
-      fromValue(String value) {
-    for (final item
-        in GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition
-            .values) {
+  static GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition fromValue(String value) {
+    for (final item in GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition value: $value');
+    throw ArgumentError('Unknown GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition value: $value');
   }
 }
+

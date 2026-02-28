@@ -4,20 +4,16 @@ enum AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterva
   periodic("PERIODIC"),
   recurrent("RECURRENT");
 
-  const AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalComputeBeta(
-      this.value);
+  const AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalComputeBeta(this.value);
   final String value;
 
-  static AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalComputeBeta
-      fromValue(String value) {
-    for (final item
-        in AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalComputeBeta
-            .values) {
+  static AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalComputeBeta fromValue(String value) {
+    for (final item in AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalComputeBeta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalComputeBeta value: $value');
+    throw ArgumentError('Unknown AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalComputeBeta value: $value');
   }
 }
+

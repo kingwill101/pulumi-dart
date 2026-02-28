@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetConnectivityTestsConnectivityTestSourceCloudFunction {
   /// A Cloud Run revision URI.
   final String uri;
@@ -11,15 +12,15 @@ class GetConnectivityTestsConnectivityTestSourceCloudFunction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['uri'] = uri;
-    return map;
+    return <String, dynamic>{
+      'uri': uri,
+    };
   }
 
-  factory GetConnectivityTestsConnectivityTestSourceCloudFunction.fromMap(
-      Map<String, dynamic> map) {
+  factory GetConnectivityTestsConnectivityTestSourceCloudFunction.fromMap(Map<String, dynamic> map) {
     return GetConnectivityTestsConnectivityTestSourceCloudFunction(
       uri: map['uri'] as String,
     );
   }
 }
+

@@ -15,19 +15,15 @@ class FileHashesResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['fileHash'] =
-        pulumi.Input.encodeList<HashResponse, Map<String, dynamic>>(
-            fileHash, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'fileHash': pulumi.Input.encodeList<HashResponse, Map<String, dynamic>>(fileHash, (value) => value.toMap()),
+    };
   }
 
   factory FileHashesResponse.fromMap(Map<String, dynamic> map) {
     return FileHashesResponse(
-      fileHash: pulumi.Input.decodeList<HashResponse>(
-          map['fileHash'],
-          (value) =>
-              HashResponse.fromMap((value as Map).cast<String, dynamic>())),
+      fileHash: pulumi.Input.decodeList<HashResponse>(map['fileHash'], (value) => HashResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

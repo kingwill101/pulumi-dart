@@ -7,7 +7,6 @@ import 'crypto_key_version_template_protection_level.dart';
 class CryptoKeyVersionTemplate {
   /// Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
   final CryptoKeyVersionTemplateAlgorithm algorithm;
-
   /// ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE.
   final CryptoKeyVersionTemplateProtectionLevel? protectionLevel;
 
@@ -20,23 +19,17 @@ class CryptoKeyVersionTemplate {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['algorithm'] = algorithm.value;
-    final protectionLevelValue = protectionLevel;
-    if (protectionLevelValue != null) {
-      map['protectionLevel'] = protectionLevelValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'algorithm': algorithm.value,
+      'protectionLevel': ?protectionLevel == null ? null : protectionLevel!.value,
+    };
   }
 
   factory CryptoKeyVersionTemplate.fromMap(Map<String, dynamic> map) {
     return CryptoKeyVersionTemplate(
-      algorithm: CryptoKeyVersionTemplateAlgorithm.fromValue(
-          map['algorithm'] as String),
-      protectionLevel: map['protectionLevel'] == null
-          ? null
-          : CryptoKeyVersionTemplateProtectionLevel.fromValue(
-              map['protectionLevel'] as String),
+      algorithm: CryptoKeyVersionTemplateAlgorithm.fromValue(map['algorithm'] as String),
+      protectionLevel: map['protectionLevel'] == null ? null : CryptoKeyVersionTemplateProtectionLevel.fromValue(map['protectionLevel'] as String),
     );
   }
 }
+

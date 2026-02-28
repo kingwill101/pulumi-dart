@@ -425,14 +425,11 @@ class NetworkEndpointGroup extends pulumi.CustomResource {
   /// The default port used if the port number is not specified in the
   /// network endpoint.
   late final pulumi.Output<int?> defaultPort;
-
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
   late final pulumi.Output<String?> description;
-
   /// The uniquely generated identifier for the resource. This identifier is defined by the server.
   late final pulumi.Output<int> generatedId;
-
   /// Name of the resource; provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -441,11 +438,9 @@ class NetworkEndpointGroup extends pulumi.CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   late final pulumi.Output<String> name;
-
   /// The network to which all network endpoints in the NEG belong.
   /// Uses "default" project network if unspecified.
   late final pulumi.Output<String> network;
-
   /// Type of network endpoints in this network endpoint group.
   /// NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
   /// endpoint groups (see https://cloud.google.com/load-balancing/docs/hybrid).
@@ -457,20 +452,15 @@ class NetworkEndpointGroup extends pulumi.CustomResource {
   /// Default value is `GCE_VM_IP_PORT`.
   /// Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
   late final pulumi.Output<String?> networkEndpointType;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
-
   /// Number of network endpoints in the network endpoint group.
   late final pulumi.Output<int> size;
-
   /// Optional subnetwork to which all network endpoints in the NEG belong.
   late final pulumi.Output<String?> subnetwork;
-
   /// Zone where the network endpoint group is located.
   late final pulumi.Output<String> zone;
 

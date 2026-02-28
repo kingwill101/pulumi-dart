@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LocationFsxLustreArgs {
   /// The Amazon Resource Name (ARN) for the FSx for Lustre file system.
   final pulumi.Input<String> fsxFilesystemArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The Amazon Resource Names (ARNs) of the security groups that are to use to configure the FSx for Lustre file system.
   final pulumi.Input<List<String>> securityGroupArns;
-
   /// Subdirectory to perform actions as source or destination.
   final pulumi.Input<String>? subdirectory;
-
   /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -34,30 +30,21 @@ class LocationFsxLustreArgs {
     required List<String> securityGroupArns,
     String? subdirectory,
     Map<String, String>? tags,
-  })  : fsxFilesystemArn = pulumi.Input.asInput<String>(fsxFilesystemArn),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        securityGroupArns =
-            pulumi.Input.asInput<List<String>>(securityGroupArns),
-        subdirectory = pulumi.Input.asOptionalInput<String>(subdirectory),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      fsxFilesystemArn = pulumi.Input.asInput<String>(fsxFilesystemArn),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      securityGroupArns = pulumi.Input.asInput<List<String>>(securityGroupArns),
+      subdirectory = pulumi.Input.asOptionalInput<String>(subdirectory),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['fsxFilesystemArn'] = fsxFilesystemArn;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['securityGroupArns'] = securityGroupArns;
-    final subdirectoryValue = subdirectory;
-    if (subdirectoryValue != null) {
-      map['subdirectory'] = subdirectoryValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'fsxFilesystemArn': fsxFilesystemArn,
+      'region': ?region,
+      'securityGroupArns': securityGroupArns,
+      'subdirectory': ?subdirectory,
+      'tags': ?tags,
+    };
   }
 
   factory LocationFsxLustreArgs.fromMap(Map<String, dynamic> map) {
@@ -65,11 +52,9 @@ class LocationFsxLustreArgs {
       fsxFilesystemArn: map['fsxFilesystemArn'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       securityGroupArns: (map['securityGroupArns'] as List).cast<String>(),
-      subdirectory:
-          map['subdirectory'] == null ? null : map['subdirectory'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      subdirectory: map['subdirectory'] == null ? null : map['subdirectory'] as String,
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

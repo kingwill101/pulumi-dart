@@ -25,23 +25,21 @@ class GetCryptoKeyVersionArgs {
     required String keyRingId,
     required String location,
     String? project,
-  })  : cryptoKeyId = pulumi.Input.asInput<String>(cryptoKeyId),
-        cryptoKeyVersionId = pulumi.Input.asInput<String>(cryptoKeyVersionId),
-        keyRingId = pulumi.Input.asInput<String>(keyRingId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      cryptoKeyId = pulumi.Input.asInput<String>(cryptoKeyId),
+      cryptoKeyVersionId = pulumi.Input.asInput<String>(cryptoKeyVersionId),
+      keyRingId = pulumi.Input.asInput<String>(keyRingId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cryptoKeyId'] = cryptoKeyId;
-    map['cryptoKeyVersionId'] = cryptoKeyVersionId;
-    map['keyRingId'] = keyRingId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cryptoKeyId': cryptoKeyId,
+      'cryptoKeyVersionId': cryptoKeyVersionId,
+      'keyRingId': keyRingId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetCryptoKeyVersionArgs.fromMap(Map<String, dynamic> map) {
@@ -54,3 +52,4 @@ class GetCryptoKeyVersionArgs {
     );
   }
 }
+

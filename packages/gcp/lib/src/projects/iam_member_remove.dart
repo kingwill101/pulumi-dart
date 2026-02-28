@@ -150,10 +150,8 @@ class IamMemberRemove extends pulumi.CustomResource {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   late final pulumi.Output<String> member;
-
   /// The project id of the target project.
   late final pulumi.Output<String> project;
-
   /// The target role that should be removed.
   late final pulumi.Output<String> role;
 

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualMfaDeviceArgs {
   /// Path for the virtual MFA device.
   final pulumi.Input<String>? path;
-
   /// Map of resource tags for the virtual mfa device. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Name of the virtual MFA device. Use with path to uniquely identify a virtual MFA device.
   final pulumi.Input<String> virtualMfaDeviceName;
 
@@ -24,32 +22,25 @@ class VirtualMfaDeviceArgs {
     String? path,
     Map<String, String>? tags,
     required String virtualMfaDeviceName,
-  })  : path = pulumi.Input.asOptionalInput<String>(path),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-        virtualMfaDeviceName =
-            pulumi.Input.asInput<String>(virtualMfaDeviceName);
+  }) :
+      path = pulumi.Input.asOptionalInput<String>(path),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      virtualMfaDeviceName = pulumi.Input.asInput<String>(virtualMfaDeviceName);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final pathValue = path;
-    if (pathValue != null) {
-      map['path'] = pathValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    map['virtualMfaDeviceName'] = virtualMfaDeviceName;
-    return map;
+    return <String, dynamic>{
+      'path': ?path,
+      'tags': ?tags,
+      'virtualMfaDeviceName': virtualMfaDeviceName,
+    };
   }
 
   factory VirtualMfaDeviceArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMfaDeviceArgs(
       path: map['path'] == null ? null : map['path'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
       virtualMfaDeviceName: map['virtualMfaDeviceName'] as String,
     );
   }
 }
+

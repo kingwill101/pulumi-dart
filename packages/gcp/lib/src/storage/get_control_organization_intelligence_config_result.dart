@@ -8,11 +8,8 @@ import 'get_control_organization_intelligence_config_trial_config.dart';
 /// Result data returned by getControlOrganizationIntelligenceConfig.
 class GetControlOrganizationIntelligenceConfigResult {
   final String editionConfig;
-  final List<
-          GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig>
-      effectiveIntelligenceConfigs;
+  final List<GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig> effectiveIntelligenceConfigs;
   final List<GetControlOrganizationIntelligenceConfigFilter> filters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -38,48 +35,27 @@ class GetControlOrganizationIntelligenceConfigResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['editionConfig'] = editionConfig;
-    map['effectiveIntelligenceConfigs'] = pulumi.Input.encodeList<
-            GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig,
-            Map<String, dynamic>>(
-        effectiveIntelligenceConfigs, (value) => value.toMap());
-    map['filters'] = pulumi.Input.encodeList<
-        GetControlOrganizationIntelligenceConfigFilter,
-        Map<String, dynamic>>(filters, (value) => value.toMap());
-    map['id'] = id;
-    map['name'] = name;
-    map['trialConfigs'] = pulumi.Input.encodeList<
-        GetControlOrganizationIntelligenceConfigTrialConfig,
-        Map<String, dynamic>>(trialConfigs, (value) => value.toMap());
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'editionConfig': editionConfig,
+      'effectiveIntelligenceConfigs': pulumi.Input.encodeList<GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig, Map<String, dynamic>>(effectiveIntelligenceConfigs, (value) => value.toMap()),
+      'filters': pulumi.Input.encodeList<GetControlOrganizationIntelligenceConfigFilter, Map<String, dynamic>>(filters, (value) => value.toMap()),
+      'id': id,
+      'name': name,
+      'trialConfigs': pulumi.Input.encodeList<GetControlOrganizationIntelligenceConfigTrialConfig, Map<String, dynamic>>(trialConfigs, (value) => value.toMap()),
+      'updateTime': updateTime,
+    };
   }
 
-  factory GetControlOrganizationIntelligenceConfigResult.fromMap(
-      Map<String, dynamic> map) {
+  factory GetControlOrganizationIntelligenceConfigResult.fromMap(Map<String, dynamic> map) {
     return GetControlOrganizationIntelligenceConfigResult(
       editionConfig: map['editionConfig'] as String,
-      effectiveIntelligenceConfigs: pulumi.Input.decodeList<
-              GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig>(
-          map['effectiveIntelligenceConfigs'],
-          (value) =>
-              GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig
-                  .fromMap((value as Map).cast<String, dynamic>())),
-      filters: pulumi.Input.decodeList<
-              GetControlOrganizationIntelligenceConfigFilter>(
-          map['filters'],
-          (value) => GetControlOrganizationIntelligenceConfigFilter.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      effectiveIntelligenceConfigs: pulumi.Input.decodeList<GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig>(map['effectiveIntelligenceConfigs'], (value) => GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig.fromMap((value as Map).cast<String, dynamic>())),
+      filters: pulumi.Input.decodeList<GetControlOrganizationIntelligenceConfigFilter>(map['filters'], (value) => GetControlOrganizationIntelligenceConfigFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       name: map['name'] as String,
-      trialConfigs: pulumi.Input.decodeList<
-              GetControlOrganizationIntelligenceConfigTrialConfig>(
-          map['trialConfigs'],
-          (value) =>
-              GetControlOrganizationIntelligenceConfigTrialConfig.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      trialConfigs: pulumi.Input.decodeList<GetControlOrganizationIntelligenceConfigTrialConfig>(map['trialConfigs'], (value) => GetControlOrganizationIntelligenceConfigTrialConfig.fromMap((value as Map).cast<String, dynamic>())),
       updateTime: map['updateTime'] as String,
     );
   }
 }
+

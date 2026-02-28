@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EncryptionConfigurationResponse {
   /// Optional. Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
   final String kmsKeyName;
@@ -11,9 +12,9 @@ class EncryptionConfigurationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kmsKeyName'] = kmsKeyName;
-    return map;
+    return <String, dynamic>{
+      'kmsKeyName': kmsKeyName,
+    };
   }
 
   factory EncryptionConfigurationResponse.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class EncryptionConfigurationResponse {
     );
   }
 }
+

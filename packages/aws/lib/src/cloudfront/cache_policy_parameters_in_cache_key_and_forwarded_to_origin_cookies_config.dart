@@ -5,10 +5,8 @@ import 'cache_policy_parameters_in_cache_key_and_forwarded_to_origin_cookies_con
 class CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig {
   /// Whether any cookies in viewer requests are included in the cache key and automatically included in requests that CloudFront sends to the origin. Valid values for `cookie_behavior` are `none`, `whitelist`, `allExcept`, and `all`.
   final String cookieBehavior;
-
   /// Object that contains a list of cookie names. See Items for more information.
-  final CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookies?
-      cookies;
+  final CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookies? cookies;
 
   /// Creates a new [CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig].
   /// [cookieBehavior] Whether any cookies in viewer requests are included in the cache key and automatically included in requests that CloudFront sends to the origin. Valid values for `cookie_behavior` are `none`, `whitelist`, `allExcept`, and `all`.
@@ -19,23 +17,17 @@ class CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cookieBehavior'] = cookieBehavior;
-    final cookiesValue = cookies;
-    if (cookiesValue != null) {
-      map['cookies'] = cookiesValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'cookieBehavior': cookieBehavior,
+      'cookies': ?cookies == null ? null : cookies!.toMap(),
+    };
   }
 
-  factory CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig.fromMap(Map<String, dynamic> map) {
     return CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig(
       cookieBehavior: map['cookieBehavior'] as String,
-      cookies: map['cookies'] == null
-          ? null
-          : CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookies
-              .fromMap((map['cookies'] as Map).cast<String, dynamic>()),
+      cookies: map['cookies'] == null ? null : CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookies.fromMap((map['cookies'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

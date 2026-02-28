@@ -8,10 +8,8 @@ import 'object_id.dart';
 class CertificateExtensionConstraints {
   /// Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
   final List<ObjectId>? additionalExtensions;
-
   /// Optional. A set of named X.509 extensions. Will be combined with additional_extensions to determine the full set of X.509 extensions.
-  final List<CertificateExtensionConstraintsKnownExtensionsItem>?
-      knownExtensions;
+  final List<CertificateExtensionConstraintsKnownExtensionsItem>? knownExtensions;
 
   /// Creates a new [CertificateExtensionConstraints].
   /// [additionalExtensions] Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
@@ -22,38 +20,17 @@ class CertificateExtensionConstraints {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final additionalExtensionsValue = additionalExtensions;
-    if (additionalExtensionsValue != null) {
-      map['additionalExtensions'] =
-          pulumi.Input.encodeList<ObjectId, Map<String, dynamic>>(
-              additionalExtensionsValue, (value) => value.toMap());
-    }
-    final knownExtensionsValue = knownExtensions;
-    if (knownExtensionsValue != null) {
-      map['knownExtensions'] = pulumi.Input.encodeList<
-          CertificateExtensionConstraintsKnownExtensionsItem,
-          String>(knownExtensionsValue, (value) => value.value);
-    }
-    return map;
+    return <String, dynamic>{
+      'additionalExtensions': ?additionalExtensions == null ? null : pulumi.Input.encodeList<ObjectId, Map<String, dynamic>>(additionalExtensions!, (value) => value.toMap()),
+      'knownExtensions': ?knownExtensions == null ? null : pulumi.Input.encodeList<CertificateExtensionConstraintsKnownExtensionsItem, String>(knownExtensions!, (value) => value.value),
+    };
   }
 
   factory CertificateExtensionConstraints.fromMap(Map<String, dynamic> map) {
     return CertificateExtensionConstraints(
-      additionalExtensions: map['additionalExtensions'] == null
-          ? null
-          : pulumi.Input.decodeList<ObjectId>(
-              map['additionalExtensions'],
-              (value) =>
-                  ObjectId.fromMap((value as Map).cast<String, dynamic>())),
-      knownExtensions: map['knownExtensions'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  CertificateExtensionConstraintsKnownExtensionsItem>(
-              map['knownExtensions'],
-              (value) =>
-                  CertificateExtensionConstraintsKnownExtensionsItem.fromValue(
-                      value as String)),
+      additionalExtensions: map['additionalExtensions'] == null ? null : pulumi.Input.decodeList<ObjectId>(map['additionalExtensions'], (value) => ObjectId.fromMap((value as Map).cast<String, dynamic>())),
+      knownExtensions: map['knownExtensions'] == null ? null : pulumi.Input.decodeList<CertificateExtensionConstraintsKnownExtensionsItem>(map['knownExtensions'], (value) => CertificateExtensionConstraintsKnownExtensionsItem.fromValue(value as String)),
     );
   }
 }
+

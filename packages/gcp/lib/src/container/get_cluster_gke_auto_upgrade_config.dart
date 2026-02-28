@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterGkeAutoUpgradeConfig {
   /// The selected auto-upgrade patch type. Accepted values are:
   /// * ACCELERATED: Upgrades to the latest available patch version in a given minor and release channel.
@@ -12,9 +13,9 @@ class GetClusterGkeAutoUpgradeConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['patchMode'] = patchMode;
-    return map;
+    return <String, dynamic>{
+      'patchMode': patchMode,
+    };
   }
 
   factory GetClusterGkeAutoUpgradeConfig.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class GetClusterGkeAutoUpgradeConfig {
     );
   }
 }
+

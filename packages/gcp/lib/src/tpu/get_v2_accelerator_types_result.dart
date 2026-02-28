@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getV2AcceleratorTypes.
 class GetV2AcceleratorTypesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String project;
-
   /// The list of accelerator types available for the given project and zone.
   final List<String> types;
   final String zone;
@@ -23,12 +23,12 @@ class GetV2AcceleratorTypesResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['project'] = project;
-    map['types'] = types;
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'project': project,
+      'types': types,
+      'zone': zone,
+    };
   }
 
   factory GetV2AcceleratorTypesResult.fromMap(Map<String, dynamic> map) {
@@ -40,3 +40,4 @@ class GetV2AcceleratorTypesResult {
     );
   }
 }
+

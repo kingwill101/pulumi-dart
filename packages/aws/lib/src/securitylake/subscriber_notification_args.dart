@@ -10,10 +10,8 @@ import 'subscriber_notification_configuration.dart';
 class SubscriberNotificationArgs {
   /// Specify the configuration using which you want to create the subscriber notification..
   final pulumi.Input<SubscriberNotificationConfiguration> configuration;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The subscriber ID for the notification subscription.
   final pulumi.Input<String> subscriberId;
 
@@ -25,31 +23,25 @@ class SubscriberNotificationArgs {
     required SubscriberNotificationConfiguration configuration,
     String? region,
     required String subscriberId,
-  })  : configuration =
-            pulumi.Input.asInput<SubscriberNotificationConfiguration>(
-                configuration),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        subscriberId = pulumi.Input.asInput<String>(subscriberId);
+  }) :
+      configuration = pulumi.Input.asInput<SubscriberNotificationConfiguration>(configuration),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      subscriberId = pulumi.Input.asInput<String>(subscriberId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['configuration'] = pulumi.Input.mapInputValue<
-        SubscriberNotificationConfiguration,
-        Map<String, dynamic>>(configuration, (value) => value.toMap());
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['subscriberId'] = subscriberId;
-    return map;
+    return <String, dynamic>{
+      'configuration': pulumi.Input.mapInputValue<SubscriberNotificationConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
+      'region': ?region,
+      'subscriberId': subscriberId,
+    };
   }
 
   factory SubscriberNotificationArgs.fromMap(Map<String, dynamic> map) {
     return SubscriberNotificationArgs(
-      configuration: SubscriberNotificationConfiguration.fromMap(
-          (map['configuration'] as Map).cast<String, dynamic>()),
+      configuration: SubscriberNotificationConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>()),
       region: map['region'] == null ? null : map['region'] as String,
       subscriberId: map['subscriberId'] as String,
     );
   }
 }
+

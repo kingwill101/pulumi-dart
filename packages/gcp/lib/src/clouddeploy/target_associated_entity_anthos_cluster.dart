@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TargetAssociatedEntityAnthosCluster {
   /// Optional. Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
   final String? membership;
@@ -11,19 +12,15 @@ class TargetAssociatedEntityAnthosCluster {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final membershipValue = membership;
-    if (membershipValue != null) {
-      map['membership'] = membershipValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'membership': ?membership,
+    };
   }
 
-  factory TargetAssociatedEntityAnthosCluster.fromMap(
-      Map<String, dynamic> map) {
+  factory TargetAssociatedEntityAnthosCluster.fromMap(Map<String, dynamic> map) {
     return TargetAssociatedEntityAnthosCluster(
-      membership:
-          map['membership'] == null ? null : map['membership'] as String,
+      membership: map['membership'] == null ? null : map['membership'] as String,
     );
   }
 }
+

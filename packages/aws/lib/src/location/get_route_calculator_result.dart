@@ -1,27 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRouteCalculator.
 class GetRouteCalculatorResult {
   /// ARN for the Route calculator resource. Use the ARN when you specify a resource across AWS.
   final String calculatorArn;
   final String calculatorName;
-
   /// Timestamp for when the route calculator resource was created in ISO 8601 format.
   final String createTime;
-
   /// Data provider of traffic and road network data.
   final String dataSource;
-
   /// Optional description of the route calculator resource.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
-
   /// Key-value map of resource tags for the route calculator.
   final Map<String, String> tags;
-
   /// Timestamp for when the route calculator resource was last updated in ISO 8601 format.
   final String updateTime;
 
@@ -48,17 +43,17 @@ class GetRouteCalculatorResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['calculatorArn'] = calculatorArn;
-    map['calculatorName'] = calculatorName;
-    map['createTime'] = createTime;
-    map['dataSource'] = dataSource;
-    map['description'] = description;
-    map['id'] = id;
-    map['region'] = region;
-    map['tags'] = tags;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'calculatorArn': calculatorArn,
+      'calculatorName': calculatorName,
+      'createTime': createTime,
+      'dataSource': dataSource,
+      'description': description,
+      'id': id,
+      'region': region,
+      'tags': tags,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetRouteCalculatorResult.fromMap(Map<String, dynamic> map) {
@@ -75,3 +70,4 @@ class GetRouteCalculatorResult {
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'ospolicy_resource_file.dart';
 class OSPolicyResourcePackageResourceRPM {
   /// Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
   final bool? pullDeps;
-
   /// An rpm package.
   final OSPolicyResourceFile source;
 
@@ -19,20 +18,17 @@ class OSPolicyResourcePackageResourceRPM {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final pullDepsValue = pullDeps;
-    if (pullDepsValue != null) {
-      map['pullDeps'] = pullDepsValue;
-    }
-    map['source'] = source.toMap();
-    return map;
+    return <String, dynamic>{
+      'pullDeps': ?pullDeps,
+      'source': source.toMap(),
+    };
   }
 
   factory OSPolicyResourcePackageResourceRPM.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourcePackageResourceRPM(
       pullDeps: map['pullDeps'] == null ? null : map['pullDeps'] as bool,
-      source: OSPolicyResourceFile.fromMap(
-          (map['source'] as Map).cast<String, dynamic>()),
+      source: OSPolicyResourceFile.fromMap((map['source'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

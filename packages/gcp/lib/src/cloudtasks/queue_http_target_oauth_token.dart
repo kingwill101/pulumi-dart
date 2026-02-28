@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class QueueHttpTargetOauthToken {
   /// OAuth scope to be used for generating OAuth access token.
   /// If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
   final String? scope;
-
   /// Service account email to be used for generating OAuth token.
   /// The service account must be within the same project as the queue.
   /// The caller must have iam.serviceAccounts.actAs permission for the service account.
@@ -19,13 +19,10 @@ class QueueHttpTargetOauthToken {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final scopeValue = scope;
-    if (scopeValue != null) {
-      map['scope'] = scopeValue;
-    }
-    map['serviceAccountEmail'] = serviceAccountEmail;
-    return map;
+    return <String, dynamic>{
+      'scope': ?scope,
+      'serviceAccountEmail': serviceAccountEmail,
+    };
   }
 
   factory QueueHttpTargetOauthToken.fromMap(Map<String, dynamic> map) {
@@ -35,3 +32,4 @@ class QueueHttpTargetOauthToken {
     );
   }
 }
+

@@ -7,7 +7,6 @@ import 'dataplex_config.dart';
 class MetadataIntegrationMetastoreV1alpha {
   /// Optional. The integration config for the Data Catalog service.
   final DataCatalogConfigMetastoreV1alpha? dataCatalogConfig;
-
   /// The integration config for the Dataplex service.
   final DataplexConfig? dataplexConfig;
 
@@ -20,29 +19,17 @@ class MetadataIntegrationMetastoreV1alpha {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dataCatalogConfigValue = dataCatalogConfig;
-    if (dataCatalogConfigValue != null) {
-      map['dataCatalogConfig'] = dataCatalogConfigValue.toMap();
-    }
-    final dataplexConfigValue = dataplexConfig;
-    if (dataplexConfigValue != null) {
-      map['dataplexConfig'] = dataplexConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'dataCatalogConfig': ?dataCatalogConfig == null ? null : dataCatalogConfig!.toMap(),
+      'dataplexConfig': ?dataplexConfig == null ? null : dataplexConfig!.toMap(),
+    };
   }
 
-  factory MetadataIntegrationMetastoreV1alpha.fromMap(
-      Map<String, dynamic> map) {
+  factory MetadataIntegrationMetastoreV1alpha.fromMap(Map<String, dynamic> map) {
     return MetadataIntegrationMetastoreV1alpha(
-      dataCatalogConfig: map['dataCatalogConfig'] == null
-          ? null
-          : DataCatalogConfigMetastoreV1alpha.fromMap(
-              (map['dataCatalogConfig'] as Map).cast<String, dynamic>()),
-      dataplexConfig: map['dataplexConfig'] == null
-          ? null
-          : DataplexConfig.fromMap(
-              (map['dataplexConfig'] as Map).cast<String, dynamic>()),
+      dataCatalogConfig: map['dataCatalogConfig'] == null ? null : DataCatalogConfigMetastoreV1alpha.fromMap((map['dataCatalogConfig'] as Map).cast<String, dynamic>()),
+      dataplexConfig: map['dataplexConfig'] == null ? null : DataplexConfig.fromMap((map['dataplexConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

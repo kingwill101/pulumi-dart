@@ -15,3 +15,4 @@ enum InstanceMessageCode {
     throw ArgumentError('Unknown InstanceMessageCode value: $value');
   }
 }
+

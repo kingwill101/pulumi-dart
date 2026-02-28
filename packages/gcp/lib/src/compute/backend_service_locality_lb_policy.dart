@@ -8,7 +8,6 @@ class BackendServiceLocalityLbPolicy {
   /// deployed with the client.
   /// Structure is documented below.
   final BackendServiceLocalityLbPolicyCustomPolicy? customPolicy;
-
   /// The configuration for a built-in load balancing policy.
   /// Structure is documented below.
   final BackendServiceLocalityLbPolicyPolicy? policy;
@@ -22,28 +21,17 @@ class BackendServiceLocalityLbPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final customPolicyValue = customPolicy;
-    if (customPolicyValue != null) {
-      map['customPolicy'] = customPolicyValue.toMap();
-    }
-    final policyValue = policy;
-    if (policyValue != null) {
-      map['policy'] = policyValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'customPolicy': ?customPolicy == null ? null : customPolicy!.toMap(),
+      'policy': ?policy == null ? null : policy!.toMap(),
+    };
   }
 
   factory BackendServiceLocalityLbPolicy.fromMap(Map<String, dynamic> map) {
     return BackendServiceLocalityLbPolicy(
-      customPolicy: map['customPolicy'] == null
-          ? null
-          : BackendServiceLocalityLbPolicyCustomPolicy.fromMap(
-              (map['customPolicy'] as Map).cast<String, dynamic>()),
-      policy: map['policy'] == null
-          ? null
-          : BackendServiceLocalityLbPolicyPolicy.fromMap(
-              (map['policy'] as Map).cast<String, dynamic>()),
+      customPolicy: map['customPolicy'] == null ? null : BackendServiceLocalityLbPolicyCustomPolicy.fromMap((map['customPolicy'] as Map).cast<String, dynamic>()),
+      policy: map['policy'] == null ? null : BackendServiceLocalityLbPolicyPolicy.fromMap((map['policy'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'certificate_raw_data.dart';
 /// {@macro pulumi_appengine_v1_authorized_certificate_args_doc}
 class AuthorizedCertificateArgs {
   final pulumi.Input<String> appId;
-
   /// The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority.
   final pulumi.Input<CertificateRawData>? certificateRawData;
-
   /// The user-specified display name of the certificate. This is not guaranteed to be unique. Example: My Certificate.
   final pulumi.Input<String>? displayName;
 
@@ -24,36 +22,25 @@ class AuthorizedCertificateArgs {
     required String appId,
     CertificateRawData? certificateRawData,
     String? displayName,
-  })  : appId = pulumi.Input.asInput<String>(appId),
-        certificateRawData = pulumi.Input.asOptionalInput<CertificateRawData>(
-            certificateRawData),
-        displayName = pulumi.Input.asOptionalInput<String>(displayName);
+  }) :
+      appId = pulumi.Input.asInput<String>(appId),
+      certificateRawData = pulumi.Input.asOptionalInput<CertificateRawData>(certificateRawData),
+      displayName = pulumi.Input.asOptionalInput<String>(displayName);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['appId'] = appId;
-    final certificateRawDataValue = certificateRawData;
-    if (certificateRawDataValue != null) {
-      map['certificateRawData'] = pulumi.Input.mapOptionalInputValue<
-              CertificateRawData, Map<String, dynamic>>(
-          certificateRawDataValue, (value) => value.toMap());
-    }
-    final displayNameValue = displayName;
-    if (displayNameValue != null) {
-      map['displayName'] = displayNameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'appId': appId,
+      'certificateRawData': ?pulumi.Input.mapOptionalInputValue<CertificateRawData, Map<String, dynamic>>(certificateRawData, (value) => value.toMap()),
+      'displayName': ?displayName,
+    };
   }
 
   factory AuthorizedCertificateArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizedCertificateArgs(
       appId: map['appId'] as String,
-      certificateRawData: map['certificateRawData'] == null
-          ? null
-          : CertificateRawData.fromMap(
-              (map['certificateRawData'] as Map).cast<String, dynamic>()),
-      displayName:
-          map['displayName'] == null ? null : map['displayName'] as String,
+      certificateRawData: map['certificateRawData'] == null ? null : CertificateRawData.fromMap((map['certificateRawData'] as Map).cast<String, dynamic>()),
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
     );
   }
 }
+

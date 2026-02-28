@@ -9,15 +9,11 @@ import 'monitoring_schedule_monitoring_schedule_config.dart';
 /// {@macro pulumi_sagemaker_monitoring_schedule_monitoring_schedule_args_doc}
 class MonitoringScheduleArgs {
   /// The configuration object that specifies the monitoring schedule and defines the monitoring job. Fields are documented below.
-  final pulumi.Input<MonitoringScheduleMonitoringScheduleConfig>
-      monitoringScheduleConfig;
-
+  final pulumi.Input<MonitoringScheduleMonitoringScheduleConfig> monitoringScheduleConfig;
   /// The name of the monitoring schedule. The name must be unique within an AWS Region within an AWS account. If omitted, the provider will assign a random, unique name.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -27,48 +23,32 @@ class MonitoringScheduleArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   MonitoringScheduleArgs({
-    required MonitoringScheduleMonitoringScheduleConfig
-        monitoringScheduleConfig,
+    required MonitoringScheduleMonitoringScheduleConfig monitoringScheduleConfig,
     String? name,
     String? region,
     Map<String, String>? tags,
-  })  : monitoringScheduleConfig =
-            pulumi.Input.asInput<MonitoringScheduleMonitoringScheduleConfig>(
-                monitoringScheduleConfig),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      monitoringScheduleConfig = pulumi.Input.asInput<MonitoringScheduleMonitoringScheduleConfig>(monitoringScheduleConfig),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['monitoringScheduleConfig'] = pulumi.Input.mapInputValue<
-            MonitoringScheduleMonitoringScheduleConfig, Map<String, dynamic>>(
-        monitoringScheduleConfig, (value) => value.toMap());
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'monitoringScheduleConfig': pulumi.Input.mapInputValue<MonitoringScheduleMonitoringScheduleConfig, Map<String, dynamic>>(monitoringScheduleConfig, (value) => value.toMap()),
+      'name': ?name,
+      'region': ?region,
+      'tags': ?tags,
+    };
   }
 
   factory MonitoringScheduleArgs.fromMap(Map<String, dynamic> map) {
     return MonitoringScheduleArgs(
-      monitoringScheduleConfig:
-          MonitoringScheduleMonitoringScheduleConfig.fromMap(
-              (map['monitoringScheduleConfig'] as Map).cast<String, dynamic>()),
+      monitoringScheduleConfig: MonitoringScheduleMonitoringScheduleConfig.fromMap((map['monitoringScheduleConfig'] as Map).cast<String, dynamic>()),
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

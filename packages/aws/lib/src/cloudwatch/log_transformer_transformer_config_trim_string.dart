@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LogTransformerTransformerConfigTrimString {
   /// Specifies the keys of the fields to trim.
   final List<String> withKeys;
@@ -11,15 +12,15 @@ class LogTransformerTransformerConfigTrimString {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['withKeys'] = withKeys;
-    return map;
+    return <String, dynamic>{
+      'withKeys': withKeys,
+    };
   }
 
-  factory LogTransformerTransformerConfigTrimString.fromMap(
-      Map<String, dynamic> map) {
+  factory LogTransformerTransformerConfigTrimString.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigTrimString(
       withKeys: (map['withKeys'] as List).cast<String>(),
     );
   }
 }
+

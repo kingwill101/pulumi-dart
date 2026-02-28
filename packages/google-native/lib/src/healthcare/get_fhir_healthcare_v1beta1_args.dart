@@ -28,25 +28,23 @@ class GetFhirHealthcareV1beta1Args {
     required String fhirStoreId,
     required String location,
     String? project,
-  })  : datasetId = pulumi.Input.asInput<String>(datasetId),
-        fhirId = pulumi.Input.asInput<String>(fhirId),
-        fhirId1 = pulumi.Input.asInput<String>(fhirId1),
-        fhirStoreId = pulumi.Input.asInput<String>(fhirStoreId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      datasetId = pulumi.Input.asInput<String>(datasetId),
+      fhirId = pulumi.Input.asInput<String>(fhirId),
+      fhirId1 = pulumi.Input.asInput<String>(fhirId1),
+      fhirStoreId = pulumi.Input.asInput<String>(fhirStoreId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['datasetId'] = datasetId;
-    map['fhirId'] = fhirId;
-    map['fhirId1'] = fhirId1;
-    map['fhirStoreId'] = fhirStoreId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'datasetId': datasetId,
+      'fhirId': fhirId,
+      'fhirId1': fhirId1,
+      'fhirStoreId': fhirStoreId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetFhirHealthcareV1beta1Args.fromMap(Map<String, dynamic> map) {
@@ -60,3 +58,4 @@ class GetFhirHealthcareV1beta1Args {
     );
   }
 }
+

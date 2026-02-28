@@ -6,7 +6,6 @@ import 'advanced_datapath_observability_config_relay_mode_container_v1beta1.dart
 class AdvancedDatapathObservabilityConfigContainerV1beta1 {
   /// Expose flow metrics on nodes
   final bool? enableMetrics;
-
   /// Method used to make Relay available
   final AdvancedDatapathObservabilityConfigRelayModeContainerV1beta1? relayMode;
 
@@ -19,27 +18,17 @@ class AdvancedDatapathObservabilityConfigContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enableMetricsValue = enableMetrics;
-    if (enableMetricsValue != null) {
-      map['enableMetrics'] = enableMetricsValue;
-    }
-    final relayModeValue = relayMode;
-    if (relayModeValue != null) {
-      map['relayMode'] = relayModeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'enableMetrics': ?enableMetrics,
+      'relayMode': ?relayMode == null ? null : relayMode!.value,
+    };
   }
 
-  factory AdvancedDatapathObservabilityConfigContainerV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory AdvancedDatapathObservabilityConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return AdvancedDatapathObservabilityConfigContainerV1beta1(
-      enableMetrics:
-          map['enableMetrics'] == null ? null : map['enableMetrics'] as bool,
-      relayMode: map['relayMode'] == null
-          ? null
-          : AdvancedDatapathObservabilityConfigRelayModeContainerV1beta1
-              .fromValue(map['relayMode'] as String),
+      enableMetrics: map['enableMetrics'] == null ? null : map['enableMetrics'] as bool,
+      relayMode: map['relayMode'] == null ? null : AdvancedDatapathObservabilityConfigRelayModeContainerV1beta1.fromValue(map['relayMode'] as String),
     );
   }
 }
+

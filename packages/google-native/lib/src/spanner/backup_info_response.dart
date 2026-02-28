@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Information about a backup.
 class BackupInfoResponse {
   /// Name of the backup.
   final String backup;
-
   /// The time the CreateBackup request was received.
   final String createTime;
-
   /// Name of the database the backup was created from.
   final String sourceDatabase;
-
   /// The backup contains an externally consistent copy of `source_database` at the timestamp specified by `version_time`. If the CreateBackup request did not specify `version_time`, the `version_time` of the backup is equivalent to the `create_time`.
   final String versionTime;
 
@@ -27,12 +25,12 @@ class BackupInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['backup'] = backup;
-    map['createTime'] = createTime;
-    map['sourceDatabase'] = sourceDatabase;
-    map['versionTime'] = versionTime;
-    return map;
+    return <String, dynamic>{
+      'backup': backup,
+      'createTime': createTime,
+      'sourceDatabase': sourceDatabase,
+      'versionTime': versionTime,
+    };
   }
 
   factory BackupInfoResponse.fromMap(Map<String, dynamic> map) {
@@ -44,3 +42,4 @@ class BackupInfoResponse {
     );
   }
 }
+

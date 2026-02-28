@@ -16,3 +16,4 @@ enum TaskResponseView {
     throw ArgumentError('Unknown TaskResponseView value: $value');
   }
 }
+

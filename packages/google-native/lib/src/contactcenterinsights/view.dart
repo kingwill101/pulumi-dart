@@ -5,18 +5,14 @@ import 'view_args.dart';
 class View extends pulumi.CustomResource {
   /// The time at which this view was created.
   late final pulumi.Output<String> createTime;
-
   /// The human-readable display name of the view.
   late final pulumi.Output<String> displayName;
   late final pulumi.Output<String> location;
-
   /// Immutable. The resource name of the view. Format: projects/{project}/locations/{location}/views/{view}
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// The most recent time at which the view was updated.
   late final pulumi.Output<String> updateTime;
-
   /// String with specific view properties, must be non-empty.
   late final pulumi.Output<String> value;
 

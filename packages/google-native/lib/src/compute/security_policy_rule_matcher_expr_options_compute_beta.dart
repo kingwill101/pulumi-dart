@@ -4,8 +4,7 @@ import 'security_policy_rule_matcher_expr_options_recaptcha_options_compute_beta
 
 class SecurityPolicyRuleMatcherExprOptionsComputeBeta {
   /// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
-  final SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsComputeBeta?
-      recaptchaOptions;
+  final SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsComputeBeta? recaptchaOptions;
 
   /// Creates a new [SecurityPolicyRuleMatcherExprOptionsComputeBeta].
   /// [recaptchaOptions] reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
@@ -14,22 +13,15 @@ class SecurityPolicyRuleMatcherExprOptionsComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final recaptchaOptionsValue = recaptchaOptions;
-    if (recaptchaOptionsValue != null) {
-      map['recaptchaOptions'] = recaptchaOptionsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'recaptchaOptions': ?recaptchaOptions == null ? null : recaptchaOptions!.toMap(),
+    };
   }
 
-  factory SecurityPolicyRuleMatcherExprOptionsComputeBeta.fromMap(
-      Map<String, dynamic> map) {
+  factory SecurityPolicyRuleMatcherExprOptionsComputeBeta.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleMatcherExprOptionsComputeBeta(
-      recaptchaOptions: map['recaptchaOptions'] == null
-          ? null
-          : SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsComputeBeta
-              .fromMap(
-                  (map['recaptchaOptions'] as Map).cast<String, dynamic>()),
+      recaptchaOptions: map['recaptchaOptions'] == null ? null : SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsComputeBeta.fromMap((map['recaptchaOptions'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

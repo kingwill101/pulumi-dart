@@ -16,3 +16,4 @@ enum FolderContactValidationState {
     throw ArgumentError('Unknown FolderContactValidationState value: $value');
   }
 }
+

@@ -6,7 +6,6 @@ import 'policy_controller_hub_config.dart';
 class PolicyControllerMembershipSpec {
   /// Policy Controller configuration for the cluster.
   final PolicyControllerHubConfig? policyControllerHubConfig;
-
   /// Version of Policy Controller installed.
   final String? version;
 
@@ -19,26 +18,17 @@ class PolicyControllerMembershipSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final policyControllerHubConfigValue = policyControllerHubConfig;
-    if (policyControllerHubConfigValue != null) {
-      map['policyControllerHubConfig'] = policyControllerHubConfigValue.toMap();
-    }
-    final versionValue = version;
-    if (versionValue != null) {
-      map['version'] = versionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'policyControllerHubConfig': ?policyControllerHubConfig == null ? null : policyControllerHubConfig!.toMap(),
+      'version': ?version,
+    };
   }
 
   factory PolicyControllerMembershipSpec.fromMap(Map<String, dynamic> map) {
     return PolicyControllerMembershipSpec(
-      policyControllerHubConfig: map['policyControllerHubConfig'] == null
-          ? null
-          : PolicyControllerHubConfig.fromMap(
-              (map['policyControllerHubConfig'] as Map)
-                  .cast<String, dynamic>()),
+      policyControllerHubConfig: map['policyControllerHubConfig'] == null ? null : PolicyControllerHubConfig.fromMap((map['policyControllerHubConfig'] as Map).cast<String, dynamic>()),
       version: map['version'] == null ? null : map['version'] as String,
     );
   }
 }
+

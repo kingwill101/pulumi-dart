@@ -14,20 +14,15 @@ class GetFeatureSpecFleetobservability {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['loggingConfigs'] = pulumi.Input.encodeList<
-        GetFeatureSpecFleetobservabilityLoggingConfig,
-        Map<String, dynamic>>(loggingConfigs, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'loggingConfigs': pulumi.Input.encodeList<GetFeatureSpecFleetobservabilityLoggingConfig, Map<String, dynamic>>(loggingConfigs, (value) => value.toMap()),
+    };
   }
 
   factory GetFeatureSpecFleetobservability.fromMap(Map<String, dynamic> map) {
     return GetFeatureSpecFleetobservability(
-      loggingConfigs: pulumi.Input.decodeList<
-              GetFeatureSpecFleetobservabilityLoggingConfig>(
-          map['loggingConfigs'],
-          (value) => GetFeatureSpecFleetobservabilityLoggingConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      loggingConfigs: pulumi.Input.decodeList<GetFeatureSpecFleetobservabilityLoggingConfig>(map['loggingConfigs'], (value) => GetFeatureSpecFleetobservabilityLoggingConfig.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

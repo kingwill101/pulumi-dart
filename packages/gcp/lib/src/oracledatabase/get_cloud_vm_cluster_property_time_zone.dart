@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetCloudVmClusterPropertyTimeZone {
   /// IANA Time Zone Database time zone, e.g. "America/New_York".
   final String id;
-
   /// IANA Time Zone Database version number, e.g. "2019a".
   final String version;
 
@@ -16,10 +16,10 @@ class GetCloudVmClusterPropertyTimeZone {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['version'] = version;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'version': version,
+    };
   }
 
   factory GetCloudVmClusterPropertyTimeZone.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetCloudVmClusterPropertyTimeZone {
     );
   }
 }
+

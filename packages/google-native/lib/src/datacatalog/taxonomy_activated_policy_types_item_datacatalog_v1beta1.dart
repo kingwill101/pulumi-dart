@@ -5,15 +5,13 @@ enum TaxonomyActivatedPolicyTypesItemDatacatalogV1beta1 {
   const TaxonomyActivatedPolicyTypesItemDatacatalogV1beta1(this.value);
   final String value;
 
-  static TaxonomyActivatedPolicyTypesItemDatacatalogV1beta1 fromValue(
-      String value) {
-    for (final item
-        in TaxonomyActivatedPolicyTypesItemDatacatalogV1beta1.values) {
+  static TaxonomyActivatedPolicyTypesItemDatacatalogV1beta1 fromValue(String value) {
+    for (final item in TaxonomyActivatedPolicyTypesItemDatacatalogV1beta1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown TaxonomyActivatedPolicyTypesItemDatacatalogV1beta1 value: $value');
+    throw ArgumentError('Unknown TaxonomyActivatedPolicyTypesItemDatacatalogV1beta1 value: $value');
   }
 }
+

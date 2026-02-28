@@ -8,13 +8,10 @@ import 'multi_cluster_ingress_feature_spec.dart';
 class CommonFeatureSpec {
   /// Appdevexperience specific spec.
   final Map<String, dynamic>? appdevexperience;
-
   /// ClusterUpgrade (fleet-based) feature spec.
   final ClusterUpgradeFleetSpec? clusterupgrade;
-
   /// FleetObservability feature spec.
   final FleetObservabilityFeatureSpec? fleetobservability;
-
   /// Multicluster Ingress-specific spec.
   final MultiClusterIngressFeatureSpec? multiclusteringress;
 
@@ -31,43 +28,21 @@ class CommonFeatureSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final appdevexperienceValue = appdevexperience;
-    if (appdevexperienceValue != null) {
-      map['appdevexperience'] = appdevexperienceValue;
-    }
-    final clusterupgradeValue = clusterupgrade;
-    if (clusterupgradeValue != null) {
-      map['clusterupgrade'] = clusterupgradeValue.toMap();
-    }
-    final fleetobservabilityValue = fleetobservability;
-    if (fleetobservabilityValue != null) {
-      map['fleetobservability'] = fleetobservabilityValue.toMap();
-    }
-    final multiclusteringressValue = multiclusteringress;
-    if (multiclusteringressValue != null) {
-      map['multiclusteringress'] = multiclusteringressValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'appdevexperience': ?appdevexperience,
+      'clusterupgrade': ?clusterupgrade == null ? null : clusterupgrade!.toMap(),
+      'fleetobservability': ?fleetobservability == null ? null : fleetobservability!.toMap(),
+      'multiclusteringress': ?multiclusteringress == null ? null : multiclusteringress!.toMap(),
+    };
   }
 
   factory CommonFeatureSpec.fromMap(Map<String, dynamic> map) {
     return CommonFeatureSpec(
-      appdevexperience: map['appdevexperience'] == null
-          ? null
-          : (map['appdevexperience'] as Map).cast<String, dynamic>(),
-      clusterupgrade: map['clusterupgrade'] == null
-          ? null
-          : ClusterUpgradeFleetSpec.fromMap(
-              (map['clusterupgrade'] as Map).cast<String, dynamic>()),
-      fleetobservability: map['fleetobservability'] == null
-          ? null
-          : FleetObservabilityFeatureSpec.fromMap(
-              (map['fleetobservability'] as Map).cast<String, dynamic>()),
-      multiclusteringress: map['multiclusteringress'] == null
-          ? null
-          : MultiClusterIngressFeatureSpec.fromMap(
-              (map['multiclusteringress'] as Map).cast<String, dynamic>()),
+      appdevexperience: map['appdevexperience'] == null ? null : (map['appdevexperience'] as Map).cast<String, dynamic>(),
+      clusterupgrade: map['clusterupgrade'] == null ? null : ClusterUpgradeFleetSpec.fromMap((map['clusterupgrade'] as Map).cast<String, dynamic>()),
+      fleetobservability: map['fleetobservability'] == null ? null : FleetObservabilityFeatureSpec.fromMap((map['fleetobservability'] as Map).cast<String, dynamic>()),
+      multiclusteringress: map['multiclusteringress'] == null ? null : MultiClusterIngressFeatureSpec.fromMap((map['multiclusteringress'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

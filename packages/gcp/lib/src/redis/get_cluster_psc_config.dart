@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterPscConfig {
   /// Required. The consumer network where the network address of
   /// the discovery endpoint will be reserved, in the form of
@@ -13,9 +14,9 @@ class GetClusterPscConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['network'] = network;
-    return map;
+    return <String, dynamic>{
+      'network': network,
+    };
   }
 
   factory GetClusterPscConfig.fromMap(Map<String, dynamic> map) {
@@ -24,3 +25,4 @@ class GetClusterPscConfig {
     );
   }
 }
+

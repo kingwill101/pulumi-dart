@@ -22,21 +22,19 @@ class GetTrialAiplatformV1beta1Args {
     String? project,
     required String studyId,
     required String trialId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        studyId = pulumi.Input.asInput<String>(studyId),
-        trialId = pulumi.Input.asInput<String>(trialId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      studyId = pulumi.Input.asInput<String>(studyId),
+      trialId = pulumi.Input.asInput<String>(trialId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['studyId'] = studyId;
-    map['trialId'] = trialId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+      'studyId': studyId,
+      'trialId': trialId,
+    };
   }
 
   factory GetTrialAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetTrialAiplatformV1beta1Args {
     );
   }
 }
+

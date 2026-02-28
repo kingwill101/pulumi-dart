@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DirectoryActiveDirectoryConfig {
   /// Fully qualified domain name of the AWS Directory Service directory.
   final String domainName;
-
   /// ARN of the Secrets Manager secret that contains the credentials for the service account. For more information, see [Service Account Details](https://docs.aws.amazon.com/workspaces/latest/adminguide/pools-service-account-details.html).
   final String serviceAccountSecretArn;
 
@@ -16,10 +16,10 @@ class DirectoryActiveDirectoryConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['domainName'] = domainName;
-    map['serviceAccountSecretArn'] = serviceAccountSecretArn;
-    return map;
+    return <String, dynamic>{
+      'domainName': domainName,
+      'serviceAccountSecretArn': serviceAccountSecretArn,
+    };
   }
 
   factory DirectoryActiveDirectoryConfig.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class DirectoryActiveDirectoryConfig {
     );
   }
 }
+

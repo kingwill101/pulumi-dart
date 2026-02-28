@@ -13,20 +13,15 @@ class ThemeConfigurationSheetTile {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final borderValue = border;
-    if (borderValue != null) {
-      map['border'] = borderValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'border': ?border == null ? null : border!.toMap(),
+    };
   }
 
   factory ThemeConfigurationSheetTile.fromMap(Map<String, dynamic> map) {
     return ThemeConfigurationSheetTile(
-      border: map['border'] == null
-          ? null
-          : ThemeConfigurationSheetTileBorder.fromMap(
-              (map['border'] as Map).cast<String, dynamic>()),
+      border: map['border'] == null ? null : ThemeConfigurationSheetTileBorder.fromMap((map['border'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

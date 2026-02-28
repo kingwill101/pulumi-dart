@@ -22,22 +22,19 @@ class GetWorkflowInvocationArgs {
     String? project,
     required String repositoryId,
     required String workflowInvocationId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        repositoryId = pulumi.Input.asInput<String>(repositoryId),
-        workflowInvocationId =
-            pulumi.Input.asInput<String>(workflowInvocationId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      repositoryId = pulumi.Input.asInput<String>(repositoryId),
+      workflowInvocationId = pulumi.Input.asInput<String>(workflowInvocationId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['repositoryId'] = repositoryId;
-    map['workflowInvocationId'] = workflowInvocationId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+      'repositoryId': repositoryId,
+      'workflowInvocationId': workflowInvocationId,
+    };
   }
 
   factory GetWorkflowInvocationArgs.fromMap(Map<String, dynamic> map) {
@@ -49,3 +46,4 @@ class GetWorkflowInvocationArgs {
     );
   }
 }
+

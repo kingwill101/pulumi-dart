@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getV2RuntimeVersions.
 class GetV2RuntimeVersionsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String project;
-
   /// The list of runtime versions available for the given project and zone.
   final List<String> versions;
   final String zone;
@@ -23,12 +23,12 @@ class GetV2RuntimeVersionsResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['project'] = project;
-    map['versions'] = versions;
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'project': project,
+      'versions': versions,
+      'zone': zone,
+    };
   }
 
   factory GetV2RuntimeVersionsResult.fromMap(Map<String, dynamic> map) {
@@ -40,3 +40,4 @@ class GetV2RuntimeVersionsResult {
     );
   }
 }
+

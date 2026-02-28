@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Label object for Deployments
 class DeploymentLabelEntryResponseDeploymentmanagerV2beta {
   /// Key of the label
   final String key;
-
   /// Value of the label
   final String value;
 
@@ -17,17 +17,17 @@ class DeploymentLabelEntryResponseDeploymentmanagerV2beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
-  factory DeploymentLabelEntryResponseDeploymentmanagerV2beta.fromMap(
-      Map<String, dynamic> map) {
+  factory DeploymentLabelEntryResponseDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return DeploymentLabelEntryResponseDeploymentmanagerV2beta(
       key: map['key'] as String,
       value: map['value'] as String,
     );
   }
 }
+

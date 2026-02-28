@@ -7,18 +7,13 @@ import 'resource_policy_snapshot_schedule_policy_schedule_weekly_schedule.dart';
 class ResourcePolicySnapshotSchedulePolicySchedule {
   /// The policy will execute every nth day at the specified time.
   /// Structure is documented below.
-  final ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule?
-      dailySchedule;
-
+  final ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule? dailySchedule;
   /// The policy will execute every nth hour starting at the specified time.
   /// Structure is documented below.
-  final ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule?
-      hourlySchedule;
-
+  final ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule? hourlySchedule;
   /// Allows specifying a snapshot time for each day of the week.
   /// Structure is documented below.
-  final ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule?
-      weeklySchedule;
+  final ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule? weeklySchedule;
 
   /// Creates a new [ResourcePolicySnapshotSchedulePolicySchedule].
   /// [dailySchedule] The policy will execute every nth day at the specified time.
@@ -31,37 +26,19 @@ class ResourcePolicySnapshotSchedulePolicySchedule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dailyScheduleValue = dailySchedule;
-    if (dailyScheduleValue != null) {
-      map['dailySchedule'] = dailyScheduleValue.toMap();
-    }
-    final hourlyScheduleValue = hourlySchedule;
-    if (hourlyScheduleValue != null) {
-      map['hourlySchedule'] = hourlyScheduleValue.toMap();
-    }
-    final weeklyScheduleValue = weeklySchedule;
-    if (weeklyScheduleValue != null) {
-      map['weeklySchedule'] = weeklyScheduleValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'dailySchedule': ?dailySchedule == null ? null : dailySchedule!.toMap(),
+      'hourlySchedule': ?hourlySchedule == null ? null : hourlySchedule!.toMap(),
+      'weeklySchedule': ?weeklySchedule == null ? null : weeklySchedule!.toMap(),
+    };
   }
 
-  factory ResourcePolicySnapshotSchedulePolicySchedule.fromMap(
-      Map<String, dynamic> map) {
+  factory ResourcePolicySnapshotSchedulePolicySchedule.fromMap(Map<String, dynamic> map) {
     return ResourcePolicySnapshotSchedulePolicySchedule(
-      dailySchedule: map['dailySchedule'] == null
-          ? null
-          : ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule.fromMap(
-              (map['dailySchedule'] as Map).cast<String, dynamic>()),
-      hourlySchedule: map['hourlySchedule'] == null
-          ? null
-          : ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule.fromMap(
-              (map['hourlySchedule'] as Map).cast<String, dynamic>()),
-      weeklySchedule: map['weeklySchedule'] == null
-          ? null
-          : ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule.fromMap(
-              (map['weeklySchedule'] as Map).cast<String, dynamic>()),
+      dailySchedule: map['dailySchedule'] == null ? null : ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule.fromMap((map['dailySchedule'] as Map).cast<String, dynamic>()),
+      hourlySchedule: map['hourlySchedule'] == null ? null : ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule.fromMap((map['hourlySchedule'] as Map).cast<String, dynamic>()),
+      weeklySchedule: map['weeklySchedule'] == null ? null : ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule.fromMap((map['weeklySchedule'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

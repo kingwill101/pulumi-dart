@@ -7,10 +7,8 @@ import 'get_broker_engine_types_broker_engine_type.dart';
 class GetBrokerEngineTypesResult {
   /// List of available engine types and versions. See Engine Types.
   final List<GetBrokerEngineTypesBrokerEngineType> brokerEngineTypes;
-
   /// Broker's engine type.
   final String? engineType;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -28,30 +26,21 @@ class GetBrokerEngineTypesResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['brokerEngineTypes'] = pulumi.Input.encodeList<
-        GetBrokerEngineTypesBrokerEngineType,
-        Map<String, dynamic>>(brokerEngineTypes, (value) => value.toMap());
-    final engineTypeValue = engineType;
-    if (engineTypeValue != null) {
-      map['engineType'] = engineTypeValue;
-    }
-    map['id'] = id;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'brokerEngineTypes': pulumi.Input.encodeList<GetBrokerEngineTypesBrokerEngineType, Map<String, dynamic>>(brokerEngineTypes, (value) => value.toMap()),
+      'engineType': ?engineType,
+      'id': id,
+      'region': region,
+    };
   }
 
   factory GetBrokerEngineTypesResult.fromMap(Map<String, dynamic> map) {
     return GetBrokerEngineTypesResult(
-      brokerEngineTypes:
-          pulumi.Input.decodeList<GetBrokerEngineTypesBrokerEngineType>(
-              map['brokerEngineTypes'],
-              (value) => GetBrokerEngineTypesBrokerEngineType.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      engineType:
-          map['engineType'] == null ? null : map['engineType'] as String,
+      brokerEngineTypes: pulumi.Input.decodeList<GetBrokerEngineTypesBrokerEngineType>(map['brokerEngineTypes'], (value) => GetBrokerEngineTypesBrokerEngineType.fromMap((value as Map).cast<String, dynamic>())),
+      engineType: map['engineType'] == null ? null : map['engineType'] as String,
       id: map['id'] as String,
       region: map['region'] as String,
     );
   }
 }
+

@@ -7,7 +7,6 @@ import 'node_pool_logging_config_response.dart';
 class NodeConfigDefaultsResponse {
   /// GCFS (Google Container File System, also known as Riptide) options.
   final GcfsConfigResponse gcfsConfig;
-
   /// Logging configuration for node pools.
   final NodePoolLoggingConfigResponse loggingConfig;
 
@@ -20,18 +19,17 @@ class NodeConfigDefaultsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gcfsConfig'] = gcfsConfig.toMap();
-    map['loggingConfig'] = loggingConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'gcfsConfig': gcfsConfig.toMap(),
+      'loggingConfig': loggingConfig.toMap(),
+    };
   }
 
   factory NodeConfigDefaultsResponse.fromMap(Map<String, dynamic> map) {
     return NodeConfigDefaultsResponse(
-      gcfsConfig: GcfsConfigResponse.fromMap(
-          (map['gcfsConfig'] as Map).cast<String, dynamic>()),
-      loggingConfig: NodePoolLoggingConfigResponse.fromMap(
-          (map['loggingConfig'] as Map).cast<String, dynamic>()),
+      gcfsConfig: GcfsConfigResponse.fromMap((map['gcfsConfig'] as Map).cast<String, dynamic>()),
+      loggingConfig: NodePoolLoggingConfigResponse.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

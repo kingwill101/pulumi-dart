@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoadBalancerBackendServerPolicyArgs {
   /// The instance port to apply the policy to.
   final pulumi.Input<int> instancePort;
-
   /// The load balancer to attach the policy to.
   final pulumi.Input<String> loadBalancerName;
-
   /// List of Policy Names to apply to the backend server.
   final pulumi.Input<List<String>>? policyNames;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -29,35 +26,28 @@ class LoadBalancerBackendServerPolicyArgs {
     required String loadBalancerName,
     List<String>? policyNames,
     String? region,
-  })  : instancePort = pulumi.Input.asInput<int>(instancePort),
-        loadBalancerName = pulumi.Input.asInput<String>(loadBalancerName),
-        policyNames = pulumi.Input.asOptionalInput<List<String>>(policyNames),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      instancePort = pulumi.Input.asInput<int>(instancePort),
+      loadBalancerName = pulumi.Input.asInput<String>(loadBalancerName),
+      policyNames = pulumi.Input.asOptionalInput<List<String>>(policyNames),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['instancePort'] = instancePort;
-    map['loadBalancerName'] = loadBalancerName;
-    final policyNamesValue = policyNames;
-    if (policyNamesValue != null) {
-      map['policyNames'] = policyNamesValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'instancePort': instancePort,
+      'loadBalancerName': loadBalancerName,
+      'policyNames': ?policyNames,
+      'region': ?region,
+    };
   }
 
-  factory LoadBalancerBackendServerPolicyArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory LoadBalancerBackendServerPolicyArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerBackendServerPolicyArgs(
       instancePort: map['instancePort'] as int,
       loadBalancerName: map['loadBalancerName'] as String,
-      policyNames: map['policyNames'] == null
-          ? null
-          : (map['policyNames'] as List).cast<String>(),
+      policyNames: map['policyNames'] == null ? null : (map['policyNames'] as List).cast<String>(),
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

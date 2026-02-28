@@ -1,21 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetReceivedLicenseEntitlement {
   /// Indicates whether check-ins are allowed.
   final bool allowCheckIn;
-
   /// Maximum entitlement count. Use if the unit is not None.
   final int maxCount;
-
   /// The key name.
   final String name;
-
   /// Indicates whether overages are allowed.
   final bool overage;
-
   /// Entitlement unit.
   final String unit;
-
   /// The value.
   final String value;
 
@@ -36,14 +32,14 @@ class GetReceivedLicenseEntitlement {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allowCheckIn'] = allowCheckIn;
-    map['maxCount'] = maxCount;
-    map['name'] = name;
-    map['overage'] = overage;
-    map['unit'] = unit;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'allowCheckIn': allowCheckIn,
+      'maxCount': maxCount,
+      'name': name,
+      'overage': overage,
+      'unit': unit,
+      'value': value,
+    };
   }
 
   factory GetReceivedLicenseEntitlement.fromMap(Map<String, dynamic> map) {
@@ -57,3 +53,4 @@ class GetReceivedLicenseEntitlement {
     );
   }
 }
+

@@ -15,7 +15,7 @@ enum CryptoKeyVersionTemplateProtectionLevel {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown CryptoKeyVersionTemplateProtectionLevel value: $value');
+    throw ArgumentError('Unknown CryptoKeyVersionTemplateProtectionLevel value: $value');
   }
 }
+

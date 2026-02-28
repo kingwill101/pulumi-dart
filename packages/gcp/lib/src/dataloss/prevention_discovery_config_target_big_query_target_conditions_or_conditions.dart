@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditions {
   /// Duration format. The minimum age a table must have before Cloud DLP can profile it. Value greater than 1.
   final String? minAge;
-
   /// Minimum number of rows that should be present before Cloud DLP profiles as a table.
   final int? minRowCount;
 
@@ -16,24 +16,17 @@ class PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final minAgeValue = minAge;
-    if (minAgeValue != null) {
-      map['minAge'] = minAgeValue;
-    }
-    final minRowCountValue = minRowCount;
-    if (minRowCountValue != null) {
-      map['minRowCount'] = minRowCountValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'minAge': ?minAge,
+      'minRowCount': ?minRowCount,
+    };
   }
 
-  factory PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditions.fromMap(
-      Map<String, dynamic> map) {
+  factory PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditions.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditions(
       minAge: map['minAge'] == null ? null : map['minAge'] as String,
-      minRowCount:
-          map['minRowCount'] == null ? null : map['minRowCount'] as int,
+      minRowCount: map['minRowCount'] == null ? null : map['minRowCount'] as int,
     );
   }
 }
+

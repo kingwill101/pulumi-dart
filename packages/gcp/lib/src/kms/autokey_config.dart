@@ -628,10 +628,8 @@ import 'autokey_config_args.dart';
 class AutokeyConfig extends pulumi.CustomResource {
   /// The etag of the AutokeyConfig for optimistic concurrency control.
   late final pulumi.Output<String> etag;
-
   /// The folder for which to retrieve config.
   late final pulumi.Output<String> folder;
-
   /// The target key project for a given folder where KMS Autokey will provision a
   /// CryptoKey for any new KeyHandle the Developer creates. Should have the form
   /// `projects/<project_id_or_number>`.

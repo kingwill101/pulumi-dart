@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A network.
 class NetworkAddressResponse {
   /// IPv4 address to be assigned to the server.
   final String address;
-
   /// Name of the existing network to use.
   final String existingNetworkId;
-
   /// Id of the network to use, within the same ProvisioningConfig request.
   final String networkId;
 
@@ -22,11 +21,11 @@ class NetworkAddressResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['address'] = address;
-    map['existingNetworkId'] = existingNetworkId;
-    map['networkId'] = networkId;
-    return map;
+    return <String, dynamic>{
+      'address': address,
+      'existingNetworkId': existingNetworkId,
+      'networkId': networkId,
+    };
   }
 
   factory NetworkAddressResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class NetworkAddressResponse {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetLoadBalancerHealthCheck {
   final int healthyThreshold;
   final int interval;
@@ -22,13 +23,13 @@ class GetLoadBalancerHealthCheck {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['healthyThreshold'] = healthyThreshold;
-    map['interval'] = interval;
-    map['target'] = target;
-    map['timeout'] = timeout;
-    map['unhealthyThreshold'] = unhealthyThreshold;
-    return map;
+    return <String, dynamic>{
+      'healthyThreshold': healthyThreshold,
+      'interval': interval,
+      'target': target,
+      'timeout': timeout,
+      'unhealthyThreshold': unhealthyThreshold,
+    };
   }
 
   factory GetLoadBalancerHealthCheck.fromMap(Map<String, dynamic> map) {
@@ -41,3 +42,4 @@ class GetLoadBalancerHealthCheck {
     );
   }
 }
+

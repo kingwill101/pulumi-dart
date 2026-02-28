@@ -8,7 +8,6 @@ class PluginInstanceActionCurationConfig {
   /// DEFAULT_CURATION_FOR_API_METADATA
   /// CUSTOM_CURATION_FOR_API_METADATA
   final String? curationType;
-
   /// Custom curation information for this plugin instance.
   /// Structure is documented below.
   final PluginInstanceActionCurationConfigCustomCuration? customCuration;
@@ -22,26 +21,17 @@ class PluginInstanceActionCurationConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final curationTypeValue = curationType;
-    if (curationTypeValue != null) {
-      map['curationType'] = curationTypeValue;
-    }
-    final customCurationValue = customCuration;
-    if (customCurationValue != null) {
-      map['customCuration'] = customCurationValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'curationType': ?curationType,
+      'customCuration': ?customCuration == null ? null : customCuration!.toMap(),
+    };
   }
 
   factory PluginInstanceActionCurationConfig.fromMap(Map<String, dynamic> map) {
     return PluginInstanceActionCurationConfig(
-      curationType:
-          map['curationType'] == null ? null : map['curationType'] as String,
-      customCuration: map['customCuration'] == null
-          ? null
-          : PluginInstanceActionCurationConfigCustomCuration.fromMap(
-              (map['customCuration'] as Map).cast<String, dynamic>()),
+      curationType: map['curationType'] == null ? null : map['curationType'] as String,
+      customCuration: map['customCuration'] == null ? null : PluginInstanceActionCurationConfigCustomCuration.fromMap((map['customCuration'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

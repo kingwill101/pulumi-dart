@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetLaunchTemplateCpuOption {
   final String amdSevSnp;
   final int coreCount;
@@ -19,12 +20,12 @@ class GetLaunchTemplateCpuOption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['amdSevSnp'] = amdSevSnp;
-    map['coreCount'] = coreCount;
-    map['nestedVirtualization'] = nestedVirtualization;
-    map['threadsPerCore'] = threadsPerCore;
-    return map;
+    return <String, dynamic>{
+      'amdSevSnp': amdSevSnp,
+      'coreCount': coreCount,
+      'nestedVirtualization': nestedVirtualization,
+      'threadsPerCore': threadsPerCore,
+    };
   }
 
   factory GetLaunchTemplateCpuOption.fromMap(Map<String, dynamic> map) {
@@ -36,3 +37,4 @@ class GetLaunchTemplateCpuOption {
     );
   }
 }
+

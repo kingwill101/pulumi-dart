@@ -7,7 +7,6 @@ import 'dataplex_config_response.dart';
 class MetadataIntegrationResponseMetastoreV1alpha {
   /// Optional. The integration config for the Data Catalog service.
   final DataCatalogConfigResponseMetastoreV1alpha dataCatalogConfig;
-
   /// The integration config for the Dataplex service.
   final DataplexConfigResponse dataplexConfig;
 
@@ -20,19 +19,17 @@ class MetadataIntegrationResponseMetastoreV1alpha {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dataCatalogConfig'] = dataCatalogConfig.toMap();
-    map['dataplexConfig'] = dataplexConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'dataCatalogConfig': dataCatalogConfig.toMap(),
+      'dataplexConfig': dataplexConfig.toMap(),
+    };
   }
 
-  factory MetadataIntegrationResponseMetastoreV1alpha.fromMap(
-      Map<String, dynamic> map) {
+  factory MetadataIntegrationResponseMetastoreV1alpha.fromMap(Map<String, dynamic> map) {
     return MetadataIntegrationResponseMetastoreV1alpha(
-      dataCatalogConfig: DataCatalogConfigResponseMetastoreV1alpha.fromMap(
-          (map['dataCatalogConfig'] as Map).cast<String, dynamic>()),
-      dataplexConfig: DataplexConfigResponse.fromMap(
-          (map['dataplexConfig'] as Map).cast<String, dynamic>()),
+      dataCatalogConfig: DataCatalogConfigResponseMetastoreV1alpha.fromMap((map['dataCatalogConfig'] as Map).cast<String, dynamic>()),
+      dataplexConfig: DataplexConfigResponse.fromMap((map['dataplexConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

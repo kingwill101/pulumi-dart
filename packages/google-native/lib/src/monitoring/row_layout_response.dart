@@ -15,18 +15,15 @@ class RowLayoutResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['rows'] = pulumi.Input.encodeList<RowResponse, Map<String, dynamic>>(
-        rows, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'rows': pulumi.Input.encodeList<RowResponse, Map<String, dynamic>>(rows, (value) => value.toMap()),
+    };
   }
 
   factory RowLayoutResponse.fromMap(Map<String, dynamic> map) {
     return RowLayoutResponse(
-      rows: pulumi.Input.decodeList<RowResponse>(
-          map['rows'],
-          (value) =>
-              RowResponse.fromMap((value as Map).cast<String, dynamic>())),
+      rows: pulumi.Input.decodeList<RowResponse>(map['rows'], (value) => RowResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

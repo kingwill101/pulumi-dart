@@ -424,7 +424,6 @@ class HostedZoneDnsSec extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> hostedZoneId;
-
   /// Hosted Zone signing status. Valid values: `SIGNING`, `NOT_SIGNING`. Defaults to `SIGNING`.
   late final pulumi.Output<String?> signingStatus;
 

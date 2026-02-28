@@ -22,27 +22,19 @@ class GetServerConfigArgs {
     String? project,
     String? projectId,
     String? zone,
-  })  : location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        projectId = pulumi.Input.asOptionalInput<String>(projectId),
-        zone = pulumi.Input.asOptionalInput<String>(zone);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      projectId = pulumi.Input.asOptionalInput<String>(projectId),
+      zone = pulumi.Input.asOptionalInput<String>(zone);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final projectIdValue = projectId;
-    if (projectIdValue != null) {
-      map['projectId'] = projectIdValue;
-    }
-    final zoneValue = zone;
-    if (zoneValue != null) {
-      map['zone'] = zoneValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+      'projectId': ?projectId,
+      'zone': ?zone,
+    };
   }
 
   factory GetServerConfigArgs.fromMap(Map<String, dynamic> map) {
@@ -54,3 +46,4 @@ class GetServerConfigArgs {
     );
   }
 }
+

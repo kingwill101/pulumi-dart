@@ -13,13 +13,13 @@ class GetInboundSsoAssignmentArgs {
   /// [inboundSsoAssignmentId] Required.
   GetInboundSsoAssignmentArgs({
     required String inboundSsoAssignmentId,
-  }) : inboundSsoAssignmentId =
-            pulumi.Input.asInput<String>(inboundSsoAssignmentId);
+  }) :
+      inboundSsoAssignmentId = pulumi.Input.asInput<String>(inboundSsoAssignmentId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['inboundSsoAssignmentId'] = inboundSsoAssignmentId;
-    return map;
+    return <String, dynamic>{
+      'inboundSsoAssignmentId': inboundSsoAssignmentId,
+    };
   }
 
   factory GetInboundSsoAssignmentArgs.fromMap(Map<String, dynamic> map) {
@@ -28,3 +28,4 @@ class GetInboundSsoAssignmentArgs {
     );
   }
 }
+

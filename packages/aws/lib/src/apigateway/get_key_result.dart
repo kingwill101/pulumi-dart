@@ -1,34 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getKey.
 class GetKeyResult {
   final String arn;
-
   /// Date and time when the API Key was created.
   final String createdDate;
-
   /// Amazon Web Services Marketplace customer identifier, when integrating with the Amazon Web Services SaaS Marketplace.
   final String customerId;
-
   /// Description of the API Key.
   final String description;
-
   /// Whether the API Key is enabled.
   final bool enabled;
-
   /// Set to the ID of the API Key.
   final String id;
-
   /// Date and time when the API Key was last updated.
   final String lastUpdatedDate;
-
   /// Set to the name of the API Key.
   final String name;
   final String region;
-
   /// Map of tags for the resource.
   final Map<String, String> tags;
-
   /// Set to the value of the API Key.
   final String value;
 
@@ -59,19 +51,19 @@ class GetKeyResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['createdDate'] = createdDate;
-    map['customerId'] = customerId;
-    map['description'] = description;
-    map['enabled'] = enabled;
-    map['id'] = id;
-    map['lastUpdatedDate'] = lastUpdatedDate;
-    map['name'] = name;
-    map['region'] = region;
-    map['tags'] = tags;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'createdDate': createdDate,
+      'customerId': customerId,
+      'description': description,
+      'enabled': enabled,
+      'id': id,
+      'lastUpdatedDate': lastUpdatedDate,
+      'name': name,
+      'region': region,
+      'tags': tags,
+      'value': value,
+    };
   }
 
   factory GetKeyResult.fromMap(Map<String, dynamic> map) {
@@ -90,3 +82,4 @@ class GetKeyResult {
     );
   }
 }
+

@@ -14,27 +14,15 @@ class ClassificationJobS3JobDefinitionScopingExcludes {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final andsValue = ands;
-    if (andsValue != null) {
-      map['ands'] = pulumi.Input.encodeList<
-          ClassificationJobS3JobDefinitionScopingExcludesAnd,
-          Map<String, dynamic>>(andsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'ands': ?ands == null ? null : pulumi.Input.encodeList<ClassificationJobS3JobDefinitionScopingExcludesAnd, Map<String, dynamic>>(ands!, (value) => value.toMap()),
+    };
   }
 
-  factory ClassificationJobS3JobDefinitionScopingExcludes.fromMap(
-      Map<String, dynamic> map) {
+  factory ClassificationJobS3JobDefinitionScopingExcludes.fromMap(Map<String, dynamic> map) {
     return ClassificationJobS3JobDefinitionScopingExcludes(
-      ands: map['ands'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  ClassificationJobS3JobDefinitionScopingExcludesAnd>(
-              map['ands'],
-              (value) =>
-                  ClassificationJobS3JobDefinitionScopingExcludesAnd.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      ands: map['ands'] == null ? null : pulumi.Input.decodeList<ClassificationJobS3JobDefinitionScopingExcludesAnd>(map['ands'], (value) => ClassificationJobS3JobDefinitionScopingExcludesAnd.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

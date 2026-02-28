@@ -7,18 +7,13 @@ import 'future_reservation_status_last_known_good_state_future_reservation_specs
 class FutureReservationStatusLastKnownGoodStateFutureReservationSpecs {
   /// Settings for sharing the future reservation
   /// Structure is documented below.
-  final FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettings?
-      shareSettings;
-
+  final FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettings? shareSettings;
   /// Future Reservation configuration to indicate instance properties and total count.
   /// Structure is documented below.
-  final FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuProperties?
-      specificSkuProperties;
-
+  final FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuProperties? specificSkuProperties;
   /// Time window for this Future Reservation.
   /// Structure is documented below.
-  final FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindow?
-      timeWindow;
+  final FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindow? timeWindow;
 
   /// Creates a new [FutureReservationStatusLastKnownGoodStateFutureReservationSpecs].
   /// [shareSettings] Settings for sharing the future reservation
@@ -31,38 +26,19 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecs {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final shareSettingsValue = shareSettings;
-    if (shareSettingsValue != null) {
-      map['shareSettings'] = shareSettingsValue.toMap();
-    }
-    final specificSkuPropertiesValue = specificSkuProperties;
-    if (specificSkuPropertiesValue != null) {
-      map['specificSkuProperties'] = specificSkuPropertiesValue.toMap();
-    }
-    final timeWindowValue = timeWindow;
-    if (timeWindowValue != null) {
-      map['timeWindow'] = timeWindowValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'shareSettings': ?shareSettings == null ? null : shareSettings!.toMap(),
+      'specificSkuProperties': ?specificSkuProperties == null ? null : specificSkuProperties!.toMap(),
+      'timeWindow': ?timeWindow == null ? null : timeWindow!.toMap(),
+    };
   }
 
-  factory FutureReservationStatusLastKnownGoodStateFutureReservationSpecs.fromMap(
-      Map<String, dynamic> map) {
+  factory FutureReservationStatusLastKnownGoodStateFutureReservationSpecs.fromMap(Map<String, dynamic> map) {
     return FutureReservationStatusLastKnownGoodStateFutureReservationSpecs(
-      shareSettings: map['shareSettings'] == null
-          ? null
-          : FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettings
-              .fromMap((map['shareSettings'] as Map).cast<String, dynamic>()),
-      specificSkuProperties: map['specificSkuProperties'] == null
-          ? null
-          : FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuProperties
-              .fromMap((map['specificSkuProperties'] as Map)
-                  .cast<String, dynamic>()),
-      timeWindow: map['timeWindow'] == null
-          ? null
-          : FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindow
-              .fromMap((map['timeWindow'] as Map).cast<String, dynamic>()),
+      shareSettings: map['shareSettings'] == null ? null : FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettings.fromMap((map['shareSettings'] as Map).cast<String, dynamic>()),
+      specificSkuProperties: map['specificSkuProperties'] == null ? null : FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuProperties.fromMap((map['specificSkuProperties'] as Map).cast<String, dynamic>()),
+      timeWindow: map['timeWindow'] == null ? null : FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindow.fromMap((map['timeWindow'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

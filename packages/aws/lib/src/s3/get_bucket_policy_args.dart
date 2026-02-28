@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBucketPolicyArgs {
   /// Bucket name.
   final pulumi.Input<String> bucket;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -19,17 +18,15 @@ class GetBucketPolicyArgs {
   GetBucketPolicyArgs({
     required String bucket,
     String? region,
-  })  : bucket = pulumi.Input.asInput<String>(bucket),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      bucket = pulumi.Input.asInput<String>(bucket),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucket'] = bucket;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'bucket': bucket,
+      'region': ?region,
+    };
   }
 
   factory GetBucketPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +36,4 @@ class GetBucketPolicyArgs {
     );
   }
 }
+

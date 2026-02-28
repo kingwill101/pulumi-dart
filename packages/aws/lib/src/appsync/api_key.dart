@@ -143,16 +143,12 @@ class ApiKey extends pulumi.CustomResource {
   /// ID of the associated AppSync API
   late final pulumi.Output<String> apiId;
   late final pulumi.Output<String> apiKeyId;
-
   /// API key description. Defaults to "Managed by Pulumi".
   late final pulumi.Output<String> description;
-
   /// RFC3339 string representation of the expiry date. Rounded down to nearest hour. By default, it is 7 days from the date of creation.
   late final pulumi.Output<String?> expires;
-
   /// API key
   late final pulumi.Output<String> key;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

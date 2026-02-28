@@ -5,10 +5,8 @@ import 'enterprise_crm_eventbus_proto_event_parameters.dart';
 class EnterpriseCrmEventbusProtoTriggerCriteria {
   /// Standard filter expression, when true the workflow will be executed. If there's no trigger_criteria_task_implementation_class_name specified, the condition will be validated directly.
   final String condition;
-
   /// Optional. To be used in TaskConfig for the implementation class.
   final EnterpriseCrmEventbusProtoEventParameters? parameters;
-
   /// Optional. Implementation class name. The class should implement the “TypedTask” interface.
   final String? triggerCriteriaTaskImplementationClassName;
 
@@ -23,33 +21,19 @@ class EnterpriseCrmEventbusProtoTriggerCriteria {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['condition'] = condition;
-    final parametersValue = parameters;
-    if (parametersValue != null) {
-      map['parameters'] = parametersValue.toMap();
-    }
-    final triggerCriteriaTaskImplementationClassNameValue =
-        triggerCriteriaTaskImplementationClassName;
-    if (triggerCriteriaTaskImplementationClassNameValue != null) {
-      map['triggerCriteriaTaskImplementationClassName'] =
-          triggerCriteriaTaskImplementationClassNameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'condition': condition,
+      'parameters': ?parameters == null ? null : parameters!.toMap(),
+      'triggerCriteriaTaskImplementationClassName': ?triggerCriteriaTaskImplementationClassName,
+    };
   }
 
-  factory EnterpriseCrmEventbusProtoTriggerCriteria.fromMap(
-      Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoTriggerCriteria.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoTriggerCriteria(
       condition: map['condition'] as String,
-      parameters: map['parameters'] == null
-          ? null
-          : EnterpriseCrmEventbusProtoEventParameters.fromMap(
-              (map['parameters'] as Map).cast<String, dynamic>()),
-      triggerCriteriaTaskImplementationClassName:
-          map['triggerCriteriaTaskImplementationClassName'] == null
-              ? null
-              : map['triggerCriteriaTaskImplementationClassName'] as String,
+      parameters: map['parameters'] == null ? null : EnterpriseCrmEventbusProtoEventParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>()),
+      triggerCriteriaTaskImplementationClassName: map['triggerCriteriaTaskImplementationClassName'] == null ? null : map['triggerCriteriaTaskImplementationClassName'] as String,
     );
   }
 }
+

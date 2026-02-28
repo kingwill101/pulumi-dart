@@ -22,21 +22,19 @@ class GetWebhookArgs {
     required String location,
     String? project,
     required String webhookId,
-  })  : agentId = pulumi.Input.asInput<String>(agentId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        webhookId = pulumi.Input.asInput<String>(webhookId);
+  }) :
+      agentId = pulumi.Input.asInput<String>(agentId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      webhookId = pulumi.Input.asInput<String>(webhookId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['agentId'] = agentId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['webhookId'] = webhookId;
-    return map;
+    return <String, dynamic>{
+      'agentId': agentId,
+      'location': location,
+      'project': ?project,
+      'webhookId': webhookId,
+    };
   }
 
   factory GetWebhookArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetWebhookArgs {
     );
   }
 }
+

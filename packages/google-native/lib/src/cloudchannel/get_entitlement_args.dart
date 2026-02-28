@@ -19,16 +19,17 @@ class GetEntitlementArgs {
     required String accountId,
     required String customerId,
     required String entitlementId,
-  })  : accountId = pulumi.Input.asInput<String>(accountId),
-        customerId = pulumi.Input.asInput<String>(customerId),
-        entitlementId = pulumi.Input.asInput<String>(entitlementId);
+  }) :
+      accountId = pulumi.Input.asInput<String>(accountId),
+      customerId = pulumi.Input.asInput<String>(customerId),
+      entitlementId = pulumi.Input.asInput<String>(entitlementId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accountId'] = accountId;
-    map['customerId'] = customerId;
-    map['entitlementId'] = entitlementId;
-    return map;
+    return <String, dynamic>{
+      'accountId': accountId,
+      'customerId': customerId,
+      'entitlementId': entitlementId,
+    };
   }
 
   factory GetEntitlementArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +40,4 @@ class GetEntitlementArgs {
     );
   }
 }
+

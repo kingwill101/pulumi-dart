@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetListenerDefaultActionRedirect {
   final String host;
   final String path;
-
   /// Port of the listener. Required if `arn` is not set.
   final String port;
   final String protocol;
@@ -27,14 +27,14 @@ class GetListenerDefaultActionRedirect {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['host'] = host;
-    map['path'] = path;
-    map['port'] = port;
-    map['protocol'] = protocol;
-    map['query'] = query;
-    map['statusCode'] = statusCode;
-    return map;
+    return <String, dynamic>{
+      'host': host,
+      'path': path,
+      'port': port,
+      'protocol': protocol,
+      'query': query,
+      'statusCode': statusCode,
+    };
   }
 
   factory GetListenerDefaultActionRedirect.fromMap(Map<String, dynamic> map) {
@@ -48,3 +48,4 @@ class GetListenerDefaultActionRedirect {
     );
   }
 }
+

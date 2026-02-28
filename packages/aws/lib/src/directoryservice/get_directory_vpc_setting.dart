@@ -1,11 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDirectoryVpcSetting {
   final List<String> availabilityZones;
-
   /// Identifiers of the subnets for the connector servers (2 subnets in 2 different AZs).
   final List<String> subnetIds;
-
   /// ID of the VPC that the connector is in.
   final String vpcId;
 
@@ -20,11 +19,11 @@ class GetDirectoryVpcSetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['availabilityZones'] = availabilityZones;
-    map['subnetIds'] = subnetIds;
-    map['vpcId'] = vpcId;
-    return map;
+    return <String, dynamic>{
+      'availabilityZones': availabilityZones,
+      'subnetIds': subnetIds,
+      'vpcId': vpcId,
+    };
   }
 
   factory GetDirectoryVpcSetting.fromMap(Map<String, dynamic> map) {
@@ -35,3 +34,4 @@ class GetDirectoryVpcSetting {
     );
   }
 }
+

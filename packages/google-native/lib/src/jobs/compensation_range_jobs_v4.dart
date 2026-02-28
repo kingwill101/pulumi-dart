@@ -6,7 +6,6 @@ import 'money_jobs_v4.dart';
 class CompensationRangeJobsV4 {
   /// The maximum amount of compensation. If left empty, the value is set to a maximal compensation value and the currency code is set to match the currency code of min_compensation.
   final MoneyJobsV4? maxCompensation;
-
   /// The minimum amount of compensation. If left empty, the value is set to zero and the currency code is set to match the currency code of max_compensation.
   final MoneyJobsV4? minCompensation;
 
@@ -19,28 +18,17 @@ class CompensationRangeJobsV4 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final maxCompensationValue = maxCompensation;
-    if (maxCompensationValue != null) {
-      map['maxCompensation'] = maxCompensationValue.toMap();
-    }
-    final minCompensationValue = minCompensation;
-    if (minCompensationValue != null) {
-      map['minCompensation'] = minCompensationValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'maxCompensation': ?maxCompensation == null ? null : maxCompensation!.toMap(),
+      'minCompensation': ?minCompensation == null ? null : minCompensation!.toMap(),
+    };
   }
 
   factory CompensationRangeJobsV4.fromMap(Map<String, dynamic> map) {
     return CompensationRangeJobsV4(
-      maxCompensation: map['maxCompensation'] == null
-          ? null
-          : MoneyJobsV4.fromMap(
-              (map['maxCompensation'] as Map).cast<String, dynamic>()),
-      minCompensation: map['minCompensation'] == null
-          ? null
-          : MoneyJobsV4.fromMap(
-              (map['minCompensation'] as Map).cast<String, dynamic>()),
+      maxCompensation: map['maxCompensation'] == null ? null : MoneyJobsV4.fromMap((map['maxCompensation'] as Map).cast<String, dynamic>()),
+      minCompensation: map['minCompensation'] == null ? null : MoneyJobsV4.fromMap((map['minCompensation'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

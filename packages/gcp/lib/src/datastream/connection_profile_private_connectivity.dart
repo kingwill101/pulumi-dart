@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConnectionProfilePrivateConnectivity {
   /// A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
   final String privateConnection;
@@ -11,15 +12,15 @@ class ConnectionProfilePrivateConnectivity {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['privateConnection'] = privateConnection;
-    return map;
+    return <String, dynamic>{
+      'privateConnection': privateConnection,
+    };
   }
 
-  factory ConnectionProfilePrivateConnectivity.fromMap(
-      Map<String, dynamic> map) {
+  factory ConnectionProfilePrivateConnectivity.fromMap(Map<String, dynamic> map) {
     return ConnectionProfilePrivateConnectivity(
       privateConnection: map['privateConnection'] as String,
     );
   }
 }
+

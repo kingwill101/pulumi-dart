@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RowAccessPolicyArgs {
   /// The ID of the dataset containing this row access policy.
   final pulumi.Input<String> datasetId;
-
   /// A SQL boolean expression that represents the rows defined by this row
   /// access policy, similar to the boolean expression in a WHERE clause of a
   /// SELECT query on a table.
@@ -20,7 +19,6 @@ class RowAccessPolicyArgs {
   /// nullable_field is not NULL
   /// numeric_field BETWEEN 1.0 AND 5.0
   final pulumi.Input<String> filterPredicate;
-
   /// Input only. The optional list of iam_member users or groups that specifies the initial
   /// members that the row-level access policy should be created with.
   /// grantees types:
@@ -43,16 +41,13 @@ class RowAccessPolicyArgs {
   /// BigQuery requires authentication before a user can access the service,
   /// allUsers includes only authenticated users.
   final pulumi.Input<List<String>>? grantees;
-
   /// The ID of the row access policy. The ID must contain only
   /// letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum
   /// length is 256 characters.
   final pulumi.Input<String> policyId;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The ID of the table containing this row access policy.
   final pulumi.Input<String> tableId;
 
@@ -70,40 +65,34 @@ class RowAccessPolicyArgs {
     required String policyId,
     String? project,
     required String tableId,
-  })  : datasetId = pulumi.Input.asInput<String>(datasetId),
-        filterPredicate = pulumi.Input.asInput<String>(filterPredicate),
-        grantees = pulumi.Input.asOptionalInput<List<String>>(grantees),
-        policyId = pulumi.Input.asInput<String>(policyId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        tableId = pulumi.Input.asInput<String>(tableId);
+  }) :
+      datasetId = pulumi.Input.asInput<String>(datasetId),
+      filterPredicate = pulumi.Input.asInput<String>(filterPredicate),
+      grantees = pulumi.Input.asOptionalInput<List<String>>(grantees),
+      policyId = pulumi.Input.asInput<String>(policyId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      tableId = pulumi.Input.asInput<String>(tableId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['datasetId'] = datasetId;
-    map['filterPredicate'] = filterPredicate;
-    final granteesValue = grantees;
-    if (granteesValue != null) {
-      map['grantees'] = granteesValue;
-    }
-    map['policyId'] = policyId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['tableId'] = tableId;
-    return map;
+    return <String, dynamic>{
+      'datasetId': datasetId,
+      'filterPredicate': filterPredicate,
+      'grantees': ?grantees,
+      'policyId': policyId,
+      'project': ?project,
+      'tableId': tableId,
+    };
   }
 
   factory RowAccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return RowAccessPolicyArgs(
       datasetId: map['datasetId'] as String,
       filterPredicate: map['filterPredicate'] as String,
-      grantees: map['grantees'] == null
-          ? null
-          : (map['grantees'] as List).cast<String>(),
+      grantees: map['grantees'] == null ? null : (map['grantees'] as List).cast<String>(),
       policyId: map['policyId'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       tableId: map['tableId'] as String,
     );
   }
 }
+

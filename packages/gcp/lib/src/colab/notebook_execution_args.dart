@@ -13,48 +13,33 @@ import 'notebook_execution_gcs_notebook_source.dart';
 class NotebookExecutionArgs {
   /// Compute configuration to use for an execution job
   /// Structure is documented below.
-  final pulumi.Input<NotebookExecutionCustomEnvironmentSpec>?
-      customEnvironmentSpec;
-
+  final pulumi.Input<NotebookExecutionCustomEnvironmentSpec>? customEnvironmentSpec;
   /// The Dataform Repository containing the input notebook.
   /// Structure is documented below.
-  final pulumi.Input<NotebookExecutionDataformRepositorySource>?
-      dataformRepositorySource;
-
+  final pulumi.Input<NotebookExecutionDataformRepositorySource>? dataformRepositorySource;
   /// The content of the input notebook in ipynb format.
   /// Structure is documented below.
-  final pulumi.Input<NotebookExecutionDirectNotebookSource>?
-      directNotebookSource;
-
+  final pulumi.Input<NotebookExecutionDirectNotebookSource>? directNotebookSource;
   /// Required. The display name of the Notebook Execution.
   final pulumi.Input<String> displayName;
-
   /// Max running time of the execution job in seconds (default 86400s / 24 hrs).
   final pulumi.Input<String>? executionTimeout;
-
   /// The user email to run the execution as.
   final pulumi.Input<String>? executionUser;
-
   /// The Cloud Storage uri for the input notebook.
   /// Structure is documented below.
   final pulumi.Input<NotebookExecutionGcsNotebookSource>? gcsNotebookSource;
-
   /// The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
   final pulumi.Input<String> gcsOutputUri;
-
   /// The location for the resource: https://cloud.google.com/colab/docs/locations
   final pulumi.Input<String> location;
-
   /// User specified ID for the Notebook Execution Job
   final pulumi.Input<String>? notebookExecutionJobId;
-
   /// The NotebookRuntimeTemplate to source compute configuration from.
   final pulumi.Input<String>? notebookRuntimeTemplateResourceName;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The service account to run the execution as.
   final pulumi.Input<String>? serviceAccount;
 
@@ -86,126 +71,55 @@ class NotebookExecutionArgs {
     String? notebookRuntimeTemplateResourceName,
     String? project,
     String? serviceAccount,
-  })  : customEnvironmentSpec = pulumi.Input.asOptionalInput<
-            NotebookExecutionCustomEnvironmentSpec>(customEnvironmentSpec),
-        dataformRepositorySource = pulumi.Input.asOptionalInput<
-                NotebookExecutionDataformRepositorySource>(
-            dataformRepositorySource),
-        directNotebookSource =
-            pulumi.Input.asOptionalInput<NotebookExecutionDirectNotebookSource>(
-                directNotebookSource),
-        displayName = pulumi.Input.asInput<String>(displayName),
-        executionTimeout =
-            pulumi.Input.asOptionalInput<String>(executionTimeout),
-        executionUser = pulumi.Input.asOptionalInput<String>(executionUser),
-        gcsNotebookSource =
-            pulumi.Input.asOptionalInput<NotebookExecutionGcsNotebookSource>(
-                gcsNotebookSource),
-        gcsOutputUri = pulumi.Input.asInput<String>(gcsOutputUri),
-        location = pulumi.Input.asInput<String>(location),
-        notebookExecutionJobId =
-            pulumi.Input.asOptionalInput<String>(notebookExecutionJobId),
-        notebookRuntimeTemplateResourceName =
-            pulumi.Input.asOptionalInput<String>(
-                notebookRuntimeTemplateResourceName),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount);
+  }) :
+      customEnvironmentSpec = pulumi.Input.asOptionalInput<NotebookExecutionCustomEnvironmentSpec>(customEnvironmentSpec),
+      dataformRepositorySource = pulumi.Input.asOptionalInput<NotebookExecutionDataformRepositorySource>(dataformRepositorySource),
+      directNotebookSource = pulumi.Input.asOptionalInput<NotebookExecutionDirectNotebookSource>(directNotebookSource),
+      displayName = pulumi.Input.asInput<String>(displayName),
+      executionTimeout = pulumi.Input.asOptionalInput<String>(executionTimeout),
+      executionUser = pulumi.Input.asOptionalInput<String>(executionUser),
+      gcsNotebookSource = pulumi.Input.asOptionalInput<NotebookExecutionGcsNotebookSource>(gcsNotebookSource),
+      gcsOutputUri = pulumi.Input.asInput<String>(gcsOutputUri),
+      location = pulumi.Input.asInput<String>(location),
+      notebookExecutionJobId = pulumi.Input.asOptionalInput<String>(notebookExecutionJobId),
+      notebookRuntimeTemplateResourceName = pulumi.Input.asOptionalInput<String>(notebookRuntimeTemplateResourceName),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final customEnvironmentSpecValue = customEnvironmentSpec;
-    if (customEnvironmentSpecValue != null) {
-      map['customEnvironmentSpec'] = pulumi.Input.mapOptionalInputValue<
-              NotebookExecutionCustomEnvironmentSpec, Map<String, dynamic>>(
-          customEnvironmentSpecValue, (value) => value.toMap());
-    }
-    final dataformRepositorySourceValue = dataformRepositorySource;
-    if (dataformRepositorySourceValue != null) {
-      map['dataformRepositorySource'] = pulumi.Input.mapOptionalInputValue<
-              NotebookExecutionDataformRepositorySource, Map<String, dynamic>>(
-          dataformRepositorySourceValue, (value) => value.toMap());
-    }
-    final directNotebookSourceValue = directNotebookSource;
-    if (directNotebookSourceValue != null) {
-      map['directNotebookSource'] = pulumi.Input.mapOptionalInputValue<
-              NotebookExecutionDirectNotebookSource, Map<String, dynamic>>(
-          directNotebookSourceValue, (value) => value.toMap());
-    }
-    map['displayName'] = displayName;
-    final executionTimeoutValue = executionTimeout;
-    if (executionTimeoutValue != null) {
-      map['executionTimeout'] = executionTimeoutValue;
-    }
-    final executionUserValue = executionUser;
-    if (executionUserValue != null) {
-      map['executionUser'] = executionUserValue;
-    }
-    final gcsNotebookSourceValue = gcsNotebookSource;
-    if (gcsNotebookSourceValue != null) {
-      map['gcsNotebookSource'] = pulumi.Input.mapOptionalInputValue<
-              NotebookExecutionGcsNotebookSource, Map<String, dynamic>>(
-          gcsNotebookSourceValue, (value) => value.toMap());
-    }
-    map['gcsOutputUri'] = gcsOutputUri;
-    map['location'] = location;
-    final notebookExecutionJobIdValue = notebookExecutionJobId;
-    if (notebookExecutionJobIdValue != null) {
-      map['notebookExecutionJobId'] = notebookExecutionJobIdValue;
-    }
-    final notebookRuntimeTemplateResourceNameValue =
-        notebookRuntimeTemplateResourceName;
-    if (notebookRuntimeTemplateResourceNameValue != null) {
-      map['notebookRuntimeTemplateResourceName'] =
-          notebookRuntimeTemplateResourceNameValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final serviceAccountValue = serviceAccount;
-    if (serviceAccountValue != null) {
-      map['serviceAccount'] = serviceAccountValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'customEnvironmentSpec': ?pulumi.Input.mapOptionalInputValue<NotebookExecutionCustomEnvironmentSpec, Map<String, dynamic>>(customEnvironmentSpec, (value) => value.toMap()),
+      'dataformRepositorySource': ?pulumi.Input.mapOptionalInputValue<NotebookExecutionDataformRepositorySource, Map<String, dynamic>>(dataformRepositorySource, (value) => value.toMap()),
+      'directNotebookSource': ?pulumi.Input.mapOptionalInputValue<NotebookExecutionDirectNotebookSource, Map<String, dynamic>>(directNotebookSource, (value) => value.toMap()),
+      'displayName': displayName,
+      'executionTimeout': ?executionTimeout,
+      'executionUser': ?executionUser,
+      'gcsNotebookSource': ?pulumi.Input.mapOptionalInputValue<NotebookExecutionGcsNotebookSource, Map<String, dynamic>>(gcsNotebookSource, (value) => value.toMap()),
+      'gcsOutputUri': gcsOutputUri,
+      'location': location,
+      'notebookExecutionJobId': ?notebookExecutionJobId,
+      'notebookRuntimeTemplateResourceName': ?notebookRuntimeTemplateResourceName,
+      'project': ?project,
+      'serviceAccount': ?serviceAccount,
+    };
   }
 
   factory NotebookExecutionArgs.fromMap(Map<String, dynamic> map) {
     return NotebookExecutionArgs(
-      customEnvironmentSpec: map['customEnvironmentSpec'] == null
-          ? null
-          : NotebookExecutionCustomEnvironmentSpec.fromMap(
-              (map['customEnvironmentSpec'] as Map).cast<String, dynamic>()),
-      dataformRepositorySource: map['dataformRepositorySource'] == null
-          ? null
-          : NotebookExecutionDataformRepositorySource.fromMap(
-              (map['dataformRepositorySource'] as Map).cast<String, dynamic>()),
-      directNotebookSource: map['directNotebookSource'] == null
-          ? null
-          : NotebookExecutionDirectNotebookSource.fromMap(
-              (map['directNotebookSource'] as Map).cast<String, dynamic>()),
+      customEnvironmentSpec: map['customEnvironmentSpec'] == null ? null : NotebookExecutionCustomEnvironmentSpec.fromMap((map['customEnvironmentSpec'] as Map).cast<String, dynamic>()),
+      dataformRepositorySource: map['dataformRepositorySource'] == null ? null : NotebookExecutionDataformRepositorySource.fromMap((map['dataformRepositorySource'] as Map).cast<String, dynamic>()),
+      directNotebookSource: map['directNotebookSource'] == null ? null : NotebookExecutionDirectNotebookSource.fromMap((map['directNotebookSource'] as Map).cast<String, dynamic>()),
       displayName: map['displayName'] as String,
-      executionTimeout: map['executionTimeout'] == null
-          ? null
-          : map['executionTimeout'] as String,
-      executionUser:
-          map['executionUser'] == null ? null : map['executionUser'] as String,
-      gcsNotebookSource: map['gcsNotebookSource'] == null
-          ? null
-          : NotebookExecutionGcsNotebookSource.fromMap(
-              (map['gcsNotebookSource'] as Map).cast<String, dynamic>()),
+      executionTimeout: map['executionTimeout'] == null ? null : map['executionTimeout'] as String,
+      executionUser: map['executionUser'] == null ? null : map['executionUser'] as String,
+      gcsNotebookSource: map['gcsNotebookSource'] == null ? null : NotebookExecutionGcsNotebookSource.fromMap((map['gcsNotebookSource'] as Map).cast<String, dynamic>()),
       gcsOutputUri: map['gcsOutputUri'] as String,
       location: map['location'] as String,
-      notebookExecutionJobId: map['notebookExecutionJobId'] == null
-          ? null
-          : map['notebookExecutionJobId'] as String,
-      notebookRuntimeTemplateResourceName:
-          map['notebookRuntimeTemplateResourceName'] == null
-              ? null
-              : map['notebookRuntimeTemplateResourceName'] as String,
+      notebookExecutionJobId: map['notebookExecutionJobId'] == null ? null : map['notebookExecutionJobId'] as String,
+      notebookRuntimeTemplateResourceName: map['notebookRuntimeTemplateResourceName'] == null ? null : map['notebookRuntimeTemplateResourceName'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      serviceAccount: map['serviceAccount'] == null
-          ? null
-          : map['serviceAccount'] as String,
+      serviceAccount: map['serviceAccount'] == null ? null : map['serviceAccount'] as String,
     );
   }
 }
+

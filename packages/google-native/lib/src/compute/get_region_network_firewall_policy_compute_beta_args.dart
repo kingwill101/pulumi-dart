@@ -19,23 +19,20 @@ class GetRegionNetworkFirewallPolicyComputeBetaArgs {
     required String firewallPolicy,
     String? project,
     required String region,
-  })  : firewallPolicy = pulumi.Input.asInput<String>(firewallPolicy),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asInput<String>(region);
+  }) :
+      firewallPolicy = pulumi.Input.asInput<String>(firewallPolicy),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['firewallPolicy'] = firewallPolicy;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'firewallPolicy': firewallPolicy,
+      'project': ?project,
+      'region': region,
+    };
   }
 
-  factory GetRegionNetworkFirewallPolicyComputeBetaArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetRegionNetworkFirewallPolicyComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionNetworkFirewallPolicyComputeBetaArgs(
       firewallPolicy: map['firewallPolicy'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -43,3 +40,4 @@ class GetRegionNetworkFirewallPolicyComputeBetaArgs {
     );
   }
 }
+

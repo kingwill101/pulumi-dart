@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TaskDefinitionTmpfs {
   final String? containerPath;
   final List<String>? mountOptions;
@@ -16,28 +17,19 @@ class TaskDefinitionTmpfs {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final containerPathValue = containerPath;
-    if (containerPathValue != null) {
-      map['containerPath'] = containerPathValue;
-    }
-    final mountOptionsValue = mountOptions;
-    if (mountOptionsValue != null) {
-      map['mountOptions'] = mountOptionsValue;
-    }
-    map['size'] = size;
-    return map;
+    return <String, dynamic>{
+      'containerPath': ?containerPath,
+      'mountOptions': ?mountOptions,
+      'size': size,
+    };
   }
 
   factory TaskDefinitionTmpfs.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionTmpfs(
-      containerPath: map['containerPath'] == null
-          ? null
-          : map['containerPath'] as String,
-      mountOptions: map['mountOptions'] == null
-          ? null
-          : (map['mountOptions'] as List).cast<String>(),
+      containerPath: map['containerPath'] == null ? null : map['containerPath'] as String,
+      mountOptions: map['mountOptions'] == null ? null : (map['mountOptions'] as List).cast<String>(),
       size: map['size'] as int,
     );
   }
 }
+

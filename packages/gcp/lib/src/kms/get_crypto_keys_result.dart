@@ -6,11 +6,9 @@ import 'get_crypto_keys_key.dart';
 /// Result data returned by getCryptoKeys.
 class GetCryptoKeysResult {
   final String? filter;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String keyRing;
-
   /// A list of all the retrieved keys from the provided key ring. This list is influenced by the provided filter argument.
   final List<GetCryptoKeysKey> keys;
 
@@ -27,17 +25,12 @@ class GetCryptoKeysResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final filterValue = filter;
-    if (filterValue != null) {
-      map['filter'] = filterValue;
-    }
-    map['id'] = id;
-    map['keyRing'] = keyRing;
-    map['keys'] =
-        pulumi.Input.encodeList<GetCryptoKeysKey, Map<String, dynamic>>(
-            keys, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'filter': ?filter,
+      'id': id,
+      'keyRing': keyRing,
+      'keys': pulumi.Input.encodeList<GetCryptoKeysKey, Map<String, dynamic>>(keys, (value) => value.toMap()),
+    };
   }
 
   factory GetCryptoKeysResult.fromMap(Map<String, dynamic> map) {
@@ -45,10 +38,8 @@ class GetCryptoKeysResult {
       filter: map['filter'] == null ? null : map['filter'] as String,
       id: map['id'] as String,
       keyRing: map['keyRing'] as String,
-      keys: pulumi.Input.decodeList<GetCryptoKeysKey>(
-          map['keys'],
-          (value) =>
-              GetCryptoKeysKey.fromMap((value as Map).cast<String, dynamic>())),
+      keys: pulumi.Input.decodeList<GetCryptoKeysKey>(map['keys'], (value) => GetCryptoKeysKey.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

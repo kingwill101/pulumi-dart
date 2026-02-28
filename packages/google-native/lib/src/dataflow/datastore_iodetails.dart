@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Metadata for a Datastore connector used by the job.
 class DatastoreIODetails {
   /// Namespace used in the connection.
   final String? namespace;
-
   /// ProjectId accessed in the connection.
   final String? project;
 
@@ -17,16 +17,10 @@ class DatastoreIODetails {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final namespaceValue = namespace;
-    if (namespaceValue != null) {
-      map['namespace'] = namespaceValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'namespace': ?namespace,
+      'project': ?project,
+    };
   }
 
   factory DatastoreIODetails.fromMap(Map<String, dynamic> map) {
@@ -36,3 +30,4 @@ class DatastoreIODetails {
     );
   }
 }
+

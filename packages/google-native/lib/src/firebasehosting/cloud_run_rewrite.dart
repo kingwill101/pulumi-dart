@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A configured rewrite that directs requests to a Cloud Run service. If the Cloud Run service does not exist when setting or updating your Firebase Hosting configuration, then the request fails. Any errors from the Cloud Run service are passed to the end user (for example, if you delete a service, any requests directed to that service receive a `404` error).
 class CloudRunRewrite {
   /// Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
   final String? region;
-
   /// User-defined ID of the Cloud Run service.
   final String serviceId;
-
   /// Optional. User-provided TrafficConfig tag to send traffic to. When omitted, traffic is sent to the service-wide URI
   final String? tag;
 
@@ -22,17 +21,11 @@ class CloudRunRewrite {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['serviceId'] = serviceId;
-    final tagValue = tag;
-    if (tagValue != null) {
-      map['tag'] = tagValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'region': ?region,
+      'serviceId': serviceId,
+      'tag': ?tag,
+    };
   }
 
   factory CloudRunRewrite.fromMap(Map<String, dynamic> map) {
@@ -43,3 +36,4 @@ class CloudRunRewrite {
     );
   }
 }
+

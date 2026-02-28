@@ -6,10 +6,8 @@ import 'google_cloud_apigee_v1_certificate_response.dart';
 class GetAliasResult {
   /// Resource ID for this alias. Values must match the regular expression `[^/]{1,255}`.
   final String alias;
-
   /// Chain of certificates under this alias.
   final GoogleCloudApigeeV1CertificateResponse certsInfo;
-
   /// Type of alias.
   final String type;
 
@@ -24,19 +22,19 @@ class GetAliasResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['alias'] = alias;
-    map['certsInfo'] = certsInfo.toMap();
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'alias': alias,
+      'certsInfo': certsInfo.toMap(),
+      'type': type,
+    };
   }
 
   factory GetAliasResult.fromMap(Map<String, dynamic> map) {
     return GetAliasResult(
       alias: map['alias'] as String,
-      certsInfo: GoogleCloudApigeeV1CertificateResponse.fromMap(
-          (map['certsInfo'] as Map).cast<String, dynamic>()),
+      certsInfo: GoogleCloudApigeeV1CertificateResponse.fromMap((map['certsInfo'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

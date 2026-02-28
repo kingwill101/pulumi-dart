@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationAssignmentsArgs {
   /// ARN of the application.
   final pulumi.Input<String> applicationArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -19,17 +18,15 @@ class GetApplicationAssignmentsArgs {
   GetApplicationAssignmentsArgs({
     required String applicationArn,
     String? region,
-  })  : applicationArn = pulumi.Input.asInput<String>(applicationArn),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      applicationArn = pulumi.Input.asInput<String>(applicationArn),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['applicationArn'] = applicationArn;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'applicationArn': applicationArn,
+      'region': ?region,
+    };
   }
 
   factory GetApplicationAssignmentsArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +36,4 @@ class GetApplicationAssignmentsArgs {
     );
   }
 }
+

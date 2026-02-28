@@ -1,18 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getPipeline.
 class GetPipelineResult {
   /// Description of Pipeline.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Name of Pipeline.
   final String name;
   final String pipelineId;
   final String region;
-
   /// Map of tags assigned to the resource.
   final Map<String, String> tags;
 
@@ -33,14 +31,14 @@ class GetPipelineResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['description'] = description;
-    map['id'] = id;
-    map['name'] = name;
-    map['pipelineId'] = pipelineId;
-    map['region'] = region;
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'description': description,
+      'id': id,
+      'name': name,
+      'pipelineId': pipelineId,
+      'region': region,
+      'tags': tags,
+    };
   }
 
   factory GetPipelineResult.fromMap(Map<String, dynamic> map) {
@@ -54,3 +52,4 @@ class GetPipelineResult {
     );
   }
 }
+

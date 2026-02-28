@@ -6,28 +6,20 @@ import 'backup_retention_settings_response_sqladmin_v1beta4.dart';
 class BackupConfigurationResponseSqladminV1beta4 {
   /// Backup retention settings.
   final BackupRetentionSettingsResponseSqladminV1beta4 backupRetentionSettings;
-
   /// (MySQL only) Whether binary log is enabled. If backup configuration is disabled, binarylog must be disabled as well.
   final bool binaryLogEnabled;
-
   /// Whether this configuration is enabled.
   final bool enabled;
-
   /// This is always `sql#backupConfiguration`.
   final String kind;
-
   /// Location of the backup
   final String location;
-
   /// Whether point in time recovery is enabled.
   final bool pointInTimeRecoveryEnabled;
-
   /// Reserved for future use.
   final bool replicationLogArchivingEnabled;
-
   /// Start time for the daily backup configuration in UTC timezone in the 24 hour format - `HH:MM`.
   final String startTime;
-
   /// The number of days of transaction logs we retain for point in time restore, from 1-7.
   final int transactionLogRetentionDays;
 
@@ -54,34 +46,31 @@ class BackupConfigurationResponseSqladminV1beta4 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['backupRetentionSettings'] = backupRetentionSettings.toMap();
-    map['binaryLogEnabled'] = binaryLogEnabled;
-    map['enabled'] = enabled;
-    map['kind'] = kind;
-    map['location'] = location;
-    map['pointInTimeRecoveryEnabled'] = pointInTimeRecoveryEnabled;
-    map['replicationLogArchivingEnabled'] = replicationLogArchivingEnabled;
-    map['startTime'] = startTime;
-    map['transactionLogRetentionDays'] = transactionLogRetentionDays;
-    return map;
+    return <String, dynamic>{
+      'backupRetentionSettings': backupRetentionSettings.toMap(),
+      'binaryLogEnabled': binaryLogEnabled,
+      'enabled': enabled,
+      'kind': kind,
+      'location': location,
+      'pointInTimeRecoveryEnabled': pointInTimeRecoveryEnabled,
+      'replicationLogArchivingEnabled': replicationLogArchivingEnabled,
+      'startTime': startTime,
+      'transactionLogRetentionDays': transactionLogRetentionDays,
+    };
   }
 
-  factory BackupConfigurationResponseSqladminV1beta4.fromMap(
-      Map<String, dynamic> map) {
+  factory BackupConfigurationResponseSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return BackupConfigurationResponseSqladminV1beta4(
-      backupRetentionSettings:
-          BackupRetentionSettingsResponseSqladminV1beta4.fromMap(
-              (map['backupRetentionSettings'] as Map).cast<String, dynamic>()),
+      backupRetentionSettings: BackupRetentionSettingsResponseSqladminV1beta4.fromMap((map['backupRetentionSettings'] as Map).cast<String, dynamic>()),
       binaryLogEnabled: map['binaryLogEnabled'] as bool,
       enabled: map['enabled'] as bool,
       kind: map['kind'] as String,
       location: map['location'] as String,
       pointInTimeRecoveryEnabled: map['pointInTimeRecoveryEnabled'] as bool,
-      replicationLogArchivingEnabled:
-          map['replicationLogArchivingEnabled'] as bool,
+      replicationLogArchivingEnabled: map['replicationLogArchivingEnabled'] as bool,
       startTime: map['startTime'] as String,
       transactionLogRetentionDays: map['transactionLogRetentionDays'] as int,
     );
   }
 }
+

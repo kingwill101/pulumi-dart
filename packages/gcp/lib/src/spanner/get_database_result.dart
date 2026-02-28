@@ -11,7 +11,6 @@ class GetDatabaseResult {
   final bool deletionProtection;
   final bool enableDropProtection;
   final List<GetDatabaseEncryptionConfig> encryptionConfigs;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instance;
@@ -49,25 +48,20 @@ class GetDatabaseResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['databaseDialect'] = databaseDialect;
-    map['ddls'] = ddls;
-    map['defaultTimeZone'] = defaultTimeZone;
-    map['deletionProtection'] = deletionProtection;
-    map['enableDropProtection'] = enableDropProtection;
-    map['encryptionConfigs'] = pulumi.Input.encodeList<
-        GetDatabaseEncryptionConfig,
-        Map<String, dynamic>>(encryptionConfigs, (value) => value.toMap());
-    map['id'] = id;
-    map['instance'] = instance;
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['state'] = state;
-    map['versionRetentionPeriod'] = versionRetentionPeriod;
-    return map;
+    return <String, dynamic>{
+      'databaseDialect': databaseDialect,
+      'ddls': ddls,
+      'defaultTimeZone': defaultTimeZone,
+      'deletionProtection': deletionProtection,
+      'enableDropProtection': enableDropProtection,
+      'encryptionConfigs': pulumi.Input.encodeList<GetDatabaseEncryptionConfig, Map<String, dynamic>>(encryptionConfigs, (value) => value.toMap()),
+      'id': id,
+      'instance': instance,
+      'name': name,
+      'project': ?project,
+      'state': state,
+      'versionRetentionPeriod': versionRetentionPeriod,
+    };
   }
 
   factory GetDatabaseResult.fromMap(Map<String, dynamic> map) {
@@ -77,10 +71,7 @@ class GetDatabaseResult {
       defaultTimeZone: map['defaultTimeZone'] as String,
       deletionProtection: map['deletionProtection'] as bool,
       enableDropProtection: map['enableDropProtection'] as bool,
-      encryptionConfigs: pulumi.Input.decodeList<GetDatabaseEncryptionConfig>(
-          map['encryptionConfigs'],
-          (value) => GetDatabaseEncryptionConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      encryptionConfigs: pulumi.Input.decodeList<GetDatabaseEncryptionConfig>(map['encryptionConfigs'], (value) => GetDatabaseEncryptionConfig.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       instance: map['instance'] as String,
       name: map['name'] as String,
@@ -90,3 +81,4 @@ class GetDatabaseResult {
     );
   }
 }
+

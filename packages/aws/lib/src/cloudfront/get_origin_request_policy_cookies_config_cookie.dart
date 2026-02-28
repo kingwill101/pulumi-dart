@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetOriginRequestPolicyCookiesConfigCookie {
   final List<String> items;
 
@@ -10,15 +11,15 @@ class GetOriginRequestPolicyCookiesConfigCookie {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['items'] = items;
-    return map;
+    return <String, dynamic>{
+      'items': items,
+    };
   }
 
-  factory GetOriginRequestPolicyCookiesConfigCookie.fromMap(
-      Map<String, dynamic> map) {
+  factory GetOriginRequestPolicyCookiesConfigCookie.fromMap(Map<String, dynamic> map) {
     return GetOriginRequestPolicyCookiesConfigCookie(
       items: (map['items'] as List).cast<String>(),
     );
   }
 }
+

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FrameworkDeploymentFramework {
   /// In the format:
   /// organizations/{org}/locations/{location}/frameworks/{framework}
   final String framework;
-
   /// Major revision id of the framework.
   final String majorRevisionId;
 
@@ -17,10 +17,10 @@ class FrameworkDeploymentFramework {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['framework'] = framework;
-    map['majorRevisionId'] = majorRevisionId;
-    return map;
+    return <String, dynamic>{
+      'framework': framework,
+      'majorRevisionId': majorRevisionId,
+    };
   }
 
   factory FrameworkDeploymentFramework.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class FrameworkDeploymentFramework {
     );
   }
 }
+

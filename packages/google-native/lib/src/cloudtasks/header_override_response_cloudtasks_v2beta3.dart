@@ -14,16 +14,15 @@ class HeaderOverrideResponseCloudtasksV2beta3 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['header'] = header.toMap();
-    return map;
+    return <String, dynamic>{
+      'header': header.toMap(),
+    };
   }
 
-  factory HeaderOverrideResponseCloudtasksV2beta3.fromMap(
-      Map<String, dynamic> map) {
+  factory HeaderOverrideResponseCloudtasksV2beta3.fromMap(Map<String, dynamic> map) {
     return HeaderOverrideResponseCloudtasksV2beta3(
-      header: HeaderResponseCloudtasksV2beta3.fromMap(
-          (map['header'] as Map).cast<String, dynamic>()),
+      header: HeaderResponseCloudtasksV2beta3.fromMap((map['header'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

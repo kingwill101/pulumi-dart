@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ManagedZonePrivateVisibilityConfigGkeCluster {
   /// The resource name of the cluster to bind this ManagedZone to.
   /// This should be specified in the format like
@@ -13,15 +14,15 @@ class ManagedZonePrivateVisibilityConfigGkeCluster {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gkeClusterName'] = gkeClusterName;
-    return map;
+    return <String, dynamic>{
+      'gkeClusterName': gkeClusterName,
+    };
   }
 
-  factory ManagedZonePrivateVisibilityConfigGkeCluster.fromMap(
-      Map<String, dynamic> map) {
+  factory ManagedZonePrivateVisibilityConfigGkeCluster.fromMap(Map<String, dynamic> map) {
     return ManagedZonePrivateVisibilityConfigGkeCluster(
       gkeClusterName: map['gkeClusterName'] as String,
     );
   }
 }
+

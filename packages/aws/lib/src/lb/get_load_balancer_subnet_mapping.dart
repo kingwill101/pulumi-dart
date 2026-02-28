@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetLoadBalancerSubnetMapping {
   final String allocationId;
   final String ipv6Address;
@@ -22,13 +23,13 @@ class GetLoadBalancerSubnetMapping {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allocationId'] = allocationId;
-    map['ipv6Address'] = ipv6Address;
-    map['outpostId'] = outpostId;
-    map['privateIpv4Address'] = privateIpv4Address;
-    map['subnetId'] = subnetId;
-    return map;
+    return <String, dynamic>{
+      'allocationId': allocationId,
+      'ipv6Address': ipv6Address,
+      'outpostId': outpostId,
+      'privateIpv4Address': privateIpv4Address,
+      'subnetId': subnetId,
+    };
   }
 
   factory GetLoadBalancerSubnetMapping.fromMap(Map<String, dynamic> map) {
@@ -41,3 +42,4 @@ class GetLoadBalancerSubnetMapping {
     );
   }
 }
+

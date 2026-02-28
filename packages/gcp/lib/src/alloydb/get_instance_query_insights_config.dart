@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInstanceQueryInsightsConfig {
   /// Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 20 is considered valid.
   final int queryPlansPerMinute;
-
   /// Query string length. The default value is 1024. Any integer between 256 and 4500 is considered valid.
   final int queryStringLength;
-
   /// Record application tags for an instance. This flag is turned "on" by default.
   final bool recordApplicationTags;
-
   /// Record client address for an instance. Client address is PII information. This flag is turned "on" by default.
   final bool recordClientAddress;
 
@@ -26,12 +24,12 @@ class GetInstanceQueryInsightsConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['queryPlansPerMinute'] = queryPlansPerMinute;
-    map['queryStringLength'] = queryStringLength;
-    map['recordApplicationTags'] = recordApplicationTags;
-    map['recordClientAddress'] = recordClientAddress;
-    return map;
+    return <String, dynamic>{
+      'queryPlansPerMinute': queryPlansPerMinute,
+      'queryStringLength': queryStringLength,
+      'recordApplicationTags': recordApplicationTags,
+      'recordClientAddress': recordClientAddress,
+    };
   }
 
   factory GetInstanceQueryInsightsConfig.fromMap(Map<String, dynamic> map) {
@@ -43,3 +41,4 @@ class GetInstanceQueryInsightsConfig {
     );
   }
 }
+

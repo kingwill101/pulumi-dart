@@ -5,13 +5,9 @@ import 'agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_con
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfiguration {
   /// Configurations for storage in AWS Glue Data Catalog. See `aws_data_catalog_configuration` block for details.
-  final AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfigurationAwsDataCatalogConfiguration?
-      awsDataCatalogConfiguration;
-
+  final AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfigurationAwsDataCatalogConfiguration? awsDataCatalogConfiguration;
   /// Configurations for storage in Amazon Redshift. See `redshift_configuration` block for details.
-  final AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfigurationRedshiftConfiguration?
-      redshiftConfiguration;
-
+  final AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfigurationRedshiftConfiguration? redshiftConfiguration;
   /// Vector store service in which the knowledge base is stored. Valid Values: `MONGO_DB_ATLAS`, `OPENSEARCH_SERVERLESS`, `OPENSEARCH_MANAGED_CLUSTER`, `PINECONE`, `REDIS_ENTERPRISE_CLOUD`, `RDS`, `S3_VECTORS`, `NEPTUNE_ANALYTICS`.
   final String type;
 
@@ -26,34 +22,19 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final awsDataCatalogConfigurationValue = awsDataCatalogConfiguration;
-    if (awsDataCatalogConfigurationValue != null) {
-      map['awsDataCatalogConfiguration'] =
-          awsDataCatalogConfigurationValue.toMap();
-    }
-    final redshiftConfigurationValue = redshiftConfiguration;
-    if (redshiftConfigurationValue != null) {
-      map['redshiftConfiguration'] = redshiftConfigurationValue.toMap();
-    }
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'awsDataCatalogConfiguration': ?awsDataCatalogConfiguration == null ? null : awsDataCatalogConfiguration!.toMap(),
+      'redshiftConfiguration': ?redshiftConfiguration == null ? null : redshiftConfiguration!.toMap(),
+      'type': type,
+    };
   }
 
-  factory AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfiguration(
-      awsDataCatalogConfiguration: map['awsDataCatalogConfiguration'] == null
-          ? null
-          : AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfigurationAwsDataCatalogConfiguration
-              .fromMap((map['awsDataCatalogConfiguration'] as Map)
-                  .cast<String, dynamic>()),
-      redshiftConfiguration: map['redshiftConfiguration'] == null
-          ? null
-          : AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfigurationRedshiftConfiguration
-              .fromMap((map['redshiftConfiguration'] as Map)
-                  .cast<String, dynamic>()),
+      awsDataCatalogConfiguration: map['awsDataCatalogConfiguration'] == null ? null : AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfigurationAwsDataCatalogConfiguration.fromMap((map['awsDataCatalogConfiguration'] as Map).cast<String, dynamic>()),
+      redshiftConfiguration: map['redshiftConfiguration'] == null ? null : AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfigurationRedshiftConfiguration.fromMap((map['redshiftConfiguration'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

@@ -13,7 +13,7 @@ enum NetworkInterfaceNicTypeComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown NetworkInterfaceNicTypeComputeBeta value: $value');
+    throw ArgumentError('Unknown NetworkInterfaceNicTypeComputeBeta value: $value');
   }
 }
+

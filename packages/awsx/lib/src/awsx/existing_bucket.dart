@@ -1,29 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Reference to an existing bucket.
 class ExistingBucket {
   /// Arn of the bucket. Only one of [arn] or [name] can be specified.
   final String? arn;
-
   /// Name of the bucket. Only one of [arn] or [name] can be specified.
   final String? name;
 
   /// Creates a new [ExistingBucket].
   /// [arn] Arn of the bucket. Only one of [arn] or [name] can be specified.
   /// [name] Name of the bucket. Only one of [arn] or [name] can be specified.
-  ExistingBucket({this.arn, this.name});
+  ExistingBucket({
+    this.arn,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final arnValue = arn;
-    if (arnValue != null) {
-      map['arn'] = arnValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'arn': ?arn,
+      'name': ?name,
+    };
   }
 
   factory ExistingBucket.fromMap(Map<String, dynamic> map) {
@@ -33,3 +30,4 @@ class ExistingBucket {
     );
   }
 }
+

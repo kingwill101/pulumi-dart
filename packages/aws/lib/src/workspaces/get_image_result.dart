@@ -1,22 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getImage.
 class GetImageResult {
   /// The description of the image.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String imageId;
-
   /// The name of the image.
   final String name;
   final String operatingSystemType;
   final String region;
-
   /// Specifies whether the image is running on dedicated hardware. When Bring Your Own License (BYOL) is enabled, this value is set to DEDICATED. For more information, see [Bring Your Own Windows Desktop Images](https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html).
   final String requiredTenancy;
-
   /// The status of the image.
   final String state;
 
@@ -41,16 +38,16 @@ class GetImageResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['description'] = description;
-    map['id'] = id;
-    map['imageId'] = imageId;
-    map['name'] = name;
-    map['operatingSystemType'] = operatingSystemType;
-    map['region'] = region;
-    map['requiredTenancy'] = requiredTenancy;
-    map['state'] = state;
-    return map;
+    return <String, dynamic>{
+      'description': description,
+      'id': id,
+      'imageId': imageId,
+      'name': name,
+      'operatingSystemType': operatingSystemType,
+      'region': region,
+      'requiredTenancy': requiredTenancy,
+      'state': state,
+    };
   }
 
   factory GetImageResult.fromMap(Map<String, dynamic> map) {
@@ -66,3 +63,4 @@ class GetImageResult {
     );
   }
 }
+

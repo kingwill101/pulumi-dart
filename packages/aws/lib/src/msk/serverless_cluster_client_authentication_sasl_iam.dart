@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ServerlessClusterClientAuthenticationSaslIam {
   /// Whether SASL/IAM authentication is enabled or not.
   final bool enabled;
@@ -11,15 +12,15 @@ class ServerlessClusterClientAuthenticationSaslIam {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory ServerlessClusterClientAuthenticationSaslIam.fromMap(
-      Map<String, dynamic> map) {
+  factory ServerlessClusterClientAuthenticationSaslIam.fromMap(Map<String, dynamic> map) {
     return ServerlessClusterClientAuthenticationSaslIam(
       enabled: map['enabled'] as bool,
     );
   }
 }
+

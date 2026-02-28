@@ -15,19 +15,15 @@ class NetworkPolicyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['networkInterfaces'] =
-        pulumi.Input.encodeList<NetworkInterfaceResponse, Map<String, dynamic>>(
-            networkInterfaces, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'networkInterfaces': pulumi.Input.encodeList<NetworkInterfaceResponse, Map<String, dynamic>>(networkInterfaces, (value) => value.toMap()),
+    };
   }
 
   factory NetworkPolicyResponse.fromMap(Map<String, dynamic> map) {
     return NetworkPolicyResponse(
-      networkInterfaces: pulumi.Input.decodeList<NetworkInterfaceResponse>(
-          map['networkInterfaces'],
-          (value) => NetworkInterfaceResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      networkInterfaces: pulumi.Input.decodeList<NetworkInterfaceResponse>(map['networkInterfaces'], (value) => NetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

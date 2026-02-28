@@ -19,19 +19,17 @@ class GetQueuedResourceArgs {
     required String location,
     String? project,
     required String queuedResourceId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        queuedResourceId = pulumi.Input.asInput<String>(queuedResourceId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      queuedResourceId = pulumi.Input.asInput<String>(queuedResourceId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['queuedResourceId'] = queuedResourceId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+      'queuedResourceId': queuedResourceId,
+    };
   }
 
   factory GetQueuedResourceArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetQueuedResourceArgs {
     );
   }
 }
+

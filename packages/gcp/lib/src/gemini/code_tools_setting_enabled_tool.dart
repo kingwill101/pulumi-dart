@@ -7,17 +7,13 @@ class CodeToolsSettingEnabledTool {
   /// Link to the Dev Connect Account Connector that holds the user credentials.
   /// projects/{project}/locations/{location}/accountConnectors/{account_connector_id}
   final String? accountConnector;
-
   /// Configuration parameters for the tool.
   /// Structure is documented below.
   final List<CodeToolsSettingEnabledToolConfig>? configs;
-
   /// Handle used to invoke the tool.
   final String handle;
-
   /// Link to the Tool
   final String tool;
-
   /// Overridden URI, if allowed by Tool.
   final String? uriOverride;
 
@@ -36,41 +32,23 @@ class CodeToolsSettingEnabledTool {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final accountConnectorValue = accountConnector;
-    if (accountConnectorValue != null) {
-      map['accountConnector'] = accountConnectorValue;
-    }
-    final configsValue = configs;
-    if (configsValue != null) {
-      map['configs'] = pulumi.Input.encodeList<
-          CodeToolsSettingEnabledToolConfig,
-          Map<String, dynamic>>(configsValue, (value) => value.toMap());
-    }
-    map['handle'] = handle;
-    map['tool'] = tool;
-    final uriOverrideValue = uriOverride;
-    if (uriOverrideValue != null) {
-      map['uriOverride'] = uriOverrideValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'accountConnector': ?accountConnector,
+      'configs': ?configs == null ? null : pulumi.Input.encodeList<CodeToolsSettingEnabledToolConfig, Map<String, dynamic>>(configs!, (value) => value.toMap()),
+      'handle': handle,
+      'tool': tool,
+      'uriOverride': ?uriOverride,
+    };
   }
 
   factory CodeToolsSettingEnabledTool.fromMap(Map<String, dynamic> map) {
     return CodeToolsSettingEnabledTool(
-      accountConnector: map['accountConnector'] == null
-          ? null
-          : map['accountConnector'] as String,
-      configs: map['configs'] == null
-          ? null
-          : pulumi.Input.decodeList<CodeToolsSettingEnabledToolConfig>(
-              map['configs'],
-              (value) => CodeToolsSettingEnabledToolConfig.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      accountConnector: map['accountConnector'] == null ? null : map['accountConnector'] as String,
+      configs: map['configs'] == null ? null : pulumi.Input.decodeList<CodeToolsSettingEnabledToolConfig>(map['configs'], (value) => CodeToolsSettingEnabledToolConfig.fromMap((value as Map).cast<String, dynamic>())),
       handle: map['handle'] as String,
       tool: map['tool'] as String,
-      uriOverride:
-          map['uriOverride'] == null ? null : map['uriOverride'] as String,
+      uriOverride: map['uriOverride'] == null ? null : map['uriOverride'] as String,
     );
   }
 }
+

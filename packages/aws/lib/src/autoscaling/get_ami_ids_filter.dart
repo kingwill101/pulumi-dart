@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetAmiIdsFilter {
   /// Name of the DescribeAutoScalingGroup filter. The recommended values are: `tag-key`, `tag-value`, and `tag:<tag name>`
   final String name;
-
   /// Value of the filter.
   final List<String> values;
 
@@ -16,10 +16,10 @@ class GetAmiIdsFilter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['values'] = values;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'values': values,
+    };
   }
 
   factory GetAmiIdsFilter.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetAmiIdsFilter {
     );
   }
 }
+

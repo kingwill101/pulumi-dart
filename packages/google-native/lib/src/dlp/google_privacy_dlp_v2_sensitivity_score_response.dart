@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Score is calculated from of all elements in the data profile. A higher level means the data is more sensitive.
 class GooglePrivacyDlpV2SensitivityScoreResponse {
   /// The sensitivity score applied to the resource.
@@ -12,15 +13,15 @@ class GooglePrivacyDlpV2SensitivityScoreResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['score'] = score;
-    return map;
+    return <String, dynamic>{
+      'score': score,
+    };
   }
 
-  factory GooglePrivacyDlpV2SensitivityScoreResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2SensitivityScoreResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2SensitivityScoreResponse(
       score: map['score'] as String,
     );
   }
 }
+

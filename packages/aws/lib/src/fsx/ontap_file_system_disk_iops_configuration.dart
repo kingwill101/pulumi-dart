@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class OntapFileSystemDiskIopsConfiguration {
   /// The total number of SSD IOPS provisioned for the file system.
   final int? iops;
-
   /// Specifies whether the number of IOPS for the file system is using the system. Valid values are `AUTOMATIC` and `USER_PROVISIONED`. Default value is `AUTOMATIC`.
   final String? mode;
 
@@ -16,23 +16,17 @@ class OntapFileSystemDiskIopsConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final iopsValue = iops;
-    if (iopsValue != null) {
-      map['iops'] = iopsValue;
-    }
-    final modeValue = mode;
-    if (modeValue != null) {
-      map['mode'] = modeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'iops': ?iops,
+      'mode': ?mode,
+    };
   }
 
-  factory OntapFileSystemDiskIopsConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory OntapFileSystemDiskIopsConfiguration.fromMap(Map<String, dynamic> map) {
     return OntapFileSystemDiskIopsConfiguration(
       iops: map['iops'] == null ? null : map['iops'] as int,
       mode: map['mode'] == null ? null : map['mode'] as String,
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFunctionArgs {
   /// Name of the CloudFront function.
   final pulumi.Input<String> name;
-
   /// Function’s stage, either `DEVELOPMENT` or `LIVE`.
   final pulumi.Input<String> stage;
 
@@ -19,14 +18,15 @@ class GetFunctionArgs {
   GetFunctionArgs({
     required String name,
     required String stage,
-  })  : name = pulumi.Input.asInput<String>(name),
-        stage = pulumi.Input.asInput<String>(stage);
+  }) :
+      name = pulumi.Input.asInput<String>(name),
+      stage = pulumi.Input.asInput<String>(stage);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['stage'] = stage;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'stage': stage,
+    };
   }
 
   factory GetFunctionArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +36,4 @@ class GetFunctionArgs {
     );
   }
 }
+

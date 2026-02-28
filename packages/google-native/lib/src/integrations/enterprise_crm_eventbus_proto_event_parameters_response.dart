@@ -15,21 +15,15 @@ class EnterpriseCrmEventbusProtoEventParametersResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['parameters'] = pulumi.Input.encodeList<
-        EnterpriseCrmEventbusProtoParameterEntryResponse,
-        Map<String, dynamic>>(parameters, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'parameters': pulumi.Input.encodeList<EnterpriseCrmEventbusProtoParameterEntryResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
+    };
   }
 
-  factory EnterpriseCrmEventbusProtoEventParametersResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoEventParametersResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoEventParametersResponse(
-      parameters: pulumi.Input.decodeList<
-              EnterpriseCrmEventbusProtoParameterEntryResponse>(
-          map['parameters'],
-          (value) => EnterpriseCrmEventbusProtoParameterEntryResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      parameters: pulumi.Input.decodeList<EnterpriseCrmEventbusProtoParameterEntryResponse>(map['parameters'], (value) => EnterpriseCrmEventbusProtoParameterEntryResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

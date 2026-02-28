@@ -13,21 +13,15 @@ class GetVirtualGatewaySpecBackendDefault {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clientPolicies'] = pulumi.Input.encodeList<
-        GetVirtualGatewaySpecBackendDefaultClientPolicy,
-        Map<String, dynamic>>(clientPolicies, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'clientPolicies': pulumi.Input.encodeList<GetVirtualGatewaySpecBackendDefaultClientPolicy, Map<String, dynamic>>(clientPolicies, (value) => value.toMap()),
+    };
   }
 
-  factory GetVirtualGatewaySpecBackendDefault.fromMap(
-      Map<String, dynamic> map) {
+  factory GetVirtualGatewaySpecBackendDefault.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecBackendDefault(
-      clientPolicies: pulumi.Input.decodeList<
-              GetVirtualGatewaySpecBackendDefaultClientPolicy>(
-          map['clientPolicies'],
-          (value) => GetVirtualGatewaySpecBackendDefaultClientPolicy.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      clientPolicies: pulumi.Input.decodeList<GetVirtualGatewaySpecBackendDefaultClientPolicy>(map['clientPolicies'], (value) => GetVirtualGatewaySpecBackendDefaultClientPolicy.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInstanceTypeOfferingsFilter {
   /// Name of the filter. The `location` filter depends on the top-level `location_type` argument and if not specified, defaults to the current region.
   final String name;
-
   /// List of one or more values for the filter.
   final List<String> values;
 
@@ -16,10 +16,10 @@ class GetInstanceTypeOfferingsFilter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['values'] = values;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'values': values,
+    };
   }
 
   factory GetInstanceTypeOfferingsFilter.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetInstanceTypeOfferingsFilter {
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReservationArgs {
   /// The name of the Compute Reservation.
   final pulumi.Input<String> name;
-
   /// Project from which to list the Compute Reservation. Defaults to project declared in the provider.
   final pulumi.Input<String>? project;
-
   /// Zone where the Compute Reservation resides.
   final pulumi.Input<String> zone;
 
@@ -24,19 +22,17 @@ class GetReservationArgs {
     required String name,
     String? project,
     required String zone,
-  })  : name = pulumi.Input.asInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        zone = pulumi.Input.asInput<String>(zone);
+  }) :
+      name = pulumi.Input.asInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'project': ?project,
+      'zone': zone,
+    };
   }
 
   factory GetReservationArgs.fromMap(Map<String, dynamic> map) {
@@ -47,3 +43,4 @@ class GetReservationArgs {
     );
   }
 }
+

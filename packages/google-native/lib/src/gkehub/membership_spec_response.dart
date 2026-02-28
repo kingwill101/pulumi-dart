@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// **Workload Certificate**: The membership-specific input for WorkloadCertificate feature.
 class MembershipSpecResponse {
   /// Specifies workload certificate management.
@@ -12,9 +13,9 @@ class MembershipSpecResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['certificateManagement'] = certificateManagement;
-    return map;
+    return <String, dynamic>{
+      'certificateManagement': certificateManagement,
+    };
   }
 
   factory MembershipSpecResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class MembershipSpecResponse {
     );
   }
 }
+

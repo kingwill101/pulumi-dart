@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NetworkOciDnsForwardingConfig {
   final String domainName;
   final String ociDnsListenerIp;
@@ -13,10 +14,10 @@ class NetworkOciDnsForwardingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['domainName'] = domainName;
-    map['ociDnsListenerIp'] = ociDnsListenerIp;
-    return map;
+    return <String, dynamic>{
+      'domainName': domainName,
+      'ociDnsListenerIp': ociDnsListenerIp,
+    };
   }
 
   factory NetworkOciDnsForwardingConfig.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class NetworkOciDnsForwardingConfig {
     );
   }
 }
+

@@ -1,24 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterVpcConfig {
   /// The cluster security group that was created by Amazon EKS for the cluster.
   final String clusterSecurityGroupId;
-
   /// Indicates whether or not the Amazon EKS private API server endpoint is enabled.
   final bool endpointPrivateAccess;
-
   /// Indicates whether or not the Amazon EKS public API server endpoint is enabled.
   final bool endpointPublicAccess;
-
   /// List of CIDR blocks. Indicates which CIDR blocks can access the Amazon EKS public API server endpoint.
   final List<String> publicAccessCidrs;
-
   /// List of security group IDs
   final List<String> securityGroupIds;
-
   /// List of subnet IDs
   final List<String> subnetIds;
-
   /// The VPC associated with your cluster.
   final String vpcId;
 
@@ -41,15 +36,15 @@ class GetClusterVpcConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clusterSecurityGroupId'] = clusterSecurityGroupId;
-    map['endpointPrivateAccess'] = endpointPrivateAccess;
-    map['endpointPublicAccess'] = endpointPublicAccess;
-    map['publicAccessCidrs'] = publicAccessCidrs;
-    map['securityGroupIds'] = securityGroupIds;
-    map['subnetIds'] = subnetIds;
-    map['vpcId'] = vpcId;
-    return map;
+    return <String, dynamic>{
+      'clusterSecurityGroupId': clusterSecurityGroupId,
+      'endpointPrivateAccess': endpointPrivateAccess,
+      'endpointPublicAccess': endpointPublicAccess,
+      'publicAccessCidrs': publicAccessCidrs,
+      'securityGroupIds': securityGroupIds,
+      'subnetIds': subnetIds,
+      'vpcId': vpcId,
+    };
   }
 
   factory GetClusterVpcConfig.fromMap(Map<String, dynamic> map) {
@@ -64,3 +59,4 @@ class GetClusterVpcConfig {
     );
   }
 }
+

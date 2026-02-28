@@ -15,25 +15,15 @@ class GoogleCloudContentwarehouseV1PropertyArray {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final propertiesValue = properties;
-    if (propertiesValue != null) {
-      map['properties'] = pulumi.Input.encodeList<
-          GoogleCloudContentwarehouseV1Property,
-          Map<String, dynamic>>(propertiesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'properties': ?properties == null ? null : pulumi.Input.encodeList<GoogleCloudContentwarehouseV1Property, Map<String, dynamic>>(properties!, (value) => value.toMap()),
+    };
   }
 
-  factory GoogleCloudContentwarehouseV1PropertyArray.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudContentwarehouseV1PropertyArray.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1PropertyArray(
-      properties: map['properties'] == null
-          ? null
-          : pulumi.Input.decodeList<GoogleCloudContentwarehouseV1Property>(
-              map['properties'],
-              (value) => GoogleCloudContentwarehouseV1Property.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      properties: map['properties'] == null ? null : pulumi.Input.decodeList<GoogleCloudContentwarehouseV1Property>(map['properties'], (value) => GoogleCloudContentwarehouseV1Property.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RulePredicate {
   final String dataId;
   final bool negated;
@@ -16,11 +17,11 @@ class RulePredicate {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dataId'] = dataId;
-    map['negated'] = negated;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'dataId': dataId,
+      'negated': negated,
+      'type': type,
+    };
   }
 
   factory RulePredicate.fromMap(Map<String, dynamic> map) {
@@ -31,3 +32,4 @@ class RulePredicate {
     );
   }
 }
+

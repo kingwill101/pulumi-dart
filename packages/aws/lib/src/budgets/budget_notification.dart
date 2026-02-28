@@ -1,21 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BudgetNotification {
   /// (Required) Comparison operator to use to evaluate the condition. Can be `LESS_THAN`, `EQUAL_TO` or `GREATER_THAN`.
   final String comparisonOperator;
-
   /// (Required) What kind of budget value to notify on. Can be `ACTUAL` or `FORECASTED`
   final String notificationType;
-
   /// (Optional) E-Mail addresses to notify. Either this or `subscriber_sns_topic_arns` is required.
   final List<String>? subscriberEmailAddresses;
-
   /// (Optional) SNS topics to notify. Either this or `subscriber_email_addresses` is required.
   final List<String>? subscriberSnsTopicArns;
-
   /// (Required) Threshold when the notification should be sent.
   final double threshold;
-
   /// (Required) What kind of threshold is defined. Can be `PERCENTAGE` OR `ABSOLUTE_VALUE`.
   final String thresholdType;
 
@@ -36,34 +32,25 @@ class BudgetNotification {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['comparisonOperator'] = comparisonOperator;
-    map['notificationType'] = notificationType;
-    final subscriberEmailAddressesValue = subscriberEmailAddresses;
-    if (subscriberEmailAddressesValue != null) {
-      map['subscriberEmailAddresses'] = subscriberEmailAddressesValue;
-    }
-    final subscriberSnsTopicArnsValue = subscriberSnsTopicArns;
-    if (subscriberSnsTopicArnsValue != null) {
-      map['subscriberSnsTopicArns'] = subscriberSnsTopicArnsValue;
-    }
-    map['threshold'] = threshold;
-    map['thresholdType'] = thresholdType;
-    return map;
+    return <String, dynamic>{
+      'comparisonOperator': comparisonOperator,
+      'notificationType': notificationType,
+      'subscriberEmailAddresses': ?subscriberEmailAddresses,
+      'subscriberSnsTopicArns': ?subscriberSnsTopicArns,
+      'threshold': threshold,
+      'thresholdType': thresholdType,
+    };
   }
 
   factory BudgetNotification.fromMap(Map<String, dynamic> map) {
     return BudgetNotification(
       comparisonOperator: map['comparisonOperator'] as String,
       notificationType: map['notificationType'] as String,
-      subscriberEmailAddresses: map['subscriberEmailAddresses'] == null
-          ? null
-          : (map['subscriberEmailAddresses'] as List).cast<String>(),
-      subscriberSnsTopicArns: map['subscriberSnsTopicArns'] == null
-          ? null
-          : (map['subscriberSnsTopicArns'] as List).cast<String>(),
+      subscriberEmailAddresses: map['subscriberEmailAddresses'] == null ? null : (map['subscriberEmailAddresses'] as List).cast<String>(),
+      subscriberSnsTopicArns: map['subscriberSnsTopicArns'] == null ? null : (map['subscriberSnsTopicArns'] as List).cast<String>(),
       threshold: map['threshold'] as double,
       thresholdType: map['thresholdType'] as String,
     );
   }
 }
+

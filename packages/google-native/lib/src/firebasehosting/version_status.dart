@@ -20,3 +20,4 @@ enum VersionStatus {
     throw ArgumentError('Unknown VersionStatus value: $value');
   }
 }
+

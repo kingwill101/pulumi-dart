@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterClusterConfigGceClusterConfigNodeGroupAffinity {
   /// The URI of a sole-tenant node group resource that the cluster will be created on.
   final String nodeGroupUri;
@@ -11,15 +12,15 @@ class ClusterClusterConfigGceClusterConfigNodeGroupAffinity {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['nodeGroupUri'] = nodeGroupUri;
-    return map;
+    return <String, dynamic>{
+      'nodeGroupUri': nodeGroupUri,
+    };
   }
 
-  factory ClusterClusterConfigGceClusterConfigNodeGroupAffinity.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterClusterConfigGceClusterConfigNodeGroupAffinity.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigGceClusterConfigNodeGroupAffinity(
       nodeGroupUri: map['nodeGroupUri'] as String,
     );
   }
 }
+

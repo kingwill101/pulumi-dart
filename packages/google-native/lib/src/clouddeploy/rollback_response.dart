@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Rolls back a `Rollout`.
 class RollbackResponse {
   /// Optional. The starting phase ID for the `Rollout`. If unspecified, the `Rollout` will start in the stable phase.
@@ -12,9 +13,9 @@ class RollbackResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['destinationPhase'] = destinationPhase;
-    return map;
+    return <String, dynamic>{
+      'destinationPhase': destinationPhase,
+    };
   }
 
   factory RollbackResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class RollbackResponse {
     );
   }
 }
+

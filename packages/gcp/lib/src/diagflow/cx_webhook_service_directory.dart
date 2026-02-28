@@ -6,7 +6,6 @@ class CxWebhookServiceDirectory {
   /// Represents configuration for a generic web service.
   /// Structure is documented below.
   final CxWebhookServiceDirectoryGenericWebService? genericWebService;
-
   /// The name of Service Directory service.
   final String service;
 
@@ -19,22 +18,17 @@ class CxWebhookServiceDirectory {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final genericWebServiceValue = genericWebService;
-    if (genericWebServiceValue != null) {
-      map['genericWebService'] = genericWebServiceValue.toMap();
-    }
-    map['service'] = service;
-    return map;
+    return <String, dynamic>{
+      'genericWebService': ?genericWebService == null ? null : genericWebService!.toMap(),
+      'service': service,
+    };
   }
 
   factory CxWebhookServiceDirectory.fromMap(Map<String, dynamic> map) {
     return CxWebhookServiceDirectory(
-      genericWebService: map['genericWebService'] == null
-          ? null
-          : CxWebhookServiceDirectoryGenericWebService.fromMap(
-              (map['genericWebService'] as Map).cast<String, dynamic>()),
+      genericWebService: map['genericWebService'] == null ? null : CxWebhookServiceDirectoryGenericWebService.fromMap((map['genericWebService'] as Map).cast<String, dynamic>()),
       service: map['service'] as String,
     );
   }
 }
+

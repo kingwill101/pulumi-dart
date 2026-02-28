@@ -6,7 +6,6 @@ import 'file_reference.dart';
 class Apk {
   /// The path to an APK to be installed on the device before the test begins.
   final FileReference? location;
-
   /// The java package for the APK to be installed. Value is determined by examining the application's manifest.
   final String? packageName;
 
@@ -19,26 +18,17 @@ class Apk {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue.toMap();
-    }
-    final packageNameValue = packageName;
-    if (packageNameValue != null) {
-      map['packageName'] = packageNameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'location': ?location == null ? null : location!.toMap(),
+      'packageName': ?packageName,
+    };
   }
 
   factory Apk.fromMap(Map<String, dynamic> map) {
     return Apk(
-      location: map['location'] == null
-          ? null
-          : FileReference.fromMap(
-              (map['location'] as Map).cast<String, dynamic>()),
-      packageName:
-          map['packageName'] == null ? null : map['packageName'] as String,
+      location: map['location'] == null ? null : FileReference.fromMap((map['location'] as Map).cast<String, dynamic>()),
+      packageName: map['packageName'] == null ? null : map['packageName'] as String,
     );
   }
 }
+

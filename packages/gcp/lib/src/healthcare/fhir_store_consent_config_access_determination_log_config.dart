@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FhirStoreConsentConfigAccessDeterminationLogConfig {
   /// Controls the amount of detail to include as part of the audit logs.
   /// Default value is `MINIMUM`.
@@ -13,18 +14,15 @@ class FhirStoreConsentConfigAccessDeterminationLogConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final logLevelValue = logLevel;
-    if (logLevelValue != null) {
-      map['logLevel'] = logLevelValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'logLevel': ?logLevel,
+    };
   }
 
-  factory FhirStoreConsentConfigAccessDeterminationLogConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory FhirStoreConsentConfigAccessDeterminationLogConfig.fromMap(Map<String, dynamic> map) {
     return FhirStoreConsentConfigAccessDeterminationLogConfig(
       logLevel: map['logLevel'] == null ? null : map['logLevel'] as String,
     );
   }
 }
+

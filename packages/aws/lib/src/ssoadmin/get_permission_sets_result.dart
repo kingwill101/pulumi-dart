@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getPermissionSets.
 class GetPermissionSetsResult {
   /// Set of string contain the ARN of all Permission Sets.
@@ -21,12 +22,12 @@ class GetPermissionSetsResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arns'] = arns;
-    map['id'] = id;
-    map['instanceArn'] = instanceArn;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'arns': arns,
+      'id': id,
+      'instanceArn': instanceArn,
+      'region': region,
+    };
   }
 
   factory GetPermissionSetsResult.fromMap(Map<String, dynamic> map) {
@@ -38,3 +39,4 @@ class GetPermissionSetsResult {
     );
   }
 }
+

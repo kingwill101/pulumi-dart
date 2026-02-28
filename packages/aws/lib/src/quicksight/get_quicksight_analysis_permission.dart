@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetQuicksightAnalysisPermission {
   final List<String> actions;
   final String principal;
@@ -13,10 +14,10 @@ class GetQuicksightAnalysisPermission {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['actions'] = actions;
-    map['principal'] = principal;
-    return map;
+    return <String, dynamic>{
+      'actions': actions,
+      'principal': principal,
+    };
   }
 
   factory GetQuicksightAnalysisPermission.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class GetQuicksightAnalysisPermission {
     );
   }
 }
+

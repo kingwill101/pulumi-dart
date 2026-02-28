@@ -138,19 +138,14 @@ import 'alternative_contact_args.dart';
 class AlternativeContact extends pulumi.CustomResource {
   /// ID of the target account when managing member accounts. Will manage current user's account by default if omitted.
   late final pulumi.Output<String?> accountId;
-
   /// Type of the alternate contact. Allowed values are: `BILLING`, `OPERATIONS`, `SECURITY`.
   late final pulumi.Output<String> alternateContactType;
-
   /// An email address for the alternate contact.
   late final pulumi.Output<String> emailAddress;
-
   /// Name of the alternate contact.
   late final pulumi.Output<String> name;
-
   /// Phone number for the alternate contact.
   late final pulumi.Output<String> phoneNumber;
-
   /// Title for the alternate contact.
   late final pulumi.Output<String> title;
 

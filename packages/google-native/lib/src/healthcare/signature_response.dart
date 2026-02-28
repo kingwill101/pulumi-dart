@@ -6,13 +6,10 @@ import 'image_response.dart';
 class SignatureResponse {
   /// Optional. An image of the user's signature.
   final ImageResponse image;
-
   /// Optional. Metadata associated with the user's signature. For example, the user's name or the user's title.
   final Map<String, String> metadata;
-
   /// Optional. Timestamp of the signature.
   final String signatureTime;
-
   /// User's UUID provided by the client.
   final String userId;
 
@@ -29,21 +26,21 @@ class SignatureResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['image'] = image.toMap();
-    map['metadata'] = metadata;
-    map['signatureTime'] = signatureTime;
-    map['userId'] = userId;
-    return map;
+    return <String, dynamic>{
+      'image': image.toMap(),
+      'metadata': metadata,
+      'signatureTime': signatureTime,
+      'userId': userId,
+    };
   }
 
   factory SignatureResponse.fromMap(Map<String, dynamic> map) {
     return SignatureResponse(
-      image:
-          ImageResponse.fromMap((map['image'] as Map).cast<String, dynamic>()),
+      image: ImageResponse.fromMap((map['image'] as Map).cast<String, dynamic>()),
       metadata: (map['metadata'] as Map).cast<String, String>(),
       signatureTime: map['signatureTime'] as String,
       userId: map['userId'] as String,
     );
   }
 }
+

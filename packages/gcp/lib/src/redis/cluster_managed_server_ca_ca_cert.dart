@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterManagedServerCaCaCert {
   /// (Output)
   /// The certificates that form the CA chain, from leaf to root order
@@ -12,19 +13,15 @@ class ClusterManagedServerCaCaCert {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final certificatesValue = certificates;
-    if (certificatesValue != null) {
-      map['certificates'] = certificatesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'certificates': ?certificates,
+    };
   }
 
   factory ClusterManagedServerCaCaCert.fromMap(Map<String, dynamic> map) {
     return ClusterManagedServerCaCaCert(
-      certificates: map['certificates'] == null
-          ? null
-          : (map['certificates'] as List).cast<String>(),
+      certificates: map['certificates'] == null ? null : (map['certificates'] as List).cast<String>(),
     );
   }
 }
+

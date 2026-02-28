@@ -1,49 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getComponent.
 class GetComponentResult {
   final String arn;
-
   /// Change description of the component.
   final String changeDescription;
-
   /// Data of the component.
   final String data;
-
   /// Date the component was created.
   final String dateCreated;
-
   /// Description of the component.
   final String description;
-
   /// Encryption status of the component.
   final bool encrypted;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// ARN of the Key Management Service (KMS) Key used to encrypt the component.
   final String kmsKeyId;
-
   /// Name of the component.
   final String name;
-
   /// Owner of the component.
   final String owner;
-
   /// Platform of the component.
   final String platform;
   final String region;
-
   /// Operating Systems (OSes) supported by the component.
   final List<String> supportedOsVersions;
-
   /// Key-value map of resource tags for the component.
   final Map<String, String> tags;
-
   /// Type of the component.
   final String type;
-
   /// Version of the component.
   final String version;
 
@@ -84,24 +71,24 @@ class GetComponentResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['changeDescription'] = changeDescription;
-    map['data'] = data;
-    map['dateCreated'] = dateCreated;
-    map['description'] = description;
-    map['encrypted'] = encrypted;
-    map['id'] = id;
-    map['kmsKeyId'] = kmsKeyId;
-    map['name'] = name;
-    map['owner'] = owner;
-    map['platform'] = platform;
-    map['region'] = region;
-    map['supportedOsVersions'] = supportedOsVersions;
-    map['tags'] = tags;
-    map['type'] = type;
-    map['version'] = version;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'changeDescription': changeDescription,
+      'data': data,
+      'dateCreated': dateCreated,
+      'description': description,
+      'encrypted': encrypted,
+      'id': id,
+      'kmsKeyId': kmsKeyId,
+      'name': name,
+      'owner': owner,
+      'platform': platform,
+      'region': region,
+      'supportedOsVersions': supportedOsVersions,
+      'tags': tags,
+      'type': type,
+      'version': version,
+    };
   }
 
   factory GetComponentResult.fromMap(Map<String, dynamic> map) {
@@ -125,3 +112,4 @@ class GetComponentResult {
     );
   }
 }
+

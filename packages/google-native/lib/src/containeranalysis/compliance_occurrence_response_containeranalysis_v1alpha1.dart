@@ -7,10 +7,8 @@ import 'non_compliant_file_response_containeranalysis_v1alpha1.dart';
 class ComplianceOccurrenceResponseContaineranalysisV1alpha1 {
   /// The reason for non compliance of these files.
   final String nonComplianceReason;
-
   /// A list of files which are violating compliance checks.
-  final List<NonCompliantFileResponseContaineranalysisV1alpha1>
-      nonCompliantFiles;
+  final List<NonCompliantFileResponseContaineranalysisV1alpha1> nonCompliantFiles;
 
   /// Creates a new [ComplianceOccurrenceResponseContaineranalysisV1alpha1].
   /// [nonComplianceReason] The reason for non compliance of these files.
@@ -21,23 +19,17 @@ class ComplianceOccurrenceResponseContaineranalysisV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['nonComplianceReason'] = nonComplianceReason;
-    map['nonCompliantFiles'] = pulumi.Input.encodeList<
-        NonCompliantFileResponseContaineranalysisV1alpha1,
-        Map<String, dynamic>>(nonCompliantFiles, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'nonComplianceReason': nonComplianceReason,
+      'nonCompliantFiles': pulumi.Input.encodeList<NonCompliantFileResponseContaineranalysisV1alpha1, Map<String, dynamic>>(nonCompliantFiles, (value) => value.toMap()),
+    };
   }
 
-  factory ComplianceOccurrenceResponseContaineranalysisV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory ComplianceOccurrenceResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return ComplianceOccurrenceResponseContaineranalysisV1alpha1(
       nonComplianceReason: map['nonComplianceReason'] as String,
-      nonCompliantFiles: pulumi.Input.decodeList<
-              NonCompliantFileResponseContaineranalysisV1alpha1>(
-          map['nonCompliantFiles'],
-          (value) => NonCompliantFileResponseContaineranalysisV1alpha1.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      nonCompliantFiles: pulumi.Input.decodeList<NonCompliantFileResponseContaineranalysisV1alpha1>(map['nonCompliantFiles'], (value) => NonCompliantFileResponseContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

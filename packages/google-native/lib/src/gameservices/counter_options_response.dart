@@ -7,10 +7,8 @@ import 'custom_field_response.dart';
 class CounterOptionsResponse {
   /// Custom fields.
   final List<CustomFieldResponse> customFields;
-
   /// The field value to attribute.
   final String field;
-
   /// The metric to update.
   final String metric;
 
@@ -25,23 +23,19 @@ class CounterOptionsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['customFields'] =
-        pulumi.Input.encodeList<CustomFieldResponse, Map<String, dynamic>>(
-            customFields, (value) => value.toMap());
-    map['field'] = field;
-    map['metric'] = metric;
-    return map;
+    return <String, dynamic>{
+      'customFields': pulumi.Input.encodeList<CustomFieldResponse, Map<String, dynamic>>(customFields, (value) => value.toMap()),
+      'field': field,
+      'metric': metric,
+    };
   }
 
   factory CounterOptionsResponse.fromMap(Map<String, dynamic> map) {
     return CounterOptionsResponse(
-      customFields: pulumi.Input.decodeList<CustomFieldResponse>(
-          map['customFields'],
-          (value) => CustomFieldResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      customFields: pulumi.Input.decodeList<CustomFieldResponse>(map['customFields'], (value) => CustomFieldResponse.fromMap((value as Map).cast<String, dynamic>())),
       field: map['field'] as String,
       metric: map['metric'] as String,
     );
   }
 }
+

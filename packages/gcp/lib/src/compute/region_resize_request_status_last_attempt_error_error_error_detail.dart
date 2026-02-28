@@ -10,29 +10,19 @@ class RegionResizeRequestStatusLastAttemptErrorErrorErrorDetail {
   /// (Output)
   /// A nested object resource.
   /// Structure is documented below.
-  final List<
-          RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo>?
-      errorInfos;
-
+  final List<RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo>? errorInfos;
   /// (Output)
   /// A nested object resource.
   /// Structure is documented below.
-  final List<RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp>?
-      helps;
-
+  final List<RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp>? helps;
   /// (Output)
   /// A nested object resource.
   /// Structure is documented below.
-  final List<
-          RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage>?
-      localizedMessages;
-
+  final List<RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage>? localizedMessages;
   /// (Output)
   /// A nested object resource.
   /// Structure is documented below.
-  final List<
-          RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfo>?
-      quotaInfos;
+  final List<RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfo>? quotaInfos;
 
   /// Creates a new [RegionResizeRequestStatusLastAttemptErrorErrorErrorDetail].
   /// [errorInfos] (Output)
@@ -47,70 +37,21 @@ class RegionResizeRequestStatusLastAttemptErrorErrorErrorDetail {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final errorInfosValue = errorInfos;
-    if (errorInfosValue != null) {
-      map['errorInfos'] = pulumi.Input.encodeList<
-          RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo,
-          Map<String, dynamic>>(errorInfosValue, (value) => value.toMap());
-    }
-    final helpsValue = helps;
-    if (helpsValue != null) {
-      map['helps'] = pulumi.Input.encodeList<
-          RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp,
-          Map<String, dynamic>>(helpsValue, (value) => value.toMap());
-    }
-    final localizedMessagesValue = localizedMessages;
-    if (localizedMessagesValue != null) {
-      map['localizedMessages'] = pulumi.Input.encodeList<
-          RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage,
-          Map<String,
-              dynamic>>(localizedMessagesValue, (value) => value.toMap());
-    }
-    final quotaInfosValue = quotaInfos;
-    if (quotaInfosValue != null) {
-      map['quotaInfos'] = pulumi.Input.encodeList<
-          RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfo,
-          Map<String, dynamic>>(quotaInfosValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'errorInfos': ?errorInfos == null ? null : pulumi.Input.encodeList<RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo, Map<String, dynamic>>(errorInfos!, (value) => value.toMap()),
+      'helps': ?helps == null ? null : pulumi.Input.encodeList<RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp, Map<String, dynamic>>(helps!, (value) => value.toMap()),
+      'localizedMessages': ?localizedMessages == null ? null : pulumi.Input.encodeList<RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage, Map<String, dynamic>>(localizedMessages!, (value) => value.toMap()),
+      'quotaInfos': ?quotaInfos == null ? null : pulumi.Input.encodeList<RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfo, Map<String, dynamic>>(quotaInfos!, (value) => value.toMap()),
+    };
   }
 
-  factory RegionResizeRequestStatusLastAttemptErrorErrorErrorDetail.fromMap(
-      Map<String, dynamic> map) {
+  factory RegionResizeRequestStatusLastAttemptErrorErrorErrorDetail.fromMap(Map<String, dynamic> map) {
     return RegionResizeRequestStatusLastAttemptErrorErrorErrorDetail(
-      errorInfos: map['errorInfos'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo>(
-              map['errorInfos'],
-              (value) =>
-                  RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo
-                      .fromMap((value as Map).cast<String, dynamic>())),
-      helps: map['helps'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp>(
-              map['helps'],
-              (value) =>
-                  RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp
-                      .fromMap((value as Map).cast<String, dynamic>())),
-      localizedMessages: map['localizedMessages'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage>(
-              map['localizedMessages'],
-              (value) =>
-                  RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage
-                      .fromMap((value as Map).cast<String, dynamic>())),
-      quotaInfos: map['quotaInfos'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfo>(
-              map['quotaInfos'],
-              (value) =>
-                  RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfo
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      errorInfos: map['errorInfos'] == null ? null : pulumi.Input.decodeList<RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo>(map['errorInfos'], (value) => RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo.fromMap((value as Map).cast<String, dynamic>())),
+      helps: map['helps'] == null ? null : pulumi.Input.decodeList<RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp>(map['helps'], (value) => RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp.fromMap((value as Map).cast<String, dynamic>())),
+      localizedMessages: map['localizedMessages'] == null ? null : pulumi.Input.decodeList<RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage>(map['localizedMessages'], (value) => RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage.fromMap((value as Map).cast<String, dynamic>())),
+      quotaInfos: map['quotaInfos'] == null ? null : pulumi.Input.decodeList<RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfo>(map['quotaInfos'], (value) => RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfo.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

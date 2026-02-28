@@ -1,18 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CanaryRunConfig {
   /// Whether this canary is to use active AWS X-Ray tracing when it runs. You can enable active tracing only for canaries that use version syn-nodejs-2.0 or later for their canary runtime.
   final bool? activeTracing;
-
   /// Map of environment variables that are accessible from the canary during execution. Please see [AWS Docs](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html#configuration-envvars-runtime) for variables reserved for Lambda.
   final Map<String, String>? environmentVariables;
-
   /// Amount of ephemeral storage (in MB) allocated for the canary run during execution. Defaults to 1024.
   final int? ephemeralStorage;
-
   /// Maximum amount of memory available to the canary while it is running, in MB. The value you specify must be a multiple of 64.
   final int? memoryInMb;
-
   /// Number of seconds the canary is allowed to run before it must stop. If you omit this field, the frequency of the canary is used, up to a maximum of 840 (14 minutes).
   final int? timeoutInSeconds;
 
@@ -31,44 +28,23 @@ class CanaryRunConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final activeTracingValue = activeTracing;
-    if (activeTracingValue != null) {
-      map['activeTracing'] = activeTracingValue;
-    }
-    final environmentVariablesValue = environmentVariables;
-    if (environmentVariablesValue != null) {
-      map['environmentVariables'] = environmentVariablesValue;
-    }
-    final ephemeralStorageValue = ephemeralStorage;
-    if (ephemeralStorageValue != null) {
-      map['ephemeralStorage'] = ephemeralStorageValue;
-    }
-    final memoryInMbValue = memoryInMb;
-    if (memoryInMbValue != null) {
-      map['memoryInMb'] = memoryInMbValue;
-    }
-    final timeoutInSecondsValue = timeoutInSeconds;
-    if (timeoutInSecondsValue != null) {
-      map['timeoutInSeconds'] = timeoutInSecondsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'activeTracing': ?activeTracing,
+      'environmentVariables': ?environmentVariables,
+      'ephemeralStorage': ?ephemeralStorage,
+      'memoryInMb': ?memoryInMb,
+      'timeoutInSeconds': ?timeoutInSeconds,
+    };
   }
 
   factory CanaryRunConfig.fromMap(Map<String, dynamic> map) {
     return CanaryRunConfig(
-      activeTracing:
-          map['activeTracing'] == null ? null : map['activeTracing'] as bool,
-      environmentVariables: map['environmentVariables'] == null
-          ? null
-          : (map['environmentVariables'] as Map).cast<String, String>(),
-      ephemeralStorage: map['ephemeralStorage'] == null
-          ? null
-          : map['ephemeralStorage'] as int,
+      activeTracing: map['activeTracing'] == null ? null : map['activeTracing'] as bool,
+      environmentVariables: map['environmentVariables'] == null ? null : (map['environmentVariables'] as Map).cast<String, String>(),
+      ephemeralStorage: map['ephemeralStorage'] == null ? null : map['ephemeralStorage'] as int,
       memoryInMb: map['memoryInMb'] == null ? null : map['memoryInMb'] as int,
-      timeoutInSeconds: map['timeoutInSeconds'] == null
-          ? null
-          : map['timeoutInSeconds'] as int,
+      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : map['timeoutInSeconds'] as int,
     );
   }
 }
+

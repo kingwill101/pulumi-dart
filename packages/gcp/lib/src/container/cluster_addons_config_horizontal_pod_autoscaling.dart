@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterAddonsConfigHorizontalPodAutoscaling {
   /// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
   ///
@@ -13,15 +14,15 @@ class ClusterAddonsConfigHorizontalPodAutoscaling {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['disabled'] = disabled;
-    return map;
+    return <String, dynamic>{
+      'disabled': disabled,
+    };
   }
 
-  factory ClusterAddonsConfigHorizontalPodAutoscaling.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterAddonsConfigHorizontalPodAutoscaling.fromMap(Map<String, dynamic> map) {
     return ClusterAddonsConfigHorizontalPodAutoscaling(
       disabled: map['disabled'] as bool,
     );
   }
 }
+

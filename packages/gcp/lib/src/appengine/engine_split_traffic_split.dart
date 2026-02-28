@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EngineSplitTrafficSplit {
   /// Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.
   final Map<String, String> allocations;
-
   /// Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
   /// Possible values are: `UNSPECIFIED`, `COOKIE`, `IP`, `RANDOM`.
   final String? shardBy;
@@ -17,13 +17,10 @@ class EngineSplitTrafficSplit {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allocations'] = allocations;
-    final shardByValue = shardBy;
-    if (shardByValue != null) {
-      map['shardBy'] = shardByValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'allocations': allocations,
+      'shardBy': ?shardBy,
+    };
   }
 
   factory EngineSplitTrafficSplit.fromMap(Map<String, dynamic> map) {
@@ -33,3 +30,4 @@ class EngineSplitTrafficSplit {
     );
   }
 }
+

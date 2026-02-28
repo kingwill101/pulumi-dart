@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInsightsDatasetConfigSourceProject {
   /// The list of project numbers to include in the DatasetConfig.
   final List<String> projectNumbers;
@@ -11,15 +12,15 @@ class GetInsightsDatasetConfigSourceProject {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['projectNumbers'] = projectNumbers;
-    return map;
+    return <String, dynamic>{
+      'projectNumbers': projectNumbers,
+    };
   }
 
-  factory GetInsightsDatasetConfigSourceProject.fromMap(
-      Map<String, dynamic> map) {
+  factory GetInsightsDatasetConfigSourceProject.fromMap(Map<String, dynamic> map) {
     return GetInsightsDatasetConfigSourceProject(
       projectNumbers: (map['projectNumbers'] as List).cast<String>(),
     );
   }
 }
+

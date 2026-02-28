@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlternativeContactArgs {
   /// ID of the target account when managing member accounts. Will manage current user's account by default if omitted.
   final pulumi.Input<String>? accountId;
-
   /// Type of the alternate contact. Allowed values are: `BILLING`, `OPERATIONS`, `SECURITY`.
   final pulumi.Input<String> alternateContactType;
-
   /// An email address for the alternate contact.
   final pulumi.Input<String> emailAddress;
-
   /// Name of the alternate contact.
   final pulumi.Input<String>? name;
-
   /// Phone number for the alternate contact.
   final pulumi.Input<String> phoneNumber;
-
   /// Title for the alternate contact.
   final pulumi.Input<String> title;
 
@@ -39,29 +34,23 @@ class AlternativeContactArgs {
     String? name,
     required String phoneNumber,
     required String title,
-  })  : accountId = pulumi.Input.asOptionalInput<String>(accountId),
-        alternateContactType =
-            pulumi.Input.asInput<String>(alternateContactType),
-        emailAddress = pulumi.Input.asInput<String>(emailAddress),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        phoneNumber = pulumi.Input.asInput<String>(phoneNumber),
-        title = pulumi.Input.asInput<String>(title);
+  }) :
+      accountId = pulumi.Input.asOptionalInput<String>(accountId),
+      alternateContactType = pulumi.Input.asInput<String>(alternateContactType),
+      emailAddress = pulumi.Input.asInput<String>(emailAddress),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      phoneNumber = pulumi.Input.asInput<String>(phoneNumber),
+      title = pulumi.Input.asInput<String>(title);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final accountIdValue = accountId;
-    if (accountIdValue != null) {
-      map['accountId'] = accountIdValue;
-    }
-    map['alternateContactType'] = alternateContactType;
-    map['emailAddress'] = emailAddress;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    map['phoneNumber'] = phoneNumber;
-    map['title'] = title;
-    return map;
+    return <String, dynamic>{
+      'accountId': ?accountId,
+      'alternateContactType': alternateContactType,
+      'emailAddress': emailAddress,
+      'name': ?name,
+      'phoneNumber': phoneNumber,
+      'title': title,
+    };
   }
 
   factory AlternativeContactArgs.fromMap(Map<String, dynamic> map) {
@@ -75,3 +64,4 @@ class AlternativeContactArgs {
     );
   }
 }
+

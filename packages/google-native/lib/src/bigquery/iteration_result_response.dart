@@ -1,18 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class IterationResultResponse {
   /// Time taken to run the iteration in milliseconds.
   final String durationMs;
-
   /// Loss computed on the eval data at the end of iteration.
   final double evalLoss;
-
   /// Index of the iteration, 0 based.
   final int index;
-
   /// Learn rate used for this iteration.
   final double learnRate;
-
   /// Loss computed on the training data at the end of iteration.
   final double trainingLoss;
 
@@ -31,13 +28,13 @@ class IterationResultResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['durationMs'] = durationMs;
-    map['evalLoss'] = evalLoss;
-    map['index'] = index;
-    map['learnRate'] = learnRate;
-    map['trainingLoss'] = trainingLoss;
-    return map;
+    return <String, dynamic>{
+      'durationMs': durationMs,
+      'evalLoss': evalLoss,
+      'index': index,
+      'learnRate': learnRate,
+      'trainingLoss': trainingLoss,
+    };
   }
 
   factory IterationResultResponse.fromMap(Map<String, dynamic> map) {
@@ -50,3 +47,4 @@ class IterationResultResponse {
     );
   }
 }
+

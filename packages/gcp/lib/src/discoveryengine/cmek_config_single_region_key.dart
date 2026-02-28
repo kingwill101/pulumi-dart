@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CmekConfigSingleRegionKey {
   /// Single-regional kms key resource name which will be used to encrypt
   /// resources
@@ -13,9 +14,9 @@ class CmekConfigSingleRegionKey {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kmsKey'] = kmsKey;
-    return map;
+    return <String, dynamic>{
+      'kmsKey': kmsKey,
+    };
   }
 
   factory CmekConfigSingleRegionKey.fromMap(Map<String, dynamic> map) {
@@ -24,3 +25,4 @@ class CmekConfigSingleRegionKey {
     );
   }
 }
+

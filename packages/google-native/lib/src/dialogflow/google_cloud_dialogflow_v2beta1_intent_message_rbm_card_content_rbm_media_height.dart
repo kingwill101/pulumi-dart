@@ -5,20 +5,16 @@ enum GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight {
   medium("MEDIUM"),
   tall("TALL");
 
-  const GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight(
-      this.value);
+  const GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight(this.value);
   final String value;
 
-  static GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight
-      fromValue(String value) {
-    for (final item
-        in GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight
-            .values) {
+  static GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight fromValue(String value) {
+    for (final item in GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight value: $value');
+    throw ArgumentError('Unknown GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight value: $value');
   }
 }
+

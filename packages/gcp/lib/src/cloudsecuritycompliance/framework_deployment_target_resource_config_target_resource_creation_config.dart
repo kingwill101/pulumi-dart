@@ -7,14 +7,11 @@ class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfig {
   /// FolderCreationConfig contains the config to create a new folder to be used
   /// as the target_resource of a deployment.
   /// Structure is documented below.
-  final FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfig?
-      folderCreationConfig;
-
+  final FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfig? folderCreationConfig;
   /// ProjectCreationConfig contains the config to create a new project to be used
   /// as the target_resource of a deployment.
   /// Structure is documented below.
-  final FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfig?
-      projectCreationConfig;
+  final FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfig? projectCreationConfig;
 
   /// Creates a new [FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfig].
   /// [folderCreationConfig] FolderCreationConfig contains the config to create a new folder to be used
@@ -25,31 +22,17 @@ class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final folderCreationConfigValue = folderCreationConfig;
-    if (folderCreationConfigValue != null) {
-      map['folderCreationConfig'] = folderCreationConfigValue.toMap();
-    }
-    final projectCreationConfigValue = projectCreationConfig;
-    if (projectCreationConfigValue != null) {
-      map['projectCreationConfig'] = projectCreationConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'folderCreationConfig': ?folderCreationConfig == null ? null : folderCreationConfig!.toMap(),
+      'projectCreationConfig': ?projectCreationConfig == null ? null : projectCreationConfig!.toMap(),
+    };
   }
 
-  factory FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfig.fromMap(Map<String, dynamic> map) {
     return FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfig(
-      folderCreationConfig: map['folderCreationConfig'] == null
-          ? null
-          : FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfig
-              .fromMap(
-                  (map['folderCreationConfig'] as Map).cast<String, dynamic>()),
-      projectCreationConfig: map['projectCreationConfig'] == null
-          ? null
-          : FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfig
-              .fromMap((map['projectCreationConfig'] as Map)
-                  .cast<String, dynamic>()),
+      folderCreationConfig: map['folderCreationConfig'] == null ? null : FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfig.fromMap((map['folderCreationConfig'] as Map).cast<String, dynamic>()),
+      projectCreationConfig: map['projectCreationConfig'] == null ? null : FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfig.fromMap((map['projectCreationConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

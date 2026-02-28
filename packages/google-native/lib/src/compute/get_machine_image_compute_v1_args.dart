@@ -16,17 +16,15 @@ class GetMachineImageComputeV1Args {
   GetMachineImageComputeV1Args({
     required String machineImage,
     String? project,
-  })  : machineImage = pulumi.Input.asInput<String>(machineImage),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      machineImage = pulumi.Input.asInput<String>(machineImage),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['machineImage'] = machineImage;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'machineImage': machineImage,
+      'project': ?project,
+    };
   }
 
   factory GetMachineImageComputeV1Args.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetMachineImageComputeV1Args {
     );
   }
 }
+

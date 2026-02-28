@@ -19,20 +19,17 @@ class GetNetworkEdgeSecurityServiceArgs {
     required String networkEdgeSecurityService,
     String? project,
     required String region,
-  })  : networkEdgeSecurityService =
-            pulumi.Input.asInput<String>(networkEdgeSecurityService),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asInput<String>(region);
+  }) :
+      networkEdgeSecurityService = pulumi.Input.asInput<String>(networkEdgeSecurityService),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['networkEdgeSecurityService'] = networkEdgeSecurityService;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'networkEdgeSecurityService': networkEdgeSecurityService,
+      'project': ?project,
+      'region': region,
+    };
   }
 
   factory GetNetworkEdgeSecurityServiceArgs.fromMap(Map<String, dynamic> map) {
@@ -43,3 +40,4 @@ class GetNetworkEdgeSecurityServiceArgs {
     );
   }
 }
+

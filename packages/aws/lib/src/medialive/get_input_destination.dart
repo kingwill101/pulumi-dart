@@ -22,14 +22,12 @@ class GetInputDestination {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ip'] = ip;
-    map['port'] = port;
-    map['url'] = url;
-    map['vpcs'] =
-        pulumi.Input.encodeList<GetInputDestinationVpc, Map<String, dynamic>>(
-            vpcs, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'ip': ip,
+      'port': port,
+      'url': url,
+      'vpcs': pulumi.Input.encodeList<GetInputDestinationVpc, Map<String, dynamic>>(vpcs, (value) => value.toMap()),
+    };
   }
 
   factory GetInputDestination.fromMap(Map<String, dynamic> map) {
@@ -37,10 +35,8 @@ class GetInputDestination {
       ip: map['ip'] as String,
       port: map['port'] as String,
       url: map['url'] as String,
-      vpcs: pulumi.Input.decodeList<GetInputDestinationVpc>(
-          map['vpcs'],
-          (value) => GetInputDestinationVpc.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      vpcs: pulumi.Input.decodeList<GetInputDestinationVpc>(map['vpcs'], (value) => GetInputDestinationVpc.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

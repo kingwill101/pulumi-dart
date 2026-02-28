@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Encryption Key value.
 class EncryptionKeyResponse {
   /// The [KMS key name] with which the content of the Operation is encrypted. The expected format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`. Will be empty string if google managed.
   final String kmsKeyName;
-
   /// Type.
   final String type;
 
@@ -17,10 +17,10 @@ class EncryptionKeyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kmsKeyName'] = kmsKeyName;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'kmsKeyName': kmsKeyName,
+      'type': type,
+    };
   }
 
   factory EncryptionKeyResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class EncryptionKeyResponse {
     );
   }
 }
+

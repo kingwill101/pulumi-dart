@@ -1245,71 +1245,53 @@ import 'task_trigger_spec.dart';
 class Task extends pulumi.CustomResource {
   /// The time when the task was created.
   late final pulumi.Output<String> createTime;
-
   /// User-provided description of the task.
   late final pulumi.Output<String?> description;
-
   /// User friendly display name.
   late final pulumi.Output<String?> displayName;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Configuration for the cluster
   /// Structure is documented below.
   late final pulumi.Output<TaskExecutionSpec> executionSpec;
-
   /// Configuration for the cluster
   /// Structure is documented below.
   late final pulumi.Output<List<TaskExecutionStatus>> executionStatuses;
-
   /// User-defined labels for the task.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The lake in which the task will be created in.
   late final pulumi.Output<String?> lake;
-
   /// The location in which the task will be created in.
   late final pulumi.Output<String?> location;
-
   /// (Output)
   /// The relative resource name of the job, of the form: projects/{project_number}/locations/{locationId}/lakes/{lakeId}/tasks/{taskId}/jobs/{jobId}.
   late final pulumi.Output<String> name;
-
   /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
   /// Structure is documented below.
   late final pulumi.Output<TaskNotebook?> notebook;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
   /// Structure is documented below.
   late final pulumi.Output<TaskSpark?> spark;
-
   /// (Output)
   /// Execution state for the job.
   late final pulumi.Output<String> state;
-
   /// The task Id of the task.
   late final pulumi.Output<String?> taskId;
-
   /// Configuration for the cluster
   /// Structure is documented below.
   late final pulumi.Output<TaskTriggerSpec> triggerSpec;
-
   /// (Output)
   /// System generated globally unique ID for the job.
   late final pulumi.Output<String> uid;
-
   /// (Output)
   /// Last update time of the status.
   late final pulumi.Output<String> updateTime;
@@ -1331,11 +1313,9 @@ class Task extends pulumi.CustomResource {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');
     this.displayName = registerOutput<String?>('displayName');
-    this.effectiveLabels =
-        registerOutput<Map<String, String>>('effectiveLabels');
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     this.executionSpec = registerOutput<TaskExecutionSpec>('executionSpec');
-    this.executionStatuses =
-        registerOutput<List<TaskExecutionStatus>>('executionStatuses');
+    this.executionStatuses = registerOutput<List<TaskExecutionStatus>>('executionStatuses');
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.lake = registerOutput<String?>('lake');
     this.location = registerOutput<String?>('location');

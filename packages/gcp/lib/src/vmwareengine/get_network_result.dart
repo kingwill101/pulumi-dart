@@ -8,7 +8,6 @@ class GetNetworkResult {
   final String createTime;
   final String description;
   final String etag;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
@@ -49,25 +48,20 @@ class GetNetworkResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['description'] = description;
-    map['etag'] = etag;
-    map['id'] = id;
-    map['location'] = location;
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['state'] = state;
-    map['type'] = type;
-    map['uid'] = uid;
-    map['updateTime'] = updateTime;
-    map['vpcNetworks'] =
-        pulumi.Input.encodeList<GetNetworkVpcNetwork, Map<String, dynamic>>(
-            vpcNetworks, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'description': description,
+      'etag': etag,
+      'id': id,
+      'location': location,
+      'name': name,
+      'project': ?project,
+      'state': state,
+      'type': type,
+      'uid': uid,
+      'updateTime': updateTime,
+      'vpcNetworks': pulumi.Input.encodeList<GetNetworkVpcNetwork, Map<String, dynamic>>(vpcNetworks, (value) => value.toMap()),
+    };
   }
 
   factory GetNetworkResult.fromMap(Map<String, dynamic> map) {
@@ -83,10 +77,8 @@ class GetNetworkResult {
       type: map['type'] as String,
       uid: map['uid'] as String,
       updateTime: map['updateTime'] as String,
-      vpcNetworks: pulumi.Input.decodeList<GetNetworkVpcNetwork>(
-          map['vpcNetworks'],
-          (value) => GetNetworkVpcNetwork.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      vpcNetworks: pulumi.Input.decodeList<GetNetworkVpcNetwork>(map['vpcNetworks'], (value) => GetNetworkVpcNetwork.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

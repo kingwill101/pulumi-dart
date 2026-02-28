@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConfiguredTableTableReference {
   final String databaseName;
   final String tableName;
@@ -13,10 +14,10 @@ class ConfiguredTableTableReference {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['databaseName'] = databaseName;
-    map['tableName'] = tableName;
-    return map;
+    return <String, dynamic>{
+      'databaseName': databaseName,
+      'tableName': tableName,
+    };
   }
 
   factory ConfiguredTableTableReference.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class ConfiguredTableTableReference {
     );
   }
 }
+

@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Metadata for a Cloud Bigtable connector used by the job.
 class BigTableIODetailsResponse {
   /// InstanceId accessed in the connection.
   final String instanceId;
-
   /// ProjectId accessed in the connection.
   final String project;
-
   /// TableId accessed in the connection.
   final String tableId;
 
@@ -22,11 +21,11 @@ class BigTableIODetailsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['instanceId'] = instanceId;
-    map['project'] = project;
-    map['tableId'] = tableId;
-    return map;
+    return <String, dynamic>{
+      'instanceId': instanceId,
+      'project': project,
+      'tableId': tableId,
+    };
   }
 
   factory BigTableIODetailsResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class BigTableIODetailsResponse {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AnalyticsApplicationOutputSchema {
   /// The Format Type of the records on the output stream. Can be `CSV` or `JSON`.
   final String recordFormatType;
@@ -11,9 +12,9 @@ class AnalyticsApplicationOutputSchema {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['recordFormatType'] = recordFormatType;
-    return map;
+    return <String, dynamic>{
+      'recordFormatType': recordFormatType,
+    };
   }
 
   factory AnalyticsApplicationOutputSchema.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class AnalyticsApplicationOutputSchema {
     );
   }
 }
+

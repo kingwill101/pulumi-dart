@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkFirewallPolicyAssociationArgs {
   /// The target that the firewall policy is attached to.
   final pulumi.Input<String> attachmentTarget;
-
   /// The firewall policy of the resource.
   final pulumi.Input<String> firewallPolicy;
-
   /// The name for an association.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -30,28 +27,22 @@ class NetworkFirewallPolicyAssociationArgs {
     required String firewallPolicy,
     String? name,
     String? project,
-  })  : attachmentTarget = pulumi.Input.asInput<String>(attachmentTarget),
-        firewallPolicy = pulumi.Input.asInput<String>(firewallPolicy),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      attachmentTarget = pulumi.Input.asInput<String>(attachmentTarget),
+      firewallPolicy = pulumi.Input.asInput<String>(firewallPolicy),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['attachmentTarget'] = attachmentTarget;
-    map['firewallPolicy'] = firewallPolicy;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'attachmentTarget': attachmentTarget,
+      'firewallPolicy': firewallPolicy,
+      'name': ?name,
+      'project': ?project,
+    };
   }
 
-  factory NetworkFirewallPolicyAssociationArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory NetworkFirewallPolicyAssociationArgs.fromMap(Map<String, dynamic> map) {
     return NetworkFirewallPolicyAssociationArgs(
       attachmentTarget: map['attachmentTarget'] as String,
       firewallPolicy: map['firewallPolicy'] as String,
@@ -60,3 +51,4 @@ class NetworkFirewallPolicyAssociationArgs {
     );
   }
 }
+

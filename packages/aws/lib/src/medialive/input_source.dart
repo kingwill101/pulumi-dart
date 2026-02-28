@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InputSource {
   /// The key used to extract the password from EC2 Parameter store.
   final String passwordParam;
-
   /// The URL where the stream is pulled from.
   final String url;
-
   /// The username for the input source.
   final String username;
 
@@ -21,11 +20,11 @@ class InputSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['passwordParam'] = passwordParam;
-    map['url'] = url;
-    map['username'] = username;
-    return map;
+    return <String, dynamic>{
+      'passwordParam': passwordParam,
+      'url': url,
+      'username': username,
+    };
   }
 
   factory InputSource.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class InputSource {
     );
   }
 }
+

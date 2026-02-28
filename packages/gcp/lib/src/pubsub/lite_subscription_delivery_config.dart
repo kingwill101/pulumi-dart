@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LiteSubscriptionDeliveryConfig {
   /// When this subscription should send messages to subscribers relative to messages persistence in storage.
   /// Possible values are: `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, `DELIVERY_REQUIREMENT_UNSPECIFIED`.
@@ -12,9 +13,9 @@ class LiteSubscriptionDeliveryConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['deliveryRequirement'] = deliveryRequirement;
-    return map;
+    return <String, dynamic>{
+      'deliveryRequirement': deliveryRequirement,
+    };
   }
 
   factory LiteSubscriptionDeliveryConfig.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class LiteSubscriptionDeliveryConfig {
     );
   }
 }
+

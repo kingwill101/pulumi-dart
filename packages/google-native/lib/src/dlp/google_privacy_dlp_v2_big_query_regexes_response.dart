@@ -15,21 +15,15 @@ class GooglePrivacyDlpV2BigQueryRegexesResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['patterns'] = pulumi.Input.encodeList<
-        GooglePrivacyDlpV2BigQueryRegexResponse,
-        Map<String, dynamic>>(patterns, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'patterns': pulumi.Input.encodeList<GooglePrivacyDlpV2BigQueryRegexResponse, Map<String, dynamic>>(patterns, (value) => value.toMap()),
+    };
   }
 
-  factory GooglePrivacyDlpV2BigQueryRegexesResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2BigQueryRegexesResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2BigQueryRegexesResponse(
-      patterns:
-          pulumi.Input.decodeList<GooglePrivacyDlpV2BigQueryRegexResponse>(
-              map['patterns'],
-              (value) => GooglePrivacyDlpV2BigQueryRegexResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      patterns: pulumi.Input.decodeList<GooglePrivacyDlpV2BigQueryRegexResponse>(map['patterns'], (value) => GooglePrivacyDlpV2BigQueryRegexResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

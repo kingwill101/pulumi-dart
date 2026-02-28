@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunctionTransformationLambdaConfiguration {
   /// The ARN of the lambda to use for custom transformation.
   final String lambdaArn;
@@ -11,15 +12,15 @@ class AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurati
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['lambdaArn'] = lambdaArn;
-    return map;
+    return <String, dynamic>{
+      'lambdaArn': lambdaArn,
+    };
   }
 
-  factory AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunctionTransformationLambdaConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunctionTransformationLambdaConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunctionTransformationLambdaConfiguration(
       lambdaArn: map['lambdaArn'] as String,
     );
   }
 }
+

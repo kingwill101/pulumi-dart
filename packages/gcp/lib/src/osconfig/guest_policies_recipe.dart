@@ -9,7 +9,6 @@ class GuestPoliciesRecipe {
   /// Resources available to be used in the steps in the recipe.
   /// Structure is documented below.
   final List<GuestPoliciesRecipeArtifact>? artifacts;
-
   /// Default is INSTALLED. The desired state the agent should maintain for this recipe.
   /// INSTALLED: The software recipe is installed on the instance but won't be updated to new versions.
   /// INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
@@ -18,23 +17,19 @@ class GuestPoliciesRecipe {
   /// Default value is `INSTALLED`.
   /// Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
   final String? desiredState;
-
   /// Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation.
   /// Any steps taken (including partially completed steps) are not rolled back.
   /// Structure is documented below.
   final List<GuestPoliciesRecipeInstallStep>? installSteps;
-
   /// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
   /// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
   /// This means that requests to create multiple recipes with the same name and version are rejected since they
   /// could potentially have conflicting assignments.
   final String name;
-
   /// Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe.
   /// Any steps taken (including partially completed steps) are not rolled back.
   /// Structure is documented below.
   final List<GuestPoliciesRecipeUpdateStep>? updateSteps;
-
   /// The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
   final String? version;
 
@@ -55,60 +50,25 @@ class GuestPoliciesRecipe {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final artifactsValue = artifacts;
-    if (artifactsValue != null) {
-      map['artifacts'] = pulumi.Input.encodeList<GuestPoliciesRecipeArtifact,
-          Map<String, dynamic>>(artifactsValue, (value) => value.toMap());
-    }
-    final desiredStateValue = desiredState;
-    if (desiredStateValue != null) {
-      map['desiredState'] = desiredStateValue;
-    }
-    final installStepsValue = installSteps;
-    if (installStepsValue != null) {
-      map['installSteps'] = pulumi.Input.encodeList<
-          GuestPoliciesRecipeInstallStep,
-          Map<String, dynamic>>(installStepsValue, (value) => value.toMap());
-    }
-    map['name'] = name;
-    final updateStepsValue = updateSteps;
-    if (updateStepsValue != null) {
-      map['updateSteps'] = pulumi.Input.encodeList<
-          GuestPoliciesRecipeUpdateStep,
-          Map<String, dynamic>>(updateStepsValue, (value) => value.toMap());
-    }
-    final versionValue = version;
-    if (versionValue != null) {
-      map['version'] = versionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'artifacts': ?artifacts == null ? null : pulumi.Input.encodeList<GuestPoliciesRecipeArtifact, Map<String, dynamic>>(artifacts!, (value) => value.toMap()),
+      'desiredState': ?desiredState,
+      'installSteps': ?installSteps == null ? null : pulumi.Input.encodeList<GuestPoliciesRecipeInstallStep, Map<String, dynamic>>(installSteps!, (value) => value.toMap()),
+      'name': name,
+      'updateSteps': ?updateSteps == null ? null : pulumi.Input.encodeList<GuestPoliciesRecipeUpdateStep, Map<String, dynamic>>(updateSteps!, (value) => value.toMap()),
+      'version': ?version,
+    };
   }
 
   factory GuestPoliciesRecipe.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesRecipe(
-      artifacts: map['artifacts'] == null
-          ? null
-          : pulumi.Input.decodeList<GuestPoliciesRecipeArtifact>(
-              map['artifacts'],
-              (value) => GuestPoliciesRecipeArtifact.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      desiredState:
-          map['desiredState'] == null ? null : map['desiredState'] as String,
-      installSteps: map['installSteps'] == null
-          ? null
-          : pulumi.Input.decodeList<GuestPoliciesRecipeInstallStep>(
-              map['installSteps'],
-              (value) => GuestPoliciesRecipeInstallStep.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      artifacts: map['artifacts'] == null ? null : pulumi.Input.decodeList<GuestPoliciesRecipeArtifact>(map['artifacts'], (value) => GuestPoliciesRecipeArtifact.fromMap((value as Map).cast<String, dynamic>())),
+      desiredState: map['desiredState'] == null ? null : map['desiredState'] as String,
+      installSteps: map['installSteps'] == null ? null : pulumi.Input.decodeList<GuestPoliciesRecipeInstallStep>(map['installSteps'], (value) => GuestPoliciesRecipeInstallStep.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      updateSteps: map['updateSteps'] == null
-          ? null
-          : pulumi.Input.decodeList<GuestPoliciesRecipeUpdateStep>(
-              map['updateSteps'],
-              (value) => GuestPoliciesRecipeUpdateStep.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      updateSteps: map['updateSteps'] == null ? null : pulumi.Input.decodeList<GuestPoliciesRecipeUpdateStep>(map['updateSteps'], (value) => GuestPoliciesRecipeUpdateStep.fromMap((value as Map).cast<String, dynamic>())),
       version: map['version'] == null ? null : map['version'] as String,
     );
   }
 }
+

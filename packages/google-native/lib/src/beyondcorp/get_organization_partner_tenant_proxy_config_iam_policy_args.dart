@@ -22,34 +22,28 @@ class GetOrganizationPartnerTenantProxyConfigIamPolicyArgs {
     required String organizationId,
     required String partnerTenantId,
     required String proxyConfigId,
-  })  : optionsRequestedPolicyVersion =
-            pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-        organizationId = pulumi.Input.asInput<String>(organizationId),
-        partnerTenantId = pulumi.Input.asInput<String>(partnerTenantId),
-        proxyConfigId = pulumi.Input.asInput<String>(proxyConfigId);
+  }) :
+      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
+      organizationId = pulumi.Input.asInput<String>(organizationId),
+      partnerTenantId = pulumi.Input.asInput<String>(partnerTenantId),
+      proxyConfigId = pulumi.Input.asInput<String>(proxyConfigId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final optionsRequestedPolicyVersionValue = optionsRequestedPolicyVersion;
-    if (optionsRequestedPolicyVersionValue != null) {
-      map['optionsRequestedPolicyVersion'] = optionsRequestedPolicyVersionValue;
-    }
-    map['organizationId'] = organizationId;
-    map['partnerTenantId'] = partnerTenantId;
-    map['proxyConfigId'] = proxyConfigId;
-    return map;
+    return <String, dynamic>{
+      'optionsRequestedPolicyVersion': ?optionsRequestedPolicyVersion,
+      'organizationId': organizationId,
+      'partnerTenantId': partnerTenantId,
+      'proxyConfigId': proxyConfigId,
+    };
   }
 
-  factory GetOrganizationPartnerTenantProxyConfigIamPolicyArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetOrganizationPartnerTenantProxyConfigIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationPartnerTenantProxyConfigIamPolicyArgs(
-      optionsRequestedPolicyVersion:
-          map['optionsRequestedPolicyVersion'] == null
-              ? null
-              : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
       organizationId: map['organizationId'] as String,
       partnerTenantId: map['partnerTenantId'] as String,
       proxyConfigId: map['proxyConfigId'] as String,
     );
   }
 }
+

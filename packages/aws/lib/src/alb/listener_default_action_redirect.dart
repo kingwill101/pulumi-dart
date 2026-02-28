@@ -1,21 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ListenerDefaultActionRedirect {
   /// Hostname. This component is not percent-encoded. The hostname can contain `#{host}`. Defaults to `#{host}`.
   final String? host;
-
   /// Absolute path, starting with the leading "/". This component is not percent-encoded. The path can contain #{host}, #{path}, and #{port}. Defaults to `/#{path}`.
   final String? path;
-
   /// Port. Specify a value from `1` to `65535` or `#{port}`. Defaults to `#{port}`.
   final String? port;
-
   /// Protocol. Valid values are `HTTP`, `HTTPS`, or `#{protocol}`. Defaults to `#{protocol}`.
   final String? protocol;
-
   /// Query parameters, URL-encoded when necessary, but not percent-encoded. Do not include the leading "?". Defaults to `#{query}`.
   final String? query;
-
   /// HTTP redirect code. The redirect is either permanent (`HTTP_301`) or temporary (`HTTP_302`).
   ///
   /// The following arguments are optional:
@@ -38,29 +34,14 @@ class ListenerDefaultActionRedirect {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final hostValue = host;
-    if (hostValue != null) {
-      map['host'] = hostValue;
-    }
-    final pathValue = path;
-    if (pathValue != null) {
-      map['path'] = pathValue;
-    }
-    final portValue = port;
-    if (portValue != null) {
-      map['port'] = portValue;
-    }
-    final protocolValue = protocol;
-    if (protocolValue != null) {
-      map['protocol'] = protocolValue;
-    }
-    final queryValue = query;
-    if (queryValue != null) {
-      map['query'] = queryValue;
-    }
-    map['statusCode'] = statusCode;
-    return map;
+    return <String, dynamic>{
+      'host': ?host,
+      'path': ?path,
+      'port': ?port,
+      'protocol': ?protocol,
+      'query': ?query,
+      'statusCode': statusCode,
+    };
   }
 
   factory ListenerDefaultActionRedirect.fromMap(Map<String, dynamic> map) {
@@ -74,3 +55,4 @@ class ListenerDefaultActionRedirect {
     );
   }
 }
+

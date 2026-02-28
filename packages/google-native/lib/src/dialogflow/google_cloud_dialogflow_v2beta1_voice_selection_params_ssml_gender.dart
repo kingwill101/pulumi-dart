@@ -8,15 +8,13 @@ enum GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender {
   const GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender(this.value);
   final String value;
 
-  static GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender fromValue(
-      String value) {
-    for (final item
-        in GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender.values) {
+  static GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender fromValue(String value) {
+    for (final item in GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender value: $value');
+    throw ArgumentError('Unknown GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender value: $value');
   }
 }
+

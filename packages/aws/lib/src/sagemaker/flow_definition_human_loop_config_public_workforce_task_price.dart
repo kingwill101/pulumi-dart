@@ -4,8 +4,7 @@ import 'flow_definition_human_loop_config_public_workforce_task_price_amount_in_
 
 class FlowDefinitionHumanLoopConfigPublicWorkforceTaskPrice {
   /// Defines the amount of money paid to an Amazon Mechanical Turk worker in United States dollars. See Amount In Usd details below.
-  final FlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmountInUsd?
-      amountInUsd;
+  final FlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmountInUsd? amountInUsd;
 
   /// Creates a new [FlowDefinitionHumanLoopConfigPublicWorkforceTaskPrice].
   /// [amountInUsd] Defines the amount of money paid to an Amazon Mechanical Turk worker in United States dollars. See Amount In Usd details below.
@@ -14,21 +13,15 @@ class FlowDefinitionHumanLoopConfigPublicWorkforceTaskPrice {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final amountInUsdValue = amountInUsd;
-    if (amountInUsdValue != null) {
-      map['amountInUsd'] = amountInUsdValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'amountInUsd': ?amountInUsd == null ? null : amountInUsd!.toMap(),
+    };
   }
 
-  factory FlowDefinitionHumanLoopConfigPublicWorkforceTaskPrice.fromMap(
-      Map<String, dynamic> map) {
+  factory FlowDefinitionHumanLoopConfigPublicWorkforceTaskPrice.fromMap(Map<String, dynamic> map) {
     return FlowDefinitionHumanLoopConfigPublicWorkforceTaskPrice(
-      amountInUsd: map['amountInUsd'] == null
-          ? null
-          : FlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmountInUsd
-              .fromMap((map['amountInUsd'] as Map).cast<String, dynamic>()),
+      amountInUsd: map['amountInUsd'] == null ? null : FlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmountInUsd.fromMap((map['amountInUsd'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

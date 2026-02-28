@@ -19,19 +19,17 @@ class GetNodeTemplateArgs {
     required String nodeTemplate,
     String? project,
     required String region,
-  })  : nodeTemplate = pulumi.Input.asInput<String>(nodeTemplate),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asInput<String>(region);
+  }) :
+      nodeTemplate = pulumi.Input.asInput<String>(nodeTemplate),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['nodeTemplate'] = nodeTemplate;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'nodeTemplate': nodeTemplate,
+      'project': ?project,
+      'region': region,
+    };
   }
 
   factory GetNodeTemplateArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetNodeTemplateArgs {
     );
   }
 }
+

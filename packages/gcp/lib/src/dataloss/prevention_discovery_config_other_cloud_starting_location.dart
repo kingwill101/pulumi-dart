@@ -5,8 +5,7 @@ import 'prevention_discovery_config_other_cloud_starting_location_aws_location.d
 class PreventionDiscoveryConfigOtherCloudStartingLocation {
   /// A nested object resource.
   /// Structure is documented below.
-  final PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocation?
-      awsLocation;
+  final PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocation? awsLocation;
 
   /// Creates a new [PreventionDiscoveryConfigOtherCloudStartingLocation].
   /// [awsLocation] A nested object resource.
@@ -15,21 +14,15 @@ class PreventionDiscoveryConfigOtherCloudStartingLocation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final awsLocationValue = awsLocation;
-    if (awsLocationValue != null) {
-      map['awsLocation'] = awsLocationValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'awsLocation': ?awsLocation == null ? null : awsLocation!.toMap(),
+    };
   }
 
-  factory PreventionDiscoveryConfigOtherCloudStartingLocation.fromMap(
-      Map<String, dynamic> map) {
+  factory PreventionDiscoveryConfigOtherCloudStartingLocation.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigOtherCloudStartingLocation(
-      awsLocation: map['awsLocation'] == null
-          ? null
-          : PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocation
-              .fromMap((map['awsLocation'] as Map).cast<String, dynamic>()),
+      awsLocation: map['awsLocation'] == null ? null : PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocation.fromMap((map['awsLocation'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

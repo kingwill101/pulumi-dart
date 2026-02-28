@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TopicRuleKafkaHeader {
   /// The key of the Kafka header.
   final String key;
-
   /// The value of the Kafka header.
   final String value;
 
@@ -16,10 +16,10 @@ class TopicRuleKafkaHeader {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
   factory TopicRuleKafkaHeader.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class TopicRuleKafkaHeader {
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ControlFilterAction {
   /// The data store to filter.
   final String dataStore;
-
   /// The filter to apply to the search results.
   final String filter;
 
@@ -16,10 +16,10 @@ class ControlFilterAction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dataStore'] = dataStore;
-    map['filter'] = filter;
-    return map;
+    return <String, dynamic>{
+      'dataStore': dataStore,
+      'filter': filter,
+    };
   }
 
   factory ControlFilterAction.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class ControlFilterAction {
     );
   }
 }
+

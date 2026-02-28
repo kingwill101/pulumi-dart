@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTrafficPolicyDocumentRuleSecondary {
   final String? endpointReference;
   final bool? evaluateTargetHealth;
@@ -19,39 +20,21 @@ class GetTrafficPolicyDocumentRuleSecondary {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final endpointReferenceValue = endpointReference;
-    if (endpointReferenceValue != null) {
-      map['endpointReference'] = endpointReferenceValue;
-    }
-    final evaluateTargetHealthValue = evaluateTargetHealth;
-    if (evaluateTargetHealthValue != null) {
-      map['evaluateTargetHealth'] = evaluateTargetHealthValue;
-    }
-    final healthCheckValue = healthCheck;
-    if (healthCheckValue != null) {
-      map['healthCheck'] = healthCheckValue;
-    }
-    final ruleReferenceValue = ruleReference;
-    if (ruleReferenceValue != null) {
-      map['ruleReference'] = ruleReferenceValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'endpointReference': ?endpointReference,
+      'evaluateTargetHealth': ?evaluateTargetHealth,
+      'healthCheck': ?healthCheck,
+      'ruleReference': ?ruleReference,
+    };
   }
 
-  factory GetTrafficPolicyDocumentRuleSecondary.fromMap(
-      Map<String, dynamic> map) {
+  factory GetTrafficPolicyDocumentRuleSecondary.fromMap(Map<String, dynamic> map) {
     return GetTrafficPolicyDocumentRuleSecondary(
-      endpointReference: map['endpointReference'] == null
-          ? null
-          : map['endpointReference'] as String,
-      evaluateTargetHealth: map['evaluateTargetHealth'] == null
-          ? null
-          : map['evaluateTargetHealth'] as bool,
-      healthCheck:
-          map['healthCheck'] == null ? null : map['healthCheck'] as String,
-      ruleReference:
-          map['ruleReference'] == null ? null : map['ruleReference'] as String,
+      endpointReference: map['endpointReference'] == null ? null : map['endpointReference'] as String,
+      evaluateTargetHealth: map['evaluateTargetHealth'] == null ? null : map['evaluateTargetHealth'] as bool,
+      healthCheck: map['healthCheck'] == null ? null : map['healthCheck'] as String,
+      ruleReference: map['ruleReference'] == null ? null : map['ruleReference'] as String,
     );
   }
 }
+

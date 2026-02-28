@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class StorageLensConfigurationStorageLensConfigurationAccountLevelActivityMetrics {
   /// Whether the activity metrics are enabled.
   final bool? enabled;
@@ -11,18 +12,15 @@ class StorageLensConfigurationStorageLensConfigurationAccountLevelActivityMetric
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
-  factory StorageLensConfigurationStorageLensConfigurationAccountLevelActivityMetrics.fromMap(
-      Map<String, dynamic> map) {
+  factory StorageLensConfigurationStorageLensConfigurationAccountLevelActivityMetrics.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationStorageLensConfigurationAccountLevelActivityMetrics(
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
     );
   }
 }
+

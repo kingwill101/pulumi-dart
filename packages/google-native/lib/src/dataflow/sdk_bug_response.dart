@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A bug found in the Dataflow SDK.
 class SdkBugResponse {
   /// How severe the SDK bug is.
   final String severity;
-
   /// Describes the impact of this SDK bug.
   final String type;
-
   /// Link to more information on the bug.
   final String uri;
 
@@ -22,11 +21,11 @@ class SdkBugResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['severity'] = severity;
-    map['type'] = type;
-    map['uri'] = uri;
-    return map;
+    return <String, dynamic>{
+      'severity': severity,
+      'type': type,
+      'uri': uri,
+    };
   }
 
   factory SdkBugResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class SdkBugResponse {
     );
   }
 }
+

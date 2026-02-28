@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A test of an android application that explores the application on a virtual or physical Android device, finding culprits and crashes as it goes.
 class AndroidRoboTestResponse {
   /// The initial activity that should be used to start the app. Optional
   final String appInitialActivity;
-
   /// The java package for the bootstrap. Optional
   final String bootstrapPackageId;
-
   /// The runner class for the bootstrap. Optional
   final String bootstrapRunnerClass;
-
   /// The max depth of the traversal stack Robo can explore. Optional
   final int maxDepth;
-
   /// The max number of steps/actions Robo can execute. Default is no limit (0). Optional
   final int maxSteps;
 
@@ -32,13 +29,13 @@ class AndroidRoboTestResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['appInitialActivity'] = appInitialActivity;
-    map['bootstrapPackageId'] = bootstrapPackageId;
-    map['bootstrapRunnerClass'] = bootstrapRunnerClass;
-    map['maxDepth'] = maxDepth;
-    map['maxSteps'] = maxSteps;
-    return map;
+    return <String, dynamic>{
+      'appInitialActivity': appInitialActivity,
+      'bootstrapPackageId': bootstrapPackageId,
+      'bootstrapRunnerClass': bootstrapRunnerClass,
+      'maxDepth': maxDepth,
+      'maxSteps': maxSteps,
+    };
   }
 
   factory AndroidRoboTestResponse.fromMap(Map<String, dynamic> map) {
@@ -51,3 +48,4 @@ class AndroidRoboTestResponse {
     );
   }
 }
+

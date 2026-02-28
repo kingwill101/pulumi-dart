@@ -6,7 +6,6 @@ import 'google_cloud_aiplatform_v1_feature_stats_anomaly_response.dart';
 class GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyResponse {
   /// The stats and anomalies generated at specific timestamp.
   final GoogleCloudAiplatformV1FeatureStatsAnomalyResponse featureStatsAnomaly;
-
   /// The objective for each stats.
   final String objective;
 
@@ -19,19 +18,17 @@ class GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['featureStatsAnomaly'] = featureStatsAnomaly.toMap();
-    map['objective'] = objective;
-    return map;
+    return <String, dynamic>{
+      'featureStatsAnomaly': featureStatsAnomaly.toMap(),
+      'objective': objective,
+    };
   }
 
-  factory GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyResponse(
-      featureStatsAnomaly:
-          GoogleCloudAiplatformV1FeatureStatsAnomalyResponse.fromMap(
-              (map['featureStatsAnomaly'] as Map).cast<String, dynamic>()),
+      featureStatsAnomaly: GoogleCloudAiplatformV1FeatureStatsAnomalyResponse.fromMap((map['featureStatsAnomaly'] as Map).cast<String, dynamic>()),
       objective: map['objective'] as String,
     );
   }
 }
+

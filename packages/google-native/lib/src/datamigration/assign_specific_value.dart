@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Set to a specific value (value is converted to fit the target data type)
 class AssignSpecificValue {
   /// Specific value to be assigned
@@ -12,9 +13,9 @@ class AssignSpecificValue {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'value': value,
+    };
   }
 
   factory AssignSpecificValue.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class AssignSpecificValue {
     );
   }
 }
+

@@ -9,12 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVariableArgs {
   /// The name of the Runtime Configurator configuration.
   final pulumi.Input<String> name;
-
   /// The name of the RuntimeConfig resource containing this variable.
   ///
   /// - - -
   final pulumi.Input<String> parent;
-
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -27,19 +25,17 @@ class GetVariableArgs {
     required String name,
     required String parent,
     String? project,
-  })  : name = pulumi.Input.asInput<String>(name),
-        parent = pulumi.Input.asInput<String>(parent),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      name = pulumi.Input.asInput<String>(name),
+      parent = pulumi.Input.asInput<String>(parent),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['parent'] = parent;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'parent': parent,
+      'project': ?project,
+    };
   }
 
   factory GetVariableArgs.fromMap(Map<String, dynamic> map) {
@@ -50,3 +46,4 @@ class GetVariableArgs {
     );
   }
 }
+

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Defines sources for the suggest/search APIs.
 class SourceResponse {
   /// Source name for content indexed by the Indexing API.
   final String name;
-
   /// Predefined content source for Google Apps.
   final String predefinedSource;
 
@@ -17,10 +17,10 @@ class SourceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['predefinedSource'] = predefinedSource;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'predefinedSource': predefinedSource,
+    };
   }
 
   factory SourceResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class SourceResponse {
     );
   }
 }
+

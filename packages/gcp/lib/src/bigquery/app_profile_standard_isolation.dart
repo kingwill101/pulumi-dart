@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppProfileStandardIsolation {
   /// The priority of requests sent using this app profile.
   /// Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
@@ -12,9 +13,9 @@ class AppProfileStandardIsolation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['priority'] = priority;
-    return map;
+    return <String, dynamic>{
+      'priority': priority,
+    };
   }
 
   factory AppProfileStandardIsolation.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class AppProfileStandardIsolation {
     );
   }
 }
+

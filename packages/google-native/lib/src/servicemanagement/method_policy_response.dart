@@ -7,7 +7,6 @@ import 'field_policy_response.dart';
 class MethodPolicyResponse {
   /// Policies that are applicable to the request message.
   final List<FieldPolicyResponse> requestPolicies;
-
   /// Selects a method to which these policies should be enforced, for example, "google.pubsub.v1.Subscriber.CreateSubscription". Refer to selector for syntax details. NOTE: This field must not be set in the proto annotation. It will be automatically filled by the service config compiler .
   final String selector;
 
@@ -20,21 +19,17 @@ class MethodPolicyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['requestPolicies'] =
-        pulumi.Input.encodeList<FieldPolicyResponse, Map<String, dynamic>>(
-            requestPolicies, (value) => value.toMap());
-    map['selector'] = selector;
-    return map;
+    return <String, dynamic>{
+      'requestPolicies': pulumi.Input.encodeList<FieldPolicyResponse, Map<String, dynamic>>(requestPolicies, (value) => value.toMap()),
+      'selector': selector,
+    };
   }
 
   factory MethodPolicyResponse.fromMap(Map<String, dynamic> map) {
     return MethodPolicyResponse(
-      requestPolicies: pulumi.Input.decodeList<FieldPolicyResponse>(
-          map['requestPolicies'],
-          (value) => FieldPolicyResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      requestPolicies: pulumi.Input.decodeList<FieldPolicyResponse>(map['requestPolicies'], (value) => FieldPolicyResponse.fromMap((value as Map).cast<String, dynamic>())),
       selector: map['selector'] as String,
     );
   }
 }
+

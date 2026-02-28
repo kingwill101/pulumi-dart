@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ParameterGroupParameter {
   /// The name of the parameter.
   final String name;
-
   /// The value for the parameter.
   final String value;
 
@@ -16,10 +16,10 @@ class ParameterGroupParameter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
   factory ParameterGroupParameter.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class ParameterGroupParameter {
     );
   }
 }
+

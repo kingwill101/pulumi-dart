@@ -22,21 +22,19 @@ class GetDeploymentArgs {
     required String deploymentId,
     required String location,
     String? project,
-  })  : apiId = pulumi.Input.asInput<String>(apiId),
-        deploymentId = pulumi.Input.asInput<String>(deploymentId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      apiId = pulumi.Input.asInput<String>(apiId),
+      deploymentId = pulumi.Input.asInput<String>(deploymentId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['apiId'] = apiId;
-    map['deploymentId'] = deploymentId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'apiId': apiId,
+      'deploymentId': deploymentId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetDeploymentArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetDeploymentArgs {
     );
   }
 }
+

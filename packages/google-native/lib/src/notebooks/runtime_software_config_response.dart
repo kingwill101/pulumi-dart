@@ -7,40 +7,28 @@ import 'container_image_response.dart';
 class RuntimeSoftwareConfigResponse {
   /// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
   final String customGpuDriverPath;
-
   /// Bool indicating whether JupyterLab terminal will be available or not. Default: False
   final bool disableTerminal;
-
   /// Verifies core internal services are running. Default: True
   final bool enableHealthMonitoring;
-
   /// Runtime will automatically shutdown after idle_shutdown_time. Default: True
   final bool idleShutdown;
-
   /// Time in minutes to wait before shutting down runtime. Default: 180 minutes
   final int idleShutdownTimeout;
-
   /// Install Nvidia Driver automatically. Default: True
   final bool installGpuDriver;
-
   /// Optional. Use a list of container images to use as Kernels in the notebook instance.
   final List<ContainerImageResponse> kernels;
-
   /// Bool indicating whether mixer client should be disabled. Default: False
   final bool mixerDisabled;
-
   /// Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
   final String notebookUpgradeSchedule;
-
   /// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
   final String postStartupScript;
-
   /// Behavior for the post startup script.
   final String postStartupScriptBehavior;
-
   /// Bool indicating whether an newer image is available in an image family.
   final bool upgradeable;
-
   /// version of boot image such as M100, from release label of the image.
   final String version;
 
@@ -75,23 +63,21 @@ class RuntimeSoftwareConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['customGpuDriverPath'] = customGpuDriverPath;
-    map['disableTerminal'] = disableTerminal;
-    map['enableHealthMonitoring'] = enableHealthMonitoring;
-    map['idleShutdown'] = idleShutdown;
-    map['idleShutdownTimeout'] = idleShutdownTimeout;
-    map['installGpuDriver'] = installGpuDriver;
-    map['kernels'] =
-        pulumi.Input.encodeList<ContainerImageResponse, Map<String, dynamic>>(
-            kernels, (value) => value.toMap());
-    map['mixerDisabled'] = mixerDisabled;
-    map['notebookUpgradeSchedule'] = notebookUpgradeSchedule;
-    map['postStartupScript'] = postStartupScript;
-    map['postStartupScriptBehavior'] = postStartupScriptBehavior;
-    map['upgradeable'] = upgradeable;
-    map['version'] = version;
-    return map;
+    return <String, dynamic>{
+      'customGpuDriverPath': customGpuDriverPath,
+      'disableTerminal': disableTerminal,
+      'enableHealthMonitoring': enableHealthMonitoring,
+      'idleShutdown': idleShutdown,
+      'idleShutdownTimeout': idleShutdownTimeout,
+      'installGpuDriver': installGpuDriver,
+      'kernels': pulumi.Input.encodeList<ContainerImageResponse, Map<String, dynamic>>(kernels, (value) => value.toMap()),
+      'mixerDisabled': mixerDisabled,
+      'notebookUpgradeSchedule': notebookUpgradeSchedule,
+      'postStartupScript': postStartupScript,
+      'postStartupScriptBehavior': postStartupScriptBehavior,
+      'upgradeable': upgradeable,
+      'version': version,
+    };
   }
 
   factory RuntimeSoftwareConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -102,10 +88,7 @@ class RuntimeSoftwareConfigResponse {
       idleShutdown: map['idleShutdown'] as bool,
       idleShutdownTimeout: map['idleShutdownTimeout'] as int,
       installGpuDriver: map['installGpuDriver'] as bool,
-      kernels: pulumi.Input.decodeList<ContainerImageResponse>(
-          map['kernels'],
-          (value) => ContainerImageResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      kernels: pulumi.Input.decodeList<ContainerImageResponse>(map['kernels'], (value) => ContainerImageResponse.fromMap((value as Map).cast<String, dynamic>())),
       mixerDisabled: map['mixerDisabled'] as bool,
       notebookUpgradeSchedule: map['notebookUpgradeSchedule'] as String,
       postStartupScript: map['postStartupScript'] as String,
@@ -115,3 +98,4 @@ class RuntimeSoftwareConfigResponse {
     );
   }
 }
+

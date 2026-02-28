@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for the legacy Attribute Based Access Control authorization mode.
 class LegacyAbacResponseContainerV1beta1 {
   /// Whether the ABAC authorizer is enabled for this cluster. When enabled, identities in the system, including service accounts, nodes, and controllers, will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
@@ -12,9 +13,9 @@ class LegacyAbacResponseContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory LegacyAbacResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class LegacyAbacResponseContainerV1beta1 {
     );
   }
 }
+

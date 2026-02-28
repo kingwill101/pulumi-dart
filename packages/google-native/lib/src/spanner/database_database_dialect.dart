@@ -16,3 +16,4 @@ enum DatabaseDatabaseDialect {
     throw ArgumentError('Unknown DatabaseDatabaseDialect value: $value');
   }
 }
+

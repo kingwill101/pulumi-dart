@@ -9,19 +9,14 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
   /// Remote: A checksum must be specified.
   /// Cloud Storage: An object generation number must be specified.
   final bool? allowInsecure;
-
   /// Specifies a file available as a Cloud Storage Object.
   /// Structure is documented below.
-  final V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcs?
-      gcs;
-
+  final V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcs? gcs;
   /// A local path within the VM to use.
   final String? localPath;
-
   /// Specifies a file available via some URI.
   /// Structure is documented below.
-  final V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemote?
-      remote;
+  final V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemote? remote;
 
   /// Creates a new [V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource].
   /// [allowInsecure] Defaults to false. When false, files are subject to validations
@@ -36,40 +31,21 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final allowInsecureValue = allowInsecure;
-    if (allowInsecureValue != null) {
-      map['allowInsecure'] = allowInsecureValue;
-    }
-    final gcsValue = gcs;
-    if (gcsValue != null) {
-      map['gcs'] = gcsValue.toMap();
-    }
-    final localPathValue = localPath;
-    if (localPathValue != null) {
-      map['localPath'] = localPathValue;
-    }
-    final remoteValue = remote;
-    if (remoteValue != null) {
-      map['remote'] = remoteValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'allowInsecure': ?allowInsecure,
+      'gcs': ?gcs == null ? null : gcs!.toMap(),
+      'localPath': ?localPath,
+      'remote': ?remote == null ? null : remote!.toMap(),
+    };
   }
 
-  factory V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource.fromMap(
-      Map<String, dynamic> map) {
+  factory V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource(
-      allowInsecure:
-          map['allowInsecure'] == null ? null : map['allowInsecure'] as bool,
-      gcs: map['gcs'] == null
-          ? null
-          : V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcs
-              .fromMap((map['gcs'] as Map).cast<String, dynamic>()),
+      allowInsecure: map['allowInsecure'] == null ? null : map['allowInsecure'] as bool,
+      gcs: map['gcs'] == null ? null : V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcs.fromMap((map['gcs'] as Map).cast<String, dynamic>()),
       localPath: map['localPath'] == null ? null : map['localPath'] as String,
-      remote: map['remote'] == null
-          ? null
-          : V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemote
-              .fromMap((map['remote'] as Map).cast<String, dynamic>()),
+      remote: map['remote'] == null ? null : V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemote.fromMap((map['remote'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

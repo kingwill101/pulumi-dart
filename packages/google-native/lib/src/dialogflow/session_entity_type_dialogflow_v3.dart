@@ -5,16 +5,12 @@ import 'session_entity_type_dialogflow_v3_args.dart';
 /// Creates a session entity type.
 class SessionEntityTypeDialogflowV3 extends pulumi.CustomResource {
   late final pulumi.Output<String> agentId;
-
   /// The collection of entities to override or supplement the custom entity type.
-  late final pulumi
-      .Output<List<GoogleCloudDialogflowCxV3EntityTypeEntityResponse>> entities;
-
+  late final pulumi.Output<List<GoogleCloudDialogflowCxV3EntityTypeEntityResponse>> entities;
   /// Indicates whether the additional data should override or supplement the custom entity type definition.
   late final pulumi.Output<String> entityOverrideMode;
   late final pulumi.Output<String> environmentId;
   late final pulumi.Output<String> location;
-
   /// The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
@@ -35,9 +31,7 @@ class SessionEntityTypeDialogflowV3 extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.agentId = registerOutput<String>('agentId');
-    this.entities =
-        registerOutput<List<GoogleCloudDialogflowCxV3EntityTypeEntityResponse>>(
-            'entities');
+    this.entities = registerOutput<List<GoogleCloudDialogflowCxV3EntityTypeEntityResponse>>('entities');
     this.entityOverrideMode = registerOutput<String>('entityOverrideMode');
     this.environmentId = registerOutput<String>('environmentId');
     this.location = registerOutput<String>('location');

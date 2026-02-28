@@ -802,10 +802,8 @@ import 'instance_logging_configuration_args.dart';
 class InstanceLoggingConfiguration extends pulumi.CustomResource {
   /// A block that specifies the configuration options for Verified Access instances. Detailed below.
   late final pulumi.Output<InstanceLoggingConfigurationAccessLogs> accessLogs;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ID of the Verified Access instance.
   late final pulumi.Output<String> verifiedaccessInstanceId;
 
@@ -823,10 +821,8 @@ class InstanceLoggingConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.accessLogs =
-        registerOutput<InstanceLoggingConfigurationAccessLogs>('accessLogs');
+    this.accessLogs = registerOutput<InstanceLoggingConfigurationAccessLogs>('accessLogs');
     this.region = registerOutput<String>('region');
-    this.verifiedaccessInstanceId =
-        registerOutput<String>('verifiedaccessInstanceId');
+    this.verifiedaccessInstanceId = registerOutput<String>('verifiedaccessInstanceId');
   }
 }

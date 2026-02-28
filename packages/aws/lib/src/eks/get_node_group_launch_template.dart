@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetNodeGroupLaunchTemplate {
   /// The ID of the launch template.
   final String id;
-
   /// Name of the AutoScaling Group.
   final String name;
-
   /// Kubernetes version.
   final String version;
 
@@ -21,11 +20,11 @@ class GetNodeGroupLaunchTemplate {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['name'] = name;
-    map['version'] = version;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'name': name,
+      'version': version,
+    };
   }
 
   factory GetNodeGroupLaunchTemplate.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class GetNodeGroupLaunchTemplate {
     );
   }
 }
+

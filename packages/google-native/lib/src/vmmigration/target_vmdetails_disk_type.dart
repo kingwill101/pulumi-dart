@@ -17,3 +17,4 @@ enum TargetVMDetailsDiskType {
     throw ArgumentError('Unknown TargetVMDetailsDiskType value: $value');
   }
 }
+

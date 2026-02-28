@@ -4,9 +4,7 @@ import 'security_policy_rule_preconfigured_waf_config_exclusion_field_params_op_
 
 class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeV1 {
   /// The match operator for the field.
-  final SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpComputeV1?
-      op;
-
+  final SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpComputeV1? op;
   /// The value of the field.
   final String? val;
 
@@ -19,26 +17,17 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final opValue = op;
-    if (opValue != null) {
-      map['op'] = opValue.value;
-    }
-    final valValue = val;
-    if (valValue != null) {
-      map['val'] = valValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'op': ?op == null ? null : op!.value,
+      'val': ?val,
+    };
   }
 
-  factory SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeV1.fromMap(
-      Map<String, dynamic> map) {
+  factory SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeV1.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeV1(
-      op: map['op'] == null
-          ? null
-          : SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpComputeV1
-              .fromValue(map['op'] as String),
+      op: map['op'] == null ? null : SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpComputeV1.fromValue(map['op'] as String),
       val: map['val'] == null ? null : map['val'] as String,
     );
   }
 }
+

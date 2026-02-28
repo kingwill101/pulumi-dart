@@ -7,11 +7,9 @@ class AuthzPolicyHttpRule {
   /// Describes properties of one or more sources of a request.
   /// Structure is documented below.
   final AuthzPolicyHttpRuleFrom? from;
-
   /// Describes properties of one or more targets of a request
   /// Structure is documented below.
   final AuthzPolicyHttpRuleTo? to;
-
   /// CEL expression that describes the conditions to be satisfied for the action. The result of the CEL expression is ANDed with the from and to. Refer to the CEL language reference for a list of available attributes.
   final String? when;
 
@@ -26,33 +24,19 @@ class AuthzPolicyHttpRule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final fromValue = from;
-    if (fromValue != null) {
-      map['from'] = fromValue.toMap();
-    }
-    final toValue = to;
-    if (toValue != null) {
-      map['to'] = toValue.toMap();
-    }
-    final whenValue = when;
-    if (whenValue != null) {
-      map['when'] = whenValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'from': ?from == null ? null : from!.toMap(),
+      'to': ?to == null ? null : to!.toMap(),
+      'when': ?when,
+    };
   }
 
   factory AuthzPolicyHttpRule.fromMap(Map<String, dynamic> map) {
     return AuthzPolicyHttpRule(
-      from: map['from'] == null
-          ? null
-          : AuthzPolicyHttpRuleFrom.fromMap(
-              (map['from'] as Map).cast<String, dynamic>()),
-      to: map['to'] == null
-          ? null
-          : AuthzPolicyHttpRuleTo.fromMap(
-              (map['to'] as Map).cast<String, dynamic>()),
+      from: map['from'] == null ? null : AuthzPolicyHttpRuleFrom.fromMap((map['from'] as Map).cast<String, dynamic>()),
+      to: map['to'] == null ? null : AuthzPolicyHttpRuleTo.fromMap((map['to'] as Map).cast<String, dynamic>()),
       when: map['when'] == null ? null : map['when'] as String,
     );
   }
 }
+

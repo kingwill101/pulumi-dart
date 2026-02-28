@@ -19,19 +19,17 @@ class GetStoragePoolArgs {
     String? project,
     required String storagePool,
     required String zone,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        storagePool = pulumi.Input.asInput<String>(storagePool),
-        zone = pulumi.Input.asInput<String>(zone);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      storagePool = pulumi.Input.asInput<String>(storagePool),
+      zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['storagePool'] = storagePool;
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'storagePool': storagePool,
+      'zone': zone,
+    };
   }
 
   factory GetStoragePoolArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetStoragePoolArgs {
     );
   }
 }
+

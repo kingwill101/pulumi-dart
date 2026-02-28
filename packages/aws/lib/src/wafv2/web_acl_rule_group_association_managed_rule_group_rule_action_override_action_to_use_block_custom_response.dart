@@ -6,14 +6,10 @@ import 'web_acl_rule_group_association_managed_rule_group_rule_action_override_a
 class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponse {
   /// Key of a custom response body to use.
   final String? customResponseBodyKey;
-
   /// HTTP response code to return (200-599).
   final int responseCode;
-
   /// Headers to include in the response. See below.
-  final List<
-          WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponseResponseHeader>?
-      responseHeaders;
+  final List<WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponseResponseHeader>? responseHeaders;
 
   /// Creates a new [WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponse].
   /// [customResponseBodyKey] Key of a custom response body to use.
@@ -26,36 +22,19 @@ class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlo
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final customResponseBodyKeyValue = customResponseBodyKey;
-    if (customResponseBodyKeyValue != null) {
-      map['customResponseBodyKey'] = customResponseBodyKeyValue;
-    }
-    map['responseCode'] = responseCode;
-    final responseHeadersValue = responseHeaders;
-    if (responseHeadersValue != null) {
-      map['responseHeaders'] = pulumi.Input.encodeList<
-          WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponseResponseHeader,
-          Map<String, dynamic>>(responseHeadersValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'customResponseBodyKey': ?customResponseBodyKey,
+      'responseCode': responseCode,
+      'responseHeaders': ?responseHeaders == null ? null : pulumi.Input.encodeList<WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponseResponseHeader, Map<String, dynamic>>(responseHeaders!, (value) => value.toMap()),
+    };
   }
 
-  factory WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponse.fromMap(Map<String, dynamic> map) {
     return WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponse(
-      customResponseBodyKey: map['customResponseBodyKey'] == null
-          ? null
-          : map['customResponseBodyKey'] as String,
+      customResponseBodyKey: map['customResponseBodyKey'] == null ? null : map['customResponseBodyKey'] as String,
       responseCode: map['responseCode'] as int,
-      responseHeaders: map['responseHeaders'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponseResponseHeader>(
-              map['responseHeaders'],
-              (value) =>
-                  WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponseResponseHeader
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      responseHeaders: map['responseHeaders'] == null ? null : pulumi.Input.decodeList<WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponseResponseHeader>(map['responseHeaders'], (value) => WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponseResponseHeader.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

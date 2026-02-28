@@ -25,40 +25,31 @@ class GetIntentArgs {
     String? languageCode,
     required String location,
     String? project,
-  })  : intentId = pulumi.Input.asInput<String>(intentId),
-        intentView = pulumi.Input.asOptionalInput<String>(intentView),
-        languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      intentId = pulumi.Input.asInput<String>(intentId),
+      intentView = pulumi.Input.asOptionalInput<String>(intentView),
+      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['intentId'] = intentId;
-    final intentViewValue = intentView;
-    if (intentViewValue != null) {
-      map['intentView'] = intentViewValue;
-    }
-    final languageCodeValue = languageCode;
-    if (languageCodeValue != null) {
-      map['languageCode'] = languageCodeValue;
-    }
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'intentId': intentId,
+      'intentView': ?intentView,
+      'languageCode': ?languageCode,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetIntentArgs.fromMap(Map<String, dynamic> map) {
     return GetIntentArgs(
       intentId: map['intentId'] as String,
-      intentView:
-          map['intentView'] == null ? null : map['intentView'] as String,
-      languageCode:
-          map['languageCode'] == null ? null : map['languageCode'] as String,
+      intentView: map['intentView'] == null ? null : map['intentView'] as String,
+      languageCode: map['languageCode'] == null ? null : map['languageCode'] as String,
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

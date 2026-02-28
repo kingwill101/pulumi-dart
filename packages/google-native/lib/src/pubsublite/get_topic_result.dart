@@ -8,13 +8,10 @@ import 'retention_config_response.dart';
 class GetTopicResult {
   /// The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
   final String name;
-
   /// The settings for this topic's partitions.
   final PartitionConfigResponse partitionConfig;
-
   /// The settings for this topic's Reservation usage.
   final ReservationConfigResponse reservationConfig;
-
   /// The settings for this topic's message retention.
   final RetentionConfigResponse retentionConfig;
 
@@ -31,23 +28,21 @@ class GetTopicResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['partitionConfig'] = partitionConfig.toMap();
-    map['reservationConfig'] = reservationConfig.toMap();
-    map['retentionConfig'] = retentionConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'partitionConfig': partitionConfig.toMap(),
+      'reservationConfig': reservationConfig.toMap(),
+      'retentionConfig': retentionConfig.toMap(),
+    };
   }
 
   factory GetTopicResult.fromMap(Map<String, dynamic> map) {
     return GetTopicResult(
       name: map['name'] as String,
-      partitionConfig: PartitionConfigResponse.fromMap(
-          (map['partitionConfig'] as Map).cast<String, dynamic>()),
-      reservationConfig: ReservationConfigResponse.fromMap(
-          (map['reservationConfig'] as Map).cast<String, dynamic>()),
-      retentionConfig: RetentionConfigResponse.fromMap(
-          (map['retentionConfig'] as Map).cast<String, dynamic>()),
+      partitionConfig: PartitionConfigResponse.fromMap((map['partitionConfig'] as Map).cast<String, dynamic>()),
+      reservationConfig: ReservationConfigResponse.fromMap((map['reservationConfig'] as Map).cast<String, dynamic>()),
+      retentionConfig: RetentionConfigResponse.fromMap((map['retentionConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

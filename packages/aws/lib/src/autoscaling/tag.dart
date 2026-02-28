@@ -120,10 +120,8 @@ import 'tag_tag.dart';
 class Tag extends pulumi.CustomResource {
   /// Name of the Autoscaling Group to apply the tag to.
   late final pulumi.Output<String> autoscalingGroupName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Tag to create. The `tag` block is documented below.
   late final pulumi.Output<TagTag> tag;
 

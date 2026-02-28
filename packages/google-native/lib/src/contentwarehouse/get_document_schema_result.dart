@@ -7,23 +7,16 @@ import 'google_cloud_contentwarehouse_v1_property_definition_response.dart';
 class GetDocumentSchemaResult {
   /// The time when the document schema is created.
   final String createTime;
-
   /// Schema description.
   final String description;
-
   /// Name of the schema given by the user. Must be unique per project.
   final String displayName;
-
   /// Document Type, true refers the document is a folder, otherwise it is a typical document.
   final bool documentIsFolder;
-
   /// The resource name of the document schema. Format: projects/{project_number}/locations/{location}/documentSchemas/{document_schema_id}. The name is ignored when creating a document schema.
   final String name;
-
   /// Document details.
-  final List<GoogleCloudContentwarehouseV1PropertyDefinitionResponse>
-      propertyDefinitions;
-
+  final List<GoogleCloudContentwarehouseV1PropertyDefinitionResponse> propertyDefinitions;
   /// The time when the document schema is last updated.
   final String updateTime;
 
@@ -46,17 +39,15 @@ class GetDocumentSchemaResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['description'] = description;
-    map['displayName'] = displayName;
-    map['documentIsFolder'] = documentIsFolder;
-    map['name'] = name;
-    map['propertyDefinitions'] = pulumi.Input.encodeList<
-        GoogleCloudContentwarehouseV1PropertyDefinitionResponse,
-        Map<String, dynamic>>(propertyDefinitions, (value) => value.toMap());
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'description': description,
+      'displayName': displayName,
+      'documentIsFolder': documentIsFolder,
+      'name': name,
+      'propertyDefinitions': pulumi.Input.encodeList<GoogleCloudContentwarehouseV1PropertyDefinitionResponse, Map<String, dynamic>>(propertyDefinitions, (value) => value.toMap()),
+      'updateTime': updateTime,
+    };
   }
 
   factory GetDocumentSchemaResult.fromMap(Map<String, dynamic> map) {
@@ -66,13 +57,9 @@ class GetDocumentSchemaResult {
       displayName: map['displayName'] as String,
       documentIsFolder: map['documentIsFolder'] as bool,
       name: map['name'] as String,
-      propertyDefinitions: pulumi.Input.decodeList<
-              GoogleCloudContentwarehouseV1PropertyDefinitionResponse>(
-          map['propertyDefinitions'],
-          (value) =>
-              GoogleCloudContentwarehouseV1PropertyDefinitionResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      propertyDefinitions: pulumi.Input.decodeList<GoogleCloudContentwarehouseV1PropertyDefinitionResponse>(map['propertyDefinitions'], (value) => GoogleCloudContentwarehouseV1PropertyDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())),
       updateTime: map['updateTime'] as String,
     );
   }
 }
+

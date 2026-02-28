@@ -219,8 +219,7 @@ Future<GetDataTaxonomyResult> getDataTaxonomy(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dataplex_v1_get_data_taxonomy_attribute_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDataTaxonomyAttributeIamPolicyResult>
-    getDataTaxonomyAttributeIamPolicy(
+Future<GetDataTaxonomyAttributeIamPolicyResult> getDataTaxonomyAttributeIamPolicy(
   GetDataTaxonomyAttributeIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

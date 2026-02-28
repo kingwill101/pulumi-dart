@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceStorageConfigStorageConfigKinesisFirehoseConfig {
   /// The Amazon Resource Name (ARN) of the delivery stream.
   final String firehoseArn;
@@ -11,15 +12,15 @@ class InstanceStorageConfigStorageConfigKinesisFirehoseConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['firehoseArn'] = firehoseArn;
-    return map;
+    return <String, dynamic>{
+      'firehoseArn': firehoseArn,
+    };
   }
 
-  factory InstanceStorageConfigStorageConfigKinesisFirehoseConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory InstanceStorageConfigStorageConfigKinesisFirehoseConfig.fromMap(Map<String, dynamic> map) {
     return InstanceStorageConfigStorageConfigKinesisFirehoseConfig(
       firehoseArn: map['firehoseArn'] as String,
     );
   }
 }
+

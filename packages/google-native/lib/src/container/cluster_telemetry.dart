@@ -14,19 +14,15 @@ class ClusterTelemetry {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'type': ?type == null ? null : type!.value,
+    };
   }
 
   factory ClusterTelemetry.fromMap(Map<String, dynamic> map) {
     return ClusterTelemetry(
-      type: map['type'] == null
-          ? null
-          : ClusterTelemetryType.fromValue(map['type'] as String),
+      type: map['type'] == null ? null : ClusterTelemetryType.fromValue(map['type'] as String),
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDbSystemShapesArgs {
   /// The physical ID of the AZ, for example, use1-az4. This ID persists across accounts.
   final pulumi.Input<String>? availabilityZoneId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -19,29 +18,22 @@ class GetDbSystemShapesArgs {
   GetDbSystemShapesArgs({
     String? availabilityZoneId,
     String? region,
-  })  : availabilityZoneId =
-            pulumi.Input.asOptionalInput<String>(availabilityZoneId),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      availabilityZoneId = pulumi.Input.asOptionalInput<String>(availabilityZoneId),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final availabilityZoneIdValue = availabilityZoneId;
-    if (availabilityZoneIdValue != null) {
-      map['availabilityZoneId'] = availabilityZoneIdValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'availabilityZoneId': ?availabilityZoneId,
+      'region': ?region,
+    };
   }
 
   factory GetDbSystemShapesArgs.fromMap(Map<String, dynamic> map) {
     return GetDbSystemShapesArgs(
-      availabilityZoneId: map['availabilityZoneId'] == null
-          ? null
-          : map['availabilityZoneId'] as String,
+      availabilityZoneId: map['availabilityZoneId'] == null ? null : map['availabilityZoneId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

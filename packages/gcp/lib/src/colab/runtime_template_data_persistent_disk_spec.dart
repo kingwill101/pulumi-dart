@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RuntimeTemplateDataPersistentDiskSpec {
   /// The disk size of the runtime in GB. If specified, the diskType must also be specified. The minimum size is 10GB and the maximum is 65536GB.
   final String? diskSizeGb;
-
   /// The type of the persistent disk.
   final String? diskType;
 
@@ -16,24 +16,17 @@ class RuntimeTemplateDataPersistentDiskSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final diskSizeGbValue = diskSizeGb;
-    if (diskSizeGbValue != null) {
-      map['diskSizeGb'] = diskSizeGbValue;
-    }
-    final diskTypeValue = diskType;
-    if (diskTypeValue != null) {
-      map['diskType'] = diskTypeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'diskSizeGb': ?diskSizeGb,
+      'diskType': ?diskType,
+    };
   }
 
-  factory RuntimeTemplateDataPersistentDiskSpec.fromMap(
-      Map<String, dynamic> map) {
+  factory RuntimeTemplateDataPersistentDiskSpec.fromMap(Map<String, dynamic> map) {
     return RuntimeTemplateDataPersistentDiskSpec(
-      diskSizeGb:
-          map['diskSizeGb'] == null ? null : map['diskSizeGb'] as String,
+      diskSizeGb: map['diskSizeGb'] == null ? null : map['diskSizeGb'] as String,
       diskType: map['diskType'] == null ? null : map['diskType'] as String,
     );
   }
 }
+

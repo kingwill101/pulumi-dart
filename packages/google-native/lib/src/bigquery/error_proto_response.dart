@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ErrorProtoResponse {
   /// Debugging information. This property is internal to Google and should not be used.
   final String debugInfo;
-
   /// Specifies where the error occurred, if present.
   final String location;
-
   /// A human-readable description of the error.
   final String message;
-
   /// A short error code that summarizes the error.
   final String reason;
 
@@ -26,12 +24,12 @@ class ErrorProtoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['debugInfo'] = debugInfo;
-    map['location'] = location;
-    map['message'] = message;
-    map['reason'] = reason;
-    return map;
+    return <String, dynamic>{
+      'debugInfo': debugInfo,
+      'location': location,
+      'message': message,
+      'reason': reason,
+    };
   }
 
   factory ErrorProtoResponse.fromMap(Map<String, dynamic> map) {
@@ -43,3 +41,4 @@ class ErrorProtoResponse {
     );
   }
 }
+

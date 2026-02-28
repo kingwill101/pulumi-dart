@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WatchlistWatchlistUserPreferences {
   /// Optional. Whether the watchlist is pinned on the dashboard.
   final bool? pinned;
@@ -11,12 +12,9 @@ class WatchlistWatchlistUserPreferences {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final pinnedValue = pinned;
-    if (pinnedValue != null) {
-      map['pinned'] = pinnedValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'pinned': ?pinned,
+    };
   }
 
   factory WatchlistWatchlistUserPreferences.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class WatchlistWatchlistUserPreferences {
     );
   }
 }
+

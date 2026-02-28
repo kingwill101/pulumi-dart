@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AiTensorboardEncryptionSpec {
   /// The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
   /// Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
@@ -12,9 +13,9 @@ class AiTensorboardEncryptionSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kmsKeyName'] = kmsKeyName;
-    return map;
+    return <String, dynamic>{
+      'kmsKeyName': kmsKeyName,
+    };
   }
 
   factory AiTensorboardEncryptionSpec.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class AiTensorboardEncryptionSpec {
     );
   }
 }
+

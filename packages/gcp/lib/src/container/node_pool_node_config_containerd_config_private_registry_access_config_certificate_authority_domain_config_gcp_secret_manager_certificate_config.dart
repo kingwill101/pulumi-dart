@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig {
   /// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
   final String secretUri;
@@ -11,15 +12,15 @@ class NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAu
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['secretUri'] = secretUri;
-    return map;
+    return <String, dynamic>{
+      'secretUri': secretUri,
+    };
   }
 
-  factory NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig(
       secretUri: map['secretUri'] as String,
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EventTargetRetryPolicy {
   /// The age in seconds to continue to make retry attempts.
   final int? maximumEventAgeInSeconds;
-
   /// maximum number of retry attempts to make before the request fails
   final int? maximumRetryAttempts;
 
@@ -16,26 +16,17 @@ class EventTargetRetryPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final maximumEventAgeInSecondsValue = maximumEventAgeInSeconds;
-    if (maximumEventAgeInSecondsValue != null) {
-      map['maximumEventAgeInSeconds'] = maximumEventAgeInSecondsValue;
-    }
-    final maximumRetryAttemptsValue = maximumRetryAttempts;
-    if (maximumRetryAttemptsValue != null) {
-      map['maximumRetryAttempts'] = maximumRetryAttemptsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'maximumEventAgeInSeconds': ?maximumEventAgeInSeconds,
+      'maximumRetryAttempts': ?maximumRetryAttempts,
+    };
   }
 
   factory EventTargetRetryPolicy.fromMap(Map<String, dynamic> map) {
     return EventTargetRetryPolicy(
-      maximumEventAgeInSeconds: map['maximumEventAgeInSeconds'] == null
-          ? null
-          : map['maximumEventAgeInSeconds'] as int,
-      maximumRetryAttempts: map['maximumRetryAttempts'] == null
-          ? null
-          : map['maximumRetryAttempts'] as int,
+      maximumEventAgeInSeconds: map['maximumEventAgeInSeconds'] == null ? null : map['maximumEventAgeInSeconds'] as int,
+      maximumRetryAttempts: map['maximumRetryAttempts'] == null ? null : map['maximumRetryAttempts'] as int,
     );
   }
 }
+

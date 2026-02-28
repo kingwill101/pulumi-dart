@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ListenerRuleConditionQueryString {
   /// Query string key pattern to match.
   final String? key;
-
   /// Query string value pattern to match.
   final String value;
 
@@ -16,13 +16,10 @@ class ListenerRuleConditionQueryString {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final keyValue = key;
-    if (keyValue != null) {
-      map['key'] = keyValue;
-    }
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'key': ?key,
+      'value': value,
+    };
   }
 
   factory ListenerRuleConditionQueryString.fromMap(Map<String, dynamic> map) {
@@ -32,3 +29,4 @@ class ListenerRuleConditionQueryString {
     );
   }
 }
+

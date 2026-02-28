@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class KeyRegistrationKeyRegistration {
   /// Whether the key is set as the default key for encryption and decryption use.
   final bool? defaultKey;
-
   /// ARN of the AWS KMS key that is registered for encryption and decryption use.
   final String keyArn;
 
@@ -16,13 +16,10 @@ class KeyRegistrationKeyRegistration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final defaultKeyValue = defaultKey;
-    if (defaultKeyValue != null) {
-      map['defaultKey'] = defaultKeyValue;
-    }
-    map['keyArn'] = keyArn;
-    return map;
+    return <String, dynamic>{
+      'defaultKey': ?defaultKey,
+      'keyArn': keyArn,
+    };
   }
 
   factory KeyRegistrationKeyRegistration.fromMap(Map<String, dynamic> map) {
@@ -32,3 +29,4 @@ class KeyRegistrationKeyRegistration {
     );
   }
 }
+

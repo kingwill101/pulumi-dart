@@ -6,11 +6,8 @@ import 'google_cloud_dialogflow_v2beta1_speech_to_text_config_speech_model_varia
 class GoogleCloudDialogflowV2beta1SpeechToTextConfig {
   /// Which Speech model to select. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then a default model is used. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
   final String? model;
-
   /// The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced model variant is specified and an enhanced version of the specified model for the language does not exist, then it would emit an error.
-  final GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariant?
-      speechModelVariant;
-
+  final GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariant? speechModelVariant;
   /// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
   final bool? useTimeoutBasedEndpointing;
 
@@ -25,33 +22,19 @@ class GoogleCloudDialogflowV2beta1SpeechToTextConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final modelValue = model;
-    if (modelValue != null) {
-      map['model'] = modelValue;
-    }
-    final speechModelVariantValue = speechModelVariant;
-    if (speechModelVariantValue != null) {
-      map['speechModelVariant'] = speechModelVariantValue.value;
-    }
-    final useTimeoutBasedEndpointingValue = useTimeoutBasedEndpointing;
-    if (useTimeoutBasedEndpointingValue != null) {
-      map['useTimeoutBasedEndpointing'] = useTimeoutBasedEndpointingValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'model': ?model,
+      'speechModelVariant': ?speechModelVariant == null ? null : speechModelVariant!.value,
+      'useTimeoutBasedEndpointing': ?useTimeoutBasedEndpointing,
+    };
   }
 
-  factory GoogleCloudDialogflowV2beta1SpeechToTextConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1SpeechToTextConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1SpeechToTextConfig(
       model: map['model'] == null ? null : map['model'] as String,
-      speechModelVariant: map['speechModelVariant'] == null
-          ? null
-          : GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariant
-              .fromValue(map['speechModelVariant'] as String),
-      useTimeoutBasedEndpointing: map['useTimeoutBasedEndpointing'] == null
-          ? null
-          : map['useTimeoutBasedEndpointing'] as bool,
+      speechModelVariant: map['speechModelVariant'] == null ? null : GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariant.fromValue(map['speechModelVariant'] as String),
+      useTimeoutBasedEndpointing: map['useTimeoutBasedEndpointing'] == null ? null : map['useTimeoutBasedEndpointing'] as bool,
     );
   }
 }
+

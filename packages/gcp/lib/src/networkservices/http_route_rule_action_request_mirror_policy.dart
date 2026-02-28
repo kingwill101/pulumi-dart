@@ -14,21 +14,15 @@ class HttpRouteRuleActionRequestMirrorPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final destinationValue = destination;
-    if (destinationValue != null) {
-      map['destination'] = destinationValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'destination': ?destination == null ? null : destination!.toMap(),
+    };
   }
 
-  factory HttpRouteRuleActionRequestMirrorPolicy.fromMap(
-      Map<String, dynamic> map) {
+  factory HttpRouteRuleActionRequestMirrorPolicy.fromMap(Map<String, dynamic> map) {
     return HttpRouteRuleActionRequestMirrorPolicy(
-      destination: map['destination'] == null
-          ? null
-          : HttpRouteRuleActionRequestMirrorPolicyDestination.fromMap(
-              (map['destination'] as Map).cast<String, dynamic>()),
+      destination: map['destination'] == null ? null : HttpRouteRuleActionRequestMirrorPolicyDestination.fromMap((map['destination'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

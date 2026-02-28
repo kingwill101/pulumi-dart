@@ -508,14 +508,11 @@ import 'ssh_key_args.dart';
 class SshKey extends pulumi.CustomResource {
   /// The public key portion of an SSH key pair.
   late final pulumi.Output<String> body;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The Server ID of the Transfer Server (e.g., `s-12345678`)
   late final pulumi.Output<String> serverId;
   late final pulumi.Output<String> sshKeyId;
-
   /// The name of the user account that is assigned to one or more servers.
   late final pulumi.Output<String> userName;
 

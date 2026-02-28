@@ -6,7 +6,6 @@ class ConnectionEventingConfigAuthConfigUserPassword {
   /// Password for Authentication.
   /// Structure is documented below.
   final ConnectionEventingConfigAuthConfigUserPasswordPassword? password;
-
   /// Username for Authentication.
   final String? username;
 
@@ -19,26 +18,17 @@ class ConnectionEventingConfigAuthConfigUserPassword {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final passwordValue = password;
-    if (passwordValue != null) {
-      map['password'] = passwordValue.toMap();
-    }
-    final usernameValue = username;
-    if (usernameValue != null) {
-      map['username'] = usernameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'password': ?password == null ? null : password!.toMap(),
+      'username': ?username,
+    };
   }
 
-  factory ConnectionEventingConfigAuthConfigUserPassword.fromMap(
-      Map<String, dynamic> map) {
+  factory ConnectionEventingConfigAuthConfigUserPassword.fromMap(Map<String, dynamic> map) {
     return ConnectionEventingConfigAuthConfigUserPassword(
-      password: map['password'] == null
-          ? null
-          : ConnectionEventingConfigAuthConfigUserPasswordPassword.fromMap(
-              (map['password'] as Map).cast<String, dynamic>()),
+      password: map['password'] == null ? null : ConnectionEventingConfigAuthConfigUserPasswordPassword.fromMap((map['password'] as Map).cast<String, dynamic>()),
       username: map['username'] == null ? null : map['username'] as String,
     );
   }
 }
+

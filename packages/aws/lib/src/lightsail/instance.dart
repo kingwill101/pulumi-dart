@@ -419,63 +419,44 @@ import 'instance_args.dart';
 class Instance extends pulumi.CustomResource {
   /// Add-on configuration for the instance. See below.
   late final pulumi.Output<InstanceAddOn?> addOn;
-
   /// ARN of the Lightsail instance (matches `id`).
   late final pulumi.Output<String> arn;
-
   /// Availability Zone in which to create your instance. A list of available zones can be obtained using the AWS CLI command: [`aws lightsail get-regions --include-availability-zones`](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/lightsail/get-regions.html).
   late final pulumi.Output<String> availabilityZone;
-
   /// ID for a virtual private server image. A list of available blueprint IDs can be obtained using the AWS CLI command: [`aws lightsail get-blueprints`](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/lightsail/get-blueprints.html).
   late final pulumi.Output<String> blueprintId;
-
   /// Bundle of specification information. A list of available bundle IDs can be obtained using the AWS CLI command: [`aws lightsail get-bundles`](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/lightsail/get-bundles.html).
   late final pulumi.Output<String> bundleId;
-
   /// Number of vCPUs the instance has.
   late final pulumi.Output<int> cpuCount;
-
   /// Timestamp when the instance was created.
   late final pulumi.Output<String> createdAt;
-
   /// IP address type of the Lightsail Instance. Valid values: `dualstack`, `ipv4`, `ipv6`. Default: `dualstack`.
   late final pulumi.Output<String?> ipAddressType;
-
   /// List of IPv6 addresses for the Lightsail instance.
   late final pulumi.Output<List<String>> ipv6Addresses;
-
   /// Whether this instance has a static IP assigned to it.
   late final pulumi.Output<bool> isStaticIp;
-
   /// Name of your key pair. Created in the Lightsail console (cannot use `aws.ec2.KeyPair` at this time).
   late final pulumi.Output<String?> keyPairName;
-
   /// Name of the Lightsail Instance. Names must be unique within each AWS Region in your Lightsail account.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Private IP address of the instance.
   late final pulumi.Output<String> privateIpAddress;
-
   /// Public IP address of the instance.
   late final pulumi.Output<String> publicIpAddress;
-
   /// Amount of RAM in GB on the instance (e.g., 1.0).
   late final pulumi.Output<double> ramSize;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Single lined launch script as a string to configure server with additional user data.
   late final pulumi.Output<String?> userData;
-
   /// User name for connecting to the instance (e.g., ec2-user).
   late final pulumi.Output<String> username;
 

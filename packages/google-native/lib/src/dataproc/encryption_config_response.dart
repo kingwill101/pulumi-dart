@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Encryption settings for the cluster.
 class EncryptionConfigResponse {
   /// Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
   final String gcePdKmsKeyName;
-
   /// Optional. The Cloud KMS key name to use for encrypting customer core content in spanner and cluster PD disk for all instances in the cluster.
   final String kmsKey;
 
@@ -17,10 +17,10 @@ class EncryptionConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gcePdKmsKeyName'] = gcePdKmsKeyName;
-    map['kmsKey'] = kmsKey;
-    return map;
+    return <String, dynamic>{
+      'gcePdKmsKeyName': gcePdKmsKeyName,
+      'kmsKey': kmsKey,
+    };
   }
 
   factory EncryptionConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class EncryptionConfigResponse {
     );
   }
 }
+

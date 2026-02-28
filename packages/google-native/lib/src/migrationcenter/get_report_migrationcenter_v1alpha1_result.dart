@@ -6,25 +6,18 @@ import 'report_summary_response_migrationcenter_v1alpha1.dart';
 class GetReportMigrationcenterV1alpha1Result {
   /// Creation timestamp.
   final String createTime;
-
   /// Free-text description.
   final String description;
-
   /// User-friendly display name. Maximum length is 63 characters.
   final String displayName;
-
   /// Name of resource.
   final String name;
-
   /// Report creation state.
   final String state;
-
   /// Summary view of the Report.
   final ReportSummaryResponseMigrationcenterV1alpha1 summary;
-
   /// Report type.
   final String type;
-
   /// Last update timestamp.
   final String updateTime;
 
@@ -49,30 +42,29 @@ class GetReportMigrationcenterV1alpha1Result {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['description'] = description;
-    map['displayName'] = displayName;
-    map['name'] = name;
-    map['state'] = state;
-    map['summary'] = summary.toMap();
-    map['type'] = type;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'description': description,
+      'displayName': displayName,
+      'name': name,
+      'state': state,
+      'summary': summary.toMap(),
+      'type': type,
+      'updateTime': updateTime,
+    };
   }
 
-  factory GetReportMigrationcenterV1alpha1Result.fromMap(
-      Map<String, dynamic> map) {
+  factory GetReportMigrationcenterV1alpha1Result.fromMap(Map<String, dynamic> map) {
     return GetReportMigrationcenterV1alpha1Result(
       createTime: map['createTime'] as String,
       description: map['description'] as String,
       displayName: map['displayName'] as String,
       name: map['name'] as String,
       state: map['state'] as String,
-      summary: ReportSummaryResponseMigrationcenterV1alpha1.fromMap(
-          (map['summary'] as Map).cast<String, dynamic>()),
+      summary: ReportSummaryResponseMigrationcenterV1alpha1.fromMap((map['summary'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       updateTime: map['updateTime'] as String,
     );
   }
 }
+

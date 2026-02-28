@@ -16,14 +16,15 @@ class GetEnvironmentArgs {
   GetEnvironmentArgs({
     required String environmentId,
     required String organizationId,
-  })  : environmentId = pulumi.Input.asInput<String>(environmentId),
-        organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) :
+      environmentId = pulumi.Input.asInput<String>(environmentId),
+      organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['environmentId'] = environmentId;
-    map['organizationId'] = organizationId;
-    return map;
+    return <String, dynamic>{
+      'environmentId': environmentId,
+      'organizationId': organizationId,
+    };
   }
 
   factory GetEnvironmentArgs.fromMap(Map<String, dynamic> map) {
@@ -33,3 +34,4 @@ class GetEnvironmentArgs {
     );
   }
 }
+

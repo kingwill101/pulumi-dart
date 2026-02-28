@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class QueueHttpTargetUriOverrideQueryOverride {
   /// The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string.
   final String? queryParams;
@@ -11,19 +12,15 @@ class QueueHttpTargetUriOverrideQueryOverride {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final queryParamsValue = queryParams;
-    if (queryParamsValue != null) {
-      map['queryParams'] = queryParamsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'queryParams': ?queryParams,
+    };
   }
 
-  factory QueueHttpTargetUriOverrideQueryOverride.fromMap(
-      Map<String, dynamic> map) {
+  factory QueueHttpTargetUriOverrideQueryOverride.fromMap(Map<String, dynamic> map) {
     return QueueHttpTargetUriOverrideQueryOverride(
-      queryParams:
-          map['queryParams'] == null ? null : map['queryParams'] as String,
+      queryParams: map['queryParams'] == null ? null : map['queryParams'] as String,
     );
   }
 }
+

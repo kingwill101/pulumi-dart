@@ -241,19 +241,14 @@ import 'object_lambda_access_point_configuration.dart';
 class ObjectLambdaAccessPoint extends pulumi.CustomResource {
   /// The AWS account ID for the owner of the bucket for which you want to create an Object Lambda Access Point. Defaults to automatically determined account ID of the AWS provider.
   late final pulumi.Output<String> accountId;
-
   /// Alias for the S3 Object Lambda Access Point.
   late final pulumi.Output<String> alias;
-
   /// Amazon Resource Name (ARN) of the Object Lambda Access Point.
   late final pulumi.Output<String> arn;
-
   /// A configuration block containing details about the Object Lambda Access Point. See Configuration below for more details.
   late final pulumi.Output<ObjectLambdaAccessPointConfiguration> configuration;
-
   /// The name for this Object Lambda Access Point.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -274,8 +269,7 @@ class ObjectLambdaAccessPoint extends pulumi.CustomResource {
     this.accountId = registerOutput<String>('accountId');
     this.alias = registerOutput<String>('alias');
     this.arn = registerOutput<String>('arn');
-    this.configuration =
-        registerOutput<ObjectLambdaAccessPointConfiguration>('configuration');
+    this.configuration = registerOutput<ObjectLambdaAccessPointConfiguration>('configuration');
     this.name = registerOutput<String>('name');
     this.region = registerOutput<String>('region');
   }

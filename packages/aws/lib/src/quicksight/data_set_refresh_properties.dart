@@ -13,16 +13,15 @@ class DataSetRefreshProperties {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['refreshConfiguration'] = refreshConfiguration.toMap();
-    return map;
+    return <String, dynamic>{
+      'refreshConfiguration': refreshConfiguration.toMap(),
+    };
   }
 
   factory DataSetRefreshProperties.fromMap(Map<String, dynamic> map) {
     return DataSetRefreshProperties(
-      refreshConfiguration:
-          DataSetRefreshPropertiesRefreshConfiguration.fromMap(
-              (map['refreshConfiguration'] as Map).cast<String, dynamic>()),
+      refreshConfiguration: DataSetRefreshPropertiesRefreshConfiguration.fromMap((map['refreshConfiguration'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

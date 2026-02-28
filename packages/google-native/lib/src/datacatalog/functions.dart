@@ -215,8 +215,7 @@ Future<GetEntryGroupDatacatalogV1beta1Result> getEntryGroupDatacatalogV1beta1(
 /// Gets the access control policy for a resource. A `NOT_FOUND` error is returned if the resource does not exist. An empty policy is returned if the resource exists but does not have a policy set on it. Supported resources are: - Tag templates. - Entries. - Entry groups. Note, this method cannot be used to manage policies for BigQuery, Pub/Sub and any external Google Cloud Platform resources synced to Data Catalog. Callers must have following Google IAM permission - `datacatalog.tagTemplates.getIamPolicy` to get policies on tag templates. - `datacatalog.entries.getIamPolicy` to get policies on entries. - `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datacatalog_v1beta1_get_entry_group_iam_policy_datacatalog_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetEntryGroupIamPolicyDatacatalogV1beta1Result>
-    getEntryGroupIamPolicyDatacatalogV1beta1(
+Future<GetEntryGroupIamPolicyDatacatalogV1beta1Result> getEntryGroupIamPolicyDatacatalogV1beta1(
   GetEntryGroupIamPolicyDatacatalogV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -264,8 +263,7 @@ Future<GetTagTemplateDatacatalogV1beta1Result> getTagTemplateDatacatalogV1beta1(
 /// Gets the access control policy for a resource. A `NOT_FOUND` error is returned if the resource does not exist. An empty policy is returned if the resource exists but does not have a policy set on it. Supported resources are: - Tag templates. - Entries. - Entry groups. Note, this method cannot be used to manage policies for BigQuery, Pub/Sub and any external Google Cloud Platform resources synced to Data Catalog. Callers must have following Google IAM permission - `datacatalog.tagTemplates.getIamPolicy` to get policies on tag templates. - `datacatalog.entries.getIamPolicy` to get policies on entries. - `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datacatalog_v1beta1_get_tag_template_iam_policy_datacatalog_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTagTemplateIamPolicyDatacatalogV1beta1Result>
-    getTagTemplateIamPolicyDatacatalogV1beta1(
+Future<GetTagTemplateIamPolicyDatacatalogV1beta1Result> getTagTemplateIamPolicyDatacatalogV1beta1(
   GetTagTemplateIamPolicyDatacatalogV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -297,8 +295,7 @@ Future<GetTaxonomyDatacatalogV1beta1Result> getTaxonomyDatacatalogV1beta1(
 /// Gets the IAM policy for a taxonomy or a policy tag.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datacatalog_v1beta1_get_taxonomy_iam_policy_datacatalog_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTaxonomyIamPolicyDatacatalogV1beta1Result>
-    getTaxonomyIamPolicyDatacatalogV1beta1(
+Future<GetTaxonomyIamPolicyDatacatalogV1beta1Result> getTaxonomyIamPolicyDatacatalogV1beta1(
   GetTaxonomyIamPolicyDatacatalogV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -314,8 +311,7 @@ Future<GetTaxonomyIamPolicyDatacatalogV1beta1Result>
 /// Gets the IAM policy for a taxonomy or a policy tag.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datacatalog_v1beta1_get_taxonomy_policy_tag_iam_policy_datacatalog_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTaxonomyPolicyTagIamPolicyDatacatalogV1beta1Result>
-    getTaxonomyPolicyTagIamPolicyDatacatalogV1beta1(
+Future<GetTaxonomyPolicyTagIamPolicyDatacatalogV1beta1Result> getTaxonomyPolicyTagIamPolicyDatacatalogV1beta1(
   GetTaxonomyPolicyTagIamPolicyDatacatalogV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {

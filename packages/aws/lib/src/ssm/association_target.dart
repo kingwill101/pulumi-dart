@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AssociationTarget {
   /// Either `InstanceIds` or `tag:Tag Name` to specify an EC2 tag.
   final String key;
-
   /// User-defined criteria that maps to Key. A list of instance IDs or tag values.
   final List<String> values;
 
@@ -16,10 +16,10 @@ class AssociationTarget {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    map['values'] = values;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'values': values,
+    };
   }
 
   factory AssociationTarget.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class AssociationTarget {
     );
   }
 }
+

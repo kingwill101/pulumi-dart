@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Settings of integration with GitHub.
 class GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettingsResponse {
   /// The access token used to authenticate the access to the GitHub repository.
   final String accessToken;
-
   /// A list of branches configured to be used from Dialogflow.
   final List<String> branches;
-
   /// The unique repository display name for the GitHub repository.
   final String displayName;
-
   /// The GitHub repository URI related to the agent.
   final String repositoryUri;
-
   /// The branch of the GitHub repository tracked for this agent.
   final String trackingBranch;
 
@@ -32,17 +29,16 @@ class GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettingsRes
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accessToken'] = accessToken;
-    map['branches'] = branches;
-    map['displayName'] = displayName;
-    map['repositoryUri'] = repositoryUri;
-    map['trackingBranch'] = trackingBranch;
-    return map;
+    return <String, dynamic>{
+      'accessToken': accessToken,
+      'branches': branches,
+      'displayName': displayName,
+      'repositoryUri': repositoryUri,
+      'trackingBranch': trackingBranch,
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettingsResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettingsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettingsResponse(
       accessToken: map['accessToken'] as String,
       branches: (map['branches'] as List).cast<String>(),
@@ -52,3 +48,4 @@ class GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettingsRes
     );
   }
 }
+

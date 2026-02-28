@@ -19,19 +19,17 @@ class GetGatewayArgs {
     required String gatewayId,
     required String location,
     String? project,
-  })  : gatewayId = pulumi.Input.asInput<String>(gatewayId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      gatewayId = pulumi.Input.asInput<String>(gatewayId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gatewayId'] = gatewayId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'gatewayId': gatewayId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetGatewayArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetGatewayArgs {
     );
   }
 }
+

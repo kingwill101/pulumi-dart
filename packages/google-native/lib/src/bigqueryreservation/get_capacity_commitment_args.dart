@@ -19,20 +19,17 @@ class GetCapacityCommitmentArgs {
     required String capacityCommitmentId,
     required String location,
     String? project,
-  })  : capacityCommitmentId =
-            pulumi.Input.asInput<String>(capacityCommitmentId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      capacityCommitmentId = pulumi.Input.asInput<String>(capacityCommitmentId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['capacityCommitmentId'] = capacityCommitmentId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'capacityCommitmentId': capacityCommitmentId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetCapacityCommitmentArgs.fromMap(Map<String, dynamic> map) {
@@ -43,3 +40,4 @@ class GetCapacityCommitmentArgs {
     );
   }
 }
+

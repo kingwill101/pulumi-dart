@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTableTtl {
   final String attributeName;
   final bool enabled;
@@ -13,10 +14,10 @@ class GetTableTtl {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['attributeName'] = attributeName;
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'attributeName': attributeName,
+      'enabled': enabled,
+    };
   }
 
   factory GetTableTtl.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class GetTableTtl {
     );
   }
 }
+

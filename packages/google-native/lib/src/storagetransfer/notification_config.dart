@@ -8,10 +8,8 @@ import 'notification_config_payload_format.dart';
 class NotificationConfig {
   /// Event types for which a notification is desired. If empty, send notifications for all event types.
   final List<NotificationConfigEventTypesItem>? eventTypes;
-
   /// The desired format of the notification message payloads.
   final NotificationConfigPayloadFormat payloadFormat;
-
   /// The `Topic.name` of the Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format results in an INVALID_ARGUMENT error.
   final String pubsubTopic;
 
@@ -26,29 +24,19 @@ class NotificationConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final eventTypesValue = eventTypes;
-    if (eventTypesValue != null) {
-      map['eventTypes'] =
-          pulumi.Input.encodeList<NotificationConfigEventTypesItem, String>(
-              eventTypesValue, (value) => value.value);
-    }
-    map['payloadFormat'] = payloadFormat.value;
-    map['pubsubTopic'] = pubsubTopic;
-    return map;
+    return <String, dynamic>{
+      'eventTypes': ?eventTypes == null ? null : pulumi.Input.encodeList<NotificationConfigEventTypesItem, String>(eventTypes!, (value) => value.value),
+      'payloadFormat': payloadFormat.value,
+      'pubsubTopic': pubsubTopic,
+    };
   }
 
   factory NotificationConfig.fromMap(Map<String, dynamic> map) {
     return NotificationConfig(
-      eventTypes: map['eventTypes'] == null
-          ? null
-          : pulumi.Input.decodeList<NotificationConfigEventTypesItem>(
-              map['eventTypes'],
-              (value) =>
-                  NotificationConfigEventTypesItem.fromValue(value as String)),
-      payloadFormat: NotificationConfigPayloadFormat.fromValue(
-          map['payloadFormat'] as String),
+      eventTypes: map['eventTypes'] == null ? null : pulumi.Input.decodeList<NotificationConfigEventTypesItem>(map['eventTypes'], (value) => NotificationConfigEventTypesItem.fromValue(value as String)),
+      payloadFormat: NotificationConfigPayloadFormat.fromValue(map['payloadFormat'] as String),
       pubsubTopic: map['pubsubTopic'] as String,
     );
   }
 }
+

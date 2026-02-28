@@ -6,15 +6,11 @@ import 'google_cloud_integrations_v1alpha_event_parameter.dart';
 /// An assertion which will check for a condition over task execution status or an expression for task output variables Next available id: 5
 class GoogleCloudIntegrationsV1alphaAssertion {
   /// The type of assertion to perform.
-  final GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy?
-      assertionStrategy;
-
+  final GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy? assertionStrategy;
   /// Optional. Standard filter expression for ASSERT_CONDITION to succeed
   final String? condition;
-
   /// Optional. Key-value pair for ASSERT_EQUALS, ASSERT_NOT_EQUALS, ASSERT_CONTAINS to succeed
   final GoogleCloudIntegrationsV1alphaEventParameter? parameter;
-
   /// Number of times given task should be retried in case of ASSERT_FAILED_EXECUTION
   final int? retryCount;
 
@@ -31,39 +27,21 @@ class GoogleCloudIntegrationsV1alphaAssertion {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final assertionStrategyValue = assertionStrategy;
-    if (assertionStrategyValue != null) {
-      map['assertionStrategy'] = assertionStrategyValue.value;
-    }
-    final conditionValue = condition;
-    if (conditionValue != null) {
-      map['condition'] = conditionValue;
-    }
-    final parameterValue = parameter;
-    if (parameterValue != null) {
-      map['parameter'] = parameterValue.toMap();
-    }
-    final retryCountValue = retryCount;
-    if (retryCountValue != null) {
-      map['retryCount'] = retryCountValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'assertionStrategy': ?assertionStrategy == null ? null : assertionStrategy!.value,
+      'condition': ?condition,
+      'parameter': ?parameter == null ? null : parameter!.toMap(),
+      'retryCount': ?retryCount,
+    };
   }
 
-  factory GoogleCloudIntegrationsV1alphaAssertion.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaAssertion.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaAssertion(
-      assertionStrategy: map['assertionStrategy'] == null
-          ? null
-          : GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy.fromValue(
-              map['assertionStrategy'] as String),
+      assertionStrategy: map['assertionStrategy'] == null ? null : GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy.fromValue(map['assertionStrategy'] as String),
       condition: map['condition'] == null ? null : map['condition'] as String,
-      parameter: map['parameter'] == null
-          ? null
-          : GoogleCloudIntegrationsV1alphaEventParameter.fromMap(
-              (map['parameter'] as Map).cast<String, dynamic>()),
+      parameter: map['parameter'] == null ? null : GoogleCloudIntegrationsV1alphaEventParameter.fromMap((map['parameter'] as Map).cast<String, dynamic>()),
       retryCount: map['retryCount'] == null ? null : map['retryCount'] as int,
     );
   }
 }
+

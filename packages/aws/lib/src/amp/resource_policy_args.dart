@@ -12,14 +12,11 @@ class ResourcePolicyArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> policyDocument;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The revision ID of the current resource-based policy.
   final pulumi.Input<String>? revisionId;
   final pulumi.Input<ResourcePolicyTimeouts>? timeouts;
-
   /// The ID of the workspace to attach the resource-based policy to.
   final pulumi.Input<String> workspaceId;
 
@@ -35,45 +32,31 @@ class ResourcePolicyArgs {
     String? revisionId,
     ResourcePolicyTimeouts? timeouts,
     required String workspaceId,
-  })  : policyDocument = pulumi.Input.asInput<String>(policyDocument),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        revisionId = pulumi.Input.asOptionalInput<String>(revisionId),
-        timeouts =
-            pulumi.Input.asOptionalInput<ResourcePolicyTimeouts>(timeouts),
-        workspaceId = pulumi.Input.asInput<String>(workspaceId);
+  }) :
+      policyDocument = pulumi.Input.asInput<String>(policyDocument),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      revisionId = pulumi.Input.asOptionalInput<String>(revisionId),
+      timeouts = pulumi.Input.asOptionalInput<ResourcePolicyTimeouts>(timeouts),
+      workspaceId = pulumi.Input.asInput<String>(workspaceId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['policyDocument'] = policyDocument;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final revisionIdValue = revisionId;
-    if (revisionIdValue != null) {
-      map['revisionId'] = revisionIdValue;
-    }
-    final timeoutsValue = timeouts;
-    if (timeoutsValue != null) {
-      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
-          ResourcePolicyTimeouts,
-          Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
-    }
-    map['workspaceId'] = workspaceId;
-    return map;
+    return <String, dynamic>{
+      'policyDocument': policyDocument,
+      'region': ?region,
+      'revisionId': ?revisionId,
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<ResourcePolicyTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'workspaceId': workspaceId,
+    };
   }
 
   factory ResourcePolicyArgs.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyArgs(
       policyDocument: map['policyDocument'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      revisionId:
-          map['revisionId'] == null ? null : map['revisionId'] as String,
-      timeouts: map['timeouts'] == null
-          ? null
-          : ResourcePolicyTimeouts.fromMap(
-              (map['timeouts'] as Map).cast<String, dynamic>()),
+      revisionId: map['revisionId'] == null ? null : map['revisionId'] as String,
+      timeouts: map['timeouts'] == null ? null : ResourcePolicyTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
       workspaceId: map['workspaceId'] as String,
     );
   }
 }
+

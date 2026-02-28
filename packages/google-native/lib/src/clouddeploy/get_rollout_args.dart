@@ -25,23 +25,21 @@ class GetRolloutArgs {
     String? project,
     required String releaseId,
     required String rolloutId,
-  })  : deliveryPipelineId = pulumi.Input.asInput<String>(deliveryPipelineId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        releaseId = pulumi.Input.asInput<String>(releaseId),
-        rolloutId = pulumi.Input.asInput<String>(rolloutId);
+  }) :
+      deliveryPipelineId = pulumi.Input.asInput<String>(deliveryPipelineId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      releaseId = pulumi.Input.asInput<String>(releaseId),
+      rolloutId = pulumi.Input.asInput<String>(rolloutId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['deliveryPipelineId'] = deliveryPipelineId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['releaseId'] = releaseId;
-    map['rolloutId'] = rolloutId;
-    return map;
+    return <String, dynamic>{
+      'deliveryPipelineId': deliveryPipelineId,
+      'location': location,
+      'project': ?project,
+      'releaseId': releaseId,
+      'rolloutId': rolloutId,
+    };
   }
 
   factory GetRolloutArgs.fromMap(Map<String, dynamic> map) {
@@ -54,3 +52,4 @@ class GetRolloutArgs {
     );
   }
 }
+

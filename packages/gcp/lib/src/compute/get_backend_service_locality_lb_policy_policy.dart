@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetBackendServiceLocalityLbPolicyPolicy {
   /// The name of the Backend Service.
   ///
@@ -13,15 +14,15 @@ class GetBackendServiceLocalityLbPolicyPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory GetBackendServiceLocalityLbPolicyPolicy.fromMap(
-      Map<String, dynamic> map) {
+  factory GetBackendServiceLocalityLbPolicyPolicy.fromMap(Map<String, dynamic> map) {
     return GetBackendServiceLocalityLbPolicyPolicy(
       name: map['name'] as String,
     );
   }
 }
+

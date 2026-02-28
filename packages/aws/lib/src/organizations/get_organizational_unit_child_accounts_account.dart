@@ -1,27 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetOrganizationalUnitChildAccountsAccount {
   /// The Amazon Resource Name (ARN) of the account.
   final String arn;
-
   /// The email address associated with the AWS account.
   final String email;
-
   /// Parent identifier of the organizational units.
   final String id;
-
   /// Method by which the account joined the organization.
   final String joinedMethod;
-
   /// Date the account became a part of the organization.
   final String joinedTimestamp;
-
   /// The friendly name of the account.
   final String name;
-
   /// State of the account in the organization.
   final String state;
-
   /// (**Deprecated** use `state` instead) Status of the account in the organization.
   final String status;
 
@@ -46,20 +40,19 @@ class GetOrganizationalUnitChildAccountsAccount {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['email'] = email;
-    map['id'] = id;
-    map['joinedMethod'] = joinedMethod;
-    map['joinedTimestamp'] = joinedTimestamp;
-    map['name'] = name;
-    map['state'] = state;
-    map['status'] = status;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'email': email,
+      'id': id,
+      'joinedMethod': joinedMethod,
+      'joinedTimestamp': joinedTimestamp,
+      'name': name,
+      'state': state,
+      'status': status,
+    };
   }
 
-  factory GetOrganizationalUnitChildAccountsAccount.fromMap(
-      Map<String, dynamic> map) {
+  factory GetOrganizationalUnitChildAccountsAccount.fromMap(Map<String, dynamic> map) {
     return GetOrganizationalUnitChildAccountsAccount(
       arn: map['arn'] as String,
       email: map['email'] as String,
@@ -72,3 +65,4 @@ class GetOrganizationalUnitChildAccountsAccount {
     );
   }
 }
+

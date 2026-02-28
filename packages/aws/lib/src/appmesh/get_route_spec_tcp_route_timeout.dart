@@ -13,18 +13,15 @@ class GetRouteSpecTcpRouteTimeout {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['idles'] = pulumi.Input.encodeList<GetRouteSpecTcpRouteTimeoutIdle,
-        Map<String, dynamic>>(idles, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'idles': pulumi.Input.encodeList<GetRouteSpecTcpRouteTimeoutIdle, Map<String, dynamic>>(idles, (value) => value.toMap()),
+    };
   }
 
   factory GetRouteSpecTcpRouteTimeout.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecTcpRouteTimeout(
-      idles: pulumi.Input.decodeList<GetRouteSpecTcpRouteTimeoutIdle>(
-          map['idles'],
-          (value) => GetRouteSpecTcpRouteTimeoutIdle.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      idles: pulumi.Input.decodeList<GetRouteSpecTcpRouteTimeoutIdle>(map['idles'], (value) => GetRouteSpecTcpRouteTimeoutIdle.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

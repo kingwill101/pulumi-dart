@@ -14,21 +14,15 @@ class GooglePrivacyDlpV2ReplaceDictionaryConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final wordListValue = wordList;
-    if (wordListValue != null) {
-      map['wordList'] = wordListValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'wordList': ?wordList == null ? null : wordList!.toMap(),
+    };
   }
 
-  factory GooglePrivacyDlpV2ReplaceDictionaryConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2ReplaceDictionaryConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2ReplaceDictionaryConfig(
-      wordList: map['wordList'] == null
-          ? null
-          : GooglePrivacyDlpV2WordList.fromMap(
-              (map['wordList'] as Map).cast<String, dynamic>()),
+      wordList: map['wordList'] == null ? null : GooglePrivacyDlpV2WordList.fromMap((map['wordList'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

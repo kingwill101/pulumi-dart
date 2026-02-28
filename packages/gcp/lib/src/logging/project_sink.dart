@@ -17,16 +17,13 @@ import 'project_sink_exclusion.dart';
 class ProjectSink extends pulumi.CustomResource {
   /// Options that affect sinks exporting data to BigQuery. Structure documented below.
   late final pulumi.Output<ProjectSinkBigqueryOptions> bigqueryOptions;
-
   /// A user managed service account that will be used to write
   /// the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
   /// routing logs to a destination outside this sink's project. If not specified, a Logging service account
   /// will automatically be generated.
   late final pulumi.Output<String?> customWriterIdentity;
-
   /// A description of this sink. The maximum length of the description is 8000 characters.
   late final pulumi.Output<String?> description;
-
   /// The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
   ///
   /// - `storage.googleapis.com/[GCS_BUCKET]`
@@ -37,30 +34,23 @@ class ProjectSink extends pulumi.CustomResource {
   ///
   /// The writer associated with the sink must have access to write to the above resource.
   late final pulumi.Output<String> destination;
-
   /// If set to True, then this sink is disabled and it does not export any log entries.
   late final pulumi.Output<bool?> disabled;
-
   /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
   late final pulumi.Output<List<ProjectSinkExclusion>?> exclusions;
-
   /// The filter to apply when exporting logs. Only log entries that match the filter are exported.
   /// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
   /// write a filter.
   late final pulumi.Output<String?> filter;
-
   /// The name of the logging sink. Logging automatically creates two sinks: `_Required` and `_Default`.
   late final pulumi.Output<String> name;
-
   /// The ID of the project to create the sink in. If omitted, the project associated with the provider is
   /// used.
   late final pulumi.Output<String> project;
-
   /// Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
   /// then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
   /// `bigquery_options`, you must set `unique_writer_identity` to true.
   late final pulumi.Output<bool?> uniqueWriterIdentity;
-
   /// The identity associated with this sink. This identity must be granted write access to the
   /// configured `destination`.
   late final pulumi.Output<String> writerIdentity;
@@ -79,8 +69,7 @@ class ProjectSink extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.bigqueryOptions =
-        registerOutput<ProjectSinkBigqueryOptions>('bigqueryOptions');
+    this.bigqueryOptions = registerOutput<ProjectSinkBigqueryOptions>('bigqueryOptions');
     this.customWriterIdentity = registerOutput<String?>('customWriterIdentity');
     this.description = registerOutput<String?>('description');
     this.destination = registerOutput<String>('destination');

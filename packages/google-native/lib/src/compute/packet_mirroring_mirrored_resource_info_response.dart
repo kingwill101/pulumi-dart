@@ -7,10 +7,8 @@ import 'packet_mirroring_mirrored_resource_info_subnet_info_response.dart';
 class PacketMirroringMirroredResourceInfoResponse {
   /// A set of virtual machine instances that are being mirrored. They must live in zones contained in the same region as this packetMirroring. Note that this config will apply only to those network interfaces of the Instances that belong to the network specified in this packetMirroring. You may specify a maximum of 50 Instances.
   final List<PacketMirroringMirroredResourceInfoInstanceInfoResponse> instances;
-
   /// A set of subnetworks for which traffic from/to all VM instances will be mirrored. They must live in the same region as this packetMirroring. You may specify a maximum of 5 subnetworks.
   final List<PacketMirroringMirroredResourceInfoSubnetInfoResponse> subnetworks;
-
   /// A set of mirrored tags. Traffic from/to all VM instances that have one or more of these tags will be mirrored.
   final List<String> tags;
 
@@ -25,33 +23,19 @@ class PacketMirroringMirroredResourceInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['instances'] = pulumi.Input.encodeList<
-        PacketMirroringMirroredResourceInfoInstanceInfoResponse,
-        Map<String, dynamic>>(instances, (value) => value.toMap());
-    map['subnetworks'] = pulumi.Input.encodeList<
-        PacketMirroringMirroredResourceInfoSubnetInfoResponse,
-        Map<String, dynamic>>(subnetworks, (value) => value.toMap());
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'instances': pulumi.Input.encodeList<PacketMirroringMirroredResourceInfoInstanceInfoResponse, Map<String, dynamic>>(instances, (value) => value.toMap()),
+      'subnetworks': pulumi.Input.encodeList<PacketMirroringMirroredResourceInfoSubnetInfoResponse, Map<String, dynamic>>(subnetworks, (value) => value.toMap()),
+      'tags': tags,
+    };
   }
 
-  factory PacketMirroringMirroredResourceInfoResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory PacketMirroringMirroredResourceInfoResponse.fromMap(Map<String, dynamic> map) {
     return PacketMirroringMirroredResourceInfoResponse(
-      instances: pulumi.Input.decodeList<
-              PacketMirroringMirroredResourceInfoInstanceInfoResponse>(
-          map['instances'],
-          (value) =>
-              PacketMirroringMirroredResourceInfoInstanceInfoResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      subnetworks: pulumi.Input.decodeList<
-              PacketMirroringMirroredResourceInfoSubnetInfoResponse>(
-          map['subnetworks'],
-          (value) =>
-              PacketMirroringMirroredResourceInfoSubnetInfoResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      instances: pulumi.Input.decodeList<PacketMirroringMirroredResourceInfoInstanceInfoResponse>(map['instances'], (value) => PacketMirroringMirroredResourceInfoInstanceInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
+      subnetworks: pulumi.Input.decodeList<PacketMirroringMirroredResourceInfoSubnetInfoResponse>(map['subnetworks'], (value) => PacketMirroringMirroredResourceInfoSubnetInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
       tags: (map['tags'] as List).cast<String>(),
     );
   }
 }
+

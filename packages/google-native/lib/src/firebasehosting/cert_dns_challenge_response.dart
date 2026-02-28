@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents a DNS certificate challenge.
 class CertDnsChallengeResponse {
   /// The domain name upon which the DNS challenge must be satisfied.
   final String domainName;
-
   /// The value that must be present as a TXT record on the domain name to satisfy the challenge.
   final String token;
 
@@ -17,10 +17,10 @@ class CertDnsChallengeResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['domainName'] = domainName;
-    map['token'] = token;
-    return map;
+    return <String, dynamic>{
+      'domainName': domainName,
+      'token': token,
+    };
   }
 
   factory CertDnsChallengeResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class CertDnsChallengeResponse {
     );
   }
 }
+

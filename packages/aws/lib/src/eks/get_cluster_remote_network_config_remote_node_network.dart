@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterRemoteNetworkConfigRemoteNodeNetwork {
   /// List of network CIDRs that can contain pods that run Kubernetes webhooks on hybrid nodes.
   final List<String> cidrs;
@@ -11,15 +12,15 @@ class GetClusterRemoteNetworkConfigRemoteNodeNetwork {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cidrs'] = cidrs;
-    return map;
+    return <String, dynamic>{
+      'cidrs': cidrs,
+    };
   }
 
-  factory GetClusterRemoteNetworkConfigRemoteNodeNetwork.fromMap(
-      Map<String, dynamic> map) {
+  factory GetClusterRemoteNetworkConfigRemoteNodeNetwork.fromMap(Map<String, dynamic> map) {
     return GetClusterRemoteNetworkConfigRemoteNodeNetwork(
       cidrs: (map['cidrs'] as List).cast<String>(),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConfigurationSetEventDestinationEventDestinationPinpointDestination {
   final String applicationArn;
 
@@ -10,15 +11,15 @@ class ConfigurationSetEventDestinationEventDestinationPinpointDestination {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['applicationArn'] = applicationArn;
-    return map;
+    return <String, dynamic>{
+      'applicationArn': applicationArn,
+    };
   }
 
-  factory ConfigurationSetEventDestinationEventDestinationPinpointDestination.fromMap(
-      Map<String, dynamic> map) {
+  factory ConfigurationSetEventDestinationEventDestinationPinpointDestination.fromMap(Map<String, dynamic> map) {
     return ConfigurationSetEventDestinationEventDestinationPinpointDestination(
       applicationArn: map['applicationArn'] as String,
     );
   }
 }
+

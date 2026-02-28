@@ -32,3 +32,4 @@ enum FieldKind {
     throw ArgumentError('Unknown FieldKind value: $value');
   }
 }
+

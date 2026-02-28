@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDevEnvironmentPersistentStorage {
   final int size;
 
@@ -10,9 +11,9 @@ class GetDevEnvironmentPersistentStorage {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['size'] = size;
-    return map;
+    return <String, dynamic>{
+      'size': size,
+    };
   }
 
   factory GetDevEnvironmentPersistentStorage.fromMap(Map<String, dynamic> map) {
@@ -21,3 +22,4 @@ class GetDevEnvironmentPersistentStorage {
     );
   }
 }
+

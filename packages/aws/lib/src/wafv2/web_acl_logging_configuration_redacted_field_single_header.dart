@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WebAclLoggingConfigurationRedactedFieldSingleHeader {
   /// Name of the query header to redact. This setting must be provided in lowercase characters.
   final String name;
@@ -11,15 +12,15 @@ class WebAclLoggingConfigurationRedactedFieldSingleHeader {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory WebAclLoggingConfigurationRedactedFieldSingleHeader.fromMap(
-      Map<String, dynamic> map) {
+  factory WebAclLoggingConfigurationRedactedFieldSingleHeader.fromMap(Map<String, dynamic> map) {
     return WebAclLoggingConfigurationRedactedFieldSingleHeader(
       name: map['name'] as String,
     );
   }
 }
+

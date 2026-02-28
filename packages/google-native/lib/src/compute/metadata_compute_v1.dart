@@ -15,23 +15,15 @@ class MetadataComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final itemsValue = items;
-    if (itemsValue != null) {
-      map['items'] = pulumi.Input.encodeList<MetadataItemsItemComputeV1,
-          Map<String, dynamic>>(itemsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'items': ?items == null ? null : pulumi.Input.encodeList<MetadataItemsItemComputeV1, Map<String, dynamic>>(items!, (value) => value.toMap()),
+    };
   }
 
   factory MetadataComputeV1.fromMap(Map<String, dynamic> map) {
     return MetadataComputeV1(
-      items: map['items'] == null
-          ? null
-          : pulumi.Input.decodeList<MetadataItemsItemComputeV1>(
-              map['items'],
-              (value) => MetadataItemsItemComputeV1.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      items: map['items'] == null ? null : pulumi.Input.decodeList<MetadataItemsItemComputeV1>(map['items'], (value) => MetadataItemsItemComputeV1.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

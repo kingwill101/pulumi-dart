@@ -5,10 +5,8 @@ import 'multiplex_program_multiplex_program_settings_video_settings_statmux_sett
 class MultiplexProgramMultiplexProgramSettingsVideoSettings {
   /// Constant bitrate value.
   final int? constantBitrate;
-
   /// Statmux settings. See Statmux Settings for more details.
-  final MultiplexProgramMultiplexProgramSettingsVideoSettingsStatmuxSettings?
-      statmuxSettings;
+  final MultiplexProgramMultiplexProgramSettingsVideoSettingsStatmuxSettings? statmuxSettings;
 
   /// Creates a new [MultiplexProgramMultiplexProgramSettingsVideoSettings].
   /// [constantBitrate] Constant bitrate value.
@@ -19,27 +17,17 @@ class MultiplexProgramMultiplexProgramSettingsVideoSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final constantBitrateValue = constantBitrate;
-    if (constantBitrateValue != null) {
-      map['constantBitrate'] = constantBitrateValue;
-    }
-    final statmuxSettingsValue = statmuxSettings;
-    if (statmuxSettingsValue != null) {
-      map['statmuxSettings'] = statmuxSettingsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'constantBitrate': ?constantBitrate,
+      'statmuxSettings': ?statmuxSettings == null ? null : statmuxSettings!.toMap(),
+    };
   }
 
-  factory MultiplexProgramMultiplexProgramSettingsVideoSettings.fromMap(
-      Map<String, dynamic> map) {
+  factory MultiplexProgramMultiplexProgramSettingsVideoSettings.fromMap(Map<String, dynamic> map) {
     return MultiplexProgramMultiplexProgramSettingsVideoSettings(
-      constantBitrate:
-          map['constantBitrate'] == null ? null : map['constantBitrate'] as int,
-      statmuxSettings: map['statmuxSettings'] == null
-          ? null
-          : MultiplexProgramMultiplexProgramSettingsVideoSettingsStatmuxSettings
-              .fromMap((map['statmuxSettings'] as Map).cast<String, dynamic>()),
+      constantBitrate: map['constantBitrate'] == null ? null : map['constantBitrate'] as int,
+      statmuxSettings: map['statmuxSettings'] == null ? null : MultiplexProgramMultiplexProgramSettingsVideoSettingsStatmuxSettings.fromMap((map['statmuxSettings'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

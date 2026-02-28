@@ -218,31 +218,22 @@ import 'distribution_configuration_distribution.dart';
 class DistributionConfiguration extends pulumi.CustomResource {
   /// (Required) Amazon Resource Name (ARN) of the distribution configuration.
   late final pulumi.Output<String> arn;
-
   /// Date the distribution configuration was created.
   late final pulumi.Output<String> dateCreated;
-
   /// Date the distribution configuration was updated.
   late final pulumi.Output<String> dateUpdated;
-
   /// Description of the distribution configuration.
   late final pulumi.Output<String?> description;
-
   /// One or more configuration blocks with distribution settings. Detailed below.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<List<DistributionConfigurationDistribution>>
-      distributions;
-
+  late final pulumi.Output<List<DistributionConfigurationDistribution>> distributions;
   /// Name of the distribution configuration.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value map of resource tags for the distribution configuration. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -264,9 +255,7 @@ class DistributionConfiguration extends pulumi.CustomResource {
     this.dateCreated = registerOutput<String>('dateCreated');
     this.dateUpdated = registerOutput<String>('dateUpdated');
     this.description = registerOutput<String?>('description');
-    this.distributions =
-        registerOutput<List<DistributionConfigurationDistribution>>(
-            'distributions');
+    this.distributions = registerOutput<List<DistributionConfigurationDistribution>>('distributions');
     this.name = registerOutput<String>('name');
     this.region = registerOutput<String>('region');
     this.tags = registerOutput<Map<String, String>?>('tags');

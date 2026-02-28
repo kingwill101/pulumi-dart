@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDeviceAwsLocation {
   /// ARN of the subnet that the device is located in.
   final String subnetArn;
-
   /// Zone that the device is located in.
   final String zone;
 
@@ -16,10 +16,10 @@ class GetDeviceAwsLocation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['subnetArn'] = subnetArn;
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'subnetArn': subnetArn,
+      'zone': zone,
+    };
   }
 
   factory GetDeviceAwsLocation.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetDeviceAwsLocation {
     );
   }
 }
+

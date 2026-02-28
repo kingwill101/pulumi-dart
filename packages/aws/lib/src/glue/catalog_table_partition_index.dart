@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CatalogTablePartitionIndex {
   /// Name of the partition index.
   final String indexName;
   final String? indexStatus;
-
   /// Keys for the partition index.
   final List<String> keys;
 
@@ -19,22 +19,19 @@ class CatalogTablePartitionIndex {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['indexName'] = indexName;
-    final indexStatusValue = indexStatus;
-    if (indexStatusValue != null) {
-      map['indexStatus'] = indexStatusValue;
-    }
-    map['keys'] = keys;
-    return map;
+    return <String, dynamic>{
+      'indexName': indexName,
+      'indexStatus': ?indexStatus,
+      'keys': keys,
+    };
   }
 
   factory CatalogTablePartitionIndex.fromMap(Map<String, dynamic> map) {
     return CatalogTablePartitionIndex(
       indexName: map['indexName'] as String,
-      indexStatus:
-          map['indexStatus'] == null ? null : map['indexStatus'] as String,
+      indexStatus: map['indexStatus'] == null ? null : map['indexStatus'] as String,
       keys: (map['keys'] as List).cast<String>(),
     );
   }
 }
+

@@ -14,21 +14,15 @@ class GoogleCloudHealthcareV1DicomStreamConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final bigqueryDestinationValue = bigqueryDestination;
-    if (bigqueryDestinationValue != null) {
-      map['bigqueryDestination'] = bigqueryDestinationValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'bigqueryDestination': ?bigqueryDestination == null ? null : bigqueryDestination!.toMap(),
+    };
   }
 
-  factory GoogleCloudHealthcareV1DicomStreamConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudHealthcareV1DicomStreamConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudHealthcareV1DicomStreamConfig(
-      bigqueryDestination: map['bigqueryDestination'] == null
-          ? null
-          : GoogleCloudHealthcareV1DicomBigQueryDestination.fromMap(
-              (map['bigqueryDestination'] as Map).cast<String, dynamic>()),
+      bigqueryDestination: map['bigqueryDestination'] == null ? null : GoogleCloudHealthcareV1DicomBigQueryDestination.fromMap((map['bigqueryDestination'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

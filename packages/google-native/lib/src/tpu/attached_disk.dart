@@ -6,7 +6,6 @@ import 'attached_disk_mode.dart';
 class AttachedDisk {
   /// The mode in which to attach this disk. If not specified, the default is READ_WRITE mode. Only applicable to data_disks.
   final AttachedDiskMode? mode;
-
   /// Specifies the full path to an existing disk. For example: "projects/my-project/zones/us-central1-c/disks/my-disk".
   final String? sourceDisk;
 
@@ -19,25 +18,17 @@ class AttachedDisk {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final modeValue = mode;
-    if (modeValue != null) {
-      map['mode'] = modeValue.value;
-    }
-    final sourceDiskValue = sourceDisk;
-    if (sourceDiskValue != null) {
-      map['sourceDisk'] = sourceDiskValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'mode': ?mode == null ? null : mode!.value,
+      'sourceDisk': ?sourceDisk,
+    };
   }
 
   factory AttachedDisk.fromMap(Map<String, dynamic> map) {
     return AttachedDisk(
-      mode: map['mode'] == null
-          ? null
-          : AttachedDiskMode.fromValue(map['mode'] as String),
-      sourceDisk:
-          map['sourceDisk'] == null ? null : map['sourceDisk'] as String,
+      mode: map['mode'] == null ? null : AttachedDiskMode.fromValue(map['mode'] as String),
+      sourceDisk: map['sourceDisk'] == null ? null : map['sourceDisk'] as String,
     );
   }
 }
+

@@ -352,7 +352,6 @@ import 'role_policy_attachment_args.dart';
 class RolePolicyAttachment extends pulumi.CustomResource {
   /// The ARN of the policy you want to apply
   late final pulumi.Output<String> policyArn;
-
   /// The name of the IAM role to which the policy should be applied
   late final pulumi.Output<String> role;
 

@@ -4,8 +4,7 @@ import 'agentcore_gateway_authorizer_configuration_custom_jwt_authorizer.dart';
 
 class AgentcoreGatewayAuthorizerConfiguration {
   /// JWT-based authorization configuration block. See `custom_jwt_authorizer` below.
-  final AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizer?
-      customJwtAuthorizer;
+  final AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizer? customJwtAuthorizer;
 
   /// Creates a new [AgentcoreGatewayAuthorizerConfiguration].
   /// [customJwtAuthorizer] JWT-based authorization configuration block. See `custom_jwt_authorizer` below.
@@ -14,21 +13,15 @@ class AgentcoreGatewayAuthorizerConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final customJwtAuthorizerValue = customJwtAuthorizer;
-    if (customJwtAuthorizerValue != null) {
-      map['customJwtAuthorizer'] = customJwtAuthorizerValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'customJwtAuthorizer': ?customJwtAuthorizer == null ? null : customJwtAuthorizer!.toMap(),
+    };
   }
 
-  factory AgentcoreGatewayAuthorizerConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentcoreGatewayAuthorizerConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayAuthorizerConfiguration(
-      customJwtAuthorizer: map['customJwtAuthorizer'] == null
-          ? null
-          : AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizer.fromMap(
-              (map['customJwtAuthorizer'] as Map).cast<String, dynamic>()),
+      customJwtAuthorizer: map['customJwtAuthorizer'] == null ? null : AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizer.fromMap((map['customJwtAuthorizer'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

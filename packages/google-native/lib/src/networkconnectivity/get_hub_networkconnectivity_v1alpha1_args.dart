@@ -16,24 +16,22 @@ class GetHubNetworkconnectivityV1alpha1Args {
   GetHubNetworkconnectivityV1alpha1Args({
     required String hubId,
     String? project,
-  })  : hubId = pulumi.Input.asInput<String>(hubId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      hubId = pulumi.Input.asInput<String>(hubId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['hubId'] = hubId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'hubId': hubId,
+      'project': ?project,
+    };
   }
 
-  factory GetHubNetworkconnectivityV1alpha1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetHubNetworkconnectivityV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return GetHubNetworkconnectivityV1alpha1Args(
       hubId: map['hubId'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

@@ -7,15 +7,11 @@ class SynonymSet extends pulumi.CustomResource {
   /// This is a freeform field. Example contexts can be "sales," "engineering," "real estate," "accounting," etc. The context can be supplied during search requests.
   late final pulumi.Output<String> context;
   late final pulumi.Output<String> location;
-
   /// The resource name of the SynonymSet This is mandatory for google.api.resource. Format: projects/{project_number}/locations/{location}/synonymSets/{context}.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// List of Synonyms for the context.
-  late final pulumi
-      .Output<List<GoogleCloudContentwarehouseV1SynonymSetSynonymResponse>>
-      synonyms;
+  late final pulumi.Output<List<GoogleCloudContentwarehouseV1SynonymSetSynonymResponse>> synonyms;
 
   /// Creates a new [SynonymSet].
   /// [name] The Pulumi resource name.
@@ -35,8 +31,6 @@ class SynonymSet extends pulumi.CustomResource {
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
-    this.synonyms = registerOutput<
-            List<GoogleCloudContentwarehouseV1SynonymSetSynonymResponse>>(
-        'synonyms');
+    this.synonyms = registerOutput<List<GoogleCloudContentwarehouseV1SynonymSetSynonymResponse>>('synonyms');
   }
 }

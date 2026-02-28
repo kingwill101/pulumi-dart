@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents the natural language text to be processed.
 class GoogleCloudDialogflowCxV3TextInput {
   /// The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
@@ -12,9 +13,9 @@ class GoogleCloudDialogflowCxV3TextInput {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['text'] = text;
-    return map;
+    return <String, dynamic>{
+      'text': text,
+    };
   }
 
   factory GoogleCloudDialogflowCxV3TextInput.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class GoogleCloudDialogflowCxV3TextInput {
     );
   }
 }
+

@@ -14,16 +14,15 @@ class GlossaryInputConfigResponseTranslateV3beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gcsSource'] = gcsSource.toMap();
-    return map;
+    return <String, dynamic>{
+      'gcsSource': gcsSource.toMap(),
+    };
   }
 
-  factory GlossaryInputConfigResponseTranslateV3beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory GlossaryInputConfigResponseTranslateV3beta1.fromMap(Map<String, dynamic> map) {
     return GlossaryInputConfigResponseTranslateV3beta1(
-      gcsSource: GcsSourceResponseTranslateV3beta1.fromMap(
-          (map['gcsSource'] as Map).cast<String, dynamic>()),
+      gcsSource: GcsSourceResponseTranslateV3beta1.fromMap((map['gcsSource'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

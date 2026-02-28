@@ -6,10 +6,8 @@ import 'google_type_money.dart';
 class GoogleCloudApigeeV1RateRange {
   /// Ending value of the range. Set to 0 or `null` for the last range of values.
   final String? end;
-
   /// Fee to charge when total number of API calls falls within this range.
   final GoogleTypeMoney? fee;
-
   /// Starting value of the range. Set to 0 or `null` for the initial range of values.
   final String? start;
 
@@ -24,30 +22,19 @@ class GoogleCloudApigeeV1RateRange {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final endValue = end;
-    if (endValue != null) {
-      map['end'] = endValue;
-    }
-    final feeValue = fee;
-    if (feeValue != null) {
-      map['fee'] = feeValue.toMap();
-    }
-    final startValue = start;
-    if (startValue != null) {
-      map['start'] = startValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'end': ?end,
+      'fee': ?fee == null ? null : fee!.toMap(),
+      'start': ?start,
+    };
   }
 
   factory GoogleCloudApigeeV1RateRange.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1RateRange(
       end: map['end'] == null ? null : map['end'] as String,
-      fee: map['fee'] == null
-          ? null
-          : GoogleTypeMoney.fromMap(
-              (map['fee'] as Map).cast<String, dynamic>()),
+      fee: map['fee'] == null ? null : GoogleTypeMoney.fromMap((map['fee'] as Map).cast<String, dynamic>()),
       start: map['start'] == null ? null : map['start'] as String,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MulticastGroupRangeLogConfig {
   /// Whether to enable logging or not.
   final bool? enabled;
@@ -11,12 +12,9 @@ class MulticastGroupRangeLogConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory MulticastGroupRangeLogConfig.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class MulticastGroupRangeLogConfig {
     );
   }
 }
+

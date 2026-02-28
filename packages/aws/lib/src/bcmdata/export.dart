@@ -356,10 +356,8 @@ class Export extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) for this export.
   /// * `export[0].export_arn` - Amazon Resource Name (ARN) for this export.
   late final pulumi.Output<String> arn;
-
   /// The details of the export, including data query, name, description, and destination configuration.  See the `export` argument reference below.
   late final pulumi.Output<ExportExport?> export;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;

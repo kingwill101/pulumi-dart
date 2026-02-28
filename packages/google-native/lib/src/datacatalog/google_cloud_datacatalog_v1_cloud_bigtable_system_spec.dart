@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Specification that applies to all entries that are part of `CLOUD_BIGTABLE` system (user_specified_type)
 class GoogleCloudDatacatalogV1CloudBigtableSystemSpec {
   /// Display name of the Instance. This is user specified and different from the resource name.
@@ -12,20 +13,15 @@ class GoogleCloudDatacatalogV1CloudBigtableSystemSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final instanceDisplayNameValue = instanceDisplayName;
-    if (instanceDisplayNameValue != null) {
-      map['instanceDisplayName'] = instanceDisplayNameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'instanceDisplayName': ?instanceDisplayName,
+    };
   }
 
-  factory GoogleCloudDatacatalogV1CloudBigtableSystemSpec.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1CloudBigtableSystemSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1CloudBigtableSystemSpec(
-      instanceDisplayName: map['instanceDisplayName'] == null
-          ? null
-          : map['instanceDisplayName'] as String,
+      instanceDisplayName: map['instanceDisplayName'] == null ? null : map['instanceDisplayName'] as String,
     );
   }
 }
+

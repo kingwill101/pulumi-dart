@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A postdeploy Job.
 class PostdeployJobResponse {
   /// The custom actions that the postdeploy Job executes.
@@ -12,9 +13,9 @@ class PostdeployJobResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['actions'] = actions;
-    return map;
+    return <String, dynamic>{
+      'actions': actions,
+    };
   }
 
   factory PostdeployJobResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class PostdeployJobResponse {
     );
   }
 }
+

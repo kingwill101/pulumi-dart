@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configurations of the API Security add-on.
 class GoogleCloudApigeeV1ApiSecurityConfig {
   /// Flag that specifies whether the API security add-on is enabled.
@@ -12,18 +13,15 @@ class GoogleCloudApigeeV1ApiSecurityConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
-  factory GoogleCloudApigeeV1ApiSecurityConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1ApiSecurityConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1ApiSecurityConfig(
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentAddonsConfigArgs {
   /// Flag to enable/disable Analytics.
   final pulumi.Input<bool>? analyticsEnabled;
-
   /// The Apigee environment group associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
   final pulumi.Input<String> envId;
@@ -20,25 +19,22 @@ class EnvironmentAddonsConfigArgs {
   EnvironmentAddonsConfigArgs({
     bool? analyticsEnabled,
     required String envId,
-  })  : analyticsEnabled = pulumi.Input.asOptionalInput<bool>(analyticsEnabled),
-        envId = pulumi.Input.asInput<String>(envId);
+  }) :
+      analyticsEnabled = pulumi.Input.asOptionalInput<bool>(analyticsEnabled),
+      envId = pulumi.Input.asInput<String>(envId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final analyticsEnabledValue = analyticsEnabled;
-    if (analyticsEnabledValue != null) {
-      map['analyticsEnabled'] = analyticsEnabledValue;
-    }
-    map['envId'] = envId;
-    return map;
+    return <String, dynamic>{
+      'analyticsEnabled': ?analyticsEnabled,
+      'envId': envId,
+    };
   }
 
   factory EnvironmentAddonsConfigArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentAddonsConfigArgs(
-      analyticsEnabled: map['analyticsEnabled'] == null
-          ? null
-          : map['analyticsEnabled'] as bool,
+      analyticsEnabled: map['analyticsEnabled'] == null ? null : map['analyticsEnabled'] as bool,
       envId: map['envId'] as String,
     );
   }
 }
+

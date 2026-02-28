@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ScopeTargetTargetIdentifierTargetId {
   /// AWS account ID.
   final String accountId;
@@ -11,15 +12,15 @@ class ScopeTargetTargetIdentifierTargetId {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accountId'] = accountId;
-    return map;
+    return <String, dynamic>{
+      'accountId': accountId,
+    };
   }
 
-  factory ScopeTargetTargetIdentifierTargetId.fromMap(
-      Map<String, dynamic> map) {
+  factory ScopeTargetTargetIdentifierTargetId.fromMap(Map<String, dynamic> map) {
     return ScopeTargetTargetIdentifierTargetId(
       accountId: map['accountId'] as String,
     );
   }
 }
+

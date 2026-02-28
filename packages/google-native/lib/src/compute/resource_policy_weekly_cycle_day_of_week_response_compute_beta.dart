@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ResourcePolicyWeeklyCycleDayOfWeekResponseComputeBeta {
   /// Defines a schedule that runs on specific days of the week. Specify one or more days. The following options are available: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY.
   final String day;
-
   /// [Output only] Duration of the time window, automatically chosen to be smallest possible in the given scenario.
   final String duration;
-
   /// Time within the window to start the operations. It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
   final String startTime;
 
@@ -21,15 +20,14 @@ class ResourcePolicyWeeklyCycleDayOfWeekResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['day'] = day;
-    map['duration'] = duration;
-    map['startTime'] = startTime;
-    return map;
+    return <String, dynamic>{
+      'day': day,
+      'duration': duration,
+      'startTime': startTime,
+    };
   }
 
-  factory ResourcePolicyWeeklyCycleDayOfWeekResponseComputeBeta.fromMap(
-      Map<String, dynamic> map) {
+  factory ResourcePolicyWeeklyCycleDayOfWeekResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyWeeklyCycleDayOfWeekResponseComputeBeta(
       day: map['day'] as String,
       duration: map['duration'] as String,
@@ -37,3 +35,4 @@ class ResourcePolicyWeeklyCycleDayOfWeekResponseComputeBeta {
     );
   }
 }
+

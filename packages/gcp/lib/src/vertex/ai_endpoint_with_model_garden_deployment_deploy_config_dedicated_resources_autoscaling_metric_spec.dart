@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec {
   /// The resource metric name.
   /// Supported metrics:
@@ -7,7 +8,6 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscali
   /// * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle`
   /// * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
   final String metricName;
-
   /// The target resource utilization in percentage (1% - 100%) for the given
   /// metric; once the real usage deviates from the target by a certain
   /// percentage, the machine replicas change. The default value is 60
@@ -23,20 +23,17 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscali
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['metricName'] = metricName;
-    final targetValue = target;
-    if (targetValue != null) {
-      map['target'] = targetValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'metricName': metricName,
+      'target': ?target,
+    };
   }
 
-  factory AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec.fromMap(
-      Map<String, dynamic> map) {
+  factory AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec(
       metricName: map['metricName'] as String,
       target: map['target'] == null ? null : map['target'] as int,
     );
   }
 }
+

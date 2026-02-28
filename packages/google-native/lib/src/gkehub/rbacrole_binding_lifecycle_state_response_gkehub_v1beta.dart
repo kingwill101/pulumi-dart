@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// RBACRoleBindingLifecycleState describes the state of a RbacRoleBinding resource.
 class RBACRoleBindingLifecycleStateResponseGkehubV1beta {
   /// The current state of the rbacrolebinding resource.
@@ -12,15 +13,15 @@ class RBACRoleBindingLifecycleStateResponseGkehubV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['code'] = code;
-    return map;
+    return <String, dynamic>{
+      'code': code,
+    };
   }
 
-  factory RBACRoleBindingLifecycleStateResponseGkehubV1beta.fromMap(
-      Map<String, dynamic> map) {
+  factory RBACRoleBindingLifecycleStateResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return RBACRoleBindingLifecycleStateResponseGkehubV1beta(
       code: map['code'] as String,
     );
   }
 }
+

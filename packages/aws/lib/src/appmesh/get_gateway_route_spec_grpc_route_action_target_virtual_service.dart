@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetGatewayRouteSpecGrpcRouteActionTargetVirtualService {
   final String virtualServiceName;
 
@@ -10,15 +11,15 @@ class GetGatewayRouteSpecGrpcRouteActionTargetVirtualService {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['virtualServiceName'] = virtualServiceName;
-    return map;
+    return <String, dynamic>{
+      'virtualServiceName': virtualServiceName,
+    };
   }
 
-  factory GetGatewayRouteSpecGrpcRouteActionTargetVirtualService.fromMap(
-      Map<String, dynamic> map) {
+  factory GetGatewayRouteSpecGrpcRouteActionTargetVirtualService.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpecGrpcRouteActionTargetVirtualService(
       virtualServiceName: map['virtualServiceName'] as String,
     );
   }
 }
+

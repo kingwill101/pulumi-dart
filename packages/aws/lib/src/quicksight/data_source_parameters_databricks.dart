@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataSourceParametersDatabricks {
   /// The host name of the Databricks data source.
   final String host;
-
   /// The port for the Databricks data source.
   final int port;
-
   /// The HTTP path of the Databricks data source.
   final String sqlEndpointPath;
 
@@ -21,11 +20,11 @@ class DataSourceParametersDatabricks {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['host'] = host;
-    map['port'] = port;
-    map['sqlEndpointPath'] = sqlEndpointPath;
-    return map;
+    return <String, dynamic>{
+      'host': host,
+      'port': port,
+      'sqlEndpointPath': sqlEndpointPath,
+    };
   }
 
   factory DataSourceParametersDatabricks.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class DataSourceParametersDatabricks {
     );
   }
 }
+

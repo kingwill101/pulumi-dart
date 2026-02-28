@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TopicRuleErrorActionCloudwatchLogs {
   /// The payload that contains a JSON array of records will be sent to CloudWatch via a batch call.
   final bool? batchMode;
-
   /// The CloudWatch log group name.
   final String logGroupName;
-
   /// The IAM role ARN that allows access to the CloudWatch alarm.
   final String roleArn;
 
@@ -21,14 +20,11 @@ class TopicRuleErrorActionCloudwatchLogs {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final batchModeValue = batchMode;
-    if (batchModeValue != null) {
-      map['batchMode'] = batchModeValue;
-    }
-    map['logGroupName'] = logGroupName;
-    map['roleArn'] = roleArn;
-    return map;
+    return <String, dynamic>{
+      'batchMode': ?batchMode,
+      'logGroupName': logGroupName,
+      'roleArn': roleArn,
+    };
   }
 
   factory TopicRuleErrorActionCloudwatchLogs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +35,4 @@ class TopicRuleErrorActionCloudwatchLogs {
     );
   }
 }
+

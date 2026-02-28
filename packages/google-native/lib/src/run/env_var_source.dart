@@ -7,7 +7,6 @@ import 'secret_key_selector.dart';
 class EnvVarSource {
   /// Not supported by Cloud Run. Not supported in Cloud Run.
   final ConfigMapKeySelector? configMapKeyRef;
-
   /// Selects a key (version) of a secret in Secret Manager.
   final SecretKeySelector? secretKeyRef;
 
@@ -20,28 +19,17 @@ class EnvVarSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final configMapKeyRefValue = configMapKeyRef;
-    if (configMapKeyRefValue != null) {
-      map['configMapKeyRef'] = configMapKeyRefValue.toMap();
-    }
-    final secretKeyRefValue = secretKeyRef;
-    if (secretKeyRefValue != null) {
-      map['secretKeyRef'] = secretKeyRefValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'configMapKeyRef': ?configMapKeyRef == null ? null : configMapKeyRef!.toMap(),
+      'secretKeyRef': ?secretKeyRef == null ? null : secretKeyRef!.toMap(),
+    };
   }
 
   factory EnvVarSource.fromMap(Map<String, dynamic> map) {
     return EnvVarSource(
-      configMapKeyRef: map['configMapKeyRef'] == null
-          ? null
-          : ConfigMapKeySelector.fromMap(
-              (map['configMapKeyRef'] as Map).cast<String, dynamic>()),
-      secretKeyRef: map['secretKeyRef'] == null
-          ? null
-          : SecretKeySelector.fromMap(
-              (map['secretKeyRef'] as Map).cast<String, dynamic>()),
+      configMapKeyRef: map['configMapKeyRef'] == null ? null : ConfigMapKeySelector.fromMap((map['configMapKeyRef'] as Map).cast<String, dynamic>()),
+      secretKeyRef: map['secretKeyRef'] == null ? null : SecretKeySelector.fromMap((map['secretKeyRef'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

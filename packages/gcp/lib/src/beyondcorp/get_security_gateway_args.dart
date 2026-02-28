@@ -10,7 +10,6 @@ class GetSecurityGatewayArgs {
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The name of the Security Gateway resource.
   ///
   /// - - -
@@ -22,17 +21,15 @@ class GetSecurityGatewayArgs {
   GetSecurityGatewayArgs({
     String? project,
     required String securityGatewayId,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        securityGatewayId = pulumi.Input.asInput<String>(securityGatewayId);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      securityGatewayId = pulumi.Input.asInput<String>(securityGatewayId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['securityGatewayId'] = securityGatewayId;
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'securityGatewayId': securityGatewayId,
+    };
   }
 
   factory GetSecurityGatewayArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +39,4 @@ class GetSecurityGatewayArgs {
     );
   }
 }
+

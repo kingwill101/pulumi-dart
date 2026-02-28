@@ -1,33 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getFunction.
 class GetFunctionResult {
   /// ARN identifying your CloudFront Function.
   final String arn;
-
   /// Source code of the function
   final String code;
-
   /// Comment.
   final String comment;
-
   /// ETag hash of the function
   final String etag;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// List of `aws.cloudfront.KeyValueStore` ARNs associated to the function.
   final List<String> keyValueStoreAssociations;
-
   /// When this resource was last modified.
   final String lastModifiedTime;
   final String name;
-
   /// Identifier of the function's runtime.
   final String runtime;
   final String stage;
-
   /// Status of the function. Can be `UNPUBLISHED`, `UNASSOCIATED` or `ASSOCIATED`.
   final String status;
 
@@ -58,19 +51,19 @@ class GetFunctionResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['code'] = code;
-    map['comment'] = comment;
-    map['etag'] = etag;
-    map['id'] = id;
-    map['keyValueStoreAssociations'] = keyValueStoreAssociations;
-    map['lastModifiedTime'] = lastModifiedTime;
-    map['name'] = name;
-    map['runtime'] = runtime;
-    map['stage'] = stage;
-    map['status'] = status;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'code': code,
+      'comment': comment,
+      'etag': etag,
+      'id': id,
+      'keyValueStoreAssociations': keyValueStoreAssociations,
+      'lastModifiedTime': lastModifiedTime,
+      'name': name,
+      'runtime': runtime,
+      'stage': stage,
+      'status': status,
+    };
   }
 
   factory GetFunctionResult.fromMap(Map<String, dynamic> map) {
@@ -80,8 +73,7 @@ class GetFunctionResult {
       comment: map['comment'] as String,
       etag: map['etag'] as String,
       id: map['id'] as String,
-      keyValueStoreAssociations:
-          (map['keyValueStoreAssociations'] as List).cast<String>(),
+      keyValueStoreAssociations: (map['keyValueStoreAssociations'] as List).cast<String>(),
       lastModifiedTime: map['lastModifiedTime'] as String,
       name: map['name'] as String,
       runtime: map['runtime'] as String,
@@ -90,3 +82,4 @@ class GetFunctionResult {
     );
   }
 }
+

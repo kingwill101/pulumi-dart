@@ -4,8 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_flow_definition_node_configuration_condition_condition.dart';
 
 class AgentFlowDefinitionNodeConfigurationCondition {
-  final List<AgentFlowDefinitionNodeConfigurationConditionCondition>?
-      conditions;
+  final List<AgentFlowDefinitionNodeConfigurationConditionCondition>? conditions;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationCondition].
   /// [conditions] Optional.
@@ -14,26 +13,15 @@ class AgentFlowDefinitionNodeConfigurationCondition {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final conditionsValue = conditions;
-    if (conditionsValue != null) {
-      map['conditions'] = pulumi.Input.encodeList<
-          AgentFlowDefinitionNodeConfigurationConditionCondition,
-          Map<String, dynamic>>(conditionsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<AgentFlowDefinitionNodeConfigurationConditionCondition, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+    };
   }
 
-  factory AgentFlowDefinitionNodeConfigurationCondition.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentFlowDefinitionNodeConfigurationCondition.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationCondition(
-      conditions: map['conditions'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  AgentFlowDefinitionNodeConfigurationConditionCondition>(
-              map['conditions'],
-              (value) => AgentFlowDefinitionNodeConfigurationConditionCondition
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<AgentFlowDefinitionNodeConfigurationConditionCondition>(map['conditions'], (value) => AgentFlowDefinitionNodeConfigurationConditionCondition.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -10,22 +10,16 @@ import 'threshold_response.dart';
 class XyChartResponse {
   /// Display options for the chart.
   final ChartOptionsResponse chartOptions;
-
   /// The data displayed in this chart.
   final List<DataSetResponse> dataSets;
-
   /// Threshold lines drawn horizontally across the chart.
   final List<ThresholdResponse> thresholds;
-
   /// The duration used to display a comparison chart. A comparison chart simultaneously shows values from two similar-length time periods (e.g., week-over-week metrics). The duration must be positive, and it can only be applied to charts with data sets of LINE plot type.
   final String timeshiftDuration;
-
   /// The properties applied to the x-axis.
   final AxisResponse xAxis;
-
   /// The properties applied to the y2-axis.
   final AxisResponse y2Axis;
-
   /// The properties applied to the y-axis.
   final AxisResponse yAxis;
 
@@ -48,40 +42,27 @@ class XyChartResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['chartOptions'] = chartOptions.toMap();
-    map['dataSets'] =
-        pulumi.Input.encodeList<DataSetResponse, Map<String, dynamic>>(
-            dataSets, (value) => value.toMap());
-    map['thresholds'] =
-        pulumi.Input.encodeList<ThresholdResponse, Map<String, dynamic>>(
-            thresholds, (value) => value.toMap());
-    map['timeshiftDuration'] = timeshiftDuration;
-    map['xAxis'] = xAxis.toMap();
-    map['y2Axis'] = y2Axis.toMap();
-    map['yAxis'] = yAxis.toMap();
-    return map;
+    return <String, dynamic>{
+      'chartOptions': chartOptions.toMap(),
+      'dataSets': pulumi.Input.encodeList<DataSetResponse, Map<String, dynamic>>(dataSets, (value) => value.toMap()),
+      'thresholds': pulumi.Input.encodeList<ThresholdResponse, Map<String, dynamic>>(thresholds, (value) => value.toMap()),
+      'timeshiftDuration': timeshiftDuration,
+      'xAxis': xAxis.toMap(),
+      'y2Axis': y2Axis.toMap(),
+      'yAxis': yAxis.toMap(),
+    };
   }
 
   factory XyChartResponse.fromMap(Map<String, dynamic> map) {
     return XyChartResponse(
-      chartOptions: ChartOptionsResponse.fromMap(
-          (map['chartOptions'] as Map).cast<String, dynamic>()),
-      dataSets: pulumi.Input.decodeList<DataSetResponse>(
-          map['dataSets'],
-          (value) =>
-              DataSetResponse.fromMap((value as Map).cast<String, dynamic>())),
-      thresholds: pulumi.Input.decodeList<ThresholdResponse>(
-          map['thresholds'],
-          (value) => ThresholdResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      chartOptions: ChartOptionsResponse.fromMap((map['chartOptions'] as Map).cast<String, dynamic>()),
+      dataSets: pulumi.Input.decodeList<DataSetResponse>(map['dataSets'], (value) => DataSetResponse.fromMap((value as Map).cast<String, dynamic>())),
+      thresholds: pulumi.Input.decodeList<ThresholdResponse>(map['thresholds'], (value) => ThresholdResponse.fromMap((value as Map).cast<String, dynamic>())),
       timeshiftDuration: map['timeshiftDuration'] as String,
-      xAxis:
-          AxisResponse.fromMap((map['xAxis'] as Map).cast<String, dynamic>()),
-      y2Axis:
-          AxisResponse.fromMap((map['y2Axis'] as Map).cast<String, dynamic>()),
-      yAxis:
-          AxisResponse.fromMap((map['yAxis'] as Map).cast<String, dynamic>()),
+      xAxis: AxisResponse.fromMap((map['xAxis'] as Map).cast<String, dynamic>()),
+      y2Axis: AxisResponse.fromMap((map['y2Axis'] as Map).cast<String, dynamic>()),
+      yAxis: AxisResponse.fromMap((map['yAxis'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

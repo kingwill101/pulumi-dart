@@ -11,11 +11,9 @@ class AiRagEngineConfigArgs {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Required. The config of the RagManagedDb used by RagEngine.
   /// Structure is documented below.
   final pulumi.Input<AiRagEngineConfigRagManagedDbConfig> ragManagedDbConfig;
-
   /// The region of the RagEngineConfig. eg us-central1
   final pulumi.Input<String>? region;
 
@@ -27,34 +25,25 @@ class AiRagEngineConfigArgs {
     String? project,
     required AiRagEngineConfigRagManagedDbConfig ragManagedDbConfig,
     String? region,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        ragManagedDbConfig =
-            pulumi.Input.asInput<AiRagEngineConfigRagManagedDbConfig>(
-                ragManagedDbConfig),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      ragManagedDbConfig = pulumi.Input.asInput<AiRagEngineConfigRagManagedDbConfig>(ragManagedDbConfig),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['ragManagedDbConfig'] = pulumi.Input.mapInputValue<
-        AiRagEngineConfigRagManagedDbConfig,
-        Map<String, dynamic>>(ragManagedDbConfig, (value) => value.toMap());
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'ragManagedDbConfig': pulumi.Input.mapInputValue<AiRagEngineConfigRagManagedDbConfig, Map<String, dynamic>>(ragManagedDbConfig, (value) => value.toMap()),
+      'region': ?region,
+    };
   }
 
   factory AiRagEngineConfigArgs.fromMap(Map<String, dynamic> map) {
     return AiRagEngineConfigArgs(
       project: map['project'] == null ? null : map['project'] as String,
-      ragManagedDbConfig: AiRagEngineConfigRagManagedDbConfig.fromMap(
-          (map['ragManagedDbConfig'] as Map).cast<String, dynamic>()),
+      ragManagedDbConfig: AiRagEngineConfigRagManagedDbConfig.fromMap((map['ragManagedDbConfig'] as Map).cast<String, dynamic>()),
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

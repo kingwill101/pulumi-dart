@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// ConfidentialNodes is configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
 class ConfidentialNodesResponseContainerV1beta1 {
   /// Whether Confidential Nodes feature is enabled.
@@ -12,15 +13,15 @@ class ConfidentialNodesResponseContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory ConfidentialNodesResponseContainerV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory ConfidentialNodesResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return ConfidentialNodesResponseContainerV1beta1(
       enabled: map['enabled'] as bool,
     );
   }
 }
+

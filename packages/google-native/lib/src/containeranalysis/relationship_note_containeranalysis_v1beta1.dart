@@ -14,21 +14,15 @@ class RelationshipNoteContaineranalysisV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'type': ?type == null ? null : type!.value,
+    };
   }
 
-  factory RelationshipNoteContaineranalysisV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory RelationshipNoteContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return RelationshipNoteContaineranalysisV1beta1(
-      type: map['type'] == null
-          ? null
-          : RelationshipNoteTypeContaineranalysisV1beta1.fromValue(
-              map['type'] as String),
+      type: map['type'] == null ? null : RelationshipNoteTypeContaineranalysisV1beta1.fromValue(map['type'] as String),
     );
   }
 }
+

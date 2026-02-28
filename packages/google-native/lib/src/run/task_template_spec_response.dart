@@ -14,15 +14,15 @@ class TaskTemplateSpecResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['spec'] = spec.toMap();
-    return map;
+    return <String, dynamic>{
+      'spec': spec.toMap(),
+    };
   }
 
   factory TaskTemplateSpecResponse.fromMap(Map<String, dynamic> map) {
     return TaskTemplateSpecResponse(
-      spec: TaskSpecResponse.fromMap(
-          (map['spec'] as Map).cast<String, dynamic>()),
+      spec: TaskSpecResponse.fromMap((map['spec'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

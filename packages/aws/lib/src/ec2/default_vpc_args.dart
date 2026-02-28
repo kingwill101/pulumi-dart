@@ -11,14 +11,12 @@ class DefaultVpcArgs {
   final pulumi.Input<bool>? enableDnsHostnames;
   final pulumi.Input<bool>? enableDnsSupport;
   final pulumi.Input<bool>? enableNetworkAddressUsageMetrics;
-
   /// Whether destroying the resource deletes the default VPC. Default: `false`
   final pulumi.Input<bool>? forceDestroy;
   final pulumi.Input<String>? ipv6CidrBlock;
   final pulumi.Input<String>? ipv6CidrBlockNetworkBorderGroup;
   final pulumi.Input<String>? ipv6IpamPoolId;
   final pulumi.Input<int>? ipv6NetmaskLength;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
   final pulumi.Input<String>? region;
   final pulumi.Input<Map<String, String>>? tags;
@@ -47,109 +45,49 @@ class DefaultVpcArgs {
     int? ipv6NetmaskLength,
     String? region,
     Map<String, String>? tags,
-  })  : assignGeneratedIpv6CidrBlock =
-            pulumi.Input.asOptionalInput<bool>(assignGeneratedIpv6CidrBlock),
-        enableDnsHostnames =
-            pulumi.Input.asOptionalInput<bool>(enableDnsHostnames),
-        enableDnsSupport = pulumi.Input.asOptionalInput<bool>(enableDnsSupport),
-        enableNetworkAddressUsageMetrics = pulumi.Input.asOptionalInput<bool>(
-            enableNetworkAddressUsageMetrics),
-        forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-        ipv6CidrBlock = pulumi.Input.asOptionalInput<String>(ipv6CidrBlock),
-        ipv6CidrBlockNetworkBorderGroup = pulumi.Input.asOptionalInput<String>(
-            ipv6CidrBlockNetworkBorderGroup),
-        ipv6IpamPoolId = pulumi.Input.asOptionalInput<String>(ipv6IpamPoolId),
-        ipv6NetmaskLength =
-            pulumi.Input.asOptionalInput<int>(ipv6NetmaskLength),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      assignGeneratedIpv6CidrBlock = pulumi.Input.asOptionalInput<bool>(assignGeneratedIpv6CidrBlock),
+      enableDnsHostnames = pulumi.Input.asOptionalInput<bool>(enableDnsHostnames),
+      enableDnsSupport = pulumi.Input.asOptionalInput<bool>(enableDnsSupport),
+      enableNetworkAddressUsageMetrics = pulumi.Input.asOptionalInput<bool>(enableNetworkAddressUsageMetrics),
+      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
+      ipv6CidrBlock = pulumi.Input.asOptionalInput<String>(ipv6CidrBlock),
+      ipv6CidrBlockNetworkBorderGroup = pulumi.Input.asOptionalInput<String>(ipv6CidrBlockNetworkBorderGroup),
+      ipv6IpamPoolId = pulumi.Input.asOptionalInput<String>(ipv6IpamPoolId),
+      ipv6NetmaskLength = pulumi.Input.asOptionalInput<int>(ipv6NetmaskLength),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final assignGeneratedIpv6CidrBlockValue = assignGeneratedIpv6CidrBlock;
-    if (assignGeneratedIpv6CidrBlockValue != null) {
-      map['assignGeneratedIpv6CidrBlock'] = assignGeneratedIpv6CidrBlockValue;
-    }
-    final enableDnsHostnamesValue = enableDnsHostnames;
-    if (enableDnsHostnamesValue != null) {
-      map['enableDnsHostnames'] = enableDnsHostnamesValue;
-    }
-    final enableDnsSupportValue = enableDnsSupport;
-    if (enableDnsSupportValue != null) {
-      map['enableDnsSupport'] = enableDnsSupportValue;
-    }
-    final enableNetworkAddressUsageMetricsValue =
-        enableNetworkAddressUsageMetrics;
-    if (enableNetworkAddressUsageMetricsValue != null) {
-      map['enableNetworkAddressUsageMetrics'] =
-          enableNetworkAddressUsageMetricsValue;
-    }
-    final forceDestroyValue = forceDestroy;
-    if (forceDestroyValue != null) {
-      map['forceDestroy'] = forceDestroyValue;
-    }
-    final ipv6CidrBlockValue = ipv6CidrBlock;
-    if (ipv6CidrBlockValue != null) {
-      map['ipv6CidrBlock'] = ipv6CidrBlockValue;
-    }
-    final ipv6CidrBlockNetworkBorderGroupValue =
-        ipv6CidrBlockNetworkBorderGroup;
-    if (ipv6CidrBlockNetworkBorderGroupValue != null) {
-      map['ipv6CidrBlockNetworkBorderGroup'] =
-          ipv6CidrBlockNetworkBorderGroupValue;
-    }
-    final ipv6IpamPoolIdValue = ipv6IpamPoolId;
-    if (ipv6IpamPoolIdValue != null) {
-      map['ipv6IpamPoolId'] = ipv6IpamPoolIdValue;
-    }
-    final ipv6NetmaskLengthValue = ipv6NetmaskLength;
-    if (ipv6NetmaskLengthValue != null) {
-      map['ipv6NetmaskLength'] = ipv6NetmaskLengthValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'assignGeneratedIpv6CidrBlock': ?assignGeneratedIpv6CidrBlock,
+      'enableDnsHostnames': ?enableDnsHostnames,
+      'enableDnsSupport': ?enableDnsSupport,
+      'enableNetworkAddressUsageMetrics': ?enableNetworkAddressUsageMetrics,
+      'forceDestroy': ?forceDestroy,
+      'ipv6CidrBlock': ?ipv6CidrBlock,
+      'ipv6CidrBlockNetworkBorderGroup': ?ipv6CidrBlockNetworkBorderGroup,
+      'ipv6IpamPoolId': ?ipv6IpamPoolId,
+      'ipv6NetmaskLength': ?ipv6NetmaskLength,
+      'region': ?region,
+      'tags': ?tags,
+    };
   }
 
   factory DefaultVpcArgs.fromMap(Map<String, dynamic> map) {
     return DefaultVpcArgs(
-      assignGeneratedIpv6CidrBlock: map['assignGeneratedIpv6CidrBlock'] == null
-          ? null
-          : map['assignGeneratedIpv6CidrBlock'] as bool,
-      enableDnsHostnames: map['enableDnsHostnames'] == null
-          ? null
-          : map['enableDnsHostnames'] as bool,
-      enableDnsSupport: map['enableDnsSupport'] == null
-          ? null
-          : map['enableDnsSupport'] as bool,
-      enableNetworkAddressUsageMetrics:
-          map['enableNetworkAddressUsageMetrics'] == null
-              ? null
-              : map['enableNetworkAddressUsageMetrics'] as bool,
-      forceDestroy:
-          map['forceDestroy'] == null ? null : map['forceDestroy'] as bool,
-      ipv6CidrBlock:
-          map['ipv6CidrBlock'] == null ? null : map['ipv6CidrBlock'] as String,
-      ipv6CidrBlockNetworkBorderGroup:
-          map['ipv6CidrBlockNetworkBorderGroup'] == null
-              ? null
-              : map['ipv6CidrBlockNetworkBorderGroup'] as String,
-      ipv6IpamPoolId: map['ipv6IpamPoolId'] == null
-          ? null
-          : map['ipv6IpamPoolId'] as String,
-      ipv6NetmaskLength: map['ipv6NetmaskLength'] == null
-          ? null
-          : map['ipv6NetmaskLength'] as int,
+      assignGeneratedIpv6CidrBlock: map['assignGeneratedIpv6CidrBlock'] == null ? null : map['assignGeneratedIpv6CidrBlock'] as bool,
+      enableDnsHostnames: map['enableDnsHostnames'] == null ? null : map['enableDnsHostnames'] as bool,
+      enableDnsSupport: map['enableDnsSupport'] == null ? null : map['enableDnsSupport'] as bool,
+      enableNetworkAddressUsageMetrics: map['enableNetworkAddressUsageMetrics'] == null ? null : map['enableNetworkAddressUsageMetrics'] as bool,
+      forceDestroy: map['forceDestroy'] == null ? null : map['forceDestroy'] as bool,
+      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : map['ipv6CidrBlock'] as String,
+      ipv6CidrBlockNetworkBorderGroup: map['ipv6CidrBlockNetworkBorderGroup'] == null ? null : map['ipv6CidrBlockNetworkBorderGroup'] as String,
+      ipv6IpamPoolId: map['ipv6IpamPoolId'] == null ? null : map['ipv6IpamPoolId'] as String,
+      ipv6NetmaskLength: map['ipv6NetmaskLength'] == null ? null : map['ipv6NetmaskLength'] as int,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

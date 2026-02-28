@@ -7,11 +7,9 @@ class StreamSourceConfigSalesforceSourceConfig {
   /// Salesforce objects to exclude from the stream.
   /// Structure is documented below.
   final StreamSourceConfigSalesforceSourceConfigExcludeObjects? excludeObjects;
-
   /// Salesforce objects to retrieve from the source.
   /// Structure is documented below.
   final StreamSourceConfigSalesforceSourceConfigIncludeObjects? includeObjects;
-
   /// Salesforce objects polling interval. The interval at which new changes will be polled for each object. The duration must be between 5 minutes and 24 hours.
   final String pollingInterval;
 
@@ -26,31 +24,19 @@ class StreamSourceConfigSalesforceSourceConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final excludeObjectsValue = excludeObjects;
-    if (excludeObjectsValue != null) {
-      map['excludeObjects'] = excludeObjectsValue.toMap();
-    }
-    final includeObjectsValue = includeObjects;
-    if (includeObjectsValue != null) {
-      map['includeObjects'] = includeObjectsValue.toMap();
-    }
-    map['pollingInterval'] = pollingInterval;
-    return map;
+    return <String, dynamic>{
+      'excludeObjects': ?excludeObjects == null ? null : excludeObjects!.toMap(),
+      'includeObjects': ?includeObjects == null ? null : includeObjects!.toMap(),
+      'pollingInterval': pollingInterval,
+    };
   }
 
-  factory StreamSourceConfigSalesforceSourceConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory StreamSourceConfigSalesforceSourceConfig.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigSalesforceSourceConfig(
-      excludeObjects: map['excludeObjects'] == null
-          ? null
-          : StreamSourceConfigSalesforceSourceConfigExcludeObjects.fromMap(
-              (map['excludeObjects'] as Map).cast<String, dynamic>()),
-      includeObjects: map['includeObjects'] == null
-          ? null
-          : StreamSourceConfigSalesforceSourceConfigIncludeObjects.fromMap(
-              (map['includeObjects'] as Map).cast<String, dynamic>()),
+      excludeObjects: map['excludeObjects'] == null ? null : StreamSourceConfigSalesforceSourceConfigExcludeObjects.fromMap((map['excludeObjects'] as Map).cast<String, dynamic>()),
+      includeObjects: map['includeObjects'] == null ? null : StreamSourceConfigSalesforceSourceConfigIncludeObjects.fromMap((map['includeObjects'] as Map).cast<String, dynamic>()),
       pollingInterval: map['pollingInterval'] as String,
     );
   }
 }
+

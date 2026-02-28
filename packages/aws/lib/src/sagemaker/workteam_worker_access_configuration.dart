@@ -13,20 +13,15 @@ class WorkteamWorkerAccessConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final s3PresignValue = s3Presign;
-    if (s3PresignValue != null) {
-      map['s3Presign'] = s3PresignValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      's3Presign': ?s3Presign == null ? null : s3Presign!.toMap(),
+    };
   }
 
   factory WorkteamWorkerAccessConfiguration.fromMap(Map<String, dynamic> map) {
     return WorkteamWorkerAccessConfiguration(
-      s3Presign: map['s3Presign'] == null
-          ? null
-          : WorkteamWorkerAccessConfigurationS3Presign.fromMap(
-              (map['s3Presign'] as Map).cast<String, dynamic>()),
+      s3Presign: map['s3Presign'] == null ? null : WorkteamWorkerAccessConfigurationS3Presign.fromMap((map['s3Presign'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

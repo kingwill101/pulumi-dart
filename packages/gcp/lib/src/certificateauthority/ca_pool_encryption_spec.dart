@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CaPoolEncryptionSpec {
   /// The resource name for an existing Cloud KMS key in the format
   /// `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
@@ -12,18 +13,15 @@ class CaPoolEncryptionSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cloudKmsKeyValue = cloudKmsKey;
-    if (cloudKmsKeyValue != null) {
-      map['cloudKmsKey'] = cloudKmsKeyValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cloudKmsKey': ?cloudKmsKey,
+    };
   }
 
   factory CaPoolEncryptionSpec.fromMap(Map<String, dynamic> map) {
     return CaPoolEncryptionSpec(
-      cloudKmsKey:
-          map['cloudKmsKey'] == null ? null : map['cloudKmsKey'] as String,
+      cloudKmsKey: map['cloudKmsKey'] == null ? null : map['cloudKmsKey'] as String,
     );
   }
 }
+

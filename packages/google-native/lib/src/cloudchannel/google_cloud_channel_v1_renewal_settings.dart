@@ -7,13 +7,10 @@ import 'google_cloud_channel_v1_renewal_settings_payment_plan.dart';
 class GoogleCloudChannelV1RenewalSettings {
   /// If false, the plan will be completed at the end date.
   final bool? enableRenewal;
-
   /// Describes how frequently the reseller will be billed, such as once per month.
   final GoogleCloudChannelV1Period? paymentCycle;
-
   /// Describes how a reseller will be billed.
   final GoogleCloudChannelV1RenewalSettingsPaymentPlan? paymentPlan;
-
   /// If true and enable_renewal = true, the unit (for example seats or licenses) will be set to the number of active units at renewal time.
   final bool? resizeUnitCount;
 
@@ -30,42 +27,21 @@ class GoogleCloudChannelV1RenewalSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enableRenewalValue = enableRenewal;
-    if (enableRenewalValue != null) {
-      map['enableRenewal'] = enableRenewalValue;
-    }
-    final paymentCycleValue = paymentCycle;
-    if (paymentCycleValue != null) {
-      map['paymentCycle'] = paymentCycleValue.toMap();
-    }
-    final paymentPlanValue = paymentPlan;
-    if (paymentPlanValue != null) {
-      map['paymentPlan'] = paymentPlanValue.value;
-    }
-    final resizeUnitCountValue = resizeUnitCount;
-    if (resizeUnitCountValue != null) {
-      map['resizeUnitCount'] = resizeUnitCountValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enableRenewal': ?enableRenewal,
+      'paymentCycle': ?paymentCycle == null ? null : paymentCycle!.toMap(),
+      'paymentPlan': ?paymentPlan == null ? null : paymentPlan!.value,
+      'resizeUnitCount': ?resizeUnitCount,
+    };
   }
 
-  factory GoogleCloudChannelV1RenewalSettings.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudChannelV1RenewalSettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1RenewalSettings(
-      enableRenewal:
-          map['enableRenewal'] == null ? null : map['enableRenewal'] as bool,
-      paymentCycle: map['paymentCycle'] == null
-          ? null
-          : GoogleCloudChannelV1Period.fromMap(
-              (map['paymentCycle'] as Map).cast<String, dynamic>()),
-      paymentPlan: map['paymentPlan'] == null
-          ? null
-          : GoogleCloudChannelV1RenewalSettingsPaymentPlan.fromValue(
-              map['paymentPlan'] as String),
-      resizeUnitCount: map['resizeUnitCount'] == null
-          ? null
-          : map['resizeUnitCount'] as bool,
+      enableRenewal: map['enableRenewal'] == null ? null : map['enableRenewal'] as bool,
+      paymentCycle: map['paymentCycle'] == null ? null : GoogleCloudChannelV1Period.fromMap((map['paymentCycle'] as Map).cast<String, dynamic>()),
+      paymentPlan: map['paymentPlan'] == null ? null : GoogleCloudChannelV1RenewalSettingsPaymentPlan.fromValue(map['paymentPlan'] as String),
+      resizeUnitCount: map['resizeUnitCount'] == null ? null : map['resizeUnitCount'] as bool,
     );
   }
 }
+

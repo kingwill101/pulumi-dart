@@ -19,20 +19,20 @@ class GetFolderReplayPolicysimulatorV1alphaArgs {
     required String folderId,
     required String location,
     required String replayId,
-  })  : folderId = pulumi.Input.asInput<String>(folderId),
-        location = pulumi.Input.asInput<String>(location),
-        replayId = pulumi.Input.asInput<String>(replayId);
+  }) :
+      folderId = pulumi.Input.asInput<String>(folderId),
+      location = pulumi.Input.asInput<String>(location),
+      replayId = pulumi.Input.asInput<String>(replayId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['folderId'] = folderId;
-    map['location'] = location;
-    map['replayId'] = replayId;
-    return map;
+    return <String, dynamic>{
+      'folderId': folderId,
+      'location': location,
+      'replayId': replayId,
+    };
   }
 
-  factory GetFolderReplayPolicysimulatorV1alphaArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetFolderReplayPolicysimulatorV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return GetFolderReplayPolicysimulatorV1alphaArgs(
       folderId: map['folderId'] as String,
       location: map['location'] as String,
@@ -40,3 +40,4 @@ class GetFolderReplayPolicysimulatorV1alphaArgs {
     );
   }
 }
+

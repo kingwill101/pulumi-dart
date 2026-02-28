@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ReleaseReleaseRequirements {
   /// A list of releases from which a unit can be upgraded to this one
   /// (optional). If left empty no constraints will be applied. When provided,
@@ -14,19 +15,15 @@ class ReleaseReleaseRequirements {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final upgradeableFromReleasesValue = upgradeableFromReleases;
-    if (upgradeableFromReleasesValue != null) {
-      map['upgradeableFromReleases'] = upgradeableFromReleasesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'upgradeableFromReleases': ?upgradeableFromReleases,
+    };
   }
 
   factory ReleaseReleaseRequirements.fromMap(Map<String, dynamic> map) {
     return ReleaseReleaseRequirements(
-      upgradeableFromReleases: map['upgradeableFromReleases'] == null
-          ? null
-          : (map['upgradeableFromReleases'] as List).cast<String>(),
+      upgradeableFromReleases: map['upgradeableFromReleases'] == null ? null : (map['upgradeableFromReleases'] as List).cast<String>(),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A list of Kubernetes Namespaces
 class NamespacesResponse {
   /// Optional. A list of Kubernetes Namespaces
@@ -12,9 +13,9 @@ class NamespacesResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['namespaces'] = namespaces;
-    return map;
+    return <String, dynamic>{
+      'namespaces': namespaces,
+    };
   }
 
   factory NamespacesResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class NamespacesResponse {
     );
   }
 }
+

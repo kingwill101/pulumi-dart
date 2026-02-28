@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getAccessPoints.
 class GetAccessPointsResult {
   /// Set of Amazon Resource Names (ARNs).
   final List<String> arns;
   final String fileSystemId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Set of identifiers.
   final List<String> ids;
   final String region;
@@ -28,13 +27,13 @@ class GetAccessPointsResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arns'] = arns;
-    map['fileSystemId'] = fileSystemId;
-    map['id'] = id;
-    map['ids'] = ids;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'arns': arns,
+      'fileSystemId': fileSystemId,
+      'id': id,
+      'ids': ids,
+      'region': region,
+    };
   }
 
   factory GetAccessPointsResult.fromMap(Map<String, dynamic> map) {
@@ -47,3 +46,4 @@ class GetAccessPointsResult {
     );
   }
 }
+

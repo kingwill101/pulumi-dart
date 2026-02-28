@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FirewallPolicyRuleSecureTagComputeBeta {
   /// Name of the secure tag, created with TagManager's TagValue API.
   final String? name;
@@ -11,18 +12,15 @@ class FirewallPolicyRuleSecureTagComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
-  factory FirewallPolicyRuleSecureTagComputeBeta.fromMap(
-      Map<String, dynamic> map) {
+  factory FirewallPolicyRuleSecureTagComputeBeta.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyRuleSecureTagComputeBeta(
       name: map['name'] == null ? null : map['name'] as String,
     );
   }
 }
+

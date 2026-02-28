@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Defines an object for the environment field in in-toto links. The suggested fields are "variables", "filesystem", and "workdir".
 class Environment {
   final Map<String, String>? customValues;
@@ -11,19 +12,15 @@ class Environment {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final customValuesValue = customValues;
-    if (customValuesValue != null) {
-      map['customValues'] = customValuesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'customValues': ?customValues,
+    };
   }
 
   factory Environment.fromMap(Map<String, dynamic> map) {
     return Environment(
-      customValues: map['customValues'] == null
-          ? null
-          : (map['customValues'] as Map).cast<String, String>(),
+      customValues: map['customValues'] == null ? null : (map['customValues'] as Map).cast<String, String>(),
     );
   }
 }
+

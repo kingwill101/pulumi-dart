@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents a tool results history resource.
 class ToolResultsHistoryResponse {
   /// A tool results history ID.
   final String historyId;
-
   /// The cloud project that owns the tool results history.
   final String project;
 
@@ -17,10 +17,10 @@ class ToolResultsHistoryResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['historyId'] = historyId;
-    map['project'] = project;
-    return map;
+    return <String, dynamic>{
+      'historyId': historyId,
+      'project': project,
+    };
   }
 
   factory ToolResultsHistoryResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class ToolResultsHistoryResponse {
     );
   }
 }
+

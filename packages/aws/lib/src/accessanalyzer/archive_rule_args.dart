@@ -10,13 +10,10 @@ import 'archive_rule_filter.dart';
 class ArchiveRuleArgs {
   /// Analyzer name.
   final pulumi.Input<String> analyzerName;
-
   /// Filter criteria for the archive rule. See Filter for more details.
   final pulumi.Input<List<ArchiveRuleFilter>> filters;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Rule name.
   final pulumi.Input<String> ruleName;
 
@@ -30,37 +27,28 @@ class ArchiveRuleArgs {
     required List<ArchiveRuleFilter> filters,
     String? region,
     required String ruleName,
-  })  : analyzerName = pulumi.Input.asInput<String>(analyzerName),
-        filters = pulumi.Input.asInput<List<ArchiveRuleFilter>>(filters),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        ruleName = pulumi.Input.asInput<String>(ruleName);
+  }) :
+      analyzerName = pulumi.Input.asInput<String>(analyzerName),
+      filters = pulumi.Input.asInput<List<ArchiveRuleFilter>>(filters),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      ruleName = pulumi.Input.asInput<String>(ruleName);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['analyzerName'] = analyzerName;
-    map['filters'] = pulumi.Input.mapInputValue<List<ArchiveRuleFilter>,
-            List<Map<String, dynamic>>>(
-        filters,
-        (value) =>
-            pulumi.Input.encodeList<ArchiveRuleFilter, Map<String, dynamic>>(
-                value, (value) => value.toMap()));
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['ruleName'] = ruleName;
-    return map;
+    return <String, dynamic>{
+      'analyzerName': analyzerName,
+      'filters': pulumi.Input.mapInputValue<List<ArchiveRuleFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<ArchiveRuleFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'region': ?region,
+      'ruleName': ruleName,
+    };
   }
 
   factory ArchiveRuleArgs.fromMap(Map<String, dynamic> map) {
     return ArchiveRuleArgs(
       analyzerName: map['analyzerName'] as String,
-      filters: pulumi.Input.decodeList<ArchiveRuleFilter>(
-          map['filters'],
-          (value) => ArchiveRuleFilter.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      filters: pulumi.Input.decodeList<ArchiveRuleFilter>(map['filters'], (value) => ArchiveRuleFilter.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] == null ? null : map['region'] as String,
       ruleName: map['ruleName'] as String,
     );
   }
 }
+

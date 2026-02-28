@@ -16,3 +16,4 @@ enum InstanceTierRedisV1beta1 {
     throw ArgumentError('Unknown InstanceTierRedisV1beta1 value: $value');
   }
 }
+

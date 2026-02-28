@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetJobQueueComputeEnvironmentOrder {
   final String computeEnvironment;
   final int order;
@@ -13,10 +14,10 @@ class GetJobQueueComputeEnvironmentOrder {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['computeEnvironment'] = computeEnvironment;
-    map['order'] = order;
-    return map;
+    return <String, dynamic>{
+      'computeEnvironment': computeEnvironment,
+      'order': order,
+    };
   }
 
   factory GetJobQueueComputeEnvironmentOrder.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class GetJobQueueComputeEnvironmentOrder {
     );
   }
 }
+

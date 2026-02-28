@@ -7,7 +7,6 @@ import 'widget.dart';
 class GridLayout {
   /// The number of columns into which the view's width is divided. If omitted or set to zero, a system default will be used while rendering.
   final String? columns;
-
   /// The informational elements that are arranged into the columns row-first.
   final List<Widget>? widgets;
 
@@ -20,28 +19,17 @@ class GridLayout {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final columnsValue = columns;
-    if (columnsValue != null) {
-      map['columns'] = columnsValue;
-    }
-    final widgetsValue = widgets;
-    if (widgetsValue != null) {
-      map['widgets'] = pulumi.Input.encodeList<Widget, Map<String, dynamic>>(
-          widgetsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'columns': ?columns,
+      'widgets': ?widgets == null ? null : pulumi.Input.encodeList<Widget, Map<String, dynamic>>(widgets!, (value) => value.toMap()),
+    };
   }
 
   factory GridLayout.fromMap(Map<String, dynamic> map) {
     return GridLayout(
       columns: map['columns'] == null ? null : map['columns'] as String,
-      widgets: map['widgets'] == null
-          ? null
-          : pulumi.Input.decodeList<Widget>(
-              map['widgets'],
-              (value) =>
-                  Widget.fromMap((value as Map).cast<String, dynamic>())),
+      widgets: map['widgets'] == null ? null : pulumi.Input.decodeList<Widget>(map['widgets'], (value) => Widget.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

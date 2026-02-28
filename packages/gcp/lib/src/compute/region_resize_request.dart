@@ -596,34 +596,24 @@ import 'region_resize_request_status.dart';
 class RegionResizeRequest extends pulumi.CustomResource {
   /// The creation timestamp for this resize request in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
-
   /// An optional description of this resize-request.
   late final pulumi.Output<String?> description;
-
   /// The reference of the regional instance group manager this ResizeRequest is a part of.
   late final pulumi.Output<String> instanceGroupManager;
-
   /// The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The reference of the compute region scoping this request. If it is not provided, the provider region is used.
   late final pulumi.Output<String> region;
-
   /// Requested run duration for instances that will be created by this request. At the end of the run duration instances will be deleted.
   /// Structure is documented below.
-  late final pulumi.Output<RegionResizeRequestRequestedRunDuration?>
-      requestedRunDuration;
-
+  late final pulumi.Output<RegionResizeRequestRequestedRunDuration?> requestedRunDuration;
   /// The number of instances to be created by this resize request. The group's target size will be increased by this number.
   late final pulumi.Output<int> resizeBy;
-
   /// Current state of the request.
   late final pulumi.Output<String> state;
-
   /// Status of the request.
   /// Structure is documented below.
   late final pulumi.Output<List<RegionResizeRequestStatus>> statuses;
@@ -648,9 +638,7 @@ class RegionResizeRequest extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
     this.region = registerOutput<String>('region');
-    this.requestedRunDuration =
-        registerOutput<RegionResizeRequestRequestedRunDuration?>(
-            'requestedRunDuration');
+    this.requestedRunDuration = registerOutput<RegionResizeRequestRequestedRunDuration?>('requestedRunDuration');
     this.resizeBy = registerOutput<int>('resizeBy');
     this.state = registerOutput<String>('state');
     this.statuses = registerOutput<List<RegionResizeRequestStatus>>('statuses');

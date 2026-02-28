@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDatabaseInstanceDnsName {
   final String connectionType;
   final String dnsScope;
-
   /// The name of the instance.
   final String name;
 
@@ -18,11 +18,11 @@ class GetDatabaseInstanceDnsName {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['connectionType'] = connectionType;
-    map['dnsScope'] = dnsScope;
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'connectionType': connectionType,
+      'dnsScope': dnsScope,
+      'name': name,
+    };
   }
 
   factory GetDatabaseInstanceDnsName.fromMap(Map<String, dynamic> map) {
@@ -33,3 +33,4 @@ class GetDatabaseInstanceDnsName {
     );
   }
 }
+

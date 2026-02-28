@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Describes the access mechanism of the data within its storage location.
 class GoogleCloudDataplexV1StorageAccessResponse {
   /// Describes the read access mechanism of the data. Not user settable.
@@ -12,15 +13,15 @@ class GoogleCloudDataplexV1StorageAccessResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['read'] = read;
-    return map;
+    return <String, dynamic>{
+      'read': read,
+    };
   }
 
-  factory GoogleCloudDataplexV1StorageAccessResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1StorageAccessResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1StorageAccessResponse(
       read: map['read'] as String,
     );
   }
 }
+

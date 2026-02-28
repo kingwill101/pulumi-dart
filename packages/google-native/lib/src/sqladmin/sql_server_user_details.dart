@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents a Sql Server user on the Cloud SQL instance.
 class SqlServerUserDetails {
   /// If the user has been disabled
   final bool? disabled;
-
   /// The server roles for this user
   final List<String>? serverRoles;
 
@@ -17,24 +17,17 @@ class SqlServerUserDetails {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final disabledValue = disabled;
-    if (disabledValue != null) {
-      map['disabled'] = disabledValue;
-    }
-    final serverRolesValue = serverRoles;
-    if (serverRolesValue != null) {
-      map['serverRoles'] = serverRolesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'disabled': ?disabled,
+      'serverRoles': ?serverRoles,
+    };
   }
 
   factory SqlServerUserDetails.fromMap(Map<String, dynamic> map) {
     return SqlServerUserDetails(
       disabled: map['disabled'] == null ? null : map['disabled'] as bool,
-      serverRoles: map['serverRoles'] == null
-          ? null
-          : (map['serverRoles'] as List).cast<String>(),
+      serverRoles: map['serverRoles'] == null ? null : (map['serverRoles'] as List).cast<String>(),
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceIdentityArgs {
   /// The folder in which the resource belongs.
   final pulumi.Input<String> folder;
-
   /// The service to generate identity for.
   ///
   /// - - -
@@ -21,14 +20,15 @@ class ServiceIdentityArgs {
   ServiceIdentityArgs({
     required String folder,
     required String service,
-  })  : folder = pulumi.Input.asInput<String>(folder),
-        service = pulumi.Input.asInput<String>(service);
+  }) :
+      folder = pulumi.Input.asInput<String>(folder),
+      service = pulumi.Input.asInput<String>(service);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['folder'] = folder;
-    map['service'] = service;
-    return map;
+    return <String, dynamic>{
+      'folder': folder,
+      'service': service,
+    };
   }
 
   factory ServiceIdentityArgs.fromMap(Map<String, dynamic> map) {
@@ -38,3 +38,4 @@ class ServiceIdentityArgs {
     );
   }
 }
+

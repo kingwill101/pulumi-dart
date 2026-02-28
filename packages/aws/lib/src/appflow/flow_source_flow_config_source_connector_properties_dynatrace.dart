@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FlowSourceFlowConfigSourceConnectorPropertiesDynatrace {
   final String object;
 
@@ -10,15 +11,15 @@ class FlowSourceFlowConfigSourceConnectorPropertiesDynatrace {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['object'] = object;
-    return map;
+    return <String, dynamic>{
+      'object': object,
+    };
   }
 
-  factory FlowSourceFlowConfigSourceConnectorPropertiesDynatrace.fromMap(
-      Map<String, dynamic> map) {
+  factory FlowSourceFlowConfigSourceConnectorPropertiesDynatrace.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorPropertiesDynatrace(
       object: map['object'] as String,
     );
   }
 }
+

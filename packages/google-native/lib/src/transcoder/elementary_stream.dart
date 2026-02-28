@@ -8,13 +8,10 @@ import 'video_stream.dart';
 class ElementaryStream {
   /// Encoding of an audio stream.
   final AudioStream? audioStream;
-
   /// A unique key for this elementary stream.
   final String? key;
-
   /// Encoding of a text stream. For example, closed captions or subtitles.
   final TextStream? textStream;
-
   /// Encoding of a video stream.
   final VideoStream? videoStream;
 
@@ -31,41 +28,21 @@ class ElementaryStream {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final audioStreamValue = audioStream;
-    if (audioStreamValue != null) {
-      map['audioStream'] = audioStreamValue.toMap();
-    }
-    final keyValue = key;
-    if (keyValue != null) {
-      map['key'] = keyValue;
-    }
-    final textStreamValue = textStream;
-    if (textStreamValue != null) {
-      map['textStream'] = textStreamValue.toMap();
-    }
-    final videoStreamValue = videoStream;
-    if (videoStreamValue != null) {
-      map['videoStream'] = videoStreamValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'audioStream': ?audioStream == null ? null : audioStream!.toMap(),
+      'key': ?key,
+      'textStream': ?textStream == null ? null : textStream!.toMap(),
+      'videoStream': ?videoStream == null ? null : videoStream!.toMap(),
+    };
   }
 
   factory ElementaryStream.fromMap(Map<String, dynamic> map) {
     return ElementaryStream(
-      audioStream: map['audioStream'] == null
-          ? null
-          : AudioStream.fromMap(
-              (map['audioStream'] as Map).cast<String, dynamic>()),
+      audioStream: map['audioStream'] == null ? null : AudioStream.fromMap((map['audioStream'] as Map).cast<String, dynamic>()),
       key: map['key'] == null ? null : map['key'] as String,
-      textStream: map['textStream'] == null
-          ? null
-          : TextStream.fromMap(
-              (map['textStream'] as Map).cast<String, dynamic>()),
-      videoStream: map['videoStream'] == null
-          ? null
-          : VideoStream.fromMap(
-              (map['videoStream'] as Map).cast<String, dynamic>()),
+      textStream: map['textStream'] == null ? null : TextStream.fromMap((map['textStream'] as Map).cast<String, dynamic>()),
+      videoStream: map['videoStream'] == null ? null : VideoStream.fromMap((map['videoStream'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

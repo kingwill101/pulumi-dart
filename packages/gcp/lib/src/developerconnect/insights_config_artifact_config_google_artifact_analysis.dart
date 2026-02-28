@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InsightsConfigArtifactConfigGoogleArtifactAnalysis {
   /// The project id of the project where the provenance is stored.
   final String projectId;
@@ -11,15 +12,15 @@ class InsightsConfigArtifactConfigGoogleArtifactAnalysis {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['projectId'] = projectId;
-    return map;
+    return <String, dynamic>{
+      'projectId': projectId,
+    };
   }
 
-  factory InsightsConfigArtifactConfigGoogleArtifactAnalysis.fromMap(
-      Map<String, dynamic> map) {
+  factory InsightsConfigArtifactConfigGoogleArtifactAnalysis.fromMap(Map<String, dynamic> map) {
     return InsightsConfigArtifactConfigGoogleArtifactAnalysis(
       projectId: map['projectId'] as String,
     );
   }
 }
+

@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterIamRolesArgs {
   /// The name of the Redshift Cluster IAM Roles.
   final pulumi.Input<String> clusterIdentifier;
-
   /// The Amazon Resource Name (ARN) for the IAM role that was set as default for the cluster when the cluster was created.
   final pulumi.Input<String>? defaultIamRoleArn;
-
   /// A list of IAM Role ARNs to associate with the cluster. A Maximum of 10 can be associated to the cluster at any time.
   final pulumi.Input<List<String>>? iamRoleArns;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -29,40 +26,28 @@ class ClusterIamRolesArgs {
     String? defaultIamRoleArn,
     List<String>? iamRoleArns,
     String? region,
-  })  : clusterIdentifier = pulumi.Input.asInput<String>(clusterIdentifier),
-        defaultIamRoleArn =
-            pulumi.Input.asOptionalInput<String>(defaultIamRoleArn),
-        iamRoleArns = pulumi.Input.asOptionalInput<List<String>>(iamRoleArns),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      clusterIdentifier = pulumi.Input.asInput<String>(clusterIdentifier),
+      defaultIamRoleArn = pulumi.Input.asOptionalInput<String>(defaultIamRoleArn),
+      iamRoleArns = pulumi.Input.asOptionalInput<List<String>>(iamRoleArns),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clusterIdentifier'] = clusterIdentifier;
-    final defaultIamRoleArnValue = defaultIamRoleArn;
-    if (defaultIamRoleArnValue != null) {
-      map['defaultIamRoleArn'] = defaultIamRoleArnValue;
-    }
-    final iamRoleArnsValue = iamRoleArns;
-    if (iamRoleArnsValue != null) {
-      map['iamRoleArns'] = iamRoleArnsValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'clusterIdentifier': clusterIdentifier,
+      'defaultIamRoleArn': ?defaultIamRoleArn,
+      'iamRoleArns': ?iamRoleArns,
+      'region': ?region,
+    };
   }
 
   factory ClusterIamRolesArgs.fromMap(Map<String, dynamic> map) {
     return ClusterIamRolesArgs(
       clusterIdentifier: map['clusterIdentifier'] as String,
-      defaultIamRoleArn: map['defaultIamRoleArn'] == null
-          ? null
-          : map['defaultIamRoleArn'] as String,
-      iamRoleArns: map['iamRoleArns'] == null
-          ? null
-          : (map['iamRoleArns'] as List).cast<String>(),
+      defaultIamRoleArn: map['defaultIamRoleArn'] == null ? null : map['defaultIamRoleArn'] as String,
+      iamRoleArns: map['iamRoleArns'] == null ? null : (map['iamRoleArns'] as List).cast<String>(),
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

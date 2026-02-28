@@ -1,18 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDatabaseInstanceSettingInsightsConfig {
   /// True if Query Insights feature is enabled.
   final bool queryInsightsEnabled;
-
   /// Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5. For Enterprise Plus instances, from 0 to 200.
   final int queryPlansPerMinute;
-
   /// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1 to 1048576.
   final int queryStringLength;
-
   /// True if Query Insights will record application tags from query when enabled.
   final bool recordApplicationTags;
-
   /// True if Query Insights will record client address when enabled.
   final bool recordClientAddress;
 
@@ -31,17 +28,16 @@ class GetDatabaseInstanceSettingInsightsConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['queryInsightsEnabled'] = queryInsightsEnabled;
-    map['queryPlansPerMinute'] = queryPlansPerMinute;
-    map['queryStringLength'] = queryStringLength;
-    map['recordApplicationTags'] = recordApplicationTags;
-    map['recordClientAddress'] = recordClientAddress;
-    return map;
+    return <String, dynamic>{
+      'queryInsightsEnabled': queryInsightsEnabled,
+      'queryPlansPerMinute': queryPlansPerMinute,
+      'queryStringLength': queryStringLength,
+      'recordApplicationTags': recordApplicationTags,
+      'recordClientAddress': recordClientAddress,
+    };
   }
 
-  factory GetDatabaseInstanceSettingInsightsConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GetDatabaseInstanceSettingInsightsConfig.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstanceSettingInsightsConfig(
       queryInsightsEnabled: map['queryInsightsEnabled'] as bool,
       queryPlansPerMinute: map['queryPlansPerMinute'] as int,
@@ -51,3 +47,4 @@ class GetDatabaseInstanceSettingInsightsConfig {
     );
   }
 }
+

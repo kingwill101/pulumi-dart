@@ -298,34 +298,24 @@ import 'activation_args.dart';
 class Activation extends pulumi.CustomResource {
   /// The code the system generates when it processes the activation.
   late final pulumi.Output<String> activationCode;
-
   /// The description of the resource that you want to register.
   late final pulumi.Output<String?> description;
-
   /// UTC timestamp in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) by which this activation request should expire. The default value is 24 hours from resource creation time. This provider will only perform drift detection of its value when present in a configuration.
   late final pulumi.Output<String> expirationDate;
-
   /// If the current activation has expired.
   late final pulumi.Output<bool> expired;
-
   /// The IAM Role to attach to the managed instance.
   late final pulumi.Output<String> iamRole;
-
   /// The default name of the registered managed instance.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The number of managed instances that are currently registered using this activation.
   late final pulumi.Output<int> registrationCount;
-
   /// The maximum number of managed instances you want to register. The default value is 1 instance.
   late final pulumi.Output<int?> registrationLimit;
-
   /// A map of tags to assign to the object. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 

@@ -7,13 +7,10 @@ import 'service_service_connect_configuration_service.dart';
 class ServiceServiceConnectConfiguration {
   /// Whether to use Service Connect with this service.
   final bool enabled;
-
   /// Log configuration for the container. See below.
   final ServiceServiceConnectConfigurationLogConfiguration? logConfiguration;
-
   /// Namespace name or ARN of the `aws.servicediscovery.HttpNamespace` for use with Service Connect.
   final String? namespace;
-
   /// List of Service Connect service objects. See below.
   final List<ServiceServiceConnectConfigurationService>? services;
 
@@ -30,39 +27,21 @@ class ServiceServiceConnectConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    final logConfigurationValue = logConfiguration;
-    if (logConfigurationValue != null) {
-      map['logConfiguration'] = logConfigurationValue.toMap();
-    }
-    final namespaceValue = namespace;
-    if (namespaceValue != null) {
-      map['namespace'] = namespaceValue;
-    }
-    final servicesValue = services;
-    if (servicesValue != null) {
-      map['services'] = pulumi.Input.encodeList<
-          ServiceServiceConnectConfigurationService,
-          Map<String, dynamic>>(servicesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+      'logConfiguration': ?logConfiguration == null ? null : logConfiguration!.toMap(),
+      'namespace': ?namespace,
+      'services': ?services == null ? null : pulumi.Input.encodeList<ServiceServiceConnectConfigurationService, Map<String, dynamic>>(services!, (value) => value.toMap()),
+    };
   }
 
   factory ServiceServiceConnectConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceServiceConnectConfiguration(
       enabled: map['enabled'] as bool,
-      logConfiguration: map['logConfiguration'] == null
-          ? null
-          : ServiceServiceConnectConfigurationLogConfiguration.fromMap(
-              (map['logConfiguration'] as Map).cast<String, dynamic>()),
+      logConfiguration: map['logConfiguration'] == null ? null : ServiceServiceConnectConfigurationLogConfiguration.fromMap((map['logConfiguration'] as Map).cast<String, dynamic>()),
       namespace: map['namespace'] == null ? null : map['namespace'] as String,
-      services: map['services'] == null
-          ? null
-          : pulumi.Input.decodeList<ServiceServiceConnectConfigurationService>(
-              map['services'],
-              (value) => ServiceServiceConnectConfigurationService.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      services: map['services'] == null ? null : pulumi.Input.decodeList<ServiceServiceConnectConfigurationService>(map['services'], (value) => ServiceServiceConnectConfigurationService.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

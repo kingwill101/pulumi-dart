@@ -1,30 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getAccount.
 class GetAccountResult {
   final String accountId;
-
   /// Whether a service account is disabled or not.
   final bool disabled;
-
   /// The display name for the service account.
   final String displayName;
-
   /// The e-mail address of the service account. This value
   /// should be referenced from any `gcp.organizations.getIAMPolicy` data sources
   /// that would grant the service account privileges.
   final String email;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
   final String member;
-
   /// The fully-qualified name of the service account.
   final String name;
   final String? project;
-
   /// The unique id of the service account.
   final String uniqueId;
 
@@ -51,20 +45,17 @@ class GetAccountResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accountId'] = accountId;
-    map['disabled'] = disabled;
-    map['displayName'] = displayName;
-    map['email'] = email;
-    map['id'] = id;
-    map['member'] = member;
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['uniqueId'] = uniqueId;
-    return map;
+    return <String, dynamic>{
+      'accountId': accountId,
+      'disabled': disabled,
+      'displayName': displayName,
+      'email': email,
+      'id': id,
+      'member': member,
+      'name': name,
+      'project': ?project,
+      'uniqueId': uniqueId,
+    };
   }
 
   factory GetAccountResult.fromMap(Map<String, dynamic> map) {
@@ -81,3 +72,4 @@ class GetAccountResult {
     );
   }
 }
+

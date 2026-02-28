@@ -5,16 +5,11 @@ import 'bucket_metadata_configuration_metadata_configuration_journal_table_confi
 
 class BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration {
   /// Encryption configuration for the journal table. See `encryption_configuration` Block for details.
-  final BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration?
-      encryptionConfiguration;
-
+  final BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration? encryptionConfiguration;
   /// Journal table record expiration settings. See `record_expiration` Block for details.
-  final BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpiration
-      recordExpiration;
-
+  final BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpiration recordExpiration;
   /// Journal table ARN.
   final String? tableArn;
-
   /// Journal table name.
   final String? tableName;
 
@@ -31,37 +26,21 @@ class BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration 
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final encryptionConfigurationValue = encryptionConfiguration;
-    if (encryptionConfigurationValue != null) {
-      map['encryptionConfiguration'] = encryptionConfigurationValue.toMap();
-    }
-    map['recordExpiration'] = recordExpiration.toMap();
-    final tableArnValue = tableArn;
-    if (tableArnValue != null) {
-      map['tableArn'] = tableArnValue;
-    }
-    final tableNameValue = tableName;
-    if (tableNameValue != null) {
-      map['tableName'] = tableNameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'encryptionConfiguration': ?encryptionConfiguration == null ? null : encryptionConfiguration!.toMap(),
+      'recordExpiration': recordExpiration.toMap(),
+      'tableArn': ?tableArn,
+      'tableName': ?tableName,
+    };
   }
 
-  factory BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration.fromMap(Map<String, dynamic> map) {
     return BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration(
-      encryptionConfiguration: map['encryptionConfiguration'] == null
-          ? null
-          : BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration
-              .fromMap((map['encryptionConfiguration'] as Map)
-                  .cast<String, dynamic>()),
-      recordExpiration:
-          BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpiration
-              .fromMap(
-                  (map['recordExpiration'] as Map).cast<String, dynamic>()),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>()),
+      recordExpiration: BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpiration.fromMap((map['recordExpiration'] as Map).cast<String, dynamic>()),
       tableArn: map['tableArn'] == null ? null : map['tableArn'] as String,
       tableName: map['tableName'] == null ? null : map['tableName'] as String,
     );
   }
 }
+

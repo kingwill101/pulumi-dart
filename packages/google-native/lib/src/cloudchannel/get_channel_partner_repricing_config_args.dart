@@ -19,27 +19,25 @@ class GetChannelPartnerRepricingConfigArgs {
     required String accountId,
     required String channelPartnerLinkId,
     required String channelPartnerRepricingConfigId,
-  })  : accountId = pulumi.Input.asInput<String>(accountId),
-        channelPartnerLinkId =
-            pulumi.Input.asInput<String>(channelPartnerLinkId),
-        channelPartnerRepricingConfigId =
-            pulumi.Input.asInput<String>(channelPartnerRepricingConfigId);
+  }) :
+      accountId = pulumi.Input.asInput<String>(accountId),
+      channelPartnerLinkId = pulumi.Input.asInput<String>(channelPartnerLinkId),
+      channelPartnerRepricingConfigId = pulumi.Input.asInput<String>(channelPartnerRepricingConfigId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accountId'] = accountId;
-    map['channelPartnerLinkId'] = channelPartnerLinkId;
-    map['channelPartnerRepricingConfigId'] = channelPartnerRepricingConfigId;
-    return map;
+    return <String, dynamic>{
+      'accountId': accountId,
+      'channelPartnerLinkId': channelPartnerLinkId,
+      'channelPartnerRepricingConfigId': channelPartnerRepricingConfigId,
+    };
   }
 
-  factory GetChannelPartnerRepricingConfigArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetChannelPartnerRepricingConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetChannelPartnerRepricingConfigArgs(
       accountId: map['accountId'] as String,
       channelPartnerLinkId: map['channelPartnerLinkId'] as String,
-      channelPartnerRepricingConfigId:
-          map['channelPartnerRepricingConfigId'] as String,
+      channelPartnerRepricingConfigId: map['channelPartnerRepricingConfigId'] as String,
     );
   }
 }
+

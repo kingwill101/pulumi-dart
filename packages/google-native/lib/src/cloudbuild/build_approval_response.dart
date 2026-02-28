@@ -7,10 +7,8 @@ import 'approval_result_response.dart';
 class BuildApprovalResponse {
   /// Configuration for manual approval of this build.
   final ApprovalConfigResponse config;
-
   /// Result of manual approval for this Build.
   final ApprovalResultResponse result;
-
   /// The state of this build's approval.
   final String state;
 
@@ -25,20 +23,19 @@ class BuildApprovalResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['config'] = config.toMap();
-    map['result'] = result.toMap();
-    map['state'] = state;
-    return map;
+    return <String, dynamic>{
+      'config': config.toMap(),
+      'result': result.toMap(),
+      'state': state,
+    };
   }
 
   factory BuildApprovalResponse.fromMap(Map<String, dynamic> map) {
     return BuildApprovalResponse(
-      config: ApprovalConfigResponse.fromMap(
-          (map['config'] as Map).cast<String, dynamic>()),
-      result: ApprovalResultResponse.fromMap(
-          (map['result'] as Map).cast<String, dynamic>()),
+      config: ApprovalConfigResponse.fromMap((map['config'] as Map).cast<String, dynamic>()),
+      result: ApprovalResultResponse.fromMap((map['result'] as Map).cast<String, dynamic>()),
       state: map['state'] as String,
     );
   }
 }
+

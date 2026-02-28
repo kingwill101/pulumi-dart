@@ -6,8 +6,7 @@ import 'get_repository_virtual_repository_config_upstream_policy.dart';
 class GetRepositoryVirtualRepositoryConfig {
   /// Policies that configure the upstream artifacts distributed by the Virtual
   /// Repository. Upstream policies cannot be set on a standard repository.
-  final List<GetRepositoryVirtualRepositoryConfigUpstreamPolicy>
-      upstreamPolicies;
+  final List<GetRepositoryVirtualRepositoryConfigUpstreamPolicy> upstreamPolicies;
 
   /// Creates a new [GetRepositoryVirtualRepositoryConfig].
   /// [upstreamPolicies] Policies that configure the upstream artifacts distributed by the Virtual
@@ -16,21 +15,15 @@ class GetRepositoryVirtualRepositoryConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['upstreamPolicies'] = pulumi.Input.encodeList<
-        GetRepositoryVirtualRepositoryConfigUpstreamPolicy,
-        Map<String, dynamic>>(upstreamPolicies, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'upstreamPolicies': pulumi.Input.encodeList<GetRepositoryVirtualRepositoryConfigUpstreamPolicy, Map<String, dynamic>>(upstreamPolicies, (value) => value.toMap()),
+    };
   }
 
-  factory GetRepositoryVirtualRepositoryConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GetRepositoryVirtualRepositoryConfig.fromMap(Map<String, dynamic> map) {
     return GetRepositoryVirtualRepositoryConfig(
-      upstreamPolicies: pulumi.Input.decodeList<
-              GetRepositoryVirtualRepositoryConfigUpstreamPolicy>(
-          map['upstreamPolicies'],
-          (value) => GetRepositoryVirtualRepositoryConfigUpstreamPolicy.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      upstreamPolicies: pulumi.Input.decodeList<GetRepositoryVirtualRepositoryConfigUpstreamPolicy>(map['upstreamPolicies'], (value) => GetRepositoryVirtualRepositoryConfigUpstreamPolicy.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

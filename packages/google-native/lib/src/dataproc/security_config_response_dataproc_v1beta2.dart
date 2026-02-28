@@ -14,16 +14,15 @@ class SecurityConfigResponseDataprocV1beta2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kerberosConfig'] = kerberosConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'kerberosConfig': kerberosConfig.toMap(),
+    };
   }
 
-  factory SecurityConfigResponseDataprocV1beta2.fromMap(
-      Map<String, dynamic> map) {
+  factory SecurityConfigResponseDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return SecurityConfigResponseDataprocV1beta2(
-      kerberosConfig: KerberosConfigResponseDataprocV1beta2.fromMap(
-          (map['kerberosConfig'] as Map).cast<String, dynamic>()),
+      kerberosConfig: KerberosConfigResponseDataprocV1beta2.fromMap((map['kerberosConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -7,15 +7,13 @@ enum TemplateContentsInterpreterDeploymentmanagerV2beta {
   const TemplateContentsInterpreterDeploymentmanagerV2beta(this.value);
   final String value;
 
-  static TemplateContentsInterpreterDeploymentmanagerV2beta fromValue(
-      String value) {
-    for (final item
-        in TemplateContentsInterpreterDeploymentmanagerV2beta.values) {
+  static TemplateContentsInterpreterDeploymentmanagerV2beta fromValue(String value) {
+    for (final item in TemplateContentsInterpreterDeploymentmanagerV2beta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown TemplateContentsInterpreterDeploymentmanagerV2beta value: $value');
+    throw ArgumentError('Unknown TemplateContentsInterpreterDeploymentmanagerV2beta value: $value');
   }
 }
+

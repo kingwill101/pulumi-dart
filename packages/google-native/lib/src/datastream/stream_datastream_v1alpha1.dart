@@ -9,51 +9,35 @@ import 'stream_datastream_v1alpha1_args.dart';
 /// Auto-naming is currently not supported for this resource.
 class StreamDatastreamV1alpha1 extends pulumi.CustomResource {
   /// Automatically backfill objects included in the stream source configuration. Specific objects can be excluded.
-  late final pulumi.Output<BackfillAllStrategyResponseDatastreamV1alpha1>
-      backfillAll;
-
+  late final pulumi.Output<BackfillAllStrategyResponseDatastreamV1alpha1> backfillAll;
   /// Do not automatically backfill any objects.
   late final pulumi.Output<Map<String, dynamic>> backfillNone;
-
   /// The creation time of the stream.
   late final pulumi.Output<String> createTime;
-
   /// Immutable. A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
   late final pulumi.Output<String> customerManagedEncryptionKey;
-
   /// Destination connection profile configuration.
-  late final pulumi.Output<DestinationConfigResponseDatastreamV1alpha1>
-      destinationConfig;
-
+  late final pulumi.Output<DestinationConfigResponseDatastreamV1alpha1> destinationConfig;
   /// Display name.
   late final pulumi.Output<String> displayName;
-
   /// Errors on the Stream.
   late final pulumi.Output<List<ErrorResponseDatastreamV1alpha1>> errors;
-
   /// Optional. Create the stream without validating it.
   late final pulumi.Output<bool?> force;
-
   /// Labels.
   late final pulumi.Output<Map<String, String>> labels;
   late final pulumi.Output<String> location;
-
   /// The stream's name.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   late final pulumi.Output<String?> requestId;
-
   /// Source connection profile configuration.
   late final pulumi.Output<SourceConfigResponseDatastreamV1alpha1> sourceConfig;
-
   /// The state of the stream.
   late final pulumi.Output<String> state;
-
   /// Required. The stream identifier.
   late final pulumi.Output<String> streamId;
-
   /// The last update time of the stream.
   late final pulumi.Output<String> updateTime;
 
@@ -71,27 +55,20 @@ class StreamDatastreamV1alpha1 extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.backfillAll =
-        registerOutput<BackfillAllStrategyResponseDatastreamV1alpha1>(
-            'backfillAll');
+    this.backfillAll = registerOutput<BackfillAllStrategyResponseDatastreamV1alpha1>('backfillAll');
     this.backfillNone = registerOutput<Map<String, dynamic>>('backfillNone');
     this.createTime = registerOutput<String>('createTime');
-    this.customerManagedEncryptionKey =
-        registerOutput<String>('customerManagedEncryptionKey');
-    this.destinationConfig =
-        registerOutput<DestinationConfigResponseDatastreamV1alpha1>(
-            'destinationConfig');
+    this.customerManagedEncryptionKey = registerOutput<String>('customerManagedEncryptionKey');
+    this.destinationConfig = registerOutput<DestinationConfigResponseDatastreamV1alpha1>('destinationConfig');
     this.displayName = registerOutput<String>('displayName');
-    this.errors =
-        registerOutput<List<ErrorResponseDatastreamV1alpha1>>('errors');
+    this.errors = registerOutput<List<ErrorResponseDatastreamV1alpha1>>('errors');
     this.force = registerOutput<bool?>('force');
     this.labels = registerOutput<Map<String, String>>('labels');
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
     this.requestId = registerOutput<String?>('requestId');
-    this.sourceConfig =
-        registerOutput<SourceConfigResponseDatastreamV1alpha1>('sourceConfig');
+    this.sourceConfig = registerOutput<SourceConfigResponseDatastreamV1alpha1>('sourceConfig');
     this.state = registerOutput<String>('state');
     this.streamId = registerOutput<String>('streamId');
     this.updateTime = registerOutput<String>('updateTime');

@@ -9,15 +9,12 @@ class GrpcRouteRuleAction {
   /// The destination to which traffic should be forwarded.
   /// Structure is documented below.
   final List<GrpcRouteRuleActionDestination>? destinations;
-
   /// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
   /// Structure is documented below.
   final GrpcRouteRuleActionFaultInjectionPolicy? faultInjectionPolicy;
-
   /// Specifies the retry policy associated with this route.
   /// Structure is documented below.
   final GrpcRouteRuleActionRetryPolicy? retryPolicy;
-
   /// Specifies the timeout for selected route.
   final String? timeout;
 
@@ -34,45 +31,21 @@ class GrpcRouteRuleAction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final destinationsValue = destinations;
-    if (destinationsValue != null) {
-      map['destinations'] = pulumi.Input.encodeList<
-          GrpcRouteRuleActionDestination,
-          Map<String, dynamic>>(destinationsValue, (value) => value.toMap());
-    }
-    final faultInjectionPolicyValue = faultInjectionPolicy;
-    if (faultInjectionPolicyValue != null) {
-      map['faultInjectionPolicy'] = faultInjectionPolicyValue.toMap();
-    }
-    final retryPolicyValue = retryPolicy;
-    if (retryPolicyValue != null) {
-      map['retryPolicy'] = retryPolicyValue.toMap();
-    }
-    final timeoutValue = timeout;
-    if (timeoutValue != null) {
-      map['timeout'] = timeoutValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'destinations': ?destinations == null ? null : pulumi.Input.encodeList<GrpcRouteRuleActionDestination, Map<String, dynamic>>(destinations!, (value) => value.toMap()),
+      'faultInjectionPolicy': ?faultInjectionPolicy == null ? null : faultInjectionPolicy!.toMap(),
+      'retryPolicy': ?retryPolicy == null ? null : retryPolicy!.toMap(),
+      'timeout': ?timeout,
+    };
   }
 
   factory GrpcRouteRuleAction.fromMap(Map<String, dynamic> map) {
     return GrpcRouteRuleAction(
-      destinations: map['destinations'] == null
-          ? null
-          : pulumi.Input.decodeList<GrpcRouteRuleActionDestination>(
-              map['destinations'],
-              (value) => GrpcRouteRuleActionDestination.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      faultInjectionPolicy: map['faultInjectionPolicy'] == null
-          ? null
-          : GrpcRouteRuleActionFaultInjectionPolicy.fromMap(
-              (map['faultInjectionPolicy'] as Map).cast<String, dynamic>()),
-      retryPolicy: map['retryPolicy'] == null
-          ? null
-          : GrpcRouteRuleActionRetryPolicy.fromMap(
-              (map['retryPolicy'] as Map).cast<String, dynamic>()),
+      destinations: map['destinations'] == null ? null : pulumi.Input.decodeList<GrpcRouteRuleActionDestination>(map['destinations'], (value) => GrpcRouteRuleActionDestination.fromMap((value as Map).cast<String, dynamic>())),
+      faultInjectionPolicy: map['faultInjectionPolicy'] == null ? null : GrpcRouteRuleActionFaultInjectionPolicy.fromMap((map['faultInjectionPolicy'] as Map).cast<String, dynamic>()),
+      retryPolicy: map['retryPolicy'] == null ? null : GrpcRouteRuleActionRetryPolicy.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>()),
       timeout: map['timeout'] == null ? null : map['timeout'] as String,
     );
   }
 }
+

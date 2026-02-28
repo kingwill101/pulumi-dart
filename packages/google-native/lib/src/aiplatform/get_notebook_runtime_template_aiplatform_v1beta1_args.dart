@@ -19,24 +19,20 @@ class GetNotebookRuntimeTemplateAiplatformV1beta1Args {
     required String location,
     required String notebookRuntimeTemplateId,
     String? project,
-  })  : location = pulumi.Input.asInput<String>(location),
-        notebookRuntimeTemplateId =
-            pulumi.Input.asInput<String>(notebookRuntimeTemplateId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      notebookRuntimeTemplateId = pulumi.Input.asInput<String>(notebookRuntimeTemplateId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    map['notebookRuntimeTemplateId'] = notebookRuntimeTemplateId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'notebookRuntimeTemplateId': notebookRuntimeTemplateId,
+      'project': ?project,
+    };
   }
 
-  factory GetNotebookRuntimeTemplateAiplatformV1beta1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetNotebookRuntimeTemplateAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetNotebookRuntimeTemplateAiplatformV1beta1Args(
       location: map['location'] as String,
       notebookRuntimeTemplateId: map['notebookRuntimeTemplateId'] as String,
@@ -44,3 +40,4 @@ class GetNotebookRuntimeTemplateAiplatformV1beta1Args {
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'duration_compute_v1.dart';
 class ConsistentHashLoadBalancerSettingsHttpCookieComputeV1 {
   /// Name of the cookie.
   final String? name;
-
   /// Path to set for the cookie.
   final String? path;
-
   /// Lifetime of the cookie.
   final DurationComputeV1? ttl;
 
@@ -24,31 +22,19 @@ class ConsistentHashLoadBalancerSettingsHttpCookieComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final pathValue = path;
-    if (pathValue != null) {
-      map['path'] = pathValue;
-    }
-    final ttlValue = ttl;
-    if (ttlValue != null) {
-      map['ttl'] = ttlValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+      'path': ?path,
+      'ttl': ?ttl == null ? null : ttl!.toMap(),
+    };
   }
 
-  factory ConsistentHashLoadBalancerSettingsHttpCookieComputeV1.fromMap(
-      Map<String, dynamic> map) {
+  factory ConsistentHashLoadBalancerSettingsHttpCookieComputeV1.fromMap(Map<String, dynamic> map) {
     return ConsistentHashLoadBalancerSettingsHttpCookieComputeV1(
       name: map['name'] == null ? null : map['name'] as String,
       path: map['path'] == null ? null : map['path'] as String,
-      ttl: map['ttl'] == null
-          ? null
-          : DurationComputeV1.fromMap(
-              (map['ttl'] as Map).cast<String, dynamic>()),
+      ttl: map['ttl'] == null ? null : DurationComputeV1.fromMap((map['ttl'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

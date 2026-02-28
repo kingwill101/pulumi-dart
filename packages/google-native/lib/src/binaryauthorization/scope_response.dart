@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A scope specifier for `CheckSet` objects.
 class ScopeResponse {
   /// Optional. Matches all Kubernetes service accounts in the provided namespace, unless a more specific `kubernetes_service_account` scope already matched.
   final String kubernetesNamespace;
-
   /// Optional. Matches a single Kubernetes service account, e.g. `my-namespace:my-service-account`. `kubernetes_service_account` scope is always more specific than `kubernetes_namespace` scope for the same namespace.
   final String kubernetesServiceAccount;
 
@@ -17,10 +17,10 @@ class ScopeResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kubernetesNamespace'] = kubernetesNamespace;
-    map['kubernetesServiceAccount'] = kubernetesServiceAccount;
-    return map;
+    return <String, dynamic>{
+      'kubernetesNamespace': kubernetesNamespace,
+      'kubernetesServiceAccount': kubernetesServiceAccount,
+    };
   }
 
   factory ScopeResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class ScopeResponse {
     );
   }
 }
+

@@ -16,14 +16,15 @@ class GetFolderPolicyArgs {
   GetFolderPolicyArgs({
     required String folderId,
     required String policyId,
-  })  : folderId = pulumi.Input.asInput<String>(folderId),
-        policyId = pulumi.Input.asInput<String>(policyId);
+  }) :
+      folderId = pulumi.Input.asInput<String>(folderId),
+      policyId = pulumi.Input.asInput<String>(policyId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['folderId'] = folderId;
-    map['policyId'] = policyId;
-    return map;
+    return <String, dynamic>{
+      'folderId': folderId,
+      'policyId': policyId,
+    };
   }
 
   factory GetFolderPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -33,3 +34,4 @@ class GetFolderPolicyArgs {
     );
   }
 }
+

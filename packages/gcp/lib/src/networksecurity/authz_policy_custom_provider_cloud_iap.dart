@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AuthzPolicyCustomProviderCloudIap {
   /// Enable Cloud IAP at the AuthzPolicy level.
   final bool enabled;
@@ -11,9 +12,9 @@ class AuthzPolicyCustomProviderCloudIap {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory AuthzPolicyCustomProviderCloudIap.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class AuthzPolicyCustomProviderCloudIap {
     );
   }
 }
+

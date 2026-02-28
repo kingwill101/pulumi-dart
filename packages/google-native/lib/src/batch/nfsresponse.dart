@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents an NFS volume.
 class NFSResponse {
   /// Remote source path exported from the NFS, e.g., "/share".
   final String remotePath;
-
   /// The IP address of the NFS.
   final String server;
 
@@ -17,10 +17,10 @@ class NFSResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['remotePath'] = remotePath;
-    map['server'] = server;
-    return map;
+    return <String, dynamic>{
+      'remotePath': remotePath,
+      'server': server,
+    };
   }
 
   factory NFSResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class NFSResponse {
     );
   }
 }
+

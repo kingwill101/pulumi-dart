@@ -1,21 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getVault.
 class GetVaultResult {
   /// ARN of the vault.
   final String arn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Server-side encryption key that is used to protect your backups.
   final String kmsKeyArn;
   final String name;
-
   /// Number of recovery points that are stored in a backup vault.
   final int recoveryPoints;
   final String region;
-
   /// Metadata that you can assign to help organize the resources that you create.
   final Map<String, String> tags;
 
@@ -38,15 +35,15 @@ class GetVaultResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['id'] = id;
-    map['kmsKeyArn'] = kmsKeyArn;
-    map['name'] = name;
-    map['recoveryPoints'] = recoveryPoints;
-    map['region'] = region;
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'id': id,
+      'kmsKeyArn': kmsKeyArn,
+      'name': name,
+      'recoveryPoints': recoveryPoints,
+      'region': region,
+      'tags': tags,
+    };
   }
 
   factory GetVaultResult.fromMap(Map<String, dynamic> map) {
@@ -61,3 +58,4 @@ class GetVaultResult {
     );
   }
 }
+

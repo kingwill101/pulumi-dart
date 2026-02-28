@@ -15,23 +15,15 @@ class Tpu {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nodeSpecValue = nodeSpec;
-    if (nodeSpecValue != null) {
-      map['nodeSpec'] = pulumi.Input.encodeList<NodeSpec, Map<String, dynamic>>(
-          nodeSpecValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'nodeSpec': ?nodeSpec == null ? null : pulumi.Input.encodeList<NodeSpec, Map<String, dynamic>>(nodeSpec!, (value) => value.toMap()),
+    };
   }
 
   factory Tpu.fromMap(Map<String, dynamic> map) {
     return Tpu(
-      nodeSpec: map['nodeSpec'] == null
-          ? null
-          : pulumi.Input.decodeList<NodeSpec>(
-              map['nodeSpec'],
-              (value) =>
-                  NodeSpec.fromMap((value as Map).cast<String, dynamic>())),
+      nodeSpec: map['nodeSpec'] == null ? null : pulumi.Input.decodeList<NodeSpec>(map['nodeSpec'], (value) => NodeSpec.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

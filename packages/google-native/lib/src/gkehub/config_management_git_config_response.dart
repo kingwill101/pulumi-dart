@@ -1,28 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Git repo configuration for a single cluster.
 class ConfigManagementGitConfigResponse {
   /// The Google Cloud Service Account Email used for auth when secret_type is gcpServiceAccount.
   final String gcpServiceAccountEmail;
-
   /// URL for the HTTPS proxy to be used when communicating with the Git repo.
   final String httpsProxy;
-
   /// The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
   final String policyDir;
-
   /// Type of secret configured for access to the Git repo. Must be one of ssh, cookiefile, gcenode, token, gcpserviceaccount or none. The validation of this is case-sensitive. Required.
   final String secretType;
-
   /// The branch of the repository to sync from. Default: master.
   final String syncBranch;
-
   /// The URL of the Git repository to use as the source of truth.
   final String syncRepo;
-
   /// Git revision (tag or hash) to check out. Default HEAD.
   final String syncRev;
-
   /// Period in seconds between consecutive syncs. Default: 15.
   final String syncWaitSecs;
 
@@ -47,16 +41,16 @@ class ConfigManagementGitConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gcpServiceAccountEmail'] = gcpServiceAccountEmail;
-    map['httpsProxy'] = httpsProxy;
-    map['policyDir'] = policyDir;
-    map['secretType'] = secretType;
-    map['syncBranch'] = syncBranch;
-    map['syncRepo'] = syncRepo;
-    map['syncRev'] = syncRev;
-    map['syncWaitSecs'] = syncWaitSecs;
-    return map;
+    return <String, dynamic>{
+      'gcpServiceAccountEmail': gcpServiceAccountEmail,
+      'httpsProxy': httpsProxy,
+      'policyDir': policyDir,
+      'secretType': secretType,
+      'syncBranch': syncBranch,
+      'syncRepo': syncRepo,
+      'syncRev': syncRev,
+      'syncWaitSecs': syncWaitSecs,
+    };
   }
 
   factory ConfigManagementGitConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -72,3 +66,4 @@ class ConfigManagementGitConfigResponse {
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RuleRetentionPeriod {
   /// Unit of time in which the retention period is measured. Currently, only DAYS is supported.
   final String retentionPeriodUnit;
-
   /// Period value for which the retention rule is to retain resources. The period is measured using the unit specified for RetentionPeriodUnit.
   final int retentionPeriodValue;
 
@@ -16,10 +16,10 @@ class RuleRetentionPeriod {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['retentionPeriodUnit'] = retentionPeriodUnit;
-    map['retentionPeriodValue'] = retentionPeriodValue;
-    return map;
+    return <String, dynamic>{
+      'retentionPeriodUnit': retentionPeriodUnit,
+      'retentionPeriodValue': retentionPeriodValue,
+    };
   }
 
   factory RuleRetentionPeriod.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class RuleRetentionPeriod {
     );
   }
 }
+

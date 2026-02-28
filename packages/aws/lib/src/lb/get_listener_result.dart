@@ -10,7 +10,6 @@ class GetListenerResult {
   final String arn;
   final String certificateArn;
   final List<GetListenerDefaultAction> defaultActions;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String loadBalancerArn;
@@ -50,24 +49,20 @@ class GetListenerResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['alpnPolicy'] = alpnPolicy;
-    map['arn'] = arn;
-    map['certificateArn'] = certificateArn;
-    map['defaultActions'] =
-        pulumi.Input.encodeList<GetListenerDefaultAction, Map<String, dynamic>>(
-            defaultActions, (value) => value.toMap());
-    map['id'] = id;
-    map['loadBalancerArn'] = loadBalancerArn;
-    map['mutualAuthentications'] = pulumi.Input.encodeList<
-        GetListenerMutualAuthentication,
-        Map<String, dynamic>>(mutualAuthentications, (value) => value.toMap());
-    map['port'] = port;
-    map['protocol'] = protocol;
-    map['region'] = region;
-    map['sslPolicy'] = sslPolicy;
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'alpnPolicy': alpnPolicy,
+      'arn': arn,
+      'certificateArn': certificateArn,
+      'defaultActions': pulumi.Input.encodeList<GetListenerDefaultAction, Map<String, dynamic>>(defaultActions, (value) => value.toMap()),
+      'id': id,
+      'loadBalancerArn': loadBalancerArn,
+      'mutualAuthentications': pulumi.Input.encodeList<GetListenerMutualAuthentication, Map<String, dynamic>>(mutualAuthentications, (value) => value.toMap()),
+      'port': port,
+      'protocol': protocol,
+      'region': region,
+      'sslPolicy': sslPolicy,
+      'tags': tags,
+    };
   }
 
   factory GetListenerResult.fromMap(Map<String, dynamic> map) {
@@ -75,17 +70,10 @@ class GetListenerResult {
       alpnPolicy: map['alpnPolicy'] as String,
       arn: map['arn'] as String,
       certificateArn: map['certificateArn'] as String,
-      defaultActions: pulumi.Input.decodeList<GetListenerDefaultAction>(
-          map['defaultActions'],
-          (value) => GetListenerDefaultAction.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      defaultActions: pulumi.Input.decodeList<GetListenerDefaultAction>(map['defaultActions'], (value) => GetListenerDefaultAction.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       loadBalancerArn: map['loadBalancerArn'] as String,
-      mutualAuthentications:
-          pulumi.Input.decodeList<GetListenerMutualAuthentication>(
-              map['mutualAuthentications'],
-              (value) => GetListenerMutualAuthentication.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      mutualAuthentications: pulumi.Input.decodeList<GetListenerMutualAuthentication>(map['mutualAuthentications'], (value) => GetListenerMutualAuthentication.fromMap((value as Map).cast<String, dynamic>())),
       port: map['port'] as int,
       protocol: map['protocol'] as String,
       region: map['region'] as String,
@@ -94,3 +82,4 @@ class GetListenerResult {
     );
   }
 }
+

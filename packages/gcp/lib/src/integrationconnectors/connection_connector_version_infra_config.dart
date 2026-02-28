@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConnectionConnectorVersionInfraConfig {
   /// (Output)
   /// Max QPS supported by the connector version before throttling of requests.
@@ -12,20 +13,15 @@ class ConnectionConnectorVersionInfraConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final ratelimitThresholdValue = ratelimitThreshold;
-    if (ratelimitThresholdValue != null) {
-      map['ratelimitThreshold'] = ratelimitThresholdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'ratelimitThreshold': ?ratelimitThreshold,
+    };
   }
 
-  factory ConnectionConnectorVersionInfraConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory ConnectionConnectorVersionInfraConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionConnectorVersionInfraConfig(
-      ratelimitThreshold: map['ratelimitThreshold'] == null
-          ? null
-          : map['ratelimitThreshold'] as String,
+      ratelimitThreshold: map['ratelimitThreshold'] == null ? null : map['ratelimitThreshold'] as String,
     );
   }
 }
+

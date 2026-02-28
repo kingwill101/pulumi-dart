@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EventSourceMappingMetricsConfig {
   /// List containing the metrics to be produced by the event source mapping. Valid values: `EventCount`.
   final List<String> metrics;
@@ -11,9 +12,9 @@ class EventSourceMappingMetricsConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['metrics'] = metrics;
-    return map;
+    return <String, dynamic>{
+      'metrics': metrics,
+    };
   }
 
   factory EventSourceMappingMetricsConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class EventSourceMappingMetricsConfig {
     );
   }
 }
+

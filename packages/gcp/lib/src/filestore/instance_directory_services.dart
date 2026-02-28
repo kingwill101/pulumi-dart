@@ -14,20 +14,15 @@ class InstanceDirectoryServices {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final ldapValue = ldap;
-    if (ldapValue != null) {
-      map['ldap'] = ldapValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'ldap': ?ldap == null ? null : ldap!.toMap(),
+    };
   }
 
   factory InstanceDirectoryServices.fromMap(Map<String, dynamic> map) {
     return InstanceDirectoryServices(
-      ldap: map['ldap'] == null
-          ? null
-          : InstanceDirectoryServicesLdap.fromMap(
-              (map['ldap'] as Map).cast<String, dynamic>()),
+      ldap: map['ldap'] == null ? null : InstanceDirectoryServicesLdap.fromMap((map['ldap'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

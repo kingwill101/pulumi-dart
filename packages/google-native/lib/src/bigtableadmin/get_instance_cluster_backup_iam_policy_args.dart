@@ -22,25 +22,22 @@ class GetInstanceClusterBackupIamPolicyArgs {
     required String clusterId,
     required String instanceId,
     String? project,
-  })  : backupId = pulumi.Input.asInput<String>(backupId),
-        clusterId = pulumi.Input.asInput<String>(clusterId),
-        instanceId = pulumi.Input.asInput<String>(instanceId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      backupId = pulumi.Input.asInput<String>(backupId),
+      clusterId = pulumi.Input.asInput<String>(clusterId),
+      instanceId = pulumi.Input.asInput<String>(instanceId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['backupId'] = backupId;
-    map['clusterId'] = clusterId;
-    map['instanceId'] = instanceId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'backupId': backupId,
+      'clusterId': clusterId,
+      'instanceId': instanceId,
+      'project': ?project,
+    };
   }
 
-  factory GetInstanceClusterBackupIamPolicyArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetInstanceClusterBackupIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceClusterBackupIamPolicyArgs(
       backupId: map['backupId'] as String,
       clusterId: map['clusterId'] as String,
@@ -49,3 +46,4 @@ class GetInstanceClusterBackupIamPolicyArgs {
     );
   }
 }
+

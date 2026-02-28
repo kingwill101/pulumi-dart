@@ -7,11 +7,8 @@ import 'organization_configuration_datasources_s3_logs.dart';
 class OrganizationConfigurationDatasources {
   /// Enable Kubernetes Audit Logs Monitoring automatically for new member accounts.
   final OrganizationConfigurationDatasourcesKubernetes? kubernetes;
-
   /// Enable Malware Protection automatically for new member accounts.
-  final OrganizationConfigurationDatasourcesMalwareProtection?
-      malwareProtection;
-
+  final OrganizationConfigurationDatasourcesMalwareProtection? malwareProtection;
   /// Enable S3 Protection automatically for new member accounts.
   final OrganizationConfigurationDatasourcesS3Logs? s3Logs;
 
@@ -26,37 +23,19 @@ class OrganizationConfigurationDatasources {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final kubernetesValue = kubernetes;
-    if (kubernetesValue != null) {
-      map['kubernetes'] = kubernetesValue.toMap();
-    }
-    final malwareProtectionValue = malwareProtection;
-    if (malwareProtectionValue != null) {
-      map['malwareProtection'] = malwareProtectionValue.toMap();
-    }
-    final s3LogsValue = s3Logs;
-    if (s3LogsValue != null) {
-      map['s3Logs'] = s3LogsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'kubernetes': ?kubernetes == null ? null : kubernetes!.toMap(),
+      'malwareProtection': ?malwareProtection == null ? null : malwareProtection!.toMap(),
+      's3Logs': ?s3Logs == null ? null : s3Logs!.toMap(),
+    };
   }
 
-  factory OrganizationConfigurationDatasources.fromMap(
-      Map<String, dynamic> map) {
+  factory OrganizationConfigurationDatasources.fromMap(Map<String, dynamic> map) {
     return OrganizationConfigurationDatasources(
-      kubernetes: map['kubernetes'] == null
-          ? null
-          : OrganizationConfigurationDatasourcesKubernetes.fromMap(
-              (map['kubernetes'] as Map).cast<String, dynamic>()),
-      malwareProtection: map['malwareProtection'] == null
-          ? null
-          : OrganizationConfigurationDatasourcesMalwareProtection.fromMap(
-              (map['malwareProtection'] as Map).cast<String, dynamic>()),
-      s3Logs: map['s3Logs'] == null
-          ? null
-          : OrganizationConfigurationDatasourcesS3Logs.fromMap(
-              (map['s3Logs'] as Map).cast<String, dynamic>()),
+      kubernetes: map['kubernetes'] == null ? null : OrganizationConfigurationDatasourcesKubernetes.fromMap((map['kubernetes'] as Map).cast<String, dynamic>()),
+      malwareProtection: map['malwareProtection'] == null ? null : OrganizationConfigurationDatasourcesMalwareProtection.fromMap((map['malwareProtection'] as Map).cast<String, dynamic>()),
+      s3Logs: map['s3Logs'] == null ? null : OrganizationConfigurationDatasourcesS3Logs.fromMap((map['s3Logs'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

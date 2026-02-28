@@ -14,20 +14,15 @@ class GetClusterNodePoolDefault {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['nodeConfigDefaults'] = pulumi.Input.encodeList<
-        GetClusterNodePoolDefaultNodeConfigDefault,
-        Map<String, dynamic>>(nodeConfigDefaults, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'nodeConfigDefaults': pulumi.Input.encodeList<GetClusterNodePoolDefaultNodeConfigDefault, Map<String, dynamic>>(nodeConfigDefaults, (value) => value.toMap()),
+    };
   }
 
   factory GetClusterNodePoolDefault.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolDefault(
-      nodeConfigDefaults:
-          pulumi.Input.decodeList<GetClusterNodePoolDefaultNodeConfigDefault>(
-              map['nodeConfigDefaults'],
-              (value) => GetClusterNodePoolDefaultNodeConfigDefault.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      nodeConfigDefaults: pulumi.Input.decodeList<GetClusterNodePoolDefaultNodeConfigDefault>(map['nodeConfigDefaults'], (value) => GetClusterNodePoolDefaultNodeConfigDefault.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

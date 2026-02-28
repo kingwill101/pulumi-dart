@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRouteSpecGrpcRouteMatchMetadataMatchRange {
   final int end;
   final int start;
@@ -13,17 +14,17 @@ class GetRouteSpecGrpcRouteMatchMetadataMatchRange {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['end'] = end;
-    map['start'] = start;
-    return map;
+    return <String, dynamic>{
+      'end': end,
+      'start': start,
+    };
   }
 
-  factory GetRouteSpecGrpcRouteMatchMetadataMatchRange.fromMap(
-      Map<String, dynamic> map) {
+  factory GetRouteSpecGrpcRouteMatchMetadataMatchRange.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecGrpcRouteMatchMetadataMatchRange(
       end: map['end'] as int,
       start: map['start'] as int,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Defines a trust anchor.
 class TrustAnchorResponse {
   /// PEM root certificate of the PKI used for validation. Each certificate provided in PEM format may occupy up to 5kB.
@@ -12,9 +13,9 @@ class TrustAnchorResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['pemCertificate'] = pemCertificate;
-    return map;
+    return <String, dynamic>{
+      'pemCertificate': pemCertificate,
+    };
   }
 
   factory TrustAnchorResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class TrustAnchorResponse {
     );
   }
 }
+

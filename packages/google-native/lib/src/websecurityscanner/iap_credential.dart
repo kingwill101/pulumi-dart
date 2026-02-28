@@ -14,21 +14,15 @@ class IapCredential {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final iapTestServiceAccountInfoValue = iapTestServiceAccountInfo;
-    if (iapTestServiceAccountInfoValue != null) {
-      map['iapTestServiceAccountInfo'] = iapTestServiceAccountInfoValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'iapTestServiceAccountInfo': ?iapTestServiceAccountInfo == null ? null : iapTestServiceAccountInfo!.toMap(),
+    };
   }
 
   factory IapCredential.fromMap(Map<String, dynamic> map) {
     return IapCredential(
-      iapTestServiceAccountInfo: map['iapTestServiceAccountInfo'] == null
-          ? null
-          : IapTestServiceAccountInfo.fromMap(
-              (map['iapTestServiceAccountInfo'] as Map)
-                  .cast<String, dynamic>()),
+      iapTestServiceAccountInfo: map['iapTestServiceAccountInfo'] == null ? null : IapTestServiceAccountInfo.fromMap((map['iapTestServiceAccountInfo'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

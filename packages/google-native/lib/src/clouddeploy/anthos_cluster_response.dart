@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Information specifying an Anthos Cluster.
 class AnthosClusterResponse {
   /// Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
@@ -12,9 +13,9 @@ class AnthosClusterResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['membership'] = membership;
-    return map;
+    return <String, dynamic>{
+      'membership': membership,
+    };
   }
 
   factory AnthosClusterResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class AnthosClusterResponse {
     );
   }
 }
+

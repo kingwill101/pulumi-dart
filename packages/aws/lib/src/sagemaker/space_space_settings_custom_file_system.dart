@@ -13,15 +13,15 @@ class SpaceSpaceSettingsCustomFileSystem {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['efsFileSystem'] = efsFileSystem.toMap();
-    return map;
+    return <String, dynamic>{
+      'efsFileSystem': efsFileSystem.toMap(),
+    };
   }
 
   factory SpaceSpaceSettingsCustomFileSystem.fromMap(Map<String, dynamic> map) {
     return SpaceSpaceSettingsCustomFileSystem(
-      efsFileSystem: SpaceSpaceSettingsCustomFileSystemEfsFileSystem.fromMap(
-          (map['efsFileSystem'] as Map).cast<String, dynamic>()),
+      efsFileSystem: SpaceSpaceSettingsCustomFileSystemEfsFileSystem.fromMap((map['efsFileSystem'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

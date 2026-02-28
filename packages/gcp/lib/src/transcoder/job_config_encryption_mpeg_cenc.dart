@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class JobConfigEncryptionMpegCenc {
   /// Specify the encryption scheme.
   final String scheme;
@@ -11,9 +12,9 @@ class JobConfigEncryptionMpegCenc {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['scheme'] = scheme;
-    return map;
+    return <String, dynamic>{
+      'scheme': scheme,
+    };
   }
 
   factory JobConfigEncryptionMpegCenc.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class JobConfigEncryptionMpegCenc {
     );
   }
 }
+

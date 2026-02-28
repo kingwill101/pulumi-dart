@@ -22,22 +22,19 @@ class GetMappingRuleArgs {
     required String location,
     required String mappingRuleId,
     String? project,
-  })  : conversionWorkspaceId =
-            pulumi.Input.asInput<String>(conversionWorkspaceId),
-        location = pulumi.Input.asInput<String>(location),
-        mappingRuleId = pulumi.Input.asInput<String>(mappingRuleId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      conversionWorkspaceId = pulumi.Input.asInput<String>(conversionWorkspaceId),
+      location = pulumi.Input.asInput<String>(location),
+      mappingRuleId = pulumi.Input.asInput<String>(mappingRuleId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['conversionWorkspaceId'] = conversionWorkspaceId;
-    map['location'] = location;
-    map['mappingRuleId'] = mappingRuleId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'conversionWorkspaceId': conversionWorkspaceId,
+      'location': location,
+      'mappingRuleId': mappingRuleId,
+      'project': ?project,
+    };
   }
 
   factory GetMappingRuleArgs.fromMap(Map<String, dynamic> map) {
@@ -49,3 +46,4 @@ class GetMappingRuleArgs {
     );
   }
 }
+

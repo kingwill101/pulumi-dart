@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getClientOpenIdUserInfo.
 class GetClientOpenIdUserInfoResult {
   /// The email of the account used by the provider to authenticate with GCP.
@@ -15,10 +16,10 @@ class GetClientOpenIdUserInfoResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['email'] = email;
-    map['id'] = id;
-    return map;
+    return <String, dynamic>{
+      'email': email,
+      'id': id,
+    };
   }
 
   factory GetClientOpenIdUserInfoResult.fromMap(Map<String, dynamic> map) {
@@ -28,3 +29,4 @@ class GetClientOpenIdUserInfoResult {
     );
   }
 }
+

@@ -7,7 +7,6 @@ class TemplateFilterConfigSdpSettings {
   /// Sensitive Data Protection Advanced configuration.
   /// Structure is documented below.
   final TemplateFilterConfigSdpSettingsAdvancedConfig? advancedConfig;
-
   /// Sensitive Data Protection basic configuration.
   /// Structure is documented below.
   final TemplateFilterConfigSdpSettingsBasicConfig? basicConfig;
@@ -21,28 +20,17 @@ class TemplateFilterConfigSdpSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final advancedConfigValue = advancedConfig;
-    if (advancedConfigValue != null) {
-      map['advancedConfig'] = advancedConfigValue.toMap();
-    }
-    final basicConfigValue = basicConfig;
-    if (basicConfigValue != null) {
-      map['basicConfig'] = basicConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'advancedConfig': ?advancedConfig == null ? null : advancedConfig!.toMap(),
+      'basicConfig': ?basicConfig == null ? null : basicConfig!.toMap(),
+    };
   }
 
   factory TemplateFilterConfigSdpSettings.fromMap(Map<String, dynamic> map) {
     return TemplateFilterConfigSdpSettings(
-      advancedConfig: map['advancedConfig'] == null
-          ? null
-          : TemplateFilterConfigSdpSettingsAdvancedConfig.fromMap(
-              (map['advancedConfig'] as Map).cast<String, dynamic>()),
-      basicConfig: map['basicConfig'] == null
-          ? null
-          : TemplateFilterConfigSdpSettingsBasicConfig.fromMap(
-              (map['basicConfig'] as Map).cast<String, dynamic>()),
+      advancedConfig: map['advancedConfig'] == null ? null : TemplateFilterConfigSdpSettingsAdvancedConfig.fromMap((map['advancedConfig'] as Map).cast<String, dynamic>()),
+      basicConfig: map['basicConfig'] == null ? null : TemplateFilterConfigSdpSettingsBasicConfig.fromMap((map['basicConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -488,14 +488,11 @@ import 'app_check_service_config_args.dart';
 /// ```
 class AppCheckServiceConfig extends pulumi.CustomResource {
   late final pulumi.Output<String?> enforcementMode;
-
   /// The fully-qualified resource name of the service enforcement configuration.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The identifier of the service to configure enforcement. Currently, the following service IDs are supported:
   /// firebasestorage.googleapis.com (Cloud Storage for Firebase)
   /// firebasedatabase.googleapis.com (Firebase Realtime Database)

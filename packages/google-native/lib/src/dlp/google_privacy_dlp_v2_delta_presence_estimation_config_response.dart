@@ -8,10 +8,8 @@ import 'google_privacy_dlp_v2_statistical_table_response.dart';
 class GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse {
   /// Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-identifiers field must appear in exactly one field of one auxiliary table.
   final List<GooglePrivacyDlpV2StatisticalTableResponse> auxiliaryTables;
-
   /// Fields considered to be quasi-identifiers. No two fields can have the same tag.
   final List<GooglePrivacyDlpV2QuasiIdResponse> quasiIds;
-
   /// ISO 3166-1 alpha-2 region code to use in the statistical modeling. Set if no column is tagged with a region-specific InfoType (like US_ZIP_5) or a region code.
   final String regionCode;
 
@@ -26,29 +24,19 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['auxiliaryTables'] = pulumi.Input.encodeList<
-        GooglePrivacyDlpV2StatisticalTableResponse,
-        Map<String, dynamic>>(auxiliaryTables, (value) => value.toMap());
-    map['quasiIds'] = pulumi.Input.encodeList<GooglePrivacyDlpV2QuasiIdResponse,
-        Map<String, dynamic>>(quasiIds, (value) => value.toMap());
-    map['regionCode'] = regionCode;
-    return map;
+    return <String, dynamic>{
+      'auxiliaryTables': pulumi.Input.encodeList<GooglePrivacyDlpV2StatisticalTableResponse, Map<String, dynamic>>(auxiliaryTables, (value) => value.toMap()),
+      'quasiIds': pulumi.Input.encodeList<GooglePrivacyDlpV2QuasiIdResponse, Map<String, dynamic>>(quasiIds, (value) => value.toMap()),
+      'regionCode': regionCode,
+    };
   }
 
-  factory GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse(
-      auxiliaryTables:
-          pulumi.Input.decodeList<GooglePrivacyDlpV2StatisticalTableResponse>(
-              map['auxiliaryTables'],
-              (value) => GooglePrivacyDlpV2StatisticalTableResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      quasiIds: pulumi.Input.decodeList<GooglePrivacyDlpV2QuasiIdResponse>(
-          map['quasiIds'],
-          (value) => GooglePrivacyDlpV2QuasiIdResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      auxiliaryTables: pulumi.Input.decodeList<GooglePrivacyDlpV2StatisticalTableResponse>(map['auxiliaryTables'], (value) => GooglePrivacyDlpV2StatisticalTableResponse.fromMap((value as Map).cast<String, dynamic>())),
+      quasiIds: pulumi.Input.decodeList<GooglePrivacyDlpV2QuasiIdResponse>(map['quasiIds'], (value) => GooglePrivacyDlpV2QuasiIdResponse.fromMap((value as Map).cast<String, dynamic>())),
       regionCode: map['regionCode'] as String,
     );
   }
 }
+

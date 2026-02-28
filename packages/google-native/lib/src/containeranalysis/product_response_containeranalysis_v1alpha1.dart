@@ -6,7 +6,6 @@ import 'identifier_helper_response.dart';
 class ProductResponseContaineranalysisV1alpha1 {
   /// Helps in identifying the underlying product.
   final IdentifierHelperResponse identifierHelper;
-
   /// Name of the product.
   final String name;
 
@@ -19,18 +18,17 @@ class ProductResponseContaineranalysisV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['identifierHelper'] = identifierHelper.toMap();
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'identifierHelper': identifierHelper.toMap(),
+      'name': name,
+    };
   }
 
-  factory ProductResponseContaineranalysisV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory ProductResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return ProductResponseContaineranalysisV1alpha1(
-      identifierHelper: IdentifierHelperResponse.fromMap(
-          (map['identifierHelper'] as Map).cast<String, dynamic>()),
+      identifierHelper: IdentifierHelperResponse.fromMap((map['identifierHelper'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
     );
   }
 }
+

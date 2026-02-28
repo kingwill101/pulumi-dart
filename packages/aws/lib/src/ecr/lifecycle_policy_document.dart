@@ -15,19 +15,15 @@ class LifecyclePolicyDocument {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['rules'] =
-        pulumi.Input.encodeList<LifecyclePolicyRule, Map<String, dynamic>>(
-            rules, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'rules': pulumi.Input.encodeList<LifecyclePolicyRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
+    };
   }
 
   factory LifecyclePolicyDocument.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyDocument(
-      rules: pulumi.Input.decodeList<LifecyclePolicyRule>(
-          map['rules'],
-          (value) => LifecyclePolicyRule.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      rules: pulumi.Input.decodeList<LifecyclePolicyRule>(map['rules'], (value) => LifecyclePolicyRule.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

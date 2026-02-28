@@ -11,15 +11,12 @@ class V2FolderSccBigQueryExportArgs {
   /// numbers, and hyphens, must start with a letter, must end with either a letter or a number,
   /// and must be 63 characters or less.
   final pulumi.Input<String> bigQueryExportId;
-
   /// The dataset to write findings' updates to.
   /// Its format is "projects/[projectId]/datasets/[bigquery_dataset_id]".
   /// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
   final pulumi.Input<String>? dataset;
-
   /// The description of the notification config (max of 1024 characters).
   final pulumi.Input<String>? description;
-
   /// Expression that defines the filter to apply across create/update
   /// events of findings. The
   /// expression is a list of zero or more restrictions combined via
@@ -40,11 +37,9 @@ class V2FolderSccBigQueryExportArgs {
   /// [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
   /// for information on how to write a filter.
   final pulumi.Input<String>? filter;
-
   /// The folder where Cloud Security Command Center Big Query Export
   /// Config lives in.
   final pulumi.Input<String> folder;
-
   /// The BigQuery export configuration is stored in this location. If not provided, Use global as default.
   final pulumi.Input<String>? location;
 
@@ -62,45 +57,34 @@ class V2FolderSccBigQueryExportArgs {
     String? filter,
     required String folder,
     String? location,
-  })  : bigQueryExportId = pulumi.Input.asInput<String>(bigQueryExportId),
-        dataset = pulumi.Input.asOptionalInput<String>(dataset),
-        description = pulumi.Input.asOptionalInput<String>(description),
-        filter = pulumi.Input.asOptionalInput<String>(filter),
-        folder = pulumi.Input.asInput<String>(folder),
-        location = pulumi.Input.asOptionalInput<String>(location);
+  }) :
+      bigQueryExportId = pulumi.Input.asInput<String>(bigQueryExportId),
+      dataset = pulumi.Input.asOptionalInput<String>(dataset),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      filter = pulumi.Input.asOptionalInput<String>(filter),
+      folder = pulumi.Input.asInput<String>(folder),
+      location = pulumi.Input.asOptionalInput<String>(location);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bigQueryExportId'] = bigQueryExportId;
-    final datasetValue = dataset;
-    if (datasetValue != null) {
-      map['dataset'] = datasetValue;
-    }
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final filterValue = filter;
-    if (filterValue != null) {
-      map['filter'] = filterValue;
-    }
-    map['folder'] = folder;
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'bigQueryExportId': bigQueryExportId,
+      'dataset': ?dataset,
+      'description': ?description,
+      'filter': ?filter,
+      'folder': folder,
+      'location': ?location,
+    };
   }
 
   factory V2FolderSccBigQueryExportArgs.fromMap(Map<String, dynamic> map) {
     return V2FolderSccBigQueryExportArgs(
       bigQueryExportId: map['bigQueryExportId'] as String,
       dataset: map['dataset'] == null ? null : map['dataset'] as String,
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       filter: map['filter'] == null ? null : map['filter'] as String,
       folder: map['folder'] as String,
       location: map['location'] == null ? null : map['location'] as String,
     );
   }
 }
+

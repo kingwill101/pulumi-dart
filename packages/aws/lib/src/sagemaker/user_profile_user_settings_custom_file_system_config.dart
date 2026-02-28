@@ -5,8 +5,7 @@ import 'user_profile_user_settings_custom_file_system_config_efs_file_system_con
 
 class UserProfileUserSettingsCustomFileSystemConfig {
   /// The default EBS storage settings for a private space. See EFS File System Config below.
-  final List<UserProfileUserSettingsCustomFileSystemConfigEfsFileSystemConfig>?
-      efsFileSystemConfigs;
+  final List<UserProfileUserSettingsCustomFileSystemConfigEfsFileSystemConfig>? efsFileSystemConfigs;
 
   /// Creates a new [UserProfileUserSettingsCustomFileSystemConfig].
   /// [efsFileSystemConfigs] The default EBS storage settings for a private space. See EFS File System Config below.
@@ -15,28 +14,15 @@ class UserProfileUserSettingsCustomFileSystemConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final efsFileSystemConfigsValue = efsFileSystemConfigs;
-    if (efsFileSystemConfigsValue != null) {
-      map['efsFileSystemConfigs'] = pulumi.Input.encodeList<
-              UserProfileUserSettingsCustomFileSystemConfigEfsFileSystemConfig,
-              Map<String, dynamic>>(
-          efsFileSystemConfigsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'efsFileSystemConfigs': ?efsFileSystemConfigs == null ? null : pulumi.Input.encodeList<UserProfileUserSettingsCustomFileSystemConfigEfsFileSystemConfig, Map<String, dynamic>>(efsFileSystemConfigs!, (value) => value.toMap()),
+    };
   }
 
-  factory UserProfileUserSettingsCustomFileSystemConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory UserProfileUserSettingsCustomFileSystemConfig.fromMap(Map<String, dynamic> map) {
     return UserProfileUserSettingsCustomFileSystemConfig(
-      efsFileSystemConfigs: map['efsFileSystemConfigs'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  UserProfileUserSettingsCustomFileSystemConfigEfsFileSystemConfig>(
-              map['efsFileSystemConfigs'],
-              (value) =>
-                  UserProfileUserSettingsCustomFileSystemConfigEfsFileSystemConfig
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      efsFileSystemConfigs: map['efsFileSystemConfigs'] == null ? null : pulumi.Input.decodeList<UserProfileUserSettingsCustomFileSystemConfigEfsFileSystemConfig>(map['efsFileSystemConfigs'], (value) => UserProfileUserSettingsCustomFileSystemConfigEfsFileSystemConfig.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

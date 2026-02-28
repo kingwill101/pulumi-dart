@@ -6,13 +6,10 @@ import 'google_cloud_healthcare_v1_dicom_big_query_destination_write_disposition
 class GoogleCloudHealthcareV1DicomBigQueryDestination {
   /// Use `write_disposition` instead. If `write_disposition` is specified, this parameter is ignored. force=false is equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
   final bool? force;
-
   /// BigQuery URI to a table, up to 2000 characters long, in the format `bq://projectId.bqDatasetId.tableId`
   final String? tableUri;
-
   /// Determines whether the existing table in the destination is to be overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
-  final GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition?
-      writeDisposition;
+  final GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition? writeDisposition;
 
   /// Creates a new [GoogleCloudHealthcareV1DicomBigQueryDestination].
   /// [force] Use `write_disposition` instead. If `write_disposition` is specified, this parameter is ignored. force=false is equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
@@ -25,31 +22,19 @@ class GoogleCloudHealthcareV1DicomBigQueryDestination {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final forceValue = force;
-    if (forceValue != null) {
-      map['force'] = forceValue;
-    }
-    final tableUriValue = tableUri;
-    if (tableUriValue != null) {
-      map['tableUri'] = tableUriValue;
-    }
-    final writeDispositionValue = writeDisposition;
-    if (writeDispositionValue != null) {
-      map['writeDisposition'] = writeDispositionValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'force': ?force,
+      'tableUri': ?tableUri,
+      'writeDisposition': ?writeDisposition == null ? null : writeDisposition!.value,
+    };
   }
 
-  factory GoogleCloudHealthcareV1DicomBigQueryDestination.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudHealthcareV1DicomBigQueryDestination.fromMap(Map<String, dynamic> map) {
     return GoogleCloudHealthcareV1DicomBigQueryDestination(
       force: map['force'] == null ? null : map['force'] as bool,
       tableUri: map['tableUri'] == null ? null : map['tableUri'] as String,
-      writeDisposition: map['writeDisposition'] == null
-          ? null
-          : GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition
-              .fromValue(map['writeDisposition'] as String),
+      writeDisposition: map['writeDisposition'] == null ? null : GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition.fromValue(map['writeDisposition'] as String),
     );
   }
 }
+

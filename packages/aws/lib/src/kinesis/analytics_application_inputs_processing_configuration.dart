@@ -13,16 +13,15 @@ class AnalyticsApplicationInputsProcessingConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['lambda'] = lambda.toMap();
-    return map;
+    return <String, dynamic>{
+      'lambda': lambda.toMap(),
+    };
   }
 
-  factory AnalyticsApplicationInputsProcessingConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory AnalyticsApplicationInputsProcessingConfiguration.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationInputsProcessingConfiguration(
-      lambda: AnalyticsApplicationInputsProcessingConfigurationLambda.fromMap(
-          (map['lambda'] as Map).cast<String, dynamic>()),
+      lambda: AnalyticsApplicationInputsProcessingConfigurationLambda.fromMap((map['lambda'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

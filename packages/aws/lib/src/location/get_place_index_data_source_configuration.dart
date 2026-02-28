@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetPlaceIndexDataSourceConfiguration {
   final String intendedUse;
 
@@ -10,15 +11,15 @@ class GetPlaceIndexDataSourceConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['intendedUse'] = intendedUse;
-    return map;
+    return <String, dynamic>{
+      'intendedUse': intendedUse,
+    };
   }
 
-  factory GetPlaceIndexDataSourceConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory GetPlaceIndexDataSourceConfiguration.fromMap(Map<String, dynamic> map) {
     return GetPlaceIndexDataSourceConfiguration(
       intendedUse: map['intendedUse'] as String,
     );
   }
 }
+

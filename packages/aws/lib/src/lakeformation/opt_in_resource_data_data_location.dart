@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class OptInResourceDataDataLocation {
   /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
   final String? catalogId;
-
   /// ARN that uniquely identifies the data location resource.
   final String resourceArn;
 
@@ -16,13 +16,10 @@ class OptInResourceDataDataLocation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final catalogIdValue = catalogId;
-    if (catalogIdValue != null) {
-      map['catalogId'] = catalogIdValue;
-    }
-    map['resourceArn'] = resourceArn;
-    return map;
+    return <String, dynamic>{
+      'catalogId': ?catalogId,
+      'resourceArn': resourceArn,
+    };
   }
 
   factory OptInResourceDataDataLocation.fromMap(Map<String, dynamic> map) {
@@ -32,3 +29,4 @@ class OptInResourceDataDataLocation {
     );
   }
 }
+

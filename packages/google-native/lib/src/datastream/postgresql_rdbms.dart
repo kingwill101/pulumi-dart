@@ -15,24 +15,15 @@ class PostgresqlRdbms {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final postgresqlSchemasValue = postgresqlSchemas;
-    if (postgresqlSchemasValue != null) {
-      map['postgresqlSchemas'] =
-          pulumi.Input.encodeList<PostgresqlSchema, Map<String, dynamic>>(
-              postgresqlSchemasValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'postgresqlSchemas': ?postgresqlSchemas == null ? null : pulumi.Input.encodeList<PostgresqlSchema, Map<String, dynamic>>(postgresqlSchemas!, (value) => value.toMap()),
+    };
   }
 
   factory PostgresqlRdbms.fromMap(Map<String, dynamic> map) {
     return PostgresqlRdbms(
-      postgresqlSchemas: map['postgresqlSchemas'] == null
-          ? null
-          : pulumi.Input.decodeList<PostgresqlSchema>(
-              map['postgresqlSchemas'],
-              (value) => PostgresqlSchema.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      postgresqlSchemas: map['postgresqlSchemas'] == null ? null : pulumi.Input.decodeList<PostgresqlSchema>(map['postgresqlSchemas'], (value) => PostgresqlSchema.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

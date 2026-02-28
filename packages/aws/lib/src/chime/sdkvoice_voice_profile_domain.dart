@@ -181,20 +181,14 @@ import 'sdkvoice_voice_profile_domain_server_side_encryption_configuration.dart'
 class SdkvoiceVoiceProfileDomain extends pulumi.CustomResource {
   /// ARN of the Voice Profile Domain.
   late final pulumi.Output<String> arn;
-
   /// Description of Voice Profile Domain.
   late final pulumi.Output<String?> description;
-
   /// Name of Voice Profile Domain.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Configuration for server side encryption.
-  late final pulumi
-      .Output<SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration>
-      serverSideEncryptionConfiguration;
+  late final pulumi.Output<SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration> serverSideEncryptionConfiguration;
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -216,9 +210,7 @@ class SdkvoiceVoiceProfileDomain extends pulumi.CustomResource {
     this.description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     this.region = registerOutput<String>('region');
-    this.serverSideEncryptionConfiguration = registerOutput<
-            SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration>(
-        'serverSideEncryptionConfiguration');
+    this.serverSideEncryptionConfiguration = registerOutput<SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration>('serverSideEncryptionConfiguration');
     this.tags = registerOutput<Map<String, String>?>('tags');
     this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }

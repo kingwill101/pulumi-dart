@@ -12,7 +12,7 @@ enum NetworkInterfaceStackTypeComputeV1 {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown NetworkInterfaceStackTypeComputeV1 value: $value');
+    throw ArgumentError('Unknown NetworkInterfaceStackTypeComputeV1 value: $value');
   }
 }
+

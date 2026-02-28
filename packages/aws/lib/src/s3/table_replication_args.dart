@@ -10,13 +10,10 @@ import 'table_replication_rule.dart';
 class TableReplicationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// ARN referencing the IAM role assumed by S3 when replicating tables.
   final pulumi.Input<String> role;
-
   /// Replication rules. See Rule below for more details.
   final pulumi.Input<TableReplicationRule>? rule;
-
   /// ARN referencing the Table that owns this replication configuration.
   final pulumi.Input<String> tableArn;
 
@@ -30,36 +27,28 @@ class TableReplicationArgs {
     required String role,
     TableReplicationRule? rule,
     required String tableArn,
-  })  : region = pulumi.Input.asOptionalInput<String>(region),
-        role = pulumi.Input.asInput<String>(role),
-        rule = pulumi.Input.asOptionalInput<TableReplicationRule>(rule),
-        tableArn = pulumi.Input.asInput<String>(tableArn);
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      role = pulumi.Input.asInput<String>(role),
+      rule = pulumi.Input.asOptionalInput<TableReplicationRule>(rule),
+      tableArn = pulumi.Input.asInput<String>(tableArn);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['role'] = role;
-    final ruleValue = rule;
-    if (ruleValue != null) {
-      map['rule'] = pulumi.Input.mapOptionalInputValue<TableReplicationRule,
-          Map<String, dynamic>>(ruleValue, (value) => value.toMap());
-    }
-    map['tableArn'] = tableArn;
-    return map;
+    return <String, dynamic>{
+      'region': ?region,
+      'role': role,
+      'rule': ?pulumi.Input.mapOptionalInputValue<TableReplicationRule, Map<String, dynamic>>(rule, (value) => value.toMap()),
+      'tableArn': tableArn,
+    };
   }
 
   factory TableReplicationArgs.fromMap(Map<String, dynamic> map) {
     return TableReplicationArgs(
       region: map['region'] == null ? null : map['region'] as String,
       role: map['role'] as String,
-      rule: map['rule'] == null
-          ? null
-          : TableReplicationRule.fromMap(
-              (map['rule'] as Map).cast<String, dynamic>()),
+      rule: map['rule'] == null ? null : TableReplicationRule.fromMap((map['rule'] as Map).cast<String, dynamic>()),
       tableArn: map['tableArn'] as String,
     );
   }
 }
+

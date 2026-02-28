@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetServiceTemplateSpecContainerStartupProbeTcpSocket {
   /// Port number to access on the container. Number must be in the range 1 to 65535.
   /// If not specified, defaults to the same value as container.ports[0].containerPort.
@@ -12,15 +13,15 @@ class GetServiceTemplateSpecContainerStartupProbeTcpSocket {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['port'] = port;
-    return map;
+    return <String, dynamic>{
+      'port': port,
+    };
   }
 
-  factory GetServiceTemplateSpecContainerStartupProbeTcpSocket.fromMap(
-      Map<String, dynamic> map) {
+  factory GetServiceTemplateSpecContainerStartupProbeTcpSocket.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateSpecContainerStartupProbeTcpSocket(
       port: map['port'] as int,
     );
   }
 }
+

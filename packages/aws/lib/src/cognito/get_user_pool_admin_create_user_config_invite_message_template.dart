@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetUserPoolAdminCreateUserConfigInviteMessageTemplate {
   /// - Email message content.
   final String emailMessage;
-
   /// - Email message subject.
   final String emailSubject;
-
   /// - SMS message content.
   final String smsMessage;
 
@@ -21,15 +20,14 @@ class GetUserPoolAdminCreateUserConfigInviteMessageTemplate {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['emailMessage'] = emailMessage;
-    map['emailSubject'] = emailSubject;
-    map['smsMessage'] = smsMessage;
-    return map;
+    return <String, dynamic>{
+      'emailMessage': emailMessage,
+      'emailSubject': emailSubject,
+      'smsMessage': smsMessage,
+    };
   }
 
-  factory GetUserPoolAdminCreateUserConfigInviteMessageTemplate.fromMap(
-      Map<String, dynamic> map) {
+  factory GetUserPoolAdminCreateUserConfigInviteMessageTemplate.fromMap(Map<String, dynamic> map) {
     return GetUserPoolAdminCreateUserConfigInviteMessageTemplate(
       emailMessage: map['emailMessage'] as String,
       emailSubject: map['emailSubject'] as String,
@@ -37,3 +35,4 @@ class GetUserPoolAdminCreateUserConfigInviteMessageTemplate {
     );
   }
 }
+

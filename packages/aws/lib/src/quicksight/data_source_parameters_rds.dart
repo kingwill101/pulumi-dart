@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataSourceParametersRds {
   /// The database to which to connect.
   final String database;
-
   /// The instance ID to which to connect.
   final String instanceId;
 
@@ -16,10 +16,10 @@ class DataSourceParametersRds {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['database'] = database;
-    map['instanceId'] = instanceId;
-    return map;
+    return <String, dynamic>{
+      'database': database,
+      'instanceId': instanceId,
+    };
   }
 
   factory DataSourceParametersRds.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class DataSourceParametersRds {
     );
   }
 }
+

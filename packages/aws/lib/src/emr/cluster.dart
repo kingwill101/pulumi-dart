@@ -1819,26 +1819,19 @@ import 'cluster_step.dart';
 class Cluster extends pulumi.CustomResource {
   /// JSON string for selecting additional features such as adding proxy information. Note: Currently there is no API to retrieve the value of this argument after EMR cluster creation from provider, therefore the provider cannot detect drift from the actual EMR cluster if its value is changed outside the provider.
   late final pulumi.Output<String?> additionalInfo;
-
   /// A case-insensitive list of applications for Amazon EMR to install and configure when launching the cluster. For a list of applications available for each Amazon EMR release version, see the [Amazon EMR Release Guide](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-release-components.html).
   late final pulumi.Output<List<String>?> applications;
-
   /// ARN of the cluster.
   late final pulumi.Output<String> arn;
-
   /// An auto-termination policy for an Amazon EMR cluster. An auto-termination policy defines the amount of idle time in seconds after which a cluster automatically terminates. See Auto Termination Policy Below.
   late final pulumi.Output<ClusterAutoTerminationPolicy?> autoTerminationPolicy;
-
   /// IAM role for automatic scaling policies. The IAM role provides permissions that the automatic scaling feature requires to launch and terminate EC2 instances in an instance group.
   late final pulumi.Output<String?> autoscalingRole;
-
   /// Ordered list of bootstrap actions that will be run before Hadoop is started on the cluster nodes. See below.
   late final pulumi.Output<List<ClusterBootstrapAction>?> bootstrapActions;
   late final pulumi.Output<String> clusterState;
-
   /// List of configurations supplied for the EMR cluster you are creating. Supply a configuration object for applications to override their default configuration. See [AWS Documentation](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-configure-apps.html) for more information.
   late final pulumi.Output<String?> configurations;
-
   /// JSON string for supplying list of configurations for the EMR cluster.
   ///
   /// > **NOTE on `configurations_json`:** If the `Configurations` value is empty then you should skip the `Configurations` field instead of providing an empty list as a value, `"Configurations": []`.
@@ -2012,91 +2005,62 @@ class Cluster extends pulumi.CustomResource {
   ///         ]
   /// ```
   late final pulumi.Output<String?> configurationsJson;
-
   /// Configuration block to use an [Instance Fleet](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-fleet.html) for the core node type. Cannot be specified if any `core_instance_group` configuration blocks are set. Detailed below.
   late final pulumi.Output<ClusterCoreInstanceFleet> coreInstanceFleet;
-
   /// Configuration block to use an [Instance Group](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-group-configuration.html#emr-plan-instance-groups) for the [core node type](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-master-core-task-nodes.html#emr-plan-core).
   late final pulumi.Output<ClusterCoreInstanceGroup> coreInstanceGroup;
-
   /// Custom Amazon Linux AMI for the cluster (instead of an EMR-owned AMI). Available in Amazon EMR version 5.7.0 and later.
   late final pulumi.Output<String?> customAmiId;
-
   /// Size in GiB of the EBS root device volume of the Linux AMI that is used for each EC2 instance. Available in Amazon EMR version 4.x and later.
   late final pulumi.Output<int?> ebsRootVolumeSize;
-
   /// Attributes for the EC2 instances running the job flow. See below.
   late final pulumi.Output<ClusterEc2Attributes?> ec2Attributes;
-
   /// Switch on/off run cluster with no steps or when all steps are complete (default is on)
   late final pulumi.Output<bool> keepJobFlowAliveWhenNoSteps;
-
   /// Kerberos configuration for the cluster. See below.
   late final pulumi.Output<ClusterKerberosAttributes?> kerberosAttributes;
-
   /// List of [step states](https://docs.aws.amazon.com/emr/latest/APIReference/API_StepStatus.html) used to filter returned steps
   late final pulumi.Output<List<String>?> listStepsStates;
-
   /// AWS KMS customer master key (CMK) key ID or arn used for encrypting log files. This attribute is only available with EMR version 5.30.0 and later, excluding EMR 6.0.0.
   late final pulumi.Output<String?> logEncryptionKmsKeyId;
-
   /// S3 bucket to write the log files of the job flow. If a value is not provided, logs are not created.
   late final pulumi.Output<String?> logUri;
-
   /// Configuration block to use an [Instance Fleet](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-fleet.html) for the master node type. Cannot be specified if any `master_instance_group` configuration blocks are set. Detailed below.
   late final pulumi.Output<ClusterMasterInstanceFleet> masterInstanceFleet;
-
   /// Configuration block to use an [Instance Group](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-group-configuration.html#emr-plan-instance-groups) for the [master node type](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-master-core-task-nodes.html#emr-plan-master).
   late final pulumi.Output<ClusterMasterInstanceGroup> masterInstanceGroup;
-
   /// The DNS name of the master node. If the cluster is on a private subnet, this is the private DNS name. On a public subnet, this is the public DNS name.
   late final pulumi.Output<String> masterPublicDns;
-
   /// Name of the job flow.
   late final pulumi.Output<String> name;
-
   /// Amazon Linux release for all nodes in a cluster launch RunJobFlow request. If not specified, Amazon EMR uses the latest validated Amazon Linux release for cluster launch.
   late final pulumi.Output<String?> osReleaseLabel;
-
   /// The specified placement group configuration for an Amazon EMR cluster.
-  late final pulumi.Output<List<ClusterPlacementGroupConfig>?>
-      placementGroupConfigs;
-
+  late final pulumi.Output<List<ClusterPlacementGroupConfig>?> placementGroupConfigs;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Release label for the Amazon EMR release.
   late final pulumi.Output<String> releaseLabel;
-
   /// Way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an `instance group` is resized.
   late final pulumi.Output<String> scaleDownBehavior;
-
   /// Security configuration name to attach to the EMR cluster. Only valid for EMR clusters with `release_label` 4.8.0 or greater.
   late final pulumi.Output<String?> securityConfiguration;
-
   /// IAM role that will be assumed by the Amazon EMR service to access AWS resources.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> serviceRole;
-
   /// Number of steps that can be executed concurrently. You can specify a maximum of 256 steps. Only valid for EMR clusters with `release_label` 5.28.0 or greater (default is 1).
   late final pulumi.Output<int?> stepConcurrencyLevel;
-
   /// List of steps to run when creating the cluster. See below. It is highly recommended to utilize the lifecycle resource options block with `ignoreChanges` if other steps are being managed outside of this provider.
   late final pulumi.Output<List<ClusterStep>> steps;
-
   /// list of tags to apply to the EMR Cluster. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Switch on/off termination protection (default is `false`, except when using multiple master nodes). Before attempting to destroy the resource when termination protection is enabled, this configuration must be applied with its value set to `false`.
   late final pulumi.Output<bool> terminationProtection;
-
   /// Whether whether Amazon EMR should gracefully replace core nodes that have degraded within the cluster. Default value is `false`.
   late final pulumi.Output<bool?> unhealthyNodeReplacement;
-
   /// Whether the job flow is visible to all IAM users of the AWS account associated with the job flow. Default value is `true`.
   ///
   /// **NOTE:** As per the [Amazon EMR API Reference](https://docs.aws.amazon.com/emr/latest/APIReference/API_RunJobFlow.html#EMR-RunJobFlow-request-VisibleToAllUsers), this argument is no longer supported. Do not set this argument, particularly to `false`, as it would lead to perpetual differences.
@@ -2119,52 +2083,39 @@ class Cluster extends pulumi.CustomResource {
     this.additionalInfo = registerOutput<String?>('additionalInfo');
     this.applications = registerOutput<List<String>?>('applications');
     this.arn = registerOutput<String>('arn');
-    this.autoTerminationPolicy =
-        registerOutput<ClusterAutoTerminationPolicy?>('autoTerminationPolicy');
+    this.autoTerminationPolicy = registerOutput<ClusterAutoTerminationPolicy?>('autoTerminationPolicy');
     this.autoscalingRole = registerOutput<String?>('autoscalingRole');
-    this.bootstrapActions =
-        registerOutput<List<ClusterBootstrapAction>?>('bootstrapActions');
+    this.bootstrapActions = registerOutput<List<ClusterBootstrapAction>?>('bootstrapActions');
     this.clusterState = registerOutput<String>('clusterState');
     this.configurations = registerOutput<String?>('configurations');
     this.configurationsJson = registerOutput<String?>('configurationsJson');
-    this.coreInstanceFleet =
-        registerOutput<ClusterCoreInstanceFleet>('coreInstanceFleet');
-    this.coreInstanceGroup =
-        registerOutput<ClusterCoreInstanceGroup>('coreInstanceGroup');
+    this.coreInstanceFleet = registerOutput<ClusterCoreInstanceFleet>('coreInstanceFleet');
+    this.coreInstanceGroup = registerOutput<ClusterCoreInstanceGroup>('coreInstanceGroup');
     this.customAmiId = registerOutput<String?>('customAmiId');
     this.ebsRootVolumeSize = registerOutput<int?>('ebsRootVolumeSize');
     this.ec2Attributes = registerOutput<ClusterEc2Attributes?>('ec2Attributes');
-    this.keepJobFlowAliveWhenNoSteps =
-        registerOutput<bool>('keepJobFlowAliveWhenNoSteps');
-    this.kerberosAttributes =
-        registerOutput<ClusterKerberosAttributes?>('kerberosAttributes');
+    this.keepJobFlowAliveWhenNoSteps = registerOutput<bool>('keepJobFlowAliveWhenNoSteps');
+    this.kerberosAttributes = registerOutput<ClusterKerberosAttributes?>('kerberosAttributes');
     this.listStepsStates = registerOutput<List<String>?>('listStepsStates');
-    this.logEncryptionKmsKeyId =
-        registerOutput<String?>('logEncryptionKmsKeyId');
+    this.logEncryptionKmsKeyId = registerOutput<String?>('logEncryptionKmsKeyId');
     this.logUri = registerOutput<String?>('logUri');
-    this.masterInstanceFleet =
-        registerOutput<ClusterMasterInstanceFleet>('masterInstanceFleet');
-    this.masterInstanceGroup =
-        registerOutput<ClusterMasterInstanceGroup>('masterInstanceGroup');
+    this.masterInstanceFleet = registerOutput<ClusterMasterInstanceFleet>('masterInstanceFleet');
+    this.masterInstanceGroup = registerOutput<ClusterMasterInstanceGroup>('masterInstanceGroup');
     this.masterPublicDns = registerOutput<String>('masterPublicDns');
     this.name = registerOutput<String>('name');
     this.osReleaseLabel = registerOutput<String?>('osReleaseLabel');
-    this.placementGroupConfigs =
-        registerOutput<List<ClusterPlacementGroupConfig>?>(
-            'placementGroupConfigs');
+    this.placementGroupConfigs = registerOutput<List<ClusterPlacementGroupConfig>?>('placementGroupConfigs');
     this.region = registerOutput<String>('region');
     this.releaseLabel = registerOutput<String>('releaseLabel');
     this.scaleDownBehavior = registerOutput<String>('scaleDownBehavior');
-    this.securityConfiguration =
-        registerOutput<String?>('securityConfiguration');
+    this.securityConfiguration = registerOutput<String?>('securityConfiguration');
     this.serviceRole = registerOutput<String>('serviceRole');
     this.stepConcurrencyLevel = registerOutput<int?>('stepConcurrencyLevel');
     this.steps = registerOutput<List<ClusterStep>>('steps');
     this.tags = registerOutput<Map<String, String>?>('tags');
     this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.terminationProtection = registerOutput<bool>('terminationProtection');
-    this.unhealthyNodeReplacement =
-        registerOutput<bool?>('unhealthyNodeReplacement');
+    this.unhealthyNodeReplacement = registerOutput<bool?>('unhealthyNodeReplacement');
     this.visibleToAllUsers = registerOutput<bool?>('visibleToAllUsers');
   }
 }

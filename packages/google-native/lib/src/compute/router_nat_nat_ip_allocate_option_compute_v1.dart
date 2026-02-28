@@ -12,7 +12,7 @@ enum RouterNatNatIpAllocateOptionComputeV1 {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown RouterNatNatIpAllocateOptionComputeV1 value: $value');
+    throw ArgumentError('Unknown RouterNatNatIpAllocateOptionComputeV1 value: $value');
   }
 }
+

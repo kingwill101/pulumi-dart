@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getWorkspaces.
 class GetWorkspacesResult {
   final String? aliasPrefix;
-
   /// List of aliases of the matched Prometheus workspaces.
   final List<String> aliases;
-
   /// List of ARNs of the matched Prometheus workspaces.
   final List<String> arns;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
-
   /// List of workspace IDs of the matched Prometheus workspaces.
   final List<String> workspaceIds;
 
@@ -34,23 +31,19 @@ class GetWorkspacesResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final aliasPrefixValue = aliasPrefix;
-    if (aliasPrefixValue != null) {
-      map['aliasPrefix'] = aliasPrefixValue;
-    }
-    map['aliases'] = aliases;
-    map['arns'] = arns;
-    map['id'] = id;
-    map['region'] = region;
-    map['workspaceIds'] = workspaceIds;
-    return map;
+    return <String, dynamic>{
+      'aliasPrefix': ?aliasPrefix,
+      'aliases': aliases,
+      'arns': arns,
+      'id': id,
+      'region': region,
+      'workspaceIds': workspaceIds,
+    };
   }
 
   factory GetWorkspacesResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspacesResult(
-      aliasPrefix:
-          map['aliasPrefix'] == null ? null : map['aliasPrefix'] as String,
+      aliasPrefix: map['aliasPrefix'] == null ? null : map['aliasPrefix'] as String,
       aliases: (map['aliases'] as List).cast<String>(),
       arns: (map['arns'] as List).cast<String>(),
       id: map['id'] as String,
@@ -59,3 +52,4 @@ class GetWorkspacesResult {
     );
   }
 }
+

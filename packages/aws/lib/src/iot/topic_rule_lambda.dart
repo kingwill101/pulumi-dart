@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TopicRuleLambda {
   /// The ARN of the Lambda function.
   final String functionArn;
@@ -11,9 +12,9 @@ class TopicRuleLambda {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['functionArn'] = functionArn;
-    return map;
+    return <String, dynamic>{
+      'functionArn': functionArn,
+    };
   }
 
   factory TopicRuleLambda.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class TopicRuleLambda {
     );
   }
 }
+

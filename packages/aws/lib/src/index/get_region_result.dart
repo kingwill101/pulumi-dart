@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRegion.
 class GetRegionResult {
   /// Region's description in this format: "Location (Region name)".
   final String description;
   final String endpoint;
-
   /// Region's name (e.g. `us-east-1`).
   final String id;
   final String name;
@@ -26,13 +26,13 @@ class GetRegionResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['description'] = description;
-    map['endpoint'] = endpoint;
-    map['id'] = id;
-    map['name'] = name;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'description': description,
+      'endpoint': endpoint,
+      'id': id,
+      'name': name,
+      'region': region,
+    };
   }
 
   factory GetRegionResult.fromMap(Map<String, dynamic> map) {
@@ -45,3 +45,4 @@ class GetRegionResult {
     );
   }
 }
+

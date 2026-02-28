@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// If provided, i18n rewrites are enabled.
 class I18nConfigResponse {
   /// The user-supplied path where country and language specific content will be looked for within the public directory.
@@ -12,9 +13,9 @@ class I18nConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['root'] = root;
-    return map;
+    return <String, dynamic>{
+      'root': root,
+    };
   }
 
   factory I18nConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class I18nConfigResponse {
     );
   }
 }
+

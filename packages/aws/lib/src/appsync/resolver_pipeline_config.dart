@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ResolverPipelineConfig {
   /// A list of Function objects.
   final List<String>? functions;
@@ -11,19 +12,15 @@ class ResolverPipelineConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final functionsValue = functions;
-    if (functionsValue != null) {
-      map['functions'] = functionsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'functions': ?functions,
+    };
   }
 
   factory ResolverPipelineConfig.fromMap(Map<String, dynamic> map) {
     return ResolverPipelineConfig(
-      functions: map['functions'] == null
-          ? null
-          : (map['functions'] as List).cast<String>(),
+      functions: map['functions'] == null ? null : (map['functions'] as List).cast<String>(),
     );
   }
 }
+

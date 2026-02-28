@@ -6,13 +6,10 @@ import 'private_service_connect_config_response.dart';
 class NetworkConfigResponseDatafusionV1beta1 {
   /// Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and the corresponding tenant project from a predefined list of available connection modes. If this field is unspecified for a private instance, VPC peering is used.
   final String connectionType;
-
   /// Optional. The IP range in CIDR notation to use for the managed Data Fusion instance nodes. This range must not overlap with any other ranges used in the Data Fusion instance network. This is required only when using connection type VPC_PEERING. Format: a.b.c.d/22 Example: 192.168.0.0/22
   final String ipAllocation;
-
   /// Optional. Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. This is required only when using connection type VPC peering. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{project-id}/global/networks/{network}. This is only required for connectivity type VPC_PEERING.
   final String network;
-
   /// Optional. Configuration for Private Service Connect. This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
   final PrivateServiceConnectConfigResponse privateServiceConnectConfig;
 
@@ -29,22 +26,21 @@ class NetworkConfigResponseDatafusionV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['connectionType'] = connectionType;
-    map['ipAllocation'] = ipAllocation;
-    map['network'] = network;
-    map['privateServiceConnectConfig'] = privateServiceConnectConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'connectionType': connectionType,
+      'ipAllocation': ipAllocation,
+      'network': network,
+      'privateServiceConnectConfig': privateServiceConnectConfig.toMap(),
+    };
   }
 
-  factory NetworkConfigResponseDatafusionV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory NetworkConfigResponseDatafusionV1beta1.fromMap(Map<String, dynamic> map) {
     return NetworkConfigResponseDatafusionV1beta1(
       connectionType: map['connectionType'] as String,
       ipAllocation: map['ipAllocation'] as String,
       network: map['network'] as String,
-      privateServiceConnectConfig: PrivateServiceConnectConfigResponse.fromMap(
-          (map['privateServiceConnectConfig'] as Map).cast<String, dynamic>()),
+      privateServiceConnectConfig: PrivateServiceConnectConfigResponse.fromMap((map['privateServiceConnectConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

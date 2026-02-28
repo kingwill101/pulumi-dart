@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RouterNatSubnetwork {
   /// Self-link of the subnetwork resource that will use NAT64
   final String name;
-
   /// List of the secondary ranges of the subnetwork that are allowed
   /// to use NAT. This can be populated only if
   /// `LIST_OF_SECONDARY_IP_RANGES` is one of the values in
@@ -11,7 +11,6 @@ class RouterNatSubnetwork {
   ///
   /// <a name="nested_nat64_subnetwork"></a>The `nat64_subnetwork` block supports:
   final List<String>? secondaryIpRangeNames;
-
   /// List of options for which source IPs in the subnetwork
   /// should have NAT enabled. Supported values include:
   /// `ALL_IP_RANGES`, `LIST_OF_SECONDARY_IP_RANGES`,
@@ -29,24 +28,19 @@ class RouterNatSubnetwork {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    final secondaryIpRangeNamesValue = secondaryIpRangeNames;
-    if (secondaryIpRangeNamesValue != null) {
-      map['secondaryIpRangeNames'] = secondaryIpRangeNamesValue;
-    }
-    map['sourceIpRangesToNats'] = sourceIpRangesToNats;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'secondaryIpRangeNames': ?secondaryIpRangeNames,
+      'sourceIpRangesToNats': sourceIpRangesToNats,
+    };
   }
 
   factory RouterNatSubnetwork.fromMap(Map<String, dynamic> map) {
     return RouterNatSubnetwork(
       name: map['name'] as String,
-      secondaryIpRangeNames: map['secondaryIpRangeNames'] == null
-          ? null
-          : (map['secondaryIpRangeNames'] as List).cast<String>(),
-      sourceIpRangesToNats:
-          (map['sourceIpRangesToNats'] as List).cast<String>(),
+      secondaryIpRangeNames: map['secondaryIpRangeNames'] == null ? null : (map['secondaryIpRangeNames'] as List).cast<String>(),
+      sourceIpRangesToNats: (map['sourceIpRangesToNats'] as List).cast<String>(),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NfsLocationOnPremConfig {
   /// List of Amazon Resource Names (ARNs) of the DataSync Agents used to connect to the NFS server.
   final List<String> agentArns;
@@ -11,9 +12,9 @@ class NfsLocationOnPremConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['agentArns'] = agentArns;
-    return map;
+    return <String, dynamic>{
+      'agentArns': agentArns,
+    };
   }
 
   factory NfsLocationOnPremConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class NfsLocationOnPremConfig {
     );
   }
 }
+

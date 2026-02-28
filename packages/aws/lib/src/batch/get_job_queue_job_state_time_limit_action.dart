@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetJobQueueJobStateTimeLimitAction {
   final String action;
   final int maxTimeSeconds;
   final String reason;
-
   /// Describes the ability of the queue to accept new jobs (for example, `ENABLED` or `DISABLED`).
   final String state;
 
@@ -21,12 +21,12 @@ class GetJobQueueJobStateTimeLimitAction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['action'] = action;
-    map['maxTimeSeconds'] = maxTimeSeconds;
-    map['reason'] = reason;
-    map['state'] = state;
-    return map;
+    return <String, dynamic>{
+      'action': action,
+      'maxTimeSeconds': maxTimeSeconds,
+      'reason': reason,
+      'state': state,
+    };
   }
 
   factory GetJobQueueJobStateTimeLimitAction.fromMap(Map<String, dynamic> map) {
@@ -38,3 +38,4 @@ class GetJobQueueJobStateTimeLimitAction {
     );
   }
 }
+

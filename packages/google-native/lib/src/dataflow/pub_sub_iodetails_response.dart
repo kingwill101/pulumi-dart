@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Metadata for a Pub/Sub connector used by the job.
 class PubSubIODetailsResponse {
   /// Subscription used in the connection.
   final String subscription;
-
   /// Topic accessed in the connection.
   final String topic;
 
@@ -17,10 +17,10 @@ class PubSubIODetailsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['subscription'] = subscription;
-    map['topic'] = topic;
-    return map;
+    return <String, dynamic>{
+      'subscription': subscription,
+      'topic': topic,
+    };
   }
 
   factory PubSubIODetailsResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class PubSubIODetailsResponse {
     );
   }
 }
+

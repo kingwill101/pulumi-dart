@@ -14,20 +14,15 @@ class GetThemeConfigurationTypography {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['fontFamilies'] = pulumi.Input.encodeList<
-        GetThemeConfigurationTypographyFontFamily,
-        Map<String, dynamic>>(fontFamilies, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'fontFamilies': pulumi.Input.encodeList<GetThemeConfigurationTypographyFontFamily, Map<String, dynamic>>(fontFamilies, (value) => value.toMap()),
+    };
   }
 
   factory GetThemeConfigurationTypography.fromMap(Map<String, dynamic> map) {
     return GetThemeConfigurationTypography(
-      fontFamilies:
-          pulumi.Input.decodeList<GetThemeConfigurationTypographyFontFamily>(
-              map['fontFamilies'],
-              (value) => GetThemeConfigurationTypographyFontFamily.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      fontFamilies: pulumi.Input.decodeList<GetThemeConfigurationTypographyFontFamily>(map['fontFamilies'], (value) => GetThemeConfigurationTypographyFontFamily.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ApplicationAutoStartConfiguration {
   /// Enables the application to automatically start on job submission. Defaults to `true`.
   final bool? enabled;
@@ -11,12 +12,9 @@ class ApplicationAutoStartConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory ApplicationAutoStartConfiguration.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class ApplicationAutoStartConfiguration {
     );
   }
 }
+

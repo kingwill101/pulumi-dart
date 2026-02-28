@@ -16,7 +16,7 @@ enum GlobalForwardingRuleLoadBalancingScheme {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GlobalForwardingRuleLoadBalancingScheme value: $value');
+    throw ArgumentError('Unknown GlobalForwardingRuleLoadBalancingScheme value: $value');
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RepositoryDockerConfig {
   /// The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
   final bool? immutableTags;
@@ -11,18 +12,15 @@ class RepositoryDockerConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final immutableTagsValue = immutableTags;
-    if (immutableTagsValue != null) {
-      map['immutableTags'] = immutableTagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'immutableTags': ?immutableTags,
+    };
   }
 
   factory RepositoryDockerConfig.fromMap(Map<String, dynamic> map) {
     return RepositoryDockerConfig(
-      immutableTags:
-          map['immutableTags'] == null ? null : map['immutableTags'] as bool,
+      immutableTags: map['immutableTags'] == null ? null : map['immutableTags'] as bool,
     );
   }
 }
+

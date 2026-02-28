@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PacketMirroringMirroredResourceInfoInstanceInfoComputeBeta {
   /// Resource URL to the virtual machine instance which is being mirrored.
   final String? url;
@@ -11,18 +12,15 @@ class PacketMirroringMirroredResourceInfoInstanceInfoComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final urlValue = url;
-    if (urlValue != null) {
-      map['url'] = urlValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'url': ?url,
+    };
   }
 
-  factory PacketMirroringMirroredResourceInfoInstanceInfoComputeBeta.fromMap(
-      Map<String, dynamic> map) {
+  factory PacketMirroringMirroredResourceInfoInstanceInfoComputeBeta.fromMap(Map<String, dynamic> map) {
     return PacketMirroringMirroredResourceInfoInstanceInfoComputeBeta(
       url: map['url'] == null ? null : map['url'] as String,
     );
   }
 }
+

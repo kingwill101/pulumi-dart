@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// ClusterUser configures user principals for an RBAC policy.
 class ClusterUserResponse {
   /// The name of the user, e.g. `my-gcp-id@gmail.com`.
@@ -12,9 +13,9 @@ class ClusterUserResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['username'] = username;
-    return map;
+    return <String, dynamic>{
+      'username': username,
+    };
   }
 
   factory ClusterUserResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class ClusterUserResponse {
     );
   }
 }
+

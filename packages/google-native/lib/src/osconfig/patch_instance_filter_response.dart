@@ -7,16 +7,12 @@ import 'patch_instance_filter_group_label_response.dart';
 class PatchInstanceFilterResponse {
   /// Target all VM instances in the project. If true, no other criteria is permitted.
   final bool all;
-
   /// Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.
   final List<PatchInstanceFilterGroupLabelResponse> groupLabels;
-
   /// Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group VMs when targeting configs, for example prefix="prod-".
   final List<String> instanceNamePrefixes;
-
   /// Targets any of the VM instances specified. Instances are specified by their URI in the form `zones/[ZONE]/instances/[INSTANCE_NAME]`, `projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`, or `https://www.googleapis.com/compute/v1/projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`
   final List<String> instances;
-
   /// Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone.
   final List<String> zones;
 
@@ -35,29 +31,23 @@ class PatchInstanceFilterResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['all'] = all;
-    map['groupLabels'] = pulumi.Input.encodeList<
-        PatchInstanceFilterGroupLabelResponse,
-        Map<String, dynamic>>(groupLabels, (value) => value.toMap());
-    map['instanceNamePrefixes'] = instanceNamePrefixes;
-    map['instances'] = instances;
-    map['zones'] = zones;
-    return map;
+    return <String, dynamic>{
+      'all': all,
+      'groupLabels': pulumi.Input.encodeList<PatchInstanceFilterGroupLabelResponse, Map<String, dynamic>>(groupLabels, (value) => value.toMap()),
+      'instanceNamePrefixes': instanceNamePrefixes,
+      'instances': instances,
+      'zones': zones,
+    };
   }
 
   factory PatchInstanceFilterResponse.fromMap(Map<String, dynamic> map) {
     return PatchInstanceFilterResponse(
       all: map['all'] as bool,
-      groupLabels:
-          pulumi.Input.decodeList<PatchInstanceFilterGroupLabelResponse>(
-              map['groupLabels'],
-              (value) => PatchInstanceFilterGroupLabelResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      instanceNamePrefixes:
-          (map['instanceNamePrefixes'] as List).cast<String>(),
+      groupLabels: pulumi.Input.decodeList<PatchInstanceFilterGroupLabelResponse>(map['groupLabels'], (value) => PatchInstanceFilterGroupLabelResponse.fromMap((value as Map).cast<String, dynamic>())),
+      instanceNamePrefixes: (map['instanceNamePrefixes'] as List).cast<String>(),
       instances: (map['instances'] as List).cast<String>(),
       zones: (map['zones'] as List).cast<String>(),
     );
   }
 }
+

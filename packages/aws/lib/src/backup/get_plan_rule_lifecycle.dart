@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetPlanRuleLifecycle {
   final int coldStorageAfter;
   final int deleteAfter;
@@ -16,20 +17,19 @@ class GetPlanRuleLifecycle {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['coldStorageAfter'] = coldStorageAfter;
-    map['deleteAfter'] = deleteAfter;
-    map['optInToArchiveForSupportedResources'] =
-        optInToArchiveForSupportedResources;
-    return map;
+    return <String, dynamic>{
+      'coldStorageAfter': coldStorageAfter,
+      'deleteAfter': deleteAfter,
+      'optInToArchiveForSupportedResources': optInToArchiveForSupportedResources,
+    };
   }
 
   factory GetPlanRuleLifecycle.fromMap(Map<String, dynamic> map) {
     return GetPlanRuleLifecycle(
       coldStorageAfter: map['coldStorageAfter'] as int,
       deleteAfter: map['deleteAfter'] as int,
-      optInToArchiveForSupportedResources:
-          map['optInToArchiveForSupportedResources'] as bool,
+      optInToArchiveForSupportedResources: map['optInToArchiveForSupportedResources'] as bool,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Specifies operating system settings for cluster provisioning.
 class BareMetalOsEnvironmentConfig {
   /// Whether the package repo should not be included when initializing bare metal machines.
@@ -12,19 +13,15 @@ class BareMetalOsEnvironmentConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final packageRepoExcludedValue = packageRepoExcluded;
-    if (packageRepoExcludedValue != null) {
-      map['packageRepoExcluded'] = packageRepoExcludedValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'packageRepoExcluded': ?packageRepoExcluded,
+    };
   }
 
   factory BareMetalOsEnvironmentConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalOsEnvironmentConfig(
-      packageRepoExcluded: map['packageRepoExcluded'] == null
-          ? null
-          : map['packageRepoExcluded'] as bool,
+      packageRepoExcluded: map['packageRepoExcluded'] == null ? null : map['packageRepoExcluded'] as bool,
     );
   }
 }
+

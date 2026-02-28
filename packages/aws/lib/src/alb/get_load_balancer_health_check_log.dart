@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetLoadBalancerHealthCheckLog {
   final String bucket;
   final bool enabled;
@@ -16,11 +17,11 @@ class GetLoadBalancerHealthCheckLog {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucket'] = bucket;
-    map['enabled'] = enabled;
-    map['prefix'] = prefix;
-    return map;
+    return <String, dynamic>{
+      'bucket': bucket,
+      'enabled': enabled,
+      'prefix': prefix,
+    };
   }
 
   factory GetLoadBalancerHealthCheckLog.fromMap(Map<String, dynamic> map) {
@@ -31,3 +32,4 @@ class GetLoadBalancerHealthCheckLog {
     );
   }
 }
+

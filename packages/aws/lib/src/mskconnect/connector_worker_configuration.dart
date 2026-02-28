@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConnectorWorkerConfiguration {
   /// The Amazon Resource Name (ARN) of the worker configuration.
   final String arn;
-
   /// The revision of the worker configuration.
   final int revision;
 
@@ -16,10 +16,10 @@ class ConnectorWorkerConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['revision'] = revision;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'revision': revision,
+    };
   }
 
   factory ConnectorWorkerConfiguration.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class ConnectorWorkerConfiguration {
     );
   }
 }
+

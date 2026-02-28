@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReceivedLicenseArgs {
   /// The ARN of the received license you want data for.
   final pulumi.Input<String> licenseArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -19,17 +18,15 @@ class GetReceivedLicenseArgs {
   GetReceivedLicenseArgs({
     required String licenseArn,
     String? region,
-  })  : licenseArn = pulumi.Input.asInput<String>(licenseArn),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      licenseArn = pulumi.Input.asInput<String>(licenseArn),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['licenseArn'] = licenseArn;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'licenseArn': licenseArn,
+      'region': ?region,
+    };
   }
 
   factory GetReceivedLicenseArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +36,4 @@ class GetReceivedLicenseArgs {
     );
   }
 }
+

@@ -7,7 +7,6 @@ import 'google_privacy_dlp_v2_partition_id.dart';
 class GooglePrivacyDlpV2DatastoreOptions {
   /// The kind to process.
   final GooglePrivacyDlpV2KindExpression? kind;
-
   /// A partition ID identifies a grouping of entities. The grouping is always by project and namespace, however the namespace ID may be empty.
   final GooglePrivacyDlpV2PartitionId? partitionId;
 
@@ -20,28 +19,17 @@ class GooglePrivacyDlpV2DatastoreOptions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final kindValue = kind;
-    if (kindValue != null) {
-      map['kind'] = kindValue.toMap();
-    }
-    final partitionIdValue = partitionId;
-    if (partitionIdValue != null) {
-      map['partitionId'] = partitionIdValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'kind': ?kind == null ? null : kind!.toMap(),
+      'partitionId': ?partitionId == null ? null : partitionId!.toMap(),
+    };
   }
 
   factory GooglePrivacyDlpV2DatastoreOptions.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DatastoreOptions(
-      kind: map['kind'] == null
-          ? null
-          : GooglePrivacyDlpV2KindExpression.fromMap(
-              (map['kind'] as Map).cast<String, dynamic>()),
-      partitionId: map['partitionId'] == null
-          ? null
-          : GooglePrivacyDlpV2PartitionId.fromMap(
-              (map['partitionId'] as Map).cast<String, dynamic>()),
+      kind: map['kind'] == null ? null : GooglePrivacyDlpV2KindExpression.fromMap((map['kind'] as Map).cast<String, dynamic>()),
+      partitionId: map['partitionId'] == null ? null : GooglePrivacyDlpV2PartitionId.fromMap((map['partitionId'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

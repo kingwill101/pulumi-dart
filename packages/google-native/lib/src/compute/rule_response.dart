@@ -8,22 +8,16 @@ import 'log_config_response.dart';
 class RuleResponse {
   /// This is deprecated and has no effect. Do not use.
   final String action;
-
   /// This is deprecated and has no effect. Do not use.
   final List<ConditionResponse> conditions;
-
   /// This is deprecated and has no effect. Do not use.
   final String description;
-
   /// This is deprecated and has no effect. Do not use.
   final List<String> ins;
-
   /// This is deprecated and has no effect. Do not use.
   final List<LogConfigResponse> logConfigs;
-
   /// This is deprecated and has no effect. Do not use.
   final List<String> notIns;
-
   /// This is deprecated and has no effect. Do not use.
   final List<String> permissions;
 
@@ -46,36 +40,27 @@ class RuleResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['action'] = action;
-    map['conditions'] =
-        pulumi.Input.encodeList<ConditionResponse, Map<String, dynamic>>(
-            conditions, (value) => value.toMap());
-    map['description'] = description;
-    map['ins'] = ins;
-    map['logConfigs'] =
-        pulumi.Input.encodeList<LogConfigResponse, Map<String, dynamic>>(
-            logConfigs, (value) => value.toMap());
-    map['notIns'] = notIns;
-    map['permissions'] = permissions;
-    return map;
+    return <String, dynamic>{
+      'action': action,
+      'conditions': pulumi.Input.encodeList<ConditionResponse, Map<String, dynamic>>(conditions, (value) => value.toMap()),
+      'description': description,
+      'ins': ins,
+      'logConfigs': pulumi.Input.encodeList<LogConfigResponse, Map<String, dynamic>>(logConfigs, (value) => value.toMap()),
+      'notIns': notIns,
+      'permissions': permissions,
+    };
   }
 
   factory RuleResponse.fromMap(Map<String, dynamic> map) {
     return RuleResponse(
       action: map['action'] as String,
-      conditions: pulumi.Input.decodeList<ConditionResponse>(
-          map['conditions'],
-          (value) => ConditionResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      conditions: pulumi.Input.decodeList<ConditionResponse>(map['conditions'], (value) => ConditionResponse.fromMap((value as Map).cast<String, dynamic>())),
       description: map['description'] as String,
       ins: (map['ins'] as List).cast<String>(),
-      logConfigs: pulumi.Input.decodeList<LogConfigResponse>(
-          map['logConfigs'],
-          (value) => LogConfigResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      logConfigs: pulumi.Input.decodeList<LogConfigResponse>(map['logConfigs'], (value) => LogConfigResponse.fromMap((value as Map).cast<String, dynamic>())),
       notIns: (map['notIns'] as List).cast<String>(),
       permissions: (map['permissions'] as List).cast<String>(),
     );
   }
 }
+

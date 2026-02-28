@@ -6,8 +6,7 @@ import 'get_launch_template_network_interface_connection_tracking_specification.
 class GetLaunchTemplateNetworkInterface {
   final String associateCarrierIpAddress;
   final bool? associatePublicIpAddress;
-  final List<GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification>
-      connectionTrackingSpecifications;
+  final List<GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification> connectionTrackingSpecifications;
   final bool? deleteOnTermination;
   final String description;
   final int deviceIndex;
@@ -74,55 +73,37 @@ class GetLaunchTemplateNetworkInterface {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['associateCarrierIpAddress'] = associateCarrierIpAddress;
-    final associatePublicIpAddressValue = associatePublicIpAddress;
-    if (associatePublicIpAddressValue != null) {
-      map['associatePublicIpAddress'] = associatePublicIpAddressValue;
-    }
-    map['connectionTrackingSpecifications'] = pulumi.Input.encodeList<
-            GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification,
-            Map<String, dynamic>>(
-        connectionTrackingSpecifications, (value) => value.toMap());
-    final deleteOnTerminationValue = deleteOnTermination;
-    if (deleteOnTerminationValue != null) {
-      map['deleteOnTermination'] = deleteOnTerminationValue;
-    }
-    map['description'] = description;
-    map['deviceIndex'] = deviceIndex;
-    map['interfaceType'] = interfaceType;
-    map['ipv4AddressCount'] = ipv4AddressCount;
-    map['ipv4Addresses'] = ipv4Addresses;
-    map['ipv4PrefixCount'] = ipv4PrefixCount;
-    map['ipv4Prefixes'] = ipv4Prefixes;
-    map['ipv6AddressCount'] = ipv6AddressCount;
-    map['ipv6Addresses'] = ipv6Addresses;
-    map['ipv6PrefixCount'] = ipv6PrefixCount;
-    map['ipv6Prefixes'] = ipv6Prefixes;
-    map['networkCardIndex'] = networkCardIndex;
-    map['networkInterfaceId'] = networkInterfaceId;
-    map['primaryIpv6'] = primaryIpv6;
-    map['privateIpAddress'] = privateIpAddress;
-    map['securityGroups'] = securityGroups;
-    map['subnetId'] = subnetId;
-    return map;
+    return <String, dynamic>{
+      'associateCarrierIpAddress': associateCarrierIpAddress,
+      'associatePublicIpAddress': ?associatePublicIpAddress,
+      'connectionTrackingSpecifications': pulumi.Input.encodeList<GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification, Map<String, dynamic>>(connectionTrackingSpecifications, (value) => value.toMap()),
+      'deleteOnTermination': ?deleteOnTermination,
+      'description': description,
+      'deviceIndex': deviceIndex,
+      'interfaceType': interfaceType,
+      'ipv4AddressCount': ipv4AddressCount,
+      'ipv4Addresses': ipv4Addresses,
+      'ipv4PrefixCount': ipv4PrefixCount,
+      'ipv4Prefixes': ipv4Prefixes,
+      'ipv6AddressCount': ipv6AddressCount,
+      'ipv6Addresses': ipv6Addresses,
+      'ipv6PrefixCount': ipv6PrefixCount,
+      'ipv6Prefixes': ipv6Prefixes,
+      'networkCardIndex': networkCardIndex,
+      'networkInterfaceId': networkInterfaceId,
+      'primaryIpv6': primaryIpv6,
+      'privateIpAddress': privateIpAddress,
+      'securityGroups': securityGroups,
+      'subnetId': subnetId,
+    };
   }
 
   factory GetLaunchTemplateNetworkInterface.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateNetworkInterface(
       associateCarrierIpAddress: map['associateCarrierIpAddress'] as String,
-      associatePublicIpAddress: map['associatePublicIpAddress'] == null
-          ? null
-          : map['associatePublicIpAddress'] as bool,
-      connectionTrackingSpecifications: pulumi.Input.decodeList<
-              GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification>(
-          map['connectionTrackingSpecifications'],
-          (value) =>
-              GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification
-                  .fromMap((value as Map).cast<String, dynamic>())),
-      deleteOnTermination: map['deleteOnTermination'] == null
-          ? null
-          : map['deleteOnTermination'] as bool,
+      associatePublicIpAddress: map['associatePublicIpAddress'] == null ? null : map['associatePublicIpAddress'] as bool,
+      connectionTrackingSpecifications: pulumi.Input.decodeList<GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification>(map['connectionTrackingSpecifications'], (value) => GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification.fromMap((value as Map).cast<String, dynamic>())),
+      deleteOnTermination: map['deleteOnTermination'] == null ? null : map['deleteOnTermination'] as bool,
       description: map['description'] as String,
       deviceIndex: map['deviceIndex'] as int,
       interfaceType: map['interfaceType'] as String,
@@ -143,3 +124,4 @@ class GetLaunchTemplateNetworkInterface {
     );
   }
 }
+

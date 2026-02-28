@@ -502,16 +502,13 @@ class TopicRule extends pulumi.CustomResource {
   late final pulumi.Output<List<TopicRuleCloudwatchAlarm>?> cloudwatchAlarms;
   late final pulumi.Output<List<TopicRuleCloudwatchLog>?> cloudwatchLogs;
   late final pulumi.Output<List<TopicRuleCloudwatchMetric>?> cloudwatchMetrics;
-
   /// The description of the rule.
   late final pulumi.Output<String?> description;
   late final pulumi.Output<List<TopicRuleDynamodb>?> dynamodbs;
   late final pulumi.Output<List<TopicRuleDynamodbv2>?> dynamodbv2s;
   late final pulumi.Output<List<TopicRuleElasticsearch>?> elasticsearch;
-
   /// Specifies whether the rule is enabled.
   late final pulumi.Output<bool> enabled;
-
   /// Configuration block with error action to be associated with the rule. See the documentation for `cloudwatch_alarm`, `cloudwatch_logs`, `cloudwatch_metric`, `dynamodb`, `dynamodbv2`, `elasticsearch`, `firehose`, `http`, `iot_analytics`, `iot_events`, `kafka`, `kinesis`, `lambda`, `republish`, `s3`, `sns`, `sqs`, `step_functions`, `timestream` configuration blocks for further configuration details.
   late final pulumi.Output<TopicRuleErrorAction?> errorAction;
   late final pulumi.Output<List<TopicRuleFirehose>?> firehoses;
@@ -521,27 +518,21 @@ class TopicRule extends pulumi.CustomResource {
   late final pulumi.Output<List<TopicRuleKafka>?> kafkas;
   late final pulumi.Output<List<TopicRuleKinesis>?> kineses;
   late final pulumi.Output<List<TopicRuleLambda>?> lambdas;
-
   /// The name of the rule.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<List<TopicRuleRepublish>?> republishes;
   late final pulumi.Output<List<TopicRuleS3>?> s3;
   late final pulumi.Output<List<TopicRuleSns>?> sns;
-
   /// The SQL statement used to query the topic. For more information, see AWS IoT SQL Reference (http://docs.aws.amazon.com/iot/latest/developerguide/iot-rules.html#aws-iot-sql-reference) in the AWS IoT Developer Guide.
   late final pulumi.Output<String> sql;
-
   /// The version of the SQL rules engine to use when evaluating the rule.
   late final pulumi.Output<String> sqlVersion;
   late final pulumi.Output<List<TopicRuleSqs>?> sqs;
   late final pulumi.Output<List<TopicRuleStepFunction>?> stepFunctions;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<List<TopicRuleTimestream>?> timestreams;
@@ -561,24 +552,18 @@ class TopicRule extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
-    this.cloudwatchAlarms =
-        registerOutput<List<TopicRuleCloudwatchAlarm>?>('cloudwatchAlarms');
-    this.cloudwatchLogs =
-        registerOutput<List<TopicRuleCloudwatchLog>?>('cloudwatchLogs');
-    this.cloudwatchMetrics =
-        registerOutput<List<TopicRuleCloudwatchMetric>?>('cloudwatchMetrics');
+    this.cloudwatchAlarms = registerOutput<List<TopicRuleCloudwatchAlarm>?>('cloudwatchAlarms');
+    this.cloudwatchLogs = registerOutput<List<TopicRuleCloudwatchLog>?>('cloudwatchLogs');
+    this.cloudwatchMetrics = registerOutput<List<TopicRuleCloudwatchMetric>?>('cloudwatchMetrics');
     this.description = registerOutput<String?>('description');
     this.dynamodbs = registerOutput<List<TopicRuleDynamodb>?>('dynamodbs');
-    this.dynamodbv2s =
-        registerOutput<List<TopicRuleDynamodbv2>?>('dynamodbv2s');
-    this.elasticsearch =
-        registerOutput<List<TopicRuleElasticsearch>?>('elasticsearch');
+    this.dynamodbv2s = registerOutput<List<TopicRuleDynamodbv2>?>('dynamodbv2s');
+    this.elasticsearch = registerOutput<List<TopicRuleElasticsearch>?>('elasticsearch');
     this.enabled = registerOutput<bool>('enabled');
     this.errorAction = registerOutput<TopicRuleErrorAction?>('errorAction');
     this.firehoses = registerOutput<List<TopicRuleFirehose>?>('firehoses');
     this.https = registerOutput<List<TopicRuleHttp>?>('https');
-    this.iotAnalytics =
-        registerOutput<List<TopicRuleIotAnalytic>?>('iotAnalytics');
+    this.iotAnalytics = registerOutput<List<TopicRuleIotAnalytic>?>('iotAnalytics');
     this.iotEvents = registerOutput<List<TopicRuleIotEvent>?>('iotEvents');
     this.kafkas = registerOutput<List<TopicRuleKafka>?>('kafkas');
     this.kineses = registerOutput<List<TopicRuleKinesis>?>('kineses');
@@ -591,11 +576,9 @@ class TopicRule extends pulumi.CustomResource {
     this.sql = registerOutput<String>('sql');
     this.sqlVersion = registerOutput<String>('sqlVersion');
     this.sqs = registerOutput<List<TopicRuleSqs>?>('sqs');
-    this.stepFunctions =
-        registerOutput<List<TopicRuleStepFunction>?>('stepFunctions');
+    this.stepFunctions = registerOutput<List<TopicRuleStepFunction>?>('stepFunctions');
     this.tags = registerOutput<Map<String, String>?>('tags');
     this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timestreams =
-        registerOutput<List<TopicRuleTimestream>?>('timestreams');
+    this.timestreams = registerOutput<List<TopicRuleTimestream>?>('timestreams');
   }
 }

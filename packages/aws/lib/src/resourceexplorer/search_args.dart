@@ -11,10 +11,8 @@ class SearchArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> queryString;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Specifies the Amazon resource name (ARN) of the view to use for the query. If you don't specify a value for this parameter, then the operation automatically uses the default view for the AWS Region in which you called this operation. If the Region either doesn't have a default view or if you don't have permission to use the default view, then the operation fails with a `401 Unauthorized` exception.
   final pulumi.Input<String>? viewArn;
 
@@ -26,22 +24,17 @@ class SearchArgs {
     required String queryString,
     String? region,
     String? viewArn,
-  })  : queryString = pulumi.Input.asInput<String>(queryString),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        viewArn = pulumi.Input.asOptionalInput<String>(viewArn);
+  }) :
+      queryString = pulumi.Input.asInput<String>(queryString),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      viewArn = pulumi.Input.asOptionalInput<String>(viewArn);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['queryString'] = queryString;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final viewArnValue = viewArn;
-    if (viewArnValue != null) {
-      map['viewArn'] = viewArnValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'queryString': queryString,
+      'region': ?region,
+      'viewArn': ?viewArn,
+    };
   }
 
   factory SearchArgs.fromMap(Map<String, dynamic> map) {
@@ -52,3 +45,4 @@ class SearchArgs {
     );
   }
 }
+

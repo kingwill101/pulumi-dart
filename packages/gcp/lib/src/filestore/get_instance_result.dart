@@ -19,7 +19,6 @@ class GetInstanceResult {
   final List<GetInstanceEffectiveReplication> effectiveReplications;
   final String etag;
   final List<GetInstanceFileShare> fileShares;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<GetInstanceInitialReplication> initialReplications;
@@ -87,49 +86,31 @@ class GetInstanceResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['deletionProtectionEnabled'] = deletionProtectionEnabled;
-    map['deletionProtectionReason'] = deletionProtectionReason;
-    map['description'] = description;
-    map['directoryServices'] = pulumi.Input.encodeList<
-        GetInstanceDirectoryService,
-        Map<String, dynamic>>(directoryServices, (value) => value.toMap());
-    map['effectiveLabels'] = effectiveLabels;
-    map['effectiveReplications'] = pulumi.Input.encodeList<
-        GetInstanceEffectiveReplication,
-        Map<String, dynamic>>(effectiveReplications, (value) => value.toMap());
-    map['etag'] = etag;
-    map['fileShares'] =
-        pulumi.Input.encodeList<GetInstanceFileShare, Map<String, dynamic>>(
-            fileShares, (value) => value.toMap());
-    map['id'] = id;
-    map['initialReplications'] = pulumi.Input.encodeList<
-        GetInstanceInitialReplication,
-        Map<String, dynamic>>(initialReplications, (value) => value.toMap());
-    map['kmsKeyName'] = kmsKeyName;
-    map['labels'] = labels;
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    map['name'] = name;
-    map['networks'] =
-        pulumi.Input.encodeList<GetInstanceNetwork, Map<String, dynamic>>(
-            networks, (value) => value.toMap());
-    map['performanceConfigs'] = pulumi.Input.encodeList<
-        GetInstancePerformanceConfig,
-        Map<String, dynamic>>(performanceConfigs, (value) => value.toMap());
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['protocol'] = protocol;
-    map['pulumiLabels'] = pulumiLabels;
-    map['tags'] = tags;
-    map['tier'] = tier;
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'deletionProtectionEnabled': deletionProtectionEnabled,
+      'deletionProtectionReason': deletionProtectionReason,
+      'description': description,
+      'directoryServices': pulumi.Input.encodeList<GetInstanceDirectoryService, Map<String, dynamic>>(directoryServices, (value) => value.toMap()),
+      'effectiveLabels': effectiveLabels,
+      'effectiveReplications': pulumi.Input.encodeList<GetInstanceEffectiveReplication, Map<String, dynamic>>(effectiveReplications, (value) => value.toMap()),
+      'etag': etag,
+      'fileShares': pulumi.Input.encodeList<GetInstanceFileShare, Map<String, dynamic>>(fileShares, (value) => value.toMap()),
+      'id': id,
+      'initialReplications': pulumi.Input.encodeList<GetInstanceInitialReplication, Map<String, dynamic>>(initialReplications, (value) => value.toMap()),
+      'kmsKeyName': kmsKeyName,
+      'labels': labels,
+      'location': ?location,
+      'name': name,
+      'networks': pulumi.Input.encodeList<GetInstanceNetwork, Map<String, dynamic>>(networks, (value) => value.toMap()),
+      'performanceConfigs': pulumi.Input.encodeList<GetInstancePerformanceConfig, Map<String, dynamic>>(performanceConfigs, (value) => value.toMap()),
+      'project': ?project,
+      'protocol': protocol,
+      'pulumiLabels': pulumiLabels,
+      'tags': tags,
+      'tier': tier,
+      'zone': zone,
+    };
   }
 
   factory GetInstanceResult.fromMap(Map<String, dynamic> map) {
@@ -138,39 +119,19 @@ class GetInstanceResult {
       deletionProtectionEnabled: map['deletionProtectionEnabled'] as bool,
       deletionProtectionReason: map['deletionProtectionReason'] as String,
       description: map['description'] as String,
-      directoryServices: pulumi.Input.decodeList<GetInstanceDirectoryService>(
-          map['directoryServices'],
-          (value) => GetInstanceDirectoryService.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      directoryServices: pulumi.Input.decodeList<GetInstanceDirectoryService>(map['directoryServices'], (value) => GetInstanceDirectoryService.fromMap((value as Map).cast<String, dynamic>())),
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      effectiveReplications:
-          pulumi.Input.decodeList<GetInstanceEffectiveReplication>(
-              map['effectiveReplications'],
-              (value) => GetInstanceEffectiveReplication.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      effectiveReplications: pulumi.Input.decodeList<GetInstanceEffectiveReplication>(map['effectiveReplications'], (value) => GetInstanceEffectiveReplication.fromMap((value as Map).cast<String, dynamic>())),
       etag: map['etag'] as String,
-      fileShares: pulumi.Input.decodeList<GetInstanceFileShare>(
-          map['fileShares'],
-          (value) => GetInstanceFileShare.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      fileShares: pulumi.Input.decodeList<GetInstanceFileShare>(map['fileShares'], (value) => GetInstanceFileShare.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      initialReplications:
-          pulumi.Input.decodeList<GetInstanceInitialReplication>(
-              map['initialReplications'],
-              (value) => GetInstanceInitialReplication.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      initialReplications: pulumi.Input.decodeList<GetInstanceInitialReplication>(map['initialReplications'], (value) => GetInstanceInitialReplication.fromMap((value as Map).cast<String, dynamic>())),
       kmsKeyName: map['kmsKeyName'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       location: map['location'] == null ? null : map['location'] as String,
       name: map['name'] as String,
-      networks: pulumi.Input.decodeList<GetInstanceNetwork>(
-          map['networks'],
-          (value) => GetInstanceNetwork.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      performanceConfigs: pulumi.Input.decodeList<GetInstancePerformanceConfig>(
-          map['performanceConfigs'],
-          (value) => GetInstancePerformanceConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      networks: pulumi.Input.decodeList<GetInstanceNetwork>(map['networks'], (value) => GetInstanceNetwork.fromMap((value as Map).cast<String, dynamic>())),
+      performanceConfigs: pulumi.Input.decodeList<GetInstancePerformanceConfig>(map['performanceConfigs'], (value) => GetInstancePerformanceConfig.fromMap((value as Map).cast<String, dynamic>())),
       project: map['project'] == null ? null : map['project'] as String,
       protocol: map['protocol'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
@@ -180,3 +141,4 @@ class GetInstanceResult {
     );
   }
 }
+

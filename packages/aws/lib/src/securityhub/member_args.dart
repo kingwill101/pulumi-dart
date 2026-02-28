@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MemberArgs {
   /// The ID of the member AWS account.
   final pulumi.Input<String> accountId;
-
   /// The email of the member AWS account.
   final pulumi.Input<String>? email;
-
   /// Boolean whether to invite the account to Security Hub as a member. Defaults to `false`.
   final pulumi.Input<bool>? invite;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -29,27 +26,19 @@ class MemberArgs {
     String? email,
     bool? invite,
     String? region,
-  })  : accountId = pulumi.Input.asInput<String>(accountId),
-        email = pulumi.Input.asOptionalInput<String>(email),
-        invite = pulumi.Input.asOptionalInput<bool>(invite),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      accountId = pulumi.Input.asInput<String>(accountId),
+      email = pulumi.Input.asOptionalInput<String>(email),
+      invite = pulumi.Input.asOptionalInput<bool>(invite),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accountId'] = accountId;
-    final emailValue = email;
-    if (emailValue != null) {
-      map['email'] = emailValue;
-    }
-    final inviteValue = invite;
-    if (inviteValue != null) {
-      map['invite'] = inviteValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'accountId': accountId,
+      'email': ?email,
+      'invite': ?invite,
+      'region': ?region,
+    };
   }
 
   factory MemberArgs.fromMap(Map<String, dynamic> map) {
@@ -61,3 +50,4 @@ class MemberArgs {
     );
   }
 }
+

@@ -6,13 +6,10 @@ import 'gcs_object_response.dart';
 class ExecStepConfigResponse {
   /// Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
   final List<int> allowedSuccessCodes;
-
   /// A Cloud Storage object containing the executable.
   final GcsObjectResponse gcsObject;
-
   /// The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
   final String interpreter;
-
   /// An absolute path to the executable on the VM.
   final String localPath;
 
@@ -29,21 +26,21 @@ class ExecStepConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allowedSuccessCodes'] = allowedSuccessCodes;
-    map['gcsObject'] = gcsObject.toMap();
-    map['interpreter'] = interpreter;
-    map['localPath'] = localPath;
-    return map;
+    return <String, dynamic>{
+      'allowedSuccessCodes': allowedSuccessCodes,
+      'gcsObject': gcsObject.toMap(),
+      'interpreter': interpreter,
+      'localPath': localPath,
+    };
   }
 
   factory ExecStepConfigResponse.fromMap(Map<String, dynamic> map) {
     return ExecStepConfigResponse(
       allowedSuccessCodes: (map['allowedSuccessCodes'] as List).cast<int>(),
-      gcsObject: GcsObjectResponse.fromMap(
-          (map['gcsObject'] as Map).cast<String, dynamic>()),
+      gcsObject: GcsObjectResponse.fromMap((map['gcsObject'] as Map).cast<String, dynamic>()),
       interpreter: map['interpreter'] as String,
       localPath: map['localPath'] as String,
     );
   }
 }
+

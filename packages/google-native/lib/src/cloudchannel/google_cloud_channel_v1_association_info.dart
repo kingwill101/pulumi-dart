@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Association links that an entitlement has to other entitlements.
 class GoogleCloudChannelV1AssociationInfo {
   /// The name of the base entitlement, for which this entitlement is an add-on.
@@ -12,20 +13,15 @@ class GoogleCloudChannelV1AssociationInfo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final baseEntitlementValue = baseEntitlement;
-    if (baseEntitlementValue != null) {
-      map['baseEntitlement'] = baseEntitlementValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'baseEntitlement': ?baseEntitlement,
+    };
   }
 
-  factory GoogleCloudChannelV1AssociationInfo.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudChannelV1AssociationInfo.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1AssociationInfo(
-      baseEntitlement: map['baseEntitlement'] == null
-          ? null
-          : map['baseEntitlement'] as String,
+      baseEntitlement: map['baseEntitlement'] == null ? null : map['baseEntitlement'] as String,
     );
   }
 }
+

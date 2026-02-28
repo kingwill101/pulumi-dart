@@ -7,7 +7,6 @@ import 'payload_file_response.dart';
 class InlinePayloadInfoResponse {
   /// The import job format.
   final String format;
-
   /// List of payload files.
   final List<PayloadFileResponse> payload;
 
@@ -20,21 +19,17 @@ class InlinePayloadInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['format'] = format;
-    map['payload'] =
-        pulumi.Input.encodeList<PayloadFileResponse, Map<String, dynamic>>(
-            payload, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'format': format,
+      'payload': pulumi.Input.encodeList<PayloadFileResponse, Map<String, dynamic>>(payload, (value) => value.toMap()),
+    };
   }
 
   factory InlinePayloadInfoResponse.fromMap(Map<String, dynamic> map) {
     return InlinePayloadInfoResponse(
       format: map['format'] as String,
-      payload: pulumi.Input.decodeList<PayloadFileResponse>(
-          map['payload'],
-          (value) => PayloadFileResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      payload: pulumi.Input.decodeList<PayloadFileResponse>(map['payload'], (value) => PayloadFileResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -109,10 +109,8 @@ import 'approval_rule_template_association_args.dart';
 class ApprovalRuleTemplateAssociation extends pulumi.CustomResource {
   /// The name for the approval rule template.
   late final pulumi.Output<String> approvalRuleTemplateName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The name of the repository that you want to associate with the template.
   late final pulumi.Output<String> repositoryName;
 
@@ -130,8 +128,7 @@ class ApprovalRuleTemplateAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.approvalRuleTemplateName =
-        registerOutput<String>('approvalRuleTemplateName');
+    this.approvalRuleTemplateName = registerOutput<String>('approvalRuleTemplateName');
     this.region = registerOutput<String>('region');
     this.repositoryName = registerOutput<String>('repositoryName');
   }

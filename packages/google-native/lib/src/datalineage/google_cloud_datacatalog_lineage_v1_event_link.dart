@@ -6,7 +6,6 @@ import 'google_cloud_datacatalog_lineage_v1_entity_reference.dart';
 class GoogleCloudDatacatalogLineageV1EventLink {
   /// Reference to the source entity
   final GoogleCloudDatacatalogLineageV1EntityReference source;
-
   /// Reference to the target entity
   final GoogleCloudDatacatalogLineageV1EntityReference target;
 
@@ -19,19 +18,17 @@ class GoogleCloudDatacatalogLineageV1EventLink {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['source'] = source.toMap();
-    map['target'] = target.toMap();
-    return map;
+    return <String, dynamic>{
+      'source': source.toMap(),
+      'target': target.toMap(),
+    };
   }
 
-  factory GoogleCloudDatacatalogLineageV1EventLink.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogLineageV1EventLink.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogLineageV1EventLink(
-      source: GoogleCloudDatacatalogLineageV1EntityReference.fromMap(
-          (map['source'] as Map).cast<String, dynamic>()),
-      target: GoogleCloudDatacatalogLineageV1EntityReference.fromMap(
-          (map['target'] as Map).cast<String, dynamic>()),
+      source: GoogleCloudDatacatalogLineageV1EntityReference.fromMap((map['source'] as Map).cast<String, dynamic>()),
+      target: GoogleCloudDatacatalogLineageV1EntityReference.fromMap((map['target'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

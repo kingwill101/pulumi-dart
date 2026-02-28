@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CustomModelTrainingMetric {
   /// Loss metric associated with the customization job.
   final double trainingLoss;
@@ -11,9 +12,9 @@ class CustomModelTrainingMetric {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['trainingLoss'] = trainingLoss;
-    return map;
+    return <String, dynamic>{
+      'trainingLoss': trainingLoss,
+    };
   }
 
   factory CustomModelTrainingMetric.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class CustomModelTrainingMetric {
     );
   }
 }
+

@@ -11,31 +11,22 @@ import 'database_encryption_configuration.dart';
 class DatabaseArgs {
   /// That an Amazon S3 canned ACL should be set to control ownership of stored query results. See ACL Configuration below.
   final pulumi.Input<DatabaseAclConfiguration>? aclConfiguration;
-
   /// Name of S3 bucket to save the results of the query execution.
   final pulumi.Input<String>? bucket;
-
   /// Description of the database.
   final pulumi.Input<String>? comment;
-
   /// Encryption key block AWS Athena uses to decrypt the data in S3, such as an AWS Key Management Service (AWS KMS) key. See Encryption Configuration below.
   final pulumi.Input<DatabaseEncryptionConfiguration>? encryptionConfiguration;
-
   /// AWS account ID that you expect to be the owner of the Amazon S3 bucket.
   final pulumi.Input<String>? expectedBucketOwner;
-
   /// Boolean that indicates all tables should be deleted from the database so that the database can be destroyed without error. The tables are *not* recoverable.
   final pulumi.Input<bool>? forceDestroy;
-
   /// Name of the database to create.
   final pulumi.Input<String>? name;
-
   /// Key-value map of custom metadata properties for the database definition.
   final pulumi.Input<Map<String, String>>? properties;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Name of the workgroup.
   final pulumi.Input<String>? workgroup;
 
@@ -61,95 +52,46 @@ class DatabaseArgs {
     Map<String, String>? properties,
     String? region,
     String? workgroup,
-  })  : aclConfiguration =
-            pulumi.Input.asOptionalInput<DatabaseAclConfiguration>(
-                aclConfiguration),
-        bucket = pulumi.Input.asOptionalInput<String>(bucket),
-        comment = pulumi.Input.asOptionalInput<String>(comment),
-        encryptionConfiguration =
-            pulumi.Input.asOptionalInput<DatabaseEncryptionConfiguration>(
-                encryptionConfiguration),
-        expectedBucketOwner =
-            pulumi.Input.asOptionalInput<String>(expectedBucketOwner),
-        forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        properties =
-            pulumi.Input.asOptionalInput<Map<String, String>>(properties),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        workgroup = pulumi.Input.asOptionalInput<String>(workgroup);
+  }) :
+      aclConfiguration = pulumi.Input.asOptionalInput<DatabaseAclConfiguration>(aclConfiguration),
+      bucket = pulumi.Input.asOptionalInput<String>(bucket),
+      comment = pulumi.Input.asOptionalInput<String>(comment),
+      encryptionConfiguration = pulumi.Input.asOptionalInput<DatabaseEncryptionConfiguration>(encryptionConfiguration),
+      expectedBucketOwner = pulumi.Input.asOptionalInput<String>(expectedBucketOwner),
+      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      properties = pulumi.Input.asOptionalInput<Map<String, String>>(properties),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      workgroup = pulumi.Input.asOptionalInput<String>(workgroup);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final aclConfigurationValue = aclConfiguration;
-    if (aclConfigurationValue != null) {
-      map['aclConfiguration'] = pulumi.Input.mapOptionalInputValue<
-              DatabaseAclConfiguration, Map<String, dynamic>>(
-          aclConfigurationValue, (value) => value.toMap());
-    }
-    final bucketValue = bucket;
-    if (bucketValue != null) {
-      map['bucket'] = bucketValue;
-    }
-    final commentValue = comment;
-    if (commentValue != null) {
-      map['comment'] = commentValue;
-    }
-    final encryptionConfigurationValue = encryptionConfiguration;
-    if (encryptionConfigurationValue != null) {
-      map['encryptionConfiguration'] = pulumi.Input.mapOptionalInputValue<
-              DatabaseEncryptionConfiguration, Map<String, dynamic>>(
-          encryptionConfigurationValue, (value) => value.toMap());
-    }
-    final expectedBucketOwnerValue = expectedBucketOwner;
-    if (expectedBucketOwnerValue != null) {
-      map['expectedBucketOwner'] = expectedBucketOwnerValue;
-    }
-    final forceDestroyValue = forceDestroy;
-    if (forceDestroyValue != null) {
-      map['forceDestroy'] = forceDestroyValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final propertiesValue = properties;
-    if (propertiesValue != null) {
-      map['properties'] = propertiesValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final workgroupValue = workgroup;
-    if (workgroupValue != null) {
-      map['workgroup'] = workgroupValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'aclConfiguration': ?pulumi.Input.mapOptionalInputValue<DatabaseAclConfiguration, Map<String, dynamic>>(aclConfiguration, (value) => value.toMap()),
+      'bucket': ?bucket,
+      'comment': ?comment,
+      'encryptionConfiguration': ?pulumi.Input.mapOptionalInputValue<DatabaseEncryptionConfiguration, Map<String, dynamic>>(encryptionConfiguration, (value) => value.toMap()),
+      'expectedBucketOwner': ?expectedBucketOwner,
+      'forceDestroy': ?forceDestroy,
+      'name': ?name,
+      'properties': ?properties,
+      'region': ?region,
+      'workgroup': ?workgroup,
+    };
   }
 
   factory DatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseArgs(
-      aclConfiguration: map['aclConfiguration'] == null
-          ? null
-          : DatabaseAclConfiguration.fromMap(
-              (map['aclConfiguration'] as Map).cast<String, dynamic>()),
+      aclConfiguration: map['aclConfiguration'] == null ? null : DatabaseAclConfiguration.fromMap((map['aclConfiguration'] as Map).cast<String, dynamic>()),
       bucket: map['bucket'] == null ? null : map['bucket'] as String,
       comment: map['comment'] == null ? null : map['comment'] as String,
-      encryptionConfiguration: map['encryptionConfiguration'] == null
-          ? null
-          : DatabaseEncryptionConfiguration.fromMap(
-              (map['encryptionConfiguration'] as Map).cast<String, dynamic>()),
-      expectedBucketOwner: map['expectedBucketOwner'] == null
-          ? null
-          : map['expectedBucketOwner'] as String,
-      forceDestroy:
-          map['forceDestroy'] == null ? null : map['forceDestroy'] as bool,
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : DatabaseEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>()),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : map['expectedBucketOwner'] as String,
+      forceDestroy: map['forceDestroy'] == null ? null : map['forceDestroy'] as bool,
       name: map['name'] == null ? null : map['name'] as String,
-      properties: map['properties'] == null
-          ? null
-          : (map['properties'] as Map).cast<String, String>(),
+      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
       region: map['region'] == null ? null : map['region'] as String,
       workgroup: map['workgroup'] == null ? null : map['workgroup'] as String,
     );
   }
 }
+

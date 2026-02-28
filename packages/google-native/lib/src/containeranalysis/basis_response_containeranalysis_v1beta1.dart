@@ -6,7 +6,6 @@ import 'fingerprint_response_containeranalysis_v1beta1.dart';
 class BasisResponseContaineranalysisV1beta1 {
   /// Immutable. The fingerprint of the base image.
   final FingerprintResponseContaineranalysisV1beta1 fingerprint;
-
   /// Immutable. The resource_url for the resource representing the basis of associated occurrence images.
   final String resourceUrl;
 
@@ -19,18 +18,17 @@ class BasisResponseContaineranalysisV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['fingerprint'] = fingerprint.toMap();
-    map['resourceUrl'] = resourceUrl;
-    return map;
+    return <String, dynamic>{
+      'fingerprint': fingerprint.toMap(),
+      'resourceUrl': resourceUrl,
+    };
   }
 
-  factory BasisResponseContaineranalysisV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory BasisResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return BasisResponseContaineranalysisV1beta1(
-      fingerprint: FingerprintResponseContaineranalysisV1beta1.fromMap(
-          (map['fingerprint'] as Map).cast<String, dynamic>()),
+      fingerprint: FingerprintResponseContaineranalysisV1beta1.fromMap((map['fingerprint'] as Map).cast<String, dynamic>()),
       resourceUrl: map['resourceUrl'] as String,
     );
   }
 }
+

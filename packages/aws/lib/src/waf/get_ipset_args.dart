@@ -14,12 +14,13 @@ class GetIpsetArgs {
   /// [name] Name of the WAF IP set.
   GetIpsetArgs({
     required String name,
-  }) : name = pulumi.Input.asInput<String>(name);
+  }) :
+      name = pulumi.Input.asInput<String>(name);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetIpsetArgs.fromMap(Map<String, dynamic> map) {
@@ -28,3 +29,4 @@ class GetIpsetArgs {
     );
   }
 }
+

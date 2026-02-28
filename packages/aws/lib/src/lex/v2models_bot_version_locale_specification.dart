@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class V2modelsBotVersionLocaleSpecification {
   final String sourceBotVersion;
 
@@ -10,15 +11,15 @@ class V2modelsBotVersionLocaleSpecification {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['sourceBotVersion'] = sourceBotVersion;
-    return map;
+    return <String, dynamic>{
+      'sourceBotVersion': sourceBotVersion,
+    };
   }
 
-  factory V2modelsBotVersionLocaleSpecification.fromMap(
-      Map<String, dynamic> map) {
+  factory V2modelsBotVersionLocaleSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsBotVersionLocaleSpecification(
       sourceBotVersion: map['sourceBotVersion'] as String,
     );
   }
 }
+

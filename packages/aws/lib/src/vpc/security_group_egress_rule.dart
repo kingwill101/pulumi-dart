@@ -145,43 +145,30 @@ import 'security_group_egress_rule_args.dart';
 class SecurityGroupEgressRule extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the security group rule.
   late final pulumi.Output<String> arn;
-
   /// The destination IPv4 CIDR range.
   late final pulumi.Output<String?> cidrIpv4;
-
   /// The destination IPv6 CIDR range.
   late final pulumi.Output<String?> cidrIpv6;
-
   /// The security group rule description.
   late final pulumi.Output<String?> description;
-
   /// The start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type.
   late final pulumi.Output<int?> fromPort;
-
   /// The IP protocol name or number. Use `-1` to specify all protocols. Note that if `ip_protocol` is set to `-1`, it translates to all protocols, all port ranges, and `from_port` and `to_port` values should not be defined.
   late final pulumi.Output<String> ipProtocol;
-
   /// The ID of the destination prefix list.
   late final pulumi.Output<String?> prefixListId;
-
   /// The destination security group that is referenced in the rule.
   late final pulumi.Output<String?> referencedSecurityGroupId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ID of the security group.
   late final pulumi.Output<String> securityGroupId;
-
   /// The ID of the security group rule.
   late final pulumi.Output<String> securityGroupRuleId;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code.
   ///
   /// > **Note** Although `cidr_ipv4`, `cidr_ipv6`, `prefix_list_id`, and `referenced_security_group_id` are all marked as optional, you *must* provide one of them in order to configure the destination of the traffic. The `from_port` and `to_port` arguments are required unless `ip_protocol` is set to `-1` or `icmpv6`.
@@ -208,8 +195,7 @@ class SecurityGroupEgressRule extends pulumi.CustomResource {
     this.fromPort = registerOutput<int?>('fromPort');
     this.ipProtocol = registerOutput<String>('ipProtocol');
     this.prefixListId = registerOutput<String?>('prefixListId');
-    this.referencedSecurityGroupId =
-        registerOutput<String?>('referencedSecurityGroupId');
+    this.referencedSecurityGroupId = registerOutput<String?>('referencedSecurityGroupId');
     this.region = registerOutput<String>('region');
     this.securityGroupId = registerOutput<String>('securityGroupId');
     this.securityGroupRuleId = registerOutput<String>('securityGroupRuleId');

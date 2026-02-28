@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Database instance operation error.
 class OperationErrorSqladminV1beta4 {
   /// Identifies the specific error that occurred.
   final String? code;
-
   /// This is always `sql#operationError`.
   final String? kind;
-
   /// Additional information about the error encountered.
   final String? message;
 
@@ -22,20 +21,11 @@ class OperationErrorSqladminV1beta4 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final codeValue = code;
-    if (codeValue != null) {
-      map['code'] = codeValue;
-    }
-    final kindValue = kind;
-    if (kindValue != null) {
-      map['kind'] = kindValue;
-    }
-    final messageValue = message;
-    if (messageValue != null) {
-      map['message'] = messageValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'code': ?code,
+      'kind': ?kind,
+      'message': ?message,
+    };
   }
 
   factory OperationErrorSqladminV1beta4.fromMap(Map<String, dynamic> map) {
@@ -46,3 +36,4 @@ class OperationErrorSqladminV1beta4 {
     );
   }
 }
+

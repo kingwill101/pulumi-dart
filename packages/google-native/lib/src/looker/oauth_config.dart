@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Looker instance OAuth login settings.
 class OAuthConfig {
   /// Input only. Client ID from an external OAuth application. This is an input-only field, and thus will not be set in any responses.
   final String? clientId;
-
   /// Input only. Client secret from an external OAuth application. This is an input-only field, and thus will not be set in any responses.
   final String? clientSecret;
 
@@ -17,23 +17,17 @@ class OAuthConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final clientIdValue = clientId;
-    if (clientIdValue != null) {
-      map['clientId'] = clientIdValue;
-    }
-    final clientSecretValue = clientSecret;
-    if (clientSecretValue != null) {
-      map['clientSecret'] = clientSecretValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'clientId': ?clientId,
+      'clientSecret': ?clientSecret,
+    };
   }
 
   factory OAuthConfig.fromMap(Map<String, dynamic> map) {
     return OAuthConfig(
       clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      clientSecret:
-          map['clientSecret'] == null ? null : map['clientSecret'] as String,
+      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
     );
   }
 }
+

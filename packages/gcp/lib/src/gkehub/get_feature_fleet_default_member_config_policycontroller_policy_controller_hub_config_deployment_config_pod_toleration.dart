@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration {
   /// Matches a taint effect.
   final String effect;
-
   /// Matches a taint key (not necessarily unique).
   final String key;
-
   /// Matches a taint operator.
   final String operator;
-
   /// Matches a taint value.
   final String value;
 
@@ -26,16 +24,15 @@ class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfi
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['effect'] = effect;
-    map['key'] = key;
-    map['operator'] = operator;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'effect': effect,
+      'key': key,
+      'operator': operator,
+      'value': value,
+    };
   }
 
-  factory GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration.fromMap(
-      Map<String, dynamic> map) {
+  factory GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration.fromMap(Map<String, dynamic> map) {
     return GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration(
       effect: map['effect'] as String,
       key: map['key'] as String,
@@ -44,3 +41,4 @@ class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfi
     );
   }
 }
+

@@ -16,17 +16,15 @@ class GetDeviceCloudidentityV1beta1Args {
   GetDeviceCloudidentityV1beta1Args({
     String? customer,
     required String deviceId,
-  })  : customer = pulumi.Input.asOptionalInput<String>(customer),
-        deviceId = pulumi.Input.asInput<String>(deviceId);
+  }) :
+      customer = pulumi.Input.asOptionalInput<String>(customer),
+      deviceId = pulumi.Input.asInput<String>(deviceId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final customerValue = customer;
-    if (customerValue != null) {
-      map['customer'] = customerValue;
-    }
-    map['deviceId'] = deviceId;
-    return map;
+    return <String, dynamic>{
+      'customer': ?customer,
+      'deviceId': deviceId,
+    };
   }
 
   factory GetDeviceCloudidentityV1beta1Args.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetDeviceCloudidentityV1beta1Args {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Role is the type for Kubernetes roles
 class RoleResponseGkehubV1alpha {
   /// predefined_role is the Kubernetes default role to use
@@ -12,9 +13,9 @@ class RoleResponseGkehubV1alpha {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['predefinedRole'] = predefinedRole;
-    return map;
+    return <String, dynamic>{
+      'predefinedRole': predefinedRole,
+    };
   }
 
   factory RoleResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class RoleResponseGkehubV1alpha {
     );
   }
 }
+

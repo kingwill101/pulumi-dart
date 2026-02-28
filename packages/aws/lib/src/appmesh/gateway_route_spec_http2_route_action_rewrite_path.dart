@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GatewayRouteSpecHttp2RouteActionRewritePath {
   /// The exact path to match on.
   final String exact;
@@ -11,15 +12,15 @@ class GatewayRouteSpecHttp2RouteActionRewritePath {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['exact'] = exact;
-    return map;
+    return <String, dynamic>{
+      'exact': exact,
+    };
   }
 
-  factory GatewayRouteSpecHttp2RouteActionRewritePath.fromMap(
-      Map<String, dynamic> map) {
+  factory GatewayRouteSpecHttp2RouteActionRewritePath.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpecHttp2RouteActionRewritePath(
       exact: map['exact'] as String,
     );
   }
 }
+

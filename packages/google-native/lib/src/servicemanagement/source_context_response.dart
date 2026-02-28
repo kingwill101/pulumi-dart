@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// `SourceContext` represents information about the source of a protobuf element, like the file in which it is defined.
 class SourceContextResponse {
   /// The path-qualified name of the .proto file that contained the associated protobuf element. For example: `"google/protobuf/source_context.proto"`.
@@ -12,9 +13,9 @@ class SourceContextResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['fileName'] = fileName;
-    return map;
+    return <String, dynamic>{
+      'fileName': fileName,
+    };
   }
 
   factory SourceContextResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class SourceContextResponse {
     );
   }
 }
+

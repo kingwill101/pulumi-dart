@@ -157,13 +157,10 @@ import 'assessment_target_args.dart';
 class AssessmentTarget extends pulumi.CustomResource {
   /// The target assessment ARN.
   late final pulumi.Output<String> arn;
-
   /// The name of the assessment target.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Inspector Resource Group Amazon Resource Name (ARN) stating tags for instance matching. If not specified, all EC2 instances in the current AWS account and region are included in the assessment target.
   late final pulumi.Output<String?> resourceGroupArn;
 

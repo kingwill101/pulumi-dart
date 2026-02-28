@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TopicRuleIotAnalytic {
   /// The payload that contains a JSON array of records will be sent to IoT Analytics via a batch call.
   final bool? batchMode;
-
   /// Name of AWS IOT Analytics channel.
   final String channelName;
-
   /// The ARN of the IAM role that grants access.
   final String roleArn;
 
@@ -21,14 +20,11 @@ class TopicRuleIotAnalytic {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final batchModeValue = batchMode;
-    if (batchModeValue != null) {
-      map['batchMode'] = batchModeValue;
-    }
-    map['channelName'] = channelName;
-    map['roleArn'] = roleArn;
-    return map;
+    return <String, dynamic>{
+      'batchMode': ?batchMode,
+      'channelName': channelName,
+      'roleArn': roleArn,
+    };
   }
 
   factory TopicRuleIotAnalytic.fromMap(Map<String, dynamic> map) {
@@ -39,3 +35,4 @@ class TopicRuleIotAnalytic {
     );
   }
 }
+

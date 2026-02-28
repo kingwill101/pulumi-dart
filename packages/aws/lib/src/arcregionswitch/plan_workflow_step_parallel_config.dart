@@ -14,23 +14,15 @@ class PlanWorkflowStepParallelConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final stepsValue = steps;
-    if (stepsValue != null) {
-      map['steps'] = pulumi.Input.encodeList<PlanWorkflowStepParallelConfigStep,
-          Map<String, dynamic>>(stepsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'steps': ?steps == null ? null : pulumi.Input.encodeList<PlanWorkflowStepParallelConfigStep, Map<String, dynamic>>(steps!, (value) => value.toMap()),
+    };
   }
 
   factory PlanWorkflowStepParallelConfig.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepParallelConfig(
-      steps: map['steps'] == null
-          ? null
-          : pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStep>(
-              map['steps'],
-              (value) => PlanWorkflowStepParallelConfigStep.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      steps: map['steps'] == null ? null : pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStep>(map['steps'], (value) => PlanWorkflowStepParallelConfigStep.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

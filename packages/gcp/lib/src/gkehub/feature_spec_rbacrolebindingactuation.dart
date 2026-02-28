@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FeatureSpecRbacrolebindingactuation {
   /// The list of allowed custom roles (ClusterRoles). If a custom role is not part of this list, it cannot be used in a fleet scope RBACRoleBinding. If a custom role in this list is in use, it cannot be removed from the list until the scope RBACRolebindings using it are deleted.
   final List<String>? allowedCustomRoles;
@@ -11,20 +12,15 @@ class FeatureSpecRbacrolebindingactuation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final allowedCustomRolesValue = allowedCustomRoles;
-    if (allowedCustomRolesValue != null) {
-      map['allowedCustomRoles'] = allowedCustomRolesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'allowedCustomRoles': ?allowedCustomRoles,
+    };
   }
 
-  factory FeatureSpecRbacrolebindingactuation.fromMap(
-      Map<String, dynamic> map) {
+  factory FeatureSpecRbacrolebindingactuation.fromMap(Map<String, dynamic> map) {
     return FeatureSpecRbacrolebindingactuation(
-      allowedCustomRoles: map['allowedCustomRoles'] == null
-          ? null
-          : (map['allowedCustomRoles'] as List).cast<String>(),
+      allowedCustomRoles: map['allowedCustomRoles'] == null ? null : (map['allowedCustomRoles'] as List).cast<String>(),
     );
   }
 }
+

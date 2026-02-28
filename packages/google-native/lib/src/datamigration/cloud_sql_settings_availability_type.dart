@@ -13,7 +13,7 @@ enum CloudSqlSettingsAvailabilityType {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown CloudSqlSettingsAvailabilityType value: $value');
+    throw ArgumentError('Unknown CloudSqlSettingsAvailabilityType value: $value');
   }
 }
+

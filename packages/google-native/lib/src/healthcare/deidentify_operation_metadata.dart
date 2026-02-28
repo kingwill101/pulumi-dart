@@ -14,20 +14,15 @@ class DeidentifyOperationMetadata {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final fhirOutputValue = fhirOutput;
-    if (fhirOutputValue != null) {
-      map['fhirOutput'] = fhirOutputValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'fhirOutput': ?fhirOutput == null ? null : fhirOutput!.toMap(),
+    };
   }
 
   factory DeidentifyOperationMetadata.fromMap(Map<String, dynamic> map) {
     return DeidentifyOperationMetadata(
-      fhirOutput: map['fhirOutput'] == null
-          ? null
-          : FhirOutput.fromMap(
-              (map['fhirOutput'] as Map).cast<String, dynamic>()),
+      fhirOutput: map['fhirOutput'] == null ? null : FhirOutput.fromMap((map['fhirOutput'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

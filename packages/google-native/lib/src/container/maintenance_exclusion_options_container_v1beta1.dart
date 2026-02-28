@@ -14,21 +14,15 @@ class MaintenanceExclusionOptionsContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final scopeValue = scope;
-    if (scopeValue != null) {
-      map['scope'] = scopeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'scope': ?scope == null ? null : scope!.value,
+    };
   }
 
-  factory MaintenanceExclusionOptionsContainerV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory MaintenanceExclusionOptionsContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return MaintenanceExclusionOptionsContainerV1beta1(
-      scope: map['scope'] == null
-          ? null
-          : MaintenanceExclusionOptionsScopeContainerV1beta1.fromValue(
-              map['scope'] as String),
+      scope: map['scope'] == null ? null : MaintenanceExclusionOptionsScopeContainerV1beta1.fromValue(map['scope'] as String),
     );
   }
 }
+

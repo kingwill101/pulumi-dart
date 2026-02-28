@@ -19,22 +19,17 @@ class GetInstanceTemplateArgs {
     required String instanceTemplate,
     String? project,
     String? view,
-  })  : instanceTemplate = pulumi.Input.asInput<String>(instanceTemplate),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        view = pulumi.Input.asOptionalInput<String>(view);
+  }) :
+      instanceTemplate = pulumi.Input.asInput<String>(instanceTemplate),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['instanceTemplate'] = instanceTemplate;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final viewValue = view;
-    if (viewValue != null) {
-      map['view'] = viewValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'instanceTemplate': instanceTemplate,
+      'project': ?project,
+      'view': ?view,
+    };
   }
 
   factory GetInstanceTemplateArgs.fromMap(Map<String, dynamic> map) {
@@ -45,3 +40,4 @@ class GetInstanceTemplateArgs {
     );
   }
 }
+

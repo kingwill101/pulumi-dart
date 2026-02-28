@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDomainVpcOption {
   /// Availability zones used by the domain.
   final List<String> availabilityZones;
-
   /// Security groups used by the domain.
   final List<String> securityGroupIds;
-
   /// Subnets used by the domain.
   final List<String> subnetIds;
-
   /// VPC used by the domain.
   final String vpcId;
 
@@ -26,12 +24,12 @@ class GetDomainVpcOption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['availabilityZones'] = availabilityZones;
-    map['securityGroupIds'] = securityGroupIds;
-    map['subnetIds'] = subnetIds;
-    map['vpcId'] = vpcId;
-    return map;
+    return <String, dynamic>{
+      'availabilityZones': availabilityZones,
+      'securityGroupIds': securityGroupIds,
+      'subnetIds': subnetIds,
+      'vpcId': vpcId,
+    };
   }
 
   factory GetDomainVpcOption.fromMap(Map<String, dynamic> map) {
@@ -43,3 +41,4 @@ class GetDomainVpcOption {
     );
   }
 }
+

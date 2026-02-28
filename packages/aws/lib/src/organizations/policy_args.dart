@@ -21,19 +21,14 @@ class PolicyArgs {
   /// For more information on the Tag Policy syntax, see the [Tag Policy Syntax documentation](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_example-tag-policies.html).
   /// For more information about the Upgrade Rollout Policy syntax, see the [Upgrade Rollout Policy Syntax documentation](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_upgrade_syntax.html).
   final pulumi.Input<String> content;
-
   /// A description to assign to the policy.
   final pulumi.Input<String>? description;
-
   /// The friendly name to assign to the policy.
   final pulumi.Input<String>? name;
-
   /// If set to `true`, destroy will **not** delete the policy and instead just remove the resource from state. This can be useful in situations where the policies (and the associated attachment) must be preserved to meet the AWS minimum requirement of 1 attached policy.
   final pulumi.Input<bool>? skipDestroy;
-
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The type of policy to create. Valid values are `AISERVICES_OPT_OUT_POLICY`, `BACKUP_POLICY`, `BEDROCK_POLICY`, `CHATBOT_POLICY`, `DECLARATIVE_POLICY_EC2`, `INSPECTOR_POLICY`, `RESOURCE_CONTROL_POLICY` (RCP), `S3_POLICY`, `SECURITYHUB_POLICY`, `SERVICE_CONTROL_POLICY` (SCP), `TAG_POLICY`, and `UPGRADE_ROLLOUT_POLICY`. Defaults to `SERVICE_CONTROL_POLICY`.
   final pulumi.Input<String>? type;
 
@@ -51,51 +46,34 @@ class PolicyArgs {
     bool? skipDestroy,
     Map<String, String>? tags,
     String? type,
-  })  : content = pulumi.Input.asInput<String>(content),
-        description = pulumi.Input.asOptionalInput<String>(description),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        skipDestroy = pulumi.Input.asOptionalInput<bool>(skipDestroy),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-        type = pulumi.Input.asOptionalInput<String>(type);
+  }) :
+      content = pulumi.Input.asInput<String>(content),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      skipDestroy = pulumi.Input.asOptionalInput<bool>(skipDestroy),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      type = pulumi.Input.asOptionalInput<String>(type);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['content'] = content;
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final skipDestroyValue = skipDestroy;
-    if (skipDestroyValue != null) {
-      map['skipDestroy'] = skipDestroyValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'content': content,
+      'description': ?description,
+      'name': ?name,
+      'skipDestroy': ?skipDestroy,
+      'tags': ?tags,
+      'type': ?type,
+    };
   }
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
       content: map['content'] as String,
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       name: map['name'] == null ? null : map['name'] as String,
-      skipDestroy:
-          map['skipDestroy'] == null ? null : map['skipDestroy'] as bool,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      skipDestroy: map['skipDestroy'] == null ? null : map['skipDestroy'] as bool,
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
       type: map['type'] == null ? null : map['type'] as String,
     );
   }
 }
+

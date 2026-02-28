@@ -14,7 +14,7 @@ enum OSPolicyResourceFileResourceState {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown OSPolicyResourceFileResourceState value: $value');
+    throw ArgumentError('Unknown OSPolicyResourceFileResourceState value: $value');
   }
 }
+

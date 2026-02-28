@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServicePrincipalArgs {
   /// Region you'd like the SPN for. Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Name of the service you want to generate a Service Principal Name for.
   final pulumi.Input<String> serviceName;
 
@@ -19,17 +18,15 @@ class GetServicePrincipalArgs {
   GetServicePrincipalArgs({
     String? region,
     required String serviceName,
-  })  : region = pulumi.Input.asOptionalInput<String>(region),
-        serviceName = pulumi.Input.asInput<String>(serviceName);
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      serviceName = pulumi.Input.asInput<String>(serviceName);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['serviceName'] = serviceName;
-    return map;
+    return <String, dynamic>{
+      'region': ?region,
+      'serviceName': serviceName,
+    };
   }
 
   factory GetServicePrincipalArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +36,4 @@ class GetServicePrincipalArgs {
     );
   }
 }
+

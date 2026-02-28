@@ -7,15 +7,13 @@ enum GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore {
   const GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore(this.value);
   final String value;
 
-  static GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore fromValue(
-      String value) {
-    for (final item
-        in GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore.values) {
+  static GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore fromValue(String value) {
+    for (final item in GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore value: $value');
+    throw ArgumentError('Unknown GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore value: $value');
   }
 }
+

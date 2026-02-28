@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getDataSourceReference.
 class GetDataSourceReferenceResult {
   final String backupConfigState;
@@ -7,7 +8,6 @@ class GetDataSourceReferenceResult {
   final String dataSource;
   final String dataSourceReferenceId;
   final String gcpResourceName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String lastBackupState;
@@ -46,20 +46,20 @@ class GetDataSourceReferenceResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['backupConfigState'] = backupConfigState;
-    map['backupCount'] = backupCount;
-    map['dataSource'] = dataSource;
-    map['dataSourceReferenceId'] = dataSourceReferenceId;
-    map['gcpResourceName'] = gcpResourceName;
-    map['id'] = id;
-    map['lastBackupState'] = lastBackupState;
-    map['lastSuccessfulBackupTime'] = lastSuccessfulBackupTime;
-    map['location'] = location;
-    map['name'] = name;
-    map['project'] = project;
-    map['resourceType'] = resourceType;
-    return map;
+    return <String, dynamic>{
+      'backupConfigState': backupConfigState,
+      'backupCount': backupCount,
+      'dataSource': dataSource,
+      'dataSourceReferenceId': dataSourceReferenceId,
+      'gcpResourceName': gcpResourceName,
+      'id': id,
+      'lastBackupState': lastBackupState,
+      'lastSuccessfulBackupTime': lastSuccessfulBackupTime,
+      'location': location,
+      'name': name,
+      'project': project,
+      'resourceType': resourceType,
+    };
   }
 
   factory GetDataSourceReferenceResult.fromMap(Map<String, dynamic> map) {
@@ -79,3 +79,4 @@ class GetDataSourceReferenceResult {
     );
   }
 }
+

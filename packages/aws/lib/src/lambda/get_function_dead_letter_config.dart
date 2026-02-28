@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetFunctionDeadLetterConfig {
   /// ARN of an SNS topic or SQS queue to notify when an invocation fails.
   final String targetArn;
@@ -11,9 +12,9 @@ class GetFunctionDeadLetterConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['targetArn'] = targetArn;
-    return map;
+    return <String, dynamic>{
+      'targetArn': targetArn,
+    };
   }
 
   factory GetFunctionDeadLetterConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetFunctionDeadLetterConfig {
     );
   }
 }
+

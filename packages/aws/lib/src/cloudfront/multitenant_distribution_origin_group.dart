@@ -7,10 +7,8 @@ import 'multitenant_distribution_origin_group_member.dart';
 class MultitenantDistributionOriginGroup {
   /// Failover criteria for when to failover to the secondary origin. See Failover Criteria below.
   final MultitenantDistributionOriginGroupFailoverCriteria failoverCriteria;
-
   /// Identifier for the distribution.
   final String id;
-
   /// List of origins in this origin group. Must contain exactly 2 members. See Origin Group Member below.
   final List<MultitenantDistributionOriginGroupMember> members;
 
@@ -25,26 +23,19 @@ class MultitenantDistributionOriginGroup {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['failoverCriteria'] = failoverCriteria.toMap();
-    map['id'] = id;
-    map['members'] = pulumi.Input.encodeList<
-        MultitenantDistributionOriginGroupMember,
-        Map<String, dynamic>>(members, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'failoverCriteria': failoverCriteria.toMap(),
+      'id': id,
+      'members': pulumi.Input.encodeList<MultitenantDistributionOriginGroupMember, Map<String, dynamic>>(members, (value) => value.toMap()),
+    };
   }
 
   factory MultitenantDistributionOriginGroup.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionOriginGroup(
-      failoverCriteria:
-          MultitenantDistributionOriginGroupFailoverCriteria.fromMap(
-              (map['failoverCriteria'] as Map).cast<String, dynamic>()),
+      failoverCriteria: MultitenantDistributionOriginGroupFailoverCriteria.fromMap((map['failoverCriteria'] as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      members:
-          pulumi.Input.decodeList<MultitenantDistributionOriginGroupMember>(
-              map['members'],
-              (value) => MultitenantDistributionOriginGroupMember.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      members: pulumi.Input.decodeList<MultitenantDistributionOriginGroupMember>(map['members'], (value) => MultitenantDistributionOriginGroupMember.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

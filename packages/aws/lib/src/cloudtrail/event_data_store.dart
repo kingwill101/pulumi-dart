@@ -381,42 +381,29 @@ import 'event_data_store_args.dart';
 /// ```
 class EventDataStore extends pulumi.CustomResource {
   /// The advanced event selectors to use to select the events for the data store. For more information about how to use advanced event selectors, see [Log events by using advanced event selectors](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#creating-data-event-selectors-advanced) in the CloudTrail User Guide.
-  late final pulumi.Output<List<EventDataStoreAdvancedEventSelector>>
-      advancedEventSelectors;
-
+  late final pulumi.Output<List<EventDataStoreAdvancedEventSelector>> advancedEventSelectors;
   /// ARN of the event data store.
   late final pulumi.Output<String> arn;
-
   /// The billing mode for the event data store. The valid values are `EXTENDABLE_RETENTION_PRICING` and `FIXED_RETENTION_PRICING`. Defaults to `EXTENDABLE_RETENTION_PRICING`.
   late final pulumi.Output<String?> billingMode;
-
   /// Specifies the AWS KMS key ID to use to encrypt the events delivered by CloudTrail. The value can be an alias name prefixed by alias/, a fully specified ARN to an alias, a fully specified ARN to a key, or a globally unique identifier.
   late final pulumi.Output<String?> kmsKeyId;
-
   /// Specifies whether the event data store includes events from all regions, or only from the region in which the event data store is created. Default: `true`.
   late final pulumi.Output<bool?> multiRegionEnabled;
-
   /// The name of the event data store.
   late final pulumi.Output<String> name;
-
   /// Specifies whether an event data store collects events logged for an organization in AWS Organizations. Default: `false`.
   late final pulumi.Output<bool?> organizationEnabled;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The retention period of the event data store, in days. You can set a retention period of up to 2555 days, the equivalent of seven years. Default: `2555`.
   late final pulumi.Output<int?> retentionPeriod;
-
   /// Specifies whether to stop ingesting new events into the event data store. If set to `true`, ingestion is suspended while maintaining the ability to query existing events. If set to `false`, ingestion is active.
   late final pulumi.Output<String?> suspend;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Specifies whether termination protection is enabled for the event data store. If termination protection is enabled, you cannot delete the event data store until termination protection is disabled. Default: `true`.
   late final pulumi.Output<bool?> terminationProtectionEnabled;
 
@@ -434,9 +421,7 @@ class EventDataStore extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.advancedEventSelectors =
-        registerOutput<List<EventDataStoreAdvancedEventSelector>>(
-            'advancedEventSelectors');
+    this.advancedEventSelectors = registerOutput<List<EventDataStoreAdvancedEventSelector>>('advancedEventSelectors');
     this.arn = registerOutput<String>('arn');
     this.billingMode = registerOutput<String?>('billingMode');
     this.kmsKeyId = registerOutput<String?>('kmsKeyId');
@@ -448,7 +433,6 @@ class EventDataStore extends pulumi.CustomResource {
     this.suspend = registerOutput<String?>('suspend');
     this.tags = registerOutput<Map<String, String>?>('tags');
     this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.terminationProtectionEnabled =
-        registerOutput<bool?>('terminationProtectionEnabled');
+    this.terminationProtectionEnabled = registerOutput<bool?>('terminationProtectionEnabled');
   }
 }

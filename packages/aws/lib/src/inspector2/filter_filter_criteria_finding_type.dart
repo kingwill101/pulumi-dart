@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FilterFilterCriteriaFindingType {
   /// (Required) The comparison operator. Valid values: `EQUALS`.
   final String comparison;
-
   /// (Required) The value to filter on.
   final String value;
 
@@ -16,10 +16,10 @@ class FilterFilterCriteriaFindingType {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['comparison'] = comparison;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'comparison': comparison,
+      'value': value,
+    };
   }
 
   factory FilterFilterCriteriaFindingType.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class FilterFilterCriteriaFindingType {
     );
   }
 }
+

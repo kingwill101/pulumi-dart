@@ -5,8 +5,7 @@ import 'pipe_target_parameters_sagemaker_pipeline_parameters_pipeline_parameter.
 
 class PipeTargetParametersSagemakerPipelineParameters {
   /// List of Parameter names and values for SageMaker AI Model Building Pipeline execution. Detailed below.
-  final List<PipeTargetParametersSagemakerPipelineParametersPipelineParameter>?
-      pipelineParameters;
+  final List<PipeTargetParametersSagemakerPipelineParametersPipelineParameter>? pipelineParameters;
 
   /// Creates a new [PipeTargetParametersSagemakerPipelineParameters].
   /// [pipelineParameters] List of Parameter names and values for SageMaker AI Model Building Pipeline execution. Detailed below.
@@ -15,28 +14,15 @@ class PipeTargetParametersSagemakerPipelineParameters {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final pipelineParametersValue = pipelineParameters;
-    if (pipelineParametersValue != null) {
-      map['pipelineParameters'] = pulumi.Input.encodeList<
-              PipeTargetParametersSagemakerPipelineParametersPipelineParameter,
-              Map<String, dynamic>>(
-          pipelineParametersValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'pipelineParameters': ?pipelineParameters == null ? null : pulumi.Input.encodeList<PipeTargetParametersSagemakerPipelineParametersPipelineParameter, Map<String, dynamic>>(pipelineParameters!, (value) => value.toMap()),
+    };
   }
 
-  factory PipeTargetParametersSagemakerPipelineParameters.fromMap(
-      Map<String, dynamic> map) {
+  factory PipeTargetParametersSagemakerPipelineParameters.fromMap(Map<String, dynamic> map) {
     return PipeTargetParametersSagemakerPipelineParameters(
-      pipelineParameters: map['pipelineParameters'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  PipeTargetParametersSagemakerPipelineParametersPipelineParameter>(
-              map['pipelineParameters'],
-              (value) =>
-                  PipeTargetParametersSagemakerPipelineParametersPipelineParameter
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      pipelineParameters: map['pipelineParameters'] == null ? null : pulumi.Input.decodeList<PipeTargetParametersSagemakerPipelineParametersPipelineParameter>(map['pipelineParameters'], (value) => PipeTargetParametersSagemakerPipelineParametersPipelineParameter.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

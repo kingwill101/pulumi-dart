@@ -15,19 +15,15 @@ class HelpResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['links'] =
-        pulumi.Input.encodeList<HelpLinkResponse, Map<String, dynamic>>(
-            links, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'links': pulumi.Input.encodeList<HelpLinkResponse, Map<String, dynamic>>(links, (value) => value.toMap()),
+    };
   }
 
   factory HelpResponse.fromMap(Map<String, dynamic> map) {
     return HelpResponse(
-      links: pulumi.Input.decodeList<HelpLinkResponse>(
-          map['links'],
-          (value) =>
-              HelpLinkResponse.fromMap((value as Map).cast<String, dynamic>())),
+      links: pulumi.Input.decodeList<HelpLinkResponse>(map['links'], (value) => HelpLinkResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

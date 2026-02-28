@@ -207,22 +207,16 @@ import 'random_id_args.dart';
 class RandomId extends pulumi.CustomResource {
   /// The generated id presented in base64 without additional transformations.
   late final pulumi.Output<String> b64Std;
-
   /// The generated id presented in base64, using the URL-friendly character set: case-sensitive letters, digits and the characters `_` and `-`.
   late final pulumi.Output<String> b64Url;
-
   /// The number of random bytes to produce. The minimum value is 1, which produces eight bits of randomness.
   late final pulumi.Output<int> byteLength;
-
   /// The generated id presented in non-padded decimal digits.
   late final pulumi.Output<String> dec;
-
   /// The generated id presented in padded hexadecimal digits. This result will always be twice as long as the requested byte length.
   late final pulumi.Output<String> hex;
-
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
   late final pulumi.Output<Map<String, String>?> keepers;
-
   /// Arbitrary string to prefix the output value with. This string is supplied as-is, meaning it is not guaranteed to be URL-safe or base64 encoded.
   late final pulumi.Output<String?> prefix;
 

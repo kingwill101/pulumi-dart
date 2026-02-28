@@ -21,22 +21,19 @@ class ResourcePolicySnapshotSchedulePolicyScheduleResponseComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dailySchedule'] = dailySchedule.toMap();
-    map['hourlySchedule'] = hourlySchedule.toMap();
-    map['weeklySchedule'] = weeklySchedule.toMap();
-    return map;
+    return <String, dynamic>{
+      'dailySchedule': dailySchedule.toMap(),
+      'hourlySchedule': hourlySchedule.toMap(),
+      'weeklySchedule': weeklySchedule.toMap(),
+    };
   }
 
-  factory ResourcePolicySnapshotSchedulePolicyScheduleResponseComputeV1.fromMap(
-      Map<String, dynamic> map) {
+  factory ResourcePolicySnapshotSchedulePolicyScheduleResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return ResourcePolicySnapshotSchedulePolicyScheduleResponseComputeV1(
-      dailySchedule: ResourcePolicyDailyCycleResponseComputeV1.fromMap(
-          (map['dailySchedule'] as Map).cast<String, dynamic>()),
-      hourlySchedule: ResourcePolicyHourlyCycleResponseComputeV1.fromMap(
-          (map['hourlySchedule'] as Map).cast<String, dynamic>()),
-      weeklySchedule: ResourcePolicyWeeklyCycleResponseComputeV1.fromMap(
-          (map['weeklySchedule'] as Map).cast<String, dynamic>()),
+      dailySchedule: ResourcePolicyDailyCycleResponseComputeV1.fromMap((map['dailySchedule'] as Map).cast<String, dynamic>()),
+      hourlySchedule: ResourcePolicyHourlyCycleResponseComputeV1.fromMap((map['hourlySchedule'] as Map).cast<String, dynamic>()),
+      weeklySchedule: ResourcePolicyWeeklyCycleResponseComputeV1.fromMap((map['weeklySchedule'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

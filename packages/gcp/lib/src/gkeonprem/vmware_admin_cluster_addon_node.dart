@@ -14,20 +14,15 @@ class VmwareAdminClusterAddonNode {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final autoResizeConfigValue = autoResizeConfig;
-    if (autoResizeConfigValue != null) {
-      map['autoResizeConfig'] = autoResizeConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'autoResizeConfig': ?autoResizeConfig == null ? null : autoResizeConfig!.toMap(),
+    };
   }
 
   factory VmwareAdminClusterAddonNode.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterAddonNode(
-      autoResizeConfig: map['autoResizeConfig'] == null
-          ? null
-          : VmwareAdminClusterAddonNodeAutoResizeConfig.fromMap(
-              (map['autoResizeConfig'] as Map).cast<String, dynamic>()),
+      autoResizeConfig: map['autoResizeConfig'] == null ? null : VmwareAdminClusterAddonNodeAutoResizeConfig.fromMap((map['autoResizeConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -6,15 +6,13 @@ enum GoogleCloudAiplatformV1SampleConfigSampleStrategy {
   const GoogleCloudAiplatformV1SampleConfigSampleStrategy(this.value);
   final String value;
 
-  static GoogleCloudAiplatformV1SampleConfigSampleStrategy fromValue(
-      String value) {
-    for (final item
-        in GoogleCloudAiplatformV1SampleConfigSampleStrategy.values) {
+  static GoogleCloudAiplatformV1SampleConfigSampleStrategy fromValue(String value) {
+    for (final item in GoogleCloudAiplatformV1SampleConfigSampleStrategy.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GoogleCloudAiplatformV1SampleConfigSampleStrategy value: $value');
+    throw ArgumentError('Unknown GoogleCloudAiplatformV1SampleConfigSampleStrategy value: $value');
   }
 }
+

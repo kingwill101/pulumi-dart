@@ -67,8 +67,7 @@ Future<GetFolderNotificationConfigResult> getFolderNotificationConfig(
 /// Retrieves a SecurityHealthAnalyticsCustomModule.
 /// [args] Arguments passed to this invoke. {@macro pulumi_securitycenter_v1_get_folder_security_health_analytics_setting_custom_module_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetFolderSecurityHealthAnalyticsSettingCustomModuleResult>
-    getFolderSecurityHealthAnalyticsSettingCustomModule(
+Future<GetFolderSecurityHealthAnalyticsSettingCustomModuleResult> getFolderSecurityHealthAnalyticsSettingCustomModule(
   GetFolderSecurityHealthAnalyticsSettingCustomModuleArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -78,8 +77,7 @@ Future<GetFolderSecurityHealthAnalyticsSettingCustomModuleResult>
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetFolderSecurityHealthAnalyticsSettingCustomModuleResult.fromMap(
-      result);
+  return GetFolderSecurityHealthAnalyticsSettingCustomModuleResult.fromMap(result);
 }
 
 /// Gets a mute config.
@@ -133,8 +131,7 @@ Future<GetOrganizationBigQueryExportResult> getOrganizationBigQueryExport(
 /// Gets an Event Threat Detection custom module.
 /// [args] Arguments passed to this invoke. {@macro pulumi_securitycenter_v1_get_organization_event_threat_detection_setting_custom_module_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetOrganizationEventThreatDetectionSettingCustomModuleResult>
-    getOrganizationEventThreatDetectionSettingCustomModule(
+Future<GetOrganizationEventThreatDetectionSettingCustomModuleResult> getOrganizationEventThreatDetectionSettingCustomModule(
   GetOrganizationEventThreatDetectionSettingCustomModuleArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -144,8 +141,7 @@ Future<GetOrganizationEventThreatDetectionSettingCustomModuleResult>
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetOrganizationEventThreatDetectionSettingCustomModuleResult.fromMap(
-      result);
+  return GetOrganizationEventThreatDetectionSettingCustomModuleResult.fromMap(result);
 }
 
 /// Gets a mute config.
@@ -167,8 +163,7 @@ Future<GetOrganizationMuteConfigResult> getOrganizationMuteConfig(
 /// Gets a notification config.
 /// [args] Arguments passed to this invoke. {@macro pulumi_securitycenter_v1_get_organization_notification_config_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetOrganizationNotificationConfigResult>
-    getOrganizationNotificationConfig(
+Future<GetOrganizationNotificationConfigResult> getOrganizationNotificationConfig(
   GetOrganizationNotificationConfigArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -184,8 +179,7 @@ Future<GetOrganizationNotificationConfigResult>
 /// Retrieves a SecurityHealthAnalyticsCustomModule.
 /// [args] Arguments passed to this invoke. {@macro pulumi_securitycenter_v1_get_organization_security_health_analytics_setting_custom_module_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetOrganizationSecurityHealthAnalyticsSettingCustomModuleResult>
-    getOrganizationSecurityHealthAnalyticsSettingCustomModule(
+Future<GetOrganizationSecurityHealthAnalyticsSettingCustomModuleResult> getOrganizationSecurityHealthAnalyticsSettingCustomModule(
   GetOrganizationSecurityHealthAnalyticsSettingCustomModuleArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -195,8 +189,7 @@ Future<GetOrganizationSecurityHealthAnalyticsSettingCustomModuleResult>
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetOrganizationSecurityHealthAnalyticsSettingCustomModuleResult
-      .fromMap(result);
+  return GetOrganizationSecurityHealthAnalyticsSettingCustomModuleResult.fromMap(result);
 }
 
 /// Gets the access control policy on the specified Source.
@@ -234,8 +227,7 @@ Future<GetProjectBigQueryExportResult> getProjectBigQueryExport(
 /// Retrieves a SecurityHealthAnalyticsCustomModule.
 /// [args] Arguments passed to this invoke. {@macro pulumi_securitycenter_v1_get_project_security_health_analytics_setting_custom_module_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetProjectSecurityHealthAnalyticsSettingCustomModuleResult>
-    getProjectSecurityHealthAnalyticsSettingCustomModule(
+Future<GetProjectSecurityHealthAnalyticsSettingCustomModuleResult> getProjectSecurityHealthAnalyticsSettingCustomModule(
   GetProjectSecurityHealthAnalyticsSettingCustomModuleArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -245,8 +237,7 @@ Future<GetProjectSecurityHealthAnalyticsSettingCustomModuleResult>
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetProjectSecurityHealthAnalyticsSettingCustomModuleResult.fromMap(
-      result);
+  return GetProjectSecurityHealthAnalyticsSettingCustomModuleResult.fromMap(result);
 }
 
 /// Gets a source.
@@ -268,8 +259,7 @@ Future<GetSourceResult> getSource(
 /// Gets the access control policy on the specified Source.
 /// [args] Arguments passed to this invoke. {@macro pulumi_securitycenter_v1beta1_get_organization_source_iam_policy_securitycenter_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetOrganizationSourceIamPolicySecuritycenterV1beta1Result>
-    getOrganizationSourceIamPolicySecuritycenterV1beta1(
+Future<GetOrganizationSourceIamPolicySecuritycenterV1beta1Result> getOrganizationSourceIamPolicySecuritycenterV1beta1(
   GetOrganizationSourceIamPolicySecuritycenterV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -279,8 +269,7 @@ Future<GetOrganizationSourceIamPolicySecuritycenterV1beta1Result>
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetOrganizationSourceIamPolicySecuritycenterV1beta1Result.fromMap(
-      result);
+  return GetOrganizationSourceIamPolicySecuritycenterV1beta1Result.fromMap(result);
 }
 
 /// Gets a source.

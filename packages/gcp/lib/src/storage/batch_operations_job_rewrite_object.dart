@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BatchOperationsJobRewriteObject {
   /// valid kms key
   final String kmsKey;
@@ -11,9 +12,9 @@ class BatchOperationsJobRewriteObject {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kmsKey'] = kmsKey;
-    return map;
+    return <String, dynamic>{
+      'kmsKey': kmsKey,
+    };
   }
 
   factory BatchOperationsJobRewriteObject.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class BatchOperationsJobRewriteObject {
     );
   }
 }
+

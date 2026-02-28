@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EventEndpointEventBus {
   /// The ARN of the event bus the endpoint is associated with.
   final String eventBusArn;
@@ -11,9 +12,9 @@ class EventEndpointEventBus {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['eventBusArn'] = eventBusArn;
-    return map;
+    return <String, dynamic>{
+      'eventBusArn': eventBusArn,
+    };
   }
 
   factory EventEndpointEventBus.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class EventEndpointEventBus {
     );
   }
 }
+

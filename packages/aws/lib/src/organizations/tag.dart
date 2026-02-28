@@ -171,10 +171,8 @@ import 'tag_args.dart';
 class Tag extends pulumi.CustomResource {
   /// Tag name.
   late final pulumi.Output<String> key;
-
   /// Id of the Organizations resource to tag.
   late final pulumi.Output<String> resourceId;
-
   /// Tag value.
   late final pulumi.Output<String> value;
 

@@ -13,14 +13,11 @@ class TrialArgs {
   /// The final measurement containing the objective value.
   final pulumi.Input<GoogleCloudMlV1Measurement>? finalMeasurement;
   final pulumi.Input<String>? location;
-
   /// A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
   final pulumi.Input<List<GoogleCloudMlV1Measurement>>? measurements;
-
   /// The parameters of the trial.
   final pulumi.Input<List<GoogleCloudMlV1TrialParameter>>? parameters;
   final pulumi.Input<String>? project;
-
   /// The detailed state of a trial.
   final pulumi.Input<TrialState>? state;
   final pulumi.Input<String> studyId;
@@ -41,85 +38,37 @@ class TrialArgs {
     String? project,
     TrialState? state,
     required String studyId,
-  })  : finalMeasurement =
-            pulumi.Input.asOptionalInput<GoogleCloudMlV1Measurement>(
-                finalMeasurement),
-        location = pulumi.Input.asOptionalInput<String>(location),
-        measurements =
-            pulumi.Input.asOptionalInput<List<GoogleCloudMlV1Measurement>>(
-                measurements),
-        parameters =
-            pulumi.Input.asOptionalInput<List<GoogleCloudMlV1TrialParameter>>(
-                parameters),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        state = pulumi.Input.asOptionalInput<TrialState>(state),
-        studyId = pulumi.Input.asInput<String>(studyId);
+  }) :
+      finalMeasurement = pulumi.Input.asOptionalInput<GoogleCloudMlV1Measurement>(finalMeasurement),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      measurements = pulumi.Input.asOptionalInput<List<GoogleCloudMlV1Measurement>>(measurements),
+      parameters = pulumi.Input.asOptionalInput<List<GoogleCloudMlV1TrialParameter>>(parameters),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      state = pulumi.Input.asOptionalInput<TrialState>(state),
+      studyId = pulumi.Input.asInput<String>(studyId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final finalMeasurementValue = finalMeasurement;
-    if (finalMeasurementValue != null) {
-      map['finalMeasurement'] = pulumi.Input.mapOptionalInputValue<
-              GoogleCloudMlV1Measurement, Map<String, dynamic>>(
-          finalMeasurementValue, (value) => value.toMap());
-    }
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    final measurementsValue = measurements;
-    if (measurementsValue != null) {
-      map['measurements'] = pulumi.Input.mapOptionalInputValue<
-              List<GoogleCloudMlV1Measurement>, List<Map<String, dynamic>>>(
-          measurementsValue,
-          (value) => pulumi.Input.encodeList<GoogleCloudMlV1Measurement,
-              Map<String, dynamic>>(value, (value) => value.toMap()));
-    }
-    final parametersValue = parameters;
-    if (parametersValue != null) {
-      map['parameters'] = pulumi.Input.mapOptionalInputValue<
-              List<GoogleCloudMlV1TrialParameter>, List<Map<String, dynamic>>>(
-          parametersValue,
-          (value) => pulumi.Input.encodeList<GoogleCloudMlV1TrialParameter,
-              Map<String, dynamic>>(value, (value) => value.toMap()));
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final stateValue = state;
-    if (stateValue != null) {
-      map['state'] = pulumi.Input.mapOptionalInputValue<TrialState, String>(
-          stateValue, (value) => value.value);
-    }
-    map['studyId'] = studyId;
-    return map;
+    return <String, dynamic>{
+      'finalMeasurement': ?pulumi.Input.mapOptionalInputValue<GoogleCloudMlV1Measurement, Map<String, dynamic>>(finalMeasurement, (value) => value.toMap()),
+      'location': ?location,
+      'measurements': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudMlV1Measurement>, List<Map<String, dynamic>>>(measurements, (value) => pulumi.Input.encodeList<GoogleCloudMlV1Measurement, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudMlV1TrialParameter>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<GoogleCloudMlV1TrialParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'project': ?project,
+      'state': ?pulumi.Input.mapOptionalInputValue<TrialState, String>(state, (value) => value.value),
+      'studyId': studyId,
+    };
   }
 
   factory TrialArgs.fromMap(Map<String, dynamic> map) {
     return TrialArgs(
-      finalMeasurement: map['finalMeasurement'] == null
-          ? null
-          : GoogleCloudMlV1Measurement.fromMap(
-              (map['finalMeasurement'] as Map).cast<String, dynamic>()),
+      finalMeasurement: map['finalMeasurement'] == null ? null : GoogleCloudMlV1Measurement.fromMap((map['finalMeasurement'] as Map).cast<String, dynamic>()),
       location: map['location'] == null ? null : map['location'] as String,
-      measurements: map['measurements'] == null
-          ? null
-          : pulumi.Input.decodeList<GoogleCloudMlV1Measurement>(
-              map['measurements'],
-              (value) => GoogleCloudMlV1Measurement.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      parameters: map['parameters'] == null
-          ? null
-          : pulumi.Input.decodeList<GoogleCloudMlV1TrialParameter>(
-              map['parameters'],
-              (value) => GoogleCloudMlV1TrialParameter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      measurements: map['measurements'] == null ? null : pulumi.Input.decodeList<GoogleCloudMlV1Measurement>(map['measurements'], (value) => GoogleCloudMlV1Measurement.fromMap((value as Map).cast<String, dynamic>())),
+      parameters: map['parameters'] == null ? null : pulumi.Input.decodeList<GoogleCloudMlV1TrialParameter>(map['parameters'], (value) => GoogleCloudMlV1TrialParameter.fromMap((value as Map).cast<String, dynamic>())),
       project: map['project'] == null ? null : map['project'] as String,
-      state: map['state'] == null
-          ? null
-          : TrialState.fromValue(map['state'] as String),
+      state: map['state'] == null ? null : TrialState.fromValue(map['state'] as String),
       studyId: map['studyId'] as String,
     );
   }
 }
+

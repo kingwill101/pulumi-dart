@@ -8,22 +8,16 @@ import 'resource_requests_response.dart';
 class ConnectorVersionInfraConfigResponse {
   /// The window used for ratelimiting runtime requests to connections.
   final String connectionRatelimitWindowSeconds;
-
   /// HPA autoscaling config.
   final HPAConfigResponse hpaConfig;
-
   /// Max QPS supported for internal requests originating from Connd.
   final String internalclientRatelimitThreshold;
-
   /// Max QPS supported by the connector version before throttling of requests.
   final String ratelimitThreshold;
-
   /// System resource limits.
   final ResourceLimitsResponse resourceLimits;
-
   /// System resource requests.
   final ResourceRequestsResponse resourceRequests;
-
   /// The name of shared connector deployment.
   final String sharedDeployment;
 
@@ -46,32 +40,27 @@ class ConnectorVersionInfraConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['connectionRatelimitWindowSeconds'] = connectionRatelimitWindowSeconds;
-    map['hpaConfig'] = hpaConfig.toMap();
-    map['internalclientRatelimitThreshold'] = internalclientRatelimitThreshold;
-    map['ratelimitThreshold'] = ratelimitThreshold;
-    map['resourceLimits'] = resourceLimits.toMap();
-    map['resourceRequests'] = resourceRequests.toMap();
-    map['sharedDeployment'] = sharedDeployment;
-    return map;
+    return <String, dynamic>{
+      'connectionRatelimitWindowSeconds': connectionRatelimitWindowSeconds,
+      'hpaConfig': hpaConfig.toMap(),
+      'internalclientRatelimitThreshold': internalclientRatelimitThreshold,
+      'ratelimitThreshold': ratelimitThreshold,
+      'resourceLimits': resourceLimits.toMap(),
+      'resourceRequests': resourceRequests.toMap(),
+      'sharedDeployment': sharedDeployment,
+    };
   }
 
-  factory ConnectorVersionInfraConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory ConnectorVersionInfraConfigResponse.fromMap(Map<String, dynamic> map) {
     return ConnectorVersionInfraConfigResponse(
-      connectionRatelimitWindowSeconds:
-          map['connectionRatelimitWindowSeconds'] as String,
-      hpaConfig: HPAConfigResponse.fromMap(
-          (map['hpaConfig'] as Map).cast<String, dynamic>()),
-      internalclientRatelimitThreshold:
-          map['internalclientRatelimitThreshold'] as String,
+      connectionRatelimitWindowSeconds: map['connectionRatelimitWindowSeconds'] as String,
+      hpaConfig: HPAConfigResponse.fromMap((map['hpaConfig'] as Map).cast<String, dynamic>()),
+      internalclientRatelimitThreshold: map['internalclientRatelimitThreshold'] as String,
       ratelimitThreshold: map['ratelimitThreshold'] as String,
-      resourceLimits: ResourceLimitsResponse.fromMap(
-          (map['resourceLimits'] as Map).cast<String, dynamic>()),
-      resourceRequests: ResourceRequestsResponse.fromMap(
-          (map['resourceRequests'] as Map).cast<String, dynamic>()),
+      resourceLimits: ResourceLimitsResponse.fromMap((map['resourceLimits'] as Map).cast<String, dynamic>()),
+      resourceRequests: ResourceRequestsResponse.fromMap((map['resourceRequests'] as Map).cast<String, dynamic>()),
       sharedDeployment: map['sharedDeployment'] as String,
     );
   }
 }
+

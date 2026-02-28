@@ -8,16 +8,12 @@ import 'date_shift_config_response_healthcare_v1beta1.dart';
 class GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse {
   /// Character mask config for CharacterMaskField.
   final CharacterMaskConfigResponseHealthcareV1beta1 characterMaskConfig;
-
   /// Configure contextual de-id.
   final Map<String, dynamic> contextualDeid;
-
   /// Crypto hash config for CharacterMaskField.
   final CryptoHashConfigResponseHealthcareV1beta1 cryptoHashConfig;
-
   /// Date shifting config for CharacterMaskField.
   final DateShiftConfigResponseHealthcareV1beta1 dateShiftConfig;
-
   /// Configure keeping extensions by default.
   final Map<String, dynamic> keepExtensions;
 
@@ -36,26 +32,23 @@ class GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['characterMaskConfig'] = characterMaskConfig.toMap();
-    map['contextualDeid'] = contextualDeid;
-    map['cryptoHashConfig'] = cryptoHashConfig.toMap();
-    map['dateShiftConfig'] = dateShiftConfig.toMap();
-    map['keepExtensions'] = keepExtensions;
-    return map;
+    return <String, dynamic>{
+      'characterMaskConfig': characterMaskConfig.toMap(),
+      'contextualDeid': contextualDeid,
+      'cryptoHashConfig': cryptoHashConfig.toMap(),
+      'dateShiftConfig': dateShiftConfig.toMap(),
+      'keepExtensions': keepExtensions,
+    };
   }
 
-  factory GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse(
-      characterMaskConfig: CharacterMaskConfigResponseHealthcareV1beta1.fromMap(
-          (map['characterMaskConfig'] as Map).cast<String, dynamic>()),
+      characterMaskConfig: CharacterMaskConfigResponseHealthcareV1beta1.fromMap((map['characterMaskConfig'] as Map).cast<String, dynamic>()),
       contextualDeid: (map['contextualDeid'] as Map).cast<String, dynamic>(),
-      cryptoHashConfig: CryptoHashConfigResponseHealthcareV1beta1.fromMap(
-          (map['cryptoHashConfig'] as Map).cast<String, dynamic>()),
-      dateShiftConfig: DateShiftConfigResponseHealthcareV1beta1.fromMap(
-          (map['dateShiftConfig'] as Map).cast<String, dynamic>()),
+      cryptoHashConfig: CryptoHashConfigResponseHealthcareV1beta1.fromMap((map['cryptoHashConfig'] as Map).cast<String, dynamic>()),
+      dateShiftConfig: DateShiftConfigResponseHealthcareV1beta1.fromMap((map['dateShiftConfig'] as Map).cast<String, dynamic>()),
       keepExtensions: (map['keepExtensions'] as Map).cast<String, dynamic>(),
     );
   }
 }
+

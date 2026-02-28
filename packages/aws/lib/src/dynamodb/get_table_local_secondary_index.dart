@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTableLocalSecondaryIndex {
   /// Name of the DynamoDB table.
   final String name;
@@ -20,12 +21,12 @@ class GetTableLocalSecondaryIndex {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['nonKeyAttributes'] = nonKeyAttributes;
-    map['projectionType'] = projectionType;
-    map['rangeKey'] = rangeKey;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'nonKeyAttributes': nonKeyAttributes,
+      'projectionType': projectionType,
+      'rangeKey': rangeKey,
+    };
   }
 
   factory GetTableLocalSecondaryIndex.fromMap(Map<String, dynamic> map) {
@@ -37,3 +38,4 @@ class GetTableLocalSecondaryIndex {
     );
   }
 }
+

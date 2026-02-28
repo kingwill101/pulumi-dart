@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// This is deprecated and has no effect. Do not use.
 class LogConfigCounterOptionsCustomFieldResponse {
   /// This is deprecated and has no effect. Do not use.
   final String name;
-
   /// This is deprecated and has no effect. Do not use.
   final String value;
 
@@ -17,17 +17,17 @@ class LogConfigCounterOptionsCustomFieldResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
-  factory LogConfigCounterOptionsCustomFieldResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory LogConfigCounterOptionsCustomFieldResponse.fromMap(Map<String, dynamic> map) {
     return LogConfigCounterOptionsCustomFieldResponse(
       name: map['name'] as String,
       value: map['value'] as String,
     );
   }
 }
+

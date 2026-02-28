@@ -11,23 +11,18 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings {
   /// * Page level
   /// * Parameter level
   /// Structure is documented below.
-  final CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings?
-      dtmfSettings;
-
+  final CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings? dtmfSettings;
   /// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
   /// * Agent level
   /// Structure is documented below.
-  final CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings?
-      loggingSettings;
-
+  final CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings? loggingSettings;
   /// Settings for speech to text detection. Exposed at the following levels:
   /// * Agent level
   /// * Flow level
   /// * Page level
   /// * Parameter level
   /// Structure is documented below.
-  final CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings?
-      speechSettings;
+  final CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings? speechSettings;
 
   /// Creates a new [CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings].
   /// [dtmfSettings] Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
@@ -40,37 +35,19 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dtmfSettingsValue = dtmfSettings;
-    if (dtmfSettingsValue != null) {
-      map['dtmfSettings'] = dtmfSettingsValue.toMap();
-    }
-    final loggingSettingsValue = loggingSettings;
-    if (loggingSettingsValue != null) {
-      map['loggingSettings'] = loggingSettingsValue.toMap();
-    }
-    final speechSettingsValue = speechSettings;
-    if (speechSettingsValue != null) {
-      map['speechSettings'] = speechSettingsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'dtmfSettings': ?dtmfSettings == null ? null : dtmfSettings!.toMap(),
+      'loggingSettings': ?loggingSettings == null ? null : loggingSettings!.toMap(),
+      'speechSettings': ?speechSettings == null ? null : speechSettings!.toMap(),
+    };
   }
 
-  factory CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings.fromMap(
-      Map<String, dynamic> map) {
+  factory CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings.fromMap(Map<String, dynamic> map) {
     return CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings(
-      dtmfSettings: map['dtmfSettings'] == null
-          ? null
-          : CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings
-              .fromMap((map['dtmfSettings'] as Map).cast<String, dynamic>()),
-      loggingSettings: map['loggingSettings'] == null
-          ? null
-          : CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings
-              .fromMap((map['loggingSettings'] as Map).cast<String, dynamic>()),
-      speechSettings: map['speechSettings'] == null
-          ? null
-          : CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings
-              .fromMap((map['speechSettings'] as Map).cast<String, dynamic>()),
+      dtmfSettings: map['dtmfSettings'] == null ? null : CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings.fromMap((map['dtmfSettings'] as Map).cast<String, dynamic>()),
+      loggingSettings: map['loggingSettings'] == null ? null : CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings.fromMap((map['loggingSettings'] as Map).cast<String, dynamic>()),
+      speechSettings: map['speechSettings'] == null ? null : CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings.fromMap((map['speechSettings'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

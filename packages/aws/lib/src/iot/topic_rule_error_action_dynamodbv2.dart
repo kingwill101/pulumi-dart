@@ -5,7 +5,6 @@ import 'topic_rule_error_action_dynamodbv2_put_item.dart';
 class TopicRuleErrorActionDynamodbv2 {
   /// Configuration block with DynamoDB Table to which the message will be written. Nested arguments below.
   final TopicRuleErrorActionDynamodbv2PutItem? putItem;
-
   /// The ARN of the IAM role that grants access to the DynamoDB table.
   final String roleArn;
 
@@ -18,22 +17,17 @@ class TopicRuleErrorActionDynamodbv2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final putItemValue = putItem;
-    if (putItemValue != null) {
-      map['putItem'] = putItemValue.toMap();
-    }
-    map['roleArn'] = roleArn;
-    return map;
+    return <String, dynamic>{
+      'putItem': ?putItem == null ? null : putItem!.toMap(),
+      'roleArn': roleArn,
+    };
   }
 
   factory TopicRuleErrorActionDynamodbv2.fromMap(Map<String, dynamic> map) {
     return TopicRuleErrorActionDynamodbv2(
-      putItem: map['putItem'] == null
-          ? null
-          : TopicRuleErrorActionDynamodbv2PutItem.fromMap(
-              (map['putItem'] as Map).cast<String, dynamic>()),
+      putItem: map['putItem'] == null ? null : TopicRuleErrorActionDynamodbv2PutItem.fromMap((map['putItem'] as Map).cast<String, dynamic>()),
       roleArn: map['roleArn'] as String,
     );
   }
 }
+

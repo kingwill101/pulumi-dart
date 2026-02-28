@@ -11,3 +11,4 @@ class _IndexModuleNamespace {
   final DeploymentArgs = _index.DeploymentArgs.new;
   final DeploymentType = _index.DeploymentType.new;
 }
+

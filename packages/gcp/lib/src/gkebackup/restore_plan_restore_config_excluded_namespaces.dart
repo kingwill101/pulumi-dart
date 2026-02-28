@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RestorePlanRestoreConfigExcludedNamespaces {
   /// A list of Kubernetes Namespaces.
   final List<String> namespaces;
@@ -11,15 +12,15 @@ class RestorePlanRestoreConfigExcludedNamespaces {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['namespaces'] = namespaces;
-    return map;
+    return <String, dynamic>{
+      'namespaces': namespaces,
+    };
   }
 
-  factory RestorePlanRestoreConfigExcludedNamespaces.fromMap(
-      Map<String, dynamic> map) {
+  factory RestorePlanRestoreConfigExcludedNamespaces.fromMap(Map<String, dynamic> map) {
     return RestorePlanRestoreConfigExcludedNamespaces(
       namespaces: (map['namespaces'] as List).cast<String>(),
     );
   }
 }
+

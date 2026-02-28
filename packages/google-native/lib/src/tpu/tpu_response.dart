@@ -15,19 +15,15 @@ class TpuResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['nodeSpec'] =
-        pulumi.Input.encodeList<NodeSpecResponse, Map<String, dynamic>>(
-            nodeSpec, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'nodeSpec': pulumi.Input.encodeList<NodeSpecResponse, Map<String, dynamic>>(nodeSpec, (value) => value.toMap()),
+    };
   }
 
   factory TpuResponse.fromMap(Map<String, dynamic> map) {
     return TpuResponse(
-      nodeSpec: pulumi.Input.decodeList<NodeSpecResponse>(
-          map['nodeSpec'],
-          (value) =>
-              NodeSpecResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nodeSpec: pulumi.Input.decodeList<NodeSpecResponse>(map['nodeSpec'], (value) => NodeSpecResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

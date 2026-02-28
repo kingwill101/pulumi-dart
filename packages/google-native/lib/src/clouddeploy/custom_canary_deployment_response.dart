@@ -15,19 +15,15 @@ class CustomCanaryDeploymentResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['phaseConfigs'] =
-        pulumi.Input.encodeList<PhaseConfigResponse, Map<String, dynamic>>(
-            phaseConfigs, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'phaseConfigs': pulumi.Input.encodeList<PhaseConfigResponse, Map<String, dynamic>>(phaseConfigs, (value) => value.toMap()),
+    };
   }
 
   factory CustomCanaryDeploymentResponse.fromMap(Map<String, dynamic> map) {
     return CustomCanaryDeploymentResponse(
-      phaseConfigs: pulumi.Input.decodeList<PhaseConfigResponse>(
-          map['phaseConfigs'],
-          (value) => PhaseConfigResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      phaseConfigs: pulumi.Input.decodeList<PhaseConfigResponse>(map['phaseConfigs'], (value) => PhaseConfigResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

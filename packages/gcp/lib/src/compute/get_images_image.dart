@@ -1,37 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetImagesImage {
   /// The size of the image tar.gz archive stored in Google Cloud Storage in bytes.
   final int archiveSizeBytes;
-
   /// The creation timestamp in RFC3339 text format.
   final String creationTimestamp;
-
   /// An optional description of this image.
   final String description;
-
   /// The size of the image when restored onto a persistent disk in gigabytes.
   final int diskSizeGb;
-
   /// The family name of the image.
   final String family;
   final int imageId;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final Map<String, String> labels;
-
   /// The name of the image.
   final String name;
-
   /// The URI of the image.
   final String selfLink;
-
   /// The URL of the source disk used to create this image.
   final String sourceDisk;
-
   /// The ID value of the disk used to create this image.
   final String sourceDiskId;
-
   /// The ID value of the image used to create this image.
   final String sourceImageId;
 
@@ -64,20 +55,20 @@ class GetImagesImage {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['archiveSizeBytes'] = archiveSizeBytes;
-    map['creationTimestamp'] = creationTimestamp;
-    map['description'] = description;
-    map['diskSizeGb'] = diskSizeGb;
-    map['family'] = family;
-    map['imageId'] = imageId;
-    map['labels'] = labels;
-    map['name'] = name;
-    map['selfLink'] = selfLink;
-    map['sourceDisk'] = sourceDisk;
-    map['sourceDiskId'] = sourceDiskId;
-    map['sourceImageId'] = sourceImageId;
-    return map;
+    return <String, dynamic>{
+      'archiveSizeBytes': archiveSizeBytes,
+      'creationTimestamp': creationTimestamp,
+      'description': description,
+      'diskSizeGb': diskSizeGb,
+      'family': family,
+      'imageId': imageId,
+      'labels': labels,
+      'name': name,
+      'selfLink': selfLink,
+      'sourceDisk': sourceDisk,
+      'sourceDiskId': sourceDiskId,
+      'sourceImageId': sourceImageId,
+    };
   }
 
   factory GetImagesImage.fromMap(Map<String, dynamic> map) {
@@ -97,3 +88,4 @@ class GetImagesImage {
     );
   }
 }
+

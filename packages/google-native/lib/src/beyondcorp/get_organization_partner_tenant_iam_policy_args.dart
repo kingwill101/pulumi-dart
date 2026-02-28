@@ -19,31 +19,25 @@ class GetOrganizationPartnerTenantIamPolicyArgs {
     int? optionsRequestedPolicyVersion,
     required String organizationId,
     required String partnerTenantId,
-  })  : optionsRequestedPolicyVersion =
-            pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-        organizationId = pulumi.Input.asInput<String>(organizationId),
-        partnerTenantId = pulumi.Input.asInput<String>(partnerTenantId);
+  }) :
+      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
+      organizationId = pulumi.Input.asInput<String>(organizationId),
+      partnerTenantId = pulumi.Input.asInput<String>(partnerTenantId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final optionsRequestedPolicyVersionValue = optionsRequestedPolicyVersion;
-    if (optionsRequestedPolicyVersionValue != null) {
-      map['optionsRequestedPolicyVersion'] = optionsRequestedPolicyVersionValue;
-    }
-    map['organizationId'] = organizationId;
-    map['partnerTenantId'] = partnerTenantId;
-    return map;
+    return <String, dynamic>{
+      'optionsRequestedPolicyVersion': ?optionsRequestedPolicyVersion,
+      'organizationId': organizationId,
+      'partnerTenantId': partnerTenantId,
+    };
   }
 
-  factory GetOrganizationPartnerTenantIamPolicyArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetOrganizationPartnerTenantIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationPartnerTenantIamPolicyArgs(
-      optionsRequestedPolicyVersion:
-          map['optionsRequestedPolicyVersion'] == null
-              ? null
-              : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
       organizationId: map['organizationId'] as String,
       partnerTenantId: map['partnerTenantId'] as String,
     );
   }
 }
+

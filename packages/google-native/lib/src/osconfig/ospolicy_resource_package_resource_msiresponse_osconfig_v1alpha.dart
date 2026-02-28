@@ -6,7 +6,6 @@ import 'ospolicy_resource_file_response_osconfig_v1alpha.dart';
 class OSPolicyResourcePackageResourceMSIResponseOsconfigV1alpha {
   /// Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
   final List<String> properties;
-
   /// The MSI package.
   final OSPolicyResourceFileResponseOsconfigV1alpha source;
 
@@ -19,18 +18,17 @@ class OSPolicyResourcePackageResourceMSIResponseOsconfigV1alpha {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['properties'] = properties;
-    map['source'] = source.toMap();
-    return map;
+    return <String, dynamic>{
+      'properties': properties,
+      'source': source.toMap(),
+    };
   }
 
-  factory OSPolicyResourcePackageResourceMSIResponseOsconfigV1alpha.fromMap(
-      Map<String, dynamic> map) {
+  factory OSPolicyResourcePackageResourceMSIResponseOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourcePackageResourceMSIResponseOsconfigV1alpha(
       properties: (map['properties'] as List).cast<String>(),
-      source: OSPolicyResourceFileResponseOsconfigV1alpha.fromMap(
-          (map['source'] as Map).cast<String, dynamic>()),
+      source: OSPolicyResourceFileResponseOsconfigV1alpha.fromMap((map['source'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

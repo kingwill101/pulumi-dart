@@ -14,7 +14,7 @@ enum ParticipantRoleDialogflowV2beta1 {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown ParticipantRoleDialogflowV2beta1 value: $value');
+    throw ArgumentError('Unknown ParticipantRoleDialogflowV2beta1 value: $value');
   }
 }
+

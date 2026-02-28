@@ -102,7 +102,6 @@ import 'encryption_by_default_args.dart';
 class EncryptionByDefault extends pulumi.CustomResource {
   /// Whether or not default EBS encryption is enabled. Valid values are `true` or `false`. Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

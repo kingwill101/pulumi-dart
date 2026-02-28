@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// For display only. Metadata associated with a VPC connector.
 class VpcConnectorInfoResponse {
   /// Name of a VPC connector.
   final String displayName;
-
   /// Location in which the VPC connector is deployed.
   final String location;
-
   /// URI of a VPC connector.
   final String uri;
 
@@ -22,11 +21,11 @@ class VpcConnectorInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['displayName'] = displayName;
-    map['location'] = location;
-    map['uri'] = uri;
-    return map;
+    return <String, dynamic>{
+      'displayName': displayName,
+      'location': location,
+      'uri': uri,
+    };
   }
 
   factory VpcConnectorInfoResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class VpcConnectorInfoResponse {
     );
   }
 }
+

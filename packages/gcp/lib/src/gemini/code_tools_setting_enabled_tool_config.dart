@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CodeToolsSettingEnabledToolConfig {
   /// Key of the configuration item.
   final String key;
-
   /// Value of the configuration item.
   final String value;
 
@@ -16,10 +16,10 @@ class CodeToolsSettingEnabledToolConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
   factory CodeToolsSettingEnabledToolConfig.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class CodeToolsSettingEnabledToolConfig {
     );
   }
 }
+

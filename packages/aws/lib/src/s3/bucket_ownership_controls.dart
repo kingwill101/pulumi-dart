@@ -149,10 +149,8 @@ import 'bucket_ownership_controls_rule.dart';
 class BucketOwnershipControls extends pulumi.CustomResource {
   /// Name of the bucket that you want to associate this access point with.
   late final pulumi.Output<String> bucket;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Configuration block(s) with Ownership Controls rules. Detailed below.
   late final pulumi.Output<BucketOwnershipControlsRule> rule;
 

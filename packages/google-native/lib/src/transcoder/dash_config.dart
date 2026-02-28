@@ -14,20 +14,15 @@ class DashConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final segmentReferenceSchemeValue = segmentReferenceScheme;
-    if (segmentReferenceSchemeValue != null) {
-      map['segmentReferenceScheme'] = segmentReferenceSchemeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'segmentReferenceScheme': ?segmentReferenceScheme == null ? null : segmentReferenceScheme!.value,
+    };
   }
 
   factory DashConfig.fromMap(Map<String, dynamic> map) {
     return DashConfig(
-      segmentReferenceScheme: map['segmentReferenceScheme'] == null
-          ? null
-          : DashConfigSegmentReferenceScheme.fromValue(
-              map['segmentReferenceScheme'] as String),
+      segmentReferenceScheme: map['segmentReferenceScheme'] == null ? null : DashConfigSegmentReferenceScheme.fromValue(map['segmentReferenceScheme'] as String),
     );
   }
 }
+

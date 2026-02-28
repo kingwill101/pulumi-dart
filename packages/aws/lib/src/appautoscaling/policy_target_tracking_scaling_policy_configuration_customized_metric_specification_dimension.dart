@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimension {
   /// Name of the dimension.
   final String name;
-
   /// Value of the dimension.
   final String value;
 
@@ -16,17 +16,17 @@ class PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificatio
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
-  factory PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimension.fromMap(
-      Map<String, dynamic> map) {
+  factory PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimension.fromMap(Map<String, dynamic> map) {
     return PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimension(
       name: map['name'] as String,
       value: map['value'] as String,
     );
   }
 }
+

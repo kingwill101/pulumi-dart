@@ -12,7 +12,6 @@ class GetAppleAppArgs {
   ///
   /// - - -
   final pulumi.Input<String> appId;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -23,17 +22,15 @@ class GetAppleAppArgs {
   GetAppleAppArgs({
     required String appId,
     String? project,
-  })  : appId = pulumi.Input.asInput<String>(appId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      appId = pulumi.Input.asInput<String>(appId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['appId'] = appId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'appId': appId,
+      'project': ?project,
+    };
   }
 
   factory GetAppleAppArgs.fromMap(Map<String, dynamic> map) {
@@ -43,3 +40,4 @@ class GetAppleAppArgs {
     );
   }
 }
+

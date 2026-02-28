@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Defined a customer managed encryption key that will be used to encrypt Backup artifacts.
 class EncryptionKeyResponse {
   /// Optional. Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
@@ -12,9 +13,9 @@ class EncryptionKeyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gcpKmsEncryptionKey'] = gcpKmsEncryptionKey;
-    return map;
+    return <String, dynamic>{
+      'gcpKmsEncryptionKey': gcpKmsEncryptionKey,
+    };
   }
 
   factory EncryptionKeyResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class EncryptionKeyResponse {
     );
   }
 }
+

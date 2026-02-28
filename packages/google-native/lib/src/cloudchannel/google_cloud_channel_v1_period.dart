@@ -6,7 +6,6 @@ import 'google_cloud_channel_v1_period_period_type.dart';
 class GoogleCloudChannelV1Period {
   /// Total duration of Period Type defined.
   final int? duration;
-
   /// Period Type.
   final GoogleCloudChannelV1PeriodPeriodType? periodType;
 
@@ -19,25 +18,17 @@ class GoogleCloudChannelV1Period {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final durationValue = duration;
-    if (durationValue != null) {
-      map['duration'] = durationValue;
-    }
-    final periodTypeValue = periodType;
-    if (periodTypeValue != null) {
-      map['periodType'] = periodTypeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'duration': ?duration,
+      'periodType': ?periodType == null ? null : periodType!.value,
+    };
   }
 
   factory GoogleCloudChannelV1Period.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1Period(
       duration: map['duration'] == null ? null : map['duration'] as int,
-      periodType: map['periodType'] == null
-          ? null
-          : GoogleCloudChannelV1PeriodPeriodType.fromValue(
-              map['periodType'] as String),
+      periodType: map['periodType'] == null ? null : GoogleCloudChannelV1PeriodPeriodType.fromValue(map['periodType'] as String),
     );
   }
 }
+

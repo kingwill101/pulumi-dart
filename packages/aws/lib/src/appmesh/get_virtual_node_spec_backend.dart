@@ -13,20 +13,15 @@ class GetVirtualNodeSpecBackend {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['virtualServices'] = pulumi.Input.encodeList<
-        GetVirtualNodeSpecBackendVirtualService,
-        Map<String, dynamic>>(virtualServices, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'virtualServices': pulumi.Input.encodeList<GetVirtualNodeSpecBackendVirtualService, Map<String, dynamic>>(virtualServices, (value) => value.toMap()),
+    };
   }
 
   factory GetVirtualNodeSpecBackend.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecBackend(
-      virtualServices:
-          pulumi.Input.decodeList<GetVirtualNodeSpecBackendVirtualService>(
-              map['virtualServices'],
-              (value) => GetVirtualNodeSpecBackendVirtualService.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      virtualServices: pulumi.Input.decodeList<GetVirtualNodeSpecBackendVirtualService>(map['virtualServices'], (value) => GetVirtualNodeSpecBackendVirtualService.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

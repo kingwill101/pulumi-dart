@@ -378,31 +378,22 @@ import 'agentcore_code_interpreter_timeouts.dart';
 class AgentcoreCodeInterpreter extends pulumi.CustomResource {
   /// ARN of the Code Interpreter.
   late final pulumi.Output<String> codeInterpreterArn;
-
   /// Unique identifier of the Code Interpreter.
   late final pulumi.Output<String> codeInterpreterId;
-
   /// Description of the code interpreter.
   late final pulumi.Output<String?> description;
-
   /// ARN of the IAM role that the code interpreter assumes for execution. Required when using `SANDBOX` network mode.
   late final pulumi.Output<String?> executionRoleArn;
-
   /// Name of the code interpreter.
   late final pulumi.Output<String> name;
-
   /// Network configuration for the code interpreter. See `network_configuration` below.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<AgentcoreCodeInterpreterNetworkConfiguration>
-      networkConfiguration;
-
+  late final pulumi.Output<AgentcoreCodeInterpreterNetworkConfiguration> networkConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<AgentcoreCodeInterpreterTimeouts?> timeouts;
@@ -426,13 +417,10 @@ class AgentcoreCodeInterpreter extends pulumi.CustomResource {
     this.description = registerOutput<String?>('description');
     this.executionRoleArn = registerOutput<String?>('executionRoleArn');
     this.name = registerOutput<String>('name');
-    this.networkConfiguration =
-        registerOutput<AgentcoreCodeInterpreterNetworkConfiguration>(
-            'networkConfiguration');
+    this.networkConfiguration = registerOutput<AgentcoreCodeInterpreterNetworkConfiguration>('networkConfiguration');
     this.region = registerOutput<String>('region');
     this.tags = registerOutput<Map<String, String>?>('tags');
     this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeouts =
-        registerOutput<AgentcoreCodeInterpreterTimeouts?>('timeouts');
+    this.timeouts = registerOutput<AgentcoreCodeInterpreterTimeouts?>('timeouts');
   }
 }

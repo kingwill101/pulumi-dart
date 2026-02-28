@@ -22,21 +22,19 @@ class GetCatalogItemArgs {
     required String catalogItemId,
     required String location,
     String? project,
-  })  : catalogId = pulumi.Input.asInput<String>(catalogId),
-        catalogItemId = pulumi.Input.asInput<String>(catalogItemId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      catalogId = pulumi.Input.asInput<String>(catalogId),
+      catalogItemId = pulumi.Input.asInput<String>(catalogItemId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['catalogId'] = catalogId;
-    map['catalogItemId'] = catalogItemId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'catalogId': catalogId,
+      'catalogItemId': catalogItemId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetCatalogItemArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetCatalogItemArgs {
     );
   }
 }
+

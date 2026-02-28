@@ -14,15 +14,15 @@ class LoggingConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['componentConfig'] = componentConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'componentConfig': componentConfig.toMap(),
+    };
   }
 
   factory LoggingConfigResponse.fromMap(Map<String, dynamic> map) {
     return LoggingConfigResponse(
-      componentConfig: LoggingComponentConfigResponse.fromMap(
-          (map['componentConfig'] as Map).cast<String, dynamic>()),
+      componentConfig: LoggingComponentConfigResponse.fromMap((map['componentConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

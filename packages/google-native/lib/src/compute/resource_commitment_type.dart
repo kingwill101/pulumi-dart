@@ -18,3 +18,4 @@ enum ResourceCommitmentType {
     throw ArgumentError('Unknown ResourceCommitmentType value: $value');
   }
 }
+

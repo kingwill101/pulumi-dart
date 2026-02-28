@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The details of an AWS instance disk.
 class AwsDiskDetailsResponse {
   /// The ordinal number of the disk.
   final int diskNumber;
-
   /// Size in GB.
   final String sizeGb;
-
   /// AWS volume ID.
   final String volumeId;
 
@@ -22,11 +21,11 @@ class AwsDiskDetailsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['diskNumber'] = diskNumber;
-    map['sizeGb'] = sizeGb;
-    map['volumeId'] = volumeId;
-    return map;
+    return <String, dynamic>{
+      'diskNumber': diskNumber,
+      'sizeGb': sizeGb,
+      'volumeId': volumeId,
+    };
   }
 
   factory AwsDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class AwsDiskDetailsResponse {
     );
   }
 }
+

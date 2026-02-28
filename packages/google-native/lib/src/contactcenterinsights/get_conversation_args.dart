@@ -22,24 +22,19 @@ class GetConversationArgs {
     required String location,
     String? project,
     String? view,
-  })  : conversationId = pulumi.Input.asInput<String>(conversationId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        view = pulumi.Input.asOptionalInput<String>(view);
+  }) :
+      conversationId = pulumi.Input.asInput<String>(conversationId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['conversationId'] = conversationId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final viewValue = view;
-    if (viewValue != null) {
-      map['view'] = viewValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'conversationId': conversationId,
+      'location': location,
+      'project': ?project,
+      'view': ?view,
+    };
   }
 
   factory GetConversationArgs.fromMap(Map<String, dynamic> map) {
@@ -51,3 +46,4 @@ class GetConversationArgs {
     );
   }
 }
+

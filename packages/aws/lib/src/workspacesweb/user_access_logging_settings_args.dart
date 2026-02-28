@@ -11,10 +11,8 @@ class UserAccessLoggingSettingsArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> kinesisStreamArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -26,31 +24,25 @@ class UserAccessLoggingSettingsArgs {
     required String kinesisStreamArn,
     String? region,
     Map<String, String>? tags,
-  })  : kinesisStreamArn = pulumi.Input.asInput<String>(kinesisStreamArn),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      kinesisStreamArn = pulumi.Input.asInput<String>(kinesisStreamArn),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kinesisStreamArn'] = kinesisStreamArn;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'kinesisStreamArn': kinesisStreamArn,
+      'region': ?region,
+      'tags': ?tags,
+    };
   }
 
   factory UserAccessLoggingSettingsArgs.fromMap(Map<String, dynamic> map) {
     return UserAccessLoggingSettingsArgs(
       kinesisStreamArn: map['kinesisStreamArn'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

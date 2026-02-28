@@ -6,10 +6,8 @@ import 'get_route_table_associations_filter.dart';
 /// Result data returned by getRouteTableAssociations.
 class GetRouteTableAssociationsResult {
   final List<GetRouteTableAssociationsFilter>? filters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Set of Transit Gateway Route Table Association identifiers.
   final List<String> ids;
   final String region;
@@ -30,27 +28,18 @@ class GetRouteTableAssociationsResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final filtersValue = filters;
-    if (filtersValue != null) {
-      map['filters'] = pulumi.Input.encodeList<GetRouteTableAssociationsFilter,
-          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
-    }
-    map['id'] = id;
-    map['ids'] = ids;
-    map['region'] = region;
-    map['transitGatewayRouteTableId'] = transitGatewayRouteTableId;
-    return map;
+    return <String, dynamic>{
+      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetRouteTableAssociationsFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'id': id,
+      'ids': ids,
+      'region': region,
+      'transitGatewayRouteTableId': transitGatewayRouteTableId,
+    };
   }
 
   factory GetRouteTableAssociationsResult.fromMap(Map<String, dynamic> map) {
     return GetRouteTableAssociationsResult(
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetRouteTableAssociationsFilter>(
-              map['filters'],
-              (value) => GetRouteTableAssociationsFilter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetRouteTableAssociationsFilter>(map['filters'], (value) => GetRouteTableAssociationsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       region: map['region'] as String,
@@ -58,3 +47,4 @@ class GetRouteTableAssociationsResult {
     );
   }
 }
+

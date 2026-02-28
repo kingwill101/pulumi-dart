@@ -15,24 +15,15 @@ class OracleRdbmsDatastreamV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final oracleSchemasValue = oracleSchemas;
-    if (oracleSchemasValue != null) {
-      map['oracleSchemas'] = pulumi.Input.encodeList<
-          OracleSchemaDatastreamV1alpha1,
-          Map<String, dynamic>>(oracleSchemasValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'oracleSchemas': ?oracleSchemas == null ? null : pulumi.Input.encodeList<OracleSchemaDatastreamV1alpha1, Map<String, dynamic>>(oracleSchemas!, (value) => value.toMap()),
+    };
   }
 
   factory OracleRdbmsDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return OracleRdbmsDatastreamV1alpha1(
-      oracleSchemas: map['oracleSchemas'] == null
-          ? null
-          : pulumi.Input.decodeList<OracleSchemaDatastreamV1alpha1>(
-              map['oracleSchemas'],
-              (value) => OracleSchemaDatastreamV1alpha1.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      oracleSchemas: map['oracleSchemas'] == null ? null : pulumi.Input.decodeList<OracleSchemaDatastreamV1alpha1>(map['oracleSchemas'], (value) => OracleSchemaDatastreamV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

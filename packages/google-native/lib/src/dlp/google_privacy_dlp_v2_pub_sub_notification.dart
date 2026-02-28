@@ -8,13 +8,10 @@ import 'google_privacy_dlp_v2_pub_sub_notification_event.dart';
 class GooglePrivacyDlpV2PubSubNotification {
   /// How much data to include in the Pub/Sub message. If the user wishes to limit the size of the message, they can use resource_name and fetch the profile fields they wish to. Per table profile (not per column).
   final GooglePrivacyDlpV2PubSubNotificationDetailOfMessage? detailOfMessage;
-
   /// The type of event that triggers a Pub/Sub. At most one `PubSubNotification` per EventType is permitted.
   final GooglePrivacyDlpV2PubSubNotificationEvent? event;
-
   /// Conditions (e.g., data risk or sensitivity level) for triggering a Pub/Sub.
   final GooglePrivacyDlpV2DataProfilePubSubCondition? pubsubCondition;
-
   /// Cloud Pub/Sub topic to send notifications to. Format is projects/{project}/topics/{topic}.
   final String? topic;
 
@@ -31,42 +28,21 @@ class GooglePrivacyDlpV2PubSubNotification {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final detailOfMessageValue = detailOfMessage;
-    if (detailOfMessageValue != null) {
-      map['detailOfMessage'] = detailOfMessageValue.value;
-    }
-    final eventValue = event;
-    if (eventValue != null) {
-      map['event'] = eventValue.value;
-    }
-    final pubsubConditionValue = pubsubCondition;
-    if (pubsubConditionValue != null) {
-      map['pubsubCondition'] = pubsubConditionValue.toMap();
-    }
-    final topicValue = topic;
-    if (topicValue != null) {
-      map['topic'] = topicValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'detailOfMessage': ?detailOfMessage == null ? null : detailOfMessage!.value,
+      'event': ?event == null ? null : event!.value,
+      'pubsubCondition': ?pubsubCondition == null ? null : pubsubCondition!.toMap(),
+      'topic': ?topic,
+    };
   }
 
-  factory GooglePrivacyDlpV2PubSubNotification.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2PubSubNotification.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2PubSubNotification(
-      detailOfMessage: map['detailOfMessage'] == null
-          ? null
-          : GooglePrivacyDlpV2PubSubNotificationDetailOfMessage.fromValue(
-              map['detailOfMessage'] as String),
-      event: map['event'] == null
-          ? null
-          : GooglePrivacyDlpV2PubSubNotificationEvent.fromValue(
-              map['event'] as String),
-      pubsubCondition: map['pubsubCondition'] == null
-          ? null
-          : GooglePrivacyDlpV2DataProfilePubSubCondition.fromMap(
-              (map['pubsubCondition'] as Map).cast<String, dynamic>()),
+      detailOfMessage: map['detailOfMessage'] == null ? null : GooglePrivacyDlpV2PubSubNotificationDetailOfMessage.fromValue(map['detailOfMessage'] as String),
+      event: map['event'] == null ? null : GooglePrivacyDlpV2PubSubNotificationEvent.fromValue(map['event'] as String),
+      pubsubCondition: map['pubsubCondition'] == null ? null : GooglePrivacyDlpV2DataProfilePubSubCondition.fromMap((map['pubsubCondition'] as Map).cast<String, dynamic>()),
       topic: map['topic'] == null ? null : map['topic'] as String,
     );
   }
 }
+

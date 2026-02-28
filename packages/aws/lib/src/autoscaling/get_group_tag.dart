@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetGroupTag {
   /// Key.
   final String key;
-
   /// Whether the tag is propagated to Amazon EC2 instances launched via this ASG.
   final bool propagateAtLaunch;
-
   /// Value.
   final String value;
 
@@ -21,11 +20,11 @@ class GetGroupTag {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    map['propagateAtLaunch'] = propagateAtLaunch;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'propagateAtLaunch': propagateAtLaunch,
+      'value': value,
+    };
   }
 
   factory GetGroupTag.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class GetGroupTag {
     );
   }
 }
+

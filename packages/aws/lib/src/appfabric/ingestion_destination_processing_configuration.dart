@@ -13,16 +13,15 @@ class IngestionDestinationProcessingConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['auditLog'] = auditLog.toMap();
-    return map;
+    return <String, dynamic>{
+      'auditLog': auditLog.toMap(),
+    };
   }
 
-  factory IngestionDestinationProcessingConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory IngestionDestinationProcessingConfiguration.fromMap(Map<String, dynamic> map) {
     return IngestionDestinationProcessingConfiguration(
-      auditLog: IngestionDestinationProcessingConfigurationAuditLog.fromMap(
-          (map['auditLog'] as Map).cast<String, dynamic>()),
+      auditLog: IngestionDestinationProcessingConfigurationAuditLog.fromMap((map['auditLog'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

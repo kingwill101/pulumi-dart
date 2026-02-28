@@ -17,3 +17,4 @@ enum MetricDescriptorMetricKind {
     throw ArgumentError('Unknown MetricDescriptorMetricKind value: $value');
   }
 }
+

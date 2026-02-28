@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRegistryRepository.
 class GetRegistryRepositoryResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String project;
   final String? region;
-
   /// The URL at which the repository can be accessed.
   final String repositoryUrl;
 
@@ -23,15 +23,12 @@ class GetRegistryRepositoryResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['project'] = project;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['repositoryUrl'] = repositoryUrl;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'project': project,
+      'region': ?region,
+      'repositoryUrl': repositoryUrl,
+    };
   }
 
   factory GetRegistryRepositoryResult.fromMap(Map<String, dynamic> map) {
@@ -43,3 +40,4 @@ class GetRegistryRepositoryResult {
     );
   }
 }
+

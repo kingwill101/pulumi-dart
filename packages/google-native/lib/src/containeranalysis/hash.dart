@@ -6,7 +6,6 @@ import 'hash_type.dart';
 class Hash {
   /// The type of hash that was performed.
   final HashType? type;
-
   /// The hash value.
   final String? value;
 
@@ -19,24 +18,17 @@ class Hash {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue.value;
-    }
-    final valueValue = value;
-    if (valueValue != null) {
-      map['value'] = valueValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'type': ?type == null ? null : type!.value,
+      'value': ?value,
+    };
   }
 
   factory Hash.fromMap(Map<String, dynamic> map) {
     return Hash(
-      type: map['type'] == null
-          ? null
-          : HashType.fromValue(map['type'] as String),
+      type: map['type'] == null ? null : HashType.fromValue(map['type'] as String),
       value: map['value'] == null ? null : map['value'] as String,
     );
   }
 }
+

@@ -22,18 +22,19 @@ class GetAppGroupAppKeyArgs {
     required String appgroupId,
     required String keyId,
     required String organizationId,
-  })  : appId = pulumi.Input.asInput<String>(appId),
-        appgroupId = pulumi.Input.asInput<String>(appgroupId),
-        keyId = pulumi.Input.asInput<String>(keyId),
-        organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) :
+      appId = pulumi.Input.asInput<String>(appId),
+      appgroupId = pulumi.Input.asInput<String>(appgroupId),
+      keyId = pulumi.Input.asInput<String>(keyId),
+      organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['appId'] = appId;
-    map['appgroupId'] = appgroupId;
-    map['keyId'] = keyId;
-    map['organizationId'] = organizationId;
-    return map;
+    return <String, dynamic>{
+      'appId': appId,
+      'appgroupId': appgroupId,
+      'keyId': keyId,
+      'organizationId': organizationId,
+    };
   }
 
   factory GetAppGroupAppKeyArgs.fromMap(Map<String, dynamic> map) {
@@ -45,3 +46,4 @@ class GetAppGroupAppKeyArgs {
     );
   }
 }
+

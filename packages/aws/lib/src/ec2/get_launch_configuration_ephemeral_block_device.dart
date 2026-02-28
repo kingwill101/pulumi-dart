@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetLaunchConfigurationEphemeralBlockDevice {
   /// Name of the device.
   final String deviceName;
-
   /// Virtual Name of the device.
   final String virtualName;
 
@@ -16,17 +16,17 @@ class GetLaunchConfigurationEphemeralBlockDevice {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['deviceName'] = deviceName;
-    map['virtualName'] = virtualName;
-    return map;
+    return <String, dynamic>{
+      'deviceName': deviceName,
+      'virtualName': virtualName,
+    };
   }
 
-  factory GetLaunchConfigurationEphemeralBlockDevice.fromMap(
-      Map<String, dynamic> map) {
+  factory GetLaunchConfigurationEphemeralBlockDevice.fromMap(Map<String, dynamic> map) {
     return GetLaunchConfigurationEphemeralBlockDevice(
       deviceName: map['deviceName'] as String,
       virtualName: map['virtualName'] as String,
     );
   }
 }
+

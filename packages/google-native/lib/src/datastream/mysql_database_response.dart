@@ -7,7 +7,6 @@ import 'mysql_table_response.dart';
 class MysqlDatabaseResponse {
   /// Database name.
   final String database;
-
   /// Tables in the database.
   final List<MysqlTableResponse> mysqlTables;
 
@@ -20,21 +19,17 @@ class MysqlDatabaseResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['database'] = database;
-    map['mysqlTables'] =
-        pulumi.Input.encodeList<MysqlTableResponse, Map<String, dynamic>>(
-            mysqlTables, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'database': database,
+      'mysqlTables': pulumi.Input.encodeList<MysqlTableResponse, Map<String, dynamic>>(mysqlTables, (value) => value.toMap()),
+    };
   }
 
   factory MysqlDatabaseResponse.fromMap(Map<String, dynamic> map) {
     return MysqlDatabaseResponse(
       database: map['database'] as String,
-      mysqlTables: pulumi.Input.decodeList<MysqlTableResponse>(
-          map['mysqlTables'],
-          (value) => MysqlTableResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      mysqlTables: pulumi.Input.decodeList<MysqlTableResponse>(map['mysqlTables'], (value) => MysqlTableResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -7,7 +7,6 @@ import 'google_cloud_aiplatform_v1_nas_trial_response.dart';
 class GoogleCloudAiplatformV1NasJobOutputMultiTrialJobOutputResponse {
   /// List of NasTrials that were started as part of search stage.
   final List<GoogleCloudAiplatformV1NasTrialResponse> searchTrials;
-
   /// List of NasTrials that were started as part of train stage.
   final List<GoogleCloudAiplatformV1NasTrialResponse> trainTrials;
 
@@ -20,29 +19,17 @@ class GoogleCloudAiplatformV1NasJobOutputMultiTrialJobOutputResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['searchTrials'] = pulumi.Input.encodeList<
-        GoogleCloudAiplatformV1NasTrialResponse,
-        Map<String, dynamic>>(searchTrials, (value) => value.toMap());
-    map['trainTrials'] = pulumi.Input.encodeList<
-        GoogleCloudAiplatformV1NasTrialResponse,
-        Map<String, dynamic>>(trainTrials, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'searchTrials': pulumi.Input.encodeList<GoogleCloudAiplatformV1NasTrialResponse, Map<String, dynamic>>(searchTrials, (value) => value.toMap()),
+      'trainTrials': pulumi.Input.encodeList<GoogleCloudAiplatformV1NasTrialResponse, Map<String, dynamic>>(trainTrials, (value) => value.toMap()),
+    };
   }
 
-  factory GoogleCloudAiplatformV1NasJobOutputMultiTrialJobOutputResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1NasJobOutputMultiTrialJobOutputResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1NasJobOutputMultiTrialJobOutputResponse(
-      searchTrials:
-          pulumi.Input.decodeList<GoogleCloudAiplatformV1NasTrialResponse>(
-              map['searchTrials'],
-              (value) => GoogleCloudAiplatformV1NasTrialResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      trainTrials:
-          pulumi.Input.decodeList<GoogleCloudAiplatformV1NasTrialResponse>(
-              map['trainTrials'],
-              (value) => GoogleCloudAiplatformV1NasTrialResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      searchTrials: pulumi.Input.decodeList<GoogleCloudAiplatformV1NasTrialResponse>(map['searchTrials'], (value) => GoogleCloudAiplatformV1NasTrialResponse.fromMap((value as Map).cast<String, dynamic>())),
+      trainTrials: pulumi.Input.decodeList<GoogleCloudAiplatformV1NasTrialResponse>(map['trainTrials'], (value) => GoogleCloudAiplatformV1NasTrialResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

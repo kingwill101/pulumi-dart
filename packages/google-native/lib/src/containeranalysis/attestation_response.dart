@@ -13,15 +13,15 @@ class AttestationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['pgpSignedAttestation'] = pgpSignedAttestation.toMap();
-    return map;
+    return <String, dynamic>{
+      'pgpSignedAttestation': pgpSignedAttestation.toMap(),
+    };
   }
 
   factory AttestationResponse.fromMap(Map<String, dynamic> map) {
     return AttestationResponse(
-      pgpSignedAttestation: PgpSignedAttestationResponse.fromMap(
-          (map['pgpSignedAttestation'] as Map).cast<String, dynamic>()),
+      pgpSignedAttestation: PgpSignedAttestationResponse.fromMap((map['pgpSignedAttestation'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

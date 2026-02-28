@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConfigBlockingFunctionsTrigger {
   /// The identifier for this object. Format specified above.
   final String eventType;
-
   /// HTTP URI trigger for the Cloud Function.
   final String functionUri;
-
   /// (Output)
   /// When the trigger was changed.
   final String? updateTime;
@@ -22,22 +21,19 @@ class ConfigBlockingFunctionsTrigger {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['eventType'] = eventType;
-    map['functionUri'] = functionUri;
-    final updateTimeValue = updateTime;
-    if (updateTimeValue != null) {
-      map['updateTime'] = updateTimeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'eventType': eventType,
+      'functionUri': functionUri,
+      'updateTime': ?updateTime,
+    };
   }
 
   factory ConfigBlockingFunctionsTrigger.fromMap(Map<String, dynamic> map) {
     return ConfigBlockingFunctionsTrigger(
       eventType: map['eventType'] as String,
       functionUri: map['functionUri'] as String,
-      updateTime:
-          map['updateTime'] == null ? null : map['updateTime'] as String,
+      updateTime: map['updateTime'] == null ? null : map['updateTime'] as String,
     );
   }
 }
+

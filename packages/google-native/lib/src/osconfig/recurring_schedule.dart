@@ -10,22 +10,16 @@ import 'weekly_schedule.dart';
 class RecurringSchedule {
   /// Optional. The end time at which a recurring patch deployment schedule is no longer active.
   final String? endTime;
-
   /// The frequency unit of this recurring schedule.
   final RecurringScheduleFrequency frequency;
-
   /// Schedule with monthly executions.
   final MonthlySchedule monthly;
-
   /// Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
   final String? startTime;
-
   /// Time of the day to run a recurring deployment.
   final TimeOfDay timeOfDay;
-
   /// Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
   final TimeZone timeZone;
-
   /// Schedule with weekly executions.
   final WeeklySchedule weekly;
 
@@ -48,37 +42,27 @@ class RecurringSchedule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final endTimeValue = endTime;
-    if (endTimeValue != null) {
-      map['endTime'] = endTimeValue;
-    }
-    map['frequency'] = frequency.value;
-    map['monthly'] = monthly.toMap();
-    final startTimeValue = startTime;
-    if (startTimeValue != null) {
-      map['startTime'] = startTimeValue;
-    }
-    map['timeOfDay'] = timeOfDay.toMap();
-    map['timeZone'] = timeZone.toMap();
-    map['weekly'] = weekly.toMap();
-    return map;
+    return <String, dynamic>{
+      'endTime': ?endTime,
+      'frequency': frequency.value,
+      'monthly': monthly.toMap(),
+      'startTime': ?startTime,
+      'timeOfDay': timeOfDay.toMap(),
+      'timeZone': timeZone.toMap(),
+      'weekly': weekly.toMap(),
+    };
   }
 
   factory RecurringSchedule.fromMap(Map<String, dynamic> map) {
     return RecurringSchedule(
       endTime: map['endTime'] == null ? null : map['endTime'] as String,
-      frequency:
-          RecurringScheduleFrequency.fromValue(map['frequency'] as String),
-      monthly: MonthlySchedule.fromMap(
-          (map['monthly'] as Map).cast<String, dynamic>()),
+      frequency: RecurringScheduleFrequency.fromValue(map['frequency'] as String),
+      monthly: MonthlySchedule.fromMap((map['monthly'] as Map).cast<String, dynamic>()),
       startTime: map['startTime'] == null ? null : map['startTime'] as String,
-      timeOfDay:
-          TimeOfDay.fromMap((map['timeOfDay'] as Map).cast<String, dynamic>()),
-      timeZone:
-          TimeZone.fromMap((map['timeZone'] as Map).cast<String, dynamic>()),
-      weekly: WeeklySchedule.fromMap(
-          (map['weekly'] as Map).cast<String, dynamic>()),
+      timeOfDay: TimeOfDay.fromMap((map['timeOfDay'] as Map).cast<String, dynamic>()),
+      timeZone: TimeZone.fromMap((map['timeZone'] as Map).cast<String, dynamic>()),
+      weekly: WeeklySchedule.fromMap((map['weekly'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -15,22 +15,15 @@ class BareMetalClusterSecurityConfigAuthorization {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['adminUsers'] = pulumi.Input.encodeList<
-        BareMetalClusterSecurityConfigAuthorizationAdminUser,
-        Map<String, dynamic>>(adminUsers, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'adminUsers': pulumi.Input.encodeList<BareMetalClusterSecurityConfigAuthorizationAdminUser, Map<String, dynamic>>(adminUsers, (value) => value.toMap()),
+    };
   }
 
-  factory BareMetalClusterSecurityConfigAuthorization.fromMap(
-      Map<String, dynamic> map) {
+  factory BareMetalClusterSecurityConfigAuthorization.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterSecurityConfigAuthorization(
-      adminUsers: pulumi.Input.decodeList<
-              BareMetalClusterSecurityConfigAuthorizationAdminUser>(
-          map['adminUsers'],
-          (value) =>
-              BareMetalClusterSecurityConfigAuthorizationAdminUser.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      adminUsers: pulumi.Input.decodeList<BareMetalClusterSecurityConfigAuthorizationAdminUser>(map['adminUsers'], (value) => BareMetalClusterSecurityConfigAuthorizationAdminUser.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

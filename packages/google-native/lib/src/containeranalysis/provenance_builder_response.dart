@@ -16,21 +16,17 @@ class ProvenanceBuilderResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['builderDependencies'] = pulumi.Input.encodeList<
-        ResourceDescriptorResponse,
-        Map<String, dynamic>>(builderDependencies, (value) => value.toMap());
-    map['version'] = version;
-    return map;
+    return <String, dynamic>{
+      'builderDependencies': pulumi.Input.encodeList<ResourceDescriptorResponse, Map<String, dynamic>>(builderDependencies, (value) => value.toMap()),
+      'version': version,
+    };
   }
 
   factory ProvenanceBuilderResponse.fromMap(Map<String, dynamic> map) {
     return ProvenanceBuilderResponse(
-      builderDependencies: pulumi.Input.decodeList<ResourceDescriptorResponse>(
-          map['builderDependencies'],
-          (value) => ResourceDescriptorResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      builderDependencies: pulumi.Input.decodeList<ResourceDescriptorResponse>(map['builderDependencies'], (value) => ResourceDescriptorResponse.fromMap((value as Map).cast<String, dynamic>())),
       version: (map['version'] as Map).cast<String, String>(),
     );
   }
 }
+

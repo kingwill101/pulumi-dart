@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetContactsRotationRecurrenceShiftCoverageCoverageTimeStart {
   final int hourOfDay;
   final int minuteOfHour;
@@ -13,17 +14,17 @@ class GetContactsRotationRecurrenceShiftCoverageCoverageTimeStart {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['hourOfDay'] = hourOfDay;
-    map['minuteOfHour'] = minuteOfHour;
-    return map;
+    return <String, dynamic>{
+      'hourOfDay': hourOfDay,
+      'minuteOfHour': minuteOfHour,
+    };
   }
 
-  factory GetContactsRotationRecurrenceShiftCoverageCoverageTimeStart.fromMap(
-      Map<String, dynamic> map) {
+  factory GetContactsRotationRecurrenceShiftCoverageCoverageTimeStart.fromMap(Map<String, dynamic> map) {
     return GetContactsRotationRecurrenceShiftCoverageCoverageTimeStart(
       hourOfDay: map['hourOfDay'] as int,
       minuteOfHour: map['minuteOfHour'] as int,
     );
   }
 }
+

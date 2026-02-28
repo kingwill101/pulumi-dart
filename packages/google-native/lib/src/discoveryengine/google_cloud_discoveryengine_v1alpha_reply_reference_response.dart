@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Defines reference in reply.
 class GoogleCloudDiscoveryengineV1alphaReplyReferenceResponse {
   /// Anchor text.
   final String anchorText;
-
   /// Anchor text end index.
   final int end;
-
   /// Anchor text start index.
   final int start;
-
   /// URI link reference.
   final String uri;
 
@@ -27,16 +25,15 @@ class GoogleCloudDiscoveryengineV1alphaReplyReferenceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['anchorText'] = anchorText;
-    map['end'] = end;
-    map['start'] = start;
-    map['uri'] = uri;
-    return map;
+    return <String, dynamic>{
+      'anchorText': anchorText,
+      'end': end,
+      'start': start,
+      'uri': uri,
+    };
   }
 
-  factory GoogleCloudDiscoveryengineV1alphaReplyReferenceResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDiscoveryengineV1alphaReplyReferenceResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDiscoveryengineV1alphaReplyReferenceResponse(
       anchorText: map['anchorText'] as String,
       end: map['end'] as int,
@@ -45,3 +42,4 @@ class GoogleCloudDiscoveryengineV1alphaReplyReferenceResponse {
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'placement_policy_type.dart';
 class PlacementPolicy {
   /// If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
   final String? policyName;
-
   /// Optional. TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
   final String? tpuTopology;
-
   /// The type of placement.
   final PlacementPolicyType? type;
 
@@ -24,31 +22,19 @@ class PlacementPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final policyNameValue = policyName;
-    if (policyNameValue != null) {
-      map['policyName'] = policyNameValue;
-    }
-    final tpuTopologyValue = tpuTopology;
-    if (tpuTopologyValue != null) {
-      map['tpuTopology'] = tpuTopologyValue;
-    }
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'policyName': ?policyName,
+      'tpuTopology': ?tpuTopology,
+      'type': ?type == null ? null : type!.value,
+    };
   }
 
   factory PlacementPolicy.fromMap(Map<String, dynamic> map) {
     return PlacementPolicy(
-      policyName:
-          map['policyName'] == null ? null : map['policyName'] as String,
-      tpuTopology:
-          map['tpuTopology'] == null ? null : map['tpuTopology'] as String,
-      type: map['type'] == null
-          ? null
-          : PlacementPolicyType.fromValue(map['type'] as String),
+      policyName: map['policyName'] == null ? null : map['policyName'] as String,
+      tpuTopology: map['tpuTopology'] == null ? null : map['tpuTopology'] as String,
+      type: map['type'] == null ? null : PlacementPolicyType.fromValue(map['type'] as String),
     );
   }
 }
+

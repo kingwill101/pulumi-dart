@@ -14,24 +14,15 @@ class ThemeConfigurationTypography {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final fontFamiliesValue = fontFamilies;
-    if (fontFamiliesValue != null) {
-      map['fontFamilies'] = pulumi.Input.encodeList<
-          ThemeConfigurationTypographyFontFamily,
-          Map<String, dynamic>>(fontFamiliesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'fontFamilies': ?fontFamilies == null ? null : pulumi.Input.encodeList<ThemeConfigurationTypographyFontFamily, Map<String, dynamic>>(fontFamilies!, (value) => value.toMap()),
+    };
   }
 
   factory ThemeConfigurationTypography.fromMap(Map<String, dynamic> map) {
     return ThemeConfigurationTypography(
-      fontFamilies: map['fontFamilies'] == null
-          ? null
-          : pulumi.Input.decodeList<ThemeConfigurationTypographyFontFamily>(
-              map['fontFamilies'],
-              (value) => ThemeConfigurationTypographyFontFamily.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      fontFamilies: map['fontFamilies'] == null ? null : pulumi.Input.decodeList<ThemeConfigurationTypographyFontFamily>(map['fontFamilies'], (value) => ThemeConfigurationTypographyFontFamily.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

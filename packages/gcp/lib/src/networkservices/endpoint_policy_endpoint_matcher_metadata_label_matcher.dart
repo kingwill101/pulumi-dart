@@ -7,11 +7,9 @@ class EndpointPolicyEndpointMatcherMetadataLabelMatcher {
   /// Specifies how matching should be done.
   /// Possible values are: `MATCH_ANY`, `MATCH_ALL`.
   final String metadataLabelMatchCriteria;
-
   /// The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria
   /// Structure is documented below.
-  final List<EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel>?
-      metadataLabels;
+  final List<EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel>? metadataLabels;
 
   /// Creates a new [EndpointPolicyEndpointMatcherMetadataLabelMatcher].
   /// [metadataLabelMatchCriteria] Specifies how matching should be done.
@@ -22,29 +20,17 @@ class EndpointPolicyEndpointMatcherMetadataLabelMatcher {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['metadataLabelMatchCriteria'] = metadataLabelMatchCriteria;
-    final metadataLabelsValue = metadataLabels;
-    if (metadataLabelsValue != null) {
-      map['metadataLabels'] = pulumi.Input.encodeList<
-          EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel,
-          Map<String, dynamic>>(metadataLabelsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'metadataLabelMatchCriteria': metadataLabelMatchCriteria,
+      'metadataLabels': ?metadataLabels == null ? null : pulumi.Input.encodeList<EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel, Map<String, dynamic>>(metadataLabels!, (value) => value.toMap()),
+    };
   }
 
-  factory EndpointPolicyEndpointMatcherMetadataLabelMatcher.fromMap(
-      Map<String, dynamic> map) {
+  factory EndpointPolicyEndpointMatcherMetadataLabelMatcher.fromMap(Map<String, dynamic> map) {
     return EndpointPolicyEndpointMatcherMetadataLabelMatcher(
       metadataLabelMatchCriteria: map['metadataLabelMatchCriteria'] as String,
-      metadataLabels: map['metadataLabels'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel>(
-              map['metadataLabels'],
-              (value) =>
-                  EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      metadataLabels: map['metadataLabels'] == null ? null : pulumi.Input.decodeList<EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel>(map['metadataLabels'], (value) => EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

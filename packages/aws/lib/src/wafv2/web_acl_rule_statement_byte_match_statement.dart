@@ -7,16 +7,12 @@ import 'web_acl_rule_statement_byte_match_statement_text_transformation.dart';
 class WebAclRuleStatementByteMatchStatement {
   /// Part of a web request that you want AWS WAF to inspect. See `field_to_match` below for details.
   final WebAclRuleStatementByteMatchStatementFieldToMatch? fieldToMatch;
-
   /// Area within the portion of a web request that you want AWS WAF to search for `search_string`. Valid values include the following: `EXACTLY`, `STARTS_WITH`, `ENDS_WITH`, `CONTAINS`, `CONTAINS_WORD`. See the AWS [documentation](https://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchStatement.html) for more information.
   final String positionalConstraint;
-
   /// String value that you want AWS WAF to search for. AWS WAF searches only in the part of web requests that you designate for inspection in `field_to_match`. The maximum length of the value is 50 bytes.
   final String searchString;
-
   /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. At least one transformation is required. See `text_transformation` below for details.
-  final List<WebAclRuleStatementByteMatchStatementTextTransformation>
-      textTransformations;
+  final List<WebAclRuleStatementByteMatchStatementTextTransformation> textTransformations;
 
   /// Creates a new [WebAclRuleStatementByteMatchStatement].
   /// [fieldToMatch] Part of a web request that you want AWS WAF to inspect. See `field_to_match` below for details.
@@ -31,34 +27,21 @@ class WebAclRuleStatementByteMatchStatement {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final fieldToMatchValue = fieldToMatch;
-    if (fieldToMatchValue != null) {
-      map['fieldToMatch'] = fieldToMatchValue.toMap();
-    }
-    map['positionalConstraint'] = positionalConstraint;
-    map['searchString'] = searchString;
-    map['textTransformations'] = pulumi.Input.encodeList<
-        WebAclRuleStatementByteMatchStatementTextTransformation,
-        Map<String, dynamic>>(textTransformations, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'fieldToMatch': ?fieldToMatch == null ? null : fieldToMatch!.toMap(),
+      'positionalConstraint': positionalConstraint,
+      'searchString': searchString,
+      'textTransformations': pulumi.Input.encodeList<WebAclRuleStatementByteMatchStatementTextTransformation, Map<String, dynamic>>(textTransformations, (value) => value.toMap()),
+    };
   }
 
-  factory WebAclRuleStatementByteMatchStatement.fromMap(
-      Map<String, dynamic> map) {
+  factory WebAclRuleStatementByteMatchStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementByteMatchStatement(
-      fieldToMatch: map['fieldToMatch'] == null
-          ? null
-          : WebAclRuleStatementByteMatchStatementFieldToMatch.fromMap(
-              (map['fieldToMatch'] as Map).cast<String, dynamic>()),
+      fieldToMatch: map['fieldToMatch'] == null ? null : WebAclRuleStatementByteMatchStatementFieldToMatch.fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>()),
       positionalConstraint: map['positionalConstraint'] as String,
       searchString: map['searchString'] as String,
-      textTransformations: pulumi.Input.decodeList<
-              WebAclRuleStatementByteMatchStatementTextTransformation>(
-          map['textTransformations'],
-          (value) =>
-              WebAclRuleStatementByteMatchStatementTextTransformation.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      textTransformations: pulumi.Input.decodeList<WebAclRuleStatementByteMatchStatementTextTransformation>(map['textTransformations'], (value) => WebAclRuleStatementByteMatchStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

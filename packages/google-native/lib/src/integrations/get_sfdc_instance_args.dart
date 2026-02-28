@@ -22,21 +22,19 @@ class GetSfdcInstanceArgs {
     required String productId,
     String? project,
     required String sfdcInstanceId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        productId = pulumi.Input.asInput<String>(productId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        sfdcInstanceId = pulumi.Input.asInput<String>(sfdcInstanceId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      productId = pulumi.Input.asInput<String>(productId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      sfdcInstanceId = pulumi.Input.asInput<String>(sfdcInstanceId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    map['productId'] = productId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['sfdcInstanceId'] = sfdcInstanceId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'productId': productId,
+      'project': ?project,
+      'sfdcInstanceId': sfdcInstanceId,
+    };
   }
 
   factory GetSfdcInstanceArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetSfdcInstanceArgs {
     );
   }
 }
+

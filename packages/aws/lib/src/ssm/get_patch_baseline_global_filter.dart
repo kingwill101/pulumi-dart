@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetPatchBaselineGlobalFilter {
   /// Key for the filter.
   final String key;
-
   /// Value for the filter.
   final List<String> values;
 
@@ -16,10 +16,10 @@ class GetPatchBaselineGlobalFilter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    map['values'] = values;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'values': values,
+    };
   }
 
   factory GetPatchBaselineGlobalFilter.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetPatchBaselineGlobalFilter {
     );
   }
 }
+

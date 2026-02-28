@@ -6,7 +6,6 @@ import 'ospolicy_resource_exec_resource_exec_response.dart';
 class OSPolicyResourceExecResourceResponse {
   /// What to run to bring this resource into the desired state. An exit code of 100 indicates "success", any other exit code indicates a failure running enforce.
   final OSPolicyResourceExecResourceExecResponse enforce;
-
   /// What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
   final OSPolicyResourceExecResourceExecResponse validate;
 
@@ -19,19 +18,17 @@ class OSPolicyResourceExecResourceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enforce'] = enforce.toMap();
-    map['validate'] = validate.toMap();
-    return map;
+    return <String, dynamic>{
+      'enforce': enforce.toMap(),
+      'validate': validate.toMap(),
+    };
   }
 
-  factory OSPolicyResourceExecResourceResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory OSPolicyResourceExecResourceResponse.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourceExecResourceResponse(
-      enforce: OSPolicyResourceExecResourceExecResponse.fromMap(
-          (map['enforce'] as Map).cast<String, dynamic>()),
-      validate: OSPolicyResourceExecResourceExecResponse.fromMap(
-          (map['validate'] as Map).cast<String, dynamic>()),
+      enforce: OSPolicyResourceExecResourceExecResponse.fromMap((map['enforce'] as Map).cast<String, dynamic>()),
+      validate: OSPolicyResourceExecResourceExecResponse.fromMap((map['validate'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

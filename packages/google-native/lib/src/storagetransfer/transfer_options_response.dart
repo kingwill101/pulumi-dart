@@ -6,16 +6,12 @@ import 'metadata_options_response.dart';
 class TransferOptionsResponse {
   /// Whether objects should be deleted from the source after they are transferred to the sink. **Note:** This option and delete_objects_unique_in_sink are mutually exclusive.
   final bool deleteObjectsFromSourceAfterTransfer;
-
   /// Whether objects that exist only in the sink should be deleted. **Note:** This option and delete_objects_from_source_after_transfer are mutually exclusive.
   final bool deleteObjectsUniqueInSink;
-
   /// Represents the selected metadata options for a transfer job.
   final MetadataOptionsResponse metadataOptions;
-
   /// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
   final bool overwriteObjectsAlreadyExistingInSink;
-
   /// When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
   final String overwriteWhen;
 
@@ -34,27 +30,23 @@ class TransferOptionsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['deleteObjectsFromSourceAfterTransfer'] =
-        deleteObjectsFromSourceAfterTransfer;
-    map['deleteObjectsUniqueInSink'] = deleteObjectsUniqueInSink;
-    map['metadataOptions'] = metadataOptions.toMap();
-    map['overwriteObjectsAlreadyExistingInSink'] =
-        overwriteObjectsAlreadyExistingInSink;
-    map['overwriteWhen'] = overwriteWhen;
-    return map;
+    return <String, dynamic>{
+      'deleteObjectsFromSourceAfterTransfer': deleteObjectsFromSourceAfterTransfer,
+      'deleteObjectsUniqueInSink': deleteObjectsUniqueInSink,
+      'metadataOptions': metadataOptions.toMap(),
+      'overwriteObjectsAlreadyExistingInSink': overwriteObjectsAlreadyExistingInSink,
+      'overwriteWhen': overwriteWhen,
+    };
   }
 
   factory TransferOptionsResponse.fromMap(Map<String, dynamic> map) {
     return TransferOptionsResponse(
-      deleteObjectsFromSourceAfterTransfer:
-          map['deleteObjectsFromSourceAfterTransfer'] as bool,
+      deleteObjectsFromSourceAfterTransfer: map['deleteObjectsFromSourceAfterTransfer'] as bool,
       deleteObjectsUniqueInSink: map['deleteObjectsUniqueInSink'] as bool,
-      metadataOptions: MetadataOptionsResponse.fromMap(
-          (map['metadataOptions'] as Map).cast<String, dynamic>()),
-      overwriteObjectsAlreadyExistingInSink:
-          map['overwriteObjectsAlreadyExistingInSink'] as bool,
+      metadataOptions: MetadataOptionsResponse.fromMap((map['metadataOptions'] as Map).cast<String, dynamic>()),
+      overwriteObjectsAlreadyExistingInSink: map['overwriteObjectsAlreadyExistingInSink'] as bool,
       overwriteWhen: map['overwriteWhen'] as String,
     );
   }
 }
+

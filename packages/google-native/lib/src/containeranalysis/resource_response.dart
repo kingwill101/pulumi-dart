@@ -6,10 +6,8 @@ import 'hash_response.dart';
 class ResourceResponse {
   /// The hash of the resource content. E.g., the Docker digest.
   final HashResponse contentHash;
-
   /// The name of the resource. E.g., the name of a Docker image - "Debian".
   final String name;
-
   /// The unique URI of the resource. E.g., "https://gcr.io/project/image@sha256:foo" for a Docker image.
   final String uri;
 
@@ -24,19 +22,19 @@ class ResourceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['contentHash'] = contentHash.toMap();
-    map['name'] = name;
-    map['uri'] = uri;
-    return map;
+    return <String, dynamic>{
+      'contentHash': contentHash.toMap(),
+      'name': name,
+      'uri': uri,
+    };
   }
 
   factory ResourceResponse.fromMap(Map<String, dynamic> map) {
     return ResourceResponse(
-      contentHash: HashResponse.fromMap(
-          (map['contentHash'] as Map).cast<String, dynamic>()),
+      contentHash: HashResponse.fromMap((map['contentHash'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       uri: map['uri'] as String,
     );
   }
 }
+

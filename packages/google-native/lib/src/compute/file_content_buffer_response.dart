@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FileContentBufferResponse {
   /// The raw content in the secure keys file.
   final String content;
-
   /// The file type of source file.
   final String fileType;
 
@@ -16,10 +16,10 @@ class FileContentBufferResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['content'] = content;
-    map['fileType'] = fileType;
-    return map;
+    return <String, dynamic>{
+      'content': content,
+      'fileType': fileType,
+    };
   }
 
   factory FileContentBufferResponse.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class FileContentBufferResponse {
     );
   }
 }
+

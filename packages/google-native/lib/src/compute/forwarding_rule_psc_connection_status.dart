@@ -15,7 +15,7 @@ enum ForwardingRulePscConnectionStatus {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown ForwardingRulePscConnectionStatus value: $value');
+    throw ArgumentError('Unknown ForwardingRulePscConnectionStatus value: $value');
   }
 }
+

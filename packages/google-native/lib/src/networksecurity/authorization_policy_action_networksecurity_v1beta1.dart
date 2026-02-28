@@ -7,14 +7,13 @@ enum AuthorizationPolicyActionNetworksecurityV1beta1 {
   const AuthorizationPolicyActionNetworksecurityV1beta1(this.value);
   final String value;
 
-  static AuthorizationPolicyActionNetworksecurityV1beta1 fromValue(
-      String value) {
+  static AuthorizationPolicyActionNetworksecurityV1beta1 fromValue(String value) {
     for (final item in AuthorizationPolicyActionNetworksecurityV1beta1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown AuthorizationPolicyActionNetworksecurityV1beta1 value: $value');
+    throw ArgumentError('Unknown AuthorizationPolicyActionNetworksecurityV1beta1 value: $value');
   }
 }
+

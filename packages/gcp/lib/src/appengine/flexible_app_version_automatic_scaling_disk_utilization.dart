@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FlexibleAppVersionAutomaticScalingDiskUtilization {
   /// Target bytes read per second.
   final int? targetReadBytesPerSecond;
-
   /// Target ops read per seconds.
   final int? targetReadOpsPerSecond;
-
   /// Target bytes written per second.
   final int? targetWriteBytesPerSecond;
-
   /// Target ops written per second.
   final int? targetWriteOpsPerSecond;
 
@@ -26,41 +24,21 @@ class FlexibleAppVersionAutomaticScalingDiskUtilization {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final targetReadBytesPerSecondValue = targetReadBytesPerSecond;
-    if (targetReadBytesPerSecondValue != null) {
-      map['targetReadBytesPerSecond'] = targetReadBytesPerSecondValue;
-    }
-    final targetReadOpsPerSecondValue = targetReadOpsPerSecond;
-    if (targetReadOpsPerSecondValue != null) {
-      map['targetReadOpsPerSecond'] = targetReadOpsPerSecondValue;
-    }
-    final targetWriteBytesPerSecondValue = targetWriteBytesPerSecond;
-    if (targetWriteBytesPerSecondValue != null) {
-      map['targetWriteBytesPerSecond'] = targetWriteBytesPerSecondValue;
-    }
-    final targetWriteOpsPerSecondValue = targetWriteOpsPerSecond;
-    if (targetWriteOpsPerSecondValue != null) {
-      map['targetWriteOpsPerSecond'] = targetWriteOpsPerSecondValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'targetReadBytesPerSecond': ?targetReadBytesPerSecond,
+      'targetReadOpsPerSecond': ?targetReadOpsPerSecond,
+      'targetWriteBytesPerSecond': ?targetWriteBytesPerSecond,
+      'targetWriteOpsPerSecond': ?targetWriteOpsPerSecond,
+    };
   }
 
-  factory FlexibleAppVersionAutomaticScalingDiskUtilization.fromMap(
-      Map<String, dynamic> map) {
+  factory FlexibleAppVersionAutomaticScalingDiskUtilization.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionAutomaticScalingDiskUtilization(
-      targetReadBytesPerSecond: map['targetReadBytesPerSecond'] == null
-          ? null
-          : map['targetReadBytesPerSecond'] as int,
-      targetReadOpsPerSecond: map['targetReadOpsPerSecond'] == null
-          ? null
-          : map['targetReadOpsPerSecond'] as int,
-      targetWriteBytesPerSecond: map['targetWriteBytesPerSecond'] == null
-          ? null
-          : map['targetWriteBytesPerSecond'] as int,
-      targetWriteOpsPerSecond: map['targetWriteOpsPerSecond'] == null
-          ? null
-          : map['targetWriteOpsPerSecond'] as int,
+      targetReadBytesPerSecond: map['targetReadBytesPerSecond'] == null ? null : map['targetReadBytesPerSecond'] as int,
+      targetReadOpsPerSecond: map['targetReadOpsPerSecond'] == null ? null : map['targetReadOpsPerSecond'] as int,
+      targetWriteBytesPerSecond: map['targetWriteBytesPerSecond'] == null ? null : map['targetWriteBytesPerSecond'] as int,
+      targetWriteOpsPerSecond: map['targetWriteOpsPerSecond'] == null ? null : map['targetWriteOpsPerSecond'] as int,
     );
   }
 }
+

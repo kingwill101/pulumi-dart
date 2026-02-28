@@ -15,19 +15,15 @@ class AuthorizationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['adminUsers'] =
-        pulumi.Input.encodeList<ClusterUserResponse, Map<String, dynamic>>(
-            adminUsers, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'adminUsers': pulumi.Input.encodeList<ClusterUserResponse, Map<String, dynamic>>(adminUsers, (value) => value.toMap()),
+    };
   }
 
   factory AuthorizationResponse.fromMap(Map<String, dynamic> map) {
     return AuthorizationResponse(
-      adminUsers: pulumi.Input.decodeList<ClusterUserResponse>(
-          map['adminUsers'],
-          (value) => ClusterUserResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      adminUsers: pulumi.Input.decodeList<ClusterUserResponse>(map['adminUsers'], (value) => ClusterUserResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

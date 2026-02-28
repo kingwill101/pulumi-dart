@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDataSetRowLevelPermissionDataSet {
   final String arn;
   final String formatVersion;
@@ -22,17 +23,16 @@ class GetDataSetRowLevelPermissionDataSet {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['formatVersion'] = formatVersion;
-    map['namespace'] = namespace;
-    map['permissionPolicy'] = permissionPolicy;
-    map['status'] = status;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'formatVersion': formatVersion,
+      'namespace': namespace,
+      'permissionPolicy': permissionPolicy,
+      'status': status,
+    };
   }
 
-  factory GetDataSetRowLevelPermissionDataSet.fromMap(
-      Map<String, dynamic> map) {
+  factory GetDataSetRowLevelPermissionDataSet.fromMap(Map<String, dynamic> map) {
     return GetDataSetRowLevelPermissionDataSet(
       arn: map['arn'] as String,
       formatVersion: map['formatVersion'] as String,
@@ -42,3 +42,4 @@ class GetDataSetRowLevelPermissionDataSet {
     );
   }
 }
+

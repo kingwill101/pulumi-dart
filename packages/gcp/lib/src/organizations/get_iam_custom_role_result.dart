@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getIamCustomRole.
 class GetIamCustomRoleResult {
   final bool deleted;
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -37,17 +37,17 @@ class GetIamCustomRoleResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['deleted'] = deleted;
-    map['description'] = description;
-    map['id'] = id;
-    map['name'] = name;
-    map['orgId'] = orgId;
-    map['permissions'] = permissions;
-    map['roleId'] = roleId;
-    map['stage'] = stage;
-    map['title'] = title;
-    return map;
+    return <String, dynamic>{
+      'deleted': deleted,
+      'description': description,
+      'id': id,
+      'name': name,
+      'orgId': orgId,
+      'permissions': permissions,
+      'roleId': roleId,
+      'stage': stage,
+      'title': title,
+    };
   }
 
   factory GetIamCustomRoleResult.fromMap(Map<String, dynamic> map) {
@@ -64,3 +64,4 @@ class GetIamCustomRoleResult {
     );
   }
 }
+

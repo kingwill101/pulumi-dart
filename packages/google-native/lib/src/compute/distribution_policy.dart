@@ -7,7 +7,6 @@ import 'distribution_policy_zone_configuration.dart';
 class DistributionPolicy {
   /// The distribution shape to which the group converges either proactively or on resize events (depending on the value set in updatePolicy.instanceRedistributionType).
   final DistributionPolicyTargetShape? targetShape;
-
   /// Zones where the regional managed instance group will create and manage its instances.
   final List<DistributionPolicyZoneConfiguration>? zones;
 
@@ -20,32 +19,17 @@ class DistributionPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final targetShapeValue = targetShape;
-    if (targetShapeValue != null) {
-      map['targetShape'] = targetShapeValue.value;
-    }
-    final zonesValue = zones;
-    if (zonesValue != null) {
-      map['zones'] = pulumi.Input.encodeList<
-          DistributionPolicyZoneConfiguration,
-          Map<String, dynamic>>(zonesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'targetShape': ?targetShape == null ? null : targetShape!.value,
+      'zones': ?zones == null ? null : pulumi.Input.encodeList<DistributionPolicyZoneConfiguration, Map<String, dynamic>>(zones!, (value) => value.toMap()),
+    };
   }
 
   factory DistributionPolicy.fromMap(Map<String, dynamic> map) {
     return DistributionPolicy(
-      targetShape: map['targetShape'] == null
-          ? null
-          : DistributionPolicyTargetShape.fromValue(
-              map['targetShape'] as String),
-      zones: map['zones'] == null
-          ? null
-          : pulumi.Input.decodeList<DistributionPolicyZoneConfiguration>(
-              map['zones'],
-              (value) => DistributionPolicyZoneConfiguration.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      targetShape: map['targetShape'] == null ? null : DistributionPolicyTargetShape.fromValue(map['targetShape'] as String),
+      zones: map['zones'] == null ? null : pulumi.Input.decodeList<DistributionPolicyZoneConfiguration>(map['zones'], (value) => DistributionPolicyZoneConfiguration.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

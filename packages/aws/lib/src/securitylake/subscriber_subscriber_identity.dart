@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SubscriberSubscriberIdentity {
   /// The AWS Regions where Security Lake is automatically enabled.
   final String externalId;
-
   /// Provides encryption details of Amazon Security Lake object.
   final String principal;
 
@@ -16,10 +16,10 @@ class SubscriberSubscriberIdentity {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['externalId'] = externalId;
-    map['principal'] = principal;
-    return map;
+    return <String, dynamic>{
+      'externalId': externalId,
+      'principal': principal,
+    };
   }
 
   factory SubscriberSubscriberIdentity.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class SubscriberSubscriberIdentity {
     );
   }
 }
+

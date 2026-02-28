@@ -1,42 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceGroupManagerActionsSummaryResponseComputeBeta {
   /// The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it.
   final int abandoning;
-
   /// The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully. If you have disabled creation retries, this field will not be populated; instead, the creatingWithoutRetries field will be populated.
   final int creating;
-
   /// The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
   final int creatingWithoutRetries;
-
   /// The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted.
   final int deleting;
-
   /// The number of instances in the managed instance group that are running and have no scheduled actions.
   final int none;
-
   /// The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template.
   final int recreating;
-
   /// The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance.
   final int refreshing;
-
   /// The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.
   final int restarting;
-
   /// The number of instances in the managed instance group that are scheduled to be resumed or are currently being resumed.
   final int resuming;
-
   /// The number of instances in the managed instance group that are scheduled to be started or are currently being started.
   final int starting;
-
   /// The number of instances in the managed instance group that are scheduled to be stopped or are currently being stopped.
   final int stopping;
-
   /// The number of instances in the managed instance group that are scheduled to be suspended or are currently being suspended.
   final int suspending;
-
   /// The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
   final int verifying;
 
@@ -71,25 +60,24 @@ class InstanceGroupManagerActionsSummaryResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['abandoning'] = abandoning;
-    map['creating'] = creating;
-    map['creatingWithoutRetries'] = creatingWithoutRetries;
-    map['deleting'] = deleting;
-    map['none'] = none;
-    map['recreating'] = recreating;
-    map['refreshing'] = refreshing;
-    map['restarting'] = restarting;
-    map['resuming'] = resuming;
-    map['starting'] = starting;
-    map['stopping'] = stopping;
-    map['suspending'] = suspending;
-    map['verifying'] = verifying;
-    return map;
+    return <String, dynamic>{
+      'abandoning': abandoning,
+      'creating': creating,
+      'creatingWithoutRetries': creatingWithoutRetries,
+      'deleting': deleting,
+      'none': none,
+      'recreating': recreating,
+      'refreshing': refreshing,
+      'restarting': restarting,
+      'resuming': resuming,
+      'starting': starting,
+      'stopping': stopping,
+      'suspending': suspending,
+      'verifying': verifying,
+    };
   }
 
-  factory InstanceGroupManagerActionsSummaryResponseComputeBeta.fromMap(
-      Map<String, dynamic> map) {
+  factory InstanceGroupManagerActionsSummaryResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerActionsSummaryResponseComputeBeta(
       abandoning: map['abandoning'] as int,
       creating: map['creating'] as int,
@@ -107,3 +95,4 @@ class InstanceGroupManagerActionsSummaryResponseComputeBeta {
     );
   }
 }
+

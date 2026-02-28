@@ -5,12 +5,9 @@ import 'connector_profile_connector_profile_config_connector_profile_credentials
 
 class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoData {
   /// The SAPOData basic authentication credentials.
-  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataBasicAuthCredentials?
-      basicAuthCredentials;
-
+  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataBasicAuthCredentials? basicAuthCredentials;
   /// The SAPOData OAuth type authentication credentials.
-  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentials?
-      oauthCredentials;
+  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentials? oauthCredentials;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoData].
   /// [basicAuthCredentials] The SAPOData basic authentication credentials.
@@ -21,31 +18,17 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoData 
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final basicAuthCredentialsValue = basicAuthCredentials;
-    if (basicAuthCredentialsValue != null) {
-      map['basicAuthCredentials'] = basicAuthCredentialsValue.toMap();
-    }
-    final oauthCredentialsValue = oauthCredentials;
-    if (oauthCredentialsValue != null) {
-      map['oauthCredentials'] = oauthCredentialsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'basicAuthCredentials': ?basicAuthCredentials == null ? null : basicAuthCredentials!.toMap(),
+      'oauthCredentials': ?oauthCredentials == null ? null : oauthCredentials!.toMap(),
+    };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoData.fromMap(
-      Map<String, dynamic> map) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoData.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoData(
-      basicAuthCredentials: map['basicAuthCredentials'] == null
-          ? null
-          : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataBasicAuthCredentials
-              .fromMap(
-                  (map['basicAuthCredentials'] as Map).cast<String, dynamic>()),
-      oauthCredentials: map['oauthCredentials'] == null
-          ? null
-          : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentials
-              .fromMap(
-                  (map['oauthCredentials'] as Map).cast<String, dynamic>()),
+      basicAuthCredentials: map['basicAuthCredentials'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataBasicAuthCredentials.fromMap((map['basicAuthCredentials'] as Map).cast<String, dynamic>()),
+      oauthCredentials: map['oauthCredentials'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentials.fromMap((map['oauthCredentials'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

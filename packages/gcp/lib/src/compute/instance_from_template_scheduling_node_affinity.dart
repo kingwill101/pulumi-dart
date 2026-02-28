@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceFromTemplateSchedulingNodeAffinity {
   final String key;
   final String operator;
@@ -16,15 +17,14 @@ class InstanceFromTemplateSchedulingNodeAffinity {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    map['operator'] = operator;
-    map['values'] = values;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'operator': operator,
+      'values': values,
+    };
   }
 
-  factory InstanceFromTemplateSchedulingNodeAffinity.fromMap(
-      Map<String, dynamic> map) {
+  factory InstanceFromTemplateSchedulingNodeAffinity.fromMap(Map<String, dynamic> map) {
     return InstanceFromTemplateSchedulingNodeAffinity(
       key: map['key'] as String,
       operator: map['operator'] as String,
@@ -32,3 +32,4 @@ class InstanceFromTemplateSchedulingNodeAffinity {
     );
   }
 }
+

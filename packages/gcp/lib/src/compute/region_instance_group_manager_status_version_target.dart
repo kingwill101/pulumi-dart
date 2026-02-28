@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RegionInstanceGroupManagerStatusVersionTarget {
   /// A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
   final bool? isReached;
@@ -11,18 +12,15 @@ class RegionInstanceGroupManagerStatusVersionTarget {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final isReachedValue = isReached;
-    if (isReachedValue != null) {
-      map['isReached'] = isReachedValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'isReached': ?isReached,
+    };
   }
 
-  factory RegionInstanceGroupManagerStatusVersionTarget.fromMap(
-      Map<String, dynamic> map) {
+  factory RegionInstanceGroupManagerStatusVersionTarget.fromMap(Map<String, dynamic> map) {
     return RegionInstanceGroupManagerStatusVersionTarget(
       isReached: map['isReached'] == null ? null : map['isReached'] as bool,
     );
   }
 }
+

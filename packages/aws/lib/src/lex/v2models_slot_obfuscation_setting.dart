@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class V2modelsSlotObfuscationSetting {
   /// Whether Amazon Lex obscures slot values in conversation logs. Valid values are `DefaultObfuscation` and `None`.
   final String obfuscationSettingType;
@@ -11,9 +12,9 @@ class V2modelsSlotObfuscationSetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['obfuscationSettingType'] = obfuscationSettingType;
-    return map;
+    return <String, dynamic>{
+      'obfuscationSettingType': obfuscationSettingType,
+    };
   }
 
   factory V2modelsSlotObfuscationSetting.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class V2modelsSlotObfuscationSetting {
     );
   }
 }
+

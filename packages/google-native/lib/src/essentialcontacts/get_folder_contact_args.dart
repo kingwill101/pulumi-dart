@@ -16,14 +16,15 @@ class GetFolderContactArgs {
   GetFolderContactArgs({
     required String contactId,
     required String folderId,
-  })  : contactId = pulumi.Input.asInput<String>(contactId),
-        folderId = pulumi.Input.asInput<String>(folderId);
+  }) :
+      contactId = pulumi.Input.asInput<String>(contactId),
+      folderId = pulumi.Input.asInput<String>(folderId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['contactId'] = contactId;
-    map['folderId'] = folderId;
-    return map;
+    return <String, dynamic>{
+      'contactId': contactId,
+      'folderId': folderId,
+    };
   }
 
   factory GetFolderContactArgs.fromMap(Map<String, dynamic> map) {
@@ -33,3 +34,4 @@ class GetFolderContactArgs {
     );
   }
 }
+

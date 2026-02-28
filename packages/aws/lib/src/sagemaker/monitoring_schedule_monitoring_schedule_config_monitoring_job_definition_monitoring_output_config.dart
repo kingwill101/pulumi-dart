@@ -5,10 +5,8 @@ import 'monitoring_schedule_monitoring_schedule_config_monitoring_job_definition
 class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringOutputConfig {
   /// AWS KMS key that Amazon SageMaker AI uses to encrypt the model artifacts at rest using Amazon S3 server-side encryption.
   final String? kmsKeyId;
-
   /// Monitoring outputs for monitoring jobs. Fields are documented below.
-  final MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringOutputConfigMonitoringOutputs
-      monitoringOutputs;
+  final MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringOutputConfigMonitoringOutputs monitoringOutputs;
 
   /// Creates a new [MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringOutputConfig].
   /// [kmsKeyId] AWS KMS key that Amazon SageMaker AI uses to encrypt the model artifacts at rest using Amazon S3 server-side encryption.
@@ -19,23 +17,17 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitorin
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final kmsKeyIdValue = kmsKeyId;
-    if (kmsKeyIdValue != null) {
-      map['kmsKeyId'] = kmsKeyIdValue;
-    }
-    map['monitoringOutputs'] = monitoringOutputs.toMap();
-    return map;
+    return <String, dynamic>{
+      'kmsKeyId': ?kmsKeyId,
+      'monitoringOutputs': monitoringOutputs.toMap(),
+    };
   }
 
-  factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringOutputConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringOutputConfig.fromMap(Map<String, dynamic> map) {
     return MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringOutputConfig(
       kmsKeyId: map['kmsKeyId'] == null ? null : map['kmsKeyId'] as String,
-      monitoringOutputs:
-          MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringOutputConfigMonitoringOutputs
-              .fromMap(
-                  (map['monitoringOutputs'] as Map).cast<String, dynamic>()),
+      monitoringOutputs: MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringOutputConfigMonitoringOutputs.fromMap((map['monitoringOutputs'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -14,20 +14,15 @@ class VmwareControlPlaneV2Config {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final controlPlaneIpBlockValue = controlPlaneIpBlock;
-    if (controlPlaneIpBlockValue != null) {
-      map['controlPlaneIpBlock'] = controlPlaneIpBlockValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'controlPlaneIpBlock': ?controlPlaneIpBlock == null ? null : controlPlaneIpBlock!.toMap(),
+    };
   }
 
   factory VmwareControlPlaneV2Config.fromMap(Map<String, dynamic> map) {
     return VmwareControlPlaneV2Config(
-      controlPlaneIpBlock: map['controlPlaneIpBlock'] == null
-          ? null
-          : VmwareIpBlock.fromMap(
-              (map['controlPlaneIpBlock'] as Map).cast<String, dynamic>()),
+      controlPlaneIpBlock: map['controlPlaneIpBlock'] == null ? null : VmwareIpBlock.fromMap((map['controlPlaneIpBlock'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

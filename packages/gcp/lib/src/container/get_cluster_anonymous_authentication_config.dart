@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterAnonymousAuthenticationConfig {
   /// Setting this to LIMITED will restrict authentication of anonymous users to health check endpoints only.
   /// Accepted values are:
@@ -14,15 +15,15 @@ class GetClusterAnonymousAuthenticationConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['mode'] = mode;
-    return map;
+    return <String, dynamic>{
+      'mode': mode,
+    };
   }
 
-  factory GetClusterAnonymousAuthenticationConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GetClusterAnonymousAuthenticationConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterAnonymousAuthenticationConfig(
       mode: map['mode'] as String,
     );
   }
 }
+

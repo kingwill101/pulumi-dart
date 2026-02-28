@@ -14,20 +14,15 @@ class PythonRepository {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final publicRepositoryValue = publicRepository;
-    if (publicRepositoryValue != null) {
-      map['publicRepository'] = publicRepositoryValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'publicRepository': ?publicRepository == null ? null : publicRepository!.value,
+    };
   }
 
   factory PythonRepository.fromMap(Map<String, dynamic> map) {
     return PythonRepository(
-      publicRepository: map['publicRepository'] == null
-          ? null
-          : PythonRepositoryPublicRepository.fromValue(
-              map['publicRepository'] as String),
+      publicRepository: map['publicRepository'] == null ? null : PythonRepositoryPublicRepository.fromValue(map['publicRepository'] as String),
     );
   }
 }
+

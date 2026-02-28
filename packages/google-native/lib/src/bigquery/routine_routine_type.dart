@@ -18,3 +18,4 @@ enum RoutineRoutineType {
     throw ArgumentError('Unknown RoutineRoutineType value: $value');
   }
 }
+

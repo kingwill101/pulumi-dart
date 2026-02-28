@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A resource that reports the errors encountered while processing an import job.
 class ImportErrorResponse {
   /// The error information.
   final String errorDetails;
-
   /// The severity of the error.
   final String severity;
 
@@ -17,10 +17,10 @@ class ImportErrorResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['errorDetails'] = errorDetails;
-    map['severity'] = severity;
-    return map;
+    return <String, dynamic>{
+      'errorDetails': errorDetails,
+      'severity': severity,
+    };
   }
 
   factory ImportErrorResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class ImportErrorResponse {
     );
   }
 }
+

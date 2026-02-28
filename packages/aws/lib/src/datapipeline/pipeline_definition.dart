@@ -444,22 +444,15 @@ import 'pipeline_definition_pipeline_object.dart';
 /// ```
 class PipelineDefinition extends pulumi.CustomResource {
   /// Configuration block for the parameter objects used in the pipeline definition. See below
-  late final pulumi.Output<List<PipelineDefinitionParameterObject>?>
-      parameterObjects;
-
+  late final pulumi.Output<List<PipelineDefinitionParameterObject>?> parameterObjects;
   /// Configuration block for the parameter values used in the pipeline definition. See below
-  late final pulumi.Output<List<PipelineDefinitionParameterValue>?>
-      parameterValues;
-
+  late final pulumi.Output<List<PipelineDefinitionParameterValue>?> parameterValues;
   /// ID of the pipeline.
   late final pulumi.Output<String> pipelineId;
-
   /// Configuration block for the objects that define the pipeline. See below
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<List<PipelineDefinitionPipelineObject>>
-      pipelineObjects;
-
+  late final pulumi.Output<List<PipelineDefinitionPipelineObject>> pipelineObjects;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -477,16 +470,10 @@ class PipelineDefinition extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.parameterObjects =
-        registerOutput<List<PipelineDefinitionParameterObject>?>(
-            'parameterObjects');
-    this.parameterValues =
-        registerOutput<List<PipelineDefinitionParameterValue>?>(
-            'parameterValues');
+    this.parameterObjects = registerOutput<List<PipelineDefinitionParameterObject>?>('parameterObjects');
+    this.parameterValues = registerOutput<List<PipelineDefinitionParameterValue>?>('parameterValues');
     this.pipelineId = registerOutput<String>('pipelineId');
-    this.pipelineObjects =
-        registerOutput<List<PipelineDefinitionPipelineObject>>(
-            'pipelineObjects');
+    this.pipelineObjects = registerOutput<List<PipelineDefinitionPipelineObject>>('pipelineObjects');
     this.region = registerOutput<String>('region');
   }
 }

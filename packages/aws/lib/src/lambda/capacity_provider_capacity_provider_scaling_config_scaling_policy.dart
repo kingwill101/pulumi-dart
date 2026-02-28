@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CapacityProviderCapacityProviderScalingConfigScalingPolicy {
   /// The predefined metric type for the scaling policy. Valid values are `"LambdaCapacityProviderAverageCPUUtilization"`.
   final String predefinedMetricType;
-
   /// The target value for the scaling policy.
   final double targetValue;
 
@@ -16,17 +16,17 @@ class CapacityProviderCapacityProviderScalingConfigScalingPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['predefinedMetricType'] = predefinedMetricType;
-    map['targetValue'] = targetValue;
-    return map;
+    return <String, dynamic>{
+      'predefinedMetricType': predefinedMetricType,
+      'targetValue': targetValue,
+    };
   }
 
-  factory CapacityProviderCapacityProviderScalingConfigScalingPolicy.fromMap(
-      Map<String, dynamic> map) {
+  factory CapacityProviderCapacityProviderScalingConfigScalingPolicy.fromMap(Map<String, dynamic> map) {
     return CapacityProviderCapacityProviderScalingConfigScalingPolicy(
       predefinedMetricType: map['predefinedMetricType'] as String,
       targetValue: map['targetValue'] as double,
     );
   }
 }
+

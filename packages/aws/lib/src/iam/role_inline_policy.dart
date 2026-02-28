@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RoleInlinePolicy {
   /// Name of the role policy.
   final String? name;
-
   /// Policy document as a JSON formatted string.
   final String? policy;
 
@@ -16,16 +16,10 @@ class RoleInlinePolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final policyValue = policy;
-    if (policyValue != null) {
-      map['policy'] = policyValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+      'policy': ?policy,
+    };
   }
 
   factory RoleInlinePolicy.fromMap(Map<String, dynamic> map) {
@@ -35,3 +29,4 @@ class RoleInlinePolicy {
     );
   }
 }
+

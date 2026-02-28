@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRouterConfigurationRouter {
   /// Router platform
   final String platform;
-
   /// ID of the Router Type. For example: `CiscoSystemsInc-2900SeriesRouters-IOS124`
   ///
   /// There is currently no AWS API to retrieve the full list of `router_type_identifier` values. Here is a list of known `RouterType` objects that can be used:
@@ -23,13 +23,10 @@ class GetRouterConfigurationRouter {
   /// }
   /// ```
   final String routerTypeIdentifier;
-
   /// Router operating system
   final String software;
-
   /// Router vendor
   final String vendor;
-
   /// Router XSLT Template Name
   final String xsltTemplateName;
   final String xsltTemplateNameForMacSec;
@@ -51,14 +48,14 @@ class GetRouterConfigurationRouter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['platform'] = platform;
-    map['routerTypeIdentifier'] = routerTypeIdentifier;
-    map['software'] = software;
-    map['vendor'] = vendor;
-    map['xsltTemplateName'] = xsltTemplateName;
-    map['xsltTemplateNameForMacSec'] = xsltTemplateNameForMacSec;
-    return map;
+    return <String, dynamic>{
+      'platform': platform,
+      'routerTypeIdentifier': routerTypeIdentifier,
+      'software': software,
+      'vendor': vendor,
+      'xsltTemplateName': xsltTemplateName,
+      'xsltTemplateNameForMacSec': xsltTemplateNameForMacSec,
+    };
   }
 
   factory GetRouterConfigurationRouter.fromMap(Map<String, dynamic> map) {
@@ -72,3 +69,4 @@ class GetRouterConfigurationRouter {
     );
   }
 }
+

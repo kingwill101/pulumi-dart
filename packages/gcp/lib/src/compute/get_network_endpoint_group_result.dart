@@ -1,29 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getNetworkEndpointGroup.
 class GetNetworkEndpointGroupResult {
   /// The NEG default port.
   final int defaultPort;
-
   /// The NEG description.
   final String description;
   final int generatedId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? name;
-
   /// The network to which all network endpoints in the NEG belong.
   final String network;
-
   /// Type of network endpoints in this network endpoint group.
   final String networkEndpointType;
   final String? project;
   final String? selfLink;
-
   /// Number of network endpoints in the network endpoint group.
   final int size;
-
   /// subnetwork to which all network endpoints in the NEG belong.
   final String subnetwork;
   final String? zone;
@@ -57,32 +52,20 @@ class GetNetworkEndpointGroupResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['defaultPort'] = defaultPort;
-    map['description'] = description;
-    map['generatedId'] = generatedId;
-    map['id'] = id;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    map['network'] = network;
-    map['networkEndpointType'] = networkEndpointType;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final selfLinkValue = selfLink;
-    if (selfLinkValue != null) {
-      map['selfLink'] = selfLinkValue;
-    }
-    map['size'] = size;
-    map['subnetwork'] = subnetwork;
-    final zoneValue = zone;
-    if (zoneValue != null) {
-      map['zone'] = zoneValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'defaultPort': defaultPort,
+      'description': description,
+      'generatedId': generatedId,
+      'id': id,
+      'name': ?name,
+      'network': network,
+      'networkEndpointType': networkEndpointType,
+      'project': ?project,
+      'selfLink': ?selfLink,
+      'size': size,
+      'subnetwork': subnetwork,
+      'zone': ?zone,
+    };
   }
 
   factory GetNetworkEndpointGroupResult.fromMap(Map<String, dynamic> map) {
@@ -102,3 +85,4 @@ class GetNetworkEndpointGroupResult {
     );
   }
 }
+

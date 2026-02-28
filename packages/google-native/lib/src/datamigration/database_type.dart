@@ -7,7 +7,6 @@ import 'database_type_provider.dart';
 class DatabaseType {
   /// The database engine.
   final DatabaseTypeEngine? engine;
-
   /// The database provider.
   final DatabaseTypeProvider? provider;
 
@@ -20,26 +19,17 @@ class DatabaseType {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final engineValue = engine;
-    if (engineValue != null) {
-      map['engine'] = engineValue.value;
-    }
-    final providerValue = provider;
-    if (providerValue != null) {
-      map['provider'] = providerValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'engine': ?engine == null ? null : engine!.value,
+      'provider': ?provider == null ? null : provider!.value,
+    };
   }
 
   factory DatabaseType.fromMap(Map<String, dynamic> map) {
     return DatabaseType(
-      engine: map['engine'] == null
-          ? null
-          : DatabaseTypeEngine.fromValue(map['engine'] as String),
-      provider: map['provider'] == null
-          ? null
-          : DatabaseTypeProvider.fromValue(map['provider'] as String),
+      engine: map['engine'] == null ? null : DatabaseTypeEngine.fromValue(map['engine'] as String),
+      provider: map['provider'] == null ? null : DatabaseTypeProvider.fromValue(map['provider'] as String),
     );
   }
 }
+

@@ -14,15 +14,15 @@ class GlossaryInputConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gcsSource'] = gcsSource.toMap();
-    return map;
+    return <String, dynamic>{
+      'gcsSource': gcsSource.toMap(),
+    };
   }
 
   factory GlossaryInputConfig.fromMap(Map<String, dynamic> map) {
     return GlossaryInputConfig(
-      gcsSource:
-          GcsSource.fromMap((map['gcsSource'] as Map).cast<String, dynamic>()),
+      gcsSource: GcsSource.fromMap((map['gcsSource'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

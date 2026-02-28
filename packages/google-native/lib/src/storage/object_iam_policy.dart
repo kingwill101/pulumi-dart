@@ -9,23 +9,17 @@ class ObjectIamPolicy extends pulumi.CustomResource {
   /// An association between a role, which comes with a set of permissions, and members who may assume that role.
   late final pulumi.Output<List<ObjectIamPolicyBindingsItemResponse>> bindings;
   late final pulumi.Output<String> bucket;
-
   /// HTTP 1.1  Entity tag for the policy.
   late final pulumi.Output<String> etag;
-
   /// If present, selects a specific revision of this object (as opposed to the latest version, the default).
   late final pulumi.Output<String?> generation;
-
   /// The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
   late final pulumi.Output<String> kind;
   late final pulumi.Output<String> object;
-
   /// The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, projects/_/buckets/bucket/objects/object for objects, and projects/_/buckets/bucket/managedFolders/managedFolder. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
   late final pulumi.Output<String> resourceId;
-
   /// The project to be billed for this request. Required for Requester Pays buckets.
   late final pulumi.Output<String?> userProject;
-
   /// The IAM policy format version.
   late final pulumi.Output<int> version;
 
@@ -43,8 +37,7 @@ class ObjectIamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.bindings =
-        registerOutput<List<ObjectIamPolicyBindingsItemResponse>>('bindings');
+    this.bindings = registerOutput<List<ObjectIamPolicyBindingsItemResponse>>('bindings');
     this.bucket = registerOutput<String>('bucket');
     this.etag = registerOutput<String>('etag');
     this.generation = registerOutput<String?>('generation');

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class OpenZfsVolumeOriginSnapshot {
   /// Specifies the strategy used when copying data from the snapshot to the new volume. Valid values are `CLONE`, `FULL_COPY`, `INCREMENTAL_COPY`.
   final String copyStrategy;
-
   /// The Amazon Resource Name (ARN) of the origin snapshot.
   final String snapshotArn;
 
@@ -16,10 +16,10 @@ class OpenZfsVolumeOriginSnapshot {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['copyStrategy'] = copyStrategy;
-    map['snapshotArn'] = snapshotArn;
-    return map;
+    return <String, dynamic>{
+      'copyStrategy': copyStrategy,
+      'snapshotArn': snapshotArn,
+    };
   }
 
   factory OpenZfsVolumeOriginSnapshot.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class OpenZfsVolumeOriginSnapshot {
     );
   }
 }
+

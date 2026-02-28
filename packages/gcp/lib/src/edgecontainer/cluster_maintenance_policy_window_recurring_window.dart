@@ -7,7 +7,6 @@ class ClusterMaintenancePolicyWindowRecurringWindow {
   /// this window recurs. They go on for the span of time between the start and
   /// end time.
   final String? recurrence;
-
   /// Represents an arbitrary window of time.
   /// Structure is documented below.
   final ClusterMaintenancePolicyWindowRecurringWindowWindow? window;
@@ -21,27 +20,17 @@ class ClusterMaintenancePolicyWindowRecurringWindow {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final recurrenceValue = recurrence;
-    if (recurrenceValue != null) {
-      map['recurrence'] = recurrenceValue;
-    }
-    final windowValue = window;
-    if (windowValue != null) {
-      map['window'] = windowValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'recurrence': ?recurrence,
+      'window': ?window == null ? null : window!.toMap(),
+    };
   }
 
-  factory ClusterMaintenancePolicyWindowRecurringWindow.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterMaintenancePolicyWindowRecurringWindow.fromMap(Map<String, dynamic> map) {
     return ClusterMaintenancePolicyWindowRecurringWindow(
-      recurrence:
-          map['recurrence'] == null ? null : map['recurrence'] as String,
-      window: map['window'] == null
-          ? null
-          : ClusterMaintenancePolicyWindowRecurringWindowWindow.fromMap(
-              (map['window'] as Map).cast<String, dynamic>()),
+      recurrence: map['recurrence'] == null ? null : map['recurrence'] as String,
+      window: map['window'] == null ? null : ClusterMaintenancePolicyWindowRecurringWindowWindow.fromMap((map['window'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

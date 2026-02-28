@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Evaluates whether each column value matches a specified regex.
 class GoogleCloudDataplexV1DataQualityRuleRegexExpectation {
   /// Optional. A regular expression the column value is expected to match.
@@ -12,18 +13,15 @@ class GoogleCloudDataplexV1DataQualityRuleRegexExpectation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final regexValue = regex;
-    if (regexValue != null) {
-      map['regex'] = regexValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'regex': ?regex,
+    };
   }
 
-  factory GoogleCloudDataplexV1DataQualityRuleRegexExpectation.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1DataQualityRuleRegexExpectation.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataQualityRuleRegexExpectation(
       regex: map['regex'] == null ? null : map['regex'] as String,
     );
   }
 }
+

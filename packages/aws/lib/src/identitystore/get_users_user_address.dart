@@ -1,27 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetUsersUserAddress {
   /// Country that this address is in.
   final String country;
-
   /// Name that is typically displayed when the name is shown for display.
   final String formatted;
-
   /// Address locality.
   final String locality;
-
   /// Postal code of the address.
   final String postalCode;
-
   /// When `true`, this is the primary phone number associated with the user.
   final bool primary;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final String region;
-
   /// Street of the address.
   final String streetAddress;
-
   /// Type of phone number.
   final String type;
 
@@ -46,16 +40,16 @@ class GetUsersUserAddress {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['country'] = country;
-    map['formatted'] = formatted;
-    map['locality'] = locality;
-    map['postalCode'] = postalCode;
-    map['primary'] = primary;
-    map['region'] = region;
-    map['streetAddress'] = streetAddress;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'country': country,
+      'formatted': formatted,
+      'locality': locality,
+      'postalCode': postalCode,
+      'primary': primary,
+      'region': region,
+      'streetAddress': streetAddress,
+      'type': type,
+    };
   }
 
   factory GetUsersUserAddress.fromMap(Map<String, dynamic> map) {
@@ -71,3 +65,4 @@ class GetUsersUserAddress {
     );
   }
 }
+

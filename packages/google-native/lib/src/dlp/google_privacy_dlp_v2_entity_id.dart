@@ -14,20 +14,15 @@ class GooglePrivacyDlpV2EntityId {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final fieldValue = field;
-    if (fieldValue != null) {
-      map['field'] = fieldValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'field': ?field == null ? null : field!.toMap(),
+    };
   }
 
   factory GooglePrivacyDlpV2EntityId.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2EntityId(
-      field: map['field'] == null
-          ? null
-          : GooglePrivacyDlpV2FieldId.fromMap(
-              (map['field'] as Map).cast<String, dynamic>()),
+      field: map['field'] == null ? null : GooglePrivacyDlpV2FieldId.fromMap((map['field'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

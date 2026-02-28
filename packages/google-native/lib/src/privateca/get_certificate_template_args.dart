@@ -19,20 +19,17 @@ class GetCertificateTemplateArgs {
     required String certificateTemplateId,
     required String location,
     String? project,
-  })  : certificateTemplateId =
-            pulumi.Input.asInput<String>(certificateTemplateId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      certificateTemplateId = pulumi.Input.asInput<String>(certificateTemplateId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['certificateTemplateId'] = certificateTemplateId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'certificateTemplateId': certificateTemplateId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetCertificateTemplateArgs.fromMap(Map<String, dynamic> map) {
@@ -43,3 +40,4 @@ class GetCertificateTemplateArgs {
     );
   }
 }
+

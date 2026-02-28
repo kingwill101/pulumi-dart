@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Volume describes a Docker container volume which is mounted into build steps in order to persist files across build step execution.
 class VolumeResponse {
   /// Name of the volume to mount. Volume names must be unique per build step and must be valid names for Docker volumes. Each named volume must be used by at least two build steps.
   final String name;
-
   /// Path at which to mount the volume. Paths must be absolute and cannot conflict with other volume paths on the same build step or with certain reserved volume paths.
   final String path;
 
@@ -17,10 +17,10 @@ class VolumeResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['path'] = path;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'path': path,
+    };
   }
 
   factory VolumeResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class VolumeResponse {
     );
   }
 }
+

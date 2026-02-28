@@ -142,30 +142,21 @@ import 'secondary_network_timeouts.dart';
 class SecondaryNetwork extends pulumi.CustomResource {
   /// ARN of the secondary network.
   late final pulumi.Output<String> arn;
-
   /// IPv4 CIDR block for the secondary network. The CIDR block size must be between `/12` and `/28`.
   late final pulumi.Output<String> ipv4CidrBlock;
-
   /// A list of IPv4 CIDR block associations for the secondary network.
-  late final pulumi.Output<List<SecondaryNetworkIpv4CidrBlockAssociation>>
-      ipv4CidrBlockAssociations;
-
+  late final pulumi.Output<List<SecondaryNetworkIpv4CidrBlockAssociation>> ipv4CidrBlockAssociations;
   /// Type of secondary network. Currently only `rdma` is supported.
   late final pulumi.Output<String> networkType;
   late final pulumi.Output<String> ownerId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ID of the secondary network.
   late final pulumi.Output<String> secondaryNetworkId;
-
   /// State of the IPv4 CIDR block association.
   late final pulumi.Output<String> state;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<SecondaryNetworkTimeouts?> timeouts;
@@ -186,9 +177,7 @@ class SecondaryNetwork extends pulumi.CustomResource {
         ) {
     this.arn = registerOutput<String>('arn');
     this.ipv4CidrBlock = registerOutput<String>('ipv4CidrBlock');
-    this.ipv4CidrBlockAssociations =
-        registerOutput<List<SecondaryNetworkIpv4CidrBlockAssociation>>(
-            'ipv4CidrBlockAssociations');
+    this.ipv4CidrBlockAssociations = registerOutput<List<SecondaryNetworkIpv4CidrBlockAssociation>>('ipv4CidrBlockAssociations');
     this.networkType = registerOutput<String>('networkType');
     this.ownerId = registerOutput<String>('ownerId');
     this.region = registerOutput<String>('region');

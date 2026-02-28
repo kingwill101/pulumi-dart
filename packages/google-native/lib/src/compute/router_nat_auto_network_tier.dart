@@ -18,3 +18,4 @@ enum RouterNatAutoNetworkTier {
     throw ArgumentError('Unknown RouterNatAutoNetworkTier value: $value');
   }
 }
+

@@ -19,16 +19,17 @@ class GetInstanceAttachmentArgs {
     required String attachmentId,
     required String instanceId,
     required String organizationId,
-  })  : attachmentId = pulumi.Input.asInput<String>(attachmentId),
-        instanceId = pulumi.Input.asInput<String>(instanceId),
-        organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) :
+      attachmentId = pulumi.Input.asInput<String>(attachmentId),
+      instanceId = pulumi.Input.asInput<String>(instanceId),
+      organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['attachmentId'] = attachmentId;
-    map['instanceId'] = instanceId;
-    map['organizationId'] = organizationId;
-    return map;
+    return <String, dynamic>{
+      'attachmentId': attachmentId,
+      'instanceId': instanceId,
+      'organizationId': organizationId,
+    };
   }
 
   factory GetInstanceAttachmentArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +40,4 @@ class GetInstanceAttachmentArgs {
     );
   }
 }
+

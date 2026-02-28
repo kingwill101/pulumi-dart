@@ -14,20 +14,15 @@ class StreamRuleSetObjectFilter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final sourceObjectIdentifierValue = sourceObjectIdentifier;
-    if (sourceObjectIdentifierValue != null) {
-      map['sourceObjectIdentifier'] = sourceObjectIdentifierValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'sourceObjectIdentifier': ?sourceObjectIdentifier == null ? null : sourceObjectIdentifier!.toMap(),
+    };
   }
 
   factory StreamRuleSetObjectFilter.fromMap(Map<String, dynamic> map) {
     return StreamRuleSetObjectFilter(
-      sourceObjectIdentifier: map['sourceObjectIdentifier'] == null
-          ? null
-          : StreamRuleSetObjectFilterSourceObjectIdentifier.fromMap(
-              (map['sourceObjectIdentifier'] as Map).cast<String, dynamic>()),
+      sourceObjectIdentifier: map['sourceObjectIdentifier'] == null ? null : StreamRuleSetObjectFilterSourceObjectIdentifier.fromMap((map['sourceObjectIdentifier'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

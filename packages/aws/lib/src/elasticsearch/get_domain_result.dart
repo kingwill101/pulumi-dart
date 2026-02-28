@@ -16,69 +16,48 @@ import 'get_domain_vpc_option.dart';
 class GetDomainResult {
   /// The policy document attached to the domain.
   final String accessPolicies;
-
   /// Key-value string pairs to specify advanced configuration options.
   final Map<String, String> advancedOptions;
-
   /// Status of the Elasticsearch domain's advanced security options. The block consists of the following attributes:
   final List<GetDomainAdvancedSecurityOption> advancedSecurityOptions;
-
   /// The ARN of the domain.
   final String arn;
-
   /// Configuration of the Auto-Tune options of the domain.
   final List<GetDomainAutoTuneOption> autoTuneOptions;
-
   /// Cluster configuration of the domain.
   final List<GetDomainClusterConfig> clusterConfigs;
-
   /// Domain Amazon Cognito Authentication options for Kibana.
   final List<GetDomainCognitoOption> cognitoOptions;
-
   /// Status of the creation of the domain.
   final bool created;
-
   /// Status of the deletion of the domain.
   final bool deleted;
-
   /// Unique identifier for the domain.
   final String domainId;
   final String domainName;
-
   /// EBS Options for the instances in the domain.
   final List<GetDomainEbsOption> ebsOptions;
-
   /// Elasticsearch version for the domain.
   final String elasticsearchVersion;
-
   /// Domain encryption at rest related options.
   final List<GetDomainEncryptionAtRest> encryptionAtRests;
-
   /// Domain-specific endpoint used to submit index, search, and data upload requests.
   final String endpoint;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Domain-specific endpoint used to access the Kibana application.
   final String kibanaEndpoint;
-
   /// Domain log publishing related options.
   final List<GetDomainLogPublishingOption> logPublishingOptions;
-
   /// Domain in transit encryption related options.
   final List<GetDomainNodeToNodeEncryption> nodeToNodeEncryptions;
-
   /// Status of a configuration change in the domain.
   final bool processing;
   final String region;
-
   /// Domain snapshot related options.
   final List<GetDomainSnapshotOption> snapshotOptions;
-
   /// Tags assigned to the domain.
   final Map<String, String> tags;
-
   /// VPC Options for private Elasticsearch domains.
   final List<GetDomainVpcOption> vpcOptions;
 
@@ -135,113 +114,61 @@ class GetDomainResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accessPolicies'] = accessPolicies;
-    map['advancedOptions'] = advancedOptions;
-    map['advancedSecurityOptions'] = pulumi.Input.encodeList<
-            GetDomainAdvancedSecurityOption, Map<String, dynamic>>(
-        advancedSecurityOptions, (value) => value.toMap());
-    map['arn'] = arn;
-    map['autoTuneOptions'] =
-        pulumi.Input.encodeList<GetDomainAutoTuneOption, Map<String, dynamic>>(
-            autoTuneOptions, (value) => value.toMap());
-    map['clusterConfigs'] =
-        pulumi.Input.encodeList<GetDomainClusterConfig, Map<String, dynamic>>(
-            clusterConfigs, (value) => value.toMap());
-    map['cognitoOptions'] =
-        pulumi.Input.encodeList<GetDomainCognitoOption, Map<String, dynamic>>(
-            cognitoOptions, (value) => value.toMap());
-    map['created'] = created;
-    map['deleted'] = deleted;
-    map['domainId'] = domainId;
-    map['domainName'] = domainName;
-    map['ebsOptions'] =
-        pulumi.Input.encodeList<GetDomainEbsOption, Map<String, dynamic>>(
-            ebsOptions, (value) => value.toMap());
-    map['elasticsearchVersion'] = elasticsearchVersion;
-    map['encryptionAtRests'] = pulumi.Input.encodeList<
-        GetDomainEncryptionAtRest,
-        Map<String, dynamic>>(encryptionAtRests, (value) => value.toMap());
-    map['endpoint'] = endpoint;
-    map['id'] = id;
-    map['kibanaEndpoint'] = kibanaEndpoint;
-    map['logPublishingOptions'] = pulumi.Input.encodeList<
-        GetDomainLogPublishingOption,
-        Map<String, dynamic>>(logPublishingOptions, (value) => value.toMap());
-    map['nodeToNodeEncryptions'] = pulumi.Input.encodeList<
-        GetDomainNodeToNodeEncryption,
-        Map<String, dynamic>>(nodeToNodeEncryptions, (value) => value.toMap());
-    map['processing'] = processing;
-    map['region'] = region;
-    map['snapshotOptions'] =
-        pulumi.Input.encodeList<GetDomainSnapshotOption, Map<String, dynamic>>(
-            snapshotOptions, (value) => value.toMap());
-    map['tags'] = tags;
-    map['vpcOptions'] =
-        pulumi.Input.encodeList<GetDomainVpcOption, Map<String, dynamic>>(
-            vpcOptions, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'accessPolicies': accessPolicies,
+      'advancedOptions': advancedOptions,
+      'advancedSecurityOptions': pulumi.Input.encodeList<GetDomainAdvancedSecurityOption, Map<String, dynamic>>(advancedSecurityOptions, (value) => value.toMap()),
+      'arn': arn,
+      'autoTuneOptions': pulumi.Input.encodeList<GetDomainAutoTuneOption, Map<String, dynamic>>(autoTuneOptions, (value) => value.toMap()),
+      'clusterConfigs': pulumi.Input.encodeList<GetDomainClusterConfig, Map<String, dynamic>>(clusterConfigs, (value) => value.toMap()),
+      'cognitoOptions': pulumi.Input.encodeList<GetDomainCognitoOption, Map<String, dynamic>>(cognitoOptions, (value) => value.toMap()),
+      'created': created,
+      'deleted': deleted,
+      'domainId': domainId,
+      'domainName': domainName,
+      'ebsOptions': pulumi.Input.encodeList<GetDomainEbsOption, Map<String, dynamic>>(ebsOptions, (value) => value.toMap()),
+      'elasticsearchVersion': elasticsearchVersion,
+      'encryptionAtRests': pulumi.Input.encodeList<GetDomainEncryptionAtRest, Map<String, dynamic>>(encryptionAtRests, (value) => value.toMap()),
+      'endpoint': endpoint,
+      'id': id,
+      'kibanaEndpoint': kibanaEndpoint,
+      'logPublishingOptions': pulumi.Input.encodeList<GetDomainLogPublishingOption, Map<String, dynamic>>(logPublishingOptions, (value) => value.toMap()),
+      'nodeToNodeEncryptions': pulumi.Input.encodeList<GetDomainNodeToNodeEncryption, Map<String, dynamic>>(nodeToNodeEncryptions, (value) => value.toMap()),
+      'processing': processing,
+      'region': region,
+      'snapshotOptions': pulumi.Input.encodeList<GetDomainSnapshotOption, Map<String, dynamic>>(snapshotOptions, (value) => value.toMap()),
+      'tags': tags,
+      'vpcOptions': pulumi.Input.encodeList<GetDomainVpcOption, Map<String, dynamic>>(vpcOptions, (value) => value.toMap()),
+    };
   }
 
   factory GetDomainResult.fromMap(Map<String, dynamic> map) {
     return GetDomainResult(
       accessPolicies: map['accessPolicies'] as String,
       advancedOptions: (map['advancedOptions'] as Map).cast<String, String>(),
-      advancedSecurityOptions:
-          pulumi.Input.decodeList<GetDomainAdvancedSecurityOption>(
-              map['advancedSecurityOptions'],
-              (value) => GetDomainAdvancedSecurityOption.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      advancedSecurityOptions: pulumi.Input.decodeList<GetDomainAdvancedSecurityOption>(map['advancedSecurityOptions'], (value) => GetDomainAdvancedSecurityOption.fromMap((value as Map).cast<String, dynamic>())),
       arn: map['arn'] as String,
-      autoTuneOptions: pulumi.Input.decodeList<GetDomainAutoTuneOption>(
-          map['autoTuneOptions'],
-          (value) => GetDomainAutoTuneOption.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      clusterConfigs: pulumi.Input.decodeList<GetDomainClusterConfig>(
-          map['clusterConfigs'],
-          (value) => GetDomainClusterConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      cognitoOptions: pulumi.Input.decodeList<GetDomainCognitoOption>(
-          map['cognitoOptions'],
-          (value) => GetDomainCognitoOption.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      autoTuneOptions: pulumi.Input.decodeList<GetDomainAutoTuneOption>(map['autoTuneOptions'], (value) => GetDomainAutoTuneOption.fromMap((value as Map).cast<String, dynamic>())),
+      clusterConfigs: pulumi.Input.decodeList<GetDomainClusterConfig>(map['clusterConfigs'], (value) => GetDomainClusterConfig.fromMap((value as Map).cast<String, dynamic>())),
+      cognitoOptions: pulumi.Input.decodeList<GetDomainCognitoOption>(map['cognitoOptions'], (value) => GetDomainCognitoOption.fromMap((value as Map).cast<String, dynamic>())),
       created: map['created'] as bool,
       deleted: map['deleted'] as bool,
       domainId: map['domainId'] as String,
       domainName: map['domainName'] as String,
-      ebsOptions: pulumi.Input.decodeList<GetDomainEbsOption>(
-          map['ebsOptions'],
-          (value) => GetDomainEbsOption.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      ebsOptions: pulumi.Input.decodeList<GetDomainEbsOption>(map['ebsOptions'], (value) => GetDomainEbsOption.fromMap((value as Map).cast<String, dynamic>())),
       elasticsearchVersion: map['elasticsearchVersion'] as String,
-      encryptionAtRests: pulumi.Input.decodeList<GetDomainEncryptionAtRest>(
-          map['encryptionAtRests'],
-          (value) => GetDomainEncryptionAtRest.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      encryptionAtRests: pulumi.Input.decodeList<GetDomainEncryptionAtRest>(map['encryptionAtRests'], (value) => GetDomainEncryptionAtRest.fromMap((value as Map).cast<String, dynamic>())),
       endpoint: map['endpoint'] as String,
       id: map['id'] as String,
       kibanaEndpoint: map['kibanaEndpoint'] as String,
-      logPublishingOptions:
-          pulumi.Input.decodeList<GetDomainLogPublishingOption>(
-              map['logPublishingOptions'],
-              (value) => GetDomainLogPublishingOption.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      nodeToNodeEncryptions:
-          pulumi.Input.decodeList<GetDomainNodeToNodeEncryption>(
-              map['nodeToNodeEncryptions'],
-              (value) => GetDomainNodeToNodeEncryption.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      logPublishingOptions: pulumi.Input.decodeList<GetDomainLogPublishingOption>(map['logPublishingOptions'], (value) => GetDomainLogPublishingOption.fromMap((value as Map).cast<String, dynamic>())),
+      nodeToNodeEncryptions: pulumi.Input.decodeList<GetDomainNodeToNodeEncryption>(map['nodeToNodeEncryptions'], (value) => GetDomainNodeToNodeEncryption.fromMap((value as Map).cast<String, dynamic>())),
       processing: map['processing'] as bool,
       region: map['region'] as String,
-      snapshotOptions: pulumi.Input.decodeList<GetDomainSnapshotOption>(
-          map['snapshotOptions'],
-          (value) => GetDomainSnapshotOption.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      snapshotOptions: pulumi.Input.decodeList<GetDomainSnapshotOption>(map['snapshotOptions'], (value) => GetDomainSnapshotOption.fromMap((value as Map).cast<String, dynamic>())),
       tags: (map['tags'] as Map).cast<String, String>(),
-      vpcOptions: pulumi.Input.decodeList<GetDomainVpcOption>(
-          map['vpcOptions'],
-          (value) => GetDomainVpcOption.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      vpcOptions: pulumi.Input.decodeList<GetDomainVpcOption>(map['vpcOptions'], (value) => GetDomainVpcOption.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

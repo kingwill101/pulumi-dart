@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class IpSetIpSetDescriptor {
   /// The string like IPV4 or IPV6.
   final String type;
-
   /// The CIDR notation.
   final String value;
 
@@ -16,10 +16,10 @@ class IpSetIpSetDescriptor {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['type'] = type;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'type': type,
+      'value': value,
+    };
   }
 
   factory IpSetIpSetDescriptor.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class IpSetIpSetDescriptor {
     );
   }
 }
+

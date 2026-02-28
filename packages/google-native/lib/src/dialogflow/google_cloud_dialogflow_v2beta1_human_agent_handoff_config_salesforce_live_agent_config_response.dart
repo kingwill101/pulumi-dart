@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration specific to Salesforce Live Agent.
 class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse {
   /// Live Agent chat button ID.
   final String buttonId;
-
   /// Live Agent deployment ID.
   final String deploymentId;
-
   /// Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
   final String endpointDomain;
-
   /// The organization ID of the Salesforce account.
   final String organizationId;
 
@@ -27,16 +25,15 @@ class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConf
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['buttonId'] = buttonId;
-    map['deploymentId'] = deploymentId;
-    map['endpointDomain'] = endpointDomain;
-    map['organizationId'] = organizationId;
-    return map;
+    return <String, dynamic>{
+      'buttonId': buttonId,
+      'deploymentId': deploymentId,
+      'endpointDomain': endpointDomain,
+      'organizationId': organizationId,
+    };
   }
 
-  factory GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse(
       buttonId: map['buttonId'] as String,
       deploymentId: map['deploymentId'] as String,
@@ -45,3 +42,4 @@ class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConf
     );
   }
 }
+

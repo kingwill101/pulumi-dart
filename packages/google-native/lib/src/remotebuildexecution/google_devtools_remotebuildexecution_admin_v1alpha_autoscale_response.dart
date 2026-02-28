@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Autoscale defines the autoscaling policy of a worker pool.
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse {
   /// The maximal number of workers. Must be equal to or greater than min_size.
   final String maxSize;
-
   /// The minimal number of workers. Must be greater than 0.
   final String minSize;
 
@@ -17,17 +17,17 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maxSize'] = maxSize;
-    map['minSize'] = minSize;
-    return map;
+    return <String, dynamic>{
+      'maxSize': maxSize,
+      'minSize': minSize,
+    };
   }
 
-  factory GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse(
       maxSize: map['maxSize'] as String,
       minSize: map['minSize'] as String,
     );
   }
 }
+

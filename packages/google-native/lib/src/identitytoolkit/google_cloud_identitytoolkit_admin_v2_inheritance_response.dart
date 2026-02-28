@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Settings that the tenants will inherit from project level.
 class GoogleCloudIdentitytoolkitAdminV2InheritanceResponse {
   /// Whether to allow the tenant to inherit custom domains, email templates, and custom SMTP settings. If true, email sent from tenant will follow the project level email sending configurations. If false (by default), emails will go with the default settings with no customizations.
@@ -12,15 +13,15 @@ class GoogleCloudIdentitytoolkitAdminV2InheritanceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['emailSendingConfig'] = emailSendingConfig;
-    return map;
+    return <String, dynamic>{
+      'emailSendingConfig': emailSendingConfig,
+    };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2InheritanceResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudIdentitytoolkitAdminV2InheritanceResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2InheritanceResponse(
       emailSendingConfig: map['emailSendingConfig'] as bool,
     );
   }
 }
+

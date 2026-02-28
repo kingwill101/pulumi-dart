@@ -573,34 +573,26 @@ class AccessApprovalSettings extends pulumi.CustomResource {
   /// The asymmetric crypto key version to use for signing approval requests.
   /// Empty active_key_version indicates that a Google-managed key should be used for signing.
   late final pulumi.Output<String?> activeKeyVersion;
-
   /// This field will always be unset for the organization since organizations do not have ancestors.
   late final pulumi.Output<bool> ancestorHasActiveKeyVersion;
-
   /// This field will always be unset for the organization since organizations do not have ancestors.
   late final pulumi.Output<bool> enrolledAncestor;
-
   /// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
   /// Access requests for the resource given by name against any of these services contained here will be required
   /// to have explicit approval. Enrollment can be done for individual services.
   /// A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
   /// Structure is documented below.
-  late final pulumi.Output<List<AccessApprovalSettingsEnrolledService>>
-      enrolledServices;
-
+  late final pulumi.Output<List<AccessApprovalSettingsEnrolledService>> enrolledServices;
   /// If the field is true, that indicates that there is some configuration issue with the active_key_version
   /// configured on this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the
   /// correct permissions on it, etc.).
   late final pulumi.Output<bool> invalidKeyVersion;
-
   /// The resource name of the settings. Format is "organizations/{organization_id}/accessApprovalSettings"
   late final pulumi.Output<String> name;
-
   /// A list of email addresses to which notifications relating to approval requests should be sent.
   /// Notifications relating to a resource will be sent to all emails in the settings of ancestor
   /// resources of that resource. A maximum of 50 email addresses are allowed.
   late final pulumi.Output<List<String>> notificationEmails;
-
   /// ID of the organization of the access approval settings.
   late final pulumi.Output<String> organizationId;
 
@@ -619,16 +611,12 @@ class AccessApprovalSettings extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.activeKeyVersion = registerOutput<String?>('activeKeyVersion');
-    this.ancestorHasActiveKeyVersion =
-        registerOutput<bool>('ancestorHasActiveKeyVersion');
+    this.ancestorHasActiveKeyVersion = registerOutput<bool>('ancestorHasActiveKeyVersion');
     this.enrolledAncestor = registerOutput<bool>('enrolledAncestor');
-    this.enrolledServices =
-        registerOutput<List<AccessApprovalSettingsEnrolledService>>(
-            'enrolledServices');
+    this.enrolledServices = registerOutput<List<AccessApprovalSettingsEnrolledService>>('enrolledServices');
     this.invalidKeyVersion = registerOutput<bool>('invalidKeyVersion');
     this.name = registerOutput<String>('name');
-    this.notificationEmails =
-        registerOutput<List<String>>('notificationEmails');
+    this.notificationEmails = registerOutput<List<String>>('notificationEmails');
     this.organizationId = registerOutput<String>('organizationId');
   }
 }

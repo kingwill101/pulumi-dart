@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AvailabilityZoneGroupArgs {
   /// Name of the Availability Zone Group.
   final pulumi.Input<String> groupName;
-
   /// Indicates whether to enable or disable Availability Zone Group. Valid values: `opted-in` or `not-opted-in`.
   final pulumi.Input<String> optInStatus;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -24,19 +22,17 @@ class AvailabilityZoneGroupArgs {
     required String groupName,
     required String optInStatus,
     String? region,
-  })  : groupName = pulumi.Input.asInput<String>(groupName),
-        optInStatus = pulumi.Input.asInput<String>(optInStatus),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      groupName = pulumi.Input.asInput<String>(groupName),
+      optInStatus = pulumi.Input.asInput<String>(optInStatus),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['groupName'] = groupName;
-    map['optInStatus'] = optInStatus;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'groupName': groupName,
+      'optInStatus': optInStatus,
+      'region': ?region,
+    };
   }
 
   factory AvailabilityZoneGroupArgs.fromMap(Map<String, dynamic> map) {
@@ -47,3 +43,4 @@ class AvailabilityZoneGroupArgs {
     );
   }
 }
+

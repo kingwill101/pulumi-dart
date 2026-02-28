@@ -8,7 +8,6 @@ class AuthoritySubordinateConfig {
   /// and usability purposes only. The resource name is in the format
   /// `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
   final String? certificateAuthority;
-
   /// Contains the PEM certificate chain for the issuers of this CertificateAuthority,
   /// but not pem certificate for this CA itself.
   /// Structure is documented below.
@@ -23,27 +22,17 @@ class AuthoritySubordinateConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final certificateAuthorityValue = certificateAuthority;
-    if (certificateAuthorityValue != null) {
-      map['certificateAuthority'] = certificateAuthorityValue;
-    }
-    final pemIssuerChainValue = pemIssuerChain;
-    if (pemIssuerChainValue != null) {
-      map['pemIssuerChain'] = pemIssuerChainValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'certificateAuthority': ?certificateAuthority,
+      'pemIssuerChain': ?pemIssuerChain == null ? null : pemIssuerChain!.toMap(),
+    };
   }
 
   factory AuthoritySubordinateConfig.fromMap(Map<String, dynamic> map) {
     return AuthoritySubordinateConfig(
-      certificateAuthority: map['certificateAuthority'] == null
-          ? null
-          : map['certificateAuthority'] as String,
-      pemIssuerChain: map['pemIssuerChain'] == null
-          ? null
-          : AuthoritySubordinateConfigPemIssuerChain.fromMap(
-              (map['pemIssuerChain'] as Map).cast<String, dynamic>()),
+      certificateAuthority: map['certificateAuthority'] == null ? null : map['certificateAuthority'] as String,
+      pemIssuerChain: map['pemIssuerChain'] == null ? null : AuthoritySubordinateConfigPemIssuerChain.fromMap((map['pemIssuerChain'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

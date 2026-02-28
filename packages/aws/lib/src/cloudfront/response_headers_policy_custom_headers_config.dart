@@ -13,26 +13,15 @@ class ResponseHeadersPolicyCustomHeadersConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final itemsValue = items;
-    if (itemsValue != null) {
-      map['items'] = pulumi.Input.encodeList<
-          ResponseHeadersPolicyCustomHeadersConfigItem,
-          Map<String, dynamic>>(itemsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'items': ?items == null ? null : pulumi.Input.encodeList<ResponseHeadersPolicyCustomHeadersConfigItem, Map<String, dynamic>>(items!, (value) => value.toMap()),
+    };
   }
 
-  factory ResponseHeadersPolicyCustomHeadersConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory ResponseHeadersPolicyCustomHeadersConfig.fromMap(Map<String, dynamic> map) {
     return ResponseHeadersPolicyCustomHeadersConfig(
-      items: map['items'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  ResponseHeadersPolicyCustomHeadersConfigItem>(
-              map['items'],
-              (value) => ResponseHeadersPolicyCustomHeadersConfigItem.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      items: map['items'] == null ? null : pulumi.Input.decodeList<ResponseHeadersPolicyCustomHeadersConfigItem>(map['items'], (value) => ResponseHeadersPolicyCustomHeadersConfigItem.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

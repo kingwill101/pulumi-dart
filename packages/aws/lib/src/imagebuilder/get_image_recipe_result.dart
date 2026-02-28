@@ -9,44 +9,31 @@ class GetImageRecipeResult {
   /// Tags that are applied to the AMI that Image Builder creates during the Build phase prior to image distribution.
   final Map<String, String> amiTags;
   final String arn;
-
   /// Set of objects with block device mappings for the image recipe.
   final List<GetImageRecipeBlockDeviceMapping> blockDeviceMappings;
-
   /// List of objects with components for the image recipe.
   final List<GetImageRecipeComponent> components;
-
   /// Date the image recipe was created.
   final String dateCreated;
-
   /// Description of the image recipe.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Name of the image recipe.
   final String name;
-
   /// Owner of the image recipe.
   final String owner;
-
   /// Base image of the image recipe.
   final String parentImage;
-
   /// Platform of the image recipe.
   final String platform;
   final String region;
-
   /// Key-value map of resource tags for the image recipe.
   final Map<String, String> tags;
-
   /// Base64 encoded contents of user data. Commands or a command script to run when build instance is launched.
   final String userDataBase64;
-
   /// Version of the image recipe.
   final String version;
-
   /// Working directory used during build and test workflows.
   final String workingDirectory;
 
@@ -87,43 +74,32 @@ class GetImageRecipeResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['amiTags'] = amiTags;
-    map['arn'] = arn;
-    map['blockDeviceMappings'] = pulumi.Input.encodeList<
-        GetImageRecipeBlockDeviceMapping,
-        Map<String, dynamic>>(blockDeviceMappings, (value) => value.toMap());
-    map['components'] =
-        pulumi.Input.encodeList<GetImageRecipeComponent, Map<String, dynamic>>(
-            components, (value) => value.toMap());
-    map['dateCreated'] = dateCreated;
-    map['description'] = description;
-    map['id'] = id;
-    map['name'] = name;
-    map['owner'] = owner;
-    map['parentImage'] = parentImage;
-    map['platform'] = platform;
-    map['region'] = region;
-    map['tags'] = tags;
-    map['userDataBase64'] = userDataBase64;
-    map['version'] = version;
-    map['workingDirectory'] = workingDirectory;
-    return map;
+    return <String, dynamic>{
+      'amiTags': amiTags,
+      'arn': arn,
+      'blockDeviceMappings': pulumi.Input.encodeList<GetImageRecipeBlockDeviceMapping, Map<String, dynamic>>(blockDeviceMappings, (value) => value.toMap()),
+      'components': pulumi.Input.encodeList<GetImageRecipeComponent, Map<String, dynamic>>(components, (value) => value.toMap()),
+      'dateCreated': dateCreated,
+      'description': description,
+      'id': id,
+      'name': name,
+      'owner': owner,
+      'parentImage': parentImage,
+      'platform': platform,
+      'region': region,
+      'tags': tags,
+      'userDataBase64': userDataBase64,
+      'version': version,
+      'workingDirectory': workingDirectory,
+    };
   }
 
   factory GetImageRecipeResult.fromMap(Map<String, dynamic> map) {
     return GetImageRecipeResult(
       amiTags: (map['amiTags'] as Map).cast<String, String>(),
       arn: map['arn'] as String,
-      blockDeviceMappings:
-          pulumi.Input.decodeList<GetImageRecipeBlockDeviceMapping>(
-              map['blockDeviceMappings'],
-              (value) => GetImageRecipeBlockDeviceMapping.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      components: pulumi.Input.decodeList<GetImageRecipeComponent>(
-          map['components'],
-          (value) => GetImageRecipeComponent.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      blockDeviceMappings: pulumi.Input.decodeList<GetImageRecipeBlockDeviceMapping>(map['blockDeviceMappings'], (value) => GetImageRecipeBlockDeviceMapping.fromMap((value as Map).cast<String, dynamic>())),
+      components: pulumi.Input.decodeList<GetImageRecipeComponent>(map['components'], (value) => GetImageRecipeComponent.fromMap((value as Map).cast<String, dynamic>())),
       dateCreated: map['dateCreated'] as String,
       description: map['description'] as String,
       id: map['id'] as String,
@@ -139,3 +115,4 @@ class GetImageRecipeResult {
     );
   }
 }
+

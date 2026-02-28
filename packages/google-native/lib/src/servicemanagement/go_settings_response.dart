@@ -14,15 +14,15 @@ class GoSettingsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['common'] = common.toMap();
-    return map;
+    return <String, dynamic>{
+      'common': common.toMap(),
+    };
   }
 
   factory GoSettingsResponse.fromMap(Map<String, dynamic> map) {
     return GoSettingsResponse(
-      common: CommonLanguageSettingsResponse.fromMap(
-          (map['common'] as Map).cast<String, dynamic>()),
+      common: CommonLanguageSettingsResponse.fromMap((map['common'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

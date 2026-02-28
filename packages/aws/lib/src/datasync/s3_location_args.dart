@@ -10,22 +10,16 @@ import 's3_location_s3_config.dart';
 class S3LocationArgs {
   /// (Amazon S3 on Outposts only) Amazon Resource Name (ARN) of the DataSync agent on the Outpost.
   final pulumi.Input<List<String>>? agentArns;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Amazon Resource Name (ARN) of the S3 bucket, or the Amazon S3 access point if the S3 bucket is located on an AWS Outposts resource.
   final pulumi.Input<String> s3BucketArn;
-
   /// Configuration block containing information for connecting to S3.
   final pulumi.Input<S3LocationS3Config> s3Config;
-
   /// Amazon S3 storage class that you want to store your files in when this location is used as a task destination. [Valid values](https://docs.aws.amazon.com/datasync/latest/userguide/create-s3-location.html#using-storage-classes)
   final pulumi.Input<String>? s3StorageClass;
-
   /// Prefix to perform actions as source or destination.
   final pulumi.Input<String> subdirectory;
-
   /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -45,56 +39,37 @@ class S3LocationArgs {
     String? s3StorageClass,
     required String subdirectory,
     Map<String, String>? tags,
-  })  : agentArns = pulumi.Input.asOptionalInput<List<String>>(agentArns),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        s3BucketArn = pulumi.Input.asInput<String>(s3BucketArn),
-        s3Config = pulumi.Input.asInput<S3LocationS3Config>(s3Config),
-        s3StorageClass = pulumi.Input.asOptionalInput<String>(s3StorageClass),
-        subdirectory = pulumi.Input.asInput<String>(subdirectory),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      agentArns = pulumi.Input.asOptionalInput<List<String>>(agentArns),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      s3BucketArn = pulumi.Input.asInput<String>(s3BucketArn),
+      s3Config = pulumi.Input.asInput<S3LocationS3Config>(s3Config),
+      s3StorageClass = pulumi.Input.asOptionalInput<String>(s3StorageClass),
+      subdirectory = pulumi.Input.asInput<String>(subdirectory),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final agentArnsValue = agentArns;
-    if (agentArnsValue != null) {
-      map['agentArns'] = agentArnsValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['s3BucketArn'] = s3BucketArn;
-    map['s3Config'] =
-        pulumi.Input.mapInputValue<S3LocationS3Config, Map<String, dynamic>>(
-            s3Config, (value) => value.toMap());
-    final s3StorageClassValue = s3StorageClass;
-    if (s3StorageClassValue != null) {
-      map['s3StorageClass'] = s3StorageClassValue;
-    }
-    map['subdirectory'] = subdirectory;
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'agentArns': ?agentArns,
+      'region': ?region,
+      's3BucketArn': s3BucketArn,
+      's3Config': pulumi.Input.mapInputValue<S3LocationS3Config, Map<String, dynamic>>(s3Config, (value) => value.toMap()),
+      's3StorageClass': ?s3StorageClass,
+      'subdirectory': subdirectory,
+      'tags': ?tags,
+    };
   }
 
   factory S3LocationArgs.fromMap(Map<String, dynamic> map) {
     return S3LocationArgs(
-      agentArns: map['agentArns'] == null
-          ? null
-          : (map['agentArns'] as List).cast<String>(),
+      agentArns: map['agentArns'] == null ? null : (map['agentArns'] as List).cast<String>(),
       region: map['region'] == null ? null : map['region'] as String,
       s3BucketArn: map['s3BucketArn'] as String,
-      s3Config: S3LocationS3Config.fromMap(
-          (map['s3Config'] as Map).cast<String, dynamic>()),
-      s3StorageClass: map['s3StorageClass'] == null
-          ? null
-          : map['s3StorageClass'] as String,
+      s3Config: S3LocationS3Config.fromMap((map['s3Config'] as Map).cast<String, dynamic>()),
+      s3StorageClass: map['s3StorageClass'] == null ? null : map['s3StorageClass'] as String,
       subdirectory: map['subdirectory'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

@@ -19,23 +19,20 @@ class GetRegionBackendServiceComputeV1Args {
     required String backendService,
     String? project,
     required String region,
-  })  : backendService = pulumi.Input.asInput<String>(backendService),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asInput<String>(region);
+  }) :
+      backendService = pulumi.Input.asInput<String>(backendService),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['backendService'] = backendService;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'backendService': backendService,
+      'project': ?project,
+      'region': region,
+    };
   }
 
-  factory GetRegionBackendServiceComputeV1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetRegionBackendServiceComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceComputeV1Args(
       backendService: map['backendService'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -43,3 +40,4 @@ class GetRegionBackendServiceComputeV1Args {
     );
   }
 }
+

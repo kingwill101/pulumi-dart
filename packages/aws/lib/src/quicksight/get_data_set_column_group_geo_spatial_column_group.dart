@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDataSetColumnGroupGeoSpatialColumnGroup {
   final List<String> columns;
   final String countryCode;
@@ -16,15 +17,14 @@ class GetDataSetColumnGroupGeoSpatialColumnGroup {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['columns'] = columns;
-    map['countryCode'] = countryCode;
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'columns': columns,
+      'countryCode': countryCode,
+      'name': name,
+    };
   }
 
-  factory GetDataSetColumnGroupGeoSpatialColumnGroup.fromMap(
-      Map<String, dynamic> map) {
+  factory GetDataSetColumnGroupGeoSpatialColumnGroup.fromMap(Map<String, dynamic> map) {
     return GetDataSetColumnGroupGeoSpatialColumnGroup(
       columns: (map['columns'] as List).cast<String>(),
       countryCode: map['countryCode'] as String,
@@ -32,3 +32,4 @@ class GetDataSetColumnGroupGeoSpatialColumnGroup {
     );
   }
 }
+

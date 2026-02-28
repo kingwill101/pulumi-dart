@@ -413,7 +413,6 @@ class AccessLevels extends pulumi.CustomResource {
   /// The desired Access Levels that should replace all existing Access Levels in the Access Policy.
   /// Structure is documented below.
   late final pulumi.Output<List<AccessLevelsAccessLevel>?> accessLevels;
-
   /// The AccessPolicy this AccessLevel lives in.
   /// Format: accessPolicies/{policy_id}
   late final pulumi.Output<String> parent;
@@ -432,8 +431,7 @@ class AccessLevels extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.accessLevels =
-        registerOutput<List<AccessLevelsAccessLevel>?>('accessLevels');
+    this.accessLevels = registerOutput<List<AccessLevelsAccessLevel>?>('accessLevels');
     this.parent = registerOutput<String>('parent');
   }
 }

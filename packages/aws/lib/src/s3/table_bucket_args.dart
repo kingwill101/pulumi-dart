@@ -11,17 +11,12 @@ import 'table_bucket_maintenance_configuration.dart';
 class TableBucketArgs {
   /// A single table bucket encryption configuration object.
   /// See `encryption_configuration` below.
-  final pulumi.Input<TableBucketEncryptionConfiguration>?
-      encryptionConfiguration;
-
+  final pulumi.Input<TableBucketEncryptionConfiguration>? encryptionConfiguration;
   /// Whether all tables and namespaces within the table bucket should be deleted *when the table bucket is destroyed* so that the table bucket can be destroyed without error. These tables and namespaces are *not* recoverable. This only deletes tables and namespaces when the table bucket is destroyed, *not* when setting this parameter to `true`. Once this parameter is set to `true`, there must be a successful `pulumi up` run before a destroy is required to update this value in the resource state. Without a successful `pulumi up` after this parameter is set, this flag will have no effect. If setting this field in the same operation that would require replacing the table bucket or destroying the table bucket, this flag will not work. Additionally when importing a table bucket, a successful `pulumi up` is required to set this value in state before it will take effect on a destroy operation.
   final pulumi.Input<bool>? forceDestroy;
-
   /// A single table bucket maintenance configuration object.
   /// See `maintenance_configuration` below.
-  final pulumi.Input<TableBucketMaintenanceConfiguration>?
-      maintenanceConfiguration;
-
+  final pulumi.Input<TableBucketMaintenanceConfiguration>? maintenanceConfiguration;
   /// Name of the table bucket.
   /// Must be between 3 and 63 characters in length.
   /// Can consist of lowercase letters, numbers, and hyphens, and must begin and end with a lowercase letter or number.
@@ -29,10 +24,8 @@ class TableBucketArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -50,67 +43,34 @@ class TableBucketArgs {
     String? name,
     String? region,
     Map<String, String>? tags,
-  })  : encryptionConfiguration =
-            pulumi.Input.asOptionalInput<TableBucketEncryptionConfiguration>(
-                encryptionConfiguration),
-        forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-        maintenanceConfiguration =
-            pulumi.Input.asOptionalInput<TableBucketMaintenanceConfiguration>(
-                maintenanceConfiguration),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      encryptionConfiguration = pulumi.Input.asOptionalInput<TableBucketEncryptionConfiguration>(encryptionConfiguration),
+      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
+      maintenanceConfiguration = pulumi.Input.asOptionalInput<TableBucketMaintenanceConfiguration>(maintenanceConfiguration),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final encryptionConfigurationValue = encryptionConfiguration;
-    if (encryptionConfigurationValue != null) {
-      map['encryptionConfiguration'] = pulumi.Input.mapOptionalInputValue<
-              TableBucketEncryptionConfiguration, Map<String, dynamic>>(
-          encryptionConfigurationValue, (value) => value.toMap());
-    }
-    final forceDestroyValue = forceDestroy;
-    if (forceDestroyValue != null) {
-      map['forceDestroy'] = forceDestroyValue;
-    }
-    final maintenanceConfigurationValue = maintenanceConfiguration;
-    if (maintenanceConfigurationValue != null) {
-      map['maintenanceConfiguration'] = pulumi.Input.mapOptionalInputValue<
-              TableBucketMaintenanceConfiguration, Map<String, dynamic>>(
-          maintenanceConfigurationValue, (value) => value.toMap());
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'encryptionConfiguration': ?pulumi.Input.mapOptionalInputValue<TableBucketEncryptionConfiguration, Map<String, dynamic>>(encryptionConfiguration, (value) => value.toMap()),
+      'forceDestroy': ?forceDestroy,
+      'maintenanceConfiguration': ?pulumi.Input.mapOptionalInputValue<TableBucketMaintenanceConfiguration, Map<String, dynamic>>(maintenanceConfiguration, (value) => value.toMap()),
+      'name': ?name,
+      'region': ?region,
+      'tags': ?tags,
+    };
   }
 
   factory TableBucketArgs.fromMap(Map<String, dynamic> map) {
     return TableBucketArgs(
-      encryptionConfiguration: map['encryptionConfiguration'] == null
-          ? null
-          : TableBucketEncryptionConfiguration.fromMap(
-              (map['encryptionConfiguration'] as Map).cast<String, dynamic>()),
-      forceDestroy:
-          map['forceDestroy'] == null ? null : map['forceDestroy'] as bool,
-      maintenanceConfiguration: map['maintenanceConfiguration'] == null
-          ? null
-          : TableBucketMaintenanceConfiguration.fromMap(
-              (map['maintenanceConfiguration'] as Map).cast<String, dynamic>()),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : TableBucketEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>()),
+      forceDestroy: map['forceDestroy'] == null ? null : map['forceDestroy'] as bool,
+      maintenanceConfiguration: map['maintenanceConfiguration'] == null ? null : TableBucketMaintenanceConfiguration.fromMap((map['maintenanceConfiguration'] as Map).cast<String, dynamic>()),
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

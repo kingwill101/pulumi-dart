@@ -1,25 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The period during which some deployable was active in a runtime.
 class DeploymentResponse {
   /// Address of the runtime element hosting this deployment.
   final String address;
-
   /// Configuration used to create this deployment.
   final String config;
-
   /// Beginning of the lifetime of this deployment.
   final String deployTime;
-
   /// Platform hosting this deployment.
   final String platform;
-
   /// Resource URI for the artifact being deployed taken from the deployable field with the same name.
   final List<String> resourceUri;
-
   /// End of the lifetime of this deployment.
   final String undeployTime;
-
   /// Identity of the user that triggered this deployment.
   final String userEmail;
 
@@ -42,15 +37,15 @@ class DeploymentResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['address'] = address;
-    map['config'] = config;
-    map['deployTime'] = deployTime;
-    map['platform'] = platform;
-    map['resourceUri'] = resourceUri;
-    map['undeployTime'] = undeployTime;
-    map['userEmail'] = userEmail;
-    return map;
+    return <String, dynamic>{
+      'address': address,
+      'config': config,
+      'deployTime': deployTime,
+      'platform': platform,
+      'resourceUri': resourceUri,
+      'undeployTime': undeployTime,
+      'userEmail': userEmail,
+    };
   }
 
   factory DeploymentResponse.fromMap(Map<String, dynamic> map) {
@@ -65,3 +60,4 @@ class DeploymentResponse {
     );
   }
 }
+

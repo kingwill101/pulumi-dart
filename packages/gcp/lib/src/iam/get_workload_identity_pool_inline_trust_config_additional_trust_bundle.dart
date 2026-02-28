@@ -7,9 +7,7 @@ class GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle {
   /// List of Trust Anchors to be used while performing validation against a given
   /// 'TrustStore'. The incoming end entity's certificate must be chained up to one of the
   /// trust anchors here.
-  final List<
-          GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor>
-      trustAnchors;
+  final List<GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor> trustAnchors;
   final String trustDomain;
 
   /// Creates a new [GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle].
@@ -21,24 +19,17 @@ class GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['trustAnchors'] = pulumi.Input.encodeList<
-        GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor,
-        Map<String, dynamic>>(trustAnchors, (value) => value.toMap());
-    map['trustDomain'] = trustDomain;
-    return map;
+    return <String, dynamic>{
+      'trustAnchors': pulumi.Input.encodeList<GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor, Map<String, dynamic>>(trustAnchors, (value) => value.toMap()),
+      'trustDomain': trustDomain,
+    };
   }
 
-  factory GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle.fromMap(
-      Map<String, dynamic> map) {
+  factory GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle.fromMap(Map<String, dynamic> map) {
     return GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle(
-      trustAnchors: pulumi.Input.decodeList<
-              GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor>(
-          map['trustAnchors'],
-          (value) =>
-              GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      trustAnchors: pulumi.Input.decodeList<GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor>(map['trustAnchors'], (value) => GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor.fromMap((value as Map).cast<String, dynamic>())),
       trustDomain: map['trustDomain'] as String,
     );
   }
 }
+

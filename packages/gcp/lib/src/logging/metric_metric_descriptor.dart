@@ -8,25 +8,21 @@ class MetricMetricDescriptor {
   /// without an ending period, for example "Request count". This field is optional but it is
   /// recommended to be set for any metrics associated with user-visible concepts, such as Quota.
   final String? displayName;
-
   /// The set of labels that can be used to describe a specific instance of this metric type. For
   /// example, the appengine.googleapis.com/http/server/response_latencies metric type has a label
   /// for the HTTP response code, response_code, so you can look at latencies for successful responses
   /// or just for responses that failed.
   /// Structure is documented below.
   final List<MetricMetricDescriptorLabel>? labels;
-
   /// Whether the metric records instantaneous values, changes to a value, etc.
   /// Some combinations of metricKind and valueType might not be supported.
   /// For counter metrics, set this to DELTA.
   /// Possible values are: `DELTA`, `GAUGE`, `CUMULATIVE`.
   final String metricKind;
-
   /// The unit in which the metric value is reported. It is only applicable if the valueType is
   /// `INT64`, `DOUBLE`, or `DISTRIBUTION`. The supported units are a subset of
   /// [The Unified Code for Units of Measure](http://unitsofmeasure.org/ucum.html) standard
   final String? unit;
-
   /// Whether the measurement is an integer, a floating-point number, etc.
   /// Some combinations of metricKind and valueType might not be supported.
   /// For counter metrics, set this to INT64.
@@ -48,38 +44,23 @@ class MetricMetricDescriptor {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final displayNameValue = displayName;
-    if (displayNameValue != null) {
-      map['displayName'] = displayNameValue;
-    }
-    final labelsValue = labels;
-    if (labelsValue != null) {
-      map['labels'] = pulumi.Input.encodeList<MetricMetricDescriptorLabel,
-          Map<String, dynamic>>(labelsValue, (value) => value.toMap());
-    }
-    map['metricKind'] = metricKind;
-    final unitValue = unit;
-    if (unitValue != null) {
-      map['unit'] = unitValue;
-    }
-    map['valueType'] = valueType;
-    return map;
+    return <String, dynamic>{
+      'displayName': ?displayName,
+      'labels': ?labels == null ? null : pulumi.Input.encodeList<MetricMetricDescriptorLabel, Map<String, dynamic>>(labels!, (value) => value.toMap()),
+      'metricKind': metricKind,
+      'unit': ?unit,
+      'valueType': valueType,
+    };
   }
 
   factory MetricMetricDescriptor.fromMap(Map<String, dynamic> map) {
     return MetricMetricDescriptor(
-      displayName:
-          map['displayName'] == null ? null : map['displayName'] as String,
-      labels: map['labels'] == null
-          ? null
-          : pulumi.Input.decodeList<MetricMetricDescriptorLabel>(
-              map['labels'],
-              (value) => MetricMetricDescriptorLabel.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      labels: map['labels'] == null ? null : pulumi.Input.decodeList<MetricMetricDescriptorLabel>(map['labels'], (value) => MetricMetricDescriptorLabel.fromMap((value as Map).cast<String, dynamic>())),
       metricKind: map['metricKind'] as String,
       unit: map['unit'] == null ? null : map['unit'] as String,
       valueType: map['valueType'] as String,
     );
   }
 }
+

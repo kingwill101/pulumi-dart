@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SigningProfileSigningMaterial {
   /// The Amazon Resource Name (ARN) of the certificates that is used to sign your code.
   final String certificateArn;
@@ -11,9 +12,9 @@ class SigningProfileSigningMaterial {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['certificateArn'] = certificateArn;
-    return map;
+    return <String, dynamic>{
+      'certificateArn': certificateArn,
+    };
   }
 
   factory SigningProfileSigningMaterial.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class SigningProfileSigningMaterial {
     );
   }
 }
+

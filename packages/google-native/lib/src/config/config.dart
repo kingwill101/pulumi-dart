@@ -2,37 +2,6 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-int? _parseIntConfig(String? value) {
-  if (value == null) {
-    return null;
-  }
-  return int.tryParse(value);
-}
-
-double? _parseDoubleConfig(String? value) {
-  if (value == null) {
-    return null;
-  }
-  return double.tryParse(value);
-}
-
-bool? _parseBoolConfig(String? value) {
-  if (value == null) {
-    return null;
-  }
-
-  switch (value.toLowerCase()) {
-    case 'true':
-    case '1':
-      return true;
-    case 'false':
-    case '0':
-      return false;
-    default:
-      return null;
-  }
-}
-
 /// Configuration values for the google-native package.
 class GoogleNativeConfig {
   const GoogleNativeConfig();
@@ -58,7 +27,7 @@ class GoogleNativeConfig {
   /// This will disable the Pulumi Partner Name which is used if a custom `partnerName` isn't specified.
   bool? get disablePartnerName {
     final raw = _raw('disablePartnerName');
-    return _parseBoolConfig(raw);
+    return (raw).toBool();
   }
 
   bool get disablePartnerNameIsSecret => _isSecret('disablePartnerName');
@@ -94,6 +63,8 @@ class GoogleNativeConfig {
   }
 
   bool get zoneIsSecret => _isSecret('zone');
+
 }
 
 final config = GoogleNativeConfig();
+

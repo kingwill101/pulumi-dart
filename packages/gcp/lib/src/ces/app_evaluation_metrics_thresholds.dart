@@ -5,8 +5,7 @@ import 'app_evaluation_metrics_thresholds_golden_evaluation_metrics_thresholds.d
 class AppEvaluationMetricsThresholds {
   /// Settings for golden evaluations.
   /// Structure is documented below.
-  final AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds?
-      goldenEvaluationMetricsThresholds;
+  final AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds? goldenEvaluationMetricsThresholds;
 
   /// Creates a new [AppEvaluationMetricsThresholds].
   /// [goldenEvaluationMetricsThresholds] Settings for golden evaluations.
@@ -15,24 +14,15 @@ class AppEvaluationMetricsThresholds {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final goldenEvaluationMetricsThresholdsValue =
-        goldenEvaluationMetricsThresholds;
-    if (goldenEvaluationMetricsThresholdsValue != null) {
-      map['goldenEvaluationMetricsThresholds'] =
-          goldenEvaluationMetricsThresholdsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'goldenEvaluationMetricsThresholds': ?goldenEvaluationMetricsThresholds == null ? null : goldenEvaluationMetricsThresholds!.toMap(),
+    };
   }
 
   factory AppEvaluationMetricsThresholds.fromMap(Map<String, dynamic> map) {
     return AppEvaluationMetricsThresholds(
-      goldenEvaluationMetricsThresholds:
-          map['goldenEvaluationMetricsThresholds'] == null
-              ? null
-              : AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds
-                  .fromMap((map['goldenEvaluationMetricsThresholds'] as Map)
-                      .cast<String, dynamic>()),
+      goldenEvaluationMetricsThresholds: map['goldenEvaluationMetricsThresholds'] == null ? null : AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds.fromMap((map['goldenEvaluationMetricsThresholds'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

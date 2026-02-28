@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GlobalTableReplica {
   /// AWS region name of replica DynamoDB TableE.g., `us-east-1`
   final String regionName;
@@ -11,9 +12,9 @@ class GlobalTableReplica {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['regionName'] = regionName;
-    return map;
+    return <String, dynamic>{
+      'regionName': regionName,
+    };
   }
 
   factory GlobalTableReplica.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GlobalTableReplica {
     );
   }
 }
+

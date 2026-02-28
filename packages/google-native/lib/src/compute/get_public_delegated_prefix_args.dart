@@ -19,20 +19,17 @@ class GetPublicDelegatedPrefixArgs {
     String? project,
     required String publicDelegatedPrefix,
     required String region,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        publicDelegatedPrefix =
-            pulumi.Input.asInput<String>(publicDelegatedPrefix),
-        region = pulumi.Input.asInput<String>(region);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      publicDelegatedPrefix = pulumi.Input.asInput<String>(publicDelegatedPrefix),
+      region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['publicDelegatedPrefix'] = publicDelegatedPrefix;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'publicDelegatedPrefix': publicDelegatedPrefix,
+      'region': region,
+    };
   }
 
   factory GetPublicDelegatedPrefixArgs.fromMap(Map<String, dynamic> map) {
@@ -43,3 +40,4 @@ class GetPublicDelegatedPrefixArgs {
     );
   }
 }
+

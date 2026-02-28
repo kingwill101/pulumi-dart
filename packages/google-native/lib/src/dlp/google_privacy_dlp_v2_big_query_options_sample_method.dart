@@ -12,7 +12,7 @@ enum GooglePrivacyDlpV2BigQueryOptionsSampleMethod {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GooglePrivacyDlpV2BigQueryOptionsSampleMethod value: $value');
+    throw ArgumentError('Unknown GooglePrivacyDlpV2BigQueryOptionsSampleMethod value: $value');
   }
 }
+

@@ -6,7 +6,6 @@ import 'identifier_helper_field.dart';
 class IdentifierHelper {
   /// The field that is set in the API proto.
   final IdentifierHelperField? field;
-
   /// Contains a URI which is vendor-specific. Example: The artifact repository URL of an image.
   final String? genericUri;
 
@@ -19,25 +18,17 @@ class IdentifierHelper {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final fieldValue = field;
-    if (fieldValue != null) {
-      map['field'] = fieldValue.value;
-    }
-    final genericUriValue = genericUri;
-    if (genericUriValue != null) {
-      map['genericUri'] = genericUriValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'field': ?field == null ? null : field!.value,
+      'genericUri': ?genericUri,
+    };
   }
 
   factory IdentifierHelper.fromMap(Map<String, dynamic> map) {
     return IdentifierHelper(
-      field: map['field'] == null
-          ? null
-          : IdentifierHelperField.fromValue(map['field'] as String),
-      genericUri:
-          map['genericUri'] == null ? null : map['genericUri'] as String,
+      field: map['field'] == null ? null : IdentifierHelperField.fromValue(map['field'] as String),
+      genericUri: map['genericUri'] == null ? null : map['genericUri'] as String,
     );
   }
 }
+

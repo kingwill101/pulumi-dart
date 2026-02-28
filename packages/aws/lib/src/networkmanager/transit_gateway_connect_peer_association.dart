@@ -115,13 +115,10 @@ import 'transit_gateway_connect_peer_association_args.dart';
 class TransitGatewayConnectPeerAssociation extends pulumi.CustomResource {
   /// ID of the device.
   late final pulumi.Output<String> deviceId;
-
   /// ID of the global network.
   late final pulumi.Output<String> globalNetworkId;
-
   /// ID of the link.
   late final pulumi.Output<String?> linkId;
-
   /// ARN of the Connect peer.
   ///
   /// The following arguments are optional:
@@ -144,7 +141,6 @@ class TransitGatewayConnectPeerAssociation extends pulumi.CustomResource {
     this.deviceId = registerOutput<String>('deviceId');
     this.globalNetworkId = registerOutput<String>('globalNetworkId');
     this.linkId = registerOutput<String?>('linkId');
-    this.transitGatewayConnectPeerArn =
-        registerOutput<String>('transitGatewayConnectPeerArn');
+    this.transitGatewayConnectPeerArn = registerOutput<String>('transitGatewayConnectPeerArn');
   }
 }

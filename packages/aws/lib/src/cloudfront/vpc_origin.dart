@@ -177,22 +177,17 @@ import 'vpc_origin_vpc_origin_endpoint_config.dart';
 class VpcOrigin extends pulumi.CustomResource {
   /// The VPC origin ARN.
   late final pulumi.Output<String> arn;
-
   /// The current version of the origin.
   late final pulumi.Output<String> etag;
-
   /// Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<VpcOriginTimeouts?> timeouts;
-
   /// The VPC origin endpoint configuration.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<VpcOriginVpcOriginEndpointConfig>
-      vpcOriginEndpointConfig;
+  late final pulumi.Output<VpcOriginVpcOriginEndpointConfig> vpcOriginEndpointConfig;
 
   /// Creates a new [VpcOrigin].
   /// [name] The Pulumi resource name.
@@ -213,8 +208,6 @@ class VpcOrigin extends pulumi.CustomResource {
     this.tags = registerOutput<Map<String, String>?>('tags');
     this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.timeouts = registerOutput<VpcOriginTimeouts?>('timeouts');
-    this.vpcOriginEndpointConfig =
-        registerOutput<VpcOriginVpcOriginEndpointConfig>(
-            'vpcOriginEndpointConfig');
+    this.vpcOriginEndpointConfig = registerOutput<VpcOriginVpcOriginEndpointConfig>('vpcOriginEndpointConfig');
   }
 }

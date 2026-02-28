@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceAccessLoggingConfig {
   /// Boolean flag that specifies whether the customer access log feature is enabled.
   final bool enabled;
-
   /// Ship the access log entries that match the statusCode defined in the filter.
   /// The statusCode is the only expected/supported filter field. (Ex: statusCode)
   /// The filter will parse it to the Common Expression Language semantics for expression
@@ -19,13 +19,10 @@ class InstanceAccessLoggingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    final filterValue = filter;
-    if (filterValue != null) {
-      map['filter'] = filterValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+      'filter': ?filter,
+    };
   }
 
   factory InstanceAccessLoggingConfig.fromMap(Map<String, dynamic> map) {
@@ -35,3 +32,4 @@ class InstanceAccessLoggingConfig {
     );
   }
 }
+

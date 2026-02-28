@@ -14,21 +14,15 @@ class GooglePrivacyDlpV2RecordSuppression {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final conditionValue = condition;
-    if (conditionValue != null) {
-      map['condition'] = conditionValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'condition': ?condition == null ? null : condition!.toMap(),
+    };
   }
 
-  factory GooglePrivacyDlpV2RecordSuppression.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2RecordSuppression.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2RecordSuppression(
-      condition: map['condition'] == null
-          ? null
-          : GooglePrivacyDlpV2RecordCondition.fromMap(
-              (map['condition'] as Map).cast<String, dynamic>()),
+      condition: map['condition'] == null ? null : GooglePrivacyDlpV2RecordCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -14,16 +14,15 @@ class GooglePrivacyDlpV2DataProfilePubSubConditionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['expressions'] = expressions.toMap();
-    return map;
+    return <String, dynamic>{
+      'expressions': expressions.toMap(),
+    };
   }
 
-  factory GooglePrivacyDlpV2DataProfilePubSubConditionResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2DataProfilePubSubConditionResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DataProfilePubSubConditionResponse(
-      expressions: GooglePrivacyDlpV2PubSubExpressionsResponse.fromMap(
-          (map['expressions'] as Map).cast<String, dynamic>()),
+      expressions: GooglePrivacyDlpV2PubSubExpressionsResponse.fromMap((map['expressions'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

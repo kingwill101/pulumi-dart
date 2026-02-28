@@ -1,18 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VoiceConnectorOriginationRoute {
   /// The FQDN or IP address to contact for origination traffic.
   final String host;
-
   /// The designated origination route port. Defaults to `5060`.
   final int? port;
-
   /// The priority associated with the host, with 1 being the highest priority. Higher priority hosts are attempted first.
   final int priority;
-
   /// The protocol to use for the origination route. Encryption-enabled Amazon Chime Voice Connectors use TCP protocol by default.
   final String protocol;
-
   /// The weight associated with the host. If hosts are equal in priority, calls are redistributed among them based on their relative weight.
   final int weight;
 
@@ -31,16 +28,13 @@ class VoiceConnectorOriginationRoute {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['host'] = host;
-    final portValue = port;
-    if (portValue != null) {
-      map['port'] = portValue;
-    }
-    map['priority'] = priority;
-    map['protocol'] = protocol;
-    map['weight'] = weight;
-    return map;
+    return <String, dynamic>{
+      'host': host,
+      'port': ?port,
+      'priority': priority,
+      'protocol': protocol,
+      'weight': weight,
+    };
   }
 
   factory VoiceConnectorOriginationRoute.fromMap(Map<String, dynamic> map) {
@@ -53,3 +47,4 @@ class VoiceConnectorOriginationRoute {
     );
   }
 }
+

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NodeGroupLaunchTemplate {
   /// Identifier of the EC2 Launch Template. Conflicts with `name`.
   final String? id;
-
   /// Name of the EC2 Launch Template. Conflicts with `id`.
   final String? name;
-
   /// EC2 Launch Template version number. While the API accepts values like `$Default` and `$Latest`, the API will convert the value to the associated version number (e.g., `1`) on read and the provider will show a difference on next plan. Using the `default_version` or `latest_version` attribute of the `aws.ec2.LaunchTemplate` resource or data source is recommended for this argument.
   final String version;
 
@@ -21,17 +20,11 @@ class NodeGroupLaunchTemplate {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final idValue = id;
-    if (idValue != null) {
-      map['id'] = idValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    map['version'] = version;
-    return map;
+    return <String, dynamic>{
+      'id': ?id,
+      'name': ?name,
+      'version': version,
+    };
   }
 
   factory NodeGroupLaunchTemplate.fromMap(Map<String, dynamic> map) {
@@ -42,3 +35,4 @@ class NodeGroupLaunchTemplate {
     );
   }
 }
+

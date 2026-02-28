@@ -22,21 +22,19 @@ class GetTaskArgs {
     required String location,
     String? project,
     required String taskId,
-  })  : lakeId = pulumi.Input.asInput<String>(lakeId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        taskId = pulumi.Input.asInput<String>(taskId);
+  }) :
+      lakeId = pulumi.Input.asInput<String>(lakeId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      taskId = pulumi.Input.asInput<String>(taskId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['lakeId'] = lakeId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['taskId'] = taskId;
-    return map;
+    return <String, dynamic>{
+      'lakeId': lakeId,
+      'location': location,
+      'project': ?project,
+      'taskId': taskId,
+    };
   }
 
   factory GetTaskArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetTaskArgs {
     );
   }
 }
+

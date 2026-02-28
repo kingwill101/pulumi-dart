@@ -7,16 +7,12 @@ import 'vmware_control_plane_vsphere_config_response.dart';
 class VmwareControlPlaneNodeConfigResponse {
   /// AutoResizeConfig provides auto resizing configurations.
   final VmwareAutoResizeConfigResponse autoResizeConfig;
-
   /// The number of CPUs for each admin cluster node that serve as control planes for this VMware user cluster. (default: 4 CPUs)
   final String cpus;
-
   /// The megabytes of memory for each admin cluster node that serves as a control plane for this VMware user cluster (default: 8192 MB memory).
   final String memory;
-
   /// The number of control plane nodes for this VMware user cluster. (default: 1 replica).
   final String replicas;
-
   /// Vsphere-specific config.
   final VmwareControlPlaneVsphereConfigResponse vsphereConfig;
 
@@ -35,25 +31,23 @@ class VmwareControlPlaneNodeConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['autoResizeConfig'] = autoResizeConfig.toMap();
-    map['cpus'] = cpus;
-    map['memory'] = memory;
-    map['replicas'] = replicas;
-    map['vsphereConfig'] = vsphereConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'autoResizeConfig': autoResizeConfig.toMap(),
+      'cpus': cpus,
+      'memory': memory,
+      'replicas': replicas,
+      'vsphereConfig': vsphereConfig.toMap(),
+    };
   }
 
-  factory VmwareControlPlaneNodeConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory VmwareControlPlaneNodeConfigResponse.fromMap(Map<String, dynamic> map) {
     return VmwareControlPlaneNodeConfigResponse(
-      autoResizeConfig: VmwareAutoResizeConfigResponse.fromMap(
-          (map['autoResizeConfig'] as Map).cast<String, dynamic>()),
+      autoResizeConfig: VmwareAutoResizeConfigResponse.fromMap((map['autoResizeConfig'] as Map).cast<String, dynamic>()),
       cpus: map['cpus'] as String,
       memory: map['memory'] as String,
       replicas: map['replicas'] as String,
-      vsphereConfig: VmwareControlPlaneVsphereConfigResponse.fromMap(
-          (map['vsphereConfig'] as Map).cast<String, dynamic>()),
+      vsphereConfig: VmwareControlPlaneVsphereConfigResponse.fromMap((map['vsphereConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

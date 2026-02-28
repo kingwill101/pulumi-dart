@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTaskDefinitionProxyConfiguration {
   /// Name of the container that will serve as the App Mesh proxy.
   final String containerName;
-
   /// Set of network configuration parameters to provide the Container Network Interface (CNI) plugin, specified a key-value mapping.
   final Map<String, String> properties;
-
   /// Proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
   final String type;
 
@@ -21,15 +20,14 @@ class GetTaskDefinitionProxyConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['containerName'] = containerName;
-    map['properties'] = properties;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'containerName': containerName,
+      'properties': properties,
+      'type': type,
+    };
   }
 
-  factory GetTaskDefinitionProxyConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory GetTaskDefinitionProxyConfiguration.fromMap(Map<String, dynamic> map) {
     return GetTaskDefinitionProxyConfiguration(
       containerName: map['containerName'] as String,
       properties: (map['properties'] as Map).cast<String, String>(),
@@ -37,3 +35,4 @@ class GetTaskDefinitionProxyConfiguration {
     );
   }
 }
+

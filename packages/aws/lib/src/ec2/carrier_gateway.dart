@@ -119,19 +119,14 @@ import 'carrier_gateway_args.dart';
 class CarrierGateway extends pulumi.CustomResource {
   /// The ARN of the carrier gateway.
   late final pulumi.Output<String> arn;
-
   /// The AWS account ID of the owner of the carrier gateway.
   late final pulumi.Output<String> ownerId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The ID of the VPC to associate with the carrier gateway.
   late final pulumi.Output<String> vpcId;
 

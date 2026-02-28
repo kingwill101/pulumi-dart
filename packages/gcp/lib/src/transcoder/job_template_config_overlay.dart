@@ -8,7 +8,6 @@ class JobTemplateConfigOverlay {
   /// List of animations. The list should be chronological, without any time overlap.
   /// Structure is documented below.
   final List<JobTemplateConfigOverlayAnimation>? animations;
-
   /// Image overlay.
   /// Structure is documented below.
   final JobTemplateConfigOverlayImage? image;
@@ -22,32 +21,17 @@ class JobTemplateConfigOverlay {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final animationsValue = animations;
-    if (animationsValue != null) {
-      map['animations'] = pulumi.Input.encodeList<
-          JobTemplateConfigOverlayAnimation,
-          Map<String, dynamic>>(animationsValue, (value) => value.toMap());
-    }
-    final imageValue = image;
-    if (imageValue != null) {
-      map['image'] = imageValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'animations': ?animations == null ? null : pulumi.Input.encodeList<JobTemplateConfigOverlayAnimation, Map<String, dynamic>>(animations!, (value) => value.toMap()),
+      'image': ?image == null ? null : image!.toMap(),
+    };
   }
 
   factory JobTemplateConfigOverlay.fromMap(Map<String, dynamic> map) {
     return JobTemplateConfigOverlay(
-      animations: map['animations'] == null
-          ? null
-          : pulumi.Input.decodeList<JobTemplateConfigOverlayAnimation>(
-              map['animations'],
-              (value) => JobTemplateConfigOverlayAnimation.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      image: map['image'] == null
-          ? null
-          : JobTemplateConfigOverlayImage.fromMap(
-              (map['image'] as Map).cast<String, dynamic>()),
+      animations: map['animations'] == null ? null : pulumi.Input.decodeList<JobTemplateConfigOverlayAnimation>(map['animations'], (value) => JobTemplateConfigOverlayAnimation.fromMap((value as Map).cast<String, dynamic>())),
+      image: map['image'] == null ? null : JobTemplateConfigOverlayImage.fromMap((map['image'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

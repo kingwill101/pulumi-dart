@@ -8,7 +8,6 @@ import 'source_response.dart';
 class DataSourceRestrictionResponse {
   /// Filter options restricting the results. If multiple filters are present, they are grouped by object type before joining. Filters with the same object type are joined conjunctively, then the resulting expressions are joined disjunctively. The maximum number of elements is 20. NOTE: Suggest API supports only few filters at the moment: "objecttype", "type" and "mimetype". For now, schema specific filters cannot be used to filter suggestions.
   final List<FilterOptionsResponse> filterOptions;
-
   /// The source of restriction.
   final SourceResponse source;
 
@@ -21,22 +20,17 @@ class DataSourceRestrictionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['filterOptions'] =
-        pulumi.Input.encodeList<FilterOptionsResponse, Map<String, dynamic>>(
-            filterOptions, (value) => value.toMap());
-    map['source'] = source.toMap();
-    return map;
+    return <String, dynamic>{
+      'filterOptions': pulumi.Input.encodeList<FilterOptionsResponse, Map<String, dynamic>>(filterOptions, (value) => value.toMap()),
+      'source': source.toMap(),
+    };
   }
 
   factory DataSourceRestrictionResponse.fromMap(Map<String, dynamic> map) {
     return DataSourceRestrictionResponse(
-      filterOptions: pulumi.Input.decodeList<FilterOptionsResponse>(
-          map['filterOptions'],
-          (value) => FilterOptionsResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      source: SourceResponse.fromMap(
-          (map['source'] as Map).cast<String, dynamic>()),
+      filterOptions: pulumi.Input.decodeList<FilterOptionsResponse>(map['filterOptions'], (value) => FilterOptionsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      source: SourceResponse.fromMap((map['source'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

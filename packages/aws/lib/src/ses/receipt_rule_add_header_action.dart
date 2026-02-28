@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ReceiptRuleAddHeaderAction {
   /// The name of the header to add
   final String headerName;
-
   /// The value of the header to add
   final String headerValue;
-
   /// The position of the action in the receipt rule
   final int position;
 
@@ -21,11 +20,11 @@ class ReceiptRuleAddHeaderAction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['headerName'] = headerName;
-    map['headerValue'] = headerValue;
-    map['position'] = position;
-    return map;
+    return <String, dynamic>{
+      'headerName': headerName,
+      'headerValue': headerValue,
+      'position': position,
+    };
   }
 
   factory ReceiptRuleAddHeaderAction.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class ReceiptRuleAddHeaderAction {
     );
   }
 }
+

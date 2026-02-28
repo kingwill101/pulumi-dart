@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkInterfaceSecurityGroupAttachmentArgs {
   /// The ID of the network interface to attach to.
   final pulumi.Input<String> networkInterfaceId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The ID of the security group.
   final pulumi.Input<String> securityGroupId;
 
@@ -24,23 +22,20 @@ class NetworkInterfaceSecurityGroupAttachmentArgs {
     required String networkInterfaceId,
     String? region,
     required String securityGroupId,
-  })  : networkInterfaceId = pulumi.Input.asInput<String>(networkInterfaceId),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        securityGroupId = pulumi.Input.asInput<String>(securityGroupId);
+  }) :
+      networkInterfaceId = pulumi.Input.asInput<String>(networkInterfaceId),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      securityGroupId = pulumi.Input.asInput<String>(securityGroupId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['networkInterfaceId'] = networkInterfaceId;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['securityGroupId'] = securityGroupId;
-    return map;
+    return <String, dynamic>{
+      'networkInterfaceId': networkInterfaceId,
+      'region': ?region,
+      'securityGroupId': securityGroupId,
+    };
   }
 
-  factory NetworkInterfaceSecurityGroupAttachmentArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory NetworkInterfaceSecurityGroupAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceSecurityGroupAttachmentArgs(
       networkInterfaceId: map['networkInterfaceId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
@@ -48,3 +43,4 @@ class NetworkInterfaceSecurityGroupAttachmentArgs {
     );
   }
 }
+

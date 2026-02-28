@@ -11,10 +11,8 @@ class CellArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> cellName;
-
   /// List of cell arns to add as nested fault domains within this cell.
   final pulumi.Input<List<String>>? cells;
-
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -26,32 +24,25 @@ class CellArgs {
     required String cellName,
     List<String>? cells,
     Map<String, String>? tags,
-  })  : cellName = pulumi.Input.asInput<String>(cellName),
-        cells = pulumi.Input.asOptionalInput<List<String>>(cells),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      cellName = pulumi.Input.asInput<String>(cellName),
+      cells = pulumi.Input.asOptionalInput<List<String>>(cells),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cellName'] = cellName;
-    final cellsValue = cells;
-    if (cellsValue != null) {
-      map['cells'] = cellsValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cellName': cellName,
+      'cells': ?cells,
+      'tags': ?tags,
+    };
   }
 
   factory CellArgs.fromMap(Map<String, dynamic> map) {
     return CellArgs(
       cellName: map['cellName'] as String,
-      cells:
-          map['cells'] == null ? null : (map['cells'] as List).cast<String>(),
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      cells: map['cells'] == null ? null : (map['cells'] as List).cast<String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

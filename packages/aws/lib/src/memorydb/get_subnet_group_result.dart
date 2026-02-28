@@ -1,24 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSubnetGroup.
 class GetSubnetGroupResult {
   /// ARN of the subnet group.
   final String arn;
-
   /// Description of the subnet group.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String region;
-
   /// Set of VPC Subnet ID-s of the subnet group.
   final List<String> subnetIds;
-
   /// Map of tags assigned to the subnet group.
   final Map<String, String> tags;
-
   /// VPC in which the subnet group exists.
   final String vpcId;
 
@@ -43,16 +39,16 @@ class GetSubnetGroupResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['description'] = description;
-    map['id'] = id;
-    map['name'] = name;
-    map['region'] = region;
-    map['subnetIds'] = subnetIds;
-    map['tags'] = tags;
-    map['vpcId'] = vpcId;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'description': description,
+      'id': id,
+      'name': name,
+      'region': region,
+      'subnetIds': subnetIds,
+      'tags': tags,
+      'vpcId': vpcId,
+    };
   }
 
   factory GetSubnetGroupResult.fromMap(Map<String, dynamic> map) {
@@ -68,3 +64,4 @@ class GetSubnetGroupResult {
     );
   }
 }
+

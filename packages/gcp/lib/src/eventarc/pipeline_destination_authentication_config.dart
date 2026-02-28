@@ -10,7 +10,6 @@ class PipelineDestinationAuthenticationConfig {
   /// support Google OIDC.
   /// Structure is documented below.
   final PipelineDestinationAuthenticationConfigGoogleOidc? googleOidc;
-
   /// Contains information needed for generating an
   /// [OAuth token](https://developers.google.com/identity/protocols/OAuth2).
   /// This type of authorization should generally only be used when calling
@@ -27,29 +26,17 @@ class PipelineDestinationAuthenticationConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final googleOidcValue = googleOidc;
-    if (googleOidcValue != null) {
-      map['googleOidc'] = googleOidcValue.toMap();
-    }
-    final oauthTokenValue = oauthToken;
-    if (oauthTokenValue != null) {
-      map['oauthToken'] = oauthTokenValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'googleOidc': ?googleOidc == null ? null : googleOidc!.toMap(),
+      'oauthToken': ?oauthToken == null ? null : oauthToken!.toMap(),
+    };
   }
 
-  factory PipelineDestinationAuthenticationConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory PipelineDestinationAuthenticationConfig.fromMap(Map<String, dynamic> map) {
     return PipelineDestinationAuthenticationConfig(
-      googleOidc: map['googleOidc'] == null
-          ? null
-          : PipelineDestinationAuthenticationConfigGoogleOidc.fromMap(
-              (map['googleOidc'] as Map).cast<String, dynamic>()),
-      oauthToken: map['oauthToken'] == null
-          ? null
-          : PipelineDestinationAuthenticationConfigOauthToken.fromMap(
-              (map['oauthToken'] as Map).cast<String, dynamic>()),
+      googleOidc: map['googleOidc'] == null ? null : PipelineDestinationAuthenticationConfigGoogleOidc.fromMap((map['googleOidc'] as Map).cast<String, dynamic>()),
+      oauthToken: map['oauthToken'] == null ? null : PipelineDestinationAuthenticationConfigOauthToken.fromMap((map['oauthToken'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

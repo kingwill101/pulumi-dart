@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MultiplexProgramMultiplexProgramSettingsVideoSettingsStatmuxSettings {
   /// Maximum bitrate.
   final int? maximumBitrate;
-
   /// Minimum bitrate.
   final int? minimumBitrate;
-
   /// Priority value.
   final int? priority;
 
@@ -21,30 +20,19 @@ class MultiplexProgramMultiplexProgramSettingsVideoSettingsStatmuxSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final maximumBitrateValue = maximumBitrate;
-    if (maximumBitrateValue != null) {
-      map['maximumBitrate'] = maximumBitrateValue;
-    }
-    final minimumBitrateValue = minimumBitrate;
-    if (minimumBitrateValue != null) {
-      map['minimumBitrate'] = minimumBitrateValue;
-    }
-    final priorityValue = priority;
-    if (priorityValue != null) {
-      map['priority'] = priorityValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'maximumBitrate': ?maximumBitrate,
+      'minimumBitrate': ?minimumBitrate,
+      'priority': ?priority,
+    };
   }
 
-  factory MultiplexProgramMultiplexProgramSettingsVideoSettingsStatmuxSettings.fromMap(
-      Map<String, dynamic> map) {
+  factory MultiplexProgramMultiplexProgramSettingsVideoSettingsStatmuxSettings.fromMap(Map<String, dynamic> map) {
     return MultiplexProgramMultiplexProgramSettingsVideoSettingsStatmuxSettings(
-      maximumBitrate:
-          map['maximumBitrate'] == null ? null : map['maximumBitrate'] as int,
-      minimumBitrate:
-          map['minimumBitrate'] == null ? null : map['minimumBitrate'] as int,
+      maximumBitrate: map['maximumBitrate'] == null ? null : map['maximumBitrate'] as int,
+      minimumBitrate: map['minimumBitrate'] == null ? null : map['minimumBitrate'] as int,
       priority: map['priority'] == null ? null : map['priority'] as int,
     );
   }
 }
+

@@ -13,7 +13,7 @@ enum InstancePropertiesPrivateIpv6GoogleAccess {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown InstancePropertiesPrivateIpv6GoogleAccess value: $value');
+    throw ArgumentError('Unknown InstancePropertiesPrivateIpv6GoogleAccess value: $value');
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetProductFilter {
   /// Product attribute name that you want to filter on.
   final String field;
-
   /// Product attribute value that you want to filter on.
   final String value;
 
@@ -16,10 +16,10 @@ class GetProductFilter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['field'] = field;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'field': field,
+      'value': value,
+    };
   }
 
   factory GetProductFilter.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetProductFilter {
     );
   }
 }
+

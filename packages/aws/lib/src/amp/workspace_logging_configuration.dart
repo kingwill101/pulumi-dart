@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WorkspaceLoggingConfiguration {
   /// The ARN of the CloudWatch log group to which the vended log data will be published. This log group must exist. The ARN must end with `:*`
   final String logGroupArn;
@@ -11,9 +12,9 @@ class WorkspaceLoggingConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['logGroupArn'] = logGroupArn;
-    return map;
+    return <String, dynamic>{
+      'logGroupArn': logGroupArn,
+    };
   }
 
   factory WorkspaceLoggingConfiguration.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class WorkspaceLoggingConfiguration {
     );
   }
 }
+

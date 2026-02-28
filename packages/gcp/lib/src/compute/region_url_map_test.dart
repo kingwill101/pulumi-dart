@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RegionUrlMapTest {
   /// Description of this test case.
   final String? description;
-
   /// Host portion of the URL.
   final String host;
-
   /// Path portion of the URL.
   final String path;
-
   /// A reference to expected RegionBackendService resource the given URL should be mapped to.
   final String service;
 
@@ -26,24 +24,21 @@ class RegionUrlMapTest {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    map['host'] = host;
-    map['path'] = path;
-    map['service'] = service;
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'host': host,
+      'path': path,
+      'service': service,
+    };
   }
 
   factory RegionUrlMapTest.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapTest(
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       host: map['host'] as String,
       path: map['path'] as String,
       service: map['service'] as String,
     );
   }
 }
+

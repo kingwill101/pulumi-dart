@@ -8,7 +8,6 @@ import 'cluster_upgrade_gkeupgrade_state_response.dart';
 class ClusterUpgradeGKEUpgradeFeatureStateResponse {
   /// Current conditions of the feature.
   final List<ClusterUpgradeGKEUpgradeFeatureConditionResponse> conditions;
-
   /// Upgrade state. It will eventually replace `state`.
   final List<ClusterUpgradeGKEUpgradeStateResponse> upgradeState;
 
@@ -21,29 +20,17 @@ class ClusterUpgradeGKEUpgradeFeatureStateResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['conditions'] = pulumi.Input.encodeList<
-        ClusterUpgradeGKEUpgradeFeatureConditionResponse,
-        Map<String, dynamic>>(conditions, (value) => value.toMap());
-    map['upgradeState'] = pulumi.Input.encodeList<
-        ClusterUpgradeGKEUpgradeStateResponse,
-        Map<String, dynamic>>(upgradeState, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'conditions': pulumi.Input.encodeList<ClusterUpgradeGKEUpgradeFeatureConditionResponse, Map<String, dynamic>>(conditions, (value) => value.toMap()),
+      'upgradeState': pulumi.Input.encodeList<ClusterUpgradeGKEUpgradeStateResponse, Map<String, dynamic>>(upgradeState, (value) => value.toMap()),
+    };
   }
 
-  factory ClusterUpgradeGKEUpgradeFeatureStateResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterUpgradeGKEUpgradeFeatureStateResponse.fromMap(Map<String, dynamic> map) {
     return ClusterUpgradeGKEUpgradeFeatureStateResponse(
-      conditions: pulumi.Input.decodeList<
-              ClusterUpgradeGKEUpgradeFeatureConditionResponse>(
-          map['conditions'],
-          (value) => ClusterUpgradeGKEUpgradeFeatureConditionResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      upgradeState:
-          pulumi.Input.decodeList<ClusterUpgradeGKEUpgradeStateResponse>(
-              map['upgradeState'],
-              (value) => ClusterUpgradeGKEUpgradeStateResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      conditions: pulumi.Input.decodeList<ClusterUpgradeGKEUpgradeFeatureConditionResponse>(map['conditions'], (value) => ClusterUpgradeGKEUpgradeFeatureConditionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      upgradeState: pulumi.Input.decodeList<ClusterUpgradeGKEUpgradeStateResponse>(map['upgradeState'], (value) => ClusterUpgradeGKEUpgradeStateResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

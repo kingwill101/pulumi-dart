@@ -19,39 +19,19 @@ class ProvenanceBuilderContaineranalysisV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final builderDependenciesValue = builderDependencies;
-    if (builderDependenciesValue != null) {
-      map['builderDependencies'] = pulumi.Input.encodeList<
-              ResourceDescriptorContaineranalysisV1alpha1,
-              Map<String, dynamic>>(
-          builderDependenciesValue, (value) => value.toMap());
-    }
-    final idValue = id;
-    if (idValue != null) {
-      map['id'] = idValue;
-    }
-    final versionValue = version;
-    if (versionValue != null) {
-      map['version'] = versionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'builderDependencies': ?builderDependencies == null ? null : pulumi.Input.encodeList<ResourceDescriptorContaineranalysisV1alpha1, Map<String, dynamic>>(builderDependencies!, (value) => value.toMap()),
+      'id': ?id,
+      'version': ?version,
+    };
   }
 
-  factory ProvenanceBuilderContaineranalysisV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory ProvenanceBuilderContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return ProvenanceBuilderContaineranalysisV1alpha1(
-      builderDependencies: map['builderDependencies'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  ResourceDescriptorContaineranalysisV1alpha1>(
-              map['builderDependencies'],
-              (value) => ResourceDescriptorContaineranalysisV1alpha1.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      builderDependencies: map['builderDependencies'] == null ? null : pulumi.Input.decodeList<ResourceDescriptorContaineranalysisV1alpha1>(map['builderDependencies'], (value) => ResourceDescriptorContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] == null ? null : map['id'] as String,
-      version: map['version'] == null
-          ? null
-          : (map['version'] as Map).cast<String, String>(),
+      version: map['version'] == null ? null : (map['version'] as Map).cast<String, String>(),
     );
   }
 }
+

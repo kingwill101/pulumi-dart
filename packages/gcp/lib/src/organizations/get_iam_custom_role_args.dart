@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIamCustomRoleArgs {
   /// The numeric ID of the organization in which you want to create a custom role.
   final pulumi.Input<String> orgId;
-
   /// The role id that has been used for this role.
   final pulumi.Input<String> roleId;
 
@@ -19,14 +18,15 @@ class GetIamCustomRoleArgs {
   GetIamCustomRoleArgs({
     required String orgId,
     required String roleId,
-  })  : orgId = pulumi.Input.asInput<String>(orgId),
-        roleId = pulumi.Input.asInput<String>(roleId);
+  }) :
+      orgId = pulumi.Input.asInput<String>(orgId),
+      roleId = pulumi.Input.asInput<String>(roleId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['orgId'] = orgId;
-    map['roleId'] = roleId;
-    return map;
+    return <String, dynamic>{
+      'orgId': orgId,
+      'roleId': roleId,
+    };
   }
 
   factory GetIamCustomRoleArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +36,4 @@ class GetIamCustomRoleArgs {
     );
   }
 }
+

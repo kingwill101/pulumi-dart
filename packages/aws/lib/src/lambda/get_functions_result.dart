@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getFunctions.
 class GetFunctionsResult {
   /// List of Lambda Function ARNs.
   final List<String> functionArns;
-
   /// List of Lambda Function names.
   final List<String> functionNames;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -25,12 +24,12 @@ class GetFunctionsResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['functionArns'] = functionArns;
-    map['functionNames'] = functionNames;
-    map['id'] = id;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'functionArns': functionArns,
+      'functionNames': functionNames,
+      'id': id,
+      'region': region,
+    };
   }
 
   factory GetFunctionsResult.fromMap(Map<String, dynamic> map) {
@@ -42,3 +41,4 @@ class GetFunctionsResult {
     );
   }
 }
+

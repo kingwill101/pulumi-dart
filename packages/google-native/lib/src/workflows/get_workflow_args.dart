@@ -22,33 +22,28 @@ class GetWorkflowArgs {
     String? project,
     String? revisionId,
     required String workflowId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        revisionId = pulumi.Input.asOptionalInput<String>(revisionId),
-        workflowId = pulumi.Input.asInput<String>(workflowId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      revisionId = pulumi.Input.asOptionalInput<String>(revisionId),
+      workflowId = pulumi.Input.asInput<String>(workflowId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final revisionIdValue = revisionId;
-    if (revisionIdValue != null) {
-      map['revisionId'] = revisionIdValue;
-    }
-    map['workflowId'] = workflowId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+      'revisionId': ?revisionId,
+      'workflowId': workflowId,
+    };
   }
 
   factory GetWorkflowArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkflowArgs(
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      revisionId:
-          map['revisionId'] == null ? null : map['revisionId'] as String,
+      revisionId: map['revisionId'] == null ? null : map['revisionId'] as String,
       workflowId: map['workflowId'] as String,
     );
   }
 }
+

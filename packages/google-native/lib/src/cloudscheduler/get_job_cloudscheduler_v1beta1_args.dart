@@ -19,19 +19,17 @@ class GetJobCloudschedulerV1beta1Args {
     required String jobId,
     required String location,
     String? project,
-  })  : jobId = pulumi.Input.asInput<String>(jobId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      jobId = pulumi.Input.asInput<String>(jobId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['jobId'] = jobId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'jobId': jobId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetJobCloudschedulerV1beta1Args.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetJobCloudschedulerV1beta1Args {
     );
   }
 }
+

@@ -17,25 +17,15 @@ class SecurityProfileUrlFilteringProfile {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final urlFiltersValue = urlFilters;
-    if (urlFiltersValue != null) {
-      map['urlFilters'] = pulumi.Input.encodeList<
-          SecurityProfileUrlFilteringProfileUrlFilter,
-          Map<String, dynamic>>(urlFiltersValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'urlFilters': ?urlFilters == null ? null : pulumi.Input.encodeList<SecurityProfileUrlFilteringProfileUrlFilter, Map<String, dynamic>>(urlFilters!, (value) => value.toMap()),
+    };
   }
 
   factory SecurityProfileUrlFilteringProfile.fromMap(Map<String, dynamic> map) {
     return SecurityProfileUrlFilteringProfile(
-      urlFilters: map['urlFilters'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  SecurityProfileUrlFilteringProfileUrlFilter>(
-              map['urlFilters'],
-              (value) => SecurityProfileUrlFilteringProfileUrlFilter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      urlFilters: map['urlFilters'] == null ? null : pulumi.Input.decodeList<SecurityProfileUrlFilteringProfileUrlFilter>(map['urlFilters'], (value) => SecurityProfileUrlFilteringProfileUrlFilter.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

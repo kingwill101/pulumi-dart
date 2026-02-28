@@ -16,24 +16,22 @@ class GetCompositeTypeDeploymentmanagerV2betaArgs {
   GetCompositeTypeDeploymentmanagerV2betaArgs({
     required String compositeType,
     String? project,
-  })  : compositeType = pulumi.Input.asInput<String>(compositeType),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      compositeType = pulumi.Input.asInput<String>(compositeType),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['compositeType'] = compositeType;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'compositeType': compositeType,
+      'project': ?project,
+    };
   }
 
-  factory GetCompositeTypeDeploymentmanagerV2betaArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetCompositeTypeDeploymentmanagerV2betaArgs.fromMap(Map<String, dynamic> map) {
     return GetCompositeTypeDeploymentmanagerV2betaArgs(
       compositeType: map['compositeType'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

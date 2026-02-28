@@ -693,33 +693,24 @@ import 'api_event_config.dart';
 class Api extends pulumi.CustomResource {
   /// ARN of the Event API.
   late final pulumi.Output<String> apiArn;
-
   /// ID of the Event API.
   late final pulumi.Output<String> apiId;
-
   /// DNS configuration for the Event API.
   late final pulumi.Output<Map<String, String>> dns;
-
   /// Configuration for the Event API. See Event Config below.
   late final pulumi.Output<ApiEventConfig> eventConfig;
-
   /// Name of the Event API.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Contact information for the owner of the Event API.
   late final pulumi.Output<String?> ownerContact;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// ARN of the associated WAF web ACL.
   late final pulumi.Output<String> wafWebAclArn;
   late final pulumi.Output<bool> xrayEnabled;

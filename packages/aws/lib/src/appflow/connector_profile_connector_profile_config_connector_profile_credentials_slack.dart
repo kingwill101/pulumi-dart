@@ -6,8 +6,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlack {
   final String? accessToken;
   final String clientId;
   final String clientSecret;
-  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlackOauthRequest?
-      oauthRequest;
+  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlackOauthRequest? oauthRequest;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlack].
   /// [accessToken] Optional.
@@ -22,31 +21,21 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlack {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final accessTokenValue = accessToken;
-    if (accessTokenValue != null) {
-      map['accessToken'] = accessTokenValue;
-    }
-    map['clientId'] = clientId;
-    map['clientSecret'] = clientSecret;
-    final oauthRequestValue = oauthRequest;
-    if (oauthRequestValue != null) {
-      map['oauthRequest'] = oauthRequestValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'accessToken': ?accessToken,
+      'clientId': clientId,
+      'clientSecret': clientSecret,
+      'oauthRequest': ?oauthRequest == null ? null : oauthRequest!.toMap(),
+    };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlack.fromMap(
-      Map<String, dynamic> map) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlack.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlack(
-      accessToken:
-          map['accessToken'] == null ? null : map['accessToken'] as String,
+      accessToken: map['accessToken'] == null ? null : map['accessToken'] as String,
       clientId: map['clientId'] as String,
       clientSecret: map['clientSecret'] as String,
-      oauthRequest: map['oauthRequest'] == null
-          ? null
-          : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlackOauthRequest
-              .fromMap((map['oauthRequest'] as Map).cast<String, dynamic>()),
+      oauthRequest: map['oauthRequest'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlackOauthRequest.fromMap((map['oauthRequest'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

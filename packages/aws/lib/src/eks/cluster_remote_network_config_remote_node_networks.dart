@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterRemoteNetworkConfigRemoteNodeNetworks {
   /// List of network CIDRs that can contain hybrid nodes.
   final List<String>? cidrs;
@@ -11,19 +12,15 @@ class ClusterRemoteNetworkConfigRemoteNodeNetworks {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cidrsValue = cidrs;
-    if (cidrsValue != null) {
-      map['cidrs'] = cidrsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cidrs': ?cidrs,
+    };
   }
 
-  factory ClusterRemoteNetworkConfigRemoteNodeNetworks.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterRemoteNetworkConfigRemoteNodeNetworks.fromMap(Map<String, dynamic> map) {
     return ClusterRemoteNetworkConfigRemoteNodeNetworks(
-      cidrs:
-          map['cidrs'] == null ? null : (map['cidrs'] as List).cast<String>(),
+      cidrs: map['cidrs'] == null ? null : (map['cidrs'] as List).cast<String>(),
     );
   }
 }
+

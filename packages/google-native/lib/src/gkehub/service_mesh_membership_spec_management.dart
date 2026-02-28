@@ -13,7 +13,7 @@ enum ServiceMeshMembershipSpecManagement {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown ServiceMeshMembershipSpecManagement value: $value');
+    throw ArgumentError('Unknown ServiceMeshMembershipSpecManagement value: $value');
   }
 }
+

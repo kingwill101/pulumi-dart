@@ -16,17 +16,15 @@ class GetInstanceTemplateComputeBetaArgs {
   GetInstanceTemplateComputeBetaArgs({
     required String instanceTemplate,
     String? project,
-  })  : instanceTemplate = pulumi.Input.asInput<String>(instanceTemplate),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      instanceTemplate = pulumi.Input.asInput<String>(instanceTemplate),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['instanceTemplate'] = instanceTemplate;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'instanceTemplate': instanceTemplate,
+      'project': ?project,
+    };
   }
 
   factory GetInstanceTemplateComputeBetaArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetInstanceTemplateComputeBetaArgs {
     );
   }
 }
+

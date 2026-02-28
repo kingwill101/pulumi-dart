@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ServerlessCacheEndpoint {
   /// The DNS hostname of the cache node.
   final String address;
-
   /// The port number that the cache engine is listening on. Set as integer.
   final int port;
 
@@ -16,10 +16,10 @@ class ServerlessCacheEndpoint {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['address'] = address;
-    map['port'] = port;
-    return map;
+    return <String, dynamic>{
+      'address': address,
+      'port': port,
+    };
   }
 
   factory ServerlessCacheEndpoint.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class ServerlessCacheEndpoint {
     );
   }
 }
+

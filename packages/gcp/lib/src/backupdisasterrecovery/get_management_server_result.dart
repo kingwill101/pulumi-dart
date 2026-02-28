@@ -37,37 +37,29 @@ class GetManagementServerResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['location'] = location;
-    map['managementUris'] = pulumi.Input.encodeList<
-        GetManagementServerManagementUri,
-        Map<String, dynamic>>(managementUris, (value) => value.toMap());
-    map['name'] = name;
-    map['networks'] = pulumi.Input.encodeList<GetManagementServerNetwork,
-        Map<String, dynamic>>(networks, (value) => value.toMap());
-    map['oauth2ClientId'] = oauth2ClientId;
-    map['project'] = project;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'location': location,
+      'managementUris': pulumi.Input.encodeList<GetManagementServerManagementUri, Map<String, dynamic>>(managementUris, (value) => value.toMap()),
+      'name': name,
+      'networks': pulumi.Input.encodeList<GetManagementServerNetwork, Map<String, dynamic>>(networks, (value) => value.toMap()),
+      'oauth2ClientId': oauth2ClientId,
+      'project': project,
+      'type': type,
+    };
   }
 
   factory GetManagementServerResult.fromMap(Map<String, dynamic> map) {
     return GetManagementServerResult(
       id: map['id'] as String,
       location: map['location'] as String,
-      managementUris: pulumi.Input.decodeList<GetManagementServerManagementUri>(
-          map['managementUris'],
-          (value) => GetManagementServerManagementUri.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      managementUris: pulumi.Input.decodeList<GetManagementServerManagementUri>(map['managementUris'], (value) => GetManagementServerManagementUri.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      networks: pulumi.Input.decodeList<GetManagementServerNetwork>(
-          map['networks'],
-          (value) => GetManagementServerNetwork.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      networks: pulumi.Input.decodeList<GetManagementServerNetwork>(map['networks'], (value) => GetManagementServerNetwork.fromMap((value as Map).cast<String, dynamic>())),
       oauth2ClientId: map['oauth2ClientId'] as String,
       project: map['project'] as String,
       type: map['type'] as String,
     );
   }
 }
+

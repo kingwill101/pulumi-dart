@@ -14,20 +14,15 @@ class SourceScoringConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final sourceImportanceValue = sourceImportance;
-    if (sourceImportanceValue != null) {
-      map['sourceImportance'] = sourceImportanceValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'sourceImportance': ?sourceImportance == null ? null : sourceImportance!.value,
+    };
   }
 
   factory SourceScoringConfig.fromMap(Map<String, dynamic> map) {
     return SourceScoringConfig(
-      sourceImportance: map['sourceImportance'] == null
-          ? null
-          : SourceScoringConfigSourceImportance.fromValue(
-              map['sourceImportance'] as String),
+      sourceImportance: map['sourceImportance'] == null ? null : SourceScoringConfigSourceImportance.fromValue(map['sourceImportance'] as String),
     );
   }
 }
+

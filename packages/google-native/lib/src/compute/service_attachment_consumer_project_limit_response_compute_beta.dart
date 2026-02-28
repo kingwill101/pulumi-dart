@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ServiceAttachmentConsumerProjectLimitResponseComputeBeta {
   /// The value of the limit to set.
   final int connectionLimit;
-
   /// The network URL for the network to set the limit for.
   final String networkUrl;
-
   /// The project id or number for the project to set the limit for.
   final String projectIdOrNum;
 
@@ -21,15 +20,14 @@ class ServiceAttachmentConsumerProjectLimitResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['connectionLimit'] = connectionLimit;
-    map['networkUrl'] = networkUrl;
-    map['projectIdOrNum'] = projectIdOrNum;
-    return map;
+    return <String, dynamic>{
+      'connectionLimit': connectionLimit,
+      'networkUrl': networkUrl,
+      'projectIdOrNum': projectIdOrNum,
+    };
   }
 
-  factory ServiceAttachmentConsumerProjectLimitResponseComputeBeta.fromMap(
-      Map<String, dynamic> map) {
+  factory ServiceAttachmentConsumerProjectLimitResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return ServiceAttachmentConsumerProjectLimitResponseComputeBeta(
       connectionLimit: map['connectionLimit'] as int,
       networkUrl: map['networkUrl'] as String,
@@ -37,3 +35,4 @@ class ServiceAttachmentConsumerProjectLimitResponseComputeBeta {
     );
   }
 }
+

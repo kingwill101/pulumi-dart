@@ -156,10 +156,8 @@ import 'cidr_location_args.dart';
 class CidrLocation extends pulumi.CustomResource {
   /// CIDR blocks for the location.
   late final pulumi.Output<List<String>> cidrBlocks;
-
   /// The ID of the CIDR collection to update.
   late final pulumi.Output<String> cidrCollectionId;
-
   /// Name for the CIDR location.
   late final pulumi.Output<String> name;
 

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetLaunchTemplateHibernationOption {
   final bool configured;
 
@@ -10,9 +11,9 @@ class GetLaunchTemplateHibernationOption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['configured'] = configured;
-    return map;
+    return <String, dynamic>{
+      'configured': configured,
+    };
   }
 
   factory GetLaunchTemplateHibernationOption.fromMap(Map<String, dynamic> map) {
@@ -21,3 +22,4 @@ class GetLaunchTemplateHibernationOption {
     );
   }
 }
+

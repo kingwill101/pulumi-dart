@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConfigIamPolicyArgs {
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> config;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   final pulumi.Input<String>? project;
@@ -20,17 +19,15 @@ class GetConfigIamPolicyArgs {
   GetConfigIamPolicyArgs({
     required String config,
     String? project,
-  })  : config = pulumi.Input.asInput<String>(config),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      config = pulumi.Input.asInput<String>(config),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['config'] = config;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'config': config,
+      'project': ?project,
+    };
   }
 
   factory GetConfigIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -40,3 +37,4 @@ class GetConfigIamPolicyArgs {
     );
   }
 }
+

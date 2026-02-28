@@ -8,7 +8,6 @@ import 'google_privacy_dlp_v2_discovery_table_modified_cadence_types_item.dart';
 class GooglePrivacyDlpV2DiscoveryTableModifiedCadence {
   /// How frequently data profiles can be updated when tables are modified. Defaults to never.
   final GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency? frequency;
-
   /// The type of events to consider when deciding if the table has been modified and should have the profile updated. Defaults to MODIFIED_TIMESTAMP.
   final List<GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem>? types;
 
@@ -21,35 +20,17 @@ class GooglePrivacyDlpV2DiscoveryTableModifiedCadence {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final frequencyValue = frequency;
-    if (frequencyValue != null) {
-      map['frequency'] = frequencyValue.value;
-    }
-    final typesValue = types;
-    if (typesValue != null) {
-      map['types'] = pulumi.Input.encodeList<
-          GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem,
-          String>(typesValue, (value) => value.value);
-    }
-    return map;
+    return <String, dynamic>{
+      'frequency': ?frequency == null ? null : frequency!.value,
+      'types': ?types == null ? null : pulumi.Input.encodeList<GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem, String>(types!, (value) => value.value),
+    };
   }
 
-  factory GooglePrivacyDlpV2DiscoveryTableModifiedCadence.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2DiscoveryTableModifiedCadence.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DiscoveryTableModifiedCadence(
-      frequency: map['frequency'] == null
-          ? null
-          : GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency.fromValue(
-              map['frequency'] as String),
-      types: map['types'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem>(
-              map['types'],
-              (value) =>
-                  GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem
-                      .fromValue(value as String)),
+      frequency: map['frequency'] == null ? null : GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency.fromValue(map['frequency'] as String),
+      types: map['types'] == null ? null : pulumi.Input.decodeList<GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem>(map['types'], (value) => GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem.fromValue(value as String)),
     );
   }
 }
+

@@ -15,7 +15,7 @@ enum ErrorHandlerErrorCodeAppengineV1beta {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown ErrorHandlerErrorCodeAppengineV1beta value: $value');
+    throw ArgumentError('Unknown ErrorHandlerErrorCodeAppengineV1beta value: $value');
   }
 }
+

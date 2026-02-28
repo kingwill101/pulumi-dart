@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetScriptDagNodeArg {
   /// Name of the argument or property.
   final String name;
-
   /// Boolean if the value is used as a parameter. Defaults to `false`.
   final bool? param;
-
   /// Value of the argument or property.
   final String value;
 
@@ -21,14 +20,11 @@ class GetScriptDagNodeArg {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    final paramValue = param;
-    if (paramValue != null) {
-      map['param'] = paramValue;
-    }
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'param': ?param,
+      'value': value,
+    };
   }
 
   factory GetScriptDagNodeArg.fromMap(Map<String, dynamic> map) {
@@ -39,3 +35,4 @@ class GetScriptDagNodeArg {
     );
   }
 }
+

@@ -1,24 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSecretVersion.
 class GetSecretVersionResult {
   /// ARN of the secret.
   final String arn;
-
   /// Created date of the secret in UTC.
   final String createdDate;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
-
   /// Decrypted part of the protected secret information that was originally provided as a binary.
   final String secretBinary;
   final String secretId;
-
   /// Decrypted part of the protected secret information that was originally provided as a string.
   final String secretString;
-
   /// Unique identifier of this version of the secret.
   final String versionId;
   final String? versionStage;
@@ -49,21 +45,18 @@ class GetSecretVersionResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['createdDate'] = createdDate;
-    map['id'] = id;
-    map['region'] = region;
-    map['secretBinary'] = secretBinary;
-    map['secretId'] = secretId;
-    map['secretString'] = secretString;
-    map['versionId'] = versionId;
-    final versionStageValue = versionStage;
-    if (versionStageValue != null) {
-      map['versionStage'] = versionStageValue;
-    }
-    map['versionStages'] = versionStages;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'createdDate': createdDate,
+      'id': id,
+      'region': region,
+      'secretBinary': secretBinary,
+      'secretId': secretId,
+      'secretString': secretString,
+      'versionId': versionId,
+      'versionStage': ?versionStage,
+      'versionStages': versionStages,
+    };
   }
 
   factory GetSecretVersionResult.fromMap(Map<String, dynamic> map) {
@@ -76,9 +69,9 @@ class GetSecretVersionResult {
       secretId: map['secretId'] as String,
       secretString: map['secretString'] as String,
       versionId: map['versionId'] as String,
-      versionStage:
-          map['versionStage'] == null ? null : map['versionStage'] as String,
+      versionStage: map['versionStage'] == null ? null : map['versionStage'] as String,
       versionStages: (map['versionStages'] as List).cast<String>(),
     );
   }
 }
+

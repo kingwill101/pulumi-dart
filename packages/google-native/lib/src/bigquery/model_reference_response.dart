@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ModelReferenceResponse {
   /// The ID of the dataset containing this model.
   final String datasetId;
-
   /// The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
   final String modelId;
-
   /// The ID of the project containing this model.
   final String project;
 
@@ -21,11 +20,11 @@ class ModelReferenceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['datasetId'] = datasetId;
-    map['modelId'] = modelId;
-    map['project'] = project;
-    return map;
+    return <String, dynamic>{
+      'datasetId': datasetId,
+      'modelId': modelId,
+      'project': project,
+    };
   }
 
   factory ModelReferenceResponse.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class ModelReferenceResponse {
     );
   }
 }
+

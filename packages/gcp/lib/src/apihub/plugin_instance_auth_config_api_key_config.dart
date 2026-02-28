@@ -6,7 +6,6 @@ class PluginInstanceAuthConfigApiKeyConfig {
   /// Secret provides a reference to entries in Secret Manager.
   /// Structure is documented below.
   final PluginInstanceAuthConfigApiKeyConfigApiKey apiKey;
-
   /// The location of the API key.
   /// The default value is QUERY.
   /// Possible values:
@@ -17,7 +16,6 @@ class PluginInstanceAuthConfigApiKeyConfig {
   /// BODY
   /// COOKIE
   final String httpElementLocation;
-
   /// The parameter name of the API key.
   /// E.g. If the API request is "https://example.com/act?api_key=",
   /// "api_key" would be the parameter name.
@@ -34,20 +32,19 @@ class PluginInstanceAuthConfigApiKeyConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['apiKey'] = apiKey.toMap();
-    map['httpElementLocation'] = httpElementLocation;
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'apiKey': apiKey.toMap(),
+      'httpElementLocation': httpElementLocation,
+      'name': name,
+    };
   }
 
-  factory PluginInstanceAuthConfigApiKeyConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory PluginInstanceAuthConfigApiKeyConfig.fromMap(Map<String, dynamic> map) {
     return PluginInstanceAuthConfigApiKeyConfig(
-      apiKey: PluginInstanceAuthConfigApiKeyConfigApiKey.fromMap(
-          (map['apiKey'] as Map).cast<String, dynamic>()),
+      apiKey: PluginInstanceAuthConfigApiKeyConfigApiKey.fromMap((map['apiKey'] as Map).cast<String, dynamic>()),
       httpElementLocation: map['httpElementLocation'] as String,
       name: map['name'] as String,
     );
   }
 }
+

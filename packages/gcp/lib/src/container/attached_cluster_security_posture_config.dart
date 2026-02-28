@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AttachedClusterSecurityPostureConfig {
   /// Sets the mode of the Kubernetes security posture API's workload vulnerability scanning.
   /// Possible values are: `VULNERABILITY_DISABLED`, `VULNERABILITY_ENTERPRISE`.
@@ -12,15 +13,15 @@ class AttachedClusterSecurityPostureConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['vulnerabilityMode'] = vulnerabilityMode;
-    return map;
+    return <String, dynamic>{
+      'vulnerabilityMode': vulnerabilityMode,
+    };
   }
 
-  factory AttachedClusterSecurityPostureConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory AttachedClusterSecurityPostureConfig.fromMap(Map<String, dynamic> map) {
     return AttachedClusterSecurityPostureConfig(
       vulnerabilityMode: map['vulnerabilityMode'] as String,
     );
   }
 }
+

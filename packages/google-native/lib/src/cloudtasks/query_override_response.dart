@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// QueryOverride. Query message defines query override for HTTP targets.
 class QueryOverrideResponse {
   /// The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string.
@@ -12,9 +13,9 @@ class QueryOverrideResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['queryParams'] = queryParams;
-    return map;
+    return <String, dynamic>{
+      'queryParams': queryParams,
+    };
   }
 
   factory QueryOverrideResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class QueryOverrideResponse {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Contains information required to contact CA service.
 class CertificateAuthorityServiceConfigResponse {
   /// A CA pool resource used to issue a certificate. The CA pool string has a relative resource path following the form "projects/{project}/locations/{location}/caPools/{ca_pool}".
@@ -12,15 +13,15 @@ class CertificateAuthorityServiceConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['caPool'] = caPool;
-    return map;
+    return <String, dynamic>{
+      'caPool': caPool,
+    };
   }
 
-  factory CertificateAuthorityServiceConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory CertificateAuthorityServiceConfigResponse.fromMap(Map<String, dynamic> map) {
     return CertificateAuthorityServiceConfigResponse(
       caPool: map['caPool'] as String,
     );
   }
 }
+

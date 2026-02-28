@@ -147,19 +147,14 @@ import 'domain_entry_args.dart';
 class DomainEntry extends pulumi.CustomResource {
   /// Name of the Lightsail domain in which to create the entry.
   late final pulumi.Output<String> domainName;
-
   /// Whether the entry should be an alias. Default: `false`.
   late final pulumi.Output<bool?> isAlias;
-
   /// Name of the entry record.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Target of the domain entry.
   late final pulumi.Output<String> target;
-
   /// Type of record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `NS`, `SOA`, `SRV`, `TXT`.
   ///
   /// The following arguments are optional:

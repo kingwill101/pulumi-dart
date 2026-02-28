@@ -13,7 +13,7 @@ enum ModelTrainingStateRetailV2alpha {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown ModelTrainingStateRetailV2alpha value: $value');
+    throw ArgumentError('Unknown ModelTrainingStateRetailV2alpha value: $value');
   }
 }
+

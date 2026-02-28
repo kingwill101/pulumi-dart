@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getService.
 class GetServiceResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
-
   /// Code of the service.
   final String serviceCode;
   final String serviceName;
@@ -23,12 +23,12 @@ class GetServiceResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['region'] = region;
-    map['serviceCode'] = serviceCode;
-    map['serviceName'] = serviceName;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'region': region,
+      'serviceCode': serviceCode,
+      'serviceName': serviceName,
+    };
   }
 
   factory GetServiceResult.fromMap(Map<String, dynamic> map) {
@@ -40,3 +40,4 @@ class GetServiceResult {
     );
   }
 }
+

@@ -1,21 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetPortfolioConstraintsDetail {
   /// Identifier of the constraint.
   final String constraintId;
-
   /// Description of the constraint.
   final String description;
   final String owner;
-
   /// Portfolio identifier.
   ///
   /// The following arguments are optional:
   final String portfolioId;
-
   /// Product identifier.
   final String productId;
-
   /// Type of constraint. Valid values are `LAUNCH`, `NOTIFICATION`, `STACKSET`, and `TEMPLATE`.
   final String type;
 
@@ -36,14 +33,14 @@ class GetPortfolioConstraintsDetail {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['constraintId'] = constraintId;
-    map['description'] = description;
-    map['owner'] = owner;
-    map['portfolioId'] = portfolioId;
-    map['productId'] = productId;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'constraintId': constraintId,
+      'description': description,
+      'owner': owner,
+      'portfolioId': portfolioId,
+      'productId': productId,
+      'type': type,
+    };
   }
 
   factory GetPortfolioConstraintsDetail.fromMap(Map<String, dynamic> map) {
@@ -57,3 +54,4 @@ class GetPortfolioConstraintsDetail {
     );
   }
 }
+

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Query terms that we want to match on.
 class GoogleCloudRetailV2alphaConditionQueryTerm {
   /// Whether this is supposed to be a full or partial match.
   final bool? fullMatch;
-
   /// The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. For example, "a b c" is 3 terms and allowed, but " a b c d" is 4 terms and not allowed for a partial match.
   final String? value;
 
@@ -17,23 +17,17 @@ class GoogleCloudRetailV2alphaConditionQueryTerm {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final fullMatchValue = fullMatch;
-    if (fullMatchValue != null) {
-      map['fullMatch'] = fullMatchValue;
-    }
-    final valueValue = value;
-    if (valueValue != null) {
-      map['value'] = valueValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'fullMatch': ?fullMatch,
+      'value': ?value,
+    };
   }
 
-  factory GoogleCloudRetailV2alphaConditionQueryTerm.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudRetailV2alphaConditionQueryTerm.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaConditionQueryTerm(
       fullMatch: map['fullMatch'] == null ? null : map['fullMatch'] as bool,
       value: map['value'] == null ? null : map['value'] as String,
     );
   }
 }
+

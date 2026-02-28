@@ -13,7 +13,7 @@ enum CustomConstraintMethodTypesItem {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown CustomConstraintMethodTypesItem value: $value');
+    throw ArgumentError('Unknown CustomConstraintMethodTypesItem value: $value');
   }
 }
+

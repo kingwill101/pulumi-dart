@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetConnectorSftpConfig {
   /// List of the public portions of the host keys that are used to identify the servers the connector is connected to.
   final List<String> trustedHostKeys;
-
   /// Identifier for the secret in AWS Secrets Manager that contains the SFTP user's private key, and/or password.
   final String userSecretId;
 
@@ -16,10 +16,10 @@ class GetConnectorSftpConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['trustedHostKeys'] = trustedHostKeys;
-    map['userSecretId'] = userSecretId;
-    return map;
+    return <String, dynamic>{
+      'trustedHostKeys': trustedHostKeys,
+      'userSecretId': userSecretId,
+    };
   }
 
   factory GetConnectorSftpConfig.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetConnectorSftpConfig {
     );
   }
 }
+

@@ -14,15 +14,15 @@ class AuthorityResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['hint'] = hint.toMap();
-    return map;
+    return <String, dynamic>{
+      'hint': hint.toMap(),
+    };
   }
 
   factory AuthorityResponse.fromMap(Map<String, dynamic> map) {
     return AuthorityResponse(
-      hint: HintResponseContaineranalysisV1beta1.fromMap(
-          (map['hint'] as Map).cast<String, dynamic>()),
+      hint: HintResponseContaineranalysisV1beta1.fromMap((map['hint'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

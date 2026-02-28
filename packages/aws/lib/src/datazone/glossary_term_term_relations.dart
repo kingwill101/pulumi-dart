@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GlossaryTermTermRelations {
   /// String array that calssifies the term relations.
   final List<String>? classifies;
@@ -14,24 +15,17 @@ class GlossaryTermTermRelations {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final classifiesValue = classifies;
-    if (classifiesValue != null) {
-      map['classifies'] = classifiesValue;
-    }
-    final isAsValue = isAs;
-    if (isAsValue != null) {
-      map['isAs'] = isAsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'classifies': ?classifies,
+      'isAs': ?isAs,
+    };
   }
 
   factory GlossaryTermTermRelations.fromMap(Map<String, dynamic> map) {
     return GlossaryTermTermRelations(
-      classifies: map['classifies'] == null
-          ? null
-          : (map['classifies'] as List).cast<String>(),
+      classifies: map['classifies'] == null ? null : (map['classifies'] as List).cast<String>(),
       isAs: map['isAs'] == null ? null : (map['isAs'] as List).cast<String>(),
     );
   }
 }
+

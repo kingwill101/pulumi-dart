@@ -13,21 +13,19 @@ class GetProjectIamPolicyCloudresourcemanagerV3Args {
   /// [project] Optional.
   GetProjectIamPolicyCloudresourcemanagerV3Args({
     String? project,
-  }) : project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+    };
   }
 
-  factory GetProjectIamPolicyCloudresourcemanagerV3Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetProjectIamPolicyCloudresourcemanagerV3Args.fromMap(Map<String, dynamic> map) {
     return GetProjectIamPolicyCloudresourcemanagerV3Args(
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

@@ -14,12 +14,13 @@ class OrganizationsAccessArgs {
   /// [enabled] Whether to enable AWS Organizations access.
   OrganizationsAccessArgs({
     required bool enabled,
-  }) : enabled = pulumi.Input.asInput<bool>(enabled);
+  }) :
+      enabled = pulumi.Input.asInput<bool>(enabled);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory OrganizationsAccessArgs.fromMap(Map<String, dynamic> map) {
@@ -28,3 +29,4 @@ class OrganizationsAccessArgs {
     );
   }
 }
+

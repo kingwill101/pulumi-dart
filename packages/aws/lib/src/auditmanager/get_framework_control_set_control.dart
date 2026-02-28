@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetFrameworkControlSetControl {
   final String id;
 
@@ -10,9 +11,9 @@ class GetFrameworkControlSetControl {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory GetFrameworkControlSetControl.fromMap(Map<String, dynamic> map) {
@@ -21,3 +22,4 @@ class GetFrameworkControlSetControl {
     );
   }
 }
+

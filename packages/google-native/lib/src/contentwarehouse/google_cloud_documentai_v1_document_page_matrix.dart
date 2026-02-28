@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Representation for transformation matrix, intended to be compatible and used with OpenCV format for image manipulation.
 class GoogleCloudDocumentaiV1DocumentPageMatrix {
   /// Number of columns in the matrix.
   final int? cols;
-
   /// The matrix data.
   final String? data;
-
   /// Number of rows in the matrix.
   final int? rows;
-
   /// This encodes information about what data type the matrix uses. For example, 0 (CV_8U) is an unsigned 8-bit image. For the full list of OpenCV primitive data types, please refer to https://docs.opencv.org/4.3.0/d1/d1b/group__core__hal__interface.html
   final int? type;
 
@@ -27,28 +25,15 @@ class GoogleCloudDocumentaiV1DocumentPageMatrix {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final colsValue = cols;
-    if (colsValue != null) {
-      map['cols'] = colsValue;
-    }
-    final dataValue = data;
-    if (dataValue != null) {
-      map['data'] = dataValue;
-    }
-    final rowsValue = rows;
-    if (rowsValue != null) {
-      map['rows'] = rowsValue;
-    }
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cols': ?cols,
+      'data': ?data,
+      'rows': ?rows,
+      'type': ?type,
+    };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentPageMatrix.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentPageMatrix.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageMatrix(
       cols: map['cols'] == null ? null : map['cols'] as int,
       data: map['data'] == null ? null : map['data'] as String,
@@ -57,3 +42,4 @@ class GoogleCloudDocumentaiV1DocumentPageMatrix {
     );
   }
 }
+

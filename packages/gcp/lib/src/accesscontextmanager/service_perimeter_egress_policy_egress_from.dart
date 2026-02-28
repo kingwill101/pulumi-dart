@@ -10,17 +10,14 @@ class ServicePerimeterEgressPolicyEgressFrom {
   /// that have the prefix user, group and serviceAccount in
   /// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
   final List<String>? identities;
-
   /// Specifies the type of identities that are allowed access to outside the
   /// perimeter. If left unspecified, then members of `identities` field will
   /// be allowed access.
   /// Possible values are: `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
   final String? identityType;
-
   /// Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
   /// Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
   final String? sourceRestriction;
-
   /// Sources that this EgressPolicy authorizes access from.
   /// Structure is documented below.
   final List<ServicePerimeterEgressPolicyEgressFromSource>? sources;
@@ -38,46 +35,21 @@ class ServicePerimeterEgressPolicyEgressFrom {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final identitiesValue = identities;
-    if (identitiesValue != null) {
-      map['identities'] = identitiesValue;
-    }
-    final identityTypeValue = identityType;
-    if (identityTypeValue != null) {
-      map['identityType'] = identityTypeValue;
-    }
-    final sourceRestrictionValue = sourceRestriction;
-    if (sourceRestrictionValue != null) {
-      map['sourceRestriction'] = sourceRestrictionValue;
-    }
-    final sourcesValue = sources;
-    if (sourcesValue != null) {
-      map['sources'] = pulumi.Input.encodeList<
-          ServicePerimeterEgressPolicyEgressFromSource,
-          Map<String, dynamic>>(sourcesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'identities': ?identities,
+      'identityType': ?identityType,
+      'sourceRestriction': ?sourceRestriction,
+      'sources': ?sources == null ? null : pulumi.Input.encodeList<ServicePerimeterEgressPolicyEgressFromSource, Map<String, dynamic>>(sources!, (value) => value.toMap()),
+    };
   }
 
-  factory ServicePerimeterEgressPolicyEgressFrom.fromMap(
-      Map<String, dynamic> map) {
+  factory ServicePerimeterEgressPolicyEgressFrom.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterEgressPolicyEgressFrom(
-      identities: map['identities'] == null
-          ? null
-          : (map['identities'] as List).cast<String>(),
-      identityType:
-          map['identityType'] == null ? null : map['identityType'] as String,
-      sourceRestriction: map['sourceRestriction'] == null
-          ? null
-          : map['sourceRestriction'] as String,
-      sources: map['sources'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  ServicePerimeterEgressPolicyEgressFromSource>(
-              map['sources'],
-              (value) => ServicePerimeterEgressPolicyEgressFromSource.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      identities: map['identities'] == null ? null : (map['identities'] as List).cast<String>(),
+      identityType: map['identityType'] == null ? null : map['identityType'] as String,
+      sourceRestriction: map['sourceRestriction'] == null ? null : map['sourceRestriction'] as String,
+      sources: map['sources'] == null ? null : pulumi.Input.decodeList<ServicePerimeterEgressPolicyEgressFromSource>(map['sources'], (value) => ServicePerimeterEgressPolicyEgressFromSource.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

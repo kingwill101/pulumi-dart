@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A Pub/Sub destination.
 class PubsubDestinationResponse {
   /// The name of the Pub/Sub topic to publish job completion notification to. For example: `projects/{project}/topics/{topic}`.
@@ -12,9 +13,9 @@ class PubsubDestinationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['topic'] = topic;
-    return map;
+    return <String, dynamic>{
+      'topic': topic,
+    };
   }
 
   factory PubsubDestinationResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class PubsubDestinationResponse {
     );
   }
 }
+

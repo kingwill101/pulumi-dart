@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRateBasedRule.
 class GetRateBasedRuleResult {
   /// The provider-assigned unique ID for this managed resource.
@@ -15,10 +16,10 @@ class GetRateBasedRuleResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'name': name,
+    };
   }
 
   factory GetRateBasedRuleResult.fromMap(Map<String, dynamic> map) {
@@ -28,3 +29,4 @@ class GetRateBasedRuleResult {
     );
   }
 }
+

@@ -9,13 +9,10 @@ import 'service_mesh_membership_spec_response_gkehub_v1beta.dart';
 class CommonFleetDefaultMemberConfigSpecResponseGkehubV1beta {
   /// Config Management-specific spec.
   final ConfigManagementMembershipSpecResponseGkehubV1beta configmanagement;
-
   /// Identity Service-specific spec.
   final IdentityServiceMembershipSpecResponseGkehubV1beta identityservice;
-
   /// Anthos Service Mesh-specific spec
   final ServiceMeshMembershipSpecResponseGkehubV1beta mesh;
-
   /// Policy Controller spec.
   final PolicyControllerMembershipSpecResponseGkehubV1beta policycontroller;
 
@@ -32,28 +29,21 @@ class CommonFleetDefaultMemberConfigSpecResponseGkehubV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['configmanagement'] = configmanagement.toMap();
-    map['identityservice'] = identityservice.toMap();
-    map['mesh'] = mesh.toMap();
-    map['policycontroller'] = policycontroller.toMap();
-    return map;
+    return <String, dynamic>{
+      'configmanagement': configmanagement.toMap(),
+      'identityservice': identityservice.toMap(),
+      'mesh': mesh.toMap(),
+      'policycontroller': policycontroller.toMap(),
+    };
   }
 
-  factory CommonFleetDefaultMemberConfigSpecResponseGkehubV1beta.fromMap(
-      Map<String, dynamic> map) {
+  factory CommonFleetDefaultMemberConfigSpecResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return CommonFleetDefaultMemberConfigSpecResponseGkehubV1beta(
-      configmanagement:
-          ConfigManagementMembershipSpecResponseGkehubV1beta.fromMap(
-              (map['configmanagement'] as Map).cast<String, dynamic>()),
-      identityservice:
-          IdentityServiceMembershipSpecResponseGkehubV1beta.fromMap(
-              (map['identityservice'] as Map).cast<String, dynamic>()),
-      mesh: ServiceMeshMembershipSpecResponseGkehubV1beta.fromMap(
-          (map['mesh'] as Map).cast<String, dynamic>()),
-      policycontroller:
-          PolicyControllerMembershipSpecResponseGkehubV1beta.fromMap(
-              (map['policycontroller'] as Map).cast<String, dynamic>()),
+      configmanagement: ConfigManagementMembershipSpecResponseGkehubV1beta.fromMap((map['configmanagement'] as Map).cast<String, dynamic>()),
+      identityservice: IdentityServiceMembershipSpecResponseGkehubV1beta.fromMap((map['identityservice'] as Map).cast<String, dynamic>()),
+      mesh: ServiceMeshMembershipSpecResponseGkehubV1beta.fromMap((map['mesh'] as Map).cast<String, dynamic>()),
+      policycontroller: PolicyControllerMembershipSpecResponseGkehubV1beta.fromMap((map['policycontroller'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -13,21 +13,15 @@ class VirtualGatewaySpecBackendDefaultsClientPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final tlsValue = tls;
-    if (tlsValue != null) {
-      map['tls'] = tlsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'tls': ?tls == null ? null : tls!.toMap(),
+    };
   }
 
-  factory VirtualGatewaySpecBackendDefaultsClientPolicy.fromMap(
-      Map<String, dynamic> map) {
+  factory VirtualGatewaySpecBackendDefaultsClientPolicy.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecBackendDefaultsClientPolicy(
-      tls: map['tls'] == null
-          ? null
-          : VirtualGatewaySpecBackendDefaultsClientPolicyTls.fromMap(
-              (map['tls'] as Map).cast<String, dynamic>()),
+      tls: map['tls'] == null ? null : VirtualGatewaySpecBackendDefaultsClientPolicyTls.fromMap((map['tls'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for location policy among multiple possible locations (e.g. preferences for zone selection among zones in a single region).
 class LocationPolicyResponse {
   /// Location configurations mapped by location name. Currently only zone names are supported and must be represented as valid internal URLs, such as zones/us-central1-a.
   final Map<String, String> locations;
-
   /// Strategy for distributing VMs across zones in a region.
   final String targetShape;
 
@@ -17,10 +17,10 @@ class LocationPolicyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['locations'] = locations;
-    map['targetShape'] = targetShape;
-    return map;
+    return <String, dynamic>{
+      'locations': locations,
+      'targetShape': targetShape,
+    };
   }
 
   factory LocationPolicyResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class LocationPolicyResponse {
     );
   }
 }
+

@@ -7,14 +7,13 @@ enum GoogleDatastoreAdminV1IndexedPropertyDirection {
   const GoogleDatastoreAdminV1IndexedPropertyDirection(this.value);
   final String value;
 
-  static GoogleDatastoreAdminV1IndexedPropertyDirection fromValue(
-      String value) {
+  static GoogleDatastoreAdminV1IndexedPropertyDirection fromValue(String value) {
     for (final item in GoogleDatastoreAdminV1IndexedPropertyDirection.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GoogleDatastoreAdminV1IndexedPropertyDirection value: $value');
+    throw ArgumentError('Unknown GoogleDatastoreAdminV1IndexedPropertyDirection value: $value');
   }
 }
+

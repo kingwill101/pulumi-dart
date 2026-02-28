@@ -18,3 +18,4 @@ enum NetworkConfigBandwidth {
     throw ArgumentError('Unknown NetworkConfigBandwidth value: $value');
   }
 }
+

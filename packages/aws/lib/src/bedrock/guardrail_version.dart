@@ -118,19 +118,15 @@ import 'guardrail_version_timeouts.dart';
 class GuardrailVersion extends pulumi.CustomResource {
   /// Description of the Guardrail version.
   late final pulumi.Output<String?> description;
-
   /// Guardrail ARN.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> guardrailArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Whether to retain the old version of a previously deployed Guardrail. Default is `false`
   late final pulumi.Output<bool?> skipDestroy;
   late final pulumi.Output<GuardrailVersionTimeouts?> timeouts;
-
   /// Guardrail version.
   late final pulumi.Output<String> version;
 

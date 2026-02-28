@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DatascanDataProfileSpecExcludeFields {
   /// Expected input is a list of fully qualified names of fields as in the schema.
   /// Only top-level field names for nested fields are supported.
@@ -13,20 +14,15 @@ class DatascanDataProfileSpecExcludeFields {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final fieldNamesValue = fieldNames;
-    if (fieldNamesValue != null) {
-      map['fieldNames'] = fieldNamesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'fieldNames': ?fieldNames,
+    };
   }
 
-  factory DatascanDataProfileSpecExcludeFields.fromMap(
-      Map<String, dynamic> map) {
+  factory DatascanDataProfileSpecExcludeFields.fromMap(Map<String, dynamic> map) {
     return DatascanDataProfileSpecExcludeFields(
-      fieldNames: map['fieldNames'] == null
-          ? null
-          : (map['fieldNames'] as List).cast<String>(),
+      fieldNames: map['fieldNames'] == null ? null : (map['fieldNames'] as List).cast<String>(),
     );
   }
 }
+

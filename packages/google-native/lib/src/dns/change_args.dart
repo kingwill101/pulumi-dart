@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'resource_record_set.dart';
+import 'resource_record_set_dns_v1.dart';
 
 /// {@template pulumi_dns_v1_change_args_doc}
 /// The set of arguments for Change.
@@ -9,14 +9,11 @@ import 'resource_record_set.dart';
 /// {@macro pulumi_dns_v1_change_args_doc}
 class ChangeArgs {
   /// Which ResourceRecordSets to add?
-  final pulumi.Input<List<ResourceRecordSet>>? additions;
-
+  final pulumi.Input<List<ResourceRecordSetDnsV1>>? additions;
   /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
   final pulumi.Input<String>? clientOperationId;
-
   /// Which ResourceRecordSets to remove? Must match existing data exactly.
-  final pulumi.Input<List<ResourceRecordSet>>? deletions;
-
+  final pulumi.Input<List<ResourceRecordSetDnsV1>>? deletions;
   /// If the DNS queries for the zone will be served.
   final pulumi.Input<bool>? isServing;
   final pulumi.Input<String>? kind;
@@ -32,81 +29,39 @@ class ChangeArgs {
   /// [managedZone] Required.
   /// [project] Optional.
   ChangeArgs({
-    List<ResourceRecordSet>? additions,
+    List<ResourceRecordSetDnsV1>? additions,
     String? clientOperationId,
-    List<ResourceRecordSet>? deletions,
+    List<ResourceRecordSetDnsV1>? deletions,
     bool? isServing,
     String? kind,
     required String managedZone,
     String? project,
-  })  : additions =
-            pulumi.Input.asOptionalInput<List<ResourceRecordSet>>(additions),
-        clientOperationId =
-            pulumi.Input.asOptionalInput<String>(clientOperationId),
-        deletions =
-            pulumi.Input.asOptionalInput<List<ResourceRecordSet>>(deletions),
-        isServing = pulumi.Input.asOptionalInput<bool>(isServing),
-        kind = pulumi.Input.asOptionalInput<String>(kind),
-        managedZone = pulumi.Input.asInput<String>(managedZone),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      additions = pulumi.Input.asOptionalInput<List<ResourceRecordSetDnsV1>>(additions),
+      clientOperationId = pulumi.Input.asOptionalInput<String>(clientOperationId),
+      deletions = pulumi.Input.asOptionalInput<List<ResourceRecordSetDnsV1>>(deletions),
+      isServing = pulumi.Input.asOptionalInput<bool>(isServing),
+      kind = pulumi.Input.asOptionalInput<String>(kind),
+      managedZone = pulumi.Input.asInput<String>(managedZone),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final additionsValue = additions;
-    if (additionsValue != null) {
-      map['additions'] = pulumi.Input.mapOptionalInputValue<
-              List<ResourceRecordSet>, List<Map<String, dynamic>>>(
-          additionsValue,
-          (value) =>
-              pulumi.Input.encodeList<ResourceRecordSet, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
-    }
-    final clientOperationIdValue = clientOperationId;
-    if (clientOperationIdValue != null) {
-      map['clientOperationId'] = clientOperationIdValue;
-    }
-    final deletionsValue = deletions;
-    if (deletionsValue != null) {
-      map['deletions'] = pulumi.Input.mapOptionalInputValue<
-              List<ResourceRecordSet>, List<Map<String, dynamic>>>(
-          deletionsValue,
-          (value) =>
-              pulumi.Input.encodeList<ResourceRecordSet, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
-    }
-    final isServingValue = isServing;
-    if (isServingValue != null) {
-      map['isServing'] = isServingValue;
-    }
-    final kindValue = kind;
-    if (kindValue != null) {
-      map['kind'] = kindValue;
-    }
-    map['managedZone'] = managedZone;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'additions': ?additions,
+      'clientOperationId': ?clientOperationId,
+      'deletions': ?deletions,
+      'isServing': ?isServing,
+      'kind': ?kind,
+      'managedZone': managedZone,
+      'project': ?project,
+    };
   }
 
   factory ChangeArgs.fromMap(Map<String, dynamic> map) {
     return ChangeArgs(
-      additions: map['additions'] == null
-          ? null
-          : pulumi.Input.decodeList<ResourceRecordSet>(
-              map['additions'],
-              (value) => ResourceRecordSet.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      clientOperationId: map['clientOperationId'] == null
-          ? null
-          : map['clientOperationId'] as String,
-      deletions: map['deletions'] == null
-          ? null
-          : pulumi.Input.decodeList<ResourceRecordSet>(
-              map['deletions'],
-              (value) => ResourceRecordSet.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      additions: map['additions'] == null ? null : (map['additions'] as List).cast<ResourceRecordSetDnsV1>(),
+      clientOperationId: map['clientOperationId'] == null ? null : map['clientOperationId'] as String,
+      deletions: map['deletions'] == null ? null : (map['deletions'] as List).cast<ResourceRecordSetDnsV1>(),
       isServing: map['isServing'] == null ? null : map['isServing'] as bool,
       kind: map['kind'] == null ? null : map['kind'] as String,
       managedZone: map['managedZone'] as String,
@@ -114,3 +69,4 @@ class ChangeArgs {
     );
   }
 }
+

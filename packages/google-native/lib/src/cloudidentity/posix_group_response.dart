@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// POSIX Group definition to represent a group in a POSIX compliant system.
 class PosixGroupResponse {
   /// GID of the POSIX group.
   final String gid;
-
   /// Name of the POSIX group.
   final String name;
-
   /// System identifier for which group name and gid apply to. If not specified it will default to empty value.
   final String systemId;
 
@@ -22,11 +21,11 @@ class PosixGroupResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gid'] = gid;
-    map['name'] = name;
-    map['systemId'] = systemId;
-    return map;
+    return <String, dynamic>{
+      'gid': gid,
+      'name': name,
+      'systemId': systemId,
+    };
   }
 
   factory PosixGroupResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class PosixGroupResponse {
     );
   }
 }
+

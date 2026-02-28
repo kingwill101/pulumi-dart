@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Specification that applies to database view.
 class GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse {
   /// Name of a singular table this view reflects one to one.
   final String baseTable;
-
   /// SQL query used to generate this view.
   final String sqlQuery;
-
   /// Type of this view.
   final String viewType;
 
@@ -22,15 +21,14 @@ class GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['baseTable'] = baseTable;
-    map['sqlQuery'] = sqlQuery;
-    map['viewType'] = viewType;
-    return map;
+    return <String, dynamic>{
+      'baseTable': baseTable,
+      'sqlQuery': sqlQuery,
+      'viewType': viewType,
+    };
   }
 
-  factory GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse(
       baseTable: map['baseTable'] as String,
       sqlQuery: map['sqlQuery'] as String,
@@ -38,3 +36,4 @@ class GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse {
     );
   }
 }
+

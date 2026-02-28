@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetEndpointKafkaSetting {
   final String broker;
   final bool includeControlDetails;
@@ -64,27 +65,27 @@ class GetEndpointKafkaSetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['broker'] = broker;
-    map['includeControlDetails'] = includeControlDetails;
-    map['includeNullAndEmpty'] = includeNullAndEmpty;
-    map['includePartitionValue'] = includePartitionValue;
-    map['includeTableAlterOperations'] = includeTableAlterOperations;
-    map['includeTransactionDetails'] = includeTransactionDetails;
-    map['messageFormat'] = messageFormat;
-    map['messageMaxBytes'] = messageMaxBytes;
-    map['noHexPrefix'] = noHexPrefix;
-    map['partitionIncludeSchemaTable'] = partitionIncludeSchemaTable;
-    map['saslMechanism'] = saslMechanism;
-    map['saslPassword'] = saslPassword;
-    map['saslUsername'] = saslUsername;
-    map['securityProtocol'] = securityProtocol;
-    map['sslCaCertificateArn'] = sslCaCertificateArn;
-    map['sslClientCertificateArn'] = sslClientCertificateArn;
-    map['sslClientKeyArn'] = sslClientKeyArn;
-    map['sslClientKeyPassword'] = sslClientKeyPassword;
-    map['topic'] = topic;
-    return map;
+    return <String, dynamic>{
+      'broker': broker,
+      'includeControlDetails': includeControlDetails,
+      'includeNullAndEmpty': includeNullAndEmpty,
+      'includePartitionValue': includePartitionValue,
+      'includeTableAlterOperations': includeTableAlterOperations,
+      'includeTransactionDetails': includeTransactionDetails,
+      'messageFormat': messageFormat,
+      'messageMaxBytes': messageMaxBytes,
+      'noHexPrefix': noHexPrefix,
+      'partitionIncludeSchemaTable': partitionIncludeSchemaTable,
+      'saslMechanism': saslMechanism,
+      'saslPassword': saslPassword,
+      'saslUsername': saslUsername,
+      'securityProtocol': securityProtocol,
+      'sslCaCertificateArn': sslCaCertificateArn,
+      'sslClientCertificateArn': sslClientCertificateArn,
+      'sslClientKeyArn': sslClientKeyArn,
+      'sslClientKeyPassword': sslClientKeyPassword,
+      'topic': topic,
+    };
   }
 
   factory GetEndpointKafkaSetting.fromMap(Map<String, dynamic> map) {
@@ -111,3 +112,4 @@ class GetEndpointKafkaSetting {
     );
   }
 }
+

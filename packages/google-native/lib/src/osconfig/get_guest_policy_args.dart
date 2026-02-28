@@ -16,17 +16,15 @@ class GetGuestPolicyArgs {
   GetGuestPolicyArgs({
     required String guestPolicyId,
     String? project,
-  })  : guestPolicyId = pulumi.Input.asInput<String>(guestPolicyId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      guestPolicyId = pulumi.Input.asInput<String>(guestPolicyId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['guestPolicyId'] = guestPolicyId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'guestPolicyId': guestPolicyId,
+      'project': ?project,
+    };
   }
 
   factory GetGuestPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetGuestPolicyArgs {
     );
   }
 }
+

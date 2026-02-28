@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetNotificationChannelSn {
   /// Amazon Resource Name (ARN) of an Amazon Simple Notification Service topic.
   final String topicArn;
@@ -11,9 +12,9 @@ class GetNotificationChannelSn {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['topicArn'] = topicArn;
-    return map;
+    return <String, dynamic>{
+      'topicArn': topicArn,
+    };
   }
 
   factory GetNotificationChannelSn.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetNotificationChannelSn {
     );
   }
 }
+

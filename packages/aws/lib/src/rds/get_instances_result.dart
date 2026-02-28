@@ -6,13 +6,10 @@ import 'get_instances_filter.dart';
 /// Result data returned by getInstances.
 class GetInstancesResult {
   final List<GetInstancesFilter>? filters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// ARNs of the matched RDS instances.
   final List<String> instanceArns;
-
   /// Identifiers of the matched RDS instances.
   final List<String> instanceIdentifiers;
   final String region;
@@ -35,29 +32,19 @@ class GetInstancesResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final filtersValue = filters;
-    if (filtersValue != null) {
-      map['filters'] =
-          pulumi.Input.encodeList<GetInstancesFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
-    }
-    map['id'] = id;
-    map['instanceArns'] = instanceArns;
-    map['instanceIdentifiers'] = instanceIdentifiers;
-    map['region'] = region;
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetInstancesFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'id': id,
+      'instanceArns': instanceArns,
+      'instanceIdentifiers': instanceIdentifiers,
+      'region': region,
+      'tags': tags,
+    };
   }
 
   factory GetInstancesResult.fromMap(Map<String, dynamic> map) {
     return GetInstancesResult(
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetInstancesFilter>(
-              map['filters'],
-              (value) => GetInstancesFilter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetInstancesFilter>(map['filters'], (value) => GetInstancesFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       instanceArns: (map['instanceArns'] as List).cast<String>(),
       instanceIdentifiers: (map['instanceIdentifiers'] as List).cast<String>(),
@@ -66,3 +53,4 @@ class GetInstancesResult {
     );
   }
 }
+

@@ -15,18 +15,17 @@ class GrafeasV1beta1IntotoArtifactResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['hashes'] = hashes.toMap();
-    map['resourceUri'] = resourceUri;
-    return map;
+    return <String, dynamic>{
+      'hashes': hashes.toMap(),
+      'resourceUri': resourceUri,
+    };
   }
 
-  factory GrafeasV1beta1IntotoArtifactResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GrafeasV1beta1IntotoArtifactResponse.fromMap(Map<String, dynamic> map) {
     return GrafeasV1beta1IntotoArtifactResponse(
-      hashes: ArtifactHashesResponse.fromMap(
-          (map['hashes'] as Map).cast<String, dynamic>()),
+      hashes: ArtifactHashesResponse.fromMap((map['hashes'] as Map).cast<String, dynamic>()),
       resourceUri: map['resourceUri'] as String,
     );
   }
 }
+

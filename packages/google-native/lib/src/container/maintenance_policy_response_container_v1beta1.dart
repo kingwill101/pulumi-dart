@@ -6,7 +6,6 @@ import 'maintenance_window_response_container_v1beta1.dart';
 class MaintenancePolicyResponseContainerV1beta1 {
   /// A hash identifying the version of this policy, so that updates to fields of the policy won't accidentally undo intermediate changes (and so that users of the API unaware of some fields won't accidentally remove other fields). Make a `get()` request to the cluster to get the current resource version and include it with requests to set the policy.
   final String resourceVersion;
-
   /// Specifies the maintenance window in which maintenance may be performed.
   final MaintenanceWindowResponseContainerV1beta1 window;
 
@@ -19,18 +18,17 @@ class MaintenancePolicyResponseContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['resourceVersion'] = resourceVersion;
-    map['window'] = window.toMap();
-    return map;
+    return <String, dynamic>{
+      'resourceVersion': resourceVersion,
+      'window': window.toMap(),
+    };
   }
 
-  factory MaintenancePolicyResponseContainerV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory MaintenancePolicyResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return MaintenancePolicyResponseContainerV1beta1(
       resourceVersion: map['resourceVersion'] as String,
-      window: MaintenanceWindowResponseContainerV1beta1.fromMap(
-          (map['window'] as Map).cast<String, dynamic>()),
+      window: MaintenanceWindowResponseContainerV1beta1.fromMap((map['window'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

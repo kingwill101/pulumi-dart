@@ -19,24 +19,20 @@ class GetFeatureOnlineStoreAiplatformV1beta1Args {
     required String featureOnlineStoreId,
     required String location,
     String? project,
-  })  : featureOnlineStoreId =
-            pulumi.Input.asInput<String>(featureOnlineStoreId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      featureOnlineStoreId = pulumi.Input.asInput<String>(featureOnlineStoreId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['featureOnlineStoreId'] = featureOnlineStoreId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'featureOnlineStoreId': featureOnlineStoreId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
-  factory GetFeatureOnlineStoreAiplatformV1beta1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetFeatureOnlineStoreAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetFeatureOnlineStoreAiplatformV1beta1Args(
       featureOnlineStoreId: map['featureOnlineStoreId'] as String,
       location: map['location'] as String,
@@ -44,3 +40,4 @@ class GetFeatureOnlineStoreAiplatformV1beta1Args {
     );
   }
 }
+

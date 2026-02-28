@@ -857,17 +857,13 @@ class User extends pulumi.CustomResource {
   /// Identifies the alloydb cluster. Must be in the format
   /// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
   late final pulumi.Output<String> cluster;
-
   /// List of database roles this database user has.
   late final pulumi.Output<List<String>?> databaseRoles;
-
   /// Name of the resource in the form of projects/{project}/locations/{location}/clusters/{cluster}/users/{user}.
   late final pulumi.Output<String> name;
-
   /// Password for this database user.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   late final pulumi.Output<String?> password;
-
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// (Optional, Write-Only)
   /// Password for this database user.
@@ -875,13 +871,10 @@ class User extends pulumi.CustomResource {
   ///
   /// > **Note:** One of `password` or `password_wo` can only be set.
   late final pulumi.Output<String?> passwordWo;
-
   /// Triggers update of `password_wo` write-only. Increment this value when an update to `password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   late final pulumi.Output<String?> passwordWoVersion;
-
   /// The database role name of the user.
   late final pulumi.Output<String> userId;
-
   /// The type of this user.
   /// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
   late final pulumi.Output<String> userType;

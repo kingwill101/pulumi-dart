@@ -7,7 +7,6 @@ import 'google_cloud_identitytoolkit_admin_v2_allowlist_only.dart';
 class GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig {
   /// A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
   final GoogleCloudIdentitytoolkitAdminV2AllowByDefault? allowByDefault;
-
   /// A policy of only allowing regions by explicitly adding them to an allowlist.
   final GoogleCloudIdentitytoolkitAdminV2AllowlistOnly? allowlistOnly;
 
@@ -20,29 +19,17 @@ class GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final allowByDefaultValue = allowByDefault;
-    if (allowByDefaultValue != null) {
-      map['allowByDefault'] = allowByDefaultValue.toMap();
-    }
-    final allowlistOnlyValue = allowlistOnly;
-    if (allowlistOnlyValue != null) {
-      map['allowlistOnly'] = allowlistOnlyValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'allowByDefault': ?allowByDefault == null ? null : allowByDefault!.toMap(),
+      'allowlistOnly': ?allowlistOnly == null ? null : allowlistOnly!.toMap(),
+    };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig(
-      allowByDefault: map['allowByDefault'] == null
-          ? null
-          : GoogleCloudIdentitytoolkitAdminV2AllowByDefault.fromMap(
-              (map['allowByDefault'] as Map).cast<String, dynamic>()),
-      allowlistOnly: map['allowlistOnly'] == null
-          ? null
-          : GoogleCloudIdentitytoolkitAdminV2AllowlistOnly.fromMap(
-              (map['allowlistOnly'] as Map).cast<String, dynamic>()),
+      allowByDefault: map['allowByDefault'] == null ? null : GoogleCloudIdentitytoolkitAdminV2AllowByDefault.fromMap((map['allowByDefault'] as Map).cast<String, dynamic>()),
+      allowlistOnly: map['allowlistOnly'] == null ? null : GoogleCloudIdentitytoolkitAdminV2AllowlistOnly.fromMap((map['allowlistOnly'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

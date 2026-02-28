@@ -14,20 +14,15 @@ class GetInstanceEndpointConnection {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['pscAutoConnections'] = pulumi.Input.encodeList<
-        GetInstanceEndpointConnectionPscAutoConnection,
-        Map<String, dynamic>>(pscAutoConnections, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'pscAutoConnections': pulumi.Input.encodeList<GetInstanceEndpointConnectionPscAutoConnection, Map<String, dynamic>>(pscAutoConnections, (value) => value.toMap()),
+    };
   }
 
   factory GetInstanceEndpointConnection.fromMap(Map<String, dynamic> map) {
     return GetInstanceEndpointConnection(
-      pscAutoConnections: pulumi.Input.decodeList<
-              GetInstanceEndpointConnectionPscAutoConnection>(
-          map['pscAutoConnections'],
-          (value) => GetInstanceEndpointConnectionPscAutoConnection.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      pscAutoConnections: pulumi.Input.decodeList<GetInstanceEndpointConnectionPscAutoConnection>(map['pscAutoConnections'], (value) => GetInstanceEndpointConnectionPscAutoConnection.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

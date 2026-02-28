@@ -177,13 +177,10 @@ import 'bucket_access_control_args.dart';
 class BucketAccessControl extends pulumi.CustomResource {
   /// The name of the bucket.
   late final pulumi.Output<String> bucket;
-
   /// The domain associated with the entity.
   late final pulumi.Output<String> domain;
-
   /// The email address associated with the entity.
   late final pulumi.Output<String> email;
-
   /// The entity holding the permission, in one of the following forms:
   /// user-userId
   /// user-email
@@ -200,7 +197,6 @@ class BucketAccessControl extends pulumi.CustomResource {
   /// To refer to all members of the Google Apps for Business domain
   /// example.com, the entity would be domain-example.com.
   late final pulumi.Output<String> entity;
-
   /// The access permission for the entity.
   /// Possible values are: `OWNER`, `READER`, `WRITER`.
   late final pulumi.Output<String?> role;

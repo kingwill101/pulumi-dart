@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// An item of the class.
 class ClassItemResponse {
   /// The class item's value.
@@ -12,9 +13,9 @@ class ClassItemResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'value': value,
+    };
   }
 
   factory ClassItemResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class ClassItemResponse {
     );
   }
 }
+

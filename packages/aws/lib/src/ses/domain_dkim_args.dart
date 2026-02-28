@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDkimArgs {
   /// Verified domain name to generate DKIM tokens for.
   final pulumi.Input<String> domain;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -19,17 +18,15 @@ class DomainDkimArgs {
   DomainDkimArgs({
     required String domain,
     String? region,
-  })  : domain = pulumi.Input.asInput<String>(domain),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      domain = pulumi.Input.asInput<String>(domain),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['domain'] = domain;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'domain': domain,
+      'region': ?region,
+    };
   }
 
   factory DomainDkimArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +36,4 @@ class DomainDkimArgs {
     );
   }
 }
+

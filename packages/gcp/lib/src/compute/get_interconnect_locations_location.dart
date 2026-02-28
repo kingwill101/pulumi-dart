@@ -1,43 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInterconnectLocationsLocation {
   /// The postal address of the Point of Presence.
   final String address;
-
   /// The availability zone for this InterconnectLocation.
   final String availabilityZone;
-
   /// A list of features available at this InterconnectLocation.
   final List<String> availableFeatures;
-
   /// A list of link types available at this InterconnectLocation.
   final List<String> availableLinkTypes;
-
   /// The city for this location.
   final String city;
-
   /// The continent for this location.
   final String continent;
-
   /// A textual description of the resource.
   final String description;
-
   /// The name of the provider for this facility.
   final String facilityProvider;
-
   /// A provider-assigned Identifier for this facility.
   final String facilityProviderFacilityId;
   final String name;
-
   /// The PeeringDB facility ID for this facility.
   final String peeringdbFacilityId;
-
   /// The URI of the created resource.
   final String selfLink;
-
   /// The status of this InterconnectLocation.
   final String status;
-
   /// Reserved for future use.
   final bool supportsPzs;
 
@@ -74,22 +63,22 @@ class GetInterconnectLocationsLocation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['address'] = address;
-    map['availabilityZone'] = availabilityZone;
-    map['availableFeatures'] = availableFeatures;
-    map['availableLinkTypes'] = availableLinkTypes;
-    map['city'] = city;
-    map['continent'] = continent;
-    map['description'] = description;
-    map['facilityProvider'] = facilityProvider;
-    map['facilityProviderFacilityId'] = facilityProviderFacilityId;
-    map['name'] = name;
-    map['peeringdbFacilityId'] = peeringdbFacilityId;
-    map['selfLink'] = selfLink;
-    map['status'] = status;
-    map['supportsPzs'] = supportsPzs;
-    return map;
+    return <String, dynamic>{
+      'address': address,
+      'availabilityZone': availabilityZone,
+      'availableFeatures': availableFeatures,
+      'availableLinkTypes': availableLinkTypes,
+      'city': city,
+      'continent': continent,
+      'description': description,
+      'facilityProvider': facilityProvider,
+      'facilityProviderFacilityId': facilityProviderFacilityId,
+      'name': name,
+      'peeringdbFacilityId': peeringdbFacilityId,
+      'selfLink': selfLink,
+      'status': status,
+      'supportsPzs': supportsPzs,
+    };
   }
 
   factory GetInterconnectLocationsLocation.fromMap(Map<String, dynamic> map) {
@@ -111,3 +100,4 @@ class GetInterconnectLocationsLocation {
     );
   }
 }
+

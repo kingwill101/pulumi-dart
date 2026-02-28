@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ParquetOptionsResponse {
   /// [Optional] Indicates whether to use schema inference specifically for Parquet LIST logical type.
   final bool enableListInference;
-
   /// [Optional] Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
   final bool enumAsString;
 
@@ -16,10 +16,10 @@ class ParquetOptionsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enableListInference'] = enableListInference;
-    map['enumAsString'] = enumAsString;
-    return map;
+    return <String, dynamic>{
+      'enableListInference': enableListInference,
+      'enumAsString': enumAsString,
+    };
   }
 
   factory ParquetOptionsResponse.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class ParquetOptionsResponse {
     );
   }
 }
+

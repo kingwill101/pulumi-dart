@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceCryptoKeyConfig {
   /// The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of projects/*/locations/*/keyRings/*/cryptoKeys/*.
   final String keyReference;
@@ -11,9 +12,9 @@ class InstanceCryptoKeyConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['keyReference'] = keyReference;
-    return map;
+    return <String, dynamic>{
+      'keyReference': keyReference,
+    };
   }
 
   factory InstanceCryptoKeyConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class InstanceCryptoKeyConfig {
     );
   }
 }
+

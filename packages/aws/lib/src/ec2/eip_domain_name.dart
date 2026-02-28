@@ -177,13 +177,10 @@ import 'eip_domain_name_timeouts.dart';
 class EipDomainName extends pulumi.CustomResource {
   /// The allocation ID.
   late final pulumi.Output<String> allocationId;
-
   /// The domain name to modify for the IP address.
   late final pulumi.Output<String> domainName;
-
   /// The DNS pointer (PTR) record for the IP address.
   late final pulumi.Output<String> ptrRecord;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<EipDomainNameTimeouts?> timeouts;

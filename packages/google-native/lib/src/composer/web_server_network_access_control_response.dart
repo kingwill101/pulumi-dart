@@ -15,20 +15,15 @@ class WebServerNetworkAccessControlResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allowedIpRanges'] =
-        pulumi.Input.encodeList<AllowedIpRangeResponse, Map<String, dynamic>>(
-            allowedIpRanges, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'allowedIpRanges': pulumi.Input.encodeList<AllowedIpRangeResponse, Map<String, dynamic>>(allowedIpRanges, (value) => value.toMap()),
+    };
   }
 
-  factory WebServerNetworkAccessControlResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory WebServerNetworkAccessControlResponse.fromMap(Map<String, dynamic> map) {
     return WebServerNetworkAccessControlResponse(
-      allowedIpRanges: pulumi.Input.decodeList<AllowedIpRangeResponse>(
-          map['allowedIpRanges'],
-          (value) => AllowedIpRangeResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      allowedIpRanges: pulumi.Input.decodeList<AllowedIpRangeResponse>(map['allowedIpRanges'], (value) => AllowedIpRangeResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

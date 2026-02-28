@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetFunctionEphemeralStorage {
   /// Size of the Lambda function ephemeral storage (`/tmp`) in MB.
   final int size;
@@ -11,9 +12,9 @@ class GetFunctionEphemeralStorage {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['size'] = size;
-    return map;
+    return <String, dynamic>{
+      'size': size,
+    };
   }
 
   factory GetFunctionEphemeralStorage.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetFunctionEphemeralStorage {
     );
   }
 }
+

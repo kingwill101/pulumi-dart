@@ -7,7 +7,6 @@ import 'ingress_to.dart';
 class IngressPolicy {
   /// Defines the conditions on the source of a request causing this IngressPolicy to apply.
   final IngressFrom? ingressFrom;
-
   /// Defines the conditions on the ApiOperation and request destination that cause this IngressPolicy to apply.
   final IngressTo? ingressTo;
 
@@ -20,28 +19,17 @@ class IngressPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final ingressFromValue = ingressFrom;
-    if (ingressFromValue != null) {
-      map['ingressFrom'] = ingressFromValue.toMap();
-    }
-    final ingressToValue = ingressTo;
-    if (ingressToValue != null) {
-      map['ingressTo'] = ingressToValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'ingressFrom': ?ingressFrom == null ? null : ingressFrom!.toMap(),
+      'ingressTo': ?ingressTo == null ? null : ingressTo!.toMap(),
+    };
   }
 
   factory IngressPolicy.fromMap(Map<String, dynamic> map) {
     return IngressPolicy(
-      ingressFrom: map['ingressFrom'] == null
-          ? null
-          : IngressFrom.fromMap(
-              (map['ingressFrom'] as Map).cast<String, dynamic>()),
-      ingressTo: map['ingressTo'] == null
-          ? null
-          : IngressTo.fromMap(
-              (map['ingressTo'] as Map).cast<String, dynamic>()),
+      ingressFrom: map['ingressFrom'] == null ? null : IngressFrom.fromMap((map['ingressFrom'] as Map).cast<String, dynamic>()),
+      ingressTo: map['ingressTo'] == null ? null : IngressTo.fromMap((map['ingressTo'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

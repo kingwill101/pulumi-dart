@@ -17,3 +17,4 @@ enum VmwareVmDetailsPowerState {
     throw ArgumentError('Unknown VmwareVmDetailsPowerState value: $value');
   }
 }
+

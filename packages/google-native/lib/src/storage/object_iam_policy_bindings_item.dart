@@ -5,7 +5,6 @@ import 'expr.dart';
 class ObjectIamPolicyBindingsItem {
   /// The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
   final Expr? condition;
-
   /// A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:
   /// - allUsers — A special identifier that represents anyone on the internet; with or without a Google account.
   /// - allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -17,7 +16,6 @@ class ObjectIamPolicyBindingsItem {
   /// - projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project
   /// - projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project
   final List<String>? members;
-
   /// The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
   /// The new IAM roles are:
   /// - roles/storage.admin — Full control of Google Cloud Storage resources.
@@ -42,31 +40,19 @@ class ObjectIamPolicyBindingsItem {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final conditionValue = condition;
-    if (conditionValue != null) {
-      map['condition'] = conditionValue.toMap();
-    }
-    final membersValue = members;
-    if (membersValue != null) {
-      map['members'] = membersValue;
-    }
-    final roleValue = role;
-    if (roleValue != null) {
-      map['role'] = roleValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'condition': ?condition == null ? null : condition!.toMap(),
+      'members': ?members,
+      'role': ?role,
+    };
   }
 
   factory ObjectIamPolicyBindingsItem.fromMap(Map<String, dynamic> map) {
     return ObjectIamPolicyBindingsItem(
-      condition: map['condition'] == null
-          ? null
-          : Expr.fromMap((map['condition'] as Map).cast<String, dynamic>()),
-      members: map['members'] == null
-          ? null
-          : (map['members'] as List).cast<String>(),
+      condition: map['condition'] == null ? null : Expr.fromMap((map['condition'] as Map).cast<String, dynamic>()),
+      members: map['members'] == null ? null : (map['members'] as List).cast<String>(),
       role: map['role'] == null ? null : map['role'] as String,
     );
   }
 }
+

@@ -8,7 +8,6 @@ import 'expr_healthcare_v1beta1.dart';
 class GoogleCloudHealthcareV1beta1ConsentPolicy {
   /// The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
   final ExprHealthcareV1beta1 authorizationRule;
-
   /// The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user.
   final List<AttributeHealthcareV1beta1>? resourceAttributes;
 
@@ -21,28 +20,17 @@ class GoogleCloudHealthcareV1beta1ConsentPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['authorizationRule'] = authorizationRule.toMap();
-    final resourceAttributesValue = resourceAttributes;
-    if (resourceAttributesValue != null) {
-      map['resourceAttributes'] = pulumi.Input.encodeList<
-              AttributeHealthcareV1beta1, Map<String, dynamic>>(
-          resourceAttributesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'authorizationRule': authorizationRule.toMap(),
+      'resourceAttributes': ?resourceAttributes == null ? null : pulumi.Input.encodeList<AttributeHealthcareV1beta1, Map<String, dynamic>>(resourceAttributes!, (value) => value.toMap()),
+    };
   }
 
-  factory GoogleCloudHealthcareV1beta1ConsentPolicy.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudHealthcareV1beta1ConsentPolicy.fromMap(Map<String, dynamic> map) {
     return GoogleCloudHealthcareV1beta1ConsentPolicy(
-      authorizationRule: ExprHealthcareV1beta1.fromMap(
-          (map['authorizationRule'] as Map).cast<String, dynamic>()),
-      resourceAttributes: map['resourceAttributes'] == null
-          ? null
-          : pulumi.Input.decodeList<AttributeHealthcareV1beta1>(
-              map['resourceAttributes'],
-              (value) => AttributeHealthcareV1beta1.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      authorizationRule: ExprHealthcareV1beta1.fromMap((map['authorizationRule'] as Map).cast<String, dynamic>()),
+      resourceAttributes: map['resourceAttributes'] == null ? null : pulumi.Input.decodeList<AttributeHealthcareV1beta1>(map['resourceAttributes'], (value) => AttributeHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

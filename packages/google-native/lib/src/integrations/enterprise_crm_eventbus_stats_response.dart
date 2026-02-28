@@ -6,16 +6,12 @@ import 'enterprise_crm_eventbus_stats_dimensions_response.dart';
 class EnterpriseCrmEventbusStatsResponse {
   /// Dimensions that these stats have been aggregated on.
   final EnterpriseCrmEventbusStatsDimensionsResponse dimensions;
-
   /// Average duration in seconds.
   final double durationInSeconds;
-
   /// Average error rate.
   final double errorRate;
-
   /// Queries per second.
   final double qps;
-
   /// Average warning rate.
   final double warningRate;
 
@@ -34,19 +30,18 @@ class EnterpriseCrmEventbusStatsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dimensions'] = dimensions.toMap();
-    map['durationInSeconds'] = durationInSeconds;
-    map['errorRate'] = errorRate;
-    map['qps'] = qps;
-    map['warningRate'] = warningRate;
-    return map;
+    return <String, dynamic>{
+      'dimensions': dimensions.toMap(),
+      'durationInSeconds': durationInSeconds,
+      'errorRate': errorRate,
+      'qps': qps,
+      'warningRate': warningRate,
+    };
   }
 
   factory EnterpriseCrmEventbusStatsResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusStatsResponse(
-      dimensions: EnterpriseCrmEventbusStatsDimensionsResponse.fromMap(
-          (map['dimensions'] as Map).cast<String, dynamic>()),
+      dimensions: EnterpriseCrmEventbusStatsDimensionsResponse.fromMap((map['dimensions'] as Map).cast<String, dynamic>()),
       durationInSeconds: map['durationInSeconds'] as double,
       errorRate: map['errorRate'] as double,
       qps: map['qps'] as double,
@@ -54,3 +49,4 @@ class EnterpriseCrmEventbusStatsResponse {
     );
   }
 }
+

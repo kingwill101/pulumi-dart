@@ -9,7 +9,6 @@ class GetDnsAuthorizationResult {
   final List<GetDnsAuthorizationDnsResourceRecord> dnsResourceRecords;
   final String domain;
   final Map<String, String> effectiveLabels;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final Map<String, String> labels;
@@ -46,37 +45,25 @@ class GetDnsAuthorizationResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['description'] = description;
-    map['dnsResourceRecords'] = pulumi.Input.encodeList<
-        GetDnsAuthorizationDnsResourceRecord,
-        Map<String, dynamic>>(dnsResourceRecords, (value) => value.toMap());
-    map['domain'] = domain;
-    map['effectiveLabels'] = effectiveLabels;
-    map['id'] = id;
-    map['labels'] = labels;
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['pulumiLabels'] = pulumiLabels;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'description': description,
+      'dnsResourceRecords': pulumi.Input.encodeList<GetDnsAuthorizationDnsResourceRecord, Map<String, dynamic>>(dnsResourceRecords, (value) => value.toMap()),
+      'domain': domain,
+      'effectiveLabels': effectiveLabels,
+      'id': id,
+      'labels': labels,
+      'location': ?location,
+      'name': name,
+      'project': ?project,
+      'pulumiLabels': pulumiLabels,
+      'type': type,
+    };
   }
 
   factory GetDnsAuthorizationResult.fromMap(Map<String, dynamic> map) {
     return GetDnsAuthorizationResult(
       description: map['description'] as String,
-      dnsResourceRecords:
-          pulumi.Input.decodeList<GetDnsAuthorizationDnsResourceRecord>(
-              map['dnsResourceRecords'],
-              (value) => GetDnsAuthorizationDnsResourceRecord.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      dnsResourceRecords: pulumi.Input.decodeList<GetDnsAuthorizationDnsResourceRecord>(map['dnsResourceRecords'], (value) => GetDnsAuthorizationDnsResourceRecord.fromMap((value as Map).cast<String, dynamic>())),
       domain: map['domain'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       id: map['id'] as String,
@@ -89,3 +76,4 @@ class GetDnsAuthorizationResult {
     );
   }
 }
+

@@ -17,23 +17,17 @@ class RRSetRoutingPolicyWrrPolicyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['items'] = pulumi.Input.encodeList<
-        RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse,
-        Map<String, dynamic>>(items, (value) => value.toMap());
-    map['kind'] = kind;
-    return map;
+    return <String, dynamic>{
+      'items': pulumi.Input.encodeList<RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse, Map<String, dynamic>>(items, (value) => value.toMap()),
+      'kind': kind,
+    };
   }
 
-  factory RRSetRoutingPolicyWrrPolicyResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory RRSetRoutingPolicyWrrPolicyResponse.fromMap(Map<String, dynamic> map) {
     return RRSetRoutingPolicyWrrPolicyResponse(
-      items: pulumi.Input.decodeList<
-              RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse>(
-          map['items'],
-          (value) => RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      items: pulumi.Input.decodeList<RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse>(map['items'], (value) => RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse.fromMap((value as Map).cast<String, dynamic>())),
       kind: map['kind'] as String,
     );
   }
 }
+

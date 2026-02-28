@@ -7,22 +7,16 @@ import 'google_privacy_dlp_v2_deidentify_config_response.dart';
 class DeidentifyTemplate extends pulumi.CustomResource {
   /// The creation timestamp of an inspectTemplate.
   late final pulumi.Output<String> createTime;
-
   /// The core content of the template.
-  late final pulumi.Output<GooglePrivacyDlpV2DeidentifyConfigResponse>
-      deidentifyConfig;
-
+  late final pulumi.Output<GooglePrivacyDlpV2DeidentifyConfigResponse> deidentifyConfig;
   /// Short description (max 256 chars).
   late final pulumi.Output<String> description;
-
   /// Display name (max 256 chars).
   late final pulumi.Output<String> displayName;
   late final pulumi.Output<String> location;
-
   /// The template name. The template will have one of the following formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// The last update timestamp of an inspectTemplate.
   late final pulumi.Output<String> updateTime;
 
@@ -41,9 +35,7 @@ class DeidentifyTemplate extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
-    this.deidentifyConfig =
-        registerOutput<GooglePrivacyDlpV2DeidentifyConfigResponse>(
-            'deidentifyConfig');
+    this.deidentifyConfig = registerOutput<GooglePrivacyDlpV2DeidentifyConfigResponse>('deidentifyConfig');
     this.description = registerOutput<String>('description');
     this.displayName = registerOutput<String>('displayName');
     this.location = registerOutput<String>('location');

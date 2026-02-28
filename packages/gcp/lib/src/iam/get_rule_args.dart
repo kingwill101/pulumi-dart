@@ -14,12 +14,13 @@ class GetRuleArgs {
   /// [name] The name of the Role to lookup in the form `roles/{ROLE_NAME}`, `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}` or `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
   GetRuleArgs({
     required String name,
-  }) : name = pulumi.Input.asInput<String>(name);
+  }) :
+      name = pulumi.Input.asInput<String>(name);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetRuleArgs.fromMap(Map<String, dynamic> map) {
@@ -28,3 +29,4 @@ class GetRuleArgs {
     );
   }
 }
+

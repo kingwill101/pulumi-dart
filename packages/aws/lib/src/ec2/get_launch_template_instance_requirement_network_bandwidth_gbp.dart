@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetLaunchTemplateInstanceRequirementNetworkBandwidthGbp {
   final double max;
   final double min;
@@ -13,17 +14,17 @@ class GetLaunchTemplateInstanceRequirementNetworkBandwidthGbp {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['max'] = max;
-    map['min'] = min;
-    return map;
+    return <String, dynamic>{
+      'max': max,
+      'min': min,
+    };
   }
 
-  factory GetLaunchTemplateInstanceRequirementNetworkBandwidthGbp.fromMap(
-      Map<String, dynamic> map) {
+  factory GetLaunchTemplateInstanceRequirementNetworkBandwidthGbp.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateInstanceRequirementNetworkBandwidthGbp(
       max: map['max'] as double,
       min: map['min'] as double,
     );
   }
 }
+

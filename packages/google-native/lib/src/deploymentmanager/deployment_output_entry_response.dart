@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Output object for Deployments
 class DeploymentOutputEntryResponse {
   /// Key of the output
   final String key;
-
   /// Value of the label
   final String value;
 
@@ -17,10 +17,10 @@ class DeploymentOutputEntryResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
   factory DeploymentOutputEntryResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class DeploymentOutputEntryResponse {
     );
   }
 }
+

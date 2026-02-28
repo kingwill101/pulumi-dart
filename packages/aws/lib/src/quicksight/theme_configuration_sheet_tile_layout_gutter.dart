@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ThemeConfigurationSheetTileLayoutGutter {
   /// This Boolean value controls whether to display a gutter space between sheet tiles.
   final bool? show;
@@ -11,18 +12,15 @@ class ThemeConfigurationSheetTileLayoutGutter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final showValue = show;
-    if (showValue != null) {
-      map['show'] = showValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'show': ?show,
+    };
   }
 
-  factory ThemeConfigurationSheetTileLayoutGutter.fromMap(
-      Map<String, dynamic> map) {
+  factory ThemeConfigurationSheetTileLayoutGutter.fromMap(Map<String, dynamic> map) {
     return ThemeConfigurationSheetTileLayoutGutter(
       show: map['show'] == null ? null : map['show'] as bool,
     );
   }
 }
+

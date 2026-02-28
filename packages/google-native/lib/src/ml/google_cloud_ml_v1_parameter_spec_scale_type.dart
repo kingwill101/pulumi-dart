@@ -14,7 +14,7 @@ enum GoogleCloudMlV1ParameterSpecScaleType {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GoogleCloudMlV1ParameterSpecScaleType value: $value');
+    throw ArgumentError('Unknown GoogleCloudMlV1ParameterSpecScaleType value: $value');
   }
 }
+

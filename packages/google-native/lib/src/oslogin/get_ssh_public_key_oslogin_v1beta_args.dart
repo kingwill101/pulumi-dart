@@ -16,14 +16,15 @@ class GetSshPublicKeyOsloginV1betaArgs {
   GetSshPublicKeyOsloginV1betaArgs({
     required String sshPublicKeyId,
     required String userId,
-  })  : sshPublicKeyId = pulumi.Input.asInput<String>(sshPublicKeyId),
-        userId = pulumi.Input.asInput<String>(userId);
+  }) :
+      sshPublicKeyId = pulumi.Input.asInput<String>(sshPublicKeyId),
+      userId = pulumi.Input.asInput<String>(userId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['sshPublicKeyId'] = sshPublicKeyId;
-    map['userId'] = userId;
-    return map;
+    return <String, dynamic>{
+      'sshPublicKeyId': sshPublicKeyId,
+      'userId': userId,
+    };
   }
 
   factory GetSshPublicKeyOsloginV1betaArgs.fromMap(Map<String, dynamic> map) {
@@ -33,3 +34,4 @@ class GetSshPublicKeyOsloginV1betaArgs {
     );
   }
 }
+

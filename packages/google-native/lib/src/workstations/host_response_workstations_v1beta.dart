@@ -14,15 +14,15 @@ class HostResponseWorkstationsV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gceInstance'] = gceInstance.toMap();
-    return map;
+    return <String, dynamic>{
+      'gceInstance': gceInstance.toMap(),
+    };
   }
 
   factory HostResponseWorkstationsV1beta.fromMap(Map<String, dynamic> map) {
     return HostResponseWorkstationsV1beta(
-      gceInstance: GceInstanceResponseWorkstationsV1beta.fromMap(
-          (map['gceInstance'] as Map).cast<String, dynamic>()),
+      gceInstance: GceInstanceResponseWorkstationsV1beta.fromMap((map['gceInstance'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

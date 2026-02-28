@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterNetworkPolicy {
   /// Whether network policy is enabled on the cluster.
   final bool enabled;
-
   /// The selected network policy provider.
   final String provider;
 
@@ -16,10 +16,10 @@ class GetClusterNetworkPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    map['provider'] = provider;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+      'provider': provider,
+    };
   }
 
   factory GetClusterNetworkPolicy.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetClusterNetworkPolicy {
     );
   }
 }
+

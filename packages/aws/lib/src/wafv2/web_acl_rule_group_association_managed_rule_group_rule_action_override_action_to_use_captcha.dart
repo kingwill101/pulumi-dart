@@ -4,8 +4,7 @@ import 'web_acl_rule_group_association_managed_rule_group_rule_action_override_a
 
 class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCaptcha {
   /// Custom handling for CAPTCHA requests. See below.
-  final WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCaptchaCustomRequestHandling?
-      customRequestHandling;
+  final WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCaptchaCustomRequestHandling? customRequestHandling;
 
   /// Creates a new [WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCaptcha].
   /// [customRequestHandling] Custom handling for CAPTCHA requests. See below.
@@ -14,22 +13,15 @@ class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCap
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final customRequestHandlingValue = customRequestHandling;
-    if (customRequestHandlingValue != null) {
-      map['customRequestHandling'] = customRequestHandlingValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'customRequestHandling': ?customRequestHandling == null ? null : customRequestHandling!.toMap(),
+    };
   }
 
-  factory WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCaptcha.fromMap(
-      Map<String, dynamic> map) {
+  factory WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCaptcha.fromMap(Map<String, dynamic> map) {
     return WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCaptcha(
-      customRequestHandling: map['customRequestHandling'] == null
-          ? null
-          : WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCaptchaCustomRequestHandling
-              .fromMap((map['customRequestHandling'] as Map)
-                  .cast<String, dynamic>()),
+      customRequestHandling: map['customRequestHandling'] == null ? null : WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCaptchaCustomRequestHandling.fromMap((map['customRequestHandling'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

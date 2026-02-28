@@ -16,17 +16,15 @@ class GetSecurityPolicyArgs {
   GetSecurityPolicyArgs({
     String? project,
     required String securityPolicy,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        securityPolicy = pulumi.Input.asInput<String>(securityPolicy);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      securityPolicy = pulumi.Input.asInput<String>(securityPolicy);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['securityPolicy'] = securityPolicy;
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'securityPolicy': securityPolicy,
+    };
   }
 
   factory GetSecurityPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetSecurityPolicyArgs {
     );
   }
 }
+

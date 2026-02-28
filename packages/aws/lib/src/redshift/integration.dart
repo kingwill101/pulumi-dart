@@ -751,35 +751,26 @@ class Integration extends pulumi.CustomResource {
   /// For more information, see the [User Guide](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context).
   /// You can only include this parameter if you specify the `kms_key_id` parameter.
   late final pulumi.Output<Map<String, String>?> additionalEncryptionContext;
-
   /// ARN of the Integration.
   late final pulumi.Output<String> arn;
-
   /// Description of the integration.
   late final pulumi.Output<String?> description;
-
   /// Name of the integration.
   late final pulumi.Output<String> integrationName;
-
   /// KMS key identifier for the key to use to encrypt the integration.
   /// If you don't specify an encryption key, Redshift uses a default AWS owned key.
   /// You can only include this parameter if `source_arn` references a DynamoDB table.
   late final pulumi.Output<String> kmsKeyId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ARN of the database to use as the source for replication. You can specify a DynamoDB table or an S3 bucket.
   late final pulumi.Output<String> sourceArn;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// For more detailed documentation about each argument, refer to the [AWS official documentation](https://docs.aws.amazon.com/cli/latest/reference/redshift/create-integration.html).
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// ARN of the Redshift data warehouse to use as the target for replication.
   ///
   /// The following arguments are optional:
@@ -800,8 +791,7 @@ class Integration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.additionalEncryptionContext =
-        registerOutput<Map<String, String>?>('additionalEncryptionContext');
+    this.additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext');
     this.arn = registerOutput<String>('arn');
     this.description = registerOutput<String?>('description');
     this.integrationName = registerOutput<String>('integrationName');

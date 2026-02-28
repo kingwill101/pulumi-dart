@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AccessGrantAccessGrantsLocationConfiguration {
   /// Sub-prefix.
   final String? s3SubPrefix;
@@ -11,19 +12,15 @@ class AccessGrantAccessGrantsLocationConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final s3SubPrefixValue = s3SubPrefix;
-    if (s3SubPrefixValue != null) {
-      map['s3SubPrefix'] = s3SubPrefixValue;
-    }
-    return map;
+    return <String, dynamic>{
+      's3SubPrefix': ?s3SubPrefix,
+    };
   }
 
-  factory AccessGrantAccessGrantsLocationConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory AccessGrantAccessGrantsLocationConfiguration.fromMap(Map<String, dynamic> map) {
     return AccessGrantAccessGrantsLocationConfiguration(
-      s3SubPrefix:
-          map['s3SubPrefix'] == null ? null : map['s3SubPrefix'] as String,
+      s3SubPrefix: map['s3SubPrefix'] == null ? null : map['s3SubPrefix'] as String,
     );
   }
 }
+

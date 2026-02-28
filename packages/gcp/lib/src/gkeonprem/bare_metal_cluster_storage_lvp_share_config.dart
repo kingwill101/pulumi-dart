@@ -6,7 +6,6 @@ class BareMetalClusterStorageLvpShareConfig {
   /// Defines the machine path and storage class for the LVP Share.
   /// Structure is documented below.
   final BareMetalClusterStorageLvpShareConfigLvpConfig lvpConfig;
-
   /// The number of subdirectories to create under path.
   final int? sharedPathPvCount;
 
@@ -19,23 +18,17 @@ class BareMetalClusterStorageLvpShareConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['lvpConfig'] = lvpConfig.toMap();
-    final sharedPathPvCountValue = sharedPathPvCount;
-    if (sharedPathPvCountValue != null) {
-      map['sharedPathPvCount'] = sharedPathPvCountValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'lvpConfig': lvpConfig.toMap(),
+      'sharedPathPvCount': ?sharedPathPvCount,
+    };
   }
 
-  factory BareMetalClusterStorageLvpShareConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory BareMetalClusterStorageLvpShareConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterStorageLvpShareConfig(
-      lvpConfig: BareMetalClusterStorageLvpShareConfigLvpConfig.fromMap(
-          (map['lvpConfig'] as Map).cast<String, dynamic>()),
-      sharedPathPvCount: map['sharedPathPvCount'] == null
-          ? null
-          : map['sharedPathPvCount'] as int,
+      lvpConfig: BareMetalClusterStorageLvpShareConfigLvpConfig.fromMap((map['lvpConfig'] as Map).cast<String, dynamic>()),
+      sharedPathPvCount: map['sharedPathPvCount'] == null ? null : map['sharedPathPvCount'] as int,
     );
   }
 }
+

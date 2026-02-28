@@ -8,20 +8,15 @@ class GetContactChannelResult {
   /// Whether the contact channel is activated.
   final String activationStatus;
   final String arn;
-
   /// Amazon Resource Name (ARN) of the AWS SSM Contact that the contact channel belongs to.
   final String contactId;
-
   /// Details used to engage the contact channel.
   final List<GetContactChannelDeliveryAddress> deliveryAddresses;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Name of the contact channel.
   final String name;
   final String region;
-
   /// Type of the contact channel.
   final String type;
 
@@ -46,18 +41,16 @@ class GetContactChannelResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['activationStatus'] = activationStatus;
-    map['arn'] = arn;
-    map['contactId'] = contactId;
-    map['deliveryAddresses'] = pulumi.Input.encodeList<
-        GetContactChannelDeliveryAddress,
-        Map<String, dynamic>>(deliveryAddresses, (value) => value.toMap());
-    map['id'] = id;
-    map['name'] = name;
-    map['region'] = region;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'activationStatus': activationStatus,
+      'arn': arn,
+      'contactId': contactId,
+      'deliveryAddresses': pulumi.Input.encodeList<GetContactChannelDeliveryAddress, Map<String, dynamic>>(deliveryAddresses, (value) => value.toMap()),
+      'id': id,
+      'name': name,
+      'region': region,
+      'type': type,
+    };
   }
 
   factory GetContactChannelResult.fromMap(Map<String, dynamic> map) {
@@ -65,11 +58,7 @@ class GetContactChannelResult {
       activationStatus: map['activationStatus'] as String,
       arn: map['arn'] as String,
       contactId: map['contactId'] as String,
-      deliveryAddresses:
-          pulumi.Input.decodeList<GetContactChannelDeliveryAddress>(
-              map['deliveryAddresses'],
-              (value) => GetContactChannelDeliveryAddress.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      deliveryAddresses: pulumi.Input.decodeList<GetContactChannelDeliveryAddress>(map['deliveryAddresses'], (value) => GetContactChannelDeliveryAddress.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       name: map['name'] as String,
       region: map['region'] as String,
@@ -77,3 +66,4 @@ class GetContactChannelResult {
     );
   }
 }
+

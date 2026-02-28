@@ -8,7 +8,6 @@ class GrpcRouteRuleMatch {
   /// Specifies a list of HTTP request headers to match against.
   /// Structure is documented below.
   final List<GrpcRouteRuleMatchHeader>? headers;
-
   /// A gRPC method to match against. If this field is empty or omitted, will match all methods.
   /// Structure is documented below.
   final GrpcRouteRuleMatchMethod? method;
@@ -22,31 +21,17 @@ class GrpcRouteRuleMatch {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final headersValue = headers;
-    if (headersValue != null) {
-      map['headers'] = pulumi.Input.encodeList<GrpcRouteRuleMatchHeader,
-          Map<String, dynamic>>(headersValue, (value) => value.toMap());
-    }
-    final methodValue = method;
-    if (methodValue != null) {
-      map['method'] = methodValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'headers': ?headers == null ? null : pulumi.Input.encodeList<GrpcRouteRuleMatchHeader, Map<String, dynamic>>(headers!, (value) => value.toMap()),
+      'method': ?method == null ? null : method!.toMap(),
+    };
   }
 
   factory GrpcRouteRuleMatch.fromMap(Map<String, dynamic> map) {
     return GrpcRouteRuleMatch(
-      headers: map['headers'] == null
-          ? null
-          : pulumi.Input.decodeList<GrpcRouteRuleMatchHeader>(
-              map['headers'],
-              (value) => GrpcRouteRuleMatchHeader.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      method: map['method'] == null
-          ? null
-          : GrpcRouteRuleMatchMethod.fromMap(
-              (map['method'] as Map).cast<String, dynamic>()),
+      headers: map['headers'] == null ? null : pulumi.Input.decodeList<GrpcRouteRuleMatchHeader>(map['headers'], (value) => GrpcRouteRuleMatchHeader.fromMap((value as Map).cast<String, dynamic>())),
+      method: map['method'] == null ? null : GrpcRouteRuleMatchMethod.fromMap((map['method'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

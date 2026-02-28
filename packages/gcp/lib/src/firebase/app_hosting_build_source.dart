@@ -8,7 +8,6 @@ class AppHostingBuildSource {
   /// that the build will be created at.
   /// Structure is documented below.
   final AppHostingBuildSourceCodebase? codebase;
-
   /// The URI of an Artifact Registry
   /// [container
   /// image](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.dockerImages)
@@ -25,28 +24,17 @@ class AppHostingBuildSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final codebaseValue = codebase;
-    if (codebaseValue != null) {
-      map['codebase'] = codebaseValue.toMap();
-    }
-    final containerValue = container;
-    if (containerValue != null) {
-      map['container'] = containerValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'codebase': ?codebase == null ? null : codebase!.toMap(),
+      'container': ?container == null ? null : container!.toMap(),
+    };
   }
 
   factory AppHostingBuildSource.fromMap(Map<String, dynamic> map) {
     return AppHostingBuildSource(
-      codebase: map['codebase'] == null
-          ? null
-          : AppHostingBuildSourceCodebase.fromMap(
-              (map['codebase'] as Map).cast<String, dynamic>()),
-      container: map['container'] == null
-          ? null
-          : AppHostingBuildSourceContainer.fromMap(
-              (map['container'] as Map).cast<String, dynamic>()),
+      codebase: map['codebase'] == null ? null : AppHostingBuildSourceCodebase.fromMap((map['codebase'] as Map).cast<String, dynamic>()),
+      container: map['container'] == null ? null : AppHostingBuildSourceContainer.fromMap((map['container'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

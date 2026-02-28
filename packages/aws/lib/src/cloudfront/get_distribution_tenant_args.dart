@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDistributionTenantArgs {
   /// ARN (Amazon Resource Name) for the distribution tenant.
   final pulumi.Input<String>? arn;
-
   /// An associated domain of the distribution tenant. Exactly one of `id` or `domain` must be specified.
   final pulumi.Input<String>? domain;
-
   /// Identifier for the distribution tenant. For example: `EDFDVBD632BHDS5`. Exactly one of `id` or `domain` must be specified.
   final pulumi.Input<String>? id;
   final pulumi.Input<String>? name;
@@ -27,30 +25,19 @@ class GetDistributionTenantArgs {
     String? domain,
     String? id,
     String? name,
-  })  : arn = pulumi.Input.asOptionalInput<String>(arn),
-        domain = pulumi.Input.asOptionalInput<String>(domain),
-        id = pulumi.Input.asOptionalInput<String>(id),
-        name = pulumi.Input.asOptionalInput<String>(name);
+  }) :
+      arn = pulumi.Input.asOptionalInput<String>(arn),
+      domain = pulumi.Input.asOptionalInput<String>(domain),
+      id = pulumi.Input.asOptionalInput<String>(id),
+      name = pulumi.Input.asOptionalInput<String>(name);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final arnValue = arn;
-    if (arnValue != null) {
-      map['arn'] = arnValue;
-    }
-    final domainValue = domain;
-    if (domainValue != null) {
-      map['domain'] = domainValue;
-    }
-    final idValue = id;
-    if (idValue != null) {
-      map['id'] = idValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'arn': ?arn,
+      'domain': ?domain,
+      'id': ?id,
+      'name': ?name,
+    };
   }
 
   factory GetDistributionTenantArgs.fromMap(Map<String, dynamic> map) {
@@ -62,3 +49,4 @@ class GetDistributionTenantArgs {
     );
   }
 }
+

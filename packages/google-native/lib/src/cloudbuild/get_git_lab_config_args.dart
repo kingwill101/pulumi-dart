@@ -19,19 +19,17 @@ class GetGitLabConfigArgs {
     required String gitLabConfigId,
     required String location,
     String? project,
-  })  : gitLabConfigId = pulumi.Input.asInput<String>(gitLabConfigId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      gitLabConfigId = pulumi.Input.asInput<String>(gitLabConfigId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gitLabConfigId'] = gitLabConfigId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'gitLabConfigId': gitLabConfigId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetGitLabConfigArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetGitLabConfigArgs {
     );
   }
 }
+

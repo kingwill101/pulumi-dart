@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for a service.
 class ServiceConfigResponse {
   /// Optional. Domain name of the service. Example: console.cloud.google
@@ -12,9 +13,9 @@ class ServiceConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['domain'] = domain;
-    return map;
+    return <String, dynamic>{
+      'domain': domain,
+    };
   }
 
   factory ServiceConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class ServiceConfigResponse {
     );
   }
 }
+

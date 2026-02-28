@@ -9,7 +9,6 @@ class GetBackupPlanAssociationResult {
   final String backupPlanAssociationId;
   final String createTime;
   final String dataSource;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String lastSuccessfulBackupConsistencyTime;
@@ -52,27 +51,21 @@ class GetBackupPlanAssociationResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['backupPlan'] = backupPlan;
-    map['backupPlanAssociationId'] = backupPlanAssociationId;
-    map['createTime'] = createTime;
-    map['dataSource'] = dataSource;
-    map['id'] = id;
-    map['lastSuccessfulBackupConsistencyTime'] =
-        lastSuccessfulBackupConsistencyTime;
-    map['location'] = location;
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['resource'] = resource;
-    map['resourceType'] = resourceType;
-    map['rulesConfigInfos'] = pulumi.Input.encodeList<
-        GetBackupPlanAssociationRulesConfigInfo,
-        Map<String, dynamic>>(rulesConfigInfos, (value) => value.toMap());
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'backupPlan': backupPlan,
+      'backupPlanAssociationId': backupPlanAssociationId,
+      'createTime': createTime,
+      'dataSource': dataSource,
+      'id': id,
+      'lastSuccessfulBackupConsistencyTime': lastSuccessfulBackupConsistencyTime,
+      'location': location,
+      'name': name,
+      'project': ?project,
+      'resource': resource,
+      'resourceType': resourceType,
+      'rulesConfigInfos': pulumi.Input.encodeList<GetBackupPlanAssociationRulesConfigInfo, Map<String, dynamic>>(rulesConfigInfos, (value) => value.toMap()),
+      'updateTime': updateTime,
+    };
   }
 
   factory GetBackupPlanAssociationResult.fromMap(Map<String, dynamic> map) {
@@ -82,19 +75,15 @@ class GetBackupPlanAssociationResult {
       createTime: map['createTime'] as String,
       dataSource: map['dataSource'] as String,
       id: map['id'] as String,
-      lastSuccessfulBackupConsistencyTime:
-          map['lastSuccessfulBackupConsistencyTime'] as String,
+      lastSuccessfulBackupConsistencyTime: map['lastSuccessfulBackupConsistencyTime'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       resource: map['resource'] as String,
       resourceType: map['resourceType'] as String,
-      rulesConfigInfos:
-          pulumi.Input.decodeList<GetBackupPlanAssociationRulesConfigInfo>(
-              map['rulesConfigInfos'],
-              (value) => GetBackupPlanAssociationRulesConfigInfo.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      rulesConfigInfos: pulumi.Input.decodeList<GetBackupPlanAssociationRulesConfigInfo>(map['rulesConfigInfos'], (value) => GetBackupPlanAssociationRulesConfigInfo.fromMap((value as Map).cast<String, dynamic>())),
       updateTime: map['updateTime'] as String,
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId {
   /// If not empty, the ID of the namespace to which the entities belong.
   final String? namespaceId;
-
   /// The ID of the project to which the entities belong.
   final String projectId;
 
@@ -16,21 +16,17 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final namespaceIdValue = namespaceId;
-    if (namespaceIdValue != null) {
-      map['namespaceId'] = namespaceIdValue;
-    }
-    map['projectId'] = projectId;
-    return map;
+    return <String, dynamic>{
+      'namespaceId': ?namespaceId,
+      'projectId': projectId,
+    };
   }
 
-  factory PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId.fromMap(
-      Map<String, dynamic> map) {
+  factory PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId(
-      namespaceId:
-          map['namespaceId'] == null ? null : map['namespaceId'] as String,
+      namespaceId: map['namespaceId'] == null ? null : map['namespaceId'] as String,
       projectId: map['projectId'] as String,
     );
   }
 }
+

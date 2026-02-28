@@ -1,18 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetImageOutputResourceAmi {
   /// Account identifier of the AMI.
   final String accountId;
-
   /// Description of the AMI.
   final String description;
-
   /// Identifier of the AMI.
   final String image;
-
   /// Name of the AMI.
   final String name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final String region;
 
@@ -31,13 +28,13 @@ class GetImageOutputResourceAmi {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accountId'] = accountId;
-    map['description'] = description;
-    map['image'] = image;
-    map['name'] = name;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'accountId': accountId,
+      'description': description,
+      'image': image,
+      'name': name,
+      'region': region,
+    };
   }
 
   factory GetImageOutputResourceAmi.fromMap(Map<String, dynamic> map) {
@@ -50,3 +47,4 @@ class GetImageOutputResourceAmi {
     );
   }
 }
+

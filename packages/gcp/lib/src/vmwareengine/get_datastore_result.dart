@@ -8,7 +8,6 @@ class GetDatastoreResult {
   final List<String> clusters;
   final String createTime;
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
@@ -46,24 +45,19 @@ class GetDatastoreResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clusters'] = clusters;
-    map['createTime'] = createTime;
-    map['description'] = description;
-    map['id'] = id;
-    map['location'] = location;
-    map['name'] = name;
-    map['nfsDatastores'] =
-        pulumi.Input.encodeList<GetDatastoreNfsDatastore, Map<String, dynamic>>(
-            nfsDatastores, (value) => value.toMap());
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['state'] = state;
-    map['uid'] = uid;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'clusters': clusters,
+      'createTime': createTime,
+      'description': description,
+      'id': id,
+      'location': location,
+      'name': name,
+      'nfsDatastores': pulumi.Input.encodeList<GetDatastoreNfsDatastore, Map<String, dynamic>>(nfsDatastores, (value) => value.toMap()),
+      'project': ?project,
+      'state': state,
+      'uid': uid,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetDatastoreResult.fromMap(Map<String, dynamic> map) {
@@ -74,10 +68,7 @@ class GetDatastoreResult {
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      nfsDatastores: pulumi.Input.decodeList<GetDatastoreNfsDatastore>(
-          map['nfsDatastores'],
-          (value) => GetDatastoreNfsDatastore.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      nfsDatastores: pulumi.Input.decodeList<GetDatastoreNfsDatastore>(map['nfsDatastores'], (value) => GetDatastoreNfsDatastore.fromMap((value as Map).cast<String, dynamic>())),
       project: map['project'] == null ? null : map['project'] as String,
       state: map['state'] as String,
       uid: map['uid'] as String,
@@ -85,3 +76,4 @@ class GetDatastoreResult {
     );
   }
 }
+

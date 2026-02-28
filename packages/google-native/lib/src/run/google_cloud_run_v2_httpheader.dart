@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// HTTPHeader describes a custom header to be used in HTTP probes
 class GoogleCloudRunV2HTTPHeader {
   /// The header field name
   final String name;
-
   /// The header field value
   final String? value;
 
@@ -17,13 +17,10 @@ class GoogleCloudRunV2HTTPHeader {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    final valueValue = value;
-    if (valueValue != null) {
-      map['value'] = valueValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'value': ?value,
+    };
   }
 
   factory GoogleCloudRunV2HTTPHeader.fromMap(Map<String, dynamic> map) {
@@ -33,3 +30,4 @@ class GoogleCloudRunV2HTTPHeader {
     );
   }
 }
+

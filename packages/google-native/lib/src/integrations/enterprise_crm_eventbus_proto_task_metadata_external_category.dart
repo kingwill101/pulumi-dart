@@ -18,15 +18,13 @@ enum EnterpriseCrmEventbusProtoTaskMetadataExternalCategory {
   const EnterpriseCrmEventbusProtoTaskMetadataExternalCategory(this.value);
   final String value;
 
-  static EnterpriseCrmEventbusProtoTaskMetadataExternalCategory fromValue(
-      String value) {
-    for (final item
-        in EnterpriseCrmEventbusProtoTaskMetadataExternalCategory.values) {
+  static EnterpriseCrmEventbusProtoTaskMetadataExternalCategory fromValue(String value) {
+    for (final item in EnterpriseCrmEventbusProtoTaskMetadataExternalCategory.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown EnterpriseCrmEventbusProtoTaskMetadataExternalCategory value: $value');
+    throw ArgumentError('Unknown EnterpriseCrmEventbusProtoTaskMetadataExternalCategory value: $value');
   }
 }
+

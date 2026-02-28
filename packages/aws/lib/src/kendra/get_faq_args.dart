@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFaqArgs {
   /// Identifier of the FAQ.
   final pulumi.Input<String> faqId;
-
   /// Identifier of the index that contains the FAQ.
   final pulumi.Input<String> indexId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Metadata that helps organize the FAQs you create.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -29,24 +26,19 @@ class GetFaqArgs {
     required String indexId,
     String? region,
     Map<String, String>? tags,
-  })  : faqId = pulumi.Input.asInput<String>(faqId),
-        indexId = pulumi.Input.asInput<String>(indexId),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      faqId = pulumi.Input.asInput<String>(faqId),
+      indexId = pulumi.Input.asInput<String>(indexId),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['faqId'] = faqId;
-    map['indexId'] = indexId;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'faqId': faqId,
+      'indexId': indexId,
+      'region': ?region,
+      'tags': ?tags,
+    };
   }
 
   factory GetFaqArgs.fromMap(Map<String, dynamic> map) {
@@ -54,9 +46,8 @@ class GetFaqArgs {
       faqId: map['faqId'] as String,
       indexId: map['indexId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

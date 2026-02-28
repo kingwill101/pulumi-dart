@@ -10,18 +10,14 @@ import 'app_hosting_domain_serve.dart';
 class AppHostingDomainArgs {
   /// The ID of the Backend that this Domain is associated with
   final pulumi.Input<String> backend;
-
   /// Id of the domain to create.
   /// Must be a valid domain name, such as "foo.com"
   final pulumi.Input<String> domainId;
-
   /// The location of the Backend that this Domain is associated with
   final pulumi.Input<String> location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The serving behavior of the domain. If specified, the domain will
   /// serve content other than its Backend's live content.
   /// Structure is documented below.
@@ -39,27 +35,21 @@ class AppHostingDomainArgs {
     required String location,
     String? project,
     AppHostingDomainServe? serve,
-  })  : backend = pulumi.Input.asInput<String>(backend),
-        domainId = pulumi.Input.asInput<String>(domainId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        serve = pulumi.Input.asOptionalInput<AppHostingDomainServe>(serve);
+  }) :
+      backend = pulumi.Input.asInput<String>(backend),
+      domainId = pulumi.Input.asInput<String>(domainId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      serve = pulumi.Input.asOptionalInput<AppHostingDomainServe>(serve);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['backend'] = backend;
-    map['domainId'] = domainId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final serveValue = serve;
-    if (serveValue != null) {
-      map['serve'] = pulumi.Input.mapOptionalInputValue<AppHostingDomainServe,
-          Map<String, dynamic>>(serveValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'backend': backend,
+      'domainId': domainId,
+      'location': location,
+      'project': ?project,
+      'serve': ?pulumi.Input.mapOptionalInputValue<AppHostingDomainServe, Map<String, dynamic>>(serve, (value) => value.toMap()),
+    };
   }
 
   factory AppHostingDomainArgs.fromMap(Map<String, dynamic> map) {
@@ -68,10 +58,8 @@ class AppHostingDomainArgs {
       domainId: map['domainId'] as String,
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      serve: map['serve'] == null
-          ? null
-          : AppHostingDomainServe.fromMap(
-              (map['serve'] as Map).cast<String, dynamic>()),
+      serve: map['serve'] == null ? null : AppHostingDomainServe.fromMap((map['serve'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

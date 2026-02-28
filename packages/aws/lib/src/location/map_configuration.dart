@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MapConfiguration {
   /// Specifies the map style selected from an available data provider. Valid values can be found in the [Location Service CreateMap API Reference](https://docs.aws.amazon.com/location/latest/APIReference/API_CreateMap.html).
   final String style;
@@ -11,9 +12,9 @@ class MapConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['style'] = style;
-    return map;
+    return <String, dynamic>{
+      'style': style,
+    };
   }
 
   factory MapConfiguration.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class MapConfiguration {
     );
   }
 }
+

@@ -4,8 +4,7 @@ import 'virtual_node_spec_backend_defaults_client_policy_tls_validation_subject_
 
 class VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames {
   /// Criteria for determining a SAN's match.
-  final VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch
-      match;
+  final VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch match;
 
   /// Creates a new [VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames].
   /// [match] Criteria for determining a SAN's match.
@@ -14,17 +13,15 @@ class VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeN
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['match'] = match.toMap();
-    return map;
+    return <String, dynamic>{
+      'match': match.toMap(),
+    };
   }
 
-  factory VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames.fromMap(
-      Map<String, dynamic> map) {
+  factory VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames(
-      match:
-          VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch
-              .fromMap((map['match'] as Map).cast<String, dynamic>()),
+      match: VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch.fromMap((map['match'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

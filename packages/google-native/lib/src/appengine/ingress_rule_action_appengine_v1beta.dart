@@ -13,7 +13,7 @@ enum IngressRuleActionAppengineV1beta {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown IngressRuleActionAppengineV1beta value: $value');
+    throw ArgumentError('Unknown IngressRuleActionAppengineV1beta value: $value');
   }
 }
+

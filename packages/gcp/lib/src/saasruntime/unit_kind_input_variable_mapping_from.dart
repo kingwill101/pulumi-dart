@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class UnitKindInputVariableMappingFrom {
   /// Alias of the dependency that the outputVariable will pass its value to
   final String dependency;
-
   /// Name of the outputVariable on the dependency
   final String outputVariable;
 
@@ -16,10 +16,10 @@ class UnitKindInputVariableMappingFrom {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dependency'] = dependency;
-    map['outputVariable'] = outputVariable;
-    return map;
+    return <String, dynamic>{
+      'dependency': dependency,
+      'outputVariable': outputVariable,
+    };
   }
 
   factory UnitKindInputVariableMappingFrom.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class UnitKindInputVariableMappingFrom {
     );
   }
 }
+

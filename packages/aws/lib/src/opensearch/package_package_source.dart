@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PackagePackageSource {
   /// The name of the Amazon S3 bucket containing the package.
   final String s3BucketName;
-
   /// Key (file name) of the package.
   final String s3Key;
 
@@ -16,10 +16,10 @@ class PackagePackageSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['s3BucketName'] = s3BucketName;
-    map['s3Key'] = s3Key;
-    return map;
+    return <String, dynamic>{
+      's3BucketName': s3BucketName,
+      's3Key': s3Key,
+    };
   }
 
   factory PackagePackageSource.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class PackagePackageSource {
     );
   }
 }
+

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterTpuConfig {
   /// Whether Cloud TPU integration is enabled or not
   final bool enabled;
-
   /// IPv4 CIDR block reserved for Cloud TPU in the VPC.
   final String ipv4CidrBlock;
-
   /// Whether to use service networking for Cloud TPU or not
   final bool useServiceNetworking;
 
@@ -21,11 +20,11 @@ class GetClusterTpuConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    map['ipv4CidrBlock'] = ipv4CidrBlock;
-    map['useServiceNetworking'] = useServiceNetworking;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+      'ipv4CidrBlock': ipv4CidrBlock,
+      'useServiceNetworking': useServiceNetworking,
+    };
   }
 
   factory GetClusterTpuConfig.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class GetClusterTpuConfig {
     );
   }
 }
+

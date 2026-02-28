@@ -5,12 +5,9 @@ import 'virtual_node_spec_backend_virtual_service_client_policy_tls_validation_t
 
 class VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidation {
   /// SANs for a TLS validation context.
-  final VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationSubjectAlternativeNames?
-      subjectAlternativeNames;
-
+  final VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationSubjectAlternativeNames? subjectAlternativeNames;
   /// TLS validation context trust.
-  final VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrust
-      trust;
+  final VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrust trust;
 
   /// Creates a new [VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidation].
   /// [subjectAlternativeNames] SANs for a TLS validation context.
@@ -21,25 +18,17 @@ class VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final subjectAlternativeNamesValue = subjectAlternativeNames;
-    if (subjectAlternativeNamesValue != null) {
-      map['subjectAlternativeNames'] = subjectAlternativeNamesValue.toMap();
-    }
-    map['trust'] = trust.toMap();
-    return map;
+    return <String, dynamic>{
+      'subjectAlternativeNames': ?subjectAlternativeNames == null ? null : subjectAlternativeNames!.toMap(),
+      'trust': trust.toMap(),
+    };
   }
 
-  factory VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidation.fromMap(
-      Map<String, dynamic> map) {
+  factory VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidation.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidation(
-      subjectAlternativeNames: map['subjectAlternativeNames'] == null
-          ? null
-          : VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationSubjectAlternativeNames
-              .fromMap((map['subjectAlternativeNames'] as Map)
-                  .cast<String, dynamic>()),
-      trust: VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrust
-          .fromMap((map['trust'] as Map).cast<String, dynamic>()),
+      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationSubjectAlternativeNames.fromMap((map['subjectAlternativeNames'] as Map).cast<String, dynamic>()),
+      trust: VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrust.fromMap((map['trust'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

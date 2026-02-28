@@ -9,13 +9,10 @@ import 'egress_source.dart';
 class EgressFrom {
   /// A list of identities that are allowed access through this [EgressPolicy]. Should be in the format of email address. The email address should represent individual user or service account only.
   final List<String>? identities;
-
   /// Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
   final EgressFromIdentityType? identityType;
-
   /// Whether to enforce traffic restrictions based on `sources` field. If the `sources` fields is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
   final EgressFromSourceRestriction? sourceRestriction;
-
   /// Sources that this EgressPolicy authorizes access from. If this field is not empty, then `source_restriction` must be set to `SOURCE_RESTRICTION_ENABLED`.
   final List<EgressSource>? sources;
 
@@ -32,46 +29,21 @@ class EgressFrom {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final identitiesValue = identities;
-    if (identitiesValue != null) {
-      map['identities'] = identitiesValue;
-    }
-    final identityTypeValue = identityType;
-    if (identityTypeValue != null) {
-      map['identityType'] = identityTypeValue.value;
-    }
-    final sourceRestrictionValue = sourceRestriction;
-    if (sourceRestrictionValue != null) {
-      map['sourceRestriction'] = sourceRestrictionValue.value;
-    }
-    final sourcesValue = sources;
-    if (sourcesValue != null) {
-      map['sources'] =
-          pulumi.Input.encodeList<EgressSource, Map<String, dynamic>>(
-              sourcesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'identities': ?identities,
+      'identityType': ?identityType == null ? null : identityType!.value,
+      'sourceRestriction': ?sourceRestriction == null ? null : sourceRestriction!.value,
+      'sources': ?sources == null ? null : pulumi.Input.encodeList<EgressSource, Map<String, dynamic>>(sources!, (value) => value.toMap()),
+    };
   }
 
   factory EgressFrom.fromMap(Map<String, dynamic> map) {
     return EgressFrom(
-      identities: map['identities'] == null
-          ? null
-          : (map['identities'] as List).cast<String>(),
-      identityType: map['identityType'] == null
-          ? null
-          : EgressFromIdentityType.fromValue(map['identityType'] as String),
-      sourceRestriction: map['sourceRestriction'] == null
-          ? null
-          : EgressFromSourceRestriction.fromValue(
-              map['sourceRestriction'] as String),
-      sources: map['sources'] == null
-          ? null
-          : pulumi.Input.decodeList<EgressSource>(
-              map['sources'],
-              (value) =>
-                  EgressSource.fromMap((value as Map).cast<String, dynamic>())),
+      identities: map['identities'] == null ? null : (map['identities'] as List).cast<String>(),
+      identityType: map['identityType'] == null ? null : EgressFromIdentityType.fromValue(map['identityType'] as String),
+      sourceRestriction: map['sourceRestriction'] == null ? null : EgressFromSourceRestriction.fromValue(map['sourceRestriction'] as String),
+      sources: map['sources'] == null ? null : pulumi.Input.decodeList<EgressSource>(map['sources'], (value) => EgressSource.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -7,15 +7,10 @@ import 'google_cloud_aiplatform_v1beta1_model_monitoring_stats_anomalies_feature
 class GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesResponse {
   /// Number of anomalies within all stats.
   final int anomalyCount;
-
   /// Deployed Model ID.
   final String deployedModelId;
-
   /// A list of historical Stats and Anomalies generated for all Features.
-  final List<
-          GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesResponse>
-      featureStats;
-
+  final List<GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesResponse> featureStats;
   /// Model Monitoring Objective those stats and anomalies belonging to.
   final String objective;
 
@@ -32,28 +27,21 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['anomalyCount'] = anomalyCount;
-    map['deployedModelId'] = deployedModelId;
-    map['featureStats'] = pulumi.Input.encodeList<
-        GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesResponse,
-        Map<String, dynamic>>(featureStats, (value) => value.toMap());
-    map['objective'] = objective;
-    return map;
+    return <String, dynamic>{
+      'anomalyCount': anomalyCount,
+      'deployedModelId': deployedModelId,
+      'featureStats': pulumi.Input.encodeList<GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesResponse, Map<String, dynamic>>(featureStats, (value) => value.toMap()),
+      'objective': objective,
+    };
   }
 
-  factory GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesResponse(
       anomalyCount: map['anomalyCount'] as int,
       deployedModelId: map['deployedModelId'] as String,
-      featureStats: pulumi.Input.decodeList<
-              GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesResponse>(
-          map['featureStats'],
-          (value) =>
-              GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesResponse
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      featureStats: pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesResponse>(map['featureStats'], (value) => GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesResponse.fromMap((value as Map).cast<String, dynamic>())),
       objective: map['objective'] as String,
     );
   }
 }
+

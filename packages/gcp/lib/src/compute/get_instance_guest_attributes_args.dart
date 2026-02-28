@@ -9,21 +9,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceGuestAttributesArgs {
   /// The name or self_link of the instance.
   final pulumi.Input<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If `self_link` is provided, this value is ignored.  If neither `self_link`
   /// nor `project` are provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Path to query for the guest attributes. Consists of
   /// `namespace` name for the attributes followed with a `/`.
   final pulumi.Input<String>? queryPath;
   final pulumi.Input<String>? region;
-
   /// Key of a variable to get the value of. Consists of
   /// `namespace` name and `key` name for the variable separated by a `/`.
   final pulumi.Input<String>? variableKey;
-
   /// The zone of the instance. If `self_link` is provided, this
   /// value is ignored.  If neither `self_link` nor `zone` are provided, the
   /// provider zone is used.
@@ -43,37 +39,23 @@ class GetInstanceGuestAttributesArgs {
     String? region,
     String? variableKey,
     String? zone,
-  })  : name = pulumi.Input.asInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        queryPath = pulumi.Input.asOptionalInput<String>(queryPath),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        variableKey = pulumi.Input.asOptionalInput<String>(variableKey),
-        zone = pulumi.Input.asOptionalInput<String>(zone);
+  }) :
+      name = pulumi.Input.asInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      queryPath = pulumi.Input.asOptionalInput<String>(queryPath),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      variableKey = pulumi.Input.asOptionalInput<String>(variableKey),
+      zone = pulumi.Input.asOptionalInput<String>(zone);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final queryPathValue = queryPath;
-    if (queryPathValue != null) {
-      map['queryPath'] = queryPathValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final variableKeyValue = variableKey;
-    if (variableKeyValue != null) {
-      map['variableKey'] = variableKeyValue;
-    }
-    final zoneValue = zone;
-    if (zoneValue != null) {
-      map['zone'] = zoneValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'project': ?project,
+      'queryPath': ?queryPath,
+      'region': ?region,
+      'variableKey': ?variableKey,
+      'zone': ?zone,
+    };
   }
 
   factory GetInstanceGuestAttributesArgs.fromMap(Map<String, dynamic> map) {
@@ -82,9 +64,9 @@ class GetInstanceGuestAttributesArgs {
       project: map['project'] == null ? null : map['project'] as String,
       queryPath: map['queryPath'] == null ? null : map['queryPath'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      variableKey:
-          map['variableKey'] == null ? null : map['variableKey'] as String,
+      variableKey: map['variableKey'] == null ? null : map['variableKey'] as String,
       zone: map['zone'] == null ? null : map['zone'] as String,
     );
   }
 }
+

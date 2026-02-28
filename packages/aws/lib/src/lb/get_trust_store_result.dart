@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getTrustStore.
 class GetTrustStoreResult {
   final String arn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -22,12 +22,12 @@ class GetTrustStoreResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['id'] = id;
-    map['name'] = name;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'id': id,
+      'name': name,
+      'region': region,
+    };
   }
 
   factory GetTrustStoreResult.fromMap(Map<String, dynamic> map) {
@@ -39,3 +39,4 @@ class GetTrustStoreResult {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetGroupMembershipsMembershipRoleExpiryDetail {
   /// The time at which the MembershipRole will expire.
   ///
@@ -16,15 +17,15 @@ class GetGroupMembershipsMembershipRoleExpiryDetail {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['expireTime'] = expireTime;
-    return map;
+    return <String, dynamic>{
+      'expireTime': expireTime,
+    };
   }
 
-  factory GetGroupMembershipsMembershipRoleExpiryDetail.fromMap(
-      Map<String, dynamic> map) {
+  factory GetGroupMembershipsMembershipRoleExpiryDetail.fromMap(Map<String, dynamic> map) {
     return GetGroupMembershipsMembershipRoleExpiryDetail(
       expireTime: map['expireTime'] as String,
     );
   }
 }
+

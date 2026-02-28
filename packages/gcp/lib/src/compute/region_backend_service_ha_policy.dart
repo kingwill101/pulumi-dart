@@ -17,7 +17,6 @@ class RegionBackendServiceHaPolicy {
   /// are quickly delivered to that VM.
   /// Possible values are: `DISABLED`, `GARP_RA`.
   final String? fastIpMove;
-
   /// Selects one of the network endpoints attached to the backend NEGs of this service as the
   /// active endpoint (the leader) that receives all traffic.
   /// Structure is documented below.
@@ -32,26 +31,17 @@ class RegionBackendServiceHaPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final fastIpMoveValue = fastIpMove;
-    if (fastIpMoveValue != null) {
-      map['fastIpMove'] = fastIpMoveValue;
-    }
-    final leaderValue = leader;
-    if (leaderValue != null) {
-      map['leader'] = leaderValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'fastIpMove': ?fastIpMove,
+      'leader': ?leader == null ? null : leader!.toMap(),
+    };
   }
 
   factory RegionBackendServiceHaPolicy.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceHaPolicy(
-      fastIpMove:
-          map['fastIpMove'] == null ? null : map['fastIpMove'] as String,
-      leader: map['leader'] == null
-          ? null
-          : RegionBackendServiceHaPolicyLeader.fromMap(
-              (map['leader'] as Map).cast<String, dynamic>()),
+      fastIpMove: map['fastIpMove'] == null ? null : map['fastIpMove'] as String,
+      leader: map['leader'] == null ? null : RegionBackendServiceHaPolicyLeader.fromMap((map['leader'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

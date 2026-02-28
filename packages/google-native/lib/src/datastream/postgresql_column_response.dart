@@ -1,28 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// PostgreSQL Column.
 class PostgresqlColumnResponse {
   /// Column name.
   final String column;
-
   /// The PostgreSQL data type.
   final String dataType;
-
   /// Column length.
   final int length;
-
   /// Whether or not the column can accept a null value.
   final bool nullable;
-
   /// The ordinal position of the column in the table.
   final int ordinalPosition;
-
   /// Column precision.
   final int precision;
-
   /// Whether or not the column represents a primary key.
   final bool primaryKey;
-
   /// Column scale.
   final int scale;
 
@@ -47,16 +41,16 @@ class PostgresqlColumnResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['column'] = column;
-    map['dataType'] = dataType;
-    map['length'] = length;
-    map['nullable'] = nullable;
-    map['ordinalPosition'] = ordinalPosition;
-    map['precision'] = precision;
-    map['primaryKey'] = primaryKey;
-    map['scale'] = scale;
-    return map;
+    return <String, dynamic>{
+      'column': column,
+      'dataType': dataType,
+      'length': length,
+      'nullable': nullable,
+      'ordinalPosition': ordinalPosition,
+      'precision': precision,
+      'primaryKey': primaryKey,
+      'scale': scale,
+    };
   }
 
   factory PostgresqlColumnResponse.fromMap(Map<String, dynamic> map) {
@@ -72,3 +66,4 @@ class PostgresqlColumnResponse {
     );
   }
 }
+

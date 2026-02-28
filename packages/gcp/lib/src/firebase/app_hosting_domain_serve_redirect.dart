@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppHostingDomainServeRedirect {
   /// The status code to use in a redirect response. Must be a valid HTTP 3XX
   /// status code. Defaults to 302 if not present.
   final String? status;
-
   /// The URI of the redirect's intended destination. This URI will be
   /// prepended to the original request path. URI without a scheme are
   /// assumed to be HTTPS.
@@ -19,13 +19,10 @@ class AppHostingDomainServeRedirect {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final statusValue = status;
-    if (statusValue != null) {
-      map['status'] = statusValue;
-    }
-    map['uri'] = uri;
-    return map;
+    return <String, dynamic>{
+      'status': ?status,
+      'uri': uri,
+    };
   }
 
   factory AppHostingDomainServeRedirect.fromMap(Map<String, dynamic> map) {
@@ -35,3 +32,4 @@ class AppHostingDomainServeRedirect {
     );
   }
 }
+

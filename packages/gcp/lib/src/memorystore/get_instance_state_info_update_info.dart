@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInstanceStateInfoUpdateInfo {
   /// Output only. Target engine version for the instance.
   final String targetEngineVersion;
-
   /// Output only. Target node type for the instance.
   final String targetNodeType;
-
   /// Output only. Target number of replica nodes per shard for the instance.
   final int targetReplicaCount;
-
   /// Output only. Target number of shards for the instance.
   final int targetShardCount;
 
@@ -26,12 +24,12 @@ class GetInstanceStateInfoUpdateInfo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['targetEngineVersion'] = targetEngineVersion;
-    map['targetNodeType'] = targetNodeType;
-    map['targetReplicaCount'] = targetReplicaCount;
-    map['targetShardCount'] = targetShardCount;
-    return map;
+    return <String, dynamic>{
+      'targetEngineVersion': targetEngineVersion,
+      'targetNodeType': targetNodeType,
+      'targetReplicaCount': targetReplicaCount,
+      'targetShardCount': targetShardCount,
+    };
   }
 
   factory GetInstanceStateInfoUpdateInfo.fromMap(Map<String, dynamic> map) {
@@ -43,3 +41,4 @@ class GetInstanceStateInfoUpdateInfo {
     );
   }
 }
+

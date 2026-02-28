@@ -28,50 +28,25 @@ class Value {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final booleanValueValue = booleanValue;
-    if (booleanValueValue != null) {
-      map['booleanValue'] = booleanValueValue;
-    }
-    final dateValueValue = dateValue;
-    if (dateValueValue != null) {
-      map['dateValue'] = dateValueValue.toMap();
-    }
-    final doubleValueValue = doubleValue;
-    if (doubleValueValue != null) {
-      map['doubleValue'] = doubleValueValue;
-    }
-    final integerValueValue = integerValue;
-    if (integerValueValue != null) {
-      map['integerValue'] = integerValueValue;
-    }
-    final stringValueValue = stringValue;
-    if (stringValueValue != null) {
-      map['stringValue'] = stringValueValue;
-    }
-    final timestampValueValue = timestampValue;
-    if (timestampValueValue != null) {
-      map['timestampValue'] = timestampValueValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'booleanValue': ?booleanValue,
+      'dateValue': ?dateValue == null ? null : dateValue!.toMap(),
+      'doubleValue': ?doubleValue,
+      'integerValue': ?integerValue,
+      'stringValue': ?stringValue,
+      'timestampValue': ?timestampValue,
+    };
   }
 
   factory Value.fromMap(Map<String, dynamic> map) {
     return Value(
-      booleanValue:
-          map['booleanValue'] == null ? null : map['booleanValue'] as bool,
-      dateValue: map['dateValue'] == null
-          ? null
-          : Date.fromMap((map['dateValue'] as Map).cast<String, dynamic>()),
-      doubleValue:
-          map['doubleValue'] == null ? null : map['doubleValue'] as double,
-      integerValue:
-          map['integerValue'] == null ? null : map['integerValue'] as String,
-      stringValue:
-          map['stringValue'] == null ? null : map['stringValue'] as String,
-      timestampValue: map['timestampValue'] == null
-          ? null
-          : map['timestampValue'] as String,
+      booleanValue: map['booleanValue'] == null ? null : map['booleanValue'] as bool,
+      dateValue: map['dateValue'] == null ? null : Date.fromMap((map['dateValue'] as Map).cast<String, dynamic>()),
+      doubleValue: map['doubleValue'] == null ? null : map['doubleValue'] as double,
+      integerValue: map['integerValue'] == null ? null : map['integerValue'] as String,
+      stringValue: map['stringValue'] == null ? null : map['stringValue'] as String,
+      timestampValue: map['timestampValue'] == null ? null : map['timestampValue'] as String,
     );
   }
 }
+

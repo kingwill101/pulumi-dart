@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Details of the final state "forward" and associated resource.
 class ForwardInfoResponse {
   /// URI of the resource that the packet is forwarded to.
   final String resourceUri;
-
   /// Target type where this packet is forwarded to.
   final String target;
 
@@ -17,10 +17,10 @@ class ForwardInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['resourceUri'] = resourceUri;
-    map['target'] = target;
-    return map;
+    return <String, dynamic>{
+      'resourceUri': resourceUri,
+      'target': target,
+    };
   }
 
   factory ForwardInfoResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class ForwardInfoResponse {
     );
   }
 }
+

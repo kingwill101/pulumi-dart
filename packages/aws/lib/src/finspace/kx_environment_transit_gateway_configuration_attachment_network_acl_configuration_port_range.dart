@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationPortRange {
   /// First port in the range.
   final int from;
-
   /// Last port in the range.
   final int to;
 
@@ -16,17 +16,17 @@ class KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationP
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['from'] = from;
-    map['to'] = to;
-    return map;
+    return <String, dynamic>{
+      'from': from,
+      'to': to,
+    };
   }
 
-  factory KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationPortRange.fromMap(
-      Map<String, dynamic> map) {
+  factory KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationPortRange.fromMap(Map<String, dynamic> map) {
     return KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationPortRange(
       from: map['from'] as int,
       to: map['to'] as int,
     );
   }
 }
+

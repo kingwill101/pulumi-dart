@@ -15,18 +15,15 @@ class ValidationCheckStatusResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['result'] = pulumi.Input.encodeList<ValidationCheckResultResponse,
-        Map<String, dynamic>>(result, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'result': pulumi.Input.encodeList<ValidationCheckResultResponse, Map<String, dynamic>>(result, (value) => value.toMap()),
+    };
   }
 
   factory ValidationCheckStatusResponse.fromMap(Map<String, dynamic> map) {
     return ValidationCheckStatusResponse(
-      result: pulumi.Input.decodeList<ValidationCheckResultResponse>(
-          map['result'],
-          (value) => ValidationCheckResultResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      result: pulumi.Input.decodeList<ValidationCheckResultResponse>(map['result'], (value) => ValidationCheckResultResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

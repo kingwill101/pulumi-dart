@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GCPolicyMaxAge {
   /// Number of days before applying GC policy.
   final int? days;
-
   /// Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
   ///
   /// -----
@@ -18,16 +18,10 @@ class GCPolicyMaxAge {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final daysValue = days;
-    if (daysValue != null) {
-      map['days'] = daysValue;
-    }
-    final durationValue = duration;
-    if (durationValue != null) {
-      map['duration'] = durationValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'days': ?days,
+      'duration': ?duration,
+    };
   }
 
   factory GCPolicyMaxAge.fromMap(Map<String, dynamic> map) {
@@ -37,3 +31,4 @@ class GCPolicyMaxAge {
     );
   }
 }
+

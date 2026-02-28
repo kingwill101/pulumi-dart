@@ -13,15 +13,15 @@ class EventEndpointRoutingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['failoverConfig'] = failoverConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'failoverConfig': failoverConfig.toMap(),
+    };
   }
 
   factory EventEndpointRoutingConfig.fromMap(Map<String, dynamic> map) {
     return EventEndpointRoutingConfig(
-      failoverConfig: EventEndpointRoutingConfigFailoverConfig.fromMap(
-          (map['failoverConfig'] as Map).cast<String, dynamic>()),
+      failoverConfig: EventEndpointRoutingConfigFailoverConfig.fromMap((map['failoverConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

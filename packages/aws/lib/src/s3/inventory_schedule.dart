@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InventorySchedule {
   /// Specifies how frequently inventory results are produced. Valid values: `Daily`, `Weekly`.
   final String frequency;
@@ -11,9 +12,9 @@ class InventorySchedule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['frequency'] = frequency;
-    return map;
+    return <String, dynamic>{
+      'frequency': frequency,
+    };
   }
 
   factory InventorySchedule.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class InventorySchedule {
     );
   }
 }
+

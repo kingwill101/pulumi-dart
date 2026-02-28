@@ -18,3 +18,4 @@ enum ShareSettingsShareType {
     throw ArgumentError('Unknown ShareSettingsShareType value: $value');
   }
 }
+

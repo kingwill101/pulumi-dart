@@ -16,17 +16,15 @@ class GetRulesetArgs {
   GetRulesetArgs({
     String? project,
     required String rulesetId,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        rulesetId = pulumi.Input.asInput<String>(rulesetId);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      rulesetId = pulumi.Input.asInput<String>(rulesetId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['rulesetId'] = rulesetId;
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'rulesetId': rulesetId,
+    };
   }
 
   factory GetRulesetArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetRulesetArgs {
     );
   }
 }
+

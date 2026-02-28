@@ -14,21 +14,15 @@ class GoogleCloudIntegrationsV1alphaSuccessPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final finalStateValue = finalState;
-    if (finalStateValue != null) {
-      map['finalState'] = finalStateValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'finalState': ?finalState == null ? null : finalState!.value,
+    };
   }
 
-  factory GoogleCloudIntegrationsV1alphaSuccessPolicy.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaSuccessPolicy.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaSuccessPolicy(
-      finalState: map['finalState'] == null
-          ? null
-          : GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState.fromValue(
-              map['finalState'] as String),
+      finalState: map['finalState'] == null ? null : GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState.fromValue(map['finalState'] as String),
     );
   }
 }
+

@@ -22,37 +22,28 @@ class GetRegionWorkflowTemplateIamPolicyDataprocV1beta2Args {
     String? project,
     required String regionId,
     required String workflowTemplateId,
-  })  : optionsRequestedPolicyVersion =
-            pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        regionId = pulumi.Input.asInput<String>(regionId),
-        workflowTemplateId = pulumi.Input.asInput<String>(workflowTemplateId);
+  }) :
+      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      regionId = pulumi.Input.asInput<String>(regionId),
+      workflowTemplateId = pulumi.Input.asInput<String>(workflowTemplateId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final optionsRequestedPolicyVersionValue = optionsRequestedPolicyVersion;
-    if (optionsRequestedPolicyVersionValue != null) {
-      map['optionsRequestedPolicyVersion'] = optionsRequestedPolicyVersionValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['regionId'] = regionId;
-    map['workflowTemplateId'] = workflowTemplateId;
-    return map;
+    return <String, dynamic>{
+      'optionsRequestedPolicyVersion': ?optionsRequestedPolicyVersion,
+      'project': ?project,
+      'regionId': regionId,
+      'workflowTemplateId': workflowTemplateId,
+    };
   }
 
-  factory GetRegionWorkflowTemplateIamPolicyDataprocV1beta2Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetRegionWorkflowTemplateIamPolicyDataprocV1beta2Args.fromMap(Map<String, dynamic> map) {
     return GetRegionWorkflowTemplateIamPolicyDataprocV1beta2Args(
-      optionsRequestedPolicyVersion:
-          map['optionsRequestedPolicyVersion'] == null
-              ? null
-              : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       regionId: map['regionId'] as String,
       workflowTemplateId: map['workflowTemplateId'] as String,
     );
   }
 }
+

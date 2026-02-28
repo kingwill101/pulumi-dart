@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for a Maven remote repository.
 class MavenRepositoryResponse {
   /// One of the publicly available Maven repositories supported by Artifact Registry.
@@ -12,9 +13,9 @@ class MavenRepositoryResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['publicRepository'] = publicRepository;
-    return map;
+    return <String, dynamic>{
+      'publicRepository': publicRepository,
+    };
   }
 
   factory MavenRepositoryResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class MavenRepositoryResponse {
     );
   }
 }
+

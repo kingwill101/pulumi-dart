@@ -11,10 +11,8 @@ class KeyAliasArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> aliasName;
-
   /// ARN of the key.
   final pulumi.Input<String>? keyArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -26,22 +24,17 @@ class KeyAliasArgs {
     required String aliasName,
     String? keyArn,
     String? region,
-  })  : aliasName = pulumi.Input.asInput<String>(aliasName),
-        keyArn = pulumi.Input.asOptionalInput<String>(keyArn),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      aliasName = pulumi.Input.asInput<String>(aliasName),
+      keyArn = pulumi.Input.asOptionalInput<String>(keyArn),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['aliasName'] = aliasName;
-    final keyArnValue = keyArn;
-    if (keyArnValue != null) {
-      map['keyArn'] = keyArnValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'aliasName': aliasName,
+      'keyArn': ?keyArn,
+      'region': ?region,
+    };
   }
 
   factory KeyAliasArgs.fromMap(Map<String, dynamic> map) {
@@ -52,3 +45,4 @@ class KeyAliasArgs {
     );
   }
 }
+

@@ -15,21 +15,15 @@ class StreamBackfillAllSpannerExcludedObjects {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['schemas'] = pulumi.Input.encodeList<
-        StreamBackfillAllSpannerExcludedObjectsSchema,
-        Map<String, dynamic>>(schemas, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'schemas': pulumi.Input.encodeList<StreamBackfillAllSpannerExcludedObjectsSchema, Map<String, dynamic>>(schemas, (value) => value.toMap()),
+    };
   }
 
-  factory StreamBackfillAllSpannerExcludedObjects.fromMap(
-      Map<String, dynamic> map) {
+  factory StreamBackfillAllSpannerExcludedObjects.fromMap(Map<String, dynamic> map) {
     return StreamBackfillAllSpannerExcludedObjects(
-      schemas: pulumi.Input.decodeList<
-              StreamBackfillAllSpannerExcludedObjectsSchema>(
-          map['schemas'],
-          (value) => StreamBackfillAllSpannerExcludedObjectsSchema.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      schemas: pulumi.Input.decodeList<StreamBackfillAllSpannerExcludedObjectsSchema>(map['schemas'], (value) => StreamBackfillAllSpannerExcludedObjectsSchema.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

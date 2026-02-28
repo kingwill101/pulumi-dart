@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Restricted export config, used to configure restricted export on linked dataset.
 class RestrictedExportConfigResponseAnalyticshubV1beta1 {
   /// Optional. If true, enable restricted export.
   final bool enabled;
-
   /// If true, restrict direct table access(read api/tabledata.list) on linked table.
   final bool restrictDirectTableAccess;
-
   /// Optional. If true, restrict export of query result derived from restricted linked dataset table.
   final bool restrictQueryResult;
 
@@ -22,15 +21,14 @@ class RestrictedExportConfigResponseAnalyticshubV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    map['restrictDirectTableAccess'] = restrictDirectTableAccess;
-    map['restrictQueryResult'] = restrictQueryResult;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+      'restrictDirectTableAccess': restrictDirectTableAccess,
+      'restrictQueryResult': restrictQueryResult,
+    };
   }
 
-  factory RestrictedExportConfigResponseAnalyticshubV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory RestrictedExportConfigResponseAnalyticshubV1beta1.fromMap(Map<String, dynamic> map) {
     return RestrictedExportConfigResponseAnalyticshubV1beta1(
       enabled: map['enabled'] as bool,
       restrictDirectTableAccess: map['restrictDirectTableAccess'] as bool,
@@ -38,3 +36,4 @@ class RestrictedExportConfigResponseAnalyticshubV1beta1 {
     );
   }
 }
+

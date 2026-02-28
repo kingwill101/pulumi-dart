@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FlexibleAppVersionDeploymentZip {
   /// files count
   final int? filesCount;
-
   /// Source URL
   final String sourceUrl;
 
@@ -16,13 +16,10 @@ class FlexibleAppVersionDeploymentZip {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final filesCountValue = filesCount;
-    if (filesCountValue != null) {
-      map['filesCount'] = filesCountValue;
-    }
-    map['sourceUrl'] = sourceUrl;
-    return map;
+    return <String, dynamic>{
+      'filesCount': ?filesCount,
+      'sourceUrl': sourceUrl,
+    };
   }
 
   factory FlexibleAppVersionDeploymentZip.fromMap(Map<String, dynamic> map) {
@@ -32,3 +29,4 @@ class FlexibleAppVersionDeploymentZip {
     );
   }
 }
+

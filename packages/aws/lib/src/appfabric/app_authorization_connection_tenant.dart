@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppAuthorizationConnectionTenant {
   final String tenantDisplayName;
   final String tenantIdentifier;
@@ -13,10 +14,10 @@ class AppAuthorizationConnectionTenant {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['tenantDisplayName'] = tenantDisplayName;
-    map['tenantIdentifier'] = tenantIdentifier;
-    return map;
+    return <String, dynamic>{
+      'tenantDisplayName': tenantDisplayName,
+      'tenantIdentifier': tenantIdentifier,
+    };
   }
 
   factory AppAuthorizationConnectionTenant.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class AppAuthorizationConnectionTenant {
     );
   }
 }
+

@@ -8,8 +8,7 @@ class AppVersionSnapshotGuardrailActionRespondImmediately {
   /// The canned responses for the agent to choose from. The response is chosen
   /// randomly.
   /// Structure is documented below.
-  final List<AppVersionSnapshotGuardrailActionRespondImmediatelyResponse>?
-      responses;
+  final List<AppVersionSnapshotGuardrailActionRespondImmediatelyResponse>? responses;
 
   /// Creates a new [AppVersionSnapshotGuardrailActionRespondImmediately].
   /// [responses] (Output)
@@ -18,27 +17,15 @@ class AppVersionSnapshotGuardrailActionRespondImmediately {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final responsesValue = responses;
-    if (responsesValue != null) {
-      map['responses'] = pulumi.Input.encodeList<
-          AppVersionSnapshotGuardrailActionRespondImmediatelyResponse,
-          Map<String, dynamic>>(responsesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'responses': ?responses == null ? null : pulumi.Input.encodeList<AppVersionSnapshotGuardrailActionRespondImmediatelyResponse, Map<String, dynamic>>(responses!, (value) => value.toMap()),
+    };
   }
 
-  factory AppVersionSnapshotGuardrailActionRespondImmediately.fromMap(
-      Map<String, dynamic> map) {
+  factory AppVersionSnapshotGuardrailActionRespondImmediately.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotGuardrailActionRespondImmediately(
-      responses: map['responses'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  AppVersionSnapshotGuardrailActionRespondImmediatelyResponse>(
-              map['responses'],
-              (value) =>
-                  AppVersionSnapshotGuardrailActionRespondImmediatelyResponse
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      responses: map['responses'] == null ? null : pulumi.Input.decodeList<AppVersionSnapshotGuardrailActionRespondImmediatelyResponse>(map['responses'], (value) => AppVersionSnapshotGuardrailActionRespondImmediatelyResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

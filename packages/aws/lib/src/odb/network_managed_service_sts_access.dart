@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NetworkManagedServiceStsAccess {
   final String domainName;
   final List<String> ipv4Addresses;
-
   /// The status of the network resource.
   final String status;
-
   /// Specifies the endpoint policy for STS access from the ODB network.
   final String stsPolicyDocument;
 
@@ -23,12 +22,12 @@ class NetworkManagedServiceStsAccess {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['domainName'] = domainName;
-    map['ipv4Addresses'] = ipv4Addresses;
-    map['status'] = status;
-    map['stsPolicyDocument'] = stsPolicyDocument;
-    return map;
+    return <String, dynamic>{
+      'domainName': domainName,
+      'ipv4Addresses': ipv4Addresses,
+      'status': status,
+      'stsPolicyDocument': stsPolicyDocument,
+    };
   }
 
   factory NetworkManagedServiceStsAccess.fromMap(Map<String, dynamic> map) {
@@ -40,3 +39,4 @@ class NetworkManagedServiceStsAccess {
     );
   }
 }
+

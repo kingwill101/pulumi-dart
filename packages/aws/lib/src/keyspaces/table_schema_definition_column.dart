@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TableSchemaDefinitionColumn {
   /// The name of the column.
   final String name;
-
   /// The data type of the column. See the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/cql.elements.html#cql.data-types) for a list of available data types.
   final String type;
 
@@ -16,10 +16,10 @@ class TableSchemaDefinitionColumn {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'type': type,
+    };
   }
 
   factory TableSchemaDefinitionColumn.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class TableSchemaDefinitionColumn {
     );
   }
 }
+

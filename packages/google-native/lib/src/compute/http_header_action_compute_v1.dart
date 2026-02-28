@@ -7,13 +7,10 @@ import 'http_header_option_compute_v1.dart';
 class HttpHeaderActionComputeV1 {
   /// Headers to add to a matching request before forwarding the request to the backendService.
   final List<HttpHeaderOptionComputeV1>? requestHeadersToAdd;
-
   /// A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
   final List<String>? requestHeadersToRemove;
-
   /// Headers to add the response before sending the response back to the client.
   final List<HttpHeaderOptionComputeV1>? responseHeadersToAdd;
-
   /// A list of header names for headers that need to be removed from the response before sending the response back to the client.
   final List<String>? responseHeadersToRemove;
 
@@ -30,50 +27,21 @@ class HttpHeaderActionComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final requestHeadersToAddValue = requestHeadersToAdd;
-    if (requestHeadersToAddValue != null) {
-      map['requestHeadersToAdd'] = pulumi.Input.encodeList<
-              HttpHeaderOptionComputeV1, Map<String, dynamic>>(
-          requestHeadersToAddValue, (value) => value.toMap());
-    }
-    final requestHeadersToRemoveValue = requestHeadersToRemove;
-    if (requestHeadersToRemoveValue != null) {
-      map['requestHeadersToRemove'] = requestHeadersToRemoveValue;
-    }
-    final responseHeadersToAddValue = responseHeadersToAdd;
-    if (responseHeadersToAddValue != null) {
-      map['responseHeadersToAdd'] = pulumi.Input.encodeList<
-              HttpHeaderOptionComputeV1, Map<String, dynamic>>(
-          responseHeadersToAddValue, (value) => value.toMap());
-    }
-    final responseHeadersToRemoveValue = responseHeadersToRemove;
-    if (responseHeadersToRemoveValue != null) {
-      map['responseHeadersToRemove'] = responseHeadersToRemoveValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'requestHeadersToAdd': ?requestHeadersToAdd == null ? null : pulumi.Input.encodeList<HttpHeaderOptionComputeV1, Map<String, dynamic>>(requestHeadersToAdd!, (value) => value.toMap()),
+      'requestHeadersToRemove': ?requestHeadersToRemove,
+      'responseHeadersToAdd': ?responseHeadersToAdd == null ? null : pulumi.Input.encodeList<HttpHeaderOptionComputeV1, Map<String, dynamic>>(responseHeadersToAdd!, (value) => value.toMap()),
+      'responseHeadersToRemove': ?responseHeadersToRemove,
+    };
   }
 
   factory HttpHeaderActionComputeV1.fromMap(Map<String, dynamic> map) {
     return HttpHeaderActionComputeV1(
-      requestHeadersToAdd: map['requestHeadersToAdd'] == null
-          ? null
-          : pulumi.Input.decodeList<HttpHeaderOptionComputeV1>(
-              map['requestHeadersToAdd'],
-              (value) => HttpHeaderOptionComputeV1.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      requestHeadersToRemove: map['requestHeadersToRemove'] == null
-          ? null
-          : (map['requestHeadersToRemove'] as List).cast<String>(),
-      responseHeadersToAdd: map['responseHeadersToAdd'] == null
-          ? null
-          : pulumi.Input.decodeList<HttpHeaderOptionComputeV1>(
-              map['responseHeadersToAdd'],
-              (value) => HttpHeaderOptionComputeV1.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      responseHeadersToRemove: map['responseHeadersToRemove'] == null
-          ? null
-          : (map['responseHeadersToRemove'] as List).cast<String>(),
+      requestHeadersToAdd: map['requestHeadersToAdd'] == null ? null : pulumi.Input.decodeList<HttpHeaderOptionComputeV1>(map['requestHeadersToAdd'], (value) => HttpHeaderOptionComputeV1.fromMap((value as Map).cast<String, dynamic>())),
+      requestHeadersToRemove: map['requestHeadersToRemove'] == null ? null : (map['requestHeadersToRemove'] as List).cast<String>(),
+      responseHeadersToAdd: map['responseHeadersToAdd'] == null ? null : pulumi.Input.decodeList<HttpHeaderOptionComputeV1>(map['responseHeadersToAdd'], (value) => HttpHeaderOptionComputeV1.fromMap((value as Map).cast<String, dynamic>())),
+      responseHeadersToRemove: map['responseHeadersToRemove'] == null ? null : (map['responseHeadersToRemove'] as List).cast<String>(),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDataSetPhysicalTableMapS3SourceInputColumn {
   final String name;
   final String type;
@@ -13,17 +14,17 @@ class GetDataSetPhysicalTableMapS3SourceInputColumn {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'type': type,
+    };
   }
 
-  factory GetDataSetPhysicalTableMapS3SourceInputColumn.fromMap(
-      Map<String, dynamic> map) {
+  factory GetDataSetPhysicalTableMapS3SourceInputColumn.fromMap(Map<String, dynamic> map) {
     return GetDataSetPhysicalTableMapS3SourceInputColumn(
       name: map['name'] as String,
       type: map['type'] as String,
     );
   }
 }
+

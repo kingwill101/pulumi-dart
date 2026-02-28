@@ -9,15 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomerGatewayAssociationArgs {
   /// ARN of the customer gateway.
   final pulumi.Input<String> customerGatewayArn;
-
   /// ID of the device.
   final pulumi.Input<String> deviceId;
-
   /// ID of the global network.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> globalNetworkId;
-
   /// ID of the link.
   final pulumi.Input<String>? linkId;
 
@@ -31,21 +28,19 @@ class CustomerGatewayAssociationArgs {
     required String deviceId,
     required String globalNetworkId,
     String? linkId,
-  })  : customerGatewayArn = pulumi.Input.asInput<String>(customerGatewayArn),
-        deviceId = pulumi.Input.asInput<String>(deviceId),
-        globalNetworkId = pulumi.Input.asInput<String>(globalNetworkId),
-        linkId = pulumi.Input.asOptionalInput<String>(linkId);
+  }) :
+      customerGatewayArn = pulumi.Input.asInput<String>(customerGatewayArn),
+      deviceId = pulumi.Input.asInput<String>(deviceId),
+      globalNetworkId = pulumi.Input.asInput<String>(globalNetworkId),
+      linkId = pulumi.Input.asOptionalInput<String>(linkId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['customerGatewayArn'] = customerGatewayArn;
-    map['deviceId'] = deviceId;
-    map['globalNetworkId'] = globalNetworkId;
-    final linkIdValue = linkId;
-    if (linkIdValue != null) {
-      map['linkId'] = linkIdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'customerGatewayArn': customerGatewayArn,
+      'deviceId': deviceId,
+      'globalNetworkId': globalNetworkId,
+      'linkId': ?linkId,
+    };
   }
 
   factory CustomerGatewayAssociationArgs.fromMap(Map<String, dynamic> map) {
@@ -57,3 +52,4 @@ class CustomerGatewayAssociationArgs {
     );
   }
 }
+

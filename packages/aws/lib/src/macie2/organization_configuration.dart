@@ -91,7 +91,6 @@ import 'organization_configuration_args.dart';
 class OrganizationConfiguration extends pulumi.CustomResource {
   /// Whether to enable Amazon Macie automatically for accounts that are added to the organization in AWS Organizations.
   late final pulumi.Output<bool> autoEnable;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

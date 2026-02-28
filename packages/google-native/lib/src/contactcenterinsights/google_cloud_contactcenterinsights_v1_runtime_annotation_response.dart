@@ -13,42 +13,26 @@ import 'google_cloud_contactcenterinsights_v1_smart_reply_data_response.dart';
 class GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse {
   /// The unique identifier of the annotation. Format: projects/{project}/locations/{location}/conversationDatasets/{dataset}/conversationDataItems/{data_item}/conversationAnnotations/{annotation}
   final String annotationId;
-
   /// The feedback that the customer has about the answer in `data`.
   final GoogleCloudContactcenterinsightsV1AnswerFeedbackResponse answerFeedback;
-
   /// Agent Assist Article Suggestion data.
-  final GoogleCloudContactcenterinsightsV1ArticleSuggestionDataResponse
-      articleSuggestion;
-
+  final GoogleCloudContactcenterinsightsV1ArticleSuggestionDataResponse articleSuggestion;
   /// Conversation summarization suggestion data.
-  final GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse
-      conversationSummarizationSuggestion;
-
+  final GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse conversationSummarizationSuggestion;
   /// The time at which this annotation was created.
   final String createTime;
-
   /// Dialogflow interaction data.
-  final GoogleCloudContactcenterinsightsV1DialogflowInteractionDataResponse
-      dialogflowInteraction;
-
+  final GoogleCloudContactcenterinsightsV1DialogflowInteractionDataResponse dialogflowInteraction;
   /// The boundary in the conversation where the annotation ends, inclusive.
-  final GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse
-      endBoundary;
-
+  final GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse endBoundary;
   /// Agent Assist FAQ answer data.
   final GoogleCloudContactcenterinsightsV1FaqAnswerDataResponse faqAnswer;
-
   /// Agent Assist Smart Compose suggestion data.
-  final GoogleCloudContactcenterinsightsV1SmartComposeSuggestionDataResponse
-      smartComposeSuggestion;
-
+  final GoogleCloudContactcenterinsightsV1SmartComposeSuggestionDataResponse smartComposeSuggestion;
   /// Agent Assist Smart Reply data.
   final GoogleCloudContactcenterinsightsV1SmartReplyDataResponse smartReply;
-
   /// The boundary in the conversation where the annotation starts, inclusive.
-  final GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse
-      startBoundary;
+  final GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse startBoundary;
 
   /// Creates a new [GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse].
   /// [annotationId] The unique identifier of the annotation. Format: projects/{project}/locations/{location}/conversationDatasets/{dataset}/conversationDataItems/{data_item}/conversationAnnotations/{annotation}
@@ -77,58 +61,35 @@ class GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['annotationId'] = annotationId;
-    map['answerFeedback'] = answerFeedback.toMap();
-    map['articleSuggestion'] = articleSuggestion.toMap();
-    map['conversationSummarizationSuggestion'] =
-        conversationSummarizationSuggestion.toMap();
-    map['createTime'] = createTime;
-    map['dialogflowInteraction'] = dialogflowInteraction.toMap();
-    map['endBoundary'] = endBoundary.toMap();
-    map['faqAnswer'] = faqAnswer.toMap();
-    map['smartComposeSuggestion'] = smartComposeSuggestion.toMap();
-    map['smartReply'] = smartReply.toMap();
-    map['startBoundary'] = startBoundary.toMap();
-    return map;
+    return <String, dynamic>{
+      'annotationId': annotationId,
+      'answerFeedback': answerFeedback.toMap(),
+      'articleSuggestion': articleSuggestion.toMap(),
+      'conversationSummarizationSuggestion': conversationSummarizationSuggestion.toMap(),
+      'createTime': createTime,
+      'dialogflowInteraction': dialogflowInteraction.toMap(),
+      'endBoundary': endBoundary.toMap(),
+      'faqAnswer': faqAnswer.toMap(),
+      'smartComposeSuggestion': smartComposeSuggestion.toMap(),
+      'smartReply': smartReply.toMap(),
+      'startBoundary': startBoundary.toMap(),
+    };
   }
 
-  factory GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse(
       annotationId: map['annotationId'] as String,
-      answerFeedback:
-          GoogleCloudContactcenterinsightsV1AnswerFeedbackResponse.fromMap(
-              (map['answerFeedback'] as Map).cast<String, dynamic>()),
-      articleSuggestion:
-          GoogleCloudContactcenterinsightsV1ArticleSuggestionDataResponse
-              .fromMap(
-                  (map['articleSuggestion'] as Map).cast<String, dynamic>()),
-      conversationSummarizationSuggestion:
-          GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse
-              .fromMap((map['conversationSummarizationSuggestion'] as Map)
-                  .cast<String, dynamic>()),
+      answerFeedback: GoogleCloudContactcenterinsightsV1AnswerFeedbackResponse.fromMap((map['answerFeedback'] as Map).cast<String, dynamic>()),
+      articleSuggestion: GoogleCloudContactcenterinsightsV1ArticleSuggestionDataResponse.fromMap((map['articleSuggestion'] as Map).cast<String, dynamic>()),
+      conversationSummarizationSuggestion: GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse.fromMap((map['conversationSummarizationSuggestion'] as Map).cast<String, dynamic>()),
       createTime: map['createTime'] as String,
-      dialogflowInteraction:
-          GoogleCloudContactcenterinsightsV1DialogflowInteractionDataResponse
-              .fromMap((map['dialogflowInteraction'] as Map)
-                  .cast<String, dynamic>()),
-      endBoundary:
-          GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse.fromMap(
-              (map['endBoundary'] as Map).cast<String, dynamic>()),
-      faqAnswer:
-          GoogleCloudContactcenterinsightsV1FaqAnswerDataResponse.fromMap(
-              (map['faqAnswer'] as Map).cast<String, dynamic>()),
-      smartComposeSuggestion:
-          GoogleCloudContactcenterinsightsV1SmartComposeSuggestionDataResponse
-              .fromMap((map['smartComposeSuggestion'] as Map)
-                  .cast<String, dynamic>()),
-      smartReply:
-          GoogleCloudContactcenterinsightsV1SmartReplyDataResponse.fromMap(
-              (map['smartReply'] as Map).cast<String, dynamic>()),
-      startBoundary:
-          GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse.fromMap(
-              (map['startBoundary'] as Map).cast<String, dynamic>()),
+      dialogflowInteraction: GoogleCloudContactcenterinsightsV1DialogflowInteractionDataResponse.fromMap((map['dialogflowInteraction'] as Map).cast<String, dynamic>()),
+      endBoundary: GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse.fromMap((map['endBoundary'] as Map).cast<String, dynamic>()),
+      faqAnswer: GoogleCloudContactcenterinsightsV1FaqAnswerDataResponse.fromMap((map['faqAnswer'] as Map).cast<String, dynamic>()),
+      smartComposeSuggestion: GoogleCloudContactcenterinsightsV1SmartComposeSuggestionDataResponse.fromMap((map['smartComposeSuggestion'] as Map).cast<String, dynamic>()),
+      smartReply: GoogleCloudContactcenterinsightsV1SmartReplyDataResponse.fromMap((map['smartReply'] as Map).cast<String, dynamic>()),
+      startBoundary: GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse.fromMap((map['startBoundary'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

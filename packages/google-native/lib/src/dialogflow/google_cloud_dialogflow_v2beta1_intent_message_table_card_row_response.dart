@@ -6,9 +6,7 @@ import 'google_cloud_dialogflow_v2beta1_intent_message_table_card_cell_response.
 /// Row of TableCard.
 class GoogleCloudDialogflowV2beta1IntentMessageTableCardRowResponse {
   /// Optional. List of cells that make up this row.
-  final List<GoogleCloudDialogflowV2beta1IntentMessageTableCardCellResponse>
-      cells;
-
+  final List<GoogleCloudDialogflowV2beta1IntentMessageTableCardCellResponse> cells;
   /// Optional. Whether to add a visual divider after this row.
   final bool dividerAfter;
 
@@ -21,24 +19,17 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCardRowResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cells'] = pulumi.Input.encodeList<
-        GoogleCloudDialogflowV2beta1IntentMessageTableCardCellResponse,
-        Map<String, dynamic>>(cells, (value) => value.toMap());
-    map['dividerAfter'] = dividerAfter;
-    return map;
+    return <String, dynamic>{
+      'cells': pulumi.Input.encodeList<GoogleCloudDialogflowV2beta1IntentMessageTableCardCellResponse, Map<String, dynamic>>(cells, (value) => value.toMap()),
+      'dividerAfter': dividerAfter,
+    };
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageTableCardRowResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageTableCardRowResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageTableCardRowResponse(
-      cells: pulumi.Input.decodeList<
-              GoogleCloudDialogflowV2beta1IntentMessageTableCardCellResponse>(
-          map['cells'],
-          (value) =>
-              GoogleCloudDialogflowV2beta1IntentMessageTableCardCellResponse
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      cells: pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentMessageTableCardCellResponse>(map['cells'], (value) => GoogleCloudDialogflowV2beta1IntentMessageTableCardCellResponse.fromMap((value as Map).cast<String, dynamic>())),
       dividerAfter: map['dividerAfter'] as bool,
     );
   }
 }
+

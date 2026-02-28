@@ -7,10 +7,8 @@ import 'get_application_assignments_application_assignment.dart';
 class GetApplicationAssignmentsResult {
   /// ARN of the application.
   final String applicationArn;
-
   /// List of principals assigned to the application. See the `application_assignments` attribute reference below.
-  final List<GetApplicationAssignmentsApplicationAssignment>
-      applicationAssignments;
+  final List<GetApplicationAssignmentsApplicationAssignment> applicationAssignments;
   final String id;
   final String region;
 
@@ -27,26 +25,21 @@ class GetApplicationAssignmentsResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['applicationArn'] = applicationArn;
-    map['applicationAssignments'] = pulumi.Input.encodeList<
-        GetApplicationAssignmentsApplicationAssignment,
-        Map<String, dynamic>>(applicationAssignments, (value) => value.toMap());
-    map['id'] = id;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'applicationArn': applicationArn,
+      'applicationAssignments': pulumi.Input.encodeList<GetApplicationAssignmentsApplicationAssignment, Map<String, dynamic>>(applicationAssignments, (value) => value.toMap()),
+      'id': id,
+      'region': region,
+    };
   }
 
   factory GetApplicationAssignmentsResult.fromMap(Map<String, dynamic> map) {
     return GetApplicationAssignmentsResult(
       applicationArn: map['applicationArn'] as String,
-      applicationAssignments: pulumi.Input.decodeList<
-              GetApplicationAssignmentsApplicationAssignment>(
-          map['applicationAssignments'],
-          (value) => GetApplicationAssignmentsApplicationAssignment.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      applicationAssignments: pulumi.Input.decodeList<GetApplicationAssignmentsApplicationAssignment>(map['applicationAssignments'], (value) => GetApplicationAssignmentsApplicationAssignment.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       region: map['region'] as String,
     );
   }
 }
+

@@ -19,19 +19,17 @@ class GetConnectionProfileArgs {
     required String connectionProfileId,
     required String location,
     String? project,
-  })  : connectionProfileId = pulumi.Input.asInput<String>(connectionProfileId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      connectionProfileId = pulumi.Input.asInput<String>(connectionProfileId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['connectionProfileId'] = connectionProfileId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'connectionProfileId': connectionProfileId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetConnectionProfileArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetConnectionProfileArgs {
     );
   }
 }
+

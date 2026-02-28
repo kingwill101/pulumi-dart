@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetVpcPeeringConnectionPeerIpv6CidrBlockSet {
   final String ipv6CidrBlock;
 
@@ -10,15 +11,15 @@ class GetVpcPeeringConnectionPeerIpv6CidrBlockSet {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ipv6CidrBlock'] = ipv6CidrBlock;
-    return map;
+    return <String, dynamic>{
+      'ipv6CidrBlock': ipv6CidrBlock,
+    };
   }
 
-  factory GetVpcPeeringConnectionPeerIpv6CidrBlockSet.fromMap(
-      Map<String, dynamic> map) {
+  factory GetVpcPeeringConnectionPeerIpv6CidrBlockSet.fromMap(Map<String, dynamic> map) {
     return GetVpcPeeringConnectionPeerIpv6CidrBlockSet(
       ipv6CidrBlock: map['ipv6CidrBlock'] as String,
     );
   }
 }
+

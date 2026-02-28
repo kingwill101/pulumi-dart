@@ -5,8 +5,7 @@ import 'get_gateway_route_spec_grpc_route_action_target_virtual_service.dart';
 
 class GetGatewayRouteSpecGrpcRouteActionTarget {
   final int port;
-  final List<GetGatewayRouteSpecGrpcRouteActionTargetVirtualService>
-      virtualServices;
+  final List<GetGatewayRouteSpecGrpcRouteActionTargetVirtualService> virtualServices;
 
   /// Creates a new [GetGatewayRouteSpecGrpcRouteActionTarget].
   /// [port] Required.
@@ -17,24 +16,17 @@ class GetGatewayRouteSpecGrpcRouteActionTarget {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['port'] = port;
-    map['virtualServices'] = pulumi.Input.encodeList<
-        GetGatewayRouteSpecGrpcRouteActionTargetVirtualService,
-        Map<String, dynamic>>(virtualServices, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'port': port,
+      'virtualServices': pulumi.Input.encodeList<GetGatewayRouteSpecGrpcRouteActionTargetVirtualService, Map<String, dynamic>>(virtualServices, (value) => value.toMap()),
+    };
   }
 
-  factory GetGatewayRouteSpecGrpcRouteActionTarget.fromMap(
-      Map<String, dynamic> map) {
+  factory GetGatewayRouteSpecGrpcRouteActionTarget.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpecGrpcRouteActionTarget(
       port: map['port'] as int,
-      virtualServices: pulumi.Input.decodeList<
-              GetGatewayRouteSpecGrpcRouteActionTargetVirtualService>(
-          map['virtualServices'],
-          (value) =>
-              GetGatewayRouteSpecGrpcRouteActionTargetVirtualService.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      virtualServices: pulumi.Input.decodeList<GetGatewayRouteSpecGrpcRouteActionTargetVirtualService>(map['virtualServices'], (value) => GetGatewayRouteSpecGrpcRouteActionTargetVirtualService.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

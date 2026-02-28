@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Specifies a file available as a Cloud Storage Object.
 class OSPolicyResourceFileGcsResponse {
   /// Bucket of the Cloud Storage object.
   final String bucket;
-
   /// Generation number of the Cloud Storage object.
   final String generation;
-
   /// Name of the Cloud Storage object.
   final String object;
 
@@ -22,11 +21,11 @@ class OSPolicyResourceFileGcsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucket'] = bucket;
-    map['generation'] = generation;
-    map['object'] = object;
-    return map;
+    return <String, dynamic>{
+      'bucket': bucket,
+      'generation': generation,
+      'object': object,
+    };
   }
 
   factory OSPolicyResourceFileGcsResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class OSPolicyResourceFileGcsResponse {
     );
   }
 }
+

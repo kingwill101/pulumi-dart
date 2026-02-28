@@ -19,20 +19,17 @@ class GetChannelPartnerLinkArgs {
     required String accountId,
     required String channelPartnerLinkId,
     String? view,
-  })  : accountId = pulumi.Input.asInput<String>(accountId),
-        channelPartnerLinkId =
-            pulumi.Input.asInput<String>(channelPartnerLinkId),
-        view = pulumi.Input.asOptionalInput<String>(view);
+  }) :
+      accountId = pulumi.Input.asInput<String>(accountId),
+      channelPartnerLinkId = pulumi.Input.asInput<String>(channelPartnerLinkId),
+      view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accountId'] = accountId;
-    map['channelPartnerLinkId'] = channelPartnerLinkId;
-    final viewValue = view;
-    if (viewValue != null) {
-      map['view'] = viewValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'accountId': accountId,
+      'channelPartnerLinkId': channelPartnerLinkId,
+      'view': ?view,
+    };
   }
 
   factory GetChannelPartnerLinkArgs.fromMap(Map<String, dynamic> map) {
@@ -43,3 +40,4 @@ class GetChannelPartnerLinkArgs {
     );
   }
 }
+

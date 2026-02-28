@@ -22,18 +22,19 @@ class GetFolderBucketLinkArgs {
     required String folderId,
     required String linkId,
     required String location,
-  })  : bucketId = pulumi.Input.asInput<String>(bucketId),
-        folderId = pulumi.Input.asInput<String>(folderId),
-        linkId = pulumi.Input.asInput<String>(linkId),
-        location = pulumi.Input.asInput<String>(location);
+  }) :
+      bucketId = pulumi.Input.asInput<String>(bucketId),
+      folderId = pulumi.Input.asInput<String>(folderId),
+      linkId = pulumi.Input.asInput<String>(linkId),
+      location = pulumi.Input.asInput<String>(location);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucketId'] = bucketId;
-    map['folderId'] = folderId;
-    map['linkId'] = linkId;
-    map['location'] = location;
-    return map;
+    return <String, dynamic>{
+      'bucketId': bucketId,
+      'folderId': folderId,
+      'linkId': linkId,
+      'location': location,
+    };
   }
 
   factory GetFolderBucketLinkArgs.fromMap(Map<String, dynamic> map) {
@@ -45,3 +46,4 @@ class GetFolderBucketLinkArgs {
     );
   }
 }
+

@@ -16,26 +16,15 @@ class AppVersionSnapshotAppDataStoreSetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enginesValue = engines;
-    if (enginesValue != null) {
-      map['engines'] = pulumi.Input.encodeList<
-          AppVersionSnapshotAppDataStoreSettingEngine,
-          Map<String, dynamic>>(enginesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'engines': ?engines == null ? null : pulumi.Input.encodeList<AppVersionSnapshotAppDataStoreSettingEngine, Map<String, dynamic>>(engines!, (value) => value.toMap()),
+    };
   }
 
-  factory AppVersionSnapshotAppDataStoreSetting.fromMap(
-      Map<String, dynamic> map) {
+  factory AppVersionSnapshotAppDataStoreSetting.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppDataStoreSetting(
-      engines: map['engines'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  AppVersionSnapshotAppDataStoreSettingEngine>(
-              map['engines'],
-              (value) => AppVersionSnapshotAppDataStoreSettingEngine.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      engines: map['engines'] == null ? null : pulumi.Input.decodeList<AppVersionSnapshotAppDataStoreSettingEngine>(map['engines'], (value) => AppVersionSnapshotAppDataStoreSettingEngine.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

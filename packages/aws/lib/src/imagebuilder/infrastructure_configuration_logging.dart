@@ -13,15 +13,15 @@ class InfrastructureConfigurationLogging {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['s3Logs'] = s3Logs.toMap();
-    return map;
+    return <String, dynamic>{
+      's3Logs': s3Logs.toMap(),
+    };
   }
 
   factory InfrastructureConfigurationLogging.fromMap(Map<String, dynamic> map) {
     return InfrastructureConfigurationLogging(
-      s3Logs: InfrastructureConfigurationLoggingS3Logs.fromMap(
-          (map['s3Logs'] as Map).cast<String, dynamic>()),
+      s3Logs: InfrastructureConfigurationLoggingS3Logs.fromMap((map['s3Logs'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

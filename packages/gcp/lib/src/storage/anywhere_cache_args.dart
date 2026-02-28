@@ -11,13 +11,10 @@ class AnywhereCacheArgs {
   /// Default value is `admit-on-first-miss`.
   /// Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
   final pulumi.Input<String>? admissionPolicy;
-
   /// A reference to Bucket resource
   final pulumi.Input<String> bucket;
-
   /// The TTL of all cache entries in whole seconds. e.g., "7200s". It defaults to `86400s`
   final pulumi.Input<String>? ttl;
-
   /// The zone in which the cache instance needs to be created. For example, `us-central1-a.`
   final pulumi.Input<String> zone;
 
@@ -31,34 +28,28 @@ class AnywhereCacheArgs {
     required String bucket,
     String? ttl,
     required String zone,
-  })  : admissionPolicy = pulumi.Input.asOptionalInput<String>(admissionPolicy),
-        bucket = pulumi.Input.asInput<String>(bucket),
-        ttl = pulumi.Input.asOptionalInput<String>(ttl),
-        zone = pulumi.Input.asInput<String>(zone);
+  }) :
+      admissionPolicy = pulumi.Input.asOptionalInput<String>(admissionPolicy),
+      bucket = pulumi.Input.asInput<String>(bucket),
+      ttl = pulumi.Input.asOptionalInput<String>(ttl),
+      zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final admissionPolicyValue = admissionPolicy;
-    if (admissionPolicyValue != null) {
-      map['admissionPolicy'] = admissionPolicyValue;
-    }
-    map['bucket'] = bucket;
-    final ttlValue = ttl;
-    if (ttlValue != null) {
-      map['ttl'] = ttlValue;
-    }
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'admissionPolicy': ?admissionPolicy,
+      'bucket': bucket,
+      'ttl': ?ttl,
+      'zone': zone,
+    };
   }
 
   factory AnywhereCacheArgs.fromMap(Map<String, dynamic> map) {
     return AnywhereCacheArgs(
-      admissionPolicy: map['admissionPolicy'] == null
-          ? null
-          : map['admissionPolicy'] as String,
+      admissionPolicy: map['admissionPolicy'] == null ? null : map['admissionPolicy'] as String,
       bucket: map['bucket'] as String,
       ttl: map['ttl'] == null ? null : map['ttl'] as String,
       zone: map['zone'] as String,
     );
   }
 }
+

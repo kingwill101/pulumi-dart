@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Exit code from a tool execution.
 class ToolExitCode {
   /// Tool execution exit code. A value of 0 means that the execution was successful. - In response: always set - In create/update request: always set
@@ -12,12 +13,9 @@ class ToolExitCode {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final numberValue = number;
-    if (numberValue != null) {
-      map['number'] = numberValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'number': ?number,
+    };
   }
 
   factory ToolExitCode.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class ToolExitCode {
     );
   }
 }
+

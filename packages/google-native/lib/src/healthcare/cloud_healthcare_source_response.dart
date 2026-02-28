@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Cloud Healthcare API resource.
 class CloudHealthcareSourceResponse {
   /// Full path of a Cloud Healthcare API resource.
@@ -12,9 +13,9 @@ class CloudHealthcareSourceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory CloudHealthcareSourceResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class CloudHealthcareSourceResponse {
     );
   }
 }
+

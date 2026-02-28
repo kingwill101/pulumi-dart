@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PermissionsDatabase {
   /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
   final String? catalogId;
-
   /// Name of the database resource. Unique to the Data Catalog.
   ///
   /// The following argument is optional:
@@ -18,13 +18,10 @@ class PermissionsDatabase {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final catalogIdValue = catalogId;
-    if (catalogIdValue != null) {
-      map['catalogId'] = catalogIdValue;
-    }
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'catalogId': ?catalogId,
+      'name': name,
+    };
   }
 
   factory PermissionsDatabase.fromMap(Map<String, dynamic> map) {
@@ -34,3 +31,4 @@ class PermissionsDatabase {
     );
   }
 }
+

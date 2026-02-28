@@ -9,25 +9,16 @@ import 'google_devtools_containeranalysis_v1alpha1_slsa_provenance_zero_two_slsa
 class SlsaProvenanceZeroTwoResponseContaineranalysisV1alpha1 {
   /// Lists the steps in the build.
   final Map<String, String> buildConfig;
-
   /// URI indicating what type of build was performed.
   final String buildType;
-
   /// Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
   final Map<String, dynamic> builder;
-
   /// Identifies the event that kicked off the build.
-  final GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponse
-      invocation;
-
+  final GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponse invocation;
   /// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
-  final List<
-          GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponse>
-      materials;
-
+  final List<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponse> materials;
   /// Other properties of the build.
-  final GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponse
-      metadata;
+  final GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponse metadata;
 
   /// Creates a new [SlsaProvenanceZeroTwoResponseContaineranalysisV1alpha1].
   /// [buildConfig] Lists the steps in the build.
@@ -46,36 +37,25 @@ class SlsaProvenanceZeroTwoResponseContaineranalysisV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['buildConfig'] = buildConfig;
-    map['buildType'] = buildType;
-    map['builder'] = builder;
-    map['invocation'] = invocation.toMap();
-    map['materials'] = pulumi.Input.encodeList<
-        GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponse,
-        Map<String, dynamic>>(materials, (value) => value.toMap());
-    map['metadata'] = metadata.toMap();
-    return map;
+    return <String, dynamic>{
+      'buildConfig': buildConfig,
+      'buildType': buildType,
+      'builder': builder,
+      'invocation': invocation.toMap(),
+      'materials': pulumi.Input.encodeList<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponse, Map<String, dynamic>>(materials, (value) => value.toMap()),
+      'metadata': metadata.toMap(),
+    };
   }
 
-  factory SlsaProvenanceZeroTwoResponseContaineranalysisV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory SlsaProvenanceZeroTwoResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return SlsaProvenanceZeroTwoResponseContaineranalysisV1alpha1(
       buildConfig: (map['buildConfig'] as Map).cast<String, String>(),
       buildType: map['buildType'] as String,
       builder: (map['builder'] as Map).cast<String, dynamic>(),
-      invocation:
-          GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponse
-              .fromMap((map['invocation'] as Map).cast<String, dynamic>()),
-      materials: pulumi.Input.decodeList<
-              GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponse>(
-          map['materials'],
-          (value) =>
-              GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponse
-                  .fromMap((value as Map).cast<String, dynamic>())),
-      metadata:
-          GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponse
-              .fromMap((map['metadata'] as Map).cast<String, dynamic>()),
+      invocation: GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponse.fromMap((map['invocation'] as Map).cast<String, dynamic>()),
+      materials: pulumi.Input.decodeList<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponse>(map['materials'], (value) => GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponse.fromMap((value as Map).cast<String, dynamic>())),
+      metadata: GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

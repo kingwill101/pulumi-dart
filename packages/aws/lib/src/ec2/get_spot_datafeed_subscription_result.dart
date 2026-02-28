@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSpotDatafeedSubscription.
 class GetSpotDatafeedSubscriptionResult {
   /// The name of the Amazon S3 bucket where the spot instance data feed is located.
   final String bucket;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The prefix for the data feed files.
   final String prefix;
   final String region;
@@ -25,12 +24,12 @@ class GetSpotDatafeedSubscriptionResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucket'] = bucket;
-    map['id'] = id;
-    map['prefix'] = prefix;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'bucket': bucket,
+      'id': id,
+      'prefix': prefix,
+      'region': region,
+    };
   }
 
   factory GetSpotDatafeedSubscriptionResult.fromMap(Map<String, dynamic> map) {
@@ -42,3 +41,4 @@ class GetSpotDatafeedSubscriptionResult {
     );
   }
 }
+

@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class KxClusterCacheStorageConfiguration {
   final int size;
-
   /// Type of KDB database. The following types are available:
   /// * HDB - Historical Database. The data is only accessible with read-only permissions from one of the FinSpace managed KX databases mounted to the cluster.
   /// * RDB - Realtime Database. This type of database captures all the data from a ticker plant and stores it in memory until the end of day, after which it writes all of its data to a disk and reloads the HDB. This cluster type requires local storage for temporary storage of data during the savedown process. If you specify this field in your request, you must provide the `savedownStorageConfiguration` parameter.
@@ -20,10 +20,10 @@ class KxClusterCacheStorageConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['size'] = size;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'size': size,
+      'type': type,
+    };
   }
 
   factory KxClusterCacheStorageConfiguration.fromMap(Map<String, dynamic> map) {
@@ -33,3 +33,4 @@ class KxClusterCacheStorageConfiguration {
     );
   }
 }
+

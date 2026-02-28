@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BillingGroupMetadata {
   final String creationDate;
 
@@ -10,9 +11,9 @@ class BillingGroupMetadata {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['creationDate'] = creationDate;
-    return map;
+    return <String, dynamic>{
+      'creationDate': creationDate,
+    };
   }
 
   factory BillingGroupMetadata.fromMap(Map<String, dynamic> map) {
@@ -21,3 +22,4 @@ class BillingGroupMetadata {
     );
   }
 }
+

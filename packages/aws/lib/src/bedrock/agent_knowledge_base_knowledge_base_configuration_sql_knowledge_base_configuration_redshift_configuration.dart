@@ -6,16 +6,11 @@ import 'agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_con
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfiguration {
   /// Configurations for an Amazon Redshift query engine. See `query_engine_configuration` block for details.
-  final AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfiguration
-      queryEngineConfiguration;
-
+  final AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfiguration queryEngineConfiguration;
   /// Configurations for generating queries. See `query_generation_configuration` block for details.
-  final AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfiguration?
-      queryGenerationConfiguration;
-
+  final AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfiguration? queryGenerationConfiguration;
   /// Configurations for Amazon Redshift database storage. See `storage_configuration` block for details.
-  final AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfiguration
-      storageConfiguration;
+  final AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfiguration storageConfiguration;
 
   /// Creates a new [AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfiguration].
   /// [queryEngineConfiguration] Configurations for an Amazon Redshift query engine. See `query_engine_configuration` block for details.
@@ -28,33 +23,19 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['queryEngineConfiguration'] = queryEngineConfiguration.toMap();
-    final queryGenerationConfigurationValue = queryGenerationConfiguration;
-    if (queryGenerationConfigurationValue != null) {
-      map['queryGenerationConfiguration'] =
-          queryGenerationConfigurationValue.toMap();
-    }
-    map['storageConfiguration'] = storageConfiguration.toMap();
-    return map;
+    return <String, dynamic>{
+      'queryEngineConfiguration': queryEngineConfiguration.toMap(),
+      'queryGenerationConfiguration': ?queryGenerationConfiguration == null ? null : queryGenerationConfiguration!.toMap(),
+      'storageConfiguration': storageConfiguration.toMap(),
+    };
   }
 
-  factory AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfiguration(
-      queryEngineConfiguration:
-          AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfiguration
-              .fromMap((map['queryEngineConfiguration'] as Map)
-                  .cast<String, dynamic>()),
-      queryGenerationConfiguration: map['queryGenerationConfiguration'] == null
-          ? null
-          : AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfiguration
-              .fromMap((map['queryGenerationConfiguration'] as Map)
-                  .cast<String, dynamic>()),
-      storageConfiguration:
-          AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfiguration
-              .fromMap(
-                  (map['storageConfiguration'] as Map).cast<String, dynamic>()),
+      queryEngineConfiguration: AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfiguration.fromMap((map['queryEngineConfiguration'] as Map).cast<String, dynamic>()),
+      queryGenerationConfiguration: map['queryGenerationConfiguration'] == null ? null : AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfiguration.fromMap((map['queryGenerationConfiguration'] as Map).cast<String, dynamic>()),
+      storageConfiguration: AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfiguration.fromMap((map['storageConfiguration'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ServiceConnectionPolicyPscConfig {
   /// List of Projects, Folders, or Organizations from where the Producer instance can be within. For example,
   /// a network administrator can provide both 'organizations/foo' and 'projects/bar' as
@@ -11,15 +12,12 @@ class ServiceConnectionPolicyPscConfig {
   /// allowedGoogleProducersResourceHierarchyLevel value: 'projects/' or 'folders/' or 'organizations/' Eg.
   /// [projects/my-project-id, projects/567, folders/891, organizations/123]
   final List<String>? allowedGoogleProducersResourceHierarchyLevels;
-
   /// Max number of PSC connections for this policy.
   final String? limit;
-
   /// ProducerInstanceLocation is used to specify which authorization mechanism to use to determine which projects
   /// the Producer instance can be within.
   /// Possible values are: `PRODUCER_INSTANCE_LOCATION_UNSPECIFIED`, `CUSTOM_RESOURCE_HIERARCHY_LEVELS`.
   final String? producerInstanceLocation;
-
   /// IDs of the subnetworks or fully qualified identifiers for the subnetworks
   final List<String> subnetworks;
 
@@ -36,37 +34,21 @@ class ServiceConnectionPolicyPscConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final allowedGoogleProducersResourceHierarchyLevelsValue =
-        allowedGoogleProducersResourceHierarchyLevels;
-    if (allowedGoogleProducersResourceHierarchyLevelsValue != null) {
-      map['allowedGoogleProducersResourceHierarchyLevels'] =
-          allowedGoogleProducersResourceHierarchyLevelsValue;
-    }
-    final limitValue = limit;
-    if (limitValue != null) {
-      map['limit'] = limitValue;
-    }
-    final producerInstanceLocationValue = producerInstanceLocation;
-    if (producerInstanceLocationValue != null) {
-      map['producerInstanceLocation'] = producerInstanceLocationValue;
-    }
-    map['subnetworks'] = subnetworks;
-    return map;
+    return <String, dynamic>{
+      'allowedGoogleProducersResourceHierarchyLevels': ?allowedGoogleProducersResourceHierarchyLevels,
+      'limit': ?limit,
+      'producerInstanceLocation': ?producerInstanceLocation,
+      'subnetworks': subnetworks,
+    };
   }
 
   factory ServiceConnectionPolicyPscConfig.fromMap(Map<String, dynamic> map) {
     return ServiceConnectionPolicyPscConfig(
-      allowedGoogleProducersResourceHierarchyLevels:
-          map['allowedGoogleProducersResourceHierarchyLevels'] == null
-              ? null
-              : (map['allowedGoogleProducersResourceHierarchyLevels'] as List)
-                  .cast<String>(),
+      allowedGoogleProducersResourceHierarchyLevels: map['allowedGoogleProducersResourceHierarchyLevels'] == null ? null : (map['allowedGoogleProducersResourceHierarchyLevels'] as List).cast<String>(),
       limit: map['limit'] == null ? null : map['limit'] as String,
-      producerInstanceLocation: map['producerInstanceLocation'] == null
-          ? null
-          : map['producerInstanceLocation'] as String,
+      producerInstanceLocation: map['producerInstanceLocation'] == null ? null : map['producerInstanceLocation'] as String,
       subnetworks: (map['subnetworks'] as List).cast<String>(),
     );
   }
 }
+

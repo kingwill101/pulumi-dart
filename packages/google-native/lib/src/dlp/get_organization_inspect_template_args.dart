@@ -19,16 +19,17 @@ class GetOrganizationInspectTemplateArgs {
     required String inspectTemplateId,
     required String location,
     required String organizationId,
-  })  : inspectTemplateId = pulumi.Input.asInput<String>(inspectTemplateId),
-        location = pulumi.Input.asInput<String>(location),
-        organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) :
+      inspectTemplateId = pulumi.Input.asInput<String>(inspectTemplateId),
+      location = pulumi.Input.asInput<String>(location),
+      organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['inspectTemplateId'] = inspectTemplateId;
-    map['location'] = location;
-    map['organizationId'] = organizationId;
-    return map;
+    return <String, dynamic>{
+      'inspectTemplateId': inspectTemplateId,
+      'location': location,
+      'organizationId': organizationId,
+    };
   }
 
   factory GetOrganizationInspectTemplateArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +40,4 @@ class GetOrganizationInspectTemplateArgs {
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'pipeline_stage_before_entry_condition_rule.dart';
 class PipelineStageBeforeEntryCondition {
   /// The action to be done when the condition is met. For example, rolling back an execution for a failure condition. Possible values are `ROLLBACK`, `FAIL`, `RETRY` and `SKIP`.
   final String? result;
-
   /// The rules that make up the condition. Defined as a `rule` block below.
   final List<PipelineStageBeforeEntryConditionRule> rules;
 
@@ -19,24 +18,17 @@ class PipelineStageBeforeEntryCondition {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final resultValue = result;
-    if (resultValue != null) {
-      map['result'] = resultValue;
-    }
-    map['rules'] = pulumi.Input.encodeList<
-        PipelineStageBeforeEntryConditionRule,
-        Map<String, dynamic>>(rules, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'result': ?result,
+      'rules': pulumi.Input.encodeList<PipelineStageBeforeEntryConditionRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
+    };
   }
 
   factory PipelineStageBeforeEntryCondition.fromMap(Map<String, dynamic> map) {
     return PipelineStageBeforeEntryCondition(
       result: map['result'] == null ? null : map['result'] as String,
-      rules: pulumi.Input.decodeList<PipelineStageBeforeEntryConditionRule>(
-          map['rules'],
-          (value) => PipelineStageBeforeEntryConditionRule.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      rules: pulumi.Input.decodeList<PipelineStageBeforeEntryConditionRule>(map['rules'], (value) => PipelineStageBeforeEntryConditionRule.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

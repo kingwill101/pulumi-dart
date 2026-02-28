@@ -16,21 +16,22 @@ class GetServicePerimeterAccesscontextmanagerV1betaArgs {
   GetServicePerimeterAccesscontextmanagerV1betaArgs({
     required String accessPolicyId,
     required String servicePerimeterId,
-  })  : accessPolicyId = pulumi.Input.asInput<String>(accessPolicyId),
-        servicePerimeterId = pulumi.Input.asInput<String>(servicePerimeterId);
+  }) :
+      accessPolicyId = pulumi.Input.asInput<String>(accessPolicyId),
+      servicePerimeterId = pulumi.Input.asInput<String>(servicePerimeterId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accessPolicyId'] = accessPolicyId;
-    map['servicePerimeterId'] = servicePerimeterId;
-    return map;
+    return <String, dynamic>{
+      'accessPolicyId': accessPolicyId,
+      'servicePerimeterId': servicePerimeterId,
+    };
   }
 
-  factory GetServicePerimeterAccesscontextmanagerV1betaArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetServicePerimeterAccesscontextmanagerV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetServicePerimeterAccesscontextmanagerV1betaArgs(
       accessPolicyId: map['accessPolicyId'] as String,
       servicePerimeterId: map['servicePerimeterId'] as String,
     );
   }
 }
+

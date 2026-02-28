@@ -1,14 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetFunctionVpcConfig {
   final bool ipv6AllowedForDualStack;
-
   /// List of security group IDs associated with the Lambda function.
   final List<String> securityGroupIds;
-
   /// List of subnet IDs associated with the Lambda function.
   final List<String> subnetIds;
-
   /// ID of the VPC.
   final String vpcId;
 
@@ -25,12 +23,12 @@ class GetFunctionVpcConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ipv6AllowedForDualStack'] = ipv6AllowedForDualStack;
-    map['securityGroupIds'] = securityGroupIds;
-    map['subnetIds'] = subnetIds;
-    map['vpcId'] = vpcId;
-    return map;
+    return <String, dynamic>{
+      'ipv6AllowedForDualStack': ipv6AllowedForDualStack,
+      'securityGroupIds': securityGroupIds,
+      'subnetIds': subnetIds,
+      'vpcId': vpcId,
+    };
   }
 
   factory GetFunctionVpcConfig.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetFunctionVpcConfig {
     );
   }
 }
+

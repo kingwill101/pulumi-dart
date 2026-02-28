@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).
 class TimeZoneResponseOsconfigV1beta {
   /// Optional. IANA Time Zone Database version number, e.g. "2019a".
@@ -12,9 +13,9 @@ class TimeZoneResponseOsconfigV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['version'] = version;
-    return map;
+    return <String, dynamic>{
+      'version': version,
+    };
   }
 
   factory TimeZoneResponseOsconfigV1beta.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class TimeZoneResponseOsconfigV1beta {
     );
   }
 }
+

@@ -7,26 +7,20 @@ import 'get_gateway_route_spec.dart';
 class GetGatewayRouteResult {
   /// ARN of the gateway route.
   final String arn;
-
   /// Creation date of the gateway route.
   final String createdDate;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Last update date of the gateway route.
   final String lastUpdatedDate;
   final String meshName;
   final String meshOwner;
   final String name;
   final String region;
-
   /// Resource owner's AWS account ID.
   final String resourceOwner;
-
   /// Gateway route specification. See the `aws.appmesh.GatewayRoute` resource for details.
   final List<GetGatewayRouteSpec> specs;
-
   /// Map of tags.
   final Map<String, String> tags;
   final String virtualGatewayName;
@@ -60,22 +54,20 @@ class GetGatewayRouteResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['createdDate'] = createdDate;
-    map['id'] = id;
-    map['lastUpdatedDate'] = lastUpdatedDate;
-    map['meshName'] = meshName;
-    map['meshOwner'] = meshOwner;
-    map['name'] = name;
-    map['region'] = region;
-    map['resourceOwner'] = resourceOwner;
-    map['specs'] =
-        pulumi.Input.encodeList<GetGatewayRouteSpec, Map<String, dynamic>>(
-            specs, (value) => value.toMap());
-    map['tags'] = tags;
-    map['virtualGatewayName'] = virtualGatewayName;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'createdDate': createdDate,
+      'id': id,
+      'lastUpdatedDate': lastUpdatedDate,
+      'meshName': meshName,
+      'meshOwner': meshOwner,
+      'name': name,
+      'region': region,
+      'resourceOwner': resourceOwner,
+      'specs': pulumi.Input.encodeList<GetGatewayRouteSpec, Map<String, dynamic>>(specs, (value) => value.toMap()),
+      'tags': tags,
+      'virtualGatewayName': virtualGatewayName,
+    };
   }
 
   factory GetGatewayRouteResult.fromMap(Map<String, dynamic> map) {
@@ -89,12 +81,10 @@ class GetGatewayRouteResult {
       name: map['name'] as String,
       region: map['region'] as String,
       resourceOwner: map['resourceOwner'] as String,
-      specs: pulumi.Input.decodeList<GetGatewayRouteSpec>(
-          map['specs'],
-          (value) => GetGatewayRouteSpec.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      specs: pulumi.Input.decodeList<GetGatewayRouteSpec>(map['specs'], (value) => GetGatewayRouteSpec.fromMap((value as Map).cast<String, dynamic>())),
       tags: (map['tags'] as Map).cast<String, String>(),
       virtualGatewayName: map['virtualGatewayName'] as String,
     );
   }
 }
+

@@ -6,31 +6,22 @@ import 'private_pool_v1_config_response.dart';
 class GetWorkerPoolResult {
   /// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
   final Map<String, String> annotations;
-
   /// Time at which the request to create the `WorkerPool` was received.
   final String createTime;
-
   /// Time at which the request to delete the `WorkerPool` was received.
   final String deleteTime;
-
   /// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
   final String displayName;
-
   /// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
   final String etag;
-
   /// The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.
   final String name;
-
   /// Legacy Private Pool configuration.
   final PrivatePoolV1ConfigResponse privatePoolV1Config;
-
   /// `WorkerPool` state.
   final String state;
-
   /// A unique identifier for the `WorkerPool`.
   final String uid;
-
   /// Time at which the request to update the `WorkerPool` was received.
   final String updateTime;
 
@@ -59,18 +50,18 @@ class GetWorkerPoolResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['annotations'] = annotations;
-    map['createTime'] = createTime;
-    map['deleteTime'] = deleteTime;
-    map['displayName'] = displayName;
-    map['etag'] = etag;
-    map['name'] = name;
-    map['privatePoolV1Config'] = privatePoolV1Config.toMap();
-    map['state'] = state;
-    map['uid'] = uid;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'annotations': annotations,
+      'createTime': createTime,
+      'deleteTime': deleteTime,
+      'displayName': displayName,
+      'etag': etag,
+      'name': name,
+      'privatePoolV1Config': privatePoolV1Config.toMap(),
+      'state': state,
+      'uid': uid,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetWorkerPoolResult.fromMap(Map<String, dynamic> map) {
@@ -81,11 +72,11 @@ class GetWorkerPoolResult {
       displayName: map['displayName'] as String,
       etag: map['etag'] as String,
       name: map['name'] as String,
-      privatePoolV1Config: PrivatePoolV1ConfigResponse.fromMap(
-          (map['privatePoolV1Config'] as Map).cast<String, dynamic>()),
+      privatePoolV1Config: PrivatePoolV1ConfigResponse.fromMap((map['privatePoolV1Config'] as Map).cast<String, dynamic>()),
       state: map['state'] as String,
       uid: map['uid'] as String,
       updateTime: map['updateTime'] as String,
     );
   }
 }
+

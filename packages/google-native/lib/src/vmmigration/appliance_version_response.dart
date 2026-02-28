@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Describes an appliance version.
 class ApplianceVersionResponse {
   /// Determine whether it's critical to upgrade the appliance to this version.
   final bool critical;
-
   /// Link to a page that contains the version release notes.
   final String releaseNotesUri;
-
   /// A link for downloading the version.
   final String uri;
-
   /// The appliance version.
   final String version;
 
@@ -27,12 +25,12 @@ class ApplianceVersionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['critical'] = critical;
-    map['releaseNotesUri'] = releaseNotesUri;
-    map['uri'] = uri;
-    map['version'] = version;
-    return map;
+    return <String, dynamic>{
+      'critical': critical,
+      'releaseNotesUri': releaseNotesUri,
+      'uri': uri,
+      'version': version,
+    };
   }
 
   factory ApplianceVersionResponse.fromMap(Map<String, dynamic> map) {
@@ -44,3 +42,4 @@ class ApplianceVersionResponse {
     );
   }
 }
+

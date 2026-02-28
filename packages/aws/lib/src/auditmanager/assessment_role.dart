@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AssessmentRole {
   /// Amazon Resource Name (ARN) of the IAM role.
   final String roleArn;
-
   /// Type of customer persona. For assessment creation, type must always be `PROCESS_OWNER`.
   final String roleType;
 
@@ -16,10 +16,10 @@ class AssessmentRole {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['roleArn'] = roleArn;
-    map['roleType'] = roleType;
-    return map;
+    return <String, dynamic>{
+      'roleArn': roleArn,
+      'roleType': roleType,
+    };
   }
 
   factory AssessmentRole.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class AssessmentRole {
     );
   }
 }
+

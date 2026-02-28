@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOrderableDbInstanceArgs {
   /// DB engine. (Default: `neptune`)
   final pulumi.Input<String>? engine;
-
   /// Version of the DB engine. For example, `1.0.1.0`, `1.0.1.2`, `1.0.2.2`, and `1.0.3.0`.
   final pulumi.Input<String>? engineVersion;
-
   /// DB instance class. Examples of classes are `db.r5.large`, `db.r5.xlarge`, `db.r4.large`, `db.r5.4xlarge`, `db.r5.12xlarge`, `db.r4.xlarge`, and `db.t3.medium`.
   final pulumi.Input<String>? instanceClass;
-
   /// License model. (Default: `amazon-license`)
   final pulumi.Input<String>? licenseModel;
-
   /// Ordered list of preferred Neptune DB instance classes. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned.
   final pulumi.Input<List<String>>? preferredInstanceClasses;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Enable to show only VPC offerings.
   final pulumi.Input<bool>? vpc;
 
@@ -44,62 +38,37 @@ class GetOrderableDbInstanceArgs {
     List<String>? preferredInstanceClasses,
     String? region,
     bool? vpc,
-  })  : engine = pulumi.Input.asOptionalInput<String>(engine),
-        engineVersion = pulumi.Input.asOptionalInput<String>(engineVersion),
-        instanceClass = pulumi.Input.asOptionalInput<String>(instanceClass),
-        licenseModel = pulumi.Input.asOptionalInput<String>(licenseModel),
-        preferredInstanceClasses = pulumi.Input.asOptionalInput<List<String>>(
-            preferredInstanceClasses),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        vpc = pulumi.Input.asOptionalInput<bool>(vpc);
+  }) :
+      engine = pulumi.Input.asOptionalInput<String>(engine),
+      engineVersion = pulumi.Input.asOptionalInput<String>(engineVersion),
+      instanceClass = pulumi.Input.asOptionalInput<String>(instanceClass),
+      licenseModel = pulumi.Input.asOptionalInput<String>(licenseModel),
+      preferredInstanceClasses = pulumi.Input.asOptionalInput<List<String>>(preferredInstanceClasses),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      vpc = pulumi.Input.asOptionalInput<bool>(vpc);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final engineValue = engine;
-    if (engineValue != null) {
-      map['engine'] = engineValue;
-    }
-    final engineVersionValue = engineVersion;
-    if (engineVersionValue != null) {
-      map['engineVersion'] = engineVersionValue;
-    }
-    final instanceClassValue = instanceClass;
-    if (instanceClassValue != null) {
-      map['instanceClass'] = instanceClassValue;
-    }
-    final licenseModelValue = licenseModel;
-    if (licenseModelValue != null) {
-      map['licenseModel'] = licenseModelValue;
-    }
-    final preferredInstanceClassesValue = preferredInstanceClasses;
-    if (preferredInstanceClassesValue != null) {
-      map['preferredInstanceClasses'] = preferredInstanceClassesValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final vpcValue = vpc;
-    if (vpcValue != null) {
-      map['vpc'] = vpcValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'engine': ?engine,
+      'engineVersion': ?engineVersion,
+      'instanceClass': ?instanceClass,
+      'licenseModel': ?licenseModel,
+      'preferredInstanceClasses': ?preferredInstanceClasses,
+      'region': ?region,
+      'vpc': ?vpc,
+    };
   }
 
   factory GetOrderableDbInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetOrderableDbInstanceArgs(
       engine: map['engine'] == null ? null : map['engine'] as String,
-      engineVersion:
-          map['engineVersion'] == null ? null : map['engineVersion'] as String,
-      instanceClass:
-          map['instanceClass'] == null ? null : map['instanceClass'] as String,
-      licenseModel:
-          map['licenseModel'] == null ? null : map['licenseModel'] as String,
-      preferredInstanceClasses: map['preferredInstanceClasses'] == null
-          ? null
-          : (map['preferredInstanceClasses'] as List).cast<String>(),
+      engineVersion: map['engineVersion'] == null ? null : map['engineVersion'] as String,
+      instanceClass: map['instanceClass'] == null ? null : map['instanceClass'] as String,
+      licenseModel: map['licenseModel'] == null ? null : map['licenseModel'] as String,
+      preferredInstanceClasses: map['preferredInstanceClasses'] == null ? null : (map['preferredInstanceClasses'] as List).cast<String>(),
       region: map['region'] == null ? null : map['region'] as String,
       vpc: map['vpc'] == null ? null : map['vpc'] as bool,
     );
   }
 }
+

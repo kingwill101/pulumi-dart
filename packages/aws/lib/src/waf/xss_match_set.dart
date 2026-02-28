@@ -188,10 +188,8 @@ import 'xss_match_set_xss_match_tuple.dart';
 class XssMatchSet extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN)
   late final pulumi.Output<String> arn;
-
   /// The name or description of the SizeConstraintSet.
   late final pulumi.Output<String> name;
-
   /// The parts of web requests that you want to inspect for cross-site scripting attacks.
   late final pulumi.Output<List<XssMatchSetXssMatchTuple>?> xssMatchTuples;
 
@@ -211,7 +209,6 @@ class XssMatchSet extends pulumi.CustomResource {
         ) {
     this.arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.xssMatchTuples =
-        registerOutput<List<XssMatchSetXssMatchTuple>?>('xssMatchTuples');
+    this.xssMatchTuples = registerOutput<List<XssMatchSetXssMatchTuple>?>('xssMatchTuples');
   }
 }

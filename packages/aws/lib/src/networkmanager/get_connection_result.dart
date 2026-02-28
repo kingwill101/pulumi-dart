@@ -1,30 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getConnection.
 class GetConnectionResult {
   /// ARN of the connection.
   final String arn;
-
   /// ID of the second device in the connection.
   final String connectedDeviceId;
-
   /// ID of the link for the second device.
   final String connectedLinkId;
   final String connectionId;
-
   /// Description of the connection.
   final String description;
-
   /// ID of the first device in the connection.
   final String deviceId;
   final String globalNetworkId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// ID of the link for the first device.
   final String linkId;
-
   /// Key-value tags for the connection.
   final Map<String, String> tags;
 
@@ -53,18 +47,18 @@ class GetConnectionResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['connectedDeviceId'] = connectedDeviceId;
-    map['connectedLinkId'] = connectedLinkId;
-    map['connectionId'] = connectionId;
-    map['description'] = description;
-    map['deviceId'] = deviceId;
-    map['globalNetworkId'] = globalNetworkId;
-    map['id'] = id;
-    map['linkId'] = linkId;
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'connectedDeviceId': connectedDeviceId,
+      'connectedLinkId': connectedLinkId,
+      'connectionId': connectionId,
+      'description': description,
+      'deviceId': deviceId,
+      'globalNetworkId': globalNetworkId,
+      'id': id,
+      'linkId': linkId,
+      'tags': tags,
+    };
   }
 
   factory GetConnectionResult.fromMap(Map<String, dynamic> map) {
@@ -82,3 +76,4 @@ class GetConnectionResult {
     );
   }
 }
+

@@ -111,10 +111,8 @@ import 'working_storage_args.dart';
 class WorkingStorage extends pulumi.CustomResource {
   /// Local disk identifier. For example, `pci-0000:03:00.0-scsi-0:0:0:0`.
   late final pulumi.Output<String> diskId;
-
   /// The Amazon Resource Name (ARN) of the gateway.
   late final pulumi.Output<String> gatewayArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

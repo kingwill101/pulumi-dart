@@ -7,22 +7,16 @@ import 'query_list_response_dataproc_v1beta2.dart';
 class PrestoJobResponseDataprocV1beta2 {
   /// Optional. Presto client tags to attach to this query
   final List<String> clientTags;
-
   /// Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
   final bool continueOnFailure;
-
   /// Optional. The runtime log config for job execution.
   final LoggingConfigResponseDataprocV1beta2 loggingConfig;
-
   /// Optional. The format in which query output will be displayed. See the Presto documentation for supported output formats
   final String outputFormat;
-
   /// Optional. A mapping of property names to values. Used to set Presto session properties (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
   final Map<String, String> properties;
-
   /// The HCFS URI of the script that contains SQL queries.
   final String queryFileUri;
-
   /// A list of queries.
   final QueryListResponseDataprocV1beta2 queryList;
 
@@ -45,28 +39,27 @@ class PrestoJobResponseDataprocV1beta2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clientTags'] = clientTags;
-    map['continueOnFailure'] = continueOnFailure;
-    map['loggingConfig'] = loggingConfig.toMap();
-    map['outputFormat'] = outputFormat;
-    map['properties'] = properties;
-    map['queryFileUri'] = queryFileUri;
-    map['queryList'] = queryList.toMap();
-    return map;
+    return <String, dynamic>{
+      'clientTags': clientTags,
+      'continueOnFailure': continueOnFailure,
+      'loggingConfig': loggingConfig.toMap(),
+      'outputFormat': outputFormat,
+      'properties': properties,
+      'queryFileUri': queryFileUri,
+      'queryList': queryList.toMap(),
+    };
   }
 
   factory PrestoJobResponseDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return PrestoJobResponseDataprocV1beta2(
       clientTags: (map['clientTags'] as List).cast<String>(),
       continueOnFailure: map['continueOnFailure'] as bool,
-      loggingConfig: LoggingConfigResponseDataprocV1beta2.fromMap(
-          (map['loggingConfig'] as Map).cast<String, dynamic>()),
+      loggingConfig: LoggingConfigResponseDataprocV1beta2.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>()),
       outputFormat: map['outputFormat'] as String,
       properties: (map['properties'] as Map).cast<String, String>(),
       queryFileUri: map['queryFileUri'] as String,
-      queryList: QueryListResponseDataprocV1beta2.fromMap(
-          (map['queryList'] as Map).cast<String, dynamic>()),
+      queryList: QueryListResponseDataprocV1beta2.fromMap((map['queryList'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

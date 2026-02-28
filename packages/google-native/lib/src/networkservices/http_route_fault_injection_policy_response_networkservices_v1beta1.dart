@@ -7,7 +7,6 @@ import 'http_route_fault_injection_policy_delay_response_networkservices_v1beta1
 class HttpRouteFaultInjectionPolicyResponseNetworkservicesV1beta1 {
   /// The specification for aborting to client requests.
   final HttpRouteFaultInjectionPolicyAbortResponseNetworkservicesV1beta1 abort;
-
   /// The specification for injecting delay to client requests.
   final HttpRouteFaultInjectionPolicyDelayResponseNetworkservicesV1beta1 delay;
 
@@ -20,19 +19,17 @@ class HttpRouteFaultInjectionPolicyResponseNetworkservicesV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['abort'] = abort.toMap();
-    map['delay'] = delay.toMap();
-    return map;
+    return <String, dynamic>{
+      'abort': abort.toMap(),
+      'delay': delay.toMap(),
+    };
   }
 
-  factory HttpRouteFaultInjectionPolicyResponseNetworkservicesV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory HttpRouteFaultInjectionPolicyResponseNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return HttpRouteFaultInjectionPolicyResponseNetworkservicesV1beta1(
-      abort: HttpRouteFaultInjectionPolicyAbortResponseNetworkservicesV1beta1
-          .fromMap((map['abort'] as Map).cast<String, dynamic>()),
-      delay: HttpRouteFaultInjectionPolicyDelayResponseNetworkservicesV1beta1
-          .fromMap((map['delay'] as Map).cast<String, dynamic>()),
+      abort: HttpRouteFaultInjectionPolicyAbortResponseNetworkservicesV1beta1.fromMap((map['abort'] as Map).cast<String, dynamic>()),
+      delay: HttpRouteFaultInjectionPolicyDelayResponseNetworkservicesV1beta1.fromMap((map['delay'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

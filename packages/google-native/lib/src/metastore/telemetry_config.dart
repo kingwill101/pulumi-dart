@@ -14,19 +14,15 @@ class TelemetryConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final logFormatValue = logFormat;
-    if (logFormatValue != null) {
-      map['logFormat'] = logFormatValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'logFormat': ?logFormat == null ? null : logFormat!.value,
+    };
   }
 
   factory TelemetryConfig.fromMap(Map<String, dynamic> map) {
     return TelemetryConfig(
-      logFormat: map['logFormat'] == null
-          ? null
-          : TelemetryConfigLogFormat.fromValue(map['logFormat'] as String),
+      logFormat: map['logFormat'] == null ? null : TelemetryConfigLogFormat.fromValue(map['logFormat'] as String),
     );
   }
 }
+

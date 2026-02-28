@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CertificateManagedProvisioningIssue {
   /// Human readable explanation about the issue. Provided to help address
   /// the configuration issues.
   /// Not guaranteed to be stable. For programmatic access use 'reason' field.
   final String? details;
-
   /// Reason for provisioning failures.
   final String? reason;
 
@@ -18,23 +18,17 @@ class CertificateManagedProvisioningIssue {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final detailsValue = details;
-    if (detailsValue != null) {
-      map['details'] = detailsValue;
-    }
-    final reasonValue = reason;
-    if (reasonValue != null) {
-      map['reason'] = reasonValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'details': ?details,
+      'reason': ?reason,
+    };
   }
 
-  factory CertificateManagedProvisioningIssue.fromMap(
-      Map<String, dynamic> map) {
+  factory CertificateManagedProvisioningIssue.fromMap(Map<String, dynamic> map) {
     return CertificateManagedProvisioningIssue(
       details: map['details'] == null ? null : map['details'] as String,
       reason: map['reason'] == null ? null : map['reason'] as String,
     );
   }
 }
+

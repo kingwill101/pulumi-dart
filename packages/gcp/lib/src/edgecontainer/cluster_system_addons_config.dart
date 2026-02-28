@@ -16,20 +16,15 @@ class ClusterSystemAddonsConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final ingressValue = ingress;
-    if (ingressValue != null) {
-      map['ingress'] = ingressValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'ingress': ?ingress == null ? null : ingress!.toMap(),
+    };
   }
 
   factory ClusterSystemAddonsConfig.fromMap(Map<String, dynamic> map) {
     return ClusterSystemAddonsConfig(
-      ingress: map['ingress'] == null
-          ? null
-          : ClusterSystemAddonsConfigIngress.fromMap(
-              (map['ingress'] as Map).cast<String, dynamic>()),
+      ingress: map['ingress'] == null ? null : ClusterSystemAddonsConfigIngress.fromMap((map['ingress'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

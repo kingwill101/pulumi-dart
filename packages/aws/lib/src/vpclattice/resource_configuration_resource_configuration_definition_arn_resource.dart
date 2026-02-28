@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ResourceConfigurationResourceConfigurationDefinitionArnResource {
   /// The ARN of the Resource for this configuration.
   final String arn;
@@ -11,15 +12,15 @@ class ResourceConfigurationResourceConfigurationDefinitionArnResource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+    };
   }
 
-  factory ResourceConfigurationResourceConfigurationDefinitionArnResource.fromMap(
-      Map<String, dynamic> map) {
+  factory ResourceConfigurationResourceConfigurationDefinitionArnResource.fromMap(Map<String, dynamic> map) {
     return ResourceConfigurationResourceConfigurationDefinitionArnResource(
       arn: map['arn'] as String,
     );
   }
 }
+

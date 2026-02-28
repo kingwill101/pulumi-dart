@@ -4,9 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_virtual_gateway_spec_backend_default_client_policy_tl_validation_subject_alternative_name_match.dart';
 
 class GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationSubjectAlternativeName {
-  final List<
-          GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationSubjectAlternativeNameMatch>
-      matches;
+  final List<GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationSubjectAlternativeNameMatch> matches;
 
   /// Creates a new [GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationSubjectAlternativeName].
   /// [matches] Required.
@@ -15,22 +13,15 @@ class GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationSubjectAlternat
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['matches'] = pulumi.Input.encodeList<
-        GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationSubjectAlternativeNameMatch,
-        Map<String, dynamic>>(matches, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'matches': pulumi.Input.encodeList<GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationSubjectAlternativeNameMatch, Map<String, dynamic>>(matches, (value) => value.toMap()),
+    };
   }
 
-  factory GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationSubjectAlternativeName.fromMap(
-      Map<String, dynamic> map) {
+  factory GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationSubjectAlternativeName.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationSubjectAlternativeName(
-      matches: pulumi.Input.decodeList<
-              GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationSubjectAlternativeNameMatch>(
-          map['matches'],
-          (value) =>
-              GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationSubjectAlternativeNameMatch
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      matches: pulumi.Input.decodeList<GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationSubjectAlternativeNameMatch>(map['matches'], (value) => GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationSubjectAlternativeNameMatch.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

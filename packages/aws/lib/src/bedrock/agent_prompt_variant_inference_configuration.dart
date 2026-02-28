@@ -13,21 +13,15 @@ class AgentPromptVariantInferenceConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final textValue = text;
-    if (textValue != null) {
-      map['text'] = textValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'text': ?text == null ? null : text!.toMap(),
+    };
   }
 
-  factory AgentPromptVariantInferenceConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentPromptVariantInferenceConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentPromptVariantInferenceConfiguration(
-      text: map['text'] == null
-          ? null
-          : AgentPromptVariantInferenceConfigurationText.fromMap(
-              (map['text'] as Map).cast<String, dynamic>()),
+      text: map['text'] == null ? null : AgentPromptVariantInferenceConfigurationText.fromMap((map['text'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

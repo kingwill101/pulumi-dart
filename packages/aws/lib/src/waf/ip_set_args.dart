@@ -10,7 +10,6 @@ import 'ip_set_ip_set_descriptor.dart';
 class IpSetArgs {
   /// One or more pairs specifying the IP address type (IPV4 or IPV6) and the IP address range (in CIDR format) from which web requests originate.
   final pulumi.Input<List<IpSetIpSetDescriptor>>? ipSetDescriptors;
-
   /// The name or description of the IPSet.
   final pulumi.Input<String>? name;
 
@@ -20,37 +19,22 @@ class IpSetArgs {
   IpSetArgs({
     List<IpSetIpSetDescriptor>? ipSetDescriptors,
     String? name,
-  })  : ipSetDescriptors =
-            pulumi.Input.asOptionalInput<List<IpSetIpSetDescriptor>>(
-                ipSetDescriptors),
-        name = pulumi.Input.asOptionalInput<String>(name);
+  }) :
+      ipSetDescriptors = pulumi.Input.asOptionalInput<List<IpSetIpSetDescriptor>>(ipSetDescriptors),
+      name = pulumi.Input.asOptionalInput<String>(name);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final ipSetDescriptorsValue = ipSetDescriptors;
-    if (ipSetDescriptorsValue != null) {
-      map['ipSetDescriptors'] = pulumi.Input.mapOptionalInputValue<
-              List<IpSetIpSetDescriptor>, List<Map<String, dynamic>>>(
-          ipSetDescriptorsValue,
-          (value) => pulumi.Input.encodeList<IpSetIpSetDescriptor,
-              Map<String, dynamic>>(value, (value) => value.toMap()));
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'ipSetDescriptors': ?pulumi.Input.mapOptionalInputValue<List<IpSetIpSetDescriptor>, List<Map<String, dynamic>>>(ipSetDescriptors, (value) => pulumi.Input.encodeList<IpSetIpSetDescriptor, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'name': ?name,
+    };
   }
 
   factory IpSetArgs.fromMap(Map<String, dynamic> map) {
     return IpSetArgs(
-      ipSetDescriptors: map['ipSetDescriptors'] == null
-          ? null
-          : pulumi.Input.decodeList<IpSetIpSetDescriptor>(
-              map['ipSetDescriptors'],
-              (value) => IpSetIpSetDescriptor.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      ipSetDescriptors: map['ipSetDescriptors'] == null ? null : pulumi.Input.decodeList<IpSetIpSetDescriptor>(map['ipSetDescriptors'], (value) => IpSetIpSetDescriptor.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] == null ? null : map['name'] as String,
     );
   }
 }
+

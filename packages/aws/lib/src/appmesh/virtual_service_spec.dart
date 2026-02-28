@@ -13,20 +13,15 @@ class VirtualServiceSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final providerValue = provider;
-    if (providerValue != null) {
-      map['provider'] = providerValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'provider': ?provider == null ? null : provider!.toMap(),
+    };
   }
 
   factory VirtualServiceSpec.fromMap(Map<String, dynamic> map) {
     return VirtualServiceSpec(
-      provider: map['provider'] == null
-          ? null
-          : VirtualServiceSpecProvider.fromMap(
-              (map['provider'] as Map).cast<String, dynamic>()),
+      provider: map['provider'] == null ? null : VirtualServiceSpecProvider.fromMap((map['provider'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -12,20 +12,15 @@ class FlowTriggerConfigTriggerProperties {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final scheduledValue = scheduled;
-    if (scheduledValue != null) {
-      map['scheduled'] = scheduledValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'scheduled': ?scheduled == null ? null : scheduled!.toMap(),
+    };
   }
 
   factory FlowTriggerConfigTriggerProperties.fromMap(Map<String, dynamic> map) {
     return FlowTriggerConfigTriggerProperties(
-      scheduled: map['scheduled'] == null
-          ? null
-          : FlowTriggerConfigTriggerPropertiesScheduled.fromMap(
-              (map['scheduled'] as Map).cast<String, dynamic>()),
+      scheduled: map['scheduled'] == null ? null : FlowTriggerConfigTriggerPropertiesScheduled.fromMap((map['scheduled'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

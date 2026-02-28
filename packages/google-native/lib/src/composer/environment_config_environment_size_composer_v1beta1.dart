@@ -8,14 +8,13 @@ enum EnvironmentConfigEnvironmentSizeComposerV1beta1 {
   const EnvironmentConfigEnvironmentSizeComposerV1beta1(this.value);
   final String value;
 
-  static EnvironmentConfigEnvironmentSizeComposerV1beta1 fromValue(
-      String value) {
+  static EnvironmentConfigEnvironmentSizeComposerV1beta1 fromValue(String value) {
     for (final item in EnvironmentConfigEnvironmentSizeComposerV1beta1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown EnvironmentConfigEnvironmentSizeComposerV1beta1 value: $value');
+    throw ArgumentError('Unknown EnvironmentConfigEnvironmentSizeComposerV1beta1 value: $value');
   }
 }
+

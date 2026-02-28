@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcEndpointSubnetAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The ID of the subnet to be associated with the VPC endpoint.
   final pulumi.Input<String> subnetId;
-
   /// The ID of the VPC endpoint with which the subnet will be associated.
   final pulumi.Input<String> vpcEndpointId;
 
@@ -24,19 +22,17 @@ class VpcEndpointSubnetAssociationArgs {
     String? region,
     required String subnetId,
     required String vpcEndpointId,
-  })  : region = pulumi.Input.asOptionalInput<String>(region),
-        subnetId = pulumi.Input.asInput<String>(subnetId),
-        vpcEndpointId = pulumi.Input.asInput<String>(vpcEndpointId);
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      subnetId = pulumi.Input.asInput<String>(subnetId),
+      vpcEndpointId = pulumi.Input.asInput<String>(vpcEndpointId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['subnetId'] = subnetId;
-    map['vpcEndpointId'] = vpcEndpointId;
-    return map;
+    return <String, dynamic>{
+      'region': ?region,
+      'subnetId': subnetId,
+      'vpcEndpointId': vpcEndpointId,
+    };
   }
 
   factory VpcEndpointSubnetAssociationArgs.fromMap(Map<String, dynamic> map) {
@@ -47,3 +43,4 @@ class VpcEndpointSubnetAssociationArgs {
     );
   }
 }
+

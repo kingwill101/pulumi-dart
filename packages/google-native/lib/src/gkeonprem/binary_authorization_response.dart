@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for Binary Authorization.
 class BinaryAuthorizationResponse {
   /// Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
@@ -12,9 +13,9 @@ class BinaryAuthorizationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['evaluationMode'] = evaluationMode;
-    return map;
+    return <String, dynamic>{
+      'evaluationMode': evaluationMode,
+    };
   }
 
   factory BinaryAuthorizationResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class BinaryAuthorizationResponse {
     );
   }
 }
+

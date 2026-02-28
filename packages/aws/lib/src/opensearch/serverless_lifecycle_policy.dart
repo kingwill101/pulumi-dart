@@ -217,19 +217,14 @@ import 'serverless_lifecycle_policy_args.dart';
 class ServerlessLifecyclePolicy extends pulumi.CustomResource {
   /// Description of the policy.
   late final pulumi.Output<String?> description;
-
   /// Name of the policy.
   late final pulumi.Output<String> name;
-
   /// JSON policy document to use as the content for the new policy.
   late final pulumi.Output<String> policy;
-
   /// Version of the policy.
   late final pulumi.Output<String> policyVersion;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Type of lifecycle policy. Must be `retention`.
   ///
   /// The following arguments are optional:

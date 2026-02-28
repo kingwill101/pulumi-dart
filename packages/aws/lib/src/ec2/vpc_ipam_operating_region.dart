@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VpcIpamOperatingRegion {
   /// The name of the Region you want to add to the IPAM.
   final String regionName;
@@ -11,9 +12,9 @@ class VpcIpamOperatingRegion {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['regionName'] = regionName;
-    return map;
+    return <String, dynamic>{
+      'regionName': regionName,
+    };
   }
 
   factory VpcIpamOperatingRegion.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class VpcIpamOperatingRegion {
     );
   }
 }
+

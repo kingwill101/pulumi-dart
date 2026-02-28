@@ -912,28 +912,22 @@ import 'field_ttl_config.dart';
 class Field extends pulumi.CustomResource {
   /// The id of the collection group to configure.
   late final pulumi.Output<String> collection;
-
   /// The Firestore database id. Defaults to `"(default)"`.
   late final pulumi.Output<String?> database;
-
   /// The id of the field to configure.
   late final pulumi.Output<String> field;
-
   /// The single field index configuration for this field.
   /// Creating an index configuration for this field will override any inherited configuration with the
   /// indexes specified. Configuring the index configuration with an empty block disables all indexes on
   /// the field.
   /// Structure is documented below.
   late final pulumi.Output<FieldIndexConfig?> indexConfig;
-
   /// The name of this field. Format:
   /// `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/fields/{{field}}`
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
   /// Structure is documented below.
   late final pulumi.Output<FieldTtlConfig?> ttlConfig;

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterLoggingConfig {
   /// GKE components exposing logs. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, KCP_CONNECTION, KCP_SSHD, KCP_HPA, SCHEDULER, and WORKLOADS.
   final List<String> enableComponents;
@@ -11,9 +12,9 @@ class GetClusterLoggingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enableComponents'] = enableComponents;
-    return map;
+    return <String, dynamic>{
+      'enableComponents': enableComponents,
+    };
   }
 
   factory GetClusterLoggingConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetClusterLoggingConfig {
     );
   }
 }
+

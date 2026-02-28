@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// VmwareClusterUpgradePolicy defines the cluster upgrade policy.
 class VmwareClusterUpgradePolicyResponse {
   /// Controls whether the upgrade applies to the control plane only.
@@ -12,9 +13,9 @@ class VmwareClusterUpgradePolicyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['controlPlaneOnly'] = controlPlaneOnly;
-    return map;
+    return <String, dynamic>{
+      'controlPlaneOnly': controlPlaneOnly,
+    };
   }
 
   factory VmwareClusterUpgradePolicyResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class VmwareClusterUpgradePolicyResponse {
     );
   }
 }
+

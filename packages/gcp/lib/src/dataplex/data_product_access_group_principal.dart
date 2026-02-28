@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataProductAccessGroupPrincipal {
   /// Email of the Google Group.
   final String? googleGroup;
@@ -11,18 +12,15 @@ class DataProductAccessGroupPrincipal {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final googleGroupValue = googleGroup;
-    if (googleGroupValue != null) {
-      map['googleGroup'] = googleGroupValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'googleGroup': ?googleGroup,
+    };
   }
 
   factory DataProductAccessGroupPrincipal.fromMap(Map<String, dynamic> map) {
     return DataProductAccessGroupPrincipal(
-      googleGroup:
-          map['googleGroup'] == null ? null : map['googleGroup'] as String,
+      googleGroup: map['googleGroup'] == null ? null : map['googleGroup'] as String,
     );
   }
 }
+

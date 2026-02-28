@@ -14,15 +14,15 @@ class BatchOperationsJobBucketList {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['buckets'] = buckets.toMap();
-    return map;
+    return <String, dynamic>{
+      'buckets': buckets.toMap(),
+    };
   }
 
   factory BatchOperationsJobBucketList.fromMap(Map<String, dynamic> map) {
     return BatchOperationsJobBucketList(
-      buckets: BatchOperationsJobBucketListBuckets.fromMap(
-          (map['buckets'] as Map).cast<String, dynamic>()),
+      buckets: BatchOperationsJobBucketListBuckets.fromMap((map['buckets'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

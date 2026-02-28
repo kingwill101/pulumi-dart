@@ -6,8 +6,7 @@ import 'stream_source_config_mysql_source_config_exclude_objects_mysql_database.
 class StreamSourceConfigMysqlSourceConfigExcludeObjects {
   /// MySQL databases on the server
   /// Structure is documented below.
-  final List<StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase>
-      mysqlDatabases;
+  final List<StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase> mysqlDatabases;
 
   /// Creates a new [StreamSourceConfigMysqlSourceConfigExcludeObjects].
   /// [mysqlDatabases] MySQL databases on the server
@@ -16,22 +15,15 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjects {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['mysqlDatabases'] = pulumi.Input.encodeList<
-        StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase,
-        Map<String, dynamic>>(mysqlDatabases, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'mysqlDatabases': pulumi.Input.encodeList<StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase, Map<String, dynamic>>(mysqlDatabases, (value) => value.toMap()),
+    };
   }
 
-  factory StreamSourceConfigMysqlSourceConfigExcludeObjects.fromMap(
-      Map<String, dynamic> map) {
+  factory StreamSourceConfigMysqlSourceConfigExcludeObjects.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigMysqlSourceConfigExcludeObjects(
-      mysqlDatabases: pulumi.Input.decodeList<
-              StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase>(
-          map['mysqlDatabases'],
-          (value) =>
-              StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      mysqlDatabases: pulumi.Input.decodeList<StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase>(map['mysqlDatabases'], (value) => StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

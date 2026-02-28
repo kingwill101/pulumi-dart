@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getExternalAddress.
 class GetExternalAddressResult {
   final String createTime;
   final String description;
   final String externalIp;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String internalIp;
@@ -40,18 +40,18 @@ class GetExternalAddressResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['description'] = description;
-    map['externalIp'] = externalIp;
-    map['id'] = id;
-    map['internalIp'] = internalIp;
-    map['name'] = name;
-    map['parent'] = parent;
-    map['state'] = state;
-    map['uid'] = uid;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'description': description,
+      'externalIp': externalIp,
+      'id': id,
+      'internalIp': internalIp,
+      'name': name,
+      'parent': parent,
+      'state': state,
+      'uid': uid,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetExternalAddressResult.fromMap(Map<String, dynamic> map) {
@@ -69,3 +69,4 @@ class GetExternalAddressResult {
     );
   }
 }
+

@@ -1853,17 +1853,12 @@ import 'instance_desired_user_created_endpoints_desired_user_created_endpoint.da
 class InstanceDesiredUserCreatedEndpoints extends pulumi.CustomResource {
   /// A list of desired user endpoints
   /// Structure is documented below.
-  late final pulumi.Output<
-          List<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint>?>
-      desiredUserCreatedEndpoints;
-
+  late final pulumi.Output<List<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint>?> desiredUserCreatedEndpoints;
   /// The name of the Memorystore instance these endpoints should be added to.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The name of the region of the Memorystore instance these endpoints should be added to.
   late final pulumi.Output<String> region;
 
@@ -1881,10 +1876,7 @@ class InstanceDesiredUserCreatedEndpoints extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.desiredUserCreatedEndpoints = registerOutput<
-            List<
-                InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint>?>(
-        'desiredUserCreatedEndpoints');
+    this.desiredUserCreatedEndpoints = registerOutput<List<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint>?>('desiredUserCreatedEndpoints');
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
     this.region = registerOutput<String>('region');

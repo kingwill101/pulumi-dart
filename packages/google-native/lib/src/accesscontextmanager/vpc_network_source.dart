@@ -14,20 +14,15 @@ class VpcNetworkSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final vpcSubnetworkValue = vpcSubnetwork;
-    if (vpcSubnetworkValue != null) {
-      map['vpcSubnetwork'] = vpcSubnetworkValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'vpcSubnetwork': ?vpcSubnetwork == null ? null : vpcSubnetwork!.toMap(),
+    };
   }
 
   factory VpcNetworkSource.fromMap(Map<String, dynamic> map) {
     return VpcNetworkSource(
-      vpcSubnetwork: map['vpcSubnetwork'] == null
-          ? null
-          : VpcSubNetwork.fromMap(
-              (map['vpcSubnetwork'] as Map).cast<String, dynamic>()),
+      vpcSubnetwork: map['vpcSubnetwork'] == null ? null : VpcSubNetwork.fromMap((map['vpcSubnetwork'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

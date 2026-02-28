@@ -6,7 +6,6 @@ import 'ospolicy_resource_file.dart';
 class OSPolicyResourcePackageResourceDeb {
   /// Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update && apt-get -y install package.deb`
   final bool? pullDeps;
-
   /// A deb package.
   final OSPolicyResourceFile source;
 
@@ -19,20 +18,17 @@ class OSPolicyResourcePackageResourceDeb {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final pullDepsValue = pullDeps;
-    if (pullDepsValue != null) {
-      map['pullDeps'] = pullDepsValue;
-    }
-    map['source'] = source.toMap();
-    return map;
+    return <String, dynamic>{
+      'pullDeps': ?pullDeps,
+      'source': source.toMap(),
+    };
   }
 
   factory OSPolicyResourcePackageResourceDeb.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourcePackageResourceDeb(
       pullDeps: map['pullDeps'] == null ? null : map['pullDeps'] as bool,
-      source: OSPolicyResourceFile.fromMap(
-          (map['source'] as Map).cast<String, dynamic>()),
+      source: OSPolicyResourceFile.fromMap((map['source'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

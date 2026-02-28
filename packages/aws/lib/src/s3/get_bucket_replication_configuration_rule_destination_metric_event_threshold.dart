@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold {
   final int minutes;
 
@@ -10,15 +11,15 @@ class GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['minutes'] = minutes;
-    return map;
+    return <String, dynamic>{
+      'minutes': minutes,
+    };
   }
 
-  factory GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold.fromMap(
-      Map<String, dynamic> map) {
+  factory GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold.fromMap(Map<String, dynamic> map) {
     return GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold(
       minutes: map['minutes'] as int,
     );
   }
 }
+

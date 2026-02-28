@@ -6,15 +6,13 @@ enum GPUSharingConfigGpuSharingStrategyContainerV1beta1 {
   const GPUSharingConfigGpuSharingStrategyContainerV1beta1(this.value);
   final String value;
 
-  static GPUSharingConfigGpuSharingStrategyContainerV1beta1 fromValue(
-      String value) {
-    for (final item
-        in GPUSharingConfigGpuSharingStrategyContainerV1beta1.values) {
+  static GPUSharingConfigGpuSharingStrategyContainerV1beta1 fromValue(String value) {
+    for (final item in GPUSharingConfigGpuSharingStrategyContainerV1beta1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GPUSharingConfigGpuSharingStrategyContainerV1beta1 value: $value');
+    throw ArgumentError('Unknown GPUSharingConfigGpuSharingStrategyContainerV1beta1 value: $value');
   }
 }
+

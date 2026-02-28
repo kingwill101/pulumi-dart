@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for NodeLocal DNSCache
 class DnsCacheConfigResponse {
   /// Whether NodeLocal DNSCache is enabled for this cluster.
@@ -12,9 +13,9 @@ class DnsCacheConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory DnsCacheConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class DnsCacheConfigResponse {
     );
   }
 }
+

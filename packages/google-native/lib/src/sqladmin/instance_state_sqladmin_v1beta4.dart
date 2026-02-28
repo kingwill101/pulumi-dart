@@ -21,3 +21,4 @@ enum InstanceStateSqladminV1beta4 {
     throw ArgumentError('Unknown InstanceStateSqladminV1beta4 value: $value');
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EnvironmentStorageConfigurationFsx {
   /// Id of the FSX filesystem to mount.
   final String fileSystemId;
-
   /// Path to mount the filesystem on, must start with `/m2/mount/`.
   final String mountPoint;
 
@@ -16,10 +16,10 @@ class EnvironmentStorageConfigurationFsx {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['fileSystemId'] = fileSystemId;
-    map['mountPoint'] = mountPoint;
-    return map;
+    return <String, dynamic>{
+      'fileSystemId': fileSystemId,
+      'mountPoint': mountPoint,
+    };
   }
 
   factory EnvironmentStorageConfigurationFsx.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class EnvironmentStorageConfigurationFsx {
     );
   }
 }
+

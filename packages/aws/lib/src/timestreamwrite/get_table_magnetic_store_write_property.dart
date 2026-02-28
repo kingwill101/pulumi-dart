@@ -6,11 +6,8 @@ import 'get_table_magnetic_store_write_property_magnetic_store_rejected_data_loc
 class GetTableMagneticStoreWriteProperty {
   /// Flag that is set based on if magnetic store writes are enabled.
   final bool enableMagneticStoreWrites;
-
   /// Object containing the following attributes to describe error reports for records rejected during magnetic store writes.
-  final List<
-          GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocation>
-      magneticStoreRejectedDataLocations;
+  final List<GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocation> magneticStoreRejectedDataLocations;
 
   /// Creates a new [GetTableMagneticStoreWriteProperty].
   /// [enableMagneticStoreWrites] Flag that is set based on if magnetic store writes are enabled.
@@ -21,24 +18,17 @@ class GetTableMagneticStoreWriteProperty {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enableMagneticStoreWrites'] = enableMagneticStoreWrites;
-    map['magneticStoreRejectedDataLocations'] = pulumi.Input.encodeList<
-            GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocation,
-            Map<String, dynamic>>(
-        magneticStoreRejectedDataLocations, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'enableMagneticStoreWrites': enableMagneticStoreWrites,
+      'magneticStoreRejectedDataLocations': pulumi.Input.encodeList<GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocation, Map<String, dynamic>>(magneticStoreRejectedDataLocations, (value) => value.toMap()),
+    };
   }
 
   factory GetTableMagneticStoreWriteProperty.fromMap(Map<String, dynamic> map) {
     return GetTableMagneticStoreWriteProperty(
       enableMagneticStoreWrites: map['enableMagneticStoreWrites'] as bool,
-      magneticStoreRejectedDataLocations: pulumi.Input.decodeList<
-              GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocation>(
-          map['magneticStoreRejectedDataLocations'],
-          (value) =>
-              GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocation
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      magneticStoreRejectedDataLocations: pulumi.Input.decodeList<GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocation>(map['magneticStoreRejectedDataLocations'], (value) => GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocation.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

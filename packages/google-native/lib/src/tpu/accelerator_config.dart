@@ -6,7 +6,6 @@ import 'accelerator_config_type.dart';
 class AcceleratorConfig {
   /// Topology of TPU in chips.
   final String topology;
-
   /// Type of TPU.
   final AcceleratorConfigType type;
 
@@ -19,10 +18,10 @@ class AcceleratorConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['topology'] = topology;
-    map['type'] = type.value;
-    return map;
+    return <String, dynamic>{
+      'topology': topology,
+      'type': type.value,
+    };
   }
 
   factory AcceleratorConfig.fromMap(Map<String, dynamic> map) {
@@ -32,3 +31,4 @@ class AcceleratorConfig {
     );
   }
 }
+

@@ -7,7 +7,6 @@ class TagTemplateFieldType {
   /// Exactly one of `primitive_type` or `enum_type` must be set
   /// Structure is documented below.
   final TagTemplateFieldTypeEnumType? enumType;
-
   /// Represents primitive types - string, bool etc.
   /// Exactly one of `primitive_type` or `enum_type` must be set
   /// Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`.
@@ -22,26 +21,17 @@ class TagTemplateFieldType {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enumTypeValue = enumType;
-    if (enumTypeValue != null) {
-      map['enumType'] = enumTypeValue.toMap();
-    }
-    final primitiveTypeValue = primitiveType;
-    if (primitiveTypeValue != null) {
-      map['primitiveType'] = primitiveTypeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enumType': ?enumType == null ? null : enumType!.toMap(),
+      'primitiveType': ?primitiveType,
+    };
   }
 
   factory TagTemplateFieldType.fromMap(Map<String, dynamic> map) {
     return TagTemplateFieldType(
-      enumType: map['enumType'] == null
-          ? null
-          : TagTemplateFieldTypeEnumType.fromMap(
-              (map['enumType'] as Map).cast<String, dynamic>()),
-      primitiveType:
-          map['primitiveType'] == null ? null : map['primitiveType'] as String,
+      enumType: map['enumType'] == null ? null : TagTemplateFieldTypeEnumType.fromMap((map['enumType'] as Map).cast<String, dynamic>()),
+      primitiveType: map['primitiveType'] == null ? null : map['primitiveType'] as String,
     );
   }
 }
+

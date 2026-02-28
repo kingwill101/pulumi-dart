@@ -18,18 +18,17 @@ class DSSEAttestationOccurrenceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['envelope'] = envelope.toMap();
-    map['statement'] = statement.toMap();
-    return map;
+    return <String, dynamic>{
+      'envelope': envelope.toMap(),
+      'statement': statement.toMap(),
+    };
   }
 
   factory DSSEAttestationOccurrenceResponse.fromMap(Map<String, dynamic> map) {
     return DSSEAttestationOccurrenceResponse(
-      envelope: EnvelopeResponse.fromMap(
-          (map['envelope'] as Map).cast<String, dynamic>()),
-      statement: InTotoStatementResponse.fromMap(
-          (map['statement'] as Map).cast<String, dynamic>()),
+      envelope: EnvelopeResponse.fromMap((map['envelope'] as Map).cast<String, dynamic>()),
+      statement: InTotoStatementResponse.fromMap((map['statement'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

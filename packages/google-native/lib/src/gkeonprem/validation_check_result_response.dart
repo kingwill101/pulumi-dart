@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// ValidationCheckResult defines the details about the validation check.
 class ValidationCheckResultResponse {
   /// The category of the validation.
   final String category;
-
   /// The description of the validation check.
   final String description;
-
   /// Detailed failure information, which might be unformatted.
   final String details;
-
   /// A human-readable message of the check failure.
   final String reason;
-
   /// The validation check state.
   final String state;
 
@@ -32,13 +29,13 @@ class ValidationCheckResultResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['category'] = category;
-    map['description'] = description;
-    map['details'] = details;
-    map['reason'] = reason;
-    map['state'] = state;
-    return map;
+    return <String, dynamic>{
+      'category': category,
+      'description': description,
+      'details': details,
+      'reason': reason,
+      'state': state,
+    };
   }
 
   factory ValidationCheckResultResponse.fromMap(Map<String, dynamic> map) {
@@ -51,3 +48,4 @@ class ValidationCheckResultResponse {
     );
   }
 }
+

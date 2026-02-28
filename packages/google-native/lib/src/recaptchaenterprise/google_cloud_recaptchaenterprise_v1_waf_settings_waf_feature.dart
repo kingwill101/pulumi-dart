@@ -9,15 +9,13 @@ enum GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature {
   const GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature(this.value);
   final String value;
 
-  static GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature fromValue(
-      String value) {
-    for (final item
-        in GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature.values) {
+  static GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature fromValue(String value) {
+    for (final item in GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature value: $value');
+    throw ArgumentError('Unknown GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature value: $value');
   }
 }
+

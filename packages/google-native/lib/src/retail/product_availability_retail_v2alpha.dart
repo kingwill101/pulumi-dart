@@ -15,7 +15,7 @@ enum ProductAvailabilityRetailV2alpha {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown ProductAvailabilityRetailV2alpha value: $value');
+    throw ArgumentError('Unknown ProductAvailabilityRetailV2alpha value: $value');
   }
 }
+

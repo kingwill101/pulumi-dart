@@ -7,13 +7,10 @@ import 'google_cloud_aiplatform_v1_training_config_response.dart';
 class GoogleCloudAiplatformV1ActiveLearningConfigResponse {
   /// Max number of human labeled DataItems.
   final String maxDataItemCount;
-
   /// Max percent of total DataItems for human labeling.
   final int maxDataItemPercentage;
-
   /// Active learning data sampling config. For every active learning labeling iteration, it will select a batch of data based on the sampling strategy.
   final GoogleCloudAiplatformV1SampleConfigResponse sampleConfig;
-
   /// CMLE training config. For every active learning labeling iteration, system will train a machine learning model on CMLE. The trained model will be used by data sampling algorithm to select DataItems.
   final GoogleCloudAiplatformV1TrainingConfigResponse trainingConfig;
 
@@ -30,23 +27,21 @@ class GoogleCloudAiplatformV1ActiveLearningConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maxDataItemCount'] = maxDataItemCount;
-    map['maxDataItemPercentage'] = maxDataItemPercentage;
-    map['sampleConfig'] = sampleConfig.toMap();
-    map['trainingConfig'] = trainingConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'maxDataItemCount': maxDataItemCount,
+      'maxDataItemPercentage': maxDataItemPercentage,
+      'sampleConfig': sampleConfig.toMap(),
+      'trainingConfig': trainingConfig.toMap(),
+    };
   }
 
-  factory GoogleCloudAiplatformV1ActiveLearningConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1ActiveLearningConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1ActiveLearningConfigResponse(
       maxDataItemCount: map['maxDataItemCount'] as String,
       maxDataItemPercentage: map['maxDataItemPercentage'] as int,
-      sampleConfig: GoogleCloudAiplatformV1SampleConfigResponse.fromMap(
-          (map['sampleConfig'] as Map).cast<String, dynamic>()),
-      trainingConfig: GoogleCloudAiplatformV1TrainingConfigResponse.fromMap(
-          (map['trainingConfig'] as Map).cast<String, dynamic>()),
+      sampleConfig: GoogleCloudAiplatformV1SampleConfigResponse.fromMap((map['sampleConfig'] as Map).cast<String, dynamic>()),
+      trainingConfig: GoogleCloudAiplatformV1TrainingConfigResponse.fromMap((map['trainingConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

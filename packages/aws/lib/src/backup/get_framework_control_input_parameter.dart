@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetFrameworkControlInputParameter {
   /// Backup framework name.
   final String name;
-
   /// Value of parameter, for example, hourly.
   final String value;
 
@@ -16,10 +16,10 @@ class GetFrameworkControlInputParameter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
   factory GetFrameworkControlInputParameter.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetFrameworkControlInputParameter {
     );
   }
 }
+

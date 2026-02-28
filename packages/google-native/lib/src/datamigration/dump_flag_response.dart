@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Dump flag definition.
 class DumpFlagResponse {
   /// The name of the flag
   final String name;
-
   /// The value of the flag.
   final String value;
 
@@ -17,10 +17,10 @@ class DumpFlagResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
   factory DumpFlagResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class DumpFlagResponse {
     );
   }
 }
+

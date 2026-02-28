@@ -13,21 +13,15 @@ class SecurityPolicyRuleMatcherExprOptions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final recaptchaOptionsValue = recaptchaOptions;
-    if (recaptchaOptionsValue != null) {
-      map['recaptchaOptions'] = recaptchaOptionsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'recaptchaOptions': ?recaptchaOptions == null ? null : recaptchaOptions!.toMap(),
+    };
   }
 
-  factory SecurityPolicyRuleMatcherExprOptions.fromMap(
-      Map<String, dynamic> map) {
+  factory SecurityPolicyRuleMatcherExprOptions.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleMatcherExprOptions(
-      recaptchaOptions: map['recaptchaOptions'] == null
-          ? null
-          : SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions.fromMap(
-              (map['recaptchaOptions'] as Map).cast<String, dynamic>()),
+      recaptchaOptions: map['recaptchaOptions'] == null ? null : SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions.fromMap((map['recaptchaOptions'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

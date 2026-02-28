@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BareMetalAdminClusterFleet {
   /// (Output)
   /// The name of the managed Hub Membership resource associated to this cluster.
@@ -14,18 +15,15 @@ class BareMetalAdminClusterFleet {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final membershipValue = membership;
-    if (membershipValue != null) {
-      map['membership'] = membershipValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'membership': ?membership,
+    };
   }
 
   factory BareMetalAdminClusterFleet.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterFleet(
-      membership:
-          map['membership'] == null ? null : map['membership'] as String,
+      membership: map['membership'] == null ? null : map['membership'] as String,
     );
   }
 }
+

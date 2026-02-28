@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TablePointInTimeRecovery {
   /// Valid values: `ENABLED`, `DISABLED`. The default value is `DISABLED`.
   final String? status;
@@ -11,12 +12,9 @@ class TablePointInTimeRecovery {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final statusValue = status;
-    if (statusValue != null) {
-      map['status'] = statusValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'status': ?status,
+    };
   }
 
   factory TablePointInTimeRecovery.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class TablePointInTimeRecovery {
     );
   }
 }
+

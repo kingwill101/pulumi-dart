@@ -12,46 +12,32 @@ import 'job_definition_timeout.dart';
 class JobDefinitionArgs {
   /// Valid [container properties](http://docs.aws.amazon.com/batch/latest/APIReference/API_RegisterJobDefinition.html) provided as a single valid JSON document. This parameter is only valid if the `type` parameter is `container`.
   final pulumi.Input<String>? containerProperties;
-
   /// When updating a job definition a new revision is created. This parameter determines if the previous version is `deregistered` (`INACTIVE`) or left  `ACTIVE`. Defaults to `true`.
   final pulumi.Input<bool>? deregisterOnNewRevision;
-
   /// Valid [ECS properties](http://docs.aws.amazon.com/batch/latest/APIReference/API_RegisterJobDefinition.html) provided as a single valid JSON document. This parameter is only valid if the `type` parameter is `container`.
   final pulumi.Input<String>? ecsProperties;
-
   /// Valid eks properties. This parameter is only valid if the `type` parameter is `container`.
   final pulumi.Input<JobDefinitionEksProperties>? eksProperties;
-
   /// Name of the job definition.
   final pulumi.Input<String>? name;
-
   /// Valid [node properties](http://docs.aws.amazon.com/batch/latest/APIReference/API_RegisterJobDefinition.html) provided as a single valid JSON document. This parameter is required if the `type` parameter is `multinode`.
   final pulumi.Input<String>? nodeProperties;
-
   /// Parameter substitution placeholders to set in the job definition.
   final pulumi.Input<Map<String, String>>? parameters;
-
   /// Platform capabilities required by the job definition. If no value is specified, it defaults to `EC2`. To run the job on Fargate resources, specify `FARGATE`.
   final pulumi.Input<List<String>>? platformCapabilities;
-
   /// Whether to propagate the tags from the job definition to the corresponding Amazon ECS task. Default is `false`.
   final pulumi.Input<bool>? propagateTags;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Retry strategy to use for failed jobs that are submitted with this job definition. Maximum number of `retry_strategy` is `1`.  Defined below.
   final pulumi.Input<JobDefinitionRetryStrategy>? retryStrategy;
-
   /// Scheduling priority of the job definition. This only affects jobs in job queues with a fair share policy. Jobs with a higher scheduling priority are scheduled before jobs with a lower scheduling priority. Allowed values `0` through `9999`.
   final pulumi.Input<int>? schedulingPriority;
-
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Timeout for jobs so that if a job runs longer, AWS Batch terminates the job. Maximum number of `timeout` is `1`. Defined below.
   final pulumi.Input<JobDefinitionTimeout>? timeout;
-
   /// Type of job definition. Must be `container` or `multinode`.
   ///
   /// The following arguments are optional:
@@ -89,140 +75,61 @@ class JobDefinitionArgs {
     Map<String, String>? tags,
     JobDefinitionTimeout? timeout,
     required String type,
-  })  : containerProperties =
-            pulumi.Input.asOptionalInput<String>(containerProperties),
-        deregisterOnNewRevision =
-            pulumi.Input.asOptionalInput<bool>(deregisterOnNewRevision),
-        ecsProperties = pulumi.Input.asOptionalInput<String>(ecsProperties),
-        eksProperties =
-            pulumi.Input.asOptionalInput<JobDefinitionEksProperties>(
-                eksProperties),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        nodeProperties = pulumi.Input.asOptionalInput<String>(nodeProperties),
-        parameters =
-            pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-        platformCapabilities =
-            pulumi.Input.asOptionalInput<List<String>>(platformCapabilities),
-        propagateTags = pulumi.Input.asOptionalInput<bool>(propagateTags),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        retryStrategy =
-            pulumi.Input.asOptionalInput<JobDefinitionRetryStrategy>(
-                retryStrategy),
-        schedulingPriority =
-            pulumi.Input.asOptionalInput<int>(schedulingPriority),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-        timeout = pulumi.Input.asOptionalInput<JobDefinitionTimeout>(timeout),
-        type = pulumi.Input.asInput<String>(type);
+  }) :
+      containerProperties = pulumi.Input.asOptionalInput<String>(containerProperties),
+      deregisterOnNewRevision = pulumi.Input.asOptionalInput<bool>(deregisterOnNewRevision),
+      ecsProperties = pulumi.Input.asOptionalInput<String>(ecsProperties),
+      eksProperties = pulumi.Input.asOptionalInput<JobDefinitionEksProperties>(eksProperties),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      nodeProperties = pulumi.Input.asOptionalInput<String>(nodeProperties),
+      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
+      platformCapabilities = pulumi.Input.asOptionalInput<List<String>>(platformCapabilities),
+      propagateTags = pulumi.Input.asOptionalInput<bool>(propagateTags),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      retryStrategy = pulumi.Input.asOptionalInput<JobDefinitionRetryStrategy>(retryStrategy),
+      schedulingPriority = pulumi.Input.asOptionalInput<int>(schedulingPriority),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      timeout = pulumi.Input.asOptionalInput<JobDefinitionTimeout>(timeout),
+      type = pulumi.Input.asInput<String>(type);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final containerPropertiesValue = containerProperties;
-    if (containerPropertiesValue != null) {
-      map['containerProperties'] = containerPropertiesValue;
-    }
-    final deregisterOnNewRevisionValue = deregisterOnNewRevision;
-    if (deregisterOnNewRevisionValue != null) {
-      map['deregisterOnNewRevision'] = deregisterOnNewRevisionValue;
-    }
-    final ecsPropertiesValue = ecsProperties;
-    if (ecsPropertiesValue != null) {
-      map['ecsProperties'] = ecsPropertiesValue;
-    }
-    final eksPropertiesValue = eksProperties;
-    if (eksPropertiesValue != null) {
-      map['eksProperties'] = pulumi.Input.mapOptionalInputValue<
-          JobDefinitionEksProperties,
-          Map<String, dynamic>>(eksPropertiesValue, (value) => value.toMap());
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final nodePropertiesValue = nodeProperties;
-    if (nodePropertiesValue != null) {
-      map['nodeProperties'] = nodePropertiesValue;
-    }
-    final parametersValue = parameters;
-    if (parametersValue != null) {
-      map['parameters'] = parametersValue;
-    }
-    final platformCapabilitiesValue = platformCapabilities;
-    if (platformCapabilitiesValue != null) {
-      map['platformCapabilities'] = platformCapabilitiesValue;
-    }
-    final propagateTagsValue = propagateTags;
-    if (propagateTagsValue != null) {
-      map['propagateTags'] = propagateTagsValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final retryStrategyValue = retryStrategy;
-    if (retryStrategyValue != null) {
-      map['retryStrategy'] = pulumi.Input.mapOptionalInputValue<
-          JobDefinitionRetryStrategy,
-          Map<String, dynamic>>(retryStrategyValue, (value) => value.toMap());
-    }
-    final schedulingPriorityValue = schedulingPriority;
-    if (schedulingPriorityValue != null) {
-      map['schedulingPriority'] = schedulingPriorityValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    final timeoutValue = timeout;
-    if (timeoutValue != null) {
-      map['timeout'] = pulumi.Input.mapOptionalInputValue<JobDefinitionTimeout,
-          Map<String, dynamic>>(timeoutValue, (value) => value.toMap());
-    }
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'containerProperties': ?containerProperties,
+      'deregisterOnNewRevision': ?deregisterOnNewRevision,
+      'ecsProperties': ?ecsProperties,
+      'eksProperties': ?pulumi.Input.mapOptionalInputValue<JobDefinitionEksProperties, Map<String, dynamic>>(eksProperties, (value) => value.toMap()),
+      'name': ?name,
+      'nodeProperties': ?nodeProperties,
+      'parameters': ?parameters,
+      'platformCapabilities': ?platformCapabilities,
+      'propagateTags': ?propagateTags,
+      'region': ?region,
+      'retryStrategy': ?pulumi.Input.mapOptionalInputValue<JobDefinitionRetryStrategy, Map<String, dynamic>>(retryStrategy, (value) => value.toMap()),
+      'schedulingPriority': ?schedulingPriority,
+      'tags': ?tags,
+      'timeout': ?pulumi.Input.mapOptionalInputValue<JobDefinitionTimeout, Map<String, dynamic>>(timeout, (value) => value.toMap()),
+      'type': type,
+    };
   }
 
   factory JobDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return JobDefinitionArgs(
-      containerProperties: map['containerProperties'] == null
-          ? null
-          : map['containerProperties'] as String,
-      deregisterOnNewRevision: map['deregisterOnNewRevision'] == null
-          ? null
-          : map['deregisterOnNewRevision'] as bool,
-      ecsProperties:
-          map['ecsProperties'] == null ? null : map['ecsProperties'] as String,
-      eksProperties: map['eksProperties'] == null
-          ? null
-          : JobDefinitionEksProperties.fromMap(
-              (map['eksProperties'] as Map).cast<String, dynamic>()),
+      containerProperties: map['containerProperties'] == null ? null : map['containerProperties'] as String,
+      deregisterOnNewRevision: map['deregisterOnNewRevision'] == null ? null : map['deregisterOnNewRevision'] as bool,
+      ecsProperties: map['ecsProperties'] == null ? null : map['ecsProperties'] as String,
+      eksProperties: map['eksProperties'] == null ? null : JobDefinitionEksProperties.fromMap((map['eksProperties'] as Map).cast<String, dynamic>()),
       name: map['name'] == null ? null : map['name'] as String,
-      nodeProperties: map['nodeProperties'] == null
-          ? null
-          : map['nodeProperties'] as String,
-      parameters: map['parameters'] == null
-          ? null
-          : (map['parameters'] as Map).cast<String, String>(),
-      platformCapabilities: map['platformCapabilities'] == null
-          ? null
-          : (map['platformCapabilities'] as List).cast<String>(),
-      propagateTags:
-          map['propagateTags'] == null ? null : map['propagateTags'] as bool,
+      nodeProperties: map['nodeProperties'] == null ? null : map['nodeProperties'] as String,
+      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, String>(),
+      platformCapabilities: map['platformCapabilities'] == null ? null : (map['platformCapabilities'] as List).cast<String>(),
+      propagateTags: map['propagateTags'] == null ? null : map['propagateTags'] as bool,
       region: map['region'] == null ? null : map['region'] as String,
-      retryStrategy: map['retryStrategy'] == null
-          ? null
-          : JobDefinitionRetryStrategy.fromMap(
-              (map['retryStrategy'] as Map).cast<String, dynamic>()),
-      schedulingPriority: map['schedulingPriority'] == null
-          ? null
-          : map['schedulingPriority'] as int,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
-      timeout: map['timeout'] == null
-          ? null
-          : JobDefinitionTimeout.fromMap(
-              (map['timeout'] as Map).cast<String, dynamic>()),
+      retryStrategy: map['retryStrategy'] == null ? null : JobDefinitionRetryStrategy.fromMap((map['retryStrategy'] as Map).cast<String, dynamic>()),
+      schedulingPriority: map['schedulingPriority'] == null ? null : map['schedulingPriority'] as int,
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      timeout: map['timeout'] == null ? null : JobDefinitionTimeout.fromMap((map['timeout'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

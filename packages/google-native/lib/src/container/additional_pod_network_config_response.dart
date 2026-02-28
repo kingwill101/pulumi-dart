@@ -6,10 +6,8 @@ import 'max_pods_constraint_response.dart';
 class AdditionalPodNetworkConfigResponse {
   /// The maximum number of pods per node which use this pod network
   final MaxPodsConstraintResponse maxPodsPerNode;
-
   /// The name of the secondary range on the subnet which provides IP address for this pod range
   final String secondaryPodRange;
-
   /// Name of the subnetwork where the additional pod network belongs
   final String subnetwork;
 
@@ -24,19 +22,19 @@ class AdditionalPodNetworkConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maxPodsPerNode'] = maxPodsPerNode.toMap();
-    map['secondaryPodRange'] = secondaryPodRange;
-    map['subnetwork'] = subnetwork;
-    return map;
+    return <String, dynamic>{
+      'maxPodsPerNode': maxPodsPerNode.toMap(),
+      'secondaryPodRange': secondaryPodRange,
+      'subnetwork': subnetwork,
+    };
   }
 
   factory AdditionalPodNetworkConfigResponse.fromMap(Map<String, dynamic> map) {
     return AdditionalPodNetworkConfigResponse(
-      maxPodsPerNode: MaxPodsConstraintResponse.fromMap(
-          (map['maxPodsPerNode'] as Map).cast<String, dynamic>()),
+      maxPodsPerNode: MaxPodsConstraintResponse.fromMap((map['maxPodsPerNode'] as Map).cast<String, dynamic>()),
       secondaryPodRange: map['secondaryPodRange'] as String,
       subnetwork: map['subnetwork'] as String,
     );
   }
 }
+

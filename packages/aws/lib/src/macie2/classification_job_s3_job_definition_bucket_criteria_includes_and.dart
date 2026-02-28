@@ -5,12 +5,9 @@ import 'classification_job_s3_job_definition_bucket_criteria_includes_and_tag_cr
 
 class ClassificationJobS3JobDefinitionBucketCriteriaIncludesAnd {
   /// A property-based condition that defines a property, operator, and one or more values for including or excluding an S3 buckets from the job. (documented below)
-  final ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndSimpleCriterion?
-      simpleCriterion;
-
+  final ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndSimpleCriterion? simpleCriterion;
   /// A tag-based condition that defines the operator and tag keys or tag key and value pairs for including or excluding an S3 buckets from the job. (documented below)
-  final ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndTagCriterion?
-      tagCriterion;
+  final ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndTagCriterion? tagCriterion;
 
   /// Creates a new [ClassificationJobS3JobDefinitionBucketCriteriaIncludesAnd].
   /// [simpleCriterion] A property-based condition that defines a property, operator, and one or more values for including or excluding an S3 buckets from the job. (documented below)
@@ -21,29 +18,17 @@ class ClassificationJobS3JobDefinitionBucketCriteriaIncludesAnd {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final simpleCriterionValue = simpleCriterion;
-    if (simpleCriterionValue != null) {
-      map['simpleCriterion'] = simpleCriterionValue.toMap();
-    }
-    final tagCriterionValue = tagCriterion;
-    if (tagCriterionValue != null) {
-      map['tagCriterion'] = tagCriterionValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'simpleCriterion': ?simpleCriterion == null ? null : simpleCriterion!.toMap(),
+      'tagCriterion': ?tagCriterion == null ? null : tagCriterion!.toMap(),
+    };
   }
 
-  factory ClassificationJobS3JobDefinitionBucketCriteriaIncludesAnd.fromMap(
-      Map<String, dynamic> map) {
+  factory ClassificationJobS3JobDefinitionBucketCriteriaIncludesAnd.fromMap(Map<String, dynamic> map) {
     return ClassificationJobS3JobDefinitionBucketCriteriaIncludesAnd(
-      simpleCriterion: map['simpleCriterion'] == null
-          ? null
-          : ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndSimpleCriterion
-              .fromMap((map['simpleCriterion'] as Map).cast<String, dynamic>()),
-      tagCriterion: map['tagCriterion'] == null
-          ? null
-          : ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndTagCriterion
-              .fromMap((map['tagCriterion'] as Map).cast<String, dynamic>()),
+      simpleCriterion: map['simpleCriterion'] == null ? null : ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndSimpleCriterion.fromMap((map['simpleCriterion'] as Map).cast<String, dynamic>()),
+      tagCriterion: map['tagCriterion'] == null ? null : ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndTagCriterion.fromMap((map['tagCriterion'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

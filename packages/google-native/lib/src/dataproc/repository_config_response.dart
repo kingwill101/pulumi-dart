@@ -14,15 +14,15 @@ class RepositoryConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['pypiRepositoryConfig'] = pypiRepositoryConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'pypiRepositoryConfig': pypiRepositoryConfig.toMap(),
+    };
   }
 
   factory RepositoryConfigResponse.fromMap(Map<String, dynamic> map) {
     return RepositoryConfigResponse(
-      pypiRepositoryConfig: PyPiRepositoryConfigResponse.fromMap(
-          (map['pypiRepositoryConfig'] as Map).cast<String, dynamic>()),
+      pypiRepositoryConfig: PyPiRepositoryConfigResponse.fromMap((map['pypiRepositoryConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -14,18 +14,15 @@ class GetInstanceManagedServerCa {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['caCerts'] = pulumi.Input.encodeList<GetInstanceManagedServerCaCaCert,
-        Map<String, dynamic>>(caCerts, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'caCerts': pulumi.Input.encodeList<GetInstanceManagedServerCaCaCert, Map<String, dynamic>>(caCerts, (value) => value.toMap()),
+    };
   }
 
   factory GetInstanceManagedServerCa.fromMap(Map<String, dynamic> map) {
     return GetInstanceManagedServerCa(
-      caCerts: pulumi.Input.decodeList<GetInstanceManagedServerCaCaCert>(
-          map['caCerts'],
-          (value) => GetInstanceManagedServerCaCaCert.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      caCerts: pulumi.Input.decodeList<GetInstanceManagedServerCaCaCert>(map['caCerts'], (value) => GetInstanceManagedServerCaCaCert.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

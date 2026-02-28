@@ -15,21 +15,15 @@ class AgentAgentActionGroupFunctionSchema {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final memberFunctionsValue = memberFunctions;
-    if (memberFunctionsValue != null) {
-      map['memberFunctions'] = memberFunctionsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'memberFunctions': ?memberFunctions == null ? null : memberFunctions!.toMap(),
+    };
   }
 
-  factory AgentAgentActionGroupFunctionSchema.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentAgentActionGroupFunctionSchema.fromMap(Map<String, dynamic> map) {
     return AgentAgentActionGroupFunctionSchema(
-      memberFunctions: map['memberFunctions'] == null
-          ? null
-          : AgentAgentActionGroupFunctionSchemaMemberFunctions.fromMap(
-              (map['memberFunctions'] as Map).cast<String, dynamic>()),
+      memberFunctions: map['memberFunctions'] == null ? null : AgentAgentActionGroupFunctionSchemaMemberFunctions.fromMap((map['memberFunctions'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

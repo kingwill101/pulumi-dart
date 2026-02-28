@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Dataproc job status.
 class JobStatusResponseDataprocV1beta2 {
   /// Optional Job state details, such as an error description if the state is ERROR.
   final String details;
-
   /// A state message specifying the overall job state.
   final String state;
-
   /// The time when this state was entered.
   final String stateStartTime;
-
   /// Additional state information, which includes status reported by the agent.
   final String substate;
 
@@ -27,12 +25,12 @@ class JobStatusResponseDataprocV1beta2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['details'] = details;
-    map['state'] = state;
-    map['stateStartTime'] = stateStartTime;
-    map['substate'] = substate;
-    return map;
+    return <String, dynamic>{
+      'details': details,
+      'state': state,
+      'stateStartTime': stateStartTime,
+      'substate': substate,
+    };
   }
 
   factory JobStatusResponseDataprocV1beta2.fromMap(Map<String, dynamic> map) {
@@ -44,3 +42,4 @@ class JobStatusResponseDataprocV1beta2 {
     );
   }
 }
+

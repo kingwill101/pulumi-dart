@@ -6,10 +6,8 @@ import 'access_config_response.dart';
 class NetworkEndpointResponseTpuV2 {
   /// The access config for the TPU worker.
   final AccessConfigResponse accessConfig;
-
   /// The internal IP address of this network endpoint.
   final String ipAddress;
-
   /// The port of this network endpoint.
   final int port;
 
@@ -24,19 +22,19 @@ class NetworkEndpointResponseTpuV2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accessConfig'] = accessConfig.toMap();
-    map['ipAddress'] = ipAddress;
-    map['port'] = port;
-    return map;
+    return <String, dynamic>{
+      'accessConfig': accessConfig.toMap(),
+      'ipAddress': ipAddress,
+      'port': port,
+    };
   }
 
   factory NetworkEndpointResponseTpuV2.fromMap(Map<String, dynamic> map) {
     return NetworkEndpointResponseTpuV2(
-      accessConfig: AccessConfigResponse.fromMap(
-          (map['accessConfig'] as Map).cast<String, dynamic>()),
+      accessConfig: AccessConfigResponse.fromMap((map['accessConfig'] as Map).cast<String, dynamic>()),
       ipAddress: map['ipAddress'] as String,
       port: map['port'] as int,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateFile {
   final String certificateChain;
   final String privateKey;
@@ -13,17 +14,17 @@ class GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateFile {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['certificateChain'] = certificateChain;
-    map['privateKey'] = privateKey;
-    return map;
+    return <String, dynamic>{
+      'certificateChain': certificateChain,
+      'privateKey': privateKey,
+    };
   }
 
-  factory GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateFile.fromMap(
-      Map<String, dynamic> map) {
+  factory GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateFile.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateFile(
       certificateChain: map['certificateChain'] as String,
       privateKey: map['privateKey'] as String,
     );
   }
 }
+

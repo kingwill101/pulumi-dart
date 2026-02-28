@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Metadata for a BigQuery connector used by the job.
 class BigQueryIODetailsResponse {
   /// Dataset accessed in the connection.
   final String dataset;
-
   /// Project accessed in the connection.
   final String project;
-
   /// Query used to access data in the connection.
   final String query;
-
   /// Table accessed in the connection.
   final String table;
 
@@ -27,12 +25,12 @@ class BigQueryIODetailsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dataset'] = dataset;
-    map['project'] = project;
-    map['query'] = query;
-    map['table'] = table;
-    return map;
+    return <String, dynamic>{
+      'dataset': dataset,
+      'project': project,
+      'query': query,
+      'table': table,
+    };
   }
 
   factory BigQueryIODetailsResponse.fromMap(Map<String, dynamic> map) {
@@ -44,3 +42,4 @@ class BigQueryIODetailsResponse {
     );
   }
 }
+

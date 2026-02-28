@@ -16,3 +16,4 @@ enum VirtualMachineConfigNicType {
     throw ArgumentError('Unknown VirtualMachineConfigNicType value: $value');
   }
 }
+

@@ -25,39 +25,31 @@ class GetLakeZoneIamPolicyArgs {
     int? optionsRequestedPolicyVersion,
     String? project,
     required String zone,
-  })  : lakeId = pulumi.Input.asInput<String>(lakeId),
-        location = pulumi.Input.asInput<String>(location),
-        optionsRequestedPolicyVersion =
-            pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        zone = pulumi.Input.asInput<String>(zone);
+  }) :
+      lakeId = pulumi.Input.asInput<String>(lakeId),
+      location = pulumi.Input.asInput<String>(location),
+      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['lakeId'] = lakeId;
-    map['location'] = location;
-    final optionsRequestedPolicyVersionValue = optionsRequestedPolicyVersion;
-    if (optionsRequestedPolicyVersionValue != null) {
-      map['optionsRequestedPolicyVersion'] = optionsRequestedPolicyVersionValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'lakeId': lakeId,
+      'location': location,
+      'optionsRequestedPolicyVersion': ?optionsRequestedPolicyVersion,
+      'project': ?project,
+      'zone': zone,
+    };
   }
 
   factory GetLakeZoneIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetLakeZoneIamPolicyArgs(
       lakeId: map['lakeId'] as String,
       location: map['location'] as String,
-      optionsRequestedPolicyVersion:
-          map['optionsRequestedPolicyVersion'] == null
-              ? null
-              : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       zone: map['zone'] as String,
     );
   }
 }
+

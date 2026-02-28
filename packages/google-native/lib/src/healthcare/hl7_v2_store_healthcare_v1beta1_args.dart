@@ -11,28 +11,20 @@ import 'parser_config_healthcare_v1beta1.dart';
 /// {@macro pulumi_healthcare_v1beta1_hl7_v2_store_healthcare_v1beta1_args_doc}
 class Hl7V2StoreHealthcareV1beta1Args {
   final pulumi.Input<String> datasetId;
-
   /// The ID of the HL7v2 store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
   final pulumi.Input<String>? hl7V2StoreId;
-
   /// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
-
   /// Resource name of the HL7v2 store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
   final pulumi.Input<String>? name;
-
   /// The notification destination all messages (both Ingest & Create) are published on. Only the message name is sent as part of the notification. If this is unset, no notifications are sent. Supplied by the client.
   final pulumi.Input<NotificationConfigHealthcareV1beta1>? notificationConfig;
-
   /// A list of notification configs. Each configuration uses a filter to determine whether to publish a message (both Ingest & Create) on the corresponding notification destination. Only the message name is sent as part of the notification. Supplied by the client.
-  final pulumi.Input<List<Hl7V2NotificationConfigHealthcareV1beta1>>?
-      notificationConfigs;
-
+  final pulumi.Input<List<Hl7V2NotificationConfigHealthcareV1beta1>>? notificationConfigs;
   /// The configuration for the parser. It determines how the server parses the messages.
   final pulumi.Input<ParserConfigHealthcareV1beta1>? parserConfig;
   final pulumi.Input<String>? project;
-
   /// Determines whether to reject duplicate messages. A duplicate message is a message with the same raw bytes as a message that has already been ingested/created in this HL7v2 store. The default value is false, meaning that the store accepts the duplicate messages and it also returns the same ACK message in the IngestMessageResponse as has been returned previously. Note that only one resource is created in the store. When this field is set to true, CreateMessage/IngestMessage requests with a duplicate message will be rejected by the store, and IngestMessageErrorDetail returns a NACK message upon rejection.
   final pulumi.Input<bool>? rejectDuplicateMessage;
 
@@ -58,104 +50,46 @@ class Hl7V2StoreHealthcareV1beta1Args {
     ParserConfigHealthcareV1beta1? parserConfig,
     String? project,
     bool? rejectDuplicateMessage,
-  })  : datasetId = pulumi.Input.asInput<String>(datasetId),
-        hl7V2StoreId = pulumi.Input.asOptionalInput<String>(hl7V2StoreId),
-        labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-        location = pulumi.Input.asOptionalInput<String>(location),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        notificationConfig =
-            pulumi.Input.asOptionalInput<NotificationConfigHealthcareV1beta1>(
-                notificationConfig),
-        notificationConfigs = pulumi.Input.asOptionalInput<
-                List<Hl7V2NotificationConfigHealthcareV1beta1>>(
-            notificationConfigs),
-        parserConfig =
-            pulumi.Input.asOptionalInput<ParserConfigHealthcareV1beta1>(
-                parserConfig),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        rejectDuplicateMessage =
-            pulumi.Input.asOptionalInput<bool>(rejectDuplicateMessage);
+  }) :
+      datasetId = pulumi.Input.asInput<String>(datasetId),
+      hl7V2StoreId = pulumi.Input.asOptionalInput<String>(hl7V2StoreId),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      notificationConfig = pulumi.Input.asOptionalInput<NotificationConfigHealthcareV1beta1>(notificationConfig),
+      notificationConfigs = pulumi.Input.asOptionalInput<List<Hl7V2NotificationConfigHealthcareV1beta1>>(notificationConfigs),
+      parserConfig = pulumi.Input.asOptionalInput<ParserConfigHealthcareV1beta1>(parserConfig),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      rejectDuplicateMessage = pulumi.Input.asOptionalInput<bool>(rejectDuplicateMessage);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['datasetId'] = datasetId;
-    final hl7V2StoreIdValue = hl7V2StoreId;
-    if (hl7V2StoreIdValue != null) {
-      map['hl7V2StoreId'] = hl7V2StoreIdValue;
-    }
-    final labelsValue = labels;
-    if (labelsValue != null) {
-      map['labels'] = labelsValue;
-    }
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final notificationConfigValue = notificationConfig;
-    if (notificationConfigValue != null) {
-      map['notificationConfig'] = pulumi.Input.mapOptionalInputValue<
-              NotificationConfigHealthcareV1beta1, Map<String, dynamic>>(
-          notificationConfigValue, (value) => value.toMap());
-    }
-    final notificationConfigsValue = notificationConfigs;
-    if (notificationConfigsValue != null) {
-      map['notificationConfigs'] = pulumi.Input.mapOptionalInputValue<
-              List<Hl7V2NotificationConfigHealthcareV1beta1>,
-              List<Map<String, dynamic>>>(
-          notificationConfigsValue,
-          (value) => pulumi.Input.encodeList<
-              Hl7V2NotificationConfigHealthcareV1beta1,
-              Map<String, dynamic>>(value, (value) => value.toMap()));
-    }
-    final parserConfigValue = parserConfig;
-    if (parserConfigValue != null) {
-      map['parserConfig'] = pulumi.Input.mapOptionalInputValue<
-          ParserConfigHealthcareV1beta1,
-          Map<String, dynamic>>(parserConfigValue, (value) => value.toMap());
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final rejectDuplicateMessageValue = rejectDuplicateMessage;
-    if (rejectDuplicateMessageValue != null) {
-      map['rejectDuplicateMessage'] = rejectDuplicateMessageValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'datasetId': datasetId,
+      'hl7V2StoreId': ?hl7V2StoreId,
+      'labels': ?labels,
+      'location': ?location,
+      'name': ?name,
+      'notificationConfig': ?pulumi.Input.mapOptionalInputValue<NotificationConfigHealthcareV1beta1, Map<String, dynamic>>(notificationConfig, (value) => value.toMap()),
+      'notificationConfigs': ?pulumi.Input.mapOptionalInputValue<List<Hl7V2NotificationConfigHealthcareV1beta1>, List<Map<String, dynamic>>>(notificationConfigs, (value) => pulumi.Input.encodeList<Hl7V2NotificationConfigHealthcareV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parserConfig': ?pulumi.Input.mapOptionalInputValue<ParserConfigHealthcareV1beta1, Map<String, dynamic>>(parserConfig, (value) => value.toMap()),
+      'project': ?project,
+      'rejectDuplicateMessage': ?rejectDuplicateMessage,
+    };
   }
 
   factory Hl7V2StoreHealthcareV1beta1Args.fromMap(Map<String, dynamic> map) {
     return Hl7V2StoreHealthcareV1beta1Args(
       datasetId: map['datasetId'] as String,
-      hl7V2StoreId:
-          map['hl7V2StoreId'] == null ? null : map['hl7V2StoreId'] as String,
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      hl7V2StoreId: map['hl7V2StoreId'] == null ? null : map['hl7V2StoreId'] as String,
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       location: map['location'] == null ? null : map['location'] as String,
       name: map['name'] == null ? null : map['name'] as String,
-      notificationConfig: map['notificationConfig'] == null
-          ? null
-          : NotificationConfigHealthcareV1beta1.fromMap(
-              (map['notificationConfig'] as Map).cast<String, dynamic>()),
-      notificationConfigs: map['notificationConfigs'] == null
-          ? null
-          : pulumi.Input.decodeList<Hl7V2NotificationConfigHealthcareV1beta1>(
-              map['notificationConfigs'],
-              (value) => Hl7V2NotificationConfigHealthcareV1beta1.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      parserConfig: map['parserConfig'] == null
-          ? null
-          : ParserConfigHealthcareV1beta1.fromMap(
-              (map['parserConfig'] as Map).cast<String, dynamic>()),
+      notificationConfig: map['notificationConfig'] == null ? null : NotificationConfigHealthcareV1beta1.fromMap((map['notificationConfig'] as Map).cast<String, dynamic>()),
+      notificationConfigs: map['notificationConfigs'] == null ? null : pulumi.Input.decodeList<Hl7V2NotificationConfigHealthcareV1beta1>(map['notificationConfigs'], (value) => Hl7V2NotificationConfigHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>())),
+      parserConfig: map['parserConfig'] == null ? null : ParserConfigHealthcareV1beta1.fromMap((map['parserConfig'] as Map).cast<String, dynamic>()),
       project: map['project'] == null ? null : map['project'] as String,
-      rejectDuplicateMessage: map['rejectDuplicateMessage'] == null
-          ? null
-          : map['rejectDuplicateMessage'] as bool,
+      rejectDuplicateMessage: map['rejectDuplicateMessage'] == null ? null : map['rejectDuplicateMessage'] as bool,
     );
   }
 }
+

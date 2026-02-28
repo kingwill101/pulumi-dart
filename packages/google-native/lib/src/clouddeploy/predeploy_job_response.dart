@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A predeploy Job.
 class PredeployJobResponse {
   /// The custom actions that the predeploy Job executes.
@@ -12,9 +13,9 @@ class PredeployJobResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['actions'] = actions;
-    return map;
+    return <String, dynamic>{
+      'actions': actions,
+    };
   }
 
   factory PredeployJobResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class PredeployJobResponse {
     );
   }
 }
+

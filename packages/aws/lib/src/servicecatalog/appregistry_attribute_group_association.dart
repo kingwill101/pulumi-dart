@@ -204,10 +204,8 @@ import 'appregistry_attribute_group_association_args.dart';
 class AppregistryAttributeGroupAssociation extends pulumi.CustomResource {
   /// ID of the application.
   late final pulumi.Output<String> applicationId;
-
   /// ID of the attribute group to associate with the application.
   late final pulumi.Output<String> attributeGroupId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

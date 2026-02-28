@@ -22,21 +22,19 @@ class GetEntryDatacatalogV1beta1Args {
     required String entryId,
     required String location,
     String? project,
-  })  : entryGroupId = pulumi.Input.asInput<String>(entryGroupId),
-        entryId = pulumi.Input.asInput<String>(entryId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      entryGroupId = pulumi.Input.asInput<String>(entryGroupId),
+      entryId = pulumi.Input.asInput<String>(entryId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['entryGroupId'] = entryGroupId;
-    map['entryId'] = entryId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'entryGroupId': entryGroupId,
+      'entryId': entryId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetEntryDatacatalogV1beta1Args.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetEntryDatacatalogV1beta1Args {
     );
   }
 }
+

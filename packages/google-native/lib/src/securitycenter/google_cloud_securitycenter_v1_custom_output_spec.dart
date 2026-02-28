@@ -15,25 +15,15 @@ class GoogleCloudSecuritycenterV1CustomOutputSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final propertiesValue = properties;
-    if (propertiesValue != null) {
-      map['properties'] = pulumi.Input.encodeList<
-          GoogleCloudSecuritycenterV1Property,
-          Map<String, dynamic>>(propertiesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'properties': ?properties == null ? null : pulumi.Input.encodeList<GoogleCloudSecuritycenterV1Property, Map<String, dynamic>>(properties!, (value) => value.toMap()),
+    };
   }
 
-  factory GoogleCloudSecuritycenterV1CustomOutputSpec.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudSecuritycenterV1CustomOutputSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudSecuritycenterV1CustomOutputSpec(
-      properties: map['properties'] == null
-          ? null
-          : pulumi.Input.decodeList<GoogleCloudSecuritycenterV1Property>(
-              map['properties'],
-              (value) => GoogleCloudSecuritycenterV1Property.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      properties: map['properties'] == null ? null : pulumi.Input.decodeList<GoogleCloudSecuritycenterV1Property>(map['properties'], (value) => GoogleCloudSecuritycenterV1Property.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

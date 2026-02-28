@@ -12,7 +12,7 @@ enum NetworkRoutingConfigRoutingMode {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown NetworkRoutingConfigRoutingMode value: $value');
+    throw ArgumentError('Unknown NetworkRoutingConfigRoutingMode value: $value');
   }
 }
+

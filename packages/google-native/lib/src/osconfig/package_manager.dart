@@ -19,3 +19,4 @@ enum PackageManager {
     throw ArgumentError('Unknown PackageManager value: $value');
   }
 }
+

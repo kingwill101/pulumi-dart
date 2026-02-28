@@ -8,10 +8,8 @@ import 'windows_based_sli_response.dart';
 class ServiceLevelIndicatorResponse {
   /// Basic SLI on a well-known service type.
   final BasicSliResponse basicSli;
-
   /// Request-based SLIs
   final RequestBasedSliResponse requestBased;
-
   /// Windows-based SLIs
   final WindowsBasedSliResponse windowsBased;
 
@@ -26,21 +24,19 @@ class ServiceLevelIndicatorResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['basicSli'] = basicSli.toMap();
-    map['requestBased'] = requestBased.toMap();
-    map['windowsBased'] = windowsBased.toMap();
-    return map;
+    return <String, dynamic>{
+      'basicSli': basicSli.toMap(),
+      'requestBased': requestBased.toMap(),
+      'windowsBased': windowsBased.toMap(),
+    };
   }
 
   factory ServiceLevelIndicatorResponse.fromMap(Map<String, dynamic> map) {
     return ServiceLevelIndicatorResponse(
-      basicSli: BasicSliResponse.fromMap(
-          (map['basicSli'] as Map).cast<String, dynamic>()),
-      requestBased: RequestBasedSliResponse.fromMap(
-          (map['requestBased'] as Map).cast<String, dynamic>()),
-      windowsBased: WindowsBasedSliResponse.fromMap(
-          (map['windowsBased'] as Map).cast<String, dynamic>()),
+      basicSli: BasicSliResponse.fromMap((map['basicSli'] as Map).cast<String, dynamic>()),
+      requestBased: RequestBasedSliResponse.fromMap((map['requestBased'] as Map).cast<String, dynamic>()),
+      windowsBased: WindowsBasedSliResponse.fromMap((map['windowsBased'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

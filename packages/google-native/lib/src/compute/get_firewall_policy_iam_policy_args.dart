@@ -16,27 +16,22 @@ class GetFirewallPolicyIamPolicyArgs {
   GetFirewallPolicyIamPolicyArgs({
     int? optionsRequestedPolicyVersion,
     required String resource,
-  })  : optionsRequestedPolicyVersion =
-            pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-        resource = pulumi.Input.asInput<String>(resource);
+  }) :
+      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
+      resource = pulumi.Input.asInput<String>(resource);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final optionsRequestedPolicyVersionValue = optionsRequestedPolicyVersion;
-    if (optionsRequestedPolicyVersionValue != null) {
-      map['optionsRequestedPolicyVersion'] = optionsRequestedPolicyVersionValue;
-    }
-    map['resource'] = resource;
-    return map;
+    return <String, dynamic>{
+      'optionsRequestedPolicyVersion': ?optionsRequestedPolicyVersion,
+      'resource': resource,
+    };
   }
 
   factory GetFirewallPolicyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyIamPolicyArgs(
-      optionsRequestedPolicyVersion:
-          map['optionsRequestedPolicyVersion'] == null
-              ? null
-              : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
       resource: map['resource'] as String,
     );
   }
 }
+

@@ -22,10 +22,8 @@ import 'egress_policy_args.dart';
 class EgressPolicy extends pulumi.CustomResource {
   /// The name of the Access Policy this resource belongs to.
   late final pulumi.Output<String> accessPolicyId;
-
   /// The name of the Service Perimeter to add this resource to.
   late final pulumi.Output<String> egressPolicyName;
-
   /// A GCP resource that is inside of the service perimeter.
   late final pulumi.Output<String> resource;
 

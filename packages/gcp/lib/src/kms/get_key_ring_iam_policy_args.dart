@@ -17,12 +17,13 @@ class GetKeyRingIamPolicyArgs {
   /// [keyRingId] The key ring ID, in the form
   GetKeyRingIamPolicyArgs({
     required String keyRingId,
-  }) : keyRingId = pulumi.Input.asInput<String>(keyRingId);
+  }) :
+      keyRingId = pulumi.Input.asInput<String>(keyRingId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['keyRingId'] = keyRingId;
-    return map;
+    return <String, dynamic>{
+      'keyRingId': keyRingId,
+    };
   }
 
   factory GetKeyRingIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -31,3 +32,4 @@ class GetKeyRingIamPolicyArgs {
     );
   }
 }
+

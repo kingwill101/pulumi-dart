@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetVpcIpamOperatingRegion {
   final String regionName;
 
@@ -10,9 +11,9 @@ class GetVpcIpamOperatingRegion {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['regionName'] = regionName;
-    return map;
+    return <String, dynamic>{
+      'regionName': regionName,
+    };
   }
 
   factory GetVpcIpamOperatingRegion.fromMap(Map<String, dynamic> map) {
@@ -21,3 +22,4 @@ class GetVpcIpamOperatingRegion {
     );
   }
 }
+

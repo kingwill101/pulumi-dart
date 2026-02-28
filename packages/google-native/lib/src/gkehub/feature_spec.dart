@@ -7,7 +7,6 @@ import 'membership_spec.dart';
 class FeatureSpec {
   /// Specifies default membership spec. Users can override the default in the member_configs for each member.
   final MembershipSpec? defaultConfig;
-
   /// Immutable. Specifies CA configuration.
   final FeatureSpecProvisionGoogleCa? provisionGoogleCa;
 
@@ -20,28 +19,17 @@ class FeatureSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final defaultConfigValue = defaultConfig;
-    if (defaultConfigValue != null) {
-      map['defaultConfig'] = defaultConfigValue.toMap();
-    }
-    final provisionGoogleCaValue = provisionGoogleCa;
-    if (provisionGoogleCaValue != null) {
-      map['provisionGoogleCa'] = provisionGoogleCaValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'defaultConfig': ?defaultConfig == null ? null : defaultConfig!.toMap(),
+      'provisionGoogleCa': ?provisionGoogleCa == null ? null : provisionGoogleCa!.value,
+    };
   }
 
   factory FeatureSpec.fromMap(Map<String, dynamic> map) {
     return FeatureSpec(
-      defaultConfig: map['defaultConfig'] == null
-          ? null
-          : MembershipSpec.fromMap(
-              (map['defaultConfig'] as Map).cast<String, dynamic>()),
-      provisionGoogleCa: map['provisionGoogleCa'] == null
-          ? null
-          : FeatureSpecProvisionGoogleCa.fromValue(
-              map['provisionGoogleCa'] as String),
+      defaultConfig: map['defaultConfig'] == null ? null : MembershipSpec.fromMap((map['defaultConfig'] as Map).cast<String, dynamic>()),
+      provisionGoogleCa: map['provisionGoogleCa'] == null ? null : FeatureSpecProvisionGoogleCa.fromValue(map['provisionGoogleCa'] as String),
     );
   }
 }
+

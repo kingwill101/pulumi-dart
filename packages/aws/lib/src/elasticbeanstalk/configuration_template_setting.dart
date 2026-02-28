@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConfigurationTemplateSetting {
   /// A unique name for this Template.
   final String name;
@@ -20,15 +21,12 @@ class ConfigurationTemplateSetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['namespace'] = namespace;
-    final resourceValue = resource;
-    if (resourceValue != null) {
-      map['resource'] = resourceValue;
-    }
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'namespace': namespace,
+      'resource': ?resource,
+      'value': value,
+    };
   }
 
   factory ConfigurationTemplateSetting.fromMap(Map<String, dynamic> map) {
@@ -40,3 +38,4 @@ class ConfigurationTemplateSetting {
     );
   }
 }
+

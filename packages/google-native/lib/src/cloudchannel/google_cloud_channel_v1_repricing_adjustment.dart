@@ -14,21 +14,15 @@ class GoogleCloudChannelV1RepricingAdjustment {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final percentageAdjustmentValue = percentageAdjustment;
-    if (percentageAdjustmentValue != null) {
-      map['percentageAdjustment'] = percentageAdjustmentValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'percentageAdjustment': ?percentageAdjustment == null ? null : percentageAdjustment!.toMap(),
+    };
   }
 
-  factory GoogleCloudChannelV1RepricingAdjustment.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudChannelV1RepricingAdjustment.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1RepricingAdjustment(
-      percentageAdjustment: map['percentageAdjustment'] == null
-          ? null
-          : GoogleCloudChannelV1PercentageAdjustment.fromMap(
-              (map['percentageAdjustment'] as Map).cast<String, dynamic>()),
+      percentageAdjustment: map['percentageAdjustment'] == null ? null : GoogleCloudChannelV1PercentageAdjustment.fromMap((map['percentageAdjustment'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

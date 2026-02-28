@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getNsxCredentials.
 class GetNsxCredentialsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String parent;
-
   /// The password of the NSX Credential.
   final String password;
-
   /// The username of the NSX Credential.
   final String username;
 
@@ -25,12 +24,12 @@ class GetNsxCredentialsResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['parent'] = parent;
-    map['password'] = password;
-    map['username'] = username;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'parent': parent,
+      'password': password,
+      'username': username,
+    };
   }
 
   factory GetNsxCredentialsResult.fromMap(Map<String, dynamic> map) {
@@ -42,3 +41,4 @@ class GetNsxCredentialsResult {
     );
   }
 }
+

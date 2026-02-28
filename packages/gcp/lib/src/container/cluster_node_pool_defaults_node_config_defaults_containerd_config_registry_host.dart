@@ -5,10 +5,7 @@ import 'cluster_node_pool_defaults_node_config_defaults_containerd_config_regist
 
 class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHost {
   /// Configures a list of host-specific configurations for the server.
-  final List<
-          ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost>?
-      hosts;
-
+  final List<ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost>? hosts;
   /// Defines the host name of the registry server.
   final String server;
 
@@ -21,29 +18,17 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHost {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final hostsValue = hosts;
-    if (hostsValue != null) {
-      map['hosts'] = pulumi.Input.encodeList<
-          ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost,
-          Map<String, dynamic>>(hostsValue, (value) => value.toMap());
-    }
-    map['server'] = server;
-    return map;
+    return <String, dynamic>{
+      'hosts': ?hosts == null ? null : pulumi.Input.encodeList<ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost, Map<String, dynamic>>(hosts!, (value) => value.toMap()),
+      'server': server,
+    };
   }
 
-  factory ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHost.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHost.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHost(
-      hosts: map['hosts'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost>(
-              map['hosts'],
-              (value) =>
-                  ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      hosts: map['hosts'] == null ? null : pulumi.Input.decodeList<ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost>(map['hosts'], (value) => ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost.fromMap((value as Map).cast<String, dynamic>())),
       server: map['server'] as String,
     );
   }
 }
+

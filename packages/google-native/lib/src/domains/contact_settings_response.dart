@@ -6,13 +6,10 @@ import 'contact_response.dart';
 class ContactSettingsResponse {
   /// The administrative contact for the `Registration`.
   final ContactResponse adminContact;
-
   /// Privacy setting for the contacts associated with the `Registration`.
   final String privacy;
-
   /// The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant receives an email confirmation that they must complete within 15 days to avoid domain suspension.*
   final ContactResponse registrantContact;
-
   /// The technical contact for the `Registration`.
   final ContactResponse technicalContact;
 
@@ -29,23 +26,21 @@ class ContactSettingsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['adminContact'] = adminContact.toMap();
-    map['privacy'] = privacy;
-    map['registrantContact'] = registrantContact.toMap();
-    map['technicalContact'] = technicalContact.toMap();
-    return map;
+    return <String, dynamic>{
+      'adminContact': adminContact.toMap(),
+      'privacy': privacy,
+      'registrantContact': registrantContact.toMap(),
+      'technicalContact': technicalContact.toMap(),
+    };
   }
 
   factory ContactSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ContactSettingsResponse(
-      adminContact: ContactResponse.fromMap(
-          (map['adminContact'] as Map).cast<String, dynamic>()),
+      adminContact: ContactResponse.fromMap((map['adminContact'] as Map).cast<String, dynamic>()),
       privacy: map['privacy'] as String,
-      registrantContact: ContactResponse.fromMap(
-          (map['registrantContact'] as Map).cast<String, dynamic>()),
-      technicalContact: ContactResponse.fromMap(
-          (map['technicalContact'] as Map).cast<String, dynamic>()),
+      registrantContact: ContactResponse.fromMap((map['registrantContact'] as Map).cast<String, dynamic>()),
+      technicalContact: ContactResponse.fromMap((map['technicalContact'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

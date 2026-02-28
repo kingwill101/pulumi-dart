@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ServiceServiceReference {
   /// (Output)
   /// Output only. The underlying resource URI (For example, URI of Forwarding Rule, URL Map,
@@ -13,12 +14,9 @@ class ServiceServiceReference {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final uriValue = uri;
-    if (uriValue != null) {
-      map['uri'] = uriValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'uri': ?uri,
+    };
   }
 
   factory ServiceServiceReference.fromMap(Map<String, dynamic> map) {
@@ -27,3 +25,4 @@ class ServiceServiceReference {
     );
   }
 }
+

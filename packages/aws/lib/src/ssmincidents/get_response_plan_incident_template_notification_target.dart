@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetResponsePlanIncidentTemplateNotificationTarget {
   /// The ARN of the Amazon SNS topic.
   final String snsTopicArn;
@@ -11,15 +12,15 @@ class GetResponsePlanIncidentTemplateNotificationTarget {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['snsTopicArn'] = snsTopicArn;
-    return map;
+    return <String, dynamic>{
+      'snsTopicArn': snsTopicArn,
+    };
   }
 
-  factory GetResponsePlanIncidentTemplateNotificationTarget.fromMap(
-      Map<String, dynamic> map) {
+  factory GetResponsePlanIncidentTemplateNotificationTarget.fromMap(Map<String, dynamic> map) {
     return GetResponsePlanIncidentTemplateNotificationTarget(
       snsTopicArn: map['snsTopicArn'] as String,
     );
   }
 }
+

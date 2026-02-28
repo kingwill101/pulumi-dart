@@ -14,14 +14,12 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindow {
   /// - SUNDAY: Sunday
   /// Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
   final String day;
-
   /// (Output)
   /// Duration of the maintenance window.
   /// The current window is fixed at 1 hour.
   /// A duration in seconds with up to nine fractional digits,
   /// terminated by 's'. Example: "3.5s".
   final String? duration;
-
   /// Start time of the window in UTC time.
   /// Structure is documented below.
   final InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime startTime;
@@ -37,24 +35,19 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindow {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['day'] = day;
-    final durationValue = duration;
-    if (durationValue != null) {
-      map['duration'] = durationValue;
-    }
-    map['startTime'] = startTime.toMap();
-    return map;
+    return <String, dynamic>{
+      'day': day,
+      'duration': ?duration,
+      'startTime': startTime.toMap(),
+    };
   }
 
-  factory InstanceMaintenancePolicyWeeklyMaintenanceWindow.fromMap(
-      Map<String, dynamic> map) {
+  factory InstanceMaintenancePolicyWeeklyMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return InstanceMaintenancePolicyWeeklyMaintenanceWindow(
       day: map['day'] as String,
       duration: map['duration'] == null ? null : map['duration'] as String,
-      startTime:
-          InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime.fromMap(
-              (map['startTime'] as Map).cast<String, dynamic>()),
+      startTime: InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime.fromMap((map['startTime'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

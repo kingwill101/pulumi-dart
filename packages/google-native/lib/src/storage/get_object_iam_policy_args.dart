@@ -22,34 +22,28 @@ class GetObjectIamPolicyArgs {
     String? generation,
     required String object,
     String? userProject,
-  })  : bucket = pulumi.Input.asInput<String>(bucket),
-        generation = pulumi.Input.asOptionalInput<String>(generation),
-        object = pulumi.Input.asInput<String>(object),
-        userProject = pulumi.Input.asOptionalInput<String>(userProject);
+  }) :
+      bucket = pulumi.Input.asInput<String>(bucket),
+      generation = pulumi.Input.asOptionalInput<String>(generation),
+      object = pulumi.Input.asInput<String>(object),
+      userProject = pulumi.Input.asOptionalInput<String>(userProject);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucket'] = bucket;
-    final generationValue = generation;
-    if (generationValue != null) {
-      map['generation'] = generationValue;
-    }
-    map['object'] = object;
-    final userProjectValue = userProject;
-    if (userProjectValue != null) {
-      map['userProject'] = userProjectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'bucket': bucket,
+      'generation': ?generation,
+      'object': object,
+      'userProject': ?userProject,
+    };
   }
 
   factory GetObjectIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetObjectIamPolicyArgs(
       bucket: map['bucket'] as String,
-      generation:
-          map['generation'] == null ? null : map['generation'] as String,
+      generation: map['generation'] == null ? null : map['generation'] as String,
       object: map['object'] as String,
-      userProject:
-          map['userProject'] == null ? null : map['userProject'] as String,
+      userProject: map['userProject'] == null ? null : map['userProject'] as String,
     );
   }
 }
+

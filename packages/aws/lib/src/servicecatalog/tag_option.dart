@@ -111,14 +111,11 @@ import 'tag_option_args.dart';
 class TagOption extends pulumi.CustomResource {
   /// Whether tag option is active. Default is `true`.
   late final pulumi.Output<bool?> active;
-
   /// Tag option key.
   late final pulumi.Output<String> key;
   late final pulumi.Output<String> owner;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Tag option value.
   ///
   /// The following arguments are optional:

@@ -6,7 +6,6 @@ import 'gateway_route_spec_http2_route_action_target.dart';
 class GatewayRouteSpecHttp2RouteAction {
   /// Gateway route action to rewrite.
   final GatewayRouteSpecHttp2RouteActionRewrite? rewrite;
-
   /// Target that traffic is routed to when a request matches the gateway route.
   final GatewayRouteSpecHttp2RouteActionTarget target;
 
@@ -19,23 +18,17 @@ class GatewayRouteSpecHttp2RouteAction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final rewriteValue = rewrite;
-    if (rewriteValue != null) {
-      map['rewrite'] = rewriteValue.toMap();
-    }
-    map['target'] = target.toMap();
-    return map;
+    return <String, dynamic>{
+      'rewrite': ?rewrite == null ? null : rewrite!.toMap(),
+      'target': target.toMap(),
+    };
   }
 
   factory GatewayRouteSpecHttp2RouteAction.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpecHttp2RouteAction(
-      rewrite: map['rewrite'] == null
-          ? null
-          : GatewayRouteSpecHttp2RouteActionRewrite.fromMap(
-              (map['rewrite'] as Map).cast<String, dynamic>()),
-      target: GatewayRouteSpecHttp2RouteActionTarget.fromMap(
-          (map['target'] as Map).cast<String, dynamic>()),
+      rewrite: map['rewrite'] == null ? null : GatewayRouteSpecHttp2RouteActionRewrite.fromMap((map['rewrite'] as Map).cast<String, dynamic>()),
+      target: GatewayRouteSpecHttp2RouteActionTarget.fromMap((map['target'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

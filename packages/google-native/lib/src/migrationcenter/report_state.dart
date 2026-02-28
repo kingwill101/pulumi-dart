@@ -17,3 +17,4 @@ enum ReportState {
     throw ArgumentError('Unknown ReportState value: $value');
   }
 }
+

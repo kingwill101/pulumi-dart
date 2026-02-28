@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterSecretSyncConfigRotationConfig {
   /// Enable the Secret sync auto rotation.
   final bool enabled;
-
   /// The interval between two consecutive rotations. Default rotation interval is 2 minutes
   final String rotationInterval;
 
@@ -16,17 +16,17 @@ class GetClusterSecretSyncConfigRotationConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    map['rotationInterval'] = rotationInterval;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+      'rotationInterval': rotationInterval,
+    };
   }
 
-  factory GetClusterSecretSyncConfigRotationConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GetClusterSecretSyncConfigRotationConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterSecretSyncConfigRotationConfig(
       enabled: map['enabled'] as bool,
       rotationInterval: map['rotationInterval'] as String,
     );
   }
 }
+

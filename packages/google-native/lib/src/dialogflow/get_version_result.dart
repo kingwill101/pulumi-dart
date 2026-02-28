@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getVersion.
 class GetVersionResult {
   /// The creation time of this version. This field is read-only, i.e., it cannot be set by create and update methods.
   final String createTime;
-
   /// Optional. The developer-provided description of this version.
   final String description;
-
   /// The unique identifier of this agent version. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
   final String name;
-
   /// The status of this version. This field is read-only and cannot be set by create and update methods.
   final String status;
-
   /// The sequential number of this version. This field is read-only which means it cannot be set by create and update methods.
   final int versionNumber;
 
@@ -32,13 +29,13 @@ class GetVersionResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['description'] = description;
-    map['name'] = name;
-    map['status'] = status;
-    map['versionNumber'] = versionNumber;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'description': description,
+      'name': name,
+      'status': status,
+      'versionNumber': versionNumber,
+    };
   }
 
   factory GetVersionResult.fromMap(Map<String, dynamic> map) {
@@ -51,3 +48,4 @@ class GetVersionResult {
     );
   }
 }
+

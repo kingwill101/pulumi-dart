@@ -14,15 +14,15 @@ class AppConnectorPrincipalInfo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['serviceAccount'] = serviceAccount.toMap();
-    return map;
+    return <String, dynamic>{
+      'serviceAccount': serviceAccount.toMap(),
+    };
   }
 
   factory AppConnectorPrincipalInfo.fromMap(Map<String, dynamic> map) {
     return AppConnectorPrincipalInfo(
-      serviceAccount: AppConnectorPrincipalInfoServiceAccount.fromMap(
-          (map['serviceAccount'] as Map).cast<String, dynamic>()),
+      serviceAccount: AppConnectorPrincipalInfoServiceAccount.fromMap((map['serviceAccount'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

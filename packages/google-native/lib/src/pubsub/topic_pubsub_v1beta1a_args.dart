@@ -14,15 +14,13 @@ class TopicPubsubV1beta1aArgs {
   /// [name] Name of the topic.
   TopicPubsubV1beta1aArgs({
     String? name,
-  }) : name = pulumi.Input.asOptionalInput<String>(name);
+  }) :
+      name = pulumi.Input.asOptionalInput<String>(name);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory TopicPubsubV1beta1aArgs.fromMap(Map<String, dynamic> map) {
@@ -31,3 +29,4 @@ class TopicPubsubV1beta1aArgs {
     );
   }
 }
+

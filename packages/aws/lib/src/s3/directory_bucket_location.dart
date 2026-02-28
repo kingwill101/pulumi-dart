@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DirectoryBucketLocation {
   /// [Availability Zone ID](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#az-ids) or Local Zone ID.
   final String name;
-
   /// Location type. Valid values: `AvailabilityZone`, `LocalZone`.
   final String? type;
 
@@ -16,13 +16,10 @@ class DirectoryBucketLocation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'type': ?type,
+    };
   }
 
   factory DirectoryBucketLocation.fromMap(Map<String, dynamic> map) {
@@ -32,3 +29,4 @@ class DirectoryBucketLocation {
     );
   }
 }
+

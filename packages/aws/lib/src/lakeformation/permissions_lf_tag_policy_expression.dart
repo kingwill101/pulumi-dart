@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PermissionsLfTagPolicyExpression {
   /// The key-name of an LF-Tag.
   final String key;
-
   /// A list of possible values of an LF-Tag.
   final List<String> values;
 
@@ -16,10 +16,10 @@ class PermissionsLfTagPolicyExpression {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    map['values'] = values;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'values': values,
+    };
   }
 
   factory PermissionsLfTagPolicyExpression.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class PermissionsLfTagPolicyExpression {
     );
   }
 }
+

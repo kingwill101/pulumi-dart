@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents an Amazon Web Services identity provider.
 class AwsResponse {
   /// The AWS account ID.
@@ -12,9 +13,9 @@ class AwsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accountId'] = accountId;
-    return map;
+    return <String, dynamic>{
+      'accountId': accountId,
+    };
   }
 
   factory AwsResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class AwsResponse {
     );
   }
 }
+

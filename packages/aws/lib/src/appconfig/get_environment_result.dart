@@ -6,28 +6,21 @@ import 'get_environment_monitor.dart';
 /// Result data returned by getEnvironment.
 class GetEnvironmentResult {
   final String applicationId;
-
   /// ARN of the environment.
   final String arn;
-
   /// Name of the environment.
   final String description;
   final String environmentId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Set of Amazon CloudWatch alarms to monitor during the deployment process.
   final List<GetEnvironmentMonitor> monitors;
-
   /// Name of the environment.
   final String name;
   final String region;
-
   /// State of the environment. Possible values are `READY_FOR_DEPLOYMENT`, `DEPLOYING`, `ROLLING_BACK`
   /// or `ROLLED_BACK`.
   final String state;
-
   /// Map of tags for the resource.
   final Map<String, String> tags;
 
@@ -56,20 +49,18 @@ class GetEnvironmentResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['applicationId'] = applicationId;
-    map['arn'] = arn;
-    map['description'] = description;
-    map['environmentId'] = environmentId;
-    map['id'] = id;
-    map['monitors'] =
-        pulumi.Input.encodeList<GetEnvironmentMonitor, Map<String, dynamic>>(
-            monitors, (value) => value.toMap());
-    map['name'] = name;
-    map['region'] = region;
-    map['state'] = state;
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'applicationId': applicationId,
+      'arn': arn,
+      'description': description,
+      'environmentId': environmentId,
+      'id': id,
+      'monitors': pulumi.Input.encodeList<GetEnvironmentMonitor, Map<String, dynamic>>(monitors, (value) => value.toMap()),
+      'name': name,
+      'region': region,
+      'state': state,
+      'tags': tags,
+    };
   }
 
   factory GetEnvironmentResult.fromMap(Map<String, dynamic> map) {
@@ -79,10 +70,7 @@ class GetEnvironmentResult {
       description: map['description'] as String,
       environmentId: map['environmentId'] as String,
       id: map['id'] as String,
-      monitors: pulumi.Input.decodeList<GetEnvironmentMonitor>(
-          map['monitors'],
-          (value) => GetEnvironmentMonitor.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      monitors: pulumi.Input.decodeList<GetEnvironmentMonitor>(map['monitors'], (value) => GetEnvironmentMonitor.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       region: map['region'] as String,
       state: map['state'] as String,
@@ -90,3 +78,4 @@ class GetEnvironmentResult {
     );
   }
 }
+

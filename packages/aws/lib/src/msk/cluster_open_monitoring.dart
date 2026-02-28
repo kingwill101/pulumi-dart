@@ -13,15 +13,15 @@ class ClusterOpenMonitoring {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['prometheus'] = prometheus.toMap();
-    return map;
+    return <String, dynamic>{
+      'prometheus': prometheus.toMap(),
+    };
   }
 
   factory ClusterOpenMonitoring.fromMap(Map<String, dynamic> map) {
     return ClusterOpenMonitoring(
-      prometheus: ClusterOpenMonitoringPrometheus.fromMap(
-          (map['prometheus'] as Map).cast<String, dynamic>()),
+      prometheus: ClusterOpenMonitoringPrometheus.fromMap((map['prometheus'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

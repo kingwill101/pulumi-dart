@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppCacheConfig {
   /// Type of cache configuration to use for an Amplify app. Valid values: `AMPLIFY_MANAGED`, `AMPLIFY_MANAGED_NO_COOKIES`.
   final String type;
@@ -11,9 +12,9 @@ class AppCacheConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory AppCacheConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class AppCacheConfig {
     );
   }
 }
+

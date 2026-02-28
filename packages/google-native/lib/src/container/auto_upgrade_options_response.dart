@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// AutoUpgradeOptions defines the set of options for the user to control how the Auto Upgrades will proceed.
 class AutoUpgradeOptionsResponse {
   /// [Output only] This field is set when upgrades are about to commence with the approximate start time for the upgrades, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
   final String autoUpgradeStartTime;
-
   /// [Output only] This field is set when upgrades are about to commence with the description of the upgrade.
   final String description;
 
@@ -17,10 +17,10 @@ class AutoUpgradeOptionsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['autoUpgradeStartTime'] = autoUpgradeStartTime;
-    map['description'] = description;
-    return map;
+    return <String, dynamic>{
+      'autoUpgradeStartTime': autoUpgradeStartTime,
+      'description': description,
+    };
   }
 
   factory AutoUpgradeOptionsResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class AutoUpgradeOptionsResponse {
     );
   }
 }
+

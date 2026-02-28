@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ReservationDeleteAfterDuration {
   /// Number of nanoseconds for the auto-delete duration.
   final int? nanos;
-
   /// Number of seconds for the auto-delete duration.
   final String? seconds;
 
@@ -16,16 +16,10 @@ class ReservationDeleteAfterDuration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nanosValue = nanos;
-    if (nanosValue != null) {
-      map['nanos'] = nanosValue;
-    }
-    final secondsValue = seconds;
-    if (secondsValue != null) {
-      map['seconds'] = secondsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'nanos': ?nanos,
+      'seconds': ?seconds,
+    };
   }
 
   factory ReservationDeleteAfterDuration.fromMap(Map<String, dynamic> map) {
@@ -35,3 +29,4 @@ class ReservationDeleteAfterDuration {
     );
   }
 }
+

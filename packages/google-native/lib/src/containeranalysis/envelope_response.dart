@@ -20,22 +20,19 @@ class EnvelopeResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['payload'] = payload;
-    map['payloadType'] = payloadType;
-    map['signatures'] = pulumi.Input.encodeList<EnvelopeSignatureResponse,
-        Map<String, dynamic>>(signatures, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'payload': payload,
+      'payloadType': payloadType,
+      'signatures': pulumi.Input.encodeList<EnvelopeSignatureResponse, Map<String, dynamic>>(signatures, (value) => value.toMap()),
+    };
   }
 
   factory EnvelopeResponse.fromMap(Map<String, dynamic> map) {
     return EnvelopeResponse(
       payload: map['payload'] as String,
       payloadType: map['payloadType'] as String,
-      signatures: pulumi.Input.decodeList<EnvelopeSignatureResponse>(
-          map['signatures'],
-          (value) => EnvelopeSignatureResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      signatures: pulumi.Input.decodeList<EnvelopeSignatureResponse>(map['signatures'], (value) => EnvelopeSignatureResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

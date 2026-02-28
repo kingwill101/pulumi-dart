@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DatascanDataQualitySpecRuleSetExpectation {
   /// Expected values for the column value.
   final List<String> values;
@@ -11,15 +12,15 @@ class DatascanDataQualitySpecRuleSetExpectation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['values'] = values;
-    return map;
+    return <String, dynamic>{
+      'values': values,
+    };
   }
 
-  factory DatascanDataQualitySpecRuleSetExpectation.fromMap(
-      Map<String, dynamic> map) {
+  factory DatascanDataQualitySpecRuleSetExpectation.fromMap(Map<String, dynamic> map) {
     return DatascanDataQualitySpecRuleSetExpectation(
       values: (map['values'] as List).cast<String>(),
     );
   }
 }
+

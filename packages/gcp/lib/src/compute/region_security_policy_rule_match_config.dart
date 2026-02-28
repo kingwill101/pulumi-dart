@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RegionSecurityPolicyRuleMatchConfig {
   /// CIDR IP address range. Maximum number of srcIpRanges allowed is 10.
   final List<String>? srcIpRanges;
@@ -11,20 +12,15 @@ class RegionSecurityPolicyRuleMatchConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final srcIpRangesValue = srcIpRanges;
-    if (srcIpRangesValue != null) {
-      map['srcIpRanges'] = srcIpRangesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'srcIpRanges': ?srcIpRanges,
+    };
   }
 
-  factory RegionSecurityPolicyRuleMatchConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory RegionSecurityPolicyRuleMatchConfig.fromMap(Map<String, dynamic> map) {
     return RegionSecurityPolicyRuleMatchConfig(
-      srcIpRanges: map['srcIpRanges'] == null
-          ? null
-          : (map['srcIpRanges'] as List).cast<String>(),
+      srcIpRanges: map['srcIpRanges'] == null ? null : (map['srcIpRanges'] as List).cast<String>(),
     );
   }
 }
+

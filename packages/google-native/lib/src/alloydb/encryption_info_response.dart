@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// EncryptionInfo describes the encryption information of a cluster or a backup.
 class EncryptionInfoResponse {
   /// Type of encryption.
   final String encryptionType;
-
   /// Cloud KMS key versions that are being used to protect the database or the backup.
   final List<String> kmsKeyVersions;
 
@@ -17,10 +17,10 @@ class EncryptionInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['encryptionType'] = encryptionType;
-    map['kmsKeyVersions'] = kmsKeyVersions;
-    return map;
+    return <String, dynamic>{
+      'encryptionType': encryptionType,
+      'kmsKeyVersions': kmsKeyVersions,
+    };
   }
 
   factory EncryptionInfoResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class EncryptionInfoResponse {
     );
   }
 }
+

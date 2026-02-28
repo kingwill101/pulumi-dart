@@ -13,7 +13,6 @@ class GetGlobalForwardingRuleResult {
   final String externalManagedBackendBucketMigrationState;
   final double externalManagedBackendBucketMigrationTestingPercentage;
   final int forwardingRuleId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String ipAddress;
@@ -33,8 +32,7 @@ class GetGlobalForwardingRuleResult {
   final String pscConnectionStatus;
   final Map<String, String> pulumiLabels;
   final String selfLink;
-  final List<GetGlobalForwardingRuleServiceDirectoryRegistration>
-      serviceDirectoryRegistrations;
+  final List<GetGlobalForwardingRuleServiceDirectoryRegistration> serviceDirectoryRegistrations;
   final List<String> sourceIpRanges;
   final String subnetwork;
   final String target;
@@ -102,47 +100,37 @@ class GetGlobalForwardingRuleResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allowPscGlobalAccess'] = allowPscGlobalAccess;
-    map['baseForwardingRule'] = baseForwardingRule;
-    map['description'] = description;
-    map['effectiveLabels'] = effectiveLabels;
-    map['externalManagedBackendBucketMigrationState'] =
-        externalManagedBackendBucketMigrationState;
-    map['externalManagedBackendBucketMigrationTestingPercentage'] =
-        externalManagedBackendBucketMigrationTestingPercentage;
-    map['forwardingRuleId'] = forwardingRuleId;
-    map['id'] = id;
-    map['ipAddress'] = ipAddress;
-    map['ipProtocol'] = ipProtocol;
-    map['ipVersion'] = ipVersion;
-    map['labelFingerprint'] = labelFingerprint;
-    map['labels'] = labels;
-    map['loadBalancingScheme'] = loadBalancingScheme;
-    map['metadataFilters'] = pulumi.Input.encodeList<
-        GetGlobalForwardingRuleMetadataFilter,
-        Map<String, dynamic>>(metadataFilters, (value) => value.toMap());
-    map['name'] = name;
-    map['network'] = network;
-    map['networkTier'] = networkTier;
-    map['noAutomateDnsZone'] = noAutomateDnsZone;
-    map['portRange'] = portRange;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['pscConnectionId'] = pscConnectionId;
-    map['pscConnectionStatus'] = pscConnectionStatus;
-    map['pulumiLabels'] = pulumiLabels;
-    map['selfLink'] = selfLink;
-    map['serviceDirectoryRegistrations'] = pulumi.Input.encodeList<
-            GetGlobalForwardingRuleServiceDirectoryRegistration,
-            Map<String, dynamic>>(
-        serviceDirectoryRegistrations, (value) => value.toMap());
-    map['sourceIpRanges'] = sourceIpRanges;
-    map['subnetwork'] = subnetwork;
-    map['target'] = target;
-    return map;
+    return <String, dynamic>{
+      'allowPscGlobalAccess': allowPscGlobalAccess,
+      'baseForwardingRule': baseForwardingRule,
+      'description': description,
+      'effectiveLabels': effectiveLabels,
+      'externalManagedBackendBucketMigrationState': externalManagedBackendBucketMigrationState,
+      'externalManagedBackendBucketMigrationTestingPercentage': externalManagedBackendBucketMigrationTestingPercentage,
+      'forwardingRuleId': forwardingRuleId,
+      'id': id,
+      'ipAddress': ipAddress,
+      'ipProtocol': ipProtocol,
+      'ipVersion': ipVersion,
+      'labelFingerprint': labelFingerprint,
+      'labels': labels,
+      'loadBalancingScheme': loadBalancingScheme,
+      'metadataFilters': pulumi.Input.encodeList<GetGlobalForwardingRuleMetadataFilter, Map<String, dynamic>>(metadataFilters, (value) => value.toMap()),
+      'name': name,
+      'network': network,
+      'networkTier': networkTier,
+      'noAutomateDnsZone': noAutomateDnsZone,
+      'portRange': portRange,
+      'project': ?project,
+      'pscConnectionId': pscConnectionId,
+      'pscConnectionStatus': pscConnectionStatus,
+      'pulumiLabels': pulumiLabels,
+      'selfLink': selfLink,
+      'serviceDirectoryRegistrations': pulumi.Input.encodeList<GetGlobalForwardingRuleServiceDirectoryRegistration, Map<String, dynamic>>(serviceDirectoryRegistrations, (value) => value.toMap()),
+      'sourceIpRanges': sourceIpRanges,
+      'subnetwork': subnetwork,
+      'target': target,
+    };
   }
 
   factory GetGlobalForwardingRuleResult.fromMap(Map<String, dynamic> map) {
@@ -151,11 +139,8 @@ class GetGlobalForwardingRuleResult {
       baseForwardingRule: map['baseForwardingRule'] as String,
       description: map['description'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      externalManagedBackendBucketMigrationState:
-          map['externalManagedBackendBucketMigrationState'] as String,
-      externalManagedBackendBucketMigrationTestingPercentage:
-          map['externalManagedBackendBucketMigrationTestingPercentage']
-              as double,
+      externalManagedBackendBucketMigrationState: map['externalManagedBackendBucketMigrationState'] as String,
+      externalManagedBackendBucketMigrationTestingPercentage: map['externalManagedBackendBucketMigrationTestingPercentage'] as double,
       forwardingRuleId: map['forwardingRuleId'] as int,
       id: map['id'] as String,
       ipAddress: map['ipAddress'] as String,
@@ -164,11 +149,7 @@ class GetGlobalForwardingRuleResult {
       labelFingerprint: map['labelFingerprint'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       loadBalancingScheme: map['loadBalancingScheme'] as String,
-      metadataFilters:
-          pulumi.Input.decodeList<GetGlobalForwardingRuleMetadataFilter>(
-              map['metadataFilters'],
-              (value) => GetGlobalForwardingRuleMetadataFilter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      metadataFilters: pulumi.Input.decodeList<GetGlobalForwardingRuleMetadataFilter>(map['metadataFilters'], (value) => GetGlobalForwardingRuleMetadataFilter.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       network: map['network'] as String,
       networkTier: map['networkTier'] as String,
@@ -179,15 +160,11 @@ class GetGlobalForwardingRuleResult {
       pscConnectionStatus: map['pscConnectionStatus'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       selfLink: map['selfLink'] as String,
-      serviceDirectoryRegistrations: pulumi.Input.decodeList<
-              GetGlobalForwardingRuleServiceDirectoryRegistration>(
-          map['serviceDirectoryRegistrations'],
-          (value) =>
-              GetGlobalForwardingRuleServiceDirectoryRegistration.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      serviceDirectoryRegistrations: pulumi.Input.decodeList<GetGlobalForwardingRuleServiceDirectoryRegistration>(map['serviceDirectoryRegistrations'], (value) => GetGlobalForwardingRuleServiceDirectoryRegistration.fromMap((value as Map).cast<String, dynamic>())),
       sourceIpRanges: (map['sourceIpRanges'] as List).cast<String>(),
       subnetwork: map['subnetwork'] as String,
       target: map['target'] as String,
     );
   }
 }
+

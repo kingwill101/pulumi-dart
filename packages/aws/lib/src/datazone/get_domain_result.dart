@@ -1,34 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getDomain.
 class GetDomainResult {
   /// ARN of the Domain.
   final String arn;
-
   /// The date and time the Domain was created.
   final String createdAt;
-
   /// Description of the Domain.
   final String description;
-
   /// Version of the Domain.
   final String domainVersion;
   final String id;
-
   /// The date and time the Domain was last updated.
   final String lastUpdatedAt;
-
   /// The AWS account ID that owns the Domain.
   final String managedAccountId;
   final String name;
-
   /// URL of the Domain.
   final String portalUrl;
   final String region;
-
   /// ID of the root domain unit.
   final String rootDomainUnitId;
-
   /// Status of the Domain.
   final String status;
 
@@ -61,20 +54,20 @@ class GetDomainResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['createdAt'] = createdAt;
-    map['description'] = description;
-    map['domainVersion'] = domainVersion;
-    map['id'] = id;
-    map['lastUpdatedAt'] = lastUpdatedAt;
-    map['managedAccountId'] = managedAccountId;
-    map['name'] = name;
-    map['portalUrl'] = portalUrl;
-    map['region'] = region;
-    map['rootDomainUnitId'] = rootDomainUnitId;
-    map['status'] = status;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'createdAt': createdAt,
+      'description': description,
+      'domainVersion': domainVersion,
+      'id': id,
+      'lastUpdatedAt': lastUpdatedAt,
+      'managedAccountId': managedAccountId,
+      'name': name,
+      'portalUrl': portalUrl,
+      'region': region,
+      'rootDomainUnitId': rootDomainUnitId,
+      'status': status,
+    };
   }
 
   factory GetDomainResult.fromMap(Map<String, dynamic> map) {
@@ -94,3 +87,4 @@ class GetDomainResult {
     );
   }
 }
+

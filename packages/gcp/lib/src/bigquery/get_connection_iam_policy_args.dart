@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConnectionIamPolicyArgs {
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> connectionId;
-
   /// The geographic location where the connection should reside.
   /// Cloud SQL instance must be in the same location as the connection
   /// with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
@@ -20,7 +19,6 @@ class GetConnectionIamPolicyArgs {
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
   final pulumi.Input<String>? location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   final pulumi.Input<String>? project;
@@ -33,22 +31,17 @@ class GetConnectionIamPolicyArgs {
     required String connectionId,
     String? location,
     String? project,
-  })  : connectionId = pulumi.Input.asInput<String>(connectionId),
-        location = pulumi.Input.asOptionalInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      connectionId = pulumi.Input.asInput<String>(connectionId),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['connectionId'] = connectionId;
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'connectionId': connectionId,
+      'location': ?location,
+      'project': ?project,
+    };
   }
 
   factory GetConnectionIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -59,3 +52,4 @@ class GetConnectionIamPolicyArgs {
     );
   }
 }
+

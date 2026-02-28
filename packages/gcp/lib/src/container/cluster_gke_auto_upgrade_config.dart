@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterGkeAutoUpgradeConfig {
   /// The selected patch mode.
   /// Accepted values are:
@@ -13,9 +14,9 @@ class ClusterGkeAutoUpgradeConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['patchMode'] = patchMode;
-    return map;
+    return <String, dynamic>{
+      'patchMode': patchMode,
+    };
   }
 
   factory ClusterGkeAutoUpgradeConfig.fromMap(Map<String, dynamic> map) {
@@ -24,3 +25,4 @@ class ClusterGkeAutoUpgradeConfig {
     );
   }
 }
+

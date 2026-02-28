@@ -5,10 +5,8 @@ import 'cluster_maintenance_policy_maintenance_exclusion_exclusion_options.dart'
 class ClusterMaintenancePolicyMaintenanceExclusion {
   final String? endTime;
   final String exclusionName;
-
   /// MaintenanceExclusionOptions provides maintenance exclusion related options.
-  final ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions?
-      exclusionOptions;
+  final ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions? exclusionOptions;
   final String startTime;
 
   /// Creates a new [ClusterMaintenancePolicyMaintenanceExclusion].
@@ -24,31 +22,21 @@ class ClusterMaintenancePolicyMaintenanceExclusion {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final endTimeValue = endTime;
-    if (endTimeValue != null) {
-      map['endTime'] = endTimeValue;
-    }
-    map['exclusionName'] = exclusionName;
-    final exclusionOptionsValue = exclusionOptions;
-    if (exclusionOptionsValue != null) {
-      map['exclusionOptions'] = exclusionOptionsValue.toMap();
-    }
-    map['startTime'] = startTime;
-    return map;
+    return <String, dynamic>{
+      'endTime': ?endTime,
+      'exclusionName': exclusionName,
+      'exclusionOptions': ?exclusionOptions == null ? null : exclusionOptions!.toMap(),
+      'startTime': startTime,
+    };
   }
 
-  factory ClusterMaintenancePolicyMaintenanceExclusion.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterMaintenancePolicyMaintenanceExclusion.fromMap(Map<String, dynamic> map) {
     return ClusterMaintenancePolicyMaintenanceExclusion(
       endTime: map['endTime'] == null ? null : map['endTime'] as String,
       exclusionName: map['exclusionName'] as String,
-      exclusionOptions: map['exclusionOptions'] == null
-          ? null
-          : ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions
-              .fromMap(
-                  (map['exclusionOptions'] as Map).cast<String, dynamic>()),
+      exclusionOptions: map['exclusionOptions'] == null ? null : ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions.fromMap((map['exclusionOptions'] as Map).cast<String, dynamic>()),
       startTime: map['startTime'] as String,
     );
   }
 }
+

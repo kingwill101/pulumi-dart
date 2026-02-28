@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ControlConditionActiveTimeRange {
   /// The end time of the active time range.
   final String? endTime;
-
   /// The start time of the active time range.
   final String? startTime;
 
@@ -16,16 +16,10 @@ class ControlConditionActiveTimeRange {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final endTimeValue = endTime;
-    if (endTimeValue != null) {
-      map['endTime'] = endTimeValue;
-    }
-    final startTimeValue = startTime;
-    if (startTimeValue != null) {
-      map['startTime'] = startTimeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'endTime': ?endTime,
+      'startTime': ?startTime,
+    };
   }
 
   factory ControlConditionActiveTimeRange.fromMap(Map<String, dynamic> map) {
@@ -35,3 +29,4 @@ class ControlConditionActiveTimeRange {
     );
   }
 }
+

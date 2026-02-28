@@ -15,24 +15,15 @@ class VmwareStaticIpConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final ipBlocksValue = ipBlocks;
-    if (ipBlocksValue != null) {
-      map['ipBlocks'] =
-          pulumi.Input.encodeList<VmwareIpBlock, Map<String, dynamic>>(
-              ipBlocksValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'ipBlocks': ?ipBlocks == null ? null : pulumi.Input.encodeList<VmwareIpBlock, Map<String, dynamic>>(ipBlocks!, (value) => value.toMap()),
+    };
   }
 
   factory VmwareStaticIpConfig.fromMap(Map<String, dynamic> map) {
     return VmwareStaticIpConfig(
-      ipBlocks: map['ipBlocks'] == null
-          ? null
-          : pulumi.Input.decodeList<VmwareIpBlock>(
-              map['ipBlocks'],
-              (value) => VmwareIpBlock.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      ipBlocks: map['ipBlocks'] == null ? null : pulumi.Input.decodeList<VmwareIpBlock>(map['ipBlocks'], (value) => VmwareIpBlock.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

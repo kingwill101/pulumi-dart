@@ -1614,14 +1614,11 @@ class HostingVersion extends pulumi.CustomResource {
   /// The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
   /// Structure is documented below.
   late final pulumi.Output<HostingVersionConfig?> config;
-
   /// The fully-qualified resource name for the version, in the format:
   /// sites/SITE_ID/versions/VERSION_ID
   late final pulumi.Output<String> name;
-
   /// Required. The ID of the site in which to create this Version.
   late final pulumi.Output<String> siteId;
-
   /// The ID for the version as in sites/SITE_ID/versions/VERSION_ID
   late final pulumi.Output<String> versionId;
 

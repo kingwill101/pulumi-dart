@@ -15,26 +15,15 @@ class ConfigManagementPolicyControllerMonitoring {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final backendsValue = backends;
-    if (backendsValue != null) {
-      map['backends'] = pulumi.Input.encodeList<
-          ConfigManagementPolicyControllerMonitoringBackendsItem,
-          String>(backendsValue, (value) => value.value);
-    }
-    return map;
+    return <String, dynamic>{
+      'backends': ?backends == null ? null : pulumi.Input.encodeList<ConfigManagementPolicyControllerMonitoringBackendsItem, String>(backends!, (value) => value.value),
+    };
   }
 
-  factory ConfigManagementPolicyControllerMonitoring.fromMap(
-      Map<String, dynamic> map) {
+  factory ConfigManagementPolicyControllerMonitoring.fromMap(Map<String, dynamic> map) {
     return ConfigManagementPolicyControllerMonitoring(
-      backends: map['backends'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  ConfigManagementPolicyControllerMonitoringBackendsItem>(
-              map['backends'],
-              (value) => ConfigManagementPolicyControllerMonitoringBackendsItem
-                  .fromValue(value as String)),
+      backends: map['backends'] == null ? null : pulumi.Input.decodeList<ConfigManagementPolicyControllerMonitoringBackendsItem>(map['backends'], (value) => ConfigManagementPolicyControllerMonitoringBackendsItem.fromValue(value as String)),
     );
   }
 }
+

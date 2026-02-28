@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetNetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute {
   final String attachmentId;
   final String destinationCidr;
@@ -28,19 +29,18 @@ class GetNetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['attachmentId'] = attachmentId;
-    map['destinationCidr'] = destinationCidr;
-    map['prefixListId'] = prefixListId;
-    map['resourceId'] = resourceId;
-    map['resourceType'] = resourceType;
-    map['routeOrigin'] = routeOrigin;
-    map['state'] = state;
-    return map;
+    return <String, dynamic>{
+      'attachmentId': attachmentId,
+      'destinationCidr': destinationCidr,
+      'prefixListId': prefixListId,
+      'resourceId': resourceId,
+      'resourceType': resourceType,
+      'routeOrigin': routeOrigin,
+      'state': state,
+    };
   }
 
-  factory GetNetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute.fromMap(
-      Map<String, dynamic> map) {
+  factory GetNetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute(
       attachmentId: map['attachmentId'] as String,
       destinationCidr: map['destinationCidr'] as String,
@@ -52,3 +52,4 @@ class GetNetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute
     );
   }
 }
+

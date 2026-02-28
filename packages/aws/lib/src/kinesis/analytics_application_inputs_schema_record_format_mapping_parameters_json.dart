@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJson {
   /// Path to the top-level parent that contains the records.
   final String recordRowPath;
@@ -11,15 +12,15 @@ class AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJson {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['recordRowPath'] = recordRowPath;
-    return map;
+    return <String, dynamic>{
+      'recordRowPath': recordRowPath,
+    };
   }
 
-  factory AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJson.fromMap(
-      Map<String, dynamic> map) {
+  factory AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJson.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJson(
       recordRowPath: map['recordRowPath'] as String,
     );
   }
 }
+

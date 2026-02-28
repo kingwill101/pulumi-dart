@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WorkforcePoolProviderSaml {
   /// SAML Identity provider configuration metadata xml doc.
   /// The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
@@ -23,9 +24,9 @@ class WorkforcePoolProviderSaml {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['idpMetadataXml'] = idpMetadataXml;
-    return map;
+    return <String, dynamic>{
+      'idpMetadataXml': idpMetadataXml,
+    };
   }
 
   factory WorkforcePoolProviderSaml.fromMap(Map<String, dynamic> map) {
@@ -34,3 +35,4 @@ class WorkforcePoolProviderSaml {
     );
   }
 }
+

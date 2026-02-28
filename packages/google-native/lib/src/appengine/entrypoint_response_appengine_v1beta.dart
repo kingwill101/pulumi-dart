@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The entrypoint for the application.
 class EntrypointResponseAppengineV1beta {
   /// The format should be a shell command that can be fed to bash -c.
@@ -12,9 +13,9 @@ class EntrypointResponseAppengineV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['shell'] = shell;
-    return map;
+    return <String, dynamic>{
+      'shell': shell,
+    };
   }
 
   factory EntrypointResponseAppengineV1beta.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class EntrypointResponseAppengineV1beta {
     );
   }
 }
+

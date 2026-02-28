@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRecordsArgs {
   /// Regex string to apply to the resource record names returned by AWS.
   final pulumi.Input<String>? nameRegex;
-
   /// The ID of the hosted zone that contains the resource record sets that you want to list.
   final pulumi.Input<String> zoneId;
 
@@ -19,17 +18,15 @@ class GetRecordsArgs {
   GetRecordsArgs({
     String? nameRegex,
     required String zoneId,
-  })  : nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-        zoneId = pulumi.Input.asInput<String>(zoneId);
+  }) :
+      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
+      zoneId = pulumi.Input.asInput<String>(zoneId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameRegexValue = nameRegex;
-    if (nameRegexValue != null) {
-      map['nameRegex'] = nameRegexValue;
-    }
-    map['zoneId'] = zoneId;
-    return map;
+    return <String, dynamic>{
+      'nameRegex': ?nameRegex,
+      'zoneId': zoneId,
+    };
   }
 
   factory GetRecordsArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +36,4 @@ class GetRecordsArgs {
     );
   }
 }
+

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class JobExtractSourceModel {
   /// The ID of the dataset containing this model.
   final String datasetId;
-
   /// The ID of the model.
   final String modelId;
-
   /// The ID of the project containing this model.
   final String projectId;
 
@@ -21,11 +20,11 @@ class JobExtractSourceModel {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['datasetId'] = datasetId;
-    map['modelId'] = modelId;
-    map['projectId'] = projectId;
-    return map;
+    return <String, dynamic>{
+      'datasetId': datasetId,
+      'modelId': modelId,
+      'projectId': projectId,
+    };
   }
 
   factory JobExtractSourceModel.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class JobExtractSourceModel {
     );
   }
 }
+

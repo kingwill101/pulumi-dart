@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEndpointAssociationsArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// ID of the specific VPC Endpoint to retrieve.
   final pulumi.Input<String> vpcEndpointId;
 
@@ -19,17 +18,15 @@ class GetEndpointAssociationsArgs {
   GetEndpointAssociationsArgs({
     String? region,
     required String vpcEndpointId,
-  })  : region = pulumi.Input.asOptionalInput<String>(region),
-        vpcEndpointId = pulumi.Input.asInput<String>(vpcEndpointId);
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      vpcEndpointId = pulumi.Input.asInput<String>(vpcEndpointId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['vpcEndpointId'] = vpcEndpointId;
-    return map;
+    return <String, dynamic>{
+      'region': ?region,
+      'vpcEndpointId': vpcEndpointId,
+    };
   }
 
   factory GetEndpointAssociationsArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +36,4 @@ class GetEndpointAssociationsArgs {
     );
   }
 }
+

@@ -4,10 +4,8 @@ import 'agent_data_source_data_source_configuration_confluence_configuration_cra
 import 'agent_data_source_data_source_configuration_confluence_configuration_source_configuration.dart';
 
 class AgentDataSourceDataSourceConfigurationConfluenceConfiguration {
-  final AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfiguration?
-      crawlerConfiguration;
-  final AgentDataSourceDataSourceConfigurationConfluenceConfigurationSourceConfiguration?
-      sourceConfiguration;
+  final AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfiguration? crawlerConfiguration;
+  final AgentDataSourceDataSourceConfigurationConfluenceConfigurationSourceConfiguration? sourceConfiguration;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationConfluenceConfiguration].
   /// [crawlerConfiguration] Optional.
@@ -18,31 +16,17 @@ class AgentDataSourceDataSourceConfigurationConfluenceConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final crawlerConfigurationValue = crawlerConfiguration;
-    if (crawlerConfigurationValue != null) {
-      map['crawlerConfiguration'] = crawlerConfigurationValue.toMap();
-    }
-    final sourceConfigurationValue = sourceConfiguration;
-    if (sourceConfigurationValue != null) {
-      map['sourceConfiguration'] = sourceConfigurationValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'crawlerConfiguration': ?crawlerConfiguration == null ? null : crawlerConfiguration!.toMap(),
+      'sourceConfiguration': ?sourceConfiguration == null ? null : sourceConfiguration!.toMap(),
+    };
   }
 
-  factory AgentDataSourceDataSourceConfigurationConfluenceConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentDataSourceDataSourceConfigurationConfluenceConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceDataSourceConfigurationConfluenceConfiguration(
-      crawlerConfiguration: map['crawlerConfiguration'] == null
-          ? null
-          : AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfiguration
-              .fromMap(
-                  (map['crawlerConfiguration'] as Map).cast<String, dynamic>()),
-      sourceConfiguration: map['sourceConfiguration'] == null
-          ? null
-          : AgentDataSourceDataSourceConfigurationConfluenceConfigurationSourceConfiguration
-              .fromMap(
-                  (map['sourceConfiguration'] as Map).cast<String, dynamic>()),
+      crawlerConfiguration: map['crawlerConfiguration'] == null ? null : AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfiguration.fromMap((map['crawlerConfiguration'] as Map).cast<String, dynamic>()),
+      sourceConfiguration: map['sourceConfiguration'] == null ? null : AgentDataSourceDataSourceConfigurationConfluenceConfigurationSourceConfiguration.fromMap((map['sourceConfiguration'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

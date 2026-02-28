@@ -15,23 +15,17 @@ class OriginRequestPolicyQueryStringsConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['queryStringBehavior'] = queryStringBehavior;
-    final queryStringsValue = queryStrings;
-    if (queryStringsValue != null) {
-      map['queryStrings'] = queryStringsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'queryStringBehavior': queryStringBehavior,
+      'queryStrings': ?queryStrings == null ? null : queryStrings!.toMap(),
+    };
   }
 
-  factory OriginRequestPolicyQueryStringsConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory OriginRequestPolicyQueryStringsConfig.fromMap(Map<String, dynamic> map) {
     return OriginRequestPolicyQueryStringsConfig(
       queryStringBehavior: map['queryStringBehavior'] as String,
-      queryStrings: map['queryStrings'] == null
-          ? null
-          : OriginRequestPolicyQueryStringsConfigQueryStrings.fromMap(
-              (map['queryStrings'] as Map).cast<String, dynamic>()),
+      queryStrings: map['queryStrings'] == null ? null : OriginRequestPolicyQueryStringsConfigQueryStrings.fromMap((map['queryStrings'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

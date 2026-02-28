@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLocalDiskArgs {
   /// Device node of the local disk to retrieve. For example, `/dev/sdb`.
   final pulumi.Input<String>? diskNode;
-
   /// Device path of the local disk to retrieve. For example, `/dev/xvdb` or `/dev/nvme1n1`.
   final pulumi.Input<String>? diskPath;
-
   /// ARN of the gateway.
   final pulumi.Input<String> gatewayArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -29,27 +26,19 @@ class GetLocalDiskArgs {
     String? diskPath,
     required String gatewayArn,
     String? region,
-  })  : diskNode = pulumi.Input.asOptionalInput<String>(diskNode),
-        diskPath = pulumi.Input.asOptionalInput<String>(diskPath),
-        gatewayArn = pulumi.Input.asInput<String>(gatewayArn),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      diskNode = pulumi.Input.asOptionalInput<String>(diskNode),
+      diskPath = pulumi.Input.asOptionalInput<String>(diskPath),
+      gatewayArn = pulumi.Input.asInput<String>(gatewayArn),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final diskNodeValue = diskNode;
-    if (diskNodeValue != null) {
-      map['diskNode'] = diskNodeValue;
-    }
-    final diskPathValue = diskPath;
-    if (diskPathValue != null) {
-      map['diskPath'] = diskPathValue;
-    }
-    map['gatewayArn'] = gatewayArn;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'diskNode': ?diskNode,
+      'diskPath': ?diskPath,
+      'gatewayArn': gatewayArn,
+      'region': ?region,
+    };
   }
 
   factory GetLocalDiskArgs.fromMap(Map<String, dynamic> map) {
@@ -61,3 +50,4 @@ class GetLocalDiskArgs {
     );
   }
 }
+

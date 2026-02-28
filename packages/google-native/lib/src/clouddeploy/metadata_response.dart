@@ -7,7 +7,6 @@ import 'cloud_run_metadata_response.dart';
 class MetadataResponse {
   /// AutomationRolloutMetadata contains the information about the interactions between Automation service and this rollout.
   final AutomationRolloutMetadataResponse automation;
-
   /// The name of the Cloud Run Service that is associated with a `Rollout`.
   final CloudRunMetadataResponse cloudRun;
 
@@ -20,18 +19,17 @@ class MetadataResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['automation'] = automation.toMap();
-    map['cloudRun'] = cloudRun.toMap();
-    return map;
+    return <String, dynamic>{
+      'automation': automation.toMap(),
+      'cloudRun': cloudRun.toMap(),
+    };
   }
 
   factory MetadataResponse.fromMap(Map<String, dynamic> map) {
     return MetadataResponse(
-      automation: AutomationRolloutMetadataResponse.fromMap(
-          (map['automation'] as Map).cast<String, dynamic>()),
-      cloudRun: CloudRunMetadataResponse.fromMap(
-          (map['cloudRun'] as Map).cast<String, dynamic>()),
+      automation: AutomationRolloutMetadataResponse.fromMap((map['automation'] as Map).cast<String, dynamic>()),
+      cloudRun: CloudRunMetadataResponse.fromMap((map['cloudRun'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

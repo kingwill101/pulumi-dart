@@ -499,38 +499,27 @@ import 'zone_vpc.dart';
 class Zone extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the Hosted Zone.
   late final pulumi.Output<String> arn;
-
   /// A comment for the hosted zone. Defaults to 'Managed by Pulumi'.
   late final pulumi.Output<String> comment;
-
   /// The ID of the reusable delegation set whose NS records you want to assign to the hosted zone. Conflicts with `vpc` as delegation sets can only be used for public zones.
   late final pulumi.Output<String?> delegationSetId;
-
   /// Boolean to indicate whether to enable accelerated recovery for the hosted zone. Defaults to `false`. Once set, switching to `false` requires explicitly specifying `false` rather than removing the argument.
   late final pulumi.Output<bool> enableAcceleratedRecovery;
-
   /// Whether to destroy all records (possibly managed outside of this provider) in the zone when destroying the zone.
   late final pulumi.Output<bool?> forceDestroy;
-
   /// This is the name of the hosted zone.
   late final pulumi.Output<String> name;
-
   /// A list of name servers in associated (or default) delegation set.
   /// Find more about delegation sets in [AWS docs](https://docs.aws.amazon.com/Route53/latest/APIReference/actions-on-reusable-delegation-sets.html).
   late final pulumi.Output<List<String>> nameServers;
-
   /// The Route 53 name server that created the SOA record.
   late final pulumi.Output<String> primaryNameServer;
-
   /// A mapping of tags to assign to the zone. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Configuration block(s) specifying VPC(s) to associate with a private hosted zone. Conflicts with the `delegation_set_id` argument in this resource and any `aws.route53.ZoneAssociation` resource specifying the same zone ID. Detailed below.
   late final pulumi.Output<List<ZoneVpc>?> vpcs;
-
   /// The Hosted Zone ID. This can be referenced by zone records.
   late final pulumi.Output<String> zoneId;
 
@@ -551,8 +540,7 @@ class Zone extends pulumi.CustomResource {
     this.arn = registerOutput<String>('arn');
     this.comment = registerOutput<String>('comment');
     this.delegationSetId = registerOutput<String?>('delegationSetId');
-    this.enableAcceleratedRecovery =
-        registerOutput<bool>('enableAcceleratedRecovery');
+    this.enableAcceleratedRecovery = registerOutput<bool>('enableAcceleratedRecovery');
     this.forceDestroy = registerOutput<bool?>('forceDestroy');
     this.name = registerOutput<String>('name');
     this.nameServers = registerOutput<List<String>>('nameServers');

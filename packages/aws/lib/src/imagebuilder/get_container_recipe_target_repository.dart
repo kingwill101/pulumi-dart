@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetContainerRecipeTargetRepository {
   /// Name of the container repository where the output container image is stored. The name is prefixed by the repository location.
   final String repositoryName;
-
   /// Service in which this image is registered.
   final String service;
 
@@ -16,10 +16,10 @@ class GetContainerRecipeTargetRepository {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['repositoryName'] = repositoryName;
-    map['service'] = service;
-    return map;
+    return <String, dynamic>{
+      'repositoryName': repositoryName,
+      'service': service,
+    };
   }
 
   factory GetContainerRecipeTargetRepository.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetContainerRecipeTargetRepository {
     );
   }
 }
+

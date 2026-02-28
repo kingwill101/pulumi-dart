@@ -7,7 +7,6 @@ import 'version_source.dart';
 class Hl7SchemaConfig {
   /// Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
   final Map<String, String>? messageSchemaConfigs;
-
   /// Each VersionSource is tested and only if they all match is the schema used for the message.
   final List<VersionSource>? version;
 
@@ -20,31 +19,17 @@ class Hl7SchemaConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final messageSchemaConfigsValue = messageSchemaConfigs;
-    if (messageSchemaConfigsValue != null) {
-      map['messageSchemaConfigs'] = messageSchemaConfigsValue;
-    }
-    final versionValue = version;
-    if (versionValue != null) {
-      map['version'] =
-          pulumi.Input.encodeList<VersionSource, Map<String, dynamic>>(
-              versionValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'messageSchemaConfigs': ?messageSchemaConfigs,
+      'version': ?version == null ? null : pulumi.Input.encodeList<VersionSource, Map<String, dynamic>>(version!, (value) => value.toMap()),
+    };
   }
 
   factory Hl7SchemaConfig.fromMap(Map<String, dynamic> map) {
     return Hl7SchemaConfig(
-      messageSchemaConfigs: map['messageSchemaConfigs'] == null
-          ? null
-          : (map['messageSchemaConfigs'] as Map).cast<String, String>(),
-      version: map['version'] == null
-          ? null
-          : pulumi.Input.decodeList<VersionSource>(
-              map['version'],
-              (value) => VersionSource.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      messageSchemaConfigs: map['messageSchemaConfigs'] == null ? null : (map['messageSchemaConfigs'] as Map).cast<String, String>(),
+      version: map['version'] == null ? null : pulumi.Input.decodeList<VersionSource>(map['version'], (value) => VersionSource.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEndpointArgs {
   /// Endpoint type. Valid values: `iot:CredentialProvider`, `iot:Data`, `iot:Data-ATS`, `iot:Jobs`.
   final pulumi.Input<String>? endpointType;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -19,27 +18,22 @@ class GetEndpointArgs {
   GetEndpointArgs({
     String? endpointType,
     String? region,
-  })  : endpointType = pulumi.Input.asOptionalInput<String>(endpointType),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      endpointType = pulumi.Input.asOptionalInput<String>(endpointType),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final endpointTypeValue = endpointType;
-    if (endpointTypeValue != null) {
-      map['endpointType'] = endpointTypeValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'endpointType': ?endpointType,
+      'region': ?region,
+    };
   }
 
   factory GetEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointArgs(
-      endpointType:
-          map['endpointType'] == null ? null : map['endpointType'] as String,
+      endpointType: map['endpointType'] == null ? null : map['endpointType'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

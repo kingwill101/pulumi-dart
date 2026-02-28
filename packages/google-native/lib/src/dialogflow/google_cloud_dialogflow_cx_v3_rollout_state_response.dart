@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// State of the auto-rollout process.
 class GoogleCloudDialogflowCxV3RolloutStateResponse {
   /// Start time of the current step.
   final String startTime;
-
   /// Display name of the current auto rollout step.
   final String step;
-
   /// Index of the current step in the auto rollout steps list.
   final int stepIndex;
 
@@ -22,15 +21,14 @@ class GoogleCloudDialogflowCxV3RolloutStateResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['startTime'] = startTime;
-    map['step'] = step;
-    map['stepIndex'] = stepIndex;
-    return map;
+    return <String, dynamic>{
+      'startTime': startTime,
+      'step': step,
+      'stepIndex': stepIndex,
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3RolloutStateResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3RolloutStateResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3RolloutStateResponse(
       startTime: map['startTime'] as String,
       step: map['step'] as String,
@@ -38,3 +36,4 @@ class GoogleCloudDialogflowCxV3RolloutStateResponse {
     );
   }
 }
+

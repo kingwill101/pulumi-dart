@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RuleSeverity {
   /// The display name of the severity level. Extracted from the meta section of
   /// the rule text.
@@ -12,18 +13,15 @@ class RuleSeverity {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final displayNameValue = displayName;
-    if (displayNameValue != null) {
-      map['displayName'] = displayNameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'displayName': ?displayName,
+    };
   }
 
   factory RuleSeverity.fromMap(Map<String, dynamic> map) {
     return RuleSeverity(
-      displayName:
-          map['displayName'] == null ? null : map['displayName'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
     );
   }
 }
+

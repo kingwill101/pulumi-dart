@@ -14,18 +14,15 @@ class LaunchScheduledSplitsConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['steps'] = pulumi.Input.encodeList<LaunchScheduledSplitsConfigStep,
-        Map<String, dynamic>>(steps, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'steps': pulumi.Input.encodeList<LaunchScheduledSplitsConfigStep, Map<String, dynamic>>(steps, (value) => value.toMap()),
+    };
   }
 
   factory LaunchScheduledSplitsConfig.fromMap(Map<String, dynamic> map) {
     return LaunchScheduledSplitsConfig(
-      steps: pulumi.Input.decodeList<LaunchScheduledSplitsConfigStep>(
-          map['steps'],
-          (value) => LaunchScheduledSplitsConfigStep.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      steps: pulumi.Input.decodeList<LaunchScheduledSplitsConfigStep>(map['steps'], (value) => LaunchScheduledSplitsConfigStep.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

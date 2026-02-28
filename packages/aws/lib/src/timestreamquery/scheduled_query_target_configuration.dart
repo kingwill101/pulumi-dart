@@ -4,8 +4,7 @@ import 'scheduled_query_target_configuration_timestream_configuration.dart';
 
 class ScheduledQueryTargetConfiguration {
   /// Configuration block for information needed to write data into the Timestream database and table. See below.
-  final ScheduledQueryTargetConfigurationTimestreamConfiguration
-      timestreamConfiguration;
+  final ScheduledQueryTargetConfigurationTimestreamConfiguration timestreamConfiguration;
 
   /// Creates a new [ScheduledQueryTargetConfiguration].
   /// [timestreamConfiguration] Configuration block for information needed to write data into the Timestream database and table. See below.
@@ -14,16 +13,15 @@ class ScheduledQueryTargetConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['timestreamConfiguration'] = timestreamConfiguration.toMap();
-    return map;
+    return <String, dynamic>{
+      'timestreamConfiguration': timestreamConfiguration.toMap(),
+    };
   }
 
   factory ScheduledQueryTargetConfiguration.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryTargetConfiguration(
-      timestreamConfiguration:
-          ScheduledQueryTargetConfigurationTimestreamConfiguration.fromMap(
-              (map['timestreamConfiguration'] as Map).cast<String, dynamic>()),
+      timestreamConfiguration: ScheduledQueryTargetConfigurationTimestreamConfiguration.fromMap((map['timestreamConfiguration'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

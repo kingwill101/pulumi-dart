@@ -1,47 +1,35 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getProduct.
 class GetProductResult {
   final String? acceptLanguage;
-
   /// ARN of the product.
   final String arn;
-
   /// Time when the product was created.
   final String createdTime;
-
   /// Description of the product.
   final String description;
-
   /// Vendor of the product.
   final String distributor;
-
   /// Whether the product has a default path.
   final bool hasDefaultPath;
   final String id;
-
   /// Name of the product.
   final String name;
-
   /// Owner of the product.
   final String owner;
   final String region;
-
   /// Status of the product.
   final String status;
-
   /// Field that provides support information about the product.
   final String supportDescription;
-
   /// Contact email for product support.
   final String supportEmail;
-
   /// Contact URL for product support.
   final String supportUrl;
-
   /// Tags applied to the product.
   final Map<String, String> tags;
-
   /// Type of product.
   final String type;
 
@@ -82,34 +70,29 @@ class GetProductResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final acceptLanguageValue = acceptLanguage;
-    if (acceptLanguageValue != null) {
-      map['acceptLanguage'] = acceptLanguageValue;
-    }
-    map['arn'] = arn;
-    map['createdTime'] = createdTime;
-    map['description'] = description;
-    map['distributor'] = distributor;
-    map['hasDefaultPath'] = hasDefaultPath;
-    map['id'] = id;
-    map['name'] = name;
-    map['owner'] = owner;
-    map['region'] = region;
-    map['status'] = status;
-    map['supportDescription'] = supportDescription;
-    map['supportEmail'] = supportEmail;
-    map['supportUrl'] = supportUrl;
-    map['tags'] = tags;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'acceptLanguage': ?acceptLanguage,
+      'arn': arn,
+      'createdTime': createdTime,
+      'description': description,
+      'distributor': distributor,
+      'hasDefaultPath': hasDefaultPath,
+      'id': id,
+      'name': name,
+      'owner': owner,
+      'region': region,
+      'status': status,
+      'supportDescription': supportDescription,
+      'supportEmail': supportEmail,
+      'supportUrl': supportUrl,
+      'tags': tags,
+      'type': type,
+    };
   }
 
   factory GetProductResult.fromMap(Map<String, dynamic> map) {
     return GetProductResult(
-      acceptLanguage: map['acceptLanguage'] == null
-          ? null
-          : map['acceptLanguage'] as String,
+      acceptLanguage: map['acceptLanguage'] == null ? null : map['acceptLanguage'] as String,
       arn: map['arn'] as String,
       createdTime: map['createdTime'] as String,
       description: map['description'] as String,
@@ -128,3 +111,4 @@ class GetProductResult {
     );
   }
 }
+

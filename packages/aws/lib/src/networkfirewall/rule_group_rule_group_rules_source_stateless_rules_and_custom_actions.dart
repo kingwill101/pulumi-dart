@@ -6,14 +6,9 @@ import 'rule_group_rule_group_rules_source_stateless_rules_and_custom_actions_st
 
 class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActions {
   /// Set of configuration blocks containing custom action definitions that are available for use by the set of `stateless rule`. See Custom Action below for details.
-  final List<
-          RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction>?
-      customActions;
-
+  final List<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction>? customActions;
   /// Set of configuration blocks containing the stateless rules for use in the stateless rule group. See Stateless Rule below for details.
-  final List<
-          RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRule>
-      statelessRules;
+  final List<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRule> statelessRules;
 
   /// Creates a new [RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActions].
   /// [customActions] Set of configuration blocks containing custom action definitions that are available for use by the set of `stateless rule`. See Custom Action below for details.
@@ -24,36 +19,17 @@ class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final customActionsValue = customActions;
-    if (customActionsValue != null) {
-      map['customActions'] = pulumi.Input.encodeList<
-          RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction,
-          Map<String, dynamic>>(customActionsValue, (value) => value.toMap());
-    }
-    map['statelessRules'] = pulumi.Input.encodeList<
-        RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRule,
-        Map<String, dynamic>>(statelessRules, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'customActions': ?customActions == null ? null : pulumi.Input.encodeList<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction, Map<String, dynamic>>(customActions!, (value) => value.toMap()),
+      'statelessRules': pulumi.Input.encodeList<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRule, Map<String, dynamic>>(statelessRules, (value) => value.toMap()),
+    };
   }
 
-  factory RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActions.fromMap(
-      Map<String, dynamic> map) {
+  factory RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActions.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActions(
-      customActions: map['customActions'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction>(
-              map['customActions'],
-              (value) =>
-                  RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction
-                      .fromMap((value as Map).cast<String, dynamic>())),
-      statelessRules: pulumi.Input.decodeList<
-              RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRule>(
-          map['statelessRules'],
-          (value) =>
-              RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRule
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      customActions: map['customActions'] == null ? null : pulumi.Input.decodeList<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction>(map['customActions'], (value) => RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction.fromMap((value as Map).cast<String, dynamic>())),
+      statelessRules: pulumi.Input.decodeList<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRule>(map['statelessRules'], (value) => RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRule.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

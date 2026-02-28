@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Identifier of an Android application for key use.
 class V2AndroidApplicationResponse {
   /// The package name of the application.
   final String packageName;
-
   /// The SHA1 fingerprint of the application. For example, both sha1 formats are acceptable : DA:39:A3:EE:5E:6B:4B:0D:32:55:BF:EF:95:60:18:90:AF:D8:07:09 or DA39A3EE5E6B4B0D3255BFEF95601890AFD80709. Output format is the latter.
   final String sha1Fingerprint;
 
@@ -17,10 +17,10 @@ class V2AndroidApplicationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['packageName'] = packageName;
-    map['sha1Fingerprint'] = sha1Fingerprint;
-    return map;
+    return <String, dynamic>{
+      'packageName': packageName,
+      'sha1Fingerprint': sha1Fingerprint,
+    };
   }
 
   factory V2AndroidApplicationResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class V2AndroidApplicationResponse {
     );
   }
 }
+

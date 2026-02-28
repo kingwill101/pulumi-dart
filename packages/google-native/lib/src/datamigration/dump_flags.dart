@@ -15,24 +15,15 @@ class DumpFlags {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dumpFlagsValue = dumpFlags;
-    if (dumpFlagsValue != null) {
-      map['dumpFlags'] =
-          pulumi.Input.encodeList<DumpFlag, Map<String, dynamic>>(
-              dumpFlagsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'dumpFlags': ?dumpFlags == null ? null : pulumi.Input.encodeList<DumpFlag, Map<String, dynamic>>(dumpFlags!, (value) => value.toMap()),
+    };
   }
 
   factory DumpFlags.fromMap(Map<String, dynamic> map) {
     return DumpFlags(
-      dumpFlags: map['dumpFlags'] == null
-          ? null
-          : pulumi.Input.decodeList<DumpFlag>(
-              map['dumpFlags'],
-              (value) =>
-                  DumpFlag.fromMap((value as Map).cast<String, dynamic>())),
+      dumpFlags: map['dumpFlags'] == null ? null : pulumi.Input.decodeList<DumpFlag>(map['dumpFlags'], (value) => DumpFlag.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

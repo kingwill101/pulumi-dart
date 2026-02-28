@@ -5,8 +5,7 @@ import 'security_policy_adaptive_protection_config_layer7_ddos_defense_config_co
 /// Configuration options for Cloud Armor Adaptive Protection (CAAP).
 class SecurityPolicyAdaptiveProtectionConfigComputeV1 {
   /// If set to true, enables Cloud Armor Machine Learning.
-  final SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigComputeV1?
-      layer7DdosDefenseConfig;
+  final SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigComputeV1? layer7DdosDefenseConfig;
 
   /// Creates a new [SecurityPolicyAdaptiveProtectionConfigComputeV1].
   /// [layer7DdosDefenseConfig] If set to true, enables Cloud Armor Machine Learning.
@@ -15,22 +14,15 @@ class SecurityPolicyAdaptiveProtectionConfigComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final layer7DdosDefenseConfigValue = layer7DdosDefenseConfig;
-    if (layer7DdosDefenseConfigValue != null) {
-      map['layer7DdosDefenseConfig'] = layer7DdosDefenseConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'layer7DdosDefenseConfig': ?layer7DdosDefenseConfig == null ? null : layer7DdosDefenseConfig!.toMap(),
+    };
   }
 
-  factory SecurityPolicyAdaptiveProtectionConfigComputeV1.fromMap(
-      Map<String, dynamic> map) {
+  factory SecurityPolicyAdaptiveProtectionConfigComputeV1.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyAdaptiveProtectionConfigComputeV1(
-      layer7DdosDefenseConfig: map['layer7DdosDefenseConfig'] == null
-          ? null
-          : SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigComputeV1
-              .fromMap((map['layer7DdosDefenseConfig'] as Map)
-                  .cast<String, dynamic>()),
+      layer7DdosDefenseConfig: map['layer7DdosDefenseConfig'] == null ? null : SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigComputeV1.fromMap((map['layer7DdosDefenseConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

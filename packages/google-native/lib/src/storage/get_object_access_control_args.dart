@@ -25,37 +25,31 @@ class GetObjectAccessControlArgs {
     String? generation,
     required String object,
     String? userProject,
-  })  : bucket = pulumi.Input.asInput<String>(bucket),
-        entity = pulumi.Input.asInput<String>(entity),
-        generation = pulumi.Input.asOptionalInput<String>(generation),
-        object = pulumi.Input.asInput<String>(object),
-        userProject = pulumi.Input.asOptionalInput<String>(userProject);
+  }) :
+      bucket = pulumi.Input.asInput<String>(bucket),
+      entity = pulumi.Input.asInput<String>(entity),
+      generation = pulumi.Input.asOptionalInput<String>(generation),
+      object = pulumi.Input.asInput<String>(object),
+      userProject = pulumi.Input.asOptionalInput<String>(userProject);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucket'] = bucket;
-    map['entity'] = entity;
-    final generationValue = generation;
-    if (generationValue != null) {
-      map['generation'] = generationValue;
-    }
-    map['object'] = object;
-    final userProjectValue = userProject;
-    if (userProjectValue != null) {
-      map['userProject'] = userProjectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'bucket': bucket,
+      'entity': entity,
+      'generation': ?generation,
+      'object': object,
+      'userProject': ?userProject,
+    };
   }
 
   factory GetObjectAccessControlArgs.fromMap(Map<String, dynamic> map) {
     return GetObjectAccessControlArgs(
       bucket: map['bucket'] as String,
       entity: map['entity'] as String,
-      generation:
-          map['generation'] == null ? null : map['generation'] as String,
+      generation: map['generation'] == null ? null : map['generation'] as String,
       object: map['object'] as String,
-      userProject:
-          map['userProject'] == null ? null : map['userProject'] as String,
+      userProject: map['userProject'] == null ? null : map['userProject'] as String,
     );
   }
 }
+

@@ -24,3 +24,4 @@ enum JobJobBenefitsItemJobsV4 {
     throw ArgumentError('Unknown JobJobBenefitsItemJobsV4 value: $value');
   }
 }
+

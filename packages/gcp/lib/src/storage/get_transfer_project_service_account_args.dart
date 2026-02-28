@@ -14,21 +14,19 @@ class GetTransferProjectServiceAccountArgs {
   /// [project] The project ID. If it is not provided, the provider project is used.
   GetTransferProjectServiceAccountArgs({
     String? project,
-  }) : project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+    };
   }
 
-  factory GetTransferProjectServiceAccountArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetTransferProjectServiceAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetTransferProjectServiceAccountArgs(
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

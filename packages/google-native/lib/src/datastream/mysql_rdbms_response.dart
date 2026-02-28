@@ -15,19 +15,15 @@ class MysqlRdbmsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['mysqlDatabases'] =
-        pulumi.Input.encodeList<MysqlDatabaseResponse, Map<String, dynamic>>(
-            mysqlDatabases, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'mysqlDatabases': pulumi.Input.encodeList<MysqlDatabaseResponse, Map<String, dynamic>>(mysqlDatabases, (value) => value.toMap()),
+    };
   }
 
   factory MysqlRdbmsResponse.fromMap(Map<String, dynamic> map) {
     return MysqlRdbmsResponse(
-      mysqlDatabases: pulumi.Input.decodeList<MysqlDatabaseResponse>(
-          map['mysqlDatabases'],
-          (value) => MysqlDatabaseResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      mysqlDatabases: pulumi.Input.decodeList<MysqlDatabaseResponse>(map['mysqlDatabases'], (value) => MysqlDatabaseResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

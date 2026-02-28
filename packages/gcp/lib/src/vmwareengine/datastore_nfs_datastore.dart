@@ -7,7 +7,6 @@ class DatastoreNfsDatastore {
   /// Google service file service configuration
   /// Structure is documented below.
   final DatastoreNfsDatastoreGoogleFileService? googleFileService;
-
   /// Third party file service configuration
   /// Structure is documented below.
   final DatastoreNfsDatastoreThirdPartyFileService? thirdPartyFileService;
@@ -21,28 +20,17 @@ class DatastoreNfsDatastore {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final googleFileServiceValue = googleFileService;
-    if (googleFileServiceValue != null) {
-      map['googleFileService'] = googleFileServiceValue.toMap();
-    }
-    final thirdPartyFileServiceValue = thirdPartyFileService;
-    if (thirdPartyFileServiceValue != null) {
-      map['thirdPartyFileService'] = thirdPartyFileServiceValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'googleFileService': ?googleFileService == null ? null : googleFileService!.toMap(),
+      'thirdPartyFileService': ?thirdPartyFileService == null ? null : thirdPartyFileService!.toMap(),
+    };
   }
 
   factory DatastoreNfsDatastore.fromMap(Map<String, dynamic> map) {
     return DatastoreNfsDatastore(
-      googleFileService: map['googleFileService'] == null
-          ? null
-          : DatastoreNfsDatastoreGoogleFileService.fromMap(
-              (map['googleFileService'] as Map).cast<String, dynamic>()),
-      thirdPartyFileService: map['thirdPartyFileService'] == null
-          ? null
-          : DatastoreNfsDatastoreThirdPartyFileService.fromMap(
-              (map['thirdPartyFileService'] as Map).cast<String, dynamic>()),
+      googleFileService: map['googleFileService'] == null ? null : DatastoreNfsDatastoreGoogleFileService.fromMap((map['googleFileService'] as Map).cast<String, dynamic>()),
+      thirdPartyFileService: map['thirdPartyFileService'] == null ? null : DatastoreNfsDatastoreThirdPartyFileService.fromMap((map['thirdPartyFileService'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

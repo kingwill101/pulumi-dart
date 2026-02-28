@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetIndexServerSideEncryptionConfiguration {
   /// Identifier of the AWS KMScustomer master key (CMK). Amazon Kendra doesn't support asymmetric CMKs.
   final String kmsKeyId;
@@ -11,15 +12,15 @@ class GetIndexServerSideEncryptionConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kmsKeyId'] = kmsKeyId;
-    return map;
+    return <String, dynamic>{
+      'kmsKeyId': kmsKeyId,
+    };
   }
 
-  factory GetIndexServerSideEncryptionConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory GetIndexServerSideEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return GetIndexServerSideEncryptionConfiguration(
       kmsKeyId: map['kmsKeyId'] as String,
     );
   }
 }
+

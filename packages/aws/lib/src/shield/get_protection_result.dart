@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getProtection.
 class GetProtectionResult {
   final String id;
-
   /// Name of the protection.
   final String name;
-
   /// ARN of the protection.
   final String protectionArn;
   final String protectionId;
@@ -27,13 +26,13 @@ class GetProtectionResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['name'] = name;
-    map['protectionArn'] = protectionArn;
-    map['protectionId'] = protectionId;
-    map['resourceArn'] = resourceArn;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'name': name,
+      'protectionArn': protectionArn,
+      'protectionId': protectionId,
+      'resourceArn': resourceArn,
+    };
   }
 
   factory GetProtectionResult.fromMap(Map<String, dynamic> map) {
@@ -46,3 +45,4 @@ class GetProtectionResult {
     );
   }
 }
+

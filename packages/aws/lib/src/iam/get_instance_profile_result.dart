@@ -1,26 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getInstanceProfile.
 class GetInstanceProfileResult {
   /// ARN.
   final String arn;
-
   /// String representation of the date the instance profile was created.
   final String createDate;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
-
   /// Path to the instance profile.
   final String path;
-
   /// Role ARN associated with this instance profile.
   final String roleArn;
-
   /// Role ID associated with this instance profile.
   final String roleId;
-
   /// Role name associated with this instance profile.
   final String roleName;
 
@@ -45,16 +40,16 @@ class GetInstanceProfileResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['createDate'] = createDate;
-    map['id'] = id;
-    map['name'] = name;
-    map['path'] = path;
-    map['roleArn'] = roleArn;
-    map['roleId'] = roleId;
-    map['roleName'] = roleName;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'createDate': createDate,
+      'id': id,
+      'name': name,
+      'path': path,
+      'roleArn': roleArn,
+      'roleId': roleId,
+      'roleName': roleName,
+    };
   }
 
   factory GetInstanceProfileResult.fromMap(Map<String, dynamic> map) {
@@ -70,3 +65,4 @@ class GetInstanceProfileResult {
     );
   }
 }
+

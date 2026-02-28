@@ -7,10 +7,8 @@ import 'uri.dart';
 class RemediationContaineranalysisV1alpha1 {
   /// Contains a comprehensive human-readable discussion of the remediation.
   final String? details;
-
   /// The type of remediation that can be applied.
   final RemediationRemediationTypeContaineranalysisV1alpha1? remediationType;
-
   /// Contains the URL where to obtain the remediation.
   final URI? remediationUri;
 
@@ -25,33 +23,19 @@ class RemediationContaineranalysisV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final detailsValue = details;
-    if (detailsValue != null) {
-      map['details'] = detailsValue;
-    }
-    final remediationTypeValue = remediationType;
-    if (remediationTypeValue != null) {
-      map['remediationType'] = remediationTypeValue.value;
-    }
-    final remediationUriValue = remediationUri;
-    if (remediationUriValue != null) {
-      map['remediationUri'] = remediationUriValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'details': ?details,
+      'remediationType': ?remediationType == null ? null : remediationType!.value,
+      'remediationUri': ?remediationUri == null ? null : remediationUri!.toMap(),
+    };
   }
 
-  factory RemediationContaineranalysisV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory RemediationContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return RemediationContaineranalysisV1alpha1(
       details: map['details'] == null ? null : map['details'] as String,
-      remediationType: map['remediationType'] == null
-          ? null
-          : RemediationRemediationTypeContaineranalysisV1alpha1.fromValue(
-              map['remediationType'] as String),
-      remediationUri: map['remediationUri'] == null
-          ? null
-          : URI.fromMap((map['remediationUri'] as Map).cast<String, dynamic>()),
+      remediationType: map['remediationType'] == null ? null : RemediationRemediationTypeContaineranalysisV1alpha1.fromValue(map['remediationType'] as String),
+      remediationUri: map['remediationUri'] == null ? null : URI.fromMap((map['remediationUri'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

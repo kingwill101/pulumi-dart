@@ -61,8 +61,7 @@ Future<GetInstanceDatafusionV1beta1Result> getInstanceDatafusionV1beta1(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datafusion_v1beta1_get_instance_iam_policy_datafusion_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetInstanceIamPolicyDatafusionV1beta1Result>
-    getInstanceIamPolicyDatafusionV1beta1(
+Future<GetInstanceIamPolicyDatafusionV1beta1Result> getInstanceIamPolicyDatafusionV1beta1(
   GetInstanceIamPolicyDatafusionV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {

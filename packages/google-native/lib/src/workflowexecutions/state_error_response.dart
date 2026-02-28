@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Describes an error related to the current state of the Execution resource.
 class StateErrorResponse {
   /// Provides specifics about the error.
   final String details;
-
   /// The type of this state error.
   final String type;
 
@@ -17,10 +17,10 @@ class StateErrorResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['details'] = details;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'details': details,
+      'type': type,
+    };
   }
 
   factory StateErrorResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class StateErrorResponse {
     );
   }
 }
+

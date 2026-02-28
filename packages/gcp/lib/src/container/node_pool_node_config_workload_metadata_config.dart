@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NodePoolNodeConfigWorkloadMetadataConfig {
   /// Mode is the configuration for how to expose metadata to workloads running on the node.
   final String mode;
@@ -11,15 +12,15 @@ class NodePoolNodeConfigWorkloadMetadataConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['mode'] = mode;
-    return map;
+    return <String, dynamic>{
+      'mode': mode,
+    };
   }
 
-  factory NodePoolNodeConfigWorkloadMetadataConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory NodePoolNodeConfigWorkloadMetadataConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigWorkloadMetadataConfig(
       mode: map['mode'] as String,
     );
   }
 }
+

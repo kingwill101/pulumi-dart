@@ -22,36 +22,28 @@ class GetBackupPlanIamPolicyArgs {
     required String location,
     int? optionsRequestedPolicyVersion,
     String? project,
-  })  : backupPlanId = pulumi.Input.asInput<String>(backupPlanId),
-        location = pulumi.Input.asInput<String>(location),
-        optionsRequestedPolicyVersion =
-            pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      backupPlanId = pulumi.Input.asInput<String>(backupPlanId),
+      location = pulumi.Input.asInput<String>(location),
+      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['backupPlanId'] = backupPlanId;
-    map['location'] = location;
-    final optionsRequestedPolicyVersionValue = optionsRequestedPolicyVersion;
-    if (optionsRequestedPolicyVersionValue != null) {
-      map['optionsRequestedPolicyVersion'] = optionsRequestedPolicyVersionValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'backupPlanId': backupPlanId,
+      'location': location,
+      'optionsRequestedPolicyVersion': ?optionsRequestedPolicyVersion,
+      'project': ?project,
+    };
   }
 
   factory GetBackupPlanIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupPlanIamPolicyArgs(
       backupPlanId: map['backupPlanId'] as String,
       location: map['location'] as String,
-      optionsRequestedPolicyVersion:
-          map['optionsRequestedPolicyVersion'] == null
-              ? null
-              : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

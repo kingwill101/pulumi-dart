@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRoutersRouterInterface {
   final String ipRange;
   final String linkedInterconnectAttachment;
@@ -28,22 +29,21 @@ class GetRoutersRouterInterface {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ipRange'] = ipRange;
-    map['linkedInterconnectAttachment'] = linkedInterconnectAttachment;
-    map['linkedVpnTunnel'] = linkedVpnTunnel;
-    map['name'] = name;
-    map['privateIpAddress'] = privateIpAddress;
-    map['redundantInterface'] = redundantInterface;
-    map['subnetwork'] = subnetwork;
-    return map;
+    return <String, dynamic>{
+      'ipRange': ipRange,
+      'linkedInterconnectAttachment': linkedInterconnectAttachment,
+      'linkedVpnTunnel': linkedVpnTunnel,
+      'name': name,
+      'privateIpAddress': privateIpAddress,
+      'redundantInterface': redundantInterface,
+      'subnetwork': subnetwork,
+    };
   }
 
   factory GetRoutersRouterInterface.fromMap(Map<String, dynamic> map) {
     return GetRoutersRouterInterface(
       ipRange: map['ipRange'] as String,
-      linkedInterconnectAttachment:
-          map['linkedInterconnectAttachment'] as String,
+      linkedInterconnectAttachment: map['linkedInterconnectAttachment'] as String,
       linkedVpnTunnel: map['linkedVpnTunnel'] as String,
       name: map['name'] as String,
       privateIpAddress: map['privateIpAddress'] as String,
@@ -52,3 +52,4 @@ class GetRoutersRouterInterface {
     );
   }
 }
+

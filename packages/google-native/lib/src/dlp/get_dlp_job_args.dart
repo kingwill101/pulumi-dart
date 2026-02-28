@@ -19,19 +19,17 @@ class GetDlpJobArgs {
     required String dlpJobId,
     required String location,
     String? project,
-  })  : dlpJobId = pulumi.Input.asInput<String>(dlpJobId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      dlpJobId = pulumi.Input.asInput<String>(dlpJobId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dlpJobId'] = dlpJobId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'dlpJobId': dlpJobId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetDlpJobArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetDlpJobArgs {
     );
   }
 }
+

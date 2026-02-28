@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PeeringAttachmentOptions {
   /// Indicates whether dynamic routing is enabled or disabled.. Supports `enable` and `disable`.
   final String? dynamicRouting;
@@ -11,19 +12,15 @@ class PeeringAttachmentOptions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dynamicRoutingValue = dynamicRouting;
-    if (dynamicRoutingValue != null) {
-      map['dynamicRouting'] = dynamicRoutingValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'dynamicRouting': ?dynamicRouting,
+    };
   }
 
   factory PeeringAttachmentOptions.fromMap(Map<String, dynamic> map) {
     return PeeringAttachmentOptions(
-      dynamicRouting: map['dynamicRouting'] == null
-          ? null
-          : map['dynamicRouting'] as String,
+      dynamicRouting: map['dynamicRouting'] == null ? null : map['dynamicRouting'] as String,
     );
   }
 }
+

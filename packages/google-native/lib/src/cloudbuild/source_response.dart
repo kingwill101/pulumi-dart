@@ -10,16 +10,12 @@ import 'storage_source_response.dart';
 class SourceResponse {
   /// Optional. If provided, get the source from this 2nd-gen Google Cloud Build repository resource.
   final ConnectedRepositoryResponse connectedRepository;
-
   /// If provided, get the source from this Git repository.
   final GitSourceResponse gitSource;
-
   /// If provided, get the source from this location in a Cloud Source Repository.
   final RepoSourceResponse repoSource;
-
   /// If provided, get the source from this location in Cloud Storage.
   final StorageSourceResponse storageSource;
-
   /// If provided, get the source from this manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
   final StorageSourceManifestResponse storageSourceManifest;
 
@@ -38,27 +34,23 @@ class SourceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['connectedRepository'] = connectedRepository.toMap();
-    map['gitSource'] = gitSource.toMap();
-    map['repoSource'] = repoSource.toMap();
-    map['storageSource'] = storageSource.toMap();
-    map['storageSourceManifest'] = storageSourceManifest.toMap();
-    return map;
+    return <String, dynamic>{
+      'connectedRepository': connectedRepository.toMap(),
+      'gitSource': gitSource.toMap(),
+      'repoSource': repoSource.toMap(),
+      'storageSource': storageSource.toMap(),
+      'storageSourceManifest': storageSourceManifest.toMap(),
+    };
   }
 
   factory SourceResponse.fromMap(Map<String, dynamic> map) {
     return SourceResponse(
-      connectedRepository: ConnectedRepositoryResponse.fromMap(
-          (map['connectedRepository'] as Map).cast<String, dynamic>()),
-      gitSource: GitSourceResponse.fromMap(
-          (map['gitSource'] as Map).cast<String, dynamic>()),
-      repoSource: RepoSourceResponse.fromMap(
-          (map['repoSource'] as Map).cast<String, dynamic>()),
-      storageSource: StorageSourceResponse.fromMap(
-          (map['storageSource'] as Map).cast<String, dynamic>()),
-      storageSourceManifest: StorageSourceManifestResponse.fromMap(
-          (map['storageSourceManifest'] as Map).cast<String, dynamic>()),
+      connectedRepository: ConnectedRepositoryResponse.fromMap((map['connectedRepository'] as Map).cast<String, dynamic>()),
+      gitSource: GitSourceResponse.fromMap((map['gitSource'] as Map).cast<String, dynamic>()),
+      repoSource: RepoSourceResponse.fromMap((map['repoSource'] as Map).cast<String, dynamic>()),
+      storageSource: StorageSourceResponse.fromMap((map['storageSource'] as Map).cast<String, dynamic>()),
+      storageSourceManifest: StorageSourceManifestResponse.fromMap((map['storageSourceManifest'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

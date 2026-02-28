@@ -14,20 +14,15 @@ class ConfigQuota {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final signUpQuotaConfigValue = signUpQuotaConfig;
-    if (signUpQuotaConfigValue != null) {
-      map['signUpQuotaConfig'] = signUpQuotaConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'signUpQuotaConfig': ?signUpQuotaConfig == null ? null : signUpQuotaConfig!.toMap(),
+    };
   }
 
   factory ConfigQuota.fromMap(Map<String, dynamic> map) {
     return ConfigQuota(
-      signUpQuotaConfig: map['signUpQuotaConfig'] == null
-          ? null
-          : ConfigQuotaSignUpQuotaConfig.fromMap(
-              (map['signUpQuotaConfig'] as Map).cast<String, dynamic>()),
+      signUpQuotaConfig: map['signUpQuotaConfig'] == null ? null : ConfigQuotaSignUpQuotaConfig.fromMap((map['signUpQuotaConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

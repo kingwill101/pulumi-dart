@@ -14,20 +14,15 @@ class TestTiming {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final testProcessDurationValue = testProcessDuration;
-    if (testProcessDurationValue != null) {
-      map['testProcessDuration'] = testProcessDurationValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'testProcessDuration': ?testProcessDuration == null ? null : testProcessDuration!.toMap(),
+    };
   }
 
   factory TestTiming.fromMap(Map<String, dynamic> map) {
     return TestTiming(
-      testProcessDuration: map['testProcessDuration'] == null
-          ? null
-          : Duration.fromMap(
-              (map['testProcessDuration'] as Map).cast<String, dynamic>()),
+      testProcessDuration: map['testProcessDuration'] == null ? null : Duration.fromMap((map['testProcessDuration'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

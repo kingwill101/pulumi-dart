@@ -7,7 +7,6 @@ import 'parameter.dart';
 class AggregationFunction {
   /// Optional. Parameters applied to the aggregation function. Only used for functions that require them.
   final List<Parameter>? parameters;
-
   /// The type of aggregation function, must be one of the following: "none" - no function. "percentile" - APPROX_QUANTILES() - 1 parameter numeric value "average" - AVG() "count" - COUNT() "count-distinct" - COUNT(DISTINCT) "count-distinct-approx" - APPROX_COUNT_DISTINCT() "max" - MAX() "min" - MIN() "sum" - SUM()
   final String type;
 
@@ -20,26 +19,17 @@ class AggregationFunction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final parametersValue = parameters;
-    if (parametersValue != null) {
-      map['parameters'] =
-          pulumi.Input.encodeList<Parameter, Map<String, dynamic>>(
-              parametersValue, (value) => value.toMap());
-    }
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'parameters': ?parameters == null ? null : pulumi.Input.encodeList<Parameter, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'type': type,
+    };
   }
 
   factory AggregationFunction.fromMap(Map<String, dynamic> map) {
     return AggregationFunction(
-      parameters: map['parameters'] == null
-          ? null
-          : pulumi.Input.decodeList<Parameter>(
-              map['parameters'],
-              (value) =>
-                  Parameter.fromMap((value as Map).cast<String, dynamic>())),
+      parameters: map['parameters'] == null ? null : pulumi.Input.decodeList<Parameter>(map['parameters'], (value) => Parameter.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }
 }
+

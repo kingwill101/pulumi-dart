@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ExplainQueryStepResponse {
   /// Machine-readable operation type.
   final String kind;
-
   /// Human-readable stage descriptions.
   final List<String> substeps;
 
@@ -16,10 +16,10 @@ class ExplainQueryStepResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kind'] = kind;
-    map['substeps'] = substeps;
-    return map;
+    return <String, dynamic>{
+      'kind': kind,
+      'substeps': substeps,
+    };
   }
 
   factory ExplainQueryStepResponse.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class ExplainQueryStepResponse {
     );
   }
 }
+

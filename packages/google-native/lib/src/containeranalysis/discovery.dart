@@ -14,19 +14,15 @@ class Discovery {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final analysisKindValue = analysisKind;
-    if (analysisKindValue != null) {
-      map['analysisKind'] = analysisKindValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'analysisKind': ?analysisKind == null ? null : analysisKind!.value,
+    };
   }
 
   factory Discovery.fromMap(Map<String, dynamic> map) {
     return Discovery(
-      analysisKind: map['analysisKind'] == null
-          ? null
-          : DiscoveryAnalysisKind.fromValue(map['analysisKind'] as String),
+      analysisKind: map['analysisKind'] == null ? null : DiscoveryAnalysisKind.fromValue(map['analysisKind'] as String),
     );
   }
 }
+

@@ -14,20 +14,15 @@ class GatewayAPIConfigContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final channelValue = channel;
-    if (channelValue != null) {
-      map['channel'] = channelValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'channel': ?channel == null ? null : channel!.value,
+    };
   }
 
   factory GatewayAPIConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return GatewayAPIConfigContainerV1beta1(
-      channel: map['channel'] == null
-          ? null
-          : GatewayAPIConfigChannelContainerV1beta1.fromValue(
-              map['channel'] as String),
+      channel: map['channel'] == null ? null : GatewayAPIConfigChannelContainerV1beta1.fromValue(map['channel'] as String),
     );
   }
 }
+

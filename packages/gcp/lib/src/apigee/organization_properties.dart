@@ -15,24 +15,15 @@ class OrganizationProperties {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final propertiesValue = properties;
-    if (propertiesValue != null) {
-      map['properties'] = pulumi.Input.encodeList<
-          OrganizationPropertiesProperty,
-          Map<String, dynamic>>(propertiesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'properties': ?properties == null ? null : pulumi.Input.encodeList<OrganizationPropertiesProperty, Map<String, dynamic>>(properties!, (value) => value.toMap()),
+    };
   }
 
   factory OrganizationProperties.fromMap(Map<String, dynamic> map) {
     return OrganizationProperties(
-      properties: map['properties'] == null
-          ? null
-          : pulumi.Input.decodeList<OrganizationPropertiesProperty>(
-              map['properties'],
-              (value) => OrganizationPropertiesProperty.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      properties: map['properties'] == null ? null : pulumi.Input.decodeList<OrganizationPropertiesProperty>(map['properties'], (value) => OrganizationPropertiesProperty.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

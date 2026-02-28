@@ -14,19 +14,15 @@ class AttestationNote {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final hintValue = hint;
-    if (hintValue != null) {
-      map['hint'] = hintValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'hint': ?hint == null ? null : hint!.toMap(),
+    };
   }
 
   factory AttestationNote.fromMap(Map<String, dynamic> map) {
     return AttestationNote(
-      hint: map['hint'] == null
-          ? null
-          : Hint.fromMap((map['hint'] as Map).cast<String, dynamic>()),
+      hint: map['hint'] == null ? null : Hint.fromMap((map['hint'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

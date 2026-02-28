@@ -25,23 +25,21 @@ class GetSfdcChannelArgs {
     String? project,
     required String sfdcChannelId,
     required String sfdcInstanceId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        productId = pulumi.Input.asInput<String>(productId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        sfdcChannelId = pulumi.Input.asInput<String>(sfdcChannelId),
-        sfdcInstanceId = pulumi.Input.asInput<String>(sfdcInstanceId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      productId = pulumi.Input.asInput<String>(productId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      sfdcChannelId = pulumi.Input.asInput<String>(sfdcChannelId),
+      sfdcInstanceId = pulumi.Input.asInput<String>(sfdcInstanceId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    map['productId'] = productId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['sfdcChannelId'] = sfdcChannelId;
-    map['sfdcInstanceId'] = sfdcInstanceId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'productId': productId,
+      'project': ?project,
+      'sfdcChannelId': sfdcChannelId,
+      'sfdcInstanceId': sfdcInstanceId,
+    };
   }
 
   factory GetSfdcChannelArgs.fromMap(Map<String, dynamic> map) {
@@ -54,3 +52,4 @@ class GetSfdcChannelArgs {
     );
   }
 }
+

@@ -9,15 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetZoneIamPolicyArgs {
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> dataplexZone;
-
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> lake;
-
   /// Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
   final pulumi.Input<String>? location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   final pulumi.Input<String>? project;
@@ -32,24 +29,19 @@ class GetZoneIamPolicyArgs {
     required String lake,
     String? location,
     String? project,
-  })  : dataplexZone = pulumi.Input.asInput<String>(dataplexZone),
-        lake = pulumi.Input.asInput<String>(lake),
-        location = pulumi.Input.asOptionalInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      dataplexZone = pulumi.Input.asInput<String>(dataplexZone),
+      lake = pulumi.Input.asInput<String>(lake),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dataplexZone'] = dataplexZone;
-    map['lake'] = lake;
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'dataplexZone': dataplexZone,
+      'lake': lake,
+      'location': ?location,
+      'project': ?project,
+    };
   }
 
   factory GetZoneIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -61,3 +53,4 @@ class GetZoneIamPolicyArgs {
     );
   }
 }
+

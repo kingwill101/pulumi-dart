@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NetworkPerformanceConfigResponseComputeV1 {
   final String totalEgressBandwidthTier;
 
@@ -10,15 +11,15 @@ class NetworkPerformanceConfigResponseComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['totalEgressBandwidthTier'] = totalEgressBandwidthTier;
-    return map;
+    return <String, dynamic>{
+      'totalEgressBandwidthTier': totalEgressBandwidthTier,
+    };
   }
 
-  factory NetworkPerformanceConfigResponseComputeV1.fromMap(
-      Map<String, dynamic> map) {
+  factory NetworkPerformanceConfigResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return NetworkPerformanceConfigResponseComputeV1(
       totalEgressBandwidthTier: map['totalEgressBandwidthTier'] as String,
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'launch_template_instance_market_options_spot_options.dart';
 class LaunchTemplateInstanceMarketOptions {
   /// The market type. Can be `spot`.
   final String? marketType;
-
   /// The options for [Spot Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html)
   final LaunchTemplateInstanceMarketOptionsSpotOptions? spotOptions;
 
@@ -18,27 +17,17 @@ class LaunchTemplateInstanceMarketOptions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final marketTypeValue = marketType;
-    if (marketTypeValue != null) {
-      map['marketType'] = marketTypeValue;
-    }
-    final spotOptionsValue = spotOptions;
-    if (spotOptionsValue != null) {
-      map['spotOptions'] = spotOptionsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'marketType': ?marketType,
+      'spotOptions': ?spotOptions == null ? null : spotOptions!.toMap(),
+    };
   }
 
-  factory LaunchTemplateInstanceMarketOptions.fromMap(
-      Map<String, dynamic> map) {
+  factory LaunchTemplateInstanceMarketOptions.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateInstanceMarketOptions(
-      marketType:
-          map['marketType'] == null ? null : map['marketType'] as String,
-      spotOptions: map['spotOptions'] == null
-          ? null
-          : LaunchTemplateInstanceMarketOptionsSpotOptions.fromMap(
-              (map['spotOptions'] as Map).cast<String, dynamic>()),
+      marketType: map['marketType'] == null ? null : map['marketType'] as String,
+      spotOptions: map['spotOptions'] == null ? null : LaunchTemplateInstanceMarketOptionsSpotOptions.fromMap((map['spotOptions'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

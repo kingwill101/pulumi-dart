@@ -9,10 +9,8 @@ class BackupPlanBackupSchedule {
   /// schedule can be defined for a BackupPlan.
   /// If this is defined, then backupRetainDays must also be defined.
   final String? cronSchedule;
-
   /// This flag denotes whether automatic Backup creation is paused for this BackupPlan.
   final bool? paused;
-
   /// Defines the RPO schedule configuration for this BackupPlan. This is mutually
   /// exclusive with the cronSchedule field since at most one schedule can be defined
   /// for a BackupPLan. If this is defined, then backupRetainDays must also be defined.
@@ -30,31 +28,19 @@ class BackupPlanBackupSchedule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cronScheduleValue = cronSchedule;
-    if (cronScheduleValue != null) {
-      map['cronSchedule'] = cronScheduleValue;
-    }
-    final pausedValue = paused;
-    if (pausedValue != null) {
-      map['paused'] = pausedValue;
-    }
-    final rpoConfigValue = rpoConfig;
-    if (rpoConfigValue != null) {
-      map['rpoConfig'] = rpoConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'cronSchedule': ?cronSchedule,
+      'paused': ?paused,
+      'rpoConfig': ?rpoConfig == null ? null : rpoConfig!.toMap(),
+    };
   }
 
   factory BackupPlanBackupSchedule.fromMap(Map<String, dynamic> map) {
     return BackupPlanBackupSchedule(
-      cronSchedule:
-          map['cronSchedule'] == null ? null : map['cronSchedule'] as String,
+      cronSchedule: map['cronSchedule'] == null ? null : map['cronSchedule'] as String,
       paused: map['paused'] == null ? null : map['paused'] as bool,
-      rpoConfig: map['rpoConfig'] == null
-          ? null
-          : BackupPlanBackupScheduleRpoConfig.fromMap(
-              (map['rpoConfig'] as Map).cast<String, dynamic>()),
+      rpoConfig: map['rpoConfig'] == null ? null : BackupPlanBackupScheduleRpoConfig.fromMap((map['rpoConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -9,7 +9,6 @@ class StandardAppVersionDeployment {
   /// All files must be readable using the credentials supplied with this call.
   /// Structure is documented below.
   final List<StandardAppVersionDeploymentFile>? files;
-
   /// Zip File
   /// Structure is documented below.
   final StandardAppVersionDeploymentZip? zip;
@@ -23,31 +22,17 @@ class StandardAppVersionDeployment {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final filesValue = files;
-    if (filesValue != null) {
-      map['files'] = pulumi.Input.encodeList<StandardAppVersionDeploymentFile,
-          Map<String, dynamic>>(filesValue, (value) => value.toMap());
-    }
-    final zipValue = zip;
-    if (zipValue != null) {
-      map['zip'] = zipValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'files': ?files == null ? null : pulumi.Input.encodeList<StandardAppVersionDeploymentFile, Map<String, dynamic>>(files!, (value) => value.toMap()),
+      'zip': ?zip == null ? null : zip!.toMap(),
+    };
   }
 
   factory StandardAppVersionDeployment.fromMap(Map<String, dynamic> map) {
     return StandardAppVersionDeployment(
-      files: map['files'] == null
-          ? null
-          : pulumi.Input.decodeList<StandardAppVersionDeploymentFile>(
-              map['files'],
-              (value) => StandardAppVersionDeploymentFile.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      zip: map['zip'] == null
-          ? null
-          : StandardAppVersionDeploymentZip.fromMap(
-              (map['zip'] as Map).cast<String, dynamic>()),
+      files: map['files'] == null ? null : pulumi.Input.decodeList<StandardAppVersionDeploymentFile>(map['files'], (value) => StandardAppVersionDeploymentFile.fromMap((value as Map).cast<String, dynamic>())),
+      zip: map['zip'] == null ? null : StandardAppVersionDeploymentZip.fromMap((map['zip'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

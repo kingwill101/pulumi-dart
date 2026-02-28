@@ -1,34 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The entry of VM image upgrade history.
 class UpgradeHistoryEntryResponse {
   /// Action. Rolloback or Upgrade.
   final String action;
-
   /// The container image before this instance upgrade.
   final String containerImage;
-
   /// The time that this instance upgrade history entry is created.
   final String createTime;
-
   /// The framework of this notebook instance.
   final String framework;
-
   /// The snapshot of the boot disk of this notebook instance before upgrade.
   final String snapshot;
-
   /// The state of this instance upgrade history entry.
   final String state;
-
   /// Target VM Image. Format: `ainotebooks-vm/project/image-name/name`.
   final String targetImage;
-
   /// Target VM Version, like m63.
   final String targetVersion;
-
   /// The version of the notebook instance before this upgrade.
   final String version;
-
   /// The VM image before this instance upgrade.
   final String vmImage;
 
@@ -57,18 +49,18 @@ class UpgradeHistoryEntryResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['action'] = action;
-    map['containerImage'] = containerImage;
-    map['createTime'] = createTime;
-    map['framework'] = framework;
-    map['snapshot'] = snapshot;
-    map['state'] = state;
-    map['targetImage'] = targetImage;
-    map['targetVersion'] = targetVersion;
-    map['version'] = version;
-    map['vmImage'] = vmImage;
-    return map;
+    return <String, dynamic>{
+      'action': action,
+      'containerImage': containerImage,
+      'createTime': createTime,
+      'framework': framework,
+      'snapshot': snapshot,
+      'state': state,
+      'targetImage': targetImage,
+      'targetVersion': targetVersion,
+      'version': version,
+      'vmImage': vmImage,
+    };
   }
 
   factory UpgradeHistoryEntryResponse.fromMap(Map<String, dynamic> map) {
@@ -86,3 +78,4 @@ class UpgradeHistoryEntryResponse {
     );
   }
 }
+

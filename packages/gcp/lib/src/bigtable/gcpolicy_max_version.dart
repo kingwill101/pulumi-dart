@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GCPolicyMaxVersion {
   /// Number of version before applying the GC policy.
   ///
@@ -14,9 +15,9 @@ class GCPolicyMaxVersion {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['number'] = number;
-    return map;
+    return <String, dynamic>{
+      'number': number,
+    };
   }
 
   factory GCPolicyMaxVersion.fromMap(Map<String, dynamic> map) {
@@ -25,3 +26,4 @@ class GCPolicyMaxVersion {
     );
   }
 }
+

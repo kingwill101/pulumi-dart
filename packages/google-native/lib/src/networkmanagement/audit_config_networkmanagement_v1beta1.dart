@@ -7,7 +7,6 @@ import 'audit_log_config_networkmanagement_v1beta1.dart';
 class AuditConfigNetworkmanagementV1beta1 {
   /// The configuration for logging of each type of permission.
   final List<AuditLogConfigNetworkmanagementV1beta1>? auditLogConfigs;
-
   /// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
   final String? service;
 
@@ -20,30 +19,17 @@ class AuditConfigNetworkmanagementV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final auditLogConfigsValue = auditLogConfigs;
-    if (auditLogConfigsValue != null) {
-      map['auditLogConfigs'] = pulumi.Input.encodeList<
-          AuditLogConfigNetworkmanagementV1beta1,
-          Map<String, dynamic>>(auditLogConfigsValue, (value) => value.toMap());
-    }
-    final serviceValue = service;
-    if (serviceValue != null) {
-      map['service'] = serviceValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'auditLogConfigs': ?auditLogConfigs == null ? null : pulumi.Input.encodeList<AuditLogConfigNetworkmanagementV1beta1, Map<String, dynamic>>(auditLogConfigs!, (value) => value.toMap()),
+      'service': ?service,
+    };
   }
 
-  factory AuditConfigNetworkmanagementV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory AuditConfigNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
     return AuditConfigNetworkmanagementV1beta1(
-      auditLogConfigs: map['auditLogConfigs'] == null
-          ? null
-          : pulumi.Input.decodeList<AuditLogConfigNetworkmanagementV1beta1>(
-              map['auditLogConfigs'],
-              (value) => AuditLogConfigNetworkmanagementV1beta1.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      auditLogConfigs: map['auditLogConfigs'] == null ? null : pulumi.Input.decodeList<AuditLogConfigNetworkmanagementV1beta1>(map['auditLogConfigs'], (value) => AuditLogConfigNetworkmanagementV1beta1.fromMap((value as Map).cast<String, dynamic>())),
       service: map['service'] == null ? null : map['service'] as String,
     );
   }
 }
+

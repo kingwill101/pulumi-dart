@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FunctionTracingConfig {
   /// X-Ray tracing mode. Valid values: `Active`, `PassThrough`.
   final String mode;
@@ -11,9 +12,9 @@ class FunctionTracingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['mode'] = mode;
-    return map;
+    return <String, dynamic>{
+      'mode': mode,
+    };
   }
 
   factory FunctionTracingConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class FunctionTracingConfig {
     );
   }
 }
+

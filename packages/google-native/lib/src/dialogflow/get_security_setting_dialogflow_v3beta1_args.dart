@@ -19,23 +19,20 @@ class GetSecuritySettingDialogflowV3beta1Args {
     required String location,
     String? project,
     required String securitySettingId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        securitySettingId = pulumi.Input.asInput<String>(securitySettingId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      securitySettingId = pulumi.Input.asInput<String>(securitySettingId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['securitySettingId'] = securitySettingId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+      'securitySettingId': securitySettingId,
+    };
   }
 
-  factory GetSecuritySettingDialogflowV3beta1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetSecuritySettingDialogflowV3beta1Args.fromMap(Map<String, dynamic> map) {
     return GetSecuritySettingDialogflowV3beta1Args(
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -43,3 +40,4 @@ class GetSecuritySettingDialogflowV3beta1Args {
     );
   }
 }
+

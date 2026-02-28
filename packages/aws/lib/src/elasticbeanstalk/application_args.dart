@@ -9,16 +9,12 @@ import 'application_appversion_lifecycle.dart';
 /// {@macro pulumi_elasticbeanstalk_application_application_args_doc}
 class ApplicationArgs {
   final pulumi.Input<ApplicationAppversionLifecycle>? appversionLifecycle;
-
   /// Short description of the application
   final pulumi.Input<String>? description;
-
   /// The name of the application, must be unique within your account
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Key-value map of tags for the Elastic Beanstalk Application. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -34,54 +30,31 @@ class ApplicationArgs {
     String? name,
     String? region,
     Map<String, String>? tags,
-  })  : appversionLifecycle =
-            pulumi.Input.asOptionalInput<ApplicationAppversionLifecycle>(
-                appversionLifecycle),
-        description = pulumi.Input.asOptionalInput<String>(description),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      appversionLifecycle = pulumi.Input.asOptionalInput<ApplicationAppversionLifecycle>(appversionLifecycle),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final appversionLifecycleValue = appversionLifecycle;
-    if (appversionLifecycleValue != null) {
-      map['appversionLifecycle'] = pulumi.Input.mapOptionalInputValue<
-              ApplicationAppversionLifecycle, Map<String, dynamic>>(
-          appversionLifecycleValue, (value) => value.toMap());
-    }
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'appversionLifecycle': ?pulumi.Input.mapOptionalInputValue<ApplicationAppversionLifecycle, Map<String, dynamic>>(appversionLifecycle, (value) => value.toMap()),
+      'description': ?description,
+      'name': ?name,
+      'region': ?region,
+      'tags': ?tags,
+    };
   }
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      appversionLifecycle: map['appversionLifecycle'] == null
-          ? null
-          : ApplicationAppversionLifecycle.fromMap(
-              (map['appversionLifecycle'] as Map).cast<String, dynamic>()),
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      appversionLifecycle: map['appversionLifecycle'] == null ? null : ApplicationAppversionLifecycle.fromMap((map['appversionLifecycle'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : map['description'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

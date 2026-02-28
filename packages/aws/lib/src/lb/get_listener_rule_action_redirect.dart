@@ -1,21 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetListenerRuleActionRedirect {
   /// The hostname.
   final String host;
-
   /// The absolute path, starting with `/`.
   final String path;
-
   /// The port.
   final String port;
-
   /// The protocol.
   final String protocol;
-
   /// The query parameters.
   final String query;
-
   /// The HTTP redirect code.
   final String statusCode;
 
@@ -36,14 +32,14 @@ class GetListenerRuleActionRedirect {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['host'] = host;
-    map['path'] = path;
-    map['port'] = port;
-    map['protocol'] = protocol;
-    map['query'] = query;
-    map['statusCode'] = statusCode;
-    return map;
+    return <String, dynamic>{
+      'host': host,
+      'path': path,
+      'port': port,
+      'protocol': protocol,
+      'query': query,
+      'statusCode': statusCode,
+    };
   }
 
   factory GetListenerRuleActionRedirect.fromMap(Map<String, dynamic> map) {
@@ -57,3 +53,4 @@ class GetListenerRuleActionRedirect {
     );
   }
 }
+

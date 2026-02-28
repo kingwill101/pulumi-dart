@@ -30,11 +30,9 @@ class GetAddressesArgs {
   /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell")
   /// AND (scheduling.automaticRestart = true)
   final pulumi.Input<String>? filter;
-
   /// The google project in which addresses are listed.
   /// Defaults to provider's configuration if missing.
   final pulumi.Input<String>? project;
-
   /// Region that should be considered to search addresses.
   /// All regions are considered if missing.
   final pulumi.Input<String>? region;
@@ -47,25 +45,17 @@ class GetAddressesArgs {
     String? filter,
     String? project,
     String? region,
-  })  : filter = pulumi.Input.asOptionalInput<String>(filter),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      filter = pulumi.Input.asOptionalInput<String>(filter),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final filterValue = filter;
-    if (filterValue != null) {
-      map['filter'] = filterValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'filter': ?filter,
+      'project': ?project,
+      'region': ?region,
+    };
   }
 
   factory GetAddressesArgs.fromMap(Map<String, dynamic> map) {
@@ -76,3 +66,4 @@ class GetAddressesArgs {
     );
   }
 }
+

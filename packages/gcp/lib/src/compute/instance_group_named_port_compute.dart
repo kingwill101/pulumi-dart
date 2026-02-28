@@ -365,18 +365,14 @@ import 'instance_group_named_port_args.dart';
 class InstanceGroupNamedPortCompute extends pulumi.CustomResource {
   /// The name of the instance group.
   late final pulumi.Output<String> group;
-
   /// The name for this named port. The name must be 1-63 characters
   /// long, and comply with RFC1035.
   late final pulumi.Output<String> name;
-
   /// The port number, which can be a value between 1 and 65535.
   late final pulumi.Output<int> port;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The zone of the instance group.
   late final pulumi.Output<String> zone;
 

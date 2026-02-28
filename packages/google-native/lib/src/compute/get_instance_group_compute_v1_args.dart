@@ -19,19 +19,17 @@ class GetInstanceGroupComputeV1Args {
     required String instanceGroup,
     String? project,
     required String zone,
-  })  : instanceGroup = pulumi.Input.asInput<String>(instanceGroup),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        zone = pulumi.Input.asInput<String>(zone);
+  }) :
+      instanceGroup = pulumi.Input.asInput<String>(instanceGroup),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['instanceGroup'] = instanceGroup;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'instanceGroup': instanceGroup,
+      'project': ?project,
+      'zone': zone,
+    };
   }
 
   factory GetInstanceGroupComputeV1Args.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetInstanceGroupComputeV1Args {
     );
   }
 }
+

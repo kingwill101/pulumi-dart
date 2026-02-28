@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetIndexIndexStatisticFaqStatistic {
   /// The total number of FAQ questions and answers contained in the index.
   final int indexedQuestionAnswersCount;
@@ -11,9 +12,9 @@ class GetIndexIndexStatisticFaqStatistic {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['indexedQuestionAnswersCount'] = indexedQuestionAnswersCount;
-    return map;
+    return <String, dynamic>{
+      'indexedQuestionAnswersCount': indexedQuestionAnswersCount,
+    };
   }
 
   factory GetIndexIndexStatisticFaqStatistic.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetIndexIndexStatisticFaqStatistic {
     );
   }
 }
+

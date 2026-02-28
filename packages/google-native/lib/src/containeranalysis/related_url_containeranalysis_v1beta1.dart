@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Metadata for any related URL information.
 class RelatedUrlContaineranalysisV1beta1 {
   /// Label to describe usage of the URL.
   final String? label;
-
   /// Specific URL associated with the resource.
   final String? url;
 
@@ -17,16 +17,10 @@ class RelatedUrlContaineranalysisV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final labelValue = label;
-    if (labelValue != null) {
-      map['label'] = labelValue;
-    }
-    final urlValue = url;
-    if (urlValue != null) {
-      map['url'] = urlValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'label': ?label,
+      'url': ?url,
+    };
   }
 
   factory RelatedUrlContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
@@ -36,3 +30,4 @@ class RelatedUrlContaineranalysisV1beta1 {
     );
   }
 }
+

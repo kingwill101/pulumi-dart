@@ -15,20 +15,15 @@ class ServiceMeshFeatureStateResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['analysisMessages'] = pulumi.Input.encodeList<
-        ServiceMeshAnalysisMessageResponse,
-        Map<String, dynamic>>(analysisMessages, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'analysisMessages': pulumi.Input.encodeList<ServiceMeshAnalysisMessageResponse, Map<String, dynamic>>(analysisMessages, (value) => value.toMap()),
+    };
   }
 
   factory ServiceMeshFeatureStateResponse.fromMap(Map<String, dynamic> map) {
     return ServiceMeshFeatureStateResponse(
-      analysisMessages:
-          pulumi.Input.decodeList<ServiceMeshAnalysisMessageResponse>(
-              map['analysisMessages'],
-              (value) => ServiceMeshAnalysisMessageResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      analysisMessages: pulumi.Input.decodeList<ServiceMeshAnalysisMessageResponse>(map['analysisMessages'], (value) => ServiceMeshAnalysisMessageResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

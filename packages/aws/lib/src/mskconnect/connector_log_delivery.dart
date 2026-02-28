@@ -13,15 +13,15 @@ class ConnectorLogDelivery {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['workerLogDelivery'] = workerLogDelivery.toMap();
-    return map;
+    return <String, dynamic>{
+      'workerLogDelivery': workerLogDelivery.toMap(),
+    };
   }
 
   factory ConnectorLogDelivery.fromMap(Map<String, dynamic> map) {
     return ConnectorLogDelivery(
-      workerLogDelivery: ConnectorLogDeliveryWorkerLogDelivery.fromMap(
-          (map['workerLogDelivery'] as Map).cast<String, dynamic>()),
+      workerLogDelivery: ConnectorLogDeliveryWorkerLogDelivery.fromMap((map['workerLogDelivery'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

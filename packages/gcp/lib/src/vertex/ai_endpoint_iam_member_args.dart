@@ -29,42 +29,28 @@ class AiEndpointIamMemberArgs {
     required String member,
     String? project,
     required String role,
-  })  : condition = pulumi.Input.asOptionalInput<AiEndpointIamMemberCondition>(
-            condition),
-        endpoint = pulumi.Input.asInput<String>(endpoint),
-        location = pulumi.Input.asOptionalInput<String>(location),
-        member = pulumi.Input.asInput<String>(member),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        role = pulumi.Input.asInput<String>(role);
+  }) :
+      condition = pulumi.Input.asOptionalInput<AiEndpointIamMemberCondition>(condition),
+      endpoint = pulumi.Input.asInput<String>(endpoint),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      member = pulumi.Input.asInput<String>(member),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      role = pulumi.Input.asInput<String>(role);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final conditionValue = condition;
-    if (conditionValue != null) {
-      map['condition'] = pulumi.Input.mapOptionalInputValue<
-          AiEndpointIamMemberCondition,
-          Map<String, dynamic>>(conditionValue, (value) => value.toMap());
-    }
-    map['endpoint'] = endpoint;
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    map['member'] = member;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['role'] = role;
-    return map;
+    return <String, dynamic>{
+      'condition': ?pulumi.Input.mapOptionalInputValue<AiEndpointIamMemberCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'endpoint': endpoint,
+      'location': ?location,
+      'member': member,
+      'project': ?project,
+      'role': role,
+    };
   }
 
   factory AiEndpointIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return AiEndpointIamMemberArgs(
-      condition: map['condition'] == null
-          ? null
-          : AiEndpointIamMemberCondition.fromMap(
-              (map['condition'] as Map).cast<String, dynamic>()),
+      condition: map['condition'] == null ? null : AiEndpointIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
       endpoint: map['endpoint'] as String,
       location: map['location'] == null ? null : map['location'] as String,
       member: map['member'] as String,
@@ -73,3 +59,4 @@ class AiEndpointIamMemberArgs {
     );
   }
 }
+

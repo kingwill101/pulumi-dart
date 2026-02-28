@@ -14,16 +14,15 @@ class GooglePrivacyDlpV2TransformationDetailsStorageConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['table'] = table.toMap();
-    return map;
+    return <String, dynamic>{
+      'table': table.toMap(),
+    };
   }
 
-  factory GooglePrivacyDlpV2TransformationDetailsStorageConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2TransformationDetailsStorageConfigResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2TransformationDetailsStorageConfigResponse(
-      table: GooglePrivacyDlpV2BigQueryTableResponse.fromMap(
-          (map['table'] as Map).cast<String, dynamic>()),
+      table: GooglePrivacyDlpV2BigQueryTableResponse.fromMap((map['table'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

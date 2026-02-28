@@ -7,36 +7,26 @@ import 'vpc_peering_config_response.dart';
 class PrivateConnection extends pulumi.CustomResource {
   /// The create time of the resource.
   late final pulumi.Output<String> createTime;
-
   /// The private connection display name.
   late final pulumi.Output<String> displayName;
-
   /// The error details in case of state FAILED.
   late final pulumi.Output<StatusResponse> error;
-
   /// The resource labels for private connections to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
   late final pulumi.Output<Map<String, String>> labels;
   late final pulumi.Output<String> location;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// Required. The private connection identifier.
   late final pulumi.Output<String> privateConnectionId;
   late final pulumi.Output<String> project;
-
   /// Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
   late final pulumi.Output<String?> requestId;
-
   /// Optional. If set to true, will skip validations.
   late final pulumi.Output<bool?> skipValidation;
-
   /// The state of the private connection.
   late final pulumi.Output<String> state;
-
   /// The last update time of the resource.
   late final pulumi.Output<String> updateTime;
-
   /// VPC peering configuration.
   late final pulumi.Output<VpcPeeringConfigResponse> vpcPeeringConfig;
 
@@ -66,7 +56,6 @@ class PrivateConnection extends pulumi.CustomResource {
     this.skipValidation = registerOutput<bool?>('skipValidation');
     this.state = registerOutput<String>('state');
     this.updateTime = registerOutput<String>('updateTime');
-    this.vpcPeeringConfig =
-        registerOutput<VpcPeeringConfigResponse>('vpcPeeringConfig');
+    this.vpcPeeringConfig = registerOutput<VpcPeeringConfigResponse>('vpcPeeringConfig');
   }
 }

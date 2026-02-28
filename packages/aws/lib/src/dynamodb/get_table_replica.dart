@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTableReplica {
   final String kmsKeyArn;
   final String regionName;
@@ -13,10 +14,10 @@ class GetTableReplica {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kmsKeyArn'] = kmsKeyArn;
-    map['regionName'] = regionName;
-    return map;
+    return <String, dynamic>{
+      'kmsKeyArn': kmsKeyArn,
+      'regionName': regionName,
+    };
   }
 
   factory GetTableReplica.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class GetTableReplica {
     );
   }
 }
+

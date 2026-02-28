@@ -1,21 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getCustomKeyStore.
 class GetCustomKeyStoreResult {
   final String cloudHsmClusterId;
-
   /// Indicates whether the custom key store is connected to its CloudHSM cluster.
   final String connectionState;
-
   /// The date and time when the custom key store was created.
   final String creationDate;
   final String customKeyStoreId;
   final String customKeyStoreName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
-
   /// The trust anchor certificate of the associated CloudHSM cluster.
   final String trustAnchorCertificate;
 
@@ -40,16 +37,16 @@ class GetCustomKeyStoreResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cloudHsmClusterId'] = cloudHsmClusterId;
-    map['connectionState'] = connectionState;
-    map['creationDate'] = creationDate;
-    map['customKeyStoreId'] = customKeyStoreId;
-    map['customKeyStoreName'] = customKeyStoreName;
-    map['id'] = id;
-    map['region'] = region;
-    map['trustAnchorCertificate'] = trustAnchorCertificate;
-    return map;
+    return <String, dynamic>{
+      'cloudHsmClusterId': cloudHsmClusterId,
+      'connectionState': connectionState,
+      'creationDate': creationDate,
+      'customKeyStoreId': customKeyStoreId,
+      'customKeyStoreName': customKeyStoreName,
+      'id': id,
+      'region': region,
+      'trustAnchorCertificate': trustAnchorCertificate,
+    };
   }
 
   factory GetCustomKeyStoreResult.fromMap(Map<String, dynamic> map) {
@@ -65,3 +62,4 @@ class GetCustomKeyStoreResult {
     );
   }
 }
+

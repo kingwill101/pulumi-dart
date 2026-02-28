@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The status of an SBOM generation.
 class SBOMStatusResponse {
   /// If there was an error generating an SBOM, this will indicate what that error was.
   final String error;
-
   /// The progress of the SBOM generation.
   final String sbomState;
 
@@ -17,10 +17,10 @@ class SBOMStatusResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['error'] = error;
-    map['sbomState'] = sbomState;
-    return map;
+    return <String, dynamic>{
+      'error': error,
+      'sbomState': sbomState,
+    };
   }
 
   factory SBOMStatusResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class SBOMStatusResponse {
     );
   }
 }
+

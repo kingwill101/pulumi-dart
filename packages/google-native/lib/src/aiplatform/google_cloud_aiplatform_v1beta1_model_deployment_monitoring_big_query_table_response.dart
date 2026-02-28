@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// ModelDeploymentMonitoringBigQueryTable specifies the BigQuery table name as well as some information of the logs stored in this table.
 class GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse {
   /// The created BigQuery table to store logs. Customer could do their own query & analysis. Format: `bq://.model_deployment_monitoring_._`
   final String bigqueryTablePath;
-
   /// The source of log.
   final String logSource;
-
   /// The type of log.
   final String logType;
 
@@ -22,15 +21,14 @@ class GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bigqueryTablePath'] = bigqueryTablePath;
-    map['logSource'] = logSource;
-    map['logType'] = logType;
-    return map;
+    return <String, dynamic>{
+      'bigqueryTablePath': bigqueryTablePath,
+      'logSource': logSource,
+      'logType': logType,
+    };
   }
 
-  factory GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse(
       bigqueryTablePath: map['bigqueryTablePath'] as String,
       logSource: map['logSource'] as String,
@@ -38,3 +36,4 @@ class GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetVpcDhcpOptionsFilter {
   /// Name of the field to filter.
   final String name;
-
   /// Set of values for filtering.
   ///
   /// For more information about filtering, see the [EC2 API documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeDhcpOptions.html).
@@ -18,10 +18,10 @@ class GetVpcDhcpOptionsFilter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['values'] = values;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'values': values,
+    };
   }
 
   factory GetVpcDhcpOptionsFilter.fromMap(Map<String, dynamic> map) {
@@ -31,3 +31,4 @@ class GetVpcDhcpOptionsFilter {
     );
   }
 }
+

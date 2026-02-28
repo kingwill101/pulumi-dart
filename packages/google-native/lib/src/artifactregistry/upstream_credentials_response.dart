@@ -14,15 +14,15 @@ class UpstreamCredentialsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['usernamePasswordCredentials'] = usernamePasswordCredentials.toMap();
-    return map;
+    return <String, dynamic>{
+      'usernamePasswordCredentials': usernamePasswordCredentials.toMap(),
+    };
   }
 
   factory UpstreamCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return UpstreamCredentialsResponse(
-      usernamePasswordCredentials: UsernamePasswordCredentialsResponse.fromMap(
-          (map['usernamePasswordCredentials'] as Map).cast<String, dynamic>()),
+      usernamePasswordCredentials: UsernamePasswordCredentialsResponse.fromMap((map['usernamePasswordCredentials'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

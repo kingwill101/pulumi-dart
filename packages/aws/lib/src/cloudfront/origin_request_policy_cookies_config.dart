@@ -15,22 +15,17 @@ class OriginRequestPolicyCookiesConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cookieBehavior'] = cookieBehavior;
-    final cookiesValue = cookies;
-    if (cookiesValue != null) {
-      map['cookies'] = cookiesValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'cookieBehavior': cookieBehavior,
+      'cookies': ?cookies == null ? null : cookies!.toMap(),
+    };
   }
 
   factory OriginRequestPolicyCookiesConfig.fromMap(Map<String, dynamic> map) {
     return OriginRequestPolicyCookiesConfig(
       cookieBehavior: map['cookieBehavior'] as String,
-      cookies: map['cookies'] == null
-          ? null
-          : OriginRequestPolicyCookiesConfigCookies.fromMap(
-              (map['cookies'] as Map).cast<String, dynamic>()),
+      cookies: map['cookies'] == null ? null : OriginRequestPolicyCookiesConfigCookies.fromMap((map['cookies'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

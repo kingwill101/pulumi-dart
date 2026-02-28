@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AlertPolicyConditionConditionSqlRowCountTest {
   /// The comparison to apply between the time
   /// series (indicated by filter and aggregation)
@@ -11,7 +12,6 @@ class AlertPolicyConditionConditionSqlRowCountTest {
   /// COMPARISON_GT are supported currently.
   /// Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
   final String comparison;
-
   /// The value against which to compare the row count.
   final int threshold;
 
@@ -24,17 +24,17 @@ class AlertPolicyConditionConditionSqlRowCountTest {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['comparison'] = comparison;
-    map['threshold'] = threshold;
-    return map;
+    return <String, dynamic>{
+      'comparison': comparison,
+      'threshold': threshold,
+    };
   }
 
-  factory AlertPolicyConditionConditionSqlRowCountTest.fromMap(
-      Map<String, dynamic> map) {
+  factory AlertPolicyConditionConditionSqlRowCountTest.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionSqlRowCountTest(
       comparison: map['comparison'] as String,
       threshold: map['threshold'] as int,
     );
   }
 }
+

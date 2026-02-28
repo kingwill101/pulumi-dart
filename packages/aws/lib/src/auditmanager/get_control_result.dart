@@ -44,21 +44,19 @@ class GetControlResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['actionPlanInstructions'] = actionPlanInstructions;
-    map['actionPlanTitle'] = actionPlanTitle;
-    map['arn'] = arn;
-    map['controlMappingSources'] = pulumi.Input.encodeList<
-        GetControlControlMappingSource,
-        Map<String, dynamic>>(controlMappingSources, (value) => value.toMap());
-    map['description'] = description;
-    map['id'] = id;
-    map['name'] = name;
-    map['region'] = region;
-    map['tags'] = tags;
-    map['testingInformation'] = testingInformation;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'actionPlanInstructions': actionPlanInstructions,
+      'actionPlanTitle': actionPlanTitle,
+      'arn': arn,
+      'controlMappingSources': pulumi.Input.encodeList<GetControlControlMappingSource, Map<String, dynamic>>(controlMappingSources, (value) => value.toMap()),
+      'description': description,
+      'id': id,
+      'name': name,
+      'region': region,
+      'tags': tags,
+      'testingInformation': testingInformation,
+      'type': type,
+    };
   }
 
   factory GetControlResult.fromMap(Map<String, dynamic> map) {
@@ -66,11 +64,7 @@ class GetControlResult {
       actionPlanInstructions: map['actionPlanInstructions'] as String,
       actionPlanTitle: map['actionPlanTitle'] as String,
       arn: map['arn'] as String,
-      controlMappingSources:
-          pulumi.Input.decodeList<GetControlControlMappingSource>(
-              map['controlMappingSources'],
-              (value) => GetControlControlMappingSource.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      controlMappingSources: pulumi.Input.decodeList<GetControlControlMappingSource>(map['controlMappingSources'], (value) => GetControlControlMappingSource.fromMap((value as Map).cast<String, dynamic>())),
       description: map['description'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
@@ -81,3 +75,4 @@ class GetControlResult {
     );
   }
 }
+

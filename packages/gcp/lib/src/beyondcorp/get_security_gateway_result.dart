@@ -12,7 +12,6 @@ class GetSecurityGatewayResult {
   final String displayName;
   final List<String> externalIps;
   final List<GetSecurityGatewayHub> hubs;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
@@ -57,31 +56,22 @@ class GetSecurityGatewayResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['delegatingServiceAccount'] = delegatingServiceAccount;
-    map['displayName'] = displayName;
-    map['externalIps'] = externalIps;
-    map['hubs'] =
-        pulumi.Input.encodeList<GetSecurityGatewayHub, Map<String, dynamic>>(
-            hubs, (value) => value.toMap());
-    map['id'] = id;
-    map['location'] = location;
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['proxyProtocolConfigs'] = pulumi.Input.encodeList<
-        GetSecurityGatewayProxyProtocolConfig,
-        Map<String, dynamic>>(proxyProtocolConfigs, (value) => value.toMap());
-    map['securityGatewayId'] = securityGatewayId;
-    map['serviceDiscoveries'] = pulumi.Input.encodeList<
-        GetSecurityGatewayServiceDiscovery,
-        Map<String, dynamic>>(serviceDiscoveries, (value) => value.toMap());
-    map['state'] = state;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'delegatingServiceAccount': delegatingServiceAccount,
+      'displayName': displayName,
+      'externalIps': externalIps,
+      'hubs': pulumi.Input.encodeList<GetSecurityGatewayHub, Map<String, dynamic>>(hubs, (value) => value.toMap()),
+      'id': id,
+      'location': location,
+      'name': name,
+      'project': ?project,
+      'proxyProtocolConfigs': pulumi.Input.encodeList<GetSecurityGatewayProxyProtocolConfig, Map<String, dynamic>>(proxyProtocolConfigs, (value) => value.toMap()),
+      'securityGatewayId': securityGatewayId,
+      'serviceDiscoveries': pulumi.Input.encodeList<GetSecurityGatewayServiceDiscovery, Map<String, dynamic>>(serviceDiscoveries, (value) => value.toMap()),
+      'state': state,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetSecurityGatewayResult.fromMap(Map<String, dynamic> map) {
@@ -90,27 +80,17 @@ class GetSecurityGatewayResult {
       delegatingServiceAccount: map['delegatingServiceAccount'] as String,
       displayName: map['displayName'] as String,
       externalIps: (map['externalIps'] as List).cast<String>(),
-      hubs: pulumi.Input.decodeList<GetSecurityGatewayHub>(
-          map['hubs'],
-          (value) => GetSecurityGatewayHub.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      hubs: pulumi.Input.decodeList<GetSecurityGatewayHub>(map['hubs'], (value) => GetSecurityGatewayHub.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      proxyProtocolConfigs:
-          pulumi.Input.decodeList<GetSecurityGatewayProxyProtocolConfig>(
-              map['proxyProtocolConfigs'],
-              (value) => GetSecurityGatewayProxyProtocolConfig.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      proxyProtocolConfigs: pulumi.Input.decodeList<GetSecurityGatewayProxyProtocolConfig>(map['proxyProtocolConfigs'], (value) => GetSecurityGatewayProxyProtocolConfig.fromMap((value as Map).cast<String, dynamic>())),
       securityGatewayId: map['securityGatewayId'] as String,
-      serviceDiscoveries:
-          pulumi.Input.decodeList<GetSecurityGatewayServiceDiscovery>(
-              map['serviceDiscoveries'],
-              (value) => GetSecurityGatewayServiceDiscovery.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      serviceDiscoveries: pulumi.Input.decodeList<GetSecurityGatewayServiceDiscovery>(map['serviceDiscoveries'], (value) => GetSecurityGatewayServiceDiscovery.fromMap((value as Map).cast<String, dynamic>())),
       state: map['state'] as String,
       updateTime: map['updateTime'] as String,
     );
   }
 }
+

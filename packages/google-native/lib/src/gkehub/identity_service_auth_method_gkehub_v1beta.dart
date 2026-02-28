@@ -8,16 +8,12 @@ import 'identity_service_oidc_config_gkehub_v1beta.dart';
 class IdentityServiceAuthMethodGkehubV1beta {
   /// AzureAD specific Configuration.
   final IdentityServiceAzureADConfigGkehubV1beta? azureadConfig;
-
   /// GoogleConfig specific configuration.
   final IdentityServiceGoogleConfigGkehubV1beta? googleConfig;
-
   /// Identifier for auth config.
   final String? name;
-
   /// OIDC specific configuration.
   final IdentityServiceOidcConfigGkehubV1beta? oidcConfig;
-
   /// Proxy server address to use for auth method.
   final String? proxy;
 
@@ -36,47 +32,23 @@ class IdentityServiceAuthMethodGkehubV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final azureadConfigValue = azureadConfig;
-    if (azureadConfigValue != null) {
-      map['azureadConfig'] = azureadConfigValue.toMap();
-    }
-    final googleConfigValue = googleConfig;
-    if (googleConfigValue != null) {
-      map['googleConfig'] = googleConfigValue.toMap();
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final oidcConfigValue = oidcConfig;
-    if (oidcConfigValue != null) {
-      map['oidcConfig'] = oidcConfigValue.toMap();
-    }
-    final proxyValue = proxy;
-    if (proxyValue != null) {
-      map['proxy'] = proxyValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'azureadConfig': ?azureadConfig == null ? null : azureadConfig!.toMap(),
+      'googleConfig': ?googleConfig == null ? null : googleConfig!.toMap(),
+      'name': ?name,
+      'oidcConfig': ?oidcConfig == null ? null : oidcConfig!.toMap(),
+      'proxy': ?proxy,
+    };
   }
 
-  factory IdentityServiceAuthMethodGkehubV1beta.fromMap(
-      Map<String, dynamic> map) {
+  factory IdentityServiceAuthMethodGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return IdentityServiceAuthMethodGkehubV1beta(
-      azureadConfig: map['azureadConfig'] == null
-          ? null
-          : IdentityServiceAzureADConfigGkehubV1beta.fromMap(
-              (map['azureadConfig'] as Map).cast<String, dynamic>()),
-      googleConfig: map['googleConfig'] == null
-          ? null
-          : IdentityServiceGoogleConfigGkehubV1beta.fromMap(
-              (map['googleConfig'] as Map).cast<String, dynamic>()),
+      azureadConfig: map['azureadConfig'] == null ? null : IdentityServiceAzureADConfigGkehubV1beta.fromMap((map['azureadConfig'] as Map).cast<String, dynamic>()),
+      googleConfig: map['googleConfig'] == null ? null : IdentityServiceGoogleConfigGkehubV1beta.fromMap((map['googleConfig'] as Map).cast<String, dynamic>()),
       name: map['name'] == null ? null : map['name'] as String,
-      oidcConfig: map['oidcConfig'] == null
-          ? null
-          : IdentityServiceOidcConfigGkehubV1beta.fromMap(
-              (map['oidcConfig'] as Map).cast<String, dynamic>()),
+      oidcConfig: map['oidcConfig'] == null ? null : IdentityServiceOidcConfigGkehubV1beta.fromMap((map['oidcConfig'] as Map).cast<String, dynamic>()),
       proxy: map['proxy'] == null ? null : map['proxy'] as String,
     );
   }
 }
+

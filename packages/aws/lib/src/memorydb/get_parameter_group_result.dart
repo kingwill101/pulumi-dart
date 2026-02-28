@@ -7,23 +7,17 @@ import 'get_parameter_group_parameter.dart';
 class GetParameterGroupResult {
   /// ARN of the parameter group.
   final String arn;
-
   /// Description of the parameter group.
   final String description;
-
   /// Engine version that the parameter group can be used with.
   final String family;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Name of the parameter.
   final String name;
-
   /// Set of user-defined MemoryDB parameters applied by the parameter group.
   final List<GetParameterGroupParameter> parameters;
   final String region;
-
   /// Map of tags assigned to the parameter group.
   final Map<String, String> tags;
 
@@ -48,17 +42,16 @@ class GetParameterGroupResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['description'] = description;
-    map['family'] = family;
-    map['id'] = id;
-    map['name'] = name;
-    map['parameters'] = pulumi.Input.encodeList<GetParameterGroupParameter,
-        Map<String, dynamic>>(parameters, (value) => value.toMap());
-    map['region'] = region;
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'description': description,
+      'family': family,
+      'id': id,
+      'name': name,
+      'parameters': pulumi.Input.encodeList<GetParameterGroupParameter, Map<String, dynamic>>(parameters, (value) => value.toMap()),
+      'region': region,
+      'tags': tags,
+    };
   }
 
   factory GetParameterGroupResult.fromMap(Map<String, dynamic> map) {
@@ -68,12 +61,10 @@ class GetParameterGroupResult {
       family: map['family'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      parameters: pulumi.Input.decodeList<GetParameterGroupParameter>(
-          map['parameters'],
-          (value) => GetParameterGroupParameter.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      parameters: pulumi.Input.decodeList<GetParameterGroupParameter>(map['parameters'], (value) => GetParameterGroupParameter.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

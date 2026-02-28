@@ -10,7 +10,6 @@ class RuleDeploymentArgs {
   /// Whether detections resulting from this deployment should be considered
   /// alerts.
   final pulumi.Input<bool>? alerting;
-
   /// The archive state of the rule deployment.
   /// Cannot be set to true unless enabled is set to false i.e.
   /// archiving requires a two-step process: first, disable the rule by
@@ -19,23 +18,17 @@ class RuleDeploymentArgs {
   /// If currently set to true, enabled, alerting, and run_frequency cannot be
   /// updated.
   final pulumi.Input<bool>? archived;
-
   /// Whether the rule is currently deployed continuously against incoming data.
   final pulumi.Input<bool>? enabled;
-
   /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
   final pulumi.Input<String> instance;
-
   /// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
   final pulumi.Input<String> location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The Rule ID of the rule.
   final pulumi.Input<String> rule;
-
   /// The run frequency of the rule deployment.
   /// Possible values:
   /// LIVE
@@ -61,41 +54,27 @@ class RuleDeploymentArgs {
     String? project,
     required String rule,
     String? runFrequency,
-  })  : alerting = pulumi.Input.asOptionalInput<bool>(alerting),
-        archived = pulumi.Input.asOptionalInput<bool>(archived),
-        enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-        instance = pulumi.Input.asInput<String>(instance),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        rule = pulumi.Input.asInput<String>(rule),
-        runFrequency = pulumi.Input.asOptionalInput<String>(runFrequency);
+  }) :
+      alerting = pulumi.Input.asOptionalInput<bool>(alerting),
+      archived = pulumi.Input.asOptionalInput<bool>(archived),
+      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
+      instance = pulumi.Input.asInput<String>(instance),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      rule = pulumi.Input.asInput<String>(rule),
+      runFrequency = pulumi.Input.asOptionalInput<String>(runFrequency);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final alertingValue = alerting;
-    if (alertingValue != null) {
-      map['alerting'] = alertingValue;
-    }
-    final archivedValue = archived;
-    if (archivedValue != null) {
-      map['archived'] = archivedValue;
-    }
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    map['instance'] = instance;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['rule'] = rule;
-    final runFrequencyValue = runFrequency;
-    if (runFrequencyValue != null) {
-      map['runFrequency'] = runFrequencyValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'alerting': ?alerting,
+      'archived': ?archived,
+      'enabled': ?enabled,
+      'instance': instance,
+      'location': location,
+      'project': ?project,
+      'rule': rule,
+      'runFrequency': ?runFrequency,
+    };
   }
 
   factory RuleDeploymentArgs.fromMap(Map<String, dynamic> map) {
@@ -107,8 +86,8 @@ class RuleDeploymentArgs {
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       rule: map['rule'] as String,
-      runFrequency:
-          map['runFrequency'] == null ? null : map['runFrequency'] as String,
+      runFrequency: map['runFrequency'] == null ? null : map['runFrequency'] as String,
     );
   }
 }
+

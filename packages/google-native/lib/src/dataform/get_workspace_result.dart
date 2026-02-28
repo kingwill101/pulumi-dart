@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getWorkspace.
 class GetWorkspaceResult {
   /// The workspace's name.
@@ -12,9 +13,9 @@ class GetWorkspaceResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetWorkspaceResult.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class GetWorkspaceResult {
     );
   }
 }
+

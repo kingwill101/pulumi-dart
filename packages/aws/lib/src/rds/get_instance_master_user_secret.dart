@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInstanceMasterUserSecret {
   /// The Amazon Web Services KMS key identifier that is used to encrypt the secret.
   final String kmsKeyId;
-
   /// The Amazon Resource Name (ARN) of the secret.
   final String secretArn;
-
   /// The status of the secret. Valid Values: `creating` | `active` | `rotating` | `impaired`.
   final String secretStatus;
 
@@ -21,11 +20,11 @@ class GetInstanceMasterUserSecret {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kmsKeyId'] = kmsKeyId;
-    map['secretArn'] = secretArn;
-    map['secretStatus'] = secretStatus;
-    return map;
+    return <String, dynamic>{
+      'kmsKeyId': kmsKeyId,
+      'secretArn': secretArn,
+      'secretStatus': secretStatus,
+    };
   }
 
   factory GetInstanceMasterUserSecret.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class GetInstanceMasterUserSecret {
     );
   }
 }
+

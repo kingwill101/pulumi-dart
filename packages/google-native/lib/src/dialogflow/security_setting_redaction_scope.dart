@@ -15,3 +15,4 @@ enum SecuritySettingRedactionScope {
     throw ArgumentError('Unknown SecuritySettingRedactionScope value: $value');
   }
 }
+

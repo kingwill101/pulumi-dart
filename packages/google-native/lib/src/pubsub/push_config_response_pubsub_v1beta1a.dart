@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for a push delivery endpoint.
 class PushConfigResponsePubsubV1beta1a {
   /// A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use "https://example.com/push".
@@ -12,9 +13,9 @@ class PushConfigResponsePubsubV1beta1a {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['pushEndpoint'] = pushEndpoint;
-    return map;
+    return <String, dynamic>{
+      'pushEndpoint': pushEndpoint,
+    };
   }
 
   factory PushConfigResponsePubsubV1beta1a.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class PushConfigResponsePubsubV1beta1a {
     );
   }
 }
+

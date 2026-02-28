@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetBrokerLogs {
   /// Whether audit logging is enabled.
   final bool audit;
-
   /// Whether general logging is enabled.
   final bool general;
 
@@ -16,10 +16,10 @@ class GetBrokerLogs {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['audit'] = audit;
-    map['general'] = general;
-    return map;
+    return <String, dynamic>{
+      'audit': audit,
+      'general': general,
+    };
   }
 
   factory GetBrokerLogs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetBrokerLogs {
     );
   }
 }
+

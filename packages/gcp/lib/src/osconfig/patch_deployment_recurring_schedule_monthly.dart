@@ -7,7 +7,6 @@ class PatchDeploymentRecurringScheduleMonthly {
   /// Months without the target day will be skipped. For example, a schedule to run "every month on the 31st"
   /// will not run in February, April, June, etc.
   final int? monthDay;
-
   /// Week day in a month.
   /// Structure is documented below.
   final PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth? weekDayOfMonth;
@@ -21,26 +20,17 @@ class PatchDeploymentRecurringScheduleMonthly {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final monthDayValue = monthDay;
-    if (monthDayValue != null) {
-      map['monthDay'] = monthDayValue;
-    }
-    final weekDayOfMonthValue = weekDayOfMonth;
-    if (weekDayOfMonthValue != null) {
-      map['weekDayOfMonth'] = weekDayOfMonthValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'monthDay': ?monthDay,
+      'weekDayOfMonth': ?weekDayOfMonth == null ? null : weekDayOfMonth!.toMap(),
+    };
   }
 
-  factory PatchDeploymentRecurringScheduleMonthly.fromMap(
-      Map<String, dynamic> map) {
+  factory PatchDeploymentRecurringScheduleMonthly.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentRecurringScheduleMonthly(
       monthDay: map['monthDay'] == null ? null : map['monthDay'] as int,
-      weekDayOfMonth: map['weekDayOfMonth'] == null
-          ? null
-          : PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth.fromMap(
-              (map['weekDayOfMonth'] as Map).cast<String, dynamic>()),
+      weekDayOfMonth: map['weekDayOfMonth'] == null ? null : PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth.fromMap((map['weekDayOfMonth'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

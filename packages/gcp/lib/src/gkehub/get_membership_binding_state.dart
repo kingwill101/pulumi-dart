@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetMembershipBindingState {
   /// Code describes the state of a MembershipBinding resource.
   final String code;
@@ -11,9 +12,9 @@ class GetMembershipBindingState {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['code'] = code;
-    return map;
+    return <String, dynamic>{
+      'code': code,
+    };
   }
 
   factory GetMembershipBindingState.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetMembershipBindingState {
     );
   }
 }
+

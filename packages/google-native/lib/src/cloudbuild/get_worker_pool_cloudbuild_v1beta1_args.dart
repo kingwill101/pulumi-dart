@@ -19,19 +19,17 @@ class GetWorkerPoolCloudbuildV1beta1Args {
     required String location,
     String? project,
     required String workerPoolId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        workerPoolId = pulumi.Input.asInput<String>(workerPoolId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      workerPoolId = pulumi.Input.asInput<String>(workerPoolId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['workerPoolId'] = workerPoolId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+      'workerPoolId': workerPoolId,
+    };
   }
 
   factory GetWorkerPoolCloudbuildV1beta1Args.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetWorkerPoolCloudbuildV1beta1Args {
     );
   }
 }
+

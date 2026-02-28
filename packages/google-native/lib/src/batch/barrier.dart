@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Barrier runnable blocks until all tasks in a taskgroup reach it.
 class Barrier {
   /// Barriers are identified by their index in runnable list. Names are not required, but if present should be an identifier.
@@ -12,12 +13,9 @@ class Barrier {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory Barrier.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class Barrier {
     );
   }
 }
+

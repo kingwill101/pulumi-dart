@@ -19,23 +19,20 @@ class GetHttpRouteNetworkservicesV1beta1Args {
     required String httpRouteId,
     required String location,
     String? project,
-  })  : httpRouteId = pulumi.Input.asInput<String>(httpRouteId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      httpRouteId = pulumi.Input.asInput<String>(httpRouteId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['httpRouteId'] = httpRouteId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'httpRouteId': httpRouteId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
-  factory GetHttpRouteNetworkservicesV1beta1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetHttpRouteNetworkservicesV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetHttpRouteNetworkservicesV1beta1Args(
       httpRouteId: map['httpRouteId'] as String,
       location: map['location'] as String,
@@ -43,3 +40,4 @@ class GetHttpRouteNetworkservicesV1beta1Args {
     );
   }
 }
+

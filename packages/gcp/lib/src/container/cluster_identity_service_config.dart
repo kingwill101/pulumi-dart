@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterIdentityServiceConfig {
   /// Whether to enable the Identity Service component. It is disabled by default. Set `enabled=true` to enable.
   final bool? enabled;
@@ -11,12 +12,9 @@ class ClusterIdentityServiceConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory ClusterIdentityServiceConfig.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class ClusterIdentityServiceConfig {
     );
   }
 }
+

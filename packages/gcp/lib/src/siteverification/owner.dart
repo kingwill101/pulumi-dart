@@ -370,7 +370,6 @@ class Owner extends pulumi.CustomResource {
   ///
   /// - - -
   late final pulumi.Output<String> email;
-
   /// The id of of the web resource to which the owner will be added, in the form `webResource/<resource_id>`,
   /// such as `webResource/https://www.example.com/`
   late final pulumi.Output<String> webResourceId;

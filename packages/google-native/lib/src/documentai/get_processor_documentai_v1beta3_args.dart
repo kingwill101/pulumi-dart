@@ -19,19 +19,17 @@ class GetProcessorDocumentaiV1beta3Args {
     required String location,
     required String processorId,
     String? project,
-  })  : location = pulumi.Input.asInput<String>(location),
-        processorId = pulumi.Input.asInput<String>(processorId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      processorId = pulumi.Input.asInput<String>(processorId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    map['processorId'] = processorId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'processorId': processorId,
+      'project': ?project,
+    };
   }
 
   factory GetProcessorDocumentaiV1beta3Args.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetProcessorDocumentaiV1beta3Args {
     );
   }
 }
+

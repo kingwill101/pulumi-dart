@@ -15,3 +15,4 @@ enum HashType {
     throw ArgumentError('Unknown HashType value: $value');
   }
 }
+

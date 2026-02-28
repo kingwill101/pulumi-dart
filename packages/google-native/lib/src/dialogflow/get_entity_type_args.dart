@@ -22,33 +22,28 @@ class GetEntityTypeArgs {
     String? languageCode,
     required String location,
     String? project,
-  })  : entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
-        languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
+      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['entityTypeId'] = entityTypeId;
-    final languageCodeValue = languageCode;
-    if (languageCodeValue != null) {
-      map['languageCode'] = languageCodeValue;
-    }
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'entityTypeId': entityTypeId,
+      'languageCode': ?languageCode,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetEntityTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetEntityTypeArgs(
       entityTypeId: map['entityTypeId'] as String,
-      languageCode:
-          map['languageCode'] == null ? null : map['languageCode'] as String,
+      languageCode: map['languageCode'] == null ? null : map['languageCode'] as String,
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

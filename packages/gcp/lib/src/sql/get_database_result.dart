@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getDatabase.
 class GetDatabaseResult {
   final String charset;
   final String collation;
   final String deletionPolicy;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instance;
@@ -34,19 +34,16 @@ class GetDatabaseResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['charset'] = charset;
-    map['collation'] = collation;
-    map['deletionPolicy'] = deletionPolicy;
-    map['id'] = id;
-    map['instance'] = instance;
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['selfLink'] = selfLink;
-    return map;
+    return <String, dynamic>{
+      'charset': charset,
+      'collation': collation,
+      'deletionPolicy': deletionPolicy,
+      'id': id,
+      'instance': instance,
+      'name': name,
+      'project': ?project,
+      'selfLink': selfLink,
+    };
   }
 
   factory GetDatabaseResult.fromMap(Map<String, dynamic> map) {
@@ -62,3 +59,4 @@ class GetDatabaseResult {
     );
   }
 }
+

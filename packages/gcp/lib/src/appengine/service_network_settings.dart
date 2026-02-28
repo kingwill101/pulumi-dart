@@ -351,13 +351,10 @@ import 'service_network_settings_network_settings.dart';
 class ServiceNetworkSettings extends pulumi.CustomResource {
   /// Ingress settings for this service. Will apply to all versions.
   /// Structure is documented below.
-  late final pulumi.Output<ServiceNetworkSettingsNetworkSettings>
-      networkSettings;
-
+  late final pulumi.Output<ServiceNetworkSettingsNetworkSettings> networkSettings;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The name of the service these settings apply to.
   late final pulumi.Output<String> service;
 
@@ -375,9 +372,7 @@ class ServiceNetworkSettings extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.networkSettings =
-        registerOutput<ServiceNetworkSettingsNetworkSettings>(
-            'networkSettings');
+    this.networkSettings = registerOutput<ServiceNetworkSettingsNetworkSettings>('networkSettings');
     this.project = registerOutput<String>('project');
     this.service = registerOutput<String>('service');
   }

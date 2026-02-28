@@ -7,28 +7,19 @@ import 'google_cloud_dialogflow_cx_v3beta1_input_audio_config_model_variant.dart
 /// Instructs the speech recognizer on how to process the audio content.
 class GoogleCloudDialogflowCxV3beta1InputAudioConfig {
   /// Audio encoding of the audio content to process.
-  final GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding
-      audioEncoding;
-
+  final GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding audioEncoding;
   /// Configuration of barge-in behavior during the streaming of input audio.
   final GoogleCloudDialogflowCxV3beta1BargeInConfig? bargeInConfig;
-
   /// Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words, e.g. start and end time offsets. If false or unspecified, Speech doesn't return any word-level information.
   final bool? enableWordInfo;
-
   /// Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you specify a model, the following models typically have the best performance: - phone_call (best for Agent Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search (best for very short utterances and commands)
   final String? model;
-
   /// Optional. Which variant of the Speech model to use.
-  final GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant?
-      modelVariant;
-
+  final GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant? modelVariant;
   /// Optional. A list of strings containing words and phrases that the speech recognizer should recognize with higher likelihood. See [the Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints) for more details.
   final List<String>? phraseHints;
-
   /// Sample rate (in Hertz) of the audio content sent in the query. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics) for more details.
   final int? sampleRateHertz;
-
   /// Optional. If `false` (default), recognition does not cease until the client closes the stream. If `true`, the recognizer will detect a single spoken utterance in input audio. Recognition ceases when it detects the audio's voice has stopped or paused. In this case, once a detected intent is received, the client should close the stream and start a new request with a new stream as needed. Note: This setting is relevant only for streaming methods.
   final bool? singleUtterance;
 
@@ -53,64 +44,29 @@ class GoogleCloudDialogflowCxV3beta1InputAudioConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['audioEncoding'] = audioEncoding.value;
-    final bargeInConfigValue = bargeInConfig;
-    if (bargeInConfigValue != null) {
-      map['bargeInConfig'] = bargeInConfigValue.toMap();
-    }
-    final enableWordInfoValue = enableWordInfo;
-    if (enableWordInfoValue != null) {
-      map['enableWordInfo'] = enableWordInfoValue;
-    }
-    final modelValue = model;
-    if (modelValue != null) {
-      map['model'] = modelValue;
-    }
-    final modelVariantValue = modelVariant;
-    if (modelVariantValue != null) {
-      map['modelVariant'] = modelVariantValue.value;
-    }
-    final phraseHintsValue = phraseHints;
-    if (phraseHintsValue != null) {
-      map['phraseHints'] = phraseHintsValue;
-    }
-    final sampleRateHertzValue = sampleRateHertz;
-    if (sampleRateHertzValue != null) {
-      map['sampleRateHertz'] = sampleRateHertzValue;
-    }
-    final singleUtteranceValue = singleUtterance;
-    if (singleUtteranceValue != null) {
-      map['singleUtterance'] = singleUtteranceValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'audioEncoding': audioEncoding.value,
+      'bargeInConfig': ?bargeInConfig == null ? null : bargeInConfig!.toMap(),
+      'enableWordInfo': ?enableWordInfo,
+      'model': ?model,
+      'modelVariant': ?modelVariant == null ? null : modelVariant!.value,
+      'phraseHints': ?phraseHints,
+      'sampleRateHertz': ?sampleRateHertz,
+      'singleUtterance': ?singleUtterance,
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1InputAudioConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1InputAudioConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1InputAudioConfig(
-      audioEncoding:
-          GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding.fromValue(
-              map['audioEncoding'] as String),
-      bargeInConfig: map['bargeInConfig'] == null
-          ? null
-          : GoogleCloudDialogflowCxV3beta1BargeInConfig.fromMap(
-              (map['bargeInConfig'] as Map).cast<String, dynamic>()),
-      enableWordInfo:
-          map['enableWordInfo'] == null ? null : map['enableWordInfo'] as bool,
+      audioEncoding: GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding.fromValue(map['audioEncoding'] as String),
+      bargeInConfig: map['bargeInConfig'] == null ? null : GoogleCloudDialogflowCxV3beta1BargeInConfig.fromMap((map['bargeInConfig'] as Map).cast<String, dynamic>()),
+      enableWordInfo: map['enableWordInfo'] == null ? null : map['enableWordInfo'] as bool,
       model: map['model'] == null ? null : map['model'] as String,
-      modelVariant: map['modelVariant'] == null
-          ? null
-          : GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant
-              .fromValue(map['modelVariant'] as String),
-      phraseHints: map['phraseHints'] == null
-          ? null
-          : (map['phraseHints'] as List).cast<String>(),
-      sampleRateHertz:
-          map['sampleRateHertz'] == null ? null : map['sampleRateHertz'] as int,
-      singleUtterance: map['singleUtterance'] == null
-          ? null
-          : map['singleUtterance'] as bool,
+      modelVariant: map['modelVariant'] == null ? null : GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant.fromValue(map['modelVariant'] as String),
+      phraseHints: map['phraseHints'] == null ? null : (map['phraseHints'] as List).cast<String>(),
+      sampleRateHertz: map['sampleRateHertz'] == null ? null : map['sampleRateHertz'] as int,
+      singleUtterance: map['singleUtterance'] == null ? null : map['singleUtterance'] as bool,
     );
   }
 }
+

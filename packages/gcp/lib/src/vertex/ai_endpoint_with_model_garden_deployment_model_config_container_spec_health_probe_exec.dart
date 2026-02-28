@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExec {
   /// Command is the command line to execute inside the container, the working
   /// directory for the command is root ('/') in the container's filesystem.
@@ -16,20 +17,15 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExec
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final commandsValue = commands;
-    if (commandsValue != null) {
-      map['commands'] = commandsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'commands': ?commands,
+    };
   }
 
-  factory AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExec.fromMap(
-      Map<String, dynamic> map) {
+  factory AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExec.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExec(
-      commands: map['commands'] == null
-          ? null
-          : (map['commands'] as List).cast<String>(),
+      commands: map['commands'] == null ? null : (map['commands'] as List).cast<String>(),
     );
   }
 }
+

@@ -16,20 +16,15 @@ class ListenerRuleActionForward {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['targetGroups'] = pulumi.Input.encodeList<
-        ListenerRuleActionForwardTargetGroup,
-        Map<String, dynamic>>(targetGroups, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'targetGroups': pulumi.Input.encodeList<ListenerRuleActionForwardTargetGroup, Map<String, dynamic>>(targetGroups, (value) => value.toMap()),
+    };
   }
 
   factory ListenerRuleActionForward.fromMap(Map<String, dynamic> map) {
     return ListenerRuleActionForward(
-      targetGroups:
-          pulumi.Input.decodeList<ListenerRuleActionForwardTargetGroup>(
-              map['targetGroups'],
-              (value) => ListenerRuleActionForwardTargetGroup.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      targetGroups: pulumi.Input.decodeList<ListenerRuleActionForwardTargetGroup>(map['targetGroups'], (value) => ListenerRuleActionForwardTargetGroup.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

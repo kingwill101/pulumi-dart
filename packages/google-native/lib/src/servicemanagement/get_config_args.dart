@@ -19,19 +19,17 @@ class GetConfigArgs {
     required String configId,
     required String serviceName,
     String? view,
-  })  : configId = pulumi.Input.asInput<String>(configId),
-        serviceName = pulumi.Input.asInput<String>(serviceName),
-        view = pulumi.Input.asOptionalInput<String>(view);
+  }) :
+      configId = pulumi.Input.asInput<String>(configId),
+      serviceName = pulumi.Input.asInput<String>(serviceName),
+      view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['configId'] = configId;
-    map['serviceName'] = serviceName;
-    final viewValue = view;
-    if (viewValue != null) {
-      map['view'] = viewValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'configId': configId,
+      'serviceName': serviceName,
+      'view': ?view,
+    };
   }
 
   factory GetConfigArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetConfigArgs {
     );
   }
 }
+

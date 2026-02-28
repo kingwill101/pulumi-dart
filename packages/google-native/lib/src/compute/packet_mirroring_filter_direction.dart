@@ -16,3 +16,4 @@ enum PacketMirroringFilterDirection {
     throw ArgumentError('Unknown PacketMirroringFilterDirection value: $value');
   }
 }
+

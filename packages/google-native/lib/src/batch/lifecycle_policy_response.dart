@@ -6,7 +6,6 @@ import 'action_condition_response.dart';
 class LifecyclePolicyResponse {
   /// Action to execute when ActionCondition is true. When RETRY_TASK is specified, we will retry failed tasks if we notice any exit code match and fail tasks if no match is found. Likewise, when FAIL_TASK is specified, we will fail tasks if we notice any exit code match and retry tasks if no match is found.
   final String action;
-
   /// Conditions that decide why a task failure is dealt with a specific action.
   final ActionConditionResponse actionCondition;
 
@@ -19,17 +18,17 @@ class LifecyclePolicyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['action'] = action;
-    map['actionCondition'] = actionCondition.toMap();
-    return map;
+    return <String, dynamic>{
+      'action': action,
+      'actionCondition': actionCondition.toMap(),
+    };
   }
 
   factory LifecyclePolicyResponse.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyResponse(
       action: map['action'] as String,
-      actionCondition: ActionConditionResponse.fromMap(
-          (map['actionCondition'] as Map).cast<String, dynamic>()),
+      actionCondition: ActionConditionResponse.fromMap((map['actionCondition'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

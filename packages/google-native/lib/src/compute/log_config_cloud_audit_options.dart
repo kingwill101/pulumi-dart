@@ -7,7 +7,6 @@ import 'log_config_cloud_audit_options_log_name.dart';
 class LogConfigCloudAuditOptions {
   /// This is deprecated and has no effect. Do not use.
   final AuthorizationLoggingOptions? authorizationLoggingOptions;
-
   /// This is deprecated and has no effect. Do not use.
   final LogConfigCloudAuditOptionsLogName? logName;
 
@@ -20,30 +19,17 @@ class LogConfigCloudAuditOptions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final authorizationLoggingOptionsValue = authorizationLoggingOptions;
-    if (authorizationLoggingOptionsValue != null) {
-      map['authorizationLoggingOptions'] =
-          authorizationLoggingOptionsValue.toMap();
-    }
-    final logNameValue = logName;
-    if (logNameValue != null) {
-      map['logName'] = logNameValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'authorizationLoggingOptions': ?authorizationLoggingOptions == null ? null : authorizationLoggingOptions!.toMap(),
+      'logName': ?logName == null ? null : logName!.value,
+    };
   }
 
   factory LogConfigCloudAuditOptions.fromMap(Map<String, dynamic> map) {
     return LogConfigCloudAuditOptions(
-      authorizationLoggingOptions: map['authorizationLoggingOptions'] == null
-          ? null
-          : AuthorizationLoggingOptions.fromMap(
-              (map['authorizationLoggingOptions'] as Map)
-                  .cast<String, dynamic>()),
-      logName: map['logName'] == null
-          ? null
-          : LogConfigCloudAuditOptionsLogName.fromValue(
-              map['logName'] as String),
+      authorizationLoggingOptions: map['authorizationLoggingOptions'] == null ? null : AuthorizationLoggingOptions.fromMap((map['authorizationLoggingOptions'] as Map).cast<String, dynamic>()),
+      logName: map['logName'] == null ? null : LogConfigCloudAuditOptionsLogName.fromValue(map['logName'] as String),
     );
   }
 }
+

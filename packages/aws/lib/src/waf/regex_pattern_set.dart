@@ -126,10 +126,8 @@ import 'regex_pattern_set_args.dart';
 class RegexPatternSet extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN)
   late final pulumi.Output<String> arn;
-
   /// The name or description of the Regex Pattern Set.
   late final pulumi.Output<String> name;
-
   /// A list of regular expression (regex) patterns that you want AWS WAF to search for, such as `B[a@]dB[o0]t`.
   late final pulumi.Output<List<String>?> regexPatternStrings;
 
@@ -149,7 +147,6 @@ class RegexPatternSet extends pulumi.CustomResource {
         ) {
     this.arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.regexPatternStrings =
-        registerOutput<List<String>?>('regexPatternStrings');
+    this.regexPatternStrings = registerOutput<List<String>?>('regexPatternStrings');
   }
 }

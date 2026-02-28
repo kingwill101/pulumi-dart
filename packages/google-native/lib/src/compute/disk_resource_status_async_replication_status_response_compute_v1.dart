@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DiskResourceStatusAsyncReplicationStatusResponseComputeV1 {
   final String state;
 
@@ -10,15 +11,15 @@ class DiskResourceStatusAsyncReplicationStatusResponseComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['state'] = state;
-    return map;
+    return <String, dynamic>{
+      'state': state,
+    };
   }
 
-  factory DiskResourceStatusAsyncReplicationStatusResponseComputeV1.fromMap(
-      Map<String, dynamic> map) {
+  factory DiskResourceStatusAsyncReplicationStatusResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return DiskResourceStatusAsyncReplicationStatusResponseComputeV1(
       state: map['state'] as String,
     );
   }
 }
+

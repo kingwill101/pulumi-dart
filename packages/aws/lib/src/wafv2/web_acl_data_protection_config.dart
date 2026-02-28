@@ -14,24 +14,15 @@ class WebAclDataProtectionConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dataProtectionsValue = dataProtections;
-    if (dataProtectionsValue != null) {
-      map['dataProtections'] = pulumi.Input.encodeList<
-          WebAclDataProtectionConfigDataProtection,
-          Map<String, dynamic>>(dataProtectionsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'dataProtections': ?dataProtections == null ? null : pulumi.Input.encodeList<WebAclDataProtectionConfigDataProtection, Map<String, dynamic>>(dataProtections!, (value) => value.toMap()),
+    };
   }
 
   factory WebAclDataProtectionConfig.fromMap(Map<String, dynamic> map) {
     return WebAclDataProtectionConfig(
-      dataProtections: map['dataProtections'] == null
-          ? null
-          : pulumi.Input.decodeList<WebAclDataProtectionConfigDataProtection>(
-              map['dataProtections'],
-              (value) => WebAclDataProtectionConfigDataProtection.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      dataProtections: map['dataProtections'] == null ? null : pulumi.Input.decodeList<WebAclDataProtectionConfigDataProtection>(map['dataProtections'], (value) => WebAclDataProtectionConfigDataProtection.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

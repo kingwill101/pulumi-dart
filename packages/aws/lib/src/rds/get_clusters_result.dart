@@ -7,11 +7,9 @@ import 'get_clusters_filter.dart';
 class GetClustersResult {
   /// Set of cluster ARNs of the matched RDS clusters.
   final List<String> clusterArns;
-
   /// Set of ARNs of cluster identifiers of the matched RDS clusters.
   final List<String> clusterIdentifiers;
   final List<GetClustersFilter>? filters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -31,32 +29,23 @@ class GetClustersResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clusterArns'] = clusterArns;
-    map['clusterIdentifiers'] = clusterIdentifiers;
-    final filtersValue = filters;
-    if (filtersValue != null) {
-      map['filters'] =
-          pulumi.Input.encodeList<GetClustersFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
-    }
-    map['id'] = id;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'clusterArns': clusterArns,
+      'clusterIdentifiers': clusterIdentifiers,
+      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetClustersFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'id': id,
+      'region': region,
+    };
   }
 
   factory GetClustersResult.fromMap(Map<String, dynamic> map) {
     return GetClustersResult(
       clusterArns: (map['clusterArns'] as List).cast<String>(),
       clusterIdentifiers: (map['clusterIdentifiers'] as List).cast<String>(),
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetClustersFilter>(
-              map['filters'],
-              (value) => GetClustersFilter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetClustersFilter>(map['filters'], (value) => GetClustersFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       region: map['region'] as String,
     );
   }
 }
+

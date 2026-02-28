@@ -113,14 +113,11 @@ import 'main_route_table_association_args.dart';
 class MainRouteTableAssociation extends pulumi.CustomResource {
   /// Used internally, see **Notes** below
   late final pulumi.Output<String> originalRouteTableId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ID of the Route Table to set as the new
   /// main route table for the target VPC
   late final pulumi.Output<String> routeTableId;
-
   /// The ID of the VPC whose main route table should be set
   late final pulumi.Output<String> vpcId;
 

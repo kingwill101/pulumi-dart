@@ -8,7 +8,6 @@ import 'location_containeranalysis_v1beta1.dart';
 class InstallationContaineranalysisV1beta1 {
   /// Licenses that have been declared by the authors of the package.
   final LicenseContaineranalysisV1beta1? license;
-
   /// All of the places within the filesystem versions of this package have been found.
   final List<LocationContaineranalysisV1beta1>? location;
 
@@ -21,33 +20,17 @@ class InstallationContaineranalysisV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final licenseValue = license;
-    if (licenseValue != null) {
-      map['license'] = licenseValue.toMap();
-    }
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = pulumi.Input.encodeList<
-          LocationContaineranalysisV1beta1,
-          Map<String, dynamic>>(locationValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'license': ?license == null ? null : license!.toMap(),
+      'location': ?location == null ? null : pulumi.Input.encodeList<LocationContaineranalysisV1beta1, Map<String, dynamic>>(location!, (value) => value.toMap()),
+    };
   }
 
-  factory InstallationContaineranalysisV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory InstallationContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return InstallationContaineranalysisV1beta1(
-      license: map['license'] == null
-          ? null
-          : LicenseContaineranalysisV1beta1.fromMap(
-              (map['license'] as Map).cast<String, dynamic>()),
-      location: map['location'] == null
-          ? null
-          : pulumi.Input.decodeList<LocationContaineranalysisV1beta1>(
-              map['location'],
-              (value) => LocationContaineranalysisV1beta1.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      license: map['license'] == null ? null : LicenseContaineranalysisV1beta1.fromMap((map['license'] as Map).cast<String, dynamic>()),
+      location: map['location'] == null ? null : pulumi.Input.decodeList<LocationContaineranalysisV1beta1>(map['location'], (value) => LocationContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

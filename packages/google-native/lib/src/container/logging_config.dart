@@ -14,20 +14,15 @@ class LoggingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final componentConfigValue = componentConfig;
-    if (componentConfigValue != null) {
-      map['componentConfig'] = componentConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'componentConfig': ?componentConfig == null ? null : componentConfig!.toMap(),
+    };
   }
 
   factory LoggingConfig.fromMap(Map<String, dynamic> map) {
     return LoggingConfig(
-      componentConfig: map['componentConfig'] == null
-          ? null
-          : LoggingComponentConfig.fromMap(
-              (map['componentConfig'] as Map).cast<String, dynamic>()),
+      componentConfig: map['componentConfig'] == null ? null : LoggingComponentConfig.fromMap((map['componentConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

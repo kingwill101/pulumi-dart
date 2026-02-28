@@ -8,10 +8,8 @@ class GetImageRecipesResult {
   /// Set of ARNs of the matched Image Builder Image Recipes.
   final List<String> arns;
   final List<GetImageRecipesFilter>? filters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Set of names of the matched Image Builder Image Recipes.
   final List<String> names;
   final String? owner;
@@ -34,33 +32,20 @@ class GetImageRecipesResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arns'] = arns;
-    final filtersValue = filters;
-    if (filtersValue != null) {
-      map['filters'] =
-          pulumi.Input.encodeList<GetImageRecipesFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
-    }
-    map['id'] = id;
-    map['names'] = names;
-    final ownerValue = owner;
-    if (ownerValue != null) {
-      map['owner'] = ownerValue;
-    }
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'arns': arns,
+      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetImageRecipesFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'id': id,
+      'names': names,
+      'owner': ?owner,
+      'region': region,
+    };
   }
 
   factory GetImageRecipesResult.fromMap(Map<String, dynamic> map) {
     return GetImageRecipesResult(
       arns: (map['arns'] as List).cast<String>(),
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetImageRecipesFilter>(
-              map['filters'],
-              (value) => GetImageRecipesFilter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetImageRecipesFilter>(map['filters'], (value) => GetImageRecipesFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       names: (map['names'] as List).cast<String>(),
       owner: map['owner'] == null ? null : map['owner'] as String,
@@ -68,3 +53,4 @@ class GetImageRecipesResult {
     );
   }
 }
+

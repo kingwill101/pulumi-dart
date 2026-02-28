@@ -1,23 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getParameterVersionRender.
 class GetParameterVersionRenderResult {
   /// The current state of the Parameter Version.
   final bool disabled;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The resource name of the ParameterVersion. Format:
   /// `projects/{{project}}/locations/global/parameters/{{parameter_id}}/versions/{{parameter_version_id}}`
   final String name;
   final String parameter;
-
   /// The Parameter data.
   final String parameterData;
   final String parameterVersionId;
   final String project;
-
   /// The Rendered Parameter Data specifies that if you use `__REF__()` to reference a secret and the format is JSON or YAML, the placeholder `__REF__()` will be replaced with the actual secret value. However, if the format is UNFORMATTED, it will stay the same as the original `parameter_data`.
   final String renderedParameterData;
 
@@ -42,16 +39,16 @@ class GetParameterVersionRenderResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['disabled'] = disabled;
-    map['id'] = id;
-    map['name'] = name;
-    map['parameter'] = parameter;
-    map['parameterData'] = parameterData;
-    map['parameterVersionId'] = parameterVersionId;
-    map['project'] = project;
-    map['renderedParameterData'] = renderedParameterData;
-    return map;
+    return <String, dynamic>{
+      'disabled': disabled,
+      'id': id,
+      'name': name,
+      'parameter': parameter,
+      'parameterData': parameterData,
+      'parameterVersionId': parameterVersionId,
+      'project': project,
+      'renderedParameterData': renderedParameterData,
+    };
   }
 
   factory GetParameterVersionRenderResult.fromMap(Map<String, dynamic> map) {
@@ -67,3 +64,4 @@ class GetParameterVersionRenderResult {
     );
   }
 }
+

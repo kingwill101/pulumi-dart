@@ -14,15 +14,15 @@ class AppBundleResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bundleLocation'] = bundleLocation.toMap();
-    return map;
+    return <String, dynamic>{
+      'bundleLocation': bundleLocation.toMap(),
+    };
   }
 
   factory AppBundleResponse.fromMap(Map<String, dynamic> map) {
     return AppBundleResponse(
-      bundleLocation: FileReferenceResponse.fromMap(
-          (map['bundleLocation'] as Map).cast<String, dynamic>()),
+      bundleLocation: FileReferenceResponse.fromMap((map['bundleLocation'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

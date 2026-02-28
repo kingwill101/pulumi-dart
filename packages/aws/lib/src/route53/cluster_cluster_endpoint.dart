@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterClusterEndpoint {
   /// Cluster endpoint.
   final String? endpoint;
-
   /// Region of the endpoint.
   final String? region;
 
@@ -16,16 +16,10 @@ class ClusterClusterEndpoint {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final endpointValue = endpoint;
-    if (endpointValue != null) {
-      map['endpoint'] = endpointValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'endpoint': ?endpoint,
+      'region': ?region,
+    };
   }
 
   factory ClusterClusterEndpoint.fromMap(Map<String, dynamic> map) {
@@ -35,3 +29,4 @@ class ClusterClusterEndpoint {
     );
   }
 }
+

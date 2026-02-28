@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PipelineDefinitionParameterObjectAttribute {
   /// Field identifier.
   final String key;
-
   /// Field value, expressed as a String.
   final String stringValue;
 
@@ -16,17 +16,17 @@ class PipelineDefinitionParameterObjectAttribute {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    map['stringValue'] = stringValue;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'stringValue': stringValue,
+    };
   }
 
-  factory PipelineDefinitionParameterObjectAttribute.fromMap(
-      Map<String, dynamic> map) {
+  factory PipelineDefinitionParameterObjectAttribute.fromMap(Map<String, dynamic> map) {
     return PipelineDefinitionParameterObjectAttribute(
       key: map['key'] as String,
       stringValue: map['stringValue'] as String,
     );
   }
 }
+

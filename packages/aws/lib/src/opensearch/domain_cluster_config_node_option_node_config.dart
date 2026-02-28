@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DomainClusterConfigNodeOptionNodeConfig {
   /// Number of nodes of a particular node type in the cluster.
   final int? count;
-
   /// Whether a particular node type is enabled.
   final bool? enabled;
-
   /// The instance type of a particular node type in the cluster.
   final String? type;
 
@@ -21,24 +20,14 @@ class DomainClusterConfigNodeOptionNodeConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final countValue = count;
-    if (countValue != null) {
-      map['count'] = countValue;
-    }
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'count': ?count,
+      'enabled': ?enabled,
+      'type': ?type,
+    };
   }
 
-  factory DomainClusterConfigNodeOptionNodeConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory DomainClusterConfigNodeOptionNodeConfig.fromMap(Map<String, dynamic> map) {
     return DomainClusterConfigNodeOptionNodeConfig(
       count: map['count'] == null ? null : map['count'] as int,
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
@@ -46,3 +35,4 @@ class DomainClusterConfigNodeOptionNodeConfig {
     );
   }
 }
+

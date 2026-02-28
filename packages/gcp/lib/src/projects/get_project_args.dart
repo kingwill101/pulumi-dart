@@ -14,12 +14,13 @@ class GetProjectArgs {
   /// [filter] A string filter as defined in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/list#query-parameters).
   GetProjectArgs({
     required String filter,
-  }) : filter = pulumi.Input.asInput<String>(filter);
+  }) :
+      filter = pulumi.Input.asInput<String>(filter);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['filter'] = filter;
-    return map;
+    return <String, dynamic>{
+      'filter': filter,
+    };
   }
 
   factory GetProjectArgs.fromMap(Map<String, dynamic> map) {
@@ -28,3 +29,4 @@ class GetProjectArgs {
     );
   }
 }
+

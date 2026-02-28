@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class OriginRequestPolicyHeadersConfigHeaders {
   final List<String>? items;
 
@@ -10,19 +11,15 @@ class OriginRequestPolicyHeadersConfigHeaders {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final itemsValue = items;
-    if (itemsValue != null) {
-      map['items'] = itemsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'items': ?items,
+    };
   }
 
-  factory OriginRequestPolicyHeadersConfigHeaders.fromMap(
-      Map<String, dynamic> map) {
+  factory OriginRequestPolicyHeadersConfigHeaders.fromMap(Map<String, dynamic> map) {
     return OriginRequestPolicyHeadersConfigHeaders(
-      items:
-          map['items'] == null ? null : (map['items'] as List).cast<String>(),
+      items: map['items'] == null ? null : (map['items'] as List).cast<String>(),
     );
   }
 }
+

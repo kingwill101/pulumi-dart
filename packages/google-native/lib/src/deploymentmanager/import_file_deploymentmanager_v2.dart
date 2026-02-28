@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ImportFileDeploymentmanagerV2 {
   /// The contents of the file.
   final String? content;
-
   /// The name of the file.
   final String? name;
 
@@ -16,16 +16,10 @@ class ImportFileDeploymentmanagerV2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final contentValue = content;
-    if (contentValue != null) {
-      map['content'] = contentValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'content': ?content,
+      'name': ?name,
+    };
   }
 
   factory ImportFileDeploymentmanagerV2.fromMap(Map<String, dynamic> map) {
@@ -35,3 +29,4 @@ class ImportFileDeploymentmanagerV2 {
     );
   }
 }
+

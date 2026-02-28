@@ -15,3 +15,4 @@ enum TableType {
     throw ArgumentError('Unknown TableType value: $value');
   }
 }
+

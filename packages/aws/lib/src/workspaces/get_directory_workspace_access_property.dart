@@ -1,27 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDirectoryWorkspaceAccessProperty {
   /// (Optional) Indicates whether users can use Android devices to access their WorkSpaces.
   final String deviceTypeAndroid;
-
   /// (Optional) Indicates whether users can use Chromebooks to access their WorkSpaces.
   final String deviceTypeChromeos;
-
   /// (Optional) Indicates whether users can use iOS devices to access their WorkSpaces.
   final String deviceTypeIos;
-
   /// (Optional) Indicates whether users can use Linux clients to access their WorkSpaces.
   final String deviceTypeLinux;
-
   /// (Optional) Indicates whether users can use macOS clients to access their WorkSpaces.
   final String deviceTypeOsx;
-
   /// (Optional) Indicates whether users can access their WorkSpaces through a web browser.
   final String deviceTypeWeb;
-
   /// (Optional) Indicates whether users can use Windows clients to access their WorkSpaces.
   final String deviceTypeWindows;
-
   /// (Optional) Indicates whether users can use zero client devices to access their WorkSpaces.
   final String deviceTypeZeroclient;
 
@@ -46,20 +40,19 @@ class GetDirectoryWorkspaceAccessProperty {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['deviceTypeAndroid'] = deviceTypeAndroid;
-    map['deviceTypeChromeos'] = deviceTypeChromeos;
-    map['deviceTypeIos'] = deviceTypeIos;
-    map['deviceTypeLinux'] = deviceTypeLinux;
-    map['deviceTypeOsx'] = deviceTypeOsx;
-    map['deviceTypeWeb'] = deviceTypeWeb;
-    map['deviceTypeWindows'] = deviceTypeWindows;
-    map['deviceTypeZeroclient'] = deviceTypeZeroclient;
-    return map;
+    return <String, dynamic>{
+      'deviceTypeAndroid': deviceTypeAndroid,
+      'deviceTypeChromeos': deviceTypeChromeos,
+      'deviceTypeIos': deviceTypeIos,
+      'deviceTypeLinux': deviceTypeLinux,
+      'deviceTypeOsx': deviceTypeOsx,
+      'deviceTypeWeb': deviceTypeWeb,
+      'deviceTypeWindows': deviceTypeWindows,
+      'deviceTypeZeroclient': deviceTypeZeroclient,
+    };
   }
 
-  factory GetDirectoryWorkspaceAccessProperty.fromMap(
-      Map<String, dynamic> map) {
+  factory GetDirectoryWorkspaceAccessProperty.fromMap(Map<String, dynamic> map) {
     return GetDirectoryWorkspaceAccessProperty(
       deviceTypeAndroid: map['deviceTypeAndroid'] as String,
       deviceTypeChromeos: map['deviceTypeChromeos'] as String,
@@ -72,3 +65,4 @@ class GetDirectoryWorkspaceAccessProperty {
     );
   }
 }
+

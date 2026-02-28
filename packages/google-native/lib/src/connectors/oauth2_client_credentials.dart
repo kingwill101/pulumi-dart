@@ -6,7 +6,6 @@ import 'secret.dart';
 class Oauth2ClientCredentials {
   /// The client identifier.
   final String? clientId;
-
   /// Secret version reference containing the client secret.
   final Secret? clientSecret;
 
@@ -19,25 +18,17 @@ class Oauth2ClientCredentials {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final clientIdValue = clientId;
-    if (clientIdValue != null) {
-      map['clientId'] = clientIdValue;
-    }
-    final clientSecretValue = clientSecret;
-    if (clientSecretValue != null) {
-      map['clientSecret'] = clientSecretValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'clientId': ?clientId,
+      'clientSecret': ?clientSecret == null ? null : clientSecret!.toMap(),
+    };
   }
 
   factory Oauth2ClientCredentials.fromMap(Map<String, dynamic> map) {
     return Oauth2ClientCredentials(
       clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      clientSecret: map['clientSecret'] == null
-          ? null
-          : Secret.fromMap(
-              (map['clientSecret'] as Map).cast<String, dynamic>()),
+      clientSecret: map['clientSecret'] == null ? null : Secret.fromMap((map['clientSecret'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

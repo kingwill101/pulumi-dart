@@ -1,38 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getBootstrapBrokers.
 class GetBootstrapBrokersResult {
   /// Comma separated list of one or more hostname:port pairs of kafka brokers suitable to bootstrap connectivity to the kafka cluster.
   final String bootstrapBrokers;
-
   /// One or more DNS names (or IP addresses) and SASL IAM port pairs.
   final String bootstrapBrokersPublicSaslIam;
-
   /// One or more DNS names (or IP addresses) and SASL SCRAM port pairs.
   final String bootstrapBrokersPublicSaslScram;
-
   /// One or more DNS names (or IP addresses) and TLS port pairs.
   final String bootstrapBrokersPublicTls;
-
   /// One or more DNS names (or IP addresses) and SASL IAM port pairs.
   final String bootstrapBrokersSaslIam;
-
   /// One or more DNS names (or IP addresses) and SASL SCRAM port pairs.
   final String bootstrapBrokersSaslScram;
-
   /// One or more DNS names (or IP addresses) and TLS port pairs.
   final String bootstrapBrokersTls;
-
   /// A string containing one or more DNS names (or IP addresses) and SASL IAM port pairs for VPC connectivity.
   final String bootstrapBrokersVpcConnectivitySaslIam;
-
   /// A string containing one or more DNS names (or IP addresses) and SASL SCRAM port pairs for VPC connectivity.
   final String bootstrapBrokersVpcConnectivitySaslScram;
-
   /// A string containing one or more DNS names (or IP addresses) and TLS port pairs for VPC connectivity.
   final String bootstrapBrokersVpcConnectivityTls;
   final String clusterArn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -68,46 +59,39 @@ class GetBootstrapBrokersResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bootstrapBrokers'] = bootstrapBrokers;
-    map['bootstrapBrokersPublicSaslIam'] = bootstrapBrokersPublicSaslIam;
-    map['bootstrapBrokersPublicSaslScram'] = bootstrapBrokersPublicSaslScram;
-    map['bootstrapBrokersPublicTls'] = bootstrapBrokersPublicTls;
-    map['bootstrapBrokersSaslIam'] = bootstrapBrokersSaslIam;
-    map['bootstrapBrokersSaslScram'] = bootstrapBrokersSaslScram;
-    map['bootstrapBrokersTls'] = bootstrapBrokersTls;
-    map['bootstrapBrokersVpcConnectivitySaslIam'] =
-        bootstrapBrokersVpcConnectivitySaslIam;
-    map['bootstrapBrokersVpcConnectivitySaslScram'] =
-        bootstrapBrokersVpcConnectivitySaslScram;
-    map['bootstrapBrokersVpcConnectivityTls'] =
-        bootstrapBrokersVpcConnectivityTls;
-    map['clusterArn'] = clusterArn;
-    map['id'] = id;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'bootstrapBrokers': bootstrapBrokers,
+      'bootstrapBrokersPublicSaslIam': bootstrapBrokersPublicSaslIam,
+      'bootstrapBrokersPublicSaslScram': bootstrapBrokersPublicSaslScram,
+      'bootstrapBrokersPublicTls': bootstrapBrokersPublicTls,
+      'bootstrapBrokersSaslIam': bootstrapBrokersSaslIam,
+      'bootstrapBrokersSaslScram': bootstrapBrokersSaslScram,
+      'bootstrapBrokersTls': bootstrapBrokersTls,
+      'bootstrapBrokersVpcConnectivitySaslIam': bootstrapBrokersVpcConnectivitySaslIam,
+      'bootstrapBrokersVpcConnectivitySaslScram': bootstrapBrokersVpcConnectivitySaslScram,
+      'bootstrapBrokersVpcConnectivityTls': bootstrapBrokersVpcConnectivityTls,
+      'clusterArn': clusterArn,
+      'id': id,
+      'region': region,
+    };
   }
 
   factory GetBootstrapBrokersResult.fromMap(Map<String, dynamic> map) {
     return GetBootstrapBrokersResult(
       bootstrapBrokers: map['bootstrapBrokers'] as String,
-      bootstrapBrokersPublicSaslIam:
-          map['bootstrapBrokersPublicSaslIam'] as String,
-      bootstrapBrokersPublicSaslScram:
-          map['bootstrapBrokersPublicSaslScram'] as String,
+      bootstrapBrokersPublicSaslIam: map['bootstrapBrokersPublicSaslIam'] as String,
+      bootstrapBrokersPublicSaslScram: map['bootstrapBrokersPublicSaslScram'] as String,
       bootstrapBrokersPublicTls: map['bootstrapBrokersPublicTls'] as String,
       bootstrapBrokersSaslIam: map['bootstrapBrokersSaslIam'] as String,
       bootstrapBrokersSaslScram: map['bootstrapBrokersSaslScram'] as String,
       bootstrapBrokersTls: map['bootstrapBrokersTls'] as String,
-      bootstrapBrokersVpcConnectivitySaslIam:
-          map['bootstrapBrokersVpcConnectivitySaslIam'] as String,
-      bootstrapBrokersVpcConnectivitySaslScram:
-          map['bootstrapBrokersVpcConnectivitySaslScram'] as String,
-      bootstrapBrokersVpcConnectivityTls:
-          map['bootstrapBrokersVpcConnectivityTls'] as String,
+      bootstrapBrokersVpcConnectivitySaslIam: map['bootstrapBrokersVpcConnectivitySaslIam'] as String,
+      bootstrapBrokersVpcConnectivitySaslScram: map['bootstrapBrokersVpcConnectivitySaslScram'] as String,
+      bootstrapBrokersVpcConnectivityTls: map['bootstrapBrokersVpcConnectivityTls'] as String,
       clusterArn: map['clusterArn'] as String,
       id: map['id'] as String,
       region: map['region'] as String,
     );
   }
 }
+

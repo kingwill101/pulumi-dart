@@ -697,33 +697,24 @@ class Entry extends pulumi.CustomResource {
   /// Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
   /// Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
   /// Structure is documented below.
-  late final pulumi.Output<List<EntryBigqueryDateShardedSpec>>
-      bigqueryDateShardedSpecs;
-
+  late final pulumi.Output<List<EntryBigqueryDateShardedSpec>> bigqueryDateShardedSpecs;
   /// Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
   /// Structure is documented below.
   late final pulumi.Output<List<EntryBigqueryTableSpec>> bigqueryTableSpecs;
-
   /// Entry description, which can consist of several sentences or paragraphs that describe entry contents.
   late final pulumi.Output<String?> description;
-
   /// Display information such as title and description. A short name to identify the entry,
   /// for example, "Analytics Data - Jan 2011".
   late final pulumi.Output<String?> displayName;
-
   /// The name of the entry group this entry is in.
   late final pulumi.Output<String> entryGroup;
-
   /// The id of the entry to create.
   late final pulumi.Output<String> entryId;
-
   /// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
   /// Structure is documented below.
   late final pulumi.Output<EntryGcsFilesetSpec?> gcsFilesetSpec;
-
   /// This field indicates the entry's source system that Data Catalog integrates with, such as BigQuery or Pub/Sub.
   late final pulumi.Output<String> integratedSystem;
-
   /// The resource this metadata entry refers to.
   /// For Google Cloud Platform resources, linkedResource is the full name of the resource.
   /// For example, the linkedResource for a table resource from BigQuery is:
@@ -731,28 +722,23 @@ class Entry extends pulumi.CustomResource {
   /// Output only when Entry is of type in the EntryType enum. For entries with userSpecifiedType,
   /// this field is optional and defaults to an empty string.
   late final pulumi.Output<String> linkedResource;
-
   /// The Data Catalog resource name of the entry in URL format.
   /// Example: projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}.
   /// Note that this Entry and its child resources may not actually be stored in the location in this name.
   late final pulumi.Output<String> name;
-
   /// Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
   /// attached to it. See
   /// https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
   /// for what fields this schema can contain.
   late final pulumi.Output<String?> schema;
-
   /// The type of the entry. Only used for Entries with types in the EntryType enum.
   /// Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
   /// Possible values are: `FILESET`.
   late final pulumi.Output<String?> type;
-
   /// This field indicates the entry's source system that Data Catalog does not integrate with.
   /// userSpecifiedSystem strings must begin with a letter or underscore and can only contain letters, numbers,
   /// and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
   late final pulumi.Output<String?> userSpecifiedSystem;
-
   /// Entry type if it does not fit any of the input-allowed values listed in EntryType enum above.
   /// When creating an entry, users should check the enum values first, if nothing matches the entry
   /// to be created, then provide a custom value, for example "my_special_type".
@@ -774,17 +760,13 @@ class Entry extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.bigqueryDateShardedSpecs =
-        registerOutput<List<EntryBigqueryDateShardedSpec>>(
-            'bigqueryDateShardedSpecs');
-    this.bigqueryTableSpecs =
-        registerOutput<List<EntryBigqueryTableSpec>>('bigqueryTableSpecs');
+    this.bigqueryDateShardedSpecs = registerOutput<List<EntryBigqueryDateShardedSpec>>('bigqueryDateShardedSpecs');
+    this.bigqueryTableSpecs = registerOutput<List<EntryBigqueryTableSpec>>('bigqueryTableSpecs');
     this.description = registerOutput<String?>('description');
     this.displayName = registerOutput<String?>('displayName');
     this.entryGroup = registerOutput<String>('entryGroup');
     this.entryId = registerOutput<String>('entryId');
-    this.gcsFilesetSpec =
-        registerOutput<EntryGcsFilesetSpec?>('gcsFilesetSpec');
+    this.gcsFilesetSpec = registerOutput<EntryGcsFilesetSpec?>('gcsFilesetSpec');
     this.integratedSystem = registerOutput<String>('integratedSystem');
     this.linkedResource = registerOutput<String>('linkedResource');
     this.name = registerOutput<String>('name');

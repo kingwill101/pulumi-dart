@@ -9,42 +9,29 @@ import 'host_query_args.dart';
 class HostQuery extends pulumi.CustomResource {
   /// Creation time of the query.
   late final pulumi.Output<String> created;
-
   /// Hostname is available only when query is executed at host level.
   late final pulumi.Output<String> envgroupHostname;
-
   /// Error is set when query fails.
   late final pulumi.Output<String> error;
-
   /// ExecutionTime is available only after the query is completed.
   late final pulumi.Output<String> executionTime;
-
   /// Asynchronous Query Name.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> organizationId;
-
   /// Contains information like metrics, dimenstions etc of the AsyncQuery.
-  late final pulumi.Output<GoogleCloudApigeeV1QueryMetadataResponse>
-      queryParams;
-
+  late final pulumi.Output<GoogleCloudApigeeV1QueryMetadataResponse> queryParams;
   /// Asynchronous Report ID.
   late final pulumi.Output<String> reportDefinitionId;
-
   /// Result is available only after the query is completed.
   late final pulumi.Output<GoogleCloudApigeeV1AsyncQueryResultResponse> result;
-
   /// ResultFileSize is available only after the query is completed.
   late final pulumi.Output<String> resultFileSize;
-
   /// ResultRows is available only after the query is completed.
   late final pulumi.Output<String> resultRows;
-
   /// Self link of the query. Example: `/organizations/myorg/environments/myenv/queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd` or following format if query is running at host level: `/organizations/myorg/hostQueries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
   late final pulumi.Output<String> self;
-
   /// Query state could be "enqueued", "running", "completed", "failed".
   late final pulumi.Output<String> state;
-
   /// Last updated timestamp for the query.
   late final pulumi.Output<String> updated;
 
@@ -68,11 +55,9 @@ class HostQuery extends pulumi.CustomResource {
     this.executionTime = registerOutput<String>('executionTime');
     this.name = registerOutput<String>('name');
     this.organizationId = registerOutput<String>('organizationId');
-    this.queryParams =
-        registerOutput<GoogleCloudApigeeV1QueryMetadataResponse>('queryParams');
+    this.queryParams = registerOutput<GoogleCloudApigeeV1QueryMetadataResponse>('queryParams');
     this.reportDefinitionId = registerOutput<String>('reportDefinitionId');
-    this.result =
-        registerOutput<GoogleCloudApigeeV1AsyncQueryResultResponse>('result');
+    this.result = registerOutput<GoogleCloudApigeeV1AsyncQueryResultResponse>('result');
     this.resultFileSize = registerOutput<String>('resultFileSize');
     this.resultRows = registerOutput<String>('resultRows');
     this.self = registerOutput<String>('self');

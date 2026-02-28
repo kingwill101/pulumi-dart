@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AttachmentRoutingPolicyLabelArgs {
   /// The ID of the attachment to apply the routing policy label to.
   final pulumi.Input<String> attachmentId;
-
   /// The ID of the core network containing the attachment.
   final pulumi.Input<String> coreNetworkId;
-
   /// The routing policy label to apply to the attachment.
   final pulumi.Input<String> routingPolicyLabel;
 
@@ -24,16 +22,17 @@ class AttachmentRoutingPolicyLabelArgs {
     required String attachmentId,
     required String coreNetworkId,
     required String routingPolicyLabel,
-  })  : attachmentId = pulumi.Input.asInput<String>(attachmentId),
-        coreNetworkId = pulumi.Input.asInput<String>(coreNetworkId),
-        routingPolicyLabel = pulumi.Input.asInput<String>(routingPolicyLabel);
+  }) :
+      attachmentId = pulumi.Input.asInput<String>(attachmentId),
+      coreNetworkId = pulumi.Input.asInput<String>(coreNetworkId),
+      routingPolicyLabel = pulumi.Input.asInput<String>(routingPolicyLabel);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['attachmentId'] = attachmentId;
-    map['coreNetworkId'] = coreNetworkId;
-    map['routingPolicyLabel'] = routingPolicyLabel;
-    return map;
+    return <String, dynamic>{
+      'attachmentId': attachmentId,
+      'coreNetworkId': coreNetworkId,
+      'routingPolicyLabel': routingPolicyLabel,
+    };
   }
 
   factory AttachmentRoutingPolicyLabelArgs.fromMap(Map<String, dynamic> map) {
@@ -44,3 +43,4 @@ class AttachmentRoutingPolicyLabelArgs {
     );
   }
 }
+

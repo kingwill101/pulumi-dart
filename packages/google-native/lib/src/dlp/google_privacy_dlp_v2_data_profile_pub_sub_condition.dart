@@ -14,21 +14,15 @@ class GooglePrivacyDlpV2DataProfilePubSubCondition {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final expressionsValue = expressions;
-    if (expressionsValue != null) {
-      map['expressions'] = expressionsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'expressions': ?expressions == null ? null : expressions!.toMap(),
+    };
   }
 
-  factory GooglePrivacyDlpV2DataProfilePubSubCondition.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2DataProfilePubSubCondition.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DataProfilePubSubCondition(
-      expressions: map['expressions'] == null
-          ? null
-          : GooglePrivacyDlpV2PubSubExpressions.fromMap(
-              (map['expressions'] as Map).cast<String, dynamic>()),
+      expressions: map['expressions'] == null ? null : GooglePrivacyDlpV2PubSubExpressions.fromMap((map['expressions'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

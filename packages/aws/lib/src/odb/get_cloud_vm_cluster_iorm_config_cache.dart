@@ -22,25 +22,21 @@ class GetCloudVmClusterIormConfigCache {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dbPlans'] = pulumi.Input.encodeList<
-        GetCloudVmClusterIormConfigCacheDbPlan,
-        Map<String, dynamic>>(dbPlans, (value) => value.toMap());
-    map['lifecycleDetails'] = lifecycleDetails;
-    map['lifecycleState'] = lifecycleState;
-    map['objective'] = objective;
-    return map;
+    return <String, dynamic>{
+      'dbPlans': pulumi.Input.encodeList<GetCloudVmClusterIormConfigCacheDbPlan, Map<String, dynamic>>(dbPlans, (value) => value.toMap()),
+      'lifecycleDetails': lifecycleDetails,
+      'lifecycleState': lifecycleState,
+      'objective': objective,
+    };
   }
 
   factory GetCloudVmClusterIormConfigCache.fromMap(Map<String, dynamic> map) {
     return GetCloudVmClusterIormConfigCache(
-      dbPlans: pulumi.Input.decodeList<GetCloudVmClusterIormConfigCacheDbPlan>(
-          map['dbPlans'],
-          (value) => GetCloudVmClusterIormConfigCacheDbPlan.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      dbPlans: pulumi.Input.decodeList<GetCloudVmClusterIormConfigCacheDbPlan>(map['dbPlans'], (value) => GetCloudVmClusterIormConfigCacheDbPlan.fromMap((value as Map).cast<String, dynamic>())),
       lifecycleDetails: map['lifecycleDetails'] as String,
       lifecycleState: map['lifecycleState'] as String,
       objective: map['objective'] as String,
     );
   }
 }
+

@@ -14,24 +14,15 @@ class WebAclAssociationConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final requestBodiesValue = requestBodies;
-    if (requestBodiesValue != null) {
-      map['requestBodies'] = pulumi.Input.encodeList<
-          WebAclAssociationConfigRequestBody,
-          Map<String, dynamic>>(requestBodiesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'requestBodies': ?requestBodies == null ? null : pulumi.Input.encodeList<WebAclAssociationConfigRequestBody, Map<String, dynamic>>(requestBodies!, (value) => value.toMap()),
+    };
   }
 
   factory WebAclAssociationConfig.fromMap(Map<String, dynamic> map) {
     return WebAclAssociationConfig(
-      requestBodies: map['requestBodies'] == null
-          ? null
-          : pulumi.Input.decodeList<WebAclAssociationConfigRequestBody>(
-              map['requestBodies'],
-              (value) => WebAclAssociationConfigRequestBody.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      requestBodies: map['requestBodies'] == null ? null : pulumi.Input.decodeList<WebAclAssociationConfigRequestBody>(map['requestBodies'], (value) => WebAclAssociationConfigRequestBody.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

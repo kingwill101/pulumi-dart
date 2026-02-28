@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// QueuedProvisioning defines the queued provisioning used by the node pool.
 class QueuedProvisioningResponse {
   /// Denotes that this nodepool is QRM specific, meaning nodes can be only obtained through queuing via the Cluster Autoscaler ProvisioningRequest API.
@@ -12,9 +13,9 @@ class QueuedProvisioningResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory QueuedProvisioningResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class QueuedProvisioningResponse {
     );
   }
 }
+

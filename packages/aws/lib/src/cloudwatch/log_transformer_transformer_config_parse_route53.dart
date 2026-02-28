@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LogTransformerTransformerConfigParseRoute53 {
   /// Specifies the source field to be parsed. The only allowed value is `@message`. If omitted, the whole log message is processed.
   final String? source;
@@ -11,18 +12,15 @@ class LogTransformerTransformerConfigParseRoute53 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final sourceValue = source;
-    if (sourceValue != null) {
-      map['source'] = sourceValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'source': ?source,
+    };
   }
 
-  factory LogTransformerTransformerConfigParseRoute53.fromMap(
-      Map<String, dynamic> map) {
+  factory LogTransformerTransformerConfigParseRoute53.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigParseRoute53(
       source: map['source'] == null ? null : map['source'] as String,
     );
   }
 }
+

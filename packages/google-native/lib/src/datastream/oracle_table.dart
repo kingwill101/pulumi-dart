@@ -7,7 +7,6 @@ import 'oracle_column.dart';
 class OracleTable {
   /// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
   final List<OracleColumn>? oracleColumns;
-
   /// Table name.
   final String? table;
 
@@ -20,29 +19,17 @@ class OracleTable {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final oracleColumnsValue = oracleColumns;
-    if (oracleColumnsValue != null) {
-      map['oracleColumns'] =
-          pulumi.Input.encodeList<OracleColumn, Map<String, dynamic>>(
-              oracleColumnsValue, (value) => value.toMap());
-    }
-    final tableValue = table;
-    if (tableValue != null) {
-      map['table'] = tableValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'oracleColumns': ?oracleColumns == null ? null : pulumi.Input.encodeList<OracleColumn, Map<String, dynamic>>(oracleColumns!, (value) => value.toMap()),
+      'table': ?table,
+    };
   }
 
   factory OracleTable.fromMap(Map<String, dynamic> map) {
     return OracleTable(
-      oracleColumns: map['oracleColumns'] == null
-          ? null
-          : pulumi.Input.decodeList<OracleColumn>(
-              map['oracleColumns'],
-              (value) =>
-                  OracleColumn.fromMap((value as Map).cast<String, dynamic>())),
+      oracleColumns: map['oracleColumns'] == null ? null : pulumi.Input.decodeList<OracleColumn>(map['oracleColumns'], (value) => OracleColumn.fromMap((value as Map).cast<String, dynamic>())),
       table: map['table'] == null ? null : map['table'] as String,
     );
   }
 }
+

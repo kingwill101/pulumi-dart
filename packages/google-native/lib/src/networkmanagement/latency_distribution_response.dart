@@ -15,19 +15,15 @@ class LatencyDistributionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['latencyPercentiles'] = pulumi.Input.encodeList<
-        LatencyPercentileResponse,
-        Map<String, dynamic>>(latencyPercentiles, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'latencyPercentiles': pulumi.Input.encodeList<LatencyPercentileResponse, Map<String, dynamic>>(latencyPercentiles, (value) => value.toMap()),
+    };
   }
 
   factory LatencyDistributionResponse.fromMap(Map<String, dynamic> map) {
     return LatencyDistributionResponse(
-      latencyPercentiles: pulumi.Input.decodeList<LatencyPercentileResponse>(
-          map['latencyPercentiles'],
-          (value) => LatencyPercentileResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      latencyPercentiles: pulumi.Input.decodeList<LatencyPercentileResponse>(map['latencyPercentiles'], (value) => LatencyPercentileResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

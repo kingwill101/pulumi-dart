@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDnsAuthorizationArgs {
   /// The name of the DNS Authorization.
   final pulumi.Input<String> domain;
-
   /// The Certificate Manager location. If not specified, "global" is used.
   final pulumi.Input<String>? location;
-
   /// The name of the DNS Authorization.
   final pulumi.Input<String> name;
-
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
 
@@ -29,24 +26,19 @@ class GetDnsAuthorizationArgs {
     String? location,
     required String name,
     String? project,
-  })  : domain = pulumi.Input.asInput<String>(domain),
-        location = pulumi.Input.asOptionalInput<String>(location),
-        name = pulumi.Input.asInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      domain = pulumi.Input.asInput<String>(domain),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      name = pulumi.Input.asInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['domain'] = domain;
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'domain': domain,
+      'location': ?location,
+      'name': name,
+      'project': ?project,
+    };
   }
 
   factory GetDnsAuthorizationArgs.fromMap(Map<String, dynamic> map) {
@@ -58,3 +50,4 @@ class GetDnsAuthorizationArgs {
     );
   }
 }
+

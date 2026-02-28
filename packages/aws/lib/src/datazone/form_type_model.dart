@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FormTypeModel {
   /// Smithy document that indicates the model of the API. Must be between the lengths 1 and 100,000 and be encoded as a smithy document.
   ///
@@ -13,9 +14,9 @@ class FormTypeModel {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['smithy'] = smithy;
-    return map;
+    return <String, dynamic>{
+      'smithy': smithy,
+    };
   }
 
   factory FormTypeModel.fromMap(Map<String, dynamic> map) {
@@ -24,3 +25,4 @@ class FormTypeModel {
     );
   }
 }
+

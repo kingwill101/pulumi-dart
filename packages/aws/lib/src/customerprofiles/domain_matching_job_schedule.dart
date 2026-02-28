@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DomainMatchingJobSchedule {
   /// The day when the Identity Resolution Job should run every week.
   final String dayOfTheWeek;
-
   /// The time when the Identity Resolution Job should run every week.
   final String time;
 
@@ -16,10 +16,10 @@ class DomainMatchingJobSchedule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dayOfTheWeek'] = dayOfTheWeek;
-    map['time'] = time;
-    return map;
+    return <String, dynamic>{
+      'dayOfTheWeek': dayOfTheWeek,
+      'time': time,
+    };
   }
 
   factory DomainMatchingJobSchedule.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class DomainMatchingJobSchedule {
     );
   }
 }
+

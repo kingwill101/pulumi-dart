@@ -19,19 +19,17 @@ class GetVersionArgs {
     required String modelId,
     String? project,
     required String versionId,
-  })  : modelId = pulumi.Input.asInput<String>(modelId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        versionId = pulumi.Input.asInput<String>(versionId);
+  }) :
+      modelId = pulumi.Input.asInput<String>(modelId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      versionId = pulumi.Input.asInput<String>(versionId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['modelId'] = modelId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['versionId'] = versionId;
-    return map;
+    return <String, dynamic>{
+      'modelId': modelId,
+      'project': ?project,
+      'versionId': versionId,
+    };
   }
 
   factory GetVersionArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetVersionArgs {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BareMetalClusterBinaryAuthorization {
   /// Mode of operation for binauthz policy evaluation. If unspecified,
   /// defaults to DISABLED.
@@ -13,20 +14,15 @@ class BareMetalClusterBinaryAuthorization {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final evaluationModeValue = evaluationMode;
-    if (evaluationModeValue != null) {
-      map['evaluationMode'] = evaluationModeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'evaluationMode': ?evaluationMode,
+    };
   }
 
-  factory BareMetalClusterBinaryAuthorization.fromMap(
-      Map<String, dynamic> map) {
+  factory BareMetalClusterBinaryAuthorization.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterBinaryAuthorization(
-      evaluationMode: map['evaluationMode'] == null
-          ? null
-          : map['evaluationMode'] as String,
+      evaluationMode: map['evaluationMode'] == null ? null : map['evaluationMode'] as String,
     );
   }
 }
+

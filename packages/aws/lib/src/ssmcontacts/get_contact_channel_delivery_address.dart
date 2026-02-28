@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetContactChannelDeliveryAddress {
   final String simpleAddress;
 
@@ -10,9 +11,9 @@ class GetContactChannelDeliveryAddress {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['simpleAddress'] = simpleAddress;
-    return map;
+    return <String, dynamic>{
+      'simpleAddress': simpleAddress,
+    };
   }
 
   factory GetContactChannelDeliveryAddress.fromMap(Map<String, dynamic> map) {
@@ -21,3 +22,4 @@ class GetContactChannelDeliveryAddress {
     );
   }
 }
+

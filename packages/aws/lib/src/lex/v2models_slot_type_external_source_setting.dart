@@ -6,8 +6,7 @@ import 'v2models_slot_type_external_source_setting_grammar_slot_type_setting.dar
 class V2modelsSlotTypeExternalSourceSetting {
   /// Settings required for a slot type based on a grammar that you provide.
   /// See `grammar_slot_type_setting` argument reference below.
-  final List<V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSetting>?
-      grammarSlotTypeSettings;
+  final List<V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSetting>? grammarSlotTypeSettings;
 
   /// Creates a new [V2modelsSlotTypeExternalSourceSetting].
   /// [grammarSlotTypeSettings] Settings required for a slot type based on a grammar that you provide.
@@ -16,28 +15,15 @@ class V2modelsSlotTypeExternalSourceSetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final grammarSlotTypeSettingsValue = grammarSlotTypeSettings;
-    if (grammarSlotTypeSettingsValue != null) {
-      map['grammarSlotTypeSettings'] = pulumi.Input.encodeList<
-              V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSetting,
-              Map<String, dynamic>>(
-          grammarSlotTypeSettingsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'grammarSlotTypeSettings': ?grammarSlotTypeSettings == null ? null : pulumi.Input.encodeList<V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSetting, Map<String, dynamic>>(grammarSlotTypeSettings!, (value) => value.toMap()),
+    };
   }
 
-  factory V2modelsSlotTypeExternalSourceSetting.fromMap(
-      Map<String, dynamic> map) {
+  factory V2modelsSlotTypeExternalSourceSetting.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotTypeExternalSourceSetting(
-      grammarSlotTypeSettings: map['grammarSlotTypeSettings'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSetting>(
-              map['grammarSlotTypeSettings'],
-              (value) =>
-                  V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSetting
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      grammarSlotTypeSettings: map['grammarSlotTypeSettings'] == null ? null : pulumi.Input.decodeList<V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSetting>(map['grammarSlotTypeSettings'], (value) => V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSetting.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

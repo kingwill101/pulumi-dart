@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RestoreWorkloadRegionDiskTargetEnvironment {
   /// Required. Target project for the disk.
   final String project;
-
   /// Required. Target region for the disk.
   final String region;
-
   /// Required. Target URLs of the replica zones for the disk.
   final List<String> replicaZones;
 
@@ -21,15 +20,14 @@ class RestoreWorkloadRegionDiskTargetEnvironment {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['project'] = project;
-    map['region'] = region;
-    map['replicaZones'] = replicaZones;
-    return map;
+    return <String, dynamic>{
+      'project': project,
+      'region': region,
+      'replicaZones': replicaZones,
+    };
   }
 
-  factory RestoreWorkloadRegionDiskTargetEnvironment.fromMap(
-      Map<String, dynamic> map) {
+  factory RestoreWorkloadRegionDiskTargetEnvironment.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadRegionDiskTargetEnvironment(
       project: map['project'] as String,
       region: map['region'] as String,
@@ -37,3 +35,4 @@ class RestoreWorkloadRegionDiskTargetEnvironment {
     );
   }
 }
+

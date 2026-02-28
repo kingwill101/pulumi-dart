@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata {
   /// Authentication and authorization method used by the storage service. When not specified, Transfer Service will attempt to determine right auth method to use.
   final String? authMethod;
-
   /// The Listing API to use for discovering objects. When not specified, Transfer Service will attempt to determine the right API to use.
   final String? listApi;
-
   /// The network protocol of the agent. When not specified, the default value of NetworkProtocol NETWORK_PROTOCOL_HTTPS is used.
   final String? protocol;
-
   /// API request model used to call the storage service. When not specified, the default value of RequestModel REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used.
   final String? requestModel;
 
@@ -26,35 +24,21 @@ class TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final authMethodValue = authMethod;
-    if (authMethodValue != null) {
-      map['authMethod'] = authMethodValue;
-    }
-    final listApiValue = listApi;
-    if (listApiValue != null) {
-      map['listApi'] = listApiValue;
-    }
-    final protocolValue = protocol;
-    if (protocolValue != null) {
-      map['protocol'] = protocolValue;
-    }
-    final requestModelValue = requestModel;
-    if (requestModelValue != null) {
-      map['requestModel'] = requestModelValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'authMethod': ?authMethod,
+      'listApi': ?listApi,
+      'protocol': ?protocol,
+      'requestModel': ?requestModel,
+    };
   }
 
-  factory TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata.fromMap(
-      Map<String, dynamic> map) {
+  factory TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata.fromMap(Map<String, dynamic> map) {
     return TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata(
-      authMethod:
-          map['authMethod'] == null ? null : map['authMethod'] as String,
+      authMethod: map['authMethod'] == null ? null : map['authMethod'] as String,
       listApi: map['listApi'] == null ? null : map['listApi'] as String,
       protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      requestModel:
-          map['requestModel'] == null ? null : map['requestModel'] as String,
+      requestModel: map['requestModel'] == null ? null : map['requestModel'] as String,
     );
   }
 }
+

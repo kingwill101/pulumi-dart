@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BrokerConfiguration {
   /// Configuration ID.
   final String? id;
-
   /// Revision of the Configuration.
   final int? revision;
 
@@ -16,16 +16,10 @@ class BrokerConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final idValue = id;
-    if (idValue != null) {
-      map['id'] = idValue;
-    }
-    final revisionValue = revision;
-    if (revisionValue != null) {
-      map['revision'] = revisionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'id': ?id,
+      'revision': ?revision,
+    };
   }
 
   factory BrokerConfiguration.fromMap(Map<String, dynamic> map) {
@@ -35,3 +29,4 @@ class BrokerConfiguration {
     );
   }
 }
+

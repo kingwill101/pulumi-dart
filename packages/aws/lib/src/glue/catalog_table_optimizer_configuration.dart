@@ -6,15 +6,10 @@ import 'catalog_table_optimizer_configuration_retention_configuration.dart';
 class CatalogTableOptimizerConfiguration {
   /// Indicates whether the table optimizer is enabled.
   final bool enabled;
-
   /// The configuration block for an orphan file deletion optimizer. See Orphan File Deletion Configuration for additional details.
-  final CatalogTableOptimizerConfigurationOrphanFileDeletionConfiguration?
-      orphanFileDeletionConfiguration;
-
+  final CatalogTableOptimizerConfigurationOrphanFileDeletionConfiguration? orphanFileDeletionConfiguration;
   /// The configuration block for a snapshot retention optimizer. See Retention Configuration for additional details.
-  final CatalogTableOptimizerConfigurationRetentionConfiguration?
-      retentionConfiguration;
-
+  final CatalogTableOptimizerConfigurationRetentionConfiguration? retentionConfiguration;
   /// The ARN of the IAM role to use for the table optimizer.
   final String roleArn;
 
@@ -31,36 +26,21 @@ class CatalogTableOptimizerConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    final orphanFileDeletionConfigurationValue =
-        orphanFileDeletionConfiguration;
-    if (orphanFileDeletionConfigurationValue != null) {
-      map['orphanFileDeletionConfiguration'] =
-          orphanFileDeletionConfigurationValue.toMap();
-    }
-    final retentionConfigurationValue = retentionConfiguration;
-    if (retentionConfigurationValue != null) {
-      map['retentionConfiguration'] = retentionConfigurationValue.toMap();
-    }
-    map['roleArn'] = roleArn;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+      'orphanFileDeletionConfiguration': ?orphanFileDeletionConfiguration == null ? null : orphanFileDeletionConfiguration!.toMap(),
+      'retentionConfiguration': ?retentionConfiguration == null ? null : retentionConfiguration!.toMap(),
+      'roleArn': roleArn,
+    };
   }
 
   factory CatalogTableOptimizerConfiguration.fromMap(Map<String, dynamic> map) {
     return CatalogTableOptimizerConfiguration(
       enabled: map['enabled'] as bool,
-      orphanFileDeletionConfiguration: map['orphanFileDeletionConfiguration'] ==
-              null
-          ? null
-          : CatalogTableOptimizerConfigurationOrphanFileDeletionConfiguration
-              .fromMap((map['orphanFileDeletionConfiguration'] as Map)
-                  .cast<String, dynamic>()),
-      retentionConfiguration: map['retentionConfiguration'] == null
-          ? null
-          : CatalogTableOptimizerConfigurationRetentionConfiguration.fromMap(
-              (map['retentionConfiguration'] as Map).cast<String, dynamic>()),
+      orphanFileDeletionConfiguration: map['orphanFileDeletionConfiguration'] == null ? null : CatalogTableOptimizerConfigurationOrphanFileDeletionConfiguration.fromMap((map['orphanFileDeletionConfiguration'] as Map).cast<String, dynamic>()),
+      retentionConfiguration: map['retentionConfiguration'] == null ? null : CatalogTableOptimizerConfigurationRetentionConfiguration.fromMap((map['retentionConfiguration'] as Map).cast<String, dynamic>()),
       roleArn: map['roleArn'] as String,
     );
   }
 }
+

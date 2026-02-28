@@ -16,3 +16,4 @@ enum AndroidRoboTestRoboMode {
     throw ArgumentError('Unknown AndroidRoboTestRoboMode value: $value');
   }
 }
+

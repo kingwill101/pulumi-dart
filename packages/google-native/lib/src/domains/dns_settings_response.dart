@@ -9,10 +9,8 @@ import 'google_domains_dns_response.dart';
 class DnsSettingsResponse {
   /// An arbitrary DNS provider identified by its name servers.
   final CustomDnsResponse customDns;
-
   /// The list of glue records for this `Registration`. Commonly empty.
   final List<GlueRecordResponse> glueRecords;
-
   /// Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).
   final GoogleDomainsDnsResponse googleDomainsDns;
 
@@ -27,25 +25,19 @@ class DnsSettingsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['customDns'] = customDns.toMap();
-    map['glueRecords'] =
-        pulumi.Input.encodeList<GlueRecordResponse, Map<String, dynamic>>(
-            glueRecords, (value) => value.toMap());
-    map['googleDomainsDns'] = googleDomainsDns.toMap();
-    return map;
+    return <String, dynamic>{
+      'customDns': customDns.toMap(),
+      'glueRecords': pulumi.Input.encodeList<GlueRecordResponse, Map<String, dynamic>>(glueRecords, (value) => value.toMap()),
+      'googleDomainsDns': googleDomainsDns.toMap(),
+    };
   }
 
   factory DnsSettingsResponse.fromMap(Map<String, dynamic> map) {
     return DnsSettingsResponse(
-      customDns: CustomDnsResponse.fromMap(
-          (map['customDns'] as Map).cast<String, dynamic>()),
-      glueRecords: pulumi.Input.decodeList<GlueRecordResponse>(
-          map['glueRecords'],
-          (value) => GlueRecordResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      googleDomainsDns: GoogleDomainsDnsResponse.fromMap(
-          (map['googleDomainsDns'] as Map).cast<String, dynamic>()),
+      customDns: CustomDnsResponse.fromMap((map['customDns'] as Map).cast<String, dynamic>()),
+      glueRecords: pulumi.Input.decodeList<GlueRecordResponse>(map['glueRecords'], (value) => GlueRecordResponse.fromMap((value as Map).cast<String, dynamic>())),
+      googleDomainsDns: GoogleDomainsDnsResponse.fromMap((map['googleDomainsDns'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

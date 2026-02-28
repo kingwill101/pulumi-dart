@@ -14,15 +14,15 @@ class EventActionEvent {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['revisionPublished'] = revisionPublished.toMap();
-    return map;
+    return <String, dynamic>{
+      'revisionPublished': revisionPublished.toMap(),
+    };
   }
 
   factory EventActionEvent.fromMap(Map<String, dynamic> map) {
     return EventActionEvent(
-      revisionPublished: EventActionEventRevisionPublished.fromMap(
-          (map['revisionPublished'] as Map).cast<String, dynamic>()),
+      revisionPublished: EventActionEventRevisionPublished.fromMap((map['revisionPublished'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

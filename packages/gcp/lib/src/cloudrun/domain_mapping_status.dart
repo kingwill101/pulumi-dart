@@ -10,16 +10,13 @@ class DomainMappingStatus {
   /// of the DomainMapping.
   /// Structure is documented below.
   final List<DomainMappingStatusCondition>? conditions;
-
   /// (Output)
   /// The name of the route that the mapping currently points to.
   final String? mappedRouteName;
-
   /// (Output)
   /// ObservedGeneration is the 'Generation' of the DomainMapping that
   /// was last processed by the controller.
   final int? observedGeneration;
-
   /// The resource records required to configure this domain mapping. These
   /// records must be added to the domain's DNS configuration in order to
   /// serve the application via this domain mapping.
@@ -39,49 +36,21 @@ class DomainMappingStatus {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final conditionsValue = conditions;
-    if (conditionsValue != null) {
-      map['conditions'] = pulumi.Input.encodeList<DomainMappingStatusCondition,
-          Map<String, dynamic>>(conditionsValue, (value) => value.toMap());
-    }
-    final mappedRouteNameValue = mappedRouteName;
-    if (mappedRouteNameValue != null) {
-      map['mappedRouteName'] = mappedRouteNameValue;
-    }
-    final observedGenerationValue = observedGeneration;
-    if (observedGenerationValue != null) {
-      map['observedGeneration'] = observedGenerationValue;
-    }
-    final resourceRecordsValue = resourceRecords;
-    if (resourceRecordsValue != null) {
-      map['resourceRecords'] = pulumi.Input.encodeList<
-          DomainMappingStatusResourceRecord,
-          Map<String, dynamic>>(resourceRecordsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<DomainMappingStatusCondition, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+      'mappedRouteName': ?mappedRouteName,
+      'observedGeneration': ?observedGeneration,
+      'resourceRecords': ?resourceRecords == null ? null : pulumi.Input.encodeList<DomainMappingStatusResourceRecord, Map<String, dynamic>>(resourceRecords!, (value) => value.toMap()),
+    };
   }
 
   factory DomainMappingStatus.fromMap(Map<String, dynamic> map) {
     return DomainMappingStatus(
-      conditions: map['conditions'] == null
-          ? null
-          : pulumi.Input.decodeList<DomainMappingStatusCondition>(
-              map['conditions'],
-              (value) => DomainMappingStatusCondition.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      mappedRouteName: map['mappedRouteName'] == null
-          ? null
-          : map['mappedRouteName'] as String,
-      observedGeneration: map['observedGeneration'] == null
-          ? null
-          : map['observedGeneration'] as int,
-      resourceRecords: map['resourceRecords'] == null
-          ? null
-          : pulumi.Input.decodeList<DomainMappingStatusResourceRecord>(
-              map['resourceRecords'],
-              (value) => DomainMappingStatusResourceRecord.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<DomainMappingStatusCondition>(map['conditions'], (value) => DomainMappingStatusCondition.fromMap((value as Map).cast<String, dynamic>())),
+      mappedRouteName: map['mappedRouteName'] == null ? null : map['mappedRouteName'] as String,
+      observedGeneration: map['observedGeneration'] == null ? null : map['observedGeneration'] as int,
+      resourceRecords: map['resourceRecords'] == null ? null : pulumi.Input.decodeList<DomainMappingStatusResourceRecord>(map['resourceRecords'], (value) => DomainMappingStatusResourceRecord.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

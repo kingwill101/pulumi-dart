@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RandomIntegerArgs {
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
   final pulumi.Input<Map<String, String>>? keepers;
-
   /// The maximum inclusive value of the range.
   final pulumi.Input<int> max;
-
   /// The minimum inclusive value of the range.
   final pulumi.Input<int> min;
-
   /// A custom seed to always produce the same value.
   final pulumi.Input<String>? seed;
 
@@ -29,34 +26,28 @@ class RandomIntegerArgs {
     required int max,
     required int min,
     String? seed,
-  })  : keepers = pulumi.Input.asOptionalInput<Map<String, String>>(keepers),
-        max = pulumi.Input.asInput<int>(max),
-        min = pulumi.Input.asInput<int>(min),
-        seed = pulumi.Input.asOptionalInput<String>(seed);
+  }) :
+      keepers = pulumi.Input.asOptionalInput<Map<String, String>>(keepers),
+      max = pulumi.Input.asInput<int>(max),
+      min = pulumi.Input.asInput<int>(min),
+      seed = pulumi.Input.asOptionalInput<String>(seed);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final keepersValue = keepers;
-    if (keepersValue != null) {
-      map['keepers'] = keepersValue;
-    }
-    map['max'] = max;
-    map['min'] = min;
-    final seedValue = seed;
-    if (seedValue != null) {
-      map['seed'] = seedValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'keepers': ?keepers,
+      'max': max,
+      'min': min,
+      'seed': ?seed,
+    };
   }
 
   factory RandomIntegerArgs.fromMap(Map<String, dynamic> map) {
     return RandomIntegerArgs(
-      keepers: map['keepers'] == null
-          ? null
-          : (map['keepers'] as Map).cast<String, String>(),
+      keepers: map['keepers'] == null ? null : (map['keepers'] as Map).cast<String, String>(),
       max: map['max'] as int,
       min: map['min'] as int,
       seed: map['seed'] == null ? null : map['seed'] as String,
     );
   }
 }
+

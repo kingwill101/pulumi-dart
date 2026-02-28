@@ -6,7 +6,6 @@ import 'get_connector_subnet.dart';
 /// Result data returned by getConnector.
 class GetConnectorResult {
   final List<String> connectedProjects;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String ipCidrRange;
@@ -58,31 +57,23 @@ class GetConnectorResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['connectedProjects'] = connectedProjects;
-    map['id'] = id;
-    map['ipCidrRange'] = ipCidrRange;
-    map['machineType'] = machineType;
-    map['maxInstances'] = maxInstances;
-    map['maxThroughput'] = maxThroughput;
-    map['minInstances'] = minInstances;
-    map['minThroughput'] = minThroughput;
-    map['name'] = name;
-    map['network'] = network;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['selfLink'] = selfLink;
-    map['state'] = state;
-    map['subnets'] =
-        pulumi.Input.encodeList<GetConnectorSubnet, Map<String, dynamic>>(
-            subnets, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'connectedProjects': connectedProjects,
+      'id': id,
+      'ipCidrRange': ipCidrRange,
+      'machineType': machineType,
+      'maxInstances': maxInstances,
+      'maxThroughput': maxThroughput,
+      'minInstances': minInstances,
+      'minThroughput': minThroughput,
+      'name': name,
+      'network': network,
+      'project': ?project,
+      'region': ?region,
+      'selfLink': selfLink,
+      'state': state,
+      'subnets': pulumi.Input.encodeList<GetConnectorSubnet, Map<String, dynamic>>(subnets, (value) => value.toMap()),
+    };
   }
 
   factory GetConnectorResult.fromMap(Map<String, dynamic> map) {
@@ -101,10 +92,8 @@ class GetConnectorResult {
       region: map['region'] == null ? null : map['region'] as String,
       selfLink: map['selfLink'] as String,
       state: map['state'] as String,
-      subnets: pulumi.Input.decodeList<GetConnectorSubnet>(
-          map['subnets'],
-          (value) => GetConnectorSubnet.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      subnets: pulumi.Input.decodeList<GetConnectorSubnet>(map['subnets'], (value) => GetConnectorSubnet.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

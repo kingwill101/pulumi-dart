@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InsightFiltersWorkflowStatus {
   final String comparison;
   final String value;
@@ -13,10 +14,10 @@ class InsightFiltersWorkflowStatus {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['comparison'] = comparison;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'comparison': comparison,
+      'value': value,
+    };
   }
 
   factory InsightFiltersWorkflowStatus.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class InsightFiltersWorkflowStatus {
     );
   }
 }
+

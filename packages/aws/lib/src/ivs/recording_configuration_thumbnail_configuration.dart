@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RecordingConfigurationThumbnailConfiguration {
   /// Thumbnail recording mode. Valid values: `DISABLED`, `INTERVAL`.
   final String? recordingMode;
-
   /// The targeted thumbnail-generation interval in seconds.
   final int? targetIntervalSeconds;
 
@@ -16,26 +16,17 @@ class RecordingConfigurationThumbnailConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final recordingModeValue = recordingMode;
-    if (recordingModeValue != null) {
-      map['recordingMode'] = recordingModeValue;
-    }
-    final targetIntervalSecondsValue = targetIntervalSeconds;
-    if (targetIntervalSecondsValue != null) {
-      map['targetIntervalSeconds'] = targetIntervalSecondsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'recordingMode': ?recordingMode,
+      'targetIntervalSeconds': ?targetIntervalSeconds,
+    };
   }
 
-  factory RecordingConfigurationThumbnailConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory RecordingConfigurationThumbnailConfiguration.fromMap(Map<String, dynamic> map) {
     return RecordingConfigurationThumbnailConfiguration(
-      recordingMode:
-          map['recordingMode'] == null ? null : map['recordingMode'] as String,
-      targetIntervalSeconds: map['targetIntervalSeconds'] == null
-          ? null
-          : map['targetIntervalSeconds'] as int,
+      recordingMode: map['recordingMode'] == null ? null : map['recordingMode'] as String,
+      targetIntervalSeconds: map['targetIntervalSeconds'] == null ? null : map['targetIntervalSeconds'] as int,
     );
   }
 }
+

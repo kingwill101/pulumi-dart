@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResourceTagsArgs {
   /// ID of the resource with the tags to list. See details below.
   final pulumi.Input<String> resourceId;
-
   /// Map of key=value pairs for each tag set on the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -19,25 +18,22 @@ class GetResourceTagsArgs {
   GetResourceTagsArgs({
     required String resourceId,
     Map<String, String>? tags,
-  })  : resourceId = pulumi.Input.asInput<String>(resourceId),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      resourceId = pulumi.Input.asInput<String>(resourceId),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['resourceId'] = resourceId;
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'resourceId': resourceId,
+      'tags': ?tags,
+    };
   }
 
   factory GetResourceTagsArgs.fromMap(Map<String, dynamic> map) {
     return GetResourceTagsArgs(
       resourceId: map['resourceId'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

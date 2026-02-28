@@ -8,55 +8,38 @@ import 'get_image_output_resource.dart';
 /// Result data returned by getImage.
 class GetImageResult {
   final String arn;
-
   /// Build version ARN of the image. This will always have the `#.#.#/#` suffix.
   final String buildVersionArn;
-
   /// ARN of the container recipe.
   final String containerRecipeArn;
-
   /// Date the image was created.
   final String dateCreated;
-
   /// ARN of the Image Builder Distribution Configuration.
   final String distributionConfigurationArn;
-
   /// Whether additional information about the image being created is collected.
   final bool enhancedImageMetadataEnabled;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// ARN of the image recipe.
   final String imageRecipeArn;
-
   /// List of an object with image scanning configuration fields.
   final List<GetImageImageScanningConfiguration> imageScanningConfigurations;
-
   /// List of an object with image tests configuration.
   final List<GetImageImageTestsConfiguration> imageTestsConfigurations;
-
   /// ARN of the Image Builder Infrastructure Configuration.
   final String infrastructureConfigurationArn;
-
   /// Name of the AMI.
   final String name;
-
   /// Operating System version of the image.
   final String osVersion;
-
   /// List of objects with resources created by the image.
   final List<GetImageOutputResource> outputResources;
-
   /// Platform of the image.
   final String platform;
-
   /// Region of the container image.
   final String region;
-
   /// Key-value map of resource tags for the image.
   final Map<String, String> tags;
-
   /// Version of the image.
   final String version;
 
@@ -101,32 +84,26 @@ class GetImageResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['buildVersionArn'] = buildVersionArn;
-    map['containerRecipeArn'] = containerRecipeArn;
-    map['dateCreated'] = dateCreated;
-    map['distributionConfigurationArn'] = distributionConfigurationArn;
-    map['enhancedImageMetadataEnabled'] = enhancedImageMetadataEnabled;
-    map['id'] = id;
-    map['imageRecipeArn'] = imageRecipeArn;
-    map['imageScanningConfigurations'] = pulumi.Input.encodeList<
-            GetImageImageScanningConfiguration, Map<String, dynamic>>(
-        imageScanningConfigurations, (value) => value.toMap());
-    map['imageTestsConfigurations'] = pulumi.Input.encodeList<
-            GetImageImageTestsConfiguration, Map<String, dynamic>>(
-        imageTestsConfigurations, (value) => value.toMap());
-    map['infrastructureConfigurationArn'] = infrastructureConfigurationArn;
-    map['name'] = name;
-    map['osVersion'] = osVersion;
-    map['outputResources'] =
-        pulumi.Input.encodeList<GetImageOutputResource, Map<String, dynamic>>(
-            outputResources, (value) => value.toMap());
-    map['platform'] = platform;
-    map['region'] = region;
-    map['tags'] = tags;
-    map['version'] = version;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'buildVersionArn': buildVersionArn,
+      'containerRecipeArn': containerRecipeArn,
+      'dateCreated': dateCreated,
+      'distributionConfigurationArn': distributionConfigurationArn,
+      'enhancedImageMetadataEnabled': enhancedImageMetadataEnabled,
+      'id': id,
+      'imageRecipeArn': imageRecipeArn,
+      'imageScanningConfigurations': pulumi.Input.encodeList<GetImageImageScanningConfiguration, Map<String, dynamic>>(imageScanningConfigurations, (value) => value.toMap()),
+      'imageTestsConfigurations': pulumi.Input.encodeList<GetImageImageTestsConfiguration, Map<String, dynamic>>(imageTestsConfigurations, (value) => value.toMap()),
+      'infrastructureConfigurationArn': infrastructureConfigurationArn,
+      'name': name,
+      'osVersion': osVersion,
+      'outputResources': pulumi.Input.encodeList<GetImageOutputResource, Map<String, dynamic>>(outputResources, (value) => value.toMap()),
+      'platform': platform,
+      'region': region,
+      'tags': tags,
+      'version': version,
+    };
   }
 
   factory GetImageResult.fromMap(Map<String, dynamic> map) {
@@ -135,29 +112,16 @@ class GetImageResult {
       buildVersionArn: map['buildVersionArn'] as String,
       containerRecipeArn: map['containerRecipeArn'] as String,
       dateCreated: map['dateCreated'] as String,
-      distributionConfigurationArn:
-          map['distributionConfigurationArn'] as String,
+      distributionConfigurationArn: map['distributionConfigurationArn'] as String,
       enhancedImageMetadataEnabled: map['enhancedImageMetadataEnabled'] as bool,
       id: map['id'] as String,
       imageRecipeArn: map['imageRecipeArn'] as String,
-      imageScanningConfigurations:
-          pulumi.Input.decodeList<GetImageImageScanningConfiguration>(
-              map['imageScanningConfigurations'],
-              (value) => GetImageImageScanningConfiguration.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      imageTestsConfigurations:
-          pulumi.Input.decodeList<GetImageImageTestsConfiguration>(
-              map['imageTestsConfigurations'],
-              (value) => GetImageImageTestsConfiguration.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      infrastructureConfigurationArn:
-          map['infrastructureConfigurationArn'] as String,
+      imageScanningConfigurations: pulumi.Input.decodeList<GetImageImageScanningConfiguration>(map['imageScanningConfigurations'], (value) => GetImageImageScanningConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      imageTestsConfigurations: pulumi.Input.decodeList<GetImageImageTestsConfiguration>(map['imageTestsConfigurations'], (value) => GetImageImageTestsConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      infrastructureConfigurationArn: map['infrastructureConfigurationArn'] as String,
       name: map['name'] as String,
       osVersion: map['osVersion'] as String,
-      outputResources: pulumi.Input.decodeList<GetImageOutputResource>(
-          map['outputResources'],
-          (value) => GetImageOutputResource.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      outputResources: pulumi.Input.decodeList<GetImageOutputResource>(map['outputResources'], (value) => GetImageOutputResource.fromMap((value as Map).cast<String, dynamic>())),
       platform: map['platform'] as String,
       region: map['region'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
@@ -165,3 +129,4 @@ class GetImageResult {
     );
   }
 }
+

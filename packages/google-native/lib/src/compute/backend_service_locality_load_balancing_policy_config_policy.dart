@@ -14,21 +14,15 @@ class BackendServiceLocalityLoadBalancingPolicyConfigPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name == null ? null : name!.value,
+    };
   }
 
-  factory BackendServiceLocalityLoadBalancingPolicyConfigPolicy.fromMap(
-      Map<String, dynamic> map) {
+  factory BackendServiceLocalityLoadBalancingPolicyConfigPolicy.fromMap(Map<String, dynamic> map) {
     return BackendServiceLocalityLoadBalancingPolicyConfigPolicy(
-      name: map['name'] == null
-          ? null
-          : BackendServiceLocalityLoadBalancingPolicyConfigPolicyName.fromValue(
-              map['name'] as String),
+      name: map['name'] == null ? null : BackendServiceLocalityLoadBalancingPolicyConfigPolicyName.fromValue(map['name'] as String),
     );
   }
 }
+

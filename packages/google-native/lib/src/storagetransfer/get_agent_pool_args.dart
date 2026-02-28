@@ -16,17 +16,15 @@ class GetAgentPoolArgs {
   GetAgentPoolArgs({
     required String agentPoolId,
     String? project,
-  })  : agentPoolId = pulumi.Input.asInput<String>(agentPoolId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      agentPoolId = pulumi.Input.asInput<String>(agentPoolId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['agentPoolId'] = agentPoolId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'agentPoolId': agentPoolId,
+      'project': ?project,
+    };
   }
 
   factory GetAgentPoolArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetAgentPoolArgs {
     );
   }
 }
+

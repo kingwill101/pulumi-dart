@@ -8,7 +8,6 @@ import 'grpc_route_method_match_response_networkservices_v1beta1.dart';
 class GrpcRouteRouteMatchResponseNetworkservicesV1beta1 {
   /// Optional. Specifies a collection of headers to match.
   final List<GrpcRouteHeaderMatchResponseNetworkservicesV1beta1> headers;
-
   /// Optional. A gRPC method to match against. If this field is empty or omitted, will match all methods.
   final GrpcRouteMethodMatchResponseNetworkservicesV1beta1 method;
 
@@ -21,24 +20,17 @@ class GrpcRouteRouteMatchResponseNetworkservicesV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['headers'] = pulumi.Input.encodeList<
-        GrpcRouteHeaderMatchResponseNetworkservicesV1beta1,
-        Map<String, dynamic>>(headers, (value) => value.toMap());
-    map['method'] = method.toMap();
-    return map;
+    return <String, dynamic>{
+      'headers': pulumi.Input.encodeList<GrpcRouteHeaderMatchResponseNetworkservicesV1beta1, Map<String, dynamic>>(headers, (value) => value.toMap()),
+      'method': method.toMap(),
+    };
   }
 
-  factory GrpcRouteRouteMatchResponseNetworkservicesV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory GrpcRouteRouteMatchResponseNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return GrpcRouteRouteMatchResponseNetworkservicesV1beta1(
-      headers: pulumi.Input.decodeList<
-              GrpcRouteHeaderMatchResponseNetworkservicesV1beta1>(
-          map['headers'],
-          (value) => GrpcRouteHeaderMatchResponseNetworkservicesV1beta1.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      method: GrpcRouteMethodMatchResponseNetworkservicesV1beta1.fromMap(
-          (map['method'] as Map).cast<String, dynamic>()),
+      headers: pulumi.Input.decodeList<GrpcRouteHeaderMatchResponseNetworkservicesV1beta1>(map['headers'], (value) => GrpcRouteHeaderMatchResponseNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>())),
+      method: GrpcRouteMethodMatchResponseNetworkservicesV1beta1.fromMap((map['method'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

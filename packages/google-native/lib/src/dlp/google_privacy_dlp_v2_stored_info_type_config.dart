@@ -8,16 +8,12 @@ import 'google_privacy_dlp_v2_regex.dart';
 class GooglePrivacyDlpV2StoredInfoTypeConfig {
   /// Description of the StoredInfoType (max 256 characters).
   final String? description;
-
   /// Store dictionary-based CustomInfoType.
   final GooglePrivacyDlpV2Dictionary? dictionary;
-
   /// Display name of the StoredInfoType (max 256 characters).
   final String? displayName;
-
   /// StoredInfoType where findings are defined by a dictionary of phrases.
   final GooglePrivacyDlpV2LargeCustomDictionaryConfig? largeCustomDictionary;
-
   /// Store regular expression-based StoredInfoType.
   final GooglePrivacyDlpV2Regex? regex;
 
@@ -36,49 +32,23 @@ class GooglePrivacyDlpV2StoredInfoTypeConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final dictionaryValue = dictionary;
-    if (dictionaryValue != null) {
-      map['dictionary'] = dictionaryValue.toMap();
-    }
-    final displayNameValue = displayName;
-    if (displayNameValue != null) {
-      map['displayName'] = displayNameValue;
-    }
-    final largeCustomDictionaryValue = largeCustomDictionary;
-    if (largeCustomDictionaryValue != null) {
-      map['largeCustomDictionary'] = largeCustomDictionaryValue.toMap();
-    }
-    final regexValue = regex;
-    if (regexValue != null) {
-      map['regex'] = regexValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'dictionary': ?dictionary == null ? null : dictionary!.toMap(),
+      'displayName': ?displayName,
+      'largeCustomDictionary': ?largeCustomDictionary == null ? null : largeCustomDictionary!.toMap(),
+      'regex': ?regex == null ? null : regex!.toMap(),
+    };
   }
 
-  factory GooglePrivacyDlpV2StoredInfoTypeConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2StoredInfoTypeConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2StoredInfoTypeConfig(
-      description:
-          map['description'] == null ? null : map['description'] as String,
-      dictionary: map['dictionary'] == null
-          ? null
-          : GooglePrivacyDlpV2Dictionary.fromMap(
-              (map['dictionary'] as Map).cast<String, dynamic>()),
-      displayName:
-          map['displayName'] == null ? null : map['displayName'] as String,
-      largeCustomDictionary: map['largeCustomDictionary'] == null
-          ? null
-          : GooglePrivacyDlpV2LargeCustomDictionaryConfig.fromMap(
-              (map['largeCustomDictionary'] as Map).cast<String, dynamic>()),
-      regex: map['regex'] == null
-          ? null
-          : GooglePrivacyDlpV2Regex.fromMap(
-              (map['regex'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : map['description'] as String,
+      dictionary: map['dictionary'] == null ? null : GooglePrivacyDlpV2Dictionary.fromMap((map['dictionary'] as Map).cast<String, dynamic>()),
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      largeCustomDictionary: map['largeCustomDictionary'] == null ? null : GooglePrivacyDlpV2LargeCustomDictionaryConfig.fromMap((map['largeCustomDictionary'] as Map).cast<String, dynamic>()),
+      regex: map['regex'] == null ? null : GooglePrivacyDlpV2Regex.fromMap((map['regex'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

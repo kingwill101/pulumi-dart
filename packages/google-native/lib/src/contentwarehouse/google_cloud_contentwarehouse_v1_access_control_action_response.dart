@@ -6,7 +6,6 @@ import 'google_iam_v1_policy_response.dart';
 class GoogleCloudContentwarehouseV1AccessControlActionResponse {
   /// Identifies the type of operation.
   final String operationType;
-
   /// Represents the new policy from which bindings are added, removed or replaced based on the type of the operation. the policy is limited to a few 10s of KB.
   final GoogleIamV1PolicyResponse policy;
 
@@ -19,18 +18,17 @@ class GoogleCloudContentwarehouseV1AccessControlActionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['operationType'] = operationType;
-    map['policy'] = policy.toMap();
-    return map;
+    return <String, dynamic>{
+      'operationType': operationType,
+      'policy': policy.toMap(),
+    };
   }
 
-  factory GoogleCloudContentwarehouseV1AccessControlActionResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudContentwarehouseV1AccessControlActionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1AccessControlActionResponse(
       operationType: map['operationType'] as String,
-      policy: GoogleIamV1PolicyResponse.fromMap(
-          (map['policy'] as Map).cast<String, dynamic>()),
+      policy: GoogleIamV1PolicyResponse.fromMap((map['policy'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

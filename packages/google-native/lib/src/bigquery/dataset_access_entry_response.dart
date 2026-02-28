@@ -16,17 +16,17 @@ class DatasetAccessEntryResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dataset'] = dataset.toMap();
-    map['targetTypes'] = targetTypes;
-    return map;
+    return <String, dynamic>{
+      'dataset': dataset.toMap(),
+      'targetTypes': targetTypes,
+    };
   }
 
   factory DatasetAccessEntryResponse.fromMap(Map<String, dynamic> map) {
     return DatasetAccessEntryResponse(
-      dataset: DatasetReferenceResponse.fromMap(
-          (map['dataset'] as Map).cast<String, dynamic>()),
+      dataset: DatasetReferenceResponse.fromMap((map['dataset'] as Map).cast<String, dynamic>()),
       targetTypes: (map['targetTypes'] as List).cast<String>(),
     );
   }
 }
+

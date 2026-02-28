@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DeploymentTargetImport {
   /// The full contents of the template that you want to import.
   final String? content;
-
   /// The name of the template to import, as declared in the YAML
   /// configuration.
   final String? name;
@@ -17,16 +17,10 @@ class DeploymentTargetImport {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final contentValue = content;
-    if (contentValue != null) {
-      map['content'] = contentValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'content': ?content,
+      'name': ?name,
+    };
   }
 
   factory DeploymentTargetImport.fromMap(Map<String, dynamic> map) {
@@ -36,3 +30,4 @@ class DeploymentTargetImport {
     );
   }
 }
+

@@ -19,19 +19,17 @@ class GetServiceBindingArgs {
     required String location,
     String? project,
     required String serviceBindingId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        serviceBindingId = pulumi.Input.asInput<String>(serviceBindingId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      serviceBindingId = pulumi.Input.asInput<String>(serviceBindingId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['serviceBindingId'] = serviceBindingId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+      'serviceBindingId': serviceBindingId,
+    };
   }
 
   factory GetServiceBindingArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetServiceBindingArgs {
     );
   }
 }
+

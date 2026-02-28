@@ -7,7 +7,6 @@ import 'google_cloud_datacatalog_v1_entry_overview_response.dart';
 class GoogleCloudDatacatalogV1BusinessContextResponse {
   /// Contact people for the entry.
   final GoogleCloudDatacatalogV1ContactsResponse contacts;
-
   /// Entry overview fields for rich text descriptions of entries.
   final GoogleCloudDatacatalogV1EntryOverviewResponse entryOverview;
 
@@ -20,19 +19,17 @@ class GoogleCloudDatacatalogV1BusinessContextResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['contacts'] = contacts.toMap();
-    map['entryOverview'] = entryOverview.toMap();
-    return map;
+    return <String, dynamic>{
+      'contacts': contacts.toMap(),
+      'entryOverview': entryOverview.toMap(),
+    };
   }
 
-  factory GoogleCloudDatacatalogV1BusinessContextResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1BusinessContextResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1BusinessContextResponse(
-      contacts: GoogleCloudDatacatalogV1ContactsResponse.fromMap(
-          (map['contacts'] as Map).cast<String, dynamic>()),
-      entryOverview: GoogleCloudDatacatalogV1EntryOverviewResponse.fromMap(
-          (map['entryOverview'] as Map).cast<String, dynamic>()),
+      contacts: GoogleCloudDatacatalogV1ContactsResponse.fromMap((map['contacts'] as Map).cast<String, dynamic>()),
+      entryOverview: GoogleCloudDatacatalogV1EntryOverviewResponse.fromMap((map['entryOverview'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

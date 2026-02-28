@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AwsClusterAuthorizationAdminUser {
   /// The name of the user, e.g. `my-gcp-id@gmail.com`.
   final String username;
@@ -11,9 +12,9 @@ class AwsClusterAuthorizationAdminUser {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['username'] = username;
-    return map;
+    return <String, dynamic>{
+      'username': username,
+    };
   }
 
   factory AwsClusterAuthorizationAdminUser.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class AwsClusterAuthorizationAdminUser {
     );
   }
 }
+

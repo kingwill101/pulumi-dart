@@ -16,26 +16,15 @@ class BareMetalClusterValidationCheckStatus {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final resultsValue = results;
-    if (resultsValue != null) {
-      map['results'] = pulumi.Input.encodeList<
-          BareMetalClusterValidationCheckStatusResult,
-          Map<String, dynamic>>(resultsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'results': ?results == null ? null : pulumi.Input.encodeList<BareMetalClusterValidationCheckStatusResult, Map<String, dynamic>>(results!, (value) => value.toMap()),
+    };
   }
 
-  factory BareMetalClusterValidationCheckStatus.fromMap(
-      Map<String, dynamic> map) {
+  factory BareMetalClusterValidationCheckStatus.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterValidationCheckStatus(
-      results: map['results'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  BareMetalClusterValidationCheckStatusResult>(
-              map['results'],
-              (value) => BareMetalClusterValidationCheckStatusResult.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      results: map['results'] == null ? null : pulumi.Input.decodeList<BareMetalClusterValidationCheckStatusResult>(map['results'], (value) => BareMetalClusterValidationCheckStatusResult.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

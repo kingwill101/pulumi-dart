@@ -14,21 +14,15 @@ class PolicyControllerTemplateLibraryConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final installationValue = installation;
-    if (installationValue != null) {
-      map['installation'] = installationValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'installation': ?installation == null ? null : installation!.value,
+    };
   }
 
-  factory PolicyControllerTemplateLibraryConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory PolicyControllerTemplateLibraryConfig.fromMap(Map<String, dynamic> map) {
     return PolicyControllerTemplateLibraryConfig(
-      installation: map['installation'] == null
-          ? null
-          : PolicyControllerTemplateLibraryConfigInstallation.fromValue(
-              map['installation'] as String),
+      installation: map['installation'] == null ? null : PolicyControllerTemplateLibraryConfigInstallation.fromValue(map['installation'] as String),
     );
   }
 }
+

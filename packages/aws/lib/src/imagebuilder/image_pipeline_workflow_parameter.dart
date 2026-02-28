@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ImagePipelineWorkflowParameter {
   /// The name of the Workflow parameter.
   final String name;
-
   /// The value of the Workflow parameter.
   final String value;
 
@@ -16,10 +16,10 @@ class ImagePipelineWorkflowParameter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
   factory ImagePipelineWorkflowParameter.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class ImagePipelineWorkflowParameter {
     );
   }
 }
+

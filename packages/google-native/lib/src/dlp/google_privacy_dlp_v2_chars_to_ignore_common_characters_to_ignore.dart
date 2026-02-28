@@ -10,15 +10,13 @@ enum GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore {
   const GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore(this.value);
   final String value;
 
-  static GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore fromValue(
-      String value) {
-    for (final item
-        in GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore.values) {
+  static GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore fromValue(String value) {
+    for (final item in GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore value: $value');
+    throw ArgumentError('Unknown GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore value: $value');
   }
 }
+

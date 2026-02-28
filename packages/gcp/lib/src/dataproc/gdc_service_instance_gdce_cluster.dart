@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GdcServiceInstanceGdceCluster {
   /// Gdce cluster resource id.
   final String gdceCluster;
@@ -11,9 +12,9 @@ class GdcServiceInstanceGdceCluster {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gdceCluster'] = gdceCluster;
-    return map;
+    return <String, dynamic>{
+      'gdceCluster': gdceCluster,
+    };
   }
 
   factory GdcServiceInstanceGdceCluster.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GdcServiceInstanceGdceCluster {
     );
   }
 }
+

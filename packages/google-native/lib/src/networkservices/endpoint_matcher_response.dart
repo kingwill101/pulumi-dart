@@ -14,15 +14,15 @@ class EndpointMatcherResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['metadataLabelMatcher'] = metadataLabelMatcher.toMap();
-    return map;
+    return <String, dynamic>{
+      'metadataLabelMatcher': metadataLabelMatcher.toMap(),
+    };
   }
 
   factory EndpointMatcherResponse.fromMap(Map<String, dynamic> map) {
     return EndpointMatcherResponse(
-      metadataLabelMatcher: EndpointMatcherMetadataLabelMatcherResponse.fromMap(
-          (map['metadataLabelMatcher'] as Map).cast<String, dynamic>()),
+      metadataLabelMatcher: EndpointMatcherMetadataLabelMatcherResponse.fromMap((map['metadataLabelMatcher'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

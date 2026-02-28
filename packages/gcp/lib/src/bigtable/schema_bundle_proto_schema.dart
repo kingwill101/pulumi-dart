@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SchemaBundleProtoSchema {
   /// Base64 encoded content of the file.
   final String protoDescriptors;
@@ -11,9 +12,9 @@ class SchemaBundleProtoSchema {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['protoDescriptors'] = protoDescriptors;
-    return map;
+    return <String, dynamic>{
+      'protoDescriptors': protoDescriptors,
+    };
   }
 
   factory SchemaBundleProtoSchema.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class SchemaBundleProtoSchema {
     );
   }
 }
+

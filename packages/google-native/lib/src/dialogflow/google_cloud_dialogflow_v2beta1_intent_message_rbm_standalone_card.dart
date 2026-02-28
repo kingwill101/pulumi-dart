@@ -8,14 +8,10 @@ import 'google_cloud_dialogflow_v2beta1_intent_message_rbm_standalone_card_thumb
 class GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard {
   /// Card content.
   final GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent cardContent;
-
   /// Orientation of the card.
-  final GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientation
-      cardOrientation;
-
+  final GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientation cardOrientation;
   /// Required if orientation is horizontal. Image preview alignment for standalone cards with horizontal layout.
-  final GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment?
-      thumbnailImageAlignment;
+  final GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment? thumbnailImageAlignment;
 
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard].
   /// [cardContent] Card content.
@@ -28,29 +24,19 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cardContent'] = cardContent.toMap();
-    map['cardOrientation'] = cardOrientation.value;
-    final thumbnailImageAlignmentValue = thumbnailImageAlignment;
-    if (thumbnailImageAlignmentValue != null) {
-      map['thumbnailImageAlignment'] = thumbnailImageAlignmentValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'cardContent': cardContent.toMap(),
+      'cardOrientation': cardOrientation.value,
+      'thumbnailImageAlignment': ?thumbnailImageAlignment == null ? null : thumbnailImageAlignment!.value,
+    };
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard(
-      cardContent:
-          GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent.fromMap(
-              (map['cardContent'] as Map).cast<String, dynamic>()),
-      cardOrientation:
-          GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientation
-              .fromValue(map['cardOrientation'] as String),
-      thumbnailImageAlignment: map['thumbnailImageAlignment'] == null
-          ? null
-          : GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment
-              .fromValue(map['thumbnailImageAlignment'] as String),
+      cardContent: GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent.fromMap((map['cardContent'] as Map).cast<String, dynamic>()),
+      cardOrientation: GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientation.fromValue(map['cardOrientation'] as String),
+      thumbnailImageAlignment: map['thumbnailImageAlignment'] == null ? null : GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment.fromValue(map['thumbnailImageAlignment'] as String),
     );
   }
 }
+

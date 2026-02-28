@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// How the server handles the consent header.
 class ConsentHeaderHandlingResponse {
   /// Optional. Specifies the default server behavior when the header is empty. If not specified, the `ScopeProfile.PERMIT_EMPTY_SCOPE` option is used.
@@ -12,9 +13,9 @@ class ConsentHeaderHandlingResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['profile'] = profile;
-    return map;
+    return <String, dynamic>{
+      'profile': profile,
+    };
   }
 
   factory ConsentHeaderHandlingResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class ConsentHeaderHandlingResponse {
     );
   }
 }
+

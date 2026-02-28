@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Specifies config to enable/disable auto repair. The cluster-health-controller is deployed only if Enabled is true.
 class VmwareAutoRepairConfigResponse {
   /// Whether auto repair is enabled.
@@ -12,9 +13,9 @@ class VmwareAutoRepairConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory VmwareAutoRepairConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class VmwareAutoRepairConfigResponse {
     );
   }
 }
+

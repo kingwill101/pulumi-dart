@@ -7,10 +7,8 @@ import 'workload_policy_config_response_container_v1beta1.dart';
 class AutopilotResponseContainerV1beta1 {
   /// ConversionStatus shows conversion status.
   final AutopilotConversionStatusResponse conversionStatus;
-
   /// Enable Autopilot
   final bool enabled;
-
   /// Workload policy configuration for Autopilot.
   final WorkloadPolicyConfigResponseContainerV1beta1 workloadPolicyConfig;
 
@@ -25,21 +23,19 @@ class AutopilotResponseContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['conversionStatus'] = conversionStatus.toMap();
-    map['enabled'] = enabled;
-    map['workloadPolicyConfig'] = workloadPolicyConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'conversionStatus': conversionStatus.toMap(),
+      'enabled': enabled,
+      'workloadPolicyConfig': workloadPolicyConfig.toMap(),
+    };
   }
 
   factory AutopilotResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return AutopilotResponseContainerV1beta1(
-      conversionStatus: AutopilotConversionStatusResponse.fromMap(
-          (map['conversionStatus'] as Map).cast<String, dynamic>()),
+      conversionStatus: AutopilotConversionStatusResponse.fromMap((map['conversionStatus'] as Map).cast<String, dynamic>()),
       enabled: map['enabled'] as bool,
-      workloadPolicyConfig:
-          WorkloadPolicyConfigResponseContainerV1beta1.fromMap(
-              (map['workloadPolicyConfig'] as Map).cast<String, dynamic>()),
+      workloadPolicyConfig: WorkloadPolicyConfigResponseContainerV1beta1.fromMap((map['workloadPolicyConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

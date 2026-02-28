@@ -15,26 +15,15 @@ class AuthzPolicyHttpRuleToOperationHeaderSet {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final headersValue = headers;
-    if (headersValue != null) {
-      map['headers'] = pulumi.Input.encodeList<
-          AuthzPolicyHttpRuleToOperationHeaderSetHeader,
-          Map<String, dynamic>>(headersValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'headers': ?headers == null ? null : pulumi.Input.encodeList<AuthzPolicyHttpRuleToOperationHeaderSetHeader, Map<String, dynamic>>(headers!, (value) => value.toMap()),
+    };
   }
 
-  factory AuthzPolicyHttpRuleToOperationHeaderSet.fromMap(
-      Map<String, dynamic> map) {
+  factory AuthzPolicyHttpRuleToOperationHeaderSet.fromMap(Map<String, dynamic> map) {
     return AuthzPolicyHttpRuleToOperationHeaderSet(
-      headers: map['headers'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  AuthzPolicyHttpRuleToOperationHeaderSetHeader>(
-              map['headers'],
-              (value) => AuthzPolicyHttpRuleToOperationHeaderSetHeader.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      headers: map['headers'] == null ? null : pulumi.Input.decodeList<AuthzPolicyHttpRuleToOperationHeaderSetHeader>(map['headers'], (value) => AuthzPolicyHttpRuleToOperationHeaderSetHeader.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class JobExecutionProperty {
   /// The maximum number of concurrent runs allowed for a job. The default is 1.
   final int? maxConcurrentRuns;
@@ -11,19 +12,15 @@ class JobExecutionProperty {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final maxConcurrentRunsValue = maxConcurrentRuns;
-    if (maxConcurrentRunsValue != null) {
-      map['maxConcurrentRuns'] = maxConcurrentRunsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'maxConcurrentRuns': ?maxConcurrentRuns,
+    };
   }
 
   factory JobExecutionProperty.fromMap(Map<String, dynamic> map) {
     return JobExecutionProperty(
-      maxConcurrentRuns: map['maxConcurrentRuns'] == null
-          ? null
-          : map['maxConcurrentRuns'] as int,
+      maxConcurrentRuns: map['maxConcurrentRuns'] == null ? null : map['maxConcurrentRuns'] as int,
     );
   }
 }
+

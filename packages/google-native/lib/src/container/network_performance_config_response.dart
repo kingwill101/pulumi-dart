@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration of all network bandwidth tiers
 class NetworkPerformanceConfigResponse {
   /// Specifies the total network bandwidth tier for the NodePool.
@@ -12,9 +13,9 @@ class NetworkPerformanceConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['totalEgressBandwidthTier'] = totalEgressBandwidthTier;
-    return map;
+    return <String, dynamic>{
+      'totalEgressBandwidthTier': totalEgressBandwidthTier,
+    };
   }
 
   factory NetworkPerformanceConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class NetworkPerformanceConfigResponse {
     );
   }
 }
+

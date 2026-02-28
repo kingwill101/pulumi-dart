@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// ServiceDirectoryConfig represents Service Directory configuration for a connection.
 class GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponse {
   /// The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
@@ -12,15 +13,15 @@ class GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['service'] = service;
-    return map;
+    return <String, dynamic>{
+      'service': service,
+    };
   }
 
-  factory GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponse(
       service: map['service'] as String,
     );
   }
 }
+

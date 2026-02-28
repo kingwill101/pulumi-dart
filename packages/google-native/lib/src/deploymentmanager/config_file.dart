@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConfigFile {
   /// The contents of the file.
   final String? content;
@@ -11,12 +12,9 @@ class ConfigFile {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final contentValue = content;
-    if (contentValue != null) {
-      map['content'] = contentValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'content': ?content,
+    };
   }
 
   factory ConfigFile.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class ConfigFile {
     );
   }
 }
+

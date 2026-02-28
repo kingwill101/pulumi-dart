@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AzureNodePoolMaxPodsConstraint {
   /// The maximum number of pods to schedule on a single node.
   ///
@@ -13,9 +14,9 @@ class AzureNodePoolMaxPodsConstraint {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maxPodsPerNode'] = maxPodsPerNode;
-    return map;
+    return <String, dynamic>{
+      'maxPodsPerNode': maxPodsPerNode,
+    };
   }
 
   factory AzureNodePoolMaxPodsConstraint.fromMap(Map<String, dynamic> map) {
@@ -24,3 +25,4 @@ class AzureNodePoolMaxPodsConstraint {
     );
   }
 }
+

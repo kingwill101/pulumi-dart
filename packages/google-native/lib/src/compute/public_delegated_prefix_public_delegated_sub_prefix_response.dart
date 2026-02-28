@@ -1,31 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents a sub PublicDelegatedPrefix.
 class PublicDelegatedPrefixPublicDelegatedSubPrefixResponse {
   /// The allocatable prefix length supported by this PublicDelegatedSubPrefix.
   final int allocatablePrefixLength;
-
   /// Name of the project scoping this PublicDelegatedSubPrefix.
   final String delegateeProject;
-
   /// An optional description of this resource. Provide this property when you create the resource.
   final String description;
-
   /// The IP address range, in CIDR format, represented by this sub public delegated prefix.
   final String ipCidrRange;
-
   /// Whether the sub prefix is delegated to create Address resources in the delegatee project.
   final bool isAddress;
-
   /// The PublicDelegatedSubPrefix mode for IPv6 only.
   final String mode;
-
   /// The name of the sub public delegated prefix.
   final String name;
-
   /// The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
   final String region;
-
   /// The status of the sub public delegated prefix.
   final String status;
 
@@ -52,21 +45,20 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefixResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allocatablePrefixLength'] = allocatablePrefixLength;
-    map['delegateeProject'] = delegateeProject;
-    map['description'] = description;
-    map['ipCidrRange'] = ipCidrRange;
-    map['isAddress'] = isAddress;
-    map['mode'] = mode;
-    map['name'] = name;
-    map['region'] = region;
-    map['status'] = status;
-    return map;
+    return <String, dynamic>{
+      'allocatablePrefixLength': allocatablePrefixLength,
+      'delegateeProject': delegateeProject,
+      'description': description,
+      'ipCidrRange': ipCidrRange,
+      'isAddress': isAddress,
+      'mode': mode,
+      'name': name,
+      'region': region,
+      'status': status,
+    };
   }
 
-  factory PublicDelegatedPrefixPublicDelegatedSubPrefixResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory PublicDelegatedPrefixPublicDelegatedSubPrefixResponse.fromMap(Map<String, dynamic> map) {
     return PublicDelegatedPrefixPublicDelegatedSubPrefixResponse(
       allocatablePrefixLength: map['allocatablePrefixLength'] as int,
       delegateeProject: map['delegateeProject'] as String,
@@ -80,3 +72,4 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefixResponse {
     );
   }
 }
+

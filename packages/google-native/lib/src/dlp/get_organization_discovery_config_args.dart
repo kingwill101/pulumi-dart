@@ -19,16 +19,17 @@ class GetOrganizationDiscoveryConfigArgs {
     required String discoveryConfigId,
     required String location,
     required String organizationId,
-  })  : discoveryConfigId = pulumi.Input.asInput<String>(discoveryConfigId),
-        location = pulumi.Input.asInput<String>(location),
-        organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) :
+      discoveryConfigId = pulumi.Input.asInput<String>(discoveryConfigId),
+      location = pulumi.Input.asInput<String>(location),
+      organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['discoveryConfigId'] = discoveryConfigId;
-    map['location'] = location;
-    map['organizationId'] = organizationId;
-    return map;
+    return <String, dynamic>{
+      'discoveryConfigId': discoveryConfigId,
+      'location': location,
+      'organizationId': organizationId,
+    };
   }
 
   factory GetOrganizationDiscoveryConfigArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +40,4 @@ class GetOrganizationDiscoveryConfigArgs {
     );
   }
 }
+

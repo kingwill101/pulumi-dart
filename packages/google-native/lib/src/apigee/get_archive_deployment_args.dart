@@ -19,16 +19,17 @@ class GetArchiveDeploymentArgs {
     required String archiveDeploymentId,
     required String environmentId,
     required String organizationId,
-  })  : archiveDeploymentId = pulumi.Input.asInput<String>(archiveDeploymentId),
-        environmentId = pulumi.Input.asInput<String>(environmentId),
-        organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) :
+      archiveDeploymentId = pulumi.Input.asInput<String>(archiveDeploymentId),
+      environmentId = pulumi.Input.asInput<String>(environmentId),
+      organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['archiveDeploymentId'] = archiveDeploymentId;
-    map['environmentId'] = environmentId;
-    map['organizationId'] = organizationId;
-    return map;
+    return <String, dynamic>{
+      'archiveDeploymentId': archiveDeploymentId,
+      'environmentId': environmentId,
+      'organizationId': organizationId,
+    };
   }
 
   factory GetArchiveDeploymentArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +40,4 @@ class GetArchiveDeploymentArgs {
     );
   }
 }
+

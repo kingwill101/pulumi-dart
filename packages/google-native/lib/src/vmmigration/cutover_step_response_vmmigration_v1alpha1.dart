@@ -6,22 +6,16 @@ import 'replication_cycle_response_vmmigration_v1alpha1.dart';
 class CutoverStepResponseVmmigrationV1alpha1 {
   /// The time the step has ended.
   final String endTime;
-
   /// Final sync step.
   final ReplicationCycleResponseVmmigrationV1alpha1 finalSync;
-
   /// Instantiating migrated VM step.
   final Map<String, dynamic> instantiatingMigratedVm;
-
   /// Preparing VM disks step.
   final Map<String, dynamic> preparingVmDisks;
-
   /// A replication cycle prior cutover step.
   final ReplicationCycleResponseVmmigrationV1alpha1 previousReplicationCycle;
-
   /// Shutting down VM step.
   final Map<String, dynamic> shuttingDownSourceVm;
-
   /// The time the step has started.
   final String startTime;
 
@@ -44,33 +38,27 @@ class CutoverStepResponseVmmigrationV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['endTime'] = endTime;
-    map['finalSync'] = finalSync.toMap();
-    map['instantiatingMigratedVm'] = instantiatingMigratedVm;
-    map['preparingVmDisks'] = preparingVmDisks;
-    map['previousReplicationCycle'] = previousReplicationCycle.toMap();
-    map['shuttingDownSourceVm'] = shuttingDownSourceVm;
-    map['startTime'] = startTime;
-    return map;
+    return <String, dynamic>{
+      'endTime': endTime,
+      'finalSync': finalSync.toMap(),
+      'instantiatingMigratedVm': instantiatingMigratedVm,
+      'preparingVmDisks': preparingVmDisks,
+      'previousReplicationCycle': previousReplicationCycle.toMap(),
+      'shuttingDownSourceVm': shuttingDownSourceVm,
+      'startTime': startTime,
+    };
   }
 
-  factory CutoverStepResponseVmmigrationV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory CutoverStepResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return CutoverStepResponseVmmigrationV1alpha1(
       endTime: map['endTime'] as String,
-      finalSync: ReplicationCycleResponseVmmigrationV1alpha1.fromMap(
-          (map['finalSync'] as Map).cast<String, dynamic>()),
-      instantiatingMigratedVm:
-          (map['instantiatingMigratedVm'] as Map).cast<String, dynamic>(),
-      preparingVmDisks:
-          (map['preparingVmDisks'] as Map).cast<String, dynamic>(),
-      previousReplicationCycle:
-          ReplicationCycleResponseVmmigrationV1alpha1.fromMap(
-              (map['previousReplicationCycle'] as Map).cast<String, dynamic>()),
-      shuttingDownSourceVm:
-          (map['shuttingDownSourceVm'] as Map).cast<String, dynamic>(),
+      finalSync: ReplicationCycleResponseVmmigrationV1alpha1.fromMap((map['finalSync'] as Map).cast<String, dynamic>()),
+      instantiatingMigratedVm: (map['instantiatingMigratedVm'] as Map).cast<String, dynamic>(),
+      preparingVmDisks: (map['preparingVmDisks'] as Map).cast<String, dynamic>(),
+      previousReplicationCycle: ReplicationCycleResponseVmmigrationV1alpha1.fromMap((map['previousReplicationCycle'] as Map).cast<String, dynamic>()),
+      shuttingDownSourceVm: (map['shuttingDownSourceVm'] as Map).cast<String, dynamic>(),
       startTime: map['startTime'] as String,
     );
   }
 }
+

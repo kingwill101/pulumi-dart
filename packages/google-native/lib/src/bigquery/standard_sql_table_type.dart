@@ -15,24 +15,15 @@ class StandardSqlTableType {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final columnsValue = columns;
-    if (columnsValue != null) {
-      map['columns'] =
-          pulumi.Input.encodeList<StandardSqlField, Map<String, dynamic>>(
-              columnsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'columns': ?columns == null ? null : pulumi.Input.encodeList<StandardSqlField, Map<String, dynamic>>(columns!, (value) => value.toMap()),
+    };
   }
 
   factory StandardSqlTableType.fromMap(Map<String, dynamic> map) {
     return StandardSqlTableType(
-      columns: map['columns'] == null
-          ? null
-          : pulumi.Input.decodeList<StandardSqlField>(
-              map['columns'],
-              (value) => StandardSqlField.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      columns: map['columns'] == null ? null : pulumi.Input.decodeList<StandardSqlField>(map['columns'], (value) => StandardSqlField.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

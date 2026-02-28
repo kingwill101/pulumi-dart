@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DeploymentConfigMinimumHealthyHosts {
   /// The type can either be `FLEET_PERCENT` or `HOST_COUNT`.
   final String? type;
-
   /// The value when the type is `FLEET_PERCENT` represents the minimum number of healthy instances as
   /// a percentage of the total number of instances in the deployment. If you specify FLEET_PERCENT, at the start of the
   /// deployment, AWS CodeDeploy converts the percentage to the equivalent number of instance and rounds up fractional instances.
@@ -19,23 +19,17 @@ class DeploymentConfigMinimumHealthyHosts {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue;
-    }
-    final valueValue = value;
-    if (valueValue != null) {
-      map['value'] = valueValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'type': ?type,
+      'value': ?value,
+    };
   }
 
-  factory DeploymentConfigMinimumHealthyHosts.fromMap(
-      Map<String, dynamic> map) {
+  factory DeploymentConfigMinimumHealthyHosts.fromMap(Map<String, dynamic> map) {
     return DeploymentConfigMinimumHealthyHosts(
       type: map['type'] == null ? null : map['type'] as String,
       value: map['value'] == null ? null : map['value'] as int,
     );
   }
 }
+

@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Gateway-related configuration and state.
 class GatewayConfigResponse {
   /// Indicates how to authorize and/or authenticate devices to access the gateway.
   final String gatewayAuthMethod;
-
   /// Indicates whether the device is a gateway.
   final String gatewayType;
-
   /// [Output only] The ID of the gateway the device accessed most recently.
   final String lastAccessedGatewayId;
-
   /// [Output only] The most recent time at which the device accessed the gateway specified in `last_accessed_gateway`.
   final String lastAccessedGatewayTime;
 
@@ -27,12 +25,12 @@ class GatewayConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gatewayAuthMethod'] = gatewayAuthMethod;
-    map['gatewayType'] = gatewayType;
-    map['lastAccessedGatewayId'] = lastAccessedGatewayId;
-    map['lastAccessedGatewayTime'] = lastAccessedGatewayTime;
-    return map;
+    return <String, dynamic>{
+      'gatewayAuthMethod': gatewayAuthMethod,
+      'gatewayType': gatewayType,
+      'lastAccessedGatewayId': lastAccessedGatewayId,
+      'lastAccessedGatewayTime': lastAccessedGatewayTime,
+    };
   }
 
   factory GatewayConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -44,3 +42,4 @@ class GatewayConfigResponse {
     );
   }
 }
+

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Cloud Storage bucket profile.
 class GcsProfileResponseDatastreamV1alpha1 {
   /// The full project and resource path for Cloud Storage bucket including the name.
   final String bucketName;
-
   /// The root path inside the Cloud Storage bucket.
   final String rootPath;
 
@@ -17,17 +17,17 @@ class GcsProfileResponseDatastreamV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucketName'] = bucketName;
-    map['rootPath'] = rootPath;
-    return map;
+    return <String, dynamic>{
+      'bucketName': bucketName,
+      'rootPath': rootPath,
+    };
   }
 
-  factory GcsProfileResponseDatastreamV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory GcsProfileResponseDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return GcsProfileResponseDatastreamV1alpha1(
       bucketName: map['bucketName'] as String,
       rootPath: map['rootPath'] as String,
     );
   }
 }
+

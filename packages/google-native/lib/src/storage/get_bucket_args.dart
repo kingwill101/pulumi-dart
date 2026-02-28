@@ -25,49 +25,31 @@ class GetBucketArgs {
     String? ifMetagenerationNotMatch,
     String? projection,
     String? userProject,
-  })  : bucket = pulumi.Input.asInput<String>(bucket),
-        ifMetagenerationMatch =
-            pulumi.Input.asOptionalInput<String>(ifMetagenerationMatch),
-        ifMetagenerationNotMatch =
-            pulumi.Input.asOptionalInput<String>(ifMetagenerationNotMatch),
-        projection = pulumi.Input.asOptionalInput<String>(projection),
-        userProject = pulumi.Input.asOptionalInput<String>(userProject);
+  }) :
+      bucket = pulumi.Input.asInput<String>(bucket),
+      ifMetagenerationMatch = pulumi.Input.asOptionalInput<String>(ifMetagenerationMatch),
+      ifMetagenerationNotMatch = pulumi.Input.asOptionalInput<String>(ifMetagenerationNotMatch),
+      projection = pulumi.Input.asOptionalInput<String>(projection),
+      userProject = pulumi.Input.asOptionalInput<String>(userProject);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucket'] = bucket;
-    final ifMetagenerationMatchValue = ifMetagenerationMatch;
-    if (ifMetagenerationMatchValue != null) {
-      map['ifMetagenerationMatch'] = ifMetagenerationMatchValue;
-    }
-    final ifMetagenerationNotMatchValue = ifMetagenerationNotMatch;
-    if (ifMetagenerationNotMatchValue != null) {
-      map['ifMetagenerationNotMatch'] = ifMetagenerationNotMatchValue;
-    }
-    final projectionValue = projection;
-    if (projectionValue != null) {
-      map['projection'] = projectionValue;
-    }
-    final userProjectValue = userProject;
-    if (userProjectValue != null) {
-      map['userProject'] = userProjectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'bucket': bucket,
+      'ifMetagenerationMatch': ?ifMetagenerationMatch,
+      'ifMetagenerationNotMatch': ?ifMetagenerationNotMatch,
+      'projection': ?projection,
+      'userProject': ?userProject,
+    };
   }
 
   factory GetBucketArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketArgs(
       bucket: map['bucket'] as String,
-      ifMetagenerationMatch: map['ifMetagenerationMatch'] == null
-          ? null
-          : map['ifMetagenerationMatch'] as String,
-      ifMetagenerationNotMatch: map['ifMetagenerationNotMatch'] == null
-          ? null
-          : map['ifMetagenerationNotMatch'] as String,
-      projection:
-          map['projection'] == null ? null : map['projection'] as String,
-      userProject:
-          map['userProject'] == null ? null : map['userProject'] as String,
+      ifMetagenerationMatch: map['ifMetagenerationMatch'] == null ? null : map['ifMetagenerationMatch'] as String,
+      ifMetagenerationNotMatch: map['ifMetagenerationNotMatch'] == null ? null : map['ifMetagenerationNotMatch'] as String,
+      projection: map['projection'] == null ? null : map['projection'] as String,
+      userProject: map['userProject'] == null ? null : map['userProject'] as String,
     );
   }
 }
+

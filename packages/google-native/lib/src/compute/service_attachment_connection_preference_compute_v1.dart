@@ -7,14 +7,13 @@ enum ServiceAttachmentConnectionPreferenceComputeV1 {
   const ServiceAttachmentConnectionPreferenceComputeV1(this.value);
   final String value;
 
-  static ServiceAttachmentConnectionPreferenceComputeV1 fromValue(
-      String value) {
+  static ServiceAttachmentConnectionPreferenceComputeV1 fromValue(String value) {
     for (final item in ServiceAttachmentConnectionPreferenceComputeV1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown ServiceAttachmentConnectionPreferenceComputeV1 value: $value');
+    throw ArgumentError('Unknown ServiceAttachmentConnectionPreferenceComputeV1 value: $value');
   }
 }
+

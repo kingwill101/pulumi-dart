@@ -7,7 +7,6 @@ import 'spark_history_server_config_response.dart';
 class AuxiliaryServicesConfigResponse {
   /// Optional. The Hive Metastore configuration for this workload.
   final MetastoreConfigResponse metastoreConfig;
-
   /// Optional. The Spark History Server configuration for the workload.
   final SparkHistoryServerConfigResponse sparkHistoryServerConfig;
 
@@ -20,18 +19,17 @@ class AuxiliaryServicesConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['metastoreConfig'] = metastoreConfig.toMap();
-    map['sparkHistoryServerConfig'] = sparkHistoryServerConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'metastoreConfig': metastoreConfig.toMap(),
+      'sparkHistoryServerConfig': sparkHistoryServerConfig.toMap(),
+    };
   }
 
   factory AuxiliaryServicesConfigResponse.fromMap(Map<String, dynamic> map) {
     return AuxiliaryServicesConfigResponse(
-      metastoreConfig: MetastoreConfigResponse.fromMap(
-          (map['metastoreConfig'] as Map).cast<String, dynamic>()),
-      sparkHistoryServerConfig: SparkHistoryServerConfigResponse.fromMap(
-          (map['sparkHistoryServerConfig'] as Map).cast<String, dynamic>()),
+      metastoreConfig: MetastoreConfigResponse.fromMap((map['metastoreConfig'] as Map).cast<String, dynamic>()),
+      sparkHistoryServerConfig: SparkHistoryServerConfigResponse.fromMap((map['sparkHistoryServerConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -7,14 +7,13 @@ enum BackendServiceLogConfigOptionalModeComputeBeta {
   const BackendServiceLogConfigOptionalModeComputeBeta(this.value);
   final String value;
 
-  static BackendServiceLogConfigOptionalModeComputeBeta fromValue(
-      String value) {
+  static BackendServiceLogConfigOptionalModeComputeBeta fromValue(String value) {
     for (final item in BackendServiceLogConfigOptionalModeComputeBeta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown BackendServiceLogConfigOptionalModeComputeBeta value: $value');
+    throw ArgumentError('Unknown BackendServiceLogConfigOptionalModeComputeBeta value: $value');
   }
 }
+

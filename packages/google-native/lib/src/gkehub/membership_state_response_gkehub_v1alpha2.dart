@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// MembershipState describes the state of a Membership resource.
 class MembershipStateResponseGkehubV1alpha2 {
   /// The current state of the Membership resource.
@@ -12,15 +13,15 @@ class MembershipStateResponseGkehubV1alpha2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['code'] = code;
-    return map;
+    return <String, dynamic>{
+      'code': code,
+    };
   }
 
-  factory MembershipStateResponseGkehubV1alpha2.fromMap(
-      Map<String, dynamic> map) {
+  factory MembershipStateResponseGkehubV1alpha2.fromMap(Map<String, dynamic> map) {
     return MembershipStateResponseGkehubV1alpha2(
       code: map['code'] as String,
     );
   }
 }
+

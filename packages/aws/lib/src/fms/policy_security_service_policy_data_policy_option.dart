@@ -6,14 +6,10 @@ import 'policy_security_service_policy_data_policy_option_third_party_firewall_p
 
 class PolicySecurityServicePolicyDataPolicyOption {
   /// Defines NACL rules across accounts in their AWS Organization. See the `network_acl_common_policy` block.
-  final PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy?
-      networkAclCommonPolicy;
-
+  final PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy? networkAclCommonPolicy;
   /// Defines the deployment model to use for the firewall policy.  See the `network_firewall_policy` block.
-  final PolicySecurityServicePolicyDataPolicyOptionNetworkFirewallPolicy?
-      networkFirewallPolicy;
-  final PolicySecurityServicePolicyDataPolicyOptionThirdPartyFirewallPolicy?
-      thirdPartyFirewallPolicy;
+  final PolicySecurityServicePolicyDataPolicyOptionNetworkFirewallPolicy? networkFirewallPolicy;
+  final PolicySecurityServicePolicyDataPolicyOptionThirdPartyFirewallPolicy? thirdPartyFirewallPolicy;
 
   /// Creates a new [PolicySecurityServicePolicyDataPolicyOption].
   /// [networkAclCommonPolicy] Defines NACL rules across accounts in their AWS Organization. See the `network_acl_common_policy` block.
@@ -26,40 +22,19 @@ class PolicySecurityServicePolicyDataPolicyOption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final networkAclCommonPolicyValue = networkAclCommonPolicy;
-    if (networkAclCommonPolicyValue != null) {
-      map['networkAclCommonPolicy'] = networkAclCommonPolicyValue.toMap();
-    }
-    final networkFirewallPolicyValue = networkFirewallPolicy;
-    if (networkFirewallPolicyValue != null) {
-      map['networkFirewallPolicy'] = networkFirewallPolicyValue.toMap();
-    }
-    final thirdPartyFirewallPolicyValue = thirdPartyFirewallPolicy;
-    if (thirdPartyFirewallPolicyValue != null) {
-      map['thirdPartyFirewallPolicy'] = thirdPartyFirewallPolicyValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'networkAclCommonPolicy': ?networkAclCommonPolicy == null ? null : networkAclCommonPolicy!.toMap(),
+      'networkFirewallPolicy': ?networkFirewallPolicy == null ? null : networkFirewallPolicy!.toMap(),
+      'thirdPartyFirewallPolicy': ?thirdPartyFirewallPolicy == null ? null : thirdPartyFirewallPolicy!.toMap(),
+    };
   }
 
-  factory PolicySecurityServicePolicyDataPolicyOption.fromMap(
-      Map<String, dynamic> map) {
+  factory PolicySecurityServicePolicyDataPolicyOption.fromMap(Map<String, dynamic> map) {
     return PolicySecurityServicePolicyDataPolicyOption(
-      networkAclCommonPolicy: map['networkAclCommonPolicy'] == null
-          ? null
-          : PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy
-              .fromMap((map['networkAclCommonPolicy'] as Map)
-                  .cast<String, dynamic>()),
-      networkFirewallPolicy: map['networkFirewallPolicy'] == null
-          ? null
-          : PolicySecurityServicePolicyDataPolicyOptionNetworkFirewallPolicy
-              .fromMap((map['networkFirewallPolicy'] as Map)
-                  .cast<String, dynamic>()),
-      thirdPartyFirewallPolicy: map['thirdPartyFirewallPolicy'] == null
-          ? null
-          : PolicySecurityServicePolicyDataPolicyOptionThirdPartyFirewallPolicy
-              .fromMap((map['thirdPartyFirewallPolicy'] as Map)
-                  .cast<String, dynamic>()),
+      networkAclCommonPolicy: map['networkAclCommonPolicy'] == null ? null : PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy.fromMap((map['networkAclCommonPolicy'] as Map).cast<String, dynamic>()),
+      networkFirewallPolicy: map['networkFirewallPolicy'] == null ? null : PolicySecurityServicePolicyDataPolicyOptionNetworkFirewallPolicy.fromMap((map['networkFirewallPolicy'] as Map).cast<String, dynamic>()),
+      thirdPartyFirewallPolicy: map['thirdPartyFirewallPolicy'] == null ? null : PolicySecurityServicePolicyDataPolicyOptionThirdPartyFirewallPolicy.fromMap((map['thirdPartyFirewallPolicy'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

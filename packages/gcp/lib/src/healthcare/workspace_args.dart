@@ -11,16 +11,13 @@ class WorkspaceArgs {
   /// Identifies the dataset addressed by this request. Must be in the format
   /// 'projects/{project}/locations/{location}/datasets/{dataset}'
   final pulumi.Input<String> dataset;
-
   /// The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// The name of the workspace, in the format 'projects/{projectId}/locations/{location}/datasets/{datasetId}/dataMapperWorkspaces/{workspaceId}'
   final pulumi.Input<String>? name;
-
   /// Settings associated with this workspace.
   /// Structure is documented below.
   final pulumi.Input<WorkspaceSettings> settings;
@@ -35,37 +32,28 @@ class WorkspaceArgs {
     Map<String, String>? labels,
     String? name,
     required WorkspaceSettings settings,
-  })  : dataset = pulumi.Input.asInput<String>(dataset),
-        labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        settings = pulumi.Input.asInput<WorkspaceSettings>(settings);
+  }) :
+      dataset = pulumi.Input.asInput<String>(dataset),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      settings = pulumi.Input.asInput<WorkspaceSettings>(settings);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dataset'] = dataset;
-    final labelsValue = labels;
-    if (labelsValue != null) {
-      map['labels'] = labelsValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    map['settings'] =
-        pulumi.Input.mapInputValue<WorkspaceSettings, Map<String, dynamic>>(
-            settings, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'dataset': dataset,
+      'labels': ?labels,
+      'name': ?name,
+      'settings': pulumi.Input.mapInputValue<WorkspaceSettings, Map<String, dynamic>>(settings, (value) => value.toMap()),
+    };
   }
 
   factory WorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceArgs(
       dataset: map['dataset'] as String,
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       name: map['name'] == null ? null : map['name'] as String,
-      settings: WorkspaceSettings.fromMap(
-          (map['settings'] as Map).cast<String, dynamic>()),
+      settings: WorkspaceSettings.fromMap((map['settings'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

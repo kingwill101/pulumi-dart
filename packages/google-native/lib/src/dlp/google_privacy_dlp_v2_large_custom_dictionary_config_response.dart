@@ -8,10 +8,8 @@ import 'google_privacy_dlp_v2_cloud_storage_path_response.dart';
 class GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse {
   /// Field in a BigQuery table where each cell represents a dictionary phrase.
   final GooglePrivacyDlpV2BigQueryFieldResponse bigQueryField;
-
   /// Set of files containing newline-delimited lists of dictionary phrases.
   final GooglePrivacyDlpV2CloudStorageFileSetResponse cloudStorageFileSet;
-
   /// Location to store dictionary artifacts in Cloud Storage. These files will only be accessible by project owners and the DLP API. If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
   final GooglePrivacyDlpV2CloudStoragePathResponse outputPath;
 
@@ -26,23 +24,19 @@ class GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bigQueryField'] = bigQueryField.toMap();
-    map['cloudStorageFileSet'] = cloudStorageFileSet.toMap();
-    map['outputPath'] = outputPath.toMap();
-    return map;
+    return <String, dynamic>{
+      'bigQueryField': bigQueryField.toMap(),
+      'cloudStorageFileSet': cloudStorageFileSet.toMap(),
+      'outputPath': outputPath.toMap(),
+    };
   }
 
-  factory GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse(
-      bigQueryField: GooglePrivacyDlpV2BigQueryFieldResponse.fromMap(
-          (map['bigQueryField'] as Map).cast<String, dynamic>()),
-      cloudStorageFileSet:
-          GooglePrivacyDlpV2CloudStorageFileSetResponse.fromMap(
-              (map['cloudStorageFileSet'] as Map).cast<String, dynamic>()),
-      outputPath: GooglePrivacyDlpV2CloudStoragePathResponse.fromMap(
-          (map['outputPath'] as Map).cast<String, dynamic>()),
+      bigQueryField: GooglePrivacyDlpV2BigQueryFieldResponse.fromMap((map['bigQueryField'] as Map).cast<String, dynamic>()),
+      cloudStorageFileSet: GooglePrivacyDlpV2CloudStorageFileSetResponse.fromMap((map['cloudStorageFileSet'] as Map).cast<String, dynamic>()),
+      outputPath: GooglePrivacyDlpV2CloudStoragePathResponse.fromMap((map['outputPath'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

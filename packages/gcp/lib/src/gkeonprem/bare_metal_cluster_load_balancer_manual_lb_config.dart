@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BareMetalClusterLoadBalancerManualLbConfig {
   /// Whether manual load balancing is enabled.
   final bool enabled;
@@ -11,15 +12,15 @@ class BareMetalClusterLoadBalancerManualLbConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory BareMetalClusterLoadBalancerManualLbConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory BareMetalClusterLoadBalancerManualLbConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterLoadBalancerManualLbConfig(
       enabled: map['enabled'] as bool,
     );
   }
 }
+

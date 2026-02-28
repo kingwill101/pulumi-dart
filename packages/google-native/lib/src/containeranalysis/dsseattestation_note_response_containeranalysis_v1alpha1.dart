@@ -14,16 +14,15 @@ class DSSEAttestationNoteResponseContaineranalysisV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['hint'] = hint.toMap();
-    return map;
+    return <String, dynamic>{
+      'hint': hint.toMap(),
+    };
   }
 
-  factory DSSEAttestationNoteResponseContaineranalysisV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory DSSEAttestationNoteResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return DSSEAttestationNoteResponseContaineranalysisV1alpha1(
-      hint: DSSEHintResponseContaineranalysisV1alpha1.fromMap(
-          (map['hint'] as Map).cast<String, dynamic>()),
+      hint: DSSEHintResponseContaineranalysisV1alpha1.fromMap((map['hint'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

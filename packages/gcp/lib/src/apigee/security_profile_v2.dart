@@ -488,26 +488,19 @@ import 'security_profile_v2_profile_assessment_config.dart';
 class SecurityProfileV2 extends pulumi.CustomResource {
   /// The timestamp at which this profile was created.
   late final pulumi.Output<String> createTime;
-
   /// Description of the security profile.
   late final pulumi.Output<String?> description;
-
   /// Name of the security profile v2 resource,
   /// in the format `organizations/{{org_name}}/securityProfilesV2/{{profile_id}}`.
   late final pulumi.Output<String> name;
-
   /// The Apigee Organization associated with the Apigee Security Profile V2,
   /// in the format `organizations/{{org_name}}`.
   late final pulumi.Output<String> orgId;
-
   /// A map of the assessment name and the assessment config.
   /// Structure is documented below.
-  late final pulumi.Output<List<SecurityProfileV2ProfileAssessmentConfig>>
-      profileAssessmentConfigs;
-
+  late final pulumi.Output<List<SecurityProfileV2ProfileAssessmentConfig>> profileAssessmentConfigs;
   /// Resource ID of the security profile.
   late final pulumi.Output<String> profileId;
-
   /// The timestamp at which this profile was most recently updated.
   late final pulumi.Output<String> updateTime;
 
@@ -529,9 +522,7 @@ class SecurityProfileV2 extends pulumi.CustomResource {
     this.description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     this.orgId = registerOutput<String>('orgId');
-    this.profileAssessmentConfigs =
-        registerOutput<List<SecurityProfileV2ProfileAssessmentConfig>>(
-            'profileAssessmentConfigs');
+    this.profileAssessmentConfigs = registerOutput<List<SecurityProfileV2ProfileAssessmentConfig>>('profileAssessmentConfigs');
     this.profileId = registerOutput<String>('profileId');
     this.updateTime = registerOutput<String>('updateTime');
   }

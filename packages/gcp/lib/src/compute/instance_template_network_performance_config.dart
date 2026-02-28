@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceTemplateNetworkPerformanceConfig {
   /// The egress bandwidth tier to enable. Possible values: TIER_1, DEFAULT
   final String totalEgressBandwidthTier;
@@ -11,15 +12,15 @@ class InstanceTemplateNetworkPerformanceConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['totalEgressBandwidthTier'] = totalEgressBandwidthTier;
-    return map;
+    return <String, dynamic>{
+      'totalEgressBandwidthTier': totalEgressBandwidthTier,
+    };
   }
 
-  factory InstanceTemplateNetworkPerformanceConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory InstanceTemplateNetworkPerformanceConfig.fromMap(Map<String, dynamic> map) {
     return InstanceTemplateNetworkPerformanceConfig(
       totalEgressBandwidthTier: map['totalEgressBandwidthTier'] as String,
     );
   }
 }
+

@@ -7,10 +7,8 @@ import 'report_summary_sole_tenant_node_allocation_response.dart';
 class ReportSummarySoleTenantFindingResponse {
   /// Count of assets which are allocated
   final String allocatedAssetCount;
-
   /// Set of regions in which the assets are allocated
   final List<String> allocatedRegions;
-
   /// Set of per-nodetype allocation records
   final List<ReportSummarySoleTenantNodeAllocationResponse> nodeAllocations;
 
@@ -25,25 +23,19 @@ class ReportSummarySoleTenantFindingResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allocatedAssetCount'] = allocatedAssetCount;
-    map['allocatedRegions'] = allocatedRegions;
-    map['nodeAllocations'] = pulumi.Input.encodeList<
-        ReportSummarySoleTenantNodeAllocationResponse,
-        Map<String, dynamic>>(nodeAllocations, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'allocatedAssetCount': allocatedAssetCount,
+      'allocatedRegions': allocatedRegions,
+      'nodeAllocations': pulumi.Input.encodeList<ReportSummarySoleTenantNodeAllocationResponse, Map<String, dynamic>>(nodeAllocations, (value) => value.toMap()),
+    };
   }
 
-  factory ReportSummarySoleTenantFindingResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory ReportSummarySoleTenantFindingResponse.fromMap(Map<String, dynamic> map) {
     return ReportSummarySoleTenantFindingResponse(
       allocatedAssetCount: map['allocatedAssetCount'] as String,
       allocatedRegions: (map['allocatedRegions'] as List).cast<String>(),
-      nodeAllocations: pulumi.Input.decodeList<
-              ReportSummarySoleTenantNodeAllocationResponse>(
-          map['nodeAllocations'],
-          (value) => ReportSummarySoleTenantNodeAllocationResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      nodeAllocations: pulumi.Input.decodeList<ReportSummarySoleTenantNodeAllocationResponse>(map['nodeAllocations'], (value) => ReportSummarySoleTenantNodeAllocationResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

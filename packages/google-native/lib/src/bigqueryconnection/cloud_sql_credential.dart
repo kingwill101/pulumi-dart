@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Credential info for the Cloud SQL.
 class CloudSqlCredential {
   /// The password for the credential.
   final String? password;
-
   /// The username for the credential.
   final String? username;
 
@@ -17,16 +17,10 @@ class CloudSqlCredential {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final passwordValue = password;
-    if (passwordValue != null) {
-      map['password'] = passwordValue;
-    }
-    final usernameValue = username;
-    if (usernameValue != null) {
-      map['username'] = usernameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'password': ?password,
+      'username': ?username,
+    };
   }
 
   factory CloudSqlCredential.fromMap(Map<String, dynamic> map) {
@@ -36,3 +30,4 @@ class CloudSqlCredential {
     );
   }
 }
+

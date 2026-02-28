@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInstanceGcsSource {
   /// URIs of the GCS objects to import.
   /// Example: gs://bucket1/object1, gs://bucket2/folder2/object2
@@ -12,9 +13,9 @@ class GetInstanceGcsSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['uris'] = uris;
-    return map;
+    return <String, dynamic>{
+      'uris': uris,
+    };
   }
 
   factory GetInstanceGcsSource.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class GetInstanceGcsSource {
     );
   }
 }
+

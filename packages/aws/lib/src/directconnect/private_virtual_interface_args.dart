@@ -9,44 +9,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrivateVirtualInterfaceArgs {
   /// The address family for the BGP peer. `ipv4 ` or `ipv6`.
   final pulumi.Input<String> addressFamily;
-
   /// The IPv4 CIDR address to use to send traffic to Amazon. Required for IPv4 BGP peers.
   final pulumi.Input<String>? amazonAddress;
-
   /// The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
   final pulumi.Input<int> bgpAsn;
-
   /// The authentication key for BGP configuration.
   final pulumi.Input<String>? bgpAuthKey;
-
   /// The ID of the Direct Connect connection (or LAG) on which to create the virtual interface.
   final pulumi.Input<String> connectionId;
-
   /// The IPv4 CIDR destination address to which Amazon should send traffic. Required for IPv4 BGP peers.
   final pulumi.Input<String>? customerAddress;
-
   /// The ID of the Direct Connect gateway to which to connect the virtual interface.
   final pulumi.Input<String>? dxGatewayId;
-
   /// The maximum transmission unit (MTU) is the size, in bytes, of the largest permissible packet that can be passed over the connection.
   /// The MTU of a virtual private interface can be either `1500` or `9001` (jumbo frames). Default is `1500`.
   final pulumi.Input<int>? mtu;
-
   /// The name for the virtual interface.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Indicates whether to enable or disable SiteLink.
   final pulumi.Input<bool>? sitelinkEnabled;
-
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The VLAN ID.
   final pulumi.Input<int> vlan;
-
   /// The ID of the virtual private gateway to which to connect the virtual interface.
   final pulumi.Input<String>? vpnGatewayId;
 
@@ -80,96 +67,58 @@ class PrivateVirtualInterfaceArgs {
     Map<String, String>? tags,
     required int vlan,
     String? vpnGatewayId,
-  })  : addressFamily = pulumi.Input.asInput<String>(addressFamily),
-        amazonAddress = pulumi.Input.asOptionalInput<String>(amazonAddress),
-        bgpAsn = pulumi.Input.asInput<int>(bgpAsn),
-        bgpAuthKey = pulumi.Input.asOptionalInput<String>(bgpAuthKey),
-        connectionId = pulumi.Input.asInput<String>(connectionId),
-        customerAddress = pulumi.Input.asOptionalInput<String>(customerAddress),
-        dxGatewayId = pulumi.Input.asOptionalInput<String>(dxGatewayId),
-        mtu = pulumi.Input.asOptionalInput<int>(mtu),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        sitelinkEnabled = pulumi.Input.asOptionalInput<bool>(sitelinkEnabled),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-        vlan = pulumi.Input.asInput<int>(vlan),
-        vpnGatewayId = pulumi.Input.asOptionalInput<String>(vpnGatewayId);
+  }) :
+      addressFamily = pulumi.Input.asInput<String>(addressFamily),
+      amazonAddress = pulumi.Input.asOptionalInput<String>(amazonAddress),
+      bgpAsn = pulumi.Input.asInput<int>(bgpAsn),
+      bgpAuthKey = pulumi.Input.asOptionalInput<String>(bgpAuthKey),
+      connectionId = pulumi.Input.asInput<String>(connectionId),
+      customerAddress = pulumi.Input.asOptionalInput<String>(customerAddress),
+      dxGatewayId = pulumi.Input.asOptionalInput<String>(dxGatewayId),
+      mtu = pulumi.Input.asOptionalInput<int>(mtu),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      sitelinkEnabled = pulumi.Input.asOptionalInput<bool>(sitelinkEnabled),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      vlan = pulumi.Input.asInput<int>(vlan),
+      vpnGatewayId = pulumi.Input.asOptionalInput<String>(vpnGatewayId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['addressFamily'] = addressFamily;
-    final amazonAddressValue = amazonAddress;
-    if (amazonAddressValue != null) {
-      map['amazonAddress'] = amazonAddressValue;
-    }
-    map['bgpAsn'] = bgpAsn;
-    final bgpAuthKeyValue = bgpAuthKey;
-    if (bgpAuthKeyValue != null) {
-      map['bgpAuthKey'] = bgpAuthKeyValue;
-    }
-    map['connectionId'] = connectionId;
-    final customerAddressValue = customerAddress;
-    if (customerAddressValue != null) {
-      map['customerAddress'] = customerAddressValue;
-    }
-    final dxGatewayIdValue = dxGatewayId;
-    if (dxGatewayIdValue != null) {
-      map['dxGatewayId'] = dxGatewayIdValue;
-    }
-    final mtuValue = mtu;
-    if (mtuValue != null) {
-      map['mtu'] = mtuValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final sitelinkEnabledValue = sitelinkEnabled;
-    if (sitelinkEnabledValue != null) {
-      map['sitelinkEnabled'] = sitelinkEnabledValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    map['vlan'] = vlan;
-    final vpnGatewayIdValue = vpnGatewayId;
-    if (vpnGatewayIdValue != null) {
-      map['vpnGatewayId'] = vpnGatewayIdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'addressFamily': addressFamily,
+      'amazonAddress': ?amazonAddress,
+      'bgpAsn': bgpAsn,
+      'bgpAuthKey': ?bgpAuthKey,
+      'connectionId': connectionId,
+      'customerAddress': ?customerAddress,
+      'dxGatewayId': ?dxGatewayId,
+      'mtu': ?mtu,
+      'name': ?name,
+      'region': ?region,
+      'sitelinkEnabled': ?sitelinkEnabled,
+      'tags': ?tags,
+      'vlan': vlan,
+      'vpnGatewayId': ?vpnGatewayId,
+    };
   }
 
   factory PrivateVirtualInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return PrivateVirtualInterfaceArgs(
       addressFamily: map['addressFamily'] as String,
-      amazonAddress:
-          map['amazonAddress'] == null ? null : map['amazonAddress'] as String,
+      amazonAddress: map['amazonAddress'] == null ? null : map['amazonAddress'] as String,
       bgpAsn: map['bgpAsn'] as int,
-      bgpAuthKey:
-          map['bgpAuthKey'] == null ? null : map['bgpAuthKey'] as String,
+      bgpAuthKey: map['bgpAuthKey'] == null ? null : map['bgpAuthKey'] as String,
       connectionId: map['connectionId'] as String,
-      customerAddress: map['customerAddress'] == null
-          ? null
-          : map['customerAddress'] as String,
-      dxGatewayId:
-          map['dxGatewayId'] == null ? null : map['dxGatewayId'] as String,
+      customerAddress: map['customerAddress'] == null ? null : map['customerAddress'] as String,
+      dxGatewayId: map['dxGatewayId'] == null ? null : map['dxGatewayId'] as String,
       mtu: map['mtu'] == null ? null : map['mtu'] as int,
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      sitelinkEnabled: map['sitelinkEnabled'] == null
-          ? null
-          : map['sitelinkEnabled'] as bool,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      sitelinkEnabled: map['sitelinkEnabled'] == null ? null : map['sitelinkEnabled'] as bool,
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
       vlan: map['vlan'] as int,
-      vpnGatewayId:
-          map['vpnGatewayId'] == null ? null : map['vpnGatewayId'] as String,
+      vpnGatewayId: map['vpnGatewayId'] == null ? null : map['vpnGatewayId'] as String,
     );
   }
 }
+

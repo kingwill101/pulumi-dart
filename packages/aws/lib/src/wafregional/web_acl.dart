@@ -648,28 +648,20 @@ import 'web_acl_rule.dart';
 class WebAcl extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the WAF Regional WebACL.
   late final pulumi.Output<String> arn;
-
   /// The action that you want AWS WAF Regional to take when a request doesn't match the criteria in any of the rules that are associated with the web ACL.
   late final pulumi.Output<WebAclDefaultAction> defaultAction;
-
   /// Configuration block to enable WAF logging. Detailed below.
   late final pulumi.Output<WebAclLoggingConfiguration?> loggingConfiguration;
-
   /// The name or description for the Amazon CloudWatch metric of this web ACL.
   late final pulumi.Output<String> metricName;
-
   /// The name or description of the web ACL.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Set of configuration blocks containing rules for the web ACL. Detailed below.
   late final pulumi.Output<List<WebAclRule>?> rules;
-
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -689,8 +681,7 @@ class WebAcl extends pulumi.CustomResource {
         ) {
     this.arn = registerOutput<String>('arn');
     this.defaultAction = registerOutput<WebAclDefaultAction>('defaultAction');
-    this.loggingConfiguration =
-        registerOutput<WebAclLoggingConfiguration?>('loggingConfiguration');
+    this.loggingConfiguration = registerOutput<WebAclLoggingConfiguration?>('loggingConfiguration');
     this.metricName = registerOutput<String>('metricName');
     this.name = registerOutput<String>('name');
     this.region = registerOutput<String>('region');

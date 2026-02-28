@@ -623,24 +623,18 @@ class RouterRoutePolicy extends pulumi.CustomResource {
   /// The fingerprint used for optimistic locking of this resource.  Used
   /// internally during updates.
   late final pulumi.Output<String> fingerprint;
-
   /// Name of the route policy. This policy's name, which must be a resource ID segment and unique within all policies owned by the Router
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Region where the router and NAT reside.
   late final pulumi.Output<String> region;
-
   /// The name of the Cloud Router in which this route policy will be configured.
   late final pulumi.Output<String> router;
-
   /// List of terms (the order in the list is not important, they are evaluated in order of priority).
   /// Structure is documented below.
   late final pulumi.Output<List<RouterRoutePolicyTerm>> terms;
-
   /// This is policy's type, which is one of IMPORT or EXPORT
   /// Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
   late final pulumi.Output<String?> type;

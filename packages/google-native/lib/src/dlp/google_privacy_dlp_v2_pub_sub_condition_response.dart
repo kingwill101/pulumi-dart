@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A condition consisting of a value.
 class GooglePrivacyDlpV2PubSubConditionResponse {
   /// The minimum data risk score that triggers the condition.
   final String minimumRiskScore;
-
   /// The minimum sensitivity level that triggers the condition.
   final String minimumSensitivityScore;
 
@@ -17,17 +17,17 @@ class GooglePrivacyDlpV2PubSubConditionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['minimumRiskScore'] = minimumRiskScore;
-    map['minimumSensitivityScore'] = minimumSensitivityScore;
-    return map;
+    return <String, dynamic>{
+      'minimumRiskScore': minimumRiskScore,
+      'minimumSensitivityScore': minimumSensitivityScore,
+    };
   }
 
-  factory GooglePrivacyDlpV2PubSubConditionResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2PubSubConditionResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2PubSubConditionResponse(
       minimumRiskScore: map['minimumRiskScore'] as String,
       minimumSensitivityScore: map['minimumSensitivityScore'] as String,
     );
   }
 }
+

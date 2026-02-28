@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Filter based on relation between source value and compare value of type double in ConditionalColumnSetValue
 class DoubleComparisonFilterResponse {
   /// Double compare value to be used
   final double value;
-
   /// Relation between source value and compare value
   final String valueComparison;
 
@@ -17,10 +17,10 @@ class DoubleComparisonFilterResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['value'] = value;
-    map['valueComparison'] = valueComparison;
-    return map;
+    return <String, dynamic>{
+      'value': value,
+      'valueComparison': valueComparison,
+    };
   }
 
   factory DoubleComparisonFilterResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class DoubleComparisonFilterResponse {
     );
   }
 }
+

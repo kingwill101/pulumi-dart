@@ -5,7 +5,6 @@ import 'agentcore_code_interpreter_network_configuration_vpc_config.dart';
 class AgentcoreCodeInterpreterNetworkConfiguration {
   /// Network mode for the code interpreter. Valid values: `PUBLIC`, `SANDBOX`, `VPC`.
   final String networkMode;
-
   /// VPC configuration. See `vpc_config` below.
   final AgentcoreCodeInterpreterNetworkConfigurationVpcConfig? vpcConfig;
 
@@ -18,23 +17,17 @@ class AgentcoreCodeInterpreterNetworkConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['networkMode'] = networkMode;
-    final vpcConfigValue = vpcConfig;
-    if (vpcConfigValue != null) {
-      map['vpcConfig'] = vpcConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'networkMode': networkMode,
+      'vpcConfig': ?vpcConfig == null ? null : vpcConfig!.toMap(),
+    };
   }
 
-  factory AgentcoreCodeInterpreterNetworkConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentcoreCodeInterpreterNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreCodeInterpreterNetworkConfiguration(
       networkMode: map['networkMode'] as String,
-      vpcConfig: map['vpcConfig'] == null
-          ? null
-          : AgentcoreCodeInterpreterNetworkConfigurationVpcConfig.fromMap(
-              (map['vpcConfig'] as Map).cast<String, dynamic>()),
+      vpcConfig: map['vpcConfig'] == null ? null : AgentcoreCodeInterpreterNetworkConfigurationVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

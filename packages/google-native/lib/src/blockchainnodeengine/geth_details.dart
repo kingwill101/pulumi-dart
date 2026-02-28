@@ -14,20 +14,15 @@ class GethDetails {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final garbageCollectionModeValue = garbageCollectionMode;
-    if (garbageCollectionModeValue != null) {
-      map['garbageCollectionMode'] = garbageCollectionModeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'garbageCollectionMode': ?garbageCollectionMode == null ? null : garbageCollectionMode!.value,
+    };
   }
 
   factory GethDetails.fromMap(Map<String, dynamic> map) {
     return GethDetails(
-      garbageCollectionMode: map['garbageCollectionMode'] == null
-          ? null
-          : GethDetailsGarbageCollectionMode.fromValue(
-              map['garbageCollectionMode'] as String),
+      garbageCollectionMode: map['garbageCollectionMode'] == null ? null : GethDetailsGarbageCollectionMode.fromValue(map['garbageCollectionMode'] as String),
     );
   }
 }
+

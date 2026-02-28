@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AgentcoreGatewayWorkloadIdentityDetail {
   /// ARN of the workload identity.
   final String workloadIdentityArn;
@@ -11,15 +12,15 @@ class AgentcoreGatewayWorkloadIdentityDetail {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['workloadIdentityArn'] = workloadIdentityArn;
-    return map;
+    return <String, dynamic>{
+      'workloadIdentityArn': workloadIdentityArn,
+    };
   }
 
-  factory AgentcoreGatewayWorkloadIdentityDetail.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentcoreGatewayWorkloadIdentityDetail.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayWorkloadIdentityDetail(
       workloadIdentityArn: map['workloadIdentityArn'] as String,
     );
   }
 }
+

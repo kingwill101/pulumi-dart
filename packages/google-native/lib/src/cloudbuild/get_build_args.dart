@@ -25,23 +25,21 @@ class GetBuildArgs {
     required String location,
     String? project,
     required String projectId,
-  })  : buildId = pulumi.Input.asInput<String>(buildId),
-        id = pulumi.Input.asInput<String>(id),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        projectId = pulumi.Input.asInput<String>(projectId);
+  }) :
+      buildId = pulumi.Input.asInput<String>(buildId),
+      id = pulumi.Input.asInput<String>(id),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      projectId = pulumi.Input.asInput<String>(projectId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['buildId'] = buildId;
-    map['id'] = id;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['projectId'] = projectId;
-    return map;
+    return <String, dynamic>{
+      'buildId': buildId,
+      'id': id,
+      'location': location,
+      'project': ?project,
+      'projectId': projectId,
+    };
   }
 
   factory GetBuildArgs.fromMap(Map<String, dynamic> map) {
@@ -54,3 +52,4 @@ class GetBuildArgs {
     );
   }
 }
+

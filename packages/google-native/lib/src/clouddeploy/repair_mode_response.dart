@@ -7,7 +7,6 @@ import 'rollback_response.dart';
 class RepairModeResponse {
   /// Optional. Retries a failed job.
   final RetryResponse retry;
-
   /// Optional. Rolls back a `Rollout`.
   final RollbackResponse rollback;
 
@@ -20,18 +19,17 @@ class RepairModeResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['retry'] = retry.toMap();
-    map['rollback'] = rollback.toMap();
-    return map;
+    return <String, dynamic>{
+      'retry': retry.toMap(),
+      'rollback': rollback.toMap(),
+    };
   }
 
   factory RepairModeResponse.fromMap(Map<String, dynamic> map) {
     return RepairModeResponse(
-      retry:
-          RetryResponse.fromMap((map['retry'] as Map).cast<String, dynamic>()),
-      rollback: RollbackResponse.fromMap(
-          (map['rollback'] as Map).cast<String, dynamic>()),
+      retry: RetryResponse.fromMap((map['retry'] as Map).cast<String, dynamic>()),
+      rollback: RollbackResponse.fromMap((map['rollback'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

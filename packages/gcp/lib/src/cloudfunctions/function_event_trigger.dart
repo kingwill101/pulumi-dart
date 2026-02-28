@@ -7,10 +7,8 @@ class FunctionEventTrigger {
   /// See the documentation on [calling Cloud Functions](https://cloud.google.com/functions/docs/calling/) for a
   /// full reference of accepted triggers.
   final String eventType;
-
   /// Specifies policy for failed executions. Structure is documented below.
   final FunctionEventTriggerFailurePolicy? failurePolicy;
-
   /// Required. The name or partial URI of the resource from
   /// which to observe events. For example, `"myBucket"` or `"projects/my-project/topics/my-topic"`
   final String resource;
@@ -26,24 +24,19 @@ class FunctionEventTrigger {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['eventType'] = eventType;
-    final failurePolicyValue = failurePolicy;
-    if (failurePolicyValue != null) {
-      map['failurePolicy'] = failurePolicyValue.toMap();
-    }
-    map['resource'] = resource;
-    return map;
+    return <String, dynamic>{
+      'eventType': eventType,
+      'failurePolicy': ?failurePolicy == null ? null : failurePolicy!.toMap(),
+      'resource': resource,
+    };
   }
 
   factory FunctionEventTrigger.fromMap(Map<String, dynamic> map) {
     return FunctionEventTrigger(
       eventType: map['eventType'] as String,
-      failurePolicy: map['failurePolicy'] == null
-          ? null
-          : FunctionEventTriggerFailurePolicy.fromMap(
-              (map['failurePolicy'] as Map).cast<String, dynamic>()),
+      failurePolicy: map['failurePolicy'] == null ? null : FunctionEventTriggerFailurePolicy.fromMap((map['failurePolicy'] as Map).cast<String, dynamic>()),
       resource: map['resource'] as String,
     );
   }
 }
+

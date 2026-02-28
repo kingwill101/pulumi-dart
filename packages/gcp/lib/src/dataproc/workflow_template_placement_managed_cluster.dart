@@ -5,10 +5,8 @@ import 'workflow_template_placement_managed_cluster_config.dart';
 class WorkflowTemplatePlacementManagedCluster {
   /// Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix. The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
   final String clusterName;
-
   /// Required. The cluster configuration.
   final WorkflowTemplatePlacementManagedClusterConfig config;
-
   /// The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
   final Map<String, String>? labels;
 
@@ -23,25 +21,19 @@ class WorkflowTemplatePlacementManagedCluster {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clusterName'] = clusterName;
-    map['config'] = config.toMap();
-    final labelsValue = labels;
-    if (labelsValue != null) {
-      map['labels'] = labelsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'clusterName': clusterName,
+      'config': config.toMap(),
+      'labels': ?labels,
+    };
   }
 
-  factory WorkflowTemplatePlacementManagedCluster.fromMap(
-      Map<String, dynamic> map) {
+  factory WorkflowTemplatePlacementManagedCluster.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplatePlacementManagedCluster(
       clusterName: map['clusterName'] as String,
-      config: WorkflowTemplatePlacementManagedClusterConfig.fromMap(
-          (map['config'] as Map).cast<String, dynamic>()),
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      config: WorkflowTemplatePlacementManagedClusterConfig.fromMap((map['config'] as Map).cast<String, dynamic>()),
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
     );
   }
 }
+

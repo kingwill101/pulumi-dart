@@ -16,17 +16,15 @@ class GetMetricDescriptorArgs {
   GetMetricDescriptorArgs({
     required String metricDescriptorId,
     String? project,
-  })  : metricDescriptorId = pulumi.Input.asInput<String>(metricDescriptorId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      metricDescriptorId = pulumi.Input.asInput<String>(metricDescriptorId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['metricDescriptorId'] = metricDescriptorId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'metricDescriptorId': metricDescriptorId,
+      'project': ?project,
+    };
   }
 
   factory GetMetricDescriptorArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetMetricDescriptorArgs {
     );
   }
 }
+

@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetGroupUser {
   /// User ARN.
   final String arn;
-
   /// Path to the IAM user.
   final String path;
-
   /// Stable and unique string identifying the IAM user.
   final String userId;
-
   /// Name of the IAM user.
   final String userName;
 
@@ -26,12 +24,12 @@ class GetGroupUser {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['path'] = path;
-    map['userId'] = userId;
-    map['userName'] = userName;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'path': path,
+      'userId': userId,
+      'userName': userName,
+    };
   }
 
   factory GetGroupUser.fromMap(Map<String, dynamic> map) {
@@ -43,3 +41,4 @@ class GetGroupUser {
     );
   }
 }
+

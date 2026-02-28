@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRouterNatLogConfig {
   /// Indicates whether or not to export logs.
   final bool enable;
-
   /// Specifies the desired filtering of logs on this NAT. Possible values: ["ERRORS_ONLY", "TRANSLATIONS_ONLY", "ALL"]
   final String filter;
 
@@ -16,10 +16,10 @@ class GetRouterNatLogConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enable'] = enable;
-    map['filter'] = filter;
-    return map;
+    return <String, dynamic>{
+      'enable': enable,
+      'filter': filter,
+    };
   }
 
   factory GetRouterNatLogConfig.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetRouterNatLogConfig {
     );
   }
 }
+

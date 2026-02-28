@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Private Connectivity.
 class PrivateConnectivityResponse {
   /// The resource name (URI) of the private connection.
@@ -12,9 +13,9 @@ class PrivateConnectivityResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['privateConnection'] = privateConnection;
-    return map;
+    return <String, dynamic>{
+      'privateConnection': privateConnection,
+    };
   }
 
   factory PrivateConnectivityResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class PrivateConnectivityResponse {
     );
   }
 }
+

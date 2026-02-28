@@ -16,3 +16,4 @@ enum RegionDiskInterfaceComputeBeta {
     throw ArgumentError('Unknown RegionDiskInterfaceComputeBeta value: $value');
   }
 }
+

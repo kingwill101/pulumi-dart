@@ -1886,28 +1886,19 @@ import 'agentcore_gateway_target_timeouts.dart';
 /// ```
 class AgentcoreGatewayTarget extends pulumi.CustomResource {
   /// Configuration for authenticating requests to the target. Required when using `lambda`, `open_api_schema` and `smithy_model` in `mcp` block. If using `mcp_server` in `mcp` block with no authorization, it should not be specified. See `credential_provider_configuration` below.
-  late final pulumi
-      .Output<AgentcoreGatewayTargetCredentialProviderConfiguration?>
-      credentialProviderConfiguration;
-
+  late final pulumi.Output<AgentcoreGatewayTargetCredentialProviderConfiguration?> credentialProviderConfiguration;
   /// Description of the gateway target.
   late final pulumi.Output<String?> description;
-
   /// Identifier of the gateway that this target belongs to.
   late final pulumi.Output<String> gatewayIdentifier;
-
   /// Name of the gateway target.
   late final pulumi.Output<String> name;
-
   /// AWS region where the resource will be created. If not provided, the region from the provider configuration will be used.
   late final pulumi.Output<String> region;
-
   /// Configuration for the target endpoint. See `target_configuration` below.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<AgentcoreGatewayTargetTargetConfiguration>
-      targetConfiguration;
-
+  late final pulumi.Output<AgentcoreGatewayTargetTargetConfiguration> targetConfiguration;
   /// Unique identifier of the gateway target.
   late final pulumi.Output<String> targetId;
   late final pulumi.Output<AgentcoreGatewayTargetTimeouts?> timeouts;
@@ -1926,16 +1917,12 @@ class AgentcoreGatewayTarget extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.credentialProviderConfiguration =
-        registerOutput<AgentcoreGatewayTargetCredentialProviderConfiguration?>(
-            'credentialProviderConfiguration');
+    this.credentialProviderConfiguration = registerOutput<AgentcoreGatewayTargetCredentialProviderConfiguration?>('credentialProviderConfiguration');
     this.description = registerOutput<String?>('description');
     this.gatewayIdentifier = registerOutput<String>('gatewayIdentifier');
     this.name = registerOutput<String>('name');
     this.region = registerOutput<String>('region');
-    this.targetConfiguration =
-        registerOutput<AgentcoreGatewayTargetTargetConfiguration>(
-            'targetConfiguration');
+    this.targetConfiguration = registerOutput<AgentcoreGatewayTargetTargetConfiguration>('targetConfiguration');
     this.targetId = registerOutput<String>('targetId');
     this.timeouts = registerOutput<AgentcoreGatewayTargetTimeouts?>('timeouts');
   }

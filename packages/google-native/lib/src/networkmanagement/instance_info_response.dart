@@ -1,28 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// For display only. Metadata associated with a Compute Engine instance.
 class InstanceInfoResponse {
   /// Name of a Compute Engine instance.
   final String displayName;
-
   /// External IP address of the network interface.
   final String externalIp;
-
   /// Name of the network interface of a Compute Engine instance.
   final String interface;
-
   /// Internal IP address of the network interface.
   final String internalIp;
-
   /// Network tags configured on the instance.
   final List<String> networkTags;
-
   /// URI of a Compute Engine network.
   final String networkUri;
-
   /// Service account authorized for the instance.
   final String serviceAccount;
-
   /// URI of a Compute Engine instance.
   final String uri;
 
@@ -47,16 +41,16 @@ class InstanceInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['displayName'] = displayName;
-    map['externalIp'] = externalIp;
-    map['interface'] = interface;
-    map['internalIp'] = internalIp;
-    map['networkTags'] = networkTags;
-    map['networkUri'] = networkUri;
-    map['serviceAccount'] = serviceAccount;
-    map['uri'] = uri;
-    return map;
+    return <String, dynamic>{
+      'displayName': displayName,
+      'externalIp': externalIp,
+      'interface': interface,
+      'internalIp': internalIp,
+      'networkTags': networkTags,
+      'networkUri': networkUri,
+      'serviceAccount': serviceAccount,
+      'uri': uri,
+    };
   }
 
   factory InstanceInfoResponse.fromMap(Map<String, dynamic> map) {
@@ -72,3 +66,4 @@ class InstanceInfoResponse {
     );
   }
 }
+

@@ -17,29 +17,17 @@ class SlsaProvenanceV1ContaineranalysisV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final buildDefinitionValue = buildDefinition;
-    if (buildDefinitionValue != null) {
-      map['buildDefinition'] = buildDefinitionValue.toMap();
-    }
-    final runDetailsValue = runDetails;
-    if (runDetailsValue != null) {
-      map['runDetails'] = runDetailsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'buildDefinition': ?buildDefinition == null ? null : buildDefinition!.toMap(),
+      'runDetails': ?runDetails == null ? null : runDetails!.toMap(),
+    };
   }
 
-  factory SlsaProvenanceV1ContaineranalysisV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory SlsaProvenanceV1ContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return SlsaProvenanceV1ContaineranalysisV1alpha1(
-      buildDefinition: map['buildDefinition'] == null
-          ? null
-          : BuildDefinitionContaineranalysisV1alpha1.fromMap(
-              (map['buildDefinition'] as Map).cast<String, dynamic>()),
-      runDetails: map['runDetails'] == null
-          ? null
-          : RunDetailsContaineranalysisV1alpha1.fromMap(
-              (map['runDetails'] as Map).cast<String, dynamic>()),
+      buildDefinition: map['buildDefinition'] == null ? null : BuildDefinitionContaineranalysisV1alpha1.fromMap((map['buildDefinition'] as Map).cast<String, dynamic>()),
+      runDetails: map['runDetails'] == null ? null : RunDetailsContaineranalysisV1alpha1.fromMap((map['runDetails'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

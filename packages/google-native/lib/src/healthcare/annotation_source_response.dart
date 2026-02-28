@@ -14,15 +14,15 @@ class AnnotationSourceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cloudHealthcareSource'] = cloudHealthcareSource.toMap();
-    return map;
+    return <String, dynamic>{
+      'cloudHealthcareSource': cloudHealthcareSource.toMap(),
+    };
   }
 
   factory AnnotationSourceResponse.fromMap(Map<String, dynamic> map) {
     return AnnotationSourceResponse(
-      cloudHealthcareSource: CloudHealthcareSourceResponse.fromMap(
-          (map['cloudHealthcareSource'] as Map).cast<String, dynamic>()),
+      cloudHealthcareSource: CloudHealthcareSourceResponse.fromMap((map['cloudHealthcareSource'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

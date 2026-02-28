@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VaultNotification {
   /// You can configure a vault to publish a notification for `ArchiveRetrievalCompleted` and `InventoryRetrievalCompleted` events.
   final List<String> events;
-
   /// The SNS Topic ARN.
   final String snsTopic;
 
@@ -16,10 +16,10 @@ class VaultNotification {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['events'] = events;
-    map['snsTopic'] = snsTopic;
-    return map;
+    return <String, dynamic>{
+      'events': events,
+      'snsTopic': snsTopic,
+    };
   }
 
   factory VaultNotification.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class VaultNotification {
     );
   }
 }
+

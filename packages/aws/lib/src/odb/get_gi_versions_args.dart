@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGiVersionsArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The system shape.
   final pulumi.Input<String>? shape;
 
@@ -19,20 +18,15 @@ class GetGiVersionsArgs {
   GetGiVersionsArgs({
     String? region,
     String? shape,
-  })  : region = pulumi.Input.asOptionalInput<String>(region),
-        shape = pulumi.Input.asOptionalInput<String>(shape);
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      shape = pulumi.Input.asOptionalInput<String>(shape);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final shapeValue = shape;
-    if (shapeValue != null) {
-      map['shape'] = shapeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'region': ?region,
+      'shape': ?shape,
+    };
   }
 
   factory GetGiVersionsArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +36,4 @@ class GetGiVersionsArgs {
     );
   }
 }
+

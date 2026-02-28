@@ -14,20 +14,15 @@ class SyntheticMonitorTarget {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cloudFunctionV2Value = cloudFunctionV2;
-    if (cloudFunctionV2Value != null) {
-      map['cloudFunctionV2'] = cloudFunctionV2Value.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'cloudFunctionV2': ?cloudFunctionV2 == null ? null : cloudFunctionV2!.toMap(),
+    };
   }
 
   factory SyntheticMonitorTarget.fromMap(Map<String, dynamic> map) {
     return SyntheticMonitorTarget(
-      cloudFunctionV2: map['cloudFunctionV2'] == null
-          ? null
-          : CloudFunctionV2Target.fromMap(
-              (map['cloudFunctionV2'] as Map).cast<String, dynamic>()),
+      cloudFunctionV2: map['cloudFunctionV2'] == null ? null : CloudFunctionV2Target.fromMap((map['cloudFunctionV2'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

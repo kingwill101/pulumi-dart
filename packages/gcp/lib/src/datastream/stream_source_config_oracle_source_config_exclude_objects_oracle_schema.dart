@@ -6,10 +6,7 @@ import 'stream_source_config_oracle_source_config_exclude_objects_oracle_schema_
 class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema {
   /// Tables in the database.
   /// Structure is documented below.
-  final List<
-          StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable>?
-      oracleTables;
-
+  final List<StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable>? oracleTables;
   /// Schema name.
   final String schema;
 
@@ -22,29 +19,17 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final oracleTablesValue = oracleTables;
-    if (oracleTablesValue != null) {
-      map['oracleTables'] = pulumi.Input.encodeList<
-          StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable,
-          Map<String, dynamic>>(oracleTablesValue, (value) => value.toMap());
-    }
-    map['schema'] = schema;
-    return map;
+    return <String, dynamic>{
+      'oracleTables': ?oracleTables == null ? null : pulumi.Input.encodeList<StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable, Map<String, dynamic>>(oracleTables!, (value) => value.toMap()),
+      'schema': schema,
+    };
   }
 
-  factory StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema.fromMap(
-      Map<String, dynamic> map) {
+  factory StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema(
-      oracleTables: map['oracleTables'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable>(
-              map['oracleTables'],
-              (value) =>
-                  StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      oracleTables: map['oracleTables'] == null ? null : pulumi.Input.decodeList<StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable>(map['oracleTables'], (value) => StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable.fromMap((value as Map).cast<String, dynamic>())),
       schema: map['schema'] as String,
     );
   }
 }
+

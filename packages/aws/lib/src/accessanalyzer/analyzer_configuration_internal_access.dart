@@ -13,21 +13,15 @@ class AnalyzerConfigurationInternalAccess {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final analysisRuleValue = analysisRule;
-    if (analysisRuleValue != null) {
-      map['analysisRule'] = analysisRuleValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'analysisRule': ?analysisRule == null ? null : analysisRule!.toMap(),
+    };
   }
 
-  factory AnalyzerConfigurationInternalAccess.fromMap(
-      Map<String, dynamic> map) {
+  factory AnalyzerConfigurationInternalAccess.fromMap(Map<String, dynamic> map) {
     return AnalyzerConfigurationInternalAccess(
-      analysisRule: map['analysisRule'] == null
-          ? null
-          : AnalyzerConfigurationInternalAccessAnalysisRule.fromMap(
-              (map['analysisRule'] as Map).cast<String, dynamic>()),
+      analysisRule: map['analysisRule'] == null ? null : AnalyzerConfigurationInternalAccessAnalysisRule.fromMap((map['analysisRule'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetSigningProfileSignatureValidityPeriod {
   final String type;
   final int value;
@@ -13,17 +14,17 @@ class GetSigningProfileSignatureValidityPeriod {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['type'] = type;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'type': type,
+      'value': value,
+    };
   }
 
-  factory GetSigningProfileSignatureValidityPeriod.fromMap(
-      Map<String, dynamic> map) {
+  factory GetSigningProfileSignatureValidityPeriod.fromMap(Map<String, dynamic> map) {
     return GetSigningProfileSignatureValidityPeriod(
       type: map['type'] as String,
       value: map['value'] as int,
     );
   }
 }
+

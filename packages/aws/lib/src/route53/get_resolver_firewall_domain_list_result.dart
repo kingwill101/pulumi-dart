@@ -1,36 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getResolverFirewallDomainList.
 class GetResolverFirewallDomainListResult {
   /// The Amazon Resource Name (ARN) of the firewall domain list.
   final String arn;
-
   /// The date and time that the domain list was created, in Unix time format and Coordinated Universal Time (UTC).
   final String creationTime;
-
   /// A unique string defined by you to identify the request.
   final String creatorRequestId;
-
   /// The number of domain names that are specified in the domain list.
   final int domainCount;
   final String firewallDomainListId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The owner of the list, used only for lists that are not managed by you.
   final String managedOwnerName;
-
   /// The date and time that the domain list was last modified, in Unix time format and Coordinated Universal Time (UTC).
   final String modificationTime;
-
   /// The name of the domain list.
   final String name;
   final String region;
-
   /// The status of the domain list.
   final String status;
-
   /// Additional information about the status of the list, if available.
   final String statusMessage;
 
@@ -63,24 +55,23 @@ class GetResolverFirewallDomainListResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['creationTime'] = creationTime;
-    map['creatorRequestId'] = creatorRequestId;
-    map['domainCount'] = domainCount;
-    map['firewallDomainListId'] = firewallDomainListId;
-    map['id'] = id;
-    map['managedOwnerName'] = managedOwnerName;
-    map['modificationTime'] = modificationTime;
-    map['name'] = name;
-    map['region'] = region;
-    map['status'] = status;
-    map['statusMessage'] = statusMessage;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'creationTime': creationTime,
+      'creatorRequestId': creatorRequestId,
+      'domainCount': domainCount,
+      'firewallDomainListId': firewallDomainListId,
+      'id': id,
+      'managedOwnerName': managedOwnerName,
+      'modificationTime': modificationTime,
+      'name': name,
+      'region': region,
+      'status': status,
+      'statusMessage': statusMessage,
+    };
   }
 
-  factory GetResolverFirewallDomainListResult.fromMap(
-      Map<String, dynamic> map) {
+  factory GetResolverFirewallDomainListResult.fromMap(Map<String, dynamic> map) {
     return GetResolverFirewallDomainListResult(
       arn: map['arn'] as String,
       creationTime: map['creationTime'] as String,
@@ -97,3 +88,4 @@ class GetResolverFirewallDomainListResult {
     );
   }
 }
+

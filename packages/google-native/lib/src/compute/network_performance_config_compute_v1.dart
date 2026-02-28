@@ -3,8 +3,7 @@
 import 'network_performance_config_total_egress_bandwidth_tier_compute_v1.dart';
 
 class NetworkPerformanceConfigComputeV1 {
-  final NetworkPerformanceConfigTotalEgressBandwidthTierComputeV1?
-      totalEgressBandwidthTier;
+  final NetworkPerformanceConfigTotalEgressBandwidthTierComputeV1? totalEgressBandwidthTier;
 
   /// Creates a new [NetworkPerformanceConfigComputeV1].
   /// [totalEgressBandwidthTier] Optional.
@@ -13,20 +12,15 @@ class NetworkPerformanceConfigComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final totalEgressBandwidthTierValue = totalEgressBandwidthTier;
-    if (totalEgressBandwidthTierValue != null) {
-      map['totalEgressBandwidthTier'] = totalEgressBandwidthTierValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'totalEgressBandwidthTier': ?totalEgressBandwidthTier == null ? null : totalEgressBandwidthTier!.value,
+    };
   }
 
   factory NetworkPerformanceConfigComputeV1.fromMap(Map<String, dynamic> map) {
     return NetworkPerformanceConfigComputeV1(
-      totalEgressBandwidthTier: map['totalEgressBandwidthTier'] == null
-          ? null
-          : NetworkPerformanceConfigTotalEgressBandwidthTierComputeV1.fromValue(
-              map['totalEgressBandwidthTier'] as String),
+      totalEgressBandwidthTier: map['totalEgressBandwidthTier'] == null ? null : NetworkPerformanceConfigTotalEgressBandwidthTierComputeV1.fromValue(map['totalEgressBandwidthTier'] as String),
     );
   }
 }
+

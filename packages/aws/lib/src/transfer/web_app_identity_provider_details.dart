@@ -13,20 +13,15 @@ class WebAppIdentityProviderDetails {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final identityCenterConfigValue = identityCenterConfig;
-    if (identityCenterConfigValue != null) {
-      map['identityCenterConfig'] = identityCenterConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'identityCenterConfig': ?identityCenterConfig == null ? null : identityCenterConfig!.toMap(),
+    };
   }
 
   factory WebAppIdentityProviderDetails.fromMap(Map<String, dynamic> map) {
     return WebAppIdentityProviderDetails(
-      identityCenterConfig: map['identityCenterConfig'] == null
-          ? null
-          : WebAppIdentityProviderDetailsIdentityCenterConfig.fromMap(
-              (map['identityCenterConfig'] as Map).cast<String, dynamic>()),
+      identityCenterConfig: map['identityCenterConfig'] == null ? null : WebAppIdentityProviderDetailsIdentityCenterConfig.fromMap((map['identityCenterConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EventPermissionCondition {
   /// Key for the condition. Valid values: `aws:PrincipalOrgID`.
   final String key;
-
   /// Type of condition. Value values: `StringEquals`.
   final String type;
-
   /// Value for the key.
   final String value;
 
@@ -21,11 +20,11 @@ class EventPermissionCondition {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    map['type'] = type;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'type': type,
+      'value': value,
+    };
   }
 
   factory EventPermissionCondition.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class EventPermissionCondition {
     );
   }
 }
+

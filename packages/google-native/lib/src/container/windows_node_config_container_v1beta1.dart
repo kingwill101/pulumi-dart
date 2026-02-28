@@ -14,20 +14,15 @@ class WindowsNodeConfigContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final osVersionValue = osVersion;
-    if (osVersionValue != null) {
-      map['osVersion'] = osVersionValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'osVersion': ?osVersion == null ? null : osVersion!.value,
+    };
   }
 
   factory WindowsNodeConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return WindowsNodeConfigContainerV1beta1(
-      osVersion: map['osVersion'] == null
-          ? null
-          : WindowsNodeConfigOsVersionContainerV1beta1.fromValue(
-              map['osVersion'] as String),
+      osVersion: map['osVersion'] == null ? null : WindowsNodeConfigOsVersionContainerV1beta1.fromValue(map['osVersion'] as String),
     );
   }
 }
+

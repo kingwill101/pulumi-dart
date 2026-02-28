@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetZonesArgs {
   /// Project from which to list available zones. Defaults to project declared in the provider.
   final pulumi.Input<String>? project;
-
   /// Region from which to list available zones. Defaults to region declared in the provider.
   final pulumi.Input<String>? region;
-
   /// Allows to filter list of zones based on their current status. Status can be either `UP` or `DOWN`.
   /// Defaults to no filtering (all available zones - both `UP` and `DOWN`).
   final pulumi.Input<String>? status;
@@ -25,25 +23,17 @@ class GetZonesArgs {
     String? project,
     String? region,
     String? status,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        status = pulumi.Input.asOptionalInput<String>(status);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      status = pulumi.Input.asOptionalInput<String>(status);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final statusValue = status;
-    if (statusValue != null) {
-      map['status'] = statusValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'region': ?region,
+      'status': ?status,
+    };
   }
 
   factory GetZonesArgs.fromMap(Map<String, dynamic> map) {
@@ -54,3 +44,4 @@ class GetZonesArgs {
     );
   }
 }
+

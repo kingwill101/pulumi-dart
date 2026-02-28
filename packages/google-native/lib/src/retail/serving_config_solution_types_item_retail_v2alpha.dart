@@ -12,7 +12,7 @@ enum ServingConfigSolutionTypesItemRetailV2alpha {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown ServingConfigSolutionTypesItemRetailV2alpha value: $value');
+    throw ArgumentError('Unknown ServingConfigSolutionTypesItemRetailV2alpha value: $value');
   }
 }
+

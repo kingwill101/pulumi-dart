@@ -15,27 +15,15 @@ class V2modelsSlotTypeCompositeSlotTypeSetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final subSlotsValue = subSlots;
-    if (subSlotsValue != null) {
-      map['subSlots'] = pulumi.Input.encodeList<
-          V2modelsSlotTypeCompositeSlotTypeSettingSubSlot,
-          Map<String, dynamic>>(subSlotsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'subSlots': ?subSlots == null ? null : pulumi.Input.encodeList<V2modelsSlotTypeCompositeSlotTypeSettingSubSlot, Map<String, dynamic>>(subSlots!, (value) => value.toMap()),
+    };
   }
 
-  factory V2modelsSlotTypeCompositeSlotTypeSetting.fromMap(
-      Map<String, dynamic> map) {
+  factory V2modelsSlotTypeCompositeSlotTypeSetting.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotTypeCompositeSlotTypeSetting(
-      subSlots: map['subSlots'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  V2modelsSlotTypeCompositeSlotTypeSettingSubSlot>(
-              map['subSlots'],
-              (value) =>
-                  V2modelsSlotTypeCompositeSlotTypeSettingSubSlot.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      subSlots: map['subSlots'] == null ? null : pulumi.Input.decodeList<V2modelsSlotTypeCompositeSlotTypeSettingSubSlot>(map['subSlots'], (value) => V2modelsSlotTypeCompositeSlotTypeSettingSubSlot.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

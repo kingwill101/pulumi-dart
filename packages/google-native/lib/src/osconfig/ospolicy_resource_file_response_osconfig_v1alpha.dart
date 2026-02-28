@@ -7,13 +7,10 @@ import 'ospolicy_resource_file_remote_response_osconfig_v1alpha.dart';
 class OSPolicyResourceFileResponseOsconfigV1alpha {
   /// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
   final bool allowInsecure;
-
   /// A Cloud Storage object.
   final OSPolicyResourceFileGcsResponseOsconfigV1alpha gcs;
-
   /// A local path within the VM to use.
   final String localPath;
-
   /// A generic remote file.
   final OSPolicyResourceFileRemoteResponseOsconfigV1alpha remote;
 
@@ -30,23 +27,21 @@ class OSPolicyResourceFileResponseOsconfigV1alpha {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allowInsecure'] = allowInsecure;
-    map['gcs'] = gcs.toMap();
-    map['localPath'] = localPath;
-    map['remote'] = remote.toMap();
-    return map;
+    return <String, dynamic>{
+      'allowInsecure': allowInsecure,
+      'gcs': gcs.toMap(),
+      'localPath': localPath,
+      'remote': remote.toMap(),
+    };
   }
 
-  factory OSPolicyResourceFileResponseOsconfigV1alpha.fromMap(
-      Map<String, dynamic> map) {
+  factory OSPolicyResourceFileResponseOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourceFileResponseOsconfigV1alpha(
       allowInsecure: map['allowInsecure'] as bool,
-      gcs: OSPolicyResourceFileGcsResponseOsconfigV1alpha.fromMap(
-          (map['gcs'] as Map).cast<String, dynamic>()),
+      gcs: OSPolicyResourceFileGcsResponseOsconfigV1alpha.fromMap((map['gcs'] as Map).cast<String, dynamic>()),
       localPath: map['localPath'] as String,
-      remote: OSPolicyResourceFileRemoteResponseOsconfigV1alpha.fromMap(
-          (map['remote'] as Map).cast<String, dynamic>()),
+      remote: OSPolicyResourceFileRemoteResponseOsconfigV1alpha.fromMap((map['remote'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

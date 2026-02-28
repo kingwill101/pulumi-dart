@@ -25,23 +25,21 @@ class GetSchemaDiscoveryengineV1betaArgs {
     required String location,
     String? project,
     required String schemaId,
-  })  : collectionId = pulumi.Input.asInput<String>(collectionId),
-        dataStoreId = pulumi.Input.asInput<String>(dataStoreId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        schemaId = pulumi.Input.asInput<String>(schemaId);
+  }) :
+      collectionId = pulumi.Input.asInput<String>(collectionId),
+      dataStoreId = pulumi.Input.asInput<String>(dataStoreId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      schemaId = pulumi.Input.asInput<String>(schemaId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['collectionId'] = collectionId;
-    map['dataStoreId'] = dataStoreId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['schemaId'] = schemaId;
-    return map;
+    return <String, dynamic>{
+      'collectionId': collectionId,
+      'dataStoreId': dataStoreId,
+      'location': location,
+      'project': ?project,
+      'schemaId': schemaId,
+    };
   }
 
   factory GetSchemaDiscoveryengineV1betaArgs.fromMap(Map<String, dynamic> map) {
@@ -54,3 +52,4 @@ class GetSchemaDiscoveryengineV1betaArgs {
     );
   }
 }
+

@@ -10,15 +10,12 @@ class BindingGkehubV1alphaArgs {
   /// Optional. Labels for this MembershipBinding.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
-
   /// Required. The ID to use for the MembershipBinding.
   final pulumi.Input<String> membershipBindingId;
   final pulumi.Input<String> membershipId;
-
   /// The resource name for the membershipbinding itself `projects/{project}/locations/{location}/memberships/{membership}/bindings/{membershipbinding}`
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
-
   /// A Scope resource name in the format `projects/*/locations/*/scopes/*`.
   final pulumi.Input<String>? scope;
 
@@ -38,46 +35,30 @@ class BindingGkehubV1alphaArgs {
     String? name,
     String? project,
     String? scope,
-  })  : labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-        location = pulumi.Input.asOptionalInput<String>(location),
-        membershipBindingId = pulumi.Input.asInput<String>(membershipBindingId),
-        membershipId = pulumi.Input.asInput<String>(membershipId),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        scope = pulumi.Input.asOptionalInput<String>(scope);
+  }) :
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      membershipBindingId = pulumi.Input.asInput<String>(membershipBindingId),
+      membershipId = pulumi.Input.asInput<String>(membershipId),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      scope = pulumi.Input.asOptionalInput<String>(scope);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final labelsValue = labels;
-    if (labelsValue != null) {
-      map['labels'] = labelsValue;
-    }
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    map['membershipBindingId'] = membershipBindingId;
-    map['membershipId'] = membershipId;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final scopeValue = scope;
-    if (scopeValue != null) {
-      map['scope'] = scopeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'labels': ?labels,
+      'location': ?location,
+      'membershipBindingId': membershipBindingId,
+      'membershipId': membershipId,
+      'name': ?name,
+      'project': ?project,
+      'scope': ?scope,
+    };
   }
 
   factory BindingGkehubV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return BindingGkehubV1alphaArgs(
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       location: map['location'] == null ? null : map['location'] as String,
       membershipBindingId: map['membershipBindingId'] as String,
       membershipId: map['membershipId'] as String,
@@ -87,3 +68,4 @@ class BindingGkehubV1alphaArgs {
     );
   }
 }
+

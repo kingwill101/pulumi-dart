@@ -7,9 +7,7 @@ import 'google_cloud_documentai_v1_document_page_layout.dart';
 /// A detected symbol.
 class GoogleCloudDocumentaiV1DocumentPageSymbol {
   /// A list of detected languages together with confidence.
-  final List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>?
-      detectedLanguages;
-
+  final List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>? detectedLanguages;
   /// Layout for Symbol.
   final GoogleCloudDocumentaiV1DocumentPageLayout? layout;
 
@@ -22,36 +20,17 @@ class GoogleCloudDocumentaiV1DocumentPageSymbol {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final detectedLanguagesValue = detectedLanguages;
-    if (detectedLanguagesValue != null) {
-      map['detectedLanguages'] = pulumi.Input.encodeList<
-              GoogleCloudDocumentaiV1DocumentPageDetectedLanguage,
-              Map<String, dynamic>>(
-          detectedLanguagesValue, (value) => value.toMap());
-    }
-    final layoutValue = layout;
-    if (layoutValue != null) {
-      map['layout'] = layoutValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'detectedLanguages': ?detectedLanguages == null ? null : pulumi.Input.encodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage, Map<String, dynamic>>(detectedLanguages!, (value) => value.toMap()),
+      'layout': ?layout == null ? null : layout!.toMap(),
+    };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentPageSymbol.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentPageSymbol.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageSymbol(
-      detectedLanguages: map['detectedLanguages'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>(
-              map['detectedLanguages'],
-              (value) =>
-                  GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      layout: map['layout'] == null
-          ? null
-          : GoogleCloudDocumentaiV1DocumentPageLayout.fromMap(
-              (map['layout'] as Map).cast<String, dynamic>()),
+      detectedLanguages: map['detectedLanguages'] == null ? null : pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>(map['detectedLanguages'], (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromMap((value as Map).cast<String, dynamic>())),
+      layout: map['layout'] == null ? null : GoogleCloudDocumentaiV1DocumentPageLayout.fromMap((map['layout'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

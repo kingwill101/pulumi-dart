@@ -19,20 +19,17 @@ class GetCustomConnectorVersionArgs {
     required String customConnectorId,
     required String customConnectorVersionId,
     String? project,
-  })  : customConnectorId = pulumi.Input.asInput<String>(customConnectorId),
-        customConnectorVersionId =
-            pulumi.Input.asInput<String>(customConnectorVersionId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      customConnectorId = pulumi.Input.asInput<String>(customConnectorId),
+      customConnectorVersionId = pulumi.Input.asInput<String>(customConnectorVersionId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['customConnectorId'] = customConnectorId;
-    map['customConnectorVersionId'] = customConnectorVersionId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'customConnectorId': customConnectorId,
+      'customConnectorVersionId': customConnectorVersionId,
+      'project': ?project,
+    };
   }
 
   factory GetCustomConnectorVersionArgs.fromMap(Map<String, dynamic> map) {
@@ -43,3 +40,4 @@ class GetCustomConnectorVersionArgs {
     );
   }
 }
+

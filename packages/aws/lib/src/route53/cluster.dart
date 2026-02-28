@@ -101,24 +101,18 @@ import 'cluster_cluster_endpoint.dart';
 class Cluster extends pulumi.CustomResource {
   /// ARN of the cluster
   late final pulumi.Output<String> arn;
-
   /// List of 5 endpoints in 5 regions that can be used to talk to the cluster. See below.
   late final pulumi.Output<List<ClusterClusterEndpoint>> clusterEndpoints;
-
   /// Unique name describing the cluster.
   late final pulumi.Output<String> name;
-
   /// Network type of cluster. Valid values are `IPV4` and `DUALSTACK`. Defaults to `IPV4`.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> networkType;
-
   /// Status of cluster. `PENDING` when it is being created, `PENDING_DELETION` when it is being deleted and `DEPLOYED` otherwise.
   late final pulumi.Output<String> status;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -137,8 +131,7 @@ class Cluster extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
-    this.clusterEndpoints =
-        registerOutput<List<ClusterClusterEndpoint>>('clusterEndpoints');
+    this.clusterEndpoints = registerOutput<List<ClusterClusterEndpoint>>('clusterEndpoints');
     this.name = registerOutput<String>('name');
     this.networkType = registerOutput<String>('networkType');
     this.status = registerOutput<String>('status');

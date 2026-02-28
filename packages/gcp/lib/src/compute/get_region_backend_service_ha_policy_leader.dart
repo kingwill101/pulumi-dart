@@ -7,10 +7,8 @@ class GetRegionBackendServiceHaPolicyLeader {
   /// A fully-qualified URL of the zonal Network Endpoint Group (NEG) that the leader is
   /// attached to.
   final String backendGroup;
-
   /// The network endpoint within the leader.backendGroup that is designated as the leader.
-  final List<GetRegionBackendServiceHaPolicyLeaderNetworkEndpoint>
-      networkEndpoints;
+  final List<GetRegionBackendServiceHaPolicyLeaderNetworkEndpoint> networkEndpoints;
 
   /// Creates a new [GetRegionBackendServiceHaPolicyLeader].
   /// [backendGroup] A fully-qualified URL of the zonal Network Endpoint Group (NEG) that the leader is
@@ -21,24 +19,17 @@ class GetRegionBackendServiceHaPolicyLeader {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['backendGroup'] = backendGroup;
-    map['networkEndpoints'] = pulumi.Input.encodeList<
-        GetRegionBackendServiceHaPolicyLeaderNetworkEndpoint,
-        Map<String, dynamic>>(networkEndpoints, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'backendGroup': backendGroup,
+      'networkEndpoints': pulumi.Input.encodeList<GetRegionBackendServiceHaPolicyLeaderNetworkEndpoint, Map<String, dynamic>>(networkEndpoints, (value) => value.toMap()),
+    };
   }
 
-  factory GetRegionBackendServiceHaPolicyLeader.fromMap(
-      Map<String, dynamic> map) {
+  factory GetRegionBackendServiceHaPolicyLeader.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceHaPolicyLeader(
       backendGroup: map['backendGroup'] as String,
-      networkEndpoints: pulumi.Input.decodeList<
-              GetRegionBackendServiceHaPolicyLeaderNetworkEndpoint>(
-          map['networkEndpoints'],
-          (value) =>
-              GetRegionBackendServiceHaPolicyLeaderNetworkEndpoint.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      networkEndpoints: pulumi.Input.decodeList<GetRegionBackendServiceHaPolicyLeaderNetworkEndpoint>(map['networkEndpoints'], (value) => GetRegionBackendServiceHaPolicyLeaderNetworkEndpoint.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

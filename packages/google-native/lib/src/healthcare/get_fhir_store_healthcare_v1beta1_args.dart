@@ -22,21 +22,19 @@ class GetFhirStoreHealthcareV1beta1Args {
     required String fhirStoreId,
     required String location,
     String? project,
-  })  : datasetId = pulumi.Input.asInput<String>(datasetId),
-        fhirStoreId = pulumi.Input.asInput<String>(fhirStoreId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      datasetId = pulumi.Input.asInput<String>(datasetId),
+      fhirStoreId = pulumi.Input.asInput<String>(fhirStoreId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['datasetId'] = datasetId;
-    map['fhirStoreId'] = fhirStoreId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'datasetId': datasetId,
+      'fhirStoreId': fhirStoreId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetFhirStoreHealthcareV1beta1Args.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetFhirStoreHealthcareV1beta1Args {
     );
   }
 }
+

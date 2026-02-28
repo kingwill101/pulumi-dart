@@ -8,10 +8,8 @@ import 'google_privacy_dlp_v2_regex_response.dart';
 class GooglePrivacyDlpV2HotwordRuleResponse {
   /// Regular expression pattern defining what qualifies as a hotword.
   final GooglePrivacyDlpV2RegexResponse hotwordRegex;
-
   /// Likelihood adjustment to apply to all matching findings.
   final GooglePrivacyDlpV2LikelihoodAdjustmentResponse likelihoodAdjustment;
-
   /// Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The finding itself will be included in the window, so that hotwords can be used to match substrings of the finding itself. Suppose you want Cloud DLP to promote the likelihood of the phone number regex "\(\d{3}\) \d{3}-\d{4}" if the area code is known to be the area code of a company's office. In this case, use the hotword regex "\(xxx\)", where "xxx" is the area code in question. For tabular data, if you want to modify the likelihood of an entire column of findngs, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
   final GooglePrivacyDlpV2ProximityResponse proximity;
 
@@ -26,23 +24,19 @@ class GooglePrivacyDlpV2HotwordRuleResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['hotwordRegex'] = hotwordRegex.toMap();
-    map['likelihoodAdjustment'] = likelihoodAdjustment.toMap();
-    map['proximity'] = proximity.toMap();
-    return map;
+    return <String, dynamic>{
+      'hotwordRegex': hotwordRegex.toMap(),
+      'likelihoodAdjustment': likelihoodAdjustment.toMap(),
+      'proximity': proximity.toMap(),
+    };
   }
 
-  factory GooglePrivacyDlpV2HotwordRuleResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2HotwordRuleResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2HotwordRuleResponse(
-      hotwordRegex: GooglePrivacyDlpV2RegexResponse.fromMap(
-          (map['hotwordRegex'] as Map).cast<String, dynamic>()),
-      likelihoodAdjustment:
-          GooglePrivacyDlpV2LikelihoodAdjustmentResponse.fromMap(
-              (map['likelihoodAdjustment'] as Map).cast<String, dynamic>()),
-      proximity: GooglePrivacyDlpV2ProximityResponse.fromMap(
-          (map['proximity'] as Map).cast<String, dynamic>()),
+      hotwordRegex: GooglePrivacyDlpV2RegexResponse.fromMap((map['hotwordRegex'] as Map).cast<String, dynamic>()),
+      likelihoodAdjustment: GooglePrivacyDlpV2LikelihoodAdjustmentResponse.fromMap((map['likelihoodAdjustment'] as Map).cast<String, dynamic>()),
+      proximity: GooglePrivacyDlpV2ProximityResponse.fromMap((map['proximity'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

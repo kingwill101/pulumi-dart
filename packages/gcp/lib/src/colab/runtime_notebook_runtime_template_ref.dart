@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RuntimeNotebookRuntimeTemplateRef {
   /// The resource name of the NotebookRuntimeTemplate based on which a NotebookRuntime will be created.
   final String notebookRuntimeTemplate;
@@ -11,9 +12,9 @@ class RuntimeNotebookRuntimeTemplateRef {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['notebookRuntimeTemplate'] = notebookRuntimeTemplate;
-    return map;
+    return <String, dynamic>{
+      'notebookRuntimeTemplate': notebookRuntimeTemplate,
+    };
   }
 
   factory RuntimeNotebookRuntimeTemplateRef.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class RuntimeNotebookRuntimeTemplateRef {
     );
   }
 }
+

@@ -7,7 +7,6 @@ import 'condition_response_accesscontextmanager_v1beta.dart';
 class BasicLevelResponseAccesscontextmanagerV1beta {
   /// How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
   final String combiningFunction;
-
   /// A list of requirements for the `AccessLevel` to be granted.
   final List<ConditionResponseAccesscontextmanagerV1beta> conditions;
 
@@ -20,23 +19,17 @@ class BasicLevelResponseAccesscontextmanagerV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['combiningFunction'] = combiningFunction;
-    map['conditions'] = pulumi.Input.encodeList<
-        ConditionResponseAccesscontextmanagerV1beta,
-        Map<String, dynamic>>(conditions, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'combiningFunction': combiningFunction,
+      'conditions': pulumi.Input.encodeList<ConditionResponseAccesscontextmanagerV1beta, Map<String, dynamic>>(conditions, (value) => value.toMap()),
+    };
   }
 
-  factory BasicLevelResponseAccesscontextmanagerV1beta.fromMap(
-      Map<String, dynamic> map) {
+  factory BasicLevelResponseAccesscontextmanagerV1beta.fromMap(Map<String, dynamic> map) {
     return BasicLevelResponseAccesscontextmanagerV1beta(
       combiningFunction: map['combiningFunction'] as String,
-      conditions:
-          pulumi.Input.decodeList<ConditionResponseAccesscontextmanagerV1beta>(
-              map['conditions'],
-              (value) => ConditionResponseAccesscontextmanagerV1beta.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      conditions: pulumi.Input.decodeList<ConditionResponseAccesscontextmanagerV1beta>(map['conditions'], (value) => ConditionResponseAccesscontextmanagerV1beta.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

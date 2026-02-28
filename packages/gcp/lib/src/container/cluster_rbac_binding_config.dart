@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterRbacBindingConfig {
   /// Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated.
   ///
@@ -9,7 +10,6 @@ class ClusterRbacBindingConfig {
   /// In addition to the arguments listed above, the following computed attributes are
   /// exported:
   final bool? enableInsecureBindingSystemAuthenticated;
-
   /// Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:anonymous or system:unauthenticated.
   final bool? enableInsecureBindingSystemUnauthenticated;
 
@@ -22,32 +22,17 @@ class ClusterRbacBindingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enableInsecureBindingSystemAuthenticatedValue =
-        enableInsecureBindingSystemAuthenticated;
-    if (enableInsecureBindingSystemAuthenticatedValue != null) {
-      map['enableInsecureBindingSystemAuthenticated'] =
-          enableInsecureBindingSystemAuthenticatedValue;
-    }
-    final enableInsecureBindingSystemUnauthenticatedValue =
-        enableInsecureBindingSystemUnauthenticated;
-    if (enableInsecureBindingSystemUnauthenticatedValue != null) {
-      map['enableInsecureBindingSystemUnauthenticated'] =
-          enableInsecureBindingSystemUnauthenticatedValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enableInsecureBindingSystemAuthenticated': ?enableInsecureBindingSystemAuthenticated,
+      'enableInsecureBindingSystemUnauthenticated': ?enableInsecureBindingSystemUnauthenticated,
+    };
   }
 
   factory ClusterRbacBindingConfig.fromMap(Map<String, dynamic> map) {
     return ClusterRbacBindingConfig(
-      enableInsecureBindingSystemAuthenticated:
-          map['enableInsecureBindingSystemAuthenticated'] == null
-              ? null
-              : map['enableInsecureBindingSystemAuthenticated'] as bool,
-      enableInsecureBindingSystemUnauthenticated:
-          map['enableInsecureBindingSystemUnauthenticated'] == null
-              ? null
-              : map['enableInsecureBindingSystemUnauthenticated'] as bool,
+      enableInsecureBindingSystemAuthenticated: map['enableInsecureBindingSystemAuthenticated'] == null ? null : map['enableInsecureBindingSystemAuthenticated'] as bool,
+      enableInsecureBindingSystemUnauthenticated: map['enableInsecureBindingSystemUnauthenticated'] == null ? null : map['enableInsecureBindingSystemUnauthenticated'] as bool,
     );
   }
 }
+

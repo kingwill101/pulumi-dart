@@ -6,15 +6,13 @@ enum SecurityPolicyRuleMatcherVersionedExprComputeBeta {
   const SecurityPolicyRuleMatcherVersionedExprComputeBeta(this.value);
   final String value;
 
-  static SecurityPolicyRuleMatcherVersionedExprComputeBeta fromValue(
-      String value) {
-    for (final item
-        in SecurityPolicyRuleMatcherVersionedExprComputeBeta.values) {
+  static SecurityPolicyRuleMatcherVersionedExprComputeBeta fromValue(String value) {
+    for (final item in SecurityPolicyRuleMatcherVersionedExprComputeBeta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown SecurityPolicyRuleMatcherVersionedExprComputeBeta value: $value');
+    throw ArgumentError('Unknown SecurityPolicyRuleMatcherVersionedExprComputeBeta value: $value');
   }
 }
+

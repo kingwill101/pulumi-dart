@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RouterPeerCustomLearnedIpRange {
   /// The IP range to learn. The value must be a
   /// CIDR-formatted string.
@@ -12,9 +13,9 @@ class RouterPeerCustomLearnedIpRange {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['range'] = range;
-    return map;
+    return <String, dynamic>{
+      'range': range,
+    };
   }
 
   factory RouterPeerCustomLearnedIpRange.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class RouterPeerCustomLearnedIpRange {
     );
   }
 }
+

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getEntityPath.
 class GetEntityPathResult {
   final String entityId;
-
   /// Entity path.
   final String entityPath;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
 
@@ -21,11 +20,11 @@ class GetEntityPathResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['entityId'] = entityId;
-    map['entityPath'] = entityPath;
-    map['id'] = id;
-    return map;
+    return <String, dynamic>{
+      'entityId': entityId,
+      'entityPath': entityPath,
+      'id': id,
+    };
   }
 
   factory GetEntityPathResult.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class GetEntityPathResult {
     );
   }
 }
+

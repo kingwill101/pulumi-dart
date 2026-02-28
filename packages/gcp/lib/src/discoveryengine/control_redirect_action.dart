@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ControlRedirectAction {
   /// The URI to redirect to.
   final String redirectUri;
@@ -11,9 +12,9 @@ class ControlRedirectAction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['redirectUri'] = redirectUri;
-    return map;
+    return <String, dynamic>{
+      'redirectUri': redirectUri,
+    };
   }
 
   factory ControlRedirectAction.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class ControlRedirectAction {
     );
   }
 }
+

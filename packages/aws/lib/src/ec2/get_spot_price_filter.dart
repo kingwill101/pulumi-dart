@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetSpotPriceFilter {
   /// Name of the filter.
   final String name;
-
   /// List of one or more values for the filter.
   final List<String> values;
 
@@ -16,10 +16,10 @@ class GetSpotPriceFilter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['values'] = values;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'values': values,
+    };
   }
 
   factory GetSpotPriceFilter.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetSpotPriceFilter {
     );
   }
 }
+

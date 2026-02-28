@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PipelineDestinationOutputPayloadFormatAvro {
   /// The entire schema definition is stored in this field.
   final String? schemaDefinition;
@@ -11,20 +12,15 @@ class PipelineDestinationOutputPayloadFormatAvro {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final schemaDefinitionValue = schemaDefinition;
-    if (schemaDefinitionValue != null) {
-      map['schemaDefinition'] = schemaDefinitionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'schemaDefinition': ?schemaDefinition,
+    };
   }
 
-  factory PipelineDestinationOutputPayloadFormatAvro.fromMap(
-      Map<String, dynamic> map) {
+  factory PipelineDestinationOutputPayloadFormatAvro.fromMap(Map<String, dynamic> map) {
     return PipelineDestinationOutputPayloadFormatAvro(
-      schemaDefinition: map['schemaDefinition'] == null
-          ? null
-          : map['schemaDefinition'] as String,
+      schemaDefinition: map['schemaDefinition'] == null ? null : map['schemaDefinition'] as String,
     );
   }
 }
+

@@ -10,11 +10,9 @@ import 'control_folder_intelligence_config_filter.dart';
 class ControlFolderIntelligenceConfigArgs {
   /// Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
   final pulumi.Input<String>? editionConfig;
-
   /// Filter over location and bucket using include or exclude semantics. Resources that match the include or exclude filter are exclusively included or excluded from the Storage Intelligence plan.
   /// Structure is documented below.
   final pulumi.Input<ControlFolderIntelligenceConfigFilter>? filter;
-
   /// Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
   final pulumi.Input<String>? name;
 
@@ -26,41 +24,25 @@ class ControlFolderIntelligenceConfigArgs {
     String? editionConfig,
     ControlFolderIntelligenceConfigFilter? filter,
     String? name,
-  })  : editionConfig = pulumi.Input.asOptionalInput<String>(editionConfig),
-        filter =
-            pulumi.Input.asOptionalInput<ControlFolderIntelligenceConfigFilter>(
-                filter),
-        name = pulumi.Input.asOptionalInput<String>(name);
+  }) :
+      editionConfig = pulumi.Input.asOptionalInput<String>(editionConfig),
+      filter = pulumi.Input.asOptionalInput<ControlFolderIntelligenceConfigFilter>(filter),
+      name = pulumi.Input.asOptionalInput<String>(name);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final editionConfigValue = editionConfig;
-    if (editionConfigValue != null) {
-      map['editionConfig'] = editionConfigValue;
-    }
-    final filterValue = filter;
-    if (filterValue != null) {
-      map['filter'] = pulumi.Input.mapOptionalInputValue<
-          ControlFolderIntelligenceConfigFilter,
-          Map<String, dynamic>>(filterValue, (value) => value.toMap());
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'editionConfig': ?editionConfig,
+      'filter': ?pulumi.Input.mapOptionalInputValue<ControlFolderIntelligenceConfigFilter, Map<String, dynamic>>(filter, (value) => value.toMap()),
+      'name': ?name,
+    };
   }
 
-  factory ControlFolderIntelligenceConfigArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory ControlFolderIntelligenceConfigArgs.fromMap(Map<String, dynamic> map) {
     return ControlFolderIntelligenceConfigArgs(
-      editionConfig:
-          map['editionConfig'] == null ? null : map['editionConfig'] as String,
-      filter: map['filter'] == null
-          ? null
-          : ControlFolderIntelligenceConfigFilter.fromMap(
-              (map['filter'] as Map).cast<String, dynamic>()),
+      editionConfig: map['editionConfig'] == null ? null : map['editionConfig'] as String,
+      filter: map['filter'] == null ? null : ControlFolderIntelligenceConfigFilter.fromMap((map['filter'] as Map).cast<String, dynamic>()),
       name: map['name'] == null ? null : map['name'] as String,
     );
   }
 }
+

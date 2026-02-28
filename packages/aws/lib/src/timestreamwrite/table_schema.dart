@@ -13,20 +13,15 @@ class TableSchema {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final compositePartitionKeyValue = compositePartitionKey;
-    if (compositePartitionKeyValue != null) {
-      map['compositePartitionKey'] = compositePartitionKeyValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'compositePartitionKey': ?compositePartitionKey == null ? null : compositePartitionKey!.toMap(),
+    };
   }
 
   factory TableSchema.fromMap(Map<String, dynamic> map) {
     return TableSchema(
-      compositePartitionKey: map['compositePartitionKey'] == null
-          ? null
-          : TableSchemaCompositePartitionKey.fromMap(
-              (map['compositePartitionKey'] as Map).cast<String, dynamic>()),
+      compositePartitionKey: map['compositePartitionKey'] == null ? null : TableSchemaCompositePartitionKey.fromMap((map['compositePartitionKey'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// BareMetalAdminManualLbConfig represents configuration parameters for a manual load balancer.
 class BareMetalAdminManualLbConfig {
   /// Whether manual load balancing is enabled.
@@ -12,12 +13,9 @@ class BareMetalAdminManualLbConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory BareMetalAdminManualLbConfig.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class BareMetalAdminManualLbConfig {
     );
   }
 }
+

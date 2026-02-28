@@ -5,7 +5,6 @@ import 'thing_group_metadata_root_to_parent_group.dart';
 
 class ThingGroupMetadata {
   final String? creationDate;
-
   /// The name of the parent Thing Group.
   final String? parentGroupName;
   final List<ThingGroupMetadataRootToParentGroup>? rootToParentGroups;
@@ -21,37 +20,19 @@ class ThingGroupMetadata {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final creationDateValue = creationDate;
-    if (creationDateValue != null) {
-      map['creationDate'] = creationDateValue;
-    }
-    final parentGroupNameValue = parentGroupName;
-    if (parentGroupNameValue != null) {
-      map['parentGroupName'] = parentGroupNameValue;
-    }
-    final rootToParentGroupsValue = rootToParentGroups;
-    if (rootToParentGroupsValue != null) {
-      map['rootToParentGroups'] = pulumi.Input.encodeList<
-              ThingGroupMetadataRootToParentGroup, Map<String, dynamic>>(
-          rootToParentGroupsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'creationDate': ?creationDate,
+      'parentGroupName': ?parentGroupName,
+      'rootToParentGroups': ?rootToParentGroups == null ? null : pulumi.Input.encodeList<ThingGroupMetadataRootToParentGroup, Map<String, dynamic>>(rootToParentGroups!, (value) => value.toMap()),
+    };
   }
 
   factory ThingGroupMetadata.fromMap(Map<String, dynamic> map) {
     return ThingGroupMetadata(
-      creationDate:
-          map['creationDate'] == null ? null : map['creationDate'] as String,
-      parentGroupName: map['parentGroupName'] == null
-          ? null
-          : map['parentGroupName'] as String,
-      rootToParentGroups: map['rootToParentGroups'] == null
-          ? null
-          : pulumi.Input.decodeList<ThingGroupMetadataRootToParentGroup>(
-              map['rootToParentGroups'],
-              (value) => ThingGroupMetadataRootToParentGroup.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      creationDate: map['creationDate'] == null ? null : map['creationDate'] as String,
+      parentGroupName: map['parentGroupName'] == null ? null : map['parentGroupName'] as String,
+      rootToParentGroups: map['rootToParentGroups'] == null ? null : pulumi.Input.decodeList<ThingGroupMetadataRootToParentGroup>(map['rootToParentGroups'], (value) => ThingGroupMetadataRootToParentGroup.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

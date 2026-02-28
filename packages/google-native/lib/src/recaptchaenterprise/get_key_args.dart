@@ -16,17 +16,15 @@ class GetKeyArgs {
   GetKeyArgs({
     required String keyId,
     String? project,
-  })  : keyId = pulumi.Input.asInput<String>(keyId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      keyId = pulumi.Input.asInput<String>(keyId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['keyId'] = keyId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'keyId': keyId,
+      'project': ?project,
+    };
   }
 
   factory GetKeyArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetKeyArgs {
     );
   }
 }
+

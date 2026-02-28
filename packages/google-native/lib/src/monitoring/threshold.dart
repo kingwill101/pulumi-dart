@@ -8,16 +8,12 @@ import 'threshold_target_axis.dart';
 class Threshold {
   /// The state color for this threshold. Color is not allowed in a XyChart.
   final ThresholdColor? color;
-
   /// The direction for the current threshold. Direction is not allowed in a XyChart.
   final ThresholdDirection? direction;
-
   /// A label for the threshold.
   final String? label;
-
   /// The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
   final ThresholdTargetAxis? targetAxis;
-
   /// The value of the threshold. The value should be defined in the native scale of the metric.
   final double? value;
 
@@ -36,43 +32,23 @@ class Threshold {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final colorValue = color;
-    if (colorValue != null) {
-      map['color'] = colorValue.value;
-    }
-    final directionValue = direction;
-    if (directionValue != null) {
-      map['direction'] = directionValue.value;
-    }
-    final labelValue = label;
-    if (labelValue != null) {
-      map['label'] = labelValue;
-    }
-    final targetAxisValue = targetAxis;
-    if (targetAxisValue != null) {
-      map['targetAxis'] = targetAxisValue.value;
-    }
-    final valueValue = value;
-    if (valueValue != null) {
-      map['value'] = valueValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'color': ?color == null ? null : color!.value,
+      'direction': ?direction == null ? null : direction!.value,
+      'label': ?label,
+      'targetAxis': ?targetAxis == null ? null : targetAxis!.value,
+      'value': ?value,
+    };
   }
 
   factory Threshold.fromMap(Map<String, dynamic> map) {
     return Threshold(
-      color: map['color'] == null
-          ? null
-          : ThresholdColor.fromValue(map['color'] as String),
-      direction: map['direction'] == null
-          ? null
-          : ThresholdDirection.fromValue(map['direction'] as String),
+      color: map['color'] == null ? null : ThresholdColor.fromValue(map['color'] as String),
+      direction: map['direction'] == null ? null : ThresholdDirection.fromValue(map['direction'] as String),
       label: map['label'] == null ? null : map['label'] as String,
-      targetAxis: map['targetAxis'] == null
-          ? null
-          : ThresholdTargetAxis.fromValue(map['targetAxis'] as String),
+      targetAxis: map['targetAxis'] == null ? null : ThresholdTargetAxis.fromValue(map['targetAxis'] as String),
       value: map['value'] == null ? null : map['value'] as double,
     );
   }
 }
+

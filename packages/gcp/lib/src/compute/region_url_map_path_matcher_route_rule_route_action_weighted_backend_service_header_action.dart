@@ -7,19 +7,12 @@ import 'region_url_map_path_matcher_route_rule_route_action_weighted_backend_ser
 class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction {
   /// Headers to add to a matching request before forwarding the request to the backendService.
   /// Structure is documented below.
-  final List<
-          RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd>?
-      requestHeadersToAdds;
-
+  final List<RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd>? requestHeadersToAdds;
   /// A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
   final List<String>? requestHeadersToRemoves;
-
   /// Headers to add the response before sending the response back to the client.
   /// Structure is documented below.
-  final List<
-          RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd>?
-      responseHeadersToAdds;
-
+  final List<RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd>? responseHeadersToAdds;
   /// A list of header names for headers that need to be removed from the response before sending the response back to the client.
   final List<String>? responseHeadersToRemoves;
 
@@ -36,57 +29,21 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAct
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final requestHeadersToAddsValue = requestHeadersToAdds;
-    if (requestHeadersToAddsValue != null) {
-      map['requestHeadersToAdds'] = pulumi.Input.encodeList<
-          RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd,
-          Map<String,
-              dynamic>>(requestHeadersToAddsValue, (value) => value.toMap());
-    }
-    final requestHeadersToRemovesValue = requestHeadersToRemoves;
-    if (requestHeadersToRemovesValue != null) {
-      map['requestHeadersToRemoves'] = requestHeadersToRemovesValue;
-    }
-    final responseHeadersToAddsValue = responseHeadersToAdds;
-    if (responseHeadersToAddsValue != null) {
-      map['responseHeadersToAdds'] = pulumi.Input.encodeList<
-          RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd,
-          Map<String,
-              dynamic>>(responseHeadersToAddsValue, (value) => value.toMap());
-    }
-    final responseHeadersToRemovesValue = responseHeadersToRemoves;
-    if (responseHeadersToRemovesValue != null) {
-      map['responseHeadersToRemoves'] = responseHeadersToRemovesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'requestHeadersToAdds': ?requestHeadersToAdds == null ? null : pulumi.Input.encodeList<RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd, Map<String, dynamic>>(requestHeadersToAdds!, (value) => value.toMap()),
+      'requestHeadersToRemoves': ?requestHeadersToRemoves,
+      'responseHeadersToAdds': ?responseHeadersToAdds == null ? null : pulumi.Input.encodeList<RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd, Map<String, dynamic>>(responseHeadersToAdds!, (value) => value.toMap()),
+      'responseHeadersToRemoves': ?responseHeadersToRemoves,
+    };
   }
 
-  factory RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction.fromMap(
-      Map<String, dynamic> map) {
+  factory RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction(
-      requestHeadersToAdds: map['requestHeadersToAdds'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd>(
-              map['requestHeadersToAdds'],
-              (value) =>
-                  RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd
-                      .fromMap((value as Map).cast<String, dynamic>())),
-      requestHeadersToRemoves: map['requestHeadersToRemoves'] == null
-          ? null
-          : (map['requestHeadersToRemoves'] as List).cast<String>(),
-      responseHeadersToAdds: map['responseHeadersToAdds'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd>(
-              map['responseHeadersToAdds'],
-              (value) =>
-                  RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd
-                      .fromMap((value as Map).cast<String, dynamic>())),
-      responseHeadersToRemoves: map['responseHeadersToRemoves'] == null
-          ? null
-          : (map['responseHeadersToRemoves'] as List).cast<String>(),
+      requestHeadersToAdds: map['requestHeadersToAdds'] == null ? null : pulumi.Input.decodeList<RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd>(map['requestHeadersToAdds'], (value) => RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd.fromMap((value as Map).cast<String, dynamic>())),
+      requestHeadersToRemoves: map['requestHeadersToRemoves'] == null ? null : (map['requestHeadersToRemoves'] as List).cast<String>(),
+      responseHeadersToAdds: map['responseHeadersToAdds'] == null ? null : pulumi.Input.decodeList<RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd>(map['responseHeadersToAdds'], (value) => RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd.fromMap((value as Map).cast<String, dynamic>())),
+      responseHeadersToRemoves: map['responseHeadersToRemoves'] == null ? null : (map['responseHeadersToRemoves'] as List).cast<String>(),
     );
   }
 }
+

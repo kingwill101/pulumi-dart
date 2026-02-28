@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Matches events based on exact matches on the CloudEvents attributes.
 class MatchingCriteriaResponse {
   /// The name of a CloudEvents attribute. Currently, only a subset of attributes can be specified. All triggers MUST provide a matching criteria for the 'type' attribute.
   final String attribute;
-
   /// The value for the attribute.
   final String value;
 
@@ -17,10 +17,10 @@ class MatchingCriteriaResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['attribute'] = attribute;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'attribute': attribute,
+      'value': value,
+    };
   }
 
   factory MatchingCriteriaResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class MatchingCriteriaResponse {
     );
   }
 }
+

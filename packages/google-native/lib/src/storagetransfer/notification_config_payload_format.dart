@@ -13,7 +13,7 @@ enum NotificationConfigPayloadFormat {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown NotificationConfigPayloadFormat value: $value');
+    throw ArgumentError('Unknown NotificationConfigPayloadFormat value: $value');
   }
 }
+

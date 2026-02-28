@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Google Cloud Build information.
 class BuildInfoResponse {
   /// The Google Cloud Build id. Example: "f966068f-08b2-42c8-bdfe-74137dff2bf9"
@@ -12,9 +13,9 @@ class BuildInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cloudBuildId'] = cloudBuildId;
-    return map;
+    return <String, dynamic>{
+      'cloudBuildId': cloudBuildId,
+    };
   }
 
   factory BuildInfoResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class BuildInfoResponse {
     );
   }
 }
+

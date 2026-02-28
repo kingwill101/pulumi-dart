@@ -10,55 +10,38 @@ import 'share_settings_response.dart';
 class GetReservationResult {
   /// Reservation for aggregated resources, providing shape flexibility.
   final AllocationAggregateReservationResponse aggregateReservation;
-
   /// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
   final String commitment;
-
   /// Creation timestamp in RFC3339 text format.
   final String creationTimestamp;
-
   /// Duration time relative to reservation creation when GCE will automatically delete this resource.
   final DurationResponse deleteAfterDuration;
-
   /// Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
   final String deleteAtTime;
-
   /// An optional description of this resource. Provide this property when you create the resource.
   final String description;
-
   /// Type of the resource. Always compute#reservations for reservations.
   final String kind;
-
   /// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
   final String name;
-
   /// Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
   final Map<String, String> resourcePolicies;
-
   /// Status information for Reservation resource.
   final AllocationResourceStatusResponse resourceStatus;
-
   /// Reserved for future use.
   final bool satisfiesPzs;
-
   /// Server-defined fully-qualified URL for this resource.
   final String selfLink;
-
   /// Server-defined URL for this resource with the resource id.
   final String selfLinkWithId;
-
   /// Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
   final ShareSettingsResponse shareSettings;
-
   /// Reservation for instances with specific machine shapes.
   final AllocationSpecificSKUReservationResponse specificReservation;
-
   /// Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
   final bool specificReservationRequired;
-
   /// The status of the reservation.
   final String status;
-
   /// Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
   final String zone;
 
@@ -103,53 +86,49 @@ class GetReservationResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['aggregateReservation'] = aggregateReservation.toMap();
-    map['commitment'] = commitment;
-    map['creationTimestamp'] = creationTimestamp;
-    map['deleteAfterDuration'] = deleteAfterDuration.toMap();
-    map['deleteAtTime'] = deleteAtTime;
-    map['description'] = description;
-    map['kind'] = kind;
-    map['name'] = name;
-    map['resourcePolicies'] = resourcePolicies;
-    map['resourceStatus'] = resourceStatus.toMap();
-    map['satisfiesPzs'] = satisfiesPzs;
-    map['selfLink'] = selfLink;
-    map['selfLinkWithId'] = selfLinkWithId;
-    map['shareSettings'] = shareSettings.toMap();
-    map['specificReservation'] = specificReservation.toMap();
-    map['specificReservationRequired'] = specificReservationRequired;
-    map['status'] = status;
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'aggregateReservation': aggregateReservation.toMap(),
+      'commitment': commitment,
+      'creationTimestamp': creationTimestamp,
+      'deleteAfterDuration': deleteAfterDuration.toMap(),
+      'deleteAtTime': deleteAtTime,
+      'description': description,
+      'kind': kind,
+      'name': name,
+      'resourcePolicies': resourcePolicies,
+      'resourceStatus': resourceStatus.toMap(),
+      'satisfiesPzs': satisfiesPzs,
+      'selfLink': selfLink,
+      'selfLinkWithId': selfLinkWithId,
+      'shareSettings': shareSettings.toMap(),
+      'specificReservation': specificReservation.toMap(),
+      'specificReservationRequired': specificReservationRequired,
+      'status': status,
+      'zone': zone,
+    };
   }
 
   factory GetReservationResult.fromMap(Map<String, dynamic> map) {
     return GetReservationResult(
-      aggregateReservation: AllocationAggregateReservationResponse.fromMap(
-          (map['aggregateReservation'] as Map).cast<String, dynamic>()),
+      aggregateReservation: AllocationAggregateReservationResponse.fromMap((map['aggregateReservation'] as Map).cast<String, dynamic>()),
       commitment: map['commitment'] as String,
       creationTimestamp: map['creationTimestamp'] as String,
-      deleteAfterDuration: DurationResponse.fromMap(
-          (map['deleteAfterDuration'] as Map).cast<String, dynamic>()),
+      deleteAfterDuration: DurationResponse.fromMap((map['deleteAfterDuration'] as Map).cast<String, dynamic>()),
       deleteAtTime: map['deleteAtTime'] as String,
       description: map['description'] as String,
       kind: map['kind'] as String,
       name: map['name'] as String,
       resourcePolicies: (map['resourcePolicies'] as Map).cast<String, String>(),
-      resourceStatus: AllocationResourceStatusResponse.fromMap(
-          (map['resourceStatus'] as Map).cast<String, dynamic>()),
+      resourceStatus: AllocationResourceStatusResponse.fromMap((map['resourceStatus'] as Map).cast<String, dynamic>()),
       satisfiesPzs: map['satisfiesPzs'] as bool,
       selfLink: map['selfLink'] as String,
       selfLinkWithId: map['selfLinkWithId'] as String,
-      shareSettings: ShareSettingsResponse.fromMap(
-          (map['shareSettings'] as Map).cast<String, dynamic>()),
-      specificReservation: AllocationSpecificSKUReservationResponse.fromMap(
-          (map['specificReservation'] as Map).cast<String, dynamic>()),
+      shareSettings: ShareSettingsResponse.fromMap((map['shareSettings'] as Map).cast<String, dynamic>()),
+      specificReservation: AllocationSpecificSKUReservationResponse.fromMap((map['specificReservation'] as Map).cast<String, dynamic>()),
       specificReservationRequired: map['specificReservationRequired'] as bool,
       status: map['status'] as String,
       zone: map['zone'] as String,
     );
   }
 }
+

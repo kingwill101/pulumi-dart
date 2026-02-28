@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A message defining the database engine and provider.
 class DatabaseTypeResponse {
   /// The database engine.
   final String engine;
-
   /// The database provider.
   final String provider;
 
@@ -17,10 +17,10 @@ class DatabaseTypeResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['engine'] = engine;
-    map['provider'] = provider;
-    return map;
+    return <String, dynamic>{
+      'engine': engine,
+      'provider': provider,
+    };
   }
 
   factory DatabaseTypeResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class DatabaseTypeResponse {
     );
   }
 }
+

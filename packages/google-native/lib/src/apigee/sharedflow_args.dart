@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SharedflowArgs {
   /// Required. Must be set to either `import` or `validate`.
   final pulumi.Input<String> action;
-
   /// The HTTP Content-Type header value specifying the content type of the body.
   final pulumi.Input<String>? contentType;
-
   /// The HTTP request/response body as raw binary.
   final pulumi.Input<String>? data;
-
   /// Application specific response metadata. Must be set in the first response for streaming APIs.
   final pulumi.Input<List<Map<String, String>>>? extensions;
-
   /// Required. The name to give the shared flow
   final pulumi.Input<String>? name;
   final pulumi.Input<String> organizationId;
@@ -37,48 +33,34 @@ class SharedflowArgs {
     List<Map<String, String>>? extensions,
     String? name,
     required String organizationId,
-  })  : action = pulumi.Input.asInput<String>(action),
-        contentType = pulumi.Input.asOptionalInput<String>(contentType),
-        data = pulumi.Input.asOptionalInput<String>(data),
-        extensions =
-            pulumi.Input.asOptionalInput<List<Map<String, String>>>(extensions),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) :
+      action = pulumi.Input.asInput<String>(action),
+      contentType = pulumi.Input.asOptionalInput<String>(contentType),
+      data = pulumi.Input.asOptionalInput<String>(data),
+      extensions = pulumi.Input.asOptionalInput<List<Map<String, String>>>(extensions),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['action'] = action;
-    final contentTypeValue = contentType;
-    if (contentTypeValue != null) {
-      map['contentType'] = contentTypeValue;
-    }
-    final dataValue = data;
-    if (dataValue != null) {
-      map['data'] = dataValue;
-    }
-    final extensionsValue = extensions;
-    if (extensionsValue != null) {
-      map['extensions'] = extensionsValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    map['organizationId'] = organizationId;
-    return map;
+    return <String, dynamic>{
+      'action': action,
+      'contentType': ?contentType,
+      'data': ?data,
+      'extensions': ?extensions,
+      'name': ?name,
+      'organizationId': organizationId,
+    };
   }
 
   factory SharedflowArgs.fromMap(Map<String, dynamic> map) {
     return SharedflowArgs(
       action: map['action'] as String,
-      contentType:
-          map['contentType'] == null ? null : map['contentType'] as String,
+      contentType: map['contentType'] == null ? null : map['contentType'] as String,
       data: map['data'] == null ? null : map['data'] as String,
-      extensions: map['extensions'] == null
-          ? null
-          : (map['extensions'] as List).cast<Map<String, String>>(),
+      extensions: map['extensions'] == null ? null : (map['extensions'] as List).cast<Map<String, String>>(),
       name: map['name'] == null ? null : map['name'] as String,
       organizationId: map['organizationId'] as String,
     );
   }
 }
+

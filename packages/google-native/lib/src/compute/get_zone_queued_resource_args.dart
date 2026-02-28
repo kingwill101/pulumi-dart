@@ -19,19 +19,17 @@ class GetZoneQueuedResourceArgs {
     String? project,
     required String queuedResource,
     required String zone,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        queuedResource = pulumi.Input.asInput<String>(queuedResource),
-        zone = pulumi.Input.asInput<String>(zone);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      queuedResource = pulumi.Input.asInput<String>(queuedResource),
+      zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['queuedResource'] = queuedResource;
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'queuedResource': queuedResource,
+      'zone': zone,
+    };
   }
 
   factory GetZoneQueuedResourceArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetZoneQueuedResourceArgs {
     );
   }
 }
+

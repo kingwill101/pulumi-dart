@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum {
   /// Package name.
   final String name;
@@ -11,15 +12,15 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum.fromMap(
-      Map<String, dynamic> map) {
+  factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum(
       name: map['name'] as String,
     );
   }
 }
+

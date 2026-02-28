@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Collection of Compute Engine network tags that can be applied to a node's underlying VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/docs/reference/rest/v1/NodeConfig)).
 class NetworkTagsContainerV1beta1 {
   /// List of network tags.
@@ -12,12 +13,9 @@ class NetworkTagsContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'tags': ?tags,
+    };
   }
 
   factory NetworkTagsContainerV1beta1.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class NetworkTagsContainerV1beta1 {
     );
   }
 }
+

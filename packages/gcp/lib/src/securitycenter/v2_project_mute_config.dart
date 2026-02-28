@@ -161,41 +161,32 @@ class V2ProjectMuteConfig extends pulumi.CustomResource {
   /// The time at which the mute config was created. This field is set by
   /// the server and will be ignored if provided on config creation.
   late final pulumi.Output<String> createTime;
-
   /// A description of the mute config.
   late final pulumi.Output<String?> description;
-
   /// An expression that defines the filter to apply across create/update
   /// events of findings. While creating a filter string, be mindful of
   /// the scope in which the mute configuration is being created. E.g.,
   /// If a filter contains project = X but is created under the
   /// project = Y scope, it might not match any findings.
   late final pulumi.Output<String> filter;
-
   /// location Id is provided by project. If not provided, Use global as default.
   late final pulumi.Output<String?> location;
-
   /// Email address of the user who last edited the mute config. This
   /// field is set by the server and will be ignored if provided on
   /// config creation or update.
   late final pulumi.Output<String> mostRecentEditor;
-
   /// Unique identifier provided by the client within the parent scope.
   late final pulumi.Output<String> muteConfigId;
-
   /// Name of the mute config. Its format is
   /// projects/{project}/locations/global/muteConfigs/{configId},
   /// folders/{folder}/locations/global/muteConfigs/{configId},
   /// or organizations/{organization}/locations/global/muteConfigs/{configId}
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The type of the mute config.
   late final pulumi.Output<String> type;
-
   /// Output only. The most recent time at which the mute config was
   /// updated. This field is set by the server and will be ignored if
   /// provided on config creation or update.

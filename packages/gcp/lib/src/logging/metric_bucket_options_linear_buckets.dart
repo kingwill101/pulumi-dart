@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MetricBucketOptionsLinearBuckets {
   /// Must be greater than 0.
   final int numFiniteBuckets;
-
   /// Lower bound of the first bucket.
   final double offset;
-
   /// Must be greater than 0.
   final double width;
 
@@ -21,11 +20,11 @@ class MetricBucketOptionsLinearBuckets {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['numFiniteBuckets'] = numFiniteBuckets;
-    map['offset'] = offset;
-    map['width'] = width;
-    return map;
+    return <String, dynamic>{
+      'numFiniteBuckets': numFiniteBuckets,
+      'offset': offset,
+      'width': width,
+    };
   }
 
   factory MetricBucketOptionsLinearBuckets.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class MetricBucketOptionsLinearBuckets {
     );
   }
 }
+

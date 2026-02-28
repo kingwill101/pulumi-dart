@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetVirtualNodeSpecListenerOutlierDetectionInterval {
   final String unit;
   final int value;
@@ -13,17 +14,17 @@ class GetVirtualNodeSpecListenerOutlierDetectionInterval {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['unit'] = unit;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'unit': unit,
+      'value': value,
+    };
   }
 
-  factory GetVirtualNodeSpecListenerOutlierDetectionInterval.fromMap(
-      Map<String, dynamic> map) {
+  factory GetVirtualNodeSpecListenerOutlierDetectionInterval.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecListenerOutlierDetectionInterval(
       unit: map['unit'] as String,
       value: map['value'] as int,
     );
   }
 }
+

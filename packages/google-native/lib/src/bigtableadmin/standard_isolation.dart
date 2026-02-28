@@ -14,19 +14,15 @@ class StandardIsolation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final priorityValue = priority;
-    if (priorityValue != null) {
-      map['priority'] = priorityValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'priority': ?priority == null ? null : priority!.value,
+    };
   }
 
   factory StandardIsolation.fromMap(Map<String, dynamic> map) {
     return StandardIsolation(
-      priority: map['priority'] == null
-          ? null
-          : StandardIsolationPriority.fromValue(map['priority'] as String),
+      priority: map['priority'] == null ? null : StandardIsolationPriority.fromValue(map['priority'] as String),
     );
   }
 }
+

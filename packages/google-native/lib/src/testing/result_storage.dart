@@ -7,7 +7,6 @@ import 'tool_results_history.dart';
 class ResultStorage {
   /// Required.
   final GoogleCloudStorage googleCloudStorage;
-
   /// The tool results history that contains the tool results execution that results are written to. If not provided, the service will choose an appropriate value.
   final ToolResultsHistory? toolResultsHistory;
 
@@ -20,23 +19,17 @@ class ResultStorage {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['googleCloudStorage'] = googleCloudStorage.toMap();
-    final toolResultsHistoryValue = toolResultsHistory;
-    if (toolResultsHistoryValue != null) {
-      map['toolResultsHistory'] = toolResultsHistoryValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'googleCloudStorage': googleCloudStorage.toMap(),
+      'toolResultsHistory': ?toolResultsHistory == null ? null : toolResultsHistory!.toMap(),
+    };
   }
 
   factory ResultStorage.fromMap(Map<String, dynamic> map) {
     return ResultStorage(
-      googleCloudStorage: GoogleCloudStorage.fromMap(
-          (map['googleCloudStorage'] as Map).cast<String, dynamic>()),
-      toolResultsHistory: map['toolResultsHistory'] == null
-          ? null
-          : ToolResultsHistory.fromMap(
-              (map['toolResultsHistory'] as Map).cast<String, dynamic>()),
+      googleCloudStorage: GoogleCloudStorage.fromMap((map['googleCloudStorage'] as Map).cast<String, dynamic>()),
+      toolResultsHistory: map['toolResultsHistory'] == null ? null : ToolResultsHistory.fromMap((map['toolResultsHistory'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

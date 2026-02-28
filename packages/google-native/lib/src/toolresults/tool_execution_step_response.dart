@@ -14,15 +14,15 @@ class ToolExecutionStepResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['toolExecution'] = toolExecution.toMap();
-    return map;
+    return <String, dynamic>{
+      'toolExecution': toolExecution.toMap(),
+    };
   }
 
   factory ToolExecutionStepResponse.fromMap(Map<String, dynamic> map) {
     return ToolExecutionStepResponse(
-      toolExecution: ToolExecutionResponse.fromMap(
-          (map['toolExecution'] as Map).cast<String, dynamic>()),
+      toolExecution: ToolExecutionResponse.fromMap((map['toolExecution'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

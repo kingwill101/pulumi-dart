@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NodePoolNodeConfigSandboxConfig {
   /// Type of the sandbox to use for the node (e.g. 'gvisor')
   final String sandboxType;
@@ -11,9 +12,9 @@ class NodePoolNodeConfigSandboxConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['sandboxType'] = sandboxType;
-    return map;
+    return <String, dynamic>{
+      'sandboxType': sandboxType,
+    };
   }
 
   factory NodePoolNodeConfigSandboxConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class NodePoolNodeConfigSandboxConfig {
     );
   }
 }
+

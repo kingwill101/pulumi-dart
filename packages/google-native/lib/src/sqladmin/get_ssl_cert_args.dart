@@ -19,19 +19,17 @@ class GetSslCertArgs {
     required String instance,
     String? project,
     required String sha1Fingerprint,
-  })  : instance = pulumi.Input.asInput<String>(instance),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        sha1Fingerprint = pulumi.Input.asInput<String>(sha1Fingerprint);
+  }) :
+      instance = pulumi.Input.asInput<String>(instance),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      sha1Fingerprint = pulumi.Input.asInput<String>(sha1Fingerprint);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['instance'] = instance;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['sha1Fingerprint'] = sha1Fingerprint;
-    return map;
+    return <String, dynamic>{
+      'instance': instance,
+      'project': ?project,
+      'sha1Fingerprint': sha1Fingerprint,
+    };
   }
 
   factory GetSslCertArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetSslCertArgs {
     );
   }
 }
+

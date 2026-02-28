@@ -8,25 +8,18 @@ import 'google_type_time_of_day.dart';
 class GooglePrivacyDlpV2Value {
   /// boolean
   final bool? booleanValue;
-
   /// date
   final GoogleTypeDate? dateValue;
-
   /// day of week
   final GooglePrivacyDlpV2ValueDayOfWeekValue? dayOfWeekValue;
-
   /// float
   final double? floatValue;
-
   /// integer
   final String? integerValue;
-
   /// string
   final String? stringValue;
-
   /// time of day
   final GoogleTypeTimeOfDay? timeValue;
-
   /// timestamp
   final String? timestampValue;
 
@@ -51,67 +44,29 @@ class GooglePrivacyDlpV2Value {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final booleanValueValue = booleanValue;
-    if (booleanValueValue != null) {
-      map['booleanValue'] = booleanValueValue;
-    }
-    final dateValueValue = dateValue;
-    if (dateValueValue != null) {
-      map['dateValue'] = dateValueValue.toMap();
-    }
-    final dayOfWeekValueValue = dayOfWeekValue;
-    if (dayOfWeekValueValue != null) {
-      map['dayOfWeekValue'] = dayOfWeekValueValue.value;
-    }
-    final floatValueValue = floatValue;
-    if (floatValueValue != null) {
-      map['floatValue'] = floatValueValue;
-    }
-    final integerValueValue = integerValue;
-    if (integerValueValue != null) {
-      map['integerValue'] = integerValueValue;
-    }
-    final stringValueValue = stringValue;
-    if (stringValueValue != null) {
-      map['stringValue'] = stringValueValue;
-    }
-    final timeValueValue = timeValue;
-    if (timeValueValue != null) {
-      map['timeValue'] = timeValueValue.toMap();
-    }
-    final timestampValueValue = timestampValue;
-    if (timestampValueValue != null) {
-      map['timestampValue'] = timestampValueValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'booleanValue': ?booleanValue,
+      'dateValue': ?dateValue == null ? null : dateValue!.toMap(),
+      'dayOfWeekValue': ?dayOfWeekValue == null ? null : dayOfWeekValue!.value,
+      'floatValue': ?floatValue,
+      'integerValue': ?integerValue,
+      'stringValue': ?stringValue,
+      'timeValue': ?timeValue == null ? null : timeValue!.toMap(),
+      'timestampValue': ?timestampValue,
+    };
   }
 
   factory GooglePrivacyDlpV2Value.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2Value(
-      booleanValue:
-          map['booleanValue'] == null ? null : map['booleanValue'] as bool,
-      dateValue: map['dateValue'] == null
-          ? null
-          : GoogleTypeDate.fromMap(
-              (map['dateValue'] as Map).cast<String, dynamic>()),
-      dayOfWeekValue: map['dayOfWeekValue'] == null
-          ? null
-          : GooglePrivacyDlpV2ValueDayOfWeekValue.fromValue(
-              map['dayOfWeekValue'] as String),
-      floatValue:
-          map['floatValue'] == null ? null : map['floatValue'] as double,
-      integerValue:
-          map['integerValue'] == null ? null : map['integerValue'] as String,
-      stringValue:
-          map['stringValue'] == null ? null : map['stringValue'] as String,
-      timeValue: map['timeValue'] == null
-          ? null
-          : GoogleTypeTimeOfDay.fromMap(
-              (map['timeValue'] as Map).cast<String, dynamic>()),
-      timestampValue: map['timestampValue'] == null
-          ? null
-          : map['timestampValue'] as String,
+      booleanValue: map['booleanValue'] == null ? null : map['booleanValue'] as bool,
+      dateValue: map['dateValue'] == null ? null : GoogleTypeDate.fromMap((map['dateValue'] as Map).cast<String, dynamic>()),
+      dayOfWeekValue: map['dayOfWeekValue'] == null ? null : GooglePrivacyDlpV2ValueDayOfWeekValue.fromValue(map['dayOfWeekValue'] as String),
+      floatValue: map['floatValue'] == null ? null : map['floatValue'] as double,
+      integerValue: map['integerValue'] == null ? null : map['integerValue'] as String,
+      stringValue: map['stringValue'] == null ? null : map['stringValue'] as String,
+      timeValue: map['timeValue'] == null ? null : GoogleTypeTimeOfDay.fromMap((map['timeValue'] as Map).cast<String, dynamic>()),
+      timestampValue: map['timestampValue'] == null ? null : map['timestampValue'] as String,
     );
   }
 }
+

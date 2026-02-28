@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The specification for modifying the URL of the request, prior to forwarding the request to the destination.
 class HttpRouteURLRewriteResponse {
   /// Prior to forwarding the request to the selected destination, the requests host header is replaced by this value.
   final String hostRewrite;
-
   /// Prior to forwarding the request to the selected destination, the matching portion of the requests path is replaced by this value.
   final String pathPrefixRewrite;
 
@@ -17,10 +17,10 @@ class HttpRouteURLRewriteResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['hostRewrite'] = hostRewrite;
-    map['pathPrefixRewrite'] = pathPrefixRewrite;
-    return map;
+    return <String, dynamic>{
+      'hostRewrite': hostRewrite,
+      'pathPrefixRewrite': pathPrefixRewrite,
+    };
   }
 
   factory HttpRouteURLRewriteResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class HttpRouteURLRewriteResponse {
     );
   }
 }
+

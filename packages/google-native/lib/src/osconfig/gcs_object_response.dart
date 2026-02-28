@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Cloud Storage object representation.
 class GcsObjectResponse {
   /// Bucket of the Cloud Storage object.
   final String bucket;
-
   /// Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
   final String generationNumber;
-
   /// Name of the Cloud Storage object.
   final String object;
 
@@ -22,11 +21,11 @@ class GcsObjectResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucket'] = bucket;
-    map['generationNumber'] = generationNumber;
-    map['object'] = object;
-    return map;
+    return <String, dynamic>{
+      'bucket': bucket,
+      'generationNumber': generationNumber,
+      'object': object,
+    };
   }
 
   factory GcsObjectResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class GcsObjectResponse {
     );
   }
 }
+

@@ -327,18 +327,14 @@ import 'target_sslproxy_args.dart';
 class TargetSSLProxy extends pulumi.CustomResource {
   /// A reference to the BackendService resource.
   late final pulumi.Output<String> backendService;
-
   /// A reference to the CertificateMap resource uri that identifies a certificate map
   /// associated with the given target proxy. This field can only be set for global target proxies.
   /// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
   late final pulumi.Output<String?> certificateMap;
-
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
-
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
-
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -347,28 +343,22 @@ class TargetSSLProxy extends pulumi.CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Specifies the type of proxy header to append before sending data to
   /// the backend.
   /// Default value is `NONE`.
   /// Possible values are: `NONE`, `PROXY_V1`.
   late final pulumi.Output<String?> proxyHeader;
-
   /// The unique identifier for the resource.
   late final pulumi.Output<int> proxyId;
-
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
-
   /// A list of SslCertificate resources that are used to authenticate
   /// connections between users and the load balancer. At least one
   /// SSL certificate must be specified.
   late final pulumi.Output<List<String>?> sslCertificates;
-
   /// A reference to the SslPolicy resource that will be associated with
   /// the TargetSslProxy resource. If not set, the TargetSslProxy
   /// resource will not have any SSL policy configured.

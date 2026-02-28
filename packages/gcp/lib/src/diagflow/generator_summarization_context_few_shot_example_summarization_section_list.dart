@@ -6,9 +6,7 @@ import 'generator_summarization_context_few_shot_example_summarization_section_l
 class GeneratorSummarizationContextFewShotExampleSummarizationSectionList {
   /// Optional. Summarization sections.
   /// Structure is documented below.
-  final List<
-          GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection>?
-      summarizationSections;
+  final List<GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection>? summarizationSections;
 
   /// Creates a new [GeneratorSummarizationContextFewShotExampleSummarizationSectionList].
   /// [summarizationSections] Optional. Summarization sections.
@@ -17,28 +15,15 @@ class GeneratorSummarizationContextFewShotExampleSummarizationSectionList {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final summarizationSectionsValue = summarizationSections;
-    if (summarizationSectionsValue != null) {
-      map['summarizationSections'] = pulumi.Input.encodeList<
-          GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection,
-          Map<String,
-              dynamic>>(summarizationSectionsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'summarizationSections': ?summarizationSections == null ? null : pulumi.Input.encodeList<GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection, Map<String, dynamic>>(summarizationSections!, (value) => value.toMap()),
+    };
   }
 
-  factory GeneratorSummarizationContextFewShotExampleSummarizationSectionList.fromMap(
-      Map<String, dynamic> map) {
+  factory GeneratorSummarizationContextFewShotExampleSummarizationSectionList.fromMap(Map<String, dynamic> map) {
     return GeneratorSummarizationContextFewShotExampleSummarizationSectionList(
-      summarizationSections: map['summarizationSections'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection>(
-              map['summarizationSections'],
-              (value) =>
-                  GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      summarizationSections: map['summarizationSections'] == null ? null : pulumi.Input.decodeList<GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection>(map['summarizationSections'], (value) => GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

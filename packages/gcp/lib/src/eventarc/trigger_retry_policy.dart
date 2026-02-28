@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TriggerRetryPolicy {
   /// The maximum number of delivery attempts for any message. The only valid
   /// value is 1.
@@ -12,18 +13,15 @@ class TriggerRetryPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final maxAttemptsValue = maxAttempts;
-    if (maxAttemptsValue != null) {
-      map['maxAttempts'] = maxAttemptsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'maxAttempts': ?maxAttempts,
+    };
   }
 
   factory TriggerRetryPolicy.fromMap(Map<String, dynamic> map) {
     return TriggerRetryPolicy(
-      maxAttempts:
-          map['maxAttempts'] == null ? null : map['maxAttempts'] as int,
+      maxAttempts: map['maxAttempts'] == null ? null : map['maxAttempts'] as int,
     );
   }
 }
+

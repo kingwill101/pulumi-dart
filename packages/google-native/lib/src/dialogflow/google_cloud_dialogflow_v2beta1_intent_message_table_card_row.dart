@@ -7,7 +7,6 @@ import 'google_cloud_dialogflow_v2beta1_intent_message_table_card_cell.dart';
 class GoogleCloudDialogflowV2beta1IntentMessageTableCardRow {
   /// Optional. List of cells that make up this row.
   final List<GoogleCloudDialogflowV2beta1IntentMessageTableCardCell>? cells;
-
   /// Optional. Whether to add a visual divider after this row.
   final bool? dividerAfter;
 
@@ -20,32 +19,17 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCardRow {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cellsValue = cells;
-    if (cellsValue != null) {
-      map['cells'] = pulumi.Input.encodeList<
-          GoogleCloudDialogflowV2beta1IntentMessageTableCardCell,
-          Map<String, dynamic>>(cellsValue, (value) => value.toMap());
-    }
-    final dividerAfterValue = dividerAfter;
-    if (dividerAfterValue != null) {
-      map['dividerAfter'] = dividerAfterValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cells': ?cells == null ? null : pulumi.Input.encodeList<GoogleCloudDialogflowV2beta1IntentMessageTableCardCell, Map<String, dynamic>>(cells!, (value) => value.toMap()),
+      'dividerAfter': ?dividerAfter,
+    };
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageTableCardRow.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageTableCardRow.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageTableCardRow(
-      cells: map['cells'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  GoogleCloudDialogflowV2beta1IntentMessageTableCardCell>(
-              map['cells'],
-              (value) => GoogleCloudDialogflowV2beta1IntentMessageTableCardCell
-                  .fromMap((value as Map).cast<String, dynamic>())),
-      dividerAfter:
-          map['dividerAfter'] == null ? null : map['dividerAfter'] as bool,
+      cells: map['cells'] == null ? null : pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentMessageTableCardCell>(map['cells'], (value) => GoogleCloudDialogflowV2beta1IntentMessageTableCardCell.fromMap((value as Map).cast<String, dynamic>())),
+      dividerAfter: map['dividerAfter'] == null ? null : map['dividerAfter'] as bool,
     );
   }
 }
+

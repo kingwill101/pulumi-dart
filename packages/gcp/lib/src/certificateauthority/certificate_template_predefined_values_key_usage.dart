@@ -9,17 +9,12 @@ class CertificateTemplatePredefinedValuesKeyUsage {
   /// Describes high-level ways in which a key may be used.
   /// Structure is documented below.
   final CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage? baseKeyUsage;
-
   /// Detailed scenarios in which a key may be used.
   /// Structure is documented below.
-  final CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage?
-      extendedKeyUsage;
-
+  final CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage? extendedKeyUsage;
   /// Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
   /// Structure is documented below.
-  final List<
-          CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage>?
-      unknownExtendedKeyUsages;
+  final List<CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage>? unknownExtendedKeyUsages;
 
   /// Creates a new [CertificateTemplatePredefinedValuesKeyUsage].
   /// [baseKeyUsage] Describes high-level ways in which a key may be used.
@@ -32,44 +27,19 @@ class CertificateTemplatePredefinedValuesKeyUsage {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final baseKeyUsageValue = baseKeyUsage;
-    if (baseKeyUsageValue != null) {
-      map['baseKeyUsage'] = baseKeyUsageValue.toMap();
-    }
-    final extendedKeyUsageValue = extendedKeyUsage;
-    if (extendedKeyUsageValue != null) {
-      map['extendedKeyUsage'] = extendedKeyUsageValue.toMap();
-    }
-    final unknownExtendedKeyUsagesValue = unknownExtendedKeyUsages;
-    if (unknownExtendedKeyUsagesValue != null) {
-      map['unknownExtendedKeyUsages'] = pulumi.Input.encodeList<
-              CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage,
-              Map<String, dynamic>>(
-          unknownExtendedKeyUsagesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'baseKeyUsage': ?baseKeyUsage == null ? null : baseKeyUsage!.toMap(),
+      'extendedKeyUsage': ?extendedKeyUsage == null ? null : extendedKeyUsage!.toMap(),
+      'unknownExtendedKeyUsages': ?unknownExtendedKeyUsages == null ? null : pulumi.Input.encodeList<CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage, Map<String, dynamic>>(unknownExtendedKeyUsages!, (value) => value.toMap()),
+    };
   }
 
-  factory CertificateTemplatePredefinedValuesKeyUsage.fromMap(
-      Map<String, dynamic> map) {
+  factory CertificateTemplatePredefinedValuesKeyUsage.fromMap(Map<String, dynamic> map) {
     return CertificateTemplatePredefinedValuesKeyUsage(
-      baseKeyUsage: map['baseKeyUsage'] == null
-          ? null
-          : CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage.fromMap(
-              (map['baseKeyUsage'] as Map).cast<String, dynamic>()),
-      extendedKeyUsage: map['extendedKeyUsage'] == null
-          ? null
-          : CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage.fromMap(
-              (map['extendedKeyUsage'] as Map).cast<String, dynamic>()),
-      unknownExtendedKeyUsages: map['unknownExtendedKeyUsages'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage>(
-              map['unknownExtendedKeyUsages'],
-              (value) =>
-                  CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      baseKeyUsage: map['baseKeyUsage'] == null ? null : CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage.fromMap((map['baseKeyUsage'] as Map).cast<String, dynamic>()),
+      extendedKeyUsage: map['extendedKeyUsage'] == null ? null : CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage.fromMap((map['extendedKeyUsage'] as Map).cast<String, dynamic>()),
+      unknownExtendedKeyUsages: map['unknownExtendedKeyUsages'] == null ? null : pulumi.Input.decodeList<CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage>(map['unknownExtendedKeyUsages'], (value) => CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

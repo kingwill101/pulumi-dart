@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExternalAccessRuleArgs {
   /// Name of the resource.
   final pulumi.Input<String> name;
-
   /// The resource name of the network policy that this cluster belongs.
   final pulumi.Input<String> parent;
 
@@ -19,14 +18,15 @@ class GetExternalAccessRuleArgs {
   GetExternalAccessRuleArgs({
     required String name,
     required String parent,
-  })  : name = pulumi.Input.asInput<String>(name),
-        parent = pulumi.Input.asInput<String>(parent);
+  }) :
+      name = pulumi.Input.asInput<String>(name),
+      parent = pulumi.Input.asInput<String>(parent);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['parent'] = parent;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'parent': parent,
+    };
   }
 
   factory GetExternalAccessRuleArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +36,4 @@ class GetExternalAccessRuleArgs {
     );
   }
 }
+

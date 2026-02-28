@@ -28,25 +28,23 @@ class GetTimeSeriesArgs {
     required String runId,
     required String tensorboardId,
     required String timeSeriesId,
-  })  : experimentId = pulumi.Input.asInput<String>(experimentId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        runId = pulumi.Input.asInput<String>(runId),
-        tensorboardId = pulumi.Input.asInput<String>(tensorboardId),
-        timeSeriesId = pulumi.Input.asInput<String>(timeSeriesId);
+  }) :
+      experimentId = pulumi.Input.asInput<String>(experimentId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      runId = pulumi.Input.asInput<String>(runId),
+      tensorboardId = pulumi.Input.asInput<String>(tensorboardId),
+      timeSeriesId = pulumi.Input.asInput<String>(timeSeriesId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['experimentId'] = experimentId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['runId'] = runId;
-    map['tensorboardId'] = tensorboardId;
-    map['timeSeriesId'] = timeSeriesId;
-    return map;
+    return <String, dynamic>{
+      'experimentId': experimentId,
+      'location': location,
+      'project': ?project,
+      'runId': runId,
+      'tensorboardId': tensorboardId,
+      'timeSeriesId': timeSeriesId,
+    };
   }
 
   factory GetTimeSeriesArgs.fromMap(Map<String, dynamic> map) {
@@ -60,3 +58,4 @@ class GetTimeSeriesArgs {
     );
   }
 }
+

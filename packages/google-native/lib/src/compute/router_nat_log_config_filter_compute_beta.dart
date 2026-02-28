@@ -13,7 +13,7 @@ enum RouterNatLogConfigFilterComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown RouterNatLogConfigFilterComputeBeta value: $value');
+    throw ArgumentError('Unknown RouterNatLogConfigFilterComputeBeta value: $value');
   }
 }
+

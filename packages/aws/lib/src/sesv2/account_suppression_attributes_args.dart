@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccountSuppressionAttributesArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// A list that contains the reasons that email addresses will be automatically added to the suppression list for your account. Valid values: `COMPLAINT`, `BOUNCE`.
   final pulumi.Input<List<String>> suppressedReasons;
 
@@ -19,18 +18,15 @@ class AccountSuppressionAttributesArgs {
   AccountSuppressionAttributesArgs({
     String? region,
     required List<String> suppressedReasons,
-  })  : region = pulumi.Input.asOptionalInput<String>(region),
-        suppressedReasons =
-            pulumi.Input.asInput<List<String>>(suppressedReasons);
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      suppressedReasons = pulumi.Input.asInput<List<String>>(suppressedReasons);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['suppressedReasons'] = suppressedReasons;
-    return map;
+    return <String, dynamic>{
+      'region': ?region,
+      'suppressedReasons': suppressedReasons,
+    };
   }
 
   factory AccountSuppressionAttributesArgs.fromMap(Map<String, dynamic> map) {
@@ -40,3 +36,4 @@ class AccountSuppressionAttributesArgs {
     );
   }
 }
+

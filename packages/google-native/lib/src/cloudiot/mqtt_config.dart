@@ -14,20 +14,15 @@ class MqttConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final mqttEnabledStateValue = mqttEnabledState;
-    if (mqttEnabledStateValue != null) {
-      map['mqttEnabledState'] = mqttEnabledStateValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'mqttEnabledState': ?mqttEnabledState == null ? null : mqttEnabledState!.value,
+    };
   }
 
   factory MqttConfig.fromMap(Map<String, dynamic> map) {
     return MqttConfig(
-      mqttEnabledState: map['mqttEnabledState'] == null
-          ? null
-          : MqttConfigMqttEnabledState.fromValue(
-              map['mqttEnabledState'] as String),
+      mqttEnabledState: map['mqttEnabledState'] == null ? null : MqttConfigMqttEnabledState.fromValue(map['mqttEnabledState'] as String),
     );
   }
 }
+

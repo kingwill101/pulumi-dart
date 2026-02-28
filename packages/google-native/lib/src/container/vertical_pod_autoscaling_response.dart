@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// VerticalPodAutoscaling contains global, per-cluster information required by Vertical Pod Autoscaler to automatically adjust the resources of pods controlled by it.
 class VerticalPodAutoscalingResponse {
   /// Enables vertical pod autoscaling.
@@ -12,9 +13,9 @@ class VerticalPodAutoscalingResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory VerticalPodAutoscalingResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class VerticalPodAutoscalingResponse {
     );
   }
 }
+

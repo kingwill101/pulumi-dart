@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InsightFiltersNetworkDestinationIpv4 {
   /// A finding's CIDR value.
   final String cidr;
@@ -11,15 +12,15 @@ class InsightFiltersNetworkDestinationIpv4 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cidr'] = cidr;
-    return map;
+    return <String, dynamic>{
+      'cidr': cidr,
+    };
   }
 
-  factory InsightFiltersNetworkDestinationIpv4.fromMap(
-      Map<String, dynamic> map) {
+  factory InsightFiltersNetworkDestinationIpv4.fromMap(Map<String, dynamic> map) {
     return InsightFiltersNetworkDestinationIpv4(
       cidr: map['cidr'] as String,
     );
   }
 }
+

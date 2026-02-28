@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Node configuration for the connection.
 class NodeConfigResponse {
   /// Maximum number of nodes in the runtime nodes.
   final int maxNodeCount;
-
   /// Minimum number of nodes in the runtime nodes.
   final int minNodeCount;
 
@@ -17,10 +17,10 @@ class NodeConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maxNodeCount'] = maxNodeCount;
-    map['minNodeCount'] = minNodeCount;
-    return map;
+    return <String, dynamic>{
+      'maxNodeCount': maxNodeCount,
+      'minNodeCount': minNodeCount,
+    };
   }
 
   factory NodeConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class NodeConfigResponse {
     );
   }
 }
+

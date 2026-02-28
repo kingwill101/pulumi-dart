@@ -14,16 +14,15 @@ class GoogleCloudChannelV1PercentageAdjustmentResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['percentage'] = percentage.toMap();
-    return map;
+    return <String, dynamic>{
+      'percentage': percentage.toMap(),
+    };
   }
 
-  factory GoogleCloudChannelV1PercentageAdjustmentResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudChannelV1PercentageAdjustmentResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1PercentageAdjustmentResponse(
-      percentage: GoogleTypeDecimalResponse.fromMap(
-          (map['percentage'] as Map).cast<String, dynamic>()),
+      percentage: GoogleTypeDecimalResponse.fromMap((map['percentage'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

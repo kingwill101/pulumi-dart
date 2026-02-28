@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterAddonsConfigCloudrunConfig {
   final bool disabled;
   final String loadBalancerType;
@@ -13,17 +14,17 @@ class GetClusterAddonsConfigCloudrunConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['disabled'] = disabled;
-    map['loadBalancerType'] = loadBalancerType;
-    return map;
+    return <String, dynamic>{
+      'disabled': disabled,
+      'loadBalancerType': loadBalancerType,
+    };
   }
 
-  factory GetClusterAddonsConfigCloudrunConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GetClusterAddonsConfigCloudrunConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterAddonsConfigCloudrunConfig(
       disabled: map['disabled'] as bool,
       loadBalancerType: map['loadBalancerType'] as String,
     );
   }
 }
+

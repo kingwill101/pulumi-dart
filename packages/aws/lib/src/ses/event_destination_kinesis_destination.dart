@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EventDestinationKinesisDestination {
   /// The ARN of the role that has permissions to access the Kinesis Stream
   final String roleArn;
-
   /// The ARN of the Kinesis Stream
   final String streamArn;
 
@@ -16,10 +16,10 @@ class EventDestinationKinesisDestination {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['roleArn'] = roleArn;
-    map['streamArn'] = streamArn;
-    return map;
+    return <String, dynamic>{
+      'roleArn': roleArn,
+      'streamArn': streamArn,
+    };
   }
 
   factory EventDestinationKinesisDestination.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class EventDestinationKinesisDestination {
     );
   }
 }
+

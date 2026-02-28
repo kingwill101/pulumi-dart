@@ -10,48 +10,32 @@ import 'virtual_machine_preferences_response_migrationcenter_v1alpha1.dart';
 class ReportSummaryGroupPreferenceSetFindingResponseMigrationcenterV1alpha1 {
   /// Description for the Preference Set.
   final String description;
-
   /// Display Name of the Preference Set
   final String displayName;
-
   /// A set of findings that applies to all machines in the input.
   final ReportSummaryMachineFindingResponse machineFinding;
-
   /// A set of preferences that applies to all machines in the context.
-  final VirtualMachinePreferencesResponseMigrationcenterV1alpha1
-      machinePreferences;
-
+  final VirtualMachinePreferencesResponseMigrationcenterV1alpha1 machinePreferences;
   /// Compute monthly cost for this preference set.
   final MoneyResponseMigrationcenterV1alpha1 monthlyCostCompute;
-
   /// Network Egress monthly cost for this preference set.
   final MoneyResponseMigrationcenterV1alpha1 monthlyCostNetworkEgress;
-
   /// Licensing monthly cost for this preference set.
   final MoneyResponseMigrationcenterV1alpha1 monthlyCostOsLicense;
-
   /// Miscellaneous monthly cost for this preference set.
   final MoneyResponseMigrationcenterV1alpha1 monthlyCostOther;
-
   /// Storage monthly cost for this preference set.
   final MoneyResponseMigrationcenterV1alpha1 monthlyCostStorage;
-
   /// Total monthly cost for this preference set.
   final MoneyResponseMigrationcenterV1alpha1 monthlyCostTotal;
-
   /// Target region for this Preference Set
   final String preferredRegion;
-
   /// Text describing the pricing track specified for this Preference Set
   final String pricingTrack;
-
   /// A set of findings that applies to Stole-Tenant machines in the input.
-  final ReportSummarySoleTenantFindingResponseMigrationcenterV1alpha1
-      soleTenantFinding;
-
+  final ReportSummarySoleTenantFindingResponseMigrationcenterV1alpha1 soleTenantFinding;
   /// Text describing the business priority specified for this Preference Set
   final String topPriority;
-
   /// A set of findings that applies to VMWare machines in the input.
   final ReportSummaryVMWareEngineFindingResponse vmwareEngineFinding;
 
@@ -90,55 +74,43 @@ class ReportSummaryGroupPreferenceSetFindingResponseMigrationcenterV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['description'] = description;
-    map['displayName'] = displayName;
-    map['machineFinding'] = machineFinding.toMap();
-    map['machinePreferences'] = machinePreferences.toMap();
-    map['monthlyCostCompute'] = monthlyCostCompute.toMap();
-    map['monthlyCostNetworkEgress'] = monthlyCostNetworkEgress.toMap();
-    map['monthlyCostOsLicense'] = monthlyCostOsLicense.toMap();
-    map['monthlyCostOther'] = monthlyCostOther.toMap();
-    map['monthlyCostStorage'] = monthlyCostStorage.toMap();
-    map['monthlyCostTotal'] = monthlyCostTotal.toMap();
-    map['preferredRegion'] = preferredRegion;
-    map['pricingTrack'] = pricingTrack;
-    map['soleTenantFinding'] = soleTenantFinding.toMap();
-    map['topPriority'] = topPriority;
-    map['vmwareEngineFinding'] = vmwareEngineFinding.toMap();
-    return map;
+    return <String, dynamic>{
+      'description': description,
+      'displayName': displayName,
+      'machineFinding': machineFinding.toMap(),
+      'machinePreferences': machinePreferences.toMap(),
+      'monthlyCostCompute': monthlyCostCompute.toMap(),
+      'monthlyCostNetworkEgress': monthlyCostNetworkEgress.toMap(),
+      'monthlyCostOsLicense': monthlyCostOsLicense.toMap(),
+      'monthlyCostOther': monthlyCostOther.toMap(),
+      'monthlyCostStorage': monthlyCostStorage.toMap(),
+      'monthlyCostTotal': monthlyCostTotal.toMap(),
+      'preferredRegion': preferredRegion,
+      'pricingTrack': pricingTrack,
+      'soleTenantFinding': soleTenantFinding.toMap(),
+      'topPriority': topPriority,
+      'vmwareEngineFinding': vmwareEngineFinding.toMap(),
+    };
   }
 
-  factory ReportSummaryGroupPreferenceSetFindingResponseMigrationcenterV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory ReportSummaryGroupPreferenceSetFindingResponseMigrationcenterV1alpha1.fromMap(Map<String, dynamic> map) {
     return ReportSummaryGroupPreferenceSetFindingResponseMigrationcenterV1alpha1(
       description: map['description'] as String,
       displayName: map['displayName'] as String,
-      machineFinding: ReportSummaryMachineFindingResponse.fromMap(
-          (map['machineFinding'] as Map).cast<String, dynamic>()),
-      machinePreferences:
-          VirtualMachinePreferencesResponseMigrationcenterV1alpha1.fromMap(
-              (map['machinePreferences'] as Map).cast<String, dynamic>()),
-      monthlyCostCompute: MoneyResponseMigrationcenterV1alpha1.fromMap(
-          (map['monthlyCostCompute'] as Map).cast<String, dynamic>()),
-      monthlyCostNetworkEgress: MoneyResponseMigrationcenterV1alpha1.fromMap(
-          (map['monthlyCostNetworkEgress'] as Map).cast<String, dynamic>()),
-      monthlyCostOsLicense: MoneyResponseMigrationcenterV1alpha1.fromMap(
-          (map['monthlyCostOsLicense'] as Map).cast<String, dynamic>()),
-      monthlyCostOther: MoneyResponseMigrationcenterV1alpha1.fromMap(
-          (map['monthlyCostOther'] as Map).cast<String, dynamic>()),
-      monthlyCostStorage: MoneyResponseMigrationcenterV1alpha1.fromMap(
-          (map['monthlyCostStorage'] as Map).cast<String, dynamic>()),
-      monthlyCostTotal: MoneyResponseMigrationcenterV1alpha1.fromMap(
-          (map['monthlyCostTotal'] as Map).cast<String, dynamic>()),
+      machineFinding: ReportSummaryMachineFindingResponse.fromMap((map['machineFinding'] as Map).cast<String, dynamic>()),
+      machinePreferences: VirtualMachinePreferencesResponseMigrationcenterV1alpha1.fromMap((map['machinePreferences'] as Map).cast<String, dynamic>()),
+      monthlyCostCompute: MoneyResponseMigrationcenterV1alpha1.fromMap((map['monthlyCostCompute'] as Map).cast<String, dynamic>()),
+      monthlyCostNetworkEgress: MoneyResponseMigrationcenterV1alpha1.fromMap((map['monthlyCostNetworkEgress'] as Map).cast<String, dynamic>()),
+      monthlyCostOsLicense: MoneyResponseMigrationcenterV1alpha1.fromMap((map['monthlyCostOsLicense'] as Map).cast<String, dynamic>()),
+      monthlyCostOther: MoneyResponseMigrationcenterV1alpha1.fromMap((map['monthlyCostOther'] as Map).cast<String, dynamic>()),
+      monthlyCostStorage: MoneyResponseMigrationcenterV1alpha1.fromMap((map['monthlyCostStorage'] as Map).cast<String, dynamic>()),
+      monthlyCostTotal: MoneyResponseMigrationcenterV1alpha1.fromMap((map['monthlyCostTotal'] as Map).cast<String, dynamic>()),
       preferredRegion: map['preferredRegion'] as String,
       pricingTrack: map['pricingTrack'] as String,
-      soleTenantFinding:
-          ReportSummarySoleTenantFindingResponseMigrationcenterV1alpha1.fromMap(
-              (map['soleTenantFinding'] as Map).cast<String, dynamic>()),
+      soleTenantFinding: ReportSummarySoleTenantFindingResponseMigrationcenterV1alpha1.fromMap((map['soleTenantFinding'] as Map).cast<String, dynamic>()),
       topPriority: map['topPriority'] as String,
-      vmwareEngineFinding: ReportSummaryVMWareEngineFindingResponse.fromMap(
-          (map['vmwareEngineFinding'] as Map).cast<String, dynamic>()),
+      vmwareEngineFinding: ReportSummaryVMWareEngineFindingResponse.fromMap((map['vmwareEngineFinding'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

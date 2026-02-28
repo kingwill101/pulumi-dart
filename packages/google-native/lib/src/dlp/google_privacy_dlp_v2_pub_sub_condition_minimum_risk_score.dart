@@ -7,15 +7,13 @@ enum GooglePrivacyDlpV2PubSubConditionMinimumRiskScore {
   const GooglePrivacyDlpV2PubSubConditionMinimumRiskScore(this.value);
   final String value;
 
-  static GooglePrivacyDlpV2PubSubConditionMinimumRiskScore fromValue(
-      String value) {
-    for (final item
-        in GooglePrivacyDlpV2PubSubConditionMinimumRiskScore.values) {
+  static GooglePrivacyDlpV2PubSubConditionMinimumRiskScore fromValue(String value) {
+    for (final item in GooglePrivacyDlpV2PubSubConditionMinimumRiskScore.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GooglePrivacyDlpV2PubSubConditionMinimumRiskScore value: $value');
+    throw ArgumentError('Unknown GooglePrivacyDlpV2PubSubConditionMinimumRiskScore value: $value');
   }
 }
+

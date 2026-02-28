@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class UserPoolLambdaConfigPreTokenGenerationConfig {
   final String lambdaArn;
   final String lambdaVersion;
@@ -13,17 +14,17 @@ class UserPoolLambdaConfigPreTokenGenerationConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['lambdaArn'] = lambdaArn;
-    map['lambdaVersion'] = lambdaVersion;
-    return map;
+    return <String, dynamic>{
+      'lambdaArn': lambdaArn,
+      'lambdaVersion': lambdaVersion,
+    };
   }
 
-  factory UserPoolLambdaConfigPreTokenGenerationConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory UserPoolLambdaConfigPreTokenGenerationConfig.fromMap(Map<String, dynamic> map) {
     return UserPoolLambdaConfigPreTokenGenerationConfig(
       lambdaArn: map['lambdaArn'] as String,
       lambdaVersion: map['lambdaVersion'] as String,
     );
   }
 }
+

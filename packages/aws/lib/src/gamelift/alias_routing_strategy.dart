@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AliasRoutingStrategy {
   /// ID of the GameLift Fleet to point the alias to.
   final String? fleetId;
-
   /// Message text to be used with the `TERMINAL` routing strategy.
   final String? message;
-
   /// Type of routing strategyE.g., `SIMPLE` or `TERMINAL`
   final String type;
 
@@ -21,17 +20,11 @@ class AliasRoutingStrategy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final fleetIdValue = fleetId;
-    if (fleetIdValue != null) {
-      map['fleetId'] = fleetIdValue;
-    }
-    final messageValue = message;
-    if (messageValue != null) {
-      map['message'] = messageValue;
-    }
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'fleetId': ?fleetId,
+      'message': ?message,
+      'type': type,
+    };
   }
 
   factory AliasRoutingStrategy.fromMap(Map<String, dynamic> map) {
@@ -42,3 +35,4 @@ class AliasRoutingStrategy {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Information for connecting over HTTP(s).
 class AddressableResponse {
   final String url;
@@ -11,9 +12,9 @@ class AddressableResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['url'] = url;
-    return map;
+    return <String, dynamic>{
+      'url': url,
+    };
   }
 
   factory AddressableResponse.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class AddressableResponse {
     );
   }
 }
+

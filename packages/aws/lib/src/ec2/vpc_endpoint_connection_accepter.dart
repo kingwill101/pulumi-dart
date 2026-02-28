@@ -207,13 +207,10 @@ import 'vpc_endpoint_connection_accepter_args.dart';
 class VpcEndpointConnectionAccepter extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// AWS VPC Endpoint ID.
   late final pulumi.Output<String> vpcEndpointId;
-
   /// AWS VPC Endpoint Service ID.
   late final pulumi.Output<String> vpcEndpointServiceId;
-
   /// State of the VPC Endpoint.
   late final pulumi.Output<String> vpcEndpointState;
 

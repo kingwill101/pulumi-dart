@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TemplateSourceEntitySourceTemplate {
   /// The Amazon Resource Name (ARN) of the resource.
   final String arn;
@@ -11,9 +12,9 @@ class TemplateSourceEntitySourceTemplate {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+    };
   }
 
   factory TemplateSourceEntitySourceTemplate.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class TemplateSourceEntitySourceTemplate {
     );
   }
 }
+

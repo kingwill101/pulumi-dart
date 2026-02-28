@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ResourceDescriptorResponseContaineranalysisV1alpha1 {
   final Map<String, String> annotations;
   final String content;
@@ -28,19 +29,18 @@ class ResourceDescriptorResponseContaineranalysisV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['annotations'] = annotations;
-    map['content'] = content;
-    map['digest'] = digest;
-    map['downloadLocation'] = downloadLocation;
-    map['mediaType'] = mediaType;
-    map['name'] = name;
-    map['uri'] = uri;
-    return map;
+    return <String, dynamic>{
+      'annotations': annotations,
+      'content': content,
+      'digest': digest,
+      'downloadLocation': downloadLocation,
+      'mediaType': mediaType,
+      'name': name,
+      'uri': uri,
+    };
   }
 
-  factory ResourceDescriptorResponseContaineranalysisV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory ResourceDescriptorResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return ResourceDescriptorResponseContaineranalysisV1alpha1(
       annotations: (map['annotations'] as Map).cast<String, String>(),
       content: map['content'] as String,
@@ -52,3 +52,4 @@ class ResourceDescriptorResponseContaineranalysisV1alpha1 {
     );
   }
 }
+

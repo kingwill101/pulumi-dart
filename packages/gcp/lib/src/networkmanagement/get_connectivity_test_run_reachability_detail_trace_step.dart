@@ -1,18 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetConnectivityTestRunReachabilityDetailTraceStep {
   /// (Output)
   /// If this step leads to the final state Drop.
   final bool causesDrop;
-
   /// (Output)
   /// Description of the connectivity test step.
   final String description;
-
   /// (Output)
   /// Project ID of the connectivity test step.
   final String projectId;
-
   /// (Output)
   /// State of the connectivity test step.
   final String state;
@@ -30,16 +28,15 @@ class GetConnectivityTestRunReachabilityDetailTraceStep {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['causesDrop'] = causesDrop;
-    map['description'] = description;
-    map['projectId'] = projectId;
-    map['state'] = state;
-    return map;
+    return <String, dynamic>{
+      'causesDrop': causesDrop,
+      'description': description,
+      'projectId': projectId,
+      'state': state,
+    };
   }
 
-  factory GetConnectivityTestRunReachabilityDetailTraceStep.fromMap(
-      Map<String, dynamic> map) {
+  factory GetConnectivityTestRunReachabilityDetailTraceStep.fromMap(Map<String, dynamic> map) {
     return GetConnectivityTestRunReachabilityDetailTraceStep(
       causesDrop: map['causesDrop'] as bool,
       description: map['description'] as String,
@@ -48,3 +45,4 @@ class GetConnectivityTestRunReachabilityDetailTraceStep {
     );
   }
 }
+

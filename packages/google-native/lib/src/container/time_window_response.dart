@@ -6,10 +6,8 @@ import 'maintenance_exclusion_options_response.dart';
 class TimeWindowResponse {
   /// The time that the window ends. The end time should take place after the start time.
   final String endTime;
-
   /// MaintenanceExclusionOptions provides maintenance exclusion related options.
   final MaintenanceExclusionOptionsResponse maintenanceExclusionOptions;
-
   /// The time that the window first starts.
   final String startTime;
 
@@ -24,19 +22,19 @@ class TimeWindowResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['endTime'] = endTime;
-    map['maintenanceExclusionOptions'] = maintenanceExclusionOptions.toMap();
-    map['startTime'] = startTime;
-    return map;
+    return <String, dynamic>{
+      'endTime': endTime,
+      'maintenanceExclusionOptions': maintenanceExclusionOptions.toMap(),
+      'startTime': startTime,
+    };
   }
 
   factory TimeWindowResponse.fromMap(Map<String, dynamic> map) {
     return TimeWindowResponse(
       endTime: map['endTime'] as String,
-      maintenanceExclusionOptions: MaintenanceExclusionOptionsResponse.fromMap(
-          (map['maintenanceExclusionOptions'] as Map).cast<String, dynamic>()),
+      maintenanceExclusionOptions: MaintenanceExclusionOptionsResponse.fromMap((map['maintenanceExclusionOptions'] as Map).cast<String, dynamic>()),
       startTime: map['startTime'] as String,
     );
   }
 }
+

@@ -14,25 +14,15 @@ class RRSetRoutingPolicyHealthCheckTargets {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final internalLoadBalancersValue = internalLoadBalancers;
-    if (internalLoadBalancersValue != null) {
-      map['internalLoadBalancers'] = pulumi.Input.encodeList<
-              RRSetRoutingPolicyLoadBalancerTarget, Map<String, dynamic>>(
-          internalLoadBalancersValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'internalLoadBalancers': ?internalLoadBalancers == null ? null : pulumi.Input.encodeList<RRSetRoutingPolicyLoadBalancerTarget, Map<String, dynamic>>(internalLoadBalancers!, (value) => value.toMap()),
+    };
   }
 
-  factory RRSetRoutingPolicyHealthCheckTargets.fromMap(
-      Map<String, dynamic> map) {
+  factory RRSetRoutingPolicyHealthCheckTargets.fromMap(Map<String, dynamic> map) {
     return RRSetRoutingPolicyHealthCheckTargets(
-      internalLoadBalancers: map['internalLoadBalancers'] == null
-          ? null
-          : pulumi.Input.decodeList<RRSetRoutingPolicyLoadBalancerTarget>(
-              map['internalLoadBalancers'],
-              (value) => RRSetRoutingPolicyLoadBalancerTarget.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      internalLoadBalancers: map['internalLoadBalancers'] == null ? null : pulumi.Input.decodeList<RRSetRoutingPolicyLoadBalancerTarget>(map['internalLoadBalancers'], (value) => RRSetRoutingPolicyLoadBalancerTarget.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

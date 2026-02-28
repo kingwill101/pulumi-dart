@@ -12,7 +12,7 @@ enum SecurityPolicyRuleRedirectOptionsType {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown SecurityPolicyRuleRedirectOptionsType value: $value');
+    throw ArgumentError('Unknown SecurityPolicyRuleRedirectOptionsType value: $value');
   }
 }
+

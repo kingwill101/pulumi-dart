@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getInstance.
 class GetInstanceResult {
   /// Output Only. The globally unique hostname of the database.
   final String databaseUrl;
-
   /// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
   final String name;
-
   /// The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
   final String project;
-
   /// The database's lifecycle state. Read-only.
   final String state;
-
   /// Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
   final String type;
 
@@ -32,13 +29,13 @@ class GetInstanceResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['databaseUrl'] = databaseUrl;
-    map['name'] = name;
-    map['project'] = project;
-    map['state'] = state;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'databaseUrl': databaseUrl,
+      'name': name,
+      'project': project,
+      'state': state,
+      'type': type,
+    };
   }
 
   factory GetInstanceResult.fromMap(Map<String, dynamic> map) {
@@ -51,3 +48,4 @@ class GetInstanceResult {
     );
   }
 }
+

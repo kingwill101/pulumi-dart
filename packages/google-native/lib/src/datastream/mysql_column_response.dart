@@ -1,31 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// MySQL Column.
 class MysqlColumnResponse {
   /// Column collation.
   final String collation;
-
   /// Column name.
   final String column;
-
   /// The MySQL data type. Full data types list can be found here: https://dev.mysql.com/doc/refman/8.0/en/data-types.html
   final String dataType;
-
   /// Column length.
   final int length;
-
   /// Whether or not the column can accept a null value.
   final bool nullable;
-
   /// The ordinal position of the column in the table.
   final int ordinalPosition;
-
   /// Column precision.
   final int precision;
-
   /// Whether or not the column represents a primary key.
   final bool primaryKey;
-
   /// Column scale.
   final int scale;
 
@@ -52,17 +45,17 @@ class MysqlColumnResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['collation'] = collation;
-    map['column'] = column;
-    map['dataType'] = dataType;
-    map['length'] = length;
-    map['nullable'] = nullable;
-    map['ordinalPosition'] = ordinalPosition;
-    map['precision'] = precision;
-    map['primaryKey'] = primaryKey;
-    map['scale'] = scale;
-    return map;
+    return <String, dynamic>{
+      'collation': collation,
+      'column': column,
+      'dataType': dataType,
+      'length': length,
+      'nullable': nullable,
+      'ordinalPosition': ordinalPosition,
+      'precision': precision,
+      'primaryKey': primaryKey,
+      'scale': scale,
+    };
   }
 
   factory MysqlColumnResponse.fromMap(Map<String, dynamic> map) {
@@ -79,3 +72,4 @@ class MysqlColumnResponse {
     );
   }
 }
+

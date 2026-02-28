@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for PyPi repository
 class PyPiRepositoryConfigResponse {
   /// Optional. PyPi repository address
@@ -12,9 +13,9 @@ class PyPiRepositoryConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['pypiRepository'] = pypiRepository;
-    return map;
+    return <String, dynamic>{
+      'pypiRepository': pypiRepository,
+    };
   }
 
   factory PyPiRepositoryConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class PyPiRepositoryConfigResponse {
     );
   }
 }
+

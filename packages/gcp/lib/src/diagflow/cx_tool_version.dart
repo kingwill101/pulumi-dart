@@ -2879,22 +2879,17 @@ class CxToolVersion extends pulumi.CustomResource {
   /// Offsets other than "Z" are also accepted.
   /// Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
   late final pulumi.Output<String> createTime;
-
   /// The display name of the tool version.
   late final pulumi.Output<String> displayName;
-
   /// The unique identifier of the tool version.
   /// Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/tools/<ToolID>/versions/<VersionID>.
   late final pulumi.Output<String> name;
-
   /// The tool to create a Version for.
   /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/tools/<Tool ID>.
   late final pulumi.Output<String> parent;
-
   /// Snapshot of the tool to be associated with this version.
   /// Structure is documented below.
   late final pulumi.Output<CxToolVersionTool> tool;
-
   /// Last time the tool version was created or modified.
   /// Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits.
   /// Offsets other than "Z" are also accepted.

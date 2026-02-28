@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RegionBackendServiceSubsetting {
   /// The algorithm used for subsetting.
   /// Possible values are: `CONSISTENT_HASH_SUBSETTING`.
   final String policy;
-
   /// The number of backends per backend group assigned to each proxy instance or each service mesh client.
   /// An input parameter to the CONSISTENT_HASH_SUBSETTING algorithm. Can only be set if policy is set to
   /// CONSISTENT_HASH_SUBSETTING. Can only be set if load balancing scheme is INTERNAL_MANAGED or INTERNAL_SELF_MANAGED.
@@ -23,13 +23,10 @@ class RegionBackendServiceSubsetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['policy'] = policy;
-    final subsetSizeValue = subsetSize;
-    if (subsetSizeValue != null) {
-      map['subsetSize'] = subsetSizeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'policy': policy,
+      'subsetSize': ?subsetSize,
+    };
   }
 
   factory RegionBackendServiceSubsetting.fromMap(Map<String, dynamic> map) {
@@ -39,3 +36,4 @@ class RegionBackendServiceSubsetting {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for the Compute Engine PD CSI driver.
 class GcePersistentDiskCsiDriverConfigResponse {
   /// Whether the Compute Engine PD CSI driver is enabled for this cluster.
@@ -12,15 +13,15 @@ class GcePersistentDiskCsiDriverConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory GcePersistentDiskCsiDriverConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GcePersistentDiskCsiDriverConfigResponse.fromMap(Map<String, dynamic> map) {
     return GcePersistentDiskCsiDriverConfigResponse(
       enabled: map['enabled'] as bool,
     );
   }
 }
+

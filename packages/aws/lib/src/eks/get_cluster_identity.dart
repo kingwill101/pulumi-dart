@@ -14,19 +14,15 @@ class GetClusterIdentity {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['oidcs'] =
-        pulumi.Input.encodeList<GetClusterIdentityOidc, Map<String, dynamic>>(
-            oidcs, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'oidcs': pulumi.Input.encodeList<GetClusterIdentityOidc, Map<String, dynamic>>(oidcs, (value) => value.toMap()),
+    };
   }
 
   factory GetClusterIdentity.fromMap(Map<String, dynamic> map) {
     return GetClusterIdentity(
-      oidcs: pulumi.Input.decodeList<GetClusterIdentityOidc>(
-          map['oidcs'],
-          (value) => GetClusterIdentityOidc.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      oidcs: pulumi.Input.decodeList<GetClusterIdentityOidc>(map['oidcs'], (value) => GetClusterIdentityOidc.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

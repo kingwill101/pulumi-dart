@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class StorageLensConfigurationStorageLensConfigurationAwsOrg {
   /// The Amazon Resource Name (ARN) of the Amazon Web Services organization.
   final String arn;
@@ -11,15 +12,15 @@ class StorageLensConfigurationStorageLensConfigurationAwsOrg {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+    };
   }
 
-  factory StorageLensConfigurationStorageLensConfigurationAwsOrg.fromMap(
-      Map<String, dynamic> map) {
+  factory StorageLensConfigurationStorageLensConfigurationAwsOrg.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationStorageLensConfigurationAwsOrg(
       arn: map['arn'] as String,
     );
   }
 }
+

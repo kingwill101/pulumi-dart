@@ -1,25 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSecurityProfileGroup.
 class GetSecurityProfileGroupResult {
   /// Resource creation timestamp.
   final String createTime;
-
   /// Optional. An optional description of the profile group. Max length 2048 characters.
   final String description;
-
   /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
   final String etag;
-
   /// Optional. Labels as key value pairs.
   final Map<String, String> labels;
-
   /// Immutable. Identifier. Name of the SecurityProfileGroup resource. It matches pattern `projects|organizations/*/locations/{location}/securityProfileGroups/{security_profile_group}`.
   final String name;
-
   /// Optional. Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
   final String threatPreventionProfile;
-
   /// Last resource update timestamp.
   final String updateTime;
 
@@ -42,15 +37,15 @@ class GetSecurityProfileGroupResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['description'] = description;
-    map['etag'] = etag;
-    map['labels'] = labels;
-    map['name'] = name;
-    map['threatPreventionProfile'] = threatPreventionProfile;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'description': description,
+      'etag': etag,
+      'labels': labels,
+      'name': name,
+      'threatPreventionProfile': threatPreventionProfile,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetSecurityProfileGroupResult.fromMap(Map<String, dynamic> map) {
@@ -65,3 +60,4 @@ class GetSecurityProfileGroupResult {
     );
   }
 }
+

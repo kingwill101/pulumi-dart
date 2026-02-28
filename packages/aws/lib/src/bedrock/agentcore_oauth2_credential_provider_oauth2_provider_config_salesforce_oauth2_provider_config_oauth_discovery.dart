@@ -5,10 +5,7 @@ import 'agentcore_oauth2_credential_provider_oauth2_provider_config_salesforce_o
 
 class AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscovery {
   /// Manual OAuth2 authorization server metadata configuration. Cannot be used together with `discovery_url`. See `authorization_server_metadata` below.
-  final List<
-          AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscoveryAuthorizationServerMetadata>
-      authorizationServerMetadatas;
-
+  final List<AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscoveryAuthorizationServerMetadata> authorizationServerMetadatas;
   /// OpenID Connect discovery URL (e.g., `https://provider.com/.well-known/openid-configuration`). Cannot be used together with `authorization_server_metadata`.
   final String discoveryUrl;
 
@@ -21,25 +18,17 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2Provi
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['authorizationServerMetadatas'] = pulumi.Input.encodeList<
-        AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscoveryAuthorizationServerMetadata,
-        Map<String,
-            dynamic>>(authorizationServerMetadatas, (value) => value.toMap());
-    map['discoveryUrl'] = discoveryUrl;
-    return map;
+    return <String, dynamic>{
+      'authorizationServerMetadatas': pulumi.Input.encodeList<AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscoveryAuthorizationServerMetadata, Map<String, dynamic>>(authorizationServerMetadatas, (value) => value.toMap()),
+      'discoveryUrl': discoveryUrl,
+    };
   }
 
-  factory AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscovery.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscovery.fromMap(Map<String, dynamic> map) {
     return AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscovery(
-      authorizationServerMetadatas: pulumi.Input.decodeList<
-              AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscoveryAuthorizationServerMetadata>(
-          map['authorizationServerMetadatas'],
-          (value) =>
-              AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscoveryAuthorizationServerMetadata
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      authorizationServerMetadatas: pulumi.Input.decodeList<AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscoveryAuthorizationServerMetadata>(map['authorizationServerMetadatas'], (value) => AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscoveryAuthorizationServerMetadata.fromMap((value as Map).cast<String, dynamic>())),
       discoveryUrl: map['discoveryUrl'] as String,
     );
   }
 }
+

@@ -16,35 +16,24 @@ import 'network_policy_config_response.dart';
 class AddonsConfigResponse {
   /// Configuration for the Cloud Run addon, which allows the user to use a managed Knative service.
   final CloudRunConfigResponse cloudRunConfig;
-
   /// Configuration for the ConfigConnector add-on, a Kubernetes extension to manage hosted GCP services through the Kubernetes API
   final ConfigConnectorConfigResponse configConnectorConfig;
-
   /// Configuration for NodeLocalDNS, a dns cache running on cluster nodes
   final DnsCacheConfigResponse dnsCacheConfig;
-
   /// Configuration for the Compute Engine Persistent Disk CSI driver.
-  final GcePersistentDiskCsiDriverConfigResponse
-      gcePersistentDiskCsiDriverConfig;
-
+  final GcePersistentDiskCsiDriverConfigResponse gcePersistentDiskCsiDriverConfig;
   /// Configuration for the GCP Filestore CSI driver.
   final GcpFilestoreCsiDriverConfigResponse gcpFilestoreCsiDriverConfig;
-
   /// Configuration for the Cloud Storage Fuse CSI driver.
   final GcsFuseCsiDriverConfigResponse gcsFuseCsiDriverConfig;
-
   /// Configuration for the Backup for GKE agent addon.
   final GkeBackupAgentConfigResponse gkeBackupAgentConfig;
-
   /// Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
   final HorizontalPodAutoscalingResponse horizontalPodAutoscaling;
-
   /// Configuration for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster.
   final HttpLoadBalancingResponse httpLoadBalancing;
-
   /// Configuration for the Kubernetes Dashboard. This addon is deprecated, and will be disabled in 1.15. It is recommended to use the Cloud Console to manage and monitor your Kubernetes clusters, workloads and applications. For more information, see: https://cloud.google.com/kubernetes-engine/docs/concepts/dashboards
   final KubernetesDashboardResponse kubernetesDashboard;
-
   /// Configuration for NetworkPolicy. This only tracks whether the addon is enabled or not on the Master, it does not track whether network policy is enabled for the nodes.
   final NetworkPolicyConfigResponse networkPolicyConfig;
 
@@ -75,48 +64,35 @@ class AddonsConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cloudRunConfig'] = cloudRunConfig.toMap();
-    map['configConnectorConfig'] = configConnectorConfig.toMap();
-    map['dnsCacheConfig'] = dnsCacheConfig.toMap();
-    map['gcePersistentDiskCsiDriverConfig'] =
-        gcePersistentDiskCsiDriverConfig.toMap();
-    map['gcpFilestoreCsiDriverConfig'] = gcpFilestoreCsiDriverConfig.toMap();
-    map['gcsFuseCsiDriverConfig'] = gcsFuseCsiDriverConfig.toMap();
-    map['gkeBackupAgentConfig'] = gkeBackupAgentConfig.toMap();
-    map['horizontalPodAutoscaling'] = horizontalPodAutoscaling.toMap();
-    map['httpLoadBalancing'] = httpLoadBalancing.toMap();
-    map['kubernetesDashboard'] = kubernetesDashboard.toMap();
-    map['networkPolicyConfig'] = networkPolicyConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'cloudRunConfig': cloudRunConfig.toMap(),
+      'configConnectorConfig': configConnectorConfig.toMap(),
+      'dnsCacheConfig': dnsCacheConfig.toMap(),
+      'gcePersistentDiskCsiDriverConfig': gcePersistentDiskCsiDriverConfig.toMap(),
+      'gcpFilestoreCsiDriverConfig': gcpFilestoreCsiDriverConfig.toMap(),
+      'gcsFuseCsiDriverConfig': gcsFuseCsiDriverConfig.toMap(),
+      'gkeBackupAgentConfig': gkeBackupAgentConfig.toMap(),
+      'horizontalPodAutoscaling': horizontalPodAutoscaling.toMap(),
+      'httpLoadBalancing': httpLoadBalancing.toMap(),
+      'kubernetesDashboard': kubernetesDashboard.toMap(),
+      'networkPolicyConfig': networkPolicyConfig.toMap(),
+    };
   }
 
   factory AddonsConfigResponse.fromMap(Map<String, dynamic> map) {
     return AddonsConfigResponse(
-      cloudRunConfig: CloudRunConfigResponse.fromMap(
-          (map['cloudRunConfig'] as Map).cast<String, dynamic>()),
-      configConnectorConfig: ConfigConnectorConfigResponse.fromMap(
-          (map['configConnectorConfig'] as Map).cast<String, dynamic>()),
-      dnsCacheConfig: DnsCacheConfigResponse.fromMap(
-          (map['dnsCacheConfig'] as Map).cast<String, dynamic>()),
-      gcePersistentDiskCsiDriverConfig:
-          GcePersistentDiskCsiDriverConfigResponse.fromMap(
-              (map['gcePersistentDiskCsiDriverConfig'] as Map)
-                  .cast<String, dynamic>()),
-      gcpFilestoreCsiDriverConfig: GcpFilestoreCsiDriverConfigResponse.fromMap(
-          (map['gcpFilestoreCsiDriverConfig'] as Map).cast<String, dynamic>()),
-      gcsFuseCsiDriverConfig: GcsFuseCsiDriverConfigResponse.fromMap(
-          (map['gcsFuseCsiDriverConfig'] as Map).cast<String, dynamic>()),
-      gkeBackupAgentConfig: GkeBackupAgentConfigResponse.fromMap(
-          (map['gkeBackupAgentConfig'] as Map).cast<String, dynamic>()),
-      horizontalPodAutoscaling: HorizontalPodAutoscalingResponse.fromMap(
-          (map['horizontalPodAutoscaling'] as Map).cast<String, dynamic>()),
-      httpLoadBalancing: HttpLoadBalancingResponse.fromMap(
-          (map['httpLoadBalancing'] as Map).cast<String, dynamic>()),
-      kubernetesDashboard: KubernetesDashboardResponse.fromMap(
-          (map['kubernetesDashboard'] as Map).cast<String, dynamic>()),
-      networkPolicyConfig: NetworkPolicyConfigResponse.fromMap(
-          (map['networkPolicyConfig'] as Map).cast<String, dynamic>()),
+      cloudRunConfig: CloudRunConfigResponse.fromMap((map['cloudRunConfig'] as Map).cast<String, dynamic>()),
+      configConnectorConfig: ConfigConnectorConfigResponse.fromMap((map['configConnectorConfig'] as Map).cast<String, dynamic>()),
+      dnsCacheConfig: DnsCacheConfigResponse.fromMap((map['dnsCacheConfig'] as Map).cast<String, dynamic>()),
+      gcePersistentDiskCsiDriverConfig: GcePersistentDiskCsiDriverConfigResponse.fromMap((map['gcePersistentDiskCsiDriverConfig'] as Map).cast<String, dynamic>()),
+      gcpFilestoreCsiDriverConfig: GcpFilestoreCsiDriverConfigResponse.fromMap((map['gcpFilestoreCsiDriverConfig'] as Map).cast<String, dynamic>()),
+      gcsFuseCsiDriverConfig: GcsFuseCsiDriverConfigResponse.fromMap((map['gcsFuseCsiDriverConfig'] as Map).cast<String, dynamic>()),
+      gkeBackupAgentConfig: GkeBackupAgentConfigResponse.fromMap((map['gkeBackupAgentConfig'] as Map).cast<String, dynamic>()),
+      horizontalPodAutoscaling: HorizontalPodAutoscalingResponse.fromMap((map['horizontalPodAutoscaling'] as Map).cast<String, dynamic>()),
+      httpLoadBalancing: HttpLoadBalancingResponse.fromMap((map['httpLoadBalancing'] as Map).cast<String, dynamic>()),
+      kubernetesDashboard: KubernetesDashboardResponse.fromMap((map['kubernetesDashboard'] as Map).cast<String, dynamic>()),
+      networkPolicyConfig: NetworkPolicyConfigResponse.fromMap((map['networkPolicyConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

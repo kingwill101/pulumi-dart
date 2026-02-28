@@ -23,8 +23,7 @@ Future<GetDebugTokenResult> getDebugToken(
 /// Gets the specified DebugToken. For security reasons, the `token` field is never populated in the response.
 /// [args] Arguments passed to this invoke. {@macro pulumi_firebaseappcheck_v1beta_get_debug_token_firebaseappcheck_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDebugTokenFirebaseappcheckV1betaResult>
-    getDebugTokenFirebaseappcheckV1beta(
+Future<GetDebugTokenFirebaseappcheckV1betaResult> getDebugTokenFirebaseappcheckV1beta(
   GetDebugTokenFirebaseappcheckV1betaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

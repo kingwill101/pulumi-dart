@@ -7,7 +7,6 @@ import 'get_buckets_bucket.dart';
 class GetBucketsResult {
   /// A list of all retrieved GCS buckets. Structure is defined below.
   final List<GetBucketsBucket> buckets;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? prefix;
@@ -26,31 +25,21 @@ class GetBucketsResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['buckets'] =
-        pulumi.Input.encodeList<GetBucketsBucket, Map<String, dynamic>>(
-            buckets, (value) => value.toMap());
-    map['id'] = id;
-    final prefixValue = prefix;
-    if (prefixValue != null) {
-      map['prefix'] = prefixValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'buckets': pulumi.Input.encodeList<GetBucketsBucket, Map<String, dynamic>>(buckets, (value) => value.toMap()),
+      'id': id,
+      'prefix': ?prefix,
+      'project': ?project,
+    };
   }
 
   factory GetBucketsResult.fromMap(Map<String, dynamic> map) {
     return GetBucketsResult(
-      buckets: pulumi.Input.decodeList<GetBucketsBucket>(
-          map['buckets'],
-          (value) =>
-              GetBucketsBucket.fromMap((value as Map).cast<String, dynamic>())),
+      buckets: pulumi.Input.decodeList<GetBucketsBucket>(map['buckets'], (value) => GetBucketsBucket.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       prefix: map['prefix'] == null ? null : map['prefix'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

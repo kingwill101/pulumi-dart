@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInstanceSchedulingNodeAffinity {
   final String key;
   final String operator;
@@ -16,11 +17,11 @@ class GetInstanceSchedulingNodeAffinity {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    map['operator'] = operator;
-    map['values'] = values;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'operator': operator,
+      'values': values,
+    };
   }
 
   factory GetInstanceSchedulingNodeAffinity.fromMap(Map<String, dynamic> map) {
@@ -31,3 +32,4 @@ class GetInstanceSchedulingNodeAffinity {
     );
   }
 }
+

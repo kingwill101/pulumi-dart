@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImagesArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// ID of the Registry where the repository resides.
   final pulumi.Input<String>? registryId;
-
   /// Name of the ECR Repository.
   final pulumi.Input<String> repositoryName;
 
@@ -24,30 +22,25 @@ class GetImagesArgs {
     String? region,
     String? registryId,
     required String repositoryName,
-  })  : region = pulumi.Input.asOptionalInput<String>(region),
-        registryId = pulumi.Input.asOptionalInput<String>(registryId),
-        repositoryName = pulumi.Input.asInput<String>(repositoryName);
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      registryId = pulumi.Input.asOptionalInput<String>(registryId),
+      repositoryName = pulumi.Input.asInput<String>(repositoryName);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final registryIdValue = registryId;
-    if (registryIdValue != null) {
-      map['registryId'] = registryIdValue;
-    }
-    map['repositoryName'] = repositoryName;
-    return map;
+    return <String, dynamic>{
+      'region': ?region,
+      'registryId': ?registryId,
+      'repositoryName': repositoryName,
+    };
   }
 
   factory GetImagesArgs.fromMap(Map<String, dynamic> map) {
     return GetImagesArgs(
       region: map['region'] == null ? null : map['region'] as String,
-      registryId:
-          map['registryId'] == null ? null : map['registryId'] as String,
+      registryId: map['registryId'] == null ? null : map['registryId'] as String,
       repositoryName: map['repositoryName'] as String,
     );
   }
 }
+

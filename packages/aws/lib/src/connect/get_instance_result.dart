@@ -1,47 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getInstance.
 class GetInstanceResult {
   /// ARN of the instance.
   final String arn;
   final bool autoResolveBestVoicesEnabled;
-
   /// Whether contact flow logs are enabled.
   final bool contactFlowLogsEnabled;
-
   /// Whether contact lens is enabled.
   final bool contactLensEnabled;
-
   /// When the instance was created.
   final String createdTime;
-
   /// Whether early media for outbound calls is enabled .
   final bool earlyMediaEnabled;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Specifies The identity management type attached to the instance.
   final String identityManagementType;
-
   /// Whether inbound calls are enabled.
   final bool inboundCallsEnabled;
   final String instanceAlias;
   final String instanceId;
-
   /// Whether multi-party calls/conference is enabled.
   final bool multiPartyConferenceEnabled;
-
   /// Whether outbound calls are enabled.
   final bool outboundCallsEnabled;
   final String region;
-
   /// Service role of the instance.
   final String serviceRole;
-
   /// State of the instance.
   final String status;
-
   /// A map of tags to assigned to the instance.
   final Map<String, String> tags;
 
@@ -84,25 +73,25 @@ class GetInstanceResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['autoResolveBestVoicesEnabled'] = autoResolveBestVoicesEnabled;
-    map['contactFlowLogsEnabled'] = contactFlowLogsEnabled;
-    map['contactLensEnabled'] = contactLensEnabled;
-    map['createdTime'] = createdTime;
-    map['earlyMediaEnabled'] = earlyMediaEnabled;
-    map['id'] = id;
-    map['identityManagementType'] = identityManagementType;
-    map['inboundCallsEnabled'] = inboundCallsEnabled;
-    map['instanceAlias'] = instanceAlias;
-    map['instanceId'] = instanceId;
-    map['multiPartyConferenceEnabled'] = multiPartyConferenceEnabled;
-    map['outboundCallsEnabled'] = outboundCallsEnabled;
-    map['region'] = region;
-    map['serviceRole'] = serviceRole;
-    map['status'] = status;
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'autoResolveBestVoicesEnabled': autoResolveBestVoicesEnabled,
+      'contactFlowLogsEnabled': contactFlowLogsEnabled,
+      'contactLensEnabled': contactLensEnabled,
+      'createdTime': createdTime,
+      'earlyMediaEnabled': earlyMediaEnabled,
+      'id': id,
+      'identityManagementType': identityManagementType,
+      'inboundCallsEnabled': inboundCallsEnabled,
+      'instanceAlias': instanceAlias,
+      'instanceId': instanceId,
+      'multiPartyConferenceEnabled': multiPartyConferenceEnabled,
+      'outboundCallsEnabled': outboundCallsEnabled,
+      'region': region,
+      'serviceRole': serviceRole,
+      'status': status,
+      'tags': tags,
+    };
   }
 
   factory GetInstanceResult.fromMap(Map<String, dynamic> map) {
@@ -127,3 +116,4 @@ class GetInstanceResult {
     );
   }
 }
+

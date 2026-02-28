@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AzureClusterControlPlaneMainVolume {
   /// Optional. The size of the disk, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
   final int? sizeGib;
@@ -11,12 +12,9 @@ class AzureClusterControlPlaneMainVolume {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final sizeGibValue = sizeGib;
-    if (sizeGibValue != null) {
-      map['sizeGib'] = sizeGibValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'sizeGib': ?sizeGib,
+    };
   }
 
   factory AzureClusterControlPlaneMainVolume.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class AzureClusterControlPlaneMainVolume {
     );
   }
 }
+

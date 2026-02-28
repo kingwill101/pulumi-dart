@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Subset of the source instance configuration that is available when reading the cluster resource.
 class MigrationSourceResponse {
   /// The host and port of the on-premises instance in host:port format
   final String hostPort;
-
   /// Place holder for the external source identifier(e.g DMS job name) that created the cluster.
   final String referenceId;
-
   /// Type of migration source.
   final String sourceType;
 
@@ -22,11 +21,11 @@ class MigrationSourceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['hostPort'] = hostPort;
-    map['referenceId'] = referenceId;
-    map['sourceType'] = sourceType;
-    return map;
+    return <String, dynamic>{
+      'hostPort': hostPort,
+      'referenceId': referenceId,
+      'sourceType': sourceType,
+    };
   }
 
   factory MigrationSourceResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class MigrationSourceResponse {
     );
   }
 }
+

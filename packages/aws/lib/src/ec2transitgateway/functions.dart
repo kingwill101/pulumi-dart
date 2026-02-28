@@ -846,8 +846,7 @@ Future<GetConnectPeerResult> getConnectPeer(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ec2transitgateway_get_direct_connect_gateway_attachment_get_direct_connect_gateway_attachment_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDirectConnectGatewayAttachmentResult>
-    getDirectConnectGatewayAttachment(
+Future<GetDirectConnectGatewayAttachmentResult> getDirectConnectGatewayAttachment(
   GetDirectConnectGatewayAttachmentArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

@@ -8,7 +8,6 @@ import 'traffic_target.dart';
 class ServiceSpec {
   /// Holds the latest specification for the Revision to be stamped out.
   final RevisionTemplate? template;
-
   /// Specifies how to distribute traffic over a collection of Knative Revisions and Configurations to the Service's main URL.
   final List<TrafficTarget>? traffic;
 
@@ -21,32 +20,17 @@ class ServiceSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final templateValue = template;
-    if (templateValue != null) {
-      map['template'] = templateValue.toMap();
-    }
-    final trafficValue = traffic;
-    if (trafficValue != null) {
-      map['traffic'] =
-          pulumi.Input.encodeList<TrafficTarget, Map<String, dynamic>>(
-              trafficValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'template': ?template == null ? null : template!.toMap(),
+      'traffic': ?traffic == null ? null : pulumi.Input.encodeList<TrafficTarget, Map<String, dynamic>>(traffic!, (value) => value.toMap()),
+    };
   }
 
   factory ServiceSpec.fromMap(Map<String, dynamic> map) {
     return ServiceSpec(
-      template: map['template'] == null
-          ? null
-          : RevisionTemplate.fromMap(
-              (map['template'] as Map).cast<String, dynamic>()),
-      traffic: map['traffic'] == null
-          ? null
-          : pulumi.Input.decodeList<TrafficTarget>(
-              map['traffic'],
-              (value) => TrafficTarget.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      template: map['template'] == null ? null : RevisionTemplate.fromMap((map['template'] as Map).cast<String, dynamic>()),
+      traffic: map['traffic'] == null ? null : pulumi.Input.decodeList<TrafficTarget>(map['traffic'], (value) => TrafficTarget.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

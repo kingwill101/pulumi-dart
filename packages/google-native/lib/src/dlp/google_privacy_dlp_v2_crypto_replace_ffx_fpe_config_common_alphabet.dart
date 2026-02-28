@@ -9,15 +9,13 @@ enum GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet {
   const GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet(this.value);
   final String value;
 
-  static GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet fromValue(
-      String value) {
-    for (final item
-        in GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet.values) {
+  static GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet fromValue(String value) {
+    for (final item in GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet value: $value');
+    throw ArgumentError('Unknown GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet value: $value');
   }
 }
+

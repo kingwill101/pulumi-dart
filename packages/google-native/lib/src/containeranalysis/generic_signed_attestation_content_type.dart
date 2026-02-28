@@ -12,7 +12,7 @@ enum GenericSignedAttestationContentType {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GenericSignedAttestationContentType value: $value');
+    throw ArgumentError('Unknown GenericSignedAttestationContentType value: $value');
   }
 }
+

@@ -13,19 +13,15 @@ class GetSigningJobSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['s3s'] =
-        pulumi.Input.encodeList<GetSigningJobSourceS3, Map<String, dynamic>>(
-            s3s, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      's3s': pulumi.Input.encodeList<GetSigningJobSourceS3, Map<String, dynamic>>(s3s, (value) => value.toMap()),
+    };
   }
 
   factory GetSigningJobSource.fromMap(Map<String, dynamic> map) {
     return GetSigningJobSource(
-      s3s: pulumi.Input.decodeList<GetSigningJobSourceS3>(
-          map['s3s'],
-          (value) => GetSigningJobSourceS3.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      s3s: pulumi.Input.decodeList<GetSigningJobSourceS3>(map['s3s'], (value) => GetSigningJobSourceS3.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

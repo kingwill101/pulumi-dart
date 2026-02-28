@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Message describing compute engine instance filter
 class GceInstanceFilterResponse {
   /// Service account of compute engine
@@ -12,9 +13,9 @@ class GceInstanceFilterResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['serviceAccounts'] = serviceAccounts;
-    return map;
+    return <String, dynamic>{
+      'serviceAccounts': serviceAccounts,
+    };
   }
 
   factory GceInstanceFilterResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class GceInstanceFilterResponse {
     );
   }
 }
+

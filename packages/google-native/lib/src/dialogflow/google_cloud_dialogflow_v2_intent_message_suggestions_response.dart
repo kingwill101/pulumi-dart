@@ -6,8 +6,7 @@ import 'google_cloud_dialogflow_v2_intent_message_suggestion_response.dart';
 /// The collection of suggestions.
 class GoogleCloudDialogflowV2IntentMessageSuggestionsResponse {
   /// The list of suggested replies.
-  final List<GoogleCloudDialogflowV2IntentMessageSuggestionResponse>
-      suggestions;
+  final List<GoogleCloudDialogflowV2IntentMessageSuggestionResponse> suggestions;
 
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageSuggestionsResponse].
   /// [suggestions] The list of suggested replies.
@@ -16,22 +15,15 @@ class GoogleCloudDialogflowV2IntentMessageSuggestionsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['suggestions'] = pulumi.Input.encodeList<
-        GoogleCloudDialogflowV2IntentMessageSuggestionResponse,
-        Map<String, dynamic>>(suggestions, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'suggestions': pulumi.Input.encodeList<GoogleCloudDialogflowV2IntentMessageSuggestionResponse, Map<String, dynamic>>(suggestions, (value) => value.toMap()),
+    };
   }
 
-  factory GoogleCloudDialogflowV2IntentMessageSuggestionsResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2IntentMessageSuggestionsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2IntentMessageSuggestionsResponse(
-      suggestions: pulumi.Input.decodeList<
-              GoogleCloudDialogflowV2IntentMessageSuggestionResponse>(
-          map['suggestions'],
-          (value) =>
-              GoogleCloudDialogflowV2IntentMessageSuggestionResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      suggestions: pulumi.Input.decodeList<GoogleCloudDialogflowV2IntentMessageSuggestionResponse>(map['suggestions'], (value) => GoogleCloudDialogflowV2IntentMessageSuggestionResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

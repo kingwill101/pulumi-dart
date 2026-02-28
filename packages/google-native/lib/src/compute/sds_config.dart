@@ -14,20 +14,15 @@ class SdsConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final grpcServiceConfigValue = grpcServiceConfig;
-    if (grpcServiceConfigValue != null) {
-      map['grpcServiceConfig'] = grpcServiceConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'grpcServiceConfig': ?grpcServiceConfig == null ? null : grpcServiceConfig!.toMap(),
+    };
   }
 
   factory SdsConfig.fromMap(Map<String, dynamic> map) {
     return SdsConfig(
-      grpcServiceConfig: map['grpcServiceConfig'] == null
-          ? null
-          : GrpcServiceConfig.fromMap(
-              (map['grpcServiceConfig'] as Map).cast<String, dynamic>()),
+      grpcServiceConfig: map['grpcServiceConfig'] == null ? null : GrpcServiceConfig.fromMap((map['grpcServiceConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterMaintenancePolicyDailyMaintenanceWindow {
   final String duration;
   final String startTime;
@@ -13,17 +14,17 @@ class GetClusterMaintenancePolicyDailyMaintenanceWindow {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['duration'] = duration;
-    map['startTime'] = startTime;
-    return map;
+    return <String, dynamic>{
+      'duration': duration,
+      'startTime': startTime,
+    };
   }
 
-  factory GetClusterMaintenancePolicyDailyMaintenanceWindow.fromMap(
-      Map<String, dynamic> map) {
+  factory GetClusterMaintenancePolicyDailyMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return GetClusterMaintenancePolicyDailyMaintenanceWindow(
       duration: map['duration'] as String,
       startTime: map['startTime'] as String,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppHostingBuildSourceContainer {
   /// A URI representing a container for the backend to use.
   final String image;
@@ -11,9 +12,9 @@ class AppHostingBuildSourceContainer {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['image'] = image;
-    return map;
+    return <String, dynamic>{
+      'image': image,
+    };
   }
 
   factory AppHostingBuildSourceContainer.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class AppHostingBuildSourceContainer {
     );
   }
 }
+

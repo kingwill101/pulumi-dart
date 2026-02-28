@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Pipeline template metadata if PipelineJob.template_uri is from supported template registry. Currently, the only supported registry is Artifact Registry.
 class GoogleCloudAiplatformV1beta1PipelineTemplateMetadataResponse {
   /// The version_name in artifact registry. Will always be presented in output if the PipelineJob.template_uri is from supported template registry. Format is "sha256:abcdef123456...".
@@ -12,15 +13,15 @@ class GoogleCloudAiplatformV1beta1PipelineTemplateMetadataResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['version'] = version;
-    return map;
+    return <String, dynamic>{
+      'version': version,
+    };
   }
 
-  factory GoogleCloudAiplatformV1beta1PipelineTemplateMetadataResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1PipelineTemplateMetadataResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1PipelineTemplateMetadataResponse(
       version: map['version'] as String,
     );
   }
 }
+

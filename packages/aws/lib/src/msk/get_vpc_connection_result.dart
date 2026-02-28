@@ -1,28 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getVpcConnection.
 class GetVpcConnectionResult {
   final String arn;
-
   /// The authentication type for the client VPC Connection.
   final String authentication;
-
   /// The list of subnets in the client VPC.
   final List<String> clientSubnets;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
-
   /// The security groups attached to the ENIs for the broker nodes.
   final List<String> securityGroups;
-
   /// Map of key-value pairs assigned to the VPC Connection.
   final Map<String, String> tags;
-
   /// The Amazon Resource Name (ARN) of the cluster.
   final String targetClusterArn;
-
   /// The VPC ID of the remote client.
   final String vpcId;
 
@@ -49,17 +43,17 @@ class GetVpcConnectionResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['authentication'] = authentication;
-    map['clientSubnets'] = clientSubnets;
-    map['id'] = id;
-    map['region'] = region;
-    map['securityGroups'] = securityGroups;
-    map['tags'] = tags;
-    map['targetClusterArn'] = targetClusterArn;
-    map['vpcId'] = vpcId;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'authentication': authentication,
+      'clientSubnets': clientSubnets,
+      'id': id,
+      'region': region,
+      'securityGroups': securityGroups,
+      'tags': tags,
+      'targetClusterArn': targetClusterArn,
+      'vpcId': vpcId,
+    };
   }
 
   factory GetVpcConnectionResult.fromMap(Map<String, dynamic> map) {
@@ -76,3 +70,4 @@ class GetVpcConnectionResult {
     );
   }
 }
+

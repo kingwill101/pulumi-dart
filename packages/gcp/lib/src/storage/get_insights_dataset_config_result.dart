@@ -17,18 +17,13 @@ class GetInsightsDatasetConfigResult {
   final String datasetConfigId;
   final String datasetConfigState;
   final String description;
-  final List<GetInsightsDatasetConfigExcludeCloudStorageBucket>
-      excludeCloudStorageBuckets;
-  final List<GetInsightsDatasetConfigExcludeCloudStorageLocation>
-      excludeCloudStorageLocations;
-
+  final List<GetInsightsDatasetConfigExcludeCloudStorageBucket> excludeCloudStorageBuckets;
+  final List<GetInsightsDatasetConfigExcludeCloudStorageLocation> excludeCloudStorageLocations;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<GetInsightsDatasetConfigIdentity> identities;
-  final List<GetInsightsDatasetConfigIncludeCloudStorageBucket>
-      includeCloudStorageBuckets;
-  final List<GetInsightsDatasetConfigIncludeCloudStorageLocation>
-      includeCloudStorageLocations;
+  final List<GetInsightsDatasetConfigIncludeCloudStorageBucket> includeCloudStorageBuckets;
+  final List<GetInsightsDatasetConfigIncludeCloudStorageLocation> includeCloudStorageLocations;
   final bool includeNewlyCreatedBuckets;
   final bool linkDataset;
   final List<GetInsightsDatasetConfigLink> links;
@@ -96,115 +91,61 @@ class GetInsightsDatasetConfigResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['activityDataRetentionPeriodDays'] = activityDataRetentionPeriodDays;
-    map['createTime'] = createTime;
-    map['datasetConfigId'] = datasetConfigId;
-    map['datasetConfigState'] = datasetConfigState;
-    map['description'] = description;
-    map['excludeCloudStorageBuckets'] = pulumi.Input.encodeList<
-            GetInsightsDatasetConfigExcludeCloudStorageBucket,
-            Map<String, dynamic>>(
-        excludeCloudStorageBuckets, (value) => value.toMap());
-    map['excludeCloudStorageLocations'] = pulumi.Input.encodeList<
-            GetInsightsDatasetConfigExcludeCloudStorageLocation,
-            Map<String, dynamic>>(
-        excludeCloudStorageLocations, (value) => value.toMap());
-    map['id'] = id;
-    map['identities'] = pulumi.Input.encodeList<
-        GetInsightsDatasetConfigIdentity,
-        Map<String, dynamic>>(identities, (value) => value.toMap());
-    map['includeCloudStorageBuckets'] = pulumi.Input.encodeList<
-            GetInsightsDatasetConfigIncludeCloudStorageBucket,
-            Map<String, dynamic>>(
-        includeCloudStorageBuckets, (value) => value.toMap());
-    map['includeCloudStorageLocations'] = pulumi.Input.encodeList<
-            GetInsightsDatasetConfigIncludeCloudStorageLocation,
-            Map<String, dynamic>>(
-        includeCloudStorageLocations, (value) => value.toMap());
-    map['includeNewlyCreatedBuckets'] = includeNewlyCreatedBuckets;
-    map['linkDataset'] = linkDataset;
-    map['links'] = pulumi.Input.encodeList<GetInsightsDatasetConfigLink,
-        Map<String, dynamic>>(links, (value) => value.toMap());
-    map['location'] = location;
-    map['name'] = name;
-    map['organizationNumber'] = organizationNumber;
-    map['organizationScope'] = organizationScope;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['retentionPeriodDays'] = retentionPeriodDays;
-    map['sourceFolders'] = pulumi.Input.encodeList<
-        GetInsightsDatasetConfigSourceFolder,
-        Map<String, dynamic>>(sourceFolders, (value) => value.toMap());
-    map['sourceProjects'] = pulumi.Input.encodeList<
-        GetInsightsDatasetConfigSourceProject,
-        Map<String, dynamic>>(sourceProjects, (value) => value.toMap());
-    map['uid'] = uid;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'activityDataRetentionPeriodDays': activityDataRetentionPeriodDays,
+      'createTime': createTime,
+      'datasetConfigId': datasetConfigId,
+      'datasetConfigState': datasetConfigState,
+      'description': description,
+      'excludeCloudStorageBuckets': pulumi.Input.encodeList<GetInsightsDatasetConfigExcludeCloudStorageBucket, Map<String, dynamic>>(excludeCloudStorageBuckets, (value) => value.toMap()),
+      'excludeCloudStorageLocations': pulumi.Input.encodeList<GetInsightsDatasetConfigExcludeCloudStorageLocation, Map<String, dynamic>>(excludeCloudStorageLocations, (value) => value.toMap()),
+      'id': id,
+      'identities': pulumi.Input.encodeList<GetInsightsDatasetConfigIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
+      'includeCloudStorageBuckets': pulumi.Input.encodeList<GetInsightsDatasetConfigIncludeCloudStorageBucket, Map<String, dynamic>>(includeCloudStorageBuckets, (value) => value.toMap()),
+      'includeCloudStorageLocations': pulumi.Input.encodeList<GetInsightsDatasetConfigIncludeCloudStorageLocation, Map<String, dynamic>>(includeCloudStorageLocations, (value) => value.toMap()),
+      'includeNewlyCreatedBuckets': includeNewlyCreatedBuckets,
+      'linkDataset': linkDataset,
+      'links': pulumi.Input.encodeList<GetInsightsDatasetConfigLink, Map<String, dynamic>>(links, (value) => value.toMap()),
+      'location': location,
+      'name': name,
+      'organizationNumber': organizationNumber,
+      'organizationScope': organizationScope,
+      'project': ?project,
+      'retentionPeriodDays': retentionPeriodDays,
+      'sourceFolders': pulumi.Input.encodeList<GetInsightsDatasetConfigSourceFolder, Map<String, dynamic>>(sourceFolders, (value) => value.toMap()),
+      'sourceProjects': pulumi.Input.encodeList<GetInsightsDatasetConfigSourceProject, Map<String, dynamic>>(sourceProjects, (value) => value.toMap()),
+      'uid': uid,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetInsightsDatasetConfigResult.fromMap(Map<String, dynamic> map) {
     return GetInsightsDatasetConfigResult(
-      activityDataRetentionPeriodDays:
-          map['activityDataRetentionPeriodDays'] as int,
+      activityDataRetentionPeriodDays: map['activityDataRetentionPeriodDays'] as int,
       createTime: map['createTime'] as String,
       datasetConfigId: map['datasetConfigId'] as String,
       datasetConfigState: map['datasetConfigState'] as String,
       description: map['description'] as String,
-      excludeCloudStorageBuckets: pulumi.Input.decodeList<
-              GetInsightsDatasetConfigExcludeCloudStorageBucket>(
-          map['excludeCloudStorageBuckets'],
-          (value) => GetInsightsDatasetConfigExcludeCloudStorageBucket.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      excludeCloudStorageLocations: pulumi.Input.decodeList<
-              GetInsightsDatasetConfigExcludeCloudStorageLocation>(
-          map['excludeCloudStorageLocations'],
-          (value) =>
-              GetInsightsDatasetConfigExcludeCloudStorageLocation.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      excludeCloudStorageBuckets: pulumi.Input.decodeList<GetInsightsDatasetConfigExcludeCloudStorageBucket>(map['excludeCloudStorageBuckets'], (value) => GetInsightsDatasetConfigExcludeCloudStorageBucket.fromMap((value as Map).cast<String, dynamic>())),
+      excludeCloudStorageLocations: pulumi.Input.decodeList<GetInsightsDatasetConfigExcludeCloudStorageLocation>(map['excludeCloudStorageLocations'], (value) => GetInsightsDatasetConfigExcludeCloudStorageLocation.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetInsightsDatasetConfigIdentity>(
-          map['identities'],
-          (value) => GetInsightsDatasetConfigIdentity.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      includeCloudStorageBuckets: pulumi.Input.decodeList<
-              GetInsightsDatasetConfigIncludeCloudStorageBucket>(
-          map['includeCloudStorageBuckets'],
-          (value) => GetInsightsDatasetConfigIncludeCloudStorageBucket.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      includeCloudStorageLocations: pulumi.Input.decodeList<
-              GetInsightsDatasetConfigIncludeCloudStorageLocation>(
-          map['includeCloudStorageLocations'],
-          (value) =>
-              GetInsightsDatasetConfigIncludeCloudStorageLocation.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      identities: pulumi.Input.decodeList<GetInsightsDatasetConfigIdentity>(map['identities'], (value) => GetInsightsDatasetConfigIdentity.fromMap((value as Map).cast<String, dynamic>())),
+      includeCloudStorageBuckets: pulumi.Input.decodeList<GetInsightsDatasetConfigIncludeCloudStorageBucket>(map['includeCloudStorageBuckets'], (value) => GetInsightsDatasetConfigIncludeCloudStorageBucket.fromMap((value as Map).cast<String, dynamic>())),
+      includeCloudStorageLocations: pulumi.Input.decodeList<GetInsightsDatasetConfigIncludeCloudStorageLocation>(map['includeCloudStorageLocations'], (value) => GetInsightsDatasetConfigIncludeCloudStorageLocation.fromMap((value as Map).cast<String, dynamic>())),
       includeNewlyCreatedBuckets: map['includeNewlyCreatedBuckets'] as bool,
       linkDataset: map['linkDataset'] as bool,
-      links: pulumi.Input.decodeList<GetInsightsDatasetConfigLink>(
-          map['links'],
-          (value) => GetInsightsDatasetConfigLink.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      links: pulumi.Input.decodeList<GetInsightsDatasetConfigLink>(map['links'], (value) => GetInsightsDatasetConfigLink.fromMap((value as Map).cast<String, dynamic>())),
       location: map['location'] as String,
       name: map['name'] as String,
       organizationNumber: map['organizationNumber'] as String,
       organizationScope: map['organizationScope'] as bool,
       project: map['project'] == null ? null : map['project'] as String,
       retentionPeriodDays: map['retentionPeriodDays'] as int,
-      sourceFolders:
-          pulumi.Input.decodeList<GetInsightsDatasetConfigSourceFolder>(
-              map['sourceFolders'],
-              (value) => GetInsightsDatasetConfigSourceFolder.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      sourceProjects:
-          pulumi.Input.decodeList<GetInsightsDatasetConfigSourceProject>(
-              map['sourceProjects'],
-              (value) => GetInsightsDatasetConfigSourceProject.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      sourceFolders: pulumi.Input.decodeList<GetInsightsDatasetConfigSourceFolder>(map['sourceFolders'], (value) => GetInsightsDatasetConfigSourceFolder.fromMap((value as Map).cast<String, dynamic>())),
+      sourceProjects: pulumi.Input.decodeList<GetInsightsDatasetConfigSourceProject>(map['sourceProjects'], (value) => GetInsightsDatasetConfigSourceProject.fromMap((value as Map).cast<String, dynamic>())),
       uid: map['uid'] as String,
       updateTime: map['updateTime'] as String,
     );
   }
 }
+

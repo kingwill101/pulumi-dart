@@ -19,19 +19,17 @@ class GetStreamArgs {
     required String location,
     String? project,
     required String streamId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        streamId = pulumi.Input.asInput<String>(streamId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      streamId = pulumi.Input.asInput<String>(streamId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['streamId'] = streamId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+      'streamId': streamId,
+    };
   }
 
   factory GetStreamArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetStreamArgs {
     );
   }
 }
+

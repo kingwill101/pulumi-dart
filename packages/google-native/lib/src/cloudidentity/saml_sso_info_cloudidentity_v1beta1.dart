@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Details that are applicable when `sso_mode` == `SAML_SSO`.
 class SamlSsoInfoCloudidentityV1beta1 {
   /// Name of the `InboundSamlSsoProfile` to use. Must be of the form `inboundSamlSsoProfiles/{inbound_saml_sso_profile}`.
@@ -12,9 +13,9 @@ class SamlSsoInfoCloudidentityV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['inboundSamlSsoProfile'] = inboundSamlSsoProfile;
-    return map;
+    return <String, dynamic>{
+      'inboundSamlSsoProfile': inboundSamlSsoProfile,
+    };
   }
 
   factory SamlSsoInfoCloudidentityV1beta1.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class SamlSsoInfoCloudidentityV1beta1 {
     );
   }
 }
+

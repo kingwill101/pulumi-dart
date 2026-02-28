@@ -15,25 +15,20 @@ class SaaSArgs {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
-
   /// The labels on the resource, which can be used for categorization.
   /// similar to Kubernetes resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
-
   /// List of locations that the service is available in. Rollout refers to the
   /// list to generate a rollout plan.
   /// Structure is documented below.
   final pulumi.Input<List<SaaSLocation>>? locations;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The ID value for the new saas.
   final pulumi.Input<String> saasId;
 
@@ -51,59 +46,34 @@ class SaaSArgs {
     List<SaaSLocation>? locations,
     String? project,
     required String saasId,
-  })  : annotations =
-            pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-        labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-        location = pulumi.Input.asInput<String>(location),
-        locations = pulumi.Input.asOptionalInput<List<SaaSLocation>>(locations),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        saasId = pulumi.Input.asInput<String>(saasId);
+  }) :
+      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      location = pulumi.Input.asInput<String>(location),
+      locations = pulumi.Input.asOptionalInput<List<SaaSLocation>>(locations),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      saasId = pulumi.Input.asInput<String>(saasId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final annotationsValue = annotations;
-    if (annotationsValue != null) {
-      map['annotations'] = annotationsValue;
-    }
-    final labelsValue = labels;
-    if (labelsValue != null) {
-      map['labels'] = labelsValue;
-    }
-    map['location'] = location;
-    final locationsValue = locations;
-    if (locationsValue != null) {
-      map['locations'] = pulumi.Input.mapOptionalInputValue<List<SaaSLocation>,
-              List<Map<String, dynamic>>>(
-          locationsValue,
-          (value) =>
-              pulumi.Input.encodeList<SaaSLocation, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['saasId'] = saasId;
-    return map;
+    return <String, dynamic>{
+      'annotations': ?annotations,
+      'labels': ?labels,
+      'location': location,
+      'locations': ?pulumi.Input.mapOptionalInputValue<List<SaaSLocation>, List<Map<String, dynamic>>>(locations, (value) => pulumi.Input.encodeList<SaaSLocation, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'project': ?project,
+      'saasId': saasId,
+    };
   }
 
   factory SaaSArgs.fromMap(Map<String, dynamic> map) {
     return SaaSArgs(
-      annotations: map['annotations'] == null
-          ? null
-          : (map['annotations'] as Map).cast<String, String>(),
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      annotations: map['annotations'] == null ? null : (map['annotations'] as Map).cast<String, String>(),
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
-      locations: map['locations'] == null
-          ? null
-          : pulumi.Input.decodeList<SaaSLocation>(
-              map['locations'],
-              (value) =>
-                  SaaSLocation.fromMap((value as Map).cast<String, dynamic>())),
+      locations: map['locations'] == null ? null : pulumi.Input.decodeList<SaaSLocation>(map['locations'], (value) => SaaSLocation.fromMap((value as Map).cast<String, dynamic>())),
       project: map['project'] == null ? null : map['project'] as String,
       saasId: map['saasId'] as String,
     );
   }
 }
+

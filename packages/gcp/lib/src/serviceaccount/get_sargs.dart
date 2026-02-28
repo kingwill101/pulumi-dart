@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSArgs {
   /// A prefix for filtering. It's applied with the `account_id`.
   final pulumi.Input<String>? prefix;
-
   /// The ID of the project. If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// A regular expression for filtering. It's applied with the `email`. Further information about the syntax can be found [here](https://github.com/google/re2/wiki/Syntax).
   final pulumi.Input<String>? regex;
 
@@ -24,25 +22,17 @@ class GetSArgs {
     String? prefix,
     String? project,
     String? regex,
-  })  : prefix = pulumi.Input.asOptionalInput<String>(prefix),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        regex = pulumi.Input.asOptionalInput<String>(regex);
+  }) :
+      prefix = pulumi.Input.asOptionalInput<String>(prefix),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      regex = pulumi.Input.asOptionalInput<String>(regex);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final prefixValue = prefix;
-    if (prefixValue != null) {
-      map['prefix'] = prefixValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final regexValue = regex;
-    if (regexValue != null) {
-      map['regex'] = regexValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'prefix': ?prefix,
+      'project': ?project,
+      'regex': ?regex,
+    };
   }
 
   factory GetSArgs.fromMap(Map<String, dynamic> map) {
@@ -53,3 +43,4 @@ class GetSArgs {
     );
   }
 }
+

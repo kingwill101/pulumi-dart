@@ -6,10 +6,8 @@ import 'json_path_matcher_response.dart';
 class ContentMatcherResponse {
   /// String, regex or JSON content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
   final String content;
-
   /// Matcher information for MATCHES_JSON_PATH and NOT_MATCHES_JSON_PATH
   final JsonPathMatcherResponse jsonPathMatcher;
-
   /// The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
   final String matcher;
 
@@ -24,19 +22,19 @@ class ContentMatcherResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['content'] = content;
-    map['jsonPathMatcher'] = jsonPathMatcher.toMap();
-    map['matcher'] = matcher;
-    return map;
+    return <String, dynamic>{
+      'content': content,
+      'jsonPathMatcher': jsonPathMatcher.toMap(),
+      'matcher': matcher,
+    };
   }
 
   factory ContentMatcherResponse.fromMap(Map<String, dynamic> map) {
     return ContentMatcherResponse(
       content: map['content'] as String,
-      jsonPathMatcher: JsonPathMatcherResponse.fromMap(
-          (map['jsonPathMatcher'] as Map).cast<String, dynamic>()),
+      jsonPathMatcher: JsonPathMatcherResponse.fromMap((map['jsonPathMatcher'] as Map).cast<String, dynamic>()),
       matcher: map['matcher'] as String,
     );
   }
 }
+

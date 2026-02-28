@@ -7,7 +7,6 @@ class FunctionBuildConfigSource {
   /// If provided, get the source from this location in a Cloud Source Repository.
   /// Structure is documented below.
   final FunctionBuildConfigSourceRepoSource? repoSource;
-
   /// If provided, get the source from this location in Google Cloud Storage.
   /// Structure is documented below.
   final FunctionBuildConfigSourceStorageSource? storageSource;
@@ -21,28 +20,17 @@ class FunctionBuildConfigSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final repoSourceValue = repoSource;
-    if (repoSourceValue != null) {
-      map['repoSource'] = repoSourceValue.toMap();
-    }
-    final storageSourceValue = storageSource;
-    if (storageSourceValue != null) {
-      map['storageSource'] = storageSourceValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'repoSource': ?repoSource == null ? null : repoSource!.toMap(),
+      'storageSource': ?storageSource == null ? null : storageSource!.toMap(),
+    };
   }
 
   factory FunctionBuildConfigSource.fromMap(Map<String, dynamic> map) {
     return FunctionBuildConfigSource(
-      repoSource: map['repoSource'] == null
-          ? null
-          : FunctionBuildConfigSourceRepoSource.fromMap(
-              (map['repoSource'] as Map).cast<String, dynamic>()),
-      storageSource: map['storageSource'] == null
-          ? null
-          : FunctionBuildConfigSourceStorageSource.fromMap(
-              (map['storageSource'] as Map).cast<String, dynamic>()),
+      repoSource: map['repoSource'] == null ? null : FunctionBuildConfigSourceRepoSource.fromMap((map['repoSource'] as Map).cast<String, dynamic>()),
+      storageSource: map['storageSource'] == null ? null : FunctionBuildConfigSourceStorageSource.fromMap((map['storageSource'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

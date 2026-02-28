@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class JobDefinitionEksPropertiesPodPropertiesMetadata {
   /// Key-value pairs used to identify, sort, and organize kubernetes resources.
   final Map<String, String>? labels;
@@ -11,20 +12,15 @@ class JobDefinitionEksPropertiesPodPropertiesMetadata {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final labelsValue = labels;
-    if (labelsValue != null) {
-      map['labels'] = labelsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'labels': ?labels,
+    };
   }
 
-  factory JobDefinitionEksPropertiesPodPropertiesMetadata.fromMap(
-      Map<String, dynamic> map) {
+  factory JobDefinitionEksPropertiesPodPropertiesMetadata.fromMap(Map<String, dynamic> map) {
     return JobDefinitionEksPropertiesPodPropertiesMetadata(
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
     );
   }
 }
+

@@ -6,7 +6,6 @@ class WorkstationConfigPersistentDirectory {
   /// A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
   /// Structure is documented below.
   final WorkstationConfigPersistentDirectoryGcePd? gcePd;
-
   /// Location of this directory in the running workstation.
   final String? mountPath;
 
@@ -19,26 +18,17 @@ class WorkstationConfigPersistentDirectory {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final gcePdValue = gcePd;
-    if (gcePdValue != null) {
-      map['gcePd'] = gcePdValue.toMap();
-    }
-    final mountPathValue = mountPath;
-    if (mountPathValue != null) {
-      map['mountPath'] = mountPathValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'gcePd': ?gcePd == null ? null : gcePd!.toMap(),
+      'mountPath': ?mountPath,
+    };
   }
 
-  factory WorkstationConfigPersistentDirectory.fromMap(
-      Map<String, dynamic> map) {
+  factory WorkstationConfigPersistentDirectory.fromMap(Map<String, dynamic> map) {
     return WorkstationConfigPersistentDirectory(
-      gcePd: map['gcePd'] == null
-          ? null
-          : WorkstationConfigPersistentDirectoryGcePd.fromMap(
-              (map['gcePd'] as Map).cast<String, dynamic>()),
+      gcePd: map['gcePd'] == null ? null : WorkstationConfigPersistentDirectoryGcePd.fromMap((map['gcePd'] as Map).cast<String, dynamic>()),
       mountPath: map['mountPath'] == null ? null : map['mountPath'] as String,
     );
   }
 }
+

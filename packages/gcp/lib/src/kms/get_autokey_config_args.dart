@@ -15,12 +15,13 @@ class GetAutokeyConfigArgs {
   /// [folder] The folder in which the AutokeyConfig is configured. If it
   GetAutokeyConfigArgs({
     required String folder,
-  }) : folder = pulumi.Input.asInput<String>(folder);
+  }) :
+      folder = pulumi.Input.asInput<String>(folder);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['folder'] = folder;
-    return map;
+    return <String, dynamic>{
+      'folder': folder,
+    };
   }
 
   factory GetAutokeyConfigArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +30,4 @@ class GetAutokeyConfigArgs {
     );
   }
 }
+

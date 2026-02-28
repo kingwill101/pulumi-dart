@@ -790,14 +790,11 @@ class ResourcePolicy extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> policyDocument;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The revision ID of the current resource-based policy.
   late final pulumi.Output<String> revisionId;
   late final pulumi.Output<ResourcePolicyTimeouts?> timeouts;
-
   /// The ID of the workspace to attach the resource-based policy to.
   late final pulumi.Output<String> workspaceId;
 

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Column properties for TableCard.
 class GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponse {
   /// Column heading.
   final String header;
-
   /// Optional. Defines text alignment for all cells in this column.
   final String horizontalAlignment;
 
@@ -17,17 +17,17 @@ class GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['header'] = header;
-    map['horizontalAlignment'] = horizontalAlignment;
-    return map;
+    return <String, dynamic>{
+      'header': header,
+      'horizontalAlignment': horizontalAlignment,
+    };
   }
 
-  factory GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponse(
       header: map['header'] as String,
       horizontalAlignment: map['horizontalAlignment'] as String,
     );
   }
 }
+

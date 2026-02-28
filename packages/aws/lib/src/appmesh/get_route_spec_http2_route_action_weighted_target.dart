@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRouteSpecHttp2RouteActionWeightedTarget {
   final int port;
   final String virtualNode;
@@ -16,15 +17,14 @@ class GetRouteSpecHttp2RouteActionWeightedTarget {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['port'] = port;
-    map['virtualNode'] = virtualNode;
-    map['weight'] = weight;
-    return map;
+    return <String, dynamic>{
+      'port': port,
+      'virtualNode': virtualNode,
+      'weight': weight,
+    };
   }
 
-  factory GetRouteSpecHttp2RouteActionWeightedTarget.fromMap(
-      Map<String, dynamic> map) {
+  factory GetRouteSpecHttp2RouteActionWeightedTarget.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecHttp2RouteActionWeightedTarget(
       port: map['port'] as int,
       virtualNode: map['virtualNode'] as String,
@@ -32,3 +32,4 @@ class GetRouteSpecHttp2RouteActionWeightedTarget {
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WorkgroupPricePerformanceTarget {
   /// Whether to enable price-performance scaling.
   final bool enabled;
-
   /// The price-performance scaling level. Valid values are `1` (LOW_COST), `25` (ECONOMICAL), `50` (BALANCED), `75` (RESOURCEFUL), and `100` (HIGH_PERFORMANCE).
   final int? level;
 
@@ -16,13 +16,10 @@ class WorkgroupPricePerformanceTarget {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    final levelValue = level;
-    if (levelValue != null) {
-      map['level'] = levelValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+      'level': ?level,
+    };
   }
 
   factory WorkgroupPricePerformanceTarget.fromMap(Map<String, dynamic> map) {
@@ -32,3 +29,4 @@ class WorkgroupPricePerformanceTarget {
     );
   }
 }
+

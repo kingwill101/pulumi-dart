@@ -32,23 +32,17 @@ class Api extends pulumi.CustomResource {
   /// - - -
   late final pulumi.Output<String> configBundle;
   late final pulumi.Output<String?> detectMd5hash;
-
   /// The id of the most recently created revision for this API proxy.
   late final pulumi.Output<String> latestRevisionId;
-
   /// (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned last_modified timestamp.
   late final pulumi.Output<String> md5hash;
-
   /// Metadata describing the API proxy.
   /// Structure is documented below.
   late final pulumi.Output<List<ApiMetaData>> metaDatas;
-
   /// The ID of the API proxy.
   late final pulumi.Output<String> name;
-
   /// The Apigee Organization name associated with the Apigee instance.
   late final pulumi.Output<String> orgId;
-
   /// A list of revisions of this API proxy.
   late final pulumi.Output<List<String>> revisions;
 

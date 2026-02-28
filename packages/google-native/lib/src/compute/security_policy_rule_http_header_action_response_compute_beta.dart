@@ -5,9 +5,7 @@ import 'security_policy_rule_http_header_action_http_header_option_response_comp
 
 class SecurityPolicyRuleHttpHeaderActionResponseComputeBeta {
   /// The list of request headers to add or overwrite if they're already present.
-  final List<
-          SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeBeta>
-      requestHeadersToAdds;
+  final List<SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeBeta> requestHeadersToAdds;
 
   /// Creates a new [SecurityPolicyRuleHttpHeaderActionResponseComputeBeta].
   /// [requestHeadersToAdds] The list of request headers to add or overwrite if they're already present.
@@ -16,22 +14,15 @@ class SecurityPolicyRuleHttpHeaderActionResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['requestHeadersToAdds'] = pulumi.Input.encodeList<
-        SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeBeta,
-        Map<String, dynamic>>(requestHeadersToAdds, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'requestHeadersToAdds': pulumi.Input.encodeList<SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeBeta, Map<String, dynamic>>(requestHeadersToAdds, (value) => value.toMap()),
+    };
   }
 
-  factory SecurityPolicyRuleHttpHeaderActionResponseComputeBeta.fromMap(
-      Map<String, dynamic> map) {
+  factory SecurityPolicyRuleHttpHeaderActionResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleHttpHeaderActionResponseComputeBeta(
-      requestHeadersToAdds: pulumi.Input.decodeList<
-              SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeBeta>(
-          map['requestHeadersToAdds'],
-          (value) =>
-              SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeBeta
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      requestHeadersToAdds: pulumi.Input.decodeList<SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeBeta>(map['requestHeadersToAdds'], (value) => SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

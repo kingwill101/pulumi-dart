@@ -128,22 +128,17 @@ import 'host_vpc_configuration.dart';
 class Host extends pulumi.CustomResource {
   /// The CodeConnections Host ARN.
   late final pulumi.Output<String> arn;
-
   /// The name of the host to be created. The name must be unique in the calling AWS account.
   late final pulumi.Output<String> name;
-
   /// The endpoint of the infrastructure to be represented by the host after it is created.
   late final pulumi.Output<String> providerEndpoint;
-
   /// The name of the external provider where your third-party code repository is configured.
   late final pulumi.Output<String> providerType;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<HostTimeouts?> timeouts;
-
   /// The VPC configuration to be provisioned for the host. A VPC must be configured, and the infrastructure to be represented by the host must already be connected to the VPC.
   late final pulumi.Output<HostVpcConfiguration?> vpcConfiguration;
 
@@ -169,7 +164,6 @@ class Host extends pulumi.CustomResource {
     this.tags = registerOutput<Map<String, String>?>('tags');
     this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.timeouts = registerOutput<HostTimeouts?>('timeouts');
-    this.vpcConfiguration =
-        registerOutput<HostVpcConfiguration?>('vpcConfiguration');
+    this.vpcConfiguration = registerOutput<HostVpcConfiguration?>('vpcConfiguration');
   }
 }

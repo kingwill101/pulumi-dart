@@ -16,23 +16,15 @@ class ClusterManagedServerCa {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final caCertsValue = caCerts;
-    if (caCertsValue != null) {
-      map['caCerts'] = pulumi.Input.encodeList<ClusterManagedServerCaCaCert,
-          Map<String, dynamic>>(caCertsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'caCerts': ?caCerts == null ? null : pulumi.Input.encodeList<ClusterManagedServerCaCaCert, Map<String, dynamic>>(caCerts!, (value) => value.toMap()),
+    };
   }
 
   factory ClusterManagedServerCa.fromMap(Map<String, dynamic> map) {
     return ClusterManagedServerCa(
-      caCerts: map['caCerts'] == null
-          ? null
-          : pulumi.Input.decodeList<ClusterManagedServerCaCaCert>(
-              map['caCerts'],
-              (value) => ClusterManagedServerCaCaCert.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      caCerts: map['caCerts'] == null ? null : pulumi.Input.decodeList<ClusterManagedServerCaCaCert>(map['caCerts'], (value) => ClusterManagedServerCaCaCert.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

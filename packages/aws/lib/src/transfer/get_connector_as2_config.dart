@@ -1,27 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetConnectorAs2Config {
   /// Basic authentication for AS2 connector API. Returns a null value if not set.
   final String basicAuthSecretId;
-
   /// Specifies whether AS2 file is compressed. Will be ZLIB or DISABLED
   final String compression;
-
   /// Algorithm used to encrypt file. Will be AES128_CBC or AES192_CBC or AES256_CBC or DES_EDE3_CBC or NONE.
   final String encryptionAlgorithm;
-
   /// Unique identifier for AS2 local profile.
   final String localProfileId;
-
   /// Used for outbound requests to tell if response is asynchronous or not. Will be either SYNC or NONE.
   final String mdnResponse;
-
   /// Signing algorithm for MDN response. Will be SHA256 or SHA384 or SHA512 or SHA1 or NONE or DEFAULT.
   final String mdnSigningAlgorithm;
-
   /// Subject HTTP header attribute in outbound AS2 messages to the connector.
   final String messageSubject;
-
   /// Unique identifier used by connector for partner profile.
   final String partnerProfileId;
   final String singingAlgorithm;
@@ -49,17 +43,17 @@ class GetConnectorAs2Config {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['basicAuthSecretId'] = basicAuthSecretId;
-    map['compression'] = compression;
-    map['encryptionAlgorithm'] = encryptionAlgorithm;
-    map['localProfileId'] = localProfileId;
-    map['mdnResponse'] = mdnResponse;
-    map['mdnSigningAlgorithm'] = mdnSigningAlgorithm;
-    map['messageSubject'] = messageSubject;
-    map['partnerProfileId'] = partnerProfileId;
-    map['singingAlgorithm'] = singingAlgorithm;
-    return map;
+    return <String, dynamic>{
+      'basicAuthSecretId': basicAuthSecretId,
+      'compression': compression,
+      'encryptionAlgorithm': encryptionAlgorithm,
+      'localProfileId': localProfileId,
+      'mdnResponse': mdnResponse,
+      'mdnSigningAlgorithm': mdnSigningAlgorithm,
+      'messageSubject': messageSubject,
+      'partnerProfileId': partnerProfileId,
+      'singingAlgorithm': singingAlgorithm,
+    };
   }
 
   factory GetConnectorAs2Config.fromMap(Map<String, dynamic> map) {
@@ -76,3 +70,4 @@ class GetConnectorAs2Config {
     );
   }
 }
+

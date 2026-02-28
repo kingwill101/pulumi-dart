@@ -6,10 +6,8 @@ import 'get_core_network_policy_document_segment_action_via_with_edge_override.d
 class GetCoreNetworkPolicyDocumentSegmentActionVia {
   /// A list of strings. The network function group to use for the service insertion action.
   final List<String>? networkFunctionGroups;
-
   /// Any edge overrides and the preferred edge to use.
-  final List<GetCoreNetworkPolicyDocumentSegmentActionViaWithEdgeOverride>?
-      withEdgeOverrides;
+  final List<GetCoreNetworkPolicyDocumentSegmentActionViaWithEdgeOverride>? withEdgeOverrides;
 
   /// Creates a new [GetCoreNetworkPolicyDocumentSegmentActionVia].
   /// [networkFunctionGroups] A list of strings. The network function group to use for the service insertion action.
@@ -20,35 +18,17 @@ class GetCoreNetworkPolicyDocumentSegmentActionVia {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final networkFunctionGroupsValue = networkFunctionGroups;
-    if (networkFunctionGroupsValue != null) {
-      map['networkFunctionGroups'] = networkFunctionGroupsValue;
-    }
-    final withEdgeOverridesValue = withEdgeOverrides;
-    if (withEdgeOverridesValue != null) {
-      map['withEdgeOverrides'] = pulumi.Input.encodeList<
-              GetCoreNetworkPolicyDocumentSegmentActionViaWithEdgeOverride,
-              Map<String, dynamic>>(
-          withEdgeOverridesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'networkFunctionGroups': ?networkFunctionGroups,
+      'withEdgeOverrides': ?withEdgeOverrides == null ? null : pulumi.Input.encodeList<GetCoreNetworkPolicyDocumentSegmentActionViaWithEdgeOverride, Map<String, dynamic>>(withEdgeOverrides!, (value) => value.toMap()),
+    };
   }
 
-  factory GetCoreNetworkPolicyDocumentSegmentActionVia.fromMap(
-      Map<String, dynamic> map) {
+  factory GetCoreNetworkPolicyDocumentSegmentActionVia.fromMap(Map<String, dynamic> map) {
     return GetCoreNetworkPolicyDocumentSegmentActionVia(
-      networkFunctionGroups: map['networkFunctionGroups'] == null
-          ? null
-          : (map['networkFunctionGroups'] as List).cast<String>(),
-      withEdgeOverrides: map['withEdgeOverrides'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  GetCoreNetworkPolicyDocumentSegmentActionViaWithEdgeOverride>(
-              map['withEdgeOverrides'],
-              (value) =>
-                  GetCoreNetworkPolicyDocumentSegmentActionViaWithEdgeOverride
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      networkFunctionGroups: map['networkFunctionGroups'] == null ? null : (map['networkFunctionGroups'] as List).cast<String>(),
+      withEdgeOverrides: map['withEdgeOverrides'] == null ? null : pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentSegmentActionViaWithEdgeOverride>(map['withEdgeOverrides'], (value) => GetCoreNetworkPolicyDocumentSegmentActionViaWithEdgeOverride.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The Data Fusion version.
 class VersionResponseDatafusionV1beta1 {
   /// Represents a list of available feature names for a given version.
   final List<String> availableFeatures;
-
   /// Whether this is currently the default version for Cloud Data Fusion
   final bool defaultVersion;
-
   /// Type represents the release availability of the version
   final String type;
-
   /// The version number of the Data Fusion instance, such as '6.0.1.0'.
   final String versionNumber;
 
@@ -27,12 +25,12 @@ class VersionResponseDatafusionV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['availableFeatures'] = availableFeatures;
-    map['defaultVersion'] = defaultVersion;
-    map['type'] = type;
-    map['versionNumber'] = versionNumber;
-    return map;
+    return <String, dynamic>{
+      'availableFeatures': availableFeatures,
+      'defaultVersion': defaultVersion,
+      'type': type,
+      'versionNumber': versionNumber,
+    };
   }
 
   factory VersionResponseDatafusionV1beta1.fromMap(Map<String, dynamic> map) {
@@ -44,3 +42,4 @@ class VersionResponseDatafusionV1beta1 {
     );
   }
 }
+

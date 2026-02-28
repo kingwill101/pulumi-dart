@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AgentFlowDefinitionNodeInput {
   /// How input data flows between iterations in a DoWhile loop.
   final String? category;
   final String expression;
-
   /// A name for the flow.
   final String name;
   final String type;
@@ -22,15 +22,12 @@ class AgentFlowDefinitionNodeInput {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final categoryValue = category;
-    if (categoryValue != null) {
-      map['category'] = categoryValue;
-    }
-    map['expression'] = expression;
-    map['name'] = name;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'category': ?category,
+      'expression': expression,
+      'name': name,
+      'type': type,
+    };
   }
 
   factory AgentFlowDefinitionNodeInput.fromMap(Map<String, dynamic> map) {
@@ -42,3 +39,4 @@ class AgentFlowDefinitionNodeInput {
     );
   }
 }
+

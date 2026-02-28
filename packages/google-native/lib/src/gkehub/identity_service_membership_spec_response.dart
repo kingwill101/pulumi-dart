@@ -15,20 +15,15 @@ class IdentityServiceMembershipSpecResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['authMethods'] = pulumi.Input.encodeList<
-        IdentityServiceAuthMethodResponse,
-        Map<String, dynamic>>(authMethods, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'authMethods': pulumi.Input.encodeList<IdentityServiceAuthMethodResponse, Map<String, dynamic>>(authMethods, (value) => value.toMap()),
+    };
   }
 
-  factory IdentityServiceMembershipSpecResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory IdentityServiceMembershipSpecResponse.fromMap(Map<String, dynamic> map) {
     return IdentityServiceMembershipSpecResponse(
-      authMethods: pulumi.Input.decodeList<IdentityServiceAuthMethodResponse>(
-          map['authMethods'],
-          (value) => IdentityServiceAuthMethodResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      authMethods: pulumi.Input.decodeList<IdentityServiceAuthMethodResponse>(map['authMethods'], (value) => IdentityServiceAuthMethodResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

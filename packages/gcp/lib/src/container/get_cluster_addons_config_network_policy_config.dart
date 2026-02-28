@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterAddonsConfigNetworkPolicyConfig {
   final bool disabled;
 
@@ -10,15 +11,15 @@ class GetClusterAddonsConfigNetworkPolicyConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['disabled'] = disabled;
-    return map;
+    return <String, dynamic>{
+      'disabled': disabled,
+    };
   }
 
-  factory GetClusterAddonsConfigNetworkPolicyConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GetClusterAddonsConfigNetworkPolicyConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterAddonsConfigNetworkPolicyConfig(
       disabled: map['disabled'] as bool,
     );
   }
 }
+

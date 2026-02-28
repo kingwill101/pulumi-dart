@@ -10,7 +10,6 @@ class PatchDeploymentRollout {
   /// For example, if the disruption budget has a fixed value of 10, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops.
   /// Structure is documented below.
   final PatchDeploymentRolloutDisruptionBudget disruptionBudget;
-
   /// Mode of the patch rollout.
   /// Possible values are: `ZONE_BY_ZONE`, `CONCURRENT_ZONES`.
   final String mode;
@@ -24,17 +23,17 @@ class PatchDeploymentRollout {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['disruptionBudget'] = disruptionBudget.toMap();
-    map['mode'] = mode;
-    return map;
+    return <String, dynamic>{
+      'disruptionBudget': disruptionBudget.toMap(),
+      'mode': mode,
+    };
   }
 
   factory PatchDeploymentRollout.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentRollout(
-      disruptionBudget: PatchDeploymentRolloutDisruptionBudget.fromMap(
-          (map['disruptionBudget'] as Map).cast<String, dynamic>()),
+      disruptionBudget: PatchDeploymentRolloutDisruptionBudget.fromMap((map['disruptionBudget'] as Map).cast<String, dynamic>()),
       mode: map['mode'] as String,
     );
   }
 }
+

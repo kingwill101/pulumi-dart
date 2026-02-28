@@ -4,20 +4,16 @@ enum EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicy {
   runAllMatch("RUN_ALL_MATCH"),
   runFirstMatch("RUN_FIRST_MATCH");
 
-  const EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicy(
-      this.value);
+  const EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicy(this.value);
   final String value;
 
-  static EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicy
-      fromValue(String value) {
-    for (final item
-        in EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicy
-            .values) {
+  static EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicy fromValue(String value) {
+    for (final item in EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicy.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicy value: $value');
+    throw ArgumentError('Unknown EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicy value: $value');
   }
 }
+

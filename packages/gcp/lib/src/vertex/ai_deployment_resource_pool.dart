@@ -227,19 +227,14 @@ import 'ai_deployment_resource_pool_dedicated_resources.dart';
 class AiDeploymentResourcePool extends pulumi.CustomResource {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   late final pulumi.Output<String> createTime;
-
   /// The underlying dedicated resources that the deployment resource pool uses.
   /// Structure is documented below.
-  late final pulumi.Output<AiDeploymentResourcePoolDedicatedResources?>
-      dedicatedResources;
-
+  late final pulumi.Output<AiDeploymentResourcePoolDedicatedResources?> dedicatedResources;
   /// The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The region of deployment resource pool. eg us-central1
   late final pulumi.Output<String?> region;
 
@@ -258,9 +253,7 @@ class AiDeploymentResourcePool extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
-    this.dedicatedResources =
-        registerOutput<AiDeploymentResourcePoolDedicatedResources?>(
-            'dedicatedResources');
+    this.dedicatedResources = registerOutput<AiDeploymentResourcePoolDedicatedResources?>('dedicatedResources');
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
     this.region = registerOutput<String?>('region');

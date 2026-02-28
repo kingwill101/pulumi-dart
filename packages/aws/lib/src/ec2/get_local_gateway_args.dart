@@ -10,17 +10,13 @@ import 'get_local_gateway_filter.dart';
 class GetLocalGatewayArgs {
   /// Custom filter block as described below.
   final pulumi.Input<List<GetLocalGatewayFilter>>? filters;
-
   /// Id of the specific Local Gateway to retrieve.
   final pulumi.Input<String>? id;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Current state of the desired Local Gateway.
   /// Can be either `"pending"` or `"available"`.
   final pulumi.Input<String>? state;
-
   /// Mapping of tags, each pair of which must exactly match
   /// a pair on the desired Local Gateway.
   ///
@@ -41,56 +37,31 @@ class GetLocalGatewayArgs {
     String? region,
     String? state,
     Map<String, String>? tags,
-  })  : filters =
-            pulumi.Input.asOptionalInput<List<GetLocalGatewayFilter>>(filters),
-        id = pulumi.Input.asOptionalInput<String>(id),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        state = pulumi.Input.asOptionalInput<String>(state),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      filters = pulumi.Input.asOptionalInput<List<GetLocalGatewayFilter>>(filters),
+      id = pulumi.Input.asOptionalInput<String>(id),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      state = pulumi.Input.asOptionalInput<String>(state),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final filtersValue = filters;
-    if (filtersValue != null) {
-      map['filters'] = pulumi.Input.mapOptionalInputValue<
-              List<GetLocalGatewayFilter>, List<Map<String, dynamic>>>(
-          filtersValue,
-          (value) => pulumi.Input.encodeList<GetLocalGatewayFilter,
-              Map<String, dynamic>>(value, (value) => value.toMap()));
-    }
-    final idValue = id;
-    if (idValue != null) {
-      map['id'] = idValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final stateValue = state;
-    if (stateValue != null) {
-      map['state'] = stateValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetLocalGatewayFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetLocalGatewayFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'id': ?id,
+      'region': ?region,
+      'state': ?state,
+      'tags': ?tags,
+    };
   }
 
   factory GetLocalGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetLocalGatewayArgs(
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetLocalGatewayFilter>(
-              map['filters'],
-              (value) => GetLocalGatewayFilter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetLocalGatewayFilter>(map['filters'], (value) => GetLocalGatewayFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] == null ? null : map['id'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       state: map['state'] == null ? null : map['state'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

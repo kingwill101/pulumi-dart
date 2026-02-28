@@ -16,3 +16,4 @@ enum LoggingServerProtocol {
     throw ArgumentError('Unknown LoggingServerProtocol value: $value');
   }
 }
+

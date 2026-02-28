@@ -14,20 +14,15 @@ class EndCondition {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cardinalityValue = cardinality;
-    if (cardinalityValue != null) {
-      map['cardinality'] = cardinalityValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'cardinality': ?cardinality == null ? null : cardinality!.toMap(),
+    };
   }
 
   factory EndCondition.fromMap(Map<String, dynamic> map) {
     return EndCondition(
-      cardinality: map['cardinality'] == null
-          ? null
-          : Cardinality.fromMap(
-              (map['cardinality'] as Map).cast<String, dynamic>()),
+      cardinality: map['cardinality'] == null ? null : Cardinality.fromMap((map['cardinality'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

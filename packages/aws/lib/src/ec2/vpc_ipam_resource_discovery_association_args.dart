@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcIpamResourceDiscoveryAssociationArgs {
   /// The ID of the IPAM to associate.
   final pulumi.Input<String> ipamId;
-
   /// The ID of the Resource Discovery to associate.
   final pulumi.Input<String> ipamResourceDiscoveryId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// A map of tags to add to the IPAM resource discovery association resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -29,36 +26,28 @@ class VpcIpamResourceDiscoveryAssociationArgs {
     required String ipamResourceDiscoveryId,
     String? region,
     Map<String, String>? tags,
-  })  : ipamId = pulumi.Input.asInput<String>(ipamId),
-        ipamResourceDiscoveryId =
-            pulumi.Input.asInput<String>(ipamResourceDiscoveryId),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      ipamId = pulumi.Input.asInput<String>(ipamId),
+      ipamResourceDiscoveryId = pulumi.Input.asInput<String>(ipamResourceDiscoveryId),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ipamId'] = ipamId;
-    map['ipamResourceDiscoveryId'] = ipamResourceDiscoveryId;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'ipamId': ipamId,
+      'ipamResourceDiscoveryId': ipamResourceDiscoveryId,
+      'region': ?region,
+      'tags': ?tags,
+    };
   }
 
-  factory VpcIpamResourceDiscoveryAssociationArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory VpcIpamResourceDiscoveryAssociationArgs.fromMap(Map<String, dynamic> map) {
     return VpcIpamResourceDiscoveryAssociationArgs(
       ipamId: map['ipamId'] as String,
       ipamResourceDiscoveryId: map['ipamResourceDiscoveryId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetJobDefinitionTimeout {
   /// The job timeout time (in seconds) that's measured from the job attempt's startedAt timestamp.
   final int attemptDurationSeconds;
@@ -11,9 +12,9 @@ class GetJobDefinitionTimeout {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['attemptDurationSeconds'] = attemptDurationSeconds;
-    return map;
+    return <String, dynamic>{
+      'attemptDurationSeconds': attemptDurationSeconds,
+    };
   }
 
   factory GetJobDefinitionTimeout.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetJobDefinitionTimeout {
     );
   }
 }
+

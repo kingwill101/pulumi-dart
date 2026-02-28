@@ -7,7 +7,6 @@ import 'standard_response.dart';
 class StrategyResponse {
   /// Canary deployment strategy provides progressive percentage based deployments to a Target.
   final CanaryResponse canary;
-
   /// Standard deployment strategy executes a single deploy and allows verifying the deployment.
   final StandardResponse standard;
 
@@ -20,18 +19,17 @@ class StrategyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['canary'] = canary.toMap();
-    map['standard'] = standard.toMap();
-    return map;
+    return <String, dynamic>{
+      'canary': canary.toMap(),
+      'standard': standard.toMap(),
+    };
   }
 
   factory StrategyResponse.fromMap(Map<String, dynamic> map) {
     return StrategyResponse(
-      canary: CanaryResponse.fromMap(
-          (map['canary'] as Map).cast<String, dynamic>()),
-      standard: StandardResponse.fromMap(
-          (map['standard'] as Map).cast<String, dynamic>()),
+      canary: CanaryResponse.fromMap((map['canary'] as Map).cast<String, dynamic>()),
+      standard: StandardResponse.fromMap((map['standard'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

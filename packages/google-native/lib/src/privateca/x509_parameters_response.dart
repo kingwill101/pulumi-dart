@@ -11,19 +11,14 @@ import 'x509_extension_response.dart';
 class X509ParametersResponse {
   /// Optional. Describes custom X.509 extensions.
   final List<X509ExtensionResponse> additionalExtensions;
-
   /// Optional. Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the "Authority Information Access" extension in the certificate.
   final List<String> aiaOcspServers;
-
   /// Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
   final CaOptionsResponse caOptions;
-
   /// Optional. Indicates the intended use for keys that correspond to a certificate.
   final KeyUsageResponse keyUsage;
-
   /// Optional. Describes the X.509 name constraints extension.
   final NameConstraintsResponse nameConstraints;
-
   /// Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
   final List<ObjectIdResponse> policyIds;
 
@@ -44,37 +39,25 @@ class X509ParametersResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['additionalExtensions'] =
-        pulumi.Input.encodeList<X509ExtensionResponse, Map<String, dynamic>>(
-            additionalExtensions, (value) => value.toMap());
-    map['aiaOcspServers'] = aiaOcspServers;
-    map['caOptions'] = caOptions.toMap();
-    map['keyUsage'] = keyUsage.toMap();
-    map['nameConstraints'] = nameConstraints.toMap();
-    map['policyIds'] =
-        pulumi.Input.encodeList<ObjectIdResponse, Map<String, dynamic>>(
-            policyIds, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'additionalExtensions': pulumi.Input.encodeList<X509ExtensionResponse, Map<String, dynamic>>(additionalExtensions, (value) => value.toMap()),
+      'aiaOcspServers': aiaOcspServers,
+      'caOptions': caOptions.toMap(),
+      'keyUsage': keyUsage.toMap(),
+      'nameConstraints': nameConstraints.toMap(),
+      'policyIds': pulumi.Input.encodeList<ObjectIdResponse, Map<String, dynamic>>(policyIds, (value) => value.toMap()),
+    };
   }
 
   factory X509ParametersResponse.fromMap(Map<String, dynamic> map) {
     return X509ParametersResponse(
-      additionalExtensions: pulumi.Input.decodeList<X509ExtensionResponse>(
-          map['additionalExtensions'],
-          (value) => X509ExtensionResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      additionalExtensions: pulumi.Input.decodeList<X509ExtensionResponse>(map['additionalExtensions'], (value) => X509ExtensionResponse.fromMap((value as Map).cast<String, dynamic>())),
       aiaOcspServers: (map['aiaOcspServers'] as List).cast<String>(),
-      caOptions: CaOptionsResponse.fromMap(
-          (map['caOptions'] as Map).cast<String, dynamic>()),
-      keyUsage: KeyUsageResponse.fromMap(
-          (map['keyUsage'] as Map).cast<String, dynamic>()),
-      nameConstraints: NameConstraintsResponse.fromMap(
-          (map['nameConstraints'] as Map).cast<String, dynamic>()),
-      policyIds: pulumi.Input.decodeList<ObjectIdResponse>(
-          map['policyIds'],
-          (value) =>
-              ObjectIdResponse.fromMap((value as Map).cast<String, dynamic>())),
+      caOptions: CaOptionsResponse.fromMap((map['caOptions'] as Map).cast<String, dynamic>()),
+      keyUsage: KeyUsageResponse.fromMap((map['keyUsage'] as Map).cast<String, dynamic>()),
+      nameConstraints: NameConstraintsResponse.fromMap((map['nameConstraints'] as Map).cast<String, dynamic>()),
+      policyIds: pulumi.Input.decodeList<ObjectIdResponse>(map['policyIds'], (value) => ObjectIdResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ZoneVpc {
   /// ID of the VPC to associate.
   final String vpcId;
-
   /// Region of the VPC to associate. Defaults to AWS provider region.
   final String? vpcRegion;
 
@@ -16,13 +16,10 @@ class ZoneVpc {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['vpcId'] = vpcId;
-    final vpcRegionValue = vpcRegion;
-    if (vpcRegionValue != null) {
-      map['vpcRegion'] = vpcRegionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'vpcId': vpcId,
+      'vpcRegion': ?vpcRegion,
+    };
   }
 
   factory ZoneVpc.fromMap(Map<String, dynamic> map) {
@@ -32,3 +29,4 @@ class ZoneVpc {
     );
   }
 }
+

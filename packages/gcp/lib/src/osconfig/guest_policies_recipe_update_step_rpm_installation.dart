@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GuestPoliciesRecipeUpdateStepRpmInstallation {
   /// The id of the relevant artifact in the recipe.
   final String artifactId;
@@ -11,15 +12,15 @@ class GuestPoliciesRecipeUpdateStepRpmInstallation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['artifactId'] = artifactId;
-    return map;
+    return <String, dynamic>{
+      'artifactId': artifactId,
+    };
   }
 
-  factory GuestPoliciesRecipeUpdateStepRpmInstallation.fromMap(
-      Map<String, dynamic> map) {
+  factory GuestPoliciesRecipeUpdateStepRpmInstallation.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesRecipeUpdateStepRpmInstallation(
       artifactId: map['artifactId'] as String,
     );
   }
 }
+

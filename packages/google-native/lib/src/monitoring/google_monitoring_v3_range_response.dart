@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Range of numerical values within min and max.
 class GoogleMonitoringV3RangeResponse {
   /// Range maximum.
   final double max;
-
   /// Range minimum.
   final double min;
 
@@ -17,10 +17,10 @@ class GoogleMonitoringV3RangeResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['max'] = max;
-    map['min'] = min;
-    return map;
+    return <String, dynamic>{
+      'max': max,
+      'min': min,
+    };
   }
 
   factory GoogleMonitoringV3RangeResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class GoogleMonitoringV3RangeResponse {
     );
   }
 }
+

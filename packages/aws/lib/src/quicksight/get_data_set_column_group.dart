@@ -13,20 +13,15 @@ class GetDataSetColumnGroup {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['geoSpatialColumnGroups'] = pulumi.Input.encodeList<
-        GetDataSetColumnGroupGeoSpatialColumnGroup,
-        Map<String, dynamic>>(geoSpatialColumnGroups, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'geoSpatialColumnGroups': pulumi.Input.encodeList<GetDataSetColumnGroupGeoSpatialColumnGroup, Map<String, dynamic>>(geoSpatialColumnGroups, (value) => value.toMap()),
+    };
   }
 
   factory GetDataSetColumnGroup.fromMap(Map<String, dynamic> map) {
     return GetDataSetColumnGroup(
-      geoSpatialColumnGroups:
-          pulumi.Input.decodeList<GetDataSetColumnGroupGeoSpatialColumnGroup>(
-              map['geoSpatialColumnGroups'],
-              (value) => GetDataSetColumnGroupGeoSpatialColumnGroup.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      geoSpatialColumnGroups: pulumi.Input.decodeList<GetDataSetColumnGroupGeoSpatialColumnGroup>(map['geoSpatialColumnGroups'], (value) => GetDataSetColumnGroupGeoSpatialColumnGroup.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

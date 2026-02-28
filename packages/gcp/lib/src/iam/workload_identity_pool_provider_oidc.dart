@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WorkloadIdentityPoolProviderOidc {
   /// Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange
   /// requests are rejected if the token audience does not match one of the configured
@@ -13,10 +14,8 @@ class WorkloadIdentityPoolProviderOidc {
   /// https://iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
   /// ```
   final List<String>? allowedAudiences;
-
   /// The OIDC issuer URL.
   final String issuerUri;
-
   /// OIDC JWKs in JSON String format. For details on definition of a
   /// JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
   /// use the `jwks_uri` from the discovery document fetched from the
@@ -53,26 +52,19 @@ class WorkloadIdentityPoolProviderOidc {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final allowedAudiencesValue = allowedAudiences;
-    if (allowedAudiencesValue != null) {
-      map['allowedAudiences'] = allowedAudiencesValue;
-    }
-    map['issuerUri'] = issuerUri;
-    final jwksJsonValue = jwksJson;
-    if (jwksJsonValue != null) {
-      map['jwksJson'] = jwksJsonValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'allowedAudiences': ?allowedAudiences,
+      'issuerUri': issuerUri,
+      'jwksJson': ?jwksJson,
+    };
   }
 
   factory WorkloadIdentityPoolProviderOidc.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolProviderOidc(
-      allowedAudiences: map['allowedAudiences'] == null
-          ? null
-          : (map['allowedAudiences'] as List).cast<String>(),
+      allowedAudiences: map['allowedAudiences'] == null ? null : (map['allowedAudiences'] as List).cast<String>(),
       issuerUri: map['issuerUri'] as String,
       jwksJson: map['jwksJson'] == null ? null : map['jwksJson'] as String,
     );
   }
 }
+

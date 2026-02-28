@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Source information used to create a Service Config
 class SourceInfoResponse {
   /// All files used during config generation.
@@ -12,9 +13,9 @@ class SourceInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['sourceFiles'] = sourceFiles;
-    return map;
+    return <String, dynamic>{
+      'sourceFiles': sourceFiles,
+    };
   }
 
   factory SourceInfoResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class SourceInfoResponse {
     );
   }
 }
+

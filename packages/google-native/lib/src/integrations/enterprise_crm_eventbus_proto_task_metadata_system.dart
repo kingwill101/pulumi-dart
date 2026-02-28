@@ -20,7 +20,7 @@ enum EnterpriseCrmEventbusProtoTaskMetadataSystem {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown EnterpriseCrmEventbusProtoTaskMetadataSystem value: $value');
+    throw ArgumentError('Unknown EnterpriseCrmEventbusProtoTaskMetadataSystem value: $value');
   }
 }
+

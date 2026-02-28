@@ -7,13 +7,10 @@ import 'contact_settings_privacy_domains_v1alpha2.dart';
 class ContactSettingsDomainsV1alpha2 {
   /// The administrative contact for the `Registration`.
   final ContactDomainsV1alpha2 adminContact;
-
   /// Privacy setting for the contacts associated with the `Registration`.
   final ContactSettingsPrivacyDomainsV1alpha2 privacy;
-
   /// The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant receives an email confirmation that they must complete within 15 days to avoid domain suspension.*
   final ContactDomainsV1alpha2 registrantContact;
-
   /// The technical contact for the `Registration`.
   final ContactDomainsV1alpha2 technicalContact;
 
@@ -30,24 +27,21 @@ class ContactSettingsDomainsV1alpha2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['adminContact'] = adminContact.toMap();
-    map['privacy'] = privacy.value;
-    map['registrantContact'] = registrantContact.toMap();
-    map['technicalContact'] = technicalContact.toMap();
-    return map;
+    return <String, dynamic>{
+      'adminContact': adminContact.toMap(),
+      'privacy': privacy.value,
+      'registrantContact': registrantContact.toMap(),
+      'technicalContact': technicalContact.toMap(),
+    };
   }
 
   factory ContactSettingsDomainsV1alpha2.fromMap(Map<String, dynamic> map) {
     return ContactSettingsDomainsV1alpha2(
-      adminContact: ContactDomainsV1alpha2.fromMap(
-          (map['adminContact'] as Map).cast<String, dynamic>()),
-      privacy: ContactSettingsPrivacyDomainsV1alpha2.fromValue(
-          map['privacy'] as String),
-      registrantContact: ContactDomainsV1alpha2.fromMap(
-          (map['registrantContact'] as Map).cast<String, dynamic>()),
-      technicalContact: ContactDomainsV1alpha2.fromMap(
-          (map['technicalContact'] as Map).cast<String, dynamic>()),
+      adminContact: ContactDomainsV1alpha2.fromMap((map['adminContact'] as Map).cast<String, dynamic>()),
+      privacy: ContactSettingsPrivacyDomainsV1alpha2.fromValue(map['privacy'] as String),
+      registrantContact: ContactDomainsV1alpha2.fromMap((map['registrantContact'] as Map).cast<String, dynamic>()),
+      technicalContact: ContactDomainsV1alpha2.fromMap((map['technicalContact'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

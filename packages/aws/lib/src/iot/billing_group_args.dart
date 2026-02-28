@@ -10,13 +10,10 @@ import 'billing_group_properties.dart';
 class BillingGroupArgs {
   /// The name of the Billing Group.
   final pulumi.Input<String>? name;
-
   /// The Billing Group properties. Defined below.
   final pulumi.Input<BillingGroupProperties>? properties;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Key-value mapping of resource tags
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -30,46 +27,28 @@ class BillingGroupArgs {
     BillingGroupProperties? properties,
     String? region,
     Map<String, String>? tags,
-  })  : name = pulumi.Input.asOptionalInput<String>(name),
-        properties =
-            pulumi.Input.asOptionalInput<BillingGroupProperties>(properties),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      name = pulumi.Input.asOptionalInput<String>(name),
+      properties = pulumi.Input.asOptionalInput<BillingGroupProperties>(properties),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final propertiesValue = properties;
-    if (propertiesValue != null) {
-      map['properties'] = pulumi.Input.mapOptionalInputValue<
-          BillingGroupProperties,
-          Map<String, dynamic>>(propertiesValue, (value) => value.toMap());
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+      'properties': ?pulumi.Input.mapOptionalInputValue<BillingGroupProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'region': ?region,
+      'tags': ?tags,
+    };
   }
 
   factory BillingGroupArgs.fromMap(Map<String, dynamic> map) {
     return BillingGroupArgs(
       name: map['name'] == null ? null : map['name'] as String,
-      properties: map['properties'] == null
-          ? null
-          : BillingGroupProperties.fromMap(
-              (map['properties'] as Map).cast<String, dynamic>()),
+      properties: map['properties'] == null ? null : BillingGroupProperties.fromMap((map['properties'] as Map).cast<String, dynamic>()),
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

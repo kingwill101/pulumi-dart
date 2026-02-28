@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getAndroidAppConfig.
 class GetAndroidAppConfigResult {
   final String appId;
@@ -23,16 +24,13 @@ class GetAndroidAppConfigResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['appId'] = appId;
-    map['configFileContents'] = configFileContents;
-    map['configFilename'] = configFilename;
-    map['id'] = id;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'appId': appId,
+      'configFileContents': configFileContents,
+      'configFilename': configFilename,
+      'id': id,
+      'project': ?project,
+    };
   }
 
   factory GetAndroidAppConfigResult.fromMap(Map<String, dynamic> map) {
@@ -45,3 +43,4 @@ class GetAndroidAppConfigResult {
     );
   }
 }
+

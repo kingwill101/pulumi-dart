@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterControlPlaneScalingConfig {
   /// The control plane scaling tier. Valid values are `standard`, `tier-xl`, `tier-2xl`, or `tier-4xl`. Defaults to `standard`. For more information about each tier, see [EKS Provisioned Control Plane](https://docs.aws.amazon.com/eks/latest/userguide/eks-provisioned-control-plane-getting-started.html).
   final String? tier;
@@ -11,12 +12,9 @@ class ClusterControlPlaneScalingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final tierValue = tier;
-    if (tierValue != null) {
-      map['tier'] = tierValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'tier': ?tier,
+    };
   }
 
   factory ClusterControlPlaneScalingConfig.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class ClusterControlPlaneScalingConfig {
     );
   }
 }
+

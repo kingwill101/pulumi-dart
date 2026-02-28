@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// OIDC Token
 class GoogleCloudIntegrationsV1alphaOidcTokenResponse {
   /// Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for.
   final String audience;
-
   /// The service account email to be used as the identity for the token.
   final String serviceAccountEmail;
-
   /// ID token obtained for the service account
   final String token;
-
   /// The approximate time until the token retrieved is valid.
   final String tokenExpireTime;
 
@@ -27,16 +25,15 @@ class GoogleCloudIntegrationsV1alphaOidcTokenResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['audience'] = audience;
-    map['serviceAccountEmail'] = serviceAccountEmail;
-    map['token'] = token;
-    map['tokenExpireTime'] = tokenExpireTime;
-    return map;
+    return <String, dynamic>{
+      'audience': audience,
+      'serviceAccountEmail': serviceAccountEmail,
+      'token': token,
+      'tokenExpireTime': tokenExpireTime,
+    };
   }
 
-  factory GoogleCloudIntegrationsV1alphaOidcTokenResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaOidcTokenResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaOidcTokenResponse(
       audience: map['audience'] as String,
       serviceAccountEmail: map['serviceAccountEmail'] as String,
@@ -45,3 +42,4 @@ class GoogleCloudIntegrationsV1alphaOidcTokenResponse {
     );
   }
 }
+

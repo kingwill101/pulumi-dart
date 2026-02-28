@@ -13,21 +13,15 @@ class InstanceGroupManagerAllInstancesConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final propertiesValue = properties;
-    if (propertiesValue != null) {
-      map['properties'] = propertiesValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'properties': ?properties == null ? null : properties!.toMap(),
+    };
   }
 
-  factory InstanceGroupManagerAllInstancesConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory InstanceGroupManagerAllInstancesConfig.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerAllInstancesConfig(
-      properties: map['properties'] == null
-          ? null
-          : InstancePropertiesPatch.fromMap(
-              (map['properties'] as Map).cast<String, dynamic>()),
+      properties: map['properties'] == null ? null : InstancePropertiesPatch.fromMap((map['properties'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

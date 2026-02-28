@@ -19,19 +19,17 @@ class GetConnectionIamPolicyArgs {
     required String connectionId,
     required String location,
     String? project,
-  })  : connectionId = pulumi.Input.asInput<String>(connectionId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      connectionId = pulumi.Input.asInput<String>(connectionId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['connectionId'] = connectionId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'connectionId': connectionId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetConnectionIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetConnectionIamPolicyArgs {
     );
   }
 }
+

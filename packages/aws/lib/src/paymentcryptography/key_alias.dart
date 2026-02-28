@@ -217,10 +217,8 @@ class KeyAlias extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> aliasName;
-
   /// ARN of the key.
   late final pulumi.Output<String?> keyArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

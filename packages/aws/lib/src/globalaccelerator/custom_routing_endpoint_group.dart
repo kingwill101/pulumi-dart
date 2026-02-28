@@ -178,20 +178,12 @@ import 'custom_routing_endpoint_group_endpoint_configuration.dart';
 class CustomRoutingEndpointGroup extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the custom routing endpoint group.
   late final pulumi.Output<String> arn;
-
   /// The port ranges and protocols for all endpoints in a custom routing endpoint group to accept client traffic on. Fields documented below.
-  late final pulumi
-      .Output<List<CustomRoutingEndpointGroupDestinationConfiguration>>
-      destinationConfigurations;
-
+  late final pulumi.Output<List<CustomRoutingEndpointGroupDestinationConfiguration>> destinationConfigurations;
   /// The list of endpoint objects. Fields documented below.
-  late final pulumi
-      .Output<List<CustomRoutingEndpointGroupEndpointConfiguration>?>
-      endpointConfigurations;
-
+  late final pulumi.Output<List<CustomRoutingEndpointGroupEndpointConfiguration>?> endpointConfigurations;
   /// The name of the AWS Region where the custom routing endpoint group is located.
   late final pulumi.Output<String> endpointGroupRegion;
-
   /// The Amazon Resource Name (ARN) of the custom routing listener.
   late final pulumi.Output<String> listenerArn;
 
@@ -210,12 +202,8 @@ class CustomRoutingEndpointGroup extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
-    this.destinationConfigurations = registerOutput<
-            List<CustomRoutingEndpointGroupDestinationConfiguration>>(
-        'destinationConfigurations');
-    this.endpointConfigurations =
-        registerOutput<List<CustomRoutingEndpointGroupEndpointConfiguration>?>(
-            'endpointConfigurations');
+    this.destinationConfigurations = registerOutput<List<CustomRoutingEndpointGroupDestinationConfiguration>>('destinationConfigurations');
+    this.endpointConfigurations = registerOutput<List<CustomRoutingEndpointGroupEndpointConfiguration>?>('endpointConfigurations');
     this.endpointGroupRegion = registerOutput<String>('endpointGroupRegion');
     this.listenerArn = registerOutput<String>('listenerArn');
   }

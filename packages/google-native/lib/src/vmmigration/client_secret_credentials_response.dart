@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Message describing Azure Credentials using tenant ID, client ID and secret.
 class ClientSecretCredentialsResponse {
   /// Azure client ID.
   final String clientId;
-
   /// Input only. Azure client secret.
   final String clientSecret;
-
   /// Azure tenant ID.
   final String tenantId;
 
@@ -22,11 +21,11 @@ class ClientSecretCredentialsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clientId'] = clientId;
-    map['clientSecret'] = clientSecret;
-    map['tenantId'] = tenantId;
-    return map;
+    return <String, dynamic>{
+      'clientId': clientId,
+      'clientSecret': clientSecret,
+      'tenantId': tenantId,
+    };
   }
 
   factory ClientSecretCredentialsResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class ClientSecretCredentialsResponse {
     );
   }
 }
+

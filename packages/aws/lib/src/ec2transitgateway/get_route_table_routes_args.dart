@@ -10,10 +10,8 @@ import 'get_route_table_routes_filter.dart';
 class GetRouteTableRoutesArgs {
   /// Custom filter block as described below.
   final pulumi.Input<List<GetRouteTableRoutesFilter>> filters;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Identifier of EC2 Transit Gateway Route Table.
   ///
   /// More complex filters can be expressed using one or more `filter` sub-blocks,
@@ -28,35 +26,25 @@ class GetRouteTableRoutesArgs {
     required List<GetRouteTableRoutesFilter> filters,
     String? region,
     required String transitGatewayRouteTableId,
-  })  : filters =
-            pulumi.Input.asInput<List<GetRouteTableRoutesFilter>>(filters),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        transitGatewayRouteTableId =
-            pulumi.Input.asInput<String>(transitGatewayRouteTableId);
+  }) :
+      filters = pulumi.Input.asInput<List<GetRouteTableRoutesFilter>>(filters),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      transitGatewayRouteTableId = pulumi.Input.asInput<String>(transitGatewayRouteTableId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['filters'] = pulumi.Input.mapInputValue<List<GetRouteTableRoutesFilter>,
-            List<Map<String, dynamic>>>(
-        filters,
-        (value) => pulumi.Input.encodeList<GetRouteTableRoutesFilter,
-            Map<String, dynamic>>(value, (value) => value.toMap()));
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['transitGatewayRouteTableId'] = transitGatewayRouteTableId;
-    return map;
+    return <String, dynamic>{
+      'filters': pulumi.Input.mapInputValue<List<GetRouteTableRoutesFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetRouteTableRoutesFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'region': ?region,
+      'transitGatewayRouteTableId': transitGatewayRouteTableId,
+    };
   }
 
   factory GetRouteTableRoutesArgs.fromMap(Map<String, dynamic> map) {
     return GetRouteTableRoutesArgs(
-      filters: pulumi.Input.decodeList<GetRouteTableRoutesFilter>(
-          map['filters'],
-          (value) => GetRouteTableRoutesFilter.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      filters: pulumi.Input.decodeList<GetRouteTableRoutesFilter>(map['filters'], (value) => GetRouteTableRoutesFilter.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] == null ? null : map['region'] as String,
       transitGatewayRouteTableId: map['transitGatewayRouteTableId'] as String,
     );
   }
 }
+

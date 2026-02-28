@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The configuration of MQTT for a device registry.
 class MqttConfigResponse {
   /// If enabled, allows connections using the MQTT protocol. Otherwise, MQTT connections to this registry will fail.
@@ -12,9 +13,9 @@ class MqttConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['mqttEnabledState'] = mqttEnabledState;
-    return map;
+    return <String, dynamic>{
+      'mqttEnabledState': mqttEnabledState,
+    };
   }
 
   factory MqttConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class MqttConfigResponse {
     );
   }
 }
+

@@ -7,7 +7,6 @@ import 'regular_file_response.dart';
 class DeviceFileResponse {
   /// A reference to an opaque binary blob file.
   final ObbFileResponse obbFile;
-
   /// A reference to a regular file.
   final RegularFileResponse regularFile;
 
@@ -20,18 +19,17 @@ class DeviceFileResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['obbFile'] = obbFile.toMap();
-    map['regularFile'] = regularFile.toMap();
-    return map;
+    return <String, dynamic>{
+      'obbFile': obbFile.toMap(),
+      'regularFile': regularFile.toMap(),
+    };
   }
 
   factory DeviceFileResponse.fromMap(Map<String, dynamic> map) {
     return DeviceFileResponse(
-      obbFile: ObbFileResponse.fromMap(
-          (map['obbFile'] as Map).cast<String, dynamic>()),
-      regularFile: RegularFileResponse.fromMap(
-          (map['regularFile'] as Map).cast<String, dynamic>()),
+      obbFile: ObbFileResponse.fromMap((map['obbFile'] as Map).cast<String, dynamic>()),
+      regularFile: RegularFileResponse.fromMap((map['regularFile'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

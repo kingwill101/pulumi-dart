@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ServerBindingResponse {
   final String type;
 
@@ -10,9 +11,9 @@ class ServerBindingResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory ServerBindingResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +22,4 @@ class ServerBindingResponse {
     );
   }
 }
+

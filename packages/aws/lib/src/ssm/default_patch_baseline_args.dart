@@ -11,7 +11,6 @@ class DefaultPatchBaselineArgs {
   /// Can be an ID or an ARN.
   /// When specifying an AWS-provided patch baseline, must be the ARN.
   final pulumi.Input<String> baselineId;
-
   /// The operating system the patch baseline applies to.
   /// Valid values are
   /// `AMAZON_LINUX`,
@@ -29,7 +28,6 @@ class DefaultPatchBaselineArgs {
   /// `UBUNTU`, and
   /// `WINDOWS`.
   final pulumi.Input<String> operatingSystem;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -41,19 +39,17 @@ class DefaultPatchBaselineArgs {
     required String baselineId,
     required String operatingSystem,
     String? region,
-  })  : baselineId = pulumi.Input.asInput<String>(baselineId),
-        operatingSystem = pulumi.Input.asInput<String>(operatingSystem),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      baselineId = pulumi.Input.asInput<String>(baselineId),
+      operatingSystem = pulumi.Input.asInput<String>(operatingSystem),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['baselineId'] = baselineId;
-    map['operatingSystem'] = operatingSystem;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'baselineId': baselineId,
+      'operatingSystem': operatingSystem,
+      'region': ?region,
+    };
   }
 
   factory DefaultPatchBaselineArgs.fromMap(Map<String, dynamic> map) {
@@ -64,3 +60,4 @@ class DefaultPatchBaselineArgs {
     );
   }
 }
+

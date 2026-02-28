@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetFunctionTenancyConfig {
   /// (Required) Tenant Isolation Mode. Valid values: `PER_TENANT`.
   final String tenantIsolationMode;
@@ -11,9 +12,9 @@ class GetFunctionTenancyConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['tenantIsolationMode'] = tenantIsolationMode;
-    return map;
+    return <String, dynamic>{
+      'tenantIsolationMode': tenantIsolationMode,
+    };
   }
 
   factory GetFunctionTenancyConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetFunctionTenancyConfig {
     );
   }
 }
+

@@ -13,7 +13,7 @@ enum ServiceAttachmentConnectionPreference {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown ServiceAttachmentConnectionPreference value: $value');
+    throw ArgumentError('Unknown ServiceAttachmentConnectionPreference value: $value');
   }
 }
+

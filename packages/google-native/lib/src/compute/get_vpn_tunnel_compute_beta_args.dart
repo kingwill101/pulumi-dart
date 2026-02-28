@@ -19,19 +19,17 @@ class GetVpnTunnelComputeBetaArgs {
     String? project,
     required String region,
     required String vpnTunnel,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asInput<String>(region),
-        vpnTunnel = pulumi.Input.asInput<String>(vpnTunnel);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asInput<String>(region),
+      vpnTunnel = pulumi.Input.asInput<String>(vpnTunnel);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['region'] = region;
-    map['vpnTunnel'] = vpnTunnel;
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'region': region,
+      'vpnTunnel': vpnTunnel,
+    };
   }
 
   factory GetVpnTunnelComputeBetaArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetVpnTunnelComputeBetaArgs {
     );
   }
 }
+

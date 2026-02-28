@@ -25,48 +25,23 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final buildFinishedOnValue = buildFinishedOn;
-    if (buildFinishedOnValue != null) {
-      map['buildFinishedOn'] = buildFinishedOnValue;
-    }
-    final buildInvocationIdValue = buildInvocationId;
-    if (buildInvocationIdValue != null) {
-      map['buildInvocationId'] = buildInvocationIdValue;
-    }
-    final buildStartedOnValue = buildStartedOn;
-    if (buildStartedOnValue != null) {
-      map['buildStartedOn'] = buildStartedOnValue;
-    }
-    final completenessValue = completeness;
-    if (completenessValue != null) {
-      map['completeness'] = completenessValue.toMap();
-    }
-    final reproducibleValue = reproducible;
-    if (reproducibleValue != null) {
-      map['reproducible'] = reproducibleValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'buildFinishedOn': ?buildFinishedOn,
+      'buildInvocationId': ?buildInvocationId,
+      'buildStartedOn': ?buildStartedOn,
+      'completeness': ?completeness == null ? null : completeness!.toMap(),
+      'reproducible': ?reproducible,
+    };
   }
 
-  factory GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata.fromMap(
-      Map<String, dynamic> map) {
+  factory GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata.fromMap(Map<String, dynamic> map) {
     return GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata(
-      buildFinishedOn: map['buildFinishedOn'] == null
-          ? null
-          : map['buildFinishedOn'] as String,
-      buildInvocationId: map['buildInvocationId'] == null
-          ? null
-          : map['buildInvocationId'] as String,
-      buildStartedOn: map['buildStartedOn'] == null
-          ? null
-          : map['buildStartedOn'] as String,
-      completeness: map['completeness'] == null
-          ? null
-          : GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness.fromMap(
-              (map['completeness'] as Map).cast<String, dynamic>()),
-      reproducible:
-          map['reproducible'] == null ? null : map['reproducible'] as bool,
+      buildFinishedOn: map['buildFinishedOn'] == null ? null : map['buildFinishedOn'] as String,
+      buildInvocationId: map['buildInvocationId'] == null ? null : map['buildInvocationId'] as String,
+      buildStartedOn: map['buildStartedOn'] == null ? null : map['buildStartedOn'] as String,
+      completeness: map['completeness'] == null ? null : GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness.fromMap((map['completeness'] as Map).cast<String, dynamic>()),
+      reproducible: map['reproducible'] == null ? null : map['reproducible'] as bool,
     );
   }
 }
+

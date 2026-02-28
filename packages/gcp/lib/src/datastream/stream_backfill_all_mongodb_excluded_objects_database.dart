@@ -6,9 +6,7 @@ import 'stream_backfill_all_mongodb_excluded_objects_database_collection.dart';
 class StreamBackfillAllMongodbExcludedObjectsDatabase {
   /// Collections in the database.
   /// Structure is documented below.
-  final List<StreamBackfillAllMongodbExcludedObjectsDatabaseCollection>?
-      collections;
-
+  final List<StreamBackfillAllMongodbExcludedObjectsDatabaseCollection>? collections;
   /// Database name.
   final String database;
 
@@ -21,29 +19,17 @@ class StreamBackfillAllMongodbExcludedObjectsDatabase {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final collectionsValue = collections;
-    if (collectionsValue != null) {
-      map['collections'] = pulumi.Input.encodeList<
-          StreamBackfillAllMongodbExcludedObjectsDatabaseCollection,
-          Map<String, dynamic>>(collectionsValue, (value) => value.toMap());
-    }
-    map['database'] = database;
-    return map;
+    return <String, dynamic>{
+      'collections': ?collections == null ? null : pulumi.Input.encodeList<StreamBackfillAllMongodbExcludedObjectsDatabaseCollection, Map<String, dynamic>>(collections!, (value) => value.toMap()),
+      'database': database,
+    };
   }
 
-  factory StreamBackfillAllMongodbExcludedObjectsDatabase.fromMap(
-      Map<String, dynamic> map) {
+  factory StreamBackfillAllMongodbExcludedObjectsDatabase.fromMap(Map<String, dynamic> map) {
     return StreamBackfillAllMongodbExcludedObjectsDatabase(
-      collections: map['collections'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  StreamBackfillAllMongodbExcludedObjectsDatabaseCollection>(
-              map['collections'],
-              (value) =>
-                  StreamBackfillAllMongodbExcludedObjectsDatabaseCollection
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      collections: map['collections'] == null ? null : pulumi.Input.decodeList<StreamBackfillAllMongodbExcludedObjectsDatabaseCollection>(map['collections'], (value) => StreamBackfillAllMongodbExcludedObjectsDatabaseCollection.fromMap((value as Map).cast<String, dynamic>())),
       database: map['database'] as String,
     );
   }
 }
+

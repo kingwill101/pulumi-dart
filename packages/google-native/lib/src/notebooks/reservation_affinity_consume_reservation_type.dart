@@ -14,7 +14,7 @@ enum ReservationAffinityConsumeReservationType {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown ReservationAffinityConsumeReservationType value: $value');
+    throw ArgumentError('Unknown ReservationAffinityConsumeReservationType value: $value');
   }
 }
+

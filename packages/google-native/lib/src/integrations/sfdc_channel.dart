@@ -6,32 +6,24 @@ import 'sfdc_channel_args.dart';
 class SfdcChannel extends pulumi.CustomResource {
   /// The Channel topic defined by salesforce once an channel is opened
   late final pulumi.Output<String> channelTopic;
-
   /// Time when the channel is created
   late final pulumi.Output<String> createTime;
-
   /// Time when the channel was deleted. Empty if not deleted.
   late final pulumi.Output<String> deleteTime;
-
   /// The description for this channel
   late final pulumi.Output<String> description;
-
   /// Client level unique name/alias to easily reference a channel.
   late final pulumi.Output<String> displayName;
-
   /// Indicated if a channel has any active integrations referencing it. Set to false when the channel is created, and set to true if there is any integration published with the channel configured in it.
   late final pulumi.Output<bool> isActive;
-
   /// Last sfdc messsage replay id for channel
   late final pulumi.Output<String> lastReplayId;
   late final pulumi.Output<String> location;
-
   /// Resource name of the SFDC channel projects/{project}/locations/{location}/sfdcInstances/{sfdc_instance}/sfdcChannels/{sfdc_channel}.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> productId;
   late final pulumi.Output<String> project;
   late final pulumi.Output<String> sfdcInstanceId;
-
   /// Time when the channel was last updated
   late final pulumi.Output<String> updateTime;
 

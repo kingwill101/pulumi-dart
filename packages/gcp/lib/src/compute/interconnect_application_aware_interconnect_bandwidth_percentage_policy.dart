@@ -7,9 +7,7 @@ class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy {
   /// Specify bandwidth percentages for various traffic classes for queuing
   /// type Bandwidth Percent.
   /// Structure is documented below.
-  final List<
-          InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage>?
-      bandwidthPercentages;
+  final List<InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage>? bandwidthPercentages;
 
   /// Creates a new [InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy].
   /// [bandwidthPercentages] Specify bandwidth percentages for various traffic classes for queuing
@@ -18,28 +16,15 @@ class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final bandwidthPercentagesValue = bandwidthPercentages;
-    if (bandwidthPercentagesValue != null) {
-      map['bandwidthPercentages'] = pulumi.Input.encodeList<
-          InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage,
-          Map<String,
-              dynamic>>(bandwidthPercentagesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'bandwidthPercentages': ?bandwidthPercentages == null ? null : pulumi.Input.encodeList<InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage, Map<String, dynamic>>(bandwidthPercentages!, (value) => value.toMap()),
+    };
   }
 
-  factory InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy.fromMap(
-      Map<String, dynamic> map) {
+  factory InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy.fromMap(Map<String, dynamic> map) {
     return InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy(
-      bandwidthPercentages: map['bandwidthPercentages'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage>(
-              map['bandwidthPercentages'],
-              (value) =>
-                  InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      bandwidthPercentages: map['bandwidthPercentages'] == null ? null : pulumi.Input.decodeList<InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage>(map['bandwidthPercentages'], (value) => InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -11,27 +11,20 @@ import 'lb_traffic_extension_load_balancing_scheme.dart';
 class LbTrafficExtensionArgs {
   /// Optional. A human-readable description of the resource.
   final pulumi.Input<String>? description;
-
   /// A set of ordered extension chains that contain the match conditions and extensions to execute. Match conditions for each extension chain are evaluated in sequence for a given request. The first extension chain that has a condition that matches the request is executed. Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
   final pulumi.Input<List<ExtensionChain>> extensionChains;
-
   /// A list of references to the forwarding rules to which this service extension is attached to. At least one forwarding rule is required. There can be only one `LBTrafficExtension` resource per forwarding rule.
   final pulumi.Input<List<String>> forwardingRules;
-
   /// Optional. Set of labels associated with the `LbTrafficExtension` resource. The format must comply with [the following requirements](/compute/docs/labeling-resources#requirements).
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Required. User-provided ID of the `LbTrafficExtension` resource to be created.
   final pulumi.Input<String> lbTrafficExtensionId;
-
   /// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
   final pulumi.Input<LbTrafficExtensionLoadBalancingScheme> loadBalancingScheme;
   final pulumi.Input<String>? location;
-
   /// Name of the `LbTrafficExtension` resource in the following format: `projects/{project}/locations/{location}/lbTrafficExtensions/{lb_traffic_extension}`.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
-
   /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   final pulumi.Input<String>? requestId;
 
@@ -57,76 +50,41 @@ class LbTrafficExtensionArgs {
     String? name,
     String? project,
     String? requestId,
-  })  : description = pulumi.Input.asOptionalInput<String>(description),
-        extensionChains =
-            pulumi.Input.asInput<List<ExtensionChain>>(extensionChains),
-        forwardingRules = pulumi.Input.asInput<List<String>>(forwardingRules),
-        labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-        lbTrafficExtensionId =
-            pulumi.Input.asInput<String>(lbTrafficExtensionId),
-        loadBalancingScheme =
-            pulumi.Input.asInput<LbTrafficExtensionLoadBalancingScheme>(
-                loadBalancingScheme),
-        location = pulumi.Input.asOptionalInput<String>(location),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        requestId = pulumi.Input.asOptionalInput<String>(requestId);
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      extensionChains = pulumi.Input.asInput<List<ExtensionChain>>(extensionChains),
+      forwardingRules = pulumi.Input.asInput<List<String>>(forwardingRules),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      lbTrafficExtensionId = pulumi.Input.asInput<String>(lbTrafficExtensionId),
+      loadBalancingScheme = pulumi.Input.asInput<LbTrafficExtensionLoadBalancingScheme>(loadBalancingScheme),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      requestId = pulumi.Input.asOptionalInput<String>(requestId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    map['extensionChains'] = pulumi.Input.mapInputValue<List<ExtensionChain>,
-            List<Map<String, dynamic>>>(
-        extensionChains,
-        (value) =>
-            pulumi.Input.encodeList<ExtensionChain, Map<String, dynamic>>(
-                value, (value) => value.toMap()));
-    map['forwardingRules'] = forwardingRules;
-    final labelsValue = labels;
-    if (labelsValue != null) {
-      map['labels'] = labelsValue;
-    }
-    map['lbTrafficExtensionId'] = lbTrafficExtensionId;
-    map['loadBalancingScheme'] = pulumi.Input.mapInputValue<
-        LbTrafficExtensionLoadBalancingScheme,
-        String>(loadBalancingScheme, (value) => value.value);
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final requestIdValue = requestId;
-    if (requestIdValue != null) {
-      map['requestId'] = requestIdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'extensionChains': pulumi.Input.mapInputValue<List<ExtensionChain>, List<Map<String, dynamic>>>(extensionChains, (value) => pulumi.Input.encodeList<ExtensionChain, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'forwardingRules': forwardingRules,
+      'labels': ?labels,
+      'lbTrafficExtensionId': lbTrafficExtensionId,
+      'loadBalancingScheme': pulumi.Input.mapInputValue<LbTrafficExtensionLoadBalancingScheme, String>(loadBalancingScheme, (value) => value.value),
+      'location': ?location,
+      'name': ?name,
+      'project': ?project,
+      'requestId': ?requestId,
+    };
   }
 
   factory LbTrafficExtensionArgs.fromMap(Map<String, dynamic> map) {
     return LbTrafficExtensionArgs(
-      description:
-          map['description'] == null ? null : map['description'] as String,
-      extensionChains: pulumi.Input.decodeList<ExtensionChain>(
-          map['extensionChains'],
-          (value) =>
-              ExtensionChain.fromMap((value as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : map['description'] as String,
+      extensionChains: pulumi.Input.decodeList<ExtensionChain>(map['extensionChains'], (value) => ExtensionChain.fromMap((value as Map).cast<String, dynamic>())),
       forwardingRules: (map['forwardingRules'] as List).cast<String>(),
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       lbTrafficExtensionId: map['lbTrafficExtensionId'] as String,
-      loadBalancingScheme: LbTrafficExtensionLoadBalancingScheme.fromValue(
-          map['loadBalancingScheme'] as String),
+      loadBalancingScheme: LbTrafficExtensionLoadBalancingScheme.fromValue(map['loadBalancingScheme'] as String),
       location: map['location'] == null ? null : map['location'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -134,3 +92,4 @@ class LbTrafficExtensionArgs {
     );
   }
 }
+

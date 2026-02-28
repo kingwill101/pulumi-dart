@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// An excluded entity phrase that should not be matched.
 class GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseResponse {
   /// The word or phrase to be excluded.
@@ -12,15 +13,15 @@ class GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'value': value,
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseResponse(
       value: map['value'] as String,
     );
   }
 }
+

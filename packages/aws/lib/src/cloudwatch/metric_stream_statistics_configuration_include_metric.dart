@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MetricStreamStatisticsConfigurationIncludeMetric {
   /// The name of the metric.
   final String metricName;
@@ -14,17 +15,17 @@ class MetricStreamStatisticsConfigurationIncludeMetric {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['metricName'] = metricName;
-    map['namespace'] = namespace;
-    return map;
+    return <String, dynamic>{
+      'metricName': metricName,
+      'namespace': namespace,
+    };
   }
 
-  factory MetricStreamStatisticsConfigurationIncludeMetric.fromMap(
-      Map<String, dynamic> map) {
+  factory MetricStreamStatisticsConfigurationIncludeMetric.fromMap(Map<String, dynamic> map) {
     return MetricStreamStatisticsConfigurationIncludeMetric(
       metricName: map['metricName'] as String,
       namespace: map['namespace'] as String,
     );
   }
 }
+

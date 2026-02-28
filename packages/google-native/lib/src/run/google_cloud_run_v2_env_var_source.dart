@@ -14,20 +14,15 @@ class GoogleCloudRunV2EnvVarSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final secretKeyRefValue = secretKeyRef;
-    if (secretKeyRefValue != null) {
-      map['secretKeyRef'] = secretKeyRefValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'secretKeyRef': ?secretKeyRef == null ? null : secretKeyRef!.toMap(),
+    };
   }
 
   factory GoogleCloudRunV2EnvVarSource.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2EnvVarSource(
-      secretKeyRef: map['secretKeyRef'] == null
-          ? null
-          : GoogleCloudRunV2SecretKeySelector.fromMap(
-              (map['secretKeyRef'] as Map).cast<String, dynamic>()),
+      secretKeyRef: map['secretKeyRef'] == null ? null : GoogleCloudRunV2SecretKeySelector.fromMap((map['secretKeyRef'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The share setting for reservations and sole tenancy node groups.
 class ShareSettingsResponseComputeV1 {
   /// A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
   final Map<String, String> projectMap;
-
   /// Type of sharing for this shared-reservation
   final String shareType;
 
@@ -17,10 +17,10 @@ class ShareSettingsResponseComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['projectMap'] = projectMap;
-    map['shareType'] = shareType;
-    return map;
+    return <String, dynamic>{
+      'projectMap': projectMap,
+      'shareType': shareType,
+    };
   }
 
   factory ShareSettingsResponseComputeV1.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class ShareSettingsResponseComputeV1 {
     );
   }
 }
+

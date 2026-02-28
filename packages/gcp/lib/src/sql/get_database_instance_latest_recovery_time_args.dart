@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabaseInstanceLatestRecoveryTimeArgs {
   /// The name of the instance.
   final pulumi.Input<String> instance;
-
   /// The ID of the project in which the resource belongs.
   final pulumi.Input<String>? project;
   final pulumi.Input<String>? sourceInstanceDeletionTime;
@@ -22,33 +21,25 @@ class GetDatabaseInstanceLatestRecoveryTimeArgs {
     required String instance,
     String? project,
     String? sourceInstanceDeletionTime,
-  })  : instance = pulumi.Input.asInput<String>(instance),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        sourceInstanceDeletionTime =
-            pulumi.Input.asOptionalInput<String>(sourceInstanceDeletionTime);
+  }) :
+      instance = pulumi.Input.asInput<String>(instance),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      sourceInstanceDeletionTime = pulumi.Input.asOptionalInput<String>(sourceInstanceDeletionTime);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['instance'] = instance;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final sourceInstanceDeletionTimeValue = sourceInstanceDeletionTime;
-    if (sourceInstanceDeletionTimeValue != null) {
-      map['sourceInstanceDeletionTime'] = sourceInstanceDeletionTimeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'instance': instance,
+      'project': ?project,
+      'sourceInstanceDeletionTime': ?sourceInstanceDeletionTime,
+    };
   }
 
-  factory GetDatabaseInstanceLatestRecoveryTimeArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetDatabaseInstanceLatestRecoveryTimeArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstanceLatestRecoveryTimeArgs(
       instance: map['instance'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      sourceInstanceDeletionTime: map['sourceInstanceDeletionTime'] == null
-          ? null
-          : map['sourceInstanceDeletionTime'] as String,
+      sourceInstanceDeletionTime: map['sourceInstanceDeletionTime'] == null ? null : map['sourceInstanceDeletionTime'] as String,
     );
   }
 }
+

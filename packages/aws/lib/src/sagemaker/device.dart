@@ -124,16 +124,12 @@ import 'device_device.dart';
 /// ```
 class Device extends pulumi.CustomResource {
   late final pulumi.Output<String> agentVersion;
-
   /// The Amazon Resource Name (ARN) assigned by AWS to this Device.
   late final pulumi.Output<String> arn;
-
   /// The device to register with SageMaker AI Edge Manager. See Device details below.
   late final pulumi.Output<DeviceDevice> device;
-
   /// The name of the Device Fleet.
   late final pulumi.Output<String> deviceFleetName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

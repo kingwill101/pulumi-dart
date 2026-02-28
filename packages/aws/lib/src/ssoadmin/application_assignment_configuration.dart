@@ -123,10 +123,8 @@ import 'application_assignment_configuration_args.dart';
 class ApplicationAssignmentConfiguration extends pulumi.CustomResource {
   /// ARN of the application.
   late final pulumi.Output<String> applicationArn;
-
   /// Indicates whether users must have an explicit assignment to access the application. If `false`, all users have access to the application.
   late final pulumi.Output<bool> assignmentRequired;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

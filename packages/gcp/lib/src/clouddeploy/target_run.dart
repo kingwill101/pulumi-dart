@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TargetRun {
   /// Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
   final String location;
@@ -11,9 +12,9 @@ class TargetRun {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+    };
   }
 
   factory TargetRun.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class TargetRun {
     );
   }
 }
+

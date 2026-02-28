@@ -25,8 +25,7 @@ class AiEndpointIamBinding extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.condition =
-        registerOutput<AiEndpointIamBindingCondition?>('condition');
+    this.condition = registerOutput<AiEndpointIamBindingCondition?>('condition');
     this.endpoint = registerOutput<String>('endpoint');
     this.etag = registerOutput<String>('etag');
     this.location = registerOutput<String>('location');

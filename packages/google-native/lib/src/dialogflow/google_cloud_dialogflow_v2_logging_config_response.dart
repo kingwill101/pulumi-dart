@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Defines logging behavior for conversation lifecycle events.
 class GoogleCloudDialogflowV2LoggingConfigResponse {
   /// Whether to log conversation events like CONVERSATION_STARTED to Stackdriver in the conversation project as JSON format ConversationEvent protos.
@@ -12,15 +13,15 @@ class GoogleCloudDialogflowV2LoggingConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enableStackdriverLogging'] = enableStackdriverLogging;
-    return map;
+    return <String, dynamic>{
+      'enableStackdriverLogging': enableStackdriverLogging,
+    };
   }
 
-  factory GoogleCloudDialogflowV2LoggingConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2LoggingConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2LoggingConfigResponse(
       enableStackdriverLogging: map['enableStackdriverLogging'] as bool,
     );
   }
 }
+

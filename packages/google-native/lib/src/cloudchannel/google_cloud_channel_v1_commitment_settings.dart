@@ -14,21 +14,15 @@ class GoogleCloudChannelV1CommitmentSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final renewalSettingsValue = renewalSettings;
-    if (renewalSettingsValue != null) {
-      map['renewalSettings'] = renewalSettingsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'renewalSettings': ?renewalSettings == null ? null : renewalSettings!.toMap(),
+    };
   }
 
-  factory GoogleCloudChannelV1CommitmentSettings.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudChannelV1CommitmentSettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1CommitmentSettings(
-      renewalSettings: map['renewalSettings'] == null
-          ? null
-          : GoogleCloudChannelV1RenewalSettings.fromMap(
-              (map['renewalSettings'] as Map).cast<String, dynamic>()),
+      renewalSettings: map['renewalSettings'] == null ? null : GoogleCloudChannelV1RenewalSettings.fromMap((map['renewalSettings'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

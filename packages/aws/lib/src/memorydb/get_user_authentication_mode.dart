@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetUserAuthenticationMode {
   /// Number of passwords belonging to the user if `type` is set to `password`.
   final int passwordCount;
-
   /// Type of authentication configured.
   final String type;
 
@@ -16,10 +16,10 @@ class GetUserAuthenticationMode {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['passwordCount'] = passwordCount;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'passwordCount': passwordCount,
+      'type': type,
+    };
   }
 
   factory GetUserAuthenticationMode.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetUserAuthenticationMode {
     );
   }
 }
+

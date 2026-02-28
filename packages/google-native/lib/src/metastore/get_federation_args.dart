@@ -19,19 +19,17 @@ class GetFederationArgs {
     required String federationId,
     required String location,
     String? project,
-  })  : federationId = pulumi.Input.asInput<String>(federationId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      federationId = pulumi.Input.asInput<String>(federationId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['federationId'] = federationId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'federationId': federationId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetFederationArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetFederationArgs {
     );
   }
 }
+

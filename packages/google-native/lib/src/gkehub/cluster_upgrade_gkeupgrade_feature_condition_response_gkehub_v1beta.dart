@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// GKEUpgradeFeatureCondition describes the condition of the feature for GKE clusters at a certain point of time.
 class ClusterUpgradeGKEUpgradeFeatureConditionResponseGkehubV1beta {
   /// Reason why the feature is in this status.
   final String reason;
-
   /// Status of the condition, one of True, False, Unknown.
   final String status;
-
   /// Type of the condition, for example, "ready".
   final String type;
-
   /// Last timestamp the condition was updated.
   final String updateTime;
 
@@ -27,16 +25,15 @@ class ClusterUpgradeGKEUpgradeFeatureConditionResponseGkehubV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['reason'] = reason;
-    map['status'] = status;
-    map['type'] = type;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'reason': reason,
+      'status': status,
+      'type': type,
+      'updateTime': updateTime,
+    };
   }
 
-  factory ClusterUpgradeGKEUpgradeFeatureConditionResponseGkehubV1beta.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterUpgradeGKEUpgradeFeatureConditionResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return ClusterUpgradeGKEUpgradeFeatureConditionResponseGkehubV1beta(
       reason: map['reason'] as String,
       status: map['status'] as String,
@@ -45,3 +42,4 @@ class ClusterUpgradeGKEUpgradeFeatureConditionResponseGkehubV1beta {
     );
   }
 }
+

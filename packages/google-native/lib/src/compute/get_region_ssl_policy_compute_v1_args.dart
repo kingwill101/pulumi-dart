@@ -19,19 +19,17 @@ class GetRegionSslPolicyComputeV1Args {
     String? project,
     required String region,
     required String sslPolicy,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asInput<String>(region),
-        sslPolicy = pulumi.Input.asInput<String>(sslPolicy);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asInput<String>(region),
+      sslPolicy = pulumi.Input.asInput<String>(sslPolicy);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['region'] = region;
-    map['sslPolicy'] = sslPolicy;
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'region': region,
+      'sslPolicy': sslPolicy,
+    };
   }
 
   factory GetRegionSslPolicyComputeV1Args.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetRegionSslPolicyComputeV1Args {
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyGroupArgs {
   /// A comment to describe the key group..
   final pulumi.Input<String>? comment;
-
   /// A list of the identifiers of the public keys in the key group.
   final pulumi.Input<List<String>> items;
-
   /// A name to identify the key group.
   final pulumi.Input<String>? name;
 
@@ -24,22 +22,17 @@ class KeyGroupArgs {
     String? comment,
     required List<String> items,
     String? name,
-  })  : comment = pulumi.Input.asOptionalInput<String>(comment),
-        items = pulumi.Input.asInput<List<String>>(items),
-        name = pulumi.Input.asOptionalInput<String>(name);
+  }) :
+      comment = pulumi.Input.asOptionalInput<String>(comment),
+      items = pulumi.Input.asInput<List<String>>(items),
+      name = pulumi.Input.asOptionalInput<String>(name);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final commentValue = comment;
-    if (commentValue != null) {
-      map['comment'] = commentValue;
-    }
-    map['items'] = items;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'comment': ?comment,
+      'items': items,
+      'name': ?name,
+    };
   }
 
   factory KeyGroupArgs.fromMap(Map<String, dynamic> map) {
@@ -50,3 +43,4 @@ class KeyGroupArgs {
     );
   }
 }
+

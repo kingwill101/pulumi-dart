@@ -7,7 +7,6 @@ import 'location_response.dart';
 class JobDerivedInfoResponse {
   /// Job categories derived from Job.title and Job.description.
   final List<String> jobCategories;
-
   /// Structured locations of the job, resolved from Job.addresses. locations are exactly matched to Job.addresses in the same order.
   final List<LocationResponse> locations;
 
@@ -20,21 +19,17 @@ class JobDerivedInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['jobCategories'] = jobCategories;
-    map['locations'] =
-        pulumi.Input.encodeList<LocationResponse, Map<String, dynamic>>(
-            locations, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'jobCategories': jobCategories,
+      'locations': pulumi.Input.encodeList<LocationResponse, Map<String, dynamic>>(locations, (value) => value.toMap()),
+    };
   }
 
   factory JobDerivedInfoResponse.fromMap(Map<String, dynamic> map) {
     return JobDerivedInfoResponse(
       jobCategories: (map['jobCategories'] as List).cast<String>(),
-      locations: pulumi.Input.decodeList<LocationResponse>(
-          map['locations'],
-          (value) =>
-              LocationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      locations: pulumi.Input.decodeList<LocationResponse>(map['locations'], (value) => LocationResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

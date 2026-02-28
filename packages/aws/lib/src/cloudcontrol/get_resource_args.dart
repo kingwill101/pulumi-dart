@@ -9,18 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResourceArgs {
   /// Identifier of the CloudFormation resource type. For example, `vpc-12345678`.
   final pulumi.Input<String> identifier;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// ARN of the IAM Role to assume for operations.
   final pulumi.Input<String>? roleArn;
-
   /// CloudFormation resource type name. For example, `AWS::EC2::VPC`.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> typeName;
-
   /// Identifier of the CloudFormation resource type version.
   final pulumi.Input<String>? typeVersionId;
 
@@ -36,29 +32,21 @@ class GetResourceArgs {
     String? roleArn,
     required String typeName,
     String? typeVersionId,
-  })  : identifier = pulumi.Input.asInput<String>(identifier),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
-        typeName = pulumi.Input.asInput<String>(typeName),
-        typeVersionId = pulumi.Input.asOptionalInput<String>(typeVersionId);
+  }) :
+      identifier = pulumi.Input.asInput<String>(identifier),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
+      typeName = pulumi.Input.asInput<String>(typeName),
+      typeVersionId = pulumi.Input.asOptionalInput<String>(typeVersionId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['identifier'] = identifier;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final roleArnValue = roleArn;
-    if (roleArnValue != null) {
-      map['roleArn'] = roleArnValue;
-    }
-    map['typeName'] = typeName;
-    final typeVersionIdValue = typeVersionId;
-    if (typeVersionIdValue != null) {
-      map['typeVersionId'] = typeVersionIdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'identifier': identifier,
+      'region': ?region,
+      'roleArn': ?roleArn,
+      'typeName': typeName,
+      'typeVersionId': ?typeVersionId,
+    };
   }
 
   factory GetResourceArgs.fromMap(Map<String, dynamic> map) {
@@ -67,8 +55,8 @@ class GetResourceArgs {
       region: map['region'] == null ? null : map['region'] as String,
       roleArn: map['roleArn'] == null ? null : map['roleArn'] as String,
       typeName: map['typeName'] as String,
-      typeVersionId:
-          map['typeVersionId'] == null ? null : map['typeVersionId'] as String,
+      typeVersionId: map['typeVersionId'] == null ? null : map['typeVersionId'] as String,
     );
   }
 }
+

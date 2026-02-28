@@ -8,18 +8,14 @@ class PreventionDiscoveryConfigTargetCloudStorageTarget {
   /// In addition to matching the filter, these conditions must be true before a profile is generated.
   /// Structure is documented below.
   final PreventionDiscoveryConfigTargetCloudStorageTargetConditions? conditions;
-
   /// Disable profiling for buckets that match this filter.
   final Map<String, dynamic>? disabled;
-
   /// The buckets the generation_cadence applies to. The first target with a matching filter will be the one to apply to a bucket.
   /// Structure is documented below.
   final PreventionDiscoveryConfigTargetCloudStorageTargetFilter filter;
-
   /// How often and when to update profiles. New buckets that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
   /// Structure is documented below.
-  final PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadence?
-      generationCadence;
+  final PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadence? generationCadence;
 
   /// Creates a new [PreventionDiscoveryConfigTargetCloudStorageTarget].
   /// [conditions] In addition to matching the filter, these conditions must be true before a profile is generated.
@@ -34,40 +30,21 @@ class PreventionDiscoveryConfigTargetCloudStorageTarget {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final conditionsValue = conditions;
-    if (conditionsValue != null) {
-      map['conditions'] = conditionsValue.toMap();
-    }
-    final disabledValue = disabled;
-    if (disabledValue != null) {
-      map['disabled'] = disabledValue;
-    }
-    map['filter'] = filter.toMap();
-    final generationCadenceValue = generationCadence;
-    if (generationCadenceValue != null) {
-      map['generationCadence'] = generationCadenceValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'conditions': ?conditions == null ? null : conditions!.toMap(),
+      'disabled': ?disabled,
+      'filter': filter.toMap(),
+      'generationCadence': ?generationCadence == null ? null : generationCadence!.toMap(),
+    };
   }
 
-  factory PreventionDiscoveryConfigTargetCloudStorageTarget.fromMap(
-      Map<String, dynamic> map) {
+  factory PreventionDiscoveryConfigTargetCloudStorageTarget.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetCloudStorageTarget(
-      conditions: map['conditions'] == null
-          ? null
-          : PreventionDiscoveryConfigTargetCloudStorageTargetConditions.fromMap(
-              (map['conditions'] as Map).cast<String, dynamic>()),
-      disabled: map['disabled'] == null
-          ? null
-          : (map['disabled'] as Map).cast<String, dynamic>(),
-      filter: PreventionDiscoveryConfigTargetCloudStorageTargetFilter.fromMap(
-          (map['filter'] as Map).cast<String, dynamic>()),
-      generationCadence: map['generationCadence'] == null
-          ? null
-          : PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadence
-              .fromMap(
-                  (map['generationCadence'] as Map).cast<String, dynamic>()),
+      conditions: map['conditions'] == null ? null : PreventionDiscoveryConfigTargetCloudStorageTargetConditions.fromMap((map['conditions'] as Map).cast<String, dynamic>()),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as Map).cast<String, dynamic>(),
+      filter: PreventionDiscoveryConfigTargetCloudStorageTargetFilter.fromMap((map['filter'] as Map).cast<String, dynamic>()),
+      generationCadence: map['generationCadence'] == null ? null : PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadence.fromMap((map['generationCadence'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

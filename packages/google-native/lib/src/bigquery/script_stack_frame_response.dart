@@ -1,21 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ScriptStackFrameResponse {
   /// One-based end column.
   final int endColumn;
-
   /// One-based end line.
   final int endLine;
-
   /// Name of the active procedure, empty if in a top-level script.
   final String procedureId;
-
   /// One-based start column.
   final int startColumn;
-
   /// One-based start line.
   final int startLine;
-
   /// Text of the current statement/expression.
   final String text;
 
@@ -36,14 +32,14 @@ class ScriptStackFrameResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['endColumn'] = endColumn;
-    map['endLine'] = endLine;
-    map['procedureId'] = procedureId;
-    map['startColumn'] = startColumn;
-    map['startLine'] = startLine;
-    map['text'] = text;
-    return map;
+    return <String, dynamic>{
+      'endColumn': endColumn,
+      'endLine': endLine,
+      'procedureId': procedureId,
+      'startColumn': startColumn,
+      'startLine': startLine,
+      'text': text,
+    };
   }
 
   factory ScriptStackFrameResponse.fromMap(Map<String, dynamic> map) {
@@ -57,3 +53,4 @@ class ScriptStackFrameResponse {
     );
   }
 }
+

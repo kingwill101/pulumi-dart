@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The policy describes the baseline against which VM instance boot integrity is measured.
 class ShieldedVmIntegrityPolicyResponse {
   /// Updates the integrity policy baseline using the measurements from the VM instance's most recent boot.
@@ -12,9 +13,9 @@ class ShieldedVmIntegrityPolicyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['updateAutoLearnPolicy'] = updateAutoLearnPolicy;
-    return map;
+    return <String, dynamic>{
+      'updateAutoLearnPolicy': updateAutoLearnPolicy,
+    };
   }
 
   factory ShieldedVmIntegrityPolicyResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class ShieldedVmIntegrityPolicyResponse {
     );
   }
 }
+

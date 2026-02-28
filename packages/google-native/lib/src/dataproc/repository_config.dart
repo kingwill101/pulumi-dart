@@ -14,20 +14,15 @@ class RepositoryConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final pypiRepositoryConfigValue = pypiRepositoryConfig;
-    if (pypiRepositoryConfigValue != null) {
-      map['pypiRepositoryConfig'] = pypiRepositoryConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'pypiRepositoryConfig': ?pypiRepositoryConfig == null ? null : pypiRepositoryConfig!.toMap(),
+    };
   }
 
   factory RepositoryConfig.fromMap(Map<String, dynamic> map) {
     return RepositoryConfig(
-      pypiRepositoryConfig: map['pypiRepositoryConfig'] == null
-          ? null
-          : PyPiRepositoryConfig.fromMap(
-              (map['pypiRepositoryConfig'] as Map).cast<String, dynamic>()),
+      pypiRepositoryConfig: map['pypiRepositoryConfig'] == null ? null : PyPiRepositoryConfig.fromMap((map['pypiRepositoryConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

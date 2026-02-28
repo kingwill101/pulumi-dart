@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetControlFolderIntelligenceConfigEffectiveIntelligenceConfig {
   /// The 'StorageIntelligence' edition that is applicable for the resource.
   final String effectiveEdition;
-
   /// The Intelligence config resource that is applied for the target resource.
   final String intelligenceConfig;
 
@@ -16,17 +16,17 @@ class GetControlFolderIntelligenceConfigEffectiveIntelligenceConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['effectiveEdition'] = effectiveEdition;
-    map['intelligenceConfig'] = intelligenceConfig;
-    return map;
+    return <String, dynamic>{
+      'effectiveEdition': effectiveEdition,
+      'intelligenceConfig': intelligenceConfig,
+    };
   }
 
-  factory GetControlFolderIntelligenceConfigEffectiveIntelligenceConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GetControlFolderIntelligenceConfigEffectiveIntelligenceConfig.fromMap(Map<String, dynamic> map) {
     return GetControlFolderIntelligenceConfigEffectiveIntelligenceConfig(
       effectiveEdition: map['effectiveEdition'] as String,
       intelligenceConfig: map['intelligenceConfig'] as String,
     );
   }
 }
+

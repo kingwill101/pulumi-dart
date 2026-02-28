@@ -19,3 +19,4 @@ enum RemediationRemediationType {
     throw ArgumentError('Unknown RemediationRemediationType value: $value');
   }
 }
+

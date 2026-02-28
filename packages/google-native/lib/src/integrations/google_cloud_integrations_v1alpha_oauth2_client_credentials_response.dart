@@ -7,22 +7,16 @@ import 'google_cloud_integrations_v1alpha_parameter_map_response.dart';
 class GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsResponse {
   /// Access token fetched from the authorization server.
   final GoogleCloudIntegrationsV1alphaAccessTokenResponse accessToken;
-
   /// The client's ID.
   final String clientId;
-
   /// The client's secret.
   final String clientSecret;
-
   /// Represent how to pass parameters to fetch access token
   final String requestType;
-
   /// A space-delimited list of requested scope permissions.
   final String scope;
-
   /// The token endpoint is used by the client to obtain an access token by presenting its authorization grant or refresh token.
   final String tokenEndpoint;
-
   /// Token parameters for the auth request.
   final GoogleCloudIntegrationsV1alphaParameterMapResponse tokenParams;
 
@@ -45,29 +39,27 @@ class GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accessToken'] = accessToken.toMap();
-    map['clientId'] = clientId;
-    map['clientSecret'] = clientSecret;
-    map['requestType'] = requestType;
-    map['scope'] = scope;
-    map['tokenEndpoint'] = tokenEndpoint;
-    map['tokenParams'] = tokenParams.toMap();
-    return map;
+    return <String, dynamic>{
+      'accessToken': accessToken.toMap(),
+      'clientId': clientId,
+      'clientSecret': clientSecret,
+      'requestType': requestType,
+      'scope': scope,
+      'tokenEndpoint': tokenEndpoint,
+      'tokenParams': tokenParams.toMap(),
+    };
   }
 
-  factory GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsResponse(
-      accessToken: GoogleCloudIntegrationsV1alphaAccessTokenResponse.fromMap(
-          (map['accessToken'] as Map).cast<String, dynamic>()),
+      accessToken: GoogleCloudIntegrationsV1alphaAccessTokenResponse.fromMap((map['accessToken'] as Map).cast<String, dynamic>()),
       clientId: map['clientId'] as String,
       clientSecret: map['clientSecret'] as String,
       requestType: map['requestType'] as String,
       scope: map['scope'] as String,
       tokenEndpoint: map['tokenEndpoint'] as String,
-      tokenParams: GoogleCloudIntegrationsV1alphaParameterMapResponse.fromMap(
-          (map['tokenParams'] as Map).cast<String, dynamic>()),
+      tokenParams: GoogleCloudIntegrationsV1alphaParameterMapResponse.fromMap((map['tokenParams'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

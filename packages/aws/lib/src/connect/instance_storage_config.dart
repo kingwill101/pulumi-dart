@@ -755,16 +755,12 @@ import 'instance_storage_config_storage_config.dart';
 class InstanceStorageConfig extends pulumi.CustomResource {
   /// The existing association identifier that uniquely identifies the resource type and storage config for the given instance ID.
   late final pulumi.Output<String> associationId;
-
   /// Specifies the identifier of the hosting Amazon Connect Instance.
   late final pulumi.Output<String> instanceId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A valid resource type. Valid Values: `AGENT_EVENTS` | `ATTACHMENTS` | `CALL_RECORDINGS` | `CHAT_TRANSCRIPTS` | `CONTACT_EVALUATIONS` | `CONTACT_TRACE_RECORDS` | `EMAIL_MESSAGES` | `MEDIA_STREAMS` | `REAL_TIME_CONTACT_ANALYSIS_CHAT_SEGMENTS` | `REAL_TIME_CONTACT_ANALYSIS_SEGMENTS` | `REAL_TIME_CONTACT_ANALYSIS_VOICE_SEGMENTS` | `SCHEDULED_REPORTS` | `SCREEN_RECORDINGS`.
   late final pulumi.Output<String> resourceType;
-
   /// Specifies the storage configuration options for the Connect Instance. Documented below.
   late final pulumi.Output<InstanceStorageConfigStorageConfig> storageConfig;
 
@@ -786,7 +782,6 @@ class InstanceStorageConfig extends pulumi.CustomResource {
     this.instanceId = registerOutput<String>('instanceId');
     this.region = registerOutput<String>('region');
     this.resourceType = registerOutput<String>('resourceType');
-    this.storageConfig =
-        registerOutput<InstanceStorageConfigStorageConfig>('storageConfig');
+    this.storageConfig = registerOutput<InstanceStorageConfigStorageConfig>('storageConfig');
   }
 }

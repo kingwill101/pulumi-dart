@@ -6,10 +6,7 @@ import 'get_secrets_secret_replication_user_managed_replica_customer_managed_enc
 class GetSecretsSecretReplicationUserManagedReplica {
   /// Customer Managed Encryption for the secret.
   /// Structure is documented below.
-  final List<
-          GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryption>
-      customerManagedEncryptions;
-
+  final List<GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryption> customerManagedEncryptions;
   /// The canonical IDs of the location to replicate data.
   final String location;
 
@@ -22,25 +19,17 @@ class GetSecretsSecretReplicationUserManagedReplica {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['customerManagedEncryptions'] = pulumi.Input.encodeList<
-        GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryption,
-        Map<String,
-            dynamic>>(customerManagedEncryptions, (value) => value.toMap());
-    map['location'] = location;
-    return map;
+    return <String, dynamic>{
+      'customerManagedEncryptions': pulumi.Input.encodeList<GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryption, Map<String, dynamic>>(customerManagedEncryptions, (value) => value.toMap()),
+      'location': location,
+    };
   }
 
-  factory GetSecretsSecretReplicationUserManagedReplica.fromMap(
-      Map<String, dynamic> map) {
+  factory GetSecretsSecretReplicationUserManagedReplica.fromMap(Map<String, dynamic> map) {
     return GetSecretsSecretReplicationUserManagedReplica(
-      customerManagedEncryptions: pulumi.Input.decodeList<
-              GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryption>(
-          map['customerManagedEncryptions'],
-          (value) =>
-              GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryption
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      customerManagedEncryptions: pulumi.Input.decodeList<GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryption>(map['customerManagedEncryptions'], (value) => GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryption.fromMap((value as Map).cast<String, dynamic>())),
       location: map['location'] as String,
     );
   }
 }
+

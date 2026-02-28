@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRegionBackendServiceIap {
   /// Whether the serving infrastructure will authenticate and authorize all incoming requests.
   final bool enabled;
-
   /// OAuth2 Client ID for IAP
   final String oauth2ClientId;
-
   /// OAuth2 Client Secret for IAP
   final String oauth2ClientSecret;
-
   /// OAuth2 Client Secret SHA-256 for IAP
   final String oauth2ClientSecretSha256;
 
@@ -26,12 +24,12 @@ class GetRegionBackendServiceIap {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    map['oauth2ClientId'] = oauth2ClientId;
-    map['oauth2ClientSecret'] = oauth2ClientSecret;
-    map['oauth2ClientSecretSha256'] = oauth2ClientSecretSha256;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+      'oauth2ClientId': oauth2ClientId,
+      'oauth2ClientSecret': oauth2ClientSecret,
+      'oauth2ClientSecretSha256': oauth2ClientSecretSha256,
+    };
   }
 
   factory GetRegionBackendServiceIap.fromMap(Map<String, dynamic> map) {
@@ -43,3 +41,4 @@ class GetRegionBackendServiceIap {
     );
   }
 }
+

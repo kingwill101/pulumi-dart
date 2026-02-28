@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents a single glossary term
 class GlossaryTermResponse {
   /// The language for this glossary term.
   final String languageCode;
-
   /// The text for the glossary term.
   final String text;
 
@@ -17,10 +17,10 @@ class GlossaryTermResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['languageCode'] = languageCode;
-    map['text'] = text;
-    return map;
+    return <String, dynamic>{
+      'languageCode': languageCode,
+      'text': text,
+    };
   }
 
   factory GlossaryTermResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class GlossaryTermResponse {
     );
   }
 }
+

@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetServiceStatusCondition {
   /// Human readable message indicating details about the current status.
   final String message;
-
   /// One-word CamelCase reason for the condition's current status.
   final String reason;
-
   /// Status of the condition, one of True, False, Unknown.
   final String status;
-
   /// Type of domain mapping condition.
   final String type;
 
@@ -26,12 +24,12 @@ class GetServiceStatusCondition {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['message'] = message;
-    map['reason'] = reason;
-    map['status'] = status;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'message': message,
+      'reason': reason,
+      'status': status,
+      'type': type,
+    };
   }
 
   factory GetServiceStatusCondition.fromMap(Map<String, dynamic> map) {
@@ -43,3 +41,4 @@ class GetServiceStatusCondition {
     );
   }
 }
+

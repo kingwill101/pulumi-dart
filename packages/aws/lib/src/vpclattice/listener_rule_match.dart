@@ -14,15 +14,15 @@ class ListenerRuleMatch {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['httpMatch'] = httpMatch.toMap();
-    return map;
+    return <String, dynamic>{
+      'httpMatch': httpMatch.toMap(),
+    };
   }
 
   factory ListenerRuleMatch.fromMap(Map<String, dynamic> map) {
     return ListenerRuleMatch(
-      httpMatch: ListenerRuleMatchHttpMatch.fromMap(
-          (map['httpMatch'] as Map).cast<String, dynamic>()),
+      httpMatch: ListenerRuleMatchHttpMatch.fromMap((map['httpMatch'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Target scaling by disk usage. Only applicable in the App Engine flexible environment.
 class DiskUtilizationResponse {
   /// Target bytes read per second.
   final int targetReadBytesPerSecond;
-
   /// Target ops read per seconds.
   final int targetReadOpsPerSecond;
-
   /// Target bytes written per second.
   final int targetWriteBytesPerSecond;
-
   /// Target ops written per second.
   final int targetWriteOpsPerSecond;
 
@@ -27,12 +25,12 @@ class DiskUtilizationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['targetReadBytesPerSecond'] = targetReadBytesPerSecond;
-    map['targetReadOpsPerSecond'] = targetReadOpsPerSecond;
-    map['targetWriteBytesPerSecond'] = targetWriteBytesPerSecond;
-    map['targetWriteOpsPerSecond'] = targetWriteOpsPerSecond;
-    return map;
+    return <String, dynamic>{
+      'targetReadBytesPerSecond': targetReadBytesPerSecond,
+      'targetReadOpsPerSecond': targetReadOpsPerSecond,
+      'targetWriteBytesPerSecond': targetWriteBytesPerSecond,
+      'targetWriteOpsPerSecond': targetWriteOpsPerSecond,
+    };
   }
 
   factory DiskUtilizationResponse.fromMap(Map<String, dynamic> map) {
@@ -44,3 +42,4 @@ class DiskUtilizationResponse {
     );
   }
 }
+

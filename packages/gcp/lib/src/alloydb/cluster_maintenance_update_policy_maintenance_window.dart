@@ -6,7 +6,6 @@ class ClusterMaintenanceUpdatePolicyMaintenanceWindow {
   /// Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.
   /// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
   final String day;
-
   /// Preferred time to start the maintenance operation on the specified day. Maintenance will start within 1 hour of this time.
   /// Structure is documented below.
   final ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime startTime;
@@ -20,19 +19,17 @@ class ClusterMaintenanceUpdatePolicyMaintenanceWindow {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['day'] = day;
-    map['startTime'] = startTime.toMap();
-    return map;
+    return <String, dynamic>{
+      'day': day,
+      'startTime': startTime.toMap(),
+    };
   }
 
-  factory ClusterMaintenanceUpdatePolicyMaintenanceWindow.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterMaintenanceUpdatePolicyMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return ClusterMaintenanceUpdatePolicyMaintenanceWindow(
       day: map['day'] as String,
-      startTime:
-          ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime.fromMap(
-              (map['startTime'] as Map).cast<String, dynamic>()),
+      startTime: ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime.fromMap((map['startTime'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

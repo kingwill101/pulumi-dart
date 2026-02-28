@@ -25,8 +25,7 @@ class RepositoryIamBinding extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.condition =
-        registerOutput<RepositoryIamBindingCondition?>('condition');
+    this.condition = registerOutput<RepositoryIamBindingCondition?>('condition');
     this.etag = registerOutput<String>('etag');
     this.members = registerOutput<List<String>>('members');
     this.project = registerOutput<String>('project');

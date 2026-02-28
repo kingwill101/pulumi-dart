@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBundleArgs {
   /// ID of the bundle.
   final pulumi.Input<String>? bundleId;
-
   /// Name of the bundle. You cannot combine this parameter with `bundle_id`.
   final pulumi.Input<String>? name;
-
   /// Owner of the bundles. You have to leave it blank for own bundles. You cannot combine this parameter with `bundle_id`.
   final pulumi.Input<String>? owner;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -29,30 +26,19 @@ class GetBundleArgs {
     String? name,
     String? owner,
     String? region,
-  })  : bundleId = pulumi.Input.asOptionalInput<String>(bundleId),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        owner = pulumi.Input.asOptionalInput<String>(owner),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      bundleId = pulumi.Input.asOptionalInput<String>(bundleId),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      owner = pulumi.Input.asOptionalInput<String>(owner),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final bundleIdValue = bundleId;
-    if (bundleIdValue != null) {
-      map['bundleId'] = bundleIdValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final ownerValue = owner;
-    if (ownerValue != null) {
-      map['owner'] = ownerValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'bundleId': ?bundleId,
+      'name': ?name,
+      'owner': ?owner,
+      'region': ?region,
+    };
   }
 
   factory GetBundleArgs.fromMap(Map<String, dynamic> map) {
@@ -64,3 +50,4 @@ class GetBundleArgs {
     );
   }
 }
+

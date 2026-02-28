@@ -15,21 +15,15 @@ class GoogleCloudApigeeV1GrpcOperationGroupResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['operationConfigs'] = pulumi.Input.encodeList<
-        GoogleCloudApigeeV1GrpcOperationConfigResponse,
-        Map<String, dynamic>>(operationConfigs, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'operationConfigs': pulumi.Input.encodeList<GoogleCloudApigeeV1GrpcOperationConfigResponse, Map<String, dynamic>>(operationConfigs, (value) => value.toMap()),
+    };
   }
 
-  factory GoogleCloudApigeeV1GrpcOperationGroupResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1GrpcOperationGroupResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1GrpcOperationGroupResponse(
-      operationConfigs: pulumi.Input.decodeList<
-              GoogleCloudApigeeV1GrpcOperationConfigResponse>(
-          map['operationConfigs'],
-          (value) => GoogleCloudApigeeV1GrpcOperationConfigResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      operationConfigs: pulumi.Input.decodeList<GoogleCloudApigeeV1GrpcOperationConfigResponse>(map['operationConfigs'], (value) => GoogleCloudApigeeV1GrpcOperationConfigResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

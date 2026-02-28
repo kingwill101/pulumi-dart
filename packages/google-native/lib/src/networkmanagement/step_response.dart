@@ -25,73 +25,50 @@ import 'vpn_tunnel_info_response.dart';
 class StepResponse {
   /// Display information of the final state "abort" and reason.
   final AbortInfoResponse abort;
-
   /// Display information of an App Engine service version.
   final AppEngineVersionInfoResponse appEngineVersion;
-
   /// This is a step that leads to the final state Drop.
   final bool causesDrop;
-
   /// Display information of a Cloud Function.
   final CloudFunctionInfoResponse cloudFunction;
-
   /// Display information of a Cloud Run revision.
   final CloudRunRevisionInfoResponse cloudRunRevision;
-
   /// Display information of a Cloud SQL instance.
   final CloudSQLInstanceInfoResponse cloudSqlInstance;
-
   /// Display information of the final state "deliver" and reason.
   final DeliverInfoResponse deliver;
-
   /// A description of the step. Usually this is a summary of the state.
   final String description;
-
   /// Display information of the final state "drop" and reason.
   final DropInfoResponse drop;
-
   /// Display information of the source and destination under analysis. The endpoint information in an intermediate state may differ with the initial input, as it might be modified by state like NAT, or Connection Proxy.
   final EndpointInfoResponse endpoint;
-
   /// Display information of a Compute Engine firewall rule.
   final FirewallInfoResponse firewall;
-
   /// Display information of the final state "forward" and reason.
   final ForwardInfoResponse forward;
-
   /// Display information of a Compute Engine forwarding rule.
   final ForwardingRuleInfoResponse forwardingRule;
-
   /// Display information of a Google Kubernetes Engine cluster master.
   final GKEMasterInfoResponse gkeMaster;
-
   /// Display information of a Google service
   final GoogleServiceInfoResponse googleService;
-
   /// Display information of a Compute Engine instance.
   final InstanceInfoResponse instance;
-
   /// Display information of the load balancers.
   final LoadBalancerInfoResponse loadBalancer;
-
   /// Display information of a Google Cloud network.
   final NetworkInfoResponse network;
-
   /// Project ID that contains the configuration this step is validating.
   final String project;
-
   /// Display information of a Compute Engine route.
   final RouteInfoResponse route;
-
   /// Each step is in one of the pre-defined states.
   final String state;
-
   /// Display information of a VPC connector.
   final VpcConnectorInfoResponse vpcConnector;
-
   /// Display information of a Compute Engine VPN gateway.
   final VpnGatewayInfoResponse vpnGateway;
-
   /// Display information of a Compute Engine VPN tunnel.
   final VpnTunnelInfoResponse vpnTunnel;
 
@@ -148,80 +125,61 @@ class StepResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['abort'] = abort.toMap();
-    map['appEngineVersion'] = appEngineVersion.toMap();
-    map['causesDrop'] = causesDrop;
-    map['cloudFunction'] = cloudFunction.toMap();
-    map['cloudRunRevision'] = cloudRunRevision.toMap();
-    map['cloudSqlInstance'] = cloudSqlInstance.toMap();
-    map['deliver'] = deliver.toMap();
-    map['description'] = description;
-    map['drop'] = drop.toMap();
-    map['endpoint'] = endpoint.toMap();
-    map['firewall'] = firewall.toMap();
-    map['forward'] = forward.toMap();
-    map['forwardingRule'] = forwardingRule.toMap();
-    map['gkeMaster'] = gkeMaster.toMap();
-    map['googleService'] = googleService.toMap();
-    map['instance'] = instance.toMap();
-    map['loadBalancer'] = loadBalancer.toMap();
-    map['network'] = network.toMap();
-    map['project'] = project;
-    map['route'] = route.toMap();
-    map['state'] = state;
-    map['vpcConnector'] = vpcConnector.toMap();
-    map['vpnGateway'] = vpnGateway.toMap();
-    map['vpnTunnel'] = vpnTunnel.toMap();
-    return map;
+    return <String, dynamic>{
+      'abort': abort.toMap(),
+      'appEngineVersion': appEngineVersion.toMap(),
+      'causesDrop': causesDrop,
+      'cloudFunction': cloudFunction.toMap(),
+      'cloudRunRevision': cloudRunRevision.toMap(),
+      'cloudSqlInstance': cloudSqlInstance.toMap(),
+      'deliver': deliver.toMap(),
+      'description': description,
+      'drop': drop.toMap(),
+      'endpoint': endpoint.toMap(),
+      'firewall': firewall.toMap(),
+      'forward': forward.toMap(),
+      'forwardingRule': forwardingRule.toMap(),
+      'gkeMaster': gkeMaster.toMap(),
+      'googleService': googleService.toMap(),
+      'instance': instance.toMap(),
+      'loadBalancer': loadBalancer.toMap(),
+      'network': network.toMap(),
+      'project': project,
+      'route': route.toMap(),
+      'state': state,
+      'vpcConnector': vpcConnector.toMap(),
+      'vpnGateway': vpnGateway.toMap(),
+      'vpnTunnel': vpnTunnel.toMap(),
+    };
   }
 
   factory StepResponse.fromMap(Map<String, dynamic> map) {
     return StepResponse(
-      abort: AbortInfoResponse.fromMap(
-          (map['abort'] as Map).cast<String, dynamic>()),
-      appEngineVersion: AppEngineVersionInfoResponse.fromMap(
-          (map['appEngineVersion'] as Map).cast<String, dynamic>()),
+      abort: AbortInfoResponse.fromMap((map['abort'] as Map).cast<String, dynamic>()),
+      appEngineVersion: AppEngineVersionInfoResponse.fromMap((map['appEngineVersion'] as Map).cast<String, dynamic>()),
       causesDrop: map['causesDrop'] as bool,
-      cloudFunction: CloudFunctionInfoResponse.fromMap(
-          (map['cloudFunction'] as Map).cast<String, dynamic>()),
-      cloudRunRevision: CloudRunRevisionInfoResponse.fromMap(
-          (map['cloudRunRevision'] as Map).cast<String, dynamic>()),
-      cloudSqlInstance: CloudSQLInstanceInfoResponse.fromMap(
-          (map['cloudSqlInstance'] as Map).cast<String, dynamic>()),
-      deliver: DeliverInfoResponse.fromMap(
-          (map['deliver'] as Map).cast<String, dynamic>()),
+      cloudFunction: CloudFunctionInfoResponse.fromMap((map['cloudFunction'] as Map).cast<String, dynamic>()),
+      cloudRunRevision: CloudRunRevisionInfoResponse.fromMap((map['cloudRunRevision'] as Map).cast<String, dynamic>()),
+      cloudSqlInstance: CloudSQLInstanceInfoResponse.fromMap((map['cloudSqlInstance'] as Map).cast<String, dynamic>()),
+      deliver: DeliverInfoResponse.fromMap((map['deliver'] as Map).cast<String, dynamic>()),
       description: map['description'] as String,
-      drop: DropInfoResponse.fromMap(
-          (map['drop'] as Map).cast<String, dynamic>()),
-      endpoint: EndpointInfoResponse.fromMap(
-          (map['endpoint'] as Map).cast<String, dynamic>()),
-      firewall: FirewallInfoResponse.fromMap(
-          (map['firewall'] as Map).cast<String, dynamic>()),
-      forward: ForwardInfoResponse.fromMap(
-          (map['forward'] as Map).cast<String, dynamic>()),
-      forwardingRule: ForwardingRuleInfoResponse.fromMap(
-          (map['forwardingRule'] as Map).cast<String, dynamic>()),
-      gkeMaster: GKEMasterInfoResponse.fromMap(
-          (map['gkeMaster'] as Map).cast<String, dynamic>()),
-      googleService: GoogleServiceInfoResponse.fromMap(
-          (map['googleService'] as Map).cast<String, dynamic>()),
-      instance: InstanceInfoResponse.fromMap(
-          (map['instance'] as Map).cast<String, dynamic>()),
-      loadBalancer: LoadBalancerInfoResponse.fromMap(
-          (map['loadBalancer'] as Map).cast<String, dynamic>()),
-      network: NetworkInfoResponse.fromMap(
-          (map['network'] as Map).cast<String, dynamic>()),
+      drop: DropInfoResponse.fromMap((map['drop'] as Map).cast<String, dynamic>()),
+      endpoint: EndpointInfoResponse.fromMap((map['endpoint'] as Map).cast<String, dynamic>()),
+      firewall: FirewallInfoResponse.fromMap((map['firewall'] as Map).cast<String, dynamic>()),
+      forward: ForwardInfoResponse.fromMap((map['forward'] as Map).cast<String, dynamic>()),
+      forwardingRule: ForwardingRuleInfoResponse.fromMap((map['forwardingRule'] as Map).cast<String, dynamic>()),
+      gkeMaster: GKEMasterInfoResponse.fromMap((map['gkeMaster'] as Map).cast<String, dynamic>()),
+      googleService: GoogleServiceInfoResponse.fromMap((map['googleService'] as Map).cast<String, dynamic>()),
+      instance: InstanceInfoResponse.fromMap((map['instance'] as Map).cast<String, dynamic>()),
+      loadBalancer: LoadBalancerInfoResponse.fromMap((map['loadBalancer'] as Map).cast<String, dynamic>()),
+      network: NetworkInfoResponse.fromMap((map['network'] as Map).cast<String, dynamic>()),
       project: map['project'] as String,
-      route: RouteInfoResponse.fromMap(
-          (map['route'] as Map).cast<String, dynamic>()),
+      route: RouteInfoResponse.fromMap((map['route'] as Map).cast<String, dynamic>()),
       state: map['state'] as String,
-      vpcConnector: VpcConnectorInfoResponse.fromMap(
-          (map['vpcConnector'] as Map).cast<String, dynamic>()),
-      vpnGateway: VpnGatewayInfoResponse.fromMap(
-          (map['vpnGateway'] as Map).cast<String, dynamic>()),
-      vpnTunnel: VpnTunnelInfoResponse.fromMap(
-          (map['vpnTunnel'] as Map).cast<String, dynamic>()),
+      vpcConnector: VpcConnectorInfoResponse.fromMap((map['vpcConnector'] as Map).cast<String, dynamic>()),
+      vpnGateway: VpnGatewayInfoResponse.fromMap((map['vpnGateway'] as Map).cast<String, dynamic>()),
+      vpnTunnel: VpnTunnelInfoResponse.fromMap((map['vpnTunnel'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

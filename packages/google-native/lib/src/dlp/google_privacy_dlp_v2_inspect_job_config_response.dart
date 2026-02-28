@@ -9,13 +9,10 @@ import 'google_privacy_dlp_v2_storage_config_response.dart';
 class GooglePrivacyDlpV2InspectJobConfigResponse {
   /// Actions to execute at the completion of the job.
   final List<GooglePrivacyDlpV2ActionResponse> actions;
-
   /// How and what to scan for.
   final GooglePrivacyDlpV2InspectConfigResponse inspectConfig;
-
   /// If provided, will be used as the default for all values in InspectConfig. `inspect_config` will be merged into the values persisted as part of the template.
   final String inspectTemplateName;
-
   /// The data to scan.
   final GooglePrivacyDlpV2StorageConfigResponse storageConfig;
 
@@ -32,27 +29,21 @@ class GooglePrivacyDlpV2InspectJobConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['actions'] = pulumi.Input.encodeList<GooglePrivacyDlpV2ActionResponse,
-        Map<String, dynamic>>(actions, (value) => value.toMap());
-    map['inspectConfig'] = inspectConfig.toMap();
-    map['inspectTemplateName'] = inspectTemplateName;
-    map['storageConfig'] = storageConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'actions': pulumi.Input.encodeList<GooglePrivacyDlpV2ActionResponse, Map<String, dynamic>>(actions, (value) => value.toMap()),
+      'inspectConfig': inspectConfig.toMap(),
+      'inspectTemplateName': inspectTemplateName,
+      'storageConfig': storageConfig.toMap(),
+    };
   }
 
-  factory GooglePrivacyDlpV2InspectJobConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2InspectJobConfigResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2InspectJobConfigResponse(
-      actions: pulumi.Input.decodeList<GooglePrivacyDlpV2ActionResponse>(
-          map['actions'],
-          (value) => GooglePrivacyDlpV2ActionResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      inspectConfig: GooglePrivacyDlpV2InspectConfigResponse.fromMap(
-          (map['inspectConfig'] as Map).cast<String, dynamic>()),
+      actions: pulumi.Input.decodeList<GooglePrivacyDlpV2ActionResponse>(map['actions'], (value) => GooglePrivacyDlpV2ActionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      inspectConfig: GooglePrivacyDlpV2InspectConfigResponse.fromMap((map['inspectConfig'] as Map).cast<String, dynamic>()),
       inspectTemplateName: map['inspectTemplateName'] as String,
-      storageConfig: GooglePrivacyDlpV2StorageConfigResponse.fromMap(
-          (map['storageConfig'] as Map).cast<String, dynamic>()),
+      storageConfig: GooglePrivacyDlpV2StorageConfigResponse.fromMap((map['storageConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

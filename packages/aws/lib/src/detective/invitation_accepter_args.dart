@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InvitationAccepterArgs {
   /// ARN of the behavior graph that the member account is accepting the invitation for.
   final pulumi.Input<String> graphArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -19,17 +18,15 @@ class InvitationAccepterArgs {
   InvitationAccepterArgs({
     required String graphArn,
     String? region,
-  })  : graphArn = pulumi.Input.asInput<String>(graphArn),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      graphArn = pulumi.Input.asInput<String>(graphArn),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['graphArn'] = graphArn;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'graphArn': graphArn,
+      'region': ?region,
+    };
   }
 
   factory InvitationAccepterArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +36,4 @@ class InvitationAccepterArgs {
     );
   }
 }
+

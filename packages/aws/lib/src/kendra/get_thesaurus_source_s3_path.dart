@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetThesaurusSourceS3Path {
   /// Name of the S3 bucket that contains the file.
   final String bucket;
-
   /// Name of the file.
   final String key;
 
@@ -16,10 +16,10 @@ class GetThesaurusSourceS3Path {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucket'] = bucket;
-    map['key'] = key;
-    return map;
+    return <String, dynamic>{
+      'bucket': bucket,
+      'key': key,
+    };
   }
 
   factory GetThesaurusSourceS3Path.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetThesaurusSourceS3Path {
     );
   }
 }
+

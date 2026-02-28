@@ -19,19 +19,17 @@ class GetClientTlsPolicyArgs {
     required String clientTlsPolicyId,
     required String location,
     String? project,
-  })  : clientTlsPolicyId = pulumi.Input.asInput<String>(clientTlsPolicyId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      clientTlsPolicyId = pulumi.Input.asInput<String>(clientTlsPolicyId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clientTlsPolicyId'] = clientTlsPolicyId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'clientTlsPolicyId': clientTlsPolicyId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetClientTlsPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetClientTlsPolicyArgs {
     );
   }
 }
+

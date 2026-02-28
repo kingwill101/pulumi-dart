@@ -14,20 +14,15 @@ class ClusterStateInfo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final updateInfoValue = updateInfo;
-    if (updateInfoValue != null) {
-      map['updateInfo'] = updateInfoValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'updateInfo': ?updateInfo == null ? null : updateInfo!.toMap(),
+    };
   }
 
   factory ClusterStateInfo.fromMap(Map<String, dynamic> map) {
     return ClusterStateInfo(
-      updateInfo: map['updateInfo'] == null
-          ? null
-          : ClusterStateInfoUpdateInfo.fromMap(
-              (map['updateInfo'] as Map).cast<String, dynamic>()),
+      updateInfo: map['updateInfo'] == null ? null : ClusterStateInfoUpdateInfo.fromMap((map['updateInfo'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Message encapsulating a value that can be either absolute ("fixed") or relative ("percent") to a value.
 class FixedOrPercent {
   /// Specifies a fixed value.
   final int? fixed;
-
   /// Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
   final int? percent;
 
@@ -17,16 +17,10 @@ class FixedOrPercent {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final fixedValue = fixed;
-    if (fixedValue != null) {
-      map['fixed'] = fixedValue;
-    }
-    final percentValue = percent;
-    if (percentValue != null) {
-      map['percent'] = percentValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'fixed': ?fixed,
+      'percent': ?percent,
+    };
   }
 
   factory FixedOrPercent.fromMap(Map<String, dynamic> map) {
@@ -36,3 +30,4 @@ class FixedOrPercent {
     );
   }
 }
+

@@ -15,19 +15,15 @@ class SearchConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['searchParameters'] =
-        pulumi.Input.encodeList<SearchParameterResponse, Map<String, dynamic>>(
-            searchParameters, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'searchParameters': pulumi.Input.encodeList<SearchParameterResponse, Map<String, dynamic>>(searchParameters, (value) => value.toMap()),
+    };
   }
 
   factory SearchConfigResponse.fromMap(Map<String, dynamic> map) {
     return SearchConfigResponse(
-      searchParameters: pulumi.Input.decodeList<SearchParameterResponse>(
-          map['searchParameters'],
-          (value) => SearchParameterResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      searchParameters: pulumi.Input.decodeList<SearchParameterResponse>(map['searchParameters'], (value) => SearchParameterResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConditionalForwarderArgs {
   /// ID of directory.
   final pulumi.Input<String> directoryId;
-
   /// A list of forwarder IP addresses.
   final pulumi.Input<List<String>> dnsIps;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The fully qualified domain name of the remote domain for which forwarders will be used.
   final pulumi.Input<String> remoteDomainName;
 
@@ -29,21 +26,19 @@ class ConditionalForwarderArgs {
     required List<String> dnsIps,
     String? region,
     required String remoteDomainName,
-  })  : directoryId = pulumi.Input.asInput<String>(directoryId),
-        dnsIps = pulumi.Input.asInput<List<String>>(dnsIps),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        remoteDomainName = pulumi.Input.asInput<String>(remoteDomainName);
+  }) :
+      directoryId = pulumi.Input.asInput<String>(directoryId),
+      dnsIps = pulumi.Input.asInput<List<String>>(dnsIps),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      remoteDomainName = pulumi.Input.asInput<String>(remoteDomainName);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['directoryId'] = directoryId;
-    map['dnsIps'] = dnsIps;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['remoteDomainName'] = remoteDomainName;
-    return map;
+    return <String, dynamic>{
+      'directoryId': directoryId,
+      'dnsIps': dnsIps,
+      'region': ?region,
+      'remoteDomainName': remoteDomainName,
+    };
   }
 
   factory ConditionalForwarderArgs.fromMap(Map<String, dynamic> map) {
@@ -55,3 +50,4 @@ class ConditionalForwarderArgs {
     );
   }
 }
+

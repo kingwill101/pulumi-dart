@@ -13,23 +13,18 @@ class DeploymentChannelProfile {
   /// GOOGLE_TELEPHONY_PLATFORM
   /// CONTACT_CENTER_AS_A_SERVICE
   final String? channelType;
-
   /// Whether to disable user barge-in control in the conversation.
   /// - **true**: User interruptions are disabled while the agent is speaking.
   /// - **false**: The agent retains automatic control over when the user can
   /// interrupt.
   final bool? disableBargeInControl;
-
   /// Whether to disable DTMF (dual-tone multi-frequency).
   final bool? disableDtmf;
-
   /// Represents the persona property of a channel.
   /// Structure is documented below.
   final DeploymentChannelProfilePersonaProperty? personaProperty;
-
   /// The unique identifier of the channel profile.
   final String? profileId;
-
   /// Message for configuration for the web widget.
   /// Structure is documented below.
   final DeploymentChannelProfileWebWidgetConfig? webWidgetConfig;
@@ -51,52 +46,25 @@ class DeploymentChannelProfile {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final channelTypeValue = channelType;
-    if (channelTypeValue != null) {
-      map['channelType'] = channelTypeValue;
-    }
-    final disableBargeInControlValue = disableBargeInControl;
-    if (disableBargeInControlValue != null) {
-      map['disableBargeInControl'] = disableBargeInControlValue;
-    }
-    final disableDtmfValue = disableDtmf;
-    if (disableDtmfValue != null) {
-      map['disableDtmf'] = disableDtmfValue;
-    }
-    final personaPropertyValue = personaProperty;
-    if (personaPropertyValue != null) {
-      map['personaProperty'] = personaPropertyValue.toMap();
-    }
-    final profileIdValue = profileId;
-    if (profileIdValue != null) {
-      map['profileId'] = profileIdValue;
-    }
-    final webWidgetConfigValue = webWidgetConfig;
-    if (webWidgetConfigValue != null) {
-      map['webWidgetConfig'] = webWidgetConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'channelType': ?channelType,
+      'disableBargeInControl': ?disableBargeInControl,
+      'disableDtmf': ?disableDtmf,
+      'personaProperty': ?personaProperty == null ? null : personaProperty!.toMap(),
+      'profileId': ?profileId,
+      'webWidgetConfig': ?webWidgetConfig == null ? null : webWidgetConfig!.toMap(),
+    };
   }
 
   factory DeploymentChannelProfile.fromMap(Map<String, dynamic> map) {
     return DeploymentChannelProfile(
-      channelType:
-          map['channelType'] == null ? null : map['channelType'] as String,
-      disableBargeInControl: map['disableBargeInControl'] == null
-          ? null
-          : map['disableBargeInControl'] as bool,
-      disableDtmf:
-          map['disableDtmf'] == null ? null : map['disableDtmf'] as bool,
-      personaProperty: map['personaProperty'] == null
-          ? null
-          : DeploymentChannelProfilePersonaProperty.fromMap(
-              (map['personaProperty'] as Map).cast<String, dynamic>()),
+      channelType: map['channelType'] == null ? null : map['channelType'] as String,
+      disableBargeInControl: map['disableBargeInControl'] == null ? null : map['disableBargeInControl'] as bool,
+      disableDtmf: map['disableDtmf'] == null ? null : map['disableDtmf'] as bool,
+      personaProperty: map['personaProperty'] == null ? null : DeploymentChannelProfilePersonaProperty.fromMap((map['personaProperty'] as Map).cast<String, dynamic>()),
       profileId: map['profileId'] == null ? null : map['profileId'] as String,
-      webWidgetConfig: map['webWidgetConfig'] == null
-          ? null
-          : DeploymentChannelProfileWebWidgetConfig.fromMap(
-              (map['webWidgetConfig'] as Map).cast<String, dynamic>()),
+      webWidgetConfig: map['webWidgetConfig'] == null ? null : DeploymentChannelProfileWebWidgetConfig.fromMap((map['webWidgetConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -9,13 +9,11 @@ import 'dataset_iam_member_condition.dart';
 /// {@macro pulumi_healthcare_dataset_iam_member_dataset_iam_member_args_doc}
 class DatasetIamMemberArgs {
   final pulumi.Input<DatasetIamMemberCondition>? condition;
-
   /// The dataset ID, in the form
   /// `{project_id}/{location_name}/{dataset_name}` or
   /// `{location_name}/{dataset_name}`. In the second form, the provider's
   /// project setting will be used as a fallback.
   final pulumi.Input<String> datasetId;
-
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -25,7 +23,6 @@ class DatasetIamMemberArgs {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   final pulumi.Input<String> member;
-
   /// The role that should be applied. Only one
   /// `gcp.healthcare.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -41,35 +38,28 @@ class DatasetIamMemberArgs {
     required String datasetId,
     required String member,
     required String role,
-  })  : condition =
-            pulumi.Input.asOptionalInput<DatasetIamMemberCondition>(condition),
-        datasetId = pulumi.Input.asInput<String>(datasetId),
-        member = pulumi.Input.asInput<String>(member),
-        role = pulumi.Input.asInput<String>(role);
+  }) :
+      condition = pulumi.Input.asOptionalInput<DatasetIamMemberCondition>(condition),
+      datasetId = pulumi.Input.asInput<String>(datasetId),
+      member = pulumi.Input.asInput<String>(member),
+      role = pulumi.Input.asInput<String>(role);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final conditionValue = condition;
-    if (conditionValue != null) {
-      map['condition'] = pulumi.Input.mapOptionalInputValue<
-          DatasetIamMemberCondition,
-          Map<String, dynamic>>(conditionValue, (value) => value.toMap());
-    }
-    map['datasetId'] = datasetId;
-    map['member'] = member;
-    map['role'] = role;
-    return map;
+    return <String, dynamic>{
+      'condition': ?pulumi.Input.mapOptionalInputValue<DatasetIamMemberCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'datasetId': datasetId,
+      'member': member,
+      'role': role,
+    };
   }
 
   factory DatasetIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return DatasetIamMemberArgs(
-      condition: map['condition'] == null
-          ? null
-          : DatasetIamMemberCondition.fromMap(
-              (map['condition'] as Map).cast<String, dynamic>()),
+      condition: map['condition'] == null ? null : DatasetIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
       datasetId: map['datasetId'] as String,
       member: map['member'] as String,
       role: map['role'] as String,
     );
   }
 }
+

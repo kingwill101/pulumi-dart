@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The configuration of the HTTP bridge for a device registry.
 class HttpConfigResponse {
   /// If enabled, allows devices to use DeviceService via the HTTP protocol. Otherwise, any requests to DeviceService will fail for this registry.
@@ -12,9 +13,9 @@ class HttpConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['httpEnabledState'] = httpEnabledState;
-    return map;
+    return <String, dynamic>{
+      'httpEnabledState': httpEnabledState,
+    };
   }
 
   factory HttpConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class HttpConfigResponse {
     );
   }
 }
+

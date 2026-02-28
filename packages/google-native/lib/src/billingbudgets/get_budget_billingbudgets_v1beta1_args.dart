@@ -16,14 +16,15 @@ class GetBudgetBillingbudgetsV1beta1Args {
   GetBudgetBillingbudgetsV1beta1Args({
     required String billingAccountId,
     required String budgetId,
-  })  : billingAccountId = pulumi.Input.asInput<String>(billingAccountId),
-        budgetId = pulumi.Input.asInput<String>(budgetId);
+  }) :
+      billingAccountId = pulumi.Input.asInput<String>(billingAccountId),
+      budgetId = pulumi.Input.asInput<String>(budgetId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['billingAccountId'] = billingAccountId;
-    map['budgetId'] = budgetId;
-    return map;
+    return <String, dynamic>{
+      'billingAccountId': billingAccountId,
+      'budgetId': budgetId,
+    };
   }
 
   factory GetBudgetBillingbudgetsV1beta1Args.fromMap(Map<String, dynamic> map) {
@@ -33,3 +34,4 @@ class GetBudgetBillingbudgetsV1beta1Args {
     );
   }
 }
+

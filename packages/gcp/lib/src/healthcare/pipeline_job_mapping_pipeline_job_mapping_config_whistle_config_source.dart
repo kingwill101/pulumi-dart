@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource {
   /// Directory path where all the Whistle files are located.
   /// Example: gs://{bucket-id}/{path/to/import-root/dir}
   final String importUriPrefix;
-
   /// Main configuration file which has the entrypoint or the root function.
   /// Example: gs://{bucket-id}/{path/to/import-root/dir}/entrypoint-file-name.wstl.
   final String uri;
@@ -18,17 +18,17 @@ class PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['importUriPrefix'] = importUriPrefix;
-    map['uri'] = uri;
-    return map;
+    return <String, dynamic>{
+      'importUriPrefix': importUriPrefix,
+      'uri': uri,
+    };
   }
 
-  factory PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource.fromMap(
-      Map<String, dynamic> map) {
+  factory PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource.fromMap(Map<String, dynamic> map) {
     return PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource(
       importUriPrefix: map['importUriPrefix'] as String,
       uri: map['uri'] as String,
     );
   }
 }
+

@@ -14,12 +14,13 @@ class GetSavingsPlanArgs {
   /// [savingsPlanId] The ID of the Savings Plan.
   GetSavingsPlanArgs({
     required String savingsPlanId,
-  }) : savingsPlanId = pulumi.Input.asInput<String>(savingsPlanId);
+  }) :
+      savingsPlanId = pulumi.Input.asInput<String>(savingsPlanId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['savingsPlanId'] = savingsPlanId;
-    return map;
+    return <String, dynamic>{
+      'savingsPlanId': savingsPlanId,
+    };
   }
 
   factory GetSavingsPlanArgs.fromMap(Map<String, dynamic> map) {
@@ -28,3 +29,4 @@ class GetSavingsPlanArgs {
     );
   }
 }
+

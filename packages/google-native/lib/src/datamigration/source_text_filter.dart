@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Filter for text-based data types like varchar.
 class SourceTextFilter {
   /// Optional. The filter will match columns with length smaller than or equal to this number.
   final String? sourceMaxLengthFilter;
-
   /// Optional. The filter will match columns with length greater than or equal to this number.
   final String? sourceMinLengthFilter;
 
@@ -17,26 +17,17 @@ class SourceTextFilter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final sourceMaxLengthFilterValue = sourceMaxLengthFilter;
-    if (sourceMaxLengthFilterValue != null) {
-      map['sourceMaxLengthFilter'] = sourceMaxLengthFilterValue;
-    }
-    final sourceMinLengthFilterValue = sourceMinLengthFilter;
-    if (sourceMinLengthFilterValue != null) {
-      map['sourceMinLengthFilter'] = sourceMinLengthFilterValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'sourceMaxLengthFilter': ?sourceMaxLengthFilter,
+      'sourceMinLengthFilter': ?sourceMinLengthFilter,
+    };
   }
 
   factory SourceTextFilter.fromMap(Map<String, dynamic> map) {
     return SourceTextFilter(
-      sourceMaxLengthFilter: map['sourceMaxLengthFilter'] == null
-          ? null
-          : map['sourceMaxLengthFilter'] as String,
-      sourceMinLengthFilter: map['sourceMinLengthFilter'] == null
-          ? null
-          : map['sourceMinLengthFilter'] as String,
+      sourceMaxLengthFilter: map['sourceMaxLengthFilter'] == null ? null : map['sourceMaxLengthFilter'] as String,
+      sourceMinLengthFilter: map['sourceMinLengthFilter'] == null ? null : map['sourceMinLengthFilter'] as String,
     );
   }
 }
+

@@ -22,22 +22,19 @@ class GetDatacenterConnectorArgs {
     required String location,
     String? project,
     required String sourceId,
-  })  : datacenterConnectorId =
-            pulumi.Input.asInput<String>(datacenterConnectorId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        sourceId = pulumi.Input.asInput<String>(sourceId);
+  }) :
+      datacenterConnectorId = pulumi.Input.asInput<String>(datacenterConnectorId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      sourceId = pulumi.Input.asInput<String>(sourceId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['datacenterConnectorId'] = datacenterConnectorId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['sourceId'] = sourceId;
-    return map;
+    return <String, dynamic>{
+      'datacenterConnectorId': datacenterConnectorId,
+      'location': location,
+      'project': ?project,
+      'sourceId': sourceId,
+    };
   }
 
   factory GetDatacenterConnectorArgs.fromMap(Map<String, dynamic> map) {
@@ -49,3 +46,4 @@ class GetDatacenterConnectorArgs {
     );
   }
 }
+

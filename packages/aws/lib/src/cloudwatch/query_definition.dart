@@ -148,16 +148,12 @@ import 'query_definition_args.dart';
 class QueryDefinition extends pulumi.CustomResource {
   /// Specific log groups to use with the query.
   late final pulumi.Output<List<String>?> logGroupNames;
-
   /// The name of the query.
   late final pulumi.Output<String> name;
-
   /// The query definition ID.
   late final pulumi.Output<String> queryDefinitionId;
-
   /// The query to save. You can read more about CloudWatch Logs Query Syntax in the [documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html).
   late final pulumi.Output<String> queryString;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

@@ -13,15 +13,15 @@ class ScraperSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['eks'] = eks.toMap();
-    return map;
+    return <String, dynamic>{
+      'eks': eks.toMap(),
+    };
   }
 
   factory ScraperSource.fromMap(Map<String, dynamic> map) {
     return ScraperSource(
-      eks:
-          ScraperSourceEks.fromMap((map['eks'] as Map).cast<String, dynamic>()),
+      eks: ScraperSourceEks.fromMap((map['eks'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

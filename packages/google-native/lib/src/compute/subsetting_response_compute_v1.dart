@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and Traffic Director.
 class SubsettingResponseComputeV1 {
   final String policy;
@@ -11,9 +12,9 @@ class SubsettingResponseComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['policy'] = policy;
-    return map;
+    return <String, dynamic>{
+      'policy': policy,
+    };
   }
 
   factory SubsettingResponseComputeV1.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class SubsettingResponseComputeV1 {
     );
   }
 }
+

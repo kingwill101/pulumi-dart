@@ -15,21 +15,15 @@ class RowLayout {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final rowsValue = rows;
-    if (rowsValue != null) {
-      map['rows'] = pulumi.Input.encodeList<Row, Map<String, dynamic>>(
-          rowsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'rows': ?rows == null ? null : pulumi.Input.encodeList<Row, Map<String, dynamic>>(rows!, (value) => value.toMap()),
+    };
   }
 
   factory RowLayout.fromMap(Map<String, dynamic> map) {
     return RowLayout(
-      rows: map['rows'] == null
-          ? null
-          : pulumi.Input.decodeList<Row>(map['rows'],
-              (value) => Row.fromMap((value as Map).cast<String, dynamic>())),
+      rows: map['rows'] == null ? null : pulumi.Input.decodeList<Row>(map['rows'], (value) => Row.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

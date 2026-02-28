@@ -5,12 +5,9 @@ import 'google_devtools_containeranalysis_v1alpha1_slsa_provenance_zero_two_slsa
 /// Identifies the event that kicked off the build.
 class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponse {
   /// Describes where the config file that kicked off the build came from.
-  final GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponse
-      configSource;
-
+  final GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponse configSource;
   /// Any other builder-controlled inputs necessary for correctly evaluating the build.
   final Map<String, String> environment;
-
   /// Collection of all external inputs that influenced the build on top of invocation.configSource.
   final Map<String, String> parameters;
 
@@ -25,21 +22,19 @@ class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['configSource'] = configSource.toMap();
-    map['environment'] = environment;
-    map['parameters'] = parameters;
-    return map;
+    return <String, dynamic>{
+      'configSource': configSource.toMap(),
+      'environment': environment,
+      'parameters': parameters,
+    };
   }
 
-  factory GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponse.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponse(
-      configSource:
-          GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponse
-              .fromMap((map['configSource'] as Map).cast<String, dynamic>()),
+      configSource: GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponse.fromMap((map['configSource'] as Map).cast<String, dynamic>()),
       environment: (map['environment'] as Map).cast<String, String>(),
       parameters: (map['parameters'] as Map).cast<String, String>(),
     );
   }
 }
+

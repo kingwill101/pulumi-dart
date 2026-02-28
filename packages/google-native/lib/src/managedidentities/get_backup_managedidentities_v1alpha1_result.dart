@@ -1,28 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getBackup.
 class GetBackupManagedidentitiesV1alpha1Result {
   /// The time the backups was created.
   final String createTime;
-
   /// Optional. A short description of the backup.
   final String description;
-
   /// Optional. Resource labels to represent user provided metadata.
   final Map<String, String> labels;
-
   /// The unique name of the Backup in the form of projects/{project_id}/locations/global/domains/{domain_name}/backups/{name}
   final String name;
-
   /// The current state of the backup.
   final String state;
-
   /// Additional information about the current status of this backup, if available.
   final String statusMessage;
-
   /// Indicates whether it’s an on-demand backup or scheduled.
   final String type;
-
   /// Last update time.
   final String updateTime;
 
@@ -47,20 +41,19 @@ class GetBackupManagedidentitiesV1alpha1Result {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['description'] = description;
-    map['labels'] = labels;
-    map['name'] = name;
-    map['state'] = state;
-    map['statusMessage'] = statusMessage;
-    map['type'] = type;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'description': description,
+      'labels': labels,
+      'name': name,
+      'state': state,
+      'statusMessage': statusMessage,
+      'type': type,
+      'updateTime': updateTime,
+    };
   }
 
-  factory GetBackupManagedidentitiesV1alpha1Result.fromMap(
-      Map<String, dynamic> map) {
+  factory GetBackupManagedidentitiesV1alpha1Result.fromMap(Map<String, dynamic> map) {
     return GetBackupManagedidentitiesV1alpha1Result(
       createTime: map['createTime'] as String,
       description: map['description'] as String,
@@ -73,3 +66,4 @@ class GetBackupManagedidentitiesV1alpha1Result {
     );
   }
 }
+

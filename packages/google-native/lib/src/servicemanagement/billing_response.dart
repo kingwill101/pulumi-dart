@@ -15,19 +15,15 @@ class BillingResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['consumerDestinations'] = pulumi.Input.encodeList<
-        BillingDestinationResponse,
-        Map<String, dynamic>>(consumerDestinations, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'consumerDestinations': pulumi.Input.encodeList<BillingDestinationResponse, Map<String, dynamic>>(consumerDestinations, (value) => value.toMap()),
+    };
   }
 
   factory BillingResponse.fromMap(Map<String, dynamic> map) {
     return BillingResponse(
-      consumerDestinations: pulumi.Input.decodeList<BillingDestinationResponse>(
-          map['consumerDestinations'],
-          (value) => BillingDestinationResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      consumerDestinations: pulumi.Input.decodeList<BillingDestinationResponse>(map['consumerDestinations'], (value) => BillingDestinationResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -14,24 +14,15 @@ class PipeSourceParametersFilterCriteria {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final filtersValue = filters;
-    if (filtersValue != null) {
-      map['filters'] = pulumi.Input.encodeList<
-          PipeSourceParametersFilterCriteriaFilter,
-          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'filters': ?filters == null ? null : pulumi.Input.encodeList<PipeSourceParametersFilterCriteriaFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+    };
   }
 
   factory PipeSourceParametersFilterCriteria.fromMap(Map<String, dynamic> map) {
     return PipeSourceParametersFilterCriteria(
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<PipeSourceParametersFilterCriteriaFilter>(
-              map['filters'],
-              (value) => PipeSourceParametersFilterCriteriaFilter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<PipeSourceParametersFilterCriteriaFilter>(map['filters'], (value) => PipeSourceParametersFilterCriteriaFilter.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

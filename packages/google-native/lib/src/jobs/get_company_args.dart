@@ -16,17 +16,15 @@ class GetCompanyArgs {
   GetCompanyArgs({
     required String companyId,
     String? project,
-  })  : companyId = pulumi.Input.asInput<String>(companyId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      companyId = pulumi.Input.asInput<String>(companyId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['companyId'] = companyId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'companyId': companyId,
+      'project': ?project,
+    };
   }
 
   factory GetCompanyArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetCompanyArgs {
     );
   }
 }
+

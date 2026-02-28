@@ -18,24 +18,17 @@ class GrafeasV1beta1IntotoDetailsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['signatures'] = pulumi.Input.encodeList<
-        GrafeasV1beta1IntotoSignatureResponse,
-        Map<String, dynamic>>(signatures, (value) => value.toMap());
-    map['signed'] = signed.toMap();
-    return map;
+    return <String, dynamic>{
+      'signatures': pulumi.Input.encodeList<GrafeasV1beta1IntotoSignatureResponse, Map<String, dynamic>>(signatures, (value) => value.toMap()),
+      'signed': signed.toMap(),
+    };
   }
 
-  factory GrafeasV1beta1IntotoDetailsResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GrafeasV1beta1IntotoDetailsResponse.fromMap(Map<String, dynamic> map) {
     return GrafeasV1beta1IntotoDetailsResponse(
-      signatures:
-          pulumi.Input.decodeList<GrafeasV1beta1IntotoSignatureResponse>(
-              map['signatures'],
-              (value) => GrafeasV1beta1IntotoSignatureResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      signed:
-          LinkResponse.fromMap((map['signed'] as Map).cast<String, dynamic>()),
+      signatures: pulumi.Input.decodeList<GrafeasV1beta1IntotoSignatureResponse>(map['signatures'], (value) => GrafeasV1beta1IntotoSignatureResponse.fromMap((value as Map).cast<String, dynamic>())),
+      signed: LinkResponse.fromMap((map['signed'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

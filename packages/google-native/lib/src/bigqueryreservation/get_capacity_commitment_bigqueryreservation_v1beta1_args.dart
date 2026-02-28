@@ -19,24 +19,20 @@ class GetCapacityCommitmentBigqueryreservationV1beta1Args {
     required String capacityCommitmentId,
     required String location,
     String? project,
-  })  : capacityCommitmentId =
-            pulumi.Input.asInput<String>(capacityCommitmentId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      capacityCommitmentId = pulumi.Input.asInput<String>(capacityCommitmentId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['capacityCommitmentId'] = capacityCommitmentId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'capacityCommitmentId': capacityCommitmentId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
-  factory GetCapacityCommitmentBigqueryreservationV1beta1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetCapacityCommitmentBigqueryreservationV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetCapacityCommitmentBigqueryreservationV1beta1Args(
       capacityCommitmentId: map['capacityCommitmentId'] as String,
       location: map['location'] as String,
@@ -44,3 +40,4 @@ class GetCapacityCommitmentBigqueryreservationV1beta1Args {
     );
   }
 }
+

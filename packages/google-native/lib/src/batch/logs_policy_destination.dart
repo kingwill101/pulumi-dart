@@ -16,3 +16,4 @@ enum LogsPolicyDestination {
     throw ArgumentError('Unknown LogsPolicyDestination value: $value');
   }
 }
+

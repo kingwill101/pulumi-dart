@@ -208,54 +208,38 @@ import 'snapshot_copy_args.dart';
 class SnapshotCopy extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the EBS Snapshot.
   late final pulumi.Output<String> arn;
-
   /// Specifies a completion duration to initiate a time-based snapshot copy. Time-based snapshot copy operations complete within the specified duration.  Value must be between 15 and 2880 minutes, in 15 minute increments only.
   late final pulumi.Output<int?> completionDurationMinutes;
-
   /// The data encryption key identifier for the snapshot.
   late final pulumi.Output<String> dataEncryptionKeyId;
-
   /// A description of what the snapshot is.
   late final pulumi.Output<String?> description;
-
   /// Whether the snapshot is encrypted.
   late final pulumi.Output<bool?> encrypted;
-
   /// The ARN for the KMS encryption key.
   late final pulumi.Output<String?> kmsKeyId;
   late final pulumi.Output<String> outpostArn;
-
   /// Value from an Amazon-maintained list (`amazon`, `aws-marketplace`, `microsoft`) of snapshot owners.
   late final pulumi.Output<String> ownerAlias;
-
   /// The AWS account ID of the snapshot owner.
   late final pulumi.Output<String> ownerId;
-
   /// Indicates whether to permanently restore an archived snapshot.
   late final pulumi.Output<bool?> permanentRestore;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The region of the source snapshot.
   late final pulumi.Output<String> sourceRegion;
-
   /// The ARN for the snapshot to be copied.
   late final pulumi.Output<String> sourceSnapshotId;
-
   /// The name of the storage tier. Valid values are `archive` and `standard`. Default value is `standard`.
   late final pulumi.Output<String> storageTier;
-
   /// A map of tags for the snapshot.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Specifies the number of days for which to temporarily restore an archived snapshot. Required for temporary restores only. The snapshot will be automatically re-archived after this period.
   late final pulumi.Output<int?> temporaryRestoreDays;
   late final pulumi.Output<String> volumeId;
-
   /// The size of the drive in GiBs.
   late final pulumi.Output<int> volumeSize;
 
@@ -274,8 +258,7 @@ class SnapshotCopy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
-    this.completionDurationMinutes =
-        registerOutput<int?>('completionDurationMinutes');
+    this.completionDurationMinutes = registerOutput<int?>('completionDurationMinutes');
     this.dataEncryptionKeyId = registerOutput<String>('dataEncryptionKeyId');
     this.description = registerOutput<String?>('description');
     this.encrypted = registerOutput<bool?>('encrypted');

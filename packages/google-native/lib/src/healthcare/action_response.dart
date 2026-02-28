@@ -6,28 +6,20 @@ import 'image_config_response_healthcare_v1beta1.dart';
 class ActionResponse {
   /// Inspect image and transform sensitive burnt-in text. Doesn't apply to elements nested in a sequence, which revert to `Keep`. Supported [tags](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html): PixelData
   final ImageConfigResponseHealthcareV1beta1 cleanImageTag;
-
   /// Inspect text and transform sensitive text. Configurable via TextConfig. Supported Value Representations: AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
   final Map<String, dynamic> cleanTextTag;
-
   /// Delete tag.
   final Map<String, dynamic> deleteTag;
-
   /// Keep tag unchanged.
   final Map<String, dynamic> keepTag;
-
   /// Select all tags with the listed tag IDs, names, or Value Representations (VRs). Examples: ID: "00100010" Keyword: "PatientName" VR: "PN"
   final List<String> queries;
-
   /// Recursively apply DICOM de-id to tags nested in a sequence. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): SQ
   final Map<String, dynamic> recurseTag;
-
   /// Replace UID with a new generated UID. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): UI
   final Map<String, dynamic> regenUidTag;
-
   /// Replace with empty tag.
   final Map<String, dynamic> removeTag;
-
   /// Reset tag to a placeholder value.
   final Map<String, dynamic> resetTag;
 
@@ -54,23 +46,22 @@ class ActionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cleanImageTag'] = cleanImageTag.toMap();
-    map['cleanTextTag'] = cleanTextTag;
-    map['deleteTag'] = deleteTag;
-    map['keepTag'] = keepTag;
-    map['queries'] = queries;
-    map['recurseTag'] = recurseTag;
-    map['regenUidTag'] = regenUidTag;
-    map['removeTag'] = removeTag;
-    map['resetTag'] = resetTag;
-    return map;
+    return <String, dynamic>{
+      'cleanImageTag': cleanImageTag.toMap(),
+      'cleanTextTag': cleanTextTag,
+      'deleteTag': deleteTag,
+      'keepTag': keepTag,
+      'queries': queries,
+      'recurseTag': recurseTag,
+      'regenUidTag': regenUidTag,
+      'removeTag': removeTag,
+      'resetTag': resetTag,
+    };
   }
 
   factory ActionResponse.fromMap(Map<String, dynamic> map) {
     return ActionResponse(
-      cleanImageTag: ImageConfigResponseHealthcareV1beta1.fromMap(
-          (map['cleanImageTag'] as Map).cast<String, dynamic>()),
+      cleanImageTag: ImageConfigResponseHealthcareV1beta1.fromMap((map['cleanImageTag'] as Map).cast<String, dynamic>()),
       cleanTextTag: (map['cleanTextTag'] as Map).cast<String, dynamic>(),
       deleteTag: (map['deleteTag'] as Map).cast<String, dynamic>(),
       keepTag: (map['keepTag'] as Map).cast<String, dynamic>(),
@@ -82,3 +73,4 @@ class ActionResponse {
     );
   }
 }
+

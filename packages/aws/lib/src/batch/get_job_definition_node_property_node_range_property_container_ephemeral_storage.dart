@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage {
   final int sizeInGib;
 
@@ -10,15 +11,15 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['sizeInGib'] = sizeInGib;
-    return map;
+    return <String, dynamic>{
+      'sizeInGib': sizeInGib,
+    };
   }
 
-  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage.fromMap(
-      Map<String, dynamic> map) {
+  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage(
       sizeInGib: map['sizeInGib'] as int,
     );
   }
 }
+

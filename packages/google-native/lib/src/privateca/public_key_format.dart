@@ -15,3 +15,4 @@ enum PublicKeyFormat {
     throw ArgumentError('Unknown PublicKeyFormat value: $value');
   }
 }
+

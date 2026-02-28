@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AnalyzerConfigurationInternalAccessAnalysisRuleInclusion {
   /// List of AWS account IDs to apply to the internal access analysis rule criteria. Account IDs can only be applied to the analysis rule criteria for organization-level analyzers.
   final List<String>? accountIds;
-
   /// List of resource ARNs to apply to the internal access analysis rule criteria. The analyzer will only generate findings for resources that match these ARNs.
   final List<String>? resourceArns;
-
   /// List of resource types to apply to the internal access analysis rule criteria. The analyzer will only generate findings for resources of these types. Refer to [InternalAccessAnalysisRuleCriteria](https://docs.aws.amazon.com/access-analyzer/latest/APIReference/API_InternalAccessAnalysisRuleCriteria.html) in the AWS IAM Access Analyzer API Reference for valid values.
   final List<String>? resourceTypes;
 
@@ -21,34 +20,19 @@ class AnalyzerConfigurationInternalAccessAnalysisRuleInclusion {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final accountIdsValue = accountIds;
-    if (accountIdsValue != null) {
-      map['accountIds'] = accountIdsValue;
-    }
-    final resourceArnsValue = resourceArns;
-    if (resourceArnsValue != null) {
-      map['resourceArns'] = resourceArnsValue;
-    }
-    final resourceTypesValue = resourceTypes;
-    if (resourceTypesValue != null) {
-      map['resourceTypes'] = resourceTypesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'accountIds': ?accountIds,
+      'resourceArns': ?resourceArns,
+      'resourceTypes': ?resourceTypes,
+    };
   }
 
-  factory AnalyzerConfigurationInternalAccessAnalysisRuleInclusion.fromMap(
-      Map<String, dynamic> map) {
+  factory AnalyzerConfigurationInternalAccessAnalysisRuleInclusion.fromMap(Map<String, dynamic> map) {
     return AnalyzerConfigurationInternalAccessAnalysisRuleInclusion(
-      accountIds: map['accountIds'] == null
-          ? null
-          : (map['accountIds'] as List).cast<String>(),
-      resourceArns: map['resourceArns'] == null
-          ? null
-          : (map['resourceArns'] as List).cast<String>(),
-      resourceTypes: map['resourceTypes'] == null
-          ? null
-          : (map['resourceTypes'] as List).cast<String>(),
+      accountIds: map['accountIds'] == null ? null : (map['accountIds'] as List).cast<String>(),
+      resourceArns: map['resourceArns'] == null ? null : (map['resourceArns'] as List).cast<String>(),
+      resourceTypes: map['resourceTypes'] == null ? null : (map['resourceTypes'] as List).cast<String>(),
     );
   }
 }
+

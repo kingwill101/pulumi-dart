@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DeploymentLabel {
   /// Key for label.
   final String? key;
-
   /// Value of label.
   final String? value;
 
@@ -16,16 +16,10 @@ class DeploymentLabel {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final keyValue = key;
-    if (keyValue != null) {
-      map['key'] = keyValue;
-    }
-    final valueValue = value;
-    if (valueValue != null) {
-      map['value'] = valueValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'key': ?key,
+      'value': ?value,
+    };
   }
 
   factory DeploymentLabel.fromMap(Map<String, dynamic> map) {
@@ -35,3 +29,4 @@ class DeploymentLabel {
     );
   }
 }
+

@@ -14,15 +14,15 @@ class AutomaticResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['customerManagedEncryption'] = customerManagedEncryption.toMap();
-    return map;
+    return <String, dynamic>{
+      'customerManagedEncryption': customerManagedEncryption.toMap(),
+    };
   }
 
   factory AutomaticResponse.fromMap(Map<String, dynamic> map) {
     return AutomaticResponse(
-      customerManagedEncryption: CustomerManagedEncryptionResponse.fromMap(
-          (map['customerManagedEncryption'] as Map).cast<String, dynamic>()),
+      customerManagedEncryption: CustomerManagedEncryptionResponse.fromMap((map['customerManagedEncryption'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

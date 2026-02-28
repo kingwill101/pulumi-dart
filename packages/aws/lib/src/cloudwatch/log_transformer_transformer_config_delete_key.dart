@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LogTransformerTransformerConfigDeleteKey {
   /// Specifies the keys to be deleted.
   final List<String> withKeys;
@@ -11,15 +12,15 @@ class LogTransformerTransformerConfigDeleteKey {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['withKeys'] = withKeys;
-    return map;
+    return <String, dynamic>{
+      'withKeys': withKeys,
+    };
   }
 
-  factory LogTransformerTransformerConfigDeleteKey.fromMap(
-      Map<String, dynamic> map) {
+  factory LogTransformerTransformerConfigDeleteKey.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigDeleteKey(
       withKeys: (map['withKeys'] as List).cast<String>(),
     );
   }
 }
+

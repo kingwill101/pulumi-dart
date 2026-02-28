@@ -5,10 +5,8 @@ import 'managed_zone_forwarding_config_name_server_target_response_dns_v1beta2.d
 
 class ManagedZoneForwardingConfigResponseDnsV1beta2 {
   final String kind;
-
   /// List of target name servers to forward to. Cloud DNS selects the best available name server if more than one target is given.
-  final List<ManagedZoneForwardingConfigNameServerTargetResponseDnsV1beta2>
-      targetNameServers;
+  final List<ManagedZoneForwardingConfigNameServerTargetResponseDnsV1beta2> targetNameServers;
 
   /// Creates a new [ManagedZoneForwardingConfigResponseDnsV1beta2].
   /// [kind] Required.
@@ -19,24 +17,17 @@ class ManagedZoneForwardingConfigResponseDnsV1beta2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kind'] = kind;
-    map['targetNameServers'] = pulumi.Input.encodeList<
-        ManagedZoneForwardingConfigNameServerTargetResponseDnsV1beta2,
-        Map<String, dynamic>>(targetNameServers, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'kind': kind,
+      'targetNameServers': pulumi.Input.encodeList<ManagedZoneForwardingConfigNameServerTargetResponseDnsV1beta2, Map<String, dynamic>>(targetNameServers, (value) => value.toMap()),
+    };
   }
 
-  factory ManagedZoneForwardingConfigResponseDnsV1beta2.fromMap(
-      Map<String, dynamic> map) {
+  factory ManagedZoneForwardingConfigResponseDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return ManagedZoneForwardingConfigResponseDnsV1beta2(
       kind: map['kind'] as String,
-      targetNameServers: pulumi.Input.decodeList<
-              ManagedZoneForwardingConfigNameServerTargetResponseDnsV1beta2>(
-          map['targetNameServers'],
-          (value) =>
-              ManagedZoneForwardingConfigNameServerTargetResponseDnsV1beta2
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      targetNameServers: pulumi.Input.decodeList<ManagedZoneForwardingConfigNameServerTargetResponseDnsV1beta2>(map['targetNameServers'], (value) => ManagedZoneForwardingConfigNameServerTargetResponseDnsV1beta2.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

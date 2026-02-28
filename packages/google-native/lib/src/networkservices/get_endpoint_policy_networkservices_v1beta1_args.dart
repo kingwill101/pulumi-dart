@@ -19,23 +19,20 @@ class GetEndpointPolicyNetworkservicesV1beta1Args {
     required String endpointPolicyId,
     required String location,
     String? project,
-  })  : endpointPolicyId = pulumi.Input.asInput<String>(endpointPolicyId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      endpointPolicyId = pulumi.Input.asInput<String>(endpointPolicyId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['endpointPolicyId'] = endpointPolicyId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'endpointPolicyId': endpointPolicyId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
-  factory GetEndpointPolicyNetworkservicesV1beta1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetEndpointPolicyNetworkservicesV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetEndpointPolicyNetworkservicesV1beta1Args(
       endpointPolicyId: map['endpointPolicyId'] as String,
       location: map['location'] as String,
@@ -43,3 +40,4 @@ class GetEndpointPolicyNetworkservicesV1beta1Args {
     );
   }
 }
+

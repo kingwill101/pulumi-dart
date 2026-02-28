@@ -30,31 +30,25 @@ class RRSetRoutingPolicyResponseDnsV1beta2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['geo'] = geo.toMap();
-    map['geoPolicy'] = geoPolicy.toMap();
-    map['kind'] = kind;
-    map['primaryBackup'] = primaryBackup.toMap();
-    map['wrr'] = wrr.toMap();
-    map['wrrPolicy'] = wrrPolicy.toMap();
-    return map;
+    return <String, dynamic>{
+      'geo': geo.toMap(),
+      'geoPolicy': geoPolicy.toMap(),
+      'kind': kind,
+      'primaryBackup': primaryBackup.toMap(),
+      'wrr': wrr.toMap(),
+      'wrrPolicy': wrrPolicy.toMap(),
+    };
   }
 
-  factory RRSetRoutingPolicyResponseDnsV1beta2.fromMap(
-      Map<String, dynamic> map) {
+  factory RRSetRoutingPolicyResponseDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return RRSetRoutingPolicyResponseDnsV1beta2(
-      geo: RRSetRoutingPolicyGeoPolicyResponseDnsV1beta2.fromMap(
-          (map['geo'] as Map).cast<String, dynamic>()),
-      geoPolicy: RRSetRoutingPolicyGeoPolicyResponseDnsV1beta2.fromMap(
-          (map['geoPolicy'] as Map).cast<String, dynamic>()),
+      geo: RRSetRoutingPolicyGeoPolicyResponseDnsV1beta2.fromMap((map['geo'] as Map).cast<String, dynamic>()),
+      geoPolicy: RRSetRoutingPolicyGeoPolicyResponseDnsV1beta2.fromMap((map['geoPolicy'] as Map).cast<String, dynamic>()),
       kind: map['kind'] as String,
-      primaryBackup:
-          RRSetRoutingPolicyPrimaryBackupPolicyResponseDnsV1beta2.fromMap(
-              (map['primaryBackup'] as Map).cast<String, dynamic>()),
-      wrr: RRSetRoutingPolicyWrrPolicyResponseDnsV1beta2.fromMap(
-          (map['wrr'] as Map).cast<String, dynamic>()),
-      wrrPolicy: RRSetRoutingPolicyWrrPolicyResponseDnsV1beta2.fromMap(
-          (map['wrrPolicy'] as Map).cast<String, dynamic>()),
+      primaryBackup: RRSetRoutingPolicyPrimaryBackupPolicyResponseDnsV1beta2.fromMap((map['primaryBackup'] as Map).cast<String, dynamic>()),
+      wrr: RRSetRoutingPolicyWrrPolicyResponseDnsV1beta2.fromMap((map['wrr'] as Map).cast<String, dynamic>()),
+      wrrPolicy: RRSetRoutingPolicyWrrPolicyResponseDnsV1beta2.fromMap((map['wrrPolicy'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

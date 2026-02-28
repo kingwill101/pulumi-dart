@@ -8,10 +8,8 @@ import 'source_scoring_config_response.dart';
 class SourceConfigResponse {
   /// The crowding configuration for the source.
   final SourceCrowdingConfigResponse crowdingConfig;
-
   /// The scoring configuration for the source.
   final SourceScoringConfigResponse scoringConfig;
-
   /// The source for which this configuration is to be used.
   final SourceResponse source;
 
@@ -26,21 +24,19 @@ class SourceConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['crowdingConfig'] = crowdingConfig.toMap();
-    map['scoringConfig'] = scoringConfig.toMap();
-    map['source'] = source.toMap();
-    return map;
+    return <String, dynamic>{
+      'crowdingConfig': crowdingConfig.toMap(),
+      'scoringConfig': scoringConfig.toMap(),
+      'source': source.toMap(),
+    };
   }
 
   factory SourceConfigResponse.fromMap(Map<String, dynamic> map) {
     return SourceConfigResponse(
-      crowdingConfig: SourceCrowdingConfigResponse.fromMap(
-          (map['crowdingConfig'] as Map).cast<String, dynamic>()),
-      scoringConfig: SourceScoringConfigResponse.fromMap(
-          (map['scoringConfig'] as Map).cast<String, dynamic>()),
-      source: SourceResponse.fromMap(
-          (map['source'] as Map).cast<String, dynamic>()),
+      crowdingConfig: SourceCrowdingConfigResponse.fromMap((map['crowdingConfig'] as Map).cast<String, dynamic>()),
+      scoringConfig: SourceScoringConfigResponse.fromMap((map['scoringConfig'] as Map).cast<String, dynamic>()),
+      source: SourceResponse.fromMap((map['source'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

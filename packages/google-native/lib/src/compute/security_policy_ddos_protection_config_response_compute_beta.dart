@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SecurityPolicyDdosProtectionConfigResponseComputeBeta {
   final String ddosProtection;
 
@@ -10,15 +11,15 @@ class SecurityPolicyDdosProtectionConfigResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ddosProtection'] = ddosProtection;
-    return map;
+    return <String, dynamic>{
+      'ddosProtection': ddosProtection,
+    };
   }
 
-  factory SecurityPolicyDdosProtectionConfigResponseComputeBeta.fromMap(
-      Map<String, dynamic> map) {
+  factory SecurityPolicyDdosProtectionConfigResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyDdosProtectionConfigResponseComputeBeta(
       ddosProtection: map['ddosProtection'] as String,
     );
   }
 }
+

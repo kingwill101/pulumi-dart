@@ -4,9 +4,7 @@ import 'agent_flow_definition_node_configuration_prompt_source_configuration_inl
 
 class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatSystem {
   /// Creates a cache checkpoint within a tool designation. See Cache Point for more information.
-  final AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatSystemCachePoint?
-      cachePoint;
-
+  final AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatSystemCachePoint? cachePoint;
   /// The text in the system prompt.
   final String? text;
 
@@ -19,26 +17,17 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cachePointValue = cachePoint;
-    if (cachePointValue != null) {
-      map['cachePoint'] = cachePointValue.toMap();
-    }
-    final textValue = text;
-    if (textValue != null) {
-      map['text'] = textValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cachePoint': ?cachePoint == null ? null : cachePoint!.toMap(),
+      'text': ?text,
+    };
   }
 
-  factory AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatSystem.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatSystem.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatSystem(
-      cachePoint: map['cachePoint'] == null
-          ? null
-          : AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatSystemCachePoint
-              .fromMap((map['cachePoint'] as Map).cast<String, dynamic>()),
+      cachePoint: map['cachePoint'] == null ? null : AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatSystemCachePoint.fromMap((map['cachePoint'] as Map).cast<String, dynamic>()),
       text: map['text'] == null ? null : map['text'] as String,
     );
   }
 }
+

@@ -1,7 +1,6 @@
 /// Optional. If `RECOMMENDATIONS_FILTERING_ENABLED`, recommendation filtering by attributes is enabled for the model.
 enum ModelFilteringOption {
-  recommendationsFilteringOptionUnspecified(
-      "RECOMMENDATIONS_FILTERING_OPTION_UNSPECIFIED"),
+  recommendationsFilteringOptionUnspecified("RECOMMENDATIONS_FILTERING_OPTION_UNSPECIFIED"),
   recommendationsFilteringDisabled("RECOMMENDATIONS_FILTERING_DISABLED"),
   recommendationsFilteringEnabled("RECOMMENDATIONS_FILTERING_ENABLED");
 
@@ -17,3 +16,4 @@ enum ModelFilteringOption {
     throw ArgumentError('Unknown ModelFilteringOption value: $value');
   }
 }
+

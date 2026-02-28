@@ -21,26 +21,19 @@ class PolicyDocument {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final idValue = id;
-    if (idValue != null) {
-      map['Id'] = idValue;
-    }
-    map['Statement'] =
-        pulumi.Input.encodeList<PolicyStatement, Map<String, dynamic>>(
-            statement, (value) => value.toMap());
-    map['Version'] = version.value;
-    return map;
+    return <String, dynamic>{
+      'Id': ?id,
+      'Statement': pulumi.Input.encodeList<PolicyStatement, Map<String, dynamic>>(statement, (value) => value.toMap()),
+      'Version': version.value,
+    };
   }
 
   factory PolicyDocument.fromMap(Map<String, dynamic> map) {
     return PolicyDocument(
       id: map['Id'] == null ? null : map['Id'] as String,
-      statement: pulumi.Input.decodeList<PolicyStatement>(
-          map['Statement'],
-          (value) =>
-              PolicyStatement.fromMap((value as Map).cast<String, dynamic>())),
+      statement: pulumi.Input.decodeList<PolicyStatement>(map['Statement'], (value) => PolicyStatement.fromMap((value as Map).cast<String, dynamic>())),
       version: PolicyDocumentVersion.fromValue(map['Version'] as String),
     );
   }
 }
+

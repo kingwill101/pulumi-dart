@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PolicyDns64ConfigScope {
   /// Controls whether DNS64 is enabled globally at the network level.
   final bool? allQueries;
@@ -11,12 +12,9 @@ class PolicyDns64ConfigScope {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final allQueriesValue = allQueries;
-    if (allQueriesValue != null) {
-      map['allQueries'] = allQueriesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'allQueries': ?allQueries,
+    };
   }
 
   factory PolicyDns64ConfigScope.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class PolicyDns64ConfigScope {
     );
   }
 }
+

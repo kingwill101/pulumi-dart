@@ -13,7 +13,7 @@ enum ServiceReleaseChannelMetastoreV1beta {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown ServiceReleaseChannelMetastoreV1beta value: $value');
+    throw ArgumentError('Unknown ServiceReleaseChannelMetastoreV1beta value: $value');
   }
 }
+

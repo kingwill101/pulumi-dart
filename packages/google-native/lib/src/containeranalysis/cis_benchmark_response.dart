@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A compliance check that is a CIS benchmark.
 class CisBenchmarkResponse {
   final int profileLevel;
@@ -14,10 +15,10 @@ class CisBenchmarkResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['profileLevel'] = profileLevel;
-    map['severity'] = severity;
-    return map;
+    return <String, dynamic>{
+      'profileLevel': profileLevel,
+      'severity': severity,
+    };
   }
 
   factory CisBenchmarkResponse.fromMap(Map<String, dynamic> map) {
@@ -27,3 +28,4 @@ class CisBenchmarkResponse {
     );
   }
 }
+

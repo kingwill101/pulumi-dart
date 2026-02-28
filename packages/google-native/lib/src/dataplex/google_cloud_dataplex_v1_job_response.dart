@@ -6,37 +6,26 @@ import 'google_cloud_dataplex_v1_task_execution_spec_response.dart';
 class GoogleCloudDataplexV1JobResponse {
   /// The time when the job ended.
   final String endTime;
-
   /// Spec related to how a task is executed.
   final GoogleCloudDataplexV1TaskExecutionSpecResponse executionSpec;
-
   /// User-defined labels for the task.
   final Map<String, String> labels;
-
   /// Additional information about the current state.
   final String message;
-
   /// The relative resource name of the job, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/tasks/{task_id}/jobs/{job_id}.
   final String name;
-
   /// The number of times the job has been retried (excluding the initial attempt).
   final int retryCount;
-
   /// The underlying service running a job.
   final String service;
-
   /// The full resource name for the job run under a particular service.
   final String serviceJob;
-
   /// The time when the job was started.
   final String startTime;
-
   /// Execution state for the job.
   final String state;
-
   /// Job execution trigger.
   final String trigger;
-
   /// System generated globally unique ID for the job.
   final String uid;
 
@@ -69,27 +58,26 @@ class GoogleCloudDataplexV1JobResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['endTime'] = endTime;
-    map['executionSpec'] = executionSpec.toMap();
-    map['labels'] = labels;
-    map['message'] = message;
-    map['name'] = name;
-    map['retryCount'] = retryCount;
-    map['service'] = service;
-    map['serviceJob'] = serviceJob;
-    map['startTime'] = startTime;
-    map['state'] = state;
-    map['trigger'] = trigger;
-    map['uid'] = uid;
-    return map;
+    return <String, dynamic>{
+      'endTime': endTime,
+      'executionSpec': executionSpec.toMap(),
+      'labels': labels,
+      'message': message,
+      'name': name,
+      'retryCount': retryCount,
+      'service': service,
+      'serviceJob': serviceJob,
+      'startTime': startTime,
+      'state': state,
+      'trigger': trigger,
+      'uid': uid,
+    };
   }
 
   factory GoogleCloudDataplexV1JobResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1JobResponse(
       endTime: map['endTime'] as String,
-      executionSpec: GoogleCloudDataplexV1TaskExecutionSpecResponse.fromMap(
-          (map['executionSpec'] as Map).cast<String, dynamic>()),
+      executionSpec: GoogleCloudDataplexV1TaskExecutionSpecResponse.fromMap((map['executionSpec'] as Map).cast<String, dynamic>()),
       labels: (map['labels'] as Map).cast<String, String>(),
       message: map['message'] as String,
       name: map['name'] as String,
@@ -103,3 +91,4 @@ class GoogleCloudDataplexV1JobResponse {
     );
   }
 }
+

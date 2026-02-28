@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetCoreNetworkPolicyDocumentAttachmentPolicyCondition {
   /// string value
   final String? key;
-
   /// Valid values include: `equals`, `not-equals`, `contains`, `begins-with`.
   final String? operator;
-
   /// Must be `routing-policy-label`.
   final String type;
-
   /// Routing policy label to match.
   final String? value;
 
@@ -26,25 +24,15 @@ class GetCoreNetworkPolicyDocumentAttachmentPolicyCondition {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final keyValue = key;
-    if (keyValue != null) {
-      map['key'] = keyValue;
-    }
-    final operatorValue = operator;
-    if (operatorValue != null) {
-      map['operator'] = operatorValue;
-    }
-    map['type'] = type;
-    final valueValue = value;
-    if (valueValue != null) {
-      map['value'] = valueValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'key': ?key,
+      'operator': ?operator,
+      'type': type,
+      'value': ?value,
+    };
   }
 
-  factory GetCoreNetworkPolicyDocumentAttachmentPolicyCondition.fromMap(
-      Map<String, dynamic> map) {
+  factory GetCoreNetworkPolicyDocumentAttachmentPolicyCondition.fromMap(Map<String, dynamic> map) {
     return GetCoreNetworkPolicyDocumentAttachmentPolicyCondition(
       key: map['key'] == null ? null : map['key'] as String,
       operator: map['operator'] == null ? null : map['operator'] as String,
@@ -53,3 +41,4 @@ class GetCoreNetworkPolicyDocumentAttachmentPolicyCondition {
     );
   }
 }
+

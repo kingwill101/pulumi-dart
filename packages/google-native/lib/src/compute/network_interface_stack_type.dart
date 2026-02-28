@@ -16,3 +16,4 @@ enum NetworkInterfaceStackType {
     throw ArgumentError('Unknown NetworkInterfaceStackType value: $value');
   }
 }
+

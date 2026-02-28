@@ -127,19 +127,14 @@ import 'authorization_rule_args.dart';
 class AuthorizationRule extends pulumi.CustomResource {
   /// The ID of the group to which the authorization rule grants access. One of `access_group_id` or `authorize_all_groups` must be set.
   late final pulumi.Output<String?> accessGroupId;
-
   /// Indicates whether the authorization rule grants access to all clients. One of `access_group_id` or `authorize_all_groups` must be set.
   late final pulumi.Output<bool?> authorizeAllGroups;
-
   /// The ID of the Client VPN endpoint.
   late final pulumi.Output<String> clientVpnEndpointId;
-
   /// A brief description of the authorization rule.
   late final pulumi.Output<String?> description;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The IPv4 or IPv6 address range, in CIDR notation, of the network to which the authorization rule applies.
   late final pulumi.Output<String> targetNetworkCidr;
 

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VirtualGatewaySpecListenerConnectionPoolHttp2 {
   /// Maximum number of inflight requests Envoy can concurrently support across hosts in upstream cluster. Minimum value of `1`.
   final int maxRequests;
@@ -11,15 +12,15 @@ class VirtualGatewaySpecListenerConnectionPoolHttp2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maxRequests'] = maxRequests;
-    return map;
+    return <String, dynamic>{
+      'maxRequests': maxRequests,
+    };
   }
 
-  factory VirtualGatewaySpecListenerConnectionPoolHttp2.fromMap(
-      Map<String, dynamic> map) {
+  factory VirtualGatewaySpecListenerConnectionPoolHttp2.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecListenerConnectionPoolHttp2(
       maxRequests: map['maxRequests'] as int,
     );
   }
 }
+

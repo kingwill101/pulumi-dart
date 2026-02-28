@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GroupLaunchTemplate {
   /// ID of the launch template. Conflicts with `name`.
   final String? id;
-
   /// Name of the launch template. Conflicts with `id`.
   final String? name;
-
   /// Template version. Can be version number, `$Latest`, or `$Default`. (Default: `$Default`).
   final String? version;
 
@@ -21,20 +20,11 @@ class GroupLaunchTemplate {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final idValue = id;
-    if (idValue != null) {
-      map['id'] = idValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final versionValue = version;
-    if (versionValue != null) {
-      map['version'] = versionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'id': ?id,
+      'name': ?name,
+      'version': ?version,
+    };
   }
 
   factory GroupLaunchTemplate.fromMap(Map<String, dynamic> map) {
@@ -45,3 +35,4 @@ class GroupLaunchTemplate {
     );
   }
 }
+

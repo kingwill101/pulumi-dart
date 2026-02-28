@@ -14,16 +14,15 @@ class OrganizationFeedFeedOutputConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['pubsubDestination'] = pubsubDestination.toMap();
-    return map;
+    return <String, dynamic>{
+      'pubsubDestination': pubsubDestination.toMap(),
+    };
   }
 
   factory OrganizationFeedFeedOutputConfig.fromMap(Map<String, dynamic> map) {
     return OrganizationFeedFeedOutputConfig(
-      pubsubDestination:
-          OrganizationFeedFeedOutputConfigPubsubDestination.fromMap(
-              (map['pubsubDestination'] as Map).cast<String, dynamic>()),
+      pubsubDestination: OrganizationFeedFeedOutputConfigPubsubDestination.fromMap((map['pubsubDestination'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

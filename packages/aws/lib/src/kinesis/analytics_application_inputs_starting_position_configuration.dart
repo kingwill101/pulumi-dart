@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AnalyticsApplicationInputsStartingPositionConfiguration {
   /// The starting position on the stream. Valid values: `LAST_STOPPED_POINT`, `NOW`, `TRIM_HORIZON`.
   final String? startingPosition;
@@ -11,20 +12,15 @@ class AnalyticsApplicationInputsStartingPositionConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final startingPositionValue = startingPosition;
-    if (startingPositionValue != null) {
-      map['startingPosition'] = startingPositionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'startingPosition': ?startingPosition,
+    };
   }
 
-  factory AnalyticsApplicationInputsStartingPositionConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory AnalyticsApplicationInputsStartingPositionConfiguration.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationInputsStartingPositionConfiguration(
-      startingPosition: map['startingPosition'] == null
-          ? null
-          : map['startingPosition'] as String,
+      startingPosition: map['startingPosition'] == null ? null : map['startingPosition'] as String,
     );
   }
 }
+

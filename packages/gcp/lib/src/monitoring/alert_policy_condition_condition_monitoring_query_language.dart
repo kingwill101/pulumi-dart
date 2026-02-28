@@ -19,16 +19,13 @@ class AlertPolicyConditionConditionMonitoringQueryLanguage {
   /// that unhealthy states are detected and
   /// alerted on quickly.
   final String duration;
-
   /// A condition control that determines how
   /// metric-threshold conditions are evaluated when
   /// data stops arriving.
   /// Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
   final String? evaluationMissingData;
-
   /// Monitoring Query Language query that outputs a boolean stream.
   final String query;
-
   /// The number/percent of time series for which
   /// the comparison must hold in order for the
   /// condition to trigger. If unspecified, then
@@ -53,32 +50,21 @@ class AlertPolicyConditionConditionMonitoringQueryLanguage {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['duration'] = duration;
-    final evaluationMissingDataValue = evaluationMissingData;
-    if (evaluationMissingDataValue != null) {
-      map['evaluationMissingData'] = evaluationMissingDataValue;
-    }
-    map['query'] = query;
-    final triggerValue = trigger;
-    if (triggerValue != null) {
-      map['trigger'] = triggerValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'duration': duration,
+      'evaluationMissingData': ?evaluationMissingData,
+      'query': query,
+      'trigger': ?trigger == null ? null : trigger!.toMap(),
+    };
   }
 
-  factory AlertPolicyConditionConditionMonitoringQueryLanguage.fromMap(
-      Map<String, dynamic> map) {
+  factory AlertPolicyConditionConditionMonitoringQueryLanguage.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionMonitoringQueryLanguage(
       duration: map['duration'] as String,
-      evaluationMissingData: map['evaluationMissingData'] == null
-          ? null
-          : map['evaluationMissingData'] as String,
+      evaluationMissingData: map['evaluationMissingData'] == null ? null : map['evaluationMissingData'] as String,
       query: map['query'] as String,
-      trigger: map['trigger'] == null
-          ? null
-          : AlertPolicyConditionConditionMonitoringQueryLanguageTrigger.fromMap(
-              (map['trigger'] as Map).cast<String, dynamic>()),
+      trigger: map['trigger'] == null ? null : AlertPolicyConditionConditionMonitoringQueryLanguageTrigger.fromMap((map['trigger'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

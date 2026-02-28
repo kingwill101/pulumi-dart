@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TrustProviderNativeApplicationOidcOptions {
   final String? authorizationEndpoint;
   final String? clientId;
@@ -31,57 +32,29 @@ class TrustProviderNativeApplicationOidcOptions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final authorizationEndpointValue = authorizationEndpoint;
-    if (authorizationEndpointValue != null) {
-      map['authorizationEndpoint'] = authorizationEndpointValue;
-    }
-    final clientIdValue = clientId;
-    if (clientIdValue != null) {
-      map['clientId'] = clientIdValue;
-    }
-    map['clientSecret'] = clientSecret;
-    final issuerValue = issuer;
-    if (issuerValue != null) {
-      map['issuer'] = issuerValue;
-    }
-    final publicSigningKeyEndpointValue = publicSigningKeyEndpoint;
-    if (publicSigningKeyEndpointValue != null) {
-      map['publicSigningKeyEndpoint'] = publicSigningKeyEndpointValue;
-    }
-    final scopeValue = scope;
-    if (scopeValue != null) {
-      map['scope'] = scopeValue;
-    }
-    final tokenEndpointValue = tokenEndpoint;
-    if (tokenEndpointValue != null) {
-      map['tokenEndpoint'] = tokenEndpointValue;
-    }
-    final userInfoEndpointValue = userInfoEndpoint;
-    if (userInfoEndpointValue != null) {
-      map['userInfoEndpoint'] = userInfoEndpointValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'authorizationEndpoint': ?authorizationEndpoint,
+      'clientId': ?clientId,
+      'clientSecret': clientSecret,
+      'issuer': ?issuer,
+      'publicSigningKeyEndpoint': ?publicSigningKeyEndpoint,
+      'scope': ?scope,
+      'tokenEndpoint': ?tokenEndpoint,
+      'userInfoEndpoint': ?userInfoEndpoint,
+    };
   }
 
-  factory TrustProviderNativeApplicationOidcOptions.fromMap(
-      Map<String, dynamic> map) {
+  factory TrustProviderNativeApplicationOidcOptions.fromMap(Map<String, dynamic> map) {
     return TrustProviderNativeApplicationOidcOptions(
-      authorizationEndpoint: map['authorizationEndpoint'] == null
-          ? null
-          : map['authorizationEndpoint'] as String,
+      authorizationEndpoint: map['authorizationEndpoint'] == null ? null : map['authorizationEndpoint'] as String,
       clientId: map['clientId'] == null ? null : map['clientId'] as String,
       clientSecret: map['clientSecret'] as String,
       issuer: map['issuer'] == null ? null : map['issuer'] as String,
-      publicSigningKeyEndpoint: map['publicSigningKeyEndpoint'] == null
-          ? null
-          : map['publicSigningKeyEndpoint'] as String,
+      publicSigningKeyEndpoint: map['publicSigningKeyEndpoint'] == null ? null : map['publicSigningKeyEndpoint'] as String,
       scope: map['scope'] == null ? null : map['scope'] as String,
-      tokenEndpoint:
-          map['tokenEndpoint'] == null ? null : map['tokenEndpoint'] as String,
-      userInfoEndpoint: map['userInfoEndpoint'] == null
-          ? null
-          : map['userInfoEndpoint'] as String,
+      tokenEndpoint: map['tokenEndpoint'] == null ? null : map['tokenEndpoint'] as String,
+      userInfoEndpoint: map['userInfoEndpoint'] == null ? null : map['userInfoEndpoint'] as String,
     );
   }
 }
+

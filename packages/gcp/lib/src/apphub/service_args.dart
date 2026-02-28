@@ -10,27 +10,20 @@ import 'service_attributes.dart';
 class ServiceArgs {
   /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
   final pulumi.Input<String> applicationId;
-
   /// Consumer provided attributes.
   /// Structure is documented below.
   final pulumi.Input<ServiceAttributes>? attributes;
-
   /// User-defined description of a Service.
   final pulumi.Input<String>? description;
-
   /// Immutable. The resource name of the original discovered service.
   final pulumi.Input<String> discoveredService;
-
   /// User-defined name for the Service.
   final pulumi.Input<String>? displayName;
-
   /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
   final pulumi.Input<String> location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The Service identifier.
   final pulumi.Input<String> serviceId;
 
@@ -52,57 +45,40 @@ class ServiceArgs {
     required String location,
     String? project,
     required String serviceId,
-  })  : applicationId = pulumi.Input.asInput<String>(applicationId),
-        attributes =
-            pulumi.Input.asOptionalInput<ServiceAttributes>(attributes),
-        description = pulumi.Input.asOptionalInput<String>(description),
-        discoveredService = pulumi.Input.asInput<String>(discoveredService),
-        displayName = pulumi.Input.asOptionalInput<String>(displayName),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        serviceId = pulumi.Input.asInput<String>(serviceId);
+  }) :
+      applicationId = pulumi.Input.asInput<String>(applicationId),
+      attributes = pulumi.Input.asOptionalInput<ServiceAttributes>(attributes),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      discoveredService = pulumi.Input.asInput<String>(discoveredService),
+      displayName = pulumi.Input.asOptionalInput<String>(displayName),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      serviceId = pulumi.Input.asInput<String>(serviceId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['applicationId'] = applicationId;
-    final attributesValue = attributes;
-    if (attributesValue != null) {
-      map['attributes'] = pulumi.Input.mapOptionalInputValue<ServiceAttributes,
-          Map<String, dynamic>>(attributesValue, (value) => value.toMap());
-    }
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    map['discoveredService'] = discoveredService;
-    final displayNameValue = displayName;
-    if (displayNameValue != null) {
-      map['displayName'] = displayNameValue;
-    }
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['serviceId'] = serviceId;
-    return map;
+    return <String, dynamic>{
+      'applicationId': applicationId,
+      'attributes': ?pulumi.Input.mapOptionalInputValue<ServiceAttributes, Map<String, dynamic>>(attributes, (value) => value.toMap()),
+      'description': ?description,
+      'discoveredService': discoveredService,
+      'displayName': ?displayName,
+      'location': location,
+      'project': ?project,
+      'serviceId': serviceId,
+    };
   }
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
       applicationId: map['applicationId'] as String,
-      attributes: map['attributes'] == null
-          ? null
-          : ServiceAttributes.fromMap(
-              (map['attributes'] as Map).cast<String, dynamic>()),
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      attributes: map['attributes'] == null ? null : ServiceAttributes.fromMap((map['attributes'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : map['description'] as String,
       discoveredService: map['discoveredService'] as String,
-      displayName:
-          map['displayName'] == null ? null : map['displayName'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       serviceId: map['serviceId'] as String,
     );
   }
 }
+

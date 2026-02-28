@@ -209,18 +209,14 @@ import 'routing_control_args.dart';
 class RoutingControl extends pulumi.CustomResource {
   /// ARN of the routing control.
   late final pulumi.Output<String> arn;
-
   /// ARN of the cluster in which this routing control will reside.
   late final pulumi.Output<String> clusterArn;
-
   /// ARN of the control panel in which this routing control will reside.
   late final pulumi.Output<String> controlPanelArn;
-
   /// The name describing the routing control.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Status of routing control. `PENDING` when it is being created/updated, `PENDING_DELETION` when it is being deleted, and `DEPLOYED` otherwise.
   late final pulumi.Output<String> status;
 

@@ -14,17 +14,15 @@ class RestrictionEvaluationsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['memberRestrictionEvaluation'] = memberRestrictionEvaluation.toMap();
-    return map;
+    return <String, dynamic>{
+      'memberRestrictionEvaluation': memberRestrictionEvaluation.toMap(),
+    };
   }
 
   factory RestrictionEvaluationsResponse.fromMap(Map<String, dynamic> map) {
     return RestrictionEvaluationsResponse(
-      memberRestrictionEvaluation:
-          MembershipRoleRestrictionEvaluationResponse.fromMap(
-              (map['memberRestrictionEvaluation'] as Map)
-                  .cast<String, dynamic>()),
+      memberRestrictionEvaluation: MembershipRoleRestrictionEvaluationResponse.fromMap((map['memberRestrictionEvaluation'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

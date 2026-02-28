@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDataSetDataSetUsageConfiguration {
   final bool disableUseAsDirectQuerySource;
   final bool disableUseAsImportedSource;
@@ -13,18 +14,17 @@ class GetDataSetDataSetUsageConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['disableUseAsDirectQuerySource'] = disableUseAsDirectQuerySource;
-    map['disableUseAsImportedSource'] = disableUseAsImportedSource;
-    return map;
+    return <String, dynamic>{
+      'disableUseAsDirectQuerySource': disableUseAsDirectQuerySource,
+      'disableUseAsImportedSource': disableUseAsImportedSource,
+    };
   }
 
-  factory GetDataSetDataSetUsageConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory GetDataSetDataSetUsageConfiguration.fromMap(Map<String, dynamic> map) {
     return GetDataSetDataSetUsageConfiguration(
-      disableUseAsDirectQuerySource:
-          map['disableUseAsDirectQuerySource'] as bool,
+      disableUseAsDirectQuerySource: map['disableUseAsDirectQuerySource'] as bool,
       disableUseAsImportedSource: map['disableUseAsImportedSource'] as bool,
     );
   }
 }
+

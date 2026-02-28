@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Helps in identifying the underlying product. This should be treated like a one-of field. Only one field should be set in this proto. This is a workaround because spanner indexes on one-of fields restrict addition and deletion of fields.
 class IdentifierHelperResponse {
   /// The field that is set in the API proto.
   final String field;
-
   /// Contains a URI which is vendor-specific. Example: The artifact repository URL of an image.
   final String genericUri;
 
@@ -17,10 +17,10 @@ class IdentifierHelperResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['field'] = field;
-    map['genericUri'] = genericUri;
-    return map;
+    return <String, dynamic>{
+      'field': field,
+      'genericUri': genericUri,
+    };
   }
 
   factory IdentifierHelperResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class IdentifierHelperResponse {
     );
   }
 }
+

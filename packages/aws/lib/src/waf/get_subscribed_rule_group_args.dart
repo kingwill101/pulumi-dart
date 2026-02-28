@@ -11,7 +11,6 @@ class GetSubscribedRuleGroupArgs {
   ///
   /// At least one of `name` or `metric_name` must be configured.
   final pulumi.Input<String>? metricName;
-
   /// Name of the WAF rule group.
   final pulumi.Input<String>? name;
 
@@ -21,27 +20,22 @@ class GetSubscribedRuleGroupArgs {
   GetSubscribedRuleGroupArgs({
     String? metricName,
     String? name,
-  })  : metricName = pulumi.Input.asOptionalInput<String>(metricName),
-        name = pulumi.Input.asOptionalInput<String>(name);
+  }) :
+      metricName = pulumi.Input.asOptionalInput<String>(metricName),
+      name = pulumi.Input.asOptionalInput<String>(name);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final metricNameValue = metricName;
-    if (metricNameValue != null) {
-      map['metricName'] = metricNameValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'metricName': ?metricName,
+      'name': ?name,
+    };
   }
 
   factory GetSubscribedRuleGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetSubscribedRuleGroupArgs(
-      metricName:
-          map['metricName'] == null ? null : map['metricName'] as String,
+      metricName: map['metricName'] == null ? null : map['metricName'] as String,
       name: map['name'] == null ? null : map['name'] as String,
     );
   }
 }
+

@@ -172,45 +172,32 @@ import 'mount_target_args.dart';
 class MountTarget extends pulumi.CustomResource {
   /// The unique and consistent identifier of the Availability Zone (AZ) that the mount target resides in.
   late final pulumi.Output<String> availabilityZoneId;
-
   /// The name of the Availability Zone (AZ) that the mount target resides in.
   late final pulumi.Output<String> availabilityZoneName;
-
   /// The DNS name for the EFS file system.
   late final pulumi.Output<String> dnsName;
-
   /// Amazon Resource Name of the file system.
   late final pulumi.Output<String> fileSystemArn;
-
   /// The ID of the file system for which the mount target is intended.
   late final pulumi.Output<String> fileSystemId;
-
   /// The address (within the address range of the specified subnet) at
   /// which the file system may be mounted via the mount target.
   late final pulumi.Output<String> ipAddress;
-
   /// IP address type for the mount target. Valid values are `IPV4_ONLY` (only IPv4 addresses), `IPV6_ONLY` (only IPv6 addresses), and `DUAL_STACK` (dual-stack, both IPv4 and IPv6 addresses). Defaults to `IPV4_ONLY`.
   late final pulumi.Output<String> ipAddressType;
-
   /// IPv6 address to use. Valid only when `ip_address_type` is set to `IPV6_ONLY` or `DUAL_STACK`.
   late final pulumi.Output<String> ipv6Address;
-
   /// The DNS name for the given subnet/AZ per [documented convention](http://docs.aws.amazon.com/efs/latest/ug/mounting-fs-mount-cmd-dns-name.html).
   late final pulumi.Output<String> mountTargetDnsName;
-
   /// The ID of the network interface that Amazon EFS created when it created the mount target.
   late final pulumi.Output<String> networkInterfaceId;
-
   /// AWS account ID that owns the resource.
   late final pulumi.Output<String> ownerId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A list of up to 5 VPC security group IDs (that must
   /// be for the same VPC as subnet specified) in effect for the mount target.
   late final pulumi.Output<List<String>> securityGroups;
-
   /// The ID of the subnet to add the mount target in.
   late final pulumi.Output<String> subnetId;
 

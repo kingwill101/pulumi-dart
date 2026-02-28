@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Specification to configure notifications published to Pub/Sub. Notifications are published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` contains a TransferOperation resource formatted according to the specified `PayloadFormat`.
 class NotificationConfigResponse {
   /// Event types for which a notification is desired. If empty, send notifications for all event types.
   final List<String> eventTypes;
-
   /// The desired format of the notification message payloads.
   final String payloadFormat;
-
   /// The `Topic.name` of the Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format results in an INVALID_ARGUMENT error.
   final String pubsubTopic;
 
@@ -22,11 +21,11 @@ class NotificationConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['eventTypes'] = eventTypes;
-    map['payloadFormat'] = payloadFormat;
-    map['pubsubTopic'] = pubsubTopic;
-    return map;
+    return <String, dynamic>{
+      'eventTypes': eventTypes,
+      'payloadFormat': payloadFormat,
+      'pubsubTopic': pubsubTopic,
+    };
   }
 
   factory NotificationConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class NotificationConfigResponse {
     );
   }
 }
+

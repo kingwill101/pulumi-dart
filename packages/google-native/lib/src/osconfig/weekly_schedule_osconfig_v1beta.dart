@@ -14,15 +14,15 @@ class WeeklyScheduleOsconfigV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dayOfWeek'] = dayOfWeek.value;
-    return map;
+    return <String, dynamic>{
+      'dayOfWeek': dayOfWeek.value,
+    };
   }
 
   factory WeeklyScheduleOsconfigV1beta.fromMap(Map<String, dynamic> map) {
     return WeeklyScheduleOsconfigV1beta(
-      dayOfWeek: WeeklyScheduleDayOfWeekOsconfigV1beta.fromValue(
-          map['dayOfWeek'] as String),
+      dayOfWeek: WeeklyScheduleDayOfWeekOsconfigV1beta.fromValue(map['dayOfWeek'] as String),
     );
   }
 }
+

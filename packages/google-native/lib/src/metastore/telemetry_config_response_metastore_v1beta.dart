@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Telemetry Configuration for the Dataproc Metastore service.
 class TelemetryConfigResponseMetastoreV1beta {
   /// The output format of the Dataproc Metastore service's logs.
@@ -12,15 +13,15 @@ class TelemetryConfigResponseMetastoreV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['logFormat'] = logFormat;
-    return map;
+    return <String, dynamic>{
+      'logFormat': logFormat,
+    };
   }
 
-  factory TelemetryConfigResponseMetastoreV1beta.fromMap(
-      Map<String, dynamic> map) {
+  factory TelemetryConfigResponseMetastoreV1beta.fromMap(Map<String, dynamic> map) {
     return TelemetryConfigResponseMetastoreV1beta(
       logFormat: map['logFormat'] as String,
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NodeGroupShareSettingsProjectMap {
   /// The identifier for this object. Format specified above.
   final String id;
-
   /// The project id/number should be the same as the key of this project config in the project map.
   final String projectId;
 
@@ -16,10 +16,10 @@ class NodeGroupShareSettingsProjectMap {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['projectId'] = projectId;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'projectId': projectId,
+    };
   }
 
   factory NodeGroupShareSettingsProjectMap.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class NodeGroupShareSettingsProjectMap {
     );
   }
 }
+

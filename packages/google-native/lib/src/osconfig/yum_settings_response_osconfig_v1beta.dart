@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Yum patching is performed by executing `yum update`. Additional options can be set to control how this is executed. Note that not all settings are supported on all platforms.
 class YumSettingsResponseOsconfigV1beta {
   /// List of packages to exclude from update. These packages are excluded by using the yum `--exclude` flag.
   final List<String> excludes;
-
   /// An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field must not be specified with any other patch configuration fields.
   final List<String> exclusivePackages;
-
   /// Will cause patch to run `yum update-minimal` instead.
   final bool minimal;
-
   /// Adds the `--security` flag to `yum update`. Not supported on all platforms.
   final bool security;
 
@@ -27,12 +25,12 @@ class YumSettingsResponseOsconfigV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['excludes'] = excludes;
-    map['exclusivePackages'] = exclusivePackages;
-    map['minimal'] = minimal;
-    map['security'] = security;
-    return map;
+    return <String, dynamic>{
+      'excludes': excludes,
+      'exclusivePackages': exclusivePackages,
+      'minimal': minimal,
+      'security': security,
+    };
   }
 
   factory YumSettingsResponseOsconfigV1beta.fromMap(Map<String, dynamic> map) {
@@ -44,3 +42,4 @@ class YumSettingsResponseOsconfigV1beta {
     );
   }
 }
+

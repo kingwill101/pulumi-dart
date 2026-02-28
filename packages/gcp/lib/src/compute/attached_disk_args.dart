@@ -17,19 +17,16 @@ class AttachedDiskArgs {
   /// to this disk, in the form persistent-disks-x, where x is a number
   /// assigned by Google Compute Engine.
   final pulumi.Input<String>? deviceName;
-
   /// `name` or `self_link` of the disk that will be attached.
   ///
   ///
   /// - - -
   final pulumi.Input<String> disk;
-
   /// `name` or `self_link` of the compute instance that the disk will be attached to.
   /// If the `self_link` is provided then `zone` and `project` are extracted from the
   /// self link. If only the name is used then `zone` and `project` must be defined
   /// as properties on the resource or provider.
   final pulumi.Input<String> instance;
-
   /// The disk interface used for attaching this disk.
   ///
   /// This field is only used for specific cases, please don't specify
@@ -40,7 +37,6 @@ class AttachedDiskArgs {
   /// "SCSI"
   /// "NVME"
   final pulumi.Input<String>? interface;
-
   /// The mode in which to attach this disk, either READ_WRITE or
   /// READ_ONLY. If not specified, the default is to attach the disk in
   /// READ_WRITE mode.
@@ -49,11 +45,9 @@ class AttachedDiskArgs {
   /// "READ_ONLY"
   /// "READ_WRITE"
   final pulumi.Input<String>? mode;
-
   /// The project that the referenced compute instance is a part of. If `instance` is referenced by its
   /// `self_link` the project defined in the link will take precedence.
   final pulumi.Input<String>? project;
-
   /// The zone that the referenced compute instance is located within. If `instance` is referenced by its
   /// `self_link` the zone defined in the link will take precedence.
   final pulumi.Input<String>? zone;
@@ -74,45 +68,30 @@ class AttachedDiskArgs {
     String? mode,
     String? project,
     String? zone,
-  })  : deviceName = pulumi.Input.asOptionalInput<String>(deviceName),
-        disk = pulumi.Input.asInput<String>(disk),
-        instance = pulumi.Input.asInput<String>(instance),
-        interface = pulumi.Input.asOptionalInput<String>(interface),
-        mode = pulumi.Input.asOptionalInput<String>(mode),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        zone = pulumi.Input.asOptionalInput<String>(zone);
+  }) :
+      deviceName = pulumi.Input.asOptionalInput<String>(deviceName),
+      disk = pulumi.Input.asInput<String>(disk),
+      instance = pulumi.Input.asInput<String>(instance),
+      interface = pulumi.Input.asOptionalInput<String>(interface),
+      mode = pulumi.Input.asOptionalInput<String>(mode),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      zone = pulumi.Input.asOptionalInput<String>(zone);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final deviceNameValue = deviceName;
-    if (deviceNameValue != null) {
-      map['deviceName'] = deviceNameValue;
-    }
-    map['disk'] = disk;
-    map['instance'] = instance;
-    final interfaceValue = interface;
-    if (interfaceValue != null) {
-      map['interface'] = interfaceValue;
-    }
-    final modeValue = mode;
-    if (modeValue != null) {
-      map['mode'] = modeValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final zoneValue = zone;
-    if (zoneValue != null) {
-      map['zone'] = zoneValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'deviceName': ?deviceName,
+      'disk': disk,
+      'instance': instance,
+      'interface': ?interface,
+      'mode': ?mode,
+      'project': ?project,
+      'zone': ?zone,
+    };
   }
 
   factory AttachedDiskArgs.fromMap(Map<String, dynamic> map) {
     return AttachedDiskArgs(
-      deviceName:
-          map['deviceName'] == null ? null : map['deviceName'] as String,
+      deviceName: map['deviceName'] == null ? null : map['deviceName'] as String,
       disk: map['disk'] as String,
       instance: map['instance'] as String,
       interface: map['interface'] == null ? null : map['interface'] as String,
@@ -122,3 +101,4 @@ class AttachedDiskArgs {
     );
   }
 }
+

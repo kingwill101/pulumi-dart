@@ -9,12 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAutonomousDatabaseArgs {
   /// The ID of the AutonomousDatabase.
   final pulumi.Input<String> autonomousDatabaseId;
-
   /// The location of the resource.
   ///
   /// - - -
   final pulumi.Input<String> location;
-
   /// The project to which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -27,20 +25,17 @@ class GetAutonomousDatabaseArgs {
     required String autonomousDatabaseId,
     required String location,
     String? project,
-  })  : autonomousDatabaseId =
-            pulumi.Input.asInput<String>(autonomousDatabaseId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      autonomousDatabaseId = pulumi.Input.asInput<String>(autonomousDatabaseId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['autonomousDatabaseId'] = autonomousDatabaseId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'autonomousDatabaseId': autonomousDatabaseId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetAutonomousDatabaseArgs.fromMap(Map<String, dynamic> map) {
@@ -51,3 +46,4 @@ class GetAutonomousDatabaseArgs {
     );
   }
 }
+

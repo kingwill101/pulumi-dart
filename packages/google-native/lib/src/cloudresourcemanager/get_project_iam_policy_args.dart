@@ -13,12 +13,13 @@ class GetProjectIamPolicyArgs {
   /// [resource] Required.
   GetProjectIamPolicyArgs({
     required String resource,
-  }) : resource = pulumi.Input.asInput<String>(resource);
+  }) :
+      resource = pulumi.Input.asInput<String>(resource);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['resource'] = resource;
-    return map;
+    return <String, dynamic>{
+      'resource': resource,
+    };
   }
 
   factory GetProjectIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -27,3 +28,4 @@ class GetProjectIamPolicyArgs {
     );
   }
 }
+

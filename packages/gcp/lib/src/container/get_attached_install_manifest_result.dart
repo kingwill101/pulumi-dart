@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getAttachedInstallManifest.
 class GetAttachedInstallManifestResult {
   final String clusterId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
-
   /// A string with the YAML manifest that needs to be applied to the cluster.
   final String manifest;
   final String platformVersion;
@@ -30,14 +29,14 @@ class GetAttachedInstallManifestResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clusterId'] = clusterId;
-    map['id'] = id;
-    map['location'] = location;
-    map['manifest'] = manifest;
-    map['platformVersion'] = platformVersion;
-    map['project'] = project;
-    return map;
+    return <String, dynamic>{
+      'clusterId': clusterId,
+      'id': id,
+      'location': location,
+      'manifest': manifest,
+      'platformVersion': platformVersion,
+      'project': project,
+    };
   }
 
   factory GetAttachedInstallManifestResult.fromMap(Map<String, dynamic> map) {
@@ -51,3 +50,4 @@ class GetAttachedInstallManifestResult {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ApplicationFeatureSettings {
   /// Set to false to use the legacy health check instead of the readiness
   /// and liveness checks.
@@ -12,9 +13,9 @@ class ApplicationFeatureSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['splitHealthChecks'] = splitHealthChecks;
-    return map;
+    return <String, dynamic>{
+      'splitHealthChecks': splitHealthChecks,
+    };
   }
 
   factory ApplicationFeatureSettings.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class ApplicationFeatureSettings {
     );
   }
 }
+

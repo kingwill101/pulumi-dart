@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class IdcApplicationServiceIntegrationRedshiftConnect {
   /// Determines whether the connect integration is enabled or disabled.
   final String authorization;
@@ -11,15 +12,15 @@ class IdcApplicationServiceIntegrationRedshiftConnect {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['authorization'] = authorization;
-    return map;
+    return <String, dynamic>{
+      'authorization': authorization,
+    };
   }
 
-  factory IdcApplicationServiceIntegrationRedshiftConnect.fromMap(
-      Map<String, dynamic> map) {
+  factory IdcApplicationServiceIntegrationRedshiftConnect.fromMap(Map<String, dynamic> map) {
     return IdcApplicationServiceIntegrationRedshiftConnect(
       authorization: map['authorization'] as String,
     );
   }
 }
+

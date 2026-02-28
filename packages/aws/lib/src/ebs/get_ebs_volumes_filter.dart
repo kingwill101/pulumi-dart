@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetEbsVolumesFilter {
   /// Name of the field to filter by, as defined by
   /// [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVolumes.html).
@@ -132,7 +133,6 @@ class GetEbsVolumesFilter {
   ///               - '20'
   /// ```
   final String name;
-
   /// Set of values that are accepted for the given field.
   /// EBS Volume IDs will be selected if any one of the given values match.
   final List<String> values;
@@ -146,10 +146,10 @@ class GetEbsVolumesFilter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['values'] = values;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'values': values,
+    };
   }
 
   factory GetEbsVolumesFilter.fromMap(Map<String, dynamic> map) {
@@ -159,3 +159,4 @@ class GetEbsVolumesFilter {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// LoggingVariantConfig specifies the behaviour of the logging component.
 class LoggingVariantConfigResponse {
   /// Logging variant deployed on nodes.
@@ -12,9 +13,9 @@ class LoggingVariantConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['variant'] = variant;
-    return map;
+    return <String, dynamic>{
+      'variant': variant,
+    };
   }
 
   factory LoggingVariantConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class LoggingVariantConfigResponse {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// RoutingConfig configures the behaviour of fleet logging feature.
 class FleetObservabilityRoutingConfigResponse {
   /// mode configures the logs routing mode.
@@ -12,15 +13,15 @@ class FleetObservabilityRoutingConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['mode'] = mode;
-    return map;
+    return <String, dynamic>{
+      'mode': mode,
+    };
   }
 
-  factory FleetObservabilityRoutingConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory FleetObservabilityRoutingConfigResponse.fromMap(Map<String, dynamic> map) {
     return FleetObservabilityRoutingConfigResponse(
       mode: map['mode'] as String,
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Service name to lookup within Service Quotas. Available values can be found with the [AWS CLI service-quotas list-services command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-services.html).
   final pulumi.Input<String> serviceName;
 
@@ -19,17 +18,15 @@ class GetServiceArgs {
   GetServiceArgs({
     String? region,
     required String serviceName,
-  })  : region = pulumi.Input.asOptionalInput<String>(region),
-        serviceName = pulumi.Input.asInput<String>(serviceName);
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      serviceName = pulumi.Input.asInput<String>(serviceName);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['serviceName'] = serviceName;
-    return map;
+    return <String, dynamic>{
+      'region': ?region,
+      'serviceName': serviceName,
+    };
   }
 
   factory GetServiceArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +36,4 @@ class GetServiceArgs {
     );
   }
 }
+

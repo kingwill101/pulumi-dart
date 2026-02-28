@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDomainClusterConfigColdStorageOption {
   /// Whether node to node encryption is enabled.
   final bool enabled;
@@ -11,15 +12,15 @@ class GetDomainClusterConfigColdStorageOption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory GetDomainClusterConfigColdStorageOption.fromMap(
-      Map<String, dynamic> map) {
+  factory GetDomainClusterConfigColdStorageOption.fromMap(Map<String, dynamic> map) {
     return GetDomainClusterConfigColdStorageOption(
       enabled: map['enabled'] as bool,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SloBasicSliAvailability {
   /// Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
   final bool? enabled;
@@ -11,12 +12,9 @@ class SloBasicSliAvailability {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory SloBasicSliAvailability.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class SloBasicSliAvailability {
     );
   }
 }
+

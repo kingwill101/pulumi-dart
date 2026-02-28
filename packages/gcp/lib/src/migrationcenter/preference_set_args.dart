@@ -10,24 +10,18 @@ import 'preference_set_virtual_machine_preferences.dart';
 class PreferenceSetArgs {
   /// A description of the preference set.
   final pulumi.Input<String>? description;
-
   /// User-friendly display name. Maximum length is 63 characters.
   final pulumi.Input<String>? displayName;
-
   /// Part of `parent`. See documentation of `projectsId`.
   final pulumi.Input<String> location;
-
   /// Required. User specified ID for the preference set. It will become the last component of the preference set name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression `a-z?`.
   final pulumi.Input<String> preferenceSetId;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// VirtualMachinePreferences enables you to create sets of assumptions, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
   /// Structure is documented below.
-  final pulumi.Input<PreferenceSetVirtualMachinePreferences>?
-      virtualMachinePreferences;
+  final pulumi.Input<PreferenceSetVirtualMachinePreferences>? virtualMachinePreferences;
 
   /// Creates a new [PreferenceSetArgs].
   /// [description] A description of the preference set.
@@ -43,53 +37,34 @@ class PreferenceSetArgs {
     required String preferenceSetId,
     String? project,
     PreferenceSetVirtualMachinePreferences? virtualMachinePreferences,
-  })  : description = pulumi.Input.asOptionalInput<String>(description),
-        displayName = pulumi.Input.asOptionalInput<String>(displayName),
-        location = pulumi.Input.asInput<String>(location),
-        preferenceSetId = pulumi.Input.asInput<String>(preferenceSetId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        virtualMachinePreferences = pulumi.Input.asOptionalInput<
-            PreferenceSetVirtualMachinePreferences>(virtualMachinePreferences);
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      displayName = pulumi.Input.asOptionalInput<String>(displayName),
+      location = pulumi.Input.asInput<String>(location),
+      preferenceSetId = pulumi.Input.asInput<String>(preferenceSetId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      virtualMachinePreferences = pulumi.Input.asOptionalInput<PreferenceSetVirtualMachinePreferences>(virtualMachinePreferences);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final displayNameValue = displayName;
-    if (displayNameValue != null) {
-      map['displayName'] = displayNameValue;
-    }
-    map['location'] = location;
-    map['preferenceSetId'] = preferenceSetId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final virtualMachinePreferencesValue = virtualMachinePreferences;
-    if (virtualMachinePreferencesValue != null) {
-      map['virtualMachinePreferences'] = pulumi.Input.mapOptionalInputValue<
-              PreferenceSetVirtualMachinePreferences, Map<String, dynamic>>(
-          virtualMachinePreferencesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'displayName': ?displayName,
+      'location': location,
+      'preferenceSetId': preferenceSetId,
+      'project': ?project,
+      'virtualMachinePreferences': ?pulumi.Input.mapOptionalInputValue<PreferenceSetVirtualMachinePreferences, Map<String, dynamic>>(virtualMachinePreferences, (value) => value.toMap()),
+    };
   }
 
   factory PreferenceSetArgs.fromMap(Map<String, dynamic> map) {
     return PreferenceSetArgs(
-      description:
-          map['description'] == null ? null : map['description'] as String,
-      displayName:
-          map['displayName'] == null ? null : map['displayName'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
       location: map['location'] as String,
       preferenceSetId: map['preferenceSetId'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      virtualMachinePreferences: map['virtualMachinePreferences'] == null
-          ? null
-          : PreferenceSetVirtualMachinePreferences.fromMap(
-              (map['virtualMachinePreferences'] as Map)
-                  .cast<String, dynamic>()),
+      virtualMachinePreferences: map['virtualMachinePreferences'] == null ? null : PreferenceSetVirtualMachinePreferences.fromMap((map['virtualMachinePreferences'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

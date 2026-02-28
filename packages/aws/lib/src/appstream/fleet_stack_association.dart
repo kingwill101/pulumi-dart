@@ -191,10 +191,8 @@ import 'fleet_stack_association_args.dart';
 class FleetStackAssociation extends pulumi.CustomResource {
   /// Name of the fleet.
   late final pulumi.Output<String> fleetName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Name of the stack.
   late final pulumi.Output<String> stackName;
 

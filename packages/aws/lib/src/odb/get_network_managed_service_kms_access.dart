@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetNetworkManagedServiceKmsAccess {
   final String domainName;
   final List<String> ipv4Addresses;
   final String kmsPolicyDocument;
-
   /// The status of the network resource.
   final String status;
 
@@ -21,12 +21,12 @@ class GetNetworkManagedServiceKmsAccess {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['domainName'] = domainName;
-    map['ipv4Addresses'] = ipv4Addresses;
-    map['kmsPolicyDocument'] = kmsPolicyDocument;
-    map['status'] = status;
-    return map;
+    return <String, dynamic>{
+      'domainName': domainName,
+      'ipv4Addresses': ipv4Addresses,
+      'kmsPolicyDocument': kmsPolicyDocument,
+      'status': status,
+    };
   }
 
   factory GetNetworkManagedServiceKmsAccess.fromMap(Map<String, dynamic> map) {
@@ -38,3 +38,4 @@ class GetNetworkManagedServiceKmsAccess {
     );
   }
 }
+

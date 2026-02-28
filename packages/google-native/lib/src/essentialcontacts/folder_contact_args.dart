@@ -12,17 +12,12 @@ class FolderContactArgs {
   /// The email address to send notifications to. The email address does not need to be a Google Account.
   final pulumi.Input<String> email;
   final pulumi.Input<String> folderId;
-
   /// The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
   final pulumi.Input<String> languageTag;
-
   /// The categories of notifications that the contact will receive communications for.
-  final pulumi.Input<List<FolderContactNotificationCategorySubscriptionsItem>>
-      notificationCategorySubscriptions;
-
+  final pulumi.Input<List<FolderContactNotificationCategorySubscriptionsItem>> notificationCategorySubscriptions;
   /// The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago.
   final pulumi.Input<String>? validateTime;
-
   /// The validity of the contact. A contact is considered valid if it is the correct recipient for notifications for a particular resource.
   final pulumi.Input<FolderContactValidationState>? validationState;
 
@@ -37,44 +32,26 @@ class FolderContactArgs {
     required String email,
     required String folderId,
     required String languageTag,
-    required List<FolderContactNotificationCategorySubscriptionsItem>
-        notificationCategorySubscriptions,
+    required List<FolderContactNotificationCategorySubscriptionsItem> notificationCategorySubscriptions,
     String? validateTime,
     FolderContactValidationState? validationState,
-  })  : email = pulumi.Input.asInput<String>(email),
-        folderId = pulumi.Input.asInput<String>(folderId),
-        languageTag = pulumi.Input.asInput<String>(languageTag),
-        notificationCategorySubscriptions = pulumi.Input.asInput<
-                List<FolderContactNotificationCategorySubscriptionsItem>>(
-            notificationCategorySubscriptions),
-        validateTime = pulumi.Input.asOptionalInput<String>(validateTime),
-        validationState =
-            pulumi.Input.asOptionalInput<FolderContactValidationState>(
-                validationState);
+  }) :
+      email = pulumi.Input.asInput<String>(email),
+      folderId = pulumi.Input.asInput<String>(folderId),
+      languageTag = pulumi.Input.asInput<String>(languageTag),
+      notificationCategorySubscriptions = pulumi.Input.asInput<List<FolderContactNotificationCategorySubscriptionsItem>>(notificationCategorySubscriptions),
+      validateTime = pulumi.Input.asOptionalInput<String>(validateTime),
+      validationState = pulumi.Input.asOptionalInput<FolderContactValidationState>(validationState);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['email'] = email;
-    map['folderId'] = folderId;
-    map['languageTag'] = languageTag;
-    map['notificationCategorySubscriptions'] = pulumi.Input.mapInputValue<
-            List<FolderContactNotificationCategorySubscriptionsItem>,
-            List<String>>(
-        notificationCategorySubscriptions,
-        (value) => pulumi.Input.encodeList<
-            FolderContactNotificationCategorySubscriptionsItem,
-            String>(value, (value) => value.value));
-    final validateTimeValue = validateTime;
-    if (validateTimeValue != null) {
-      map['validateTime'] = validateTimeValue;
-    }
-    final validationStateValue = validationState;
-    if (validationStateValue != null) {
-      map['validationState'] = pulumi.Input.mapOptionalInputValue<
-          FolderContactValidationState,
-          String>(validationStateValue, (value) => value.value);
-    }
-    return map;
+    return <String, dynamic>{
+      'email': email,
+      'folderId': folderId,
+      'languageTag': languageTag,
+      'notificationCategorySubscriptions': pulumi.Input.mapInputValue<List<FolderContactNotificationCategorySubscriptionsItem>, List<String>>(notificationCategorySubscriptions, (value) => pulumi.Input.encodeList<FolderContactNotificationCategorySubscriptionsItem, String>(value, (value) => value.value)),
+      'validateTime': ?validateTime,
+      'validationState': ?pulumi.Input.mapOptionalInputValue<FolderContactValidationState, String>(validationState, (value) => value.value),
+    };
   }
 
   factory FolderContactArgs.fromMap(Map<String, dynamic> map) {
@@ -82,18 +59,10 @@ class FolderContactArgs {
       email: map['email'] as String,
       folderId: map['folderId'] as String,
       languageTag: map['languageTag'] as String,
-      notificationCategorySubscriptions: pulumi.Input.decodeList<
-              FolderContactNotificationCategorySubscriptionsItem>(
-          map['notificationCategorySubscriptions'],
-          (value) =>
-              FolderContactNotificationCategorySubscriptionsItem.fromValue(
-                  value as String)),
-      validateTime:
-          map['validateTime'] == null ? null : map['validateTime'] as String,
-      validationState: map['validationState'] == null
-          ? null
-          : FolderContactValidationState.fromValue(
-              map['validationState'] as String),
+      notificationCategorySubscriptions: pulumi.Input.decodeList<FolderContactNotificationCategorySubscriptionsItem>(map['notificationCategorySubscriptions'], (value) => FolderContactNotificationCategorySubscriptionsItem.fromValue(value as String)),
+      validateTime: map['validateTime'] == null ? null : map['validateTime'] as String,
+      validationState: map['validationState'] == null ? null : FolderContactValidationState.fromValue(map['validationState'] as String),
     );
   }
 }
+

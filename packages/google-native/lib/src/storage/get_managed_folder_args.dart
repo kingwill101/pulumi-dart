@@ -22,38 +22,28 @@ class GetManagedFolderArgs {
     String? ifMetagenerationMatch,
     String? ifMetagenerationNotMatch,
     required String managedFolder,
-  })  : bucket = pulumi.Input.asInput<String>(bucket),
-        ifMetagenerationMatch =
-            pulumi.Input.asOptionalInput<String>(ifMetagenerationMatch),
-        ifMetagenerationNotMatch =
-            pulumi.Input.asOptionalInput<String>(ifMetagenerationNotMatch),
-        managedFolder = pulumi.Input.asInput<String>(managedFolder);
+  }) :
+      bucket = pulumi.Input.asInput<String>(bucket),
+      ifMetagenerationMatch = pulumi.Input.asOptionalInput<String>(ifMetagenerationMatch),
+      ifMetagenerationNotMatch = pulumi.Input.asOptionalInput<String>(ifMetagenerationNotMatch),
+      managedFolder = pulumi.Input.asInput<String>(managedFolder);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucket'] = bucket;
-    final ifMetagenerationMatchValue = ifMetagenerationMatch;
-    if (ifMetagenerationMatchValue != null) {
-      map['ifMetagenerationMatch'] = ifMetagenerationMatchValue;
-    }
-    final ifMetagenerationNotMatchValue = ifMetagenerationNotMatch;
-    if (ifMetagenerationNotMatchValue != null) {
-      map['ifMetagenerationNotMatch'] = ifMetagenerationNotMatchValue;
-    }
-    map['managedFolder'] = managedFolder;
-    return map;
+    return <String, dynamic>{
+      'bucket': bucket,
+      'ifMetagenerationMatch': ?ifMetagenerationMatch,
+      'ifMetagenerationNotMatch': ?ifMetagenerationNotMatch,
+      'managedFolder': managedFolder,
+    };
   }
 
   factory GetManagedFolderArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedFolderArgs(
       bucket: map['bucket'] as String,
-      ifMetagenerationMatch: map['ifMetagenerationMatch'] == null
-          ? null
-          : map['ifMetagenerationMatch'] as String,
-      ifMetagenerationNotMatch: map['ifMetagenerationNotMatch'] == null
-          ? null
-          : map['ifMetagenerationNotMatch'] as String,
+      ifMetagenerationMatch: map['ifMetagenerationMatch'] == null ? null : map['ifMetagenerationMatch'] as String,
+      ifMetagenerationNotMatch: map['ifMetagenerationNotMatch'] == null ? null : map['ifMetagenerationNotMatch'] as String,
       managedFolder: map['managedFolder'] as String,
     );
   }
 }
+

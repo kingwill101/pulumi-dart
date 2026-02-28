@@ -15,23 +15,15 @@ class EnvironmentProperties {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final propertiesValue = properties;
-    if (propertiesValue != null) {
-      map['properties'] = pulumi.Input.encodeList<EnvironmentPropertiesProperty,
-          Map<String, dynamic>>(propertiesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'properties': ?properties == null ? null : pulumi.Input.encodeList<EnvironmentPropertiesProperty, Map<String, dynamic>>(properties!, (value) => value.toMap()),
+    };
   }
 
   factory EnvironmentProperties.fromMap(Map<String, dynamic> map) {
     return EnvironmentProperties(
-      properties: map['properties'] == null
-          ? null
-          : pulumi.Input.decodeList<EnvironmentPropertiesProperty>(
-              map['properties'],
-              (value) => EnvironmentPropertiesProperty.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      properties: map['properties'] == null ? null : pulumi.Input.decodeList<EnvironmentPropertiesProperty>(map['properties'], (value) => EnvironmentPropertiesProperty.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

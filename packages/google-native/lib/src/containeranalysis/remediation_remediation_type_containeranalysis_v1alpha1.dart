@@ -10,15 +10,13 @@ enum RemediationRemediationTypeContaineranalysisV1alpha1 {
   const RemediationRemediationTypeContaineranalysisV1alpha1(this.value);
   final String value;
 
-  static RemediationRemediationTypeContaineranalysisV1alpha1 fromValue(
-      String value) {
-    for (final item
-        in RemediationRemediationTypeContaineranalysisV1alpha1.values) {
+  static RemediationRemediationTypeContaineranalysisV1alpha1 fromValue(String value) {
+    for (final item in RemediationRemediationTypeContaineranalysisV1alpha1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown RemediationRemediationTypeContaineranalysisV1alpha1 value: $value');
+    throw ArgumentError('Unknown RemediationRemediationTypeContaineranalysisV1alpha1 value: $value');
   }
 }
+

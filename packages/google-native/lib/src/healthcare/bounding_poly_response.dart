@@ -7,7 +7,6 @@ import 'vertex_response.dart';
 class BoundingPolyResponse {
   /// A description of this polygon.
   final String label;
-
   /// List of the vertices of this polygon.
   final List<VertexResponse> vertices;
 
@@ -20,21 +19,17 @@ class BoundingPolyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['label'] = label;
-    map['vertices'] =
-        pulumi.Input.encodeList<VertexResponse, Map<String, dynamic>>(
-            vertices, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'label': label,
+      'vertices': pulumi.Input.encodeList<VertexResponse, Map<String, dynamic>>(vertices, (value) => value.toMap()),
+    };
   }
 
   factory BoundingPolyResponse.fromMap(Map<String, dynamic> map) {
     return BoundingPolyResponse(
       label: map['label'] as String,
-      vertices: pulumi.Input.decodeList<VertexResponse>(
-          map['vertices'],
-          (value) =>
-              VertexResponse.fromMap((value as Map).cast<String, dynamic>())),
+      vertices: pulumi.Input.decodeList<VertexResponse>(map['vertices'], (value) => VertexResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

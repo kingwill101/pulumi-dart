@@ -7,9 +7,7 @@ import 'import_error_response_migrationcenter_v1alpha1.dart';
 /// A resource that aggregates errors across import job files.
 class ValidationReportResponseMigrationcenterV1alpha1 {
   /// List of errors found in files.
-  final List<FileValidationReportResponseMigrationcenterV1alpha1>
-      fileValidations;
-
+  final List<FileValidationReportResponseMigrationcenterV1alpha1> fileValidations;
   /// List of job level errors.
   final List<ImportErrorResponseMigrationcenterV1alpha1> jobErrors;
 
@@ -22,30 +20,17 @@ class ValidationReportResponseMigrationcenterV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['fileValidations'] = pulumi.Input.encodeList<
-        FileValidationReportResponseMigrationcenterV1alpha1,
-        Map<String, dynamic>>(fileValidations, (value) => value.toMap());
-    map['jobErrors'] = pulumi.Input.encodeList<
-        ImportErrorResponseMigrationcenterV1alpha1,
-        Map<String, dynamic>>(jobErrors, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'fileValidations': pulumi.Input.encodeList<FileValidationReportResponseMigrationcenterV1alpha1, Map<String, dynamic>>(fileValidations, (value) => value.toMap()),
+      'jobErrors': pulumi.Input.encodeList<ImportErrorResponseMigrationcenterV1alpha1, Map<String, dynamic>>(jobErrors, (value) => value.toMap()),
+    };
   }
 
-  factory ValidationReportResponseMigrationcenterV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory ValidationReportResponseMigrationcenterV1alpha1.fromMap(Map<String, dynamic> map) {
     return ValidationReportResponseMigrationcenterV1alpha1(
-      fileValidations: pulumi.Input.decodeList<
-              FileValidationReportResponseMigrationcenterV1alpha1>(
-          map['fileValidations'],
-          (value) =>
-              FileValidationReportResponseMigrationcenterV1alpha1.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      jobErrors:
-          pulumi.Input.decodeList<ImportErrorResponseMigrationcenterV1alpha1>(
-              map['jobErrors'],
-              (value) => ImportErrorResponseMigrationcenterV1alpha1.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      fileValidations: pulumi.Input.decodeList<FileValidationReportResponseMigrationcenterV1alpha1>(map['fileValidations'], (value) => FileValidationReportResponseMigrationcenterV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
+      jobErrors: pulumi.Input.decodeList<ImportErrorResponseMigrationcenterV1alpha1>(map['jobErrors'], (value) => ImportErrorResponseMigrationcenterV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

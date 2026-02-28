@@ -23,8 +23,7 @@ Future<GetGameServerDeploymentIamPolicyResult> getGameServerDeploymentIamPolicy(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gameservices_v1beta_get_game_server_deployment_iam_policy_gameservices_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetGameServerDeploymentIamPolicyGameservicesV1betaResult>
-    getGameServerDeploymentIamPolicyGameservicesV1beta(
+Future<GetGameServerDeploymentIamPolicyGameservicesV1betaResult> getGameServerDeploymentIamPolicyGameservicesV1beta(
   GetGameServerDeploymentIamPolicyGameservicesV1betaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -34,6 +33,5 @@ Future<GetGameServerDeploymentIamPolicyGameservicesV1betaResult>
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetGameServerDeploymentIamPolicyGameservicesV1betaResult.fromMap(
-      result);
+  return GetGameServerDeploymentIamPolicyGameservicesV1betaResult.fromMap(result);
 }

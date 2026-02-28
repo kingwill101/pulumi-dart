@@ -8,15 +8,13 @@ enum GoogleCloudIdentitytoolkitAdminV2ProviderConfigState {
   const GoogleCloudIdentitytoolkitAdminV2ProviderConfigState(this.value);
   final String value;
 
-  static GoogleCloudIdentitytoolkitAdminV2ProviderConfigState fromValue(
-      String value) {
-    for (final item
-        in GoogleCloudIdentitytoolkitAdminV2ProviderConfigState.values) {
+  static GoogleCloudIdentitytoolkitAdminV2ProviderConfigState fromValue(String value) {
+    for (final item in GoogleCloudIdentitytoolkitAdminV2ProviderConfigState.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GoogleCloudIdentitytoolkitAdminV2ProviderConfigState value: $value');
+    throw ArgumentError('Unknown GoogleCloudIdentitytoolkitAdminV2ProviderConfigState value: $value');
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The device configuration. Eventually delivered to devices.
 class DeviceConfig {
   /// The device configuration data.
@@ -12,18 +13,15 @@ class DeviceConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final binaryDataValue = binaryData;
-    if (binaryDataValue != null) {
-      map['binaryData'] = binaryDataValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'binaryData': ?binaryData,
+    };
   }
 
   factory DeviceConfig.fromMap(Map<String, dynamic> map) {
     return DeviceConfig(
-      binaryData:
-          map['binaryData'] == null ? null : map['binaryData'] as String,
+      binaryData: map['binaryData'] == null ? null : map['binaryData'] as String,
     );
   }
 }
+

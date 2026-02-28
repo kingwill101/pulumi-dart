@@ -13,20 +13,15 @@ class ConnectorEgressConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final vpcLatticeValue = vpcLattice;
-    if (vpcLatticeValue != null) {
-      map['vpcLattice'] = vpcLatticeValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'vpcLattice': ?vpcLattice == null ? null : vpcLattice!.toMap(),
+    };
   }
 
   factory ConnectorEgressConfig.fromMap(Map<String, dynamic> map) {
     return ConnectorEgressConfig(
-      vpcLattice: map['vpcLattice'] == null
-          ? null
-          : ConnectorEgressConfigVpcLattice.fromMap(
-              (map['vpcLattice'] as Map).cast<String, dynamic>()),
+      vpcLattice: map['vpcLattice'] == null ? null : ConnectorEgressConfigVpcLattice.fromMap((map['vpcLattice'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

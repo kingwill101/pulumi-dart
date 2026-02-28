@@ -9,28 +9,20 @@ import 'vmware_source_details_response.dart';
 class GetSourceResult {
   /// AWS type source details.
   final AwsSourceDetailsResponse aws;
-
   /// Azure type source details.
   final AzureSourceDetailsResponse azure;
-
   /// The create time timestamp.
   final String createTime;
-
   /// User-provided description of the source.
   final String description;
-
   /// Optional. Immutable. The encryption details of the source data stored by the service.
   final EncryptionResponse encryption;
-
   /// The labels of the source.
   final Map<String, String> labels;
-
   /// The Source name.
   final String name;
-
   /// The update time timestamp.
   final String updateTime;
-
   /// Vmware type source details.
   final VmwareSourceDetailsResponse vmware;
 
@@ -57,34 +49,31 @@ class GetSourceResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['aws'] = aws.toMap();
-    map['azure'] = azure.toMap();
-    map['createTime'] = createTime;
-    map['description'] = description;
-    map['encryption'] = encryption.toMap();
-    map['labels'] = labels;
-    map['name'] = name;
-    map['updateTime'] = updateTime;
-    map['vmware'] = vmware.toMap();
-    return map;
+    return <String, dynamic>{
+      'aws': aws.toMap(),
+      'azure': azure.toMap(),
+      'createTime': createTime,
+      'description': description,
+      'encryption': encryption.toMap(),
+      'labels': labels,
+      'name': name,
+      'updateTime': updateTime,
+      'vmware': vmware.toMap(),
+    };
   }
 
   factory GetSourceResult.fromMap(Map<String, dynamic> map) {
     return GetSourceResult(
-      aws: AwsSourceDetailsResponse.fromMap(
-          (map['aws'] as Map).cast<String, dynamic>()),
-      azure: AzureSourceDetailsResponse.fromMap(
-          (map['azure'] as Map).cast<String, dynamic>()),
+      aws: AwsSourceDetailsResponse.fromMap((map['aws'] as Map).cast<String, dynamic>()),
+      azure: AzureSourceDetailsResponse.fromMap((map['azure'] as Map).cast<String, dynamic>()),
       createTime: map['createTime'] as String,
       description: map['description'] as String,
-      encryption: EncryptionResponse.fromMap(
-          (map['encryption'] as Map).cast<String, dynamic>()),
+      encryption: EncryptionResponse.fromMap((map['encryption'] as Map).cast<String, dynamic>()),
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
       updateTime: map['updateTime'] as String,
-      vmware: VmwareSourceDetailsResponse.fromMap(
-          (map['vmware'] as Map).cast<String, dynamic>()),
+      vmware: VmwareSourceDetailsResponse.fromMap((map['vmware'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

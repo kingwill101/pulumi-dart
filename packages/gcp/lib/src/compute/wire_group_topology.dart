@@ -15,23 +15,15 @@ class WireGroupTopology {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final endpointsValue = endpoints;
-    if (endpointsValue != null) {
-      map['endpoints'] = pulumi.Input.encodeList<WireGroupTopologyEndpoint,
-          Map<String, dynamic>>(endpointsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'endpoints': ?endpoints == null ? null : pulumi.Input.encodeList<WireGroupTopologyEndpoint, Map<String, dynamic>>(endpoints!, (value) => value.toMap()),
+    };
   }
 
   factory WireGroupTopology.fromMap(Map<String, dynamic> map) {
     return WireGroupTopology(
-      endpoints: map['endpoints'] == null
-          ? null
-          : pulumi.Input.decodeList<WireGroupTopologyEndpoint>(
-              map['endpoints'],
-              (value) => WireGroupTopologyEndpoint.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      endpoints: map['endpoints'] == null ? null : pulumi.Input.decodeList<WireGroupTopologyEndpoint>(map['endpoints'], (value) => WireGroupTopologyEndpoint.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

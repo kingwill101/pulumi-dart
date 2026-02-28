@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterNetworkPerformanceConfig {
   /// Specifies the total network bandwidth tier for NodePools in the cluster.
   final String totalEgressBandwidthTier;
@@ -11,9 +12,9 @@ class GetClusterNetworkPerformanceConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['totalEgressBandwidthTier'] = totalEgressBandwidthTier;
-    return map;
+    return <String, dynamic>{
+      'totalEgressBandwidthTier': totalEgressBandwidthTier,
+    };
   }
 
   factory GetClusterNetworkPerformanceConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetClusterNetworkPerformanceConfig {
     );
   }
 }
+

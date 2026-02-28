@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetSnapshotFilter {
   final String name;
   final List<String> values;
@@ -13,10 +14,10 @@ class GetSnapshotFilter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['values'] = values;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'values': values,
+    };
   }
 
   factory GetSnapshotFilter.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class GetSnapshotFilter {
     );
   }
 }
+

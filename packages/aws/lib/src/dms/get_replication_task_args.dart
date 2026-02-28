@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReplicationTaskArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The replication task identifier.
   final pulumi.Input<String> replicationTaskId;
   final pulumi.Input<Map<String, String>>? tags;
@@ -22,31 +21,25 @@ class GetReplicationTaskArgs {
     String? region,
     required String replicationTaskId,
     Map<String, String>? tags,
-  })  : region = pulumi.Input.asOptionalInput<String>(region),
-        replicationTaskId = pulumi.Input.asInput<String>(replicationTaskId),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      replicationTaskId = pulumi.Input.asInput<String>(replicationTaskId),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['replicationTaskId'] = replicationTaskId;
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'region': ?region,
+      'replicationTaskId': replicationTaskId,
+      'tags': ?tags,
+    };
   }
 
   factory GetReplicationTaskArgs.fromMap(Map<String, dynamic> map) {
     return GetReplicationTaskArgs(
       region: map['region'] == null ? null : map['region'] as String,
       replicationTaskId: map['replicationTaskId'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

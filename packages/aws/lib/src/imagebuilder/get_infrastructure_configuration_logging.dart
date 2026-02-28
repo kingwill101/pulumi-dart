@@ -14,21 +14,15 @@ class GetInfrastructureConfigurationLogging {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['s3Logs'] = pulumi.Input.encodeList<
-        GetInfrastructureConfigurationLoggingS3Log,
-        Map<String, dynamic>>(s3Logs, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      's3Logs': pulumi.Input.encodeList<GetInfrastructureConfigurationLoggingS3Log, Map<String, dynamic>>(s3Logs, (value) => value.toMap()),
+    };
   }
 
-  factory GetInfrastructureConfigurationLogging.fromMap(
-      Map<String, dynamic> map) {
+  factory GetInfrastructureConfigurationLogging.fromMap(Map<String, dynamic> map) {
     return GetInfrastructureConfigurationLogging(
-      s3Logs:
-          pulumi.Input.decodeList<GetInfrastructureConfigurationLoggingS3Log>(
-              map['s3Logs'],
-              (value) => GetInfrastructureConfigurationLoggingS3Log.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      s3Logs: pulumi.Input.decodeList<GetInfrastructureConfigurationLoggingS3Log>(map['s3Logs'], (value) => GetInfrastructureConfigurationLoggingS3Log.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

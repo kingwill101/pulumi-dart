@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DatascanDataQualitySpecRuleSqlAssertion {
   /// The SQL statement.
   final String sqlStatement;
@@ -11,15 +12,15 @@ class DatascanDataQualitySpecRuleSqlAssertion {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['sqlStatement'] = sqlStatement;
-    return map;
+    return <String, dynamic>{
+      'sqlStatement': sqlStatement,
+    };
   }
 
-  factory DatascanDataQualitySpecRuleSqlAssertion.fromMap(
-      Map<String, dynamic> map) {
+  factory DatascanDataQualitySpecRuleSqlAssertion.fromMap(Map<String, dynamic> map) {
     return DatascanDataQualitySpecRuleSqlAssertion(
       sqlStatement: map['sqlStatement'] as String,
     );
   }
 }
+

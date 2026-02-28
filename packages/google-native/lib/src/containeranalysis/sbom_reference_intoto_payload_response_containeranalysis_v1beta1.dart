@@ -8,13 +8,10 @@ import 'subject_response_containeranalysis_v1beta1.dart';
 class SbomReferenceIntotoPayloadResponseContaineranalysisV1beta1 {
   /// Additional parameters of the Predicate. Includes the actual data about the SBOM.
   final SbomReferenceIntotoPredicateResponseContaineranalysisV1beta1 predicate;
-
   /// URI identifying the type of the Predicate.
   final String predicateType;
-
   /// Set of software artifacts that the attestation applies to. Each element represents a single software artifact.
   final List<SubjectResponseContaineranalysisV1beta1> subject;
-
   /// Identifier for the schema of the Statement.
   final String type;
 
@@ -31,28 +28,21 @@ class SbomReferenceIntotoPayloadResponseContaineranalysisV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['predicate'] = predicate.toMap();
-    map['predicateType'] = predicateType;
-    map['subject'] = pulumi.Input.encodeList<
-        SubjectResponseContaineranalysisV1beta1,
-        Map<String, dynamic>>(subject, (value) => value.toMap());
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'predicate': predicate.toMap(),
+      'predicateType': predicateType,
+      'subject': pulumi.Input.encodeList<SubjectResponseContaineranalysisV1beta1, Map<String, dynamic>>(subject, (value) => value.toMap()),
+      'type': type,
+    };
   }
 
-  factory SbomReferenceIntotoPayloadResponseContaineranalysisV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory SbomReferenceIntotoPayloadResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return SbomReferenceIntotoPayloadResponseContaineranalysisV1beta1(
-      predicate:
-          SbomReferenceIntotoPredicateResponseContaineranalysisV1beta1.fromMap(
-              (map['predicate'] as Map).cast<String, dynamic>()),
+      predicate: SbomReferenceIntotoPredicateResponseContaineranalysisV1beta1.fromMap((map['predicate'] as Map).cast<String, dynamic>()),
       predicateType: map['predicateType'] as String,
-      subject: pulumi.Input.decodeList<SubjectResponseContaineranalysisV1beta1>(
-          map['subject'],
-          (value) => SubjectResponseContaineranalysisV1beta1.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      subject: pulumi.Input.decodeList<SubjectResponseContaineranalysisV1beta1>(map['subject'], (value) => SubjectResponseContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }
 }
+

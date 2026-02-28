@@ -113,10 +113,8 @@ import 'budget_resource_association_args.dart';
 class BudgetResourceAssociation extends pulumi.CustomResource {
   /// Budget name.
   late final pulumi.Output<String> budgetName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Resource identifier.
   late final pulumi.Output<String> resourceId;
 

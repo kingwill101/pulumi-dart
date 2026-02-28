@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getResourcePolicy.
 class GetResourcePolicyResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// JSON-encoded string representation of the applied resource policy.
   final String policy;
   final String region;
@@ -23,12 +23,12 @@ class GetResourcePolicyResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['policy'] = policy;
-    map['region'] = region;
-    map['resourceArn'] = resourceArn;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'policy': policy,
+      'region': region,
+      'resourceArn': resourceArn,
+    };
   }
 
   factory GetResourcePolicyResult.fromMap(Map<String, dynamic> map) {
@@ -40,3 +40,4 @@ class GetResourcePolicyResult {
     );
   }
 }
+

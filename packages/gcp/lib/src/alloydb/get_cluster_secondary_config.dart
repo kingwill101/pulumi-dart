@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterSecondaryConfig {
   /// Name of the primary cluster must be in the format
   /// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
@@ -12,9 +13,9 @@ class GetClusterSecondaryConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['primaryClusterName'] = primaryClusterName;
-    return map;
+    return <String, dynamic>{
+      'primaryClusterName': primaryClusterName,
+    };
   }
 
   factory GetClusterSecondaryConfig.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class GetClusterSecondaryConfig {
     );
   }
 }
+

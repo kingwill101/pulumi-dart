@@ -6,34 +6,24 @@ import 'subnet_response.dart';
 class GetConnectorResult {
   /// List of projects using the connector.
   final List<String> connectedProjects;
-
   /// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
   final String ipCidrRange;
-
   /// Machine type of VM Instance underlying connector. Default is e2-micro
   final String machineType;
-
   /// Maximum value of instances in autoscaling group underlying the connector.
   final int maxInstances;
-
   /// Maximum throughput of the connector in Mbps. Default is 300, max is 1000. If both max-throughput and max-instances are provided, max-instances takes precedence over max-throughput.
   final int maxThroughput;
-
   /// Minimum value of instances in autoscaling group underlying the connector.
   final int minInstances;
-
   /// Minimum throughput of the connector in Mbps. Default and min is 200. If both min-throughput and min-instances are provided, min-instances takes precedence over min-throughput.
   final int minThroughput;
-
   /// The resource name in the format `projects/*/locations/*/connectors/*`.
   final String name;
-
   /// Name of a VPC network.
   final String network;
-
   /// State of the VPC access connector.
   final String state;
-
   /// The subnet in which to house the VPC Access Connector.
   final SubnetResponse subnet;
 
@@ -64,19 +54,19 @@ class GetConnectorResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['connectedProjects'] = connectedProjects;
-    map['ipCidrRange'] = ipCidrRange;
-    map['machineType'] = machineType;
-    map['maxInstances'] = maxInstances;
-    map['maxThroughput'] = maxThroughput;
-    map['minInstances'] = minInstances;
-    map['minThroughput'] = minThroughput;
-    map['name'] = name;
-    map['network'] = network;
-    map['state'] = state;
-    map['subnet'] = subnet.toMap();
-    return map;
+    return <String, dynamic>{
+      'connectedProjects': connectedProjects,
+      'ipCidrRange': ipCidrRange,
+      'machineType': machineType,
+      'maxInstances': maxInstances,
+      'maxThroughput': maxThroughput,
+      'minInstances': minInstances,
+      'minThroughput': minThroughput,
+      'name': name,
+      'network': network,
+      'state': state,
+      'subnet': subnet.toMap(),
+    };
   }
 
   factory GetConnectorResult.fromMap(Map<String, dynamic> map) {
@@ -91,8 +81,8 @@ class GetConnectorResult {
       name: map['name'] as String,
       network: map['network'] as String,
       state: map['state'] as String,
-      subnet: SubnetResponse.fromMap(
-          (map['subnet'] as Map).cast<String, dynamic>()),
+      subnet: SubnetResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

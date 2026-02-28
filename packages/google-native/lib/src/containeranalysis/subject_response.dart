@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SubjectResponse {
   /// `"": ""` Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
   final Map<String, String> digest;
@@ -14,10 +15,10 @@ class SubjectResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['digest'] = digest;
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'digest': digest,
+      'name': name,
+    };
   }
 
   factory SubjectResponse.fromMap(Map<String, dynamic> map) {
@@ -27,3 +28,4 @@ class SubjectResponse {
     );
   }
 }
+

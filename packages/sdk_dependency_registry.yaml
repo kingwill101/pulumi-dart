@@ -4,6 +4,3 @@ providers:
   policy:
     dependencies:
       pulumi_policy: any
-  awsx:
-    dependencies:
-      pulumi_aws: any

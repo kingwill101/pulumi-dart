@@ -30,11 +30,9 @@ import 'env_keystore_args.dart';
 class EnvKeystore extends pulumi.CustomResource {
   /// Aliases in this keystore.
   late final pulumi.Output<List<String>> aliases;
-
   /// The Apigee environment group associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
   late final pulumi.Output<String> envId;
-
   /// The name of the newly created keystore.
   late final pulumi.Output<String> name;
 

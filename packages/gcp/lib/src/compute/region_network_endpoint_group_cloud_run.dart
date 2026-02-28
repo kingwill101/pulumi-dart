@@ -1,17 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RegionNetworkEndpointGroupCloudRun {
   /// Cloud Run service is the main resource of Cloud Run.
   /// The service must be 1-63 characters long, and comply with RFC1035.
   /// Example value: "run-service".
   final String? service;
-
   /// Cloud Run tag represents the "named-revision" to provide
   /// additional fine-grained traffic routing information.
   /// The tag must be 1-63 characters long, and comply with RFC1035.
   /// Example value: "revision-0010".
   final String? tag;
-
   /// A template to parse service and tag fields from a request URL.
   /// URL mask allows for routing to multiple Run services without having
   /// to create multiple network endpoint groups and backend services.
@@ -32,20 +31,11 @@ class RegionNetworkEndpointGroupCloudRun {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final serviceValue = service;
-    if (serviceValue != null) {
-      map['service'] = serviceValue;
-    }
-    final tagValue = tag;
-    if (tagValue != null) {
-      map['tag'] = tagValue;
-    }
-    final urlMaskValue = urlMask;
-    if (urlMaskValue != null) {
-      map['urlMask'] = urlMaskValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'service': ?service,
+      'tag': ?tag,
+      'urlMask': ?urlMask,
+    };
   }
 
   factory RegionNetworkEndpointGroupCloudRun.fromMap(Map<String, dynamic> map) {
@@ -56,3 +46,4 @@ class RegionNetworkEndpointGroupCloudRun {
     );
   }
 }
+

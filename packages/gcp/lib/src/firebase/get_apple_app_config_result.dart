@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getAppleAppConfig.
 class GetAppleAppConfigResult {
   final String appId;
-
   /// The content of the XML configuration file as a base64-encoded string.
   final String configFileContents;
-
   /// The filename that the configuration artifact for the IosApp is typically saved as.
   final String configFilename;
   final String id;
@@ -27,16 +26,13 @@ class GetAppleAppConfigResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['appId'] = appId;
-    map['configFileContents'] = configFileContents;
-    map['configFilename'] = configFilename;
-    map['id'] = id;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'appId': appId,
+      'configFileContents': configFileContents,
+      'configFilename': configFilename,
+      'id': id,
+      'project': ?project,
+    };
   }
 
   factory GetAppleAppConfigResult.fromMap(Map<String, dynamic> map) {
@@ -49,3 +45,4 @@ class GetAppleAppConfigResult {
     );
   }
 }
+

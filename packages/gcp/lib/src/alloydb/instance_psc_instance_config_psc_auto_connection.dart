@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstancePscInstanceConfigPscAutoConnection {
   /// The consumer network for the PSC service automation, example:
   /// "projects/vpc-host-project/global/networks/default".
@@ -7,20 +8,16 @@ class InstancePscInstanceConfigPscAutoConnection {
   /// consumer project. The API expects the consumer project specified to be
   /// the project ID (and not the project number)
   final String? consumerNetwork;
-
   /// (Output)
   /// The status of the service connection policy.
   final String? consumerNetworkStatus;
-
   /// The consumer project to which the PSC service automation endpoint will
   /// be created. The API expects the consumer project to be the project ID(
   /// and not the project number).
   final String? consumerProject;
-
   /// (Output)
   /// The IP address of the PSC service automation endpoint.
   final String? ipAddress;
-
   /// (Output)
   /// The status of the PSC service automation connection.
   final String? status;
@@ -40,44 +37,23 @@ class InstancePscInstanceConfigPscAutoConnection {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final consumerNetworkValue = consumerNetwork;
-    if (consumerNetworkValue != null) {
-      map['consumerNetwork'] = consumerNetworkValue;
-    }
-    final consumerNetworkStatusValue = consumerNetworkStatus;
-    if (consumerNetworkStatusValue != null) {
-      map['consumerNetworkStatus'] = consumerNetworkStatusValue;
-    }
-    final consumerProjectValue = consumerProject;
-    if (consumerProjectValue != null) {
-      map['consumerProject'] = consumerProjectValue;
-    }
-    final ipAddressValue = ipAddress;
-    if (ipAddressValue != null) {
-      map['ipAddress'] = ipAddressValue;
-    }
-    final statusValue = status;
-    if (statusValue != null) {
-      map['status'] = statusValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'consumerNetwork': ?consumerNetwork,
+      'consumerNetworkStatus': ?consumerNetworkStatus,
+      'consumerProject': ?consumerProject,
+      'ipAddress': ?ipAddress,
+      'status': ?status,
+    };
   }
 
-  factory InstancePscInstanceConfigPscAutoConnection.fromMap(
-      Map<String, dynamic> map) {
+  factory InstancePscInstanceConfigPscAutoConnection.fromMap(Map<String, dynamic> map) {
     return InstancePscInstanceConfigPscAutoConnection(
-      consumerNetwork: map['consumerNetwork'] == null
-          ? null
-          : map['consumerNetwork'] as String,
-      consumerNetworkStatus: map['consumerNetworkStatus'] == null
-          ? null
-          : map['consumerNetworkStatus'] as String,
-      consumerProject: map['consumerProject'] == null
-          ? null
-          : map['consumerProject'] as String,
+      consumerNetwork: map['consumerNetwork'] == null ? null : map['consumerNetwork'] as String,
+      consumerNetworkStatus: map['consumerNetworkStatus'] == null ? null : map['consumerNetworkStatus'] as String,
+      consumerProject: map['consumerProject'] == null ? null : map['consumerProject'] as String,
       ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
       status: map['status'] == null ? null : map['status'] as String,
     );
   }
 }
+

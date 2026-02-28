@@ -272,16 +272,13 @@ class WebResource extends pulumi.CustomResource {
   /// The email addresses of all direct, verified owners of this exact property. Indirect owners —
   /// for example verified owners of the containing domain—are not included in this list.
   late final pulumi.Output<List<String>> owners;
-
   /// Container for the address and type of a site for which a verification token will be verified.
   /// Structure is documented below.
   late final pulumi.Output<WebResourceSite> site;
-
   /// The verification method for the Site Verification system to use to verify
   /// this site or domain.
   /// Possible values are: `ANALYTICS`, `DNS_CNAME`, `DNS_TXT`, `FILE`, `META`, `TAG_MANAGER`.
   late final pulumi.Output<String> verificationMethod;
-
   /// The string used to identify this web resource.
   late final pulumi.Output<String> webResourceId;
 

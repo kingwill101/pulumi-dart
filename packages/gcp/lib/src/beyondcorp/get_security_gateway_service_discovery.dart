@@ -14,20 +14,15 @@ class GetSecurityGatewayServiceDiscovery {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['apiGateways'] = pulumi.Input.encodeList<
-        GetSecurityGatewayServiceDiscoveryApiGateway,
-        Map<String, dynamic>>(apiGateways, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'apiGateways': pulumi.Input.encodeList<GetSecurityGatewayServiceDiscoveryApiGateway, Map<String, dynamic>>(apiGateways, (value) => value.toMap()),
+    };
   }
 
   factory GetSecurityGatewayServiceDiscovery.fromMap(Map<String, dynamic> map) {
     return GetSecurityGatewayServiceDiscovery(
-      apiGateways:
-          pulumi.Input.decodeList<GetSecurityGatewayServiceDiscoveryApiGateway>(
-              map['apiGateways'],
-              (value) => GetSecurityGatewayServiceDiscoveryApiGateway.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      apiGateways: pulumi.Input.decodeList<GetSecurityGatewayServiceDiscoveryApiGateway>(map['apiGateways'], (value) => GetSecurityGatewayServiceDiscoveryApiGateway.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

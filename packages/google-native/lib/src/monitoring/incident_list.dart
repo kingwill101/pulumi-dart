@@ -7,7 +7,6 @@ import 'monitored_resource.dart';
 class IncidentList {
   /// Optional. The monitored resource for which incidents are listed. The resource doesn't need to be fully specified. That is, you can specify the resource type but not the values of the resource labels. The resource type and labels are used for filtering.
   final List<MonitoredResource>? monitoredResources;
-
   /// Optional. A list of alert policy names to filter the incident list by. Don't include the project ID prefix in the policy name. For example, use alertPolicies/utilization.
   final List<String>? policyNames;
 
@@ -20,31 +19,17 @@ class IncidentList {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final monitoredResourcesValue = monitoredResources;
-    if (monitoredResourcesValue != null) {
-      map['monitoredResources'] =
-          pulumi.Input.encodeList<MonitoredResource, Map<String, dynamic>>(
-              monitoredResourcesValue, (value) => value.toMap());
-    }
-    final policyNamesValue = policyNames;
-    if (policyNamesValue != null) {
-      map['policyNames'] = policyNamesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'monitoredResources': ?monitoredResources == null ? null : pulumi.Input.encodeList<MonitoredResource, Map<String, dynamic>>(monitoredResources!, (value) => value.toMap()),
+      'policyNames': ?policyNames,
+    };
   }
 
   factory IncidentList.fromMap(Map<String, dynamic> map) {
     return IncidentList(
-      monitoredResources: map['monitoredResources'] == null
-          ? null
-          : pulumi.Input.decodeList<MonitoredResource>(
-              map['monitoredResources'],
-              (value) => MonitoredResource.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      policyNames: map['policyNames'] == null
-          ? null
-          : (map['policyNames'] as List).cast<String>(),
+      monitoredResources: map['monitoredResources'] == null ? null : pulumi.Input.decodeList<MonitoredResource>(map['monitoredResources'], (value) => MonitoredResource.fromMap((value as Map).cast<String, dynamic>())),
+      policyNames: map['policyNames'] == null ? null : (map['policyNames'] as List).cast<String>(),
     );
   }
 }
+

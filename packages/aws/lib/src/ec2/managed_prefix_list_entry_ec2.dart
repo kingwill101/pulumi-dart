@@ -176,13 +176,10 @@ import 'managed_prefix_list_entry_args.dart';
 class ManagedPrefixListEntryEc2 extends pulumi.CustomResource {
   /// CIDR block of this entry.
   late final pulumi.Output<String> cidr;
-
   /// Description of this entry. Please note that due to API limitations, updating only the description of an entry will require recreating the entry.
   late final pulumi.Output<String?> description;
-
   /// The ID of the prefix list.
   late final pulumi.Output<String> prefixListId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

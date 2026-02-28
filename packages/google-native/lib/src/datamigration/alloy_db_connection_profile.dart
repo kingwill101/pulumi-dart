@@ -6,7 +6,6 @@ import 'alloy_db_settings.dart';
 class AlloyDbConnectionProfile {
   /// The AlloyDB cluster ID that this connection profile is associated with.
   final String clusterId;
-
   /// Immutable. Metadata used to create the destination AlloyDB cluster.
   final AlloyDbSettings? settings;
 
@@ -19,22 +18,17 @@ class AlloyDbConnectionProfile {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clusterId'] = clusterId;
-    final settingsValue = settings;
-    if (settingsValue != null) {
-      map['settings'] = settingsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'clusterId': clusterId,
+      'settings': ?settings == null ? null : settings!.toMap(),
+    };
   }
 
   factory AlloyDbConnectionProfile.fromMap(Map<String, dynamic> map) {
     return AlloyDbConnectionProfile(
       clusterId: map['clusterId'] as String,
-      settings: map['settings'] == null
-          ? null
-          : AlloyDbSettings.fromMap(
-              (map['settings'] as Map).cast<String, dynamic>()),
+      settings: map['settings'] == null ? null : AlloyDbSettings.fromMap((map['settings'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

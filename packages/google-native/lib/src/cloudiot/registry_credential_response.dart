@@ -14,15 +14,15 @@ class RegistryCredentialResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['publicKeyCertificate'] = publicKeyCertificate.toMap();
-    return map;
+    return <String, dynamic>{
+      'publicKeyCertificate': publicKeyCertificate.toMap(),
+    };
   }
 
   factory RegistryCredentialResponse.fromMap(Map<String, dynamic> map) {
     return RegistryCredentialResponse(
-      publicKeyCertificate: PublicKeyCertificateResponse.fromMap(
-          (map['publicKeyCertificate'] as Map).cast<String, dynamic>()),
+      publicKeyCertificate: PublicKeyCertificateResponse.fromMap((map['publicKeyCertificate'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

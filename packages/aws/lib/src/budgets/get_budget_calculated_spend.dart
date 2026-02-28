@@ -13,20 +13,15 @@ class GetBudgetCalculatedSpend {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['actualSpends'] = pulumi.Input.encodeList<
-        GetBudgetCalculatedSpendActualSpend,
-        Map<String, dynamic>>(actualSpends, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'actualSpends': pulumi.Input.encodeList<GetBudgetCalculatedSpendActualSpend, Map<String, dynamic>>(actualSpends, (value) => value.toMap()),
+    };
   }
 
   factory GetBudgetCalculatedSpend.fromMap(Map<String, dynamic> map) {
     return GetBudgetCalculatedSpend(
-      actualSpends:
-          pulumi.Input.decodeList<GetBudgetCalculatedSpendActualSpend>(
-              map['actualSpends'],
-              (value) => GetBudgetCalculatedSpendActualSpend.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      actualSpends: pulumi.Input.decodeList<GetBudgetCalculatedSpendActualSpend>(map['actualSpends'], (value) => GetBudgetCalculatedSpendActualSpend.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

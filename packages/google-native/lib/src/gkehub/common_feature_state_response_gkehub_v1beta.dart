@@ -9,13 +9,10 @@ import 'fleet_observability_feature_state_response_gkehub_v1beta.dart';
 class CommonFeatureStateResponseGkehubV1beta {
   /// Appdevexperience specific state.
   final AppDevExperienceFeatureStateResponseGkehubV1beta appdevexperience;
-
   /// ClusterUpgrade fleet-level state.
   final ClusterUpgradeFleetStateResponseGkehubV1beta clusterupgrade;
-
   /// FleetObservability feature state.
   final FleetObservabilityFeatureStateResponseGkehubV1beta fleetobservability;
-
   /// The "running state" of the Feature in this Hub.
   final FeatureStateResponseGkehubV1beta state;
 
@@ -32,27 +29,21 @@ class CommonFeatureStateResponseGkehubV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['appdevexperience'] = appdevexperience.toMap();
-    map['clusterupgrade'] = clusterupgrade.toMap();
-    map['fleetobservability'] = fleetobservability.toMap();
-    map['state'] = state.toMap();
-    return map;
+    return <String, dynamic>{
+      'appdevexperience': appdevexperience.toMap(),
+      'clusterupgrade': clusterupgrade.toMap(),
+      'fleetobservability': fleetobservability.toMap(),
+      'state': state.toMap(),
+    };
   }
 
-  factory CommonFeatureStateResponseGkehubV1beta.fromMap(
-      Map<String, dynamic> map) {
+  factory CommonFeatureStateResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return CommonFeatureStateResponseGkehubV1beta(
-      appdevexperience:
-          AppDevExperienceFeatureStateResponseGkehubV1beta.fromMap(
-              (map['appdevexperience'] as Map).cast<String, dynamic>()),
-      clusterupgrade: ClusterUpgradeFleetStateResponseGkehubV1beta.fromMap(
-          (map['clusterupgrade'] as Map).cast<String, dynamic>()),
-      fleetobservability:
-          FleetObservabilityFeatureStateResponseGkehubV1beta.fromMap(
-              (map['fleetobservability'] as Map).cast<String, dynamic>()),
-      state: FeatureStateResponseGkehubV1beta.fromMap(
-          (map['state'] as Map).cast<String, dynamic>()),
+      appdevexperience: AppDevExperienceFeatureStateResponseGkehubV1beta.fromMap((map['appdevexperience'] as Map).cast<String, dynamic>()),
+      clusterupgrade: ClusterUpgradeFleetStateResponseGkehubV1beta.fromMap((map['clusterupgrade'] as Map).cast<String, dynamic>()),
+      fleetobservability: FleetObservabilityFeatureStateResponseGkehubV1beta.fromMap((map['fleetobservability'] as Map).cast<String, dynamic>()),
+      state: FeatureStateResponseGkehubV1beta.fromMap((map['state'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class JobCopyDestinationTable {
   /// The ID of the dataset containing this table.
   final String? datasetId;
-
   /// The ID of the project containing this table.
   final String? projectId;
-
   /// The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
   /// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
   final String tableId;
@@ -22,17 +21,11 @@ class JobCopyDestinationTable {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final datasetIdValue = datasetId;
-    if (datasetIdValue != null) {
-      map['datasetId'] = datasetIdValue;
-    }
-    final projectIdValue = projectId;
-    if (projectIdValue != null) {
-      map['projectId'] = projectIdValue;
-    }
-    map['tableId'] = tableId;
-    return map;
+    return <String, dynamic>{
+      'datasetId': ?datasetId,
+      'projectId': ?projectId,
+      'tableId': tableId,
+    };
   }
 
   factory JobCopyDestinationTable.fromMap(Map<String, dynamic> map) {
@@ -43,3 +36,4 @@ class JobCopyDestinationTable {
     );
   }
 }
+

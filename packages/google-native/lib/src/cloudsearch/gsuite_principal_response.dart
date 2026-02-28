@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GSuitePrincipalResponse {
   /// This principal represents all users of the Google Workspace domain of the customer.
   final bool gsuiteDomain;
-
   /// This principal references a Google Workspace group name.
   final String gsuiteGroupEmail;
-
   /// This principal references a Google Workspace user account.
   final String gsuiteUserEmail;
 
@@ -21,11 +20,11 @@ class GSuitePrincipalResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gsuiteDomain'] = gsuiteDomain;
-    map['gsuiteGroupEmail'] = gsuiteGroupEmail;
-    map['gsuiteUserEmail'] = gsuiteUserEmail;
-    return map;
+    return <String, dynamic>{
+      'gsuiteDomain': gsuiteDomain,
+      'gsuiteGroupEmail': gsuiteGroupEmail,
+      'gsuiteUserEmail': gsuiteUserEmail,
+    };
   }
 
   factory GSuitePrincipalResponse.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class GSuitePrincipalResponse {
     );
   }
 }
+

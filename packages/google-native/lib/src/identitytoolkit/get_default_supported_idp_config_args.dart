@@ -19,20 +19,17 @@ class GetDefaultSupportedIdpConfigArgs {
     required String defaultSupportedIdpConfigId,
     String? project,
     required String tenantId,
-  })  : defaultSupportedIdpConfigId =
-            pulumi.Input.asInput<String>(defaultSupportedIdpConfigId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        tenantId = pulumi.Input.asInput<String>(tenantId);
+  }) :
+      defaultSupportedIdpConfigId = pulumi.Input.asInput<String>(defaultSupportedIdpConfigId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      tenantId = pulumi.Input.asInput<String>(tenantId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['defaultSupportedIdpConfigId'] = defaultSupportedIdpConfigId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['tenantId'] = tenantId;
-    return map;
+    return <String, dynamic>{
+      'defaultSupportedIdpConfigId': defaultSupportedIdpConfigId,
+      'project': ?project,
+      'tenantId': tenantId,
+    };
   }
 
   factory GetDefaultSupportedIdpConfigArgs.fromMap(Map<String, dynamic> map) {
@@ -43,3 +40,4 @@ class GetDefaultSupportedIdpConfigArgs {
     );
   }
 }
+

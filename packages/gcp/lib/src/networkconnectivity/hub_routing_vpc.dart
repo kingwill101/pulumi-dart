@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class HubRoutingVpc {
   /// The URI of the VPC network.
   final String? uri;
@@ -11,12 +12,9 @@ class HubRoutingVpc {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final uriValue = uri;
-    if (uriValue != null) {
-      map['uri'] = uriValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'uri': ?uri,
+    };
   }
 
   factory HubRoutingVpc.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class HubRoutingVpc {
     );
   }
 }
+

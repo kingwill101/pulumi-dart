@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Reservation Affinity for consuming Zonal reservation.
 class ReservationAffinityResponse {
   /// Optional. Type of reservation to consume
   final String consumeReservationType;
-
   /// Optional. Corresponds to the label key of reservation resource.
   final String key;
-
   /// Optional. Corresponds to the label values of reservation resource.
   final List<String> values;
 
@@ -22,11 +21,11 @@ class ReservationAffinityResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['consumeReservationType'] = consumeReservationType;
-    map['key'] = key;
-    map['values'] = values;
-    return map;
+    return <String, dynamic>{
+      'consumeReservationType': consumeReservationType,
+      'key': key,
+      'values': values,
+    };
   }
 
   factory ReservationAffinityResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class ReservationAffinityResponse {
     );
   }
 }
+

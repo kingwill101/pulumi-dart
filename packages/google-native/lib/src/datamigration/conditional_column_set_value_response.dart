@@ -8,13 +8,10 @@ import 'value_transformation_response.dart';
 class ConditionalColumnSetValueResponse {
   /// Optional. Custom engine specific features.
   final Map<String, String> customFeatures;
-
   /// Optional. Optional filter on source column precision and scale. Used for fixed point numbers such as NUMERIC/NUMBER data types.
   final SourceNumericFilterResponse sourceNumericFilter;
-
   /// Optional. Optional filter on source column length. Used for text based data types like varchar.
   final SourceTextFilterResponse sourceTextFilter;
-
   /// Description of data transformation during migration.
   final ValueTransformationResponse valueTransformation;
 
@@ -31,23 +28,21 @@ class ConditionalColumnSetValueResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['customFeatures'] = customFeatures;
-    map['sourceNumericFilter'] = sourceNumericFilter.toMap();
-    map['sourceTextFilter'] = sourceTextFilter.toMap();
-    map['valueTransformation'] = valueTransformation.toMap();
-    return map;
+    return <String, dynamic>{
+      'customFeatures': customFeatures,
+      'sourceNumericFilter': sourceNumericFilter.toMap(),
+      'sourceTextFilter': sourceTextFilter.toMap(),
+      'valueTransformation': valueTransformation.toMap(),
+    };
   }
 
   factory ConditionalColumnSetValueResponse.fromMap(Map<String, dynamic> map) {
     return ConditionalColumnSetValueResponse(
       customFeatures: (map['customFeatures'] as Map).cast<String, String>(),
-      sourceNumericFilter: SourceNumericFilterResponse.fromMap(
-          (map['sourceNumericFilter'] as Map).cast<String, dynamic>()),
-      sourceTextFilter: SourceTextFilterResponse.fromMap(
-          (map['sourceTextFilter'] as Map).cast<String, dynamic>()),
-      valueTransformation: ValueTransformationResponse.fromMap(
-          (map['valueTransformation'] as Map).cast<String, dynamic>()),
+      sourceNumericFilter: SourceNumericFilterResponse.fromMap((map['sourceNumericFilter'] as Map).cast<String, dynamic>()),
+      sourceTextFilter: SourceTextFilterResponse.fromMap((map['sourceTextFilter'] as Map).cast<String, dynamic>()),
+      valueTransformation: ValueTransformationResponse.fromMap((map['valueTransformation'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

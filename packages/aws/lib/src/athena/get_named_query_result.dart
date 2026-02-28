@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getNamedQuery.
 class GetNamedQueryResult {
   /// Database to which the query belongs.
   final String database;
-
   /// Brief explanation of the query.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -34,18 +33,15 @@ class GetNamedQueryResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['database'] = database;
-    map['description'] = description;
-    map['id'] = id;
-    map['name'] = name;
-    map['querystring'] = querystring;
-    map['region'] = region;
-    final workgroupValue = workgroup;
-    if (workgroupValue != null) {
-      map['workgroup'] = workgroupValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'database': database,
+      'description': description,
+      'id': id,
+      'name': name,
+      'querystring': querystring,
+      'region': region,
+      'workgroup': ?workgroup,
+    };
   }
 
   factory GetNamedQueryResult.fromMap(Map<String, dynamic> map) {
@@ -60,3 +56,4 @@ class GetNamedQueryResult {
     );
   }
 }
+

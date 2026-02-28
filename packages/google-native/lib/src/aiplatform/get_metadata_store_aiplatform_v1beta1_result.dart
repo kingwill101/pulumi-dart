@@ -7,20 +7,14 @@ import 'google_cloud_aiplatform_v1beta1_metadata_store_metadata_store_state_resp
 class GetMetadataStoreAiplatformV1beta1Result {
   /// Timestamp when this MetadataStore was created.
   final String createTime;
-
   /// Description of the MetadataStore.
   final String description;
-
   /// Customer-managed encryption key spec for a Metadata Store. If set, this Metadata Store and all sub-resources of this Metadata Store are secured using this key.
   final GoogleCloudAiplatformV1beta1EncryptionSpecResponse encryptionSpec;
-
   /// The resource name of the MetadataStore instance.
   final String name;
-
   /// State information of the MetadataStore.
-  final GoogleCloudAiplatformV1beta1MetadataStoreMetadataStoreStateResponse
-      state;
-
+  final GoogleCloudAiplatformV1beta1MetadataStoreMetadataStoreStateResponse state;
   /// Timestamp when this MetadataStore was last updated.
   final String updateTime;
 
@@ -41,28 +35,25 @@ class GetMetadataStoreAiplatformV1beta1Result {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['description'] = description;
-    map['encryptionSpec'] = encryptionSpec.toMap();
-    map['name'] = name;
-    map['state'] = state.toMap();
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'description': description,
+      'encryptionSpec': encryptionSpec.toMap(),
+      'name': name,
+      'state': state.toMap(),
+      'updateTime': updateTime,
+    };
   }
 
-  factory GetMetadataStoreAiplatformV1beta1Result.fromMap(
-      Map<String, dynamic> map) {
+  factory GetMetadataStoreAiplatformV1beta1Result.fromMap(Map<String, dynamic> map) {
     return GetMetadataStoreAiplatformV1beta1Result(
       createTime: map['createTime'] as String,
       description: map['description'] as String,
-      encryptionSpec:
-          GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap(
-              (map['encryptionSpec'] as Map).cast<String, dynamic>()),
+      encryptionSpec: GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      state: GoogleCloudAiplatformV1beta1MetadataStoreMetadataStoreStateResponse
-          .fromMap((map['state'] as Map).cast<String, dynamic>()),
+      state: GoogleCloudAiplatformV1beta1MetadataStoreMetadataStoreStateResponse.fromMap((map['state'] as Map).cast<String, dynamic>()),
       updateTime: map['updateTime'] as String,
     );
   }
 }
+

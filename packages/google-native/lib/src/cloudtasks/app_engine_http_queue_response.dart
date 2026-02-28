@@ -14,16 +14,15 @@ class AppEngineHttpQueueResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['appEngineRoutingOverride'] = appEngineRoutingOverride.toMap();
-    return map;
+    return <String, dynamic>{
+      'appEngineRoutingOverride': appEngineRoutingOverride.toMap(),
+    };
   }
 
   factory AppEngineHttpQueueResponse.fromMap(Map<String, dynamic> map) {
     return AppEngineHttpQueueResponse(
-      appEngineRoutingOverride:
-          AppEngineRoutingResponseCloudtasksV2beta3.fromMap(
-              (map['appEngineRoutingOverride'] as Map).cast<String, dynamic>()),
+      appEngineRoutingOverride: AppEngineRoutingResponseCloudtasksV2beta3.fromMap((map['appEngineRoutingOverride'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -14,16 +14,15 @@ class AnthosObservabilityFeatureSpecResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['defaultMembershipSpec'] = defaultMembershipSpec.toMap();
-    return map;
+    return <String, dynamic>{
+      'defaultMembershipSpec': defaultMembershipSpec.toMap(),
+    };
   }
 
-  factory AnthosObservabilityFeatureSpecResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory AnthosObservabilityFeatureSpecResponse.fromMap(Map<String, dynamic> map) {
     return AnthosObservabilityFeatureSpecResponse(
-      defaultMembershipSpec: AnthosObservabilityMembershipSpecResponse.fromMap(
-          (map['defaultMembershipSpec'] as Map).cast<String, dynamic>()),
+      defaultMembershipSpec: AnthosObservabilityMembershipSpecResponse.fromMap((map['defaultMembershipSpec'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

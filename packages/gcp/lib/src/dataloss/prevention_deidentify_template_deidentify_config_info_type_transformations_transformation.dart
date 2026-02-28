@@ -8,15 +8,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
   /// InfoTypes to apply the transformation to. Leaving this empty will apply the transformation to apply to
   /// all findings that correspond to infoTypes that were requested in InspectConfig.
   /// Structure is documented below.
-  final List<
-          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType>?
-      infoTypes;
-
+  final List<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType>? infoTypes;
   /// Apply the transformation to the entire field.
   /// The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
   /// Structure is documented below.
-  final PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation
-      primitiveTransformation;
+  final PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation primitiveTransformation;
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation].
   /// [infoTypes] InfoTypes to apply the transformation to. Leaving this empty will apply the transformation to apply to
@@ -27,32 +23,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final infoTypesValue = infoTypes;
-    if (infoTypesValue != null) {
-      map['infoTypes'] = pulumi.Input.encodeList<
-          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType,
-          Map<String, dynamic>>(infoTypesValue, (value) => value.toMap());
-    }
-    map['primitiveTransformation'] = primitiveTransformation.toMap();
-    return map;
+    return <String, dynamic>{
+      'infoTypes': ?infoTypes == null ? null : pulumi.Input.encodeList<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType, Map<String, dynamic>>(infoTypes!, (value) => value.toMap()),
+      'primitiveTransformation': primitiveTransformation.toMap(),
+    };
   }
 
-  factory PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation.fromMap(
-      Map<String, dynamic> map) {
+  factory PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation(
-      infoTypes: map['infoTypes'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType>(
-              map['infoTypes'],
-              (value) =>
-                  PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType
-                      .fromMap((value as Map).cast<String, dynamic>())),
-      primitiveTransformation:
-          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation
-              .fromMap((map['primitiveTransformation'] as Map)
-                  .cast<String, dynamic>()),
+      infoTypes: map['infoTypes'] == null ? null : pulumi.Input.decodeList<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType>(map['infoTypes'], (value) => PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType.fromMap((value as Map).cast<String, dynamic>())),
+      primitiveTransformation: PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation.fromMap((map['primitiveTransformation'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

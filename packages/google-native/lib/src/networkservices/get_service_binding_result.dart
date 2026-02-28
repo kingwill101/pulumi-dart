@@ -1,25 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getServiceBinding.
 class GetServiceBindingResult {
   /// The timestamp when the resource was created.
   final String createTime;
-
   /// Optional. A free-text description of the resource. Max length 1024 characters.
   final String description;
-
   /// Optional. Set of label tags associated with the ServiceBinding resource.
   final Map<String, String> labels;
-
   /// Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name`.
   final String name;
-
   /// The full Service Directory Service name of the format projects/*/locations/*/namespaces/*/services/*
   final String service;
-
   /// The unique identifier of the Service Directory Service against which the Service Binding resource is validated. This is populated when the Service Binding resource is used in another resource (like Backend Service). This is of the UUID4 format.
   final String serviceId;
-
   /// The timestamp when the resource was updated.
   final String updateTime;
 
@@ -42,15 +37,15 @@ class GetServiceBindingResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['description'] = description;
-    map['labels'] = labels;
-    map['name'] = name;
-    map['service'] = service;
-    map['serviceId'] = serviceId;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'description': description,
+      'labels': labels,
+      'name': name,
+      'service': service,
+      'serviceId': serviceId,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetServiceBindingResult.fromMap(Map<String, dynamic> map) {
@@ -65,3 +60,4 @@ class GetServiceBindingResult {
     );
   }
 }
+

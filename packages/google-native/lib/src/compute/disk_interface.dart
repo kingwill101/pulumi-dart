@@ -16,3 +16,4 @@ enum DiskInterface {
     throw ArgumentError('Unknown DiskInterface value: $value');
   }
 }
+

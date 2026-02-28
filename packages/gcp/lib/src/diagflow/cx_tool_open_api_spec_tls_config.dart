@@ -15,18 +15,15 @@ class CxToolOpenApiSpecTlsConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['caCerts'] = pulumi.Input.encodeList<CxToolOpenApiSpecTlsConfigCaCert,
-        Map<String, dynamic>>(caCerts, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'caCerts': pulumi.Input.encodeList<CxToolOpenApiSpecTlsConfigCaCert, Map<String, dynamic>>(caCerts, (value) => value.toMap()),
+    };
   }
 
   factory CxToolOpenApiSpecTlsConfig.fromMap(Map<String, dynamic> map) {
     return CxToolOpenApiSpecTlsConfig(
-      caCerts: pulumi.Input.decodeList<CxToolOpenApiSpecTlsConfigCaCert>(
-          map['caCerts'],
-          (value) => CxToolOpenApiSpecTlsConfigCaCert.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      caCerts: pulumi.Input.decodeList<CxToolOpenApiSpecTlsConfigCaCert>(map['caCerts'], (value) => CxToolOpenApiSpecTlsConfigCaCert.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

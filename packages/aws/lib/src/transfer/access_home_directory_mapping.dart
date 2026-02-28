@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AccessHomeDirectoryMapping {
   /// Represents an entry and a target.
   final String entry;
-
   /// Represents the map target.
   final String target;
 
@@ -16,10 +16,10 @@ class AccessHomeDirectoryMapping {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['entry'] = entry;
-    map['target'] = target;
-    return map;
+    return <String, dynamic>{
+      'entry': entry,
+      'target': target,
+    };
   }
 
   factory AccessHomeDirectoryMapping.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class AccessHomeDirectoryMapping {
     );
   }
 }
+

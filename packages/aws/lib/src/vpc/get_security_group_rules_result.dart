@@ -7,7 +7,6 @@ import 'get_security_group_rules_filter.dart';
 class GetSecurityGroupRulesResult {
   final List<GetSecurityGroupRulesFilter>? filters;
   final String id;
-
   /// List of all the security group rule IDs found.
   final List<String> ids;
   final String region;
@@ -28,36 +27,23 @@ class GetSecurityGroupRulesResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final filtersValue = filters;
-    if (filtersValue != null) {
-      map['filters'] = pulumi.Input.encodeList<GetSecurityGroupRulesFilter,
-          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
-    }
-    map['id'] = id;
-    map['ids'] = ids;
-    map['region'] = region;
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetSecurityGroupRulesFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'id': id,
+      'ids': ids,
+      'region': region,
+      'tags': ?tags,
+    };
   }
 
   factory GetSecurityGroupRulesResult.fromMap(Map<String, dynamic> map) {
     return GetSecurityGroupRulesResult(
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetSecurityGroupRulesFilter>(
-              map['filters'],
-              (value) => GetSecurityGroupRulesFilter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetSecurityGroupRulesFilter>(map['filters'], (value) => GetSecurityGroupRulesFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       region: map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

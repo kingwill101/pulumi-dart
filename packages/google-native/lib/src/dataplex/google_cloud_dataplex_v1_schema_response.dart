@@ -8,13 +8,10 @@ import 'google_cloud_dataplex_v1_schema_schema_field_response.dart';
 class GoogleCloudDataplexV1SchemaResponse {
   /// Optional. The sequence of fields describing data in table entities. Note: BigQuery SchemaFields are immutable.
   final List<GoogleCloudDataplexV1SchemaSchemaFieldResponse> fields;
-
   /// Optional. The sequence of fields describing the partition structure in entities. If this field is empty, there are no partitions within the data.
   final List<GoogleCloudDataplexV1SchemaPartitionFieldResponse> partitionFields;
-
   /// Optional. The structure of paths containing partition data within the entity.
   final String partitionStyle;
-
   /// Set to true if user-managed or false if managed by Dataplex. The default is false (managed by Dataplex). Set to falseto enable Dataplex discovery to update the schema. including new data discovery, schema inference, and schema evolution. Users retain the ability to input and edit the schema. Dataplex treats schema input by the user as though produced by a previous Dataplex discovery operation, and it will evolve the schema and take action based on that treatment. Set to true to fully manage the entity schema. This setting guarantees that Dataplex will not change schema fields.
   final bool userManaged;
 
@@ -31,33 +28,21 @@ class GoogleCloudDataplexV1SchemaResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['fields'] = pulumi.Input.encodeList<
-        GoogleCloudDataplexV1SchemaSchemaFieldResponse,
-        Map<String, dynamic>>(fields, (value) => value.toMap());
-    map['partitionFields'] = pulumi.Input.encodeList<
-        GoogleCloudDataplexV1SchemaPartitionFieldResponse,
-        Map<String, dynamic>>(partitionFields, (value) => value.toMap());
-    map['partitionStyle'] = partitionStyle;
-    map['userManaged'] = userManaged;
-    return map;
+    return <String, dynamic>{
+      'fields': pulumi.Input.encodeList<GoogleCloudDataplexV1SchemaSchemaFieldResponse, Map<String, dynamic>>(fields, (value) => value.toMap()),
+      'partitionFields': pulumi.Input.encodeList<GoogleCloudDataplexV1SchemaPartitionFieldResponse, Map<String, dynamic>>(partitionFields, (value) => value.toMap()),
+      'partitionStyle': partitionStyle,
+      'userManaged': userManaged,
+    };
   }
 
-  factory GoogleCloudDataplexV1SchemaResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1SchemaResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1SchemaResponse(
-      fields: pulumi.Input.decodeList<
-              GoogleCloudDataplexV1SchemaSchemaFieldResponse>(
-          map['fields'],
-          (value) => GoogleCloudDataplexV1SchemaSchemaFieldResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      partitionFields: pulumi.Input.decodeList<
-              GoogleCloudDataplexV1SchemaPartitionFieldResponse>(
-          map['partitionFields'],
-          (value) => GoogleCloudDataplexV1SchemaPartitionFieldResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      fields: pulumi.Input.decodeList<GoogleCloudDataplexV1SchemaSchemaFieldResponse>(map['fields'], (value) => GoogleCloudDataplexV1SchemaSchemaFieldResponse.fromMap((value as Map).cast<String, dynamic>())),
+      partitionFields: pulumi.Input.decodeList<GoogleCloudDataplexV1SchemaPartitionFieldResponse>(map['partitionFields'], (value) => GoogleCloudDataplexV1SchemaPartitionFieldResponse.fromMap((value as Map).cast<String, dynamic>())),
       partitionStyle: map['partitionStyle'] as String,
       userManaged: map['userManaged'] as bool,
     );
   }
 }
+

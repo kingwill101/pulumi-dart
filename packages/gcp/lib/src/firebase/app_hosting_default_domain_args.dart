@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppHostingDefaultDomainArgs {
   /// The ID of the Backend that this Domain is associated with
   final pulumi.Input<String> backend;
-
   /// Whether the domain is disabled. Defaults to false.
   final pulumi.Input<bool>? disabled;
-
   /// Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
   final pulumi.Input<String> domainId;
-
   /// The location of the Backend that this Domain is associated with
   final pulumi.Input<String> location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -35,26 +31,21 @@ class AppHostingDefaultDomainArgs {
     required String domainId,
     required String location,
     String? project,
-  })  : backend = pulumi.Input.asInput<String>(backend),
-        disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-        domainId = pulumi.Input.asInput<String>(domainId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      backend = pulumi.Input.asInput<String>(backend),
+      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
+      domainId = pulumi.Input.asInput<String>(domainId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['backend'] = backend;
-    final disabledValue = disabled;
-    if (disabledValue != null) {
-      map['disabled'] = disabledValue;
-    }
-    map['domainId'] = domainId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'backend': backend,
+      'disabled': ?disabled,
+      'domainId': domainId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory AppHostingDefaultDomainArgs.fromMap(Map<String, dynamic> map) {
@@ -67,3 +58,4 @@ class AppHostingDefaultDomainArgs {
     );
   }
 }
+

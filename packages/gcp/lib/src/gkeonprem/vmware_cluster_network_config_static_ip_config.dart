@@ -15,21 +15,15 @@ class VMwareClusterNetworkConfigStaticIpConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ipBlocks'] = pulumi.Input.encodeList<
-        VMwareClusterNetworkConfigStaticIpConfigIpBlock,
-        Map<String, dynamic>>(ipBlocks, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'ipBlocks': pulumi.Input.encodeList<VMwareClusterNetworkConfigStaticIpConfigIpBlock, Map<String, dynamic>>(ipBlocks, (value) => value.toMap()),
+    };
   }
 
-  factory VMwareClusterNetworkConfigStaticIpConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory VMwareClusterNetworkConfigStaticIpConfig.fromMap(Map<String, dynamic> map) {
     return VMwareClusterNetworkConfigStaticIpConfig(
-      ipBlocks: pulumi.Input.decodeList<
-              VMwareClusterNetworkConfigStaticIpConfigIpBlock>(
-          map['ipBlocks'],
-          (value) => VMwareClusterNetworkConfigStaticIpConfigIpBlock.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      ipBlocks: pulumi.Input.decodeList<VMwareClusterNetworkConfigStaticIpConfigIpBlock>(map['ipBlocks'], (value) => VMwareClusterNetworkConfigStaticIpConfigIpBlock.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

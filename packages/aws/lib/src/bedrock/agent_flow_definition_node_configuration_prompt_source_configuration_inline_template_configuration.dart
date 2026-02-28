@@ -5,10 +5,8 @@ import 'agent_flow_definition_node_configuration_prompt_source_configuration_inl
 
 class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfiguration {
   /// Contains configurations to use the prompt in a conversational format. See Chat Template Configuration for more information.
-  final AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChat?
-      chat;
-  final AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationText?
-      text;
+  final AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChat? chat;
+  final AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationText? text;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfiguration].
   /// [chat] Contains configurations to use the prompt in a conversational format. See Chat Template Configuration for more information.
@@ -19,29 +17,17 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final chatValue = chat;
-    if (chatValue != null) {
-      map['chat'] = chatValue.toMap();
-    }
-    final textValue = text;
-    if (textValue != null) {
-      map['text'] = textValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'chat': ?chat == null ? null : chat!.toMap(),
+      'text': ?text == null ? null : text!.toMap(),
+    };
   }
 
-  factory AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfiguration(
-      chat: map['chat'] == null
-          ? null
-          : AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChat
-              .fromMap((map['chat'] as Map).cast<String, dynamic>()),
-      text: map['text'] == null
-          ? null
-          : AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationText
-              .fromMap((map['text'] as Map).cast<String, dynamic>()),
+      chat: map['chat'] == null ? null : AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChat.fromMap((map['chat'] as Map).cast<String, dynamic>()),
+      text: map['text'] == null ? null : AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationText.fromMap((map['text'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

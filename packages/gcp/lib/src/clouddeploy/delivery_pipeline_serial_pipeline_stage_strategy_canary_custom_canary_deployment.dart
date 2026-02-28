@@ -5,9 +5,7 @@ import 'delivery_pipeline_serial_pipeline_stage_strategy_canary_custom_canary_de
 
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment {
   /// Required. Configuration for each phase in the canary deployment in the order executed.
-  final List<
-          DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig>
-      phaseConfigs;
+  final List<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig> phaseConfigs;
 
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment].
   /// [phaseConfigs] Required. Configuration for each phase in the canary deployment in the order executed.
@@ -16,22 +14,15 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['phaseConfigs'] = pulumi.Input.encodeList<
-        DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig,
-        Map<String, dynamic>>(phaseConfigs, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'phaseConfigs': pulumi.Input.encodeList<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig, Map<String, dynamic>>(phaseConfigs, (value) => value.toMap()),
+    };
   }
 
-  factory DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment.fromMap(
-      Map<String, dynamic> map) {
+  factory DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment.fromMap(Map<String, dynamic> map) {
     return DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment(
-      phaseConfigs: pulumi.Input.decodeList<
-              DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig>(
-          map['phaseConfigs'],
-          (value) =>
-              DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      phaseConfigs: pulumi.Input.decodeList<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig>(map['phaseConfigs'], (value) => DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

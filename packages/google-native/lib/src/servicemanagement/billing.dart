@@ -15,24 +15,15 @@ class Billing {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final consumerDestinationsValue = consumerDestinations;
-    if (consumerDestinationsValue != null) {
-      map['consumerDestinations'] =
-          pulumi.Input.encodeList<BillingDestination, Map<String, dynamic>>(
-              consumerDestinationsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'consumerDestinations': ?consumerDestinations == null ? null : pulumi.Input.encodeList<BillingDestination, Map<String, dynamic>>(consumerDestinations!, (value) => value.toMap()),
+    };
   }
 
   factory Billing.fromMap(Map<String, dynamic> map) {
     return Billing(
-      consumerDestinations: map['consumerDestinations'] == null
-          ? null
-          : pulumi.Input.decodeList<BillingDestination>(
-              map['consumerDestinations'],
-              (value) => BillingDestination.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      consumerDestinations: map['consumerDestinations'] == null ? null : pulumi.Input.decodeList<BillingDestination>(map['consumerDestinations'], (value) => BillingDestination.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

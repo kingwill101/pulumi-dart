@@ -168,7 +168,6 @@ import 'default_object_aclargs.dart';
 class DefaultObjectACL extends pulumi.CustomResource {
   /// The name of the bucket it applies to.
   late final pulumi.Output<String> bucket;
-
   /// List of role/entity pairs in the form `ROLE:entity`.
   /// See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
   /// Omitting the field is the same as providing an empty list.

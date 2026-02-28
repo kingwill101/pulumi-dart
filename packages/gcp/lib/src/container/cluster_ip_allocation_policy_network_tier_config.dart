@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterIpAllocationPolicyNetworkTierConfig {
   /// Network tier configuration.
   /// Accepted values are:
@@ -15,15 +16,15 @@ class ClusterIpAllocationPolicyNetworkTierConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['networkTier'] = networkTier;
-    return map;
+    return <String, dynamic>{
+      'networkTier': networkTier,
+    };
   }
 
-  factory ClusterIpAllocationPolicyNetworkTierConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterIpAllocationPolicyNetworkTierConfig.fromMap(Map<String, dynamic> map) {
     return ClusterIpAllocationPolicyNetworkTierConfig(
       networkTier: map['networkTier'] as String,
     );
   }
 }
+

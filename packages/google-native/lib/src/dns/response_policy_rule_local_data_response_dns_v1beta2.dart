@@ -14,20 +14,15 @@ class ResponsePolicyRuleLocalDataResponseDnsV1beta2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['localDatas'] = pulumi.Input.encodeList<
-        ResourceRecordSetResponseDnsV1beta2,
-        Map<String, dynamic>>(localDatas, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'localDatas': pulumi.Input.encodeList<ResourceRecordSetResponseDnsV1beta2, Map<String, dynamic>>(localDatas, (value) => value.toMap()),
+    };
   }
 
-  factory ResponsePolicyRuleLocalDataResponseDnsV1beta2.fromMap(
-      Map<String, dynamic> map) {
+  factory ResponsePolicyRuleLocalDataResponseDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return ResponsePolicyRuleLocalDataResponseDnsV1beta2(
-      localDatas: pulumi.Input.decodeList<ResourceRecordSetResponseDnsV1beta2>(
-          map['localDatas'],
-          (value) => ResourceRecordSetResponseDnsV1beta2.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      localDatas: pulumi.Input.decodeList<ResourceRecordSetResponseDnsV1beta2>(map['localDatas'], (value) => ResourceRecordSetResponseDnsV1beta2.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

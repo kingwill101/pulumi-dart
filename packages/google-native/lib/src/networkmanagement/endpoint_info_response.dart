@@ -1,28 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// For display only. The specification of the endpoints for the test. EndpointInfo is derived from source and destination Endpoint and validated by the backend data plane model.
 class EndpointInfoResponse {
   /// Destination IP address.
   final String destinationIp;
-
   /// URI of the network where this packet is sent to.
   final String destinationNetworkUri;
-
   /// Destination port. Only valid when protocol is TCP or UDP.
   final int destinationPort;
-
   /// IP protocol in string format, for example: "TCP", "UDP", "ICMP".
   final String protocol;
-
   /// URI of the source telemetry agent this packet originates from.
   final String sourceAgentUri;
-
   /// Source IP address.
   final String sourceIp;
-
   /// URI of the network where this packet originates from.
   final String sourceNetworkUri;
-
   /// Source port. Only valid when protocol is TCP or UDP.
   final int sourcePort;
 
@@ -47,16 +41,16 @@ class EndpointInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['destinationIp'] = destinationIp;
-    map['destinationNetworkUri'] = destinationNetworkUri;
-    map['destinationPort'] = destinationPort;
-    map['protocol'] = protocol;
-    map['sourceAgentUri'] = sourceAgentUri;
-    map['sourceIp'] = sourceIp;
-    map['sourceNetworkUri'] = sourceNetworkUri;
-    map['sourcePort'] = sourcePort;
-    return map;
+    return <String, dynamic>{
+      'destinationIp': destinationIp,
+      'destinationNetworkUri': destinationNetworkUri,
+      'destinationPort': destinationPort,
+      'protocol': protocol,
+      'sourceAgentUri': sourceAgentUri,
+      'sourceIp': sourceIp,
+      'sourceNetworkUri': sourceNetworkUri,
+      'sourcePort': sourcePort,
+    };
   }
 
   factory EndpointInfoResponse.fromMap(Map<String, dynamic> map) {
@@ -72,3 +66,4 @@ class EndpointInfoResponse {
     );
   }
 }
+

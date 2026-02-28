@@ -19,24 +19,20 @@ class GetGatewaySecurityPolicyNetworksecurityV1beta1Args {
     required String gatewaySecurityPolicyId,
     required String location,
     String? project,
-  })  : gatewaySecurityPolicyId =
-            pulumi.Input.asInput<String>(gatewaySecurityPolicyId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      gatewaySecurityPolicyId = pulumi.Input.asInput<String>(gatewaySecurityPolicyId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gatewaySecurityPolicyId'] = gatewaySecurityPolicyId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'gatewaySecurityPolicyId': gatewaySecurityPolicyId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
-  factory GetGatewaySecurityPolicyNetworksecurityV1beta1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetGatewaySecurityPolicyNetworksecurityV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetGatewaySecurityPolicyNetworksecurityV1beta1Args(
       gatewaySecurityPolicyId: map['gatewaySecurityPolicyId'] as String,
       location: map['location'] as String,
@@ -44,3 +40,4 @@ class GetGatewaySecurityPolicyNetworksecurityV1beta1Args {
     );
   }
 }
+

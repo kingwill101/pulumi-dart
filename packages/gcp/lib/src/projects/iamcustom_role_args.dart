@@ -9,22 +9,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IAMCustomRoleArgs {
   /// A human-readable description for the role.
   final pulumi.Input<String>? description;
-
   /// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
   final pulumi.Input<List<String>> permissions;
-
   /// The project that the custom role will be created in.
   /// Defaults to the provider project configuration.
   final pulumi.Input<String>? project;
-
   /// The camel case role id to use for this role. Cannot contain `-` characters.
   final pulumi.Input<String>? roleId;
-
   /// The current launch stage of the role.
   /// Defaults to `GA`.
   /// List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
   final pulumi.Input<String>? stage;
-
   /// A human-readable title for the role.
   final pulumi.Input<String> title;
 
@@ -42,40 +37,28 @@ class IAMCustomRoleArgs {
     String? roleId,
     String? stage,
     required String title,
-  })  : description = pulumi.Input.asOptionalInput<String>(description),
-        permissions = pulumi.Input.asInput<List<String>>(permissions),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        roleId = pulumi.Input.asOptionalInput<String>(roleId),
-        stage = pulumi.Input.asOptionalInput<String>(stage),
-        title = pulumi.Input.asInput<String>(title);
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      permissions = pulumi.Input.asInput<List<String>>(permissions),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      roleId = pulumi.Input.asOptionalInput<String>(roleId),
+      stage = pulumi.Input.asOptionalInput<String>(stage),
+      title = pulumi.Input.asInput<String>(title);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    map['permissions'] = permissions;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final roleIdValue = roleId;
-    if (roleIdValue != null) {
-      map['roleId'] = roleIdValue;
-    }
-    final stageValue = stage;
-    if (stageValue != null) {
-      map['stage'] = stageValue;
-    }
-    map['title'] = title;
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'permissions': permissions,
+      'project': ?project,
+      'roleId': ?roleId,
+      'stage': ?stage,
+      'title': title,
+    };
   }
 
   factory IAMCustomRoleArgs.fromMap(Map<String, dynamic> map) {
     return IAMCustomRoleArgs(
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       permissions: (map['permissions'] as List).cast<String>(),
       project: map['project'] == null ? null : map['project'] as String,
       roleId: map['roleId'] == null ? null : map['roleId'] as String,
@@ -84,3 +67,4 @@ class IAMCustomRoleArgs {
     );
   }
 }
+

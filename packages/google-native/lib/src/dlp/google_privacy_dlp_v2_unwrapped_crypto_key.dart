@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible.
 class GooglePrivacyDlpV2UnwrappedCryptoKey {
   /// A 128/192/256 bit key.
@@ -12,15 +13,15 @@ class GooglePrivacyDlpV2UnwrappedCryptoKey {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+    };
   }
 
-  factory GooglePrivacyDlpV2UnwrappedCryptoKey.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2UnwrappedCryptoKey.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2UnwrappedCryptoKey(
       key: map['key'] as String,
     );
   }
 }
+

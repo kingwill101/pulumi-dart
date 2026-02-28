@@ -7,7 +7,6 @@ import 'google_privacy_dlp_v2_result_response.dart';
 class GooglePrivacyDlpV2InspectDataSourceDetailsResponse {
   /// The configuration used for this job.
   final GooglePrivacyDlpV2RequestedOptionsResponse requestedOptions;
-
   /// A summary of the outcome of this inspection job.
   final GooglePrivacyDlpV2ResultResponse result;
 
@@ -20,19 +19,17 @@ class GooglePrivacyDlpV2InspectDataSourceDetailsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['requestedOptions'] = requestedOptions.toMap();
-    map['result'] = result.toMap();
-    return map;
+    return <String, dynamic>{
+      'requestedOptions': requestedOptions.toMap(),
+      'result': result.toMap(),
+    };
   }
 
-  factory GooglePrivacyDlpV2InspectDataSourceDetailsResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2InspectDataSourceDetailsResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2InspectDataSourceDetailsResponse(
-      requestedOptions: GooglePrivacyDlpV2RequestedOptionsResponse.fromMap(
-          (map['requestedOptions'] as Map).cast<String, dynamic>()),
-      result: GooglePrivacyDlpV2ResultResponse.fromMap(
-          (map['result'] as Map).cast<String, dynamic>()),
+      requestedOptions: GooglePrivacyDlpV2RequestedOptionsResponse.fromMap((map['requestedOptions'] as Map).cast<String, dynamic>()),
+      result: GooglePrivacyDlpV2ResultResponse.fromMap((map['result'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

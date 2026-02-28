@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class StreamStreamModeDetails {
   /// Specifies the capacity mode of the stream. Must be either `PROVISIONED` or `ON_DEMAND`.
   final String streamMode;
@@ -11,9 +12,9 @@ class StreamStreamModeDetails {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['streamMode'] = streamMode;
-    return map;
+    return <String, dynamic>{
+      'streamMode': streamMode,
+    };
   }
 
   factory StreamStreamModeDetails.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class StreamStreamModeDetails {
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ImportFileResponse {
   /// The contents of the file.
   final String content;
-
   /// The name of the file.
   final String name;
 
@@ -16,10 +16,10 @@ class ImportFileResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['content'] = content;
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'content': content,
+      'name': name,
+    };
   }
 
   factory ImportFileResponse.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class ImportFileResponse {
     );
   }
 }
+

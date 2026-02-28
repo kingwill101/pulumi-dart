@@ -22,24 +22,19 @@ class GetTableArgs {
     String? project,
     required String tableId,
     String? view,
-  })  : instanceId = pulumi.Input.asInput<String>(instanceId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        tableId = pulumi.Input.asInput<String>(tableId),
-        view = pulumi.Input.asOptionalInput<String>(view);
+  }) :
+      instanceId = pulumi.Input.asInput<String>(instanceId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      tableId = pulumi.Input.asInput<String>(tableId),
+      view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['instanceId'] = instanceId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['tableId'] = tableId;
-    final viewValue = view;
-    if (viewValue != null) {
-      map['view'] = viewValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'instanceId': instanceId,
+      'project': ?project,
+      'tableId': tableId,
+      'view': ?view,
+    };
   }
 
   factory GetTableArgs.fromMap(Map<String, dynamic> map) {
@@ -51,3 +46,4 @@ class GetTableArgs {
     );
   }
 }
+

@@ -12,7 +12,7 @@ enum SignInBehaviorRedirectCondition {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown SignInBehaviorRedirectCondition value: $value');
+    throw ArgumentError('Unknown SignInBehaviorRedirectCondition value: $value');
   }
 }
+

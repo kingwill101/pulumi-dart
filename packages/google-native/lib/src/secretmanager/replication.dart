@@ -7,7 +7,6 @@ import 'user_managed.dart';
 class Replication {
   /// The Secret will automatically be replicated without any restrictions.
   final Automatic? automatic;
-
   /// The Secret will only be replicated into the locations specified.
   final UserManaged? userManaged;
 
@@ -20,28 +19,17 @@ class Replication {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final automaticValue = automatic;
-    if (automaticValue != null) {
-      map['automatic'] = automaticValue.toMap();
-    }
-    final userManagedValue = userManaged;
-    if (userManagedValue != null) {
-      map['userManaged'] = userManagedValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'automatic': ?automatic == null ? null : automatic!.toMap(),
+      'userManaged': ?userManaged == null ? null : userManaged!.toMap(),
+    };
   }
 
   factory Replication.fromMap(Map<String, dynamic> map) {
     return Replication(
-      automatic: map['automatic'] == null
-          ? null
-          : Automatic.fromMap(
-              (map['automatic'] as Map).cast<String, dynamic>()),
-      userManaged: map['userManaged'] == null
-          ? null
-          : UserManaged.fromMap(
-              (map['userManaged'] as Map).cast<String, dynamic>()),
+      automatic: map['automatic'] == null ? null : Automatic.fromMap((map['automatic'] as Map).cast<String, dynamic>()),
+      userManaged: map['userManaged'] == null ? null : UserManaged.fromMap((map['userManaged'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

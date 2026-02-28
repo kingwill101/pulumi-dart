@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterIdentityOidc {
   /// Issuer URL for the OpenID Connect identity provider.
   final String issuer;
@@ -11,9 +12,9 @@ class GetClusterIdentityOidc {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['issuer'] = issuer;
-    return map;
+    return <String, dynamic>{
+      'issuer': issuer,
+    };
   }
 
   factory GetClusterIdentityOidc.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetClusterIdentityOidc {
     );
   }
 }
+

@@ -30,19 +30,15 @@ import 'sharedflow_deployment_args.dart';
 class SharedflowDeployment extends pulumi.CustomResource {
   /// The resource ID of the environment.
   late final pulumi.Output<String> environment;
-
   /// The Apigee Organization associated with the Sharedflow
   late final pulumi.Output<String> orgId;
-
   /// Revision of the Sharedflow to be deployed.
   ///
   ///
   /// - - -
   late final pulumi.Output<String> revision;
-
   /// The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
   late final pulumi.Output<String?> serviceAccount;
-
   /// Id of the Sharedflow to be deployed.
   late final pulumi.Output<String> sharedflowId;
 

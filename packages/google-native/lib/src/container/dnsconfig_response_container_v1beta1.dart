@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// DNSConfig contains the desired set of options for configuring clusterDNS.
 class DNSConfigResponseContainerV1beta1 {
   /// cluster_dns indicates which in-cluster DNS provider should be used.
   final String clusterDns;
-
   /// cluster_dns_domain is the suffix used for all cluster service records.
   final String clusterDnsDomain;
-
   /// cluster_dns_scope indicates the scope of access to cluster DNS records.
   final String clusterDnsScope;
 
@@ -22,11 +21,11 @@ class DNSConfigResponseContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clusterDns'] = clusterDns;
-    map['clusterDnsDomain'] = clusterDnsDomain;
-    map['clusterDnsScope'] = clusterDnsScope;
-    return map;
+    return <String, dynamic>{
+      'clusterDns': clusterDns,
+      'clusterDnsDomain': clusterDnsDomain,
+      'clusterDnsScope': clusterDnsScope,
+    };
   }
 
   factory DNSConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class DNSConfigResponseContainerV1beta1 {
     );
   }
 }
+

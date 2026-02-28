@@ -118,91 +118,68 @@ import 'ami_from_instance_ephemeral_block_device.dart';
 class AmiFromInstance extends pulumi.CustomResource {
   /// Machine architecture for created instances. Defaults to `x86_64`.
   late final pulumi.Output<String> architecture;
-
   /// ARN of the AMI.
   late final pulumi.Output<String> arn;
-
   /// Boot mode of the AMI. For more information, see [Boot modes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html) in the Amazon Elastic Compute Cloud User Guide.
   late final pulumi.Output<String> bootMode;
-
   /// Date and time to deprecate the AMI. If you specified a value for seconds, Amazon EC2 rounds the seconds to the nearest minute. Valid values: [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) (`YYYY-MM-DDTHH:MM:SSZ`)
   late final pulumi.Output<String?> deprecationTime;
-
   /// Longer, human-readable description for the AMI.
   late final pulumi.Output<String?> description;
-
   /// Nested block describing an EBS block device that should be
   /// attached to created instances. The structure of this block is described below.
   late final pulumi.Output<List<AmiFromInstanceEbsBlockDevice>> ebsBlockDevices;
-
   /// Whether enhanced networking with ENA is enabled. Defaults to `false`.
   late final pulumi.Output<bool> enaSupport;
-
   /// Nested block describing an ephemeral block device that
   /// should be attached to created instances. The structure of this block is described below.
-  late final pulumi.Output<List<AmiFromInstanceEphemeralBlockDevice>>
-      ephemeralBlockDevices;
+  late final pulumi.Output<List<AmiFromInstanceEphemeralBlockDevice>> ephemeralBlockDevices;
   late final pulumi.Output<String> hypervisor;
-
   /// Path to an S3 object containing an image manifest, e.g., created
   /// by the `ec2-upload-bundle` command in the EC2 command line tools.
   late final pulumi.Output<String> imageLocation;
   late final pulumi.Output<String> imageOwnerAlias;
   late final pulumi.Output<String> imageType;
-
   /// If EC2 instances started from this image should require the use of the Instance Metadata Service V2 (IMDSv2), set this argument to `v2.0`. For more information, see [Configure instance metadata options for new instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-IMDS-new-instances.html#configure-IMDS-new-instances-ami-configuration).
   late final pulumi.Output<String> imdsSupport;
-
   /// ID of the kernel image (AKI) that will be used as the paravirtual
   /// kernel in created instances.
   late final pulumi.Output<String> kernelId;
-
   /// Date and time, in ISO 8601 date-time format , when the AMI was last used to launch an EC2 instance. When the AMI is used to launch an instance, there is a 24-hour delay before that usage is reported. For more information, see the following [AWS document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-last-launched-time.html).
   late final pulumi.Output<String> lastLaunchedTime;
   late final pulumi.Output<bool> manageEbsSnapshots;
-
   /// Region-unique name for the AMI.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> ownerId;
   late final pulumi.Output<String> platform;
   late final pulumi.Output<String> platformDetails;
   late final pulumi.Output<bool> public;
-
   /// ID of an initrd image (ARI) that will be used when booting the
   /// created instances.
   late final pulumi.Output<String> ramdiskId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Name of the root device (for example, `/dev/sda1`, or `/dev/xvda`).
   late final pulumi.Output<String> rootDeviceName;
   late final pulumi.Output<String> rootSnapshotId;
-
   /// Boolean that overrides the behavior of stopping
   /// the instance before snapshotting. This is risky since it may cause a snapshot of an
   /// inconsistent filesystem state, but can be used to avoid downtime if the user otherwise
   /// guarantees that no filesystem writes will be underway at the time of snapshot.
   late final pulumi.Output<bool?> snapshotWithoutReboot;
-
   /// ID of the instance to use as the basis of the AMI.
   late final pulumi.Output<String> sourceInstanceId;
-
   /// When set to "simple" (the default), enables enhanced networking
   /// for created instances. No other value is supported at this time.
   late final pulumi.Output<String> sriovNetSupport;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// If the image is configured for NitroTPM support, the value is `v2.0`. For more information, see [NitroTPM](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitrotpm.html) in the Amazon Elastic Compute Cloud User Guide.
   late final pulumi.Output<String> tpmSupport;
-
   /// Base64 representation of the non-volatile UEFI variable store.
   late final pulumi.Output<String> uefiData;
   late final pulumi.Output<String> usageOperation;
-
   /// Keyword to choose what virtualization mode created instances
   /// will use. Can be either "paravirtual" (the default) or "hvm". The choice of virtualization type
   /// changes the set of further arguments that are required, as described below.
@@ -227,12 +204,9 @@ class AmiFromInstance extends pulumi.CustomResource {
     this.bootMode = registerOutput<String>('bootMode');
     this.deprecationTime = registerOutput<String?>('deprecationTime');
     this.description = registerOutput<String?>('description');
-    this.ebsBlockDevices =
-        registerOutput<List<AmiFromInstanceEbsBlockDevice>>('ebsBlockDevices');
+    this.ebsBlockDevices = registerOutput<List<AmiFromInstanceEbsBlockDevice>>('ebsBlockDevices');
     this.enaSupport = registerOutput<bool>('enaSupport');
-    this.ephemeralBlockDevices =
-        registerOutput<List<AmiFromInstanceEphemeralBlockDevice>>(
-            'ephemeralBlockDevices');
+    this.ephemeralBlockDevices = registerOutput<List<AmiFromInstanceEphemeralBlockDevice>>('ephemeralBlockDevices');
     this.hypervisor = registerOutput<String>('hypervisor');
     this.imageLocation = registerOutput<String>('imageLocation');
     this.imageOwnerAlias = registerOutput<String>('imageOwnerAlias');

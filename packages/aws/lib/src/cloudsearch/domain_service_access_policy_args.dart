@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainServiceAccessPolicyArgs {
   /// The access rules you want to configure. These rules replace any existing rules. See the [AWS documentation](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html) for details.
   final pulumi.Input<String> accessPolicy;
-
   /// The CloudSearch domain name the policy applies to.
   final pulumi.Input<String> domainName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -24,19 +22,17 @@ class DomainServiceAccessPolicyArgs {
     required String accessPolicy,
     required String domainName,
     String? region,
-  })  : accessPolicy = pulumi.Input.asInput<String>(accessPolicy),
-        domainName = pulumi.Input.asInput<String>(domainName),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      accessPolicy = pulumi.Input.asInput<String>(accessPolicy),
+      domainName = pulumi.Input.asInput<String>(domainName),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accessPolicy'] = accessPolicy;
-    map['domainName'] = domainName;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'accessPolicy': accessPolicy,
+      'domainName': domainName,
+      'region': ?region,
+    };
   }
 
   factory DomainServiceAccessPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -47,3 +43,4 @@ class DomainServiceAccessPolicyArgs {
     );
   }
 }
+

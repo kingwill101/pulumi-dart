@@ -199,10 +199,8 @@ import 'group_membership_args.dart';
 class GroupMembership extends pulumi.CustomResource {
   /// The IAM Group name to attach the list of `users` to
   late final pulumi.Output<String> group;
-
   /// The name to identify the Group Membership
   late final pulumi.Output<String> name;
-
   /// A list of IAM User names to associate with the Group
   late final pulumi.Output<List<String>> users;
 

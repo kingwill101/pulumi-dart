@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AlertPolicyConditionConditionSqlBooleanTest {
   /// The name of the column containing the boolean value. If the value in a row is
   /// NULL, that row is ignored.
@@ -12,15 +13,15 @@ class AlertPolicyConditionConditionSqlBooleanTest {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['column'] = column;
-    return map;
+    return <String, dynamic>{
+      'column': column,
+    };
   }
 
-  factory AlertPolicyConditionConditionSqlBooleanTest.fromMap(
-      Map<String, dynamic> map) {
+  factory AlertPolicyConditionConditionSqlBooleanTest.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionSqlBooleanTest(
       column: map['column'] as String,
     );
   }
 }
+

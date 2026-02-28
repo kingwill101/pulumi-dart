@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getAccountIamPolicy.
 class GetAccountIamPolicyResult {
   final String billingAccountId;
-
   /// (Computed) The etag of the IAM policy.
   final String etag;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// (Computed) The policy data
   final String policyData;
 
@@ -26,12 +24,12 @@ class GetAccountIamPolicyResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['billingAccountId'] = billingAccountId;
-    map['etag'] = etag;
-    map['id'] = id;
-    map['policyData'] = policyData;
-    return map;
+    return <String, dynamic>{
+      'billingAccountId': billingAccountId,
+      'etag': etag,
+      'id': id,
+      'policyData': policyData,
+    };
   }
 
   factory GetAccountIamPolicyResult.fromMap(Map<String, dynamic> map) {
@@ -43,3 +41,4 @@ class GetAccountIamPolicyResult {
     );
   }
 }
+

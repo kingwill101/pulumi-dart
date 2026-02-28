@@ -10,13 +10,10 @@ import 'saml_idp_config.dart';
 class InboundSamlSsoProfileArgs {
   /// Immutable. The customer. For example: `customers/C0123abc`.
   final pulumi.Input<String>? customer;
-
   /// Human-readable name of the SAML SSO profile.
   final pulumi.Input<String>? displayName;
-
   /// SAML identity provider configuration.
   final pulumi.Input<SamlIdpConfig>? idpConfig;
-
   /// SAML service provider configuration for this SAML SSO profile. These are the service provider details provided by Google that should be configured on the corresponding identity provider.
   final pulumi.Input<Map<String, dynamic>>? spConfig;
 
@@ -30,45 +27,28 @@ class InboundSamlSsoProfileArgs {
     String? displayName,
     SamlIdpConfig? idpConfig,
     Map<String, dynamic>? spConfig,
-  })  : customer = pulumi.Input.asOptionalInput<String>(customer),
-        displayName = pulumi.Input.asOptionalInput<String>(displayName),
-        idpConfig = pulumi.Input.asOptionalInput<SamlIdpConfig>(idpConfig),
-        spConfig = pulumi.Input.asOptionalInput<Map<String, dynamic>>(spConfig);
+  }) :
+      customer = pulumi.Input.asOptionalInput<String>(customer),
+      displayName = pulumi.Input.asOptionalInput<String>(displayName),
+      idpConfig = pulumi.Input.asOptionalInput<SamlIdpConfig>(idpConfig),
+      spConfig = pulumi.Input.asOptionalInput<Map<String, dynamic>>(spConfig);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final customerValue = customer;
-    if (customerValue != null) {
-      map['customer'] = customerValue;
-    }
-    final displayNameValue = displayName;
-    if (displayNameValue != null) {
-      map['displayName'] = displayNameValue;
-    }
-    final idpConfigValue = idpConfig;
-    if (idpConfigValue != null) {
-      map['idpConfig'] = pulumi.Input.mapOptionalInputValue<SamlIdpConfig,
-          Map<String, dynamic>>(idpConfigValue, (value) => value.toMap());
-    }
-    final spConfigValue = spConfig;
-    if (spConfigValue != null) {
-      map['spConfig'] = spConfigValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'customer': ?customer,
+      'displayName': ?displayName,
+      'idpConfig': ?pulumi.Input.mapOptionalInputValue<SamlIdpConfig, Map<String, dynamic>>(idpConfig, (value) => value.toMap()),
+      'spConfig': ?spConfig,
+    };
   }
 
   factory InboundSamlSsoProfileArgs.fromMap(Map<String, dynamic> map) {
     return InboundSamlSsoProfileArgs(
       customer: map['customer'] == null ? null : map['customer'] as String,
-      displayName:
-          map['displayName'] == null ? null : map['displayName'] as String,
-      idpConfig: map['idpConfig'] == null
-          ? null
-          : SamlIdpConfig.fromMap(
-              (map['idpConfig'] as Map).cast<String, dynamic>()),
-      spConfig: map['spConfig'] == null
-          ? null
-          : (map['spConfig'] as Map).cast<String, dynamic>(),
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      idpConfig: map['idpConfig'] == null ? null : SamlIdpConfig.fromMap((map['idpConfig'] as Map).cast<String, dynamic>()),
+      spConfig: map['spConfig'] == null ? null : (map['spConfig'] as Map).cast<String, dynamic>(),
     );
   }
 }
+

@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Metadata about users for a Looker instance.
 class UserMetadataResponse {
   /// Optional. The number of additional developer users the instance owner has purchased.
   final int additionalDeveloperUserCount;
-
   /// Optional. The number of additional standard users the instance owner has purchased.
   final int additionalStandardUserCount;
-
   /// Optional. The number of additional viewer users the instance owner has purchased.
   final int additionalViewerUserCount;
 
@@ -22,11 +21,11 @@ class UserMetadataResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['additionalDeveloperUserCount'] = additionalDeveloperUserCount;
-    map['additionalStandardUserCount'] = additionalStandardUserCount;
-    map['additionalViewerUserCount'] = additionalViewerUserCount;
-    return map;
+    return <String, dynamic>{
+      'additionalDeveloperUserCount': additionalDeveloperUserCount,
+      'additionalStandardUserCount': additionalStandardUserCount,
+      'additionalViewerUserCount': additionalViewerUserCount,
+    };
   }
 
   factory UserMetadataResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class UserMetadataResponse {
     );
   }
 }
+

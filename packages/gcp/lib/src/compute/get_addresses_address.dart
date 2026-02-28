@@ -1,31 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetAddressesAddress {
   /// The IP address (for example `1.2.3.4`).
   final String address;
-
   /// The IP address type, can be `EXTERNAL` or `INTERNAL`.
   final String addressType;
-
   /// The IP address description.
   final String description;
-
   /// A map containing IP labels.
   final Map<String, String> labels;
-
   /// The IP address name.
   final String name;
-
   /// The prefix length of the IP range. If not present, it means the address field is a single IP address.
   final int prefixLength;
-
   /// Region that should be considered to search addresses.
   /// All regions are considered if missing.
   final String region;
-
   /// The URI of the created resource.
   final String selfLink;
-
   /// Indicates if the address is used. Possible values are: RESERVED or IN_USE.
   final String status;
 
@@ -52,17 +45,17 @@ class GetAddressesAddress {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['address'] = address;
-    map['addressType'] = addressType;
-    map['description'] = description;
-    map['labels'] = labels;
-    map['name'] = name;
-    map['prefixLength'] = prefixLength;
-    map['region'] = region;
-    map['selfLink'] = selfLink;
-    map['status'] = status;
-    return map;
+    return <String, dynamic>{
+      'address': address,
+      'addressType': addressType,
+      'description': description,
+      'labels': labels,
+      'name': name,
+      'prefixLength': prefixLength,
+      'region': region,
+      'selfLink': selfLink,
+      'status': status,
+    };
   }
 
   factory GetAddressesAddress.fromMap(Map<String, dynamic> map) {
@@ -79,3 +72,4 @@ class GetAddressesAddress {
     );
   }
 }
+

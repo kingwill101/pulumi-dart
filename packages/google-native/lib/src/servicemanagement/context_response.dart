@@ -15,19 +15,15 @@ class ContextResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['rules'] =
-        pulumi.Input.encodeList<ContextRuleResponse, Map<String, dynamic>>(
-            rules, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'rules': pulumi.Input.encodeList<ContextRuleResponse, Map<String, dynamic>>(rules, (value) => value.toMap()),
+    };
   }
 
   factory ContextResponse.fromMap(Map<String, dynamic> map) {
     return ContextResponse(
-      rules: pulumi.Input.decodeList<ContextRuleResponse>(
-          map['rules'],
-          (value) => ContextRuleResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      rules: pulumi.Input.decodeList<ContextRuleResponse>(map['rules'], (value) => ContextRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

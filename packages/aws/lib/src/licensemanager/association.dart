@@ -253,10 +253,8 @@ import 'association_args.dart';
 class Association extends pulumi.CustomResource {
   /// ARN of the license configuration.
   late final pulumi.Output<String> licenseConfigurationArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ARN of the resource associated with the license configuration.
   late final pulumi.Output<String> resourceArn;
 
@@ -274,8 +272,7 @@ class Association extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.licenseConfigurationArn =
-        registerOutput<String>('licenseConfigurationArn');
+    this.licenseConfigurationArn = registerOutput<String>('licenseConfigurationArn');
     this.region = registerOutput<String>('region');
     this.resourceArn = registerOutput<String>('resourceArn');
   }

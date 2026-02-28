@@ -7,13 +7,10 @@ import 'ds_record_digest_type_domains_v1alpha2.dart';
 class DsRecordDomainsV1alpha2 {
   /// The algorithm used to generate the referenced DNSKEY.
   final DsRecordAlgorithmDomainsV1alpha2? algorithm;
-
   /// The digest generated from the referenced DNSKEY.
   final String? digest;
-
   /// The hash function used to generate the digest of the referenced DNSKEY.
   final DsRecordDigestTypeDomainsV1alpha2? digestType;
-
   /// The key tag of the record. Must be set in range 0 -- 65535.
   final int? keyTag;
 
@@ -30,38 +27,21 @@ class DsRecordDomainsV1alpha2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final algorithmValue = algorithm;
-    if (algorithmValue != null) {
-      map['algorithm'] = algorithmValue.value;
-    }
-    final digestValue = digest;
-    if (digestValue != null) {
-      map['digest'] = digestValue;
-    }
-    final digestTypeValue = digestType;
-    if (digestTypeValue != null) {
-      map['digestType'] = digestTypeValue.value;
-    }
-    final keyTagValue = keyTag;
-    if (keyTagValue != null) {
-      map['keyTag'] = keyTagValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'algorithm': ?algorithm == null ? null : algorithm!.value,
+      'digest': ?digest,
+      'digestType': ?digestType == null ? null : digestType!.value,
+      'keyTag': ?keyTag,
+    };
   }
 
   factory DsRecordDomainsV1alpha2.fromMap(Map<String, dynamic> map) {
     return DsRecordDomainsV1alpha2(
-      algorithm: map['algorithm'] == null
-          ? null
-          : DsRecordAlgorithmDomainsV1alpha2.fromValue(
-              map['algorithm'] as String),
+      algorithm: map['algorithm'] == null ? null : DsRecordAlgorithmDomainsV1alpha2.fromValue(map['algorithm'] as String),
       digest: map['digest'] == null ? null : map['digest'] as String,
-      digestType: map['digestType'] == null
-          ? null
-          : DsRecordDigestTypeDomainsV1alpha2.fromValue(
-              map['digestType'] as String),
+      digestType: map['digestType'] == null ? null : DsRecordDigestTypeDomainsV1alpha2.fromValue(map['digestType'] as String),
       keyTag: map['keyTag'] == null ? null : map['keyTag'] as int,
     );
   }
 }
+

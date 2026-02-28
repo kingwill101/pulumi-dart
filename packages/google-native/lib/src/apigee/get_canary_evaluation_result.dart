@@ -6,28 +6,20 @@ import 'google_cloud_apigee_v1_canary_evaluation_metric_labels_response.dart';
 class GetCanaryEvaluationResult {
   /// The stable version that is serving requests.
   final String control;
-
   /// Create time of the canary evaluation.
   final String createTime;
-
   /// End time for the evaluation's analysis.
   final String endTime;
-
   /// Labels used to filter the metrics used for a canary evaluation.
   final GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse metricLabels;
-
   /// Name of the canary evalution.
   final String name;
-
   /// Start time for the canary evaluation's analysis.
   final String startTime;
-
   /// The current state of the canary evaluation.
   final String state;
-
   /// The newer version that is serving requests.
   final String treatment;
-
   /// The resulting verdict of the canary evaluations: NONE, PASS, or FAIL.
   final String verdict;
 
@@ -54,17 +46,17 @@ class GetCanaryEvaluationResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['control'] = control;
-    map['createTime'] = createTime;
-    map['endTime'] = endTime;
-    map['metricLabels'] = metricLabels.toMap();
-    map['name'] = name;
-    map['startTime'] = startTime;
-    map['state'] = state;
-    map['treatment'] = treatment;
-    map['verdict'] = verdict;
-    return map;
+    return <String, dynamic>{
+      'control': control,
+      'createTime': createTime,
+      'endTime': endTime,
+      'metricLabels': metricLabels.toMap(),
+      'name': name,
+      'startTime': startTime,
+      'state': state,
+      'treatment': treatment,
+      'verdict': verdict,
+    };
   }
 
   factory GetCanaryEvaluationResult.fromMap(Map<String, dynamic> map) {
@@ -72,9 +64,7 @@ class GetCanaryEvaluationResult {
       control: map['control'] as String,
       createTime: map['createTime'] as String,
       endTime: map['endTime'] as String,
-      metricLabels:
-          GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse.fromMap(
-              (map['metricLabels'] as Map).cast<String, dynamic>()),
+      metricLabels: GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse.fromMap((map['metricLabels'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       startTime: map['startTime'] as String,
       state: map['state'] as String,
@@ -83,3 +73,4 @@ class GetCanaryEvaluationResult {
     );
   }
 }
+

@@ -16,17 +16,15 @@ class GetTopicArgs {
   GetTopicArgs({
     String? project,
     required String topicId,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        topicId = pulumi.Input.asInput<String>(topicId);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      topicId = pulumi.Input.asInput<String>(topicId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['topicId'] = topicId;
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'topicId': topicId,
+    };
   }
 
   factory GetTopicArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetTopicArgs {
     );
   }
 }
+

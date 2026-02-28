@@ -10,11 +10,9 @@ import 'app_engine_version_iam_member_condition.dart';
 class AppEngineVersionIamMemberArgs {
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> appId;
-
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
   final pulumi.Input<AppEngineVersionIamMemberCondition>? condition;
-
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -28,19 +26,15 @@ class AppEngineVersionIamMemberArgs {
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
   final pulumi.Input<String> member;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The role that should be applied. Only one
   /// `gcp.iap.AppEngineVersionIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   final pulumi.Input<String> role;
-
   /// Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> service;
-
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> versionId;
 
@@ -60,43 +54,31 @@ class AppEngineVersionIamMemberArgs {
     required String role,
     required String service,
     required String versionId,
-  })  : appId = pulumi.Input.asInput<String>(appId),
-        condition =
-            pulumi.Input.asOptionalInput<AppEngineVersionIamMemberCondition>(
-                condition),
-        member = pulumi.Input.asInput<String>(member),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        role = pulumi.Input.asInput<String>(role),
-        service = pulumi.Input.asInput<String>(service),
-        versionId = pulumi.Input.asInput<String>(versionId);
+  }) :
+      appId = pulumi.Input.asInput<String>(appId),
+      condition = pulumi.Input.asOptionalInput<AppEngineVersionIamMemberCondition>(condition),
+      member = pulumi.Input.asInput<String>(member),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      role = pulumi.Input.asInput<String>(role),
+      service = pulumi.Input.asInput<String>(service),
+      versionId = pulumi.Input.asInput<String>(versionId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['appId'] = appId;
-    final conditionValue = condition;
-    if (conditionValue != null) {
-      map['condition'] = pulumi.Input.mapOptionalInputValue<
-          AppEngineVersionIamMemberCondition,
-          Map<String, dynamic>>(conditionValue, (value) => value.toMap());
-    }
-    map['member'] = member;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['role'] = role;
-    map['service'] = service;
-    map['versionId'] = versionId;
-    return map;
+    return <String, dynamic>{
+      'appId': appId,
+      'condition': ?pulumi.Input.mapOptionalInputValue<AppEngineVersionIamMemberCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'member': member,
+      'project': ?project,
+      'role': role,
+      'service': service,
+      'versionId': versionId,
+    };
   }
 
   factory AppEngineVersionIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return AppEngineVersionIamMemberArgs(
       appId: map['appId'] as String,
-      condition: map['condition'] == null
-          ? null
-          : AppEngineVersionIamMemberCondition.fromMap(
-              (map['condition'] as Map).cast<String, dynamic>()),
+      condition: map['condition'] == null ? null : AppEngineVersionIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
       member: map['member'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       role: map['role'] as String,
@@ -105,3 +87,4 @@ class AppEngineVersionIamMemberArgs {
     );
   }
 }
+

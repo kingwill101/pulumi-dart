@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTableServerSideEncryption {
   final bool enabled;
   final String kmsKeyArn;
@@ -13,10 +14,10 @@ class GetTableServerSideEncryption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    map['kmsKeyArn'] = kmsKeyArn;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+      'kmsKeyArn': kmsKeyArn,
+    };
   }
 
   factory GetTableServerSideEncryption.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class GetTableServerSideEncryption {
     );
   }
 }
+

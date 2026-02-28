@@ -17,21 +17,17 @@ class GetDbNodesDbNode {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['properties'] =
-        pulumi.Input.encodeList<GetDbNodesDbNodeProperty, Map<String, dynamic>>(
-            properties, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'properties': pulumi.Input.encodeList<GetDbNodesDbNodeProperty, Map<String, dynamic>>(properties, (value) => value.toMap()),
+    };
   }
 
   factory GetDbNodesDbNode.fromMap(Map<String, dynamic> map) {
     return GetDbNodesDbNode(
       name: map['name'] as String,
-      properties: pulumi.Input.decodeList<GetDbNodesDbNodeProperty>(
-          map['properties'],
-          (value) => GetDbNodesDbNodeProperty.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      properties: pulumi.Input.decodeList<GetDbNodesDbNodeProperty>(map['properties'], (value) => GetDbNodesDbNodeProperty.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

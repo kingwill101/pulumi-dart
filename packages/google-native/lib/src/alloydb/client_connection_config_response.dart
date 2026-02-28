@@ -6,7 +6,6 @@ import 'ssl_config_response.dart';
 class ClientConnectionConfigResponse {
   /// Optional. Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
   final bool requireConnectors;
-
   /// Optional. SSL config option for this instance.
   final SslConfigResponse sslConfig;
 
@@ -19,17 +18,17 @@ class ClientConnectionConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['requireConnectors'] = requireConnectors;
-    map['sslConfig'] = sslConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'requireConnectors': requireConnectors,
+      'sslConfig': sslConfig.toMap(),
+    };
   }
 
   factory ClientConnectionConfigResponse.fromMap(Map<String, dynamic> map) {
     return ClientConnectionConfigResponse(
       requireConnectors: map['requireConnectors'] as bool,
-      sslConfig: SslConfigResponse.fromMap(
-          (map['sslConfig'] as Map).cast<String, dynamic>()),
+      sslConfig: SslConfigResponse.fromMap((map['sslConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

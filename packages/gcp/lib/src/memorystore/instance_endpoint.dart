@@ -15,23 +15,15 @@ class InstanceEndpoint {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final connectionsValue = connections;
-    if (connectionsValue != null) {
-      map['connections'] = pulumi.Input.encodeList<InstanceEndpointConnection,
-          Map<String, dynamic>>(connectionsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'connections': ?connections == null ? null : pulumi.Input.encodeList<InstanceEndpointConnection, Map<String, dynamic>>(connections!, (value) => value.toMap()),
+    };
   }
 
   factory InstanceEndpoint.fromMap(Map<String, dynamic> map) {
     return InstanceEndpoint(
-      connections: map['connections'] == null
-          ? null
-          : pulumi.Input.decodeList<InstanceEndpointConnection>(
-              map['connections'],
-              (value) => InstanceEndpointConnection.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      connections: map['connections'] == null ? null : pulumi.Input.decodeList<InstanceEndpointConnection>(map['connections'], (value) => InstanceEndpointConnection.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

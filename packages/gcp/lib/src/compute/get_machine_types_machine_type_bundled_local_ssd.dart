@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetMachineTypesMachineTypeBundledLocalSsd {
   /// The default disk interface if the interface is not specified.
   final String defaultInterface;
-
   /// The number of partitions.
   final int partitionCount;
 
@@ -16,17 +16,17 @@ class GetMachineTypesMachineTypeBundledLocalSsd {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['defaultInterface'] = defaultInterface;
-    map['partitionCount'] = partitionCount;
-    return map;
+    return <String, dynamic>{
+      'defaultInterface': defaultInterface,
+      'partitionCount': partitionCount,
+    };
   }
 
-  factory GetMachineTypesMachineTypeBundledLocalSsd.fromMap(
-      Map<String, dynamic> map) {
+  factory GetMachineTypesMachineTypeBundledLocalSsd.fromMap(Map<String, dynamic> map) {
     return GetMachineTypesMachineTypeBundledLocalSsd(
       defaultInterface: map['defaultInterface'] as String,
       partitionCount: map['partitionCount'] as int,
     );
   }
 }
+

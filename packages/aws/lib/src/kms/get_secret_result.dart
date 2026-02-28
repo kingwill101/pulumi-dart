@@ -21,23 +21,19 @@ class GetSecretResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['region'] = region;
-    map['secrets'] =
-        pulumi.Input.encodeList<GetSecretSecret, Map<String, dynamic>>(
-            secrets, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'region': region,
+      'secrets': pulumi.Input.encodeList<GetSecretSecret, Map<String, dynamic>>(secrets, (value) => value.toMap()),
+    };
   }
 
   factory GetSecretResult.fromMap(Map<String, dynamic> map) {
     return GetSecretResult(
       id: map['id'] as String,
       region: map['region'] as String,
-      secrets: pulumi.Input.decodeList<GetSecretSecret>(
-          map['secrets'],
-          (value) =>
-              GetSecretSecret.fromMap((value as Map).cast<String, dynamic>())),
+      secrets: pulumi.Input.decodeList<GetSecretSecret>(map['secrets'], (value) => GetSecretSecret.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

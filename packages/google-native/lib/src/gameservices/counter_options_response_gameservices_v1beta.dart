@@ -7,10 +7,8 @@ import 'custom_field_response_gameservices_v1beta.dart';
 class CounterOptionsResponseGameservicesV1beta {
   /// Custom fields.
   final List<CustomFieldResponseGameservicesV1beta> customFields;
-
   /// The field value to attribute.
   final String field;
-
   /// The metric to update.
   final String metric;
 
@@ -25,25 +23,19 @@ class CounterOptionsResponseGameservicesV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['customFields'] = pulumi.Input.encodeList<
-        CustomFieldResponseGameservicesV1beta,
-        Map<String, dynamic>>(customFields, (value) => value.toMap());
-    map['field'] = field;
-    map['metric'] = metric;
-    return map;
+    return <String, dynamic>{
+      'customFields': pulumi.Input.encodeList<CustomFieldResponseGameservicesV1beta, Map<String, dynamic>>(customFields, (value) => value.toMap()),
+      'field': field,
+      'metric': metric,
+    };
   }
 
-  factory CounterOptionsResponseGameservicesV1beta.fromMap(
-      Map<String, dynamic> map) {
+  factory CounterOptionsResponseGameservicesV1beta.fromMap(Map<String, dynamic> map) {
     return CounterOptionsResponseGameservicesV1beta(
-      customFields:
-          pulumi.Input.decodeList<CustomFieldResponseGameservicesV1beta>(
-              map['customFields'],
-              (value) => CustomFieldResponseGameservicesV1beta.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      customFields: pulumi.Input.decodeList<CustomFieldResponseGameservicesV1beta>(map['customFields'], (value) => CustomFieldResponseGameservicesV1beta.fromMap((value as Map).cast<String, dynamic>())),
       field: map['field'] as String,
       metric: map['metric'] as String,
     );
   }
 }
+

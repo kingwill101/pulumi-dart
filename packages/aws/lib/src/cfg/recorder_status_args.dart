@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RecorderStatusArgs {
   /// Whether the configuration recorder should be enabled or disabled.
   final pulumi.Input<bool> isEnabled;
-
   /// The name of the recorder
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -24,22 +22,17 @@ class RecorderStatusArgs {
     required bool isEnabled,
     String? name,
     String? region,
-  })  : isEnabled = pulumi.Input.asInput<bool>(isEnabled),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      isEnabled = pulumi.Input.asInput<bool>(isEnabled),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['isEnabled'] = isEnabled;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'isEnabled': isEnabled,
+      'name': ?name,
+      'region': ?region,
+    };
   }
 
   factory RecorderStatusArgs.fromMap(Map<String, dynamic> map) {
@@ -50,3 +43,4 @@ class RecorderStatusArgs {
     );
   }
 }
+

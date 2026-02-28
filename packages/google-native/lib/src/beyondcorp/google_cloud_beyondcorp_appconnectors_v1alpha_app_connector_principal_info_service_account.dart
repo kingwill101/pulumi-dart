@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// ServiceAccount represents a GCP service account.
 class GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccount {
   /// Email address of the service account.
@@ -12,18 +13,15 @@ class GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceA
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final emailValue = email;
-    if (emailValue != null) {
-      map['email'] = emailValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'email': ?email,
+    };
   }
 
-  factory GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccount.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccount.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccount(
       email: map['email'] == null ? null : map['email'] as String,
     );
   }
 }
+

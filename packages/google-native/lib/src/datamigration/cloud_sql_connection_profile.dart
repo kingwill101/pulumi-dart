@@ -14,20 +14,15 @@ class CloudSqlConnectionProfile {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final settingsValue = settings;
-    if (settingsValue != null) {
-      map['settings'] = settingsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'settings': ?settings == null ? null : settings!.toMap(),
+    };
   }
 
   factory CloudSqlConnectionProfile.fromMap(Map<String, dynamic> map) {
     return CloudSqlConnectionProfile(
-      settings: map['settings'] == null
-          ? null
-          : CloudSqlSettings.fromMap(
-              (map['settings'] as Map).cast<String, dynamic>()),
+      settings: map['settings'] == null ? null : CloudSqlSettings.fromMap((map['settings'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

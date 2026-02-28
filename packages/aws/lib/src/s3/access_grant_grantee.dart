@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AccessGrantGrantee {
   /// Grantee identifier.
   final String granteeIdentifier;
-
   /// Grantee types. Valid values: `DIRECTORY_USER`, `DIRECTORY_GROUP`, `IAM`.
   final String granteeType;
 
@@ -16,10 +16,10 @@ class AccessGrantGrantee {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['granteeIdentifier'] = granteeIdentifier;
-    map['granteeType'] = granteeType;
-    return map;
+    return <String, dynamic>{
+      'granteeIdentifier': granteeIdentifier,
+      'granteeType': granteeType,
+    };
   }
 
   factory AccessGrantGrantee.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class AccessGrantGrantee {
     );
   }
 }
+

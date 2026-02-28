@@ -22,33 +22,28 @@ class GetKeyArgs {
     String? project,
     String? publicKeyType,
     required String serviceAccountId,
-  })  : keyId = pulumi.Input.asInput<String>(keyId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        publicKeyType = pulumi.Input.asOptionalInput<String>(publicKeyType),
-        serviceAccountId = pulumi.Input.asInput<String>(serviceAccountId);
+  }) :
+      keyId = pulumi.Input.asInput<String>(keyId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      publicKeyType = pulumi.Input.asOptionalInput<String>(publicKeyType),
+      serviceAccountId = pulumi.Input.asInput<String>(serviceAccountId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['keyId'] = keyId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final publicKeyTypeValue = publicKeyType;
-    if (publicKeyTypeValue != null) {
-      map['publicKeyType'] = publicKeyTypeValue;
-    }
-    map['serviceAccountId'] = serviceAccountId;
-    return map;
+    return <String, dynamic>{
+      'keyId': keyId,
+      'project': ?project,
+      'publicKeyType': ?publicKeyType,
+      'serviceAccountId': serviceAccountId,
+    };
   }
 
   factory GetKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetKeyArgs(
       keyId: map['keyId'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      publicKeyType:
-          map['publicKeyType'] == null ? null : map['publicKeyType'] as String,
+      publicKeyType: map['publicKeyType'] == null ? null : map['publicKeyType'] as String,
       serviceAccountId: map['serviceAccountId'] as String,
     );
   }
 }
+

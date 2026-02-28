@@ -174,25 +174,18 @@ import 'user_authentication_mode.dart';
 class User extends pulumi.CustomResource {
   /// Access permissions string used for this user.
   late final pulumi.Output<String> accessString;
-
   /// ARN of the user.
   late final pulumi.Output<String> arn;
-
   /// Denotes the user's authentication properties. Detailed below.
   late final pulumi.Output<UserAuthenticationMode> authenticationMode;
-
   /// Minimum engine version supported for the user.
   late final pulumi.Output<String> minimumEngineVersion;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Name of the MemoryDB user. Up to 40 characters.
   ///
   /// The following arguments are optional:
@@ -214,8 +207,7 @@ class User extends pulumi.CustomResource {
         ) {
     this.accessString = registerOutput<String>('accessString');
     this.arn = registerOutput<String>('arn');
-    this.authenticationMode =
-        registerOutput<UserAuthenticationMode>('authenticationMode');
+    this.authenticationMode = registerOutput<UserAuthenticationMode>('authenticationMode');
     this.minimumEngineVersion = registerOutput<String>('minimumEngineVersion');
     this.region = registerOutput<String>('region');
     this.tags = registerOutput<Map<String, String>?>('tags');

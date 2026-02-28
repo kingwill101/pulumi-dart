@@ -8,7 +8,6 @@ import 'tcp_route_route_match_response.dart';
 class TcpRouteRouteRuleResponse {
   /// The detailed rule defining how to route matched traffic.
   final TcpRouteRouteActionResponse action;
-
   /// Optional. RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "OR"ed for evaluation. If no routeMatch field is specified, this rule will unconditionally match traffic.
   final List<TcpRouteRouteMatchResponse> matches;
 
@@ -21,21 +20,17 @@ class TcpRouteRouteRuleResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['action'] = action.toMap();
-    map['matches'] = pulumi.Input.encodeList<TcpRouteRouteMatchResponse,
-        Map<String, dynamic>>(matches, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'action': action.toMap(),
+      'matches': pulumi.Input.encodeList<TcpRouteRouteMatchResponse, Map<String, dynamic>>(matches, (value) => value.toMap()),
+    };
   }
 
   factory TcpRouteRouteRuleResponse.fromMap(Map<String, dynamic> map) {
     return TcpRouteRouteRuleResponse(
-      action: TcpRouteRouteActionResponse.fromMap(
-          (map['action'] as Map).cast<String, dynamic>()),
-      matches: pulumi.Input.decodeList<TcpRouteRouteMatchResponse>(
-          map['matches'],
-          (value) => TcpRouteRouteMatchResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      action: TcpRouteRouteActionResponse.fromMap((map['action'] as Map).cast<String, dynamic>()),
+      matches: pulumi.Input.decodeList<TcpRouteRouteMatchResponse>(map['matches'], (value) => TcpRouteRouteMatchResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

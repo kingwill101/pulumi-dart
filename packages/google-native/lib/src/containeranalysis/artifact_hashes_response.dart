@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Defines a hash object for use in Materials and Products.
 class ArtifactHashesResponse {
   final String sha256;
@@ -11,9 +12,9 @@ class ArtifactHashesResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['sha256'] = sha256;
-    return map;
+    return <String, dynamic>{
+      'sha256': sha256,
+    };
   }
 
   factory ArtifactHashesResponse.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class ArtifactHashesResponse {
     );
   }
 }
+

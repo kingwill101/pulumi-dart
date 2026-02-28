@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetImageStateChangeReason {
   final String code;
   final String message;
@@ -13,10 +14,10 @@ class GetImageStateChangeReason {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['code'] = code;
-    map['message'] = message;
-    return map;
+    return <String, dynamic>{
+      'code': code,
+      'message': message,
+    };
   }
 
   factory GetImageStateChangeReason.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class GetImageStateChangeReason {
     );
   }
 }
+

@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// For display only. Metadata associated with a Cloud Run revision.
 class CloudRunRevisionInfoResponseNetworkmanagementV1beta1 {
   /// Name of a Cloud Run revision.
   final String displayName;
-
   /// Location in which this revision is deployed.
   final String location;
-
   /// ID of Cloud Run Service this revision belongs to.
   final String serviceName;
-
   /// URI of Cloud Run service this revision belongs to.
   final String serviceUri;
-
   /// URI of a Cloud Run revision.
   final String uri;
 
@@ -32,17 +29,16 @@ class CloudRunRevisionInfoResponseNetworkmanagementV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['displayName'] = displayName;
-    map['location'] = location;
-    map['serviceName'] = serviceName;
-    map['serviceUri'] = serviceUri;
-    map['uri'] = uri;
-    return map;
+    return <String, dynamic>{
+      'displayName': displayName,
+      'location': location,
+      'serviceName': serviceName,
+      'serviceUri': serviceUri,
+      'uri': uri,
+    };
   }
 
-  factory CloudRunRevisionInfoResponseNetworkmanagementV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory CloudRunRevisionInfoResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
     return CloudRunRevisionInfoResponseNetworkmanagementV1beta1(
       displayName: map['displayName'] as String,
       location: map['location'] as String,
@@ -52,3 +48,4 @@ class CloudRunRevisionInfoResponseNetworkmanagementV1beta1 {
     );
   }
 }
+

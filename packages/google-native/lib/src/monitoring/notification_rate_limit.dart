@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Control over the rate of notifications sent to this alert policy's notification channels.
 class NotificationRateLimit {
   /// Not more than one notification per period.
@@ -12,12 +13,9 @@ class NotificationRateLimit {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final periodValue = period;
-    if (periodValue != null) {
-      map['period'] = periodValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'period': ?period,
+    };
   }
 
   factory NotificationRateLimit.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class NotificationRateLimit {
     );
   }
 }
+

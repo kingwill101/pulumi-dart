@@ -9,16 +9,12 @@ class CaPoolIssuancePolicyBaselineValuesKeyUsage {
   /// Describes high-level ways in which a key may be used.
   /// Structure is documented below.
   final CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage baseKeyUsage;
-
   /// Describes high-level ways in which a key may be used.
   /// Structure is documented below.
-  final CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage
-      extendedKeyUsage;
-
+  final CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage extendedKeyUsage;
   /// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
   /// Structure is documented below.
-  final List<CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage>?
-      unknownExtendedKeyUsages;
+  final List<CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage>? unknownExtendedKeyUsages;
 
   /// Creates a new [CaPoolIssuancePolicyBaselineValuesKeyUsage].
   /// [baseKeyUsage] Describes high-level ways in which a key may be used.
@@ -31,36 +27,19 @@ class CaPoolIssuancePolicyBaselineValuesKeyUsage {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['baseKeyUsage'] = baseKeyUsage.toMap();
-    map['extendedKeyUsage'] = extendedKeyUsage.toMap();
-    final unknownExtendedKeyUsagesValue = unknownExtendedKeyUsages;
-    if (unknownExtendedKeyUsagesValue != null) {
-      map['unknownExtendedKeyUsages'] = pulumi.Input.encodeList<
-              CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage,
-              Map<String, dynamic>>(
-          unknownExtendedKeyUsagesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'baseKeyUsage': baseKeyUsage.toMap(),
+      'extendedKeyUsage': extendedKeyUsage.toMap(),
+      'unknownExtendedKeyUsages': ?unknownExtendedKeyUsages == null ? null : pulumi.Input.encodeList<CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage, Map<String, dynamic>>(unknownExtendedKeyUsages!, (value) => value.toMap()),
+    };
   }
 
-  factory CaPoolIssuancePolicyBaselineValuesKeyUsage.fromMap(
-      Map<String, dynamic> map) {
+  factory CaPoolIssuancePolicyBaselineValuesKeyUsage.fromMap(Map<String, dynamic> map) {
     return CaPoolIssuancePolicyBaselineValuesKeyUsage(
-      baseKeyUsage:
-          CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage.fromMap(
-              (map['baseKeyUsage'] as Map).cast<String, dynamic>()),
-      extendedKeyUsage:
-          CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage.fromMap(
-              (map['extendedKeyUsage'] as Map).cast<String, dynamic>()),
-      unknownExtendedKeyUsages: map['unknownExtendedKeyUsages'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage>(
-              map['unknownExtendedKeyUsages'],
-              (value) =>
-                  CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      baseKeyUsage: CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage.fromMap((map['baseKeyUsage'] as Map).cast<String, dynamic>()),
+      extendedKeyUsage: CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage.fromMap((map['extendedKeyUsage'] as Map).cast<String, dynamic>()),
+      unknownExtendedKeyUsages: map['unknownExtendedKeyUsages'] == null ? null : pulumi.Input.decodeList<CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage>(map['unknownExtendedKeyUsages'], (value) => CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

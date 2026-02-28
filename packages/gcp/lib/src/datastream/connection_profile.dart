@@ -2867,78 +2867,55 @@ import 'connection_profile_sql_server_profile.dart';
 class ConnectionProfile extends pulumi.CustomResource {
   /// BigQuery warehouse profile.
   late final pulumi.Output<Map<String, dynamic>?> bigqueryProfile;
-
   /// The connection profile identifier.
   late final pulumi.Output<String> connectionProfileId;
-
   /// Create the connection profile without validating it.
   late final pulumi.Output<bool?> createWithoutValidation;
-
   /// Display name.
   late final pulumi.Output<String> displayName;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Forward SSH tunnel connectivity.
   /// Structure is documented below.
-  late final pulumi.Output<ConnectionProfileForwardSshConnectivity?>
-      forwardSshConnectivity;
-
+  late final pulumi.Output<ConnectionProfileForwardSshConnectivity?> forwardSshConnectivity;
   /// Cloud Storage bucket profile.
   /// Structure is documented below.
   late final pulumi.Output<ConnectionProfileGcsProfile?> gcsProfile;
-
   /// Labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The name of the location this connection profile is located in.
   late final pulumi.Output<String> location;
-
   /// Configuration for connecting to a MongoDB database.
   /// Structure is documented below.
   late final pulumi.Output<ConnectionProfileMongodbProfile?> mongodbProfile;
-
   /// MySQL database profile.
   /// Structure is documented below.
   late final pulumi.Output<ConnectionProfileMysqlProfile?> mysqlProfile;
-
   /// The resource's name.
   late final pulumi.Output<String> name;
-
   /// Oracle database profile.
   /// Structure is documented below.
   late final pulumi.Output<ConnectionProfileOracleProfile?> oracleProfile;
-
   /// PostgreSQL database profile.
   /// Structure is documented below.
-  late final pulumi.Output<ConnectionProfilePostgresqlProfile?>
-      postgresqlProfile;
-
+  late final pulumi.Output<ConnectionProfilePostgresqlProfile?> postgresqlProfile;
   /// Private connectivity.
   /// Structure is documented below.
-  late final pulumi.Output<ConnectionProfilePrivateConnectivity?>
-      privateConnectivity;
-
+  late final pulumi.Output<ConnectionProfilePrivateConnectivity?> privateConnectivity;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Salesforce profile.
   /// Structure is documented below.
-  late final pulumi.Output<ConnectionProfileSalesforceProfile?>
-      salesforceProfile;
-
+  late final pulumi.Output<ConnectionProfileSalesforceProfile?> salesforceProfile;
   /// Spanner profile.
   /// Structure is documented below.
   late final pulumi.Output<ConnectionProfileSpannerProfile?> spannerProfile;
-
   /// SQL Server database profile.
   /// Structure is documented below.
   late final pulumi.Output<ConnectionProfileSqlServerProfile?> sqlServerProfile;
@@ -2957,42 +2934,25 @@ class ConnectionProfile extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.bigqueryProfile =
-        registerOutput<Map<String, dynamic>?>('bigqueryProfile');
+    this.bigqueryProfile = registerOutput<Map<String, dynamic>?>('bigqueryProfile');
     this.connectionProfileId = registerOutput<String>('connectionProfileId');
-    this.createWithoutValidation =
-        registerOutput<bool?>('createWithoutValidation');
+    this.createWithoutValidation = registerOutput<bool?>('createWithoutValidation');
     this.displayName = registerOutput<String>('displayName');
-    this.effectiveLabels =
-        registerOutput<Map<String, String>>('effectiveLabels');
-    this.forwardSshConnectivity =
-        registerOutput<ConnectionProfileForwardSshConnectivity?>(
-            'forwardSshConnectivity');
-    this.gcsProfile =
-        registerOutput<ConnectionProfileGcsProfile?>('gcsProfile');
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    this.forwardSshConnectivity = registerOutput<ConnectionProfileForwardSshConnectivity?>('forwardSshConnectivity');
+    this.gcsProfile = registerOutput<ConnectionProfileGcsProfile?>('gcsProfile');
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.location = registerOutput<String>('location');
-    this.mongodbProfile =
-        registerOutput<ConnectionProfileMongodbProfile?>('mongodbProfile');
-    this.mysqlProfile =
-        registerOutput<ConnectionProfileMysqlProfile?>('mysqlProfile');
+    this.mongodbProfile = registerOutput<ConnectionProfileMongodbProfile?>('mongodbProfile');
+    this.mysqlProfile = registerOutput<ConnectionProfileMysqlProfile?>('mysqlProfile');
     this.name = registerOutput<String>('name');
-    this.oracleProfile =
-        registerOutput<ConnectionProfileOracleProfile?>('oracleProfile');
-    this.postgresqlProfile =
-        registerOutput<ConnectionProfilePostgresqlProfile?>(
-            'postgresqlProfile');
-    this.privateConnectivity =
-        registerOutput<ConnectionProfilePrivateConnectivity?>(
-            'privateConnectivity');
+    this.oracleProfile = registerOutput<ConnectionProfileOracleProfile?>('oracleProfile');
+    this.postgresqlProfile = registerOutput<ConnectionProfilePostgresqlProfile?>('postgresqlProfile');
+    this.privateConnectivity = registerOutput<ConnectionProfilePrivateConnectivity?>('privateConnectivity');
     this.project = registerOutput<String>('project');
     this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.salesforceProfile =
-        registerOutput<ConnectionProfileSalesforceProfile?>(
-            'salesforceProfile');
-    this.spannerProfile =
-        registerOutput<ConnectionProfileSpannerProfile?>('spannerProfile');
-    this.sqlServerProfile =
-        registerOutput<ConnectionProfileSqlServerProfile?>('sqlServerProfile');
+    this.salesforceProfile = registerOutput<ConnectionProfileSalesforceProfile?>('salesforceProfile');
+    this.spannerProfile = registerOutput<ConnectionProfileSpannerProfile?>('spannerProfile');
+    this.sqlServerProfile = registerOutput<ConnectionProfileSqlServerProfile?>('sqlServerProfile');
   }
 }

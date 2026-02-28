@@ -1,31 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSubscription.
 class GetSubscriptionResult {
   /// Represents that, if subscription will renew or end when the term ends.
   final bool autoRenewEnabled;
-
   /// Create time of the subscription.
   final String createTime;
-
   /// End time of the subscription.
   final String endTime;
-
   /// Unique resource name of the Subscription. The name is ignored when creating a subscription.
   final String name;
-
   /// Optional. Number of seats in the subscription.
   final String seatCount;
-
   /// SKU of subscription.
   final String sku;
-
   /// Start time of the subscription.
   final String startTime;
-
   /// The current state of the subscription.
   final String state;
-
   /// Type of subscription.
   final String type;
 
@@ -52,17 +45,17 @@ class GetSubscriptionResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['autoRenewEnabled'] = autoRenewEnabled;
-    map['createTime'] = createTime;
-    map['endTime'] = endTime;
-    map['name'] = name;
-    map['seatCount'] = seatCount;
-    map['sku'] = sku;
-    map['startTime'] = startTime;
-    map['state'] = state;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'autoRenewEnabled': autoRenewEnabled,
+      'createTime': createTime,
+      'endTime': endTime,
+      'name': name,
+      'seatCount': seatCount,
+      'sku': sku,
+      'startTime': startTime,
+      'state': state,
+      'type': type,
+    };
   }
 
   factory GetSubscriptionResult.fromMap(Map<String, dynamic> map) {
@@ -79,3 +72,4 @@ class GetSubscriptionResult {
     );
   }
 }
+

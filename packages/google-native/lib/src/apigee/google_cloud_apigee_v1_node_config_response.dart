@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// NodeConfig for setting the min/max number of nodes associated with the environment.
 class GoogleCloudApigeeV1NodeConfigResponse {
   /// The current total number of gateway nodes that each environment currently has across all instances.
   final String currentAggregateNodeCount;
-
   /// Optional. The maximum total number of gateway nodes that the is reserved for all instances that has the specified environment. If not specified, the default is determined by the recommended maximum number of nodes for that gateway.
   final String maxNodeCount;
-
   /// Optional. The minimum total number of gateway nodes that the is reserved for all instances that has the specified environment. If not specified, the default is determined by the recommended minimum number of nodes for that gateway.
   final String minNodeCount;
 
@@ -22,15 +21,14 @@ class GoogleCloudApigeeV1NodeConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['currentAggregateNodeCount'] = currentAggregateNodeCount;
-    map['maxNodeCount'] = maxNodeCount;
-    map['minNodeCount'] = minNodeCount;
-    return map;
+    return <String, dynamic>{
+      'currentAggregateNodeCount': currentAggregateNodeCount,
+      'maxNodeCount': maxNodeCount,
+      'minNodeCount': minNodeCount,
+    };
   }
 
-  factory GoogleCloudApigeeV1NodeConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1NodeConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1NodeConfigResponse(
       currentAggregateNodeCount: map['currentAggregateNodeCount'] as String,
       maxNodeCount: map['maxNodeCount'] as String,
@@ -38,3 +36,4 @@ class GoogleCloudApigeeV1NodeConfigResponse {
     );
   }
 }
+

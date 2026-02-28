@@ -1,26 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getContactFlow.
 class GetContactFlowResult {
   /// ARN of the Contact Flow.
   final String arn;
   final String contactFlowId;
-
   /// Logic of the Contact Flow.
   final String content;
-
   /// Description of the Contact Flow.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instanceId;
   final String name;
   final String region;
-
   /// Tags to assign to the Contact Flow.
   final Map<String, String> tags;
-
   /// Type of Contact Flow.
   final String? type;
 
@@ -49,21 +45,18 @@ class GetContactFlowResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['contactFlowId'] = contactFlowId;
-    map['content'] = content;
-    map['description'] = description;
-    map['id'] = id;
-    map['instanceId'] = instanceId;
-    map['name'] = name;
-    map['region'] = region;
-    map['tags'] = tags;
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'contactFlowId': contactFlowId,
+      'content': content,
+      'description': description,
+      'id': id,
+      'instanceId': instanceId,
+      'name': name,
+      'region': region,
+      'tags': tags,
+      'type': ?type,
+    };
   }
 
   factory GetContactFlowResult.fromMap(Map<String, dynamic> map) {
@@ -81,3 +74,4 @@ class GetContactFlowResult {
     );
   }
 }
+

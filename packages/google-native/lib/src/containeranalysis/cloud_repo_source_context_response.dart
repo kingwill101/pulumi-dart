@@ -7,10 +7,8 @@ import 'repo_id_response.dart';
 class CloudRepoSourceContextResponse {
   /// An alias, which may be a branch or tag.
   final AliasContextResponse aliasContext;
-
   /// The ID of the repo.
   final RepoIdResponse repoId;
-
   /// A revision ID.
   final String revisionId;
 
@@ -25,20 +23,19 @@ class CloudRepoSourceContextResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['aliasContext'] = aliasContext.toMap();
-    map['repoId'] = repoId.toMap();
-    map['revisionId'] = revisionId;
-    return map;
+    return <String, dynamic>{
+      'aliasContext': aliasContext.toMap(),
+      'repoId': repoId.toMap(),
+      'revisionId': revisionId,
+    };
   }
 
   factory CloudRepoSourceContextResponse.fromMap(Map<String, dynamic> map) {
     return CloudRepoSourceContextResponse(
-      aliasContext: AliasContextResponse.fromMap(
-          (map['aliasContext'] as Map).cast<String, dynamic>()),
-      repoId: RepoIdResponse.fromMap(
-          (map['repoId'] as Map).cast<String, dynamic>()),
+      aliasContext: AliasContextResponse.fromMap((map['aliasContext'] as Map).cast<String, dynamic>()),
+      repoId: RepoIdResponse.fromMap((map['repoId'] as Map).cast<String, dynamic>()),
       revisionId: map['revisionId'] as String,
     );
   }
 }
+

@@ -35,19 +35,14 @@ import 'base_path_mapping_args.dart';
 class BasePathMapping extends pulumi.CustomResource {
   /// Path segment that must be prepended to the path when accessing the API via this mapping. If omitted, the API is exposed at the root of the given domain.
   late final pulumi.Output<String?> basePath;
-
   /// Already-registered domain name to connect the API to.
   late final pulumi.Output<String> domainName;
-
   /// The identifier for the domain name resource. Supported only for private custom domain names.
   late final pulumi.Output<String?> domainNameId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ID of the API to connect.
   late final pulumi.Output<String> restApi;
-
   /// Name of a specific deployment stage to expose at the given path. If omitted, callers may select any stage by including its name as a path element after the base path.
   late final pulumi.Output<String?> stageName;
 

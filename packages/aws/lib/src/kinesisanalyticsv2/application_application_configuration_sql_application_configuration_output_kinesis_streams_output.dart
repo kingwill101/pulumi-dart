@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisStreamsOutput {
   /// The ARN of the destination Kinesis data stream to write to.
   final String resourceArn;
@@ -11,15 +12,15 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesi
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['resourceArn'] = resourceArn;
-    return map;
+    return <String, dynamic>{
+      'resourceArn': resourceArn,
+    };
   }
 
-  factory ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisStreamsOutput.fromMap(
-      Map<String, dynamic> map) {
+  factory ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisStreamsOutput.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisStreamsOutput(
       resourceArn: map['resourceArn'] as String,
     );
   }
 }
+

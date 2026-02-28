@@ -7,10 +7,8 @@ class JobTemplateConfigElementaryStream {
   /// Encoding of an audio stream.
   /// Structure is documented below.
   final JobTemplateConfigElementaryStreamAudioStream? audioStream;
-
   /// A unique key for this atom.
   final String? key;
-
   /// Encoding of a video stream.
   /// Structure is documented below.
   final JobTemplateConfigElementaryStreamVideoStream? videoStream;
@@ -26,33 +24,19 @@ class JobTemplateConfigElementaryStream {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final audioStreamValue = audioStream;
-    if (audioStreamValue != null) {
-      map['audioStream'] = audioStreamValue.toMap();
-    }
-    final keyValue = key;
-    if (keyValue != null) {
-      map['key'] = keyValue;
-    }
-    final videoStreamValue = videoStream;
-    if (videoStreamValue != null) {
-      map['videoStream'] = videoStreamValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'audioStream': ?audioStream == null ? null : audioStream!.toMap(),
+      'key': ?key,
+      'videoStream': ?videoStream == null ? null : videoStream!.toMap(),
+    };
   }
 
   factory JobTemplateConfigElementaryStream.fromMap(Map<String, dynamic> map) {
     return JobTemplateConfigElementaryStream(
-      audioStream: map['audioStream'] == null
-          ? null
-          : JobTemplateConfigElementaryStreamAudioStream.fromMap(
-              (map['audioStream'] as Map).cast<String, dynamic>()),
+      audioStream: map['audioStream'] == null ? null : JobTemplateConfigElementaryStreamAudioStream.fromMap((map['audioStream'] as Map).cast<String, dynamic>()),
       key: map['key'] == null ? null : map['key'] as String,
-      videoStream: map['videoStream'] == null
-          ? null
-          : JobTemplateConfigElementaryStreamVideoStream.fromMap(
-              (map['videoStream'] as Map).cast<String, dynamic>()),
+      videoStream: map['videoStream'] == null ? null : JobTemplateConfigElementaryStreamVideoStream.fromMap((map['videoStream'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -8,16 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_artifactregistry_v1beta1_tag_artifactregistry_v1beta1_args_doc}
 class TagArtifactregistryV1beta1Args {
   final pulumi.Input<String>? location;
-
   /// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package part contains slashes, the slashes are escaped. The tag part can only have characters in [a-zA-Z0-9\-._~:@], anything else must be URL encoded.
   final pulumi.Input<String>? name;
   final pulumi.Input<String> packageId;
   final pulumi.Input<String>? project;
   final pulumi.Input<String> repositoryId;
-
   /// The tag id to use for this repository.
   final pulumi.Input<String>? tagId;
-
   /// The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811" If the package or version ID parts contain slashes, the slashes are escaped.
   final pulumi.Input<String>? version;
 
@@ -37,39 +34,25 @@ class TagArtifactregistryV1beta1Args {
     required String repositoryId,
     String? tagId,
     String? version,
-  })  : location = pulumi.Input.asOptionalInput<String>(location),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        packageId = pulumi.Input.asInput<String>(packageId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        repositoryId = pulumi.Input.asInput<String>(repositoryId),
-        tagId = pulumi.Input.asOptionalInput<String>(tagId),
-        version = pulumi.Input.asOptionalInput<String>(version);
+  }) :
+      location = pulumi.Input.asOptionalInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      packageId = pulumi.Input.asInput<String>(packageId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      repositoryId = pulumi.Input.asInput<String>(repositoryId),
+      tagId = pulumi.Input.asOptionalInput<String>(tagId),
+      version = pulumi.Input.asOptionalInput<String>(version);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    map['packageId'] = packageId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['repositoryId'] = repositoryId;
-    final tagIdValue = tagId;
-    if (tagIdValue != null) {
-      map['tagId'] = tagIdValue;
-    }
-    final versionValue = version;
-    if (versionValue != null) {
-      map['version'] = versionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'location': ?location,
+      'name': ?name,
+      'packageId': packageId,
+      'project': ?project,
+      'repositoryId': repositoryId,
+      'tagId': ?tagId,
+      'version': ?version,
+    };
   }
 
   factory TagArtifactregistryV1beta1Args.fromMap(Map<String, dynamic> map) {
@@ -84,3 +67,4 @@ class TagArtifactregistryV1beta1Args {
     );
   }
 }
+

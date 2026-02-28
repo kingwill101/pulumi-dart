@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents the Maintenance exclusion option.
 class MaintenanceExclusionOptionsResponse {
   /// Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
@@ -12,15 +13,15 @@ class MaintenanceExclusionOptionsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['scope'] = scope;
-    return map;
+    return <String, dynamic>{
+      'scope': scope,
+    };
   }
 
-  factory MaintenanceExclusionOptionsResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory MaintenanceExclusionOptionsResponse.fromMap(Map<String, dynamic> map) {
     return MaintenanceExclusionOptionsResponse(
       scope: map['scope'] as String,
     );
   }
 }
+

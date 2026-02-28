@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInternetGatewayAttachment {
   /// Current state of the attachment between the gateway and the VPC. Present only if a VPC is attached
   final String state;
-
   /// ID of an attached VPC.
   final String vpcId;
 
@@ -16,10 +16,10 @@ class GetInternetGatewayAttachment {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['state'] = state;
-    map['vpcId'] = vpcId;
-    return map;
+    return <String, dynamic>{
+      'state': state,
+      'vpcId': vpcId,
+    };
   }
 
   factory GetInternetGatewayAttachment.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetInternetGatewayAttachment {
     );
   }
 }
+

@@ -14,21 +14,15 @@ class PreventionDiscoveryConfigActionExportData {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final profileTableValue = profileTable;
-    if (profileTableValue != null) {
-      map['profileTable'] = profileTableValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'profileTable': ?profileTable == null ? null : profileTable!.toMap(),
+    };
   }
 
-  factory PreventionDiscoveryConfigActionExportData.fromMap(
-      Map<String, dynamic> map) {
+  factory PreventionDiscoveryConfigActionExportData.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigActionExportData(
-      profileTable: map['profileTable'] == null
-          ? null
-          : PreventionDiscoveryConfigActionExportDataProfileTable.fromMap(
-              (map['profileTable'] as Map).cast<String, dynamic>()),
+      profileTable: map['profileTable'] == null ? null : PreventionDiscoveryConfigActionExportDataProfileTable.fromMap((map['profileTable'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

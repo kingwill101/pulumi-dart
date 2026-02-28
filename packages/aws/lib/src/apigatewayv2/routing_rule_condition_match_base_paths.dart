@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RoutingRuleConditionMatchBasePaths {
   /// List of strings of the case sensitive base path to be matched.
   final List<String> anyOfs;
@@ -11,9 +12,9 @@ class RoutingRuleConditionMatchBasePaths {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['anyOfs'] = anyOfs;
-    return map;
+    return <String, dynamic>{
+      'anyOfs': anyOfs,
+    };
   }
 
   factory RoutingRuleConditionMatchBasePaths.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class RoutingRuleConditionMatchBasePaths {
     );
   }
 }
+

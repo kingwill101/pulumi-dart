@@ -6,10 +6,7 @@ import 'stream_source_config_sql_server_source_config_exclude_objects_schema_tab
 class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable {
   /// Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
   /// Structure is documented below.
-  final List<
-          StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn>?
-      columns;
-
+  final List<StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn>? columns;
   /// Table name.
   final String table;
 
@@ -22,29 +19,17 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final columnsValue = columns;
-    if (columnsValue != null) {
-      map['columns'] = pulumi.Input.encodeList<
-          StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn,
-          Map<String, dynamic>>(columnsValue, (value) => value.toMap());
-    }
-    map['table'] = table;
-    return map;
+    return <String, dynamic>{
+      'columns': ?columns == null ? null : pulumi.Input.encodeList<StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn, Map<String, dynamic>>(columns!, (value) => value.toMap()),
+      'table': table,
+    };
   }
 
-  factory StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable.fromMap(
-      Map<String, dynamic> map) {
+  factory StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable(
-      columns: map['columns'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn>(
-              map['columns'],
-              (value) =>
-                  StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      columns: map['columns'] == null ? null : pulumi.Input.decodeList<StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn>(map['columns'], (value) => StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn.fromMap((value as Map).cast<String, dynamic>())),
       table: map['table'] as String,
     );
   }
 }
+

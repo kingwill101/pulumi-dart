@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for a Docker remote repository.
 class DockerRepositoryResponse {
   /// One of the publicly available Docker repositories supported by Artifact Registry.
@@ -12,9 +13,9 @@ class DockerRepositoryResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['publicRepository'] = publicRepository;
-    return map;
+    return <String, dynamic>{
+      'publicRepository': publicRepository,
+    };
   }
 
   factory DockerRepositoryResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class DockerRepositoryResponse {
     );
   }
 }
+

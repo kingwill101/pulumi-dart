@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// SecurityPostureConfig defines the flags needed to enable/disable features for the Security Posture API.
 class SecurityPostureConfigResponse {
   /// Sets which mode to use for Security Posture features.
   final String mode;
-
   /// Sets which mode to use for vulnerability scanning.
   final String vulnerabilityMode;
 
@@ -17,10 +17,10 @@ class SecurityPostureConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['mode'] = mode;
-    map['vulnerabilityMode'] = vulnerabilityMode;
-    return map;
+    return <String, dynamic>{
+      'mode': mode,
+      'vulnerabilityMode': vulnerabilityMode,
+    };
   }
 
   factory SecurityPostureConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class SecurityPostureConfigResponse {
     );
   }
 }
+

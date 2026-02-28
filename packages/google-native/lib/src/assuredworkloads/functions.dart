@@ -23,8 +23,7 @@ Future<GetWorkloadResult> getWorkload(
 /// Gets Assured Workload associated with a CRM Node
 /// [args] Arguments passed to this invoke. {@macro pulumi_assuredworkloads_v1beta1_get_workload_assuredworkloads_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetWorkloadAssuredworkloadsV1beta1Result>
-    getWorkloadAssuredworkloadsV1beta1(
+Future<GetWorkloadAssuredworkloadsV1beta1Result> getWorkloadAssuredworkloadsV1beta1(
   GetWorkloadAssuredworkloadsV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {

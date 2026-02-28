@@ -221,7 +221,6 @@ import 'group_policy_attachments_exclusive_args.dart';
 class GroupPolicyAttachmentsExclusive extends pulumi.CustomResource {
   /// IAM group name.
   late final pulumi.Output<String> groupName;
-
   /// A list of managed IAM policy ARNs to be attached to the group. Policies attached to this group but not configured in this argument will be removed.
   late final pulumi.Output<List<String>> policyArns;
 

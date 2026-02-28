@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetLaunchTemplateLicenseSpecification {
   final String licenseConfigurationArn;
 
@@ -10,15 +11,15 @@ class GetLaunchTemplateLicenseSpecification {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['licenseConfigurationArn'] = licenseConfigurationArn;
-    return map;
+    return <String, dynamic>{
+      'licenseConfigurationArn': licenseConfigurationArn,
+    };
   }
 
-  factory GetLaunchTemplateLicenseSpecification.fromMap(
-      Map<String, dynamic> map) {
+  factory GetLaunchTemplateLicenseSpecification.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateLicenseSpecification(
       licenseConfigurationArn: map['licenseConfigurationArn'] as String,
     );
   }
 }
+

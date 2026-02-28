@@ -7,28 +7,20 @@ import 'ethereum_details_response.dart';
 class GetBlockchainNodeResult {
   /// Immutable. The blockchain type of the node.
   final String blockchainType;
-
   /// The connection information used to interact with a blockchain node.
   final ConnectionInfoResponse connectionInfo;
-
   /// The timestamp at which the blockchain node was first created.
   final String createTime;
-
   /// Ethereum-specific blockchain node details.
   final EthereumDetailsResponse ethereumDetails;
-
   /// User-provided key-value pairs.
   final Map<String, String> labels;
-
   /// The fully qualified name of the blockchain node. e.g. `projects/my-project/locations/us-central1/blockchainNodes/my-node`.
   final String name;
-
   /// Optional. When true, the node is only accessible via Private Service Connect; no public endpoints are exposed. Otherwise, the node is only accessible via public endpoints. See https://cloud.google.com/vpc/docs/private-service-connect.
   final bool privateServiceConnectEnabled;
-
   /// A status representing the state of the node.
   final String state;
-
   /// The timestamp at which the blockchain node was last updated.
   final String updateTime;
 
@@ -55,27 +47,25 @@ class GetBlockchainNodeResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['blockchainType'] = blockchainType;
-    map['connectionInfo'] = connectionInfo.toMap();
-    map['createTime'] = createTime;
-    map['ethereumDetails'] = ethereumDetails.toMap();
-    map['labels'] = labels;
-    map['name'] = name;
-    map['privateServiceConnectEnabled'] = privateServiceConnectEnabled;
-    map['state'] = state;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'blockchainType': blockchainType,
+      'connectionInfo': connectionInfo.toMap(),
+      'createTime': createTime,
+      'ethereumDetails': ethereumDetails.toMap(),
+      'labels': labels,
+      'name': name,
+      'privateServiceConnectEnabled': privateServiceConnectEnabled,
+      'state': state,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetBlockchainNodeResult.fromMap(Map<String, dynamic> map) {
     return GetBlockchainNodeResult(
       blockchainType: map['blockchainType'] as String,
-      connectionInfo: ConnectionInfoResponse.fromMap(
-          (map['connectionInfo'] as Map).cast<String, dynamic>()),
+      connectionInfo: ConnectionInfoResponse.fromMap((map['connectionInfo'] as Map).cast<String, dynamic>()),
       createTime: map['createTime'] as String,
-      ethereumDetails: EthereumDetailsResponse.fromMap(
-          (map['ethereumDetails'] as Map).cast<String, dynamic>()),
+      ethereumDetails: EthereumDetailsResponse.fromMap((map['ethereumDetails'] as Map).cast<String, dynamic>()),
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
       privateServiceConnectEnabled: map['privateServiceConnectEnabled'] as bool,
@@ -84,3 +74,4 @@ class GetBlockchainNodeResult {
     );
   }
 }
+

@@ -198,10 +198,8 @@ import 'resource_policy_args.dart';
 class ResourcePolicy extends pulumi.CustomResource {
   /// The policy to create or update. For example, the following policy grants a user authorization to restore a snapshot.
   late final pulumi.Output<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The Amazon Resource Name (ARN) of the account to create or update a resource policy for.
   late final pulumi.Output<String> resourceArn;
 

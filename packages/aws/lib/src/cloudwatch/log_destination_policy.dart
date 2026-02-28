@@ -252,13 +252,10 @@ import 'log_destination_policy_args.dart';
 class LogDestinationPolicy extends pulumi.CustomResource {
   /// The policy document. This is a JSON formatted string.
   late final pulumi.Output<String> accessPolicy;
-
   /// A name for the subscription filter
   late final pulumi.Output<String> destinationName;
-
   /// Specify true if you are updating an existing destination policy to grant permission to an organization ID instead of granting permission to individual AWS accounts.
   late final pulumi.Output<bool?> forceUpdate;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

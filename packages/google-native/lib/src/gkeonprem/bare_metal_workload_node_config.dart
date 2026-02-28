@@ -6,7 +6,6 @@ import 'bare_metal_workload_node_config_container_runtime.dart';
 class BareMetalWorkloadNodeConfig {
   /// Specifies which container runtime will be used.
   final BareMetalWorkloadNodeConfigContainerRuntime? containerRuntime;
-
   /// The maximum number of pods a node can run. The size of the CIDR range assigned to the node will be derived from this parameter.
   final String? maxPodsPerNode;
 
@@ -19,27 +18,17 @@ class BareMetalWorkloadNodeConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final containerRuntimeValue = containerRuntime;
-    if (containerRuntimeValue != null) {
-      map['containerRuntime'] = containerRuntimeValue.value;
-    }
-    final maxPodsPerNodeValue = maxPodsPerNode;
-    if (maxPodsPerNodeValue != null) {
-      map['maxPodsPerNode'] = maxPodsPerNodeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'containerRuntime': ?containerRuntime == null ? null : containerRuntime!.value,
+      'maxPodsPerNode': ?maxPodsPerNode,
+    };
   }
 
   factory BareMetalWorkloadNodeConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalWorkloadNodeConfig(
-      containerRuntime: map['containerRuntime'] == null
-          ? null
-          : BareMetalWorkloadNodeConfigContainerRuntime.fromValue(
-              map['containerRuntime'] as String),
-      maxPodsPerNode: map['maxPodsPerNode'] == null
-          ? null
-          : map['maxPodsPerNode'] as String,
+      containerRuntime: map['containerRuntime'] == null ? null : BareMetalWorkloadNodeConfigContainerRuntime.fromValue(map['containerRuntime'] as String),
+      maxPodsPerNode: map['maxPodsPerNode'] == null ? null : map['maxPodsPerNode'] as String,
     );
   }
 }
+

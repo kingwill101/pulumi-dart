@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A Dialogflow source of conversation data.
 class GoogleCloudContactcenterinsightsV1DialogflowSource {
   /// Cloud Storage URI that points to a file that contains the conversation audio.
@@ -12,18 +13,15 @@ class GoogleCloudContactcenterinsightsV1DialogflowSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final audioUriValue = audioUri;
-    if (audioUriValue != null) {
-      map['audioUri'] = audioUriValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'audioUri': ?audioUri,
+    };
   }
 
-  factory GoogleCloudContactcenterinsightsV1DialogflowSource.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudContactcenterinsightsV1DialogflowSource.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1DialogflowSource(
       audioUri: map['audioUri'] == null ? null : map['audioUri'] as String,
     );
   }
 }
+

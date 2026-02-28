@@ -14,20 +14,15 @@ class GooglePrivacyDlpV2CryptoHashConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cryptoKeyValue = cryptoKey;
-    if (cryptoKeyValue != null) {
-      map['cryptoKey'] = cryptoKeyValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'cryptoKey': ?cryptoKey == null ? null : cryptoKey!.toMap(),
+    };
   }
 
   factory GooglePrivacyDlpV2CryptoHashConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2CryptoHashConfig(
-      cryptoKey: map['cryptoKey'] == null
-          ? null
-          : GooglePrivacyDlpV2CryptoKey.fromMap(
-              (map['cryptoKey'] as Map).cast<String, dynamic>()),
+      cryptoKey: map['cryptoKey'] == null ? null : GooglePrivacyDlpV2CryptoKey.fromMap((map['cryptoKey'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PipelineBufferOptions {
   /// Whether persistent buffering should be enabled.
   final bool persistentBufferEnabled;
@@ -11,9 +12,9 @@ class PipelineBufferOptions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['persistentBufferEnabled'] = persistentBufferEnabled;
-    return map;
+    return <String, dynamic>{
+      'persistentBufferEnabled': persistentBufferEnabled,
+    };
   }
 
   factory PipelineBufferOptions.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class PipelineBufferOptions {
     );
   }
 }
+

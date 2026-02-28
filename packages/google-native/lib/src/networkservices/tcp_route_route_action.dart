@@ -7,7 +7,6 @@ import 'tcp_route_route_destination.dart';
 class TcpRouteRouteAction {
   /// Optional. The destination services to which traffic should be forwarded. At least one destination service is required. Only one of route destination or original destination can be set.
   final List<TcpRouteRouteDestination>? destinations;
-
   /// Optional. If true, Router will use the destination IP and port of the original connection as the destination of the request. Default is false. Only one of route destinations or original destination can be set.
   final bool? originalDestination;
 
@@ -20,30 +19,17 @@ class TcpRouteRouteAction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final destinationsValue = destinations;
-    if (destinationsValue != null) {
-      map['destinations'] = pulumi.Input.encodeList<TcpRouteRouteDestination,
-          Map<String, dynamic>>(destinationsValue, (value) => value.toMap());
-    }
-    final originalDestinationValue = originalDestination;
-    if (originalDestinationValue != null) {
-      map['originalDestination'] = originalDestinationValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'destinations': ?destinations == null ? null : pulumi.Input.encodeList<TcpRouteRouteDestination, Map<String, dynamic>>(destinations!, (value) => value.toMap()),
+      'originalDestination': ?originalDestination,
+    };
   }
 
   factory TcpRouteRouteAction.fromMap(Map<String, dynamic> map) {
     return TcpRouteRouteAction(
-      destinations: map['destinations'] == null
-          ? null
-          : pulumi.Input.decodeList<TcpRouteRouteDestination>(
-              map['destinations'],
-              (value) => TcpRouteRouteDestination.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      originalDestination: map['originalDestination'] == null
-          ? null
-          : map['originalDestination'] as bool,
+      destinations: map['destinations'] == null ? null : pulumi.Input.decodeList<TcpRouteRouteDestination>(map['destinations'], (value) => TcpRouteRouteDestination.fromMap((value as Map).cast<String, dynamic>())),
+      originalDestination: map['originalDestination'] == null ? null : map['originalDestination'] as bool,
     );
   }
 }
+

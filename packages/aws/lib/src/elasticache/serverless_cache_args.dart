@@ -11,47 +11,34 @@ import 'serverless_cache_timeouts.dart';
 class ServerlessCacheArgs {
   /// Sets the cache usage limits for storage and ElastiCache Processing Units for the cache. See `cache_usage_limits` Block for details.
   final pulumi.Input<ServerlessCacheCacheUsageLimits>? cacheUsageLimits;
-
   /// The daily time that snapshots will be created from the new serverless cache. Only supported for engine types `"redis"` or `"valkey"`. Defaults to `0`.
   final pulumi.Input<String>? dailySnapshotTime;
-
   /// User-provided description for the serverless cache. The default is NULL.
   final pulumi.Input<String>? description;
-
   /// Name of the cache engine to be used for this cache cluster. Valid values are `memcached`, `redis` or `valkey`.
   final pulumi.Input<String> engine;
-
   /// ARN of the customer managed key for encrypting the data at rest. If no KMS key is provided, a default service key is used.
   final pulumi.Input<String>? kmsKeyId;
-
   /// The version of the cache engine that will be used to create the serverless cache.
   /// See [Describe Cache Engine Versions](https://docs.aws.amazon.com/cli/latest/reference/elasticache/describe-cache-engine-versions.html) in the AWS Documentation for supported versions.
   final pulumi.Input<String>? majorEngineVersion;
-
   /// The Cluster name which serves as a unique identifier to the serverless cache
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// A list of the one or more VPC security groups to be associated with the serverless cache. The security group will authorize traffic access for the VPC end-point (private-link). If no other information is given this will be the VPC’s Default Security Group that is associated with the cluster VPC end-point.
   final pulumi.Input<List<String>>? securityGroupIds;
-
   /// The list of ARN(s) of the snapshot that the new serverless cache will be created from. Only supported for engine types `"redis"` or `"valkey"`.
   final pulumi.Input<List<String>>? snapshotArnsToRestores;
-
   /// The number of snapshots that will be retained for the serverless cache that is being created. As new snapshots beyond this limit are added, the oldest snapshots will be deleted on a rolling basis. Only supported for engine types `"redis"` or `"valkey"`.
   final pulumi.Input<int>? snapshotRetentionLimit;
-
   /// A list of the identifiers of the subnets where the VPC endpoint for the serverless cache will be deployed. All the subnetIds must belong to the same VPC.
   final pulumi.Input<List<String>>? subnetIds;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<ServerlessCacheTimeouts>? timeouts;
-
   /// The identifier of the UserGroup to be associated with the serverless cache. Available for Redis and Valkey. Default is NULL.
   final pulumi.Input<String>? userGroupId;
 
@@ -87,135 +74,61 @@ class ServerlessCacheArgs {
     Map<String, String>? tags,
     ServerlessCacheTimeouts? timeouts,
     String? userGroupId,
-  })  : cacheUsageLimits =
-            pulumi.Input.asOptionalInput<ServerlessCacheCacheUsageLimits>(
-                cacheUsageLimits),
-        dailySnapshotTime =
-            pulumi.Input.asOptionalInput<String>(dailySnapshotTime),
-        description = pulumi.Input.asOptionalInput<String>(description),
-        engine = pulumi.Input.asInput<String>(engine),
-        kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-        majorEngineVersion =
-            pulumi.Input.asOptionalInput<String>(majorEngineVersion),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        securityGroupIds =
-            pulumi.Input.asOptionalInput<List<String>>(securityGroupIds),
-        snapshotArnsToRestores =
-            pulumi.Input.asOptionalInput<List<String>>(snapshotArnsToRestores),
-        snapshotRetentionLimit =
-            pulumi.Input.asOptionalInput<int>(snapshotRetentionLimit),
-        subnetIds = pulumi.Input.asOptionalInput<List<String>>(subnetIds),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-        timeouts =
-            pulumi.Input.asOptionalInput<ServerlessCacheTimeouts>(timeouts),
-        userGroupId = pulumi.Input.asOptionalInput<String>(userGroupId);
+  }) :
+      cacheUsageLimits = pulumi.Input.asOptionalInput<ServerlessCacheCacheUsageLimits>(cacheUsageLimits),
+      dailySnapshotTime = pulumi.Input.asOptionalInput<String>(dailySnapshotTime),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      engine = pulumi.Input.asInput<String>(engine),
+      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
+      majorEngineVersion = pulumi.Input.asOptionalInput<String>(majorEngineVersion),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      securityGroupIds = pulumi.Input.asOptionalInput<List<String>>(securityGroupIds),
+      snapshotArnsToRestores = pulumi.Input.asOptionalInput<List<String>>(snapshotArnsToRestores),
+      snapshotRetentionLimit = pulumi.Input.asOptionalInput<int>(snapshotRetentionLimit),
+      subnetIds = pulumi.Input.asOptionalInput<List<String>>(subnetIds),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      timeouts = pulumi.Input.asOptionalInput<ServerlessCacheTimeouts>(timeouts),
+      userGroupId = pulumi.Input.asOptionalInput<String>(userGroupId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cacheUsageLimitsValue = cacheUsageLimits;
-    if (cacheUsageLimitsValue != null) {
-      map['cacheUsageLimits'] = pulumi.Input.mapOptionalInputValue<
-              ServerlessCacheCacheUsageLimits, Map<String, dynamic>>(
-          cacheUsageLimitsValue, (value) => value.toMap());
-    }
-    final dailySnapshotTimeValue = dailySnapshotTime;
-    if (dailySnapshotTimeValue != null) {
-      map['dailySnapshotTime'] = dailySnapshotTimeValue;
-    }
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    map['engine'] = engine;
-    final kmsKeyIdValue = kmsKeyId;
-    if (kmsKeyIdValue != null) {
-      map['kmsKeyId'] = kmsKeyIdValue;
-    }
-    final majorEngineVersionValue = majorEngineVersion;
-    if (majorEngineVersionValue != null) {
-      map['majorEngineVersion'] = majorEngineVersionValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final securityGroupIdsValue = securityGroupIds;
-    if (securityGroupIdsValue != null) {
-      map['securityGroupIds'] = securityGroupIdsValue;
-    }
-    final snapshotArnsToRestoresValue = snapshotArnsToRestores;
-    if (snapshotArnsToRestoresValue != null) {
-      map['snapshotArnsToRestores'] = snapshotArnsToRestoresValue;
-    }
-    final snapshotRetentionLimitValue = snapshotRetentionLimit;
-    if (snapshotRetentionLimitValue != null) {
-      map['snapshotRetentionLimit'] = snapshotRetentionLimitValue;
-    }
-    final subnetIdsValue = subnetIds;
-    if (subnetIdsValue != null) {
-      map['subnetIds'] = subnetIdsValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    final timeoutsValue = timeouts;
-    if (timeoutsValue != null) {
-      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
-          ServerlessCacheTimeouts,
-          Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
-    }
-    final userGroupIdValue = userGroupId;
-    if (userGroupIdValue != null) {
-      map['userGroupId'] = userGroupIdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cacheUsageLimits': ?pulumi.Input.mapOptionalInputValue<ServerlessCacheCacheUsageLimits, Map<String, dynamic>>(cacheUsageLimits, (value) => value.toMap()),
+      'dailySnapshotTime': ?dailySnapshotTime,
+      'description': ?description,
+      'engine': engine,
+      'kmsKeyId': ?kmsKeyId,
+      'majorEngineVersion': ?majorEngineVersion,
+      'name': ?name,
+      'region': ?region,
+      'securityGroupIds': ?securityGroupIds,
+      'snapshotArnsToRestores': ?snapshotArnsToRestores,
+      'snapshotRetentionLimit': ?snapshotRetentionLimit,
+      'subnetIds': ?subnetIds,
+      'tags': ?tags,
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<ServerlessCacheTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'userGroupId': ?userGroupId,
+    };
   }
 
   factory ServerlessCacheArgs.fromMap(Map<String, dynamic> map) {
     return ServerlessCacheArgs(
-      cacheUsageLimits: map['cacheUsageLimits'] == null
-          ? null
-          : ServerlessCacheCacheUsageLimits.fromMap(
-              (map['cacheUsageLimits'] as Map).cast<String, dynamic>()),
-      dailySnapshotTime: map['dailySnapshotTime'] == null
-          ? null
-          : map['dailySnapshotTime'] as String,
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      cacheUsageLimits: map['cacheUsageLimits'] == null ? null : ServerlessCacheCacheUsageLimits.fromMap((map['cacheUsageLimits'] as Map).cast<String, dynamic>()),
+      dailySnapshotTime: map['dailySnapshotTime'] == null ? null : map['dailySnapshotTime'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       engine: map['engine'] as String,
       kmsKeyId: map['kmsKeyId'] == null ? null : map['kmsKeyId'] as String,
-      majorEngineVersion: map['majorEngineVersion'] == null
-          ? null
-          : map['majorEngineVersion'] as String,
+      majorEngineVersion: map['majorEngineVersion'] == null ? null : map['majorEngineVersion'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      securityGroupIds: map['securityGroupIds'] == null
-          ? null
-          : (map['securityGroupIds'] as List).cast<String>(),
-      snapshotArnsToRestores: map['snapshotArnsToRestores'] == null
-          ? null
-          : (map['snapshotArnsToRestores'] as List).cast<String>(),
-      snapshotRetentionLimit: map['snapshotRetentionLimit'] == null
-          ? null
-          : map['snapshotRetentionLimit'] as int,
-      subnetIds: map['subnetIds'] == null
-          ? null
-          : (map['subnetIds'] as List).cast<String>(),
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
-      timeouts: map['timeouts'] == null
-          ? null
-          : ServerlessCacheTimeouts.fromMap(
-              (map['timeouts'] as Map).cast<String, dynamic>()),
-      userGroupId:
-          map['userGroupId'] == null ? null : map['userGroupId'] as String,
+      securityGroupIds: map['securityGroupIds'] == null ? null : (map['securityGroupIds'] as List).cast<String>(),
+      snapshotArnsToRestores: map['snapshotArnsToRestores'] == null ? null : (map['snapshotArnsToRestores'] as List).cast<String>(),
+      snapshotRetentionLimit: map['snapshotRetentionLimit'] == null ? null : map['snapshotRetentionLimit'] as int,
+      subnetIds: map['subnetIds'] == null ? null : (map['subnetIds'] as List).cast<String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      timeouts: map['timeouts'] == null ? null : ServerlessCacheTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
+      userGroupId: map['userGroupId'] == null ? null : map['userGroupId'] as String,
     );
   }
 }
+

@@ -22,27 +22,21 @@ class GetDataSetPhysicalTableMapCustomSql {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['columns'] = pulumi.Input.encodeList<
-        GetDataSetPhysicalTableMapCustomSqlColumn,
-        Map<String, dynamic>>(columns, (value) => value.toMap());
-    map['dataSourceArn'] = dataSourceArn;
-    map['name'] = name;
-    map['sqlQuery'] = sqlQuery;
-    return map;
+    return <String, dynamic>{
+      'columns': pulumi.Input.encodeList<GetDataSetPhysicalTableMapCustomSqlColumn, Map<String, dynamic>>(columns, (value) => value.toMap()),
+      'dataSourceArn': dataSourceArn,
+      'name': name,
+      'sqlQuery': sqlQuery,
+    };
   }
 
-  factory GetDataSetPhysicalTableMapCustomSql.fromMap(
-      Map<String, dynamic> map) {
+  factory GetDataSetPhysicalTableMapCustomSql.fromMap(Map<String, dynamic> map) {
     return GetDataSetPhysicalTableMapCustomSql(
-      columns:
-          pulumi.Input.decodeList<GetDataSetPhysicalTableMapCustomSqlColumn>(
-              map['columns'],
-              (value) => GetDataSetPhysicalTableMapCustomSqlColumn.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      columns: pulumi.Input.decodeList<GetDataSetPhysicalTableMapCustomSqlColumn>(map['columns'], (value) => GetDataSetPhysicalTableMapCustomSqlColumn.fromMap((value as Map).cast<String, dynamic>())),
       dataSourceArn: map['dataSourceArn'] as String,
       name: map['name'] as String,
       sqlQuery: map['sqlQuery'] as String,
     );
   }
 }
+

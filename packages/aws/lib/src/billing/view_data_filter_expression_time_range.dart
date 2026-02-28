@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ViewDataFilterExpressionTimeRange {
   /// Inclusive end date of the time range.
   final String beginDateInclusive;
@@ -14,10 +15,10 @@ class ViewDataFilterExpressionTimeRange {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['beginDateInclusive'] = beginDateInclusive;
-    map['endDateInclusive'] = endDateInclusive;
-    return map;
+    return <String, dynamic>{
+      'beginDateInclusive': beginDateInclusive,
+      'endDateInclusive': endDateInclusive,
+    };
   }
 
   factory ViewDataFilterExpressionTimeRange.fromMap(Map<String, dynamic> map) {
@@ -27,3 +28,4 @@ class ViewDataFilterExpressionTimeRange {
     );
   }
 }
+

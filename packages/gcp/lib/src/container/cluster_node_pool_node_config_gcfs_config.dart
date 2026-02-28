@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterNodePoolNodeConfigGcfsConfig {
   /// Whether or not the Google Container Filesystem (GCFS) is enabled
   final bool enabled;
@@ -11,15 +12,15 @@ class ClusterNodePoolNodeConfigGcfsConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory ClusterNodePoolNodeConfigGcfsConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterNodePoolNodeConfigGcfsConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolNodeConfigGcfsConfig(
       enabled: map['enabled'] as bool,
     );
   }
 }
+

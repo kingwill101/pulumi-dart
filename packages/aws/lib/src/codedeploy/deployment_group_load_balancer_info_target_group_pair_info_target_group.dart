@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup {
   /// Name of the target group.
   final String name;
@@ -11,15 +12,15 @@ class DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup.fromMap(
-      Map<String, dynamic> map) {
+  factory DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup.fromMap(Map<String, dynamic> map) {
     return DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup(
       name: map['name'] as String,
     );
   }
 }
+

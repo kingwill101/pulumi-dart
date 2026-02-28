@@ -145,13 +145,10 @@ import 'email_identity_mail_from_attributes_args.dart';
 class EmailIdentityMailFromAttributes extends pulumi.CustomResource {
   /// The action to take if the required MX record isn't found when you send an email. Valid values: `USE_DEFAULT_VALUE`, `REJECT_MESSAGE`.
   late final pulumi.Output<String?> behaviorOnMxFailure;
-
   /// The verified email identity.
   late final pulumi.Output<String> emailIdentity;
-
   /// The custom MAIL FROM domain that you want the verified identity to use. Required if `behavior_on_mx_failure` is `REJECT_MESSAGE`.
   late final pulumi.Output<String?> mailFromDomain;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

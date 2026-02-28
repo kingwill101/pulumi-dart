@@ -7,14 +7,13 @@ enum GoogleCloudDatacatalogV1RoutineSpecRoutineType {
   const GoogleCloudDatacatalogV1RoutineSpecRoutineType(this.value);
   final String value;
 
-  static GoogleCloudDatacatalogV1RoutineSpecRoutineType fromValue(
-      String value) {
+  static GoogleCloudDatacatalogV1RoutineSpecRoutineType fromValue(String value) {
     for (final item in GoogleCloudDatacatalogV1RoutineSpecRoutineType.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GoogleCloudDatacatalogV1RoutineSpecRoutineType value: $value');
+    throw ArgumentError('Unknown GoogleCloudDatacatalogV1RoutineSpecRoutineType value: $value');
   }
 }
+

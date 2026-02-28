@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterResourceUsageExportConfigBigqueryDestination {
   /// The ID of a BigQuery Dataset.
   final String datasetId;
@@ -11,15 +12,15 @@ class GetClusterResourceUsageExportConfigBigqueryDestination {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['datasetId'] = datasetId;
-    return map;
+    return <String, dynamic>{
+      'datasetId': datasetId,
+    };
   }
 
-  factory GetClusterResourceUsageExportConfigBigqueryDestination.fromMap(
-      Map<String, dynamic> map) {
+  factory GetClusterResourceUsageExportConfigBigqueryDestination.fromMap(Map<String, dynamic> map) {
     return GetClusterResourceUsageExportConfigBigqueryDestination(
       datasetId: map['datasetId'] as String,
     );
   }
 }
+

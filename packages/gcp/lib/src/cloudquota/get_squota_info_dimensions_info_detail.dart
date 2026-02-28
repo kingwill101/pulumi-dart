@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetSQuotaInfoDimensionsInfoDetail {
   /// The value currently in effect and being enforced.
   final String value;
@@ -11,9 +12,9 @@ class GetSQuotaInfoDimensionsInfoDetail {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'value': value,
+    };
   }
 
   factory GetSQuotaInfoDimensionsInfoDetail.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetSQuotaInfoDimensionsInfoDetail {
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig {
   /// Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
   final int dataCacheCount;
-
   /// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
   final int localSsdCount;
 
@@ -16,17 +16,17 @@ class GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dataCacheCount'] = dataCacheCount;
-    map['localSsdCount'] = localSsdCount;
-    return map;
+    return <String, dynamic>{
+      'dataCacheCount': dataCacheCount,
+      'localSsdCount': localSsdCount,
+    };
   }
 
-  factory GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig(
       dataCacheCount: map['dataCacheCount'] as int,
       localSsdCount: map['localSsdCount'] as int,
     );
   }
 }
+

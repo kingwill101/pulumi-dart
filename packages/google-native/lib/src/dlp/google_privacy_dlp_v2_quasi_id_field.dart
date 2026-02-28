@@ -6,7 +6,6 @@ import 'google_privacy_dlp_v2_field_id.dart';
 class GooglePrivacyDlpV2QuasiIdField {
   /// A auxiliary field.
   final String? customTag;
-
   /// Identifies the column.
   final GooglePrivacyDlpV2FieldId? field;
 
@@ -19,25 +18,17 @@ class GooglePrivacyDlpV2QuasiIdField {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final customTagValue = customTag;
-    if (customTagValue != null) {
-      map['customTag'] = customTagValue;
-    }
-    final fieldValue = field;
-    if (fieldValue != null) {
-      map['field'] = fieldValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'customTag': ?customTag,
+      'field': ?field == null ? null : field!.toMap(),
+    };
   }
 
   factory GooglePrivacyDlpV2QuasiIdField.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2QuasiIdField(
       customTag: map['customTag'] == null ? null : map['customTag'] as String,
-      field: map['field'] == null
-          ? null
-          : GooglePrivacyDlpV2FieldId.fromMap(
-              (map['field'] as Map).cast<String, dynamic>()),
+      field: map['field'] == null ? null : GooglePrivacyDlpV2FieldId.fromMap((map['field'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

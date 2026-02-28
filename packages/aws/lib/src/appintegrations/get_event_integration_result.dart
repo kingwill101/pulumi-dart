@@ -7,21 +7,16 @@ import 'get_event_integration_event_filter.dart';
 class GetEventIntegrationResult {
   /// The ARN of the AppIntegrations Event Integration.
   final String arn;
-
   /// The description of the Event Integration.
   final String description;
-
   /// A block that defines the configuration information for the event filter. The Event Filter block is documented below.
   final List<GetEventIntegrationEventFilter> eventFilters;
-
   /// The EventBridge bus.
   final String eventbridgeBus;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String region;
-
   /// Metadata that you can assign to help organize the report plans you create.
   final Map<String, String> tags;
 
@@ -46,28 +41,23 @@ class GetEventIntegrationResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['description'] = description;
-    map['eventFilters'] = pulumi.Input.encodeList<
-        GetEventIntegrationEventFilter,
-        Map<String, dynamic>>(eventFilters, (value) => value.toMap());
-    map['eventbridgeBus'] = eventbridgeBus;
-    map['id'] = id;
-    map['name'] = name;
-    map['region'] = region;
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'description': description,
+      'eventFilters': pulumi.Input.encodeList<GetEventIntegrationEventFilter, Map<String, dynamic>>(eventFilters, (value) => value.toMap()),
+      'eventbridgeBus': eventbridgeBus,
+      'id': id,
+      'name': name,
+      'region': region,
+      'tags': tags,
+    };
   }
 
   factory GetEventIntegrationResult.fromMap(Map<String, dynamic> map) {
     return GetEventIntegrationResult(
       arn: map['arn'] as String,
       description: map['description'] as String,
-      eventFilters: pulumi.Input.decodeList<GetEventIntegrationEventFilter>(
-          map['eventFilters'],
-          (value) => GetEventIntegrationEventFilter.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      eventFilters: pulumi.Input.decodeList<GetEventIntegrationEventFilter>(map['eventFilters'], (value) => GetEventIntegrationEventFilter.fromMap((value as Map).cast<String, dynamic>())),
       eventbridgeBus: map['eventbridgeBus'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
@@ -76,3 +66,4 @@ class GetEventIntegrationResult {
     );
   }
 }
+

@@ -8,13 +8,10 @@ import 'subject_response.dart';
 class SbomReferenceIntotoPayloadResponse {
   /// Additional parameters of the Predicate. Includes the actual data about the SBOM.
   final SbomReferenceIntotoPredicateResponse predicate;
-
   /// URI identifying the type of the Predicate.
   final String predicateType;
-
   /// Set of software artifacts that the attestation applies to. Each element represents a single software artifact.
   final List<SubjectResponse> subject;
-
   /// Identifier for the schema of the Statement.
   final String type;
 
@@ -31,26 +28,21 @@ class SbomReferenceIntotoPayloadResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['predicate'] = predicate.toMap();
-    map['predicateType'] = predicateType;
-    map['subject'] =
-        pulumi.Input.encodeList<SubjectResponse, Map<String, dynamic>>(
-            subject, (value) => value.toMap());
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'predicate': predicate.toMap(),
+      'predicateType': predicateType,
+      'subject': pulumi.Input.encodeList<SubjectResponse, Map<String, dynamic>>(subject, (value) => value.toMap()),
+      'type': type,
+    };
   }
 
   factory SbomReferenceIntotoPayloadResponse.fromMap(Map<String, dynamic> map) {
     return SbomReferenceIntotoPayloadResponse(
-      predicate: SbomReferenceIntotoPredicateResponse.fromMap(
-          (map['predicate'] as Map).cast<String, dynamic>()),
+      predicate: SbomReferenceIntotoPredicateResponse.fromMap((map['predicate'] as Map).cast<String, dynamic>()),
       predicateType: map['predicateType'] as String,
-      subject: pulumi.Input.decodeList<SubjectResponse>(
-          map['subject'],
-          (value) =>
-              SubjectResponse.fromMap((value as Map).cast<String, dynamic>())),
+      subject: pulumi.Input.decodeList<SubjectResponse>(map['subject'], (value) => SubjectResponse.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }
 }
+

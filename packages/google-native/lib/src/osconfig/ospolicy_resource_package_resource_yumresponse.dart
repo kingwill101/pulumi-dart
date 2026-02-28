@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A package managed by YUM. - install: `yum -y install package` - remove: `yum -y remove package`
 class OSPolicyResourcePackageResourceYUMResponse {
   /// Package name.
@@ -12,15 +13,15 @@ class OSPolicyResourcePackageResourceYUMResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory OSPolicyResourcePackageResourceYUMResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory OSPolicyResourcePackageResourceYUMResponse.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourcePackageResourceYUMResponse(
       name: map['name'] as String,
     );
   }
 }
+

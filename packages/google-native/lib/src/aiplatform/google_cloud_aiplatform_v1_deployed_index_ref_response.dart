@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Points to a DeployedIndex.
 class GoogleCloudAiplatformV1DeployedIndexRefResponse {
   /// Immutable. The ID of the DeployedIndex in the above IndexEndpoint.
   final String deployedIndexId;
-
   /// Immutable. A resource name of the IndexEndpoint.
   final String indexEndpoint;
 
@@ -17,17 +17,17 @@ class GoogleCloudAiplatformV1DeployedIndexRefResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['deployedIndexId'] = deployedIndexId;
-    map['indexEndpoint'] = indexEndpoint;
-    return map;
+    return <String, dynamic>{
+      'deployedIndexId': deployedIndexId,
+      'indexEndpoint': indexEndpoint,
+    };
   }
 
-  factory GoogleCloudAiplatformV1DeployedIndexRefResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1DeployedIndexRefResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1DeployedIndexRefResponse(
       deployedIndexId: map['deployedIndexId'] as String,
       indexEndpoint: map['indexEndpoint'] as String,
     );
   }
 }
+

@@ -15,23 +15,15 @@ class GooglePrivacyDlpV2BigQueryRegexes {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final patternsValue = patterns;
-    if (patternsValue != null) {
-      map['patterns'] = pulumi.Input.encodeList<GooglePrivacyDlpV2BigQueryRegex,
-          Map<String, dynamic>>(patternsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'patterns': ?patterns == null ? null : pulumi.Input.encodeList<GooglePrivacyDlpV2BigQueryRegex, Map<String, dynamic>>(patterns!, (value) => value.toMap()),
+    };
   }
 
   factory GooglePrivacyDlpV2BigQueryRegexes.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2BigQueryRegexes(
-      patterns: map['patterns'] == null
-          ? null
-          : pulumi.Input.decodeList<GooglePrivacyDlpV2BigQueryRegex>(
-              map['patterns'],
-              (value) => GooglePrivacyDlpV2BigQueryRegex.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      patterns: map['patterns'] == null ? null : pulumi.Input.decodeList<GooglePrivacyDlpV2BigQueryRegex>(map['patterns'], (value) => GooglePrivacyDlpV2BigQueryRegex.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

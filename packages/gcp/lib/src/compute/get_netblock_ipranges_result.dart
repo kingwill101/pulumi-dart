@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getNetblockIPRanges.
 class GetNetblockIPRangesResult {
   /// Retrieve list of all CIDR blocks.
   final List<String> cidrBlocks;
-
   /// Retrieve list of the IPv4 CIDR blocks
   final List<String> cidrBlocksIpv4s;
-
   /// Retrieve list of the IPv6 CIDR blocks, if available.
   final List<String> cidrBlocksIpv6s;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? rangeType;
@@ -30,16 +28,13 @@ class GetNetblockIPRangesResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cidrBlocks'] = cidrBlocks;
-    map['cidrBlocksIpv4s'] = cidrBlocksIpv4s;
-    map['cidrBlocksIpv6s'] = cidrBlocksIpv6s;
-    map['id'] = id;
-    final rangeTypeValue = rangeType;
-    if (rangeTypeValue != null) {
-      map['rangeType'] = rangeTypeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cidrBlocks': cidrBlocks,
+      'cidrBlocksIpv4s': cidrBlocksIpv4s,
+      'cidrBlocksIpv6s': cidrBlocksIpv6s,
+      'id': id,
+      'rangeType': ?rangeType,
+    };
   }
 
   factory GetNetblockIPRangesResult.fromMap(Map<String, dynamic> map) {
@@ -52,3 +47,4 @@ class GetNetblockIPRangesResult {
     );
   }
 }
+

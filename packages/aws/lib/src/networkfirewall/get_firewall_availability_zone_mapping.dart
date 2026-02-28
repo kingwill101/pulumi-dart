@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetFirewallAvailabilityZoneMapping {
   /// The ID of the Availability Zone where the firewall endpoint is located.
   final String availabilityZoneId;
@@ -11,9 +12,9 @@ class GetFirewallAvailabilityZoneMapping {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['availabilityZoneId'] = availabilityZoneId;
-    return map;
+    return <String, dynamic>{
+      'availabilityZoneId': availabilityZoneId,
+    };
   }
 
   factory GetFirewallAvailabilityZoneMapping.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetFirewallAvailabilityZoneMapping {
     );
   }
 }
+

@@ -11,7 +11,6 @@ import 'get_iampolicy_binding.dart';
 class GetIAMPolicyArgs {
   /// A nested configuration block that defines logging additional configuration for your project. This field is only supported on `gcp.projects.IAMPolicy`, `gcp.folder.IAMPolicy` and `gcp.organizations.IAMPolicy`.
   final pulumi.Input<List<GetIAMPolicyAuditConfig>>? auditConfigs;
-
   /// A nested configuration block (described below)
   /// defining a binding to be included in the policy document. Multiple
   /// `binding` arguments are supported.
@@ -26,47 +25,22 @@ class GetIAMPolicyArgs {
   GetIAMPolicyArgs({
     List<GetIAMPolicyAuditConfig>? auditConfigs,
     List<GetIAMPolicyBinding>? bindings,
-  })  : auditConfigs =
-            pulumi.Input.asOptionalInput<List<GetIAMPolicyAuditConfig>>(
-                auditConfigs),
-        bindings =
-            pulumi.Input.asOptionalInput<List<GetIAMPolicyBinding>>(bindings);
+  }) :
+      auditConfigs = pulumi.Input.asOptionalInput<List<GetIAMPolicyAuditConfig>>(auditConfigs),
+      bindings = pulumi.Input.asOptionalInput<List<GetIAMPolicyBinding>>(bindings);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final auditConfigsValue = auditConfigs;
-    if (auditConfigsValue != null) {
-      map['auditConfigs'] = pulumi.Input.mapOptionalInputValue<
-              List<GetIAMPolicyAuditConfig>, List<Map<String, dynamic>>>(
-          auditConfigsValue,
-          (value) => pulumi.Input.encodeList<GetIAMPolicyAuditConfig,
-              Map<String, dynamic>>(value, (value) => value.toMap()));
-    }
-    final bindingsValue = bindings;
-    if (bindingsValue != null) {
-      map['bindings'] = pulumi.Input.mapOptionalInputValue<
-              List<GetIAMPolicyBinding>, List<Map<String, dynamic>>>(
-          bindingsValue,
-          (value) => pulumi.Input.encodeList<GetIAMPolicyBinding,
-              Map<String, dynamic>>(value, (value) => value.toMap()));
-    }
-    return map;
+    return <String, dynamic>{
+      'auditConfigs': ?pulumi.Input.mapOptionalInputValue<List<GetIAMPolicyAuditConfig>, List<Map<String, dynamic>>>(auditConfigs, (value) => pulumi.Input.encodeList<GetIAMPolicyAuditConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'bindings': ?pulumi.Input.mapOptionalInputValue<List<GetIAMPolicyBinding>, List<Map<String, dynamic>>>(bindings, (value) => pulumi.Input.encodeList<GetIAMPolicyBinding, Map<String, dynamic>>(value, (value) => value.toMap())),
+    };
   }
 
   factory GetIAMPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetIAMPolicyArgs(
-      auditConfigs: map['auditConfigs'] == null
-          ? null
-          : pulumi.Input.decodeList<GetIAMPolicyAuditConfig>(
-              map['auditConfigs'],
-              (value) => GetIAMPolicyAuditConfig.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      bindings: map['bindings'] == null
-          ? null
-          : pulumi.Input.decodeList<GetIAMPolicyBinding>(
-              map['bindings'],
-              (value) => GetIAMPolicyBinding.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      auditConfigs: map['auditConfigs'] == null ? null : pulumi.Input.decodeList<GetIAMPolicyAuditConfig>(map['auditConfigs'], (value) => GetIAMPolicyAuditConfig.fromMap((value as Map).cast<String, dynamic>())),
+      bindings: map['bindings'] == null ? null : pulumi.Input.decodeList<GetIAMPolicyBinding>(map['bindings'], (value) => GetIAMPolicyBinding.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

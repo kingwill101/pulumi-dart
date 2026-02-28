@@ -148,19 +148,14 @@ import 'ssh_key_args.dart';
 class SshKey extends pulumi.CustomResource {
   /// Specifies the public key encoding format to use in the response. To retrieve the public key in ssh-rsa format, use `SSH`. To retrieve the public key in PEM format, use `PEM`.
   late final pulumi.Output<String> encoding;
-
   /// The MD5 message digest of the SSH public key.
   late final pulumi.Output<String> fingerprint;
-
   /// The SSH public key. The public key must be encoded in ssh-rsa format or PEM format.
   late final pulumi.Output<String> publicKey;
-
   /// The unique identifier for the SSH public key.
   late final pulumi.Output<String> sshPublicKeyId;
-
   /// The status to assign to the SSH public key. Active means the key can be used for authentication with an AWS CodeCommit repository. Inactive means the key cannot be used. Default is `active`.
   late final pulumi.Output<String> status;
-
   /// The name of the IAM user to associate the SSH public key with.
   late final pulumi.Output<String> username;
 

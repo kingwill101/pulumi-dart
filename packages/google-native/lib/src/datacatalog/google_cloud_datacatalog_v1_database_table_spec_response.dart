@@ -6,12 +6,9 @@ import 'google_cloud_datacatalog_v1_dataplex_table_spec_response.dart';
 /// Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
 class GoogleCloudDatacatalogV1DatabaseTableSpecResponse {
   /// Spec what aplies to tables that are actually views. Not set for "real" tables.
-  final GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse
-      databaseViewSpec;
-
+  final GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse databaseViewSpec;
   /// Fields specific to a Dataplex table and present only in the Dataplex table entries.
   final GoogleCloudDatacatalogV1DataplexTableSpecResponse dataplexTable;
-
   /// Type of this table.
   final String type;
 
@@ -26,23 +23,19 @@ class GoogleCloudDatacatalogV1DatabaseTableSpecResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['databaseViewSpec'] = databaseViewSpec.toMap();
-    map['dataplexTable'] = dataplexTable.toMap();
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'databaseViewSpec': databaseViewSpec.toMap(),
+      'dataplexTable': dataplexTable.toMap(),
+      'type': type,
+    };
   }
 
-  factory GoogleCloudDatacatalogV1DatabaseTableSpecResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1DatabaseTableSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1DatabaseTableSpecResponse(
-      databaseViewSpec:
-          GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse
-              .fromMap(
-                  (map['databaseViewSpec'] as Map).cast<String, dynamic>()),
-      dataplexTable: GoogleCloudDatacatalogV1DataplexTableSpecResponse.fromMap(
-          (map['dataplexTable'] as Map).cast<String, dynamic>()),
+      databaseViewSpec: GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse.fromMap((map['databaseViewSpec'] as Map).cast<String, dynamic>()),
+      dataplexTable: GoogleCloudDatacatalogV1DataplexTableSpecResponse.fromMap((map['dataplexTable'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

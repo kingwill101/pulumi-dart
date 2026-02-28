@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NetworkInsightsAnalysisReturnPathComponentSourceVpc {
   /// ARN of the Network Insights Analysis.
   final String? arn;
-
   /// ID of the Network Insights Analysis.
   final String? id;
   final String? name;
@@ -19,24 +19,14 @@ class NetworkInsightsAnalysisReturnPathComponentSourceVpc {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final arnValue = arn;
-    if (arnValue != null) {
-      map['arn'] = arnValue;
-    }
-    final idValue = id;
-    if (idValue != null) {
-      map['id'] = idValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'arn': ?arn,
+      'id': ?id,
+      'name': ?name,
+    };
   }
 
-  factory NetworkInsightsAnalysisReturnPathComponentSourceVpc.fromMap(
-      Map<String, dynamic> map) {
+  factory NetworkInsightsAnalysisReturnPathComponentSourceVpc.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisReturnPathComponentSourceVpc(
       arn: map['arn'] == null ? null : map['arn'] as String,
       id: map['id'] == null ? null : map['id'] as String,
@@ -44,3 +34,4 @@ class NetworkInsightsAnalysisReturnPathComponentSourceVpc {
     );
   }
 }
+

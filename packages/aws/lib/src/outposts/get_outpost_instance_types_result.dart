@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getOutpostInstanceTypes.
 class GetOutpostInstanceTypesResult {
   final String arn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Set of instance types.
   final List<String> instanceTypes;
   final String region;
@@ -24,12 +23,12 @@ class GetOutpostInstanceTypesResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['id'] = id;
-    map['instanceTypes'] = instanceTypes;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'id': id,
+      'instanceTypes': instanceTypes,
+      'region': region,
+    };
   }
 
   factory GetOutpostInstanceTypesResult.fromMap(Map<String, dynamic> map) {
@@ -41,3 +40,4 @@ class GetOutpostInstanceTypesResult {
     );
   }
 }
+

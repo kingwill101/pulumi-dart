@@ -28,29 +28,26 @@ class GetSessionEntityTypeDialogflowV3beta1Args {
     required String location,
     String? project,
     required String sessionId,
-  })  : agentId = pulumi.Input.asInput<String>(agentId),
-        entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
-        environmentId = pulumi.Input.asInput<String>(environmentId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        sessionId = pulumi.Input.asInput<String>(sessionId);
+  }) :
+      agentId = pulumi.Input.asInput<String>(agentId),
+      entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
+      environmentId = pulumi.Input.asInput<String>(environmentId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      sessionId = pulumi.Input.asInput<String>(sessionId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['agentId'] = agentId;
-    map['entityTypeId'] = entityTypeId;
-    map['environmentId'] = environmentId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['sessionId'] = sessionId;
-    return map;
+    return <String, dynamic>{
+      'agentId': agentId,
+      'entityTypeId': entityTypeId,
+      'environmentId': environmentId,
+      'location': location,
+      'project': ?project,
+      'sessionId': sessionId,
+    };
   }
 
-  factory GetSessionEntityTypeDialogflowV3beta1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetSessionEntityTypeDialogflowV3beta1Args.fromMap(Map<String, dynamic> map) {
     return GetSessionEntityTypeDialogflowV3beta1Args(
       agentId: map['agentId'] as String,
       entityTypeId: map['entityTypeId'] as String,
@@ -61,3 +58,4 @@ class GetSessionEntityTypeDialogflowV3beta1Args {
     );
   }
 }
+

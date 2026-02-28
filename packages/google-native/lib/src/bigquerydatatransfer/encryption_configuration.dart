@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents the encryption configuration for a transfer.
 class EncryptionConfiguration {
   /// The name of the KMS key used for encrypting BigQuery data.
@@ -12,18 +13,15 @@ class EncryptionConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final kmsKeyNameValue = kmsKeyName;
-    if (kmsKeyNameValue != null) {
-      map['kmsKeyName'] = kmsKeyNameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'kmsKeyName': ?kmsKeyName,
+    };
   }
 
   factory EncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return EncryptionConfiguration(
-      kmsKeyName:
-          map['kmsKeyName'] == null ? null : map['kmsKeyName'] as String,
+      kmsKeyName: map['kmsKeyName'] == null ? null : map['kmsKeyName'] as String,
     );
   }
 }
+

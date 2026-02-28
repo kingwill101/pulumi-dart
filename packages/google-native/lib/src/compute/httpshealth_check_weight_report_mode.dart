@@ -13,7 +13,7 @@ enum HTTPSHealthCheckWeightReportMode {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown HTTPSHealthCheckWeightReportMode value: $value');
+    throw ArgumentError('Unknown HTTPSHealthCheckWeightReportMode value: $value');
   }
 }
+

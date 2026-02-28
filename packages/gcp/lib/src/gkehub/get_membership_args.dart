@@ -10,10 +10,8 @@ class GetMembershipArgs {
   /// The location for the GKE Hub Membership.
   /// Currently only `global` is supported.
   final pulumi.Input<String> location;
-
   /// The GKE Hub Membership id or GKE Cluster's name.
   final pulumi.Input<String> membershipId;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -26,19 +24,17 @@ class GetMembershipArgs {
     required String location,
     required String membershipId,
     String? project,
-  })  : location = pulumi.Input.asInput<String>(location),
-        membershipId = pulumi.Input.asInput<String>(membershipId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      membershipId = pulumi.Input.asInput<String>(membershipId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    map['membershipId'] = membershipId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'membershipId': membershipId,
+      'project': ?project,
+    };
   }
 
   factory GetMembershipArgs.fromMap(Map<String, dynamic> map) {
@@ -49,3 +45,4 @@ class GetMembershipArgs {
     );
   }
 }
+

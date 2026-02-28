@@ -25,24 +25,21 @@ class GetTemplatesVersionArgs {
     required String productId,
     String? project,
     required String versionId,
-  })  : integrationtemplateId =
-            pulumi.Input.asInput<String>(integrationtemplateId),
-        location = pulumi.Input.asInput<String>(location),
-        productId = pulumi.Input.asInput<String>(productId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        versionId = pulumi.Input.asInput<String>(versionId);
+  }) :
+      integrationtemplateId = pulumi.Input.asInput<String>(integrationtemplateId),
+      location = pulumi.Input.asInput<String>(location),
+      productId = pulumi.Input.asInput<String>(productId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      versionId = pulumi.Input.asInput<String>(versionId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['integrationtemplateId'] = integrationtemplateId;
-    map['location'] = location;
-    map['productId'] = productId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['versionId'] = versionId;
-    return map;
+    return <String, dynamic>{
+      'integrationtemplateId': integrationtemplateId,
+      'location': location,
+      'productId': productId,
+      'project': ?project,
+      'versionId': versionId,
+    };
   }
 
   factory GetTemplatesVersionArgs.fromMap(Map<String, dynamic> map) {
@@ -55,3 +52,4 @@ class GetTemplatesVersionArgs {
     );
   }
 }
+

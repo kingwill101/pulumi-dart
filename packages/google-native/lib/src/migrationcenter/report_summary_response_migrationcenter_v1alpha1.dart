@@ -7,12 +7,9 @@ import 'report_summary_group_finding_response_migrationcenter_v1alpha1.dart';
 /// Describes the Summary view of a Report, which contains aggregated values for all the groups and preference sets included in this Report.
 class ReportSummaryResponseMigrationcenterV1alpha1 {
   /// Aggregate statistics for all the assets across all the groups.
-  final ReportSummaryAssetAggregateStatsResponseMigrationcenterV1alpha1
-      allAssetsStats;
-
+  final ReportSummaryAssetAggregateStatsResponseMigrationcenterV1alpha1 allAssetsStats;
   /// Findings for each Group included in this report.
-  final List<ReportSummaryGroupFindingResponseMigrationcenterV1alpha1>
-      groupFindings;
+  final List<ReportSummaryGroupFindingResponseMigrationcenterV1alpha1> groupFindings;
 
   /// Creates a new [ReportSummaryResponseMigrationcenterV1alpha1].
   /// [allAssetsStats] Aggregate statistics for all the assets across all the groups.
@@ -23,26 +20,17 @@ class ReportSummaryResponseMigrationcenterV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allAssetsStats'] = allAssetsStats.toMap();
-    map['groupFindings'] = pulumi.Input.encodeList<
-        ReportSummaryGroupFindingResponseMigrationcenterV1alpha1,
-        Map<String, dynamic>>(groupFindings, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'allAssetsStats': allAssetsStats.toMap(),
+      'groupFindings': pulumi.Input.encodeList<ReportSummaryGroupFindingResponseMigrationcenterV1alpha1, Map<String, dynamic>>(groupFindings, (value) => value.toMap()),
+    };
   }
 
-  factory ReportSummaryResponseMigrationcenterV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory ReportSummaryResponseMigrationcenterV1alpha1.fromMap(Map<String, dynamic> map) {
     return ReportSummaryResponseMigrationcenterV1alpha1(
-      allAssetsStats:
-          ReportSummaryAssetAggregateStatsResponseMigrationcenterV1alpha1
-              .fromMap((map['allAssetsStats'] as Map).cast<String, dynamic>()),
-      groupFindings: pulumi.Input.decodeList<
-              ReportSummaryGroupFindingResponseMigrationcenterV1alpha1>(
-          map['groupFindings'],
-          (value) =>
-              ReportSummaryGroupFindingResponseMigrationcenterV1alpha1.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      allAssetsStats: ReportSummaryAssetAggregateStatsResponseMigrationcenterV1alpha1.fromMap((map['allAssetsStats'] as Map).cast<String, dynamic>()),
+      groupFindings: pulumi.Input.decodeList<ReportSummaryGroupFindingResponseMigrationcenterV1alpha1>(map['groupFindings'], (value) => ReportSummaryGroupFindingResponseMigrationcenterV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

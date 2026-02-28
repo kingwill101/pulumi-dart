@@ -7,7 +7,6 @@ import 'grpc_route_fault_injection_policy_delay_response.dart';
 class GrpcRouteFaultInjectionPolicyResponse {
   /// The specification for aborting to client requests.
   final GrpcRouteFaultInjectionPolicyAbortResponse abort;
-
   /// The specification for injecting delay to client requests.
   final GrpcRouteFaultInjectionPolicyDelayResponse delay;
 
@@ -20,19 +19,17 @@ class GrpcRouteFaultInjectionPolicyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['abort'] = abort.toMap();
-    map['delay'] = delay.toMap();
-    return map;
+    return <String, dynamic>{
+      'abort': abort.toMap(),
+      'delay': delay.toMap(),
+    };
   }
 
-  factory GrpcRouteFaultInjectionPolicyResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GrpcRouteFaultInjectionPolicyResponse.fromMap(Map<String, dynamic> map) {
     return GrpcRouteFaultInjectionPolicyResponse(
-      abort: GrpcRouteFaultInjectionPolicyAbortResponse.fromMap(
-          (map['abort'] as Map).cast<String, dynamic>()),
-      delay: GrpcRouteFaultInjectionPolicyDelayResponse.fromMap(
-          (map['delay'] as Map).cast<String, dynamic>()),
+      abort: GrpcRouteFaultInjectionPolicyAbortResponse.fromMap((map['abort'] as Map).cast<String, dynamic>()),
+      delay: GrpcRouteFaultInjectionPolicyDelayResponse.fromMap((map['delay'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

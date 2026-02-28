@@ -7,15 +7,13 @@ enum InstancePropertiesPrivateIpv6GoogleAccessComputeBeta {
   const InstancePropertiesPrivateIpv6GoogleAccessComputeBeta(this.value);
   final String value;
 
-  static InstancePropertiesPrivateIpv6GoogleAccessComputeBeta fromValue(
-      String value) {
-    for (final item
-        in InstancePropertiesPrivateIpv6GoogleAccessComputeBeta.values) {
+  static InstancePropertiesPrivateIpv6GoogleAccessComputeBeta fromValue(String value) {
+    for (final item in InstancePropertiesPrivateIpv6GoogleAccessComputeBeta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown InstancePropertiesPrivateIpv6GoogleAccessComputeBeta value: $value');
+    throw ArgumentError('Unknown InstancePropertiesPrivateIpv6GoogleAccessComputeBeta value: $value');
   }
 }
+

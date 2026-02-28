@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TagArgs {
   /// Tag name.
   final pulumi.Input<String> key;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// ID of the AWS Secrets Manager secret to tag.
   final pulumi.Input<String> secretId;
-
   /// Tag value.
   final pulumi.Input<String> value;
 
@@ -29,21 +26,19 @@ class TagArgs {
     String? region,
     required String secretId,
     required String value,
-  })  : key = pulumi.Input.asInput<String>(key),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        secretId = pulumi.Input.asInput<String>(secretId),
-        value = pulumi.Input.asInput<String>(value);
+  }) :
+      key = pulumi.Input.asInput<String>(key),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      secretId = pulumi.Input.asInput<String>(secretId),
+      value = pulumi.Input.asInput<String>(value);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['secretId'] = secretId;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'region': ?region,
+      'secretId': secretId,
+      'value': value,
+    };
   }
 
   factory TagArgs.fromMap(Map<String, dynamic> map) {
@@ -55,3 +50,4 @@ class TagArgs {
     );
   }
 }
+

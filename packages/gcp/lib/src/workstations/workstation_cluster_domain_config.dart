@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WorkstationClusterDomainConfig {
   /// Domain used by Workstations for HTTP ingress.
   final String domain;
@@ -11,9 +12,9 @@ class WorkstationClusterDomainConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['domain'] = domain;
-    return map;
+    return <String, dynamic>{
+      'domain': domain,
+    };
   }
 
   factory WorkstationClusterDomainConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class WorkstationClusterDomainConfig {
     );
   }
 }
+

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AccessPointPosixUser {
   /// POSIX group ID used for all file system operations using this access point.
   final int gid;
-
   /// Secondary POSIX group IDs used for all file system operations using this access point.
   final List<int>? secondaryGids;
-
   /// POSIX user ID used for all file system operations using this access point.
   final int uid;
 
@@ -21,23 +20,19 @@ class AccessPointPosixUser {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gid'] = gid;
-    final secondaryGidsValue = secondaryGids;
-    if (secondaryGidsValue != null) {
-      map['secondaryGids'] = secondaryGidsValue;
-    }
-    map['uid'] = uid;
-    return map;
+    return <String, dynamic>{
+      'gid': gid,
+      'secondaryGids': ?secondaryGids,
+      'uid': uid,
+    };
   }
 
   factory AccessPointPosixUser.fromMap(Map<String, dynamic> map) {
     return AccessPointPosixUser(
       gid: map['gid'] as int,
-      secondaryGids: map['secondaryGids'] == null
-          ? null
-          : (map['secondaryGids'] as List).cast<int>(),
+      secondaryGids: map['secondaryGids'] == null ? null : (map['secondaryGids'] as List).cast<int>(),
       uid: map['uid'] as int,
     );
   }
 }
+

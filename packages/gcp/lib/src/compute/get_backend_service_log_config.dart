@@ -1,19 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetBackendServiceLogConfig {
   /// Whether to enable logging for the load balancer traffic served by this backend service.
   final bool enable;
-
   /// This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode"
   /// was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
   /// For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
   /// For example: orca_load_report, tls.protocol
   final List<String> optionalFields;
-
   /// Specifies the optional logging mode for the load balancer traffic.
   /// Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM. Possible values: ["INCLUDE_ALL_OPTIONAL", "EXCLUDE_ALL_OPTIONAL", "CUSTOM"]
   final String optionalMode;
-
   /// This field can only be specified if logging is enabled for this backend service. The value of
   /// the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
   /// where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
@@ -33,12 +31,12 @@ class GetBackendServiceLogConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enable'] = enable;
-    map['optionalFields'] = optionalFields;
-    map['optionalMode'] = optionalMode;
-    map['sampleRate'] = sampleRate;
-    return map;
+    return <String, dynamic>{
+      'enable': enable,
+      'optionalFields': optionalFields,
+      'optionalMode': optionalMode,
+      'sampleRate': sampleRate,
+    };
   }
 
   factory GetBackendServiceLogConfig.fromMap(Map<String, dynamic> map) {
@@ -50,3 +48,4 @@ class GetBackendServiceLogConfig {
     );
   }
 }
+

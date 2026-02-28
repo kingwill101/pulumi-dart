@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomDomainAssociationArgs {
   /// ARN of the certificate for the custom domain association.
   final pulumi.Input<String> customDomainCertificateArn;
-
   /// Custom domain to associate with the workgroup.
   final pulumi.Input<String> customDomainName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Name of the workgroup.
   final pulumi.Input<String> workgroupName;
 
@@ -29,22 +26,19 @@ class CustomDomainAssociationArgs {
     required String customDomainName,
     String? region,
     required String workgroupName,
-  })  : customDomainCertificateArn =
-            pulumi.Input.asInput<String>(customDomainCertificateArn),
-        customDomainName = pulumi.Input.asInput<String>(customDomainName),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        workgroupName = pulumi.Input.asInput<String>(workgroupName);
+  }) :
+      customDomainCertificateArn = pulumi.Input.asInput<String>(customDomainCertificateArn),
+      customDomainName = pulumi.Input.asInput<String>(customDomainName),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      workgroupName = pulumi.Input.asInput<String>(workgroupName);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['customDomainCertificateArn'] = customDomainCertificateArn;
-    map['customDomainName'] = customDomainName;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['workgroupName'] = workgroupName;
-    return map;
+    return <String, dynamic>{
+      'customDomainCertificateArn': customDomainCertificateArn,
+      'customDomainName': customDomainName,
+      'region': ?region,
+      'workgroupName': workgroupName,
+    };
   }
 
   factory CustomDomainAssociationArgs.fromMap(Map<String, dynamic> map) {
@@ -56,3 +50,4 @@ class CustomDomainAssociationArgs {
     );
   }
 }
+

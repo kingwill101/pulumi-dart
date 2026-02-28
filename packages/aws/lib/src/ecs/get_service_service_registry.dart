@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetServiceServiceRegistry {
   /// Name of the container to associate with the load balancer.
   final String containerName;
-
   /// Port on the container to associate with the load balancer.
   final int containerPort;
-
   /// Port value for service discovery
   final int port;
-
   /// ARN of the service registry
   final String registryArn;
 
@@ -26,12 +24,12 @@ class GetServiceServiceRegistry {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['containerName'] = containerName;
-    map['containerPort'] = containerPort;
-    map['port'] = port;
-    map['registryArn'] = registryArn;
-    return map;
+    return <String, dynamic>{
+      'containerName': containerName,
+      'containerPort': containerPort,
+      'port': port,
+      'registryArn': registryArn,
+    };
   }
 
   factory GetServiceServiceRegistry.fromMap(Map<String, dynamic> map) {
@@ -43,3 +41,4 @@ class GetServiceServiceRegistry {
     );
   }
 }
+

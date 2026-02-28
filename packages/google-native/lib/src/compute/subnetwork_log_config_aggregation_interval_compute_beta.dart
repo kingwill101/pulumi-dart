@@ -10,15 +10,13 @@ enum SubnetworkLogConfigAggregationIntervalComputeBeta {
   const SubnetworkLogConfigAggregationIntervalComputeBeta(this.value);
   final String value;
 
-  static SubnetworkLogConfigAggregationIntervalComputeBeta fromValue(
-      String value) {
-    for (final item
-        in SubnetworkLogConfigAggregationIntervalComputeBeta.values) {
+  static SubnetworkLogConfigAggregationIntervalComputeBeta fromValue(String value) {
+    for (final item in SubnetworkLogConfigAggregationIntervalComputeBeta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown SubnetworkLogConfigAggregationIntervalComputeBeta value: $value');
+    throw ArgumentError('Unknown SubnetworkLogConfigAggregationIntervalComputeBeta value: $value');
   }
 }
+

@@ -10,10 +10,8 @@ import 'schema_definition.dart';
 class SchemaArgs {
   /// The definition of the schema.
   final pulumi.Input<SchemaDefinition> definition;
-
   /// The ID of the Policy Store.
   final pulumi.Input<String> policyStoreId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -25,29 +23,25 @@ class SchemaArgs {
     required SchemaDefinition definition,
     required String policyStoreId,
     String? region,
-  })  : definition = pulumi.Input.asInput<SchemaDefinition>(definition),
-        policyStoreId = pulumi.Input.asInput<String>(policyStoreId),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      definition = pulumi.Input.asInput<SchemaDefinition>(definition),
+      policyStoreId = pulumi.Input.asInput<String>(policyStoreId),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['definition'] =
-        pulumi.Input.mapInputValue<SchemaDefinition, Map<String, dynamic>>(
-            definition, (value) => value.toMap());
-    map['policyStoreId'] = policyStoreId;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'definition': pulumi.Input.mapInputValue<SchemaDefinition, Map<String, dynamic>>(definition, (value) => value.toMap()),
+      'policyStoreId': policyStoreId,
+      'region': ?region,
+    };
   }
 
   factory SchemaArgs.fromMap(Map<String, dynamic> map) {
     return SchemaArgs(
-      definition: SchemaDefinition.fromMap(
-          (map['definition'] as Map).cast<String, dynamic>()),
+      definition: SchemaDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>()),
       policyStoreId: map['policyStoreId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

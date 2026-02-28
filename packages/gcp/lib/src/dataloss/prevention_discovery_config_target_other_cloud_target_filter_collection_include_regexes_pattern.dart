@@ -8,8 +8,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRege
   ///
   ///
   /// <a name="nested_targets_other_cloud_target_filter_collection_include_regexes_patterns_amazon_s3_bucket_regex"></a>The `amazon_s3_bucket_regex` block supports:
-  final PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegex?
-      amazonS3BucketRegex;
+  final PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegex? amazonS3BucketRegex;
 
   /// Creates a new [PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPattern].
   /// [amazonS3BucketRegex] Regex for Cloud Storage.
@@ -18,22 +17,15 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRege
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final amazonS3BucketRegexValue = amazonS3BucketRegex;
-    if (amazonS3BucketRegexValue != null) {
-      map['amazonS3BucketRegex'] = amazonS3BucketRegexValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'amazonS3BucketRegex': ?amazonS3BucketRegex == null ? null : amazonS3BucketRegex!.toMap(),
+    };
   }
 
-  factory PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPattern.fromMap(
-      Map<String, dynamic> map) {
+  factory PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPattern.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPattern(
-      amazonS3BucketRegex: map['amazonS3BucketRegex'] == null
-          ? null
-          : PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegex
-              .fromMap(
-                  (map['amazonS3BucketRegex'] as Map).cast<String, dynamic>()),
+      amazonS3BucketRegex: map['amazonS3BucketRegex'] == null ? null : PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegex.fromMap((map['amazonS3BucketRegex'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

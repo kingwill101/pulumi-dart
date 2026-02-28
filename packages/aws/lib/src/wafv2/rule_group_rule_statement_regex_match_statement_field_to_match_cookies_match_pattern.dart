@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RuleGroupRuleStatementRegexMatchStatementFieldToMatchCookiesMatchPattern {
   /// An empty configuration block that is used for inspecting all headers.
   final Map<String, dynamic>? all;
@@ -17,34 +18,19 @@ class RuleGroupRuleStatementRegexMatchStatementFieldToMatchCookiesMatchPattern {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final allValue = all;
-    if (allValue != null) {
-      map['all'] = allValue;
-    }
-    final excludedCookiesValue = excludedCookies;
-    if (excludedCookiesValue != null) {
-      map['excludedCookies'] = excludedCookiesValue;
-    }
-    final includedCookiesValue = includedCookies;
-    if (includedCookiesValue != null) {
-      map['includedCookies'] = includedCookiesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'all': ?all,
+      'excludedCookies': ?excludedCookies,
+      'includedCookies': ?includedCookies,
+    };
   }
 
-  factory RuleGroupRuleStatementRegexMatchStatementFieldToMatchCookiesMatchPattern.fromMap(
-      Map<String, dynamic> map) {
+  factory RuleGroupRuleStatementRegexMatchStatementFieldToMatchCookiesMatchPattern.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRegexMatchStatementFieldToMatchCookiesMatchPattern(
-      all: map['all'] == null
-          ? null
-          : (map['all'] as Map).cast<String, dynamic>(),
-      excludedCookies: map['excludedCookies'] == null
-          ? null
-          : (map['excludedCookies'] as List).cast<String>(),
-      includedCookies: map['includedCookies'] == null
-          ? null
-          : (map['includedCookies'] as List).cast<String>(),
+      all: map['all'] == null ? null : (map['all'] as Map).cast<String, dynamic>(),
+      excludedCookies: map['excludedCookies'] == null ? null : (map['excludedCookies'] as List).cast<String>(),
+      includedCookies: map['includedCookies'] == null ? null : (map['includedCookies'] as List).cast<String>(),
     );
   }
 }
+

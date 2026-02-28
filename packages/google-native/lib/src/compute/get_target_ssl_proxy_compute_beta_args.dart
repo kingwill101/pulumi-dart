@@ -16,17 +16,15 @@ class GetTargetSslProxyComputeBetaArgs {
   GetTargetSslProxyComputeBetaArgs({
     String? project,
     required String targetSslProxy,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        targetSslProxy = pulumi.Input.asInput<String>(targetSslProxy);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      targetSslProxy = pulumi.Input.asInput<String>(targetSslProxy);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['targetSslProxy'] = targetSslProxy;
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'targetSslProxy': targetSslProxy,
+    };
   }
 
   factory GetTargetSslProxyComputeBetaArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetTargetSslProxyComputeBetaArgs {
     );
   }
 }
+

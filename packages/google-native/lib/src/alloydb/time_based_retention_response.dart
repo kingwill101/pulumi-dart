@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A time based retention policy specifies that all backups within a certain time period should be retained.
 class TimeBasedRetentionResponse {
   /// The retention period.
@@ -12,9 +13,9 @@ class TimeBasedRetentionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['retentionPeriod'] = retentionPeriod;
-    return map;
+    return <String, dynamic>{
+      'retentionPeriod': retentionPeriod,
+    };
   }
 
   factory TimeBasedRetentionResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class TimeBasedRetentionResponse {
     );
   }
 }
+

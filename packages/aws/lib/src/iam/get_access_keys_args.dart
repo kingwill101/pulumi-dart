@@ -14,12 +14,13 @@ class GetAccessKeysArgs {
   /// [user] Name of the IAM user associated with the access keys.
   GetAccessKeysArgs({
     required String user,
-  }) : user = pulumi.Input.asInput<String>(user);
+  }) :
+      user = pulumi.Input.asInput<String>(user);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['user'] = user;
-    return map;
+    return <String, dynamic>{
+      'user': user,
+    };
   }
 
   factory GetAccessKeysArgs.fromMap(Map<String, dynamic> map) {
@@ -28,3 +29,4 @@ class GetAccessKeysArgs {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for the Analytics add-on.
 class GoogleCloudApigeeV1AnalyticsConfig {
   /// Whether the Analytics add-on is enabled.
@@ -12,12 +13,9 @@ class GoogleCloudApigeeV1AnalyticsConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory GoogleCloudApigeeV1AnalyticsConfig.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class GoogleCloudApigeeV1AnalyticsConfig {
     );
   }
 }
+

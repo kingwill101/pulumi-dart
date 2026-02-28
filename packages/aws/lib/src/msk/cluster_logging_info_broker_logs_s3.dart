@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterLoggingInfoBrokerLogsS3 {
   /// Name of the S3 bucket to deliver logs to.
   final String? bucket;
   final bool enabled;
-
   /// Prefix to append to the folder name.
   final String? prefix;
 
@@ -19,17 +19,11 @@ class ClusterLoggingInfoBrokerLogsS3 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final bucketValue = bucket;
-    if (bucketValue != null) {
-      map['bucket'] = bucketValue;
-    }
-    map['enabled'] = enabled;
-    final prefixValue = prefix;
-    if (prefixValue != null) {
-      map['prefix'] = prefixValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'bucket': ?bucket,
+      'enabled': enabled,
+      'prefix': ?prefix,
+    };
   }
 
   factory ClusterLoggingInfoBrokerLogsS3.fromMap(Map<String, dynamic> map) {
@@ -40,3 +34,4 @@ class ClusterLoggingInfoBrokerLogsS3 {
     );
   }
 }
+

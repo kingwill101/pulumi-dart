@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Defines what action to take for a specific threat_id match.
 class ThreatOverrideResponse {
   /// Threat action override. For some threat types, only a subset of actions applies.
   final String action;
-
   /// Vendor-specific ID of a threat to override.
   final String threatId;
-
   /// Type of the threat (read only).
   final String type;
 
@@ -22,11 +21,11 @@ class ThreatOverrideResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['action'] = action;
-    map['threatId'] = threatId;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'action': action,
+      'threatId': threatId,
+      'type': type,
+    };
   }
 
   factory ThreatOverrideResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class ThreatOverrideResponse {
     );
   }
 }
+

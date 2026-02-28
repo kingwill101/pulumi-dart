@@ -5,8 +5,7 @@ import 'google_cloud_aiplatform_v1beta1_sampling_strategy_random_sample_config.d
 /// Sampling Strategy for logging, can be for both training and prediction dataset.
 class GoogleCloudAiplatformV1beta1SamplingStrategy {
   /// Random sample config. Will support more sampling strategies later.
-  final GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig?
-      randomSampleConfig;
+  final GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig? randomSampleConfig;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1SamplingStrategy].
   /// [randomSampleConfig] Random sample config. Will support more sampling strategies later.
@@ -15,22 +14,15 @@ class GoogleCloudAiplatformV1beta1SamplingStrategy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final randomSampleConfigValue = randomSampleConfig;
-    if (randomSampleConfigValue != null) {
-      map['randomSampleConfig'] = randomSampleConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'randomSampleConfig': ?randomSampleConfig == null ? null : randomSampleConfig!.toMap(),
+    };
   }
 
-  factory GoogleCloudAiplatformV1beta1SamplingStrategy.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1SamplingStrategy.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1SamplingStrategy(
-      randomSampleConfig: map['randomSampleConfig'] == null
-          ? null
-          : GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig
-              .fromMap(
-                  (map['randomSampleConfig'] as Map).cast<String, dynamic>()),
+      randomSampleConfig: map['randomSampleConfig'] == null ? null : GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig.fromMap((map['randomSampleConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

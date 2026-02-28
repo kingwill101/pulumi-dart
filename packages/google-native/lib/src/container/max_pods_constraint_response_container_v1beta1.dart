@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Constraints applied to pods.
 class MaxPodsConstraintResponseContainerV1beta1 {
   /// Constraint enforced on the max num of pods per node.
@@ -12,15 +13,15 @@ class MaxPodsConstraintResponseContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maxPodsPerNode'] = maxPodsPerNode;
-    return map;
+    return <String, dynamic>{
+      'maxPodsPerNode': maxPodsPerNode,
+    };
   }
 
-  factory MaxPodsConstraintResponseContainerV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory MaxPodsConstraintResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return MaxPodsConstraintResponseContainerV1beta1(
       maxPodsPerNode: map['maxPodsPerNode'] as String,
     );
   }
 }
+

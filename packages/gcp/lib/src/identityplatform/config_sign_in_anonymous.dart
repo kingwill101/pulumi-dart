@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConfigSignInAnonymous {
   /// Whether anonymous user auth is enabled for the project or not.
   ///
@@ -13,9 +14,9 @@ class ConfigSignInAnonymous {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory ConfigSignInAnonymous.fromMap(Map<String, dynamic> map) {
@@ -24,3 +25,4 @@ class ConfigSignInAnonymous {
     );
   }
 }
+

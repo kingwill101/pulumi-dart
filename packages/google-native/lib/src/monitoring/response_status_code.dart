@@ -6,7 +6,6 @@ import 'response_status_code_status_class.dart';
 class ResponseStatusCode {
   /// A class of status codes to accept.
   final ResponseStatusCodeStatusClass? statusClass;
-
   /// A status code to accept.
   final int? statusValue;
 
@@ -19,26 +18,17 @@ class ResponseStatusCode {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final statusClassValue = statusClass;
-    if (statusClassValue != null) {
-      map['statusClass'] = statusClassValue.value;
-    }
-    final statusValueValue = statusValue;
-    if (statusValueValue != null) {
-      map['statusValue'] = statusValueValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'statusClass': ?statusClass == null ? null : statusClass!.value,
+      'statusValue': ?statusValue,
+    };
   }
 
   factory ResponseStatusCode.fromMap(Map<String, dynamic> map) {
     return ResponseStatusCode(
-      statusClass: map['statusClass'] == null
-          ? null
-          : ResponseStatusCodeStatusClass.fromValue(
-              map['statusClass'] as String),
-      statusValue:
-          map['statusValue'] == null ? null : map['statusValue'] as int,
+      statusClass: map['statusClass'] == null ? null : ResponseStatusCodeStatusClass.fromValue(map['statusClass'] as String),
+      statusValue: map['statusValue'] == null ? null : map['statusValue'] as int,
     );
   }
 }
+

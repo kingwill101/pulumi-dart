@@ -19,3 +19,4 @@ enum TargetServerProtocol {
     throw ArgumentError('Unknown TargetServerProtocol value: $value');
   }
 }
+

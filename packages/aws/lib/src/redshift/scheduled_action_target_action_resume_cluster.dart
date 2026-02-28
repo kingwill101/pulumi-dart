@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ScheduledActionTargetActionResumeCluster {
   /// The identifier of the cluster to be resumed.
   final String clusterIdentifier;
@@ -11,15 +12,15 @@ class ScheduledActionTargetActionResumeCluster {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clusterIdentifier'] = clusterIdentifier;
-    return map;
+    return <String, dynamic>{
+      'clusterIdentifier': clusterIdentifier,
+    };
   }
 
-  factory ScheduledActionTargetActionResumeCluster.fromMap(
-      Map<String, dynamic> map) {
+  factory ScheduledActionTargetActionResumeCluster.fromMap(Map<String, dynamic> map) {
     return ScheduledActionTargetActionResumeCluster(
       clusterIdentifier: map['clusterIdentifier'] as String,
     );
   }
 }
+

@@ -16,3 +16,4 @@ enum PackageArchitecture {
     throw ArgumentError('Unknown PackageArchitecture value: $value');
   }
 }
+

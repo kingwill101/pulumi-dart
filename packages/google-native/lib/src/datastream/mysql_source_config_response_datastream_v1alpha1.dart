@@ -6,7 +6,6 @@ import 'mysql_rdbms_response_datastream_v1alpha1.dart';
 class MysqlSourceConfigResponseDatastreamV1alpha1 {
   /// MySQL objects to retrieve from the source.
   final MysqlRdbmsResponseDatastreamV1alpha1 allowlist;
-
   /// MySQL objects to exclude from the stream.
   final MysqlRdbmsResponseDatastreamV1alpha1 rejectlist;
 
@@ -19,19 +18,17 @@ class MysqlSourceConfigResponseDatastreamV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allowlist'] = allowlist.toMap();
-    map['rejectlist'] = rejectlist.toMap();
-    return map;
+    return <String, dynamic>{
+      'allowlist': allowlist.toMap(),
+      'rejectlist': rejectlist.toMap(),
+    };
   }
 
-  factory MysqlSourceConfigResponseDatastreamV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory MysqlSourceConfigResponseDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return MysqlSourceConfigResponseDatastreamV1alpha1(
-      allowlist: MysqlRdbmsResponseDatastreamV1alpha1.fromMap(
-          (map['allowlist'] as Map).cast<String, dynamic>()),
-      rejectlist: MysqlRdbmsResponseDatastreamV1alpha1.fromMap(
-          (map['rejectlist'] as Map).cast<String, dynamic>()),
+      allowlist: MysqlRdbmsResponseDatastreamV1alpha1.fromMap((map['allowlist'] as Map).cast<String, dynamic>()),
+      rejectlist: MysqlRdbmsResponseDatastreamV1alpha1.fromMap((map['rejectlist'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

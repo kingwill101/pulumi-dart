@@ -6,7 +6,6 @@ import 'classification_job_s3_job_definition_scoping_includes.dart';
 class ClassificationJobS3JobDefinitionScoping {
   /// The property- or tag-based conditions that determine which objects to exclude from the analysis. (documented below)
   final ClassificationJobS3JobDefinitionScopingExcludes? excludes;
-
   /// The property- or tag-based conditions that determine which objects to include in the analysis. (documented below)
   final ClassificationJobS3JobDefinitionScopingIncludes? includes;
 
@@ -19,29 +18,17 @@ class ClassificationJobS3JobDefinitionScoping {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final excludesValue = excludes;
-    if (excludesValue != null) {
-      map['excludes'] = excludesValue.toMap();
-    }
-    final includesValue = includes;
-    if (includesValue != null) {
-      map['includes'] = includesValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'excludes': ?excludes == null ? null : excludes!.toMap(),
+      'includes': ?includes == null ? null : includes!.toMap(),
+    };
   }
 
-  factory ClassificationJobS3JobDefinitionScoping.fromMap(
-      Map<String, dynamic> map) {
+  factory ClassificationJobS3JobDefinitionScoping.fromMap(Map<String, dynamic> map) {
     return ClassificationJobS3JobDefinitionScoping(
-      excludes: map['excludes'] == null
-          ? null
-          : ClassificationJobS3JobDefinitionScopingExcludes.fromMap(
-              (map['excludes'] as Map).cast<String, dynamic>()),
-      includes: map['includes'] == null
-          ? null
-          : ClassificationJobS3JobDefinitionScopingIncludes.fromMap(
-              (map['includes'] as Map).cast<String, dynamic>()),
+      excludes: map['excludes'] == null ? null : ClassificationJobS3JobDefinitionScopingExcludes.fromMap((map['excludes'] as Map).cast<String, dynamic>()),
+      includes: map['includes'] == null ? null : ClassificationJobS3JobDefinitionScopingIncludes.fromMap((map['includes'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration to automatically mirror a repository from another hosting service, for example GitHub or Bitbucket.
 class MirrorConfigResponse {
   /// ID of the SSH deploy key at the other hosting service. Removing this key from the other service would deauthorize Google Cloud Source Repositories from mirroring.
   final String deployKeyId;
-
   /// URL of the main repository at the other hosting service.
   final String url;
-
   /// ID of the webhook listening to updates to trigger mirroring. Removing this webhook from the other hosting service will stop Google Cloud Source Repositories from receiving notifications, and thereby disabling mirroring.
   final String webhookId;
 
@@ -22,11 +21,11 @@ class MirrorConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['deployKeyId'] = deployKeyId;
-    map['url'] = url;
-    map['webhookId'] = webhookId;
-    return map;
+    return <String, dynamic>{
+      'deployKeyId': deployKeyId,
+      'url': url,
+      'webhookId': webhookId,
+    };
   }
 
   factory MirrorConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class MirrorConfigResponse {
     );
   }
 }
+

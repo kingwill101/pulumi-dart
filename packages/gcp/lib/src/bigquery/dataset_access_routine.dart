@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DatasetAccessRoutine {
   /// The ID of the dataset containing this table.
   final String datasetId;
-
   /// The ID of the project containing this table.
   final String projectId;
-
   /// The ID of the routine. The ID must contain only letters (a-z,
   /// A-Z), numbers (0-9), or underscores (_). The maximum length
   /// is 256 characters.
@@ -23,11 +22,11 @@ class DatasetAccessRoutine {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['datasetId'] = datasetId;
-    map['projectId'] = projectId;
-    map['routineId'] = routineId;
-    return map;
+    return <String, dynamic>{
+      'datasetId': datasetId,
+      'projectId': projectId,
+      'routineId': routineId,
+    };
   }
 
   factory DatasetAccessRoutine.fromMap(Map<String, dynamic> map) {
@@ -38,3 +37,4 @@ class DatasetAccessRoutine {
     );
   }
 }
+

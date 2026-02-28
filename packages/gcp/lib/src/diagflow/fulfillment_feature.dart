@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FulfillmentFeature {
   /// The type of the feature that enabled for fulfillment.
   /// * SMALLTALK: Fulfillment is enabled for SmallTalk.
@@ -13,9 +14,9 @@ class FulfillmentFeature {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory FulfillmentFeature.fromMap(Map<String, dynamic> map) {
@@ -24,3 +25,4 @@ class FulfillmentFeature {
     );
   }
 }
+

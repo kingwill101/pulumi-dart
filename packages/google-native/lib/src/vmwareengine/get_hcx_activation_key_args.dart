@@ -22,21 +22,19 @@ class GetHcxActivationKeyArgs {
     required String location,
     required String privateCloudId,
     String? project,
-  })  : hcxActivationKeyId = pulumi.Input.asInput<String>(hcxActivationKeyId),
-        location = pulumi.Input.asInput<String>(location),
-        privateCloudId = pulumi.Input.asInput<String>(privateCloudId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      hcxActivationKeyId = pulumi.Input.asInput<String>(hcxActivationKeyId),
+      location = pulumi.Input.asInput<String>(location),
+      privateCloudId = pulumi.Input.asInput<String>(privateCloudId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['hcxActivationKeyId'] = hcxActivationKeyId;
-    map['location'] = location;
-    map['privateCloudId'] = privateCloudId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'hcxActivationKeyId': hcxActivationKeyId,
+      'location': location,
+      'privateCloudId': privateCloudId,
+      'project': ?project,
+    };
   }
 
   factory GetHcxActivationKeyArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetHcxActivationKeyArgs {
     );
   }
 }
+

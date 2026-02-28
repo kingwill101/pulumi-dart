@@ -19,16 +19,17 @@ class GetSecurityReportArgs {
     required String environmentId,
     required String organizationId,
     required String securityReportId,
-  })  : environmentId = pulumi.Input.asInput<String>(environmentId),
-        organizationId = pulumi.Input.asInput<String>(organizationId),
-        securityReportId = pulumi.Input.asInput<String>(securityReportId);
+  }) :
+      environmentId = pulumi.Input.asInput<String>(environmentId),
+      organizationId = pulumi.Input.asInput<String>(organizationId),
+      securityReportId = pulumi.Input.asInput<String>(securityReportId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['environmentId'] = environmentId;
-    map['organizationId'] = organizationId;
-    map['securityReportId'] = securityReportId;
-    return map;
+    return <String, dynamic>{
+      'environmentId': environmentId,
+      'organizationId': organizationId,
+      'securityReportId': securityReportId,
+    };
   }
 
   factory GetSecurityReportArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +40,4 @@ class GetSecurityReportArgs {
     );
   }
 }
+

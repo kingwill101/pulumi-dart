@@ -1,26 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getVpcLink.
 class GetVpcLinkResult {
   final String arn;
-
   /// Description of the VPC link.
   final String description;
-
   /// Set to the ID of the found API Gateway VPC Link.
   final String id;
   final String name;
   final String region;
-
   /// Status of the VPC link.
   final String status;
-
   /// Status message of the VPC link.
   final String statusMessage;
-
   /// Key-value map of resource tags
   final Map<String, String> tags;
-
   /// List of network load balancer arns in the VPC targeted by the VPC link. Currently AWS only supports 1 target.
   final List<String> targetArns;
 
@@ -47,17 +42,17 @@ class GetVpcLinkResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['description'] = description;
-    map['id'] = id;
-    map['name'] = name;
-    map['region'] = region;
-    map['status'] = status;
-    map['statusMessage'] = statusMessage;
-    map['tags'] = tags;
-    map['targetArns'] = targetArns;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'description': description,
+      'id': id,
+      'name': name,
+      'region': region,
+      'status': status,
+      'statusMessage': statusMessage,
+      'tags': tags,
+      'targetArns': targetArns,
+    };
   }
 
   factory GetVpcLinkResult.fromMap(Map<String, dynamic> map) {
@@ -74,3 +69,4 @@ class GetVpcLinkResult {
     );
   }
 }
+

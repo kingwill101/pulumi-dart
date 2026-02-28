@@ -6,7 +6,6 @@ import 'sandbox_config_type_container_v1beta1.dart';
 class SandboxConfigContainerV1beta1 {
   /// Type of the sandbox to use for the node (e.g. 'gvisor')
   final String? sandboxType;
-
   /// Type of the sandbox to use for the node.
   final SandboxConfigTypeContainerV1beta1? type;
 
@@ -19,25 +18,17 @@ class SandboxConfigContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final sandboxTypeValue = sandboxType;
-    if (sandboxTypeValue != null) {
-      map['sandboxType'] = sandboxTypeValue;
-    }
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'sandboxType': ?sandboxType,
+      'type': ?type == null ? null : type!.value,
+    };
   }
 
   factory SandboxConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return SandboxConfigContainerV1beta1(
-      sandboxType:
-          map['sandboxType'] == null ? null : map['sandboxType'] as String,
-      type: map['type'] == null
-          ? null
-          : SandboxConfigTypeContainerV1beta1.fromValue(map['type'] as String),
+      sandboxType: map['sandboxType'] == null ? null : map['sandboxType'] as String,
+      type: map['type'] == null ? null : SandboxConfigTypeContainerV1beta1.fromValue(map['type'] as String),
     );
   }
 }
+

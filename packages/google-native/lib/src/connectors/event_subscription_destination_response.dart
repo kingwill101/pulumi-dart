@@ -6,10 +6,8 @@ import 'end_point_response.dart';
 class EventSubscriptionDestinationResponse {
   /// OPTION 1: Hit an endpoint when we receive an event.
   final EndPointResponse endpoint;
-
   /// Service account needed for runtime plane to trigger IP workflow.
   final String serviceAccount;
-
   /// type of the destination
   final String type;
 
@@ -24,20 +22,19 @@ class EventSubscriptionDestinationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['endpoint'] = endpoint.toMap();
-    map['serviceAccount'] = serviceAccount;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'endpoint': endpoint.toMap(),
+      'serviceAccount': serviceAccount,
+      'type': type,
+    };
   }
 
-  factory EventSubscriptionDestinationResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory EventSubscriptionDestinationResponse.fromMap(Map<String, dynamic> map) {
     return EventSubscriptionDestinationResponse(
-      endpoint: EndPointResponse.fromMap(
-          (map['endpoint'] as Map).cast<String, dynamic>()),
+      endpoint: EndPointResponse.fromMap((map['endpoint'] as Map).cast<String, dynamic>()),
       serviceAccount: map['serviceAccount'] as String,
       type: map['type'] as String,
     );
   }
 }
+

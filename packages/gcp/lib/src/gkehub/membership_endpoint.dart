@@ -14,20 +14,15 @@ class MembershipEndpoint {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final gkeClusterValue = gkeCluster;
-    if (gkeClusterValue != null) {
-      map['gkeCluster'] = gkeClusterValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'gkeCluster': ?gkeCluster == null ? null : gkeCluster!.toMap(),
+    };
   }
 
   factory MembershipEndpoint.fromMap(Map<String, dynamic> map) {
     return MembershipEndpoint(
-      gkeCluster: map['gkeCluster'] == null
-          ? null
-          : MembershipEndpointGkeCluster.fromMap(
-              (map['gkeCluster'] as Map).cast<String, dynamic>()),
+      gkeCluster: map['gkeCluster'] == null ? null : MembershipEndpointGkeCluster.fromMap((map['gkeCluster'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

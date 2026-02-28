@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EndpointCidrOptionsPortRange {
   final int fromPort;
   final int toPort;
@@ -13,10 +14,10 @@ class EndpointCidrOptionsPortRange {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['fromPort'] = fromPort;
-    map['toPort'] = toPort;
-    return map;
+    return <String, dynamic>{
+      'fromPort': fromPort,
+      'toPort': toPort,
+    };
   }
 
   factory EndpointCidrOptionsPortRange.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class EndpointCidrOptionsPortRange {
     );
   }
 }
+

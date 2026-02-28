@@ -275,160 +275,108 @@ import 'function_vpc_config.dart';
 class CallbackFunction extends pulumi.CustomResource {
   /// Instruction set architecture for your Lambda function. Valid values are `["x86_64"]` and `["arm64"]`. Default is `["x86_64"]`. Removing this attribute, function's architecture stays the same.
   late final pulumi.Output<List<String>?> architectures;
-
   /// ARN identifying your Lambda Function.
   late final pulumi.Output<String?> arn;
-
   /// Configuration block for Lambda Capacity Provider. See below.
-  late final pulumi.Output<FunctionCapacityProviderConfig?>
-      capacityProviderConfig;
-
+  late final pulumi.Output<FunctionCapacityProviderConfig?> capacityProviderConfig;
   /// Path to the function's deployment package within the local filesystem. Conflicts with `image_uri` and `s3_bucket`. One of `filename`, `image_uri`, or `s3_bucket` must be specified.
   late final pulumi.Output<dynamic> code;
-
   /// Base64-encoded representation the source code package file. Use this argument to trigger updates when the function source code changes. For OCI, this value is relayed directly from the image digest. For zip files, this value is the Base64 encoded SHA-256 hash of the `.zip` file. Layers are not included in the calculation. To trigger updates using a non-standard hashing algorithm, use the `source_code_hash` argument instead.
   late final pulumi.Output<String?> codeSha256;
-
   /// ARN of a code-signing configuration to enable code signing for this function.
   late final pulumi.Output<String?> codeSigningConfigArn;
-
   /// Configuration block for dead letter queue. See below.
   late final pulumi.Output<FunctionDeadLetterConfig?> deadLetterConfig;
-
   /// Description of what your Lambda Function does.
   late final pulumi.Output<String?> description;
-
   /// Configuration block for durable function settings. See below. `durable_config` may only be available in [limited regions](https://builder.aws.com/build/capabilities), including `us-east-2`.
   late final pulumi.Output<FunctionDurableConfig?> durableConfig;
-
   /// Configuration block for environment variables. See below.
   late final pulumi.Output<FunctionEnvironment?> environment;
-
   /// Amount of ephemeral storage (`/tmp`) to allocate for the Lambda Function. See below.
   late final pulumi.Output<FunctionEphemeralStorage?> ephemeralStorage;
-
   /// Configuration block for EFS file system. See below.
   late final pulumi.Output<FunctionFileSystemConfig?> fileSystemConfig;
-
   /// Function entry point in your code. Required if `package_type` is `Zip`.
   late final pulumi.Output<String?> handler;
-
   /// Container image configuration values. See below.
   late final pulumi.Output<FunctionImageConfig?> imageConfig;
-
   /// ECR image URI containing the function's deployment package. Conflicts with `filename` and `s3_bucket`. One of `filename`, `image_uri`, or `s3_bucket` must be specified.
   late final pulumi.Output<String?> imageUri;
-
   /// ARN to be used for invoking Lambda Function from API Gateway - to be used in `aws.apigateway.Integration`'s `uri`.
   late final pulumi.Output<String?> invokeArn;
-
   /// ARN of the AWS Key Management Service key used to encrypt environment variables. If not provided when environment variables are in use, AWS Lambda uses a default service key. If provided when environment variables are not in use, the AWS Lambda API does not save this configuration.
   late final pulumi.Output<String?> kmsKeyArn;
-
   /// Date this resource was last modified.
   late final pulumi.Output<String?> lastModified;
-
   /// List of Lambda Layer Version ARNs (maximum of 5) to attach to your Lambda Function.
   late final pulumi.Output<List<String>?> layers;
-
   /// Configuration block for advanced logging settings. See below.
   late final pulumi.Output<FunctionLoggingConfig?> loggingConfig;
-
   /// Amount of memory in MB your Lambda Function can use at runtime. Valid value between 128 MB to 32,768 MB (32 GB), in 1 MB increments. Defaults to 128.
   late final pulumi.Output<int?> memorySize;
-
   /// Unique name for your Lambda Function.
   late final pulumi.Output<String?> name;
-
   /// Lambda deployment package type. Valid values are `Zip` and `Image`. Defaults to `Zip`.
   late final pulumi.Output<String?> packageType;
-
   /// Whether to publish creation/change as new Lambda Function Version. Defaults to `false`.
   late final pulumi.Output<bool?> publish;
-
   /// Whether to publish to a alias or version number. Omit for regular version publishing. Option is `LATEST_PUBLISHED`.
   late final pulumi.Output<String?> publishTo;
-
   /// ARN identifying your Lambda Function Version (if versioning is enabled via `publish = true`).
   late final pulumi.Output<String?> qualifiedArn;
-
   /// Qualified ARN (ARN with lambda version number) to be used for invoking Lambda Function from API Gateway - to be used in `aws.apigateway.Integration`'s `uri`.
   late final pulumi.Output<String?> qualifiedInvokeArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String?> region;
-
   /// Whether to replace the security groups on the function's VPC configuration prior to destruction. Default is `false`.
   late final pulumi.Output<bool?> replaceSecurityGroupsOnDestroy;
-
   /// List of security group IDs to assign to the function's VPC configuration prior to destruction. Required if `replace_security_groups_on_destroy` is `true`.
   late final pulumi.Output<List<String>?> replacementSecurityGroupIds;
-
   /// Amount of reserved concurrent executions for this lambda function. A value of `0` disables lambda from being triggered and `-1` removes any concurrency limitations. Defaults to Unreserved Concurrency Limits `-1`.
   late final pulumi.Output<int?> reservedConcurrentExecutions;
-
   /// ARN to be used for invoking Lambda Function from API Gateway with response streaming - to be used in `aws.apigateway.Integration`'s `uri`.
   late final pulumi.Output<String?> responseStreamingInvokeArn;
-
   /// ARN of the function's execution role. The role provides the function's identity and access to AWS services and resources.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String?> role;
-
   /// The IAM role assigned to this Lambda function. Will be undefined if an ARN was provided for the role input property.
   late final pulumi.Output<String?> roleInstance;
-
   /// Identifier of the function's runtime. Required if `package_type` is `Zip`. See [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html#SSS-CreateFunction-request-Runtime) for valid values.
   late final pulumi.Output<String?> runtime;
-
   /// S3 bucket location containing the function's deployment package. Conflicts with `filename` and `image_uri`. One of `filename`, `image_uri`, or `s3_bucket` must be specified.
   late final pulumi.Output<String?> s3Bucket;
-
   /// S3 key of an object containing the function's deployment package. Required if `s3_bucket` is set.
   late final pulumi.Output<String?> s3Key;
-
   /// Object version containing the function's deployment package. Conflicts with `filename` and `image_uri`.
   late final pulumi.Output<String?> s3ObjectVersion;
-
   /// ARN of the signing job.
   late final pulumi.Output<String?> signingJobArn;
-
   /// ARN of the signing profile version.
   late final pulumi.Output<String?> signingProfileVersionArn;
-
   /// Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`.
   late final pulumi.Output<bool?> skipDestroy;
-
   /// Configuration block for snap start settings. See below.
   late final pulumi.Output<FunctionSnapStart?> snapStart;
-
   /// User-defined hash of the source code package file. Use this argument to trigger updates when the local function source code changes. This is a synthetic argument tracked only by the AWS provider and does not need to match the hashing algorithm used by Lambda to compute the `CodeSha256` response value. Out-of-band changes to the source code _will not_ be captured by this argument. To include out-of-band source code changes as an update trigger, use the `code_sha256` argument instead.
   late final pulumi.Output<String?> sourceCodeHash;
-
   /// Size in bytes of the function .zip file.
   late final pulumi.Output<int?> sourceCodeSize;
-
   /// ARN of the AWS Key Management Service key used to encrypt the function's `.zip` deployment package. Conflicts with `image_uri`.
   late final pulumi.Output<String?> sourceKmsKeyArn;
-
   /// Key-value map of tags for the Lambda function. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>?> tagsAll;
-
   /// Configuration block for Tenancy. See below.
   late final pulumi.Output<FunctionTenancyConfig?> tenancyConfig;
-
   /// Amount of time your Lambda Function has to run in seconds. Defaults to 3. Valid between 1 and 900.
   late final pulumi.Output<int?> timeout;
-
   /// Configuration block for X-Ray tracing. See below.
   late final pulumi.Output<FunctionTracingConfig?> tracingConfig;
-
   /// Latest published version of your Lambda Function.
   late final pulumi.Output<String?> version;
-
   /// Configuration block for VPC. See below.
   late final pulumi.Output<FunctionVpcConfig?> vpcConfig;
 
@@ -448,22 +396,16 @@ class CallbackFunction extends pulumi.CustomResource {
         ) {
     this.architectures = registerOutput<List<String>?>('architectures');
     this.arn = registerOutput<String?>('arn');
-    this.capacityProviderConfig =
-        registerOutput<FunctionCapacityProviderConfig?>(
-            'capacityProviderConfig');
+    this.capacityProviderConfig = registerOutput<FunctionCapacityProviderConfig?>('capacityProviderConfig');
     this.code = registerOutput<dynamic>('code');
     this.codeSha256 = registerOutput<String?>('codeSha256');
     this.codeSigningConfigArn = registerOutput<String?>('codeSigningConfigArn');
-    this.deadLetterConfig =
-        registerOutput<FunctionDeadLetterConfig?>('deadLetterConfig');
+    this.deadLetterConfig = registerOutput<FunctionDeadLetterConfig?>('deadLetterConfig');
     this.description = registerOutput<String?>('description');
-    this.durableConfig =
-        registerOutput<FunctionDurableConfig?>('durableConfig');
+    this.durableConfig = registerOutput<FunctionDurableConfig?>('durableConfig');
     this.environment = registerOutput<FunctionEnvironment?>('environment');
-    this.ephemeralStorage =
-        registerOutput<FunctionEphemeralStorage?>('ephemeralStorage');
-    this.fileSystemConfig =
-        registerOutput<FunctionFileSystemConfig?>('fileSystemConfig');
+    this.ephemeralStorage = registerOutput<FunctionEphemeralStorage?>('ephemeralStorage');
+    this.fileSystemConfig = registerOutput<FunctionFileSystemConfig?>('fileSystemConfig');
     this.handler = registerOutput<String?>('handler');
     this.imageConfig = registerOutput<FunctionImageConfig?>('imageConfig');
     this.imageUri = registerOutput<String?>('imageUri');
@@ -471,8 +413,7 @@ class CallbackFunction extends pulumi.CustomResource {
     this.kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.lastModified = registerOutput<String?>('lastModified');
     this.layers = registerOutput<List<String>?>('layers');
-    this.loggingConfig =
-        registerOutput<FunctionLoggingConfig?>('loggingConfig');
+    this.loggingConfig = registerOutput<FunctionLoggingConfig?>('loggingConfig');
     this.memorySize = registerOutput<int?>('memorySize');
     this.name = registerOutput<String?>('name');
     this.packageType = registerOutput<String?>('packageType');
@@ -481,14 +422,10 @@ class CallbackFunction extends pulumi.CustomResource {
     this.qualifiedArn = registerOutput<String?>('qualifiedArn');
     this.qualifiedInvokeArn = registerOutput<String?>('qualifiedInvokeArn');
     this.region = registerOutput<String?>('region');
-    this.replaceSecurityGroupsOnDestroy =
-        registerOutput<bool?>('replaceSecurityGroupsOnDestroy');
-    this.replacementSecurityGroupIds =
-        registerOutput<List<String>?>('replacementSecurityGroupIds');
-    this.reservedConcurrentExecutions =
-        registerOutput<int?>('reservedConcurrentExecutions');
-    this.responseStreamingInvokeArn =
-        registerOutput<String?>('responseStreamingInvokeArn');
+    this.replaceSecurityGroupsOnDestroy = registerOutput<bool?>('replaceSecurityGroupsOnDestroy');
+    this.replacementSecurityGroupIds = registerOutput<List<String>?>('replacementSecurityGroupIds');
+    this.reservedConcurrentExecutions = registerOutput<int?>('reservedConcurrentExecutions');
+    this.responseStreamingInvokeArn = registerOutput<String?>('responseStreamingInvokeArn');
     this.role = registerOutput<String?>('role');
     this.roleInstance = registerOutput<String?>('roleInstance');
     this.runtime = registerOutput<String?>('runtime');
@@ -496,8 +433,7 @@ class CallbackFunction extends pulumi.CustomResource {
     this.s3Key = registerOutput<String?>('s3Key');
     this.s3ObjectVersion = registerOutput<String?>('s3ObjectVersion');
     this.signingJobArn = registerOutput<String?>('signingJobArn');
-    this.signingProfileVersionArn =
-        registerOutput<String?>('signingProfileVersionArn');
+    this.signingProfileVersionArn = registerOutput<String?>('signingProfileVersionArn');
     this.skipDestroy = registerOutput<bool?>('skipDestroy');
     this.snapStart = registerOutput<FunctionSnapStart?>('snapStart');
     this.sourceCodeHash = registerOutput<String?>('sourceCodeHash');
@@ -505,11 +441,9 @@ class CallbackFunction extends pulumi.CustomResource {
     this.sourceKmsKeyArn = registerOutput<String?>('sourceKmsKeyArn');
     this.tags = registerOutput<Map<String, String>?>('tags');
     this.tagsAll = registerOutput<Map<String, String>?>('tagsAll');
-    this.tenancyConfig =
-        registerOutput<FunctionTenancyConfig?>('tenancyConfig');
+    this.tenancyConfig = registerOutput<FunctionTenancyConfig?>('tenancyConfig');
     this.timeout = registerOutput<int?>('timeout');
-    this.tracingConfig =
-        registerOutput<FunctionTracingConfig?>('tracingConfig');
+    this.tracingConfig = registerOutput<FunctionTracingConfig?>('tracingConfig');
     this.version = registerOutput<String?>('version');
     this.vpcConfig = registerOutput<FunctionVpcConfig?>('vpcConfig');
   }

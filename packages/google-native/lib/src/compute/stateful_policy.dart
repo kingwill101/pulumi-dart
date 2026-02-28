@@ -12,20 +12,15 @@ class StatefulPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final preservedStateValue = preservedState;
-    if (preservedStateValue != null) {
-      map['preservedState'] = preservedStateValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'preservedState': ?preservedState == null ? null : preservedState!.toMap(),
+    };
   }
 
   factory StatefulPolicy.fromMap(Map<String, dynamic> map) {
     return StatefulPolicy(
-      preservedState: map['preservedState'] == null
-          ? null
-          : StatefulPolicyPreservedState.fromMap(
-              (map['preservedState'] as Map).cast<String, dynamic>()),
+      preservedState: map['preservedState'] == null ? null : StatefulPolicyPreservedState.fromMap((map['preservedState'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

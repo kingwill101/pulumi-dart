@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetAutonomousDatabasePropertyConnectionStringProfile {
   /// The current consumer group being used by the connection.
   /// Possible values:
@@ -10,35 +11,29 @@ class GetAutonomousDatabasePropertyConnectionStringProfile {
   /// TP
   /// TPURGENT
   final String consumerGroup;
-
   /// The display name for the database connection.
   final String displayName;
-
   /// The host name format being currently used in connection string.
   /// Possible values:
   /// HOST_FORMAT_UNSPECIFIED
   /// FQDN
   /// IP
   final String hostFormat;
-
   /// This field indicates if the connection string is regional and is only
   /// applicable for cross-region Data Guard.
   final bool isRegional;
-
   /// The protocol being used by the connection.
   /// Possible values:
   /// PROTOCOL_UNSPECIFIED
   /// TCP
   /// TCPS
   final String protocol;
-
   /// The current session mode of the connection.
   /// Possible values:
   /// SESSION_MODE_UNSPECIFIED
   /// DIRECT
   /// INDIRECT
   final String sessionMode;
-
   /// The syntax of the connection string.
   /// Possible values:
   /// SYNTAX_FORMAT_UNSPECIFIED
@@ -46,14 +41,12 @@ class GetAutonomousDatabasePropertyConnectionStringProfile {
   /// EZCONNECT
   /// EZCONNECTPLUS
   final String syntaxFormat;
-
   /// This field indicates the TLS authentication type of the connection.
   /// Possible values:
   /// TLS_AUTHENTICATION_UNSPECIFIED
   /// SERVER
   /// MUTUAL
   final String tlsAuthentication;
-
   /// The value of the connection string.
   final String value;
 
@@ -80,21 +73,20 @@ class GetAutonomousDatabasePropertyConnectionStringProfile {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['consumerGroup'] = consumerGroup;
-    map['displayName'] = displayName;
-    map['hostFormat'] = hostFormat;
-    map['isRegional'] = isRegional;
-    map['protocol'] = protocol;
-    map['sessionMode'] = sessionMode;
-    map['syntaxFormat'] = syntaxFormat;
-    map['tlsAuthentication'] = tlsAuthentication;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'consumerGroup': consumerGroup,
+      'displayName': displayName,
+      'hostFormat': hostFormat,
+      'isRegional': isRegional,
+      'protocol': protocol,
+      'sessionMode': sessionMode,
+      'syntaxFormat': syntaxFormat,
+      'tlsAuthentication': tlsAuthentication,
+      'value': value,
+    };
   }
 
-  factory GetAutonomousDatabasePropertyConnectionStringProfile.fromMap(
-      Map<String, dynamic> map) {
+  factory GetAutonomousDatabasePropertyConnectionStringProfile.fromMap(Map<String, dynamic> map) {
     return GetAutonomousDatabasePropertyConnectionStringProfile(
       consumerGroup: map['consumerGroup'] as String,
       displayName: map['displayName'] as String,
@@ -108,3 +100,4 @@ class GetAutonomousDatabasePropertyConnectionStringProfile {
     );
   }
 }
+

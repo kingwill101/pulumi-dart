@@ -7,7 +7,6 @@ import 'cidr_block_response.dart';
 class MasterAuthorizedNetworksConfigResponse {
   /// Up to 50 external networks that could access Kubernetes master through HTTPS.
   final List<CidrBlockResponse> cidrBlocks;
-
   /// Whether or not master authorized networks feature is enabled.
   final bool enabled;
 
@@ -20,22 +19,17 @@ class MasterAuthorizedNetworksConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cidrBlocks'] =
-        pulumi.Input.encodeList<CidrBlockResponse, Map<String, dynamic>>(
-            cidrBlocks, (value) => value.toMap());
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'cidrBlocks': pulumi.Input.encodeList<CidrBlockResponse, Map<String, dynamic>>(cidrBlocks, (value) => value.toMap()),
+      'enabled': enabled,
+    };
   }
 
-  factory MasterAuthorizedNetworksConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory MasterAuthorizedNetworksConfigResponse.fromMap(Map<String, dynamic> map) {
     return MasterAuthorizedNetworksConfigResponse(
-      cidrBlocks: pulumi.Input.decodeList<CidrBlockResponse>(
-          map['cidrBlocks'],
-          (value) => CidrBlockResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      cidrBlocks: pulumi.Input.decodeList<CidrBlockResponse>(map['cidrBlocks'], (value) => CidrBlockResponse.fromMap((value as Map).cast<String, dynamic>())),
       enabled: map['enabled'] as bool,
     );
   }
 }
+

@@ -15,10 +15,8 @@ class GetDiskResult {
   final List<GetDiskAsyncPrimaryDisk> asyncPrimaryDisks;
   final bool createSnapshotBeforeDestroy;
   final String createSnapshotBeforeDestroyPrefix;
-
   /// Creation timestamp in RFC3339 text format.
   final String creationTimestamp;
-
   /// The optional description of this resource.
   final String description;
   final List<GetDiskDiskEncryptionKey> diskEncryptionKeys;
@@ -26,31 +24,24 @@ class GetDiskResult {
   final Map<String, String> effectiveLabels;
   final bool enableConfidentialCompute;
   final List<GetDiskGuestOsFeature> guestOsFeatures;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The image from which to initialize this disk.
   final String image;
   final String interface;
-
   /// The fingerprint used for optimistic locking of this resource.  Used
   /// internally during updates.
   final String labelFingerprint;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final Map<String, String> labels;
-
   /// Last attach timestamp in RFC3339 text format.
   final String lastAttachTimestamp;
-
   /// Last detach timestamp in RFC3339 text format.
   final String lastDetachTimestamp;
   final List<String> licenses;
   final bool multiWriter;
   final String name;
   final List<GetDiskParam> params;
-
   /// Physical block size of the persistent disk, in bytes.
   final int physicalBlockSizeBytes;
   final String? project;
@@ -58,21 +49,16 @@ class GetDiskResult {
   final int provisionedThroughput;
   final Map<String, String> pulumiLabels;
   final List<String> resourcePolicies;
-
   /// The URI of the created resource.
   final String selfLink;
-
   /// Size of the persistent disk, specified in GB.
   final int size;
-
   /// The source snapshot used to create this disk.
   final String snapshot;
   final String sourceDisk;
   final String sourceDiskId;
-
   /// The customer-supplied encryption key of the source image.
   final List<GetDiskSourceImageEncryptionKey> sourceImageEncryptionKeys;
-
   /// The ID value of the image used to create this disk. This value
   /// identifies the exact image that was used to create this persistent
   /// disk. For example, if you created the persistent disk from an image
@@ -81,10 +67,8 @@ class GetDiskResult {
   final String sourceImageId;
   final String sourceInstantSnapshot;
   final String sourceInstantSnapshotId;
-
   /// The customer-supplied encryption key of the source snapshot.
   final List<GetDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys;
-
   /// The unique ID of the snapshot used to create this disk. This value
   /// identifies the exact snapshot that was used to create this persistent
   /// disk. For example, if you created the persistent disk from a snapshot
@@ -94,15 +78,12 @@ class GetDiskResult {
   final String sourceSnapshotId;
   final String sourceStorageObject;
   final String storagePool;
-
   /// URL of the disk type resource describing which disk type to use to
   /// create the disk.
   final String type;
-
   /// Links to the users of the disk (attached instances) in form:
   /// project/zones/zone/instances/instance
   final List<String> users;
-
   /// A reference to the zone where the disk resides.
   final String? zone;
 
@@ -201,97 +182,69 @@ class GetDiskResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accessMode'] = accessMode;
-    map['architecture'] = architecture;
-    map['asyncPrimaryDisks'] =
-        pulumi.Input.encodeList<GetDiskAsyncPrimaryDisk, Map<String, dynamic>>(
-            asyncPrimaryDisks, (value) => value.toMap());
-    map['createSnapshotBeforeDestroy'] = createSnapshotBeforeDestroy;
-    map['createSnapshotBeforeDestroyPrefix'] =
-        createSnapshotBeforeDestroyPrefix;
-    map['creationTimestamp'] = creationTimestamp;
-    map['description'] = description;
-    map['diskEncryptionKeys'] =
-        pulumi.Input.encodeList<GetDiskDiskEncryptionKey, Map<String, dynamic>>(
-            diskEncryptionKeys, (value) => value.toMap());
-    map['diskId'] = diskId;
-    map['effectiveLabels'] = effectiveLabels;
-    map['enableConfidentialCompute'] = enableConfidentialCompute;
-    map['guestOsFeatures'] =
-        pulumi.Input.encodeList<GetDiskGuestOsFeature, Map<String, dynamic>>(
-            guestOsFeatures, (value) => value.toMap());
-    map['id'] = id;
-    map['image'] = image;
-    map['interface'] = interface;
-    map['labelFingerprint'] = labelFingerprint;
-    map['labels'] = labels;
-    map['lastAttachTimestamp'] = lastAttachTimestamp;
-    map['lastDetachTimestamp'] = lastDetachTimestamp;
-    map['licenses'] = licenses;
-    map['multiWriter'] = multiWriter;
-    map['name'] = name;
-    map['params'] = pulumi.Input.encodeList<GetDiskParam, Map<String, dynamic>>(
-        params, (value) => value.toMap());
-    map['physicalBlockSizeBytes'] = physicalBlockSizeBytes;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['provisionedIops'] = provisionedIops;
-    map['provisionedThroughput'] = provisionedThroughput;
-    map['pulumiLabels'] = pulumiLabels;
-    map['resourcePolicies'] = resourcePolicies;
-    map['selfLink'] = selfLink;
-    map['size'] = size;
-    map['snapshot'] = snapshot;
-    map['sourceDisk'] = sourceDisk;
-    map['sourceDiskId'] = sourceDiskId;
-    map['sourceImageEncryptionKeys'] = pulumi.Input.encodeList<
-            GetDiskSourceImageEncryptionKey, Map<String, dynamic>>(
-        sourceImageEncryptionKeys, (value) => value.toMap());
-    map['sourceImageId'] = sourceImageId;
-    map['sourceInstantSnapshot'] = sourceInstantSnapshot;
-    map['sourceInstantSnapshotId'] = sourceInstantSnapshotId;
-    map['sourceSnapshotEncryptionKeys'] = pulumi.Input.encodeList<
-            GetDiskSourceSnapshotEncryptionKey, Map<String, dynamic>>(
-        sourceSnapshotEncryptionKeys, (value) => value.toMap());
-    map['sourceSnapshotId'] = sourceSnapshotId;
-    map['sourceStorageObject'] = sourceStorageObject;
-    map['storagePool'] = storagePool;
-    map['type'] = type;
-    map['users'] = users;
-    final zoneValue = zone;
-    if (zoneValue != null) {
-      map['zone'] = zoneValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'accessMode': accessMode,
+      'architecture': architecture,
+      'asyncPrimaryDisks': pulumi.Input.encodeList<GetDiskAsyncPrimaryDisk, Map<String, dynamic>>(asyncPrimaryDisks, (value) => value.toMap()),
+      'createSnapshotBeforeDestroy': createSnapshotBeforeDestroy,
+      'createSnapshotBeforeDestroyPrefix': createSnapshotBeforeDestroyPrefix,
+      'creationTimestamp': creationTimestamp,
+      'description': description,
+      'diskEncryptionKeys': pulumi.Input.encodeList<GetDiskDiskEncryptionKey, Map<String, dynamic>>(diskEncryptionKeys, (value) => value.toMap()),
+      'diskId': diskId,
+      'effectiveLabels': effectiveLabels,
+      'enableConfidentialCompute': enableConfidentialCompute,
+      'guestOsFeatures': pulumi.Input.encodeList<GetDiskGuestOsFeature, Map<String, dynamic>>(guestOsFeatures, (value) => value.toMap()),
+      'id': id,
+      'image': image,
+      'interface': interface,
+      'labelFingerprint': labelFingerprint,
+      'labels': labels,
+      'lastAttachTimestamp': lastAttachTimestamp,
+      'lastDetachTimestamp': lastDetachTimestamp,
+      'licenses': licenses,
+      'multiWriter': multiWriter,
+      'name': name,
+      'params': pulumi.Input.encodeList<GetDiskParam, Map<String, dynamic>>(params, (value) => value.toMap()),
+      'physicalBlockSizeBytes': physicalBlockSizeBytes,
+      'project': ?project,
+      'provisionedIops': provisionedIops,
+      'provisionedThroughput': provisionedThroughput,
+      'pulumiLabels': pulumiLabels,
+      'resourcePolicies': resourcePolicies,
+      'selfLink': selfLink,
+      'size': size,
+      'snapshot': snapshot,
+      'sourceDisk': sourceDisk,
+      'sourceDiskId': sourceDiskId,
+      'sourceImageEncryptionKeys': pulumi.Input.encodeList<GetDiskSourceImageEncryptionKey, Map<String, dynamic>>(sourceImageEncryptionKeys, (value) => value.toMap()),
+      'sourceImageId': sourceImageId,
+      'sourceInstantSnapshot': sourceInstantSnapshot,
+      'sourceInstantSnapshotId': sourceInstantSnapshotId,
+      'sourceSnapshotEncryptionKeys': pulumi.Input.encodeList<GetDiskSourceSnapshotEncryptionKey, Map<String, dynamic>>(sourceSnapshotEncryptionKeys, (value) => value.toMap()),
+      'sourceSnapshotId': sourceSnapshotId,
+      'sourceStorageObject': sourceStorageObject,
+      'storagePool': storagePool,
+      'type': type,
+      'users': users,
+      'zone': ?zone,
+    };
   }
 
   factory GetDiskResult.fromMap(Map<String, dynamic> map) {
     return GetDiskResult(
       accessMode: map['accessMode'] as String,
       architecture: map['architecture'] as String,
-      asyncPrimaryDisks: pulumi.Input.decodeList<GetDiskAsyncPrimaryDisk>(
-          map['asyncPrimaryDisks'],
-          (value) => GetDiskAsyncPrimaryDisk.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      asyncPrimaryDisks: pulumi.Input.decodeList<GetDiskAsyncPrimaryDisk>(map['asyncPrimaryDisks'], (value) => GetDiskAsyncPrimaryDisk.fromMap((value as Map).cast<String, dynamic>())),
       createSnapshotBeforeDestroy: map['createSnapshotBeforeDestroy'] as bool,
-      createSnapshotBeforeDestroyPrefix:
-          map['createSnapshotBeforeDestroyPrefix'] as String,
+      createSnapshotBeforeDestroyPrefix: map['createSnapshotBeforeDestroyPrefix'] as String,
       creationTimestamp: map['creationTimestamp'] as String,
       description: map['description'] as String,
-      diskEncryptionKeys: pulumi.Input.decodeList<GetDiskDiskEncryptionKey>(
-          map['diskEncryptionKeys'],
-          (value) => GetDiskDiskEncryptionKey.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      diskEncryptionKeys: pulumi.Input.decodeList<GetDiskDiskEncryptionKey>(map['diskEncryptionKeys'], (value) => GetDiskDiskEncryptionKey.fromMap((value as Map).cast<String, dynamic>())),
       diskId: map['diskId'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       enableConfidentialCompute: map['enableConfidentialCompute'] as bool,
-      guestOsFeatures: pulumi.Input.decodeList<GetDiskGuestOsFeature>(
-          map['guestOsFeatures'],
-          (value) => GetDiskGuestOsFeature.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      guestOsFeatures: pulumi.Input.decodeList<GetDiskGuestOsFeature>(map['guestOsFeatures'], (value) => GetDiskGuestOsFeature.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       image: map['image'] as String,
       interface: map['interface'] as String,
@@ -302,10 +255,7 @@ class GetDiskResult {
       licenses: (map['licenses'] as List).cast<String>(),
       multiWriter: map['multiWriter'] as bool,
       name: map['name'] as String,
-      params: pulumi.Input.decodeList<GetDiskParam>(
-          map['params'],
-          (value) =>
-              GetDiskParam.fromMap((value as Map).cast<String, dynamic>())),
+      params: pulumi.Input.decodeList<GetDiskParam>(map['params'], (value) => GetDiskParam.fromMap((value as Map).cast<String, dynamic>())),
       physicalBlockSizeBytes: map['physicalBlockSizeBytes'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       provisionedIops: map['provisionedIops'] as int,
@@ -317,19 +267,11 @@ class GetDiskResult {
       snapshot: map['snapshot'] as String,
       sourceDisk: map['sourceDisk'] as String,
       sourceDiskId: map['sourceDiskId'] as String,
-      sourceImageEncryptionKeys:
-          pulumi.Input.decodeList<GetDiskSourceImageEncryptionKey>(
-              map['sourceImageEncryptionKeys'],
-              (value) => GetDiskSourceImageEncryptionKey.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      sourceImageEncryptionKeys: pulumi.Input.decodeList<GetDiskSourceImageEncryptionKey>(map['sourceImageEncryptionKeys'], (value) => GetDiskSourceImageEncryptionKey.fromMap((value as Map).cast<String, dynamic>())),
       sourceImageId: map['sourceImageId'] as String,
       sourceInstantSnapshot: map['sourceInstantSnapshot'] as String,
       sourceInstantSnapshotId: map['sourceInstantSnapshotId'] as String,
-      sourceSnapshotEncryptionKeys:
-          pulumi.Input.decodeList<GetDiskSourceSnapshotEncryptionKey>(
-              map['sourceSnapshotEncryptionKeys'],
-              (value) => GetDiskSourceSnapshotEncryptionKey.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      sourceSnapshotEncryptionKeys: pulumi.Input.decodeList<GetDiskSourceSnapshotEncryptionKey>(map['sourceSnapshotEncryptionKeys'], (value) => GetDiskSourceSnapshotEncryptionKey.fromMap((value as Map).cast<String, dynamic>())),
       sourceSnapshotId: map['sourceSnapshotId'] as String,
       sourceStorageObject: map['sourceStorageObject'] as String,
       storagePool: map['storagePool'] as String,
@@ -339,3 +281,4 @@ class GetDiskResult {
     );
   }
 }
+

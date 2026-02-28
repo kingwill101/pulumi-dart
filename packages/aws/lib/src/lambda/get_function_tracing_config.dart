@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetFunctionTracingConfig {
   /// Tracing mode. Valid values: `Active`, `PassThrough`.
   final String mode;
@@ -11,9 +12,9 @@ class GetFunctionTracingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['mode'] = mode;
-    return map;
+    return <String, dynamic>{
+      'mode': mode,
+    };
   }
 
   factory GetFunctionTracingConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetFunctionTracingConfig {
     );
   }
 }
+

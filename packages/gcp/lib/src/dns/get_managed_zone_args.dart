@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedZoneArgs {
   /// A unique name for the resource.
   final pulumi.Input<String> name;
-
   /// The ID of the project for the Google Cloud DNS zone.  If this is not provided the default project will be used.
   final pulumi.Input<String>? project;
 
@@ -19,17 +18,15 @@ class GetManagedZoneArgs {
   GetManagedZoneArgs({
     required String name,
     String? project,
-  })  : name = pulumi.Input.asInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      name = pulumi.Input.asInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'project': ?project,
+    };
   }
 
   factory GetManagedZoneArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +36,4 @@ class GetManagedZoneArgs {
     );
   }
 }
+

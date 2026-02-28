@@ -118,19 +118,14 @@ import 'traffic_mirror_filter_args.dart';
 class TrafficMirrorFilter extends pulumi.CustomResource {
   /// The ARN of the traffic mirror filter.
   late final pulumi.Output<String> arn;
-
   /// A description of the filter.
   late final pulumi.Output<String?> description;
-
   /// List of amazon network services that should be mirrored. Valid values: `amazon-dns`.
   late final pulumi.Output<List<String>?> networkServices;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 

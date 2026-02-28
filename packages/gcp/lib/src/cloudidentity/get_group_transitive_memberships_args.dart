@@ -14,12 +14,13 @@ class GetGroupTransitiveMembershipsArgs {
   /// [group] The parent Group resource to search transitive memberships in. Must be of the form groups/{group_id}.
   GetGroupTransitiveMembershipsArgs({
     required String group,
-  }) : group = pulumi.Input.asInput<String>(group);
+  }) :
+      group = pulumi.Input.asInput<String>(group);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['group'] = group;
-    return map;
+    return <String, dynamic>{
+      'group': group,
+    };
   }
 
   factory GetGroupTransitiveMembershipsArgs.fromMap(Map<String, dynamic> map) {
@@ -28,3 +29,4 @@ class GetGroupTransitiveMembershipsArgs {
     );
   }
 }
+

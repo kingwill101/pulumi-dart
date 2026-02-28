@@ -19,19 +19,17 @@ class GetNetworkAttachmentArgs {
     required String networkAttachment,
     String? project,
     required String region,
-  })  : networkAttachment = pulumi.Input.asInput<String>(networkAttachment),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asInput<String>(region);
+  }) :
+      networkAttachment = pulumi.Input.asInput<String>(networkAttachment),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['networkAttachment'] = networkAttachment;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'networkAttachment': networkAttachment,
+      'project': ?project,
+      'region': region,
+    };
   }
 
   factory GetNetworkAttachmentArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetNetworkAttachmentArgs {
     );
   }
 }
+

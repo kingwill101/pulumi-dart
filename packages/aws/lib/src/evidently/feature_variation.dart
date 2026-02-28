@@ -5,7 +5,6 @@ import 'feature_variation_value.dart';
 class FeatureVariation {
   /// The name of the variation. Minimum length of `1`. Maximum length of `127`.
   final String name;
-
   /// A block that specifies the value assigned to this variation. Detailed below
   final FeatureVariationValue value;
 
@@ -18,17 +17,17 @@ class FeatureVariation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['value'] = value.toMap();
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'value': value.toMap(),
+    };
   }
 
   factory FeatureVariation.fromMap(Map<String, dynamic> map) {
     return FeatureVariation(
       name: map['name'] as String,
-      value: FeatureVariationValue.fromMap(
-          (map['value'] as Map).cast<String, dynamic>()),
+      value: FeatureVariationValue.fromMap((map['value'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -14,15 +14,15 @@ class DetailsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['attestation'] = attestation.toMap();
-    return map;
+    return <String, dynamic>{
+      'attestation': attestation.toMap(),
+    };
   }
 
   factory DetailsResponse.fromMap(Map<String, dynamic> map) {
     return DetailsResponse(
-      attestation: AttestationResponseContaineranalysisV1beta1.fromMap(
-          (map['attestation'] as Map).cast<String, dynamic>()),
+      attestation: AttestationResponseContaineranalysisV1beta1.fromMap((map['attestation'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

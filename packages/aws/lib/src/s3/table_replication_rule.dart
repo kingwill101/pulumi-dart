@@ -14,19 +14,15 @@ class TableReplicationRule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['destinations'] = pulumi.Input.encodeList<
-        TableReplicationRuleDestination,
-        Map<String, dynamic>>(destinations, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'destinations': pulumi.Input.encodeList<TableReplicationRuleDestination, Map<String, dynamic>>(destinations, (value) => value.toMap()),
+    };
   }
 
   factory TableReplicationRule.fromMap(Map<String, dynamic> map) {
     return TableReplicationRule(
-      destinations: pulumi.Input.decodeList<TableReplicationRuleDestination>(
-          map['destinations'],
-          (value) => TableReplicationRuleDestination.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      destinations: pulumi.Input.decodeList<TableReplicationRuleDestination>(map['destinations'], (value) => TableReplicationRuleDestination.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

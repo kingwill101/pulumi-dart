@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceTemplateGuestAccelerator {
   /// The number of the guest accelerator cards exposed to this instance.
   final int count;
-
   /// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
   final String type;
 
@@ -16,10 +16,10 @@ class InstanceTemplateGuestAccelerator {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['count'] = count;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'count': count,
+      'type': type,
+    };
   }
 
   factory InstanceTemplateGuestAccelerator.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class InstanceTemplateGuestAccelerator {
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationAssignmentConfigurationArgs {
   /// ARN of the application.
   final pulumi.Input<String> applicationArn;
-
   /// Indicates whether users must have an explicit assignment to access the application. If `false`, all users have access to the application.
   final pulumi.Input<bool> assignmentRequired;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -24,23 +22,20 @@ class ApplicationAssignmentConfigurationArgs {
     required String applicationArn,
     required bool assignmentRequired,
     String? region,
-  })  : applicationArn = pulumi.Input.asInput<String>(applicationArn),
-        assignmentRequired = pulumi.Input.asInput<bool>(assignmentRequired),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      applicationArn = pulumi.Input.asInput<String>(applicationArn),
+      assignmentRequired = pulumi.Input.asInput<bool>(assignmentRequired),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['applicationArn'] = applicationArn;
-    map['assignmentRequired'] = assignmentRequired;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'applicationArn': applicationArn,
+      'assignmentRequired': assignmentRequired,
+      'region': ?region,
+    };
   }
 
-  factory ApplicationAssignmentConfigurationArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory ApplicationAssignmentConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationAssignmentConfigurationArgs(
       applicationArn: map['applicationArn'] as String,
       assignmentRequired: map['assignmentRequired'] as bool,
@@ -48,3 +43,4 @@ class ApplicationAssignmentConfigurationArgs {
     );
   }
 }
+

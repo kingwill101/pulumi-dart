@@ -14,15 +14,15 @@ class ClusterConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clusterAutoscalingConfig'] = clusterAutoscalingConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'clusterAutoscalingConfig': clusterAutoscalingConfig.toMap(),
+    };
   }
 
   factory ClusterConfigResponse.fromMap(Map<String, dynamic> map) {
     return ClusterConfigResponse(
-      clusterAutoscalingConfig: ClusterAutoscalingConfigResponse.fromMap(
-          (map['clusterAutoscalingConfig'] as Map).cast<String, dynamic>()),
+      clusterAutoscalingConfig: ClusterAutoscalingConfigResponse.fromMap((map['clusterAutoscalingConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

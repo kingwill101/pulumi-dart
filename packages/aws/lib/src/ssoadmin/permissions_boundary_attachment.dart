@@ -424,14 +424,10 @@ import 'permissions_boundary_attachment_permissions_boundary.dart';
 class PermissionsBoundaryAttachment extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the SSO Instance under which the operation will be executed.
   late final pulumi.Output<String> instanceArn;
-
   /// The Amazon Resource Name (ARN) of the Permission Set.
   late final pulumi.Output<String> permissionSetArn;
-
   /// The permissions boundary policy. See below.
-  late final pulumi.Output<PermissionsBoundaryAttachmentPermissionsBoundary>
-      permissionsBoundary;
-
+  late final pulumi.Output<PermissionsBoundaryAttachmentPermissionsBoundary> permissionsBoundary;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -451,9 +447,7 @@ class PermissionsBoundaryAttachment extends pulumi.CustomResource {
         ) {
     this.instanceArn = registerOutput<String>('instanceArn');
     this.permissionSetArn = registerOutput<String>('permissionSetArn');
-    this.permissionsBoundary =
-        registerOutput<PermissionsBoundaryAttachmentPermissionsBoundary>(
-            'permissionsBoundary');
+    this.permissionsBoundary = registerOutput<PermissionsBoundaryAttachmentPermissionsBoundary>('permissionsBoundary');
     this.region = registerOutput<String>('region');
   }
 }

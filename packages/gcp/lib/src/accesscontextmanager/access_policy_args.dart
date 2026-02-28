@@ -10,11 +10,9 @@ class AccessPolicyArgs {
   /// The parent of this AccessPolicy in the Cloud Resource Hierarchy.
   /// Format: 'organizations/{{organization_id}}'
   final pulumi.Input<String> parent;
-
   /// Folder or project on which this policy is applicable.
   /// Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
   final pulumi.Input<String>? scopes;
-
   /// Human readable title. Does not affect behavior.
   final pulumi.Input<String> title;
 
@@ -26,19 +24,17 @@ class AccessPolicyArgs {
     required String parent,
     String? scopes,
     required String title,
-  })  : parent = pulumi.Input.asInput<String>(parent),
-        scopes = pulumi.Input.asOptionalInput<String>(scopes),
-        title = pulumi.Input.asInput<String>(title);
+  }) :
+      parent = pulumi.Input.asInput<String>(parent),
+      scopes = pulumi.Input.asOptionalInput<String>(scopes),
+      title = pulumi.Input.asInput<String>(title);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['parent'] = parent;
-    final scopesValue = scopes;
-    if (scopesValue != null) {
-      map['scopes'] = scopesValue;
-    }
-    map['title'] = title;
-    return map;
+    return <String, dynamic>{
+      'parent': parent,
+      'scopes': ?scopes,
+      'title': title,
+    };
   }
 
   factory AccessPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -49,3 +45,4 @@ class AccessPolicyArgs {
     );
   }
 }
+

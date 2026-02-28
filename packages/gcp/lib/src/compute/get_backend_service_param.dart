@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetBackendServiceParam {
   /// Resource manager tags to be bound to the backend service. Tag keys and values have the
   /// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
@@ -13,15 +14,15 @@ class GetBackendServiceParam {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['resourceManagerTags'] = resourceManagerTags;
-    return map;
+    return <String, dynamic>{
+      'resourceManagerTags': resourceManagerTags,
+    };
   }
 
   factory GetBackendServiceParam.fromMap(Map<String, dynamic> map) {
     return GetBackendServiceParam(
-      resourceManagerTags:
-          (map['resourceManagerTags'] as Map).cast<String, String>(),
+      resourceManagerTags: (map['resourceManagerTags'] as Map).cast<String, String>(),
     );
   }
 }
+

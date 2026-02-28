@@ -2101,17 +2101,13 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 class BucketLifecycleConfigurationV2 extends pulumi.CustomResource {
   /// Name of the source S3 bucket you want Amazon S3 to monitor.
   late final pulumi.Output<String> bucket;
-
   /// Account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP 403 (Access Denied) error.
   late final pulumi.Output<String> expectedBucketOwner;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// List of configuration blocks describing the rules managing the replication. See below.
   late final pulumi.Output<List<BucketLifecycleConfigurationV2Rule>?> rules;
   late final pulumi.Output<BucketLifecycleConfigurationV2Timeouts?> timeouts;
-
   /// The default minimum object size behavior applied to the lifecycle configuration. Valid values: `all_storage_classes_128K` (default), `varies_by_storage_class`. To customize the minimum object size for any transition you can add a `filter` that specifies a custom `object_size_greater_than` or `object_size_less_than` value. Custom filters always take precedence over the default transition behavior.
   late final pulumi.Output<String> transitionDefaultMinimumObjectSize;
 
@@ -2132,11 +2128,8 @@ class BucketLifecycleConfigurationV2 extends pulumi.CustomResource {
     this.bucket = registerOutput<String>('bucket');
     this.expectedBucketOwner = registerOutput<String>('expectedBucketOwner');
     this.region = registerOutput<String>('region');
-    this.rules =
-        registerOutput<List<BucketLifecycleConfigurationV2Rule>?>('rules');
-    this.timeouts =
-        registerOutput<BucketLifecycleConfigurationV2Timeouts?>('timeouts');
-    this.transitionDefaultMinimumObjectSize =
-        registerOutput<String>('transitionDefaultMinimumObjectSize');
+    this.rules = registerOutput<List<BucketLifecycleConfigurationV2Rule>?>('rules');
+    this.timeouts = registerOutput<BucketLifecycleConfigurationV2Timeouts?>('timeouts');
+    this.transitionDefaultMinimumObjectSize = registerOutput<String>('transitionDefaultMinimumObjectSize');
   }
 }

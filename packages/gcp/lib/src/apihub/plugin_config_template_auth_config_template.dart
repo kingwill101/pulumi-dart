@@ -6,7 +6,6 @@ class PluginConfigTemplateAuthConfigTemplate {
   /// Config for Google service account authentication.
   /// Structure is documented below.
   final PluginConfigTemplateAuthConfigTemplateServiceAccount? serviceAccount;
-
   /// The list of authentication types supported by the plugin.
   final List<String> supportedAuthTypes;
 
@@ -19,23 +18,17 @@ class PluginConfigTemplateAuthConfigTemplate {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final serviceAccountValue = serviceAccount;
-    if (serviceAccountValue != null) {
-      map['serviceAccount'] = serviceAccountValue.toMap();
-    }
-    map['supportedAuthTypes'] = supportedAuthTypes;
-    return map;
+    return <String, dynamic>{
+      'serviceAccount': ?serviceAccount == null ? null : serviceAccount!.toMap(),
+      'supportedAuthTypes': supportedAuthTypes,
+    };
   }
 
-  factory PluginConfigTemplateAuthConfigTemplate.fromMap(
-      Map<String, dynamic> map) {
+  factory PluginConfigTemplateAuthConfigTemplate.fromMap(Map<String, dynamic> map) {
     return PluginConfigTemplateAuthConfigTemplate(
-      serviceAccount: map['serviceAccount'] == null
-          ? null
-          : PluginConfigTemplateAuthConfigTemplateServiceAccount.fromMap(
-              (map['serviceAccount'] as Map).cast<String, dynamic>()),
+      serviceAccount: map['serviceAccount'] == null ? null : PluginConfigTemplateAuthConfigTemplateServiceAccount.fromMap((map['serviceAccount'] as Map).cast<String, dynamic>()),
       supportedAuthTypes: (map['supportedAuthTypes'] as List).cast<String>(),
     );
   }
 }
+

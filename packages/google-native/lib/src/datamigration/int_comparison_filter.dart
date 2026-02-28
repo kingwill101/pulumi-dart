@@ -6,7 +6,6 @@ import 'int_comparison_filter_value_comparison.dart';
 class IntComparisonFilter {
   /// Integer compare value to be used
   final String value;
-
   /// Relation between source value and compare value
   final IntComparisonFilterValueComparison valueComparison;
 
@@ -19,17 +18,17 @@ class IntComparisonFilter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['value'] = value;
-    map['valueComparison'] = valueComparison.value;
-    return map;
+    return <String, dynamic>{
+      'value': value,
+      'valueComparison': valueComparison.value,
+    };
   }
 
   factory IntComparisonFilter.fromMap(Map<String, dynamic> map) {
     return IntComparisonFilter(
       value: map['value'] as String,
-      valueComparison: IntComparisonFilterValueComparison.fromValue(
-          map['valueComparison'] as String),
+      valueComparison: IntComparisonFilterValueComparison.fromValue(map['valueComparison'] as String),
     );
   }
 }
+

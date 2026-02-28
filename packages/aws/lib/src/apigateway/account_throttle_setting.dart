@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AccountThrottleSetting {
   /// Absolute maximum number of times API Gateway allows the API to be called per second (RPS).
   final int burstLimit;
-
   /// Number of times API Gateway allows the API to be called per second on average (RPS).
   final double rateLimit;
 
@@ -16,10 +16,10 @@ class AccountThrottleSetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['burstLimit'] = burstLimit;
-    map['rateLimit'] = rateLimit;
-    return map;
+    return <String, dynamic>{
+      'burstLimit': burstLimit,
+      'rateLimit': rateLimit,
+    };
   }
 
   factory AccountThrottleSetting.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class AccountThrottleSetting {
     );
   }
 }
+

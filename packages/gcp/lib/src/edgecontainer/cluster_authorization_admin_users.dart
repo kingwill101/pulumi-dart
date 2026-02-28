@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterAuthorizationAdminUsers {
   /// An active Google username.
   final String username;
@@ -11,9 +12,9 @@ class ClusterAuthorizationAdminUsers {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['username'] = username;
-    return map;
+    return <String, dynamic>{
+      'username': username,
+    };
   }
 
   factory ClusterAuthorizationAdminUsers.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class ClusterAuthorizationAdminUsers {
     );
   }
 }
+

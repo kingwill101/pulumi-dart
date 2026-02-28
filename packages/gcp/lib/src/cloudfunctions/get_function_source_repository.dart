@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetFunctionSourceRepository {
   /// The URL pointing to the hosted repository where the function was defined at the time of deployment.
   final String deployedUrl;
-
   /// The URL pointing to the hosted repository where the function is defined.
   final String url;
 
@@ -16,10 +16,10 @@ class GetFunctionSourceRepository {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['deployedUrl'] = deployedUrl;
-    map['url'] = url;
-    return map;
+    return <String, dynamic>{
+      'deployedUrl': deployedUrl,
+      'url': url,
+    };
   }
 
   factory GetFunctionSourceRepository.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetFunctionSourceRepository {
     );
   }
 }
+

@@ -1693,34 +1693,26 @@ class PatchDeployment extends pulumi.CustomResource {
   /// Time the patch deployment was created. Timestamp is in RFC3339 text format.
   /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
-
   /// Description of the patch deployment. Length of the description is limited to 1024 characters.
   late final pulumi.Output<String?> description;
-
   /// Duration of the patch. After the duration ends, the patch times out.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
   late final pulumi.Output<String?> duration;
-
   /// VM instances to patch.
   /// Structure is documented below.
   late final pulumi.Output<PatchDeploymentInstanceFilter> instanceFilter;
-
   /// The last time a patch job was started by this deployment. Timestamp is in RFC3339 text format.
   /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> lastExecuteTime;
-
   /// Unique name for the patch deployment resource in a project.
   /// The patch deployment name is in the form: projects/{project_id}/patchDeployments/{patchDeploymentId}.
   late final pulumi.Output<String> name;
-
   /// Schedule a one-time execution.
   /// Structure is documented below.
   late final pulumi.Output<PatchDeploymentOneTimeSchedule?> oneTimeSchedule;
-
   /// Patch configuration that is applied.
   /// Structure is documented below.
   late final pulumi.Output<PatchDeploymentPatchConfig?> patchConfig;
-
   /// A name for the patch deployment in the project. When creating a name the following rules apply:
   /// * Must contain only lowercase letters, numbers, and hyphens.
   /// * Must start with a letter.
@@ -1728,19 +1720,15 @@ class PatchDeployment extends pulumi.CustomResource {
   /// * Must end with a number or a letter.
   /// * Must be unique within the project.
   late final pulumi.Output<String> patchDeploymentId;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Schedule recurring executions.
   /// Structure is documented below.
   late final pulumi.Output<PatchDeploymentRecurringSchedule?> recurringSchedule;
-
   /// Rollout strategy of the patch job.
   /// Structure is documented below.
   late final pulumi.Output<PatchDeploymentRollout?> rollout;
-
   /// Time the patch deployment was last updated. Timestamp is in RFC3339 text format.
   /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> updateTime;
@@ -1762,18 +1750,14 @@ class PatchDeployment extends pulumi.CustomResource {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');
     this.duration = registerOutput<String?>('duration');
-    this.instanceFilter =
-        registerOutput<PatchDeploymentInstanceFilter>('instanceFilter');
+    this.instanceFilter = registerOutput<PatchDeploymentInstanceFilter>('instanceFilter');
     this.lastExecuteTime = registerOutput<String>('lastExecuteTime');
     this.name = registerOutput<String>('name');
-    this.oneTimeSchedule =
-        registerOutput<PatchDeploymentOneTimeSchedule?>('oneTimeSchedule');
-    this.patchConfig =
-        registerOutput<PatchDeploymentPatchConfig?>('patchConfig');
+    this.oneTimeSchedule = registerOutput<PatchDeploymentOneTimeSchedule?>('oneTimeSchedule');
+    this.patchConfig = registerOutput<PatchDeploymentPatchConfig?>('patchConfig');
     this.patchDeploymentId = registerOutput<String>('patchDeploymentId');
     this.project = registerOutput<String>('project');
-    this.recurringSchedule =
-        registerOutput<PatchDeploymentRecurringSchedule?>('recurringSchedule');
+    this.recurringSchedule = registerOutput<PatchDeploymentRecurringSchedule?>('recurringSchedule');
     this.rollout = registerOutput<PatchDeploymentRollout?>('rollout');
     this.updateTime = registerOutput<String>('updateTime');
   }

@@ -8,34 +8,24 @@ import 'queuing_policy_response.dart';
 class GetZoneQueuedResourceResult {
   /// Specification of VM instances to create.
   final BulkInsertInstanceResourceResponse bulkInsertInstanceResource;
-
   /// Creation timestamp in RFC3339 text format.
   final String creationTimestamp;
-
   /// An optional description of this resource. Provide this property when you create the resource.
   final String description;
-
   /// Type of the resource. Always compute#queuedResource for QueuedResources.
   final String kind;
-
   /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
   final String name;
-
   /// Queuing parameters for the requested capacity.
   final QueuingPolicyResponse queuingPolicy;
-
   /// [Output only] Server-defined URL for the resource.
   final String selfLink;
-
   /// Server-defined URL for this resource with the resource id.
   final String selfLinkWithId;
-
   /// [Output only] High-level status of the request.
   final String state;
-
   /// [Output only] Result of queuing and provisioning based on deferred capacity.
   final QueuedResourceStatusResponse status;
-
   /// URL of the zone where the resource resides. Only applicable for zonal resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
   final String zone;
 
@@ -66,37 +56,35 @@ class GetZoneQueuedResourceResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bulkInsertInstanceResource'] = bulkInsertInstanceResource.toMap();
-    map['creationTimestamp'] = creationTimestamp;
-    map['description'] = description;
-    map['kind'] = kind;
-    map['name'] = name;
-    map['queuingPolicy'] = queuingPolicy.toMap();
-    map['selfLink'] = selfLink;
-    map['selfLinkWithId'] = selfLinkWithId;
-    map['state'] = state;
-    map['status'] = status.toMap();
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'bulkInsertInstanceResource': bulkInsertInstanceResource.toMap(),
+      'creationTimestamp': creationTimestamp,
+      'description': description,
+      'kind': kind,
+      'name': name,
+      'queuingPolicy': queuingPolicy.toMap(),
+      'selfLink': selfLink,
+      'selfLinkWithId': selfLinkWithId,
+      'state': state,
+      'status': status.toMap(),
+      'zone': zone,
+    };
   }
 
   factory GetZoneQueuedResourceResult.fromMap(Map<String, dynamic> map) {
     return GetZoneQueuedResourceResult(
-      bulkInsertInstanceResource: BulkInsertInstanceResourceResponse.fromMap(
-          (map['bulkInsertInstanceResource'] as Map).cast<String, dynamic>()),
+      bulkInsertInstanceResource: BulkInsertInstanceResourceResponse.fromMap((map['bulkInsertInstanceResource'] as Map).cast<String, dynamic>()),
       creationTimestamp: map['creationTimestamp'] as String,
       description: map['description'] as String,
       kind: map['kind'] as String,
       name: map['name'] as String,
-      queuingPolicy: QueuingPolicyResponse.fromMap(
-          (map['queuingPolicy'] as Map).cast<String, dynamic>()),
+      queuingPolicy: QueuingPolicyResponse.fromMap((map['queuingPolicy'] as Map).cast<String, dynamic>()),
       selfLink: map['selfLink'] as String,
       selfLinkWithId: map['selfLinkWithId'] as String,
       state: map['state'] as String,
-      status: QueuedResourceStatusResponse.fromMap(
-          (map['status'] as Map).cast<String, dynamic>()),
+      status: QueuedResourceStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
       zone: map['zone'] as String,
     );
   }
 }
+

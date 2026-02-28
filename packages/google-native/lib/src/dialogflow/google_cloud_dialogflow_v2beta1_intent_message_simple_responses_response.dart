@@ -6,8 +6,7 @@ import 'google_cloud_dialogflow_v2beta1_intent_message_simple_response_response.
 /// The collection of simple response candidates. This message in `QueryResult.fulfillment_messages` and `WebhookResponse.fulfillment_messages` should contain only one `SimpleResponse`.
 class GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesResponse {
   /// The list of simple responses.
-  final List<GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseResponse>
-      simpleResponses;
+  final List<GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseResponse> simpleResponses;
 
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesResponse].
   /// [simpleResponses] The list of simple responses.
@@ -16,22 +15,15 @@ class GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['simpleResponses'] = pulumi.Input.encodeList<
-        GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseResponse,
-        Map<String, dynamic>>(simpleResponses, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'simpleResponses': pulumi.Input.encodeList<GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseResponse, Map<String, dynamic>>(simpleResponses, (value) => value.toMap()),
+    };
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesResponse(
-      simpleResponses: pulumi.Input.decodeList<
-              GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseResponse>(
-          map['simpleResponses'],
-          (value) =>
-              GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseResponse
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      simpleResponses: pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseResponse>(map['simpleResponses'], (value) => GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

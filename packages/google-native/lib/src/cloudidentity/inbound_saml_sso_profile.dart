@@ -8,16 +8,12 @@ import 'saml_sp_config_response.dart';
 class InboundSamlSsoProfile extends pulumi.CustomResource {
   /// Immutable. The customer. For example: `customers/C0123abc`.
   late final pulumi.Output<String> customer;
-
   /// Human-readable name of the SAML SSO profile.
   late final pulumi.Output<String> displayName;
-
   /// SAML identity provider configuration.
   late final pulumi.Output<SamlIdpConfigResponse> idpConfig;
-
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of the SAML SSO profile.
   late final pulumi.Output<String> name;
-
   /// SAML service provider configuration for this SAML SSO profile. These are the service provider details provided by Google that should be configured on the corresponding identity provider.
   late final pulumi.Output<SamlSpConfigResponse> spConfig;
 

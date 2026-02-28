@@ -15,19 +15,15 @@ class PkixPublicKeySetResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['pkixPublicKeys'] =
-        pulumi.Input.encodeList<PkixPublicKeyResponse, Map<String, dynamic>>(
-            pkixPublicKeys, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'pkixPublicKeys': pulumi.Input.encodeList<PkixPublicKeyResponse, Map<String, dynamic>>(pkixPublicKeys, (value) => value.toMap()),
+    };
   }
 
   factory PkixPublicKeySetResponse.fromMap(Map<String, dynamic> map) {
     return PkixPublicKeySetResponse(
-      pkixPublicKeys: pulumi.Input.decodeList<PkixPublicKeyResponse>(
-          map['pkixPublicKeys'],
-          (value) => PkixPublicKeyResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      pkixPublicKeys: pulumi.Input.decodeList<PkixPublicKeyResponse>(map['pkixPublicKeys'], (value) => PkixPublicKeyResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

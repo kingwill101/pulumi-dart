@@ -25,26 +25,21 @@ class GetMigratingVmArgs {
     String? project,
     required String sourceId,
     String? view,
-  })  : location = pulumi.Input.asInput<String>(location),
-        migratingVmId = pulumi.Input.asInput<String>(migratingVmId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        sourceId = pulumi.Input.asInput<String>(sourceId),
-        view = pulumi.Input.asOptionalInput<String>(view);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      migratingVmId = pulumi.Input.asInput<String>(migratingVmId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      sourceId = pulumi.Input.asInput<String>(sourceId),
+      view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    map['migratingVmId'] = migratingVmId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['sourceId'] = sourceId;
-    final viewValue = view;
-    if (viewValue != null) {
-      map['view'] = viewValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'migratingVmId': migratingVmId,
+      'project': ?project,
+      'sourceId': sourceId,
+      'view': ?view,
+    };
   }
 
   factory GetMigratingVmArgs.fromMap(Map<String, dynamic> map) {
@@ -57,3 +52,4 @@ class GetMigratingVmArgs {
     );
   }
 }
+

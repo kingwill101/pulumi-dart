@@ -15,23 +15,15 @@ class GoogleCloudApigeeV1Properties {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final propertyValue = property;
-    if (propertyValue != null) {
-      map['property'] = pulumi.Input.encodeList<GoogleCloudApigeeV1Property,
-          Map<String, dynamic>>(propertyValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'property': ?property == null ? null : pulumi.Input.encodeList<GoogleCloudApigeeV1Property, Map<String, dynamic>>(property!, (value) => value.toMap()),
+    };
   }
 
   factory GoogleCloudApigeeV1Properties.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1Properties(
-      property: map['property'] == null
-          ? null
-          : pulumi.Input.decodeList<GoogleCloudApigeeV1Property>(
-              map['property'],
-              (value) => GoogleCloudApigeeV1Property.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      property: map['property'] == null ? null : pulumi.Input.decodeList<GoogleCloudApigeeV1Property>(map['property'], (value) => GoogleCloudApigeeV1Property.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

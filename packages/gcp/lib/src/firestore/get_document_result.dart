@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getDocument.
 class GetDocumentResult {
   final String collection;
@@ -7,7 +8,6 @@ class GetDocumentResult {
   final String database;
   final String documentId;
   final String fields;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -40,21 +40,18 @@ class GetDocumentResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['collection'] = collection;
-    map['createTime'] = createTime;
-    map['database'] = database;
-    map['documentId'] = documentId;
-    map['fields'] = fields;
-    map['id'] = id;
-    map['name'] = name;
-    map['path'] = path;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'collection': collection,
+      'createTime': createTime,
+      'database': database,
+      'documentId': documentId,
+      'fields': fields,
+      'id': id,
+      'name': name,
+      'path': path,
+      'project': ?project,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetDocumentResult.fromMap(Map<String, dynamic> map) {
@@ -72,3 +69,4 @@ class GetDocumentResult {
     );
   }
 }
+

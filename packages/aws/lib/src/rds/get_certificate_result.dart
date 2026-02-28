@@ -1,29 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getCertificate.
 class GetCertificateResult {
   /// ARN of the certificate.
   final String arn;
-
   /// Type of certificate. For example, `CA`.
   final String certificateType;
-
   /// Boolean whether there is an override for the default certificate identifier.
   final bool customerOverride;
-
   /// If there is an override for the default certificate identifier, when the override expires.
   final String customerOverrideValidTill;
   final bool? defaultForNewLaunches;
   final String id;
   final bool? latestValidTill;
   final String region;
-
   /// Thumbprint of the certificate.
   final String thumbprint;
-
   /// [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) of certificate starting validity date.
   final String validFrom;
-
   /// [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) of certificate ending validity date.
   final String validTill;
 
@@ -54,25 +49,19 @@ class GetCertificateResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['certificateType'] = certificateType;
-    map['customerOverride'] = customerOverride;
-    map['customerOverrideValidTill'] = customerOverrideValidTill;
-    final defaultForNewLaunchesValue = defaultForNewLaunches;
-    if (defaultForNewLaunchesValue != null) {
-      map['defaultForNewLaunches'] = defaultForNewLaunchesValue;
-    }
-    map['id'] = id;
-    final latestValidTillValue = latestValidTill;
-    if (latestValidTillValue != null) {
-      map['latestValidTill'] = latestValidTillValue;
-    }
-    map['region'] = region;
-    map['thumbprint'] = thumbprint;
-    map['validFrom'] = validFrom;
-    map['validTill'] = validTill;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'certificateType': certificateType,
+      'customerOverride': customerOverride,
+      'customerOverrideValidTill': customerOverrideValidTill,
+      'defaultForNewLaunches': ?defaultForNewLaunches,
+      'id': id,
+      'latestValidTill': ?latestValidTill,
+      'region': region,
+      'thumbprint': thumbprint,
+      'validFrom': validFrom,
+      'validTill': validTill,
+    };
   }
 
   factory GetCertificateResult.fromMap(Map<String, dynamic> map) {
@@ -81,13 +70,9 @@ class GetCertificateResult {
       certificateType: map['certificateType'] as String,
       customerOverride: map['customerOverride'] as bool,
       customerOverrideValidTill: map['customerOverrideValidTill'] as String,
-      defaultForNewLaunches: map['defaultForNewLaunches'] == null
-          ? null
-          : map['defaultForNewLaunches'] as bool,
+      defaultForNewLaunches: map['defaultForNewLaunches'] == null ? null : map['defaultForNewLaunches'] as bool,
       id: map['id'] as String,
-      latestValidTill: map['latestValidTill'] == null
-          ? null
-          : map['latestValidTill'] as bool,
+      latestValidTill: map['latestValidTill'] == null ? null : map['latestValidTill'] as bool,
       region: map['region'] as String,
       thumbprint: map['thumbprint'] as String,
       validFrom: map['validFrom'] as String,
@@ -95,3 +80,4 @@ class GetCertificateResult {
     );
   }
 }
+

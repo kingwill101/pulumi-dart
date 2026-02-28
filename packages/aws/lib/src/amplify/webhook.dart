@@ -171,19 +171,14 @@ import 'webhook_args.dart';
 class Webhook extends pulumi.CustomResource {
   /// Unique ID for an Amplify app.
   late final pulumi.Output<String> appId;
-
   /// ARN for the webhook.
   late final pulumi.Output<String> arn;
-
   /// Name for a branch that is part of the Amplify app.
   late final pulumi.Output<String> branchName;
-
   /// Description for a webhook.
   late final pulumi.Output<String?> description;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// URL of the webhook.
   late final pulumi.Output<String> url;
 

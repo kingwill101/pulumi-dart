@@ -47,7 +47,6 @@ class ProductSubscriptionArgs {
   /// * `arn:aws:securityhub:${var.region}::product/turbot/turbot`
   /// * `arn:aws:securityhub:${var.region}::product/twistlock/twistlock-enterprise`
   final pulumi.Input<String> productArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -57,17 +56,15 @@ class ProductSubscriptionArgs {
   ProductSubscriptionArgs({
     required String productArn,
     String? region,
-  })  : productArn = pulumi.Input.asInput<String>(productArn),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      productArn = pulumi.Input.asInput<String>(productArn),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['productArn'] = productArn;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'productArn': productArn,
+      'region': ?region,
+    };
   }
 
   factory ProductSubscriptionArgs.fromMap(Map<String, dynamic> map) {
@@ -77,3 +74,4 @@ class ProductSubscriptionArgs {
     );
   }
 }
+

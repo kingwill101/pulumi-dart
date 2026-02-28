@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Message describing AWS Credentials using access key id and secret.
 class AccessKeyCredentialsResponse {
   /// AWS access key ID.
   final String accessKeyId;
-
   /// Input only. AWS secret access key.
   final String secretAccessKey;
-
   /// Input only. AWS session token. Used only when AWS security token service (STS) is responsible for creating the temporary credentials.
   final String sessionToken;
 
@@ -22,11 +21,11 @@ class AccessKeyCredentialsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accessKeyId'] = accessKeyId;
-    map['secretAccessKey'] = secretAccessKey;
-    map['sessionToken'] = sessionToken;
-    return map;
+    return <String, dynamic>{
+      'accessKeyId': accessKeyId,
+      'secretAccessKey': secretAccessKey,
+      'sessionToken': sessionToken,
+    };
   }
 
   factory AccessKeyCredentialsResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class AccessKeyCredentialsResponse {
     );
   }
 }
+

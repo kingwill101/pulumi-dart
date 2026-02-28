@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Opens the given URI.
 class GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponse {
   /// The HTTP or HTTPS scheme URI.
@@ -12,15 +13,15 @@ class GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['uri'] = uri;
-    return map;
+    return <String, dynamic>{
+      'uri': uri,
+    };
   }
 
-  factory GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponse(
       uri: map['uri'] as String,
     );
   }
 }
+

@@ -17,29 +17,17 @@ class RRSetRoutingPolicyWrrPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final itemsValue = items;
-    if (itemsValue != null) {
-      map['items'] = pulumi.Input.encodeList<
-          RRSetRoutingPolicyWrrPolicyWrrPolicyItem,
-          Map<String, dynamic>>(itemsValue, (value) => value.toMap());
-    }
-    final kindValue = kind;
-    if (kindValue != null) {
-      map['kind'] = kindValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'items': ?items == null ? null : pulumi.Input.encodeList<RRSetRoutingPolicyWrrPolicyWrrPolicyItem, Map<String, dynamic>>(items!, (value) => value.toMap()),
+      'kind': ?kind,
+    };
   }
 
   factory RRSetRoutingPolicyWrrPolicy.fromMap(Map<String, dynamic> map) {
     return RRSetRoutingPolicyWrrPolicy(
-      items: map['items'] == null
-          ? null
-          : pulumi.Input.decodeList<RRSetRoutingPolicyWrrPolicyWrrPolicyItem>(
-              map['items'],
-              (value) => RRSetRoutingPolicyWrrPolicyWrrPolicyItem.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      items: map['items'] == null ? null : pulumi.Input.decodeList<RRSetRoutingPolicyWrrPolicyWrrPolicyItem>(map['items'], (value) => RRSetRoutingPolicyWrrPolicyWrrPolicyItem.fromMap((value as Map).cast<String, dynamic>())),
       kind: map['kind'] == null ? null : map['kind'] as String,
     );
   }
 }
+

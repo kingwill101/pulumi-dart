@@ -1,18 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LabelingJobLabelCounter {
   /// Total number of objects that could not be labeled due to an error.
   final int failedNonRetryableError;
-
   /// Total number of objects labeled by a human worker.
   final int humanLabeled;
-
   /// Total number of objects labeled by automated data labeling.
   final int machineLabeled;
-
   /// Total number of objects labeled.
   final int totalLabeled;
-
   /// Total number of objects not yet labeled.
   final int unlabeled;
 
@@ -31,13 +28,13 @@ class LabelingJobLabelCounter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['failedNonRetryableError'] = failedNonRetryableError;
-    map['humanLabeled'] = humanLabeled;
-    map['machineLabeled'] = machineLabeled;
-    map['totalLabeled'] = totalLabeled;
-    map['unlabeled'] = unlabeled;
-    return map;
+    return <String, dynamic>{
+      'failedNonRetryableError': failedNonRetryableError,
+      'humanLabeled': humanLabeled,
+      'machineLabeled': machineLabeled,
+      'totalLabeled': totalLabeled,
+      'unlabeled': unlabeled,
+    };
   }
 
   factory LabelingJobLabelCounter.fromMap(Map<String, dynamic> map) {
@@ -50,3 +47,4 @@ class LabelingJobLabelCounter {
     );
   }
 }
+

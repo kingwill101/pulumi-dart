@@ -24,3 +24,4 @@ enum GuestOsFeatureTypeComputeV1 {
     throw ArgumentError('Unknown GuestOsFeatureTypeComputeV1 value: $value');
   }
 }
+

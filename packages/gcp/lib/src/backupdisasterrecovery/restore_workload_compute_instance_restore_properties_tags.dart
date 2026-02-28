@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RestoreWorkloadComputeInstanceRestorePropertiesTags {
   /// (Optional)
   final List<String>? items;
@@ -11,19 +12,15 @@ class RestoreWorkloadComputeInstanceRestorePropertiesTags {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final itemsValue = items;
-    if (itemsValue != null) {
-      map['items'] = itemsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'items': ?items,
+    };
   }
 
-  factory RestoreWorkloadComputeInstanceRestorePropertiesTags.fromMap(
-      Map<String, dynamic> map) {
+  factory RestoreWorkloadComputeInstanceRestorePropertiesTags.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesTags(
-      items:
-          map['items'] == null ? null : (map['items'] as List).cast<String>(),
+      items: map['items'] == null ? null : (map['items'] as List).cast<String>(),
     );
   }
 }
+

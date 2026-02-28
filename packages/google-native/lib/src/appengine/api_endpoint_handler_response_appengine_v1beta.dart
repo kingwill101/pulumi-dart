@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Uses Google Cloud Endpoints to handle requests.
 class ApiEndpointHandlerResponseAppengineV1beta {
   /// Path to the script from the application root directory.
@@ -12,15 +13,15 @@ class ApiEndpointHandlerResponseAppengineV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['scriptPath'] = scriptPath;
-    return map;
+    return <String, dynamic>{
+      'scriptPath': scriptPath,
+    };
   }
 
-  factory ApiEndpointHandlerResponseAppengineV1beta.fromMap(
-      Map<String, dynamic> map) {
+  factory ApiEndpointHandlerResponseAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return ApiEndpointHandlerResponseAppengineV1beta(
       scriptPath: map['scriptPath'] as String,
     );
   }
 }
+

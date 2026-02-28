@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ComputeEnvironmentEksConfiguration {
   /// The Amazon Resource Name (ARN) of the Amazon EKS cluster.
   final String eksClusterArn;
-
   /// The namespace of the Amazon EKS cluster. AWS Batch manages pods in this namespace.
   final String kubernetesNamespace;
 
@@ -16,10 +16,10 @@ class ComputeEnvironmentEksConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['eksClusterArn'] = eksClusterArn;
-    map['kubernetesNamespace'] = kubernetesNamespace;
-    return map;
+    return <String, dynamic>{
+      'eksClusterArn': eksClusterArn,
+      'kubernetesNamespace': kubernetesNamespace,
+    };
   }
 
   factory ComputeEnvironmentEksConfiguration.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class ComputeEnvironmentEksConfiguration {
     );
   }
 }
+

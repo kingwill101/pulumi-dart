@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec {
   /// Must be specified if type is `CATEGORICAL`. The list of possible categories.
   final List<String>? values;
@@ -11,19 +12,15 @@ class GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final valuesValue = values;
-    if (valuesValue != null) {
-      map['values'] = valuesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'values': ?values,
+    };
   }
 
-  factory GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec(
-      values:
-          map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
     );
   }
 }
+

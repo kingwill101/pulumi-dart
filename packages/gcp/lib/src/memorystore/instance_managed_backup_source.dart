@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceManagedBackupSource {
   /// Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
   final String backup;
@@ -11,9 +12,9 @@ class InstanceManagedBackupSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['backup'] = backup;
-    return map;
+    return <String, dynamic>{
+      'backup': backup,
+    };
   }
 
   factory InstanceManagedBackupSource.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class InstanceManagedBackupSource {
     );
   }
 }
+

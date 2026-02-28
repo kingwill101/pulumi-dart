@@ -22,21 +22,19 @@ class GetReferenceImageArgs {
     required String productId,
     String? project,
     required String referenceImageId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        productId = pulumi.Input.asInput<String>(productId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        referenceImageId = pulumi.Input.asInput<String>(referenceImageId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      productId = pulumi.Input.asInput<String>(productId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      referenceImageId = pulumi.Input.asInput<String>(referenceImageId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    map['productId'] = productId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['referenceImageId'] = referenceImageId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'productId': productId,
+      'project': ?project,
+      'referenceImageId': referenceImageId,
+    };
   }
 
   factory GetReferenceImageArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetReferenceImageArgs {
     );
   }
 }
+

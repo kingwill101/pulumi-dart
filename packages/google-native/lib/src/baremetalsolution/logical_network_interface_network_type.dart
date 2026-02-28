@@ -13,7 +13,7 @@ enum LogicalNetworkInterfaceNetworkType {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown LogicalNetworkInterfaceNetworkType value: $value');
+    throw ArgumentError('Unknown LogicalNetworkInterfaceNetworkType value: $value');
   }
 }
+

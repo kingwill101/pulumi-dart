@@ -14,16 +14,15 @@ class CustomLevelResponseAccesscontextmanagerV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['expr'] = expr.toMap();
-    return map;
+    return <String, dynamic>{
+      'expr': expr.toMap(),
+    };
   }
 
-  factory CustomLevelResponseAccesscontextmanagerV1beta.fromMap(
-      Map<String, dynamic> map) {
+  factory CustomLevelResponseAccesscontextmanagerV1beta.fromMap(Map<String, dynamic> map) {
     return CustomLevelResponseAccesscontextmanagerV1beta(
-      expr: ExprResponseAccesscontextmanagerV1beta.fromMap(
-          (map['expr'] as Map).cast<String, dynamic>()),
+      expr: ExprResponseAccesscontextmanagerV1beta.fromMap((map['expr'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

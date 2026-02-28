@@ -19,19 +19,17 @@ class GetCollectorArgs {
     required String collectorId,
     required String location,
     String? project,
-  })  : collectorId = pulumi.Input.asInput<String>(collectorId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      collectorId = pulumi.Input.asInput<String>(collectorId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['collectorId'] = collectorId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'collectorId': collectorId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetCollectorArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetCollectorArgs {
     );
   }
 }
+

@@ -39,3 +39,4 @@ class _ProvidersModuleNamespace {
   final TerraformConfigResultArgs = _providers.TerraformConfigResult.new;
   final terraformConfig = _providers.terraformConfig;
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceWorkforceIdentityFederationConfig {
   /// 'Whether Workforce Identity Federation is enabled.'
   final bool enabled;
@@ -11,15 +12,15 @@ class InstanceWorkforceIdentityFederationConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory InstanceWorkforceIdentityFederationConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory InstanceWorkforceIdentityFederationConfig.fromMap(Map<String, dynamic> map) {
     return InstanceWorkforceIdentityFederationConfig(
       enabled: map['enabled'] as bool,
     );
   }
 }
+

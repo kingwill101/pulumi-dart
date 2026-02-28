@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CxEntityTypeExcludedPhrase {
   /// The word or phrase to be excluded.
   final String? value;
@@ -11,12 +12,9 @@ class CxEntityTypeExcludedPhrase {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final valueValue = value;
-    if (valueValue != null) {
-      map['value'] = valueValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory CxEntityTypeExcludedPhrase.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class CxEntityTypeExcludedPhrase {
     );
   }
 }
+

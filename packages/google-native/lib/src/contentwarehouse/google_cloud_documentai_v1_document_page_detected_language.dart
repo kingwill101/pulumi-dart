@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Detected language for a structural component.
 class GoogleCloudDocumentaiV1DocumentPageDetectedLanguage {
   /// Confidence of detected language. Range `[0, 1]`.
   final double? confidence;
-
   /// The [BCP-47 language code](https://www.unicode.org/reports/tr35/#Unicode_locale_identifier), such as `en-US` or `sr-Latn`.
   final String? languageCode;
 
@@ -17,25 +17,17 @@ class GoogleCloudDocumentaiV1DocumentPageDetectedLanguage {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final confidenceValue = confidence;
-    if (confidenceValue != null) {
-      map['confidence'] = confidenceValue;
-    }
-    final languageCodeValue = languageCode;
-    if (languageCodeValue != null) {
-      map['languageCode'] = languageCodeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'confidence': ?confidence,
+      'languageCode': ?languageCode,
+    };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageDetectedLanguage(
-      confidence:
-          map['confidence'] == null ? null : map['confidence'] as double,
-      languageCode:
-          map['languageCode'] == null ? null : map['languageCode'] as String,
+      confidence: map['confidence'] == null ? null : map['confidence'] as double,
+      languageCode: map['languageCode'] == null ? null : map['languageCode'] as String,
     );
   }
 }
+

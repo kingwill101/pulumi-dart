@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// SSL configuration.
 class SslConfigResponse {
   /// Optional. Certificate Authority (CA) source. Only CA_SOURCE_MANAGED is supported currently, and is the default value.
   final String caSource;
-
   /// Optional. SSL mode. Specifies client-server SSL/TLS connection behavior.
   final String sslMode;
 
@@ -17,10 +17,10 @@ class SslConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['caSource'] = caSource;
-    map['sslMode'] = sslMode;
-    return map;
+    return <String, dynamic>{
+      'caSource': caSource,
+      'sslMode': sslMode,
+    };
   }
 
   factory SslConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class SslConfigResponse {
     );
   }
 }
+

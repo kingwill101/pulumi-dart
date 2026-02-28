@@ -22,21 +22,19 @@ class GetCompilationResultArgs {
     required String location,
     String? project,
     required String repositoryId,
-  })  : compilationResultId = pulumi.Input.asInput<String>(compilationResultId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        repositoryId = pulumi.Input.asInput<String>(repositoryId);
+  }) :
+      compilationResultId = pulumi.Input.asInput<String>(compilationResultId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      repositoryId = pulumi.Input.asInput<String>(repositoryId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['compilationResultId'] = compilationResultId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['repositoryId'] = repositoryId;
-    return map;
+    return <String, dynamic>{
+      'compilationResultId': compilationResultId,
+      'location': location,
+      'project': ?project,
+      'repositoryId': repositoryId,
+    };
   }
 
   factory GetCompilationResultArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetCompilationResultArgs {
     );
   }
 }
+

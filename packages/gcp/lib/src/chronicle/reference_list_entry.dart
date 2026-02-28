@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ReferenceListEntry {
   /// Required. The value of the entry. Maximum length is 512 characters.
   final String value;
@@ -11,9 +12,9 @@ class ReferenceListEntry {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'value': value,
+    };
   }
 
   factory ReferenceListEntry.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class ReferenceListEntry {
     );
   }
 }
+

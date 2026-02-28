@@ -590,60 +590,43 @@ class AiFeatureOnlineStore extends pulumi.CustomResource {
   /// Settings for Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
   /// Structure is documented below.
   late final pulumi.Output<AiFeatureOnlineStoreBigtable?> bigtable;
-
   /// The timestamp of when the feature online store was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   late final pulumi.Output<String> createTime;
-
   /// The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
   /// Structure is documented below.
-  late final pulumi.Output<AiFeatureOnlineStoreDedicatedServingEndpoint>
-      dedicatedServingEndpoint;
-
+  late final pulumi.Output<AiFeatureOnlineStoreDedicatedServingEndpoint> dedicatedServingEndpoint;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
   /// Structure is documented below.
   ///
   /// > **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
-  late final pulumi.Output<AiFeatureOnlineStoreEmbeddingManagement>
-      embeddingManagement;
-
+  late final pulumi.Output<AiFeatureOnlineStoreEmbeddingManagement> embeddingManagement;
   /// If set, both of the online and offline data storage will be secured by this key.
   /// Structure is documented below.
   late final pulumi.Output<AiFeatureOnlineStoreEncryptionSpec?> encryptionSpec;
-
   /// Used to perform consistent read-modify-write updates.
   late final pulumi.Output<String> etag;
-
   /// If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
   late final pulumi.Output<bool?> forceDestroy;
-
   /// The labels with user-defined metadata to organize your feature online stores.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
   late final pulumi.Output<String> name;
-
   /// Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
   late final pulumi.Output<Map<String, dynamic>?> optimized;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The region of feature online store. eg us-central1
   late final pulumi.Output<String> region;
-
   /// The state of the Feature Online Store. See the possible states in [this link](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featureOnlineStores#state).
   late final pulumi.Output<String> state;
-
   /// The timestamp of when the feature online store was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   late final pulumi.Output<String> updateTime;
 
@@ -663,16 +646,10 @@ class AiFeatureOnlineStore extends pulumi.CustomResource {
         ) {
     this.bigtable = registerOutput<AiFeatureOnlineStoreBigtable?>('bigtable');
     this.createTime = registerOutput<String>('createTime');
-    this.dedicatedServingEndpoint =
-        registerOutput<AiFeatureOnlineStoreDedicatedServingEndpoint>(
-            'dedicatedServingEndpoint');
-    this.effectiveLabels =
-        registerOutput<Map<String, String>>('effectiveLabels');
-    this.embeddingManagement =
-        registerOutput<AiFeatureOnlineStoreEmbeddingManagement>(
-            'embeddingManagement');
-    this.encryptionSpec =
-        registerOutput<AiFeatureOnlineStoreEncryptionSpec?>('encryptionSpec');
+    this.dedicatedServingEndpoint = registerOutput<AiFeatureOnlineStoreDedicatedServingEndpoint>('dedicatedServingEndpoint');
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    this.embeddingManagement = registerOutput<AiFeatureOnlineStoreEmbeddingManagement>('embeddingManagement');
+    this.encryptionSpec = registerOutput<AiFeatureOnlineStoreEncryptionSpec?>('encryptionSpec');
     this.etag = registerOutput<String>('etag');
     this.forceDestroy = registerOutput<bool?>('forceDestroy');
     this.labels = registerOutput<Map<String, String>?>('labels');

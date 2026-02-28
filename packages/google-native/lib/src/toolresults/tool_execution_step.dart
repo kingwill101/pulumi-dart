@@ -14,20 +14,15 @@ class ToolExecutionStep {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final toolExecutionValue = toolExecution;
-    if (toolExecutionValue != null) {
-      map['toolExecution'] = toolExecutionValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'toolExecution': ?toolExecution == null ? null : toolExecution!.toMap(),
+    };
   }
 
   factory ToolExecutionStep.fromMap(Map<String, dynamic> map) {
     return ToolExecutionStep(
-      toolExecution: map['toolExecution'] == null
-          ? null
-          : ToolExecution.fromMap(
-              (map['toolExecution'] as Map).cast<String, dynamic>()),
+      toolExecution: map['toolExecution'] == null ? null : ToolExecution.fromMap((map['toolExecution'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

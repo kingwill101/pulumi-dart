@@ -19,19 +19,17 @@ class GetFeatureGkehubV1betaArgs {
     required String featureId,
     required String location,
     String? project,
-  })  : featureId = pulumi.Input.asInput<String>(featureId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      featureId = pulumi.Input.asInput<String>(featureId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['featureId'] = featureId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'featureId': featureId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetFeatureGkehubV1betaArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetFeatureGkehubV1betaArgs {
     );
   }
 }
+

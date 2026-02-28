@@ -208,13 +208,10 @@ import 'organization_security_policy_association_args.dart';
 class OrganizationSecurityPolicyAssociation extends pulumi.CustomResource {
   /// The resource that the security policy is attached to.
   late final pulumi.Output<String> attachmentId;
-
   /// The display name of the security policy of the association.
   late final pulumi.Output<String> displayName;
-
   /// The name for an association.
   late final pulumi.Output<String> name;
-
   /// The security policy ID of the association.
   late final pulumi.Output<String> policyId;
 

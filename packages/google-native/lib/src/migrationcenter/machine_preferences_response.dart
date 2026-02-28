@@ -15,19 +15,15 @@ class MachinePreferencesResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allowedMachineSeries'] =
-        pulumi.Input.encodeList<MachineSeriesResponse, Map<String, dynamic>>(
-            allowedMachineSeries, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'allowedMachineSeries': pulumi.Input.encodeList<MachineSeriesResponse, Map<String, dynamic>>(allowedMachineSeries, (value) => value.toMap()),
+    };
   }
 
   factory MachinePreferencesResponse.fromMap(Map<String, dynamic> map) {
     return MachinePreferencesResponse(
-      allowedMachineSeries: pulumi.Input.decodeList<MachineSeriesResponse>(
-          map['allowedMachineSeries'],
-          (value) => MachineSeriesResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      allowedMachineSeries: pulumi.Input.decodeList<MachineSeriesResponse>(map['allowedMachineSeries'], (value) => MachineSeriesResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -10,10 +10,8 @@ import 'agentcore_token_vault_cmk_kms_configuration.dart';
 class AgentcoreTokenVaultCmkArgs {
   /// KMS configuration for the token vault. See `kms_configuration` below.
   final pulumi.Input<AgentcoreTokenVaultCmkKmsConfiguration> kmsConfiguration;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Token vault ID. Defaults to `default`.
   final pulumi.Input<String>? tokenVaultId;
 
@@ -25,35 +23,25 @@ class AgentcoreTokenVaultCmkArgs {
     required AgentcoreTokenVaultCmkKmsConfiguration kmsConfiguration,
     String? region,
     String? tokenVaultId,
-  })  : kmsConfiguration =
-            pulumi.Input.asInput<AgentcoreTokenVaultCmkKmsConfiguration>(
-                kmsConfiguration),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        tokenVaultId = pulumi.Input.asOptionalInput<String>(tokenVaultId);
+  }) :
+      kmsConfiguration = pulumi.Input.asInput<AgentcoreTokenVaultCmkKmsConfiguration>(kmsConfiguration),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tokenVaultId = pulumi.Input.asOptionalInput<String>(tokenVaultId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kmsConfiguration'] = pulumi.Input.mapInputValue<
-        AgentcoreTokenVaultCmkKmsConfiguration,
-        Map<String, dynamic>>(kmsConfiguration, (value) => value.toMap());
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final tokenVaultIdValue = tokenVaultId;
-    if (tokenVaultIdValue != null) {
-      map['tokenVaultId'] = tokenVaultIdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'kmsConfiguration': pulumi.Input.mapInputValue<AgentcoreTokenVaultCmkKmsConfiguration, Map<String, dynamic>>(kmsConfiguration, (value) => value.toMap()),
+      'region': ?region,
+      'tokenVaultId': ?tokenVaultId,
+    };
   }
 
   factory AgentcoreTokenVaultCmkArgs.fromMap(Map<String, dynamic> map) {
     return AgentcoreTokenVaultCmkArgs(
-      kmsConfiguration: AgentcoreTokenVaultCmkKmsConfiguration.fromMap(
-          (map['kmsConfiguration'] as Map).cast<String, dynamic>()),
+      kmsConfiguration: AgentcoreTokenVaultCmkKmsConfiguration.fromMap((map['kmsConfiguration'] as Map).cast<String, dynamic>()),
       region: map['region'] == null ? null : map['region'] as String,
-      tokenVaultId:
-          map['tokenVaultId'] == null ? null : map['tokenVaultId'] as String,
+      tokenVaultId: map['tokenVaultId'] == null ? null : map['tokenVaultId'] as String,
     );
   }
 }
+

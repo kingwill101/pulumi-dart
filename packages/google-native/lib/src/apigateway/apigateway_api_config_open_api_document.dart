@@ -14,20 +14,15 @@ class ApigatewayApiConfigOpenApiDocument {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final documentValue = document;
-    if (documentValue != null) {
-      map['document'] = documentValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'document': ?document == null ? null : document!.toMap(),
+    };
   }
 
   factory ApigatewayApiConfigOpenApiDocument.fromMap(Map<String, dynamic> map) {
     return ApigatewayApiConfigOpenApiDocument(
-      document: map['document'] == null
-          ? null
-          : ApigatewayApiConfigFile.fromMap(
-              (map['document'] as Map).cast<String, dynamic>()),
+      document: map['document'] == null ? null : ApigatewayApiConfigFile.fromMap((map['document'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

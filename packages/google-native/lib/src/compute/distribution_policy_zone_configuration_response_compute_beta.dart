@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DistributionPolicyZoneConfigurationResponseComputeBeta {
   /// The URL of the zone. The zone must exist in the region where the managed instance group is located.
   final String zone;
@@ -11,15 +12,15 @@ class DistributionPolicyZoneConfigurationResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'zone': zone,
+    };
   }
 
-  factory DistributionPolicyZoneConfigurationResponseComputeBeta.fromMap(
-      Map<String, dynamic> map) {
+  factory DistributionPolicyZoneConfigurationResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return DistributionPolicyZoneConfigurationResponseComputeBeta(
       zone: map['zone'] as String,
     );
   }
 }
+

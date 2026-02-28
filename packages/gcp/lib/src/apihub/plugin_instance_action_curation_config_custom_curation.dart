@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PluginInstanceActionCurationConfigCustomCuration {
   /// The unique name of the curation resource. This will be the name of the
   /// curation resource in the format:
@@ -13,15 +14,15 @@ class PluginInstanceActionCurationConfigCustomCuration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['curation'] = curation;
-    return map;
+    return <String, dynamic>{
+      'curation': curation,
+    };
   }
 
-  factory PluginInstanceActionCurationConfigCustomCuration.fromMap(
-      Map<String, dynamic> map) {
+  factory PluginInstanceActionCurationConfigCustomCuration.fromMap(Map<String, dynamic> map) {
     return PluginInstanceActionCurationConfigCustomCuration(
       curation: map['curation'] as String,
     );
   }
 }
+

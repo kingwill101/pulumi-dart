@@ -14,15 +14,13 @@ class AdminAccountArgs {
   /// [accountId] The AWS account ID to associate with AWS Firewall Manager as the AWS Firewall Manager administrator account. This can be an AWS Organizations master account or a member account. Defaults to the current account. Must be configured to perform drift detection.
   AdminAccountArgs({
     String? accountId,
-  }) : accountId = pulumi.Input.asOptionalInput<String>(accountId);
+  }) :
+      accountId = pulumi.Input.asOptionalInput<String>(accountId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final accountIdValue = accountId;
-    if (accountIdValue != null) {
-      map['accountId'] = accountIdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'accountId': ?accountId,
+    };
   }
 
   factory AdminAccountArgs.fromMap(Map<String, dynamic> map) {
@@ -31,3 +29,4 @@ class AdminAccountArgs {
     );
   }
 }
+

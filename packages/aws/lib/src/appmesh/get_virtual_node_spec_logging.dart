@@ -13,19 +13,15 @@ class GetVirtualNodeSpecLogging {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accessLogs'] = pulumi.Input.encodeList<
-        GetVirtualNodeSpecLoggingAccessLog,
-        Map<String, dynamic>>(accessLogs, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'accessLogs': pulumi.Input.encodeList<GetVirtualNodeSpecLoggingAccessLog, Map<String, dynamic>>(accessLogs, (value) => value.toMap()),
+    };
   }
 
   factory GetVirtualNodeSpecLogging.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecLogging(
-      accessLogs: pulumi.Input.decodeList<GetVirtualNodeSpecLoggingAccessLog>(
-          map['accessLogs'],
-          (value) => GetVirtualNodeSpecLoggingAccessLog.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      accessLogs: pulumi.Input.decodeList<GetVirtualNodeSpecLoggingAccessLog>(map['accessLogs'], (value) => GetVirtualNodeSpecLoggingAccessLog.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

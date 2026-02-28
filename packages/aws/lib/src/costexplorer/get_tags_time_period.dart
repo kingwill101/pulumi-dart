@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTagsTimePeriod {
   /// Beginning of the time period.
   final String end;
-
   /// End of the time period.
   final String start;
 
@@ -16,10 +16,10 @@ class GetTagsTimePeriod {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['end'] = end;
-    map['start'] = start;
-    return map;
+    return <String, dynamic>{
+      'end': end,
+      'start': start,
+    };
   }
 
   factory GetTagsTimePeriod.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetTagsTimePeriod {
     );
   }
 }
+

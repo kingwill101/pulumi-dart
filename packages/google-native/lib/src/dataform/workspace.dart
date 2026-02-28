@@ -5,12 +5,10 @@ import 'workspace_args.dart';
 /// Auto-naming is currently not supported for this resource.
 class Workspace extends pulumi.CustomResource {
   late final pulumi.Output<String> location;
-
   /// The workspace's name.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
   late final pulumi.Output<String> repositoryId;
-
   /// Required. The ID to use for the workspace, which will become the final component of the workspace's resource name.
   late final pulumi.Output<String> workspaceId;
 

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// An existing VPC network.
 class LinkedVpcNetworkResponse {
   /// Optional. IP ranges encompassing the subnets to be excluded from peering.
   final List<String> excludeExportRanges;
-
   /// The URI of the VPC network resource.
   final String uri;
 
@@ -17,10 +17,10 @@ class LinkedVpcNetworkResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['excludeExportRanges'] = excludeExportRanges;
-    map['uri'] = uri;
-    return map;
+    return <String, dynamic>{
+      'excludeExportRanges': excludeExportRanges,
+      'uri': uri,
+    };
   }
 
   factory LinkedVpcNetworkResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class LinkedVpcNetworkResponse {
     );
   }
 }
+

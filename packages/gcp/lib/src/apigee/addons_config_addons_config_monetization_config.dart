@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AddonsConfigAddonsConfigMonetizationConfig {
   /// Flag that specifies whether the Monetization add-on is enabled.
   final bool? enabled;
@@ -11,18 +12,15 @@ class AddonsConfigAddonsConfigMonetizationConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
-  factory AddonsConfigAddonsConfigMonetizationConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory AddonsConfigAddonsConfigMonetizationConfig.fromMap(Map<String, dynamic> map) {
     return AddonsConfigAddonsConfigMonetizationConfig(
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
     );
   }
 }
+

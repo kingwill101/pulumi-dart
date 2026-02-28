@@ -16,21 +16,22 @@ class GetOrganizationSecurityHealthAnalyticsSettingCustomModuleArgs {
   GetOrganizationSecurityHealthAnalyticsSettingCustomModuleArgs({
     required String customModuleId,
     required String organizationId,
-  })  : customModuleId = pulumi.Input.asInput<String>(customModuleId),
-        organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) :
+      customModuleId = pulumi.Input.asInput<String>(customModuleId),
+      organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['customModuleId'] = customModuleId;
-    map['organizationId'] = organizationId;
-    return map;
+    return <String, dynamic>{
+      'customModuleId': customModuleId,
+      'organizationId': organizationId,
+    };
   }
 
-  factory GetOrganizationSecurityHealthAnalyticsSettingCustomModuleArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetOrganizationSecurityHealthAnalyticsSettingCustomModuleArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationSecurityHealthAnalyticsSettingCustomModuleArgs(
       customModuleId: map['customModuleId'] as String,
       organizationId: map['organizationId'] as String,
     );
   }
 }
+

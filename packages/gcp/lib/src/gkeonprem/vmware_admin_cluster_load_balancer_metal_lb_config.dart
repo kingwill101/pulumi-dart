@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VmwareAdminClusterLoadBalancerMetalLbConfig {
   /// Metal LB is enabled.
   final bool? enabled;
@@ -11,18 +12,15 @@ class VmwareAdminClusterLoadBalancerMetalLbConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
-  factory VmwareAdminClusterLoadBalancerMetalLbConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory VmwareAdminClusterLoadBalancerMetalLbConfig.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterLoadBalancerMetalLbConfig(
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
     );
   }
 }
+

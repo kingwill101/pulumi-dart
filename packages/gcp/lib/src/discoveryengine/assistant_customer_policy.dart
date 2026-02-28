@@ -8,7 +8,6 @@ class AssistantCustomerPolicy {
   /// List of banned phrases.
   /// Structure is documented below.
   final List<AssistantCustomerPolicyBannedPhrase>? bannedPhrases;
-
   /// Model Armor configuration to be used for sanitizing user prompts and assistant responses.
   /// Structure is documented below.
   final AssistantCustomerPolicyModelArmorConfig? modelArmorConfig;
@@ -22,32 +21,17 @@ class AssistantCustomerPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final bannedPhrasesValue = bannedPhrases;
-    if (bannedPhrasesValue != null) {
-      map['bannedPhrases'] = pulumi.Input.encodeList<
-          AssistantCustomerPolicyBannedPhrase,
-          Map<String, dynamic>>(bannedPhrasesValue, (value) => value.toMap());
-    }
-    final modelArmorConfigValue = modelArmorConfig;
-    if (modelArmorConfigValue != null) {
-      map['modelArmorConfig'] = modelArmorConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'bannedPhrases': ?bannedPhrases == null ? null : pulumi.Input.encodeList<AssistantCustomerPolicyBannedPhrase, Map<String, dynamic>>(bannedPhrases!, (value) => value.toMap()),
+      'modelArmorConfig': ?modelArmorConfig == null ? null : modelArmorConfig!.toMap(),
+    };
   }
 
   factory AssistantCustomerPolicy.fromMap(Map<String, dynamic> map) {
     return AssistantCustomerPolicy(
-      bannedPhrases: map['bannedPhrases'] == null
-          ? null
-          : pulumi.Input.decodeList<AssistantCustomerPolicyBannedPhrase>(
-              map['bannedPhrases'],
-              (value) => AssistantCustomerPolicyBannedPhrase.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      modelArmorConfig: map['modelArmorConfig'] == null
-          ? null
-          : AssistantCustomerPolicyModelArmorConfig.fromMap(
-              (map['modelArmorConfig'] as Map).cast<String, dynamic>()),
+      bannedPhrases: map['bannedPhrases'] == null ? null : pulumi.Input.decodeList<AssistantCustomerPolicyBannedPhrase>(map['bannedPhrases'], (value) => AssistantCustomerPolicyBannedPhrase.fromMap((value as Map).cast<String, dynamic>())),
+      modelArmorConfig: map['modelArmorConfig'] == null ? null : AssistantCustomerPolicyModelArmorConfig.fromMap((map['modelArmorConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

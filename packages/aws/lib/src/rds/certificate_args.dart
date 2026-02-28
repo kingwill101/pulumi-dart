@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateArgs {
   /// Certificate identifier. For example, `rds-ca-rsa4096-g1`. Refer to [AWS RDS (Relational Database) Certificate Identifier](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html#UsingWithRDS.SSL.CertificateIdentifier) for more information.
   final pulumi.Input<String> certificateIdentifier;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -19,18 +18,15 @@ class CertificateArgs {
   CertificateArgs({
     required String certificateIdentifier,
     String? region,
-  })  : certificateIdentifier =
-            pulumi.Input.asInput<String>(certificateIdentifier),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      certificateIdentifier = pulumi.Input.asInput<String>(certificateIdentifier),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['certificateIdentifier'] = certificateIdentifier;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'certificateIdentifier': certificateIdentifier,
+      'region': ?region,
+    };
   }
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
@@ -40,3 +36,4 @@ class CertificateArgs {
     );
   }
 }
+

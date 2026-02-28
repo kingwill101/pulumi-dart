@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Autoscaling Policy config associated with the cluster.
 class AutoscalingConfigDataprocV1beta2 {
   /// Optional. The autoscaling policy used by the cluster.Only resource names including projectid and location (region) are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id] projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]Note that the policy must be in the same project and Dataproc region.
@@ -12,12 +13,9 @@ class AutoscalingConfigDataprocV1beta2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final policyUriValue = policyUri;
-    if (policyUriValue != null) {
-      map['policyUri'] = policyUriValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'policyUri': ?policyUri,
+    };
   }
 
   factory AutoscalingConfigDataprocV1beta2.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class AutoscalingConfigDataprocV1beta2 {
     );
   }
 }
+

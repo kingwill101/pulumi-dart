@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getEnvironmentBlueprint.
 class GetEnvironmentBlueprintResult {
   /// Provider of the blueprint
   final String blueprintProvider;
-
   /// Description of the blueprint
   final String description;
   final String domainId;
-
   /// ID of the environment blueprint
   final String id;
   final bool managed;
@@ -34,15 +33,15 @@ class GetEnvironmentBlueprintResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['blueprintProvider'] = blueprintProvider;
-    map['description'] = description;
-    map['domainId'] = domainId;
-    map['id'] = id;
-    map['managed'] = managed;
-    map['name'] = name;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'blueprintProvider': blueprintProvider,
+      'description': description,
+      'domainId': domainId,
+      'id': id,
+      'managed': managed,
+      'name': name,
+      'region': region,
+    };
   }
 
   factory GetEnvironmentBlueprintResult.fromMap(Map<String, dynamic> map) {
@@ -57,3 +56,4 @@ class GetEnvironmentBlueprintResult {
     );
   }
 }
+

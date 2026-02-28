@@ -13,20 +13,15 @@ class ClusterStorageConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final blockStorageValue = blockStorage;
-    if (blockStorageValue != null) {
-      map['blockStorage'] = blockStorageValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'blockStorage': ?blockStorage == null ? null : blockStorage!.toMap(),
+    };
   }
 
   factory ClusterStorageConfig.fromMap(Map<String, dynamic> map) {
     return ClusterStorageConfig(
-      blockStorage: map['blockStorage'] == null
-          ? null
-          : ClusterStorageConfigBlockStorage.fromMap(
-              (map['blockStorage'] as Map).cast<String, dynamic>()),
+      blockStorage: map['blockStorage'] == null ? null : ClusterStorageConfigBlockStorage.fromMap((map['blockStorage'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

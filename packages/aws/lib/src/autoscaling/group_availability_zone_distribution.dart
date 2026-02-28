@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GroupAvailabilityZoneDistribution {
   /// The strategy to use for distributing capacity across the Availability Zones. Valid values are `balanced-only` and `balanced-best-effort`. Default is `balanced-best-effort`.
   final String? capacityDistributionStrategy;
@@ -11,19 +12,15 @@ class GroupAvailabilityZoneDistribution {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final capacityDistributionStrategyValue = capacityDistributionStrategy;
-    if (capacityDistributionStrategyValue != null) {
-      map['capacityDistributionStrategy'] = capacityDistributionStrategyValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'capacityDistributionStrategy': ?capacityDistributionStrategy,
+    };
   }
 
   factory GroupAvailabilityZoneDistribution.fromMap(Map<String, dynamic> map) {
     return GroupAvailabilityZoneDistribution(
-      capacityDistributionStrategy: map['capacityDistributionStrategy'] == null
-          ? null
-          : map['capacityDistributionStrategy'] as String,
+      capacityDistributionStrategy: map['capacityDistributionStrategy'] == null ? null : map['capacityDistributionStrategy'] as String,
     );
   }
 }
+

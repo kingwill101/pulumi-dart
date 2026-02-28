@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore {
   /// The sensitivity score applied to the resource.
   /// Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
@@ -12,15 +13,15 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['score'] = score;
-    return map;
+    return <String, dynamic>{
+      'score': score,
+    };
   }
 
-  factory PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore.fromMap(
-      Map<String, dynamic> map) {
+  factory PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore.fromMap(Map<String, dynamic> map) {
     return PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore(
       score: map['score'] as String,
     );
   }
 }
+

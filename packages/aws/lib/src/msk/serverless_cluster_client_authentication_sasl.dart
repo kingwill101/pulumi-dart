@@ -13,16 +13,15 @@ class ServerlessClusterClientAuthenticationSasl {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['iam'] = iam.toMap();
-    return map;
+    return <String, dynamic>{
+      'iam': iam.toMap(),
+    };
   }
 
-  factory ServerlessClusterClientAuthenticationSasl.fromMap(
-      Map<String, dynamic> map) {
+  factory ServerlessClusterClientAuthenticationSasl.fromMap(Map<String, dynamic> map) {
     return ServerlessClusterClientAuthenticationSasl(
-      iam: ServerlessClusterClientAuthenticationSaslIam.fromMap(
-          (map['iam'] as Map).cast<String, dynamic>()),
+      iam: ServerlessClusterClientAuthenticationSaslIam.fromMap((map['iam'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

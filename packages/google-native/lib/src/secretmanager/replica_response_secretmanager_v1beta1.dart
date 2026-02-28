@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents a Replica for this Secret.
 class ReplicaResponseSecretmanagerV1beta1 {
   /// The canonical IDs of the location to replicate data. For example: `"us-east1"`.
@@ -12,15 +13,15 @@ class ReplicaResponseSecretmanagerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+    };
   }
 
-  factory ReplicaResponseSecretmanagerV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory ReplicaResponseSecretmanagerV1beta1.fromMap(Map<String, dynamic> map) {
     return ReplicaResponseSecretmanagerV1beta1(
       location: map['location'] as String,
     );
   }
 }
+

@@ -13,7 +13,7 @@ enum PublishingOptionsEncodingFormat {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown PublishingOptionsEncodingFormat value: $value');
+    throw ArgumentError('Unknown PublishingOptionsEncodingFormat value: $value');
   }
 }
+

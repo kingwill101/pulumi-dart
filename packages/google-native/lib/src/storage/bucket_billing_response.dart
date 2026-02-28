@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The bucket's billing configuration.
 class BucketBillingResponse {
   /// When set to true, Requester Pays is enabled for this bucket.
@@ -12,9 +13,9 @@ class BucketBillingResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['requesterPays'] = requesterPays;
-    return map;
+    return <String, dynamic>{
+      'requesterPays': requesterPays,
+    };
   }
 
   factory BucketBillingResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class BucketBillingResponse {
     );
   }
 }
+

@@ -10,13 +10,10 @@ import 'insight_filters.dart';
 class InsightArgs {
   /// A configuration block including one or more (up to 10 distinct) attributes used to filter the findings included in the insight. The insight only includes findings that match criteria defined in the filters. See filters below for more details.
   final pulumi.Input<InsightFilters> filters;
-
   /// The attribute used to group the findings for the insight e.g., if an insight is grouped by `ResourceId`, then the insight produces a list of resource identifiers.
   final pulumi.Input<String> groupByAttribute;
-
   /// The name of the custom insight.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -30,35 +27,28 @@ class InsightArgs {
     required String groupByAttribute,
     String? name,
     String? region,
-  })  : filters = pulumi.Input.asInput<InsightFilters>(filters),
-        groupByAttribute = pulumi.Input.asInput<String>(groupByAttribute),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      filters = pulumi.Input.asInput<InsightFilters>(filters),
+      groupByAttribute = pulumi.Input.asInput<String>(groupByAttribute),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['filters'] =
-        pulumi.Input.mapInputValue<InsightFilters, Map<String, dynamic>>(
-            filters, (value) => value.toMap());
-    map['groupByAttribute'] = groupByAttribute;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'filters': pulumi.Input.mapInputValue<InsightFilters, Map<String, dynamic>>(filters, (value) => value.toMap()),
+      'groupByAttribute': groupByAttribute,
+      'name': ?name,
+      'region': ?region,
+    };
   }
 
   factory InsightArgs.fromMap(Map<String, dynamic> map) {
     return InsightArgs(
-      filters: InsightFilters.fromMap(
-          (map['filters'] as Map).cast<String, dynamic>()),
+      filters: InsightFilters.fromMap((map['filters'] as Map).cast<String, dynamic>()),
       groupByAttribute: map['groupByAttribute'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

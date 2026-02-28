@@ -13,15 +13,15 @@ class FsxOpenZfsFileSystemProtocolNfs {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['mountOptions'] = mountOptions.toMap();
-    return map;
+    return <String, dynamic>{
+      'mountOptions': mountOptions.toMap(),
+    };
   }
 
   factory FsxOpenZfsFileSystemProtocolNfs.fromMap(Map<String, dynamic> map) {
     return FsxOpenZfsFileSystemProtocolNfs(
-      mountOptions: FsxOpenZfsFileSystemProtocolNfsMountOptions.fromMap(
-          (map['mountOptions'] as Map).cast<String, dynamic>()),
+      mountOptions: FsxOpenZfsFileSystemProtocolNfsMountOptions.fromMap((map['mountOptions'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

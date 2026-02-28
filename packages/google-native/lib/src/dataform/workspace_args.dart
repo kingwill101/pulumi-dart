@@ -10,7 +10,6 @@ class WorkspaceArgs {
   final pulumi.Input<String>? location;
   final pulumi.Input<String>? project;
   final pulumi.Input<String> repositoryId;
-
   /// Required. The ID to use for the workspace, which will become the final component of the workspace's resource name.
   final pulumi.Input<String> workspaceId;
 
@@ -24,24 +23,19 @@ class WorkspaceArgs {
     String? project,
     required String repositoryId,
     required String workspaceId,
-  })  : location = pulumi.Input.asOptionalInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        repositoryId = pulumi.Input.asInput<String>(repositoryId),
-        workspaceId = pulumi.Input.asInput<String>(workspaceId);
+  }) :
+      location = pulumi.Input.asOptionalInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      repositoryId = pulumi.Input.asInput<String>(repositoryId),
+      workspaceId = pulumi.Input.asInput<String>(workspaceId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['repositoryId'] = repositoryId;
-    map['workspaceId'] = workspaceId;
-    return map;
+    return <String, dynamic>{
+      'location': ?location,
+      'project': ?project,
+      'repositoryId': repositoryId,
+      'workspaceId': workspaceId,
+    };
   }
 
   factory WorkspaceArgs.fromMap(Map<String, dynamic> map) {
@@ -53,3 +47,4 @@ class WorkspaceArgs {
     );
   }
 }
+

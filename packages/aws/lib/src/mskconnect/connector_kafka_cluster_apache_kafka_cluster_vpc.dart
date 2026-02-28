@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConnectorKafkaClusterApacheKafkaClusterVpc {
   /// The security groups for the connector.
   final List<String> securityGroups;
-
   /// The subnets for the connector.
   final List<String> subnets;
 
@@ -16,17 +16,17 @@ class ConnectorKafkaClusterApacheKafkaClusterVpc {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['securityGroups'] = securityGroups;
-    map['subnets'] = subnets;
-    return map;
+    return <String, dynamic>{
+      'securityGroups': securityGroups,
+      'subnets': subnets,
+    };
   }
 
-  factory ConnectorKafkaClusterApacheKafkaClusterVpc.fromMap(
-      Map<String, dynamic> map) {
+  factory ConnectorKafkaClusterApacheKafkaClusterVpc.fromMap(Map<String, dynamic> map) {
     return ConnectorKafkaClusterApacheKafkaClusterVpc(
       securityGroups: (map['securityGroups'] as List).cast<String>(),
       subnets: (map['subnets'] as List).cast<String>(),
     );
   }
 }
+

@@ -13,21 +13,19 @@ class GetProjectCloudresourcemanagerV1beta1Args {
   /// [project] Optional.
   GetProjectCloudresourcemanagerV1beta1Args({
     String? project,
-  }) : project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+    };
   }
 
-  factory GetProjectCloudresourcemanagerV1beta1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetProjectCloudresourcemanagerV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetProjectCloudresourcemanagerV1beta1Args(
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

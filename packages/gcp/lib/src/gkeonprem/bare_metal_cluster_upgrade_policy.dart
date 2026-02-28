@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BareMetalClusterUpgradePolicy {
   /// Specifies which upgrade policy to use.
   /// Possible values are: `SERIAL`, `CONCURRENT`.
@@ -12,12 +13,9 @@ class BareMetalClusterUpgradePolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final policyValue = policy;
-    if (policyValue != null) {
-      map['policy'] = policyValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'policy': ?policy,
+    };
   }
 
   factory BareMetalClusterUpgradePolicy.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class BareMetalClusterUpgradePolicy {
     );
   }
 }
+

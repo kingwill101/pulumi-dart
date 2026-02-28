@@ -25,30 +25,21 @@ class GetGithubEnterpriseConfigArgs {
     required String location,
     String? project,
     String? projectId,
-  })  : configId = pulumi.Input.asOptionalInput<String>(configId),
-        githubEnterpriseConfigId =
-            pulumi.Input.asInput<String>(githubEnterpriseConfigId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        projectId = pulumi.Input.asOptionalInput<String>(projectId);
+  }) :
+      configId = pulumi.Input.asOptionalInput<String>(configId),
+      githubEnterpriseConfigId = pulumi.Input.asInput<String>(githubEnterpriseConfigId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      projectId = pulumi.Input.asOptionalInput<String>(projectId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final configIdValue = configId;
-    if (configIdValue != null) {
-      map['configId'] = configIdValue;
-    }
-    map['githubEnterpriseConfigId'] = githubEnterpriseConfigId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final projectIdValue = projectId;
-    if (projectIdValue != null) {
-      map['projectId'] = projectIdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'configId': ?configId,
+      'githubEnterpriseConfigId': githubEnterpriseConfigId,
+      'location': location,
+      'project': ?project,
+      'projectId': ?projectId,
+    };
   }
 
   factory GetGithubEnterpriseConfigArgs.fromMap(Map<String, dynamic> map) {
@@ -61,3 +52,4 @@ class GetGithubEnterpriseConfigArgs {
     );
   }
 }
+

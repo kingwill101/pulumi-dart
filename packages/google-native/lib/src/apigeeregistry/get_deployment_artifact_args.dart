@@ -25,23 +25,21 @@ class GetDeploymentArtifactArgs {
     required String deploymentId,
     required String location,
     String? project,
-  })  : apiId = pulumi.Input.asInput<String>(apiId),
-        artifactId = pulumi.Input.asInput<String>(artifactId),
-        deploymentId = pulumi.Input.asInput<String>(deploymentId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      apiId = pulumi.Input.asInput<String>(apiId),
+      artifactId = pulumi.Input.asInput<String>(artifactId),
+      deploymentId = pulumi.Input.asInput<String>(deploymentId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['apiId'] = apiId;
-    map['artifactId'] = artifactId;
-    map['deploymentId'] = deploymentId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'apiId': apiId,
+      'artifactId': artifactId,
+      'deploymentId': deploymentId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetDeploymentArtifactArgs.fromMap(Map<String, dynamic> map) {
@@ -54,3 +52,4 @@ class GetDeploymentArtifactArgs {
     );
   }
 }
+

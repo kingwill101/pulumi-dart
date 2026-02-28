@@ -13,15 +13,15 @@ class LaunchMetricMonitor {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['metricDefinition'] = metricDefinition.toMap();
-    return map;
+    return <String, dynamic>{
+      'metricDefinition': metricDefinition.toMap(),
+    };
   }
 
   factory LaunchMetricMonitor.fromMap(Map<String, dynamic> map) {
     return LaunchMetricMonitor(
-      metricDefinition: LaunchMetricMonitorMetricDefinition.fromMap(
-          (map['metricDefinition'] as Map).cast<String, dynamic>()),
+      metricDefinition: LaunchMetricMonitorMetricDefinition.fromMap((map['metricDefinition'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

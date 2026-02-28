@@ -21,3 +21,4 @@ enum MaintenanceWindowDayOfWeek {
     throw ArgumentError('Unknown MaintenanceWindowDayOfWeek value: $value');
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig {
   /// (Output)
   /// The status of the Database Management service.
@@ -13,7 +14,6 @@ class DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig {
   /// FAILED_DISABLING
   /// FAILED_UPDATING
   final String? managementState;
-
   /// (Output)
   /// The Database Management type.
   /// Possible values:
@@ -30,27 +30,17 @@ class DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final managementStateValue = managementState;
-    if (managementStateValue != null) {
-      map['managementState'] = managementStateValue;
-    }
-    final managementTypeValue = managementType;
-    if (managementTypeValue != null) {
-      map['managementType'] = managementTypeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'managementState': ?managementState,
+      'managementType': ?managementType,
+    };
   }
 
-  factory DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig.fromMap(Map<String, dynamic> map) {
     return DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig(
-      managementState: map['managementState'] == null
-          ? null
-          : map['managementState'] as String,
-      managementType: map['managementType'] == null
-          ? null
-          : map['managementType'] as String,
+      managementState: map['managementState'] == null ? null : map['managementState'] as String,
+      managementType: map['managementType'] == null ? null : map['managementType'] as String,
     );
   }
 }
+

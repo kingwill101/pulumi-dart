@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterDnsConfig {
   /// Enable additive VPC scope DNS in a GKE cluster.
   final String additiveVpcScopeDnsDomain;
-
   /// Which in-cluster DNS provider should be used.
   final String clusterDns;
-
   /// The suffix used for all cluster service records.
   final String clusterDnsDomain;
-
   /// The scope of access to cluster DNS records.
   final String clusterDnsScope;
 
@@ -26,12 +24,12 @@ class GetClusterDnsConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['additiveVpcScopeDnsDomain'] = additiveVpcScopeDnsDomain;
-    map['clusterDns'] = clusterDns;
-    map['clusterDnsDomain'] = clusterDnsDomain;
-    map['clusterDnsScope'] = clusterDnsScope;
-    return map;
+    return <String, dynamic>{
+      'additiveVpcScopeDnsDomain': additiveVpcScopeDnsDomain,
+      'clusterDns': clusterDns,
+      'clusterDnsDomain': clusterDnsDomain,
+      'clusterDnsScope': clusterDnsScope,
+    };
   }
 
   factory GetClusterDnsConfig.fromMap(Map<String, dynamic> map) {
@@ -43,3 +41,4 @@ class GetClusterDnsConfig {
     );
   }
 }
+

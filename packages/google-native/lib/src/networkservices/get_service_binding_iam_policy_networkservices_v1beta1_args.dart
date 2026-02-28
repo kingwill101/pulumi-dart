@@ -22,37 +22,28 @@ class GetServiceBindingIamPolicyNetworkservicesV1beta1Args {
     int? optionsRequestedPolicyVersion,
     String? project,
     required String serviceBindingId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        optionsRequestedPolicyVersion =
-            pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        serviceBindingId = pulumi.Input.asInput<String>(serviceBindingId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      serviceBindingId = pulumi.Input.asInput<String>(serviceBindingId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final optionsRequestedPolicyVersionValue = optionsRequestedPolicyVersion;
-    if (optionsRequestedPolicyVersionValue != null) {
-      map['optionsRequestedPolicyVersion'] = optionsRequestedPolicyVersionValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['serviceBindingId'] = serviceBindingId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'optionsRequestedPolicyVersion': ?optionsRequestedPolicyVersion,
+      'project': ?project,
+      'serviceBindingId': serviceBindingId,
+    };
   }
 
-  factory GetServiceBindingIamPolicyNetworkservicesV1beta1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetServiceBindingIamPolicyNetworkservicesV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetServiceBindingIamPolicyNetworkservicesV1beta1Args(
       location: map['location'] as String,
-      optionsRequestedPolicyVersion:
-          map['optionsRequestedPolicyVersion'] == null
-              ? null
-              : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       serviceBindingId: map['serviceBindingId'] as String,
     );
   }
 }
+

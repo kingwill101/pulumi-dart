@@ -1,22 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class UnitCondition {
   /// Last time the condition transited from one status to another.
   final String lastTransitionTime;
-
   /// Human readable message indicating details about the last transition.
   final String message;
-
   /// Brief reason for the condition's last transition.
   final String reason;
-
   /// Status of the condition.
   /// Possible values:
   /// STATUS_UNKNOWN
   /// STATUS_TRUE
   /// STATUS_FALSE
   final String status;
-
   /// Name of a supported variable type. Supported types are string, int, bool.
   /// Possible values:
   /// STRING
@@ -39,13 +36,13 @@ class UnitCondition {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['lastTransitionTime'] = lastTransitionTime;
-    map['message'] = message;
-    map['reason'] = reason;
-    map['status'] = status;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'lastTransitionTime': lastTransitionTime,
+      'message': message,
+      'reason': reason,
+      'status': status,
+      'type': type,
+    };
   }
 
   factory UnitCondition.fromMap(Map<String, dynamic> map) {
@@ -58,3 +55,4 @@ class UnitCondition {
     );
   }
 }
+

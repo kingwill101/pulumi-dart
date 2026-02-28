@@ -14,15 +14,15 @@ class GrafeasV1beta1ImageDetailsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['derivedImage'] = derivedImage.toMap();
-    return map;
+    return <String, dynamic>{
+      'derivedImage': derivedImage.toMap(),
+    };
   }
 
   factory GrafeasV1beta1ImageDetailsResponse.fromMap(Map<String, dynamic> map) {
     return GrafeasV1beta1ImageDetailsResponse(
-      derivedImage: DerivedResponseContaineranalysisV1beta1.fromMap(
-          (map['derivedImage'] as Map).cast<String, dynamic>()),
+      derivedImage: DerivedResponseContaineranalysisV1beta1.fromMap((map['derivedImage'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

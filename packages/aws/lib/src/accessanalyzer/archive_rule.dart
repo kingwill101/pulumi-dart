@@ -205,13 +205,10 @@ import 'archive_rule_filter.dart';
 class ArchiveRule extends pulumi.CustomResource {
   /// Analyzer name.
   late final pulumi.Output<String> analyzerName;
-
   /// Filter criteria for the archive rule. See Filter for more details.
   late final pulumi.Output<List<ArchiveRuleFilter>> filters;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Rule name.
   late final pulumi.Output<String> ruleName;
 

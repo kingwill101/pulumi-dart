@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Message storing info about the first admin user. Next ID: 3
 class AdminUserResponse {
   /// Optional. Last/family name of the first admin user.
   final String familyName;
-
   /// Optional. First/given name of the first admin user.
   final String givenName;
 
@@ -17,10 +17,10 @@ class AdminUserResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['familyName'] = familyName;
-    map['givenName'] = givenName;
-    return map;
+    return <String, dynamic>{
+      'familyName': familyName,
+      'givenName': givenName,
+    };
   }
 
   factory AdminUserResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class AdminUserResponse {
     );
   }
 }
+

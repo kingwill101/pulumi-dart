@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Describes the policy in case of function's execution failure. If empty, then defaults to ignoring failures (i.e. not retrying them).
 class FailurePolicyResponse {
   /// If specified, then the function will be retried in case of a failure.
@@ -12,9 +13,9 @@ class FailurePolicyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['retry'] = retry;
-    return map;
+    return <String, dynamic>{
+      'retry': retry,
+    };
   }
 
   factory FailurePolicyResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class FailurePolicyResponse {
     );
   }
 }
+

@@ -5,9 +5,7 @@ import 'authorization_logging_options_response_compute_beta.dart';
 /// This is deprecated and has no effect. Do not use.
 class LogConfigCloudAuditOptionsResponseComputeBeta {
   /// This is deprecated and has no effect. Do not use.
-  final AuthorizationLoggingOptionsResponseComputeBeta
-      authorizationLoggingOptions;
-
+  final AuthorizationLoggingOptionsResponseComputeBeta authorizationLoggingOptions;
   /// This is deprecated and has no effect. Do not use.
   final String logName;
 
@@ -20,20 +18,17 @@ class LogConfigCloudAuditOptionsResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['authorizationLoggingOptions'] = authorizationLoggingOptions.toMap();
-    map['logName'] = logName;
-    return map;
+    return <String, dynamic>{
+      'authorizationLoggingOptions': authorizationLoggingOptions.toMap(),
+      'logName': logName,
+    };
   }
 
-  factory LogConfigCloudAuditOptionsResponseComputeBeta.fromMap(
-      Map<String, dynamic> map) {
+  factory LogConfigCloudAuditOptionsResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return LogConfigCloudAuditOptionsResponseComputeBeta(
-      authorizationLoggingOptions:
-          AuthorizationLoggingOptionsResponseComputeBeta.fromMap(
-              (map['authorizationLoggingOptions'] as Map)
-                  .cast<String, dynamic>()),
+      authorizationLoggingOptions: AuthorizationLoggingOptionsResponseComputeBeta.fromMap((map['authorizationLoggingOptions'] as Map).cast<String, dynamic>()),
       logName: map['logName'] as String,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TaskSchedule {
   /// Specifies the schedule you want your task to use for repeated executions. For more information, see [Schedule Expressions for Rules](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html).
   final String scheduleExpression;
@@ -11,9 +12,9 @@ class TaskSchedule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['scheduleExpression'] = scheduleExpression;
-    return map;
+    return <String, dynamic>{
+      'scheduleExpression': scheduleExpression,
+    };
   }
 
   factory TaskSchedule.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class TaskSchedule {
     );
   }
 }
+

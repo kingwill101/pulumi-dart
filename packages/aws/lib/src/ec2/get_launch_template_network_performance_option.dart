@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetLaunchTemplateNetworkPerformanceOption {
   final String bandwidthWeighting;
 
@@ -10,15 +11,15 @@ class GetLaunchTemplateNetworkPerformanceOption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bandwidthWeighting'] = bandwidthWeighting;
-    return map;
+    return <String, dynamic>{
+      'bandwidthWeighting': bandwidthWeighting,
+    };
   }
 
-  factory GetLaunchTemplateNetworkPerformanceOption.fromMap(
-      Map<String, dynamic> map) {
+  factory GetLaunchTemplateNetworkPerformanceOption.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateNetworkPerformanceOption(
       bandwidthWeighting: map['bandwidthWeighting'] as String,
     );
   }
 }
+

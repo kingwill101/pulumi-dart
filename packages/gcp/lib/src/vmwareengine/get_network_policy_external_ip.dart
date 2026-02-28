@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetNetworkPolicyExternalIp {
   /// True if the service is enabled; false otherwise.
   final bool enabled;
-
   /// State of the service. New values may be added to this enum when appropriate.
   final String state;
 
@@ -16,10 +16,10 @@ class GetNetworkPolicyExternalIp {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    map['state'] = state;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+      'state': state,
+    };
   }
 
   factory GetNetworkPolicyExternalIp.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetNetworkPolicyExternalIp {
     );
   }
 }
+

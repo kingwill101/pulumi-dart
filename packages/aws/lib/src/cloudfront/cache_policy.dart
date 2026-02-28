@@ -273,28 +273,20 @@ import 'cache_policy_parameters_in_cache_key_and_forwarded_to_origin.dart';
 class CachePolicy extends pulumi.CustomResource {
   /// The cache policy ARN.
   late final pulumi.Output<String> arn;
-
   /// Description for the cache policy.
   late final pulumi.Output<String?> comment;
-
   /// Amount of time, in seconds, that objects are allowed to remain in the CloudFront cache before CloudFront sends a new request to the origin server to check if the object has been updated.
   late final pulumi.Output<int?> defaultTtl;
-
   /// Current version of the cache policy.
   late final pulumi.Output<String> etag;
-
   /// Maximum amount of time, in seconds, that objects stay in the CloudFront cache before CloudFront sends another request to the origin to see if the object has been updated.
   late final pulumi.Output<int?> maxTtl;
-
   /// Minimum amount of time, in seconds, that objects should remain in the CloudFront cache before a new request is sent to the origin to check for updates.
   late final pulumi.Output<int?> minTtl;
-
   /// Unique name used to identify the cache policy.
   late final pulumi.Output<String> name;
-
   /// Configuration for including HTTP headers, cookies, and URL query strings in the cache key. For more information, refer to the Parameters In Cache Key And Forwarded To Origin section.
-  late final pulumi.Output<CachePolicyParametersInCacheKeyAndForwardedToOrigin>
-      parametersInCacheKeyAndForwardedToOrigin;
+  late final pulumi.Output<CachePolicyParametersInCacheKeyAndForwardedToOrigin> parametersInCacheKeyAndForwardedToOrigin;
 
   /// Creates a new [CachePolicy].
   /// [name] The Pulumi resource name.
@@ -317,8 +309,6 @@ class CachePolicy extends pulumi.CustomResource {
     this.maxTtl = registerOutput<int?>('maxTtl');
     this.minTtl = registerOutput<int?>('minTtl');
     this.name = registerOutput<String>('name');
-    this.parametersInCacheKeyAndForwardedToOrigin =
-        registerOutput<CachePolicyParametersInCacheKeyAndForwardedToOrigin>(
-            'parametersInCacheKeyAndForwardedToOrigin');
+    this.parametersInCacheKeyAndForwardedToOrigin = registerOutput<CachePolicyParametersInCacheKeyAndForwardedToOrigin>('parametersInCacheKeyAndForwardedToOrigin');
   }
 }

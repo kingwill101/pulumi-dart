@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TopicRuleDynamodbv2PutItem {
   /// The name of the DynamoDB table.
   final String tableName;
@@ -11,9 +12,9 @@ class TopicRuleDynamodbv2PutItem {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['tableName'] = tableName;
-    return map;
+    return <String, dynamic>{
+      'tableName': tableName,
+    };
   }
 
   factory TopicRuleDynamodbv2PutItem.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class TopicRuleDynamodbv2PutItem {
     );
   }
 }
+

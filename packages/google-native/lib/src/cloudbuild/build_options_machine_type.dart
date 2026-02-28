@@ -19,3 +19,4 @@ enum BuildOptionsMachineType {
     throw ArgumentError('Unknown BuildOptionsMachineType value: $value');
   }
 }
+

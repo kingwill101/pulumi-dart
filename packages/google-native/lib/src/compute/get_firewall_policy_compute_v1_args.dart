@@ -13,12 +13,13 @@ class GetFirewallPolicyComputeV1Args {
   /// [firewallPolicy] Required.
   GetFirewallPolicyComputeV1Args({
     required String firewallPolicy,
-  }) : firewallPolicy = pulumi.Input.asInput<String>(firewallPolicy);
+  }) :
+      firewallPolicy = pulumi.Input.asInput<String>(firewallPolicy);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['firewallPolicy'] = firewallPolicy;
-    return map;
+    return <String, dynamic>{
+      'firewallPolicy': firewallPolicy,
+    };
   }
 
   factory GetFirewallPolicyComputeV1Args.fromMap(Map<String, dynamic> map) {
@@ -27,3 +28,4 @@ class GetFirewallPolicyComputeV1Args {
     );
   }
 }
+

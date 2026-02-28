@@ -206,28 +206,20 @@ import 'resource_share_accepter_args.dart';
 class ResourceShareAccepter extends pulumi.CustomResource {
   /// The ARN of the resource share invitation.
   late final pulumi.Output<String> invitationArn;
-
   /// The account ID of the receiver account which accepts the invitation.
   late final pulumi.Output<String> receiverAccountId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A list of the resource ARNs shared via the resource share.
   late final pulumi.Output<List<String>> resources;
-
   /// The account ID of the sender account which submits the invitation.
   late final pulumi.Output<String> senderAccountId;
-
   /// The ARN of the resource share.
   late final pulumi.Output<String> shareArn;
-
   /// The ID of the resource share as displayed in the console.
   late final pulumi.Output<String> shareId;
-
   /// The name of the resource share.
   late final pulumi.Output<String> shareName;
-
   /// The status of the resource share (ACTIVE, PENDING, FAILED, DELETING, DELETED).
   late final pulumi.Output<String> status;
 

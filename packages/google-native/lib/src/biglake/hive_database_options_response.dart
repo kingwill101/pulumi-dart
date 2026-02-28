@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Options of a Hive database.
 class HiveDatabaseOptionsResponse {
   /// Cloud Storage folder URI where the database data is stored, starting with "gs://".
   final String locationUri;
-
   /// Stores user supplied Hive database parameters.
   final Map<String, String> parameters;
 
@@ -17,10 +17,10 @@ class HiveDatabaseOptionsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['locationUri'] = locationUri;
-    map['parameters'] = parameters;
-    return map;
+    return <String, dynamic>{
+      'locationUri': locationUri,
+      'parameters': parameters,
+    };
   }
 
   factory HiveDatabaseOptionsResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class HiveDatabaseOptionsResponse {
     );
   }
 }
+

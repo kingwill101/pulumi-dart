@@ -19,19 +19,17 @@ class GetNodeGroupComputeBetaArgs {
     required String nodeGroup,
     String? project,
     required String zone,
-  })  : nodeGroup = pulumi.Input.asInput<String>(nodeGroup),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        zone = pulumi.Input.asInput<String>(zone);
+  }) :
+      nodeGroup = pulumi.Input.asInput<String>(nodeGroup),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['nodeGroup'] = nodeGroup;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'nodeGroup': nodeGroup,
+      'project': ?project,
+      'zone': zone,
+    };
   }
 
   factory GetNodeGroupComputeBetaArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetNodeGroupComputeBetaArgs {
     );
   }
 }
+

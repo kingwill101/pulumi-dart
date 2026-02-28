@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EventConnectionAuthParametersOauthOauthHttpParametersBody {
   /// Specified whether the value is secret.
   final bool? isValueSecret;
-
   /// The key for the parameter.
   final String? key;
-
   /// The value associated with the key. Created and stored in AWS Secrets Manager if is secret.
   final String? value;
 
@@ -21,29 +20,19 @@ class EventConnectionAuthParametersOauthOauthHttpParametersBody {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final isValueSecretValue = isValueSecret;
-    if (isValueSecretValue != null) {
-      map['isValueSecret'] = isValueSecretValue;
-    }
-    final keyValue = key;
-    if (keyValue != null) {
-      map['key'] = keyValue;
-    }
-    final valueValue = value;
-    if (valueValue != null) {
-      map['value'] = valueValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'isValueSecret': ?isValueSecret,
+      'key': ?key,
+      'value': ?value,
+    };
   }
 
-  factory EventConnectionAuthParametersOauthOauthHttpParametersBody.fromMap(
-      Map<String, dynamic> map) {
+  factory EventConnectionAuthParametersOauthOauthHttpParametersBody.fromMap(Map<String, dynamic> map) {
     return EventConnectionAuthParametersOauthOauthHttpParametersBody(
-      isValueSecret:
-          map['isValueSecret'] == null ? null : map['isValueSecret'] as bool,
+      isValueSecret: map['isValueSecret'] == null ? null : map['isValueSecret'] as bool,
       key: map['key'] == null ? null : map['key'] as String,
       value: map['value'] == null ? null : map['value'] as String,
     );
   }
 }
+

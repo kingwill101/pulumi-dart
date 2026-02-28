@@ -14,15 +14,15 @@ class HeaderOverrideResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['header'] = header.toMap();
-    return map;
+    return <String, dynamic>{
+      'header': header.toMap(),
+    };
   }
 
   factory HeaderOverrideResponse.fromMap(Map<String, dynamic> map) {
     return HeaderOverrideResponse(
-      header: HeaderResponse.fromMap(
-          (map['header'] as Map).cast<String, dynamic>()),
+      header: HeaderResponse.fromMap((map['header'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

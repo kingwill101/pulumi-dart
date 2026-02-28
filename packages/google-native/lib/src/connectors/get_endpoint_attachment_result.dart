@@ -1,25 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getEndpointAttachment.
 class GetEndpointAttachmentResult {
   /// Created time.
   final String createTime;
-
   /// Optional. Description of the resource.
   final String description;
-
   /// The Private Service Connect connection endpoint ip
   final String endpointIp;
-
   /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
   final Map<String, String> labels;
-
   /// Resource name of the Endpoint Attachment. Format: projects/{project}/locations/{location}/endpointAttachments/{endpoint_attachment}
   final String name;
-
   /// The path of the service attachment
   final String serviceAttachment;
-
   /// Updated time.
   final String updateTime;
 
@@ -42,15 +37,15 @@ class GetEndpointAttachmentResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['description'] = description;
-    map['endpointIp'] = endpointIp;
-    map['labels'] = labels;
-    map['name'] = name;
-    map['serviceAttachment'] = serviceAttachment;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'description': description,
+      'endpointIp': endpointIp,
+      'labels': labels,
+      'name': name,
+      'serviceAttachment': serviceAttachment,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetEndpointAttachmentResult.fromMap(Map<String, dynamic> map) {
@@ -65,3 +60,4 @@ class GetEndpointAttachmentResult {
     );
   }
 }
+

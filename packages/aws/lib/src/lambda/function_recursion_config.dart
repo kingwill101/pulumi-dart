@@ -363,12 +363,10 @@ import 'function_recursion_config_args.dart';
 class FunctionRecursionConfig extends pulumi.CustomResource {
   /// Name of the Lambda function.
   late final pulumi.Output<String> functionName;
-
   /// Lambda function recursion configuration. Valid values are `Allow` or `Terminate`.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> recursiveLoop;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

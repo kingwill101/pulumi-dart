@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSlackWorkspaceArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Slack workspace name configured with AWS Chatbot.
   final pulumi.Input<String> slackTeamName;
 
@@ -19,17 +18,15 @@ class GetSlackWorkspaceArgs {
   GetSlackWorkspaceArgs({
     String? region,
     required String slackTeamName,
-  })  : region = pulumi.Input.asOptionalInput<String>(region),
-        slackTeamName = pulumi.Input.asInput<String>(slackTeamName);
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      slackTeamName = pulumi.Input.asInput<String>(slackTeamName);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['slackTeamName'] = slackTeamName;
-    return map;
+    return <String, dynamic>{
+      'region': ?region,
+      'slackTeamName': slackTeamName,
+    };
   }
 
   factory GetSlackWorkspaceArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +36,4 @@ class GetSlackWorkspaceArgs {
     );
   }
 }
+

@@ -8,13 +8,10 @@ import 'postgresql_source_config_response.dart';
 class SourceConfigResponse {
   /// MySQL data source configuration.
   final MysqlSourceConfigResponse mysqlSourceConfig;
-
   /// Oracle data source configuration.
   final OracleSourceConfigResponse oracleSourceConfig;
-
   /// PostgreSQL data source configuration.
   final PostgresqlSourceConfigResponse postgresqlSourceConfig;
-
   /// Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
   final String sourceConnectionProfile;
 
@@ -31,23 +28,21 @@ class SourceConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['mysqlSourceConfig'] = mysqlSourceConfig.toMap();
-    map['oracleSourceConfig'] = oracleSourceConfig.toMap();
-    map['postgresqlSourceConfig'] = postgresqlSourceConfig.toMap();
-    map['sourceConnectionProfile'] = sourceConnectionProfile;
-    return map;
+    return <String, dynamic>{
+      'mysqlSourceConfig': mysqlSourceConfig.toMap(),
+      'oracleSourceConfig': oracleSourceConfig.toMap(),
+      'postgresqlSourceConfig': postgresqlSourceConfig.toMap(),
+      'sourceConnectionProfile': sourceConnectionProfile,
+    };
   }
 
   factory SourceConfigResponse.fromMap(Map<String, dynamic> map) {
     return SourceConfigResponse(
-      mysqlSourceConfig: MysqlSourceConfigResponse.fromMap(
-          (map['mysqlSourceConfig'] as Map).cast<String, dynamic>()),
-      oracleSourceConfig: OracleSourceConfigResponse.fromMap(
-          (map['oracleSourceConfig'] as Map).cast<String, dynamic>()),
-      postgresqlSourceConfig: PostgresqlSourceConfigResponse.fromMap(
-          (map['postgresqlSourceConfig'] as Map).cast<String, dynamic>()),
+      mysqlSourceConfig: MysqlSourceConfigResponse.fromMap((map['mysqlSourceConfig'] as Map).cast<String, dynamic>()),
+      oracleSourceConfig: OracleSourceConfigResponse.fromMap((map['oracleSourceConfig'] as Map).cast<String, dynamic>()),
+      postgresqlSourceConfig: PostgresqlSourceConfigResponse.fromMap((map['postgresqlSourceConfig'] as Map).cast<String, dynamic>()),
       sourceConnectionProfile: map['sourceConnectionProfile'] as String,
     );
   }
 }
+

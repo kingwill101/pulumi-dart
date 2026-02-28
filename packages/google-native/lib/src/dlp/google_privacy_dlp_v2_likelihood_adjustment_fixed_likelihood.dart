@@ -10,15 +10,13 @@ enum GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood {
   const GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood(this.value);
   final String value;
 
-  static GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood fromValue(
-      String value) {
-    for (final item
-        in GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood.values) {
+  static GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood fromValue(String value) {
+    for (final item in GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood value: $value');
+    throw ArgumentError('Unknown GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood value: $value');
   }
 }
+

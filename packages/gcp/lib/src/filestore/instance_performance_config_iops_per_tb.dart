@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstancePerformanceConfigIopsPerTb {
   /// The instance max IOPS will be calculated by multiplying
   /// the capacity of the instance (TB) by max_iops_per_tb,
@@ -15,18 +16,15 @@ class InstancePerformanceConfigIopsPerTb {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final maxIopsPerTbValue = maxIopsPerTb;
-    if (maxIopsPerTbValue != null) {
-      map['maxIopsPerTb'] = maxIopsPerTbValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'maxIopsPerTb': ?maxIopsPerTb,
+    };
   }
 
   factory InstancePerformanceConfigIopsPerTb.fromMap(Map<String, dynamic> map) {
     return InstancePerformanceConfigIopsPerTb(
-      maxIopsPerTb:
-          map['maxIopsPerTb'] == null ? null : map['maxIopsPerTb'] as int,
+      maxIopsPerTb: map['maxIopsPerTb'] == null ? null : map['maxIopsPerTb'] as int,
     );
   }
 }
+

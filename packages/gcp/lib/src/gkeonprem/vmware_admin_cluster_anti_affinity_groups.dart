@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VmwareAdminClusterAntiAffinityGroups {
   /// Spread nodes across at least three physical hosts (requires at least three
   /// hosts).
@@ -13,15 +14,15 @@ class VmwareAdminClusterAntiAffinityGroups {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['aagConfigDisabled'] = aagConfigDisabled;
-    return map;
+    return <String, dynamic>{
+      'aagConfigDisabled': aagConfigDisabled,
+    };
   }
 
-  factory VmwareAdminClusterAntiAffinityGroups.fromMap(
-      Map<String, dynamic> map) {
+  factory VmwareAdminClusterAntiAffinityGroups.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterAntiAffinityGroups(
       aagConfigDisabled: map['aagConfigDisabled'] as bool,
     );
   }
 }
+

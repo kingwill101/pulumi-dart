@@ -12,7 +12,7 @@ enum SslSettingsSslManagementTypeAppengineV1beta {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown SslSettingsSslManagementTypeAppengineV1beta value: $value');
+    throw ArgumentError('Unknown SslSettingsSslManagementTypeAppengineV1beta value: $value');
   }
 }
+

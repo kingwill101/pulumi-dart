@@ -17,3 +17,4 @@ enum AuditLogConfigLogType {
     throw ArgumentError('Unknown AuditLogConfigLogType value: $value');
   }
 }
+

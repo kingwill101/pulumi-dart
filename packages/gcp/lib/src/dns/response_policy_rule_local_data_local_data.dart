@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ResponsePolicyRuleLocalDataLocalData {
   /// For example, www.example.com.
   final String name;
-
   /// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1)
   final List<String>? rrdatas;
-
   /// Number of seconds that this ResourceRecordSet can be cached by
   /// resolvers.
   final int? ttl;
-
   /// One of valid DNS resource types.
   /// Possible values are: `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `HTTPS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, `TXT`.
   final String type;
@@ -28,29 +26,21 @@ class ResponsePolicyRuleLocalDataLocalData {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    final rrdatasValue = rrdatas;
-    if (rrdatasValue != null) {
-      map['rrdatas'] = rrdatasValue;
-    }
-    final ttlValue = ttl;
-    if (ttlValue != null) {
-      map['ttl'] = ttlValue;
-    }
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'rrdatas': ?rrdatas,
+      'ttl': ?ttl,
+      'type': type,
+    };
   }
 
-  factory ResponsePolicyRuleLocalDataLocalData.fromMap(
-      Map<String, dynamic> map) {
+  factory ResponsePolicyRuleLocalDataLocalData.fromMap(Map<String, dynamic> map) {
     return ResponsePolicyRuleLocalDataLocalData(
       name: map['name'] as String,
-      rrdatas: map['rrdatas'] == null
-          ? null
-          : (map['rrdatas'] as List).cast<String>(),
+      rrdatas: map['rrdatas'] == null ? null : (map['rrdatas'] as List).cast<String>(),
       ttl: map['ttl'] == null ? null : map['ttl'] as int,
       type: map['type'] as String,
     );
   }
 }
+

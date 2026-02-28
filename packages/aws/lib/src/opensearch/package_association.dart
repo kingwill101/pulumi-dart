@@ -212,11 +212,9 @@ import 'package_association_args.dart';
 class PackageAssociation extends pulumi.CustomResource {
   /// Name of the domain to associate the package with.
   late final pulumi.Output<String> domainName;
-
   /// Internal ID of the package to associate with a domain.
   late final pulumi.Output<String> packageId;
   late final pulumi.Output<String> referencePath;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

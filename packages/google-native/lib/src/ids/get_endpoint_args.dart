@@ -19,19 +19,17 @@ class GetEndpointArgs {
     required String endpointId,
     required String location,
     String? project,
-  })  : endpointId = pulumi.Input.asInput<String>(endpointId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      endpointId = pulumi.Input.asInput<String>(endpointId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['endpointId'] = endpointId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'endpointId': endpointId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetEndpointArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetEndpointArgs {
     );
   }
 }
+

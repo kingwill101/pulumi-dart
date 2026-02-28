@@ -13,15 +13,15 @@ class ClusterNotificationConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['pubsub'] = pubsub.toMap();
-    return map;
+    return <String, dynamic>{
+      'pubsub': pubsub.toMap(),
+    };
   }
 
   factory ClusterNotificationConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNotificationConfig(
-      pubsub: ClusterNotificationConfigPubsub.fromMap(
-          (map['pubsub'] as Map).cast<String, dynamic>()),
+      pubsub: ClusterNotificationConfigPubsub.fromMap((map['pubsub'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

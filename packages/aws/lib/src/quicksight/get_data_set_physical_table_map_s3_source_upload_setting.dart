@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDataSetPhysicalTableMapS3SourceUploadSetting {
   final bool containsHeader;
   final String delimiter;
@@ -22,17 +23,16 @@ class GetDataSetPhysicalTableMapS3SourceUploadSetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['containsHeader'] = containsHeader;
-    map['delimiter'] = delimiter;
-    map['format'] = format;
-    map['startFromRow'] = startFromRow;
-    map['textQualifier'] = textQualifier;
-    return map;
+    return <String, dynamic>{
+      'containsHeader': containsHeader,
+      'delimiter': delimiter,
+      'format': format,
+      'startFromRow': startFromRow,
+      'textQualifier': textQualifier,
+    };
   }
 
-  factory GetDataSetPhysicalTableMapS3SourceUploadSetting.fromMap(
-      Map<String, dynamic> map) {
+  factory GetDataSetPhysicalTableMapS3SourceUploadSetting.fromMap(Map<String, dynamic> map) {
     return GetDataSetPhysicalTableMapS3SourceUploadSetting(
       containsHeader: map['containsHeader'] as bool,
       delimiter: map['delimiter'] as String,
@@ -42,3 +42,4 @@ class GetDataSetPhysicalTableMapS3SourceUploadSetting {
     );
   }
 }
+

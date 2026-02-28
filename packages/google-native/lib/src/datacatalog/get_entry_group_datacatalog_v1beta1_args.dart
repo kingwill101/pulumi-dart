@@ -22,28 +22,22 @@ class GetEntryGroupDatacatalogV1beta1Args {
     required String location,
     String? project,
     String? readMask,
-  })  : entryGroupId = pulumi.Input.asInput<String>(entryGroupId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        readMask = pulumi.Input.asOptionalInput<String>(readMask);
+  }) :
+      entryGroupId = pulumi.Input.asInput<String>(entryGroupId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      readMask = pulumi.Input.asOptionalInput<String>(readMask);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['entryGroupId'] = entryGroupId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final readMaskValue = readMask;
-    if (readMaskValue != null) {
-      map['readMask'] = readMaskValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'entryGroupId': entryGroupId,
+      'location': location,
+      'project': ?project,
+      'readMask': ?readMask,
+    };
   }
 
-  factory GetEntryGroupDatacatalogV1beta1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetEntryGroupDatacatalogV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetEntryGroupDatacatalogV1beta1Args(
       entryGroupId: map['entryGroupId'] as String,
       location: map['location'] as String,
@@ -52,3 +46,4 @@ class GetEntryGroupDatacatalogV1beta1Args {
     );
   }
 }
+

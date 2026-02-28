@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRouteSpecGrpcRouteTimeoutIdle {
   final String unit;
   final int value;
@@ -13,10 +14,10 @@ class GetRouteSpecGrpcRouteTimeoutIdle {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['unit'] = unit;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'unit': unit,
+      'value': value,
+    };
   }
 
   factory GetRouteSpecGrpcRouteTimeoutIdle.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class GetRouteSpecGrpcRouteTimeoutIdle {
     );
   }
 }
+

@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import '../awsx/default_log_group.dart';
 import '../awsx/default_role_with_policy.dart';
 import 'task_definition_container_definition.dart';
+import 'package:pulumi_aws/ecs.dart' as pulumi_aws_ecs;
 
 /// {@template pulumi_ecs_fargate_task_definition_args_doc}
 /// The set of arguments for FargateTaskDefinition.
@@ -15,74 +16,54 @@ class FargateTaskDefinitionArgs {
   ///
   /// Either [container] or [containers] must be provided.
   final pulumi.Input<TaskDefinitionContainerDefinition>? container;
-
   /// All the containers to make a TaskDefinition from.  Useful when creating a Service that will
   /// contain many containers within.
   ///
   /// Either [container] or [containers] must be provided.
-  final pulumi.Input<Map<String, TaskDefinitionContainerDefinition>>?
-  containers;
-
+  final pulumi.Input<Map<String, TaskDefinitionContainerDefinition>>? containers;
   /// The number of cpu units used by the task. If not provided, a default will be computed based on the cumulative needs specified by [containerDefinitions]
   final pulumi.Input<String>? cpu;
-
   /// Enables fault injection and allows for fault injection requests to be accepted from the task's containers. Default is `false`.
   final pulumi.Input<bool>? enableFaultInjection;
-
   /// The amount of ephemeral storage to allocate for the task. This parameter is used to expand the total amount of ephemeral storage available, beyond the default amount, for tasks hosted on AWS Fargate. See Ephemeral Storage.
-  final pulumi.Input<Map<String, dynamic>>? ephemeralStorage;
-
+  final pulumi.Input<pulumi_aws_ecs.TaskDefinitionEphemeralStorage>? ephemeralStorage;
   /// The execution role that the Amazon ECS container agent and the Docker daemon can assume.
   /// Will be created automatically if not defined.
   final pulumi.Input<DefaultRoleWithPolicy>? executionRole;
-
   /// An optional unique name for your task definition. If not specified, then a default will be created.
   final pulumi.Input<String>? family;
-
   /// IPC resource namespace to be used for the containers in the task The valid values are `host`, `task`, and `none`.
   final pulumi.Input<String>? ipcMode;
-
   /// A set of volume blocks that containers in your task may use.
   final pulumi.Input<DefaultLogGroup>? logGroup;
-
   /// The amount (in MiB) of memory used by the task.  If not provided, a default will be computed
   /// based on the cumulative needs specified by [containerDefinitions]
   final pulumi.Input<String>? memory;
-
   /// Process namespace to use for the containers in the task. The valid values are `host` and `task`.
   final pulumi.Input<String>? pidMode;
-
   /// Configuration block for rules that are taken into consideration during task placement. Maximum number of `placement_constraints` is `10`. Detailed below.
-  final pulumi.Input<List<Map<String, dynamic>>>? placementConstraints;
-
+  final pulumi.Input<List<pulumi_aws_ecs.TaskDefinitionPlacementConstraint>>? placementConstraints;
   /// Configuration block for the App Mesh proxy. Detailed below.
-  final pulumi.Input<Map<String, dynamic>>? proxyConfiguration;
-
+  final pulumi.Input<pulumi_aws_ecs.TaskDefinitionProxyConfiguration>? proxyConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Configuration block for runtime_platform that containers in your task may use.
-  final pulumi.Input<Map<String, dynamic>>? runtimePlatform;
-
+  final pulumi.Input<pulumi_aws_ecs.TaskDefinitionRuntimePlatform>? runtimePlatform;
   /// Whether to retain the old revision when the resource is destroyed or replacement is necessary. Default is `false`.
   final pulumi.Input<bool>? skipDestroy;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// IAM role that allows your Amazon ECS container task to make calls to other AWS services.
   /// Will be created automatically if not defined.
   final pulumi.Input<DefaultRoleWithPolicy>? taskRole;
-
   /// Whether should track latest `ACTIVE` task definition on AWS or the one created with the resource stored in state. Default is `false`. Useful in the event the task definition is modified outside of this resource.
   final pulumi.Input<bool>? trackLatest;
-
   /// Repeatable configuration block for volumes that containers in your task may use. Detailed below.
   ///
   /// > **NOTE:** Proper escaping is required for JSON field values containing quotes (`"`) such as `environment` values. If directly setting the JSON, they should be escaped as `\"` in the JSON,  e.g., `"value": "I \"love\" escaped quotes"`. If using a variable value, they should be escaped as `\\\"` in the variable, e.g., `value = "I \\\"love\\\" escaped quotes"` in the variable and `"value": "${var.myvariable}"` in the JSON.
   ///
   /// > **Note:** Fault injection only works with tasks using the `awsvpc` or `host` network modes. Fault injection isn't available on Windows.
-  final pulumi.Input<List<Map<String, dynamic>>>? volumes;
+  final pulumi.Input<List<pulumi_aws_ecs.TaskDefinitionVolume>>? volumes;
 
   /// Creates a new [FargateTaskDefinitionArgs].
   /// [container] Single container to make a TaskDefinition from.  Useful for simple cases where there aren't
@@ -110,237 +91,92 @@ class FargateTaskDefinitionArgs {
     Map<String, TaskDefinitionContainerDefinition>? containers,
     String? cpu,
     bool? enableFaultInjection,
-    Map<String, dynamic>? ephemeralStorage,
+    pulumi_aws_ecs.TaskDefinitionEphemeralStorage? ephemeralStorage,
     DefaultRoleWithPolicy? executionRole,
     String? family,
     String? ipcMode,
     DefaultLogGroup? logGroup,
     String? memory,
     String? pidMode,
-    List<Map<String, dynamic>>? placementConstraints,
-    Map<String, dynamic>? proxyConfiguration,
+    List<pulumi_aws_ecs.TaskDefinitionPlacementConstraint>? placementConstraints,
+    pulumi_aws_ecs.TaskDefinitionProxyConfiguration? proxyConfiguration,
     String? region,
-    Map<String, dynamic>? runtimePlatform,
+    pulumi_aws_ecs.TaskDefinitionRuntimePlatform? runtimePlatform,
     bool? skipDestroy,
     Map<String, String>? tags,
     DefaultRoleWithPolicy? taskRole,
     bool? trackLatest,
-    List<Map<String, dynamic>>? volumes,
-  }) : container = pulumi
-           .Input.asOptionalInput<TaskDefinitionContainerDefinition>(container),
-       containers =
-           pulumi.Input.asOptionalInput<
-             Map<String, TaskDefinitionContainerDefinition>
-           >(containers),
-       cpu = pulumi.Input.asOptionalInput<String>(cpu),
-       enableFaultInjection = pulumi.Input.asOptionalInput<bool>(
-         enableFaultInjection,
-       ),
-       ephemeralStorage = pulumi.Input.asOptionalInput<Map<String, dynamic>>(
-         ephemeralStorage,
-       ),
-       executionRole = pulumi.Input.asOptionalInput<DefaultRoleWithPolicy>(
-         executionRole,
-       ),
-       family = pulumi.Input.asOptionalInput<String>(family),
-       ipcMode = pulumi.Input.asOptionalInput<String>(ipcMode),
-       logGroup = pulumi.Input.asOptionalInput<DefaultLogGroup>(logGroup),
-       memory = pulumi.Input.asOptionalInput<String>(memory),
-       pidMode = pulumi.Input.asOptionalInput<String>(pidMode),
-       placementConstraints =
-           pulumi.Input.asOptionalInput<List<Map<String, dynamic>>>(
-             placementConstraints,
-           ),
-       proxyConfiguration = pulumi.Input.asOptionalInput<Map<String, dynamic>>(
-         proxyConfiguration,
-       ),
-       region = pulumi.Input.asOptionalInput<String>(region),
-       runtimePlatform = pulumi.Input.asOptionalInput<Map<String, dynamic>>(
-         runtimePlatform,
-       ),
-       skipDestroy = pulumi.Input.asOptionalInput<bool>(skipDestroy),
-       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-       taskRole = pulumi.Input.asOptionalInput<DefaultRoleWithPolicy>(taskRole),
-       trackLatest = pulumi.Input.asOptionalInput<bool>(trackLatest),
-       volumes = pulumi.Input.asOptionalInput<List<Map<String, dynamic>>>(
-         volumes,
-       );
+    List<pulumi_aws_ecs.TaskDefinitionVolume>? volumes,
+  }) :
+      container = pulumi.Input.asOptionalInput<TaskDefinitionContainerDefinition>(container),
+      containers = pulumi.Input.asOptionalInput<Map<String, TaskDefinitionContainerDefinition>>(containers),
+      cpu = pulumi.Input.asOptionalInput<String>(cpu),
+      enableFaultInjection = pulumi.Input.asOptionalInput<bool>(enableFaultInjection),
+      ephemeralStorage = pulumi.Input.asOptionalInput<pulumi_aws_ecs.TaskDefinitionEphemeralStorage>(ephemeralStorage),
+      executionRole = pulumi.Input.asOptionalInput<DefaultRoleWithPolicy>(executionRole),
+      family = pulumi.Input.asOptionalInput<String>(family),
+      ipcMode = pulumi.Input.asOptionalInput<String>(ipcMode),
+      logGroup = pulumi.Input.asOptionalInput<DefaultLogGroup>(logGroup),
+      memory = pulumi.Input.asOptionalInput<String>(memory),
+      pidMode = pulumi.Input.asOptionalInput<String>(pidMode),
+      placementConstraints = pulumi.Input.asOptionalInput<List<pulumi_aws_ecs.TaskDefinitionPlacementConstraint>>(placementConstraints),
+      proxyConfiguration = pulumi.Input.asOptionalInput<pulumi_aws_ecs.TaskDefinitionProxyConfiguration>(proxyConfiguration),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      runtimePlatform = pulumi.Input.asOptionalInput<pulumi_aws_ecs.TaskDefinitionRuntimePlatform>(runtimePlatform),
+      skipDestroy = pulumi.Input.asOptionalInput<bool>(skipDestroy),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      taskRole = pulumi.Input.asOptionalInput<DefaultRoleWithPolicy>(taskRole),
+      trackLatest = pulumi.Input.asOptionalInput<bool>(trackLatest),
+      volumes = pulumi.Input.asOptionalInput<List<pulumi_aws_ecs.TaskDefinitionVolume>>(volumes);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final containerValue = container;
-    if (containerValue != null) {
-      map['container'] =
-          pulumi.Input.mapOptionalInputValue<
-            TaskDefinitionContainerDefinition,
-            Map<String, dynamic>
-          >(containerValue, (value) => value.toMap());
-    }
-    final containersValue = containers;
-    if (containersValue != null) {
-      map['containers'] =
-          pulumi.Input.mapOptionalInputValue<
-            Map<String, TaskDefinitionContainerDefinition>,
-            Map<String, Map<String, dynamic>>
-          >(
-            containersValue,
-            (value) =>
-                pulumi.Input.encodeMapValues<
-                  TaskDefinitionContainerDefinition,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          );
-    }
-    final cpuValue = cpu;
-    if (cpuValue != null) {
-      map['cpu'] = cpuValue;
-    }
-    final enableFaultInjectionValue = enableFaultInjection;
-    if (enableFaultInjectionValue != null) {
-      map['enableFaultInjection'] = enableFaultInjectionValue;
-    }
-    final ephemeralStorageValue = ephemeralStorage;
-    if (ephemeralStorageValue != null) {
-      map['ephemeralStorage'] = ephemeralStorageValue;
-    }
-    final executionRoleValue = executionRole;
-    if (executionRoleValue != null) {
-      map['executionRole'] =
-          pulumi.Input.mapOptionalInputValue<
-            DefaultRoleWithPolicy,
-            Map<String, dynamic>
-          >(executionRoleValue, (value) => value.toMap());
-    }
-    final familyValue = family;
-    if (familyValue != null) {
-      map['family'] = familyValue;
-    }
-    final ipcModeValue = ipcMode;
-    if (ipcModeValue != null) {
-      map['ipcMode'] = ipcModeValue;
-    }
-    final logGroupValue = logGroup;
-    if (logGroupValue != null) {
-      map['logGroup'] =
-          pulumi.Input.mapOptionalInputValue<
-            DefaultLogGroup,
-            Map<String, dynamic>
-          >(logGroupValue, (value) => value.toMap());
-    }
-    final memoryValue = memory;
-    if (memoryValue != null) {
-      map['memory'] = memoryValue;
-    }
-    final pidModeValue = pidMode;
-    if (pidModeValue != null) {
-      map['pidMode'] = pidModeValue;
-    }
-    final placementConstraintsValue = placementConstraints;
-    if (placementConstraintsValue != null) {
-      map['placementConstraints'] = placementConstraintsValue;
-    }
-    final proxyConfigurationValue = proxyConfiguration;
-    if (proxyConfigurationValue != null) {
-      map['proxyConfiguration'] = proxyConfigurationValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final runtimePlatformValue = runtimePlatform;
-    if (runtimePlatformValue != null) {
-      map['runtimePlatform'] = runtimePlatformValue;
-    }
-    final skipDestroyValue = skipDestroy;
-    if (skipDestroyValue != null) {
-      map['skipDestroy'] = skipDestroyValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    final taskRoleValue = taskRole;
-    if (taskRoleValue != null) {
-      map['taskRole'] =
-          pulumi.Input.mapOptionalInputValue<
-            DefaultRoleWithPolicy,
-            Map<String, dynamic>
-          >(taskRoleValue, (value) => value.toMap());
-    }
-    final trackLatestValue = trackLatest;
-    if (trackLatestValue != null) {
-      map['trackLatest'] = trackLatestValue;
-    }
-    final volumesValue = volumes;
-    if (volumesValue != null) {
-      map['volumes'] = volumesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'container': ?pulumi.Input.mapOptionalInputValue<TaskDefinitionContainerDefinition, Map<String, dynamic>>(container, (value) => value.toMap()),
+      'containers': ?pulumi.Input.mapOptionalInputValue<Map<String, TaskDefinitionContainerDefinition>, Map<String, Map<String, dynamic>>>(containers, (value) => pulumi.Input.encodeMapValues<TaskDefinitionContainerDefinition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'cpu': ?cpu,
+      'enableFaultInjection': ?enableFaultInjection,
+      'ephemeralStorage': ?pulumi.Input.mapOptionalInputValue<pulumi_aws_ecs.TaskDefinitionEphemeralStorage, Map<String, dynamic>>(ephemeralStorage, (value) => value.toMap()),
+      'executionRole': ?pulumi.Input.mapOptionalInputValue<DefaultRoleWithPolicy, Map<String, dynamic>>(executionRole, (value) => value.toMap()),
+      'family': ?family,
+      'ipcMode': ?ipcMode,
+      'logGroup': ?pulumi.Input.mapOptionalInputValue<DefaultLogGroup, Map<String, dynamic>>(logGroup, (value) => value.toMap()),
+      'memory': ?memory,
+      'pidMode': ?pidMode,
+      'placementConstraints': ?pulumi.Input.mapOptionalInputValue<List<pulumi_aws_ecs.TaskDefinitionPlacementConstraint>, List<Map<String, dynamic>>>(placementConstraints, (value) => pulumi.Input.encodeList<pulumi_aws_ecs.TaskDefinitionPlacementConstraint, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'proxyConfiguration': ?pulumi.Input.mapOptionalInputValue<pulumi_aws_ecs.TaskDefinitionProxyConfiguration, Map<String, dynamic>>(proxyConfiguration, (value) => value.toMap()),
+      'region': ?region,
+      'runtimePlatform': ?pulumi.Input.mapOptionalInputValue<pulumi_aws_ecs.TaskDefinitionRuntimePlatform, Map<String, dynamic>>(runtimePlatform, (value) => value.toMap()),
+      'skipDestroy': ?skipDestroy,
+      'tags': ?tags,
+      'taskRole': ?pulumi.Input.mapOptionalInputValue<DefaultRoleWithPolicy, Map<String, dynamic>>(taskRole, (value) => value.toMap()),
+      'trackLatest': ?trackLatest,
+      'volumes': ?pulumi.Input.mapOptionalInputValue<List<pulumi_aws_ecs.TaskDefinitionVolume>, List<Map<String, dynamic>>>(volumes, (value) => pulumi.Input.encodeList<pulumi_aws_ecs.TaskDefinitionVolume, Map<String, dynamic>>(value, (value) => value.toMap())),
+    };
   }
 
   factory FargateTaskDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return FargateTaskDefinitionArgs(
-      container: map['container'] == null
-          ? null
-          : TaskDefinitionContainerDefinition.fromMap(
-              (map['container'] as Map).cast<String, dynamic>(),
-            ),
-      containers: map['containers'] == null
-          ? null
-          : pulumi.Input.decodeMapValues<TaskDefinitionContainerDefinition>(
-              map['containers'],
-              (value) => TaskDefinitionContainerDefinition.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            ),
+      container: map['container'] == null ? null : TaskDefinitionContainerDefinition.fromMap((map['container'] as Map).cast<String, dynamic>()),
+      containers: map['containers'] == null ? null : pulumi.Input.decodeMapValues<TaskDefinitionContainerDefinition>(map['containers'], (value) => TaskDefinitionContainerDefinition.fromMap((value as Map).cast<String, dynamic>())),
       cpu: map['cpu'] == null ? null : map['cpu'] as String,
-      enableFaultInjection: map['enableFaultInjection'] == null
-          ? null
-          : map['enableFaultInjection'] as bool,
-      ephemeralStorage: map['ephemeralStorage'] == null
-          ? null
-          : (map['ephemeralStorage'] as Map).cast<String, dynamic>(),
-      executionRole: map['executionRole'] == null
-          ? null
-          : DefaultRoleWithPolicy.fromMap(
-              (map['executionRole'] as Map).cast<String, dynamic>(),
-            ),
+      enableFaultInjection: map['enableFaultInjection'] == null ? null : map['enableFaultInjection'] as bool,
+      ephemeralStorage: map['ephemeralStorage'] == null ? null : pulumi_aws_ecs.TaskDefinitionEphemeralStorage.fromMap((map['ephemeralStorage'] as Map).cast<String, dynamic>()),
+      executionRole: map['executionRole'] == null ? null : DefaultRoleWithPolicy.fromMap((map['executionRole'] as Map).cast<String, dynamic>()),
       family: map['family'] == null ? null : map['family'] as String,
       ipcMode: map['ipcMode'] == null ? null : map['ipcMode'] as String,
-      logGroup: map['logGroup'] == null
-          ? null
-          : DefaultLogGroup.fromMap(
-              (map['logGroup'] as Map).cast<String, dynamic>(),
-            ),
+      logGroup: map['logGroup'] == null ? null : DefaultLogGroup.fromMap((map['logGroup'] as Map).cast<String, dynamic>()),
       memory: map['memory'] == null ? null : map['memory'] as String,
       pidMode: map['pidMode'] == null ? null : map['pidMode'] as String,
-      placementConstraints: map['placementConstraints'] == null
-          ? null
-          : (map['placementConstraints'] as List).cast<Map<String, dynamic>>(),
-      proxyConfiguration: map['proxyConfiguration'] == null
-          ? null
-          : (map['proxyConfiguration'] as Map).cast<String, dynamic>(),
+      placementConstraints: map['placementConstraints'] == null ? null : pulumi.Input.decodeList<pulumi_aws_ecs.TaskDefinitionPlacementConstraint>(map['placementConstraints'], (value) => pulumi_aws_ecs.TaskDefinitionPlacementConstraint.fromMap((value as Map).cast<String, dynamic>())),
+      proxyConfiguration: map['proxyConfiguration'] == null ? null : pulumi_aws_ecs.TaskDefinitionProxyConfiguration.fromMap((map['proxyConfiguration'] as Map).cast<String, dynamic>()),
       region: map['region'] == null ? null : map['region'] as String,
-      runtimePlatform: map['runtimePlatform'] == null
-          ? null
-          : (map['runtimePlatform'] as Map).cast<String, dynamic>(),
-      skipDestroy: map['skipDestroy'] == null
-          ? null
-          : map['skipDestroy'] as bool,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
-      taskRole: map['taskRole'] == null
-          ? null
-          : DefaultRoleWithPolicy.fromMap(
-              (map['taskRole'] as Map).cast<String, dynamic>(),
-            ),
-      trackLatest: map['trackLatest'] == null
-          ? null
-          : map['trackLatest'] as bool,
-      volumes: map['volumes'] == null
-          ? null
-          : (map['volumes'] as List).cast<Map<String, dynamic>>(),
+      runtimePlatform: map['runtimePlatform'] == null ? null : pulumi_aws_ecs.TaskDefinitionRuntimePlatform.fromMap((map['runtimePlatform'] as Map).cast<String, dynamic>()),
+      skipDestroy: map['skipDestroy'] == null ? null : map['skipDestroy'] as bool,
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      taskRole: map['taskRole'] == null ? null : DefaultRoleWithPolicy.fromMap((map['taskRole'] as Map).cast<String, dynamic>()),
+      trackLatest: map['trackLatest'] == null ? null : map['trackLatest'] as bool,
+      volumes: map['volumes'] == null ? null : pulumi.Input.decodeList<pulumi_aws_ecs.TaskDefinitionVolume>(map['volumes'], (value) => pulumi_aws_ecs.TaskDefinitionVolume.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

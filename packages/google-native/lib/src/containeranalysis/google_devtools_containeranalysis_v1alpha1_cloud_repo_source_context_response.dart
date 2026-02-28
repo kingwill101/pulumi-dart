@@ -6,12 +6,9 @@ import 'google_devtools_containeranalysis_v1alpha1_repo_id_response.dart';
 /// A CloudRepoSourceContext denotes a particular revision in a Google Cloud Source Repo.
 class GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse {
   /// An alias, which may be a branch or tag.
-  final GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse
-      aliasContext;
-
+  final GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse aliasContext;
   /// The ID of the repo.
   final GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse repoId;
-
   /// A revision ID.
   final String revisionId;
 
@@ -26,22 +23,19 @@ class GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['aliasContext'] = aliasContext.toMap();
-    map['repoId'] = repoId.toMap();
-    map['revisionId'] = revisionId;
-    return map;
+    return <String, dynamic>{
+      'aliasContext': aliasContext.toMap(),
+      'repoId': repoId.toMap(),
+      'revisionId': revisionId,
+    };
   }
 
-  factory GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse(
-      aliasContext:
-          GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse.fromMap(
-              (map['aliasContext'] as Map).cast<String, dynamic>()),
-      repoId: GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse.fromMap(
-          (map['repoId'] as Map).cast<String, dynamic>()),
+      aliasContext: GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse.fromMap((map['aliasContext'] as Map).cast<String, dynamic>()),
+      repoId: GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse.fromMap((map['repoId'] as Map).cast<String, dynamic>()),
       revisionId: map['revisionId'] as String,
     );
   }
 }
+

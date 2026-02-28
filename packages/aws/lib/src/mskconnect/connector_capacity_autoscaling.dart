@@ -6,16 +6,12 @@ import 'connector_capacity_autoscaling_scale_out_policy.dart';
 class ConnectorCapacityAutoscaling {
   /// The maximum number of workers allocated to the connector.
   final int maxWorkerCount;
-
   /// The number of microcontroller units (MCUs) allocated to each connector worker. Valid values: `1`, `2`, `4`, `8`. The default value is `1`.
   final int? mcuCount;
-
   /// The minimum number of workers allocated to the connector.
   final int minWorkerCount;
-
   /// The scale-in policy for the connector. See `scale_in_policy` Block for details.
   final ConnectorCapacityAutoscalingScaleInPolicy? scaleInPolicy;
-
   /// The scale-out policy for the connector. See `scale_out_policy` Block for details.
   final ConnectorCapacityAutoscalingScaleOutPolicy? scaleOutPolicy;
 
@@ -34,22 +30,13 @@ class ConnectorCapacityAutoscaling {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maxWorkerCount'] = maxWorkerCount;
-    final mcuCountValue = mcuCount;
-    if (mcuCountValue != null) {
-      map['mcuCount'] = mcuCountValue;
-    }
-    map['minWorkerCount'] = minWorkerCount;
-    final scaleInPolicyValue = scaleInPolicy;
-    if (scaleInPolicyValue != null) {
-      map['scaleInPolicy'] = scaleInPolicyValue.toMap();
-    }
-    final scaleOutPolicyValue = scaleOutPolicy;
-    if (scaleOutPolicyValue != null) {
-      map['scaleOutPolicy'] = scaleOutPolicyValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'maxWorkerCount': maxWorkerCount,
+      'mcuCount': ?mcuCount,
+      'minWorkerCount': minWorkerCount,
+      'scaleInPolicy': ?scaleInPolicy == null ? null : scaleInPolicy!.toMap(),
+      'scaleOutPolicy': ?scaleOutPolicy == null ? null : scaleOutPolicy!.toMap(),
+    };
   }
 
   factory ConnectorCapacityAutoscaling.fromMap(Map<String, dynamic> map) {
@@ -57,14 +44,9 @@ class ConnectorCapacityAutoscaling {
       maxWorkerCount: map['maxWorkerCount'] as int,
       mcuCount: map['mcuCount'] == null ? null : map['mcuCount'] as int,
       minWorkerCount: map['minWorkerCount'] as int,
-      scaleInPolicy: map['scaleInPolicy'] == null
-          ? null
-          : ConnectorCapacityAutoscalingScaleInPolicy.fromMap(
-              (map['scaleInPolicy'] as Map).cast<String, dynamic>()),
-      scaleOutPolicy: map['scaleOutPolicy'] == null
-          ? null
-          : ConnectorCapacityAutoscalingScaleOutPolicy.fromMap(
-              (map['scaleOutPolicy'] as Map).cast<String, dynamic>()),
+      scaleInPolicy: map['scaleInPolicy'] == null ? null : ConnectorCapacityAutoscalingScaleInPolicy.fromMap((map['scaleInPolicy'] as Map).cast<String, dynamic>()),
+      scaleOutPolicy: map['scaleOutPolicy'] == null ? null : ConnectorCapacityAutoscalingScaleOutPolicy.fromMap((map['scaleOutPolicy'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

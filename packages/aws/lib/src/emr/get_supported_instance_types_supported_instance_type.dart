@@ -1,36 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetSupportedInstanceTypesSupportedInstanceType {
   /// CPU architecture.
   final String architecture;
-
   /// Indicates whether the instance type supports Amazon EBS optimization.
   final bool ebsOptimizedAvailable;
-
   /// Indicates whether the instance type uses Amazon EBS optimization by default.
   final bool ebsOptimizedByDefault;
-
   /// Indicates whether the instance type only supports Amazon EBS.
   final bool ebsStorageOnly;
-
   /// The Amazon EC2 family and generation for the instance type.
   final String instanceFamilyId;
-
   /// Indicates whether the instance type only supports 64-bit architecture.
   final bool is64BitsOnly;
-
   /// Memory that is available to Amazon EMR from the instance type.
   final double memoryGb;
-
   /// Number of disks for the instance type.
   final int numberOfDisks;
-
   /// Storage capacity of the instance type.
   final int storageGb;
-
   /// Amazon EC2 instance type. For example, `m5.xlarge`.
   final String type;
-
   /// The number of vCPUs available for the instance type.
   final int vcpu;
 
@@ -61,23 +52,22 @@ class GetSupportedInstanceTypesSupportedInstanceType {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['architecture'] = architecture;
-    map['ebsOptimizedAvailable'] = ebsOptimizedAvailable;
-    map['ebsOptimizedByDefault'] = ebsOptimizedByDefault;
-    map['ebsStorageOnly'] = ebsStorageOnly;
-    map['instanceFamilyId'] = instanceFamilyId;
-    map['is64BitsOnly'] = is64BitsOnly;
-    map['memoryGb'] = memoryGb;
-    map['numberOfDisks'] = numberOfDisks;
-    map['storageGb'] = storageGb;
-    map['type'] = type;
-    map['vcpu'] = vcpu;
-    return map;
+    return <String, dynamic>{
+      'architecture': architecture,
+      'ebsOptimizedAvailable': ebsOptimizedAvailable,
+      'ebsOptimizedByDefault': ebsOptimizedByDefault,
+      'ebsStorageOnly': ebsStorageOnly,
+      'instanceFamilyId': instanceFamilyId,
+      'is64BitsOnly': is64BitsOnly,
+      'memoryGb': memoryGb,
+      'numberOfDisks': numberOfDisks,
+      'storageGb': storageGb,
+      'type': type,
+      'vcpu': vcpu,
+    };
   }
 
-  factory GetSupportedInstanceTypesSupportedInstanceType.fromMap(
-      Map<String, dynamic> map) {
+  factory GetSupportedInstanceTypesSupportedInstanceType.fromMap(Map<String, dynamic> map) {
     return GetSupportedInstanceTypesSupportedInstanceType(
       architecture: map['architecture'] as String,
       ebsOptimizedAvailable: map['ebsOptimizedAvailable'] as bool,
@@ -93,3 +83,4 @@ class GetSupportedInstanceTypesSupportedInstanceType {
     );
   }
 }
+

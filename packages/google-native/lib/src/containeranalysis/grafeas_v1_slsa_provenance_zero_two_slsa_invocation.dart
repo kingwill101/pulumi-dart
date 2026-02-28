@@ -19,35 +19,19 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final configSourceValue = configSource;
-    if (configSourceValue != null) {
-      map['configSource'] = configSourceValue.toMap();
-    }
-    final environmentValue = environment;
-    if (environmentValue != null) {
-      map['environment'] = environmentValue;
-    }
-    final parametersValue = parameters;
-    if (parametersValue != null) {
-      map['parameters'] = parametersValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'configSource': ?configSource == null ? null : configSource!.toMap(),
+      'environment': ?environment,
+      'parameters': ?parameters,
+    };
   }
 
-  factory GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation.fromMap(
-      Map<String, dynamic> map) {
+  factory GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation.fromMap(Map<String, dynamic> map) {
     return GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation(
-      configSource: map['configSource'] == null
-          ? null
-          : GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource.fromMap(
-              (map['configSource'] as Map).cast<String, dynamic>()),
-      environment: map['environment'] == null
-          ? null
-          : (map['environment'] as Map).cast<String, String>(),
-      parameters: map['parameters'] == null
-          ? null
-          : (map['parameters'] as Map).cast<String, String>(),
+      configSource: map['configSource'] == null ? null : GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource.fromMap((map['configSource'] as Map).cast<String, dynamic>()),
+      environment: map['environment'] == null ? null : (map['environment'] as Map).cast<String, String>(),
+      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, String>(),
     );
   }
 }
+

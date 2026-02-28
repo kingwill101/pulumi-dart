@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Unstructured data linked to this document.
 class GoogleCloudDiscoveryengineV1alphaDocumentContentResponse {
   /// The MIME type of the content. Supported types: * `application/pdf` (PDF, only native PDFs are supported for now) * `text/html` (HTML) * `application/vnd.openxmlformats-officedocument.wordprocessingml.document` (DOCX) * `application/vnd.openxmlformats-officedocument.presentationml.presentation` (PPTX) * `text/plain` (TXT) See https://www.iana.org/assignments/media-types/media-types.xhtml.
   final String mimeType;
-
   /// The content represented as a stream of bytes. The maximum length is 1,000,000 bytes (1 MB / ~0.95 MiB). Note: As with all `bytes` fields, this field is represented as pure binary in Protocol Buffers and base64-encoded string in JSON. For example, `abc123!?$*&()'-=@~` should be represented as `YWJjMTIzIT8kKiYoKSctPUB+` in JSON. See https://developers.google.com/protocol-buffers/docs/proto3#json.
   final String rawBytes;
-
   /// The URI of the content. Only Cloud Storage URIs (e.g. `gs://bucket-name/path/to/file`) are supported. The maximum file size is 100 MB.
   final String uri;
 
@@ -22,15 +21,14 @@ class GoogleCloudDiscoveryengineV1alphaDocumentContentResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['mimeType'] = mimeType;
-    map['rawBytes'] = rawBytes;
-    map['uri'] = uri;
-    return map;
+    return <String, dynamic>{
+      'mimeType': mimeType,
+      'rawBytes': rawBytes,
+      'uri': uri,
+    };
   }
 
-  factory GoogleCloudDiscoveryengineV1alphaDocumentContentResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDiscoveryengineV1alphaDocumentContentResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDiscoveryengineV1alphaDocumentContentResponse(
       mimeType: map['mimeType'] as String,
       rawBytes: map['rawBytes'] as String,
@@ -38,3 +36,4 @@ class GoogleCloudDiscoveryengineV1alphaDocumentContentResponse {
     );
   }
 }
+

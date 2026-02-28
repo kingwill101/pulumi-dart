@@ -17,29 +17,17 @@ class GetGatewayRouteSpecHttp2RouteAction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['rewrites'] = pulumi.Input.encodeList<
-        GetGatewayRouteSpecHttp2RouteActionRewrite,
-        Map<String, dynamic>>(rewrites, (value) => value.toMap());
-    map['targets'] = pulumi.Input.encodeList<
-        GetGatewayRouteSpecHttp2RouteActionTarget,
-        Map<String, dynamic>>(targets, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'rewrites': pulumi.Input.encodeList<GetGatewayRouteSpecHttp2RouteActionRewrite, Map<String, dynamic>>(rewrites, (value) => value.toMap()),
+      'targets': pulumi.Input.encodeList<GetGatewayRouteSpecHttp2RouteActionTarget, Map<String, dynamic>>(targets, (value) => value.toMap()),
+    };
   }
 
-  factory GetGatewayRouteSpecHttp2RouteAction.fromMap(
-      Map<String, dynamic> map) {
+  factory GetGatewayRouteSpecHttp2RouteAction.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpecHttp2RouteAction(
-      rewrites:
-          pulumi.Input.decodeList<GetGatewayRouteSpecHttp2RouteActionRewrite>(
-              map['rewrites'],
-              (value) => GetGatewayRouteSpecHttp2RouteActionRewrite.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      targets:
-          pulumi.Input.decodeList<GetGatewayRouteSpecHttp2RouteActionTarget>(
-              map['targets'],
-              (value) => GetGatewayRouteSpecHttp2RouteActionTarget.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      rewrites: pulumi.Input.decodeList<GetGatewayRouteSpecHttp2RouteActionRewrite>(map['rewrites'], (value) => GetGatewayRouteSpecHttp2RouteActionRewrite.fromMap((value as Map).cast<String, dynamic>())),
+      targets: pulumi.Input.decodeList<GetGatewayRouteSpecHttp2RouteActionTarget>(map['targets'], (value) => GetGatewayRouteSpecHttp2RouteActionTarget.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

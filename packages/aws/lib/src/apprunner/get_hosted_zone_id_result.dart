@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getHostedZoneId.
 class GetHostedZoneIdResult {
   /// ID of the AWS App Runner service HostedZoneId in the selected Region.
@@ -15,10 +16,10 @@ class GetHostedZoneIdResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'region': region,
+    };
   }
 
   factory GetHostedZoneIdResult.fromMap(Map<String, dynamic> map) {
@@ -28,3 +29,4 @@ class GetHostedZoneIdResult {
     );
   }
 }
+

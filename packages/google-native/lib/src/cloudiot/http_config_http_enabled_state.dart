@@ -16,3 +16,4 @@ enum HttpConfigHttpEnabledState {
     throw ArgumentError('Unknown HttpConfigHttpEnabledState value: $value');
   }
 }
+

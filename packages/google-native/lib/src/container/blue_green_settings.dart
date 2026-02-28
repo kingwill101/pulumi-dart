@@ -6,7 +6,6 @@ import 'standard_rollout_policy.dart';
 class BlueGreenSettings {
   /// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
   final String? nodePoolSoakDuration;
-
   /// Standard policy for the blue-green upgrade.
   final StandardRolloutPolicy? standardRolloutPolicy;
 
@@ -19,27 +18,17 @@ class BlueGreenSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nodePoolSoakDurationValue = nodePoolSoakDuration;
-    if (nodePoolSoakDurationValue != null) {
-      map['nodePoolSoakDuration'] = nodePoolSoakDurationValue;
-    }
-    final standardRolloutPolicyValue = standardRolloutPolicy;
-    if (standardRolloutPolicyValue != null) {
-      map['standardRolloutPolicy'] = standardRolloutPolicyValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'nodePoolSoakDuration': ?nodePoolSoakDuration,
+      'standardRolloutPolicy': ?standardRolloutPolicy == null ? null : standardRolloutPolicy!.toMap(),
+    };
   }
 
   factory BlueGreenSettings.fromMap(Map<String, dynamic> map) {
     return BlueGreenSettings(
-      nodePoolSoakDuration: map['nodePoolSoakDuration'] == null
-          ? null
-          : map['nodePoolSoakDuration'] as String,
-      standardRolloutPolicy: map['standardRolloutPolicy'] == null
-          ? null
-          : StandardRolloutPolicy.fromMap(
-              (map['standardRolloutPolicy'] as Map).cast<String, dynamic>()),
+      nodePoolSoakDuration: map['nodePoolSoakDuration'] == null ? null : map['nodePoolSoakDuration'] as String,
+      standardRolloutPolicy: map['standardRolloutPolicy'] == null ? null : StandardRolloutPolicy.fromMap((map['standardRolloutPolicy'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

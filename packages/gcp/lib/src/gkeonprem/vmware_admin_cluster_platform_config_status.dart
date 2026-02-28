@@ -8,7 +8,6 @@ class VmwareAdminClusterPlatformConfigStatus {
   /// ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
   /// Structure is documented below.
   final List<VmwareAdminClusterPlatformConfigStatusCondition>? conditions;
-
   /// (Output)
   /// Human-friendly representation of the error message from the admin cluster
   /// controller. The error message can be temporary as the admin cluster
@@ -26,33 +25,17 @@ class VmwareAdminClusterPlatformConfigStatus {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final conditionsValue = conditions;
-    if (conditionsValue != null) {
-      map['conditions'] = pulumi.Input.encodeList<
-          VmwareAdminClusterPlatformConfigStatusCondition,
-          Map<String, dynamic>>(conditionsValue, (value) => value.toMap());
-    }
-    final errorMessageValue = errorMessage;
-    if (errorMessageValue != null) {
-      map['errorMessage'] = errorMessageValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<VmwareAdminClusterPlatformConfigStatusCondition, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+      'errorMessage': ?errorMessage,
+    };
   }
 
-  factory VmwareAdminClusterPlatformConfigStatus.fromMap(
-      Map<String, dynamic> map) {
+  factory VmwareAdminClusterPlatformConfigStatus.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterPlatformConfigStatus(
-      conditions: map['conditions'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  VmwareAdminClusterPlatformConfigStatusCondition>(
-              map['conditions'],
-              (value) =>
-                  VmwareAdminClusterPlatformConfigStatusCondition.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      errorMessage:
-          map['errorMessage'] == null ? null : map['errorMessage'] as String,
+      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<VmwareAdminClusterPlatformConfigStatusCondition>(map['conditions'], (value) => VmwareAdminClusterPlatformConfigStatusCondition.fromMap((value as Map).cast<String, dynamic>())),
+      errorMessage: map['errorMessage'] == null ? null : map['errorMessage'] as String,
     );
   }
 }
+

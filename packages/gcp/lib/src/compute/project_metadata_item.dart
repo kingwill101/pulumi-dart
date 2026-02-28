@@ -122,11 +122,9 @@ import 'project_metadata_item_args.dart';
 class ProjectMetadataItem extends pulumi.CustomResource {
   /// The metadata key to set.
   late final pulumi.Output<String> key;
-
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The value to set for the given metadata key.
   ///
   /// - - -

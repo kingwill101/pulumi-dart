@@ -269,10 +269,8 @@ import 'vpc_association_authorization_args.dart';
 class VpcAssociationAuthorization extends pulumi.CustomResource {
   /// The VPC to authorize for association with the private hosted zone.
   late final pulumi.Output<String> vpcId;
-
   /// The VPC's region. Defaults to the region of the AWS provider.
   late final pulumi.Output<String> vpcRegion;
-
   /// The ID of the private hosted zone that you want to authorize associating a VPC with.
   late final pulumi.Output<String> zoneId;
 

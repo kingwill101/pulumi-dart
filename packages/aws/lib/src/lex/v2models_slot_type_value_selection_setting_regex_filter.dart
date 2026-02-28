@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class V2modelsSlotTypeValueSelectionSettingRegexFilter {
   /// A regular expression used to validate the value of a slot.
   final String pattern;
@@ -11,15 +12,15 @@ class V2modelsSlotTypeValueSelectionSettingRegexFilter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['pattern'] = pattern;
-    return map;
+    return <String, dynamic>{
+      'pattern': pattern,
+    };
   }
 
-  factory V2modelsSlotTypeValueSelectionSettingRegexFilter.fromMap(
-      Map<String, dynamic> map) {
+  factory V2modelsSlotTypeValueSelectionSettingRegexFilter.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotTypeValueSelectionSettingRegexFilter(
       pattern: map['pattern'] as String,
     );
   }
 }
+

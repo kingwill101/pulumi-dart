@@ -16,3 +16,4 @@ enum FunctionDockerRegistry {
     throw ArgumentError('Unknown FunctionDockerRegistry value: $value');
   }
 }
+

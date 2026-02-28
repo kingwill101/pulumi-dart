@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ResourceServerScope {
   /// The scope description.
   final String scopeDescription;
-
   /// The scope name.
   final String scopeName;
 
@@ -16,10 +16,10 @@ class ResourceServerScope {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['scopeDescription'] = scopeDescription;
-    map['scopeName'] = scopeName;
-    return map;
+    return <String, dynamic>{
+      'scopeDescription': scopeDescription,
+      'scopeName': scopeName,
+    };
   }
 
   factory ResourceServerScope.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class ResourceServerScope {
     );
   }
 }
+

@@ -15,21 +15,15 @@ class FloorsettingFilterConfigRaiSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['raiFilters'] = pulumi.Input.encodeList<
-        FloorsettingFilterConfigRaiSettingsRaiFilter,
-        Map<String, dynamic>>(raiFilters, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'raiFilters': pulumi.Input.encodeList<FloorsettingFilterConfigRaiSettingsRaiFilter, Map<String, dynamic>>(raiFilters, (value) => value.toMap()),
+    };
   }
 
-  factory FloorsettingFilterConfigRaiSettings.fromMap(
-      Map<String, dynamic> map) {
+  factory FloorsettingFilterConfigRaiSettings.fromMap(Map<String, dynamic> map) {
     return FloorsettingFilterConfigRaiSettings(
-      raiFilters:
-          pulumi.Input.decodeList<FloorsettingFilterConfigRaiSettingsRaiFilter>(
-              map['raiFilters'],
-              (value) => FloorsettingFilterConfigRaiSettingsRaiFilter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      raiFilters: pulumi.Input.decodeList<FloorsettingFilterConfigRaiSettingsRaiFilter>(map['raiFilters'], (value) => FloorsettingFilterConfigRaiSettingsRaiFilter.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

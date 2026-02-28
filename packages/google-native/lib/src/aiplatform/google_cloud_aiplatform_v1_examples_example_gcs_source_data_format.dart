@@ -6,15 +6,13 @@ enum GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormat {
   const GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormat(this.value);
   final String value;
 
-  static GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormat fromValue(
-      String value) {
-    for (final item
-        in GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormat.values) {
+  static GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormat fromValue(String value) {
+    for (final item in GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormat.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormat value: $value');
+    throw ArgumentError('Unknown GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormat value: $value');
   }
 }
+

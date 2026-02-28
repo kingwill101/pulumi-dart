@@ -25,23 +25,21 @@ class GetExperimentArgs {
     required String experimentId,
     required String location,
     String? project,
-  })  : agentId = pulumi.Input.asInput<String>(agentId),
-        environmentId = pulumi.Input.asInput<String>(environmentId),
-        experimentId = pulumi.Input.asInput<String>(experimentId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      agentId = pulumi.Input.asInput<String>(agentId),
+      environmentId = pulumi.Input.asInput<String>(environmentId),
+      experimentId = pulumi.Input.asInput<String>(experimentId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['agentId'] = agentId;
-    map['environmentId'] = environmentId;
-    map['experimentId'] = experimentId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'agentId': agentId,
+      'environmentId': environmentId,
+      'experimentId': experimentId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetExperimentArgs.fromMap(Map<String, dynamic> map) {
@@ -54,3 +52,4 @@ class GetExperimentArgs {
     );
   }
 }
+

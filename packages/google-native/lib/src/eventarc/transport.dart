@@ -14,19 +14,15 @@ class Transport {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final pubsubValue = pubsub;
-    if (pubsubValue != null) {
-      map['pubsub'] = pubsubValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'pubsub': ?pubsub == null ? null : pubsub!.toMap(),
+    };
   }
 
   factory Transport.fromMap(Map<String, dynamic> map) {
     return Transport(
-      pubsub: map['pubsub'] == null
-          ? null
-          : Pubsub.fromMap((map['pubsub'] as Map).cast<String, dynamic>()),
+      pubsub: map['pubsub'] == null ? null : Pubsub.fromMap((map['pubsub'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

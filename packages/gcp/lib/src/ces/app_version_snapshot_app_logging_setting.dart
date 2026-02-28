@@ -11,32 +11,23 @@ class AppVersionSnapshotAppLoggingSetting {
   /// (Output)
   /// Configuration for how the audio interactions should be recorded.
   /// Structure is documented below.
-  final List<AppVersionSnapshotAppLoggingSettingAudioRecordingConfig>?
-      audioRecordingConfigs;
-
+  final List<AppVersionSnapshotAppLoggingSettingAudioRecordingConfig>? audioRecordingConfigs;
   /// (Output)
   /// Settings to describe the BigQuery export behaviors for the app.
   /// Structure is documented below.
-  final List<AppVersionSnapshotAppLoggingSettingBigqueryExportSetting>?
-      bigqueryExportSettings;
-
+  final List<AppVersionSnapshotAppLoggingSettingBigqueryExportSetting>? bigqueryExportSettings;
   /// (Output)
   /// Settings to describe the Cloud Logging behaviors for the app.
   /// Structure is documented below.
-  final List<AppVersionSnapshotAppLoggingSettingCloudLoggingSetting>?
-      cloudLoggingSettings;
-
+  final List<AppVersionSnapshotAppLoggingSettingCloudLoggingSetting>? cloudLoggingSettings;
   /// (Output)
   /// Settings to describe the conversation logging behaviors for the app.
   /// Structure is documented below.
-  final List<AppVersionSnapshotAppLoggingSettingConversationLoggingSetting>?
-      conversationLoggingSettings;
-
+  final List<AppVersionSnapshotAppLoggingSettingConversationLoggingSetting>? conversationLoggingSettings;
   /// (Output)
   /// Configuration to instruct how sensitive data should be handled.
   /// Structure is documented below.
-  final List<AppVersionSnapshotAppLoggingSettingRedactionConfig>?
-      redactionConfigs;
+  final List<AppVersionSnapshotAppLoggingSettingRedactionConfig>? redactionConfigs;
 
   /// Creates a new [AppVersionSnapshotAppLoggingSetting].
   /// [audioRecordingConfigs] (Output)
@@ -53,86 +44,23 @@ class AppVersionSnapshotAppLoggingSetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final audioRecordingConfigsValue = audioRecordingConfigs;
-    if (audioRecordingConfigsValue != null) {
-      map['audioRecordingConfigs'] = pulumi.Input.encodeList<
-              AppVersionSnapshotAppLoggingSettingAudioRecordingConfig,
-              Map<String, dynamic>>(
-          audioRecordingConfigsValue, (value) => value.toMap());
-    }
-    final bigqueryExportSettingsValue = bigqueryExportSettings;
-    if (bigqueryExportSettingsValue != null) {
-      map['bigqueryExportSettings'] = pulumi.Input.encodeList<
-              AppVersionSnapshotAppLoggingSettingBigqueryExportSetting,
-              Map<String, dynamic>>(
-          bigqueryExportSettingsValue, (value) => value.toMap());
-    }
-    final cloudLoggingSettingsValue = cloudLoggingSettings;
-    if (cloudLoggingSettingsValue != null) {
-      map['cloudLoggingSettings'] = pulumi.Input.encodeList<
-              AppVersionSnapshotAppLoggingSettingCloudLoggingSetting,
-              Map<String, dynamic>>(
-          cloudLoggingSettingsValue, (value) => value.toMap());
-    }
-    final conversationLoggingSettingsValue = conversationLoggingSettings;
-    if (conversationLoggingSettingsValue != null) {
-      map['conversationLoggingSettings'] = pulumi.Input.encodeList<
-              AppVersionSnapshotAppLoggingSettingConversationLoggingSetting,
-              Map<String, dynamic>>(
-          conversationLoggingSettingsValue, (value) => value.toMap());
-    }
-    final redactionConfigsValue = redactionConfigs;
-    if (redactionConfigsValue != null) {
-      map['redactionConfigs'] = pulumi.Input.encodeList<
-              AppVersionSnapshotAppLoggingSettingRedactionConfig,
-              Map<String, dynamic>>(
-          redactionConfigsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'audioRecordingConfigs': ?audioRecordingConfigs == null ? null : pulumi.Input.encodeList<AppVersionSnapshotAppLoggingSettingAudioRecordingConfig, Map<String, dynamic>>(audioRecordingConfigs!, (value) => value.toMap()),
+      'bigqueryExportSettings': ?bigqueryExportSettings == null ? null : pulumi.Input.encodeList<AppVersionSnapshotAppLoggingSettingBigqueryExportSetting, Map<String, dynamic>>(bigqueryExportSettings!, (value) => value.toMap()),
+      'cloudLoggingSettings': ?cloudLoggingSettings == null ? null : pulumi.Input.encodeList<AppVersionSnapshotAppLoggingSettingCloudLoggingSetting, Map<String, dynamic>>(cloudLoggingSettings!, (value) => value.toMap()),
+      'conversationLoggingSettings': ?conversationLoggingSettings == null ? null : pulumi.Input.encodeList<AppVersionSnapshotAppLoggingSettingConversationLoggingSetting, Map<String, dynamic>>(conversationLoggingSettings!, (value) => value.toMap()),
+      'redactionConfigs': ?redactionConfigs == null ? null : pulumi.Input.encodeList<AppVersionSnapshotAppLoggingSettingRedactionConfig, Map<String, dynamic>>(redactionConfigs!, (value) => value.toMap()),
+    };
   }
 
-  factory AppVersionSnapshotAppLoggingSetting.fromMap(
-      Map<String, dynamic> map) {
+  factory AppVersionSnapshotAppLoggingSetting.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppLoggingSetting(
-      audioRecordingConfigs: map['audioRecordingConfigs'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  AppVersionSnapshotAppLoggingSettingAudioRecordingConfig>(
-              map['audioRecordingConfigs'],
-              (value) => AppVersionSnapshotAppLoggingSettingAudioRecordingConfig
-                  .fromMap((value as Map).cast<String, dynamic>())),
-      bigqueryExportSettings: map['bigqueryExportSettings'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  AppVersionSnapshotAppLoggingSettingBigqueryExportSetting>(
-              map['bigqueryExportSettings'],
-              (value) =>
-                  AppVersionSnapshotAppLoggingSettingBigqueryExportSetting
-                      .fromMap((value as Map).cast<String, dynamic>())),
-      cloudLoggingSettings: map['cloudLoggingSettings'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  AppVersionSnapshotAppLoggingSettingCloudLoggingSetting>(
-              map['cloudLoggingSettings'],
-              (value) => AppVersionSnapshotAppLoggingSettingCloudLoggingSetting
-                  .fromMap((value as Map).cast<String, dynamic>())),
-      conversationLoggingSettings: map['conversationLoggingSettings'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  AppVersionSnapshotAppLoggingSettingConversationLoggingSetting>(
-              map['conversationLoggingSettings'],
-              (value) =>
-                  AppVersionSnapshotAppLoggingSettingConversationLoggingSetting
-                      .fromMap((value as Map).cast<String, dynamic>())),
-      redactionConfigs: map['redactionConfigs'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  AppVersionSnapshotAppLoggingSettingRedactionConfig>(
-              map['redactionConfigs'],
-              (value) =>
-                  AppVersionSnapshotAppLoggingSettingRedactionConfig.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      audioRecordingConfigs: map['audioRecordingConfigs'] == null ? null : pulumi.Input.decodeList<AppVersionSnapshotAppLoggingSettingAudioRecordingConfig>(map['audioRecordingConfigs'], (value) => AppVersionSnapshotAppLoggingSettingAudioRecordingConfig.fromMap((value as Map).cast<String, dynamic>())),
+      bigqueryExportSettings: map['bigqueryExportSettings'] == null ? null : pulumi.Input.decodeList<AppVersionSnapshotAppLoggingSettingBigqueryExportSetting>(map['bigqueryExportSettings'], (value) => AppVersionSnapshotAppLoggingSettingBigqueryExportSetting.fromMap((value as Map).cast<String, dynamic>())),
+      cloudLoggingSettings: map['cloudLoggingSettings'] == null ? null : pulumi.Input.decodeList<AppVersionSnapshotAppLoggingSettingCloudLoggingSetting>(map['cloudLoggingSettings'], (value) => AppVersionSnapshotAppLoggingSettingCloudLoggingSetting.fromMap((value as Map).cast<String, dynamic>())),
+      conversationLoggingSettings: map['conversationLoggingSettings'] == null ? null : pulumi.Input.decodeList<AppVersionSnapshotAppLoggingSettingConversationLoggingSetting>(map['conversationLoggingSettings'], (value) => AppVersionSnapshotAppLoggingSettingConversationLoggingSetting.fromMap((value as Map).cast<String, dynamic>())),
+      redactionConfigs: map['redactionConfigs'] == null ? null : pulumi.Input.decodeList<AppVersionSnapshotAppLoggingSettingRedactionConfig>(map['redactionConfigs'], (value) => AppVersionSnapshotAppLoggingSettingRedactionConfig.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

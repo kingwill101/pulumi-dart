@@ -6,10 +6,8 @@ import 'google_cloud_dialogflow_v2beta1_intent_message_column_properties_horizon
 class GoogleCloudDialogflowV2beta1IntentMessageColumnProperties {
   /// Column heading.
   final String header;
-
   /// Optional. Defines text alignment for all cells in this column.
-  final GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignment?
-      horizontalAlignment;
+  final GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignment? horizontalAlignment;
 
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageColumnProperties].
   /// [header] Column heading.
@@ -20,23 +18,17 @@ class GoogleCloudDialogflowV2beta1IntentMessageColumnProperties {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['header'] = header;
-    final horizontalAlignmentValue = horizontalAlignment;
-    if (horizontalAlignmentValue != null) {
-      map['horizontalAlignment'] = horizontalAlignmentValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'header': header,
+      'horizontalAlignment': ?horizontalAlignment == null ? null : horizontalAlignment!.value,
+    };
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageColumnProperties.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageColumnProperties.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageColumnProperties(
       header: map['header'] as String,
-      horizontalAlignment: map['horizontalAlignment'] == null
-          ? null
-          : GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignment
-              .fromValue(map['horizontalAlignment'] as String),
+      horizontalAlignment: map['horizontalAlignment'] == null ? null : GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignment.fromValue(map['horizontalAlignment'] as String),
     );
   }
 }
+

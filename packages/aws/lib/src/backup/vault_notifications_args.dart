@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VaultNotificationsArgs {
   /// An array of events that indicate the status of jobs to back up resources to the backup vault.
   final pulumi.Input<List<String>> backupVaultEvents;
-
   /// Name of the backup vault to add notifications for.
   final pulumi.Input<String> backupVaultName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The Amazon Resource Name (ARN) that specifies the topic for a backup vault’s events
   final pulumi.Input<String> snsTopicArn;
 
@@ -29,22 +26,19 @@ class VaultNotificationsArgs {
     required String backupVaultName,
     String? region,
     required String snsTopicArn,
-  })  : backupVaultEvents =
-            pulumi.Input.asInput<List<String>>(backupVaultEvents),
-        backupVaultName = pulumi.Input.asInput<String>(backupVaultName),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        snsTopicArn = pulumi.Input.asInput<String>(snsTopicArn);
+  }) :
+      backupVaultEvents = pulumi.Input.asInput<List<String>>(backupVaultEvents),
+      backupVaultName = pulumi.Input.asInput<String>(backupVaultName),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      snsTopicArn = pulumi.Input.asInput<String>(snsTopicArn);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['backupVaultEvents'] = backupVaultEvents;
-    map['backupVaultName'] = backupVaultName;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['snsTopicArn'] = snsTopicArn;
-    return map;
+    return <String, dynamic>{
+      'backupVaultEvents': backupVaultEvents,
+      'backupVaultName': backupVaultName,
+      'region': ?region,
+      'snsTopicArn': snsTopicArn,
+    };
   }
 
   factory VaultNotificationsArgs.fromMap(Map<String, dynamic> map) {
@@ -56,3 +50,4 @@ class VaultNotificationsArgs {
     );
   }
 }
+

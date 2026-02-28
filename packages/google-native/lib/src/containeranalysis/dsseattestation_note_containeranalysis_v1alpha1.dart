@@ -14,21 +14,15 @@ class DSSEAttestationNoteContaineranalysisV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final hintValue = hint;
-    if (hintValue != null) {
-      map['hint'] = hintValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'hint': ?hint == null ? null : hint!.toMap(),
+    };
   }
 
-  factory DSSEAttestationNoteContaineranalysisV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory DSSEAttestationNoteContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return DSSEAttestationNoteContaineranalysisV1alpha1(
-      hint: map['hint'] == null
-          ? null
-          : DSSEHintContaineranalysisV1alpha1.fromMap(
-              (map['hint'] as Map).cast<String, dynamic>()),
+      hint: map['hint'] == null ? null : DSSEHintContaineranalysisV1alpha1.fromMap((map['hint'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssessmentTargetArgs {
   /// The name of the assessment target.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Inspector Resource Group Amazon Resource Name (ARN) stating tags for instance matching. If not specified, all EC2 instances in the current AWS account and region are included in the assessment target.
   final pulumi.Input<String>? resourceGroupArn;
 
@@ -24,35 +22,25 @@ class AssessmentTargetArgs {
     String? name,
     String? region,
     String? resourceGroupArn,
-  })  : name = pulumi.Input.asOptionalInput<String>(name),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        resourceGroupArn =
-            pulumi.Input.asOptionalInput<String>(resourceGroupArn);
+  }) :
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      resourceGroupArn = pulumi.Input.asOptionalInput<String>(resourceGroupArn);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final resourceGroupArnValue = resourceGroupArn;
-    if (resourceGroupArnValue != null) {
-      map['resourceGroupArn'] = resourceGroupArnValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+      'region': ?region,
+      'resourceGroupArn': ?resourceGroupArn,
+    };
   }
 
   factory AssessmentTargetArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentTargetArgs(
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      resourceGroupArn: map['resourceGroupArn'] == null
-          ? null
-          : map['resourceGroupArn'] as String,
+      resourceGroupArn: map['resourceGroupArn'] == null ? null : map['resourceGroupArn'] as String,
     );
   }
 }
+

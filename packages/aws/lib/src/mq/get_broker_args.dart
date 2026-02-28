@@ -9,14 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBrokerArgs {
   /// Unique ID of the MQ broker.
   final pulumi.Input<String>? brokerId;
-
   /// Unique name of the MQ broker.
   final pulumi.Input<String>? brokerName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// > **Note:** Either `broker_id` or `broker_name` must be specified.
   final pulumi.Input<String>? region;
-
   /// Map of tags assigned to the broker.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -30,41 +27,28 @@ class GetBrokerArgs {
     String? brokerName,
     String? region,
     Map<String, String>? tags,
-  })  : brokerId = pulumi.Input.asOptionalInput<String>(brokerId),
-        brokerName = pulumi.Input.asOptionalInput<String>(brokerName),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      brokerId = pulumi.Input.asOptionalInput<String>(brokerId),
+      brokerName = pulumi.Input.asOptionalInput<String>(brokerName),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final brokerIdValue = brokerId;
-    if (brokerIdValue != null) {
-      map['brokerId'] = brokerIdValue;
-    }
-    final brokerNameValue = brokerName;
-    if (brokerNameValue != null) {
-      map['brokerName'] = brokerNameValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'brokerId': ?brokerId,
+      'brokerName': ?brokerName,
+      'region': ?region,
+      'tags': ?tags,
+    };
   }
 
   factory GetBrokerArgs.fromMap(Map<String, dynamic> map) {
     return GetBrokerArgs(
       brokerId: map['brokerId'] == null ? null : map['brokerId'] as String,
-      brokerName:
-          map['brokerName'] == null ? null : map['brokerName'] as String,
+      brokerName: map['brokerName'] == null ? null : map['brokerName'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

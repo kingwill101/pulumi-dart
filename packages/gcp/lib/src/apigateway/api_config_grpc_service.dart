@@ -10,7 +10,6 @@ class ApiConfigGrpcService {
   /// $ protoc --include_imports --include_source_info test.proto -o out.pb
   /// Structure is documented below.
   final ApiConfigGrpcServiceFileDescriptorSet fileDescriptorSet;
-
   /// Uncompiled proto files associated with the descriptor set, used for display purposes (server-side compilation is not supported). These should match the inputs to 'protoc' command used to generate fileDescriptorSet.
   /// Structure is documented below.
   final List<ApiConfigGrpcServiceSource>? sources;
@@ -24,26 +23,17 @@ class ApiConfigGrpcService {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['fileDescriptorSet'] = fileDescriptorSet.toMap();
-    final sourcesValue = sources;
-    if (sourcesValue != null) {
-      map['sources'] = pulumi.Input.encodeList<ApiConfigGrpcServiceSource,
-          Map<String, dynamic>>(sourcesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'fileDescriptorSet': fileDescriptorSet.toMap(),
+      'sources': ?sources == null ? null : pulumi.Input.encodeList<ApiConfigGrpcServiceSource, Map<String, dynamic>>(sources!, (value) => value.toMap()),
+    };
   }
 
   factory ApiConfigGrpcService.fromMap(Map<String, dynamic> map) {
     return ApiConfigGrpcService(
-      fileDescriptorSet: ApiConfigGrpcServiceFileDescriptorSet.fromMap(
-          (map['fileDescriptorSet'] as Map).cast<String, dynamic>()),
-      sources: map['sources'] == null
-          ? null
-          : pulumi.Input.decodeList<ApiConfigGrpcServiceSource>(
-              map['sources'],
-              (value) => ApiConfigGrpcServiceSource.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      fileDescriptorSet: ApiConfigGrpcServiceFileDescriptorSet.fromMap((map['fileDescriptorSet'] as Map).cast<String, dynamic>()),
+      sources: map['sources'] == null ? null : pulumi.Input.decodeList<ApiConfigGrpcServiceSource>(map['sources'], (value) => ApiConfigGrpcServiceSource.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

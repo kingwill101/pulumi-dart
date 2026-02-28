@@ -14,15 +14,13 @@ class GetDefaultServiceAccountArgs {
   /// [project] The project the unique service account was created for. If it is not provided, the provider project is used.
   GetDefaultServiceAccountArgs({
     String? project,
-  }) : project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+    };
   }
 
   factory GetDefaultServiceAccountArgs.fromMap(Map<String, dynamic> map) {
@@ -31,3 +29,4 @@ class GetDefaultServiceAccountArgs {
     );
   }
 }
+

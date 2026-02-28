@@ -10,7 +10,6 @@ class GetTargetGroupResult {
   final bool connectionTermination;
   final String deregistrationDelay;
   final GetTargetGroupHealthCheck healthCheck;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool lambdaMultiValueHeadersEnabled;
@@ -85,32 +84,32 @@ class GetTargetGroupResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['arnSuffix'] = arnSuffix;
-    map['connectionTermination'] = connectionTermination;
-    map['deregistrationDelay'] = deregistrationDelay;
-    map['healthCheck'] = healthCheck.toMap();
-    map['id'] = id;
-    map['lambdaMultiValueHeadersEnabled'] = lambdaMultiValueHeadersEnabled;
-    map['loadBalancerArns'] = loadBalancerArns;
-    map['loadBalancingAlgorithmType'] = loadBalancingAlgorithmType;
-    map['loadBalancingAnomalyMitigation'] = loadBalancingAnomalyMitigation;
-    map['loadBalancingCrossZoneEnabled'] = loadBalancingCrossZoneEnabled;
-    map['name'] = name;
-    map['port'] = port;
-    map['preserveClientIp'] = preserveClientIp;
-    map['protocol'] = protocol;
-    map['protocolVersion'] = protocolVersion;
-    map['proxyProtocolV2'] = proxyProtocolV2;
-    map['region'] = region;
-    map['slowStart'] = slowStart;
-    map['stickiness'] = stickiness.toMap();
-    map['tags'] = tags;
-    map['targetControlPort'] = targetControlPort;
-    map['targetType'] = targetType;
-    map['vpcId'] = vpcId;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'arnSuffix': arnSuffix,
+      'connectionTermination': connectionTermination,
+      'deregistrationDelay': deregistrationDelay,
+      'healthCheck': healthCheck.toMap(),
+      'id': id,
+      'lambdaMultiValueHeadersEnabled': lambdaMultiValueHeadersEnabled,
+      'loadBalancerArns': loadBalancerArns,
+      'loadBalancingAlgorithmType': loadBalancingAlgorithmType,
+      'loadBalancingAnomalyMitigation': loadBalancingAnomalyMitigation,
+      'loadBalancingCrossZoneEnabled': loadBalancingCrossZoneEnabled,
+      'name': name,
+      'port': port,
+      'preserveClientIp': preserveClientIp,
+      'protocol': protocol,
+      'protocolVersion': protocolVersion,
+      'proxyProtocolV2': proxyProtocolV2,
+      'region': region,
+      'slowStart': slowStart,
+      'stickiness': stickiness.toMap(),
+      'tags': tags,
+      'targetControlPort': targetControlPort,
+      'targetType': targetType,
+      'vpcId': vpcId,
+    };
   }
 
   factory GetTargetGroupResult.fromMap(Map<String, dynamic> map) {
@@ -119,17 +118,13 @@ class GetTargetGroupResult {
       arnSuffix: map['arnSuffix'] as String,
       connectionTermination: map['connectionTermination'] as bool,
       deregistrationDelay: map['deregistrationDelay'] as String,
-      healthCheck: GetTargetGroupHealthCheck.fromMap(
-          (map['healthCheck'] as Map).cast<String, dynamic>()),
+      healthCheck: GetTargetGroupHealthCheck.fromMap((map['healthCheck'] as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      lambdaMultiValueHeadersEnabled:
-          map['lambdaMultiValueHeadersEnabled'] as bool,
+      lambdaMultiValueHeadersEnabled: map['lambdaMultiValueHeadersEnabled'] as bool,
       loadBalancerArns: (map['loadBalancerArns'] as List).cast<String>(),
       loadBalancingAlgorithmType: map['loadBalancingAlgorithmType'] as String,
-      loadBalancingAnomalyMitigation:
-          map['loadBalancingAnomalyMitigation'] as String,
-      loadBalancingCrossZoneEnabled:
-          map['loadBalancingCrossZoneEnabled'] as String,
+      loadBalancingAnomalyMitigation: map['loadBalancingAnomalyMitigation'] as String,
+      loadBalancingCrossZoneEnabled: map['loadBalancingCrossZoneEnabled'] as String,
       name: map['name'] as String,
       port: map['port'] as int,
       preserveClientIp: map['preserveClientIp'] as String,
@@ -138,8 +133,7 @@ class GetTargetGroupResult {
       proxyProtocolV2: map['proxyProtocolV2'] as bool,
       region: map['region'] as String,
       slowStart: map['slowStart'] as int,
-      stickiness: GetTargetGroupStickiness.fromMap(
-          (map['stickiness'] as Map).cast<String, dynamic>()),
+      stickiness: GetTargetGroupStickiness.fromMap((map['stickiness'] as Map).cast<String, dynamic>()),
       tags: (map['tags'] as Map).cast<String, String>(),
       targetControlPort: map['targetControlPort'] as int,
       targetType: map['targetType'] as String,
@@ -147,3 +141,4 @@ class GetTargetGroupResult {
     );
   }
 }
+

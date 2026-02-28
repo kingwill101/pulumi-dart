@@ -13,15 +13,15 @@ class VirtualNodeSpecBackend {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['virtualService'] = virtualService.toMap();
-    return map;
+    return <String, dynamic>{
+      'virtualService': virtualService.toMap(),
+    };
   }
 
   factory VirtualNodeSpecBackend.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecBackend(
-      virtualService: VirtualNodeSpecBackendVirtualService.fromMap(
-          (map['virtualService'] as Map).cast<String, dynamic>()),
+      virtualService: VirtualNodeSpecBackendVirtualService.fromMap((map['virtualService'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

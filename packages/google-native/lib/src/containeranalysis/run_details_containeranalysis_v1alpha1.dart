@@ -21,42 +21,19 @@ class RunDetailsContaineranalysisV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final builderValue = builder;
-    if (builderValue != null) {
-      map['builder'] = builderValue.toMap();
-    }
-    final byproductsValue = byproducts;
-    if (byproductsValue != null) {
-      map['byproducts'] = pulumi.Input.encodeList<
-          ResourceDescriptorContaineranalysisV1alpha1,
-          Map<String, dynamic>>(byproductsValue, (value) => value.toMap());
-    }
-    final metadataValue = metadata;
-    if (metadataValue != null) {
-      map['metadata'] = metadataValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'builder': ?builder == null ? null : builder!.toMap(),
+      'byproducts': ?byproducts == null ? null : pulumi.Input.encodeList<ResourceDescriptorContaineranalysisV1alpha1, Map<String, dynamic>>(byproducts!, (value) => value.toMap()),
+      'metadata': ?metadata == null ? null : metadata!.toMap(),
+    };
   }
 
-  factory RunDetailsContaineranalysisV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory RunDetailsContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return RunDetailsContaineranalysisV1alpha1(
-      builder: map['builder'] == null
-          ? null
-          : ProvenanceBuilderContaineranalysisV1alpha1.fromMap(
-              (map['builder'] as Map).cast<String, dynamic>()),
-      byproducts: map['byproducts'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  ResourceDescriptorContaineranalysisV1alpha1>(
-              map['byproducts'],
-              (value) => ResourceDescriptorContaineranalysisV1alpha1.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      metadata: map['metadata'] == null
-          ? null
-          : BuildMetadataContaineranalysisV1alpha1.fromMap(
-              (map['metadata'] as Map).cast<String, dynamic>()),
+      builder: map['builder'] == null ? null : ProvenanceBuilderContaineranalysisV1alpha1.fromMap((map['builder'] as Map).cast<String, dynamic>()),
+      byproducts: map['byproducts'] == null ? null : pulumi.Input.decodeList<ResourceDescriptorContaineranalysisV1alpha1>(map['byproducts'], (value) => ResourceDescriptorContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
+      metadata: map['metadata'] == null ? null : BuildMetadataContaineranalysisV1alpha1.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

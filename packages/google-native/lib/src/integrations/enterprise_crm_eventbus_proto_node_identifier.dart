@@ -6,7 +6,6 @@ import 'enterprise_crm_eventbus_proto_node_identifier_element_type.dart';
 class EnterpriseCrmEventbusProtoNodeIdentifier {
   /// Configuration of the edge.
   final String? elementIdentifier;
-
   /// Destination node where the edge ends. It can only be a task config.
   final EnterpriseCrmEventbusProtoNodeIdentifierElementType? elementType;
 
@@ -19,28 +18,17 @@ class EnterpriseCrmEventbusProtoNodeIdentifier {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final elementIdentifierValue = elementIdentifier;
-    if (elementIdentifierValue != null) {
-      map['elementIdentifier'] = elementIdentifierValue;
-    }
-    final elementTypeValue = elementType;
-    if (elementTypeValue != null) {
-      map['elementType'] = elementTypeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'elementIdentifier': ?elementIdentifier,
+      'elementType': ?elementType == null ? null : elementType!.value,
+    };
   }
 
-  factory EnterpriseCrmEventbusProtoNodeIdentifier.fromMap(
-      Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoNodeIdentifier.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoNodeIdentifier(
-      elementIdentifier: map['elementIdentifier'] == null
-          ? null
-          : map['elementIdentifier'] as String,
-      elementType: map['elementType'] == null
-          ? null
-          : EnterpriseCrmEventbusProtoNodeIdentifierElementType.fromValue(
-              map['elementType'] as String),
+      elementIdentifier: map['elementIdentifier'] == null ? null : map['elementIdentifier'] as String,
+      elementType: map['elementType'] == null ? null : EnterpriseCrmEventbusProtoNodeIdentifierElementType.fromValue(map['elementType'] as String),
     );
   }
 }
+

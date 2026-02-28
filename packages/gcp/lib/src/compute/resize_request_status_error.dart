@@ -16,23 +16,15 @@ class ResizeRequestStatusError {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final errorsValue = errors;
-    if (errorsValue != null) {
-      map['errors'] = pulumi.Input.encodeList<ResizeRequestStatusErrorError,
-          Map<String, dynamic>>(errorsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'errors': ?errors == null ? null : pulumi.Input.encodeList<ResizeRequestStatusErrorError, Map<String, dynamic>>(errors!, (value) => value.toMap()),
+    };
   }
 
   factory ResizeRequestStatusError.fromMap(Map<String, dynamic> map) {
     return ResizeRequestStatusError(
-      errors: map['errors'] == null
-          ? null
-          : pulumi.Input.decodeList<ResizeRequestStatusErrorError>(
-              map['errors'],
-              (value) => ResizeRequestStatusErrorError.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      errors: map['errors'] == null ? null : pulumi.Input.decodeList<ResizeRequestStatusErrorError>(map['errors'], (value) => ResizeRequestStatusErrorError.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -6,15 +6,11 @@ import 'cluster_virtual_cluster_config_kubernetes_cluster_config.dart';
 class ClusterVirtualClusterConfig {
   /// Configuration of auxiliary services used by this cluster.
   /// Structure defined below.
-  final ClusterVirtualClusterConfigAuxiliaryServicesConfig?
-      auxiliaryServicesConfig;
-
+  final ClusterVirtualClusterConfigAuxiliaryServicesConfig? auxiliaryServicesConfig;
   /// The configuration for running the Dataproc cluster on Kubernetes.
   /// Structure defined below.
   /// - - -
-  final ClusterVirtualClusterConfigKubernetesClusterConfig?
-      kubernetesClusterConfig;
-
+  final ClusterVirtualClusterConfigKubernetesClusterConfig? kubernetesClusterConfig;
   /// The Cloud Storage staging bucket used to stage files,
   /// such as Hadoop jars, between client machines and the cluster.
   /// Note: If you don't explicitly specify a `staging_bucket`
@@ -35,34 +31,19 @@ class ClusterVirtualClusterConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final auxiliaryServicesConfigValue = auxiliaryServicesConfig;
-    if (auxiliaryServicesConfigValue != null) {
-      map['auxiliaryServicesConfig'] = auxiliaryServicesConfigValue.toMap();
-    }
-    final kubernetesClusterConfigValue = kubernetesClusterConfig;
-    if (kubernetesClusterConfigValue != null) {
-      map['kubernetesClusterConfig'] = kubernetesClusterConfigValue.toMap();
-    }
-    final stagingBucketValue = stagingBucket;
-    if (stagingBucketValue != null) {
-      map['stagingBucket'] = stagingBucketValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'auxiliaryServicesConfig': ?auxiliaryServicesConfig == null ? null : auxiliaryServicesConfig!.toMap(),
+      'kubernetesClusterConfig': ?kubernetesClusterConfig == null ? null : kubernetesClusterConfig!.toMap(),
+      'stagingBucket': ?stagingBucket,
+    };
   }
 
   factory ClusterVirtualClusterConfig.fromMap(Map<String, dynamic> map) {
     return ClusterVirtualClusterConfig(
-      auxiliaryServicesConfig: map['auxiliaryServicesConfig'] == null
-          ? null
-          : ClusterVirtualClusterConfigAuxiliaryServicesConfig.fromMap(
-              (map['auxiliaryServicesConfig'] as Map).cast<String, dynamic>()),
-      kubernetesClusterConfig: map['kubernetesClusterConfig'] == null
-          ? null
-          : ClusterVirtualClusterConfigKubernetesClusterConfig.fromMap(
-              (map['kubernetesClusterConfig'] as Map).cast<String, dynamic>()),
-      stagingBucket:
-          map['stagingBucket'] == null ? null : map['stagingBucket'] as String,
+      auxiliaryServicesConfig: map['auxiliaryServicesConfig'] == null ? null : ClusterVirtualClusterConfigAuxiliaryServicesConfig.fromMap((map['auxiliaryServicesConfig'] as Map).cast<String, dynamic>()),
+      kubernetesClusterConfig: map['kubernetesClusterConfig'] == null ? null : ClusterVirtualClusterConfigKubernetesClusterConfig.fromMap((map['kubernetesClusterConfig'] as Map).cast<String, dynamic>()),
+      stagingBucket: map['stagingBucket'] == null ? null : map['stagingBucket'] as String,
     );
   }
 }
+

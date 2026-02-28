@@ -9,15 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBudgetArgs {
   /// The ID of the target account for budget. Will use current user's account_id by default if omitted.
   final pulumi.Input<String>? accountId;
-
   /// The name of a budget. Unique within accounts.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> name;
-
   /// The prefix of the name of a budget. Unique within accounts.
   final pulumi.Input<String>? namePrefix;
-
   /// Map of tags assigned to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -31,38 +28,28 @@ class GetBudgetArgs {
     required String name,
     String? namePrefix,
     Map<String, String>? tags,
-  })  : accountId = pulumi.Input.asOptionalInput<String>(accountId),
-        name = pulumi.Input.asInput<String>(name),
-        namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      accountId = pulumi.Input.asOptionalInput<String>(accountId),
+      name = pulumi.Input.asInput<String>(name),
+      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final accountIdValue = accountId;
-    if (accountIdValue != null) {
-      map['accountId'] = accountIdValue;
-    }
-    map['name'] = name;
-    final namePrefixValue = namePrefix;
-    if (namePrefixValue != null) {
-      map['namePrefix'] = namePrefixValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'accountId': ?accountId,
+      'name': name,
+      'namePrefix': ?namePrefix,
+      'tags': ?tags,
+    };
   }
 
   factory GetBudgetArgs.fromMap(Map<String, dynamic> map) {
     return GetBudgetArgs(
       accountId: map['accountId'] == null ? null : map['accountId'] as String,
       name: map['name'] as String,
-      namePrefix:
-          map['namePrefix'] == null ? null : map['namePrefix'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      namePrefix: map['namePrefix'] == null ? null : map['namePrefix'] as String,
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

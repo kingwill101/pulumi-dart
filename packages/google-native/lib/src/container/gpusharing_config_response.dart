@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// GPUSharingConfig represents the GPU sharing configuration for Hardware Accelerators.
 class GPUSharingConfigResponse {
   /// The type of GPU sharing strategy to enable on the GPU node.
   final String gpuSharingStrategy;
-
   /// The max number of containers that can share a physical GPU.
   final String maxSharedClientsPerGpu;
 
@@ -17,10 +17,10 @@ class GPUSharingConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gpuSharingStrategy'] = gpuSharingStrategy;
-    map['maxSharedClientsPerGpu'] = maxSharedClientsPerGpu;
-    return map;
+    return <String, dynamic>{
+      'gpuSharingStrategy': gpuSharingStrategy,
+      'maxSharedClientsPerGpu': maxSharedClientsPerGpu,
+    };
   }
 
   factory GPUSharingConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class GPUSharingConfigResponse {
     );
   }
 }
+

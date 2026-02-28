@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AutonomousDatabasePropertiesCustomerContact {
   /// The email address used by Oracle to send notifications regarding databases
   /// and infrastructure.
@@ -14,15 +15,15 @@ class AutonomousDatabasePropertiesCustomerContact {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['email'] = email;
-    return map;
+    return <String, dynamic>{
+      'email': email,
+    };
   }
 
-  factory AutonomousDatabasePropertiesCustomerContact.fromMap(
-      Map<String, dynamic> map) {
+  factory AutonomousDatabasePropertiesCustomerContact.fromMap(Map<String, dynamic> map) {
     return AutonomousDatabasePropertiesCustomerContact(
       email: map['email'] as String,
     );
   }
 }
+

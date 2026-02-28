@@ -6,22 +6,16 @@ import 'traffic_percent_strategy_response.dart';
 class GetRolloutResult {
   /// Creation time of the rollout. Readonly.
   final String createTime;
-
   /// The user who created the Rollout. Readonly.
   final String createdBy;
-
   /// The strategy associated with a rollout to delete a `ManagedService`. Readonly.
   final Map<String, dynamic> deleteServiceStrategy;
-
   /// Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'
   final String rolloutId;
-
   /// The name of the service associated with this Rollout.
   final String serviceName;
-
   /// The status of this rollout. Readonly. In case of a failed rollout, the system will automatically rollback to the current Rollout version. Readonly.
   final String status;
-
   /// Google Service Control selects service configurations based on traffic percentage.
   final TrafficPercentStrategyResponse trafficPercentStrategy;
 
@@ -44,28 +38,27 @@ class GetRolloutResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['createdBy'] = createdBy;
-    map['deleteServiceStrategy'] = deleteServiceStrategy;
-    map['rolloutId'] = rolloutId;
-    map['serviceName'] = serviceName;
-    map['status'] = status;
-    map['trafficPercentStrategy'] = trafficPercentStrategy.toMap();
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'createdBy': createdBy,
+      'deleteServiceStrategy': deleteServiceStrategy,
+      'rolloutId': rolloutId,
+      'serviceName': serviceName,
+      'status': status,
+      'trafficPercentStrategy': trafficPercentStrategy.toMap(),
+    };
   }
 
   factory GetRolloutResult.fromMap(Map<String, dynamic> map) {
     return GetRolloutResult(
       createTime: map['createTime'] as String,
       createdBy: map['createdBy'] as String,
-      deleteServiceStrategy:
-          (map['deleteServiceStrategy'] as Map).cast<String, dynamic>(),
+      deleteServiceStrategy: (map['deleteServiceStrategy'] as Map).cast<String, dynamic>(),
       rolloutId: map['rolloutId'] as String,
       serviceName: map['serviceName'] as String,
       status: map['status'] as String,
-      trafficPercentStrategy: TrafficPercentStrategyResponse.fromMap(
-          (map['trafficPercentStrategy'] as Map).cast<String, dynamic>()),
+      trafficPercentStrategy: TrafficPercentStrategyResponse.fromMap((map['trafficPercentStrategy'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig {
   /// (Output)
   /// The name of [Service
@@ -17,18 +18,15 @@ class AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final serviceValue = service;
-    if (serviceValue != null) {
-      map['service'] = serviceValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'service': ?service,
+    };
   }
 
-  factory AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig(
       service: map['service'] == null ? null : map['service'] as String,
     );
   }
 }
+

@@ -9,7 +9,6 @@ class SnapshotSettingsStorageLocation {
   /// Only one location can be specified.
   /// Structure is documented below.
   final List<SnapshotSettingsStorageLocationLocation>? locations;
-
   /// The chosen location policy
   /// Possible values are: `NEAREST_MULTI_REGION`, `LOCAL_REGION`, `SPECIFIC_LOCATIONS`.
   final String policy;
@@ -23,26 +22,17 @@ class SnapshotSettingsStorageLocation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final locationsValue = locations;
-    if (locationsValue != null) {
-      map['locations'] = pulumi.Input.encodeList<
-          SnapshotSettingsStorageLocationLocation,
-          Map<String, dynamic>>(locationsValue, (value) => value.toMap());
-    }
-    map['policy'] = policy;
-    return map;
+    return <String, dynamic>{
+      'locations': ?locations == null ? null : pulumi.Input.encodeList<SnapshotSettingsStorageLocationLocation, Map<String, dynamic>>(locations!, (value) => value.toMap()),
+      'policy': policy,
+    };
   }
 
   factory SnapshotSettingsStorageLocation.fromMap(Map<String, dynamic> map) {
     return SnapshotSettingsStorageLocation(
-      locations: map['locations'] == null
-          ? null
-          : pulumi.Input.decodeList<SnapshotSettingsStorageLocationLocation>(
-              map['locations'],
-              (value) => SnapshotSettingsStorageLocationLocation.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      locations: map['locations'] == null ? null : pulumi.Input.decodeList<SnapshotSettingsStorageLocationLocation>(map['locations'], (value) => SnapshotSettingsStorageLocationLocation.fromMap((value as Map).cast<String, dynamic>())),
       policy: map['policy'] as String,
     );
   }
 }
+

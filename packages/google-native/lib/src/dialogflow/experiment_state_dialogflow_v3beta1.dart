@@ -15,7 +15,7 @@ enum ExperimentStateDialogflowV3beta1 {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown ExperimentStateDialogflowV3beta1 value: $value');
+    throw ArgumentError('Unknown ExperimentStateDialogflowV3beta1 value: $value');
   }
 }
+

@@ -15,7 +15,7 @@ enum ResourceCommitmentTypeComputeV1 {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown ResourceCommitmentTypeComputeV1 value: $value');
+    throw ArgumentError('Unknown ResourceCommitmentTypeComputeV1 value: $value');
   }
 }
+

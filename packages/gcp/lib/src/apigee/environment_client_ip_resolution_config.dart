@@ -5,8 +5,7 @@ import 'environment_client_ip_resolution_config_header_index_algorithm.dart';
 class EnvironmentClientIpResolutionConfig {
   /// Resolves the client ip based on a custom header.
   /// Structure is documented below.
-  final EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm?
-      headerIndexAlgorithm;
+  final EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm? headerIndexAlgorithm;
 
   /// Creates a new [EnvironmentClientIpResolutionConfig].
   /// [headerIndexAlgorithm] Resolves the client ip based on a custom header.
@@ -15,21 +14,15 @@ class EnvironmentClientIpResolutionConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final headerIndexAlgorithmValue = headerIndexAlgorithm;
-    if (headerIndexAlgorithmValue != null) {
-      map['headerIndexAlgorithm'] = headerIndexAlgorithmValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'headerIndexAlgorithm': ?headerIndexAlgorithm == null ? null : headerIndexAlgorithm!.toMap(),
+    };
   }
 
-  factory EnvironmentClientIpResolutionConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory EnvironmentClientIpResolutionConfig.fromMap(Map<String, dynamic> map) {
     return EnvironmentClientIpResolutionConfig(
-      headerIndexAlgorithm: map['headerIndexAlgorithm'] == null
-          ? null
-          : EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm.fromMap(
-              (map['headerIndexAlgorithm'] as Map).cast<String, dynamic>()),
+      headerIndexAlgorithm: map['headerIndexAlgorithm'] == null ? null : EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm.fromMap((map['headerIndexAlgorithm'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

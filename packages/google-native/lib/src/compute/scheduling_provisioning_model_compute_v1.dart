@@ -12,7 +12,7 @@ enum SchedulingProvisioningModelComputeV1 {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown SchedulingProvisioningModelComputeV1 value: $value');
+    throw ArgumentError('Unknown SchedulingProvisioningModelComputeV1 value: $value');
   }
 }
+

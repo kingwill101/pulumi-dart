@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Contains details about the image source used to create the disk.
 class DiskImageDefaults {
   /// The Image resource used when creating the disk.
@@ -12,9 +13,9 @@ class DiskImageDefaults {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['sourceImage'] = sourceImage;
-    return map;
+    return <String, dynamic>{
+      'sourceImage': sourceImage,
+    };
   }
 
   factory DiskImageDefaults.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class DiskImageDefaults {
     );
   }
 }
+

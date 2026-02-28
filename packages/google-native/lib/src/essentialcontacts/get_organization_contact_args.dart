@@ -16,14 +16,15 @@ class GetOrganizationContactArgs {
   GetOrganizationContactArgs({
     required String contactId,
     required String organizationId,
-  })  : contactId = pulumi.Input.asInput<String>(contactId),
-        organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) :
+      contactId = pulumi.Input.asInput<String>(contactId),
+      organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['contactId'] = contactId;
-    map['organizationId'] = organizationId;
-    return map;
+    return <String, dynamic>{
+      'contactId': contactId,
+      'organizationId': organizationId,
+    };
   }
 
   factory GetOrganizationContactArgs.fromMap(Map<String, dynamic> map) {
@@ -33,3 +34,4 @@ class GetOrganizationContactArgs {
     );
   }
 }
+

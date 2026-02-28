@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class StackAccessEndpoint {
   /// Type of the interface endpoint.
   /// See the [`AccessEndpoint` AWS API documentation](https://docs.aws.amazon.com/appstream2/latest/APIReference/API_AccessEndpoint.html) for valid values.
   final String endpointType;
-
   /// ID of the VPC in which the interface endpoint is used.
   final String? vpceId;
 
@@ -17,13 +17,10 @@ class StackAccessEndpoint {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['endpointType'] = endpointType;
-    final vpceIdValue = vpceId;
-    if (vpceIdValue != null) {
-      map['vpceId'] = vpceIdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'endpointType': endpointType,
+      'vpceId': ?vpceId,
+    };
   }
 
   factory StackAccessEndpoint.fromMap(Map<String, dynamic> map) {
@@ -33,3 +30,4 @@ class StackAccessEndpoint {
     );
   }
 }
+

@@ -19,23 +19,20 @@ class GetAutoscalingPolicyDataprocV1beta2Args {
     required String autoscalingPolicyId,
     required String location,
     String? project,
-  })  : autoscalingPolicyId = pulumi.Input.asInput<String>(autoscalingPolicyId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      autoscalingPolicyId = pulumi.Input.asInput<String>(autoscalingPolicyId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['autoscalingPolicyId'] = autoscalingPolicyId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'autoscalingPolicyId': autoscalingPolicyId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
-  factory GetAutoscalingPolicyDataprocV1beta2Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetAutoscalingPolicyDataprocV1beta2Args.fromMap(Map<String, dynamic> map) {
     return GetAutoscalingPolicyDataprocV1beta2Args(
       autoscalingPolicyId: map['autoscalingPolicyId'] as String,
       location: map['location'] as String,
@@ -43,3 +40,4 @@ class GetAutoscalingPolicyDataprocV1beta2Args {
     );
   }
 }
+

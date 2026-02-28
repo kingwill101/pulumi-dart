@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataSourceSslProperties {
   /// A Boolean option to control whether SSL should be disabled.
   final bool disableSsl;
@@ -11,9 +12,9 @@ class DataSourceSslProperties {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['disableSsl'] = disableSsl;
-    return map;
+    return <String, dynamic>{
+      'disableSsl': disableSsl,
+    };
   }
 
   factory DataSourceSslProperties.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class DataSourceSslProperties {
     );
   }
 }
+

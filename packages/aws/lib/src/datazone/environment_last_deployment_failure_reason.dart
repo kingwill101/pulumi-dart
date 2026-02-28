@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EnvironmentLastDeploymentFailureReason {
   final String code;
   final String message;
@@ -13,17 +14,17 @@ class EnvironmentLastDeploymentFailureReason {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['code'] = code;
-    map['message'] = message;
-    return map;
+    return <String, dynamic>{
+      'code': code,
+      'message': message,
+    };
   }
 
-  factory EnvironmentLastDeploymentFailureReason.fromMap(
-      Map<String, dynamic> map) {
+  factory EnvironmentLastDeploymentFailureReason.fromMap(Map<String, dynamic> map) {
     return EnvironmentLastDeploymentFailureReason(
       code: map['code'] as String,
       message: map['message'] as String,
     );
   }
 }
+

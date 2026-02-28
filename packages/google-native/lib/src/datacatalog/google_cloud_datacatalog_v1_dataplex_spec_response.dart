@@ -6,13 +6,10 @@ import 'google_cloud_datacatalog_v1_physical_schema_response.dart';
 class GoogleCloudDatacatalogV1DataplexSpecResponse {
   /// Fully qualified resource name of an asset in Dataplex, to which the underlying data source (Cloud Storage bucket or BigQuery dataset) of the entity is attached.
   final String asset;
-
   /// Compression format of the data, e.g., zip, gzip etc.
   final String compressionFormat;
-
   /// Format of the data.
   final GoogleCloudDatacatalogV1PhysicalSchemaResponse dataFormat;
-
   /// Project ID of the underlying Cloud Storage or BigQuery data. Note that this may not be the same project as the correspondingly Dataplex lake / zone / asset.
   final String project;
 
@@ -29,22 +26,21 @@ class GoogleCloudDatacatalogV1DataplexSpecResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['asset'] = asset;
-    map['compressionFormat'] = compressionFormat;
-    map['dataFormat'] = dataFormat.toMap();
-    map['project'] = project;
-    return map;
+    return <String, dynamic>{
+      'asset': asset,
+      'compressionFormat': compressionFormat,
+      'dataFormat': dataFormat.toMap(),
+      'project': project,
+    };
   }
 
-  factory GoogleCloudDatacatalogV1DataplexSpecResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1DataplexSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1DataplexSpecResponse(
       asset: map['asset'] as String,
       compressionFormat: map['compressionFormat'] as String,
-      dataFormat: GoogleCloudDatacatalogV1PhysicalSchemaResponse.fromMap(
-          (map['dataFormat'] as Map).cast<String, dynamic>()),
+      dataFormat: GoogleCloudDatacatalogV1PhysicalSchemaResponse.fromMap((map['dataFormat'] as Map).cast<String, dynamic>()),
       project: map['project'] as String,
     );
   }
 }
+

@@ -13,20 +13,15 @@ class AwsNodePoolUpdateSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final surgeSettingsValue = surgeSettings;
-    if (surgeSettingsValue != null) {
-      map['surgeSettings'] = surgeSettingsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'surgeSettings': ?surgeSettings == null ? null : surgeSettings!.toMap(),
+    };
   }
 
   factory AwsNodePoolUpdateSettings.fromMap(Map<String, dynamic> map) {
     return AwsNodePoolUpdateSettings(
-      surgeSettings: map['surgeSettings'] == null
-          ? null
-          : AwsNodePoolUpdateSettingsSurgeSettings.fromMap(
-              (map['surgeSettings'] as Map).cast<String, dynamic>()),
+      surgeSettings: map['surgeSettings'] == null ? null : AwsNodePoolUpdateSettingsSurgeSettings.fromMap((map['surgeSettings'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

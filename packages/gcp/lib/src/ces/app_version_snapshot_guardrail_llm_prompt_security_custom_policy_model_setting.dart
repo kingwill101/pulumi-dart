@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyModelSetting {
   /// (Output)
   /// The LLM model that the agent should use.
   /// If not set, the agent will inherit the model from its parent agent.
   final String? model;
-
   /// (Output)
   /// If set, this temperature will be used for the LLM model. Temperature
   /// controls the randomness of the model's responses. Lower temperatures
@@ -22,24 +22,17 @@ class AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyModelSetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final modelValue = model;
-    if (modelValue != null) {
-      map['model'] = modelValue;
-    }
-    final temperatureValue = temperature;
-    if (temperatureValue != null) {
-      map['temperature'] = temperatureValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'model': ?model,
+      'temperature': ?temperature,
+    };
   }
 
-  factory AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyModelSetting.fromMap(
-      Map<String, dynamic> map) {
+  factory AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyModelSetting.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyModelSetting(
       model: map['model'] == null ? null : map['model'] as String,
-      temperature:
-          map['temperature'] == null ? null : map['temperature'] as double,
+      temperature: map['temperature'] == null ? null : map['temperature'] as double,
     );
   }
 }
+

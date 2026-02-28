@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InputSecurityGroupWhitelistRule {
   /// The IPv4 CIDR that's whitelisted.
   final String cidr;
@@ -11,9 +12,9 @@ class InputSecurityGroupWhitelistRule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cidr'] = cidr;
-    return map;
+    return <String, dynamic>{
+      'cidr': cidr,
+    };
   }
 
   factory InputSecurityGroupWhitelistRule.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class InputSecurityGroupWhitelistRule {
     );
   }
 }
+

@@ -8,7 +8,6 @@ class GetTagKeysResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<GetTagKeysKey> keys;
-
   /// The resource name of the TagKey's parent. A TagKey can be parented by an Orgination or a Project.
   final String parent;
 
@@ -23,22 +22,19 @@ class GetTagKeysResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['keys'] = pulumi.Input.encodeList<GetTagKeysKey, Map<String, dynamic>>(
-        keys, (value) => value.toMap());
-    map['parent'] = parent;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'keys': pulumi.Input.encodeList<GetTagKeysKey, Map<String, dynamic>>(keys, (value) => value.toMap()),
+      'parent': parent,
+    };
   }
 
   factory GetTagKeysResult.fromMap(Map<String, dynamic> map) {
     return GetTagKeysResult(
       id: map['id'] as String,
-      keys: pulumi.Input.decodeList<GetTagKeysKey>(
-          map['keys'],
-          (value) =>
-              GetTagKeysKey.fromMap((value as Map).cast<String, dynamic>())),
+      keys: pulumi.Input.decodeList<GetTagKeysKey>(map['keys'], (value) => GetTagKeysKey.fromMap((value as Map).cast<String, dynamic>())),
       parent: map['parent'] as String,
     );
   }
 }
+

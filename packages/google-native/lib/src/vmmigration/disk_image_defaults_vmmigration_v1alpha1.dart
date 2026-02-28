@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Contains details about the image source used to create the disk.
 class DiskImageDefaultsVmmigrationV1alpha1 {
   /// The Image resource used when creating the disk.
@@ -12,15 +13,15 @@ class DiskImageDefaultsVmmigrationV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['sourceImage'] = sourceImage;
-    return map;
+    return <String, dynamic>{
+      'sourceImage': sourceImage,
+    };
   }
 
-  factory DiskImageDefaultsVmmigrationV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory DiskImageDefaultsVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return DiskImageDefaultsVmmigrationV1alpha1(
       sourceImage: map['sourceImage'] as String,
     );
   }
 }
+

@@ -5,10 +5,8 @@ import 'refresh_schedule_schedule_schedule_frequency.dart';
 class RefreshScheduleSchedule {
   /// The type of refresh that the dataset undergoes. Valid values are `INCREMENTAL_REFRESH` and `FULL_REFRESH`.
   final String refreshType;
-
   /// The configuration of the [schedule frequency](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RefreshFrequency.html). See schedule_frequency.
   final RefreshScheduleScheduleScheduleFrequency scheduleFrequency;
-
   /// Time after which the refresh schedule can be started, expressed in `YYYY-MM-DDTHH:MM:SS` format.
   final String? startAfterDateTime;
 
@@ -23,24 +21,19 @@ class RefreshScheduleSchedule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['refreshType'] = refreshType;
-    map['scheduleFrequency'] = scheduleFrequency.toMap();
-    final startAfterDateTimeValue = startAfterDateTime;
-    if (startAfterDateTimeValue != null) {
-      map['startAfterDateTime'] = startAfterDateTimeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'refreshType': refreshType,
+      'scheduleFrequency': scheduleFrequency.toMap(),
+      'startAfterDateTime': ?startAfterDateTime,
+    };
   }
 
   factory RefreshScheduleSchedule.fromMap(Map<String, dynamic> map) {
     return RefreshScheduleSchedule(
       refreshType: map['refreshType'] as String,
-      scheduleFrequency: RefreshScheduleScheduleScheduleFrequency.fromMap(
-          (map['scheduleFrequency'] as Map).cast<String, dynamic>()),
-      startAfterDateTime: map['startAfterDateTime'] == null
-          ? null
-          : map['startAfterDateTime'] as String,
+      scheduleFrequency: RefreshScheduleScheduleScheduleFrequency.fromMap((map['scheduleFrequency'] as Map).cast<String, dynamic>()),
+      startAfterDateTime: map['startAfterDateTime'] == null ? null : map['startAfterDateTime'] as String,
     );
   }
 }
+

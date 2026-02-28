@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WorkloadAttributesDeveloperOwner {
   /// Contact's name.
   final String? displayName;
-
   /// Email address of the contacts.
   final String email;
 
@@ -16,20 +16,17 @@ class WorkloadAttributesDeveloperOwner {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final displayNameValue = displayName;
-    if (displayNameValue != null) {
-      map['displayName'] = displayNameValue;
-    }
-    map['email'] = email;
-    return map;
+    return <String, dynamic>{
+      'displayName': ?displayName,
+      'email': email,
+    };
   }
 
   factory WorkloadAttributesDeveloperOwner.fromMap(Map<String, dynamic> map) {
     return WorkloadAttributesDeveloperOwner(
-      displayName:
-          map['displayName'] == null ? null : map['displayName'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
       email: map['email'] as String,
     );
   }
 }
+

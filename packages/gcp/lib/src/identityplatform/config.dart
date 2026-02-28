@@ -545,45 +545,34 @@ import 'config_sms_region_config.dart';
 class Config extends pulumi.CustomResource {
   /// List of domains authorized for OAuth redirects.
   late final pulumi.Output<List<String>> authorizedDomains;
-
   /// Whether anonymous users will be auto-deleted after a period of 30 days
   late final pulumi.Output<bool?> autodeleteAnonymousUsers;
-
   /// Configuration related to blocking functions.
   /// Structure is documented below.
   late final pulumi.Output<ConfigBlockingFunctions?> blockingFunctions;
-
   /// Options related to how clients making requests on behalf of a project should be configured.
   /// Structure is documented below.
   late final pulumi.Output<ConfigClient> client;
-
   /// Options related to how clients making requests on behalf of a project should be configured.
   /// Structure is documented below.
   late final pulumi.Output<ConfigMfa> mfa;
-
   /// Configuration related to monitoring project activity.
   /// Structure is documented below.
   late final pulumi.Output<ConfigMonitoring> monitoring;
-
   /// Configuration related to multi-tenant functionality.
   /// Structure is documented below.
   late final pulumi.Output<ConfigMultiTenant?> multiTenant;
-
   /// The name of the Config resource
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Configuration related to quotas.
   /// Structure is documented below.
   late final pulumi.Output<ConfigQuota?> quota;
-
   /// Configuration related to local sign in methods.
   /// Structure is documented below.
   late final pulumi.Output<ConfigSignIn> signIn;
-
   /// Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
   /// Structure is documented below.
   late final pulumi.Output<ConfigSmsRegionConfig> smsRegionConfig;
@@ -603,10 +592,8 @@ class Config extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.authorizedDomains = registerOutput<List<String>>('authorizedDomains');
-    this.autodeleteAnonymousUsers =
-        registerOutput<bool?>('autodeleteAnonymousUsers');
-    this.blockingFunctions =
-        registerOutput<ConfigBlockingFunctions?>('blockingFunctions');
+    this.autodeleteAnonymousUsers = registerOutput<bool?>('autodeleteAnonymousUsers');
+    this.blockingFunctions = registerOutput<ConfigBlockingFunctions?>('blockingFunctions');
     this.client = registerOutput<ConfigClient>('client');
     this.mfa = registerOutput<ConfigMfa>('mfa');
     this.monitoring = registerOutput<ConfigMonitoring>('monitoring');
@@ -615,7 +602,6 @@ class Config extends pulumi.CustomResource {
     this.project = registerOutput<String>('project');
     this.quota = registerOutput<ConfigQuota?>('quota');
     this.signIn = registerOutput<ConfigSignIn>('signIn');
-    this.smsRegionConfig =
-        registerOutput<ConfigSmsRegionConfig>('smsRegionConfig');
+    this.smsRegionConfig = registerOutput<ConfigSmsRegionConfig>('smsRegionConfig');
   }
 }

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOpenIdConnectProviderArgs {
   /// ARN of the OpenID Connect provider.
   final pulumi.Input<String>? arn;
-
   /// Map of resource tags for the IAM OIDC provider.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// URL of the OpenID Connect provider.
   final pulumi.Input<String>? url;
 
@@ -24,34 +22,25 @@ class GetOpenIdConnectProviderArgs {
     String? arn,
     Map<String, String>? tags,
     String? url,
-  })  : arn = pulumi.Input.asOptionalInput<String>(arn),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-        url = pulumi.Input.asOptionalInput<String>(url);
+  }) :
+      arn = pulumi.Input.asOptionalInput<String>(arn),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      url = pulumi.Input.asOptionalInput<String>(url);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final arnValue = arn;
-    if (arnValue != null) {
-      map['arn'] = arnValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    final urlValue = url;
-    if (urlValue != null) {
-      map['url'] = urlValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'arn': ?arn,
+      'tags': ?tags,
+      'url': ?url,
+    };
   }
 
   factory GetOpenIdConnectProviderArgs.fromMap(Map<String, dynamic> map) {
     return GetOpenIdConnectProviderArgs(
       arn: map['arn'] == null ? null : map['arn'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
       url: map['url'] == null ? null : map['url'] as String,
     );
   }
 }
+

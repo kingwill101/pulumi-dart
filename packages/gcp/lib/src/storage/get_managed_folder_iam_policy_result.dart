@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getManagedFolderIamPolicy.
 class GetManagedFolderIamPolicyResult {
   final String bucket;
   final String etag;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String managedFolder;
@@ -25,13 +25,13 @@ class GetManagedFolderIamPolicyResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucket'] = bucket;
-    map['etag'] = etag;
-    map['id'] = id;
-    map['managedFolder'] = managedFolder;
-    map['policyData'] = policyData;
-    return map;
+    return <String, dynamic>{
+      'bucket': bucket,
+      'etag': etag,
+      'id': id,
+      'managedFolder': managedFolder,
+      'policyData': policyData,
+    };
   }
 
   factory GetManagedFolderIamPolicyResult.fromMap(Map<String, dynamic> map) {
@@ -44,3 +44,4 @@ class GetManagedFolderIamPolicyResult {
     );
   }
 }
+

@@ -14,21 +14,15 @@ class LogConfigDataAccessOptionsComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final logModeValue = logMode;
-    if (logModeValue != null) {
-      map['logMode'] = logModeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'logMode': ?logMode == null ? null : logMode!.value,
+    };
   }
 
-  factory LogConfigDataAccessOptionsComputeV1.fromMap(
-      Map<String, dynamic> map) {
+  factory LogConfigDataAccessOptionsComputeV1.fromMap(Map<String, dynamic> map) {
     return LogConfigDataAccessOptionsComputeV1(
-      logMode: map['logMode'] == null
-          ? null
-          : LogConfigDataAccessOptionsLogModeComputeV1.fromValue(
-              map['logMode'] as String),
+      logMode: map['logMode'] == null ? null : LogConfigDataAccessOptionsLogModeComputeV1.fromValue(map['logMode'] as String),
     );
   }
 }
+

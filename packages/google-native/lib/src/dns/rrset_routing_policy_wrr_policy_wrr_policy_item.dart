@@ -8,10 +8,8 @@ class RRSetRoutingPolicyWrrPolicyWrrPolicyItem {
   final RRSetRoutingPolicyHealthCheckTargets? healthCheckedTargets;
   final String? kind;
   final List<String>? rrdatas;
-
   /// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 IP address per item.
   final List<String>? signatureRrdatas;
-
   /// The weight corresponding to this WrrPolicyItem object. When multiple WrrPolicyItem objects are configured, the probability of returning an WrrPolicyItem object's data is proportional to its weight relative to the sum of weights configured for all items. This weight must be non-negative.
   final double? weight;
 
@@ -30,45 +28,23 @@ class RRSetRoutingPolicyWrrPolicyWrrPolicyItem {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final healthCheckedTargetsValue = healthCheckedTargets;
-    if (healthCheckedTargetsValue != null) {
-      map['healthCheckedTargets'] = healthCheckedTargetsValue.toMap();
-    }
-    final kindValue = kind;
-    if (kindValue != null) {
-      map['kind'] = kindValue;
-    }
-    final rrdatasValue = rrdatas;
-    if (rrdatasValue != null) {
-      map['rrdatas'] = rrdatasValue;
-    }
-    final signatureRrdatasValue = signatureRrdatas;
-    if (signatureRrdatasValue != null) {
-      map['signatureRrdatas'] = signatureRrdatasValue;
-    }
-    final weightValue = weight;
-    if (weightValue != null) {
-      map['weight'] = weightValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'healthCheckedTargets': ?healthCheckedTargets == null ? null : healthCheckedTargets!.toMap(),
+      'kind': ?kind,
+      'rrdatas': ?rrdatas,
+      'signatureRrdatas': ?signatureRrdatas,
+      'weight': ?weight,
+    };
   }
 
-  factory RRSetRoutingPolicyWrrPolicyWrrPolicyItem.fromMap(
-      Map<String, dynamic> map) {
+  factory RRSetRoutingPolicyWrrPolicyWrrPolicyItem.fromMap(Map<String, dynamic> map) {
     return RRSetRoutingPolicyWrrPolicyWrrPolicyItem(
-      healthCheckedTargets: map['healthCheckedTargets'] == null
-          ? null
-          : RRSetRoutingPolicyHealthCheckTargets.fromMap(
-              (map['healthCheckedTargets'] as Map).cast<String, dynamic>()),
+      healthCheckedTargets: map['healthCheckedTargets'] == null ? null : RRSetRoutingPolicyHealthCheckTargets.fromMap((map['healthCheckedTargets'] as Map).cast<String, dynamic>()),
       kind: map['kind'] == null ? null : map['kind'] as String,
-      rrdatas: map['rrdatas'] == null
-          ? null
-          : (map['rrdatas'] as List).cast<String>(),
-      signatureRrdatas: map['signatureRrdatas'] == null
-          ? null
-          : (map['signatureRrdatas'] as List).cast<String>(),
+      rrdatas: map['rrdatas'] == null ? null : (map['rrdatas'] as List).cast<String>(),
+      signatureRrdatas: map['signatureRrdatas'] == null ? null : (map['signatureRrdatas'] as List).cast<String>(),
       weight: map['weight'] == null ? null : map['weight'] as double,
     );
   }
 }
+

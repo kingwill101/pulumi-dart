@@ -7,10 +7,8 @@ import 'json_path_matcher.dart';
 class ContentMatcher {
   /// String, regex or JSON content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
   final String? content;
-
   /// Matcher information for MATCHES_JSON_PATH and NOT_MATCHES_JSON_PATH
   final JsonPathMatcher? jsonPathMatcher;
-
   /// The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
   final ContentMatcherMatcher? matcher;
 
@@ -25,32 +23,19 @@ class ContentMatcher {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final contentValue = content;
-    if (contentValue != null) {
-      map['content'] = contentValue;
-    }
-    final jsonPathMatcherValue = jsonPathMatcher;
-    if (jsonPathMatcherValue != null) {
-      map['jsonPathMatcher'] = jsonPathMatcherValue.toMap();
-    }
-    final matcherValue = matcher;
-    if (matcherValue != null) {
-      map['matcher'] = matcherValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'content': ?content,
+      'jsonPathMatcher': ?jsonPathMatcher == null ? null : jsonPathMatcher!.toMap(),
+      'matcher': ?matcher == null ? null : matcher!.value,
+    };
   }
 
   factory ContentMatcher.fromMap(Map<String, dynamic> map) {
     return ContentMatcher(
       content: map['content'] == null ? null : map['content'] as String,
-      jsonPathMatcher: map['jsonPathMatcher'] == null
-          ? null
-          : JsonPathMatcher.fromMap(
-              (map['jsonPathMatcher'] as Map).cast<String, dynamic>()),
-      matcher: map['matcher'] == null
-          ? null
-          : ContentMatcherMatcher.fromValue(map['matcher'] as String),
+      jsonPathMatcher: map['jsonPathMatcher'] == null ? null : JsonPathMatcher.fromMap((map['jsonPathMatcher'] as Map).cast<String, dynamic>()),
+      matcher: map['matcher'] == null ? null : ContentMatcherMatcher.fromValue(map['matcher'] as String),
     );
   }
 }
+

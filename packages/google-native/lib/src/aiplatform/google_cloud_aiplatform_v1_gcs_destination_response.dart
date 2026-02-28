@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The Google Cloud Storage location where the output is to be written to.
 class GoogleCloudAiplatformV1GcsDestinationResponse {
   /// Google Cloud Storage URI to output directory. If the uri doesn't end with '/', a '/' will be automatically appended. The directory is created if it doesn't exist.
@@ -12,15 +13,15 @@ class GoogleCloudAiplatformV1GcsDestinationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['outputUriPrefix'] = outputUriPrefix;
-    return map;
+    return <String, dynamic>{
+      'outputUriPrefix': outputUriPrefix,
+    };
   }
 
-  factory GoogleCloudAiplatformV1GcsDestinationResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1GcsDestinationResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1GcsDestinationResponse(
       outputUriPrefix: map['outputUriPrefix'] as String,
     );
   }
 }
+

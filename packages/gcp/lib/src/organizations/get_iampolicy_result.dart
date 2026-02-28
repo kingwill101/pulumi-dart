@@ -8,10 +8,8 @@ import 'get_iampolicy_binding.dart';
 class GetIAMPolicyResult {
   final List<GetIAMPolicyAuditConfig>? auditConfigs;
   final List<GetIAMPolicyBinding>? bindings;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The above bindings serialized in a format suitable for
   /// referencing from a resource that supports IAM.
   final String policyData;
@@ -29,39 +27,21 @@ class GetIAMPolicyResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final auditConfigsValue = auditConfigs;
-    if (auditConfigsValue != null) {
-      map['auditConfigs'] = pulumi.Input.encodeList<GetIAMPolicyAuditConfig,
-          Map<String, dynamic>>(auditConfigsValue, (value) => value.toMap());
-    }
-    final bindingsValue = bindings;
-    if (bindingsValue != null) {
-      map['bindings'] =
-          pulumi.Input.encodeList<GetIAMPolicyBinding, Map<String, dynamic>>(
-              bindingsValue, (value) => value.toMap());
-    }
-    map['id'] = id;
-    map['policyData'] = policyData;
-    return map;
+    return <String, dynamic>{
+      'auditConfigs': ?auditConfigs == null ? null : pulumi.Input.encodeList<GetIAMPolicyAuditConfig, Map<String, dynamic>>(auditConfigs!, (value) => value.toMap()),
+      'bindings': ?bindings == null ? null : pulumi.Input.encodeList<GetIAMPolicyBinding, Map<String, dynamic>>(bindings!, (value) => value.toMap()),
+      'id': id,
+      'policyData': policyData,
+    };
   }
 
   factory GetIAMPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetIAMPolicyResult(
-      auditConfigs: map['auditConfigs'] == null
-          ? null
-          : pulumi.Input.decodeList<GetIAMPolicyAuditConfig>(
-              map['auditConfigs'],
-              (value) => GetIAMPolicyAuditConfig.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      bindings: map['bindings'] == null
-          ? null
-          : pulumi.Input.decodeList<GetIAMPolicyBinding>(
-              map['bindings'],
-              (value) => GetIAMPolicyBinding.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      auditConfigs: map['auditConfigs'] == null ? null : pulumi.Input.decodeList<GetIAMPolicyAuditConfig>(map['auditConfigs'], (value) => GetIAMPolicyAuditConfig.fromMap((value as Map).cast<String, dynamic>())),
+      bindings: map['bindings'] == null ? null : pulumi.Input.decodeList<GetIAMPolicyBinding>(map['bindings'], (value) => GetIAMPolicyBinding.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       policyData: map['policyData'] as String,
     );
   }
 }
+

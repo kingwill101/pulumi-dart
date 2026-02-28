@@ -7,15 +7,13 @@ enum GooglePrivacyDlpV2PubSubExpressionsLogicalOperator {
   const GooglePrivacyDlpV2PubSubExpressionsLogicalOperator(this.value);
   final String value;
 
-  static GooglePrivacyDlpV2PubSubExpressionsLogicalOperator fromValue(
-      String value) {
-    for (final item
-        in GooglePrivacyDlpV2PubSubExpressionsLogicalOperator.values) {
+  static GooglePrivacyDlpV2PubSubExpressionsLogicalOperator fromValue(String value) {
+    for (final item in GooglePrivacyDlpV2PubSubExpressionsLogicalOperator.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GooglePrivacyDlpV2PubSubExpressionsLogicalOperator value: $value');
+    throw ArgumentError('Unknown GooglePrivacyDlpV2PubSubExpressionsLogicalOperator value: $value');
   }
 }
+

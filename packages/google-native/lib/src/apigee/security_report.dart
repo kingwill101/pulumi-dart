@@ -10,44 +10,30 @@ import 'security_report_args.dart';
 class SecurityReport extends pulumi.CustomResource {
   /// Creation time of the query.
   late final pulumi.Output<String> created;
-
   /// Display Name specified by the user.
   late final pulumi.Output<String> displayName;
-
   /// Hostname is available only when query is executed at host level.
   late final pulumi.Output<String> envgroupHostname;
   late final pulumi.Output<String> environmentId;
-
   /// Error is set when query fails.
   late final pulumi.Output<String> error;
-
   /// ExecutionTime is available only after the query is completed.
   late final pulumi.Output<String> executionTime;
   late final pulumi.Output<String> organizationId;
-
   /// Contains information like metrics, dimenstions etc of the Security Report.
-  late final pulumi.Output<GoogleCloudApigeeV1SecurityReportMetadataResponse>
-      queryParams;
-
+  late final pulumi.Output<GoogleCloudApigeeV1SecurityReportMetadataResponse> queryParams;
   /// Report Definition ID.
   late final pulumi.Output<String> reportDefinitionId;
-
   /// Result is available only after the query is completed.
-  late final pulumi
-      .Output<GoogleCloudApigeeV1SecurityReportResultMetadataResponse> result;
-
+  late final pulumi.Output<GoogleCloudApigeeV1SecurityReportResultMetadataResponse> result;
   /// ResultFileSize is available only after the query is completed.
   late final pulumi.Output<String> resultFileSize;
-
   /// ResultRows is available only after the query is completed.
   late final pulumi.Output<String> resultRows;
-
   /// Self link of the query. Example: `/organizations/myorg/environments/myenv/securityReports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd` or following format if query is running at host level: `/organizations/myorg/hostSecurityReports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
   late final pulumi.Output<String> self;
-
   /// Query state could be "enqueued", "running", "completed", "expired" and "failed".
   late final pulumi.Output<String> state;
-
   /// Last updated timestamp for the query.
   late final pulumi.Output<String> updated;
 
@@ -72,13 +58,9 @@ class SecurityReport extends pulumi.CustomResource {
     this.error = registerOutput<String>('error');
     this.executionTime = registerOutput<String>('executionTime');
     this.organizationId = registerOutput<String>('organizationId');
-    this.queryParams =
-        registerOutput<GoogleCloudApigeeV1SecurityReportMetadataResponse>(
-            'queryParams');
+    this.queryParams = registerOutput<GoogleCloudApigeeV1SecurityReportMetadataResponse>('queryParams');
     this.reportDefinitionId = registerOutput<String>('reportDefinitionId');
-    this.result =
-        registerOutput<GoogleCloudApigeeV1SecurityReportResultMetadataResponse>(
-            'result');
+    this.result = registerOutput<GoogleCloudApigeeV1SecurityReportResultMetadataResponse>('result');
     this.resultFileSize = registerOutput<String>('resultFileSize');
     this.resultRows = registerOutput<String>('resultRows');
     this.self = registerOutput<String>('self');

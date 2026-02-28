@@ -14,15 +14,15 @@ class PhpSettingsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['common'] = common.toMap();
-    return map;
+    return <String, dynamic>{
+      'common': common.toMap(),
+    };
   }
 
   factory PhpSettingsResponse.fromMap(Map<String, dynamic> map) {
     return PhpSettingsResponse(
-      common: CommonLanguageSettingsResponse.fromMap(
-          (map['common'] as Map).cast<String, dynamic>()),
+      common: CommonLanguageSettingsResponse.fromMap((map['common'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -8,7 +8,6 @@ import 'authentication_rule.dart';
 class Authentication {
   /// Defines a set of authentication providers that a service supports.
   final List<AuthProvider>? providers;
-
   /// A list of authentication rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
   final List<AuthenticationRule>? rules;
 
@@ -21,36 +20,17 @@ class Authentication {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final providersValue = providers;
-    if (providersValue != null) {
-      map['providers'] =
-          pulumi.Input.encodeList<AuthProvider, Map<String, dynamic>>(
-              providersValue, (value) => value.toMap());
-    }
-    final rulesValue = rules;
-    if (rulesValue != null) {
-      map['rules'] =
-          pulumi.Input.encodeList<AuthenticationRule, Map<String, dynamic>>(
-              rulesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'providers': ?providers == null ? null : pulumi.Input.encodeList<AuthProvider, Map<String, dynamic>>(providers!, (value) => value.toMap()),
+      'rules': ?rules == null ? null : pulumi.Input.encodeList<AuthenticationRule, Map<String, dynamic>>(rules!, (value) => value.toMap()),
+    };
   }
 
   factory Authentication.fromMap(Map<String, dynamic> map) {
     return Authentication(
-      providers: map['providers'] == null
-          ? null
-          : pulumi.Input.decodeList<AuthProvider>(
-              map['providers'],
-              (value) =>
-                  AuthProvider.fromMap((value as Map).cast<String, dynamic>())),
-      rules: map['rules'] == null
-          ? null
-          : pulumi.Input.decodeList<AuthenticationRule>(
-              map['rules'],
-              (value) => AuthenticationRule.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      providers: map['providers'] == null ? null : pulumi.Input.decodeList<AuthProvider>(map['providers'], (value) => AuthProvider.fromMap((value as Map).cast<String, dynamic>())),
+      rules: map['rules'] == null ? null : pulumi.Input.decodeList<AuthenticationRule>(map['rules'], (value) => AuthenticationRule.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

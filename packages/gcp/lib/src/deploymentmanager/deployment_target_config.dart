@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DeploymentTargetConfig {
   /// The full YAML contents of your configuration file.
   final String content;
@@ -11,9 +12,9 @@ class DeploymentTargetConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['content'] = content;
-    return map;
+    return <String, dynamic>{
+      'content': content,
+    };
   }
 
   factory DeploymentTargetConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class DeploymentTargetConfig {
     );
   }
 }
+

@@ -1,25 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// For display only. Metadata associated with a Compute Engine forwarding rule.
 class ForwardingRuleInfoResponse {
   /// Name of a Compute Engine forwarding rule.
   final String displayName;
-
   /// Port range defined in the forwarding rule that matches the test.
   final String matchedPortRange;
-
   /// Protocol defined in the forwarding rule that matches the test.
   final String matchedProtocol;
-
   /// Network URI. Only valid for Internal Load Balancer.
   final String networkUri;
-
   /// Target type of the forwarding rule.
   final String target;
-
   /// URI of a Compute Engine forwarding rule.
   final String uri;
-
   /// VIP of the forwarding rule.
   final String vip;
 
@@ -42,15 +37,15 @@ class ForwardingRuleInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['displayName'] = displayName;
-    map['matchedPortRange'] = matchedPortRange;
-    map['matchedProtocol'] = matchedProtocol;
-    map['networkUri'] = networkUri;
-    map['target'] = target;
-    map['uri'] = uri;
-    map['vip'] = vip;
-    return map;
+    return <String, dynamic>{
+      'displayName': displayName,
+      'matchedPortRange': matchedPortRange,
+      'matchedProtocol': matchedProtocol,
+      'networkUri': networkUri,
+      'target': target,
+      'uri': uri,
+      'vip': vip,
+    };
   }
 
   factory ForwardingRuleInfoResponse.fromMap(Map<String, dynamic> map) {
@@ -65,3 +60,4 @@ class ForwardingRuleInfoResponse {
     );
   }
 }
+

@@ -1,24 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetProjectProject {
   /// Creation time in RFC3339 UTC "Zulu" format.
   final String createTime;
-
   /// A set of key/value label pairs assigned on a project.
   final Map<String, String> labels;
-
   /// The Project lifecycle state.
   final String lifecycleState;
-
   /// The optional user-assigned display name of the project.
   final String name;
-
   /// The numeric identifier of the project.
   final String number;
-
   /// An optional reference to a parent resource.
   final Map<String, String> parent;
-
   /// The project id of the project.
   final String projectId;
 
@@ -41,15 +36,15 @@ class GetProjectProject {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['labels'] = labels;
-    map['lifecycleState'] = lifecycleState;
-    map['name'] = name;
-    map['number'] = number;
-    map['parent'] = parent;
-    map['projectId'] = projectId;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'labels': labels,
+      'lifecycleState': lifecycleState,
+      'name': name,
+      'number': number,
+      'parent': parent,
+      'projectId': projectId,
+    };
   }
 
   factory GetProjectProject.fromMap(Map<String, dynamic> map) {
@@ -64,3 +59,4 @@ class GetProjectProject {
     );
   }
 }
+

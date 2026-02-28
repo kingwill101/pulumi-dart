@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// SecretEnvVarSource represents a source for the value of an EnvVar.
 class GoogleCloudRunV2SecretKeySelector {
   /// The name of the secret in Cloud Secret Manager. Format: {secret_name} if the secret is in the same project. projects/{project}/secrets/{secret_name} if the secret is in a different project.
   final String secret;
-
   /// The Cloud Secret Manager secret version. Can be 'latest' for the latest version, an integer for a specific version, or a version alias.
   final String? version;
 
@@ -17,13 +17,10 @@ class GoogleCloudRunV2SecretKeySelector {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['secret'] = secret;
-    final versionValue = version;
-    if (versionValue != null) {
-      map['version'] = versionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'secret': secret,
+      'version': ?version,
+    };
   }
 
   factory GoogleCloudRunV2SecretKeySelector.fromMap(Map<String, dynamic> map) {
@@ -33,3 +30,4 @@ class GoogleCloudRunV2SecretKeySelector {
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualClusterArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Key-value mapping of resource tags.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// ID of the cluster.
   final pulumi.Input<String> virtualClusterId;
 
@@ -24,31 +22,25 @@ class GetVirtualClusterArgs {
     String? region,
     Map<String, String>? tags,
     required String virtualClusterId,
-  })  : region = pulumi.Input.asOptionalInput<String>(region),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-        virtualClusterId = pulumi.Input.asInput<String>(virtualClusterId);
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      virtualClusterId = pulumi.Input.asInput<String>(virtualClusterId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    map['virtualClusterId'] = virtualClusterId;
-    return map;
+    return <String, dynamic>{
+      'region': ?region,
+      'tags': ?tags,
+      'virtualClusterId': virtualClusterId,
+    };
   }
 
   factory GetVirtualClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualClusterArgs(
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
       virtualClusterId: map['virtualClusterId'] as String,
     );
   }
 }
+

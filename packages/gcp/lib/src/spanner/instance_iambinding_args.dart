@@ -9,10 +9,8 @@ import 'instance_iambinding_condition.dart';
 /// {@macro pulumi_spanner_instance_iambinding_instance_iambinding_args_doc}
 class InstanceIAMBindingArgs {
   final pulumi.Input<InstanceIAMBindingCondition>? condition;
-
   /// The name of the instance.
   final pulumi.Input<String> instance;
-
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -24,11 +22,9 @@ class InstanceIAMBindingArgs {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   final pulumi.Input<List<String>> members;
-
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The role that should be applied. Only one
   /// `gcp.spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -46,37 +42,26 @@ class InstanceIAMBindingArgs {
     required List<String> members,
     String? project,
     required String role,
-  })  : condition = pulumi.Input.asOptionalInput<InstanceIAMBindingCondition>(
-            condition),
-        instance = pulumi.Input.asInput<String>(instance),
-        members = pulumi.Input.asInput<List<String>>(members),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        role = pulumi.Input.asInput<String>(role);
+  }) :
+      condition = pulumi.Input.asOptionalInput<InstanceIAMBindingCondition>(condition),
+      instance = pulumi.Input.asInput<String>(instance),
+      members = pulumi.Input.asInput<List<String>>(members),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      role = pulumi.Input.asInput<String>(role);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final conditionValue = condition;
-    if (conditionValue != null) {
-      map['condition'] = pulumi.Input.mapOptionalInputValue<
-          InstanceIAMBindingCondition,
-          Map<String, dynamic>>(conditionValue, (value) => value.toMap());
-    }
-    map['instance'] = instance;
-    map['members'] = members;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['role'] = role;
-    return map;
+    return <String, dynamic>{
+      'condition': ?pulumi.Input.mapOptionalInputValue<InstanceIAMBindingCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'instance': instance,
+      'members': members,
+      'project': ?project,
+      'role': role,
+    };
   }
 
   factory InstanceIAMBindingArgs.fromMap(Map<String, dynamic> map) {
     return InstanceIAMBindingArgs(
-      condition: map['condition'] == null
-          ? null
-          : InstanceIAMBindingCondition.fromMap(
-              (map['condition'] as Map).cast<String, dynamic>()),
+      condition: map['condition'] == null ? null : InstanceIAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
       instance: map['instance'] as String,
       members: (map['members'] as List).cast<String>(),
       project: map['project'] == null ? null : map['project'] as String,
@@ -84,3 +69,4 @@ class InstanceIAMBindingArgs {
     );
   }
 }
+

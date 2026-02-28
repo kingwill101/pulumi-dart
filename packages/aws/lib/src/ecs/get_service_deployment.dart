@@ -1,27 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetServiceDeployment {
   /// Time when task set was created (RFC3339 format)
   final String createdAt;
-
   /// Desired number of tasks
   final int desiredCount;
-
   /// Task set ID
   final String id;
-
   /// Number of pending tasks
   final int pendingCount;
-
   /// Number of running tasks
   final int runningCount;
-
   /// Task set status
   final String status;
-
   /// Task definition ARN
   final String taskDefinition;
-
   /// Time when task set was last updated (RFC3339 format)
   final String updatedAt;
 
@@ -46,16 +40,16 @@ class GetServiceDeployment {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createdAt'] = createdAt;
-    map['desiredCount'] = desiredCount;
-    map['id'] = id;
-    map['pendingCount'] = pendingCount;
-    map['runningCount'] = runningCount;
-    map['status'] = status;
-    map['taskDefinition'] = taskDefinition;
-    map['updatedAt'] = updatedAt;
-    return map;
+    return <String, dynamic>{
+      'createdAt': createdAt,
+      'desiredCount': desiredCount,
+      'id': id,
+      'pendingCount': pendingCount,
+      'runningCount': runningCount,
+      'status': status,
+      'taskDefinition': taskDefinition,
+      'updatedAt': updatedAt,
+    };
   }
 
   factory GetServiceDeployment.fromMap(Map<String, dynamic> map) {
@@ -71,3 +65,4 @@ class GetServiceDeployment {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// NamespaceLifecycleState describes the state of a Namespace resource.
 class NamespaceLifecycleStateResponse {
   /// The current state of the Namespace resource.
@@ -12,9 +13,9 @@ class NamespaceLifecycleStateResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['code'] = code;
-    return map;
+    return <String, dynamic>{
+      'code': code,
+    };
   }
 
   factory NamespaceLifecycleStateResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class NamespaceLifecycleStateResponse {
     );
   }
 }
+

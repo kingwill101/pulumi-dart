@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfig {
   /// Optional. Number of embeddings on each leaf node. The default value is 1000 if not set.
   final String? leafNodeEmbeddingCount;
@@ -11,20 +12,15 @@ class GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final leafNodeEmbeddingCountValue = leafNodeEmbeddingCount;
-    if (leafNodeEmbeddingCountValue != null) {
-      map['leafNodeEmbeddingCount'] = leafNodeEmbeddingCountValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'leafNodeEmbeddingCount': ?leafNodeEmbeddingCount,
+    };
   }
 
-  factory GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfig(
-      leafNodeEmbeddingCount: map['leafNodeEmbeddingCount'] == null
-          ? null
-          : map['leafNodeEmbeddingCount'] as String,
+      leafNodeEmbeddingCount: map['leafNodeEmbeddingCount'] == null ? null : map['leafNodeEmbeddingCount'] as String,
     );
   }
 }
+

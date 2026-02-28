@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EventEndpointRoutingConfigFailoverConfigPrimary {
   /// The ARN of the health check used by the endpoint to determine whether failover is triggered.
   final String? healthCheck;
@@ -11,19 +12,15 @@ class EventEndpointRoutingConfigFailoverConfigPrimary {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final healthCheckValue = healthCheck;
-    if (healthCheckValue != null) {
-      map['healthCheck'] = healthCheckValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'healthCheck': ?healthCheck,
+    };
   }
 
-  factory EventEndpointRoutingConfigFailoverConfigPrimary.fromMap(
-      Map<String, dynamic> map) {
+  factory EventEndpointRoutingConfigFailoverConfigPrimary.fromMap(Map<String, dynamic> map) {
     return EventEndpointRoutingConfigFailoverConfigPrimary(
-      healthCheck:
-          map['healthCheck'] == null ? null : map['healthCheck'] as String,
+      healthCheck: map['healthCheck'] == null ? null : map['healthCheck'] as String,
     );
   }
 }
+

@@ -14,21 +14,15 @@ class GoogleCloudChannelV1PercentageAdjustment {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final percentageValue = percentage;
-    if (percentageValue != null) {
-      map['percentage'] = percentageValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'percentage': ?percentage == null ? null : percentage!.toMap(),
+    };
   }
 
-  factory GoogleCloudChannelV1PercentageAdjustment.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudChannelV1PercentageAdjustment.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1PercentageAdjustment(
-      percentage: map['percentage'] == null
-          ? null
-          : GoogleTypeDecimal.fromMap(
-              (map['percentage'] as Map).cast<String, dynamic>()),
+      percentage: map['percentage'] == null ? null : GoogleTypeDecimal.fromMap((map['percentage'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

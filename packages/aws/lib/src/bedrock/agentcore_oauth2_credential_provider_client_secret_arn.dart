@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AgentcoreOauth2CredentialProviderClientSecretArn {
   /// ARN of the secret in AWS Secrets Manager.
   final String secretArn;
@@ -11,15 +12,15 @@ class AgentcoreOauth2CredentialProviderClientSecretArn {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['secretArn'] = secretArn;
-    return map;
+    return <String, dynamic>{
+      'secretArn': secretArn,
+    };
   }
 
-  factory AgentcoreOauth2CredentialProviderClientSecretArn.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentcoreOauth2CredentialProviderClientSecretArn.fromMap(Map<String, dynamic> map) {
     return AgentcoreOauth2CredentialProviderClientSecretArn(
       secretArn: map['secretArn'] as String,
     );
   }
 }
+

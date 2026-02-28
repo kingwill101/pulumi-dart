@@ -4,9 +4,7 @@ import 'channel_encoder_settings_avail_blanking_avail_blanking_image.dart';
 
 class ChannelEncoderSettingsAvailBlanking {
   /// Blanking image to be used. See Avail Blanking Image for more details.
-  final ChannelEncoderSettingsAvailBlankingAvailBlankingImage?
-      availBlankingImage;
-
+  final ChannelEncoderSettingsAvailBlankingAvailBlankingImage? availBlankingImage;
   /// When set to enabled, causes video, audio and captions to be blanked when insertion metadata is added.
   final String? state;
 
@@ -19,26 +17,17 @@ class ChannelEncoderSettingsAvailBlanking {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final availBlankingImageValue = availBlankingImage;
-    if (availBlankingImageValue != null) {
-      map['availBlankingImage'] = availBlankingImageValue.toMap();
-    }
-    final stateValue = state;
-    if (stateValue != null) {
-      map['state'] = stateValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'availBlankingImage': ?availBlankingImage == null ? null : availBlankingImage!.toMap(),
+      'state': ?state,
+    };
   }
 
-  factory ChannelEncoderSettingsAvailBlanking.fromMap(
-      Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsAvailBlanking.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsAvailBlanking(
-      availBlankingImage: map['availBlankingImage'] == null
-          ? null
-          : ChannelEncoderSettingsAvailBlankingAvailBlankingImage.fromMap(
-              (map['availBlankingImage'] as Map).cast<String, dynamic>()),
+      availBlankingImage: map['availBlankingImage'] == null ? null : ChannelEncoderSettingsAvailBlankingAvailBlankingImage.fromMap((map['availBlankingImage'] as Map).cast<String, dynamic>()),
       state: map['state'] == null ? null : map['state'] as String,
     );
   }
 }
+

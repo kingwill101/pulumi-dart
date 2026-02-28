@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A service account that acts as an identity.
 class ServiceAccount {
   /// Optional. Email address of the service account.
@@ -12,12 +13,9 @@ class ServiceAccount {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final emailValue = email;
-    if (emailValue != null) {
-      map['email'] = emailValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'email': ?email,
+    };
   }
 
   factory ServiceAccount.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class ServiceAccount {
     );
   }
 }
+

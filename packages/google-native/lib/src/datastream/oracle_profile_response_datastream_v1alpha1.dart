@@ -1,22 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Oracle database profile.
 class OracleProfileResponseDatastreamV1alpha1 {
   /// Connection string attributes
   final Map<String, String> connectionAttributes;
-
   /// Database for the Oracle connection.
   final String databaseService;
-
   /// Hostname for the Oracle connection.
   final String hostname;
-
   /// Password for the Oracle connection.
   final String password;
-
   /// Port for the Oracle connection, default value is 1521.
   final int port;
-
   /// Username for the Oracle connection.
   final String username;
 
@@ -37,21 +33,19 @@ class OracleProfileResponseDatastreamV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['connectionAttributes'] = connectionAttributes;
-    map['databaseService'] = databaseService;
-    map['hostname'] = hostname;
-    map['password'] = password;
-    map['port'] = port;
-    map['username'] = username;
-    return map;
+    return <String, dynamic>{
+      'connectionAttributes': connectionAttributes,
+      'databaseService': databaseService,
+      'hostname': hostname,
+      'password': password,
+      'port': port,
+      'username': username,
+    };
   }
 
-  factory OracleProfileResponseDatastreamV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory OracleProfileResponseDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return OracleProfileResponseDatastreamV1alpha1(
-      connectionAttributes:
-          (map['connectionAttributes'] as Map).cast<String, String>(),
+      connectionAttributes: (map['connectionAttributes'] as Map).cast<String, String>(),
       databaseService: map['databaseService'] as String,
       hostname: map['hostname'] as String,
       password: map['password'] as String,
@@ -60,3 +54,4 @@ class OracleProfileResponseDatastreamV1alpha1 {
     );
   }
 }
+

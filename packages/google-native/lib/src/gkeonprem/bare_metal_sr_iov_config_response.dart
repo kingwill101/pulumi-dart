@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Specifies the SR-IOV networking operator config.
 class BareMetalSrIovConfigResponse {
   /// Whether to install the SR-IOV operator.
@@ -12,9 +13,9 @@ class BareMetalSrIovConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory BareMetalSrIovConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class BareMetalSrIovConfigResponse {
     );
   }
 }
+

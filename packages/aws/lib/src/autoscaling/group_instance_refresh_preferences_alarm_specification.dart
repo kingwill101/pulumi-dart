@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GroupInstanceRefreshPreferencesAlarmSpecification {
   /// List of Cloudwatch alarms. If any of these alarms goes into ALARM state, Instance Refresh is failed.
   final List<String>? alarms;
@@ -11,19 +12,15 @@ class GroupInstanceRefreshPreferencesAlarmSpecification {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final alarmsValue = alarms;
-    if (alarmsValue != null) {
-      map['alarms'] = alarmsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'alarms': ?alarms,
+    };
   }
 
-  factory GroupInstanceRefreshPreferencesAlarmSpecification.fromMap(
-      Map<String, dynamic> map) {
+  factory GroupInstanceRefreshPreferencesAlarmSpecification.fromMap(Map<String, dynamic> map) {
     return GroupInstanceRefreshPreferencesAlarmSpecification(
-      alarms:
-          map['alarms'] == null ? null : (map['alarms'] as List).cast<String>(),
+      alarms: map['alarms'] == null ? null : (map['alarms'] as List).cast<String>(),
     );
   }
 }
+

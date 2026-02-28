@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Reference to another Cloud SQL instance.
 class InstanceReferenceSqladminV1beta4 {
   /// The name of the Cloud SQL instance being referenced. This does not include the project ID.
   final String? name;
-
   /// The project ID of the Cloud SQL instance being referenced. The default is the same project ID as the instance references it.
   final String? project;
-
   /// The region of the Cloud SQL instance being referenced.
   final String? region;
 
@@ -22,20 +21,11 @@ class InstanceReferenceSqladminV1beta4 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+      'project': ?project,
+      'region': ?region,
+    };
   }
 
   factory InstanceReferenceSqladminV1beta4.fromMap(Map<String, dynamic> map) {
@@ -46,3 +36,4 @@ class InstanceReferenceSqladminV1beta4 {
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class KxVolumeNas1Configuration {
   /// The size of the network attached storage.
   final int size;
-
   /// The type of the network attached storage.
   final String type;
 
@@ -16,10 +16,10 @@ class KxVolumeNas1Configuration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['size'] = size;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'size': size,
+      'type': type,
+    };
   }
 
   factory KxVolumeNas1Configuration.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class KxVolumeNas1Configuration {
     );
   }
 }
+

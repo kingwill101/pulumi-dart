@@ -14,22 +14,19 @@ class GetOriginAccessIdentitiesArgs {
   /// [comments] Filter origin access identities by comment.
   GetOriginAccessIdentitiesArgs({
     List<String>? comments,
-  }) : comments = pulumi.Input.asOptionalInput<List<String>>(comments);
+  }) :
+      comments = pulumi.Input.asOptionalInput<List<String>>(comments);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final commentsValue = comments;
-    if (commentsValue != null) {
-      map['comments'] = commentsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'comments': ?comments,
+    };
   }
 
   factory GetOriginAccessIdentitiesArgs.fromMap(Map<String, dynamic> map) {
     return GetOriginAccessIdentitiesArgs(
-      comments: map['comments'] == null
-          ? null
-          : (map['comments'] as List).cast<String>(),
+      comments: map['comments'] == null ? null : (map['comments'] as List).cast<String>(),
     );
   }
 }
+

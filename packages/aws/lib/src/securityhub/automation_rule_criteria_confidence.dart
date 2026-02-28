@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AutomationRuleCriteriaConfidence {
   /// The equal-to condition to be applied to a single field when querying for findings, provided as a String.
   final double? eq;
   final double? gt;
-
   /// The greater-than-equal condition to be applied to a single field when querying for findings, provided as a String.
   final double? gte;
   final double? lt;
-
   /// The less-than-equal condition to be applied to a single field when querying for findings, provided as a String.
   final double? lte;
 
@@ -27,28 +26,13 @@ class AutomationRuleCriteriaConfidence {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final eqValue = eq;
-    if (eqValue != null) {
-      map['eq'] = eqValue;
-    }
-    final gtValue = gt;
-    if (gtValue != null) {
-      map['gt'] = gtValue;
-    }
-    final gteValue = gte;
-    if (gteValue != null) {
-      map['gte'] = gteValue;
-    }
-    final ltValue = lt;
-    if (ltValue != null) {
-      map['lt'] = ltValue;
-    }
-    final lteValue = lte;
-    if (lteValue != null) {
-      map['lte'] = lteValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'eq': ?eq,
+      'gt': ?gt,
+      'gte': ?gte,
+      'lt': ?lt,
+      'lte': ?lte,
+    };
   }
 
   factory AutomationRuleCriteriaConfidence.fromMap(Map<String, dynamic> map) {
@@ -61,3 +45,4 @@ class AutomationRuleCriteriaConfidence {
     );
   }
 }
+

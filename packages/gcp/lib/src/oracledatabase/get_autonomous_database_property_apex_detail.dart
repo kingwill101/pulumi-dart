@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetAutonomousDatabasePropertyApexDetail {
   /// The Oracle APEX Application Development version.
   final String apexVersion;
-
   /// The Oracle REST Data Services (ORDS) version.
   final String ordsVersion;
 
@@ -16,17 +16,17 @@ class GetAutonomousDatabasePropertyApexDetail {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['apexVersion'] = apexVersion;
-    map['ordsVersion'] = ordsVersion;
-    return map;
+    return <String, dynamic>{
+      'apexVersion': apexVersion,
+      'ordsVersion': ordsVersion,
+    };
   }
 
-  factory GetAutonomousDatabasePropertyApexDetail.fromMap(
-      Map<String, dynamic> map) {
+  factory GetAutonomousDatabasePropertyApexDetail.fromMap(Map<String, dynamic> map) {
     return GetAutonomousDatabasePropertyApexDetail(
       apexVersion: map['apexVersion'] as String,
       ordsVersion: map['ordsVersion'] as String,
     );
   }
 }
+

@@ -14,21 +14,15 @@ class GoogleCloudDialogflowV2beta1SuggestionFeature {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'type': ?type == null ? null : type!.value,
+    };
   }
 
-  factory GoogleCloudDialogflowV2beta1SuggestionFeature.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1SuggestionFeature.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1SuggestionFeature(
-      type: map['type'] == null
-          ? null
-          : GoogleCloudDialogflowV2beta1SuggestionFeatureType.fromValue(
-              map['type'] as String),
+      type: map['type'] == null ? null : GoogleCloudDialogflowV2beta1SuggestionFeatureType.fromValue(map['type'] as String),
     );
   }
 }
+

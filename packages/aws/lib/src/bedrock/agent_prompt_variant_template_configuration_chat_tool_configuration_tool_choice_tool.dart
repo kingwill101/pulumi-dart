@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AgentPromptVariantTemplateConfigurationChatToolConfigurationToolChoiceTool {
   /// Name of the prompt.
   ///
@@ -13,15 +14,15 @@ class AgentPromptVariantTemplateConfigurationChatToolConfigurationToolChoiceTool
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory AgentPromptVariantTemplateConfigurationChatToolConfigurationToolChoiceTool.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentPromptVariantTemplateConfigurationChatToolConfigurationToolChoiceTool.fromMap(Map<String, dynamic> map) {
     return AgentPromptVariantTemplateConfigurationChatToolConfigurationToolChoiceTool(
       name: map['name'] as String,
     );
   }
 }
+

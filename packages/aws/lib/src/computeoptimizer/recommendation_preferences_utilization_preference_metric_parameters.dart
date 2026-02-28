@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RecommendationPreferencesUtilizationPreferenceMetricParameters {
   /// The headroom value in percentage used for the specified metric parameter. Valid values: `PERCENT_30`, `PERCENT_20`, `PERCENT_10`, `PERCENT_0`.
   final String headroom;
-
   /// The threshold value used for the specified metric parameter. You can only specify the threshold value for CPU utilization. Valid values: `P90`, `P95`, `P99_5`.
   final String? threshold;
 
@@ -16,20 +16,17 @@ class RecommendationPreferencesUtilizationPreferenceMetricParameters {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['headroom'] = headroom;
-    final thresholdValue = threshold;
-    if (thresholdValue != null) {
-      map['threshold'] = thresholdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'headroom': headroom,
+      'threshold': ?threshold,
+    };
   }
 
-  factory RecommendationPreferencesUtilizationPreferenceMetricParameters.fromMap(
-      Map<String, dynamic> map) {
+  factory RecommendationPreferencesUtilizationPreferenceMetricParameters.fromMap(Map<String, dynamic> map) {
     return RecommendationPreferencesUtilizationPreferenceMetricParameters(
       headroom: map['headroom'] as String,
       threshold: map['threshold'] == null ? null : map['threshold'] as String,
     );
   }
 }
+

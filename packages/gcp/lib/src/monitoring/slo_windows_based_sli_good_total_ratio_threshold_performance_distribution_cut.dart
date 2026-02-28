@@ -8,15 +8,13 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut {
   /// Must have ValueType = DISTRIBUTION and
   /// MetricKind = DELTA or MetricKind = CUMULATIVE.
   final String distributionFilter;
-
   /// Range of numerical values. The computed good_service
   /// will be the count of values x in the Distribution such
   /// that range.min <= x <= range.max. inclusive of min and
   /// max. Open ranges can be defined by setting
   /// just one of min or max.
   /// Structure is documented below.
-  final SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange
-      range;
+  final SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange range;
 
   /// Creates a new [SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut].
   /// [distributionFilter] A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
@@ -27,19 +25,17 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['distributionFilter'] = distributionFilter;
-    map['range'] = range.toMap();
-    return map;
+    return <String, dynamic>{
+      'distributionFilter': distributionFilter,
+      'range': range.toMap(),
+    };
   }
 
-  factory SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut.fromMap(
-      Map<String, dynamic> map) {
+  factory SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut.fromMap(Map<String, dynamic> map) {
     return SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut(
       distributionFilter: map['distributionFilter'] as String,
-      range:
-          SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange
-              .fromMap((map['range'] as Map).cast<String, dynamic>()),
+      range: SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange.fromMap((map['range'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

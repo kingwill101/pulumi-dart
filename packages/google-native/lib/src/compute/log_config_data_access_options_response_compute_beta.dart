@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// This is deprecated and has no effect. Do not use.
 class LogConfigDataAccessOptionsResponseComputeBeta {
   /// This is deprecated and has no effect. Do not use.
@@ -12,15 +13,15 @@ class LogConfigDataAccessOptionsResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['logMode'] = logMode;
-    return map;
+    return <String, dynamic>{
+      'logMode': logMode,
+    };
   }
 
-  factory LogConfigDataAccessOptionsResponseComputeBeta.fromMap(
-      Map<String, dynamic> map) {
+  factory LogConfigDataAccessOptionsResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return LogConfigDataAccessOptionsResponseComputeBeta(
       logMode: map['logMode'] as String,
     );
   }
 }
+

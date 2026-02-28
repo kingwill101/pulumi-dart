@@ -14,24 +14,15 @@ class DeliveryPipelineSerialPipeline {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final stagesValue = stages;
-    if (stagesValue != null) {
-      map['stages'] = pulumi.Input.encodeList<
-          DeliveryPipelineSerialPipelineStage,
-          Map<String, dynamic>>(stagesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'stages': ?stages == null ? null : pulumi.Input.encodeList<DeliveryPipelineSerialPipelineStage, Map<String, dynamic>>(stages!, (value) => value.toMap()),
+    };
   }
 
   factory DeliveryPipelineSerialPipeline.fromMap(Map<String, dynamic> map) {
     return DeliveryPipelineSerialPipeline(
-      stages: map['stages'] == null
-          ? null
-          : pulumi.Input.decodeList<DeliveryPipelineSerialPipelineStage>(
-              map['stages'],
-              (value) => DeliveryPipelineSerialPipelineStage.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      stages: map['stages'] == null ? null : pulumi.Input.decodeList<DeliveryPipelineSerialPipelineStage>(map['stages'], (value) => DeliveryPipelineSerialPipelineStage.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

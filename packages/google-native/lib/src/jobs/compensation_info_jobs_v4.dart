@@ -15,23 +15,15 @@ class CompensationInfoJobsV4 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final entriesValue = entries;
-    if (entriesValue != null) {
-      map['entries'] = pulumi.Input.encodeList<CompensationEntryJobsV4,
-          Map<String, dynamic>>(entriesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'entries': ?entries == null ? null : pulumi.Input.encodeList<CompensationEntryJobsV4, Map<String, dynamic>>(entries!, (value) => value.toMap()),
+    };
   }
 
   factory CompensationInfoJobsV4.fromMap(Map<String, dynamic> map) {
     return CompensationInfoJobsV4(
-      entries: map['entries'] == null
-          ? null
-          : pulumi.Input.decodeList<CompensationEntryJobsV4>(
-              map['entries'],
-              (value) => CompensationEntryJobsV4.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      entries: map['entries'] == null ? null : pulumi.Input.decodeList<CompensationEntryJobsV4>(map['entries'], (value) => CompensationEntryJobsV4.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

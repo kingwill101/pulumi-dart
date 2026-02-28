@@ -17,28 +17,17 @@ class GetVirtualServiceSpecProvider {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['virtualNodes'] = pulumi.Input.encodeList<
-        GetVirtualServiceSpecProviderVirtualNode,
-        Map<String, dynamic>>(virtualNodes, (value) => value.toMap());
-    map['virtualRouters'] = pulumi.Input.encodeList<
-        GetVirtualServiceSpecProviderVirtualRouter,
-        Map<String, dynamic>>(virtualRouters, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'virtualNodes': pulumi.Input.encodeList<GetVirtualServiceSpecProviderVirtualNode, Map<String, dynamic>>(virtualNodes, (value) => value.toMap()),
+      'virtualRouters': pulumi.Input.encodeList<GetVirtualServiceSpecProviderVirtualRouter, Map<String, dynamic>>(virtualRouters, (value) => value.toMap()),
+    };
   }
 
   factory GetVirtualServiceSpecProvider.fromMap(Map<String, dynamic> map) {
     return GetVirtualServiceSpecProvider(
-      virtualNodes:
-          pulumi.Input.decodeList<GetVirtualServiceSpecProviderVirtualNode>(
-              map['virtualNodes'],
-              (value) => GetVirtualServiceSpecProviderVirtualNode.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      virtualRouters:
-          pulumi.Input.decodeList<GetVirtualServiceSpecProviderVirtualRouter>(
-              map['virtualRouters'],
-              (value) => GetVirtualServiceSpecProviderVirtualRouter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      virtualNodes: pulumi.Input.decodeList<GetVirtualServiceSpecProviderVirtualNode>(map['virtualNodes'], (value) => GetVirtualServiceSpecProviderVirtualNode.fromMap((value as Map).cast<String, dynamic>())),
+      virtualRouters: pulumi.Input.decodeList<GetVirtualServiceSpecProviderVirtualRouter>(map['virtualRouters'], (value) => GetVirtualServiceSpecProviderVirtualRouter.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

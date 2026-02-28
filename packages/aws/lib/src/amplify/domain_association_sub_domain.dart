@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DomainAssociationSubDomain {
   /// Branch name setting for the subdomain.
   final String branchName;
-
   /// DNS record for the subdomain in a space-prefixed and space-delimited format (` CNAME <target>`).
   final String? dnsRecord;
-
   /// Prefix setting for the subdomain.
   final String prefix;
-
   /// Verified status of the subdomain.
   final bool? verified;
 
@@ -26,18 +24,12 @@ class DomainAssociationSubDomain {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['branchName'] = branchName;
-    final dnsRecordValue = dnsRecord;
-    if (dnsRecordValue != null) {
-      map['dnsRecord'] = dnsRecordValue;
-    }
-    map['prefix'] = prefix;
-    final verifiedValue = verified;
-    if (verifiedValue != null) {
-      map['verified'] = verifiedValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'branchName': branchName,
+      'dnsRecord': ?dnsRecord,
+      'prefix': prefix,
+      'verified': ?verified,
+    };
   }
 
   factory DomainAssociationSubDomain.fromMap(Map<String, dynamic> map) {
@@ -49,3 +41,4 @@ class DomainAssociationSubDomain {
     );
   }
 }
+

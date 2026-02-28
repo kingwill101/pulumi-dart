@@ -7,10 +7,8 @@ class FutureReservationShareSettings {
   /// A map of project id and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
   /// Structure is documented below.
   final List<FutureReservationShareSettingsProjectMap>? projectMaps;
-
   /// list of Project names to specify consumer projects for this shared-reservation. This is only valid when shareType's value is SPECIFIC_PROJECTS.
   final List<String>? projects;
-
   /// Type of sharing for this future reservation.
   /// Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.
   final String? shareType;
@@ -26,36 +24,19 @@ class FutureReservationShareSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectMapsValue = projectMaps;
-    if (projectMapsValue != null) {
-      map['projectMaps'] = pulumi.Input.encodeList<
-          FutureReservationShareSettingsProjectMap,
-          Map<String, dynamic>>(projectMapsValue, (value) => value.toMap());
-    }
-    final projectsValue = projects;
-    if (projectsValue != null) {
-      map['projects'] = projectsValue;
-    }
-    final shareTypeValue = shareType;
-    if (shareTypeValue != null) {
-      map['shareType'] = shareTypeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'projectMaps': ?projectMaps == null ? null : pulumi.Input.encodeList<FutureReservationShareSettingsProjectMap, Map<String, dynamic>>(projectMaps!, (value) => value.toMap()),
+      'projects': ?projects,
+      'shareType': ?shareType,
+    };
   }
 
   factory FutureReservationShareSettings.fromMap(Map<String, dynamic> map) {
     return FutureReservationShareSettings(
-      projectMaps: map['projectMaps'] == null
-          ? null
-          : pulumi.Input.decodeList<FutureReservationShareSettingsProjectMap>(
-              map['projectMaps'],
-              (value) => FutureReservationShareSettingsProjectMap.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      projects: map['projects'] == null
-          ? null
-          : (map['projects'] as List).cast<String>(),
+      projectMaps: map['projectMaps'] == null ? null : pulumi.Input.decodeList<FutureReservationShareSettingsProjectMap>(map['projectMaps'], (value) => FutureReservationShareSettingsProjectMap.fromMap((value as Map).cast<String, dynamic>())),
+      projects: map['projects'] == null ? null : (map['projects'] as List).cast<String>(),
       shareType: map['shareType'] == null ? null : map['shareType'] as String,
     );
   }
 }
+

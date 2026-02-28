@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class Destination {
   /// For publicly routable host.
   final String? host;
-
   /// The port is the target port number that is accepted by the destination.
   final int? port;
-
   /// PSC service attachments. Format: projects/*/regions/*/serviceAttachments/*
   final String? serviceAttachment;
 
@@ -21,29 +20,19 @@ class Destination {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final hostValue = host;
-    if (hostValue != null) {
-      map['host'] = hostValue;
-    }
-    final portValue = port;
-    if (portValue != null) {
-      map['port'] = portValue;
-    }
-    final serviceAttachmentValue = serviceAttachment;
-    if (serviceAttachmentValue != null) {
-      map['serviceAttachment'] = serviceAttachmentValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'host': ?host,
+      'port': ?port,
+      'serviceAttachment': ?serviceAttachment,
+    };
   }
 
   factory Destination.fromMap(Map<String, dynamic> map) {
     return Destination(
       host: map['host'] == null ? null : map['host'] as String,
       port: map['port'] == null ? null : map['port'] as int,
-      serviceAttachment: map['serviceAttachment'] == null
-          ? null
-          : map['serviceAttachment'] as String,
+      serviceAttachment: map['serviceAttachment'] == null ? null : map['serviceAttachment'] as String,
     );
   }
 }
+

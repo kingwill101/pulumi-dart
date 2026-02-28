@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDatasetsDataset {
   /// The id of the dataset.
   final String datasetId;
-
   /// The friendly name of the dataset.
   final String friendlyName;
-
   /// User-provided dataset labels, in key/value pairs.
   final Map<String, String> labels;
-
   /// The geographic location of the dataset.
   final String location;
 
@@ -26,12 +24,12 @@ class GetDatasetsDataset {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['datasetId'] = datasetId;
-    map['friendlyName'] = friendlyName;
-    map['labels'] = labels;
-    map['location'] = location;
-    return map;
+    return <String, dynamic>{
+      'datasetId': datasetId,
+      'friendlyName': friendlyName,
+      'labels': labels,
+      'location': location,
+    };
   }
 
   factory GetDatasetsDataset.fromMap(Map<String, dynamic> map) {
@@ -43,3 +41,4 @@ class GetDatasetsDataset {
     );
   }
 }
+

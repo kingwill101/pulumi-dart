@@ -7,28 +7,20 @@ import 'tls_route_route_rule_response_networkservices_v1beta1.dart';
 class GetTlsRouteNetworkservicesV1beta1Result {
   /// The timestamp when the resource was created.
   final String createTime;
-
   /// Optional. A free-text description of the resource. Max length 1024 characters.
   final String description;
-
   /// Optional. Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*/locations/global/gateways/`
   final List<String> gateways;
-
   /// Optional. Set of label tags associated with the TlsRoute resource.
   final Map<String, String> labels;
-
   /// Optional. Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*/locations/global/meshes/` The attached Mesh should be of a type SIDECAR
   final List<String> meshes;
-
   /// Name of the TlsRoute resource. It matches pattern `projects/*/locations/global/tlsRoutes/tls_route_name>`.
   final String name;
-
   /// Rules that define how traffic is routed and handled. At least one RouteRule must be supplied. If there are multiple rules then the action taken will be the first rule to match.
   final List<TlsRouteRouteRuleResponseNetworkservicesV1beta1> rules;
-
   /// Server-defined URL of this resource
   final String selfLink;
-
   /// The timestamp when the resource was updated.
   final String updateTime;
 
@@ -55,23 +47,20 @@ class GetTlsRouteNetworkservicesV1beta1Result {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['description'] = description;
-    map['gateways'] = gateways;
-    map['labels'] = labels;
-    map['meshes'] = meshes;
-    map['name'] = name;
-    map['rules'] = pulumi.Input.encodeList<
-        TlsRouteRouteRuleResponseNetworkservicesV1beta1,
-        Map<String, dynamic>>(rules, (value) => value.toMap());
-    map['selfLink'] = selfLink;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'description': description,
+      'gateways': gateways,
+      'labels': labels,
+      'meshes': meshes,
+      'name': name,
+      'rules': pulumi.Input.encodeList<TlsRouteRouteRuleResponseNetworkservicesV1beta1, Map<String, dynamic>>(rules, (value) => value.toMap()),
+      'selfLink': selfLink,
+      'updateTime': updateTime,
+    };
   }
 
-  factory GetTlsRouteNetworkservicesV1beta1Result.fromMap(
-      Map<String, dynamic> map) {
+  factory GetTlsRouteNetworkservicesV1beta1Result.fromMap(Map<String, dynamic> map) {
     return GetTlsRouteNetworkservicesV1beta1Result(
       createTime: map['createTime'] as String,
       description: map['description'] as String,
@@ -79,13 +68,10 @@ class GetTlsRouteNetworkservicesV1beta1Result {
       labels: (map['labels'] as Map).cast<String, String>(),
       meshes: (map['meshes'] as List).cast<String>(),
       name: map['name'] as String,
-      rules: pulumi.Input.decodeList<
-              TlsRouteRouteRuleResponseNetworkservicesV1beta1>(
-          map['rules'],
-          (value) => TlsRouteRouteRuleResponseNetworkservicesV1beta1.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      rules: pulumi.Input.decodeList<TlsRouteRouteRuleResponseNetworkservicesV1beta1>(map['rules'], (value) => TlsRouteRouteRuleResponseNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>())),
       selfLink: map['selfLink'] as String,
       updateTime: map['updateTime'] as String,
     );
   }
 }
+

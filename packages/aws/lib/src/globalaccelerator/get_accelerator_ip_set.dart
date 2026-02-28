@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetAcceleratorIpSet {
   final List<String> ipAddresses;
   final String ipFamily;
@@ -13,10 +14,10 @@ class GetAcceleratorIpSet {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ipAddresses'] = ipAddresses;
-    map['ipFamily'] = ipFamily;
-    return map;
+    return <String, dynamic>{
+      'ipAddresses': ipAddresses,
+      'ipFamily': ipFamily,
+    };
   }
 
   factory GetAcceleratorIpSet.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class GetAcceleratorIpSet {
     );
   }
 }
+

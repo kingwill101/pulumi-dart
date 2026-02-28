@@ -6,10 +6,8 @@ import 'encryption_config_response_alloydb_v1alpha.dart';
 class ContinuousBackupConfigResponseAlloydbV1alpha {
   /// Whether ContinuousBackup is enabled.
   final bool enabled;
-
   /// The encryption config can be specified to encrypt the backups with a customer-managed encryption key (CMEK). When this field is not specified, the backup will then use default encryption scheme to protect the user data.
   final EncryptionConfigResponseAlloydbV1alpha encryptionConfig;
-
   /// The number of days that are eligible to restore from using PITR. To support the entire recovery window, backups and logs are retained for one day more than the recovery window. If not set, defaults to 14 days.
   final int recoveryWindowDays;
 
@@ -24,20 +22,19 @@ class ContinuousBackupConfigResponseAlloydbV1alpha {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    map['encryptionConfig'] = encryptionConfig.toMap();
-    map['recoveryWindowDays'] = recoveryWindowDays;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+      'encryptionConfig': encryptionConfig.toMap(),
+      'recoveryWindowDays': recoveryWindowDays,
+    };
   }
 
-  factory ContinuousBackupConfigResponseAlloydbV1alpha.fromMap(
-      Map<String, dynamic> map) {
+  factory ContinuousBackupConfigResponseAlloydbV1alpha.fromMap(Map<String, dynamic> map) {
     return ContinuousBackupConfigResponseAlloydbV1alpha(
       enabled: map['enabled'] as bool,
-      encryptionConfig: EncryptionConfigResponseAlloydbV1alpha.fromMap(
-          (map['encryptionConfig'] as Map).cast<String, dynamic>()),
+      encryptionConfig: EncryptionConfigResponseAlloydbV1alpha.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>()),
       recoveryWindowDays: map['recoveryWindowDays'] as int,
     );
   }
 }
+

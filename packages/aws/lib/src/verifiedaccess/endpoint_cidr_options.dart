@@ -22,32 +22,21 @@ class EndpointCidrOptions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cidr'] = cidr;
-    map['portRanges'] = pulumi.Input.encodeList<EndpointCidrOptionsPortRange,
-        Map<String, dynamic>>(portRanges, (value) => value.toMap());
-    final protocolValue = protocol;
-    if (protocolValue != null) {
-      map['protocol'] = protocolValue;
-    }
-    final subnetIdsValue = subnetIds;
-    if (subnetIdsValue != null) {
-      map['subnetIds'] = subnetIdsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cidr': cidr,
+      'portRanges': pulumi.Input.encodeList<EndpointCidrOptionsPortRange, Map<String, dynamic>>(portRanges, (value) => value.toMap()),
+      'protocol': ?protocol,
+      'subnetIds': ?subnetIds,
+    };
   }
 
   factory EndpointCidrOptions.fromMap(Map<String, dynamic> map) {
     return EndpointCidrOptions(
       cidr: map['cidr'] as String,
-      portRanges: pulumi.Input.decodeList<EndpointCidrOptionsPortRange>(
-          map['portRanges'],
-          (value) => EndpointCidrOptionsPortRange.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      portRanges: pulumi.Input.decodeList<EndpointCidrOptionsPortRange>(map['portRanges'], (value) => EndpointCidrOptionsPortRange.fromMap((value as Map).cast<String, dynamic>())),
       protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      subnetIds: map['subnetIds'] == null
-          ? null
-          : (map['subnetIds'] as List).cast<String>(),
+      subnetIds: map['subnetIds'] == null ? null : (map['subnetIds'] as List).cast<String>(),
     );
   }
 }
+

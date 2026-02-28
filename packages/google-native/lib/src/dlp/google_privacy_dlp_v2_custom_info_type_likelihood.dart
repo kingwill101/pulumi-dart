@@ -16,7 +16,7 @@ enum GooglePrivacyDlpV2CustomInfoTypeLikelihood {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GooglePrivacyDlpV2CustomInfoTypeLikelihood value: $value');
+    throw ArgumentError('Unknown GooglePrivacyDlpV2CustomInfoTypeLikelihood value: $value');
   }
 }
+

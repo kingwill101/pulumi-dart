@@ -15,21 +15,15 @@ class StreamBackfillAllOracleExcludedObjects {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['oracleSchemas'] = pulumi.Input.encodeList<
-        StreamBackfillAllOracleExcludedObjectsOracleSchema,
-        Map<String, dynamic>>(oracleSchemas, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'oracleSchemas': pulumi.Input.encodeList<StreamBackfillAllOracleExcludedObjectsOracleSchema, Map<String, dynamic>>(oracleSchemas, (value) => value.toMap()),
+    };
   }
 
-  factory StreamBackfillAllOracleExcludedObjects.fromMap(
-      Map<String, dynamic> map) {
+  factory StreamBackfillAllOracleExcludedObjects.fromMap(Map<String, dynamic> map) {
     return StreamBackfillAllOracleExcludedObjects(
-      oracleSchemas: pulumi.Input.decodeList<
-              StreamBackfillAllOracleExcludedObjectsOracleSchema>(
-          map['oracleSchemas'],
-          (value) => StreamBackfillAllOracleExcludedObjectsOracleSchema.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      oracleSchemas: pulumi.Input.decodeList<StreamBackfillAllOracleExcludedObjectsOracleSchema>(map['oracleSchemas'], (value) => StreamBackfillAllOracleExcludedObjectsOracleSchema.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

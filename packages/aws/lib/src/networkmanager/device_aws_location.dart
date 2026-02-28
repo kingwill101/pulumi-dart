@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DeviceAwsLocation {
   /// ARN of the subnet that the device is located in.
   final String? subnetArn;
-
   /// Zone that the device is located in. Specify the ID of an Availability Zone, Local Zone, Wavelength Zone, or an Outpost.
   final String? zone;
 
@@ -16,16 +16,10 @@ class DeviceAwsLocation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final subnetArnValue = subnetArn;
-    if (subnetArnValue != null) {
-      map['subnetArn'] = subnetArnValue;
-    }
-    final zoneValue = zone;
-    if (zoneValue != null) {
-      map['zone'] = zoneValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'subnetArn': ?subnetArn,
+      'zone': ?zone,
+    };
   }
 
   factory DeviceAwsLocation.fromMap(Map<String, dynamic> map) {
@@ -35,3 +29,4 @@ class DeviceAwsLocation {
     );
   }
 }
+

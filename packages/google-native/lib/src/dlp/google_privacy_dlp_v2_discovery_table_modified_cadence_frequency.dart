@@ -8,15 +8,13 @@ enum GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency {
   const GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency(this.value);
   final String value;
 
-  static GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency fromValue(
-      String value) {
-    for (final item
-        in GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency.values) {
+  static GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency fromValue(String value) {
+    for (final item in GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency value: $value');
+    throw ArgumentError('Unknown GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency value: $value');
   }
 }
+

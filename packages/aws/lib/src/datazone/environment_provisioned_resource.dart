@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EnvironmentProvisionedResource {
   /// The name of the environment.
   final String name;
   final String provider;
   final String type;
-
   /// The value of an environment profile parameter.
   final String value;
 
@@ -22,12 +22,12 @@ class EnvironmentProvisionedResource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['provider'] = provider;
-    map['type'] = type;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'provider': provider,
+      'type': type,
+      'value': value,
+    };
   }
 
   factory EnvironmentProvisionedResource.fromMap(Map<String, dynamic> map) {
@@ -39,3 +39,4 @@ class EnvironmentProvisionedResource {
     );
   }
 }
+

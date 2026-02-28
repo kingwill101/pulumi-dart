@@ -7,10 +7,8 @@ import 'storage_source_response_cloudfunctions_v2alpha.dart';
 class SourceProvenanceResponseCloudfunctionsV2alpha {
   /// A copy of the build's `source.git_uri`, if exists, with any commits resolved.
   final String gitUri;
-
   /// A copy of the build's `source.repo_source`, if exists, with any revisions resolved.
   final RepoSourceResponseCloudfunctionsV2alpha resolvedRepoSource;
-
   /// A copy of the build's `source.storage_source`, if exists, with any generations resolved.
   final StorageSourceResponseCloudfunctionsV2alpha resolvedStorageSource;
 
@@ -25,21 +23,19 @@ class SourceProvenanceResponseCloudfunctionsV2alpha {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gitUri'] = gitUri;
-    map['resolvedRepoSource'] = resolvedRepoSource.toMap();
-    map['resolvedStorageSource'] = resolvedStorageSource.toMap();
-    return map;
+    return <String, dynamic>{
+      'gitUri': gitUri,
+      'resolvedRepoSource': resolvedRepoSource.toMap(),
+      'resolvedStorageSource': resolvedStorageSource.toMap(),
+    };
   }
 
-  factory SourceProvenanceResponseCloudfunctionsV2alpha.fromMap(
-      Map<String, dynamic> map) {
+  factory SourceProvenanceResponseCloudfunctionsV2alpha.fromMap(Map<String, dynamic> map) {
     return SourceProvenanceResponseCloudfunctionsV2alpha(
       gitUri: map['gitUri'] as String,
-      resolvedRepoSource: RepoSourceResponseCloudfunctionsV2alpha.fromMap(
-          (map['resolvedRepoSource'] as Map).cast<String, dynamic>()),
-      resolvedStorageSource: StorageSourceResponseCloudfunctionsV2alpha.fromMap(
-          (map['resolvedStorageSource'] as Map).cast<String, dynamic>()),
+      resolvedRepoSource: RepoSourceResponseCloudfunctionsV2alpha.fromMap((map['resolvedRepoSource'] as Map).cast<String, dynamic>()),
+      resolvedStorageSource: StorageSourceResponseCloudfunctionsV2alpha.fromMap((map['resolvedStorageSource'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

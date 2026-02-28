@@ -439,10 +439,8 @@ import 'network_interface_security_group_attachment_args.dart';
 class NetworkInterfaceSecurityGroupAttachment extends pulumi.CustomResource {
   /// The ID of the network interface to attach to.
   late final pulumi.Output<String> networkInterfaceId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ID of the security group.
   late final pulumi.Output<String> securityGroupId;
 

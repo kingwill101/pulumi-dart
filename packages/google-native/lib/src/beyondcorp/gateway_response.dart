@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Gateway represents a user facing component that serves as an entrance to enable connectivity.
 class GatewayResponse {
   /// The type of hosting used by the gateway.
   final String type;
-
   /// Server-defined URI for this resource.
   final String uri;
-
   /// User port reserved on the gateways for this connection, if not specified or zero, the default port is 19443.
   final int userPort;
 
@@ -22,11 +21,11 @@ class GatewayResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['type'] = type;
-    map['uri'] = uri;
-    map['userPort'] = userPort;
-    return map;
+    return <String, dynamic>{
+      'type': type,
+      'uri': uri,
+      'userPort': userPort,
+    };
   }
 
   factory GatewayResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class GatewayResponse {
     );
   }
 }
+

@@ -17,17 +17,17 @@ class ResourceStatusResponseComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['physicalHost'] = physicalHost;
-    map['upcomingMaintenance'] = upcomingMaintenance.toMap();
-    return map;
+    return <String, dynamic>{
+      'physicalHost': physicalHost,
+      'upcomingMaintenance': upcomingMaintenance.toMap(),
+    };
   }
 
   factory ResourceStatusResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return ResourceStatusResponseComputeV1(
       physicalHost: map['physicalHost'] as String,
-      upcomingMaintenance: UpcomingMaintenanceResponseComputeV1.fromMap(
-          (map['upcomingMaintenance'] as Map).cast<String, dynamic>()),
+      upcomingMaintenance: UpcomingMaintenanceResponseComputeV1.fromMap((map['upcomingMaintenance'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

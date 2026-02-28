@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TableBucketPolicyArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Amazon Web Services resource-based policy document in JSON format.
   final pulumi.Input<String> resourcePolicy;
-
   /// ARN referencing the Table Bucket that owns this policy.
   final pulumi.Input<String> tableBucketArn;
 
@@ -24,19 +22,17 @@ class TableBucketPolicyArgs {
     String? region,
     required String resourcePolicy,
     required String tableBucketArn,
-  })  : region = pulumi.Input.asOptionalInput<String>(region),
-        resourcePolicy = pulumi.Input.asInput<String>(resourcePolicy),
-        tableBucketArn = pulumi.Input.asInput<String>(tableBucketArn);
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      resourcePolicy = pulumi.Input.asInput<String>(resourcePolicy),
+      tableBucketArn = pulumi.Input.asInput<String>(tableBucketArn);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['resourcePolicy'] = resourcePolicy;
-    map['tableBucketArn'] = tableBucketArn;
-    return map;
+    return <String, dynamic>{
+      'region': ?region,
+      'resourcePolicy': resourcePolicy,
+      'tableBucketArn': tableBucketArn,
+    };
   }
 
   factory TableBucketPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -47,3 +43,4 @@ class TableBucketPolicyArgs {
     );
   }
 }
+

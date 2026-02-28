@@ -8,35 +8,24 @@ import 'google_cloud_apigee_v1_security_action_flag_response.dart';
 class GetSecurityActionResult {
   /// Allow a request through if it matches this SecurityAction.
   final Map<String, dynamic> allow;
-
   /// A valid SecurityAction must contain at least one condition.
-  final GoogleCloudApigeeV1SecurityActionConditionConfigResponse
-      conditionConfig;
-
+  final GoogleCloudApigeeV1SecurityActionConditionConfigResponse conditionConfig;
   /// The create time for this SecurityAction.
   final String createTime;
-
   /// Deny a request through if it matches this SecurityAction.
   final GoogleCloudApigeeV1SecurityActionDenyResponse deny;
-
   /// Optional. An optional user provided description of the SecurityAction.
   final String description;
-
   /// The expiration for this SecurityAction.
   final String expireTime;
-
   /// Flag a request through if it matches this SecurityAction.
   final GoogleCloudApigeeV1SecurityActionFlagResponse flag;
-
   /// Immutable. This field is ignored during creation as per AIP-133. Please set the `security_action_id` field in the CreateSecurityActionRequest when creating a new SecurityAction. Format: organizations/{org}/environments/{env}/securityActions/{security_action}
   final String name;
-
   /// Only an ENABLED SecurityAction is enforced. An ENABLED SecurityAction past its expiration time will not be enforced.
   final String state;
-
   /// Input only. The TTL for this SecurityAction.
   final String ttl;
-
   /// The update time for this SecurityAction. This reflects when this SecurityAction changed states.
   final String updateTime;
 
@@ -67,34 +56,30 @@ class GetSecurityActionResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allow'] = allow;
-    map['conditionConfig'] = conditionConfig.toMap();
-    map['createTime'] = createTime;
-    map['deny'] = deny.toMap();
-    map['description'] = description;
-    map['expireTime'] = expireTime;
-    map['flag'] = flag.toMap();
-    map['name'] = name;
-    map['state'] = state;
-    map['ttl'] = ttl;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'allow': allow,
+      'conditionConfig': conditionConfig.toMap(),
+      'createTime': createTime,
+      'deny': deny.toMap(),
+      'description': description,
+      'expireTime': expireTime,
+      'flag': flag.toMap(),
+      'name': name,
+      'state': state,
+      'ttl': ttl,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetSecurityActionResult.fromMap(Map<String, dynamic> map) {
     return GetSecurityActionResult(
       allow: (map['allow'] as Map).cast<String, dynamic>(),
-      conditionConfig:
-          GoogleCloudApigeeV1SecurityActionConditionConfigResponse.fromMap(
-              (map['conditionConfig'] as Map).cast<String, dynamic>()),
+      conditionConfig: GoogleCloudApigeeV1SecurityActionConditionConfigResponse.fromMap((map['conditionConfig'] as Map).cast<String, dynamic>()),
       createTime: map['createTime'] as String,
-      deny: GoogleCloudApigeeV1SecurityActionDenyResponse.fromMap(
-          (map['deny'] as Map).cast<String, dynamic>()),
+      deny: GoogleCloudApigeeV1SecurityActionDenyResponse.fromMap((map['deny'] as Map).cast<String, dynamic>()),
       description: map['description'] as String,
       expireTime: map['expireTime'] as String,
-      flag: GoogleCloudApigeeV1SecurityActionFlagResponse.fromMap(
-          (map['flag'] as Map).cast<String, dynamic>()),
+      flag: GoogleCloudApigeeV1SecurityActionFlagResponse.fromMap((map['flag'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       state: map['state'] as String,
       ttl: map['ttl'] as String,
@@ -102,3 +87,4 @@ class GetSecurityActionResult {
     );
   }
 }
+

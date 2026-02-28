@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Data type and value of a parameter.
 class GoogleCloudChannelV1ValueResponse {
   /// Represents a boolean value.
   final bool boolValue;
-
   /// Represents a double value.
   final double doubleValue;
-
   /// Represents an int64 value.
   final String int64Value;
-
   /// Represents an 'Any' proto value.
   final Map<String, String> protoValue;
-
   /// Represents a string value.
   final String stringValue;
 
@@ -32,13 +29,13 @@ class GoogleCloudChannelV1ValueResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['boolValue'] = boolValue;
-    map['doubleValue'] = doubleValue;
-    map['int64Value'] = int64Value;
-    map['protoValue'] = protoValue;
-    map['stringValue'] = stringValue;
-    return map;
+    return <String, dynamic>{
+      'boolValue': boolValue,
+      'doubleValue': doubleValue,
+      'int64Value': int64Value,
+      'protoValue': protoValue,
+      'stringValue': stringValue,
+    };
   }
 
   factory GoogleCloudChannelV1ValueResponse.fromMap(Map<String, dynamic> map) {
@@ -51,3 +48,4 @@ class GoogleCloudChannelV1ValueResponse {
     );
   }
 }
+

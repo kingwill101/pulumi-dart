@@ -17,21 +17,15 @@ class JobConfigElementaryStreamVideoStream {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final h264Value = h264;
-    if (h264Value != null) {
-      map['h264'] = h264Value.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'h264': ?h264 == null ? null : h264!.toMap(),
+    };
   }
 
-  factory JobConfigElementaryStreamVideoStream.fromMap(
-      Map<String, dynamic> map) {
+  factory JobConfigElementaryStreamVideoStream.fromMap(Map<String, dynamic> map) {
     return JobConfigElementaryStreamVideoStream(
-      h264: map['h264'] == null
-          ? null
-          : JobConfigElementaryStreamVideoStreamH264.fromMap(
-              (map['h264'] as Map).cast<String, dynamic>()),
+      h264: map['h264'] == null ? null : JobConfigElementaryStreamVideoStreamH264.fromMap((map['h264'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

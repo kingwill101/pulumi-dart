@@ -15,23 +15,15 @@ class Backend {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final rulesValue = rules;
-    if (rulesValue != null) {
-      map['rules'] = pulumi.Input.encodeList<BackendRule, Map<String, dynamic>>(
-          rulesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'rules': ?rules == null ? null : pulumi.Input.encodeList<BackendRule, Map<String, dynamic>>(rules!, (value) => value.toMap()),
+    };
   }
 
   factory Backend.fromMap(Map<String, dynamic> map) {
     return Backend(
-      rules: map['rules'] == null
-          ? null
-          : pulumi.Input.decodeList<BackendRule>(
-              map['rules'],
-              (value) =>
-                  BackendRule.fromMap((value as Map).cast<String, dynamic>())),
+      rules: map['rules'] == null ? null : pulumi.Input.decodeList<BackendRule>(map['rules'], (value) => BackendRule.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

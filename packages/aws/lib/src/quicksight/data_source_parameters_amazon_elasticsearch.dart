@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataSourceParametersAmazonElasticsearch {
   /// The OpenSearch domain.
   final String domain;
@@ -11,15 +12,15 @@ class DataSourceParametersAmazonElasticsearch {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['domain'] = domain;
-    return map;
+    return <String, dynamic>{
+      'domain': domain,
+    };
   }
 
-  factory DataSourceParametersAmazonElasticsearch.fromMap(
-      Map<String, dynamic> map) {
+  factory DataSourceParametersAmazonElasticsearch.fromMap(Map<String, dynamic> map) {
     return DataSourceParametersAmazonElasticsearch(
       domain: map['domain'] as String,
     );
   }
 }
+

@@ -14,7 +14,7 @@ enum AuditLogConfigLogTypeGameservicesV1beta {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown AuditLogConfigLogTypeGameservicesV1beta value: $value');
+    throw ArgumentError('Unknown AuditLogConfigLogTypeGameservicesV1beta value: $value');
   }
 }
+

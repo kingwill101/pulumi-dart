@@ -13,12 +13,13 @@ class GetServiceIamPolicyArgs {
   /// [serviceId] Required.
   GetServiceIamPolicyArgs({
     required String serviceId,
-  }) : serviceId = pulumi.Input.asInput<String>(serviceId);
+  }) :
+      serviceId = pulumi.Input.asInput<String>(serviceId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['serviceId'] = serviceId;
-    return map;
+    return <String, dynamic>{
+      'serviceId': serviceId,
+    };
   }
 
   factory GetServiceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -27,3 +28,4 @@ class GetServiceIamPolicyArgs {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Parameters that affect network cost estimations.
 class VirtualMachinePreferencesNetworkCostParametersResponse {
   /// Optional. An estimated percentage of priced outbound traffic (egress traffic) from the measured outbound traffic. Must be in the interval [0, 100].
@@ -12,16 +13,15 @@ class VirtualMachinePreferencesNetworkCostParametersResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['estimatedEgressTrafficPercentage'] = estimatedEgressTrafficPercentage;
-    return map;
+    return <String, dynamic>{
+      'estimatedEgressTrafficPercentage': estimatedEgressTrafficPercentage,
+    };
   }
 
-  factory VirtualMachinePreferencesNetworkCostParametersResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory VirtualMachinePreferencesNetworkCostParametersResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePreferencesNetworkCostParametersResponse(
-      estimatedEgressTrafficPercentage:
-          map['estimatedEgressTrafficPercentage'] as int,
+      estimatedEgressTrafficPercentage: map['estimatedEgressTrafficPercentage'] as int,
     );
   }
 }
+

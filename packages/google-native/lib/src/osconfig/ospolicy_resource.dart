@@ -9,16 +9,12 @@ import 'ospolicy_resource_repository_resource.dart';
 class OSPolicyResource {
   /// Exec resource
   final OSPolicyResourceExecResource? exec;
-
   /// File resource
   final OSPolicyResourceFileResource? file;
-
   /// The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
   final String id;
-
   /// Package resource
   final OSPolicyResourcePackageResource? pkg;
-
   /// Package repository resource
   final OSPolicyResourceRepositoryResource? repository;
 
@@ -37,46 +33,23 @@ class OSPolicyResource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final execValue = exec;
-    if (execValue != null) {
-      map['exec'] = execValue.toMap();
-    }
-    final fileValue = file;
-    if (fileValue != null) {
-      map['file'] = fileValue.toMap();
-    }
-    map['id'] = id;
-    final pkgValue = pkg;
-    if (pkgValue != null) {
-      map['pkg'] = pkgValue.toMap();
-    }
-    final repositoryValue = repository;
-    if (repositoryValue != null) {
-      map['repository'] = repositoryValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'exec': ?exec == null ? null : exec!.toMap(),
+      'file': ?file == null ? null : file!.toMap(),
+      'id': id,
+      'pkg': ?pkg == null ? null : pkg!.toMap(),
+      'repository': ?repository == null ? null : repository!.toMap(),
+    };
   }
 
   factory OSPolicyResource.fromMap(Map<String, dynamic> map) {
     return OSPolicyResource(
-      exec: map['exec'] == null
-          ? null
-          : OSPolicyResourceExecResource.fromMap(
-              (map['exec'] as Map).cast<String, dynamic>()),
-      file: map['file'] == null
-          ? null
-          : OSPolicyResourceFileResource.fromMap(
-              (map['file'] as Map).cast<String, dynamic>()),
+      exec: map['exec'] == null ? null : OSPolicyResourceExecResource.fromMap((map['exec'] as Map).cast<String, dynamic>()),
+      file: map['file'] == null ? null : OSPolicyResourceFileResource.fromMap((map['file'] as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      pkg: map['pkg'] == null
-          ? null
-          : OSPolicyResourcePackageResource.fromMap(
-              (map['pkg'] as Map).cast<String, dynamic>()),
-      repository: map['repository'] == null
-          ? null
-          : OSPolicyResourceRepositoryResource.fromMap(
-              (map['repository'] as Map).cast<String, dynamic>()),
+      pkg: map['pkg'] == null ? null : OSPolicyResourcePackageResource.fromMap((map['pkg'] as Map).cast<String, dynamic>()),
+      repository: map['repository'] == null ? null : OSPolicyResourceRepositoryResource.fromMap((map['repository'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -3,20 +3,16 @@ enum GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat {
   dataFormatUnspecified("DATA_FORMAT_UNSPECIFIED"),
   jsonl("JSONL");
 
-  const GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat(
-      this.value);
+  const GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat(this.value);
   final String value;
 
-  static GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat
-      fromValue(String value) {
-    for (final item
-        in GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat
-            .values) {
+  static GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat fromValue(String value) {
+    for (final item in GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat value: $value');
+    throw ArgumentError('Unknown GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat value: $value');
   }
 }
+

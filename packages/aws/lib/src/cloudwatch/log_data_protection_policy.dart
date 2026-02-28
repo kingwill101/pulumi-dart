@@ -351,10 +351,8 @@ import 'log_data_protection_policy_args.dart';
 class LogDataProtectionPolicy extends pulumi.CustomResource {
   /// The name of the log group under which the log stream is to be created.
   late final pulumi.Output<String> logGroupName;
-
   /// Specifies the data protection policy in JSON. Read more at [Data protection policy syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/mask-sensitive-log-data-start.html#mask-sensitive-log-data-policysyntax).
   late final pulumi.Output<String> policyDocument;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

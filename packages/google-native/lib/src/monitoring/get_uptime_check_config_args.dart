@@ -16,17 +16,15 @@ class GetUptimeCheckConfigArgs {
   GetUptimeCheckConfigArgs({
     String? project,
     required String uptimeCheckConfigId,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        uptimeCheckConfigId = pulumi.Input.asInput<String>(uptimeCheckConfigId);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      uptimeCheckConfigId = pulumi.Input.asInput<String>(uptimeCheckConfigId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['uptimeCheckConfigId'] = uptimeCheckConfigId;
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'uptimeCheckConfigId': uptimeCheckConfigId,
+    };
   }
 
   factory GetUptimeCheckConfigArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetUptimeCheckConfigArgs {
     );
   }
 }
+

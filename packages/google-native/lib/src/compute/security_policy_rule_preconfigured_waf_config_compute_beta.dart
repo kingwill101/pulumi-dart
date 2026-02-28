@@ -5,8 +5,7 @@ import 'security_policy_rule_preconfigured_waf_config_exclusion_compute_beta.dar
 
 class SecurityPolicyRulePreconfiguredWafConfigComputeBeta {
   /// A list of exclusions to apply during preconfigured WAF evaluation.
-  final List<SecurityPolicyRulePreconfiguredWafConfigExclusionComputeBeta>?
-      exclusions;
+  final List<SecurityPolicyRulePreconfiguredWafConfigExclusionComputeBeta>? exclusions;
 
   /// Creates a new [SecurityPolicyRulePreconfiguredWafConfigComputeBeta].
   /// [exclusions] A list of exclusions to apply during preconfigured WAF evaluation.
@@ -15,27 +14,15 @@ class SecurityPolicyRulePreconfiguredWafConfigComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final exclusionsValue = exclusions;
-    if (exclusionsValue != null) {
-      map['exclusions'] = pulumi.Input.encodeList<
-          SecurityPolicyRulePreconfiguredWafConfigExclusionComputeBeta,
-          Map<String, dynamic>>(exclusionsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'exclusions': ?exclusions == null ? null : pulumi.Input.encodeList<SecurityPolicyRulePreconfiguredWafConfigExclusionComputeBeta, Map<String, dynamic>>(exclusions!, (value) => value.toMap()),
+    };
   }
 
-  factory SecurityPolicyRulePreconfiguredWafConfigComputeBeta.fromMap(
-      Map<String, dynamic> map) {
+  factory SecurityPolicyRulePreconfiguredWafConfigComputeBeta.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRulePreconfiguredWafConfigComputeBeta(
-      exclusions: map['exclusions'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  SecurityPolicyRulePreconfiguredWafConfigExclusionComputeBeta>(
-              map['exclusions'],
-              (value) =>
-                  SecurityPolicyRulePreconfiguredWafConfigExclusionComputeBeta
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      exclusions: map['exclusions'] == null ? null : pulumi.Input.decodeList<SecurityPolicyRulePreconfiguredWafConfigExclusionComputeBeta>(map['exclusions'], (value) => SecurityPolicyRulePreconfiguredWafConfigExclusionComputeBeta.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

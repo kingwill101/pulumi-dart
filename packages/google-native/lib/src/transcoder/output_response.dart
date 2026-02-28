@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Location of output file(s) in a Cloud Storage bucket.
 class OutputResponse {
   /// URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from Job.output_uri. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
@@ -12,9 +13,9 @@ class OutputResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['uri'] = uri;
-    return map;
+    return <String, dynamic>{
+      'uri': uri,
+    };
   }
 
   factory OutputResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class OutputResponse {
     );
   }
 }
+

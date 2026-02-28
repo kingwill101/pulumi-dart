@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class V2modelsIntentQnaIntentConfigurationBedrockModelConfigurationGuardrail {
   /// Identifier of the guardrail.
   final String identifier;
-
   /// Version of the guardrail.
   final String version;
 
@@ -16,17 +16,17 @@ class V2modelsIntentQnaIntentConfigurationBedrockModelConfigurationGuardrail {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['identifier'] = identifier;
-    map['version'] = version;
-    return map;
+    return <String, dynamic>{
+      'identifier': identifier,
+      'version': version,
+    };
   }
 
-  factory V2modelsIntentQnaIntentConfigurationBedrockModelConfigurationGuardrail.fromMap(
-      Map<String, dynamic> map) {
+  factory V2modelsIntentQnaIntentConfigurationBedrockModelConfigurationGuardrail.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentQnaIntentConfigurationBedrockModelConfigurationGuardrail(
       identifier: map['identifier'] as String,
       version: map['version'] as String,
     );
   }
 }
+

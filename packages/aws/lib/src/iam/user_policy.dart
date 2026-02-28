@@ -239,13 +239,10 @@ import 'user_policy_args.dart';
 class UserPolicy extends pulumi.CustomResource {
   /// The name of the policy. If omitted, the provider will assign a random, unique name.
   late final pulumi.Output<String> name;
-
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
-
   /// The policy document. This is a JSON formatted string.
   late final pulumi.Output<String> policy;
-
   /// IAM user to which to attach this policy.
   late final pulumi.Output<String> user;
 

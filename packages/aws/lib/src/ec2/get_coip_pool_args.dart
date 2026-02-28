@@ -9,16 +9,12 @@ import 'get_coip_pool_filter.dart';
 /// {@macro pulumi_ec2_get_coip_pool_get_coip_pool_args_doc}
 class GetCoipPoolArgs {
   final pulumi.Input<List<GetCoipPoolFilter>>? filters;
-
   /// Local Gateway Route Table Id assigned to desired COIP Pool
   final pulumi.Input<String>? localGatewayRouteTableId;
-
   /// ID of the specific COIP Pool to retrieve.
   final pulumi.Input<String>? poolId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Mapping of tags, each pair of which must exactly match
   /// a pair on the desired COIP Pool.
   ///
@@ -38,60 +34,31 @@ class GetCoipPoolArgs {
     String? poolId,
     String? region,
     Map<String, String>? tags,
-  })  : filters =
-            pulumi.Input.asOptionalInput<List<GetCoipPoolFilter>>(filters),
-        localGatewayRouteTableId =
-            pulumi.Input.asOptionalInput<String>(localGatewayRouteTableId),
-        poolId = pulumi.Input.asOptionalInput<String>(poolId),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      filters = pulumi.Input.asOptionalInput<List<GetCoipPoolFilter>>(filters),
+      localGatewayRouteTableId = pulumi.Input.asOptionalInput<String>(localGatewayRouteTableId),
+      poolId = pulumi.Input.asOptionalInput<String>(poolId),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final filtersValue = filters;
-    if (filtersValue != null) {
-      map['filters'] = pulumi.Input.mapOptionalInputValue<
-              List<GetCoipPoolFilter>, List<Map<String, dynamic>>>(
-          filtersValue,
-          (value) =>
-              pulumi.Input.encodeList<GetCoipPoolFilter, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
-    }
-    final localGatewayRouteTableIdValue = localGatewayRouteTableId;
-    if (localGatewayRouteTableIdValue != null) {
-      map['localGatewayRouteTableId'] = localGatewayRouteTableIdValue;
-    }
-    final poolIdValue = poolId;
-    if (poolIdValue != null) {
-      map['poolId'] = poolIdValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetCoipPoolFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetCoipPoolFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'localGatewayRouteTableId': ?localGatewayRouteTableId,
+      'poolId': ?poolId,
+      'region': ?region,
+      'tags': ?tags,
+    };
   }
 
   factory GetCoipPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetCoipPoolArgs(
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetCoipPoolFilter>(
-              map['filters'],
-              (value) => GetCoipPoolFilter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      localGatewayRouteTableId: map['localGatewayRouteTableId'] == null
-          ? null
-          : map['localGatewayRouteTableId'] as String,
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetCoipPoolFilter>(map['filters'], (value) => GetCoipPoolFilter.fromMap((value as Map).cast<String, dynamic>())),
+      localGatewayRouteTableId: map['localGatewayRouteTableId'] == null ? null : map['localGatewayRouteTableId'] as String,
       poolId: map['poolId'] == null ? null : map['poolId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

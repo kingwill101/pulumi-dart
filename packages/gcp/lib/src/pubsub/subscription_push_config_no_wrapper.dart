@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SubscriptionPushConfigNoWrapper {
   /// When true, writes the Pub/Sub message metadata to
   /// `x-goog-pubsub-<KEY>:<VAL>` headers of the HTTP request. Writes the
@@ -13,9 +14,9 @@ class SubscriptionPushConfigNoWrapper {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['writeMetadata'] = writeMetadata;
-    return map;
+    return <String, dynamic>{
+      'writeMetadata': writeMetadata,
+    };
   }
 
   factory SubscriptionPushConfigNoWrapper.fromMap(Map<String, dynamic> map) {
@@ -24,3 +25,4 @@ class SubscriptionPushConfigNoWrapper {
     );
   }
 }
+

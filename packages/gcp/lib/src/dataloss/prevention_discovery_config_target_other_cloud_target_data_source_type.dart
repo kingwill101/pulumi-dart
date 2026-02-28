@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceType {
   /// (Optional)
   final String? dataSource;
@@ -11,19 +12,15 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceType {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dataSourceValue = dataSource;
-    if (dataSourceValue != null) {
-      map['dataSource'] = dataSourceValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'dataSource': ?dataSource,
+    };
   }
 
-  factory PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceType.fromMap(
-      Map<String, dynamic> map) {
+  factory PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceType.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceType(
-      dataSource:
-          map['dataSource'] == null ? null : map['dataSource'] as String,
+      dataSource: map['dataSource'] == null ? null : map['dataSource'] as String,
     );
   }
 }
+

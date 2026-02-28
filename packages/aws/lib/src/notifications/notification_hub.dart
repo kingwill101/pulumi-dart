@@ -119,8 +119,7 @@ class NotificationHub extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.notificationHubRegion =
-        registerOutput<String>('notificationHubRegion');
+    this.notificationHubRegion = registerOutput<String>('notificationHubRegion');
     this.timeouts = registerOutput<NotificationHubTimeouts?>('timeouts');
   }
 }

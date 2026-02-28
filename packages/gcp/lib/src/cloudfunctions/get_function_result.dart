@@ -10,79 +10,60 @@ import 'get_function_source_repository.dart';
 /// Result data returned by getFunction.
 class GetFunctionResult {
   final List<Map<String, dynamic>> automaticUpdatePolicies;
-
   /// Available memory (in MB) to the function.
   final int availableMemoryMb;
   final Map<String, String> buildEnvironmentVariables;
   final String buildServiceAccount;
   final String buildWorkerPool;
-
   /// Description of the function.
   final String description;
   final String dockerRegistry;
   final String dockerRepository;
   final Map<String, String> effectiveLabels;
-
   /// Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
   final String entryPoint;
   final Map<String, String> environmentVariables;
-
   /// A source that fires events in response to a condition in another service. Structure is documented below.
   final List<GetFunctionEventTrigger> eventTriggers;
   final String httpsTriggerSecurityLevel;
-
   /// If function is triggered by HTTP, trigger URL is set here.
   final String httpsTriggerUrl;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Controls what traffic can reach the function.
   final String ingressSettings;
   final String kmsKeyName;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final Map<String, String> labels;
-
   /// The limit on the maximum number of function instances that may coexist at a given time. If unset or set to `0`, the API default will be used.
   final int maxInstances;
   final int minInstances;
-
   /// The name of the Cloud Function.
   final String name;
   final List<GetFunctionOnDeployUpdatePolicy> onDeployUpdatePolicies;
   final String? project;
   final Map<String, String> pulumiLabels;
   final String? region;
-
   /// The runtime in which the function is running.
   final String runtime;
   final List<GetFunctionSecretEnvironmentVariable> secretEnvironmentVariables;
   final List<GetFunctionSecretVolume> secretVolumes;
-
   /// The service account email to be assumed by the cloud function.
   final String serviceAccountEmail;
-
   /// The GCS bucket containing the zip archive which contains the function.
   final String sourceArchiveBucket;
-
   /// The source archive object (file) in archive bucket.
   final String sourceArchiveObject;
-
   /// The URL of the Cloud Source Repository that the function is deployed from. Structure is documented below.
   final List<GetFunctionSourceRepository> sourceRepositories;
   final String status;
-
   /// Function execution timeout (in seconds).
   final int timeout;
-
   /// If function is triggered by HTTP, this boolean is set.
   final bool triggerHttp;
   final String versionId;
-
   /// The VPC Network Connector that this cloud function can connect to.
   final String vpcConnector;
-
   /// The egress settings for the connector, controlling what traffic is diverted through it.
   final String vpcConnectorEgressSettings;
 
@@ -167,71 +148,53 @@ class GetFunctionResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['automaticUpdatePolicies'] = automaticUpdatePolicies;
-    map['availableMemoryMb'] = availableMemoryMb;
-    map['buildEnvironmentVariables'] = buildEnvironmentVariables;
-    map['buildServiceAccount'] = buildServiceAccount;
-    map['buildWorkerPool'] = buildWorkerPool;
-    map['description'] = description;
-    map['dockerRegistry'] = dockerRegistry;
-    map['dockerRepository'] = dockerRepository;
-    map['effectiveLabels'] = effectiveLabels;
-    map['entryPoint'] = entryPoint;
-    map['environmentVariables'] = environmentVariables;
-    map['eventTriggers'] =
-        pulumi.Input.encodeList<GetFunctionEventTrigger, Map<String, dynamic>>(
-            eventTriggers, (value) => value.toMap());
-    map['httpsTriggerSecurityLevel'] = httpsTriggerSecurityLevel;
-    map['httpsTriggerUrl'] = httpsTriggerUrl;
-    map['id'] = id;
-    map['ingressSettings'] = ingressSettings;
-    map['kmsKeyName'] = kmsKeyName;
-    map['labels'] = labels;
-    map['maxInstances'] = maxInstances;
-    map['minInstances'] = minInstances;
-    map['name'] = name;
-    map['onDeployUpdatePolicies'] = pulumi.Input.encodeList<
-        GetFunctionOnDeployUpdatePolicy,
-        Map<String, dynamic>>(onDeployUpdatePolicies, (value) => value.toMap());
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['pulumiLabels'] = pulumiLabels;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['runtime'] = runtime;
-    map['secretEnvironmentVariables'] = pulumi.Input.encodeList<
-            GetFunctionSecretEnvironmentVariable, Map<String, dynamic>>(
-        secretEnvironmentVariables, (value) => value.toMap());
-    map['secretVolumes'] =
-        pulumi.Input.encodeList<GetFunctionSecretVolume, Map<String, dynamic>>(
-            secretVolumes, (value) => value.toMap());
-    map['serviceAccountEmail'] = serviceAccountEmail;
-    map['sourceArchiveBucket'] = sourceArchiveBucket;
-    map['sourceArchiveObject'] = sourceArchiveObject;
-    map['sourceRepositories'] = pulumi.Input.encodeList<
-        GetFunctionSourceRepository,
-        Map<String, dynamic>>(sourceRepositories, (value) => value.toMap());
-    map['status'] = status;
-    map['timeout'] = timeout;
-    map['triggerHttp'] = triggerHttp;
-    map['versionId'] = versionId;
-    map['vpcConnector'] = vpcConnector;
-    map['vpcConnectorEgressSettings'] = vpcConnectorEgressSettings;
-    return map;
+    return <String, dynamic>{
+      'automaticUpdatePolicies': automaticUpdatePolicies,
+      'availableMemoryMb': availableMemoryMb,
+      'buildEnvironmentVariables': buildEnvironmentVariables,
+      'buildServiceAccount': buildServiceAccount,
+      'buildWorkerPool': buildWorkerPool,
+      'description': description,
+      'dockerRegistry': dockerRegistry,
+      'dockerRepository': dockerRepository,
+      'effectiveLabels': effectiveLabels,
+      'entryPoint': entryPoint,
+      'environmentVariables': environmentVariables,
+      'eventTriggers': pulumi.Input.encodeList<GetFunctionEventTrigger, Map<String, dynamic>>(eventTriggers, (value) => value.toMap()),
+      'httpsTriggerSecurityLevel': httpsTriggerSecurityLevel,
+      'httpsTriggerUrl': httpsTriggerUrl,
+      'id': id,
+      'ingressSettings': ingressSettings,
+      'kmsKeyName': kmsKeyName,
+      'labels': labels,
+      'maxInstances': maxInstances,
+      'minInstances': minInstances,
+      'name': name,
+      'onDeployUpdatePolicies': pulumi.Input.encodeList<GetFunctionOnDeployUpdatePolicy, Map<String, dynamic>>(onDeployUpdatePolicies, (value) => value.toMap()),
+      'project': ?project,
+      'pulumiLabels': pulumiLabels,
+      'region': ?region,
+      'runtime': runtime,
+      'secretEnvironmentVariables': pulumi.Input.encodeList<GetFunctionSecretEnvironmentVariable, Map<String, dynamic>>(secretEnvironmentVariables, (value) => value.toMap()),
+      'secretVolumes': pulumi.Input.encodeList<GetFunctionSecretVolume, Map<String, dynamic>>(secretVolumes, (value) => value.toMap()),
+      'serviceAccountEmail': serviceAccountEmail,
+      'sourceArchiveBucket': sourceArchiveBucket,
+      'sourceArchiveObject': sourceArchiveObject,
+      'sourceRepositories': pulumi.Input.encodeList<GetFunctionSourceRepository, Map<String, dynamic>>(sourceRepositories, (value) => value.toMap()),
+      'status': status,
+      'timeout': timeout,
+      'triggerHttp': triggerHttp,
+      'versionId': versionId,
+      'vpcConnector': vpcConnector,
+      'vpcConnectorEgressSettings': vpcConnectorEgressSettings,
+    };
   }
 
   factory GetFunctionResult.fromMap(Map<String, dynamic> map) {
     return GetFunctionResult(
-      automaticUpdatePolicies:
-          (map['automaticUpdatePolicies'] as List).cast<Map<String, dynamic>>(),
+      automaticUpdatePolicies: (map['automaticUpdatePolicies'] as List).cast<Map<String, dynamic>>(),
       availableMemoryMb: map['availableMemoryMb'] as int,
-      buildEnvironmentVariables:
-          (map['buildEnvironmentVariables'] as Map).cast<String, String>(),
+      buildEnvironmentVariables: (map['buildEnvironmentVariables'] as Map).cast<String, String>(),
       buildServiceAccount: map['buildServiceAccount'] as String,
       buildWorkerPool: map['buildWorkerPool'] as String,
       description: map['description'] as String,
@@ -239,12 +202,8 @@ class GetFunctionResult {
       dockerRepository: map['dockerRepository'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       entryPoint: map['entryPoint'] as String,
-      environmentVariables:
-          (map['environmentVariables'] as Map).cast<String, String>(),
-      eventTriggers: pulumi.Input.decodeList<GetFunctionEventTrigger>(
-          map['eventTriggers'],
-          (value) => GetFunctionEventTrigger.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      environmentVariables: (map['environmentVariables'] as Map).cast<String, String>(),
+      eventTriggers: pulumi.Input.decodeList<GetFunctionEventTrigger>(map['eventTriggers'], (value) => GetFunctionEventTrigger.fromMap((value as Map).cast<String, dynamic>())),
       httpsTriggerSecurityLevel: map['httpsTriggerSecurityLevel'] as String,
       httpsTriggerUrl: map['httpsTriggerUrl'] as String,
       id: map['id'] as String,
@@ -254,31 +213,17 @@ class GetFunctionResult {
       maxInstances: map['maxInstances'] as int,
       minInstances: map['minInstances'] as int,
       name: map['name'] as String,
-      onDeployUpdatePolicies:
-          pulumi.Input.decodeList<GetFunctionOnDeployUpdatePolicy>(
-              map['onDeployUpdatePolicies'],
-              (value) => GetFunctionOnDeployUpdatePolicy.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      onDeployUpdatePolicies: pulumi.Input.decodeList<GetFunctionOnDeployUpdatePolicy>(map['onDeployUpdatePolicies'], (value) => GetFunctionOnDeployUpdatePolicy.fromMap((value as Map).cast<String, dynamic>())),
       project: map['project'] == null ? null : map['project'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       region: map['region'] == null ? null : map['region'] as String,
       runtime: map['runtime'] as String,
-      secretEnvironmentVariables:
-          pulumi.Input.decodeList<GetFunctionSecretEnvironmentVariable>(
-              map['secretEnvironmentVariables'],
-              (value) => GetFunctionSecretEnvironmentVariable.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      secretVolumes: pulumi.Input.decodeList<GetFunctionSecretVolume>(
-          map['secretVolumes'],
-          (value) => GetFunctionSecretVolume.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      secretEnvironmentVariables: pulumi.Input.decodeList<GetFunctionSecretEnvironmentVariable>(map['secretEnvironmentVariables'], (value) => GetFunctionSecretEnvironmentVariable.fromMap((value as Map).cast<String, dynamic>())),
+      secretVolumes: pulumi.Input.decodeList<GetFunctionSecretVolume>(map['secretVolumes'], (value) => GetFunctionSecretVolume.fromMap((value as Map).cast<String, dynamic>())),
       serviceAccountEmail: map['serviceAccountEmail'] as String,
       sourceArchiveBucket: map['sourceArchiveBucket'] as String,
       sourceArchiveObject: map['sourceArchiveObject'] as String,
-      sourceRepositories: pulumi.Input.decodeList<GetFunctionSourceRepository>(
-          map['sourceRepositories'],
-          (value) => GetFunctionSourceRepository.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      sourceRepositories: pulumi.Input.decodeList<GetFunctionSourceRepository>(map['sourceRepositories'], (value) => GetFunctionSourceRepository.fromMap((value as Map).cast<String, dynamic>())),
       status: map['status'] as String,
       timeout: map['timeout'] as int,
       triggerHttp: map['triggerHttp'] as bool,
@@ -288,3 +233,4 @@ class GetFunctionResult {
     );
   }
 }
+

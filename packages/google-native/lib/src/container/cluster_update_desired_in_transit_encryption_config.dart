@@ -1,10 +1,8 @@
 /// Specify the details of in-transit encryption.
 enum ClusterUpdateDesiredInTransitEncryptionConfig {
-  inTransitEncryptionConfigUnspecified(
-      "IN_TRANSIT_ENCRYPTION_CONFIG_UNSPECIFIED"),
+  inTransitEncryptionConfigUnspecified("IN_TRANSIT_ENCRYPTION_CONFIG_UNSPECIFIED"),
   inTransitEncryptionDisabled("IN_TRANSIT_ENCRYPTION_DISABLED"),
-  inTransitEncryptionInterNodeTransparent(
-      "IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT");
+  inTransitEncryptionInterNodeTransparent("IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT");
 
   const ClusterUpdateDesiredInTransitEncryptionConfig(this.value);
   final String value;
@@ -15,7 +13,7 @@ enum ClusterUpdateDesiredInTransitEncryptionConfig {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown ClusterUpdateDesiredInTransitEncryptionConfig value: $value');
+    throw ArgumentError('Unknown ClusterUpdateDesiredInTransitEncryptionConfig value: $value');
   }
 }
+

@@ -8,10 +8,8 @@ import 'version_containeranalysis_v1alpha1.dart';
 class UpgradeNoteContaineranalysisV1alpha1 {
   /// Metadata about the upgrade for each specific operating system.
   final List<UpgradeDistributionContaineranalysisV1alpha1>? distributions;
-
   /// Required - The package this Upgrade is for.
   final String? package;
-
   /// Required - The version of the package in machine + human readable form.
   final VersionContaineranalysisV1alpha1? version;
 
@@ -26,39 +24,19 @@ class UpgradeNoteContaineranalysisV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final distributionsValue = distributions;
-    if (distributionsValue != null) {
-      map['distributions'] = pulumi.Input.encodeList<
-          UpgradeDistributionContaineranalysisV1alpha1,
-          Map<String, dynamic>>(distributionsValue, (value) => value.toMap());
-    }
-    final packageValue = package;
-    if (packageValue != null) {
-      map['package'] = packageValue;
-    }
-    final versionValue = version;
-    if (versionValue != null) {
-      map['version'] = versionValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'distributions': ?distributions == null ? null : pulumi.Input.encodeList<UpgradeDistributionContaineranalysisV1alpha1, Map<String, dynamic>>(distributions!, (value) => value.toMap()),
+      'package': ?package,
+      'version': ?version == null ? null : version!.toMap(),
+    };
   }
 
-  factory UpgradeNoteContaineranalysisV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory UpgradeNoteContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return UpgradeNoteContaineranalysisV1alpha1(
-      distributions: map['distributions'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  UpgradeDistributionContaineranalysisV1alpha1>(
-              map['distributions'],
-              (value) => UpgradeDistributionContaineranalysisV1alpha1.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      distributions: map['distributions'] == null ? null : pulumi.Input.decodeList<UpgradeDistributionContaineranalysisV1alpha1>(map['distributions'], (value) => UpgradeDistributionContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
       package: map['package'] == null ? null : map['package'] as String,
-      version: map['version'] == null
-          ? null
-          : VersionContaineranalysisV1alpha1.fromMap(
-              (map['version'] as Map).cast<String, dynamic>()),
+      version: map['version'] == null ? null : VersionContaineranalysisV1alpha1.fromMap((map['version'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

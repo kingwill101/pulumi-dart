@@ -7,13 +7,10 @@ import 'restriction_evaluations_response_cloudidentity_v1beta1.dart';
 class MembershipRoleResponseCloudidentityV1beta1 {
   /// The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER` `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value.
   final ExpiryDetailResponseCloudidentityV1beta1 expiryDetail;
-
   /// The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.
   final String name;
-
   /// Evaluations of restrictions applied to parent group on this membership.
-  final RestrictionEvaluationsResponseCloudidentityV1beta1
-      restrictionEvaluations;
+  final RestrictionEvaluationsResponseCloudidentityV1beta1 restrictionEvaluations;
 
   /// Creates a new [MembershipRoleResponseCloudidentityV1beta1].
   /// [expiryDetail] The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER` `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value.
@@ -26,22 +23,19 @@ class MembershipRoleResponseCloudidentityV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['expiryDetail'] = expiryDetail.toMap();
-    map['name'] = name;
-    map['restrictionEvaluations'] = restrictionEvaluations.toMap();
-    return map;
+    return <String, dynamic>{
+      'expiryDetail': expiryDetail.toMap(),
+      'name': name,
+      'restrictionEvaluations': restrictionEvaluations.toMap(),
+    };
   }
 
-  factory MembershipRoleResponseCloudidentityV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory MembershipRoleResponseCloudidentityV1beta1.fromMap(Map<String, dynamic> map) {
     return MembershipRoleResponseCloudidentityV1beta1(
-      expiryDetail: ExpiryDetailResponseCloudidentityV1beta1.fromMap(
-          (map['expiryDetail'] as Map).cast<String, dynamic>()),
+      expiryDetail: ExpiryDetailResponseCloudidentityV1beta1.fromMap((map['expiryDetail'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      restrictionEvaluations:
-          RestrictionEvaluationsResponseCloudidentityV1beta1.fromMap(
-              (map['restrictionEvaluations'] as Map).cast<String, dynamic>()),
+      restrictionEvaluations: RestrictionEvaluationsResponseCloudidentityV1beta1.fromMap((map['restrictionEvaluations'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

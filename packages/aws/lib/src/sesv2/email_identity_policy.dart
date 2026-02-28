@@ -272,13 +272,10 @@ import 'email_identity_policy_args.dart';
 class EmailIdentityPolicy extends pulumi.CustomResource {
   /// The email identity.
   late final pulumi.Output<String> emailIdentity;
-
   /// The text of the policy in JSON format.
   late final pulumi.Output<String> policy;
-
   /// The name of the policy.
   late final pulumi.Output<String> policyName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

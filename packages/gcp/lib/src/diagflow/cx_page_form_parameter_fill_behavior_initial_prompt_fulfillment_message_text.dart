@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText {
   /// (Output)
   /// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
   final bool? allowPlaybackInterruption;
-
   /// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
   /// required: true
   final List<String>? texts;
@@ -18,26 +18,17 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final allowPlaybackInterruptionValue = allowPlaybackInterruption;
-    if (allowPlaybackInterruptionValue != null) {
-      map['allowPlaybackInterruption'] = allowPlaybackInterruptionValue;
-    }
-    final textsValue = texts;
-    if (textsValue != null) {
-      map['texts'] = textsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'allowPlaybackInterruption': ?allowPlaybackInterruption,
+      'texts': ?texts,
+    };
   }
 
-  factory CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText.fromMap(
-      Map<String, dynamic> map) {
+  factory CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText.fromMap(Map<String, dynamic> map) {
     return CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText(
-      allowPlaybackInterruption: map['allowPlaybackInterruption'] == null
-          ? null
-          : map['allowPlaybackInterruption'] as bool,
-      texts:
-          map['texts'] == null ? null : (map['texts'] as List).cast<String>(),
+      allowPlaybackInterruption: map['allowPlaybackInterruption'] == null ? null : map['allowPlaybackInterruption'] as bool,
+      texts: map['texts'] == null ? null : (map['texts'] as List).cast<String>(),
     );
   }
 }
+

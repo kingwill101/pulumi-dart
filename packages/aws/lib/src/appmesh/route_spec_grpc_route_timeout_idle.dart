@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RouteSpecGrpcRouteTimeoutIdle {
   /// Unit of time. Valid values: `ms`, `s`.
   final String unit;
-
   /// Number of time units. Minimum value of `0`.
   final int value;
 
@@ -16,10 +16,10 @@ class RouteSpecGrpcRouteTimeoutIdle {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['unit'] = unit;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'unit': unit,
+      'value': value,
+    };
   }
 
   factory RouteSpecGrpcRouteTimeoutIdle.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class RouteSpecGrpcRouteTimeoutIdle {
     );
   }
 }
+

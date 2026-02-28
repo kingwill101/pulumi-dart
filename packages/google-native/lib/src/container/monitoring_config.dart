@@ -7,12 +7,9 @@ import 'monitoring_component_config.dart';
 /// MonitoringConfig is cluster monitoring configuration.
 class MonitoringConfig {
   /// Configuration of Advanced Datapath Observability features.
-  final AdvancedDatapathObservabilityConfig?
-      advancedDatapathObservabilityConfig;
-
+  final AdvancedDatapathObservabilityConfig? advancedDatapathObservabilityConfig;
   /// Monitoring components configuration
   final MonitoringComponentConfig? componentConfig;
-
   /// Enable Google Cloud Managed Service for Prometheus in the cluster.
   final ManagedPrometheusConfig? managedPrometheusConfig;
 
@@ -27,40 +24,19 @@ class MonitoringConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final advancedDatapathObservabilityConfigValue =
-        advancedDatapathObservabilityConfig;
-    if (advancedDatapathObservabilityConfigValue != null) {
-      map['advancedDatapathObservabilityConfig'] =
-          advancedDatapathObservabilityConfigValue.toMap();
-    }
-    final componentConfigValue = componentConfig;
-    if (componentConfigValue != null) {
-      map['componentConfig'] = componentConfigValue.toMap();
-    }
-    final managedPrometheusConfigValue = managedPrometheusConfig;
-    if (managedPrometheusConfigValue != null) {
-      map['managedPrometheusConfig'] = managedPrometheusConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'advancedDatapathObservabilityConfig': ?advancedDatapathObservabilityConfig == null ? null : advancedDatapathObservabilityConfig!.toMap(),
+      'componentConfig': ?componentConfig == null ? null : componentConfig!.toMap(),
+      'managedPrometheusConfig': ?managedPrometheusConfig == null ? null : managedPrometheusConfig!.toMap(),
+    };
   }
 
   factory MonitoringConfig.fromMap(Map<String, dynamic> map) {
     return MonitoringConfig(
-      advancedDatapathObservabilityConfig:
-          map['advancedDatapathObservabilityConfig'] == null
-              ? null
-              : AdvancedDatapathObservabilityConfig.fromMap(
-                  (map['advancedDatapathObservabilityConfig'] as Map)
-                      .cast<String, dynamic>()),
-      componentConfig: map['componentConfig'] == null
-          ? null
-          : MonitoringComponentConfig.fromMap(
-              (map['componentConfig'] as Map).cast<String, dynamic>()),
-      managedPrometheusConfig: map['managedPrometheusConfig'] == null
-          ? null
-          : ManagedPrometheusConfig.fromMap(
-              (map['managedPrometheusConfig'] as Map).cast<String, dynamic>()),
+      advancedDatapathObservabilityConfig: map['advancedDatapathObservabilityConfig'] == null ? null : AdvancedDatapathObservabilityConfig.fromMap((map['advancedDatapathObservabilityConfig'] as Map).cast<String, dynamic>()),
+      componentConfig: map['componentConfig'] == null ? null : MonitoringComponentConfig.fromMap((map['componentConfig'] as Map).cast<String, dynamic>()),
+      managedPrometheusConfig: map['managedPrometheusConfig'] == null ? null : ManagedPrometheusConfig.fromMap((map['managedPrometheusConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

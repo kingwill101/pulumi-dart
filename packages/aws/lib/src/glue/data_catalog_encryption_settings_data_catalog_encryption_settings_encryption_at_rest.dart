@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRest {
   /// The encryption-at-rest mode for encrypting Data Catalog data. Valid values: `DISABLED`, `SSE-KMS`, `SSE-KMS-WITH-SERVICE-ROLE`.
   final String catalogEncryptionMode;
-
   /// The ARN of the AWS IAM role used for accessing encrypted Data Catalog data.
   final String? catalogEncryptionServiceRole;
-
   /// The ARN of the AWS KMS key to use for encryption at rest.
   final String? sseAwsKmsKeyId;
 
@@ -21,29 +20,19 @@ class DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRest
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['catalogEncryptionMode'] = catalogEncryptionMode;
-    final catalogEncryptionServiceRoleValue = catalogEncryptionServiceRole;
-    if (catalogEncryptionServiceRoleValue != null) {
-      map['catalogEncryptionServiceRole'] = catalogEncryptionServiceRoleValue;
-    }
-    final sseAwsKmsKeyIdValue = sseAwsKmsKeyId;
-    if (sseAwsKmsKeyIdValue != null) {
-      map['sseAwsKmsKeyId'] = sseAwsKmsKeyIdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'catalogEncryptionMode': catalogEncryptionMode,
+      'catalogEncryptionServiceRole': ?catalogEncryptionServiceRole,
+      'sseAwsKmsKeyId': ?sseAwsKmsKeyId,
+    };
   }
 
-  factory DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRest.fromMap(
-      Map<String, dynamic> map) {
+  factory DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRest.fromMap(Map<String, dynamic> map) {
     return DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRest(
       catalogEncryptionMode: map['catalogEncryptionMode'] as String,
-      catalogEncryptionServiceRole: map['catalogEncryptionServiceRole'] == null
-          ? null
-          : map['catalogEncryptionServiceRole'] as String,
-      sseAwsKmsKeyId: map['sseAwsKmsKeyId'] == null
-          ? null
-          : map['sseAwsKmsKeyId'] as String,
+      catalogEncryptionServiceRole: map['catalogEncryptionServiceRole'] == null ? null : map['catalogEncryptionServiceRole'] as String,
+      sseAwsKmsKeyId: map['sseAwsKmsKeyId'] == null ? null : map['sseAwsKmsKeyId'] as String,
     );
   }
 }
+

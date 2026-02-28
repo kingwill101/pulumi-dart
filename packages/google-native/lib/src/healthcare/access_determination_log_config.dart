@@ -14,20 +14,15 @@ class AccessDeterminationLogConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final logLevelValue = logLevel;
-    if (logLevelValue != null) {
-      map['logLevel'] = logLevelValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'logLevel': ?logLevel == null ? null : logLevel!.value,
+    };
   }
 
   factory AccessDeterminationLogConfig.fromMap(Map<String, dynamic> map) {
     return AccessDeterminationLogConfig(
-      logLevel: map['logLevel'] == null
-          ? null
-          : AccessDeterminationLogConfigLogLevel.fromValue(
-              map['logLevel'] as String),
+      logLevel: map['logLevel'] == null ? null : AccessDeterminationLogConfigLogLevel.fromValue(map['logLevel'] as String),
     );
   }
 }
+

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NodeGroupScalingConfig {
   /// Desired number of worker nodes.
   final int desiredSize;
-
   /// Maximum number of worker nodes.
   final int maxSize;
-
   /// Minimum number of worker nodes.
   final int minSize;
 
@@ -21,11 +20,11 @@ class NodeGroupScalingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['desiredSize'] = desiredSize;
-    map['maxSize'] = maxSize;
-    map['minSize'] = minSize;
-    return map;
+    return <String, dynamic>{
+      'desiredSize': desiredSize,
+      'maxSize': maxSize,
+      'minSize': minSize,
+    };
   }
 
   factory NodeGroupScalingConfig.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class NodeGroupScalingConfig {
     );
   }
 }
+

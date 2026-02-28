@@ -6,7 +6,6 @@ import 'google_devtools_containeranalysis_v1alpha1_project_repo_id.dart';
 class GoogleDevtoolsContaineranalysisV1alpha1RepoId {
   /// A combination of a project ID and a repo name.
   final GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoId? projectRepoId;
-
   /// A server-assigned, globally unique identifier.
   final String? uid;
 
@@ -19,26 +18,17 @@ class GoogleDevtoolsContaineranalysisV1alpha1RepoId {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectRepoIdValue = projectRepoId;
-    if (projectRepoIdValue != null) {
-      map['projectRepoId'] = projectRepoIdValue.toMap();
-    }
-    final uidValue = uid;
-    if (uidValue != null) {
-      map['uid'] = uidValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'projectRepoId': ?projectRepoId == null ? null : projectRepoId!.toMap(),
+      'uid': ?uid,
+    };
   }
 
-  factory GoogleDevtoolsContaineranalysisV1alpha1RepoId.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleDevtoolsContaineranalysisV1alpha1RepoId.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsContaineranalysisV1alpha1RepoId(
-      projectRepoId: map['projectRepoId'] == null
-          ? null
-          : GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoId.fromMap(
-              (map['projectRepoId'] as Map).cast<String, dynamic>()),
+      projectRepoId: map['projectRepoId'] == null ? null : GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoId.fromMap((map['projectRepoId'] as Map).cast<String, dynamic>()),
       uid: map['uid'] == null ? null : map['uid'] as String,
     );
   }
 }
+

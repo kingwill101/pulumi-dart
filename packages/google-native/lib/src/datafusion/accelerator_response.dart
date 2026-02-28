@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Identifies Data Fusion accelerators for an instance.
 class AcceleratorResponse {
   /// The type of an accelator for a CDF instance.
   final String acceleratorType;
-
   /// The state of the accelerator.
   final String state;
 
@@ -17,10 +17,10 @@ class AcceleratorResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['acceleratorType'] = acceleratorType;
-    map['state'] = state;
-    return map;
+    return <String, dynamic>{
+      'acceleratorType': acceleratorType,
+      'state': state,
+    };
   }
 
   factory AcceleratorResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class AcceleratorResponse {
     );
   }
 }
+

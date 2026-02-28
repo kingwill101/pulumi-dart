@@ -14,20 +14,15 @@ class Authority {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final hintValue = hint;
-    if (hintValue != null) {
-      map['hint'] = hintValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'hint': ?hint == null ? null : hint!.toMap(),
+    };
   }
 
   factory Authority.fromMap(Map<String, dynamic> map) {
     return Authority(
-      hint: map['hint'] == null
-          ? null
-          : HintContaineranalysisV1beta1.fromMap(
-              (map['hint'] as Map).cast<String, dynamic>()),
+      hint: map['hint'] == null ? null : HintContaineranalysisV1beta1.fromMap((map['hint'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

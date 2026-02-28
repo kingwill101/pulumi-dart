@@ -8,21 +8,16 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo {
   /// matches if it contains an external resource in this list (Example:
   /// s3://bucket/path). Currently '*' is not allowed.
   final List<String>? externalResources;
-
   /// A list of `ApiOperations` that this egress rule applies to. A request matches
   /// if it contains an operation/service in this list.
   /// Structure is documented below.
-  final List<
-          ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation>?
-      operations;
-
+  final List<ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation>? operations;
   /// A list of resources, currently only projects in the form
   /// `projects/<projectnumber>`, that match this to stanza. A request matches
   /// if it contains a resource in this list. If * is specified for resources,
   /// then this `EgressTo` rule will authorize access to all resources outside
   /// the perimeter.
   final List<String>? resources;
-
   /// A list of IAM roles that represent the set of operations that the sources
   /// specified in the corresponding `EgressFrom`
   /// are allowed to perform.
@@ -41,47 +36,21 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final externalResourcesValue = externalResources;
-    if (externalResourcesValue != null) {
-      map['externalResources'] = externalResourcesValue;
-    }
-    final operationsValue = operations;
-    if (operationsValue != null) {
-      map['operations'] = pulumi.Input.encodeList<
-          ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation,
-          Map<String, dynamic>>(operationsValue, (value) => value.toMap());
-    }
-    final resourcesValue = resources;
-    if (resourcesValue != null) {
-      map['resources'] = resourcesValue;
-    }
-    final rolesValue = roles;
-    if (rolesValue != null) {
-      map['roles'] = rolesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'externalResources': ?externalResources,
+      'operations': ?operations == null ? null : pulumi.Input.encodeList<ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation, Map<String, dynamic>>(operations!, (value) => value.toMap()),
+      'resources': ?resources,
+      'roles': ?roles,
+    };
   }
 
-  factory ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo.fromMap(
-      Map<String, dynamic> map) {
+  factory ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo.fromMap(Map<String, dynamic> map) {
     return ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo(
-      externalResources: map['externalResources'] == null
-          ? null
-          : (map['externalResources'] as List).cast<String>(),
-      operations: map['operations'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation>(
-              map['operations'],
-              (value) =>
-                  ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation
-                      .fromMap((value as Map).cast<String, dynamic>())),
-      resources: map['resources'] == null
-          ? null
-          : (map['resources'] as List).cast<String>(),
-      roles:
-          map['roles'] == null ? null : (map['roles'] as List).cast<String>(),
+      externalResources: map['externalResources'] == null ? null : (map['externalResources'] as List).cast<String>(),
+      operations: map['operations'] == null ? null : pulumi.Input.decodeList<ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation>(map['operations'], (value) => ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation.fromMap((value as Map).cast<String, dynamic>())),
+      resources: map['resources'] == null ? null : (map['resources'] as List).cast<String>(),
+      roles: map['roles'] == null ? null : (map['roles'] as List).cast<String>(),
     );
   }
 }
+

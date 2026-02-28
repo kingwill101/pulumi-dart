@@ -9,11 +9,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NatAddressArgs {
   /// Flag that specifies whether the reserved NAT address should be activate.
   final pulumi.Input<bool>? activate;
-
   /// The Apigee instance associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
   final pulumi.Input<String> instanceId;
-
   /// Resource ID of the NAT address.
   final pulumi.Input<String>? name;
 
@@ -25,22 +23,17 @@ class NatAddressArgs {
     bool? activate,
     required String instanceId,
     String? name,
-  })  : activate = pulumi.Input.asOptionalInput<bool>(activate),
-        instanceId = pulumi.Input.asInput<String>(instanceId),
-        name = pulumi.Input.asOptionalInput<String>(name);
+  }) :
+      activate = pulumi.Input.asOptionalInput<bool>(activate),
+      instanceId = pulumi.Input.asInput<String>(instanceId),
+      name = pulumi.Input.asOptionalInput<String>(name);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final activateValue = activate;
-    if (activateValue != null) {
-      map['activate'] = activateValue;
-    }
-    map['instanceId'] = instanceId;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'activate': ?activate,
+      'instanceId': instanceId,
+      'name': ?name,
+    };
   }
 
   factory NatAddressArgs.fromMap(Map<String, dynamic> map) {
@@ -51,3 +44,4 @@ class NatAddressArgs {
     );
   }
 }
+

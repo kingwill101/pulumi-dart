@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ProjectFeedFeedOutputConfigPubsubDestination {
   /// Destination on Cloud Pubsub topic.
   final String topic;
@@ -11,15 +12,15 @@ class ProjectFeedFeedOutputConfigPubsubDestination {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['topic'] = topic;
-    return map;
+    return <String, dynamic>{
+      'topic': topic,
+    };
   }
 
-  factory ProjectFeedFeedOutputConfigPubsubDestination.fromMap(
-      Map<String, dynamic> map) {
+  factory ProjectFeedFeedOutputConfigPubsubDestination.fromMap(Map<String, dynamic> map) {
     return ProjectFeedFeedOutputConfigPubsubDestination(
       topic: map['topic'] as String,
     );
   }
 }
+

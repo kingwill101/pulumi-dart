@@ -21,15 +21,15 @@ class NoteAttestationAuthority {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['hint'] = hint.toMap();
-    return map;
+    return <String, dynamic>{
+      'hint': hint.toMap(),
+    };
   }
 
   factory NoteAttestationAuthority.fromMap(Map<String, dynamic> map) {
     return NoteAttestationAuthority(
-      hint: NoteAttestationAuthorityHint.fromMap(
-          (map['hint'] as Map).cast<String, dynamic>()),
+      hint: NoteAttestationAuthorityHint.fromMap((map['hint'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

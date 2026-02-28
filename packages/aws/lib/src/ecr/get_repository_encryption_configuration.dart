@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRepositoryEncryptionConfiguration {
   /// Encryption type to use for the repository, either `AES256` or `KMS`.
   final String encryptionType;
-
   /// If `encryption_type` is `KMS`, the ARN of the KMS key used.
   final String kmsKey;
 
@@ -16,17 +16,17 @@ class GetRepositoryEncryptionConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['encryptionType'] = encryptionType;
-    map['kmsKey'] = kmsKey;
-    return map;
+    return <String, dynamic>{
+      'encryptionType': encryptionType,
+      'kmsKey': kmsKey,
+    };
   }
 
-  factory GetRepositoryEncryptionConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory GetRepositoryEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return GetRepositoryEncryptionConfiguration(
       encryptionType: map['encryptionType'] as String,
       kmsKey: map['kmsKey'] as String,
     );
   }
 }
+

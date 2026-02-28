@@ -13,15 +13,15 @@ class PipelineStageBeforeEntry {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['condition'] = condition.toMap();
-    return map;
+    return <String, dynamic>{
+      'condition': condition.toMap(),
+    };
   }
 
   factory PipelineStageBeforeEntry.fromMap(Map<String, dynamic> map) {
     return PipelineStageBeforeEntry(
-      condition: PipelineStageBeforeEntryCondition.fromMap(
-          (map['condition'] as Map).cast<String, dynamic>()),
+      condition: PipelineStageBeforeEntryCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

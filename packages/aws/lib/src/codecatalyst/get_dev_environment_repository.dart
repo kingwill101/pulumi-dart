@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDevEnvironmentRepository {
   final String branchName;
   final String repositoryName;
@@ -13,10 +14,10 @@ class GetDevEnvironmentRepository {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['branchName'] = branchName;
-    map['repositoryName'] = repositoryName;
-    return map;
+    return <String, dynamic>{
+      'branchName': branchName,
+      'repositoryName': repositoryName,
+    };
   }
 
   factory GetDevEnvironmentRepository.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class GetDevEnvironmentRepository {
     );
   }
 }
+

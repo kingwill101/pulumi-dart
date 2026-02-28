@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PolicyAlternativeNameServerConfigTargetNameServer {
   /// Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
   /// decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
@@ -8,7 +9,6 @@ class PolicyAlternativeNameServerConfigTargetNameServer {
   ///
   /// <a name="nested_dns64_config"></a>The `dns64_config` block supports:
   final String? forwardingPath;
-
   /// IPv4 address to forward to.
   final String ipv4Address;
 
@@ -21,22 +21,17 @@ class PolicyAlternativeNameServerConfigTargetNameServer {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final forwardingPathValue = forwardingPath;
-    if (forwardingPathValue != null) {
-      map['forwardingPath'] = forwardingPathValue;
-    }
-    map['ipv4Address'] = ipv4Address;
-    return map;
+    return <String, dynamic>{
+      'forwardingPath': ?forwardingPath,
+      'ipv4Address': ipv4Address,
+    };
   }
 
-  factory PolicyAlternativeNameServerConfigTargetNameServer.fromMap(
-      Map<String, dynamic> map) {
+  factory PolicyAlternativeNameServerConfigTargetNameServer.fromMap(Map<String, dynamic> map) {
     return PolicyAlternativeNameServerConfigTargetNameServer(
-      forwardingPath: map['forwardingPath'] == null
-          ? null
-          : map['forwardingPath'] as String,
+      forwardingPath: map['forwardingPath'] == null ? null : map['forwardingPath'] as String,
       ipv4Address: map['ipv4Address'] as String,
     );
   }
 }
+

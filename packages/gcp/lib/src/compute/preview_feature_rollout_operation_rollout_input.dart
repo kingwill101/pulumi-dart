@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PreviewFeatureRolloutOperationRolloutInput {
   /// Predefined rollout plans.
   /// Possible values are: `ROLLOUT_PLAN_FAST_ROLLOUT`.
@@ -12,15 +13,15 @@ class PreviewFeatureRolloutOperationRolloutInput {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['predefinedRolloutPlan'] = predefinedRolloutPlan;
-    return map;
+    return <String, dynamic>{
+      'predefinedRolloutPlan': predefinedRolloutPlan,
+    };
   }
 
-  factory PreviewFeatureRolloutOperationRolloutInput.fromMap(
-      Map<String, dynamic> map) {
+  factory PreviewFeatureRolloutOperationRolloutInput.fromMap(Map<String, dynamic> map) {
     return PreviewFeatureRolloutOperationRolloutInput(
       predefinedRolloutPlan: map['predefinedRolloutPlan'] as String,
     );
   }
 }
+

@@ -7,7 +7,6 @@ import 'postgresql_table.dart';
 class PostgresqlSchema {
   /// Tables in the schema.
   final List<PostgresqlTable>? postgresqlTables;
-
   /// Schema name.
   final String? schema;
 
@@ -20,29 +19,17 @@ class PostgresqlSchema {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final postgresqlTablesValue = postgresqlTables;
-    if (postgresqlTablesValue != null) {
-      map['postgresqlTables'] =
-          pulumi.Input.encodeList<PostgresqlTable, Map<String, dynamic>>(
-              postgresqlTablesValue, (value) => value.toMap());
-    }
-    final schemaValue = schema;
-    if (schemaValue != null) {
-      map['schema'] = schemaValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'postgresqlTables': ?postgresqlTables == null ? null : pulumi.Input.encodeList<PostgresqlTable, Map<String, dynamic>>(postgresqlTables!, (value) => value.toMap()),
+      'schema': ?schema,
+    };
   }
 
   factory PostgresqlSchema.fromMap(Map<String, dynamic> map) {
     return PostgresqlSchema(
-      postgresqlTables: map['postgresqlTables'] == null
-          ? null
-          : pulumi.Input.decodeList<PostgresqlTable>(
-              map['postgresqlTables'],
-              (value) => PostgresqlTable.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      postgresqlTables: map['postgresqlTables'] == null ? null : pulumi.Input.decodeList<PostgresqlTable>(map['postgresqlTables'], (value) => PostgresqlTable.fromMap((value as Map).cast<String, dynamic>())),
       schema: map['schema'] == null ? null : map['schema'] as String,
     );
   }
 }
+

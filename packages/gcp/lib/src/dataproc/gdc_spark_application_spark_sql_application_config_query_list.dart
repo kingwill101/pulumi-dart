@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GdcSparkApplicationSparkSqlApplicationConfigQueryList {
   /// The queries to run.
   final List<String> queries;
@@ -11,15 +12,15 @@ class GdcSparkApplicationSparkSqlApplicationConfigQueryList {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['queries'] = queries;
-    return map;
+    return <String, dynamic>{
+      'queries': queries,
+    };
   }
 
-  factory GdcSparkApplicationSparkSqlApplicationConfigQueryList.fromMap(
-      Map<String, dynamic> map) {
+  factory GdcSparkApplicationSparkSqlApplicationConfigQueryList.fromMap(Map<String, dynamic> map) {
     return GdcSparkApplicationSparkSqlApplicationConfigQueryList(
       queries: (map['queries'] as List).cast<String>(),
     );
   }
 }
+

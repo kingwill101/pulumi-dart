@@ -25,23 +25,21 @@ class GetPerfSampleSeriesArgs {
     String? project,
     required String sampleSeriesId,
     required String stepId,
-  })  : executionId = pulumi.Input.asInput<String>(executionId),
-        historyId = pulumi.Input.asInput<String>(historyId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        sampleSeriesId = pulumi.Input.asInput<String>(sampleSeriesId),
-        stepId = pulumi.Input.asInput<String>(stepId);
+  }) :
+      executionId = pulumi.Input.asInput<String>(executionId),
+      historyId = pulumi.Input.asInput<String>(historyId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      sampleSeriesId = pulumi.Input.asInput<String>(sampleSeriesId),
+      stepId = pulumi.Input.asInput<String>(stepId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['executionId'] = executionId;
-    map['historyId'] = historyId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['sampleSeriesId'] = sampleSeriesId;
-    map['stepId'] = stepId;
-    return map;
+    return <String, dynamic>{
+      'executionId': executionId,
+      'historyId': historyId,
+      'project': ?project,
+      'sampleSeriesId': sampleSeriesId,
+      'stepId': stepId,
+    };
   }
 
   factory GetPerfSampleSeriesArgs.fromMap(Map<String, dynamic> map) {
@@ -54,3 +52,4 @@ class GetPerfSampleSeriesArgs {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInputDestinationVpc {
   final String availabilityZone;
   final String networkInterfaceId;
@@ -13,10 +14,10 @@ class GetInputDestinationVpc {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['availabilityZone'] = availabilityZone;
-    map['networkInterfaceId'] = networkInterfaceId;
-    return map;
+    return <String, dynamic>{
+      'availabilityZone': availabilityZone,
+      'networkInterfaceId': networkInterfaceId,
+    };
   }
 
   factory GetInputDestinationVpc.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class GetInputDestinationVpc {
     );
   }
 }
+

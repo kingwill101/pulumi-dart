@@ -22,37 +22,28 @@ class GetServiceAttachmentIamPolicyComputeV1Args {
     String? project,
     required String region,
     required String resource,
-  })  : optionsRequestedPolicyVersion =
-            pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asInput<String>(region),
-        resource = pulumi.Input.asInput<String>(resource);
+  }) :
+      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asInput<String>(region),
+      resource = pulumi.Input.asInput<String>(resource);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final optionsRequestedPolicyVersionValue = optionsRequestedPolicyVersion;
-    if (optionsRequestedPolicyVersionValue != null) {
-      map['optionsRequestedPolicyVersion'] = optionsRequestedPolicyVersionValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['region'] = region;
-    map['resource'] = resource;
-    return map;
+    return <String, dynamic>{
+      'optionsRequestedPolicyVersion': ?optionsRequestedPolicyVersion,
+      'project': ?project,
+      'region': region,
+      'resource': resource,
+    };
   }
 
-  factory GetServiceAttachmentIamPolicyComputeV1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetServiceAttachmentIamPolicyComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetServiceAttachmentIamPolicyComputeV1Args(
-      optionsRequestedPolicyVersion:
-          map['optionsRequestedPolicyVersion'] == null
-              ? null
-              : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       region: map['region'] as String,
       resource: map['resource'] as String,
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetImagesImageId {
   /// The sha256 digest of the image manifest.
   final String imageDigest;
-
   /// The tag associated with the image.
   final String imageTag;
 
@@ -16,10 +16,10 @@ class GetImagesImageId {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['imageDigest'] = imageDigest;
-    map['imageTag'] = imageTag;
-    return map;
+    return <String, dynamic>{
+      'imageDigest': imageDigest,
+      'imageTag': imageTag,
+    };
   }
 
   factory GetImagesImageId.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetImagesImageId {
     );
   }
 }
+

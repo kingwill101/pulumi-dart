@@ -7,16 +7,11 @@ import 'google_cloud_dataplex_v1_task_infrastructure_spec_vpc_network_response.d
 /// Configuration for the underlying infrastructure used to run workloads.
 class GoogleCloudDataplexV1TaskInfrastructureSpecResponse {
   /// Compute resources needed for a Task when using Dataproc Serverless.
-  final GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesResponse
-      batch;
-
+  final GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesResponse batch;
   /// Container Image Runtime Configuration.
-  final GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeResponse
-      containerImage;
-
+  final GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeResponse containerImage;
   /// Vpc network.
-  final GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkResponse
-      vpcNetwork;
+  final GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkResponse vpcNetwork;
 
   /// Creates a new [GoogleCloudDataplexV1TaskInfrastructureSpecResponse].
   /// [batch] Compute resources needed for a Task when using Dataproc Serverless.
@@ -29,25 +24,19 @@ class GoogleCloudDataplexV1TaskInfrastructureSpecResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['batch'] = batch.toMap();
-    map['containerImage'] = containerImage.toMap();
-    map['vpcNetwork'] = vpcNetwork.toMap();
-    return map;
+    return <String, dynamic>{
+      'batch': batch.toMap(),
+      'containerImage': containerImage.toMap(),
+      'vpcNetwork': vpcNetwork.toMap(),
+    };
   }
 
-  factory GoogleCloudDataplexV1TaskInfrastructureSpecResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1TaskInfrastructureSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1TaskInfrastructureSpecResponse(
-      batch:
-          GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesResponse
-              .fromMap((map['batch'] as Map).cast<String, dynamic>()),
-      containerImage:
-          GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeResponse
-              .fromMap((map['containerImage'] as Map).cast<String, dynamic>()),
-      vpcNetwork:
-          GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkResponse.fromMap(
-              (map['vpcNetwork'] as Map).cast<String, dynamic>()),
+      batch: GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesResponse.fromMap((map['batch'] as Map).cast<String, dynamic>()),
+      containerImage: GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeResponse.fromMap((map['containerImage'] as Map).cast<String, dynamic>()),
+      vpcNetwork: GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkResponse.fromMap((map['vpcNetwork'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

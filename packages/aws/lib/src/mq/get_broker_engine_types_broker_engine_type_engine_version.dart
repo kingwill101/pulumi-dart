@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetBrokerEngineTypesBrokerEngineTypeEngineVersion {
   /// Name of the engine version.
   final String name;
@@ -11,15 +12,15 @@ class GetBrokerEngineTypesBrokerEngineTypeEngineVersion {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory GetBrokerEngineTypesBrokerEngineTypeEngineVersion.fromMap(
-      Map<String, dynamic> map) {
+  factory GetBrokerEngineTypesBrokerEngineTypeEngineVersion.fromMap(Map<String, dynamic> map) {
     return GetBrokerEngineTypesBrokerEngineTypeEngineVersion(
       name: map['name'] as String,
     );
   }
 }
+

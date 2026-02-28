@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterMultiRegionProperties {
   /// List of DSQL Cluster ARNs peered to this cluster.
   final List<String>? clusters;
-
   /// Witness region for the multi-region clusters. Setting this makes this cluster a multi-region cluster. Changing it recreates the resource.
   final String? witnessRegion;
 
@@ -16,25 +16,17 @@ class ClusterMultiRegionProperties {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final clustersValue = clusters;
-    if (clustersValue != null) {
-      map['clusters'] = clustersValue;
-    }
-    final witnessRegionValue = witnessRegion;
-    if (witnessRegionValue != null) {
-      map['witnessRegion'] = witnessRegionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'clusters': ?clusters,
+      'witnessRegion': ?witnessRegion,
+    };
   }
 
   factory ClusterMultiRegionProperties.fromMap(Map<String, dynamic> map) {
     return ClusterMultiRegionProperties(
-      clusters: map['clusters'] == null
-          ? null
-          : (map['clusters'] as List).cast<String>(),
-      witnessRegion:
-          map['witnessRegion'] == null ? null : map['witnessRegion'] as String,
+      clusters: map['clusters'] == null ? null : (map['clusters'] as List).cast<String>(),
+      witnessRegion: map['witnessRegion'] == null ? null : map['witnessRegion'] as String,
     );
   }
 }
+

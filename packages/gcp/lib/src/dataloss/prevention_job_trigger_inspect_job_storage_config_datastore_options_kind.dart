@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind {
   /// The name of the Datastore kind.
   final String name;
@@ -11,15 +12,15 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind.fromMap(
-      Map<String, dynamic> map) {
+  factory PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind(
       name: map['name'] as String,
     );
   }
 }
+

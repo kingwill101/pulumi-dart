@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Service Account used as a credential.
 class ServiceAccount {
   /// The IAM service account email address like test@myproject.iam.gserviceaccount.com
@@ -12,12 +13,9 @@ class ServiceAccount {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final emailValue = email;
-    if (emailValue != null) {
-      map['email'] = emailValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'email': ?email,
+    };
   }
 
   factory ServiceAccount.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class ServiceAccount {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CxGeneratorPromptText {
   /// Text input which can be used for prompt or banned phrases.
   final String? text;
@@ -11,12 +12,9 @@ class CxGeneratorPromptText {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final textValue = text;
-    if (textValue != null) {
-      map['text'] = textValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'text': ?text,
+    };
   }
 
   factory CxGeneratorPromptText.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class CxGeneratorPromptText {
     );
   }
 }
+

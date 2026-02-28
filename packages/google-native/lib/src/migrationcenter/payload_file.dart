@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Payload file for inline import job payload.
 class PayloadFile {
   /// The file data.
   final String? data;
-
   /// The file name.
   final String? name;
 
@@ -17,16 +17,10 @@ class PayloadFile {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dataValue = data;
-    if (dataValue != null) {
-      map['data'] = dataValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'data': ?data,
+      'name': ?name,
+    };
   }
 
   factory PayloadFile.fromMap(Map<String, dynamic> map) {
@@ -36,3 +30,4 @@ class PayloadFile {
     );
   }
 }
+

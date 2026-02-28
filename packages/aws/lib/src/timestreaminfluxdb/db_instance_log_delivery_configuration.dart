@@ -13,20 +13,15 @@ class DbInstanceLogDeliveryConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final s3ConfigurationValue = s3Configuration;
-    if (s3ConfigurationValue != null) {
-      map['s3Configuration'] = s3ConfigurationValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      's3Configuration': ?s3Configuration == null ? null : s3Configuration!.toMap(),
+    };
   }
 
   factory DbInstanceLogDeliveryConfiguration.fromMap(Map<String, dynamic> map) {
     return DbInstanceLogDeliveryConfiguration(
-      s3Configuration: map['s3Configuration'] == null
-          ? null
-          : DbInstanceLogDeliveryConfigurationS3Configuration.fromMap(
-              (map['s3Configuration'] as Map).cast<String, dynamic>()),
+      s3Configuration: map['s3Configuration'] == null ? null : DbInstanceLogDeliveryConfigurationS3Configuration.fromMap((map['s3Configuration'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

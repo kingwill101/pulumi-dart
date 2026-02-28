@@ -14,15 +14,15 @@ class StateInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['updateInfo'] = updateInfo.toMap();
-    return map;
+    return <String, dynamic>{
+      'updateInfo': updateInfo.toMap(),
+    };
   }
 
   factory StateInfoResponse.fromMap(Map<String, dynamic> map) {
     return StateInfoResponse(
-      updateInfo: UpdateInfoResponse.fromMap(
-          (map['updateInfo'] as Map).cast<String, dynamic>()),
+      updateInfo: UpdateInfoResponse.fromMap((map['updateInfo'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

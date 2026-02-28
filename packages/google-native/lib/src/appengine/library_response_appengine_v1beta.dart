@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Third-party Python runtime library that is required by the application.
 class LibraryResponseAppengineV1beta {
   /// Name of the library. Example: "django".
   final String name;
-
   /// Version of the library to select, or "latest".
   final String version;
 
@@ -17,10 +17,10 @@ class LibraryResponseAppengineV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['version'] = version;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'version': version,
+    };
   }
 
   factory LibraryResponseAppengineV1beta.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class LibraryResponseAppengineV1beta {
     );
   }
 }
+

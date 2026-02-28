@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EnvelopeSignature {
   final String? keyid;
   final String? sig;
@@ -13,16 +14,10 @@ class EnvelopeSignature {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final keyidValue = keyid;
-    if (keyidValue != null) {
-      map['keyid'] = keyidValue;
-    }
-    final sigValue = sig;
-    if (sigValue != null) {
-      map['sig'] = sigValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'keyid': ?keyid,
+      'sig': ?sig,
+    };
   }
 
   factory EnvelopeSignature.fromMap(Map<String, dynamic> map) {
@@ -32,3 +27,4 @@ class EnvelopeSignature {
     );
   }
 }
+

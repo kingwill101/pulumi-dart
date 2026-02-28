@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InfrastructureConfigurationPlacement {
   /// Availability Zone where your build and test instances will launch.
   final String? availabilityZone;
-
   /// ID of the Dedicated Host on which build and test instances run. Conflicts with `host_resource_group_arn`.
   final String? hostId;
-
   /// ARN of the host resource group in which to launch build and test instances. Conflicts with `host_id`.
   final String? hostResourceGroupArn;
-
   /// Placement tenancy of the instance. Valid values: `default`, `dedicated` and `host`.
   final String? tenancy;
 
@@ -26,37 +24,21 @@ class InfrastructureConfigurationPlacement {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final availabilityZoneValue = availabilityZone;
-    if (availabilityZoneValue != null) {
-      map['availabilityZone'] = availabilityZoneValue;
-    }
-    final hostIdValue = hostId;
-    if (hostIdValue != null) {
-      map['hostId'] = hostIdValue;
-    }
-    final hostResourceGroupArnValue = hostResourceGroupArn;
-    if (hostResourceGroupArnValue != null) {
-      map['hostResourceGroupArn'] = hostResourceGroupArnValue;
-    }
-    final tenancyValue = tenancy;
-    if (tenancyValue != null) {
-      map['tenancy'] = tenancyValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'availabilityZone': ?availabilityZone,
+      'hostId': ?hostId,
+      'hostResourceGroupArn': ?hostResourceGroupArn,
+      'tenancy': ?tenancy,
+    };
   }
 
-  factory InfrastructureConfigurationPlacement.fromMap(
-      Map<String, dynamic> map) {
+  factory InfrastructureConfigurationPlacement.fromMap(Map<String, dynamic> map) {
     return InfrastructureConfigurationPlacement(
-      availabilityZone: map['availabilityZone'] == null
-          ? null
-          : map['availabilityZone'] as String,
+      availabilityZone: map['availabilityZone'] == null ? null : map['availabilityZone'] as String,
       hostId: map['hostId'] == null ? null : map['hostId'] as String,
-      hostResourceGroupArn: map['hostResourceGroupArn'] == null
-          ? null
-          : map['hostResourceGroupArn'] as String,
+      hostResourceGroupArn: map['hostResourceGroupArn'] == null ? null : map['hostResourceGroupArn'] as String,
       tenancy: map['tenancy'] == null ? null : map['tenancy'] as String,
     );
   }
 }
+

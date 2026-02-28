@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AssetTypeFormsInput {
   final String mapBlockKey;
   final bool? required;
@@ -19,15 +20,12 @@ class AssetTypeFormsInput {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['mapBlockKey'] = mapBlockKey;
-    final requiredValue = required;
-    if (requiredValue != null) {
-      map['required'] = requiredValue;
-    }
-    map['typeIdentifier'] = typeIdentifier;
-    map['typeRevision'] = typeRevision;
-    return map;
+    return <String, dynamic>{
+      'mapBlockKey': mapBlockKey,
+      'required': ?required,
+      'typeIdentifier': typeIdentifier,
+      'typeRevision': typeRevision,
+    };
   }
 
   factory AssetTypeFormsInput.fromMap(Map<String, dynamic> map) {
@@ -39,3 +37,4 @@ class AssetTypeFormsInput {
     );
   }
 }
+

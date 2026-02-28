@@ -11,7 +11,6 @@ class GetKMSSecretCiphertextArgs {
   /// encrypt the provided plaintext. This is represented by the format
   /// `{projectId}/{location}/{keyRingName}/{cryptoKeyName}`.
   final pulumi.Input<String> cryptoKey;
-
   /// The plaintext to be encrypted
   final pulumi.Input<String> plaintext;
 
@@ -21,14 +20,15 @@ class GetKMSSecretCiphertextArgs {
   GetKMSSecretCiphertextArgs({
     required String cryptoKey,
     required String plaintext,
-  })  : cryptoKey = pulumi.Input.asInput<String>(cryptoKey),
-        plaintext = pulumi.Input.asInput<String>(plaintext);
+  }) :
+      cryptoKey = pulumi.Input.asInput<String>(cryptoKey),
+      plaintext = pulumi.Input.asInput<String>(plaintext);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cryptoKey'] = cryptoKey;
-    map['plaintext'] = plaintext;
-    return map;
+    return <String, dynamic>{
+      'cryptoKey': cryptoKey,
+      'plaintext': plaintext,
+    };
   }
 
   factory GetKMSSecretCiphertextArgs.fromMap(Map<String, dynamic> map) {
@@ -38,3 +38,4 @@ class GetKMSSecretCiphertextArgs {
     );
   }
 }
+

@@ -22,21 +22,19 @@ class GetAutomationArgs {
     required String deliveryPipelineId,
     required String location,
     String? project,
-  })  : automationId = pulumi.Input.asInput<String>(automationId),
-        deliveryPipelineId = pulumi.Input.asInput<String>(deliveryPipelineId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      automationId = pulumi.Input.asInput<String>(automationId),
+      deliveryPipelineId = pulumi.Input.asInput<String>(deliveryPipelineId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['automationId'] = automationId;
-    map['deliveryPipelineId'] = deliveryPipelineId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'automationId': automationId,
+      'deliveryPipelineId': deliveryPipelineId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetAutomationArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetAutomationArgs {
     );
   }
 }
+

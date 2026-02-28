@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RepositoryAssociationS3RepositoryDetailCodeArtifact {
   final String? buildArtifactsObjectKey;
   final String? sourceCodeArtifactsObjectKey;
@@ -13,27 +14,17 @@ class RepositoryAssociationS3RepositoryDetailCodeArtifact {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final buildArtifactsObjectKeyValue = buildArtifactsObjectKey;
-    if (buildArtifactsObjectKeyValue != null) {
-      map['buildArtifactsObjectKey'] = buildArtifactsObjectKeyValue;
-    }
-    final sourceCodeArtifactsObjectKeyValue = sourceCodeArtifactsObjectKey;
-    if (sourceCodeArtifactsObjectKeyValue != null) {
-      map['sourceCodeArtifactsObjectKey'] = sourceCodeArtifactsObjectKeyValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'buildArtifactsObjectKey': ?buildArtifactsObjectKey,
+      'sourceCodeArtifactsObjectKey': ?sourceCodeArtifactsObjectKey,
+    };
   }
 
-  factory RepositoryAssociationS3RepositoryDetailCodeArtifact.fromMap(
-      Map<String, dynamic> map) {
+  factory RepositoryAssociationS3RepositoryDetailCodeArtifact.fromMap(Map<String, dynamic> map) {
     return RepositoryAssociationS3RepositoryDetailCodeArtifact(
-      buildArtifactsObjectKey: map['buildArtifactsObjectKey'] == null
-          ? null
-          : map['buildArtifactsObjectKey'] as String,
-      sourceCodeArtifactsObjectKey: map['sourceCodeArtifactsObjectKey'] == null
-          ? null
-          : map['sourceCodeArtifactsObjectKey'] as String,
+      buildArtifactsObjectKey: map['buildArtifactsObjectKey'] == null ? null : map['buildArtifactsObjectKey'] as String,
+      sourceCodeArtifactsObjectKey: map['sourceCodeArtifactsObjectKey'] == null ? null : map['sourceCodeArtifactsObjectKey'] as String,
     );
   }
 }
+

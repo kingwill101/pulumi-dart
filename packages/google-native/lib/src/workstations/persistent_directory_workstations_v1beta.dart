@@ -6,7 +6,6 @@ import 'gce_regional_persistent_disk_workstations_v1beta.dart';
 class PersistentDirectoryWorkstationsV1beta {
   /// A PersistentDirectory backed by a Compute Engine persistent disk.
   final GceRegionalPersistentDiskWorkstationsV1beta? gcePd;
-
   /// Optional. Location of this directory in the running workstation.
   final String? mountPath;
 
@@ -19,26 +18,17 @@ class PersistentDirectoryWorkstationsV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final gcePdValue = gcePd;
-    if (gcePdValue != null) {
-      map['gcePd'] = gcePdValue.toMap();
-    }
-    final mountPathValue = mountPath;
-    if (mountPathValue != null) {
-      map['mountPath'] = mountPathValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'gcePd': ?gcePd == null ? null : gcePd!.toMap(),
+      'mountPath': ?mountPath,
+    };
   }
 
-  factory PersistentDirectoryWorkstationsV1beta.fromMap(
-      Map<String, dynamic> map) {
+  factory PersistentDirectoryWorkstationsV1beta.fromMap(Map<String, dynamic> map) {
     return PersistentDirectoryWorkstationsV1beta(
-      gcePd: map['gcePd'] == null
-          ? null
-          : GceRegionalPersistentDiskWorkstationsV1beta.fromMap(
-              (map['gcePd'] as Map).cast<String, dynamic>()),
+      gcePd: map['gcePd'] == null ? null : GceRegionalPersistentDiskWorkstationsV1beta.fromMap((map['gcePd'] as Map).cast<String, dynamic>()),
       mountPath: map['mountPath'] == null ? null : map['mountPath'] as String,
     );
   }
 }
+

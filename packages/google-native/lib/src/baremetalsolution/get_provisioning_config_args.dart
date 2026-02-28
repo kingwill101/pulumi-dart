@@ -19,20 +19,17 @@ class GetProvisioningConfigArgs {
     required String location,
     String? project,
     required String provisioningConfigId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        provisioningConfigId =
-            pulumi.Input.asInput<String>(provisioningConfigId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      provisioningConfigId = pulumi.Input.asInput<String>(provisioningConfigId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['provisioningConfigId'] = provisioningConfigId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+      'provisioningConfigId': provisioningConfigId,
+    };
   }
 
   factory GetProvisioningConfigArgs.fromMap(Map<String, dynamic> map) {
@@ -43,3 +40,4 @@ class GetProvisioningConfigArgs {
     );
   }
 }
+

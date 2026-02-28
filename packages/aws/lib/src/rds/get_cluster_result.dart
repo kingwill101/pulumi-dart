@@ -27,7 +27,6 @@ class GetClusterResult {
   final String hostedZoneId;
   final bool iamDatabaseAuthenticationEnabled;
   final List<String> iamRoles;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String kmsKeyId;
@@ -43,7 +42,6 @@ class GetClusterResult {
   final String region;
   final String replicationSourceIdentifier;
   final bool storageEncrypted;
-
   /// A map of tags assigned to the resource.
   final Map<String, String> tags;
   final String upgradeRolloutOrder;
@@ -132,49 +130,47 @@ class GetClusterResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['availabilityZones'] = availabilityZones;
-    map['backtrackWindow'] = backtrackWindow;
-    map['backupRetentionPeriod'] = backupRetentionPeriod;
-    map['clusterIdentifier'] = clusterIdentifier;
-    map['clusterMembers'] = clusterMembers;
-    map['clusterResourceId'] = clusterResourceId;
-    map['clusterScalabilityType'] = clusterScalabilityType;
-    map['databaseInsightsMode'] = databaseInsightsMode;
-    map['databaseName'] = databaseName;
-    map['dbClusterParameterGroupName'] = dbClusterParameterGroupName;
-    map['dbSubnetGroupName'] = dbSubnetGroupName;
-    map['dbSystemId'] = dbSystemId;
-    map['enabledCloudwatchLogsExports'] = enabledCloudwatchLogsExports;
-    map['endpoint'] = endpoint;
-    map['engine'] = engine;
-    map['engineMode'] = engineMode;
-    map['engineVersion'] = engineVersion;
-    map['finalSnapshotIdentifier'] = finalSnapshotIdentifier;
-    map['hostedZoneId'] = hostedZoneId;
-    map['iamDatabaseAuthenticationEnabled'] = iamDatabaseAuthenticationEnabled;
-    map['iamRoles'] = iamRoles;
-    map['id'] = id;
-    map['kmsKeyId'] = kmsKeyId;
-    map['masterUserSecrets'] = pulumi.Input.encodeList<
-        GetClusterMasterUserSecret,
-        Map<String, dynamic>>(masterUserSecrets, (value) => value.toMap());
-    map['masterUsername'] = masterUsername;
-    map['monitoringInterval'] = monitoringInterval;
-    map['monitoringRoleArn'] = monitoringRoleArn;
-    map['networkType'] = networkType;
-    map['port'] = port;
-    map['preferredBackupWindow'] = preferredBackupWindow;
-    map['preferredMaintenanceWindow'] = preferredMaintenanceWindow;
-    map['readerEndpoint'] = readerEndpoint;
-    map['region'] = region;
-    map['replicationSourceIdentifier'] = replicationSourceIdentifier;
-    map['storageEncrypted'] = storageEncrypted;
-    map['tags'] = tags;
-    map['upgradeRolloutOrder'] = upgradeRolloutOrder;
-    map['vpcSecurityGroupIds'] = vpcSecurityGroupIds;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'availabilityZones': availabilityZones,
+      'backtrackWindow': backtrackWindow,
+      'backupRetentionPeriod': backupRetentionPeriod,
+      'clusterIdentifier': clusterIdentifier,
+      'clusterMembers': clusterMembers,
+      'clusterResourceId': clusterResourceId,
+      'clusterScalabilityType': clusterScalabilityType,
+      'databaseInsightsMode': databaseInsightsMode,
+      'databaseName': databaseName,
+      'dbClusterParameterGroupName': dbClusterParameterGroupName,
+      'dbSubnetGroupName': dbSubnetGroupName,
+      'dbSystemId': dbSystemId,
+      'enabledCloudwatchLogsExports': enabledCloudwatchLogsExports,
+      'endpoint': endpoint,
+      'engine': engine,
+      'engineMode': engineMode,
+      'engineVersion': engineVersion,
+      'finalSnapshotIdentifier': finalSnapshotIdentifier,
+      'hostedZoneId': hostedZoneId,
+      'iamDatabaseAuthenticationEnabled': iamDatabaseAuthenticationEnabled,
+      'iamRoles': iamRoles,
+      'id': id,
+      'kmsKeyId': kmsKeyId,
+      'masterUserSecrets': pulumi.Input.encodeList<GetClusterMasterUserSecret, Map<String, dynamic>>(masterUserSecrets, (value) => value.toMap()),
+      'masterUsername': masterUsername,
+      'monitoringInterval': monitoringInterval,
+      'monitoringRoleArn': monitoringRoleArn,
+      'networkType': networkType,
+      'port': port,
+      'preferredBackupWindow': preferredBackupWindow,
+      'preferredMaintenanceWindow': preferredMaintenanceWindow,
+      'readerEndpoint': readerEndpoint,
+      'region': region,
+      'replicationSourceIdentifier': replicationSourceIdentifier,
+      'storageEncrypted': storageEncrypted,
+      'tags': tags,
+      'upgradeRolloutOrder': upgradeRolloutOrder,
+      'vpcSecurityGroupIds': vpcSecurityGroupIds,
+    };
   }
 
   factory GetClusterResult.fromMap(Map<String, dynamic> map) {
@@ -192,23 +188,18 @@ class GetClusterResult {
       dbClusterParameterGroupName: map['dbClusterParameterGroupName'] as String,
       dbSubnetGroupName: map['dbSubnetGroupName'] as String,
       dbSystemId: map['dbSystemId'] as String,
-      enabledCloudwatchLogsExports:
-          (map['enabledCloudwatchLogsExports'] as List).cast<String>(),
+      enabledCloudwatchLogsExports: (map['enabledCloudwatchLogsExports'] as List).cast<String>(),
       endpoint: map['endpoint'] as String,
       engine: map['engine'] as String,
       engineMode: map['engineMode'] as String,
       engineVersion: map['engineVersion'] as String,
       finalSnapshotIdentifier: map['finalSnapshotIdentifier'] as String,
       hostedZoneId: map['hostedZoneId'] as String,
-      iamDatabaseAuthenticationEnabled:
-          map['iamDatabaseAuthenticationEnabled'] as bool,
+      iamDatabaseAuthenticationEnabled: map['iamDatabaseAuthenticationEnabled'] as bool,
       iamRoles: (map['iamRoles'] as List).cast<String>(),
       id: map['id'] as String,
       kmsKeyId: map['kmsKeyId'] as String,
-      masterUserSecrets: pulumi.Input.decodeList<GetClusterMasterUserSecret>(
-          map['masterUserSecrets'],
-          (value) => GetClusterMasterUserSecret.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      masterUserSecrets: pulumi.Input.decodeList<GetClusterMasterUserSecret>(map['masterUserSecrets'], (value) => GetClusterMasterUserSecret.fromMap((value as Map).cast<String, dynamic>())),
       masterUsername: map['masterUsername'] as String,
       monitoringInterval: map['monitoringInterval'] as int,
       monitoringRoleArn: map['monitoringRoleArn'] as String,
@@ -226,3 +217,4 @@ class GetClusterResult {
     );
   }
 }
+

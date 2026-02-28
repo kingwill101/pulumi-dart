@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The data source for DataScan.
 class GoogleCloudDataplexV1DataSource {
   /// Immutable. The Dataplex entity that represents the data source (e.g. BigQuery table) for DataScan, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{entity_id}.
   final String? entity;
-
   /// Immutable. The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be: BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
   final String? resource;
 
@@ -17,16 +17,10 @@ class GoogleCloudDataplexV1DataSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final entityValue = entity;
-    if (entityValue != null) {
-      map['entity'] = entityValue;
-    }
-    final resourceValue = resource;
-    if (resourceValue != null) {
-      map['resource'] = resourceValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'entity': ?entity,
+      'resource': ?resource,
+    };
   }
 
   factory GoogleCloudDataplexV1DataSource.fromMap(Map<String, dynamic> map) {
@@ -36,3 +30,4 @@ class GoogleCloudDataplexV1DataSource {
     );
   }
 }
+

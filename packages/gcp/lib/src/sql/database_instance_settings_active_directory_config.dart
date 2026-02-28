@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DatabaseInstanceSettingsActiveDirectoryConfig {
   /// The domain name for the active directory (e.g., mydomain.com).
   /// Can only be used with SQL Server.
@@ -12,15 +13,15 @@ class DatabaseInstanceSettingsActiveDirectoryConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['domain'] = domain;
-    return map;
+    return <String, dynamic>{
+      'domain': domain,
+    };
   }
 
-  factory DatabaseInstanceSettingsActiveDirectoryConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory DatabaseInstanceSettingsActiveDirectoryConfig.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceSettingsActiveDirectoryConfig(
       domain: map['domain'] as String,
     );
   }
 }
+

@@ -8,10 +8,8 @@ class GetPrefixListResult {
   /// List of CIDR blocks for the AWS service associated with the prefix list.
   final List<String> cidrBlocks;
   final List<GetPrefixListFilter>? filters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Name of the selected prefix list.
   final String name;
   final String? prefixListId;
@@ -34,38 +32,25 @@ class GetPrefixListResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cidrBlocks'] = cidrBlocks;
-    final filtersValue = filters;
-    if (filtersValue != null) {
-      map['filters'] =
-          pulumi.Input.encodeList<GetPrefixListFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
-    }
-    map['id'] = id;
-    map['name'] = name;
-    final prefixListIdValue = prefixListId;
-    if (prefixListIdValue != null) {
-      map['prefixListId'] = prefixListIdValue;
-    }
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'cidrBlocks': cidrBlocks,
+      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetPrefixListFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'id': id,
+      'name': name,
+      'prefixListId': ?prefixListId,
+      'region': region,
+    };
   }
 
   factory GetPrefixListResult.fromMap(Map<String, dynamic> map) {
     return GetPrefixListResult(
       cidrBlocks: (map['cidrBlocks'] as List).cast<String>(),
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetPrefixListFilter>(
-              map['filters'],
-              (value) => GetPrefixListFilter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetPrefixListFilter>(map['filters'], (value) => GetPrefixListFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       name: map['name'] as String,
-      prefixListId:
-          map['prefixListId'] == null ? null : map['prefixListId'] as String,
+      prefixListId: map['prefixListId'] == null ? null : map['prefixListId'] as String,
       region: map['region'] as String,
     );
   }
 }
+

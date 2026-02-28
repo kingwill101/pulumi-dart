@@ -1,15 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getInvocation.
 class GetInvocationResult {
   final String functionName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String input;
   final String? qualifier;
   final String region;
-
   /// String result of the Lambda function invocation.
   final String result;
   final String? tenantId;
@@ -33,21 +32,15 @@ class GetInvocationResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['functionName'] = functionName;
-    map['id'] = id;
-    map['input'] = input;
-    final qualifierValue = qualifier;
-    if (qualifierValue != null) {
-      map['qualifier'] = qualifierValue;
-    }
-    map['region'] = region;
-    map['result'] = result;
-    final tenantIdValue = tenantId;
-    if (tenantIdValue != null) {
-      map['tenantId'] = tenantIdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'functionName': functionName,
+      'id': id,
+      'input': input,
+      'qualifier': ?qualifier,
+      'region': region,
+      'result': result,
+      'tenantId': ?tenantId,
+    };
   }
 
   factory GetInvocationResult.fromMap(Map<String, dynamic> map) {
@@ -62,3 +55,4 @@ class GetInvocationResult {
     );
   }
 }
+

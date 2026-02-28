@@ -7,10 +7,8 @@ import 'cluster_upgrade_upgrade_status_response_gkehub_v1beta.dart';
 class ClusterUpgradeGKEUpgradeStateResponseGkehubV1beta {
   /// Number of GKE clusters in each status code.
   final Map<String, String> stats;
-
   /// Status of the upgrade.
   final ClusterUpgradeUpgradeStatusResponseGkehubV1beta status;
-
   /// Which upgrade to track the state.
   final ClusterUpgradeGKEUpgradeResponseGkehubV1beta upgrade;
 
@@ -25,21 +23,19 @@ class ClusterUpgradeGKEUpgradeStateResponseGkehubV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['stats'] = stats;
-    map['status'] = status.toMap();
-    map['upgrade'] = upgrade.toMap();
-    return map;
+    return <String, dynamic>{
+      'stats': stats,
+      'status': status.toMap(),
+      'upgrade': upgrade.toMap(),
+    };
   }
 
-  factory ClusterUpgradeGKEUpgradeStateResponseGkehubV1beta.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterUpgradeGKEUpgradeStateResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return ClusterUpgradeGKEUpgradeStateResponseGkehubV1beta(
       stats: (map['stats'] as Map).cast<String, String>(),
-      status: ClusterUpgradeUpgradeStatusResponseGkehubV1beta.fromMap(
-          (map['status'] as Map).cast<String, dynamic>()),
-      upgrade: ClusterUpgradeGKEUpgradeResponseGkehubV1beta.fromMap(
-          (map['upgrade'] as Map).cast<String, dynamic>()),
+      status: ClusterUpgradeUpgradeStatusResponseGkehubV1beta.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      upgrade: ClusterUpgradeGKEUpgradeResponseGkehubV1beta.fromMap((map['upgrade'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

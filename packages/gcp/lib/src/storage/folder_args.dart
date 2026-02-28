@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FolderArgs {
   /// The name of the bucket that contains the folder.
   final pulumi.Input<String> bucket;
-
   /// If set to true, items within folder if any will be force destroyed.
   final pulumi.Input<bool>? forceDestroy;
-
   /// The name of the folder expressed as a path. Must include
   /// trailing '/'. For example, `example_dir/example_dir2/`, `example@#/`, `a-b/d-f/`.
   final pulumi.Input<String>? name;
@@ -25,30 +23,25 @@ class FolderArgs {
     required String bucket,
     bool? forceDestroy,
     String? name,
-  })  : bucket = pulumi.Input.asInput<String>(bucket),
-        forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-        name = pulumi.Input.asOptionalInput<String>(name);
+  }) :
+      bucket = pulumi.Input.asInput<String>(bucket),
+      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
+      name = pulumi.Input.asOptionalInput<String>(name);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucket'] = bucket;
-    final forceDestroyValue = forceDestroy;
-    if (forceDestroyValue != null) {
-      map['forceDestroy'] = forceDestroyValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'bucket': bucket,
+      'forceDestroy': ?forceDestroy,
+      'name': ?name,
+    };
   }
 
   factory FolderArgs.fromMap(Map<String, dynamic> map) {
     return FolderArgs(
       bucket: map['bucket'] as String,
-      forceDestroy:
-          map['forceDestroy'] == null ? null : map['forceDestroy'] as bool,
+      forceDestroy: map['forceDestroy'] == null ? null : map['forceDestroy'] as bool,
       name: map['name'] == null ? null : map['name'] as String,
     );
   }
 }
+

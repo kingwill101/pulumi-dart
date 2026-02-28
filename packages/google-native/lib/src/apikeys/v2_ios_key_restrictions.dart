@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The iOS apps that are allowed to use the key.
 class V2IosKeyRestrictions {
   /// A list of bundle IDs that are allowed when making API calls with this key.
@@ -12,19 +13,15 @@ class V2IosKeyRestrictions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final allowedBundleIdsValue = allowedBundleIds;
-    if (allowedBundleIdsValue != null) {
-      map['allowedBundleIds'] = allowedBundleIdsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'allowedBundleIds': ?allowedBundleIds,
+    };
   }
 
   factory V2IosKeyRestrictions.fromMap(Map<String, dynamic> map) {
     return V2IosKeyRestrictions(
-      allowedBundleIds: map['allowedBundleIds'] == null
-          ? null
-          : (map['allowedBundleIds'] as List).cast<String>(),
+      allowedBundleIds: map['allowedBundleIds'] == null ? null : (map['allowedBundleIds'] as List).cast<String>(),
     );
   }
 }
+

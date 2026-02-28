@@ -14,16 +14,15 @@ class BareMetalAdminNetworkConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['islandModeCidr'] = islandModeCidr.toMap();
-    return map;
+    return <String, dynamic>{
+      'islandModeCidr': islandModeCidr.toMap(),
+    };
   }
 
-  factory BareMetalAdminNetworkConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory BareMetalAdminNetworkConfigResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminNetworkConfigResponse(
-      islandModeCidr: BareMetalAdminIslandModeCidrConfigResponse.fromMap(
-          (map['islandModeCidr'] as Map).cast<String, dynamic>()),
+      islandModeCidr: BareMetalAdminIslandModeCidrConfigResponse.fromMap((map['islandModeCidr'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

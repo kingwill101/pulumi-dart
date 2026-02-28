@@ -196,35 +196,25 @@ import 'capability_timeouts.dart';
 class Capability extends pulumi.CustomResource {
   /// ARN of the capability.
   late final pulumi.Output<String> arn;
-
   /// Name of the capability. Must be unique within the cluster.
   late final pulumi.Output<String> capabilityName;
-
   /// Name of the EKS cluster.
   late final pulumi.Output<String> clusterName;
-
   /// Configuration for the capability. See `configuration` below.
   late final pulumi.Output<CapabilityConfiguration?> configuration;
-
   /// Delete propagation policy for the capability. Valid values: `RETAIN`.
   late final pulumi.Output<String> deletePropagationPolicy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ARN of the IAM role to associate with the capability.
   late final pulumi.Output<String> roleArn;
-
   /// Key-value map of resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<CapabilityTimeouts?> timeouts;
-
   /// Type of the capability. Valid values: `ACK`, `KRO`, `ARGOCD`.
   late final pulumi.Output<String> type;
-
   /// Version of the capability.
   late final pulumi.Output<String> version;
 
@@ -245,10 +235,8 @@ class Capability extends pulumi.CustomResource {
     this.arn = registerOutput<String>('arn');
     this.capabilityName = registerOutput<String>('capabilityName');
     this.clusterName = registerOutput<String>('clusterName');
-    this.configuration =
-        registerOutput<CapabilityConfiguration?>('configuration');
-    this.deletePropagationPolicy =
-        registerOutput<String>('deletePropagationPolicy');
+    this.configuration = registerOutput<CapabilityConfiguration?>('configuration');
+    this.deletePropagationPolicy = registerOutput<String>('deletePropagationPolicy');
     this.region = registerOutput<String>('region');
     this.roleArn = registerOutput<String>('roleArn');
     this.tags = registerOutput<Map<String, String>?>('tags');

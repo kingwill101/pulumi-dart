@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationSubjectAlternativeNameMatch {
   final List<String> exacts;
 
@@ -10,15 +11,15 @@ class GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationSubjectAlte
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['exacts'] = exacts;
-    return map;
+    return <String, dynamic>{
+      'exacts': exacts,
+    };
   }
 
-  factory GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationSubjectAlternativeNameMatch.fromMap(
-      Map<String, dynamic> map) {
+  factory GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationSubjectAlternativeNameMatch.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationSubjectAlternativeNameMatch(
       exacts: (map['exacts'] as List).cast<String>(),
     );
   }
 }
+

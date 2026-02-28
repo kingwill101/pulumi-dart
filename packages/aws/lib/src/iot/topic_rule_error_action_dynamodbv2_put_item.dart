@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TopicRuleErrorActionDynamodbv2PutItem {
   /// The name of the DynamoDB table.
   final String tableName;
@@ -11,15 +12,15 @@ class TopicRuleErrorActionDynamodbv2PutItem {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['tableName'] = tableName;
-    return map;
+    return <String, dynamic>{
+      'tableName': tableName,
+    };
   }
 
-  factory TopicRuleErrorActionDynamodbv2PutItem.fromMap(
-      Map<String, dynamic> map) {
+  factory TopicRuleErrorActionDynamodbv2PutItem.fromMap(Map<String, dynamic> map) {
     return TopicRuleErrorActionDynamodbv2PutItem(
       tableName: map['tableName'] as String,
     );
   }
 }
+

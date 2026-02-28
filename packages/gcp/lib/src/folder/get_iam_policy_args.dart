@@ -14,12 +14,13 @@ class GetIamPolicyArgs {
   /// [folder] The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
   GetIamPolicyArgs({
     required String folder,
-  }) : folder = pulumi.Input.asInput<String>(folder);
+  }) :
+      folder = pulumi.Input.asInput<String>(folder);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['folder'] = folder;
-    return map;
+    return <String, dynamic>{
+      'folder': folder,
+    };
   }
 
   factory GetIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -28,3 +29,4 @@ class GetIamPolicyArgs {
     );
   }
 }
+

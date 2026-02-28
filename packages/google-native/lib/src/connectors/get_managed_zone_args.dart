@@ -16,17 +16,15 @@ class GetManagedZoneArgs {
   GetManagedZoneArgs({
     required String managedZone,
     String? project,
-  })  : managedZone = pulumi.Input.asInput<String>(managedZone),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      managedZone = pulumi.Input.asInput<String>(managedZone),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['managedZone'] = managedZone;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'managedZone': managedZone,
+      'project': ?project,
+    };
   }
 
   factory GetManagedZoneArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetManagedZoneArgs {
     );
   }
 }
+

@@ -6,9 +6,7 @@ import 'stream_source_config_postgresql_source_config_include_objects_postgresql
 class StreamSourceConfigPostgresqlSourceConfigIncludeObjects {
   /// PostgreSQL schemas on the server
   /// Structure is documented below.
-  final List<
-          StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema>
-      postgresqlSchemas;
+  final List<StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema> postgresqlSchemas;
 
   /// Creates a new [StreamSourceConfigPostgresqlSourceConfigIncludeObjects].
   /// [postgresqlSchemas] PostgreSQL schemas on the server
@@ -17,22 +15,15 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjects {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['postgresqlSchemas'] = pulumi.Input.encodeList<
-        StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema,
-        Map<String, dynamic>>(postgresqlSchemas, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'postgresqlSchemas': pulumi.Input.encodeList<StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema, Map<String, dynamic>>(postgresqlSchemas, (value) => value.toMap()),
+    };
   }
 
-  factory StreamSourceConfigPostgresqlSourceConfigIncludeObjects.fromMap(
-      Map<String, dynamic> map) {
+  factory StreamSourceConfigPostgresqlSourceConfigIncludeObjects.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigPostgresqlSourceConfigIncludeObjects(
-      postgresqlSchemas: pulumi.Input.decodeList<
-              StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema>(
-          map['postgresqlSchemas'],
-          (value) =>
-              StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      postgresqlSchemas: pulumi.Input.decodeList<StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema>(map['postgresqlSchemas'], (value) => StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

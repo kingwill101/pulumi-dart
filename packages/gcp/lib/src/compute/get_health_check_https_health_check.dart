@@ -1,19 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetHealthCheckHttpsHealthCheck {
   /// The value of the host header in the HTTPS health check request.
   /// If left empty (default value), the public IP on behalf of which this health
   /// check is performed will be used.
   final String host;
-
   /// The TCP port number for the HTTPS health check request.
   /// The default value is 443.
   final int port;
-
   /// Port name as defined in InstanceGroup#NamedPort#name. If both port and
   /// port_name are defined, port takes precedence.
   final String portName;
-
   /// Specifies how port is selected for health checking, can be one of the
   /// following values:
   ///
@@ -29,15 +27,12 @@ class GetHealthCheckHttpsHealthCheck {
   /// If not specified, HTTPS health check follows behavior specified in 'port' and
   /// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
   final String portSpecification;
-
   /// Specifies the type of proxy header to append before sending data to the
   /// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
   final String proxyHeader;
-
   /// The request path of the HTTPS health check request.
   /// The default value is /.
   final String requestPath;
-
   /// The bytes to match against the beginning of the response data. If left empty
   /// (the default value), any response will indicate health. The response data
   /// can only be ASCII.
@@ -62,15 +57,15 @@ class GetHealthCheckHttpsHealthCheck {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['host'] = host;
-    map['port'] = port;
-    map['portName'] = portName;
-    map['portSpecification'] = portSpecification;
-    map['proxyHeader'] = proxyHeader;
-    map['requestPath'] = requestPath;
-    map['response'] = response;
-    return map;
+    return <String, dynamic>{
+      'host': host,
+      'port': port,
+      'portName': portName,
+      'portSpecification': portSpecification,
+      'proxyHeader': proxyHeader,
+      'requestPath': requestPath,
+      'response': response,
+    };
   }
 
   factory GetHealthCheckHttpsHealthCheck.fromMap(Map<String, dynamic> map) {
@@ -85,3 +80,4 @@ class GetHealthCheckHttpsHealthCheck {
     );
   }
 }
+

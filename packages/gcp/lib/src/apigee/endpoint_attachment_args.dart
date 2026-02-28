@@ -9,14 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointAttachmentArgs {
   /// ID of the endpoint attachment.
   final pulumi.Input<String> endpointAttachmentId;
-
   /// Location of the endpoint attachment.
   final pulumi.Input<String> location;
-
   /// The Apigee Organization associated with the Apigee instance,
   /// in the format `organizations/{{org_name}}`.
   final pulumi.Input<String> orgId;
-
   /// Format: projects/*/regions/*/serviceAttachments/*
   final pulumi.Input<String> serviceAttachment;
 
@@ -30,19 +27,19 @@ class EndpointAttachmentArgs {
     required String location,
     required String orgId,
     required String serviceAttachment,
-  })  : endpointAttachmentId =
-            pulumi.Input.asInput<String>(endpointAttachmentId),
-        location = pulumi.Input.asInput<String>(location),
-        orgId = pulumi.Input.asInput<String>(orgId),
-        serviceAttachment = pulumi.Input.asInput<String>(serviceAttachment);
+  }) :
+      endpointAttachmentId = pulumi.Input.asInput<String>(endpointAttachmentId),
+      location = pulumi.Input.asInput<String>(location),
+      orgId = pulumi.Input.asInput<String>(orgId),
+      serviceAttachment = pulumi.Input.asInput<String>(serviceAttachment);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['endpointAttachmentId'] = endpointAttachmentId;
-    map['location'] = location;
-    map['orgId'] = orgId;
-    map['serviceAttachment'] = serviceAttachment;
-    return map;
+    return <String, dynamic>{
+      'endpointAttachmentId': endpointAttachmentId,
+      'location': location,
+      'orgId': orgId,
+      'serviceAttachment': serviceAttachment,
+    };
   }
 
   factory EndpointAttachmentArgs.fromMap(Map<String, dynamic> map) {
@@ -54,3 +51,4 @@ class EndpointAttachmentArgs {
     );
   }
 }
+

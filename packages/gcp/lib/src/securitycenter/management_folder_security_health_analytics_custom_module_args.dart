@@ -10,24 +10,18 @@ import 'management_folder_security_health_analytics_custom_module_custom_config.
 class ManagementFolderSecurityHealthAnalyticsCustomModuleArgs {
   /// The user specified custom configuration for the module.
   /// Structure is documented below.
-  final pulumi
-      .Input<ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig>?
-      customConfig;
-
+  final pulumi.Input<ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig>? customConfig;
   /// The display name of the Security Health Analytics custom module. This
   /// display name becomes the finding category for all findings that are
   /// returned by this custom module. The display name must be between 1 and
   /// 128 characters, start with a lowercase letter, and contain alphanumeric
   /// characters or underscores only.
   final pulumi.Input<String>? displayName;
-
   /// The enablement state of the custom module.
   /// Possible values are: `ENABLED`, `DISABLED`.
   final pulumi.Input<String>? enablementState;
-
   /// Numerical ID of the parent folder.
   final pulumi.Input<String> folder;
-
   /// Location ID of the parent organization. If not provided, 'global' will be used as the default location.
   final pulumi.Input<String>? location;
 
@@ -38,58 +32,36 @@ class ManagementFolderSecurityHealthAnalyticsCustomModuleArgs {
   /// [folder] Numerical ID of the parent folder.
   /// [location] Location ID of the parent organization. If not provided, 'global' will be used as the default location.
   ManagementFolderSecurityHealthAnalyticsCustomModuleArgs({
-    ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig?
-        customConfig,
+    ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig? customConfig,
     String? displayName,
     String? enablementState,
     required String folder,
     String? location,
-  })  : customConfig = pulumi.Input.asOptionalInput<
-                ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig>(
-            customConfig),
-        displayName = pulumi.Input.asOptionalInput<String>(displayName),
-        enablementState = pulumi.Input.asOptionalInput<String>(enablementState),
-        folder = pulumi.Input.asInput<String>(folder),
-        location = pulumi.Input.asOptionalInput<String>(location);
+  }) :
+      customConfig = pulumi.Input.asOptionalInput<ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig>(customConfig),
+      displayName = pulumi.Input.asOptionalInput<String>(displayName),
+      enablementState = pulumi.Input.asOptionalInput<String>(enablementState),
+      folder = pulumi.Input.asInput<String>(folder),
+      location = pulumi.Input.asOptionalInput<String>(location);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final customConfigValue = customConfig;
-    if (customConfigValue != null) {
-      map['customConfig'] = pulumi.Input.mapOptionalInputValue<
-          ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig,
-          Map<String, dynamic>>(customConfigValue, (value) => value.toMap());
-    }
-    final displayNameValue = displayName;
-    if (displayNameValue != null) {
-      map['displayName'] = displayNameValue;
-    }
-    final enablementStateValue = enablementState;
-    if (enablementStateValue != null) {
-      map['enablementState'] = enablementStateValue;
-    }
-    map['folder'] = folder;
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'customConfig': ?pulumi.Input.mapOptionalInputValue<ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig, Map<String, dynamic>>(customConfig, (value) => value.toMap()),
+      'displayName': ?displayName,
+      'enablementState': ?enablementState,
+      'folder': folder,
+      'location': ?location,
+    };
   }
 
-  factory ManagementFolderSecurityHealthAnalyticsCustomModuleArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory ManagementFolderSecurityHealthAnalyticsCustomModuleArgs.fromMap(Map<String, dynamic> map) {
     return ManagementFolderSecurityHealthAnalyticsCustomModuleArgs(
-      customConfig: map['customConfig'] == null
-          ? null
-          : ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig
-              .fromMap((map['customConfig'] as Map).cast<String, dynamic>()),
-      displayName:
-          map['displayName'] == null ? null : map['displayName'] as String,
-      enablementState: map['enablementState'] == null
-          ? null
-          : map['enablementState'] as String,
+      customConfig: map['customConfig'] == null ? null : ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap((map['customConfig'] as Map).cast<String, dynamic>()),
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      enablementState: map['enablementState'] == null ? null : map['enablementState'] as String,
       folder: map['folder'] as String,
       location: map['location'] == null ? null : map['location'] as String,
     );
   }
 }
+

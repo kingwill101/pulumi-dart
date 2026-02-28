@@ -6,10 +6,8 @@ class OrganizationSecurityPolicyRuleMatch {
   /// The configuration options for matching the rule.
   /// Structure is documented below.
   final OrganizationSecurityPolicyRuleMatchConfig config;
-
   /// A description of the rule.
   final String? description;
-
   /// Preconfigured versioned expression. For organization security policy rules,
   /// the only supported type is "FIREWALL".
   /// Default value is `FIREWALL`.
@@ -27,28 +25,19 @@ class OrganizationSecurityPolicyRuleMatch {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['config'] = config.toMap();
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final versionedExprValue = versionedExpr;
-    if (versionedExprValue != null) {
-      map['versionedExpr'] = versionedExprValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'config': config.toMap(),
+      'description': ?description,
+      'versionedExpr': ?versionedExpr,
+    };
   }
 
-  factory OrganizationSecurityPolicyRuleMatch.fromMap(
-      Map<String, dynamic> map) {
+  factory OrganizationSecurityPolicyRuleMatch.fromMap(Map<String, dynamic> map) {
     return OrganizationSecurityPolicyRuleMatch(
-      config: OrganizationSecurityPolicyRuleMatchConfig.fromMap(
-          (map['config'] as Map).cast<String, dynamic>()),
-      description:
-          map['description'] == null ? null : map['description'] as String,
-      versionedExpr:
-          map['versionedExpr'] == null ? null : map['versionedExpr'] as String,
+      config: OrganizationSecurityPolicyRuleMatchConfig.fromMap((map['config'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : map['description'] as String,
+      versionedExpr: map['versionedExpr'] == null ? null : map['versionedExpr'] as String,
     );
   }
 }
+

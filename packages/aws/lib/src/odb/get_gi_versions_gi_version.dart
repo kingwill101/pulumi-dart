@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetGiVersionsGiVersion {
   /// The GI software version.
   final String version;
@@ -11,9 +12,9 @@ class GetGiVersionsGiVersion {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['version'] = version;
-    return map;
+    return <String, dynamic>{
+      'version': version,
+    };
   }
 
   factory GetGiVersionsGiVersion.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetGiVersionsGiVersion {
     );
   }
 }
+

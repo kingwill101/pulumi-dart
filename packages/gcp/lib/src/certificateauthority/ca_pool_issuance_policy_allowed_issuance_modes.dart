@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CaPoolIssuancePolicyAllowedIssuanceModes {
   /// When true, allows callers to create Certificates by specifying a CertificateConfig.
   final bool allowConfigBasedIssuance;
-
   /// When true, allows callers to create Certificates by specifying a CSR.
   final bool allowCsrBasedIssuance;
 
@@ -16,17 +16,17 @@ class CaPoolIssuancePolicyAllowedIssuanceModes {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allowConfigBasedIssuance'] = allowConfigBasedIssuance;
-    map['allowCsrBasedIssuance'] = allowCsrBasedIssuance;
-    return map;
+    return <String, dynamic>{
+      'allowConfigBasedIssuance': allowConfigBasedIssuance,
+      'allowCsrBasedIssuance': allowCsrBasedIssuance,
+    };
   }
 
-  factory CaPoolIssuancePolicyAllowedIssuanceModes.fromMap(
-      Map<String, dynamic> map) {
+  factory CaPoolIssuancePolicyAllowedIssuanceModes.fromMap(Map<String, dynamic> map) {
     return CaPoolIssuancePolicyAllowedIssuanceModes(
       allowConfigBasedIssuance: map['allowConfigBasedIssuance'] as bool,
       allowCsrBasedIssuance: map['allowCsrBasedIssuance'] as bool,
     );
   }
 }
+

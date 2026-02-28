@@ -10,11 +10,9 @@ import 'route_server_vpc_association_timeouts.dart';
 class RouteServerVpcAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The unique identifier for the route server to be associated.
   final pulumi.Input<String> routeServerId;
   final pulumi.Input<RouteServerVpcAssociationTimeouts>? timeouts;
-
   /// The ID of the VPC to associate with the route server.
   ///
   /// The following arguments are optional:
@@ -30,39 +28,28 @@ class RouteServerVpcAssociationArgs {
     required String routeServerId,
     RouteServerVpcAssociationTimeouts? timeouts,
     required String vpcId,
-  })  : region = pulumi.Input.asOptionalInput<String>(region),
-        routeServerId = pulumi.Input.asInput<String>(routeServerId),
-        timeouts =
-            pulumi.Input.asOptionalInput<RouteServerVpcAssociationTimeouts>(
-                timeouts),
-        vpcId = pulumi.Input.asInput<String>(vpcId);
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      routeServerId = pulumi.Input.asInput<String>(routeServerId),
+      timeouts = pulumi.Input.asOptionalInput<RouteServerVpcAssociationTimeouts>(timeouts),
+      vpcId = pulumi.Input.asInput<String>(vpcId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['routeServerId'] = routeServerId;
-    final timeoutsValue = timeouts;
-    if (timeoutsValue != null) {
-      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
-          RouteServerVpcAssociationTimeouts,
-          Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
-    }
-    map['vpcId'] = vpcId;
-    return map;
+    return <String, dynamic>{
+      'region': ?region,
+      'routeServerId': routeServerId,
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<RouteServerVpcAssociationTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'vpcId': vpcId,
+    };
   }
 
   factory RouteServerVpcAssociationArgs.fromMap(Map<String, dynamic> map) {
     return RouteServerVpcAssociationArgs(
       region: map['region'] == null ? null : map['region'] as String,
       routeServerId: map['routeServerId'] as String,
-      timeouts: map['timeouts'] == null
-          ? null
-          : RouteServerVpcAssociationTimeouts.fromMap(
-              (map['timeouts'] as Map).cast<String, dynamic>()),
+      timeouts: map['timeouts'] == null ? null : RouteServerVpcAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
       vpcId: map['vpcId'] as String,
     );
   }
 }
+

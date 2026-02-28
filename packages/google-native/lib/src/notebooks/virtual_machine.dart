@@ -14,20 +14,15 @@ class VirtualMachine {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final virtualMachineConfigValue = virtualMachineConfig;
-    if (virtualMachineConfigValue != null) {
-      map['virtualMachineConfig'] = virtualMachineConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'virtualMachineConfig': ?virtualMachineConfig == null ? null : virtualMachineConfig!.toMap(),
+    };
   }
 
   factory VirtualMachine.fromMap(Map<String, dynamic> map) {
     return VirtualMachine(
-      virtualMachineConfig: map['virtualMachineConfig'] == null
-          ? null
-          : VirtualMachineConfig.fromMap(
-              (map['virtualMachineConfig'] as Map).cast<String, dynamic>()),
+      virtualMachineConfig: map['virtualMachineConfig'] == null ? null : VirtualMachineConfig.fromMap((map['virtualMachineConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetBucketSoftDeletePolicy {
   /// Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
   final String effectiveTime;
-
   /// The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted. Default value is 604800.
   final int retentionDurationSeconds;
 
@@ -16,10 +16,10 @@ class GetBucketSoftDeletePolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['effectiveTime'] = effectiveTime;
-    map['retentionDurationSeconds'] = retentionDurationSeconds;
-    return map;
+    return <String, dynamic>{
+      'effectiveTime': effectiveTime,
+      'retentionDurationSeconds': retentionDurationSeconds,
+    };
   }
 
   factory GetBucketSoftDeletePolicy.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetBucketSoftDeletePolicy {
     );
   }
 }
+

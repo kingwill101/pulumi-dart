@@ -5,8 +5,7 @@ import 'google_cloud_dataplex_v1_data_profile_result_post_scan_actions_result_bi
 /// The result of post scan actions of DataProfileScan job.
 class GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse {
   /// The result of BigQuery export post scan action.
-  final GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponse
-      bigqueryExportResult;
+  final GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponse bigqueryExportResult;
 
   /// Creates a new [GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse].
   /// [bigqueryExportResult] The result of BigQuery export post scan action.
@@ -15,18 +14,15 @@ class GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bigqueryExportResult'] = bigqueryExportResult.toMap();
-    return map;
+    return <String, dynamic>{
+      'bigqueryExportResult': bigqueryExportResult.toMap(),
+    };
   }
 
-  factory GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse(
-      bigqueryExportResult:
-          GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponse
-              .fromMap(
-                  (map['bigqueryExportResult'] as Map).cast<String, dynamic>()),
+      bigqueryExportResult: GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponse.fromMap((map['bigqueryExportResult'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

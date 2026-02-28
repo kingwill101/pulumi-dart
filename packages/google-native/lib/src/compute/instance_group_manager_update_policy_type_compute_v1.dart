@@ -12,7 +12,7 @@ enum InstanceGroupManagerUpdatePolicyTypeComputeV1 {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown InstanceGroupManagerUpdatePolicyTypeComputeV1 value: $value');
+    throw ArgumentError('Unknown InstanceGroupManagerUpdatePolicyTypeComputeV1 value: $value');
   }
 }
+

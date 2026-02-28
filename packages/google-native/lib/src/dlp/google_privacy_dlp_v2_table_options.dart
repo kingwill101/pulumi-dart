@@ -15,24 +15,15 @@ class GooglePrivacyDlpV2TableOptions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final identifyingFieldsValue = identifyingFields;
-    if (identifyingFieldsValue != null) {
-      map['identifyingFields'] = pulumi.Input.encodeList<
-              GooglePrivacyDlpV2FieldId, Map<String, dynamic>>(
-          identifyingFieldsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'identifyingFields': ?identifyingFields == null ? null : pulumi.Input.encodeList<GooglePrivacyDlpV2FieldId, Map<String, dynamic>>(identifyingFields!, (value) => value.toMap()),
+    };
   }
 
   factory GooglePrivacyDlpV2TableOptions.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2TableOptions(
-      identifyingFields: map['identifyingFields'] == null
-          ? null
-          : pulumi.Input.decodeList<GooglePrivacyDlpV2FieldId>(
-              map['identifyingFields'],
-              (value) => GooglePrivacyDlpV2FieldId.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      identifyingFields: map['identifyingFields'] == null ? null : pulumi.Input.decodeList<GooglePrivacyDlpV2FieldId>(map['identifyingFields'], (value) => GooglePrivacyDlpV2FieldId.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

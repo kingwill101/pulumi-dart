@@ -1,15 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DnsAuthorizationDnsResourceRecord {
   /// (Output)
   /// Data of the DNS Resource Record.
   final String? data;
-
   /// Name of the resource; provided by the client when the resource is created.
   /// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
   /// and all following characters must be a dash, underscore, letter or digit.
   final String? name;
-
   /// type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
   /// be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
   /// FIXED_RECORD DNS authorization uses DNS-01 validation method
@@ -30,20 +29,11 @@ class DnsAuthorizationDnsResourceRecord {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dataValue = data;
-    if (dataValue != null) {
-      map['data'] = dataValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'data': ?data,
+      'name': ?name,
+      'type': ?type,
+    };
   }
 
   factory DnsAuthorizationDnsResourceRecord.fromMap(Map<String, dynamic> map) {
@@ -54,3 +44,4 @@ class DnsAuthorizationDnsResourceRecord {
     );
   }
 }
+

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// An URI message.
 class URI {
   /// A label for the URI.
   final String? label;
-
   /// The unique resource identifier.
   final String? uri;
 
@@ -17,16 +17,10 @@ class URI {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final labelValue = label;
-    if (labelValue != null) {
-      map['label'] = labelValue;
-    }
-    final uriValue = uri;
-    if (uriValue != null) {
-      map['uri'] = uriValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'label': ?label,
+      'uri': ?uri,
+    };
   }
 
   factory URI.fromMap(Map<String, dynamic> map) {
@@ -36,3 +30,4 @@ class URI {
     );
   }
 }
+

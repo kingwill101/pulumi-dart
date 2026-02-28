@@ -19,20 +19,17 @@ class GetConversionWorkspaceArgs {
     required String conversionWorkspaceId,
     required String location,
     String? project,
-  })  : conversionWorkspaceId =
-            pulumi.Input.asInput<String>(conversionWorkspaceId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      conversionWorkspaceId = pulumi.Input.asInput<String>(conversionWorkspaceId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['conversionWorkspaceId'] = conversionWorkspaceId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'conversionWorkspaceId': conversionWorkspaceId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetConversionWorkspaceArgs.fromMap(Map<String, dynamic> map) {
@@ -43,3 +40,4 @@ class GetConversionWorkspaceArgs {
     );
   }
 }
+

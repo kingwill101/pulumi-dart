@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The type of Human Agent Assistant API suggestion to perform, and the maximum number of results to return for that type. Multiple `Feature` objects can be specified in the `features` list.
 class GoogleCloudDialogflowV2beta1SuggestionFeatureResponse {
   /// Type of Human Agent Assistant API feature to request.
@@ -12,15 +13,15 @@ class GoogleCloudDialogflowV2beta1SuggestionFeatureResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
-  factory GoogleCloudDialogflowV2beta1SuggestionFeatureResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1SuggestionFeatureResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1SuggestionFeatureResponse(
       type: map['type'] as String,
     );
   }
 }
+

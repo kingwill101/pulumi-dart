@@ -14,19 +14,15 @@ class TaskTemplateSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final specValue = spec;
-    if (specValue != null) {
-      map['spec'] = specValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'spec': ?spec == null ? null : spec!.toMap(),
+    };
   }
 
   factory TaskTemplateSpec.fromMap(Map<String, dynamic> map) {
     return TaskTemplateSpec(
-      spec: map['spec'] == null
-          ? null
-          : TaskSpec.fromMap((map['spec'] as Map).cast<String, dynamic>()),
+      spec: map['spec'] == null ? null : TaskSpec.fromMap((map['spec'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

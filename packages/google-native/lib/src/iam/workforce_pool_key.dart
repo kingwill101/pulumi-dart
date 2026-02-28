@@ -7,22 +7,17 @@ import 'workforce_pool_key_args.dart';
 class WorkforcePoolKey extends pulumi.CustomResource {
   /// The time after which the key will be permanently deleted and cannot be recovered. Note that the key may get purged before this time if the total limit of keys per provider is exceeded.
   late final pulumi.Output<String> expireTime;
-
   /// Immutable. Public half of the asymmetric key.
   late final pulumi.Output<KeyDataResponse> keyData;
   late final pulumi.Output<String> location;
-
   /// The resource name of the key.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> providerId;
-
   /// The state of the key.
   late final pulumi.Output<String> state;
-
   /// The purpose of the key.
   late final pulumi.Output<String> use;
   late final pulumi.Output<String> workforcePoolId;
-
   /// Required. The ID to use for the key, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
   late final pulumi.Output<String> workforcePoolProviderKeyId;
 
@@ -48,7 +43,6 @@ class WorkforcePoolKey extends pulumi.CustomResource {
     this.state = registerOutput<String>('state');
     this.use = registerOutput<String>('use');
     this.workforcePoolId = registerOutput<String>('workforcePoolId');
-    this.workforcePoolProviderKeyId =
-        registerOutput<String>('workforcePoolProviderKeyId');
+    this.workforcePoolProviderKeyId = registerOutput<String>('workforcePoolProviderKeyId');
   }
 }

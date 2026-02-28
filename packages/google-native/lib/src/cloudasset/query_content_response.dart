@@ -14,15 +14,15 @@ class QueryContentResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['iamPolicyAnalysisQuery'] = iamPolicyAnalysisQuery.toMap();
-    return map;
+    return <String, dynamic>{
+      'iamPolicyAnalysisQuery': iamPolicyAnalysisQuery.toMap(),
+    };
   }
 
   factory QueryContentResponse.fromMap(Map<String, dynamic> map) {
     return QueryContentResponse(
-      iamPolicyAnalysisQuery: IamPolicyAnalysisQueryResponse.fromMap(
-          (map['iamPolicyAnalysisQuery'] as Map).cast<String, dynamic>()),
+      iamPolicyAnalysisQuery: IamPolicyAnalysisQueryResponse.fromMap((map['iamPolicyAnalysisQuery'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

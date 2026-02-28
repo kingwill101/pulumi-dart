@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetMapConfiguration {
   /// The map style selected from an available data provider.
   final String style;
@@ -11,9 +12,9 @@ class GetMapConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['style'] = style;
-    return map;
+    return <String, dynamic>{
+      'style': style,
+    };
   }
 
   factory GetMapConfiguration.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetMapConfiguration {
     );
   }
 }
+

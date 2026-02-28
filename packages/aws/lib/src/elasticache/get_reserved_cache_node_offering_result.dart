@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getReservedCacheNodeOffering.
 class GetReservedCacheNodeOfferingResult {
   final String cacheNodeType;
   final String duration;
-
   /// Fixed price charged for this reserved cache node.
   final double fixedPrice;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Unique identifier for the reservation.
   final String offeringId;
   final String offeringType;
@@ -38,16 +36,16 @@ class GetReservedCacheNodeOfferingResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cacheNodeType'] = cacheNodeType;
-    map['duration'] = duration;
-    map['fixedPrice'] = fixedPrice;
-    map['id'] = id;
-    map['offeringId'] = offeringId;
-    map['offeringType'] = offeringType;
-    map['productDescription'] = productDescription;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'cacheNodeType': cacheNodeType,
+      'duration': duration,
+      'fixedPrice': fixedPrice,
+      'id': id,
+      'offeringId': offeringId,
+      'offeringType': offeringType,
+      'productDescription': productDescription,
+      'region': region,
+    };
   }
 
   factory GetReservedCacheNodeOfferingResult.fromMap(Map<String, dynamic> map) {
@@ -63,3 +61,4 @@ class GetReservedCacheNodeOfferingResult {
     );
   }
 }
+

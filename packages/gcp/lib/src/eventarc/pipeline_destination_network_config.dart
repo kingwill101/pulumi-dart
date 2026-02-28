@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PipelineDestinationNetworkConfig {
   /// Name of the NetworkAttachment that allows access to the consumer VPC.
   /// Format:
@@ -15,19 +16,15 @@ class PipelineDestinationNetworkConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final networkAttachmentValue = networkAttachment;
-    if (networkAttachmentValue != null) {
-      map['networkAttachment'] = networkAttachmentValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'networkAttachment': ?networkAttachment,
+    };
   }
 
   factory PipelineDestinationNetworkConfig.fromMap(Map<String, dynamic> map) {
     return PipelineDestinationNetworkConfig(
-      networkAttachment: map['networkAttachment'] == null
-          ? null
-          : map['networkAttachment'] as String,
+      networkAttachment: map['networkAttachment'] == null ? null : map['networkAttachment'] as String,
     );
   }
 }
+

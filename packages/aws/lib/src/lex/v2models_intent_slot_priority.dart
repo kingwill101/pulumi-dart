@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class V2modelsIntentSlotPriority {
   /// Priority that Amazon Lex should apply to the slot.
   final int priority;
-
   /// Unique identifier of the slot.
   final String slotId;
 
@@ -16,10 +16,10 @@ class V2modelsIntentSlotPriority {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['priority'] = priority;
-    map['slotId'] = slotId;
-    return map;
+    return <String, dynamic>{
+      'priority': priority,
+      'slotId': slotId,
+    };
   }
 
   factory V2modelsIntentSlotPriority.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class V2modelsIntentSlotPriority {
     );
   }
 }
+

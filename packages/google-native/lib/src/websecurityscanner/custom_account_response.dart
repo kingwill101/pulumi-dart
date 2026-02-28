@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Describes authentication configuration that uses a custom account.
 class CustomAccountResponse {
   /// The login form URL of the website.
   final String loginUrl;
-
   /// Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
   final String password;
-
   /// The user name of the custom account.
   final String username;
 
@@ -22,11 +21,11 @@ class CustomAccountResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['loginUrl'] = loginUrl;
-    map['password'] = password;
-    map['username'] = username;
-    return map;
+    return <String, dynamic>{
+      'loginUrl': loginUrl,
+      'password': password,
+      'username': username,
+    };
   }
 
   factory CustomAccountResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class CustomAccountResponse {
     );
   }
 }
+

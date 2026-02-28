@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataSetLogicalTableMapDataTransformRenameColumnOperation {
   /// Column to be renamed.
   final String columnName;
-
   /// New name for the column.
   final String newColumnName;
 
@@ -16,17 +16,17 @@ class DataSetLogicalTableMapDataTransformRenameColumnOperation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['columnName'] = columnName;
-    map['newColumnName'] = newColumnName;
-    return map;
+    return <String, dynamic>{
+      'columnName': columnName,
+      'newColumnName': newColumnName,
+    };
   }
 
-  factory DataSetLogicalTableMapDataTransformRenameColumnOperation.fromMap(
-      Map<String, dynamic> map) {
+  factory DataSetLogicalTableMapDataTransformRenameColumnOperation.fromMap(Map<String, dynamic> map) {
     return DataSetLogicalTableMapDataTransformRenameColumnOperation(
       columnName: map['columnName'] as String,
       newColumnName: map['newColumnName'] as String,
     );
   }
 }
+

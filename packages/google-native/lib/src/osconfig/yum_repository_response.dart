@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents a single Yum package repository. This repository is added to a repo file that is stored at `/etc/yum.repos.d/google_osconfig.repo`.
 class YumRepositoryResponse {
   /// The location of the repository directory.
   final String baseUrl;
-
   /// The display name of the repository.
   final String displayName;
-
   /// URIs of GPG keys.
   final List<String> gpgKeys;
 
@@ -22,11 +21,11 @@ class YumRepositoryResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['baseUrl'] = baseUrl;
-    map['displayName'] = displayName;
-    map['gpgKeys'] = gpgKeys;
-    return map;
+    return <String, dynamic>{
+      'baseUrl': baseUrl,
+      'displayName': displayName,
+      'gpgKeys': gpgKeys,
+    };
   }
 
   factory YumRepositoryResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class YumRepositoryResponse {
     );
   }
 }
+

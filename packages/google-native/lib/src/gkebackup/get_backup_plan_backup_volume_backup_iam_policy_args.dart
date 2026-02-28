@@ -28,43 +28,34 @@ class GetBackupPlanBackupVolumeBackupIamPolicyArgs {
     int? optionsRequestedPolicyVersion,
     String? project,
     required String volumeBackupId,
-  })  : backupId = pulumi.Input.asInput<String>(backupId),
-        backupPlanId = pulumi.Input.asInput<String>(backupPlanId),
-        location = pulumi.Input.asInput<String>(location),
-        optionsRequestedPolicyVersion =
-            pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        volumeBackupId = pulumi.Input.asInput<String>(volumeBackupId);
+  }) :
+      backupId = pulumi.Input.asInput<String>(backupId),
+      backupPlanId = pulumi.Input.asInput<String>(backupPlanId),
+      location = pulumi.Input.asInput<String>(location),
+      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      volumeBackupId = pulumi.Input.asInput<String>(volumeBackupId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['backupId'] = backupId;
-    map['backupPlanId'] = backupPlanId;
-    map['location'] = location;
-    final optionsRequestedPolicyVersionValue = optionsRequestedPolicyVersion;
-    if (optionsRequestedPolicyVersionValue != null) {
-      map['optionsRequestedPolicyVersion'] = optionsRequestedPolicyVersionValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['volumeBackupId'] = volumeBackupId;
-    return map;
+    return <String, dynamic>{
+      'backupId': backupId,
+      'backupPlanId': backupPlanId,
+      'location': location,
+      'optionsRequestedPolicyVersion': ?optionsRequestedPolicyVersion,
+      'project': ?project,
+      'volumeBackupId': volumeBackupId,
+    };
   }
 
-  factory GetBackupPlanBackupVolumeBackupIamPolicyArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetBackupPlanBackupVolumeBackupIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupPlanBackupVolumeBackupIamPolicyArgs(
       backupId: map['backupId'] as String,
       backupPlanId: map['backupPlanId'] as String,
       location: map['location'] as String,
-      optionsRequestedPolicyVersion:
-          map['optionsRequestedPolicyVersion'] == null
-              ? null
-              : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       volumeBackupId: map['volumeBackupId'] as String,
     );
   }
 }
+

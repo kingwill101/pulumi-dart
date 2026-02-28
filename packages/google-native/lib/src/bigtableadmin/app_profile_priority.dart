@@ -17,3 +17,4 @@ enum AppProfilePriority {
     throw ArgumentError('Unknown AppProfilePriority value: $value');
   }
 }
+

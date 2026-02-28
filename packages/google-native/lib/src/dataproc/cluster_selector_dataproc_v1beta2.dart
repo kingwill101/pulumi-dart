@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A selector that chooses target cluster for jobs based on metadata.
 class ClusterSelectorDataprocV1beta2 {
   /// The cluster labels. Cluster must have all labels to match.
   final Map<String, String> clusterLabels;
-
   /// Optional. The zone where workflow process executes. This parameter does not affect the selection of the cluster.If unspecified, the zone of the first cluster matching the selector is used.
   final String? zone;
 
@@ -17,13 +17,10 @@ class ClusterSelectorDataprocV1beta2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clusterLabels'] = clusterLabels;
-    final zoneValue = zone;
-    if (zoneValue != null) {
-      map['zone'] = zoneValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'clusterLabels': clusterLabels,
+      'zone': ?zone,
+    };
   }
 
   factory ClusterSelectorDataprocV1beta2.fromMap(Map<String, dynamic> map) {
@@ -33,3 +30,4 @@ class ClusterSelectorDataprocV1beta2 {
     );
   }
 }
+

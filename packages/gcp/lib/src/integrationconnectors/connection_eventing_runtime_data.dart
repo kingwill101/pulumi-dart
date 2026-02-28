@@ -6,7 +6,6 @@ import 'connection_eventing_runtime_data_status.dart';
 class ConnectionEventingRuntimeData {
   /// Events listener endpoint. The value will populated after provisioning the events listener.
   final String? eventsListenerEndpoint;
-
   /// (Output)
   /// Current status of eventing.
   /// Structure is documented below.
@@ -21,31 +20,17 @@ class ConnectionEventingRuntimeData {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final eventsListenerEndpointValue = eventsListenerEndpoint;
-    if (eventsListenerEndpointValue != null) {
-      map['eventsListenerEndpoint'] = eventsListenerEndpointValue;
-    }
-    final statusesValue = statuses;
-    if (statusesValue != null) {
-      map['statuses'] = pulumi.Input.encodeList<
-          ConnectionEventingRuntimeDataStatus,
-          Map<String, dynamic>>(statusesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'eventsListenerEndpoint': ?eventsListenerEndpoint,
+      'statuses': ?statuses == null ? null : pulumi.Input.encodeList<ConnectionEventingRuntimeDataStatus, Map<String, dynamic>>(statuses!, (value) => value.toMap()),
+    };
   }
 
   factory ConnectionEventingRuntimeData.fromMap(Map<String, dynamic> map) {
     return ConnectionEventingRuntimeData(
-      eventsListenerEndpoint: map['eventsListenerEndpoint'] == null
-          ? null
-          : map['eventsListenerEndpoint'] as String,
-      statuses: map['statuses'] == null
-          ? null
-          : pulumi.Input.decodeList<ConnectionEventingRuntimeDataStatus>(
-              map['statuses'],
-              (value) => ConnectionEventingRuntimeDataStatus.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      eventsListenerEndpoint: map['eventsListenerEndpoint'] == null ? null : map['eventsListenerEndpoint'] as String,
+      statuses: map['statuses'] == null ? null : pulumi.Input.decodeList<ConnectionEventingRuntimeDataStatus>(map['statuses'], (value) => ConnectionEventingRuntimeDataStatus.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

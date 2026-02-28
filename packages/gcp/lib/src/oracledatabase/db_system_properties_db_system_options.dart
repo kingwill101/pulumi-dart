@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DbSystemPropertiesDbSystemOptions {
   /// The storage option used in DB system.
   /// Possible values:
@@ -14,19 +15,15 @@ class DbSystemPropertiesDbSystemOptions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final storageManagementValue = storageManagement;
-    if (storageManagementValue != null) {
-      map['storageManagement'] = storageManagementValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'storageManagement': ?storageManagement,
+    };
   }
 
   factory DbSystemPropertiesDbSystemOptions.fromMap(Map<String, dynamic> map) {
     return DbSystemPropertiesDbSystemOptions(
-      storageManagement: map['storageManagement'] == null
-          ? null
-          : map['storageManagement'] as String,
+      storageManagement: map['storageManagement'] == null ? null : map['storageManagement'] as String,
     );
   }
 }
+

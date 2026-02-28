@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppHostingBuildSourceCodebaseAuthor {
   /// Human-readable name. 63 character limit.
   final String? displayName;
-
   /// The 'email' field in a Git user's git.config, if available.
   final String? email;
-
   /// The URI of an image file associated with the user's account in an
   /// external source control provider, if available.
   final String? imageUri;
@@ -22,29 +21,19 @@ class AppHostingBuildSourceCodebaseAuthor {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final displayNameValue = displayName;
-    if (displayNameValue != null) {
-      map['displayName'] = displayNameValue;
-    }
-    final emailValue = email;
-    if (emailValue != null) {
-      map['email'] = emailValue;
-    }
-    final imageUriValue = imageUri;
-    if (imageUriValue != null) {
-      map['imageUri'] = imageUriValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'displayName': ?displayName,
+      'email': ?email,
+      'imageUri': ?imageUri,
+    };
   }
 
-  factory AppHostingBuildSourceCodebaseAuthor.fromMap(
-      Map<String, dynamic> map) {
+  factory AppHostingBuildSourceCodebaseAuthor.fromMap(Map<String, dynamic> map) {
     return AppHostingBuildSourceCodebaseAuthor(
-      displayName:
-          map['displayName'] == null ? null : map['displayName'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
       email: map['email'] == null ? null : map['email'] as String,
       imageUri: map['imageUri'] == null ? null : map['imageUri'] as String,
     );
   }
 }
+

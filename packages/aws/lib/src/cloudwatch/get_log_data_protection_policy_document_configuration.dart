@@ -5,9 +5,7 @@ import 'get_log_data_protection_policy_document_configuration_custom_data_identi
 
 class GetLogDataProtectionPolicyDocumentConfiguration {
   /// Configures custom regular expressions to detect sensitive data. Read more in [Custom data identifiers](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL-custom-data-identifiers.html).
-  final List<
-          GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier>?
-      customDataIdentifiers;
+  final List<GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier>? customDataIdentifiers;
 
   /// Creates a new [GetLogDataProtectionPolicyDocumentConfiguration].
   /// [customDataIdentifiers] Configures custom regular expressions to detect sensitive data. Read more in [Custom data identifiers](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL-custom-data-identifiers.html).
@@ -16,28 +14,15 @@ class GetLogDataProtectionPolicyDocumentConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final customDataIdentifiersValue = customDataIdentifiers;
-    if (customDataIdentifiersValue != null) {
-      map['customDataIdentifiers'] = pulumi.Input.encodeList<
-          GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier,
-          Map<String,
-              dynamic>>(customDataIdentifiersValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'customDataIdentifiers': ?customDataIdentifiers == null ? null : pulumi.Input.encodeList<GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier, Map<String, dynamic>>(customDataIdentifiers!, (value) => value.toMap()),
+    };
   }
 
-  factory GetLogDataProtectionPolicyDocumentConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory GetLogDataProtectionPolicyDocumentConfiguration.fromMap(Map<String, dynamic> map) {
     return GetLogDataProtectionPolicyDocumentConfiguration(
-      customDataIdentifiers: map['customDataIdentifiers'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier>(
-              map['customDataIdentifiers'],
-              (value) =>
-                  GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      customDataIdentifiers: map['customDataIdentifiers'] == null ? null : pulumi.Input.decodeList<GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier>(map['customDataIdentifiers'], (value) => GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

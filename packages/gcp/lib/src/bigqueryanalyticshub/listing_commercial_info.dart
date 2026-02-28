@@ -16,24 +16,15 @@ class ListingCommercialInfo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cloudMarketplacesValue = cloudMarketplaces;
-    if (cloudMarketplacesValue != null) {
-      map['cloudMarketplaces'] = pulumi.Input.encodeList<
-              ListingCommercialInfoCloudMarketplace, Map<String, dynamic>>(
-          cloudMarketplacesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'cloudMarketplaces': ?cloudMarketplaces == null ? null : pulumi.Input.encodeList<ListingCommercialInfoCloudMarketplace, Map<String, dynamic>>(cloudMarketplaces!, (value) => value.toMap()),
+    };
   }
 
   factory ListingCommercialInfo.fromMap(Map<String, dynamic> map) {
     return ListingCommercialInfo(
-      cloudMarketplaces: map['cloudMarketplaces'] == null
-          ? null
-          : pulumi.Input.decodeList<ListingCommercialInfoCloudMarketplace>(
-              map['cloudMarketplaces'],
-              (value) => ListingCommercialInfoCloudMarketplace.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      cloudMarketplaces: map['cloudMarketplaces'] == null ? null : pulumi.Input.decodeList<ListingCommercialInfoCloudMarketplace>(map['cloudMarketplaces'], (value) => ListingCommercialInfoCloudMarketplace.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

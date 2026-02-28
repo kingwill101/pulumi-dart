@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MigrationJobDumpFlagsDumpFlag {
   /// The name of the flag
   final String? name;
-
   /// The vale of the flag
   final String? value;
 
@@ -16,16 +16,10 @@ class MigrationJobDumpFlagsDumpFlag {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final valueValue = value;
-    if (valueValue != null) {
-      map['value'] = valueValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+      'value': ?value,
+    };
   }
 
   factory MigrationJobDumpFlagsDumpFlag.fromMap(Map<String, dynamic> map) {
@@ -35,3 +29,4 @@ class MigrationJobDumpFlagsDumpFlag {
     );
   }
 }
+

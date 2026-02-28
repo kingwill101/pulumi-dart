@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class StackSetManagedExecution {
   /// When set to true, StackSets performs non-conflicting operations concurrently and queues conflicting operations. After conflicting operations finish, StackSets starts queued operations in request order. Default is false.
   final bool? active;
@@ -11,12 +12,9 @@ class StackSetManagedExecution {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final activeValue = active;
-    if (activeValue != null) {
-      map['active'] = activeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'active': ?active,
+    };
   }
 
   factory StackSetManagedExecution.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class StackSetManagedExecution {
     );
   }
 }
+

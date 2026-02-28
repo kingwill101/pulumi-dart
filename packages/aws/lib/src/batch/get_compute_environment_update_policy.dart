@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetComputeEnvironmentUpdatePolicy {
   final int jobExecutionTimeoutMinutes;
   final bool terminateJobsOnUpdate;
@@ -13,10 +14,10 @@ class GetComputeEnvironmentUpdatePolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['jobExecutionTimeoutMinutes'] = jobExecutionTimeoutMinutes;
-    map['terminateJobsOnUpdate'] = terminateJobsOnUpdate;
-    return map;
+    return <String, dynamic>{
+      'jobExecutionTimeoutMinutes': jobExecutionTimeoutMinutes,
+      'terminateJobsOnUpdate': terminateJobsOnUpdate,
+    };
   }
 
   factory GetComputeEnvironmentUpdatePolicy.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class GetComputeEnvironmentUpdatePolicy {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster.
 class DefaultSnatStatusContainerV1beta1 {
   /// Disables cluster default sNAT rules.
@@ -12,12 +13,9 @@ class DefaultSnatStatusContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final disabledValue = disabled;
-    if (disabledValue != null) {
-      map['disabled'] = disabledValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'disabled': ?disabled,
+    };
   }
 
   factory DefaultSnatStatusContainerV1beta1.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class DefaultSnatStatusContainerV1beta1 {
     );
   }
 }
+

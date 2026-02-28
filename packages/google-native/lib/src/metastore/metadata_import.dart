@@ -8,31 +8,23 @@ import 'metadata_import_args.dart';
 class MetadataImport extends pulumi.CustomResource {
   /// The time when the metadata import was started.
   late final pulumi.Output<String> createTime;
-
   /// Immutable. A database dump from a pre-existing metastore's database.
   late final pulumi.Output<DatabaseDumpResponse> databaseDump;
-
   /// The description of the metadata import.
   late final pulumi.Output<String> description;
-
   /// The time when the metadata import finished.
   late final pulumi.Output<String> endTime;
   late final pulumi.Output<String> location;
-
   /// Required. The ID of the metadata import, which is used as the final component of the metadata import's name.This value must be between 1 and 64 characters long, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
   late final pulumi.Output<String> metadataImportId;
-
   /// Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
   late final pulumi.Output<String?> requestId;
   late final pulumi.Output<String> serviceId;
-
   /// The current state of the metadata import.
   late final pulumi.Output<String> state;
-
   /// The time when the metadata import was last updated.
   late final pulumi.Output<String> updateTime;
 

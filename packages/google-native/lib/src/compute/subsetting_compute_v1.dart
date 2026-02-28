@@ -13,19 +13,15 @@ class SubsettingComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final policyValue = policy;
-    if (policyValue != null) {
-      map['policy'] = policyValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'policy': ?policy == null ? null : policy!.value,
+    };
   }
 
   factory SubsettingComputeV1.fromMap(Map<String, dynamic> map) {
     return SubsettingComputeV1(
-      policy: map['policy'] == null
-          ? null
-          : SubsettingPolicyComputeV1.fromValue(map['policy'] as String),
+      policy: map['policy'] == null ? null : SubsettingPolicyComputeV1.fromValue(map['policy'] as String),
     );
   }
 }
+

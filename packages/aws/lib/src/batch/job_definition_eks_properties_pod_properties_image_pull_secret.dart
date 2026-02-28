@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class JobDefinitionEksPropertiesPodPropertiesImagePullSecret {
   /// Unique identifier.
   final String name;
@@ -11,15 +12,15 @@ class JobDefinitionEksPropertiesPodPropertiesImagePullSecret {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory JobDefinitionEksPropertiesPodPropertiesImagePullSecret.fromMap(
-      Map<String, dynamic> map) {
+  factory JobDefinitionEksPropertiesPodPropertiesImagePullSecret.fromMap(Map<String, dynamic> map) {
     return JobDefinitionEksPropertiesPodPropertiesImagePullSecret(
       name: map['name'] as String,
     );
   }
 }
+

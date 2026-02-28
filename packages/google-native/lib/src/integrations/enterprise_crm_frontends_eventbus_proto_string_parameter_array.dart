@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EnterpriseCrmFrontendsEventbusProtoStringParameterArray {
   final List<String>? stringValues;
 
@@ -10,20 +11,15 @@ class EnterpriseCrmFrontendsEventbusProtoStringParameterArray {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final stringValuesValue = stringValues;
-    if (stringValuesValue != null) {
-      map['stringValues'] = stringValuesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'stringValues': ?stringValues,
+    };
   }
 
-  factory EnterpriseCrmFrontendsEventbusProtoStringParameterArray.fromMap(
-      Map<String, dynamic> map) {
+  factory EnterpriseCrmFrontendsEventbusProtoStringParameterArray.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmFrontendsEventbusProtoStringParameterArray(
-      stringValues: map['stringValues'] == null
-          ? null
-          : (map['stringValues'] as List).cast<String>(),
+      stringValues: map['stringValues'] == null ? null : (map['stringValues'] as List).cast<String>(),
     );
   }
 }
+

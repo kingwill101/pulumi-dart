@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTopicSchemaSetting {
   /// The encoding of messages validated against schema. Default value: "ENCODING_UNSPECIFIED" Possible values: ["ENCODING_UNSPECIFIED", "JSON", "BINARY"]
   final String encoding;
-
   /// The name of the schema that messages published should be
   /// validated against. Format is projects/{project}/schemas/{schema}.
   /// The value of this field will be _deleted-schema_
@@ -19,10 +19,10 @@ class GetTopicSchemaSetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['encoding'] = encoding;
-    map['schema'] = schema;
-    return map;
+    return <String, dynamic>{
+      'encoding': encoding,
+      'schema': schema,
+    };
   }
 
   factory GetTopicSchemaSetting.fromMap(Map<String, dynamic> map) {
@@ -32,3 +32,4 @@ class GetTopicSchemaSetting {
     );
   }
 }
+

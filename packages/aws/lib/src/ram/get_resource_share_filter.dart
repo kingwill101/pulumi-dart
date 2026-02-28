@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetResourceShareFilter {
   /// Name of the tag key to filter on.
   final String name;
-
   /// Value of the tag key.
   final List<String> values;
 
@@ -16,10 +16,10 @@ class GetResourceShareFilter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['values'] = values;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'values': values,
+    };
   }
 
   factory GetResourceShareFilter.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetResourceShareFilter {
     );
   }
 }
+

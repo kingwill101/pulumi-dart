@@ -14,20 +14,15 @@ class BackupScheduleSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cronSpecValue = cronSpec;
-    if (cronSpecValue != null) {
-      map['cronSpec'] = cronSpecValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'cronSpec': ?cronSpec == null ? null : cronSpec!.toMap(),
+    };
   }
 
   factory BackupScheduleSpec.fromMap(Map<String, dynamic> map) {
     return BackupScheduleSpec(
-      cronSpec: map['cronSpec'] == null
-          ? null
-          : BackupScheduleSpecCronSpec.fromMap(
-              (map['cronSpec'] as Map).cast<String, dynamic>()),
+      cronSpec: map['cronSpec'] == null ? null : BackupScheduleSpecCronSpec.fromMap((map['cronSpec'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

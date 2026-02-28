@@ -6,8 +6,7 @@ import 'enterprise_crm_eventbus_proto_task_ui_module_config_response.dart';
 /// Task authors would use this type to configure the UI for a particular task by specifying what UI config modules should be included to compose the UI. Learn more about config module framework:
 class EnterpriseCrmEventbusProtoTaskUiConfigResponse {
   /// Configurations of included config modules.
-  final List<EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse>
-      taskUiModuleConfigs;
+  final List<EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse> taskUiModuleConfigs;
 
   /// Creates a new [EnterpriseCrmEventbusProtoTaskUiConfigResponse].
   /// [taskUiModuleConfigs] Configurations of included config modules.
@@ -16,22 +15,15 @@ class EnterpriseCrmEventbusProtoTaskUiConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['taskUiModuleConfigs'] = pulumi.Input.encodeList<
-        EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse,
-        Map<String, dynamic>>(taskUiModuleConfigs, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'taskUiModuleConfigs': pulumi.Input.encodeList<EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse, Map<String, dynamic>>(taskUiModuleConfigs, (value) => value.toMap()),
+    };
   }
 
-  factory EnterpriseCrmEventbusProtoTaskUiConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoTaskUiConfigResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoTaskUiConfigResponse(
-      taskUiModuleConfigs: pulumi.Input.decodeList<
-              EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse>(
-          map['taskUiModuleConfigs'],
-          (value) =>
-              EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      taskUiModuleConfigs: pulumi.Input.decodeList<EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse>(map['taskUiModuleConfigs'], (value) => EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

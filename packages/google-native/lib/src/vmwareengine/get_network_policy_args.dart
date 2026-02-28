@@ -19,19 +19,17 @@ class GetNetworkPolicyArgs {
     required String location,
     required String networkPolicyId,
     String? project,
-  })  : location = pulumi.Input.asInput<String>(location),
-        networkPolicyId = pulumi.Input.asInput<String>(networkPolicyId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      networkPolicyId = pulumi.Input.asInput<String>(networkPolicyId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    map['networkPolicyId'] = networkPolicyId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'networkPolicyId': networkPolicyId,
+      'project': ?project,
+    };
   }
 
   factory GetNetworkPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetNetworkPolicyArgs {
     );
   }
 }
+

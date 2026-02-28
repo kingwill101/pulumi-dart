@@ -6,13 +6,10 @@ import 'tag_filter_list_response.dart';
 class DicomConfigResponse {
   /// Tag filtering profile that determines which tags to keep/remove.
   final String filterProfile;
-
   /// List of tags to keep. Remove all other tags.
   final TagFilterListResponse keepList;
-
   /// List of tags to remove. Keep all other tags.
   final TagFilterListResponse removeList;
-
   /// If true, skip replacing StudyInstanceUID, SeriesInstanceUID, SOPInstanceUID, and MediaStorageSOPInstanceUID and leave them untouched. The Cloud Healthcare API regenerates these UIDs by default based on the DICOM Standard's reasoning: "Whilst these UIDs cannot be mapped directly to an individual out of context, given access to the original images, or to a database of the original images containing the UIDs, it would be possible to recover the individual's identity." http://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_E.3.9.html
   final bool skipIdRedaction;
 
@@ -29,22 +26,21 @@ class DicomConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['filterProfile'] = filterProfile;
-    map['keepList'] = keepList.toMap();
-    map['removeList'] = removeList.toMap();
-    map['skipIdRedaction'] = skipIdRedaction;
-    return map;
+    return <String, dynamic>{
+      'filterProfile': filterProfile,
+      'keepList': keepList.toMap(),
+      'removeList': removeList.toMap(),
+      'skipIdRedaction': skipIdRedaction,
+    };
   }
 
   factory DicomConfigResponse.fromMap(Map<String, dynamic> map) {
     return DicomConfigResponse(
       filterProfile: map['filterProfile'] as String,
-      keepList: TagFilterListResponse.fromMap(
-          (map['keepList'] as Map).cast<String, dynamic>()),
-      removeList: TagFilterListResponse.fromMap(
-          (map['removeList'] as Map).cast<String, dynamic>()),
+      keepList: TagFilterListResponse.fromMap((map['keepList'] as Map).cast<String, dynamic>()),
+      removeList: TagFilterListResponse.fromMap((map['removeList'] as Map).cast<String, dynamic>()),
       skipIdRedaction: map['skipIdRedaction'] as bool,
     );
   }
 }
+

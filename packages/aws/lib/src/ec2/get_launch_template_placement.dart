@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetLaunchTemplatePlacement {
   final String affinity;
   final String availabilityZone;
@@ -34,17 +35,17 @@ class GetLaunchTemplatePlacement {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['affinity'] = affinity;
-    map['availabilityZone'] = availabilityZone;
-    map['groupId'] = groupId;
-    map['groupName'] = groupName;
-    map['hostId'] = hostId;
-    map['hostResourceGroupArn'] = hostResourceGroupArn;
-    map['partitionNumber'] = partitionNumber;
-    map['spreadDomain'] = spreadDomain;
-    map['tenancy'] = tenancy;
-    return map;
+    return <String, dynamic>{
+      'affinity': affinity,
+      'availabilityZone': availabilityZone,
+      'groupId': groupId,
+      'groupName': groupName,
+      'hostId': hostId,
+      'hostResourceGroupArn': hostResourceGroupArn,
+      'partitionNumber': partitionNumber,
+      'spreadDomain': spreadDomain,
+      'tenancy': tenancy,
+    };
   }
 
   factory GetLaunchTemplatePlacement.fromMap(Map<String, dynamic> map) {
@@ -61,3 +62,4 @@ class GetLaunchTemplatePlacement {
     );
   }
 }
+

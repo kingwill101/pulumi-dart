@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Published upcoming future maintenance schedule.
 class MaintenanceScheduleResponse {
   /// The scheduled end time for the maintenance.
   final String endTime;
-
   /// The scheduled start time for the maintenance.
   final String startTime;
 
@@ -17,10 +17,10 @@ class MaintenanceScheduleResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['endTime'] = endTime;
-    map['startTime'] = startTime;
-    return map;
+    return <String, dynamic>{
+      'endTime': endTime,
+      'startTime': startTime,
+    };
   }
 
   factory MaintenanceScheduleResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class MaintenanceScheduleResponse {
     );
   }
 }
+

@@ -1,25 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getConnection.
 class GetConnectionResult {
   final String arn;
-
   /// CodeStar Connection status. Possible values are `PENDING`, `AVAILABLE` and `ERROR`.
   final String connectionStatus;
-
   /// ARN of the host associated with the connection.
   final String hostArn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Name of the CodeStar Connection. The name is unique in the calling AWS account.
   final String name;
-
   /// Name of the external provider where your third-party code repository is configured. Possible values are `Bitbucket`, `GitHub` and `GitLab`. For connections to GitHub Enterprise Server or GitLab Self-Managed instances, you must create an aws.codestarconnections.Host resource and use `host_arn` instead.
   final String providerType;
   final String region;
-
   /// Map of key-value resource tags to associate with the resource.
   final Map<String, String> tags;
 
@@ -44,16 +39,16 @@ class GetConnectionResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['connectionStatus'] = connectionStatus;
-    map['hostArn'] = hostArn;
-    map['id'] = id;
-    map['name'] = name;
-    map['providerType'] = providerType;
-    map['region'] = region;
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'connectionStatus': connectionStatus,
+      'hostArn': hostArn,
+      'id': id,
+      'name': name,
+      'providerType': providerType,
+      'region': region,
+      'tags': tags,
+    };
   }
 
   factory GetConnectionResult.fromMap(Map<String, dynamic> map) {
@@ -69,3 +64,4 @@ class GetConnectionResult {
     );
   }
 }
+

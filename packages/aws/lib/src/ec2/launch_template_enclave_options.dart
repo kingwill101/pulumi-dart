@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LaunchTemplateEnclaveOptions {
   /// If set to `true`, Nitro Enclaves will be enabled on the instance.
   ///
@@ -13,12 +14,9 @@ class LaunchTemplateEnclaveOptions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory LaunchTemplateEnclaveOptions.fromMap(Map<String, dynamic> map) {
@@ -27,3 +25,4 @@ class LaunchTemplateEnclaveOptions {
     );
   }
 }
+

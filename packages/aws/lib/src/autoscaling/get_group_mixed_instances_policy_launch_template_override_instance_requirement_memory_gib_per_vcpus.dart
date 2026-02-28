@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementMemoryGibPerVcpus {
   /// Maximum.
   final double max;
-
   /// Minimum.
   final double min;
 
@@ -16,17 +16,17 @@ class GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementMemor
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['max'] = max;
-    map['min'] = min;
-    return map;
+    return <String, dynamic>{
+      'max': max,
+      'min': min,
+    };
   }
 
-  factory GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementMemoryGibPerVcpus.fromMap(
-      Map<String, dynamic> map) {
+  factory GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementMemoryGibPerVcpus.fromMap(Map<String, dynamic> map) {
     return GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementMemoryGibPerVcpus(
       max: map['max'] as double,
       min: map['min'] as double,
     );
   }
 }
+

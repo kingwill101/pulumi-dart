@@ -14,19 +14,15 @@ class ScanRunWarningTrace {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final codeValue = code;
-    if (codeValue != null) {
-      map['code'] = codeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'code': ?code == null ? null : code!.value,
+    };
   }
 
   factory ScanRunWarningTrace.fromMap(Map<String, dynamic> map) {
     return ScanRunWarningTrace(
-      code: map['code'] == null
-          ? null
-          : ScanRunWarningTraceCode.fromValue(map['code'] as String),
+      code: map['code'] == null ? null : ScanRunWarningTraceCode.fromValue(map['code'] as String),
     );
   }
 }
+

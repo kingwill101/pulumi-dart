@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Details for an outcome with a SKIPPED outcome summary.
 class SkippedDetailResponse {
   /// If the App doesn't support the specific API level.
   final bool incompatibleAppVersion;
-
   /// If the App doesn't run on the specific architecture, for example, x86.
   final bool incompatibleArchitecture;
-
   /// If the requested OS version doesn't run on the specific device model.
   final bool incompatibleDevice;
 
@@ -22,11 +21,11 @@ class SkippedDetailResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['incompatibleAppVersion'] = incompatibleAppVersion;
-    map['incompatibleArchitecture'] = incompatibleArchitecture;
-    map['incompatibleDevice'] = incompatibleDevice;
-    return map;
+    return <String, dynamic>{
+      'incompatibleAppVersion': incompatibleAppVersion,
+      'incompatibleArchitecture': incompatibleArchitecture,
+      'incompatibleDevice': incompatibleDevice,
+    };
   }
 
   factory SkippedDetailResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class SkippedDetailResponse {
     );
   }
 }
+

@@ -19,24 +19,20 @@ class GetBatchPredictionJobAiplatformV1beta1Args {
     required String batchPredictionJobId,
     required String location,
     String? project,
-  })  : batchPredictionJobId =
-            pulumi.Input.asInput<String>(batchPredictionJobId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      batchPredictionJobId = pulumi.Input.asInput<String>(batchPredictionJobId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['batchPredictionJobId'] = batchPredictionJobId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'batchPredictionJobId': batchPredictionJobId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
-  factory GetBatchPredictionJobAiplatformV1beta1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetBatchPredictionJobAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetBatchPredictionJobAiplatformV1beta1Args(
       batchPredictionJobId: map['batchPredictionJobId'] as String,
       location: map['location'] as String,
@@ -44,3 +40,4 @@ class GetBatchPredictionJobAiplatformV1beta1Args {
     );
   }
 }
+

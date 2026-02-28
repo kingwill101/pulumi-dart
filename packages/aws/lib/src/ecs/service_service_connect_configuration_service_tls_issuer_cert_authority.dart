@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority {
   /// ARN of the `aws.acmpca.CertificateAuthority` used to create the TLS Certificates.
   final String awsPcaAuthorityArn;
@@ -11,15 +12,15 @@ class ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['awsPcaAuthorityArn'] = awsPcaAuthorityArn;
-    return map;
+    return <String, dynamic>{
+      'awsPcaAuthorityArn': awsPcaAuthorityArn,
+    };
   }
 
-  factory ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority.fromMap(
-      Map<String, dynamic> map) {
+  factory ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority.fromMap(Map<String, dynamic> map) {
     return ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority(
       awsPcaAuthorityArn: map['awsPcaAuthorityArn'] as String,
     );
   }
 }
+

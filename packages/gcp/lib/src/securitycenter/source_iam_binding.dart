@@ -141,7 +141,6 @@ class SourceIamBinding extends pulumi.CustomResource {
   late final pulumi.Output<SourceIamBindingCondition?> condition;
   late final pulumi.Output<String> etag;
   late final pulumi.Output<List<String>> members;
-
   /// The organization whose Cloud Security Command Center the Source
   /// lives in.
   late final pulumi.Output<String> organization;

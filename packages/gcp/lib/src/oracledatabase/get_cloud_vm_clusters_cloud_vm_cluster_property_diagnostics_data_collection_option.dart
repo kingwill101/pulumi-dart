@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetCloudVmClustersCloudVmClusterPropertyDiagnosticsDataCollectionOption {
   /// Indicates whether diagnostic collection is enabled for the VM cluster
   final bool diagnosticsEventsEnabled;
-
   /// Indicates whether health monitoring is enabled for the VM cluster
   final bool healthMonitoringEnabled;
-
   /// Indicates whether incident logs and trace collection are enabled for the VM
   /// cluster
   final bool incidentLogsEnabled;
@@ -22,15 +21,14 @@ class GetCloudVmClustersCloudVmClusterPropertyDiagnosticsDataCollectionOption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['diagnosticsEventsEnabled'] = diagnosticsEventsEnabled;
-    map['healthMonitoringEnabled'] = healthMonitoringEnabled;
-    map['incidentLogsEnabled'] = incidentLogsEnabled;
-    return map;
+    return <String, dynamic>{
+      'diagnosticsEventsEnabled': diagnosticsEventsEnabled,
+      'healthMonitoringEnabled': healthMonitoringEnabled,
+      'incidentLogsEnabled': incidentLogsEnabled,
+    };
   }
 
-  factory GetCloudVmClustersCloudVmClusterPropertyDiagnosticsDataCollectionOption.fromMap(
-      Map<String, dynamic> map) {
+  factory GetCloudVmClustersCloudVmClusterPropertyDiagnosticsDataCollectionOption.fromMap(Map<String, dynamic> map) {
     return GetCloudVmClustersCloudVmClusterPropertyDiagnosticsDataCollectionOption(
       diagnosticsEventsEnabled: map['diagnosticsEventsEnabled'] as bool,
       healthMonitoringEnabled: map['healthMonitoringEnabled'] as bool,
@@ -38,3 +36,4 @@ class GetCloudVmClustersCloudVmClusterPropertyDiagnosticsDataCollectionOption {
     );
   }
 }
+

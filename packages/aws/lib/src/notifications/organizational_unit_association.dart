@@ -423,7 +423,6 @@ import 'organizational_unit_association_args.dart';
 class OrganizationalUnitAssociation extends pulumi.CustomResource {
   /// ARN of the notification configuration to associate the organizational unit with.
   late final pulumi.Output<String> notificationConfigurationArn;
-
   /// ID of the organizational unit or ID of the root to associate with the notification configuration. Can be a root ID (e.g., `r-1234`), or an organization ID (e.g., `o-1234567890`).
   late final pulumi.Output<String> organizationalUnitId;
 
@@ -441,8 +440,7 @@ class OrganizationalUnitAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.notificationConfigurationArn =
-        registerOutput<String>('notificationConfigurationArn');
+    this.notificationConfigurationArn = registerOutput<String>('notificationConfigurationArn');
     this.organizationalUnitId = registerOutput<String>('organizationalUnitId');
   }
 }

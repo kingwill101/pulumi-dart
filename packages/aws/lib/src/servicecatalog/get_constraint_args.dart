@@ -9,15 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConstraintArgs {
   /// Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.
   final pulumi.Input<String>? acceptLanguage;
-
   /// Description of the constraint.
   final pulumi.Input<String>? description;
-
   /// Constraint identifier.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> id;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -31,38 +28,28 @@ class GetConstraintArgs {
     String? description,
     required String id,
     String? region,
-  })  : acceptLanguage = pulumi.Input.asOptionalInput<String>(acceptLanguage),
-        description = pulumi.Input.asOptionalInput<String>(description),
-        id = pulumi.Input.asInput<String>(id),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      acceptLanguage = pulumi.Input.asOptionalInput<String>(acceptLanguage),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      id = pulumi.Input.asInput<String>(id),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final acceptLanguageValue = acceptLanguage;
-    if (acceptLanguageValue != null) {
-      map['acceptLanguage'] = acceptLanguageValue;
-    }
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    map['id'] = id;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'acceptLanguage': ?acceptLanguage,
+      'description': ?description,
+      'id': id,
+      'region': ?region,
+    };
   }
 
   factory GetConstraintArgs.fromMap(Map<String, dynamic> map) {
     return GetConstraintArgs(
-      acceptLanguage: map['acceptLanguage'] == null
-          ? null
-          : map['acceptLanguage'] as String,
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      acceptLanguage: map['acceptLanguage'] == null ? null : map['acceptLanguage'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       id: map['id'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

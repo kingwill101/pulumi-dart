@@ -16,17 +16,15 @@ class GetServiceAccountArgs {
   GetServiceAccountArgs({
     String? project,
     required String serviceAccountId,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        serviceAccountId = pulumi.Input.asInput<String>(serviceAccountId);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      serviceAccountId = pulumi.Input.asInput<String>(serviceAccountId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['serviceAccountId'] = serviceAccountId;
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'serviceAccountId': serviceAccountId,
+    };
   }
 
   factory GetServiceAccountArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetServiceAccountArgs {
     );
   }
 }
+

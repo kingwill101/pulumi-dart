@@ -19,3 +19,4 @@ class _StateModuleNamespace {
   final getLocalReference = _state.getLocalReference;
   final getRemoteReference = _state.getRemoteReference;
 }
+

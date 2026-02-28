@@ -83,8 +83,7 @@ Future<GetInstanceResult> getInstance(
 /// Gets the access control policy for a Table or Backup resource. Returns an empty policy if the resource exists but does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_bigtableadmin_v2_get_instance_cluster_backup_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetInstanceClusterBackupIamPolicyResult>
-    getInstanceClusterBackupIamPolicy(
+Future<GetInstanceClusterBackupIamPolicyResult> getInstanceClusterBackupIamPolicy(
   GetInstanceClusterBackupIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

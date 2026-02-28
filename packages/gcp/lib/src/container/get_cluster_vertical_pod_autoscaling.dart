@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterVerticalPodAutoscaling {
   /// Enables vertical pod autoscaling.
   final bool enabled;
@@ -11,9 +12,9 @@ class GetClusterVerticalPodAutoscaling {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory GetClusterVerticalPodAutoscaling.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetClusterVerticalPodAutoscaling {
     );
   }
 }
+

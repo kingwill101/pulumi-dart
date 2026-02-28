@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AiFeatureGroupBigQueryBigQuerySource {
   /// BigQuery URI to a table, up to 2000 characters long. For example: `bq://projectId.bqDatasetId.bqTableId.`
   final String inputUri;
@@ -11,15 +12,15 @@ class AiFeatureGroupBigQueryBigQuerySource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['inputUri'] = inputUri;
-    return map;
+    return <String, dynamic>{
+      'inputUri': inputUri,
+    };
   }
 
-  factory AiFeatureGroupBigQueryBigQuerySource.fromMap(
-      Map<String, dynamic> map) {
+  factory AiFeatureGroupBigQueryBigQuerySource.fromMap(Map<String, dynamic> map) {
     return AiFeatureGroupBigQueryBigQuerySource(
       inputUri: map['inputUri'] as String,
     );
   }
 }
+

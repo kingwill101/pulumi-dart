@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DistributionConnectionFunctionAssociation {
   /// Identifier for the distribution. For example: `EDFDVBD632BHDS5`.
   final String id;
@@ -11,15 +12,15 @@ class DistributionConnectionFunctionAssociation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
-  factory DistributionConnectionFunctionAssociation.fromMap(
-      Map<String, dynamic> map) {
+  factory DistributionConnectionFunctionAssociation.fromMap(Map<String, dynamic> map) {
     return DistributionConnectionFunctionAssociation(
       id: map['id'] as String,
     );
   }
 }
+

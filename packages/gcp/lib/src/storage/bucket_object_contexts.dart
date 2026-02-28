@@ -14,18 +14,15 @@ class BucketObjectContexts {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['customs'] = pulumi.Input.encodeList<BucketObjectContextsCustom,
-        Map<String, dynamic>>(customs, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'customs': pulumi.Input.encodeList<BucketObjectContextsCustom, Map<String, dynamic>>(customs, (value) => value.toMap()),
+    };
   }
 
   factory BucketObjectContexts.fromMap(Map<String, dynamic> map) {
     return BucketObjectContexts(
-      customs: pulumi.Input.decodeList<BucketObjectContextsCustom>(
-          map['customs'],
-          (value) => BucketObjectContextsCustom.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      customs: pulumi.Input.decodeList<BucketObjectContextsCustom>(map['customs'], (value) => BucketObjectContextsCustom.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

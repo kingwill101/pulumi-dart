@@ -25,23 +25,21 @@ class GetCutoverJobArgs {
     required String migratingVmId,
     String? project,
     required String sourceId,
-  })  : cutoverJobId = pulumi.Input.asInput<String>(cutoverJobId),
-        location = pulumi.Input.asInput<String>(location),
-        migratingVmId = pulumi.Input.asInput<String>(migratingVmId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        sourceId = pulumi.Input.asInput<String>(sourceId);
+  }) :
+      cutoverJobId = pulumi.Input.asInput<String>(cutoverJobId),
+      location = pulumi.Input.asInput<String>(location),
+      migratingVmId = pulumi.Input.asInput<String>(migratingVmId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      sourceId = pulumi.Input.asInput<String>(sourceId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cutoverJobId'] = cutoverJobId;
-    map['location'] = location;
-    map['migratingVmId'] = migratingVmId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['sourceId'] = sourceId;
-    return map;
+    return <String, dynamic>{
+      'cutoverJobId': cutoverJobId,
+      'location': location,
+      'migratingVmId': migratingVmId,
+      'project': ?project,
+      'sourceId': sourceId,
+    };
   }
 
   factory GetCutoverJobArgs.fromMap(Map<String, dynamic> map) {
@@ -54,3 +52,4 @@ class GetCutoverJobArgs {
     );
   }
 }
+

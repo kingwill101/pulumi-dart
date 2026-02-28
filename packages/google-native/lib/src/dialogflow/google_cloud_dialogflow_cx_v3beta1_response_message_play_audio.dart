@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Specifies an audio clip to be played by the client as part of the response.
 class GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio {
   /// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
@@ -12,15 +13,15 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['audioUri'] = audioUri;
-    return map;
+    return <String, dynamic>{
+      'audioUri': audioUri,
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio(
       audioUri: map['audioUri'] as String,
     );
   }
 }
+

@@ -20,7 +20,7 @@ enum FeatureStoreFeatureValueTypeAiplatformV1beta1 {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown FeatureStoreFeatureValueTypeAiplatformV1beta1 value: $value');
+    throw ArgumentError('Unknown FeatureStoreFeatureValueTypeAiplatformV1beta1 value: $value');
   }
 }
+

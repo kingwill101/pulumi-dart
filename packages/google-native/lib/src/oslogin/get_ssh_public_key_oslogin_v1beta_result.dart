@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSshPublicKey.
 class GetSshPublicKeyOsloginV1betaResult {
   /// An expiration time in microseconds since epoch.
   final String expirationTimeUsec;
-
   /// The SHA-256 fingerprint of the SSH public key.
   final String fingerprint;
-
   /// Public key text in SSH format, defined by RFC4253 section 6.6.
   final String key;
-
   /// The canonical resource name.
   final String name;
 
@@ -27,12 +25,12 @@ class GetSshPublicKeyOsloginV1betaResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['expirationTimeUsec'] = expirationTimeUsec;
-    map['fingerprint'] = fingerprint;
-    map['key'] = key;
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'expirationTimeUsec': expirationTimeUsec,
+      'fingerprint': fingerprint,
+      'key': key,
+      'name': name,
+    };
   }
 
   factory GetSshPublicKeyOsloginV1betaResult.fromMap(Map<String, dynamic> map) {
@@ -44,3 +42,4 @@ class GetSshPublicKeyOsloginV1betaResult {
     );
   }
 }
+

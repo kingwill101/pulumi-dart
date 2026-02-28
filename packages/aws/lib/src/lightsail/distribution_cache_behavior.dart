@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DistributionCacheBehavior {
   /// Cache behavior for the specified path. Valid values: `cache`, `dont-cache`.
   final String behavior;
-
   /// Path to a directory or file to cache, or not cache. Use an asterisk symbol to specify wildcard directories (`path/to/assets/*`), and file types (`*.html`, `*.jpg`, `*.js`). Directories and file paths are case-sensitive.
   final String path;
 
@@ -16,10 +16,10 @@ class DistributionCacheBehavior {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['behavior'] = behavior;
-    map['path'] = path;
-    return map;
+    return <String, dynamic>{
+      'behavior': behavior,
+      'path': path,
+    };
   }
 
   factory DistributionCacheBehavior.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class DistributionCacheBehavior {
     );
   }
 }
+

@@ -9,19 +9,14 @@ import 'enterprise_crm_frontends_eventbus_proto_param_specs_message_response.dar
 class EnterpriseCrmFrontendsEventbusProtoTaskEntityResponse {
   /// True if the task has conflict with vpcsc
   final bool disabledForVpcSc;
-
   /// Metadata inclueds the task name, author and so on.
   final EnterpriseCrmEventbusProtoTaskMetadataResponse metadata;
-
   /// Declarations for inputs/outputs for a TypedTask. This is also associated with the METADATA mask.
   final EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageResponse paramSpecs;
-
   /// Deprecated - statistics from the Monarch query.
   final EnterpriseCrmEventbusStatsResponse stats;
-
   /// Defines the type of the task
   final String taskType;
-
   /// UI configuration for this task Also associated with the METADATA mask.
   final EnterpriseCrmEventbusProtoTaskUiConfigResponse uiConfig;
 
@@ -42,30 +37,25 @@ class EnterpriseCrmFrontendsEventbusProtoTaskEntityResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['disabledForVpcSc'] = disabledForVpcSc;
-    map['metadata'] = metadata.toMap();
-    map['paramSpecs'] = paramSpecs.toMap();
-    map['stats'] = stats.toMap();
-    map['taskType'] = taskType;
-    map['uiConfig'] = uiConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'disabledForVpcSc': disabledForVpcSc,
+      'metadata': metadata.toMap(),
+      'paramSpecs': paramSpecs.toMap(),
+      'stats': stats.toMap(),
+      'taskType': taskType,
+      'uiConfig': uiConfig.toMap(),
+    };
   }
 
-  factory EnterpriseCrmFrontendsEventbusProtoTaskEntityResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory EnterpriseCrmFrontendsEventbusProtoTaskEntityResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmFrontendsEventbusProtoTaskEntityResponse(
       disabledForVpcSc: map['disabledForVpcSc'] as bool,
-      metadata: EnterpriseCrmEventbusProtoTaskMetadataResponse.fromMap(
-          (map['metadata'] as Map).cast<String, dynamic>()),
-      paramSpecs:
-          EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageResponse.fromMap(
-              (map['paramSpecs'] as Map).cast<String, dynamic>()),
-      stats: EnterpriseCrmEventbusStatsResponse.fromMap(
-          (map['stats'] as Map).cast<String, dynamic>()),
+      metadata: EnterpriseCrmEventbusProtoTaskMetadataResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
+      paramSpecs: EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageResponse.fromMap((map['paramSpecs'] as Map).cast<String, dynamic>()),
+      stats: EnterpriseCrmEventbusStatsResponse.fromMap((map['stats'] as Map).cast<String, dynamic>()),
       taskType: map['taskType'] as String,
-      uiConfig: EnterpriseCrmEventbusProtoTaskUiConfigResponse.fromMap(
-          (map['uiConfig'] as Map).cast<String, dynamic>()),
+      uiConfig: EnterpriseCrmEventbusProtoTaskUiConfigResponse.fromMap((map['uiConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

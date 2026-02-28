@@ -3,8 +3,7 @@
 import 'agent_flow_definition_node_configuration_storage_service_configuration.dart';
 
 class AgentFlowDefinitionNodeConfigurationStorage {
-  final AgentFlowDefinitionNodeConfigurationStorageServiceConfiguration?
-      serviceConfiguration;
+  final AgentFlowDefinitionNodeConfigurationStorageServiceConfiguration? serviceConfiguration;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationStorage].
   /// [serviceConfiguration] Optional.
@@ -13,22 +12,15 @@ class AgentFlowDefinitionNodeConfigurationStorage {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final serviceConfigurationValue = serviceConfiguration;
-    if (serviceConfigurationValue != null) {
-      map['serviceConfiguration'] = serviceConfigurationValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'serviceConfiguration': ?serviceConfiguration == null ? null : serviceConfiguration!.toMap(),
+    };
   }
 
-  factory AgentFlowDefinitionNodeConfigurationStorage.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentFlowDefinitionNodeConfigurationStorage.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationStorage(
-      serviceConfiguration: map['serviceConfiguration'] == null
-          ? null
-          : AgentFlowDefinitionNodeConfigurationStorageServiceConfiguration
-              .fromMap(
-                  (map['serviceConfiguration'] as Map).cast<String, dynamic>()),
+      serviceConfiguration: map['serviceConfiguration'] == null ? null : AgentFlowDefinitionNodeConfigurationStorageServiceConfiguration.fromMap((map['serviceConfiguration'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

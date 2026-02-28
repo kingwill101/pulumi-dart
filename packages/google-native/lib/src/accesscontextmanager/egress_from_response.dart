@@ -7,13 +7,10 @@ import 'egress_source_response.dart';
 class EgressFromResponse {
   /// A list of identities that are allowed access through this [EgressPolicy]. Should be in the format of email address. The email address should represent individual user or service account only.
   final List<String> identities;
-
   /// Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
   final String identityType;
-
   /// Whether to enforce traffic restrictions based on `sources` field. If the `sources` fields is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
   final String sourceRestriction;
-
   /// Sources that this EgressPolicy authorizes access from. If this field is not empty, then `source_restriction` must be set to `SOURCE_RESTRICTION_ENABLED`.
   final List<EgressSourceResponse> sources;
 
@@ -30,14 +27,12 @@ class EgressFromResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['identities'] = identities;
-    map['identityType'] = identityType;
-    map['sourceRestriction'] = sourceRestriction;
-    map['sources'] =
-        pulumi.Input.encodeList<EgressSourceResponse, Map<String, dynamic>>(
-            sources, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'identities': identities,
+      'identityType': identityType,
+      'sourceRestriction': sourceRestriction,
+      'sources': pulumi.Input.encodeList<EgressSourceResponse, Map<String, dynamic>>(sources, (value) => value.toMap()),
+    };
   }
 
   factory EgressFromResponse.fromMap(Map<String, dynamic> map) {
@@ -45,10 +40,8 @@ class EgressFromResponse {
       identities: (map['identities'] as List).cast<String>(),
       identityType: map['identityType'] as String,
       sourceRestriction: map['sourceRestriction'] as String,
-      sources: pulumi.Input.decodeList<EgressSourceResponse>(
-          map['sources'],
-          (value) => EgressSourceResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      sources: pulumi.Input.decodeList<EgressSourceResponse>(map['sources'], (value) => EgressSourceResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

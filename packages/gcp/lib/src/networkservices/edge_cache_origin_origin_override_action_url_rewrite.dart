@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EdgeCacheOriginOriginOverrideActionUrlRewrite {
   /// Prior to forwarding the request to the selected
   /// origin, the request's host header is replaced with
@@ -14,19 +15,15 @@ class EdgeCacheOriginOriginOverrideActionUrlRewrite {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final hostRewriteValue = hostRewrite;
-    if (hostRewriteValue != null) {
-      map['hostRewrite'] = hostRewriteValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'hostRewrite': ?hostRewrite,
+    };
   }
 
-  factory EdgeCacheOriginOriginOverrideActionUrlRewrite.fromMap(
-      Map<String, dynamic> map) {
+  factory EdgeCacheOriginOriginOverrideActionUrlRewrite.fromMap(Map<String, dynamic> map) {
     return EdgeCacheOriginOriginOverrideActionUrlRewrite(
-      hostRewrite:
-          map['hostRewrite'] == null ? null : map['hostRewrite'] as String,
+      hostRewrite: map['hostRewrite'] == null ? null : map['hostRewrite'] as String,
     );
   }
 }
+

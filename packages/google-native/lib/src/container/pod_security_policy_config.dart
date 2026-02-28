@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for the PodSecurityPolicy feature.
 class PodSecurityPolicyConfig {
   /// Enable the PodSecurityPolicy controller for this cluster. If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -12,12 +13,9 @@ class PodSecurityPolicyConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory PodSecurityPolicyConfig.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class PodSecurityPolicyConfig {
     );
   }
 }
+

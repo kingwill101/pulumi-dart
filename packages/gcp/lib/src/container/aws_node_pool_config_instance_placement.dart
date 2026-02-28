@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AwsNodePoolConfigInstancePlacement {
   /// The tenancy for the instance. Possible values: TENANCY_UNSPECIFIED, DEFAULT, DEDICATED, HOST
   final String? tenancy;
@@ -11,12 +12,9 @@ class AwsNodePoolConfigInstancePlacement {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final tenancyValue = tenancy;
-    if (tenancyValue != null) {
-      map['tenancy'] = tenancyValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'tenancy': ?tenancy,
+    };
   }
 
   factory AwsNodePoolConfigInstancePlacement.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class AwsNodePoolConfigInstancePlacement {
     );
   }
 }
+

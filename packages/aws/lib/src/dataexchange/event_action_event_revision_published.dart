@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EventActionEventRevisionPublished {
   /// The ID of the data set to monitor for revision publications.
   /// Changing this value will recreate the resource.
@@ -12,9 +13,9 @@ class EventActionEventRevisionPublished {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dataSetId'] = dataSetId;
-    return map;
+    return <String, dynamic>{
+      'dataSetId': dataSetId,
+    };
   }
 
   factory EventActionEventRevisionPublished.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class EventActionEventRevisionPublished {
     );
   }
 }
+

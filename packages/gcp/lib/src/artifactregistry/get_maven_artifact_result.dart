@@ -1,31 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getMavenArtifact.
 class GetMavenArtifactResult {
   final String artifactId;
-
   /// The time the artifact was created.
   final String createTime;
   final String groupId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
-
   /// The fully qualified name of the fetched artifact. Format:
   /// ```
   /// projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}/mavenArtifacts/{{group_id}}:{{artifact_id}}:{{version}}
   /// ```
   final String name;
-
   /// URL to access the pom file of the artifact. Example: `us-west4-maven.pkg.dev/test-project/test-repo/com/google/guava/guava/31.0/guava-31.0.pom`
   final String pomUri;
   final String? project;
   final String repositoryId;
-
   /// The time the artifact was last updated.
   final String updateTime;
-
   /// The version of the Maven artifact.
   final String version;
 
@@ -56,22 +51,19 @@ class GetMavenArtifactResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['artifactId'] = artifactId;
-    map['createTime'] = createTime;
-    map['groupId'] = groupId;
-    map['id'] = id;
-    map['location'] = location;
-    map['name'] = name;
-    map['pomUri'] = pomUri;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['repositoryId'] = repositoryId;
-    map['updateTime'] = updateTime;
-    map['version'] = version;
-    return map;
+    return <String, dynamic>{
+      'artifactId': artifactId,
+      'createTime': createTime,
+      'groupId': groupId,
+      'id': id,
+      'location': location,
+      'name': name,
+      'pomUri': pomUri,
+      'project': ?project,
+      'repositoryId': repositoryId,
+      'updateTime': updateTime,
+      'version': version,
+    };
   }
 
   factory GetMavenArtifactResult.fromMap(Map<String, dynamic> map) {
@@ -90,3 +82,4 @@ class GetMavenArtifactResult {
     );
   }
 }
+

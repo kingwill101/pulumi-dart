@@ -9,7 +9,6 @@ import 'get_secrets_secret.dart';
 /// {@macro pulumi_kms_get_secrets_get_secrets_args_doc}
 class GetSecretsArgs {
   final pulumi.Input<String>? region;
-
   /// One or more encrypted payload definitions from the KMS service. See the Secret Definitions below.
   final pulumi.Input<List<GetSecretsSecret>> secrets;
 
@@ -19,31 +18,22 @@ class GetSecretsArgs {
   GetSecretsArgs({
     String? region,
     required List<GetSecretsSecret> secrets,
-  })  : region = pulumi.Input.asOptionalInput<String>(region),
-        secrets = pulumi.Input.asInput<List<GetSecretsSecret>>(secrets);
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      secrets = pulumi.Input.asInput<List<GetSecretsSecret>>(secrets);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['secrets'] = pulumi.Input.mapInputValue<List<GetSecretsSecret>,
-            List<Map<String, dynamic>>>(
-        secrets,
-        (value) =>
-            pulumi.Input.encodeList<GetSecretsSecret, Map<String, dynamic>>(
-                value, (value) => value.toMap()));
-    return map;
+    return <String, dynamic>{
+      'region': ?region,
+      'secrets': pulumi.Input.mapInputValue<List<GetSecretsSecret>, List<Map<String, dynamic>>>(secrets, (value) => pulumi.Input.encodeList<GetSecretsSecret, Map<String, dynamic>>(value, (value) => value.toMap())),
+    };
   }
 
   factory GetSecretsArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretsArgs(
       region: map['region'] == null ? null : map['region'] as String,
-      secrets: pulumi.Input.decodeList<GetSecretsSecret>(
-          map['secrets'],
-          (value) =>
-              GetSecretsSecret.fromMap((value as Map).cast<String, dynamic>())),
+      secrets: pulumi.Input.decodeList<GetSecretsSecret>(map['secrets'], (value) => GetSecretsSecret.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

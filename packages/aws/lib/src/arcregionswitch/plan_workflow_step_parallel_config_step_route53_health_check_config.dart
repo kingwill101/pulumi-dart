@@ -6,21 +6,14 @@ import 'plan_workflow_step_parallel_config_step_route53_health_check_config_reco
 class PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfig {
   /// ARN of the cross-account role to assume.
   final String? crossAccountRole;
-
   /// External ID for cross-account role assumption.
   final String? externalId;
-
   /// Route53 hosted zone ID.
   final String hostedZoneId;
-
   /// DNS record name.
   final String recordName;
-
   /// Configuration block for record sets. See Record Set below.
-  final List<
-          PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfigRecordSet>?
-      recordSets;
-
+  final List<PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfigRecordSet>? recordSets;
   /// Timeout in minutes.
   final int? timeoutMinutes;
 
@@ -41,50 +34,25 @@ class PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final crossAccountRoleValue = crossAccountRole;
-    if (crossAccountRoleValue != null) {
-      map['crossAccountRole'] = crossAccountRoleValue;
-    }
-    final externalIdValue = externalId;
-    if (externalIdValue != null) {
-      map['externalId'] = externalIdValue;
-    }
-    map['hostedZoneId'] = hostedZoneId;
-    map['recordName'] = recordName;
-    final recordSetsValue = recordSets;
-    if (recordSetsValue != null) {
-      map['recordSets'] = pulumi.Input.encodeList<
-          PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfigRecordSet,
-          Map<String, dynamic>>(recordSetsValue, (value) => value.toMap());
-    }
-    final timeoutMinutesValue = timeoutMinutes;
-    if (timeoutMinutesValue != null) {
-      map['timeoutMinutes'] = timeoutMinutesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'crossAccountRole': ?crossAccountRole,
+      'externalId': ?externalId,
+      'hostedZoneId': hostedZoneId,
+      'recordName': recordName,
+      'recordSets': ?recordSets == null ? null : pulumi.Input.encodeList<PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfigRecordSet, Map<String, dynamic>>(recordSets!, (value) => value.toMap()),
+      'timeoutMinutes': ?timeoutMinutes,
+    };
   }
 
-  factory PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfig.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfig(
-      crossAccountRole: map['crossAccountRole'] == null
-          ? null
-          : map['crossAccountRole'] as String,
-      externalId:
-          map['externalId'] == null ? null : map['externalId'] as String,
+      crossAccountRole: map['crossAccountRole'] == null ? null : map['crossAccountRole'] as String,
+      externalId: map['externalId'] == null ? null : map['externalId'] as String,
       hostedZoneId: map['hostedZoneId'] as String,
       recordName: map['recordName'] as String,
-      recordSets: map['recordSets'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfigRecordSet>(
-              map['recordSets'],
-              (value) =>
-                  PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfigRecordSet
-                      .fromMap((value as Map).cast<String, dynamic>())),
-      timeoutMinutes:
-          map['timeoutMinutes'] == null ? null : map['timeoutMinutes'] as int,
+      recordSets: map['recordSets'] == null ? null : pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfigRecordSet>(map['recordSets'], (value) => PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfigRecordSet.fromMap((value as Map).cast<String, dynamic>())),
+      timeoutMinutes: map['timeoutMinutes'] == null ? null : map['timeoutMinutes'] as int,
     );
   }
 }
+

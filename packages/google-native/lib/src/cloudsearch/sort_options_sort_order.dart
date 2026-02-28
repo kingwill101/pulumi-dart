@@ -15,3 +15,4 @@ enum SortOptionsSortOrder {
     throw ArgumentError('Unknown SortOptionsSortOrder value: $value');
   }
 }
+

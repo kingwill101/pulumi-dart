@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A single rollout step with specified traffic allocation.
 class GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStep {
   /// The name of the rollout step;
   final String? displayName;
-
   /// The minimum time that this step should last. Should be longer than 1 hour. If not set, the default minimum duration for each step will be 1 hour.
   final String? minDuration;
-
   /// The percentage of traffic allocated to the flow version of this rollout step. (0%, 100%].
   final int? trafficPercent;
 
@@ -22,31 +21,19 @@ class GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStep {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final displayNameValue = displayName;
-    if (displayNameValue != null) {
-      map['displayName'] = displayNameValue;
-    }
-    final minDurationValue = minDuration;
-    if (minDurationValue != null) {
-      map['minDuration'] = minDurationValue;
-    }
-    final trafficPercentValue = trafficPercent;
-    if (trafficPercentValue != null) {
-      map['trafficPercent'] = trafficPercentValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'displayName': ?displayName,
+      'minDuration': ?minDuration,
+      'trafficPercent': ?trafficPercent,
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStep.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStep.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStep(
-      displayName:
-          map['displayName'] == null ? null : map['displayName'] as String,
-      minDuration:
-          map['minDuration'] == null ? null : map['minDuration'] as String,
-      trafficPercent:
-          map['trafficPercent'] == null ? null : map['trafficPercent'] as int,
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      minDuration: map['minDuration'] == null ? null : map['minDuration'] as String,
+      trafficPercent: map['trafficPercent'] == null ? null : map['trafficPercent'] as int,
     );
   }
 }
+

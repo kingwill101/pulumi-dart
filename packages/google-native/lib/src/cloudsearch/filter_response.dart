@@ -17,18 +17,17 @@ class FilterResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['compositeFilter'] = compositeFilter.toMap();
-    map['valueFilter'] = valueFilter.toMap();
-    return map;
+    return <String, dynamic>{
+      'compositeFilter': compositeFilter.toMap(),
+      'valueFilter': valueFilter.toMap(),
+    };
   }
 
   factory FilterResponse.fromMap(Map<String, dynamic> map) {
     return FilterResponse(
-      compositeFilter: CompositeFilterResponse.fromMap(
-          (map['compositeFilter'] as Map).cast<String, dynamic>()),
-      valueFilter: ValueFilterResponse.fromMap(
-          (map['valueFilter'] as Map).cast<String, dynamic>()),
+      compositeFilter: CompositeFilterResponse.fromMap((map['compositeFilter'] as Map).cast<String, dynamic>()),
+      valueFilter: ValueFilterResponse.fromMap((map['valueFilter'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

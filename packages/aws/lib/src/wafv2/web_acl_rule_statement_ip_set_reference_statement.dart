@@ -5,10 +5,8 @@ import 'web_acl_rule_statement_ip_set_reference_statement_ip_set_forwarded_ip_co
 class WebAclRuleStatementIpSetReferenceStatement {
   /// The Amazon Resource Name (ARN) of the IP Set that this statement references.
   final String arn;
-
   /// Configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. See `ip_set_forwarded_ip_config` below for more details.
-  final WebAclRuleStatementIpSetReferenceStatementIpSetForwardedIpConfig?
-      ipSetForwardedIpConfig;
+  final WebAclRuleStatementIpSetReferenceStatementIpSetForwardedIpConfig? ipSetForwardedIpConfig;
 
   /// Creates a new [WebAclRuleStatementIpSetReferenceStatement].
   /// [arn] The Amazon Resource Name (ARN) of the IP Set that this statement references.
@@ -19,24 +17,17 @@ class WebAclRuleStatementIpSetReferenceStatement {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    final ipSetForwardedIpConfigValue = ipSetForwardedIpConfig;
-    if (ipSetForwardedIpConfigValue != null) {
-      map['ipSetForwardedIpConfig'] = ipSetForwardedIpConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'ipSetForwardedIpConfig': ?ipSetForwardedIpConfig == null ? null : ipSetForwardedIpConfig!.toMap(),
+    };
   }
 
-  factory WebAclRuleStatementIpSetReferenceStatement.fromMap(
-      Map<String, dynamic> map) {
+  factory WebAclRuleStatementIpSetReferenceStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementIpSetReferenceStatement(
       arn: map['arn'] as String,
-      ipSetForwardedIpConfig: map['ipSetForwardedIpConfig'] == null
-          ? null
-          : WebAclRuleStatementIpSetReferenceStatementIpSetForwardedIpConfig
-              .fromMap((map['ipSetForwardedIpConfig'] as Map)
-                  .cast<String, dynamic>()),
+      ipSetForwardedIpConfig: map['ipSetForwardedIpConfig'] == null ? null : WebAclRuleStatementIpSetReferenceStatementIpSetForwardedIpConfig.fromMap((map['ipSetForwardedIpConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

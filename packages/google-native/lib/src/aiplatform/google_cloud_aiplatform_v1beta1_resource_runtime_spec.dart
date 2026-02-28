@@ -7,7 +7,6 @@ import 'google_cloud_aiplatform_v1beta1_service_account_spec.dart';
 class GoogleCloudAiplatformV1beta1ResourceRuntimeSpec {
   /// Optional. Ray cluster configuration. Required when creating a dedicated RayCluster on the PersistentResource.
   final GoogleCloudAiplatformV1beta1RaySpec? raySpec;
-
   /// Optional. Configure the use of workload identity on the PersistentResource
   final GoogleCloudAiplatformV1beta1ServiceAccountSpec? serviceAccountSpec;
 
@@ -20,29 +19,17 @@ class GoogleCloudAiplatformV1beta1ResourceRuntimeSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final raySpecValue = raySpec;
-    if (raySpecValue != null) {
-      map['raySpec'] = raySpecValue.toMap();
-    }
-    final serviceAccountSpecValue = serviceAccountSpec;
-    if (serviceAccountSpecValue != null) {
-      map['serviceAccountSpec'] = serviceAccountSpecValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'raySpec': ?raySpec == null ? null : raySpec!.toMap(),
+      'serviceAccountSpec': ?serviceAccountSpec == null ? null : serviceAccountSpec!.toMap(),
+    };
   }
 
-  factory GoogleCloudAiplatformV1beta1ResourceRuntimeSpec.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1ResourceRuntimeSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ResourceRuntimeSpec(
-      raySpec: map['raySpec'] == null
-          ? null
-          : GoogleCloudAiplatformV1beta1RaySpec.fromMap(
-              (map['raySpec'] as Map).cast<String, dynamic>()),
-      serviceAccountSpec: map['serviceAccountSpec'] == null
-          ? null
-          : GoogleCloudAiplatformV1beta1ServiceAccountSpec.fromMap(
-              (map['serviceAccountSpec'] as Map).cast<String, dynamic>()),
+      raySpec: map['raySpec'] == null ? null : GoogleCloudAiplatformV1beta1RaySpec.fromMap((map['raySpec'] as Map).cast<String, dynamic>()),
+      serviceAccountSpec: map['serviceAccountSpec'] == null ? null : GoogleCloudAiplatformV1beta1ServiceAccountSpec.fromMap((map['serviceAccountSpec'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

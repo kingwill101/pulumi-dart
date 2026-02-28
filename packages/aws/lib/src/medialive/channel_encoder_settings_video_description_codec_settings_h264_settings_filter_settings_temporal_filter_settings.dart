@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettingsTemporalFilterSettings {
   /// Post filter sharpening.
   final String? postFilterSharpening;
-
   /// Filter strength.
   final String? strength;
 
@@ -16,25 +16,17 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSetti
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final postFilterSharpeningValue = postFilterSharpening;
-    if (postFilterSharpeningValue != null) {
-      map['postFilterSharpening'] = postFilterSharpeningValue;
-    }
-    final strengthValue = strength;
-    if (strengthValue != null) {
-      map['strength'] = strengthValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'postFilterSharpening': ?postFilterSharpening,
+      'strength': ?strength,
+    };
   }
 
-  factory ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettingsTemporalFilterSettings.fromMap(
-      Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettingsTemporalFilterSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettingsTemporalFilterSettings(
-      postFilterSharpening: map['postFilterSharpening'] == null
-          ? null
-          : map['postFilterSharpening'] as String,
+      postFilterSharpening: map['postFilterSharpening'] == null ? null : map['postFilterSharpening'] as String,
       strength: map['strength'] == null ? null : map['strength'] as String,
     );
   }
 }
+

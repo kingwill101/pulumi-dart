@@ -326,8 +326,7 @@ Future<GetAppregistryAttributeGroupResult> getAppregistryAttributeGroup(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_servicecatalog_get_appregistry_attribute_group_associations_get_appregistry_attribute_group_associations_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAppregistryAttributeGroupAssociationsResult>
-    getAppregistryAttributeGroupAssociations(
+Future<GetAppregistryAttributeGroupAssociationsResult> getAppregistryAttributeGroupAssociations(
   GetAppregistryAttributeGroupAssociationsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

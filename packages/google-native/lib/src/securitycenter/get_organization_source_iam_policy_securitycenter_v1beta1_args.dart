@@ -16,21 +16,22 @@ class GetOrganizationSourceIamPolicySecuritycenterV1beta1Args {
   GetOrganizationSourceIamPolicySecuritycenterV1beta1Args({
     required String organizationId,
     required String sourceId,
-  })  : organizationId = pulumi.Input.asInput<String>(organizationId),
-        sourceId = pulumi.Input.asInput<String>(sourceId);
+  }) :
+      organizationId = pulumi.Input.asInput<String>(organizationId),
+      sourceId = pulumi.Input.asInput<String>(sourceId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['organizationId'] = organizationId;
-    map['sourceId'] = sourceId;
-    return map;
+    return <String, dynamic>{
+      'organizationId': organizationId,
+      'sourceId': sourceId,
+    };
   }
 
-  factory GetOrganizationSourceIamPolicySecuritycenterV1beta1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetOrganizationSourceIamPolicySecuritycenterV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetOrganizationSourceIamPolicySecuritycenterV1beta1Args(
       organizationId: map['organizationId'] as String,
       sourceId: map['sourceId'] as String,
     );
   }
 }
+

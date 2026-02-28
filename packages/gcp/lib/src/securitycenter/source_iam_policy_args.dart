@@ -21,16 +21,17 @@ class SourceIamPolicyArgs {
     required String organization,
     required String policyData,
     required String source,
-  })  : organization = pulumi.Input.asInput<String>(organization),
-        policyData = pulumi.Input.asInput<String>(policyData),
-        source = pulumi.Input.asInput<String>(source);
+  }) :
+      organization = pulumi.Input.asInput<String>(organization),
+      policyData = pulumi.Input.asInput<String>(policyData),
+      source = pulumi.Input.asInput<String>(source);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['organization'] = organization;
-    map['policyData'] = policyData;
-    map['source'] = source;
-    return map;
+    return <String, dynamic>{
+      'organization': organization,
+      'policyData': policyData,
+      'source': source,
+    };
   }
 
   factory SourceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -41,3 +42,4 @@ class SourceIamPolicyArgs {
     );
   }
 }
+

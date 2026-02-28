@@ -44,13 +44,10 @@ import 'api_deployment_args.dart';
 class ApiDeployment extends pulumi.CustomResource {
   /// The Apigee Environment associated with the Apigee API deployment.
   late final pulumi.Output<String> environment;
-
   /// The Apigee Organization associated with the Apigee API deployment.
   late final pulumi.Output<String> orgId;
-
   /// The Apigee API associated with the Apigee API deployment.
   late final pulumi.Output<String> proxyId;
-
   /// The revision of the API proxy to be deployed.
   late final pulumi.Output<String> revision;
 

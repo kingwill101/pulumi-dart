@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Artifact policy configuration for the repository contents.
 class UpstreamPolicyResponse {
   /// Entries with a greater priority value take precedence in the pull order.
   final int priority;
-
   /// A reference to the repository resource, for example: `projects/p1/locations/us-central1/repositories/repo1`.
   final String repository;
 
@@ -17,10 +17,10 @@ class UpstreamPolicyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['priority'] = priority;
-    map['repository'] = repository;
-    return map;
+    return <String, dynamic>{
+      'priority': priority,
+      'repository': repository,
+    };
   }
 
   factory UpstreamPolicyResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class UpstreamPolicyResponse {
     );
   }
 }
+

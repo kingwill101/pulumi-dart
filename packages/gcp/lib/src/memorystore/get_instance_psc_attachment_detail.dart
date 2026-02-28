@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInstancePscAttachmentDetail {
   /// Service attachment URI which your self-created PscConnection should use as target.
   final String connectionType;
-
   /// Service attachment URI which your self-created PscConnection should use as target.
   final String serviceAttachment;
 
@@ -16,10 +16,10 @@ class GetInstancePscAttachmentDetail {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['connectionType'] = connectionType;
-    map['serviceAttachment'] = serviceAttachment;
-    return map;
+    return <String, dynamic>{
+      'connectionType': connectionType,
+      'serviceAttachment': serviceAttachment,
+    };
   }
 
   factory GetInstancePscAttachmentDetail.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetInstancePscAttachmentDetail {
     );
   }
 }
+

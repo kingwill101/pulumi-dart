@@ -14,21 +14,15 @@ class EnterpriseCrmEventbusProtoSuccessPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final finalStateValue = finalState;
-    if (finalStateValue != null) {
-      map['finalState'] = finalStateValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'finalState': ?finalState == null ? null : finalState!.value,
+    };
   }
 
-  factory EnterpriseCrmEventbusProtoSuccessPolicy.fromMap(
-      Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoSuccessPolicy.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoSuccessPolicy(
-      finalState: map['finalState'] == null
-          ? null
-          : EnterpriseCrmEventbusProtoSuccessPolicyFinalState.fromValue(
-              map['finalState'] as String),
+      finalState: map['finalState'] == null ? null : EnterpriseCrmEventbusProtoSuccessPolicyFinalState.fromValue(map['finalState'] as String),
     );
   }
 }
+

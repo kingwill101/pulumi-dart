@@ -131,18 +131,14 @@ import 'service_action_definition.dart';
 class ServiceAction extends pulumi.CustomResource {
   /// Language code. Valid values are `en` (English), `jp` (Japanese), and `zh` (Chinese). Default is `en`.
   late final pulumi.Output<String?> acceptLanguage;
-
   /// Self-service action definition configuration block. Detailed below.
   late final pulumi.Output<ServiceActionDefinition> definition;
-
   /// Self-service action description.
   late final pulumi.Output<String> description;
-
   /// Self-service action name.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

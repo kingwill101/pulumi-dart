@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RegionSecurityPolicyDdosProtectionConfig {
   /// Google Cloud Armor offers the following options to help protect systems against DDoS attacks:
   /// - STANDARD: basic always-on protection for network load balancers, protocol forwarding, or VMs with public IP addresses.
@@ -15,15 +16,15 @@ class RegionSecurityPolicyDdosProtectionConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ddosProtection'] = ddosProtection;
-    return map;
+    return <String, dynamic>{
+      'ddosProtection': ddosProtection,
+    };
   }
 
-  factory RegionSecurityPolicyDdosProtectionConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory RegionSecurityPolicyDdosProtectionConfig.fromMap(Map<String, dynamic> map) {
     return RegionSecurityPolicyDdosProtectionConfig(
       ddosProtection: map['ddosProtection'] as String,
     );
   }
 }
+

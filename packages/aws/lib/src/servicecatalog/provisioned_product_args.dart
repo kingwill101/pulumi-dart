@@ -11,50 +11,34 @@ import 'provisioned_product_stack_set_provisioning_preferences.dart';
 class ProvisionedProductArgs {
   /// Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.
   final pulumi.Input<String>? acceptLanguage;
-
   /// _Only applies to deleting._ If set to `true`, AWS Service Catalog stops managing the specified provisioned product even if it cannot delete the underlying resources. The default value is `false`.
   final pulumi.Input<bool>? ignoreErrors;
-
   /// User-friendly name of the provisioned product.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? name;
-
   /// Passed to CloudFormation. The SNS topic ARNs to which to publish stack-related events.
   final pulumi.Input<List<String>>? notificationArns;
-
   /// Path identifier of the product. This value is optional if the product has a default path, and required if the product has more than one path. To list the paths for a product, use `aws.servicecatalog.getLaunchPaths`. When required, you must provide `path_id` or `path_name`, but not both.
   final pulumi.Input<String>? pathId;
-
   /// Name of the path. You must provide `path_id` or `path_name`, but not both.
   final pulumi.Input<String>? pathName;
-
   /// Product identifier. For example, `prod-abcdzk7xy33qa`. You must provide `product_id` or `product_name`, but not both.
   final pulumi.Input<String>? productId;
-
   /// Name of the product. You must provide `product_id` or `product_name`, but not both.
   final pulumi.Input<String>? productName;
-
   /// Identifier of the provisioning artifact. For example, `pa-4abcdjnxjj6ne`. You must provide the `provisioning_artifact_id` or `provisioning_artifact_name`, but not both.
   final pulumi.Input<String>? provisioningArtifactId;
-
   /// Name of the provisioning artifact. You must provide the `provisioning_artifact_id` or `provisioning_artifact_name`, but not both.
   final pulumi.Input<String>? provisioningArtifactName;
-
   /// Configuration block with parameters specified by the administrator that are required for provisioning the product. See `provisioning_parameters` Block for details.
-  final pulumi.Input<List<ProvisionedProductProvisioningParameter>>?
-      provisioningParameters;
-
+  final pulumi.Input<List<ProvisionedProductProvisioningParameter>>? provisioningParameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// _Only applies to deleting._ Whether to delete the Service Catalog provisioned product but leave the CloudFormation stack, stack set, or the underlying resources of the deleted provisioned product. The default value is `false`.
   final pulumi.Input<bool>? retainPhysicalResources;
-
   /// Configuration block with information about the provisioning preferences for a stack set. See `stack_set_provisioning_preferences` Block for details.
-  final pulumi.Input<ProvisionedProductStackSetProvisioningPreferences>?
-      stackSetProvisioningPreferences;
-
+  final pulumi.Input<ProvisionedProductStackSetProvisioningPreferences>? stackSetProvisioningPreferences;
   /// Tags to apply to the provisioned product. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -88,150 +72,63 @@ class ProvisionedProductArgs {
     List<ProvisionedProductProvisioningParameter>? provisioningParameters,
     String? region,
     bool? retainPhysicalResources,
-    ProvisionedProductStackSetProvisioningPreferences?
-        stackSetProvisioningPreferences,
+    ProvisionedProductStackSetProvisioningPreferences? stackSetProvisioningPreferences,
     Map<String, String>? tags,
-  })  : acceptLanguage = pulumi.Input.asOptionalInput<String>(acceptLanguage),
-        ignoreErrors = pulumi.Input.asOptionalInput<bool>(ignoreErrors),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        notificationArns =
-            pulumi.Input.asOptionalInput<List<String>>(notificationArns),
-        pathId = pulumi.Input.asOptionalInput<String>(pathId),
-        pathName = pulumi.Input.asOptionalInput<String>(pathName),
-        productId = pulumi.Input.asOptionalInput<String>(productId),
-        productName = pulumi.Input.asOptionalInput<String>(productName),
-        provisioningArtifactId =
-            pulumi.Input.asOptionalInput<String>(provisioningArtifactId),
-        provisioningArtifactName =
-            pulumi.Input.asOptionalInput<String>(provisioningArtifactName),
-        provisioningParameters = pulumi.Input.asOptionalInput<
-                List<ProvisionedProductProvisioningParameter>>(
-            provisioningParameters),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        retainPhysicalResources =
-            pulumi.Input.asOptionalInput<bool>(retainPhysicalResources),
-        stackSetProvisioningPreferences = pulumi.Input.asOptionalInput<
-                ProvisionedProductStackSetProvisioningPreferences>(
-            stackSetProvisioningPreferences),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      acceptLanguage = pulumi.Input.asOptionalInput<String>(acceptLanguage),
+      ignoreErrors = pulumi.Input.asOptionalInput<bool>(ignoreErrors),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      notificationArns = pulumi.Input.asOptionalInput<List<String>>(notificationArns),
+      pathId = pulumi.Input.asOptionalInput<String>(pathId),
+      pathName = pulumi.Input.asOptionalInput<String>(pathName),
+      productId = pulumi.Input.asOptionalInput<String>(productId),
+      productName = pulumi.Input.asOptionalInput<String>(productName),
+      provisioningArtifactId = pulumi.Input.asOptionalInput<String>(provisioningArtifactId),
+      provisioningArtifactName = pulumi.Input.asOptionalInput<String>(provisioningArtifactName),
+      provisioningParameters = pulumi.Input.asOptionalInput<List<ProvisionedProductProvisioningParameter>>(provisioningParameters),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      retainPhysicalResources = pulumi.Input.asOptionalInput<bool>(retainPhysicalResources),
+      stackSetProvisioningPreferences = pulumi.Input.asOptionalInput<ProvisionedProductStackSetProvisioningPreferences>(stackSetProvisioningPreferences),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final acceptLanguageValue = acceptLanguage;
-    if (acceptLanguageValue != null) {
-      map['acceptLanguage'] = acceptLanguageValue;
-    }
-    final ignoreErrorsValue = ignoreErrors;
-    if (ignoreErrorsValue != null) {
-      map['ignoreErrors'] = ignoreErrorsValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final notificationArnsValue = notificationArns;
-    if (notificationArnsValue != null) {
-      map['notificationArns'] = notificationArnsValue;
-    }
-    final pathIdValue = pathId;
-    if (pathIdValue != null) {
-      map['pathId'] = pathIdValue;
-    }
-    final pathNameValue = pathName;
-    if (pathNameValue != null) {
-      map['pathName'] = pathNameValue;
-    }
-    final productIdValue = productId;
-    if (productIdValue != null) {
-      map['productId'] = productIdValue;
-    }
-    final productNameValue = productName;
-    if (productNameValue != null) {
-      map['productName'] = productNameValue;
-    }
-    final provisioningArtifactIdValue = provisioningArtifactId;
-    if (provisioningArtifactIdValue != null) {
-      map['provisioningArtifactId'] = provisioningArtifactIdValue;
-    }
-    final provisioningArtifactNameValue = provisioningArtifactName;
-    if (provisioningArtifactNameValue != null) {
-      map['provisioningArtifactName'] = provisioningArtifactNameValue;
-    }
-    final provisioningParametersValue = provisioningParameters;
-    if (provisioningParametersValue != null) {
-      map['provisioningParameters'] = pulumi.Input.mapOptionalInputValue<
-              List<ProvisionedProductProvisioningParameter>,
-              List<Map<String, dynamic>>>(
-          provisioningParametersValue,
-          (value) => pulumi.Input.encodeList<
-              ProvisionedProductProvisioningParameter,
-              Map<String, dynamic>>(value, (value) => value.toMap()));
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final retainPhysicalResourcesValue = retainPhysicalResources;
-    if (retainPhysicalResourcesValue != null) {
-      map['retainPhysicalResources'] = retainPhysicalResourcesValue;
-    }
-    final stackSetProvisioningPreferencesValue =
-        stackSetProvisioningPreferences;
-    if (stackSetProvisioningPreferencesValue != null) {
-      map['stackSetProvisioningPreferences'] =
-          pulumi.Input.mapOptionalInputValue<
-                  ProvisionedProductStackSetProvisioningPreferences,
-                  Map<String, dynamic>>(
-              stackSetProvisioningPreferencesValue, (value) => value.toMap());
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'acceptLanguage': ?acceptLanguage,
+      'ignoreErrors': ?ignoreErrors,
+      'name': ?name,
+      'notificationArns': ?notificationArns,
+      'pathId': ?pathId,
+      'pathName': ?pathName,
+      'productId': ?productId,
+      'productName': ?productName,
+      'provisioningArtifactId': ?provisioningArtifactId,
+      'provisioningArtifactName': ?provisioningArtifactName,
+      'provisioningParameters': ?pulumi.Input.mapOptionalInputValue<List<ProvisionedProductProvisioningParameter>, List<Map<String, dynamic>>>(provisioningParameters, (value) => pulumi.Input.encodeList<ProvisionedProductProvisioningParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'region': ?region,
+      'retainPhysicalResources': ?retainPhysicalResources,
+      'stackSetProvisioningPreferences': ?pulumi.Input.mapOptionalInputValue<ProvisionedProductStackSetProvisioningPreferences, Map<String, dynamic>>(stackSetProvisioningPreferences, (value) => value.toMap()),
+      'tags': ?tags,
+    };
   }
 
   factory ProvisionedProductArgs.fromMap(Map<String, dynamic> map) {
     return ProvisionedProductArgs(
-      acceptLanguage: map['acceptLanguage'] == null
-          ? null
-          : map['acceptLanguage'] as String,
-      ignoreErrors:
-          map['ignoreErrors'] == null ? null : map['ignoreErrors'] as bool,
+      acceptLanguage: map['acceptLanguage'] == null ? null : map['acceptLanguage'] as String,
+      ignoreErrors: map['ignoreErrors'] == null ? null : map['ignoreErrors'] as bool,
       name: map['name'] == null ? null : map['name'] as String,
-      notificationArns: map['notificationArns'] == null
-          ? null
-          : (map['notificationArns'] as List).cast<String>(),
+      notificationArns: map['notificationArns'] == null ? null : (map['notificationArns'] as List).cast<String>(),
       pathId: map['pathId'] == null ? null : map['pathId'] as String,
       pathName: map['pathName'] == null ? null : map['pathName'] as String,
       productId: map['productId'] == null ? null : map['productId'] as String,
-      productName:
-          map['productName'] == null ? null : map['productName'] as String,
-      provisioningArtifactId: map['provisioningArtifactId'] == null
-          ? null
-          : map['provisioningArtifactId'] as String,
-      provisioningArtifactName: map['provisioningArtifactName'] == null
-          ? null
-          : map['provisioningArtifactName'] as String,
-      provisioningParameters: map['provisioningParameters'] == null
-          ? null
-          : pulumi.Input.decodeList<ProvisionedProductProvisioningParameter>(
-              map['provisioningParameters'],
-              (value) => ProvisionedProductProvisioningParameter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      productName: map['productName'] == null ? null : map['productName'] as String,
+      provisioningArtifactId: map['provisioningArtifactId'] == null ? null : map['provisioningArtifactId'] as String,
+      provisioningArtifactName: map['provisioningArtifactName'] == null ? null : map['provisioningArtifactName'] as String,
+      provisioningParameters: map['provisioningParameters'] == null ? null : pulumi.Input.decodeList<ProvisionedProductProvisioningParameter>(map['provisioningParameters'], (value) => ProvisionedProductProvisioningParameter.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] == null ? null : map['region'] as String,
-      retainPhysicalResources: map['retainPhysicalResources'] == null
-          ? null
-          : map['retainPhysicalResources'] as bool,
-      stackSetProvisioningPreferences:
-          map['stackSetProvisioningPreferences'] == null
-              ? null
-              : ProvisionedProductStackSetProvisioningPreferences.fromMap(
-                  (map['stackSetProvisioningPreferences'] as Map)
-                      .cast<String, dynamic>()),
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      retainPhysicalResources: map['retainPhysicalResources'] == null ? null : map['retainPhysicalResources'] as bool,
+      stackSetProvisioningPreferences: map['stackSetProvisioningPreferences'] == null ? null : ProvisionedProductStackSetProvisioningPreferences.fromMap((map['stackSetProvisioningPreferences'] as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

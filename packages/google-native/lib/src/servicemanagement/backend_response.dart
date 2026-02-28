@@ -15,19 +15,15 @@ class BackendResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['rules'] =
-        pulumi.Input.encodeList<BackendRuleResponse, Map<String, dynamic>>(
-            rules, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'rules': pulumi.Input.encodeList<BackendRuleResponse, Map<String, dynamic>>(rules, (value) => value.toMap()),
+    };
   }
 
   factory BackendResponse.fromMap(Map<String, dynamic> map) {
     return BackendResponse(
-      rules: pulumi.Input.decodeList<BackendRuleResponse>(
-          map['rules'],
-          (value) => BackendRuleResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      rules: pulumi.Input.decodeList<BackendRuleResponse>(map['rules'], (value) => BackendRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

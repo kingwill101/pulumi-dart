@@ -1,26 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The configuration for an individual load balancer to health check.
 class RRSetRoutingPolicyLoadBalancerTargetResponseDnsV1beta2 {
   /// The frontend IP address of the load balancer to health check.
   final String ipAddress;
-
   /// The protocol of the load balancer to health check.
   final String ipProtocol;
   final String kind;
-
   /// The type of load balancer specified by this target. This value must match the configuration of the load balancer located at the LoadBalancerTarget's IP address, port, and region. Use the following: - *regionalL4ilb*: for a regional internal passthrough Network Load Balancer. - *regionalL7ilb*: for a regional internal Application Load Balancer. - *globalL7ilb*: for a global internal Application Load Balancer.
   final String loadBalancerType;
-
   /// The fully qualified URL of the network that the load balancer is attached to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} .
   final String networkUrl;
-
   /// The configured port of the load balancer.
   final String port;
-
   /// The project ID in which the load balancer is located.
   final String project;
-
   /// The region in which the load balancer is located.
   final String region;
 
@@ -45,20 +40,19 @@ class RRSetRoutingPolicyLoadBalancerTargetResponseDnsV1beta2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ipAddress'] = ipAddress;
-    map['ipProtocol'] = ipProtocol;
-    map['kind'] = kind;
-    map['loadBalancerType'] = loadBalancerType;
-    map['networkUrl'] = networkUrl;
-    map['port'] = port;
-    map['project'] = project;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'ipAddress': ipAddress,
+      'ipProtocol': ipProtocol,
+      'kind': kind,
+      'loadBalancerType': loadBalancerType,
+      'networkUrl': networkUrl,
+      'port': port,
+      'project': project,
+      'region': region,
+    };
   }
 
-  factory RRSetRoutingPolicyLoadBalancerTargetResponseDnsV1beta2.fromMap(
-      Map<String, dynamic> map) {
+  factory RRSetRoutingPolicyLoadBalancerTargetResponseDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return RRSetRoutingPolicyLoadBalancerTargetResponseDnsV1beta2(
       ipAddress: map['ipAddress'] as String,
       ipProtocol: map['ipProtocol'] as String,
@@ -71,3 +65,4 @@ class RRSetRoutingPolicyLoadBalancerTargetResponseDnsV1beta2 {
     );
   }
 }
+

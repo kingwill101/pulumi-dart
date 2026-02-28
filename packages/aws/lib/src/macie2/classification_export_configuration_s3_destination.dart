@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClassificationExportConfigurationS3Destination {
   /// The Amazon S3 bucket name in which Amazon Macie exports the data classification results.
   final String bucketName;
-
   /// The object key for the bucket in which Amazon Macie exports the data classification results.
   final String? keyPrefix;
-
   /// Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
   ///
   /// Additional information can be found in the [Storing and retaining sensitive data discovery results with Amazon Macie for AWS Macie documentation](https://docs.aws.amazon.com/macie/latest/user/discovery-results-repository-s3.html).
@@ -23,18 +22,14 @@ class ClassificationExportConfigurationS3Destination {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucketName'] = bucketName;
-    final keyPrefixValue = keyPrefix;
-    if (keyPrefixValue != null) {
-      map['keyPrefix'] = keyPrefixValue;
-    }
-    map['kmsKeyArn'] = kmsKeyArn;
-    return map;
+    return <String, dynamic>{
+      'bucketName': bucketName,
+      'keyPrefix': ?keyPrefix,
+      'kmsKeyArn': kmsKeyArn,
+    };
   }
 
-  factory ClassificationExportConfigurationS3Destination.fromMap(
-      Map<String, dynamic> map) {
+  factory ClassificationExportConfigurationS3Destination.fromMap(Map<String, dynamic> map) {
     return ClassificationExportConfigurationS3Destination(
       bucketName: map['bucketName'] as String,
       keyPrefix: map['keyPrefix'] == null ? null : map['keyPrefix'] as String,
@@ -42,3 +37,4 @@ class ClassificationExportConfigurationS3Destination {
     );
   }
 }
+

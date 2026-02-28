@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// VmwareSourceDetails message describes a specific source details for the vmware source type.
 class VmwareSourceDetailsResponseVmmigrationV1alpha1 {
   /// Input only. The credentials password. This is write only and can not be read in a GET operation.
   final String password;
-
   /// The hostname of the vcenter.
   final String resolvedVcenterHost;
-
   /// The thumbprint representing the certificate for the vcenter.
   final String thumbprint;
-
   /// The credentials username.
   final String username;
-
   /// The ip address of the vcenter this Source represents.
   final String vcenterIp;
 
@@ -32,17 +29,16 @@ class VmwareSourceDetailsResponseVmmigrationV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['password'] = password;
-    map['resolvedVcenterHost'] = resolvedVcenterHost;
-    map['thumbprint'] = thumbprint;
-    map['username'] = username;
-    map['vcenterIp'] = vcenterIp;
-    return map;
+    return <String, dynamic>{
+      'password': password,
+      'resolvedVcenterHost': resolvedVcenterHost,
+      'thumbprint': thumbprint,
+      'username': username,
+      'vcenterIp': vcenterIp,
+    };
   }
 
-  factory VmwareSourceDetailsResponseVmmigrationV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory VmwareSourceDetailsResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return VmwareSourceDetailsResponseVmmigrationV1alpha1(
       password: map['password'] as String,
       resolvedVcenterHost: map['resolvedVcenterHost'] as String,
@@ -52,3 +48,4 @@ class VmwareSourceDetailsResponseVmmigrationV1alpha1 {
     );
   }
 }
+

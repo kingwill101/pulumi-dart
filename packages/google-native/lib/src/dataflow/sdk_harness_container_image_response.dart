@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Defines an SDK harness container for executing Dataflow pipelines.
 class SdkHarnessContainerImageResponse {
   /// The set of capabilities enumerated in the above Environment proto. See also [beam_runner_api.proto](https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/org/apache/beam/model/pipeline/v1/beam_runner_api.proto)
   final List<String> capabilities;
-
   /// A docker container image that resides in Google Container Registry.
   final String containerImage;
-
   /// Environment ID for the Beam runner API proto Environment that corresponds to the current SDK Harness.
   final String environmentId;
-
   /// If true, recommends the Dataflow service to use only one core per SDK container instance with this image. If false (or unset) recommends using more than one core per SDK container instance with this image for efficiency. Note that Dataflow service may choose to override this property if needed.
   final bool useSingleCorePerContainer;
 
@@ -27,12 +25,12 @@ class SdkHarnessContainerImageResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['capabilities'] = capabilities;
-    map['containerImage'] = containerImage;
-    map['environmentId'] = environmentId;
-    map['useSingleCorePerContainer'] = useSingleCorePerContainer;
-    return map;
+    return <String, dynamic>{
+      'capabilities': capabilities,
+      'containerImage': containerImage,
+      'environmentId': environmentId,
+      'useSingleCorePerContainer': useSingleCorePerContainer,
+    };
   }
 
   factory SdkHarnessContainerImageResponse.fromMap(Map<String, dynamic> map) {
@@ -44,3 +42,4 @@ class SdkHarnessContainerImageResponse {
     );
   }
 }
+

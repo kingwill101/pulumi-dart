@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Information about a user.
 class UserInfoResponse {
   /// E-mail address of the user.
@@ -12,9 +13,9 @@ class UserInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['email'] = email;
-    return map;
+    return <String, dynamic>{
+      'email': email,
+    };
   }
 
   factory UserInfoResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class UserInfoResponse {
     );
   }
 }
+

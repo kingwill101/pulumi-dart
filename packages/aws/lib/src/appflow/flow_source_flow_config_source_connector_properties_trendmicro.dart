@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FlowSourceFlowConfigSourceConnectorPropertiesTrendmicro {
   final String object;
 
@@ -10,15 +11,15 @@ class FlowSourceFlowConfigSourceConnectorPropertiesTrendmicro {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['object'] = object;
-    return map;
+    return <String, dynamic>{
+      'object': object,
+    };
   }
 
-  factory FlowSourceFlowConfigSourceConnectorPropertiesTrendmicro.fromMap(
-      Map<String, dynamic> map) {
+  factory FlowSourceFlowConfigSourceConnectorPropertiesTrendmicro.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorPropertiesTrendmicro(
       object: map['object'] as String,
     );
   }
 }
+

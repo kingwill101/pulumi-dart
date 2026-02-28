@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NodeGroupResourceAutoscalingGroup {
   /// Name of the AutoScaling Group.
   final String? name;
@@ -11,12 +12,9 @@ class NodeGroupResourceAutoscalingGroup {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory NodeGroupResourceAutoscalingGroup.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class NodeGroupResourceAutoscalingGroup {
     );
   }
 }
+

@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DomainCognitoOptions {
   /// Whether Amazon Cognito authentication with Dashboard is enabled or not. Default is `false`.
   final bool? enabled;
-
   /// ID of the Cognito Identity Pool to use.
   final String identityPoolId;
-
   /// ARN of the IAM role that has the AmazonOpenSearchServiceCognitoAccess policy attached.
   final String roleArn;
-
   /// ID of the Cognito User Pool to use.
   final String userPoolId;
 
@@ -26,15 +24,12 @@ class DomainCognitoOptions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    map['identityPoolId'] = identityPoolId;
-    map['roleArn'] = roleArn;
-    map['userPoolId'] = userPoolId;
-    return map;
+    return <String, dynamic>{
+      'enabled': ?enabled,
+      'identityPoolId': identityPoolId,
+      'roleArn': roleArn,
+      'userPoolId': userPoolId,
+    };
   }
 
   factory DomainCognitoOptions.fromMap(Map<String, dynamic> map) {
@@ -46,3 +41,4 @@ class DomainCognitoOptions {
     );
   }
 }
+

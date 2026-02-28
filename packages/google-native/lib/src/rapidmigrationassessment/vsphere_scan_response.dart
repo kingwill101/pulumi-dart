@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Message describing a MC Source of type VSphere Scan.
 class VSphereScanResponse {
   /// reference to the corresponding VSphere Scan in MC Source.
@@ -12,9 +13,9 @@ class VSphereScanResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['coreSource'] = coreSource;
-    return map;
+    return <String, dynamic>{
+      'coreSource': coreSource,
+    };
   }
 
   factory VSphereScanResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class VSphereScanResponse {
     );
   }
 }
+

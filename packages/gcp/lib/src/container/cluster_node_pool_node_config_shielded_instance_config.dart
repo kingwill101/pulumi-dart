@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterNodePoolNodeConfigShieldedInstanceConfig {
   /// Defines if the instance has integrity monitoring enabled.
   ///
   /// Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created.  Defaults to `true`.
   final bool? enableIntegrityMonitoring;
-
   /// Defines if the instance has Secure Boot enabled.
   ///
   /// Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.  Defaults to `false`.
@@ -20,27 +20,17 @@ class ClusterNodePoolNodeConfigShieldedInstanceConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enableIntegrityMonitoringValue = enableIntegrityMonitoring;
-    if (enableIntegrityMonitoringValue != null) {
-      map['enableIntegrityMonitoring'] = enableIntegrityMonitoringValue;
-    }
-    final enableSecureBootValue = enableSecureBoot;
-    if (enableSecureBootValue != null) {
-      map['enableSecureBoot'] = enableSecureBootValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enableIntegrityMonitoring': ?enableIntegrityMonitoring,
+      'enableSecureBoot': ?enableSecureBoot,
+    };
   }
 
-  factory ClusterNodePoolNodeConfigShieldedInstanceConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterNodePoolNodeConfigShieldedInstanceConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolNodeConfigShieldedInstanceConfig(
-      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] == null
-          ? null
-          : map['enableIntegrityMonitoring'] as bool,
-      enableSecureBoot: map['enableSecureBoot'] == null
-          ? null
-          : map['enableSecureBoot'] as bool,
+      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] == null ? null : map['enableIntegrityMonitoring'] as bool,
+      enableSecureBoot: map['enableSecureBoot'] == null ? null : map['enableSecureBoot'] as bool,
     );
   }
 }
+

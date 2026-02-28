@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SecurityGatewayApplicationUpstreamExternalEndpoint {
   /// Hostname of the endpoint.
   final String hostname;
-
   /// Port of the endpoint.
   final int port;
 
@@ -16,17 +16,17 @@ class SecurityGatewayApplicationUpstreamExternalEndpoint {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['hostname'] = hostname;
-    map['port'] = port;
-    return map;
+    return <String, dynamic>{
+      'hostname': hostname,
+      'port': port,
+    };
   }
 
-  factory SecurityGatewayApplicationUpstreamExternalEndpoint.fromMap(
-      Map<String, dynamic> map) {
+  factory SecurityGatewayApplicationUpstreamExternalEndpoint.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayApplicationUpstreamExternalEndpoint(
       hostname: map['hostname'] as String,
       port: map['port'] as int,
     );
   }
 }
+

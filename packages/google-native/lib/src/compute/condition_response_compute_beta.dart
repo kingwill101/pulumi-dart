@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// This is deprecated and has no effect. Do not use.
 class ConditionResponseComputeBeta {
   /// This is deprecated and has no effect. Do not use.
   final String iam;
-
   /// This is deprecated and has no effect. Do not use.
   final String op;
-
   /// This is deprecated and has no effect. Do not use.
   final String svc;
-
   /// This is deprecated and has no effect. Do not use.
   final String sys;
-
   /// This is deprecated and has no effect. Do not use.
   final List<String> values;
 
@@ -32,13 +29,13 @@ class ConditionResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['iam'] = iam;
-    map['op'] = op;
-    map['svc'] = svc;
-    map['sys'] = sys;
-    map['values'] = values;
-    return map;
+    return <String, dynamic>{
+      'iam': iam,
+      'op': op,
+      'svc': svc,
+      'sys': sys,
+      'values': values,
+    };
   }
 
   factory ConditionResponseComputeBeta.fromMap(Map<String, dynamic> map) {
@@ -51,3 +48,4 @@ class ConditionResponseComputeBeta {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class QueueStackdriverLoggingConfig {
   /// Specifies the fraction of operations to write to Stackdriver Logging.
   /// This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the
@@ -13,9 +14,9 @@ class QueueStackdriverLoggingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['samplingRatio'] = samplingRatio;
-    return map;
+    return <String, dynamic>{
+      'samplingRatio': samplingRatio,
+    };
   }
 
   factory QueueStackdriverLoggingConfig.fromMap(Map<String, dynamic> map) {
@@ -24,3 +25,4 @@ class QueueStackdriverLoggingConfig {
     );
   }
 }
+

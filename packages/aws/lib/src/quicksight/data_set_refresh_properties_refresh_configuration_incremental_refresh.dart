@@ -4,8 +4,7 @@ import 'data_set_refresh_properties_refresh_configuration_incremental_refresh_lo
 
 class DataSetRefreshPropertiesRefreshConfigurationIncrementalRefresh {
   /// The lookback window setup for an incremental refresh configuration. See lookback_window.
-  final DataSetRefreshPropertiesRefreshConfigurationIncrementalRefreshLookbackWindow
-      lookbackWindow;
+  final DataSetRefreshPropertiesRefreshConfigurationIncrementalRefreshLookbackWindow lookbackWindow;
 
   /// Creates a new [DataSetRefreshPropertiesRefreshConfigurationIncrementalRefresh].
   /// [lookbackWindow] The lookback window setup for an incremental refresh configuration. See lookback_window.
@@ -14,17 +13,15 @@ class DataSetRefreshPropertiesRefreshConfigurationIncrementalRefresh {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['lookbackWindow'] = lookbackWindow.toMap();
-    return map;
+    return <String, dynamic>{
+      'lookbackWindow': lookbackWindow.toMap(),
+    };
   }
 
-  factory DataSetRefreshPropertiesRefreshConfigurationIncrementalRefresh.fromMap(
-      Map<String, dynamic> map) {
+  factory DataSetRefreshPropertiesRefreshConfigurationIncrementalRefresh.fromMap(Map<String, dynamic> map) {
     return DataSetRefreshPropertiesRefreshConfigurationIncrementalRefresh(
-      lookbackWindow:
-          DataSetRefreshPropertiesRefreshConfigurationIncrementalRefreshLookbackWindow
-              .fromMap((map['lookbackWindow'] as Map).cast<String, dynamic>()),
+      lookbackWindow: DataSetRefreshPropertiesRefreshConfigurationIncrementalRefreshLookbackWindow.fromMap((map['lookbackWindow'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PipelineDestinationHttpEndpoint {
   /// The CEL expression used to modify how the destination-bound HTTP
   /// request is constructed.
@@ -160,7 +161,6 @@ class PipelineDestinationHttpEndpoint {
   /// standard CloudEvent format. If it doesn't then the outgoing message
   /// request may fail with a persistent error.
   final String? messageBindingTemplate;
-
   /// The URI of the HTTP enpdoint.
   /// The value must be a RFC2396 URI string.
   /// Examples: `https://svc.us-central1.p.local:8080/route`.
@@ -176,21 +176,17 @@ class PipelineDestinationHttpEndpoint {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final messageBindingTemplateValue = messageBindingTemplate;
-    if (messageBindingTemplateValue != null) {
-      map['messageBindingTemplate'] = messageBindingTemplateValue;
-    }
-    map['uri'] = uri;
-    return map;
+    return <String, dynamic>{
+      'messageBindingTemplate': ?messageBindingTemplate,
+      'uri': uri,
+    };
   }
 
   factory PipelineDestinationHttpEndpoint.fromMap(Map<String, dynamic> map) {
     return PipelineDestinationHttpEndpoint(
-      messageBindingTemplate: map['messageBindingTemplate'] == null
-          ? null
-          : map['messageBindingTemplate'] as String,
+      messageBindingTemplate: map['messageBindingTemplate'] == null ? null : map['messageBindingTemplate'] as String,
       uri: map['uri'] as String,
     );
   }
 }
+

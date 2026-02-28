@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Product contains information about a product and how to uniquely identify it.
 class ProductResponse {
   /// Contains a URI which is vendor-specific. Example: The artifact repository URL of an image.
   final String genericUri;
-
   /// Name of the product.
   final String name;
 
@@ -17,10 +17,10 @@ class ProductResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['genericUri'] = genericUri;
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'genericUri': genericUri,
+      'name': name,
+    };
   }
 
   factory ProductResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class ProductResponse {
     );
   }
 }
+

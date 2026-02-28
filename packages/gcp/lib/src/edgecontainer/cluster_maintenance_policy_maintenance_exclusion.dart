@@ -5,7 +5,6 @@ import 'cluster_maintenance_policy_maintenance_exclusion_window.dart';
 class ClusterMaintenancePolicyMaintenanceExclusion {
   /// A unique (per cluster) id for the window.
   final String? id;
-
   /// Represents an arbitrary window of time.
   /// Structure is documented below.
   final ClusterMaintenancePolicyMaintenanceExclusionWindow? window;
@@ -19,26 +18,17 @@ class ClusterMaintenancePolicyMaintenanceExclusion {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final idValue = id;
-    if (idValue != null) {
-      map['id'] = idValue;
-    }
-    final windowValue = window;
-    if (windowValue != null) {
-      map['window'] = windowValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'id': ?id,
+      'window': ?window == null ? null : window!.toMap(),
+    };
   }
 
-  factory ClusterMaintenancePolicyMaintenanceExclusion.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterMaintenancePolicyMaintenanceExclusion.fromMap(Map<String, dynamic> map) {
     return ClusterMaintenancePolicyMaintenanceExclusion(
       id: map['id'] == null ? null : map['id'] as String,
-      window: map['window'] == null
-          ? null
-          : ClusterMaintenancePolicyMaintenanceExclusionWindow.fromMap(
-              (map['window'] as Map).cast<String, dynamic>()),
+      window: map['window'] == null ? null : ClusterMaintenancePolicyMaintenanceExclusionWindow.fromMap((map['window'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

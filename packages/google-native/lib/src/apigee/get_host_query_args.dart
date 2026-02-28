@@ -16,14 +16,15 @@ class GetHostQueryArgs {
   GetHostQueryArgs({
     required String hostQueryId,
     required String organizationId,
-  })  : hostQueryId = pulumi.Input.asInput<String>(hostQueryId),
-        organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) :
+      hostQueryId = pulumi.Input.asInput<String>(hostQueryId),
+      organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['hostQueryId'] = hostQueryId;
-    map['organizationId'] = organizationId;
-    return map;
+    return <String, dynamic>{
+      'hostQueryId': hostQueryId,
+      'organizationId': organizationId,
+    };
   }
 
   factory GetHostQueryArgs.fromMap(Map<String, dynamic> map) {
@@ -33,3 +34,4 @@ class GetHostQueryArgs {
     );
   }
 }
+

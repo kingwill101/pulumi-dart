@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetEndpointAuthenticationOption {
   final String activeDirectoryId;
   final String rootCertificateChainArn;
@@ -22,13 +23,13 @@ class GetEndpointAuthenticationOption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['activeDirectoryId'] = activeDirectoryId;
-    map['rootCertificateChainArn'] = rootCertificateChainArn;
-    map['samlProviderArn'] = samlProviderArn;
-    map['selfServiceSamlProviderArn'] = selfServiceSamlProviderArn;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'activeDirectoryId': activeDirectoryId,
+      'rootCertificateChainArn': rootCertificateChainArn,
+      'samlProviderArn': samlProviderArn,
+      'selfServiceSamlProviderArn': selfServiceSamlProviderArn,
+      'type': type,
+    };
   }
 
   factory GetEndpointAuthenticationOption.fromMap(Map<String, dynamic> map) {
@@ -41,3 +42,4 @@ class GetEndpointAuthenticationOption {
     );
   }
 }
+

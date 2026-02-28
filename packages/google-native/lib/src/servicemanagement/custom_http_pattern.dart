@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A custom pattern is used for defining custom HTTP verb.
 class CustomHttpPattern {
   /// The name of this custom HTTP verb.
   final String? kind;
-
   /// The path matched by this custom verb.
   final String? path;
 
@@ -17,16 +17,10 @@ class CustomHttpPattern {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final kindValue = kind;
-    if (kindValue != null) {
-      map['kind'] = kindValue;
-    }
-    final pathValue = path;
-    if (pathValue != null) {
-      map['path'] = pathValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'kind': ?kind,
+      'path': ?path,
+    };
   }
 
   factory CustomHttpPattern.fromMap(Map<String, dynamic> map) {
@@ -36,3 +30,4 @@ class CustomHttpPattern {
     );
   }
 }
+

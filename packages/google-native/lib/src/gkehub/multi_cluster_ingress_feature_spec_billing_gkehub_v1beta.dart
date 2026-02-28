@@ -7,15 +7,13 @@ enum MultiClusterIngressFeatureSpecBillingGkehubV1beta {
   const MultiClusterIngressFeatureSpecBillingGkehubV1beta(this.value);
   final String value;
 
-  static MultiClusterIngressFeatureSpecBillingGkehubV1beta fromValue(
-      String value) {
-    for (final item
-        in MultiClusterIngressFeatureSpecBillingGkehubV1beta.values) {
+  static MultiClusterIngressFeatureSpecBillingGkehubV1beta fromValue(String value) {
+    for (final item in MultiClusterIngressFeatureSpecBillingGkehubV1beta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown MultiClusterIngressFeatureSpecBillingGkehubV1beta value: $value');
+    throw ArgumentError('Unknown MultiClusterIngressFeatureSpecBillingGkehubV1beta value: $value');
   }
 }
+

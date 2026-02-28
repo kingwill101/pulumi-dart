@@ -6,13 +6,10 @@ import 'ssh_public_key_oslogin_v1alpha_args.dart';
 class SshPublicKeyOsloginV1alpha extends pulumi.CustomResource {
   /// An expiration time in microseconds since epoch.
   late final pulumi.Output<String> expirationTimeUsec;
-
   /// The SHA-256 fingerprint of the SSH public key.
   late final pulumi.Output<String> fingerprint;
-
   /// Public key text in SSH format, defined by RFC4253 section 6.6.
   late final pulumi.Output<String> key;
-
   /// The canonical resource name.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> userId;

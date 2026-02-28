@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterLoggingConfig {
   /// The GKE components exposing logs. Supported values include:
   /// `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
@@ -12,9 +13,9 @@ class ClusterLoggingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enableComponents'] = enableComponents;
-    return map;
+    return <String, dynamic>{
+      'enableComponents': enableComponents,
+    };
   }
 
   factory ClusterLoggingConfig.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class ClusterLoggingConfig {
     );
   }
 }
+

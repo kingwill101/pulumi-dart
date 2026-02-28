@@ -4,20 +4,16 @@ enum ConfidentialInstanceConfigConfidentialInstanceTypeComputeBeta {
   sev("SEV"),
   sevSnp("SEV_SNP");
 
-  const ConfidentialInstanceConfigConfidentialInstanceTypeComputeBeta(
-      this.value);
+  const ConfidentialInstanceConfigConfidentialInstanceTypeComputeBeta(this.value);
   final String value;
 
-  static ConfidentialInstanceConfigConfidentialInstanceTypeComputeBeta
-      fromValue(String value) {
-    for (final item
-        in ConfidentialInstanceConfigConfidentialInstanceTypeComputeBeta
-            .values) {
+  static ConfidentialInstanceConfigConfidentialInstanceTypeComputeBeta fromValue(String value) {
+    for (final item in ConfidentialInstanceConfigConfidentialInstanceTypeComputeBeta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown ConfidentialInstanceConfigConfidentialInstanceTypeComputeBeta value: $value');
+    throw ArgumentError('Unknown ConfidentialInstanceConfigConfidentialInstanceTypeComputeBeta value: $value');
   }
 }
+

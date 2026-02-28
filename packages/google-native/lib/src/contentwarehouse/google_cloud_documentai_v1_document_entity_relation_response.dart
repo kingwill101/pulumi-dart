@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Relationship between Entities.
 class GoogleCloudDocumentaiV1DocumentEntityRelationResponse {
   /// Object entity id.
   final String objectId;
-
   /// Relationship description.
   final String relation;
-
   /// Subject entity id.
   final String subjectId;
 
@@ -22,15 +21,14 @@ class GoogleCloudDocumentaiV1DocumentEntityRelationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['objectId'] = objectId;
-    map['relation'] = relation;
-    map['subjectId'] = subjectId;
-    return map;
+    return <String, dynamic>{
+      'objectId': objectId,
+      'relation': relation,
+      'subjectId': subjectId,
+    };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentEntityRelationResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentEntityRelationResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentEntityRelationResponse(
       objectId: map['objectId'] as String,
       relation: map['relation'] as String,
@@ -38,3 +36,4 @@ class GoogleCloudDocumentaiV1DocumentEntityRelationResponse {
     );
   }
 }
+

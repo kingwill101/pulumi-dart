@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CustomModelVpcConfig {
   /// VPC configuration security group IDs.
   final List<String> securityGroupIds;
-
   /// VPC configuration subnets.
   final List<String> subnetIds;
 
@@ -16,10 +16,10 @@ class CustomModelVpcConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['securityGroupIds'] = securityGroupIds;
-    map['subnetIds'] = subnetIds;
-    return map;
+    return <String, dynamic>{
+      'securityGroupIds': securityGroupIds,
+      'subnetIds': subnetIds,
+    };
   }
 
   factory CustomModelVpcConfig.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class CustomModelVpcConfig {
     );
   }
 }
+

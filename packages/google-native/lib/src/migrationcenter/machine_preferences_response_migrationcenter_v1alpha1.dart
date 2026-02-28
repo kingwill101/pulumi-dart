@@ -15,21 +15,15 @@ class MachinePreferencesResponseMigrationcenterV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allowedMachineSeries'] = pulumi.Input.encodeList<
-        MachineSeriesResponseMigrationcenterV1alpha1,
-        Map<String, dynamic>>(allowedMachineSeries, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'allowedMachineSeries': pulumi.Input.encodeList<MachineSeriesResponseMigrationcenterV1alpha1, Map<String, dynamic>>(allowedMachineSeries, (value) => value.toMap()),
+    };
   }
 
-  factory MachinePreferencesResponseMigrationcenterV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory MachinePreferencesResponseMigrationcenterV1alpha1.fromMap(Map<String, dynamic> map) {
     return MachinePreferencesResponseMigrationcenterV1alpha1(
-      allowedMachineSeries:
-          pulumi.Input.decodeList<MachineSeriesResponseMigrationcenterV1alpha1>(
-              map['allowedMachineSeries'],
-              (value) => MachineSeriesResponseMigrationcenterV1alpha1.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      allowedMachineSeries: pulumi.Input.decodeList<MachineSeriesResponseMigrationcenterV1alpha1>(map['allowedMachineSeries'], (value) => MachineSeriesResponseMigrationcenterV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

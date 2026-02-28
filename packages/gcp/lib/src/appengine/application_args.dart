@@ -11,7 +11,6 @@ import 'application_iap.dart';
 class ApplicationArgs {
   /// The domain to authenticate users with when using App Engine's User API.
   final pulumi.Input<String>? authDomain;
-
   /// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
   /// Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
   /// instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted by the provider, but will be rejected by the API.
@@ -19,25 +18,19 @@ class ApplicationArgs {
   /// `gcp.firestore.Database`
   /// resource instead.
   final pulumi.Input<String>? databaseType;
-
   /// A block of optional settings to configure specific App Engine features:
   final pulumi.Input<ApplicationFeatureSettings>? featureSettings;
-
   /// Settings for enabling Cloud Identity Aware Proxy
   final pulumi.Input<ApplicationIap>? iap;
-
   /// The [location](https://cloud.google.com/appengine/docs/locations)
   /// to serve the app from.
   final pulumi.Input<String> locationId;
-
   /// The project ID to create the application under.
   /// ~>**NOTE:** GCP only accepts project ID, not project number. If you are using number,
   /// you may get a "Permission denied" error.
   final pulumi.Input<String>? project;
-
   /// The serving status of the app.
   final pulumi.Input<String>? servingStatus;
-
   /// A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
   final pulumi.Input<String>? sslPolicy;
 
@@ -59,72 +52,40 @@ class ApplicationArgs {
     String? project,
     String? servingStatus,
     String? sslPolicy,
-  })  : authDomain = pulumi.Input.asOptionalInput<String>(authDomain),
-        databaseType = pulumi.Input.asOptionalInput<String>(databaseType),
-        featureSettings =
-            pulumi.Input.asOptionalInput<ApplicationFeatureSettings>(
-                featureSettings),
-        iap = pulumi.Input.asOptionalInput<ApplicationIap>(iap),
-        locationId = pulumi.Input.asInput<String>(locationId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        servingStatus = pulumi.Input.asOptionalInput<String>(servingStatus),
-        sslPolicy = pulumi.Input.asOptionalInput<String>(sslPolicy);
+  }) :
+      authDomain = pulumi.Input.asOptionalInput<String>(authDomain),
+      databaseType = pulumi.Input.asOptionalInput<String>(databaseType),
+      featureSettings = pulumi.Input.asOptionalInput<ApplicationFeatureSettings>(featureSettings),
+      iap = pulumi.Input.asOptionalInput<ApplicationIap>(iap),
+      locationId = pulumi.Input.asInput<String>(locationId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      servingStatus = pulumi.Input.asOptionalInput<String>(servingStatus),
+      sslPolicy = pulumi.Input.asOptionalInput<String>(sslPolicy);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final authDomainValue = authDomain;
-    if (authDomainValue != null) {
-      map['authDomain'] = authDomainValue;
-    }
-    final databaseTypeValue = databaseType;
-    if (databaseTypeValue != null) {
-      map['databaseType'] = databaseTypeValue;
-    }
-    final featureSettingsValue = featureSettings;
-    if (featureSettingsValue != null) {
-      map['featureSettings'] = pulumi.Input.mapOptionalInputValue<
-          ApplicationFeatureSettings,
-          Map<String, dynamic>>(featureSettingsValue, (value) => value.toMap());
-    }
-    final iapValue = iap;
-    if (iapValue != null) {
-      map['iap'] = pulumi.Input.mapOptionalInputValue<ApplicationIap,
-          Map<String, dynamic>>(iapValue, (value) => value.toMap());
-    }
-    map['locationId'] = locationId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final servingStatusValue = servingStatus;
-    if (servingStatusValue != null) {
-      map['servingStatus'] = servingStatusValue;
-    }
-    final sslPolicyValue = sslPolicy;
-    if (sslPolicyValue != null) {
-      map['sslPolicy'] = sslPolicyValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'authDomain': ?authDomain,
+      'databaseType': ?databaseType,
+      'featureSettings': ?pulumi.Input.mapOptionalInputValue<ApplicationFeatureSettings, Map<String, dynamic>>(featureSettings, (value) => value.toMap()),
+      'iap': ?pulumi.Input.mapOptionalInputValue<ApplicationIap, Map<String, dynamic>>(iap, (value) => value.toMap()),
+      'locationId': locationId,
+      'project': ?project,
+      'servingStatus': ?servingStatus,
+      'sslPolicy': ?sslPolicy,
+    };
   }
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      authDomain:
-          map['authDomain'] == null ? null : map['authDomain'] as String,
-      databaseType:
-          map['databaseType'] == null ? null : map['databaseType'] as String,
-      featureSettings: map['featureSettings'] == null
-          ? null
-          : ApplicationFeatureSettings.fromMap(
-              (map['featureSettings'] as Map).cast<String, dynamic>()),
-      iap: map['iap'] == null
-          ? null
-          : ApplicationIap.fromMap((map['iap'] as Map).cast<String, dynamic>()),
+      authDomain: map['authDomain'] == null ? null : map['authDomain'] as String,
+      databaseType: map['databaseType'] == null ? null : map['databaseType'] as String,
+      featureSettings: map['featureSettings'] == null ? null : ApplicationFeatureSettings.fromMap((map['featureSettings'] as Map).cast<String, dynamic>()),
+      iap: map['iap'] == null ? null : ApplicationIap.fromMap((map['iap'] as Map).cast<String, dynamic>()),
       locationId: map['locationId'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      servingStatus:
-          map['servingStatus'] == null ? null : map['servingStatus'] as String,
+      servingStatus: map['servingStatus'] == null ? null : map['servingStatus'] as String,
       sslPolicy: map['sslPolicy'] == null ? null : map['sslPolicy'] as String,
     );
   }
 }
+

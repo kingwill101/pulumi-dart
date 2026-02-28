@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getDefaultScraperConfiguration.
 class GetDefaultScraperConfigurationResult {
   /// The configuration file.
   final String configuration;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -20,15 +20,14 @@ class GetDefaultScraperConfigurationResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['configuration'] = configuration;
-    map['id'] = id;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'configuration': configuration,
+      'id': id,
+      'region': region,
+    };
   }
 
-  factory GetDefaultScraperConfigurationResult.fromMap(
-      Map<String, dynamic> map) {
+  factory GetDefaultScraperConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetDefaultScraperConfigurationResult(
       configuration: map['configuration'] as String,
       id: map['id'] as String,
@@ -36,3 +35,4 @@ class GetDefaultScraperConfigurationResult {
     );
   }
 }
+

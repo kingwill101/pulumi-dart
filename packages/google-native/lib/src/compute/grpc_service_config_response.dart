@@ -7,10 +7,8 @@ import 'channel_credentials_response.dart';
 class GrpcServiceConfigResponse {
   /// The call credentials to access the SDS server.
   final CallCredentialsResponse callCredentials;
-
   /// The channel credentials to access the SDS server.
   final ChannelCredentialsResponse channelCredentials;
-
   /// The target URI of the SDS server.
   final String targetUri;
 
@@ -25,20 +23,19 @@ class GrpcServiceConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['callCredentials'] = callCredentials.toMap();
-    map['channelCredentials'] = channelCredentials.toMap();
-    map['targetUri'] = targetUri;
-    return map;
+    return <String, dynamic>{
+      'callCredentials': callCredentials.toMap(),
+      'channelCredentials': channelCredentials.toMap(),
+      'targetUri': targetUri,
+    };
   }
 
   factory GrpcServiceConfigResponse.fromMap(Map<String, dynamic> map) {
     return GrpcServiceConfigResponse(
-      callCredentials: CallCredentialsResponse.fromMap(
-          (map['callCredentials'] as Map).cast<String, dynamic>()),
-      channelCredentials: ChannelCredentialsResponse.fromMap(
-          (map['channelCredentials'] as Map).cast<String, dynamic>()),
+      callCredentials: CallCredentialsResponse.fromMap((map['callCredentials'] as Map).cast<String, dynamic>()),
+      channelCredentials: ChannelCredentialsResponse.fromMap((map['channelCredentials'] as Map).cast<String, dynamic>()),
       targetUri: map['targetUri'] as String,
     );
   }
 }
+

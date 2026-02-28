@@ -13,7 +13,7 @@ enum CompositeTypeStatusDeploymentmanagerV2beta {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown CompositeTypeStatusDeploymentmanagerV2beta value: $value');
+    throw ArgumentError('Unknown CompositeTypeStatusDeploymentmanagerV2beta value: $value');
   }
 }
+

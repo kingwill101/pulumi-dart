@@ -468,8 +468,7 @@ Future<GetDatabaseInstanceResult> getDatabaseInstance(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_sql_get_database_instance_latest_recovery_time_get_database_instance_latest_recovery_time_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDatabaseInstanceLatestRecoveryTimeResult>
-    getDatabaseInstanceLatestRecoveryTime(
+Future<GetDatabaseInstanceLatestRecoveryTimeResult> getDatabaseInstanceLatestRecoveryTime(
   GetDatabaseInstanceLatestRecoveryTimeArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

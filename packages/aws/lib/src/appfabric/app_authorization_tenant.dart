@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppAuthorizationTenant {
   /// The display name of the tenant.
   final String tenantDisplayName;
-
   /// The ID of the application tenant.
   final String tenantIdentifier;
 
@@ -16,10 +16,10 @@ class AppAuthorizationTenant {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['tenantDisplayName'] = tenantDisplayName;
-    map['tenantIdentifier'] = tenantIdentifier;
-    return map;
+    return <String, dynamic>{
+      'tenantDisplayName': tenantDisplayName,
+      'tenantIdentifier': tenantIdentifier,
+    };
   }
 
   factory AppAuthorizationTenant.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class AppAuthorizationTenant {
     );
   }
 }
+

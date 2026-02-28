@@ -16,14 +16,15 @@ class GetOrganizationSourceIamPolicyArgs {
   GetOrganizationSourceIamPolicyArgs({
     required String organizationId,
     required String sourceId,
-  })  : organizationId = pulumi.Input.asInput<String>(organizationId),
-        sourceId = pulumi.Input.asInput<String>(sourceId);
+  }) :
+      organizationId = pulumi.Input.asInput<String>(organizationId),
+      sourceId = pulumi.Input.asInput<String>(sourceId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['organizationId'] = organizationId;
-    map['sourceId'] = sourceId;
-    return map;
+    return <String, dynamic>{
+      'organizationId': organizationId,
+      'sourceId': sourceId,
+    };
   }
 
   factory GetOrganizationSourceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -33,3 +34,4 @@ class GetOrganizationSourceIamPolicyArgs {
     );
   }
 }
+

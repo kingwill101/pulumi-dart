@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterRestoreBackupSource {
   /// The name of the backup that this cluster is restored from.
   final String backupName;
@@ -11,9 +12,9 @@ class ClusterRestoreBackupSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['backupName'] = backupName;
-    return map;
+    return <String, dynamic>{
+      'backupName': backupName,
+    };
   }
 
   factory ClusterRestoreBackupSource.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class ClusterRestoreBackupSource {
     );
   }
 }
+

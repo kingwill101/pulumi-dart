@@ -13,7 +13,7 @@ enum BinaryAuthorizationConfigEvaluationMode {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown BinaryAuthorizationConfigEvaluationMode value: $value');
+    throw ArgumentError('Unknown BinaryAuthorizationConfigEvaluationMode value: $value');
   }
 }
+

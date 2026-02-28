@@ -9,22 +9,16 @@ import 'rule_action_compute_beta.dart';
 class RuleComputeBeta {
   /// This is deprecated and has no effect. Do not use.
   final RuleActionComputeBeta? action;
-
   /// This is deprecated and has no effect. Do not use.
   final List<ConditionComputeBeta>? conditions;
-
   /// This is deprecated and has no effect. Do not use.
   final String? description;
-
   /// This is deprecated and has no effect. Do not use.
   final List<String>? ins;
-
   /// This is deprecated and has no effect. Do not use.
   final List<LogConfigComputeBeta>? logConfigs;
-
   /// This is deprecated and has no effect. Do not use.
   final List<String>? notIns;
-
   /// This is deprecated and has no effect. Do not use.
   final List<String>? permissions;
 
@@ -47,67 +41,27 @@ class RuleComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final actionValue = action;
-    if (actionValue != null) {
-      map['action'] = actionValue.value;
-    }
-    final conditionsValue = conditions;
-    if (conditionsValue != null) {
-      map['conditions'] =
-          pulumi.Input.encodeList<ConditionComputeBeta, Map<String, dynamic>>(
-              conditionsValue, (value) => value.toMap());
-    }
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final insValue = ins;
-    if (insValue != null) {
-      map['ins'] = insValue;
-    }
-    final logConfigsValue = logConfigs;
-    if (logConfigsValue != null) {
-      map['logConfigs'] =
-          pulumi.Input.encodeList<LogConfigComputeBeta, Map<String, dynamic>>(
-              logConfigsValue, (value) => value.toMap());
-    }
-    final notInsValue = notIns;
-    if (notInsValue != null) {
-      map['notIns'] = notInsValue;
-    }
-    final permissionsValue = permissions;
-    if (permissionsValue != null) {
-      map['permissions'] = permissionsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'action': ?action == null ? null : action!.value,
+      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<ConditionComputeBeta, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+      'description': ?description,
+      'ins': ?ins,
+      'logConfigs': ?logConfigs == null ? null : pulumi.Input.encodeList<LogConfigComputeBeta, Map<String, dynamic>>(logConfigs!, (value) => value.toMap()),
+      'notIns': ?notIns,
+      'permissions': ?permissions,
+    };
   }
 
   factory RuleComputeBeta.fromMap(Map<String, dynamic> map) {
     return RuleComputeBeta(
-      action: map['action'] == null
-          ? null
-          : RuleActionComputeBeta.fromValue(map['action'] as String),
-      conditions: map['conditions'] == null
-          ? null
-          : pulumi.Input.decodeList<ConditionComputeBeta>(
-              map['conditions'],
-              (value) => ConditionComputeBeta.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      action: map['action'] == null ? null : RuleActionComputeBeta.fromValue(map['action'] as String),
+      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<ConditionComputeBeta>(map['conditions'], (value) => ConditionComputeBeta.fromMap((value as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : map['description'] as String,
       ins: map['ins'] == null ? null : (map['ins'] as List).cast<String>(),
-      logConfigs: map['logConfigs'] == null
-          ? null
-          : pulumi.Input.decodeList<LogConfigComputeBeta>(
-              map['logConfigs'],
-              (value) => LogConfigComputeBeta.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      notIns:
-          map['notIns'] == null ? null : (map['notIns'] as List).cast<String>(),
-      permissions: map['permissions'] == null
-          ? null
-          : (map['permissions'] as List).cast<String>(),
+      logConfigs: map['logConfigs'] == null ? null : pulumi.Input.decodeList<LogConfigComputeBeta>(map['logConfigs'], (value) => LogConfigComputeBeta.fromMap((value as Map).cast<String, dynamic>())),
+      notIns: map['notIns'] == null ? null : (map['notIns'] as List).cast<String>(),
+      permissions: map['permissions'] == null ? null : (map['permissions'] as List).cast<String>(),
     );
   }
 }
+

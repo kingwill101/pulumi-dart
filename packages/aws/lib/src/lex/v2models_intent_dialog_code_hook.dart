@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class V2modelsIntentDialogCodeHook {
   /// Enables the dialog code hook so that it processes user requests.
   final bool enabled;
@@ -11,9 +12,9 @@ class V2modelsIntentDialogCodeHook {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory V2modelsIntentDialogCodeHook.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class V2modelsIntentDialogCodeHook {
     );
   }
 }
+

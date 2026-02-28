@@ -10,8 +10,7 @@ class V2PolicyOrchestratorForOrganizationOrchestrationScope {
   /// the scope is by default bounded to the parent of the policy orchestrator
   /// resource.
   /// Structure is documented below.
-  final List<V2PolicyOrchestratorForOrganizationOrchestrationScopeSelector>?
-      selectors;
+  final List<V2PolicyOrchestratorForOrganizationOrchestrationScopeSelector>? selectors;
 
   /// Creates a new [V2PolicyOrchestratorForOrganizationOrchestrationScope].
   /// [selectors] Optional. Selectors of the orchestration scope. There is a logical AND between each
@@ -20,27 +19,15 @@ class V2PolicyOrchestratorForOrganizationOrchestrationScope {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final selectorsValue = selectors;
-    if (selectorsValue != null) {
-      map['selectors'] = pulumi.Input.encodeList<
-          V2PolicyOrchestratorForOrganizationOrchestrationScopeSelector,
-          Map<String, dynamic>>(selectorsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'selectors': ?selectors == null ? null : pulumi.Input.encodeList<V2PolicyOrchestratorForOrganizationOrchestrationScopeSelector, Map<String, dynamic>>(selectors!, (value) => value.toMap()),
+    };
   }
 
-  factory V2PolicyOrchestratorForOrganizationOrchestrationScope.fromMap(
-      Map<String, dynamic> map) {
+  factory V2PolicyOrchestratorForOrganizationOrchestrationScope.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForOrganizationOrchestrationScope(
-      selectors: map['selectors'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  V2PolicyOrchestratorForOrganizationOrchestrationScopeSelector>(
-              map['selectors'],
-              (value) =>
-                  V2PolicyOrchestratorForOrganizationOrchestrationScopeSelector
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      selectors: map['selectors'] == null ? null : pulumi.Input.decodeList<V2PolicyOrchestratorForOrganizationOrchestrationScopeSelector>(map['selectors'], (value) => V2PolicyOrchestratorForOrganizationOrchestrationScopeSelector.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

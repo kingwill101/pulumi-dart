@@ -15,19 +15,15 @@ class ColumnLayoutResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['columns'] =
-        pulumi.Input.encodeList<ColumnResponse, Map<String, dynamic>>(
-            columns, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'columns': pulumi.Input.encodeList<ColumnResponse, Map<String, dynamic>>(columns, (value) => value.toMap()),
+    };
   }
 
   factory ColumnLayoutResponse.fromMap(Map<String, dynamic> map) {
     return ColumnLayoutResponse(
-      columns: pulumi.Input.decodeList<ColumnResponse>(
-          map['columns'],
-          (value) =>
-              ColumnResponse.fromMap((value as Map).cast<String, dynamic>())),
+      columns: pulumi.Input.decodeList<ColumnResponse>(map['columns'], (value) => ColumnResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

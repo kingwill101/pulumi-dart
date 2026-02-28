@@ -7,7 +7,6 @@ import 'kubernetes_config_response.dart';
 class RuntimeConfigResponse {
   /// Cloud Run runtime configuration.
   final CloudRunConfigResponse cloudRun;
-
   /// Kubernetes runtime configuration.
   final KubernetesConfigResponse kubernetes;
 
@@ -20,18 +19,17 @@ class RuntimeConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cloudRun'] = cloudRun.toMap();
-    map['kubernetes'] = kubernetes.toMap();
-    return map;
+    return <String, dynamic>{
+      'cloudRun': cloudRun.toMap(),
+      'kubernetes': kubernetes.toMap(),
+    };
   }
 
   factory RuntimeConfigResponse.fromMap(Map<String, dynamic> map) {
     return RuntimeConfigResponse(
-      cloudRun: CloudRunConfigResponse.fromMap(
-          (map['cloudRun'] as Map).cast<String, dynamic>()),
-      kubernetes: KubernetesConfigResponse.fromMap(
-          (map['kubernetes'] as Map).cast<String, dynamic>()),
+      cloudRun: CloudRunConfigResponse.fromMap((map['cloudRun'] as Map).cast<String, dynamic>()),
+      kubernetes: KubernetesConfigResponse.fromMap((map['kubernetes'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

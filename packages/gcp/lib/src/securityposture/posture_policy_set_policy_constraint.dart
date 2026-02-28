@@ -8,23 +8,16 @@ import 'posture_policy_set_policy_constraint_security_health_analytics_module.da
 class PosturePolicySetPolicyConstraint {
   /// Organization policy canned constraint definition.
   /// Structure is documented below.
-  final PosturePolicySetPolicyConstraintOrgPolicyConstraint?
-      orgPolicyConstraint;
-
+  final PosturePolicySetPolicyConstraintOrgPolicyConstraint? orgPolicyConstraint;
   /// Organization policy custom constraint policy definition.
   /// Structure is documented below.
-  final PosturePolicySetPolicyConstraintOrgPolicyConstraintCustom?
-      orgPolicyConstraintCustom;
-
+  final PosturePolicySetPolicyConstraintOrgPolicyConstraintCustom? orgPolicyConstraintCustom;
   /// Definition of Security Health Analytics Custom Module.
   /// Structure is documented below.
-  final PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModule?
-      securityHealthAnalyticsCustomModule;
-
+  final PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModule? securityHealthAnalyticsCustomModule;
   /// Security Health Analytics built-in detector definition.
   /// Structure is documented below.
-  final PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule?
-      securityHealthAnalyticsModule;
+  final PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule? securityHealthAnalyticsModule;
 
   /// Creates a new [PosturePolicySetPolicyConstraint].
   /// [orgPolicyConstraint] Organization policy canned constraint definition.
@@ -39,53 +32,21 @@ class PosturePolicySetPolicyConstraint {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final orgPolicyConstraintValue = orgPolicyConstraint;
-    if (orgPolicyConstraintValue != null) {
-      map['orgPolicyConstraint'] = orgPolicyConstraintValue.toMap();
-    }
-    final orgPolicyConstraintCustomValue = orgPolicyConstraintCustom;
-    if (orgPolicyConstraintCustomValue != null) {
-      map['orgPolicyConstraintCustom'] = orgPolicyConstraintCustomValue.toMap();
-    }
-    final securityHealthAnalyticsCustomModuleValue =
-        securityHealthAnalyticsCustomModule;
-    if (securityHealthAnalyticsCustomModuleValue != null) {
-      map['securityHealthAnalyticsCustomModule'] =
-          securityHealthAnalyticsCustomModuleValue.toMap();
-    }
-    final securityHealthAnalyticsModuleValue = securityHealthAnalyticsModule;
-    if (securityHealthAnalyticsModuleValue != null) {
-      map['securityHealthAnalyticsModule'] =
-          securityHealthAnalyticsModuleValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'orgPolicyConstraint': ?orgPolicyConstraint == null ? null : orgPolicyConstraint!.toMap(),
+      'orgPolicyConstraintCustom': ?orgPolicyConstraintCustom == null ? null : orgPolicyConstraintCustom!.toMap(),
+      'securityHealthAnalyticsCustomModule': ?securityHealthAnalyticsCustomModule == null ? null : securityHealthAnalyticsCustomModule!.toMap(),
+      'securityHealthAnalyticsModule': ?securityHealthAnalyticsModule == null ? null : securityHealthAnalyticsModule!.toMap(),
+    };
   }
 
   factory PosturePolicySetPolicyConstraint.fromMap(Map<String, dynamic> map) {
     return PosturePolicySetPolicyConstraint(
-      orgPolicyConstraint: map['orgPolicyConstraint'] == null
-          ? null
-          : PosturePolicySetPolicyConstraintOrgPolicyConstraint.fromMap(
-              (map['orgPolicyConstraint'] as Map).cast<String, dynamic>()),
-      orgPolicyConstraintCustom: map['orgPolicyConstraintCustom'] == null
-          ? null
-          : PosturePolicySetPolicyConstraintOrgPolicyConstraintCustom.fromMap(
-              (map['orgPolicyConstraintCustom'] as Map)
-                  .cast<String, dynamic>()),
-      securityHealthAnalyticsCustomModule: map[
-                  'securityHealthAnalyticsCustomModule'] ==
-              null
-          ? null
-          : PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModule
-              .fromMap((map['securityHealthAnalyticsCustomModule'] as Map)
-                  .cast<String, dynamic>()),
-      securityHealthAnalyticsModule:
-          map['securityHealthAnalyticsModule'] == null
-              ? null
-              : PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule
-                  .fromMap((map['securityHealthAnalyticsModule'] as Map)
-                      .cast<String, dynamic>()),
+      orgPolicyConstraint: map['orgPolicyConstraint'] == null ? null : PosturePolicySetPolicyConstraintOrgPolicyConstraint.fromMap((map['orgPolicyConstraint'] as Map).cast<String, dynamic>()),
+      orgPolicyConstraintCustom: map['orgPolicyConstraintCustom'] == null ? null : PosturePolicySetPolicyConstraintOrgPolicyConstraintCustom.fromMap((map['orgPolicyConstraintCustom'] as Map).cast<String, dynamic>()),
+      securityHealthAnalyticsCustomModule: map['securityHealthAnalyticsCustomModule'] == null ? null : PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModule.fromMap((map['securityHealthAnalyticsCustomModule'] as Map).cast<String, dynamic>()),
+      securityHealthAnalyticsModule: map['securityHealthAnalyticsModule'] == null ? null : PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule.fromMap((map['securityHealthAnalyticsModule'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

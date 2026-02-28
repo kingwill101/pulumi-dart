@@ -9,12 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrafficPolicyArgs {
   /// Comment for the traffic policy.
   final pulumi.Input<String>? comment;
-
   /// Policy document. This is a JSON formatted string. For more information about building Route53 traffic policy documents, see the [AWS Route53 Traffic Policy document format](https://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html)
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> document;
-
   /// Name of the traffic policy.
   final pulumi.Input<String>? name;
 
@@ -26,22 +24,17 @@ class TrafficPolicyArgs {
     String? comment,
     required String document,
     String? name,
-  })  : comment = pulumi.Input.asOptionalInput<String>(comment),
-        document = pulumi.Input.asInput<String>(document),
-        name = pulumi.Input.asOptionalInput<String>(name);
+  }) :
+      comment = pulumi.Input.asOptionalInput<String>(comment),
+      document = pulumi.Input.asInput<String>(document),
+      name = pulumi.Input.asOptionalInput<String>(name);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final commentValue = comment;
-    if (commentValue != null) {
-      map['comment'] = commentValue;
-    }
-    map['document'] = document;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'comment': ?comment,
+      'document': document,
+      'name': ?name,
+    };
   }
 
   factory TrafficPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -52,3 +45,4 @@ class TrafficPolicyArgs {
     );
   }
 }
+

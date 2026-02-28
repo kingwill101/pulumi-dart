@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BackendServiceUsedByResponse {
   final String reference;
 
@@ -10,9 +11,9 @@ class BackendServiceUsedByResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['reference'] = reference;
-    return map;
+    return <String, dynamic>{
+      'reference': reference,
+    };
   }
 
   factory BackendServiceUsedByResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +22,4 @@ class BackendServiceUsedByResponse {
     );
   }
 }
+

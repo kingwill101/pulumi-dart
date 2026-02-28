@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// BareMetalParallelUpgradeConfig defines the parallel upgrade settings for worker node pools.
 class BareMetalParallelUpgradeConfigResponse {
   /// The maximum number of nodes that can be upgraded at once.
   final int concurrentNodes;
-
   /// The minimum number of nodes that should be healthy and available during an upgrade. If set to the default value of 0, it is possible that none of the nodes will be available during an upgrade.
   final int minimumAvailableNodes;
 
@@ -17,17 +17,17 @@ class BareMetalParallelUpgradeConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['concurrentNodes'] = concurrentNodes;
-    map['minimumAvailableNodes'] = minimumAvailableNodes;
-    return map;
+    return <String, dynamic>{
+      'concurrentNodes': concurrentNodes,
+      'minimumAvailableNodes': minimumAvailableNodes,
+    };
   }
 
-  factory BareMetalParallelUpgradeConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory BareMetalParallelUpgradeConfigResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalParallelUpgradeConfigResponse(
       concurrentNodes: map['concurrentNodes'] as int,
       minimumAvailableNodes: map['minimumAvailableNodes'] as int,
     );
   }
 }
+

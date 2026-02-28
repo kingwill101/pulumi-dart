@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetReceivedLicenseValidity {
   /// Start of the validity time range.
   final String begin;
-
   /// End of the validity time range.
   final String end;
 
@@ -16,10 +16,10 @@ class GetReceivedLicenseValidity {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['begin'] = begin;
-    map['end'] = end;
-    return map;
+    return <String, dynamic>{
+      'begin': begin,
+      'end': end,
+    };
   }
 
   factory GetReceivedLicenseValidity.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetReceivedLicenseValidity {
     );
   }
 }
+

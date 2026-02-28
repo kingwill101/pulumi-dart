@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper {
   /// Package name.
   final String name;
@@ -11,15 +12,15 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper.fromMap(
-      Map<String, dynamic> map) {
+  factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper(
       name: map['name'] as String,
     );
   }
 }
+

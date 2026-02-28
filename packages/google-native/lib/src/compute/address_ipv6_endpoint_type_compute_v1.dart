@@ -12,7 +12,7 @@ enum AddressIpv6EndpointTypeComputeV1 {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown AddressIpv6EndpointTypeComputeV1 value: $value');
+    throw ArgumentError('Unknown AddressIpv6EndpointTypeComputeV1 value: $value');
   }
 }
+

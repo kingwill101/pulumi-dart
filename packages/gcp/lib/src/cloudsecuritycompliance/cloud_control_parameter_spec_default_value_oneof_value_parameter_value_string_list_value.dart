@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValue {
   /// The strings in the list.
   final List<String> values;
@@ -11,15 +12,15 @@ class CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListVal
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['values'] = values;
-    return map;
+    return <String, dynamic>{
+      'values': values,
+    };
   }
 
-  factory CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValue.fromMap(
-      Map<String, dynamic> map) {
+  factory CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValue.fromMap(Map<String, dynamic> map) {
     return CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValue(
       values: (map['values'] as List).cast<String>(),
     );
   }
 }
+

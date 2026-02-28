@@ -223,7 +223,6 @@ import 'role_policy_attachments_exclusive_args.dart';
 class RolePolicyAttachmentsExclusive extends pulumi.CustomResource {
   /// A list of managed IAM policy ARNs to be attached to the role. Policies attached to this role but not configured in this argument will be removed.
   late final pulumi.Output<List<String>> policyArns;
-
   /// IAM role name.
   late final pulumi.Output<String> roleName;
 

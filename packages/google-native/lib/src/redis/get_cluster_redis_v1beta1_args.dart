@@ -19,19 +19,17 @@ class GetClusterRedisV1beta1Args {
     required String clusterId,
     required String location,
     String? project,
-  })  : clusterId = pulumi.Input.asInput<String>(clusterId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      clusterId = pulumi.Input.asInput<String>(clusterId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clusterId'] = clusterId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'clusterId': clusterId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetClusterRedisV1beta1Args.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetClusterRedisV1beta1Args {
     );
   }
 }
+

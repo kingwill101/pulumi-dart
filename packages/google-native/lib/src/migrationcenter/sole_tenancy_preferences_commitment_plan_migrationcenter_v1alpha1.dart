@@ -8,15 +8,13 @@ enum SoleTenancyPreferencesCommitmentPlanMigrationcenterV1alpha1 {
   const SoleTenancyPreferencesCommitmentPlanMigrationcenterV1alpha1(this.value);
   final String value;
 
-  static SoleTenancyPreferencesCommitmentPlanMigrationcenterV1alpha1 fromValue(
-      String value) {
-    for (final item
-        in SoleTenancyPreferencesCommitmentPlanMigrationcenterV1alpha1.values) {
+  static SoleTenancyPreferencesCommitmentPlanMigrationcenterV1alpha1 fromValue(String value) {
+    for (final item in SoleTenancyPreferencesCommitmentPlanMigrationcenterV1alpha1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown SoleTenancyPreferencesCommitmentPlanMigrationcenterV1alpha1 value: $value');
+    throw ArgumentError('Unknown SoleTenancyPreferencesCommitmentPlanMigrationcenterV1alpha1 value: $value');
   }
 }
+

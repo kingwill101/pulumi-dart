@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ApplicationAttributesDeveloperOwner {
   /// Optional. Contact's name.
   final String? displayName;
-
   /// Required. Email address of the contacts.
   final String email;
 
@@ -16,21 +16,17 @@ class ApplicationAttributesDeveloperOwner {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final displayNameValue = displayName;
-    if (displayNameValue != null) {
-      map['displayName'] = displayNameValue;
-    }
-    map['email'] = email;
-    return map;
+    return <String, dynamic>{
+      'displayName': ?displayName,
+      'email': email,
+    };
   }
 
-  factory ApplicationAttributesDeveloperOwner.fromMap(
-      Map<String, dynamic> map) {
+  factory ApplicationAttributesDeveloperOwner.fromMap(Map<String, dynamic> map) {
     return ApplicationAttributesDeveloperOwner(
-      displayName:
-          map['displayName'] == null ? null : map['displayName'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
       email: map['email'] as String,
     );
   }
 }
+

@@ -214,51 +214,36 @@ import 'environment_user_parameter.dart';
 class Environment extends pulumi.CustomResource {
   /// The ID of the Amazon Web Services account where the environment exists
   late final pulumi.Output<String> accountIdentifier;
-
   /// The Amazon Web Services region where the environment exists.
   late final pulumi.Output<String> accountRegion;
-
   /// The blueprint with which the environment is created.
   late final pulumi.Output<String> blueprintIdentifier;
-
   /// The time the environment was created.
   late final pulumi.Output<String> createdAt;
-
   /// The user who created the environment.
   late final pulumi.Output<String> createdBy;
-
   /// The description of the environment.
   late final pulumi.Output<String?> description;
-
   /// The ID of the domain where the environment exists.
   late final pulumi.Output<String> domainIdentifier;
-
   /// The business glossary terms that can be used in this environment.
   late final pulumi.Output<List<String>?> glossaryTerms;
-
   /// The details of the last deployment of the environment.
   late final pulumi.Output<List<EnvironmentLastDeployment>> lastDeployments;
-
   /// The name of the environment.
   late final pulumi.Output<String> name;
-
   /// The ID of the profile with which the environment is created.
   late final pulumi.Output<String> profileIdentifier;
-
   /// The ID of the project where the environment exists.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> projectIdentifier;
-
   /// The provider of the environment.
   late final pulumi.Output<String> providerEnvironment;
-  late final pulumi.Output<List<EnvironmentProvisionedResource>>
-      provisionedResources;
-
+  late final pulumi.Output<List<EnvironmentProvisionedResource>> provisionedResources;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<EnvironmentTimeouts?> timeouts;
-
   /// The user parameters that are used in the environment.
   /// See User Parameters for more information.
   /// Changing these values recreates the resource.
@@ -286,18 +271,14 @@ class Environment extends pulumi.CustomResource {
     this.description = registerOutput<String?>('description');
     this.domainIdentifier = registerOutput<String>('domainIdentifier');
     this.glossaryTerms = registerOutput<List<String>?>('glossaryTerms');
-    this.lastDeployments =
-        registerOutput<List<EnvironmentLastDeployment>>('lastDeployments');
+    this.lastDeployments = registerOutput<List<EnvironmentLastDeployment>>('lastDeployments');
     this.name = registerOutput<String>('name');
     this.profileIdentifier = registerOutput<String>('profileIdentifier');
     this.projectIdentifier = registerOutput<String>('projectIdentifier');
     this.providerEnvironment = registerOutput<String>('providerEnvironment');
-    this.provisionedResources =
-        registerOutput<List<EnvironmentProvisionedResource>>(
-            'provisionedResources');
+    this.provisionedResources = registerOutput<List<EnvironmentProvisionedResource>>('provisionedResources');
     this.region = registerOutput<String>('region');
     this.timeouts = registerOutput<EnvironmentTimeouts?>('timeouts');
-    this.userParameters =
-        registerOutput<List<EnvironmentUserParameter>?>('userParameters');
+    this.userParameters = registerOutput<List<EnvironmentUserParameter>?>('userParameters');
   }
 }

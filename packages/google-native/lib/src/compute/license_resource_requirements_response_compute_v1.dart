@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LicenseResourceRequirementsResponseComputeV1 {
   /// Minimum number of guest cpus required to use the Instance. Enforced at Instance creation and Instance start.
   final int minGuestCpuCount;
-
   /// Minimum memory required to use the Instance. Enforced at Instance creation and Instance start.
   final int minMemoryMb;
 
@@ -16,17 +16,17 @@ class LicenseResourceRequirementsResponseComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['minGuestCpuCount'] = minGuestCpuCount;
-    map['minMemoryMb'] = minMemoryMb;
-    return map;
+    return <String, dynamic>{
+      'minGuestCpuCount': minGuestCpuCount,
+      'minMemoryMb': minMemoryMb,
+    };
   }
 
-  factory LicenseResourceRequirementsResponseComputeV1.fromMap(
-      Map<String, dynamic> map) {
+  factory LicenseResourceRequirementsResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return LicenseResourceRequirementsResponseComputeV1(
       minGuestCpuCount: map['minGuestCpuCount'] as int,
       minMemoryMb: map['minMemoryMb'] as int,
     );
   }
 }
+

@@ -11,7 +11,6 @@ class SessionArgs {
   final pulumi.Input<String>? creatorRole;
   final pulumi.Input<String> databaseId;
   final pulumi.Input<String> instanceId;
-
   /// The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? project;
@@ -28,41 +27,31 @@ class SessionArgs {
     required String instanceId,
     Map<String, String>? labels,
     String? project,
-  })  : creatorRole = pulumi.Input.asOptionalInput<String>(creatorRole),
-        databaseId = pulumi.Input.asInput<String>(databaseId),
-        instanceId = pulumi.Input.asInput<String>(instanceId),
-        labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      creatorRole = pulumi.Input.asOptionalInput<String>(creatorRole),
+      databaseId = pulumi.Input.asInput<String>(databaseId),
+      instanceId = pulumi.Input.asInput<String>(instanceId),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final creatorRoleValue = creatorRole;
-    if (creatorRoleValue != null) {
-      map['creatorRole'] = creatorRoleValue;
-    }
-    map['databaseId'] = databaseId;
-    map['instanceId'] = instanceId;
-    final labelsValue = labels;
-    if (labelsValue != null) {
-      map['labels'] = labelsValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'creatorRole': ?creatorRole,
+      'databaseId': databaseId,
+      'instanceId': instanceId,
+      'labels': ?labels,
+      'project': ?project,
+    };
   }
 
   factory SessionArgs.fromMap(Map<String, dynamic> map) {
     return SessionArgs(
-      creatorRole:
-          map['creatorRole'] == null ? null : map['creatorRole'] as String,
+      creatorRole: map['creatorRole'] == null ? null : map['creatorRole'] as String,
       databaseId: map['databaseId'] as String,
       instanceId: map['instanceId'] as String,
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

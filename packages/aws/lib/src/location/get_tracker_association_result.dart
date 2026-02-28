@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getTrackerAssociation.
 class GetTrackerAssociationResult {
   final String consumerArn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -22,12 +22,12 @@ class GetTrackerAssociationResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['consumerArn'] = consumerArn;
-    map['id'] = id;
-    map['region'] = region;
-    map['trackerName'] = trackerName;
-    return map;
+    return <String, dynamic>{
+      'consumerArn': consumerArn,
+      'id': id,
+      'region': region,
+      'trackerName': trackerName,
+    };
   }
 
   factory GetTrackerAssociationResult.fromMap(Map<String, dynamic> map) {
@@ -39,3 +39,4 @@ class GetTrackerAssociationResult {
     );
   }
 }
+

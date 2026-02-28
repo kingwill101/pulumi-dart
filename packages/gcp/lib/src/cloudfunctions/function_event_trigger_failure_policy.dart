@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FunctionEventTriggerFailurePolicy {
   /// Whether the function should be retried on failure. Defaults to `false`.
   final bool retry;
@@ -11,9 +12,9 @@ class FunctionEventTriggerFailurePolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['retry'] = retry;
-    return map;
+    return <String, dynamic>{
+      'retry': retry,
+    };
   }
 
   factory FunctionEventTriggerFailurePolicy.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class FunctionEventTriggerFailurePolicy {
     );
   }
 }
+

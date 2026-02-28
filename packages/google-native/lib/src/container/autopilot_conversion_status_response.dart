@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// AutopilotConversionStatus represents conversion status.
 class AutopilotConversionStatusResponse {
   /// The current state of the conversion.
@@ -12,9 +13,9 @@ class AutopilotConversionStatusResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['state'] = state;
-    return map;
+    return <String, dynamic>{
+      'state': state,
+    };
   }
 
   factory AutopilotConversionStatusResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class AutopilotConversionStatusResponse {
     );
   }
 }
+

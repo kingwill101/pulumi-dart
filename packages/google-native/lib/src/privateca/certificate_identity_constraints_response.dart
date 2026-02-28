@@ -6,10 +6,8 @@ import 'expr_response.dart';
 class CertificateIdentityConstraintsResponse {
   /// If this is true, the SubjectAltNames extension may be copied from a certificate request into the signed certificate. Otherwise, the requested SubjectAltNames will be discarded.
   final bool allowSubjectAltNamesPassthrough;
-
   /// If this is true, the Subject field may be copied from a certificate request into the signed certificate. Otherwise, the requested Subject will be discarded.
   final bool allowSubjectPassthrough;
-
   /// Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
   final ExprResponse celExpression;
 
@@ -24,21 +22,19 @@ class CertificateIdentityConstraintsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allowSubjectAltNamesPassthrough'] = allowSubjectAltNamesPassthrough;
-    map['allowSubjectPassthrough'] = allowSubjectPassthrough;
-    map['celExpression'] = celExpression.toMap();
-    return map;
+    return <String, dynamic>{
+      'allowSubjectAltNamesPassthrough': allowSubjectAltNamesPassthrough,
+      'allowSubjectPassthrough': allowSubjectPassthrough,
+      'celExpression': celExpression.toMap(),
+    };
   }
 
-  factory CertificateIdentityConstraintsResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory CertificateIdentityConstraintsResponse.fromMap(Map<String, dynamic> map) {
     return CertificateIdentityConstraintsResponse(
-      allowSubjectAltNamesPassthrough:
-          map['allowSubjectAltNamesPassthrough'] as bool,
+      allowSubjectAltNamesPassthrough: map['allowSubjectAltNamesPassthrough'] as bool,
       allowSubjectPassthrough: map['allowSubjectPassthrough'] as bool,
-      celExpression: ExprResponse.fromMap(
-          (map['celExpression'] as Map).cast<String, dynamic>()),
+      celExpression: ExprResponse.fromMap((map['celExpression'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -6,13 +6,10 @@ import 'cluster_shard_node.dart';
 class ClusterShard {
   /// Name of the cluster. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   final String? name;
-
   /// Set of nodes in this shard.
   final List<ClusterShardNode>? nodes;
-
   /// Number of individual nodes in this shard.
   final int? numNodes;
-
   /// Keyspace for this shard. Example: `0-16383`.
   final String? slots;
 
@@ -29,39 +26,21 @@ class ClusterShard {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final nodesValue = nodes;
-    if (nodesValue != null) {
-      map['nodes'] =
-          pulumi.Input.encodeList<ClusterShardNode, Map<String, dynamic>>(
-              nodesValue, (value) => value.toMap());
-    }
-    final numNodesValue = numNodes;
-    if (numNodesValue != null) {
-      map['numNodes'] = numNodesValue;
-    }
-    final slotsValue = slots;
-    if (slotsValue != null) {
-      map['slots'] = slotsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+      'nodes': ?nodes == null ? null : pulumi.Input.encodeList<ClusterShardNode, Map<String, dynamic>>(nodes!, (value) => value.toMap()),
+      'numNodes': ?numNodes,
+      'slots': ?slots,
+    };
   }
 
   factory ClusterShard.fromMap(Map<String, dynamic> map) {
     return ClusterShard(
       name: map['name'] == null ? null : map['name'] as String,
-      nodes: map['nodes'] == null
-          ? null
-          : pulumi.Input.decodeList<ClusterShardNode>(
-              map['nodes'],
-              (value) => ClusterShardNode.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      nodes: map['nodes'] == null ? null : pulumi.Input.decodeList<ClusterShardNode>(map['nodes'], (value) => ClusterShardNode.fromMap((value as Map).cast<String, dynamic>())),
       numNodes: map['numNodes'] == null ? null : map['numNodes'] as int,
       slots: map['slots'] == null ? null : map['slots'] as String,
     );
   }
 }
+

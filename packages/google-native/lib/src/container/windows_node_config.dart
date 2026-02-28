@@ -14,19 +14,15 @@ class WindowsNodeConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final osVersionValue = osVersion;
-    if (osVersionValue != null) {
-      map['osVersion'] = osVersionValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'osVersion': ?osVersion == null ? null : osVersion!.value,
+    };
   }
 
   factory WindowsNodeConfig.fromMap(Map<String, dynamic> map) {
     return WindowsNodeConfig(
-      osVersion: map['osVersion'] == null
-          ? null
-          : WindowsNodeConfigOsVersion.fromValue(map['osVersion'] as String),
+      osVersion: map['osVersion'] == null ? null : WindowsNodeConfigOsVersion.fromValue(map['osVersion'] as String),
     );
   }
 }
+

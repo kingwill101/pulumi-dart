@@ -14,20 +14,15 @@ class GPUDriverInstallationConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final gpuDriverVersionValue = gpuDriverVersion;
-    if (gpuDriverVersionValue != null) {
-      map['gpuDriverVersion'] = gpuDriverVersionValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'gpuDriverVersion': ?gpuDriverVersion == null ? null : gpuDriverVersion!.value,
+    };
   }
 
   factory GPUDriverInstallationConfig.fromMap(Map<String, dynamic> map) {
     return GPUDriverInstallationConfig(
-      gpuDriverVersion: map['gpuDriverVersion'] == null
-          ? null
-          : GPUDriverInstallationConfigGpuDriverVersion.fromValue(
-              map['gpuDriverVersion'] as String),
+      gpuDriverVersion: map['gpuDriverVersion'] == null ? null : GPUDriverInstallationConfigGpuDriverVersion.fromValue(map['gpuDriverVersion'] as String),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetOntapStorageVirtualMachineLifecycleTransitionReason {
   /// A detailed message.
   final String message;
@@ -11,15 +12,15 @@ class GetOntapStorageVirtualMachineLifecycleTransitionReason {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['message'] = message;
-    return map;
+    return <String, dynamic>{
+      'message': message,
+    };
   }
 
-  factory GetOntapStorageVirtualMachineLifecycleTransitionReason.fromMap(
-      Map<String, dynamic> map) {
+  factory GetOntapStorageVirtualMachineLifecycleTransitionReason.fromMap(Map<String, dynamic> map) {
     return GetOntapStorageVirtualMachineLifecycleTransitionReason(
       message: map['message'] as String,
     );
   }
 }
+

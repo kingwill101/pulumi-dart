@@ -3820,69 +3820,47 @@ import 'event_target_sqs_target.dart';
 class EventTarget extends pulumi.CustomResource {
   /// Parameters used when you are using the rule to invoke an AppSync GraphQL API mutation. Documented below. A maximum of 1 are allowed.
   late final pulumi.Output<EventTargetAppsyncTarget?> appsyncTarget;
-
   /// The Amazon Resource Name (ARN) of the target.
   late final pulumi.Output<String> arn;
-
   /// Parameters used when you are using the rule to invoke an Amazon Batch Job. Documented below. A maximum of 1 are allowed.
   late final pulumi.Output<EventTargetBatchTarget?> batchTarget;
-
   /// Parameters used when you are providing a dead letter config. Documented below. A maximum of 1 are allowed.
   late final pulumi.Output<EventTargetDeadLetterConfig?> deadLetterConfig;
-
   /// Parameters used when you are using the rule to invoke Amazon ECS Task. Documented below. A maximum of 1 are allowed.
   late final pulumi.Output<EventTargetEcsTarget?> ecsTarget;
-
   /// The name or ARN of the event bus to associate with the rule.
   /// If you omit this, the `default` event bus is used.
   late final pulumi.Output<String?> eventBusName;
-
   /// Used to delete managed rules created by AWS. Defaults to `false`.
   late final pulumi.Output<bool?> forceDestroy;
-
   /// Parameters used when you are using the rule to invoke an API Gateway REST endpoint. Documented below. A maximum of 1 is allowed.
   late final pulumi.Output<EventTargetHttpTarget?> httpTarget;
-
   /// Valid JSON text passed to the target. Conflicts with `input_path` and `input_transformer`.
   late final pulumi.Output<String?> input;
-
   /// The value of the [JSONPath](http://goessner.net/articles/JsonPath/) that is used for extracting part of the matched event when passing it to the target. Conflicts with `input` and `input_transformer`.
   late final pulumi.Output<String?> inputPath;
-
   /// Parameters used when you are providing a custom input to a target based on certain event data. Conflicts with `input` and `input_path`.
   late final pulumi.Output<EventTargetInputTransformer?> inputTransformer;
-
   /// Parameters used when you are using the rule to invoke an Amazon Kinesis Stream. Documented below. A maximum of 1 are allowed.
   late final pulumi.Output<EventTargetKinesisTarget?> kinesisTarget;
-
   /// Parameters used when you are using the rule to invoke an Amazon Redshift Statement. Documented below. A maximum of 1 are allowed.
   late final pulumi.Output<EventTargetRedshiftTarget?> redshiftTarget;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Parameters used when you are providing retry policies. Documented below. A maximum of 1 are allowed.
   late final pulumi.Output<EventTargetRetryPolicy?> retryPolicy;
-
   /// The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. Required if `ecs_target` is used or target in `arn` is EC2 instance, Kinesis data stream, Step Functions state machine, or Event Bus in different account or region.
   late final pulumi.Output<String?> roleArn;
-
   /// The name of the rule you want to add targets to.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> rule;
-
   /// Parameters used when you are using the rule to invoke Amazon EC2 Run Command. Documented below. A maximum of 5 are allowed.
-  late final pulumi.Output<List<EventTargetRunCommandTarget>?>
-      runCommandTargets;
-
+  late final pulumi.Output<List<EventTargetRunCommandTarget>?> runCommandTargets;
   /// Parameters used when you are using the rule to invoke an Amazon SageMaker AI Pipeline. Documented below. A maximum of 1 are allowed.
-  late final pulumi.Output<EventTargetSagemakerPipelineTarget?>
-      sagemakerPipelineTarget;
-
+  late final pulumi.Output<EventTargetSagemakerPipelineTarget?> sagemakerPipelineTarget;
   /// Parameters used when you are using the rule to invoke an Amazon SQS Queue. Documented below. A maximum of 1 are allowed.
   late final pulumi.Output<EventTargetSqsTarget?> sqsTarget;
-
   /// The unique target assignment ID. If missing, will generate a random, unique id.
   late final pulumi.Output<String> targetId;
 
@@ -3900,33 +3878,25 @@ class EventTarget extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.appsyncTarget =
-        registerOutput<EventTargetAppsyncTarget?>('appsyncTarget');
+    this.appsyncTarget = registerOutput<EventTargetAppsyncTarget?>('appsyncTarget');
     this.arn = registerOutput<String>('arn');
     this.batchTarget = registerOutput<EventTargetBatchTarget?>('batchTarget');
-    this.deadLetterConfig =
-        registerOutput<EventTargetDeadLetterConfig?>('deadLetterConfig');
+    this.deadLetterConfig = registerOutput<EventTargetDeadLetterConfig?>('deadLetterConfig');
     this.ecsTarget = registerOutput<EventTargetEcsTarget?>('ecsTarget');
     this.eventBusName = registerOutput<String?>('eventBusName');
     this.forceDestroy = registerOutput<bool?>('forceDestroy');
     this.httpTarget = registerOutput<EventTargetHttpTarget?>('httpTarget');
     this.input = registerOutput<String?>('input');
     this.inputPath = registerOutput<String?>('inputPath');
-    this.inputTransformer =
-        registerOutput<EventTargetInputTransformer?>('inputTransformer');
-    this.kinesisTarget =
-        registerOutput<EventTargetKinesisTarget?>('kinesisTarget');
-    this.redshiftTarget =
-        registerOutput<EventTargetRedshiftTarget?>('redshiftTarget');
+    this.inputTransformer = registerOutput<EventTargetInputTransformer?>('inputTransformer');
+    this.kinesisTarget = registerOutput<EventTargetKinesisTarget?>('kinesisTarget');
+    this.redshiftTarget = registerOutput<EventTargetRedshiftTarget?>('redshiftTarget');
     this.region = registerOutput<String>('region');
     this.retryPolicy = registerOutput<EventTargetRetryPolicy?>('retryPolicy');
     this.roleArn = registerOutput<String?>('roleArn');
     this.rule = registerOutput<String>('rule');
-    this.runCommandTargets =
-        registerOutput<List<EventTargetRunCommandTarget>?>('runCommandTargets');
-    this.sagemakerPipelineTarget =
-        registerOutput<EventTargetSagemakerPipelineTarget?>(
-            'sagemakerPipelineTarget');
+    this.runCommandTargets = registerOutput<List<EventTargetRunCommandTarget>?>('runCommandTargets');
+    this.sagemakerPipelineTarget = registerOutput<EventTargetSagemakerPipelineTarget?>('sagemakerPipelineTarget');
     this.sqsTarget = registerOutput<EventTargetSqsTarget?>('sqsTarget');
     this.targetId = registerOutput<String>('targetId');
   }

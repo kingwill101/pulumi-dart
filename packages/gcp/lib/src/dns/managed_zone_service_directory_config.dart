@@ -14,15 +14,15 @@ class ManagedZoneServiceDirectoryConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['namespace'] = namespace.toMap();
-    return map;
+    return <String, dynamic>{
+      'namespace': namespace.toMap(),
+    };
   }
 
   factory ManagedZoneServiceDirectoryConfig.fromMap(Map<String, dynamic> map) {
     return ManagedZoneServiceDirectoryConfig(
-      namespace: ManagedZoneServiceDirectoryConfigNamespace.fromMap(
-          (map['namespace'] as Map).cast<String, dynamic>()),
+      namespace: ManagedZoneServiceDirectoryConfigNamespace.fromMap((map['namespace'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

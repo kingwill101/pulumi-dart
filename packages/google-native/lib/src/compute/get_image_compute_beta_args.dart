@@ -16,17 +16,15 @@ class GetImageComputeBetaArgs {
   GetImageComputeBetaArgs({
     required String image,
     String? project,
-  })  : image = pulumi.Input.asInput<String>(image),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      image = pulumi.Input.asInput<String>(image),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['image'] = image;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'image': image,
+      'project': ?project,
+    };
   }
 
   factory GetImageComputeBetaArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetImageComputeBetaArgs {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTableAttribute {
   /// Name of the DynamoDB table.
   final String name;
@@ -14,10 +15,10 @@ class GetTableAttribute {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'type': type,
+    };
   }
 
   factory GetTableAttribute.fromMap(Map<String, dynamic> map) {
@@ -27,3 +28,4 @@ class GetTableAttribute {
     );
   }
 }
+

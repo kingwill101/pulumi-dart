@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterClusterTelemetry {
   /// Type of the integration.
   final String type;
@@ -11,9 +12,9 @@ class GetClusterClusterTelemetry {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory GetClusterClusterTelemetry.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetClusterClusterTelemetry {
     );
   }
 }
+

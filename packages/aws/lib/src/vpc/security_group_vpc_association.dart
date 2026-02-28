@@ -123,14 +123,11 @@ import 'security_group_vpc_association_timeouts.dart';
 class SecurityGroupVpcAssociation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ID of the security group.
   late final pulumi.Output<String> securityGroupId;
-
   /// State of the VPC association. See the [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SecurityGroupVpcAssociation.html) for possible values.
   late final pulumi.Output<String> state;
   late final pulumi.Output<SecurityGroupVpcAssociationTimeouts?> timeouts;
-
   /// The ID of the VPC to make the association with.
   late final pulumi.Output<String> vpcId;
 
@@ -151,8 +148,7 @@ class SecurityGroupVpcAssociation extends pulumi.CustomResource {
     this.region = registerOutput<String>('region');
     this.securityGroupId = registerOutput<String>('securityGroupId');
     this.state = registerOutput<String>('state');
-    this.timeouts =
-        registerOutput<SecurityGroupVpcAssociationTimeouts?>('timeouts');
+    this.timeouts = registerOutput<SecurityGroupVpcAssociationTimeouts?>('timeouts');
     this.vpcId = registerOutput<String>('vpcId');
   }
 }

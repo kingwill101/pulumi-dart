@@ -1,15 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getPrompt.
 class GetPromptResult {
   /// ARN of the Prompt.
   final String arn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instanceId;
   final String name;
-
   /// Identifier for the prompt.
   final String promptId;
   final String region;
@@ -31,14 +30,14 @@ class GetPromptResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['id'] = id;
-    map['instanceId'] = instanceId;
-    map['name'] = name;
-    map['promptId'] = promptId;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'id': id,
+      'instanceId': instanceId,
+      'name': name,
+      'promptId': promptId,
+      'region': region,
+    };
   }
 
   factory GetPromptResult.fromMap(Map<String, dynamic> map) {
@@ -52,3 +51,4 @@ class GetPromptResult {
     );
   }
 }
+

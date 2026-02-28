@@ -22,3 +22,4 @@ enum MetricMetricSource {
     throw ArgumentError('Unknown MetricMetricSource value: $value');
   }
 }
+

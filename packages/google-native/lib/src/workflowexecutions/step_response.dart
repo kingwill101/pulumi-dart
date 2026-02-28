@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents a step of the workflow this execution is running.
 class StepResponse {
   /// Name of a routine within the workflow.
   final String routine;
-
   /// Name of a step within the routine.
   final String step;
 
@@ -17,10 +17,10 @@ class StepResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['routine'] = routine;
-    map['step'] = step;
-    return map;
+    return <String, dynamic>{
+      'routine': routine,
+      'step': step,
+    };
   }
 
   factory StepResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class StepResponse {
     );
   }
 }
+

@@ -9,13 +9,10 @@ import 'get_feature_spec_rbacrolebindingactuation.dart';
 class GetFeatureSpec {
   /// Clusterupgrade feature spec.
   final List<GetFeatureSpecClusterupgrade> clusterupgrades;
-
   /// Fleet Observability feature spec.
   final List<GetFeatureSpecFleetobservability> fleetobservabilities;
-
   /// Multicluster Ingress-specific spec.
   final List<GetFeatureSpecMulticlusteringress> multiclusteringresses;
-
   /// RBACRolebinding Actuation feature spec.
   final List<GetFeatureSpecRbacrolebindingactuation> rbacrolebindingactuations;
 
@@ -32,43 +29,21 @@ class GetFeatureSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clusterupgrades'] = pulumi.Input.encodeList<
-        GetFeatureSpecClusterupgrade,
-        Map<String, dynamic>>(clusterupgrades, (value) => value.toMap());
-    map['fleetobservabilities'] = pulumi.Input.encodeList<
-        GetFeatureSpecFleetobservability,
-        Map<String, dynamic>>(fleetobservabilities, (value) => value.toMap());
-    map['multiclusteringresses'] = pulumi.Input.encodeList<
-        GetFeatureSpecMulticlusteringress,
-        Map<String, dynamic>>(multiclusteringresses, (value) => value.toMap());
-    map['rbacrolebindingactuations'] = pulumi.Input.encodeList<
-            GetFeatureSpecRbacrolebindingactuation, Map<String, dynamic>>(
-        rbacrolebindingactuations, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'clusterupgrades': pulumi.Input.encodeList<GetFeatureSpecClusterupgrade, Map<String, dynamic>>(clusterupgrades, (value) => value.toMap()),
+      'fleetobservabilities': pulumi.Input.encodeList<GetFeatureSpecFleetobservability, Map<String, dynamic>>(fleetobservabilities, (value) => value.toMap()),
+      'multiclusteringresses': pulumi.Input.encodeList<GetFeatureSpecMulticlusteringress, Map<String, dynamic>>(multiclusteringresses, (value) => value.toMap()),
+      'rbacrolebindingactuations': pulumi.Input.encodeList<GetFeatureSpecRbacrolebindingactuation, Map<String, dynamic>>(rbacrolebindingactuations, (value) => value.toMap()),
+    };
   }
 
   factory GetFeatureSpec.fromMap(Map<String, dynamic> map) {
     return GetFeatureSpec(
-      clusterupgrades: pulumi.Input.decodeList<GetFeatureSpecClusterupgrade>(
-          map['clusterupgrades'],
-          (value) => GetFeatureSpecClusterupgrade.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      fleetobservabilities:
-          pulumi.Input.decodeList<GetFeatureSpecFleetobservability>(
-              map['fleetobservabilities'],
-              (value) => GetFeatureSpecFleetobservability.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      multiclusteringresses:
-          pulumi.Input.decodeList<GetFeatureSpecMulticlusteringress>(
-              map['multiclusteringresses'],
-              (value) => GetFeatureSpecMulticlusteringress.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      rbacrolebindingactuations:
-          pulumi.Input.decodeList<GetFeatureSpecRbacrolebindingactuation>(
-              map['rbacrolebindingactuations'],
-              (value) => GetFeatureSpecRbacrolebindingactuation.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      clusterupgrades: pulumi.Input.decodeList<GetFeatureSpecClusterupgrade>(map['clusterupgrades'], (value) => GetFeatureSpecClusterupgrade.fromMap((value as Map).cast<String, dynamic>())),
+      fleetobservabilities: pulumi.Input.decodeList<GetFeatureSpecFleetobservability>(map['fleetobservabilities'], (value) => GetFeatureSpecFleetobservability.fromMap((value as Map).cast<String, dynamic>())),
+      multiclusteringresses: pulumi.Input.decodeList<GetFeatureSpecMulticlusteringress>(map['multiclusteringresses'], (value) => GetFeatureSpecMulticlusteringress.fromMap((value as Map).cast<String, dynamic>())),
+      rbacrolebindingactuations: pulumi.Input.decodeList<GetFeatureSpecRbacrolebindingactuation>(map['rbacrolebindingactuations'], (value) => GetFeatureSpecRbacrolebindingactuation.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -360,27 +360,20 @@ import 'browser_settings_args.dart';
 class BrowserSettings extends pulumi.CustomResource {
   /// Additional encryption context for the browser settings.
   late final pulumi.Output<Map<String, String>?> additionalEncryptionContext;
-
   /// List of web portal ARNs to associate with the browser settings.
   late final pulumi.Output<List<String>> associatedPortalArns;
-
   /// Browser policy for the browser settings. This is a JSON string that defines the browser settings policy.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> browserPolicy;
-
   /// ARN of the browser settings resource.
   late final pulumi.Output<String> browserSettingsArn;
-
   /// ARN of the customer managed KMS key.
   late final pulumi.Output<String?> customerManagedKey;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -398,10 +391,8 @@ class BrowserSettings extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.additionalEncryptionContext =
-        registerOutput<Map<String, String>?>('additionalEncryptionContext');
-    this.associatedPortalArns =
-        registerOutput<List<String>>('associatedPortalArns');
+    this.additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext');
+    this.associatedPortalArns = registerOutput<List<String>>('associatedPortalArns');
     this.browserPolicy = registerOutput<String>('browserPolicy');
     this.browserSettingsArn = registerOutput<String>('browserSettingsArn');
     this.customerManagedKey = registerOutput<String?>('customerManagedKey');

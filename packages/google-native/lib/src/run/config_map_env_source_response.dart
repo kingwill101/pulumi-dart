@@ -6,10 +6,8 @@ import 'local_object_reference_response.dart';
 class ConfigMapEnvSourceResponse {
   /// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
   final LocalObjectReferenceResponse localObjectReference;
-
   /// The ConfigMap to select from.
   final String name;
-
   /// Specify whether the ConfigMap must be defined.
   final bool optional;
 
@@ -24,19 +22,19 @@ class ConfigMapEnvSourceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['localObjectReference'] = localObjectReference.toMap();
-    map['name'] = name;
-    map['optional'] = optional;
-    return map;
+    return <String, dynamic>{
+      'localObjectReference': localObjectReference.toMap(),
+      'name': name,
+      'optional': optional,
+    };
   }
 
   factory ConfigMapEnvSourceResponse.fromMap(Map<String, dynamic> map) {
     return ConfigMapEnvSourceResponse(
-      localObjectReference: LocalObjectReferenceResponse.fromMap(
-          (map['localObjectReference'] as Map).cast<String, dynamic>()),
+      localObjectReference: LocalObjectReferenceResponse.fromMap((map['localObjectReference'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       optional: map['optional'] as bool,
     );
   }
 }
+

@@ -5,11 +5,9 @@ import 'conversation_profile_human_agent_assistant_config_human_agent_suggestion
 class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource {
   /// he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
   final String agent;
-
   /// The Dialogflow assist configuration for human agent.
   /// Structure is documented below.
-  final ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig?
-      humanAgentSideConfig;
+  final ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig? humanAgentSideConfig;
 
   /// Creates a new [ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource].
   /// [agent] he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
@@ -20,24 +18,17 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['agent'] = agent;
-    final humanAgentSideConfigValue = humanAgentSideConfig;
-    if (humanAgentSideConfigValue != null) {
-      map['humanAgentSideConfig'] = humanAgentSideConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'agent': agent,
+      'humanAgentSideConfig': ?humanAgentSideConfig == null ? null : humanAgentSideConfig!.toMap(),
+    };
   }
 
-  factory ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource.fromMap(
-      Map<String, dynamic> map) {
+  factory ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource.fromMap(Map<String, dynamic> map) {
     return ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource(
       agent: map['agent'] as String,
-      humanAgentSideConfig: map['humanAgentSideConfig'] == null
-          ? null
-          : ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig
-              .fromMap(
-                  (map['humanAgentSideConfig'] as Map).cast<String, dynamic>()),
+      humanAgentSideConfig: map['humanAgentSideConfig'] == null ? null : ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig.fromMap((map['humanAgentSideConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

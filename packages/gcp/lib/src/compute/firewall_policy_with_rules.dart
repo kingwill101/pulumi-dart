@@ -1111,38 +1111,27 @@ import 'firewall_policy_with_rules_rule.dart';
 class FirewallPolicyWithRules extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
-
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
-
   /// Fingerprint of the resource. This field is used internally during updates of this resource.
   late final pulumi.Output<String> fingerprint;
-
   /// The parent of this FirewallPolicy in the Cloud Resource Hierarchy.
   /// Format: organizations/{organization_id} or folders/{folder_id}
   late final pulumi.Output<String> parent;
-
   /// The unique identifier for the resource. This identifier is defined by the server.
   late final pulumi.Output<String> policyId;
-
   /// A list of pre-define firewall policy rules.
   /// Structure is documented below.
-  late final pulumi.Output<List<FirewallPolicyWithRulesPredefinedRule>>
-      predefinedRules;
-
+  late final pulumi.Output<List<FirewallPolicyWithRulesPredefinedRule>> predefinedRules;
   /// Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
   late final pulumi.Output<int> ruleTupleCount;
-
   /// A list of firewall policy rules.
   /// Structure is documented below.
   late final pulumi.Output<List<FirewallPolicyWithRulesRule>> rules;
-
   /// Server-defined URL for the resource.
   late final pulumi.Output<String> selfLink;
-
   /// Server-defined URL for this resource with the resource id.
   late final pulumi.Output<String> selfLinkWithId;
-
   /// A textual name of the security policy.
   late final pulumi.Output<String> shortName;
 
@@ -1165,9 +1154,7 @@ class FirewallPolicyWithRules extends pulumi.CustomResource {
     this.fingerprint = registerOutput<String>('fingerprint');
     this.parent = registerOutput<String>('parent');
     this.policyId = registerOutput<String>('policyId');
-    this.predefinedRules =
-        registerOutput<List<FirewallPolicyWithRulesPredefinedRule>>(
-            'predefinedRules');
+    this.predefinedRules = registerOutput<List<FirewallPolicyWithRulesPredefinedRule>>('predefinedRules');
     this.ruleTupleCount = registerOutput<int>('ruleTupleCount');
     this.rules = registerOutput<List<FirewallPolicyWithRulesRule>>('rules');
     this.selfLink = registerOutput<String>('selfLink');

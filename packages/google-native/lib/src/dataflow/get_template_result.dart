@@ -8,13 +8,10 @@ import 'template_metadata_response.dart';
 class GetTemplateResult {
   /// The template metadata describing the template name, available parameters, etc.
   final TemplateMetadataResponse metadata;
-
   /// Describes the runtime metadata with SDKInfo and available parameters.
   final RuntimeMetadataResponse runtimeMetadata;
-
   /// The status of the get template request. Any problems with the request will be indicated in the error_details.
   final StatusResponse status;
-
   /// Template Type.
   final String templateType;
 
@@ -31,23 +28,21 @@ class GetTemplateResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['metadata'] = metadata.toMap();
-    map['runtimeMetadata'] = runtimeMetadata.toMap();
-    map['status'] = status.toMap();
-    map['templateType'] = templateType;
-    return map;
+    return <String, dynamic>{
+      'metadata': metadata.toMap(),
+      'runtimeMetadata': runtimeMetadata.toMap(),
+      'status': status.toMap(),
+      'templateType': templateType,
+    };
   }
 
   factory GetTemplateResult.fromMap(Map<String, dynamic> map) {
     return GetTemplateResult(
-      metadata: TemplateMetadataResponse.fromMap(
-          (map['metadata'] as Map).cast<String, dynamic>()),
-      runtimeMetadata: RuntimeMetadataResponse.fromMap(
-          (map['runtimeMetadata'] as Map).cast<String, dynamic>()),
-      status: StatusResponse.fromMap(
-          (map['status'] as Map).cast<String, dynamic>()),
+      metadata: TemplateMetadataResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
+      runtimeMetadata: RuntimeMetadataResponse.fromMap((map['runtimeMetadata'] as Map).cast<String, dynamic>()),
+      status: StatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
       templateType: map['templateType'] as String,
     );
   }
 }
+

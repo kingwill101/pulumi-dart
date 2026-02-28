@@ -1067,73 +1067,54 @@ import 'region_network_firewall_policy_rule_target_secure_tag.dart';
 class RegionNetworkFirewallPolicyRule extends pulumi.CustomResource {
   /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "goto_next" and "apply_security_profile_group".
   late final pulumi.Output<String> action;
-
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
-
   /// An optional description for this resource.
   late final pulumi.Output<String?> description;
-
   /// The direction in which this rule applies.
   /// Possible values are: `INGRESS`, `EGRESS`.
   late final pulumi.Output<String> direction;
-
   /// Denotes whether the firewall policy rule is disabled.
   /// When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist.
   /// If this is unspecified, the firewall policy rule will be enabled.
   late final pulumi.Output<bool?> disabled;
-
   /// Denotes whether to enable logging for a particular rule.
   /// If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
   /// Logs may be exported to BigQuery or Pub/Sub.
   /// Note: you cannot enable logging on "goto_next" rules.
   late final pulumi.Output<bool?> enableLogging;
-
   /// The firewall policy of the resource.
   late final pulumi.Output<String> firewallPolicy;
-
   /// Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
   late final pulumi.Output<String> kind;
-
   /// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
   /// Structure is documented below.
   late final pulumi.Output<RegionNetworkFirewallPolicyRuleMatch> match;
-
   /// An integer indicating the priority of a rule in the list.
   /// The priority must be a positive value between 0 and 2147483647.
   /// Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
   late final pulumi.Output<int> priority;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The location of this resource.
   late final pulumi.Output<String> region;
-
   /// An optional name for the rule. This field is not a unique identifier and can be updated.
   late final pulumi.Output<String?> ruleName;
-
   /// Calculation of the complexity of a single firewall policy rule.
   late final pulumi.Output<int> ruleTupleCount;
-
   /// A fully-qualified URL of a SecurityProfile resource instance.
   /// Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
   /// Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
   /// Security Profile Group and Firewall Policy Rule must be in the same scope.
   late final pulumi.Output<String?> securityProfileGroup;
-
   /// A list of secure tags that controls which instances the firewall rule applies to.
   /// If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
   /// targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
   /// Structure is documented below.
-  late final pulumi
-      .Output<List<RegionNetworkFirewallPolicyRuleTargetSecureTag>?>
-      targetSecureTags;
-
+  late final pulumi.Output<List<RegionNetworkFirewallPolicyRuleTargetSecureTag>?> targetSecureTags;
   /// A list of service accounts indicating the sets of instances that are applied with this rule.
   late final pulumi.Output<List<String>?> targetServiceAccounts;
-
   /// Boolean flag indicating if the traffic should be TLS decrypted.
   /// Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
   late final pulumi.Output<bool?> tlsInspect;
@@ -1167,11 +1148,8 @@ class RegionNetworkFirewallPolicyRule extends pulumi.CustomResource {
     this.ruleName = registerOutput<String?>('ruleName');
     this.ruleTupleCount = registerOutput<int>('ruleTupleCount');
     this.securityProfileGroup = registerOutput<String?>('securityProfileGroup');
-    this.targetSecureTags =
-        registerOutput<List<RegionNetworkFirewallPolicyRuleTargetSecureTag>?>(
-            'targetSecureTags');
-    this.targetServiceAccounts =
-        registerOutput<List<String>?>('targetServiceAccounts');
+    this.targetSecureTags = registerOutput<List<RegionNetworkFirewallPolicyRuleTargetSecureTag>?>('targetSecureTags');
+    this.targetServiceAccounts = registerOutput<List<String>?>('targetServiceAccounts');
     this.tlsInspect = registerOutput<bool?>('tlsInspect');
   }
 }

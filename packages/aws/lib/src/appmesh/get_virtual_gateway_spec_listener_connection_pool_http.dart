@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetVirtualGatewaySpecListenerConnectionPoolHttp {
   final int maxConnections;
   final int maxPendingRequests;
@@ -13,17 +14,17 @@ class GetVirtualGatewaySpecListenerConnectionPoolHttp {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maxConnections'] = maxConnections;
-    map['maxPendingRequests'] = maxPendingRequests;
-    return map;
+    return <String, dynamic>{
+      'maxConnections': maxConnections,
+      'maxPendingRequests': maxPendingRequests,
+    };
   }
 
-  factory GetVirtualGatewaySpecListenerConnectionPoolHttp.fromMap(
-      Map<String, dynamic> map) {
+  factory GetVirtualGatewaySpecListenerConnectionPoolHttp.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecListenerConnectionPoolHttp(
       maxConnections: map['maxConnections'] as int,
       maxPendingRequests: map['maxPendingRequests'] as int,
     );
   }
 }
+

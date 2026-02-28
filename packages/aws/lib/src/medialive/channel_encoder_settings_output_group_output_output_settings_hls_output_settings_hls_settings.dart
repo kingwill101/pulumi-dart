@@ -5,13 +5,10 @@ import 'channel_encoder_settings_output_group_output_output_settings_hls_output_
 import 'channel_encoder_settings_output_group_output_output_settings_hls_output_settings_hls_settings_standard_hls_settings.dart';
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettings {
-  final ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettings?
-      audioOnlyHlsSettings;
-  final ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsFmp4HlsSettings?
-      fmp4HlsSettings;
+  final ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettings? audioOnlyHlsSettings;
+  final ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsFmp4HlsSettings? fmp4HlsSettings;
   final Map<String, dynamic>? frameCaptureHlsSettings;
-  final ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettings?
-      standardHlsSettings;
+  final ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettings? standardHlsSettings;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettings].
   /// [audioOnlyHlsSettings] Optional.
@@ -26,46 +23,21 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsS
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final audioOnlyHlsSettingsValue = audioOnlyHlsSettings;
-    if (audioOnlyHlsSettingsValue != null) {
-      map['audioOnlyHlsSettings'] = audioOnlyHlsSettingsValue.toMap();
-    }
-    final fmp4HlsSettingsValue = fmp4HlsSettings;
-    if (fmp4HlsSettingsValue != null) {
-      map['fmp4HlsSettings'] = fmp4HlsSettingsValue.toMap();
-    }
-    final frameCaptureHlsSettingsValue = frameCaptureHlsSettings;
-    if (frameCaptureHlsSettingsValue != null) {
-      map['frameCaptureHlsSettings'] = frameCaptureHlsSettingsValue;
-    }
-    final standardHlsSettingsValue = standardHlsSettings;
-    if (standardHlsSettingsValue != null) {
-      map['standardHlsSettings'] = standardHlsSettingsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'audioOnlyHlsSettings': ?audioOnlyHlsSettings == null ? null : audioOnlyHlsSettings!.toMap(),
+      'fmp4HlsSettings': ?fmp4HlsSettings == null ? null : fmp4HlsSettings!.toMap(),
+      'frameCaptureHlsSettings': ?frameCaptureHlsSettings,
+      'standardHlsSettings': ?standardHlsSettings == null ? null : standardHlsSettings!.toMap(),
+    };
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettings.fromMap(
-      Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettings(
-      audioOnlyHlsSettings: map['audioOnlyHlsSettings'] == null
-          ? null
-          : ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettings
-              .fromMap(
-                  (map['audioOnlyHlsSettings'] as Map).cast<String, dynamic>()),
-      fmp4HlsSettings: map['fmp4HlsSettings'] == null
-          ? null
-          : ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsFmp4HlsSettings
-              .fromMap((map['fmp4HlsSettings'] as Map).cast<String, dynamic>()),
-      frameCaptureHlsSettings: map['frameCaptureHlsSettings'] == null
-          ? null
-          : (map['frameCaptureHlsSettings'] as Map).cast<String, dynamic>(),
-      standardHlsSettings: map['standardHlsSettings'] == null
-          ? null
-          : ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettings
-              .fromMap(
-                  (map['standardHlsSettings'] as Map).cast<String, dynamic>()),
+      audioOnlyHlsSettings: map['audioOnlyHlsSettings'] == null ? null : ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettings.fromMap((map['audioOnlyHlsSettings'] as Map).cast<String, dynamic>()),
+      fmp4HlsSettings: map['fmp4HlsSettings'] == null ? null : ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsFmp4HlsSettings.fromMap((map['fmp4HlsSettings'] as Map).cast<String, dynamic>()),
+      frameCaptureHlsSettings: map['frameCaptureHlsSettings'] == null ? null : (map['frameCaptureHlsSettings'] as Map).cast<String, dynamic>(),
+      standardHlsSettings: map['standardHlsSettings'] == null ? null : ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettings.fromMap((map['standardHlsSettings'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

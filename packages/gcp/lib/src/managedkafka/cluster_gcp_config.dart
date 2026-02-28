@@ -6,7 +6,6 @@ class ClusterGcpConfig {
   /// The configuration of access to the Kafka cluster.
   /// Structure is documented below.
   final ClusterGcpConfigAccessConfig accessConfig;
-
   /// The Cloud KMS Key name to use for encryption. The key must be located in the same region as the cluster and cannot be changed. Must be in the format `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`.
   final String? kmsKey;
 
@@ -19,20 +18,17 @@ class ClusterGcpConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accessConfig'] = accessConfig.toMap();
-    final kmsKeyValue = kmsKey;
-    if (kmsKeyValue != null) {
-      map['kmsKey'] = kmsKeyValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'accessConfig': accessConfig.toMap(),
+      'kmsKey': ?kmsKey,
+    };
   }
 
   factory ClusterGcpConfig.fromMap(Map<String, dynamic> map) {
     return ClusterGcpConfig(
-      accessConfig: ClusterGcpConfigAccessConfig.fromMap(
-          (map['accessConfig'] as Map).cast<String, dynamic>()),
+      accessConfig: ClusterGcpConfigAccessConfig.fromMap((map['accessConfig'] as Map).cast<String, dynamic>()),
       kmsKey: map['kmsKey'] == null ? null : map['kmsKey'] as String,
     );
   }
 }
+

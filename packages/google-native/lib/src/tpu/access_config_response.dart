@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// An access config attached to the TPU worker.
 class AccessConfigResponse {
   /// An external IP address associated with the TPU worker.
@@ -12,9 +13,9 @@ class AccessConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['externalIp'] = externalIp;
-    return map;
+    return <String, dynamic>{
+      'externalIp': externalIp,
+    };
   }
 
   factory AccessConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class AccessConfigResponse {
     );
   }
 }
+

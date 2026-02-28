@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetExternalAccessRuleSourceIpRange {
   /// A single IP address.
   final String ipAddress;
-
   /// An IP address range in the CIDR format.
   final String ipAddressRange;
 
@@ -16,10 +16,10 @@ class GetExternalAccessRuleSourceIpRange {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ipAddress'] = ipAddress;
-    map['ipAddressRange'] = ipAddressRange;
-    return map;
+    return <String, dynamic>{
+      'ipAddress': ipAddress,
+      'ipAddressRange': ipAddressRange,
+    };
   }
 
   factory GetExternalAccessRuleSourceIpRange.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetExternalAccessRuleSourceIpRange {
     );
   }
 }
+

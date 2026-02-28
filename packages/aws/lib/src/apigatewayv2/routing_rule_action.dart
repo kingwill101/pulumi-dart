@@ -13,15 +13,15 @@ class RoutingRuleAction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['invokeApi'] = invokeApi.toMap();
-    return map;
+    return <String, dynamic>{
+      'invokeApi': invokeApi.toMap(),
+    };
   }
 
   factory RoutingRuleAction.fromMap(Map<String, dynamic> map) {
     return RoutingRuleAction(
-      invokeApi: RoutingRuleActionInvokeApi.fromMap(
-          (map['invokeApi'] as Map).cast<String, dynamic>()),
+      invokeApi: RoutingRuleActionInvokeApi.fromMap((map['invokeApi'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

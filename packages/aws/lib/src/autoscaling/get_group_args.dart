@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGroupArgs {
   /// Specify the exact name of the desired autoscaling group.
   final pulumi.Input<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -19,17 +18,15 @@ class GetGroupArgs {
   GetGroupArgs({
     required String name,
     String? region,
-  })  : name = pulumi.Input.asInput<String>(name),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      name = pulumi.Input.asInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'region': ?region,
+    };
   }
 
   factory GetGroupArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +36,4 @@ class GetGroupArgs {
     );
   }
 }
+

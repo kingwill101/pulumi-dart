@@ -15,23 +15,15 @@ class GooglePrivacyDlpV2ExcludeInfoTypes {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final infoTypesValue = infoTypes;
-    if (infoTypesValue != null) {
-      map['infoTypes'] = pulumi.Input.encodeList<GooglePrivacyDlpV2InfoType,
-          Map<String, dynamic>>(infoTypesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'infoTypes': ?infoTypes == null ? null : pulumi.Input.encodeList<GooglePrivacyDlpV2InfoType, Map<String, dynamic>>(infoTypes!, (value) => value.toMap()),
+    };
   }
 
   factory GooglePrivacyDlpV2ExcludeInfoTypes.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2ExcludeInfoTypes(
-      infoTypes: map['infoTypes'] == null
-          ? null
-          : pulumi.Input.decodeList<GooglePrivacyDlpV2InfoType>(
-              map['infoTypes'],
-              (value) => GooglePrivacyDlpV2InfoType.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      infoTypes: map['infoTypes'] == null ? null : pulumi.Input.decodeList<GooglePrivacyDlpV2InfoType>(map['infoTypes'], (value) => GooglePrivacyDlpV2InfoType.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

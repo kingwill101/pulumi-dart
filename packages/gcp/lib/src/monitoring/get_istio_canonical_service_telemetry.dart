@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetIstioCanonicalServiceTelemetry {
   /// The full name of the resource that defines this service.
   /// Formatted as described in
@@ -13,9 +14,9 @@ class GetIstioCanonicalServiceTelemetry {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['resourceName'] = resourceName;
-    return map;
+    return <String, dynamic>{
+      'resourceName': resourceName,
+    };
   }
 
   factory GetIstioCanonicalServiceTelemetry.fromMap(Map<String, dynamic> map) {
@@ -24,3 +25,4 @@ class GetIstioCanonicalServiceTelemetry {
     );
   }
 }
+

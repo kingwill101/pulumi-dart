@@ -27,116 +27,78 @@ import 'workload_metadata_config_response_container_v1beta1.dart';
 class NodeConfigResponseContainerV1beta1 {
   /// A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
   final List<AcceleratorConfigResponseContainerV1beta1> accelerators;
-
   /// Advanced features for the Compute Engine VM.
   final AdvancedMachineFeaturesResponseContainerV1beta1 advancedMachineFeatures;
-
   /// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
   final String bootDiskKmsKey;
-
   /// Confidential nodes config. All the nodes in the node pool will be Confidential VM once enabled.
   final ConfidentialNodesResponseContainerV1beta1 confidentialNodes;
-
   /// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
   final int diskSizeGb;
-
   /// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
   final String diskType;
-
   /// Optional. Enable confidential storage on Hyperdisk. boot_disk_kms_key is required when enable_confidential_storage is true. This is only available for private preview.
   final bool enableConfidentialStorage;
-
   /// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
   final EphemeralStorageConfigResponse ephemeralStorageConfig;
-
   /// Parameters for the node ephemeral storage using Local SSDs. If unspecified, ephemeral storage is backed by the boot disk. This field is functionally equivalent to the ephemeral_storage_config
-  final EphemeralStorageLocalSsdConfigResponseContainerV1beta1
-      ephemeralStorageLocalSsdConfig;
-
+  final EphemeralStorageLocalSsdConfigResponseContainerV1beta1 ephemeralStorageLocalSsdConfig;
   /// Enable or disable NCCL fast socket for the node pool.
   final FastSocketResponseContainerV1beta1 fastSocket;
-
   /// GCFS (Google Container File System) configs.
   final GcfsConfigResponseContainerV1beta1 gcfsConfig;
-
   /// Enable or disable gvnic on the node pool.
   final VirtualNICResponseContainerV1beta1 gvnic;
-
   /// HostMaintenancePolicy contains the desired maintenance policy for the Google Compute Engine hosts.
   final HostMaintenancePolicyResponse hostMaintenancePolicy;
-
   /// The image type to use for this node. Note that for a given image type, the latest version of it will be used. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
   final String imageType;
-
   /// Node kubelet configs.
   final NodeKubeletConfigResponseContainerV1beta1 kubeletConfig;
-
   /// The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node. In case of conflict in label keys, the applied set may differ depending on the Kubernetes version -- it's best to assume the behavior is undefined and conflicts should be avoided. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
   final Map<String, String> labels;
-
   /// Parameters that can be configured on Linux nodes.
   final LinuxNodeConfigResponseContainerV1beta1 linuxNodeConfig;
-
   /// Parameters for using raw-block Local NVMe SSDs.
   final LocalNvmeSsdBlockConfigResponseContainerV1beta1 localNvmeSsdBlockConfig;
-
   /// The number of local SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
   final int localSsdCount;
-
   /// Logging configuration.
   final NodePoolLoggingConfigResponseContainerV1beta1 loggingConfig;
-
   /// The name of a Google Compute Engine [machine type](https://cloud.google.com/compute/docs/machine-types). If unspecified, the default machine type is `e2-medium`.
   final String machineType;
-
   /// The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-oslogin" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
   final Map<String, String> metadata;
-
   /// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform: "Intel Haswell"` or `minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
   final String minCpuPlatform;
-
   /// Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
   final String nodeGroup;
-
   /// The set of Google API scopes to be made available on all of the node VMs under the "default" service account. The following scopes are recommended, but not required, and by default are not included: * `https://www.googleapis.com/auth/compute` is required for mounting persistent storage on your nodes. * `https://www.googleapis.com/auth/devstorage.read_only` is required for communicating with **gcr.io** (the [Google Container Registry](https://cloud.google.com/container-registry/)). If unspecified, no scopes are added, unless Cloud Logging or Cloud Monitoring are enabled, in which case their required scopes will be added.
   final List<String> oauthScopes;
-
   /// Whether the nodes are created as preemptible VM instances. See: https://cloud.google.com/compute/docs/instances/preemptible for more information about preemptible VM instances.
   final bool preemptible;
-
   /// The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this node pool.
   final ReservationAffinityResponseContainerV1beta1 reservationAffinity;
-
   /// The resource labels for the node pool to use to annotate any related Google Compute Engine resources.
   final Map<String, String> resourceLabels;
-
   /// A map of resource manager tag keys and values to be attached to the nodes.
   final ResourceManagerTagsResponseContainerV1beta1 resourceManagerTags;
-
   /// Sandbox configuration for this node.
   final SandboxConfigResponseContainerV1beta1 sandboxConfig;
-
   /// The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
   final String serviceAccount;
-
   /// Shielded Instance options.
   final ShieldedInstanceConfigResponseContainerV1beta1 shieldedInstanceConfig;
-
   /// Parameters for node pools to be backed by shared sole tenant node groups.
   final SoleTenantConfigResponseContainerV1beta1 soleTenantConfig;
-
   /// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
   final bool spot;
-
   /// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster or node pool creation. Each tag within the list must comply with RFC1035.
   final List<String> tags;
-
   /// List of kubernetes taints to be applied to each node. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
   final List<NodeTaintResponseContainerV1beta1> taints;
-
   /// Parameters that can be configured on Windows nodes.
   final WindowsNodeConfigResponseContainerV1beta1 windowsNodeConfig;
-
   /// The workload metadata configuration for this node.
   final WorkloadMetadataConfigResponseContainerV1beta1 workloadMetadataConfig;
 
@@ -221,124 +183,89 @@ class NodeConfigResponseContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accelerators'] = pulumi.Input.encodeList<
-        AcceleratorConfigResponseContainerV1beta1,
-        Map<String, dynamic>>(accelerators, (value) => value.toMap());
-    map['advancedMachineFeatures'] = advancedMachineFeatures.toMap();
-    map['bootDiskKmsKey'] = bootDiskKmsKey;
-    map['confidentialNodes'] = confidentialNodes.toMap();
-    map['diskSizeGb'] = diskSizeGb;
-    map['diskType'] = diskType;
-    map['enableConfidentialStorage'] = enableConfidentialStorage;
-    map['ephemeralStorageConfig'] = ephemeralStorageConfig.toMap();
-    map['ephemeralStorageLocalSsdConfig'] =
-        ephemeralStorageLocalSsdConfig.toMap();
-    map['fastSocket'] = fastSocket.toMap();
-    map['gcfsConfig'] = gcfsConfig.toMap();
-    map['gvnic'] = gvnic.toMap();
-    map['hostMaintenancePolicy'] = hostMaintenancePolicy.toMap();
-    map['imageType'] = imageType;
-    map['kubeletConfig'] = kubeletConfig.toMap();
-    map['labels'] = labels;
-    map['linuxNodeConfig'] = linuxNodeConfig.toMap();
-    map['localNvmeSsdBlockConfig'] = localNvmeSsdBlockConfig.toMap();
-    map['localSsdCount'] = localSsdCount;
-    map['loggingConfig'] = loggingConfig.toMap();
-    map['machineType'] = machineType;
-    map['metadata'] = metadata;
-    map['minCpuPlatform'] = minCpuPlatform;
-    map['nodeGroup'] = nodeGroup;
-    map['oauthScopes'] = oauthScopes;
-    map['preemptible'] = preemptible;
-    map['reservationAffinity'] = reservationAffinity.toMap();
-    map['resourceLabels'] = resourceLabels;
-    map['resourceManagerTags'] = resourceManagerTags.toMap();
-    map['sandboxConfig'] = sandboxConfig.toMap();
-    map['serviceAccount'] = serviceAccount;
-    map['shieldedInstanceConfig'] = shieldedInstanceConfig.toMap();
-    map['soleTenantConfig'] = soleTenantConfig.toMap();
-    map['spot'] = spot;
-    map['tags'] = tags;
-    map['taints'] = pulumi.Input.encodeList<NodeTaintResponseContainerV1beta1,
-        Map<String, dynamic>>(taints, (value) => value.toMap());
-    map['windowsNodeConfig'] = windowsNodeConfig.toMap();
-    map['workloadMetadataConfig'] = workloadMetadataConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'accelerators': pulumi.Input.encodeList<AcceleratorConfigResponseContainerV1beta1, Map<String, dynamic>>(accelerators, (value) => value.toMap()),
+      'advancedMachineFeatures': advancedMachineFeatures.toMap(),
+      'bootDiskKmsKey': bootDiskKmsKey,
+      'confidentialNodes': confidentialNodes.toMap(),
+      'diskSizeGb': diskSizeGb,
+      'diskType': diskType,
+      'enableConfidentialStorage': enableConfidentialStorage,
+      'ephemeralStorageConfig': ephemeralStorageConfig.toMap(),
+      'ephemeralStorageLocalSsdConfig': ephemeralStorageLocalSsdConfig.toMap(),
+      'fastSocket': fastSocket.toMap(),
+      'gcfsConfig': gcfsConfig.toMap(),
+      'gvnic': gvnic.toMap(),
+      'hostMaintenancePolicy': hostMaintenancePolicy.toMap(),
+      'imageType': imageType,
+      'kubeletConfig': kubeletConfig.toMap(),
+      'labels': labels,
+      'linuxNodeConfig': linuxNodeConfig.toMap(),
+      'localNvmeSsdBlockConfig': localNvmeSsdBlockConfig.toMap(),
+      'localSsdCount': localSsdCount,
+      'loggingConfig': loggingConfig.toMap(),
+      'machineType': machineType,
+      'metadata': metadata,
+      'minCpuPlatform': minCpuPlatform,
+      'nodeGroup': nodeGroup,
+      'oauthScopes': oauthScopes,
+      'preemptible': preemptible,
+      'reservationAffinity': reservationAffinity.toMap(),
+      'resourceLabels': resourceLabels,
+      'resourceManagerTags': resourceManagerTags.toMap(),
+      'sandboxConfig': sandboxConfig.toMap(),
+      'serviceAccount': serviceAccount,
+      'shieldedInstanceConfig': shieldedInstanceConfig.toMap(),
+      'soleTenantConfig': soleTenantConfig.toMap(),
+      'spot': spot,
+      'tags': tags,
+      'taints': pulumi.Input.encodeList<NodeTaintResponseContainerV1beta1, Map<String, dynamic>>(taints, (value) => value.toMap()),
+      'windowsNodeConfig': windowsNodeConfig.toMap(),
+      'workloadMetadataConfig': workloadMetadataConfig.toMap(),
+    };
   }
 
   factory NodeConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NodeConfigResponseContainerV1beta1(
-      accelerators:
-          pulumi.Input.decodeList<AcceleratorConfigResponseContainerV1beta1>(
-              map['accelerators'],
-              (value) => AcceleratorConfigResponseContainerV1beta1.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      advancedMachineFeatures:
-          AdvancedMachineFeaturesResponseContainerV1beta1.fromMap(
-              (map['advancedMachineFeatures'] as Map).cast<String, dynamic>()),
+      accelerators: pulumi.Input.decodeList<AcceleratorConfigResponseContainerV1beta1>(map['accelerators'], (value) => AcceleratorConfigResponseContainerV1beta1.fromMap((value as Map).cast<String, dynamic>())),
+      advancedMachineFeatures: AdvancedMachineFeaturesResponseContainerV1beta1.fromMap((map['advancedMachineFeatures'] as Map).cast<String, dynamic>()),
       bootDiskKmsKey: map['bootDiskKmsKey'] as String,
-      confidentialNodes: ConfidentialNodesResponseContainerV1beta1.fromMap(
-          (map['confidentialNodes'] as Map).cast<String, dynamic>()),
+      confidentialNodes: ConfidentialNodesResponseContainerV1beta1.fromMap((map['confidentialNodes'] as Map).cast<String, dynamic>()),
       diskSizeGb: map['diskSizeGb'] as int,
       diskType: map['diskType'] as String,
       enableConfidentialStorage: map['enableConfidentialStorage'] as bool,
-      ephemeralStorageConfig: EphemeralStorageConfigResponse.fromMap(
-          (map['ephemeralStorageConfig'] as Map).cast<String, dynamic>()),
-      ephemeralStorageLocalSsdConfig:
-          EphemeralStorageLocalSsdConfigResponseContainerV1beta1.fromMap(
-              (map['ephemeralStorageLocalSsdConfig'] as Map)
-                  .cast<String, dynamic>()),
-      fastSocket: FastSocketResponseContainerV1beta1.fromMap(
-          (map['fastSocket'] as Map).cast<String, dynamic>()),
-      gcfsConfig: GcfsConfigResponseContainerV1beta1.fromMap(
-          (map['gcfsConfig'] as Map).cast<String, dynamic>()),
-      gvnic: VirtualNICResponseContainerV1beta1.fromMap(
-          (map['gvnic'] as Map).cast<String, dynamic>()),
-      hostMaintenancePolicy: HostMaintenancePolicyResponse.fromMap(
-          (map['hostMaintenancePolicy'] as Map).cast<String, dynamic>()),
+      ephemeralStorageConfig: EphemeralStorageConfigResponse.fromMap((map['ephemeralStorageConfig'] as Map).cast<String, dynamic>()),
+      ephemeralStorageLocalSsdConfig: EphemeralStorageLocalSsdConfigResponseContainerV1beta1.fromMap((map['ephemeralStorageLocalSsdConfig'] as Map).cast<String, dynamic>()),
+      fastSocket: FastSocketResponseContainerV1beta1.fromMap((map['fastSocket'] as Map).cast<String, dynamic>()),
+      gcfsConfig: GcfsConfigResponseContainerV1beta1.fromMap((map['gcfsConfig'] as Map).cast<String, dynamic>()),
+      gvnic: VirtualNICResponseContainerV1beta1.fromMap((map['gvnic'] as Map).cast<String, dynamic>()),
+      hostMaintenancePolicy: HostMaintenancePolicyResponse.fromMap((map['hostMaintenancePolicy'] as Map).cast<String, dynamic>()),
       imageType: map['imageType'] as String,
-      kubeletConfig: NodeKubeletConfigResponseContainerV1beta1.fromMap(
-          (map['kubeletConfig'] as Map).cast<String, dynamic>()),
+      kubeletConfig: NodeKubeletConfigResponseContainerV1beta1.fromMap((map['kubeletConfig'] as Map).cast<String, dynamic>()),
       labels: (map['labels'] as Map).cast<String, String>(),
-      linuxNodeConfig: LinuxNodeConfigResponseContainerV1beta1.fromMap(
-          (map['linuxNodeConfig'] as Map).cast<String, dynamic>()),
-      localNvmeSsdBlockConfig:
-          LocalNvmeSsdBlockConfigResponseContainerV1beta1.fromMap(
-              (map['localNvmeSsdBlockConfig'] as Map).cast<String, dynamic>()),
+      linuxNodeConfig: LinuxNodeConfigResponseContainerV1beta1.fromMap((map['linuxNodeConfig'] as Map).cast<String, dynamic>()),
+      localNvmeSsdBlockConfig: LocalNvmeSsdBlockConfigResponseContainerV1beta1.fromMap((map['localNvmeSsdBlockConfig'] as Map).cast<String, dynamic>()),
       localSsdCount: map['localSsdCount'] as int,
-      loggingConfig: NodePoolLoggingConfigResponseContainerV1beta1.fromMap(
-          (map['loggingConfig'] as Map).cast<String, dynamic>()),
+      loggingConfig: NodePoolLoggingConfigResponseContainerV1beta1.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>()),
       machineType: map['machineType'] as String,
       metadata: (map['metadata'] as Map).cast<String, String>(),
       minCpuPlatform: map['minCpuPlatform'] as String,
       nodeGroup: map['nodeGroup'] as String,
       oauthScopes: (map['oauthScopes'] as List).cast<String>(),
       preemptible: map['preemptible'] as bool,
-      reservationAffinity: ReservationAffinityResponseContainerV1beta1.fromMap(
-          (map['reservationAffinity'] as Map).cast<String, dynamic>()),
+      reservationAffinity: ReservationAffinityResponseContainerV1beta1.fromMap((map['reservationAffinity'] as Map).cast<String, dynamic>()),
       resourceLabels: (map['resourceLabels'] as Map).cast<String, String>(),
-      resourceManagerTags: ResourceManagerTagsResponseContainerV1beta1.fromMap(
-          (map['resourceManagerTags'] as Map).cast<String, dynamic>()),
-      sandboxConfig: SandboxConfigResponseContainerV1beta1.fromMap(
-          (map['sandboxConfig'] as Map).cast<String, dynamic>()),
+      resourceManagerTags: ResourceManagerTagsResponseContainerV1beta1.fromMap((map['resourceManagerTags'] as Map).cast<String, dynamic>()),
+      sandboxConfig: SandboxConfigResponseContainerV1beta1.fromMap((map['sandboxConfig'] as Map).cast<String, dynamic>()),
       serviceAccount: map['serviceAccount'] as String,
-      shieldedInstanceConfig:
-          ShieldedInstanceConfigResponseContainerV1beta1.fromMap(
-              (map['shieldedInstanceConfig'] as Map).cast<String, dynamic>()),
-      soleTenantConfig: SoleTenantConfigResponseContainerV1beta1.fromMap(
-          (map['soleTenantConfig'] as Map).cast<String, dynamic>()),
+      shieldedInstanceConfig: ShieldedInstanceConfigResponseContainerV1beta1.fromMap((map['shieldedInstanceConfig'] as Map).cast<String, dynamic>()),
+      soleTenantConfig: SoleTenantConfigResponseContainerV1beta1.fromMap((map['soleTenantConfig'] as Map).cast<String, dynamic>()),
       spot: map['spot'] as bool,
       tags: (map['tags'] as List).cast<String>(),
-      taints: pulumi.Input.decodeList<NodeTaintResponseContainerV1beta1>(
-          map['taints'],
-          (value) => NodeTaintResponseContainerV1beta1.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      windowsNodeConfig: WindowsNodeConfigResponseContainerV1beta1.fromMap(
-          (map['windowsNodeConfig'] as Map).cast<String, dynamic>()),
-      workloadMetadataConfig:
-          WorkloadMetadataConfigResponseContainerV1beta1.fromMap(
-              (map['workloadMetadataConfig'] as Map).cast<String, dynamic>()),
+      taints: pulumi.Input.decodeList<NodeTaintResponseContainerV1beta1>(map['taints'], (value) => NodeTaintResponseContainerV1beta1.fromMap((value as Map).cast<String, dynamic>())),
+      windowsNodeConfig: WindowsNodeConfigResponseContainerV1beta1.fromMap((map['windowsNodeConfig'] as Map).cast<String, dynamic>()),
+      workloadMetadataConfig: WorkloadMetadataConfigResponseContainerV1beta1.fromMap((map['workloadMetadataConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

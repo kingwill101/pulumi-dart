@@ -4,8 +4,7 @@ import 'agent_data_source_vector_ingestion_configuration_custom_transformation_c
 
 class AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunction {
   /// The configuration of the lambda function.
-  final AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunctionTransformationLambdaConfiguration?
-      transformationLambdaConfiguration;
+  final AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunctionTransformationLambdaConfiguration? transformationLambdaConfiguration;
 
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunction].
   /// [transformationLambdaConfiguration] The configuration of the lambda function.
@@ -14,26 +13,15 @@ class AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurati
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final transformationLambdaConfigurationValue =
-        transformationLambdaConfiguration;
-    if (transformationLambdaConfigurationValue != null) {
-      map['transformationLambdaConfiguration'] =
-          transformationLambdaConfigurationValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'transformationLambdaConfiguration': ?transformationLambdaConfiguration == null ? null : transformationLambdaConfiguration!.toMap(),
+    };
   }
 
-  factory AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunction.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunction.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunction(
-      transformationLambdaConfiguration: map[
-                  'transformationLambdaConfiguration'] ==
-              null
-          ? null
-          : AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunctionTransformationLambdaConfiguration
-              .fromMap((map['transformationLambdaConfiguration'] as Map)
-                  .cast<String, dynamic>()),
+      transformationLambdaConfiguration: map['transformationLambdaConfiguration'] == null ? null : AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunctionTransformationLambdaConfiguration.fromMap((map['transformationLambdaConfiguration'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

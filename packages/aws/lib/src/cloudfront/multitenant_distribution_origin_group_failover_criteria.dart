@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MultitenantDistributionOriginGroupFailoverCriteria {
   /// List of HTTP status codes that trigger a failover to the secondary origin.
   final List<int> statusCodes;
@@ -11,15 +12,15 @@ class MultitenantDistributionOriginGroupFailoverCriteria {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['statusCodes'] = statusCodes;
-    return map;
+    return <String, dynamic>{
+      'statusCodes': statusCodes,
+    };
   }
 
-  factory MultitenantDistributionOriginGroupFailoverCriteria.fromMap(
-      Map<String, dynamic> map) {
+  factory MultitenantDistributionOriginGroupFailoverCriteria.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionOriginGroupFailoverCriteria(
       statusCodes: (map['statusCodes'] as List).cast<int>(),
     );
   }
 }
+

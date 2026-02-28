@@ -5,8 +5,7 @@ import 'google_cloud_dialogflow_cx_v3beta1_agent_git_integration_settings_github
 /// Settings for connecting to Git repository for an agent.
 class GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsResponse {
   /// GitHub settings.
-  final GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettingsResponse
-      githubSettings;
+  final GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettingsResponse githubSettings;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsResponse].
   /// [githubSettings] GitHub settings.
@@ -15,17 +14,15 @@ class GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['githubSettings'] = githubSettings.toMap();
-    return map;
+    return <String, dynamic>{
+      'githubSettings': githubSettings.toMap(),
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsResponse(
-      githubSettings:
-          GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettingsResponse
-              .fromMap((map['githubSettings'] as Map).cast<String, dynamic>()),
+      githubSettings: GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettingsResponse.fromMap((map['githubSettings'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

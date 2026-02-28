@@ -13,15 +13,15 @@ class ClusterLoggingInfo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['brokerLogs'] = brokerLogs.toMap();
-    return map;
+    return <String, dynamic>{
+      'brokerLogs': brokerLogs.toMap(),
+    };
   }
 
   factory ClusterLoggingInfo.fromMap(Map<String, dynamic> map) {
     return ClusterLoggingInfo(
-      brokerLogs: ClusterLoggingInfoBrokerLogs.fromMap(
-          (map['brokerLogs'] as Map).cast<String, dynamic>()),
+      brokerLogs: ClusterLoggingInfoBrokerLogs.fromMap((map['brokerLogs'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

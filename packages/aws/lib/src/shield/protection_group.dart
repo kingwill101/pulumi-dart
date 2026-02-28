@@ -469,25 +469,18 @@ import 'protection_group_args.dart';
 class ProtectionGroup extends pulumi.CustomResource {
   /// Defines how AWS Shield combines resource data for the group in order to detect, mitigate, and report events.
   late final pulumi.Output<String> aggregation;
-
   /// The Amazon Resource Names (ARNs) of the resources to include in the protection group. You must set this when you set `pattern` to ARBITRARY and you must not set it for any other `pattern` setting.
   late final pulumi.Output<List<String>?> members;
-
   /// The criteria to use to choose the protected resources for inclusion in the group.
   late final pulumi.Output<String> pattern;
-
   /// The ARN (Amazon Resource Name) of the protection group.
   late final pulumi.Output<String> protectionGroupArn;
-
   /// The name of the protection group.
   late final pulumi.Output<String> protectionGroupId;
-
   /// The resource type to include in the protection group. You must set this when you set `pattern` to BY_RESOURCE_TYPE and you must not set it for any other `pattern` setting.
   late final pulumi.Output<String?> resourceType;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 

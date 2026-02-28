@@ -13,14 +13,13 @@ enum EnterpriseCrmEventbusProtoTaskMetadataCategory {
   const EnterpriseCrmEventbusProtoTaskMetadataCategory(this.value);
   final String value;
 
-  static EnterpriseCrmEventbusProtoTaskMetadataCategory fromValue(
-      String value) {
+  static EnterpriseCrmEventbusProtoTaskMetadataCategory fromValue(String value) {
     for (final item in EnterpriseCrmEventbusProtoTaskMetadataCategory.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown EnterpriseCrmEventbusProtoTaskMetadataCategory value: $value');
+    throw ArgumentError('Unknown EnterpriseCrmEventbusProtoTaskMetadataCategory value: $value');
   }
 }
+

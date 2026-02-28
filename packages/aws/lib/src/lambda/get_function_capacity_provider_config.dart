@@ -5,9 +5,7 @@ import 'get_function_capacity_provider_config_lambda_managed_instances_capacity_
 
 class GetFunctionCapacityProviderConfig {
   /// Configuration block for Lambda Managed Instances Capacity Provider.
-  final List<
-          GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig>
-      lambdaManagedInstancesCapacityProviderConfigs;
+  final List<GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig> lambdaManagedInstancesCapacityProviderConfigs;
 
   /// Creates a new [GetFunctionCapacityProviderConfig].
   /// [lambdaManagedInstancesCapacityProviderConfigs] Configuration block for Lambda Managed Instances Capacity Provider.
@@ -16,23 +14,15 @@ class GetFunctionCapacityProviderConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['lambdaManagedInstancesCapacityProviderConfigs'] = pulumi
-        .Input.encodeList<
-            GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig,
-            Map<String, dynamic>>(lambdaManagedInstancesCapacityProviderConfigs,
-        (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'lambdaManagedInstancesCapacityProviderConfigs': pulumi.Input.encodeList<GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig, Map<String, dynamic>>(lambdaManagedInstancesCapacityProviderConfigs, (value) => value.toMap()),
+    };
   }
 
   factory GetFunctionCapacityProviderConfig.fromMap(Map<String, dynamic> map) {
     return GetFunctionCapacityProviderConfig(
-      lambdaManagedInstancesCapacityProviderConfigs: pulumi.Input.decodeList<
-              GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig>(
-          map['lambdaManagedInstancesCapacityProviderConfigs'],
-          (value) =>
-              GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      lambdaManagedInstancesCapacityProviderConfigs: pulumi.Input.decodeList<GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig>(map['lambdaManagedInstancesCapacityProviderConfigs'], (value) => GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

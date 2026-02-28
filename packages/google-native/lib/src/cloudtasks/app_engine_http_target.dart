@@ -14,20 +14,15 @@ class AppEngineHttpTarget {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final appEngineRoutingOverrideValue = appEngineRoutingOverride;
-    if (appEngineRoutingOverrideValue != null) {
-      map['appEngineRoutingOverride'] = appEngineRoutingOverrideValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'appEngineRoutingOverride': ?appEngineRoutingOverride == null ? null : appEngineRoutingOverride!.toMap(),
+    };
   }
 
   factory AppEngineHttpTarget.fromMap(Map<String, dynamic> map) {
     return AppEngineHttpTarget(
-      appEngineRoutingOverride: map['appEngineRoutingOverride'] == null
-          ? null
-          : AppEngineRoutingCloudtasksV2beta2.fromMap(
-              (map['appEngineRoutingOverride'] as Map).cast<String, dynamic>()),
+      appEngineRoutingOverride: map['appEngineRoutingOverride'] == null ? null : AppEngineRoutingCloudtasksV2beta2.fromMap((map['appEngineRoutingOverride'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

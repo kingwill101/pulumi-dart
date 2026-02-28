@@ -6,7 +6,6 @@ import 'fleet_observability_routing_config_gkehub_v1alpha.dart';
 class FleetObservabilityLoggingConfigGkehubV1alpha {
   /// Specified if applying the default routing config to logs not specified in other configs.
   final FleetObservabilityRoutingConfigGkehubV1alpha? defaultConfig;
-
   /// Specified if applying the routing config to all logs for all fleet scopes.
   final FleetObservabilityRoutingConfigGkehubV1alpha? fleetScopeLogsConfig;
 
@@ -19,29 +18,17 @@ class FleetObservabilityLoggingConfigGkehubV1alpha {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final defaultConfigValue = defaultConfig;
-    if (defaultConfigValue != null) {
-      map['defaultConfig'] = defaultConfigValue.toMap();
-    }
-    final fleetScopeLogsConfigValue = fleetScopeLogsConfig;
-    if (fleetScopeLogsConfigValue != null) {
-      map['fleetScopeLogsConfig'] = fleetScopeLogsConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'defaultConfig': ?defaultConfig == null ? null : defaultConfig!.toMap(),
+      'fleetScopeLogsConfig': ?fleetScopeLogsConfig == null ? null : fleetScopeLogsConfig!.toMap(),
+    };
   }
 
-  factory FleetObservabilityLoggingConfigGkehubV1alpha.fromMap(
-      Map<String, dynamic> map) {
+  factory FleetObservabilityLoggingConfigGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return FleetObservabilityLoggingConfigGkehubV1alpha(
-      defaultConfig: map['defaultConfig'] == null
-          ? null
-          : FleetObservabilityRoutingConfigGkehubV1alpha.fromMap(
-              (map['defaultConfig'] as Map).cast<String, dynamic>()),
-      fleetScopeLogsConfig: map['fleetScopeLogsConfig'] == null
-          ? null
-          : FleetObservabilityRoutingConfigGkehubV1alpha.fromMap(
-              (map['fleetScopeLogsConfig'] as Map).cast<String, dynamic>()),
+      defaultConfig: map['defaultConfig'] == null ? null : FleetObservabilityRoutingConfigGkehubV1alpha.fromMap((map['defaultConfig'] as Map).cast<String, dynamic>()),
+      fleetScopeLogsConfig: map['fleetScopeLogsConfig'] == null ? null : FleetObservabilityRoutingConfigGkehubV1alpha.fromMap((map['fleetScopeLogsConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

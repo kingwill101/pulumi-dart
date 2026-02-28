@@ -19,16 +19,17 @@ class GetKeystoreArgs {
     required String environmentId,
     required String keystoreId,
     required String organizationId,
-  })  : environmentId = pulumi.Input.asInput<String>(environmentId),
-        keystoreId = pulumi.Input.asInput<String>(keystoreId),
-        organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) :
+      environmentId = pulumi.Input.asInput<String>(environmentId),
+      keystoreId = pulumi.Input.asInput<String>(keystoreId),
+      organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['environmentId'] = environmentId;
-    map['keystoreId'] = keystoreId;
-    map['organizationId'] = organizationId;
-    return map;
+    return <String, dynamic>{
+      'environmentId': environmentId,
+      'keystoreId': keystoreId,
+      'organizationId': organizationId,
+    };
   }
 
   factory GetKeystoreArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +40,4 @@ class GetKeystoreArgs {
     );
   }
 }
+

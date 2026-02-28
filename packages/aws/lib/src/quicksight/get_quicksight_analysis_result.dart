@@ -9,7 +9,6 @@ class GetQuicksightAnalysisResult {
   final String arn;
   final String awsAccountId;
   final String createdTime;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String lastPublishedTime;
@@ -52,23 +51,21 @@ class GetQuicksightAnalysisResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['analysisId'] = analysisId;
-    map['arn'] = arn;
-    map['awsAccountId'] = awsAccountId;
-    map['createdTime'] = createdTime;
-    map['id'] = id;
-    map['lastPublishedTime'] = lastPublishedTime;
-    map['lastUpdatedTime'] = lastUpdatedTime;
-    map['name'] = name;
-    map['permissions'] = pulumi.Input.encodeList<
-        GetQuicksightAnalysisPermission,
-        Map<String, dynamic>>(permissions, (value) => value.toMap());
-    map['region'] = region;
-    map['status'] = status;
-    map['tags'] = tags;
-    map['themeArn'] = themeArn;
-    return map;
+    return <String, dynamic>{
+      'analysisId': analysisId,
+      'arn': arn,
+      'awsAccountId': awsAccountId,
+      'createdTime': createdTime,
+      'id': id,
+      'lastPublishedTime': lastPublishedTime,
+      'lastUpdatedTime': lastUpdatedTime,
+      'name': name,
+      'permissions': pulumi.Input.encodeList<GetQuicksightAnalysisPermission, Map<String, dynamic>>(permissions, (value) => value.toMap()),
+      'region': region,
+      'status': status,
+      'tags': tags,
+      'themeArn': themeArn,
+    };
   }
 
   factory GetQuicksightAnalysisResult.fromMap(Map<String, dynamic> map) {
@@ -81,10 +78,7 @@ class GetQuicksightAnalysisResult {
       lastPublishedTime: map['lastPublishedTime'] as String,
       lastUpdatedTime: map['lastUpdatedTime'] as String,
       name: map['name'] as String,
-      permissions: pulumi.Input.decodeList<GetQuicksightAnalysisPermission>(
-          map['permissions'],
-          (value) => GetQuicksightAnalysisPermission.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      permissions: pulumi.Input.decodeList<GetQuicksightAnalysisPermission>(map['permissions'], (value) => GetQuicksightAnalysisPermission.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
       status: map['status'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
@@ -92,3 +86,4 @@ class GetQuicksightAnalysisResult {
     );
   }
 }
+

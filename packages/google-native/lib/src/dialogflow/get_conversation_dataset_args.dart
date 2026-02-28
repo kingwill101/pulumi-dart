@@ -19,20 +19,17 @@ class GetConversationDatasetArgs {
     required String conversationDatasetId,
     required String location,
     String? project,
-  })  : conversationDatasetId =
-            pulumi.Input.asInput<String>(conversationDatasetId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      conversationDatasetId = pulumi.Input.asInput<String>(conversationDatasetId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['conversationDatasetId'] = conversationDatasetId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'conversationDatasetId': conversationDatasetId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetConversationDatasetArgs.fromMap(Map<String, dynamic> map) {
@@ -43,3 +40,4 @@ class GetConversationDatasetArgs {
     );
   }
 }
+

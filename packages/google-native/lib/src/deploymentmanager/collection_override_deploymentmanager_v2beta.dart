@@ -6,7 +6,6 @@ import 'options_deploymentmanager_v2beta.dart';
 class CollectionOverrideDeploymentmanagerV2beta {
   /// The collection that identifies this resource within its service.
   final String? collection;
-
   /// The options to apply to this resource-level override
   final OptionsDeploymentmanagerV2beta? options;
 
@@ -19,27 +18,17 @@ class CollectionOverrideDeploymentmanagerV2beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final collectionValue = collection;
-    if (collectionValue != null) {
-      map['collection'] = collectionValue;
-    }
-    final optionsValue = options;
-    if (optionsValue != null) {
-      map['options'] = optionsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'collection': ?collection,
+      'options': ?options == null ? null : options!.toMap(),
+    };
   }
 
-  factory CollectionOverrideDeploymentmanagerV2beta.fromMap(
-      Map<String, dynamic> map) {
+  factory CollectionOverrideDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return CollectionOverrideDeploymentmanagerV2beta(
-      collection:
-          map['collection'] == null ? null : map['collection'] as String,
-      options: map['options'] == null
-          ? null
-          : OptionsDeploymentmanagerV2beta.fromMap(
-              (map['options'] as Map).cast<String, dynamic>()),
+      collection: map['collection'] == null ? null : map['collection'] as String,
+      options: map['options'] == null ? null : OptionsDeploymentmanagerV2beta.fromMap((map['options'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -7,8 +7,7 @@ class RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp {
   /// (Output)
   /// A nested object resource.
   /// Structure is documented below.
-  final List<RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink>?
-      links;
+  final List<RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink>? links;
 
   /// Creates a new [RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp].
   /// [links] (Output)
@@ -17,27 +16,15 @@ class RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final linksValue = links;
-    if (linksValue != null) {
-      map['links'] = pulumi.Input.encodeList<
-          RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink,
-          Map<String, dynamic>>(linksValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'links': ?links == null ? null : pulumi.Input.encodeList<RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink, Map<String, dynamic>>(links!, (value) => value.toMap()),
+    };
   }
 
-  factory RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp.fromMap(
-      Map<String, dynamic> map) {
+  factory RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp.fromMap(Map<String, dynamic> map) {
     return RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp(
-      links: map['links'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink>(
-              map['links'],
-              (value) =>
-                  RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      links: map['links'] == null ? null : pulumi.Input.decodeList<RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink>(map['links'], (value) => RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

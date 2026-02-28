@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EventDestinationSnsDestination {
   /// The ARN of the SNS topic
   final String topicArn;
@@ -11,9 +12,9 @@ class EventDestinationSnsDestination {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['topicArn'] = topicArn;
-    return map;
+    return <String, dynamic>{
+      'topicArn': topicArn,
+    };
   }
 
   factory EventDestinationSnsDestination.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class EventDestinationSnsDestination {
     );
   }
 }
+

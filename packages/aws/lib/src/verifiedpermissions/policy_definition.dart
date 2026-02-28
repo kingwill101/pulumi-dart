@@ -6,7 +6,6 @@ import 'policy_definition_template_linked.dart';
 class PolicyDefinition {
   /// The static policy statement. See Static below.
   final PolicyDefinitionStatic? static;
-
   /// The template linked policy. See Template Linked below.
   final PolicyDefinitionTemplateLinked? templateLinked;
 
@@ -19,28 +18,17 @@ class PolicyDefinition {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final staticValue = static;
-    if (staticValue != null) {
-      map['static'] = staticValue.toMap();
-    }
-    final templateLinkedValue = templateLinked;
-    if (templateLinkedValue != null) {
-      map['templateLinked'] = templateLinkedValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'static': ?static == null ? null : static!.toMap(),
+      'templateLinked': ?templateLinked == null ? null : templateLinked!.toMap(),
+    };
   }
 
   factory PolicyDefinition.fromMap(Map<String, dynamic> map) {
     return PolicyDefinition(
-      static: map['static'] == null
-          ? null
-          : PolicyDefinitionStatic.fromMap(
-              (map['static'] as Map).cast<String, dynamic>()),
-      templateLinked: map['templateLinked'] == null
-          ? null
-          : PolicyDefinitionTemplateLinked.fromMap(
-              (map['templateLinked'] as Map).cast<String, dynamic>()),
+      static: map['static'] == null ? null : PolicyDefinitionStatic.fromMap((map['static'] as Map).cast<String, dynamic>()),
+      templateLinked: map['templateLinked'] == null ? null : PolicyDefinitionTemplateLinked.fromMap((map['templateLinked'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

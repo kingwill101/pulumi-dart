@@ -6,17 +6,12 @@ import 'policy_predictive_scaling_policy_configuration_metric_specification.dart
 class PolicyPredictiveScalingPolicyConfiguration {
   /// The behavior that should be applied if the forecast capacity approaches or exceeds the maximum capacity. Valid values are `HonorMaxCapacity` and `IncreaseMaxCapacity`.
   final String? maxCapacityBreachBehavior;
-
   /// Size of the capacity buffer to use when the forecast capacity is close to or exceeds the maximum capacity. The value is specified as a percentage relative to the forecast capacity. Required if the `max_capacity_breach_behavior` argument is set to `IncreaseMaxCapacity`, and cannot be used otherwise.
   final int? maxCapacityBuffer;
-
   /// Metrics and target utilization to use for predictive scaling. See supported fields below.
-  final List<PolicyPredictiveScalingPolicyConfigurationMetricSpecification>
-      metricSpecifications;
-
+  final List<PolicyPredictiveScalingPolicyConfigurationMetricSpecification> metricSpecifications;
   /// Predictive scaling mode. Valid values are `ForecastOnly` and `ForecastAndScale`.
   final String? mode;
-
   /// Amount of time, in seconds, that the start time can be advanced.
   final int? schedulingBufferTime;
 
@@ -35,48 +30,23 @@ class PolicyPredictiveScalingPolicyConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final maxCapacityBreachBehaviorValue = maxCapacityBreachBehavior;
-    if (maxCapacityBreachBehaviorValue != null) {
-      map['maxCapacityBreachBehavior'] = maxCapacityBreachBehaviorValue;
-    }
-    final maxCapacityBufferValue = maxCapacityBuffer;
-    if (maxCapacityBufferValue != null) {
-      map['maxCapacityBuffer'] = maxCapacityBufferValue;
-    }
-    map['metricSpecifications'] = pulumi.Input.encodeList<
-        PolicyPredictiveScalingPolicyConfigurationMetricSpecification,
-        Map<String, dynamic>>(metricSpecifications, (value) => value.toMap());
-    final modeValue = mode;
-    if (modeValue != null) {
-      map['mode'] = modeValue;
-    }
-    final schedulingBufferTimeValue = schedulingBufferTime;
-    if (schedulingBufferTimeValue != null) {
-      map['schedulingBufferTime'] = schedulingBufferTimeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'maxCapacityBreachBehavior': ?maxCapacityBreachBehavior,
+      'maxCapacityBuffer': ?maxCapacityBuffer,
+      'metricSpecifications': pulumi.Input.encodeList<PolicyPredictiveScalingPolicyConfigurationMetricSpecification, Map<String, dynamic>>(metricSpecifications, (value) => value.toMap()),
+      'mode': ?mode,
+      'schedulingBufferTime': ?schedulingBufferTime,
+    };
   }
 
-  factory PolicyPredictiveScalingPolicyConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory PolicyPredictiveScalingPolicyConfiguration.fromMap(Map<String, dynamic> map) {
     return PolicyPredictiveScalingPolicyConfiguration(
-      maxCapacityBreachBehavior: map['maxCapacityBreachBehavior'] == null
-          ? null
-          : map['maxCapacityBreachBehavior'] as String,
-      maxCapacityBuffer: map['maxCapacityBuffer'] == null
-          ? null
-          : map['maxCapacityBuffer'] as int,
-      metricSpecifications: pulumi.Input.decodeList<
-              PolicyPredictiveScalingPolicyConfigurationMetricSpecification>(
-          map['metricSpecifications'],
-          (value) =>
-              PolicyPredictiveScalingPolicyConfigurationMetricSpecification
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      maxCapacityBreachBehavior: map['maxCapacityBreachBehavior'] == null ? null : map['maxCapacityBreachBehavior'] as String,
+      maxCapacityBuffer: map['maxCapacityBuffer'] == null ? null : map['maxCapacityBuffer'] as int,
+      metricSpecifications: pulumi.Input.decodeList<PolicyPredictiveScalingPolicyConfigurationMetricSpecification>(map['metricSpecifications'], (value) => PolicyPredictiveScalingPolicyConfigurationMetricSpecification.fromMap((value as Map).cast<String, dynamic>())),
       mode: map['mode'] == null ? null : map['mode'] as String,
-      schedulingBufferTime: map['schedulingBufferTime'] == null
-          ? null
-          : map['schedulingBufferTime'] as int,
+      schedulingBufferTime: map['schedulingBufferTime'] == null ? null : map['schedulingBufferTime'] as int,
     );
   }
 }
+

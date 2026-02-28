@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration of Shielded Nodes feature.
 class ShieldedNodesResponseContainerV1beta1 {
   /// Whether Shielded Nodes features are enabled on all nodes in this cluster.
@@ -12,15 +13,15 @@ class ShieldedNodesResponseContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory ShieldedNodesResponseContainerV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory ShieldedNodesResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return ShieldedNodesResponseContainerV1beta1(
       enabled: map['enabled'] as bool,
     );
   }
 }
+

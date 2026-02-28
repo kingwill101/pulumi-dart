@@ -16,3 +16,4 @@ enum InstanceDiskEncryption {
     throw ArgumentError('Unknown InstanceDiskEncryption value: $value');
   }
 }
+

@@ -14,15 +14,15 @@ class SdsConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['grpcServiceConfig'] = grpcServiceConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'grpcServiceConfig': grpcServiceConfig.toMap(),
+    };
   }
 
   factory SdsConfigResponse.fromMap(Map<String, dynamic> map) {
     return SdsConfigResponse(
-      grpcServiceConfig: GrpcServiceConfigResponse.fromMap(
-          (map['grpcServiceConfig'] as Map).cast<String, dynamic>()),
+      grpcServiceConfig: GrpcServiceConfigResponse.fromMap((map['grpcServiceConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

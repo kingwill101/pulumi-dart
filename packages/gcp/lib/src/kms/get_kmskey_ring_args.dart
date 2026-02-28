@@ -12,11 +12,9 @@ class GetKMSKeyRingArgs {
   ///
   /// - - -
   final pulumi.Input<String> location;
-
   /// The KeyRing's name.
   /// A KeyRing name must exist within the provided location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
   final pulumi.Input<String> name;
-
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -29,19 +27,17 @@ class GetKMSKeyRingArgs {
     required String location,
     required String name,
     String? project,
-  })  : location = pulumi.Input.asInput<String>(location),
-        name = pulumi.Input.asInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      name = pulumi.Input.asInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'name': name,
+      'project': ?project,
+    };
   }
 
   factory GetKMSKeyRingArgs.fromMap(Map<String, dynamic> map) {
@@ -52,3 +48,4 @@ class GetKMSKeyRingArgs {
     );
   }
 }
+

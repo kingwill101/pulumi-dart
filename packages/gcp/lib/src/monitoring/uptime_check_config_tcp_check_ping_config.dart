@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class UptimeCheckConfigTcpCheckPingConfig {
   /// Number of ICMP pings. A maximum of 3 ICMP pings is currently supported.
   final int pingsCount;
@@ -11,15 +12,15 @@ class UptimeCheckConfigTcpCheckPingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['pingsCount'] = pingsCount;
-    return map;
+    return <String, dynamic>{
+      'pingsCount': pingsCount,
+    };
   }
 
-  factory UptimeCheckConfigTcpCheckPingConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory UptimeCheckConfigTcpCheckPingConfig.fromMap(Map<String, dynamic> map) {
     return UptimeCheckConfigTcpCheckPingConfig(
       pingsCount: map['pingsCount'] as int,
     );
   }
 }
+

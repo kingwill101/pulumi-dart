@@ -17,3 +17,4 @@ enum MetadataSchemaSchemaType {
     throw ArgumentError('Unknown MetadataSchemaSchemaType value: $value');
   }
 }
+

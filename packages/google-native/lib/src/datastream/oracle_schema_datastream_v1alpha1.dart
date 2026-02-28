@@ -7,7 +7,6 @@ import 'oracle_table_datastream_v1alpha1.dart';
 class OracleSchemaDatastreamV1alpha1 {
   /// Tables in the schema.
   final List<OracleTableDatastreamV1alpha1>? oracleTables;
-
   /// Schema name.
   final String? schemaName;
 
@@ -20,30 +19,17 @@ class OracleSchemaDatastreamV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final oracleTablesValue = oracleTables;
-    if (oracleTablesValue != null) {
-      map['oracleTables'] = pulumi.Input.encodeList<
-          OracleTableDatastreamV1alpha1,
-          Map<String, dynamic>>(oracleTablesValue, (value) => value.toMap());
-    }
-    final schemaNameValue = schemaName;
-    if (schemaNameValue != null) {
-      map['schemaName'] = schemaNameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'oracleTables': ?oracleTables == null ? null : pulumi.Input.encodeList<OracleTableDatastreamV1alpha1, Map<String, dynamic>>(oracleTables!, (value) => value.toMap()),
+      'schemaName': ?schemaName,
+    };
   }
 
   factory OracleSchemaDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return OracleSchemaDatastreamV1alpha1(
-      oracleTables: map['oracleTables'] == null
-          ? null
-          : pulumi.Input.decodeList<OracleTableDatastreamV1alpha1>(
-              map['oracleTables'],
-              (value) => OracleTableDatastreamV1alpha1.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      schemaName:
-          map['schemaName'] == null ? null : map['schemaName'] as String,
+      oracleTables: map['oracleTables'] == null ? null : pulumi.Input.decodeList<OracleTableDatastreamV1alpha1>(map['oracleTables'], (value) => OracleTableDatastreamV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
+      schemaName: map['schemaName'] == null ? null : map['schemaName'] as String,
     );
   }
 }
+

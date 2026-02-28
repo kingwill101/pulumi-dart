@@ -15,21 +15,15 @@ class GoogleCloudDatacatalogV1ContactsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['people'] = pulumi.Input.encodeList<
-        GoogleCloudDatacatalogV1ContactsPersonResponse,
-        Map<String, dynamic>>(people, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'people': pulumi.Input.encodeList<GoogleCloudDatacatalogV1ContactsPersonResponse, Map<String, dynamic>>(people, (value) => value.toMap()),
+    };
   }
 
-  factory GoogleCloudDatacatalogV1ContactsResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1ContactsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1ContactsResponse(
-      people: pulumi.Input.decodeList<
-              GoogleCloudDatacatalogV1ContactsPersonResponse>(
-          map['people'],
-          (value) => GoogleCloudDatacatalogV1ContactsPersonResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      people: pulumi.Input.decodeList<GoogleCloudDatacatalogV1ContactsPersonResponse>(map['people'], (value) => GoogleCloudDatacatalogV1ContactsPersonResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

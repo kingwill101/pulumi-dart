@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection {
   /// Required. Name of the section.
   final String section;
-
   /// Required. Summary text for the section.
   final String summary;
 
@@ -16,17 +16,17 @@ class GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummaryS
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['section'] = section;
-    map['summary'] = summary;
-    return map;
+    return <String, dynamic>{
+      'section': section,
+      'summary': summary,
+    };
   }
 
-  factory GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection.fromMap(
-      Map<String, dynamic> map) {
+  factory GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection.fromMap(Map<String, dynamic> map) {
     return GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection(
       section: map['section'] as String,
       summary: map['summary'] as String,
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'aggregation_response.dart';
 class RatioPartResponse {
   /// By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
   final AggregationResponse aggregation;
-
   /// The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
   final String filter;
 
@@ -19,17 +18,17 @@ class RatioPartResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['aggregation'] = aggregation.toMap();
-    map['filter'] = filter;
-    return map;
+    return <String, dynamic>{
+      'aggregation': aggregation.toMap(),
+      'filter': filter,
+    };
   }
 
   factory RatioPartResponse.fromMap(Map<String, dynamic> map) {
     return RatioPartResponse(
-      aggregation: AggregationResponse.fromMap(
-          (map['aggregation'] as Map).cast<String, dynamic>()),
+      aggregation: AggregationResponse.fromMap((map['aggregation'] as Map).cast<String, dynamic>()),
       filter: map['filter'] as String,
     );
   }
 }
+

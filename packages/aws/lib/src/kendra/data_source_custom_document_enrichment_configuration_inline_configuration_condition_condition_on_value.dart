@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationConditionConditionOnValue {
   /// A date expressed as an ISO 8601 string. It is important for the time zone to be included in the ISO 8601 date-time format. As of this writing only UTC is supported. For example, `2012-03-25T12:30:10+00:00`.
   final String? dateValue;
-
   /// A long integer value.
   final int? longValue;
-
   /// A list of strings.
   final List<String>? stringListValues;
   final String? stringValue;
@@ -24,36 +23,21 @@ class DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationConditio
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dateValueValue = dateValue;
-    if (dateValueValue != null) {
-      map['dateValue'] = dateValueValue;
-    }
-    final longValueValue = longValue;
-    if (longValueValue != null) {
-      map['longValue'] = longValueValue;
-    }
-    final stringListValuesValue = stringListValues;
-    if (stringListValuesValue != null) {
-      map['stringListValues'] = stringListValuesValue;
-    }
-    final stringValueValue = stringValue;
-    if (stringValueValue != null) {
-      map['stringValue'] = stringValueValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'dateValue': ?dateValue,
+      'longValue': ?longValue,
+      'stringListValues': ?stringListValues,
+      'stringValue': ?stringValue,
+    };
   }
 
-  factory DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationConditionConditionOnValue.fromMap(
-      Map<String, dynamic> map) {
+  factory DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationConditionConditionOnValue.fromMap(Map<String, dynamic> map) {
     return DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationConditionConditionOnValue(
       dateValue: map['dateValue'] == null ? null : map['dateValue'] as String,
       longValue: map['longValue'] == null ? null : map['longValue'] as int,
-      stringListValues: map['stringListValues'] == null
-          ? null
-          : (map['stringListValues'] as List).cast<String>(),
-      stringValue:
-          map['stringValue'] == null ? null : map['stringValue'] as String,
+      stringListValues: map['stringListValues'] == null ? null : (map['stringListValues'] as List).cast<String>(),
+      stringValue: map['stringValue'] == null ? null : map['stringValue'] as String,
     );
   }
 }
+

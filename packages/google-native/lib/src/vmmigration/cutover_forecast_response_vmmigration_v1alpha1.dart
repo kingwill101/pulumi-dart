@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// CutoverForecast holds information about future CutoverJobs of a MigratingVm.
 class CutoverForecastResponseVmmigrationV1alpha1 {
   /// Estimation of the CutoverJob duration.
@@ -12,15 +13,15 @@ class CutoverForecastResponseVmmigrationV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['estimatedCutoverJobDuration'] = estimatedCutoverJobDuration;
-    return map;
+    return <String, dynamic>{
+      'estimatedCutoverJobDuration': estimatedCutoverJobDuration,
+    };
   }
 
-  factory CutoverForecastResponseVmmigrationV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory CutoverForecastResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return CutoverForecastResponseVmmigrationV1alpha1(
       estimatedCutoverJobDuration: map['estimatedCutoverJobDuration'] as String,
     );
   }
 }
+

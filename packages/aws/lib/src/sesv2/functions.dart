@@ -448,8 +448,7 @@ Future<GetEmailIdentityResult> getEmailIdentity(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_sesv2_get_email_identity_mail_from_attributes_get_email_identity_mail_from_attributes_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetEmailIdentityMailFromAttributesResult>
-    getEmailIdentityMailFromAttributes(
+Future<GetEmailIdentityMailFromAttributesResult> getEmailIdentityMailFromAttributes(
   GetEmailIdentityMailFromAttributesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

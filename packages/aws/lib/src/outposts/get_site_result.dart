@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSite.
 class GetSiteResult {
   /// AWS Account identifier.
   final String accountId;
-
   /// Description.
   final String description;
   final String id;
@@ -26,13 +26,13 @@ class GetSiteResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accountId'] = accountId;
-    map['description'] = description;
-    map['id'] = id;
-    map['name'] = name;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'accountId': accountId,
+      'description': description,
+      'id': id,
+      'name': name,
+      'region': region,
+    };
   }
 
   factory GetSiteResult.fromMap(Map<String, dynamic> map) {
@@ -45,3 +45,4 @@ class GetSiteResult {
     );
   }
 }
+

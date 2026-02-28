@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Encapsulates the metadata for basic sample series represented by a line chart
 class BasicPerfSampleSeriesResponse {
   final String perfMetricType;
@@ -17,11 +18,11 @@ class BasicPerfSampleSeriesResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['perfMetricType'] = perfMetricType;
-    map['perfUnit'] = perfUnit;
-    map['sampleSeriesLabel'] = sampleSeriesLabel;
-    return map;
+    return <String, dynamic>{
+      'perfMetricType': perfMetricType,
+      'perfUnit': perfUnit,
+      'sampleSeriesLabel': sampleSeriesLabel,
+    };
   }
 
   factory BasicPerfSampleSeriesResponse.fromMap(Map<String, dynamic> map) {
@@ -32,3 +33,4 @@ class BasicPerfSampleSeriesResponse {
     );
   }
 }
+

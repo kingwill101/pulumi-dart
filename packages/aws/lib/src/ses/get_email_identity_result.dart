@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getEmailIdentity.
 class GetEmailIdentityResult {
   /// The ARN of the email identity.
   final String arn;
-
   /// Email identity.
   final String email;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -25,12 +24,12 @@ class GetEmailIdentityResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['email'] = email;
-    map['id'] = id;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'email': email,
+      'id': id,
+      'region': region,
+    };
   }
 
   factory GetEmailIdentityResult.fromMap(Map<String, dynamic> map) {
@@ -42,3 +41,4 @@ class GetEmailIdentityResult {
     );
   }
 }
+

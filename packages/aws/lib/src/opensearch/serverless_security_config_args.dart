@@ -10,16 +10,12 @@ import 'serverless_security_config_saml_options.dart';
 class ServerlessSecurityConfigArgs {
   /// Description of the security configuration.
   final pulumi.Input<String>? description;
-
   /// Name of the policy.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Configuration block for SAML options.
   final pulumi.Input<ServerlessSecurityConfigSamlOptions>? samlOptions;
-
   /// Type of configuration. Must be `saml`.
   ///
   /// The following arguments are optional:
@@ -37,49 +33,31 @@ class ServerlessSecurityConfigArgs {
     String? region,
     ServerlessSecurityConfigSamlOptions? samlOptions,
     required String type,
-  })  : description = pulumi.Input.asOptionalInput<String>(description),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        samlOptions =
-            pulumi.Input.asOptionalInput<ServerlessSecurityConfigSamlOptions>(
-                samlOptions),
-        type = pulumi.Input.asInput<String>(type);
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      samlOptions = pulumi.Input.asOptionalInput<ServerlessSecurityConfigSamlOptions>(samlOptions),
+      type = pulumi.Input.asInput<String>(type);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final samlOptionsValue = samlOptions;
-    if (samlOptionsValue != null) {
-      map['samlOptions'] = pulumi.Input.mapOptionalInputValue<
-          ServerlessSecurityConfigSamlOptions,
-          Map<String, dynamic>>(samlOptionsValue, (value) => value.toMap());
-    }
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'name': ?name,
+      'region': ?region,
+      'samlOptions': ?pulumi.Input.mapOptionalInputValue<ServerlessSecurityConfigSamlOptions, Map<String, dynamic>>(samlOptions, (value) => value.toMap()),
+      'type': type,
+    };
   }
 
   factory ServerlessSecurityConfigArgs.fromMap(Map<String, dynamic> map) {
     return ServerlessSecurityConfigArgs(
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      samlOptions: map['samlOptions'] == null
-          ? null
-          : ServerlessSecurityConfigSamlOptions.fromMap(
-              (map['samlOptions'] as Map).cast<String, dynamic>()),
+      samlOptions: map['samlOptions'] == null ? null : ServerlessSecurityConfigSamlOptions.fromMap((map['samlOptions'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

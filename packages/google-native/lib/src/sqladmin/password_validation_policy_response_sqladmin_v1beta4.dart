@@ -1,25 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Database instance local user password validation policy
 class PasswordValidationPolicyResponseSqladminV1beta4 {
   /// The complexity of the password.
   final String complexity;
-
   /// Disallow credentials that have been previously compromised by a public data breach.
   final bool disallowCompromisedCredentials;
-
   /// Disallow username as a part of the password.
   final bool disallowUsernameSubstring;
-
   /// Whether the password policy is enabled or not.
   final bool enablePasswordPolicy;
-
   /// Minimum number of characters allowed.
   final int minLength;
-
   /// Minimum interval after which the password can be changed. This flag is only supported for PostgreSQL.
   final String passwordChangeInterval;
-
   /// Number of previous passwords that cannot be reused.
   final int reuseInterval;
 
@@ -42,23 +37,21 @@ class PasswordValidationPolicyResponseSqladminV1beta4 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['complexity'] = complexity;
-    map['disallowCompromisedCredentials'] = disallowCompromisedCredentials;
-    map['disallowUsernameSubstring'] = disallowUsernameSubstring;
-    map['enablePasswordPolicy'] = enablePasswordPolicy;
-    map['minLength'] = minLength;
-    map['passwordChangeInterval'] = passwordChangeInterval;
-    map['reuseInterval'] = reuseInterval;
-    return map;
+    return <String, dynamic>{
+      'complexity': complexity,
+      'disallowCompromisedCredentials': disallowCompromisedCredentials,
+      'disallowUsernameSubstring': disallowUsernameSubstring,
+      'enablePasswordPolicy': enablePasswordPolicy,
+      'minLength': minLength,
+      'passwordChangeInterval': passwordChangeInterval,
+      'reuseInterval': reuseInterval,
+    };
   }
 
-  factory PasswordValidationPolicyResponseSqladminV1beta4.fromMap(
-      Map<String, dynamic> map) {
+  factory PasswordValidationPolicyResponseSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return PasswordValidationPolicyResponseSqladminV1beta4(
       complexity: map['complexity'] as String,
-      disallowCompromisedCredentials:
-          map['disallowCompromisedCredentials'] as bool,
+      disallowCompromisedCredentials: map['disallowCompromisedCredentials'] as bool,
       disallowUsernameSubstring: map['disallowUsernameSubstring'] as bool,
       enablePasswordPolicy: map['enablePasswordPolicy'] as bool,
       minLength: map['minLength'] as int,
@@ -67,3 +60,4 @@ class PasswordValidationPolicyResponseSqladminV1beta4 {
     );
   }
 }
+

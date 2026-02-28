@@ -1,21 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getAcl.
 class GetAclResult {
   /// ARN of the ACL.
   final String arn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The minimum engine version supported by the ACL.
   final String minimumEngineVersion;
   final String name;
   final String region;
-
   /// Map of tags assigned to the ACL.
   final Map<String, String> tags;
-
   /// Set of MemoryDB user names included in this ACL.
   final List<String> userNames;
 
@@ -38,15 +35,15 @@ class GetAclResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['id'] = id;
-    map['minimumEngineVersion'] = minimumEngineVersion;
-    map['name'] = name;
-    map['region'] = region;
-    map['tags'] = tags;
-    map['userNames'] = userNames;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'id': id,
+      'minimumEngineVersion': minimumEngineVersion,
+      'name': name,
+      'region': region,
+      'tags': tags,
+      'userNames': userNames,
+    };
   }
 
   factory GetAclResult.fromMap(Map<String, dynamic> map) {
@@ -61,3 +58,4 @@ class GetAclResult {
     );
   }
 }
+

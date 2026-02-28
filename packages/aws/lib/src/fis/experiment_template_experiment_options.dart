@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ExperimentTemplateExperimentOptions {
   /// Specifies the account targeting setting for experiment options. Supports `single-account` and `multi-account`.
   final String? accountTargeting;
-
   /// Specifies the empty target resolution mode for experiment options. Supports `fail` and `skip`.
   final String? emptyTargetResolutionMode;
 
@@ -16,27 +16,17 @@ class ExperimentTemplateExperimentOptions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final accountTargetingValue = accountTargeting;
-    if (accountTargetingValue != null) {
-      map['accountTargeting'] = accountTargetingValue;
-    }
-    final emptyTargetResolutionModeValue = emptyTargetResolutionMode;
-    if (emptyTargetResolutionModeValue != null) {
-      map['emptyTargetResolutionMode'] = emptyTargetResolutionModeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'accountTargeting': ?accountTargeting,
+      'emptyTargetResolutionMode': ?emptyTargetResolutionMode,
+    };
   }
 
-  factory ExperimentTemplateExperimentOptions.fromMap(
-      Map<String, dynamic> map) {
+  factory ExperimentTemplateExperimentOptions.fromMap(Map<String, dynamic> map) {
     return ExperimentTemplateExperimentOptions(
-      accountTargeting: map['accountTargeting'] == null
-          ? null
-          : map['accountTargeting'] as String,
-      emptyTargetResolutionMode: map['emptyTargetResolutionMode'] == null
-          ? null
-          : map['emptyTargetResolutionMode'] as String,
+      accountTargeting: map['accountTargeting'] == null ? null : map['accountTargeting'] as String,
+      emptyTargetResolutionMode: map['emptyTargetResolutionMode'] == null ? null : map['emptyTargetResolutionMode'] as String,
     );
   }
 }
+

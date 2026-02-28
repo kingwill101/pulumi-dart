@@ -895,16 +895,12 @@ import 'insight_filters.dart';
 class Insight extends pulumi.CustomResource {
   /// ARN of the insight.
   late final pulumi.Output<String> arn;
-
   /// A configuration block including one or more (up to 10 distinct) attributes used to filter the findings included in the insight. The insight only includes findings that match criteria defined in the filters. See filters below for more details.
   late final pulumi.Output<InsightFilters> filters;
-
   /// The attribute used to group the findings for the insight e.g., if an insight is grouped by `ResourceId`, then the insight produces a list of resource identifiers.
   late final pulumi.Output<String> groupByAttribute;
-
   /// The name of the custom insight.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

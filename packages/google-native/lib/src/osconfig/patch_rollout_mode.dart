@@ -16,3 +16,4 @@ enum PatchRolloutMode {
     throw ArgumentError('Unknown PatchRolloutMode value: $value');
   }
 }
+

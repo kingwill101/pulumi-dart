@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting {
   /// Number of backups to retain.
   final int retainedBackups;
-
   /// The unit that 'retainedBackups' represents. Defaults to COUNT
   final String retentionUnit;
 
@@ -16,17 +16,17 @@ class GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['retainedBackups'] = retainedBackups;
-    map['retentionUnit'] = retentionUnit;
-    return map;
+    return <String, dynamic>{
+      'retainedBackups': retainedBackups,
+      'retentionUnit': retentionUnit,
+    };
   }
 
-  factory GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting.fromMap(
-      Map<String, dynamic> map) {
+  factory GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting(
       retainedBackups: map['retainedBackups'] as int,
       retentionUnit: map['retentionUnit'] as String,
     );
   }
 }
+

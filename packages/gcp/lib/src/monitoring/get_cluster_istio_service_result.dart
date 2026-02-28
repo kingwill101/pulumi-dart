@@ -6,14 +6,11 @@ import 'get_cluster_istio_service_telemetry.dart';
 /// Result data returned by getClusterIstioService.
 class GetClusterIstioServiceResult {
   final String clusterName;
-
   /// Name used for UI elements listing this (Monitoring) Service.
   final String displayName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
-
   /// The full REST resource name for this channel. The syntax is:
   /// `projects/[PROJECT_ID]/services/[SERVICE_ID]`.
   final String name;
@@ -21,7 +18,6 @@ class GetClusterIstioServiceResult {
   final String serviceId;
   final String serviceName;
   final String serviceNamespace;
-
   /// Configuration for how to query telemetry on the Service. Structure is documented below.
   final List<GetClusterIstioServiceTelemetry> telemetries;
   final Map<String, String> userLabels;
@@ -53,24 +49,19 @@ class GetClusterIstioServiceResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clusterName'] = clusterName;
-    map['displayName'] = displayName;
-    map['id'] = id;
-    map['location'] = location;
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['serviceId'] = serviceId;
-    map['serviceName'] = serviceName;
-    map['serviceNamespace'] = serviceNamespace;
-    map['telemetries'] = pulumi.Input.encodeList<
-        GetClusterIstioServiceTelemetry,
-        Map<String, dynamic>>(telemetries, (value) => value.toMap());
-    map['userLabels'] = userLabels;
-    return map;
+    return <String, dynamic>{
+      'clusterName': clusterName,
+      'displayName': displayName,
+      'id': id,
+      'location': location,
+      'name': name,
+      'project': ?project,
+      'serviceId': serviceId,
+      'serviceName': serviceName,
+      'serviceNamespace': serviceNamespace,
+      'telemetries': pulumi.Input.encodeList<GetClusterIstioServiceTelemetry, Map<String, dynamic>>(telemetries, (value) => value.toMap()),
+      'userLabels': userLabels,
+    };
   }
 
   factory GetClusterIstioServiceResult.fromMap(Map<String, dynamic> map) {
@@ -84,11 +75,9 @@ class GetClusterIstioServiceResult {
       serviceId: map['serviceId'] as String,
       serviceName: map['serviceName'] as String,
       serviceNamespace: map['serviceNamespace'] as String,
-      telemetries: pulumi.Input.decodeList<GetClusterIstioServiceTelemetry>(
-          map['telemetries'],
-          (value) => GetClusterIstioServiceTelemetry.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      telemetries: pulumi.Input.decodeList<GetClusterIstioServiceTelemetry>(map['telemetries'], (value) => GetClusterIstioServiceTelemetry.fromMap((value as Map).cast<String, dynamic>())),
       userLabels: (map['userLabels'] as Map).cast<String, String>(),
     );
   }
 }
+

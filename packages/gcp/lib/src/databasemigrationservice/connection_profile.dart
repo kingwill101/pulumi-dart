@@ -3267,62 +3267,46 @@ class ConnectionProfile extends pulumi.CustomResource {
   /// Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
   /// Structure is documented below.
   late final pulumi.Output<ConnectionProfileAlloydb?> alloydb;
-
   /// Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
   /// Structure is documented below.
   late final pulumi.Output<ConnectionProfileCloudsql?> cloudsql;
-
   /// The ID of the connection profile.
   late final pulumi.Output<String> connectionProfileId;
-
   /// Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC 'Zulu' format, accurate to nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
   late final pulumi.Output<String> createTime;
-
   /// The database provider.
   late final pulumi.Output<String> dbprovider;
-
   /// The connection profile display name.
   late final pulumi.Output<String?> displayName;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Output only. The error details in case of state FAILED.
   /// Structure is documented below.
   late final pulumi.Output<List<ConnectionProfileError>> errors;
-
   /// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The location where the connection profile should reside.
   late final pulumi.Output<String?> location;
-
   /// Specifies connection parameters required specifically for MySQL databases.
   /// Structure is documented below.
   late final pulumi.Output<ConnectionProfileMysql?> mysql;
-
   /// The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
   late final pulumi.Output<String> name;
-
   /// Specifies connection parameters required specifically for Oracle databases.
   /// Structure is documented below.
   late final pulumi.Output<ConnectionProfileOracle?> oracle;
-
   /// Specifies connection parameters required specifically for PostgreSQL databases.
   /// Structure is documented below.
   late final pulumi.Output<ConnectionProfilePostgresql?> postgresql;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The current connection profile state.
   late final pulumi.Output<String> state;
 
@@ -3346,16 +3330,14 @@ class ConnectionProfile extends pulumi.CustomResource {
     this.createTime = registerOutput<String>('createTime');
     this.dbprovider = registerOutput<String>('dbprovider');
     this.displayName = registerOutput<String?>('displayName');
-    this.effectiveLabels =
-        registerOutput<Map<String, String>>('effectiveLabels');
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     this.errors = registerOutput<List<ConnectionProfileError>>('errors');
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.location = registerOutput<String?>('location');
     this.mysql = registerOutput<ConnectionProfileMysql?>('mysql');
     this.name = registerOutput<String>('name');
     this.oracle = registerOutput<ConnectionProfileOracle?>('oracle');
-    this.postgresql =
-        registerOutput<ConnectionProfilePostgresql?>('postgresql');
+    this.postgresql = registerOutput<ConnectionProfilePostgresql?>('postgresql');
     this.project = registerOutput<String>('project');
     this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.state = registerOutput<String>('state');

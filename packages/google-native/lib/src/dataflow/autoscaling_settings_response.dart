@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Settings for WorkerPool autoscaling.
 class AutoscalingSettingsResponse {
   /// The algorithm to use for autoscaling.
   final String algorithm;
-
   /// The maximum number of workers to cap scaling at.
   final int maxNumWorkers;
 
@@ -17,10 +17,10 @@ class AutoscalingSettingsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['algorithm'] = algorithm;
-    map['maxNumWorkers'] = maxNumWorkers;
-    return map;
+    return <String, dynamic>{
+      'algorithm': algorithm,
+      'maxNumWorkers': maxNumWorkers,
+    };
   }
 
   factory AutoscalingSettingsResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class AutoscalingSettingsResponse {
     );
   }
 }
+

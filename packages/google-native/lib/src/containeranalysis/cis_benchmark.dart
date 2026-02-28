@@ -16,25 +16,17 @@ class CisBenchmark {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final profileLevelValue = profileLevel;
-    if (profileLevelValue != null) {
-      map['profileLevel'] = profileLevelValue;
-    }
-    final severityValue = severity;
-    if (severityValue != null) {
-      map['severity'] = severityValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'profileLevel': ?profileLevel,
+      'severity': ?severity == null ? null : severity!.value,
+    };
   }
 
   factory CisBenchmark.fromMap(Map<String, dynamic> map) {
     return CisBenchmark(
-      profileLevel:
-          map['profileLevel'] == null ? null : map['profileLevel'] as int,
-      severity: map['severity'] == null
-          ? null
-          : CisBenchmarkSeverity.fromValue(map['severity'] as String),
+      profileLevel: map['profileLevel'] == null ? null : map['profileLevel'] as int,
+      severity: map['severity'] == null ? null : CisBenchmarkSeverity.fromValue(map['severity'] as String),
     );
   }
 }
+

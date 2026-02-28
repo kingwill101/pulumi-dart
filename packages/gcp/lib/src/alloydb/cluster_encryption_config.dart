@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterEncryptionConfig {
   /// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
   final String? kmsKeyName;
@@ -11,18 +12,15 @@ class ClusterEncryptionConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final kmsKeyNameValue = kmsKeyName;
-    if (kmsKeyNameValue != null) {
-      map['kmsKeyName'] = kmsKeyNameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'kmsKeyName': ?kmsKeyName,
+    };
   }
 
   factory ClusterEncryptionConfig.fromMap(Map<String, dynamic> map) {
     return ClusterEncryptionConfig(
-      kmsKeyName:
-          map['kmsKeyName'] == null ? null : map['kmsKeyName'] as String,
+      kmsKeyName: map['kmsKeyName'] == null ? null : map['kmsKeyName'] as String,
     );
   }
 }
+

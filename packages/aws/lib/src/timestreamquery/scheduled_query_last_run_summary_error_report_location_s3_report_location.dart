@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation {
   /// S3 bucket name.
   final String? bucketName;
-
   /// S3 key.
   final String? objectKey;
 
@@ -16,24 +16,17 @@ class ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final bucketNameValue = bucketName;
-    if (bucketNameValue != null) {
-      map['bucketName'] = bucketNameValue;
-    }
-    final objectKeyValue = objectKey;
-    if (objectKeyValue != null) {
-      map['objectKey'] = objectKeyValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'bucketName': ?bucketName,
+      'objectKey': ?objectKey,
+    };
   }
 
-  factory ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation.fromMap(
-      Map<String, dynamic> map) {
+  factory ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation(
-      bucketName:
-          map['bucketName'] == null ? null : map['bucketName'] as String,
+      bucketName: map['bucketName'] == null ? null : map['bucketName'] as String,
       objectKey: map['objectKey'] == null ? null : map['objectKey'] as String,
     );
   }
 }
+

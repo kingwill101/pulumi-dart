@@ -6,11 +6,8 @@ import 'v2models_intent_fulfillment_code_hook_post_fulfillment_status_specificat
 class V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalConditionalBranchResponse {
   /// Whether the user can interrupt a speech response from Amazon Lex.
   final bool? allowInterrupt;
-
   /// Configuration blocks for responses that Amazon Lex can send to the user. Amazon Lex chooses the actual response to send at runtime. See `message_group`.
-  final List<
-          V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalConditionalBranchResponseMessageGroup>?
-      messageGroups;
+  final List<V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalConditionalBranchResponseMessageGroup>? messageGroups;
 
   /// Creates a new [V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalConditionalBranchResponse].
   /// [allowInterrupt] Whether the user can interrupt a speech response from Amazon Lex.
@@ -21,33 +18,17 @@ class V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailure
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final allowInterruptValue = allowInterrupt;
-    if (allowInterruptValue != null) {
-      map['allowInterrupt'] = allowInterruptValue;
-    }
-    final messageGroupsValue = messageGroups;
-    if (messageGroupsValue != null) {
-      map['messageGroups'] = pulumi.Input.encodeList<
-          V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalConditionalBranchResponseMessageGroup,
-          Map<String, dynamic>>(messageGroupsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'allowInterrupt': ?allowInterrupt,
+      'messageGroups': ?messageGroups == null ? null : pulumi.Input.encodeList<V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalConditionalBranchResponseMessageGroup, Map<String, dynamic>>(messageGroups!, (value) => value.toMap()),
+    };
   }
 
-  factory V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalConditionalBranchResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalConditionalBranchResponse.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalConditionalBranchResponse(
-      allowInterrupt:
-          map['allowInterrupt'] == null ? null : map['allowInterrupt'] as bool,
-      messageGroups: map['messageGroups'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalConditionalBranchResponseMessageGroup>(
-              map['messageGroups'],
-              (value) =>
-                  V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalConditionalBranchResponseMessageGroup
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      allowInterrupt: map['allowInterrupt'] == null ? null : map['allowInterrupt'] as bool,
+      messageGroups: map['messageGroups'] == null ? null : pulumi.Input.decodeList<V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalConditionalBranchResponseMessageGroup>(map['messageGroups'], (value) => V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalConditionalBranchResponseMessageGroup.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

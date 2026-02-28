@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AgentFlowDefinitionConnectionConfigurationData {
   /// The name of the output in the source node that the connection begins from.
   final String sourceOutput;
-
   /// The name of the input in the target node that the connection ends at.
   final String targetInput;
 
@@ -16,17 +16,17 @@ class AgentFlowDefinitionConnectionConfigurationData {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['sourceOutput'] = sourceOutput;
-    map['targetInput'] = targetInput;
-    return map;
+    return <String, dynamic>{
+      'sourceOutput': sourceOutput,
+      'targetInput': targetInput,
+    };
   }
 
-  factory AgentFlowDefinitionConnectionConfigurationData.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentFlowDefinitionConnectionConfigurationData.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionConnectionConfigurationData(
       sourceOutput: map['sourceOutput'] as String,
       targetInput: map['targetInput'] as String,
     );
   }
 }
+

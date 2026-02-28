@@ -5,9 +5,7 @@ import 'secret_replication_user_managed_replica_customer_managed_encryption.dart
 class SecretReplicationUserManagedReplica {
   /// Customer Managed Encryption for the secret.
   /// Structure is documented below.
-  final SecretReplicationUserManagedReplicaCustomerManagedEncryption?
-      customerManagedEncryption;
-
+  final SecretReplicationUserManagedReplicaCustomerManagedEncryption? customerManagedEncryption;
   /// The canonical IDs of the location to replicate data. For example: "us-east1".
   final String location;
 
@@ -20,24 +18,17 @@ class SecretReplicationUserManagedReplica {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final customerManagedEncryptionValue = customerManagedEncryption;
-    if (customerManagedEncryptionValue != null) {
-      map['customerManagedEncryption'] = customerManagedEncryptionValue.toMap();
-    }
-    map['location'] = location;
-    return map;
+    return <String, dynamic>{
+      'customerManagedEncryption': ?customerManagedEncryption == null ? null : customerManagedEncryption!.toMap(),
+      'location': location,
+    };
   }
 
-  factory SecretReplicationUserManagedReplica.fromMap(
-      Map<String, dynamic> map) {
+  factory SecretReplicationUserManagedReplica.fromMap(Map<String, dynamic> map) {
     return SecretReplicationUserManagedReplica(
-      customerManagedEncryption: map['customerManagedEncryption'] == null
-          ? null
-          : SecretReplicationUserManagedReplicaCustomerManagedEncryption
-              .fromMap((map['customerManagedEncryption'] as Map)
-                  .cast<String, dynamic>()),
+      customerManagedEncryption: map['customerManagedEncryption'] == null ? null : SecretReplicationUserManagedReplicaCustomerManagedEncryption.fromMap((map['customerManagedEncryption'] as Map).cast<String, dynamic>()),
       location: map['location'] as String,
     );
   }
 }
+

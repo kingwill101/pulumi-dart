@@ -13,7 +13,7 @@ enum GethDetailsGarbageCollectionMode {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GethDetailsGarbageCollectionMode value: $value');
+    throw ArgumentError('Unknown GethDetailsGarbageCollectionMode value: $value');
   }
 }
+

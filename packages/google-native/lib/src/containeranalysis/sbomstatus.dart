@@ -6,7 +6,6 @@ import 'sbomstatus_sbom_state.dart';
 class SBOMStatus {
   /// If there was an error generating an SBOM, this will indicate what that error was.
   final String? error;
-
   /// The progress of the SBOM generation.
   final SBOMStatusSbomState? sbomState;
 
@@ -19,24 +18,17 @@ class SBOMStatus {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final errorValue = error;
-    if (errorValue != null) {
-      map['error'] = errorValue;
-    }
-    final sbomStateValue = sbomState;
-    if (sbomStateValue != null) {
-      map['sbomState'] = sbomStateValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'error': ?error,
+      'sbomState': ?sbomState == null ? null : sbomState!.value,
+    };
   }
 
   factory SBOMStatus.fromMap(Map<String, dynamic> map) {
     return SBOMStatus(
       error: map['error'] == null ? null : map['error'] as String,
-      sbomState: map['sbomState'] == null
-          ? null
-          : SBOMStatusSbomState.fromValue(map['sbomState'] as String),
+      sbomState: map['sbomState'] == null ? null : SBOMStatusSbomState.fromValue(map['sbomState'] as String),
     );
   }
 }
+

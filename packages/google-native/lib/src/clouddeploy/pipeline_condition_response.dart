@@ -8,10 +8,8 @@ import 'targets_type_condition_response.dart';
 class PipelineConditionResponse {
   /// Details around the Pipeline's overall status.
   final PipelineReadyConditionResponse pipelineReadyCondition;
-
   /// Details around targets enumerated in the pipeline.
   final TargetsPresentConditionResponse targetsPresentCondition;
-
   /// Details on the whether the targets enumerated in the pipeline are of the same type.
   final TargetsTypeConditionResponse targetsTypeCondition;
 
@@ -26,21 +24,19 @@ class PipelineConditionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['pipelineReadyCondition'] = pipelineReadyCondition.toMap();
-    map['targetsPresentCondition'] = targetsPresentCondition.toMap();
-    map['targetsTypeCondition'] = targetsTypeCondition.toMap();
-    return map;
+    return <String, dynamic>{
+      'pipelineReadyCondition': pipelineReadyCondition.toMap(),
+      'targetsPresentCondition': targetsPresentCondition.toMap(),
+      'targetsTypeCondition': targetsTypeCondition.toMap(),
+    };
   }
 
   factory PipelineConditionResponse.fromMap(Map<String, dynamic> map) {
     return PipelineConditionResponse(
-      pipelineReadyCondition: PipelineReadyConditionResponse.fromMap(
-          (map['pipelineReadyCondition'] as Map).cast<String, dynamic>()),
-      targetsPresentCondition: TargetsPresentConditionResponse.fromMap(
-          (map['targetsPresentCondition'] as Map).cast<String, dynamic>()),
-      targetsTypeCondition: TargetsTypeConditionResponse.fromMap(
-          (map['targetsTypeCondition'] as Map).cast<String, dynamic>()),
+      pipelineReadyCondition: PipelineReadyConditionResponse.fromMap((map['pipelineReadyCondition'] as Map).cast<String, dynamic>()),
+      targetsPresentCondition: TargetsPresentConditionResponse.fromMap((map['targetsPresentCondition'] as Map).cast<String, dynamic>()),
+      targetsTypeCondition: TargetsTypeConditionResponse.fromMap((map['targetsTypeCondition'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

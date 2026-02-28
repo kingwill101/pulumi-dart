@@ -141,10 +141,8 @@ class KeyRing extends pulumi.CustomResource {
   /// The location for the KeyRing.
   /// A full list of valid locations can be found by running `gcloud kms locations list`.
   late final pulumi.Output<String> location;
-
   /// The resource name for the KeyRing.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;

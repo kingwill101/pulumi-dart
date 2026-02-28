@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// StatusCondition describes why a cluster or a node pool has a certain status (e.g., ERROR or DEGRADED).
 class StatusConditionResponse {
   /// Canonical code of the condition.
   final String canonicalCode;
-
   /// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
   final String code;
-
   /// Human-friendly representation of the condition
   final String message;
 
@@ -22,11 +21,11 @@ class StatusConditionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['canonicalCode'] = canonicalCode;
-    map['code'] = code;
-    map['message'] = message;
-    return map;
+    return <String, dynamic>{
+      'canonicalCode': canonicalCode,
+      'code': code,
+      'message': message,
+    };
   }
 
   factory StatusConditionResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class StatusConditionResponse {
     );
   }
 }
+

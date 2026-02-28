@@ -14,16 +14,15 @@ class GrafeasV1beta1PackageDetailsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['installation'] = installation.toMap();
-    return map;
+    return <String, dynamic>{
+      'installation': installation.toMap(),
+    };
   }
 
-  factory GrafeasV1beta1PackageDetailsResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GrafeasV1beta1PackageDetailsResponse.fromMap(Map<String, dynamic> map) {
     return GrafeasV1beta1PackageDetailsResponse(
-      installation: InstallationResponseContaineranalysisV1beta1.fromMap(
-          (map['installation'] as Map).cast<String, dynamic>()),
+      installation: InstallationResponseContaineranalysisV1beta1.fromMap((map['installation'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -25,26 +25,21 @@ class GetConfigApigatewayV1betaArgs {
     required String location,
     String? project,
     String? view,
-  })  : apiId = pulumi.Input.asInput<String>(apiId),
-        configId = pulumi.Input.asInput<String>(configId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        view = pulumi.Input.asOptionalInput<String>(view);
+  }) :
+      apiId = pulumi.Input.asInput<String>(apiId),
+      configId = pulumi.Input.asInput<String>(configId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['apiId'] = apiId;
-    map['configId'] = configId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final viewValue = view;
-    if (viewValue != null) {
-      map['view'] = viewValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'apiId': apiId,
+      'configId': configId,
+      'location': location,
+      'project': ?project,
+      'view': ?view,
+    };
   }
 
   factory GetConfigApigatewayV1betaArgs.fromMap(Map<String, dynamic> map) {
@@ -57,3 +52,4 @@ class GetConfigApigatewayV1betaArgs {
     );
   }
 }
+

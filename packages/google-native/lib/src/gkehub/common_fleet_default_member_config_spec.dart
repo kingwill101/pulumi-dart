@@ -9,13 +9,10 @@ import 'service_mesh_membership_spec.dart';
 class CommonFleetDefaultMemberConfigSpec {
   /// Config Management-specific spec.
   final ConfigManagementMembershipSpec? configmanagement;
-
   /// Identity Service-specific spec.
   final IdentityServiceMembershipSpec? identityservice;
-
   /// Anthos Service Mesh-specific spec
   final ServiceMeshMembershipSpec? mesh;
-
   /// Policy Controller spec.
   final PolicyControllerMembershipSpec? policycontroller;
 
@@ -32,44 +29,21 @@ class CommonFleetDefaultMemberConfigSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final configmanagementValue = configmanagement;
-    if (configmanagementValue != null) {
-      map['configmanagement'] = configmanagementValue.toMap();
-    }
-    final identityserviceValue = identityservice;
-    if (identityserviceValue != null) {
-      map['identityservice'] = identityserviceValue.toMap();
-    }
-    final meshValue = mesh;
-    if (meshValue != null) {
-      map['mesh'] = meshValue.toMap();
-    }
-    final policycontrollerValue = policycontroller;
-    if (policycontrollerValue != null) {
-      map['policycontroller'] = policycontrollerValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'configmanagement': ?configmanagement == null ? null : configmanagement!.toMap(),
+      'identityservice': ?identityservice == null ? null : identityservice!.toMap(),
+      'mesh': ?mesh == null ? null : mesh!.toMap(),
+      'policycontroller': ?policycontroller == null ? null : policycontroller!.toMap(),
+    };
   }
 
   factory CommonFleetDefaultMemberConfigSpec.fromMap(Map<String, dynamic> map) {
     return CommonFleetDefaultMemberConfigSpec(
-      configmanagement: map['configmanagement'] == null
-          ? null
-          : ConfigManagementMembershipSpec.fromMap(
-              (map['configmanagement'] as Map).cast<String, dynamic>()),
-      identityservice: map['identityservice'] == null
-          ? null
-          : IdentityServiceMembershipSpec.fromMap(
-              (map['identityservice'] as Map).cast<String, dynamic>()),
-      mesh: map['mesh'] == null
-          ? null
-          : ServiceMeshMembershipSpec.fromMap(
-              (map['mesh'] as Map).cast<String, dynamic>()),
-      policycontroller: map['policycontroller'] == null
-          ? null
-          : PolicyControllerMembershipSpec.fromMap(
-              (map['policycontroller'] as Map).cast<String, dynamic>()),
+      configmanagement: map['configmanagement'] == null ? null : ConfigManagementMembershipSpec.fromMap((map['configmanagement'] as Map).cast<String, dynamic>()),
+      identityservice: map['identityservice'] == null ? null : IdentityServiceMembershipSpec.fromMap((map['identityservice'] as Map).cast<String, dynamic>()),
+      mesh: map['mesh'] == null ? null : ServiceMeshMembershipSpec.fromMap((map['mesh'] as Map).cast<String, dynamic>()),
+      policycontroller: map['policycontroller'] == null ? null : PolicyControllerMembershipSpec.fromMap((map['policycontroller'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

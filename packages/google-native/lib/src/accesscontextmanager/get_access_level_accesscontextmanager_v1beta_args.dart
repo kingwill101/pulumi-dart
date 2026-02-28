@@ -19,30 +19,25 @@ class GetAccessLevelAccesscontextmanagerV1betaArgs {
     String? accessLevelFormat,
     required String accessLevelId,
     required String accessPolicyId,
-  })  : accessLevelFormat =
-            pulumi.Input.asOptionalInput<String>(accessLevelFormat),
-        accessLevelId = pulumi.Input.asInput<String>(accessLevelId),
-        accessPolicyId = pulumi.Input.asInput<String>(accessPolicyId);
+  }) :
+      accessLevelFormat = pulumi.Input.asOptionalInput<String>(accessLevelFormat),
+      accessLevelId = pulumi.Input.asInput<String>(accessLevelId),
+      accessPolicyId = pulumi.Input.asInput<String>(accessPolicyId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final accessLevelFormatValue = accessLevelFormat;
-    if (accessLevelFormatValue != null) {
-      map['accessLevelFormat'] = accessLevelFormatValue;
-    }
-    map['accessLevelId'] = accessLevelId;
-    map['accessPolicyId'] = accessPolicyId;
-    return map;
+    return <String, dynamic>{
+      'accessLevelFormat': ?accessLevelFormat,
+      'accessLevelId': accessLevelId,
+      'accessPolicyId': accessPolicyId,
+    };
   }
 
-  factory GetAccessLevelAccesscontextmanagerV1betaArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetAccessLevelAccesscontextmanagerV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessLevelAccesscontextmanagerV1betaArgs(
-      accessLevelFormat: map['accessLevelFormat'] == null
-          ? null
-          : map['accessLevelFormat'] as String,
+      accessLevelFormat: map['accessLevelFormat'] == null ? null : map['accessLevelFormat'] as String,
       accessLevelId: map['accessLevelId'] as String,
       accessPolicyId: map['accessPolicyId'] as String,
     );
   }
 }
+

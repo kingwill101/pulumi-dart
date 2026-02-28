@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SharedDirectoryTarget {
   /// Identifier of the directory consumer account.
   final String id;
-
   /// Type of identifier to be used in the `id` field. Valid value is `ACCOUNT`. Default is `ACCOUNT`.
   final String? type;
 
@@ -16,13 +16,10 @@ class SharedDirectoryTarget {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'type': ?type,
+    };
   }
 
   factory SharedDirectoryTarget.fromMap(Map<String, dynamic> map) {
@@ -32,3 +29,4 @@ class SharedDirectoryTarget {
     );
   }
 }
+

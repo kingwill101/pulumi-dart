@@ -16,3 +16,4 @@ enum ModelTrainingStateRetailV2beta {
     throw ArgumentError('Unknown ModelTrainingStateRetailV2beta value: $value');
   }
 }
+

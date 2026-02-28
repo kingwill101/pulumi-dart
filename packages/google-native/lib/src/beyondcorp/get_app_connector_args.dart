@@ -19,19 +19,17 @@ class GetAppConnectorArgs {
     required String appConnectorId,
     required String location,
     String? project,
-  })  : appConnectorId = pulumi.Input.asInput<String>(appConnectorId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      appConnectorId = pulumi.Input.asInput<String>(appConnectorId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['appConnectorId'] = appConnectorId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'appConnectorId': appConnectorId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetAppConnectorArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetAppConnectorArgs {
     );
   }
 }
+

@@ -14,20 +14,15 @@ class HeaderOverrideCloudtasksV2beta2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final headerValue = header;
-    if (headerValue != null) {
-      map['header'] = headerValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'header': ?header == null ? null : header!.toMap(),
+    };
   }
 
   factory HeaderOverrideCloudtasksV2beta2.fromMap(Map<String, dynamic> map) {
     return HeaderOverrideCloudtasksV2beta2(
-      header: map['header'] == null
-          ? null
-          : HeaderCloudtasksV2beta2.fromMap(
-              (map['header'] as Map).cast<String, dynamic>()),
+      header: map['header'] == null ? null : HeaderCloudtasksV2beta2.fromMap((map['header'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

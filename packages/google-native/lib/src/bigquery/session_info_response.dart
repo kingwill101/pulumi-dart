@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SessionInfoResponse {
   /// // [Preview] Id of the session.
   final String sessionId;
@@ -11,9 +12,9 @@ class SessionInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['sessionId'] = sessionId;
-    return map;
+    return <String, dynamic>{
+      'sessionId': sessionId,
+    };
   }
 
   factory SessionInfoResponse.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class SessionInfoResponse {
     );
   }
 }
+

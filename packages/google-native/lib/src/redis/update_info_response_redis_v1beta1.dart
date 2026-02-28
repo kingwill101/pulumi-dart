@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents information about an updating cluster.
 class UpdateInfoResponseRedisV1beta1 {
   /// Target number of replica nodes per shard.
   final int targetReplicaCount;
-
   /// Target number of shards for redis cluster
   final int targetShardCount;
 
@@ -17,10 +17,10 @@ class UpdateInfoResponseRedisV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['targetReplicaCount'] = targetReplicaCount;
-    map['targetShardCount'] = targetShardCount;
-    return map;
+    return <String, dynamic>{
+      'targetReplicaCount': targetReplicaCount,
+      'targetShardCount': targetShardCount,
+    };
   }
 
   factory UpdateInfoResponseRedisV1beta1.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class UpdateInfoResponseRedisV1beta1 {
     );
   }
 }
+

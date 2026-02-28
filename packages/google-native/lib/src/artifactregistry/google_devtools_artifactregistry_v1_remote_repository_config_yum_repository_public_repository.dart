@@ -5,9 +5,7 @@ import 'google_devtools_artifactregistry_v1_remote_repository_config_yum_reposit
 /// Publicly available Yum repositories constructed from a common repository base and a custom repository path.
 class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository {
   /// A common public repository base for Yum.
-  final GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase?
-      repositoryBase;
-
+  final GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase? repositoryBase;
   /// A custom field to define a path to a specific repository from the base.
   final String? repositoryPath;
 
@@ -20,28 +18,17 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicR
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final repositoryBaseValue = repositoryBase;
-    if (repositoryBaseValue != null) {
-      map['repositoryBase'] = repositoryBaseValue.value;
-    }
-    final repositoryPathValue = repositoryPath;
-    if (repositoryPathValue != null) {
-      map['repositoryPath'] = repositoryPathValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'repositoryBase': ?repositoryBase == null ? null : repositoryBase!.value,
+      'repositoryPath': ?repositoryPath,
+    };
   }
 
-  factory GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository(
-      repositoryBase: map['repositoryBase'] == null
-          ? null
-          : GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase
-              .fromValue(map['repositoryBase'] as String),
-      repositoryPath: map['repositoryPath'] == null
-          ? null
-          : map['repositoryPath'] as String,
+      repositoryBase: map['repositoryBase'] == null ? null : GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase.fromValue(map['repositoryBase'] as String),
+      repositoryPath: map['repositoryPath'] == null ? null : map['repositoryPath'] as String,
     );
   }
 }
+

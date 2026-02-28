@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterClusterTelemetry {
   /// Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
   /// `SYSTEM_ONLY` (Only system components are monitored and logged) is only available in GKE versions 1.15 and later.
@@ -12,9 +13,9 @@ class ClusterClusterTelemetry {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory ClusterClusterTelemetry.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class ClusterClusterTelemetry {
     );
   }
 }
+

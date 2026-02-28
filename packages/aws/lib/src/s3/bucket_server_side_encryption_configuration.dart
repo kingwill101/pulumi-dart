@@ -13,16 +13,15 @@ class BucketServerSideEncryptionConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['rule'] = rule.toMap();
-    return map;
+    return <String, dynamic>{
+      'rule': rule.toMap(),
+    };
   }
 
-  factory BucketServerSideEncryptionConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory BucketServerSideEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return BucketServerSideEncryptionConfiguration(
-      rule: BucketServerSideEncryptionConfigurationRule.fromMap(
-          (map['rule'] as Map).cast<String, dynamic>()),
+      rule: BucketServerSideEncryptionConfigurationRule.fromMap((map['rule'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

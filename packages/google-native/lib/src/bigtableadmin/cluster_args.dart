@@ -12,24 +12,18 @@ import 'encryption_config.dart';
 class ClusterArgs {
   /// Configuration for this cluster.
   final pulumi.Input<ClusterConfig>? clusterConfig;
-
   /// Required. The ID to be used when referring to the new cluster within its instance, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`.
   final pulumi.Input<String> clusterId;
-
   /// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
   final pulumi.Input<ClusterDefaultStorageType>? defaultStorageType;
-
   /// Immutable. The encryption configuration for CMEK-protected clusters.
   final pulumi.Input<EncryptionConfig>? encryptionConfig;
   final pulumi.Input<String> instanceId;
-
   /// Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
   final pulumi.Input<String>? location;
-
   /// The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
-
   /// The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
   final pulumi.Input<int>? serveNodes;
 
@@ -53,75 +47,37 @@ class ClusterArgs {
     String? name,
     String? project,
     int? serveNodes,
-  })  : clusterConfig =
-            pulumi.Input.asOptionalInput<ClusterConfig>(clusterConfig),
-        clusterId = pulumi.Input.asInput<String>(clusterId),
-        defaultStorageType =
-            pulumi.Input.asOptionalInput<ClusterDefaultStorageType>(
-                defaultStorageType),
-        encryptionConfig =
-            pulumi.Input.asOptionalInput<EncryptionConfig>(encryptionConfig),
-        instanceId = pulumi.Input.asInput<String>(instanceId),
-        location = pulumi.Input.asOptionalInput<String>(location),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        serveNodes = pulumi.Input.asOptionalInput<int>(serveNodes);
+  }) :
+      clusterConfig = pulumi.Input.asOptionalInput<ClusterConfig>(clusterConfig),
+      clusterId = pulumi.Input.asInput<String>(clusterId),
+      defaultStorageType = pulumi.Input.asOptionalInput<ClusterDefaultStorageType>(defaultStorageType),
+      encryptionConfig = pulumi.Input.asOptionalInput<EncryptionConfig>(encryptionConfig),
+      instanceId = pulumi.Input.asInput<String>(instanceId),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      serveNodes = pulumi.Input.asOptionalInput<int>(serveNodes);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final clusterConfigValue = clusterConfig;
-    if (clusterConfigValue != null) {
-      map['clusterConfig'] = pulumi.Input.mapOptionalInputValue<ClusterConfig,
-          Map<String, dynamic>>(clusterConfigValue, (value) => value.toMap());
-    }
-    map['clusterId'] = clusterId;
-    final defaultStorageTypeValue = defaultStorageType;
-    if (defaultStorageTypeValue != null) {
-      map['defaultStorageType'] =
-          pulumi.Input.mapOptionalInputValue<ClusterDefaultStorageType, String>(
-              defaultStorageTypeValue, (value) => value.value);
-    }
-    final encryptionConfigValue = encryptionConfig;
-    if (encryptionConfigValue != null) {
-      map['encryptionConfig'] = pulumi.Input.mapOptionalInputValue<
-              EncryptionConfig, Map<String, dynamic>>(
-          encryptionConfigValue, (value) => value.toMap());
-    }
-    map['instanceId'] = instanceId;
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final serveNodesValue = serveNodes;
-    if (serveNodesValue != null) {
-      map['serveNodes'] = serveNodesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'clusterConfig': ?pulumi.Input.mapOptionalInputValue<ClusterConfig, Map<String, dynamic>>(clusterConfig, (value) => value.toMap()),
+      'clusterId': clusterId,
+      'defaultStorageType': ?pulumi.Input.mapOptionalInputValue<ClusterDefaultStorageType, String>(defaultStorageType, (value) => value.value),
+      'encryptionConfig': ?pulumi.Input.mapOptionalInputValue<EncryptionConfig, Map<String, dynamic>>(encryptionConfig, (value) => value.toMap()),
+      'instanceId': instanceId,
+      'location': ?location,
+      'name': ?name,
+      'project': ?project,
+      'serveNodes': ?serveNodes,
+    };
   }
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      clusterConfig: map['clusterConfig'] == null
-          ? null
-          : ClusterConfig.fromMap(
-              (map['clusterConfig'] as Map).cast<String, dynamic>()),
+      clusterConfig: map['clusterConfig'] == null ? null : ClusterConfig.fromMap((map['clusterConfig'] as Map).cast<String, dynamic>()),
       clusterId: map['clusterId'] as String,
-      defaultStorageType: map['defaultStorageType'] == null
-          ? null
-          : ClusterDefaultStorageType.fromValue(
-              map['defaultStorageType'] as String),
-      encryptionConfig: map['encryptionConfig'] == null
-          ? null
-          : EncryptionConfig.fromMap(
-              (map['encryptionConfig'] as Map).cast<String, dynamic>()),
+      defaultStorageType: map['defaultStorageType'] == null ? null : ClusterDefaultStorageType.fromValue(map['defaultStorageType'] as String),
+      encryptionConfig: map['encryptionConfig'] == null ? null : EncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>()),
       instanceId: map['instanceId'] as String,
       location: map['location'] == null ? null : map['location'] as String,
       name: map['name'] == null ? null : map['name'] as String,
@@ -130,3 +86,4 @@ class ClusterArgs {
     );
   }
 }
+

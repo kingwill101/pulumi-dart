@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDistributionTenantCustomizationWebAcl {
   final String action;
-
   /// ARN (Amazon Resource Name) for the distribution tenant.
   final String arn;
 
@@ -15,17 +15,17 @@ class GetDistributionTenantCustomizationWebAcl {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['action'] = action;
-    map['arn'] = arn;
-    return map;
+    return <String, dynamic>{
+      'action': action,
+      'arn': arn,
+    };
   }
 
-  factory GetDistributionTenantCustomizationWebAcl.fromMap(
-      Map<String, dynamic> map) {
+  factory GetDistributionTenantCustomizationWebAcl.fromMap(Map<String, dynamic> map) {
     return GetDistributionTenantCustomizationWebAcl(
       action: map['action'] as String,
       arn: map['arn'] as String,
     );
   }
 }
+

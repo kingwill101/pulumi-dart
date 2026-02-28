@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppHostingTrafficTargetSplit {
   /// The build that traffic is being routed to.
   final String build;
-
   /// The percentage of traffic to send to the build. Currently must be 100 or 0.
   final int percent;
 
@@ -16,10 +16,10 @@ class AppHostingTrafficTargetSplit {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['build'] = build;
-    map['percent'] = percent;
-    return map;
+    return <String, dynamic>{
+      'build': build,
+      'percent': percent,
+    };
   }
 
   factory AppHostingTrafficTargetSplit.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class AppHostingTrafficTargetSplit {
     );
   }
 }
+

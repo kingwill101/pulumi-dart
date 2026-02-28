@@ -7,11 +7,8 @@ import 'google_cloud_dialogflow_v2beta1_intent_message_browse_carousel_card_brow
 class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardResponse {
   /// Optional. Settings for displaying the image. Applies to every image in items.
   final String imageDisplayOptions;
-
   /// List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
-  final List<
-          GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse>
-      items;
+  final List<GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse> items;
 
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardResponse].
   /// [imageDisplayOptions] Optional. Settings for displaying the image. Applies to every image in items.
@@ -22,24 +19,17 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['imageDisplayOptions'] = imageDisplayOptions;
-    map['items'] = pulumi.Input.encodeList<
-        GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse,
-        Map<String, dynamic>>(items, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'imageDisplayOptions': imageDisplayOptions,
+      'items': pulumi.Input.encodeList<GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse, Map<String, dynamic>>(items, (value) => value.toMap()),
+    };
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardResponse(
       imageDisplayOptions: map['imageDisplayOptions'] as String,
-      items: pulumi.Input.decodeList<
-              GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse>(
-          map['items'],
-          (value) =>
-              GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      items: pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse>(map['items'], (value) => GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

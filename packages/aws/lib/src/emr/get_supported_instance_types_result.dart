@@ -8,10 +8,8 @@ class GetSupportedInstanceTypesResult {
   final String id;
   final String region;
   final String releaseLabel;
-
   /// List of supported instance types. See `supported_instance_types` below.
-  final List<GetSupportedInstanceTypesSupportedInstanceType>
-      supportedInstanceTypes;
+  final List<GetSupportedInstanceTypesSupportedInstanceType> supportedInstanceTypes;
 
   /// Creates a new [GetSupportedInstanceTypesResult].
   /// [id] Required.
@@ -26,14 +24,12 @@ class GetSupportedInstanceTypesResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['region'] = region;
-    map['releaseLabel'] = releaseLabel;
-    map['supportedInstanceTypes'] = pulumi.Input.encodeList<
-        GetSupportedInstanceTypesSupportedInstanceType,
-        Map<String, dynamic>>(supportedInstanceTypes, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'region': region,
+      'releaseLabel': releaseLabel,
+      'supportedInstanceTypes': pulumi.Input.encodeList<GetSupportedInstanceTypesSupportedInstanceType, Map<String, dynamic>>(supportedInstanceTypes, (value) => value.toMap()),
+    };
   }
 
   factory GetSupportedInstanceTypesResult.fromMap(Map<String, dynamic> map) {
@@ -41,11 +37,8 @@ class GetSupportedInstanceTypesResult {
       id: map['id'] as String,
       region: map['region'] as String,
       releaseLabel: map['releaseLabel'] as String,
-      supportedInstanceTypes: pulumi.Input.decodeList<
-              GetSupportedInstanceTypesSupportedInstanceType>(
-          map['supportedInstanceTypes'],
-          (value) => GetSupportedInstanceTypesSupportedInstanceType.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      supportedInstanceTypes: pulumi.Input.decodeList<GetSupportedInstanceTypesSupportedInstanceType>(map['supportedInstanceTypes'], (value) => GetSupportedInstanceTypesSupportedInstanceType.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

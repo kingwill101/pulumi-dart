@@ -12,21 +12,15 @@ class FeatureGroupFeatureDefinitionCollectionConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final vectorConfigValue = vectorConfig;
-    if (vectorConfigValue != null) {
-      map['vectorConfig'] = vectorConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'vectorConfig': ?vectorConfig == null ? null : vectorConfig!.toMap(),
+    };
   }
 
-  factory FeatureGroupFeatureDefinitionCollectionConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory FeatureGroupFeatureDefinitionCollectionConfig.fromMap(Map<String, dynamic> map) {
     return FeatureGroupFeatureDefinitionCollectionConfig(
-      vectorConfig: map['vectorConfig'] == null
-          ? null
-          : FeatureGroupFeatureDefinitionCollectionConfigVectorConfig.fromMap(
-              (map['vectorConfig'] as Map).cast<String, dynamic>()),
+      vectorConfig: map['vectorConfig'] == null ? null : FeatureGroupFeatureDefinitionCollectionConfigVectorConfig.fromMap((map['vectorConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -5,8 +5,7 @@ import 'google_devtools_artifactregistry_v1_remote_repository_config_apt_reposit
 /// Configuration for an Apt remote repository.
 class AptRepository {
   /// One of the publicly available Apt repositories supported by Artifact Registry.
-  final GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository?
-      publicRepository;
+  final GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository? publicRepository;
 
   /// Creates a new [AptRepository].
   /// [publicRepository] One of the publicly available Apt repositories supported by Artifact Registry.
@@ -15,21 +14,15 @@ class AptRepository {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final publicRepositoryValue = publicRepository;
-    if (publicRepositoryValue != null) {
-      map['publicRepository'] = publicRepositoryValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'publicRepository': ?publicRepository == null ? null : publicRepository!.toMap(),
+    };
   }
 
   factory AptRepository.fromMap(Map<String, dynamic> map) {
     return AptRepository(
-      publicRepository: map['publicRepository'] == null
-          ? null
-          : GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository
-              .fromMap(
-                  (map['publicRepository'] as Map).cast<String, dynamic>()),
+      publicRepository: map['publicRepository'] == null ? null : GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository.fromMap((map['publicRepository'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

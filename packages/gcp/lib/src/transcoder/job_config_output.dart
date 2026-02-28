@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class JobConfigOutput {
   /// URI for the output file(s). For example, gs://my-bucket/outputs/.
   final String? uri;
@@ -11,12 +12,9 @@ class JobConfigOutput {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final uriValue = uri;
-    if (uriValue != null) {
-      map['uri'] = uriValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'uri': ?uri,
+    };
   }
 
   factory JobConfigOutput.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class JobConfigOutput {
     );
   }
 }
+

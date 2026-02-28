@@ -115,10 +115,8 @@ import 'attachment_routing_policy_label_args.dart';
 class AttachmentRoutingPolicyLabel extends pulumi.CustomResource {
   /// The ID of the attachment to apply the routing policy label to.
   late final pulumi.Output<String> attachmentId;
-
   /// The ID of the core network containing the attachment.
   late final pulumi.Output<String> coreNetworkId;
-
   /// The routing policy label to apply to the attachment.
   late final pulumi.Output<String> routingPolicyLabel;
 

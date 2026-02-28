@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TriggerWebhookConfig {
   /// Resource name for the secret required as a URL parameter.
   final String secret;
-
   /// (Output)
   /// Potential issues with the underlying Pub/Sub subscription configuration.
   /// Only populated on get requests.
@@ -18,13 +18,10 @@ class TriggerWebhookConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['secret'] = secret;
-    final stateValue = state;
-    if (stateValue != null) {
-      map['state'] = stateValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'secret': secret,
+      'state': ?state,
+    };
   }
 
   factory TriggerWebhookConfig.fromMap(Map<String, dynamic> map) {
@@ -34,3 +31,4 @@ class TriggerWebhookConfig {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetCloudExadataInfrastructureMaintenanceWindowMonth {
   final String name;
 
@@ -10,15 +11,15 @@ class GetCloudExadataInfrastructureMaintenanceWindowMonth {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory GetCloudExadataInfrastructureMaintenanceWindowMonth.fromMap(
-      Map<String, dynamic> map) {
+  factory GetCloudExadataInfrastructureMaintenanceWindowMonth.fromMap(Map<String, dynamic> map) {
     return GetCloudExadataInfrastructureMaintenanceWindowMonth(
       name: map['name'] as String,
     );
   }
 }
+

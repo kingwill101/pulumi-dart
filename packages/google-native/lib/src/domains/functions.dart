@@ -63,8 +63,7 @@ Future<GetRegistrationDomainsV1alpha2Result> getRegistrationDomainsV1alpha2(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_domains_v1alpha2_get_registration_iam_policy_domains_v1alpha2_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegistrationIamPolicyDomainsV1alpha2Result>
-    getRegistrationIamPolicyDomainsV1alpha2(
+Future<GetRegistrationIamPolicyDomainsV1alpha2Result> getRegistrationIamPolicyDomainsV1alpha2(
   GetRegistrationIamPolicyDomainsV1alpha2Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -96,8 +95,7 @@ Future<GetRegistrationDomainsV1beta1Result> getRegistrationDomainsV1beta1(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_domains_v1beta1_get_registration_iam_policy_domains_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegistrationIamPolicyDomainsV1beta1Result>
-    getRegistrationIamPolicyDomainsV1beta1(
+Future<GetRegistrationIamPolicyDomainsV1beta1Result> getRegistrationIamPolicyDomainsV1beta1(
   GetRegistrationIamPolicyDomainsV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {

@@ -9,7 +9,6 @@ import 'topic_iammember_condition.dart';
 /// {@macro pulumi_pubsub_topic_iammember_topic_iammember_args_doc}
 class TopicIAMMemberArgs {
   final pulumi.Input<TopicIAMMemberCondition>? condition;
-
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -23,16 +22,13 @@ class TopicIAMMemberArgs {
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
   final pulumi.Input<String> member;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The role that should be applied. Only one
   /// `gcp.pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   final pulumi.Input<String> role;
-
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> topic;
 
@@ -48,37 +44,26 @@ class TopicIAMMemberArgs {
     String? project,
     required String role,
     required String topic,
-  })  : condition =
-            pulumi.Input.asOptionalInput<TopicIAMMemberCondition>(condition),
-        member = pulumi.Input.asInput<String>(member),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        role = pulumi.Input.asInput<String>(role),
-        topic = pulumi.Input.asInput<String>(topic);
+  }) :
+      condition = pulumi.Input.asOptionalInput<TopicIAMMemberCondition>(condition),
+      member = pulumi.Input.asInput<String>(member),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      role = pulumi.Input.asInput<String>(role),
+      topic = pulumi.Input.asInput<String>(topic);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final conditionValue = condition;
-    if (conditionValue != null) {
-      map['condition'] = pulumi.Input.mapOptionalInputValue<
-          TopicIAMMemberCondition,
-          Map<String, dynamic>>(conditionValue, (value) => value.toMap());
-    }
-    map['member'] = member;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['role'] = role;
-    map['topic'] = topic;
-    return map;
+    return <String, dynamic>{
+      'condition': ?pulumi.Input.mapOptionalInputValue<TopicIAMMemberCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'member': member,
+      'project': ?project,
+      'role': role,
+      'topic': topic,
+    };
   }
 
   factory TopicIAMMemberArgs.fromMap(Map<String, dynamic> map) {
     return TopicIAMMemberArgs(
-      condition: map['condition'] == null
-          ? null
-          : TopicIAMMemberCondition.fromMap(
-              (map['condition'] as Map).cast<String, dynamic>()),
+      condition: map['condition'] == null ? null : TopicIAMMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
       member: map['member'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       role: map['role'] as String,
@@ -86,3 +71,4 @@ class TopicIAMMemberArgs {
     );
   }
 }
+

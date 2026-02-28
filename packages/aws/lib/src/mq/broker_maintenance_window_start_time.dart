@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BrokerMaintenanceWindowStartTime {
   /// Day of the week, e.g., `MONDAY`, `TUESDAY`, or `WEDNESDAY`.
   final String dayOfWeek;
-
   /// Time, in 24-hour format, e.g., `02:00`.
   final String timeOfDay;
-
   /// Time zone in either the Country/City format or the UTC offset format, e.g., `CET`.
   final String timeZone;
 
@@ -21,11 +20,11 @@ class BrokerMaintenanceWindowStartTime {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dayOfWeek'] = dayOfWeek;
-    map['timeOfDay'] = timeOfDay;
-    map['timeZone'] = timeZone;
-    return map;
+    return <String, dynamic>{
+      'dayOfWeek': dayOfWeek,
+      'timeOfDay': timeOfDay,
+      'timeZone': timeZone,
+    };
   }
 
   factory BrokerMaintenanceWindowStartTime.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class BrokerMaintenanceWindowStartTime {
     );
   }
 }
+

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A 2D coordinate in an image. The origin is the top-left.
 class Vertex {
   /// X coordinate.
   final double? x;
-
   /// Y coordinate.
   final double? y;
 
@@ -17,16 +17,10 @@ class Vertex {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final xValue = x;
-    if (xValue != null) {
-      map['x'] = xValue;
-    }
-    final yValue = y;
-    if (yValue != null) {
-      map['y'] = yValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'x': ?x,
+      'y': ?y,
+    };
   }
 
   factory Vertex.fromMap(Map<String, dynamic> map) {
@@ -36,3 +30,4 @@ class Vertex {
     );
   }
 }
+

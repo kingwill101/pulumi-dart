@@ -6,7 +6,6 @@ import 'workload_policy_config.dart';
 class Autopilot {
   /// Enable Autopilot
   final bool? enabled;
-
   /// Workload policy configuration for Autopilot.
   final WorkloadPolicyConfig? workloadPolicyConfig;
 
@@ -19,25 +18,17 @@ class Autopilot {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    final workloadPolicyConfigValue = workloadPolicyConfig;
-    if (workloadPolicyConfigValue != null) {
-      map['workloadPolicyConfig'] = workloadPolicyConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': ?enabled,
+      'workloadPolicyConfig': ?workloadPolicyConfig == null ? null : workloadPolicyConfig!.toMap(),
+    };
   }
 
   factory Autopilot.fromMap(Map<String, dynamic> map) {
     return Autopilot(
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      workloadPolicyConfig: map['workloadPolicyConfig'] == null
-          ? null
-          : WorkloadPolicyConfig.fromMap(
-              (map['workloadPolicyConfig'] as Map).cast<String, dynamic>()),
+      workloadPolicyConfig: map['workloadPolicyConfig'] == null ? null : WorkloadPolicyConfig.fromMap((map['workloadPolicyConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

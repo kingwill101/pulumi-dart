@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CloudControlParameterSpecSubParameterValidationIntRange {
   /// Maximum allowed value for the numeric parameter (inclusive).
   final String max;
-
   /// Minimum allowed value for the numeric parameter (inclusive).
   final String min;
 
@@ -16,17 +16,17 @@ class CloudControlParameterSpecSubParameterValidationIntRange {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['max'] = max;
-    map['min'] = min;
-    return map;
+    return <String, dynamic>{
+      'max': max,
+      'min': min,
+    };
   }
 
-  factory CloudControlParameterSpecSubParameterValidationIntRange.fromMap(
-      Map<String, dynamic> map) {
+  factory CloudControlParameterSpecSubParameterValidationIntRange.fromMap(Map<String, dynamic> map) {
     return CloudControlParameterSpecSubParameterValidationIntRange(
       max: map['max'] as String,
       min: map['min'] as String,
     );
   }
 }
+

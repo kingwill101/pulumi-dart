@@ -19,19 +19,17 @@ class GetServiceRunV2Args {
     required String location,
     String? project,
     required String serviceId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        serviceId = pulumi.Input.asInput<String>(serviceId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      serviceId = pulumi.Input.asInput<String>(serviceId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['serviceId'] = serviceId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+      'serviceId': serviceId,
+    };
   }
 
   factory GetServiceRunV2Args.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetServiceRunV2Args {
     );
   }
 }
+

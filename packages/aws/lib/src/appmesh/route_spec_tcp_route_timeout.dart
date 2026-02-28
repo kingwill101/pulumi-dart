@@ -13,20 +13,15 @@ class RouteSpecTcpRouteTimeout {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final idleValue = idle;
-    if (idleValue != null) {
-      map['idle'] = idleValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'idle': ?idle == null ? null : idle!.toMap(),
+    };
   }
 
   factory RouteSpecTcpRouteTimeout.fromMap(Map<String, dynamic> map) {
     return RouteSpecTcpRouteTimeout(
-      idle: map['idle'] == null
-          ? null
-          : RouteSpecTcpRouteTimeoutIdle.fromMap(
-              (map['idle'] as Map).cast<String, dynamic>()),
+      idle: map['idle'] == null ? null : RouteSpecTcpRouteTimeoutIdle.fromMap((map['idle'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

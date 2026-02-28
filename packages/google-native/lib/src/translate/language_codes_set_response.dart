@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Used with equivalent term set glossaries.
 class LanguageCodesSetResponse {
   /// The ISO-639 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code.
@@ -12,9 +13,9 @@ class LanguageCodesSetResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['languageCodes'] = languageCodes;
-    return map;
+    return <String, dynamic>{
+      'languageCodes': languageCodes,
+    };
   }
 
   factory LanguageCodesSetResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class LanguageCodesSetResponse {
     );
   }
 }
+

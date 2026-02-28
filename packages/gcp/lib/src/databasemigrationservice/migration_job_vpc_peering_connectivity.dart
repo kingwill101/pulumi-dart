@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MigrationJobVpcPeeringConnectivity {
   /// The name of the VPC network to peer with the Cloud SQL private network.
   final String? vpc;
@@ -11,12 +12,9 @@ class MigrationJobVpcPeeringConnectivity {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final vpcValue = vpc;
-    if (vpcValue != null) {
-      map['vpc'] = vpcValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'vpc': ?vpc,
+    };
   }
 
   factory MigrationJobVpcPeeringConnectivity.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class MigrationJobVpcPeeringConnectivity {
     );
   }
 }
+

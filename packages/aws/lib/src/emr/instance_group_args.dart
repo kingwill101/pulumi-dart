@@ -10,13 +10,10 @@ import 'instance_group_ebs_config.dart';
 class InstanceGroupArgs {
   /// The autoscaling policy document. This is a JSON formatted string. See [EMR Auto Scaling](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-automatic-scaling.html)
   final pulumi.Input<String>? autoscalingPolicy;
-
   /// If set, the bid price for each EC2 instance in the instance group, expressed in USD. By setting this attribute, the instance group is being declared as a Spot Instance, and will implicitly create a Spot request. Leave this blank to use On-Demand Instances.
   final pulumi.Input<String>? bidPrice;
-
   /// ID of the EMR Cluster to attach to. Changing this forces a new resource to be created.
   final pulumi.Input<String> clusterId;
-
   /// A JSON string for supplying list of configurations specific to the EMR instance group. Note that this can only be changed when using EMR release 5.21 or later.
   ///
   ///
@@ -188,22 +185,16 @@ class InstanceGroupArgs {
   ///         ]
   /// ```
   final pulumi.Input<String>? configurationsJson;
-
   /// One or more `ebs_config` blocks as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<List<InstanceGroupEbsConfig>>? ebsConfigs;
-
   /// Indicates whether an Amazon EBS volume is EBS-optimized. Changing this forces a new resource to be created.
   final pulumi.Input<bool>? ebsOptimized;
-
   /// target number of instances for the instance group. defaults to 0.
   final pulumi.Input<int>? instanceCount;
-
   /// The EC2 instance type for all instances in the instance group. Changing this forces a new resource to be created.
   final pulumi.Input<String> instanceType;
-
   /// Human friendly name given to the instance group. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -229,86 +220,46 @@ class InstanceGroupArgs {
     required String instanceType,
     String? name,
     String? region,
-  })  : autoscalingPolicy =
-            pulumi.Input.asOptionalInput<String>(autoscalingPolicy),
-        bidPrice = pulumi.Input.asOptionalInput<String>(bidPrice),
-        clusterId = pulumi.Input.asInput<String>(clusterId),
-        configurationsJson =
-            pulumi.Input.asOptionalInput<String>(configurationsJson),
-        ebsConfigs = pulumi.Input.asOptionalInput<List<InstanceGroupEbsConfig>>(
-            ebsConfigs),
-        ebsOptimized = pulumi.Input.asOptionalInput<bool>(ebsOptimized),
-        instanceCount = pulumi.Input.asOptionalInput<int>(instanceCount),
-        instanceType = pulumi.Input.asInput<String>(instanceType),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      autoscalingPolicy = pulumi.Input.asOptionalInput<String>(autoscalingPolicy),
+      bidPrice = pulumi.Input.asOptionalInput<String>(bidPrice),
+      clusterId = pulumi.Input.asInput<String>(clusterId),
+      configurationsJson = pulumi.Input.asOptionalInput<String>(configurationsJson),
+      ebsConfigs = pulumi.Input.asOptionalInput<List<InstanceGroupEbsConfig>>(ebsConfigs),
+      ebsOptimized = pulumi.Input.asOptionalInput<bool>(ebsOptimized),
+      instanceCount = pulumi.Input.asOptionalInput<int>(instanceCount),
+      instanceType = pulumi.Input.asInput<String>(instanceType),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final autoscalingPolicyValue = autoscalingPolicy;
-    if (autoscalingPolicyValue != null) {
-      map['autoscalingPolicy'] = autoscalingPolicyValue;
-    }
-    final bidPriceValue = bidPrice;
-    if (bidPriceValue != null) {
-      map['bidPrice'] = bidPriceValue;
-    }
-    map['clusterId'] = clusterId;
-    final configurationsJsonValue = configurationsJson;
-    if (configurationsJsonValue != null) {
-      map['configurationsJson'] = configurationsJsonValue;
-    }
-    final ebsConfigsValue = ebsConfigs;
-    if (ebsConfigsValue != null) {
-      map['ebsConfigs'] = pulumi.Input.mapOptionalInputValue<
-              List<InstanceGroupEbsConfig>, List<Map<String, dynamic>>>(
-          ebsConfigsValue,
-          (value) => pulumi.Input.encodeList<InstanceGroupEbsConfig,
-              Map<String, dynamic>>(value, (value) => value.toMap()));
-    }
-    final ebsOptimizedValue = ebsOptimized;
-    if (ebsOptimizedValue != null) {
-      map['ebsOptimized'] = ebsOptimizedValue;
-    }
-    final instanceCountValue = instanceCount;
-    if (instanceCountValue != null) {
-      map['instanceCount'] = instanceCountValue;
-    }
-    map['instanceType'] = instanceType;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'autoscalingPolicy': ?autoscalingPolicy,
+      'bidPrice': ?bidPrice,
+      'clusterId': clusterId,
+      'configurationsJson': ?configurationsJson,
+      'ebsConfigs': ?pulumi.Input.mapOptionalInputValue<List<InstanceGroupEbsConfig>, List<Map<String, dynamic>>>(ebsConfigs, (value) => pulumi.Input.encodeList<InstanceGroupEbsConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ebsOptimized': ?ebsOptimized,
+      'instanceCount': ?instanceCount,
+      'instanceType': instanceType,
+      'name': ?name,
+      'region': ?region,
+    };
   }
 
   factory InstanceGroupArgs.fromMap(Map<String, dynamic> map) {
     return InstanceGroupArgs(
-      autoscalingPolicy: map['autoscalingPolicy'] == null
-          ? null
-          : map['autoscalingPolicy'] as String,
+      autoscalingPolicy: map['autoscalingPolicy'] == null ? null : map['autoscalingPolicy'] as String,
       bidPrice: map['bidPrice'] == null ? null : map['bidPrice'] as String,
       clusterId: map['clusterId'] as String,
-      configurationsJson: map['configurationsJson'] == null
-          ? null
-          : map['configurationsJson'] as String,
-      ebsConfigs: map['ebsConfigs'] == null
-          ? null
-          : pulumi.Input.decodeList<InstanceGroupEbsConfig>(
-              map['ebsConfigs'],
-              (value) => InstanceGroupEbsConfig.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      ebsOptimized:
-          map['ebsOptimized'] == null ? null : map['ebsOptimized'] as bool,
-      instanceCount:
-          map['instanceCount'] == null ? null : map['instanceCount'] as int,
+      configurationsJson: map['configurationsJson'] == null ? null : map['configurationsJson'] as String,
+      ebsConfigs: map['ebsConfigs'] == null ? null : pulumi.Input.decodeList<InstanceGroupEbsConfig>(map['ebsConfigs'], (value) => InstanceGroupEbsConfig.fromMap((value as Map).cast<String, dynamic>())),
+      ebsOptimized: map['ebsOptimized'] == null ? null : map['ebsOptimized'] as bool,
+      instanceCount: map['instanceCount'] == null ? null : map['instanceCount'] as int,
       instanceType: map['instanceType'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

@@ -2098,25 +2098,20 @@ import 'topic_schema_settings.dart';
 class Topic extends pulumi.CustomResource {
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Settings for ingestion from a data source into this topic.
   /// Structure is documented below.
-  late final pulumi.Output<TopicIngestionDataSourceSettings?>
-      ingestionDataSourceSettings;
-
+  late final pulumi.Output<TopicIngestionDataSourceSettings?> ingestionDataSourceSettings;
   /// The resource name of the Cloud KMS CryptoKey to be used to protect access
   /// to messages published on this topic. Your project's PubSub service account
   /// (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have
   /// `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
   /// The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`
   late final pulumi.Output<String?> kmsKeyName;
-
   /// A set of key/value label pairs to assign to this Topic.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Indicates the minimum duration to retain a message after it is published
   /// to the topic. If this field is set, messages published to the topic in
   /// the last messageRetentionDuration are always available to subscribers.
@@ -2126,33 +2121,26 @@ class Topic extends pulumi.CustomResource {
   /// The rotation period has the format of a decimal number, followed by the
   /// letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
   late final pulumi.Output<String?> messageRetentionDuration;
-
   /// Policy constraining the set of Google Cloud Platform regions where
   /// messages published to the topic may be stored. If not present, then no
   /// constraints are in effect.
   /// Structure is documented below.
   late final pulumi.Output<TopicMessageStoragePolicy> messageStoragePolicy;
-
   /// Transforms to be applied to messages published to the topic. Transforms are applied in the
   /// order specified.
   /// Structure is documented below.
   late final pulumi.Output<List<TopicMessageTransform>?> messageTransforms;
-
   /// Name of the topic.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Settings for validating messages published against a schema.
   /// Structure is documented below.
   late final pulumi.Output<TopicSchemaSettings?> schemaSettings;
-
   /// Input only. Resource manager tags to be bound to the topic. Tag keys and
   /// values have the same definition as resource manager tags. Keys must be in
   /// the format tagKeys/{tag_key_id}, and values are in the format
@@ -2177,24 +2165,17 @@ class Topic extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.effectiveLabels =
-        registerOutput<Map<String, String>>('effectiveLabels');
-    this.ingestionDataSourceSettings =
-        registerOutput<TopicIngestionDataSourceSettings?>(
-            'ingestionDataSourceSettings');
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    this.ingestionDataSourceSettings = registerOutput<TopicIngestionDataSourceSettings?>('ingestionDataSourceSettings');
     this.kmsKeyName = registerOutput<String?>('kmsKeyName');
     this.labels = registerOutput<Map<String, String>?>('labels');
-    this.messageRetentionDuration =
-        registerOutput<String?>('messageRetentionDuration');
-    this.messageStoragePolicy =
-        registerOutput<TopicMessageStoragePolicy>('messageStoragePolicy');
-    this.messageTransforms =
-        registerOutput<List<TopicMessageTransform>?>('messageTransforms');
+    this.messageRetentionDuration = registerOutput<String?>('messageRetentionDuration');
+    this.messageStoragePolicy = registerOutput<TopicMessageStoragePolicy>('messageStoragePolicy');
+    this.messageTransforms = registerOutput<List<TopicMessageTransform>?>('messageTransforms');
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
     this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.schemaSettings =
-        registerOutput<TopicSchemaSettings?>('schemaSettings');
+    this.schemaSettings = registerOutput<TopicSchemaSettings?>('schemaSettings');
     this.tags = registerOutput<Map<String, String>?>('tags');
   }
 }

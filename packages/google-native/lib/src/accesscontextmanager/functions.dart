@@ -117,8 +117,7 @@ Future<GetServicePerimeterResult> getServicePerimeter(
 /// Get an Access Level by resource name.
 /// [args] Arguments passed to this invoke. {@macro pulumi_accesscontextmanager_v1beta_get_access_level_accesscontextmanager_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAccessLevelAccesscontextmanagerV1betaResult>
-    getAccessLevelAccesscontextmanagerV1beta(
+Future<GetAccessLevelAccesscontextmanagerV1betaResult> getAccessLevelAccesscontextmanagerV1beta(
   GetAccessLevelAccesscontextmanagerV1betaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -134,8 +133,7 @@ Future<GetAccessLevelAccesscontextmanagerV1betaResult>
 /// Get an AccessPolicy by name.
 /// [args] Arguments passed to this invoke. {@macro pulumi_accesscontextmanager_v1beta_get_access_policy_accesscontextmanager_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAccessPolicyAccesscontextmanagerV1betaResult>
-    getAccessPolicyAccesscontextmanagerV1beta(
+Future<GetAccessPolicyAccesscontextmanagerV1betaResult> getAccessPolicyAccesscontextmanagerV1beta(
   GetAccessPolicyAccesscontextmanagerV1betaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -151,8 +149,7 @@ Future<GetAccessPolicyAccesscontextmanagerV1betaResult>
 /// Get a Service Perimeter by resource name.
 /// [args] Arguments passed to this invoke. {@macro pulumi_accesscontextmanager_v1beta_get_service_perimeter_accesscontextmanager_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetServicePerimeterAccesscontextmanagerV1betaResult>
-    getServicePerimeterAccesscontextmanagerV1beta(
+Future<GetServicePerimeterAccesscontextmanagerV1betaResult> getServicePerimeterAccesscontextmanagerV1beta(
   GetServicePerimeterAccesscontextmanagerV1betaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

@@ -13,12 +13,13 @@ class GetGroupCloudidentityV1beta1Args {
   /// [groupId] Required.
   GetGroupCloudidentityV1beta1Args({
     required String groupId,
-  }) : groupId = pulumi.Input.asInput<String>(groupId);
+  }) :
+      groupId = pulumi.Input.asInput<String>(groupId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['groupId'] = groupId;
-    return map;
+    return <String, dynamic>{
+      'groupId': groupId,
+    };
   }
 
   factory GetGroupCloudidentityV1beta1Args.fromMap(Map<String, dynamic> map) {
@@ -27,3 +28,4 @@ class GetGroupCloudidentityV1beta1Args {
     );
   }
 }
+

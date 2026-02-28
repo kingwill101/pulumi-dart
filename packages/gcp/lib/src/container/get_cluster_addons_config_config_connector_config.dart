@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterAddonsConfigConfigConnectorConfig {
   final bool enabled;
 
@@ -10,15 +11,15 @@ class GetClusterAddonsConfigConfigConnectorConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory GetClusterAddonsConfigConfigConnectorConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GetClusterAddonsConfigConfigConnectorConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterAddonsConfigConfigConnectorConfig(
       enabled: map['enabled'] as bool,
     );
   }
 }
+

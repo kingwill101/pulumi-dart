@@ -5,10 +5,8 @@ import 'recommendation_preferences_utilization_preference_metric_parameters.dart
 class RecommendationPreferencesUtilizationPreference {
   /// The name of the resource utilization metric name to customize. Valid values: `CpuUtilization`, `MemoryUtilization`.
   final String metricName;
-
   /// The parameters to set when customizing the resource utilization thresholds.
-  final RecommendationPreferencesUtilizationPreferenceMetricParameters
-      metricParameters;
+  final RecommendationPreferencesUtilizationPreferenceMetricParameters metricParameters;
 
   /// Creates a new [RecommendationPreferencesUtilizationPreference].
   /// [metricName] The name of the resource utilization metric name to customize. Valid values: `CpuUtilization`, `MemoryUtilization`.
@@ -19,20 +17,17 @@ class RecommendationPreferencesUtilizationPreference {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['metricName'] = metricName;
-    map['metricParameters'] = metricParameters.toMap();
-    return map;
+    return <String, dynamic>{
+      'metricName': metricName,
+      'metricParameters': metricParameters.toMap(),
+    };
   }
 
-  factory RecommendationPreferencesUtilizationPreference.fromMap(
-      Map<String, dynamic> map) {
+  factory RecommendationPreferencesUtilizationPreference.fromMap(Map<String, dynamic> map) {
     return RecommendationPreferencesUtilizationPreference(
       metricName: map['metricName'] as String,
-      metricParameters:
-          RecommendationPreferencesUtilizationPreferenceMetricParameters
-              .fromMap(
-                  (map['metricParameters'] as Map).cast<String, dynamic>()),
+      metricParameters: RecommendationPreferencesUtilizationPreferenceMetricParameters.fromMap((map['metricParameters'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

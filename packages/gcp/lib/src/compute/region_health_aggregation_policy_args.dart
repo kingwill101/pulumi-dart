@@ -10,7 +10,6 @@ class RegionHealthAggregationPolicyArgs {
   /// An optional description of this resource. Provide this property when you
   /// create the resource.
   final pulumi.Input<String>? description;
-
   /// Can only be set if the `policyType` field is
   /// `BACKEND_SERVICE_POLICY`. Specifies the threshold (as a
   /// percentage) of healthy endpoints required in order to consider the
@@ -23,7 +22,6 @@ class RegionHealthAggregationPolicyArgs {
   /// endpoints within a Network Endpoint Group or instances within an Instance
   /// Group.
   final pulumi.Input<int>? healthyPercentThreshold;
-
   /// Can only be set if the `policyType` field is
   /// `BACKEND_SERVICE_POLICY`. Specifies the minimum number of
   /// healthy endpoints required in order to consider the aggregated health
@@ -36,7 +34,6 @@ class RegionHealthAggregationPolicyArgs {
   /// network endpoints within a Network Endpoint Group or instances within an
   /// Instance Group.
   final pulumi.Input<int>? minHealthyThreshold;
-
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
@@ -45,7 +42,6 @@ class RegionHealthAggregationPolicyArgs {
   /// be a dash, lowercase letter, or digit, except the last character, which
   /// cannot be a dash.
   final pulumi.Input<String>? name;
-
   /// Specifies the type of the healthAggregationPolicy. The only allowed value
   /// for global resources is `DNS_PUBLIC_IP_POLICY`. The only allowed
   /// value for regional resources is `BACKEND_SERVICE_POLICY`. Must
@@ -54,11 +50,9 @@ class RegionHealthAggregationPolicyArgs {
   /// Default value is `BACKEND_SERVICE_POLICY`.
   /// Possible values are: `DNS_PUBLIC_IP_POLICY`, `BACKEND_SERVICE_POLICY`.
   final pulumi.Input<String>? policyType;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// URL of the region where the health aggregation policy resides.
   final pulumi.Input<String> region;
 
@@ -78,61 +72,37 @@ class RegionHealthAggregationPolicyArgs {
     String? policyType,
     String? project,
     required String region,
-  })  : description = pulumi.Input.asOptionalInput<String>(description),
-        healthyPercentThreshold =
-            pulumi.Input.asOptionalInput<int>(healthyPercentThreshold),
-        minHealthyThreshold =
-            pulumi.Input.asOptionalInput<int>(minHealthyThreshold),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        policyType = pulumi.Input.asOptionalInput<String>(policyType),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asInput<String>(region);
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      healthyPercentThreshold = pulumi.Input.asOptionalInput<int>(healthyPercentThreshold),
+      minHealthyThreshold = pulumi.Input.asOptionalInput<int>(minHealthyThreshold),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      policyType = pulumi.Input.asOptionalInput<String>(policyType),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final healthyPercentThresholdValue = healthyPercentThreshold;
-    if (healthyPercentThresholdValue != null) {
-      map['healthyPercentThreshold'] = healthyPercentThresholdValue;
-    }
-    final minHealthyThresholdValue = minHealthyThreshold;
-    if (minHealthyThresholdValue != null) {
-      map['minHealthyThreshold'] = minHealthyThresholdValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final policyTypeValue = policyType;
-    if (policyTypeValue != null) {
-      map['policyType'] = policyTypeValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'healthyPercentThreshold': ?healthyPercentThreshold,
+      'minHealthyThreshold': ?minHealthyThreshold,
+      'name': ?name,
+      'policyType': ?policyType,
+      'project': ?project,
+      'region': region,
+    };
   }
 
   factory RegionHealthAggregationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return RegionHealthAggregationPolicyArgs(
-      description:
-          map['description'] == null ? null : map['description'] as String,
-      healthyPercentThreshold: map['healthyPercentThreshold'] == null
-          ? null
-          : map['healthyPercentThreshold'] as int,
-      minHealthyThreshold: map['minHealthyThreshold'] == null
-          ? null
-          : map['minHealthyThreshold'] as int,
+      description: map['description'] == null ? null : map['description'] as String,
+      healthyPercentThreshold: map['healthyPercentThreshold'] == null ? null : map['healthyPercentThreshold'] as int,
+      minHealthyThreshold: map['minHealthyThreshold'] == null ? null : map['minHealthyThreshold'] as int,
       name: map['name'] == null ? null : map['name'] as String,
-      policyType:
-          map['policyType'] == null ? null : map['policyType'] as String,
+      policyType: map['policyType'] == null ? null : map['policyType'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       region: map['region'] as String,
     );
   }
 }
+

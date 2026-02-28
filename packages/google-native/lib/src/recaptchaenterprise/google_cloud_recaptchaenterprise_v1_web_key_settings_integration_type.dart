@@ -5,20 +5,16 @@ enum GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType {
   checkbox("CHECKBOX"),
   invisible("INVISIBLE");
 
-  const GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType(
-      this.value);
+  const GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType(this.value);
   final String value;
 
-  static GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType
-      fromValue(String value) {
-    for (final item
-        in GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType
-            .values) {
+  static GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType fromValue(String value) {
+    for (final item in GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType value: $value');
+    throw ArgumentError('Unknown GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType value: $value');
   }
 }
+

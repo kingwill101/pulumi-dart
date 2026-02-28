@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataSourceOpensearchserviceConfig {
   /// HTTP endpoint of the OpenSearch domain.
   final String endpoint;
-
   /// AWS region of the OpenSearch domain. Defaults to current region.
   final String? region;
 
@@ -16,13 +16,10 @@ class DataSourceOpensearchserviceConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['endpoint'] = endpoint;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'endpoint': endpoint,
+      'region': ?region,
+    };
   }
 
   factory DataSourceOpensearchserviceConfig.fromMap(Map<String, dynamic> map) {
@@ -32,3 +29,4 @@ class DataSourceOpensearchserviceConfig {
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PipelineDefinitionParameterValue {
   /// ID of the parameter value.
   final String id;
-
   /// Field value, expressed as a String.
   final String stringValue;
 
@@ -16,10 +16,10 @@ class PipelineDefinitionParameterValue {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['stringValue'] = stringValue;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'stringValue': stringValue,
+    };
   }
 
   factory PipelineDefinitionParameterValue.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class PipelineDefinitionParameterValue {
     );
   }
 }
+

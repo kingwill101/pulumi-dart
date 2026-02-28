@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ExternalCredentials {
   final String audience;
   final String identityToken;
@@ -16,11 +17,11 @@ class ExternalCredentials {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['audience'] = audience;
-    map['identityToken'] = identityToken;
-    map['serviceAccountEmail'] = serviceAccountEmail;
-    return map;
+    return <String, dynamic>{
+      'audience': audience,
+      'identityToken': identityToken,
+      'serviceAccountEmail': serviceAccountEmail,
+    };
   }
 
   factory ExternalCredentials.fromMap(Map<String, dynamic> map) {
@@ -31,3 +32,4 @@ class ExternalCredentials {
     );
   }
 }
+

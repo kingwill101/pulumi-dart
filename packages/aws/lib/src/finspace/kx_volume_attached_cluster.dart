@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class KxVolumeAttachedCluster {
   final String clusterName;
   final String clusterStatus;
@@ -16,11 +17,11 @@ class KxVolumeAttachedCluster {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clusterName'] = clusterName;
-    map['clusterStatus'] = clusterStatus;
-    map['clusterType'] = clusterType;
-    return map;
+    return <String, dynamic>{
+      'clusterName': clusterName,
+      'clusterStatus': clusterStatus,
+      'clusterType': clusterType,
+    };
   }
 
   factory KxVolumeAttachedCluster.fromMap(Map<String, dynamic> map) {
@@ -31,3 +32,4 @@ class KxVolumeAttachedCluster {
     );
   }
 }
+

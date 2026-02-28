@@ -19,21 +19,19 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['configSource'] = configSource.toMap();
-    map['environment'] = environment;
-    map['parameters'] = parameters;
-    return map;
+    return <String, dynamic>{
+      'configSource': configSource.toMap(),
+      'environment': environment,
+      'parameters': parameters,
+    };
   }
 
-  factory GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse.fromMap(Map<String, dynamic> map) {
     return GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse(
-      configSource:
-          GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse.fromMap(
-              (map['configSource'] as Map).cast<String, dynamic>()),
+      configSource: GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse.fromMap((map['configSource'] as Map).cast<String, dynamic>()),
       environment: (map['environment'] as Map).cast<String, String>(),
       parameters: (map['parameters'] as Map).cast<String, String>(),
     );
   }
 }
+

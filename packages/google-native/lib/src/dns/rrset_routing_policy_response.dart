@@ -24,23 +24,21 @@ class RRSetRoutingPolicyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['geo'] = geo.toMap();
-    map['kind'] = kind;
-    map['primaryBackup'] = primaryBackup.toMap();
-    map['wrr'] = wrr.toMap();
-    return map;
+    return <String, dynamic>{
+      'geo': geo.toMap(),
+      'kind': kind,
+      'primaryBackup': primaryBackup.toMap(),
+      'wrr': wrr.toMap(),
+    };
   }
 
   factory RRSetRoutingPolicyResponse.fromMap(Map<String, dynamic> map) {
     return RRSetRoutingPolicyResponse(
-      geo: RRSetRoutingPolicyGeoPolicyResponse.fromMap(
-          (map['geo'] as Map).cast<String, dynamic>()),
+      geo: RRSetRoutingPolicyGeoPolicyResponse.fromMap((map['geo'] as Map).cast<String, dynamic>()),
       kind: map['kind'] as String,
-      primaryBackup: RRSetRoutingPolicyPrimaryBackupPolicyResponse.fromMap(
-          (map['primaryBackup'] as Map).cast<String, dynamic>()),
-      wrr: RRSetRoutingPolicyWrrPolicyResponse.fromMap(
-          (map['wrr'] as Map).cast<String, dynamic>()),
+      primaryBackup: RRSetRoutingPolicyPrimaryBackupPolicyResponse.fromMap((map['primaryBackup'] as Map).cast<String, dynamic>()),
+      wrr: RRSetRoutingPolicyWrrPolicyResponse.fromMap((map['wrr'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

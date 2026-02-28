@@ -10,13 +10,10 @@ import 'object_lambda_access_point_configuration.dart';
 class ObjectLambdaAccessPointArgs {
   /// The AWS account ID for the owner of the bucket for which you want to create an Object Lambda Access Point. Defaults to automatically determined account ID of the AWS provider.
   final pulumi.Input<String>? accountId;
-
   /// A configuration block containing details about the Object Lambda Access Point. See Configuration below for more details.
   final pulumi.Input<ObjectLambdaAccessPointConfiguration> configuration;
-
   /// The name for this Object Lambda Access Point.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -30,40 +27,28 @@ class ObjectLambdaAccessPointArgs {
     required ObjectLambdaAccessPointConfiguration configuration,
     String? name,
     String? region,
-  })  : accountId = pulumi.Input.asOptionalInput<String>(accountId),
-        configuration =
-            pulumi.Input.asInput<ObjectLambdaAccessPointConfiguration>(
-                configuration),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      accountId = pulumi.Input.asOptionalInput<String>(accountId),
+      configuration = pulumi.Input.asInput<ObjectLambdaAccessPointConfiguration>(configuration),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final accountIdValue = accountId;
-    if (accountIdValue != null) {
-      map['accountId'] = accountIdValue;
-    }
-    map['configuration'] = pulumi.Input.mapInputValue<
-        ObjectLambdaAccessPointConfiguration,
-        Map<String, dynamic>>(configuration, (value) => value.toMap());
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'accountId': ?accountId,
+      'configuration': pulumi.Input.mapInputValue<ObjectLambdaAccessPointConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
+      'name': ?name,
+      'region': ?region,
+    };
   }
 
   factory ObjectLambdaAccessPointArgs.fromMap(Map<String, dynamic> map) {
     return ObjectLambdaAccessPointArgs(
       accountId: map['accountId'] == null ? null : map['accountId'] as String,
-      configuration: ObjectLambdaAccessPointConfiguration.fromMap(
-          (map['configuration'] as Map).cast<String, dynamic>()),
+      configuration: ObjectLambdaAccessPointConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>()),
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

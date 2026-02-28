@@ -9,23 +9,17 @@ import 'traffic_percent_strategy_response.dart';
 class Rollout extends pulumi.CustomResource {
   /// Creation time of the rollout. Readonly.
   late final pulumi.Output<String> createTime;
-
   /// The user who created the Rollout. Readonly.
   late final pulumi.Output<String> createdBy;
-
   /// The strategy associated with a rollout to delete a `ManagedService`. Readonly.
   late final pulumi.Output<Map<String, dynamic>> deleteServiceStrategy;
-
   /// Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'
   late final pulumi.Output<String> rolloutId;
   late final pulumi.Output<String> serviceName;
-
   /// The status of this rollout. Readonly. In case of a failed rollout, the system will automatically rollback to the current Rollout version. Readonly.
   late final pulumi.Output<String> status;
-
   /// Google Service Control selects service configurations based on traffic percentage.
-  late final pulumi.Output<TrafficPercentStrategyResponse>
-      trafficPercentStrategy;
+  late final pulumi.Output<TrafficPercentStrategyResponse> trafficPercentStrategy;
 
   /// Creates a new [Rollout].
   /// [name] The Pulumi resource name.
@@ -43,13 +37,10 @@ class Rollout extends pulumi.CustomResource {
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.createdBy = registerOutput<String>('createdBy');
-    this.deleteServiceStrategy =
-        registerOutput<Map<String, dynamic>>('deleteServiceStrategy');
+    this.deleteServiceStrategy = registerOutput<Map<String, dynamic>>('deleteServiceStrategy');
     this.rolloutId = registerOutput<String>('rolloutId');
     this.serviceName = registerOutput<String>('serviceName');
     this.status = registerOutput<String>('status');
-    this.trafficPercentStrategy =
-        registerOutput<TrafficPercentStrategyResponse>(
-            'trafficPercentStrategy');
+    this.trafficPercentStrategy = registerOutput<TrafficPercentStrategyResponse>('trafficPercentStrategy');
   }
 }

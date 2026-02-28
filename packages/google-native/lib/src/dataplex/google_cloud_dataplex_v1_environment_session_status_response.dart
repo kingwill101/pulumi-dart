@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Status of sessions created for this environment.
 class GoogleCloudDataplexV1EnvironmentSessionStatusResponse {
   /// Queries over sessions to mark whether the environment is currently active or not
@@ -12,15 +13,15 @@ class GoogleCloudDataplexV1EnvironmentSessionStatusResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['active'] = active;
-    return map;
+    return <String, dynamic>{
+      'active': active,
+    };
   }
 
-  factory GoogleCloudDataplexV1EnvironmentSessionStatusResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1EnvironmentSessionStatusResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1EnvironmentSessionStatusResponse(
       active: map['active'] as bool,
     );
   }
 }
+

@@ -7,7 +7,6 @@ import 'google_cloud_documentai_v1_document_page_layout.dart';
 class GoogleCloudDocumentaiV1DocumentPageDetectedBarcode {
   /// Detailed barcode information of the DetectedBarcode.
   final GoogleCloudDocumentaiV1Barcode? barcode;
-
   /// Layout for DetectedBarcode.
   final GoogleCloudDocumentaiV1DocumentPageLayout? layout;
 
@@ -20,29 +19,17 @@ class GoogleCloudDocumentaiV1DocumentPageDetectedBarcode {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final barcodeValue = barcode;
-    if (barcodeValue != null) {
-      map['barcode'] = barcodeValue.toMap();
-    }
-    final layoutValue = layout;
-    if (layoutValue != null) {
-      map['layout'] = layoutValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'barcode': ?barcode == null ? null : barcode!.toMap(),
+      'layout': ?layout == null ? null : layout!.toMap(),
+    };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentPageDetectedBarcode.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentPageDetectedBarcode.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageDetectedBarcode(
-      barcode: map['barcode'] == null
-          ? null
-          : GoogleCloudDocumentaiV1Barcode.fromMap(
-              (map['barcode'] as Map).cast<String, dynamic>()),
-      layout: map['layout'] == null
-          ? null
-          : GoogleCloudDocumentaiV1DocumentPageLayout.fromMap(
-              (map['layout'] as Map).cast<String, dynamic>()),
+      barcode: map['barcode'] == null ? null : GoogleCloudDocumentaiV1Barcode.fromMap((map['barcode'] as Map).cast<String, dynamic>()),
+      layout: map['layout'] == null ? null : GoogleCloudDocumentaiV1DocumentPageLayout.fromMap((map['layout'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

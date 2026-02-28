@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInstanceNodeConfig {
   /// Output only. Memory size in GB of the node.
   final double sizeGb;
@@ -11,9 +12,9 @@ class GetInstanceNodeConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['sizeGb'] = sizeGb;
-    return map;
+    return <String, dynamic>{
+      'sizeGb': sizeGb,
+    };
   }
 
   factory GetInstanceNodeConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetInstanceNodeConfig {
     );
   }
 }
+

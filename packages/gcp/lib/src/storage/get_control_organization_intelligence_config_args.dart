@@ -14,18 +14,19 @@ class GetControlOrganizationIntelligenceConfigArgs {
   /// [name] The id of GCP organization.
   GetControlOrganizationIntelligenceConfigArgs({
     required String name,
-  }) : name = pulumi.Input.asInput<String>(name);
+  }) :
+      name = pulumi.Input.asInput<String>(name);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory GetControlOrganizationIntelligenceConfigArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetControlOrganizationIntelligenceConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetControlOrganizationIntelligenceConfigArgs(
       name: map['name'] as String,
     );
   }
 }
+

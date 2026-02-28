@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TrustProviderDeviceOptions {
   final String? tenantId;
 
@@ -10,12 +11,9 @@ class TrustProviderDeviceOptions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final tenantIdValue = tenantId;
-    if (tenantIdValue != null) {
-      map['tenantId'] = tenantIdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'tenantId': ?tenantId,
+    };
   }
 
   factory TrustProviderDeviceOptions.fromMap(Map<String, dynamic> map) {
@@ -24,3 +22,4 @@ class TrustProviderDeviceOptions {
     );
   }
 }
+

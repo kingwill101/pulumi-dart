@@ -9,7 +9,6 @@ class GetInstancePerformanceConfig {
   /// which will remain constant regardless of instance
   /// capacity.
   final List<GetInstancePerformanceConfigFixedIop> fixedIops;
-
   /// The instance provisioned IOPS will change dynamically
   /// based on the capacity of the instance.
   final List<GetInstancePerformanceConfigIopsPerTb> iopsPerTbs;
@@ -23,27 +22,17 @@ class GetInstancePerformanceConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['fixedIops'] = pulumi.Input.encodeList<
-        GetInstancePerformanceConfigFixedIop,
-        Map<String, dynamic>>(fixedIops, (value) => value.toMap());
-    map['iopsPerTbs'] = pulumi.Input.encodeList<
-        GetInstancePerformanceConfigIopsPerTb,
-        Map<String, dynamic>>(iopsPerTbs, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'fixedIops': pulumi.Input.encodeList<GetInstancePerformanceConfigFixedIop, Map<String, dynamic>>(fixedIops, (value) => value.toMap()),
+      'iopsPerTbs': pulumi.Input.encodeList<GetInstancePerformanceConfigIopsPerTb, Map<String, dynamic>>(iopsPerTbs, (value) => value.toMap()),
+    };
   }
 
   factory GetInstancePerformanceConfig.fromMap(Map<String, dynamic> map) {
     return GetInstancePerformanceConfig(
-      fixedIops: pulumi.Input.decodeList<GetInstancePerformanceConfigFixedIop>(
-          map['fixedIops'],
-          (value) => GetInstancePerformanceConfigFixedIop.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      iopsPerTbs:
-          pulumi.Input.decodeList<GetInstancePerformanceConfigIopsPerTb>(
-              map['iopsPerTbs'],
-              (value) => GetInstancePerformanceConfigIopsPerTb.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      fixedIops: pulumi.Input.decodeList<GetInstancePerformanceConfigFixedIop>(map['fixedIops'], (value) => GetInstancePerformanceConfigFixedIop.fromMap((value as Map).cast<String, dynamic>())),
+      iopsPerTbs: pulumi.Input.decodeList<GetInstancePerformanceConfigIopsPerTb>(map['iopsPerTbs'], (value) => GetInstancePerformanceConfigIopsPerTb.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

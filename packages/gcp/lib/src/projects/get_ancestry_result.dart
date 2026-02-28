@@ -7,16 +7,12 @@ import 'get_ancestry_ancestor.dart';
 class GetAncestryResult {
   /// A list of the project's ancestors. Structure is defined below.
   final List<GetAncestryAncestor> ancestors;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The organization id.
   final String orgId;
-
   /// The parent's id.
   final String parentId;
-
   /// One of `"folder"` or `"organization"`.
   final String parentType;
   final String? project;
@@ -38,27 +34,19 @@ class GetAncestryResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ancestors'] =
-        pulumi.Input.encodeList<GetAncestryAncestor, Map<String, dynamic>>(
-            ancestors, (value) => value.toMap());
-    map['id'] = id;
-    map['orgId'] = orgId;
-    map['parentId'] = parentId;
-    map['parentType'] = parentType;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'ancestors': pulumi.Input.encodeList<GetAncestryAncestor, Map<String, dynamic>>(ancestors, (value) => value.toMap()),
+      'id': id,
+      'orgId': orgId,
+      'parentId': parentId,
+      'parentType': parentType,
+      'project': ?project,
+    };
   }
 
   factory GetAncestryResult.fromMap(Map<String, dynamic> map) {
     return GetAncestryResult(
-      ancestors: pulumi.Input.decodeList<GetAncestryAncestor>(
-          map['ancestors'],
-          (value) => GetAncestryAncestor.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      ancestors: pulumi.Input.decodeList<GetAncestryAncestor>(map['ancestors'], (value) => GetAncestryAncestor.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       orgId: map['orgId'] as String,
       parentId: map['parentId'] as String,
@@ -67,3 +55,4 @@ class GetAncestryResult {
     );
   }
 }
+

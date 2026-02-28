@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InsightFiltersKeyword {
   /// A value for the keyword.
   final String value;
@@ -11,9 +12,9 @@ class InsightFiltersKeyword {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'value': value,
+    };
   }
 
   factory InsightFiltersKeyword.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class InsightFiltersKeyword {
     );
   }
 }
+

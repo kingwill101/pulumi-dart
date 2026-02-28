@@ -9,15 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupArgs {
   /// A string containing the description of the group.
   final pulumi.Input<String>? description;
-
   /// A string containing the name of the group. This value is commonly displayed when the group is referenced.
   final pulumi.Input<String> displayName;
-
   /// The globally unique identifier for the identity store.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> identityStoreId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -31,33 +28,28 @@ class GroupArgs {
     required String displayName,
     required String identityStoreId,
     String? region,
-  })  : description = pulumi.Input.asOptionalInput<String>(description),
-        displayName = pulumi.Input.asInput<String>(displayName),
-        identityStoreId = pulumi.Input.asInput<String>(identityStoreId),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      displayName = pulumi.Input.asInput<String>(displayName),
+      identityStoreId = pulumi.Input.asInput<String>(identityStoreId),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    map['displayName'] = displayName;
-    map['identityStoreId'] = identityStoreId;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'displayName': displayName,
+      'identityStoreId': identityStoreId,
+      'region': ?region,
+    };
   }
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       displayName: map['displayName'] as String,
       identityStoreId: map['identityStoreId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

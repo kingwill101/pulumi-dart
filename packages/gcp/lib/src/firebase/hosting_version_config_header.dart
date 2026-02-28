@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class HostingVersionConfigHeader {
   /// The user-supplied glob to match against the request URL path.
   final String? glob;
-
   /// The additional headers to add to the response. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   final Map<String, String> headers;
-
   /// The user-supplied RE2 regular expression to match against the request URL path.
   final String? regex;
 
@@ -21,17 +20,11 @@ class HostingVersionConfigHeader {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final globValue = glob;
-    if (globValue != null) {
-      map['glob'] = globValue;
-    }
-    map['headers'] = headers;
-    final regexValue = regex;
-    if (regexValue != null) {
-      map['regex'] = regexValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'glob': ?glob,
+      'headers': headers,
+      'regex': ?regex,
+    };
   }
 
   factory HostingVersionConfigHeader.fromMap(Map<String, dynamic> map) {
@@ -42,3 +35,4 @@ class HostingVersionConfigHeader {
     );
   }
 }
+

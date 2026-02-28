@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getLbs.
 class GetLbsResult {
   /// Set of Load Balancer ARNs.
   final List<String> arns;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -23,15 +23,12 @@ class GetLbsResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arns'] = arns;
-    map['id'] = id;
-    map['region'] = region;
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'arns': arns,
+      'id': id,
+      'region': region,
+      'tags': ?tags,
+    };
   }
 
   factory GetLbsResult.fromMap(Map<String, dynamic> map) {
@@ -39,9 +36,8 @@ class GetLbsResult {
       arns: (map['arns'] as List).cast<String>(),
       id: map['id'] as String,
       region: map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

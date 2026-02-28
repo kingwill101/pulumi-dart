@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DatascanDataQualitySpecRuleRegexExpectation {
   /// A regular expression the column value is expected to match.
   final String regex;
@@ -11,15 +12,15 @@ class DatascanDataQualitySpecRuleRegexExpectation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['regex'] = regex;
-    return map;
+    return <String, dynamic>{
+      'regex': regex,
+    };
   }
 
-  factory DatascanDataQualitySpecRuleRegexExpectation.fromMap(
-      Map<String, dynamic> map) {
+  factory DatascanDataQualitySpecRuleRegexExpectation.fromMap(Map<String, dynamic> map) {
     return DatascanDataQualitySpecRuleRegexExpectation(
       regex: map['regex'] as String,
     );
   }
 }
+

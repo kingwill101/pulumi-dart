@@ -7,10 +7,8 @@ import 'tls_validation_context_validation_source.dart';
 class TlsValidationContext {
   /// The path to the file holding the CA certificate to validate the client or server certificate.
   final String? certificatePath;
-
   /// Specifies the config to retrieve certificates through SDS. This field is applicable only if tlsCertificateSource is set to USE_SDS.
   final SdsConfig? sdsConfig;
-
   /// Defines how TLS certificates are obtained.
   final TlsValidationContextValidationSource? validationSource;
 
@@ -25,35 +23,19 @@ class TlsValidationContext {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final certificatePathValue = certificatePath;
-    if (certificatePathValue != null) {
-      map['certificatePath'] = certificatePathValue;
-    }
-    final sdsConfigValue = sdsConfig;
-    if (sdsConfigValue != null) {
-      map['sdsConfig'] = sdsConfigValue.toMap();
-    }
-    final validationSourceValue = validationSource;
-    if (validationSourceValue != null) {
-      map['validationSource'] = validationSourceValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'certificatePath': ?certificatePath,
+      'sdsConfig': ?sdsConfig == null ? null : sdsConfig!.toMap(),
+      'validationSource': ?validationSource == null ? null : validationSource!.value,
+    };
   }
 
   factory TlsValidationContext.fromMap(Map<String, dynamic> map) {
     return TlsValidationContext(
-      certificatePath: map['certificatePath'] == null
-          ? null
-          : map['certificatePath'] as String,
-      sdsConfig: map['sdsConfig'] == null
-          ? null
-          : SdsConfig.fromMap(
-              (map['sdsConfig'] as Map).cast<String, dynamic>()),
-      validationSource: map['validationSource'] == null
-          ? null
-          : TlsValidationContextValidationSource.fromValue(
-              map['validationSource'] as String),
+      certificatePath: map['certificatePath'] == null ? null : map['certificatePath'] as String,
+      sdsConfig: map['sdsConfig'] == null ? null : SdsConfig.fromMap((map['sdsConfig'] as Map).cast<String, dynamic>()),
+      validationSource: map['validationSource'] == null ? null : TlsValidationContextValidationSource.fromValue(map['validationSource'] as String),
     );
   }
 }
+

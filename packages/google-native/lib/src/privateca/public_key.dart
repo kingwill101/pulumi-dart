@@ -6,7 +6,6 @@ import 'public_key_format.dart';
 class PublicKey {
   /// The format of the public key.
   final PublicKeyFormat format;
-
   /// A public key. The padding and encoding must match with the `KeyFormat` value specified for the `format` field.
   final String key;
 
@@ -19,10 +18,10 @@ class PublicKey {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['format'] = format.value;
-    map['key'] = key;
-    return map;
+    return <String, dynamic>{
+      'format': format.value,
+      'key': key,
+    };
   }
 
   factory PublicKey.fromMap(Map<String, dynamic> map) {
@@ -32,3 +31,4 @@ class PublicKey {
     );
   }
 }
+

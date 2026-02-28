@@ -14,21 +14,15 @@ class Automatic {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final customerManagedEncryptionValue = customerManagedEncryption;
-    if (customerManagedEncryptionValue != null) {
-      map['customerManagedEncryption'] = customerManagedEncryptionValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'customerManagedEncryption': ?customerManagedEncryption == null ? null : customerManagedEncryption!.toMap(),
+    };
   }
 
   factory Automatic.fromMap(Map<String, dynamic> map) {
     return Automatic(
-      customerManagedEncryption: map['customerManagedEncryption'] == null
-          ? null
-          : CustomerManagedEncryption.fromMap(
-              (map['customerManagedEncryption'] as Map)
-                  .cast<String, dynamic>()),
+      customerManagedEncryption: map['customerManagedEncryption'] == null ? null : CustomerManagedEncryption.fromMap((map['customerManagedEncryption'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

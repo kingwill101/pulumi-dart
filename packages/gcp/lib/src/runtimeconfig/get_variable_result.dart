@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getVariable.
 class GetVariableResult {
   /// The provider-assigned unique ID for this managed resource.
@@ -30,18 +31,15 @@ class GetVariableResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['name'] = name;
-    map['parent'] = parent;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['text'] = text;
-    map['updateTime'] = updateTime;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'name': name,
+      'parent': parent,
+      'project': ?project,
+      'text': text,
+      'updateTime': updateTime,
+      'value': value,
+    };
   }
 
   factory GetVariableResult.fromMap(Map<String, dynamic> map) {
@@ -56,3 +54,4 @@ class GetVariableResult {
     );
   }
 }
+

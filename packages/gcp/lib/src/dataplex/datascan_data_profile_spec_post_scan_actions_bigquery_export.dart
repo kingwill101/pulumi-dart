@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DatascanDataProfileSpecPostScanActionsBigqueryExport {
   /// The BigQuery table to export DataProfileScan results to.
   /// Format://bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
@@ -12,19 +13,15 @@ class DatascanDataProfileSpecPostScanActionsBigqueryExport {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final resultsTableValue = resultsTable;
-    if (resultsTableValue != null) {
-      map['resultsTable'] = resultsTableValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'resultsTable': ?resultsTable,
+    };
   }
 
-  factory DatascanDataProfileSpecPostScanActionsBigqueryExport.fromMap(
-      Map<String, dynamic> map) {
+  factory DatascanDataProfileSpecPostScanActionsBigqueryExport.fromMap(Map<String, dynamic> map) {
     return DatascanDataProfileSpecPostScanActionsBigqueryExport(
-      resultsTable:
-          map['resultsTable'] == null ? null : map['resultsTable'] as String,
+      resultsTable: map['resultsTable'] == null ? null : map['resultsTable'] as String,
     );
   }
 }
+

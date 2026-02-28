@@ -1881,36 +1881,28 @@ class CxTool extends pulumi.CustomResource {
   /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
   /// Structure is documented below.
   late final pulumi.Output<CxToolConnectorSpec?> connectorSpec;
-
   /// Data store search tool specification.
   /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
   /// Structure is documented below.
   late final pulumi.Output<CxToolDataStoreSpec?> dataStoreSpec;
-
   /// High level description of the Tool and its usage.
   late final pulumi.Output<String> description;
-
   /// The human-readable name of the tool, unique within the agent.
   late final pulumi.Output<String> displayName;
-
   /// Client side executed function specification.
   /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
   /// Structure is documented below.
   late final pulumi.Output<CxToolFunctionSpec?> functionSpec;
-
   /// The unique identifier of the Tool.
   /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/tools/<Tool ID>.
   late final pulumi.Output<String> name;
-
   /// OpenAPI specification of the Tool.
   /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
   /// Structure is documented below.
   late final pulumi.Output<CxToolOpenApiSpec?> openApiSpec;
-
   /// The agent to create a Tool for.
   /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
   late final pulumi.Output<String?> parent;
-
   /// The tool type.
   late final pulumi.Output<String> toolType;
 

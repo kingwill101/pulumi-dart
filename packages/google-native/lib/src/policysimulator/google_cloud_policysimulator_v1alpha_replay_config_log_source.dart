@@ -6,15 +6,13 @@ enum GoogleCloudPolicysimulatorV1alphaReplayConfigLogSource {
   const GoogleCloudPolicysimulatorV1alphaReplayConfigLogSource(this.value);
   final String value;
 
-  static GoogleCloudPolicysimulatorV1alphaReplayConfigLogSource fromValue(
-      String value) {
-    for (final item
-        in GoogleCloudPolicysimulatorV1alphaReplayConfigLogSource.values) {
+  static GoogleCloudPolicysimulatorV1alphaReplayConfigLogSource fromValue(String value) {
+    for (final item in GoogleCloudPolicysimulatorV1alphaReplayConfigLogSource.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GoogleCloudPolicysimulatorV1alphaReplayConfigLogSource value: $value');
+    throw ArgumentError('Unknown GoogleCloudPolicysimulatorV1alphaReplayConfigLogSource value: $value');
   }
 }
+

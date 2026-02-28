@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// RepoSource describes the location of the source in a Google Cloud Source Repository.
 class RepoSource {
   /// Name of the branch to build.
   final String? branchName;
-
   /// Explicit commit SHA to build.
   final String? commitSha;
-
   /// ID of the project that owns the repo.
   final String? project;
-
   /// Name of the repo.
   final String? repoName;
-
   /// Name of the tag to build.
   final String? tagName;
 
@@ -32,34 +29,18 @@ class RepoSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final branchNameValue = branchName;
-    if (branchNameValue != null) {
-      map['branchName'] = branchNameValue;
-    }
-    final commitShaValue = commitSha;
-    if (commitShaValue != null) {
-      map['commitSha'] = commitShaValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final repoNameValue = repoName;
-    if (repoNameValue != null) {
-      map['repoName'] = repoNameValue;
-    }
-    final tagNameValue = tagName;
-    if (tagNameValue != null) {
-      map['tagName'] = tagNameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'branchName': ?branchName,
+      'commitSha': ?commitSha,
+      'project': ?project,
+      'repoName': ?repoName,
+      'tagName': ?tagName,
+    };
   }
 
   factory RepoSource.fromMap(Map<String, dynamic> map) {
     return RepoSource(
-      branchName:
-          map['branchName'] == null ? null : map['branchName'] as String,
+      branchName: map['branchName'] == null ? null : map['branchName'] as String,
       commitSha: map['commitSha'] == null ? null : map['commitSha'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       repoName: map['repoName'] == null ? null : map['repoName'] as String,
@@ -67,3 +48,4 @@ class RepoSource {
     );
   }
 }
+

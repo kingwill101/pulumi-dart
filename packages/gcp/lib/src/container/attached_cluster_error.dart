@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AttachedClusterError {
   /// Human-friendly description of the error.
   final String? message;
@@ -11,12 +12,9 @@ class AttachedClusterError {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final messageValue = message;
-    if (messageValue != null) {
-      map['message'] = messageValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'message': ?message,
+    };
   }
 
   factory AttachedClusterError.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class AttachedClusterError {
     );
   }
 }
+

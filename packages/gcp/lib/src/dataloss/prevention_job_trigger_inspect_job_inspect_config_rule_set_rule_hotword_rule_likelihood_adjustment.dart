@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment {
   /// Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
   /// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
   final String? fixedLikelihood;
-
   /// Increase or decrease the likelihood by the specified number of levels. For example,
   /// if a finding would be POSSIBLE without the detection rule and relativeLikelihood is 1,
   /// then it is upgraded to LIKELY, while a value of -1 would downgrade it to UNLIKELY.
@@ -22,27 +22,17 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoo
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final fixedLikelihoodValue = fixedLikelihood;
-    if (fixedLikelihoodValue != null) {
-      map['fixedLikelihood'] = fixedLikelihoodValue;
-    }
-    final relativeLikelihoodValue = relativeLikelihood;
-    if (relativeLikelihoodValue != null) {
-      map['relativeLikelihood'] = relativeLikelihoodValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'fixedLikelihood': ?fixedLikelihood,
+      'relativeLikelihood': ?relativeLikelihood,
+    };
   }
 
-  factory PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment.fromMap(
-      Map<String, dynamic> map) {
+  factory PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment(
-      fixedLikelihood: map['fixedLikelihood'] == null
-          ? null
-          : map['fixedLikelihood'] as String,
-      relativeLikelihood: map['relativeLikelihood'] == null
-          ? null
-          : map['relativeLikelihood'] as int,
+      fixedLikelihood: map['fixedLikelihood'] == null ? null : map['fixedLikelihood'] as String,
+      relativeLikelihood: map['relativeLikelihood'] == null ? null : map['relativeLikelihood'] as int,
     );
   }
 }
+

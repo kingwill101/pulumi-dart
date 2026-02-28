@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig {
   /// If true, measurement.elapsed_time is used as the x-axis of each Trials Decay Curve. Otherwise, Measurement.steps will be used as the x-axis.
   final bool? useElapsedTime;
@@ -11,19 +12,15 @@ class GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final useElapsedTimeValue = useElapsedTime;
-    if (useElapsedTimeValue != null) {
-      map['useElapsedTime'] = useElapsedTimeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'useElapsedTime': ?useElapsedTime,
+    };
   }
 
-  factory GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig(
-      useElapsedTime:
-          map['useElapsedTime'] == null ? null : map['useElapsedTime'] as bool,
+      useElapsedTime: map['useElapsedTime'] == null ? null : map['useElapsedTime'] as bool,
     );
   }
 }
+

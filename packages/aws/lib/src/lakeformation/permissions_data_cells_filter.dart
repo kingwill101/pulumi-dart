@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PermissionsDataCellsFilter {
   /// The name of the database.
   final String databaseName;
-
   /// The name of the data cells filter.
   final String name;
-
   /// The ID of the Data Catalog.
   final String tableCatalogId;
-
   /// The name of the table.
   final String tableName;
 
@@ -26,12 +24,12 @@ class PermissionsDataCellsFilter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['databaseName'] = databaseName;
-    map['name'] = name;
-    map['tableCatalogId'] = tableCatalogId;
-    map['tableName'] = tableName;
-    return map;
+    return <String, dynamic>{
+      'databaseName': databaseName,
+      'name': name,
+      'tableCatalogId': tableCatalogId,
+      'tableName': tableName,
+    };
   }
 
   factory PermissionsDataCellsFilter.fromMap(Map<String, dynamic> map) {
@@ -43,3 +41,4 @@ class PermissionsDataCellsFilter {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The user preferences relating to target regions.
 class RegionPreferencesResponse {
   /// A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
@@ -12,9 +13,9 @@ class RegionPreferencesResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['preferredRegions'] = preferredRegions;
-    return map;
+    return <String, dynamic>{
+      'preferredRegions': preferredRegions,
+    };
   }
 
   factory RegionPreferencesResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class RegionPreferencesResponse {
     );
   }
 }
+

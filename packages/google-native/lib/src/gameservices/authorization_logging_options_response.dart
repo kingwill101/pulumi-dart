@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Authorization-related information used by Cloud Audit Logging.
 class AuthorizationLoggingOptionsResponse {
   /// The type of the permission that was checked.
@@ -12,15 +13,15 @@ class AuthorizationLoggingOptionsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['permissionType'] = permissionType;
-    return map;
+    return <String, dynamic>{
+      'permissionType': permissionType,
+    };
   }
 
-  factory AuthorizationLoggingOptionsResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory AuthorizationLoggingOptionsResponse.fromMap(Map<String, dynamic> map) {
     return AuthorizationLoggingOptionsResponse(
       permissionType: map['permissionType'] as String,
     );
   }
 }
+

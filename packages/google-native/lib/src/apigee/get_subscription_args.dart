@@ -19,16 +19,17 @@ class GetSubscriptionArgs {
     required String developerId,
     required String organizationId,
     required String subscriptionId,
-  })  : developerId = pulumi.Input.asInput<String>(developerId),
-        organizationId = pulumi.Input.asInput<String>(organizationId),
-        subscriptionId = pulumi.Input.asInput<String>(subscriptionId);
+  }) :
+      developerId = pulumi.Input.asInput<String>(developerId),
+      organizationId = pulumi.Input.asInput<String>(organizationId),
+      subscriptionId = pulumi.Input.asInput<String>(subscriptionId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['developerId'] = developerId;
-    map['organizationId'] = organizationId;
-    map['subscriptionId'] = subscriptionId;
-    return map;
+    return <String, dynamic>{
+      'developerId': developerId,
+      'organizationId': organizationId,
+      'subscriptionId': subscriptionId,
+    };
   }
 
   factory GetSubscriptionArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +40,4 @@ class GetSubscriptionArgs {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RouterNatNat64Subnetwork {
   /// Name of the NAT service. The name must be 1-63 characters long and
   /// comply with RFC1035.
@@ -12,9 +13,9 @@ class RouterNatNat64Subnetwork {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory RouterNatNat64Subnetwork.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class RouterNatNat64Subnetwork {
     );
   }
 }
+

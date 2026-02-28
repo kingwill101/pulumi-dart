@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetLaunchTemplatePrivateDnsNameOption {
   final bool enableResourceNameDnsARecord;
   final bool enableResourceNameDnsAaaaRecord;
@@ -16,20 +17,19 @@ class GetLaunchTemplatePrivateDnsNameOption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enableResourceNameDnsARecord'] = enableResourceNameDnsARecord;
-    map['enableResourceNameDnsAaaaRecord'] = enableResourceNameDnsAaaaRecord;
-    map['hostnameType'] = hostnameType;
-    return map;
+    return <String, dynamic>{
+      'enableResourceNameDnsARecord': enableResourceNameDnsARecord,
+      'enableResourceNameDnsAaaaRecord': enableResourceNameDnsAaaaRecord,
+      'hostnameType': hostnameType,
+    };
   }
 
-  factory GetLaunchTemplatePrivateDnsNameOption.fromMap(
-      Map<String, dynamic> map) {
+  factory GetLaunchTemplatePrivateDnsNameOption.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplatePrivateDnsNameOption(
       enableResourceNameDnsARecord: map['enableResourceNameDnsARecord'] as bool,
-      enableResourceNameDnsAaaaRecord:
-          map['enableResourceNameDnsAaaaRecord'] as bool,
+      enableResourceNameDnsAaaaRecord: map['enableResourceNameDnsAaaaRecord'] as bool,
       hostnameType: map['hostnameType'] as String,
     );
   }
 }
+

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetReportPlanReportDeliveryChannel {
   /// List of the format of your reports: CSV, JSON, or both.
   final List<String> formats;
-
   /// Unique name of the S3 bucket that receives your reports.
   final String s3BucketName;
-
   /// Prefix for where Backup Audit Manager delivers your reports to Amazon S3. The prefix is this part of the following path: s3://your-bucket-name/prefix/Backup/us-west-2/year/month/day/report-name.
   final String s3KeyPrefix;
 
@@ -21,11 +20,11 @@ class GetReportPlanReportDeliveryChannel {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['formats'] = formats;
-    map['s3BucketName'] = s3BucketName;
-    map['s3KeyPrefix'] = s3KeyPrefix;
-    return map;
+    return <String, dynamic>{
+      'formats': formats,
+      's3BucketName': s3BucketName,
+      's3KeyPrefix': s3KeyPrefix,
+    };
   }
 
   factory GetReportPlanReportDeliveryChannel.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class GetReportPlanReportDeliveryChannel {
     );
   }
 }
+

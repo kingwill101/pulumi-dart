@@ -14,20 +14,15 @@ class GooglePrivacyDlpV2SaveFindings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final outputConfigValue = outputConfig;
-    if (outputConfigValue != null) {
-      map['outputConfig'] = outputConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'outputConfig': ?outputConfig == null ? null : outputConfig!.toMap(),
+    };
   }
 
   factory GooglePrivacyDlpV2SaveFindings.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2SaveFindings(
-      outputConfig: map['outputConfig'] == null
-          ? null
-          : GooglePrivacyDlpV2OutputStorageConfig.fromMap(
-              (map['outputConfig'] as Map).cast<String, dynamic>()),
+      outputConfig: map['outputConfig'] == null ? null : GooglePrivacyDlpV2OutputStorageConfig.fromMap((map['outputConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

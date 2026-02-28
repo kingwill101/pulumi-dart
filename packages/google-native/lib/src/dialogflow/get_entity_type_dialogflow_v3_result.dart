@@ -8,26 +8,18 @@ import 'google_cloud_dialogflow_cx_v3_entity_type_excluded_phrase_response.dart'
 class GetEntityTypeDialogflowV3Result {
   /// Indicates whether the entity type can be automatically expanded.
   final String autoExpansionMode;
-
   /// The human-readable name of the entity type, unique within the agent.
   final String displayName;
-
   /// Enables fuzzy entity extraction during classification.
   final bool enableFuzzyExtraction;
-
   /// The collection of entity entries associated with the entity type.
   final List<GoogleCloudDialogflowCxV3EntityTypeEntityResponse> entities;
-
   /// Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry `giant`(an adjective), you might consider adding `giants`(a noun) as an exclusion. If the kind of entity type is `KIND_MAP`, then the phrases specified by entities and excluded phrases should be mutually exclusive.
-  final List<GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponse>
-      excludedPhrases;
-
+  final List<GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponse> excludedPhrases;
   /// Indicates the kind of entity type.
   final String kind;
-
   /// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
   final String name;
-
   /// Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name when logging.
   final bool redact;
 
@@ -52,20 +44,16 @@ class GetEntityTypeDialogflowV3Result {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['autoExpansionMode'] = autoExpansionMode;
-    map['displayName'] = displayName;
-    map['enableFuzzyExtraction'] = enableFuzzyExtraction;
-    map['entities'] = pulumi.Input.encodeList<
-        GoogleCloudDialogflowCxV3EntityTypeEntityResponse,
-        Map<String, dynamic>>(entities, (value) => value.toMap());
-    map['excludedPhrases'] = pulumi.Input.encodeList<
-        GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponse,
-        Map<String, dynamic>>(excludedPhrases, (value) => value.toMap());
-    map['kind'] = kind;
-    map['name'] = name;
-    map['redact'] = redact;
-    return map;
+    return <String, dynamic>{
+      'autoExpansionMode': autoExpansionMode,
+      'displayName': displayName,
+      'enableFuzzyExtraction': enableFuzzyExtraction,
+      'entities': pulumi.Input.encodeList<GoogleCloudDialogflowCxV3EntityTypeEntityResponse, Map<String, dynamic>>(entities, (value) => value.toMap()),
+      'excludedPhrases': pulumi.Input.encodeList<GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponse, Map<String, dynamic>>(excludedPhrases, (value) => value.toMap()),
+      'kind': kind,
+      'name': name,
+      'redact': redact,
+    };
   }
 
   factory GetEntityTypeDialogflowV3Result.fromMap(Map<String, dynamic> map) {
@@ -73,20 +61,12 @@ class GetEntityTypeDialogflowV3Result {
       autoExpansionMode: map['autoExpansionMode'] as String,
       displayName: map['displayName'] as String,
       enableFuzzyExtraction: map['enableFuzzyExtraction'] as bool,
-      entities: pulumi.Input.decodeList<
-              GoogleCloudDialogflowCxV3EntityTypeEntityResponse>(
-          map['entities'],
-          (value) => GoogleCloudDialogflowCxV3EntityTypeEntityResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      excludedPhrases: pulumi.Input.decodeList<
-              GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponse>(
-          map['excludedPhrases'],
-          (value) =>
-              GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      entities: pulumi.Input.decodeList<GoogleCloudDialogflowCxV3EntityTypeEntityResponse>(map['entities'], (value) => GoogleCloudDialogflowCxV3EntityTypeEntityResponse.fromMap((value as Map).cast<String, dynamic>())),
+      excludedPhrases: pulumi.Input.decodeList<GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponse>(map['excludedPhrases'], (value) => GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponse.fromMap((value as Map).cast<String, dynamic>())),
       kind: map['kind'] as String,
       name: map['name'] as String,
       redact: map['redact'] as bool,
     );
   }
 }
+

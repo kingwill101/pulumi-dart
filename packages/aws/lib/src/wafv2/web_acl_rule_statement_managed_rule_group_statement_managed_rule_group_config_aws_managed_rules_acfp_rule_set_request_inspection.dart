@@ -7,23 +7,15 @@ import 'web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_c
 import 'web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_config_aws_managed_rules_acfp_rule_set_request_inspection_username_field.dart';
 
 class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspection {
-  final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionAddressFields?
-      addressFields;
-  final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionEmailField?
-      emailField;
-
+  final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionAddressFields? addressFields;
+  final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionEmailField? emailField;
   /// Details about your login page password field. See `password_field` for more details.
-  final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionPasswordField?
-      passwordField;
-
+  final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionPasswordField? passwordField;
   /// The payload type for your login endpoint, either JSON or form encoded.
   final String payloadType;
-  final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionPhoneNumberFields?
-      phoneNumberFields;
-
+  final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionPhoneNumberFields? phoneNumberFields;
   /// Details about your login page username field. See `username_field` for more details.
-  final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionUsernameField?
-      usernameField;
+  final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionUsernameField? usernameField;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspection].
   /// [addressFields] Optional.
@@ -42,56 +34,25 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final addressFieldsValue = addressFields;
-    if (addressFieldsValue != null) {
-      map['addressFields'] = addressFieldsValue.toMap();
-    }
-    final emailFieldValue = emailField;
-    if (emailFieldValue != null) {
-      map['emailField'] = emailFieldValue.toMap();
-    }
-    final passwordFieldValue = passwordField;
-    if (passwordFieldValue != null) {
-      map['passwordField'] = passwordFieldValue.toMap();
-    }
-    map['payloadType'] = payloadType;
-    final phoneNumberFieldsValue = phoneNumberFields;
-    if (phoneNumberFieldsValue != null) {
-      map['phoneNumberFields'] = phoneNumberFieldsValue.toMap();
-    }
-    final usernameFieldValue = usernameField;
-    if (usernameFieldValue != null) {
-      map['usernameField'] = usernameFieldValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'addressFields': ?addressFields == null ? null : addressFields!.toMap(),
+      'emailField': ?emailField == null ? null : emailField!.toMap(),
+      'passwordField': ?passwordField == null ? null : passwordField!.toMap(),
+      'payloadType': payloadType,
+      'phoneNumberFields': ?phoneNumberFields == null ? null : phoneNumberFields!.toMap(),
+      'usernameField': ?usernameField == null ? null : usernameField!.toMap(),
+    };
   }
 
-  factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspection.fromMap(
-      Map<String, dynamic> map) {
+  factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspection.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspection(
-      addressFields: map['addressFields'] == null
-          ? null
-          : WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionAddressFields
-              .fromMap((map['addressFields'] as Map).cast<String, dynamic>()),
-      emailField: map['emailField'] == null
-          ? null
-          : WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionEmailField
-              .fromMap((map['emailField'] as Map).cast<String, dynamic>()),
-      passwordField: map['passwordField'] == null
-          ? null
-          : WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionPasswordField
-              .fromMap((map['passwordField'] as Map).cast<String, dynamic>()),
+      addressFields: map['addressFields'] == null ? null : WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionAddressFields.fromMap((map['addressFields'] as Map).cast<String, dynamic>()),
+      emailField: map['emailField'] == null ? null : WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionEmailField.fromMap((map['emailField'] as Map).cast<String, dynamic>()),
+      passwordField: map['passwordField'] == null ? null : WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionPasswordField.fromMap((map['passwordField'] as Map).cast<String, dynamic>()),
       payloadType: map['payloadType'] as String,
-      phoneNumberFields: map['phoneNumberFields'] == null
-          ? null
-          : WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionPhoneNumberFields
-              .fromMap(
-                  (map['phoneNumberFields'] as Map).cast<String, dynamic>()),
-      usernameField: map['usernameField'] == null
-          ? null
-          : WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionUsernameField
-              .fromMap((map['usernameField'] as Map).cast<String, dynamic>()),
+      phoneNumberFields: map['phoneNumberFields'] == null ? null : WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionPhoneNumberFields.fromMap((map['phoneNumberFields'] as Map).cast<String, dynamic>()),
+      usernameField: map['usernameField'] == null ? null : WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionUsernameField.fromMap((map['usernameField'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

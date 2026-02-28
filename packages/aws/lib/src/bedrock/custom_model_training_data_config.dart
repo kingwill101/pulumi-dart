@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CustomModelTrainingDataConfig {
   /// The S3 URI where the training data is stored.
   final String s3Uri;
@@ -11,9 +12,9 @@ class CustomModelTrainingDataConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['s3Uri'] = s3Uri;
-    return map;
+    return <String, dynamic>{
+      's3Uri': s3Uri,
+    };
   }
 
   factory CustomModelTrainingDataConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class CustomModelTrainingDataConfig {
     );
   }
 }
+

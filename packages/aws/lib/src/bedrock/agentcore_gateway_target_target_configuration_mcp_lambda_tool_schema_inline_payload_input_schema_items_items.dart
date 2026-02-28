@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaItemsItems {
   /// Description of the array items.
   final String? description;
-
   /// JSON-encoded schema definition for array items. Used for complex nested structures. Cannot be used with `properties_json`.
   final String? itemsJson;
-
   /// JSON-encoded schema definition for object properties. Used for complex nested structures. Cannot be used with `items_json`.
   final String? propertiesJson;
-
   /// Data type of the array items.
   final String type;
 
@@ -26,33 +24,21 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadI
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final itemsJsonValue = itemsJson;
-    if (itemsJsonValue != null) {
-      map['itemsJson'] = itemsJsonValue;
-    }
-    final propertiesJsonValue = propertiesJson;
-    if (propertiesJsonValue != null) {
-      map['propertiesJson'] = propertiesJsonValue;
-    }
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'itemsJson': ?itemsJson,
+      'propertiesJson': ?propertiesJson,
+      'type': type,
+    };
   }
 
-  factory AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaItemsItems.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaItemsItems.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaItemsItems(
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       itemsJson: map['itemsJson'] == null ? null : map['itemsJson'] as String,
-      propertiesJson: map['propertiesJson'] == null
-          ? null
-          : map['propertiesJson'] as String,
+      propertiesJson: map['propertiesJson'] == null ? null : map['propertiesJson'] as String,
       type: map['type'] as String,
     );
   }
 }
+

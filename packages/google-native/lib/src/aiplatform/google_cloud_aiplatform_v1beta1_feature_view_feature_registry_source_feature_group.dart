@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Features belonging to a single feature group that will be synced to Online Store.
 class GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroup {
   /// Identifier of the feature group.
   final String featureGroupId;
-
   /// Identifiers of features under the feature group.
   final List<String> featureIds;
 
@@ -17,17 +17,17 @@ class GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroup {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['featureGroupId'] = featureGroupId;
-    map['featureIds'] = featureIds;
-    return map;
+    return <String, dynamic>{
+      'featureGroupId': featureGroupId,
+      'featureIds': featureIds,
+    };
   }
 
-  factory GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroup.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroup.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroup(
       featureGroupId: map['featureGroupId'] as String,
       featureIds: (map['featureIds'] as List).cast<String>(),
     );
   }
 }
+

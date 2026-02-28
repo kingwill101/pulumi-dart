@@ -135,10 +135,8 @@ import 'organization_configuration_args.dart';
 class OrganizationConfiguration extends pulumi.CustomResource {
   /// When this setting is enabled, all new accounts that are created in, or added to, the organization are added as a member accounts of the organization’s Detective delegated administrator and Detective is enabled in that AWS Region.
   late final pulumi.Output<bool> autoEnable;
-
   /// ARN of the behavior graph.
   late final pulumi.Output<String> graphArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

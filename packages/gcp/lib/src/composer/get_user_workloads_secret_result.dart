@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getUserWorkloadsSecret.
 class GetUserWorkloadsSecretResult {
   final Map<String, String> data;
   final String environment;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -28,20 +28,14 @@ class GetUserWorkloadsSecretResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['data'] = data;
-    map['environment'] = environment;
-    map['id'] = id;
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'data': data,
+      'environment': environment,
+      'id': id,
+      'name': name,
+      'project': ?project,
+      'region': ?region,
+    };
   }
 
   factory GetUserWorkloadsSecretResult.fromMap(Map<String, dynamic> map) {
@@ -55,3 +49,4 @@ class GetUserWorkloadsSecretResult {
     );
   }
 }
+

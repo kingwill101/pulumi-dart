@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class JobTemplateConfigOverlayImage {
   /// URI of the image in Cloud Storage. For example, gs://bucket/inputs/image.png.
   final String uri;
@@ -11,9 +12,9 @@ class JobTemplateConfigOverlayImage {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['uri'] = uri;
-    return map;
+    return <String, dynamic>{
+      'uri': uri,
+    };
   }
 
   factory JobTemplateConfigOverlayImage.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class JobTemplateConfigOverlayImage {
     );
   }
 }
+

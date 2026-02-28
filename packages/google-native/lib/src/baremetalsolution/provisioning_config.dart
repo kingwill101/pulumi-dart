@@ -11,45 +11,32 @@ import 'volume_config_response.dart';
 class ProvisioningConfig extends pulumi.CustomResource {
   /// URI to Cloud Console UI view of this provisioning config.
   late final pulumi.Output<String> cloudConsoleUri;
-
   /// Optional. The user-defined identifier of the provisioning config.
   late final pulumi.Output<String> customId;
-
   /// Optional. Email provided to send a confirmation with provisioning config to.
   late final pulumi.Output<String> email;
-
   /// A service account to enable customers to access instance credentials upon handover.
   late final pulumi.Output<String> handoverServiceAccount;
-
   /// Instances to be created.
   late final pulumi.Output<List<InstanceConfigResponse>> instances;
   late final pulumi.Output<String> location;
-
   /// The system-generated name of the provisioning config. This follows the UUID format.
   late final pulumi.Output<String> name;
-
   /// Networks to be created.
   late final pulumi.Output<List<NetworkConfigResponse>> networks;
-
   /// Optional. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets (networks, volumes, nfsshares) allocated in the same pod only.
   late final pulumi.Output<String> pod;
   late final pulumi.Output<String> project;
-
   /// State of ProvisioningConfig.
   late final pulumi.Output<String> state;
-
   /// Optional status messages associated with the FAILED state.
   late final pulumi.Output<String> statusMessage;
-
   /// A generated ticket id to track provisioning request.
   late final pulumi.Output<String> ticketId;
-
   /// Last update timestamp.
   late final pulumi.Output<String> updateTime;
-
   /// Volumes to be created.
   late final pulumi.Output<List<VolumeConfigResponse>> volumes;
-
   /// If true, VPC SC is enabled for the cluster.
   late final pulumi.Output<bool> vpcScEnabled;
 
@@ -70,8 +57,7 @@ class ProvisioningConfig extends pulumi.CustomResource {
     this.cloudConsoleUri = registerOutput<String>('cloudConsoleUri');
     this.customId = registerOutput<String>('customId');
     this.email = registerOutput<String>('email');
-    this.handoverServiceAccount =
-        registerOutput<String>('handoverServiceAccount');
+    this.handoverServiceAccount = registerOutput<String>('handoverServiceAccount');
     this.instances = registerOutput<List<InstanceConfigResponse>>('instances');
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

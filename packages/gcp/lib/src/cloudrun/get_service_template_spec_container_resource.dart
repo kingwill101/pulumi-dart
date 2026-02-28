@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetServiceTemplateSpecContainerResource {
   /// Limits describes the maximum amount of compute resources allowed.
   /// CPU Limit details:
@@ -9,7 +10,6 @@ class GetServiceTemplateSpecContainerResource {
   /// The values of the map is string form of the 'quantity' k8s type:
   /// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
   final Map<String, String> limits;
-
   /// Requests describes the minimum amount of compute resources required.
   /// If Requests is omitted for a container, it defaults to Limits if that is
   /// explicitly specified, otherwise to an implementation-defined value.
@@ -26,17 +26,17 @@ class GetServiceTemplateSpecContainerResource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['limits'] = limits;
-    map['requests'] = requests;
-    return map;
+    return <String, dynamic>{
+      'limits': limits,
+      'requests': requests,
+    };
   }
 
-  factory GetServiceTemplateSpecContainerResource.fromMap(
-      Map<String, dynamic> map) {
+  factory GetServiceTemplateSpecContainerResource.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateSpecContainerResource(
       limits: (map['limits'] as Map).cast<String, String>(),
       requests: (map['requests'] as Map).cast<String, String>(),
     );
   }
 }
+

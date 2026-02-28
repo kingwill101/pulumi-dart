@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Status of Lake and Dataproc Metastore service instance association.
 class GoogleCloudDataplexV1LakeMetastoreStatusResponse {
   /// The URI of the endpoint used to access the Metastore service.
   final String endpoint;
-
   /// Additional information about the current status.
   final String message;
-
   /// Current state of association.
   final String state;
-
   /// Last update time of the metastore status of the lake.
   final String updateTime;
 
@@ -27,16 +25,15 @@ class GoogleCloudDataplexV1LakeMetastoreStatusResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['endpoint'] = endpoint;
-    map['message'] = message;
-    map['state'] = state;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'endpoint': endpoint,
+      'message': message,
+      'state': state,
+      'updateTime': updateTime,
+    };
   }
 
-  factory GoogleCloudDataplexV1LakeMetastoreStatusResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1LakeMetastoreStatusResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1LakeMetastoreStatusResponse(
       endpoint: map['endpoint'] as String,
       message: map['message'] as String,
@@ -45,3 +42,4 @@ class GoogleCloudDataplexV1LakeMetastoreStatusResponse {
     );
   }
 }
+

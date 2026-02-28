@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ChannelDestinationMediaPackageSetting {
   /// ID of the channel in MediaPackage that is the destination for this output group.
   final String channelId;
@@ -11,15 +12,15 @@ class ChannelDestinationMediaPackageSetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['channelId'] = channelId;
-    return map;
+    return <String, dynamic>{
+      'channelId': channelId,
+    };
   }
 
-  factory ChannelDestinationMediaPackageSetting.fromMap(
-      Map<String, dynamic> map) {
+  factory ChannelDestinationMediaPackageSetting.fromMap(Map<String, dynamic> map) {
     return ChannelDestinationMediaPackageSetting(
       channelId: map['channelId'] as String,
     );
   }
 }
+

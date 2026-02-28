@@ -11,34 +11,25 @@ import 'zone_resource_spec.dart';
 class ZoneArgs {
   /// Optional. Description of the zone.
   final pulumi.Input<String>? description;
-
   /// Required. Specification of the discovery feature applied to data in this zone.
   final pulumi.Input<ZoneDiscoverySpec> discoverySpec;
-
   /// Optional. User friendly display name.
   final pulumi.Input<String>? displayName;
-
   /// Optional. User defined labels for the zone.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// The lake for the resource
   final pulumi.Input<String> lake;
-
   /// The location for the resource
   final pulumi.Input<String> location;
-
   /// The name of the zone.
   final pulumi.Input<String>? name;
-
   /// The project for the resource
   final pulumi.Input<String>? project;
-
   /// Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
   final pulumi.Input<ZoneResourceSpec> resourceSpec;
-
   /// Required. Immutable. The type of the zone. Possible values: TYPE_UNSPECIFIED, RAW, CURATED
   final pulumi.Input<String> type;
 
@@ -64,69 +55,46 @@ class ZoneArgs {
     String? project,
     required ZoneResourceSpec resourceSpec,
     required String type,
-  })  : description = pulumi.Input.asOptionalInput<String>(description),
-        discoverySpec = pulumi.Input.asInput<ZoneDiscoverySpec>(discoverySpec),
-        displayName = pulumi.Input.asOptionalInput<String>(displayName),
-        labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-        lake = pulumi.Input.asInput<String>(lake),
-        location = pulumi.Input.asInput<String>(location),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        resourceSpec = pulumi.Input.asInput<ZoneResourceSpec>(resourceSpec),
-        type = pulumi.Input.asInput<String>(type);
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      discoverySpec = pulumi.Input.asInput<ZoneDiscoverySpec>(discoverySpec),
+      displayName = pulumi.Input.asOptionalInput<String>(displayName),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      lake = pulumi.Input.asInput<String>(lake),
+      location = pulumi.Input.asInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      resourceSpec = pulumi.Input.asInput<ZoneResourceSpec>(resourceSpec),
+      type = pulumi.Input.asInput<String>(type);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    map['discoverySpec'] =
-        pulumi.Input.mapInputValue<ZoneDiscoverySpec, Map<String, dynamic>>(
-            discoverySpec, (value) => value.toMap());
-    final displayNameValue = displayName;
-    if (displayNameValue != null) {
-      map['displayName'] = displayNameValue;
-    }
-    final labelsValue = labels;
-    if (labelsValue != null) {
-      map['labels'] = labelsValue;
-    }
-    map['lake'] = lake;
-    map['location'] = location;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['resourceSpec'] =
-        pulumi.Input.mapInputValue<ZoneResourceSpec, Map<String, dynamic>>(
-            resourceSpec, (value) => value.toMap());
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'discoverySpec': pulumi.Input.mapInputValue<ZoneDiscoverySpec, Map<String, dynamic>>(discoverySpec, (value) => value.toMap()),
+      'displayName': ?displayName,
+      'labels': ?labels,
+      'lake': lake,
+      'location': location,
+      'name': ?name,
+      'project': ?project,
+      'resourceSpec': pulumi.Input.mapInputValue<ZoneResourceSpec, Map<String, dynamic>>(resourceSpec, (value) => value.toMap()),
+      'type': type,
+    };
   }
 
   factory ZoneArgs.fromMap(Map<String, dynamic> map) {
     return ZoneArgs(
-      description:
-          map['description'] == null ? null : map['description'] as String,
-      discoverySpec: ZoneDiscoverySpec.fromMap(
-          (map['discoverySpec'] as Map).cast<String, dynamic>()),
-      displayName:
-          map['displayName'] == null ? null : map['displayName'] as String,
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      description: map['description'] == null ? null : map['description'] as String,
+      discoverySpec: ZoneDiscoverySpec.fromMap((map['discoverySpec'] as Map).cast<String, dynamic>()),
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       lake: map['lake'] as String,
       location: map['location'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      resourceSpec: ZoneResourceSpec.fromMap(
-          (map['resourceSpec'] as Map).cast<String, dynamic>()),
+      resourceSpec: ZoneResourceSpec.fromMap((map['resourceSpec'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

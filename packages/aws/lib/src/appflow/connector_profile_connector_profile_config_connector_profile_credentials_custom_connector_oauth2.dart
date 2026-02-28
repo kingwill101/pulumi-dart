@@ -6,8 +6,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomCon
   final String? accessToken;
   final String? clientId;
   final String? clientSecret;
-  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2OauthRequest?
-      oauthRequest;
+  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2OauthRequest? oauthRequest;
   final String? refreshToken;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2].
@@ -25,44 +24,23 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomCon
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final accessTokenValue = accessToken;
-    if (accessTokenValue != null) {
-      map['accessToken'] = accessTokenValue;
-    }
-    final clientIdValue = clientId;
-    if (clientIdValue != null) {
-      map['clientId'] = clientIdValue;
-    }
-    final clientSecretValue = clientSecret;
-    if (clientSecretValue != null) {
-      map['clientSecret'] = clientSecretValue;
-    }
-    final oauthRequestValue = oauthRequest;
-    if (oauthRequestValue != null) {
-      map['oauthRequest'] = oauthRequestValue.toMap();
-    }
-    final refreshTokenValue = refreshToken;
-    if (refreshTokenValue != null) {
-      map['refreshToken'] = refreshTokenValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'accessToken': ?accessToken,
+      'clientId': ?clientId,
+      'clientSecret': ?clientSecret,
+      'oauthRequest': ?oauthRequest == null ? null : oauthRequest!.toMap(),
+      'refreshToken': ?refreshToken,
+    };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2.fromMap(
-      Map<String, dynamic> map) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2(
-      accessToken:
-          map['accessToken'] == null ? null : map['accessToken'] as String,
+      accessToken: map['accessToken'] == null ? null : map['accessToken'] as String,
       clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      clientSecret:
-          map['clientSecret'] == null ? null : map['clientSecret'] as String,
-      oauthRequest: map['oauthRequest'] == null
-          ? null
-          : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2OauthRequest
-              .fromMap((map['oauthRequest'] as Map).cast<String, dynamic>()),
-      refreshToken:
-          map['refreshToken'] == null ? null : map['refreshToken'] as String,
+      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
+      oauthRequest: map['oauthRequest'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2OauthRequest.fromMap((map['oauthRequest'] as Map).cast<String, dynamic>()),
+      refreshToken: map['refreshToken'] == null ? null : map['refreshToken'] as String,
     );
   }
 }
+

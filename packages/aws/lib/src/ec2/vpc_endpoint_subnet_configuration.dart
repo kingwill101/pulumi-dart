@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VpcEndpointSubnetConfiguration {
   /// The IPv4 address to assign to the endpoint network interface in the subnet. You must provide an IPv4 address if the VPC endpoint supports IPv4.
   final String? ipv4;
-
   /// The IPv6 address to assign to the endpoint network interface in the subnet. You must provide an IPv6 address if the VPC endpoint supports IPv6.
   final String? ipv6;
-
   /// The ID of the subnet. Must have a corresponding subnet in the `subnet_ids` argument.
   final String? subnetId;
 
@@ -21,20 +20,11 @@ class VpcEndpointSubnetConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final ipv4Value = ipv4;
-    if (ipv4Value != null) {
-      map['ipv4'] = ipv4Value;
-    }
-    final ipv6Value = ipv6;
-    if (ipv6Value != null) {
-      map['ipv6'] = ipv6Value;
-    }
-    final subnetIdValue = subnetId;
-    if (subnetIdValue != null) {
-      map['subnetId'] = subnetIdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'ipv4': ?ipv4,
+      'ipv6': ?ipv6,
+      'subnetId': ?subnetId,
+    };
   }
 
   factory VpcEndpointSubnetConfiguration.fromMap(Map<String, dynamic> map) {
@@ -45,3 +35,4 @@ class VpcEndpointSubnetConfiguration {
     );
   }
 }
+

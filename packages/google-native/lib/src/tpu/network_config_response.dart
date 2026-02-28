@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Network related configurations.
 class NetworkConfigResponse {
   /// Allows the TPU node to send and receive packets with non-matching destination or source IPs. This is required if you plan to use the TPU workers to forward routes.
   final bool canIpForward;
-
   /// Indicates that external IP addresses would be associated with the TPU workers. If set to false, the specified subnetwork or network should have Private Google Access enabled.
   final bool enableExternalIps;
-
   /// The name of the network for the TPU node. It must be a preexisting Google Compute Engine network. If none is provided, "default" will be used.
   final String network;
-
   /// The name of the subnetwork for the TPU node. It must be a preexisting Google Compute Engine subnetwork. If none is provided, "default" will be used.
   final String subnetwork;
 
@@ -27,12 +25,12 @@ class NetworkConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['canIpForward'] = canIpForward;
-    map['enableExternalIps'] = enableExternalIps;
-    map['network'] = network;
-    map['subnetwork'] = subnetwork;
-    return map;
+    return <String, dynamic>{
+      'canIpForward': canIpForward,
+      'enableExternalIps': enableExternalIps,
+      'network': network,
+      'subnetwork': subnetwork,
+    };
   }
 
   factory NetworkConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -44,3 +42,4 @@ class NetworkConfigResponse {
     );
   }
 }
+

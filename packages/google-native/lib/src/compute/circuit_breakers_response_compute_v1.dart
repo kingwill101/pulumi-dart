@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Settings controlling the volume of requests, connections and retries to this backend service.
 class CircuitBreakersResponseComputeV1 {
   /// The maximum number of connections to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
   final int maxConnections;
-
   /// The maximum number of pending requests allowed to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
   final int maxPendingRequests;
-
   /// The maximum number of parallel requests that allowed to the backend service. If not specified, there is no limit.
   final int maxRequests;
-
   /// Maximum requests for a single connection to the backend service. This parameter is respected by both the HTTP/1.1 and HTTP/2 implementations. If not specified, there is no limit. Setting this parameter to 1 will effectively disable keep alive. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
   final int maxRequestsPerConnection;
-
   /// The maximum number of parallel retries allowed to the backend cluster. If not specified, the default is 1. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
   final int maxRetries;
 
@@ -32,13 +29,13 @@ class CircuitBreakersResponseComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maxConnections'] = maxConnections;
-    map['maxPendingRequests'] = maxPendingRequests;
-    map['maxRequests'] = maxRequests;
-    map['maxRequestsPerConnection'] = maxRequestsPerConnection;
-    map['maxRetries'] = maxRetries;
-    return map;
+    return <String, dynamic>{
+      'maxConnections': maxConnections,
+      'maxPendingRequests': maxPendingRequests,
+      'maxRequests': maxRequests,
+      'maxRequestsPerConnection': maxRequestsPerConnection,
+      'maxRetries': maxRetries,
+    };
   }
 
   factory CircuitBreakersResponseComputeV1.fromMap(Map<String, dynamic> map) {
@@ -51,3 +48,4 @@ class CircuitBreakersResponseComputeV1 {
     );
   }
 }
+

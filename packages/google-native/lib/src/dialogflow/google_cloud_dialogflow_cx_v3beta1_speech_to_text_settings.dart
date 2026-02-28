@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Settings related to speech recognition.
 class GoogleCloudDialogflowCxV3beta1SpeechToTextSettings {
   /// Whether to use speech adaptation for speech recognition.
@@ -12,20 +13,15 @@ class GoogleCloudDialogflowCxV3beta1SpeechToTextSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enableSpeechAdaptationValue = enableSpeechAdaptation;
-    if (enableSpeechAdaptationValue != null) {
-      map['enableSpeechAdaptation'] = enableSpeechAdaptationValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enableSpeechAdaptation': ?enableSpeechAdaptation,
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1SpeechToTextSettings.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1SpeechToTextSettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1SpeechToTextSettings(
-      enableSpeechAdaptation: map['enableSpeechAdaptation'] == null
-          ? null
-          : map['enableSpeechAdaptation'] as bool,
+      enableSpeechAdaptation: map['enableSpeechAdaptation'] == null ? null : map['enableSpeechAdaptation'] as bool,
     );
   }
 }
+

@@ -7,7 +7,6 @@ class AutomationRuleRepairRolloutRuleRepairPhase {
   /// Optional. Retries a failed job.
   /// Structure is documented below.
   final AutomationRuleRepairRolloutRuleRepairPhaseRetry? retry;
-
   /// Optional. Rolls back a Rollout.
   /// Structure is documented below.
   final AutomationRuleRepairRolloutRuleRepairPhaseRollback? rollback;
@@ -21,29 +20,17 @@ class AutomationRuleRepairRolloutRuleRepairPhase {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final retryValue = retry;
-    if (retryValue != null) {
-      map['retry'] = retryValue.toMap();
-    }
-    final rollbackValue = rollback;
-    if (rollbackValue != null) {
-      map['rollback'] = rollbackValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'retry': ?retry == null ? null : retry!.toMap(),
+      'rollback': ?rollback == null ? null : rollback!.toMap(),
+    };
   }
 
-  factory AutomationRuleRepairRolloutRuleRepairPhase.fromMap(
-      Map<String, dynamic> map) {
+  factory AutomationRuleRepairRolloutRuleRepairPhase.fromMap(Map<String, dynamic> map) {
     return AutomationRuleRepairRolloutRuleRepairPhase(
-      retry: map['retry'] == null
-          ? null
-          : AutomationRuleRepairRolloutRuleRepairPhaseRetry.fromMap(
-              (map['retry'] as Map).cast<String, dynamic>()),
-      rollback: map['rollback'] == null
-          ? null
-          : AutomationRuleRepairRolloutRuleRepairPhaseRollback.fromMap(
-              (map['rollback'] as Map).cast<String, dynamic>()),
+      retry: map['retry'] == null ? null : AutomationRuleRepairRolloutRuleRepairPhaseRetry.fromMap((map['retry'] as Map).cast<String, dynamic>()),
+      rollback: map['rollback'] == null ? null : AutomationRuleRepairRolloutRuleRepairPhaseRollback.fromMap((map['rollback'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -14,16 +14,15 @@ class GoogleCloudDataplexV1ZoneResourceSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['locationType'] = locationType.value;
-    return map;
+    return <String, dynamic>{
+      'locationType': locationType.value,
+    };
   }
 
-  factory GoogleCloudDataplexV1ZoneResourceSpec.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1ZoneResourceSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1ZoneResourceSpec(
-      locationType: GoogleCloudDataplexV1ZoneResourceSpecLocationType.fromValue(
-          map['locationType'] as String),
+      locationType: GoogleCloudDataplexV1ZoneResourceSpecLocationType.fromValue(map['locationType'] as String),
     );
   }
 }
+

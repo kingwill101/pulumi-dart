@@ -6,8 +6,7 @@ import 'get_instance_automated_backup_config_fixed_frequency_schedule_start_time
 class GetInstanceAutomatedBackupConfigFixedFrequencySchedule {
   /// The start time of every automated backup in UTC.
   /// It must be set to the start of an hour. This field is required.
-  final List<GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime>
-      startTimes;
+  final List<GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime> startTimes;
 
   /// Creates a new [GetInstanceAutomatedBackupConfigFixedFrequencySchedule].
   /// [startTimes] The start time of every automated backup in UTC.
@@ -16,22 +15,15 @@ class GetInstanceAutomatedBackupConfigFixedFrequencySchedule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['startTimes'] = pulumi.Input.encodeList<
-        GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime,
-        Map<String, dynamic>>(startTimes, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'startTimes': pulumi.Input.encodeList<GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime, Map<String, dynamic>>(startTimes, (value) => value.toMap()),
+    };
   }
 
-  factory GetInstanceAutomatedBackupConfigFixedFrequencySchedule.fromMap(
-      Map<String, dynamic> map) {
+  factory GetInstanceAutomatedBackupConfigFixedFrequencySchedule.fromMap(Map<String, dynamic> map) {
     return GetInstanceAutomatedBackupConfigFixedFrequencySchedule(
-      startTimes: pulumi.Input.decodeList<
-              GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime>(
-          map['startTimes'],
-          (value) =>
-              GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      startTimes: pulumi.Input.decodeList<GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime>(map['startTimes'], (value) => GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

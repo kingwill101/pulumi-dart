@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProtectionArgs {
   /// Unique identifier for the protection.
   final pulumi.Input<String>? protectionId;
-
   /// ARN (Amazon Resource Name) of the resource being protected.
   ///
   /// > Exactly one of `protection_id` or `resource_arn` is required.
@@ -21,28 +20,22 @@ class GetProtectionArgs {
   GetProtectionArgs({
     String? protectionId,
     String? resourceArn,
-  })  : protectionId = pulumi.Input.asOptionalInput<String>(protectionId),
-        resourceArn = pulumi.Input.asOptionalInput<String>(resourceArn);
+  }) :
+      protectionId = pulumi.Input.asOptionalInput<String>(protectionId),
+      resourceArn = pulumi.Input.asOptionalInput<String>(resourceArn);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final protectionIdValue = protectionId;
-    if (protectionIdValue != null) {
-      map['protectionId'] = protectionIdValue;
-    }
-    final resourceArnValue = resourceArn;
-    if (resourceArnValue != null) {
-      map['resourceArn'] = resourceArnValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'protectionId': ?protectionId,
+      'resourceArn': ?resourceArn,
+    };
   }
 
   factory GetProtectionArgs.fromMap(Map<String, dynamic> map) {
     return GetProtectionArgs(
-      protectionId:
-          map['protectionId'] == null ? null : map['protectionId'] as String,
-      resourceArn:
-          map['resourceArn'] == null ? null : map['resourceArn'] as String,
+      protectionId: map['protectionId'] == null ? null : map['protectionId'] as String,
+      resourceArn: map['resourceArn'] == null ? null : map['resourceArn'] as String,
     );
   }
 }
+

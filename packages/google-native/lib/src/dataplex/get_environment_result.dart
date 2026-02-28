@@ -9,38 +9,26 @@ import 'google_cloud_dataplex_v1_environment_session_status_response.dart';
 class GetEnvironmentResult {
   /// Environment creation time.
   final String createTime;
-
   /// Optional. Description of the environment.
   final String description;
-
   /// Optional. User friendly display name.
   final String displayName;
-
   /// URI Endpoints to access sessions associated with the Environment.
   final GoogleCloudDataplexV1EnvironmentEndpointsResponse endpoints;
-
   /// Infrastructure specification for the Environment.
-  final GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponse
-      infrastructureSpec;
-
+  final GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponse infrastructureSpec;
   /// Optional. User defined labels for the environment.
   final Map<String, String> labels;
-
   /// The relative resource name of the environment, of the form: projects/{project_id}/locations/{location_id}/lakes/{lake_id}/environment/{environment_id}
   final String name;
-
   /// Optional. Configuration for sessions created for this environment.
   final GoogleCloudDataplexV1EnvironmentSessionSpecResponse sessionSpec;
-
   /// Status of sessions created for this environment.
   final GoogleCloudDataplexV1EnvironmentSessionStatusResponse sessionStatus;
-
   /// Current state of the environment.
   final String state;
-
   /// System generated globally unique ID for the environment. This ID will be different if the environment is deleted and re-created with the same name.
   final String uid;
-
   /// The time when the environment was last updated.
   final String updateTime;
 
@@ -73,20 +61,20 @@ class GetEnvironmentResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['description'] = description;
-    map['displayName'] = displayName;
-    map['endpoints'] = endpoints.toMap();
-    map['infrastructureSpec'] = infrastructureSpec.toMap();
-    map['labels'] = labels;
-    map['name'] = name;
-    map['sessionSpec'] = sessionSpec.toMap();
-    map['sessionStatus'] = sessionStatus.toMap();
-    map['state'] = state;
-    map['uid'] = uid;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'description': description,
+      'displayName': displayName,
+      'endpoints': endpoints.toMap(),
+      'infrastructureSpec': infrastructureSpec.toMap(),
+      'labels': labels,
+      'name': name,
+      'sessionSpec': sessionSpec.toMap(),
+      'sessionStatus': sessionStatus.toMap(),
+      'state': state,
+      'uid': uid,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetEnvironmentResult.fromMap(Map<String, dynamic> map) {
@@ -94,21 +82,16 @@ class GetEnvironmentResult {
       createTime: map['createTime'] as String,
       description: map['description'] as String,
       displayName: map['displayName'] as String,
-      endpoints: GoogleCloudDataplexV1EnvironmentEndpointsResponse.fromMap(
-          (map['endpoints'] as Map).cast<String, dynamic>()),
-      infrastructureSpec:
-          GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponse.fromMap(
-              (map['infrastructureSpec'] as Map).cast<String, dynamic>()),
+      endpoints: GoogleCloudDataplexV1EnvironmentEndpointsResponse.fromMap((map['endpoints'] as Map).cast<String, dynamic>()),
+      infrastructureSpec: GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponse.fromMap((map['infrastructureSpec'] as Map).cast<String, dynamic>()),
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      sessionSpec: GoogleCloudDataplexV1EnvironmentSessionSpecResponse.fromMap(
-          (map['sessionSpec'] as Map).cast<String, dynamic>()),
-      sessionStatus:
-          GoogleCloudDataplexV1EnvironmentSessionStatusResponse.fromMap(
-              (map['sessionStatus'] as Map).cast<String, dynamic>()),
+      sessionSpec: GoogleCloudDataplexV1EnvironmentSessionSpecResponse.fromMap((map['sessionSpec'] as Map).cast<String, dynamic>()),
+      sessionStatus: GoogleCloudDataplexV1EnvironmentSessionStatusResponse.fromMap((map['sessionStatus'] as Map).cast<String, dynamic>()),
       state: map['state'] as String,
       uid: map['uid'] as String,
       updateTime: map['updateTime'] as String,
     );
   }
 }
+

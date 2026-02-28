@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class OptInResourceDataLfTag {
   /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
   final String? catalogId;
@@ -17,14 +18,11 @@ class OptInResourceDataLfTag {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final catalogIdValue = catalogId;
-    if (catalogIdValue != null) {
-      map['catalogId'] = catalogIdValue;
-    }
-    map['key'] = key;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'catalogId': ?catalogId,
+      'key': key,
+      'value': value,
+    };
   }
 
   factory OptInResourceDataLfTag.fromMap(Map<String, dynamic> map) {
@@ -35,3 +33,4 @@ class OptInResourceDataLfTag {
     );
   }
 }
+

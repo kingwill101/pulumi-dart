@@ -6,7 +6,6 @@ import 'get_database_instances_instance_setting_connection_pool_config_flag.dart
 class GetDatabaseInstancesInstanceSettingConnectionPoolConfig {
   /// Whether Managed Connection Pool is enabled for this instance.
   final bool connectionPoolingEnabled;
-
   /// List of connection pool configuration flags
   final List<GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlag> flags;
 
@@ -19,23 +18,17 @@ class GetDatabaseInstancesInstanceSettingConnectionPoolConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['connectionPoolingEnabled'] = connectionPoolingEnabled;
-    map['flags'] = pulumi.Input.encodeList<
-        GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlag,
-        Map<String, dynamic>>(flags, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'connectionPoolingEnabled': connectionPoolingEnabled,
+      'flags': pulumi.Input.encodeList<GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlag, Map<String, dynamic>>(flags, (value) => value.toMap()),
+    };
   }
 
-  factory GetDatabaseInstancesInstanceSettingConnectionPoolConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GetDatabaseInstancesInstanceSettingConnectionPoolConfig.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstancesInstanceSettingConnectionPoolConfig(
       connectionPoolingEnabled: map['connectionPoolingEnabled'] as bool,
-      flags: pulumi.Input.decodeList<
-              GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlag>(
-          map['flags'],
-          (value) => GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlag
-              .fromMap((value as Map).cast<String, dynamic>())),
+      flags: pulumi.Input.decodeList<GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlag>(map['flags'], (value) => GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlag.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

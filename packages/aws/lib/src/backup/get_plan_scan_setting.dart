@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetPlanScanSetting {
   final String malwareScanner;
   final List<String> resourceTypes;
@@ -16,11 +17,11 @@ class GetPlanScanSetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['malwareScanner'] = malwareScanner;
-    map['resourceTypes'] = resourceTypes;
-    map['scannerRoleArn'] = scannerRoleArn;
-    return map;
+    return <String, dynamic>{
+      'malwareScanner': malwareScanner,
+      'resourceTypes': resourceTypes,
+      'scannerRoleArn': scannerRoleArn,
+    };
   }
 
   factory GetPlanScanSetting.fromMap(Map<String, dynamic> map) {
@@ -31,3 +32,4 @@ class GetPlanScanSetting {
     );
   }
 }
+

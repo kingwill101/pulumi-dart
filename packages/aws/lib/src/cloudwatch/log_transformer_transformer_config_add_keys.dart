@@ -14,21 +14,15 @@ class LogTransformerTransformerConfigAddKeys {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['entries'] = pulumi.Input.encodeList<
-        LogTransformerTransformerConfigAddKeysEntry,
-        Map<String, dynamic>>(entries, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'entries': pulumi.Input.encodeList<LogTransformerTransformerConfigAddKeysEntry, Map<String, dynamic>>(entries, (value) => value.toMap()),
+    };
   }
 
-  factory LogTransformerTransformerConfigAddKeys.fromMap(
-      Map<String, dynamic> map) {
+  factory LogTransformerTransformerConfigAddKeys.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigAddKeys(
-      entries:
-          pulumi.Input.decodeList<LogTransformerTransformerConfigAddKeysEntry>(
-              map['entries'],
-              (value) => LogTransformerTransformerConfigAddKeysEntry.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      entries: pulumi.Input.decodeList<LogTransformerTransformerConfigAddKeysEntry>(map['entries'], (value) => LogTransformerTransformerConfigAddKeysEntry.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

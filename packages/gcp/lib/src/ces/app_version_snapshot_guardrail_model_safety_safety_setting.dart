@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppVersionSnapshotGuardrailModelSafetySafetySetting {
   /// (Output)
   /// The harm category.
@@ -9,7 +10,6 @@ class AppVersionSnapshotGuardrailModelSafetySafetySetting {
   /// HARM_CATEGORY_HARASSMENT
   /// HARM_CATEGORY_SEXUALLY_EXPLICIT
   final String? category;
-
   /// (Output)
   /// The harm block threshold.
   /// Possible values:
@@ -29,23 +29,17 @@ class AppVersionSnapshotGuardrailModelSafetySafetySetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final categoryValue = category;
-    if (categoryValue != null) {
-      map['category'] = categoryValue;
-    }
-    final thresholdValue = threshold;
-    if (thresholdValue != null) {
-      map['threshold'] = thresholdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'category': ?category,
+      'threshold': ?threshold,
+    };
   }
 
-  factory AppVersionSnapshotGuardrailModelSafetySafetySetting.fromMap(
-      Map<String, dynamic> map) {
+  factory AppVersionSnapshotGuardrailModelSafetySafetySetting.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotGuardrailModelSafetySafetySetting(
       category: map['category'] == null ? null : map['category'] as String,
       threshold: map['threshold'] == null ? null : map['threshold'] as String,
     );
   }
 }
+

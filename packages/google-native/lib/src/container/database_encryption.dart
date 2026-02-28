@@ -6,7 +6,6 @@ import 'database_encryption_state.dart';
 class DatabaseEncryption {
   /// Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
   final String? keyName;
-
   /// The desired state of etcd encryption.
   final DatabaseEncryptionState? state;
 
@@ -19,24 +18,17 @@ class DatabaseEncryption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final keyNameValue = keyName;
-    if (keyNameValue != null) {
-      map['keyName'] = keyNameValue;
-    }
-    final stateValue = state;
-    if (stateValue != null) {
-      map['state'] = stateValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'keyName': ?keyName,
+      'state': ?state == null ? null : state!.value,
+    };
   }
 
   factory DatabaseEncryption.fromMap(Map<String, dynamic> map) {
     return DatabaseEncryption(
       keyName: map['keyName'] == null ? null : map['keyName'] as String,
-      state: map['state'] == null
-          ? null
-          : DatabaseEncryptionState.fromValue(map['state'] as String),
+      state: map['state'] == null ? null : DatabaseEncryptionState.fromValue(map['state'] as String),
     );
   }
 }
+

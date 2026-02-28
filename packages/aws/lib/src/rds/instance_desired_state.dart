@@ -114,10 +114,8 @@ import 'instance_desired_state_timeouts.dart';
 class InstanceDesiredState extends pulumi.CustomResource {
   /// DB Instance Identifier
   late final pulumi.Output<String> identifier;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Configured state of the DB Instance. Valid values are `available` and `stopped`.
   late final pulumi.Output<String> state;
   late final pulumi.Output<InstanceDesiredStateTimeouts?> timeouts;

@@ -6,10 +6,8 @@ import 'duration_response_compute_v1.dart';
 class ConsistentHashLoadBalancerSettingsHttpCookieResponseComputeV1 {
   /// Name of the cookie.
   final String name;
-
   /// Path to set for the cookie.
   final String path;
-
   /// Lifetime of the cookie.
   final DurationResponseComputeV1 ttl;
 
@@ -24,20 +22,19 @@ class ConsistentHashLoadBalancerSettingsHttpCookieResponseComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['path'] = path;
-    map['ttl'] = ttl.toMap();
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'path': path,
+      'ttl': ttl.toMap(),
+    };
   }
 
-  factory ConsistentHashLoadBalancerSettingsHttpCookieResponseComputeV1.fromMap(
-      Map<String, dynamic> map) {
+  factory ConsistentHashLoadBalancerSettingsHttpCookieResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return ConsistentHashLoadBalancerSettingsHttpCookieResponseComputeV1(
       name: map['name'] as String,
       path: map['path'] as String,
-      ttl: DurationResponseComputeV1.fromMap(
-          (map['ttl'] as Map).cast<String, dynamic>()),
+      ttl: DurationResponseComputeV1.fromMap((map['ttl'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

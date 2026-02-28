@@ -8,7 +8,6 @@ class GetCertificatesResult {
   /// A list of all retrieved certificates. See gcp.certificatemanager.Certificate resource for details of the available attributes.
   final List<GetCertificatesCertificate> certificates;
   final String? filter;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? region;
@@ -26,30 +25,21 @@ class GetCertificatesResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['certificates'] = pulumi.Input.encodeList<GetCertificatesCertificate,
-        Map<String, dynamic>>(certificates, (value) => value.toMap());
-    final filterValue = filter;
-    if (filterValue != null) {
-      map['filter'] = filterValue;
-    }
-    map['id'] = id;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'certificates': pulumi.Input.encodeList<GetCertificatesCertificate, Map<String, dynamic>>(certificates, (value) => value.toMap()),
+      'filter': ?filter,
+      'id': id,
+      'region': ?region,
+    };
   }
 
   factory GetCertificatesResult.fromMap(Map<String, dynamic> map) {
     return GetCertificatesResult(
-      certificates: pulumi.Input.decodeList<GetCertificatesCertificate>(
-          map['certificates'],
-          (value) => GetCertificatesCertificate.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      certificates: pulumi.Input.decodeList<GetCertificatesCertificate>(map['certificates'], (value) => GetCertificatesCertificate.fromMap((value as Map).cast<String, dynamic>())),
       filter: map['filter'] == null ? null : map['filter'] as String,
       id: map['id'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

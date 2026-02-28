@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class StreamProcessorOutputKinesisDataStream {
   /// ARN of the output Amazon Kinesis Data Streams stream.
   final String? arn;
@@ -11,18 +12,15 @@ class StreamProcessorOutputKinesisDataStream {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final arnValue = arn;
-    if (arnValue != null) {
-      map['arn'] = arnValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'arn': ?arn,
+    };
   }
 
-  factory StreamProcessorOutputKinesisDataStream.fromMap(
-      Map<String, dynamic> map) {
+  factory StreamProcessorOutputKinesisDataStream.fromMap(Map<String, dynamic> map) {
     return StreamProcessorOutputKinesisDataStream(
       arn: map['arn'] == null ? null : map['arn'] as String,
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'binary_authorization_evaluation_mode.dart';
 class BinaryAuthorization {
   /// This field is deprecated. Leave this unset and instead configure BinaryAuthorization using evaluation_mode. If evaluation_mode is set to anything other than EVALUATION_MODE_UNSPECIFIED, this field is ignored.
   final bool? enabled;
-
   /// Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
   final BinaryAuthorizationEvaluationMode? evaluationMode;
 
@@ -19,25 +18,17 @@ class BinaryAuthorization {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    final evaluationModeValue = evaluationMode;
-    if (evaluationModeValue != null) {
-      map['evaluationMode'] = evaluationModeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': ?enabled,
+      'evaluationMode': ?evaluationMode == null ? null : evaluationMode!.value,
+    };
   }
 
   factory BinaryAuthorization.fromMap(Map<String, dynamic> map) {
     return BinaryAuthorization(
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      evaluationMode: map['evaluationMode'] == null
-          ? null
-          : BinaryAuthorizationEvaluationMode.fromValue(
-              map['evaluationMode'] as String),
+      evaluationMode: map['evaluationMode'] == null ? null : BinaryAuthorizationEvaluationMode.fromValue(map['evaluationMode'] as String),
     );
   }
 }
+

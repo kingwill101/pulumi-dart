@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A package managed by Zypper. - install: `zypper -y install package` - remove: `zypper -y rm package`
 class OSPolicyResourcePackageResourceZypper {
   /// Package name.
@@ -12,15 +13,15 @@ class OSPolicyResourcePackageResourceZypper {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory OSPolicyResourcePackageResourceZypper.fromMap(
-      Map<String, dynamic> map) {
+  factory OSPolicyResourcePackageResourceZypper.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourcePackageResourceZypper(
       name: map['name'] as String,
     );
   }
 }
+

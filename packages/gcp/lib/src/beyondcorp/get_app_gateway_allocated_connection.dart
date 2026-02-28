@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetAppGatewayAllocatedConnection {
   /// The ingress port of an allocated connection.
   final int ingressPort;
-
   /// The PSC uri of an allocated connection.
   final String pscUri;
 
@@ -16,10 +16,10 @@ class GetAppGatewayAllocatedConnection {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ingressPort'] = ingressPort;
-    map['pscUri'] = pscUri;
-    return map;
+    return <String, dynamic>{
+      'ingressPort': ingressPort,
+      'pscUri': pscUri,
+    };
   }
 
   factory GetAppGatewayAllocatedConnection.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetAppGatewayAllocatedConnection {
     );
   }
 }
+

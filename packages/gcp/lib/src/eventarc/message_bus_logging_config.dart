@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MessageBusLoggingConfig {
   /// Optional. The minimum severity of logs that will be sent to Stackdriver/Platform
   /// Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
@@ -13,18 +14,15 @@ class MessageBusLoggingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final logSeverityValue = logSeverity;
-    if (logSeverityValue != null) {
-      map['logSeverity'] = logSeverityValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'logSeverity': ?logSeverity,
+    };
   }
 
   factory MessageBusLoggingConfig.fromMap(Map<String, dynamic> map) {
     return MessageBusLoggingConfig(
-      logSeverity:
-          map['logSeverity'] == null ? null : map['logSeverity'] as String,
+      logSeverity: map['logSeverity'] == null ? null : map['logSeverity'] as String,
     );
   }
 }
+

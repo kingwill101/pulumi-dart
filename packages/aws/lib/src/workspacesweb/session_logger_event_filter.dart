@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SessionLoggerEventFilter {
   /// Block that specifies to monitor all events. Set to `{}` to monitor all events.
   final Map<String, dynamic>? all;
-
   /// List of specific events to monitor. Valid values include session events like `SessionStart`, `SessionEnd`, etc.
   final List<String>? includes;
 
@@ -16,26 +16,17 @@ class SessionLoggerEventFilter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final allValue = all;
-    if (allValue != null) {
-      map['all'] = allValue;
-    }
-    final includesValue = includes;
-    if (includesValue != null) {
-      map['includes'] = includesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'all': ?all,
+      'includes': ?includes,
+    };
   }
 
   factory SessionLoggerEventFilter.fromMap(Map<String, dynamic> map) {
     return SessionLoggerEventFilter(
-      all: map['all'] == null
-          ? null
-          : (map['all'] as Map).cast<String, dynamic>(),
-      includes: map['includes'] == null
-          ? null
-          : (map['includes'] as List).cast<String>(),
+      all: map['all'] == null ? null : (map['all'] as Map).cast<String, dynamic>(),
+      includes: map['includes'] == null ? null : (map['includes'] as List).cast<String>(),
     );
   }
 }
+

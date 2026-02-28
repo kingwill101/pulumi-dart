@@ -6,7 +6,6 @@ import 'maven_repository_config_version_policy.dart';
 class MavenRepositoryConfig {
   /// The repository with this flag will allow publishing the same snapshot versions.
   final bool? allowSnapshotOverwrites;
-
   /// Version policy defines the versions that the registry will accept.
   final MavenRepositoryConfigVersionPolicy? versionPolicy;
 
@@ -19,27 +18,17 @@ class MavenRepositoryConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final allowSnapshotOverwritesValue = allowSnapshotOverwrites;
-    if (allowSnapshotOverwritesValue != null) {
-      map['allowSnapshotOverwrites'] = allowSnapshotOverwritesValue;
-    }
-    final versionPolicyValue = versionPolicy;
-    if (versionPolicyValue != null) {
-      map['versionPolicy'] = versionPolicyValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'allowSnapshotOverwrites': ?allowSnapshotOverwrites,
+      'versionPolicy': ?versionPolicy == null ? null : versionPolicy!.value,
+    };
   }
 
   factory MavenRepositoryConfig.fromMap(Map<String, dynamic> map) {
     return MavenRepositoryConfig(
-      allowSnapshotOverwrites: map['allowSnapshotOverwrites'] == null
-          ? null
-          : map['allowSnapshotOverwrites'] as bool,
-      versionPolicy: map['versionPolicy'] == null
-          ? null
-          : MavenRepositoryConfigVersionPolicy.fromValue(
-              map['versionPolicy'] as String),
+      allowSnapshotOverwrites: map['allowSnapshotOverwrites'] == null ? null : map['allowSnapshotOverwrites'] as bool,
+      versionPolicy: map['versionPolicy'] == null ? null : MavenRepositoryConfigVersionPolicy.fromValue(map['versionPolicy'] as String),
     );
   }
 }
+

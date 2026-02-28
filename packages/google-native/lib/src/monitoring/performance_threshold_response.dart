@@ -7,10 +7,8 @@ import 'request_based_sli_response.dart';
 class PerformanceThresholdResponse {
   /// BasicSli to evaluate to judge window quality.
   final BasicSliResponse basicSliPerformance;
-
   /// RequestBasedSli to evaluate to judge window quality.
   final RequestBasedSliResponse performance;
-
   /// If window performance >= threshold, the window is counted as good.
   final double threshold;
 
@@ -25,20 +23,19 @@ class PerformanceThresholdResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['basicSliPerformance'] = basicSliPerformance.toMap();
-    map['performance'] = performance.toMap();
-    map['threshold'] = threshold;
-    return map;
+    return <String, dynamic>{
+      'basicSliPerformance': basicSliPerformance.toMap(),
+      'performance': performance.toMap(),
+      'threshold': threshold,
+    };
   }
 
   factory PerformanceThresholdResponse.fromMap(Map<String, dynamic> map) {
     return PerformanceThresholdResponse(
-      basicSliPerformance: BasicSliResponse.fromMap(
-          (map['basicSliPerformance'] as Map).cast<String, dynamic>()),
-      performance: RequestBasedSliResponse.fromMap(
-          (map['performance'] as Map).cast<String, dynamic>()),
+      basicSliPerformance: BasicSliResponse.fromMap((map['basicSliPerformance'] as Map).cast<String, dynamic>()),
+      performance: RequestBasedSliResponse.fromMap((map['performance'] as Map).cast<String, dynamic>()),
       threshold: map['threshold'] as double,
     );
   }
 }
+

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getActivity.
 class GetActivityResult {
   final String arn;
-
   /// Date the activity was created.
   final String creationDate;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -27,13 +26,13 @@ class GetActivityResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['creationDate'] = creationDate;
-    map['id'] = id;
-    map['name'] = name;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'creationDate': creationDate,
+      'id': id,
+      'name': name,
+      'region': region,
+    };
   }
 
   factory GetActivityResult.fromMap(Map<String, dynamic> map) {
@@ -46,3 +45,4 @@ class GetActivityResult {
     );
   }
 }
+

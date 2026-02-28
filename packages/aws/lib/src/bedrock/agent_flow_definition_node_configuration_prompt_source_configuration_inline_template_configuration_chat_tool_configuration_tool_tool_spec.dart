@@ -5,11 +5,8 @@ import 'agent_flow_definition_node_configuration_prompt_source_configuration_inl
 class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpec {
   /// A description for the flow.
   final String? description;
-
   /// The input schema of the tool. See Tool Input Schema for more information.
-  final AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema?
-      inputSchema;
-
+  final AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema? inputSchema;
   /// A name for the flow.
   final String name;
 
@@ -24,29 +21,19 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final inputSchemaValue = inputSchema;
-    if (inputSchemaValue != null) {
-      map['inputSchema'] = inputSchemaValue.toMap();
-    }
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'inputSchema': ?inputSchema == null ? null : inputSchema!.toMap(),
+      'name': name,
+    };
   }
 
-  factory AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpec.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpec.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpec(
-      description:
-          map['description'] == null ? null : map['description'] as String,
-      inputSchema: map['inputSchema'] == null
-          ? null
-          : AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema
-              .fromMap((map['inputSchema'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : map['description'] as String,
+      inputSchema: map['inputSchema'] == null ? null : AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema.fromMap((map['inputSchema'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
     );
   }
 }
+

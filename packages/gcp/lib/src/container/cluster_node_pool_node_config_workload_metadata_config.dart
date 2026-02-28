@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterNodePoolNodeConfigWorkloadMetadataConfig {
   /// How to expose the node metadata to the workload running on the node.
   /// Accepted values are:
@@ -15,15 +16,15 @@ class ClusterNodePoolNodeConfigWorkloadMetadataConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['mode'] = mode;
-    return map;
+    return <String, dynamic>{
+      'mode': mode,
+    };
   }
 
-  factory ClusterNodePoolNodeConfigWorkloadMetadataConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterNodePoolNodeConfigWorkloadMetadataConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolNodeConfigWorkloadMetadataConfig(
       mode: map['mode'] as String,
     );
   }
 }
+

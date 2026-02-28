@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppVersionSnapshotAppDefaultChannelProfilePersonaProperty {
   /// (Output)
   /// The persona of the channel.
@@ -16,18 +17,15 @@ class AppVersionSnapshotAppDefaultChannelProfilePersonaProperty {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final personaValue = persona;
-    if (personaValue != null) {
-      map['persona'] = personaValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'persona': ?persona,
+    };
   }
 
-  factory AppVersionSnapshotAppDefaultChannelProfilePersonaProperty.fromMap(
-      Map<String, dynamic> map) {
+  factory AppVersionSnapshotAppDefaultChannelProfilePersonaProperty.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppDefaultChannelProfilePersonaProperty(
       persona: map['persona'] == null ? null : map['persona'] as String,
     );
   }
 }
+

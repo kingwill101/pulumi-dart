@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class StreamProcessorRegionsOfInterestBoundingBox {
   /// Height of the bounding box as a ratio of the overall image height.
   final double? height;
-
   /// Left coordinate of the bounding box as a ratio of overall image width.
   final double? left;
-
   /// Top coordinate of the bounding box as a ratio of overall image height.
   final double? top;
-
   /// Width of the bounding box as a ratio of the overall image width.
   final double? width;
 
@@ -26,28 +24,15 @@ class StreamProcessorRegionsOfInterestBoundingBox {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final heightValue = height;
-    if (heightValue != null) {
-      map['height'] = heightValue;
-    }
-    final leftValue = left;
-    if (leftValue != null) {
-      map['left'] = leftValue;
-    }
-    final topValue = top;
-    if (topValue != null) {
-      map['top'] = topValue;
-    }
-    final widthValue = width;
-    if (widthValue != null) {
-      map['width'] = widthValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'height': ?height,
+      'left': ?left,
+      'top': ?top,
+      'width': ?width,
+    };
   }
 
-  factory StreamProcessorRegionsOfInterestBoundingBox.fromMap(
-      Map<String, dynamic> map) {
+  factory StreamProcessorRegionsOfInterestBoundingBox.fromMap(Map<String, dynamic> map) {
     return StreamProcessorRegionsOfInterestBoundingBox(
       height: map['height'] == null ? null : map['height'] as double,
       left: map['left'] == null ? null : map['left'] as double,
@@ -56,3 +41,4 @@ class StreamProcessorRegionsOfInterestBoundingBox {
     );
   }
 }
+

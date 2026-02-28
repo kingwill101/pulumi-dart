@@ -10,7 +10,6 @@ class InterconnectMacsec {
   /// connection is configured with a must-secure security policy that drops all traffic
   /// if the MKA session cannot be established with your router.
   final bool? failOpen;
-
   /// A keychain placeholder describing a set of named key objects along with their
   /// start times. A MACsec CKN/CAK is generated for each key in the key chain.
   /// Google router automatically picks the key with the most recent startTime when establishing
@@ -27,24 +26,17 @@ class InterconnectMacsec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final failOpenValue = failOpen;
-    if (failOpenValue != null) {
-      map['failOpen'] = failOpenValue;
-    }
-    map['preSharedKeys'] = pulumi.Input.encodeList<
-        InterconnectMacsecPreSharedKey,
-        Map<String, dynamic>>(preSharedKeys, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'failOpen': ?failOpen,
+      'preSharedKeys': pulumi.Input.encodeList<InterconnectMacsecPreSharedKey, Map<String, dynamic>>(preSharedKeys, (value) => value.toMap()),
+    };
   }
 
   factory InterconnectMacsec.fromMap(Map<String, dynamic> map) {
     return InterconnectMacsec(
       failOpen: map['failOpen'] == null ? null : map['failOpen'] as bool,
-      preSharedKeys: pulumi.Input.decodeList<InterconnectMacsecPreSharedKey>(
-          map['preSharedKeys'],
-          (value) => InterconnectMacsecPreSharedKey.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      preSharedKeys: pulumi.Input.decodeList<InterconnectMacsecPreSharedKey>(map['preSharedKeys'], (value) => InterconnectMacsecPreSharedKey.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

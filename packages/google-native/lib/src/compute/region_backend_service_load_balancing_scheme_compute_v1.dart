@@ -10,15 +10,13 @@ enum RegionBackendServiceLoadBalancingSchemeComputeV1 {
   const RegionBackendServiceLoadBalancingSchemeComputeV1(this.value);
   final String value;
 
-  static RegionBackendServiceLoadBalancingSchemeComputeV1 fromValue(
-      String value) {
-    for (final item
-        in RegionBackendServiceLoadBalancingSchemeComputeV1.values) {
+  static RegionBackendServiceLoadBalancingSchemeComputeV1 fromValue(String value) {
+    for (final item in RegionBackendServiceLoadBalancingSchemeComputeV1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown RegionBackendServiceLoadBalancingSchemeComputeV1 value: $value');
+    throw ArgumentError('Unknown RegionBackendServiceLoadBalancingSchemeComputeV1 value: $value');
   }
 }
+

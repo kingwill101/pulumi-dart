@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetResourcesResourceTagMappingListComplianceDetail {
   /// Whether the resource is compliant.
   /// * `keys_with_noncompliant_values ` - Set of tag keys with non-compliant tag values.
@@ -19,20 +20,19 @@ class GetResourcesResourceTagMappingListComplianceDetail {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['complianceStatus'] = complianceStatus;
-    map['keysWithNoncompliantValues'] = keysWithNoncompliantValues;
-    map['nonCompliantKeys'] = nonCompliantKeys;
-    return map;
+    return <String, dynamic>{
+      'complianceStatus': complianceStatus,
+      'keysWithNoncompliantValues': keysWithNoncompliantValues,
+      'nonCompliantKeys': nonCompliantKeys,
+    };
   }
 
-  factory GetResourcesResourceTagMappingListComplianceDetail.fromMap(
-      Map<String, dynamic> map) {
+  factory GetResourcesResourceTagMappingListComplianceDetail.fromMap(Map<String, dynamic> map) {
     return GetResourcesResourceTagMappingListComplianceDetail(
       complianceStatus: map['complianceStatus'] as bool,
-      keysWithNoncompliantValues:
-          (map['keysWithNoncompliantValues'] as List).cast<String>(),
+      keysWithNoncompliantValues: (map['keysWithNoncompliantValues'] as List).cast<String>(),
       nonCompliantKeys: (map['nonCompliantKeys'] as List).cast<String>(),
     );
   }
 }
+

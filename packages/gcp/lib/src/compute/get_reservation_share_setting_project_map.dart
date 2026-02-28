@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetReservationShareSettingProjectMap {
   final String id;
-
   /// The project id/number, should be same as the key of this project config in the project map.
   final String projectId;
 
@@ -15,17 +15,17 @@ class GetReservationShareSettingProjectMap {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['projectId'] = projectId;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'projectId': projectId,
+    };
   }
 
-  factory GetReservationShareSettingProjectMap.fromMap(
-      Map<String, dynamic> map) {
+  factory GetReservationShareSettingProjectMap.fromMap(Map<String, dynamic> map) {
     return GetReservationShareSettingProjectMap(
       id: map['id'] as String,
       projectId: map['projectId'] as String,
     );
   }
 }
+

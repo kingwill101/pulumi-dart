@@ -9,7 +9,6 @@ class InstancePerformanceConfig {
   /// capacity.
   /// Structure is documented below.
   final InstancePerformanceConfigFixedIops? fixedIops;
-
   /// The instance provisioned IOPS will change dynamically
   /// based on the capacity of the instance.
   /// Structure is documented below.
@@ -24,28 +23,17 @@ class InstancePerformanceConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final fixedIopsValue = fixedIops;
-    if (fixedIopsValue != null) {
-      map['fixedIops'] = fixedIopsValue.toMap();
-    }
-    final iopsPerTbValue = iopsPerTb;
-    if (iopsPerTbValue != null) {
-      map['iopsPerTb'] = iopsPerTbValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'fixedIops': ?fixedIops == null ? null : fixedIops!.toMap(),
+      'iopsPerTb': ?iopsPerTb == null ? null : iopsPerTb!.toMap(),
+    };
   }
 
   factory InstancePerformanceConfig.fromMap(Map<String, dynamic> map) {
     return InstancePerformanceConfig(
-      fixedIops: map['fixedIops'] == null
-          ? null
-          : InstancePerformanceConfigFixedIops.fromMap(
-              (map['fixedIops'] as Map).cast<String, dynamic>()),
-      iopsPerTb: map['iopsPerTb'] == null
-          ? null
-          : InstancePerformanceConfigIopsPerTb.fromMap(
-              (map['iopsPerTb'] as Map).cast<String, dynamic>()),
+      fixedIops: map['fixedIops'] == null ? null : InstancePerformanceConfigFixedIops.fromMap((map['fixedIops'] as Map).cast<String, dynamic>()),
+      iopsPerTb: map['iopsPerTb'] == null ? null : InstancePerformanceConfigIopsPerTb.fromMap((map['iopsPerTb'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

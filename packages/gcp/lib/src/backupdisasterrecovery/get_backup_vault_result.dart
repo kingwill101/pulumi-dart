@@ -22,7 +22,6 @@ class GetBackupVaultResult {
   final String etag;
   final bool forceDelete;
   final bool forceUpdate;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool ignoreBackupPlanReferences;
@@ -103,44 +102,38 @@ class GetBackupVaultResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accessRestriction'] = accessRestriction;
-    map['allowMissing'] = allowMissing;
-    map['annotations'] = annotations;
-    map['backupCount'] = backupCount;
-    map['backupMinimumEnforcedRetentionDuration'] =
-        backupMinimumEnforcedRetentionDuration;
-    map['backupRetentionInheritance'] = backupRetentionInheritance;
-    map['backupVaultId'] = backupVaultId;
-    map['createTime'] = createTime;
-    map['deletable'] = deletable;
-    map['description'] = description;
-    map['effectiveAnnotations'] = effectiveAnnotations;
-    map['effectiveLabels'] = effectiveLabels;
-    map['effectiveTime'] = effectiveTime;
-    map['encryptionConfigs'] = pulumi.Input.encodeList<
-        GetBackupVaultEncryptionConfig,
-        Map<String, dynamic>>(encryptionConfigs, (value) => value.toMap());
-    map['etag'] = etag;
-    map['forceDelete'] = forceDelete;
-    map['forceUpdate'] = forceUpdate;
-    map['id'] = id;
-    map['ignoreBackupPlanReferences'] = ignoreBackupPlanReferences;
-    map['ignoreInactiveDatasources'] = ignoreInactiveDatasources;
-    map['labels'] = labels;
-    map['location'] = location;
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['pulumiLabels'] = pulumiLabels;
-    map['serviceAccount'] = serviceAccount;
-    map['state'] = state;
-    map['totalStoredBytes'] = totalStoredBytes;
-    map['uid'] = uid;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'accessRestriction': accessRestriction,
+      'allowMissing': allowMissing,
+      'annotations': annotations,
+      'backupCount': backupCount,
+      'backupMinimumEnforcedRetentionDuration': backupMinimumEnforcedRetentionDuration,
+      'backupRetentionInheritance': backupRetentionInheritance,
+      'backupVaultId': backupVaultId,
+      'createTime': createTime,
+      'deletable': deletable,
+      'description': description,
+      'effectiveAnnotations': effectiveAnnotations,
+      'effectiveLabels': effectiveLabels,
+      'effectiveTime': effectiveTime,
+      'encryptionConfigs': pulumi.Input.encodeList<GetBackupVaultEncryptionConfig, Map<String, dynamic>>(encryptionConfigs, (value) => value.toMap()),
+      'etag': etag,
+      'forceDelete': forceDelete,
+      'forceUpdate': forceUpdate,
+      'id': id,
+      'ignoreBackupPlanReferences': ignoreBackupPlanReferences,
+      'ignoreInactiveDatasources': ignoreInactiveDatasources,
+      'labels': labels,
+      'location': location,
+      'name': name,
+      'project': ?project,
+      'pulumiLabels': pulumiLabels,
+      'serviceAccount': serviceAccount,
+      'state': state,
+      'totalStoredBytes': totalStoredBytes,
+      'uid': uid,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetBackupVaultResult.fromMap(Map<String, dynamic> map) {
@@ -149,22 +142,16 @@ class GetBackupVaultResult {
       allowMissing: map['allowMissing'] as bool,
       annotations: (map['annotations'] as Map).cast<String, String>(),
       backupCount: map['backupCount'] as String,
-      backupMinimumEnforcedRetentionDuration:
-          map['backupMinimumEnforcedRetentionDuration'] as String,
+      backupMinimumEnforcedRetentionDuration: map['backupMinimumEnforcedRetentionDuration'] as String,
       backupRetentionInheritance: map['backupRetentionInheritance'] as String,
       backupVaultId: map['backupVaultId'] as String,
       createTime: map['createTime'] as String,
       deletable: map['deletable'] as bool,
       description: map['description'] as String,
-      effectiveAnnotations:
-          (map['effectiveAnnotations'] as Map).cast<String, String>(),
+      effectiveAnnotations: (map['effectiveAnnotations'] as Map).cast<String, String>(),
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       effectiveTime: map['effectiveTime'] as String,
-      encryptionConfigs:
-          pulumi.Input.decodeList<GetBackupVaultEncryptionConfig>(
-              map['encryptionConfigs'],
-              (value) => GetBackupVaultEncryptionConfig.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      encryptionConfigs: pulumi.Input.decodeList<GetBackupVaultEncryptionConfig>(map['encryptionConfigs'], (value) => GetBackupVaultEncryptionConfig.fromMap((value as Map).cast<String, dynamic>())),
       etag: map['etag'] as String,
       forceDelete: map['forceDelete'] as bool,
       forceUpdate: map['forceUpdate'] as bool,
@@ -184,3 +171,4 @@ class GetBackupVaultResult {
     );
   }
 }
+

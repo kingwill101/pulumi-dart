@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MaterialResponse {
   final Map<String, String> digest;
   final String uri;
@@ -13,10 +14,10 @@ class MaterialResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['digest'] = digest;
-    map['uri'] = uri;
-    return map;
+    return <String, dynamic>{
+      'digest': digest,
+      'uri': uri,
+    };
   }
 
   factory MaterialResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class MaterialResponse {
     );
   }
 }
+

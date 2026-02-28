@@ -7,48 +7,34 @@ import 'get_proxy_auth.dart';
 class GetProxyResult {
   /// ARN of the DB Proxy.
   final String arn;
-
   /// Configuration(s) with authorization mechanisms to connect to the associated instance or cluster.
   final List<GetProxyAuth> auths;
-
   /// Whether the proxy includes detailed information about SQL statements in its logs.
   final bool debugLogging;
-
   /// Default authentication scheme that the proxy uses for client connections to the proxy and connections from the proxy to the underlying database.
   final String defaultAuthScheme;
-
   /// Endpoint that you can use to connect to the DB proxy.
   final String endpoint;
-
   /// Network type of the DB proxy endpoint.
   final String endpointNetworkType;
-
   /// Kinds of databases that the proxy can connect to.
   final String engineFamily;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Number of seconds a connection to the proxy can have no activity before the proxy drops the client connection.
   final int idleClientTimeout;
   final String name;
   final String region;
-
   /// Whether Transport Layer Security (TLS) encryption is required for connections to the proxy.
   final bool requireTls;
-
   /// ARN for the IAM role that the proxy uses to access Amazon Secrets Manager.
   final String roleArn;
-
   /// Network type that the proxy uses to connect to the target database.
   final String targetConnectionNetworkType;
-
   /// Provides the VPC ID of the DB proxy.
   final String vpcId;
-
   /// Provides a list of VPC security groups that the proxy belongs to.
   final List<String> vpcSecurityGroupIds;
-
   /// EC2 subnet IDs for the proxy.
   final List<String> vpcSubnetIds;
 
@@ -91,35 +77,31 @@ class GetProxyResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['auths'] = pulumi.Input.encodeList<GetProxyAuth, Map<String, dynamic>>(
-        auths, (value) => value.toMap());
-    map['debugLogging'] = debugLogging;
-    map['defaultAuthScheme'] = defaultAuthScheme;
-    map['endpoint'] = endpoint;
-    map['endpointNetworkType'] = endpointNetworkType;
-    map['engineFamily'] = engineFamily;
-    map['id'] = id;
-    map['idleClientTimeout'] = idleClientTimeout;
-    map['name'] = name;
-    map['region'] = region;
-    map['requireTls'] = requireTls;
-    map['roleArn'] = roleArn;
-    map['targetConnectionNetworkType'] = targetConnectionNetworkType;
-    map['vpcId'] = vpcId;
-    map['vpcSecurityGroupIds'] = vpcSecurityGroupIds;
-    map['vpcSubnetIds'] = vpcSubnetIds;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'auths': pulumi.Input.encodeList<GetProxyAuth, Map<String, dynamic>>(auths, (value) => value.toMap()),
+      'debugLogging': debugLogging,
+      'defaultAuthScheme': defaultAuthScheme,
+      'endpoint': endpoint,
+      'endpointNetworkType': endpointNetworkType,
+      'engineFamily': engineFamily,
+      'id': id,
+      'idleClientTimeout': idleClientTimeout,
+      'name': name,
+      'region': region,
+      'requireTls': requireTls,
+      'roleArn': roleArn,
+      'targetConnectionNetworkType': targetConnectionNetworkType,
+      'vpcId': vpcId,
+      'vpcSecurityGroupIds': vpcSecurityGroupIds,
+      'vpcSubnetIds': vpcSubnetIds,
+    };
   }
 
   factory GetProxyResult.fromMap(Map<String, dynamic> map) {
     return GetProxyResult(
       arn: map['arn'] as String,
-      auths: pulumi.Input.decodeList<GetProxyAuth>(
-          map['auths'],
-          (value) =>
-              GetProxyAuth.fromMap((value as Map).cast<String, dynamic>())),
+      auths: pulumi.Input.decodeList<GetProxyAuth>(map['auths'], (value) => GetProxyAuth.fromMap((value as Map).cast<String, dynamic>())),
       debugLogging: map['debugLogging'] as bool,
       defaultAuthScheme: map['defaultAuthScheme'] as String,
       endpoint: map['endpoint'] as String,
@@ -138,3 +120,4 @@ class GetProxyResult {
     );
   }
 }
+

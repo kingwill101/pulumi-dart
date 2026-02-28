@@ -17,3 +17,4 @@ enum ScanConfigUserAgent {
     throw ArgumentError('Unknown ScanConfigUserAgent value: $value');
   }
 }
+

@@ -6,10 +6,8 @@ import 'software_recipe_step_extract_archive_type.dart';
 class SoftwareRecipeStepExtractArchive {
   /// The id of the relevant artifact in the recipe.
   final String artifactId;
-
   /// Directory to extract archive to. Defaults to `/` on Linux or `C:\` on Windows.
   final String? destination;
-
   /// The type of the archive to extract.
   final SoftwareRecipeStepExtractArchiveType type;
 
@@ -24,23 +22,19 @@ class SoftwareRecipeStepExtractArchive {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['artifactId'] = artifactId;
-    final destinationValue = destination;
-    if (destinationValue != null) {
-      map['destination'] = destinationValue;
-    }
-    map['type'] = type.value;
-    return map;
+    return <String, dynamic>{
+      'artifactId': artifactId,
+      'destination': ?destination,
+      'type': type.value,
+    };
   }
 
   factory SoftwareRecipeStepExtractArchive.fromMap(Map<String, dynamic> map) {
     return SoftwareRecipeStepExtractArchive(
       artifactId: map['artifactId'] as String,
-      destination:
-          map['destination'] == null ? null : map['destination'] as String,
-      type:
-          SoftwareRecipeStepExtractArchiveType.fromValue(map['type'] as String),
+      destination: map['destination'] == null ? null : map['destination'] as String,
+      type: SoftwareRecipeStepExtractArchiveType.fromValue(map['type'] as String),
     );
   }
 }
+

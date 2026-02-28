@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Schema in Thrift format.
 class GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse {
   /// Thrift IDL source of the schema.
@@ -12,15 +13,15 @@ class GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['text'] = text;
-    return map;
+    return <String, dynamic>{
+      'text': text,
+    };
   }
 
-  factory GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse(
       text: map['text'] as String,
     );
   }
 }
+

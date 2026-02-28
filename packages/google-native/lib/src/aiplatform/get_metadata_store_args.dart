@@ -19,19 +19,17 @@ class GetMetadataStoreArgs {
     required String location,
     required String metadataStoreId,
     String? project,
-  })  : location = pulumi.Input.asInput<String>(location),
-        metadataStoreId = pulumi.Input.asInput<String>(metadataStoreId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      metadataStoreId = pulumi.Input.asInput<String>(metadataStoreId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    map['metadataStoreId'] = metadataStoreId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'metadataStoreId': metadataStoreId,
+      'project': ?project,
+    };
   }
 
   factory GetMetadataStoreArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetMetadataStoreArgs {
     );
   }
 }
+

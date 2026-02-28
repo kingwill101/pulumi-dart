@@ -16,15 +16,15 @@ class GetFolderNotificationConfigArgs {
   GetFolderNotificationConfigArgs({
     required String folderId,
     required String notificationConfigId,
-  })  : folderId = pulumi.Input.asInput<String>(folderId),
-        notificationConfigId =
-            pulumi.Input.asInput<String>(notificationConfigId);
+  }) :
+      folderId = pulumi.Input.asInput<String>(folderId),
+      notificationConfigId = pulumi.Input.asInput<String>(notificationConfigId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['folderId'] = folderId;
-    map['notificationConfigId'] = notificationConfigId;
-    return map;
+    return <String, dynamic>{
+      'folderId': folderId,
+      'notificationConfigId': notificationConfigId,
+    };
   }
 
   factory GetFolderNotificationConfigArgs.fromMap(Map<String, dynamic> map) {
@@ -34,3 +34,4 @@ class GetFolderNotificationConfigArgs {
     );
   }
 }
+

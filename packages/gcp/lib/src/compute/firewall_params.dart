@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FirewallParams {
   /// Resource manager tags to be bound to the firewall. Tag keys and values have the
   /// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
@@ -16,19 +17,15 @@ class FirewallParams {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final resourceManagerTagsValue = resourceManagerTags;
-    if (resourceManagerTagsValue != null) {
-      map['resourceManagerTags'] = resourceManagerTagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'resourceManagerTags': ?resourceManagerTags,
+    };
   }
 
   factory FirewallParams.fromMap(Map<String, dynamic> map) {
     return FirewallParams(
-      resourceManagerTags: map['resourceManagerTags'] == null
-          ? null
-          : (map['resourceManagerTags'] as Map).cast<String, String>(),
+      resourceManagerTags: map['resourceManagerTags'] == null ? null : (map['resourceManagerTags'] as Map).cast<String, String>(),
     );
   }
 }
+

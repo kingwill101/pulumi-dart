@@ -4,8 +4,7 @@ import 'get_log_data_protection_policy_document_statement_operation_audit_findin
 
 class GetLogDataProtectionPolicyDocumentStatementOperationAudit {
   /// Configures destinations to send audit findings to.
-  final GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestination
-      findingsDestination;
+  final GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestination findingsDestination;
 
   /// Creates a new [GetLogDataProtectionPolicyDocumentStatementOperationAudit].
   /// [findingsDestination] Configures destinations to send audit findings to.
@@ -14,18 +13,15 @@ class GetLogDataProtectionPolicyDocumentStatementOperationAudit {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['findingsDestination'] = findingsDestination.toMap();
-    return map;
+    return <String, dynamic>{
+      'findingsDestination': findingsDestination.toMap(),
+    };
   }
 
-  factory GetLogDataProtectionPolicyDocumentStatementOperationAudit.fromMap(
-      Map<String, dynamic> map) {
+  factory GetLogDataProtectionPolicyDocumentStatementOperationAudit.fromMap(Map<String, dynamic> map) {
     return GetLogDataProtectionPolicyDocumentStatementOperationAudit(
-      findingsDestination:
-          GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestination
-              .fromMap(
-                  (map['findingsDestination'] as Map).cast<String, dynamic>()),
+      findingsDestination: GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestination.fromMap((map['findingsDestination'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

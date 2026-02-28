@@ -6,7 +6,6 @@ import 'week_day_of_month_osconfig_v1beta.dart';
 class MonthlyScheduleOsconfigV1beta {
   /// One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
   final int monthDay;
-
   /// Week day in a month.
   final WeekDayOfMonthOsconfigV1beta weekDayOfMonth;
 
@@ -19,17 +18,17 @@ class MonthlyScheduleOsconfigV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['monthDay'] = monthDay;
-    map['weekDayOfMonth'] = weekDayOfMonth.toMap();
-    return map;
+    return <String, dynamic>{
+      'monthDay': monthDay,
+      'weekDayOfMonth': weekDayOfMonth.toMap(),
+    };
   }
 
   factory MonthlyScheduleOsconfigV1beta.fromMap(Map<String, dynamic> map) {
     return MonthlyScheduleOsconfigV1beta(
       monthDay: map['monthDay'] as int,
-      weekDayOfMonth: WeekDayOfMonthOsconfigV1beta.fromMap(
-          (map['weekDayOfMonth'] as Map).cast<String, dynamic>()),
+      weekDayOfMonth: WeekDayOfMonthOsconfigV1beta.fromMap((map['weekDayOfMonth'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

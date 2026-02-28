@@ -17,12 +17,13 @@ class GetDatasetIamPolicyArgs {
   /// [datasetId] The dataset ID, in the form
   GetDatasetIamPolicyArgs({
     required String datasetId,
-  }) : datasetId = pulumi.Input.asInput<String>(datasetId);
+  }) :
+      datasetId = pulumi.Input.asInput<String>(datasetId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['datasetId'] = datasetId;
-    return map;
+    return <String, dynamic>{
+      'datasetId': datasetId,
+    };
   }
 
   factory GetDatasetIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -31,3 +32,4 @@ class GetDatasetIamPolicyArgs {
     );
   }
 }
+

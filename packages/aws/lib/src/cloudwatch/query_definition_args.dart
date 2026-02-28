@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class QueryDefinitionArgs {
   /// Specific log groups to use with the query.
   final pulumi.Input<List<String>>? logGroupNames;
-
   /// The name of the query.
   final pulumi.Input<String>? name;
-
   /// The query to save. You can read more about CloudWatch Logs Query Syntax in the [documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html).
   final pulumi.Input<String> queryString;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -29,38 +26,28 @@ class QueryDefinitionArgs {
     String? name,
     required String queryString,
     String? region,
-  })  : logGroupNames =
-            pulumi.Input.asOptionalInput<List<String>>(logGroupNames),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        queryString = pulumi.Input.asInput<String>(queryString),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      logGroupNames = pulumi.Input.asOptionalInput<List<String>>(logGroupNames),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      queryString = pulumi.Input.asInput<String>(queryString),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final logGroupNamesValue = logGroupNames;
-    if (logGroupNamesValue != null) {
-      map['logGroupNames'] = logGroupNamesValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    map['queryString'] = queryString;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'logGroupNames': ?logGroupNames,
+      'name': ?name,
+      'queryString': queryString,
+      'region': ?region,
+    };
   }
 
   factory QueryDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return QueryDefinitionArgs(
-      logGroupNames: map['logGroupNames'] == null
-          ? null
-          : (map['logGroupNames'] as List).cast<String>(),
+      logGroupNames: map['logGroupNames'] == null ? null : (map['logGroupNames'] as List).cast<String>(),
       name: map['name'] == null ? null : map['name'] as String,
       queryString: map['queryString'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

@@ -17,3 +17,4 @@ enum IndexState {
     throw ArgumentError('Unknown IndexState value: $value');
   }
 }
+

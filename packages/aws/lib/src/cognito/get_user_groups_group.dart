@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetUserGroupsGroup {
   /// Description of the user group.
   final String description;
-
   /// Name of the user group.
   final String groupName;
-
   /// Precedence of the user group.
   final int precedence;
-
   /// ARN of the IAM role to be associated with the user group.
   final String roleArn;
 
@@ -26,12 +24,12 @@ class GetUserGroupsGroup {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['description'] = description;
-    map['groupName'] = groupName;
-    map['precedence'] = precedence;
-    map['roleArn'] = roleArn;
-    return map;
+    return <String, dynamic>{
+      'description': description,
+      'groupName': groupName,
+      'precedence': precedence,
+      'roleArn': roleArn,
+    };
   }
 
   factory GetUserGroupsGroup.fromMap(Map<String, dynamic> map) {
@@ -43,3 +41,4 @@ class GetUserGroupsGroup {
     );
   }
 }
+

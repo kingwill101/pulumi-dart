@@ -8,10 +8,8 @@ import 'message_type.dart';
 class Message {
   /// The new job state.
   final MessageNewJobState? newJobState;
-
   /// The new task state.
   final MessageNewTaskState? newTaskState;
-
   /// The message type.
   final MessageType? type;
 
@@ -26,33 +24,19 @@ class Message {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final newJobStateValue = newJobState;
-    if (newJobStateValue != null) {
-      map['newJobState'] = newJobStateValue.value;
-    }
-    final newTaskStateValue = newTaskState;
-    if (newTaskStateValue != null) {
-      map['newTaskState'] = newTaskStateValue.value;
-    }
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'newJobState': ?newJobState == null ? null : newJobState!.value,
+      'newTaskState': ?newTaskState == null ? null : newTaskState!.value,
+      'type': ?type == null ? null : type!.value,
+    };
   }
 
   factory Message.fromMap(Map<String, dynamic> map) {
     return Message(
-      newJobState: map['newJobState'] == null
-          ? null
-          : MessageNewJobState.fromValue(map['newJobState'] as String),
-      newTaskState: map['newTaskState'] == null
-          ? null
-          : MessageNewTaskState.fromValue(map['newTaskState'] as String),
-      type: map['type'] == null
-          ? null
-          : MessageType.fromValue(map['type'] as String),
+      newJobState: map['newJobState'] == null ? null : MessageNewJobState.fromValue(map['newJobState'] as String),
+      newTaskState: map['newTaskState'] == null ? null : MessageNewTaskState.fromValue(map['newTaskState'] as String),
+      type: map['type'] == null ? null : MessageType.fromValue(map['type'] as String),
     );
   }
 }
+

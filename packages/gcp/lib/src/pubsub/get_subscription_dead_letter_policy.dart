@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetSubscriptionDeadLetterPolicy {
   /// The name of the topic to which dead letter messages should be published.
   /// Format is 'projects/{project}/topics/{topic}'.
@@ -13,7 +14,6 @@ class GetSubscriptionDeadLetterPolicy {
   /// Users should ensure that there is a subscription attached to this topic
   /// since messages published to a topic with no subscriptions are lost.
   final String deadLetterTopic;
-
   /// The maximum number of delivery attempts for any message. The value must be
   /// between 5 and 100.
   ///
@@ -37,10 +37,10 @@ class GetSubscriptionDeadLetterPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['deadLetterTopic'] = deadLetterTopic;
-    map['maxDeliveryAttempts'] = maxDeliveryAttempts;
-    return map;
+    return <String, dynamic>{
+      'deadLetterTopic': deadLetterTopic,
+      'maxDeliveryAttempts': maxDeliveryAttempts,
+    };
   }
 
   factory GetSubscriptionDeadLetterPolicy.fromMap(Map<String, dynamic> map) {
@@ -50,3 +50,4 @@ class GetSubscriptionDeadLetterPolicy {
     );
   }
 }
+

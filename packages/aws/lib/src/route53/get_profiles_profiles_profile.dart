@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetProfilesProfilesProfile {
   /// ARN of the Profile.
   final String arn;
-
   /// ID of the Profile.
   final String id;
-
   /// Name of the Profile.
   final String name;
-
   /// Share status of the Profile. Valid values [AWS docs](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53profiles_Profile.html)
   final String shareStatus;
 
@@ -26,12 +24,12 @@ class GetProfilesProfilesProfile {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['id'] = id;
-    map['name'] = name;
-    map['shareStatus'] = shareStatus;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'id': id,
+      'name': name,
+      'shareStatus': shareStatus,
+    };
   }
 
   factory GetProfilesProfilesProfile.fromMap(Map<String, dynamic> map) {
@@ -43,3 +41,4 @@ class GetProfilesProfilesProfile {
     );
   }
 }
+

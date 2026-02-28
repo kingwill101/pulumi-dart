@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for the Cloud Storage Fuse CSI driver.
 class GcsFuseCsiDriverConfigResponse {
   /// Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.
@@ -12,9 +13,9 @@ class GcsFuseCsiDriverConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory GcsFuseCsiDriverConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class GcsFuseCsiDriverConfigResponse {
     );
   }
 }
+

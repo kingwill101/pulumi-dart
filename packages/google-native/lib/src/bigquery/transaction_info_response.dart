@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TransactionInfoResponse {
   /// // [Alpha] Id of the transaction.
   final String transactionId;
@@ -11,9 +12,9 @@ class TransactionInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['transactionId'] = transactionId;
-    return map;
+    return <String, dynamic>{
+      'transactionId': transactionId,
+    };
   }
 
   factory TransactionInfoResponse.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class TransactionInfoResponse {
     );
   }
 }
+

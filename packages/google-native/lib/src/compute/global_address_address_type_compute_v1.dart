@@ -13,7 +13,7 @@ enum GlobalAddressAddressTypeComputeV1 {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GlobalAddressAddressTypeComputeV1 value: $value');
+    throw ArgumentError('Unknown GlobalAddressAddressTypeComputeV1 value: $value');
   }
 }
+

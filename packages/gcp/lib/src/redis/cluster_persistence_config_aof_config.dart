@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterPersistenceConfigAofConfig {
   /// Optional. Available fsync modes.
   /// - NO - Do not explicitly call fsync(). Rely on OS defaults.
@@ -15,18 +16,15 @@ class ClusterPersistenceConfigAofConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final appendFsyncValue = appendFsync;
-    if (appendFsyncValue != null) {
-      map['appendFsync'] = appendFsyncValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'appendFsync': ?appendFsync,
+    };
   }
 
   factory ClusterPersistenceConfigAofConfig.fromMap(Map<String, dynamic> map) {
     return ClusterPersistenceConfigAofConfig(
-      appendFsync:
-          map['appendFsync'] == null ? null : map['appendFsync'] as String,
+      appendFsync: map['appendFsync'] == null ? null : map['appendFsync'] as String,
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OrganizationSecurityPolicyAssociationArgs {
   /// The resource that the security policy is attached to.
   final pulumi.Input<String> attachmentId;
-
   /// The name for an association.
   final pulumi.Input<String>? name;
-
   /// The security policy ID of the association.
   final pulumi.Input<String> policyId;
 
@@ -24,23 +22,20 @@ class OrganizationSecurityPolicyAssociationArgs {
     required String attachmentId,
     String? name,
     required String policyId,
-  })  : attachmentId = pulumi.Input.asInput<String>(attachmentId),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        policyId = pulumi.Input.asInput<String>(policyId);
+  }) :
+      attachmentId = pulumi.Input.asInput<String>(attachmentId),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      policyId = pulumi.Input.asInput<String>(policyId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['attachmentId'] = attachmentId;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    map['policyId'] = policyId;
-    return map;
+    return <String, dynamic>{
+      'attachmentId': attachmentId,
+      'name': ?name,
+      'policyId': policyId,
+    };
   }
 
-  factory OrganizationSecurityPolicyAssociationArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory OrganizationSecurityPolicyAssociationArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationSecurityPolicyAssociationArgs(
       attachmentId: map['attachmentId'] as String,
       name: map['name'] == null ? null : map['name'] as String,
@@ -48,3 +43,4 @@ class OrganizationSecurityPolicyAssociationArgs {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class V2VmShieldedInstanceConfig {
   /// Defines whether the instance has Secure Boot enabled.
   final bool enableSecureBoot;
@@ -11,9 +12,9 @@ class V2VmShieldedInstanceConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enableSecureBoot'] = enableSecureBoot;
-    return map;
+    return <String, dynamic>{
+      'enableSecureBoot': enableSecureBoot,
+    };
   }
 
   factory V2VmShieldedInstanceConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class V2VmShieldedInstanceConfig {
     );
   }
 }
+

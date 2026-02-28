@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VolumeCacheParametersCacheConfig {
   /// Optional. Flag indicating whether a CIFS change notification is enabled for the FlexCache volume.
   final bool? cifsChangeNotifyEnabled;
@@ -11,19 +12,15 @@ class VolumeCacheParametersCacheConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cifsChangeNotifyEnabledValue = cifsChangeNotifyEnabled;
-    if (cifsChangeNotifyEnabledValue != null) {
-      map['cifsChangeNotifyEnabled'] = cifsChangeNotifyEnabledValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cifsChangeNotifyEnabled': ?cifsChangeNotifyEnabled,
+    };
   }
 
   factory VolumeCacheParametersCacheConfig.fromMap(Map<String, dynamic> map) {
     return VolumeCacheParametersCacheConfig(
-      cifsChangeNotifyEnabled: map['cifsChangeNotifyEnabled'] == null
-          ? null
-          : map['cifsChangeNotifyEnabled'] as bool,
+      cifsChangeNotifyEnabled: map['cifsChangeNotifyEnabled'] == null ? null : map['cifsChangeNotifyEnabled'] as bool,
     );
   }
 }
+

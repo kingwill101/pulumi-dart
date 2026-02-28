@@ -15,19 +15,15 @@ class TlsRouteRouteActionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['destinations'] = pulumi.Input.encodeList<
-        TlsRouteRouteDestinationResponse,
-        Map<String, dynamic>>(destinations, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'destinations': pulumi.Input.encodeList<TlsRouteRouteDestinationResponse, Map<String, dynamic>>(destinations, (value) => value.toMap()),
+    };
   }
 
   factory TlsRouteRouteActionResponse.fromMap(Map<String, dynamic> map) {
     return TlsRouteRouteActionResponse(
-      destinations: pulumi.Input.decodeList<TlsRouteRouteDestinationResponse>(
-          map['destinations'],
-          (value) => TlsRouteRouteDestinationResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      destinations: pulumi.Input.decodeList<TlsRouteRouteDestinationResponse>(map['destinations'], (value) => TlsRouteRouteDestinationResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

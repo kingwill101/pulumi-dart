@@ -6,7 +6,6 @@ import 'google_cloud_beyondcorp_appconnections_v1alpha_app_connection_gateway_ty
 class GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGateway {
   /// AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}`
   final String appGateway;
-
   /// The type of hosting used by the gateway.
   final GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayType type;
 
@@ -19,18 +18,17 @@ class GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGateway {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['appGateway'] = appGateway;
-    map['type'] = type.value;
-    return map;
+    return <String, dynamic>{
+      'appGateway': appGateway,
+      'type': type.value,
+    };
   }
 
-  factory GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGateway.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGateway.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGateway(
       appGateway: map['appGateway'] as String,
-      type: GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayType
-          .fromValue(map['type'] as String),
+      type: GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayType.fromValue(map['type'] as String),
     );
   }
 }
+

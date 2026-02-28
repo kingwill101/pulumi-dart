@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LaunchTemplateHibernationOptions {
   /// If set to `true`, the launched EC2 instance will hibernation enabled.
   final bool configured;
@@ -11,9 +12,9 @@ class LaunchTemplateHibernationOptions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['configured'] = configured;
-    return map;
+    return <String, dynamic>{
+      'configured': configured,
+    };
   }
 
   factory LaunchTemplateHibernationOptions.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class LaunchTemplateHibernationOptions {
     );
   }
 }
+

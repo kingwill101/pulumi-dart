@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeRoleConfiguration {
   /// Whether the Snowflake role is enabled.
   final bool? enabled;
-
   /// The Snowflake role.
   final String? snowflakeRole;
 
@@ -16,24 +16,17 @@ class FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeRoleConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    final snowflakeRoleValue = snowflakeRole;
-    if (snowflakeRoleValue != null) {
-      map['snowflakeRole'] = snowflakeRoleValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': ?enabled,
+      'snowflakeRole': ?snowflakeRole,
+    };
   }
 
-  factory FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeRoleConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeRoleConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeRoleConfiguration(
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      snowflakeRole:
-          map['snowflakeRole'] == null ? null : map['snowflakeRole'] as String,
+      snowflakeRole: map['snowflakeRole'] == null ? null : map['snowflakeRole'] as String,
     );
   }
 }
+

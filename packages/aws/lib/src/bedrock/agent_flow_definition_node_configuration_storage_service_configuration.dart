@@ -12,21 +12,15 @@ class AgentFlowDefinitionNodeConfigurationStorageServiceConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final s3Value = s3;
-    if (s3Value != null) {
-      map['s3'] = s3Value.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      's3': ?s3 == null ? null : s3!.toMap(),
+    };
   }
 
-  factory AgentFlowDefinitionNodeConfigurationStorageServiceConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentFlowDefinitionNodeConfigurationStorageServiceConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationStorageServiceConfiguration(
-      s3: map['s3'] == null
-          ? null
-          : AgentFlowDefinitionNodeConfigurationStorageServiceConfigurationS3
-              .fromMap((map['s3'] as Map).cast<String, dynamic>()),
+      s3: map['s3'] == null ? null : AgentFlowDefinitionNodeConfigurationStorageServiceConfigurationS3.fromMap((map['s3'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

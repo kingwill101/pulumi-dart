@@ -22,25 +22,21 @@ class GetLaunchTemplateBlockDeviceMapping {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['deviceName'] = deviceName;
-    map['ebs'] = pulumi.Input.encodeList<GetLaunchTemplateBlockDeviceMappingEb,
-        Map<String, dynamic>>(ebs, (value) => value.toMap());
-    map['noDevice'] = noDevice;
-    map['virtualName'] = virtualName;
-    return map;
+    return <String, dynamic>{
+      'deviceName': deviceName,
+      'ebs': pulumi.Input.encodeList<GetLaunchTemplateBlockDeviceMappingEb, Map<String, dynamic>>(ebs, (value) => value.toMap()),
+      'noDevice': noDevice,
+      'virtualName': virtualName,
+    };
   }
 
-  factory GetLaunchTemplateBlockDeviceMapping.fromMap(
-      Map<String, dynamic> map) {
+  factory GetLaunchTemplateBlockDeviceMapping.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateBlockDeviceMapping(
       deviceName: map['deviceName'] as String,
-      ebs: pulumi.Input.decodeList<GetLaunchTemplateBlockDeviceMappingEb>(
-          map['ebs'],
-          (value) => GetLaunchTemplateBlockDeviceMappingEb.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      ebs: pulumi.Input.decodeList<GetLaunchTemplateBlockDeviceMappingEb>(map['ebs'], (value) => GetLaunchTemplateBlockDeviceMappingEb.fromMap((value as Map).cast<String, dynamic>())),
       noDevice: map['noDevice'] as String,
       virtualName: map['virtualName'] as String,
     );
   }
 }
+

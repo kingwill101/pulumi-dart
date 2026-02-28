@@ -7,14 +7,11 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacility {
   /// (Output)
   /// The name of a facility, like "iad-1234".
   final String? facility;
-
   /// (Output)
   /// Zones used to explain this blocker in more detail.
   /// Format is "zone1" and/or "zone2". This will be set for some blockers
   /// (like  MISSING_ZONE) but does not apply to others.
-  final List<
-          InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone>?
-      zones;
+  final List<InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone>? zones;
 
   /// Creates a new [InterconnectAttachmentGroupLogicalStructureRegionMetroFacility].
   /// [facility] (Output)
@@ -25,32 +22,17 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacility {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final facilityValue = facility;
-    if (facilityValue != null) {
-      map['facility'] = facilityValue;
-    }
-    final zonesValue = zones;
-    if (zonesValue != null) {
-      map['zones'] = pulumi.Input.encodeList<
-          InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone,
-          Map<String, dynamic>>(zonesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'facility': ?facility,
+      'zones': ?zones == null ? null : pulumi.Input.encodeList<InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone, Map<String, dynamic>>(zones!, (value) => value.toMap()),
+    };
   }
 
-  factory InterconnectAttachmentGroupLogicalStructureRegionMetroFacility.fromMap(
-      Map<String, dynamic> map) {
+  factory InterconnectAttachmentGroupLogicalStructureRegionMetroFacility.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentGroupLogicalStructureRegionMetroFacility(
       facility: map['facility'] == null ? null : map['facility'] as String,
-      zones: map['zones'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone>(
-              map['zones'],
-              (value) =>
-                  InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      zones: map['zones'] == null ? null : pulumi.Input.decodeList<InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone>(map['zones'], (value) => InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

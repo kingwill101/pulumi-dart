@@ -15,19 +15,15 @@ class StatusResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['currentSteps'] =
-        pulumi.Input.encodeList<StepResponse, Map<String, dynamic>>(
-            currentSteps, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'currentSteps': pulumi.Input.encodeList<StepResponse, Map<String, dynamic>>(currentSteps, (value) => value.toMap()),
+    };
   }
 
   factory StatusResponse.fromMap(Map<String, dynamic> map) {
     return StatusResponse(
-      currentSteps: pulumi.Input.decodeList<StepResponse>(
-          map['currentSteps'],
-          (value) =>
-              StepResponse.fromMap((value as Map).cast<String, dynamic>())),
+      currentSteps: pulumi.Input.decodeList<StepResponse>(map['currentSteps'], (value) => StepResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -15,24 +15,15 @@ class WidgetConfigHomepageSetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final shortcutsValue = shortcuts;
-    if (shortcutsValue != null) {
-      map['shortcuts'] = pulumi.Input.encodeList<
-          WidgetConfigHomepageSettingShortcut,
-          Map<String, dynamic>>(shortcutsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'shortcuts': ?shortcuts == null ? null : pulumi.Input.encodeList<WidgetConfigHomepageSettingShortcut, Map<String, dynamic>>(shortcuts!, (value) => value.toMap()),
+    };
   }
 
   factory WidgetConfigHomepageSetting.fromMap(Map<String, dynamic> map) {
     return WidgetConfigHomepageSetting(
-      shortcuts: map['shortcuts'] == null
-          ? null
-          : pulumi.Input.decodeList<WidgetConfigHomepageSettingShortcut>(
-              map['shortcuts'],
-              (value) => WidgetConfigHomepageSettingShortcut.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      shortcuts: map['shortcuts'] == null ? null : pulumi.Input.decodeList<WidgetConfigHomepageSettingShortcut>(map['shortcuts'], (value) => WidgetConfigHomepageSettingShortcut.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ReceiptRuleWorkmailAction {
   /// The ARN of the WorkMail organization
   final String organizationArn;
-
   /// The position of the action in the receipt rule
   final int position;
-
   /// The ARN of an SNS topic to notify
   final String? topicArn;
 
@@ -21,14 +20,11 @@ class ReceiptRuleWorkmailAction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['organizationArn'] = organizationArn;
-    map['position'] = position;
-    final topicArnValue = topicArn;
-    if (topicArnValue != null) {
-      map['topicArn'] = topicArnValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'organizationArn': organizationArn,
+      'position': position,
+      'topicArn': ?topicArn,
+    };
   }
 
   factory ReceiptRuleWorkmailAction.fromMap(Map<String, dynamic> map) {
@@ -39,3 +35,4 @@ class ReceiptRuleWorkmailAction {
     );
   }
 }
+

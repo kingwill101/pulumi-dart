@@ -5,7 +5,6 @@ import 'gateway_route_spec_http_route_match_query_parameter_match.dart';
 class GatewayRouteSpecHttpRouteMatchQueryParameter {
   /// The query parameter to match on.
   final GatewayRouteSpecHttpRouteMatchQueryParameterMatch? match;
-
   /// Name for the query parameter that will be matched on.
   final String name;
 
@@ -18,23 +17,17 @@ class GatewayRouteSpecHttpRouteMatchQueryParameter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final matchValue = match;
-    if (matchValue != null) {
-      map['match'] = matchValue.toMap();
-    }
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'match': ?match == null ? null : match!.toMap(),
+      'name': name,
+    };
   }
 
-  factory GatewayRouteSpecHttpRouteMatchQueryParameter.fromMap(
-      Map<String, dynamic> map) {
+  factory GatewayRouteSpecHttpRouteMatchQueryParameter.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpecHttpRouteMatchQueryParameter(
-      match: map['match'] == null
-          ? null
-          : GatewayRouteSpecHttpRouteMatchQueryParameterMatch.fromMap(
-              (map['match'] as Map).cast<String, dynamic>()),
+      match: map['match'] == null ? null : GatewayRouteSpecHttpRouteMatchQueryParameterMatch.fromMap((map['match'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
     );
   }
 }
+

@@ -13,12 +13,10 @@ import 'cvssuser_interaction.dart';
 /// Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing various versions of CVSS rather than making a separate proto for storing a specific version.
 class CVSS {
   final CVSSAttackComplexity? attackComplexity;
-
   /// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
   final CVSSAttackVector? attackVector;
   final CVSSAuthentication? authentication;
   final CVSSAvailabilityImpact? availabilityImpact;
-
   /// The base score is a function of the base metric scores.
   final double? baseScore;
   final CVSSConfidentialityImpact? confidentialityImpact;
@@ -58,96 +56,37 @@ class CVSS {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final attackComplexityValue = attackComplexity;
-    if (attackComplexityValue != null) {
-      map['attackComplexity'] = attackComplexityValue.value;
-    }
-    final attackVectorValue = attackVector;
-    if (attackVectorValue != null) {
-      map['attackVector'] = attackVectorValue.value;
-    }
-    final authenticationValue = authentication;
-    if (authenticationValue != null) {
-      map['authentication'] = authenticationValue.value;
-    }
-    final availabilityImpactValue = availabilityImpact;
-    if (availabilityImpactValue != null) {
-      map['availabilityImpact'] = availabilityImpactValue.value;
-    }
-    final baseScoreValue = baseScore;
-    if (baseScoreValue != null) {
-      map['baseScore'] = baseScoreValue;
-    }
-    final confidentialityImpactValue = confidentialityImpact;
-    if (confidentialityImpactValue != null) {
-      map['confidentialityImpact'] = confidentialityImpactValue.value;
-    }
-    final exploitabilityScoreValue = exploitabilityScore;
-    if (exploitabilityScoreValue != null) {
-      map['exploitabilityScore'] = exploitabilityScoreValue;
-    }
-    final impactScoreValue = impactScore;
-    if (impactScoreValue != null) {
-      map['impactScore'] = impactScoreValue;
-    }
-    final integrityImpactValue = integrityImpact;
-    if (integrityImpactValue != null) {
-      map['integrityImpact'] = integrityImpactValue.value;
-    }
-    final privilegesRequiredValue = privilegesRequired;
-    if (privilegesRequiredValue != null) {
-      map['privilegesRequired'] = privilegesRequiredValue.value;
-    }
-    final scopeValue = scope;
-    if (scopeValue != null) {
-      map['scope'] = scopeValue.value;
-    }
-    final userInteractionValue = userInteraction;
-    if (userInteractionValue != null) {
-      map['userInteraction'] = userInteractionValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'attackComplexity': ?attackComplexity == null ? null : attackComplexity!.value,
+      'attackVector': ?attackVector == null ? null : attackVector!.value,
+      'authentication': ?authentication == null ? null : authentication!.value,
+      'availabilityImpact': ?availabilityImpact == null ? null : availabilityImpact!.value,
+      'baseScore': ?baseScore,
+      'confidentialityImpact': ?confidentialityImpact == null ? null : confidentialityImpact!.value,
+      'exploitabilityScore': ?exploitabilityScore,
+      'impactScore': ?impactScore,
+      'integrityImpact': ?integrityImpact == null ? null : integrityImpact!.value,
+      'privilegesRequired': ?privilegesRequired == null ? null : privilegesRequired!.value,
+      'scope': ?scope == null ? null : scope!.value,
+      'userInteraction': ?userInteraction == null ? null : userInteraction!.value,
+    };
   }
 
   factory CVSS.fromMap(Map<String, dynamic> map) {
     return CVSS(
-      attackComplexity: map['attackComplexity'] == null
-          ? null
-          : CVSSAttackComplexity.fromValue(map['attackComplexity'] as String),
-      attackVector: map['attackVector'] == null
-          ? null
-          : CVSSAttackVector.fromValue(map['attackVector'] as String),
-      authentication: map['authentication'] == null
-          ? null
-          : CVSSAuthentication.fromValue(map['authentication'] as String),
-      availabilityImpact: map['availabilityImpact'] == null
-          ? null
-          : CVSSAvailabilityImpact.fromValue(
-              map['availabilityImpact'] as String),
+      attackComplexity: map['attackComplexity'] == null ? null : CVSSAttackComplexity.fromValue(map['attackComplexity'] as String),
+      attackVector: map['attackVector'] == null ? null : CVSSAttackVector.fromValue(map['attackVector'] as String),
+      authentication: map['authentication'] == null ? null : CVSSAuthentication.fromValue(map['authentication'] as String),
+      availabilityImpact: map['availabilityImpact'] == null ? null : CVSSAvailabilityImpact.fromValue(map['availabilityImpact'] as String),
       baseScore: map['baseScore'] == null ? null : map['baseScore'] as double,
-      confidentialityImpact: map['confidentialityImpact'] == null
-          ? null
-          : CVSSConfidentialityImpact.fromValue(
-              map['confidentialityImpact'] as String),
-      exploitabilityScore: map['exploitabilityScore'] == null
-          ? null
-          : map['exploitabilityScore'] as double,
-      impactScore:
-          map['impactScore'] == null ? null : map['impactScore'] as double,
-      integrityImpact: map['integrityImpact'] == null
-          ? null
-          : CVSSIntegrityImpact.fromValue(map['integrityImpact'] as String),
-      privilegesRequired: map['privilegesRequired'] == null
-          ? null
-          : CVSSPrivilegesRequired.fromValue(
-              map['privilegesRequired'] as String),
-      scope: map['scope'] == null
-          ? null
-          : CVSSScope.fromValue(map['scope'] as String),
-      userInteraction: map['userInteraction'] == null
-          ? null
-          : CVSSUserInteraction.fromValue(map['userInteraction'] as String),
+      confidentialityImpact: map['confidentialityImpact'] == null ? null : CVSSConfidentialityImpact.fromValue(map['confidentialityImpact'] as String),
+      exploitabilityScore: map['exploitabilityScore'] == null ? null : map['exploitabilityScore'] as double,
+      impactScore: map['impactScore'] == null ? null : map['impactScore'] as double,
+      integrityImpact: map['integrityImpact'] == null ? null : CVSSIntegrityImpact.fromValue(map['integrityImpact'] as String),
+      privilegesRequired: map['privilegesRequired'] == null ? null : CVSSPrivilegesRequired.fromValue(map['privilegesRequired'] as String),
+      scope: map['scope'] == null ? null : CVSSScope.fromValue(map['scope'] as String),
+      userInteraction: map['userInteraction'] == null ? null : CVSSUserInteraction.fromValue(map['userInteraction'] as String),
     );
   }
 }
+

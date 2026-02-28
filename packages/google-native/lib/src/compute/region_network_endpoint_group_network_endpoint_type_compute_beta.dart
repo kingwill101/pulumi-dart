@@ -11,15 +11,13 @@ enum RegionNetworkEndpointGroupNetworkEndpointTypeComputeBeta {
   const RegionNetworkEndpointGroupNetworkEndpointTypeComputeBeta(this.value);
   final String value;
 
-  static RegionNetworkEndpointGroupNetworkEndpointTypeComputeBeta fromValue(
-      String value) {
-    for (final item
-        in RegionNetworkEndpointGroupNetworkEndpointTypeComputeBeta.values) {
+  static RegionNetworkEndpointGroupNetworkEndpointTypeComputeBeta fromValue(String value) {
+    for (final item in RegionNetworkEndpointGroupNetworkEndpointTypeComputeBeta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown RegionNetworkEndpointGroupNetworkEndpointTypeComputeBeta value: $value');
+    throw ArgumentError('Unknown RegionNetworkEndpointGroupNetworkEndpointTypeComputeBeta value: $value');
   }
 }
+

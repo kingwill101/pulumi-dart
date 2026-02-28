@@ -7,7 +7,6 @@ import 'mysql_column_response.dart';
 class MysqlTableResponse {
   /// MySQL columns in the database. When unspecified as part of include/exclude objects, includes/excludes everything.
   final List<MysqlColumnResponse> mysqlColumns;
-
   /// Table name.
   final String table;
 
@@ -20,21 +19,17 @@ class MysqlTableResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['mysqlColumns'] =
-        pulumi.Input.encodeList<MysqlColumnResponse, Map<String, dynamic>>(
-            mysqlColumns, (value) => value.toMap());
-    map['table'] = table;
-    return map;
+    return <String, dynamic>{
+      'mysqlColumns': pulumi.Input.encodeList<MysqlColumnResponse, Map<String, dynamic>>(mysqlColumns, (value) => value.toMap()),
+      'table': table,
+    };
   }
 
   factory MysqlTableResponse.fromMap(Map<String, dynamic> map) {
     return MysqlTableResponse(
-      mysqlColumns: pulumi.Input.decodeList<MysqlColumnResponse>(
-          map['mysqlColumns'],
-          (value) => MysqlColumnResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      mysqlColumns: pulumi.Input.decodeList<MysqlColumnResponse>(map['mysqlColumns'], (value) => MysqlColumnResponse.fromMap((value as Map).cast<String, dynamic>())),
       table: map['table'] as String,
     );
   }
 }
+

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterTmpf {
   /// The absolute file path in the container where the tmpfs volume is mounted.
   final String containerPath;
-
   /// The list of tmpfs volume mount options.
   final List<String> mountOptions;
-
   /// The size (in MiB) of the tmpfs volume.
   final int size;
 
@@ -21,15 +20,14 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterTmpf {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['containerPath'] = containerPath;
-    map['mountOptions'] = mountOptions;
-    map['size'] = size;
-    return map;
+    return <String, dynamic>{
+      'containerPath': containerPath,
+      'mountOptions': mountOptions,
+      'size': size,
+    };
   }
 
-  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterTmpf.fromMap(
-      Map<String, dynamic> map) {
+  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterTmpf.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterTmpf(
       containerPath: map['containerPath'] as String,
       mountOptions: (map['mountOptions'] as List).cast<String>(),
@@ -37,3 +35,4 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterTmpf {
     );
   }
 }
+

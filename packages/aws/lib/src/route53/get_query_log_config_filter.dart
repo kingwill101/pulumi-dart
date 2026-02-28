@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetQueryLogConfigFilter {
   /// The name of the query logging configuration.
   final String name;
@@ -14,10 +15,10 @@ class GetQueryLogConfigFilter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['values'] = values;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'values': values,
+    };
   }
 
   factory GetQueryLogConfigFilter.fromMap(Map<String, dynamic> map) {
@@ -27,3 +28,4 @@ class GetQueryLogConfigFilter {
     );
   }
 }
+

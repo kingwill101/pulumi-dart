@@ -11,28 +11,20 @@ import 'systrace_setup_response.dart';
 class TestSetupResponse {
   /// The device will be logged in on this account for the duration of the test.
   final AccountResponse account;
-
   /// APKs to install in addition to those being directly tested. These will be installed after the app under test. Currently capped at 100.
   final List<ApkResponse> additionalApks;
-
   /// List of directories on the device to upload to GCS at the end of the test; they must be absolute paths under /sdcard, /storage or /data/local/tmp. Path names are restricted to characters a-z A-Z 0-9 _ - . + and / Note: The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device.
   final List<String> directoriesToPull;
-
   /// Whether to prevent all runtime permissions to be granted at app install
   final bool dontAutograntPermissions;
-
   /// Environment variables to set for the test (only applicable for instrumentation tests).
   final List<EnvironmentVariableResponse> environmentVariables;
-
   /// List of files to push to the device before starting the test.
   final List<DeviceFileResponse> filesToPush;
-
   /// Optional. Initial setup APKs to install before the app under test is installed. Currently capped at 100.
   final List<ApkResponse> initialSetupApks;
-
   /// The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
   final String networkProfile;
-
   /// Systrace configuration for the run. Deprecated: Systrace used Python 2 which was sunsetted on 2020-01-01. Systrace is no longer supported in the Cloud Testing API, and no Systrace file will be provided in the results.
   final SystraceSetupResponse systrace;
 
@@ -59,53 +51,31 @@ class TestSetupResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['account'] = account.toMap();
-    map['additionalApks'] =
-        pulumi.Input.encodeList<ApkResponse, Map<String, dynamic>>(
-            additionalApks, (value) => value.toMap());
-    map['directoriesToPull'] = directoriesToPull;
-    map['dontAutograntPermissions'] = dontAutograntPermissions;
-    map['environmentVariables'] = pulumi.Input.encodeList<
-        EnvironmentVariableResponse,
-        Map<String, dynamic>>(environmentVariables, (value) => value.toMap());
-    map['filesToPush'] =
-        pulumi.Input.encodeList<DeviceFileResponse, Map<String, dynamic>>(
-            filesToPush, (value) => value.toMap());
-    map['initialSetupApks'] =
-        pulumi.Input.encodeList<ApkResponse, Map<String, dynamic>>(
-            initialSetupApks, (value) => value.toMap());
-    map['networkProfile'] = networkProfile;
-    map['systrace'] = systrace.toMap();
-    return map;
+    return <String, dynamic>{
+      'account': account.toMap(),
+      'additionalApks': pulumi.Input.encodeList<ApkResponse, Map<String, dynamic>>(additionalApks, (value) => value.toMap()),
+      'directoriesToPull': directoriesToPull,
+      'dontAutograntPermissions': dontAutograntPermissions,
+      'environmentVariables': pulumi.Input.encodeList<EnvironmentVariableResponse, Map<String, dynamic>>(environmentVariables, (value) => value.toMap()),
+      'filesToPush': pulumi.Input.encodeList<DeviceFileResponse, Map<String, dynamic>>(filesToPush, (value) => value.toMap()),
+      'initialSetupApks': pulumi.Input.encodeList<ApkResponse, Map<String, dynamic>>(initialSetupApks, (value) => value.toMap()),
+      'networkProfile': networkProfile,
+      'systrace': systrace.toMap(),
+    };
   }
 
   factory TestSetupResponse.fromMap(Map<String, dynamic> map) {
     return TestSetupResponse(
-      account: AccountResponse.fromMap(
-          (map['account'] as Map).cast<String, dynamic>()),
-      additionalApks: pulumi.Input.decodeList<ApkResponse>(
-          map['additionalApks'],
-          (value) =>
-              ApkResponse.fromMap((value as Map).cast<String, dynamic>())),
+      account: AccountResponse.fromMap((map['account'] as Map).cast<String, dynamic>()),
+      additionalApks: pulumi.Input.decodeList<ApkResponse>(map['additionalApks'], (value) => ApkResponse.fromMap((value as Map).cast<String, dynamic>())),
       directoriesToPull: (map['directoriesToPull'] as List).cast<String>(),
       dontAutograntPermissions: map['dontAutograntPermissions'] as bool,
-      environmentVariables:
-          pulumi.Input.decodeList<EnvironmentVariableResponse>(
-              map['environmentVariables'],
-              (value) => EnvironmentVariableResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      filesToPush: pulumi.Input.decodeList<DeviceFileResponse>(
-          map['filesToPush'],
-          (value) => DeviceFileResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      initialSetupApks: pulumi.Input.decodeList<ApkResponse>(
-          map['initialSetupApks'],
-          (value) =>
-              ApkResponse.fromMap((value as Map).cast<String, dynamic>())),
+      environmentVariables: pulumi.Input.decodeList<EnvironmentVariableResponse>(map['environmentVariables'], (value) => EnvironmentVariableResponse.fromMap((value as Map).cast<String, dynamic>())),
+      filesToPush: pulumi.Input.decodeList<DeviceFileResponse>(map['filesToPush'], (value) => DeviceFileResponse.fromMap((value as Map).cast<String, dynamic>())),
+      initialSetupApks: pulumi.Input.decodeList<ApkResponse>(map['initialSetupApks'], (value) => ApkResponse.fromMap((value as Map).cast<String, dynamic>())),
       networkProfile: map['networkProfile'] as String,
-      systrace: SystraceSetupResponse.fromMap(
-          (map['systrace'] as Map).cast<String, dynamic>()),
+      systrace: SystraceSetupResponse.fromMap((map['systrace'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBucketReplicationConfigurationArgs {
   /// The name of the bucket to get the replication configuration for.
   final pulumi.Input<String> bucket;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -19,24 +18,22 @@ class GetBucketReplicationConfigurationArgs {
   GetBucketReplicationConfigurationArgs({
     required String bucket,
     String? region,
-  })  : bucket = pulumi.Input.asInput<String>(bucket),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      bucket = pulumi.Input.asInput<String>(bucket),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucket'] = bucket;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'bucket': bucket,
+      'region': ?region,
+    };
   }
 
-  factory GetBucketReplicationConfigurationArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetBucketReplicationConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketReplicationConfigurationArgs(
       bucket: map['bucket'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

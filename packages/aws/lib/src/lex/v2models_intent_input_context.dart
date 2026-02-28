@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class V2modelsIntentInputContext {
   /// Name of the context.
   final String name;
@@ -11,9 +12,9 @@ class V2modelsIntentInputContext {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory V2modelsIntentInputContext.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class V2modelsIntentInputContext {
     );
   }
 }
+

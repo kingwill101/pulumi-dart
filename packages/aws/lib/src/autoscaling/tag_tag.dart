@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TagTag {
   /// Tag name.
   final String key;
-
   /// Whether to propagate the tags to instances launched by the ASG.
   final bool propagateAtLaunch;
-
   /// Tag value.
   final String value;
 
@@ -21,11 +20,11 @@ class TagTag {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    map['propagateAtLaunch'] = propagateAtLaunch;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'propagateAtLaunch': propagateAtLaunch,
+      'value': value,
+    };
   }
 
   factory TagTag.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class TagTag {
     );
   }
 }
+

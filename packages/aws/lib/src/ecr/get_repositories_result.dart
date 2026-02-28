@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRepositories.
 class GetRepositoriesResult {
   /// AWS Region.
   final String id;
-
   /// A list if AWS Elastic Container Registries for the region.
   final List<String> names;
   final String region;
@@ -20,11 +20,11 @@ class GetRepositoriesResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['names'] = names;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'names': names,
+      'region': region,
+    };
   }
 
   factory GetRepositoriesResult.fromMap(Map<String, dynamic> map) {
@@ -35,3 +35,4 @@ class GetRepositoriesResult {
     );
   }
 }
+

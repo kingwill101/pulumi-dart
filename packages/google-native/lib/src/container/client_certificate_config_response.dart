@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for client certificates on the cluster.
 class ClientCertificateConfigResponse {
   /// Issue a client certificate.
@@ -12,9 +13,9 @@ class ClientCertificateConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['issueClientCertificate'] = issueClientCertificate;
-    return map;
+    return <String, dynamic>{
+      'issueClientCertificate': issueClientCertificate,
+    };
   }
 
   factory ClientCertificateConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class ClientCertificateConfigResponse {
     );
   }
 }
+

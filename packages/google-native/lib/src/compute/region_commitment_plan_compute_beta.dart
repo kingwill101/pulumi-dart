@@ -13,7 +13,7 @@ enum RegionCommitmentPlanComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown RegionCommitmentPlanComputeBeta value: $value');
+    throw ArgumentError('Unknown RegionCommitmentPlanComputeBeta value: $value');
   }
 }
+

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The type and version of a source or destination database.
 class DatabaseEngineInfoResponse {
   /// Engine type.
   final String engine;
-
   /// Engine version, for example "12.c.1".
   final String version;
 
@@ -17,10 +17,10 @@ class DatabaseEngineInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['engine'] = engine;
-    map['version'] = version;
-    return map;
+    return <String, dynamic>{
+      'engine': engine,
+      'version': version,
+    };
   }
 
   factory DatabaseEngineInfoResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class DatabaseEngineInfoResponse {
     );
   }
 }
+

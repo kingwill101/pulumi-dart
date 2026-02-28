@@ -15,24 +15,15 @@ class Metadata {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final itemsValue = items;
-    if (itemsValue != null) {
-      map['items'] =
-          pulumi.Input.encodeList<MetadataItemsItem, Map<String, dynamic>>(
-              itemsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'items': ?items == null ? null : pulumi.Input.encodeList<MetadataItemsItem, Map<String, dynamic>>(items!, (value) => value.toMap()),
+    };
   }
 
   factory Metadata.fromMap(Map<String, dynamic> map) {
     return Metadata(
-      items: map['items'] == null
-          ? null
-          : pulumi.Input.decodeList<MetadataItemsItem>(
-              map['items'],
-              (value) => MetadataItemsItem.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      items: map['items'] == null ? null : pulumi.Input.decodeList<MetadataItemsItem>(map['items'], (value) => MetadataItemsItem.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

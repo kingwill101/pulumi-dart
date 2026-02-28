@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BrokerLogs {
   /// Whether to enable audit logging. Only possible for `engine_type` of `ActiveMQ`. Logs user management actions via JMX or ActiveMQ Web Console. Defaults to `false`.
   final bool? audit;
-
   /// Whether to enable general logging via CloudWatch. Defaults to `false`.
   final bool? general;
 
@@ -16,16 +16,10 @@ class BrokerLogs {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final auditValue = audit;
-    if (auditValue != null) {
-      map['audit'] = auditValue;
-    }
-    final generalValue = general;
-    if (generalValue != null) {
-      map['general'] = generalValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'audit': ?audit,
+      'general': ?general,
+    };
   }
 
   factory BrokerLogs.fromMap(Map<String, dynamic> map) {
@@ -35,3 +29,4 @@ class BrokerLogs {
     );
   }
 }
+

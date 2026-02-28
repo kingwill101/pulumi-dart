@@ -226,12 +226,9 @@ import 'instance_access_control_attributes_attribute.dart';
 /// ```
 class InstanceAccessControlAttributes extends pulumi.CustomResource {
   /// See AccessControlAttribute for more details.
-  late final pulumi.Output<List<InstanceAccessControlAttributesAttribute>>
-      attributes;
-
+  late final pulumi.Output<List<InstanceAccessControlAttributesAttribute>> attributes;
   /// The Amazon Resource Name (ARN) of the SSO Instance.
   late final pulumi.Output<String> instanceArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<String> status;
@@ -251,9 +248,7 @@ class InstanceAccessControlAttributes extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.attributes =
-        registerOutput<List<InstanceAccessControlAttributesAttribute>>(
-            'attributes');
+    this.attributes = registerOutput<List<InstanceAccessControlAttributesAttribute>>('attributes');
     this.instanceArn = registerOutput<String>('instanceArn');
     this.region = registerOutput<String>('region');
     this.status = registerOutput<String>('status');

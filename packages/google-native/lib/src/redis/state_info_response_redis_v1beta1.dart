@@ -14,15 +14,15 @@ class StateInfoResponseRedisV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['updateInfo'] = updateInfo.toMap();
-    return map;
+    return <String, dynamic>{
+      'updateInfo': updateInfo.toMap(),
+    };
   }
 
   factory StateInfoResponseRedisV1beta1.fromMap(Map<String, dynamic> map) {
     return StateInfoResponseRedisV1beta1(
-      updateInfo: UpdateInfoResponseRedisV1beta1.fromMap(
-          (map['updateInfo'] as Map).cast<String, dynamic>()),
+      updateInfo: UpdateInfoResponseRedisV1beta1.fromMap((map['updateInfo'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

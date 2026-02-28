@@ -13,20 +13,15 @@ class BucketObjectv2OverrideProvider {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final defaultTagsValue = defaultTags;
-    if (defaultTagsValue != null) {
-      map['defaultTags'] = defaultTagsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'defaultTags': ?defaultTags == null ? null : defaultTags!.toMap(),
+    };
   }
 
   factory BucketObjectv2OverrideProvider.fromMap(Map<String, dynamic> map) {
     return BucketObjectv2OverrideProvider(
-      defaultTags: map['defaultTags'] == null
-          ? null
-          : BucketObjectv2OverrideProviderDefaultTags.fromMap(
-              (map['defaultTags'] as Map).cast<String, dynamic>()),
+      defaultTags: map['defaultTags'] == null ? null : BucketObjectv2OverrideProviderDefaultTags.fromMap((map['defaultTags'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

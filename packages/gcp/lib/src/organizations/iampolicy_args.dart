@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IAMPolicyArgs {
   /// The organization id of the target organization.
   final pulumi.Input<String> orgId;
-
   /// The `gcp.organizations.getIAMPolicy` data source that represents
   /// the IAM policy that will be applied to the organization. The policy will be
   /// merged with any existing policy applied to the organization.
@@ -26,14 +25,15 @@ class IAMPolicyArgs {
   IAMPolicyArgs({
     required String orgId,
     required String policyData,
-  })  : orgId = pulumi.Input.asInput<String>(orgId),
-        policyData = pulumi.Input.asInput<String>(policyData);
+  }) :
+      orgId = pulumi.Input.asInput<String>(orgId),
+      policyData = pulumi.Input.asInput<String>(policyData);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['orgId'] = orgId;
-    map['policyData'] = policyData;
-    return map;
+    return <String, dynamic>{
+      'orgId': orgId,
+      'policyData': policyData,
+    };
   }
 
   factory IAMPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -43,3 +43,4 @@ class IAMPolicyArgs {
     );
   }
 }
+

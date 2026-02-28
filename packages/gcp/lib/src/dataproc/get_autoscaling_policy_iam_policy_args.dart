@@ -13,10 +13,8 @@ class GetAutoscalingPolicyIamPolicyArgs {
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
   final pulumi.Input<String>? location;
-
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> policyId;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   final pulumi.Input<String>? project;
@@ -29,22 +27,17 @@ class GetAutoscalingPolicyIamPolicyArgs {
     String? location,
     required String policyId,
     String? project,
-  })  : location = pulumi.Input.asOptionalInput<String>(location),
-        policyId = pulumi.Input.asInput<String>(policyId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      location = pulumi.Input.asOptionalInput<String>(location),
+      policyId = pulumi.Input.asInput<String>(policyId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    map['policyId'] = policyId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'location': ?location,
+      'policyId': policyId,
+      'project': ?project,
+    };
   }
 
   factory GetAutoscalingPolicyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -55,3 +48,4 @@ class GetAutoscalingPolicyIamPolicyArgs {
     );
   }
 }
+

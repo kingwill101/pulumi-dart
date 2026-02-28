@@ -22,21 +22,19 @@ class GetVersionArgs {
     required String serviceId,
     required String versionId,
     String? view,
-  })  : appId = pulumi.Input.asInput<String>(appId),
-        serviceId = pulumi.Input.asInput<String>(serviceId),
-        versionId = pulumi.Input.asInput<String>(versionId),
-        view = pulumi.Input.asOptionalInput<String>(view);
+  }) :
+      appId = pulumi.Input.asInput<String>(appId),
+      serviceId = pulumi.Input.asInput<String>(serviceId),
+      versionId = pulumi.Input.asInput<String>(versionId),
+      view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['appId'] = appId;
-    map['serviceId'] = serviceId;
-    map['versionId'] = versionId;
-    final viewValue = view;
-    if (viewValue != null) {
-      map['view'] = viewValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'appId': appId,
+      'serviceId': serviceId,
+      'versionId': versionId,
+      'view': ?view,
+    };
   }
 
   factory GetVersionArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetVersionArgs {
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'customer_managed_encryption.dart';
 class Replica {
   /// Optional. The customer-managed encryption configuration of the User-Managed Replica. If no configuration is provided, Google-managed default encryption is used. Updates to the Secret encryption configuration only apply to SecretVersions added afterwards. They do not apply retroactively to existing SecretVersions.
   final CustomerManagedEncryption? customerManagedEncryption;
-
   /// The canonical IDs of the location to replicate data. For example: `"us-east1"`.
   final String? location;
 
@@ -19,26 +18,17 @@ class Replica {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final customerManagedEncryptionValue = customerManagedEncryption;
-    if (customerManagedEncryptionValue != null) {
-      map['customerManagedEncryption'] = customerManagedEncryptionValue.toMap();
-    }
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'customerManagedEncryption': ?customerManagedEncryption == null ? null : customerManagedEncryption!.toMap(),
+      'location': ?location,
+    };
   }
 
   factory Replica.fromMap(Map<String, dynamic> map) {
     return Replica(
-      customerManagedEncryption: map['customerManagedEncryption'] == null
-          ? null
-          : CustomerManagedEncryption.fromMap(
-              (map['customerManagedEncryption'] as Map)
-                  .cast<String, dynamic>()),
+      customerManagedEncryption: map['customerManagedEncryption'] == null ? null : CustomerManagedEncryption.fromMap((map['customerManagedEncryption'] as Map).cast<String, dynamic>()),
       location: map['location'] == null ? null : map['location'] as String,
     );
   }
 }
+

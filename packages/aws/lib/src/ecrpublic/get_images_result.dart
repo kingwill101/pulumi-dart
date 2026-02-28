@@ -9,14 +9,11 @@ class GetImagesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<GetImagesImageId>? imageIds;
-
   /// List of images returned. Each image contains:
   final List<GetImagesImage> images;
   final String region;
-
   /// AWS account ID associated with the public registry.
   final String? registryId;
-
   /// Name of the repository.
   final String repositoryName;
 
@@ -37,43 +34,25 @@ class GetImagesResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    final imageIdsValue = imageIds;
-    if (imageIdsValue != null) {
-      map['imageIds'] =
-          pulumi.Input.encodeList<GetImagesImageId, Map<String, dynamic>>(
-              imageIdsValue, (value) => value.toMap());
-    }
-    map['images'] =
-        pulumi.Input.encodeList<GetImagesImage, Map<String, dynamic>>(
-            images, (value) => value.toMap());
-    map['region'] = region;
-    final registryIdValue = registryId;
-    if (registryIdValue != null) {
-      map['registryId'] = registryIdValue;
-    }
-    map['repositoryName'] = repositoryName;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'imageIds': ?imageIds == null ? null : pulumi.Input.encodeList<GetImagesImageId, Map<String, dynamic>>(imageIds!, (value) => value.toMap()),
+      'images': pulumi.Input.encodeList<GetImagesImage, Map<String, dynamic>>(images, (value) => value.toMap()),
+      'region': region,
+      'registryId': ?registryId,
+      'repositoryName': repositoryName,
+    };
   }
 
   factory GetImagesResult.fromMap(Map<String, dynamic> map) {
     return GetImagesResult(
       id: map['id'] as String,
-      imageIds: map['imageIds'] == null
-          ? null
-          : pulumi.Input.decodeList<GetImagesImageId>(
-              map['imageIds'],
-              (value) => GetImagesImageId.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      images: pulumi.Input.decodeList<GetImagesImage>(
-          map['images'],
-          (value) =>
-              GetImagesImage.fromMap((value as Map).cast<String, dynamic>())),
+      imageIds: map['imageIds'] == null ? null : pulumi.Input.decodeList<GetImagesImageId>(map['imageIds'], (value) => GetImagesImageId.fromMap((value as Map).cast<String, dynamic>())),
+      images: pulumi.Input.decodeList<GetImagesImage>(map['images'], (value) => GetImagesImage.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
-      registryId:
-          map['registryId'] == null ? null : map['registryId'] as String,
+      registryId: map['registryId'] == null ? null : map['registryId'] as String,
       repositoryName: map['repositoryName'] as String,
     );
   }
 }
+

@@ -20,26 +20,19 @@ class BotClarificationPrompt {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maxAttempts'] = maxAttempts;
-    map['messages'] = pulumi.Input.encodeList<BotClarificationPromptMessage,
-        Map<String, dynamic>>(messages, (value) => value.toMap());
-    final responseCardValue = responseCard;
-    if (responseCardValue != null) {
-      map['responseCard'] = responseCardValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'maxAttempts': maxAttempts,
+      'messages': pulumi.Input.encodeList<BotClarificationPromptMessage, Map<String, dynamic>>(messages, (value) => value.toMap()),
+      'responseCard': ?responseCard,
+    };
   }
 
   factory BotClarificationPrompt.fromMap(Map<String, dynamic> map) {
     return BotClarificationPrompt(
       maxAttempts: map['maxAttempts'] as int,
-      messages: pulumi.Input.decodeList<BotClarificationPromptMessage>(
-          map['messages'],
-          (value) => BotClarificationPromptMessage.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      responseCard:
-          map['responseCard'] == null ? null : map['responseCard'] as String,
+      messages: pulumi.Input.decodeList<BotClarificationPromptMessage>(map['messages'], (value) => BotClarificationPromptMessage.fromMap((value as Map).cast<String, dynamic>())),
+      responseCard: map['responseCard'] == null ? null : map['responseCard'] as String,
     );
   }
 }
+

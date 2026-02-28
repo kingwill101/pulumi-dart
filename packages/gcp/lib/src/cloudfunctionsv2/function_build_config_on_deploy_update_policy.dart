@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FunctionBuildConfigOnDeployUpdatePolicy {
   /// (Output)
   /// The runtime version which was used during latest function deployment.
@@ -12,20 +13,15 @@ class FunctionBuildConfigOnDeployUpdatePolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final runtimeVersionValue = runtimeVersion;
-    if (runtimeVersionValue != null) {
-      map['runtimeVersion'] = runtimeVersionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'runtimeVersion': ?runtimeVersion,
+    };
   }
 
-  factory FunctionBuildConfigOnDeployUpdatePolicy.fromMap(
-      Map<String, dynamic> map) {
+  factory FunctionBuildConfigOnDeployUpdatePolicy.fromMap(Map<String, dynamic> map) {
     return FunctionBuildConfigOnDeployUpdatePolicy(
-      runtimeVersion: map['runtimeVersion'] == null
-          ? null
-          : map['runtimeVersion'] as String,
+      runtimeVersion: map['runtimeVersion'] == null ? null : map['runtimeVersion'] as String,
     );
   }
 }
+

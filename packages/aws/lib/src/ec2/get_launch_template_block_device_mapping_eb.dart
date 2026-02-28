@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetLaunchTemplateBlockDeviceMappingEb {
   final String deleteOnTermination;
   final String encrypted;
@@ -34,21 +35,20 @@ class GetLaunchTemplateBlockDeviceMappingEb {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['deleteOnTermination'] = deleteOnTermination;
-    map['encrypted'] = encrypted;
-    map['iops'] = iops;
-    map['kmsKeyId'] = kmsKeyId;
-    map['snapshotId'] = snapshotId;
-    map['throughput'] = throughput;
-    map['volumeInitializationRate'] = volumeInitializationRate;
-    map['volumeSize'] = volumeSize;
-    map['volumeType'] = volumeType;
-    return map;
+    return <String, dynamic>{
+      'deleteOnTermination': deleteOnTermination,
+      'encrypted': encrypted,
+      'iops': iops,
+      'kmsKeyId': kmsKeyId,
+      'snapshotId': snapshotId,
+      'throughput': throughput,
+      'volumeInitializationRate': volumeInitializationRate,
+      'volumeSize': volumeSize,
+      'volumeType': volumeType,
+    };
   }
 
-  factory GetLaunchTemplateBlockDeviceMappingEb.fromMap(
-      Map<String, dynamic> map) {
+  factory GetLaunchTemplateBlockDeviceMappingEb.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateBlockDeviceMappingEb(
       deleteOnTermination: map['deleteOnTermination'] as String,
       encrypted: map['encrypted'] as String,
@@ -62,3 +62,4 @@ class GetLaunchTemplateBlockDeviceMappingEb {
     );
   }
 }
+

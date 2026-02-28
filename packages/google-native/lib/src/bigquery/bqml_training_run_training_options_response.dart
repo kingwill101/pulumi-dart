@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
 class BqmlTrainingRunTrainingOptionsResponse {
   final bool earlyStop;
@@ -35,21 +36,20 @@ class BqmlTrainingRunTrainingOptionsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['earlyStop'] = earlyStop;
-    map['l1Reg'] = l1Reg;
-    map['l2Reg'] = l2Reg;
-    map['learnRate'] = learnRate;
-    map['learnRateStrategy'] = learnRateStrategy;
-    map['lineSearchInitLearnRate'] = lineSearchInitLearnRate;
-    map['maxIteration'] = maxIteration;
-    map['minRelProgress'] = minRelProgress;
-    map['warmStart'] = warmStart;
-    return map;
+    return <String, dynamic>{
+      'earlyStop': earlyStop,
+      'l1Reg': l1Reg,
+      'l2Reg': l2Reg,
+      'learnRate': learnRate,
+      'learnRateStrategy': learnRateStrategy,
+      'lineSearchInitLearnRate': lineSearchInitLearnRate,
+      'maxIteration': maxIteration,
+      'minRelProgress': minRelProgress,
+      'warmStart': warmStart,
+    };
   }
 
-  factory BqmlTrainingRunTrainingOptionsResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory BqmlTrainingRunTrainingOptionsResponse.fromMap(Map<String, dynamic> map) {
     return BqmlTrainingRunTrainingOptionsResponse(
       earlyStop: map['earlyStop'] as bool,
       l1Reg: map['l1Reg'] as double,
@@ -63,3 +63,4 @@ class BqmlTrainingRunTrainingOptionsResponse {
     );
   }
 }
+

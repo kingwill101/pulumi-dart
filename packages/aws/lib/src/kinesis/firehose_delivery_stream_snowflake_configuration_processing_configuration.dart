@@ -6,11 +6,8 @@ import 'firehose_delivery_stream_snowflake_configuration_processing_configuratio
 class FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfiguration {
   /// Enables or disables data processing.
   final bool? enabled;
-
   /// Specifies the data processors as multiple blocks. See `processors` block below for details.
-  final List<
-          FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfigurationProcessor>?
-      processors;
+  final List<FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfigurationProcessor>? processors;
 
   /// Creates a new [FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfiguration].
   /// [enabled] Enables or disables data processing.
@@ -21,32 +18,17 @@ class FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    final processorsValue = processors;
-    if (processorsValue != null) {
-      map['processors'] = pulumi.Input.encodeList<
-          FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfigurationProcessor,
-          Map<String, dynamic>>(processorsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': ?enabled,
+      'processors': ?processors == null ? null : pulumi.Input.encodeList<FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfigurationProcessor, Map<String, dynamic>>(processors!, (value) => value.toMap()),
+    };
   }
 
-  factory FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfiguration(
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      processors: map['processors'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfigurationProcessor>(
-              map['processors'],
-              (value) =>
-                  FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfigurationProcessor
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      processors: map['processors'] == null ? null : pulumi.Input.decodeList<FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfigurationProcessor>(map['processors'], (value) => FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfigurationProcessor.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

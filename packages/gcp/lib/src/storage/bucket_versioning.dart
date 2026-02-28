@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BucketVersioning {
   /// While set to `true`, versioning is fully enabled for this bucket.
   final bool enabled;
@@ -11,9 +12,9 @@ class BucketVersioning {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory BucketVersioning.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class BucketVersioning {
     );
   }
 }
+

@@ -6,7 +6,6 @@ class Keystore extends pulumi.CustomResource {
   /// Aliases in this keystore.
   late final pulumi.Output<List<String>> aliases;
   late final pulumi.Output<String> environmentId;
-
   /// Optional. Name of the keystore. Overrides the value in Keystore.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> organizationId;

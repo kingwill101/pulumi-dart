@@ -25,24 +25,21 @@ class GetWorkstationArgs {
     required String workstationClusterId,
     required String workstationConfigId,
     required String workstationId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        workstationClusterId =
-            pulumi.Input.asInput<String>(workstationClusterId),
-        workstationConfigId = pulumi.Input.asInput<String>(workstationConfigId),
-        workstationId = pulumi.Input.asInput<String>(workstationId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      workstationClusterId = pulumi.Input.asInput<String>(workstationClusterId),
+      workstationConfigId = pulumi.Input.asInput<String>(workstationConfigId),
+      workstationId = pulumi.Input.asInput<String>(workstationId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['workstationClusterId'] = workstationClusterId;
-    map['workstationConfigId'] = workstationConfigId;
-    map['workstationId'] = workstationId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+      'workstationClusterId': workstationClusterId,
+      'workstationConfigId': workstationConfigId,
+      'workstationId': workstationId,
+    };
   }
 
   factory GetWorkstationArgs.fromMap(Map<String, dynamic> map) {
@@ -55,3 +52,4 @@ class GetWorkstationArgs {
     );
   }
 }
+

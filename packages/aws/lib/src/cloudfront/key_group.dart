@@ -184,13 +184,10 @@ import 'key_group_args.dart';
 class KeyGroup extends pulumi.CustomResource {
   /// A comment to describe the key group..
   late final pulumi.Output<String?> comment;
-
   /// The identifier for this version of the key group.
   late final pulumi.Output<String> etag;
-
   /// A list of the identifiers of the public keys in the key group.
   late final pulumi.Output<List<String>> items;
-
   /// A name to identify the key group.
   late final pulumi.Output<String> name;
 

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getTopic.
 class GetTopicPubsubV1beta1aResult {
   /// Name of the topic.
@@ -12,9 +13,9 @@ class GetTopicPubsubV1beta1aResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetTopicPubsubV1beta1aResult.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class GetTopicPubsubV1beta1aResult {
     );
   }
 }
+

@@ -15,19 +15,15 @@ class UserManagedResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['replicas'] =
-        pulumi.Input.encodeList<ReplicaResponse, Map<String, dynamic>>(
-            replicas, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'replicas': pulumi.Input.encodeList<ReplicaResponse, Map<String, dynamic>>(replicas, (value) => value.toMap()),
+    };
   }
 
   factory UserManagedResponse.fromMap(Map<String, dynamic> map) {
     return UserManagedResponse(
-      replicas: pulumi.Input.decodeList<ReplicaResponse>(
-          map['replicas'],
-          (value) =>
-              ReplicaResponse.fromMap((value as Map).cast<String, dynamic>())),
+      replicas: pulumi.Input.decodeList<ReplicaResponse>(map['replicas'], (value) => ReplicaResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

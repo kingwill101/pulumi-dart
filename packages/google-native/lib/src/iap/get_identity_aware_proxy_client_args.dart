@@ -19,20 +19,17 @@ class GetIdentityAwareProxyClientArgs {
     required String brandId,
     required String identityAwareProxyClientId,
     String? project,
-  })  : brandId = pulumi.Input.asInput<String>(brandId),
-        identityAwareProxyClientId =
-            pulumi.Input.asInput<String>(identityAwareProxyClientId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      brandId = pulumi.Input.asInput<String>(brandId),
+      identityAwareProxyClientId = pulumi.Input.asInput<String>(identityAwareProxyClientId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['brandId'] = brandId;
-    map['identityAwareProxyClientId'] = identityAwareProxyClientId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'brandId': brandId,
+      'identityAwareProxyClientId': identityAwareProxyClientId,
+      'project': ?project,
+    };
   }
 
   factory GetIdentityAwareProxyClientArgs.fromMap(Map<String, dynamic> map) {
@@ -43,3 +40,4 @@ class GetIdentityAwareProxyClientArgs {
     );
   }
 }
+

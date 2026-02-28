@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class KxDataviewSegmentConfiguration {
   /// The database path of the data that you want to place on each selected volume. Each segment must have a unique database path for each volume.
   final List<String> dbPaths;
-
   /// Enables on-demand caching on the selected database path when a particular file or a column of the database is accessed. When on demand caching is **True**, dataviews perform minimal loading of files on the filesystem as needed. When it is set to **False**, everything is cached. The default value is **False**.
   final bool? onDemand;
-
   /// The name of the volume that you want to attach to a dataview. This volume must be in the same availability zone as the dataview that you are attaching to.
   final String volumeName;
 
@@ -21,14 +20,11 @@ class KxDataviewSegmentConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dbPaths'] = dbPaths;
-    final onDemandValue = onDemand;
-    if (onDemandValue != null) {
-      map['onDemand'] = onDemandValue;
-    }
-    map['volumeName'] = volumeName;
-    return map;
+    return <String, dynamic>{
+      'dbPaths': dbPaths,
+      'onDemand': ?onDemand,
+      'volumeName': volumeName,
+    };
   }
 
   factory KxDataviewSegmentConfiguration.fromMap(Map<String, dynamic> map) {
@@ -39,3 +35,4 @@ class KxDataviewSegmentConfiguration {
     );
   }
 }
+

@@ -7,7 +7,6 @@ class CaPoolIssuancePolicyAllowedKeyType {
   /// Represents an allowed Elliptic Curve key type.
   /// Structure is documented below.
   final CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve? ellipticCurve;
-
   /// Describes an RSA key that may be used in a Certificate issued from a CaPool.
   /// Structure is documented below.
   final CaPoolIssuancePolicyAllowedKeyTypeRsa? rsa;
@@ -21,28 +20,17 @@ class CaPoolIssuancePolicyAllowedKeyType {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final ellipticCurveValue = ellipticCurve;
-    if (ellipticCurveValue != null) {
-      map['ellipticCurve'] = ellipticCurveValue.toMap();
-    }
-    final rsaValue = rsa;
-    if (rsaValue != null) {
-      map['rsa'] = rsaValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'ellipticCurve': ?ellipticCurve == null ? null : ellipticCurve!.toMap(),
+      'rsa': ?rsa == null ? null : rsa!.toMap(),
+    };
   }
 
   factory CaPoolIssuancePolicyAllowedKeyType.fromMap(Map<String, dynamic> map) {
     return CaPoolIssuancePolicyAllowedKeyType(
-      ellipticCurve: map['ellipticCurve'] == null
-          ? null
-          : CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve.fromMap(
-              (map['ellipticCurve'] as Map).cast<String, dynamic>()),
-      rsa: map['rsa'] == null
-          ? null
-          : CaPoolIssuancePolicyAllowedKeyTypeRsa.fromMap(
-              (map['rsa'] as Map).cast<String, dynamic>()),
+      ellipticCurve: map['ellipticCurve'] == null ? null : CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve.fromMap((map['ellipticCurve'] as Map).cast<String, dynamic>()),
+      rsa: map['rsa'] == null ? null : CaPoolIssuancePolicyAllowedKeyTypeRsa.fromMap((map['rsa'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DistributionTenantManagedCertificateRequest {
   /// Certificate transparency logging preference. Valid values: `enabled`, `disabled`.
   final String? certificateTransparencyLoggingPreference;
-
   /// Primary domain name for the certificate.
   final String? primaryDomainName;
-
   /// Host for validation token. Valid values: `cloudfront`, `domain`.
   final String? validationTokenHost;
 
@@ -21,37 +20,19 @@ class DistributionTenantManagedCertificateRequest {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final certificateTransparencyLoggingPreferenceValue =
-        certificateTransparencyLoggingPreference;
-    if (certificateTransparencyLoggingPreferenceValue != null) {
-      map['certificateTransparencyLoggingPreference'] =
-          certificateTransparencyLoggingPreferenceValue;
-    }
-    final primaryDomainNameValue = primaryDomainName;
-    if (primaryDomainNameValue != null) {
-      map['primaryDomainName'] = primaryDomainNameValue;
-    }
-    final validationTokenHostValue = validationTokenHost;
-    if (validationTokenHostValue != null) {
-      map['validationTokenHost'] = validationTokenHostValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'certificateTransparencyLoggingPreference': ?certificateTransparencyLoggingPreference,
+      'primaryDomainName': ?primaryDomainName,
+      'validationTokenHost': ?validationTokenHost,
+    };
   }
 
-  factory DistributionTenantManagedCertificateRequest.fromMap(
-      Map<String, dynamic> map) {
+  factory DistributionTenantManagedCertificateRequest.fromMap(Map<String, dynamic> map) {
     return DistributionTenantManagedCertificateRequest(
-      certificateTransparencyLoggingPreference:
-          map['certificateTransparencyLoggingPreference'] == null
-              ? null
-              : map['certificateTransparencyLoggingPreference'] as String,
-      primaryDomainName: map['primaryDomainName'] == null
-          ? null
-          : map['primaryDomainName'] as String,
-      validationTokenHost: map['validationTokenHost'] == null
-          ? null
-          : map['validationTokenHost'] as String,
+      certificateTransparencyLoggingPreference: map['certificateTransparencyLoggingPreference'] == null ? null : map['certificateTransparencyLoggingPreference'] as String,
+      primaryDomainName: map['primaryDomainName'] == null ? null : map['primaryDomainName'] as String,
+      validationTokenHost: map['validationTokenHost'] == null ? null : map['validationTokenHost'] as String,
     );
   }
 }
+

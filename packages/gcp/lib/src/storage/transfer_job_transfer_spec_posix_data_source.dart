@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TransferJobTransferSpecPosixDataSource {
   /// Root directory path to the filesystem.
   final String rootDirectory;
@@ -11,15 +12,15 @@ class TransferJobTransferSpecPosixDataSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['rootDirectory'] = rootDirectory;
-    return map;
+    return <String, dynamic>{
+      'rootDirectory': rootDirectory,
+    };
   }
 
-  factory TransferJobTransferSpecPosixDataSource.fromMap(
-      Map<String, dynamic> map) {
+  factory TransferJobTransferSpecPosixDataSource.fromMap(Map<String, dynamic> map) {
     return TransferJobTransferSpecPosixDataSource(
       rootDirectory: map['rootDirectory'] as String,
     );
   }
 }
+

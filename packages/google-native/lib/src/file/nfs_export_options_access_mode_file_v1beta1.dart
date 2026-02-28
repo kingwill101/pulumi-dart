@@ -13,7 +13,7 @@ enum NfsExportOptionsAccessModeFileV1beta1 {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown NfsExportOptionsAccessModeFileV1beta1 value: $value');
+    throw ArgumentError('Unknown NfsExportOptionsAccessModeFileV1beta1 value: $value');
   }
 }
+

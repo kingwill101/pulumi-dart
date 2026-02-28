@@ -14,20 +14,15 @@ class PerformanceConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dumpParallelLevelValue = dumpParallelLevel;
-    if (dumpParallelLevelValue != null) {
-      map['dumpParallelLevel'] = dumpParallelLevelValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'dumpParallelLevel': ?dumpParallelLevel == null ? null : dumpParallelLevel!.value,
+    };
   }
 
   factory PerformanceConfig.fromMap(Map<String, dynamic> map) {
     return PerformanceConfig(
-      dumpParallelLevel: map['dumpParallelLevel'] == null
-          ? null
-          : PerformanceConfigDumpParallelLevel.fromValue(
-              map['dumpParallelLevel'] as String),
+      dumpParallelLevel: map['dumpParallelLevel'] == null ? null : PerformanceConfigDumpParallelLevel.fromValue(map['dumpParallelLevel'] as String),
     );
   }
 }
+

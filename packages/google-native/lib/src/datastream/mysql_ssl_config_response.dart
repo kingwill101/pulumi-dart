@@ -1,22 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// MySQL SSL configuration information.
 class MysqlSslConfigResponse {
   /// Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.
   final String caCertificate;
-
   /// Indicates whether the ca_certificate field is set.
   final bool caCertificateSet;
-
   /// Input only. PEM-encoded certificate that will be used by the replica to authenticate against the source database server. If this field is used then the 'client_key' and the 'ca_certificate' fields are mandatory.
   final String clientCertificate;
-
   /// Indicates whether the client_certificate field is set.
   final bool clientCertificateSet;
-
   /// Input only. PEM-encoded private key associated with the Client Certificate. If this field is used then the 'client_certificate' and the 'ca_certificate' fields are mandatory.
   final String clientKey;
-
   /// Indicates whether the client_key field is set.
   final bool clientKeySet;
 
@@ -37,14 +33,14 @@ class MysqlSslConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['caCertificate'] = caCertificate;
-    map['caCertificateSet'] = caCertificateSet;
-    map['clientCertificate'] = clientCertificate;
-    map['clientCertificateSet'] = clientCertificateSet;
-    map['clientKey'] = clientKey;
-    map['clientKeySet'] = clientKeySet;
-    return map;
+    return <String, dynamic>{
+      'caCertificate': caCertificate,
+      'caCertificateSet': caCertificateSet,
+      'clientCertificate': clientCertificate,
+      'clientCertificateSet': clientCertificateSet,
+      'clientKey': clientKey,
+      'clientKeySet': clientKeySet,
+    };
   }
 
   factory MysqlSslConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -58,3 +54,4 @@ class MysqlSslConfigResponse {
     );
   }
 }
+

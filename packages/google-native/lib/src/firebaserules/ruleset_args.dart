@@ -9,7 +9,6 @@ import 'source.dart';
 /// {@macro pulumi_firebaserules_v1_ruleset_args_doc}
 class RulesetArgs {
   final pulumi.Input<String>? project;
-
   /// `Source` for the `Ruleset`.
   final pulumi.Input<Source> source;
 
@@ -19,18 +18,15 @@ class RulesetArgs {
   RulesetArgs({
     String? project,
     required Source source,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        source = pulumi.Input.asInput<Source>(source);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      source = pulumi.Input.asInput<Source>(source);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['source'] = pulumi.Input.mapInputValue<Source, Map<String, dynamic>>(
-        source, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'source': pulumi.Input.mapInputValue<Source, Map<String, dynamic>>(source, (value) => value.toMap()),
+    };
   }
 
   factory RulesetArgs.fromMap(Map<String, dynamic> map) {
@@ -40,3 +36,4 @@ class RulesetArgs {
     );
   }
 }
+

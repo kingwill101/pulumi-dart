@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ApplicationImageConfiguration {
   /// The image URI.
   final String imageUri;
@@ -11,9 +12,9 @@ class ApplicationImageConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['imageUri'] = imageUri;
-    return map;
+    return <String, dynamic>{
+      'imageUri': imageUri,
+    };
   }
 
   factory ApplicationImageConfiguration.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class ApplicationImageConfiguration {
     );
   }
 }
+

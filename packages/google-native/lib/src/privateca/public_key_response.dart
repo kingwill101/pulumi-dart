@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A PublicKey describes a public key.
 class PublicKeyResponse {
   /// The format of the public key.
   final String format;
-
   /// A public key. The padding and encoding must match with the `KeyFormat` value specified for the `format` field.
   final String key;
 
@@ -17,10 +17,10 @@ class PublicKeyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['format'] = format;
-    map['key'] = key;
-    return map;
+    return <String, dynamic>{
+      'format': format,
+      'key': key,
+    };
   }
 
   factory PublicKeyResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class PublicKeyResponse {
     );
   }
 }
+

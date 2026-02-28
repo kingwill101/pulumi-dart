@@ -12,47 +12,34 @@ import 'policy_target_tracking_configuration.dart';
 class PolicyArgs {
   /// Whether the adjustment is an absolute number or a percentage of the current capacity. Valid values are `ChangeInCapacity`, `ExactCapacity`, and `PercentChangeInCapacity`.
   final pulumi.Input<String>? adjustmentType;
-
   /// Name of the autoscaling group.
   final pulumi.Input<String> autoscalingGroupName;
-
   /// Amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
   final pulumi.Input<int>? cooldown;
-
   /// Whether the scaling policy is enabled or disabled. Default: `true`.
   ///
   /// The following argument is only available to "SimpleScaling" and "StepScaling" type policies:
   final pulumi.Input<bool>? enabled;
-
   /// Estimated time, in seconds, until a newly launched instance will contribute CloudWatch metrics. Without a value, AWS will default to the group's specified cooldown period.
   final pulumi.Input<int>? estimatedInstanceWarmup;
-
   /// Aggregation type for the policy's metrics. Valid values are "Minimum", "Maximum", and "Average". Without a value, AWS will treat the aggregation type as "Average".
   final pulumi.Input<String>? metricAggregationType;
-
   /// Minimum value to scale by when `adjustment_type` is set to `PercentChangeInCapacity`.
   ///
   /// The following arguments are only available to "SimpleScaling" type policies:
   final pulumi.Input<int>? minAdjustmentMagnitude;
-
   /// Name of the policy.
   final pulumi.Input<String>? name;
-
   /// Policy type, either "SimpleScaling", "StepScaling", "TargetTrackingScaling", or "PredictiveScaling". If this value isn't provided, AWS will default to "SimpleScaling."
   final pulumi.Input<String>? policyType;
-
   /// Predictive scaling policy configuration to use with Amazon EC2 Auto Scaling.
-  final pulumi.Input<PolicyPredictiveScalingConfiguration>?
-      predictiveScalingConfiguration;
-
+  final pulumi.Input<PolicyPredictiveScalingConfiguration>? predictiveScalingConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Number of members by which to
   /// scale, when the adjustment bounds are breached. A positive value scales
   /// up. A negative value scales down.
   final pulumi.Input<int>? scalingAdjustment;
-
   /// Set of adjustments that manage
   /// group scaling. These have the following structure:
   ///
@@ -207,7 +194,6 @@ class PolicyArgs {
   ///
   /// The following fields are available in step adjustments:
   final pulumi.Input<List<PolicyStepAdjustment>>? stepAdjustments;
-
   /// Target tracking policy. These have the following structure:
   ///
   ///
@@ -328,8 +314,7 @@ class PolicyArgs {
   ///
   ///
   /// The following fields are available in target tracking configuration:
-  final pulumi.Input<PolicyTargetTrackingConfiguration>?
-      targetTrackingConfiguration;
+  final pulumi.Input<PolicyTargetTrackingConfiguration>? targetTrackingConfiguration;
 
   /// Creates a new [PolicyArgs].
   /// [adjustmentType] Whether the adjustment is an absolute number or a percentage of the current capacity. Valid values are `ChangeInCapacity`, `ExactCapacity`, and `PercentChangeInCapacity`.
@@ -361,140 +346,58 @@ class PolicyArgs {
     int? scalingAdjustment,
     List<PolicyStepAdjustment>? stepAdjustments,
     PolicyTargetTrackingConfiguration? targetTrackingConfiguration,
-  })  : adjustmentType = pulumi.Input.asOptionalInput<String>(adjustmentType),
-        autoscalingGroupName =
-            pulumi.Input.asInput<String>(autoscalingGroupName),
-        cooldown = pulumi.Input.asOptionalInput<int>(cooldown),
-        enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-        estimatedInstanceWarmup =
-            pulumi.Input.asOptionalInput<int>(estimatedInstanceWarmup),
-        metricAggregationType =
-            pulumi.Input.asOptionalInput<String>(metricAggregationType),
-        minAdjustmentMagnitude =
-            pulumi.Input.asOptionalInput<int>(minAdjustmentMagnitude),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        policyType = pulumi.Input.asOptionalInput<String>(policyType),
-        predictiveScalingConfiguration =
-            pulumi.Input.asOptionalInput<PolicyPredictiveScalingConfiguration>(
-                predictiveScalingConfiguration),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        scalingAdjustment =
-            pulumi.Input.asOptionalInput<int>(scalingAdjustment),
-        stepAdjustments =
-            pulumi.Input.asOptionalInput<List<PolicyStepAdjustment>>(
-                stepAdjustments),
-        targetTrackingConfiguration =
-            pulumi.Input.asOptionalInput<PolicyTargetTrackingConfiguration>(
-                targetTrackingConfiguration);
+  }) :
+      adjustmentType = pulumi.Input.asOptionalInput<String>(adjustmentType),
+      autoscalingGroupName = pulumi.Input.asInput<String>(autoscalingGroupName),
+      cooldown = pulumi.Input.asOptionalInput<int>(cooldown),
+      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
+      estimatedInstanceWarmup = pulumi.Input.asOptionalInput<int>(estimatedInstanceWarmup),
+      metricAggregationType = pulumi.Input.asOptionalInput<String>(metricAggregationType),
+      minAdjustmentMagnitude = pulumi.Input.asOptionalInput<int>(minAdjustmentMagnitude),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      policyType = pulumi.Input.asOptionalInput<String>(policyType),
+      predictiveScalingConfiguration = pulumi.Input.asOptionalInput<PolicyPredictiveScalingConfiguration>(predictiveScalingConfiguration),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      scalingAdjustment = pulumi.Input.asOptionalInput<int>(scalingAdjustment),
+      stepAdjustments = pulumi.Input.asOptionalInput<List<PolicyStepAdjustment>>(stepAdjustments),
+      targetTrackingConfiguration = pulumi.Input.asOptionalInput<PolicyTargetTrackingConfiguration>(targetTrackingConfiguration);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final adjustmentTypeValue = adjustmentType;
-    if (adjustmentTypeValue != null) {
-      map['adjustmentType'] = adjustmentTypeValue;
-    }
-    map['autoscalingGroupName'] = autoscalingGroupName;
-    final cooldownValue = cooldown;
-    if (cooldownValue != null) {
-      map['cooldown'] = cooldownValue;
-    }
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    final estimatedInstanceWarmupValue = estimatedInstanceWarmup;
-    if (estimatedInstanceWarmupValue != null) {
-      map['estimatedInstanceWarmup'] = estimatedInstanceWarmupValue;
-    }
-    final metricAggregationTypeValue = metricAggregationType;
-    if (metricAggregationTypeValue != null) {
-      map['metricAggregationType'] = metricAggregationTypeValue;
-    }
-    final minAdjustmentMagnitudeValue = minAdjustmentMagnitude;
-    if (minAdjustmentMagnitudeValue != null) {
-      map['minAdjustmentMagnitude'] = minAdjustmentMagnitudeValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final policyTypeValue = policyType;
-    if (policyTypeValue != null) {
-      map['policyType'] = policyTypeValue;
-    }
-    final predictiveScalingConfigurationValue = predictiveScalingConfiguration;
-    if (predictiveScalingConfigurationValue != null) {
-      map['predictiveScalingConfiguration'] =
-          pulumi.Input.mapOptionalInputValue<
-                  PolicyPredictiveScalingConfiguration, Map<String, dynamic>>(
-              predictiveScalingConfigurationValue, (value) => value.toMap());
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final scalingAdjustmentValue = scalingAdjustment;
-    if (scalingAdjustmentValue != null) {
-      map['scalingAdjustment'] = scalingAdjustmentValue;
-    }
-    final stepAdjustmentsValue = stepAdjustments;
-    if (stepAdjustmentsValue != null) {
-      map['stepAdjustments'] = pulumi.Input.mapOptionalInputValue<
-              List<PolicyStepAdjustment>, List<Map<String, dynamic>>>(
-          stepAdjustmentsValue,
-          (value) => pulumi.Input.encodeList<PolicyStepAdjustment,
-              Map<String, dynamic>>(value, (value) => value.toMap()));
-    }
-    final targetTrackingConfigurationValue = targetTrackingConfiguration;
-    if (targetTrackingConfigurationValue != null) {
-      map['targetTrackingConfiguration'] = pulumi.Input.mapOptionalInputValue<
-              PolicyTargetTrackingConfiguration, Map<String, dynamic>>(
-          targetTrackingConfigurationValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'adjustmentType': ?adjustmentType,
+      'autoscalingGroupName': autoscalingGroupName,
+      'cooldown': ?cooldown,
+      'enabled': ?enabled,
+      'estimatedInstanceWarmup': ?estimatedInstanceWarmup,
+      'metricAggregationType': ?metricAggregationType,
+      'minAdjustmentMagnitude': ?minAdjustmentMagnitude,
+      'name': ?name,
+      'policyType': ?policyType,
+      'predictiveScalingConfiguration': ?pulumi.Input.mapOptionalInputValue<PolicyPredictiveScalingConfiguration, Map<String, dynamic>>(predictiveScalingConfiguration, (value) => value.toMap()),
+      'region': ?region,
+      'scalingAdjustment': ?scalingAdjustment,
+      'stepAdjustments': ?pulumi.Input.mapOptionalInputValue<List<PolicyStepAdjustment>, List<Map<String, dynamic>>>(stepAdjustments, (value) => pulumi.Input.encodeList<PolicyStepAdjustment, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'targetTrackingConfiguration': ?pulumi.Input.mapOptionalInputValue<PolicyTargetTrackingConfiguration, Map<String, dynamic>>(targetTrackingConfiguration, (value) => value.toMap()),
+    };
   }
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      adjustmentType: map['adjustmentType'] == null
-          ? null
-          : map['adjustmentType'] as String,
+      adjustmentType: map['adjustmentType'] == null ? null : map['adjustmentType'] as String,
       autoscalingGroupName: map['autoscalingGroupName'] as String,
       cooldown: map['cooldown'] == null ? null : map['cooldown'] as int,
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      estimatedInstanceWarmup: map['estimatedInstanceWarmup'] == null
-          ? null
-          : map['estimatedInstanceWarmup'] as int,
-      metricAggregationType: map['metricAggregationType'] == null
-          ? null
-          : map['metricAggregationType'] as String,
-      minAdjustmentMagnitude: map['minAdjustmentMagnitude'] == null
-          ? null
-          : map['minAdjustmentMagnitude'] as int,
+      estimatedInstanceWarmup: map['estimatedInstanceWarmup'] == null ? null : map['estimatedInstanceWarmup'] as int,
+      metricAggregationType: map['metricAggregationType'] == null ? null : map['metricAggregationType'] as String,
+      minAdjustmentMagnitude: map['minAdjustmentMagnitude'] == null ? null : map['minAdjustmentMagnitude'] as int,
       name: map['name'] == null ? null : map['name'] as String,
-      policyType:
-          map['policyType'] == null ? null : map['policyType'] as String,
-      predictiveScalingConfiguration:
-          map['predictiveScalingConfiguration'] == null
-              ? null
-              : PolicyPredictiveScalingConfiguration.fromMap(
-                  (map['predictiveScalingConfiguration'] as Map)
-                      .cast<String, dynamic>()),
+      policyType: map['policyType'] == null ? null : map['policyType'] as String,
+      predictiveScalingConfiguration: map['predictiveScalingConfiguration'] == null ? null : PolicyPredictiveScalingConfiguration.fromMap((map['predictiveScalingConfiguration'] as Map).cast<String, dynamic>()),
       region: map['region'] == null ? null : map['region'] as String,
-      scalingAdjustment: map['scalingAdjustment'] == null
-          ? null
-          : map['scalingAdjustment'] as int,
-      stepAdjustments: map['stepAdjustments'] == null
-          ? null
-          : pulumi.Input.decodeList<PolicyStepAdjustment>(
-              map['stepAdjustments'],
-              (value) => PolicyStepAdjustment.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      targetTrackingConfiguration: map['targetTrackingConfiguration'] == null
-          ? null
-          : PolicyTargetTrackingConfiguration.fromMap(
-              (map['targetTrackingConfiguration'] as Map)
-                  .cast<String, dynamic>()),
+      scalingAdjustment: map['scalingAdjustment'] == null ? null : map['scalingAdjustment'] as int,
+      stepAdjustments: map['stepAdjustments'] == null ? null : pulumi.Input.decodeList<PolicyStepAdjustment>(map['stepAdjustments'], (value) => PolicyStepAdjustment.fromMap((value as Map).cast<String, dynamic>())),
+      targetTrackingConfiguration: map['targetTrackingConfiguration'] == null ? null : PolicyTargetTrackingConfiguration.fromMap((map['targetTrackingConfiguration'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -492,21 +492,16 @@ import 'manged_ssl_certificate_managed.dart';
 class MangedSslCertificate extends pulumi.CustomResource {
   /// The unique identifier for the resource.
   late final pulumi.Output<int> certificateId;
-
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
-
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
-
   /// Expire time of the certificate in RFC3339 text format.
   late final pulumi.Output<String> expireTime;
-
   /// Properties relevant to a managed certificate.  These will be used if the
   /// certificate is managed (as indicated by a value of `MANAGED` in `type`).
   /// Structure is documented below.
   late final pulumi.Output<MangedSslCertificateManaged?> managed;
-
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -516,17 +511,13 @@ class MangedSslCertificate extends pulumi.CustomResource {
   /// character, which cannot be a dash.
   /// These are in the same namespace as the managed SSL certificates.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
-
   /// Domains associated with the certificate via Subject Alternative Name.
   late final pulumi.Output<List<String>> subjectAlternativeNames;
-
   /// Enum field whose value is always `MANAGED` - used to signal to the API
   /// which type this is.
   /// Default value is `MANAGED`.
@@ -555,8 +546,7 @@ class MangedSslCertificate extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
     this.selfLink = registerOutput<String>('selfLink');
-    this.subjectAlternativeNames =
-        registerOutput<List<String>>('subjectAlternativeNames');
+    this.subjectAlternativeNames = registerOutput<List<String>>('subjectAlternativeNames');
     this.type = registerOutput<String?>('type');
   }
 }

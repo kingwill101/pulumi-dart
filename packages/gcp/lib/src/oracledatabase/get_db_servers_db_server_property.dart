@@ -1,33 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDbServersDbServerProperty {
   /// Output only
   final List<String> dbNodeIds;
-
   /// Output only
   final int dbNodeStorageSizeGb;
-
   /// Output only
   final int maxDbNodeStorageSizeGb;
-
   /// Output only
   final int maxMemorySizeGb;
-
   /// Output only
   final int maxOcpuCount;
-
   /// Output only
   final int memorySizeGb;
-
   /// Output only
   final String ocid;
-
   /// Output only
   final int ocpuCount;
-
   /// Output only
   final String state;
-
   /// Output only
   final int vmCount;
 
@@ -56,18 +48,18 @@ class GetDbServersDbServerProperty {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dbNodeIds'] = dbNodeIds;
-    map['dbNodeStorageSizeGb'] = dbNodeStorageSizeGb;
-    map['maxDbNodeStorageSizeGb'] = maxDbNodeStorageSizeGb;
-    map['maxMemorySizeGb'] = maxMemorySizeGb;
-    map['maxOcpuCount'] = maxOcpuCount;
-    map['memorySizeGb'] = memorySizeGb;
-    map['ocid'] = ocid;
-    map['ocpuCount'] = ocpuCount;
-    map['state'] = state;
-    map['vmCount'] = vmCount;
-    return map;
+    return <String, dynamic>{
+      'dbNodeIds': dbNodeIds,
+      'dbNodeStorageSizeGb': dbNodeStorageSizeGb,
+      'maxDbNodeStorageSizeGb': maxDbNodeStorageSizeGb,
+      'maxMemorySizeGb': maxMemorySizeGb,
+      'maxOcpuCount': maxOcpuCount,
+      'memorySizeGb': memorySizeGb,
+      'ocid': ocid,
+      'ocpuCount': ocpuCount,
+      'state': state,
+      'vmCount': vmCount,
+    };
   }
 
   factory GetDbServersDbServerProperty.fromMap(Map<String, dynamic> map) {
@@ -85,3 +77,4 @@ class GetDbServersDbServerProperty {
     );
   }
 }
+

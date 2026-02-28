@@ -15,19 +15,15 @@ class SourceInstanceParamsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['diskConfigs'] = pulumi.Input.encodeList<
-        DiskInstantiationConfigResponse,
-        Map<String, dynamic>>(diskConfigs, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'diskConfigs': pulumi.Input.encodeList<DiskInstantiationConfigResponse, Map<String, dynamic>>(diskConfigs, (value) => value.toMap()),
+    };
   }
 
   factory SourceInstanceParamsResponse.fromMap(Map<String, dynamic> map) {
     return SourceInstanceParamsResponse(
-      diskConfigs: pulumi.Input.decodeList<DiskInstantiationConfigResponse>(
-          map['diskConfigs'],
-          (value) => DiskInstantiationConfigResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      diskConfigs: pulumi.Input.decodeList<DiskInstantiationConfigResponse>(map['diskConfigs'], (value) => DiskInstantiationConfigResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

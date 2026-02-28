@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterEnableK8sBetaApis {
   /// Enabled Kubernetes Beta APIs.
   final List<String> enabledApis;
@@ -11,9 +12,9 @@ class ClusterEnableK8sBetaApis {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabledApis'] = enabledApis;
-    return map;
+    return <String, dynamic>{
+      'enabledApis': enabledApis,
+    };
   }
 
   factory ClusterEnableK8sBetaApis.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class ClusterEnableK8sBetaApis {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetEndpointPostgresSetting {
   final String afterConnectScript;
   final String authenticationMethod;
@@ -61,26 +62,26 @@ class GetEndpointPostgresSetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['afterConnectScript'] = afterConnectScript;
-    map['authenticationMethod'] = authenticationMethod;
-    map['babelfishDatabaseName'] = babelfishDatabaseName;
-    map['captureDdls'] = captureDdls;
-    map['databaseMode'] = databaseMode;
-    map['ddlArtifactsSchema'] = ddlArtifactsSchema;
-    map['executeTimeout'] = executeTimeout;
-    map['failTasksOnLobTruncation'] = failTasksOnLobTruncation;
-    map['heartbeatEnable'] = heartbeatEnable;
-    map['heartbeatFrequency'] = heartbeatFrequency;
-    map['heartbeatSchema'] = heartbeatSchema;
-    map['mapBooleanAsBoolean'] = mapBooleanAsBoolean;
-    map['mapJsonbAsClob'] = mapJsonbAsClob;
-    map['mapLongVarcharAs'] = mapLongVarcharAs;
-    map['maxFileSize'] = maxFileSize;
-    map['pluginName'] = pluginName;
-    map['serviceAccessRoleArn'] = serviceAccessRoleArn;
-    map['slotName'] = slotName;
-    return map;
+    return <String, dynamic>{
+      'afterConnectScript': afterConnectScript,
+      'authenticationMethod': authenticationMethod,
+      'babelfishDatabaseName': babelfishDatabaseName,
+      'captureDdls': captureDdls,
+      'databaseMode': databaseMode,
+      'ddlArtifactsSchema': ddlArtifactsSchema,
+      'executeTimeout': executeTimeout,
+      'failTasksOnLobTruncation': failTasksOnLobTruncation,
+      'heartbeatEnable': heartbeatEnable,
+      'heartbeatFrequency': heartbeatFrequency,
+      'heartbeatSchema': heartbeatSchema,
+      'mapBooleanAsBoolean': mapBooleanAsBoolean,
+      'mapJsonbAsClob': mapJsonbAsClob,
+      'mapLongVarcharAs': mapLongVarcharAs,
+      'maxFileSize': maxFileSize,
+      'pluginName': pluginName,
+      'serviceAccessRoleArn': serviceAccessRoleArn,
+      'slotName': slotName,
+    };
   }
 
   factory GetEndpointPostgresSetting.fromMap(Map<String, dynamic> map) {
@@ -106,3 +107,4 @@ class GetEndpointPostgresSetting {
     );
   }
 }
+

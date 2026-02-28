@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Historical state information.
 class SessionStateHistoryResponse {
   /// The state of the session at this point in the session history.
   final String state;
-
   /// Details about the state at this point in the session history.
   final String stateMessage;
-
   /// The time when the session entered the historical state.
   final String stateStartTime;
 
@@ -22,11 +21,11 @@ class SessionStateHistoryResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['state'] = state;
-    map['stateMessage'] = stateMessage;
-    map['stateStartTime'] = stateStartTime;
-    return map;
+    return <String, dynamic>{
+      'state': state,
+      'stateMessage': stateMessage,
+      'stateStartTime': stateStartTime,
+    };
   }
 
   factory SessionStateHistoryResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class SessionStateHistoryResponse {
     );
   }
 }
+

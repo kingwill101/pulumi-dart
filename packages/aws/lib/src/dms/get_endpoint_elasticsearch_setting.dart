@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetEndpointElasticsearchSetting {
   final String endpointUri;
   final int errorRetryDuration;
@@ -19,12 +20,12 @@ class GetEndpointElasticsearchSetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['endpointUri'] = endpointUri;
-    map['errorRetryDuration'] = errorRetryDuration;
-    map['fullLoadErrorPercentage'] = fullLoadErrorPercentage;
-    map['serviceAccessRoleArn'] = serviceAccessRoleArn;
-    return map;
+    return <String, dynamic>{
+      'endpointUri': endpointUri,
+      'errorRetryDuration': errorRetryDuration,
+      'fullLoadErrorPercentage': fullLoadErrorPercentage,
+      'serviceAccessRoleArn': serviceAccessRoleArn,
+    };
   }
 
   factory GetEndpointElasticsearchSetting.fromMap(Map<String, dynamic> map) {
@@ -36,3 +37,4 @@ class GetEndpointElasticsearchSetting {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BucketWebsiteConfigurationV2ErrorDocument {
   /// Object key name to use when a 4XX class error occurs.
   final String key;
@@ -11,15 +12,15 @@ class BucketWebsiteConfigurationV2ErrorDocument {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+    };
   }
 
-  factory BucketWebsiteConfigurationV2ErrorDocument.fromMap(
-      Map<String, dynamic> map) {
+  factory BucketWebsiteConfigurationV2ErrorDocument.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteConfigurationV2ErrorDocument(
       key: map['key'] as String,
     );
   }
 }
+

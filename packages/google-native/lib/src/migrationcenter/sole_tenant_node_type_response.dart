@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A Sole Tenant node type.
 class SoleTenantNodeTypeResponse {
   /// Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
@@ -12,9 +13,9 @@ class SoleTenantNodeTypeResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['nodeName'] = nodeName;
-    return map;
+    return <String, dynamic>{
+      'nodeName': nodeName,
+    };
   }
 
   factory SoleTenantNodeTypeResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class SoleTenantNodeTypeResponse {
     );
   }
 }
+

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class StandardAppVersionDeploymentFile {
   /// The identifier for this object. Format specified above.
   final String name;
-
   /// SHA1 checksum of the file
   final String? sha1Sum;
-
   /// Source URL
   final String sourceUrl;
 
@@ -21,14 +20,11 @@ class StandardAppVersionDeploymentFile {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    final sha1SumValue = sha1Sum;
-    if (sha1SumValue != null) {
-      map['sha1Sum'] = sha1SumValue;
-    }
-    map['sourceUrl'] = sourceUrl;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'sha1Sum': ?sha1Sum,
+      'sourceUrl': sourceUrl,
+    };
   }
 
   factory StandardAppVersionDeploymentFile.fromMap(Map<String, dynamic> map) {
@@ -39,3 +35,4 @@ class StandardAppVersionDeploymentFile {
     );
   }
 }
+

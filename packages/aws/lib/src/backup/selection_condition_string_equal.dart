@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SelectionConditionStringEqual {
   /// Key for the filter.
   final String key;
-
   /// Value for the filter.
   final String value;
 
@@ -16,10 +16,10 @@ class SelectionConditionStringEqual {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
   factory SelectionConditionStringEqual.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class SelectionConditionStringEqual {
     );
   }
 }
+

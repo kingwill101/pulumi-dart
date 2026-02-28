@@ -6,7 +6,6 @@ import 'endpoint_configuration_async_inference_config_output_config.dart';
 class EndpointConfigurationAsyncInferenceConfig {
   /// Configures the behavior of the client used by SageMaker AI to interact with the model container during asynchronous inference.
   final EndpointConfigurationAsyncInferenceConfigClientConfig? clientConfig;
-
   /// Configuration for asynchronous inference invocation outputs.
   final EndpointConfigurationAsyncInferenceConfigOutputConfig outputConfig;
 
@@ -19,25 +18,17 @@ class EndpointConfigurationAsyncInferenceConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final clientConfigValue = clientConfig;
-    if (clientConfigValue != null) {
-      map['clientConfig'] = clientConfigValue.toMap();
-    }
-    map['outputConfig'] = outputConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'clientConfig': ?clientConfig == null ? null : clientConfig!.toMap(),
+      'outputConfig': outputConfig.toMap(),
+    };
   }
 
-  factory EndpointConfigurationAsyncInferenceConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory EndpointConfigurationAsyncInferenceConfig.fromMap(Map<String, dynamic> map) {
     return EndpointConfigurationAsyncInferenceConfig(
-      clientConfig: map['clientConfig'] == null
-          ? null
-          : EndpointConfigurationAsyncInferenceConfigClientConfig.fromMap(
-              (map['clientConfig'] as Map).cast<String, dynamic>()),
-      outputConfig:
-          EndpointConfigurationAsyncInferenceConfigOutputConfig.fromMap(
-              (map['outputConfig'] as Map).cast<String, dynamic>()),
+      clientConfig: map['clientConfig'] == null ? null : EndpointConfigurationAsyncInferenceConfigClientConfig.fromMap((map['clientConfig'] as Map).cast<String, dynamic>()),
+      outputConfig: EndpointConfigurationAsyncInferenceConfigOutputConfig.fromMap((map['outputConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

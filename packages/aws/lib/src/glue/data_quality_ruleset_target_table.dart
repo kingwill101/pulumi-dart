@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataQualityRulesetTargetTable {
   /// The catalog id where the AWS Glue table exists.
   final String? catalogId;
-
   /// Name of the database where the AWS Glue table exists.
   final String databaseName;
-
   /// Name of the AWS Glue table.
   final String tableName;
 
@@ -21,14 +20,11 @@ class DataQualityRulesetTargetTable {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final catalogIdValue = catalogId;
-    if (catalogIdValue != null) {
-      map['catalogId'] = catalogIdValue;
-    }
-    map['databaseName'] = databaseName;
-    map['tableName'] = tableName;
-    return map;
+    return <String, dynamic>{
+      'catalogId': ?catalogId,
+      'databaseName': databaseName,
+      'tableName': tableName,
+    };
   }
 
   factory DataQualityRulesetTargetTable.fromMap(Map<String, dynamic> map) {
@@ -39,3 +35,4 @@ class DataQualityRulesetTargetTable {
     );
   }
 }
+

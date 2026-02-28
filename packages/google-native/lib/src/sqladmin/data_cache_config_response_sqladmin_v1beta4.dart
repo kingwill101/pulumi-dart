@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Data cache configurations.
 class DataCacheConfigResponseSqladminV1beta4 {
   /// Whether data cache is enabled for the instance.
@@ -12,15 +13,15 @@ class DataCacheConfigResponseSqladminV1beta4 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dataCacheEnabled'] = dataCacheEnabled;
-    return map;
+    return <String, dynamic>{
+      'dataCacheEnabled': dataCacheEnabled,
+    };
   }
 
-  factory DataCacheConfigResponseSqladminV1beta4.fromMap(
-      Map<String, dynamic> map) {
+  factory DataCacheConfigResponseSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return DataCacheConfigResponseSqladminV1beta4(
       dataCacheEnabled: map['dataCacheEnabled'] as bool,
     );
   }
 }
+

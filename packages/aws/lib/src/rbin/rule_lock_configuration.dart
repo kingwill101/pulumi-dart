@@ -13,15 +13,15 @@ class RuleLockConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['unlockDelay'] = unlockDelay.toMap();
-    return map;
+    return <String, dynamic>{
+      'unlockDelay': unlockDelay.toMap(),
+    };
   }
 
   factory RuleLockConfiguration.fromMap(Map<String, dynamic> map) {
     return RuleLockConfiguration(
-      unlockDelay: RuleLockConfigurationUnlockDelay.fromMap(
-          (map['unlockDelay'] as Map).cast<String, dynamic>()),
+      unlockDelay: RuleLockConfigurationUnlockDelay.fromMap((map['unlockDelay'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

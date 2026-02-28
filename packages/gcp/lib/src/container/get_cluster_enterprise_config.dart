@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterEnterpriseConfig {
   /// Indicates the effective cluster tier. Available options include STANDARD and ENTERPRISE.
   final String clusterTier;
-
   /// Indicates the desired cluster tier. Available options include STANDARD and ENTERPRISE.
   final String desiredTier;
 
@@ -16,10 +16,10 @@ class GetClusterEnterpriseConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clusterTier'] = clusterTier;
-    map['desiredTier'] = desiredTier;
-    return map;
+    return <String, dynamic>{
+      'clusterTier': clusterTier,
+      'desiredTier': desiredTier,
+    };
   }
 
   factory GetClusterEnterpriseConfig.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetClusterEnterpriseConfig {
     );
   }
 }
+

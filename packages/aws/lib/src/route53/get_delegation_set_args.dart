@@ -14,12 +14,13 @@ class GetDelegationSetArgs {
   /// [id] Delegation set ID.
   GetDelegationSetArgs({
     required String id,
-  }) : id = pulumi.Input.asInput<String>(id);
+  }) :
+      id = pulumi.Input.asInput<String>(id);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory GetDelegationSetArgs.fromMap(Map<String, dynamic> map) {
@@ -28,3 +29,4 @@ class GetDelegationSetArgs {
     );
   }
 }
+

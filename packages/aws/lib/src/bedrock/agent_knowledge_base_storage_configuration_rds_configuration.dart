@@ -5,17 +5,12 @@ import 'agent_knowledge_base_storage_configuration_rds_configuration_field_mappi
 class AgentKnowledgeBaseStorageConfigurationRdsConfiguration {
   /// ARN of the secret that you created in AWS Secrets Manager that is linked to your Amazon RDS database.
   final String credentialsSecretArn;
-
   /// Name of your Amazon RDS database.
   final String databaseName;
-
   /// Names of the fields to which to map information about the vector store. This block supports the following arguments:
-  final AgentKnowledgeBaseStorageConfigurationRdsConfigurationFieldMapping
-      fieldMapping;
-
+  final AgentKnowledgeBaseStorageConfigurationRdsConfigurationFieldMapping fieldMapping;
   /// ARN of the vector store.
   final String resourceArn;
-
   /// Name of the table in the database.
   final String tableName;
 
@@ -34,25 +29,23 @@ class AgentKnowledgeBaseStorageConfigurationRdsConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['credentialsSecretArn'] = credentialsSecretArn;
-    map['databaseName'] = databaseName;
-    map['fieldMapping'] = fieldMapping.toMap();
-    map['resourceArn'] = resourceArn;
-    map['tableName'] = tableName;
-    return map;
+    return <String, dynamic>{
+      'credentialsSecretArn': credentialsSecretArn,
+      'databaseName': databaseName,
+      'fieldMapping': fieldMapping.toMap(),
+      'resourceArn': resourceArn,
+      'tableName': tableName,
+    };
   }
 
-  factory AgentKnowledgeBaseStorageConfigurationRdsConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentKnowledgeBaseStorageConfigurationRdsConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseStorageConfigurationRdsConfiguration(
       credentialsSecretArn: map['credentialsSecretArn'] as String,
       databaseName: map['databaseName'] as String,
-      fieldMapping:
-          AgentKnowledgeBaseStorageConfigurationRdsConfigurationFieldMapping
-              .fromMap((map['fieldMapping'] as Map).cast<String, dynamic>()),
+      fieldMapping: AgentKnowledgeBaseStorageConfigurationRdsConfigurationFieldMapping.fromMap((map['fieldMapping'] as Map).cast<String, dynamic>()),
       resourceArn: map['resourceArn'] as String,
       tableName: map['tableName'] as String,
     );
   }
 }
+

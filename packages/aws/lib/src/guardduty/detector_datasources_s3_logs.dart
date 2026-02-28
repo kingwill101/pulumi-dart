@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DetectorDatasourcesS3Logs {
   /// If true, enables [S3 protection](https://docs.aws.amazon.com/guardduty/latest/ug/s3-protection.html).
   /// Defaults to `true`.
@@ -12,9 +13,9 @@ class DetectorDatasourcesS3Logs {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enable'] = enable;
-    return map;
+    return <String, dynamic>{
+      'enable': enable,
+    };
   }
 
   factory DetectorDatasourcesS3Logs.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class DetectorDatasourcesS3Logs {
     );
   }
 }
+

@@ -15,24 +15,15 @@ class WebServerNetworkAccessControl {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final allowedIpRangesValue = allowedIpRanges;
-    if (allowedIpRangesValue != null) {
-      map['allowedIpRanges'] =
-          pulumi.Input.encodeList<AllowedIpRange, Map<String, dynamic>>(
-              allowedIpRangesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'allowedIpRanges': ?allowedIpRanges == null ? null : pulumi.Input.encodeList<AllowedIpRange, Map<String, dynamic>>(allowedIpRanges!, (value) => value.toMap()),
+    };
   }
 
   factory WebServerNetworkAccessControl.fromMap(Map<String, dynamic> map) {
     return WebServerNetworkAccessControl(
-      allowedIpRanges: map['allowedIpRanges'] == null
-          ? null
-          : pulumi.Input.decodeList<AllowedIpRange>(
-              map['allowedIpRanges'],
-              (value) => AllowedIpRange.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      allowedIpRanges: map['allowedIpRanges'] == null ? null : pulumi.Input.decodeList<AllowedIpRange>(map['allowedIpRanges'], (value) => AllowedIpRange.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

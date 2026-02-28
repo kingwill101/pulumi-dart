@@ -22,18 +22,19 @@ class GetPeeredDnsDomainArgs {
     required String network,
     required String project,
     required String service,
-  })  : name = pulumi.Input.asInput<String>(name),
-        network = pulumi.Input.asInput<String>(network),
-        project = pulumi.Input.asInput<String>(project),
-        service = pulumi.Input.asInput<String>(service);
+  }) :
+      name = pulumi.Input.asInput<String>(name),
+      network = pulumi.Input.asInput<String>(network),
+      project = pulumi.Input.asInput<String>(project),
+      service = pulumi.Input.asInput<String>(service);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['network'] = network;
-    map['project'] = project;
-    map['service'] = service;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'network': network,
+      'project': project,
+      'service': service,
+    };
   }
 
   factory GetPeeredDnsDomainArgs.fromMap(Map<String, dynamic> map) {
@@ -45,3 +46,4 @@ class GetPeeredDnsDomainArgs {
     );
   }
 }
+

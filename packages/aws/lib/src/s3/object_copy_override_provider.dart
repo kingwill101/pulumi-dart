@@ -13,20 +13,15 @@ class ObjectCopyOverrideProvider {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final defaultTagsValue = defaultTags;
-    if (defaultTagsValue != null) {
-      map['defaultTags'] = defaultTagsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'defaultTags': ?defaultTags == null ? null : defaultTags!.toMap(),
+    };
   }
 
   factory ObjectCopyOverrideProvider.fromMap(Map<String, dynamic> map) {
     return ObjectCopyOverrideProvider(
-      defaultTags: map['defaultTags'] == null
-          ? null
-          : ObjectCopyOverrideProviderDefaultTags.fromMap(
-              (map['defaultTags'] as Map).cast<String, dynamic>()),
+      defaultTags: map['defaultTags'] == null ? null : ObjectCopyOverrideProviderDefaultTags.fromMap((map['defaultTags'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

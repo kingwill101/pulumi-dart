@@ -4,8 +4,7 @@ import 'channel_encoder_settings_output_group_output_output_settings_udp_output_
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettings {
   /// M2TS Settings. See [M2TS Settings](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-m2tssettings.html) for more details.
-  final ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettings?
-      m2tsSettings;
+  final ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettings? m2tsSettings;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettings].
   /// [m2tsSettings] M2TS Settings. See [M2TS Settings](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-m2tssettings.html) for more details.
@@ -14,21 +13,15 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsCont
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final m2tsSettingsValue = m2tsSettings;
-    if (m2tsSettingsValue != null) {
-      map['m2tsSettings'] = m2tsSettingsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'm2tsSettings': ?m2tsSettings == null ? null : m2tsSettings!.toMap(),
+    };
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettings.fromMap(
-      Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettings(
-      m2tsSettings: map['m2tsSettings'] == null
-          ? null
-          : ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettings
-              .fromMap((map['m2tsSettings'] as Map).cast<String, dynamic>()),
+      m2tsSettings: map['m2tsSettings'] == null ? null : ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettings.fromMap((map['m2tsSettings'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

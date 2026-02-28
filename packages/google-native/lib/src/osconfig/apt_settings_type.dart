@@ -16,3 +16,4 @@ enum AptSettingsType {
     throw ArgumentError('Unknown AptSettingsType value: $value');
   }
 }
+

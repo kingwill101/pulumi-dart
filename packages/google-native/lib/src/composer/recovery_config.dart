@@ -14,20 +14,15 @@ class RecoveryConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final scheduledSnapshotsConfigValue = scheduledSnapshotsConfig;
-    if (scheduledSnapshotsConfigValue != null) {
-      map['scheduledSnapshotsConfig'] = scheduledSnapshotsConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'scheduledSnapshotsConfig': ?scheduledSnapshotsConfig == null ? null : scheduledSnapshotsConfig!.toMap(),
+    };
   }
 
   factory RecoveryConfig.fromMap(Map<String, dynamic> map) {
     return RecoveryConfig(
-      scheduledSnapshotsConfig: map['scheduledSnapshotsConfig'] == null
-          ? null
-          : ScheduledSnapshotsConfig.fromMap(
-              (map['scheduledSnapshotsConfig'] as Map).cast<String, dynamic>()),
+      scheduledSnapshotsConfig: map['scheduledSnapshotsConfig'] == null ? null : ScheduledSnapshotsConfig.fromMap((map['scheduledSnapshotsConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

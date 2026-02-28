@@ -19,19 +19,17 @@ class GetNamespaceArgs {
     required String location,
     required String namespaceId,
     String? project,
-  })  : location = pulumi.Input.asInput<String>(location),
-        namespaceId = pulumi.Input.asInput<String>(namespaceId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      namespaceId = pulumi.Input.asInput<String>(namespaceId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    map['namespaceId'] = namespaceId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'namespaceId': namespaceId,
+      'project': ?project,
+    };
   }
 
   factory GetNamespaceArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetNamespaceArgs {
     );
   }
 }
+

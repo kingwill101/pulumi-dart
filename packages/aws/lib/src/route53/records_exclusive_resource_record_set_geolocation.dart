@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RecordsExclusiveResourceRecordSetGeolocation {
   final String? continentCode;
   final String? countryCode;
@@ -16,32 +17,19 @@ class RecordsExclusiveResourceRecordSetGeolocation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final continentCodeValue = continentCode;
-    if (continentCodeValue != null) {
-      map['continentCode'] = continentCodeValue;
-    }
-    final countryCodeValue = countryCode;
-    if (countryCodeValue != null) {
-      map['countryCode'] = countryCodeValue;
-    }
-    final subdivisionCodeValue = subdivisionCode;
-    if (subdivisionCodeValue != null) {
-      map['subdivisionCode'] = subdivisionCodeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'continentCode': ?continentCode,
+      'countryCode': ?countryCode,
+      'subdivisionCode': ?subdivisionCode,
+    };
   }
 
-  factory RecordsExclusiveResourceRecordSetGeolocation.fromMap(
-      Map<String, dynamic> map) {
+  factory RecordsExclusiveResourceRecordSetGeolocation.fromMap(Map<String, dynamic> map) {
     return RecordsExclusiveResourceRecordSetGeolocation(
-      continentCode:
-          map['continentCode'] == null ? null : map['continentCode'] as String,
-      countryCode:
-          map['countryCode'] == null ? null : map['countryCode'] as String,
-      subdivisionCode: map['subdivisionCode'] == null
-          ? null
-          : map['subdivisionCode'] as String,
+      continentCode: map['continentCode'] == null ? null : map['continentCode'] as String,
+      countryCode: map['countryCode'] == null ? null : map['countryCode'] as String,
+      subdivisionCode: map['subdivisionCode'] == null ? null : map['subdivisionCode'] as String,
     );
   }
 }
+

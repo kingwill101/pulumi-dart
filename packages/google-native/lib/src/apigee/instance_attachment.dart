@@ -6,11 +6,9 @@ import 'instance_attachment_args.dart';
 class InstanceAttachment extends pulumi.CustomResource {
   /// Time the attachment was created in milliseconds since epoch.
   late final pulumi.Output<String> createdAt;
-
   /// ID of the attached environment.
   late final pulumi.Output<String> environment;
   late final pulumi.Output<String> instanceId;
-
   /// ID of the attachment.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> organizationId;

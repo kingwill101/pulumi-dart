@@ -13,18 +13,19 @@ class GetOrganizationIamPolicyCloudresourcemanagerV3Args {
   /// [organizationId] Required.
   GetOrganizationIamPolicyCloudresourcemanagerV3Args({
     required String organizationId,
-  }) : organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) :
+      organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['organizationId'] = organizationId;
-    return map;
+    return <String, dynamic>{
+      'organizationId': organizationId,
+    };
   }
 
-  factory GetOrganizationIamPolicyCloudresourcemanagerV3Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetOrganizationIamPolicyCloudresourcemanagerV3Args.fromMap(Map<String, dynamic> map) {
     return GetOrganizationIamPolicyCloudresourcemanagerV3Args(
       organizationId: map['organizationId'] as String,
     );
   }
 }
+

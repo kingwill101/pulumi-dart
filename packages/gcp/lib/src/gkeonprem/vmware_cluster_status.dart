@@ -8,7 +8,6 @@ class VMwareClusterStatus {
   /// ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
   /// Structure is documented below.
   final List<VMwareClusterStatusCondition>? conditions;
-
   /// (Output)
   /// Human-friendly representation of the error message from the user cluster
   /// controller. The error message can be temporary as the user cluster
@@ -26,29 +25,17 @@ class VMwareClusterStatus {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final conditionsValue = conditions;
-    if (conditionsValue != null) {
-      map['conditions'] = pulumi.Input.encodeList<VMwareClusterStatusCondition,
-          Map<String, dynamic>>(conditionsValue, (value) => value.toMap());
-    }
-    final errorMessageValue = errorMessage;
-    if (errorMessageValue != null) {
-      map['errorMessage'] = errorMessageValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<VMwareClusterStatusCondition, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+      'errorMessage': ?errorMessage,
+    };
   }
 
   factory VMwareClusterStatus.fromMap(Map<String, dynamic> map) {
     return VMwareClusterStatus(
-      conditions: map['conditions'] == null
-          ? null
-          : pulumi.Input.decodeList<VMwareClusterStatusCondition>(
-              map['conditions'],
-              (value) => VMwareClusterStatusCondition.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      errorMessage:
-          map['errorMessage'] == null ? null : map['errorMessage'] as String,
+      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<VMwareClusterStatusCondition>(map['conditions'], (value) => VMwareClusterStatusCondition.fromMap((value as Map).cast<String, dynamic>())),
+      errorMessage: map['errorMessage'] == null ? null : map['errorMessage'] as String,
     );
   }
 }
+

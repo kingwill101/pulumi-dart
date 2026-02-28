@@ -19,19 +19,17 @@ class GetInternalRangeArgs {
     required String internalRangeId,
     required String location,
     String? project,
-  })  : internalRangeId = pulumi.Input.asInput<String>(internalRangeId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      internalRangeId = pulumi.Input.asInput<String>(internalRangeId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['internalRangeId'] = internalRangeId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'internalRangeId': internalRangeId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetInternalRangeArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetInternalRangeArgs {
     );
   }
 }
+

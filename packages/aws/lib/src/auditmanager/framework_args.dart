@@ -10,21 +10,16 @@ import 'framework_control_set.dart';
 class FrameworkArgs {
   /// Compliance type that the new custom framework supports, such as `CIS` or `HIPAA`.
   final pulumi.Input<String>? complianceType;
-
   /// Configuration block(s) for the control sets that are associated with the framework. See `control_sets` Block below for details.
   ///
   /// The following arguments are optional:
   final pulumi.Input<List<FrameworkControlSet>>? controlSets;
-
   /// Description of the framework.
   final pulumi.Input<String>? description;
-
   /// Name of the framework.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// A map of tags to assign to the framework. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -42,65 +37,34 @@ class FrameworkArgs {
     String? name,
     String? region,
     Map<String, String>? tags,
-  })  : complianceType = pulumi.Input.asOptionalInput<String>(complianceType),
-        controlSets = pulumi.Input.asOptionalInput<List<FrameworkControlSet>>(
-            controlSets),
-        description = pulumi.Input.asOptionalInput<String>(description),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      complianceType = pulumi.Input.asOptionalInput<String>(complianceType),
+      controlSets = pulumi.Input.asOptionalInput<List<FrameworkControlSet>>(controlSets),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final complianceTypeValue = complianceType;
-    if (complianceTypeValue != null) {
-      map['complianceType'] = complianceTypeValue;
-    }
-    final controlSetsValue = controlSets;
-    if (controlSetsValue != null) {
-      map['controlSets'] = pulumi.Input.mapOptionalInputValue<
-              List<FrameworkControlSet>, List<Map<String, dynamic>>>(
-          controlSetsValue,
-          (value) => pulumi.Input.encodeList<FrameworkControlSet,
-              Map<String, dynamic>>(value, (value) => value.toMap()));
-    }
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'complianceType': ?complianceType,
+      'controlSets': ?pulumi.Input.mapOptionalInputValue<List<FrameworkControlSet>, List<Map<String, dynamic>>>(controlSets, (value) => pulumi.Input.encodeList<FrameworkControlSet, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'description': ?description,
+      'name': ?name,
+      'region': ?region,
+      'tags': ?tags,
+    };
   }
 
   factory FrameworkArgs.fromMap(Map<String, dynamic> map) {
     return FrameworkArgs(
-      complianceType: map['complianceType'] == null
-          ? null
-          : map['complianceType'] as String,
-      controlSets: map['controlSets'] == null
-          ? null
-          : pulumi.Input.decodeList<FrameworkControlSet>(
-              map['controlSets'],
-              (value) => FrameworkControlSet.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      complianceType: map['complianceType'] == null ? null : map['complianceType'] as String,
+      controlSets: map['controlSets'] == null ? null : pulumi.Input.decodeList<FrameworkControlSet>(map['controlSets'], (value) => FrameworkControlSet.fromMap((value as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : map['description'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

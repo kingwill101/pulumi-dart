@@ -13,20 +13,15 @@ class RuleGroupRuleActionBlock {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final customResponseValue = customResponse;
-    if (customResponseValue != null) {
-      map['customResponse'] = customResponseValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'customResponse': ?customResponse == null ? null : customResponse!.toMap(),
+    };
   }
 
   factory RuleGroupRuleActionBlock.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleActionBlock(
-      customResponse: map['customResponse'] == null
-          ? null
-          : RuleGroupRuleActionBlockCustomResponse.fromMap(
-              (map['customResponse'] as Map).cast<String, dynamic>()),
+      customResponse: map['customResponse'] == null ? null : RuleGroupRuleActionBlockCustomResponse.fromMap((map['customResponse'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

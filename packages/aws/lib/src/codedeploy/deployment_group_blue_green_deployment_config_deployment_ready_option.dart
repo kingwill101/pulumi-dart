@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOption {
   /// When to reroute traffic from an original environment to a replacement environment in a blue/green deployment.
   /// * `CONTINUE_DEPLOYMENT`: Register new instances with the load balancer immediately after the new application revision is installed on the instances in the replacement environment.
   /// * `STOP_DEPLOYMENT`: Do not register new instances with load balancer unless traffic is rerouted manually. If traffic is not rerouted manually before the end of the specified wait period, the deployment status is changed to Stopped.
   final String? actionOnTimeout;
-
   /// The number of minutes to wait before the status of a blue/green deployment changed to Stopped if rerouting is not started manually. Applies only to the `STOP_DEPLOYMENT` option for `action_on_timeout`.
   final int? waitTimeInMinutes;
 
@@ -18,27 +18,17 @@ class DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final actionOnTimeoutValue = actionOnTimeout;
-    if (actionOnTimeoutValue != null) {
-      map['actionOnTimeout'] = actionOnTimeoutValue;
-    }
-    final waitTimeInMinutesValue = waitTimeInMinutes;
-    if (waitTimeInMinutesValue != null) {
-      map['waitTimeInMinutes'] = waitTimeInMinutesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'actionOnTimeout': ?actionOnTimeout,
+      'waitTimeInMinutes': ?waitTimeInMinutes,
+    };
   }
 
-  factory DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOption.fromMap(
-      Map<String, dynamic> map) {
+  factory DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOption.fromMap(Map<String, dynamic> map) {
     return DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOption(
-      actionOnTimeout: map['actionOnTimeout'] == null
-          ? null
-          : map['actionOnTimeout'] as String,
-      waitTimeInMinutes: map['waitTimeInMinutes'] == null
-          ? null
-          : map['waitTimeInMinutes'] as int,
+      actionOnTimeout: map['actionOnTimeout'] == null ? null : map['actionOnTimeout'] as String,
+      waitTimeInMinutes: map['waitTimeInMinutes'] == null ? null : map['waitTimeInMinutes'] as int,
     );
   }
 }
+

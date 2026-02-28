@@ -14,15 +14,15 @@ class GooglePrivacyDlpV2ExportResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['profileTable'] = profileTable.toMap();
-    return map;
+    return <String, dynamic>{
+      'profileTable': profileTable.toMap(),
+    };
   }
 
   factory GooglePrivacyDlpV2ExportResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2ExportResponse(
-      profileTable: GooglePrivacyDlpV2BigQueryTableResponse.fromMap(
-          (map['profileTable'] as Map).cast<String, dynamic>()),
+      profileTable: GooglePrivacyDlpV2BigQueryTableResponse.fromMap((map['profileTable'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

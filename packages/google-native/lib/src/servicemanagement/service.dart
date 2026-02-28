@@ -6,7 +6,6 @@ import 'service_args.dart';
 class Service extends pulumi.CustomResource {
   /// ID of the project that produces and owns this service.
   late final pulumi.Output<String> producerProjectId;
-
   /// The name of the service. See the [overview](https://cloud.google.com/service-infrastructure/docs/overview) for naming requirements.
   late final pulumi.Output<String> serviceName;
 

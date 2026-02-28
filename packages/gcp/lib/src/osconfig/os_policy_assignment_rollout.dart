@@ -7,7 +7,6 @@ class OsPolicyAssignmentRollout {
   /// per zone to disrupt at any given moment. Structure is
   /// documented below.
   final OsPolicyAssignmentRolloutDisruptionBudget disruptionBudget;
-
   /// This determines the minimum duration of
   /// time to wait after the configuration changes are applied through the current
   /// rollout. A VM continues to count towards the `disruption_budget` at least
@@ -24,17 +23,17 @@ class OsPolicyAssignmentRollout {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['disruptionBudget'] = disruptionBudget.toMap();
-    map['minWaitDuration'] = minWaitDuration;
-    return map;
+    return <String, dynamic>{
+      'disruptionBudget': disruptionBudget.toMap(),
+      'minWaitDuration': minWaitDuration,
+    };
   }
 
   factory OsPolicyAssignmentRollout.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentRollout(
-      disruptionBudget: OsPolicyAssignmentRolloutDisruptionBudget.fromMap(
-          (map['disruptionBudget'] as Map).cast<String, dynamic>()),
+      disruptionBudget: OsPolicyAssignmentRolloutDisruptionBudget.fromMap((map['disruptionBudget'] as Map).cast<String, dynamic>()),
       minWaitDuration: map['minWaitDuration'] as String,
     );
   }
 }
+

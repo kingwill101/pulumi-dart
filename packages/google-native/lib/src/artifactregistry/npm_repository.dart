@@ -14,20 +14,15 @@ class NpmRepository {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final publicRepositoryValue = publicRepository;
-    if (publicRepositoryValue != null) {
-      map['publicRepository'] = publicRepositoryValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'publicRepository': ?publicRepository == null ? null : publicRepository!.value,
+    };
   }
 
   factory NpmRepository.fromMap(Map<String, dynamic> map) {
     return NpmRepository(
-      publicRepository: map['publicRepository'] == null
-          ? null
-          : NpmRepositoryPublicRepository.fromValue(
-              map['publicRepository'] as String),
+      publicRepository: map['publicRepository'] == null ? null : NpmRepositoryPublicRepository.fromValue(map['publicRepository'] as String),
     );
   }
 }
+

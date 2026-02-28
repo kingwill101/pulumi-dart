@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for fine-grained cost management feature.
 class CostManagementConfigContainerV1beta1 {
   /// Whether the feature is enabled or not.
@@ -12,18 +13,15 @@ class CostManagementConfigContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
-  factory CostManagementConfigContainerV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory CostManagementConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return CostManagementConfigContainerV1beta1(
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
     );
   }
 }
+

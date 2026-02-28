@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetBrokerInstance {
   /// URL of the ActiveMQ Web Console or the RabbitMQ Management UI depending on `engine_type`.
   final String consoleUrl;
-
   /// Broker's wire-level protocol endpoints.
   final List<String> endpoints;
-
   /// IP Address of the broker.
   final String ipAddress;
 
@@ -21,11 +20,11 @@ class GetBrokerInstance {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['consoleUrl'] = consoleUrl;
-    map['endpoints'] = endpoints;
-    map['ipAddress'] = ipAddress;
-    return map;
+    return <String, dynamic>{
+      'consoleUrl': consoleUrl,
+      'endpoints': endpoints,
+      'ipAddress': ipAddress,
+    };
   }
 
   factory GetBrokerInstance.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class GetBrokerInstance {
     );
   }
 }
+

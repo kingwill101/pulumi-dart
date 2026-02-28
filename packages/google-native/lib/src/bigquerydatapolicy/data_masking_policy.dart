@@ -6,7 +6,6 @@ import 'data_masking_policy_predefined_expression.dart';
 class DataMaskingPolicy {
   /// A predefined masking expression.
   final DataMaskingPolicyPredefinedExpression? predefinedExpression;
-
   /// The name of the BigQuery routine that contains the custom masking routine, in the format of `projects/{project_number}/datasets/{dataset_id}/routines/{routine_id}`.
   final String? routine;
 
@@ -19,25 +18,17 @@ class DataMaskingPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final predefinedExpressionValue = predefinedExpression;
-    if (predefinedExpressionValue != null) {
-      map['predefinedExpression'] = predefinedExpressionValue.value;
-    }
-    final routineValue = routine;
-    if (routineValue != null) {
-      map['routine'] = routineValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'predefinedExpression': ?predefinedExpression == null ? null : predefinedExpression!.value,
+      'routine': ?routine,
+    };
   }
 
   factory DataMaskingPolicy.fromMap(Map<String, dynamic> map) {
     return DataMaskingPolicy(
-      predefinedExpression: map['predefinedExpression'] == null
-          ? null
-          : DataMaskingPolicyPredefinedExpression.fromValue(
-              map['predefinedExpression'] as String),
+      predefinedExpression: map['predefinedExpression'] == null ? null : DataMaskingPolicyPredefinedExpression.fromValue(map['predefinedExpression'] as String),
       routine: map['routine'] == null ? null : map['routine'] as String,
     );
   }
 }
+

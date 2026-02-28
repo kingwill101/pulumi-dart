@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetEndpointClientLoginBannerOption {
   final String bannerText;
   final bool enabled;
@@ -13,10 +14,10 @@ class GetEndpointClientLoginBannerOption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bannerText'] = bannerText;
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'bannerText': bannerText,
+      'enabled': enabled,
+    };
   }
 
   factory GetEndpointClientLoginBannerOption.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class GetEndpointClientLoginBannerOption {
     );
   }
 }
+

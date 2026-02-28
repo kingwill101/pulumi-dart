@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PartitionStorageDescriptorColumn {
   /// Free-form text comment.
   final String? comment;
   final String name;
-
   /// The datatype of data in the Column.
   final String? type;
 
@@ -19,17 +19,11 @@ class PartitionStorageDescriptorColumn {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final commentValue = comment;
-    if (commentValue != null) {
-      map['comment'] = commentValue;
-    }
-    map['name'] = name;
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'comment': ?comment,
+      'name': name,
+      'type': ?type,
+    };
   }
 
   factory PartitionStorageDescriptorColumn.fromMap(Map<String, dynamic> map) {
@@ -40,3 +34,4 @@ class PartitionStorageDescriptorColumn {
     );
   }
 }
+

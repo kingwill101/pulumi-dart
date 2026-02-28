@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// MachineConfig describes the configuration of a machine.
 class MachineConfigAlloydbV1beta {
   /// The number of CPU's in the VM instance.
@@ -12,12 +13,9 @@ class MachineConfigAlloydbV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cpuCountValue = cpuCount;
-    if (cpuCountValue != null) {
-      map['cpuCount'] = cpuCountValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cpuCount': ?cpuCount,
+    };
   }
 
   factory MachineConfigAlloydbV1beta.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class MachineConfigAlloydbV1beta {
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'public_key_credential_format.dart';
 class PublicKeyCredential {
   /// The format of the key.
   final PublicKeyCredentialFormat? format;
-
   /// The key data.
   final String? key;
 
@@ -19,24 +18,17 @@ class PublicKeyCredential {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final formatValue = format;
-    if (formatValue != null) {
-      map['format'] = formatValue.value;
-    }
-    final keyValue = key;
-    if (keyValue != null) {
-      map['key'] = keyValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'format': ?format == null ? null : format!.value,
+      'key': ?key,
+    };
   }
 
   factory PublicKeyCredential.fromMap(Map<String, dynamic> map) {
     return PublicKeyCredential(
-      format: map['format'] == null
-          ? null
-          : PublicKeyCredentialFormat.fromValue(map['format'] as String),
+      format: map['format'] == null ? null : PublicKeyCredentialFormat.fromValue(map['format'] as String),
       key: map['key'] == null ? null : map['key'] as String,
     );
   }
 }
+

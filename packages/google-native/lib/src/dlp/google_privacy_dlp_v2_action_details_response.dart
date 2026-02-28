@@ -14,17 +14,15 @@ class GooglePrivacyDlpV2ActionDetailsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['deidentifyDetails'] = deidentifyDetails.toMap();
-    return map;
+    return <String, dynamic>{
+      'deidentifyDetails': deidentifyDetails.toMap(),
+    };
   }
 
-  factory GooglePrivacyDlpV2ActionDetailsResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2ActionDetailsResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2ActionDetailsResponse(
-      deidentifyDetails:
-          GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse.fromMap(
-              (map['deidentifyDetails'] as Map).cast<String, dynamic>()),
+      deidentifyDetails: GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse.fromMap((map['deidentifyDetails'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

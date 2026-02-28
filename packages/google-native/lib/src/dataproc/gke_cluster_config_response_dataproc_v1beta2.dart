@@ -5,8 +5,7 @@ import 'namespaced_gke_deployment_target_response_dataproc_v1beta2.dart';
 /// The GKE config for this cluster.
 class GkeClusterConfigResponseDataprocV1beta2 {
   /// Optional. A target for the deployment.
-  final NamespacedGkeDeploymentTargetResponseDataprocV1beta2
-      namespacedGkeDeploymentTarget;
+  final NamespacedGkeDeploymentTargetResponseDataprocV1beta2 namespacedGkeDeploymentTarget;
 
   /// Creates a new [GkeClusterConfigResponseDataprocV1beta2].
   /// [namespacedGkeDeploymentTarget] Optional. A target for the deployment.
@@ -15,19 +14,15 @@ class GkeClusterConfigResponseDataprocV1beta2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['namespacedGkeDeploymentTarget'] =
-        namespacedGkeDeploymentTarget.toMap();
-    return map;
+    return <String, dynamic>{
+      'namespacedGkeDeploymentTarget': namespacedGkeDeploymentTarget.toMap(),
+    };
   }
 
-  factory GkeClusterConfigResponseDataprocV1beta2.fromMap(
-      Map<String, dynamic> map) {
+  factory GkeClusterConfigResponseDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return GkeClusterConfigResponseDataprocV1beta2(
-      namespacedGkeDeploymentTarget:
-          NamespacedGkeDeploymentTargetResponseDataprocV1beta2.fromMap(
-              (map['namespacedGkeDeploymentTarget'] as Map)
-                  .cast<String, dynamic>()),
+      namespacedGkeDeploymentTarget: NamespacedGkeDeploymentTargetResponseDataprocV1beta2.fromMap((map['namespacedGkeDeploymentTarget'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

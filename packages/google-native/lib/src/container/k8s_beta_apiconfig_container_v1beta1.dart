@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Kubernetes open source beta apis enabled on the cluster.
 class K8sBetaAPIConfigContainerV1beta1 {
   /// api name, e.g. storage.k8s.io/v1beta1/csistoragecapacities.
@@ -12,19 +13,15 @@ class K8sBetaAPIConfigContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enabledApisValue = enabledApis;
-    if (enabledApisValue != null) {
-      map['enabledApis'] = enabledApisValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enabledApis': ?enabledApis,
+    };
   }
 
   factory K8sBetaAPIConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return K8sBetaAPIConfigContainerV1beta1(
-      enabledApis: map['enabledApis'] == null
-          ? null
-          : (map['enabledApis'] as List).cast<String>(),
+      enabledApis: map['enabledApis'] == null ? null : (map['enabledApis'] as List).cast<String>(),
     );
   }
 }
+

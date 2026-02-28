@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BaselineParameters {
   /// The key of the parameter.
   final String key;
-
   /// The value of the parameter.
   final String value;
 
@@ -16,10 +16,10 @@ class BaselineParameters {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
   factory BaselineParameters.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class BaselineParameters {
     );
   }
 }
+

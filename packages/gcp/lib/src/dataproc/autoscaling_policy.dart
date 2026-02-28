@@ -261,28 +261,21 @@ class AutoscalingPolicy extends pulumi.CustomResource {
   /// Basic algorithm for autoscaling.
   /// Structure is documented below.
   late final pulumi.Output<AutoscalingPolicyBasicAlgorithm?> basicAlgorithm;
-
   /// The  location where the autoscaling policy should reside.
   /// The default value is `global`.
   late final pulumi.Output<String?> location;
-
   /// The "resource name" of the autoscaling policy.
   late final pulumi.Output<String> name;
-
   /// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
   /// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
   /// 3 and 50 characters.
   late final pulumi.Output<String> policyId;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Describes how the autoscaler will operate for secondary workers.
   /// Structure is documented below.
-  late final pulumi.Output<AutoscalingPolicySecondaryWorkerConfig?>
-      secondaryWorkerConfig;
-
+  late final pulumi.Output<AutoscalingPolicySecondaryWorkerConfig?> secondaryWorkerConfig;
   /// Describes how the autoscaler will operate for primary workers.
   /// Structure is documented below.
   late final pulumi.Output<AutoscalingPolicyWorkerConfig?> workerConfig;
@@ -301,16 +294,12 @@ class AutoscalingPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.basicAlgorithm =
-        registerOutput<AutoscalingPolicyBasicAlgorithm?>('basicAlgorithm');
+    this.basicAlgorithm = registerOutput<AutoscalingPolicyBasicAlgorithm?>('basicAlgorithm');
     this.location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     this.policyId = registerOutput<String>('policyId');
     this.project = registerOutput<String>('project');
-    this.secondaryWorkerConfig =
-        registerOutput<AutoscalingPolicySecondaryWorkerConfig?>(
-            'secondaryWorkerConfig');
-    this.workerConfig =
-        registerOutput<AutoscalingPolicyWorkerConfig?>('workerConfig');
+    this.secondaryWorkerConfig = registerOutput<AutoscalingPolicySecondaryWorkerConfig?>('secondaryWorkerConfig');
+    this.workerConfig = registerOutput<AutoscalingPolicyWorkerConfig?>('workerConfig');
   }
 }

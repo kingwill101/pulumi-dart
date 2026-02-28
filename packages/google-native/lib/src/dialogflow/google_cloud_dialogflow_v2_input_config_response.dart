@@ -14,16 +14,15 @@ class GoogleCloudDialogflowV2InputConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gcsSource'] = gcsSource.toMap();
-    return map;
+    return <String, dynamic>{
+      'gcsSource': gcsSource.toMap(),
+    };
   }
 
-  factory GoogleCloudDialogflowV2InputConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2InputConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2InputConfigResponse(
-      gcsSource: GoogleCloudDialogflowV2GcsSourcesResponse.fromMap(
-          (map['gcsSource'] as Map).cast<String, dynamic>()),
+      gcsSource: GoogleCloudDialogflowV2GcsSourcesResponse.fromMap((map['gcsSource'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

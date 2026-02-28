@@ -7,10 +7,8 @@ import 'google_cloud_dialogflow_cx_v3_conversation_turn_virtual_agent_output.dar
 class GoogleCloudDialogflowCxV3ConversationTurn {
   /// The user input.
   final GoogleCloudDialogflowCxV3ConversationTurnUserInput? userInput;
-
   /// The virtual agent output.
-  final GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput?
-      virtualAgentOutput;
+  final GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput? virtualAgentOutput;
 
   /// Creates a new [GoogleCloudDialogflowCxV3ConversationTurn].
   /// [userInput] The user input.
@@ -21,29 +19,17 @@ class GoogleCloudDialogflowCxV3ConversationTurn {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final userInputValue = userInput;
-    if (userInputValue != null) {
-      map['userInput'] = userInputValue.toMap();
-    }
-    final virtualAgentOutputValue = virtualAgentOutput;
-    if (virtualAgentOutputValue != null) {
-      map['virtualAgentOutput'] = virtualAgentOutputValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'userInput': ?userInput == null ? null : userInput!.toMap(),
+      'virtualAgentOutput': ?virtualAgentOutput == null ? null : virtualAgentOutput!.toMap(),
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3ConversationTurn.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3ConversationTurn.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3ConversationTurn(
-      userInput: map['userInput'] == null
-          ? null
-          : GoogleCloudDialogflowCxV3ConversationTurnUserInput.fromMap(
-              (map['userInput'] as Map).cast<String, dynamic>()),
-      virtualAgentOutput: map['virtualAgentOutput'] == null
-          ? null
-          : GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput.fromMap(
-              (map['virtualAgentOutput'] as Map).cast<String, dynamic>()),
+      userInput: map['userInput'] == null ? null : GoogleCloudDialogflowCxV3ConversationTurnUserInput.fromMap((map['userInput'] as Map).cast<String, dynamic>()),
+      virtualAgentOutput: map['virtualAgentOutput'] == null ? null : GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput.fromMap((map['virtualAgentOutput'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'enterprise_crm_frontends_eventbus_proto_event_parameters_response.dart';
 class EnterpriseCrmFrontendsEventbusProtoRollbackStrategyResponse {
   /// Optional. The customized parameters the user can pass to this task.
   final EnterpriseCrmFrontendsEventbusProtoEventParametersResponse parameters;
-
   /// This is the name of the task that needs to be executed upon rollback of this task.
   final String rollbackTaskImplementationClassName;
-
   /// These are the tasks numbers of the tasks whose `rollback_strategy.rollback_task_implementation_class_name` needs to be executed upon failure of this task.
   final List<String> taskNumbersToRollback;
 
@@ -24,24 +22,19 @@ class EnterpriseCrmFrontendsEventbusProtoRollbackStrategyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['parameters'] = parameters.toMap();
-    map['rollbackTaskImplementationClassName'] =
-        rollbackTaskImplementationClassName;
-    map['taskNumbersToRollback'] = taskNumbersToRollback;
-    return map;
+    return <String, dynamic>{
+      'parameters': parameters.toMap(),
+      'rollbackTaskImplementationClassName': rollbackTaskImplementationClassName,
+      'taskNumbersToRollback': taskNumbersToRollback,
+    };
   }
 
-  factory EnterpriseCrmFrontendsEventbusProtoRollbackStrategyResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory EnterpriseCrmFrontendsEventbusProtoRollbackStrategyResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmFrontendsEventbusProtoRollbackStrategyResponse(
-      parameters:
-          EnterpriseCrmFrontendsEventbusProtoEventParametersResponse.fromMap(
-              (map['parameters'] as Map).cast<String, dynamic>()),
-      rollbackTaskImplementationClassName:
-          map['rollbackTaskImplementationClassName'] as String,
-      taskNumbersToRollback:
-          (map['taskNumbersToRollback'] as List).cast<String>(),
+      parameters: EnterpriseCrmFrontendsEventbusProtoEventParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>()),
+      rollbackTaskImplementationClassName: map['rollbackTaskImplementationClassName'] as String,
+      taskNumbersToRollback: (map['taskNumbersToRollback'] as List).cast<String>(),
     );
   }
 }
+

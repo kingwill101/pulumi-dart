@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for the version.
 class GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponse {
   /// Format: projects//locations//agents//flows//versions/.
@@ -12,15 +13,15 @@ class GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['version'] = version;
-    return map;
+    return <String, dynamic>{
+      'version': version,
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponse(
       version: map['version'] as String,
     );
   }
 }
+

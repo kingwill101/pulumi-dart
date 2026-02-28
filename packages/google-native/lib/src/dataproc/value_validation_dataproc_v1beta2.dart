@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Validation based on a list of allowed values.
 class ValueValidationDataprocV1beta2 {
   /// List of allowed values for the parameter.
@@ -12,9 +13,9 @@ class ValueValidationDataprocV1beta2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['values'] = values;
-    return map;
+    return <String, dynamic>{
+      'values': values,
+    };
   }
 
   factory ValueValidationDataprocV1beta2.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class ValueValidationDataprocV1beta2 {
     );
   }
 }
+

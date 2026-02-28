@@ -9,20 +9,15 @@ class BillingAccountBucketLink extends pulumi.CustomResource {
   late final pulumi.Output<BigQueryDatasetResponse> bigqueryDataset;
   late final pulumi.Output<String> billingAccountId;
   late final pulumi.Output<String> bucketId;
-
   /// The creation timestamp of the link.
   late final pulumi.Output<String> createTime;
-
   /// Describes this link.The maximum length of the description is 8000 characters.
   late final pulumi.Output<String> description;
-
   /// The resource lifecycle state.
   late final pulumi.Output<String> lifecycleState;
-
   /// Required. The ID to use for the link. The link_id can have up to 100 characters. A valid link_id must only have alphanumeric characters and underscores within it.
   late final pulumi.Output<String> linkId;
   late final pulumi.Output<String> location;
-
   /// The resource name of the link. The name can have up to 100 characters. A valid link id (at the end of the link name) must only have alphanumeric characters and underscores within it. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" For example:`projects/my-project/locations/global/buckets/my-bucket/links/my_link
   late final pulumi.Output<String> name;
 
@@ -40,8 +35,7 @@ class BillingAccountBucketLink extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.bigqueryDataset =
-        registerOutput<BigQueryDatasetResponse>('bigqueryDataset');
+    this.bigqueryDataset = registerOutput<BigQueryDatasetResponse>('bigqueryDataset');
     this.billingAccountId = registerOutput<String>('billingAccountId');
     this.bucketId = registerOutput<String>('bucketId');
     this.createTime = registerOutput<String>('createTime');

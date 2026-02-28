@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NetworkManagedServiceKmsAccess {
   final String domainName;
   final List<String> ipv4Addresses;
-
   /// Specifies the endpoint policy for KMS access from the ODB network.
   final String kmsPolicyDocument;
-
   /// The status of the network resource.
   final String status;
 
@@ -23,12 +22,12 @@ class NetworkManagedServiceKmsAccess {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['domainName'] = domainName;
-    map['ipv4Addresses'] = ipv4Addresses;
-    map['kmsPolicyDocument'] = kmsPolicyDocument;
-    map['status'] = status;
-    return map;
+    return <String, dynamic>{
+      'domainName': domainName,
+      'ipv4Addresses': ipv4Addresses,
+      'kmsPolicyDocument': kmsPolicyDocument,
+      'status': status,
+    };
   }
 
   factory NetworkManagedServiceKmsAccess.fromMap(Map<String, dynamic> map) {
@@ -40,3 +39,4 @@ class NetworkManagedServiceKmsAccess {
     );
   }
 }
+

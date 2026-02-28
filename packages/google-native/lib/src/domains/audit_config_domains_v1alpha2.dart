@@ -7,7 +7,6 @@ import 'audit_log_config_domains_v1alpha2.dart';
 class AuditConfigDomainsV1alpha2 {
   /// The configuration for logging of each type of permission.
   final List<AuditLogConfigDomainsV1alpha2>? auditLogConfigs;
-
   /// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
   final String? service;
 
@@ -20,29 +19,17 @@ class AuditConfigDomainsV1alpha2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final auditLogConfigsValue = auditLogConfigs;
-    if (auditLogConfigsValue != null) {
-      map['auditLogConfigs'] = pulumi.Input.encodeList<
-          AuditLogConfigDomainsV1alpha2,
-          Map<String, dynamic>>(auditLogConfigsValue, (value) => value.toMap());
-    }
-    final serviceValue = service;
-    if (serviceValue != null) {
-      map['service'] = serviceValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'auditLogConfigs': ?auditLogConfigs == null ? null : pulumi.Input.encodeList<AuditLogConfigDomainsV1alpha2, Map<String, dynamic>>(auditLogConfigs!, (value) => value.toMap()),
+      'service': ?service,
+    };
   }
 
   factory AuditConfigDomainsV1alpha2.fromMap(Map<String, dynamic> map) {
     return AuditConfigDomainsV1alpha2(
-      auditLogConfigs: map['auditLogConfigs'] == null
-          ? null
-          : pulumi.Input.decodeList<AuditLogConfigDomainsV1alpha2>(
-              map['auditLogConfigs'],
-              (value) => AuditLogConfigDomainsV1alpha2.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      auditLogConfigs: map['auditLogConfigs'] == null ? null : pulumi.Input.decodeList<AuditLogConfigDomainsV1alpha2>(map['auditLogConfigs'], (value) => AuditLogConfigDomainsV1alpha2.fromMap((value as Map).cast<String, dynamic>())),
       service: map['service'] == null ? null : map['service'] as String,
     );
   }
 }
+

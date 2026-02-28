@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AiIndexDeployedIndex {
   /// (Output)
   /// The ID of the DeployedIndex in the above IndexEndpoint.
   final String? deployedIndexId;
-
   /// (Output)
   /// A resource name of the IndexEndpoint.
   final String? indexEndpoint;
@@ -18,25 +18,17 @@ class AiIndexDeployedIndex {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final deployedIndexIdValue = deployedIndexId;
-    if (deployedIndexIdValue != null) {
-      map['deployedIndexId'] = deployedIndexIdValue;
-    }
-    final indexEndpointValue = indexEndpoint;
-    if (indexEndpointValue != null) {
-      map['indexEndpoint'] = indexEndpointValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'deployedIndexId': ?deployedIndexId,
+      'indexEndpoint': ?indexEndpoint,
+    };
   }
 
   factory AiIndexDeployedIndex.fromMap(Map<String, dynamic> map) {
     return AiIndexDeployedIndex(
-      deployedIndexId: map['deployedIndexId'] == null
-          ? null
-          : map['deployedIndexId'] as String,
-      indexEndpoint:
-          map['indexEndpoint'] == null ? null : map['indexEndpoint'] as String,
+      deployedIndexId: map['deployedIndexId'] == null ? null : map['deployedIndexId'] as String,
+      indexEndpoint: map['indexEndpoint'] == null ? null : map['indexEndpoint'] as String,
     );
   }
 }
+

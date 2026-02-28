@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RolePoliciesExclusiveArgs {
   /// A list of inline policy names to be assigned to the role. Policies attached to this role but not configured in this argument will be removed.
   final pulumi.Input<List<String>> policyNames;
-
   /// IAM role name.
   final pulumi.Input<String> roleName;
 
@@ -19,14 +18,15 @@ class RolePoliciesExclusiveArgs {
   RolePoliciesExclusiveArgs({
     required List<String> policyNames,
     required String roleName,
-  })  : policyNames = pulumi.Input.asInput<List<String>>(policyNames),
-        roleName = pulumi.Input.asInput<String>(roleName);
+  }) :
+      policyNames = pulumi.Input.asInput<List<String>>(policyNames),
+      roleName = pulumi.Input.asInput<String>(roleName);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['policyNames'] = policyNames;
-    map['roleName'] = roleName;
-    return map;
+    return <String, dynamic>{
+      'policyNames': policyNames,
+      'roleName': roleName,
+    };
   }
 
   factory RolePoliciesExclusiveArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +36,4 @@ class RolePoliciesExclusiveArgs {
     );
   }
 }
+

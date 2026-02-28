@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Output only. Defines a warning trace message for ScanRun. Warning traces provide customers with useful information that helps make the scanning process more effective.
 class ScanRunWarningTraceResponse {
   /// Indicates the warning code.
@@ -12,9 +13,9 @@ class ScanRunWarningTraceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['code'] = code;
-    return map;
+    return <String, dynamic>{
+      'code': code,
+    };
   }
 
   factory ScanRunWarningTraceResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class ScanRunWarningTraceResponse {
     );
   }
 }
+

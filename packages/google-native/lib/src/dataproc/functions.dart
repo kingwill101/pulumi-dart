@@ -151,8 +151,7 @@ Future<GetNodeGroupResult> getNodeGroup(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dataproc_v1_get_region_autoscaling_policy_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionAutoscalingPolicyIamPolicyResult>
-    getRegionAutoscalingPolicyIamPolicy(
+Future<GetRegionAutoscalingPolicyIamPolicyResult> getRegionAutoscalingPolicyIamPolicy(
   GetRegionAutoscalingPolicyIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -216,8 +215,7 @@ Future<GetRegionOperationIamPolicyResult> getRegionOperationIamPolicy(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dataproc_v1_get_region_workflow_template_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionWorkflowTemplateIamPolicyResult>
-    getRegionWorkflowTemplateIamPolicy(
+Future<GetRegionWorkflowTemplateIamPolicyResult> getRegionWorkflowTemplateIamPolicy(
   GetRegionWorkflowTemplateIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -297,8 +295,7 @@ Future<GetWorkflowTemplateIamPolicyResult> getWorkflowTemplateIamPolicy(
 /// Retrieves autoscaling policy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dataproc_v1beta2_get_autoscaling_policy_dataproc_v1beta2_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAutoscalingPolicyDataprocV1beta2Result>
-    getAutoscalingPolicyDataprocV1beta2(
+Future<GetAutoscalingPolicyDataprocV1beta2Result> getAutoscalingPolicyDataprocV1beta2(
   GetAutoscalingPolicyDataprocV1beta2Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -314,8 +311,7 @@ Future<GetAutoscalingPolicyDataprocV1beta2Result>
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dataproc_v1beta2_get_autoscaling_policy_iam_policy_dataproc_v1beta2_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAutoscalingPolicyIamPolicyDataprocV1beta2Result>
-    getAutoscalingPolicyIamPolicyDataprocV1beta2(
+Future<GetAutoscalingPolicyIamPolicyDataprocV1beta2Result> getAutoscalingPolicyIamPolicyDataprocV1beta2(
   GetAutoscalingPolicyIamPolicyDataprocV1beta2Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -363,8 +359,7 @@ Future<GetJobDataprocV1beta2Result> getJobDataprocV1beta2(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dataproc_v1beta2_get_region_autoscaling_policy_iam_policy_dataproc_v1beta2_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionAutoscalingPolicyIamPolicyDataprocV1beta2Result>
-    getRegionAutoscalingPolicyIamPolicyDataprocV1beta2(
+Future<GetRegionAutoscalingPolicyIamPolicyDataprocV1beta2Result> getRegionAutoscalingPolicyIamPolicyDataprocV1beta2(
   GetRegionAutoscalingPolicyIamPolicyDataprocV1beta2Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -374,15 +369,13 @@ Future<GetRegionAutoscalingPolicyIamPolicyDataprocV1beta2Result>
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetRegionAutoscalingPolicyIamPolicyDataprocV1beta2Result.fromMap(
-      result);
+  return GetRegionAutoscalingPolicyIamPolicyDataprocV1beta2Result.fromMap(result);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dataproc_v1beta2_get_region_cluster_iam_policy_dataproc_v1beta2_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionClusterIamPolicyDataprocV1beta2Result>
-    getRegionClusterIamPolicyDataprocV1beta2(
+Future<GetRegionClusterIamPolicyDataprocV1beta2Result> getRegionClusterIamPolicyDataprocV1beta2(
   GetRegionClusterIamPolicyDataprocV1beta2Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -398,8 +391,7 @@ Future<GetRegionClusterIamPolicyDataprocV1beta2Result>
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dataproc_v1beta2_get_region_job_iam_policy_dataproc_v1beta2_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionJobIamPolicyDataprocV1beta2Result>
-    getRegionJobIamPolicyDataprocV1beta2(
+Future<GetRegionJobIamPolicyDataprocV1beta2Result> getRegionJobIamPolicyDataprocV1beta2(
   GetRegionJobIamPolicyDataprocV1beta2Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -415,8 +407,7 @@ Future<GetRegionJobIamPolicyDataprocV1beta2Result>
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dataproc_v1beta2_get_region_operation_iam_policy_dataproc_v1beta2_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionOperationIamPolicyDataprocV1beta2Result>
-    getRegionOperationIamPolicyDataprocV1beta2(
+Future<GetRegionOperationIamPolicyDataprocV1beta2Result> getRegionOperationIamPolicyDataprocV1beta2(
   GetRegionOperationIamPolicyDataprocV1beta2Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -432,8 +423,7 @@ Future<GetRegionOperationIamPolicyDataprocV1beta2Result>
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dataproc_v1beta2_get_region_workflow_template_iam_policy_dataproc_v1beta2_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionWorkflowTemplateIamPolicyDataprocV1beta2Result>
-    getRegionWorkflowTemplateIamPolicyDataprocV1beta2(
+Future<GetRegionWorkflowTemplateIamPolicyDataprocV1beta2Result> getRegionWorkflowTemplateIamPolicyDataprocV1beta2(
   GetRegionWorkflowTemplateIamPolicyDataprocV1beta2Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -443,15 +433,13 @@ Future<GetRegionWorkflowTemplateIamPolicyDataprocV1beta2Result>
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetRegionWorkflowTemplateIamPolicyDataprocV1beta2Result.fromMap(
-      result);
+  return GetRegionWorkflowTemplateIamPolicyDataprocV1beta2Result.fromMap(result);
 }
 
 /// Retrieves the latest workflow template.Can retrieve previously instantiated template by specifying optional version parameter.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dataproc_v1beta2_get_workflow_template_dataproc_v1beta2_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetWorkflowTemplateDataprocV1beta2Result>
-    getWorkflowTemplateDataprocV1beta2(
+Future<GetWorkflowTemplateDataprocV1beta2Result> getWorkflowTemplateDataprocV1beta2(
   GetWorkflowTemplateDataprocV1beta2Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -467,8 +455,7 @@ Future<GetWorkflowTemplateDataprocV1beta2Result>
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dataproc_v1beta2_get_workflow_template_iam_policy_dataproc_v1beta2_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetWorkflowTemplateIamPolicyDataprocV1beta2Result>
-    getWorkflowTemplateIamPolicyDataprocV1beta2(
+Future<GetWorkflowTemplateIamPolicyDataprocV1beta2Result> getWorkflowTemplateIamPolicyDataprocV1beta2(
   GetWorkflowTemplateIamPolicyDataprocV1beta2Args args, {
   pulumi.InvokeOptions? options,
 }) async {

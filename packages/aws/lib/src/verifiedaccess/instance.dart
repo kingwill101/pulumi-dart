@@ -296,30 +296,22 @@ import 'instance_verified_access_trust_provider.dart';
 class Instance extends pulumi.CustomResource {
   /// The custom subdomain for the CIDR endpoints.
   late final pulumi.Output<String?> cidrEndpointsCustomSubdomain;
-
   /// The time that the Verified Access Instance was created.
   late final pulumi.Output<String> creationTime;
-
   /// A description for the AWS Verified Access Instance.
   late final pulumi.Output<String?> description;
-
   /// Enable or disable support for Federal Information Processing Standards (FIPS) on the AWS Verified Access Instance.
   late final pulumi.Output<bool?> fipsEnabled;
-
   /// The time that the Verified Access Instance was last updated.
   late final pulumi.Output<String> lastUpdatedTime;
   late final pulumi.Output<List<String>> nameServers;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// One or more blocks of providing information about the AWS Verified Access Trust Providers. See verified_access_trust_providers below for details.One or more blocks
-  late final pulumi.Output<List<InstanceVerifiedAccessTrustProvider>>
-      verifiedAccessTrustProviders;
+  late final pulumi.Output<List<InstanceVerifiedAccessTrustProvider>> verifiedAccessTrustProviders;
 
   /// Creates a new [Instance].
   /// [name] The Pulumi resource name.
@@ -335,8 +327,7 @@ class Instance extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.cidrEndpointsCustomSubdomain =
-        registerOutput<String?>('cidrEndpointsCustomSubdomain');
+    this.cidrEndpointsCustomSubdomain = registerOutput<String?>('cidrEndpointsCustomSubdomain');
     this.creationTime = registerOutput<String>('creationTime');
     this.description = registerOutput<String?>('description');
     this.fipsEnabled = registerOutput<bool?>('fipsEnabled');
@@ -345,8 +336,6 @@ class Instance extends pulumi.CustomResource {
     this.region = registerOutput<String>('region');
     this.tags = registerOutput<Map<String, String>?>('tags');
     this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.verifiedAccessTrustProviders =
-        registerOutput<List<InstanceVerifiedAccessTrustProvider>>(
-            'verifiedAccessTrustProviders');
+    this.verifiedAccessTrustProviders = registerOutput<List<InstanceVerifiedAccessTrustProvider>>('verifiedAccessTrustProviders');
   }
 }

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetWorkerPoolInstanceSplit {
   /// Specifies percent of the instance split to this Revision. This defaults to zero if unspecified.
   final int percent;
-
   /// Revision to which to assign this portion of instances, if split allocation is by revision.
   final String revision;
-
   /// The allocation type for this instance split. Possible values: ["INSTANCE_SPLIT_ALLOCATION_TYPE_LATEST", "INSTANCE_SPLIT_ALLOCATION_TYPE_REVISION"]
   final String type;
 
@@ -21,11 +20,11 @@ class GetWorkerPoolInstanceSplit {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['percent'] = percent;
-    map['revision'] = revision;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'percent': percent,
+      'revision': revision,
+      'type': type,
+    };
   }
 
   factory GetWorkerPoolInstanceSplit.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class GetWorkerPoolInstanceSplit {
     );
   }
 }
+

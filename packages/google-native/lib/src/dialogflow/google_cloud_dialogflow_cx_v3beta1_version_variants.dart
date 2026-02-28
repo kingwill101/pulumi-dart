@@ -15,27 +15,15 @@ class GoogleCloudDialogflowCxV3beta1VersionVariants {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final variantsValue = variants;
-    if (variantsValue != null) {
-      map['variants'] = pulumi.Input.encodeList<
-          GoogleCloudDialogflowCxV3beta1VersionVariantsVariant,
-          Map<String, dynamic>>(variantsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'variants': ?variants == null ? null : pulumi.Input.encodeList<GoogleCloudDialogflowCxV3beta1VersionVariantsVariant, Map<String, dynamic>>(variants!, (value) => value.toMap()),
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1VersionVariants.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1VersionVariants.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1VersionVariants(
-      variants: map['variants'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  GoogleCloudDialogflowCxV3beta1VersionVariantsVariant>(
-              map['variants'],
-              (value) =>
-                  GoogleCloudDialogflowCxV3beta1VersionVariantsVariant.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      variants: map['variants'] == null ? null : pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1VersionVariantsVariant>(map['variants'], (value) => GoogleCloudDialogflowCxV3beta1VersionVariantsVariant.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -20,20 +20,15 @@ class GetEntitlementApprovalWorkflow {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['manualApprovals'] = pulumi.Input.encodeList<
-        GetEntitlementApprovalWorkflowManualApproval,
-        Map<String, dynamic>>(manualApprovals, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'manualApprovals': pulumi.Input.encodeList<GetEntitlementApprovalWorkflowManualApproval, Map<String, dynamic>>(manualApprovals, (value) => value.toMap()),
+    };
   }
 
   factory GetEntitlementApprovalWorkflow.fromMap(Map<String, dynamic> map) {
     return GetEntitlementApprovalWorkflow(
-      manualApprovals:
-          pulumi.Input.decodeList<GetEntitlementApprovalWorkflowManualApproval>(
-              map['manualApprovals'],
-              (value) => GetEntitlementApprovalWorkflowManualApproval.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      manualApprovals: pulumi.Input.decodeList<GetEntitlementApprovalWorkflowManualApproval>(map['manualApprovals'], (value) => GetEntitlementApprovalWorkflowManualApproval.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

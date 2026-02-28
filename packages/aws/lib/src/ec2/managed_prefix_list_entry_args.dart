@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedPrefixListEntryArgs {
   /// CIDR block of this entry.
   final pulumi.Input<String> cidr;
-
   /// Description of this entry. Please note that due to API limitations, updating only the description of an entry will require recreating the entry.
   final pulumi.Input<String>? description;
-
   /// The ID of the prefix list.
   final pulumi.Input<String> prefixListId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -29,33 +26,28 @@ class ManagedPrefixListEntryArgs {
     String? description,
     required String prefixListId,
     String? region,
-  })  : cidr = pulumi.Input.asInput<String>(cidr),
-        description = pulumi.Input.asOptionalInput<String>(description),
-        prefixListId = pulumi.Input.asInput<String>(prefixListId),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      cidr = pulumi.Input.asInput<String>(cidr),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      prefixListId = pulumi.Input.asInput<String>(prefixListId),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cidr'] = cidr;
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    map['prefixListId'] = prefixListId;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cidr': cidr,
+      'description': ?description,
+      'prefixListId': prefixListId,
+      'region': ?region,
+    };
   }
 
   factory ManagedPrefixListEntryArgs.fromMap(Map<String, dynamic> map) {
     return ManagedPrefixListEntryArgs(
       cidr: map['cidr'] as String,
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       prefixListId: map['prefixListId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

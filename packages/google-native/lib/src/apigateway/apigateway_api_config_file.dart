@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A lightweight description of a file.
 class ApigatewayApiConfigFile {
   /// The bytes that constitute the file.
   final String? contents;
-
   /// The file path (full or relative path). This is typically the path of the file when it is uploaded.
   final String? path;
 
@@ -17,16 +17,10 @@ class ApigatewayApiConfigFile {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final contentsValue = contents;
-    if (contentsValue != null) {
-      map['contents'] = contentsValue;
-    }
-    final pathValue = path;
-    if (pathValue != null) {
-      map['path'] = pathValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'contents': ?contents,
+      'path': ?path,
+    };
   }
 
   factory ApigatewayApiConfigFile.fromMap(Map<String, dynamic> map) {
@@ -36,3 +30,4 @@ class ApigatewayApiConfigFile {
     );
   }
 }
+

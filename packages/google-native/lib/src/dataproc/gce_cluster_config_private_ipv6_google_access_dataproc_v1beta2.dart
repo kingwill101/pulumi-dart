@@ -8,15 +8,13 @@ enum GceClusterConfigPrivateIpv6GoogleAccessDataprocV1beta2 {
   const GceClusterConfigPrivateIpv6GoogleAccessDataprocV1beta2(this.value);
   final String value;
 
-  static GceClusterConfigPrivateIpv6GoogleAccessDataprocV1beta2 fromValue(
-      String value) {
-    for (final item
-        in GceClusterConfigPrivateIpv6GoogleAccessDataprocV1beta2.values) {
+  static GceClusterConfigPrivateIpv6GoogleAccessDataprocV1beta2 fromValue(String value) {
+    for (final item in GceClusterConfigPrivateIpv6GoogleAccessDataprocV1beta2.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GceClusterConfigPrivateIpv6GoogleAccessDataprocV1beta2 value: $value');
+    throw ArgumentError('Unknown GceClusterConfigPrivateIpv6GoogleAccessDataprocV1beta2 value: $value');
   }
 }
+

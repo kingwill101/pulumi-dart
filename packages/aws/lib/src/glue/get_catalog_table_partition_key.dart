@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetCatalogTablePartitionKey {
   /// Free-form text comment.
   final String comment;
-
   /// Name of the table.
   final String name;
-
   /// Map of initialization parameters for the SerDe, in key-value form.
   final Map<String, String> parameters;
-
   /// Datatype of data in the Column.
   final String type;
 
@@ -26,12 +24,12 @@ class GetCatalogTablePartitionKey {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['comment'] = comment;
-    map['name'] = name;
-    map['parameters'] = parameters;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'comment': comment,
+      'name': name,
+      'parameters': parameters,
+      'type': type,
+    };
   }
 
   factory GetCatalogTablePartitionKey.fromMap(Map<String, dynamic> map) {
@@ -43,3 +41,4 @@ class GetCatalogTablePartitionKey {
     );
   }
 }
+

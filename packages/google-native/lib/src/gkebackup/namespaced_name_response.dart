@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A reference to a namespaced resource in Kubernetes.
 class NamespacedNameResponse {
   /// Optional. The name of the Kubernetes resource.
   final String name;
-
   /// Optional. The Namespace of the Kubernetes resource.
   final String namespace;
 
@@ -17,10 +17,10 @@ class NamespacedNameResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['namespace'] = namespace;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'namespace': namespace,
+    };
   }
 
   factory NamespacedNameResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class NamespacedNameResponse {
     );
   }
 }
+

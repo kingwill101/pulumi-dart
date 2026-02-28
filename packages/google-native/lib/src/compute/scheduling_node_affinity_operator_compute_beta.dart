@@ -13,7 +13,7 @@ enum SchedulingNodeAffinityOperatorComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown SchedulingNodeAffinityOperatorComputeBeta value: $value');
+    throw ArgumentError('Unknown SchedulingNodeAffinityOperatorComputeBeta value: $value');
   }
 }
+

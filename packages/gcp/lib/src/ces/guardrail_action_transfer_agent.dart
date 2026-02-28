@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GuardrailActionTransferAgent {
   /// The name of the agent to transfer the conversation to. The agent must be
   /// in the same app as the current agent.
@@ -14,9 +15,9 @@ class GuardrailActionTransferAgent {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['agent'] = agent;
-    return map;
+    return <String, dynamic>{
+      'agent': agent,
+    };
   }
 
   factory GuardrailActionTransferAgent.fromMap(Map<String, dynamic> map) {
@@ -25,3 +26,4 @@ class GuardrailActionTransferAgent {
     );
   }
 }
+

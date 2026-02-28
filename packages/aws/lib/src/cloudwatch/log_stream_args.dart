@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogStreamArgs {
   /// The name of the log group under which the log stream is to be created.
   final pulumi.Input<String> logGroupName;
-
   /// The name of the log stream. Must not be longer than 512 characters and must not contain `:`
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -24,22 +22,17 @@ class LogStreamArgs {
     required String logGroupName,
     String? name,
     String? region,
-  })  : logGroupName = pulumi.Input.asInput<String>(logGroupName),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      logGroupName = pulumi.Input.asInput<String>(logGroupName),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['logGroupName'] = logGroupName;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'logGroupName': logGroupName,
+      'name': ?name,
+      'region': ?region,
+    };
   }
 
   factory LogStreamArgs.fromMap(Map<String, dynamic> map) {
@@ -50,3 +43,4 @@ class LogStreamArgs {
     );
   }
 }
+

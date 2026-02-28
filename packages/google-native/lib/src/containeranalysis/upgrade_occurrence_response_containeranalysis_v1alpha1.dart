@@ -7,10 +7,8 @@ import 'version_response_containeranalysis_v1alpha1.dart';
 class UpgradeOccurrenceResponseContaineranalysisV1alpha1 {
   /// Metadata about the upgrade for available for the specific operating system for the resource_url. This allows efficient filtering, as well as making it easier to use the occurrence.
   final UpgradeDistributionResponseContaineranalysisV1alpha1 distribution;
-
   /// Required - The package this Upgrade is for.
   final String package;
-
   /// Required - The version of the package in a machine + human readable form.
   final VersionResponseContaineranalysisV1alpha1 parsedVersion;
 
@@ -25,22 +23,19 @@ class UpgradeOccurrenceResponseContaineranalysisV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['distribution'] = distribution.toMap();
-    map['package'] = package;
-    map['parsedVersion'] = parsedVersion.toMap();
-    return map;
+    return <String, dynamic>{
+      'distribution': distribution.toMap(),
+      'package': package,
+      'parsedVersion': parsedVersion.toMap(),
+    };
   }
 
-  factory UpgradeOccurrenceResponseContaineranalysisV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory UpgradeOccurrenceResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return UpgradeOccurrenceResponseContaineranalysisV1alpha1(
-      distribution:
-          UpgradeDistributionResponseContaineranalysisV1alpha1.fromMap(
-              (map['distribution'] as Map).cast<String, dynamic>()),
+      distribution: UpgradeDistributionResponseContaineranalysisV1alpha1.fromMap((map['distribution'] as Map).cast<String, dynamic>()),
       package: map['package'] as String,
-      parsedVersion: VersionResponseContaineranalysisV1alpha1.fromMap(
-          (map['parsedVersion'] as Map).cast<String, dynamic>()),
+      parsedVersion: VersionResponseContaineranalysisV1alpha1.fromMap((map['parsedVersion'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

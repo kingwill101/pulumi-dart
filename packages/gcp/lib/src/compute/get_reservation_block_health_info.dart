@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetReservationBlockHealthInfo {
   /// The number of sub-blocks that are degraded.
   final int degradedSubBlockCount;
-
   /// The health status of the reservation block.
   final String healthStatus;
-
   /// The number of sub-blocks that are healthy.
   final int healthySubBlockCount;
 
@@ -21,11 +20,11 @@ class GetReservationBlockHealthInfo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['degradedSubBlockCount'] = degradedSubBlockCount;
-    map['healthStatus'] = healthStatus;
-    map['healthySubBlockCount'] = healthySubBlockCount;
-    return map;
+    return <String, dynamic>{
+      'degradedSubBlockCount': degradedSubBlockCount,
+      'healthStatus': healthStatus,
+      'healthySubBlockCount': healthySubBlockCount,
+    };
   }
 
   factory GetReservationBlockHealthInfo.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class GetReservationBlockHealthInfo {
     );
   }
 }
+

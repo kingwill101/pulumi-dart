@@ -5,13 +5,9 @@ import 'policy_predictive_scaling_configuration_metric_specification_customized_
 
 class PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStatMetric {
   /// Dimensions of the metric.
-  final List<
-          PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStatMetricDimension>?
-      dimensions;
-
+  final List<PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStatMetricDimension>? dimensions;
   /// Name of the metric.
   final String metricName;
-
   /// Namespace of the metric.
   final String namespace;
 
@@ -26,31 +22,19 @@ class PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityM
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dimensionsValue = dimensions;
-    if (dimensionsValue != null) {
-      map['dimensions'] = pulumi.Input.encodeList<
-          PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStatMetricDimension,
-          Map<String, dynamic>>(dimensionsValue, (value) => value.toMap());
-    }
-    map['metricName'] = metricName;
-    map['namespace'] = namespace;
-    return map;
+    return <String, dynamic>{
+      'dimensions': ?dimensions == null ? null : pulumi.Input.encodeList<PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStatMetricDimension, Map<String, dynamic>>(dimensions!, (value) => value.toMap()),
+      'metricName': metricName,
+      'namespace': namespace,
+    };
   }
 
-  factory PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStatMetric.fromMap(
-      Map<String, dynamic> map) {
+  factory PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStatMetric.fromMap(Map<String, dynamic> map) {
     return PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStatMetric(
-      dimensions: map['dimensions'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStatMetricDimension>(
-              map['dimensions'],
-              (value) =>
-                  PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStatMetricDimension
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      dimensions: map['dimensions'] == null ? null : pulumi.Input.decodeList<PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStatMetricDimension>(map['dimensions'], (value) => PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStatMetricDimension.fromMap((value as Map).cast<String, dynamic>())),
       metricName: map['metricName'] as String,
       namespace: map['namespace'] as String,
     );
   }
 }
+

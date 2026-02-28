@@ -22,21 +22,19 @@ class GetTriggerArgs {
     String? project,
     required String projectId,
     required String triggerId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        projectId = pulumi.Input.asInput<String>(projectId),
-        triggerId = pulumi.Input.asInput<String>(triggerId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      projectId = pulumi.Input.asInput<String>(projectId),
+      triggerId = pulumi.Input.asInput<String>(triggerId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['projectId'] = projectId;
-    map['triggerId'] = triggerId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+      'projectId': projectId,
+      'triggerId': triggerId,
+    };
   }
 
   factory GetTriggerArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetTriggerArgs {
     );
   }
 }
+

@@ -13,16 +13,15 @@ class VirtualClusterContainerProviderInfo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['eksInfo'] = eksInfo.toMap();
-    return map;
+    return <String, dynamic>{
+      'eksInfo': eksInfo.toMap(),
+    };
   }
 
-  factory VirtualClusterContainerProviderInfo.fromMap(
-      Map<String, dynamic> map) {
+  factory VirtualClusterContainerProviderInfo.fromMap(Map<String, dynamic> map) {
     return VirtualClusterContainerProviderInfo(
-      eksInfo: VirtualClusterContainerProviderInfoEksInfo.fromMap(
-          (map['eksInfo'] as Map).cast<String, dynamic>()),
+      eksInfo: VirtualClusterContainerProviderInfoEksInfo.fromMap((map['eksInfo'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

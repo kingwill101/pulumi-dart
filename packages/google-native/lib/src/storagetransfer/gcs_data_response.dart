@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// In a GcsData resource, an object's name is the Cloud Storage object's name and its "last modification time" refers to the object's `updated` property of Cloud Storage objects, which changes when the content or the metadata of the object is updated.
 class GcsDataResponse {
   /// Cloud Storage bucket name. Must meet [Bucket Name Requirements](/storage/docs/naming#requirements).
   final String bucketName;
-
   /// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. The root path value must meet [Object Name Requirements](/storage/docs/naming#objectnames).
   final String path;
 
@@ -17,10 +17,10 @@ class GcsDataResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucketName'] = bucketName;
-    map['path'] = path;
-    return map;
+    return <String, dynamic>{
+      'bucketName': bucketName,
+      'path': path,
+    };
   }
 
   factory GcsDataResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class GcsDataResponse {
     );
   }
 }
+

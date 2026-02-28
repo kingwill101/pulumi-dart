@@ -14,21 +14,15 @@ class GcpUserAccessBindingScopedAccessSettingScope {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final clientScopeValue = clientScope;
-    if (clientScopeValue != null) {
-      map['clientScope'] = clientScopeValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'clientScope': ?clientScope == null ? null : clientScope!.toMap(),
+    };
   }
 
-  factory GcpUserAccessBindingScopedAccessSettingScope.fromMap(
-      Map<String, dynamic> map) {
+  factory GcpUserAccessBindingScopedAccessSettingScope.fromMap(Map<String, dynamic> map) {
     return GcpUserAccessBindingScopedAccessSettingScope(
-      clientScope: map['clientScope'] == null
-          ? null
-          : GcpUserAccessBindingScopedAccessSettingScopeClientScope.fromMap(
-              (map['clientScope'] as Map).cast<String, dynamic>()),
+      clientScope: map['clientScope'] == null ? null : GcpUserAccessBindingScopedAccessSettingScopeClientScope.fromMap((map['clientScope'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

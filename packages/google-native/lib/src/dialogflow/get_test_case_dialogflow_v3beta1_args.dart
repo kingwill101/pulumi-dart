@@ -22,21 +22,19 @@ class GetTestCaseDialogflowV3beta1Args {
     required String location,
     String? project,
     required String testCaseId,
-  })  : agentId = pulumi.Input.asInput<String>(agentId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        testCaseId = pulumi.Input.asInput<String>(testCaseId);
+  }) :
+      agentId = pulumi.Input.asInput<String>(agentId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      testCaseId = pulumi.Input.asInput<String>(testCaseId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['agentId'] = agentId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['testCaseId'] = testCaseId;
-    return map;
+    return <String, dynamic>{
+      'agentId': agentId,
+      'location': location,
+      'project': ?project,
+      'testCaseId': testCaseId,
+    };
   }
 
   factory GetTestCaseDialogflowV3beta1Args.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetTestCaseDialogflowV3beta1Args {
     );
   }
 }
+

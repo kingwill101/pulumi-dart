@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Defines a custom error message used by CreateScanConfig and UpdateScanConfig APIs when scan configuration validation fails. It is also reported as part of a ScanRunErrorTrace message if scan validation fails due to a scan configuration error.
 class ScanConfigErrorResponse {
   /// Indicates the reason code for a configuration failure.
   final String code;
-
   /// Indicates the full name of the ScanConfig field that triggers this error, for example "scan_config.max_qps". This field is provided for troubleshooting purposes only and its actual value can change in the future.
   final String fieldName;
 
@@ -17,10 +17,10 @@ class ScanConfigErrorResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['code'] = code;
-    map['fieldName'] = fieldName;
-    return map;
+    return <String, dynamic>{
+      'code': code,
+      'fieldName': fieldName,
+    };
   }
 
   factory ScanConfigErrorResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class ScanConfigErrorResponse {
     );
   }
 }
+

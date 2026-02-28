@@ -8,9 +8,7 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetro {
   /// The facilities used for this group's Attachments'
   /// Interconnects.
   /// Structure is documented below.
-  final List<InterconnectAttachmentGroupLogicalStructureRegionMetroFacility>?
-      facilities;
-
+  final List<InterconnectAttachmentGroupLogicalStructureRegionMetroFacility>? facilities;
   /// (Output)
   /// The name of the metro, as a three-letter lowercase
   /// string like "iad". This is the first component of the location of an
@@ -26,32 +24,17 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetro {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final facilitiesValue = facilities;
-    if (facilitiesValue != null) {
-      map['facilities'] = pulumi.Input.encodeList<
-          InterconnectAttachmentGroupLogicalStructureRegionMetroFacility,
-          Map<String, dynamic>>(facilitiesValue, (value) => value.toMap());
-    }
-    final metroValue = metro;
-    if (metroValue != null) {
-      map['metro'] = metroValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'facilities': ?facilities == null ? null : pulumi.Input.encodeList<InterconnectAttachmentGroupLogicalStructureRegionMetroFacility, Map<String, dynamic>>(facilities!, (value) => value.toMap()),
+      'metro': ?metro,
+    };
   }
 
-  factory InterconnectAttachmentGroupLogicalStructureRegionMetro.fromMap(
-      Map<String, dynamic> map) {
+  factory InterconnectAttachmentGroupLogicalStructureRegionMetro.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentGroupLogicalStructureRegionMetro(
-      facilities: map['facilities'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  InterconnectAttachmentGroupLogicalStructureRegionMetroFacility>(
-              map['facilities'],
-              (value) =>
-                  InterconnectAttachmentGroupLogicalStructureRegionMetroFacility
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      facilities: map['facilities'] == null ? null : pulumi.Input.decodeList<InterconnectAttachmentGroupLogicalStructureRegionMetroFacility>(map['facilities'], (value) => InterconnectAttachmentGroupLogicalStructureRegionMetroFacility.fromMap((value as Map).cast<String, dynamic>())),
       metro: map['metro'] == null ? null : map['metro'] as String,
     );
   }
 }
+

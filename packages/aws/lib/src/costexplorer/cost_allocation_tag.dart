@@ -109,10 +109,8 @@ import 'cost_allocation_tag_args.dart';
 class CostAllocationTag extends pulumi.CustomResource {
   /// The status of a cost allocation tag. Valid values are `Active` and `Inactive`.
   late final pulumi.Output<String> status;
-
   /// The key for the cost allocation tag.
   late final pulumi.Output<String> tagKey;
-
   /// The type of cost allocation tag.
   late final pulumi.Output<String> type;
 

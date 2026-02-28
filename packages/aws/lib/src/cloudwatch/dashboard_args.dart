@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DashboardArgs {
   /// The detailed information about the dashboard, including what widgets are included and their location on the dashboard. You can read more about the body structure in the [documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html).
   final pulumi.Input<String> dashboardBody;
-
   /// The name of the dashboard.
   final pulumi.Input<String> dashboardName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -24,19 +22,17 @@ class DashboardArgs {
     required String dashboardBody,
     required String dashboardName,
     String? region,
-  })  : dashboardBody = pulumi.Input.asInput<String>(dashboardBody),
-        dashboardName = pulumi.Input.asInput<String>(dashboardName),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      dashboardBody = pulumi.Input.asInput<String>(dashboardBody),
+      dashboardName = pulumi.Input.asInput<String>(dashboardName),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dashboardBody'] = dashboardBody;
-    map['dashboardName'] = dashboardName;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'dashboardBody': dashboardBody,
+      'dashboardName': dashboardName,
+      'region': ?region,
+    };
   }
 
   factory DashboardArgs.fromMap(Map<String, dynamic> map) {
@@ -47,3 +43,4 @@ class DashboardArgs {
     );
   }
 }
+

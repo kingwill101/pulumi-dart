@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// This is deprecated and has no effect. Do not use.
 class AuthorizationLoggingOptionsResponse {
   /// This is deprecated and has no effect. Do not use.
@@ -12,15 +13,15 @@ class AuthorizationLoggingOptionsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['permissionType'] = permissionType;
-    return map;
+    return <String, dynamic>{
+      'permissionType': permissionType,
+    };
   }
 
-  factory AuthorizationLoggingOptionsResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory AuthorizationLoggingOptionsResponse.fromMap(Map<String, dynamic> map) {
     return AuthorizationLoggingOptionsResponse(
       permissionType: map['permissionType'] as String,
     );
   }
 }
+

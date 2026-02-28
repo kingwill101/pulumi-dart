@@ -9,10 +9,8 @@ import 'google_privacy_dlp_v2_quasi_id_field_response.dart';
 class GooglePrivacyDlpV2AuxiliaryTableResponse {
   /// Quasi-identifier columns.
   final List<GooglePrivacyDlpV2QuasiIdFieldResponse> quasiIds;
-
   /// The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
   final GooglePrivacyDlpV2FieldIdResponse relativeFrequency;
-
   /// Auxiliary table location.
   final GooglePrivacyDlpV2BigQueryTableResponse table;
 
@@ -27,26 +25,19 @@ class GooglePrivacyDlpV2AuxiliaryTableResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['quasiIds'] = pulumi.Input.encodeList<
-        GooglePrivacyDlpV2QuasiIdFieldResponse,
-        Map<String, dynamic>>(quasiIds, (value) => value.toMap());
-    map['relativeFrequency'] = relativeFrequency.toMap();
-    map['table'] = table.toMap();
-    return map;
+    return <String, dynamic>{
+      'quasiIds': pulumi.Input.encodeList<GooglePrivacyDlpV2QuasiIdFieldResponse, Map<String, dynamic>>(quasiIds, (value) => value.toMap()),
+      'relativeFrequency': relativeFrequency.toMap(),
+      'table': table.toMap(),
+    };
   }
 
-  factory GooglePrivacyDlpV2AuxiliaryTableResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2AuxiliaryTableResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2AuxiliaryTableResponse(
-      quasiIds: pulumi.Input.decodeList<GooglePrivacyDlpV2QuasiIdFieldResponse>(
-          map['quasiIds'],
-          (value) => GooglePrivacyDlpV2QuasiIdFieldResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      relativeFrequency: GooglePrivacyDlpV2FieldIdResponse.fromMap(
-          (map['relativeFrequency'] as Map).cast<String, dynamic>()),
-      table: GooglePrivacyDlpV2BigQueryTableResponse.fromMap(
-          (map['table'] as Map).cast<String, dynamic>()),
+      quasiIds: pulumi.Input.decodeList<GooglePrivacyDlpV2QuasiIdFieldResponse>(map['quasiIds'], (value) => GooglePrivacyDlpV2QuasiIdFieldResponse.fromMap((value as Map).cast<String, dynamic>())),
+      relativeFrequency: GooglePrivacyDlpV2FieldIdResponse.fromMap((map['relativeFrequency'] as Map).cast<String, dynamic>()),
+      table: GooglePrivacyDlpV2BigQueryTableResponse.fromMap((map['table'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

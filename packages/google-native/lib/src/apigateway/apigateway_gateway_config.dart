@@ -14,15 +14,15 @@ class ApigatewayGatewayConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['backendConfig'] = backendConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'backendConfig': backendConfig.toMap(),
+    };
   }
 
   factory ApigatewayGatewayConfig.fromMap(Map<String, dynamic> map) {
     return ApigatewayGatewayConfig(
-      backendConfig: ApigatewayBackendConfig.fromMap(
-          (map['backendConfig'] as Map).cast<String, dynamic>()),
+      backendConfig: ApigatewayBackendConfig.fromMap((map['backendConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

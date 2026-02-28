@@ -7,20 +7,13 @@ import 'google_cloud_aiplatform_v1beta1_featurestore_monitoring_config_threshold
 /// Configuration of how features in Featurestore are monitored.
 class GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigResponse {
   /// Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
-  final GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigResponse
-      categoricalThresholdConfig;
-
+  final GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigResponse categoricalThresholdConfig;
   /// The config for ImportFeatures Analysis Based Feature Monitoring.
-  final GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisResponse
-      importFeaturesAnalysis;
-
+  final GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisResponse importFeaturesAnalysis;
   /// Threshold for numerical features of anomaly detection. This is shared by all objectives of Featurestore Monitoring for numerical features (i.e. Features with type (Feature.ValueType) DOUBLE or INT64).
-  final GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigResponse
-      numericalThresholdConfig;
-
+  final GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigResponse numericalThresholdConfig;
   /// The config for Snapshot Analysis Based Feature Monitoring.
-  final GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysisResponse
-      snapshotAnalysis;
+  final GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysisResponse snapshotAnalysis;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigResponse].
   /// [categoricalThresholdConfig] Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
@@ -35,33 +28,21 @@ class GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['categoricalThresholdConfig'] = categoricalThresholdConfig.toMap();
-    map['importFeaturesAnalysis'] = importFeaturesAnalysis.toMap();
-    map['numericalThresholdConfig'] = numericalThresholdConfig.toMap();
-    map['snapshotAnalysis'] = snapshotAnalysis.toMap();
-    return map;
+    return <String, dynamic>{
+      'categoricalThresholdConfig': categoricalThresholdConfig.toMap(),
+      'importFeaturesAnalysis': importFeaturesAnalysis.toMap(),
+      'numericalThresholdConfig': numericalThresholdConfig.toMap(),
+      'snapshotAnalysis': snapshotAnalysis.toMap(),
+    };
   }
 
-  factory GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigResponse(
-      categoricalThresholdConfig:
-          GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigResponse
-              .fromMap((map['categoricalThresholdConfig'] as Map)
-                  .cast<String, dynamic>()),
-      importFeaturesAnalysis:
-          GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisResponse
-              .fromMap((map['importFeaturesAnalysis'] as Map)
-                  .cast<String, dynamic>()),
-      numericalThresholdConfig:
-          GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigResponse
-              .fromMap((map['numericalThresholdConfig'] as Map)
-                  .cast<String, dynamic>()),
-      snapshotAnalysis:
-          GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysisResponse
-              .fromMap(
-                  (map['snapshotAnalysis'] as Map).cast<String, dynamic>()),
+      categoricalThresholdConfig: GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigResponse.fromMap((map['categoricalThresholdConfig'] as Map).cast<String, dynamic>()),
+      importFeaturesAnalysis: GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisResponse.fromMap((map['importFeaturesAnalysis'] as Map).cast<String, dynamic>()),
+      numericalThresholdConfig: GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigResponse.fromMap((map['numericalThresholdConfig'] as Map).cast<String, dynamic>()),
+      snapshotAnalysis: GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysisResponse.fromMap((map['snapshotAnalysis'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

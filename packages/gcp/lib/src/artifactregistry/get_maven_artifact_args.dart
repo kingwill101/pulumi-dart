@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMavenArtifactArgs {
   /// The name of the artifact to fetch. Can optionally include a specific version (e.g., `my_artifact:1.2.3`). If no version is provided, the latest version is used.
   final pulumi.Input<String> artifactId;
-
   /// Group ID for the artifact. Example: `com.google.guava`
   final pulumi.Input<String> groupId;
-
   /// The location of the Artifact Registry repository.
   final pulumi.Input<String> location;
-
   /// The ID of the project that owns the repository. If not provided, the provider-level project is used.
   final pulumi.Input<String>? project;
-
   /// The ID of the repository containing the Maven artifact.
   final pulumi.Input<String> repositoryId;
 
@@ -34,23 +30,21 @@ class GetMavenArtifactArgs {
     required String location,
     String? project,
     required String repositoryId,
-  })  : artifactId = pulumi.Input.asInput<String>(artifactId),
-        groupId = pulumi.Input.asInput<String>(groupId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        repositoryId = pulumi.Input.asInput<String>(repositoryId);
+  }) :
+      artifactId = pulumi.Input.asInput<String>(artifactId),
+      groupId = pulumi.Input.asInput<String>(groupId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      repositoryId = pulumi.Input.asInput<String>(repositoryId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['artifactId'] = artifactId;
-    map['groupId'] = groupId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['repositoryId'] = repositoryId;
-    return map;
+    return <String, dynamic>{
+      'artifactId': artifactId,
+      'groupId': groupId,
+      'location': location,
+      'project': ?project,
+      'repositoryId': repositoryId,
+    };
   }
 
   factory GetMavenArtifactArgs.fromMap(Map<String, dynamic> map) {
@@ -63,3 +57,4 @@ class GetMavenArtifactArgs {
     );
   }
 }
+

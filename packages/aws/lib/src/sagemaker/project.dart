@@ -125,26 +125,18 @@ import 'project_service_catalog_provisioning_details.dart';
 class Project extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) assigned by AWS to this Project.
   late final pulumi.Output<String> arn;
-
   /// A description for the project.
   late final pulumi.Output<String?> projectDescription;
-
   /// The ID of the project.
   late final pulumi.Output<String> projectId;
-
   /// The name of the Project.
   late final pulumi.Output<String> projectName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The product ID and provisioning artifact ID to provision a service catalog. See Service Catalog Provisioning Details below.
-  late final pulumi.Output<ProjectServiceCatalogProvisioningDetails>
-      serviceCatalogProvisioningDetails;
-
+  late final pulumi.Output<ProjectServiceCatalogProvisioningDetails> serviceCatalogProvisioningDetails;
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -167,9 +159,7 @@ class Project extends pulumi.CustomResource {
     this.projectId = registerOutput<String>('projectId');
     this.projectName = registerOutput<String>('projectName');
     this.region = registerOutput<String>('region');
-    this.serviceCatalogProvisioningDetails =
-        registerOutput<ProjectServiceCatalogProvisioningDetails>(
-            'serviceCatalogProvisioningDetails');
+    this.serviceCatalogProvisioningDetails = registerOutput<ProjectServiceCatalogProvisioningDetails>('serviceCatalogProvisioningDetails');
     this.tags = registerOutput<Map<String, String>?>('tags');
     this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }

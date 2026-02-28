@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntryPortRange {
   /// The beginning port number of the range.
   final int? from;
-
   /// The ending port number of the range.
   final int? to;
 
@@ -16,23 +16,17 @@ class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAc
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final fromValue = from;
-    if (fromValue != null) {
-      map['from'] = fromValue;
-    }
-    final toValue = to;
-    if (toValue != null) {
-      map['to'] = toValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'from': ?from,
+      'to': ?to,
+    };
   }
 
-  factory PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntryPortRange.fromMap(
-      Map<String, dynamic> map) {
+  factory PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntryPortRange.fromMap(Map<String, dynamic> map) {
     return PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntryPortRange(
       from: map['from'] == null ? null : map['from'] as int,
       to: map['to'] == null ? null : map['to'] as int,
     );
   }
 }
+

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DatasetExternalDatasetReference {
   /// The connection id that is used to access the externalSource.
   /// Format: projects/{projectId}/locations/{locationId}/connections/{connectionId}
   final String connection;
-
   /// External source that backs this dataset.
   final String externalSource;
 
@@ -17,10 +17,10 @@ class DatasetExternalDatasetReference {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['connection'] = connection;
-    map['externalSource'] = externalSource;
-    return map;
+    return <String, dynamic>{
+      'connection': connection,
+      'externalSource': externalSource,
+    };
   }
 
   factory DatasetExternalDatasetReference.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class DatasetExternalDatasetReference {
     );
   }
 }
+

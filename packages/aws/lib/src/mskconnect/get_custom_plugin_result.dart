@@ -1,24 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getCustomPlugin.
 class GetCustomPluginResult {
   /// the ARN of the custom plugin.
   final String arn;
-
   /// a summary description of the custom plugin.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// an ID of the latest successfully created revision of the custom plugin.
   final int latestRevision;
   final String name;
   final String region;
-
   /// the state of the custom plugin.
   final String state;
-
   /// A map of tags assigned to the resource.
   final Map<String, String> tags;
 
@@ -43,16 +39,16 @@ class GetCustomPluginResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['description'] = description;
-    map['id'] = id;
-    map['latestRevision'] = latestRevision;
-    map['name'] = name;
-    map['region'] = region;
-    map['state'] = state;
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'description': description,
+      'id': id,
+      'latestRevision': latestRevision,
+      'name': name,
+      'region': region,
+      'state': state,
+      'tags': tags,
+    };
   }
 
   factory GetCustomPluginResult.fromMap(Map<String, dynamic> map) {
@@ -68,3 +64,4 @@ class GetCustomPluginResult {
     );
   }
 }
+

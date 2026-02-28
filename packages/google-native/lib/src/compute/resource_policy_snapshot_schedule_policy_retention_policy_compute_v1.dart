@@ -6,10 +6,8 @@ import 'resource_policy_snapshot_schedule_policy_retention_policy_on_source_disk
 class ResourcePolicySnapshotSchedulePolicyRetentionPolicyComputeV1 {
   /// Maximum age of the snapshot that is allowed to be kept.
   final int? maxRetentionDays;
-
   /// Specifies the behavior to apply to scheduled snapshots when the source disk is deleted.
-  final ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteComputeV1?
-      onSourceDiskDelete;
+  final ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteComputeV1? onSourceDiskDelete;
 
   /// Creates a new [ResourcePolicySnapshotSchedulePolicyRetentionPolicyComputeV1].
   /// [maxRetentionDays] Maximum age of the snapshot that is allowed to be kept.
@@ -20,28 +18,17 @@ class ResourcePolicySnapshotSchedulePolicyRetentionPolicyComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final maxRetentionDaysValue = maxRetentionDays;
-    if (maxRetentionDaysValue != null) {
-      map['maxRetentionDays'] = maxRetentionDaysValue;
-    }
-    final onSourceDiskDeleteValue = onSourceDiskDelete;
-    if (onSourceDiskDeleteValue != null) {
-      map['onSourceDiskDelete'] = onSourceDiskDeleteValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'maxRetentionDays': ?maxRetentionDays,
+      'onSourceDiskDelete': ?onSourceDiskDelete == null ? null : onSourceDiskDelete!.value,
+    };
   }
 
-  factory ResourcePolicySnapshotSchedulePolicyRetentionPolicyComputeV1.fromMap(
-      Map<String, dynamic> map) {
+  factory ResourcePolicySnapshotSchedulePolicyRetentionPolicyComputeV1.fromMap(Map<String, dynamic> map) {
     return ResourcePolicySnapshotSchedulePolicyRetentionPolicyComputeV1(
-      maxRetentionDays: map['maxRetentionDays'] == null
-          ? null
-          : map['maxRetentionDays'] as int,
-      onSourceDiskDelete: map['onSourceDiskDelete'] == null
-          ? null
-          : ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteComputeV1
-              .fromValue(map['onSourceDiskDelete'] as String),
+      maxRetentionDays: map['maxRetentionDays'] == null ? null : map['maxRetentionDays'] as int,
+      onSourceDiskDelete: map['onSourceDiskDelete'] == null ? null : ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteComputeV1.fromValue(map['onSourceDiskDelete'] as String),
     );
   }
 }
+

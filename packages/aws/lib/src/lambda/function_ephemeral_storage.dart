@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FunctionEphemeralStorage {
   /// Amount of ephemeral storage (`/tmp`) in MB. Valid between 512 MB and 10,240 MB (10 GB).
   final int? size;
@@ -11,12 +12,9 @@ class FunctionEphemeralStorage {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final sizeValue = size;
-    if (sizeValue != null) {
-      map['size'] = sizeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'size': ?size,
+    };
   }
 
   factory FunctionEphemeralStorage.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class FunctionEphemeralStorage {
     );
   }
 }
+

@@ -15,19 +15,15 @@ class VolumeExportPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['rules'] =
-        pulumi.Input.encodeList<VolumeExportPolicyRule, Map<String, dynamic>>(
-            rules, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'rules': pulumi.Input.encodeList<VolumeExportPolicyRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
+    };
   }
 
   factory VolumeExportPolicy.fromMap(Map<String, dynamic> map) {
     return VolumeExportPolicy(
-      rules: pulumi.Input.decodeList<VolumeExportPolicyRule>(
-          map['rules'],
-          (value) => VolumeExportPolicyRule.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      rules: pulumi.Input.decodeList<VolumeExportPolicyRule>(map['rules'], (value) => VolumeExportPolicyRule.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

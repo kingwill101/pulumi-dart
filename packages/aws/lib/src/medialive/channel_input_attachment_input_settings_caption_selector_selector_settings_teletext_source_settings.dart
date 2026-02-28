@@ -4,9 +4,7 @@ import 'channel_input_attachment_input_settings_caption_selector_selector_settin
 
 class ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsTeletextSourceSettings {
   /// Optionally defines a region where TTML style captions will be displayed. See Caption Rectangle for more details.
-  final ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsTeletextSourceSettingsOutputRectangle?
-      outputRectangle;
-
+  final ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsTeletextSourceSettingsOutputRectangle? outputRectangle;
   /// Specifies the teletext page number within the data stream from which to extract captions. Range of 0x100 (256) to 0x8FF (2303). Unused for passthrough. Should be specified as a hexadecimal string with no “0x” prefix.
   final String? pageNumber;
 
@@ -19,27 +17,17 @@ class ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsTeletext
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final outputRectangleValue = outputRectangle;
-    if (outputRectangleValue != null) {
-      map['outputRectangle'] = outputRectangleValue.toMap();
-    }
-    final pageNumberValue = pageNumber;
-    if (pageNumberValue != null) {
-      map['pageNumber'] = pageNumberValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'outputRectangle': ?outputRectangle == null ? null : outputRectangle!.toMap(),
+      'pageNumber': ?pageNumber,
+    };
   }
 
-  factory ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsTeletextSourceSettings.fromMap(
-      Map<String, dynamic> map) {
+  factory ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsTeletextSourceSettings.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsTeletextSourceSettings(
-      outputRectangle: map['outputRectangle'] == null
-          ? null
-          : ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsTeletextSourceSettingsOutputRectangle
-              .fromMap((map['outputRectangle'] as Map).cast<String, dynamic>()),
-      pageNumber:
-          map['pageNumber'] == null ? null : map['pageNumber'] as String,
+      outputRectangle: map['outputRectangle'] == null ? null : ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsTeletextSourceSettingsOutputRectangle.fromMap((map['outputRectangle'] as Map).cast<String, dynamic>()),
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as String,
     );
   }
 }
+

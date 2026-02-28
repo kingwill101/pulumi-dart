@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
 class NetworkTagsResponse {
   /// List of network tags.
@@ -12,9 +13,9 @@ class NetworkTagsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'tags': tags,
+    };
   }
 
   factory NetworkTagsResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class NetworkTagsResponse {
     );
   }
 }
+

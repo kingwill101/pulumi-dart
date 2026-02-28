@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FlowSourceFlowConfigSourceConnectorPropertiesZendesk {
   final String object;
 
@@ -10,15 +11,15 @@ class FlowSourceFlowConfigSourceConnectorPropertiesZendesk {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['object'] = object;
-    return map;
+    return <String, dynamic>{
+      'object': object,
+    };
   }
 
-  factory FlowSourceFlowConfigSourceConnectorPropertiesZendesk.fromMap(
-      Map<String, dynamic> map) {
+  factory FlowSourceFlowConfigSourceConnectorPropertiesZendesk.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorPropertiesZendesk(
       object: map['object'] as String,
     );
   }
 }
+

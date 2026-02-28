@@ -1,28 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Resource representing the Android specific attributes of a Device.
 class AndroidAttributesResponse {
   /// Whether the device passes Android CTS compliance.
   final bool ctsProfileMatch;
-
   /// Whether applications from unknown sources can be installed on device.
   final bool enabledUnknownSources;
-
   /// Whether any potentially harmful apps were detected on the device.
   final bool hasPotentiallyHarmfulApps;
-
   /// Whether this account is on an owner/primary profile. For phones, only true for owner profiles. Android 4+ devices can have secondary or restricted user profiles.
   final bool ownerProfileAccount;
-
   /// Ownership privileges on device.
   final String ownershipPrivilege;
-
   /// Whether device supports Android work profiles. If false, this service will not block access to corp data even if an administrator turns on the "Enforce Work Profile" policy.
   final bool supportsWorkProfile;
-
   /// Whether Android verified boot status is GREEN.
   final bool verifiedBoot;
-
   /// Whether Google Play Protect Verify Apps is enabled.
   final bool verifyAppsEnabled;
 
@@ -47,16 +41,16 @@ class AndroidAttributesResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ctsProfileMatch'] = ctsProfileMatch;
-    map['enabledUnknownSources'] = enabledUnknownSources;
-    map['hasPotentiallyHarmfulApps'] = hasPotentiallyHarmfulApps;
-    map['ownerProfileAccount'] = ownerProfileAccount;
-    map['ownershipPrivilege'] = ownershipPrivilege;
-    map['supportsWorkProfile'] = supportsWorkProfile;
-    map['verifiedBoot'] = verifiedBoot;
-    map['verifyAppsEnabled'] = verifyAppsEnabled;
-    return map;
+    return <String, dynamic>{
+      'ctsProfileMatch': ctsProfileMatch,
+      'enabledUnknownSources': enabledUnknownSources,
+      'hasPotentiallyHarmfulApps': hasPotentiallyHarmfulApps,
+      'ownerProfileAccount': ownerProfileAccount,
+      'ownershipPrivilege': ownershipPrivilege,
+      'supportsWorkProfile': supportsWorkProfile,
+      'verifiedBoot': verifiedBoot,
+      'verifyAppsEnabled': verifyAppsEnabled,
+    };
   }
 
   factory AndroidAttributesResponse.fromMap(Map<String, dynamic> map) {
@@ -72,3 +66,4 @@ class AndroidAttributesResponse {
     );
   }
 }
+

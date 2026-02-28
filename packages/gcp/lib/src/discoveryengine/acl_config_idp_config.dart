@@ -6,7 +6,6 @@ class AclConfigIdpConfig {
   /// External third party identity provider config.
   /// Structure is documented below.
   final AclConfigIdpConfigExternalIdpConfig? externalIdpConfig;
-
   /// Identity provider type.
   /// Possible values are: `GSUITE`, `THIRD_PARTY`.
   final String? idpType;
@@ -20,25 +19,17 @@ class AclConfigIdpConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final externalIdpConfigValue = externalIdpConfig;
-    if (externalIdpConfigValue != null) {
-      map['externalIdpConfig'] = externalIdpConfigValue.toMap();
-    }
-    final idpTypeValue = idpType;
-    if (idpTypeValue != null) {
-      map['idpType'] = idpTypeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'externalIdpConfig': ?externalIdpConfig == null ? null : externalIdpConfig!.toMap(),
+      'idpType': ?idpType,
+    };
   }
 
   factory AclConfigIdpConfig.fromMap(Map<String, dynamic> map) {
     return AclConfigIdpConfig(
-      externalIdpConfig: map['externalIdpConfig'] == null
-          ? null
-          : AclConfigIdpConfigExternalIdpConfig.fromMap(
-              (map['externalIdpConfig'] as Map).cast<String, dynamic>()),
+      externalIdpConfig: map['externalIdpConfig'] == null ? null : AclConfigIdpConfigExternalIdpConfig.fromMap((map['externalIdpConfig'] as Map).cast<String, dynamic>()),
       idpType: map['idpType'] == null ? null : map['idpType'] as String,
     );
   }
 }
+

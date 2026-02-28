@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInstanceReadPoolConfig {
   /// Read capacity, i.e. number of nodes in a read pool instance.
   final int nodeCount;
@@ -11,9 +12,9 @@ class GetInstanceReadPoolConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['nodeCount'] = nodeCount;
-    return map;
+    return <String, dynamic>{
+      'nodeCount': nodeCount,
+    };
   }
 
   factory GetInstanceReadPoolConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetInstanceReadPoolConfig {
     );
   }
 }
+

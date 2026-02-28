@@ -7,7 +7,6 @@ class HttpRouteRuleActionFaultInjectionPolicy {
   /// Specification of how client requests are aborted as part of fault injection before being sent to a destination.
   /// Structure is documented below.
   final HttpRouteRuleActionFaultInjectionPolicyAbort? abort;
-
   /// Specification of how client requests are delayed as part of fault injection before being sent to a destination.
   /// Structure is documented below.
   final HttpRouteRuleActionFaultInjectionPolicyDelay? delay;
@@ -21,29 +20,17 @@ class HttpRouteRuleActionFaultInjectionPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final abortValue = abort;
-    if (abortValue != null) {
-      map['abort'] = abortValue.toMap();
-    }
-    final delayValue = delay;
-    if (delayValue != null) {
-      map['delay'] = delayValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'abort': ?abort == null ? null : abort!.toMap(),
+      'delay': ?delay == null ? null : delay!.toMap(),
+    };
   }
 
-  factory HttpRouteRuleActionFaultInjectionPolicy.fromMap(
-      Map<String, dynamic> map) {
+  factory HttpRouteRuleActionFaultInjectionPolicy.fromMap(Map<String, dynamic> map) {
     return HttpRouteRuleActionFaultInjectionPolicy(
-      abort: map['abort'] == null
-          ? null
-          : HttpRouteRuleActionFaultInjectionPolicyAbort.fromMap(
-              (map['abort'] as Map).cast<String, dynamic>()),
-      delay: map['delay'] == null
-          ? null
-          : HttpRouteRuleActionFaultInjectionPolicyDelay.fromMap(
-              (map['delay'] as Map).cast<String, dynamic>()),
+      abort: map['abort'] == null ? null : HttpRouteRuleActionFaultInjectionPolicyAbort.fromMap((map['abort'] as Map).cast<String, dynamic>()),
+      delay: map['delay'] == null ? null : HttpRouteRuleActionFaultInjectionPolicyDelay.fromMap((map['delay'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

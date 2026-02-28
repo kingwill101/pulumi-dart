@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetCustomRoutingAcceleratorAttribute {
   final bool flowLogsEnabled;
   final String flowLogsS3Bucket;
@@ -16,15 +17,14 @@ class GetCustomRoutingAcceleratorAttribute {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['flowLogsEnabled'] = flowLogsEnabled;
-    map['flowLogsS3Bucket'] = flowLogsS3Bucket;
-    map['flowLogsS3Prefix'] = flowLogsS3Prefix;
-    return map;
+    return <String, dynamic>{
+      'flowLogsEnabled': flowLogsEnabled,
+      'flowLogsS3Bucket': flowLogsS3Bucket,
+      'flowLogsS3Prefix': flowLogsS3Prefix,
+    };
   }
 
-  factory GetCustomRoutingAcceleratorAttribute.fromMap(
-      Map<String, dynamic> map) {
+  factory GetCustomRoutingAcceleratorAttribute.fromMap(Map<String, dynamic> map) {
     return GetCustomRoutingAcceleratorAttribute(
       flowLogsEnabled: map['flowLogsEnabled'] as bool,
       flowLogsS3Bucket: map['flowLogsS3Bucket'] as String,
@@ -32,3 +32,4 @@ class GetCustomRoutingAcceleratorAttribute {
     );
   }
 }
+

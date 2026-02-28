@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The device state, as reported by the device.
 class DeviceStateResponse {
   /// The device state data.
   final String binaryData;
-
   /// [Output only] The time at which this state version was updated in Cloud IoT Core.
   final String updateTime;
 
@@ -17,10 +17,10 @@ class DeviceStateResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['binaryData'] = binaryData;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'binaryData': binaryData,
+      'updateTime': updateTime,
+    };
   }
 
   factory DeviceStateResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class DeviceStateResponse {
     );
   }
 }
+

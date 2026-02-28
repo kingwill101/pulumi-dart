@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetVpcEndpointDnsEntry {
   /// DNS name.
   final String dnsName;
-
   /// ID of the private hosted zone.
   final String hostedZoneId;
 
@@ -16,10 +16,10 @@ class GetVpcEndpointDnsEntry {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dnsName'] = dnsName;
-    map['hostedZoneId'] = hostedZoneId;
-    return map;
+    return <String, dynamic>{
+      'dnsName': dnsName,
+      'hostedZoneId': hostedZoneId,
+    };
   }
 
   factory GetVpcEndpointDnsEntry.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetVpcEndpointDnsEntry {
     );
   }
 }
+

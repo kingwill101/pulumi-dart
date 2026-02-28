@@ -15,23 +15,15 @@ class GooglePrivacyDlpV2BucketingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final bucketsValue = buckets;
-    if (bucketsValue != null) {
-      map['buckets'] = pulumi.Input.encodeList<GooglePrivacyDlpV2Bucket,
-          Map<String, dynamic>>(bucketsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'buckets': ?buckets == null ? null : pulumi.Input.encodeList<GooglePrivacyDlpV2Bucket, Map<String, dynamic>>(buckets!, (value) => value.toMap()),
+    };
   }
 
   factory GooglePrivacyDlpV2BucketingConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2BucketingConfig(
-      buckets: map['buckets'] == null
-          ? null
-          : pulumi.Input.decodeList<GooglePrivacyDlpV2Bucket>(
-              map['buckets'],
-              (value) => GooglePrivacyDlpV2Bucket.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      buckets: map['buckets'] == null ? null : pulumi.Input.decodeList<GooglePrivacyDlpV2Bucket>(map['buckets'], (value) => GooglePrivacyDlpV2Bucket.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

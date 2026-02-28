@@ -17,29 +17,17 @@ class GetVirtualGatewaySpecListenerTlValidationTrust {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['files'] = pulumi.Input.encodeList<
-        GetVirtualGatewaySpecListenerTlValidationTrustFile,
-        Map<String, dynamic>>(files, (value) => value.toMap());
-    map['sds'] = pulumi.Input.encodeList<
-        GetVirtualGatewaySpecListenerTlValidationTrustSd,
-        Map<String, dynamic>>(sds, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'files': pulumi.Input.encodeList<GetVirtualGatewaySpecListenerTlValidationTrustFile, Map<String, dynamic>>(files, (value) => value.toMap()),
+      'sds': pulumi.Input.encodeList<GetVirtualGatewaySpecListenerTlValidationTrustSd, Map<String, dynamic>>(sds, (value) => value.toMap()),
+    };
   }
 
-  factory GetVirtualGatewaySpecListenerTlValidationTrust.fromMap(
-      Map<String, dynamic> map) {
+  factory GetVirtualGatewaySpecListenerTlValidationTrust.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecListenerTlValidationTrust(
-      files: pulumi.Input.decodeList<
-              GetVirtualGatewaySpecListenerTlValidationTrustFile>(
-          map['files'],
-          (value) => GetVirtualGatewaySpecListenerTlValidationTrustFile.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      sds: pulumi.Input.decodeList<
-              GetVirtualGatewaySpecListenerTlValidationTrustSd>(
-          map['sds'],
-          (value) => GetVirtualGatewaySpecListenerTlValidationTrustSd.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      files: pulumi.Input.decodeList<GetVirtualGatewaySpecListenerTlValidationTrustFile>(map['files'], (value) => GetVirtualGatewaySpecListenerTlValidationTrustFile.fromMap((value as Map).cast<String, dynamic>())),
+      sds: pulumi.Input.decodeList<GetVirtualGatewaySpecListenerTlValidationTrustSd>(map['sds'], (value) => GetVirtualGatewaySpecListenerTlValidationTrustSd.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

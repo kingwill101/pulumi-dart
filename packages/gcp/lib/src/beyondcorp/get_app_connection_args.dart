@@ -11,11 +11,9 @@ class GetAppConnectionArgs {
   ///
   /// - - -
   final pulumi.Input<String> name;
-
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The region in which the resource belongs. If it
   /// is not provided, the provider region is used.
   final pulumi.Input<String>? region;
@@ -28,22 +26,17 @@ class GetAppConnectionArgs {
     required String name,
     String? project,
     String? region,
-  })  : name = pulumi.Input.asInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      name = pulumi.Input.asInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'project': ?project,
+      'region': ?region,
+    };
   }
 
   factory GetAppConnectionArgs.fromMap(Map<String, dynamic> map) {
@@ -54,3 +47,4 @@ class GetAppConnectionArgs {
     );
   }
 }
+

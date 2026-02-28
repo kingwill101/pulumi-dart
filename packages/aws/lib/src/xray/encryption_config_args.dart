@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EncryptionConfigArgs {
   /// An AWS KMS customer master key (CMK) ARN.
   final pulumi.Input<String>? keyId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The type of encryption. Set to `KMS` to use your own key for encryption. Set to `NONE` for default encryption.
   final pulumi.Input<String> type;
 
@@ -24,22 +22,17 @@ class EncryptionConfigArgs {
     String? keyId,
     String? region,
     required String type,
-  })  : keyId = pulumi.Input.asOptionalInput<String>(keyId),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        type = pulumi.Input.asInput<String>(type);
+  }) :
+      keyId = pulumi.Input.asOptionalInput<String>(keyId),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      type = pulumi.Input.asInput<String>(type);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final keyIdValue = keyId;
-    if (keyIdValue != null) {
-      map['keyId'] = keyIdValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'keyId': ?keyId,
+      'region': ?region,
+      'type': type,
+    };
   }
 
   factory EncryptionConfigArgs.fromMap(Map<String, dynamic> map) {
@@ -50,3 +43,4 @@ class EncryptionConfigArgs {
     );
   }
 }
+

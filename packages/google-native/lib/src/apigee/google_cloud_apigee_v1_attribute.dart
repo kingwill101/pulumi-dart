@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Key-value pair to store extra metadata.
 class GoogleCloudApigeeV1Attribute {
   /// API key of the attribute.
   final String? name;
-
   /// Value of the attribute.
   final String? value;
 
@@ -17,16 +17,10 @@ class GoogleCloudApigeeV1Attribute {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final valueValue = value;
-    if (valueValue != null) {
-      map['value'] = valueValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+      'value': ?value,
+    };
   }
 
   factory GoogleCloudApigeeV1Attribute.fromMap(Map<String, dynamic> map) {
@@ -36,3 +30,4 @@ class GoogleCloudApigeeV1Attribute {
     );
   }
 }
+

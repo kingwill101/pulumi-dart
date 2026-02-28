@@ -1,52 +1,38 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// For display only. Metadata associated with a Compute Engine route.
 class RouteInfoResponse {
   /// Destination IP range of the route.
   final String destIpRange;
-
   /// Destination port ranges of the route. Policy based routes only.
   final List<String> destPortRanges;
-
   /// Name of a route.
   final String displayName;
-
   /// Instance tags of the route.
   final List<String> instanceTags;
-
   /// URI of a NCC Hub. NCC_HUB routes only.
   final String nccHubUri;
-
   /// URI of a NCC Spoke. NCC_HUB routes only.
   final String nccSpokeUri;
-
   /// URI of a Compute Engine network. NETWORK routes only.
   final String networkUri;
-
   /// Next hop of the route.
   final String nextHop;
-
   /// Type of next hop.
   final String nextHopType;
-
   /// Priority of the route.
   final int priority;
-
   /// Protocols of the route. Policy based routes only.
   final List<String> protocols;
-
   /// Indicates where route is applicable.
   final String routeScope;
-
   /// Type of route.
   final String routeType;
-
   /// Source IP address range of the route. Policy based routes only.
   final String srcIpRange;
-
   /// Source port ranges of the route. Policy based routes only.
   final List<String> srcPortRanges;
-
   /// URI of a route. Dynamic, peering static and peering dynamic routes do not have an URI. Advertised route from Google Cloud VPC to on-premises network also does not have an URI.
   final String uri;
 
@@ -87,24 +73,24 @@ class RouteInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['destIpRange'] = destIpRange;
-    map['destPortRanges'] = destPortRanges;
-    map['displayName'] = displayName;
-    map['instanceTags'] = instanceTags;
-    map['nccHubUri'] = nccHubUri;
-    map['nccSpokeUri'] = nccSpokeUri;
-    map['networkUri'] = networkUri;
-    map['nextHop'] = nextHop;
-    map['nextHopType'] = nextHopType;
-    map['priority'] = priority;
-    map['protocols'] = protocols;
-    map['routeScope'] = routeScope;
-    map['routeType'] = routeType;
-    map['srcIpRange'] = srcIpRange;
-    map['srcPortRanges'] = srcPortRanges;
-    map['uri'] = uri;
-    return map;
+    return <String, dynamic>{
+      'destIpRange': destIpRange,
+      'destPortRanges': destPortRanges,
+      'displayName': displayName,
+      'instanceTags': instanceTags,
+      'nccHubUri': nccHubUri,
+      'nccSpokeUri': nccSpokeUri,
+      'networkUri': networkUri,
+      'nextHop': nextHop,
+      'nextHopType': nextHopType,
+      'priority': priority,
+      'protocols': protocols,
+      'routeScope': routeScope,
+      'routeType': routeType,
+      'srcIpRange': srcIpRange,
+      'srcPortRanges': srcPortRanges,
+      'uri': uri,
+    };
   }
 
   factory RouteInfoResponse.fromMap(Map<String, dynamic> map) {
@@ -128,3 +114,4 @@ class RouteInfoResponse {
     );
   }
 }
+

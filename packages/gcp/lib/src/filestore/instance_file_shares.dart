@@ -7,14 +7,11 @@ class InstanceFileShares {
   /// File share capacity in GiB. This must be at least 1024 GiB
   /// for the standard tier, or 2560 GiB for the premium tier.
   final int capacityGb;
-
   /// The name of the fileshare (16 characters or less)
   final String name;
-
   /// Nfs Export Options. There is a limit of 10 export options per file share.
   /// Structure is documented below.
   final List<InstanceFileSharesNfsExportOption>? nfsExportOptions;
-
   /// The resource name of the backup, in the format
   /// projects/{projectId}/locations/{locationId}/backups/{backupId},
   /// that this file share has been restored from.
@@ -33,34 +30,21 @@ class InstanceFileShares {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['capacityGb'] = capacityGb;
-    map['name'] = name;
-    final nfsExportOptionsValue = nfsExportOptions;
-    if (nfsExportOptionsValue != null) {
-      map['nfsExportOptions'] = pulumi.Input.encodeList<
-              InstanceFileSharesNfsExportOption, Map<String, dynamic>>(
-          nfsExportOptionsValue, (value) => value.toMap());
-    }
-    final sourceBackupValue = sourceBackup;
-    if (sourceBackupValue != null) {
-      map['sourceBackup'] = sourceBackupValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'capacityGb': capacityGb,
+      'name': name,
+      'nfsExportOptions': ?nfsExportOptions == null ? null : pulumi.Input.encodeList<InstanceFileSharesNfsExportOption, Map<String, dynamic>>(nfsExportOptions!, (value) => value.toMap()),
+      'sourceBackup': ?sourceBackup,
+    };
   }
 
   factory InstanceFileShares.fromMap(Map<String, dynamic> map) {
     return InstanceFileShares(
       capacityGb: map['capacityGb'] as int,
       name: map['name'] as String,
-      nfsExportOptions: map['nfsExportOptions'] == null
-          ? null
-          : pulumi.Input.decodeList<InstanceFileSharesNfsExportOption>(
-              map['nfsExportOptions'],
-              (value) => InstanceFileSharesNfsExportOption.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      sourceBackup:
-          map['sourceBackup'] == null ? null : map['sourceBackup'] as String,
+      nfsExportOptions: map['nfsExportOptions'] == null ? null : pulumi.Input.decodeList<InstanceFileSharesNfsExportOption>(map['nfsExportOptions'], (value) => InstanceFileSharesNfsExportOption.fromMap((value as Map).cast<String, dynamic>())),
+      sourceBackup: map['sourceBackup'] == null ? null : map['sourceBackup'] as String,
     );
   }
 }
+

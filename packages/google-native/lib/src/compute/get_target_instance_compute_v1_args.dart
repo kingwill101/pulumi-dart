@@ -19,19 +19,17 @@ class GetTargetInstanceComputeV1Args {
     String? project,
     required String targetInstance,
     required String zone,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        targetInstance = pulumi.Input.asInput<String>(targetInstance),
-        zone = pulumi.Input.asInput<String>(zone);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      targetInstance = pulumi.Input.asInput<String>(targetInstance),
+      zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['targetInstance'] = targetInstance;
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'targetInstance': targetInstance,
+      'zone': zone,
+    };
   }
 
   factory GetTargetInstanceComputeV1Args.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetTargetInstanceComputeV1Args {
     );
   }
 }
+

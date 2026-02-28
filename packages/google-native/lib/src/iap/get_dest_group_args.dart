@@ -19,19 +19,17 @@ class GetDestGroupArgs {
     required String destGroupId,
     required String location,
     String? project,
-  })  : destGroupId = pulumi.Input.asInput<String>(destGroupId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      destGroupId = pulumi.Input.asInput<String>(destGroupId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['destGroupId'] = destGroupId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'destGroupId': destGroupId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetDestGroupArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetDestGroupArgs {
     );
   }
 }
+

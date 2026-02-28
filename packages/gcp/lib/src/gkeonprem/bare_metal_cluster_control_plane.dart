@@ -11,11 +11,9 @@ class BareMetalClusterControlPlane {
   /// https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
   /// Structure is documented below.
   final List<BareMetalClusterControlPlaneApiServerArg>? apiServerArgs;
-
   /// Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
   /// Structure is documented below.
-  final BareMetalClusterControlPlaneControlPlaneNodePoolConfig
-      controlPlaneNodePoolConfig;
+  final BareMetalClusterControlPlaneControlPlaneNodePoolConfig controlPlaneNodePoolConfig;
 
   /// Creates a new [BareMetalClusterControlPlane].
   /// [apiServerArgs] Customizes the default API server args. Only a subset of
@@ -26,29 +24,17 @@ class BareMetalClusterControlPlane {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final apiServerArgsValue = apiServerArgs;
-    if (apiServerArgsValue != null) {
-      map['apiServerArgs'] = pulumi.Input.encodeList<
-          BareMetalClusterControlPlaneApiServerArg,
-          Map<String, dynamic>>(apiServerArgsValue, (value) => value.toMap());
-    }
-    map['controlPlaneNodePoolConfig'] = controlPlaneNodePoolConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'apiServerArgs': ?apiServerArgs == null ? null : pulumi.Input.encodeList<BareMetalClusterControlPlaneApiServerArg, Map<String, dynamic>>(apiServerArgs!, (value) => value.toMap()),
+      'controlPlaneNodePoolConfig': controlPlaneNodePoolConfig.toMap(),
+    };
   }
 
   factory BareMetalClusterControlPlane.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterControlPlane(
-      apiServerArgs: map['apiServerArgs'] == null
-          ? null
-          : pulumi.Input.decodeList<BareMetalClusterControlPlaneApiServerArg>(
-              map['apiServerArgs'],
-              (value) => BareMetalClusterControlPlaneApiServerArg.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      controlPlaneNodePoolConfig:
-          BareMetalClusterControlPlaneControlPlaneNodePoolConfig.fromMap(
-              (map['controlPlaneNodePoolConfig'] as Map)
-                  .cast<String, dynamic>()),
+      apiServerArgs: map['apiServerArgs'] == null ? null : pulumi.Input.decodeList<BareMetalClusterControlPlaneApiServerArg>(map['apiServerArgs'], (value) => BareMetalClusterControlPlaneApiServerArg.fromMap((value as Map).cast<String, dynamic>())),
+      controlPlaneNodePoolConfig: BareMetalClusterControlPlaneControlPlaneNodePoolConfig.fromMap((map['controlPlaneNodePoolConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

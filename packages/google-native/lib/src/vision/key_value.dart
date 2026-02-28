@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A product label represented as a key-value pair.
 class KeyValue {
   /// The key of the label attached to the product. Cannot be empty and cannot exceed 128 bytes.
   final String? key;
-
   /// The value of the label attached to the product. Cannot be empty and cannot exceed 128 bytes.
   final String? value;
 
@@ -17,16 +17,10 @@ class KeyValue {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final keyValue = key;
-    if (keyValue != null) {
-      map['key'] = keyValue;
-    }
-    final valueValue = value;
-    if (valueValue != null) {
-      map['value'] = valueValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'key': ?key,
+      'value': ?value,
+    };
   }
 
   factory KeyValue.fromMap(Map<String, dynamic> map) {
@@ -36,3 +30,4 @@ class KeyValue {
     );
   }
 }
+

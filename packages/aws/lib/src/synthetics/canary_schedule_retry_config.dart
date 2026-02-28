@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CanaryScheduleRetryConfig {
   /// Maximum number of retries. The value must be less than or equal to `2`. If `max_retries` is `2`, `run_config.timeout_in_seconds` should be less than 600 seconds. Defaults to `0`.
   final int maxRetries;
@@ -11,9 +12,9 @@ class CanaryScheduleRetryConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maxRetries'] = maxRetries;
-    return map;
+    return <String, dynamic>{
+      'maxRetries': maxRetries,
+    };
   }
 
   factory CanaryScheduleRetryConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class CanaryScheduleRetryConfig {
     );
   }
 }
+

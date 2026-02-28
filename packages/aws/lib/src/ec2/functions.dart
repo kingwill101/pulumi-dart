@@ -4183,8 +4183,7 @@ Future<GetLocalGatewayVirtualInterfaceResult> getLocalGatewayVirtualInterface(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ec2_get_local_gateway_virtual_interface_group_get_local_gateway_virtual_interface_group_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetLocalGatewayVirtualInterfaceGroupResult>
-    getLocalGatewayVirtualInterfaceGroup(
+Future<GetLocalGatewayVirtualInterfaceGroupResult> getLocalGatewayVirtualInterfaceGroup(
   GetLocalGatewayVirtualInterfaceGroupArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -4280,8 +4279,7 @@ Future<GetLocalGatewayVirtualInterfaceGroupResult>
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ec2_get_local_gateway_virtual_interface_groups_get_local_gateway_virtual_interface_groups_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetLocalGatewayVirtualInterfaceGroupsResult>
-    getLocalGatewayVirtualInterfaceGroups(
+Future<GetLocalGatewayVirtualInterfaceGroupsResult> getLocalGatewayVirtualInterfaceGroups(
   GetLocalGatewayVirtualInterfaceGroupsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

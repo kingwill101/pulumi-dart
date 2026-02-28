@@ -4,8 +4,7 @@ import 'web_acl_rule_group_association_rule_group_reference_rule_action_override
 
 class WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCaptcha {
   /// Custom handling for CAPTCHA requests. See below.
-  final WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCaptchaCustomRequestHandling?
-      customRequestHandling;
+  final WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCaptchaCustomRequestHandling? customRequestHandling;
 
   /// Creates a new [WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCaptcha].
   /// [customRequestHandling] Custom handling for CAPTCHA requests. See below.
@@ -14,22 +13,15 @@ class WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseC
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final customRequestHandlingValue = customRequestHandling;
-    if (customRequestHandlingValue != null) {
-      map['customRequestHandling'] = customRequestHandlingValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'customRequestHandling': ?customRequestHandling == null ? null : customRequestHandling!.toMap(),
+    };
   }
 
-  factory WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCaptcha.fromMap(
-      Map<String, dynamic> map) {
+  factory WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCaptcha.fromMap(Map<String, dynamic> map) {
     return WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCaptcha(
-      customRequestHandling: map['customRequestHandling'] == null
-          ? null
-          : WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCaptchaCustomRequestHandling
-              .fromMap((map['customRequestHandling'] as Map)
-                  .cast<String, dynamic>()),
+      customRequestHandling: map['customRequestHandling'] == null ? null : WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCaptchaCustomRequestHandling.fromMap((map['customRequestHandling'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

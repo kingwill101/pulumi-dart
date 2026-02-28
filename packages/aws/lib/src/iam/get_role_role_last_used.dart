@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRoleRoleLastUsed {
   /// The date and time, in RFC 3339 format, that the role was last used.
   final String lastUsedDate;
-
   /// The name of the AWS Region in which the role was last used.
   final String region;
 
@@ -16,10 +16,10 @@ class GetRoleRoleLastUsed {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['lastUsedDate'] = lastUsedDate;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'lastUsedDate': lastUsedDate,
+      'region': region,
+    };
   }
 
   factory GetRoleRoleLastUsed.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetRoleRoleLastUsed {
     );
   }
 }
+

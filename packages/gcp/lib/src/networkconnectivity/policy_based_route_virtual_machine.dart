@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PolicyBasedRouteVirtualMachine {
   /// A list of VM instance tags that this policy-based route applies to. VM instances that have ANY of tags specified here will install this PBR.
   final List<String> tags;
@@ -11,9 +12,9 @@ class PolicyBasedRouteVirtualMachine {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'tags': tags,
+    };
   }
 
   factory PolicyBasedRouteVirtualMachine.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class PolicyBasedRouteVirtualMachine {
     );
   }
 }
+

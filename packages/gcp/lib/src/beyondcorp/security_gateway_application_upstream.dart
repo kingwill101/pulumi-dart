@@ -9,15 +9,12 @@ class SecurityGatewayApplicationUpstream {
   /// Optional. Routing policy information.
   /// Structure is documented below.
   final SecurityGatewayApplicationUpstreamEgressPolicy? egressPolicy;
-
   /// List of the external endpoints to forward traffic to.
   /// Structure is documented below.
   final SecurityGatewayApplicationUpstreamExternal? external;
-
   /// Network to forward traffic to.
   /// Structure is documented below.
   final SecurityGatewayApplicationUpstreamNetwork? network;
-
   /// Shared proxy configuration for all apps.
   /// Structure is documented below.
   final SecurityGatewayApplicationUpstreamProxyProtocol? proxyProtocol;
@@ -35,44 +32,21 @@ class SecurityGatewayApplicationUpstream {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final egressPolicyValue = egressPolicy;
-    if (egressPolicyValue != null) {
-      map['egressPolicy'] = egressPolicyValue.toMap();
-    }
-    final externalValue = external;
-    if (externalValue != null) {
-      map['external'] = externalValue.toMap();
-    }
-    final networkValue = network;
-    if (networkValue != null) {
-      map['network'] = networkValue.toMap();
-    }
-    final proxyProtocolValue = proxyProtocol;
-    if (proxyProtocolValue != null) {
-      map['proxyProtocol'] = proxyProtocolValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'egressPolicy': ?egressPolicy == null ? null : egressPolicy!.toMap(),
+      'external': ?external == null ? null : external!.toMap(),
+      'network': ?network == null ? null : network!.toMap(),
+      'proxyProtocol': ?proxyProtocol == null ? null : proxyProtocol!.toMap(),
+    };
   }
 
   factory SecurityGatewayApplicationUpstream.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayApplicationUpstream(
-      egressPolicy: map['egressPolicy'] == null
-          ? null
-          : SecurityGatewayApplicationUpstreamEgressPolicy.fromMap(
-              (map['egressPolicy'] as Map).cast<String, dynamic>()),
-      external: map['external'] == null
-          ? null
-          : SecurityGatewayApplicationUpstreamExternal.fromMap(
-              (map['external'] as Map).cast<String, dynamic>()),
-      network: map['network'] == null
-          ? null
-          : SecurityGatewayApplicationUpstreamNetwork.fromMap(
-              (map['network'] as Map).cast<String, dynamic>()),
-      proxyProtocol: map['proxyProtocol'] == null
-          ? null
-          : SecurityGatewayApplicationUpstreamProxyProtocol.fromMap(
-              (map['proxyProtocol'] as Map).cast<String, dynamic>()),
+      egressPolicy: map['egressPolicy'] == null ? null : SecurityGatewayApplicationUpstreamEgressPolicy.fromMap((map['egressPolicy'] as Map).cast<String, dynamic>()),
+      external: map['external'] == null ? null : SecurityGatewayApplicationUpstreamExternal.fromMap((map['external'] as Map).cast<String, dynamic>()),
+      network: map['network'] == null ? null : SecurityGatewayApplicationUpstreamNetwork.fromMap((map['network'] as Map).cast<String, dynamic>()),
+      proxyProtocol: map['proxyProtocol'] == null ? null : SecurityGatewayApplicationUpstreamProxyProtocol.fromMap((map['proxyProtocol'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

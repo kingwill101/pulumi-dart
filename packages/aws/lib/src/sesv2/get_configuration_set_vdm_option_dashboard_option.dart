@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetConfigurationSetVdmOptionDashboardOption {
   /// Specifies the status of your VDM engagement metrics collection.
   final String engagementMetrics;
@@ -11,15 +12,15 @@ class GetConfigurationSetVdmOptionDashboardOption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['engagementMetrics'] = engagementMetrics;
-    return map;
+    return <String, dynamic>{
+      'engagementMetrics': engagementMetrics,
+    };
   }
 
-  factory GetConfigurationSetVdmOptionDashboardOption.fromMap(
-      Map<String, dynamic> map) {
+  factory GetConfigurationSetVdmOptionDashboardOption.fromMap(Map<String, dynamic> map) {
     return GetConfigurationSetVdmOptionDashboardOption(
       engagementMetrics: map['engagementMetrics'] as String,
     );
   }
 }
+

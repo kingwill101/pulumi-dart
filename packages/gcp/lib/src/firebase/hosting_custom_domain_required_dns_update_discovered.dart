@@ -6,7 +6,6 @@ import 'hosting_custom_domain_required_dns_update_discovered_record.dart';
 class HostingCustomDomainRequiredDnsUpdateDiscovered {
   /// The domain name the record pertains to, e.g. `foo.bar.com.`.
   final String? domainName;
-
   /// Records on the domain
   /// Structure is documented below.
   final List<HostingCustomDomainRequiredDnsUpdateDiscoveredRecord>? records;
@@ -20,33 +19,17 @@ class HostingCustomDomainRequiredDnsUpdateDiscovered {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final domainNameValue = domainName;
-    if (domainNameValue != null) {
-      map['domainName'] = domainNameValue;
-    }
-    final recordsValue = records;
-    if (recordsValue != null) {
-      map['records'] = pulumi.Input.encodeList<
-          HostingCustomDomainRequiredDnsUpdateDiscoveredRecord,
-          Map<String, dynamic>>(recordsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'domainName': ?domainName,
+      'records': ?records == null ? null : pulumi.Input.encodeList<HostingCustomDomainRequiredDnsUpdateDiscoveredRecord, Map<String, dynamic>>(records!, (value) => value.toMap()),
+    };
   }
 
-  factory HostingCustomDomainRequiredDnsUpdateDiscovered.fromMap(
-      Map<String, dynamic> map) {
+  factory HostingCustomDomainRequiredDnsUpdateDiscovered.fromMap(Map<String, dynamic> map) {
     return HostingCustomDomainRequiredDnsUpdateDiscovered(
-      domainName:
-          map['domainName'] == null ? null : map['domainName'] as String,
-      records: map['records'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  HostingCustomDomainRequiredDnsUpdateDiscoveredRecord>(
-              map['records'],
-              (value) =>
-                  HostingCustomDomainRequiredDnsUpdateDiscoveredRecord.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      domainName: map['domainName'] == null ? null : map['domainName'] as String,
+      records: map['records'] == null ? null : pulumi.Input.decodeList<HostingCustomDomainRequiredDnsUpdateDiscoveredRecord>(map['records'], (value) => HostingCustomDomainRequiredDnsUpdateDiscoveredRecord.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

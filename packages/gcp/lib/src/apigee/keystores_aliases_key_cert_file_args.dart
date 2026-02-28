@@ -10,25 +10,19 @@ import 'keystores_aliases_key_cert_file_timeouts.dart';
 class KeystoresAliasesKeyCertFileArgs {
   /// Alias Name
   final pulumi.Input<String> alias;
-
   /// Cert content
   ///
   ///
   /// - - -
   final pulumi.Input<String> cert;
-
   /// Environment associated with the alias
   final pulumi.Input<String> environment;
-
   /// Private Key content, omit if uploading to truststore
   final pulumi.Input<String>? key;
-
   /// Keystore Name
   final pulumi.Input<String> keystore;
-
   /// Organization ID associated with the alias, without organization/ prefix
   final pulumi.Input<String> orgId;
-
   /// Password for the Private Key if it's encrypted
   final pulumi.Input<String>? password;
   final pulumi.Input<KeystoresAliasesKeyCertFileTimeouts>? timeouts;
@@ -51,39 +45,27 @@ class KeystoresAliasesKeyCertFileArgs {
     required String orgId,
     String? password,
     KeystoresAliasesKeyCertFileTimeouts? timeouts,
-  })  : alias = pulumi.Input.asInput<String>(alias),
-        cert = pulumi.Input.asInput<String>(cert),
-        environment = pulumi.Input.asInput<String>(environment),
-        key = pulumi.Input.asOptionalInput<String>(key),
-        keystore = pulumi.Input.asInput<String>(keystore),
-        orgId = pulumi.Input.asInput<String>(orgId),
-        password = pulumi.Input.asOptionalInput<String>(password),
-        timeouts =
-            pulumi.Input.asOptionalInput<KeystoresAliasesKeyCertFileTimeouts>(
-                timeouts);
+  }) :
+      alias = pulumi.Input.asInput<String>(alias),
+      cert = pulumi.Input.asInput<String>(cert),
+      environment = pulumi.Input.asInput<String>(environment),
+      key = pulumi.Input.asOptionalInput<String>(key),
+      keystore = pulumi.Input.asInput<String>(keystore),
+      orgId = pulumi.Input.asInput<String>(orgId),
+      password = pulumi.Input.asOptionalInput<String>(password),
+      timeouts = pulumi.Input.asOptionalInput<KeystoresAliasesKeyCertFileTimeouts>(timeouts);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['alias'] = alias;
-    map['cert'] = cert;
-    map['environment'] = environment;
-    final keyValue = key;
-    if (keyValue != null) {
-      map['key'] = keyValue;
-    }
-    map['keystore'] = keystore;
-    map['orgId'] = orgId;
-    final passwordValue = password;
-    if (passwordValue != null) {
-      map['password'] = passwordValue;
-    }
-    final timeoutsValue = timeouts;
-    if (timeoutsValue != null) {
-      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
-          KeystoresAliasesKeyCertFileTimeouts,
-          Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'alias': alias,
+      'cert': cert,
+      'environment': environment,
+      'key': ?key,
+      'keystore': keystore,
+      'orgId': orgId,
+      'password': ?password,
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<KeystoresAliasesKeyCertFileTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+    };
   }
 
   factory KeystoresAliasesKeyCertFileArgs.fromMap(Map<String, dynamic> map) {
@@ -95,10 +77,8 @@ class KeystoresAliasesKeyCertFileArgs {
       keystore: map['keystore'] as String,
       orgId: map['orgId'] as String,
       password: map['password'] == null ? null : map['password'] as String,
-      timeouts: map['timeouts'] == null
-          ? null
-          : KeystoresAliasesKeyCertFileTimeouts.fromMap(
-              (map['timeouts'] as Map).cast<String, dynamic>()),
+      timeouts: map['timeouts'] == null ? null : KeystoresAliasesKeyCertFileTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

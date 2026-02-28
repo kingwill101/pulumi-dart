@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcm {
   /// One or more ACM ARNs.
   final List<String> certificateAuthorityArns;
@@ -11,16 +12,15 @@ class VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcm {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['certificateAuthorityArns'] = certificateAuthorityArns;
-    return map;
+    return <String, dynamic>{
+      'certificateAuthorityArns': certificateAuthorityArns,
+    };
   }
 
-  factory VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcm.fromMap(
-      Map<String, dynamic> map) {
+  factory VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcm.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcm(
-      certificateAuthorityArns:
-          (map['certificateAuthorityArns'] as List).cast<String>(),
+      certificateAuthorityArns: (map['certificateAuthorityArns'] as List).cast<String>(),
     );
   }
 }
+

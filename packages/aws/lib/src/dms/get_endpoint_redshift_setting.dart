@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetEndpointRedshiftSetting {
   final String bucketFolder;
   final String bucketName;
@@ -22,13 +23,13 @@ class GetEndpointRedshiftSetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucketFolder'] = bucketFolder;
-    map['bucketName'] = bucketName;
-    map['encryptionMode'] = encryptionMode;
-    map['serverSideEncryptionKmsKeyId'] = serverSideEncryptionKmsKeyId;
-    map['serviceAccessRoleArn'] = serviceAccessRoleArn;
-    return map;
+    return <String, dynamic>{
+      'bucketFolder': bucketFolder,
+      'bucketName': bucketName,
+      'encryptionMode': encryptionMode,
+      'serverSideEncryptionKmsKeyId': serverSideEncryptionKmsKeyId,
+      'serviceAccessRoleArn': serviceAccessRoleArn,
+    };
   }
 
   factory GetEndpointRedshiftSetting.fromMap(Map<String, dynamic> map) {
@@ -36,9 +37,9 @@ class GetEndpointRedshiftSetting {
       bucketFolder: map['bucketFolder'] as String,
       bucketName: map['bucketName'] as String,
       encryptionMode: map['encryptionMode'] as String,
-      serverSideEncryptionKmsKeyId:
-          map['serverSideEncryptionKmsKeyId'] as String,
+      serverSideEncryptionKmsKeyId: map['serverSideEncryptionKmsKeyId'] as String,
       serviceAccessRoleArn: map['serviceAccessRoleArn'] as String,
     );
   }
 }
+

@@ -4,18 +4,13 @@ import 'agent_data_source_data_source_configuration_web_configuration_crawler_co
 
 class AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfiguration {
   /// Configuration of crawl limits for the web URLs. See `crawler_limits` block for details.
-  final AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfigurationCrawlerLimits?
-      crawlerLimits;
-
+  final AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfigurationCrawlerLimits? crawlerLimits;
   /// List of one or more exclusion regular expression patterns to exclude certain object types that adhere to the pattern.
   final List<String>? exclusionFilters;
-
   /// List of one or more inclusion regular expression patterns to include certain object types that adhere to the pattern.
   final List<String>? inclusionFilters;
-
   /// Scope of what is crawled for your URLs.
   final String? scope;
-
   /// String used for identifying the crawler or a bot when it accesses a web server. Default value is `bedrockbot_UUID`.
   final String? userAgent;
 
@@ -34,45 +29,23 @@ class AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfiguration
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final crawlerLimitsValue = crawlerLimits;
-    if (crawlerLimitsValue != null) {
-      map['crawlerLimits'] = crawlerLimitsValue.toMap();
-    }
-    final exclusionFiltersValue = exclusionFilters;
-    if (exclusionFiltersValue != null) {
-      map['exclusionFilters'] = exclusionFiltersValue;
-    }
-    final inclusionFiltersValue = inclusionFilters;
-    if (inclusionFiltersValue != null) {
-      map['inclusionFilters'] = inclusionFiltersValue;
-    }
-    final scopeValue = scope;
-    if (scopeValue != null) {
-      map['scope'] = scopeValue;
-    }
-    final userAgentValue = userAgent;
-    if (userAgentValue != null) {
-      map['userAgent'] = userAgentValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'crawlerLimits': ?crawlerLimits == null ? null : crawlerLimits!.toMap(),
+      'exclusionFilters': ?exclusionFilters,
+      'inclusionFilters': ?inclusionFilters,
+      'scope': ?scope,
+      'userAgent': ?userAgent,
+    };
   }
 
-  factory AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfiguration(
-      crawlerLimits: map['crawlerLimits'] == null
-          ? null
-          : AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfigurationCrawlerLimits
-              .fromMap((map['crawlerLimits'] as Map).cast<String, dynamic>()),
-      exclusionFilters: map['exclusionFilters'] == null
-          ? null
-          : (map['exclusionFilters'] as List).cast<String>(),
-      inclusionFilters: map['inclusionFilters'] == null
-          ? null
-          : (map['inclusionFilters'] as List).cast<String>(),
+      crawlerLimits: map['crawlerLimits'] == null ? null : AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfigurationCrawlerLimits.fromMap((map['crawlerLimits'] as Map).cast<String, dynamic>()),
+      exclusionFilters: map['exclusionFilters'] == null ? null : (map['exclusionFilters'] as List).cast<String>(),
+      inclusionFilters: map['inclusionFilters'] == null ? null : (map['inclusionFilters'] as List).cast<String>(),
       scope: map['scope'] == null ? null : map['scope'] as String,
       userAgent: map['userAgent'] == null ? null : map['userAgent'] as String,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class HookPushOption {
   /// Trigger hook for matching branches only.
   /// Specified as glob pattern. If empty or *, events for all branches are
@@ -14,18 +15,15 @@ class HookPushOption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final branchFilterValue = branchFilter;
-    if (branchFilterValue != null) {
-      map['branchFilter'] = branchFilterValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'branchFilter': ?branchFilter,
+    };
   }
 
   factory HookPushOption.fromMap(Map<String, dynamic> map) {
     return HookPushOption(
-      branchFilter:
-          map['branchFilter'] == null ? null : map['branchFilter'] as String,
+      branchFilter: map['branchFilter'] == null ? null : map['branchFilter'] as String,
     );
   }
 }
+

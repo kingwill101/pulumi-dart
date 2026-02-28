@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// IdentityServiceConfig is configuration for Identity Service which allows customers to use external identity providers with the K8S API
 class IdentityServiceConfig {
   /// Whether to enable the Identity Service component
@@ -12,12 +13,9 @@ class IdentityServiceConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory IdentityServiceConfig.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class IdentityServiceConfig {
     );
   }
 }
+

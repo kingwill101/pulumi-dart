@@ -13,21 +13,15 @@ class DomainOffPeakWindowOptionsOffPeakWindow {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final windowStartTimeValue = windowStartTime;
-    if (windowStartTimeValue != null) {
-      map['windowStartTime'] = windowStartTimeValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'windowStartTime': ?windowStartTime == null ? null : windowStartTime!.toMap(),
+    };
   }
 
-  factory DomainOffPeakWindowOptionsOffPeakWindow.fromMap(
-      Map<String, dynamic> map) {
+  factory DomainOffPeakWindowOptionsOffPeakWindow.fromMap(Map<String, dynamic> map) {
     return DomainOffPeakWindowOptionsOffPeakWindow(
-      windowStartTime: map['windowStartTime'] == null
-          ? null
-          : DomainOffPeakWindowOptionsOffPeakWindowWindowStartTime.fromMap(
-              (map['windowStartTime'] as Map).cast<String, dynamic>()),
+      windowStartTime: map['windowStartTime'] == null ? null : DomainOffPeakWindowOptionsOffPeakWindowWindowStartTime.fromMap((map['windowStartTime'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

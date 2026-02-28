@@ -14,16 +14,15 @@ class LoggingConfigResponseContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['componentConfig'] = componentConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'componentConfig': componentConfig.toMap(),
+    };
   }
 
-  factory LoggingConfigResponseContainerV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory LoggingConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return LoggingConfigResponseContainerV1beta1(
-      componentConfig: LoggingComponentConfigResponseContainerV1beta1.fromMap(
-          (map['componentConfig'] as Map).cast<String, dynamic>()),
+      componentConfig: LoggingComponentConfigResponseContainerV1beta1.fromMap((map['componentConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

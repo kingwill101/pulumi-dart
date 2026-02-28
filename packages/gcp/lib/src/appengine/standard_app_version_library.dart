@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class StandardAppVersionLibrary {
   /// Name of the library. Example "django".
   final String? name;
-
   /// Version of the library to select, or "latest".
   final String? version;
 
@@ -16,16 +16,10 @@ class StandardAppVersionLibrary {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final versionValue = version;
-    if (versionValue != null) {
-      map['version'] = versionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+      'version': ?version,
+    };
   }
 
   factory StandardAppVersionLibrary.fromMap(Map<String, dynamic> map) {
@@ -35,3 +29,4 @@ class StandardAppVersionLibrary {
     );
   }
 }
+

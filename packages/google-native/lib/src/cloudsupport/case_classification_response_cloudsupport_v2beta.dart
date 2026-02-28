@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A classification object with a product type and value.
 class CaseClassificationResponseCloudsupportV2beta {
   /// A display name for the classification. The display name is not static and can change. To uniquely and consistently identify classifications, use the `CaseClassification.id` field.
@@ -12,15 +13,15 @@ class CaseClassificationResponseCloudsupportV2beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['displayName'] = displayName;
-    return map;
+    return <String, dynamic>{
+      'displayName': displayName,
+    };
   }
 
-  factory CaseClassificationResponseCloudsupportV2beta.fromMap(
-      Map<String, dynamic> map) {
+  factory CaseClassificationResponseCloudsupportV2beta.fromMap(Map<String, dynamic> map) {
     return CaseClassificationResponseCloudsupportV2beta(
       displayName: map['displayName'] as String,
     );
   }
 }
+

@@ -13,12 +13,13 @@ class GetLienCloudresourcemanagerV3Args {
   /// [lienId] Required.
   GetLienCloudresourcemanagerV3Args({
     required String lienId,
-  }) : lienId = pulumi.Input.asInput<String>(lienId);
+  }) :
+      lienId = pulumi.Input.asInput<String>(lienId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['lienId'] = lienId;
-    return map;
+    return <String, dynamic>{
+      'lienId': lienId,
+    };
   }
 
   factory GetLienCloudresourcemanagerV3Args.fromMap(Map<String, dynamic> map) {
@@ -27,3 +28,4 @@ class GetLienCloudresourcemanagerV3Args {
     );
   }
 }
+

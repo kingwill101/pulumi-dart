@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getApplication.
 class GetApplicationResult {
   /// ARN of the Application.
   final String arn;
-
   /// Description of the Application.
   final String description;
   final String id;
@@ -26,13 +26,13 @@ class GetApplicationResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['description'] = description;
-    map['id'] = id;
-    map['name'] = name;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'description': description,
+      'id': id,
+      'name': name,
+      'region': region,
+    };
   }
 
   factory GetApplicationResult.fromMap(Map<String, dynamic> map) {
@@ -45,3 +45,4 @@ class GetApplicationResult {
     );
   }
 }
+

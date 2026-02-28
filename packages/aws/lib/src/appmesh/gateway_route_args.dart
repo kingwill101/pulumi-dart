@@ -10,22 +10,16 @@ import 'gateway_route_spec.dart';
 class GatewayRouteArgs {
   /// Name of the service mesh in which to create the gateway route. Must be between 1 and 255 characters in length.
   final pulumi.Input<String> meshName;
-
   /// AWS account ID of the service mesh's owner. Defaults to the account ID the AWS provider is currently connected to.
   final pulumi.Input<String>? meshOwner;
-
   /// Name to use for the gateway route. Must be between 1 and 255 characters in length.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Gateway route specification to apply.
   final pulumi.Input<GatewayRouteSpec> spec;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Name of the virtual gateway to associate the gateway route with. Must be between 1 and 255 characters in length.
   final pulumi.Input<String> virtualGatewayName;
 
@@ -45,38 +39,25 @@ class GatewayRouteArgs {
     required GatewayRouteSpec spec,
     Map<String, String>? tags,
     required String virtualGatewayName,
-  })  : meshName = pulumi.Input.asInput<String>(meshName),
-        meshOwner = pulumi.Input.asOptionalInput<String>(meshOwner),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        spec = pulumi.Input.asInput<GatewayRouteSpec>(spec),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-        virtualGatewayName = pulumi.Input.asInput<String>(virtualGatewayName);
+  }) :
+      meshName = pulumi.Input.asInput<String>(meshName),
+      meshOwner = pulumi.Input.asOptionalInput<String>(meshOwner),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      spec = pulumi.Input.asInput<GatewayRouteSpec>(spec),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      virtualGatewayName = pulumi.Input.asInput<String>(virtualGatewayName);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['meshName'] = meshName;
-    final meshOwnerValue = meshOwner;
-    if (meshOwnerValue != null) {
-      map['meshOwner'] = meshOwnerValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['spec'] =
-        pulumi.Input.mapInputValue<GatewayRouteSpec, Map<String, dynamic>>(
-            spec, (value) => value.toMap());
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    map['virtualGatewayName'] = virtualGatewayName;
-    return map;
+    return <String, dynamic>{
+      'meshName': meshName,
+      'meshOwner': ?meshOwner,
+      'name': ?name,
+      'region': ?region,
+      'spec': pulumi.Input.mapInputValue<GatewayRouteSpec, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'tags': ?tags,
+      'virtualGatewayName': virtualGatewayName,
+    };
   }
 
   factory GatewayRouteArgs.fromMap(Map<String, dynamic> map) {
@@ -85,12 +66,10 @@ class GatewayRouteArgs {
       meshOwner: map['meshOwner'] == null ? null : map['meshOwner'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      spec: GatewayRouteSpec.fromMap(
-          (map['spec'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      spec: GatewayRouteSpec.fromMap((map['spec'] as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
       virtualGatewayName: map['virtualGatewayName'] as String,
     );
   }
 }
+

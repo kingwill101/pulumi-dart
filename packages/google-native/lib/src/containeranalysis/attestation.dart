@@ -13,20 +13,15 @@ class Attestation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final pgpSignedAttestationValue = pgpSignedAttestation;
-    if (pgpSignedAttestationValue != null) {
-      map['pgpSignedAttestation'] = pgpSignedAttestationValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'pgpSignedAttestation': ?pgpSignedAttestation == null ? null : pgpSignedAttestation!.toMap(),
+    };
   }
 
   factory Attestation.fromMap(Map<String, dynamic> map) {
     return Attestation(
-      pgpSignedAttestation: map['pgpSignedAttestation'] == null
-          ? null
-          : PgpSignedAttestation.fromMap(
-              (map['pgpSignedAttestation'] as Map).cast<String, dynamic>()),
+      pgpSignedAttestation: map['pgpSignedAttestation'] == null ? null : PgpSignedAttestation.fromMap((map['pgpSignedAttestation'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

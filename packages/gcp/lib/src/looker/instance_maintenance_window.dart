@@ -13,7 +13,6 @@ class InstanceMaintenanceWindow {
   /// - SUNDAY: Sunday
   /// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
   final String dayOfWeek;
-
   /// Required. Start time of the window in UTC time.
   /// Structure is documented below.
   final InstanceMaintenanceWindowStartTime startTime;
@@ -27,17 +26,17 @@ class InstanceMaintenanceWindow {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dayOfWeek'] = dayOfWeek;
-    map['startTime'] = startTime.toMap();
-    return map;
+    return <String, dynamic>{
+      'dayOfWeek': dayOfWeek,
+      'startTime': startTime.toMap(),
+    };
   }
 
   factory InstanceMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return InstanceMaintenanceWindow(
       dayOfWeek: map['dayOfWeek'] as String,
-      startTime: InstanceMaintenanceWindowStartTime.fromMap(
-          (map['startTime'] as Map).cast<String, dynamic>()),
+      startTime: InstanceMaintenanceWindowStartTime.fromMap((map['startTime'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

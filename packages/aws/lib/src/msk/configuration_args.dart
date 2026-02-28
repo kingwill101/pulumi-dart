@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfigurationArgs {
   /// Description of the configuration.
   final pulumi.Input<String>? description;
-
   /// List of Apache Kafka versions which can use this configuration.
   final pulumi.Input<List<String>>? kafkaVersions;
-
   /// Name of the configuration.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Contents of the server.properties file. Supported properties are documented in the [MSK Developer Guide](https://docs.aws.amazon.com/msk/latest/developerguide/msk-configuration-properties.html).
   final pulumi.Input<String> serverProperties;
 
@@ -34,45 +30,31 @@ class ConfigurationArgs {
     String? name,
     String? region,
     required String serverProperties,
-  })  : description = pulumi.Input.asOptionalInput<String>(description),
-        kafkaVersions =
-            pulumi.Input.asOptionalInput<List<String>>(kafkaVersions),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        serverProperties = pulumi.Input.asInput<String>(serverProperties);
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      kafkaVersions = pulumi.Input.asOptionalInput<List<String>>(kafkaVersions),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      serverProperties = pulumi.Input.asInput<String>(serverProperties);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final kafkaVersionsValue = kafkaVersions;
-    if (kafkaVersionsValue != null) {
-      map['kafkaVersions'] = kafkaVersionsValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['serverProperties'] = serverProperties;
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'kafkaVersions': ?kafkaVersions,
+      'name': ?name,
+      'region': ?region,
+      'serverProperties': serverProperties,
+    };
   }
 
   factory ConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationArgs(
-      description:
-          map['description'] == null ? null : map['description'] as String,
-      kafkaVersions: map['kafkaVersions'] == null
-          ? null
-          : (map['kafkaVersions'] as List).cast<String>(),
+      description: map['description'] == null ? null : map['description'] as String,
+      kafkaVersions: map['kafkaVersions'] == null ? null : (map['kafkaVersions'] as List).cast<String>(),
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       serverProperties: map['serverProperties'] as String,
     );
   }
 }
+

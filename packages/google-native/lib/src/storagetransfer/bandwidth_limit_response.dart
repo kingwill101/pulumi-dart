@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Specifies a bandwidth limit for an agent pool.
 class BandwidthLimitResponse {
   /// Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
@@ -12,9 +13,9 @@ class BandwidthLimitResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['limitMbps'] = limitMbps;
-    return map;
+    return <String, dynamic>{
+      'limitMbps': limitMbps,
+    };
   }
 
   factory BandwidthLimitResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class BandwidthLimitResponse {
     );
   }
 }
+

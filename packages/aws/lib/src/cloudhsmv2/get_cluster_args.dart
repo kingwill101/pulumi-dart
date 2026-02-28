@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterArgs {
   /// ID of Cloud HSM v2 cluster.
   final pulumi.Input<String> clusterId;
-
   /// State of the cluster to be found.
   final pulumi.Input<String>? clusterState;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -24,30 +22,25 @@ class GetClusterArgs {
     required String clusterId,
     String? clusterState,
     String? region,
-  })  : clusterId = pulumi.Input.asInput<String>(clusterId),
-        clusterState = pulumi.Input.asOptionalInput<String>(clusterState),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      clusterId = pulumi.Input.asInput<String>(clusterId),
+      clusterState = pulumi.Input.asOptionalInput<String>(clusterState),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clusterId'] = clusterId;
-    final clusterStateValue = clusterState;
-    if (clusterStateValue != null) {
-      map['clusterState'] = clusterStateValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'clusterId': clusterId,
+      'clusterState': ?clusterState,
+      'region': ?region,
+    };
   }
 
   factory GetClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterArgs(
       clusterId: map['clusterId'] as String,
-      clusterState:
-          map['clusterState'] == null ? null : map['clusterState'] as String,
+      clusterState: map['clusterState'] == null ? null : map['clusterState'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

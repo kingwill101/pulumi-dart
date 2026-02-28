@@ -7,7 +7,6 @@ class ClusterControlPlane {
   /// Local control plane configuration.
   /// Structure is documented below.
   final ClusterControlPlaneLocal? local;
-
   /// Remote control plane configuration.
   /// Structure is documented below.
   final ClusterControlPlaneRemote? remote;
@@ -21,28 +20,17 @@ class ClusterControlPlane {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final localValue = local;
-    if (localValue != null) {
-      map['local'] = localValue.toMap();
-    }
-    final remoteValue = remote;
-    if (remoteValue != null) {
-      map['remote'] = remoteValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'local': ?local == null ? null : local!.toMap(),
+      'remote': ?remote == null ? null : remote!.toMap(),
+    };
   }
 
   factory ClusterControlPlane.fromMap(Map<String, dynamic> map) {
     return ClusterControlPlane(
-      local: map['local'] == null
-          ? null
-          : ClusterControlPlaneLocal.fromMap(
-              (map['local'] as Map).cast<String, dynamic>()),
-      remote: map['remote'] == null
-          ? null
-          : ClusterControlPlaneRemote.fromMap(
-              (map['remote'] as Map).cast<String, dynamic>()),
+      local: map['local'] == null ? null : ClusterControlPlaneLocal.fromMap((map['local'] as Map).cast<String, dynamic>()),
+      remote: map['remote'] == null ? null : ClusterControlPlaneRemote.fromMap((map['remote'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

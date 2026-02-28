@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EnvelopeSignatureContaineranalysisV1beta1 {
   final String? keyid;
   final String? sig;
@@ -13,23 +14,17 @@ class EnvelopeSignatureContaineranalysisV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final keyidValue = keyid;
-    if (keyidValue != null) {
-      map['keyid'] = keyidValue;
-    }
-    final sigValue = sig;
-    if (sigValue != null) {
-      map['sig'] = sigValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'keyid': ?keyid,
+      'sig': ?sig,
+    };
   }
 
-  factory EnvelopeSignatureContaineranalysisV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory EnvelopeSignatureContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return EnvelopeSignatureContaineranalysisV1beta1(
       keyid: map['keyid'] == null ? null : map['keyid'] as String,
       sig: map['sig'] == null ? null : map['sig'] as String,
     );
   }
 }
+

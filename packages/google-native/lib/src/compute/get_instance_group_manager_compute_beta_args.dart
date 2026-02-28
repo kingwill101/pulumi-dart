@@ -19,24 +19,20 @@ class GetInstanceGroupManagerComputeBetaArgs {
     required String instanceGroupManager,
     String? project,
     required String zone,
-  })  : instanceGroupManager =
-            pulumi.Input.asInput<String>(instanceGroupManager),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        zone = pulumi.Input.asInput<String>(zone);
+  }) :
+      instanceGroupManager = pulumi.Input.asInput<String>(instanceGroupManager),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['instanceGroupManager'] = instanceGroupManager;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'instanceGroupManager': instanceGroupManager,
+      'project': ?project,
+      'zone': zone,
+    };
   }
 
-  factory GetInstanceGroupManagerComputeBetaArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetInstanceGroupManagerComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceGroupManagerComputeBetaArgs(
       instanceGroupManager: map['instanceGroupManager'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -44,3 +40,4 @@ class GetInstanceGroupManagerComputeBetaArgs {
     );
   }
 }
+

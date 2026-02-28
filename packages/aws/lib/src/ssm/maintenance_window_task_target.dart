@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MaintenanceWindowTaskTarget {
   final String key;
-
   /// The array of strings.
   final List<String> values;
 
@@ -15,10 +15,10 @@ class MaintenanceWindowTaskTarget {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    map['values'] = values;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'values': values,
+    };
   }
 
   factory MaintenanceWindowTaskTarget.fromMap(Map<String, dynamic> map) {
@@ -28,3 +28,4 @@ class MaintenanceWindowTaskTarget {
     );
   }
 }
+

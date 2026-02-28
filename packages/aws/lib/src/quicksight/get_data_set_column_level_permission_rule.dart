@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDataSetColumnLevelPermissionRule {
   final List<String> columnNames;
   final List<String> principals;
@@ -13,17 +14,17 @@ class GetDataSetColumnLevelPermissionRule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['columnNames'] = columnNames;
-    map['principals'] = principals;
-    return map;
+    return <String, dynamic>{
+      'columnNames': columnNames,
+      'principals': principals,
+    };
   }
 
-  factory GetDataSetColumnLevelPermissionRule.fromMap(
-      Map<String, dynamic> map) {
+  factory GetDataSetColumnLevelPermissionRule.fromMap(Map<String, dynamic> map) {
     return GetDataSetColumnLevelPermissionRule(
       columnNames: (map['columnNames'] as List).cast<String>(),
       principals: (map['principals'] as List).cast<String>(),
     );
   }
 }
+

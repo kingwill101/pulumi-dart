@@ -14,20 +14,15 @@ class RegistryCredential {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final publicKeyCertificateValue = publicKeyCertificate;
-    if (publicKeyCertificateValue != null) {
-      map['publicKeyCertificate'] = publicKeyCertificateValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'publicKeyCertificate': ?publicKeyCertificate == null ? null : publicKeyCertificate!.toMap(),
+    };
   }
 
   factory RegistryCredential.fromMap(Map<String, dynamic> map) {
     return RegistryCredential(
-      publicKeyCertificate: map['publicKeyCertificate'] == null
-          ? null
-          : PublicKeyCertificate.fromMap(
-              (map['publicKeyCertificate'] as Map).cast<String, dynamic>()),
+      publicKeyCertificate: map['publicKeyCertificate'] == null ? null : PublicKeyCertificate.fromMap((map['publicKeyCertificate'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

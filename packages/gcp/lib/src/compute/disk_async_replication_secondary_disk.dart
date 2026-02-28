@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DiskAsyncReplicationSecondaryDisk {
   /// The secondary disk.
   final String disk;
-
   /// Output-only. Status of replication on the secondary disk.
   ///
   /// - - -
@@ -18,13 +18,10 @@ class DiskAsyncReplicationSecondaryDisk {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['disk'] = disk;
-    final stateValue = state;
-    if (stateValue != null) {
-      map['state'] = stateValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'disk': disk,
+      'state': ?state,
+    };
   }
 
   factory DiskAsyncReplicationSecondaryDisk.fromMap(Map<String, dynamic> map) {
@@ -34,3 +31,4 @@ class DiskAsyncReplicationSecondaryDisk {
     );
   }
 }
+

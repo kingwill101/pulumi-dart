@@ -119,32 +119,23 @@ import 'host_key_args.dart';
 class HostKey extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of host key.
   late final pulumi.Output<String> arn;
-
   /// Text description.
   late final pulumi.Output<String?> description;
-
   /// Private key portion of an SSH key pair.
   late final pulumi.Output<String?> hostKeyBody;
-
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// Write-only private key portion of an SSH key pair, guaranteed not to be written to plan or state artifacts. One of `host_key_body` or `host_key_body_wo` must be configured.
   late final pulumi.Output<String?> hostKeyBodyWo;
-
   /// Public key fingerprint.
   late final pulumi.Output<String> hostKeyFingerprint;
-
   /// ID of the host key.
   late final pulumi.Output<String> hostKeyId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Server ID.
   late final pulumi.Output<String> serverId;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 

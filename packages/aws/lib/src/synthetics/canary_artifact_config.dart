@@ -13,20 +13,15 @@ class CanaryArtifactConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final s3EncryptionValue = s3Encryption;
-    if (s3EncryptionValue != null) {
-      map['s3Encryption'] = s3EncryptionValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      's3Encryption': ?s3Encryption == null ? null : s3Encryption!.toMap(),
+    };
   }
 
   factory CanaryArtifactConfig.fromMap(Map<String, dynamic> map) {
     return CanaryArtifactConfig(
-      s3Encryption: map['s3Encryption'] == null
-          ? null
-          : CanaryArtifactConfigS3Encryption.fromMap(
-              (map['s3Encryption'] as Map).cast<String, dynamic>()),
+      s3Encryption: map['s3Encryption'] == null ? null : CanaryArtifactConfigS3Encryption.fromMap((map['s3Encryption'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

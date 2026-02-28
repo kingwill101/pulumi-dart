@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterNodeConfigConfidentialNodes {
   /// Defines the type of technology used
   /// by the confidential node.
   final String? confidentialInstanceType;
-
   /// Enable Confidential GKE Nodes for this cluster, to
   /// enforce encryption of data in-use.
   final bool enabled;
@@ -18,21 +18,17 @@ class ClusterNodeConfigConfidentialNodes {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final confidentialInstanceTypeValue = confidentialInstanceType;
-    if (confidentialInstanceTypeValue != null) {
-      map['confidentialInstanceType'] = confidentialInstanceTypeValue;
-    }
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'confidentialInstanceType': ?confidentialInstanceType,
+      'enabled': enabled,
+    };
   }
 
   factory ClusterNodeConfigConfidentialNodes.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigConfidentialNodes(
-      confidentialInstanceType: map['confidentialInstanceType'] == null
-          ? null
-          : map['confidentialInstanceType'] as String,
+      confidentialInstanceType: map['confidentialInstanceType'] == null ? null : map['confidentialInstanceType'] as String,
       enabled: map['enabled'] as bool,
     );
   }
 }
+

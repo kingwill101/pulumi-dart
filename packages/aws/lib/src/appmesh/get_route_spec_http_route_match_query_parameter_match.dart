@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRouteSpecHttpRouteMatchQueryParameterMatch {
   final String exact;
 
@@ -10,15 +11,15 @@ class GetRouteSpecHttpRouteMatchQueryParameterMatch {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['exact'] = exact;
-    return map;
+    return <String, dynamic>{
+      'exact': exact,
+    };
   }
 
-  factory GetRouteSpecHttpRouteMatchQueryParameterMatch.fromMap(
-      Map<String, dynamic> map) {
+  factory GetRouteSpecHttpRouteMatchQueryParameterMatch.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecHttpRouteMatchQueryParameterMatch(
       exact: map['exact'] as String,
     );
   }
 }
+

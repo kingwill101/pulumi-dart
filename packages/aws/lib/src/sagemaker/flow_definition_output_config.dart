@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FlowDefinitionOutputConfig {
   /// The Amazon Key Management Service (KMS) key ARN for server-side encryption.
   final String? kmsKeyId;
-
   /// The Amazon S3 path where the object containing human output will be made available.
   final String s3OutputPath;
 
@@ -16,13 +16,10 @@ class FlowDefinitionOutputConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final kmsKeyIdValue = kmsKeyId;
-    if (kmsKeyIdValue != null) {
-      map['kmsKeyId'] = kmsKeyIdValue;
-    }
-    map['s3OutputPath'] = s3OutputPath;
-    return map;
+    return <String, dynamic>{
+      'kmsKeyId': ?kmsKeyId,
+      's3OutputPath': s3OutputPath,
+    };
   }
 
   factory FlowDefinitionOutputConfig.fromMap(Map<String, dynamic> map) {
@@ -32,3 +29,4 @@ class FlowDefinitionOutputConfig {
     );
   }
 }
+

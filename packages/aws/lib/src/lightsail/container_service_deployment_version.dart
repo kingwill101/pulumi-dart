@@ -252,27 +252,19 @@ import 'container_service_deployment_version_public_endpoint.dart';
 /// ```
 class ContainerServiceDeploymentVersion extends pulumi.CustomResource {
   /// Set of configuration blocks that describe the settings of the containers that will be launched on the container service. Maximum of 53. See below.
-  late final pulumi.Output<List<ContainerServiceDeploymentVersionContainer>>
-      containers;
-
+  late final pulumi.Output<List<ContainerServiceDeploymentVersionContainer>> containers;
   /// Date and time when the deployment was created.
   late final pulumi.Output<String> createdAt;
-
   /// Configuration block that describes the settings of the public endpoint for the container service. See below.
-  late final pulumi.Output<ContainerServiceDeploymentVersionPublicEndpoint?>
-      publicEndpoint;
-
+  late final pulumi.Output<ContainerServiceDeploymentVersionPublicEndpoint?> publicEndpoint;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Name of the container service.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> serviceName;
-
   /// Current state of the container service.
   late final pulumi.Output<String> state;
-
   /// Version number of the deployment.
   late final pulumi.Output<int> version;
 
@@ -290,13 +282,9 @@ class ContainerServiceDeploymentVersion extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.containers =
-        registerOutput<List<ContainerServiceDeploymentVersionContainer>>(
-            'containers');
+    this.containers = registerOutput<List<ContainerServiceDeploymentVersionContainer>>('containers');
     this.createdAt = registerOutput<String>('createdAt');
-    this.publicEndpoint =
-        registerOutput<ContainerServiceDeploymentVersionPublicEndpoint?>(
-            'publicEndpoint');
+    this.publicEndpoint = registerOutput<ContainerServiceDeploymentVersionPublicEndpoint?>('publicEndpoint');
     this.region = registerOutput<String>('region');
     this.serviceName = registerOutput<String>('serviceName');
     this.state = registerOutput<String>('state');

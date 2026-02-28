@@ -131,7 +131,6 @@ class SdkvoiceGlobalSettings extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.voiceConnector =
-        registerOutput<SdkvoiceGlobalSettingsVoiceConnector>('voiceConnector');
+    this.voiceConnector = registerOutput<SdkvoiceGlobalSettingsVoiceConnector>('voiceConnector');
   }
 }

@@ -14,16 +14,15 @@ class AppDevExperienceFeatureStateResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['networkingInstallSucceeded'] = networkingInstallSucceeded.toMap();
-    return map;
+    return <String, dynamic>{
+      'networkingInstallSucceeded': networkingInstallSucceeded.toMap(),
+    };
   }
 
-  factory AppDevExperienceFeatureStateResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory AppDevExperienceFeatureStateResponse.fromMap(Map<String, dynamic> map) {
     return AppDevExperienceFeatureStateResponse(
-      networkingInstallSucceeded: StatusResponse.fromMap(
-          (map['networkingInstallSucceeded'] as Map).cast<String, dynamic>()),
+      networkingInstallSucceeded: StatusResponse.fromMap((map['networkingInstallSucceeded'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

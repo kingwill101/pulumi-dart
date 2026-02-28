@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterGatewayApiConfig {
   /// The Gateway API release channel to use for Gateway API.
   final String channel;
@@ -11,9 +12,9 @@ class GetClusterGatewayApiConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['channel'] = channel;
-    return map;
+    return <String, dynamic>{
+      'channel': channel,
+    };
   }
 
   factory GetClusterGatewayApiConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetClusterGatewayApiConfig {
     );
   }
 }
+

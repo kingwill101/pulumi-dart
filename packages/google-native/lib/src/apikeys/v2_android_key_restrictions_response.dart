@@ -15,20 +15,15 @@ class V2AndroidKeyRestrictionsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allowedApplications'] = pulumi.Input.encodeList<
-        V2AndroidApplicationResponse,
-        Map<String, dynamic>>(allowedApplications, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'allowedApplications': pulumi.Input.encodeList<V2AndroidApplicationResponse, Map<String, dynamic>>(allowedApplications, (value) => value.toMap()),
+    };
   }
 
   factory V2AndroidKeyRestrictionsResponse.fromMap(Map<String, dynamic> map) {
     return V2AndroidKeyRestrictionsResponse(
-      allowedApplications:
-          pulumi.Input.decodeList<V2AndroidApplicationResponse>(
-              map['allowedApplications'],
-              (value) => V2AndroidApplicationResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      allowedApplications: pulumi.Input.decodeList<V2AndroidApplicationResponse>(map['allowedApplications'], (value) => V2AndroidApplicationResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

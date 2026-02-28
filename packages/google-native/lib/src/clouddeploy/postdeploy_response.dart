@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Postdeploy contains the postdeploy job configuration information.
 class PostdeployResponse {
   /// Optional. A sequence of Skaffold custom actions to invoke during execution of the postdeploy job.
@@ -12,9 +13,9 @@ class PostdeployResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['actions'] = actions;
-    return map;
+    return <String, dynamic>{
+      'actions': actions,
+    };
   }
 
   factory PostdeployResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class PostdeployResponse {
     );
   }
 }
+

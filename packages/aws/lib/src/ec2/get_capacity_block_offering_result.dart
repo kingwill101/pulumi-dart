@@ -1,28 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getCapacityBlockOffering.
 class GetCapacityBlockOfferingResult {
   /// The Availability Zone in which to create the Capacity Reservation.
   final String availabilityZone;
-
   /// The Capacity Block Reservation ID.
   final String capacityBlockOfferingId;
   final int capacityDurationHours;
-
   /// The currency of the payment for the Capacity Block.
   final String currencyCode;
   final String endDateRange;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final int instanceCount;
   final String instanceType;
   final String region;
   final String startDateRange;
-
   /// Indicates the tenancy of the Capacity Reservation. Specify either `default` or `dedicated`.
   final String tenancy;
-
   /// The total price to be paid up front.
   final String upfrontFee;
 
@@ -55,20 +51,20 @@ class GetCapacityBlockOfferingResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['availabilityZone'] = availabilityZone;
-    map['capacityBlockOfferingId'] = capacityBlockOfferingId;
-    map['capacityDurationHours'] = capacityDurationHours;
-    map['currencyCode'] = currencyCode;
-    map['endDateRange'] = endDateRange;
-    map['id'] = id;
-    map['instanceCount'] = instanceCount;
-    map['instanceType'] = instanceType;
-    map['region'] = region;
-    map['startDateRange'] = startDateRange;
-    map['tenancy'] = tenancy;
-    map['upfrontFee'] = upfrontFee;
-    return map;
+    return <String, dynamic>{
+      'availabilityZone': availabilityZone,
+      'capacityBlockOfferingId': capacityBlockOfferingId,
+      'capacityDurationHours': capacityDurationHours,
+      'currencyCode': currencyCode,
+      'endDateRange': endDateRange,
+      'id': id,
+      'instanceCount': instanceCount,
+      'instanceType': instanceType,
+      'region': region,
+      'startDateRange': startDateRange,
+      'tenancy': tenancy,
+      'upfrontFee': upfrontFee,
+    };
   }
 
   factory GetCapacityBlockOfferingResult.fromMap(Map<String, dynamic> map) {
@@ -88,3 +84,4 @@ class GetCapacityBlockOfferingResult {
     );
   }
 }
+

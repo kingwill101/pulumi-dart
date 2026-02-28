@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DocumentClassifierVpcConfig {
   /// List of security group IDs.
   final List<String> securityGroupIds;
-
   /// List of VPC subnets.
   final List<String> subnets;
 
@@ -16,10 +16,10 @@ class DocumentClassifierVpcConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['securityGroupIds'] = securityGroupIds;
-    map['subnets'] = subnets;
-    return map;
+    return <String, dynamic>{
+      'securityGroupIds': securityGroupIds,
+      'subnets': subnets,
+    };
   }
 
   factory DocumentClassifierVpcConfig.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class DocumentClassifierVpcConfig {
     );
   }
 }
+

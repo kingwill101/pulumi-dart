@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class UserProfileUserSettingsJupyterLabAppSettingsCodeRepository {
   /// The URL of the Git repository.
   final String repositoryUrl;
@@ -11,15 +12,15 @@ class UserProfileUserSettingsJupyterLabAppSettingsCodeRepository {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['repositoryUrl'] = repositoryUrl;
-    return map;
+    return <String, dynamic>{
+      'repositoryUrl': repositoryUrl,
+    };
   }
 
-  factory UserProfileUserSettingsJupyterLabAppSettingsCodeRepository.fromMap(
-      Map<String, dynamic> map) {
+  factory UserProfileUserSettingsJupyterLabAppSettingsCodeRepository.fromMap(Map<String, dynamic> map) {
     return UserProfileUserSettingsJupyterLabAppSettingsCodeRepository(
       repositoryUrl: map['repositoryUrl'] as String,
     );
   }
 }
+

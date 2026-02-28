@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceServiceAccountArgs {
   /// The permission level to use for this service account. For more information about the roles and the permissions each has, see the [User roles](https://docs.aws.amazon.com/grafana/latest/userguide/Grafana-user-roles.html) documentation.
   final pulumi.Input<String> grafanaRole;
-
   /// A name for the service account. The name must be unique within the workspace, as it determines the ID associated with the service account.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The Grafana workspace with which the service account is associated.
   final pulumi.Input<String> workspaceId;
 
@@ -29,24 +26,19 @@ class WorkspaceServiceAccountArgs {
     String? name,
     String? region,
     required String workspaceId,
-  })  : grafanaRole = pulumi.Input.asInput<String>(grafanaRole),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        workspaceId = pulumi.Input.asInput<String>(workspaceId);
+  }) :
+      grafanaRole = pulumi.Input.asInput<String>(grafanaRole),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      workspaceId = pulumi.Input.asInput<String>(workspaceId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['grafanaRole'] = grafanaRole;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['workspaceId'] = workspaceId;
-    return map;
+    return <String, dynamic>{
+      'grafanaRole': grafanaRole,
+      'name': ?name,
+      'region': ?region,
+      'workspaceId': workspaceId,
+    };
   }
 
   factory WorkspaceServiceAccountArgs.fromMap(Map<String, dynamic> map) {
@@ -58,3 +50,4 @@ class WorkspaceServiceAccountArgs {
     );
   }
 }
+

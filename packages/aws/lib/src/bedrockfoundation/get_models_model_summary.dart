@@ -1,30 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetModelsModelSummary {
   /// Customizations that the model supports.
   final List<String> customizationsSupporteds;
-
   /// Inference types that the model supports.
   final List<String> inferenceTypesSupporteds;
-
   /// Input modalities that the model supports.
   final List<String> inputModalities;
-
   /// Model ARN.
   final String modelArn;
-
   /// Model identifier.
   final String modelId;
-
   /// Model name.
   final String modelName;
-
   /// Output modalities that the model supports.
   final List<String> outputModalities;
-
   /// Model provider name.
   final String providerName;
-
   /// Indicates whether the model supports streaming.
   final bool responseStreamingSupported;
 
@@ -51,25 +44,23 @@ class GetModelsModelSummary {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['customizationsSupporteds'] = customizationsSupporteds;
-    map['inferenceTypesSupporteds'] = inferenceTypesSupporteds;
-    map['inputModalities'] = inputModalities;
-    map['modelArn'] = modelArn;
-    map['modelId'] = modelId;
-    map['modelName'] = modelName;
-    map['outputModalities'] = outputModalities;
-    map['providerName'] = providerName;
-    map['responseStreamingSupported'] = responseStreamingSupported;
-    return map;
+    return <String, dynamic>{
+      'customizationsSupporteds': customizationsSupporteds,
+      'inferenceTypesSupporteds': inferenceTypesSupporteds,
+      'inputModalities': inputModalities,
+      'modelArn': modelArn,
+      'modelId': modelId,
+      'modelName': modelName,
+      'outputModalities': outputModalities,
+      'providerName': providerName,
+      'responseStreamingSupported': responseStreamingSupported,
+    };
   }
 
   factory GetModelsModelSummary.fromMap(Map<String, dynamic> map) {
     return GetModelsModelSummary(
-      customizationsSupporteds:
-          (map['customizationsSupporteds'] as List).cast<String>(),
-      inferenceTypesSupporteds:
-          (map['inferenceTypesSupporteds'] as List).cast<String>(),
+      customizationsSupporteds: (map['customizationsSupporteds'] as List).cast<String>(),
+      inferenceTypesSupporteds: (map['inferenceTypesSupporteds'] as List).cast<String>(),
       inputModalities: (map['inputModalities'] as List).cast<String>(),
       modelArn: map['modelArn'] as String,
       modelId: map['modelId'] as String,
@@ -80,3 +71,4 @@ class GetModelsModelSummary {
     );
   }
 }
+

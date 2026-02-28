@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// BareMetalAdminVipConfig for bare metal load balancer configurations.
 class BareMetalAdminVipConfig {
   /// The VIP which you previously set aside for the Kubernetes API of this bare metal admin cluster.
@@ -12,19 +13,15 @@ class BareMetalAdminVipConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final controlPlaneVipValue = controlPlaneVip;
-    if (controlPlaneVipValue != null) {
-      map['controlPlaneVip'] = controlPlaneVipValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'controlPlaneVip': ?controlPlaneVip,
+    };
   }
 
   factory BareMetalAdminVipConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminVipConfig(
-      controlPlaneVip: map['controlPlaneVip'] == null
-          ? null
-          : map['controlPlaneVip'] as String,
+      controlPlaneVip: map['controlPlaneVip'] == null ? null : map['controlPlaneVip'] as String,
     );
   }
 }
+

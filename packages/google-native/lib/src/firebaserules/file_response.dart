@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// `File` containing source content.
 class FileResponse {
   /// Textual Content.
   final String content;
-
   /// Fingerprint (e.g. github sha) associated with the `File`.
   final String fingerprint;
-
   /// File name.
   final String name;
 
@@ -22,11 +21,11 @@ class FileResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['content'] = content;
-    map['fingerprint'] = fingerprint;
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'content': content,
+      'fingerprint': fingerprint,
+      'name': name,
+    };
   }
 
   factory FileResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class FileResponse {
     );
   }
 }
+

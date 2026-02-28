@@ -10,40 +10,28 @@ import 'service_config_response.dart';
 class GetFunctionCloudfunctionsV2Result {
   /// Describes the Build step of the function that builds a container from the given source.
   final BuildConfigResponse buildConfig;
-
   /// User-provided description of a function.
   final String description;
-
   /// Describe whether the function is 1st Gen or 2nd Gen.
   final String environment;
-
   /// An Eventarc trigger managed by Google Cloud Functions that fires events in response to a condition in another service.
   final EventTriggerResponseCloudfunctionsV2 eventTrigger;
-
   /// [Preview] Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
   final String kmsKeyName;
-
   /// Labels associated with this Cloud Function.
   final Map<String, String> labels;
-
   /// A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
   final String name;
-
   /// Reserved for future use.
   final bool satisfiesPzs;
-
   /// Describes the Service being deployed. Currently deploys services to Cloud Run (fully managed).
   final ServiceConfigResponse serviceConfig;
-
   /// State of the function.
   final String state;
-
   /// State Messages for this Cloud Function.
   final List<GoogleCloudFunctionsV2StateMessageResponse> stateMessages;
-
   /// The last update timestamp of a Cloud Function.
   final String updateTime;
-
   /// The deployed url for the function.
   final String url;
 
@@ -78,47 +66,39 @@ class GetFunctionCloudfunctionsV2Result {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['buildConfig'] = buildConfig.toMap();
-    map['description'] = description;
-    map['environment'] = environment;
-    map['eventTrigger'] = eventTrigger.toMap();
-    map['kmsKeyName'] = kmsKeyName;
-    map['labels'] = labels;
-    map['name'] = name;
-    map['satisfiesPzs'] = satisfiesPzs;
-    map['serviceConfig'] = serviceConfig.toMap();
-    map['state'] = state;
-    map['stateMessages'] = pulumi.Input.encodeList<
-        GoogleCloudFunctionsV2StateMessageResponse,
-        Map<String, dynamic>>(stateMessages, (value) => value.toMap());
-    map['updateTime'] = updateTime;
-    map['url'] = url;
-    return map;
+    return <String, dynamic>{
+      'buildConfig': buildConfig.toMap(),
+      'description': description,
+      'environment': environment,
+      'eventTrigger': eventTrigger.toMap(),
+      'kmsKeyName': kmsKeyName,
+      'labels': labels,
+      'name': name,
+      'satisfiesPzs': satisfiesPzs,
+      'serviceConfig': serviceConfig.toMap(),
+      'state': state,
+      'stateMessages': pulumi.Input.encodeList<GoogleCloudFunctionsV2StateMessageResponse, Map<String, dynamic>>(stateMessages, (value) => value.toMap()),
+      'updateTime': updateTime,
+      'url': url,
+    };
   }
 
   factory GetFunctionCloudfunctionsV2Result.fromMap(Map<String, dynamic> map) {
     return GetFunctionCloudfunctionsV2Result(
-      buildConfig: BuildConfigResponse.fromMap(
-          (map['buildConfig'] as Map).cast<String, dynamic>()),
+      buildConfig: BuildConfigResponse.fromMap((map['buildConfig'] as Map).cast<String, dynamic>()),
       description: map['description'] as String,
       environment: map['environment'] as String,
-      eventTrigger: EventTriggerResponseCloudfunctionsV2.fromMap(
-          (map['eventTrigger'] as Map).cast<String, dynamic>()),
+      eventTrigger: EventTriggerResponseCloudfunctionsV2.fromMap((map['eventTrigger'] as Map).cast<String, dynamic>()),
       kmsKeyName: map['kmsKeyName'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
       satisfiesPzs: map['satisfiesPzs'] as bool,
-      serviceConfig: ServiceConfigResponse.fromMap(
-          (map['serviceConfig'] as Map).cast<String, dynamic>()),
+      serviceConfig: ServiceConfigResponse.fromMap((map['serviceConfig'] as Map).cast<String, dynamic>()),
       state: map['state'] as String,
-      stateMessages:
-          pulumi.Input.decodeList<GoogleCloudFunctionsV2StateMessageResponse>(
-              map['stateMessages'],
-              (value) => GoogleCloudFunctionsV2StateMessageResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      stateMessages: pulumi.Input.decodeList<GoogleCloudFunctionsV2StateMessageResponse>(map['stateMessages'], (value) => GoogleCloudFunctionsV2StateMessageResponse.fromMap((value as Map).cast<String, dynamic>())),
       updateTime: map['updateTime'] as String,
       url: map['url'] as String,
     );
   }
 }
+

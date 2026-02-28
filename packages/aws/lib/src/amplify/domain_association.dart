@@ -264,29 +264,20 @@ import 'domain_association_sub_domain.dart';
 class DomainAssociation extends pulumi.CustomResource {
   /// Unique ID for an Amplify app.
   late final pulumi.Output<String> appId;
-
   /// ARN for the domain association.
   late final pulumi.Output<String> arn;
-
   /// The type of SSL/TLS certificate to use for your custom domain. If you don't specify a certificate type, Amplify uses the default certificate that it provisions and manages for you.
-  late final pulumi.Output<DomainAssociationCertificateSettings>
-      certificateSettings;
-
+  late final pulumi.Output<DomainAssociationCertificateSettings> certificateSettings;
   /// DNS records for certificate verification in a space-delimited format (`<record> CNAME <target>`).
   late final pulumi.Output<String> certificateVerificationDnsRecord;
-
   /// Domain name for the domain association.
   late final pulumi.Output<String> domainName;
-
   /// Enables the automated creation of subdomains for branches.
   late final pulumi.Output<bool?> enableAutoSubDomain;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Setting for the subdomain. Documented below.
   late final pulumi.Output<List<DomainAssociationSubDomain>> subDomains;
-
   /// If enabled, the resource will wait for the domain association status to change to `PENDING_DEPLOYMENT` or `AVAILABLE`. Setting this to `false` will skip the process. Default: `true`.
   late final pulumi.Output<bool?> waitForVerification;
 
@@ -306,16 +297,12 @@ class DomainAssociation extends pulumi.CustomResource {
         ) {
     this.appId = registerOutput<String>('appId');
     this.arn = registerOutput<String>('arn');
-    this.certificateSettings =
-        registerOutput<DomainAssociationCertificateSettings>(
-            'certificateSettings');
-    this.certificateVerificationDnsRecord =
-        registerOutput<String>('certificateVerificationDnsRecord');
+    this.certificateSettings = registerOutput<DomainAssociationCertificateSettings>('certificateSettings');
+    this.certificateVerificationDnsRecord = registerOutput<String>('certificateVerificationDnsRecord');
     this.domainName = registerOutput<String>('domainName');
     this.enableAutoSubDomain = registerOutput<bool?>('enableAutoSubDomain');
     this.region = registerOutput<String>('region');
-    this.subDomains =
-        registerOutput<List<DomainAssociationSubDomain>>('subDomains');
+    this.subDomains = registerOutput<List<DomainAssociationSubDomain>>('subDomains');
     this.waitForVerification = registerOutput<bool?>('waitForVerification');
   }
 }

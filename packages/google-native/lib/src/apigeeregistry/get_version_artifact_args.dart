@@ -25,23 +25,21 @@ class GetVersionArtifactArgs {
     required String location,
     String? project,
     required String versionId,
-  })  : apiId = pulumi.Input.asInput<String>(apiId),
-        artifactId = pulumi.Input.asInput<String>(artifactId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        versionId = pulumi.Input.asInput<String>(versionId);
+  }) :
+      apiId = pulumi.Input.asInput<String>(apiId),
+      artifactId = pulumi.Input.asInput<String>(artifactId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      versionId = pulumi.Input.asInput<String>(versionId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['apiId'] = apiId;
-    map['artifactId'] = artifactId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['versionId'] = versionId;
-    return map;
+    return <String, dynamic>{
+      'apiId': apiId,
+      'artifactId': artifactId,
+      'location': location,
+      'project': ?project,
+      'versionId': versionId,
+    };
   }
 
   factory GetVersionArtifactArgs.fromMap(Map<String, dynamic> map) {
@@ -54,3 +52,4 @@ class GetVersionArtifactArgs {
     );
   }
 }
+

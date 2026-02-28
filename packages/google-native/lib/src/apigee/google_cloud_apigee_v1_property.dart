@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A single property entry in the Properties message.
 class GoogleCloudApigeeV1Property {
   /// The property key
   final String? name;
-
   /// The property value
   final String? value;
 
@@ -17,16 +17,10 @@ class GoogleCloudApigeeV1Property {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final valueValue = value;
-    if (valueValue != null) {
-      map['value'] = valueValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+      'value': ?value,
+    };
   }
 
   factory GoogleCloudApigeeV1Property.fromMap(Map<String, dynamic> map) {
@@ -36,3 +30,4 @@ class GoogleCloudApigeeV1Property {
     );
   }
 }
+

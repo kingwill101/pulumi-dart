@@ -14,15 +14,15 @@ class JobSpecResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['template'] = template.toMap();
-    return map;
+    return <String, dynamic>{
+      'template': template.toMap(),
+    };
   }
 
   factory JobSpecResponse.fromMap(Map<String, dynamic> map) {
     return JobSpecResponse(
-      template: ExecutionTemplateSpecResponse.fromMap(
-          (map['template'] as Map).cast<String, dynamic>()),
+      template: ExecutionTemplateSpecResponse.fromMap((map['template'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

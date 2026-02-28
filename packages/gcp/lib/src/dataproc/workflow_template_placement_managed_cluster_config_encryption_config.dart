@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig {
   /// The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
   final String? gcePdKmsKeyName;
@@ -11,20 +12,15 @@ class WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final gcePdKmsKeyNameValue = gcePdKmsKeyName;
-    if (gcePdKmsKeyNameValue != null) {
-      map['gcePdKmsKeyName'] = gcePdKmsKeyNameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'gcePdKmsKeyName': ?gcePdKmsKeyName,
+    };
   }
 
-  factory WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig(
-      gcePdKmsKeyName: map['gcePdKmsKeyName'] == null
-          ? null
-          : map['gcePdKmsKeyName'] as String,
+      gcePdKmsKeyName: map['gcePdKmsKeyName'] == null ? null : map['gcePdKmsKeyName'] as String,
     );
   }
 }
+

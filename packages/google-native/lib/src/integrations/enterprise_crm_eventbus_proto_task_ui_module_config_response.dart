@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Task author would use this type to configure a config module.
 class EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse {
   /// ID of the config module.
@@ -12,15 +13,15 @@ class EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['moduleId'] = moduleId;
-    return map;
+    return <String, dynamic>{
+      'moduleId': moduleId,
+    };
   }
 
-  factory EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse(
       moduleId: map['moduleId'] as String,
     );
   }
 }
+

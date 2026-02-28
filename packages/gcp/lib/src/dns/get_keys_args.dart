@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKeysArgs {
   /// The name or id of the Cloud DNS managed zone.
   final pulumi.Input<String> managedZone;
-
   /// The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
   final pulumi.Input<String>? project;
 
@@ -19,17 +18,15 @@ class GetKeysArgs {
   GetKeysArgs({
     required String managedZone,
     String? project,
-  })  : managedZone = pulumi.Input.asInput<String>(managedZone),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      managedZone = pulumi.Input.asInput<String>(managedZone),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['managedZone'] = managedZone;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'managedZone': managedZone,
+      'project': ?project,
+    };
   }
 
   factory GetKeysArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +36,4 @@ class GetKeysArgs {
     );
   }
 }
+

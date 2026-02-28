@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class JobTemplateConfigOverlayAnimationAnimationFadeXy {
   /// Normalized x coordinate.
   final double? x;
-
   /// Normalized y coordinate.
   final double? y;
 
@@ -16,23 +16,17 @@ class JobTemplateConfigOverlayAnimationAnimationFadeXy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final xValue = x;
-    if (xValue != null) {
-      map['x'] = xValue;
-    }
-    final yValue = y;
-    if (yValue != null) {
-      map['y'] = yValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'x': ?x,
+      'y': ?y,
+    };
   }
 
-  factory JobTemplateConfigOverlayAnimationAnimationFadeXy.fromMap(
-      Map<String, dynamic> map) {
+  factory JobTemplateConfigOverlayAnimationAnimationFadeXy.fromMap(Map<String, dynamic> map) {
     return JobTemplateConfigOverlayAnimationAnimationFadeXy(
       x: map['x'] == null ? null : map['x'] as double,
       y: map['y'] == null ? null : map['y'] as double,
     );
   }
 }
+

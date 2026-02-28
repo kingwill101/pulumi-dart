@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetSubscriptionPushConfigOidcToken {
   /// Audience to be used when generating OIDC token. The audience claim
   /// identifies the recipients that the JWT is intended for. The audience
@@ -8,7 +9,6 @@ class GetSubscriptionPushConfigOidcToken {
   /// token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3
   /// Note: if not specified, the Push endpoint URL will be used.
   final String audience;
-
   /// Service account email to be used for generating the OIDC token.
   /// The caller (for subscriptions.create, subscriptions.patch, and
   /// subscriptions.modifyPushConfig RPCs) must have the
@@ -24,10 +24,10 @@ class GetSubscriptionPushConfigOidcToken {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['audience'] = audience;
-    map['serviceAccountEmail'] = serviceAccountEmail;
-    return map;
+    return <String, dynamic>{
+      'audience': audience,
+      'serviceAccountEmail': serviceAccountEmail,
+    };
   }
 
   factory GetSubscriptionPushConfigOidcToken.fromMap(Map<String, dynamic> map) {
@@ -37,3 +37,4 @@ class GetSubscriptionPushConfigOidcToken {
     );
   }
 }
+

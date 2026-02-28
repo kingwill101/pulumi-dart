@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FlowDestinationFlowConfigDestinationConnectorPropertiesCustomerProfiles {
   /// Unique name of the Amazon Connect Customer Profiles domain.
   final String domainName;
-
   /// Object specified in the Amazon Connect Customer Profiles flow destination.
   final String? objectTypeName;
 
@@ -16,22 +16,17 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesCustomerProfiles {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['domainName'] = domainName;
-    final objectTypeNameValue = objectTypeName;
-    if (objectTypeNameValue != null) {
-      map['objectTypeName'] = objectTypeNameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'domainName': domainName,
+      'objectTypeName': ?objectTypeName,
+    };
   }
 
-  factory FlowDestinationFlowConfigDestinationConnectorPropertiesCustomerProfiles.fromMap(
-      Map<String, dynamic> map) {
+  factory FlowDestinationFlowConfigDestinationConnectorPropertiesCustomerProfiles.fromMap(Map<String, dynamic> map) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesCustomerProfiles(
       domainName: map['domainName'] as String,
-      objectTypeName: map['objectTypeName'] == null
-          ? null
-          : map['objectTypeName'] as String,
+      objectTypeName: map['objectTypeName'] == null ? null : map['objectTypeName'] as String,
     );
   }
 }
+

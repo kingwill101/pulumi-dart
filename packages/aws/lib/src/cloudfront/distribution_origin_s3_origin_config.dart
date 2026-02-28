@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DistributionOriginS3OriginConfig {
   /// The CloudFront origin access identity to associate with the origin.
   final String originAccessIdentity;
@@ -11,9 +12,9 @@ class DistributionOriginS3OriginConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['originAccessIdentity'] = originAccessIdentity;
-    return map;
+    return <String, dynamic>{
+      'originAccessIdentity': originAccessIdentity,
+    };
   }
 
   factory DistributionOriginS3OriginConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class DistributionOriginS3OriginConfig {
     );
   }
 }
+

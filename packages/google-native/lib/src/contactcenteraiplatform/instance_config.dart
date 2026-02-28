@@ -14,19 +14,15 @@ class InstanceConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final instanceSizeValue = instanceSize;
-    if (instanceSizeValue != null) {
-      map['instanceSize'] = instanceSizeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'instanceSize': ?instanceSize == null ? null : instanceSize!.value,
+    };
   }
 
   factory InstanceConfig.fromMap(Map<String, dynamic> map) {
     return InstanceConfig(
-      instanceSize: map['instanceSize'] == null
-          ? null
-          : InstanceConfigInstanceSize.fromValue(map['instanceSize'] as String),
+      instanceSize: map['instanceSize'] == null ? null : InstanceConfigInstanceSize.fromValue(map['instanceSize'] as String),
     );
   }
 }
+

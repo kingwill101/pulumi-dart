@@ -12,7 +12,7 @@ enum InterconnectAttachmentStackTypeComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown InterconnectAttachmentStackTypeComputeBeta value: $value');
+    throw ArgumentError('Unknown InterconnectAttachmentStackTypeComputeBeta value: $value');
   }
 }
+

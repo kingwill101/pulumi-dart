@@ -14,15 +14,15 @@ class DetectorDatasourcesKubernetes {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['auditLogs'] = auditLogs.toMap();
-    return map;
+    return <String, dynamic>{
+      'auditLogs': auditLogs.toMap(),
+    };
   }
 
   factory DetectorDatasourcesKubernetes.fromMap(Map<String, dynamic> map) {
     return DetectorDatasourcesKubernetes(
-      auditLogs: DetectorDatasourcesKubernetesAuditLogs.fromMap(
-          (map['auditLogs'] as Map).cast<String, dynamic>()),
+      auditLogs: DetectorDatasourcesKubernetesAuditLogs.fromMap((map['auditLogs'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

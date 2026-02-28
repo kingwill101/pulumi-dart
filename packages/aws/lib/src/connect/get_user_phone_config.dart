@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetUserPhoneConfig {
   /// The After Call Work (ACW) timeout setting, in seconds.
   final int afterContactWorkTimeLimit;
-
   /// When Auto-Accept Call is enabled for an available agent, the agent connects to contacts automatically.
   final bool autoAccept;
-
   /// The phone number for the user's desk phone.
   final String deskPhoneNumber;
-
   /// The phone type. Valid values are `DESK_PHONE` and `SOFT_PHONE`.
   final String phoneType;
 
@@ -26,12 +24,12 @@ class GetUserPhoneConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['afterContactWorkTimeLimit'] = afterContactWorkTimeLimit;
-    map['autoAccept'] = autoAccept;
-    map['deskPhoneNumber'] = deskPhoneNumber;
-    map['phoneType'] = phoneType;
-    return map;
+    return <String, dynamic>{
+      'afterContactWorkTimeLimit': afterContactWorkTimeLimit,
+      'autoAccept': autoAccept,
+      'deskPhoneNumber': deskPhoneNumber,
+      'phoneType': phoneType,
+    };
   }
 
   factory GetUserPhoneConfig.fromMap(Map<String, dynamic> map) {
@@ -43,3 +41,4 @@ class GetUserPhoneConfig {
     );
   }
 }
+

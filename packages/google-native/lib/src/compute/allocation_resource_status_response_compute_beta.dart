@@ -5,8 +5,7 @@ import 'allocation_resource_status_specific_skuallocation_response_compute_beta.
 /// [Output Only] Contains output only fields.
 class AllocationResourceStatusResponseComputeBeta {
   /// Allocation Properties of this reservation.
-  final AllocationResourceStatusSpecificSKUAllocationResponseComputeBeta
-      specificSkuAllocation;
+  final AllocationResourceStatusSpecificSKUAllocationResponseComputeBeta specificSkuAllocation;
 
   /// Creates a new [AllocationResourceStatusResponseComputeBeta].
   /// [specificSkuAllocation] Allocation Properties of this reservation.
@@ -15,18 +14,15 @@ class AllocationResourceStatusResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['specificSkuAllocation'] = specificSkuAllocation.toMap();
-    return map;
+    return <String, dynamic>{
+      'specificSkuAllocation': specificSkuAllocation.toMap(),
+    };
   }
 
-  factory AllocationResourceStatusResponseComputeBeta.fromMap(
-      Map<String, dynamic> map) {
+  factory AllocationResourceStatusResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return AllocationResourceStatusResponseComputeBeta(
-      specificSkuAllocation:
-          AllocationResourceStatusSpecificSKUAllocationResponseComputeBeta
-              .fromMap((map['specificSkuAllocation'] as Map)
-                  .cast<String, dynamic>()),
+      specificSkuAllocation: AllocationResourceStatusSpecificSKUAllocationResponseComputeBeta.fromMap((map['specificSkuAllocation'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

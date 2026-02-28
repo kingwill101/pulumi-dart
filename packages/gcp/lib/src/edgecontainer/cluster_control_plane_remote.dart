@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterControlPlaneRemote {
   /// Name of the Google Distributed Cloud Edge zones where this node pool
   /// will be created. For example: `us-central1-edge-customer-a`.
@@ -12,18 +13,15 @@ class ClusterControlPlaneRemote {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nodeLocationValue = nodeLocation;
-    if (nodeLocationValue != null) {
-      map['nodeLocation'] = nodeLocationValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'nodeLocation': ?nodeLocation,
+    };
   }
 
   factory ClusterControlPlaneRemote.fromMap(Map<String, dynamic> map) {
     return ClusterControlPlaneRemote(
-      nodeLocation:
-          map['nodeLocation'] == null ? null : map['nodeLocation'] as String,
+      nodeLocation: map['nodeLocation'] == null ? null : map['nodeLocation'] as String,
     );
   }
 }
+

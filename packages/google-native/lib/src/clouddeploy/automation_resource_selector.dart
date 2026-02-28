@@ -15,24 +15,15 @@ class AutomationResourceSelector {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final targetsValue = targets;
-    if (targetsValue != null) {
-      map['targets'] =
-          pulumi.Input.encodeList<TargetAttribute, Map<String, dynamic>>(
-              targetsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'targets': ?targets == null ? null : pulumi.Input.encodeList<TargetAttribute, Map<String, dynamic>>(targets!, (value) => value.toMap()),
+    };
   }
 
   factory AutomationResourceSelector.fromMap(Map<String, dynamic> map) {
     return AutomationResourceSelector(
-      targets: map['targets'] == null
-          ? null
-          : pulumi.Input.decodeList<TargetAttribute>(
-              map['targets'],
-              (value) => TargetAttribute.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      targets: map['targets'] == null ? null : pulumi.Input.decodeList<TargetAttribute>(map['targets'], (value) => TargetAttribute.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

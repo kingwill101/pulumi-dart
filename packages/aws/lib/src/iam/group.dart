@@ -111,13 +111,10 @@ import 'group_args.dart';
 class Group extends pulumi.CustomResource {
   /// The ARN assigned by AWS for this group.
   late final pulumi.Output<String> arn;
-
   /// The group's name. The name must consist of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: `=,.@-_.`. Group names are not distinguished by case. For example, you cannot create groups named both "ADMINS" and "admins".
   late final pulumi.Output<String> name;
-
   /// Path in which to create the group.
   late final pulumi.Output<String?> path;
-
   /// The [unique ID][1] assigned by AWS.
   late final pulumi.Output<String> uniqueId;
 

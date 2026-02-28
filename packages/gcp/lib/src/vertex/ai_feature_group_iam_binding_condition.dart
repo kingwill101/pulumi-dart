@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AiFeatureGroupIamBindingCondition {
   final String? description;
   final String expression;
@@ -16,22 +17,19 @@ class AiFeatureGroupIamBindingCondition {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    map['expression'] = expression;
-    map['title'] = title;
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'expression': expression,
+      'title': title,
+    };
   }
 
   factory AiFeatureGroupIamBindingCondition.fromMap(Map<String, dynamic> map) {
     return AiFeatureGroupIamBindingCondition(
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       expression: map['expression'] as String,
       title: map['title'] as String,
     );
   }
 }
+

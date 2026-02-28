@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DocumentArgs {
   /// The collection ID, relative to database. For example: chatrooms or chatrooms/my-document/private-messages.
   final pulumi.Input<String> collection;
-
   /// The Firestore database id. Defaults to `"(default)"`.
   final pulumi.Input<String>? database;
-
   /// The client-assigned document ID to use for this document during creation.
   final pulumi.Input<String> documentId;
-
   /// The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
   final pulumi.Input<String> fields;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -35,26 +31,21 @@ class DocumentArgs {
     required String documentId,
     required String fields,
     String? project,
-  })  : collection = pulumi.Input.asInput<String>(collection),
-        database = pulumi.Input.asOptionalInput<String>(database),
-        documentId = pulumi.Input.asInput<String>(documentId),
-        fields = pulumi.Input.asInput<String>(fields),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      collection = pulumi.Input.asInput<String>(collection),
+      database = pulumi.Input.asOptionalInput<String>(database),
+      documentId = pulumi.Input.asInput<String>(documentId),
+      fields = pulumi.Input.asInput<String>(fields),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['collection'] = collection;
-    final databaseValue = database;
-    if (databaseValue != null) {
-      map['database'] = databaseValue;
-    }
-    map['documentId'] = documentId;
-    map['fields'] = fields;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'collection': collection,
+      'database': ?database,
+      'documentId': documentId,
+      'fields': fields,
+      'project': ?project,
+    };
   }
 
   factory DocumentArgs.fromMap(Map<String, dynamic> map) {
@@ -67,3 +58,4 @@ class DocumentArgs {
     );
   }
 }
+

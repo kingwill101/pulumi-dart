@@ -10,19 +10,14 @@ import 'custom_plugin_location.dart';
 class CustomPluginArgs {
   /// The type of the plugin file. Allowed values are `ZIP` and `JAR`.
   final pulumi.Input<String> contentType;
-
   /// A summary description of the custom plugin.
   final pulumi.Input<String>? description;
-
   /// Information about the location of a custom plugin. See `location` Block for details.
   final pulumi.Input<CustomPluginLocation> location;
-
   /// The name of the custom plugin..
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -40,50 +35,34 @@ class CustomPluginArgs {
     String? name,
     String? region,
     Map<String, String>? tags,
-  })  : contentType = pulumi.Input.asInput<String>(contentType),
-        description = pulumi.Input.asOptionalInput<String>(description),
-        location = pulumi.Input.asInput<CustomPluginLocation>(location),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      contentType = pulumi.Input.asInput<String>(contentType),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      location = pulumi.Input.asInput<CustomPluginLocation>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['contentType'] = contentType;
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    map['location'] =
-        pulumi.Input.mapInputValue<CustomPluginLocation, Map<String, dynamic>>(
-            location, (value) => value.toMap());
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'contentType': contentType,
+      'description': ?description,
+      'location': pulumi.Input.mapInputValue<CustomPluginLocation, Map<String, dynamic>>(location, (value) => value.toMap()),
+      'name': ?name,
+      'region': ?region,
+      'tags': ?tags,
+    };
   }
 
   factory CustomPluginArgs.fromMap(Map<String, dynamic> map) {
     return CustomPluginArgs(
       contentType: map['contentType'] as String,
-      description:
-          map['description'] == null ? null : map['description'] as String,
-      location: CustomPluginLocation.fromMap(
-          (map['location'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : map['description'] as String,
+      location: CustomPluginLocation.fromMap((map['location'] as Map).cast<String, dynamic>()),
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

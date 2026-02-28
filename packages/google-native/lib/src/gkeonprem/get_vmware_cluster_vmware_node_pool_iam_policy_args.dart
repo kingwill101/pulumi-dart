@@ -25,40 +25,31 @@ class GetVmwareClusterVmwareNodePoolIamPolicyArgs {
     String? project,
     required String vmwareClusterId,
     required String vmwareNodePoolId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        optionsRequestedPolicyVersion =
-            pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        vmwareClusterId = pulumi.Input.asInput<String>(vmwareClusterId),
-        vmwareNodePoolId = pulumi.Input.asInput<String>(vmwareNodePoolId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      vmwareClusterId = pulumi.Input.asInput<String>(vmwareClusterId),
+      vmwareNodePoolId = pulumi.Input.asInput<String>(vmwareNodePoolId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final optionsRequestedPolicyVersionValue = optionsRequestedPolicyVersion;
-    if (optionsRequestedPolicyVersionValue != null) {
-      map['optionsRequestedPolicyVersion'] = optionsRequestedPolicyVersionValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['vmwareClusterId'] = vmwareClusterId;
-    map['vmwareNodePoolId'] = vmwareNodePoolId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'optionsRequestedPolicyVersion': ?optionsRequestedPolicyVersion,
+      'project': ?project,
+      'vmwareClusterId': vmwareClusterId,
+      'vmwareNodePoolId': vmwareNodePoolId,
+    };
   }
 
-  factory GetVmwareClusterVmwareNodePoolIamPolicyArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetVmwareClusterVmwareNodePoolIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetVmwareClusterVmwareNodePoolIamPolicyArgs(
       location: map['location'] as String,
-      optionsRequestedPolicyVersion:
-          map['optionsRequestedPolicyVersion'] == null
-              ? null
-              : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       vmwareClusterId: map['vmwareClusterId'] as String,
       vmwareNodePoolId: map['vmwareNodePoolId'] as String,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SpaceSpaceSharingSettings {
   /// Specifies the sharing type of the space. Valid values are `Private` and `Shared`.
   final String sharingType;
@@ -11,9 +12,9 @@ class SpaceSpaceSharingSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['sharingType'] = sharingType;
-    return map;
+    return <String, dynamic>{
+      'sharingType': sharingType,
+    };
   }
 
   factory SpaceSpaceSharingSettings.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class SpaceSpaceSharingSettings {
     );
   }
 }
+

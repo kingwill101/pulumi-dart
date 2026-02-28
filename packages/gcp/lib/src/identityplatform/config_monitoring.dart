@@ -14,20 +14,15 @@ class ConfigMonitoring {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final requestLoggingValue = requestLogging;
-    if (requestLoggingValue != null) {
-      map['requestLogging'] = requestLoggingValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'requestLogging': ?requestLogging == null ? null : requestLogging!.toMap(),
+    };
   }
 
   factory ConfigMonitoring.fromMap(Map<String, dynamic> map) {
     return ConfigMonitoring(
-      requestLogging: map['requestLogging'] == null
-          ? null
-          : ConfigMonitoringRequestLogging.fromMap(
-              (map['requestLogging'] as Map).cast<String, dynamic>()),
+      requestLogging: map['requestLogging'] == null ? null : ConfigMonitoringRequestLogging.fromMap((map['requestLogging'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

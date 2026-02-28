@@ -6,7 +6,6 @@ import 'location_policy_target_shape.dart';
 class LocationPolicy {
   /// Location configurations mapped by location name. Currently only zone names are supported and must be represented as valid internal URLs, such as zones/us-central1-a.
   final Map<String, String>? locations;
-
   /// Strategy for distributing VMs across zones in a region.
   final LocationPolicyTargetShape? targetShape;
 
@@ -19,26 +18,17 @@ class LocationPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final locationsValue = locations;
-    if (locationsValue != null) {
-      map['locations'] = locationsValue;
-    }
-    final targetShapeValue = targetShape;
-    if (targetShapeValue != null) {
-      map['targetShape'] = targetShapeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'locations': ?locations,
+      'targetShape': ?targetShape == null ? null : targetShape!.value,
+    };
   }
 
   factory LocationPolicy.fromMap(Map<String, dynamic> map) {
     return LocationPolicy(
-      locations: map['locations'] == null
-          ? null
-          : (map['locations'] as Map).cast<String, String>(),
-      targetShape: map['targetShape'] == null
-          ? null
-          : LocationPolicyTargetShape.fromValue(map['targetShape'] as String),
+      locations: map['locations'] == null ? null : (map['locations'] as Map).cast<String, String>(),
+      targetShape: map['targetShape'] == null ? null : LocationPolicyTargetShape.fromValue(map['targetShape'] as String),
     );
   }
 }
+

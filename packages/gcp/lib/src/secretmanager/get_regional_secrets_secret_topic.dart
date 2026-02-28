@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRegionalSecretsSecretTopic {
   /// The resource name of the Pub/Sub topic that will be published to.
   final String name;
@@ -11,9 +12,9 @@ class GetRegionalSecretsSecretTopic {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetRegionalSecretsSecretTopic.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetRegionalSecretsSecretTopic {
     );
   }
 }
+

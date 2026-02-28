@@ -6,10 +6,8 @@ import 'service_dns_config_dns_record.dart';
 class ServiceDnsConfig {
   /// An array that contains one DnsRecord object for each resource record set. See `dns_records` Block for details.
   final List<ServiceDnsConfigDnsRecord> dnsRecords;
-
   /// The ID of the namespace to use for DNS configuration.
   final String namespaceId;
-
   /// The routing policy that you want to apply to all records that Route 53 creates when you register an instance and specify the service. Valid Values: MULTIVALUE, WEIGHTED
   final String? routingPolicy;
 
@@ -24,26 +22,19 @@ class ServiceDnsConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dnsRecords'] = pulumi.Input.encodeList<ServiceDnsConfigDnsRecord,
-        Map<String, dynamic>>(dnsRecords, (value) => value.toMap());
-    map['namespaceId'] = namespaceId;
-    final routingPolicyValue = routingPolicy;
-    if (routingPolicyValue != null) {
-      map['routingPolicy'] = routingPolicyValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'dnsRecords': pulumi.Input.encodeList<ServiceDnsConfigDnsRecord, Map<String, dynamic>>(dnsRecords, (value) => value.toMap()),
+      'namespaceId': namespaceId,
+      'routingPolicy': ?routingPolicy,
+    };
   }
 
   factory ServiceDnsConfig.fromMap(Map<String, dynamic> map) {
     return ServiceDnsConfig(
-      dnsRecords: pulumi.Input.decodeList<ServiceDnsConfigDnsRecord>(
-          map['dnsRecords'],
-          (value) => ServiceDnsConfigDnsRecord.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      dnsRecords: pulumi.Input.decodeList<ServiceDnsConfigDnsRecord>(map['dnsRecords'], (value) => ServiceDnsConfigDnsRecord.fromMap((value as Map).cast<String, dynamic>())),
       namespaceId: map['namespaceId'] as String,
-      routingPolicy:
-          map['routingPolicy'] == null ? null : map['routingPolicy'] as String,
+      routingPolicy: map['routingPolicy'] == null ? null : map['routingPolicy'] as String,
     );
   }
 }
+

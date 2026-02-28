@@ -7,13 +7,10 @@ class AiIndexEndpointDeployedIndexPrivateEndpoint {
   /// (Output)
   /// The ip address used to send match gRPC requests.
   final String? matchGrpcAddress;
-
   /// (Output)
   /// PscAutomatedEndpoints is populated if private service connect is enabled if PscAutomatedConfig is set.
   /// Structure is documented below.
-  final List<AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint>?
-      pscAutomatedEndpoints;
-
+  final List<AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint>? pscAutomatedEndpoints;
   /// (Output)
   /// The name of the service attachment resource. Populated if private service connect is enabled.
   final String? serviceAttachment;
@@ -29,42 +26,19 @@ class AiIndexEndpointDeployedIndexPrivateEndpoint {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final matchGrpcAddressValue = matchGrpcAddress;
-    if (matchGrpcAddressValue != null) {
-      map['matchGrpcAddress'] = matchGrpcAddressValue;
-    }
-    final pscAutomatedEndpointsValue = pscAutomatedEndpoints;
-    if (pscAutomatedEndpointsValue != null) {
-      map['pscAutomatedEndpoints'] = pulumi.Input.encodeList<
-              AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint,
-              Map<String, dynamic>>(
-          pscAutomatedEndpointsValue, (value) => value.toMap());
-    }
-    final serviceAttachmentValue = serviceAttachment;
-    if (serviceAttachmentValue != null) {
-      map['serviceAttachment'] = serviceAttachmentValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'matchGrpcAddress': ?matchGrpcAddress,
+      'pscAutomatedEndpoints': ?pscAutomatedEndpoints == null ? null : pulumi.Input.encodeList<AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint, Map<String, dynamic>>(pscAutomatedEndpoints!, (value) => value.toMap()),
+      'serviceAttachment': ?serviceAttachment,
+    };
   }
 
-  factory AiIndexEndpointDeployedIndexPrivateEndpoint.fromMap(
-      Map<String, dynamic> map) {
+  factory AiIndexEndpointDeployedIndexPrivateEndpoint.fromMap(Map<String, dynamic> map) {
     return AiIndexEndpointDeployedIndexPrivateEndpoint(
-      matchGrpcAddress: map['matchGrpcAddress'] == null
-          ? null
-          : map['matchGrpcAddress'] as String,
-      pscAutomatedEndpoints: map['pscAutomatedEndpoints'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint>(
-              map['pscAutomatedEndpoints'],
-              (value) =>
-                  AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint
-                      .fromMap((value as Map).cast<String, dynamic>())),
-      serviceAttachment: map['serviceAttachment'] == null
-          ? null
-          : map['serviceAttachment'] as String,
+      matchGrpcAddress: map['matchGrpcAddress'] == null ? null : map['matchGrpcAddress'] as String,
+      pscAutomatedEndpoints: map['pscAutomatedEndpoints'] == null ? null : pulumi.Input.decodeList<AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint>(map['pscAutomatedEndpoints'], (value) => AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint.fromMap((value as Map).cast<String, dynamic>())),
+      serviceAttachment: map['serviceAttachment'] == null ? null : map['serviceAttachment'] as String,
     );
   }
 }
+

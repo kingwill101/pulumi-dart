@@ -9,32 +9,23 @@ import 'get_table_schema.dart';
 class GetTableResult {
   /// ARN that uniquely identifies the table.
   final String arn;
-
   /// Time that table was created.
   final String creationTime;
-
   /// Name of database.
   final String databaseName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Last time table was updated.
   final String lastUpdatedTime;
-
   /// Object containing the following attributes to desribe magnetic store writes.
   final List<GetTableMagneticStoreWriteProperty> magneticStoreWriteProperties;
-
   /// Name of the table.
   final String name;
   final String region;
-
   /// Object containing the following attributes to describe the retention duration for the memory and magnetic stores.
   final List<GetTableRetentionProperty> retentionProperties;
-
   /// Object containing the following attributes to describe the schema of the table.
   final List<GetTableSchema> schemas;
-
   /// Current state of table.
   final String tableStatus;
 
@@ -65,25 +56,19 @@ class GetTableResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['creationTime'] = creationTime;
-    map['databaseName'] = databaseName;
-    map['id'] = id;
-    map['lastUpdatedTime'] = lastUpdatedTime;
-    map['magneticStoreWriteProperties'] = pulumi.Input.encodeList<
-            GetTableMagneticStoreWriteProperty, Map<String, dynamic>>(
-        magneticStoreWriteProperties, (value) => value.toMap());
-    map['name'] = name;
-    map['region'] = region;
-    map['retentionProperties'] = pulumi.Input.encodeList<
-        GetTableRetentionProperty,
-        Map<String, dynamic>>(retentionProperties, (value) => value.toMap());
-    map['schemas'] =
-        pulumi.Input.encodeList<GetTableSchema, Map<String, dynamic>>(
-            schemas, (value) => value.toMap());
-    map['tableStatus'] = tableStatus;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'creationTime': creationTime,
+      'databaseName': databaseName,
+      'id': id,
+      'lastUpdatedTime': lastUpdatedTime,
+      'magneticStoreWriteProperties': pulumi.Input.encodeList<GetTableMagneticStoreWriteProperty, Map<String, dynamic>>(magneticStoreWriteProperties, (value) => value.toMap()),
+      'name': name,
+      'region': region,
+      'retentionProperties': pulumi.Input.encodeList<GetTableRetentionProperty, Map<String, dynamic>>(retentionProperties, (value) => value.toMap()),
+      'schemas': pulumi.Input.encodeList<GetTableSchema, Map<String, dynamic>>(schemas, (value) => value.toMap()),
+      'tableStatus': tableStatus,
+    };
   }
 
   factory GetTableResult.fromMap(Map<String, dynamic> map) {
@@ -93,22 +78,13 @@ class GetTableResult {
       databaseName: map['databaseName'] as String,
       id: map['id'] as String,
       lastUpdatedTime: map['lastUpdatedTime'] as String,
-      magneticStoreWriteProperties:
-          pulumi.Input.decodeList<GetTableMagneticStoreWriteProperty>(
-              map['magneticStoreWriteProperties'],
-              (value) => GetTableMagneticStoreWriteProperty.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      magneticStoreWriteProperties: pulumi.Input.decodeList<GetTableMagneticStoreWriteProperty>(map['magneticStoreWriteProperties'], (value) => GetTableMagneticStoreWriteProperty.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       region: map['region'] as String,
-      retentionProperties: pulumi.Input.decodeList<GetTableRetentionProperty>(
-          map['retentionProperties'],
-          (value) => GetTableRetentionProperty.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      schemas: pulumi.Input.decodeList<GetTableSchema>(
-          map['schemas'],
-          (value) =>
-              GetTableSchema.fromMap((value as Map).cast<String, dynamic>())),
+      retentionProperties: pulumi.Input.decodeList<GetTableRetentionProperty>(map['retentionProperties'], (value) => GetTableRetentionProperty.fromMap((value as Map).cast<String, dynamic>())),
+      schemas: pulumi.Input.decodeList<GetTableSchema>(map['schemas'], (value) => GetTableSchema.fromMap((value as Map).cast<String, dynamic>())),
       tableStatus: map['tableStatus'] as String,
     );
   }
 }
+

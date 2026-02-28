@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A sparkChart is a small chart suitable for inclusion in a table-cell or inline in text. This message contains the configuration for a sparkChart to show up on a Scorecard, showing recent trends of the scorecard's timeseries.
 class SparkChartViewResponse {
   /// The lower bound on data point frequency in the chart implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes it would not make sense to fetch and align data at one minute intervals. This field is optional and exists only as a hint.
   final String minAlignmentPeriod;
-
   /// The type of sparkchart to show in this chartView.
   final String sparkChartType;
 
@@ -17,10 +17,10 @@ class SparkChartViewResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['minAlignmentPeriod'] = minAlignmentPeriod;
-    map['sparkChartType'] = sparkChartType;
-    return map;
+    return <String, dynamic>{
+      'minAlignmentPeriod': minAlignmentPeriod,
+      'sparkChartType': sparkChartType,
+    };
   }
 
   factory SparkChartViewResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class SparkChartViewResponse {
     );
   }
 }
+

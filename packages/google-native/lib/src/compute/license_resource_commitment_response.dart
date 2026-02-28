@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Commitment for a particular license resource.
 class LicenseResourceCommitmentResponse {
   /// The number of licenses purchased.
   final String amount;
-
   /// Specifies the core range of the instance for which this license applies.
   final String coresPerLicense;
-
   /// Any applicable license URI.
   final String license;
 
@@ -22,11 +21,11 @@ class LicenseResourceCommitmentResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['amount'] = amount;
-    map['coresPerLicense'] = coresPerLicense;
-    map['license'] = license;
-    return map;
+    return <String, dynamic>{
+      'amount': amount,
+      'coresPerLicense': coresPerLicense,
+      'license': license,
+    };
   }
 
   factory LicenseResourceCommitmentResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class LicenseResourceCommitmentResponse {
     );
   }
 }
+

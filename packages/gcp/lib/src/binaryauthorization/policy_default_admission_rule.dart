@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PolicyDefaultAdmissionRule {
   /// The action when a pod creation is denied by the admission rule.
   /// Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
   final String enforcementMode;
-
   /// How this admission rule will be evaluated.
   /// Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
   final String evaluationMode;
-
   /// The resource names of the attestors that must attest to a
   /// container image. If the attestor is in a different project from the
   /// policy, it should be specified in the format `projects/*/attestors/*`.
@@ -30,23 +29,19 @@ class PolicyDefaultAdmissionRule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enforcementMode'] = enforcementMode;
-    map['evaluationMode'] = evaluationMode;
-    final requireAttestationsBiesValue = requireAttestationsBies;
-    if (requireAttestationsBiesValue != null) {
-      map['requireAttestationsBies'] = requireAttestationsBiesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enforcementMode': enforcementMode,
+      'evaluationMode': evaluationMode,
+      'requireAttestationsBies': ?requireAttestationsBies,
+    };
   }
 
   factory PolicyDefaultAdmissionRule.fromMap(Map<String, dynamic> map) {
     return PolicyDefaultAdmissionRule(
       enforcementMode: map['enforcementMode'] as String,
       evaluationMode: map['evaluationMode'] as String,
-      requireAttestationsBies: map['requireAttestationsBies'] == null
-          ? null
-          : (map['requireAttestationsBies'] as List).cast<String>(),
+      requireAttestationsBies: map['requireAttestationsBies'] == null ? null : (map['requireAttestationsBies'] as List).cast<String>(),
     );
   }
 }
+

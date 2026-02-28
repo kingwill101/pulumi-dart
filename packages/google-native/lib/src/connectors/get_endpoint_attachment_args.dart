@@ -19,20 +19,17 @@ class GetEndpointAttachmentArgs {
     required String endpointAttachmentId,
     required String location,
     String? project,
-  })  : endpointAttachmentId =
-            pulumi.Input.asInput<String>(endpointAttachmentId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      endpointAttachmentId = pulumi.Input.asInput<String>(endpointAttachmentId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['endpointAttachmentId'] = endpointAttachmentId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'endpointAttachmentId': endpointAttachmentId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetEndpointAttachmentArgs.fromMap(Map<String, dynamic> map) {
@@ -43,3 +40,4 @@ class GetEndpointAttachmentArgs {
     );
   }
 }
+

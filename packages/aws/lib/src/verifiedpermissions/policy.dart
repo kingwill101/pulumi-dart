@@ -138,16 +138,12 @@ import 'policy_definition.dart';
 class Policy extends pulumi.CustomResource {
   /// The date the policy was created.
   late final pulumi.Output<String> createdDate;
-
   /// The definition of the policy. See Definition below.
   late final pulumi.Output<PolicyDefinition> definition;
-
   /// The Policy ID of the policy.
   late final pulumi.Output<String> policyId;
-
   /// The Policy Store ID of the policy store.
   late final pulumi.Output<String> policyStoreId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

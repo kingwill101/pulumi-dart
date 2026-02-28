@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EnvironmentStorageConfigurationEfs {
   /// Id of the EFS filesystem to mount.
   final String fileSystemId;
-
   /// Path to mount the filesystem on, must start with `/m2/mount/`.
   final String mountPoint;
 
@@ -16,10 +16,10 @@ class EnvironmentStorageConfigurationEfs {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['fileSystemId'] = fileSystemId;
-    map['mountPoint'] = mountPoint;
-    return map;
+    return <String, dynamic>{
+      'fileSystemId': fileSystemId,
+      'mountPoint': mountPoint,
+    };
   }
 
   factory EnvironmentStorageConfigurationEfs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class EnvironmentStorageConfigurationEfs {
     );
   }
 }
+

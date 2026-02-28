@@ -22,38 +22,28 @@ class GetNotebookRuntimeTemplateIamPolicyAiplatformV1beta1Args {
     required String notebookRuntimeTemplateId,
     int? optionsRequestedPolicyVersion,
     String? project,
-  })  : location = pulumi.Input.asInput<String>(location),
-        notebookRuntimeTemplateId =
-            pulumi.Input.asInput<String>(notebookRuntimeTemplateId),
-        optionsRequestedPolicyVersion =
-            pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      notebookRuntimeTemplateId = pulumi.Input.asInput<String>(notebookRuntimeTemplateId),
+      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    map['notebookRuntimeTemplateId'] = notebookRuntimeTemplateId;
-    final optionsRequestedPolicyVersionValue = optionsRequestedPolicyVersion;
-    if (optionsRequestedPolicyVersionValue != null) {
-      map['optionsRequestedPolicyVersion'] = optionsRequestedPolicyVersionValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'notebookRuntimeTemplateId': notebookRuntimeTemplateId,
+      'optionsRequestedPolicyVersion': ?optionsRequestedPolicyVersion,
+      'project': ?project,
+    };
   }
 
-  factory GetNotebookRuntimeTemplateIamPolicyAiplatformV1beta1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetNotebookRuntimeTemplateIamPolicyAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetNotebookRuntimeTemplateIamPolicyAiplatformV1beta1Args(
       location: map['location'] as String,
       notebookRuntimeTemplateId: map['notebookRuntimeTemplateId'] as String,
-      optionsRequestedPolicyVersion:
-          map['optionsRequestedPolicyVersion'] == null
-              ? null
-              : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

@@ -6,8 +6,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataO
   final String? accessToken;
   final String clientId;
   final String clientSecret;
-  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentialsOauthRequest?
-      oauthRequest;
+  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentialsOauthRequest? oauthRequest;
   final String? refreshToken;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentials].
@@ -25,37 +24,23 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataO
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final accessTokenValue = accessToken;
-    if (accessTokenValue != null) {
-      map['accessToken'] = accessTokenValue;
-    }
-    map['clientId'] = clientId;
-    map['clientSecret'] = clientSecret;
-    final oauthRequestValue = oauthRequest;
-    if (oauthRequestValue != null) {
-      map['oauthRequest'] = oauthRequestValue.toMap();
-    }
-    final refreshTokenValue = refreshToken;
-    if (refreshTokenValue != null) {
-      map['refreshToken'] = refreshTokenValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'accessToken': ?accessToken,
+      'clientId': clientId,
+      'clientSecret': clientSecret,
+      'oauthRequest': ?oauthRequest == null ? null : oauthRequest!.toMap(),
+      'refreshToken': ?refreshToken,
+    };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentials.fromMap(
-      Map<String, dynamic> map) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentials.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentials(
-      accessToken:
-          map['accessToken'] == null ? null : map['accessToken'] as String,
+      accessToken: map['accessToken'] == null ? null : map['accessToken'] as String,
       clientId: map['clientId'] as String,
       clientSecret: map['clientSecret'] as String,
-      oauthRequest: map['oauthRequest'] == null
-          ? null
-          : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentialsOauthRequest
-              .fromMap((map['oauthRequest'] as Map).cast<String, dynamic>()),
-      refreshToken:
-          map['refreshToken'] == null ? null : map['refreshToken'] as String,
+      oauthRequest: map['oauthRequest'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentialsOauthRequest.fromMap((map['oauthRequest'] as Map).cast<String, dynamic>()),
+      refreshToken: map['refreshToken'] == null ? null : map['refreshToken'] as String,
     );
   }
 }
+

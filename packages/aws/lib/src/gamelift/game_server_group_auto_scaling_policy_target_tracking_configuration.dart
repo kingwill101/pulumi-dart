@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GameServerGroupAutoScalingPolicyTargetTrackingConfiguration {
   /// Desired value to use with a game server group target-based scaling policy.
   final double targetValue;
@@ -11,15 +12,15 @@ class GameServerGroupAutoScalingPolicyTargetTrackingConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['targetValue'] = targetValue;
-    return map;
+    return <String, dynamic>{
+      'targetValue': targetValue,
+    };
   }
 
-  factory GameServerGroupAutoScalingPolicyTargetTrackingConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory GameServerGroupAutoScalingPolicyTargetTrackingConfiguration.fromMap(Map<String, dynamic> map) {
     return GameServerGroupAutoScalingPolicyTargetTrackingConfiguration(
       targetValue: map['targetValue'] as double,
     );
   }
 }
+

@@ -13,7 +13,7 @@ enum AllocationAggregateReservationVmFamily {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown AllocationAggregateReservationVmFamily value: $value');
+    throw ArgumentError('Unknown AllocationAggregateReservationVmFamily value: $value');
   }
 }
+

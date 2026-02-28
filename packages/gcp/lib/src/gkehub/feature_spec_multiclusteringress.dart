@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FeatureSpecMulticlusteringress {
   /// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
   final String configMembership;
@@ -11,9 +12,9 @@ class FeatureSpecMulticlusteringress {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['configMembership'] = configMembership;
-    return map;
+    return <String, dynamic>{
+      'configMembership': configMembership,
+    };
   }
 
   factory FeatureSpecMulticlusteringress.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class FeatureSpecMulticlusteringress {
     );
   }
 }
+

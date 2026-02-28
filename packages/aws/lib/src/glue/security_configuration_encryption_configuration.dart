@@ -5,11 +5,8 @@ import 'security_configuration_encryption_configuration_job_bookmarks_encryption
 import 'security_configuration_encryption_configuration_s3_encryption.dart';
 
 class SecurityConfigurationEncryptionConfiguration {
-  final SecurityConfigurationEncryptionConfigurationCloudwatchEncryption
-      cloudwatchEncryption;
-  final SecurityConfigurationEncryptionConfigurationJobBookmarksEncryption
-      jobBookmarksEncryption;
-
+  final SecurityConfigurationEncryptionConfigurationCloudwatchEncryption cloudwatchEncryption;
+  final SecurityConfigurationEncryptionConfigurationJobBookmarksEncryption jobBookmarksEncryption;
   /// A `s3_encryption ` block as described below, which contains encryption configuration for S3 data.
   final SecurityConfigurationEncryptionConfigurationS3Encryption s3Encryption;
 
@@ -24,27 +21,19 @@ class SecurityConfigurationEncryptionConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cloudwatchEncryption'] = cloudwatchEncryption.toMap();
-    map['jobBookmarksEncryption'] = jobBookmarksEncryption.toMap();
-    map['s3Encryption'] = s3Encryption.toMap();
-    return map;
+    return <String, dynamic>{
+      'cloudwatchEncryption': cloudwatchEncryption.toMap(),
+      'jobBookmarksEncryption': jobBookmarksEncryption.toMap(),
+      's3Encryption': s3Encryption.toMap(),
+    };
   }
 
-  factory SecurityConfigurationEncryptionConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory SecurityConfigurationEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return SecurityConfigurationEncryptionConfiguration(
-      cloudwatchEncryption:
-          SecurityConfigurationEncryptionConfigurationCloudwatchEncryption
-              .fromMap(
-                  (map['cloudwatchEncryption'] as Map).cast<String, dynamic>()),
-      jobBookmarksEncryption:
-          SecurityConfigurationEncryptionConfigurationJobBookmarksEncryption
-              .fromMap((map['jobBookmarksEncryption'] as Map)
-                  .cast<String, dynamic>()),
-      s3Encryption:
-          SecurityConfigurationEncryptionConfigurationS3Encryption.fromMap(
-              (map['s3Encryption'] as Map).cast<String, dynamic>()),
+      cloudwatchEncryption: SecurityConfigurationEncryptionConfigurationCloudwatchEncryption.fromMap((map['cloudwatchEncryption'] as Map).cast<String, dynamic>()),
+      jobBookmarksEncryption: SecurityConfigurationEncryptionConfigurationJobBookmarksEncryption.fromMap((map['jobBookmarksEncryption'] as Map).cast<String, dynamic>()),
+      s3Encryption: SecurityConfigurationEncryptionConfigurationS3Encryption.fromMap((map['s3Encryption'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

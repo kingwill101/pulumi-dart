@@ -7,13 +7,10 @@ import 'data_set_logical_table_map_source.dart';
 class DataSetLogicalTableMap {
   /// A display name for the logical table.
   final String alias;
-
   /// Transform operations that act on this logical table. For this structure to be valid, only one of the attributes can be non-null. See data_transforms.
   final List<DataSetLogicalTableMapDataTransform>? dataTransforms;
-
   /// Key of the logical table map.
   final String logicalTableMapId;
-
   /// Source of this logical table. See source.
   final DataSetLogicalTableMapSource source;
 
@@ -30,31 +27,21 @@ class DataSetLogicalTableMap {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['alias'] = alias;
-    final dataTransformsValue = dataTransforms;
-    if (dataTransformsValue != null) {
-      map['dataTransforms'] = pulumi.Input.encodeList<
-          DataSetLogicalTableMapDataTransform,
-          Map<String, dynamic>>(dataTransformsValue, (value) => value.toMap());
-    }
-    map['logicalTableMapId'] = logicalTableMapId;
-    map['source'] = source.toMap();
-    return map;
+    return <String, dynamic>{
+      'alias': alias,
+      'dataTransforms': ?dataTransforms == null ? null : pulumi.Input.encodeList<DataSetLogicalTableMapDataTransform, Map<String, dynamic>>(dataTransforms!, (value) => value.toMap()),
+      'logicalTableMapId': logicalTableMapId,
+      'source': source.toMap(),
+    };
   }
 
   factory DataSetLogicalTableMap.fromMap(Map<String, dynamic> map) {
     return DataSetLogicalTableMap(
       alias: map['alias'] as String,
-      dataTransforms: map['dataTransforms'] == null
-          ? null
-          : pulumi.Input.decodeList<DataSetLogicalTableMapDataTransform>(
-              map['dataTransforms'],
-              (value) => DataSetLogicalTableMapDataTransform.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      dataTransforms: map['dataTransforms'] == null ? null : pulumi.Input.decodeList<DataSetLogicalTableMapDataTransform>(map['dataTransforms'], (value) => DataSetLogicalTableMapDataTransform.fromMap((value as Map).cast<String, dynamic>())),
       logicalTableMapId: map['logicalTableMapId'] as String,
-      source: DataSetLogicalTableMapSource.fromMap(
-          (map['source'] as Map).cast<String, dynamic>()),
+      source: DataSetLogicalTableMapSource.fromMap((map['source'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

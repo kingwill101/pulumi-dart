@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConnectionLogConfig {
   /// Enabled represents whether logging is enabled or not for a connection.
   final bool enabled;
-
   /// Log configuration level.
   /// Possible values are: `LOG_LEVEL_UNSPECIFIED`, `ERROR`, `INFO`, `DEBUG`.
   final String? level;
@@ -17,13 +17,10 @@ class ConnectionLogConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    final levelValue = level;
-    if (levelValue != null) {
-      map['level'] = levelValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+      'level': ?level,
+    };
   }
 
   factory ConnectionLogConfig.fromMap(Map<String, dynamic> map) {
@@ -33,3 +30,4 @@ class ConnectionLogConfig {
     );
   }
 }
+

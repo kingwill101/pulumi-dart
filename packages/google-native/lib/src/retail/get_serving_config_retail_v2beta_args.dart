@@ -22,21 +22,19 @@ class GetServingConfigRetailV2betaArgs {
     required String location,
     String? project,
     required String servingConfigId,
-  })  : catalogId = pulumi.Input.asInput<String>(catalogId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        servingConfigId = pulumi.Input.asInput<String>(servingConfigId);
+  }) :
+      catalogId = pulumi.Input.asInput<String>(catalogId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      servingConfigId = pulumi.Input.asInput<String>(servingConfigId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['catalogId'] = catalogId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['servingConfigId'] = servingConfigId;
-    return map;
+    return <String, dynamic>{
+      'catalogId': catalogId,
+      'location': location,
+      'project': ?project,
+      'servingConfigId': servingConfigId,
+    };
   }
 
   factory GetServingConfigRetailV2betaArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetServingConfigRetailV2betaArgs {
     );
   }
 }
+

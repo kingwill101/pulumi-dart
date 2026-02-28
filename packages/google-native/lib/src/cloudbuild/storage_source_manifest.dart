@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Location of the source manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
 class StorageSourceManifest {
   /// Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
   final String? bucket;
-
   /// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
   final String? generation;
-
   /// Cloud Storage object containing the source manifest. This object must be a JSON file.
   final String? object;
 
@@ -22,28 +21,19 @@ class StorageSourceManifest {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final bucketValue = bucket;
-    if (bucketValue != null) {
-      map['bucket'] = bucketValue;
-    }
-    final generationValue = generation;
-    if (generationValue != null) {
-      map['generation'] = generationValue;
-    }
-    final objectValue = object;
-    if (objectValue != null) {
-      map['object'] = objectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'bucket': ?bucket,
+      'generation': ?generation,
+      'object': ?object,
+    };
   }
 
   factory StorageSourceManifest.fromMap(Map<String, dynamic> map) {
     return StorageSourceManifest(
       bucket: map['bucket'] == null ? null : map['bucket'] as String,
-      generation:
-          map['generation'] == null ? null : map['generation'] as String,
+      generation: map['generation'] == null ? null : map['generation'] as String,
       object: map['object'] == null ? null : map['object'] as String,
     );
   }
 }
+

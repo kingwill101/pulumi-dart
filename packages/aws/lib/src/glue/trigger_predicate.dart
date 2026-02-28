@@ -6,7 +6,6 @@ import 'trigger_predicate_condition.dart';
 class TriggerPredicate {
   /// A list of the conditions that determine when the trigger will fire. See Conditions.
   final List<TriggerPredicateCondition> conditions;
-
   /// How to handle multiple conditions. Defaults to `AND`. Valid values are `AND` or `ANY`.
   final String? logical;
 
@@ -19,23 +18,17 @@ class TriggerPredicate {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['conditions'] = pulumi.Input.encodeList<TriggerPredicateCondition,
-        Map<String, dynamic>>(conditions, (value) => value.toMap());
-    final logicalValue = logical;
-    if (logicalValue != null) {
-      map['logical'] = logicalValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'conditions': pulumi.Input.encodeList<TriggerPredicateCondition, Map<String, dynamic>>(conditions, (value) => value.toMap()),
+      'logical': ?logical,
+    };
   }
 
   factory TriggerPredicate.fromMap(Map<String, dynamic> map) {
     return TriggerPredicate(
-      conditions: pulumi.Input.decodeList<TriggerPredicateCondition>(
-          map['conditions'],
-          (value) => TriggerPredicateCondition.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      conditions: pulumi.Input.decodeList<TriggerPredicateCondition>(map['conditions'], (value) => TriggerPredicateCondition.fromMap((value as Map).cast<String, dynamic>())),
       logical: map['logical'] == null ? null : map['logical'] as String,
     );
   }
 }
+

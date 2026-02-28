@@ -2233,63 +2233,43 @@ class Instance extends pulumi.CustomResource {
   /// AUTH_DISABLED
   /// IAM_AUTH
   late final pulumi.Output<String> authorizationMode;
-
   /// The automated backup config for a instance.
   /// Structure is documented below.
-  late final pulumi.Output<InstanceAutomatedBackupConfig?>
-      automatedBackupConfig;
-
+  late final pulumi.Output<InstanceAutomatedBackupConfig?> automatedBackupConfig;
   /// This field is used to determine the available maintenance versions for the self service update.
   late final pulumi.Output<List<String>> availableMaintenanceVersions;
-
   /// The backup collection full resource name.
   /// Example: projects/{project}/locations/{location}/backupCollections/{collection}
   late final pulumi.Output<String> backupCollection;
-
   /// Output only. Creation timestamp of the instance.
   late final pulumi.Output<String> createTime;
-
   /// Cross instance replication config
   /// Structure is documented below.
-  late final pulumi.Output<InstanceCrossInstanceReplicationConfig>
-      crossInstanceReplicationConfig;
-
+  late final pulumi.Output<InstanceCrossInstanceReplicationConfig> crossInstanceReplicationConfig;
   /// Optional. If set to true deletion of the instance will fail.
   late final pulumi.Output<bool?> deletionProtectionEnabled;
-
   /// Immutable. User inputs for the auto-created endpoints connections.
-  late final pulumi.Output<List<InstanceDesiredAutoCreatedEndpoint>?>
-      desiredAutoCreatedEndpoints;
-
+  late final pulumi.Output<List<InstanceDesiredAutoCreatedEndpoint>?> desiredAutoCreatedEndpoints;
   /// `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
-  late final pulumi.Output<List<InstanceDesiredPscAutoConnection>?>
-      desiredPscAutoConnections;
-
+  late final pulumi.Output<List<InstanceDesiredPscAutoConnection>?> desiredPscAutoConnections;
   /// (Deprecated)
   /// Deprecated. Output only. Endpoints clients can connect to the instance through.
   /// Structure is documented below.
   late final pulumi.Output<List<InstanceDiscoveryEndpoint>> discoveryEndpoints;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// This field represents the actual maintenance version of the cluster.
   late final pulumi.Output<String> effectiveMaintenanceVersion;
-
   /// Endpoints for the instance.
   /// Structure is documented below.
   late final pulumi.Output<List<InstanceEndpoint>> endpoints;
-
   /// Optional. User-provided engine configurations for the instance.
   late final pulumi.Output<Map<String, String>?> engineConfigs;
-
   /// Optional. Engine version of the instance.
   late final pulumi.Output<String> engineVersion;
-
   /// GCS source for the instance.
   /// Structure is documented below.
   late final pulumi.Output<InstanceGcsSource?> gcsSource;
-
   /// Required. The ID to use for the instance, which will become the final component of
   /// the instance's resource name.
   /// This value is subject to the following restrictions:
@@ -2299,54 +2279,41 @@ class Instance extends pulumi.CustomResource {
   /// * Must not end with a hyphen
   /// * Must be unique within a location
   late final pulumi.Output<String> instanceId;
-
   /// The KMS key used to encrypt the at-rest data of the cluster
   late final pulumi.Output<String?> kmsKey;
-
   /// Optional. Labels to represent user-provided metadata.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
   late final pulumi.Output<String> location;
-
   /// Maintenance policy for a cluster
   /// Structure is documented below.
   late final pulumi.Output<InstanceMaintenancePolicy?> maintenancePolicy;
-
   /// Upcoming maintenance schedule.
   /// Structure is documented below.
-  late final pulumi.Output<List<InstanceMaintenanceSchedule>>
-      maintenanceSchedules;
-
+  late final pulumi.Output<List<InstanceMaintenanceSchedule>> maintenanceSchedules;
   /// This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the available_maintenance_versions field.
   /// *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
   late final pulumi.Output<String?> maintenanceVersion;
-
   /// Managed backup source for the instance.
   /// Structure is documented below.
   late final pulumi.Output<InstanceManagedBackupSource?> managedBackupSource;
-
   /// Instance's Certificate Authority. This field will only be populated if instance's transit_encryption_mode is SERVER_AUTHENTICATION
   /// Structure is documented below.
   late final pulumi.Output<List<InstanceManagedServerCa>> managedServerCas;
-
   /// Optional. cluster or cluster-disabled.
   /// Possible values:
   /// CLUSTER
   /// CLUSTER_DISABLED
   /// Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
   late final pulumi.Output<String> mode;
-
   /// Identifier. Unique name of the instance.
   /// Format: projects/{project}/locations/{location}/instances/{instance}
   late final pulumi.Output<String> name;
-
   /// Represents configuration for nodes of the instance.
   /// Structure is documented below.
   late final pulumi.Output<List<InstanceNodeConfig>> nodeConfigs;
-
   /// Optional. Machine type for individual nodes of the instance.
   /// Possible values:
   /// SHARED_CORE_NANO
@@ -2354,35 +2321,26 @@ class Instance extends pulumi.CustomResource {
   /// HIGHMEM_XLARGE
   /// STANDARD_SMALL
   late final pulumi.Output<String> nodeType;
-
   /// Represents persistence configuration for a instance.
   /// Structure is documented below.
   late final pulumi.Output<InstancePersistenceConfig> persistenceConfig;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Configuration of a service attachment of the cluster, for creating PSC connections.
   /// Structure is documented below.
-  late final pulumi.Output<List<InstancePscAttachmentDetail>>
-      pscAttachmentDetails;
-
+  late final pulumi.Output<List<InstancePscAttachmentDetail>> pscAttachmentDetails;
   /// (Deprecated)
   /// Output only. User inputs and resource details of the auto-created PSC connections.
   /// Structure is documented below.
   late final pulumi.Output<List<InstancePscAutoConnection>> pscAutoConnections;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Optional. Number of replica nodes per shard. If omitted the default is 0 replicas.
   late final pulumi.Output<int> replicaCount;
-
   /// Required. Number of shards for the instance.
   late final pulumi.Output<int> shardCount;
-
   /// Output only. Current state of the instance.
   /// Possible values:
   /// CREATING
@@ -2390,27 +2348,21 @@ class Instance extends pulumi.CustomResource {
   /// UPDATING
   /// DELETING
   late final pulumi.Output<String> state;
-
   /// Additional information about the state of the instance.
   /// Structure is documented below.
   late final pulumi.Output<List<InstanceStateInfo>> stateInfos;
-
   /// Optional. Immutable. In-transit encryption mode of the instance.
   /// Possible values:
   /// TRANSIT_ENCRYPTION_DISABLED
   /// SERVER_AUTHENTICATION
   late final pulumi.Output<String> transitEncryptionMode;
-
   /// Output only. System assigned, unique identifier for the instance.
   late final pulumi.Output<String> uid;
-
   /// Output only. Latest update timestamp of the instance.
   late final pulumi.Output<String> updateTime;
-
   /// Zone distribution configuration for allocation of instance resources.
   /// Structure is documented below.
-  late final pulumi.Output<InstanceZoneDistributionConfig>
-      zoneDistributionConfig;
+  late final pulumi.Output<InstanceZoneDistributionConfig> zoneDistributionConfig;
 
   /// Creates a new [Instance].
   /// [name] The Pulumi resource name.
@@ -2427,29 +2379,17 @@ class Instance extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.authorizationMode = registerOutput<String>('authorizationMode');
-    this.automatedBackupConfig =
-        registerOutput<InstanceAutomatedBackupConfig?>('automatedBackupConfig');
-    this.availableMaintenanceVersions =
-        registerOutput<List<String>>('availableMaintenanceVersions');
+    this.automatedBackupConfig = registerOutput<InstanceAutomatedBackupConfig?>('automatedBackupConfig');
+    this.availableMaintenanceVersions = registerOutput<List<String>>('availableMaintenanceVersions');
     this.backupCollection = registerOutput<String>('backupCollection');
     this.createTime = registerOutput<String>('createTime');
-    this.crossInstanceReplicationConfig =
-        registerOutput<InstanceCrossInstanceReplicationConfig>(
-            'crossInstanceReplicationConfig');
-    this.deletionProtectionEnabled =
-        registerOutput<bool?>('deletionProtectionEnabled');
-    this.desiredAutoCreatedEndpoints =
-        registerOutput<List<InstanceDesiredAutoCreatedEndpoint>?>(
-            'desiredAutoCreatedEndpoints');
-    this.desiredPscAutoConnections =
-        registerOutput<List<InstanceDesiredPscAutoConnection>?>(
-            'desiredPscAutoConnections');
-    this.discoveryEndpoints =
-        registerOutput<List<InstanceDiscoveryEndpoint>>('discoveryEndpoints');
-    this.effectiveLabels =
-        registerOutput<Map<String, String>>('effectiveLabels');
-    this.effectiveMaintenanceVersion =
-        registerOutput<String>('effectiveMaintenanceVersion');
+    this.crossInstanceReplicationConfig = registerOutput<InstanceCrossInstanceReplicationConfig>('crossInstanceReplicationConfig');
+    this.deletionProtectionEnabled = registerOutput<bool?>('deletionProtectionEnabled');
+    this.desiredAutoCreatedEndpoints = registerOutput<List<InstanceDesiredAutoCreatedEndpoint>?>('desiredAutoCreatedEndpoints');
+    this.desiredPscAutoConnections = registerOutput<List<InstanceDesiredPscAutoConnection>?>('desiredPscAutoConnections');
+    this.discoveryEndpoints = registerOutput<List<InstanceDiscoveryEndpoint>>('discoveryEndpoints');
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    this.effectiveMaintenanceVersion = registerOutput<String>('effectiveMaintenanceVersion');
     this.endpoints = registerOutput<List<InstanceEndpoint>>('endpoints');
     this.engineConfigs = registerOutput<Map<String, String>?>('engineConfigs');
     this.engineVersion = registerOutput<String>('engineVersion');
@@ -2458,39 +2398,27 @@ class Instance extends pulumi.CustomResource {
     this.kmsKey = registerOutput<String?>('kmsKey');
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.location = registerOutput<String>('location');
-    this.maintenancePolicy =
-        registerOutput<InstanceMaintenancePolicy?>('maintenancePolicy');
-    this.maintenanceSchedules =
-        registerOutput<List<InstanceMaintenanceSchedule>>(
-            'maintenanceSchedules');
+    this.maintenancePolicy = registerOutput<InstanceMaintenancePolicy?>('maintenancePolicy');
+    this.maintenanceSchedules = registerOutput<List<InstanceMaintenanceSchedule>>('maintenanceSchedules');
     this.maintenanceVersion = registerOutput<String?>('maintenanceVersion');
-    this.managedBackupSource =
-        registerOutput<InstanceManagedBackupSource?>('managedBackupSource');
-    this.managedServerCas =
-        registerOutput<List<InstanceManagedServerCa>>('managedServerCas');
+    this.managedBackupSource = registerOutput<InstanceManagedBackupSource?>('managedBackupSource');
+    this.managedServerCas = registerOutput<List<InstanceManagedServerCa>>('managedServerCas');
     this.mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
     this.nodeConfigs = registerOutput<List<InstanceNodeConfig>>('nodeConfigs');
     this.nodeType = registerOutput<String>('nodeType');
-    this.persistenceConfig =
-        registerOutput<InstancePersistenceConfig>('persistenceConfig');
+    this.persistenceConfig = registerOutput<InstancePersistenceConfig>('persistenceConfig');
     this.project = registerOutput<String>('project');
-    this.pscAttachmentDetails =
-        registerOutput<List<InstancePscAttachmentDetail>>(
-            'pscAttachmentDetails');
-    this.pscAutoConnections =
-        registerOutput<List<InstancePscAutoConnection>>('pscAutoConnections');
+    this.pscAttachmentDetails = registerOutput<List<InstancePscAttachmentDetail>>('pscAttachmentDetails');
+    this.pscAutoConnections = registerOutput<List<InstancePscAutoConnection>>('pscAutoConnections');
     this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.replicaCount = registerOutput<int>('replicaCount');
     this.shardCount = registerOutput<int>('shardCount');
     this.state = registerOutput<String>('state');
     this.stateInfos = registerOutput<List<InstanceStateInfo>>('stateInfos');
-    this.transitEncryptionMode =
-        registerOutput<String>('transitEncryptionMode');
+    this.transitEncryptionMode = registerOutput<String>('transitEncryptionMode');
     this.uid = registerOutput<String>('uid');
     this.updateTime = registerOutput<String>('updateTime');
-    this.zoneDistributionConfig =
-        registerOutput<InstanceZoneDistributionConfig>(
-            'zoneDistributionConfig');
+    this.zoneDistributionConfig = registerOutput<InstanceZoneDistributionConfig>('zoneDistributionConfig');
   }
 }

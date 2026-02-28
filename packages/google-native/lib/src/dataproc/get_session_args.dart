@@ -19,19 +19,17 @@ class GetSessionArgs {
     required String location,
     String? project,
     required String sessionId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        sessionId = pulumi.Input.asInput<String>(sessionId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      sessionId = pulumi.Input.asInput<String>(sessionId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['sessionId'] = sessionId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+      'sessionId': sessionId,
+    };
   }
 
   factory GetSessionArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetSessionArgs {
     );
   }
 }
+

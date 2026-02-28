@@ -17,31 +17,17 @@ class ComplianceOccurrence {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nonComplianceReasonValue = nonComplianceReason;
-    if (nonComplianceReasonValue != null) {
-      map['nonComplianceReason'] = nonComplianceReasonValue;
-    }
-    final nonCompliantFilesValue = nonCompliantFiles;
-    if (nonCompliantFilesValue != null) {
-      map['nonCompliantFiles'] =
-          pulumi.Input.encodeList<NonCompliantFile, Map<String, dynamic>>(
-              nonCompliantFilesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'nonComplianceReason': ?nonComplianceReason,
+      'nonCompliantFiles': ?nonCompliantFiles == null ? null : pulumi.Input.encodeList<NonCompliantFile, Map<String, dynamic>>(nonCompliantFiles!, (value) => value.toMap()),
+    };
   }
 
   factory ComplianceOccurrence.fromMap(Map<String, dynamic> map) {
     return ComplianceOccurrence(
-      nonComplianceReason: map['nonComplianceReason'] == null
-          ? null
-          : map['nonComplianceReason'] as String,
-      nonCompliantFiles: map['nonCompliantFiles'] == null
-          ? null
-          : pulumi.Input.decodeList<NonCompliantFile>(
-              map['nonCompliantFiles'],
-              (value) => NonCompliantFile.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      nonComplianceReason: map['nonComplianceReason'] == null ? null : map['nonComplianceReason'] as String,
+      nonCompliantFiles: map['nonCompliantFiles'] == null ? null : pulumi.Input.decodeList<NonCompliantFile>(map['nonCompliantFiles'], (value) => NonCompliantFile.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

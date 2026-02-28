@@ -22,21 +22,19 @@ class GetRouteDatastreamV1alpha1Args {
     required String privateConnectionId,
     String? project,
     required String routeId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        privateConnectionId = pulumi.Input.asInput<String>(privateConnectionId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        routeId = pulumi.Input.asInput<String>(routeId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      privateConnectionId = pulumi.Input.asInput<String>(privateConnectionId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      routeId = pulumi.Input.asInput<String>(routeId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    map['privateConnectionId'] = privateConnectionId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['routeId'] = routeId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'privateConnectionId': privateConnectionId,
+      'project': ?project,
+      'routeId': routeId,
+    };
   }
 
   factory GetRouteDatastreamV1alpha1Args.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetRouteDatastreamV1alpha1Args {
     );
   }
 }
+

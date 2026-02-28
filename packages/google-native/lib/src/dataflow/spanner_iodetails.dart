@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Metadata for a Spanner connector used by the job.
 class SpannerIODetails {
   /// DatabaseId accessed in the connection.
   final String? databaseId;
-
   /// InstanceId accessed in the connection.
   final String? instanceId;
-
   /// ProjectId accessed in the connection.
   final String? project;
 
@@ -22,29 +21,19 @@ class SpannerIODetails {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final databaseIdValue = databaseId;
-    if (databaseIdValue != null) {
-      map['databaseId'] = databaseIdValue;
-    }
-    final instanceIdValue = instanceId;
-    if (instanceIdValue != null) {
-      map['instanceId'] = instanceIdValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'databaseId': ?databaseId,
+      'instanceId': ?instanceId,
+      'project': ?project,
+    };
   }
 
   factory SpannerIODetails.fromMap(Map<String, dynamic> map) {
     return SpannerIODetails(
-      databaseId:
-          map['databaseId'] == null ? null : map['databaseId'] as String,
-      instanceId:
-          map['instanceId'] == null ? null : map['instanceId'] as String,
+      databaseId: map['databaseId'] == null ? null : map['databaseId'] as String,
+      instanceId: map['instanceId'] == null ? null : map['instanceId'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

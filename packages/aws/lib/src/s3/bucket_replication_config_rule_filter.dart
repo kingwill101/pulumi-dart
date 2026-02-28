@@ -6,10 +6,8 @@ import 'bucket_replication_config_rule_filter_tag.dart';
 class BucketReplicationConfigRuleFilter {
   /// Configuration block for specifying rule filters. This element is required only if you specify more than one filter. See and below for more details.
   final BucketReplicationConfigRuleFilterAnd? and;
-
   /// Object key name prefix that identifies subset of objects to which the rule applies. Must be less than or equal to 1024 characters in length.
   final String? prefix;
-
   /// Configuration block for specifying a tag key and value. See below.
   final BucketReplicationConfigRuleFilterTag? tag;
 
@@ -24,33 +22,19 @@ class BucketReplicationConfigRuleFilter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final andValue = and;
-    if (andValue != null) {
-      map['and'] = andValue.toMap();
-    }
-    final prefixValue = prefix;
-    if (prefixValue != null) {
-      map['prefix'] = prefixValue;
-    }
-    final tagValue = tag;
-    if (tagValue != null) {
-      map['tag'] = tagValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'and': ?and == null ? null : and!.toMap(),
+      'prefix': ?prefix,
+      'tag': ?tag == null ? null : tag!.toMap(),
+    };
   }
 
   factory BucketReplicationConfigRuleFilter.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfigRuleFilter(
-      and: map['and'] == null
-          ? null
-          : BucketReplicationConfigRuleFilterAnd.fromMap(
-              (map['and'] as Map).cast<String, dynamic>()),
+      and: map['and'] == null ? null : BucketReplicationConfigRuleFilterAnd.fromMap((map['and'] as Map).cast<String, dynamic>()),
       prefix: map['prefix'] == null ? null : map['prefix'] as String,
-      tag: map['tag'] == null
-          ? null
-          : BucketReplicationConfigRuleFilterTag.fromMap(
-              (map['tag'] as Map).cast<String, dynamic>()),
+      tag: map['tag'] == null ? null : BucketReplicationConfigRuleFilterTag.fromMap((map['tag'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

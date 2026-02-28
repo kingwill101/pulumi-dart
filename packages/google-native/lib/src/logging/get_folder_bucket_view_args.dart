@@ -22,18 +22,19 @@ class GetFolderBucketViewArgs {
     required String folderId,
     required String location,
     required String viewId,
-  })  : bucketId = pulumi.Input.asInput<String>(bucketId),
-        folderId = pulumi.Input.asInput<String>(folderId),
-        location = pulumi.Input.asInput<String>(location),
-        viewId = pulumi.Input.asInput<String>(viewId);
+  }) :
+      bucketId = pulumi.Input.asInput<String>(bucketId),
+      folderId = pulumi.Input.asInput<String>(folderId),
+      location = pulumi.Input.asInput<String>(location),
+      viewId = pulumi.Input.asInput<String>(viewId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucketId'] = bucketId;
-    map['folderId'] = folderId;
-    map['location'] = location;
-    map['viewId'] = viewId;
-    return map;
+    return <String, dynamic>{
+      'bucketId': bucketId,
+      'folderId': folderId,
+      'location': location,
+      'viewId': viewId,
+    };
   }
 
   factory GetFolderBucketViewArgs.fromMap(Map<String, dynamic> map) {
@@ -45,3 +46,4 @@ class GetFolderBucketViewArgs {
     );
   }
 }
+

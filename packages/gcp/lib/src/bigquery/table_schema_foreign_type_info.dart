@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TableSchemaForeignTypeInfo {
   /// Specifies the system which defines the foreign data
   /// type.
@@ -12,9 +13,9 @@ class TableSchemaForeignTypeInfo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['typeSystem'] = typeSystem;
-    return map;
+    return <String, dynamic>{
+      'typeSystem': typeSystem,
+    };
   }
 
   factory TableSchemaForeignTypeInfo.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class TableSchemaForeignTypeInfo {
     );
   }
 }
+

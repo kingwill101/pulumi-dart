@@ -13,7 +13,7 @@ enum HiveMetastoreConfigEndpointProtocol {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown HiveMetastoreConfigEndpointProtocol value: $value');
+    throw ArgumentError('Unknown HiveMetastoreConfigEndpointProtocol value: $value');
   }
 }
+

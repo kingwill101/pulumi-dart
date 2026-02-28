@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// ManagementURI for the Management Server resource.
 class ManagementURIResponse {
   /// The ManagementServer AGM/RD API URL.
   final String api;
-
   /// The ManagementServer AGM/RD WebUI URL.
   final String webUi;
 
@@ -17,10 +17,10 @@ class ManagementURIResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['api'] = api;
-    map['webUi'] = webUi;
-    return map;
+    return <String, dynamic>{
+      'api': api,
+      'webUi': webUi,
+    };
   }
 
   factory ManagementURIResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class ManagementURIResponse {
     );
   }
 }
+

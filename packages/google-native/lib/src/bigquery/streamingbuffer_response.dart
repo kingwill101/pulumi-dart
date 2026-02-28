@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class StreamingbufferResponse {
   /// A lower-bound estimate of the number of bytes currently in the streaming buffer.
   final String estimatedBytes;
-
   /// A lower-bound estimate of the number of rows currently in the streaming buffer.
   final String estimatedRows;
-
   /// Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
   final String oldestEntryTime;
 
@@ -21,11 +20,11 @@ class StreamingbufferResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['estimatedBytes'] = estimatedBytes;
-    map['estimatedRows'] = estimatedRows;
-    map['oldestEntryTime'] = oldestEntryTime;
-    return map;
+    return <String, dynamic>{
+      'estimatedBytes': estimatedBytes,
+      'estimatedRows': estimatedRows,
+      'oldestEntryTime': oldestEntryTime,
+    };
   }
 
   factory StreamingbufferResponse.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class StreamingbufferResponse {
     );
   }
 }
+

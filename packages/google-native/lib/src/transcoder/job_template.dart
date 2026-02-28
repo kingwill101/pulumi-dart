@@ -6,14 +6,11 @@ import 'job_template_args.dart';
 class JobTemplate extends pulumi.CustomResource {
   /// The configuration for this template.
   late final pulumi.Output<JobConfigResponse> config;
-
   /// Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`.
   late final pulumi.Output<String> jobTemplateId;
-
   /// The labels associated with this job template. You can use these to organize and group your job templates.
   late final pulumi.Output<Map<String, String>> labels;
   late final pulumi.Output<String> location;
-
   /// The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;

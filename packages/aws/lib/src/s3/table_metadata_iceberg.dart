@@ -14,15 +14,15 @@ class TableMetadataIceberg {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['schema'] = schema.toMap();
-    return map;
+    return <String, dynamic>{
+      'schema': schema.toMap(),
+    };
   }
 
   factory TableMetadataIceberg.fromMap(Map<String, dynamic> map) {
     return TableMetadataIceberg(
-      schema: TableMetadataIcebergSchema.fromMap(
-          (map['schema'] as Map).cast<String, dynamic>()),
+      schema: TableMetadataIcebergSchema.fromMap((map['schema'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

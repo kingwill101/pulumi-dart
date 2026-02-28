@@ -877,72 +877,54 @@ import 'instance_performance_config.dart';
 class Instance extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> createTime;
-
   /// Indicates whether the instance is protected against deletion.
   late final pulumi.Output<bool?> deletionProtectionEnabled;
-
   /// The reason for enabling deletion protection.
   late final pulumi.Output<String?> deletionProtectionReason;
-
   /// A description of the instance.
   late final pulumi.Output<String?> description;
-
   /// Directory Services configuration.
   /// Should only be set if protocol is "NFS_V4_1".
   /// Structure is documented below.
   late final pulumi.Output<InstanceDirectoryServices?> directoryServices;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Output only fields for replication configuration.
   /// Structure is documented below.
-  late final pulumi.Output<List<InstanceEffectiveReplication>>
-      effectiveReplications;
-
+  late final pulumi.Output<List<InstanceEffectiveReplication>> effectiveReplications;
   /// Server-specified ETag for the instance resource to prevent
   /// simultaneous updates from overwriting each other.
   late final pulumi.Output<String> etag;
-
   /// File system shares on the instance. For this version, only a
   /// single file share is supported.
   /// Structure is documented below.
   late final pulumi.Output<InstanceFileShares> fileShares;
-
   /// Replication configuration, once set, this cannot be updated.
   /// Additionally this should be specified on the replica instance only, indicating the active as the peer_instance
   /// Structure is documented below.
   late final pulumi.Output<InstanceInitialReplication?> initialReplication;
-
   /// KMS key name used for data encryption.
   late final pulumi.Output<String?> kmsKeyName;
-
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
   late final pulumi.Output<String> location;
-
   /// The resource name of the instance.
   late final pulumi.Output<String> name;
-
   /// VPC networks to which the instance is connected. For this version,
   /// only a single network is supported.
   /// Structure is documented below.
   late final pulumi.Output<List<InstanceNetwork>> networks;
-
   /// Performance configuration for the instance. If not provided,
   /// the default performance settings will be used.
   /// Structure is documented below.
   late final pulumi.Output<InstancePerformanceConfig?> performanceConfig;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Either NFSv3, for using NFS version 3 as file sharing protocol,
   /// or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
   /// NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE.
@@ -950,11 +932,9 @@ class Instance extends pulumi.CustomResource {
   /// Default value is `NFS_V3`.
   /// Possible values are: `NFS_V3`, `NFS_V4_1`.
   late final pulumi.Output<String?> protocol;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// A map of resource manager tags. Resource manager tag keys
   /// and values have the same definition as resource manager
   /// tags. Keys must be in the format tagKeys/{tag_key_id},
@@ -965,11 +945,9 @@ class Instance extends pulumi.CustomResource {
   /// will trigger recreation. To apply tags to an existing
   /// resource, see the `gcp.tags.TagValue` resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The service tier of the instance.
   /// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
   late final pulumi.Output<String> tier;
-
   /// (Optional, Deprecated)
   /// The name of the Filestore zone of the instance.
   ///
@@ -991,29 +969,21 @@ class Instance extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
-    this.deletionProtectionEnabled =
-        registerOutput<bool?>('deletionProtectionEnabled');
-    this.deletionProtectionReason =
-        registerOutput<String?>('deletionProtectionReason');
+    this.deletionProtectionEnabled = registerOutput<bool?>('deletionProtectionEnabled');
+    this.deletionProtectionReason = registerOutput<String?>('deletionProtectionReason');
     this.description = registerOutput<String?>('description');
-    this.directoryServices =
-        registerOutput<InstanceDirectoryServices?>('directoryServices');
-    this.effectiveLabels =
-        registerOutput<Map<String, String>>('effectiveLabels');
-    this.effectiveReplications =
-        registerOutput<List<InstanceEffectiveReplication>>(
-            'effectiveReplications');
+    this.directoryServices = registerOutput<InstanceDirectoryServices?>('directoryServices');
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    this.effectiveReplications = registerOutput<List<InstanceEffectiveReplication>>('effectiveReplications');
     this.etag = registerOutput<String>('etag');
     this.fileShares = registerOutput<InstanceFileShares>('fileShares');
-    this.initialReplication =
-        registerOutput<InstanceInitialReplication?>('initialReplication');
+    this.initialReplication = registerOutput<InstanceInitialReplication?>('initialReplication');
     this.kmsKeyName = registerOutput<String?>('kmsKeyName');
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     this.networks = registerOutput<List<InstanceNetwork>>('networks');
-    this.performanceConfig =
-        registerOutput<InstancePerformanceConfig?>('performanceConfig');
+    this.performanceConfig = registerOutput<InstancePerformanceConfig?>('performanceConfig');
     this.project = registerOutput<String>('project');
     this.protocol = registerOutput<String?>('protocol');
     this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');

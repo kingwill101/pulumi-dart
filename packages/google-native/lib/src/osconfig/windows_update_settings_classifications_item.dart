@@ -19,7 +19,7 @@ enum WindowsUpdateSettingsClassificationsItem {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown WindowsUpdateSettingsClassificationsItem value: $value');
+    throw ArgumentError('Unknown WindowsUpdateSettingsClassificationsItem value: $value');
   }
 }
+

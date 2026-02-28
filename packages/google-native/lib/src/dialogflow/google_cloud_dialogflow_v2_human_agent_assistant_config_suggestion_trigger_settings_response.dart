@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Settings of suggestion trigger.
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponse {
   /// Do not trigger if last utterance is small talk.
   final bool noSmalltalk;
-
   /// Only trigger suggestion if participant role of last utterance is END_USER.
   final bool onlyEndUser;
 
@@ -17,17 +17,17 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsR
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['noSmalltalk'] = noSmalltalk;
-    map['onlyEndUser'] = onlyEndUser;
-    return map;
+    return <String, dynamic>{
+      'noSmalltalk': noSmalltalk,
+      'onlyEndUser': onlyEndUser,
+    };
   }
 
-  factory GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponse(
       noSmalltalk: map['noSmalltalk'] as bool,
       onlyEndUser: map['onlyEndUser'] as bool,
     );
   }
 }
+

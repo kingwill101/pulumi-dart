@@ -14,20 +14,15 @@ class GetResponsePlanAction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ssmAutomations'] = pulumi.Input.encodeList<
-        GetResponsePlanActionSsmAutomation,
-        Map<String, dynamic>>(ssmAutomations, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'ssmAutomations': pulumi.Input.encodeList<GetResponsePlanActionSsmAutomation, Map<String, dynamic>>(ssmAutomations, (value) => value.toMap()),
+    };
   }
 
   factory GetResponsePlanAction.fromMap(Map<String, dynamic> map) {
     return GetResponsePlanAction(
-      ssmAutomations:
-          pulumi.Input.decodeList<GetResponsePlanActionSsmAutomation>(
-              map['ssmAutomations'],
-              (value) => GetResponsePlanActionSsmAutomation.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      ssmAutomations: pulumi.Input.decodeList<GetResponsePlanActionSsmAutomation>(map['ssmAutomations'], (value) => GetResponsePlanActionSsmAutomation.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

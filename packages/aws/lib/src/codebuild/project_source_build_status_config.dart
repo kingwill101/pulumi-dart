@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ProjectSourceBuildStatusConfig {
   /// Specifies the context of the build status CodeBuild sends to the source provider. The usage of
   /// this parameter depends on the source provider.
   final String? context;
-
   /// Specifies the target url of the build status CodeBuild sends to the source provider. The
   /// usage of this parameter depends on the source provider.
   final String? targetUrl;
@@ -18,16 +18,10 @@ class ProjectSourceBuildStatusConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final contextValue = context;
-    if (contextValue != null) {
-      map['context'] = contextValue;
-    }
-    final targetUrlValue = targetUrl;
-    if (targetUrlValue != null) {
-      map['targetUrl'] = targetUrlValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'context': ?context,
+      'targetUrl': ?targetUrl,
+    };
   }
 
   factory ProjectSourceBuildStatusConfig.fromMap(Map<String, dynamic> map) {
@@ -37,3 +31,4 @@ class ProjectSourceBuildStatusConfig {
     );
   }
 }
+

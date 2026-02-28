@@ -16,3 +16,4 @@ enum AddressGroupType {
     throw ArgumentError('Unknown AddressGroupType value: $value');
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getProject.
 class GetProjectResult {
   final bool autoCreateNetwork;
@@ -7,12 +8,10 @@ class GetProjectResult {
   final String deletionPolicy;
   final Map<String, String> effectiveLabels;
   final String folderId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final Map<String, String> labels;
   final String name;
-
   /// The numeric identifier of the project.
   final String number;
   final String orgId;
@@ -51,24 +50,21 @@ class GetProjectResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['autoCreateNetwork'] = autoCreateNetwork;
-    map['billingAccount'] = billingAccount;
-    map['deletionPolicy'] = deletionPolicy;
-    map['effectiveLabels'] = effectiveLabels;
-    map['folderId'] = folderId;
-    map['id'] = id;
-    map['labels'] = labels;
-    map['name'] = name;
-    map['number'] = number;
-    map['orgId'] = orgId;
-    final projectIdValue = projectId;
-    if (projectIdValue != null) {
-      map['projectId'] = projectIdValue;
-    }
-    map['pulumiLabels'] = pulumiLabels;
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'autoCreateNetwork': autoCreateNetwork,
+      'billingAccount': billingAccount,
+      'deletionPolicy': deletionPolicy,
+      'effectiveLabels': effectiveLabels,
+      'folderId': folderId,
+      'id': id,
+      'labels': labels,
+      'name': name,
+      'number': number,
+      'orgId': orgId,
+      'projectId': ?projectId,
+      'pulumiLabels': pulumiLabels,
+      'tags': tags,
+    };
   }
 
   factory GetProjectResult.fromMap(Map<String, dynamic> map) {
@@ -89,3 +85,4 @@ class GetProjectResult {
     );
   }
 }
+

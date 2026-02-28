@@ -16,3 +16,4 @@ enum UpgradeSettingsStrategy {
     throw ArgumentError('Unknown UpgradeSettingsStrategy value: $value');
   }
 }
+

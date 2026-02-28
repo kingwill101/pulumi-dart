@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResourceCollectionArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Type of AWS resource collection to create. Valid values are `AWS_CLOUD_FORMATION`, `AWS_SERVICE`, and `AWS_TAGS`.
   final pulumi.Input<String> type;
 
@@ -19,17 +18,15 @@ class GetResourceCollectionArgs {
   GetResourceCollectionArgs({
     String? region,
     required String type,
-  })  : region = pulumi.Input.asOptionalInput<String>(region),
-        type = pulumi.Input.asInput<String>(type);
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      type = pulumi.Input.asInput<String>(type);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'region': ?region,
+      'type': type,
+    };
   }
 
   factory GetResourceCollectionArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +36,4 @@ class GetResourceCollectionArgs {
     );
   }
 }
+

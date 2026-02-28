@@ -14,21 +14,15 @@ class LogTransformerTransformerConfigSplitString {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['entries'] = pulumi.Input.encodeList<
-        LogTransformerTransformerConfigSplitStringEntry,
-        Map<String, dynamic>>(entries, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'entries': pulumi.Input.encodeList<LogTransformerTransformerConfigSplitStringEntry, Map<String, dynamic>>(entries, (value) => value.toMap()),
+    };
   }
 
-  factory LogTransformerTransformerConfigSplitString.fromMap(
-      Map<String, dynamic> map) {
+  factory LogTransformerTransformerConfigSplitString.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigSplitString(
-      entries: pulumi.Input.decodeList<
-              LogTransformerTransformerConfigSplitStringEntry>(
-          map['entries'],
-          (value) => LogTransformerTransformerConfigSplitStringEntry.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      entries: pulumi.Input.decodeList<LogTransformerTransformerConfigSplitStringEntry>(map['entries'], (value) => LogTransformerTransformerConfigSplitStringEntry.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

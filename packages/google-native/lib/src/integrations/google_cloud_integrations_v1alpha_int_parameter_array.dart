@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// This message only contains a field of integer array.
 class GoogleCloudIntegrationsV1alphaIntParameterArray {
   /// Integer array.
@@ -12,20 +13,15 @@ class GoogleCloudIntegrationsV1alphaIntParameterArray {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final intValuesValue = intValues;
-    if (intValuesValue != null) {
-      map['intValues'] = intValuesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'intValues': ?intValues,
+    };
   }
 
-  factory GoogleCloudIntegrationsV1alphaIntParameterArray.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaIntParameterArray.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaIntParameterArray(
-      intValues: map['intValues'] == null
-          ? null
-          : (map['intValues'] as List).cast<String>(),
+      intValues: map['intValues'] == null ? null : (map['intValues'] as List).cast<String>(),
     );
   }
 }
+

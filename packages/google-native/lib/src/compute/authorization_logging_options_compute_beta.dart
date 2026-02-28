@@ -14,21 +14,15 @@ class AuthorizationLoggingOptionsComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final permissionTypeValue = permissionType;
-    if (permissionTypeValue != null) {
-      map['permissionType'] = permissionTypeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'permissionType': ?permissionType == null ? null : permissionType!.value,
+    };
   }
 
-  factory AuthorizationLoggingOptionsComputeBeta.fromMap(
-      Map<String, dynamic> map) {
+  factory AuthorizationLoggingOptionsComputeBeta.fromMap(Map<String, dynamic> map) {
     return AuthorizationLoggingOptionsComputeBeta(
-      permissionType: map['permissionType'] == null
-          ? null
-          : AuthorizationLoggingOptionsPermissionTypeComputeBeta.fromValue(
-              map['permissionType'] as String),
+      permissionType: map['permissionType'] == null ? null : AuthorizationLoggingOptionsPermissionTypeComputeBeta.fromValue(map['permissionType'] as String),
     );
   }
 }
+

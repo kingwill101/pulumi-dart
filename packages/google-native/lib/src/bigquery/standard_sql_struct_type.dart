@@ -15,24 +15,15 @@ class StandardSqlStructType {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final fieldsValue = fields;
-    if (fieldsValue != null) {
-      map['fields'] =
-          pulumi.Input.encodeList<StandardSqlField, Map<String, dynamic>>(
-              fieldsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'fields': ?fields == null ? null : pulumi.Input.encodeList<StandardSqlField, Map<String, dynamic>>(fields!, (value) => value.toMap()),
+    };
   }
 
   factory StandardSqlStructType.fromMap(Map<String, dynamic> map) {
     return StandardSqlStructType(
-      fields: map['fields'] == null
-          ? null
-          : pulumi.Input.decodeList<StandardSqlField>(
-              map['fields'],
-              (value) => StandardSqlField.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      fields: map['fields'] == null ? null : pulumi.Input.decodeList<StandardSqlField>(map['fields'], (value) => StandardSqlField.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

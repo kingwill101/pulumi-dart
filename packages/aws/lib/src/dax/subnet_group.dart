@@ -126,16 +126,12 @@ import 'subnet_group_args.dart';
 class SubnetGroup extends pulumi.CustomResource {
   /// A description of the subnet group.
   late final pulumi.Output<String?> description;
-
   /// The name of the subnet group.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A list of VPC subnet IDs for the subnet group.
   late final pulumi.Output<List<String>> subnetIds;
-
   /// VPC ID of the subnet group.
   late final pulumi.Output<String> vpcId;
 

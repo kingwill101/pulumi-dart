@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// [Private Service Connect connectivity](https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
 class PrivateServiceConnectConnectivity {
   /// A service attachment that exposes a database, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
@@ -12,9 +13,9 @@ class PrivateServiceConnectConnectivity {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['serviceAttachment'] = serviceAttachment;
-    return map;
+    return <String, dynamic>{
+      'serviceAttachment': serviceAttachment,
+    };
   }
 
   factory PrivateServiceConnectConnectivity.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class PrivateServiceConnectConnectivity {
     );
   }
 }
+

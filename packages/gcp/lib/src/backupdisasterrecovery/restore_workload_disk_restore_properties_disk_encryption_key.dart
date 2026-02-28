@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey {
   /// (Optional)
   final String? kmsKeyName;
-
   /// (Optional)
   final String? kmsKeyServiceAccount;
-
   /// (Optional)
   final String? rawKey;
-
   /// (Optional)
   final String? rsaEncryptedKey;
 
@@ -26,38 +24,21 @@ class RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final kmsKeyNameValue = kmsKeyName;
-    if (kmsKeyNameValue != null) {
-      map['kmsKeyName'] = kmsKeyNameValue;
-    }
-    final kmsKeyServiceAccountValue = kmsKeyServiceAccount;
-    if (kmsKeyServiceAccountValue != null) {
-      map['kmsKeyServiceAccount'] = kmsKeyServiceAccountValue;
-    }
-    final rawKeyValue = rawKey;
-    if (rawKeyValue != null) {
-      map['rawKey'] = rawKeyValue;
-    }
-    final rsaEncryptedKeyValue = rsaEncryptedKey;
-    if (rsaEncryptedKeyValue != null) {
-      map['rsaEncryptedKey'] = rsaEncryptedKeyValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'kmsKeyName': ?kmsKeyName,
+      'kmsKeyServiceAccount': ?kmsKeyServiceAccount,
+      'rawKey': ?rawKey,
+      'rsaEncryptedKey': ?rsaEncryptedKey,
+    };
   }
 
-  factory RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey.fromMap(
-      Map<String, dynamic> map) {
+  factory RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey(
-      kmsKeyName:
-          map['kmsKeyName'] == null ? null : map['kmsKeyName'] as String,
-      kmsKeyServiceAccount: map['kmsKeyServiceAccount'] == null
-          ? null
-          : map['kmsKeyServiceAccount'] as String,
+      kmsKeyName: map['kmsKeyName'] == null ? null : map['kmsKeyName'] as String,
+      kmsKeyServiceAccount: map['kmsKeyServiceAccount'] == null ? null : map['kmsKeyServiceAccount'] as String,
       rawKey: map['rawKey'] == null ? null : map['rawKey'] as String,
-      rsaEncryptedKey: map['rsaEncryptedKey'] == null
-          ? null
-          : map['rsaEncryptedKey'] as String,
+      rsaEncryptedKey: map['rsaEncryptedKey'] == null ? null : map['rsaEncryptedKey'] as String,
     );
   }
 }
+

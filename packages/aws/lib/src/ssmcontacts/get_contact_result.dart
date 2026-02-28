@@ -1,21 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getContact.
 class GetContactResult {
   /// A unique and identifiable alias of the contact or escalation plan.
   final String alias;
   final String arn;
-
   /// Full friendly name of the contact or escalation plan.
   final String displayName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
-
   /// Map of tags to assign to the resource.
   final Map<String, String> tags;
-
   /// The type of contact engaged. A single contact is type `PERSONAL` and an escalation plan is type `ESCALATION`.
   final String type;
 
@@ -38,15 +35,15 @@ class GetContactResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['alias'] = alias;
-    map['arn'] = arn;
-    map['displayName'] = displayName;
-    map['id'] = id;
-    map['region'] = region;
-    map['tags'] = tags;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'alias': alias,
+      'arn': arn,
+      'displayName': displayName,
+      'id': id,
+      'region': region,
+      'tags': tags,
+      'type': type,
+    };
   }
 
   factory GetContactResult.fromMap(Map<String, dynamic> map) {
@@ -61,3 +58,4 @@ class GetContactResult {
     );
   }
 }
+

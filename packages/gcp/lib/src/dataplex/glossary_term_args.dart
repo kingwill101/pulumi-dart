@@ -9,29 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GlossaryTermArgs {
   /// The user-mutable description of the GlossaryTerm.
   final pulumi.Input<String>? description;
-
   /// User friendly display name of the GlossaryTerm. This is user-mutable. This will be same as the termId, if not specified.
   final pulumi.Input<String>? displayName;
-
   /// The glossary id for creation.
   final pulumi.Input<String>? glossaryId;
-
   /// User-defined labels for the GlossaryTerm.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// The location where the glossary term should reside.
   final pulumi.Input<String> location;
-
   /// The immediate parent of the GlossaryTerm in the resource-hierarchy. It can either be a Glossary or a Term. Format: projects/{projectId}/locations/{locationId}/glossaries/{glossaryId} OR projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/terms/{termId}
   final pulumi.Input<String> parent;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The term id for creation.
   final pulumi.Input<String>? termId;
 
@@ -53,57 +46,35 @@ class GlossaryTermArgs {
     required String parent,
     String? project,
     String? termId,
-  })  : description = pulumi.Input.asOptionalInput<String>(description),
-        displayName = pulumi.Input.asOptionalInput<String>(displayName),
-        glossaryId = pulumi.Input.asOptionalInput<String>(glossaryId),
-        labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-        location = pulumi.Input.asInput<String>(location),
-        parent = pulumi.Input.asInput<String>(parent),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        termId = pulumi.Input.asOptionalInput<String>(termId);
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      displayName = pulumi.Input.asOptionalInput<String>(displayName),
+      glossaryId = pulumi.Input.asOptionalInput<String>(glossaryId),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      location = pulumi.Input.asInput<String>(location),
+      parent = pulumi.Input.asInput<String>(parent),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      termId = pulumi.Input.asOptionalInput<String>(termId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final displayNameValue = displayName;
-    if (displayNameValue != null) {
-      map['displayName'] = displayNameValue;
-    }
-    final glossaryIdValue = glossaryId;
-    if (glossaryIdValue != null) {
-      map['glossaryId'] = glossaryIdValue;
-    }
-    final labelsValue = labels;
-    if (labelsValue != null) {
-      map['labels'] = labelsValue;
-    }
-    map['location'] = location;
-    map['parent'] = parent;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final termIdValue = termId;
-    if (termIdValue != null) {
-      map['termId'] = termIdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'displayName': ?displayName,
+      'glossaryId': ?glossaryId,
+      'labels': ?labels,
+      'location': location,
+      'parent': parent,
+      'project': ?project,
+      'termId': ?termId,
+    };
   }
 
   factory GlossaryTermArgs.fromMap(Map<String, dynamic> map) {
     return GlossaryTermArgs(
-      description:
-          map['description'] == null ? null : map['description'] as String,
-      displayName:
-          map['displayName'] == null ? null : map['displayName'] as String,
-      glossaryId:
-          map['glossaryId'] == null ? null : map['glossaryId'] as String,
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      description: map['description'] == null ? null : map['description'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      glossaryId: map['glossaryId'] == null ? null : map['glossaryId'] as String,
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
       parent: map['parent'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -111,3 +82,4 @@ class GlossaryTermArgs {
     );
   }
 }
+

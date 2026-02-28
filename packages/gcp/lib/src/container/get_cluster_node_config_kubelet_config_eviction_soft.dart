@@ -1,21 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterNodeConfigKubeletConfigEvictionSoft {
   /// Defines percentage of soft eviction threshold for imagefs.available.
   final String imagefsAvailable;
-
   /// Defines percentage of soft eviction threshold for imagefs.inodesFree.
   final String imagefsInodesFree;
-
   /// Defines quantity of soft eviction threshold for memory.available.
   final String memoryAvailable;
-
   /// Defines percentage of soft eviction threshold for nodefs.available.
   final String nodefsAvailable;
-
   /// Defines percentage of soft eviction threshold for nodefs.inodesFree.
   final String nodefsInodesFree;
-
   /// Defines percentage of soft eviction threshold for pid.available.
   final String pidAvailable;
 
@@ -36,18 +32,17 @@ class GetClusterNodeConfigKubeletConfigEvictionSoft {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['imagefsAvailable'] = imagefsAvailable;
-    map['imagefsInodesFree'] = imagefsInodesFree;
-    map['memoryAvailable'] = memoryAvailable;
-    map['nodefsAvailable'] = nodefsAvailable;
-    map['nodefsInodesFree'] = nodefsInodesFree;
-    map['pidAvailable'] = pidAvailable;
-    return map;
+    return <String, dynamic>{
+      'imagefsAvailable': imagefsAvailable,
+      'imagefsInodesFree': imagefsInodesFree,
+      'memoryAvailable': memoryAvailable,
+      'nodefsAvailable': nodefsAvailable,
+      'nodefsInodesFree': nodefsInodesFree,
+      'pidAvailable': pidAvailable,
+    };
   }
 
-  factory GetClusterNodeConfigKubeletConfigEvictionSoft.fromMap(
-      Map<String, dynamic> map) {
+  factory GetClusterNodeConfigKubeletConfigEvictionSoft.fromMap(Map<String, dynamic> map) {
     return GetClusterNodeConfigKubeletConfigEvictionSoft(
       imagefsAvailable: map['imagefsAvailable'] as String,
       imagefsInodesFree: map['imagefsInodesFree'] as String,
@@ -58,3 +53,4 @@ class GetClusterNodeConfigKubeletConfigEvictionSoft {
     );
   }
 }
+

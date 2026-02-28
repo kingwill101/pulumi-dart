@@ -19,19 +19,17 @@ class GetViewArgs {
     required String location,
     String? project,
     required String viewId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        viewId = pulumi.Input.asInput<String>(viewId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      viewId = pulumi.Input.asInput<String>(viewId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['viewId'] = viewId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+      'viewId': viewId,
+    };
   }
 
   factory GetViewArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetViewArgs {
     );
   }
 }
+

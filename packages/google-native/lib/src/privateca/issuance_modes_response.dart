@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
 class IssuanceModesResponse {
   /// Optional. When true, allows callers to create Certificates by specifying a CertificateConfig.
   final bool allowConfigBasedIssuance;
-
   /// Optional. When true, allows callers to create Certificates by specifying a CSR.
   final bool allowCsrBasedIssuance;
 
@@ -17,10 +17,10 @@ class IssuanceModesResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allowConfigBasedIssuance'] = allowConfigBasedIssuance;
-    map['allowCsrBasedIssuance'] = allowCsrBasedIssuance;
-    return map;
+    return <String, dynamic>{
+      'allowConfigBasedIssuance': allowConfigBasedIssuance,
+      'allowCsrBasedIssuance': allowCsrBasedIssuance,
+    };
   }
 
   factory IssuanceModesResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class IssuanceModesResponse {
     );
   }
 }
+

@@ -14,16 +14,15 @@ class GooglePrivacyDlpV2DetectionRuleResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['hotwordRule'] = hotwordRule.toMap();
-    return map;
+    return <String, dynamic>{
+      'hotwordRule': hotwordRule.toMap(),
+    };
   }
 
-  factory GooglePrivacyDlpV2DetectionRuleResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2DetectionRuleResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DetectionRuleResponse(
-      hotwordRule: GooglePrivacyDlpV2HotwordRuleResponse.fromMap(
-          (map['hotwordRule'] as Map).cast<String, dynamic>()),
+      hotwordRule: GooglePrivacyDlpV2HotwordRuleResponse.fromMap((map['hotwordRule'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class IntentFollowupIntentInfo {
   /// The unique identifier of the followup intent.
   /// Format: projects/<Project ID>/agent/intents/<Intent ID>.
   final String? followupIntentName;
-
   /// The unique identifier of the parent intent in the chain of followup intents.
   /// Format: projects/<Project ID>/agent/intents/<Intent ID>.
   final String? parentFollowupIntentName;
@@ -18,26 +18,17 @@ class IntentFollowupIntentInfo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final followupIntentNameValue = followupIntentName;
-    if (followupIntentNameValue != null) {
-      map['followupIntentName'] = followupIntentNameValue;
-    }
-    final parentFollowupIntentNameValue = parentFollowupIntentName;
-    if (parentFollowupIntentNameValue != null) {
-      map['parentFollowupIntentName'] = parentFollowupIntentNameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'followupIntentName': ?followupIntentName,
+      'parentFollowupIntentName': ?parentFollowupIntentName,
+    };
   }
 
   factory IntentFollowupIntentInfo.fromMap(Map<String, dynamic> map) {
     return IntentFollowupIntentInfo(
-      followupIntentName: map['followupIntentName'] == null
-          ? null
-          : map['followupIntentName'] as String,
-      parentFollowupIntentName: map['parentFollowupIntentName'] == null
-          ? null
-          : map['parentFollowupIntentName'] as String,
+      followupIntentName: map['followupIntentName'] == null ? null : map['followupIntentName'] as String,
+      parentFollowupIntentName: map['parentFollowupIntentName'] == null ? null : map['parentFollowupIntentName'] as String,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GoogleApiSourceLoggingConfig {
   /// The minimum severity of logs that will be sent to Stackdriver/Platform
   /// Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
@@ -13,18 +14,15 @@ class GoogleApiSourceLoggingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final logSeverityValue = logSeverity;
-    if (logSeverityValue != null) {
-      map['logSeverity'] = logSeverityValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'logSeverity': ?logSeverity,
+    };
   }
 
   factory GoogleApiSourceLoggingConfig.fromMap(Map<String, dynamic> map) {
     return GoogleApiSourceLoggingConfig(
-      logSeverity:
-          map['logSeverity'] == null ? null : map['logSeverity'] as String,
+      logSeverity: map['logSeverity'] == null ? null : map['logSeverity'] as String,
     );
   }
 }
+

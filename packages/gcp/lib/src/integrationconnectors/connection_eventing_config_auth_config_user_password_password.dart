@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConnectionEventingConfigAuthConfigUserPasswordPassword {
   /// The resource name of the secret version in the format,
   /// format as: projects/*/secrets/*/versions/*.
@@ -12,15 +13,15 @@ class ConnectionEventingConfigAuthConfigUserPasswordPassword {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['secretVersion'] = secretVersion;
-    return map;
+    return <String, dynamic>{
+      'secretVersion': secretVersion,
+    };
   }
 
-  factory ConnectionEventingConfigAuthConfigUserPasswordPassword.fromMap(
-      Map<String, dynamic> map) {
+  factory ConnectionEventingConfigAuthConfigUserPasswordPassword.fromMap(Map<String, dynamic> map) {
     return ConnectionEventingConfigAuthConfigUserPasswordPassword(
       secretVersion: map['secretVersion'] as String,
     );
   }
 }
+

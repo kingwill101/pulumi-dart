@@ -7,10 +7,8 @@ import 'budget_action_definition_ssm_action_definition.dart';
 class BudgetActionDefinition {
   /// The AWS Identity and Access Management (IAM) action definition details. See IAM Action Definition.
   final BudgetActionDefinitionIamActionDefinition? iamActionDefinition;
-
   /// The service control policies (SCPs) action definition details. See SCP Action Definition.
   final BudgetActionDefinitionScpActionDefinition? scpActionDefinition;
-
   /// The AWS Systems Manager (SSM) action definition details. See SSM Action Definition.
   final BudgetActionDefinitionSsmActionDefinition? ssmActionDefinition;
 
@@ -25,36 +23,19 @@ class BudgetActionDefinition {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final iamActionDefinitionValue = iamActionDefinition;
-    if (iamActionDefinitionValue != null) {
-      map['iamActionDefinition'] = iamActionDefinitionValue.toMap();
-    }
-    final scpActionDefinitionValue = scpActionDefinition;
-    if (scpActionDefinitionValue != null) {
-      map['scpActionDefinition'] = scpActionDefinitionValue.toMap();
-    }
-    final ssmActionDefinitionValue = ssmActionDefinition;
-    if (ssmActionDefinitionValue != null) {
-      map['ssmActionDefinition'] = ssmActionDefinitionValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'iamActionDefinition': ?iamActionDefinition == null ? null : iamActionDefinition!.toMap(),
+      'scpActionDefinition': ?scpActionDefinition == null ? null : scpActionDefinition!.toMap(),
+      'ssmActionDefinition': ?ssmActionDefinition == null ? null : ssmActionDefinition!.toMap(),
+    };
   }
 
   factory BudgetActionDefinition.fromMap(Map<String, dynamic> map) {
     return BudgetActionDefinition(
-      iamActionDefinition: map['iamActionDefinition'] == null
-          ? null
-          : BudgetActionDefinitionIamActionDefinition.fromMap(
-              (map['iamActionDefinition'] as Map).cast<String, dynamic>()),
-      scpActionDefinition: map['scpActionDefinition'] == null
-          ? null
-          : BudgetActionDefinitionScpActionDefinition.fromMap(
-              (map['scpActionDefinition'] as Map).cast<String, dynamic>()),
-      ssmActionDefinition: map['ssmActionDefinition'] == null
-          ? null
-          : BudgetActionDefinitionSsmActionDefinition.fromMap(
-              (map['ssmActionDefinition'] as Map).cast<String, dynamic>()),
+      iamActionDefinition: map['iamActionDefinition'] == null ? null : BudgetActionDefinitionIamActionDefinition.fromMap((map['iamActionDefinition'] as Map).cast<String, dynamic>()),
+      scpActionDefinition: map['scpActionDefinition'] == null ? null : BudgetActionDefinitionScpActionDefinition.fromMap((map['scpActionDefinition'] as Map).cast<String, dynamic>()),
+      ssmActionDefinition: map['ssmActionDefinition'] == null ? null : BudgetActionDefinitionSsmActionDefinition.fromMap((map['ssmActionDefinition'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

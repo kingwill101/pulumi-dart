@@ -8,15 +8,13 @@ enum InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction {
   const InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction(this.value);
   final String value;
 
-  static InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction fromValue(
-      String value) {
-    for (final item
-        in InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction.values) {
+  static InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction fromValue(String value) {
+    for (final item in InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction value: $value');
+    throw ArgumentError('Unknown InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction value: $value');
   }
 }
+

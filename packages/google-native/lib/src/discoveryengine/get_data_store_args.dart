@@ -22,21 +22,19 @@ class GetDataStoreArgs {
     required String dataStoreId,
     required String location,
     String? project,
-  })  : collectionId = pulumi.Input.asInput<String>(collectionId),
-        dataStoreId = pulumi.Input.asInput<String>(dataStoreId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      collectionId = pulumi.Input.asInput<String>(collectionId),
+      dataStoreId = pulumi.Input.asInput<String>(dataStoreId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['collectionId'] = collectionId;
-    map['dataStoreId'] = dataStoreId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'collectionId': collectionId,
+      'dataStoreId': dataStoreId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetDataStoreArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetDataStoreArgs {
     );
   }
 }
+

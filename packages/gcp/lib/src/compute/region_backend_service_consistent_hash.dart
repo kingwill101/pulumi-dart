@@ -9,11 +9,9 @@ class RegionBackendServiceConsistentHash {
   /// This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
   /// Structure is documented below.
   final RegionBackendServiceConsistentHashHttpCookie? httpCookie;
-
   /// The hash based on the value of the specified header field.
   /// This field is applicable if the sessionAffinity is set to HEADER_FIELD.
   final String? httpHeaderName;
-
   /// The minimum number of virtual nodes to use for the hash ring.
   /// Larger ring sizes result in more granular load
   /// distributions. If the number of hosts in the load balancing pool
@@ -33,33 +31,19 @@ class RegionBackendServiceConsistentHash {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final httpCookieValue = httpCookie;
-    if (httpCookieValue != null) {
-      map['httpCookie'] = httpCookieValue.toMap();
-    }
-    final httpHeaderNameValue = httpHeaderName;
-    if (httpHeaderNameValue != null) {
-      map['httpHeaderName'] = httpHeaderNameValue;
-    }
-    final minimumRingSizeValue = minimumRingSize;
-    if (minimumRingSizeValue != null) {
-      map['minimumRingSize'] = minimumRingSizeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'httpCookie': ?httpCookie == null ? null : httpCookie!.toMap(),
+      'httpHeaderName': ?httpHeaderName,
+      'minimumRingSize': ?minimumRingSize,
+    };
   }
 
   factory RegionBackendServiceConsistentHash.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceConsistentHash(
-      httpCookie: map['httpCookie'] == null
-          ? null
-          : RegionBackendServiceConsistentHashHttpCookie.fromMap(
-              (map['httpCookie'] as Map).cast<String, dynamic>()),
-      httpHeaderName: map['httpHeaderName'] == null
-          ? null
-          : map['httpHeaderName'] as String,
-      minimumRingSize:
-          map['minimumRingSize'] == null ? null : map['minimumRingSize'] as int,
+      httpCookie: map['httpCookie'] == null ? null : RegionBackendServiceConsistentHashHttpCookie.fromMap((map['httpCookie'] as Map).cast<String, dynamic>()),
+      httpHeaderName: map['httpHeaderName'] == null ? null : map['httpHeaderName'] as String,
+      minimumRingSize: map['minimumRingSize'] == null ? null : map['minimumRingSize'] as int,
     );
   }
 }
+

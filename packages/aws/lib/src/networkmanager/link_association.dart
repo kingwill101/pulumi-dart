@@ -115,10 +115,8 @@ import 'link_association_args.dart';
 class LinkAssociation extends pulumi.CustomResource {
   /// ID of the device.
   late final pulumi.Output<String> deviceId;
-
   /// ID of the global network.
   late final pulumi.Output<String> globalNetworkId;
-
   /// ID of the link.
   late final pulumi.Output<String> linkId;
 

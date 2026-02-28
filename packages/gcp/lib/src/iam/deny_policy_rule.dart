@@ -6,7 +6,6 @@ class DenyPolicyRule {
   /// A deny rule in an IAM deny policy.
   /// Structure is documented below.
   final DenyPolicyRuleDenyRule? denyRule;
-
   /// The description of the rule.
   final String? description;
 
@@ -19,26 +18,17 @@ class DenyPolicyRule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final denyRuleValue = denyRule;
-    if (denyRuleValue != null) {
-      map['denyRule'] = denyRuleValue.toMap();
-    }
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'denyRule': ?denyRule == null ? null : denyRule!.toMap(),
+      'description': ?description,
+    };
   }
 
   factory DenyPolicyRule.fromMap(Map<String, dynamic> map) {
     return DenyPolicyRule(
-      denyRule: map['denyRule'] == null
-          ? null
-          : DenyPolicyRuleDenyRule.fromMap(
-              (map['denyRule'] as Map).cast<String, dynamic>()),
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      denyRule: map['denyRule'] == null ? null : DenyPolicyRuleDenyRule.fromMap((map['denyRule'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : map['description'] as String,
     );
   }
 }
+

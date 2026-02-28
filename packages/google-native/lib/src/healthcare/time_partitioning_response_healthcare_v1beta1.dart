@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for FHIR BigQuery time-partitioned tables.
 class TimePartitioningResponseHealthcareV1beta1 {
   /// Number of milliseconds for which to keep the storage for a partition.
   final String expirationMs;
-
   /// Type of partitioning.
   final String type;
 
@@ -17,17 +17,17 @@ class TimePartitioningResponseHealthcareV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['expirationMs'] = expirationMs;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'expirationMs': expirationMs,
+      'type': type,
+    };
   }
 
-  factory TimePartitioningResponseHealthcareV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory TimePartitioningResponseHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return TimePartitioningResponseHealthcareV1beta1(
       expirationMs: map['expirationMs'] as String,
       type: map['type'] as String,
     );
   }
 }
+

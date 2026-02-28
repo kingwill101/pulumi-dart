@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
 class SqlActiveDirectoryConfig {
   /// The name of the domain (e.g., mydomain.com).
   final String? domain;
-
   /// This is always sql#activeDirectoryConfig.
   final String? kind;
 
@@ -17,16 +17,10 @@ class SqlActiveDirectoryConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final domainValue = domain;
-    if (domainValue != null) {
-      map['domain'] = domainValue;
-    }
-    final kindValue = kind;
-    if (kindValue != null) {
-      map['kind'] = kindValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'domain': ?domain,
+      'kind': ?kind,
+    };
   }
 
   factory SqlActiveDirectoryConfig.fromMap(Map<String, dynamic> map) {
@@ -36,3 +30,4 @@ class SqlActiveDirectoryConfig {
     );
   }
 }
+

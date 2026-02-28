@@ -20,7 +20,6 @@ class GetSubscriptionResult {
   final bool enableMessageOrdering;
   final List<GetSubscriptionExpirationPolicy> expirationPolicies;
   final String filter;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final Map<String, String> labels;
@@ -82,94 +81,55 @@ class GetSubscriptionResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ackDeadlineSeconds'] = ackDeadlineSeconds;
-    map['bigqueryConfigs'] = pulumi.Input.encodeList<
-        GetSubscriptionBigqueryConfig,
-        Map<String, dynamic>>(bigqueryConfigs, (value) => value.toMap());
-    map['cloudStorageConfigs'] = pulumi.Input.encodeList<
-        GetSubscriptionCloudStorageConfig,
-        Map<String, dynamic>>(cloudStorageConfigs, (value) => value.toMap());
-    map['deadLetterPolicies'] = pulumi.Input.encodeList<
-        GetSubscriptionDeadLetterPolicy,
-        Map<String, dynamic>>(deadLetterPolicies, (value) => value.toMap());
-    map['effectiveLabels'] = effectiveLabels;
-    map['enableExactlyOnceDelivery'] = enableExactlyOnceDelivery;
-    map['enableMessageOrdering'] = enableMessageOrdering;
-    map['expirationPolicies'] = pulumi.Input.encodeList<
-        GetSubscriptionExpirationPolicy,
-        Map<String, dynamic>>(expirationPolicies, (value) => value.toMap());
-    map['filter'] = filter;
-    map['id'] = id;
-    map['labels'] = labels;
-    map['messageRetentionDuration'] = messageRetentionDuration;
-    map['messageTransforms'] = pulumi.Input.encodeList<
-        GetSubscriptionMessageTransform,
-        Map<String, dynamic>>(messageTransforms, (value) => value.toMap());
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['pulumiLabels'] = pulumiLabels;
-    map['pushConfigs'] = pulumi.Input.encodeList<GetSubscriptionPushConfig,
-        Map<String, dynamic>>(pushConfigs, (value) => value.toMap());
-    map['retainAckedMessages'] = retainAckedMessages;
-    map['retryPolicies'] = pulumi.Input.encodeList<GetSubscriptionRetryPolicy,
-        Map<String, dynamic>>(retryPolicies, (value) => value.toMap());
-    map['tags'] = tags;
-    map['topic'] = topic;
-    return map;
+    return <String, dynamic>{
+      'ackDeadlineSeconds': ackDeadlineSeconds,
+      'bigqueryConfigs': pulumi.Input.encodeList<GetSubscriptionBigqueryConfig, Map<String, dynamic>>(bigqueryConfigs, (value) => value.toMap()),
+      'cloudStorageConfigs': pulumi.Input.encodeList<GetSubscriptionCloudStorageConfig, Map<String, dynamic>>(cloudStorageConfigs, (value) => value.toMap()),
+      'deadLetterPolicies': pulumi.Input.encodeList<GetSubscriptionDeadLetterPolicy, Map<String, dynamic>>(deadLetterPolicies, (value) => value.toMap()),
+      'effectiveLabels': effectiveLabels,
+      'enableExactlyOnceDelivery': enableExactlyOnceDelivery,
+      'enableMessageOrdering': enableMessageOrdering,
+      'expirationPolicies': pulumi.Input.encodeList<GetSubscriptionExpirationPolicy, Map<String, dynamic>>(expirationPolicies, (value) => value.toMap()),
+      'filter': filter,
+      'id': id,
+      'labels': labels,
+      'messageRetentionDuration': messageRetentionDuration,
+      'messageTransforms': pulumi.Input.encodeList<GetSubscriptionMessageTransform, Map<String, dynamic>>(messageTransforms, (value) => value.toMap()),
+      'name': name,
+      'project': ?project,
+      'pulumiLabels': pulumiLabels,
+      'pushConfigs': pulumi.Input.encodeList<GetSubscriptionPushConfig, Map<String, dynamic>>(pushConfigs, (value) => value.toMap()),
+      'retainAckedMessages': retainAckedMessages,
+      'retryPolicies': pulumi.Input.encodeList<GetSubscriptionRetryPolicy, Map<String, dynamic>>(retryPolicies, (value) => value.toMap()),
+      'tags': tags,
+      'topic': topic,
+    };
   }
 
   factory GetSubscriptionResult.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionResult(
       ackDeadlineSeconds: map['ackDeadlineSeconds'] as int,
-      bigqueryConfigs: pulumi.Input.decodeList<GetSubscriptionBigqueryConfig>(
-          map['bigqueryConfigs'],
-          (value) => GetSubscriptionBigqueryConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      cloudStorageConfigs:
-          pulumi.Input.decodeList<GetSubscriptionCloudStorageConfig>(
-              map['cloudStorageConfigs'],
-              (value) => GetSubscriptionCloudStorageConfig.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      deadLetterPolicies:
-          pulumi.Input.decodeList<GetSubscriptionDeadLetterPolicy>(
-              map['deadLetterPolicies'],
-              (value) => GetSubscriptionDeadLetterPolicy.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      bigqueryConfigs: pulumi.Input.decodeList<GetSubscriptionBigqueryConfig>(map['bigqueryConfigs'], (value) => GetSubscriptionBigqueryConfig.fromMap((value as Map).cast<String, dynamic>())),
+      cloudStorageConfigs: pulumi.Input.decodeList<GetSubscriptionCloudStorageConfig>(map['cloudStorageConfigs'], (value) => GetSubscriptionCloudStorageConfig.fromMap((value as Map).cast<String, dynamic>())),
+      deadLetterPolicies: pulumi.Input.decodeList<GetSubscriptionDeadLetterPolicy>(map['deadLetterPolicies'], (value) => GetSubscriptionDeadLetterPolicy.fromMap((value as Map).cast<String, dynamic>())),
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       enableExactlyOnceDelivery: map['enableExactlyOnceDelivery'] as bool,
       enableMessageOrdering: map['enableMessageOrdering'] as bool,
-      expirationPolicies:
-          pulumi.Input.decodeList<GetSubscriptionExpirationPolicy>(
-              map['expirationPolicies'],
-              (value) => GetSubscriptionExpirationPolicy.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      expirationPolicies: pulumi.Input.decodeList<GetSubscriptionExpirationPolicy>(map['expirationPolicies'], (value) => GetSubscriptionExpirationPolicy.fromMap((value as Map).cast<String, dynamic>())),
       filter: map['filter'] as String,
       id: map['id'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       messageRetentionDuration: map['messageRetentionDuration'] as String,
-      messageTransforms:
-          pulumi.Input.decodeList<GetSubscriptionMessageTransform>(
-              map['messageTransforms'],
-              (value) => GetSubscriptionMessageTransform.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      messageTransforms: pulumi.Input.decodeList<GetSubscriptionMessageTransform>(map['messageTransforms'], (value) => GetSubscriptionMessageTransform.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      pushConfigs: pulumi.Input.decodeList<GetSubscriptionPushConfig>(
-          map['pushConfigs'],
-          (value) => GetSubscriptionPushConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      pushConfigs: pulumi.Input.decodeList<GetSubscriptionPushConfig>(map['pushConfigs'], (value) => GetSubscriptionPushConfig.fromMap((value as Map).cast<String, dynamic>())),
       retainAckedMessages: map['retainAckedMessages'] as bool,
-      retryPolicies: pulumi.Input.decodeList<GetSubscriptionRetryPolicy>(
-          map['retryPolicies'],
-          (value) => GetSubscriptionRetryPolicy.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      retryPolicies: pulumi.Input.decodeList<GetSubscriptionRetryPolicy>(map['retryPolicies'], (value) => GetSubscriptionRetryPolicy.fromMap((value as Map).cast<String, dynamic>())),
       tags: (map['tags'] as Map).cast<String, String>(),
       topic: map['topic'] as String,
     );
   }
 }
+

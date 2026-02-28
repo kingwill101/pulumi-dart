@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig {
   /// The email address of the service account used to authenticate the webhook call.
   /// Dialogflow uses this service account to exchange an access token and the access
@@ -16,15 +17,15 @@ class CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['serviceAccount'] = serviceAccount;
-    return map;
+    return <String, dynamic>{
+      'serviceAccount': serviceAccount,
+    };
   }
 
-  factory CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig.fromMap(Map<String, dynamic> map) {
     return CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig(
       serviceAccount: map['serviceAccount'] as String,
     );
   }
 }
+

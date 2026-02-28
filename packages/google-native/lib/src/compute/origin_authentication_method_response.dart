@@ -13,9 +13,9 @@ class OriginAuthenticationMethodResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['jwt'] = jwt.toMap();
-    return map;
+    return <String, dynamic>{
+      'jwt': jwt.toMap(),
+    };
   }
 
   factory OriginAuthenticationMethodResponse.fromMap(Map<String, dynamic> map) {
@@ -24,3 +24,4 @@ class OriginAuthenticationMethodResponse {
     );
   }
 }
+

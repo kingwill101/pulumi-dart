@@ -16,17 +16,15 @@ class GetCustomConnectorArgs {
   GetCustomConnectorArgs({
     required String customConnectorId,
     String? project,
-  })  : customConnectorId = pulumi.Input.asInput<String>(customConnectorId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      customConnectorId = pulumi.Input.asInput<String>(customConnectorId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['customConnectorId'] = customConnectorId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'customConnectorId': customConnectorId,
+      'project': ?project,
+    };
   }
 
   factory GetCustomConnectorArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetCustomConnectorArgs {
     );
   }
 }
+

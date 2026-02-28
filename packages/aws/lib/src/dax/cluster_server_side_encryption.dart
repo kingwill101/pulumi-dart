@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterServerSideEncryption {
   /// Whether to enable encryption at rest. Defaults to `false`.
   final bool? enabled;
@@ -11,12 +12,9 @@ class ClusterServerSideEncryption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory ClusterServerSideEncryption.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class ClusterServerSideEncryption {
     );
   }
 }
+

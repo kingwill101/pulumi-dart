@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A group of fingerprints for the x509 certificate.
 class CertificateFingerprintResponse {
   /// The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
@@ -12,9 +13,9 @@ class CertificateFingerprintResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['sha256Hash'] = sha256Hash;
-    return map;
+    return <String, dynamic>{
+      'sha256Hash': sha256Hash,
+    };
   }
 
   factory CertificateFingerprintResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class CertificateFingerprintResponse {
     );
   }
 }
+

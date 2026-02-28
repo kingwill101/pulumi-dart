@@ -8,13 +8,10 @@ import 'layer_response.dart';
 class ImageOccurrenceResponse {
   /// This contains the base image URL for the derived image occurrence.
   final String baseResourceUrl;
-
   /// The number of layers by which this image differs from the associated image basis.
   final int distance;
-
   /// The fingerprint of the derived image.
   final FingerprintResponse fingerprint;
-
   /// This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.
   final List<LayerResponse> layerInfo;
 
@@ -31,26 +28,21 @@ class ImageOccurrenceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['baseResourceUrl'] = baseResourceUrl;
-    map['distance'] = distance;
-    map['fingerprint'] = fingerprint.toMap();
-    map['layerInfo'] =
-        pulumi.Input.encodeList<LayerResponse, Map<String, dynamic>>(
-            layerInfo, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'baseResourceUrl': baseResourceUrl,
+      'distance': distance,
+      'fingerprint': fingerprint.toMap(),
+      'layerInfo': pulumi.Input.encodeList<LayerResponse, Map<String, dynamic>>(layerInfo, (value) => value.toMap()),
+    };
   }
 
   factory ImageOccurrenceResponse.fromMap(Map<String, dynamic> map) {
     return ImageOccurrenceResponse(
       baseResourceUrl: map['baseResourceUrl'] as String,
       distance: map['distance'] as int,
-      fingerprint: FingerprintResponse.fromMap(
-          (map['fingerprint'] as Map).cast<String, dynamic>()),
-      layerInfo: pulumi.Input.decodeList<LayerResponse>(
-          map['layerInfo'],
-          (value) =>
-              LayerResponse.fromMap((value as Map).cast<String, dynamic>())),
+      fingerprint: FingerprintResponse.fromMap((map['fingerprint'] as Map).cast<String, dynamic>()),
+      layerInfo: pulumi.Input.decodeList<LayerResponse>(map['layerInfo'], (value) => LayerResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

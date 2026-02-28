@@ -14,20 +14,15 @@ class GooglePrivacyDlpV2DetectionRule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final hotwordRuleValue = hotwordRule;
-    if (hotwordRuleValue != null) {
-      map['hotwordRule'] = hotwordRuleValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'hotwordRule': ?hotwordRule == null ? null : hotwordRule!.toMap(),
+    };
   }
 
   factory GooglePrivacyDlpV2DetectionRule.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DetectionRule(
-      hotwordRule: map['hotwordRule'] == null
-          ? null
-          : GooglePrivacyDlpV2HotwordRule.fromMap(
-              (map['hotwordRule'] as Map).cast<String, dynamic>()),
+      hotwordRule: map['hotwordRule'] == null ? null : GooglePrivacyDlpV2HotwordRule.fromMap((map['hotwordRule'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

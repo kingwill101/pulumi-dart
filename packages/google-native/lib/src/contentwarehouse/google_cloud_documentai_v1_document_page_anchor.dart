@@ -15,27 +15,15 @@ class GoogleCloudDocumentaiV1DocumentPageAnchor {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final pageRefsValue = pageRefs;
-    if (pageRefsValue != null) {
-      map['pageRefs'] = pulumi.Input.encodeList<
-          GoogleCloudDocumentaiV1DocumentPageAnchorPageRef,
-          Map<String, dynamic>>(pageRefsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'pageRefs': ?pageRefs == null ? null : pulumi.Input.encodeList<GoogleCloudDocumentaiV1DocumentPageAnchorPageRef, Map<String, dynamic>>(pageRefs!, (value) => value.toMap()),
+    };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentPageAnchor.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentPageAnchor.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageAnchor(
-      pageRefs: map['pageRefs'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  GoogleCloudDocumentaiV1DocumentPageAnchorPageRef>(
-              map['pageRefs'],
-              (value) =>
-                  GoogleCloudDocumentaiV1DocumentPageAnchorPageRef.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      pageRefs: map['pageRefs'] == null ? null : pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageAnchorPageRef>(map['pageRefs'], (value) => GoogleCloudDocumentaiV1DocumentPageAnchorPageRef.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

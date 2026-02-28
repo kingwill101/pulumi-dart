@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppCustomRule {
   /// Condition for a URL rewrite or redirect rule, such as a country code.
   final String? condition;
-
   /// Source pattern for a URL rewrite or redirect rule.
   final String source;
-
   /// Status code for a URL rewrite or redirect rule. Valid values: `200`, `301`, `302`, `404`, `404-200`.
   final String? status;
-
   /// Target pattern for a URL rewrite or redirect rule.
   final String target;
 
@@ -26,18 +24,12 @@ class AppCustomRule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final conditionValue = condition;
-    if (conditionValue != null) {
-      map['condition'] = conditionValue;
-    }
-    map['source'] = source;
-    final statusValue = status;
-    if (statusValue != null) {
-      map['status'] = statusValue;
-    }
-    map['target'] = target;
-    return map;
+    return <String, dynamic>{
+      'condition': ?condition,
+      'source': source,
+      'status': ?status,
+      'target': target,
+    };
   }
 
   factory AppCustomRule.fromMap(Map<String, dynamic> map) {
@@ -49,3 +41,4 @@ class AppCustomRule {
     );
   }
 }
+

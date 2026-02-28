@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RoutineArgument {
   /// Defaults to FIXED_TYPE.
   /// Default value is `FIXED_TYPE`.
   /// Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
   final String? argumentKind;
-
   /// A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
   /// ~>**NOTE**: Because this field expects a JSON string, any changes to the string
   /// will create a diff, even if the JSON itself hasn't changed. If the API returns
@@ -14,11 +14,9 @@ class RoutineArgument {
   /// suppress the recurring diff this causes. As a workaround, we recommend using
   /// the schema as returned by the API.
   final String? dataType;
-
   /// Specifies whether the argument is input or output. Can be set for procedures only.
   /// Possible values are: `IN`, `OUT`, `INOUT`.
   final String? mode;
-
   /// The name of this argument. Can be absent for function return argument.
   final String? name;
 
@@ -35,33 +33,21 @@ class RoutineArgument {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final argumentKindValue = argumentKind;
-    if (argumentKindValue != null) {
-      map['argumentKind'] = argumentKindValue;
-    }
-    final dataTypeValue = dataType;
-    if (dataTypeValue != null) {
-      map['dataType'] = dataTypeValue;
-    }
-    final modeValue = mode;
-    if (modeValue != null) {
-      map['mode'] = modeValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'argumentKind': ?argumentKind,
+      'dataType': ?dataType,
+      'mode': ?mode,
+      'name': ?name,
+    };
   }
 
   factory RoutineArgument.fromMap(Map<String, dynamic> map) {
     return RoutineArgument(
-      argumentKind:
-          map['argumentKind'] == null ? null : map['argumentKind'] as String,
+      argumentKind: map['argumentKind'] == null ? null : map['argumentKind'] as String,
       dataType: map['dataType'] == null ? null : map['dataType'] as String,
       mode: map['mode'] == null ? null : map['mode'] as String,
       name: map['name'] == null ? null : map['name'] as String,
     );
   }
 }
+

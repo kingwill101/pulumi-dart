@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The persistent settings for a table's columns.
 class ColumnSettings {
   /// The id of the column.
   final String column;
-
   /// Whether the column should be visible on page load.
   final bool visible;
 
@@ -17,10 +17,10 @@ class ColumnSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['column'] = column;
-    map['visible'] = visible;
-    return map;
+    return <String, dynamic>{
+      'column': column,
+      'visible': visible,
+    };
   }
 
   factory ColumnSettings.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class ColumnSettings {
     );
   }
 }
+

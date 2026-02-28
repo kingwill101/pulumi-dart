@@ -6,11 +6,8 @@ import 'firehose_delivery_stream_splunk_configuration_processing_configuration_p
 class FirehoseDeliveryStreamSplunkConfigurationProcessingConfiguration {
   /// Enables or disables data processing.
   final bool? enabled;
-
   /// Specifies the data processors as multiple blocks. See `processors` block below for details.
-  final List<
-          FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessor>?
-      processors;
+  final List<FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessor>? processors;
 
   /// Creates a new [FirehoseDeliveryStreamSplunkConfigurationProcessingConfiguration].
   /// [enabled] Enables or disables data processing.
@@ -21,32 +18,17 @@ class FirehoseDeliveryStreamSplunkConfigurationProcessingConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    final processorsValue = processors;
-    if (processorsValue != null) {
-      map['processors'] = pulumi.Input.encodeList<
-          FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessor,
-          Map<String, dynamic>>(processorsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': ?enabled,
+      'processors': ?processors == null ? null : pulumi.Input.encodeList<FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessor, Map<String, dynamic>>(processors!, (value) => value.toMap()),
+    };
   }
 
-  factory FirehoseDeliveryStreamSplunkConfigurationProcessingConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory FirehoseDeliveryStreamSplunkConfigurationProcessingConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamSplunkConfigurationProcessingConfiguration(
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      processors: map['processors'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessor>(
-              map['processors'],
-              (value) =>
-                  FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessor
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      processors: map['processors'] == null ? null : pulumi.Input.decodeList<FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessor>(map['processors'], (value) => FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessor.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

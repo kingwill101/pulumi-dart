@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Specifies the login configuration for Runtime
 class RuntimeAccessConfigResponse {
   /// The type of access mode this instance.
   final String accessType;
-
   /// The proxy endpoint that is used to access the runtime.
   final String proxyUri;
-
   /// The owner of this runtime after creation. Format: `alias@example.com` Currently supports one owner only.
   final String runtimeOwner;
 
@@ -22,11 +21,11 @@ class RuntimeAccessConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accessType'] = accessType;
-    map['proxyUri'] = proxyUri;
-    map['runtimeOwner'] = runtimeOwner;
-    return map;
+    return <String, dynamic>{
+      'accessType': accessType,
+      'proxyUri': proxyUri,
+      'runtimeOwner': runtimeOwner,
+    };
   }
 
   factory RuntimeAccessConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class RuntimeAccessConfigResponse {
     );
   }
 }
+

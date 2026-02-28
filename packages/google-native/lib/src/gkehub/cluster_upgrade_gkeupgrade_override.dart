@@ -7,7 +7,6 @@ import 'cluster_upgrade_post_conditions.dart';
 class ClusterUpgradeGKEUpgradeOverride {
   /// Post conditions to override for the specified upgrade (name + version). Required.
   final ClusterUpgradePostConditions postConditions;
-
   /// Which upgrade to override. Required.
   final ClusterUpgradeGKEUpgrade upgrade;
 
@@ -20,18 +19,17 @@ class ClusterUpgradeGKEUpgradeOverride {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['postConditions'] = postConditions.toMap();
-    map['upgrade'] = upgrade.toMap();
-    return map;
+    return <String, dynamic>{
+      'postConditions': postConditions.toMap(),
+      'upgrade': upgrade.toMap(),
+    };
   }
 
   factory ClusterUpgradeGKEUpgradeOverride.fromMap(Map<String, dynamic> map) {
     return ClusterUpgradeGKEUpgradeOverride(
-      postConditions: ClusterUpgradePostConditions.fromMap(
-          (map['postConditions'] as Map).cast<String, dynamic>()),
-      upgrade: ClusterUpgradeGKEUpgrade.fromMap(
-          (map['upgrade'] as Map).cast<String, dynamic>()),
+      postConditions: ClusterUpgradePostConditions.fromMap((map['postConditions'] as Map).cast<String, dynamic>()),
+      upgrade: ClusterUpgradeGKEUpgrade.fromMap((map['upgrade'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

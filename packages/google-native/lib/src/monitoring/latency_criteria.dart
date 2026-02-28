@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Parameters for a latency threshold SLI.
 class LatencyCriteria {
   /// Good service is defined to be the count of requests made to this service that return in no more than threshold.
@@ -12,12 +13,9 @@ class LatencyCriteria {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final thresholdValue = threshold;
-    if (thresholdValue != null) {
-      map['threshold'] = thresholdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'threshold': ?threshold,
+    };
   }
 
   factory LatencyCriteria.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class LatencyCriteria {
     );
   }
 }
+

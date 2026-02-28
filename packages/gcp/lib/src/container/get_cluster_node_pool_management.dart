@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterNodePoolManagement {
   /// Whether the nodes will be automatically repaired. Enabled by default.
   final bool autoRepair;
-
   /// Whether the nodes will be automatically upgraded. Enabled by default.
   final bool autoUpgrade;
 
@@ -16,10 +16,10 @@ class GetClusterNodePoolManagement {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['autoRepair'] = autoRepair;
-    map['autoUpgrade'] = autoUpgrade;
-    return map;
+    return <String, dynamic>{
+      'autoRepair': autoRepair,
+      'autoUpgrade': autoUpgrade,
+    };
   }
 
   factory GetClusterNodePoolManagement.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetClusterNodePoolManagement {
     );
   }
 }
+

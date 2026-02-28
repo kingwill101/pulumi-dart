@@ -15,25 +15,15 @@ class IdentityServiceMembershipSpecGkehubV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final authMethodsValue = authMethods;
-    if (authMethodsValue != null) {
-      map['authMethods'] = pulumi.Input.encodeList<
-          IdentityServiceAuthMethodGkehubV1beta,
-          Map<String, dynamic>>(authMethodsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'authMethods': ?authMethods == null ? null : pulumi.Input.encodeList<IdentityServiceAuthMethodGkehubV1beta, Map<String, dynamic>>(authMethods!, (value) => value.toMap()),
+    };
   }
 
-  factory IdentityServiceMembershipSpecGkehubV1beta.fromMap(
-      Map<String, dynamic> map) {
+  factory IdentityServiceMembershipSpecGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return IdentityServiceMembershipSpecGkehubV1beta(
-      authMethods: map['authMethods'] == null
-          ? null
-          : pulumi.Input.decodeList<IdentityServiceAuthMethodGkehubV1beta>(
-              map['authMethods'],
-              (value) => IdentityServiceAuthMethodGkehubV1beta.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      authMethods: map['authMethods'] == null ? null : pulumi.Input.decodeList<IdentityServiceAuthMethodGkehubV1beta>(map['authMethods'], (value) => IdentityServiceAuthMethodGkehubV1beta.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

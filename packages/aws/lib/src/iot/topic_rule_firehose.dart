@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TopicRuleFirehose {
   /// The payload that contains a JSON array of records will be sent to Kinesis Firehose via a batch call.
   final bool? batchMode;
-
   /// The delivery stream name.
   final String deliveryStreamName;
-
   /// The IAM role ARN that grants access to the Amazon Kinesis Firehose stream.
   final String roleArn;
-
   /// A character separator that is used to separate records written to the Firehose stream. Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ',' (comma).
   final String? separator;
 
@@ -26,18 +24,12 @@ class TopicRuleFirehose {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final batchModeValue = batchMode;
-    if (batchModeValue != null) {
-      map['batchMode'] = batchModeValue;
-    }
-    map['deliveryStreamName'] = deliveryStreamName;
-    map['roleArn'] = roleArn;
-    final separatorValue = separator;
-    if (separatorValue != null) {
-      map['separator'] = separatorValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'batchMode': ?batchMode,
+      'deliveryStreamName': deliveryStreamName,
+      'roleArn': roleArn,
+      'separator': ?separator,
+    };
   }
 
   factory TopicRuleFirehose.fromMap(Map<String, dynamic> map) {
@@ -49,3 +41,4 @@ class TopicRuleFirehose {
     );
   }
 }
+

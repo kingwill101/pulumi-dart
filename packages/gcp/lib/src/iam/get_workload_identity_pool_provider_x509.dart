@@ -18,21 +18,15 @@ class GetWorkloadIdentityPoolProviderX509 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['trustStores'] = pulumi.Input.encodeList<
-        GetWorkloadIdentityPoolProviderX509TrustStore,
-        Map<String, dynamic>>(trustStores, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'trustStores': pulumi.Input.encodeList<GetWorkloadIdentityPoolProviderX509TrustStore, Map<String, dynamic>>(trustStores, (value) => value.toMap()),
+    };
   }
 
-  factory GetWorkloadIdentityPoolProviderX509.fromMap(
-      Map<String, dynamic> map) {
+  factory GetWorkloadIdentityPoolProviderX509.fromMap(Map<String, dynamic> map) {
     return GetWorkloadIdentityPoolProviderX509(
-      trustStores: pulumi.Input.decodeList<
-              GetWorkloadIdentityPoolProviderX509TrustStore>(
-          map['trustStores'],
-          (value) => GetWorkloadIdentityPoolProviderX509TrustStore.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      trustStores: pulumi.Input.decodeList<GetWorkloadIdentityPoolProviderX509TrustStore>(map['trustStores'], (value) => GetWorkloadIdentityPoolProviderX509TrustStore.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

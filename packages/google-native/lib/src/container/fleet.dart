@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Fleet is the fleet configuration for the cluster.
 class Fleet {
   /// The Fleet host project(project ID or project number) where this cluster will be registered to. This field cannot be changed after the cluster has been registered.
@@ -12,12 +13,9 @@ class Fleet {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+    };
   }
 
   factory Fleet.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class Fleet {
     );
   }
 }
+

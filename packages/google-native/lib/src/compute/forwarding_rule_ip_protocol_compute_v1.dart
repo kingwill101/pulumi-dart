@@ -17,7 +17,7 @@ enum ForwardingRuleIpProtocolComputeV1 {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown ForwardingRuleIpProtocolComputeV1 value: $value');
+    throw ArgumentError('Unknown ForwardingRuleIpProtocolComputeV1 value: $value');
   }
 }
+

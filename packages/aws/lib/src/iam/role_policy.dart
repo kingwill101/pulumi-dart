@@ -303,16 +303,13 @@ class RolePolicy extends pulumi.CustomResource {
   /// The name of the role policy.
   /// If omitted, the provider will assign a random, unique name.
   late final pulumi.Output<String> name;
-
   /// Creates a unique name beginning with the specified prefix.
   /// Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
-
   /// The inline policy document.
   /// This is a JSON formatted string.
   /// For more information about building IAM policy documents with Pulumi, see the AWS IAM Policy Document Guide
   late final pulumi.Output<String> policy;
-
   /// The name of the IAM role to attach to the policy.
   late final pulumi.Output<String> role;
 

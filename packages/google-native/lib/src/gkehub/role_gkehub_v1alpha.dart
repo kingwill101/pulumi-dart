@@ -14,20 +14,15 @@ class RoleGkehubV1alpha {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final predefinedRoleValue = predefinedRole;
-    if (predefinedRoleValue != null) {
-      map['predefinedRole'] = predefinedRoleValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'predefinedRole': ?predefinedRole == null ? null : predefinedRole!.value,
+    };
   }
 
   factory RoleGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return RoleGkehubV1alpha(
-      predefinedRole: map['predefinedRole'] == null
-          ? null
-          : RolePredefinedRoleGkehubV1alpha.fromValue(
-              map['predefinedRole'] as String),
+      predefinedRole: map['predefinedRole'] == null ? null : RolePredefinedRoleGkehubV1alpha.fromValue(map['predefinedRole'] as String),
     );
   }
 }
+

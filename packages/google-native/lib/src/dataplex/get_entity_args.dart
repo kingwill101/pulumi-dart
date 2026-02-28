@@ -28,28 +28,23 @@ class GetEntityArgs {
     String? project,
     String? view,
     required String zone,
-  })  : entityId = pulumi.Input.asInput<String>(entityId),
-        lakeId = pulumi.Input.asInput<String>(lakeId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        view = pulumi.Input.asOptionalInput<String>(view),
-        zone = pulumi.Input.asInput<String>(zone);
+  }) :
+      entityId = pulumi.Input.asInput<String>(entityId),
+      lakeId = pulumi.Input.asInput<String>(lakeId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      view = pulumi.Input.asOptionalInput<String>(view),
+      zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['entityId'] = entityId;
-    map['lakeId'] = lakeId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final viewValue = view;
-    if (viewValue != null) {
-      map['view'] = viewValue;
-    }
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'entityId': entityId,
+      'lakeId': lakeId,
+      'location': location,
+      'project': ?project,
+      'view': ?view,
+      'zone': zone,
+    };
   }
 
   factory GetEntityArgs.fromMap(Map<String, dynamic> map) {
@@ -63,3 +58,4 @@ class GetEntityArgs {
     );
   }
 }
+

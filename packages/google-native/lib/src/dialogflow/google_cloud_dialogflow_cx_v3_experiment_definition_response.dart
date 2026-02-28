@@ -6,7 +6,6 @@ import 'google_cloud_dialogflow_cx_v3_version_variants_response.dart';
 class GoogleCloudDialogflowCxV3ExperimentDefinitionResponse {
   /// The condition defines which subset of sessions are selected for this experiment. If not specified, all sessions are eligible. E.g. "query_input.language_code=en" See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
   final String condition;
-
   /// The flow versions as the variants of this experiment.
   final GoogleCloudDialogflowCxV3VersionVariantsResponse versionVariants;
 
@@ -19,18 +18,17 @@ class GoogleCloudDialogflowCxV3ExperimentDefinitionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['condition'] = condition;
-    map['versionVariants'] = versionVariants.toMap();
-    return map;
+    return <String, dynamic>{
+      'condition': condition,
+      'versionVariants': versionVariants.toMap(),
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3ExperimentDefinitionResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3ExperimentDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3ExperimentDefinitionResponse(
       condition: map['condition'] as String,
-      versionVariants: GoogleCloudDialogflowCxV3VersionVariantsResponse.fromMap(
-          (map['versionVariants'] as Map).cast<String, dynamic>()),
+      versionVariants: GoogleCloudDialogflowCxV3VersionVariantsResponse.fromMap((map['versionVariants'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

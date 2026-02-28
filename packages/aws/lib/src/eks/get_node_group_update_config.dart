@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetNodeGroupUpdateConfig {
   final int maxUnavailable;
   final int maxUnavailablePercentage;
@@ -16,11 +17,11 @@ class GetNodeGroupUpdateConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maxUnavailable'] = maxUnavailable;
-    map['maxUnavailablePercentage'] = maxUnavailablePercentage;
-    map['updateStrategy'] = updateStrategy;
-    return map;
+    return <String, dynamic>{
+      'maxUnavailable': maxUnavailable,
+      'maxUnavailablePercentage': maxUnavailablePercentage,
+      'updateStrategy': updateStrategy,
+    };
   }
 
   factory GetNodeGroupUpdateConfig.fromMap(Map<String, dynamic> map) {
@@ -31,3 +32,4 @@ class GetNodeGroupUpdateConfig {
     );
   }
 }
+

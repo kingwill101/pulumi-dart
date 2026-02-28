@@ -16,27 +16,15 @@ class ResizeRequestStatusErrorErrorErrorDetailHelp {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final linksValue = links;
-    if (linksValue != null) {
-      map['links'] = pulumi.Input.encodeList<
-          ResizeRequestStatusErrorErrorErrorDetailHelpLink,
-          Map<String, dynamic>>(linksValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'links': ?links == null ? null : pulumi.Input.encodeList<ResizeRequestStatusErrorErrorErrorDetailHelpLink, Map<String, dynamic>>(links!, (value) => value.toMap()),
+    };
   }
 
-  factory ResizeRequestStatusErrorErrorErrorDetailHelp.fromMap(
-      Map<String, dynamic> map) {
+  factory ResizeRequestStatusErrorErrorErrorDetailHelp.fromMap(Map<String, dynamic> map) {
     return ResizeRequestStatusErrorErrorErrorDetailHelp(
-      links: map['links'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  ResizeRequestStatusErrorErrorErrorDetailHelpLink>(
-              map['links'],
-              (value) =>
-                  ResizeRequestStatusErrorErrorErrorDetailHelpLink.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      links: map['links'] == null ? null : pulumi.Input.decodeList<ResizeRequestStatusErrorErrorErrorDetailHelpLink>(map['links'], (value) => ResizeRequestStatusErrorErrorErrorDetailHelpLink.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

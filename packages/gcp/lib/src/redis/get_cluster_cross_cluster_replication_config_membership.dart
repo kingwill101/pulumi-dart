@@ -6,12 +6,9 @@ import 'get_cluster_cross_cluster_replication_config_membership_secondary_cluste
 
 class GetClusterCrossClusterReplicationConfigMembership {
   /// Details of the primary cluster that is used as the replication source for all the secondary clusters.
-  final List<GetClusterCrossClusterReplicationConfigMembershipPrimaryCluster>
-      primaryClusters;
-
+  final List<GetClusterCrossClusterReplicationConfigMembershipPrimaryCluster> primaryClusters;
   /// List of secondary clusters that are replicating from the primary cluster.
-  final List<GetClusterCrossClusterReplicationConfigMembershipSecondaryCluster>
-      secondaryClusters;
+  final List<GetClusterCrossClusterReplicationConfigMembershipSecondaryCluster> secondaryClusters;
 
   /// Creates a new [GetClusterCrossClusterReplicationConfigMembership].
   /// [primaryClusters] Details of the primary cluster that is used as the replication source for all the secondary clusters.
@@ -22,31 +19,17 @@ class GetClusterCrossClusterReplicationConfigMembership {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['primaryClusters'] = pulumi.Input.encodeList<
-        GetClusterCrossClusterReplicationConfigMembershipPrimaryCluster,
-        Map<String, dynamic>>(primaryClusters, (value) => value.toMap());
-    map['secondaryClusters'] = pulumi.Input.encodeList<
-        GetClusterCrossClusterReplicationConfigMembershipSecondaryCluster,
-        Map<String, dynamic>>(secondaryClusters, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'primaryClusters': pulumi.Input.encodeList<GetClusterCrossClusterReplicationConfigMembershipPrimaryCluster, Map<String, dynamic>>(primaryClusters, (value) => value.toMap()),
+      'secondaryClusters': pulumi.Input.encodeList<GetClusterCrossClusterReplicationConfigMembershipSecondaryCluster, Map<String, dynamic>>(secondaryClusters, (value) => value.toMap()),
+    };
   }
 
-  factory GetClusterCrossClusterReplicationConfigMembership.fromMap(
-      Map<String, dynamic> map) {
+  factory GetClusterCrossClusterReplicationConfigMembership.fromMap(Map<String, dynamic> map) {
     return GetClusterCrossClusterReplicationConfigMembership(
-      primaryClusters: pulumi.Input.decodeList<
-              GetClusterCrossClusterReplicationConfigMembershipPrimaryCluster>(
-          map['primaryClusters'],
-          (value) =>
-              GetClusterCrossClusterReplicationConfigMembershipPrimaryCluster
-                  .fromMap((value as Map).cast<String, dynamic>())),
-      secondaryClusters: pulumi.Input.decodeList<
-              GetClusterCrossClusterReplicationConfigMembershipSecondaryCluster>(
-          map['secondaryClusters'],
-          (value) =>
-              GetClusterCrossClusterReplicationConfigMembershipSecondaryCluster
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      primaryClusters: pulumi.Input.decodeList<GetClusterCrossClusterReplicationConfigMembershipPrimaryCluster>(map['primaryClusters'], (value) => GetClusterCrossClusterReplicationConfigMembershipPrimaryCluster.fromMap((value as Map).cast<String, dynamic>())),
+      secondaryClusters: pulumi.Input.decodeList<GetClusterCrossClusterReplicationConfigMembershipSecondaryCluster>(map['secondaryClusters'], (value) => GetClusterCrossClusterReplicationConfigMembershipSecondaryCluster.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

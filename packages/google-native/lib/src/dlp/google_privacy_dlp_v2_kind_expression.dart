@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A representation of a Datastore kind.
 class GooglePrivacyDlpV2KindExpression {
   /// The name of the kind.
@@ -12,12 +13,9 @@ class GooglePrivacyDlpV2KindExpression {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory GooglePrivacyDlpV2KindExpression.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class GooglePrivacyDlpV2KindExpression {
     );
   }
 }
+

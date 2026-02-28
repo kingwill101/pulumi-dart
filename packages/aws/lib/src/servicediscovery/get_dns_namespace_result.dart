@@ -1,21 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getDnsNamespace.
 class GetDnsNamespaceResult {
   /// ARN of the namespace.
   final String arn;
-
   /// Description of the namespace.
   final String description;
-
   /// ID for the hosted zone that Amazon Route 53 creates when you create a namespace.
   final String hostedZone;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String region;
-
   /// Map of tags for the resource.
   final Map<String, String> tags;
   final String type;
@@ -41,16 +38,16 @@ class GetDnsNamespaceResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['description'] = description;
-    map['hostedZone'] = hostedZone;
-    map['id'] = id;
-    map['name'] = name;
-    map['region'] = region;
-    map['tags'] = tags;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'description': description,
+      'hostedZone': hostedZone,
+      'id': id,
+      'name': name,
+      'region': region,
+      'tags': tags,
+      'type': type,
+    };
   }
 
   factory GetDnsNamespaceResult.fromMap(Map<String, dynamic> map) {
@@ -66,3 +63,4 @@ class GetDnsNamespaceResult {
     );
   }
 }
+

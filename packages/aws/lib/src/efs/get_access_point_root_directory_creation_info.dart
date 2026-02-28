@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetAccessPointRootDirectoryCreationInfo {
   /// POSIX owner group ID
   final int ownerGid;
-
   /// POSIX owner user ID
   final int ownerUid;
-
   /// POSIX permissions mode
   final String permissions;
 
@@ -21,15 +20,14 @@ class GetAccessPointRootDirectoryCreationInfo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ownerGid'] = ownerGid;
-    map['ownerUid'] = ownerUid;
-    map['permissions'] = permissions;
-    return map;
+    return <String, dynamic>{
+      'ownerGid': ownerGid,
+      'ownerUid': ownerUid,
+      'permissions': permissions,
+    };
   }
 
-  factory GetAccessPointRootDirectoryCreationInfo.fromMap(
-      Map<String, dynamic> map) {
+  factory GetAccessPointRootDirectoryCreationInfo.fromMap(Map<String, dynamic> map) {
     return GetAccessPointRootDirectoryCreationInfo(
       ownerGid: map['ownerGid'] as int,
       ownerUid: map['ownerUid'] as int,
@@ -37,3 +35,4 @@ class GetAccessPointRootDirectoryCreationInfo {
     );
   }
 }
+

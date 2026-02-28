@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TableTtl {
   /// Valid values: `ENABLED`.
   final String status;
@@ -11,9 +12,9 @@ class TableTtl {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['status'] = status;
-    return map;
+    return <String, dynamic>{
+      'status': status,
+    };
   }
 
   factory TableTtl.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class TableTtl {
     );
   }
 }
+

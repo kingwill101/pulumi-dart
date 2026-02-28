@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PatchDeploymentPatchConfigGoo {
   /// goo update settings. Use this setting to override the default goo patch rules.
   final bool enabled;
@@ -11,9 +12,9 @@ class PatchDeploymentPatchConfigGoo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory PatchDeploymentPatchConfigGoo.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class PatchDeploymentPatchConfigGoo {
     );
   }
 }
+

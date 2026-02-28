@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getPeeredDnsDomain.
 class GetPeeredDnsDomainResult {
   final String dnsSuffix;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -31,15 +31,15 @@ class GetPeeredDnsDomainResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dnsSuffix'] = dnsSuffix;
-    map['id'] = id;
-    map['name'] = name;
-    map['network'] = network;
-    map['parent'] = parent;
-    map['project'] = project;
-    map['service'] = service;
-    return map;
+    return <String, dynamic>{
+      'dnsSuffix': dnsSuffix,
+      'id': id,
+      'name': name,
+      'network': network,
+      'parent': parent,
+      'project': project,
+      'service': service,
+    };
   }
 
   factory GetPeeredDnsDomainResult.fromMap(Map<String, dynamic> map) {
@@ -54,3 +54,4 @@ class GetPeeredDnsDomainResult {
     );
   }
 }
+

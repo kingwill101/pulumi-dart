@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInstanceEnclaveOption {
   /// Whether Nitro Enclaves are enabled.
   final bool enabled;
@@ -11,9 +12,9 @@ class GetInstanceEnclaveOption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory GetInstanceEnclaveOption.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetInstanceEnclaveOption {
     );
   }
 }
+

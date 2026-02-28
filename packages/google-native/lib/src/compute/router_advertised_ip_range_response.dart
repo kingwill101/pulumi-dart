@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Description-tagged IP ranges for the router to advertise.
 class RouterAdvertisedIpRangeResponse {
   /// User-specified description for the IP range.
   final String description;
-
   /// The IP range to advertise. The value must be a CIDR-formatted string.
   final String range;
 
@@ -17,10 +17,10 @@ class RouterAdvertisedIpRangeResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['description'] = description;
-    map['range'] = range;
-    return map;
+    return <String, dynamic>{
+      'description': description,
+      'range': range,
+    };
   }
 
   factory RouterAdvertisedIpRangeResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class RouterAdvertisedIpRangeResponse {
     );
   }
 }
+

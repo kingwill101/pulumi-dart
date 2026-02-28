@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A network endpoint over which a TPU worker can be reached.
 class NetworkEndpointResponse {
   /// The IP address of this network endpoint.
   final String ipAddress;
-
   /// The port of this network endpoint.
   final int port;
 
@@ -17,10 +17,10 @@ class NetworkEndpointResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ipAddress'] = ipAddress;
-    map['port'] = port;
-    return map;
+    return <String, dynamic>{
+      'ipAddress': ipAddress,
+      'port': port,
+    };
   }
 
   factory NetworkEndpointResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class NetworkEndpointResponse {
     );
   }
 }
+

@@ -7,12 +7,9 @@ import 'google_cloud_documentai_v1_document_page_layout_response.dart';
 /// Detected non-text visual elements e.g. checkbox, signature etc. on the page.
 class GoogleCloudDocumentaiV1DocumentPageVisualElementResponse {
   /// A list of detected languages together with confidence.
-  final List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse>
-      detectedLanguages;
-
+  final List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse> detectedLanguages;
   /// Layout for VisualElement.
   final GoogleCloudDocumentaiV1DocumentPageLayoutResponse layout;
-
   /// Type of the VisualElement.
   final String type;
 
@@ -27,26 +24,19 @@ class GoogleCloudDocumentaiV1DocumentPageVisualElementResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['detectedLanguages'] = pulumi.Input.encodeList<
-        GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse,
-        Map<String, dynamic>>(detectedLanguages, (value) => value.toMap());
-    map['layout'] = layout.toMap();
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'detectedLanguages': pulumi.Input.encodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse, Map<String, dynamic>>(detectedLanguages, (value) => value.toMap()),
+      'layout': layout.toMap(),
+      'type': type,
+    };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentPageVisualElementResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentPageVisualElementResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageVisualElementResponse(
-      detectedLanguages: pulumi.Input.decodeList<
-              GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse>(
-          map['detectedLanguages'],
-          (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse
-              .fromMap((value as Map).cast<String, dynamic>())),
-      layout: GoogleCloudDocumentaiV1DocumentPageLayoutResponse.fromMap(
-          (map['layout'] as Map).cast<String, dynamic>()),
+      detectedLanguages: pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse>(map['detectedLanguages'], (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse.fromMap((value as Map).cast<String, dynamic>())),
+      layout: GoogleCloudDocumentaiV1DocumentPageLayoutResponse.fromMap((map['layout'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

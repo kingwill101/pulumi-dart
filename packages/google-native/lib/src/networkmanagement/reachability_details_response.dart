@@ -8,13 +8,10 @@ import 'trace_response.dart';
 class ReachabilityDetailsResponse {
   /// The details of a failure or a cancellation of reachability analysis.
   final StatusResponse error;
-
   /// The overall result of the test's configuration analysis.
   final String result;
-
   /// Result may contain a list of traces if a test has multiple possible paths in the network, such as when destination endpoint is a load balancer with multiple backends.
   final List<TraceResponse> traces;
-
   /// The time of the configuration analysis.
   final String verifyTime;
 
@@ -31,26 +28,21 @@ class ReachabilityDetailsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['error'] = error.toMap();
-    map['result'] = result;
-    map['traces'] =
-        pulumi.Input.encodeList<TraceResponse, Map<String, dynamic>>(
-            traces, (value) => value.toMap());
-    map['verifyTime'] = verifyTime;
-    return map;
+    return <String, dynamic>{
+      'error': error.toMap(),
+      'result': result,
+      'traces': pulumi.Input.encodeList<TraceResponse, Map<String, dynamic>>(traces, (value) => value.toMap()),
+      'verifyTime': verifyTime,
+    };
   }
 
   factory ReachabilityDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ReachabilityDetailsResponse(
-      error:
-          StatusResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
+      error: StatusResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
       result: map['result'] as String,
-      traces: pulumi.Input.decodeList<TraceResponse>(
-          map['traces'],
-          (value) =>
-              TraceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      traces: pulumi.Input.decodeList<TraceResponse>(map['traces'], (value) => TraceResponse.fromMap((value as Map).cast<String, dynamic>())),
       verifyTime: map['verifyTime'] as String,
     );
   }
 }
+

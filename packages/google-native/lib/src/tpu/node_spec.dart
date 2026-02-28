@@ -7,13 +7,10 @@ import 'node.dart';
 class NodeSpec {
   /// Optional. Fields to specify in case of multi-node request.
   final MultiNodeParams? multiNodeParams;
-
   /// The node.
   final Node node;
-
   /// The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. This is only specified when requesting a single node. In case of multi-node requests, multi_node_params must be populated instead. It's an error to specify both node_id and multi_node_params.
   final String? nodeId;
-
   /// The parent resource name.
   final String parent;
 
@@ -30,29 +27,21 @@ class NodeSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final multiNodeParamsValue = multiNodeParams;
-    if (multiNodeParamsValue != null) {
-      map['multiNodeParams'] = multiNodeParamsValue.toMap();
-    }
-    map['node'] = node.toMap();
-    final nodeIdValue = nodeId;
-    if (nodeIdValue != null) {
-      map['nodeId'] = nodeIdValue;
-    }
-    map['parent'] = parent;
-    return map;
+    return <String, dynamic>{
+      'multiNodeParams': ?multiNodeParams == null ? null : multiNodeParams!.toMap(),
+      'node': node.toMap(),
+      'nodeId': ?nodeId,
+      'parent': parent,
+    };
   }
 
   factory NodeSpec.fromMap(Map<String, dynamic> map) {
     return NodeSpec(
-      multiNodeParams: map['multiNodeParams'] == null
-          ? null
-          : MultiNodeParams.fromMap(
-              (map['multiNodeParams'] as Map).cast<String, dynamic>()),
+      multiNodeParams: map['multiNodeParams'] == null ? null : MultiNodeParams.fromMap((map['multiNodeParams'] as Map).cast<String, dynamic>()),
       node: Node.fromMap((map['node'] as Map).cast<String, dynamic>()),
       nodeId: map['nodeId'] == null ? null : map['nodeId'] as String,
       parent: map['parent'] as String,
     );
   }
 }
+

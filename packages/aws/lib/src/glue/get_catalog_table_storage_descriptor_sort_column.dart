@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetCatalogTableStorageDescriptorSortColumn {
   /// Name of the column.
   final String column;
-
   /// Whether the column is sorted in ascending (`1`) or descending order (`0`).
   final int sortOrder;
 
@@ -16,17 +16,17 @@ class GetCatalogTableStorageDescriptorSortColumn {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['column'] = column;
-    map['sortOrder'] = sortOrder;
-    return map;
+    return <String, dynamic>{
+      'column': column,
+      'sortOrder': sortOrder,
+    };
   }
 
-  factory GetCatalogTableStorageDescriptorSortColumn.fromMap(
-      Map<String, dynamic> map) {
+  factory GetCatalogTableStorageDescriptorSortColumn.fromMap(Map<String, dynamic> map) {
     return GetCatalogTableStorageDescriptorSortColumn(
       column: map['column'] as String,
       sortOrder: map['sortOrder'] as int,
     );
   }
 }
+

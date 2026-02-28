@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRoutersRouterMd5AuthenticationKey {
   final String key;
   final String name;
@@ -13,17 +14,17 @@ class GetRoutersRouterMd5AuthenticationKey {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'name': name,
+    };
   }
 
-  factory GetRoutersRouterMd5AuthenticationKey.fromMap(
-      Map<String, dynamic> map) {
+  factory GetRoutersRouterMd5AuthenticationKey.fromMap(Map<String, dynamic> map) {
     return GetRoutersRouterMd5AuthenticationKey(
       key: map['key'] as String,
       name: map['name'] as String,
     );
   }
 }
+

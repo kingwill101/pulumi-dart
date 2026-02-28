@@ -14,12 +14,13 @@ class AccountAliasArgs {
   /// [accountAlias] The account alias
   AccountAliasArgs({
     required String accountAlias,
-  }) : accountAlias = pulumi.Input.asInput<String>(accountAlias);
+  }) :
+      accountAlias = pulumi.Input.asInput<String>(accountAlias);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accountAlias'] = accountAlias;
-    return map;
+    return <String, dynamic>{
+      'accountAlias': accountAlias,
+    };
   }
 
   factory AccountAliasArgs.fromMap(Map<String, dynamic> map) {
@@ -28,3 +29,4 @@ class AccountAliasArgs {
     );
   }
 }
+

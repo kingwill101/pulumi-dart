@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TrailInsightSelector {
   /// Type of insights to log on a trail. Valid values are: `ApiCallRateInsight` and `ApiErrorRateInsight`.
   final String insightType;
@@ -11,9 +12,9 @@ class TrailInsightSelector {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['insightType'] = insightType;
-    return map;
+    return <String, dynamic>{
+      'insightType': insightType,
+    };
   }
 
   factory TrailInsightSelector.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class TrailInsightSelector {
     );
   }
 }
+

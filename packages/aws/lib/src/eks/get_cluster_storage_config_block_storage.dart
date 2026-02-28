@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterStorageConfigBlockStorage {
   /// Whether zonal shift is enabled.
   final bool enabled;
@@ -11,15 +12,15 @@ class GetClusterStorageConfigBlockStorage {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory GetClusterStorageConfigBlockStorage.fromMap(
-      Map<String, dynamic> map) {
+  factory GetClusterStorageConfigBlockStorage.fromMap(Map<String, dynamic> map) {
     return GetClusterStorageConfigBlockStorage(
       enabled: map['enabled'] as bool,
     );
   }
 }
+

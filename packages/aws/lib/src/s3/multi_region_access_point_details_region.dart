@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MultiRegionAccessPointDetailsRegion {
   final String bucket;
   final String? bucketAccountId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final String? region;
 
@@ -18,27 +18,19 @@ class MultiRegionAccessPointDetailsRegion {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucket'] = bucket;
-    final bucketAccountIdValue = bucketAccountId;
-    if (bucketAccountIdValue != null) {
-      map['bucketAccountId'] = bucketAccountIdValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'bucket': bucket,
+      'bucketAccountId': ?bucketAccountId,
+      'region': ?region,
+    };
   }
 
-  factory MultiRegionAccessPointDetailsRegion.fromMap(
-      Map<String, dynamic> map) {
+  factory MultiRegionAccessPointDetailsRegion.fromMap(Map<String, dynamic> map) {
     return MultiRegionAccessPointDetailsRegion(
       bucket: map['bucket'] as String,
-      bucketAccountId: map['bucketAccountId'] == null
-          ? null
-          : map['bucketAccountId'] as String,
+      bucketAccountId: map['bucketAccountId'] == null ? null : map['bucketAccountId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

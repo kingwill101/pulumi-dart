@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BackendServiceSecuritySettingsAwsV4Authentication {
   /// The access key used for s3 bucket authentication.
   /// Required for updating or creating a backend that uses AWS v4 signature authentication, but will not be returned as part of the configuration when queried with a REST API GET request.
   final String? accessKey;
-
   /// The identifier of an access key used for s3 bucket authentication.
   final String? accessKeyId;
-
   /// The optional version identifier for the access key. You can use this to keep track of different iterations of your access key.
   final String? accessKeyVersion;
-
   /// The name of the cloud region of your origin. This is a free-form field with the name of the region your cloud uses to host your origin.
   /// For example, "us-east-1" for AWS or "us-ashburn-1" for OCI.
   final String? originRegion;
@@ -28,37 +26,21 @@ class BackendServiceSecuritySettingsAwsV4Authentication {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final accessKeyValue = accessKey;
-    if (accessKeyValue != null) {
-      map['accessKey'] = accessKeyValue;
-    }
-    final accessKeyIdValue = accessKeyId;
-    if (accessKeyIdValue != null) {
-      map['accessKeyId'] = accessKeyIdValue;
-    }
-    final accessKeyVersionValue = accessKeyVersion;
-    if (accessKeyVersionValue != null) {
-      map['accessKeyVersion'] = accessKeyVersionValue;
-    }
-    final originRegionValue = originRegion;
-    if (originRegionValue != null) {
-      map['originRegion'] = originRegionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'accessKey': ?accessKey,
+      'accessKeyId': ?accessKeyId,
+      'accessKeyVersion': ?accessKeyVersion,
+      'originRegion': ?originRegion,
+    };
   }
 
-  factory BackendServiceSecuritySettingsAwsV4Authentication.fromMap(
-      Map<String, dynamic> map) {
+  factory BackendServiceSecuritySettingsAwsV4Authentication.fromMap(Map<String, dynamic> map) {
     return BackendServiceSecuritySettingsAwsV4Authentication(
       accessKey: map['accessKey'] == null ? null : map['accessKey'] as String,
-      accessKeyId:
-          map['accessKeyId'] == null ? null : map['accessKeyId'] as String,
-      accessKeyVersion: map['accessKeyVersion'] == null
-          ? null
-          : map['accessKeyVersion'] as String,
-      originRegion:
-          map['originRegion'] == null ? null : map['originRegion'] as String,
+      accessKeyId: map['accessKeyId'] == null ? null : map['accessKeyId'] as String,
+      accessKeyVersion: map['accessKeyVersion'] == null ? null : map['accessKeyVersion'] as String,
+      originRegion: map['originRegion'] == null ? null : map['originRegion'] as String,
     );
   }
 }
+

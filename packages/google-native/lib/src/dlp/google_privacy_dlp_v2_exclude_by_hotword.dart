@@ -7,7 +7,6 @@ import 'google_privacy_dlp_v2_regex.dart';
 class GooglePrivacyDlpV2ExcludeByHotword {
   /// Regular expression pattern defining what qualifies as a hotword.
   final GooglePrivacyDlpV2Regex? hotwordRegex;
-
   /// Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The windowBefore property in proximity should be set to 1 if the hotword needs to be included in a column header.
   final GooglePrivacyDlpV2Proximity? proximity;
 
@@ -20,28 +19,17 @@ class GooglePrivacyDlpV2ExcludeByHotword {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final hotwordRegexValue = hotwordRegex;
-    if (hotwordRegexValue != null) {
-      map['hotwordRegex'] = hotwordRegexValue.toMap();
-    }
-    final proximityValue = proximity;
-    if (proximityValue != null) {
-      map['proximity'] = proximityValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'hotwordRegex': ?hotwordRegex == null ? null : hotwordRegex!.toMap(),
+      'proximity': ?proximity == null ? null : proximity!.toMap(),
+    };
   }
 
   factory GooglePrivacyDlpV2ExcludeByHotword.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2ExcludeByHotword(
-      hotwordRegex: map['hotwordRegex'] == null
-          ? null
-          : GooglePrivacyDlpV2Regex.fromMap(
-              (map['hotwordRegex'] as Map).cast<String, dynamic>()),
-      proximity: map['proximity'] == null
-          ? null
-          : GooglePrivacyDlpV2Proximity.fromMap(
-              (map['proximity'] as Map).cast<String, dynamic>()),
+      hotwordRegex: map['hotwordRegex'] == null ? null : GooglePrivacyDlpV2Regex.fromMap((map['hotwordRegex'] as Map).cast<String, dynamic>()),
+      proximity: map['proximity'] == null ? null : GooglePrivacyDlpV2Proximity.fromMap((map['proximity'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

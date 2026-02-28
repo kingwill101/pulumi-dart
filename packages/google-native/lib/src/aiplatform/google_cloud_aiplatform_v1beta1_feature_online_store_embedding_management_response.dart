@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Contains settings for embedding management.
 class GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse {
   /// Optional. Immutable. Whether to enable embedding management in this FeatureOnlineStore. It's immutable after creation to ensure the FeatureOnlineStore availability.
@@ -12,15 +13,15 @@ class GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse 
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse(
       enabled: map['enabled'] as bool,
     );
   }
 }
+

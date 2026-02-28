@@ -9,19 +9,14 @@ import 'sensitive_text_annotation_response.dart';
 class GetAnnotationResult {
   /// Details of the source.
   final AnnotationSourceResponse annotationSource;
-
   /// Additional information for this annotation record, such as annotator and verifier information or study campaign.
   final Map<String, String> customData;
-
   /// Annotations for images. For example, bounding polygons.
   final ImageAnnotationResponse imageAnnotation;
-
   /// Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
   final String name;
-
   /// Annotations for resource. For example, classification tags.
   final ResourceAnnotationResponse resourceAnnotation;
-
   /// Annotations for sensitive texts. For example, a range that describes the location of sensitive text.
   final SensitiveTextAnnotationResponse textAnnotation;
 
@@ -42,28 +37,25 @@ class GetAnnotationResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['annotationSource'] = annotationSource.toMap();
-    map['customData'] = customData;
-    map['imageAnnotation'] = imageAnnotation.toMap();
-    map['name'] = name;
-    map['resourceAnnotation'] = resourceAnnotation.toMap();
-    map['textAnnotation'] = textAnnotation.toMap();
-    return map;
+    return <String, dynamic>{
+      'annotationSource': annotationSource.toMap(),
+      'customData': customData,
+      'imageAnnotation': imageAnnotation.toMap(),
+      'name': name,
+      'resourceAnnotation': resourceAnnotation.toMap(),
+      'textAnnotation': textAnnotation.toMap(),
+    };
   }
 
   factory GetAnnotationResult.fromMap(Map<String, dynamic> map) {
     return GetAnnotationResult(
-      annotationSource: AnnotationSourceResponse.fromMap(
-          (map['annotationSource'] as Map).cast<String, dynamic>()),
+      annotationSource: AnnotationSourceResponse.fromMap((map['annotationSource'] as Map).cast<String, dynamic>()),
       customData: (map['customData'] as Map).cast<String, String>(),
-      imageAnnotation: ImageAnnotationResponse.fromMap(
-          (map['imageAnnotation'] as Map).cast<String, dynamic>()),
+      imageAnnotation: ImageAnnotationResponse.fromMap((map['imageAnnotation'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      resourceAnnotation: ResourceAnnotationResponse.fromMap(
-          (map['resourceAnnotation'] as Map).cast<String, dynamic>()),
-      textAnnotation: SensitiveTextAnnotationResponse.fromMap(
-          (map['textAnnotation'] as Map).cast<String, dynamic>()),
+      resourceAnnotation: ResourceAnnotationResponse.fromMap((map['resourceAnnotation'] as Map).cast<String, dynamic>()),
+      textAnnotation: SensitiveTextAnnotationResponse.fromMap((map['textAnnotation'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

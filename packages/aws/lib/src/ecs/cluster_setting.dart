@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterSetting {
   /// Name of the setting to manage. Valid values: `containerInsights`.
   final String name;
-
   /// Value to assign to the setting. Valid values: `enhanced`, `enabled`, `disabled`.
   final String value;
 
@@ -16,10 +16,10 @@ class ClusterSetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
   factory ClusterSetting.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class ClusterSetting {
     );
   }
 }
+

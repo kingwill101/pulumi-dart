@@ -8,10 +8,8 @@ import 'repair_rollout_rule.dart';
 class AutomationRule {
   /// Optional. The `AdvanceRolloutRule` will automatically advance a successful Rollout.
   final AdvanceRolloutRule? advanceRolloutRule;
-
   /// Optional. `PromoteReleaseRule` will automatically promote a release from the current target to a specified target.
   final PromoteReleaseRule? promoteReleaseRule;
-
   /// Optional. The `RepairRolloutRule` will automatically repair a failed rollout.
   final RepairRolloutRule? repairRolloutRule;
 
@@ -26,36 +24,19 @@ class AutomationRule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final advanceRolloutRuleValue = advanceRolloutRule;
-    if (advanceRolloutRuleValue != null) {
-      map['advanceRolloutRule'] = advanceRolloutRuleValue.toMap();
-    }
-    final promoteReleaseRuleValue = promoteReleaseRule;
-    if (promoteReleaseRuleValue != null) {
-      map['promoteReleaseRule'] = promoteReleaseRuleValue.toMap();
-    }
-    final repairRolloutRuleValue = repairRolloutRule;
-    if (repairRolloutRuleValue != null) {
-      map['repairRolloutRule'] = repairRolloutRuleValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'advanceRolloutRule': ?advanceRolloutRule == null ? null : advanceRolloutRule!.toMap(),
+      'promoteReleaseRule': ?promoteReleaseRule == null ? null : promoteReleaseRule!.toMap(),
+      'repairRolloutRule': ?repairRolloutRule == null ? null : repairRolloutRule!.toMap(),
+    };
   }
 
   factory AutomationRule.fromMap(Map<String, dynamic> map) {
     return AutomationRule(
-      advanceRolloutRule: map['advanceRolloutRule'] == null
-          ? null
-          : AdvanceRolloutRule.fromMap(
-              (map['advanceRolloutRule'] as Map).cast<String, dynamic>()),
-      promoteReleaseRule: map['promoteReleaseRule'] == null
-          ? null
-          : PromoteReleaseRule.fromMap(
-              (map['promoteReleaseRule'] as Map).cast<String, dynamic>()),
-      repairRolloutRule: map['repairRolloutRule'] == null
-          ? null
-          : RepairRolloutRule.fromMap(
-              (map['repairRolloutRule'] as Map).cast<String, dynamic>()),
+      advanceRolloutRule: map['advanceRolloutRule'] == null ? null : AdvanceRolloutRule.fromMap((map['advanceRolloutRule'] as Map).cast<String, dynamic>()),
+      promoteReleaseRule: map['promoteReleaseRule'] == null ? null : PromoteReleaseRule.fromMap((map['promoteReleaseRule'] as Map).cast<String, dynamic>()),
+      repairRolloutRule: map['repairRolloutRule'] == null ? null : RepairRolloutRule.fromMap((map['repairRolloutRule'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

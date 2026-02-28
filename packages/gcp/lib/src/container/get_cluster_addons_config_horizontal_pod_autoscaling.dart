@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterAddonsConfigHorizontalPodAutoscaling {
   final bool disabled;
 
@@ -10,15 +11,15 @@ class GetClusterAddonsConfigHorizontalPodAutoscaling {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['disabled'] = disabled;
-    return map;
+    return <String, dynamic>{
+      'disabled': disabled,
+    };
   }
 
-  factory GetClusterAddonsConfigHorizontalPodAutoscaling.fromMap(
-      Map<String, dynamic> map) {
+  factory GetClusterAddonsConfigHorizontalPodAutoscaling.fromMap(Map<String, dynamic> map) {
     return GetClusterAddonsConfigHorizontalPodAutoscaling(
       disabled: map['disabled'] as bool,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig {
   /// Specify a threshold value that can trigger the alert. For numerical feature, the distribution distance is calculated by Jensen–Shannon divergence. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
   final double value;
@@ -11,15 +12,15 @@ class AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'value': value,
+    };
   }
 
-  factory AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig.fromMap(Map<String, dynamic> map) {
     return AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig(
       value: map['value'] as double,
     );
   }
 }
+

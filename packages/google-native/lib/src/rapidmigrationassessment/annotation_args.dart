@@ -11,14 +11,11 @@ class AnnotationArgs {
   /// Labels as key value pairs.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
-
   /// name of resource.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
-
   /// Optional. An optional request ID to identify requests.
   final pulumi.Input<String>? requestId;
-
   /// Type of an annotation.
   final pulumi.Input<AnnotationType>? type;
 
@@ -36,55 +33,34 @@ class AnnotationArgs {
     String? project,
     String? requestId,
     AnnotationType? type,
-  })  : labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-        location = pulumi.Input.asOptionalInput<String>(location),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        requestId = pulumi.Input.asOptionalInput<String>(requestId),
-        type = pulumi.Input.asOptionalInput<AnnotationType>(type);
+  }) :
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      requestId = pulumi.Input.asOptionalInput<String>(requestId),
+      type = pulumi.Input.asOptionalInput<AnnotationType>(type);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final labelsValue = labels;
-    if (labelsValue != null) {
-      map['labels'] = labelsValue;
-    }
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final requestIdValue = requestId;
-    if (requestIdValue != null) {
-      map['requestId'] = requestIdValue;
-    }
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = pulumi.Input.mapOptionalInputValue<AnnotationType, String>(
-          typeValue, (value) => value.value);
-    }
-    return map;
+    return <String, dynamic>{
+      'labels': ?labels,
+      'location': ?location,
+      'name': ?name,
+      'project': ?project,
+      'requestId': ?requestId,
+      'type': ?pulumi.Input.mapOptionalInputValue<AnnotationType, String>(type, (value) => value.value),
+    };
   }
 
   factory AnnotationArgs.fromMap(Map<String, dynamic> map) {
     return AnnotationArgs(
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       location: map['location'] == null ? null : map['location'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       requestId: map['requestId'] == null ? null : map['requestId'] as String,
-      type: map['type'] == null
-          ? null
-          : AnnotationType.fromValue(map['type'] as String),
+      type: map['type'] == null ? null : AnnotationType.fromValue(map['type'] as String),
     );
   }
 }
+

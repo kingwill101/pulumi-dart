@@ -8,7 +8,6 @@ import 'policy_binding_gkehub_v1beta.dart';
 class BinaryAuthorizationConfigGkehubV1beta {
   /// Optional. Mode of operation for binauthz policy evaluation.
   final BinaryAuthorizationConfigEvaluationModeGkehubV1beta? evaluationMode;
-
   /// Optional. Binauthz policies that apply to this cluster.
   final List<PolicyBindingGkehubV1beta>? policyBindings;
 
@@ -21,32 +20,17 @@ class BinaryAuthorizationConfigGkehubV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final evaluationModeValue = evaluationMode;
-    if (evaluationModeValue != null) {
-      map['evaluationMode'] = evaluationModeValue.value;
-    }
-    final policyBindingsValue = policyBindings;
-    if (policyBindingsValue != null) {
-      map['policyBindings'] = pulumi.Input.encodeList<PolicyBindingGkehubV1beta,
-          Map<String, dynamic>>(policyBindingsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'evaluationMode': ?evaluationMode == null ? null : evaluationMode!.value,
+      'policyBindings': ?policyBindings == null ? null : pulumi.Input.encodeList<PolicyBindingGkehubV1beta, Map<String, dynamic>>(policyBindings!, (value) => value.toMap()),
+    };
   }
 
-  factory BinaryAuthorizationConfigGkehubV1beta.fromMap(
-      Map<String, dynamic> map) {
+  factory BinaryAuthorizationConfigGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return BinaryAuthorizationConfigGkehubV1beta(
-      evaluationMode: map['evaluationMode'] == null
-          ? null
-          : BinaryAuthorizationConfigEvaluationModeGkehubV1beta.fromValue(
-              map['evaluationMode'] as String),
-      policyBindings: map['policyBindings'] == null
-          ? null
-          : pulumi.Input.decodeList<PolicyBindingGkehubV1beta>(
-              map['policyBindings'],
-              (value) => PolicyBindingGkehubV1beta.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      evaluationMode: map['evaluationMode'] == null ? null : BinaryAuthorizationConfigEvaluationModeGkehubV1beta.fromValue(map['evaluationMode'] as String),
+      policyBindings: map['policyBindings'] == null ? null : pulumi.Input.decodeList<PolicyBindingGkehubV1beta>(map['policyBindings'], (value) => PolicyBindingGkehubV1beta.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

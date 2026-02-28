@@ -1,15 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EnterpriseCrmEventbusStatsDimensionsResponse {
   final String clientId;
-
   /// Whether to include or exclude the enums matching the regex.
   final String enumFilterType;
   final String errorEnumString;
   final String retryAttempt;
   final String taskName;
   final String taskNumber;
-
   /// Stats have been or will be aggregated on set fields for any semantically-meaningful combination.
   final String triggerId;
   final String warningEnumString;
@@ -41,22 +40,21 @@ class EnterpriseCrmEventbusStatsDimensionsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clientId'] = clientId;
-    map['enumFilterType'] = enumFilterType;
-    map['errorEnumString'] = errorEnumString;
-    map['retryAttempt'] = retryAttempt;
-    map['taskName'] = taskName;
-    map['taskNumber'] = taskNumber;
-    map['triggerId'] = triggerId;
-    map['warningEnumString'] = warningEnumString;
-    map['workflowId'] = workflowId;
-    map['workflowName'] = workflowName;
-    return map;
+    return <String, dynamic>{
+      'clientId': clientId,
+      'enumFilterType': enumFilterType,
+      'errorEnumString': errorEnumString,
+      'retryAttempt': retryAttempt,
+      'taskName': taskName,
+      'taskNumber': taskNumber,
+      'triggerId': triggerId,
+      'warningEnumString': warningEnumString,
+      'workflowId': workflowId,
+      'workflowName': workflowName,
+    };
   }
 
-  factory EnterpriseCrmEventbusStatsDimensionsResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusStatsDimensionsResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusStatsDimensionsResponse(
       clientId: map['clientId'] as String,
       enumFilterType: map['enumFilterType'] as String,
@@ -71,3 +69,4 @@ class EnterpriseCrmEventbusStatsDimensionsResponse {
     );
   }
 }
+

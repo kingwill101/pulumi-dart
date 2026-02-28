@@ -4,8 +4,7 @@ import 'flow_destination_flow_config_destination_connector_properties_salesforce
 
 class FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforce {
   final String? dataTransferApi;
-  final FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforceErrorHandlingConfig?
-      errorHandlingConfig;
+  final FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforceErrorHandlingConfig? errorHandlingConfig;
   final List<String>? idFieldNames;
   final String object;
   final String? writeOperationType;
@@ -25,45 +24,23 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforce {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dataTransferApiValue = dataTransferApi;
-    if (dataTransferApiValue != null) {
-      map['dataTransferApi'] = dataTransferApiValue;
-    }
-    final errorHandlingConfigValue = errorHandlingConfig;
-    if (errorHandlingConfigValue != null) {
-      map['errorHandlingConfig'] = errorHandlingConfigValue.toMap();
-    }
-    final idFieldNamesValue = idFieldNames;
-    if (idFieldNamesValue != null) {
-      map['idFieldNames'] = idFieldNamesValue;
-    }
-    map['object'] = object;
-    final writeOperationTypeValue = writeOperationType;
-    if (writeOperationTypeValue != null) {
-      map['writeOperationType'] = writeOperationTypeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'dataTransferApi': ?dataTransferApi,
+      'errorHandlingConfig': ?errorHandlingConfig == null ? null : errorHandlingConfig!.toMap(),
+      'idFieldNames': ?idFieldNames,
+      'object': object,
+      'writeOperationType': ?writeOperationType,
+    };
   }
 
-  factory FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforce.fromMap(
-      Map<String, dynamic> map) {
+  factory FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforce.fromMap(Map<String, dynamic> map) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforce(
-      dataTransferApi: map['dataTransferApi'] == null
-          ? null
-          : map['dataTransferApi'] as String,
-      errorHandlingConfig: map['errorHandlingConfig'] == null
-          ? null
-          : FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforceErrorHandlingConfig
-              .fromMap(
-                  (map['errorHandlingConfig'] as Map).cast<String, dynamic>()),
-      idFieldNames: map['idFieldNames'] == null
-          ? null
-          : (map['idFieldNames'] as List).cast<String>(),
+      dataTransferApi: map['dataTransferApi'] == null ? null : map['dataTransferApi'] as String,
+      errorHandlingConfig: map['errorHandlingConfig'] == null ? null : FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforceErrorHandlingConfig.fromMap((map['errorHandlingConfig'] as Map).cast<String, dynamic>()),
+      idFieldNames: map['idFieldNames'] == null ? null : (map['idFieldNames'] as List).cast<String>(),
       object: map['object'] as String,
-      writeOperationType: map['writeOperationType'] == null
-          ? null
-          : map['writeOperationType'] as String,
+      writeOperationType: map['writeOperationType'] == null ? null : map['writeOperationType'] as String,
     );
   }
 }
+

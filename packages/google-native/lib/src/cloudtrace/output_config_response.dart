@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// OutputConfig contains a destination for writing trace data.
 class OutputConfigResponse {
   /// The destination for writing trace data. Supported formats include: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
@@ -12,9 +13,9 @@ class OutputConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['destination'] = destination;
-    return map;
+    return <String, dynamic>{
+      'destination': destination,
+    };
   }
 
   factory OutputConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class OutputConfigResponse {
     );
   }
 }
+

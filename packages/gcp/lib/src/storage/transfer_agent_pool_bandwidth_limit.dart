@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TransferAgentPoolBandwidthLimit {
   /// Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
   final String limitMbps;
@@ -11,9 +12,9 @@ class TransferAgentPoolBandwidthLimit {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['limitMbps'] = limitMbps;
-    return map;
+    return <String, dynamic>{
+      'limitMbps': limitMbps,
+    };
   }
 
   factory TransferAgentPoolBandwidthLimit.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class TransferAgentPoolBandwidthLimit {
     );
   }
 }
+

@@ -121,12 +121,9 @@ import 'agentcore_token_vault_cmk_kms_configuration.dart';
 /// ```
 class AgentcoreTokenVaultCmk extends pulumi.CustomResource {
   /// KMS configuration for the token vault. See `kms_configuration` below.
-  late final pulumi.Output<AgentcoreTokenVaultCmkKmsConfiguration>
-      kmsConfiguration;
-
+  late final pulumi.Output<AgentcoreTokenVaultCmkKmsConfiguration> kmsConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Token vault ID. Defaults to `default`.
   late final pulumi.Output<String> tokenVaultId;
 
@@ -144,9 +141,7 @@ class AgentcoreTokenVaultCmk extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.kmsConfiguration =
-        registerOutput<AgentcoreTokenVaultCmkKmsConfiguration>(
-            'kmsConfiguration');
+    this.kmsConfiguration = registerOutput<AgentcoreTokenVaultCmkKmsConfiguration>('kmsConfiguration');
     this.region = registerOutput<String>('region');
     this.tokenVaultId = registerOutput<String>('tokenVaultId');
   }

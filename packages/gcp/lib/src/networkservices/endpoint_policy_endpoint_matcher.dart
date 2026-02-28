@@ -14,16 +14,15 @@ class EndpointPolicyEndpointMatcher {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['metadataLabelMatcher'] = metadataLabelMatcher.toMap();
-    return map;
+    return <String, dynamic>{
+      'metadataLabelMatcher': metadataLabelMatcher.toMap(),
+    };
   }
 
   factory EndpointPolicyEndpointMatcher.fromMap(Map<String, dynamic> map) {
     return EndpointPolicyEndpointMatcher(
-      metadataLabelMatcher:
-          EndpointPolicyEndpointMatcherMetadataLabelMatcher.fromMap(
-              (map['metadataLabelMatcher'] as Map).cast<String, dynamic>()),
+      metadataLabelMatcher: EndpointPolicyEndpointMatcherMetadataLabelMatcher.fromMap((map['metadataLabelMatcher'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

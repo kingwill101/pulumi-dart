@@ -7,7 +7,6 @@ import 'audit_log_config_cloudfunctions_v2alpha.dart';
 class AuditConfigCloudfunctionsV2alpha {
   /// The configuration for logging of each type of permission.
   final List<AuditLogConfigCloudfunctionsV2alpha>? auditLogConfigs;
-
   /// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
   final String? service;
 
@@ -20,29 +19,17 @@ class AuditConfigCloudfunctionsV2alpha {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final auditLogConfigsValue = auditLogConfigs;
-    if (auditLogConfigsValue != null) {
-      map['auditLogConfigs'] = pulumi.Input.encodeList<
-          AuditLogConfigCloudfunctionsV2alpha,
-          Map<String, dynamic>>(auditLogConfigsValue, (value) => value.toMap());
-    }
-    final serviceValue = service;
-    if (serviceValue != null) {
-      map['service'] = serviceValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'auditLogConfigs': ?auditLogConfigs == null ? null : pulumi.Input.encodeList<AuditLogConfigCloudfunctionsV2alpha, Map<String, dynamic>>(auditLogConfigs!, (value) => value.toMap()),
+      'service': ?service,
+    };
   }
 
   factory AuditConfigCloudfunctionsV2alpha.fromMap(Map<String, dynamic> map) {
     return AuditConfigCloudfunctionsV2alpha(
-      auditLogConfigs: map['auditLogConfigs'] == null
-          ? null
-          : pulumi.Input.decodeList<AuditLogConfigCloudfunctionsV2alpha>(
-              map['auditLogConfigs'],
-              (value) => AuditLogConfigCloudfunctionsV2alpha.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      auditLogConfigs: map['auditLogConfigs'] == null ? null : pulumi.Input.decodeList<AuditLogConfigCloudfunctionsV2alpha>(map['auditLogConfigs'], (value) => AuditLogConfigCloudfunctionsV2alpha.fromMap((value as Map).cast<String, dynamic>())),
       service: map['service'] == null ? null : map['service'] as String,
     );
   }
 }
+

@@ -13,7 +13,7 @@ enum InstancePrivateIpv6GoogleAccessComputeV1 {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown InstancePrivateIpv6GoogleAccessComputeV1 value: $value');
+    throw ArgumentError('Unknown InstancePrivateIpv6GoogleAccessComputeV1 value: $value');
   }
 }
+

@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// PostgreSQL database profile.
 class PostgresqlProfile {
   /// Database for the PostgreSQL connection.
   final String database;
-
   /// Hostname for the PostgreSQL connection.
   final String hostname;
-
   /// Password for the PostgreSQL connection.
   final String password;
-
   /// Port for the PostgreSQL connection, default value is 5432.
   final int? port;
-
   /// Username for the PostgreSQL connection.
   final String username;
 
@@ -32,16 +29,13 @@ class PostgresqlProfile {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['database'] = database;
-    map['hostname'] = hostname;
-    map['password'] = password;
-    final portValue = port;
-    if (portValue != null) {
-      map['port'] = portValue;
-    }
-    map['username'] = username;
-    return map;
+    return <String, dynamic>{
+      'database': database,
+      'hostname': hostname,
+      'password': password,
+      'port': ?port,
+      'username': username,
+    };
   }
 
   factory PostgresqlProfile.fromMap(Map<String, dynamic> map) {
@@ -54,3 +48,4 @@ class PostgresqlProfile {
     );
   }
 }
+

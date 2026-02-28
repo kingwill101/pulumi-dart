@@ -19,26 +19,15 @@ class V2PolicyOrchestratorOrchestrationScope {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final selectorsValue = selectors;
-    if (selectorsValue != null) {
-      map['selectors'] = pulumi.Input.encodeList<
-          V2PolicyOrchestratorOrchestrationScopeSelector,
-          Map<String, dynamic>>(selectorsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'selectors': ?selectors == null ? null : pulumi.Input.encodeList<V2PolicyOrchestratorOrchestrationScopeSelector, Map<String, dynamic>>(selectors!, (value) => value.toMap()),
+    };
   }
 
-  factory V2PolicyOrchestratorOrchestrationScope.fromMap(
-      Map<String, dynamic> map) {
+  factory V2PolicyOrchestratorOrchestrationScope.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorOrchestrationScope(
-      selectors: map['selectors'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  V2PolicyOrchestratorOrchestrationScopeSelector>(
-              map['selectors'],
-              (value) => V2PolicyOrchestratorOrchestrationScopeSelector.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      selectors: map['selectors'] == null ? null : pulumi.Input.decodeList<V2PolicyOrchestratorOrchestrationScopeSelector>(map['selectors'], (value) => V2PolicyOrchestratorOrchestrationScopeSelector.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

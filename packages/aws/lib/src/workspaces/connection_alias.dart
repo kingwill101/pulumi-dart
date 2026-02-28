@@ -103,19 +103,14 @@ import 'connection_alias_timeouts.dart';
 class ConnectionAlias extends pulumi.CustomResource {
   /// The connection string specified for the connection alias. The connection string must be in the form of a fully qualified domain name (FQDN), such as www.example.com.
   late final pulumi.Output<String> connectionString;
-
   /// The identifier of the Amazon Web Services account that owns the connection alias.
   late final pulumi.Output<String> ownerAccountId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The current state of the connection alias.
   late final pulumi.Output<String> state;
-
   /// A map of tags assigned to the WorkSpaces Connection Alias. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ConnectionAliasTimeouts?> timeouts;

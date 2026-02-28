@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetVirtualGatewaySpecListenerConnectionPoolGrpc {
   final int maxRequests;
 
@@ -10,15 +11,15 @@ class GetVirtualGatewaySpecListenerConnectionPoolGrpc {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maxRequests'] = maxRequests;
-    return map;
+    return <String, dynamic>{
+      'maxRequests': maxRequests,
+    };
   }
 
-  factory GetVirtualGatewaySpecListenerConnectionPoolGrpc.fromMap(
-      Map<String, dynamic> map) {
+  factory GetVirtualGatewaySpecListenerConnectionPoolGrpc.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecListenerConnectionPoolGrpc(
       maxRequests: map['maxRequests'] as int,
     );
   }
 }
+

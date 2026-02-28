@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetImagePipelineSchedule {
   /// Condition when the pipeline should trigger a new image build.
   final String pipelineExecutionStartCondition;
-
   /// Cron expression of how often the pipeline start condition is evaluated.
   final String scheduleExpression;
 
@@ -16,17 +16,17 @@ class GetImagePipelineSchedule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['pipelineExecutionStartCondition'] = pipelineExecutionStartCondition;
-    map['scheduleExpression'] = scheduleExpression;
-    return map;
+    return <String, dynamic>{
+      'pipelineExecutionStartCondition': pipelineExecutionStartCondition,
+      'scheduleExpression': scheduleExpression,
+    };
   }
 
   factory GetImagePipelineSchedule.fromMap(Map<String, dynamic> map) {
     return GetImagePipelineSchedule(
-      pipelineExecutionStartCondition:
-          map['pipelineExecutionStartCondition'] as String,
+      pipelineExecutionStartCondition: map['pipelineExecutionStartCondition'] as String,
       scheduleExpression: map['scheduleExpression'] as String,
     );
   }
 }
+

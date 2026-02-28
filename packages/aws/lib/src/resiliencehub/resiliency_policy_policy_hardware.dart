@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ResiliencyPolicyPolicyHardware {
   /// Recovery Point Objective (RPO) as a Go duration.
   final String rpo;
-
   /// Recovery Time Objective (RTO) as a Go duration.
   final String rto;
 
@@ -16,10 +16,10 @@ class ResiliencyPolicyPolicyHardware {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['rpo'] = rpo;
-    map['rto'] = rto;
-    return map;
+    return <String, dynamic>{
+      'rpo': rpo,
+      'rto': rto,
+    };
   }
 
   factory ResiliencyPolicyPolicyHardware.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class ResiliencyPolicyPolicyHardware {
     );
   }
 }
+

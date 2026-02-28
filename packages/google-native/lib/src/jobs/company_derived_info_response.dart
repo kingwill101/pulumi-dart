@@ -14,15 +14,15 @@ class CompanyDerivedInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['headquartersLocation'] = headquartersLocation.toMap();
-    return map;
+    return <String, dynamic>{
+      'headquartersLocation': headquartersLocation.toMap(),
+    };
   }
 
   factory CompanyDerivedInfoResponse.fromMap(Map<String, dynamic> map) {
     return CompanyDerivedInfoResponse(
-      headquartersLocation: LocationResponse.fromMap(
-          (map['headquartersLocation'] as Map).cast<String, dynamic>()),
+      headquartersLocation: LocationResponse.fromMap((map['headquartersLocation'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

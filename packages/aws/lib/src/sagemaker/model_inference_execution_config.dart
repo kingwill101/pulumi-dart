@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ModelInferenceExecutionConfig {
   /// How containers in a multi-container are run. Allowed values are: `Serial` and `Direct`.
   final String mode;
@@ -11,9 +12,9 @@ class ModelInferenceExecutionConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['mode'] = mode;
-    return map;
+    return <String, dynamic>{
+      'mode': mode,
+    };
   }
 
   factory ModelInferenceExecutionConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class ModelInferenceExecutionConfig {
     );
   }
 }
+

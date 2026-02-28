@@ -14,21 +14,15 @@ class GooglePrivacyDlpV2ImageTransformationsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['transforms'] = pulumi.Input.encodeList<
-        GooglePrivacyDlpV2ImageTransformationResponse,
-        Map<String, dynamic>>(transforms, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'transforms': pulumi.Input.encodeList<GooglePrivacyDlpV2ImageTransformationResponse, Map<String, dynamic>>(transforms, (value) => value.toMap()),
+    };
   }
 
-  factory GooglePrivacyDlpV2ImageTransformationsResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2ImageTransformationsResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2ImageTransformationsResponse(
-      transforms: pulumi.Input.decodeList<
-              GooglePrivacyDlpV2ImageTransformationResponse>(
-          map['transforms'],
-          (value) => GooglePrivacyDlpV2ImageTransformationResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      transforms: pulumi.Input.decodeList<GooglePrivacyDlpV2ImageTransformationResponse>(map['transforms'], (value) => GooglePrivacyDlpV2ImageTransformationResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

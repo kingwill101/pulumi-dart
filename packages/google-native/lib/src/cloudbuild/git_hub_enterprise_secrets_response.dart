@@ -1,28 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// GitHubEnterpriseSecrets represents the names of all necessary secrets in Secret Manager for a GitHub Enterprise server. Format is: projects//secrets/.
 class GitHubEnterpriseSecretsResponse {
   /// The resource name for the OAuth client ID secret in Secret Manager.
   final String oauthClientIdName;
-
   /// The resource name for the OAuth client ID secret version in Secret Manager.
   final String oauthClientIdVersionName;
-
   /// The resource name for the OAuth secret in Secret Manager.
   final String oauthSecretName;
-
   /// The resource name for the OAuth secret secret version in Secret Manager.
   final String oauthSecretVersionName;
-
   /// The resource name for the private key secret.
   final String privateKeyName;
-
   /// The resource name for the private key secret version.
   final String privateKeyVersionName;
-
   /// The resource name for the webhook secret in Secret Manager.
   final String webhookSecretName;
-
   /// The resource name for the webhook secret secret version in Secret Manager.
   final String webhookSecretVersionName;
 
@@ -47,16 +41,16 @@ class GitHubEnterpriseSecretsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['oauthClientIdName'] = oauthClientIdName;
-    map['oauthClientIdVersionName'] = oauthClientIdVersionName;
-    map['oauthSecretName'] = oauthSecretName;
-    map['oauthSecretVersionName'] = oauthSecretVersionName;
-    map['privateKeyName'] = privateKeyName;
-    map['privateKeyVersionName'] = privateKeyVersionName;
-    map['webhookSecretName'] = webhookSecretName;
-    map['webhookSecretVersionName'] = webhookSecretVersionName;
-    return map;
+    return <String, dynamic>{
+      'oauthClientIdName': oauthClientIdName,
+      'oauthClientIdVersionName': oauthClientIdVersionName,
+      'oauthSecretName': oauthSecretName,
+      'oauthSecretVersionName': oauthSecretVersionName,
+      'privateKeyName': privateKeyName,
+      'privateKeyVersionName': privateKeyVersionName,
+      'webhookSecretName': webhookSecretName,
+      'webhookSecretVersionName': webhookSecretVersionName,
+    };
   }
 
   factory GitHubEnterpriseSecretsResponse.fromMap(Map<String, dynamic> map) {
@@ -72,3 +66,4 @@ class GitHubEnterpriseSecretsResponse {
     );
   }
 }
+

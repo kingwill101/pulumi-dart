@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// When you use an AWS account identifier as the principal in a policy, the permissions in the policy statement can be granted to all identities contained in that account. This includes IAM users and roles in that account.
 class AWSPrincipal {
   /// AWS account identifier or ARN.
@@ -12,9 +13,9 @@ class AWSPrincipal {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['AWS'] = aWS;
-    return map;
+    return <String, dynamic>{
+      'AWS': aWS,
+    };
   }
 
   factory AWSPrincipal.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class AWSPrincipal {
     );
   }
 }
+

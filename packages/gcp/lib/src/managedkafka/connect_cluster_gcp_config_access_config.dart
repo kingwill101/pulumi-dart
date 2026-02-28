@@ -15,21 +15,15 @@ class ConnectClusterGcpConfigAccessConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['networkConfigs'] = pulumi.Input.encodeList<
-        ConnectClusterGcpConfigAccessConfigNetworkConfig,
-        Map<String, dynamic>>(networkConfigs, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'networkConfigs': pulumi.Input.encodeList<ConnectClusterGcpConfigAccessConfigNetworkConfig, Map<String, dynamic>>(networkConfigs, (value) => value.toMap()),
+    };
   }
 
-  factory ConnectClusterGcpConfigAccessConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory ConnectClusterGcpConfigAccessConfig.fromMap(Map<String, dynamic> map) {
     return ConnectClusterGcpConfigAccessConfig(
-      networkConfigs: pulumi.Input.decodeList<
-              ConnectClusterGcpConfigAccessConfigNetworkConfig>(
-          map['networkConfigs'],
-          (value) => ConnectClusterGcpConfigAccessConfigNetworkConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      networkConfigs: pulumi.Input.decodeList<ConnectClusterGcpConfigAccessConfigNetworkConfig>(map['networkConfigs'], (value) => ConnectClusterGcpConfigAccessConfigNetworkConfig.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

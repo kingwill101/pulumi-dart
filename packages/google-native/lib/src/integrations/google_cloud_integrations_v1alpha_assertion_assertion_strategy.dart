@@ -12,15 +12,13 @@ enum GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy {
   const GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy(this.value);
   final String value;
 
-  static GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy fromValue(
-      String value) {
-    for (final item
-        in GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy.values) {
+  static GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy fromValue(String value) {
+    for (final item in GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy value: $value');
+    throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy value: $value');
   }
 }
+

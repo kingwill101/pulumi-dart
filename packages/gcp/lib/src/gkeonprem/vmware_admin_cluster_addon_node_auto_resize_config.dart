@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VmwareAdminClusterAddonNodeAutoResizeConfig {
   /// Whether to enable controle plane node auto resizing.
   final bool enabled;
@@ -11,15 +12,15 @@ class VmwareAdminClusterAddonNodeAutoResizeConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory VmwareAdminClusterAddonNodeAutoResizeConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory VmwareAdminClusterAddonNodeAutoResizeConfig.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterAddonNodeAutoResizeConfig(
       enabled: map['enabled'] as bool,
     );
   }
 }
+

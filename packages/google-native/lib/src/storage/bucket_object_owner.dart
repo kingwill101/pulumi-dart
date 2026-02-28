@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The owner of the object. This will always be the uploader of the object.
 class BucketObjectOwner {
   /// The entity, in the form user-userId.
   final String? entity;
-
   /// The ID for the entity.
   final String? entityId;
 
@@ -17,16 +17,10 @@ class BucketObjectOwner {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final entityValue = entity;
-    if (entityValue != null) {
-      map['entity'] = entityValue;
-    }
-    final entityIdValue = entityId;
-    if (entityIdValue != null) {
-      map['entityId'] = entityIdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'entity': ?entity,
+      'entityId': ?entityId,
+    };
   }
 
   factory BucketObjectOwner.fromMap(Map<String, dynamic> map) {
@@ -36,3 +30,4 @@ class BucketObjectOwner {
     );
   }
 }
+

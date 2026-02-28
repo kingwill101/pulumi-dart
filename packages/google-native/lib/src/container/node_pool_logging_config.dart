@@ -14,20 +14,15 @@ class NodePoolLoggingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final variantConfigValue = variantConfig;
-    if (variantConfigValue != null) {
-      map['variantConfig'] = variantConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'variantConfig': ?variantConfig == null ? null : variantConfig!.toMap(),
+    };
   }
 
   factory NodePoolLoggingConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolLoggingConfig(
-      variantConfig: map['variantConfig'] == null
-          ? null
-          : LoggingVariantConfig.fromMap(
-              (map['variantConfig'] as Map).cast<String, dynamic>()),
+      variantConfig: map['variantConfig'] == null ? null : LoggingVariantConfig.fromMap((map['variantConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

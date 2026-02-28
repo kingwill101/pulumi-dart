@@ -1,25 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// GitFileSource describes a file within a (possibly remote) code repository.
 class GitFileSourceResponse {
   /// The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
   final String bitbucketServerConfig;
-
   /// The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
   final String githubEnterpriseConfig;
-
   /// The path of the file, with the repo root as the root of the path.
   final String path;
-
   /// See RepoType above.
   final String repoType;
-
   /// The fully qualified resource name of the Repos API repository. Either URI or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
   final String repository;
-
   /// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
   final String revision;
-
   /// The URI of the repo. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
   final String uri;
 
@@ -42,15 +37,15 @@ class GitFileSourceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bitbucketServerConfig'] = bitbucketServerConfig;
-    map['githubEnterpriseConfig'] = githubEnterpriseConfig;
-    map['path'] = path;
-    map['repoType'] = repoType;
-    map['repository'] = repository;
-    map['revision'] = revision;
-    map['uri'] = uri;
-    return map;
+    return <String, dynamic>{
+      'bitbucketServerConfig': bitbucketServerConfig,
+      'githubEnterpriseConfig': githubEnterpriseConfig,
+      'path': path,
+      'repoType': repoType,
+      'repository': repository,
+      'revision': revision,
+      'uri': uri,
+    };
   }
 
   factory GitFileSourceResponse.fromMap(Map<String, dynamic> map) {
@@ -65,3 +60,4 @@ class GitFileSourceResponse {
     );
   }
 }
+

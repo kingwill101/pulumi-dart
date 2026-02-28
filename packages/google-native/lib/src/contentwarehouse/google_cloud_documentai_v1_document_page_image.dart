@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Rendered image contents for this page.
 class GoogleCloudDocumentaiV1DocumentPageImage {
   /// Raw byte content of the image.
   final String? content;
-
   /// Height of the image in pixels.
   final int? height;
-
   /// Encoding [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml) for the image.
   final String? mimeType;
-
   /// Width of the image in pixels.
   final int? width;
 
@@ -27,28 +25,15 @@ class GoogleCloudDocumentaiV1DocumentPageImage {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final contentValue = content;
-    if (contentValue != null) {
-      map['content'] = contentValue;
-    }
-    final heightValue = height;
-    if (heightValue != null) {
-      map['height'] = heightValue;
-    }
-    final mimeTypeValue = mimeType;
-    if (mimeTypeValue != null) {
-      map['mimeType'] = mimeTypeValue;
-    }
-    final widthValue = width;
-    if (widthValue != null) {
-      map['width'] = widthValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'content': ?content,
+      'height': ?height,
+      'mimeType': ?mimeType,
+      'width': ?width,
+    };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentPageImage.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentPageImage.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageImage(
       content: map['content'] == null ? null : map['content'] as String,
       height: map['height'] == null ? null : map['height'] as int,
@@ -57,3 +42,4 @@ class GoogleCloudDocumentaiV1DocumentPageImage {
     );
   }
 }
+

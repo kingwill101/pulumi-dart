@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSnowflake {
   final String password;
   final String username;
@@ -13,17 +14,17 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSnowflake
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['password'] = password;
-    map['username'] = username;
-    return map;
+    return <String, dynamic>{
+      'password': password,
+      'username': username,
+    };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSnowflake.fromMap(
-      Map<String, dynamic> map) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSnowflake.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSnowflake(
       password: map['password'] as String,
       username: map['username'] as String,
     );
   }
 }
+

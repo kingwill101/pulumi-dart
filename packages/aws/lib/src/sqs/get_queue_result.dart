@@ -1,18 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getQueue.
 class GetQueueResult {
   /// ARN of the queue.
   final String arn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String region;
-
   /// Map of tags for the resource.
   final Map<String, String> tags;
-
   /// URL of the queue.
   final String url;
 
@@ -33,14 +31,14 @@ class GetQueueResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['id'] = id;
-    map['name'] = name;
-    map['region'] = region;
-    map['tags'] = tags;
-    map['url'] = url;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'id': id,
+      'name': name,
+      'region': region,
+      'tags': tags,
+      'url': url,
+    };
   }
 
   factory GetQueueResult.fromMap(Map<String, dynamic> map) {
@@ -54,3 +52,4 @@ class GetQueueResult {
     );
   }
 }
+

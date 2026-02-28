@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetLaunchTemplateIamInstanceProfile {
   final String arn;
-
   /// Name of the launch template.
   final String name;
 
@@ -15,17 +15,17 @@ class GetLaunchTemplateIamInstanceProfile {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'name': name,
+    };
   }
 
-  factory GetLaunchTemplateIamInstanceProfile.fromMap(
-      Map<String, dynamic> map) {
+  factory GetLaunchTemplateIamInstanceProfile.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateIamInstanceProfile(
       arn: map['arn'] as String,
       name: map['name'] as String,
     );
   }
 }
+

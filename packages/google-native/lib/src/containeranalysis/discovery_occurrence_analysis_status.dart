@@ -17,7 +17,7 @@ enum DiscoveryOccurrenceAnalysisStatus {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown DiscoveryOccurrenceAnalysisStatus value: $value');
+    throw ArgumentError('Unknown DiscoveryOccurrenceAnalysisStatus value: $value');
   }
 }
+

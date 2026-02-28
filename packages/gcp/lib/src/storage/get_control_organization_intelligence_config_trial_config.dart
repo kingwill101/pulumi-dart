@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetControlOrganizationIntelligenceConfigTrialConfig {
   /// The time at which the trial expires.
   final String expireTime;
@@ -11,15 +12,15 @@ class GetControlOrganizationIntelligenceConfigTrialConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['expireTime'] = expireTime;
-    return map;
+    return <String, dynamic>{
+      'expireTime': expireTime,
+    };
   }
 
-  factory GetControlOrganizationIntelligenceConfigTrialConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GetControlOrganizationIntelligenceConfigTrialConfig.fromMap(Map<String, dynamic> map) {
     return GetControlOrganizationIntelligenceConfigTrialConfig(
       expireTime: map['expireTime'] as String,
     );
   }
 }
+

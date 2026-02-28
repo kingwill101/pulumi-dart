@@ -6,10 +6,8 @@ import 'scheduling_node_affinity_operator.dart';
 class SchedulingNodeAffinity {
   /// The label key of Node resource to reference.
   final String? key;
-
   /// The operator to use for the node resources specified in the `values` parameter.
   final SchedulingNodeAffinityOperator? operator;
-
   /// Corresponds to the label values of Node resource.
   final List<String>? values;
 
@@ -24,30 +22,19 @@ class SchedulingNodeAffinity {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final keyValue = key;
-    if (keyValue != null) {
-      map['key'] = keyValue;
-    }
-    final operatorValue = operator;
-    if (operatorValue != null) {
-      map['operator'] = operatorValue.value;
-    }
-    final valuesValue = values;
-    if (valuesValue != null) {
-      map['values'] = valuesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'key': ?key,
+      'operator': ?operator == null ? null : operator!.value,
+      'values': ?values,
+    };
   }
 
   factory SchedulingNodeAffinity.fromMap(Map<String, dynamic> map) {
     return SchedulingNodeAffinity(
       key: map['key'] == null ? null : map['key'] as String,
-      operator: map['operator'] == null
-          ? null
-          : SchedulingNodeAffinityOperator.fromValue(map['operator'] as String),
-      values:
-          map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      operator: map['operator'] == null ? null : SchedulingNodeAffinityOperator.fromValue(map['operator'] as String),
+      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
     );
   }
 }
+

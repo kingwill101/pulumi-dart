@@ -7,14 +7,10 @@ class AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfig {
   /// (Output)
   /// Whether summarization is disabled.
   final bool? disabled;
-
   /// (Output)
   /// Model settings contains various configurations for the LLM model.
   /// Structure is documented below.
-  final List<
-          AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSetting>?
-      modelSettings;
-
+  final List<AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSetting>? modelSettings;
   /// (Output)
   /// The prompt definition. If not set, default prompt will be used.
   final String? prompt;
@@ -30,37 +26,19 @@ class AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final disabledValue = disabled;
-    if (disabledValue != null) {
-      map['disabled'] = disabledValue;
-    }
-    final modelSettingsValue = modelSettings;
-    if (modelSettingsValue != null) {
-      map['modelSettings'] = pulumi.Input.encodeList<
-          AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSetting,
-          Map<String, dynamic>>(modelSettingsValue, (value) => value.toMap());
-    }
-    final promptValue = prompt;
-    if (promptValue != null) {
-      map['prompt'] = promptValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'disabled': ?disabled,
+      'modelSettings': ?modelSettings == null ? null : pulumi.Input.encodeList<AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSetting, Map<String, dynamic>>(modelSettings!, (value) => value.toMap()),
+      'prompt': ?prompt,
+    };
   }
 
-  factory AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfig(
       disabled: map['disabled'] == null ? null : map['disabled'] as bool,
-      modelSettings: map['modelSettings'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSetting>(
-              map['modelSettings'],
-              (value) =>
-                  AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSetting
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      modelSettings: map['modelSettings'] == null ? null : pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSetting>(map['modelSettings'], (value) => AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSetting.fromMap((value as Map).cast<String, dynamic>())),
       prompt: map['prompt'] == null ? null : map['prompt'] as String,
     );
   }
 }
+

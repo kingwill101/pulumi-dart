@@ -14,15 +14,15 @@ class FailedDataResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['error'] = error.toMap();
-    return map;
+    return <String, dynamic>{
+      'error': error.toMap(),
+    };
   }
 
   factory FailedDataResponse.fromMap(Map<String, dynamic> map) {
     return FailedDataResponse(
-      error:
-          StatusResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
+      error: StatusResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

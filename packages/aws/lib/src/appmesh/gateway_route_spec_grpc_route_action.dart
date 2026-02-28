@@ -13,15 +13,15 @@ class GatewayRouteSpecGrpcRouteAction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['target'] = target.toMap();
-    return map;
+    return <String, dynamic>{
+      'target': target.toMap(),
+    };
   }
 
   factory GatewayRouteSpecGrpcRouteAction.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpecGrpcRouteAction(
-      target: GatewayRouteSpecGrpcRouteActionTarget.fromMap(
-          (map['target'] as Map).cast<String, dynamic>()),
+      target: GatewayRouteSpecGrpcRouteActionTarget.fromMap((map['target'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -5,9 +5,7 @@ import 'agent_knowledge_base_knowledge_base_configuration_vector_knowledge_base_
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfiguration {
   /// A storage location specification for images extracted from multimodal documents in your data source.  See `storage_location` block for details.
-  final List<
-          AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocation>
-      storageLocations;
+  final List<AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocation> storageLocations;
 
   /// Creates a new [AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfiguration].
   /// [storageLocations] A storage location specification for images extracted from multimodal documents in your data source.  See `storage_location` block for details.
@@ -16,22 +14,15 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurati
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['storageLocations'] = pulumi.Input.encodeList<
-        AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocation,
-        Map<String, dynamic>>(storageLocations, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'storageLocations': pulumi.Input.encodeList<AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocation, Map<String, dynamic>>(storageLocations, (value) => value.toMap()),
+    };
   }
 
-  factory AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfiguration(
-      storageLocations: pulumi.Input.decodeList<
-              AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocation>(
-          map['storageLocations'],
-          (value) =>
-              AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocation
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      storageLocations: pulumi.Input.decodeList<AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocation>(map['storageLocations'], (value) => AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocation.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

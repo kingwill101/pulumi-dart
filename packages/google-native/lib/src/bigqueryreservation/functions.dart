@@ -43,8 +43,7 @@ Future<GetReservationResult> getReservation(
 /// Returns information about the capacity commitment.
 /// [args] Arguments passed to this invoke. {@macro pulumi_bigqueryreservation_v1beta1_get_capacity_commitment_bigqueryreservation_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetCapacityCommitmentBigqueryreservationV1beta1Result>
-    getCapacityCommitmentBigqueryreservationV1beta1(
+Future<GetCapacityCommitmentBigqueryreservationV1beta1Result> getCapacityCommitmentBigqueryreservationV1beta1(
   GetCapacityCommitmentBigqueryreservationV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -60,8 +59,7 @@ Future<GetCapacityCommitmentBigqueryreservationV1beta1Result>
 /// Returns information about the reservation.
 /// [args] Arguments passed to this invoke. {@macro pulumi_bigqueryreservation_v1beta1_get_reservation_bigqueryreservation_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetReservationBigqueryreservationV1beta1Result>
-    getReservationBigqueryreservationV1beta1(
+Future<GetReservationBigqueryreservationV1beta1Result> getReservationBigqueryreservationV1beta1(
   GetReservationBigqueryreservationV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {

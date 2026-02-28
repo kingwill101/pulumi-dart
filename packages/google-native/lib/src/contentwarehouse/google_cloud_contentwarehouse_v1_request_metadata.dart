@@ -14,21 +14,15 @@ class GoogleCloudContentwarehouseV1RequestMetadata {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final userInfoValue = userInfo;
-    if (userInfoValue != null) {
-      map['userInfo'] = userInfoValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'userInfo': ?userInfo == null ? null : userInfo!.toMap(),
+    };
   }
 
-  factory GoogleCloudContentwarehouseV1RequestMetadata.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudContentwarehouseV1RequestMetadata.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1RequestMetadata(
-      userInfo: map['userInfo'] == null
-          ? null
-          : GoogleCloudContentwarehouseV1UserInfo.fromMap(
-              (map['userInfo'] as Map).cast<String, dynamic>()),
+      userInfo: map['userInfo'] == null ? null : GoogleCloudContentwarehouseV1UserInfo.fromMap((map['userInfo'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -6,28 +6,20 @@ import 'get_distribution_configuration_distribution.dart';
 /// Result data returned by getDistributionConfiguration.
 class GetDistributionConfigurationResult {
   final String arn;
-
   /// Date the distribution configuration was created.
   final String dateCreated;
-
   /// Date the distribution configuration was updated.
   final String dateUpdated;
-
   /// Description of the container distribution configuration.
   final String description;
-
   /// Set of distributions.
   final List<GetDistributionConfigurationDistribution> distributions;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Name of the distribution configuration.
   final String name;
-
   /// AWS Region of distribution.
   final String region;
-
   /// Key-value map of resource tags for the distribution configuration.
   final Map<String, String> tags;
 
@@ -54,19 +46,17 @@ class GetDistributionConfigurationResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['dateCreated'] = dateCreated;
-    map['dateUpdated'] = dateUpdated;
-    map['description'] = description;
-    map['distributions'] = pulumi.Input.encodeList<
-        GetDistributionConfigurationDistribution,
-        Map<String, dynamic>>(distributions, (value) => value.toMap());
-    map['id'] = id;
-    map['name'] = name;
-    map['region'] = region;
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'dateCreated': dateCreated,
+      'dateUpdated': dateUpdated,
+      'description': description,
+      'distributions': pulumi.Input.encodeList<GetDistributionConfigurationDistribution, Map<String, dynamic>>(distributions, (value) => value.toMap()),
+      'id': id,
+      'name': name,
+      'region': region,
+      'tags': tags,
+    };
   }
 
   factory GetDistributionConfigurationResult.fromMap(Map<String, dynamic> map) {
@@ -75,11 +65,7 @@ class GetDistributionConfigurationResult {
       dateCreated: map['dateCreated'] as String,
       dateUpdated: map['dateUpdated'] as String,
       description: map['description'] as String,
-      distributions:
-          pulumi.Input.decodeList<GetDistributionConfigurationDistribution>(
-              map['distributions'],
-              (value) => GetDistributionConfigurationDistribution.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      distributions: pulumi.Input.decodeList<GetDistributionConfigurationDistribution>(map['distributions'], (value) => GetDistributionConfigurationDistribution.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       name: map['name'] as String,
       region: map['region'] as String,
@@ -87,3 +73,4 @@ class GetDistributionConfigurationResult {
     );
   }
 }
+

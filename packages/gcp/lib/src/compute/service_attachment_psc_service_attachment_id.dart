@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ServiceAttachmentPscServiceAttachmentId {
   /// (Output)
   /// The high 64 bits of the PSC service attachment ID.
   final String? high;
-
   /// (Output)
   /// The low 64 bits of the PSC service attachment ID.
   final String? low;
@@ -18,23 +18,17 @@ class ServiceAttachmentPscServiceAttachmentId {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final highValue = high;
-    if (highValue != null) {
-      map['high'] = highValue;
-    }
-    final lowValue = low;
-    if (lowValue != null) {
-      map['low'] = lowValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'high': ?high,
+      'low': ?low,
+    };
   }
 
-  factory ServiceAttachmentPscServiceAttachmentId.fromMap(
-      Map<String, dynamic> map) {
+  factory ServiceAttachmentPscServiceAttachmentId.fromMap(Map<String, dynamic> map) {
     return ServiceAttachmentPscServiceAttachmentId(
       high: map['high'] == null ? null : map['high'] as String,
       low: map['low'] == null ? null : map['low'] as String,
     );
   }
 }
+

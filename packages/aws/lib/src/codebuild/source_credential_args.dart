@@ -11,18 +11,14 @@ class SourceCredentialArgs {
   /// repository. Valid values are `BASIC_AUTH`,
   /// `PERSONAL_ACCESS_TOKEN`, `CODECONNECTIONS`, and `SECRETS_MANAGER`. An OAUTH connection is not supported by the API.
   final pulumi.Input<String> authType;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The source provider used for this project.
   final pulumi.Input<String> serverType;
-
   /// For a GitHub and GitHub Enterprise, this is the personal access token. For Bitbucket, this is the
   /// app password. When using an AWS CodeStar connection (`auth_type = "CODECONNECTIONS")`, this is an AWS CodeStar
   /// Connection ARN.
   final pulumi.Input<String> token;
-
   /// The Bitbucket username when the authType is `BASIC_AUTH`. This parameter is not valid for
   /// other types of source providers or connections.
   final pulumi.Input<String>? userName;
@@ -39,26 +35,21 @@ class SourceCredentialArgs {
     required String serverType,
     required String token,
     String? userName,
-  })  : authType = pulumi.Input.asInput<String>(authType),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        serverType = pulumi.Input.asInput<String>(serverType),
-        token = pulumi.Input.asInput<String>(token),
-        userName = pulumi.Input.asOptionalInput<String>(userName);
+  }) :
+      authType = pulumi.Input.asInput<String>(authType),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      serverType = pulumi.Input.asInput<String>(serverType),
+      token = pulumi.Input.asInput<String>(token),
+      userName = pulumi.Input.asOptionalInput<String>(userName);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['authType'] = authType;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['serverType'] = serverType;
-    map['token'] = token;
-    final userNameValue = userName;
-    if (userNameValue != null) {
-      map['userName'] = userNameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'authType': authType,
+      'region': ?region,
+      'serverType': serverType,
+      'token': token,
+      'userName': ?userName,
+    };
   }
 
   factory SourceCredentialArgs.fromMap(Map<String, dynamic> map) {
@@ -71,3 +62,4 @@ class SourceCredentialArgs {
     );
   }
 }
+

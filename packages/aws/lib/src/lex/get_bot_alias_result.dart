@@ -1,31 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getBotAlias.
 class GetBotAliasResult {
   /// ARN of the bot alias.
   final String arn;
-
   /// Name of the bot.
   final String botName;
-
   /// Version of the bot that the alias points to.
   final String botVersion;
-
   /// Checksum of the bot alias.
   final String checksum;
-
   /// Date that the bot alias was created.
   final String createdDate;
-
   /// Description of the alias.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Date that the bot alias was updated. When you create a resource, the creation date and the last updated date are the same.
   final String lastUpdatedDate;
-
   /// Name of the alias. The name is not case sensitive.
   final String name;
   final String region;
@@ -55,18 +48,18 @@ class GetBotAliasResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['botName'] = botName;
-    map['botVersion'] = botVersion;
-    map['checksum'] = checksum;
-    map['createdDate'] = createdDate;
-    map['description'] = description;
-    map['id'] = id;
-    map['lastUpdatedDate'] = lastUpdatedDate;
-    map['name'] = name;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'botName': botName,
+      'botVersion': botVersion,
+      'checksum': checksum,
+      'createdDate': createdDate,
+      'description': description,
+      'id': id,
+      'lastUpdatedDate': lastUpdatedDate,
+      'name': name,
+      'region': region,
+    };
   }
 
   factory GetBotAliasResult.fromMap(Map<String, dynamic> map) {
@@ -84,3 +77,4 @@ class GetBotAliasResult {
     );
   }
 }
+

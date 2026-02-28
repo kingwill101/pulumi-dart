@@ -14,15 +14,15 @@ class DirectoryServicesConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['managedActiveDirectory'] = managedActiveDirectory.toMap();
-    return map;
+    return <String, dynamic>{
+      'managedActiveDirectory': managedActiveDirectory.toMap(),
+    };
   }
 
   factory DirectoryServicesConfigResponse.fromMap(Map<String, dynamic> map) {
     return DirectoryServicesConfigResponse(
-      managedActiveDirectory: ManagedActiveDirectoryConfigResponse.fromMap(
-          (map['managedActiveDirectory'] as Map).cast<String, dynamic>()),
+      managedActiveDirectory: ManagedActiveDirectoryConfigResponse.fromMap((map['managedActiveDirectory'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

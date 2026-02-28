@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterMasterUserSecret {
   final String kmsKeyId;
   final String secretArn;
@@ -16,11 +17,11 @@ class GetClusterMasterUserSecret {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kmsKeyId'] = kmsKeyId;
-    map['secretArn'] = secretArn;
-    map['secretStatus'] = secretStatus;
-    return map;
+    return <String, dynamic>{
+      'kmsKeyId': kmsKeyId,
+      'secretArn': secretArn,
+      'secretStatus': secretStatus,
+    };
   }
 
   factory GetClusterMasterUserSecret.fromMap(Map<String, dynamic> map) {
@@ -31,3 +32,4 @@ class GetClusterMasterUserSecret {
     );
   }
 }
+

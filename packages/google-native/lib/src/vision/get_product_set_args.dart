@@ -19,19 +19,17 @@ class GetProductSetArgs {
     required String location,
     required String productSetId,
     String? project,
-  })  : location = pulumi.Input.asInput<String>(location),
-        productSetId = pulumi.Input.asInput<String>(productSetId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      productSetId = pulumi.Input.asInput<String>(productSetId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    map['productSetId'] = productSetId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'productSetId': productSetId,
+      'project': ?project,
+    };
   }
 
   factory GetProductSetArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetProductSetArgs {
     );
   }
 }
+

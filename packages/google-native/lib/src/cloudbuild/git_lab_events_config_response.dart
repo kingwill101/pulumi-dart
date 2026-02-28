@@ -8,16 +8,12 @@ import 'push_filter_response.dart';
 class GitLabEventsConfigResponse {
   /// The GitLabConfig specified in the gitlab_config_resource field.
   final GitLabConfigResponse gitlabConfig;
-
   /// The GitLab config resource that this trigger config maps to.
   final String gitlabConfigResource;
-
   /// Namespace of the GitLab project.
   final String projectNamespace;
-
   /// Filter to match changes in pull requests.
   final PullRequestFilterResponse pullRequest;
-
   /// Filter to match changes in refs like branches, tags.
   final PushFilterResponse push;
 
@@ -36,25 +32,23 @@ class GitLabEventsConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gitlabConfig'] = gitlabConfig.toMap();
-    map['gitlabConfigResource'] = gitlabConfigResource;
-    map['projectNamespace'] = projectNamespace;
-    map['pullRequest'] = pullRequest.toMap();
-    map['push'] = push.toMap();
-    return map;
+    return <String, dynamic>{
+      'gitlabConfig': gitlabConfig.toMap(),
+      'gitlabConfigResource': gitlabConfigResource,
+      'projectNamespace': projectNamespace,
+      'pullRequest': pullRequest.toMap(),
+      'push': push.toMap(),
+    };
   }
 
   factory GitLabEventsConfigResponse.fromMap(Map<String, dynamic> map) {
     return GitLabEventsConfigResponse(
-      gitlabConfig: GitLabConfigResponse.fromMap(
-          (map['gitlabConfig'] as Map).cast<String, dynamic>()),
+      gitlabConfig: GitLabConfigResponse.fromMap((map['gitlabConfig'] as Map).cast<String, dynamic>()),
       gitlabConfigResource: map['gitlabConfigResource'] as String,
       projectNamespace: map['projectNamespace'] as String,
-      pullRequest: PullRequestFilterResponse.fromMap(
-          (map['pullRequest'] as Map).cast<String, dynamic>()),
-      push: PushFilterResponse.fromMap(
-          (map['push'] as Map).cast<String, dynamic>()),
+      pullRequest: PullRequestFilterResponse.fromMap((map['pullRequest'] as Map).cast<String, dynamic>()),
+      push: PushFilterResponse.fromMap((map['push'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

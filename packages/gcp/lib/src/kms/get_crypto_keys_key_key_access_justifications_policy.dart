@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetCryptoKeysKeyKeyAccessJustificationsPolicy {
   /// The list of allowed reasons for access to this CryptoKey. Zero allowed
   /// access reasons means all encrypt, decrypt, and sign operations for
@@ -13,16 +14,15 @@ class GetCryptoKeysKeyKeyAccessJustificationsPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allowedAccessReasons'] = allowedAccessReasons;
-    return map;
+    return <String, dynamic>{
+      'allowedAccessReasons': allowedAccessReasons,
+    };
   }
 
-  factory GetCryptoKeysKeyKeyAccessJustificationsPolicy.fromMap(
-      Map<String, dynamic> map) {
+  factory GetCryptoKeysKeyKeyAccessJustificationsPolicy.fromMap(Map<String, dynamic> map) {
     return GetCryptoKeysKeyKeyAccessJustificationsPolicy(
-      allowedAccessReasons:
-          (map['allowedAccessReasons'] as List).cast<String>(),
+      allowedAccessReasons: (map['allowedAccessReasons'] as List).cast<String>(),
     );
   }
 }
+

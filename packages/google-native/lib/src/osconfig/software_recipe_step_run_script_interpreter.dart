@@ -13,7 +13,7 @@ enum SoftwareRecipeStepRunScriptInterpreter {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown SoftwareRecipeStepRunScriptInterpreter value: $value');
+    throw ArgumentError('Unknown SoftwareRecipeStepRunScriptInterpreter value: $value');
   }
 }
+

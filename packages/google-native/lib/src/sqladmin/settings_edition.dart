@@ -16,3 +16,4 @@ enum SettingsEdition {
     throw ArgumentError('Unknown SettingsEdition value: $value');
   }
 }
+

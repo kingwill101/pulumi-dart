@@ -16,7 +16,6 @@ class GetAutonomousDatabaseResult {
   final String displayName;
   final Map<String, String> effectiveLabels;
   final String entitlementId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final Map<String, String> labels;
@@ -80,37 +79,30 @@ class GetAutonomousDatabaseResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['adminPassword'] = adminPassword;
-    map['autonomousDatabaseId'] = autonomousDatabaseId;
-    map['cidr'] = cidr;
-    map['createTime'] = createTime;
-    map['database'] = database;
-    map['deletionProtection'] = deletionProtection;
-    map['disasterRecoverySupportedLocations'] =
-        disasterRecoverySupportedLocations;
-    map['displayName'] = displayName;
-    map['effectiveLabels'] = effectiveLabels;
-    map['entitlementId'] = entitlementId;
-    map['id'] = id;
-    map['labels'] = labels;
-    map['location'] = location;
-    map['name'] = name;
-    map['network'] = network;
-    map['odbNetwork'] = odbNetwork;
-    map['odbSubnet'] = odbSubnet;
-    map['peerAutonomousDatabases'] = peerAutonomousDatabases;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['properties'] = pulumi.Input.encodeList<GetAutonomousDatabaseProperty,
-        Map<String, dynamic>>(properties, (value) => value.toMap());
-    map['pulumiLabels'] = pulumiLabels;
-    map['sourceConfigs'] = pulumi.Input.encodeList<
-        GetAutonomousDatabaseSourceConfig,
-        Map<String, dynamic>>(sourceConfigs, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'adminPassword': adminPassword,
+      'autonomousDatabaseId': autonomousDatabaseId,
+      'cidr': cidr,
+      'createTime': createTime,
+      'database': database,
+      'deletionProtection': deletionProtection,
+      'disasterRecoverySupportedLocations': disasterRecoverySupportedLocations,
+      'displayName': displayName,
+      'effectiveLabels': effectiveLabels,
+      'entitlementId': entitlementId,
+      'id': id,
+      'labels': labels,
+      'location': location,
+      'name': name,
+      'network': network,
+      'odbNetwork': odbNetwork,
+      'odbSubnet': odbSubnet,
+      'peerAutonomousDatabases': peerAutonomousDatabases,
+      'project': ?project,
+      'properties': pulumi.Input.encodeList<GetAutonomousDatabaseProperty, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'pulumiLabels': pulumiLabels,
+      'sourceConfigs': pulumi.Input.encodeList<GetAutonomousDatabaseSourceConfig, Map<String, dynamic>>(sourceConfigs, (value) => value.toMap()),
+    };
   }
 
   factory GetAutonomousDatabaseResult.fromMap(Map<String, dynamic> map) {
@@ -121,8 +113,7 @@ class GetAutonomousDatabaseResult {
       createTime: map['createTime'] as String,
       database: map['database'] as String,
       deletionProtection: map['deletionProtection'] as bool,
-      disasterRecoverySupportedLocations:
-          (map['disasterRecoverySupportedLocations'] as List).cast<String>(),
+      disasterRecoverySupportedLocations: (map['disasterRecoverySupportedLocations'] as List).cast<String>(),
       displayName: map['displayName'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       entitlementId: map['entitlementId'] as String,
@@ -133,18 +124,12 @@ class GetAutonomousDatabaseResult {
       network: map['network'] as String,
       odbNetwork: map['odbNetwork'] as String,
       odbSubnet: map['odbSubnet'] as String,
-      peerAutonomousDatabases:
-          (map['peerAutonomousDatabases'] as List).cast<String>(),
+      peerAutonomousDatabases: (map['peerAutonomousDatabases'] as List).cast<String>(),
       project: map['project'] == null ? null : map['project'] as String,
-      properties: pulumi.Input.decodeList<GetAutonomousDatabaseProperty>(
-          map['properties'],
-          (value) => GetAutonomousDatabaseProperty.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      properties: pulumi.Input.decodeList<GetAutonomousDatabaseProperty>(map['properties'], (value) => GetAutonomousDatabaseProperty.fromMap((value as Map).cast<String, dynamic>())),
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      sourceConfigs: pulumi.Input.decodeList<GetAutonomousDatabaseSourceConfig>(
-          map['sourceConfigs'],
-          (value) => GetAutonomousDatabaseSourceConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      sourceConfigs: pulumi.Input.decodeList<GetAutonomousDatabaseSourceConfig>(map['sourceConfigs'], (value) => GetAutonomousDatabaseSourceConfig.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

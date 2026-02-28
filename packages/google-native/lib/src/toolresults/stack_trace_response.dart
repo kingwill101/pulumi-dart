@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A stacktrace.
 class StackTraceResponse {
   /// The stack trace message. Required
@@ -12,9 +13,9 @@ class StackTraceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['exception'] = exception;
-    return map;
+    return <String, dynamic>{
+      'exception': exception,
+    };
   }
 
   factory StackTraceResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class StackTraceResponse {
     );
   }
 }
+

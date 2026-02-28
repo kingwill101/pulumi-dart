@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstancesBulkInsertOperationMetadataResponseDeploymentmanagerV2 {
   /// Status information per location (location name is key). Example key: zones/us-central1-a
   final Map<String, String> perLocationStatus;
@@ -11,16 +12,15 @@ class InstancesBulkInsertOperationMetadataResponseDeploymentmanagerV2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['perLocationStatus'] = perLocationStatus;
-    return map;
+    return <String, dynamic>{
+      'perLocationStatus': perLocationStatus,
+    };
   }
 
-  factory InstancesBulkInsertOperationMetadataResponseDeploymentmanagerV2.fromMap(
-      Map<String, dynamic> map) {
+  factory InstancesBulkInsertOperationMetadataResponseDeploymentmanagerV2.fromMap(Map<String, dynamic> map) {
     return InstancesBulkInsertOperationMetadataResponseDeploymentmanagerV2(
-      perLocationStatus:
-          (map['perLocationStatus'] as Map).cast<String, String>(),
+      perLocationStatus: (map['perLocationStatus'] as Map).cast<String, String>(),
     );
   }
 }
+

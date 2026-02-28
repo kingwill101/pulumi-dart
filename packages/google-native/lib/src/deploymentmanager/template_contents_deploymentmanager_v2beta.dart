@@ -8,16 +8,12 @@ import 'template_contents_interpreter_deploymentmanager_v2beta.dart';
 class TemplateContentsDeploymentmanagerV2beta {
   /// Import files referenced by the main template.
   final List<ImportFileDeploymentmanagerV2beta>? imports;
-
   /// Which interpreter (python or jinja) should be used during expansion.
   final TemplateContentsInterpreterDeploymentmanagerV2beta? interpreter;
-
   /// The filename of the mainTemplate
   final String? mainTemplate;
-
   /// The contents of the template schema.
   final String? schema;
-
   /// The contents of the main template file.
   final String? template;
 
@@ -36,49 +32,23 @@ class TemplateContentsDeploymentmanagerV2beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final importsValue = imports;
-    if (importsValue != null) {
-      map['imports'] = pulumi.Input.encodeList<
-          ImportFileDeploymentmanagerV2beta,
-          Map<String, dynamic>>(importsValue, (value) => value.toMap());
-    }
-    final interpreterValue = interpreter;
-    if (interpreterValue != null) {
-      map['interpreter'] = interpreterValue.value;
-    }
-    final mainTemplateValue = mainTemplate;
-    if (mainTemplateValue != null) {
-      map['mainTemplate'] = mainTemplateValue;
-    }
-    final schemaValue = schema;
-    if (schemaValue != null) {
-      map['schema'] = schemaValue;
-    }
-    final templateValue = template;
-    if (templateValue != null) {
-      map['template'] = templateValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'imports': ?imports == null ? null : pulumi.Input.encodeList<ImportFileDeploymentmanagerV2beta, Map<String, dynamic>>(imports!, (value) => value.toMap()),
+      'interpreter': ?interpreter == null ? null : interpreter!.value,
+      'mainTemplate': ?mainTemplate,
+      'schema': ?schema,
+      'template': ?template,
+    };
   }
 
-  factory TemplateContentsDeploymentmanagerV2beta.fromMap(
-      Map<String, dynamic> map) {
+  factory TemplateContentsDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return TemplateContentsDeploymentmanagerV2beta(
-      imports: map['imports'] == null
-          ? null
-          : pulumi.Input.decodeList<ImportFileDeploymentmanagerV2beta>(
-              map['imports'],
-              (value) => ImportFileDeploymentmanagerV2beta.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      interpreter: map['interpreter'] == null
-          ? null
-          : TemplateContentsInterpreterDeploymentmanagerV2beta.fromValue(
-              map['interpreter'] as String),
-      mainTemplate:
-          map['mainTemplate'] == null ? null : map['mainTemplate'] as String,
+      imports: map['imports'] == null ? null : pulumi.Input.decodeList<ImportFileDeploymentmanagerV2beta>(map['imports'], (value) => ImportFileDeploymentmanagerV2beta.fromMap((value as Map).cast<String, dynamic>())),
+      interpreter: map['interpreter'] == null ? null : TemplateContentsInterpreterDeploymentmanagerV2beta.fromValue(map['interpreter'] as String),
+      mainTemplate: map['mainTemplate'] == null ? null : map['mainTemplate'] as String,
       schema: map['schema'] == null ? null : map['schema'] as String,
       template: map['template'] == null ? null : map['template'] as String,
     );
   }
 }
+

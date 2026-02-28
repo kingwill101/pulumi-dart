@@ -8,10 +8,8 @@ import 'timestamp_response.dart';
 class ToolOutputReferenceResponse {
   /// The creation time of the file. - In response: present if set by create/update request - In create/update request: optional
   final TimestampResponse creationTime;
-
   /// A FileReference to an output file. - In response: always set - In create/update request: always set
   final FileReferenceResponse output;
-
   /// The test case to which this output file belongs. - In response: present if set by create/update request - In create/update request: optional
   final TestCaseReferenceResponse testCase;
 
@@ -26,21 +24,19 @@ class ToolOutputReferenceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['creationTime'] = creationTime.toMap();
-    map['output'] = output.toMap();
-    map['testCase'] = testCase.toMap();
-    return map;
+    return <String, dynamic>{
+      'creationTime': creationTime.toMap(),
+      'output': output.toMap(),
+      'testCase': testCase.toMap(),
+    };
   }
 
   factory ToolOutputReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ToolOutputReferenceResponse(
-      creationTime: TimestampResponse.fromMap(
-          (map['creationTime'] as Map).cast<String, dynamic>()),
-      output: FileReferenceResponse.fromMap(
-          (map['output'] as Map).cast<String, dynamic>()),
-      testCase: TestCaseReferenceResponse.fromMap(
-          (map['testCase'] as Map).cast<String, dynamic>()),
+      creationTime: TimestampResponse.fromMap((map['creationTime'] as Map).cast<String, dynamic>()),
+      output: FileReferenceResponse.fromMap((map['output'] as Map).cast<String, dynamic>()),
+      testCase: TestCaseReferenceResponse.fromMap((map['testCase'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

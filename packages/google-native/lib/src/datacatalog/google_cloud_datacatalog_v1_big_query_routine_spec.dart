@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Fields specific for BigQuery routines.
 class GoogleCloudDatacatalogV1BigQueryRoutineSpec {
   /// Paths of the imported libraries.
@@ -12,20 +13,15 @@ class GoogleCloudDatacatalogV1BigQueryRoutineSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final importedLibrariesValue = importedLibraries;
-    if (importedLibrariesValue != null) {
-      map['importedLibraries'] = importedLibrariesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'importedLibraries': ?importedLibraries,
+    };
   }
 
-  factory GoogleCloudDatacatalogV1BigQueryRoutineSpec.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1BigQueryRoutineSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1BigQueryRoutineSpec(
-      importedLibraries: map['importedLibraries'] == null
-          ? null
-          : (map['importedLibraries'] as List).cast<String>(),
+      importedLibraries: map['importedLibraries'] == null ? null : (map['importedLibraries'] as List).cast<String>(),
     );
   }
 }
+

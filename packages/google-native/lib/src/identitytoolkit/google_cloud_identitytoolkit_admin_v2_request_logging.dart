@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for logging requests made to this project to Stackdriver Logging
 class GoogleCloudIdentitytoolkitAdminV2RequestLogging {
   /// Whether logging is enabled for this project or not.
@@ -12,18 +13,15 @@ class GoogleCloudIdentitytoolkitAdminV2RequestLogging {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2RequestLogging.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudIdentitytoolkitAdminV2RequestLogging.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2RequestLogging(
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
     );
   }
 }
+

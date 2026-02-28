@@ -6,15 +6,13 @@ enum PgpSignedAttestationContentTypeContaineranalysisV1beta1 {
   const PgpSignedAttestationContentTypeContaineranalysisV1beta1(this.value);
   final String value;
 
-  static PgpSignedAttestationContentTypeContaineranalysisV1beta1 fromValue(
-      String value) {
-    for (final item
-        in PgpSignedAttestationContentTypeContaineranalysisV1beta1.values) {
+  static PgpSignedAttestationContentTypeContaineranalysisV1beta1 fromValue(String value) {
+    for (final item in PgpSignedAttestationContentTypeContaineranalysisV1beta1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown PgpSignedAttestationContentTypeContaineranalysisV1beta1 value: $value');
+    throw ArgumentError('Unknown PgpSignedAttestationContentTypeContaineranalysisV1beta1 value: $value');
   }
 }
+

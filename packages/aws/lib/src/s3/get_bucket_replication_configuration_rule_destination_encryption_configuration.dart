@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration {
   final String replicaKmsKeyId;
 
@@ -10,15 +11,15 @@ class GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['replicaKmsKeyId'] = replicaKmsKeyId;
-    return map;
+    return <String, dynamic>{
+      'replicaKmsKeyId': replicaKmsKeyId,
+    };
   }
 
-  factory GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration(
       replicaKmsKeyId: map['replicaKmsKeyId'] as String,
     );
   }
 }
+

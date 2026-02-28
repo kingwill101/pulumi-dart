@@ -7,15 +7,13 @@ enum ServiceAttachmentTunnelingConfigRoutingModeComputeBeta {
   const ServiceAttachmentTunnelingConfigRoutingModeComputeBeta(this.value);
   final String value;
 
-  static ServiceAttachmentTunnelingConfigRoutingModeComputeBeta fromValue(
-      String value) {
-    for (final item
-        in ServiceAttachmentTunnelingConfigRoutingModeComputeBeta.values) {
+  static ServiceAttachmentTunnelingConfigRoutingModeComputeBeta fromValue(String value) {
+    for (final item in ServiceAttachmentTunnelingConfigRoutingModeComputeBeta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown ServiceAttachmentTunnelingConfigRoutingModeComputeBeta value: $value');
+    throw ArgumentError('Unknown ServiceAttachmentTunnelingConfigRoutingModeComputeBeta value: $value');
   }
 }
+

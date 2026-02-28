@@ -23,15 +23,13 @@ enum PkixPublicKeySignatureAlgorithmBinaryauthorizationV1beta1 {
   const PkixPublicKeySignatureAlgorithmBinaryauthorizationV1beta1(this.value);
   final String value;
 
-  static PkixPublicKeySignatureAlgorithmBinaryauthorizationV1beta1 fromValue(
-      String value) {
-    for (final item
-        in PkixPublicKeySignatureAlgorithmBinaryauthorizationV1beta1.values) {
+  static PkixPublicKeySignatureAlgorithmBinaryauthorizationV1beta1 fromValue(String value) {
+    for (final item in PkixPublicKeySignatureAlgorithmBinaryauthorizationV1beta1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown PkixPublicKeySignatureAlgorithmBinaryauthorizationV1beta1 value: $value');
+    throw ArgumentError('Unknown PkixPublicKeySignatureAlgorithmBinaryauthorizationV1beta1 value: $value');
   }
 }
+

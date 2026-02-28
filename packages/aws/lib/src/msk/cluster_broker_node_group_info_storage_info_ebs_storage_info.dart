@@ -4,9 +4,7 @@ import 'cluster_broker_node_group_info_storage_info_ebs_storage_info_provisioned
 
 class ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo {
   /// A block that contains EBS volume provisioned throughput information. To provision storage throughput, you must choose broker type kafka.m5.4xlarge or larger. See ebs_storage_info provisioned_throughput Argument Reference below.
-  final ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput?
-      provisionedThroughput;
-
+  final ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput? provisionedThroughput;
   /// The size in GiB of the EBS volume for the data drive on each broker node. Minimum value of `1` and maximum value of `16384`.
   final int? volumeSize;
 
@@ -19,27 +17,17 @@ class ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final provisionedThroughputValue = provisionedThroughput;
-    if (provisionedThroughputValue != null) {
-      map['provisionedThroughput'] = provisionedThroughputValue.toMap();
-    }
-    final volumeSizeValue = volumeSize;
-    if (volumeSizeValue != null) {
-      map['volumeSize'] = volumeSizeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'provisionedThroughput': ?provisionedThroughput == null ? null : provisionedThroughput!.toMap(),
+      'volumeSize': ?volumeSize,
+    };
   }
 
-  factory ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo.fromMap(Map<String, dynamic> map) {
     return ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo(
-      provisionedThroughput: map['provisionedThroughput'] == null
-          ? null
-          : ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput
-              .fromMap((map['provisionedThroughput'] as Map)
-                  .cast<String, dynamic>()),
+      provisionedThroughput: map['provisionedThroughput'] == null ? null : ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput.fromMap((map['provisionedThroughput'] as Map).cast<String, dynamic>()),
       volumeSize: map['volumeSize'] == null ? null : map['volumeSize'] as int,
     );
   }
 }
+

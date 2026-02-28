@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ChatEngineChatEngineMetadata {
   /// (Output)
   /// The resource name of a Dialogflow agent, that this Chat Engine refers to.
@@ -12,19 +13,15 @@ class ChatEngineChatEngineMetadata {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dialogflowAgentValue = dialogflowAgent;
-    if (dialogflowAgentValue != null) {
-      map['dialogflowAgent'] = dialogflowAgentValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'dialogflowAgent': ?dialogflowAgent,
+    };
   }
 
   factory ChatEngineChatEngineMetadata.fromMap(Map<String, dynamic> map) {
     return ChatEngineChatEngineMetadata(
-      dialogflowAgent: map['dialogflowAgent'] == null
-          ? null
-          : map['dialogflowAgent'] as String,
+      dialogflowAgent: map['dialogflowAgent'] == null ? null : map['dialogflowAgent'] as String,
     );
   }
 }
+

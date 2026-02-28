@@ -8,18 +8,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_datalabeling_v1beta1_feedback_message_args_doc}
 class FeedbackMessageArgs {
   final pulumi.Input<String> annotatedDatasetId;
-
   /// String content of the feedback. Maximum of 10000 characters.
   final pulumi.Input<String>? body;
-
   /// Create time.
   final pulumi.Input<String>? createTime;
   final pulumi.Input<String> datasetId;
   final pulumi.Input<String> feedbackThreadId;
-
   /// The image storing this feedback if the feedback is an image representing operator's comments.
   final pulumi.Input<String>? image;
-
   /// Name of the feedback message in a feedback thread. Format: 'project/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessage/{feedback_message_id}'
   final pulumi.Input<String>? name;
   final pulumi.Input<Map<String, dynamic>>? operatorFeedbackMetadata;
@@ -48,74 +44,46 @@ class FeedbackMessageArgs {
     Map<String, dynamic>? operatorFeedbackMetadata,
     String? project,
     Map<String, dynamic>? requesterFeedbackMetadata,
-  })  : annotatedDatasetId = pulumi.Input.asInput<String>(annotatedDatasetId),
-        body = pulumi.Input.asOptionalInput<String>(body),
-        createTime = pulumi.Input.asOptionalInput<String>(createTime),
-        datasetId = pulumi.Input.asInput<String>(datasetId),
-        feedbackThreadId = pulumi.Input.asInput<String>(feedbackThreadId),
-        image = pulumi.Input.asOptionalInput<String>(image),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        operatorFeedbackMetadata =
-            pulumi.Input.asOptionalInput<Map<String, dynamic>>(
-                operatorFeedbackMetadata),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        requesterFeedbackMetadata =
-            pulumi.Input.asOptionalInput<Map<String, dynamic>>(
-                requesterFeedbackMetadata);
+  }) :
+      annotatedDatasetId = pulumi.Input.asInput<String>(annotatedDatasetId),
+      body = pulumi.Input.asOptionalInput<String>(body),
+      createTime = pulumi.Input.asOptionalInput<String>(createTime),
+      datasetId = pulumi.Input.asInput<String>(datasetId),
+      feedbackThreadId = pulumi.Input.asInput<String>(feedbackThreadId),
+      image = pulumi.Input.asOptionalInput<String>(image),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      operatorFeedbackMetadata = pulumi.Input.asOptionalInput<Map<String, dynamic>>(operatorFeedbackMetadata),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      requesterFeedbackMetadata = pulumi.Input.asOptionalInput<Map<String, dynamic>>(requesterFeedbackMetadata);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['annotatedDatasetId'] = annotatedDatasetId;
-    final bodyValue = body;
-    if (bodyValue != null) {
-      map['body'] = bodyValue;
-    }
-    final createTimeValue = createTime;
-    if (createTimeValue != null) {
-      map['createTime'] = createTimeValue;
-    }
-    map['datasetId'] = datasetId;
-    map['feedbackThreadId'] = feedbackThreadId;
-    final imageValue = image;
-    if (imageValue != null) {
-      map['image'] = imageValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final operatorFeedbackMetadataValue = operatorFeedbackMetadata;
-    if (operatorFeedbackMetadataValue != null) {
-      map['operatorFeedbackMetadata'] = operatorFeedbackMetadataValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final requesterFeedbackMetadataValue = requesterFeedbackMetadata;
-    if (requesterFeedbackMetadataValue != null) {
-      map['requesterFeedbackMetadata'] = requesterFeedbackMetadataValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'annotatedDatasetId': annotatedDatasetId,
+      'body': ?body,
+      'createTime': ?createTime,
+      'datasetId': datasetId,
+      'feedbackThreadId': feedbackThreadId,
+      'image': ?image,
+      'name': ?name,
+      'operatorFeedbackMetadata': ?operatorFeedbackMetadata,
+      'project': ?project,
+      'requesterFeedbackMetadata': ?requesterFeedbackMetadata,
+    };
   }
 
   factory FeedbackMessageArgs.fromMap(Map<String, dynamic> map) {
     return FeedbackMessageArgs(
       annotatedDatasetId: map['annotatedDatasetId'] as String,
       body: map['body'] == null ? null : map['body'] as String,
-      createTime:
-          map['createTime'] == null ? null : map['createTime'] as String,
+      createTime: map['createTime'] == null ? null : map['createTime'] as String,
       datasetId: map['datasetId'] as String,
       feedbackThreadId: map['feedbackThreadId'] as String,
       image: map['image'] == null ? null : map['image'] as String,
       name: map['name'] == null ? null : map['name'] as String,
-      operatorFeedbackMetadata: map['operatorFeedbackMetadata'] == null
-          ? null
-          : (map['operatorFeedbackMetadata'] as Map).cast<String, dynamic>(),
+      operatorFeedbackMetadata: map['operatorFeedbackMetadata'] == null ? null : (map['operatorFeedbackMetadata'] as Map).cast<String, dynamic>(),
       project: map['project'] == null ? null : map['project'] as String,
-      requesterFeedbackMetadata: map['requesterFeedbackMetadata'] == null
-          ? null
-          : (map['requesterFeedbackMetadata'] as Map).cast<String, dynamic>(),
+      requesterFeedbackMetadata: map['requesterFeedbackMetadata'] == null ? null : (map['requesterFeedbackMetadata'] as Map).cast<String, dynamic>(),
     );
   }
 }
+

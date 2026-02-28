@@ -10,17 +10,13 @@ import 'user_owned_grafeas_note.dart';
 class AttestorArgs {
   /// Required. The attestors ID.
   final pulumi.Input<String> attestorId;
-
   /// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
   final pulumi.Input<String>? description;
-
   /// Optional. A checksum, returned by the server, that can be sent on update requests to ensure the attestor has an up-to-date value before attempting to update it. See https://google.aip.dev/154.
   final pulumi.Input<String>? etag;
-
   /// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
-
   /// This specifies how an attestation will be read, and how it will be used during policy enforcement.
   final pulumi.Input<UserOwnedGrafeasNote>? userOwnedGrafeasNote;
 
@@ -38,55 +34,34 @@ class AttestorArgs {
     String? name,
     String? project,
     UserOwnedGrafeasNote? userOwnedGrafeasNote,
-  })  : attestorId = pulumi.Input.asInput<String>(attestorId),
-        description = pulumi.Input.asOptionalInput<String>(description),
-        etag = pulumi.Input.asOptionalInput<String>(etag),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        userOwnedGrafeasNote =
-            pulumi.Input.asOptionalInput<UserOwnedGrafeasNote>(
-                userOwnedGrafeasNote);
+  }) :
+      attestorId = pulumi.Input.asInput<String>(attestorId),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      etag = pulumi.Input.asOptionalInput<String>(etag),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      userOwnedGrafeasNote = pulumi.Input.asOptionalInput<UserOwnedGrafeasNote>(userOwnedGrafeasNote);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['attestorId'] = attestorId;
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final etagValue = etag;
-    if (etagValue != null) {
-      map['etag'] = etagValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final userOwnedGrafeasNoteValue = userOwnedGrafeasNote;
-    if (userOwnedGrafeasNoteValue != null) {
-      map['userOwnedGrafeasNote'] = pulumi.Input.mapOptionalInputValue<
-              UserOwnedGrafeasNote, Map<String, dynamic>>(
-          userOwnedGrafeasNoteValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'attestorId': attestorId,
+      'description': ?description,
+      'etag': ?etag,
+      'name': ?name,
+      'project': ?project,
+      'userOwnedGrafeasNote': ?pulumi.Input.mapOptionalInputValue<UserOwnedGrafeasNote, Map<String, dynamic>>(userOwnedGrafeasNote, (value) => value.toMap()),
+    };
   }
 
   factory AttestorArgs.fromMap(Map<String, dynamic> map) {
     return AttestorArgs(
       attestorId: map['attestorId'] as String,
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       etag: map['etag'] == null ? null : map['etag'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      userOwnedGrafeasNote: map['userOwnedGrafeasNote'] == null
-          ? null
-          : UserOwnedGrafeasNote.fromMap(
-              (map['userOwnedGrafeasNote'] as Map).cast<String, dynamic>()),
+      userOwnedGrafeasNote: map['userOwnedGrafeasNote'] == null ? null : UserOwnedGrafeasNote.fromMap((map['userOwnedGrafeasNote'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

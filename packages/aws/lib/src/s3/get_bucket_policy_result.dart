@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getBucketPolicy.
 class GetBucketPolicyResult {
   final String bucket;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// IAM bucket policy.
   final String policy;
   final String region;
@@ -24,12 +23,12 @@ class GetBucketPolicyResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucket'] = bucket;
-    map['id'] = id;
-    map['policy'] = policy;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'bucket': bucket,
+      'id': id,
+      'policy': policy,
+      'region': region,
+    };
   }
 
   factory GetBucketPolicyResult.fromMap(Map<String, dynamic> map) {
@@ -41,3 +40,4 @@ class GetBucketPolicyResult {
     );
   }
 }
+

@@ -14,15 +14,15 @@ class GoogleDomainsDnsDomainsV1alpha2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dsState'] = dsState.value;
-    return map;
+    return <String, dynamic>{
+      'dsState': dsState.value,
+    };
   }
 
   factory GoogleDomainsDnsDomainsV1alpha2.fromMap(Map<String, dynamic> map) {
     return GoogleDomainsDnsDomainsV1alpha2(
-      dsState: GoogleDomainsDnsDsStateDomainsV1alpha2.fromValue(
-          map['dsState'] as String),
+      dsState: GoogleDomainsDnsDsStateDomainsV1alpha2.fromValue(map['dsState'] as String),
     );
   }
 }
+

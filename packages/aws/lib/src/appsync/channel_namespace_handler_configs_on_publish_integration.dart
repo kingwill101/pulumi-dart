@@ -5,10 +5,8 @@ import 'channel_namespace_handler_configs_on_publish_integration_lambda_config.d
 class ChannelNamespaceHandlerConfigsOnPublishIntegration {
   /// Unique name of the data source that has been configured on the API.
   final String dataSourceName;
-
   /// Configuration for a Lambda data source. See Lambda Config below.
-  final ChannelNamespaceHandlerConfigsOnPublishIntegrationLambdaConfig?
-      lambdaConfig;
+  final ChannelNamespaceHandlerConfigsOnPublishIntegrationLambdaConfig? lambdaConfig;
 
   /// Creates a new [ChannelNamespaceHandlerConfigsOnPublishIntegration].
   /// [dataSourceName] Unique name of the data source that has been configured on the API.
@@ -19,23 +17,17 @@ class ChannelNamespaceHandlerConfigsOnPublishIntegration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dataSourceName'] = dataSourceName;
-    final lambdaConfigValue = lambdaConfig;
-    if (lambdaConfigValue != null) {
-      map['lambdaConfig'] = lambdaConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'dataSourceName': dataSourceName,
+      'lambdaConfig': ?lambdaConfig == null ? null : lambdaConfig!.toMap(),
+    };
   }
 
-  factory ChannelNamespaceHandlerConfigsOnPublishIntegration.fromMap(
-      Map<String, dynamic> map) {
+  factory ChannelNamespaceHandlerConfigsOnPublishIntegration.fromMap(Map<String, dynamic> map) {
     return ChannelNamespaceHandlerConfigsOnPublishIntegration(
       dataSourceName: map['dataSourceName'] as String,
-      lambdaConfig: map['lambdaConfig'] == null
-          ? null
-          : ChannelNamespaceHandlerConfigsOnPublishIntegrationLambdaConfig
-              .fromMap((map['lambdaConfig'] as Map).cast<String, dynamic>()),
+      lambdaConfig: map['lambdaConfig'] == null ? null : ChannelNamespaceHandlerConfigsOnPublishIntegrationLambdaConfig.fromMap((map['lambdaConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRegionSslCertificate.
 class GetRegionSslCertificateResult {
   final String certificate;
@@ -7,7 +8,6 @@ class GetRegionSslCertificateResult {
   final String creationTimestamp;
   final String description;
   final String expireTime;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -46,26 +46,20 @@ class GetRegionSslCertificateResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['certificate'] = certificate;
-    map['certificateId'] = certificateId;
-    map['creationTimestamp'] = creationTimestamp;
-    map['description'] = description;
-    map['expireTime'] = expireTime;
-    map['id'] = id;
-    map['name'] = name;
-    map['namePrefix'] = namePrefix;
-    map['privateKey'] = privateKey;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['selfLink'] = selfLink;
-    return map;
+    return <String, dynamic>{
+      'certificate': certificate,
+      'certificateId': certificateId,
+      'creationTimestamp': creationTimestamp,
+      'description': description,
+      'expireTime': expireTime,
+      'id': id,
+      'name': name,
+      'namePrefix': namePrefix,
+      'privateKey': privateKey,
+      'project': ?project,
+      'region': ?region,
+      'selfLink': selfLink,
+    };
   }
 
   factory GetRegionSslCertificateResult.fromMap(Map<String, dynamic> map) {
@@ -85,3 +79,4 @@ class GetRegionSslCertificateResult {
     );
   }
 }
+

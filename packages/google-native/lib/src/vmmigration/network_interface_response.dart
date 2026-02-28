@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// NetworkInterface represents a NIC of a VM.
 class NetworkInterfaceResponse {
   /// The external IP to define in the NIC.
   final String externalIp;
-
   /// The internal IP to define in the NIC. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
   final String internalIp;
-
   /// The network to connect the NIC to.
   final String network;
-
   /// The subnetwork to connect the NIC to.
   final String subnetwork;
 
@@ -27,12 +25,12 @@ class NetworkInterfaceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['externalIp'] = externalIp;
-    map['internalIp'] = internalIp;
-    map['network'] = network;
-    map['subnetwork'] = subnetwork;
-    return map;
+    return <String, dynamic>{
+      'externalIp': externalIp,
+      'internalIp': internalIp,
+      'network': network,
+      'subnetwork': subnetwork,
+    };
   }
 
   factory NetworkInterfaceResponse.fromMap(Map<String, dynamic> map) {
@@ -44,3 +42,4 @@ class NetworkInterfaceResponse {
     );
   }
 }
+

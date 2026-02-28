@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetNetworkManagedServiceStsAccess {
   final String domainName;
   final List<String> ipv4Addresses;
-
   /// The status of the network resource.
   final String status;
   final String stsPolicyDocument;
@@ -21,12 +21,12 @@ class GetNetworkManagedServiceStsAccess {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['domainName'] = domainName;
-    map['ipv4Addresses'] = ipv4Addresses;
-    map['status'] = status;
-    map['stsPolicyDocument'] = stsPolicyDocument;
-    return map;
+    return <String, dynamic>{
+      'domainName': domainName,
+      'ipv4Addresses': ipv4Addresses,
+      'status': status,
+      'stsPolicyDocument': stsPolicyDocument,
+    };
   }
 
   factory GetNetworkManagedServiceStsAccess.fromMap(Map<String, dynamic> map) {
@@ -38,3 +38,4 @@ class GetNetworkManagedServiceStsAccess {
     );
   }
 }
+

@@ -16,17 +16,15 @@ class GetTenantArgs {
   GetTenantArgs({
     String? project,
     required String tenantId,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        tenantId = pulumi.Input.asInput<String>(tenantId);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      tenantId = pulumi.Input.asInput<String>(tenantId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['tenantId'] = tenantId;
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'tenantId': tenantId,
+    };
   }
 
   factory GetTenantArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetTenantArgs {
     );
   }
 }
+

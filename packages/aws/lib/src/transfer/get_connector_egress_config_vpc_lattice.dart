@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetConnectorEgressConfigVpcLattice {
   /// Port number for connecting to the SFTP server through VPC Lattice.
   final int portNumber;
-
   /// ARN of the VPC Lattice Resource Configuration.
   final String resourceConfigurationArn;
 
@@ -16,10 +16,10 @@ class GetConnectorEgressConfigVpcLattice {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['portNumber'] = portNumber;
-    map['resourceConfigurationArn'] = resourceConfigurationArn;
-    return map;
+    return <String, dynamic>{
+      'portNumber': portNumber,
+      'resourceConfigurationArn': resourceConfigurationArn,
+    };
   }
 
   factory GetConnectorEgressConfigVpcLattice.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetConnectorEgressConfigVpcLattice {
     );
   }
 }
+

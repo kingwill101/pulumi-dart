@@ -30,31 +30,23 @@ import 'keystores_aliases_pkcs12_certs_info.dart';
 class KeystoresAliasesPkcs12 extends pulumi.CustomResource {
   /// Alias Name
   late final pulumi.Output<String> alias;
-
   /// Chain of certificates under this alias.
   /// Structure is documented below.
   late final pulumi.Output<List<KeystoresAliasesPkcs12CertsInfo>> certsInfos;
-
   /// Environment associated with the alias
   late final pulumi.Output<String> environment;
-
   /// PKCS12 file content
   ///
   /// - - -
   late final pulumi.Output<String> file;
-
   /// Hash of the pkcs file
   late final pulumi.Output<String> filehash;
-
   /// Keystore Name
   late final pulumi.Output<String> keystore;
-
   /// Organization ID associated with the alias, without organization/ prefix
   late final pulumi.Output<String> orgId;
-
   /// Password for the PKCS12 file if it's encrypted
   late final pulumi.Output<String> password;
-
   /// Optional.Type of Alias
   late final pulumi.Output<String> type;
 
@@ -73,8 +65,7 @@ class KeystoresAliasesPkcs12 extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.alias = registerOutput<String>('alias');
-    this.certsInfos =
-        registerOutput<List<KeystoresAliasesPkcs12CertsInfo>>('certsInfos');
+    this.certsInfos = registerOutput<List<KeystoresAliasesPkcs12CertsInfo>>('certsInfos');
     this.environment = registerOutput<String>('environment');
     this.file = registerOutput<String>('file');
     this.filehash = registerOutput<String>('filehash');

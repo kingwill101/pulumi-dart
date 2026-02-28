@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RecordGeoproximityRoutingPolicyCoordinate {
   final String latitude;
   final String longitude;
@@ -13,17 +14,17 @@ class RecordGeoproximityRoutingPolicyCoordinate {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['latitude'] = latitude;
-    map['longitude'] = longitude;
-    return map;
+    return <String, dynamic>{
+      'latitude': latitude,
+      'longitude': longitude,
+    };
   }
 
-  factory RecordGeoproximityRoutingPolicyCoordinate.fromMap(
-      Map<String, dynamic> map) {
+  factory RecordGeoproximityRoutingPolicyCoordinate.fromMap(Map<String, dynamic> map) {
     return RecordGeoproximityRoutingPolicyCoordinate(
       latitude: map['latitude'] as String,
       longitude: map['longitude'] as String,
     );
   }
 }
+

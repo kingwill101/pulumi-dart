@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A set of properties that uniquely identify a given Docker image.
 class FingerprintResponse {
   /// The layer ID of the final layer in the Docker image's v1 representation.
   final String v1Name;
-
   /// The ordered list of v2 blobs that represent a given image.
   final List<String> v2Blob;
-
   /// The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept.
   final String v2Name;
 
@@ -22,11 +21,11 @@ class FingerprintResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['v1Name'] = v1Name;
-    map['v2Blob'] = v2Blob;
-    map['v2Name'] = v2Name;
-    return map;
+    return <String, dynamic>{
+      'v1Name': v1Name,
+      'v2Blob': v2Blob,
+      'v2Name': v2Name,
+    };
   }
 
   factory FingerprintResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class FingerprintResponse {
     );
   }
 }
+

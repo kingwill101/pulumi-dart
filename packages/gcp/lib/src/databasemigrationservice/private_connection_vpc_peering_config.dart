@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PrivateConnectionVpcPeeringConfig {
   /// A free subnet for peering. (CIDR of /29)
   final String subnet;
-
   /// Fully qualified name of the VPC that Database Migration Service will peer to.
   /// Format: projects/{project}/global/{networks}/{name}
   final String vpcName;
@@ -17,10 +17,10 @@ class PrivateConnectionVpcPeeringConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['subnet'] = subnet;
-    map['vpcName'] = vpcName;
-    return map;
+    return <String, dynamic>{
+      'subnet': subnet,
+      'vpcName': vpcName,
+    };
   }
 
   factory PrivateConnectionVpcPeeringConfig.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class PrivateConnectionVpcPeeringConfig {
     );
   }
 }
+

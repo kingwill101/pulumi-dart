@@ -6,15 +6,13 @@ enum GooglePrivacyDlpV2CloudStorageOptionsSampleMethod {
   const GooglePrivacyDlpV2CloudStorageOptionsSampleMethod(this.value);
   final String value;
 
-  static GooglePrivacyDlpV2CloudStorageOptionsSampleMethod fromValue(
-      String value) {
-    for (final item
-        in GooglePrivacyDlpV2CloudStorageOptionsSampleMethod.values) {
+  static GooglePrivacyDlpV2CloudStorageOptionsSampleMethod fromValue(String value) {
+    for (final item in GooglePrivacyDlpV2CloudStorageOptionsSampleMethod.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GooglePrivacyDlpV2CloudStorageOptionsSampleMethod value: $value');
+    throw ArgumentError('Unknown GooglePrivacyDlpV2CloudStorageOptionsSampleMethod value: $value');
   }
 }
+

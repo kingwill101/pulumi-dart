@@ -22,18 +22,19 @@ class GetEntryArgs {
     required String entryId,
     required String keyvaluemapId,
     required String organizationId,
-  })  : apiId = pulumi.Input.asInput<String>(apiId),
-        entryId = pulumi.Input.asInput<String>(entryId),
-        keyvaluemapId = pulumi.Input.asInput<String>(keyvaluemapId),
-        organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) :
+      apiId = pulumi.Input.asInput<String>(apiId),
+      entryId = pulumi.Input.asInput<String>(entryId),
+      keyvaluemapId = pulumi.Input.asInput<String>(keyvaluemapId),
+      organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['apiId'] = apiId;
-    map['entryId'] = entryId;
-    map['keyvaluemapId'] = keyvaluemapId;
-    map['organizationId'] = organizationId;
-    return map;
+    return <String, dynamic>{
+      'apiId': apiId,
+      'entryId': entryId,
+      'keyvaluemapId': keyvaluemapId,
+      'organizationId': organizationId,
+    };
   }
 
   factory GetEntryArgs.fromMap(Map<String, dynamic> map) {
@@ -45,3 +46,4 @@ class GetEntryArgs {
     );
   }
 }
+

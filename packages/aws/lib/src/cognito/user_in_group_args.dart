@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserInGroupArgs {
   /// The name of the group to which the user is to be added.
   final pulumi.Input<String> groupName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The user pool ID of the user and group.
   final pulumi.Input<String> userPoolId;
-
   /// The username of the user to be added to the group.
   final pulumi.Input<String> username;
 
@@ -29,21 +26,19 @@ class UserInGroupArgs {
     String? region,
     required String userPoolId,
     required String username,
-  })  : groupName = pulumi.Input.asInput<String>(groupName),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        userPoolId = pulumi.Input.asInput<String>(userPoolId),
-        username = pulumi.Input.asInput<String>(username);
+  }) :
+      groupName = pulumi.Input.asInput<String>(groupName),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      userPoolId = pulumi.Input.asInput<String>(userPoolId),
+      username = pulumi.Input.asInput<String>(username);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['groupName'] = groupName;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['userPoolId'] = userPoolId;
-    map['username'] = username;
-    return map;
+    return <String, dynamic>{
+      'groupName': groupName,
+      'region': ?region,
+      'userPoolId': userPoolId,
+      'username': username,
+    };
   }
 
   factory UserInGroupArgs.fromMap(Map<String, dynamic> map) {
@@ -55,3 +50,4 @@ class UserInGroupArgs {
     );
   }
 }
+

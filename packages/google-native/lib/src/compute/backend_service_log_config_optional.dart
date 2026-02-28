@@ -14,7 +14,7 @@ enum BackendServiceLogConfigOptional {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown BackendServiceLogConfigOptional value: $value');
+    throw ArgumentError('Unknown BackendServiceLogConfigOptional value: $value');
   }
 }
+

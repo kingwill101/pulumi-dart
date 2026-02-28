@@ -238,16 +238,12 @@ import 'group_membership_args.dart';
 class GroupMembership extends pulumi.CustomResource {
   /// The identifier for a group in the Identity Store.
   late final pulumi.Output<String> groupId;
-
   /// Identity Store ID associated with the Single Sign-On Instance.
   late final pulumi.Output<String> identityStoreId;
-
   /// The identifier for a user in the Identity Store.
   late final pulumi.Output<String> memberId;
-
   /// The identifier of the newly created group membership in the Identity Store.
   late final pulumi.Output<String> membershipId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

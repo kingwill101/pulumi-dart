@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ApplicationRuntimeConfiguration {
   /// The classification within a configuration.
   final String classification;
-
   /// A set of properties specified within a configuration classification.
   final Map<String, String>? properties;
 
@@ -16,21 +16,17 @@ class ApplicationRuntimeConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['classification'] = classification;
-    final propertiesValue = properties;
-    if (propertiesValue != null) {
-      map['properties'] = propertiesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'classification': classification,
+      'properties': ?properties,
+    };
   }
 
   factory ApplicationRuntimeConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationRuntimeConfiguration(
       classification: map['classification'] as String,
-      properties: map['properties'] == null
-          ? null
-          : (map['properties'] as Map).cast<String, String>(),
+      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
     );
   }
 }
+

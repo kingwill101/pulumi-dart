@@ -8,18 +8,14 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource {
   /// subject to validations based on the file type: Remote: A checksum must be
   /// specified. Cloud Storage: An object generation number must be specified.
   final bool? allowInsecure;
-
   /// A Cloud Storage object. Structure is
   /// documented below.
   final OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs? gcs;
-
   /// A local path within the VM to use.
   final String? localPath;
-
   /// A generic remote file. Structure is
   /// documented below.
-  final OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote?
-      remote;
+  final OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote? remote;
 
   /// Creates a new [OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource].
   /// [allowInsecure] Defaults to false. When false, files are
@@ -34,40 +30,21 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final allowInsecureValue = allowInsecure;
-    if (allowInsecureValue != null) {
-      map['allowInsecure'] = allowInsecureValue;
-    }
-    final gcsValue = gcs;
-    if (gcsValue != null) {
-      map['gcs'] = gcsValue.toMap();
-    }
-    final localPathValue = localPath;
-    if (localPathValue != null) {
-      map['localPath'] = localPathValue;
-    }
-    final remoteValue = remote;
-    if (remoteValue != null) {
-      map['remote'] = remoteValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'allowInsecure': ?allowInsecure,
+      'gcs': ?gcs == null ? null : gcs!.toMap(),
+      'localPath': ?localPath,
+      'remote': ?remote == null ? null : remote!.toMap(),
+    };
   }
 
-  factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource.fromMap(
-      Map<String, dynamic> map) {
+  factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource(
-      allowInsecure:
-          map['allowInsecure'] == null ? null : map['allowInsecure'] as bool,
-      gcs: map['gcs'] == null
-          ? null
-          : OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs
-              .fromMap((map['gcs'] as Map).cast<String, dynamic>()),
+      allowInsecure: map['allowInsecure'] == null ? null : map['allowInsecure'] as bool,
+      gcs: map['gcs'] == null ? null : OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs.fromMap((map['gcs'] as Map).cast<String, dynamic>()),
       localPath: map['localPath'] == null ? null : map['localPath'] as String,
-      remote: map['remote'] == null
-          ? null
-          : OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote
-              .fromMap((map['remote'] as Map).cast<String, dynamic>()),
+      remote: map['remote'] == null ? null : OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote.fromMap((map['remote'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -14,20 +14,15 @@ class ReferenceListScopeInfo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final referenceListScopeValue = referenceListScope;
-    if (referenceListScopeValue != null) {
-      map['referenceListScope'] = referenceListScopeValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'referenceListScope': ?referenceListScope == null ? null : referenceListScope!.toMap(),
+    };
   }
 
   factory ReferenceListScopeInfo.fromMap(Map<String, dynamic> map) {
     return ReferenceListScopeInfo(
-      referenceListScope: map['referenceListScope'] == null
-          ? null
-          : ReferenceListScopeInfoReferenceListScope.fromMap(
-              (map['referenceListScope'] as Map).cast<String, dynamic>()),
+      referenceListScope: map['referenceListScope'] == null ? null : ReferenceListScopeInfoReferenceListScope.fromMap((map['referenceListScope'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

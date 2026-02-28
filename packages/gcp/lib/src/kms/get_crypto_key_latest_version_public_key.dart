@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetCryptoKeyLatestVersionPublicKey {
   /// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
   final String algorithm;
-
   /// The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
   final String pem;
 
@@ -16,10 +16,10 @@ class GetCryptoKeyLatestVersionPublicKey {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['algorithm'] = algorithm;
-    map['pem'] = pem;
-    return map;
+    return <String, dynamic>{
+      'algorithm': algorithm,
+      'pem': pem,
+    };
   }
 
   factory GetCryptoKeyLatestVersionPublicKey.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetCryptoKeyLatestVersionPublicKey {
     );
   }
 }
+

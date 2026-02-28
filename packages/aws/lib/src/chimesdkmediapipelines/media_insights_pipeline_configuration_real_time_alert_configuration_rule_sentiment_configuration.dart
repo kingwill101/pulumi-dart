@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentConfiguration {
   /// Rule name.
   final String ruleName;
-
   /// Sentiment type to match.
   final String sentimentType;
-
   /// Analysis interval.
   final int timePeriod;
 
@@ -21,15 +20,14 @@ class MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentC
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ruleName'] = ruleName;
-    map['sentimentType'] = sentimentType;
-    map['timePeriod'] = timePeriod;
-    return map;
+    return <String, dynamic>{
+      'ruleName': ruleName,
+      'sentimentType': sentimentType,
+      'timePeriod': timePeriod,
+    };
   }
 
-  factory MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentConfiguration.fromMap(Map<String, dynamic> map) {
     return MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentConfiguration(
       ruleName: map['ruleName'] as String,
       sentimentType: map['sentimentType'] as String,
@@ -37,3 +35,4 @@ class MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentC
     );
   }
 }
+

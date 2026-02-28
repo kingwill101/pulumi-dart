@@ -16,7 +16,6 @@ class GetLoadBalancerResult {
   final String desyncMitigationMode;
   final String dnsName;
   final GetLoadBalancerHealthCheck healthCheck;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final int idleTimeout;
@@ -81,38 +80,35 @@ class GetLoadBalancerResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accessLogs'] = accessLogs.toMap();
-    map['arn'] = arn;
-    map['availabilityZones'] = availabilityZones;
-    map['connectionDraining'] = connectionDraining;
-    map['connectionDrainingTimeout'] = connectionDrainingTimeout;
-    map['crossZoneLoadBalancing'] = crossZoneLoadBalancing;
-    map['desyncMitigationMode'] = desyncMitigationMode;
-    map['dnsName'] = dnsName;
-    map['healthCheck'] = healthCheck.toMap();
-    map['id'] = id;
-    map['idleTimeout'] = idleTimeout;
-    map['instances'] = instances;
-    map['internal'] = internal;
-    map['listeners'] =
-        pulumi.Input.encodeList<GetLoadBalancerListener, Map<String, dynamic>>(
-            listeners, (value) => value.toMap());
-    map['name'] = name;
-    map['region'] = region;
-    map['securityGroups'] = securityGroups;
-    map['sourceSecurityGroup'] = sourceSecurityGroup;
-    map['sourceSecurityGroupId'] = sourceSecurityGroupId;
-    map['subnets'] = subnets;
-    map['tags'] = tags;
-    map['zoneId'] = zoneId;
-    return map;
+    return <String, dynamic>{
+      'accessLogs': accessLogs.toMap(),
+      'arn': arn,
+      'availabilityZones': availabilityZones,
+      'connectionDraining': connectionDraining,
+      'connectionDrainingTimeout': connectionDrainingTimeout,
+      'crossZoneLoadBalancing': crossZoneLoadBalancing,
+      'desyncMitigationMode': desyncMitigationMode,
+      'dnsName': dnsName,
+      'healthCheck': healthCheck.toMap(),
+      'id': id,
+      'idleTimeout': idleTimeout,
+      'instances': instances,
+      'internal': internal,
+      'listeners': pulumi.Input.encodeList<GetLoadBalancerListener, Map<String, dynamic>>(listeners, (value) => value.toMap()),
+      'name': name,
+      'region': region,
+      'securityGroups': securityGroups,
+      'sourceSecurityGroup': sourceSecurityGroup,
+      'sourceSecurityGroupId': sourceSecurityGroupId,
+      'subnets': subnets,
+      'tags': tags,
+      'zoneId': zoneId,
+    };
   }
 
   factory GetLoadBalancerResult.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerResult(
-      accessLogs: GetLoadBalancerAccessLogs.fromMap(
-          (map['accessLogs'] as Map).cast<String, dynamic>()),
+      accessLogs: GetLoadBalancerAccessLogs.fromMap((map['accessLogs'] as Map).cast<String, dynamic>()),
       arn: map['arn'] as String,
       availabilityZones: (map['availabilityZones'] as List).cast<String>(),
       connectionDraining: map['connectionDraining'] as bool,
@@ -120,16 +116,12 @@ class GetLoadBalancerResult {
       crossZoneLoadBalancing: map['crossZoneLoadBalancing'] as bool,
       desyncMitigationMode: map['desyncMitigationMode'] as String,
       dnsName: map['dnsName'] as String,
-      healthCheck: GetLoadBalancerHealthCheck.fromMap(
-          (map['healthCheck'] as Map).cast<String, dynamic>()),
+      healthCheck: GetLoadBalancerHealthCheck.fromMap((map['healthCheck'] as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       idleTimeout: map['idleTimeout'] as int,
       instances: (map['instances'] as List).cast<String>(),
       internal: map['internal'] as bool,
-      listeners: pulumi.Input.decodeList<GetLoadBalancerListener>(
-          map['listeners'],
-          (value) => GetLoadBalancerListener.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      listeners: pulumi.Input.decodeList<GetLoadBalancerListener>(map['listeners'], (value) => GetLoadBalancerListener.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       region: map['region'] as String,
       securityGroups: (map['securityGroups'] as List).cast<String>(),
@@ -141,3 +133,4 @@ class GetLoadBalancerResult {
     );
   }
 }
+

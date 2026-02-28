@@ -9,24 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeystoresAliasesPkcs12Args {
   /// Alias Name
   final pulumi.Input<String> alias;
-
   /// Environment associated with the alias
   final pulumi.Input<String> environment;
-
   /// PKCS12 file content
   ///
   /// - - -
   final pulumi.Input<String> file;
-
   /// Hash of the pkcs file
   final pulumi.Input<String> filehash;
-
   /// Keystore Name
   final pulumi.Input<String> keystore;
-
   /// Organization ID associated with the alias, without organization/ prefix
   final pulumi.Input<String> orgId;
-
   /// Password for the PKCS12 file if it's encrypted
   final pulumi.Input<String>? password;
 
@@ -46,27 +40,25 @@ class KeystoresAliasesPkcs12Args {
     required String keystore,
     required String orgId,
     String? password,
-  })  : alias = pulumi.Input.asInput<String>(alias),
-        environment = pulumi.Input.asInput<String>(environment),
-        file = pulumi.Input.asInput<String>(file),
-        filehash = pulumi.Input.asInput<String>(filehash),
-        keystore = pulumi.Input.asInput<String>(keystore),
-        orgId = pulumi.Input.asInput<String>(orgId),
-        password = pulumi.Input.asOptionalInput<String>(password);
+  }) :
+      alias = pulumi.Input.asInput<String>(alias),
+      environment = pulumi.Input.asInput<String>(environment),
+      file = pulumi.Input.asInput<String>(file),
+      filehash = pulumi.Input.asInput<String>(filehash),
+      keystore = pulumi.Input.asInput<String>(keystore),
+      orgId = pulumi.Input.asInput<String>(orgId),
+      password = pulumi.Input.asOptionalInput<String>(password);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['alias'] = alias;
-    map['environment'] = environment;
-    map['file'] = file;
-    map['filehash'] = filehash;
-    map['keystore'] = keystore;
-    map['orgId'] = orgId;
-    final passwordValue = password;
-    if (passwordValue != null) {
-      map['password'] = passwordValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'alias': alias,
+      'environment': environment,
+      'file': file,
+      'filehash': filehash,
+      'keystore': keystore,
+      'orgId': orgId,
+      'password': ?password,
+    };
   }
 
   factory KeystoresAliasesPkcs12Args.fromMap(Map<String, dynamic> map) {
@@ -81,3 +73,4 @@ class KeystoresAliasesPkcs12Args {
     );
   }
 }
+

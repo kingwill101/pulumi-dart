@@ -592,16 +592,12 @@ import 'partition_index_partition_index.dart';
 class PartitionIndex extends pulumi.CustomResource {
   /// The catalog ID where the table resides.
   late final pulumi.Output<String> catalogId;
-
   /// Name of the metadata database where the table metadata resides. For Hive compatibility, this must be all lowercase.
   late final pulumi.Output<String> databaseName;
-
   /// Configuration block for a partition index. See `partition_index` below.
   late final pulumi.Output<PartitionIndexPartitionIndex> partitionIndex;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Name of the table. For Hive compatibility, this must be entirely lowercase.
   late final pulumi.Output<String> tableName;
 
@@ -621,8 +617,7 @@ class PartitionIndex extends pulumi.CustomResource {
         ) {
     this.catalogId = registerOutput<String>('catalogId');
     this.databaseName = registerOutput<String>('databaseName');
-    this.partitionIndex =
-        registerOutput<PartitionIndexPartitionIndex>('partitionIndex');
+    this.partitionIndex = registerOutput<PartitionIndexPartitionIndex>('partitionIndex');
     this.region = registerOutput<String>('region');
     this.tableName = registerOutput<String>('tableName');
   }

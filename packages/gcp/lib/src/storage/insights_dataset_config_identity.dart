@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InsightsDatasetConfigIdentity {
   /// (Output)
   /// Name of the identity.
   final String? name;
-
   /// Type of identity to use for the DatasetConfig.
   /// Possible values are: `IDENTITY_TYPE_PER_CONFIG`, `IDENTITY_TYPE_PER_PROJECT`.
   final String type;
@@ -18,13 +18,10 @@ class InsightsDatasetConfigIdentity {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+      'type': type,
+    };
   }
 
   factory InsightsDatasetConfigIdentity.fromMap(Map<String, dynamic> map) {
@@ -34,3 +31,4 @@ class InsightsDatasetConfigIdentity {
     );
   }
 }
+

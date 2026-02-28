@@ -6,9 +6,7 @@ import 'prevention_discovery_config_target_big_query_target_filter_tables_includ
 class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexes {
   /// The group of regular expression patterns to match against one or more resources. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.
   /// Structure is documented below.
-  final List<
-          PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern>?
-      patterns;
+  final List<PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern>? patterns;
 
   /// Creates a new [PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexes].
   /// [patterns] The group of regular expression patterns to match against one or more resources. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.
@@ -17,27 +15,15 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexes {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final patternsValue = patterns;
-    if (patternsValue != null) {
-      map['patterns'] = pulumi.Input.encodeList<
-          PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern,
-          Map<String, dynamic>>(patternsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'patterns': ?patterns == null ? null : pulumi.Input.encodeList<PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern, Map<String, dynamic>>(patterns!, (value) => value.toMap()),
+    };
   }
 
-  factory PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexes.fromMap(
-      Map<String, dynamic> map) {
+  factory PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexes.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexes(
-      patterns: map['patterns'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern>(
-              map['patterns'],
-              (value) =>
-                  PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      patterns: map['patterns'] == null ? null : pulumi.Input.decodeList<PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern>(map['patterns'], (value) => PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'bucket_lifecycle_rule_item_condition.dart';
 class BucketLifecycleRuleItem {
   /// The action to take.
   final BucketLifecycleRuleItemAction? action;
-
   /// The condition(s) under which the action will be taken.
   final BucketLifecycleRuleItemCondition? condition;
 
@@ -19,28 +18,17 @@ class BucketLifecycleRuleItem {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final actionValue = action;
-    if (actionValue != null) {
-      map['action'] = actionValue.toMap();
-    }
-    final conditionValue = condition;
-    if (conditionValue != null) {
-      map['condition'] = conditionValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'action': ?action == null ? null : action!.toMap(),
+      'condition': ?condition == null ? null : condition!.toMap(),
+    };
   }
 
   factory BucketLifecycleRuleItem.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleRuleItem(
-      action: map['action'] == null
-          ? null
-          : BucketLifecycleRuleItemAction.fromMap(
-              (map['action'] as Map).cast<String, dynamic>()),
-      condition: map['condition'] == null
-          ? null
-          : BucketLifecycleRuleItemCondition.fromMap(
-              (map['condition'] as Map).cast<String, dynamic>()),
+      action: map['action'] == null ? null : BucketLifecycleRuleItemAction.fromMap((map['action'] as Map).cast<String, dynamic>()),
+      condition: map['condition'] == null ? null : BucketLifecycleRuleItemCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,19 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getQuicksightGroup.
 class GetQuicksightGroupResult {
   /// The Amazon Resource Name (ARN) for the group.
   final String arn;
   final String awsAccountId;
-
   /// The group description.
   final String description;
   final String groupName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? namespace;
-
   /// The principal ID of the group.
   final String principalId;
   final String region;
@@ -39,19 +37,16 @@ class GetQuicksightGroupResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['awsAccountId'] = awsAccountId;
-    map['description'] = description;
-    map['groupName'] = groupName;
-    map['id'] = id;
-    final namespaceValue = namespace;
-    if (namespaceValue != null) {
-      map['namespace'] = namespaceValue;
-    }
-    map['principalId'] = principalId;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'awsAccountId': awsAccountId,
+      'description': description,
+      'groupName': groupName,
+      'id': id,
+      'namespace': ?namespace,
+      'principalId': principalId,
+      'region': region,
+    };
   }
 
   factory GetQuicksightGroupResult.fromMap(Map<String, dynamic> map) {
@@ -67,3 +62,4 @@ class GetQuicksightGroupResult {
     );
   }
 }
+

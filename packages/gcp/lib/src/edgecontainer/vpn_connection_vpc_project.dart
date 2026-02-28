@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VpnConnectionVpcProject {
   /// The project of the VPC to connect to. If not specified, it is the same as the cluster project.
   final String? projectId;
@@ -11,12 +12,9 @@ class VpnConnectionVpcProject {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectIdValue = projectId;
-    if (projectIdValue != null) {
-      map['projectId'] = projectIdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'projectId': ?projectId,
+    };
   }
 
   factory VpnConnectionVpcProject.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class VpnConnectionVpcProject {
     );
   }
 }
+

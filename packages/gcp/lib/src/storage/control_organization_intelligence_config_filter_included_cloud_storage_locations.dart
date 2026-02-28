@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocations {
   /// List of locations.
   final List<String> locations;
@@ -11,15 +12,15 @@ class ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocations {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['locations'] = locations;
-    return map;
+    return <String, dynamic>{
+      'locations': locations,
+    };
   }
 
-  factory ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocations.fromMap(
-      Map<String, dynamic> map) {
+  factory ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocations.fromMap(Map<String, dynamic> map) {
     return ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocations(
       locations: (map['locations'] as List).cast<String>(),
     );
   }
 }
+

@@ -13,16 +13,15 @@ class RecordingConfigurationDestinationConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['s3'] = s3.toMap();
-    return map;
+    return <String, dynamic>{
+      's3': s3.toMap(),
+    };
   }
 
-  factory RecordingConfigurationDestinationConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory RecordingConfigurationDestinationConfiguration.fromMap(Map<String, dynamic> map) {
     return RecordingConfigurationDestinationConfiguration(
-      s3: RecordingConfigurationDestinationConfigurationS3.fromMap(
-          (map['s3'] as Map).cast<String, dynamic>()),
+      s3: RecordingConfigurationDestinationConfigurationS3.fromMap((map['s3'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

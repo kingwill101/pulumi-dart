@@ -24,41 +24,21 @@ class RRSetRoutingPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final geoValue = geo;
-    if (geoValue != null) {
-      map['geo'] = geoValue.toMap();
-    }
-    final kindValue = kind;
-    if (kindValue != null) {
-      map['kind'] = kindValue;
-    }
-    final primaryBackupValue = primaryBackup;
-    if (primaryBackupValue != null) {
-      map['primaryBackup'] = primaryBackupValue.toMap();
-    }
-    final wrrValue = wrr;
-    if (wrrValue != null) {
-      map['wrr'] = wrrValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'geo': ?geo == null ? null : geo!.toMap(),
+      'kind': ?kind,
+      'primaryBackup': ?primaryBackup == null ? null : primaryBackup!.toMap(),
+      'wrr': ?wrr == null ? null : wrr!.toMap(),
+    };
   }
 
   factory RRSetRoutingPolicy.fromMap(Map<String, dynamic> map) {
     return RRSetRoutingPolicy(
-      geo: map['geo'] == null
-          ? null
-          : RRSetRoutingPolicyGeoPolicy.fromMap(
-              (map['geo'] as Map).cast<String, dynamic>()),
+      geo: map['geo'] == null ? null : RRSetRoutingPolicyGeoPolicy.fromMap((map['geo'] as Map).cast<String, dynamic>()),
       kind: map['kind'] == null ? null : map['kind'] as String,
-      primaryBackup: map['primaryBackup'] == null
-          ? null
-          : RRSetRoutingPolicyPrimaryBackupPolicy.fromMap(
-              (map['primaryBackup'] as Map).cast<String, dynamic>()),
-      wrr: map['wrr'] == null
-          ? null
-          : RRSetRoutingPolicyWrrPolicy.fromMap(
-              (map['wrr'] as Map).cast<String, dynamic>()),
+      primaryBackup: map['primaryBackup'] == null ? null : RRSetRoutingPolicyPrimaryBackupPolicy.fromMap((map['primaryBackup'] as Map).cast<String, dynamic>()),
+      wrr: map['wrr'] == null ? null : RRSetRoutingPolicyWrrPolicy.fromMap((map['wrr'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

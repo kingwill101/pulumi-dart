@@ -13,21 +13,15 @@ class RevisionAssetsAssetImportAssetsFromS3 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final assetSourceValue = assetSource;
-    if (assetSourceValue != null) {
-      map['assetSource'] = assetSourceValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'assetSource': ?assetSource == null ? null : assetSource!.toMap(),
+    };
   }
 
-  factory RevisionAssetsAssetImportAssetsFromS3.fromMap(
-      Map<String, dynamic> map) {
+  factory RevisionAssetsAssetImportAssetsFromS3.fromMap(Map<String, dynamic> map) {
     return RevisionAssetsAssetImportAssetsFromS3(
-      assetSource: map['assetSource'] == null
-          ? null
-          : RevisionAssetsAssetImportAssetsFromS3AssetSource.fromMap(
-              (map['assetSource'] as Map).cast<String, dynamic>()),
+      assetSource: map['assetSource'] == null ? null : RevisionAssetsAssetImportAssetsFromS3AssetSource.fromMap((map['assetSource'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

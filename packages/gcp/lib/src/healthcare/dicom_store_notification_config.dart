@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DicomStoreNotificationConfig {
   /// The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
   /// PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
@@ -8,7 +9,6 @@ class DicomStoreNotificationConfig {
   /// project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
   /// Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
   final String pubsubTopic;
-
   /// Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
   final bool? sendForBulkImport;
 
@@ -21,21 +21,17 @@ class DicomStoreNotificationConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['pubsubTopic'] = pubsubTopic;
-    final sendForBulkImportValue = sendForBulkImport;
-    if (sendForBulkImportValue != null) {
-      map['sendForBulkImport'] = sendForBulkImportValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'pubsubTopic': pubsubTopic,
+      'sendForBulkImport': ?sendForBulkImport,
+    };
   }
 
   factory DicomStoreNotificationConfig.fromMap(Map<String, dynamic> map) {
     return DicomStoreNotificationConfig(
       pubsubTopic: map['pubsubTopic'] as String,
-      sendForBulkImport: map['sendForBulkImport'] == null
-          ? null
-          : map['sendForBulkImport'] as bool,
+      sendForBulkImport: map['sendForBulkImport'] == null ? null : map['sendForBulkImport'] as bool,
     );
   }
 }
+

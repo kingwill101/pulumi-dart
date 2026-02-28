@@ -16,23 +16,15 @@ class DestinationStateTimeline {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final statesValue = states;
-    if (statesValue != null) {
-      map['states'] = pulumi.Input.encodeList<DestinationStateTimelineState,
-          Map<String, dynamic>>(statesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'states': ?states == null ? null : pulumi.Input.encodeList<DestinationStateTimelineState, Map<String, dynamic>>(states!, (value) => value.toMap()),
+    };
   }
 
   factory DestinationStateTimeline.fromMap(Map<String, dynamic> map) {
     return DestinationStateTimeline(
-      states: map['states'] == null
-          ? null
-          : pulumi.Input.decodeList<DestinationStateTimelineState>(
-              map['states'],
-              (value) => DestinationStateTimelineState.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      states: map['states'] == null ? null : pulumi.Input.decodeList<DestinationStateTimelineState>(map['states'], (value) => DestinationStateTimelineState.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

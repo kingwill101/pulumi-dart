@@ -18,7 +18,7 @@ enum BackendServiceLocalityLbPolicyComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown BackendServiceLocalityLbPolicyComputeBeta value: $value');
+    throw ArgumentError('Unknown BackendServiceLocalityLbPolicyComputeBeta value: $value');
   }
 }
+

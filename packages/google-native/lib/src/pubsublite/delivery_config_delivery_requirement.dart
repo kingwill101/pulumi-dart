@@ -13,7 +13,7 @@ enum DeliveryConfigDeliveryRequirement {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown DeliveryConfigDeliveryRequirement value: $value');
+    throw ArgumentError('Unknown DeliveryConfigDeliveryRequirement value: $value');
   }
 }
+

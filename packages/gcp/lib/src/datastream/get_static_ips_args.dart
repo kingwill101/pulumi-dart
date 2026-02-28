@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStaticIpsArgs {
   /// The location to list Datastream IPs for. For example: `us-east1`.
   final pulumi.Input<String> location;
-
   /// Project from which to list static IP addresses. Defaults to project declared in the provider.
   final pulumi.Input<String>? project;
 
@@ -19,17 +18,15 @@ class GetStaticIpsArgs {
   GetStaticIpsArgs({
     required String location,
     String? project,
-  })  : location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetStaticIpsArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +36,4 @@ class GetStaticIpsArgs {
     );
   }
 }
+

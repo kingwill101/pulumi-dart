@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RowLevelSecurityStatisticsResponse {
   /// [Preview] Whether any accessed data was protected by row access policies.
   final bool rowLevelSecurityApplied;
@@ -11,9 +12,9 @@ class RowLevelSecurityStatisticsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['rowLevelSecurityApplied'] = rowLevelSecurityApplied;
-    return map;
+    return <String, dynamic>{
+      'rowLevelSecurityApplied': rowLevelSecurityApplied,
+    };
   }
 
   factory RowLevelSecurityStatisticsResponse.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class RowLevelSecurityStatisticsResponse {
     );
   }
 }
+

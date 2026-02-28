@@ -12,19 +12,15 @@ class GetWorkstationIamPolicyArgs {
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
   final pulumi.Input<String>? location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The ID of the parent workstation cluster.
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> workstationClusterId;
-
   /// The ID of the parent workstation cluster config.
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> workstationConfigId;
-
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> workstationId;
 
@@ -40,27 +36,21 @@ class GetWorkstationIamPolicyArgs {
     required String workstationClusterId,
     required String workstationConfigId,
     required String workstationId,
-  })  : location = pulumi.Input.asOptionalInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        workstationClusterId =
-            pulumi.Input.asInput<String>(workstationClusterId),
-        workstationConfigId = pulumi.Input.asInput<String>(workstationConfigId),
-        workstationId = pulumi.Input.asInput<String>(workstationId);
+  }) :
+      location = pulumi.Input.asOptionalInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      workstationClusterId = pulumi.Input.asInput<String>(workstationClusterId),
+      workstationConfigId = pulumi.Input.asInput<String>(workstationConfigId),
+      workstationId = pulumi.Input.asInput<String>(workstationId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['workstationClusterId'] = workstationClusterId;
-    map['workstationConfigId'] = workstationConfigId;
-    map['workstationId'] = workstationId;
-    return map;
+    return <String, dynamic>{
+      'location': ?location,
+      'project': ?project,
+      'workstationClusterId': workstationClusterId,
+      'workstationConfigId': workstationConfigId,
+      'workstationId': workstationId,
+    };
   }
 
   factory GetWorkstationIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -73,3 +63,4 @@ class GetWorkstationIamPolicyArgs {
     );
   }
 }
+

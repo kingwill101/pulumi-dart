@@ -10,28 +10,20 @@ import 'status_response.dart';
 class CloneJobResponse {
   /// Details of the target Persistent Disks in Compute Engine.
   final ComputeEngineDisksTargetDetailsResponse computeEngineDisksTargetDetails;
-
   /// Details of the target VM in Compute Engine.
   final ComputeEngineTargetDetailsResponse computeEngineTargetDetails;
-
   /// The time the clone job was created (as an API call, not when it was actually created in the target).
   final String createTime;
-
   /// The time the clone job was ended.
   final String endTime;
-
   /// Provides details for the errors that led to the Clone Job's state.
   final StatusResponse error;
-
   /// The name of the clone.
   final String name;
-
   /// State of the clone job.
   final String state;
-
   /// The time the state was last updated.
   final String stateTime;
-
   /// The clone steps list representing its progress.
   final List<CloneStepResponse> steps;
 
@@ -58,41 +50,31 @@ class CloneJobResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['computeEngineDisksTargetDetails'] =
-        computeEngineDisksTargetDetails.toMap();
-    map['computeEngineTargetDetails'] = computeEngineTargetDetails.toMap();
-    map['createTime'] = createTime;
-    map['endTime'] = endTime;
-    map['error'] = error.toMap();
-    map['name'] = name;
-    map['state'] = state;
-    map['stateTime'] = stateTime;
-    map['steps'] =
-        pulumi.Input.encodeList<CloneStepResponse, Map<String, dynamic>>(
-            steps, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'computeEngineDisksTargetDetails': computeEngineDisksTargetDetails.toMap(),
+      'computeEngineTargetDetails': computeEngineTargetDetails.toMap(),
+      'createTime': createTime,
+      'endTime': endTime,
+      'error': error.toMap(),
+      'name': name,
+      'state': state,
+      'stateTime': stateTime,
+      'steps': pulumi.Input.encodeList<CloneStepResponse, Map<String, dynamic>>(steps, (value) => value.toMap()),
+    };
   }
 
   factory CloneJobResponse.fromMap(Map<String, dynamic> map) {
     return CloneJobResponse(
-      computeEngineDisksTargetDetails:
-          ComputeEngineDisksTargetDetailsResponse.fromMap(
-              (map['computeEngineDisksTargetDetails'] as Map)
-                  .cast<String, dynamic>()),
-      computeEngineTargetDetails: ComputeEngineTargetDetailsResponse.fromMap(
-          (map['computeEngineTargetDetails'] as Map).cast<String, dynamic>()),
+      computeEngineDisksTargetDetails: ComputeEngineDisksTargetDetailsResponse.fromMap((map['computeEngineDisksTargetDetails'] as Map).cast<String, dynamic>()),
+      computeEngineTargetDetails: ComputeEngineTargetDetailsResponse.fromMap((map['computeEngineTargetDetails'] as Map).cast<String, dynamic>()),
       createTime: map['createTime'] as String,
       endTime: map['endTime'] as String,
-      error:
-          StatusResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
+      error: StatusResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       state: map['state'] as String,
       stateTime: map['stateTime'] as String,
-      steps: pulumi.Input.decodeList<CloneStepResponse>(
-          map['steps'],
-          (value) => CloneStepResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      steps: pulumi.Input.decodeList<CloneStepResponse>(map['steps'], (value) => CloneStepResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

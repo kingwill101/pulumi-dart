@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for the Advanced API Ops add-on.
 class GoogleCloudApigeeV1AdvancedApiOpsConfigResponse {
   /// Flag that specifies whether the Advanced API Ops add-on is enabled.
@@ -12,15 +13,15 @@ class GoogleCloudApigeeV1AdvancedApiOpsConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory GoogleCloudApigeeV1AdvancedApiOpsConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1AdvancedApiOpsConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1AdvancedApiOpsConfigResponse(
       enabled: map['enabled'] as bool,
     );
   }
 }
+

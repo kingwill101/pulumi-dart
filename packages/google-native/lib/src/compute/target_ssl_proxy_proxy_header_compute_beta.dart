@@ -12,7 +12,7 @@ enum TargetSslProxyProxyHeaderComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown TargetSslProxyProxyHeaderComputeBeta value: $value');
+    throw ArgumentError('Unknown TargetSslProxyProxyHeaderComputeBeta value: $value');
   }
 }
+

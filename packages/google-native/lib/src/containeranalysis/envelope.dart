@@ -20,35 +20,19 @@ class Envelope {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final payloadValue = payload;
-    if (payloadValue != null) {
-      map['payload'] = payloadValue;
-    }
-    final payloadTypeValue = payloadType;
-    if (payloadTypeValue != null) {
-      map['payloadType'] = payloadTypeValue;
-    }
-    final signaturesValue = signatures;
-    if (signaturesValue != null) {
-      map['signatures'] =
-          pulumi.Input.encodeList<EnvelopeSignature, Map<String, dynamic>>(
-              signaturesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'payload': ?payload,
+      'payloadType': ?payloadType,
+      'signatures': ?signatures == null ? null : pulumi.Input.encodeList<EnvelopeSignature, Map<String, dynamic>>(signatures!, (value) => value.toMap()),
+    };
   }
 
   factory Envelope.fromMap(Map<String, dynamic> map) {
     return Envelope(
       payload: map['payload'] == null ? null : map['payload'] as String,
-      payloadType:
-          map['payloadType'] == null ? null : map['payloadType'] as String,
-      signatures: map['signatures'] == null
-          ? null
-          : pulumi.Input.decodeList<EnvelopeSignature>(
-              map['signatures'],
-              (value) => EnvelopeSignature.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      payloadType: map['payloadType'] == null ? null : map['payloadType'] as String,
+      signatures: map['signatures'] == null ? null : pulumi.Input.decodeList<EnvelopeSignature>(map['signatures'], (value) => EnvelopeSignature.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

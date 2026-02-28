@@ -17,15 +17,15 @@ class WorkloadIdentityPoolProviderX509 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['trustStore'] = trustStore.toMap();
-    return map;
+    return <String, dynamic>{
+      'trustStore': trustStore.toMap(),
+    };
   }
 
   factory WorkloadIdentityPoolProviderX509.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolProviderX509(
-      trustStore: WorkloadIdentityPoolProviderX509TrustStore.fromMap(
-          (map['trustStore'] as Map).cast<String, dynamic>()),
+      trustStore: WorkloadIdentityPoolProviderX509TrustStore.fromMap((map['trustStore'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

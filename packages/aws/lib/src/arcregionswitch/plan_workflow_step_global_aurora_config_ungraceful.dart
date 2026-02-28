@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PlanWorkflowStepGlobalAuroraConfigUngraceful {
   final String ungraceful;
 
@@ -10,15 +11,15 @@ class PlanWorkflowStepGlobalAuroraConfigUngraceful {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ungraceful'] = ungraceful;
-    return map;
+    return <String, dynamic>{
+      'ungraceful': ungraceful,
+    };
   }
 
-  factory PlanWorkflowStepGlobalAuroraConfigUngraceful.fromMap(
-      Map<String, dynamic> map) {
+  factory PlanWorkflowStepGlobalAuroraConfigUngraceful.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepGlobalAuroraConfigUngraceful(
       ungraceful: map['ungraceful'] as String,
     );
   }
 }
+

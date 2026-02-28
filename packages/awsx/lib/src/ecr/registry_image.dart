@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'registry_image_args.dart';
+import 'package:pulumi_docker/index.dart' as pulumi_docker_index;
 
 /// Manages the lifecycle of a docker image in a registry. You can upload images to a registry (= `docker push`) and also delete them again. In contrast to [`awsx.ecr.Image`](/registry/packages/awsx/api-docs/ecr/image/), this resource does not require to build the image, but can be used to push an existing image to an ECR repository. The image will be pushed whenever the source image changes or is updated.
 ///
@@ -120,7 +121,7 @@ import 'registry_image_args.dart';
 /// {{% /examples %}}
 class RegistryImage extends pulumi.ComponentResource {
   /// The underlying RegistryImage resource.
-  late final pulumi.Output<dynamic> image;
+  late final pulumi.Output<pulumi_docker_index.RegistryImage> image;
 
   /// Creates a new [RegistryImage].
   /// [name] The Pulumi resource name.
@@ -131,11 +132,11 @@ class RegistryImage extends pulumi.ComponentResource {
     RegistryImageArgs? args,
     pulumi.ComponentResourceOptions? options,
   }) : super(
-         'awsx:ecr:RegistryImage',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.ComponentResourceOptions(),
-       ) {
-    this.image = registerOutput<dynamic>('image');
+          'awsx:ecr:RegistryImage',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.ComponentResourceOptions(),
+        ) {
+    this.image = registerOutput<pulumi_docker_index.RegistryImage>('image');
   }
 }

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ModelVpcConfig {
   /// List of security group IDs you want to be applied to your training job or model. Specify the security groups for the VPC that is specified in the Subnets field.
   final List<String> securityGroupIds;
-
   /// List of subnet IDs in the VPC to which you want to connect your training job or model.
   final List<String> subnets;
 
@@ -16,10 +16,10 @@ class ModelVpcConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['securityGroupIds'] = securityGroupIds;
-    map['subnets'] = subnets;
-    return map;
+    return <String, dynamic>{
+      'securityGroupIds': securityGroupIds,
+      'subnets': subnets,
+    };
   }
 
   factory ModelVpcConfig.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class ModelVpcConfig {
     );
   }
 }
+

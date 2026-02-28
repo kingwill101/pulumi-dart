@@ -9,19 +9,15 @@ class VolumeSnapshotPolicy {
   /// Daily schedule policy.
   /// Structure is documented below.
   final VolumeSnapshotPolicyDailySchedule? dailySchedule;
-
   /// Enables automated snapshot creation according to defined schedule. Default is false.
   /// To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
   final bool? enabled;
-
   /// Hourly schedule policy.
   /// Structure is documented below.
   final VolumeSnapshotPolicyHourlySchedule? hourlySchedule;
-
   /// Monthly schedule policy.
   /// Structure is documented below.
   final VolumeSnapshotPolicyMonthlySchedule? monthlySchedule;
-
   /// Weekly schedule policy.
   /// Structure is documented below.
   final VolumeSnapshotPolicyWeeklySchedule? weeklySchedule;
@@ -41,49 +37,23 @@ class VolumeSnapshotPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dailyScheduleValue = dailySchedule;
-    if (dailyScheduleValue != null) {
-      map['dailySchedule'] = dailyScheduleValue.toMap();
-    }
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    final hourlyScheduleValue = hourlySchedule;
-    if (hourlyScheduleValue != null) {
-      map['hourlySchedule'] = hourlyScheduleValue.toMap();
-    }
-    final monthlyScheduleValue = monthlySchedule;
-    if (monthlyScheduleValue != null) {
-      map['monthlySchedule'] = monthlyScheduleValue.toMap();
-    }
-    final weeklyScheduleValue = weeklySchedule;
-    if (weeklyScheduleValue != null) {
-      map['weeklySchedule'] = weeklyScheduleValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'dailySchedule': ?dailySchedule == null ? null : dailySchedule!.toMap(),
+      'enabled': ?enabled,
+      'hourlySchedule': ?hourlySchedule == null ? null : hourlySchedule!.toMap(),
+      'monthlySchedule': ?monthlySchedule == null ? null : monthlySchedule!.toMap(),
+      'weeklySchedule': ?weeklySchedule == null ? null : weeklySchedule!.toMap(),
+    };
   }
 
   factory VolumeSnapshotPolicy.fromMap(Map<String, dynamic> map) {
     return VolumeSnapshotPolicy(
-      dailySchedule: map['dailySchedule'] == null
-          ? null
-          : VolumeSnapshotPolicyDailySchedule.fromMap(
-              (map['dailySchedule'] as Map).cast<String, dynamic>()),
+      dailySchedule: map['dailySchedule'] == null ? null : VolumeSnapshotPolicyDailySchedule.fromMap((map['dailySchedule'] as Map).cast<String, dynamic>()),
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      hourlySchedule: map['hourlySchedule'] == null
-          ? null
-          : VolumeSnapshotPolicyHourlySchedule.fromMap(
-              (map['hourlySchedule'] as Map).cast<String, dynamic>()),
-      monthlySchedule: map['monthlySchedule'] == null
-          ? null
-          : VolumeSnapshotPolicyMonthlySchedule.fromMap(
-              (map['monthlySchedule'] as Map).cast<String, dynamic>()),
-      weeklySchedule: map['weeklySchedule'] == null
-          ? null
-          : VolumeSnapshotPolicyWeeklySchedule.fromMap(
-              (map['weeklySchedule'] as Map).cast<String, dynamic>()),
+      hourlySchedule: map['hourlySchedule'] == null ? null : VolumeSnapshotPolicyHourlySchedule.fromMap((map['hourlySchedule'] as Map).cast<String, dynamic>()),
+      monthlySchedule: map['monthlySchedule'] == null ? null : VolumeSnapshotPolicyMonthlySchedule.fromMap((map['monthlySchedule'] as Map).cast<String, dynamic>()),
+      weeklySchedule: map['weeklySchedule'] == null ? null : VolumeSnapshotPolicyWeeklySchedule.fromMap((map['weeklySchedule'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

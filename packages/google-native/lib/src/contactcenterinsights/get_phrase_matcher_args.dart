@@ -19,19 +19,17 @@ class GetPhraseMatcherArgs {
     required String location,
     required String phraseMatcherId,
     String? project,
-  })  : location = pulumi.Input.asInput<String>(location),
-        phraseMatcherId = pulumi.Input.asInput<String>(phraseMatcherId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      phraseMatcherId = pulumi.Input.asInput<String>(phraseMatcherId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    map['phraseMatcherId'] = phraseMatcherId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'phraseMatcherId': phraseMatcherId,
+      'project': ?project,
+    };
   }
 
   factory GetPhraseMatcherArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetPhraseMatcherArgs {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetWorkloadIdentityPoolProviderSaml {
   /// SAML Identity provider configuration metadata xml doc.
   final String idpMetadataXml;
@@ -11,15 +12,15 @@ class GetWorkloadIdentityPoolProviderSaml {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['idpMetadataXml'] = idpMetadataXml;
-    return map;
+    return <String, dynamic>{
+      'idpMetadataXml': idpMetadataXml,
+    };
   }
 
-  factory GetWorkloadIdentityPoolProviderSaml.fromMap(
-      Map<String, dynamic> map) {
+  factory GetWorkloadIdentityPoolProviderSaml.fromMap(Map<String, dynamic> map) {
     return GetWorkloadIdentityPoolProviderSaml(
       idpMetadataXml: map['idpMetadataXml'] as String,
     );
   }
 }
+

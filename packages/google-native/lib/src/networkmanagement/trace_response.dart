@@ -8,7 +8,6 @@ import 'step_response.dart';
 class TraceResponse {
   /// Derived from the source and destination endpoints definition specified by user request, and validated by the data plane model. If there are multiple traces starting from different source locations, then the endpoint_info may be different between traces.
   final EndpointInfoResponse endpointInfo;
-
   /// A trace of a test contains multiple steps from the initial state to the final state (delivered, dropped, forwarded, or aborted). The steps are ordered by the processing sequence within the simulated network state machine. It is critical to preserve the order of the steps and avoid reordering or sorting them.
   final List<StepResponse> steps;
 
@@ -21,21 +20,17 @@ class TraceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['endpointInfo'] = endpointInfo.toMap();
-    map['steps'] = pulumi.Input.encodeList<StepResponse, Map<String, dynamic>>(
-        steps, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'endpointInfo': endpointInfo.toMap(),
+      'steps': pulumi.Input.encodeList<StepResponse, Map<String, dynamic>>(steps, (value) => value.toMap()),
+    };
   }
 
   factory TraceResponse.fromMap(Map<String, dynamic> map) {
     return TraceResponse(
-      endpointInfo: EndpointInfoResponse.fromMap(
-          (map['endpointInfo'] as Map).cast<String, dynamic>()),
-      steps: pulumi.Input.decodeList<StepResponse>(
-          map['steps'],
-          (value) =>
-              StepResponse.fromMap((value as Map).cast<String, dynamic>())),
+      endpointInfo: EndpointInfoResponse.fromMap((map['endpointInfo'] as Map).cast<String, dynamic>()),
+      steps: pulumi.Input.decodeList<StepResponse>(map['steps'], (value) => StepResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

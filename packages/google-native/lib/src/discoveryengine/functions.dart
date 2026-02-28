@@ -99,8 +99,7 @@ Future<GetSchemaResult> getSchema(
 /// Gets a Conversation.
 /// [args] Arguments passed to this invoke. {@macro pulumi_discoveryengine_v1beta_get_conversation_discoveryengine_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetConversationDiscoveryengineV1betaResult>
-    getConversationDiscoveryengineV1beta(
+Future<GetConversationDiscoveryengineV1betaResult> getConversationDiscoveryengineV1beta(
   GetConversationDiscoveryengineV1betaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

@@ -5,12 +5,9 @@ import 'web_acl_logging_configuration_logging_filter_filter_condition_label_name
 
 class WebAclLoggingConfigurationLoggingFilterFilterCondition {
   /// Configuration for a single action condition. See Action Condition below for more details.
-  final WebAclLoggingConfigurationLoggingFilterFilterConditionActionCondition?
-      actionCondition;
-
+  final WebAclLoggingConfigurationLoggingFilterFilterConditionActionCondition? actionCondition;
   /// Condition for a single label name. See Label Name Condition below for more details.
-  final WebAclLoggingConfigurationLoggingFilterFilterConditionLabelNameCondition?
-      labelNameCondition;
+  final WebAclLoggingConfigurationLoggingFilterFilterConditionLabelNameCondition? labelNameCondition;
 
   /// Creates a new [WebAclLoggingConfigurationLoggingFilterFilterCondition].
   /// [actionCondition] Configuration for a single action condition. See Action Condition below for more details.
@@ -21,30 +18,17 @@ class WebAclLoggingConfigurationLoggingFilterFilterCondition {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final actionConditionValue = actionCondition;
-    if (actionConditionValue != null) {
-      map['actionCondition'] = actionConditionValue.toMap();
-    }
-    final labelNameConditionValue = labelNameCondition;
-    if (labelNameConditionValue != null) {
-      map['labelNameCondition'] = labelNameConditionValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'actionCondition': ?actionCondition == null ? null : actionCondition!.toMap(),
+      'labelNameCondition': ?labelNameCondition == null ? null : labelNameCondition!.toMap(),
+    };
   }
 
-  factory WebAclLoggingConfigurationLoggingFilterFilterCondition.fromMap(
-      Map<String, dynamic> map) {
+  factory WebAclLoggingConfigurationLoggingFilterFilterCondition.fromMap(Map<String, dynamic> map) {
     return WebAclLoggingConfigurationLoggingFilterFilterCondition(
-      actionCondition: map['actionCondition'] == null
-          ? null
-          : WebAclLoggingConfigurationLoggingFilterFilterConditionActionCondition
-              .fromMap((map['actionCondition'] as Map).cast<String, dynamic>()),
-      labelNameCondition: map['labelNameCondition'] == null
-          ? null
-          : WebAclLoggingConfigurationLoggingFilterFilterConditionLabelNameCondition
-              .fromMap(
-                  (map['labelNameCondition'] as Map).cast<String, dynamic>()),
+      actionCondition: map['actionCondition'] == null ? null : WebAclLoggingConfigurationLoggingFilterFilterConditionActionCondition.fromMap((map['actionCondition'] as Map).cast<String, dynamic>()),
+      labelNameCondition: map['labelNameCondition'] == null ? null : WebAclLoggingConfigurationLoggingFilterFilterConditionLabelNameCondition.fromMap((map['labelNameCondition'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

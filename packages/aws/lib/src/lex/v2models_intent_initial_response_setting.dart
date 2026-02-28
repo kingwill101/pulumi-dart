@@ -8,13 +8,10 @@ import 'v2models_intent_initial_response_setting_next_step.dart';
 class V2modelsIntentInitialResponseSetting {
   /// Configuration block for the dialog code hook that is called by Amazon Lex at a step of the conversation. See `code_hook`.
   final V2modelsIntentInitialResponseSettingCodeHook? codeHook;
-
   /// Configuration block for conditional branches. Branches are evaluated in the order that they are entered in the list. The first branch with a condition that evaluates to true is executed. The last branch in the list is the default branch. The default branch should not have any condition expression. The default branch is executed if no other branch has a matching condition. See `conditional`.
   final V2modelsIntentInitialResponseSettingConditional? conditional;
-
   /// Configuration block for message groups that Amazon Lex uses to respond the user input. See `initial_response`.
   final V2modelsIntentInitialResponseSettingInitialResponse? initialResponse;
-
   /// Configuration block for the next step in the conversation. See `next_step`.
   final V2modelsIntentInitialResponseSettingNextStep? nextStep;
 
@@ -31,45 +28,21 @@ class V2modelsIntentInitialResponseSetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final codeHookValue = codeHook;
-    if (codeHookValue != null) {
-      map['codeHook'] = codeHookValue.toMap();
-    }
-    final conditionalValue = conditional;
-    if (conditionalValue != null) {
-      map['conditional'] = conditionalValue.toMap();
-    }
-    final initialResponseValue = initialResponse;
-    if (initialResponseValue != null) {
-      map['initialResponse'] = initialResponseValue.toMap();
-    }
-    final nextStepValue = nextStep;
-    if (nextStepValue != null) {
-      map['nextStep'] = nextStepValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'codeHook': ?codeHook == null ? null : codeHook!.toMap(),
+      'conditional': ?conditional == null ? null : conditional!.toMap(),
+      'initialResponse': ?initialResponse == null ? null : initialResponse!.toMap(),
+      'nextStep': ?nextStep == null ? null : nextStep!.toMap(),
+    };
   }
 
-  factory V2modelsIntentInitialResponseSetting.fromMap(
-      Map<String, dynamic> map) {
+  factory V2modelsIntentInitialResponseSetting.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentInitialResponseSetting(
-      codeHook: map['codeHook'] == null
-          ? null
-          : V2modelsIntentInitialResponseSettingCodeHook.fromMap(
-              (map['codeHook'] as Map).cast<String, dynamic>()),
-      conditional: map['conditional'] == null
-          ? null
-          : V2modelsIntentInitialResponseSettingConditional.fromMap(
-              (map['conditional'] as Map).cast<String, dynamic>()),
-      initialResponse: map['initialResponse'] == null
-          ? null
-          : V2modelsIntentInitialResponseSettingInitialResponse.fromMap(
-              (map['initialResponse'] as Map).cast<String, dynamic>()),
-      nextStep: map['nextStep'] == null
-          ? null
-          : V2modelsIntentInitialResponseSettingNextStep.fromMap(
-              (map['nextStep'] as Map).cast<String, dynamic>()),
+      codeHook: map['codeHook'] == null ? null : V2modelsIntentInitialResponseSettingCodeHook.fromMap((map['codeHook'] as Map).cast<String, dynamic>()),
+      conditional: map['conditional'] == null ? null : V2modelsIntentInitialResponseSettingConditional.fromMap((map['conditional'] as Map).cast<String, dynamic>()),
+      initialResponse: map['initialResponse'] == null ? null : V2modelsIntentInitialResponseSettingInitialResponse.fromMap((map['initialResponse'] as Map).cast<String, dynamic>()),
+      nextStep: map['nextStep'] == null ? null : V2modelsIntentInitialResponseSettingNextStep.fromMap((map['nextStep'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

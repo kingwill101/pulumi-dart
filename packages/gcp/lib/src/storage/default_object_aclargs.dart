@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefaultObjectACLArgs {
   /// The name of the bucket it applies to.
   final pulumi.Input<String> bucket;
-
   /// List of role/entity pairs in the form `ROLE:entity`.
   /// See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
   /// Omitting the field is the same as providing an empty list.
@@ -21,25 +20,22 @@ class DefaultObjectACLArgs {
   DefaultObjectACLArgs({
     required String bucket,
     List<String>? roleEntities,
-  })  : bucket = pulumi.Input.asInput<String>(bucket),
-        roleEntities = pulumi.Input.asOptionalInput<List<String>>(roleEntities);
+  }) :
+      bucket = pulumi.Input.asInput<String>(bucket),
+      roleEntities = pulumi.Input.asOptionalInput<List<String>>(roleEntities);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucket'] = bucket;
-    final roleEntitiesValue = roleEntities;
-    if (roleEntitiesValue != null) {
-      map['roleEntities'] = roleEntitiesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'bucket': bucket,
+      'roleEntities': ?roleEntities,
+    };
   }
 
   factory DefaultObjectACLArgs.fromMap(Map<String, dynamic> map) {
     return DefaultObjectACLArgs(
       bucket: map['bucket'] as String,
-      roleEntities: map['roleEntities'] == null
-          ? null
-          : (map['roleEntities'] as List).cast<String>(),
+      roleEntities: map['roleEntities'] == null ? null : (map['roleEntities'] as List).cast<String>(),
     );
   }
 }
+

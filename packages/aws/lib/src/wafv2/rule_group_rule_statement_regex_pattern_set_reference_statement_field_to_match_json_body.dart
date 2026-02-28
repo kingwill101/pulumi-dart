@@ -5,14 +5,10 @@ import 'rule_group_rule_statement_regex_pattern_set_reference_statement_field_to
 class RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJsonBody {
   /// What to do when JSON parsing fails. Defaults to evaluating up to the first parsing failure. Valid values are `EVALUATE_AS_STRING`, `MATCH` and `NO_MATCH`.
   final String? invalidFallbackBehavior;
-
   /// The patterns to look for in the JSON body. You must specify exactly one setting: either `all` or `included_paths`. See [JsonMatchPattern](https://docs.aws.amazon.com/waf/latest/APIReference/API_JsonMatchPattern.html) for details.
-  final RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJsonBodyMatchPattern
-      matchPattern;
-
+  final RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJsonBodyMatchPattern matchPattern;
   /// The parts of the JSON to match against using the `match_pattern`. Valid values are `ALL`, `KEY` and `VALUE`.
   final String matchScope;
-
   /// What to do if the body is larger than can be inspected. Valid values are `CONTINUE` (default), `MATCH` and `NO_MATCH`.
   final String? oversizeHandling;
 
@@ -29,33 +25,21 @@ class RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJsonBod
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final invalidFallbackBehaviorValue = invalidFallbackBehavior;
-    if (invalidFallbackBehaviorValue != null) {
-      map['invalidFallbackBehavior'] = invalidFallbackBehaviorValue;
-    }
-    map['matchPattern'] = matchPattern.toMap();
-    map['matchScope'] = matchScope;
-    final oversizeHandlingValue = oversizeHandling;
-    if (oversizeHandlingValue != null) {
-      map['oversizeHandling'] = oversizeHandlingValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'invalidFallbackBehavior': ?invalidFallbackBehavior,
+      'matchPattern': matchPattern.toMap(),
+      'matchScope': matchScope,
+      'oversizeHandling': ?oversizeHandling,
+    };
   }
 
-  factory RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJsonBody.fromMap(
-      Map<String, dynamic> map) {
+  factory RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJsonBody.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJsonBody(
-      invalidFallbackBehavior: map['invalidFallbackBehavior'] == null
-          ? null
-          : map['invalidFallbackBehavior'] as String,
-      matchPattern:
-          RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJsonBodyMatchPattern
-              .fromMap((map['matchPattern'] as Map).cast<String, dynamic>()),
+      invalidFallbackBehavior: map['invalidFallbackBehavior'] == null ? null : map['invalidFallbackBehavior'] as String,
+      matchPattern: RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJsonBodyMatchPattern.fromMap((map['matchPattern'] as Map).cast<String, dynamic>()),
       matchScope: map['matchScope'] as String,
-      oversizeHandling: map['oversizeHandling'] == null
-          ? null
-          : map['oversizeHandling'] as String,
+      oversizeHandling: map['oversizeHandling'] == null ? null : map['oversizeHandling'] as String,
     );
   }
 }
+

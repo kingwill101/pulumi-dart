@@ -983,58 +983,40 @@ class Connection extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
-
   /// Configuration for connections to Bitbucket Cloud.
   /// Structure is documented below.
-  late final pulumi.Output<ConnectionBitbucketCloudConfig?>
-      bitbucketCloudConfig;
-
+  late final pulumi.Output<ConnectionBitbucketCloudConfig?> bitbucketCloudConfig;
   /// Configuration for connections to Bitbucket Data Center.
   /// Structure is documented below.
-  late final pulumi.Output<ConnectionBitbucketDataCenterConfig?>
-      bitbucketDataCenterConfig;
-
+  late final pulumi.Output<ConnectionBitbucketDataCenterConfig?> bitbucketDataCenterConfig;
   /// Output only. Server assigned timestamp for when the connection was created.
   late final pulumi.Output<String> createTime;
-
   /// If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
   late final pulumi.Output<bool?> disabled;
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
-
   /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
   late final pulumi.Output<String> etag;
-
   /// Configuration for connections to github.com.
   /// Structure is documented below.
   late final pulumi.Output<ConnectionGithubConfig?> githubConfig;
-
   /// Configuration for connections to an instance of GitHub Enterprise.
   /// Structure is documented below.
-  late final pulumi.Output<ConnectionGithubEnterpriseConfig?>
-      githubEnterpriseConfig;
-
+  late final pulumi.Output<ConnectionGithubEnterpriseConfig?> githubEnterpriseConfig;
   /// Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
   /// Structure is documented below.
   late final pulumi.Output<ConnectionGitlabConfig?> gitlabConfig;
-
   /// Output only. Installation state of the Connection.
   /// Structure is documented below.
-  late final pulumi.Output<List<ConnectionInstallationState>>
-      installationStates;
-
+  late final pulumi.Output<List<ConnectionInstallationState>> installationStates;
   /// The location for the resource
   late final pulumi.Output<String> location;
-
   /// Immutable. The resource name of the connection.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Output only. Set to true when the connection is being set up or updated in the background.
   late final pulumi.Output<bool> reconciling;
-
   /// Output only. Server assigned timestamp for when the connection was updated.
   late final pulumi.Output<String> updateTime;
 
@@ -1053,23 +1035,16 @@ class Connection extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.annotations = registerOutput<Map<String, String>?>('annotations');
-    this.bitbucketCloudConfig =
-        registerOutput<ConnectionBitbucketCloudConfig?>('bitbucketCloudConfig');
-    this.bitbucketDataCenterConfig =
-        registerOutput<ConnectionBitbucketDataCenterConfig?>(
-            'bitbucketDataCenterConfig');
+    this.bitbucketCloudConfig = registerOutput<ConnectionBitbucketCloudConfig?>('bitbucketCloudConfig');
+    this.bitbucketDataCenterConfig = registerOutput<ConnectionBitbucketDataCenterConfig?>('bitbucketDataCenterConfig');
     this.createTime = registerOutput<String>('createTime');
     this.disabled = registerOutput<bool?>('disabled');
-    this.effectiveAnnotations =
-        registerOutput<Map<String, String>>('effectiveAnnotations');
+    this.effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     this.etag = registerOutput<String>('etag');
     this.githubConfig = registerOutput<ConnectionGithubConfig?>('githubConfig');
-    this.githubEnterpriseConfig =
-        registerOutput<ConnectionGithubEnterpriseConfig?>(
-            'githubEnterpriseConfig');
+    this.githubEnterpriseConfig = registerOutput<ConnectionGithubEnterpriseConfig?>('githubEnterpriseConfig');
     this.gitlabConfig = registerOutput<ConnectionGitlabConfig?>('gitlabConfig');
-    this.installationStates =
-        registerOutput<List<ConnectionInstallationState>>('installationStates');
+    this.installationStates = registerOutput<List<ConnectionInstallationState>>('installationStates');
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');

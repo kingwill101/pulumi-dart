@@ -117,24 +117,18 @@ import 'ingestion_args.dart';
 class Ingestion extends pulumi.CustomResource {
   /// ARN of the Ingestion.
   late final pulumi.Output<String> arn;
-
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   late final pulumi.Output<String> awsAccountId;
-
   /// ID of the dataset used in the ingestion.
   late final pulumi.Output<String> dataSetId;
-
   /// ID for the ingestion.
   late final pulumi.Output<String> ingestionId;
-
   /// Ingestion status.
   late final pulumi.Output<String> ingestionStatus;
-
   /// Type of ingestion to be created. Valid values are `INCREMENTAL_REFRESH` and `FULL_REFRESH`.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> ingestionType;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

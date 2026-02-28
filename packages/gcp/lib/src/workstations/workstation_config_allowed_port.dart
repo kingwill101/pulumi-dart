@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WorkstationConfigAllowedPort {
   /// Starting port number for the current range of ports. Valid ports are 22, 80, and ports within the range 1024-65535.
   final int? first;
-
   /// Ending port number for the current range of ports. Valid ports are 22, 80, and ports within the range 1024-65535.
   final int? last;
 
@@ -16,16 +16,10 @@ class WorkstationConfigAllowedPort {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final firstValue = first;
-    if (firstValue != null) {
-      map['first'] = firstValue;
-    }
-    final lastValue = last;
-    if (lastValue != null) {
-      map['last'] = lastValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'first': ?first,
+      'last': ?last,
+    };
   }
 
   factory WorkstationConfigAllowedPort.fromMap(Map<String, dynamic> map) {
@@ -35,3 +29,4 @@ class WorkstationConfigAllowedPort {
     );
   }
 }
+

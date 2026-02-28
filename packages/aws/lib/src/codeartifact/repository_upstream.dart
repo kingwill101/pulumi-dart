@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RepositoryUpstream {
   /// The name of an upstream repository.
   final String repositoryName;
@@ -11,9 +12,9 @@ class RepositoryUpstream {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['repositoryName'] = repositoryName;
-    return map;
+    return <String, dynamic>{
+      'repositoryName': repositoryName,
+    };
   }
 
   factory RepositoryUpstream.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class RepositoryUpstream {
     );
   }
 }
+

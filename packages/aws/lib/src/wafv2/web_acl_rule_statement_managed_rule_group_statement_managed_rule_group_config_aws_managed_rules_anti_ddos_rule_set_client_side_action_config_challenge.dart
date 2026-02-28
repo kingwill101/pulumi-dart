@@ -5,13 +5,9 @@ import 'web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_c
 
 class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfigChallenge {
   /// Block for the list of the regular expressions to match against the web request URI, used to identify requests that can't handle a silent browser challenge.
-  final List<
-          WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfigChallengeExemptUriRegularExpression>?
-      exemptUriRegularExpressions;
-
+  final List<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfigChallengeExemptUriRegularExpression>? exemptUriRegularExpressions;
   /// Sensitivity that the rule group rule ChallengeDDoSRequests uses when matching against the DDoS suspicion labeling on a request. Valid values are `LOW`, `MEDIUM` and `HIGH` (Default).
   final String? sensitivity;
-
   /// Configuration whether to use the `AWSManagedRulesAntiDDoSRuleSet` rules `ChallengeAllDuringEvent` and `ChallengeDDoSRequests` in the rule group evaluation. Valid values are `ENABLED` and `DISABLED`.
   final String usageOfAction;
 
@@ -26,36 +22,19 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final exemptUriRegularExpressionsValue = exemptUriRegularExpressions;
-    if (exemptUriRegularExpressionsValue != null) {
-      map['exemptUriRegularExpressions'] = pulumi.Input.encodeList<
-              WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfigChallengeExemptUriRegularExpression,
-              Map<String, dynamic>>(
-          exemptUriRegularExpressionsValue, (value) => value.toMap());
-    }
-    final sensitivityValue = sensitivity;
-    if (sensitivityValue != null) {
-      map['sensitivity'] = sensitivityValue;
-    }
-    map['usageOfAction'] = usageOfAction;
-    return map;
+    return <String, dynamic>{
+      'exemptUriRegularExpressions': ?exemptUriRegularExpressions == null ? null : pulumi.Input.encodeList<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfigChallengeExemptUriRegularExpression, Map<String, dynamic>>(exemptUriRegularExpressions!, (value) => value.toMap()),
+      'sensitivity': ?sensitivity,
+      'usageOfAction': usageOfAction,
+    };
   }
 
-  factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfigChallenge.fromMap(
-      Map<String, dynamic> map) {
+  factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfigChallenge.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfigChallenge(
-      exemptUriRegularExpressions: map['exemptUriRegularExpressions'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfigChallengeExemptUriRegularExpression>(
-              map['exemptUriRegularExpressions'],
-              (value) =>
-                  WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfigChallengeExemptUriRegularExpression
-                      .fromMap((value as Map).cast<String, dynamic>())),
-      sensitivity:
-          map['sensitivity'] == null ? null : map['sensitivity'] as String,
+      exemptUriRegularExpressions: map['exemptUriRegularExpressions'] == null ? null : pulumi.Input.decodeList<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfigChallengeExemptUriRegularExpression>(map['exemptUriRegularExpressions'], (value) => WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfigChallengeExemptUriRegularExpression.fromMap((value as Map).cast<String, dynamic>())),
+      sensitivity: map['sensitivity'] == null ? null : map['sensitivity'] as String,
       usageOfAction: map['usageOfAction'] as String,
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWorkspacesArgs {
   /// Limits results to workspaces with aliases that begin with this value.
   final pulumi.Input<String>? aliasPrefix;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -19,27 +18,22 @@ class GetWorkspacesArgs {
   GetWorkspacesArgs({
     String? aliasPrefix,
     String? region,
-  })  : aliasPrefix = pulumi.Input.asOptionalInput<String>(aliasPrefix),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      aliasPrefix = pulumi.Input.asOptionalInput<String>(aliasPrefix),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final aliasPrefixValue = aliasPrefix;
-    if (aliasPrefixValue != null) {
-      map['aliasPrefix'] = aliasPrefixValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'aliasPrefix': ?aliasPrefix,
+      'region': ?region,
+    };
   }
 
   factory GetWorkspacesArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkspacesArgs(
-      aliasPrefix:
-          map['aliasPrefix'] == null ? null : map['aliasPrefix'] as String,
+      aliasPrefix: map['aliasPrefix'] == null ? null : map['aliasPrefix'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

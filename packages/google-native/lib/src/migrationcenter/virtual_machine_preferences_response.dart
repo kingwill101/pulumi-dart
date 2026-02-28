@@ -9,22 +9,16 @@ import 'vmware_engine_preferences_response.dart';
 class VirtualMachinePreferencesResponse {
   /// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
   final String commitmentPlan;
-
   /// Compute Engine preferences concern insights and recommendations for Compute Engine target.
   final ComputeEnginePreferencesResponse computeEnginePreferences;
-
   /// Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with.
   final RegionPreferencesResponse regionPreferences;
-
   /// Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
   final String sizingOptimizationStrategy;
-
   /// Preferences concerning Sole Tenant nodes and virtual machines.
   final SoleTenancyPreferencesResponse soleTenancyPreferences;
-
   /// Target product for assets using this preference set. Specify either target product or business goal, but not both.
   final String targetProduct;
-
   /// Preferences concerning insights and recommendations for Google Cloud VMware Engine.
   final VmwareEnginePreferencesResponse vmwareEnginePreferences;
 
@@ -47,30 +41,27 @@ class VirtualMachinePreferencesResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['commitmentPlan'] = commitmentPlan;
-    map['computeEnginePreferences'] = computeEnginePreferences.toMap();
-    map['regionPreferences'] = regionPreferences.toMap();
-    map['sizingOptimizationStrategy'] = sizingOptimizationStrategy;
-    map['soleTenancyPreferences'] = soleTenancyPreferences.toMap();
-    map['targetProduct'] = targetProduct;
-    map['vmwareEnginePreferences'] = vmwareEnginePreferences.toMap();
-    return map;
+    return <String, dynamic>{
+      'commitmentPlan': commitmentPlan,
+      'computeEnginePreferences': computeEnginePreferences.toMap(),
+      'regionPreferences': regionPreferences.toMap(),
+      'sizingOptimizationStrategy': sizingOptimizationStrategy,
+      'soleTenancyPreferences': soleTenancyPreferences.toMap(),
+      'targetProduct': targetProduct,
+      'vmwareEnginePreferences': vmwareEnginePreferences.toMap(),
+    };
   }
 
   factory VirtualMachinePreferencesResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePreferencesResponse(
       commitmentPlan: map['commitmentPlan'] as String,
-      computeEnginePreferences: ComputeEnginePreferencesResponse.fromMap(
-          (map['computeEnginePreferences'] as Map).cast<String, dynamic>()),
-      regionPreferences: RegionPreferencesResponse.fromMap(
-          (map['regionPreferences'] as Map).cast<String, dynamic>()),
+      computeEnginePreferences: ComputeEnginePreferencesResponse.fromMap((map['computeEnginePreferences'] as Map).cast<String, dynamic>()),
+      regionPreferences: RegionPreferencesResponse.fromMap((map['regionPreferences'] as Map).cast<String, dynamic>()),
       sizingOptimizationStrategy: map['sizingOptimizationStrategy'] as String,
-      soleTenancyPreferences: SoleTenancyPreferencesResponse.fromMap(
-          (map['soleTenancyPreferences'] as Map).cast<String, dynamic>()),
+      soleTenancyPreferences: SoleTenancyPreferencesResponse.fromMap((map['soleTenancyPreferences'] as Map).cast<String, dynamic>()),
       targetProduct: map['targetProduct'] as String,
-      vmwareEnginePreferences: VmwareEnginePreferencesResponse.fromMap(
-          (map['vmwareEnginePreferences'] as Map).cast<String, dynamic>()),
+      vmwareEnginePreferences: VmwareEnginePreferencesResponse.fromMap((map['vmwareEnginePreferences'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

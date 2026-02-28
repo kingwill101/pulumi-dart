@@ -12,7 +12,7 @@ enum RegionInstanceGroupManagerFailoverAction {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown RegionInstanceGroupManagerFailoverAction value: $value');
+    throw ArgumentError('Unknown RegionInstanceGroupManagerFailoverAction value: $value');
   }
 }
+

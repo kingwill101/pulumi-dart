@@ -11,14 +11,11 @@ class BillingAccountBucketLinkArgs {
   final pulumi.Input<Map<String, dynamic>>? bigqueryDataset;
   final pulumi.Input<String> billingAccountId;
   final pulumi.Input<String> bucketId;
-
   /// Describes this link.The maximum length of the description is 8000 characters.
   final pulumi.Input<String>? description;
-
   /// Required. The ID to use for the link. The link_id can have up to 100 characters. A valid link_id must only have alphanumeric characters and underscores within it.
   final pulumi.Input<String> linkId;
   final pulumi.Input<String>? location;
-
   /// The resource name of the link. The name can have up to 100 characters. A valid link id (at the end of the link name) must only have alphanumeric characters and underscores within it. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" For example:`projects/my-project/locations/global/buckets/my-bucket/links/my_link
   final pulumi.Input<String>? name;
 
@@ -38,51 +35,37 @@ class BillingAccountBucketLinkArgs {
     required String linkId,
     String? location,
     String? name,
-  })  : bigqueryDataset =
-            pulumi.Input.asOptionalInput<Map<String, dynamic>>(bigqueryDataset),
-        billingAccountId = pulumi.Input.asInput<String>(billingAccountId),
-        bucketId = pulumi.Input.asInput<String>(bucketId),
-        description = pulumi.Input.asOptionalInput<String>(description),
-        linkId = pulumi.Input.asInput<String>(linkId),
-        location = pulumi.Input.asOptionalInput<String>(location),
-        name = pulumi.Input.asOptionalInput<String>(name);
+  }) :
+      bigqueryDataset = pulumi.Input.asOptionalInput<Map<String, dynamic>>(bigqueryDataset),
+      billingAccountId = pulumi.Input.asInput<String>(billingAccountId),
+      bucketId = pulumi.Input.asInput<String>(bucketId),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      linkId = pulumi.Input.asInput<String>(linkId),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final bigqueryDatasetValue = bigqueryDataset;
-    if (bigqueryDatasetValue != null) {
-      map['bigqueryDataset'] = bigqueryDatasetValue;
-    }
-    map['billingAccountId'] = billingAccountId;
-    map['bucketId'] = bucketId;
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    map['linkId'] = linkId;
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'bigqueryDataset': ?bigqueryDataset,
+      'billingAccountId': billingAccountId,
+      'bucketId': bucketId,
+      'description': ?description,
+      'linkId': linkId,
+      'location': ?location,
+      'name': ?name,
+    };
   }
 
   factory BillingAccountBucketLinkArgs.fromMap(Map<String, dynamic> map) {
     return BillingAccountBucketLinkArgs(
-      bigqueryDataset: map['bigqueryDataset'] == null
-          ? null
-          : (map['bigqueryDataset'] as Map).cast<String, dynamic>(),
+      bigqueryDataset: map['bigqueryDataset'] == null ? null : (map['bigqueryDataset'] as Map).cast<String, dynamic>(),
       billingAccountId: map['billingAccountId'] as String,
       bucketId: map['bucketId'] as String,
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       linkId: map['linkId'] as String,
       location: map['location'] == null ? null : map['location'] as String,
       name: map['name'] == null ? null : map['name'] as String,
     );
   }
 }
+

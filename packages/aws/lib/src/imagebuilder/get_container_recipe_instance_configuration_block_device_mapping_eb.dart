@@ -1,27 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetContainerRecipeInstanceConfigurationBlockDeviceMappingEb {
   /// Whether to delete the volume on termination. Defaults to unset, which is the value inherited from the parent image.
   final bool deleteOnTermination;
-
   /// Whether to encrypt the volume. Defaults to unset, which is the value inherited from the parent image.
   final bool encrypted;
-
   /// Number of Input/Output (I/O) operations per second to provision for an `io1` or `io2` volume.
   final int iops;
-
   /// KMS key used to encrypt the container image.
   final String kmsKeyId;
-
   /// Identifier of the EC2 Volume Snapshot.
   final String snapshotId;
-
   /// For GP3 volumes only. The throughput in MiB/s that the volume supports.
   final int throughput;
-
   /// Size of the volume, in GiB.
   final int volumeSize;
-
   /// Type of the volume. For example, `gp2` or `io2`.
   final String volumeType;
 
@@ -46,20 +40,19 @@ class GetContainerRecipeInstanceConfigurationBlockDeviceMappingEb {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['deleteOnTermination'] = deleteOnTermination;
-    map['encrypted'] = encrypted;
-    map['iops'] = iops;
-    map['kmsKeyId'] = kmsKeyId;
-    map['snapshotId'] = snapshotId;
-    map['throughput'] = throughput;
-    map['volumeSize'] = volumeSize;
-    map['volumeType'] = volumeType;
-    return map;
+    return <String, dynamic>{
+      'deleteOnTermination': deleteOnTermination,
+      'encrypted': encrypted,
+      'iops': iops,
+      'kmsKeyId': kmsKeyId,
+      'snapshotId': snapshotId,
+      'throughput': throughput,
+      'volumeSize': volumeSize,
+      'volumeType': volumeType,
+    };
   }
 
-  factory GetContainerRecipeInstanceConfigurationBlockDeviceMappingEb.fromMap(
-      Map<String, dynamic> map) {
+  factory GetContainerRecipeInstanceConfigurationBlockDeviceMappingEb.fromMap(Map<String, dynamic> map) {
     return GetContainerRecipeInstanceConfigurationBlockDeviceMappingEb(
       deleteOnTermination: map['deleteOnTermination'] as bool,
       encrypted: map['encrypted'] as bool,
@@ -72,3 +65,4 @@ class GetContainerRecipeInstanceConfigurationBlockDeviceMappingEb {
     );
   }
 }
+

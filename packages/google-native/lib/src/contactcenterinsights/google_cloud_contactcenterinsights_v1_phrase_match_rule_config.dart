@@ -14,21 +14,15 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final exactMatchConfigValue = exactMatchConfig;
-    if (exactMatchConfigValue != null) {
-      map['exactMatchConfig'] = exactMatchConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'exactMatchConfig': ?exactMatchConfig == null ? null : exactMatchConfig!.toMap(),
+    };
   }
 
-  factory GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig(
-      exactMatchConfig: map['exactMatchConfig'] == null
-          ? null
-          : GoogleCloudContactcenterinsightsV1ExactMatchConfig.fromMap(
-              (map['exactMatchConfig'] as Map).cast<String, dynamic>()),
+      exactMatchConfig: map['exactMatchConfig'] == null ? null : GoogleCloudContactcenterinsightsV1ExactMatchConfig.fromMap((map['exactMatchConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

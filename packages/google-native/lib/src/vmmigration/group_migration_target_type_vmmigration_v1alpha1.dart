@@ -13,7 +13,7 @@ enum GroupMigrationTargetTypeVmmigrationV1alpha1 {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GroupMigrationTargetTypeVmmigrationV1alpha1 value: $value');
+    throw ArgumentError('Unknown GroupMigrationTargetTypeVmmigrationV1alpha1 value: $value');
   }
 }
+

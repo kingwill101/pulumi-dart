@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
   /// Mode for how the GPU driver is installed.
   /// Accepted values are:
@@ -16,15 +17,15 @@ class ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gpuDriverVersion'] = gpuDriverVersion;
-    return map;
+    return <String, dynamic>{
+      'gpuDriverVersion': gpuDriverVersion,
+    };
   }
 
-  factory ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig(
       gpuDriverVersion: map['gpuDriverVersion'] as String,
     );
   }
 }
+

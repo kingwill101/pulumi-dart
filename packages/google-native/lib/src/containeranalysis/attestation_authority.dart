@@ -13,20 +13,15 @@ class AttestationAuthority {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final hintValue = hint;
-    if (hintValue != null) {
-      map['hint'] = hintValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'hint': ?hint == null ? null : hint!.toMap(),
+    };
   }
 
   factory AttestationAuthority.fromMap(Map<String, dynamic> map) {
     return AttestationAuthority(
-      hint: map['hint'] == null
-          ? null
-          : AttestationAuthorityHint.fromMap(
-              (map['hint'] as Map).cast<String, dynamic>()),
+      hint: map['hint'] == null ? null : AttestationAuthorityHint.fromMap((map['hint'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

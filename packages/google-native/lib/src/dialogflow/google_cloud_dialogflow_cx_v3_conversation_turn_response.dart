@@ -7,10 +7,8 @@ import 'google_cloud_dialogflow_cx_v3_conversation_turn_virtual_agent_output_res
 class GoogleCloudDialogflowCxV3ConversationTurnResponse {
   /// The user input.
   final GoogleCloudDialogflowCxV3ConversationTurnUserInputResponse userInput;
-
   /// The virtual agent output.
-  final GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputResponse
-      virtualAgentOutput;
+  final GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputResponse virtualAgentOutput;
 
   /// Creates a new [GoogleCloudDialogflowCxV3ConversationTurnResponse].
   /// [userInput] The user input.
@@ -21,22 +19,17 @@ class GoogleCloudDialogflowCxV3ConversationTurnResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['userInput'] = userInput.toMap();
-    map['virtualAgentOutput'] = virtualAgentOutput.toMap();
-    return map;
+    return <String, dynamic>{
+      'userInput': userInput.toMap(),
+      'virtualAgentOutput': virtualAgentOutput.toMap(),
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3ConversationTurnResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3ConversationTurnResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3ConversationTurnResponse(
-      userInput:
-          GoogleCloudDialogflowCxV3ConversationTurnUserInputResponse.fromMap(
-              (map['userInput'] as Map).cast<String, dynamic>()),
-      virtualAgentOutput:
-          GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputResponse
-              .fromMap(
-                  (map['virtualAgentOutput'] as Map).cast<String, dynamic>()),
+      userInput: GoogleCloudDialogflowCxV3ConversationTurnUserInputResponse.fromMap((map['userInput'] as Map).cast<String, dynamic>()),
+      virtualAgentOutput: GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputResponse.fromMap((map['virtualAgentOutput'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

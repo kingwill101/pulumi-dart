@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for resources used by Airflow web server.
 class WebServerResource {
   /// Optional. CPU request and limit for Airflow web server.
   final double? cpu;
-
   /// Optional. Memory (GB) request and limit for Airflow web server.
   final double? memoryGb;
-
   /// Optional. Storage (GB) request and limit for Airflow web server.
   final double? storageGb;
 
@@ -22,20 +21,11 @@ class WebServerResource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cpuValue = cpu;
-    if (cpuValue != null) {
-      map['cpu'] = cpuValue;
-    }
-    final memoryGbValue = memoryGb;
-    if (memoryGbValue != null) {
-      map['memoryGb'] = memoryGbValue;
-    }
-    final storageGbValue = storageGb;
-    if (storageGbValue != null) {
-      map['storageGb'] = storageGbValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cpu': ?cpu,
+      'memoryGb': ?memoryGb,
+      'storageGb': ?storageGb,
+    };
   }
 
   factory WebServerResource.fromMap(Map<String, dynamic> map) {
@@ -46,3 +36,4 @@ class WebServerResource {
     );
   }
 }
+

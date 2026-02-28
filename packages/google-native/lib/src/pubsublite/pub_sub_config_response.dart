@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for exporting to a Pub/Sub topic.
 class PubSubConfigResponse {
   /// The name of the Pub/Sub topic. Structured like: projects/{project_number}/topics/{topic_id}. The topic may be changed.
@@ -12,9 +13,9 @@ class PubSubConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['topic'] = topic;
-    return map;
+    return <String, dynamic>{
+      'topic': topic,
+    };
   }
 
   factory PubSubConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class PubSubConfigResponse {
     );
   }
 }
+

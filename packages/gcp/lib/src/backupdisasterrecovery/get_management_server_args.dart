@@ -13,12 +13,13 @@ class GetManagementServerArgs {
   /// [location] Required.
   GetManagementServerArgs({
     required String location,
-  }) : location = pulumi.Input.asInput<String>(location);
+  }) :
+      location = pulumi.Input.asInput<String>(location);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+    };
   }
 
   factory GetManagementServerArgs.fromMap(Map<String, dynamic> map) {
@@ -27,3 +28,4 @@ class GetManagementServerArgs {
     );
   }
 }
+

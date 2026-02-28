@@ -6,7 +6,6 @@ import 'workflow_template_parameter_validation_values.dart';
 class WorkflowTemplateParameterValidation {
   /// Validation based on regular expressions.
   final WorkflowTemplateParameterValidationRegex? regex;
-
   /// Validation based on a list of allowed values.
   final WorkflowTemplateParameterValidationValues? values;
 
@@ -19,29 +18,17 @@ class WorkflowTemplateParameterValidation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final regexValue = regex;
-    if (regexValue != null) {
-      map['regex'] = regexValue.toMap();
-    }
-    final valuesValue = values;
-    if (valuesValue != null) {
-      map['values'] = valuesValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'regex': ?regex == null ? null : regex!.toMap(),
+      'values': ?values == null ? null : values!.toMap(),
+    };
   }
 
-  factory WorkflowTemplateParameterValidation.fromMap(
-      Map<String, dynamic> map) {
+  factory WorkflowTemplateParameterValidation.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplateParameterValidation(
-      regex: map['regex'] == null
-          ? null
-          : WorkflowTemplateParameterValidationRegex.fromMap(
-              (map['regex'] as Map).cast<String, dynamic>()),
-      values: map['values'] == null
-          ? null
-          : WorkflowTemplateParameterValidationValues.fromMap(
-              (map['values'] as Map).cast<String, dynamic>()),
+      regex: map['regex'] == null ? null : WorkflowTemplateParameterValidationRegex.fromMap((map['regex'] as Map).cast<String, dynamic>()),
+      values: map['values'] == null ? null : WorkflowTemplateParameterValidationValues.fromMap((map['values'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

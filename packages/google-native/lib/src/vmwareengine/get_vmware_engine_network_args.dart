@@ -19,20 +19,17 @@ class GetVmwareEngineNetworkArgs {
     required String location,
     String? project,
     required String vmwareEngineNetworkId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        vmwareEngineNetworkId =
-            pulumi.Input.asInput<String>(vmwareEngineNetworkId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      vmwareEngineNetworkId = pulumi.Input.asInput<String>(vmwareEngineNetworkId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['vmwareEngineNetworkId'] = vmwareEngineNetworkId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+      'vmwareEngineNetworkId': vmwareEngineNetworkId,
+    };
   }
 
   factory GetVmwareEngineNetworkArgs.fromMap(Map<String, dynamic> map) {
@@ -43,3 +40,4 @@ class GetVmwareEngineNetworkArgs {
     );
   }
 }
+

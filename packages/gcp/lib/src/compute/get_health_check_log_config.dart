@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetHealthCheckLogConfig {
   /// Indicates whether or not to export logs. This is false by default,
   /// which means no health check logging will be done.
@@ -12,9 +13,9 @@ class GetHealthCheckLogConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enable'] = enable;
-    return map;
+    return <String, dynamic>{
+      'enable': enable,
+    };
   }
 
   factory GetHealthCheckLogConfig.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class GetHealthCheckLogConfig {
     );
   }
 }
+

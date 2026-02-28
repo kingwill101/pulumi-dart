@@ -9,15 +9,13 @@ enum AuthorizationLoggingOptionsPermissionTypeComputeV1 {
   const AuthorizationLoggingOptionsPermissionTypeComputeV1(this.value);
   final String value;
 
-  static AuthorizationLoggingOptionsPermissionTypeComputeV1 fromValue(
-      String value) {
-    for (final item
-        in AuthorizationLoggingOptionsPermissionTypeComputeV1.values) {
+  static AuthorizationLoggingOptionsPermissionTypeComputeV1 fromValue(String value) {
+    for (final item in AuthorizationLoggingOptionsPermissionTypeComputeV1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown AuthorizationLoggingOptionsPermissionTypeComputeV1 value: $value');
+    throw ArgumentError('Unknown AuthorizationLoggingOptionsPermissionTypeComputeV1 value: $value');
   }
 }
+

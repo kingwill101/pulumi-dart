@@ -8,49 +8,34 @@ import 'guest_os_feature_response_compute_beta.dart';
 class SavedAttachedDiskResponseComputeBeta {
   /// Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
   final bool autoDelete;
-
   /// Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
   final bool boot;
-
   /// Specifies the name of the disk attached to the source instance.
   final String deviceName;
-
   /// The encryption key for the disk.
   final CustomerEncryptionKeyResponseComputeBeta diskEncryptionKey;
-
   /// The size of the disk in base-2 GB.
   final String diskSizeGb;
-
   /// URL of the disk type resource. For example: projects/project /zones/zone/diskTypes/pd-standard or pd-ssd
   final String diskType;
-
   /// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
   final List<GuestOsFeatureResponseComputeBeta> guestOsFeatures;
-
   /// Specifies zero-based index of the disk that is attached to the source instance.
   final int index;
-
   /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME.
   final String interface;
-
   /// Type of the resource. Always compute#attachedDisk for attached disks.
   final String kind;
-
   /// Any valid publicly visible licenses.
   final List<String> licenses;
-
   /// The mode in which this disk is attached to the source instance, either READ_WRITE or READ_ONLY.
   final String mode;
-
   /// Specifies a URL of the disk attached to the source instance.
   final String source;
-
   /// A size of the storage used by the disk's snapshot by this machine image.
   final String storageBytes;
-
   /// An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
   final String storageBytesStatus;
-
   /// Specifies the type of the attached disk, either SCRATCH or PERSISTENT.
   final String type;
 
@@ -91,43 +76,35 @@ class SavedAttachedDiskResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['autoDelete'] = autoDelete;
-    map['boot'] = boot;
-    map['deviceName'] = deviceName;
-    map['diskEncryptionKey'] = diskEncryptionKey.toMap();
-    map['diskSizeGb'] = diskSizeGb;
-    map['diskType'] = diskType;
-    map['guestOsFeatures'] = pulumi.Input.encodeList<
-        GuestOsFeatureResponseComputeBeta,
-        Map<String, dynamic>>(guestOsFeatures, (value) => value.toMap());
-    map['index'] = index;
-    map['interface'] = interface;
-    map['kind'] = kind;
-    map['licenses'] = licenses;
-    map['mode'] = mode;
-    map['source'] = source;
-    map['storageBytes'] = storageBytes;
-    map['storageBytesStatus'] = storageBytesStatus;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'autoDelete': autoDelete,
+      'boot': boot,
+      'deviceName': deviceName,
+      'diskEncryptionKey': diskEncryptionKey.toMap(),
+      'diskSizeGb': diskSizeGb,
+      'diskType': diskType,
+      'guestOsFeatures': pulumi.Input.encodeList<GuestOsFeatureResponseComputeBeta, Map<String, dynamic>>(guestOsFeatures, (value) => value.toMap()),
+      'index': index,
+      'interface': interface,
+      'kind': kind,
+      'licenses': licenses,
+      'mode': mode,
+      'source': source,
+      'storageBytes': storageBytes,
+      'storageBytesStatus': storageBytesStatus,
+      'type': type,
+    };
   }
 
-  factory SavedAttachedDiskResponseComputeBeta.fromMap(
-      Map<String, dynamic> map) {
+  factory SavedAttachedDiskResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return SavedAttachedDiskResponseComputeBeta(
       autoDelete: map['autoDelete'] as bool,
       boot: map['boot'] as bool,
       deviceName: map['deviceName'] as String,
-      diskEncryptionKey: CustomerEncryptionKeyResponseComputeBeta.fromMap(
-          (map['diskEncryptionKey'] as Map).cast<String, dynamic>()),
+      diskEncryptionKey: CustomerEncryptionKeyResponseComputeBeta.fromMap((map['diskEncryptionKey'] as Map).cast<String, dynamic>()),
       diskSizeGb: map['diskSizeGb'] as String,
       diskType: map['diskType'] as String,
-      guestOsFeatures:
-          pulumi.Input.decodeList<GuestOsFeatureResponseComputeBeta>(
-              map['guestOsFeatures'],
-              (value) => GuestOsFeatureResponseComputeBeta.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      guestOsFeatures: pulumi.Input.decodeList<GuestOsFeatureResponseComputeBeta>(map['guestOsFeatures'], (value) => GuestOsFeatureResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())),
       index: map['index'] as int,
       interface: map['interface'] as String,
       kind: map['kind'] as String,
@@ -140,3 +117,4 @@ class SavedAttachedDiskResponseComputeBeta {
     );
   }
 }
+

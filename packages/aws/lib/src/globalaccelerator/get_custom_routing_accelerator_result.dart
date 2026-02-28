@@ -11,7 +11,6 @@ class GetCustomRoutingAcceleratorResult {
   final String dnsName;
   final bool enabled;
   final String hostedZoneId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String ipAddressType;
@@ -44,41 +43,33 @@ class GetCustomRoutingAcceleratorResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['attributes'] = pulumi.Input.encodeList<
-        GetCustomRoutingAcceleratorAttribute,
-        Map<String, dynamic>>(attributes, (value) => value.toMap());
-    map['dnsName'] = dnsName;
-    map['enabled'] = enabled;
-    map['hostedZoneId'] = hostedZoneId;
-    map['id'] = id;
-    map['ipAddressType'] = ipAddressType;
-    map['ipSets'] = pulumi.Input.encodeList<GetCustomRoutingAcceleratorIpSet,
-        Map<String, dynamic>>(ipSets, (value) => value.toMap());
-    map['name'] = name;
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'attributes': pulumi.Input.encodeList<GetCustomRoutingAcceleratorAttribute, Map<String, dynamic>>(attributes, (value) => value.toMap()),
+      'dnsName': dnsName,
+      'enabled': enabled,
+      'hostedZoneId': hostedZoneId,
+      'id': id,
+      'ipAddressType': ipAddressType,
+      'ipSets': pulumi.Input.encodeList<GetCustomRoutingAcceleratorIpSet, Map<String, dynamic>>(ipSets, (value) => value.toMap()),
+      'name': name,
+      'tags': tags,
+    };
   }
 
   factory GetCustomRoutingAcceleratorResult.fromMap(Map<String, dynamic> map) {
     return GetCustomRoutingAcceleratorResult(
       arn: map['arn'] as String,
-      attributes: pulumi.Input.decodeList<GetCustomRoutingAcceleratorAttribute>(
-          map['attributes'],
-          (value) => GetCustomRoutingAcceleratorAttribute.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      attributes: pulumi.Input.decodeList<GetCustomRoutingAcceleratorAttribute>(map['attributes'], (value) => GetCustomRoutingAcceleratorAttribute.fromMap((value as Map).cast<String, dynamic>())),
       dnsName: map['dnsName'] as String,
       enabled: map['enabled'] as bool,
       hostedZoneId: map['hostedZoneId'] as String,
       id: map['id'] as String,
       ipAddressType: map['ipAddressType'] as String,
-      ipSets: pulumi.Input.decodeList<GetCustomRoutingAcceleratorIpSet>(
-          map['ipSets'],
-          (value) => GetCustomRoutingAcceleratorIpSet.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      ipSets: pulumi.Input.decodeList<GetCustomRoutingAcceleratorIpSet>(map['ipSets'], (value) => GetCustomRoutingAcceleratorIpSet.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

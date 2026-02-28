@@ -7,10 +7,8 @@ import 'pick_time_series_filter_ranking_method.dart';
 class PickTimeSeriesFilter {
   /// How to use the ranking to select time series that pass through the filter.
   final PickTimeSeriesFilterDirection? direction;
-
   /// How many time series to allow to pass through the filter.
   final int? numTimeSeries;
-
   /// ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
   final PickTimeSeriesFilterRankingMethod? rankingMethod;
 
@@ -25,33 +23,19 @@ class PickTimeSeriesFilter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final directionValue = direction;
-    if (directionValue != null) {
-      map['direction'] = directionValue.value;
-    }
-    final numTimeSeriesValue = numTimeSeries;
-    if (numTimeSeriesValue != null) {
-      map['numTimeSeries'] = numTimeSeriesValue;
-    }
-    final rankingMethodValue = rankingMethod;
-    if (rankingMethodValue != null) {
-      map['rankingMethod'] = rankingMethodValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'direction': ?direction == null ? null : direction!.value,
+      'numTimeSeries': ?numTimeSeries,
+      'rankingMethod': ?rankingMethod == null ? null : rankingMethod!.value,
+    };
   }
 
   factory PickTimeSeriesFilter.fromMap(Map<String, dynamic> map) {
     return PickTimeSeriesFilter(
-      direction: map['direction'] == null
-          ? null
-          : PickTimeSeriesFilterDirection.fromValue(map['direction'] as String),
-      numTimeSeries:
-          map['numTimeSeries'] == null ? null : map['numTimeSeries'] as int,
-      rankingMethod: map['rankingMethod'] == null
-          ? null
-          : PickTimeSeriesFilterRankingMethod.fromValue(
-              map['rankingMethod'] as String),
+      direction: map['direction'] == null ? null : PickTimeSeriesFilterDirection.fromValue(map['direction'] as String),
+      numTimeSeries: map['numTimeSeries'] == null ? null : map['numTimeSeries'] as int,
+      rankingMethod: map['rankingMethod'] == null ? null : PickTimeSeriesFilterRankingMethod.fromValue(map['rankingMethod'] as String),
     );
   }
 }
+

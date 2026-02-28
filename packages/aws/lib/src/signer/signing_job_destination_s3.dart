@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SigningJobDestinationS3 {
   final String bucket;
-
   /// An Amazon S3 object key prefix that you can use to limit signed objects keys to begin with the specified prefix.
   final String? prefix;
 
@@ -15,13 +15,10 @@ class SigningJobDestinationS3 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucket'] = bucket;
-    final prefixValue = prefix;
-    if (prefixValue != null) {
-      map['prefix'] = prefixValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'bucket': bucket,
+      'prefix': ?prefix,
+    };
   }
 
   factory SigningJobDestinationS3.fromMap(Map<String, dynamic> map) {
@@ -31,3 +28,4 @@ class SigningJobDestinationS3 {
     );
   }
 }
+

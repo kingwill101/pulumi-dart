@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ResourceCollectionCloudformation {
   /// Array of the names of the AWS CloudFormation stacks. If `type` is `AWS_SERVICE` (all acccount resources) this array should be a single item containing a wildcard (`"*"`).
   final List<String> stackNames;
@@ -11,9 +12,9 @@ class ResourceCollectionCloudformation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['stackNames'] = stackNames;
-    return map;
+    return <String, dynamic>{
+      'stackNames': stackNames,
+    };
   }
 
   factory ResourceCollectionCloudformation.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class ResourceCollectionCloudformation {
     );
   }
 }
+

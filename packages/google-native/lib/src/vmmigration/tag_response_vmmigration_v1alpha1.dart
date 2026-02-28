@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Tag is an AWS tag representation.
 class TagResponseVmmigrationV1alpha1 {
   /// Key of tag.
   final String key;
-
   /// Value of tag.
   final String value;
 
@@ -17,10 +17,10 @@ class TagResponseVmmigrationV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
   factory TagResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class TagResponseVmmigrationV1alpha1 {
     );
   }
 }
+

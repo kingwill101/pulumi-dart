@@ -14,20 +14,15 @@ class GetJobDefinitionEksProperty {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['podProperties'] = pulumi.Input.encodeList<
-        GetJobDefinitionEksPropertyPodProperty,
-        Map<String, dynamic>>(podProperties, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'podProperties': pulumi.Input.encodeList<GetJobDefinitionEksPropertyPodProperty, Map<String, dynamic>>(podProperties, (value) => value.toMap()),
+    };
   }
 
   factory GetJobDefinitionEksProperty.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionEksProperty(
-      podProperties:
-          pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodProperty>(
-              map['podProperties'],
-              (value) => GetJobDefinitionEksPropertyPodProperty.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      podProperties: pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodProperty>(map['podProperties'], (value) => GetJobDefinitionEksPropertyPodProperty.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

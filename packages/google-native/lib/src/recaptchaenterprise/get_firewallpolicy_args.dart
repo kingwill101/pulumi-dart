@@ -16,17 +16,15 @@ class GetFirewallpolicyArgs {
   GetFirewallpolicyArgs({
     required String firewallpolicyId,
     String? project,
-  })  : firewallpolicyId = pulumi.Input.asInput<String>(firewallpolicyId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      firewallpolicyId = pulumi.Input.asInput<String>(firewallpolicyId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['firewallpolicyId'] = firewallpolicyId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'firewallpolicyId': firewallpolicyId,
+      'project': ?project,
+    };
   }
 
   factory GetFirewallpolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetFirewallpolicyArgs {
     );
   }
 }
+

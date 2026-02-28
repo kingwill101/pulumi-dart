@@ -6,19 +6,14 @@ import 'google_cloud_aiplatform_v1_study_spec_response.dart';
 class GetStudyResult {
   /// Time at which the study was created.
   final String createTime;
-
   /// Describes the Study, default value is empty string.
   final String displayName;
-
   /// A human readable reason why the Study is inactive. This should be empty if a study is ACTIVE or COMPLETED.
   final String inactiveReason;
-
   /// The name of a study. The study's globally unique identifier. Format: `projects/{project}/locations/{location}/studies/{study}`
   final String name;
-
   /// The detailed state of a Study.
   final String state;
-
   /// Configuration of the Study.
   final GoogleCloudAiplatformV1StudySpecResponse studySpec;
 
@@ -39,14 +34,14 @@ class GetStudyResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['displayName'] = displayName;
-    map['inactiveReason'] = inactiveReason;
-    map['name'] = name;
-    map['state'] = state;
-    map['studySpec'] = studySpec.toMap();
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'displayName': displayName,
+      'inactiveReason': inactiveReason,
+      'name': name,
+      'state': state,
+      'studySpec': studySpec.toMap(),
+    };
   }
 
   factory GetStudyResult.fromMap(Map<String, dynamic> map) {
@@ -56,8 +51,8 @@ class GetStudyResult {
       inactiveReason: map['inactiveReason'] as String,
       name: map['name'] as String,
       state: map['state'] as String,
-      studySpec: GoogleCloudAiplatformV1StudySpecResponse.fromMap(
-          (map['studySpec'] as Map).cast<String, dynamic>()),
+      studySpec: GoogleCloudAiplatformV1StudySpecResponse.fromMap((map['studySpec'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

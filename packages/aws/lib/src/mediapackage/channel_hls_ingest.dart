@@ -14,24 +14,15 @@ class ChannelHlsIngest {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final ingestEndpointsValue = ingestEndpoints;
-    if (ingestEndpointsValue != null) {
-      map['ingestEndpoints'] = pulumi.Input.encodeList<
-          ChannelHlsIngestIngestEndpoint,
-          Map<String, dynamic>>(ingestEndpointsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'ingestEndpoints': ?ingestEndpoints == null ? null : pulumi.Input.encodeList<ChannelHlsIngestIngestEndpoint, Map<String, dynamic>>(ingestEndpoints!, (value) => value.toMap()),
+    };
   }
 
   factory ChannelHlsIngest.fromMap(Map<String, dynamic> map) {
     return ChannelHlsIngest(
-      ingestEndpoints: map['ingestEndpoints'] == null
-          ? null
-          : pulumi.Input.decodeList<ChannelHlsIngestIngestEndpoint>(
-              map['ingestEndpoints'],
-              (value) => ChannelHlsIngestIngestEndpoint.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      ingestEndpoints: map['ingestEndpoints'] == null ? null : pulumi.Input.decodeList<ChannelHlsIngestIngestEndpoint>(map['ingestEndpoints'], (value) => ChannelHlsIngestIngestEndpoint.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

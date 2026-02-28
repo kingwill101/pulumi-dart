@@ -7,15 +7,13 @@ enum InterconnectAttachmentEdgeAvailabilityDomainComputeV1 {
   const InterconnectAttachmentEdgeAvailabilityDomainComputeV1(this.value);
   final String value;
 
-  static InterconnectAttachmentEdgeAvailabilityDomainComputeV1 fromValue(
-      String value) {
-    for (final item
-        in InterconnectAttachmentEdgeAvailabilityDomainComputeV1.values) {
+  static InterconnectAttachmentEdgeAvailabilityDomainComputeV1 fromValue(String value) {
+    for (final item in InterconnectAttachmentEdgeAvailabilityDomainComputeV1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown InterconnectAttachmentEdgeAvailabilityDomainComputeV1 value: $value');
+    throw ArgumentError('Unknown InterconnectAttachmentEdgeAvailabilityDomainComputeV1 value: $value');
   }
 }
+

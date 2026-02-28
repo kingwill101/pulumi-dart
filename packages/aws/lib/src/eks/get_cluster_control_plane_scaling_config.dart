@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterControlPlaneScalingConfig {
   /// The control plane scaling tier. Valid values are `standard`, `tier-xl`, `tier-2xl`, or `tier-4xl`.
   final String tier;
@@ -11,15 +12,15 @@ class GetClusterControlPlaneScalingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['tier'] = tier;
-    return map;
+    return <String, dynamic>{
+      'tier': tier,
+    };
   }
 
-  factory GetClusterControlPlaneScalingConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GetClusterControlPlaneScalingConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterControlPlaneScalingConfig(
       tier: map['tier'] as String,
     );
   }
 }
+

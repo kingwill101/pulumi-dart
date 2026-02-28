@@ -403,56 +403,38 @@ import 'connector_worker_configuration.dart';
 class Connector extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the connector.
   late final pulumi.Output<String> arn;
-
   /// Information about the capacity allocated to the connector. See `capacity` Block for details.
   late final pulumi.Output<ConnectorCapacity> capacity;
-
   /// A map of keys to values that represent the configuration for the connector.
   late final pulumi.Output<Map<String, String>> connectorConfiguration;
-
   /// A summary description of the connector.
   late final pulumi.Output<String?> description;
-
   /// Specifies which Apache Kafka cluster to connect to. See `kafka_cluster` Block for details.
   late final pulumi.Output<ConnectorKafkaCluster> kafkaCluster;
-
   /// Details of the client authentication used by the Apache Kafka cluster. See `kafka_cluster_client_authentication` Block for details.
-  late final pulumi.Output<ConnectorKafkaClusterClientAuthentication>
-      kafkaClusterClientAuthentication;
-
+  late final pulumi.Output<ConnectorKafkaClusterClientAuthentication> kafkaClusterClientAuthentication;
   /// Details of encryption in transit to the Apache Kafka cluster. See `kafka_cluster_encryption_in_transit` Block for details.
-  late final pulumi.Output<ConnectorKafkaClusterEncryptionInTransit>
-      kafkaClusterEncryptionInTransit;
-
+  late final pulumi.Output<ConnectorKafkaClusterEncryptionInTransit> kafkaClusterEncryptionInTransit;
   /// The version of Kafka Connect. It has to be compatible with both the Apache Kafka cluster's version and the plugins.
   late final pulumi.Output<String> kafkaconnectVersion;
-
   /// Details about log delivery. See `log_delivery` Block for details.
   late final pulumi.Output<ConnectorLogDelivery?> logDelivery;
-
   /// The name of the connector.
   late final pulumi.Output<String> name;
-
   /// Specifies which plugins to use for the connector. See `plugin` Block for details.
   late final pulumi.Output<List<ConnectorPlugin>> plugins;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The Amazon Resource Name (ARN) of the IAM role used by the connector to access the Amazon Web Services resources that it needs. The types of resources depends on the logic of the connector. For example, a connector that has Amazon S3 as a destination must have permissions that allow it to write to the S3 destination bucket.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> serviceExecutionRoleArn;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The current version of the connector.
   late final pulumi.Output<String> version;
-
   /// Specifies which worker configuration to use with the connector. See `worker_configuration` Block for details.
   late final pulumi.Output<ConnectorWorkerConfiguration?> workerConfiguration;
 
@@ -472,27 +454,20 @@ class Connector extends pulumi.CustomResource {
         ) {
     this.arn = registerOutput<String>('arn');
     this.capacity = registerOutput<ConnectorCapacity>('capacity');
-    this.connectorConfiguration =
-        registerOutput<Map<String, String>>('connectorConfiguration');
+    this.connectorConfiguration = registerOutput<Map<String, String>>('connectorConfiguration');
     this.description = registerOutput<String?>('description');
     this.kafkaCluster = registerOutput<ConnectorKafkaCluster>('kafkaCluster');
-    this.kafkaClusterClientAuthentication =
-        registerOutput<ConnectorKafkaClusterClientAuthentication>(
-            'kafkaClusterClientAuthentication');
-    this.kafkaClusterEncryptionInTransit =
-        registerOutput<ConnectorKafkaClusterEncryptionInTransit>(
-            'kafkaClusterEncryptionInTransit');
+    this.kafkaClusterClientAuthentication = registerOutput<ConnectorKafkaClusterClientAuthentication>('kafkaClusterClientAuthentication');
+    this.kafkaClusterEncryptionInTransit = registerOutput<ConnectorKafkaClusterEncryptionInTransit>('kafkaClusterEncryptionInTransit');
     this.kafkaconnectVersion = registerOutput<String>('kafkaconnectVersion');
     this.logDelivery = registerOutput<ConnectorLogDelivery?>('logDelivery');
     this.name = registerOutput<String>('name');
     this.plugins = registerOutput<List<ConnectorPlugin>>('plugins');
     this.region = registerOutput<String>('region');
-    this.serviceExecutionRoleArn =
-        registerOutput<String>('serviceExecutionRoleArn');
+    this.serviceExecutionRoleArn = registerOutput<String>('serviceExecutionRoleArn');
     this.tags = registerOutput<Map<String, String>?>('tags');
     this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.version = registerOutput<String>('version');
-    this.workerConfiguration =
-        registerOutput<ConnectorWorkerConfiguration?>('workerConfiguration');
+    this.workerConfiguration = registerOutput<ConnectorWorkerConfiguration?>('workerConfiguration');
   }
 }

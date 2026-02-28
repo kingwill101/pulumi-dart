@@ -6,15 +6,13 @@ enum GoogleCloudDialogflowV2beta1FulfillmentFeatureType {
   const GoogleCloudDialogflowV2beta1FulfillmentFeatureType(this.value);
   final String value;
 
-  static GoogleCloudDialogflowV2beta1FulfillmentFeatureType fromValue(
-      String value) {
-    for (final item
-        in GoogleCloudDialogflowV2beta1FulfillmentFeatureType.values) {
+  static GoogleCloudDialogflowV2beta1FulfillmentFeatureType fromValue(String value) {
+    for (final item in GoogleCloudDialogflowV2beta1FulfillmentFeatureType.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GoogleCloudDialogflowV2beta1FulfillmentFeatureType value: $value');
+    throw ArgumentError('Unknown GoogleCloudDialogflowV2beta1FulfillmentFeatureType value: $value');
   }
 }
+

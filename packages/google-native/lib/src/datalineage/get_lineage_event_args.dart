@@ -25,23 +25,21 @@ class GetLineageEventArgs {
     required String processId,
     String? project,
     required String runId,
-  })  : lineageEventId = pulumi.Input.asInput<String>(lineageEventId),
-        location = pulumi.Input.asInput<String>(location),
-        processId = pulumi.Input.asInput<String>(processId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        runId = pulumi.Input.asInput<String>(runId);
+  }) :
+      lineageEventId = pulumi.Input.asInput<String>(lineageEventId),
+      location = pulumi.Input.asInput<String>(location),
+      processId = pulumi.Input.asInput<String>(processId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      runId = pulumi.Input.asInput<String>(runId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['lineageEventId'] = lineageEventId;
-    map['location'] = location;
-    map['processId'] = processId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['runId'] = runId;
-    return map;
+    return <String, dynamic>{
+      'lineageEventId': lineageEventId,
+      'location': location,
+      'processId': processId,
+      'project': ?project,
+      'runId': runId,
+    };
   }
 
   factory GetLineageEventArgs.fromMap(Map<String, dynamic> map) {
@@ -54,3 +52,4 @@ class GetLineageEventArgs {
     );
   }
 }
+

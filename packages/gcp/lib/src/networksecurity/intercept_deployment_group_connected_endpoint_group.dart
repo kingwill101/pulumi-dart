@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InterceptDeploymentGroupConnectedEndpointGroup {
   /// (Output)
   /// The connected endpoint group's resource name, for example:
@@ -14,18 +15,15 @@ class InterceptDeploymentGroupConnectedEndpointGroup {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
-  factory InterceptDeploymentGroupConnectedEndpointGroup.fromMap(
-      Map<String, dynamic> map) {
+  factory InterceptDeploymentGroupConnectedEndpointGroup.fromMap(Map<String, dynamic> map) {
     return InterceptDeploymentGroupConnectedEndpointGroup(
       name: map['name'] == null ? null : map['name'] as String,
     );
   }
 }
+

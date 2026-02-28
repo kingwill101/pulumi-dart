@@ -6,16 +6,11 @@ import 'application_application_configuration_flink_application_configuration_pa
 
 class ApplicationApplicationConfigurationFlinkApplicationConfiguration {
   /// Describes an application's checkpointing configuration.
-  final ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpointConfiguration?
-      checkpointConfiguration;
-
+  final ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpointConfiguration? checkpointConfiguration;
   /// Describes configuration parameters for CloudWatch logging for an application.
-  final ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration?
-      monitoringConfiguration;
-
+  final ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration? monitoringConfiguration;
   /// Describes parameters for how an application executes multiple tasks simultaneously.
-  final ApplicationApplicationConfigurationFlinkApplicationConfigurationParallelismConfiguration?
-      parallelismConfiguration;
+  final ApplicationApplicationConfigurationFlinkApplicationConfigurationParallelismConfiguration? parallelismConfiguration;
 
   /// Creates a new [ApplicationApplicationConfigurationFlinkApplicationConfiguration].
   /// [checkpointConfiguration] Describes an application's checkpointing configuration.
@@ -28,40 +23,19 @@ class ApplicationApplicationConfigurationFlinkApplicationConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final checkpointConfigurationValue = checkpointConfiguration;
-    if (checkpointConfigurationValue != null) {
-      map['checkpointConfiguration'] = checkpointConfigurationValue.toMap();
-    }
-    final monitoringConfigurationValue = monitoringConfiguration;
-    if (monitoringConfigurationValue != null) {
-      map['monitoringConfiguration'] = monitoringConfigurationValue.toMap();
-    }
-    final parallelismConfigurationValue = parallelismConfiguration;
-    if (parallelismConfigurationValue != null) {
-      map['parallelismConfiguration'] = parallelismConfigurationValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'checkpointConfiguration': ?checkpointConfiguration == null ? null : checkpointConfiguration!.toMap(),
+      'monitoringConfiguration': ?monitoringConfiguration == null ? null : monitoringConfiguration!.toMap(),
+      'parallelismConfiguration': ?parallelismConfiguration == null ? null : parallelismConfiguration!.toMap(),
+    };
   }
 
-  factory ApplicationApplicationConfigurationFlinkApplicationConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory ApplicationApplicationConfigurationFlinkApplicationConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationFlinkApplicationConfiguration(
-      checkpointConfiguration: map['checkpointConfiguration'] == null
-          ? null
-          : ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpointConfiguration
-              .fromMap((map['checkpointConfiguration'] as Map)
-                  .cast<String, dynamic>()),
-      monitoringConfiguration: map['monitoringConfiguration'] == null
-          ? null
-          : ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration
-              .fromMap((map['monitoringConfiguration'] as Map)
-                  .cast<String, dynamic>()),
-      parallelismConfiguration: map['parallelismConfiguration'] == null
-          ? null
-          : ApplicationApplicationConfigurationFlinkApplicationConfigurationParallelismConfiguration
-              .fromMap((map['parallelismConfiguration'] as Map)
-                  .cast<String, dynamic>()),
+      checkpointConfiguration: map['checkpointConfiguration'] == null ? null : ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpointConfiguration.fromMap((map['checkpointConfiguration'] as Map).cast<String, dynamic>()),
+      monitoringConfiguration: map['monitoringConfiguration'] == null ? null : ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration.fromMap((map['monitoringConfiguration'] as Map).cast<String, dynamic>()),
+      parallelismConfiguration: map['parallelismConfiguration'] == null ? null : ApplicationApplicationConfigurationFlinkApplicationConfigurationParallelismConfiguration.fromMap((map['parallelismConfiguration'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

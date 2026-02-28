@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Predeploy contains the predeploy job configuration information.
 class PredeployResponse {
   /// Optional. A sequence of Skaffold custom actions to invoke during execution of the predeploy job.
@@ -12,9 +13,9 @@ class PredeployResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['actions'] = actions;
-    return map;
+    return <String, dynamic>{
+      'actions': actions,
+    };
   }
 
   factory PredeployResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class PredeployResponse {
     );
   }
 }
+

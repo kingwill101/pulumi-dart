@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessPointPolicyArgs {
   /// The ARN of the access point that you want to associate with the specified policy.
   final pulumi.Input<String> accessPointArn;
-
   /// The policy that you want to apply to the specified access point.
   final pulumi.Input<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -24,19 +22,17 @@ class AccessPointPolicyArgs {
     required String accessPointArn,
     required String policy,
     String? region,
-  })  : accessPointArn = pulumi.Input.asInput<String>(accessPointArn),
-        policy = pulumi.Input.asInput<String>(policy),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      accessPointArn = pulumi.Input.asInput<String>(accessPointArn),
+      policy = pulumi.Input.asInput<String>(policy),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accessPointArn'] = accessPointArn;
-    map['policy'] = policy;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'accessPointArn': accessPointArn,
+      'policy': policy,
+      'region': ?region,
+    };
   }
 
   factory AccessPointPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -47,3 +43,4 @@ class AccessPointPolicyArgs {
     );
   }
 }
+

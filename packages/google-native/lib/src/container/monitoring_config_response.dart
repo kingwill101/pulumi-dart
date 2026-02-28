@@ -7,12 +7,9 @@ import 'monitoring_component_config_response.dart';
 /// MonitoringConfig is cluster monitoring configuration.
 class MonitoringConfigResponse {
   /// Configuration of Advanced Datapath Observability features.
-  final AdvancedDatapathObservabilityConfigResponse
-      advancedDatapathObservabilityConfig;
-
+  final AdvancedDatapathObservabilityConfigResponse advancedDatapathObservabilityConfig;
   /// Monitoring components configuration
   final MonitoringComponentConfigResponse componentConfig;
-
   /// Enable Google Cloud Managed Service for Prometheus in the cluster.
   final ManagedPrometheusConfigResponse managedPrometheusConfig;
 
@@ -27,24 +24,19 @@ class MonitoringConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['advancedDatapathObservabilityConfig'] =
-        advancedDatapathObservabilityConfig.toMap();
-    map['componentConfig'] = componentConfig.toMap();
-    map['managedPrometheusConfig'] = managedPrometheusConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'advancedDatapathObservabilityConfig': advancedDatapathObservabilityConfig.toMap(),
+      'componentConfig': componentConfig.toMap(),
+      'managedPrometheusConfig': managedPrometheusConfig.toMap(),
+    };
   }
 
   factory MonitoringConfigResponse.fromMap(Map<String, dynamic> map) {
     return MonitoringConfigResponse(
-      advancedDatapathObservabilityConfig:
-          AdvancedDatapathObservabilityConfigResponse.fromMap(
-              (map['advancedDatapathObservabilityConfig'] as Map)
-                  .cast<String, dynamic>()),
-      componentConfig: MonitoringComponentConfigResponse.fromMap(
-          (map['componentConfig'] as Map).cast<String, dynamic>()),
-      managedPrometheusConfig: ManagedPrometheusConfigResponse.fromMap(
-          (map['managedPrometheusConfig'] as Map).cast<String, dynamic>()),
+      advancedDatapathObservabilityConfig: AdvancedDatapathObservabilityConfigResponse.fromMap((map['advancedDatapathObservabilityConfig'] as Map).cast<String, dynamic>()),
+      componentConfig: MonitoringComponentConfigResponse.fromMap((map['componentConfig'] as Map).cast<String, dynamic>()),
+      managedPrometheusConfig: ManagedPrometheusConfigResponse.fromMap((map['managedPrometheusConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

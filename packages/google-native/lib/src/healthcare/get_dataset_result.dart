@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getDataset.
 class GetDatasetResult {
   /// Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
   final String name;
-
   /// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources, such as HL7 messages, where no explicit timezone is specified.
   final String timeZone;
 
@@ -17,10 +17,10 @@ class GetDatasetResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['timeZone'] = timeZone;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'timeZone': timeZone,
+    };
   }
 
   factory GetDatasetResult.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class GetDatasetResult {
     );
   }
 }
+

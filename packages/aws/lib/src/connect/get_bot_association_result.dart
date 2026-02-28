@@ -23,21 +23,21 @@ class GetBotAssociationResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['instanceId'] = instanceId;
-    map['lexBot'] = lexBot.toMap();
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'instanceId': instanceId,
+      'lexBot': lexBot.toMap(),
+      'region': region,
+    };
   }
 
   factory GetBotAssociationResult.fromMap(Map<String, dynamic> map) {
     return GetBotAssociationResult(
       id: map['id'] as String,
       instanceId: map['instanceId'] as String,
-      lexBot: GetBotAssociationLexBot.fromMap(
-          (map['lexBot'] as Map).cast<String, dynamic>()),
+      lexBot: GetBotAssociationLexBot.fromMap((map['lexBot'] as Map).cast<String, dynamic>()),
       region: map['region'] as String,
     );
   }
 }
+

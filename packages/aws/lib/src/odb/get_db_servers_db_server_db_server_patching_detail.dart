@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDbServersDbServerDbServerPatchingDetail {
   final int estimatedPatchDuration;
   final String patchingStatus;
@@ -19,16 +20,15 @@ class GetDbServersDbServerDbServerPatchingDetail {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['estimatedPatchDuration'] = estimatedPatchDuration;
-    map['patchingStatus'] = patchingStatus;
-    map['timePatchingEnded'] = timePatchingEnded;
-    map['timePatchingStarted'] = timePatchingStarted;
-    return map;
+    return <String, dynamic>{
+      'estimatedPatchDuration': estimatedPatchDuration,
+      'patchingStatus': patchingStatus,
+      'timePatchingEnded': timePatchingEnded,
+      'timePatchingStarted': timePatchingStarted,
+    };
   }
 
-  factory GetDbServersDbServerDbServerPatchingDetail.fromMap(
-      Map<String, dynamic> map) {
+  factory GetDbServersDbServerDbServerPatchingDetail.fromMap(Map<String, dynamic> map) {
     return GetDbServersDbServerDbServerPatchingDetail(
       estimatedPatchDuration: map['estimatedPatchDuration'] as int,
       patchingStatus: map['patchingStatus'] as String,
@@ -37,3 +37,4 @@ class GetDbServersDbServerDbServerPatchingDetail {
     );
   }
 }
+

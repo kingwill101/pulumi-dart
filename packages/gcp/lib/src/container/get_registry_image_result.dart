@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRegistryImage.
 class GetRegistryImageResult {
   final String? digest;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The URL at which the image can be accessed.
   final String imageUrl;
   final String name;
@@ -33,24 +32,15 @@ class GetRegistryImageResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final digestValue = digest;
-    if (digestValue != null) {
-      map['digest'] = digestValue;
-    }
-    map['id'] = id;
-    map['imageUrl'] = imageUrl;
-    map['name'] = name;
-    map['project'] = project;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final tagValue = tag;
-    if (tagValue != null) {
-      map['tag'] = tagValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'digest': ?digest,
+      'id': id,
+      'imageUrl': imageUrl,
+      'name': name,
+      'project': project,
+      'region': ?region,
+      'tag': ?tag,
+    };
   }
 
   factory GetRegistryImageResult.fromMap(Map<String, dynamic> map) {
@@ -65,3 +55,4 @@ class GetRegistryImageResult {
     );
   }
 }
+

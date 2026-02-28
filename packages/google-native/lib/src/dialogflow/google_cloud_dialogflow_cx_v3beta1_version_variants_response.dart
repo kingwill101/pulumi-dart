@@ -6,8 +6,7 @@ import 'google_cloud_dialogflow_cx_v3beta1_version_variants_variant_response.dar
 /// A list of flow version variants.
 class GoogleCloudDialogflowCxV3beta1VersionVariantsResponse {
   /// A list of flow version variants.
-  final List<GoogleCloudDialogflowCxV3beta1VersionVariantsVariantResponse>
-      variants;
+  final List<GoogleCloudDialogflowCxV3beta1VersionVariantsVariantResponse> variants;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1VersionVariantsResponse].
   /// [variants] A list of flow version variants.
@@ -16,22 +15,15 @@ class GoogleCloudDialogflowCxV3beta1VersionVariantsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['variants'] = pulumi.Input.encodeList<
-        GoogleCloudDialogflowCxV3beta1VersionVariantsVariantResponse,
-        Map<String, dynamic>>(variants, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'variants': pulumi.Input.encodeList<GoogleCloudDialogflowCxV3beta1VersionVariantsVariantResponse, Map<String, dynamic>>(variants, (value) => value.toMap()),
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1VersionVariantsResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1VersionVariantsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1VersionVariantsResponse(
-      variants: pulumi.Input.decodeList<
-              GoogleCloudDialogflowCxV3beta1VersionVariantsVariantResponse>(
-          map['variants'],
-          (value) =>
-              GoogleCloudDialogflowCxV3beta1VersionVariantsVariantResponse
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      variants: pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1VersionVariantsVariantResponse>(map['variants'], (value) => GoogleCloudDialogflowCxV3beta1VersionVariantsVariantResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

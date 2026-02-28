@@ -14,21 +14,15 @@ class GooglePrivacyDlpV2ReplaceValueConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final newValueValue = newValue;
-    if (newValueValue != null) {
-      map['newValue'] = newValueValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'newValue': ?newValue == null ? null : newValue!.toMap(),
+    };
   }
 
-  factory GooglePrivacyDlpV2ReplaceValueConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2ReplaceValueConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2ReplaceValueConfig(
-      newValue: map['newValue'] == null
-          ? null
-          : GooglePrivacyDlpV2Value.fromMap(
-              (map['newValue'] as Map).cast<String, dynamic>()),
+      newValue: map['newValue'] == null ? null : GooglePrivacyDlpV2Value.fromMap((map['newValue'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

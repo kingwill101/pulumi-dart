@@ -19,20 +19,17 @@ class GetWorkloadIdentityPoolArgs {
     required String location,
     String? project,
     required String workloadIdentityPoolId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        workloadIdentityPoolId =
-            pulumi.Input.asInput<String>(workloadIdentityPoolId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      workloadIdentityPoolId = pulumi.Input.asInput<String>(workloadIdentityPoolId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['workloadIdentityPoolId'] = workloadIdentityPoolId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+      'workloadIdentityPoolId': workloadIdentityPoolId,
+    };
   }
 
   factory GetWorkloadIdentityPoolArgs.fromMap(Map<String, dynamic> map) {
@@ -43,3 +40,4 @@ class GetWorkloadIdentityPoolArgs {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail {
   /// The type of the database backup destination.
   /// Possible values:
@@ -17,18 +18,15 @@ class DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationD
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'type': ?type,
+    };
   }
 
-  factory DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail.fromMap(
-      Map<String, dynamic> map) {
+  factory DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail.fromMap(Map<String, dynamic> map) {
     return DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail(
       type: map['type'] == null ? null : map['type'] as String,
     );
   }
 }
+

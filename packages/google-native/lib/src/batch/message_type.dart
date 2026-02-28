@@ -16,3 +16,4 @@ enum MessageType {
     throw ArgumentError('Unknown MessageType value: $value');
   }
 }
+

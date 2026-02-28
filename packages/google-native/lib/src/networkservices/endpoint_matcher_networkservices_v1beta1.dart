@@ -14,21 +14,15 @@ class EndpointMatcherNetworkservicesV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final metadataLabelMatcherValue = metadataLabelMatcher;
-    if (metadataLabelMatcherValue != null) {
-      map['metadataLabelMatcher'] = metadataLabelMatcherValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'metadataLabelMatcher': ?metadataLabelMatcher == null ? null : metadataLabelMatcher!.toMap(),
+    };
   }
 
-  factory EndpointMatcherNetworkservicesV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory EndpointMatcherNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return EndpointMatcherNetworkservicesV1beta1(
-      metadataLabelMatcher: map['metadataLabelMatcher'] == null
-          ? null
-          : MetadataLabelMatcher.fromMap(
-              (map['metadataLabelMatcher'] as Map).cast<String, dynamic>()),
+      metadataLabelMatcher: map['metadataLabelMatcher'] == null ? null : MetadataLabelMatcher.fromMap((map['metadataLabelMatcher'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelectionTrack {
   /// 1-based integer value that maps to a specific audio track.
   final int track;
@@ -11,15 +12,15 @@ class ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrack
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['track'] = track;
-    return map;
+    return <String, dynamic>{
+      'track': track,
+    };
   }
 
-  factory ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelectionTrack.fromMap(
-      Map<String, dynamic> map) {
+  factory ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelectionTrack.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelectionTrack(
       track: map['track'] as int,
     );
   }
 }
+

@@ -23,8 +23,7 @@ Future<GetExecutionResult> getExecution(
 /// Returns an execution of the given name.
 /// [args] Arguments passed to this invoke. {@macro pulumi_workflowexecutions_v1beta_get_execution_workflowexecutions_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetExecutionWorkflowexecutionsV1betaResult>
-    getExecutionWorkflowexecutionsV1beta(
+Future<GetExecutionWorkflowexecutionsV1betaResult> getExecutionWorkflowexecutionsV1beta(
   GetExecutionWorkflowexecutionsV1betaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

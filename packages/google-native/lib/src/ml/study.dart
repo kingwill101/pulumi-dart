@@ -7,21 +7,16 @@ import 'study_args.dart';
 class Study extends pulumi.CustomResource {
   /// Time at which the study was created.
   late final pulumi.Output<String> createTime;
-
   /// A human readable reason why the Study is inactive. This should be empty if a study is ACTIVE or COMPLETED.
   late final pulumi.Output<String> inactiveReason;
   late final pulumi.Output<String> location;
-
   /// The name of a study.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// The detailed state of a study.
   late final pulumi.Output<String> state;
-
   /// Configuration of the study.
   late final pulumi.Output<GoogleCloudMlV1StudyConfigResponse> studyConfig;
-
   /// Required. The ID to use for the study, which will become the final component of the study's resource name.
   late final pulumi.Output<String> studyId;
 
@@ -45,8 +40,7 @@ class Study extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
     this.state = registerOutput<String>('state');
-    this.studyConfig =
-        registerOutput<GoogleCloudMlV1StudyConfigResponse>('studyConfig');
+    this.studyConfig = registerOutput<GoogleCloudMlV1StudyConfigResponse>('studyConfig');
     this.studyId = registerOutput<String>('studyId');
   }
 }

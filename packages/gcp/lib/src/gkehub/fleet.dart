@@ -163,31 +163,24 @@ import 'fleet_state.dart';
 class Fleet extends pulumi.CustomResource {
   /// The time the fleet was created, in RFC3339 text format.
   late final pulumi.Output<String> createTime;
-
   /// The default cluster configurations to apply across the fleet.
   /// Structure is documented below.
   late final pulumi.Output<FleetDefaultClusterConfig?> defaultClusterConfig;
-
   /// The time the fleet was deleted, in RFC3339 text format.
   late final pulumi.Output<String> deleteTime;
-
   /// A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
   /// Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
   late final pulumi.Output<String?> displayName;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The state of the fleet resource.
   /// Structure is documented below.
   late final pulumi.Output<List<FleetState>> states;
-
   /// Google-generated UUID for this resource. This is unique across all
   /// Fleet resources. If a Fleet resource is deleted and another
   /// resource with the same name is created, it gets a different uid.
   late final pulumi.Output<String> uid;
-
   /// The time the fleet was last updated, in RFC3339 text format.
   late final pulumi.Output<String> updateTime;
 
@@ -206,8 +199,7 @@ class Fleet extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
-    this.defaultClusterConfig =
-        registerOutput<FleetDefaultClusterConfig?>('defaultClusterConfig');
+    this.defaultClusterConfig = registerOutput<FleetDefaultClusterConfig?>('defaultClusterConfig');
     this.deleteTime = registerOutput<String>('deleteTime');
     this.displayName = registerOutput<String?>('displayName');
     this.project = registerOutput<String>('project');

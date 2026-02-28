@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterWorkloadIdentityConfig {
   /// The workload pool to attach all Kubernetes service accounts to.
   final String workloadPool;
@@ -11,9 +12,9 @@ class GetClusterWorkloadIdentityConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['workloadPool'] = workloadPool;
-    return map;
+    return <String, dynamic>{
+      'workloadPool': workloadPool,
+    };
   }
 
   factory GetClusterWorkloadIdentityConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetClusterWorkloadIdentityConfig {
     );
   }
 }
+

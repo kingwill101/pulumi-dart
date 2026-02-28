@@ -265,24 +265,17 @@ import 'document_ai_warehouse_document_schema_property_definition.dart';
 class DocumentAiWarehouseDocumentSchema extends pulumi.CustomResource {
   /// Name of the schema given by the user.
   late final pulumi.Output<String> displayName;
-
   /// Tells whether the document is a folder or a typical document.
   late final pulumi.Output<bool?> documentIsFolder;
-
   /// The location of the resource.
   late final pulumi.Output<String> location;
-
   /// The resource name of the document schema.
   late final pulumi.Output<String> name;
-
   /// The unique identifier of the project.
   late final pulumi.Output<String> projectNumber;
-
   /// Defines the metadata for a schema property.
   /// Structure is documented below.
-  late final pulumi
-      .Output<List<DocumentAiWarehouseDocumentSchemaPropertyDefinition>>
-      propertyDefinitions;
+  late final pulumi.Output<List<DocumentAiWarehouseDocumentSchemaPropertyDefinition>> propertyDefinitions;
 
   /// Creates a new [DocumentAiWarehouseDocumentSchema].
   /// [name] The Pulumi resource name.
@@ -303,8 +296,6 @@ class DocumentAiWarehouseDocumentSchema extends pulumi.CustomResource {
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     this.projectNumber = registerOutput<String>('projectNumber');
-    this.propertyDefinitions = registerOutput<
-            List<DocumentAiWarehouseDocumentSchemaPropertyDefinition>>(
-        'propertyDefinitions');
+    this.propertyDefinitions = registerOutput<List<DocumentAiWarehouseDocumentSchemaPropertyDefinition>>('propertyDefinitions');
   }
 }

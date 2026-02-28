@@ -13,9 +13,9 @@ class LifecyclePolicyAction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['type'] = type.value;
-    return map;
+    return <String, dynamic>{
+      'type': type.value,
+    };
   }
 
   factory LifecyclePolicyAction.fromMap(Map<String, dynamic> map) {
@@ -24,3 +24,4 @@ class LifecyclePolicyAction {
     );
   }
 }
+

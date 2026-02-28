@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AgentFlowDefinitionNodeOutput {
   /// A name for the flow.
   final String name;
@@ -14,10 +15,10 @@ class AgentFlowDefinitionNodeOutput {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'type': type,
+    };
   }
 
   factory AgentFlowDefinitionNodeOutput.fromMap(Map<String, dynamic> map) {
@@ -27,3 +28,4 @@ class AgentFlowDefinitionNodeOutput {
     );
   }
 }
+

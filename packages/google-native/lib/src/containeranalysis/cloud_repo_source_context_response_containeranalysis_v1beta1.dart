@@ -7,10 +7,8 @@ import 'repo_id_response_containeranalysis_v1beta1.dart';
 class CloudRepoSourceContextResponseContaineranalysisV1beta1 {
   /// An alias, which may be a branch or tag.
   final AliasContextResponseContaineranalysisV1beta1 aliasContext;
-
   /// The ID of the repo.
   final RepoIdResponseContaineranalysisV1beta1 repoId;
-
   /// A revision ID.
   final String revisionId;
 
@@ -25,21 +23,19 @@ class CloudRepoSourceContextResponseContaineranalysisV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['aliasContext'] = aliasContext.toMap();
-    map['repoId'] = repoId.toMap();
-    map['revisionId'] = revisionId;
-    return map;
+    return <String, dynamic>{
+      'aliasContext': aliasContext.toMap(),
+      'repoId': repoId.toMap(),
+      'revisionId': revisionId,
+    };
   }
 
-  factory CloudRepoSourceContextResponseContaineranalysisV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory CloudRepoSourceContextResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return CloudRepoSourceContextResponseContaineranalysisV1beta1(
-      aliasContext: AliasContextResponseContaineranalysisV1beta1.fromMap(
-          (map['aliasContext'] as Map).cast<String, dynamic>()),
-      repoId: RepoIdResponseContaineranalysisV1beta1.fromMap(
-          (map['repoId'] as Map).cast<String, dynamic>()),
+      aliasContext: AliasContextResponseContaineranalysisV1beta1.fromMap((map['aliasContext'] as Map).cast<String, dynamic>()),
+      repoId: RepoIdResponseContaineranalysisV1beta1.fromMap((map['repoId'] as Map).cast<String, dynamic>()),
       revisionId: map['revisionId'] as String,
     );
   }
 }
+

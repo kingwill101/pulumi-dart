@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Guaranteed tier definition.
 class GuaranteedResponse {
   /// Optional. Defines the minimum duration of the guarantee. If specified, the requested resources will only be provisioned if they can be allocated for at least the given duration.
   final String minDuration;
-
   /// Optional. Specifies the request should be scheduled on reserved capacity.
   final bool reserved;
 
@@ -17,10 +17,10 @@ class GuaranteedResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['minDuration'] = minDuration;
-    map['reserved'] = reserved;
-    return map;
+    return <String, dynamic>{
+      'minDuration': minDuration,
+      'reserved': reserved,
+    };
   }
 
   factory GuaranteedResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class GuaranteedResponse {
     );
   }
 }
+

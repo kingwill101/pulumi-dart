@@ -13,34 +13,24 @@ import 'test_setup.dart';
 class TestSpecification {
   /// An Android instrumentation test.
   final AndroidInstrumentationTest? androidInstrumentationTest;
-
   /// An Android robo test.
   final AndroidRoboTest? androidRoboTest;
-
   /// An Android Application with a Test Loop.
   final AndroidTestLoop? androidTestLoop;
-
   /// Disables performance metrics recording. May reduce test latency.
   final bool? disablePerformanceMetrics;
-
   /// Disables video recording. May reduce test latency.
   final bool? disableVideoRecording;
-
   /// An iOS Robo test.
   final IosRoboTest? iosRoboTest;
-
   /// An iOS application with a test loop.
   final IosTestLoop? iosTestLoop;
-
   /// Test setup requirements for iOS.
   final IosTestSetup? iosTestSetup;
-
   /// An iOS XCTest, via an .xctestrun file.
   final IosXcTest? iosXcTest;
-
   /// Test setup requirements for Android e.g. files to install, bootstrap scripts.
   final TestSetup? testSetup;
-
   /// Max time a test execution is allowed to run before it is automatically cancelled. The default value is 5 min.
   final String? testTimeout;
 
@@ -71,98 +61,35 @@ class TestSpecification {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final androidInstrumentationTestValue = androidInstrumentationTest;
-    if (androidInstrumentationTestValue != null) {
-      map['androidInstrumentationTest'] =
-          androidInstrumentationTestValue.toMap();
-    }
-    final androidRoboTestValue = androidRoboTest;
-    if (androidRoboTestValue != null) {
-      map['androidRoboTest'] = androidRoboTestValue.toMap();
-    }
-    final androidTestLoopValue = androidTestLoop;
-    if (androidTestLoopValue != null) {
-      map['androidTestLoop'] = androidTestLoopValue.toMap();
-    }
-    final disablePerformanceMetricsValue = disablePerformanceMetrics;
-    if (disablePerformanceMetricsValue != null) {
-      map['disablePerformanceMetrics'] = disablePerformanceMetricsValue;
-    }
-    final disableVideoRecordingValue = disableVideoRecording;
-    if (disableVideoRecordingValue != null) {
-      map['disableVideoRecording'] = disableVideoRecordingValue;
-    }
-    final iosRoboTestValue = iosRoboTest;
-    if (iosRoboTestValue != null) {
-      map['iosRoboTest'] = iosRoboTestValue.toMap();
-    }
-    final iosTestLoopValue = iosTestLoop;
-    if (iosTestLoopValue != null) {
-      map['iosTestLoop'] = iosTestLoopValue.toMap();
-    }
-    final iosTestSetupValue = iosTestSetup;
-    if (iosTestSetupValue != null) {
-      map['iosTestSetup'] = iosTestSetupValue.toMap();
-    }
-    final iosXcTestValue = iosXcTest;
-    if (iosXcTestValue != null) {
-      map['iosXcTest'] = iosXcTestValue.toMap();
-    }
-    final testSetupValue = testSetup;
-    if (testSetupValue != null) {
-      map['testSetup'] = testSetupValue.toMap();
-    }
-    final testTimeoutValue = testTimeout;
-    if (testTimeoutValue != null) {
-      map['testTimeout'] = testTimeoutValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'androidInstrumentationTest': ?androidInstrumentationTest == null ? null : androidInstrumentationTest!.toMap(),
+      'androidRoboTest': ?androidRoboTest == null ? null : androidRoboTest!.toMap(),
+      'androidTestLoop': ?androidTestLoop == null ? null : androidTestLoop!.toMap(),
+      'disablePerformanceMetrics': ?disablePerformanceMetrics,
+      'disableVideoRecording': ?disableVideoRecording,
+      'iosRoboTest': ?iosRoboTest == null ? null : iosRoboTest!.toMap(),
+      'iosTestLoop': ?iosTestLoop == null ? null : iosTestLoop!.toMap(),
+      'iosTestSetup': ?iosTestSetup == null ? null : iosTestSetup!.toMap(),
+      'iosXcTest': ?iosXcTest == null ? null : iosXcTest!.toMap(),
+      'testSetup': ?testSetup == null ? null : testSetup!.toMap(),
+      'testTimeout': ?testTimeout,
+    };
   }
 
   factory TestSpecification.fromMap(Map<String, dynamic> map) {
     return TestSpecification(
-      androidInstrumentationTest: map['androidInstrumentationTest'] == null
-          ? null
-          : AndroidInstrumentationTest.fromMap(
-              (map['androidInstrumentationTest'] as Map)
-                  .cast<String, dynamic>()),
-      androidRoboTest: map['androidRoboTest'] == null
-          ? null
-          : AndroidRoboTest.fromMap(
-              (map['androidRoboTest'] as Map).cast<String, dynamic>()),
-      androidTestLoop: map['androidTestLoop'] == null
-          ? null
-          : AndroidTestLoop.fromMap(
-              (map['androidTestLoop'] as Map).cast<String, dynamic>()),
-      disablePerformanceMetrics: map['disablePerformanceMetrics'] == null
-          ? null
-          : map['disablePerformanceMetrics'] as bool,
-      disableVideoRecording: map['disableVideoRecording'] == null
-          ? null
-          : map['disableVideoRecording'] as bool,
-      iosRoboTest: map['iosRoboTest'] == null
-          ? null
-          : IosRoboTest.fromMap(
-              (map['iosRoboTest'] as Map).cast<String, dynamic>()),
-      iosTestLoop: map['iosTestLoop'] == null
-          ? null
-          : IosTestLoop.fromMap(
-              (map['iosTestLoop'] as Map).cast<String, dynamic>()),
-      iosTestSetup: map['iosTestSetup'] == null
-          ? null
-          : IosTestSetup.fromMap(
-              (map['iosTestSetup'] as Map).cast<String, dynamic>()),
-      iosXcTest: map['iosXcTest'] == null
-          ? null
-          : IosXcTest.fromMap(
-              (map['iosXcTest'] as Map).cast<String, dynamic>()),
-      testSetup: map['testSetup'] == null
-          ? null
-          : TestSetup.fromMap(
-              (map['testSetup'] as Map).cast<String, dynamic>()),
-      testTimeout:
-          map['testTimeout'] == null ? null : map['testTimeout'] as String,
+      androidInstrumentationTest: map['androidInstrumentationTest'] == null ? null : AndroidInstrumentationTest.fromMap((map['androidInstrumentationTest'] as Map).cast<String, dynamic>()),
+      androidRoboTest: map['androidRoboTest'] == null ? null : AndroidRoboTest.fromMap((map['androidRoboTest'] as Map).cast<String, dynamic>()),
+      androidTestLoop: map['androidTestLoop'] == null ? null : AndroidTestLoop.fromMap((map['androidTestLoop'] as Map).cast<String, dynamic>()),
+      disablePerformanceMetrics: map['disablePerformanceMetrics'] == null ? null : map['disablePerformanceMetrics'] as bool,
+      disableVideoRecording: map['disableVideoRecording'] == null ? null : map['disableVideoRecording'] as bool,
+      iosRoboTest: map['iosRoboTest'] == null ? null : IosRoboTest.fromMap((map['iosRoboTest'] as Map).cast<String, dynamic>()),
+      iosTestLoop: map['iosTestLoop'] == null ? null : IosTestLoop.fromMap((map['iosTestLoop'] as Map).cast<String, dynamic>()),
+      iosTestSetup: map['iosTestSetup'] == null ? null : IosTestSetup.fromMap((map['iosTestSetup'] as Map).cast<String, dynamic>()),
+      iosXcTest: map['iosXcTest'] == null ? null : IosXcTest.fromMap((map['iosXcTest'] as Map).cast<String, dynamic>()),
+      testSetup: map['testSetup'] == null ? null : TestSetup.fromMap((map['testSetup'] as Map).cast<String, dynamic>()),
+      testTimeout: map['testTimeout'] == null ? null : map['testTimeout'] as String,
     );
   }
 }
+

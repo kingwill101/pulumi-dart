@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MultitenantDistributionOriginGroupMember {
   final String originId;
 
@@ -10,15 +11,15 @@ class MultitenantDistributionOriginGroupMember {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['originId'] = originId;
-    return map;
+    return <String, dynamic>{
+      'originId': originId,
+    };
   }
 
-  factory MultitenantDistributionOriginGroupMember.fromMap(
-      Map<String, dynamic> map) {
+  factory MultitenantDistributionOriginGroupMember.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionOriginGroupMember(
       originId: map['originId'] as String,
     );
   }
 }
+

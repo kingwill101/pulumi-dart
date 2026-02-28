@@ -7,7 +7,6 @@ import 'google_privacy_dlp_v2_info_type_likelihood_min_likelihood.dart';
 class GooglePrivacyDlpV2InfoTypeLikelihood {
   /// Type of information the likelihood threshold applies to. Only one likelihood per info_type should be provided. If InfoTypeLikelihood does not have an info_type, the configuration fails.
   final GooglePrivacyDlpV2InfoType? infoType;
-
   /// Only returns findings equal to or above this threshold. This field is required or else the configuration fails.
   final GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood? minLikelihood;
 
@@ -20,29 +19,17 @@ class GooglePrivacyDlpV2InfoTypeLikelihood {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final infoTypeValue = infoType;
-    if (infoTypeValue != null) {
-      map['infoType'] = infoTypeValue.toMap();
-    }
-    final minLikelihoodValue = minLikelihood;
-    if (minLikelihoodValue != null) {
-      map['minLikelihood'] = minLikelihoodValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'infoType': ?infoType == null ? null : infoType!.toMap(),
+      'minLikelihood': ?minLikelihood == null ? null : minLikelihood!.value,
+    };
   }
 
-  factory GooglePrivacyDlpV2InfoTypeLikelihood.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2InfoTypeLikelihood.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2InfoTypeLikelihood(
-      infoType: map['infoType'] == null
-          ? null
-          : GooglePrivacyDlpV2InfoType.fromMap(
-              (map['infoType'] as Map).cast<String, dynamic>()),
-      minLikelihood: map['minLikelihood'] == null
-          ? null
-          : GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood.fromValue(
-              map['minLikelihood'] as String),
+      infoType: map['infoType'] == null ? null : GooglePrivacyDlpV2InfoType.fromMap((map['infoType'] as Map).cast<String, dynamic>()),
+      minLikelihood: map['minLikelihood'] == null ? null : GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood.fromValue(map['minLikelihood'] as String),
     );
   }
 }
+

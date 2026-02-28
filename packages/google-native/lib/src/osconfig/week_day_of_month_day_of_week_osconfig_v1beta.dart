@@ -18,7 +18,7 @@ enum WeekDayOfMonthDayOfWeekOsconfigV1beta {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown WeekDayOfMonthDayOfWeekOsconfigV1beta value: $value');
+    throw ArgumentError('Unknown WeekDayOfMonthDayOfWeekOsconfigV1beta value: $value');
   }
 }
+

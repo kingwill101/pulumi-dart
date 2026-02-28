@@ -359,17 +359,13 @@ class UserWorkloadsConfigMap extends pulumi.CustomResource {
   /// The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
   /// For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
   late final pulumi.Output<Map<String, String>?> data;
-
   /// Environment where the Kubernetes ConfigMap will be stored and used.
   late final pulumi.Output<String> environment;
-
   /// Name of the Kubernetes ConfigMap.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The location or Compute Engine region for the environment.
   late final pulumi.Output<String> region;
 

@@ -30,57 +30,25 @@ class RRSetRoutingPolicyDnsV1beta2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final geoValue = geo;
-    if (geoValue != null) {
-      map['geo'] = geoValue.toMap();
-    }
-    final geoPolicyValue = geoPolicy;
-    if (geoPolicyValue != null) {
-      map['geoPolicy'] = geoPolicyValue.toMap();
-    }
-    final kindValue = kind;
-    if (kindValue != null) {
-      map['kind'] = kindValue;
-    }
-    final primaryBackupValue = primaryBackup;
-    if (primaryBackupValue != null) {
-      map['primaryBackup'] = primaryBackupValue.toMap();
-    }
-    final wrrValue = wrr;
-    if (wrrValue != null) {
-      map['wrr'] = wrrValue.toMap();
-    }
-    final wrrPolicyValue = wrrPolicy;
-    if (wrrPolicyValue != null) {
-      map['wrrPolicy'] = wrrPolicyValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'geo': ?geo == null ? null : geo!.toMap(),
+      'geoPolicy': ?geoPolicy == null ? null : geoPolicy!.toMap(),
+      'kind': ?kind,
+      'primaryBackup': ?primaryBackup == null ? null : primaryBackup!.toMap(),
+      'wrr': ?wrr == null ? null : wrr!.toMap(),
+      'wrrPolicy': ?wrrPolicy == null ? null : wrrPolicy!.toMap(),
+    };
   }
 
   factory RRSetRoutingPolicyDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return RRSetRoutingPolicyDnsV1beta2(
-      geo: map['geo'] == null
-          ? null
-          : RRSetRoutingPolicyGeoPolicyDnsV1beta2.fromMap(
-              (map['geo'] as Map).cast<String, dynamic>()),
-      geoPolicy: map['geoPolicy'] == null
-          ? null
-          : RRSetRoutingPolicyGeoPolicyDnsV1beta2.fromMap(
-              (map['geoPolicy'] as Map).cast<String, dynamic>()),
+      geo: map['geo'] == null ? null : RRSetRoutingPolicyGeoPolicyDnsV1beta2.fromMap((map['geo'] as Map).cast<String, dynamic>()),
+      geoPolicy: map['geoPolicy'] == null ? null : RRSetRoutingPolicyGeoPolicyDnsV1beta2.fromMap((map['geoPolicy'] as Map).cast<String, dynamic>()),
       kind: map['kind'] == null ? null : map['kind'] as String,
-      primaryBackup: map['primaryBackup'] == null
-          ? null
-          : RRSetRoutingPolicyPrimaryBackupPolicyDnsV1beta2.fromMap(
-              (map['primaryBackup'] as Map).cast<String, dynamic>()),
-      wrr: map['wrr'] == null
-          ? null
-          : RRSetRoutingPolicyWrrPolicyDnsV1beta2.fromMap(
-              (map['wrr'] as Map).cast<String, dynamic>()),
-      wrrPolicy: map['wrrPolicy'] == null
-          ? null
-          : RRSetRoutingPolicyWrrPolicyDnsV1beta2.fromMap(
-              (map['wrrPolicy'] as Map).cast<String, dynamic>()),
+      primaryBackup: map['primaryBackup'] == null ? null : RRSetRoutingPolicyPrimaryBackupPolicyDnsV1beta2.fromMap((map['primaryBackup'] as Map).cast<String, dynamic>()),
+      wrr: map['wrr'] == null ? null : RRSetRoutingPolicyWrrPolicyDnsV1beta2.fromMap((map['wrr'] as Map).cast<String, dynamic>()),
+      wrrPolicy: map['wrrPolicy'] == null ? null : RRSetRoutingPolicyWrrPolicyDnsV1beta2.fromMap((map['wrrPolicy'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

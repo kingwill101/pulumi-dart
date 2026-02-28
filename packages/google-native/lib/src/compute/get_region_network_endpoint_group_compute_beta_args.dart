@@ -19,24 +19,20 @@ class GetRegionNetworkEndpointGroupComputeBetaArgs {
     required String networkEndpointGroup,
     String? project,
     required String region,
-  })  : networkEndpointGroup =
-            pulumi.Input.asInput<String>(networkEndpointGroup),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asInput<String>(region);
+  }) :
+      networkEndpointGroup = pulumi.Input.asInput<String>(networkEndpointGroup),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['networkEndpointGroup'] = networkEndpointGroup;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'networkEndpointGroup': networkEndpointGroup,
+      'project': ?project,
+      'region': region,
+    };
   }
 
-  factory GetRegionNetworkEndpointGroupComputeBetaArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetRegionNetworkEndpointGroupComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionNetworkEndpointGroupComputeBetaArgs(
       networkEndpointGroup: map['networkEndpointGroup'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -44,3 +40,4 @@ class GetRegionNetworkEndpointGroupComputeBetaArgs {
     );
   }
 }
+

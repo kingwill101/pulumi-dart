@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GuardrailCrossRegionConfig {
   /// Guardrail profile ARN.
   final String guardrailProfileIdentifier;
@@ -11,9 +12,9 @@ class GuardrailCrossRegionConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['guardrailProfileIdentifier'] = guardrailProfileIdentifier;
-    return map;
+    return <String, dynamic>{
+      'guardrailProfileIdentifier': guardrailProfileIdentifier,
+    };
   }
 
   factory GuardrailCrossRegionConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GuardrailCrossRegionConfig {
     );
   }
 }
+

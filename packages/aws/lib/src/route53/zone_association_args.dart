@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ZoneAssociationArgs {
   /// The VPC to associate with the private hosted zone.
   final pulumi.Input<String> vpcId;
-
   /// The VPC's region. Defaults to the region of the AWS provider.
   final pulumi.Input<String>? vpcRegion;
-
   /// The private hosted zone to associate.
   final pulumi.Input<String> zoneId;
 
@@ -24,19 +22,17 @@ class ZoneAssociationArgs {
     required String vpcId,
     String? vpcRegion,
     required String zoneId,
-  })  : vpcId = pulumi.Input.asInput<String>(vpcId),
-        vpcRegion = pulumi.Input.asOptionalInput<String>(vpcRegion),
-        zoneId = pulumi.Input.asInput<String>(zoneId);
+  }) :
+      vpcId = pulumi.Input.asInput<String>(vpcId),
+      vpcRegion = pulumi.Input.asOptionalInput<String>(vpcRegion),
+      zoneId = pulumi.Input.asInput<String>(zoneId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['vpcId'] = vpcId;
-    final vpcRegionValue = vpcRegion;
-    if (vpcRegionValue != null) {
-      map['vpcRegion'] = vpcRegionValue;
-    }
-    map['zoneId'] = zoneId;
-    return map;
+    return <String, dynamic>{
+      'vpcId': vpcId,
+      'vpcRegion': ?vpcRegion,
+      'zoneId': zoneId,
+    };
   }
 
   factory ZoneAssociationArgs.fromMap(Map<String, dynamic> map) {
@@ -47,3 +43,4 @@ class ZoneAssociationArgs {
     );
   }
 }
+

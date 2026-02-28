@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration options for a custom domain.
 class DomainConfigResponse {
   /// Immutable. Domain used by Workstations for HTTP ingress.
@@ -12,9 +13,9 @@ class DomainConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['domain'] = domain;
-    return map;
+    return <String, dynamic>{
+      'domain': domain,
+    };
   }
 
   factory DomainConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class DomainConfigResponse {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TemplateFilterConfigSdpSettingsAdvancedConfig {
   /// Optional Sensitive Data Protection Deidentify template resource name.
   /// If provided then DeidentifyContent action is performed during Sanitization
@@ -10,7 +11,6 @@ class TemplateFilterConfigSdpSettingsAdvancedConfig {
   /// e.g.
   /// `projects/{project}/locations/{location}/deidentifyTemplates/{deidentify_template}`
   final String? deidentifyTemplate;
-
   /// Sensitive Data Protection inspect template resource name
   /// If only inspect template is provided (de-identify template not provided),
   /// then Sensitive Data Protection InspectContent action is performed during
@@ -29,27 +29,17 @@ class TemplateFilterConfigSdpSettingsAdvancedConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final deidentifyTemplateValue = deidentifyTemplate;
-    if (deidentifyTemplateValue != null) {
-      map['deidentifyTemplate'] = deidentifyTemplateValue;
-    }
-    final inspectTemplateValue = inspectTemplate;
-    if (inspectTemplateValue != null) {
-      map['inspectTemplate'] = inspectTemplateValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'deidentifyTemplate': ?deidentifyTemplate,
+      'inspectTemplate': ?inspectTemplate,
+    };
   }
 
-  factory TemplateFilterConfigSdpSettingsAdvancedConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory TemplateFilterConfigSdpSettingsAdvancedConfig.fromMap(Map<String, dynamic> map) {
     return TemplateFilterConfigSdpSettingsAdvancedConfig(
-      deidentifyTemplate: map['deidentifyTemplate'] == null
-          ? null
-          : map['deidentifyTemplate'] as String,
-      inspectTemplate: map['inspectTemplate'] == null
-          ? null
-          : map['inspectTemplate'] as String,
+      deidentifyTemplate: map['deidentifyTemplate'] == null ? null : map['deidentifyTemplate'] as String,
+      inspectTemplate: map['inspectTemplate'] == null ? null : map['inspectTemplate'] as String,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetEndpointClientRouteEnforcementOption {
   final bool enforced;
 
@@ -10,15 +11,15 @@ class GetEndpointClientRouteEnforcementOption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enforced'] = enforced;
-    return map;
+    return <String, dynamic>{
+      'enforced': enforced,
+    };
   }
 
-  factory GetEndpointClientRouteEnforcementOption.fromMap(
-      Map<String, dynamic> map) {
+  factory GetEndpointClientRouteEnforcementOption.fromMap(Map<String, dynamic> map) {
     return GetEndpointClientRouteEnforcementOption(
       enforced: map['enforced'] as bool,
     );
   }
 }
+

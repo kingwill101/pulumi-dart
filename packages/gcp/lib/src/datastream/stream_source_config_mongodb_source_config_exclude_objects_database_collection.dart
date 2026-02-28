@@ -6,12 +6,9 @@ import 'stream_source_config_mongodb_source_config_exclude_objects_database_coll
 class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollection {
   /// Collection name.
   final String? collection;
-
   /// Fields in the collection.
   /// Structure is documented below.
-  final List<
-          StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField>?
-      fields;
+  final List<StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField>? fields;
 
   /// Creates a new [StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollection].
   /// [collection] Collection name.
@@ -22,33 +19,17 @@ class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollection {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final collectionValue = collection;
-    if (collectionValue != null) {
-      map['collection'] = collectionValue;
-    }
-    final fieldsValue = fields;
-    if (fieldsValue != null) {
-      map['fields'] = pulumi.Input.encodeList<
-          StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField,
-          Map<String, dynamic>>(fieldsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'collection': ?collection,
+      'fields': ?fields == null ? null : pulumi.Input.encodeList<StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField, Map<String, dynamic>>(fields!, (value) => value.toMap()),
+    };
   }
 
-  factory StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollection.fromMap(
-      Map<String, dynamic> map) {
+  factory StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollection.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollection(
-      collection:
-          map['collection'] == null ? null : map['collection'] as String,
-      fields: map['fields'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField>(
-              map['fields'],
-              (value) =>
-                  StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      collection: map['collection'] == null ? null : map['collection'] as String,
+      fields: map['fields'] == null ? null : pulumi.Input.decodeList<StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField>(map['fields'], (value) => StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

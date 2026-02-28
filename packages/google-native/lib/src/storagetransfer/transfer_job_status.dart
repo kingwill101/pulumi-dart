@@ -17,3 +17,4 @@ enum TransferJobStatus {
     throw ArgumentError('Unknown TransferJobStatus value: $value');
   }
 }
+

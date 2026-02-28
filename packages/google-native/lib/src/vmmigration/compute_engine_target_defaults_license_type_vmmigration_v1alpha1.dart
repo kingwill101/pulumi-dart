@@ -7,15 +7,13 @@ enum ComputeEngineTargetDefaultsLicenseTypeVmmigrationV1alpha1 {
   const ComputeEngineTargetDefaultsLicenseTypeVmmigrationV1alpha1(this.value);
   final String value;
 
-  static ComputeEngineTargetDefaultsLicenseTypeVmmigrationV1alpha1 fromValue(
-      String value) {
-    for (final item
-        in ComputeEngineTargetDefaultsLicenseTypeVmmigrationV1alpha1.values) {
+  static ComputeEngineTargetDefaultsLicenseTypeVmmigrationV1alpha1 fromValue(String value) {
+    for (final item in ComputeEngineTargetDefaultsLicenseTypeVmmigrationV1alpha1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown ComputeEngineTargetDefaultsLicenseTypeVmmigrationV1alpha1 value: $value');
+    throw ArgumentError('Unknown ComputeEngineTargetDefaultsLicenseTypeVmmigrationV1alpha1 value: $value');
   }
 }
+

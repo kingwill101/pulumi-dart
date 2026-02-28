@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CrawlerMongodbTarget {
   /// The name of the connection to use to connect to the Amazon DocumentDB or MongoDB target.
   final String connectionName;
-
   /// The path of the Amazon DocumentDB or MongoDB target (database/collection).
   final String path;
-
   /// Indicates whether to scan all the records, or to sample rows from the table. Scanning all the records can take a long time when the table is not a high throughput table. Default value is `true`.
   final bool? scanAll;
 
@@ -21,14 +20,11 @@ class CrawlerMongodbTarget {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['connectionName'] = connectionName;
-    map['path'] = path;
-    final scanAllValue = scanAll;
-    if (scanAllValue != null) {
-      map['scanAll'] = scanAllValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'connectionName': connectionName,
+      'path': path,
+      'scanAll': ?scanAll,
+    };
   }
 
   factory CrawlerMongodbTarget.fromMap(Map<String, dynamic> map) {
@@ -39,3 +35,4 @@ class CrawlerMongodbTarget {
     );
   }
 }
+

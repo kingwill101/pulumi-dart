@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetManagedZonesManagedZone {
   final String description;
   final String dnsName;
@@ -7,7 +8,6 @@ class GetManagedZonesManagedZone {
   final String managedZoneId;
   final String? name;
   final List<String> nameServers;
-
   /// The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
   final String? project;
   final String visibility;
@@ -33,22 +33,16 @@ class GetManagedZonesManagedZone {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['description'] = description;
-    map['dnsName'] = dnsName;
-    map['id'] = id;
-    map['managedZoneId'] = managedZoneId;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    map['nameServers'] = nameServers;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['visibility'] = visibility;
-    return map;
+    return <String, dynamic>{
+      'description': description,
+      'dnsName': dnsName,
+      'id': id,
+      'managedZoneId': managedZoneId,
+      'name': ?name,
+      'nameServers': nameServers,
+      'project': ?project,
+      'visibility': visibility,
+    };
   }
 
   factory GetManagedZonesManagedZone.fromMap(Map<String, dynamic> map) {
@@ -64,3 +58,4 @@ class GetManagedZonesManagedZone {
     );
   }
 }
+

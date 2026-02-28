@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Ad break.
 class AdBreak {
   /// Start time in seconds for the ad break, relative to the output file timeline. The default is `0s`.
@@ -12,19 +13,15 @@ class AdBreak {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final startTimeOffsetValue = startTimeOffset;
-    if (startTimeOffsetValue != null) {
-      map['startTimeOffset'] = startTimeOffsetValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'startTimeOffset': ?startTimeOffset,
+    };
   }
 
   factory AdBreak.fromMap(Map<String, dynamic> map) {
     return AdBreak(
-      startTimeOffset: map['startTimeOffset'] == null
-          ? null
-          : map['startTimeOffset'] as String,
+      startTimeOffset: map['startTimeOffset'] == null ? null : map['startTimeOffset'] as String,
     );
   }
 }
+

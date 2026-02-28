@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A single iOS device.
 class IosDevice {
   /// The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
   final String iosModelId;
-
   /// The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
   final String iosVersionId;
-
   /// The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
   final String locale;
-
   /// How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
   final String orientation;
 
@@ -27,12 +25,12 @@ class IosDevice {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['iosModelId'] = iosModelId;
-    map['iosVersionId'] = iosVersionId;
-    map['locale'] = locale;
-    map['orientation'] = orientation;
-    return map;
+    return <String, dynamic>{
+      'iosModelId': iosModelId,
+      'iosVersionId': iosVersionId,
+      'locale': locale,
+      'orientation': orientation,
+    };
   }
 
   factory IosDevice.fromMap(Map<String, dynamic> map) {
@@ -44,3 +42,4 @@ class IosDevice {
     );
   }
 }
+

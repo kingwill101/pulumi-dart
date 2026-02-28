@@ -16,17 +16,15 @@ class GetInstructionArgs {
   GetInstructionArgs({
     required String instructionId,
     String? project,
-  })  : instructionId = pulumi.Input.asInput<String>(instructionId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      instructionId = pulumi.Input.asInput<String>(instructionId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['instructionId'] = instructionId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'instructionId': instructionId,
+      'project': ?project,
+    };
   }
 
   factory GetInstructionArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetInstructionArgs {
     );
   }
 }
+

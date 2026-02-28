@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetManagedRuleGroupConsumedLabel {
   /// Managed rule group name.
   final String name;
@@ -11,9 +12,9 @@ class GetManagedRuleGroupConsumedLabel {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetManagedRuleGroupConsumedLabel.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetManagedRuleGroupConsumedLabel {
     );
   }
 }
+

@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for Hierarchy Controller
 class ConfigManagementHierarchyControllerConfigResponseGkehubV1beta {
   /// Whether hierarchical resource quota is enabled in this cluster.
   final bool enableHierarchicalResourceQuota;
-
   /// Whether pod tree labels are enabled in this cluster.
   final bool enablePodTreeLabels;
-
   /// Whether Hierarchy Controller is enabled in this cluster.
   final bool enabled;
 
@@ -22,20 +21,19 @@ class ConfigManagementHierarchyControllerConfigResponseGkehubV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enableHierarchicalResourceQuota'] = enableHierarchicalResourceQuota;
-    map['enablePodTreeLabels'] = enablePodTreeLabels;
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enableHierarchicalResourceQuota': enableHierarchicalResourceQuota,
+      'enablePodTreeLabels': enablePodTreeLabels,
+      'enabled': enabled,
+    };
   }
 
-  factory ConfigManagementHierarchyControllerConfigResponseGkehubV1beta.fromMap(
-      Map<String, dynamic> map) {
+  factory ConfigManagementHierarchyControllerConfigResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return ConfigManagementHierarchyControllerConfigResponseGkehubV1beta(
-      enableHierarchicalResourceQuota:
-          map['enableHierarchicalResourceQuota'] as bool,
+      enableHierarchicalResourceQuota: map['enableHierarchicalResourceQuota'] as bool,
       enablePodTreeLabels: map['enablePodTreeLabels'] as bool,
       enabled: map['enabled'] as bool,
     );
   }
 }
+

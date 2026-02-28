@@ -16,17 +16,15 @@ class GetDeviceSessionArgs {
   GetDeviceSessionArgs({
     required String deviceSessionId,
     String? project,
-  })  : deviceSessionId = pulumi.Input.asInput<String>(deviceSessionId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      deviceSessionId = pulumi.Input.asInput<String>(deviceSessionId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['deviceSessionId'] = deviceSessionId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'deviceSessionId': deviceSessionId,
+      'project': ?project,
+    };
   }
 
   factory GetDeviceSessionArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetDeviceSessionArgs {
     );
   }
 }
+

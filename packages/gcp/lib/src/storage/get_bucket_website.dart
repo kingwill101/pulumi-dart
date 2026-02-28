@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetBucketWebsite {
   /// Behaves as the bucket's directory index where missing objects are treated as potential directories.
   final String mainPageSuffix;
-
   /// The custom object to return when a requested resource is not found.
   final String notFoundPage;
 
@@ -16,10 +16,10 @@ class GetBucketWebsite {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['mainPageSuffix'] = mainPageSuffix;
-    map['notFoundPage'] = notFoundPage;
-    return map;
+    return <String, dynamic>{
+      'mainPageSuffix': mainPageSuffix,
+      'notFoundPage': notFoundPage,
+    };
   }
 
   factory GetBucketWebsite.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetBucketWebsite {
     );
   }
 }
+

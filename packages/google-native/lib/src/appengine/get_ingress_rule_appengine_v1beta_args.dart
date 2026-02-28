@@ -16,14 +16,15 @@ class GetIngressRuleAppengineV1betaArgs {
   GetIngressRuleAppengineV1betaArgs({
     required String appId,
     required String ingressRuleId,
-  })  : appId = pulumi.Input.asInput<String>(appId),
-        ingressRuleId = pulumi.Input.asInput<String>(ingressRuleId);
+  }) :
+      appId = pulumi.Input.asInput<String>(appId),
+      ingressRuleId = pulumi.Input.asInput<String>(ingressRuleId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['appId'] = appId;
-    map['ingressRuleId'] = ingressRuleId;
-    return map;
+    return <String, dynamic>{
+      'appId': appId,
+      'ingressRuleId': ingressRuleId,
+    };
   }
 
   factory GetIngressRuleAppengineV1betaArgs.fromMap(Map<String, dynamic> map) {
@@ -33,3 +34,4 @@ class GetIngressRuleAppengineV1betaArgs {
     );
   }
 }
+

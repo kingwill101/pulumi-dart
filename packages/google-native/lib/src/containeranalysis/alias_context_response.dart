@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// An alias to a repo revision.
 class AliasContextResponse {
   /// The alias kind.
   final String kind;
-
   /// The alias name.
   final String name;
 
@@ -17,10 +17,10 @@ class AliasContextResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kind'] = kind;
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'kind': kind,
+      'name': name,
+    };
   }
 
   factory AliasContextResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class AliasContextResponse {
     );
   }
 }
+

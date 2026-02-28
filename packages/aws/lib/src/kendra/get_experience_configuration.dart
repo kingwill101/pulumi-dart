@@ -6,12 +6,9 @@ import 'get_experience_configuration_user_identity_configuration.dart';
 
 class GetExperienceConfiguration {
   /// The identifiers of your data sources and FAQs. This is the content you want to use for your Amazon Kendra Experience. Documented below.
-  final List<GetExperienceConfigurationContentSourceConfiguration>
-      contentSourceConfigurations;
-
+  final List<GetExperienceConfigurationContentSourceConfiguration> contentSourceConfigurations;
   /// The AWS SSO field name that contains the identifiers of your users, such as their emails. Documented below.
-  final List<GetExperienceConfigurationUserIdentityConfiguration>
-      userIdentityConfigurations;
+  final List<GetExperienceConfigurationUserIdentityConfiguration> userIdentityConfigurations;
 
   /// Creates a new [GetExperienceConfiguration].
   /// [contentSourceConfigurations] The identifiers of your data sources and FAQs. This is the content you want to use for your Amazon Kendra Experience. Documented below.
@@ -22,32 +19,17 @@ class GetExperienceConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['contentSourceConfigurations'] = pulumi.Input.encodeList<
-            GetExperienceConfigurationContentSourceConfiguration,
-            Map<String, dynamic>>(
-        contentSourceConfigurations, (value) => value.toMap());
-    map['userIdentityConfigurations'] = pulumi.Input.encodeList<
-            GetExperienceConfigurationUserIdentityConfiguration,
-            Map<String, dynamic>>(
-        userIdentityConfigurations, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'contentSourceConfigurations': pulumi.Input.encodeList<GetExperienceConfigurationContentSourceConfiguration, Map<String, dynamic>>(contentSourceConfigurations, (value) => value.toMap()),
+      'userIdentityConfigurations': pulumi.Input.encodeList<GetExperienceConfigurationUserIdentityConfiguration, Map<String, dynamic>>(userIdentityConfigurations, (value) => value.toMap()),
+    };
   }
 
   factory GetExperienceConfiguration.fromMap(Map<String, dynamic> map) {
     return GetExperienceConfiguration(
-      contentSourceConfigurations: pulumi.Input.decodeList<
-              GetExperienceConfigurationContentSourceConfiguration>(
-          map['contentSourceConfigurations'],
-          (value) =>
-              GetExperienceConfigurationContentSourceConfiguration.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      userIdentityConfigurations: pulumi.Input.decodeList<
-              GetExperienceConfigurationUserIdentityConfiguration>(
-          map['userIdentityConfigurations'],
-          (value) =>
-              GetExperienceConfigurationUserIdentityConfiguration.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      contentSourceConfigurations: pulumi.Input.decodeList<GetExperienceConfigurationContentSourceConfiguration>(map['contentSourceConfigurations'], (value) => GetExperienceConfigurationContentSourceConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      userIdentityConfigurations: pulumi.Input.decodeList<GetExperienceConfigurationUserIdentityConfiguration>(map['userIdentityConfigurations'], (value) => GetExperienceConfigurationUserIdentityConfiguration.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

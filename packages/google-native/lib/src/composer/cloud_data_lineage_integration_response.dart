@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for Cloud Data Lineage integration.
 class CloudDataLineageIntegrationResponse {
   /// Optional. Whether or not Cloud Data Lineage integration is enabled.
@@ -12,15 +13,15 @@ class CloudDataLineageIntegrationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory CloudDataLineageIntegrationResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory CloudDataLineageIntegrationResponse.fromMap(Map<String, dynamic> map) {
     return CloudDataLineageIntegrationResponse(
       enabled: map['enabled'] as bool,
     );
   }
 }
+

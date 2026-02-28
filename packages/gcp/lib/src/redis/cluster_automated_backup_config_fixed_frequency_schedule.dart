@@ -15,17 +15,15 @@ class ClusterAutomatedBackupConfigFixedFrequencySchedule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['startTime'] = startTime.toMap();
-    return map;
+    return <String, dynamic>{
+      'startTime': startTime.toMap(),
+    };
   }
 
-  factory ClusterAutomatedBackupConfigFixedFrequencySchedule.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterAutomatedBackupConfigFixedFrequencySchedule.fromMap(Map<String, dynamic> map) {
     return ClusterAutomatedBackupConfigFixedFrequencySchedule(
-      startTime:
-          ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime.fromMap(
-              (map['startTime'] as Map).cast<String, dynamic>()),
+      startTime: ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime.fromMap((map['startTime'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

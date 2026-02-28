@@ -14,21 +14,15 @@ class JobTemplateTemplateContainerEnvValueSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final secretKeyRefValue = secretKeyRef;
-    if (secretKeyRefValue != null) {
-      map['secretKeyRef'] = secretKeyRefValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'secretKeyRef': ?secretKeyRef == null ? null : secretKeyRef!.toMap(),
+    };
   }
 
-  factory JobTemplateTemplateContainerEnvValueSource.fromMap(
-      Map<String, dynamic> map) {
+  factory JobTemplateTemplateContainerEnvValueSource.fromMap(Map<String, dynamic> map) {
     return JobTemplateTemplateContainerEnvValueSource(
-      secretKeyRef: map['secretKeyRef'] == null
-          ? null
-          : JobTemplateTemplateContainerEnvValueSourceSecretKeyRef.fromMap(
-              (map['secretKeyRef'] as Map).cast<String, dynamic>()),
+      secretKeyRef: map['secretKeyRef'] == null ? null : JobTemplateTemplateContainerEnvValueSourceSecretKeyRef.fromMap((map['secretKeyRef'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

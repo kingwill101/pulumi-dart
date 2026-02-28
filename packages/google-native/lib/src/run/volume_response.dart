@@ -8,13 +8,10 @@ import 'secret_volume_source_response.dart';
 class VolumeResponse {
   /// Not supported in Cloud Run.
   final ConfigMapVolumeSourceResponse configMap;
-
   /// Ephemeral storage used as a shared volume.
   final EmptyDirVolumeSourceResponse emptyDir;
-
   /// Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
   final String name;
-
   /// The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secretName.
   final SecretVolumeSourceResponse secret;
 
@@ -31,23 +28,21 @@ class VolumeResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['configMap'] = configMap.toMap();
-    map['emptyDir'] = emptyDir.toMap();
-    map['name'] = name;
-    map['secret'] = secret.toMap();
-    return map;
+    return <String, dynamic>{
+      'configMap': configMap.toMap(),
+      'emptyDir': emptyDir.toMap(),
+      'name': name,
+      'secret': secret.toMap(),
+    };
   }
 
   factory VolumeResponse.fromMap(Map<String, dynamic> map) {
     return VolumeResponse(
-      configMap: ConfigMapVolumeSourceResponse.fromMap(
-          (map['configMap'] as Map).cast<String, dynamic>()),
-      emptyDir: EmptyDirVolumeSourceResponse.fromMap(
-          (map['emptyDir'] as Map).cast<String, dynamic>()),
+      configMap: ConfigMapVolumeSourceResponse.fromMap((map['configMap'] as Map).cast<String, dynamic>()),
+      emptyDir: EmptyDirVolumeSourceResponse.fromMap((map['emptyDir'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      secret: SecretVolumeSourceResponse.fromMap(
-          (map['secret'] as Map).cast<String, dynamic>()),
+      secret: SecretVolumeSourceResponse.fromMap((map['secret'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

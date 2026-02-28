@@ -14,20 +14,15 @@ class MembershipSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final certificateManagementValue = certificateManagement;
-    if (certificateManagementValue != null) {
-      map['certificateManagement'] = certificateManagementValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'certificateManagement': ?certificateManagement == null ? null : certificateManagement!.value,
+    };
   }
 
   factory MembershipSpec.fromMap(Map<String, dynamic> map) {
     return MembershipSpec(
-      certificateManagement: map['certificateManagement'] == null
-          ? null
-          : MembershipSpecCertificateManagement.fromValue(
-              map['certificateManagement'] as String),
+      certificateManagement: map['certificateManagement'] == null ? null : MembershipSpecCertificateManagement.fromValue(map['certificateManagement'] as String),
     );
   }
 }
+

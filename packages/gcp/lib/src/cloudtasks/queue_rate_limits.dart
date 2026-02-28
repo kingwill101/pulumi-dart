@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class QueueRateLimits {
   /// (Output)
   /// The max burst size.
@@ -8,13 +9,11 @@ class QueueRateLimits {
   /// rate so processing starts shortly after a task is enqueued, but still limits
   /// resource usage when many tasks are enqueued in a short period of time.
   final int? maxBurstSize;
-
   /// The maximum number of concurrent tasks that Cloud Tasks allows to
   /// be dispatched for this queue. After this threshold has been
   /// reached, Cloud Tasks stops dispatching tasks until the number of
   /// concurrent requests decreases.
   final int? maxConcurrentDispatches;
-
   /// The maximum rate at which tasks are dispatched from this queue.
   /// If unspecified when the queue is created, Cloud Tasks will pick the default.
   final double? maxDispatchesPerSecond;
@@ -30,32 +29,19 @@ class QueueRateLimits {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final maxBurstSizeValue = maxBurstSize;
-    if (maxBurstSizeValue != null) {
-      map['maxBurstSize'] = maxBurstSizeValue;
-    }
-    final maxConcurrentDispatchesValue = maxConcurrentDispatches;
-    if (maxConcurrentDispatchesValue != null) {
-      map['maxConcurrentDispatches'] = maxConcurrentDispatchesValue;
-    }
-    final maxDispatchesPerSecondValue = maxDispatchesPerSecond;
-    if (maxDispatchesPerSecondValue != null) {
-      map['maxDispatchesPerSecond'] = maxDispatchesPerSecondValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'maxBurstSize': ?maxBurstSize,
+      'maxConcurrentDispatches': ?maxConcurrentDispatches,
+      'maxDispatchesPerSecond': ?maxDispatchesPerSecond,
+    };
   }
 
   factory QueueRateLimits.fromMap(Map<String, dynamic> map) {
     return QueueRateLimits(
-      maxBurstSize:
-          map['maxBurstSize'] == null ? null : map['maxBurstSize'] as int,
-      maxConcurrentDispatches: map['maxConcurrentDispatches'] == null
-          ? null
-          : map['maxConcurrentDispatches'] as int,
-      maxDispatchesPerSecond: map['maxDispatchesPerSecond'] == null
-          ? null
-          : map['maxDispatchesPerSecond'] as double,
+      maxBurstSize: map['maxBurstSize'] == null ? null : map['maxBurstSize'] as int,
+      maxConcurrentDispatches: map['maxConcurrentDispatches'] == null ? null : map['maxConcurrentDispatches'] as int,
+      maxDispatchesPerSecond: map['maxDispatchesPerSecond'] == null ? null : map['maxDispatchesPerSecond'] as double,
     );
   }
 }
+

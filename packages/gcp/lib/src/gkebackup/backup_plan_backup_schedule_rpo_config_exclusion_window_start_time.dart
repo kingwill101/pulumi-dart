@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime {
   /// Hours of day in 24 hour format.
   final int? hours;
-
   /// Minutes of hour of day.
   final int? minutes;
-
   /// Fractions of seconds in nanoseconds.
   final int? nanos;
-
   /// Seconds of minutes of the time.
   final int? seconds;
 
@@ -26,28 +24,15 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final hoursValue = hours;
-    if (hoursValue != null) {
-      map['hours'] = hoursValue;
-    }
-    final minutesValue = minutes;
-    if (minutesValue != null) {
-      map['minutes'] = minutesValue;
-    }
-    final nanosValue = nanos;
-    if (nanosValue != null) {
-      map['nanos'] = nanosValue;
-    }
-    final secondsValue = seconds;
-    if (secondsValue != null) {
-      map['seconds'] = secondsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'hours': ?hours,
+      'minutes': ?minutes,
+      'nanos': ?nanos,
+      'seconds': ?seconds,
+    };
   }
 
-  factory BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime.fromMap(
-      Map<String, dynamic> map) {
+  factory BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime.fromMap(Map<String, dynamic> map) {
     return BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime(
       hours: map['hours'] == null ? null : map['hours'] as int,
       minutes: map['minutes'] == null ? null : map['minutes'] as int,
@@ -56,3 +41,4 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime {
     );
   }
 }
+

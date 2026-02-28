@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetJobDefinitionEksPropertyPodPropertyContainerEnv {
   /// The name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
   final String name;
-
   /// The quantity of the specified resource to reserve for the container.
   final String value;
 
@@ -16,17 +16,17 @@ class GetJobDefinitionEksPropertyPodPropertyContainerEnv {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
-  factory GetJobDefinitionEksPropertyPodPropertyContainerEnv.fromMap(
-      Map<String, dynamic> map) {
+  factory GetJobDefinitionEksPropertyPodPropertyContainerEnv.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionEksPropertyPodPropertyContainerEnv(
       name: map['name'] as String,
       value: map['value'] as String,
     );
   }
 }
+

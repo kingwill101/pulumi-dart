@@ -4,8 +4,7 @@ import 'event_connection_invocation_connectivity_parameters_resource_parameters.
 
 class EventConnectionInvocationConnectivityParameters {
   /// The parameters for EventBridge to use when invoking the resource endpoint. Documented below.
-  final EventConnectionInvocationConnectivityParametersResourceParameters
-      resourceParameters;
+  final EventConnectionInvocationConnectivityParametersResourceParameters resourceParameters;
 
   /// Creates a new [EventConnectionInvocationConnectivityParameters].
   /// [resourceParameters] The parameters for EventBridge to use when invoking the resource endpoint. Documented below.
@@ -14,18 +13,15 @@ class EventConnectionInvocationConnectivityParameters {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['resourceParameters'] = resourceParameters.toMap();
-    return map;
+    return <String, dynamic>{
+      'resourceParameters': resourceParameters.toMap(),
+    };
   }
 
-  factory EventConnectionInvocationConnectivityParameters.fromMap(
-      Map<String, dynamic> map) {
+  factory EventConnectionInvocationConnectivityParameters.fromMap(Map<String, dynamic> map) {
     return EventConnectionInvocationConnectivityParameters(
-      resourceParameters:
-          EventConnectionInvocationConnectivityParametersResourceParameters
-              .fromMap(
-                  (map['resourceParameters'] as Map).cast<String, dynamic>()),
+      resourceParameters: EventConnectionInvocationConnectivityParametersResourceParameters.fromMap((map['resourceParameters'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

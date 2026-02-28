@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInstanceTypeInstanceDisk {
   final int count;
   final int size;
@@ -16,11 +17,11 @@ class GetInstanceTypeInstanceDisk {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['count'] = count;
-    map['size'] = size;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'count': count,
+      'size': size,
+      'type': type,
+    };
   }
 
   factory GetInstanceTypeInstanceDisk.fromMap(Map<String, dynamic> map) {
@@ -31,3 +32,4 @@ class GetInstanceTypeInstanceDisk {
     );
   }
 }
+

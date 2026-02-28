@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceGceSetupNetworkInterfaceAccessConfig {
   /// An external IP address associated with this instance. Specify an unused
   /// static external IP address available to the project or leave this field
@@ -15,15 +16,15 @@ class InstanceGceSetupNetworkInterfaceAccessConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['externalIp'] = externalIp;
-    return map;
+    return <String, dynamic>{
+      'externalIp': externalIp,
+    };
   }
 
-  factory InstanceGceSetupNetworkInterfaceAccessConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory InstanceGceSetupNetworkInterfaceAccessConfig.fromMap(Map<String, dynamic> map) {
     return InstanceGceSetupNetworkInterfaceAccessConfig(
       externalIp: map['externalIp'] as String,
     );
   }
 }
+

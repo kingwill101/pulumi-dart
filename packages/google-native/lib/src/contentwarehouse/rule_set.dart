@@ -7,15 +7,11 @@ class RuleSet extends pulumi.CustomResource {
   /// Short description of the rule-set.
   late final pulumi.Output<String> description;
   late final pulumi.Output<String> location;
-
   /// The resource name of the rule set. Managed internally. Format: projects/{project_number}/locations/{location}/ruleSet/{rule_set_id}. The name is ignored when creating a rule set.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// List of rules given by the customer.
-  late final pulumi.Output<List<GoogleCloudContentwarehouseV1RuleResponse>>
-      rules;
-
+  late final pulumi.Output<List<GoogleCloudContentwarehouseV1RuleResponse>> rules;
   /// Source of the rules i.e., customer name.
   late final pulumi.Output<String> source;
 
@@ -37,9 +33,7 @@ class RuleSet extends pulumi.CustomResource {
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
-    this.rules =
-        registerOutput<List<GoogleCloudContentwarehouseV1RuleResponse>>(
-            'rules');
+    this.rules = registerOutput<List<GoogleCloudContentwarehouseV1RuleResponse>>('rules');
     this.source = registerOutput<String>('source');
   }
 }

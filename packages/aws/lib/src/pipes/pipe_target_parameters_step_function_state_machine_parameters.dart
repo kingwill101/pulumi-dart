@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PipeTargetParametersStepFunctionStateMachineParameters {
   /// Specify whether to invoke the function synchronously or asynchronously. Valid Values: REQUEST_RESPONSE, FIRE_AND_FORGET.
   final String invocationType;
@@ -11,15 +12,15 @@ class PipeTargetParametersStepFunctionStateMachineParameters {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['invocationType'] = invocationType;
-    return map;
+    return <String, dynamic>{
+      'invocationType': invocationType,
+    };
   }
 
-  factory PipeTargetParametersStepFunctionStateMachineParameters.fromMap(
-      Map<String, dynamic> map) {
+  factory PipeTargetParametersStepFunctionStateMachineParameters.fromMap(Map<String, dynamic> map) {
     return PipeTargetParametersStepFunctionStateMachineParameters(
       invocationType: map['invocationType'] as String,
     );
   }
 }
+

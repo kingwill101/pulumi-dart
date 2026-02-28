@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// [Optional] The primary key of the table.
 class TableConstraintsPrimaryKeyResponse {
   final List<String> columns;
@@ -11,9 +12,9 @@ class TableConstraintsPrimaryKeyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['columns'] = columns;
-    return map;
+    return <String, dynamic>{
+      'columns': columns,
+    };
   }
 
   factory TableConstraintsPrimaryKeyResponse.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class TableConstraintsPrimaryKeyResponse {
     );
   }
 }
+

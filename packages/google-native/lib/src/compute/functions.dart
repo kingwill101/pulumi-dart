@@ -1033,8 +1033,7 @@ Future<GetInstanceGroupManagerResult> getInstanceGroupManager(
 /// Returns all of the details about the specified resize request.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_instance_group_manager_resize_request_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetInstanceGroupManagerResizeRequestResult>
-    getInstanceGroupManagerResizeRequest(
+Future<GetInstanceGroupManagerResizeRequestResult> getInstanceGroupManagerResizeRequest(
   GetInstanceGroupManagerResizeRequestArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1162,8 +1161,7 @@ Future<GetInterconnectAttachmentResult> getInterconnectAttachment(
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_interconnect_attachment_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetInterconnectAttachmentIamPolicyResult>
-    getInterconnectAttachmentIamPolicy(
+Future<GetInterconnectAttachmentIamPolicyResult> getInterconnectAttachmentIamPolicy(
   GetInterconnectAttachmentIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1371,8 +1369,7 @@ Future<GetNetworkFirewallPolicyResult> getNetworkFirewallPolicy(
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_network_firewall_policy_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNetworkFirewallPolicyIamPolicyResult>
-    getNetworkFirewallPolicyIamPolicy(
+Future<GetNetworkFirewallPolicyIamPolicyResult> getNetworkFirewallPolicyIamPolicy(
   GetNetworkFirewallPolicyIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1692,8 +1689,7 @@ Future<GetRegionInstantSnapshotResult> getRegionInstantSnapshot(
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_region_instant_snapshot_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionInstantSnapshotIamPolicyResult>
-    getRegionInstantSnapshotIamPolicy(
+Future<GetRegionInstantSnapshotIamPolicyResult> getRegionInstantSnapshotIamPolicy(
   GetRegionInstantSnapshotIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1741,8 +1737,7 @@ Future<GetRegionNetworkFirewallPolicyResult> getRegionNetworkFirewallPolicy(
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_region_network_firewall_policy_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionNetworkFirewallPolicyIamPolicyResult>
-    getRegionNetworkFirewallPolicyIamPolicy(
+Future<GetRegionNetworkFirewallPolicyIamPolicyResult> getRegionNetworkFirewallPolicyIamPolicy(
   GetRegionNetworkFirewallPolicyIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2430,8 +2425,7 @@ Future<GetBackendBucketComputeBetaResult> getBackendBucketComputeBeta(
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_backend_bucket_iam_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetBackendBucketIamPolicyComputeBetaResult>
-    getBackendBucketIamPolicyComputeBeta(
+Future<GetBackendBucketIamPolicyComputeBetaResult> getBackendBucketIamPolicyComputeBeta(
   GetBackendBucketIamPolicyComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2463,8 +2457,7 @@ Future<GetBackendServiceComputeBetaResult> getBackendServiceComputeBeta(
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_backend_service_iam_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetBackendServiceIamPolicyComputeBetaResult>
-    getBackendServiceIamPolicyComputeBeta(
+Future<GetBackendServiceIamPolicyComputeBetaResult> getBackendServiceIamPolicyComputeBeta(
   GetBackendServiceIamPolicyComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2560,8 +2553,7 @@ Future<GetFirewallPolicyComputeBetaResult> getFirewallPolicyComputeBeta(
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_firewall_policy_iam_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetFirewallPolicyIamPolicyComputeBetaResult>
-    getFirewallPolicyIamPolicyComputeBeta(
+Future<GetFirewallPolicyIamPolicyComputeBetaResult> getFirewallPolicyIamPolicyComputeBeta(
   GetFirewallPolicyIamPolicyComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2625,8 +2617,7 @@ Future<GetGlobalAddressComputeBetaResult> getGlobalAddressComputeBeta(
 /// Returns the specified GlobalForwardingRule resource. Gets a list of available forwarding rules by making a list() request.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_global_forwarding_rule_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetGlobalForwardingRuleComputeBetaResult>
-    getGlobalForwardingRuleComputeBeta(
+Future<GetGlobalForwardingRuleComputeBetaResult> getGlobalForwardingRuleComputeBeta(
   GetGlobalForwardingRuleComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2642,8 +2633,7 @@ Future<GetGlobalForwardingRuleComputeBetaResult>
 /// Returns the specified network endpoint group.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_global_network_endpoint_group_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetGlobalNetworkEndpointGroupComputeBetaResult>
-    getGlobalNetworkEndpointGroupComputeBeta(
+Future<GetGlobalNetworkEndpointGroupComputeBetaResult> getGlobalNetworkEndpointGroupComputeBeta(
   GetGlobalNetworkEndpointGroupComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2659,8 +2649,7 @@ Future<GetGlobalNetworkEndpointGroupComputeBetaResult>
 /// Returns the specified global PublicDelegatedPrefix resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_global_public_delegated_prefix_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetGlobalPublicDelegatedPrefixComputeBetaResult>
-    getGlobalPublicDelegatedPrefixComputeBeta(
+Future<GetGlobalPublicDelegatedPrefixComputeBetaResult> getGlobalPublicDelegatedPrefixComputeBeta(
   GetGlobalPublicDelegatedPrefixComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2788,8 +2777,7 @@ Future<GetInstanceGroupComputeBetaResult> getInstanceGroupComputeBeta(
 /// Returns all of the details about the specified managed instance group.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_instance_group_manager_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetInstanceGroupManagerComputeBetaResult>
-    getInstanceGroupManagerComputeBeta(
+Future<GetInstanceGroupManagerComputeBetaResult> getInstanceGroupManagerComputeBeta(
   GetInstanceGroupManagerComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2805,8 +2793,7 @@ Future<GetInstanceGroupManagerComputeBetaResult>
 /// Returns all of the details about the specified resize request.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_instance_group_manager_resize_request_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetInstanceGroupManagerResizeRequestComputeBetaResult>
-    getInstanceGroupManagerResizeRequestComputeBeta(
+Future<GetInstanceGroupManagerResizeRequestComputeBetaResult> getInstanceGroupManagerResizeRequestComputeBeta(
   GetInstanceGroupManagerResizeRequestComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2854,8 +2841,7 @@ Future<GetInstanceTemplateComputeBetaResult> getInstanceTemplateComputeBeta(
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_instance_template_iam_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetInstanceTemplateIamPolicyComputeBetaResult>
-    getInstanceTemplateIamPolicyComputeBeta(
+Future<GetInstanceTemplateIamPolicyComputeBetaResult> getInstanceTemplateIamPolicyComputeBeta(
   GetInstanceTemplateIamPolicyComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2887,8 +2873,7 @@ Future<GetInstantSnapshotComputeBetaResult> getInstantSnapshotComputeBeta(
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_instant_snapshot_iam_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetInstantSnapshotIamPolicyComputeBetaResult>
-    getInstantSnapshotIamPolicyComputeBeta(
+Future<GetInstantSnapshotIamPolicyComputeBetaResult> getInstantSnapshotIamPolicyComputeBeta(
   GetInstantSnapshotIamPolicyComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2920,8 +2905,7 @@ Future<GetInterconnectComputeBetaResult> getInterconnectComputeBeta(
 /// Returns the specified interconnect attachment.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_interconnect_attachment_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetInterconnectAttachmentComputeBetaResult>
-    getInterconnectAttachmentComputeBeta(
+Future<GetInterconnectAttachmentComputeBetaResult> getInterconnectAttachmentComputeBeta(
   GetInterconnectAttachmentComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2985,8 +2969,7 @@ Future<GetMachineImageComputeBetaResult> getMachineImageComputeBeta(
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_machine_image_iam_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetMachineImageIamPolicyComputeBetaResult>
-    getMachineImageIamPolicyComputeBeta(
+Future<GetMachineImageIamPolicyComputeBetaResult> getMachineImageIamPolicyComputeBeta(
   GetMachineImageIamPolicyComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3034,8 +3017,7 @@ Future<GetNetworkAttachmentComputeBetaResult> getNetworkAttachmentComputeBeta(
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_network_attachment_iam_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNetworkAttachmentIamPolicyComputeBetaResult>
-    getNetworkAttachmentIamPolicyComputeBeta(
+Future<GetNetworkAttachmentIamPolicyComputeBetaResult> getNetworkAttachmentIamPolicyComputeBeta(
   GetNetworkAttachmentIamPolicyComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3051,8 +3033,7 @@ Future<GetNetworkAttachmentIamPolicyComputeBetaResult>
 /// Gets a specified NetworkEdgeSecurityService.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_network_edge_security_service_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNetworkEdgeSecurityServiceComputeBetaResult>
-    getNetworkEdgeSecurityServiceComputeBeta(
+Future<GetNetworkEdgeSecurityServiceComputeBetaResult> getNetworkEdgeSecurityServiceComputeBeta(
   GetNetworkEdgeSecurityServiceComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3068,8 +3049,7 @@ Future<GetNetworkEdgeSecurityServiceComputeBetaResult>
 /// Returns the specified network endpoint group.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_network_endpoint_group_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNetworkEndpointGroupComputeBetaResult>
-    getNetworkEndpointGroupComputeBeta(
+Future<GetNetworkEndpointGroupComputeBetaResult> getNetworkEndpointGroupComputeBeta(
   GetNetworkEndpointGroupComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3085,8 +3065,7 @@ Future<GetNetworkEndpointGroupComputeBetaResult>
 /// Returns the specified network firewall policy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_network_firewall_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNetworkFirewallPolicyComputeBetaResult>
-    getNetworkFirewallPolicyComputeBeta(
+Future<GetNetworkFirewallPolicyComputeBetaResult> getNetworkFirewallPolicyComputeBeta(
   GetNetworkFirewallPolicyComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3102,8 +3081,7 @@ Future<GetNetworkFirewallPolicyComputeBetaResult>
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_network_firewall_policy_iam_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNetworkFirewallPolicyIamPolicyComputeBetaResult>
-    getNetworkFirewallPolicyIamPolicyComputeBeta(
+Future<GetNetworkFirewallPolicyIamPolicyComputeBetaResult> getNetworkFirewallPolicyIamPolicyComputeBeta(
   GetNetworkFirewallPolicyIamPolicyComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3167,8 +3145,7 @@ Future<GetNodeTemplateComputeBetaResult> getNodeTemplateComputeBeta(
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_node_template_iam_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNodeTemplateIamPolicyComputeBetaResult>
-    getNodeTemplateIamPolicyComputeBeta(
+Future<GetNodeTemplateIamPolicyComputeBetaResult> getNodeTemplateIamPolicyComputeBeta(
   GetNodeTemplateIamPolicyComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3184,8 +3161,7 @@ Future<GetNodeTemplateIamPolicyComputeBetaResult>
 /// List all of the ordered rules present in a single specified policy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_organization_security_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetOrganizationSecurityPolicyComputeBetaResult>
-    getOrganizationSecurityPolicyComputeBeta(
+Future<GetOrganizationSecurityPolicyComputeBetaResult> getOrganizationSecurityPolicyComputeBeta(
   GetOrganizationSecurityPolicyComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3217,8 +3193,7 @@ Future<GetPacketMirroringComputeBetaResult> getPacketMirroringComputeBeta(
 /// Returns the specified PublicAdvertisedPrefix resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_public_advertised_prefix_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPublicAdvertisedPrefixComputeBetaResult>
-    getPublicAdvertisedPrefixComputeBeta(
+Future<GetPublicAdvertisedPrefixComputeBetaResult> getPublicAdvertisedPrefixComputeBeta(
   GetPublicAdvertisedPrefixComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3234,8 +3209,7 @@ Future<GetPublicAdvertisedPrefixComputeBetaResult>
 /// Returns the specified PublicDelegatedPrefix resource in the given region.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_public_delegated_prefix_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPublicDelegatedPrefixComputeBetaResult>
-    getPublicDelegatedPrefixComputeBeta(
+Future<GetPublicDelegatedPrefixComputeBetaResult> getPublicDelegatedPrefixComputeBeta(
   GetPublicDelegatedPrefixComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3267,8 +3241,7 @@ Future<GetRegionAutoscalerComputeBetaResult> getRegionAutoscalerComputeBeta(
 /// Returns the specified regional BackendService resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_region_backend_service_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionBackendServiceComputeBetaResult>
-    getRegionBackendServiceComputeBeta(
+Future<GetRegionBackendServiceComputeBetaResult> getRegionBackendServiceComputeBeta(
   GetRegionBackendServiceComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3284,8 +3257,7 @@ Future<GetRegionBackendServiceComputeBetaResult>
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_region_backend_service_iam_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionBackendServiceIamPolicyComputeBetaResult>
-    getRegionBackendServiceIamPolicyComputeBeta(
+Future<GetRegionBackendServiceIamPolicyComputeBetaResult> getRegionBackendServiceIamPolicyComputeBeta(
   GetRegionBackendServiceIamPolicyComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3333,8 +3305,7 @@ Future<GetRegionDiskComputeBetaResult> getRegionDiskComputeBeta(
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_region_disk_iam_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionDiskIamPolicyComputeBetaResult>
-    getRegionDiskIamPolicyComputeBeta(
+Future<GetRegionDiskIamPolicyComputeBetaResult> getRegionDiskIamPolicyComputeBeta(
   GetRegionDiskIamPolicyComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3366,8 +3337,7 @@ Future<GetRegionHealthCheckComputeBetaResult> getRegionHealthCheckComputeBeta(
 /// Returns the specified regional HealthCheckService resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_region_health_check_service_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionHealthCheckServiceComputeBetaResult>
-    getRegionHealthCheckServiceComputeBeta(
+Future<GetRegionHealthCheckServiceComputeBetaResult> getRegionHealthCheckServiceComputeBeta(
   GetRegionHealthCheckServiceComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3383,8 +3353,7 @@ Future<GetRegionHealthCheckServiceComputeBetaResult>
 /// Returns all of the details about the specified managed instance group.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_region_instance_group_manager_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionInstanceGroupManagerComputeBetaResult>
-    getRegionInstanceGroupManagerComputeBeta(
+Future<GetRegionInstanceGroupManagerComputeBetaResult> getRegionInstanceGroupManagerComputeBeta(
   GetRegionInstanceGroupManagerComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3400,8 +3369,7 @@ Future<GetRegionInstanceGroupManagerComputeBetaResult>
 /// Returns the specified instance template.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_region_instance_template_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionInstanceTemplateComputeBetaResult>
-    getRegionInstanceTemplateComputeBeta(
+Future<GetRegionInstanceTemplateComputeBetaResult> getRegionInstanceTemplateComputeBeta(
   GetRegionInstanceTemplateComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3417,8 +3385,7 @@ Future<GetRegionInstanceTemplateComputeBetaResult>
 /// Returns the specified InstantSnapshot resource in the specified region.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_region_instant_snapshot_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionInstantSnapshotComputeBetaResult>
-    getRegionInstantSnapshotComputeBeta(
+Future<GetRegionInstantSnapshotComputeBetaResult> getRegionInstantSnapshotComputeBeta(
   GetRegionInstantSnapshotComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3434,8 +3401,7 @@ Future<GetRegionInstantSnapshotComputeBetaResult>
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_region_instant_snapshot_iam_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionInstantSnapshotIamPolicyComputeBetaResult>
-    getRegionInstantSnapshotIamPolicyComputeBeta(
+Future<GetRegionInstantSnapshotIamPolicyComputeBetaResult> getRegionInstantSnapshotIamPolicyComputeBeta(
   GetRegionInstantSnapshotIamPolicyComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3451,8 +3417,7 @@ Future<GetRegionInstantSnapshotIamPolicyComputeBetaResult>
 /// Returns the specified network endpoint group.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_region_network_endpoint_group_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionNetworkEndpointGroupComputeBetaResult>
-    getRegionNetworkEndpointGroupComputeBeta(
+Future<GetRegionNetworkEndpointGroupComputeBetaResult> getRegionNetworkEndpointGroupComputeBeta(
   GetRegionNetworkEndpointGroupComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3468,8 +3433,7 @@ Future<GetRegionNetworkEndpointGroupComputeBetaResult>
 /// Returns the specified network firewall policy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_region_network_firewall_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionNetworkFirewallPolicyComputeBetaResult>
-    getRegionNetworkFirewallPolicyComputeBeta(
+Future<GetRegionNetworkFirewallPolicyComputeBetaResult> getRegionNetworkFirewallPolicyComputeBeta(
   GetRegionNetworkFirewallPolicyComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3485,8 +3449,7 @@ Future<GetRegionNetworkFirewallPolicyComputeBetaResult>
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_region_network_firewall_policy_iam_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionNetworkFirewallPolicyIamPolicyComputeBetaResult>
-    getRegionNetworkFirewallPolicyIamPolicyComputeBeta(
+Future<GetRegionNetworkFirewallPolicyIamPolicyComputeBetaResult> getRegionNetworkFirewallPolicyIamPolicyComputeBeta(
   GetRegionNetworkFirewallPolicyIamPolicyComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3496,15 +3459,13 @@ Future<GetRegionNetworkFirewallPolicyIamPolicyComputeBetaResult>
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetRegionNetworkFirewallPolicyIamPolicyComputeBetaResult.fromMap(
-      result);
+  return GetRegionNetworkFirewallPolicyIamPolicyComputeBetaResult.fromMap(result);
 }
 
 /// Returns the specified NotificationEndpoint resource in the given region.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_region_notification_endpoint_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionNotificationEndpointComputeBetaResult>
-    getRegionNotificationEndpointComputeBeta(
+Future<GetRegionNotificationEndpointComputeBetaResult> getRegionNotificationEndpointComputeBeta(
   GetRegionNotificationEndpointComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3520,8 +3481,7 @@ Future<GetRegionNotificationEndpointComputeBetaResult>
 /// List all of the ordered rules present in a single specified policy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_region_security_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionSecurityPolicyComputeBetaResult>
-    getRegionSecurityPolicyComputeBeta(
+Future<GetRegionSecurityPolicyComputeBetaResult> getRegionSecurityPolicyComputeBeta(
   GetRegionSecurityPolicyComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3537,8 +3497,7 @@ Future<GetRegionSecurityPolicyComputeBetaResult>
 /// Returns the specified SslCertificate resource in the specified region. Get a list of available SSL certificates by making a list() request.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_region_ssl_certificate_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionSslCertificateComputeBetaResult>
-    getRegionSslCertificateComputeBeta(
+Future<GetRegionSslCertificateComputeBetaResult> getRegionSslCertificateComputeBeta(
   GetRegionSslCertificateComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3570,8 +3529,7 @@ Future<GetRegionSslPolicyComputeBetaResult> getRegionSslPolicyComputeBeta(
 /// Returns the specified TargetHttpProxy resource in the specified region.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_region_target_http_proxy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionTargetHttpProxyComputeBetaResult>
-    getRegionTargetHttpProxyComputeBeta(
+Future<GetRegionTargetHttpProxyComputeBetaResult> getRegionTargetHttpProxyComputeBeta(
   GetRegionTargetHttpProxyComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3587,8 +3545,7 @@ Future<GetRegionTargetHttpProxyComputeBetaResult>
 /// Returns the specified TargetHttpsProxy resource in the specified region.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_region_target_https_proxy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionTargetHttpsProxyComputeBetaResult>
-    getRegionTargetHttpsProxyComputeBeta(
+Future<GetRegionTargetHttpsProxyComputeBetaResult> getRegionTargetHttpsProxyComputeBeta(
   GetRegionTargetHttpsProxyComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3604,8 +3561,7 @@ Future<GetRegionTargetHttpsProxyComputeBetaResult>
 /// Returns the specified TargetTcpProxy resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_region_target_tcp_proxy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionTargetTcpProxyComputeBetaResult>
-    getRegionTargetTcpProxyComputeBeta(
+Future<GetRegionTargetTcpProxyComputeBetaResult> getRegionTargetTcpProxyComputeBeta(
   GetRegionTargetTcpProxyComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3653,8 +3609,7 @@ Future<GetReservationComputeBetaResult> getReservationComputeBeta(
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_reservation_iam_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetReservationIamPolicyComputeBetaResult>
-    getReservationIamPolicyComputeBeta(
+Future<GetReservationIamPolicyComputeBetaResult> getReservationIamPolicyComputeBeta(
   GetReservationIamPolicyComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3686,8 +3641,7 @@ Future<GetResourcePolicyComputeBetaResult> getResourcePolicyComputeBeta(
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_resource_policy_iam_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetResourcePolicyIamPolicyComputeBetaResult>
-    getResourcePolicyIamPolicyComputeBeta(
+Future<GetResourcePolicyIamPolicyComputeBetaResult> getResourcePolicyIamPolicyComputeBeta(
   GetResourcePolicyIamPolicyComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3767,8 +3721,7 @@ Future<GetServiceAttachmentComputeBetaResult> getServiceAttachmentComputeBeta(
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_service_attachment_iam_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetServiceAttachmentIamPolicyComputeBetaResult>
-    getServiceAttachmentIamPolicyComputeBeta(
+Future<GetServiceAttachmentIamPolicyComputeBetaResult> getServiceAttachmentIamPolicyComputeBeta(
   GetServiceAttachmentIamPolicyComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3864,8 +3817,7 @@ Future<GetSubnetworkComputeBetaResult> getSubnetworkComputeBeta(
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_subnetwork_iam_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSubnetworkIamPolicyComputeBetaResult>
-    getSubnetworkIamPolicyComputeBeta(
+Future<GetSubnetworkIamPolicyComputeBetaResult> getSubnetworkIamPolicyComputeBeta(
   GetSubnetworkIamPolicyComputeBetaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -4105,8 +4057,7 @@ Future<GetBackendBucketComputeV1Result> getBackendBucketComputeV1(
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_backend_bucket_iam_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetBackendBucketIamPolicyComputeV1Result>
-    getBackendBucketIamPolicyComputeV1(
+Future<GetBackendBucketIamPolicyComputeV1Result> getBackendBucketIamPolicyComputeV1(
   GetBackendBucketIamPolicyComputeV1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -4138,8 +4089,7 @@ Future<GetBackendServiceComputeV1Result> getBackendServiceComputeV1(
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_backend_service_iam_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetBackendServiceIamPolicyComputeV1Result>
-    getBackendServiceIamPolicyComputeV1(
+Future<GetBackendServiceIamPolicyComputeV1Result> getBackendServiceIamPolicyComputeV1(
   GetBackendServiceIamPolicyComputeV1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -4235,8 +4185,7 @@ Future<GetFirewallPolicyComputeV1Result> getFirewallPolicyComputeV1(
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_firewall_policy_iam_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetFirewallPolicyIamPolicyComputeV1Result>
-    getFirewallPolicyIamPolicyComputeV1(
+Future<GetFirewallPolicyIamPolicyComputeV1Result> getFirewallPolicyIamPolicyComputeV1(
   GetFirewallPolicyIamPolicyComputeV1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -4300,8 +4249,7 @@ Future<GetGlobalForwardingRuleComputeV1Result> getGlobalForwardingRuleComputeV1(
 /// Returns the specified network endpoint group.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_global_network_endpoint_group_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetGlobalNetworkEndpointGroupComputeV1Result>
-    getGlobalNetworkEndpointGroupComputeV1(
+Future<GetGlobalNetworkEndpointGroupComputeV1Result> getGlobalNetworkEndpointGroupComputeV1(
   GetGlobalNetworkEndpointGroupComputeV1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -4317,8 +4265,7 @@ Future<GetGlobalNetworkEndpointGroupComputeV1Result>
 /// Returns the specified global PublicDelegatedPrefix resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_global_public_delegated_prefix_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetGlobalPublicDelegatedPrefixComputeV1Result>
-    getGlobalPublicDelegatedPrefixComputeV1(
+Future<GetGlobalPublicDelegatedPrefixComputeV1Result> getGlobalPublicDelegatedPrefixComputeV1(
   GetGlobalPublicDelegatedPrefixComputeV1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -4494,8 +4441,7 @@ Future<GetInstanceTemplateComputeV1Result> getInstanceTemplateComputeV1(
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_instance_template_iam_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetInstanceTemplateIamPolicyComputeV1Result>
-    getInstanceTemplateIamPolicyComputeV1(
+Future<GetInstanceTemplateIamPolicyComputeV1Result> getInstanceTemplateIamPolicyComputeV1(
   GetInstanceTemplateIamPolicyComputeV1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -4527,8 +4473,7 @@ Future<GetInterconnectComputeV1Result> getInterconnectComputeV1(
 /// Returns the specified interconnect attachment.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_interconnect_attachment_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetInterconnectAttachmentComputeV1Result>
-    getInterconnectAttachmentComputeV1(
+Future<GetInterconnectAttachmentComputeV1Result> getInterconnectAttachmentComputeV1(
   GetInterconnectAttachmentComputeV1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -4592,8 +4537,7 @@ Future<GetMachineImageComputeV1Result> getMachineImageComputeV1(
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_machine_image_iam_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetMachineImageIamPolicyComputeV1Result>
-    getMachineImageIamPolicyComputeV1(
+Future<GetMachineImageIamPolicyComputeV1Result> getMachineImageIamPolicyComputeV1(
   GetMachineImageIamPolicyComputeV1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -4641,8 +4585,7 @@ Future<GetNetworkAttachmentComputeV1Result> getNetworkAttachmentComputeV1(
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_network_attachment_iam_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNetworkAttachmentIamPolicyComputeV1Result>
-    getNetworkAttachmentIamPolicyComputeV1(
+Future<GetNetworkAttachmentIamPolicyComputeV1Result> getNetworkAttachmentIamPolicyComputeV1(
   GetNetworkAttachmentIamPolicyComputeV1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -4658,8 +4601,7 @@ Future<GetNetworkAttachmentIamPolicyComputeV1Result>
 /// Gets a specified NetworkEdgeSecurityService.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_network_edge_security_service_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNetworkEdgeSecurityServiceComputeV1Result>
-    getNetworkEdgeSecurityServiceComputeV1(
+Future<GetNetworkEdgeSecurityServiceComputeV1Result> getNetworkEdgeSecurityServiceComputeV1(
   GetNetworkEdgeSecurityServiceComputeV1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -4691,8 +4633,7 @@ Future<GetNetworkEndpointGroupComputeV1Result> getNetworkEndpointGroupComputeV1(
 /// Returns the specified network firewall policy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_network_firewall_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNetworkFirewallPolicyComputeV1Result>
-    getNetworkFirewallPolicyComputeV1(
+Future<GetNetworkFirewallPolicyComputeV1Result> getNetworkFirewallPolicyComputeV1(
   GetNetworkFirewallPolicyComputeV1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -4708,8 +4649,7 @@ Future<GetNetworkFirewallPolicyComputeV1Result>
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_network_firewall_policy_iam_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNetworkFirewallPolicyIamPolicyComputeV1Result>
-    getNetworkFirewallPolicyIamPolicyComputeV1(
+Future<GetNetworkFirewallPolicyIamPolicyComputeV1Result> getNetworkFirewallPolicyIamPolicyComputeV1(
   GetNetworkFirewallPolicyIamPolicyComputeV1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -4773,8 +4713,7 @@ Future<GetNodeTemplateComputeV1Result> getNodeTemplateComputeV1(
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_node_template_iam_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNodeTemplateIamPolicyComputeV1Result>
-    getNodeTemplateIamPolicyComputeV1(
+Future<GetNodeTemplateIamPolicyComputeV1Result> getNodeTemplateIamPolicyComputeV1(
   GetNodeTemplateIamPolicyComputeV1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -4806,8 +4745,7 @@ Future<GetPacketMirroringComputeV1Result> getPacketMirroringComputeV1(
 /// Returns the specified PublicAdvertisedPrefix resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_public_advertised_prefix_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPublicAdvertisedPrefixComputeV1Result>
-    getPublicAdvertisedPrefixComputeV1(
+Future<GetPublicAdvertisedPrefixComputeV1Result> getPublicAdvertisedPrefixComputeV1(
   GetPublicAdvertisedPrefixComputeV1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -4823,8 +4761,7 @@ Future<GetPublicAdvertisedPrefixComputeV1Result>
 /// Returns the specified PublicDelegatedPrefix resource in the given region.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_public_delegated_prefix_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPublicDelegatedPrefixComputeV1Result>
-    getPublicDelegatedPrefixComputeV1(
+Future<GetPublicDelegatedPrefixComputeV1Result> getPublicDelegatedPrefixComputeV1(
   GetPublicDelegatedPrefixComputeV1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -4872,8 +4809,7 @@ Future<GetRegionBackendServiceComputeV1Result> getRegionBackendServiceComputeV1(
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_region_backend_service_iam_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionBackendServiceIamPolicyComputeV1Result>
-    getRegionBackendServiceIamPolicyComputeV1(
+Future<GetRegionBackendServiceIamPolicyComputeV1Result> getRegionBackendServiceIamPolicyComputeV1(
   GetRegionBackendServiceIamPolicyComputeV1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -4953,8 +4889,7 @@ Future<GetRegionHealthCheckComputeV1Result> getRegionHealthCheckComputeV1(
 /// Returns the specified regional HealthCheckService resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_region_health_check_service_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionHealthCheckServiceComputeV1Result>
-    getRegionHealthCheckServiceComputeV1(
+Future<GetRegionHealthCheckServiceComputeV1Result> getRegionHealthCheckServiceComputeV1(
   GetRegionHealthCheckServiceComputeV1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -4970,8 +4905,7 @@ Future<GetRegionHealthCheckServiceComputeV1Result>
 /// Returns all of the details about the specified managed instance group.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_region_instance_group_manager_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionInstanceGroupManagerComputeV1Result>
-    getRegionInstanceGroupManagerComputeV1(
+Future<GetRegionInstanceGroupManagerComputeV1Result> getRegionInstanceGroupManagerComputeV1(
   GetRegionInstanceGroupManagerComputeV1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -4987,8 +4921,7 @@ Future<GetRegionInstanceGroupManagerComputeV1Result>
 /// Returns the specified instance template.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_region_instance_template_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionInstanceTemplateComputeV1Result>
-    getRegionInstanceTemplateComputeV1(
+Future<GetRegionInstanceTemplateComputeV1Result> getRegionInstanceTemplateComputeV1(
   GetRegionInstanceTemplateComputeV1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -5004,8 +4937,7 @@ Future<GetRegionInstanceTemplateComputeV1Result>
 /// Returns the specified network endpoint group.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_region_network_endpoint_group_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionNetworkEndpointGroupComputeV1Result>
-    getRegionNetworkEndpointGroupComputeV1(
+Future<GetRegionNetworkEndpointGroupComputeV1Result> getRegionNetworkEndpointGroupComputeV1(
   GetRegionNetworkEndpointGroupComputeV1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -5021,8 +4953,7 @@ Future<GetRegionNetworkEndpointGroupComputeV1Result>
 /// Returns the specified network firewall policy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_region_network_firewall_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionNetworkFirewallPolicyComputeV1Result>
-    getRegionNetworkFirewallPolicyComputeV1(
+Future<GetRegionNetworkFirewallPolicyComputeV1Result> getRegionNetworkFirewallPolicyComputeV1(
   GetRegionNetworkFirewallPolicyComputeV1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -5038,8 +4969,7 @@ Future<GetRegionNetworkFirewallPolicyComputeV1Result>
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_region_network_firewall_policy_iam_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionNetworkFirewallPolicyIamPolicyComputeV1Result>
-    getRegionNetworkFirewallPolicyIamPolicyComputeV1(
+Future<GetRegionNetworkFirewallPolicyIamPolicyComputeV1Result> getRegionNetworkFirewallPolicyIamPolicyComputeV1(
   GetRegionNetworkFirewallPolicyIamPolicyComputeV1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -5055,8 +4985,7 @@ Future<GetRegionNetworkFirewallPolicyIamPolicyComputeV1Result>
 /// Returns the specified NotificationEndpoint resource in the given region.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_region_notification_endpoint_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionNotificationEndpointComputeV1Result>
-    getRegionNotificationEndpointComputeV1(
+Future<GetRegionNotificationEndpointComputeV1Result> getRegionNotificationEndpointComputeV1(
   GetRegionNotificationEndpointComputeV1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -5120,8 +5049,7 @@ Future<GetRegionSslPolicyComputeV1Result> getRegionSslPolicyComputeV1(
 /// Returns the specified TargetHttpProxy resource in the specified region.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_region_target_http_proxy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionTargetHttpProxyComputeV1Result>
-    getRegionTargetHttpProxyComputeV1(
+Future<GetRegionTargetHttpProxyComputeV1Result> getRegionTargetHttpProxyComputeV1(
   GetRegionTargetHttpProxyComputeV1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -5137,8 +5065,7 @@ Future<GetRegionTargetHttpProxyComputeV1Result>
 /// Returns the specified TargetHttpsProxy resource in the specified region.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_region_target_https_proxy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRegionTargetHttpsProxyComputeV1Result>
-    getRegionTargetHttpsProxyComputeV1(
+Future<GetRegionTargetHttpsProxyComputeV1Result> getRegionTargetHttpsProxyComputeV1(
   GetRegionTargetHttpsProxyComputeV1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -5234,8 +5161,7 @@ Future<GetResourcePolicyComputeV1Result> getResourcePolicyComputeV1(
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_resource_policy_iam_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetResourcePolicyIamPolicyComputeV1Result>
-    getResourcePolicyIamPolicyComputeV1(
+Future<GetResourcePolicyIamPolicyComputeV1Result> getResourcePolicyIamPolicyComputeV1(
   GetResourcePolicyIamPolicyComputeV1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -5315,8 +5241,7 @@ Future<GetServiceAttachmentComputeV1Result> getServiceAttachmentComputeV1(
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_service_attachment_iam_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetServiceAttachmentIamPolicyComputeV1Result>
-    getServiceAttachmentIamPolicyComputeV1(
+Future<GetServiceAttachmentIamPolicyComputeV1Result> getServiceAttachmentIamPolicyComputeV1(
   GetServiceAttachmentIamPolicyComputeV1Args args, {
   pulumi.InvokeOptions? options,
 }) async {

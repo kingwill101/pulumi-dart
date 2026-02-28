@@ -7,22 +7,17 @@ import 'get_quick_connect_quick_connect_config.dart';
 class GetQuickConnectResult {
   /// ARN of the Quick Connect.
   final String arn;
-
   /// Description of the Quick Connect.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instanceId;
   final String name;
-
   /// A block that defines the configuration information for the Quick Connect: `quick_connect_type` and one of `phone_config`, `queue_config`, `user_config` . The Quick Connect Config block is documented below.
   final List<GetQuickConnectQuickConnectConfig> quickConnectConfigs;
-
   /// Identifier for the Quick Connect.
   final String quickConnectId;
   final String region;
-
   /// Map of tags to assign to the Quick Connect.
   final Map<String, String> tags;
 
@@ -49,19 +44,17 @@ class GetQuickConnectResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['description'] = description;
-    map['id'] = id;
-    map['instanceId'] = instanceId;
-    map['name'] = name;
-    map['quickConnectConfigs'] = pulumi.Input.encodeList<
-        GetQuickConnectQuickConnectConfig,
-        Map<String, dynamic>>(quickConnectConfigs, (value) => value.toMap());
-    map['quickConnectId'] = quickConnectId;
-    map['region'] = region;
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'description': description,
+      'id': id,
+      'instanceId': instanceId,
+      'name': name,
+      'quickConnectConfigs': pulumi.Input.encodeList<GetQuickConnectQuickConnectConfig, Map<String, dynamic>>(quickConnectConfigs, (value) => value.toMap()),
+      'quickConnectId': quickConnectId,
+      'region': region,
+      'tags': tags,
+    };
   }
 
   factory GetQuickConnectResult.fromMap(Map<String, dynamic> map) {
@@ -71,14 +64,11 @@ class GetQuickConnectResult {
       id: map['id'] as String,
       instanceId: map['instanceId'] as String,
       name: map['name'] as String,
-      quickConnectConfigs:
-          pulumi.Input.decodeList<GetQuickConnectQuickConnectConfig>(
-              map['quickConnectConfigs'],
-              (value) => GetQuickConnectQuickConnectConfig.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      quickConnectConfigs: pulumi.Input.decodeList<GetQuickConnectQuickConnectConfig>(map['quickConnectConfigs'], (value) => GetQuickConnectQuickConnectConfig.fromMap((value as Map).cast<String, dynamic>())),
       quickConnectId: map['quickConnectId'] as String,
       region: map['region'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

@@ -319,14 +319,11 @@ class SecretCiphertext extends pulumi.CustomResource {
   /// The additional authenticated data used for integrity checks during encryption and decryption.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   late final pulumi.Output<String?> additionalAuthenticatedData;
-
   /// Contains the result of encrypting the provided plaintext, encoded in base64.
   late final pulumi.Output<String> ciphertext;
-
   /// The full name of the CryptoKey that will be used to encrypt the provided plaintext.
   /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
   late final pulumi.Output<String> cryptoKey;
-
   /// The plaintext to be encrypted.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   late final pulumi.Output<String> plaintext;
@@ -345,8 +342,7 @@ class SecretCiphertext extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.additionalAuthenticatedData =
-        registerOutput<String?>('additionalAuthenticatedData');
+    this.additionalAuthenticatedData = registerOutput<String?>('additionalAuthenticatedData');
     this.ciphertext = registerOutput<String>('ciphertext');
     this.cryptoKey = registerOutput<String>('cryptoKey');
     this.plaintext = registerOutput<String>('plaintext');

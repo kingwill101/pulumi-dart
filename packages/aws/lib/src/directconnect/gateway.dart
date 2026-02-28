@@ -121,19 +121,14 @@ import 'gateway_args.dart';
 class Gateway extends pulumi.CustomResource {
   /// The ASN to be configured on the Amazon side of the connection. The ASN must be in the private range of 64,512 to 65,534 or 4,200,000,000 to 4,294,967,294.
   late final pulumi.Output<String> amazonSideAsn;
-
   /// The ARN of the gateway.
   late final pulumi.Output<String> arn;
-
   /// The name of the connection.
   late final pulumi.Output<String> name;
-
   /// AWS Account ID of the gateway.
   late final pulumi.Output<String> ownerAccountId;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 

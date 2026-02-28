@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SmsChannelArgs {
   /// ID of the application.
   final pulumi.Input<String> applicationId;
-
   /// Whether the channel is enabled or disabled. By default, it is set to `true`.
   final pulumi.Input<bool>? enabled;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Identifier of the sender for your messages.
   final pulumi.Input<String>? senderId;
-
   /// Short Code registered with the phone provider.
   final pulumi.Input<String>? shortCode;
 
@@ -34,32 +30,21 @@ class SmsChannelArgs {
     String? region,
     String? senderId,
     String? shortCode,
-  })  : applicationId = pulumi.Input.asInput<String>(applicationId),
-        enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        senderId = pulumi.Input.asOptionalInput<String>(senderId),
-        shortCode = pulumi.Input.asOptionalInput<String>(shortCode);
+  }) :
+      applicationId = pulumi.Input.asInput<String>(applicationId),
+      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      senderId = pulumi.Input.asOptionalInput<String>(senderId),
+      shortCode = pulumi.Input.asOptionalInput<String>(shortCode);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['applicationId'] = applicationId;
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final senderIdValue = senderId;
-    if (senderIdValue != null) {
-      map['senderId'] = senderIdValue;
-    }
-    final shortCodeValue = shortCode;
-    if (shortCodeValue != null) {
-      map['shortCode'] = shortCodeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'applicationId': applicationId,
+      'enabled': ?enabled,
+      'region': ?region,
+      'senderId': ?senderId,
+      'shortCode': ?shortCode,
+    };
   }
 
   factory SmsChannelArgs.fromMap(Map<String, dynamic> map) {
@@ -72,3 +57,4 @@ class SmsChannelArgs {
     );
   }
 }
+

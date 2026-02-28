@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinkAssociationArgs {
   /// ID of the device.
   final pulumi.Input<String> deviceId;
-
   /// ID of the global network.
   final pulumi.Input<String> globalNetworkId;
-
   /// ID of the link.
   final pulumi.Input<String> linkId;
 
@@ -24,16 +22,17 @@ class LinkAssociationArgs {
     required String deviceId,
     required String globalNetworkId,
     required String linkId,
-  })  : deviceId = pulumi.Input.asInput<String>(deviceId),
-        globalNetworkId = pulumi.Input.asInput<String>(globalNetworkId),
-        linkId = pulumi.Input.asInput<String>(linkId);
+  }) :
+      deviceId = pulumi.Input.asInput<String>(deviceId),
+      globalNetworkId = pulumi.Input.asInput<String>(globalNetworkId),
+      linkId = pulumi.Input.asInput<String>(linkId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['deviceId'] = deviceId;
-    map['globalNetworkId'] = globalNetworkId;
-    map['linkId'] = linkId;
-    return map;
+    return <String, dynamic>{
+      'deviceId': deviceId,
+      'globalNetworkId': globalNetworkId,
+      'linkId': linkId,
+    };
   }
 
   factory LinkAssociationArgs.fromMap(Map<String, dynamic> map) {
@@ -44,3 +43,4 @@ class LinkAssociationArgs {
     );
   }
 }
+

@@ -6,21 +6,16 @@ import 'catalog_args.dart';
 class Catalog extends pulumi.CustomResource {
   /// Required. The ID to use for the catalog, which will become the final component of the catalog's resource name.
   late final pulumi.Output<String> catalogId;
-
   /// The creation time of the catalog.
   late final pulumi.Output<String> createTime;
-
   /// The deletion time of the catalog. Only set after the catalog is deleted.
   late final pulumi.Output<String> deleteTime;
-
   /// The time when this catalog is considered expired. Only set after the catalog is deleted.
   late final pulumi.Output<String> expireTime;
   late final pulumi.Output<String> location;
-
   /// The resource name. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// The last modification time of the catalog.
   late final pulumi.Output<String> updateTime;
 

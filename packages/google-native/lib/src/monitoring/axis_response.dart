@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A chart axis.
 class AxisResponse {
   /// The label of the axis.
   final String label;
-
   /// The axis scale. By default, a linear scale is used.
   final String scale;
 
@@ -17,10 +17,10 @@ class AxisResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['label'] = label;
-    map['scale'] = scale;
-    return map;
+    return <String, dynamic>{
+      'label': label,
+      'scale': scale,
+    };
   }
 
   factory AxisResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class AxisResponse {
     );
   }
 }
+

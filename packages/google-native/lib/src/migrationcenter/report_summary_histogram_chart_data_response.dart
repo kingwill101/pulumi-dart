@@ -15,21 +15,15 @@ class ReportSummaryHistogramChartDataResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['buckets'] = pulumi.Input.encodeList<
-        ReportSummaryHistogramChartDataBucketResponse,
-        Map<String, dynamic>>(buckets, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'buckets': pulumi.Input.encodeList<ReportSummaryHistogramChartDataBucketResponse, Map<String, dynamic>>(buckets, (value) => value.toMap()),
+    };
   }
 
-  factory ReportSummaryHistogramChartDataResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory ReportSummaryHistogramChartDataResponse.fromMap(Map<String, dynamic> map) {
     return ReportSummaryHistogramChartDataResponse(
-      buckets: pulumi.Input.decodeList<
-              ReportSummaryHistogramChartDataBucketResponse>(
-          map['buckets'],
-          (value) => ReportSummaryHistogramChartDataBucketResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      buckets: pulumi.Input.decodeList<ReportSummaryHistogramChartDataBucketResponse>(map['buckets'], (value) => ReportSummaryHistogramChartDataBucketResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

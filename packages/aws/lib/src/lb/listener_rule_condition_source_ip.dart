@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ListenerRuleConditionSourceIp {
   final List<String> values;
 
@@ -10,9 +11,9 @@ class ListenerRuleConditionSourceIp {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['values'] = values;
-    return map;
+    return <String, dynamic>{
+      'values': values,
+    };
   }
 
   factory ListenerRuleConditionSourceIp.fromMap(Map<String, dynamic> map) {
@@ -21,3 +22,4 @@ class ListenerRuleConditionSourceIp {
     );
   }
 }
+

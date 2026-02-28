@@ -157,31 +157,23 @@ class Environment extends pulumi.CustomResource {
   /// Use a container image to start the notebook instance.
   /// Structure is documented below.
   late final pulumi.Output<EnvironmentContainerImage?> containerImage;
-
   /// Instance creation time
   late final pulumi.Output<String> createTime;
-
   /// A brief description of this environment.
   late final pulumi.Output<String?> description;
-
   /// Display name of this environment for the UI.
   late final pulumi.Output<String?> displayName;
-
   /// A reference to the zone where the machine resides.
   late final pulumi.Output<String> location;
-
   /// The name specified for the Environment instance.
   /// Format: projects/{project_id}/locations/{location}/environments/{environmentId}
   late final pulumi.Output<String> name;
-
   /// Path to a Bash script that automatically runs after a notebook instance fully boots up.
   /// The path must be a URL or Cloud Storage path. Example: "gs://path-to-file/file-name"
   late final pulumi.Output<String?> postStartupScript;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Use a Compute Engine VM image to start the notebook instance.
   /// Structure is documented below.
   late final pulumi.Output<EnvironmentVmImage?> vmImage;
@@ -200,8 +192,7 @@ class Environment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.containerImage =
-        registerOutput<EnvironmentContainerImage?>('containerImage');
+    this.containerImage = registerOutput<EnvironmentContainerImage?>('containerImage');
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');
     this.displayName = registerOutput<String?>('displayName');

@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRepositoryEndpointArgs {
   /// Name of the domain that contains the repository.
   final pulumi.Input<String> domain;
-
   /// Account number of the AWS account that owns the domain.
   final pulumi.Input<String>? domainOwner;
-
   /// Which endpoint of a repository to return. A repository has one endpoint for each package format: `npm`, `pypi`, `maven`, and `nuget`.
   final pulumi.Input<String> format;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Name of the repository.
   final pulumi.Input<String> repository;
 
@@ -34,36 +30,31 @@ class GetRepositoryEndpointArgs {
     required String format,
     String? region,
     required String repository,
-  })  : domain = pulumi.Input.asInput<String>(domain),
-        domainOwner = pulumi.Input.asOptionalInput<String>(domainOwner),
-        format = pulumi.Input.asInput<String>(format),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        repository = pulumi.Input.asInput<String>(repository);
+  }) :
+      domain = pulumi.Input.asInput<String>(domain),
+      domainOwner = pulumi.Input.asOptionalInput<String>(domainOwner),
+      format = pulumi.Input.asInput<String>(format),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      repository = pulumi.Input.asInput<String>(repository);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['domain'] = domain;
-    final domainOwnerValue = domainOwner;
-    if (domainOwnerValue != null) {
-      map['domainOwner'] = domainOwnerValue;
-    }
-    map['format'] = format;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['repository'] = repository;
-    return map;
+    return <String, dynamic>{
+      'domain': domain,
+      'domainOwner': ?domainOwner,
+      'format': format,
+      'region': ?region,
+      'repository': repository,
+    };
   }
 
   factory GetRepositoryEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetRepositoryEndpointArgs(
       domain: map['domain'] as String,
-      domainOwner:
-          map['domainOwner'] == null ? null : map['domainOwner'] as String,
+      domainOwner: map['domainOwner'] == null ? null : map['domainOwner'] as String,
       format: map['format'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       repository: map['repository'] as String,
     );
   }
 }
+

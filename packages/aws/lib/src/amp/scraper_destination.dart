@@ -13,20 +13,15 @@ class ScraperDestination {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final ampValue = amp;
-    if (ampValue != null) {
-      map['amp'] = ampValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'amp': ?amp == null ? null : amp!.toMap(),
+    };
   }
 
   factory ScraperDestination.fromMap(Map<String, dynamic> map) {
     return ScraperDestination(
-      amp: map['amp'] == null
-          ? null
-          : ScraperDestinationAmp.fromMap(
-              (map['amp'] as Map).cast<String, dynamic>()),
+      amp: map['amp'] == null ? null : ScraperDestinationAmp.fromMap((map['amp'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

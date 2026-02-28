@@ -8,13 +8,10 @@ class GetConnectivityTestRunReachabilityDetailTrace {
   /// (Output)
   /// Derived from the source and destination endpoints definition specified by user request, and validated by the data plane model.
   /// Structure is documented below.
-  final List<GetConnectivityTestRunReachabilityDetailTraceEndpointInfo>
-      endpointInfos;
-
+  final List<GetConnectivityTestRunReachabilityDetailTraceEndpointInfo> endpointInfos;
   /// (Output)
   /// ID of the trace.
   final int forwardTraceId;
-
   /// (Output)
   /// A trace of a test contains multiple steps from the initial state to the final state (delivered, dropped, forwarded, or aborted).
   /// Structure is documented below.
@@ -31,32 +28,19 @@ class GetConnectivityTestRunReachabilityDetailTrace {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['endpointInfos'] = pulumi.Input.encodeList<
-        GetConnectivityTestRunReachabilityDetailTraceEndpointInfo,
-        Map<String, dynamic>>(endpointInfos, (value) => value.toMap());
-    map['forwardTraceId'] = forwardTraceId;
-    map['steps'] = pulumi.Input.encodeList<
-        GetConnectivityTestRunReachabilityDetailTraceStep,
-        Map<String, dynamic>>(steps, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'endpointInfos': pulumi.Input.encodeList<GetConnectivityTestRunReachabilityDetailTraceEndpointInfo, Map<String, dynamic>>(endpointInfos, (value) => value.toMap()),
+      'forwardTraceId': forwardTraceId,
+      'steps': pulumi.Input.encodeList<GetConnectivityTestRunReachabilityDetailTraceStep, Map<String, dynamic>>(steps, (value) => value.toMap()),
+    };
   }
 
-  factory GetConnectivityTestRunReachabilityDetailTrace.fromMap(
-      Map<String, dynamic> map) {
+  factory GetConnectivityTestRunReachabilityDetailTrace.fromMap(Map<String, dynamic> map) {
     return GetConnectivityTestRunReachabilityDetailTrace(
-      endpointInfos: pulumi.Input.decodeList<
-              GetConnectivityTestRunReachabilityDetailTraceEndpointInfo>(
-          map['endpointInfos'],
-          (value) =>
-              GetConnectivityTestRunReachabilityDetailTraceEndpointInfo.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      endpointInfos: pulumi.Input.decodeList<GetConnectivityTestRunReachabilityDetailTraceEndpointInfo>(map['endpointInfos'], (value) => GetConnectivityTestRunReachabilityDetailTraceEndpointInfo.fromMap((value as Map).cast<String, dynamic>())),
       forwardTraceId: map['forwardTraceId'] as int,
-      steps: pulumi.Input.decodeList<
-              GetConnectivityTestRunReachabilityDetailTraceStep>(
-          map['steps'],
-          (value) => GetConnectivityTestRunReachabilityDetailTraceStep.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      steps: pulumi.Input.decodeList<GetConnectivityTestRunReachabilityDetailTraceStep>(map['steps'], (value) => GetConnectivityTestRunReachabilityDetailTraceStep.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

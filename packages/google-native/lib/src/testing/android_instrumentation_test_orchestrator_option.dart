@@ -13,7 +13,7 @@ enum AndroidInstrumentationTestOrchestratorOption {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown AndroidInstrumentationTestOrchestratorOption value: $value');
+    throw ArgumentError('Unknown AndroidInstrumentationTestOrchestratorOption value: $value');
   }
 }
+

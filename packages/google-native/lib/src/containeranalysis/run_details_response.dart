@@ -21,24 +21,19 @@ class RunDetailsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['builder'] = builder.toMap();
-    map['byproducts'] = pulumi.Input.encodeList<ResourceDescriptorResponse,
-        Map<String, dynamic>>(byproducts, (value) => value.toMap());
-    map['metadata'] = metadata.toMap();
-    return map;
+    return <String, dynamic>{
+      'builder': builder.toMap(),
+      'byproducts': pulumi.Input.encodeList<ResourceDescriptorResponse, Map<String, dynamic>>(byproducts, (value) => value.toMap()),
+      'metadata': metadata.toMap(),
+    };
   }
 
   factory RunDetailsResponse.fromMap(Map<String, dynamic> map) {
     return RunDetailsResponse(
-      builder: ProvenanceBuilderResponse.fromMap(
-          (map['builder'] as Map).cast<String, dynamic>()),
-      byproducts: pulumi.Input.decodeList<ResourceDescriptorResponse>(
-          map['byproducts'],
-          (value) => ResourceDescriptorResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      metadata: BuildMetadataResponse.fromMap(
-          (map['metadata'] as Map).cast<String, dynamic>()),
+      builder: ProvenanceBuilderResponse.fromMap((map['builder'] as Map).cast<String, dynamic>()),
+      byproducts: pulumi.Input.decodeList<ResourceDescriptorResponse>(map['byproducts'], (value) => ResourceDescriptorResponse.fromMap((value as Map).cast<String, dynamic>())),
+      metadata: BuildMetadataResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

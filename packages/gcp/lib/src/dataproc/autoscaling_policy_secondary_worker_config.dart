@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AutoscalingPolicySecondaryWorkerConfig {
   /// Maximum number of instances for this group. Note that by default, clusters will not use
   /// secondary workers. Required for secondary workers if the minimum secondary instances is set.
   /// Bounds: [minInstances, ). Defaults to 0.
   final int? maxInstances;
-
   /// Minimum number of instances for this group. Bounds: [0, maxInstances]. Defaults to 0.
   final int? minInstances;
-
   /// Weight for the instance group, which is used to determine the fraction of total workers
   /// in the cluster from this instance group. For example, if primary workers have weight 2,
   /// and secondary workers have weight 1, the cluster will have approximately 2 primary workers
@@ -34,30 +33,19 @@ class AutoscalingPolicySecondaryWorkerConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final maxInstancesValue = maxInstances;
-    if (maxInstancesValue != null) {
-      map['maxInstances'] = maxInstancesValue;
-    }
-    final minInstancesValue = minInstances;
-    if (minInstancesValue != null) {
-      map['minInstances'] = minInstancesValue;
-    }
-    final weightValue = weight;
-    if (weightValue != null) {
-      map['weight'] = weightValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'maxInstances': ?maxInstances,
+      'minInstances': ?minInstances,
+      'weight': ?weight,
+    };
   }
 
-  factory AutoscalingPolicySecondaryWorkerConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory AutoscalingPolicySecondaryWorkerConfig.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicySecondaryWorkerConfig(
-      maxInstances:
-          map['maxInstances'] == null ? null : map['maxInstances'] as int,
-      minInstances:
-          map['minInstances'] == null ? null : map['minInstances'] as int,
+      maxInstances: map['maxInstances'] == null ? null : map['maxInstances'] as int,
+      minInstances: map['minInstances'] == null ? null : map['minInstances'] as int,
       weight: map['weight'] == null ? null : map['weight'] as int,
     );
   }
 }
+

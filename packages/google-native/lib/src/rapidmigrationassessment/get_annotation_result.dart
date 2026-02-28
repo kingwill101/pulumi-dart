@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getAnnotation.
 class GetAnnotationResult {
   /// Create time stamp.
   final String createTime;
-
   /// Labels as key value pairs.
   final Map<String, String> labels;
-
   /// name of resource.
   final String name;
-
   /// Type of an annotation.
   final String type;
-
   /// Update time stamp.
   final String updateTime;
 
@@ -32,13 +29,13 @@ class GetAnnotationResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['labels'] = labels;
-    map['name'] = name;
-    map['type'] = type;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'labels': labels,
+      'name': name,
+      'type': type,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetAnnotationResult.fromMap(Map<String, dynamic> map) {
@@ -51,3 +48,4 @@ class GetAnnotationResult {
     );
   }
 }
+

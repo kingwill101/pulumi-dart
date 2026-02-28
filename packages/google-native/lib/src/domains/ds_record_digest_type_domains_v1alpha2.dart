@@ -15,7 +15,7 @@ enum DsRecordDigestTypeDomainsV1alpha2 {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown DsRecordDigestTypeDomainsV1alpha2 value: $value');
+    throw ArgumentError('Unknown DsRecordDigestTypeDomainsV1alpha2 value: $value');
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetServiceDnsEntry {
   /// DNS name for the service.
   final String domainName;
-
   /// Hosted zone ID where the DNS name is registered.
   final String hostedZoneId;
 
@@ -16,10 +16,10 @@ class GetServiceDnsEntry {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['domainName'] = domainName;
-    map['hostedZoneId'] = hostedZoneId;
-    return map;
+    return <String, dynamic>{
+      'domainName': domainName,
+      'hostedZoneId': hostedZoneId,
+    };
   }
 
   factory GetServiceDnsEntry.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetServiceDnsEntry {
     );
   }
 }
+

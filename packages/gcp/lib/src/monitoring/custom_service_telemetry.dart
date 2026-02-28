@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CustomServiceTelemetry {
   /// The full name of the resource that defines this service.
   /// Formatted as described in
@@ -13,18 +14,15 @@ class CustomServiceTelemetry {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final resourceNameValue = resourceName;
-    if (resourceNameValue != null) {
-      map['resourceName'] = resourceNameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'resourceName': ?resourceName,
+    };
   }
 
   factory CustomServiceTelemetry.fromMap(Map<String, dynamic> map) {
     return CustomServiceTelemetry(
-      resourceName:
-          map['resourceName'] == null ? null : map['resourceName'] as String,
+      resourceName: map['resourceName'] == null ? null : map['resourceName'] as String,
     );
   }
 }
+

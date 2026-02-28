@@ -14,7 +14,6 @@ class GetAppEngineServiceArgs {
   ///
   /// Other optional fields include:
   final pulumi.Input<String> moduleId;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -25,17 +24,15 @@ class GetAppEngineServiceArgs {
   GetAppEngineServiceArgs({
     required String moduleId,
     String? project,
-  })  : moduleId = pulumi.Input.asInput<String>(moduleId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      moduleId = pulumi.Input.asInput<String>(moduleId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['moduleId'] = moduleId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'moduleId': moduleId,
+      'project': ?project,
+    };
   }
 
   factory GetAppEngineServiceArgs.fromMap(Map<String, dynamic> map) {
@@ -45,3 +42,4 @@ class GetAppEngineServiceArgs {
     );
   }
 }
+

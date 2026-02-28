@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Specifies a Metastore configuration.
 class MetastoreConfig {
   /// Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
@@ -12,9 +13,9 @@ class MetastoreConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dataprocMetastoreService'] = dataprocMetastoreService;
-    return map;
+    return <String, dynamic>{
+      'dataprocMetastoreService': dataprocMetastoreService,
+    };
   }
 
   factory MetastoreConfig.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class MetastoreConfig {
     );
   }
 }
+

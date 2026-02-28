@@ -15,18 +15,15 @@ class SourceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['files'] = pulumi.Input.encodeList<FileResponse, Map<String, dynamic>>(
-        files, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'files': pulumi.Input.encodeList<FileResponse, Map<String, dynamic>>(files, (value) => value.toMap()),
+    };
   }
 
   factory SourceResponse.fromMap(Map<String, dynamic> map) {
     return SourceResponse(
-      files: pulumi.Input.decodeList<FileResponse>(
-          map['files'],
-          (value) =>
-              FileResponse.fromMap((value as Map).cast<String, dynamic>())),
+      files: pulumi.Input.decodeList<FileResponse>(map['files'], (value) => FileResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

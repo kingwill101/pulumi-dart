@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// SDK Information.
 class SDKInfoResponse {
   /// The SDK Language.
   final String language;
-
   /// Optional. The SDK version.
   final String version;
 
@@ -17,10 +17,10 @@ class SDKInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['language'] = language;
-    map['version'] = version;
-    return map;
+    return <String, dynamic>{
+      'language': language,
+      'version': version,
+    };
   }
 
   factory SDKInfoResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class SDKInfoResponse {
     );
   }
 }
+

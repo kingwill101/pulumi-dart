@@ -5,8 +5,7 @@ import 'prevention_deidentify_template_deidentify_config_record_transformations_
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression {
   /// A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
   /// Structure is documented below.
-  final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition?
-      condition;
+  final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition? condition;
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression].
   /// [condition] A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
@@ -15,21 +14,15 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final conditionValue = condition;
-    if (conditionValue != null) {
-      map['condition'] = conditionValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'condition': ?condition == null ? null : condition!.toMap(),
+    };
   }
 
-  factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression.fromMap(
-      Map<String, dynamic> map) {
+  factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression(
-      condition: map['condition'] == null
-          ? null
-          : PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition
-              .fromMap((map['condition'] as Map).cast<String, dynamic>()),
+      condition: map['condition'] == null ? null : PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

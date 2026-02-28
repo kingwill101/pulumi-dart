@@ -19,19 +19,17 @@ class GetInstanceTableIamPolicyArgs {
     required String instanceId,
     String? project,
     required String tableId,
-  })  : instanceId = pulumi.Input.asInput<String>(instanceId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        tableId = pulumi.Input.asInput<String>(tableId);
+  }) :
+      instanceId = pulumi.Input.asInput<String>(instanceId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      tableId = pulumi.Input.asInput<String>(tableId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['instanceId'] = instanceId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['tableId'] = tableId;
-    return map;
+    return <String, dynamic>{
+      'instanceId': instanceId,
+      'project': ?project,
+      'tableId': tableId,
+    };
   }
 
   factory GetInstanceTableIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetInstanceTableIamPolicyArgs {
     );
   }
 }
+

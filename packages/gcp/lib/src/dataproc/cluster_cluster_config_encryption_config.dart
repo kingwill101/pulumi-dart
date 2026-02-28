@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterClusterConfigEncryptionConfig {
   /// The Cloud KMS key name to use for PD disk encryption for
   /// all instances in the cluster.
@@ -14,15 +15,15 @@ class ClusterClusterConfigEncryptionConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kmsKeyName'] = kmsKeyName;
-    return map;
+    return <String, dynamic>{
+      'kmsKeyName': kmsKeyName,
+    };
   }
 
-  factory ClusterClusterConfigEncryptionConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterClusterConfigEncryptionConfig.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigEncryptionConfig(
       kmsKeyName: map['kmsKeyName'] as String,
     );
   }
 }
+

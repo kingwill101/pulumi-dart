@@ -19,16 +19,17 @@ class GetBrowserDlpRuleArgs {
     required String browserDlpRuleId,
     required String organizationId,
     required String partnerTenantId,
-  })  : browserDlpRuleId = pulumi.Input.asInput<String>(browserDlpRuleId),
-        organizationId = pulumi.Input.asInput<String>(organizationId),
-        partnerTenantId = pulumi.Input.asInput<String>(partnerTenantId);
+  }) :
+      browserDlpRuleId = pulumi.Input.asInput<String>(browserDlpRuleId),
+      organizationId = pulumi.Input.asInput<String>(organizationId),
+      partnerTenantId = pulumi.Input.asInput<String>(partnerTenantId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['browserDlpRuleId'] = browserDlpRuleId;
-    map['organizationId'] = organizationId;
-    map['partnerTenantId'] = partnerTenantId;
-    return map;
+    return <String, dynamic>{
+      'browserDlpRuleId': browserDlpRuleId,
+      'organizationId': organizationId,
+      'partnerTenantId': partnerTenantId,
+    };
   }
 
   factory GetBrowserDlpRuleArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +40,4 @@ class GetBrowserDlpRuleArgs {
     );
   }
 }
+

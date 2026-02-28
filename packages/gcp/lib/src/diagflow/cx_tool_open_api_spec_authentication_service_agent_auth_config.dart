@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CxToolOpenApiSpecAuthenticationServiceAgentAuthConfig {
   /// Optional. Indicate the auth token type generated from the Diglogflow service agent.
   /// The generated token is sent in the Authorization header.
@@ -13,20 +14,15 @@ class CxToolOpenApiSpecAuthenticationServiceAgentAuthConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final serviceAgentAuthValue = serviceAgentAuth;
-    if (serviceAgentAuthValue != null) {
-      map['serviceAgentAuth'] = serviceAgentAuthValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'serviceAgentAuth': ?serviceAgentAuth,
+    };
   }
 
-  factory CxToolOpenApiSpecAuthenticationServiceAgentAuthConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory CxToolOpenApiSpecAuthenticationServiceAgentAuthConfig.fromMap(Map<String, dynamic> map) {
     return CxToolOpenApiSpecAuthenticationServiceAgentAuthConfig(
-      serviceAgentAuth: map['serviceAgentAuth'] == null
-          ? null
-          : map['serviceAgentAuth'] as String,
+      serviceAgentAuth: map['serviceAgentAuth'] == null ? null : map['serviceAgentAuth'] as String,
     );
   }
 }
+

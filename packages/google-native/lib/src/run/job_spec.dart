@@ -14,20 +14,15 @@ class JobSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final templateValue = template;
-    if (templateValue != null) {
-      map['template'] = templateValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'template': ?template == null ? null : template!.toMap(),
+    };
   }
 
   factory JobSpec.fromMap(Map<String, dynamic> map) {
     return JobSpec(
-      template: map['template'] == null
-          ? null
-          : ExecutionTemplateSpec.fromMap(
-              (map['template'] as Map).cast<String, dynamic>()),
+      template: map['template'] == null ? null : ExecutionTemplateSpec.fromMap((map['template'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

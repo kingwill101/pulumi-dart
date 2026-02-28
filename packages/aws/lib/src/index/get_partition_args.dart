@@ -14,15 +14,13 @@ class GetPartitionArgs {
   /// [id] Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China).
   GetPartitionArgs({
     String? id,
-  }) : id = pulumi.Input.asOptionalInput<String>(id);
+  }) :
+      id = pulumi.Input.asOptionalInput<String>(id);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final idValue = id;
-    if (idValue != null) {
-      map['id'] = idValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
   factory GetPartitionArgs.fromMap(Map<String, dynamic> map) {
@@ -31,3 +29,4 @@ class GetPartitionArgs {
     );
   }
 }
+

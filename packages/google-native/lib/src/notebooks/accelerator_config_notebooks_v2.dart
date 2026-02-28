@@ -6,7 +6,6 @@ import 'accelerator_config_type_notebooks_v2.dart';
 class AcceleratorConfigNotebooksV2 {
   /// Optional. Count of cores of this accelerator.
   final String? coreCount;
-
   /// Optional. Type of this accelerator.
   final AcceleratorConfigTypeNotebooksV2? type;
 
@@ -19,24 +18,17 @@ class AcceleratorConfigNotebooksV2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final coreCountValue = coreCount;
-    if (coreCountValue != null) {
-      map['coreCount'] = coreCountValue;
-    }
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'coreCount': ?coreCount,
+      'type': ?type == null ? null : type!.value,
+    };
   }
 
   factory AcceleratorConfigNotebooksV2.fromMap(Map<String, dynamic> map) {
     return AcceleratorConfigNotebooksV2(
       coreCount: map['coreCount'] == null ? null : map['coreCount'] as String,
-      type: map['type'] == null
-          ? null
-          : AcceleratorConfigTypeNotebooksV2.fromValue(map['type'] as String),
+      type: map['type'] == null ? null : AcceleratorConfigTypeNotebooksV2.fromValue(map['type'] as String),
     );
   }
 }
+

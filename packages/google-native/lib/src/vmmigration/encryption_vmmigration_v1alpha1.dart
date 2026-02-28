@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Encryption message describes the details of the applied encryption.
 class EncryptionVmmigrationV1alpha1 {
   /// The name of the encryption key that is stored in Google Cloud KMS.
@@ -12,9 +13,9 @@ class EncryptionVmmigrationV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kmsKey'] = kmsKey;
-    return map;
+    return <String, dynamic>{
+      'kmsKey': kmsKey,
+    };
   }
 
   factory EncryptionVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class EncryptionVmmigrationV1alpha1 {
     );
   }
 }
+

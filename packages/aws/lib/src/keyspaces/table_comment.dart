@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TableComment {
   /// A description of the table.
   final String? message;
@@ -11,12 +12,9 @@ class TableComment {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final messageValue = message;
-    if (messageValue != null) {
-      map['message'] = messageValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'message': ?message,
+    };
   }
 
   factory TableComment.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class TableComment {
     );
   }
 }
+

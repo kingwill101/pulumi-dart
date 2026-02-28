@@ -19,19 +19,17 @@ class GetRepositoryArgs {
     required String location,
     String? project,
     required String repositoryId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        repositoryId = pulumi.Input.asInput<String>(repositoryId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      repositoryId = pulumi.Input.asInput<String>(repositoryId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['repositoryId'] = repositoryId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+      'repositoryId': repositoryId,
+    };
   }
 
   factory GetRepositoryArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetRepositoryArgs {
     );
   }
 }
+

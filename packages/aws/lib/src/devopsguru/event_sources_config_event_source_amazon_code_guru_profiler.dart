@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EventSourcesConfigEventSourceAmazonCodeGuruProfiler {
   /// Status of the CodeGuru Profiler integration. Valid values are `ENABLED` and `DISABLED`.
   final String status;
@@ -11,15 +12,15 @@ class EventSourcesConfigEventSourceAmazonCodeGuruProfiler {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['status'] = status;
-    return map;
+    return <String, dynamic>{
+      'status': status,
+    };
   }
 
-  factory EventSourcesConfigEventSourceAmazonCodeGuruProfiler.fromMap(
-      Map<String, dynamic> map) {
+  factory EventSourcesConfigEventSourceAmazonCodeGuruProfiler.fromMap(Map<String, dynamic> map) {
     return EventSourcesConfigEventSourceAmazonCodeGuruProfiler(
       status: map['status'] as String,
     );
   }
 }
+

@@ -22,24 +22,19 @@ class GetFunctionArgs {
     required String location,
     String? project,
     String? versionId,
-  })  : functionId = pulumi.Input.asInput<String>(functionId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        versionId = pulumi.Input.asOptionalInput<String>(versionId);
+  }) :
+      functionId = pulumi.Input.asInput<String>(functionId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      versionId = pulumi.Input.asOptionalInput<String>(versionId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['functionId'] = functionId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final versionIdValue = versionId;
-    if (versionIdValue != null) {
-      map['versionId'] = versionIdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'functionId': functionId,
+      'location': location,
+      'project': ?project,
+      'versionId': ?versionId,
+    };
   }
 
   factory GetFunctionArgs.fromMap(Map<String, dynamic> map) {
@@ -51,3 +46,4 @@ class GetFunctionArgs {
     );
   }
 }
+

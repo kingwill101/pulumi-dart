@@ -16,14 +16,15 @@ class GetOrganizationExclusionArgs {
   GetOrganizationExclusionArgs({
     required String exclusionId,
     required String organizationId,
-  })  : exclusionId = pulumi.Input.asInput<String>(exclusionId),
-        organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) :
+      exclusionId = pulumi.Input.asInput<String>(exclusionId),
+      organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['exclusionId'] = exclusionId;
-    map['organizationId'] = organizationId;
-    return map;
+    return <String, dynamic>{
+      'exclusionId': exclusionId,
+      'organizationId': organizationId,
+    };
   }
 
   factory GetOrganizationExclusionArgs.fromMap(Map<String, dynamic> map) {
@@ -33,3 +34,4 @@ class GetOrganizationExclusionArgs {
     );
   }
 }
+

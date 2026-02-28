@@ -10,16 +10,12 @@ import 'resource_server_scope.dart';
 class ResourceServerArgs {
   /// An identifier for the resource server.
   final pulumi.Input<String> identifier;
-
   /// A name for the resource server.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// A list of Authorization Scope.
   final pulumi.Input<List<ResourceServerScope>>? scopes;
-
   /// User pool the client belongs to.
   final pulumi.Input<String> userPoolId;
 
@@ -35,34 +31,21 @@ class ResourceServerArgs {
     String? region,
     List<ResourceServerScope>? scopes,
     required String userPoolId,
-  })  : identifier = pulumi.Input.asInput<String>(identifier),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        scopes =
-            pulumi.Input.asOptionalInput<List<ResourceServerScope>>(scopes),
-        userPoolId = pulumi.Input.asInput<String>(userPoolId);
+  }) :
+      identifier = pulumi.Input.asInput<String>(identifier),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      scopes = pulumi.Input.asOptionalInput<List<ResourceServerScope>>(scopes),
+      userPoolId = pulumi.Input.asInput<String>(userPoolId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['identifier'] = identifier;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final scopesValue = scopes;
-    if (scopesValue != null) {
-      map['scopes'] = pulumi.Input.mapOptionalInputValue<
-              List<ResourceServerScope>, List<Map<String, dynamic>>>(
-          scopesValue,
-          (value) => pulumi.Input.encodeList<ResourceServerScope,
-              Map<String, dynamic>>(value, (value) => value.toMap()));
-    }
-    map['userPoolId'] = userPoolId;
-    return map;
+    return <String, dynamic>{
+      'identifier': identifier,
+      'name': ?name,
+      'region': ?region,
+      'scopes': ?pulumi.Input.mapOptionalInputValue<List<ResourceServerScope>, List<Map<String, dynamic>>>(scopes, (value) => pulumi.Input.encodeList<ResourceServerScope, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'userPoolId': userPoolId,
+    };
   }
 
   factory ResourceServerArgs.fromMap(Map<String, dynamic> map) {
@@ -70,13 +53,9 @@ class ResourceServerArgs {
       identifier: map['identifier'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      scopes: map['scopes'] == null
-          ? null
-          : pulumi.Input.decodeList<ResourceServerScope>(
-              map['scopes'],
-              (value) => ResourceServerScope.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      scopes: map['scopes'] == null ? null : pulumi.Input.decodeList<ResourceServerScope>(map['scopes'], (value) => ResourceServerScope.fromMap((value as Map).cast<String, dynamic>())),
       userPoolId: map['userPoolId'] as String,
     );
   }
 }
+

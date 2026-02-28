@@ -818,31 +818,23 @@ import 'regional_parameter_version_args.dart';
 class RegionalParameterVersion extends pulumi.CustomResource {
   /// The time at which the Regional Parameter Version was created.
   late final pulumi.Output<String> createTime;
-
   /// The current state of Regional Parameter Version. This field is only applicable for updating Regional Parameter Version.
   late final pulumi.Output<bool?> disabled;
-
   /// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format
   /// `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
   late final pulumi.Output<String> kmsKeyVersion;
-
   /// Location of Parameter Manager Regional parameter resource.
   late final pulumi.Output<String> location;
-
   /// The resource name of the Regional Parameter Version. Format:
   /// `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}/versions/{{parameter_version_id}}`
   late final pulumi.Output<String> name;
-
   /// Parameter Manager Regional Parameter resource.
   late final pulumi.Output<String> parameter;
-
   /// The Regional Parameter data.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   late final pulumi.Output<String> parameterData;
-
   /// Version ID of the Regional Parameter Version Resource. This must be unique within the Regional Parameter.
   late final pulumi.Output<String> parameterVersionId;
-
   /// The time at which the Regional Parameter Version was updated.
   late final pulumi.Output<String> updateTime;
 

@@ -653,34 +653,26 @@ class Membership extends pulumi.CustomResource {
   /// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
   /// Structure is documented below.
   late final pulumi.Output<MembershipAuthority?> authority;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
   /// Structure is documented below.
   late final pulumi.Output<MembershipEndpoint?> endpoint;
-
   /// Labels to apply to this membership.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Location of the membership.
   /// The default value is `global`.
   late final pulumi.Output<String?> location;
-
   /// The client-provided identifier of the membership.
   late final pulumi.Output<String> membershipId;
-
   /// The unique identifier of the membership.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
@@ -700,8 +692,7 @@ class Membership extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.authority = registerOutput<MembershipAuthority?>('authority');
-    this.effectiveLabels =
-        registerOutput<Map<String, String>>('effectiveLabels');
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     this.endpoint = registerOutput<MembershipEndpoint?>('endpoint');
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.location = registerOutput<String?>('location');

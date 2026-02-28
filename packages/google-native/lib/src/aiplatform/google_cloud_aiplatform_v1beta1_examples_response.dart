@@ -7,18 +7,13 @@ import 'google_cloud_aiplatform_v1beta1_presets_response.dart';
 /// Example-based explainability that returns the nearest neighbors from the provided dataset.
 class GoogleCloudAiplatformV1beta1ExamplesResponse {
   /// The Cloud Storage input instances.
-  final GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceResponse
-      exampleGcsSource;
-
+  final GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceResponse exampleGcsSource;
   /// The Cloud Storage locations that contain the instances to be indexed for approximate nearest neighbor search.
   final GoogleCloudAiplatformV1beta1GcsSourceResponse gcsSource;
-
   /// The full configuration for the generated index, the semantics are the same as metadata and should match [NearestNeighborSearchConfig](https://cloud.google.com/vertex-ai/docs/explainable-ai/configuring-explanations-example-based#nearest-neighbor-search-config).
   final dynamic nearestNeighborSearchConfig;
-
   /// The number of neighbors to return when querying for examples.
   final int neighborCount;
-
   /// Simplified preset configuration, which automatically sets configuration values based on the desired query speed-precision trade-off and modality.
   final GoogleCloudAiplatformV1beta1PresetsResponse presets;
 
@@ -37,27 +32,23 @@ class GoogleCloudAiplatformV1beta1ExamplesResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['exampleGcsSource'] = exampleGcsSource.toMap();
-    map['gcsSource'] = gcsSource.toMap();
-    map['nearestNeighborSearchConfig'] = nearestNeighborSearchConfig;
-    map['neighborCount'] = neighborCount;
-    map['presets'] = presets.toMap();
-    return map;
+    return <String, dynamic>{
+      'exampleGcsSource': exampleGcsSource.toMap(),
+      'gcsSource': gcsSource.toMap(),
+      'nearestNeighborSearchConfig': nearestNeighborSearchConfig,
+      'neighborCount': neighborCount,
+      'presets': presets.toMap(),
+    };
   }
 
-  factory GoogleCloudAiplatformV1beta1ExamplesResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1ExamplesResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ExamplesResponse(
-      exampleGcsSource:
-          GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceResponse.fromMap(
-              (map['exampleGcsSource'] as Map).cast<String, dynamic>()),
-      gcsSource: GoogleCloudAiplatformV1beta1GcsSourceResponse.fromMap(
-          (map['gcsSource'] as Map).cast<String, dynamic>()),
+      exampleGcsSource: GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceResponse.fromMap((map['exampleGcsSource'] as Map).cast<String, dynamic>()),
+      gcsSource: GoogleCloudAiplatformV1beta1GcsSourceResponse.fromMap((map['gcsSource'] as Map).cast<String, dynamic>()),
       nearestNeighborSearchConfig: map['nearestNeighborSearchConfig'],
       neighborCount: map['neighborCount'] as int,
-      presets: GoogleCloudAiplatformV1beta1PresetsResponse.fromMap(
-          (map['presets'] as Map).cast<String, dynamic>()),
+      presets: GoogleCloudAiplatformV1beta1PresetsResponse.fromMap((map['presets'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

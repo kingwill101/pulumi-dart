@@ -16,17 +16,15 @@ class GetPeeringArgs {
   GetPeeringArgs({
     required String peeringId,
     String? project,
-  })  : peeringId = pulumi.Input.asInput<String>(peeringId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      peeringId = pulumi.Input.asInput<String>(peeringId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['peeringId'] = peeringId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'peeringId': peeringId,
+      'project': ?project,
+    };
   }
 
   factory GetPeeringArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetPeeringArgs {
     );
   }
 }
+

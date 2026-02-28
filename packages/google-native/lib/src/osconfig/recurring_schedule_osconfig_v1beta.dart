@@ -10,22 +10,16 @@ import 'weekly_schedule_osconfig_v1beta.dart';
 class RecurringScheduleOsconfigV1beta {
   /// Optional. The end time at which a recurring patch deployment schedule is no longer active.
   final String? endTime;
-
   /// The frequency unit of this recurring schedule.
   final RecurringScheduleFrequencyOsconfigV1beta frequency;
-
   /// Schedule with monthly executions.
   final MonthlyScheduleOsconfigV1beta monthly;
-
   /// Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
   final String? startTime;
-
   /// Time of the day to run a recurring deployment.
   final TimeOfDayOsconfigV1beta timeOfDay;
-
   /// Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
   final TimeZoneOsconfigV1beta timeZone;
-
   /// Schedule with weekly executions.
   final WeeklyScheduleOsconfigV1beta weekly;
 
@@ -48,37 +42,27 @@ class RecurringScheduleOsconfigV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final endTimeValue = endTime;
-    if (endTimeValue != null) {
-      map['endTime'] = endTimeValue;
-    }
-    map['frequency'] = frequency.value;
-    map['monthly'] = monthly.toMap();
-    final startTimeValue = startTime;
-    if (startTimeValue != null) {
-      map['startTime'] = startTimeValue;
-    }
-    map['timeOfDay'] = timeOfDay.toMap();
-    map['timeZone'] = timeZone.toMap();
-    map['weekly'] = weekly.toMap();
-    return map;
+    return <String, dynamic>{
+      'endTime': ?endTime,
+      'frequency': frequency.value,
+      'monthly': monthly.toMap(),
+      'startTime': ?startTime,
+      'timeOfDay': timeOfDay.toMap(),
+      'timeZone': timeZone.toMap(),
+      'weekly': weekly.toMap(),
+    };
   }
 
   factory RecurringScheduleOsconfigV1beta.fromMap(Map<String, dynamic> map) {
     return RecurringScheduleOsconfigV1beta(
       endTime: map['endTime'] == null ? null : map['endTime'] as String,
-      frequency: RecurringScheduleFrequencyOsconfigV1beta.fromValue(
-          map['frequency'] as String),
-      monthly: MonthlyScheduleOsconfigV1beta.fromMap(
-          (map['monthly'] as Map).cast<String, dynamic>()),
+      frequency: RecurringScheduleFrequencyOsconfigV1beta.fromValue(map['frequency'] as String),
+      monthly: MonthlyScheduleOsconfigV1beta.fromMap((map['monthly'] as Map).cast<String, dynamic>()),
       startTime: map['startTime'] == null ? null : map['startTime'] as String,
-      timeOfDay: TimeOfDayOsconfigV1beta.fromMap(
-          (map['timeOfDay'] as Map).cast<String, dynamic>()),
-      timeZone: TimeZoneOsconfigV1beta.fromMap(
-          (map['timeZone'] as Map).cast<String, dynamic>()),
-      weekly: WeeklyScheduleOsconfigV1beta.fromMap(
-          (map['weekly'] as Map).cast<String, dynamic>()),
+      timeOfDay: TimeOfDayOsconfigV1beta.fromMap((map['timeOfDay'] as Map).cast<String, dynamic>()),
+      timeZone: TimeZoneOsconfigV1beta.fromMap((map['timeZone'] as Map).cast<String, dynamic>()),
+      weekly: WeeklyScheduleOsconfigV1beta.fromMap((map['weekly'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

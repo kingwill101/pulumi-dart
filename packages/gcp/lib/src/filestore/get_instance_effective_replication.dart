@@ -6,7 +6,6 @@ import 'get_instance_effective_replication_replica.dart';
 class GetInstanceEffectiveReplication {
   /// The replication role.
   final List<GetInstanceEffectiveReplicationReplica> replicas;
-
   /// The replication role.
   final String role;
 
@@ -19,21 +18,17 @@ class GetInstanceEffectiveReplication {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['replicas'] = pulumi.Input.encodeList<
-        GetInstanceEffectiveReplicationReplica,
-        Map<String, dynamic>>(replicas, (value) => value.toMap());
-    map['role'] = role;
-    return map;
+    return <String, dynamic>{
+      'replicas': pulumi.Input.encodeList<GetInstanceEffectiveReplicationReplica, Map<String, dynamic>>(replicas, (value) => value.toMap()),
+      'role': role,
+    };
   }
 
   factory GetInstanceEffectiveReplication.fromMap(Map<String, dynamic> map) {
     return GetInstanceEffectiveReplication(
-      replicas: pulumi.Input.decodeList<GetInstanceEffectiveReplicationReplica>(
-          map['replicas'],
-          (value) => GetInstanceEffectiveReplicationReplica.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      replicas: pulumi.Input.decodeList<GetInstanceEffectiveReplicationReplica>(map['replicas'], (value) => GetInstanceEffectiveReplicationReplica.fromMap((value as Map).cast<String, dynamic>())),
       role: map['role'] as String,
     );
   }
 }
+

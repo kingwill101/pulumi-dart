@@ -16,26 +16,22 @@ class GetSearchApplicationArgs {
   GetSearchApplicationArgs({
     bool? debugOptionsEnableDebugging,
     required String searchapplicationId,
-  })  : debugOptionsEnableDebugging =
-            pulumi.Input.asOptionalInput<bool>(debugOptionsEnableDebugging),
-        searchapplicationId = pulumi.Input.asInput<String>(searchapplicationId);
+  }) :
+      debugOptionsEnableDebugging = pulumi.Input.asOptionalInput<bool>(debugOptionsEnableDebugging),
+      searchapplicationId = pulumi.Input.asInput<String>(searchapplicationId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final debugOptionsEnableDebuggingValue = debugOptionsEnableDebugging;
-    if (debugOptionsEnableDebuggingValue != null) {
-      map['debugOptionsEnableDebugging'] = debugOptionsEnableDebuggingValue;
-    }
-    map['searchapplicationId'] = searchapplicationId;
-    return map;
+    return <String, dynamic>{
+      'debugOptionsEnableDebugging': ?debugOptionsEnableDebugging,
+      'searchapplicationId': searchapplicationId,
+    };
   }
 
   factory GetSearchApplicationArgs.fromMap(Map<String, dynamic> map) {
     return GetSearchApplicationArgs(
-      debugOptionsEnableDebugging: map['debugOptionsEnableDebugging'] == null
-          ? null
-          : map['debugOptionsEnableDebugging'] as bool,
+      debugOptionsEnableDebugging: map['debugOptionsEnableDebugging'] == null ? null : map['debugOptionsEnableDebugging'] as bool,
       searchapplicationId: map['searchapplicationId'] as String,
     );
   }
 }
+

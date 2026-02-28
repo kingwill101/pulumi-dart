@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getKMSKeyRing.
 class GetKMSKeyRingResult {
   /// The provider-assigned unique ID for this managed resource.
@@ -21,15 +22,12 @@ class GetKMSKeyRingResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['location'] = location;
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'location': location,
+      'name': name,
+      'project': ?project,
+    };
   }
 
   factory GetKMSKeyRingResult.fromMap(Map<String, dynamic> map) {
@@ -41,3 +39,4 @@ class GetKMSKeyRingResult {
     );
   }
 }
+

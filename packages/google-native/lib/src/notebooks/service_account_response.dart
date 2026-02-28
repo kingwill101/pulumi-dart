@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A service account that acts as an identity.
 class ServiceAccountResponse {
   /// Optional. Email address of the service account.
   final String email;
-
   /// The list of scopes to be made available for this service account. Set by the CLH to https://www.googleapis.com/auth/cloud-platform
   final List<String> scopes;
 
@@ -17,10 +17,10 @@ class ServiceAccountResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['email'] = email;
-    map['scopes'] = scopes;
-    return map;
+    return <String, dynamic>{
+      'email': email,
+      'scopes': scopes,
+    };
   }
 
   factory ServiceAccountResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class ServiceAccountResponse {
     );
   }
 }
+

@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRegistrationCode.
 class GetRegistrationCodeResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
-
   /// The CA certificate registration code.
   final String registrationCode;
 
@@ -20,11 +20,11 @@ class GetRegistrationCodeResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['region'] = region;
-    map['registrationCode'] = registrationCode;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'region': region,
+      'registrationCode': registrationCode,
+    };
   }
 
   factory GetRegistrationCodeResult.fromMap(Map<String, dynamic> map) {
@@ -35,3 +35,4 @@ class GetRegistrationCodeResult {
     );
   }
 }
+

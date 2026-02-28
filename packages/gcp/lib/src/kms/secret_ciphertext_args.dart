@@ -10,11 +10,9 @@ class SecretCiphertextArgs {
   /// The additional authenticated data used for integrity checks during encryption and decryption.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String>? additionalAuthenticatedData;
-
   /// The full name of the CryptoKey that will be used to encrypt the provided plaintext.
   /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
   final pulumi.Input<String> cryptoKey;
-
   /// The plaintext to be encrypted.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String> plaintext;
@@ -27,29 +25,25 @@ class SecretCiphertextArgs {
     String? additionalAuthenticatedData,
     required String cryptoKey,
     required String plaintext,
-  })  : additionalAuthenticatedData =
-            pulumi.Input.asOptionalInput<String>(additionalAuthenticatedData),
-        cryptoKey = pulumi.Input.asInput<String>(cryptoKey),
-        plaintext = pulumi.Input.asInput<String>(plaintext);
+  }) :
+      additionalAuthenticatedData = pulumi.Input.asOptionalInput<String>(additionalAuthenticatedData),
+      cryptoKey = pulumi.Input.asInput<String>(cryptoKey),
+      plaintext = pulumi.Input.asInput<String>(plaintext);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final additionalAuthenticatedDataValue = additionalAuthenticatedData;
-    if (additionalAuthenticatedDataValue != null) {
-      map['additionalAuthenticatedData'] = additionalAuthenticatedDataValue;
-    }
-    map['cryptoKey'] = cryptoKey;
-    map['plaintext'] = plaintext;
-    return map;
+    return <String, dynamic>{
+      'additionalAuthenticatedData': ?additionalAuthenticatedData,
+      'cryptoKey': cryptoKey,
+      'plaintext': plaintext,
+    };
   }
 
   factory SecretCiphertextArgs.fromMap(Map<String, dynamic> map) {
     return SecretCiphertextArgs(
-      additionalAuthenticatedData: map['additionalAuthenticatedData'] == null
-          ? null
-          : map['additionalAuthenticatedData'] as String,
+      additionalAuthenticatedData: map['additionalAuthenticatedData'] == null ? null : map['additionalAuthenticatedData'] as String,
       cryptoKey: map['cryptoKey'] as String,
       plaintext: map['plaintext'] as String,
     );
   }
 }
+

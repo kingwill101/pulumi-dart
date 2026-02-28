@@ -15,3 +15,4 @@ enum DiskStorageType {
     throw ArgumentError('Unknown DiskStorageType value: $value');
   }
 }
+

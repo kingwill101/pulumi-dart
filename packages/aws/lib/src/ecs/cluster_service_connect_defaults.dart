@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterServiceConnectDefaults {
   /// ARN of the `aws.servicediscovery.HttpNamespace` that's used when you create a service and don't specify a Service Connect configuration.
   final String namespace;
@@ -11,9 +12,9 @@ class ClusterServiceConnectDefaults {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['namespace'] = namespace;
-    return map;
+    return <String, dynamic>{
+      'namespace': namespace,
+    };
   }
 
   factory ClusterServiceConnectDefaults.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class ClusterServiceConnectDefaults {
     );
   }
 }
+

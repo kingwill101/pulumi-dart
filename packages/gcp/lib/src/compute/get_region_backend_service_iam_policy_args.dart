@@ -9,11 +9,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionBackendServiceIamPolicyArgs {
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The Region in which the created backend service should reside.
   /// If it is not provided, the provider region is used.
   /// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -29,26 +27,20 @@ class GetRegionBackendServiceIamPolicyArgs {
     required String name,
     String? project,
     String? region,
-  })  : name = pulumi.Input.asInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      name = pulumi.Input.asInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'project': ?project,
+      'region': ?region,
+    };
   }
 
-  factory GetRegionBackendServiceIamPolicyArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetRegionBackendServiceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceIamPolicyArgs(
       name: map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -56,3 +48,4 @@ class GetRegionBackendServiceIamPolicyArgs {
     );
   }
 }
+

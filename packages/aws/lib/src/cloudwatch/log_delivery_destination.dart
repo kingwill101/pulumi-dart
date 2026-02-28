@@ -221,27 +221,18 @@ import 'log_delivery_destination_delivery_destination_configuration.dart';
 class LogDeliveryDestination extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the delivery destination.
   late final pulumi.Output<String> arn;
-
   /// The AWS resource that will receive the logs. Required for CloudWatch Logs, Amazon S3, and Firehose destinations. Not required for X-Ray trace delivery destinations.
-  late final pulumi
-      .Output<LogDeliveryDestinationDeliveryDestinationConfiguration?>
-      deliveryDestinationConfiguration;
-
+  late final pulumi.Output<LogDeliveryDestinationDeliveryDestinationConfiguration?> deliveryDestinationConfiguration;
   /// The type of delivery destination. Valid values: `S3`, `CWL`, `FH`, `XRAY`. Required for X-Ray trace delivery destinations. For other destination types, this is computed from the `destination_resource_arn`.
   late final pulumi.Output<String> deliveryDestinationType;
-
   /// The name for this delivery destination.
   late final pulumi.Output<String> name;
-
   /// The format of the logs that are sent to this delivery destination. Valid values: `json`, `plain`, `w3c`, `raw`, `parquet`.
   late final pulumi.Output<String?> outputFormat;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -260,11 +251,8 @@ class LogDeliveryDestination extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
-    this.deliveryDestinationConfiguration =
-        registerOutput<LogDeliveryDestinationDeliveryDestinationConfiguration?>(
-            'deliveryDestinationConfiguration');
-    this.deliveryDestinationType =
-        registerOutput<String>('deliveryDestinationType');
+    this.deliveryDestinationConfiguration = registerOutput<LogDeliveryDestinationDeliveryDestinationConfiguration?>('deliveryDestinationConfiguration');
+    this.deliveryDestinationType = registerOutput<String>('deliveryDestinationType');
     this.name = registerOutput<String>('name');
     this.outputFormat = registerOutput<String?>('outputFormat');
     this.region = registerOutput<String>('region');

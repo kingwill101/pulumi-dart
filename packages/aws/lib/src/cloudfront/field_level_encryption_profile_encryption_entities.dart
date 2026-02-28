@@ -13,27 +13,15 @@ class FieldLevelEncryptionProfileEncryptionEntities {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final itemsValue = items;
-    if (itemsValue != null) {
-      map['items'] = pulumi.Input.encodeList<
-          FieldLevelEncryptionProfileEncryptionEntitiesItem,
-          Map<String, dynamic>>(itemsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'items': ?items == null ? null : pulumi.Input.encodeList<FieldLevelEncryptionProfileEncryptionEntitiesItem, Map<String, dynamic>>(items!, (value) => value.toMap()),
+    };
   }
 
-  factory FieldLevelEncryptionProfileEncryptionEntities.fromMap(
-      Map<String, dynamic> map) {
+  factory FieldLevelEncryptionProfileEncryptionEntities.fromMap(Map<String, dynamic> map) {
     return FieldLevelEncryptionProfileEncryptionEntities(
-      items: map['items'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  FieldLevelEncryptionProfileEncryptionEntitiesItem>(
-              map['items'],
-              (value) =>
-                  FieldLevelEncryptionProfileEncryptionEntitiesItem.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      items: map['items'] == null ? null : pulumi.Input.decodeList<FieldLevelEncryptionProfileEncryptionEntitiesItem>(map['items'], (value) => FieldLevelEncryptionProfileEncryptionEntitiesItem.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

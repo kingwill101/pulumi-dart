@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TableMetadataIcebergSchemaField {
   /// The name of the field.
   final String name;
-
   /// A Boolean value that specifies whether values are required for each row in this field. Defaults to `false`.
   final bool? required;
-
   /// The field type. S3 Tables supports all Apache Iceberg primitive types including: `boolean`, `int`, `long`, `float`, `double`, `decimal(precision,scale)`, `date`, `time`, `timestamp`, `timestamptz`, `string`, `uuid`, `fixed(length)`, `binary`.
   final String type;
 
@@ -21,14 +20,11 @@ class TableMetadataIcebergSchemaField {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    final requiredValue = required;
-    if (requiredValue != null) {
-      map['required'] = requiredValue;
-    }
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'required': ?required,
+      'type': type,
+    };
   }
 
   factory TableMetadataIcebergSchemaField.fromMap(Map<String, dynamic> map) {
@@ -39,3 +35,4 @@ class TableMetadataIcebergSchemaField {
     );
   }
 }
+

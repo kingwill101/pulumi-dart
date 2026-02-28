@@ -22,27 +22,19 @@ class InstanceIamPolicyArgs {
     String? name,
     required String policyData,
     String? project,
-  })  : location = pulumi.Input.asOptionalInput<String>(location),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        policyData = pulumi.Input.asInput<String>(policyData),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      location = pulumi.Input.asOptionalInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      policyData = pulumi.Input.asInput<String>(policyData),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    map['policyData'] = policyData;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'location': ?location,
+      'name': ?name,
+      'policyData': policyData,
+      'project': ?project,
+    };
   }
 
   factory InstanceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -54,3 +46,4 @@ class InstanceIamPolicyArgs {
     );
   }
 }
+

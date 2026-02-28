@@ -12,7 +12,7 @@ enum AttachedDiskInterfaceComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown AttachedDiskInterfaceComputeBeta value: $value');
+    throw ArgumentError('Unknown AttachedDiskInterfaceComputeBeta value: $value');
   }
 }
+

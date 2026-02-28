@@ -111,10 +111,8 @@ import 'log_delivery_destination_policy_args.dart';
 class LogDeliveryDestinationPolicy extends pulumi.CustomResource {
   /// The name of the delivery destination to assign this policy to.
   late final pulumi.Output<String> deliveryDestinationName;
-
   /// The contents of the policy.
   late final pulumi.Output<String> deliveryDestinationPolicy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -132,10 +130,8 @@ class LogDeliveryDestinationPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.deliveryDestinationName =
-        registerOutput<String>('deliveryDestinationName');
-    this.deliveryDestinationPolicy =
-        registerOutput<String>('deliveryDestinationPolicy');
+    this.deliveryDestinationName = registerOutput<String>('deliveryDestinationName');
+    this.deliveryDestinationPolicy = registerOutput<String>('deliveryDestinationPolicy');
     this.region = registerOutput<String>('region');
   }
 }

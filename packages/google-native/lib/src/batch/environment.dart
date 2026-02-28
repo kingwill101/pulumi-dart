@@ -6,10 +6,8 @@ import 'kmsenv_map.dart';
 class Environment {
   /// An encrypted JSON dictionary where the key/value pairs correspond to environment variable names and their values.
   final KMSEnvMap? encryptedVariables;
-
   /// A map of environment variable names to Secret Manager secret names. The VM will access the named secrets to set the value of each environment variable.
   final Map<String, String>? secretVariables;
-
   /// A map of environment variable names to values.
   final Map<String, String>? variables;
 
@@ -24,34 +22,19 @@ class Environment {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final encryptedVariablesValue = encryptedVariables;
-    if (encryptedVariablesValue != null) {
-      map['encryptedVariables'] = encryptedVariablesValue.toMap();
-    }
-    final secretVariablesValue = secretVariables;
-    if (secretVariablesValue != null) {
-      map['secretVariables'] = secretVariablesValue;
-    }
-    final variablesValue = variables;
-    if (variablesValue != null) {
-      map['variables'] = variablesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'encryptedVariables': ?encryptedVariables == null ? null : encryptedVariables!.toMap(),
+      'secretVariables': ?secretVariables,
+      'variables': ?variables,
+    };
   }
 
   factory Environment.fromMap(Map<String, dynamic> map) {
     return Environment(
-      encryptedVariables: map['encryptedVariables'] == null
-          ? null
-          : KMSEnvMap.fromMap(
-              (map['encryptedVariables'] as Map).cast<String, dynamic>()),
-      secretVariables: map['secretVariables'] == null
-          ? null
-          : (map['secretVariables'] as Map).cast<String, String>(),
-      variables: map['variables'] == null
-          ? null
-          : (map['variables'] as Map).cast<String, String>(),
+      encryptedVariables: map['encryptedVariables'] == null ? null : KMSEnvMap.fromMap((map['encryptedVariables'] as Map).cast<String, dynamic>()),
+      secretVariables: map['secretVariables'] == null ? null : (map['secretVariables'] as Map).cast<String, String>(),
+      variables: map['variables'] == null ? null : (map['variables'] as Map).cast<String, String>(),
     );
   }
 }
+

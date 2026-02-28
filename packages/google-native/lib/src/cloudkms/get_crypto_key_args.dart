@@ -22,21 +22,19 @@ class GetCryptoKeyArgs {
     required String keyRingId,
     required String location,
     String? project,
-  })  : cryptoKeyId = pulumi.Input.asInput<String>(cryptoKeyId),
-        keyRingId = pulumi.Input.asInput<String>(keyRingId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      cryptoKeyId = pulumi.Input.asInput<String>(cryptoKeyId),
+      keyRingId = pulumi.Input.asInput<String>(keyRingId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cryptoKeyId'] = cryptoKeyId;
-    map['keyRingId'] = keyRingId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cryptoKeyId': cryptoKeyId,
+      'keyRingId': keyRingId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetCryptoKeyArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetCryptoKeyArgs {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetListenerDefaultActionAuthenticateCognito {
   final Map<String, String> authenticationRequestExtraParams;
   final String onUnauthenticatedRequest;
@@ -31,24 +32,21 @@ class GetListenerDefaultActionAuthenticateCognito {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['authenticationRequestExtraParams'] = authenticationRequestExtraParams;
-    map['onUnauthenticatedRequest'] = onUnauthenticatedRequest;
-    map['scope'] = scope;
-    map['sessionCookieName'] = sessionCookieName;
-    map['sessionTimeout'] = sessionTimeout;
-    map['userPoolArn'] = userPoolArn;
-    map['userPoolClientId'] = userPoolClientId;
-    map['userPoolDomain'] = userPoolDomain;
-    return map;
+    return <String, dynamic>{
+      'authenticationRequestExtraParams': authenticationRequestExtraParams,
+      'onUnauthenticatedRequest': onUnauthenticatedRequest,
+      'scope': scope,
+      'sessionCookieName': sessionCookieName,
+      'sessionTimeout': sessionTimeout,
+      'userPoolArn': userPoolArn,
+      'userPoolClientId': userPoolClientId,
+      'userPoolDomain': userPoolDomain,
+    };
   }
 
-  factory GetListenerDefaultActionAuthenticateCognito.fromMap(
-      Map<String, dynamic> map) {
+  factory GetListenerDefaultActionAuthenticateCognito.fromMap(Map<String, dynamic> map) {
     return GetListenerDefaultActionAuthenticateCognito(
-      authenticationRequestExtraParams:
-          (map['authenticationRequestExtraParams'] as Map)
-              .cast<String, String>(),
+      authenticationRequestExtraParams: (map['authenticationRequestExtraParams'] as Map).cast<String, String>(),
       onUnauthenticatedRequest: map['onUnauthenticatedRequest'] as String,
       scope: map['scope'] as String,
       sessionCookieName: map['sessionCookieName'] as String,
@@ -59,3 +57,4 @@ class GetListenerDefaultActionAuthenticateCognito {
     );
   }
 }
+

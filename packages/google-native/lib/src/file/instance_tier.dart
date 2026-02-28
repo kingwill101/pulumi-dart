@@ -22,3 +22,4 @@ enum InstanceTier {
     throw ArgumentError('Unknown InstanceTier value: $value');
   }
 }
+

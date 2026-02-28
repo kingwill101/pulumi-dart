@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PacketMirroringNetworkInfoComputeBeta {
   /// URL of the network resource.
   final String? url;
@@ -11,18 +12,15 @@ class PacketMirroringNetworkInfoComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final urlValue = url;
-    if (urlValue != null) {
-      map['url'] = urlValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'url': ?url,
+    };
   }
 
-  factory PacketMirroringNetworkInfoComputeBeta.fromMap(
-      Map<String, dynamic> map) {
+  factory PacketMirroringNetworkInfoComputeBeta.fromMap(Map<String, dynamic> map) {
     return PacketMirroringNetworkInfoComputeBeta(
       url: map['url'] == null ? null : map['url'] as String,
     );
   }
 }
+

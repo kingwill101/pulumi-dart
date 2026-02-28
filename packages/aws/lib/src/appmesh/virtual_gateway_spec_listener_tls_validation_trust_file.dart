@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VirtualGatewaySpecListenerTlsValidationTrustFile {
   /// Certificate trust chain for a certificate stored on the file system of the mesh endpoint that the proxy is running on. Must be between 1 and 255 characters in length.
   final String certificateChain;
@@ -11,15 +12,15 @@ class VirtualGatewaySpecListenerTlsValidationTrustFile {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['certificateChain'] = certificateChain;
-    return map;
+    return <String, dynamic>{
+      'certificateChain': certificateChain,
+    };
   }
 
-  factory VirtualGatewaySpecListenerTlsValidationTrustFile.fromMap(
-      Map<String, dynamic> map) {
+  factory VirtualGatewaySpecListenerTlsValidationTrustFile.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecListenerTlsValidationTrustFile(
       certificateChain: map['certificateChain'] as String,
     );
   }
 }
+

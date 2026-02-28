@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInstanceServiceAccount {
   /// The service account e-mail address.
   final String email;
-
   /// A list of service scopes.
   final List<String> scopes;
 
@@ -16,10 +16,10 @@ class GetInstanceServiceAccount {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['email'] = email;
-    map['scopes'] = scopes;
-    return map;
+    return <String, dynamic>{
+      'email': email,
+      'scopes': scopes,
+    };
   }
 
   factory GetInstanceServiceAccount.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetInstanceServiceAccount {
     );
   }
 }
+

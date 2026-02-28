@@ -19,19 +19,17 @@ class GetCustomClassArgs {
     required String customClassId,
     required String location,
     String? project,
-  })  : customClassId = pulumi.Input.asInput<String>(customClassId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      customClassId = pulumi.Input.asInput<String>(customClassId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['customClassId'] = customClassId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'customClassId': customClassId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetCustomClassArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetCustomClassArgs {
     );
   }
 }
+

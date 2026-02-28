@@ -12,37 +12,26 @@ import 'google_cloud_aiplatform_v1_timestamp_split.dart';
 class GoogleCloudAiplatformV1InputDataConfig {
   /// Applicable only to custom training with Datasets that have DataItems and Annotations. Cloud Storage URI that points to a YAML file describing the annotation schema. The schema is defined as an OpenAPI 3.0.2 [Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject). The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/annotation/ , note that the chosen schema must be consistent with metadata of the Dataset specified by dataset_id. Only Annotations that both match this schema and belong to DataItems not ignored by the split method are used in respectively training, validation or test role, depending on the role of the DataItem they are on. When used in conjunction with annotations_filter, the Annotations used for training are filtered by both annotations_filter and annotation_schema_uri.
   final String? annotationSchemaUri;
-
   /// Applicable only to Datasets that have DataItems and Annotations. A filter on Annotations of the Dataset. Only Annotations that both match this filter and belong to DataItems not ignored by the split method are used in respectively training, validation or test role, depending on the role of the DataItem they are on (for the auto-assigned that role is decided by Vertex AI). A filter with same syntax as the one used in ListAnnotations may be used, but note here it filters across all Annotations of the Dataset, and not just within a single DataItem.
   final String? annotationsFilter;
-
   /// Only applicable to custom training with tabular Dataset with BigQuery source. The BigQuery project location where the training data is to be written to. In the given project a new dataset is created with name `dataset___` where timestamp is in YYYY_MM_DDThh_mm_ss_sssZ format. All training input data is written into that dataset. In the dataset three tables are created, `training`, `validation` and `test`. * AIP_DATA_FORMAT = "bigquery". * AIP_TRAINING_DATA_URI = "bigquery_destination.dataset___.training" * AIP_VALIDATION_DATA_URI = "bigquery_destination.dataset___.validation" * AIP_TEST_DATA_URI = "bigquery_destination.dataset___.test"
   final GoogleCloudAiplatformV1BigQueryDestination? bigqueryDestination;
-
   /// The ID of the Dataset in the same Project and Location which data will be used to train the Model. The Dataset must use schema compatible with Model being trained, and what is compatible should be described in the used TrainingPipeline's training_task_definition. For tabular Datasets, all their data is exported to training, to pick and choose from.
   final String datasetId;
-
   /// Split based on the provided filters for each set.
   final GoogleCloudAiplatformV1FilterSplit? filterSplit;
-
   /// Split based on fractions defining the size of each set.
   final GoogleCloudAiplatformV1FractionSplit? fractionSplit;
-
   /// The Cloud Storage location where the training data is to be written to. In the given directory a new directory is created with name: `dataset---` where timestamp is in YYYY-MM-DDThh:mm:ss.sssZ ISO-8601 format. All training input data is written into that directory. The Vertex AI environment variables representing Cloud Storage data URIs are represented in the Cloud Storage wildcard format to support sharded data. e.g.: "gs://.../training-*.jsonl" * AIP_DATA_FORMAT = "jsonl" for non-tabular data, "csv" for tabular data * AIP_TRAINING_DATA_URI = "gcs_destination/dataset---/training-*.${AIP_DATA_FORMAT}" * AIP_VALIDATION_DATA_URI = "gcs_destination/dataset---/validation-*.${AIP_DATA_FORMAT}" * AIP_TEST_DATA_URI = "gcs_destination/dataset---/test-*.${AIP_DATA_FORMAT}"
   final GoogleCloudAiplatformV1GcsDestination? gcsDestination;
-
   /// Whether to persist the ML use assignment to data item system labels.
   final bool? persistMlUseAssignment;
-
   /// Supported only for tabular Datasets. Split based on a predefined key.
   final GoogleCloudAiplatformV1PredefinedSplit? predefinedSplit;
-
   /// Only applicable to Datasets that have SavedQueries. The ID of a SavedQuery (annotation set) under the Dataset specified by dataset_id used for filtering Annotations for training. Only Annotations that are associated with this SavedQuery are used in respectively training. When used in conjunction with annotations_filter, the Annotations used for training are filtered by both saved_query_id and annotations_filter. Only one of saved_query_id and annotation_schema_uri should be specified as both of them represent the same thing: problem type.
   final String? savedQueryId;
-
   /// Supported only for tabular Datasets. Split based on the distribution of the specified column.
   final GoogleCloudAiplatformV1StratifiedSplit? stratifiedSplit;
-
   /// Supported only for tabular Datasets. Split based on the timestamp of the input data pieces.
   final GoogleCloudAiplatformV1TimestampSplit? timestampSplit;
 
@@ -75,98 +64,37 @@ class GoogleCloudAiplatformV1InputDataConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final annotationSchemaUriValue = annotationSchemaUri;
-    if (annotationSchemaUriValue != null) {
-      map['annotationSchemaUri'] = annotationSchemaUriValue;
-    }
-    final annotationsFilterValue = annotationsFilter;
-    if (annotationsFilterValue != null) {
-      map['annotationsFilter'] = annotationsFilterValue;
-    }
-    final bigqueryDestinationValue = bigqueryDestination;
-    if (bigqueryDestinationValue != null) {
-      map['bigqueryDestination'] = bigqueryDestinationValue.toMap();
-    }
-    map['datasetId'] = datasetId;
-    final filterSplitValue = filterSplit;
-    if (filterSplitValue != null) {
-      map['filterSplit'] = filterSplitValue.toMap();
-    }
-    final fractionSplitValue = fractionSplit;
-    if (fractionSplitValue != null) {
-      map['fractionSplit'] = fractionSplitValue.toMap();
-    }
-    final gcsDestinationValue = gcsDestination;
-    if (gcsDestinationValue != null) {
-      map['gcsDestination'] = gcsDestinationValue.toMap();
-    }
-    final persistMlUseAssignmentValue = persistMlUseAssignment;
-    if (persistMlUseAssignmentValue != null) {
-      map['persistMlUseAssignment'] = persistMlUseAssignmentValue;
-    }
-    final predefinedSplitValue = predefinedSplit;
-    if (predefinedSplitValue != null) {
-      map['predefinedSplit'] = predefinedSplitValue.toMap();
-    }
-    final savedQueryIdValue = savedQueryId;
-    if (savedQueryIdValue != null) {
-      map['savedQueryId'] = savedQueryIdValue;
-    }
-    final stratifiedSplitValue = stratifiedSplit;
-    if (stratifiedSplitValue != null) {
-      map['stratifiedSplit'] = stratifiedSplitValue.toMap();
-    }
-    final timestampSplitValue = timestampSplit;
-    if (timestampSplitValue != null) {
-      map['timestampSplit'] = timestampSplitValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'annotationSchemaUri': ?annotationSchemaUri,
+      'annotationsFilter': ?annotationsFilter,
+      'bigqueryDestination': ?bigqueryDestination == null ? null : bigqueryDestination!.toMap(),
+      'datasetId': datasetId,
+      'filterSplit': ?filterSplit == null ? null : filterSplit!.toMap(),
+      'fractionSplit': ?fractionSplit == null ? null : fractionSplit!.toMap(),
+      'gcsDestination': ?gcsDestination == null ? null : gcsDestination!.toMap(),
+      'persistMlUseAssignment': ?persistMlUseAssignment,
+      'predefinedSplit': ?predefinedSplit == null ? null : predefinedSplit!.toMap(),
+      'savedQueryId': ?savedQueryId,
+      'stratifiedSplit': ?stratifiedSplit == null ? null : stratifiedSplit!.toMap(),
+      'timestampSplit': ?timestampSplit == null ? null : timestampSplit!.toMap(),
+    };
   }
 
-  factory GoogleCloudAiplatformV1InputDataConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1InputDataConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1InputDataConfig(
-      annotationSchemaUri: map['annotationSchemaUri'] == null
-          ? null
-          : map['annotationSchemaUri'] as String,
-      annotationsFilter: map['annotationsFilter'] == null
-          ? null
-          : map['annotationsFilter'] as String,
-      bigqueryDestination: map['bigqueryDestination'] == null
-          ? null
-          : GoogleCloudAiplatformV1BigQueryDestination.fromMap(
-              (map['bigqueryDestination'] as Map).cast<String, dynamic>()),
+      annotationSchemaUri: map['annotationSchemaUri'] == null ? null : map['annotationSchemaUri'] as String,
+      annotationsFilter: map['annotationsFilter'] == null ? null : map['annotationsFilter'] as String,
+      bigqueryDestination: map['bigqueryDestination'] == null ? null : GoogleCloudAiplatformV1BigQueryDestination.fromMap((map['bigqueryDestination'] as Map).cast<String, dynamic>()),
       datasetId: map['datasetId'] as String,
-      filterSplit: map['filterSplit'] == null
-          ? null
-          : GoogleCloudAiplatformV1FilterSplit.fromMap(
-              (map['filterSplit'] as Map).cast<String, dynamic>()),
-      fractionSplit: map['fractionSplit'] == null
-          ? null
-          : GoogleCloudAiplatformV1FractionSplit.fromMap(
-              (map['fractionSplit'] as Map).cast<String, dynamic>()),
-      gcsDestination: map['gcsDestination'] == null
-          ? null
-          : GoogleCloudAiplatformV1GcsDestination.fromMap(
-              (map['gcsDestination'] as Map).cast<String, dynamic>()),
-      persistMlUseAssignment: map['persistMlUseAssignment'] == null
-          ? null
-          : map['persistMlUseAssignment'] as bool,
-      predefinedSplit: map['predefinedSplit'] == null
-          ? null
-          : GoogleCloudAiplatformV1PredefinedSplit.fromMap(
-              (map['predefinedSplit'] as Map).cast<String, dynamic>()),
-      savedQueryId:
-          map['savedQueryId'] == null ? null : map['savedQueryId'] as String,
-      stratifiedSplit: map['stratifiedSplit'] == null
-          ? null
-          : GoogleCloudAiplatformV1StratifiedSplit.fromMap(
-              (map['stratifiedSplit'] as Map).cast<String, dynamic>()),
-      timestampSplit: map['timestampSplit'] == null
-          ? null
-          : GoogleCloudAiplatformV1TimestampSplit.fromMap(
-              (map['timestampSplit'] as Map).cast<String, dynamic>()),
+      filterSplit: map['filterSplit'] == null ? null : GoogleCloudAiplatformV1FilterSplit.fromMap((map['filterSplit'] as Map).cast<String, dynamic>()),
+      fractionSplit: map['fractionSplit'] == null ? null : GoogleCloudAiplatformV1FractionSplit.fromMap((map['fractionSplit'] as Map).cast<String, dynamic>()),
+      gcsDestination: map['gcsDestination'] == null ? null : GoogleCloudAiplatformV1GcsDestination.fromMap((map['gcsDestination'] as Map).cast<String, dynamic>()),
+      persistMlUseAssignment: map['persistMlUseAssignment'] == null ? null : map['persistMlUseAssignment'] as bool,
+      predefinedSplit: map['predefinedSplit'] == null ? null : GoogleCloudAiplatformV1PredefinedSplit.fromMap((map['predefinedSplit'] as Map).cast<String, dynamic>()),
+      savedQueryId: map['savedQueryId'] == null ? null : map['savedQueryId'] as String,
+      stratifiedSplit: map['stratifiedSplit'] == null ? null : GoogleCloudAiplatformV1StratifiedSplit.fromMap((map['stratifiedSplit'] as Map).cast<String, dynamic>()),
+      timestampSplit: map['timestampSplit'] == null ? null : GoogleCloudAiplatformV1TimestampSplit.fromMap((map['timestampSplit'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

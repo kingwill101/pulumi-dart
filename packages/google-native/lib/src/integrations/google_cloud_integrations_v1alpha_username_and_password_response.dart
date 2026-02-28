@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Username and password pair.
 class GoogleCloudIntegrationsV1alphaUsernameAndPasswordResponse {
   /// Password to be used
   final String password;
-
   /// Username to be used
   final String username;
 
@@ -17,17 +17,17 @@ class GoogleCloudIntegrationsV1alphaUsernameAndPasswordResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['password'] = password;
-    map['username'] = username;
-    return map;
+    return <String, dynamic>{
+      'password': password,
+      'username': username,
+    };
   }
 
-  factory GoogleCloudIntegrationsV1alphaUsernameAndPasswordResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaUsernameAndPasswordResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaUsernameAndPasswordResponse(
       password: map['password'] as String,
       username: map['username'] as String,
     );
   }
 }
+

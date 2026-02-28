@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AwsNodePoolManagement {
   /// Optional. Whether or not the nodes will be automatically repaired.
   final bool? autoRepair;
@@ -11,12 +12,9 @@ class AwsNodePoolManagement {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final autoRepairValue = autoRepair;
-    if (autoRepairValue != null) {
-      map['autoRepair'] = autoRepairValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'autoRepair': ?autoRepair,
+    };
   }
 
   factory AwsNodePoolManagement.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class AwsNodePoolManagement {
     );
   }
 }
+

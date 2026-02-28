@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Mask a string by replacing its characters with a fixed character.
 class CharacterMaskConfigResponse {
   /// Character to mask the sensitive values. If not supplied, defaults to "*".
@@ -12,9 +13,9 @@ class CharacterMaskConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maskingCharacter'] = maskingCharacter;
-    return map;
+    return <String, dynamic>{
+      'maskingCharacter': maskingCharacter,
+    };
   }
 
   factory CharacterMaskConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class CharacterMaskConfigResponse {
     );
   }
 }
+

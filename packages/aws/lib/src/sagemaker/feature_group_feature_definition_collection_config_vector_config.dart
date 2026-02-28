@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FeatureGroupFeatureDefinitionCollectionConfigVectorConfig {
   final int? dimension;
 
@@ -10,18 +11,15 @@ class FeatureGroupFeatureDefinitionCollectionConfigVectorConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dimensionValue = dimension;
-    if (dimensionValue != null) {
-      map['dimension'] = dimensionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'dimension': ?dimension,
+    };
   }
 
-  factory FeatureGroupFeatureDefinitionCollectionConfigVectorConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory FeatureGroupFeatureDefinitionCollectionConfigVectorConfig.fromMap(Map<String, dynamic> map) {
     return FeatureGroupFeatureDefinitionCollectionConfigVectorConfig(
       dimension: map['dimension'] == null ? null : map['dimension'] as int,
     );
   }
 }
+

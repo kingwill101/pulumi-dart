@@ -15,18 +15,15 @@ class AppHostingTrafficTarget {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['splits'] = pulumi.Input.encodeList<AppHostingTrafficTargetSplit,
-        Map<String, dynamic>>(splits, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'splits': pulumi.Input.encodeList<AppHostingTrafficTargetSplit, Map<String, dynamic>>(splits, (value) => value.toMap()),
+    };
   }
 
   factory AppHostingTrafficTarget.fromMap(Map<String, dynamic> map) {
     return AppHostingTrafficTarget(
-      splits: pulumi.Input.decodeList<AppHostingTrafficTargetSplit>(
-          map['splits'],
-          (value) => AppHostingTrafficTargetSplit.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      splits: pulumi.Input.decodeList<AppHostingTrafficTargetSplit>(map['splits'], (value) => AppHostingTrafficTargetSplit.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

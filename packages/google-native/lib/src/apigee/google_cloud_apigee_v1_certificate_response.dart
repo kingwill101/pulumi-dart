@@ -14,20 +14,15 @@ class GoogleCloudApigeeV1CertificateResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['certInfo'] = pulumi.Input.encodeList<
-        GoogleCloudApigeeV1CertInfoResponse,
-        Map<String, dynamic>>(certInfo, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'certInfo': pulumi.Input.encodeList<GoogleCloudApigeeV1CertInfoResponse, Map<String, dynamic>>(certInfo, (value) => value.toMap()),
+    };
   }
 
-  factory GoogleCloudApigeeV1CertificateResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1CertificateResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1CertificateResponse(
-      certInfo: pulumi.Input.decodeList<GoogleCloudApigeeV1CertInfoResponse>(
-          map['certInfo'],
-          (value) => GoogleCloudApigeeV1CertInfoResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      certInfo: pulumi.Input.decodeList<GoogleCloudApigeeV1CertInfoResponse>(map['certInfo'], (value) => GoogleCloudApigeeV1CertInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

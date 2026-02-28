@@ -28,7 +28,7 @@ enum LayerDirectiveContaineranalysisV1beta1 {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown LayerDirectiveContaineranalysisV1beta1 value: $value');
+    throw ArgumentError('Unknown LayerDirectiveContaineranalysisV1beta1 value: $value');
   }
 }
+

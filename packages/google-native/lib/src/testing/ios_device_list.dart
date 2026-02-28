@@ -15,17 +15,15 @@ class IosDeviceList {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['iosDevices'] =
-        pulumi.Input.encodeList<IosDevice, Map<String, dynamic>>(
-            iosDevices, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'iosDevices': pulumi.Input.encodeList<IosDevice, Map<String, dynamic>>(iosDevices, (value) => value.toMap()),
+    };
   }
 
   factory IosDeviceList.fromMap(Map<String, dynamic> map) {
     return IosDeviceList(
-      iosDevices: pulumi.Input.decodeList<IosDevice>(map['iosDevices'],
-          (value) => IosDevice.fromMap((value as Map).cast<String, dynamic>())),
+      iosDevices: pulumi.Input.decodeList<IosDevice>(map['iosDevices'], (value) => IosDevice.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

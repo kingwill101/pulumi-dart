@@ -8,27 +8,20 @@ class RestorePlanRestoreConfigClusterResourceRestoreScope {
   /// If True, all valid cluster-scoped resources will be restored.
   /// Mutually exclusive to any other field in `clusterResourceRestoreScope`.
   final bool? allGroupKinds;
-
   /// A list of cluster-scoped resource group kinds to NOT restore from the backup.
   /// If specified, all valid cluster-scoped resources will be restored except
   /// for those specified in the list.
   /// Mutually exclusive to any other field in `clusterResourceRestoreScope`.
   /// Structure is documented below.
-  final List<
-          RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind>?
-      excludedGroupKinds;
-
+  final List<RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind>? excludedGroupKinds;
   /// If True, no cluster-scoped resources will be restored.
   /// Mutually exclusive to any other field in `clusterResourceRestoreScope`.
   final bool? noGroupKinds;
-
   /// A list of cluster-scoped resource group kinds to restore from the backup.
   /// If specified, only the selected resources will be restored.
   /// Mutually exclusive to any other field in the `clusterResourceRestoreScope`.
   /// Structure is documented below.
-  final List<
-          RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind>?
-      selectedGroupKinds;
+  final List<RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind>? selectedGroupKinds;
 
   /// Creates a new [RestorePlanRestoreConfigClusterResourceRestoreScope].
   /// [allGroupKinds] If True, all valid cluster-scoped resources will be restored.
@@ -43,55 +36,21 @@ class RestorePlanRestoreConfigClusterResourceRestoreScope {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final allGroupKindsValue = allGroupKinds;
-    if (allGroupKindsValue != null) {
-      map['allGroupKinds'] = allGroupKindsValue;
-    }
-    final excludedGroupKindsValue = excludedGroupKinds;
-    if (excludedGroupKindsValue != null) {
-      map['excludedGroupKinds'] = pulumi.Input.encodeList<
-          RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind,
-          Map<String,
-              dynamic>>(excludedGroupKindsValue, (value) => value.toMap());
-    }
-    final noGroupKindsValue = noGroupKinds;
-    if (noGroupKindsValue != null) {
-      map['noGroupKinds'] = noGroupKindsValue;
-    }
-    final selectedGroupKindsValue = selectedGroupKinds;
-    if (selectedGroupKindsValue != null) {
-      map['selectedGroupKinds'] = pulumi.Input.encodeList<
-          RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind,
-          Map<String,
-              dynamic>>(selectedGroupKindsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'allGroupKinds': ?allGroupKinds,
+      'excludedGroupKinds': ?excludedGroupKinds == null ? null : pulumi.Input.encodeList<RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind, Map<String, dynamic>>(excludedGroupKinds!, (value) => value.toMap()),
+      'noGroupKinds': ?noGroupKinds,
+      'selectedGroupKinds': ?selectedGroupKinds == null ? null : pulumi.Input.encodeList<RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind, Map<String, dynamic>>(selectedGroupKinds!, (value) => value.toMap()),
+    };
   }
 
-  factory RestorePlanRestoreConfigClusterResourceRestoreScope.fromMap(
-      Map<String, dynamic> map) {
+  factory RestorePlanRestoreConfigClusterResourceRestoreScope.fromMap(Map<String, dynamic> map) {
     return RestorePlanRestoreConfigClusterResourceRestoreScope(
-      allGroupKinds:
-          map['allGroupKinds'] == null ? null : map['allGroupKinds'] as bool,
-      excludedGroupKinds: map['excludedGroupKinds'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind>(
-              map['excludedGroupKinds'],
-              (value) =>
-                  RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind
-                      .fromMap((value as Map).cast<String, dynamic>())),
-      noGroupKinds:
-          map['noGroupKinds'] == null ? null : map['noGroupKinds'] as bool,
-      selectedGroupKinds: map['selectedGroupKinds'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind>(
-              map['selectedGroupKinds'],
-              (value) =>
-                  RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      allGroupKinds: map['allGroupKinds'] == null ? null : map['allGroupKinds'] as bool,
+      excludedGroupKinds: map['excludedGroupKinds'] == null ? null : pulumi.Input.decodeList<RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind>(map['excludedGroupKinds'], (value) => RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind.fromMap((value as Map).cast<String, dynamic>())),
+      noGroupKinds: map['noGroupKinds'] == null ? null : map['noGroupKinds'] as bool,
+      selectedGroupKinds: map['selectedGroupKinds'] == null ? null : pulumi.Input.decodeList<RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind>(map['selectedGroupKinds'], (value) => RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

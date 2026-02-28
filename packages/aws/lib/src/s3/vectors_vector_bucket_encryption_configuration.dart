@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VectorsVectorBucketEncryptionConfiguration {
   /// AWS KMS CMK ARN to use for the default encryption of the vector bucket. Allowed if and only if `sse_type` is set to `aws:kms`.
   final String kmsKeyArn;
-
   /// Server-side encryption type to use for the default encryption of the vector bucket. Valid values: `AES256`, `aws:kms`.
   final String sseType;
 
@@ -16,17 +16,17 @@ class VectorsVectorBucketEncryptionConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kmsKeyArn'] = kmsKeyArn;
-    map['sseType'] = sseType;
-    return map;
+    return <String, dynamic>{
+      'kmsKeyArn': kmsKeyArn,
+      'sseType': sseType,
+    };
   }
 
-  factory VectorsVectorBucketEncryptionConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory VectorsVectorBucketEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return VectorsVectorBucketEncryptionConfiguration(
       kmsKeyArn: map['kmsKeyArn'] as String,
       sseType: map['sseType'] as String,
     );
   }
 }
+

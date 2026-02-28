@@ -16,3 +16,4 @@ enum IndexConfigType {
     throw ArgumentError('Unknown IndexConfigType value: $value');
   }
 }
+

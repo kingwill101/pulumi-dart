@@ -22,21 +22,19 @@ class GetGlossaryEntryArgs {
     required String glossaryId,
     required String location,
     String? project,
-  })  : glossaryEntryId = pulumi.Input.asInput<String>(glossaryEntryId),
-        glossaryId = pulumi.Input.asInput<String>(glossaryId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      glossaryEntryId = pulumi.Input.asInput<String>(glossaryEntryId),
+      glossaryId = pulumi.Input.asInput<String>(glossaryId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['glossaryEntryId'] = glossaryEntryId;
-    map['glossaryId'] = glossaryId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'glossaryEntryId': glossaryEntryId,
+      'glossaryId': glossaryId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetGlossaryEntryArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetGlossaryEntryArgs {
     );
   }
 }
+

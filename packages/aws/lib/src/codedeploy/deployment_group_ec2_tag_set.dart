@@ -14,24 +14,15 @@ class DeploymentGroupEc2TagSet {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final ec2TagFiltersValue = ec2TagFilters;
-    if (ec2TagFiltersValue != null) {
-      map['ec2TagFilters'] = pulumi.Input.encodeList<
-          DeploymentGroupEc2TagSetEc2TagFilter,
-          Map<String, dynamic>>(ec2TagFiltersValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'ec2TagFilters': ?ec2TagFilters == null ? null : pulumi.Input.encodeList<DeploymentGroupEc2TagSetEc2TagFilter, Map<String, dynamic>>(ec2TagFilters!, (value) => value.toMap()),
+    };
   }
 
   factory DeploymentGroupEc2TagSet.fromMap(Map<String, dynamic> map) {
     return DeploymentGroupEc2TagSet(
-      ec2TagFilters: map['ec2TagFilters'] == null
-          ? null
-          : pulumi.Input.decodeList<DeploymentGroupEc2TagSetEc2TagFilter>(
-              map['ec2TagFilters'],
-              (value) => DeploymentGroupEc2TagSetEc2TagFilter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      ec2TagFilters: map['ec2TagFilters'] == null ? null : pulumi.Input.decodeList<DeploymentGroupEc2TagSetEc2TagFilter>(map['ec2TagFilters'], (value) => DeploymentGroupEc2TagSetEc2TagFilter.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

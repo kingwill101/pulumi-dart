@@ -16,3 +16,4 @@ enum IndexAncestor {
     throw ArgumentError('Unknown IndexAncestor value: $value');
   }
 }
+

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The project team associated with the entity, if any.
 class BucketAccessControlProjectTeam {
   /// The project number.
   final String? projectNumber;
-
   /// The team.
   final String? team;
 
@@ -17,23 +17,17 @@ class BucketAccessControlProjectTeam {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectNumberValue = projectNumber;
-    if (projectNumberValue != null) {
-      map['projectNumber'] = projectNumberValue;
-    }
-    final teamValue = team;
-    if (teamValue != null) {
-      map['team'] = teamValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'projectNumber': ?projectNumber,
+      'team': ?team,
+    };
   }
 
   factory BucketAccessControlProjectTeam.fromMap(Map<String, dynamic> map) {
     return BucketAccessControlProjectTeam(
-      projectNumber:
-          map['projectNumber'] == null ? null : map['projectNumber'] as String,
+      projectNumber: map['projectNumber'] == null ? null : map['projectNumber'] as String,
       team: map['team'] == null ? null : map['team'] as String,
     );
   }
 }
+

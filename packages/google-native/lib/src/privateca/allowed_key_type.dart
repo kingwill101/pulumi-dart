@@ -7,7 +7,6 @@ import 'rsa_key_type.dart';
 class AllowedKeyType {
   /// Represents an allowed Elliptic Curve key type.
   final EcKeyType? ellipticCurve;
-
   /// Represents an allowed RSA key type.
   final RsaKeyType? rsa;
 
@@ -20,27 +19,17 @@ class AllowedKeyType {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final ellipticCurveValue = ellipticCurve;
-    if (ellipticCurveValue != null) {
-      map['ellipticCurve'] = ellipticCurveValue.toMap();
-    }
-    final rsaValue = rsa;
-    if (rsaValue != null) {
-      map['rsa'] = rsaValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'ellipticCurve': ?ellipticCurve == null ? null : ellipticCurve!.toMap(),
+      'rsa': ?rsa == null ? null : rsa!.toMap(),
+    };
   }
 
   factory AllowedKeyType.fromMap(Map<String, dynamic> map) {
     return AllowedKeyType(
-      ellipticCurve: map['ellipticCurve'] == null
-          ? null
-          : EcKeyType.fromMap(
-              (map['ellipticCurve'] as Map).cast<String, dynamic>()),
-      rsa: map['rsa'] == null
-          ? null
-          : RsaKeyType.fromMap((map['rsa'] as Map).cast<String, dynamic>()),
+      ellipticCurve: map['ellipticCurve'] == null ? null : EcKeyType.fromMap((map['ellipticCurve'] as Map).cast<String, dynamic>()),
+      rsa: map['rsa'] == null ? null : RsaKeyType.fromMap((map['rsa'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

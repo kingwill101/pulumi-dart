@@ -13,7 +13,7 @@ enum TimeSeriesTableMetricVisualization {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown TimeSeriesTableMetricVisualization value: $value');
+    throw ArgumentError('Unknown TimeSeriesTableMetricVisualization value: $value');
   }
 }
+

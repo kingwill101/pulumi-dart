@@ -7,10 +7,8 @@ import 'cidr_block_response.dart';
 class MasterAuthorizedNetworksConfigResponse {
   /// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
   final List<CidrBlockResponse> cidrBlocks;
-
   /// Whether or not master authorized networks is enabled.
   final bool enabled;
-
   /// Whether master is accessbile via Google Compute Engine Public IP addresses.
   final bool gcpPublicCidrsAccessEnabled;
 
@@ -25,24 +23,19 @@ class MasterAuthorizedNetworksConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cidrBlocks'] =
-        pulumi.Input.encodeList<CidrBlockResponse, Map<String, dynamic>>(
-            cidrBlocks, (value) => value.toMap());
-    map['enabled'] = enabled;
-    map['gcpPublicCidrsAccessEnabled'] = gcpPublicCidrsAccessEnabled;
-    return map;
+    return <String, dynamic>{
+      'cidrBlocks': pulumi.Input.encodeList<CidrBlockResponse, Map<String, dynamic>>(cidrBlocks, (value) => value.toMap()),
+      'enabled': enabled,
+      'gcpPublicCidrsAccessEnabled': gcpPublicCidrsAccessEnabled,
+    };
   }
 
-  factory MasterAuthorizedNetworksConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory MasterAuthorizedNetworksConfigResponse.fromMap(Map<String, dynamic> map) {
     return MasterAuthorizedNetworksConfigResponse(
-      cidrBlocks: pulumi.Input.decodeList<CidrBlockResponse>(
-          map['cidrBlocks'],
-          (value) => CidrBlockResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      cidrBlocks: pulumi.Input.decodeList<CidrBlockResponse>(map['cidrBlocks'], (value) => CidrBlockResponse.fromMap((value as Map).cast<String, dynamic>())),
       enabled: map['enabled'] as bool,
       gcpPublicCidrsAccessEnabled: map['gcpPublicCidrsAccessEnabled'] as bool,
     );
   }
 }
+

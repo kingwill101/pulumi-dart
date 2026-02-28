@@ -7,16 +7,12 @@ import 'custom_level_response_accesscontextmanager_v1beta.dart';
 class GetAccessLevelAccesscontextmanagerV1betaResult {
   /// A `BasicLevel` composed of `Conditions`.
   final BasicLevelResponseAccesscontextmanagerV1beta basic;
-
   /// A `CustomLevel` written in the Common Expression Language.
   final CustomLevelResponseAccesscontextmanagerV1beta custom;
-
   /// Description of the `AccessLevel` and its use. Does not affect behavior.
   final String description;
-
   /// Resource name for the `AccessLevel`. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The `access_level` component must begin with a letter, followed by alphanumeric characters or `_`. Its maximum length is 50 characters. After you create an `AccessLevel`, you cannot change its `name`.
   final String name;
-
   /// Human readable title. Must be unique within the Policy.
   final String title;
 
@@ -35,25 +31,23 @@ class GetAccessLevelAccesscontextmanagerV1betaResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['basic'] = basic.toMap();
-    map['custom'] = custom.toMap();
-    map['description'] = description;
-    map['name'] = name;
-    map['title'] = title;
-    return map;
+    return <String, dynamic>{
+      'basic': basic.toMap(),
+      'custom': custom.toMap(),
+      'description': description,
+      'name': name,
+      'title': title,
+    };
   }
 
-  factory GetAccessLevelAccesscontextmanagerV1betaResult.fromMap(
-      Map<String, dynamic> map) {
+  factory GetAccessLevelAccesscontextmanagerV1betaResult.fromMap(Map<String, dynamic> map) {
     return GetAccessLevelAccesscontextmanagerV1betaResult(
-      basic: BasicLevelResponseAccesscontextmanagerV1beta.fromMap(
-          (map['basic'] as Map).cast<String, dynamic>()),
-      custom: CustomLevelResponseAccesscontextmanagerV1beta.fromMap(
-          (map['custom'] as Map).cast<String, dynamic>()),
+      basic: BasicLevelResponseAccesscontextmanagerV1beta.fromMap((map['basic'] as Map).cast<String, dynamic>()),
+      custom: CustomLevelResponseAccesscontextmanagerV1beta.fromMap((map['custom'] as Map).cast<String, dynamic>()),
       description: map['description'] as String,
       name: map['name'] as String,
       title: map['title'] as String,
     );
   }
 }
+

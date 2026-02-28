@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Details of a created Persistent Disk.
 class PersistentDiskResponseVmmigrationV1alpha1 {
   /// The URI of the Persistent Disk.
   final String diskUri;
-
   /// The ordinal number of the source VM disk.
   final int sourceDiskNumber;
 
@@ -17,17 +17,17 @@ class PersistentDiskResponseVmmigrationV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['diskUri'] = diskUri;
-    map['sourceDiskNumber'] = sourceDiskNumber;
-    return map;
+    return <String, dynamic>{
+      'diskUri': diskUri,
+      'sourceDiskNumber': sourceDiskNumber,
+    };
   }
 
-  factory PersistentDiskResponseVmmigrationV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory PersistentDiskResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return PersistentDiskResponseVmmigrationV1alpha1(
       diskUri: map['diskUri'] as String,
       sourceDiskNumber: map['sourceDiskNumber'] as int,
     );
   }
 }
+

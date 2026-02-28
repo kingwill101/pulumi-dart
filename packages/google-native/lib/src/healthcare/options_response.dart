@@ -6,10 +6,8 @@ import 'image_config_response_healthcare_v1beta1.dart';
 class OptionsResponse {
   /// Set Clean Descriptors Option.
   final Map<String, dynamic> cleanDescriptors;
-
   /// Apply `Action.clean_image` to [`PixelData`](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html) as configured.
   final ImageConfigResponseHealthcareV1beta1 cleanImage;
-
   /// Set `Action` for [`StudyInstanceUID`, `SeriesInstanceUID`, `SOPInstanceUID`, and `MediaStorageSOPInstanceUID`](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html).
   final String primaryIds;
 
@@ -24,20 +22,19 @@ class OptionsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cleanDescriptors'] = cleanDescriptors;
-    map['cleanImage'] = cleanImage.toMap();
-    map['primaryIds'] = primaryIds;
-    return map;
+    return <String, dynamic>{
+      'cleanDescriptors': cleanDescriptors,
+      'cleanImage': cleanImage.toMap(),
+      'primaryIds': primaryIds,
+    };
   }
 
   factory OptionsResponse.fromMap(Map<String, dynamic> map) {
     return OptionsResponse(
-      cleanDescriptors:
-          (map['cleanDescriptors'] as Map).cast<String, dynamic>(),
-      cleanImage: ImageConfigResponseHealthcareV1beta1.fromMap(
-          (map['cleanImage'] as Map).cast<String, dynamic>()),
+      cleanDescriptors: (map['cleanDescriptors'] as Map).cast<String, dynamic>(),
+      cleanImage: ImageConfigResponseHealthcareV1beta1.fromMap((map['cleanImage'] as Map).cast<String, dynamic>()),
       primaryIds: map['primaryIds'] as String,
     );
   }
 }
+

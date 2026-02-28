@@ -172,7 +172,6 @@ import 'group_policy_attachment_args.dart';
 class GroupPolicyAttachment extends pulumi.CustomResource {
   /// The group the policy should be applied to
   late final pulumi.Output<String> group;
-
   /// The ARN of the policy you want to apply
   late final pulumi.Output<String> policyArn;
 

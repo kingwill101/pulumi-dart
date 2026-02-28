@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// This encapsulates a metric property of the form sum(message_count) where name is message_count and function is sum
 class GoogleCloudApigeeV1CustomReportMetricResponse {
   /// aggregate function
   final String function;
-
   /// name of the metric
   final String name;
 
@@ -17,17 +17,17 @@ class GoogleCloudApigeeV1CustomReportMetricResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['function'] = function;
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'function': function,
+      'name': name,
+    };
   }
 
-  factory GoogleCloudApigeeV1CustomReportMetricResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1CustomReportMetricResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1CustomReportMetricResponse(
       function: map['function'] as String,
       name: map['name'] as String,
     );
   }
 }
+

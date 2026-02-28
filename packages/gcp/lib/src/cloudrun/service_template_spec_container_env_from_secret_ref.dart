@@ -5,9 +5,7 @@ import 'service_template_spec_container_env_from_secret_ref_local_object_referen
 class ServiceTemplateSpecContainerEnvFromSecretRef {
   /// The Secret to select from.
   /// Structure is documented below.
-  final ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference?
-      localObjectReference;
-
+  final ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference? localObjectReference;
   /// Specify whether the Secret must be defined
   final bool? optional;
 
@@ -20,27 +18,17 @@ class ServiceTemplateSpecContainerEnvFromSecretRef {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final localObjectReferenceValue = localObjectReference;
-    if (localObjectReferenceValue != null) {
-      map['localObjectReference'] = localObjectReferenceValue.toMap();
-    }
-    final optionalValue = optional;
-    if (optionalValue != null) {
-      map['optional'] = optionalValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'localObjectReference': ?localObjectReference == null ? null : localObjectReference!.toMap(),
+      'optional': ?optional,
+    };
   }
 
-  factory ServiceTemplateSpecContainerEnvFromSecretRef.fromMap(
-      Map<String, dynamic> map) {
+  factory ServiceTemplateSpecContainerEnvFromSecretRef.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateSpecContainerEnvFromSecretRef(
-      localObjectReference: map['localObjectReference'] == null
-          ? null
-          : ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference
-              .fromMap(
-                  (map['localObjectReference'] as Map).cast<String, dynamic>()),
+      localObjectReference: map['localObjectReference'] == null ? null : ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference.fromMap((map['localObjectReference'] as Map).cast<String, dynamic>()),
       optional: map['optional'] == null ? null : map['optional'] as bool,
     );
   }
 }
+

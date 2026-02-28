@@ -265,7 +265,6 @@ class DrtAccessRoleArnAssociation extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.roleArn = registerOutput<String>('roleArn');
-    this.timeouts =
-        registerOutput<DrtAccessRoleArnAssociationTimeouts?>('timeouts');
+    this.timeouts = registerOutput<DrtAccessRoleArnAssociationTimeouts?>('timeouts');
   }
 }

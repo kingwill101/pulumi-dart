@@ -17,26 +17,17 @@ class DynamicGroupQueryCloudidentityV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final queryValue = query;
-    if (queryValue != null) {
-      map['query'] = queryValue;
-    }
-    final resourceTypeValue = resourceType;
-    if (resourceTypeValue != null) {
-      map['resourceType'] = resourceTypeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'query': ?query,
+      'resourceType': ?resourceType == null ? null : resourceType!.value,
+    };
   }
 
-  factory DynamicGroupQueryCloudidentityV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory DynamicGroupQueryCloudidentityV1beta1.fromMap(Map<String, dynamic> map) {
     return DynamicGroupQueryCloudidentityV1beta1(
       query: map['query'] == null ? null : map['query'] as String,
-      resourceType: map['resourceType'] == null
-          ? null
-          : DynamicGroupQueryResourceTypeCloudidentityV1beta1.fromValue(
-              map['resourceType'] as String),
+      resourceType: map['resourceType'] == null ? null : DynamicGroupQueryResourceTypeCloudidentityV1beta1.fromValue(map['resourceType'] as String),
     );
   }
 }
+

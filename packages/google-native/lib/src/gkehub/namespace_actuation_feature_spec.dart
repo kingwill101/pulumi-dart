@@ -14,20 +14,15 @@ class NamespaceActuationFeatureSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final actuationModeValue = actuationMode;
-    if (actuationModeValue != null) {
-      map['actuationMode'] = actuationModeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'actuationMode': ?actuationMode == null ? null : actuationMode!.value,
+    };
   }
 
   factory NamespaceActuationFeatureSpec.fromMap(Map<String, dynamic> map) {
     return NamespaceActuationFeatureSpec(
-      actuationMode: map['actuationMode'] == null
-          ? null
-          : NamespaceActuationFeatureSpecActuationMode.fromValue(
-              map['actuationMode'] as String),
+      actuationMode: map['actuationMode'] == null ? null : NamespaceActuationFeatureSpecActuationMode.fromValue(map['actuationMode'] as String),
     );
   }
 }
+

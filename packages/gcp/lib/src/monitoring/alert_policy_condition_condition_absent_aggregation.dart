@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AlertPolicyConditionConditionAbsentAggregation {
   /// The alignment period for per-time
   /// series alignment. If present,
@@ -16,7 +17,6 @@ class AlertPolicyConditionConditionAbsentAggregation {
   /// this field must be defined;
   /// otherwise an error is returned.
   final String? alignmentPeriod;
-
   /// The approach to be used to combine
   /// time series. Not all reducer
   /// functions may be applied to all
@@ -36,7 +36,6 @@ class AlertPolicyConditionConditionAbsentAggregation {
   /// returned.
   /// Possible values are: `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, `REDUCE_PERCENTILE_05`.
   final String? crossSeriesReducer;
-
   /// The set of fields to preserve when
   /// crossSeriesReducer is specified.
   /// The groupByFields determine how
@@ -63,7 +62,6 @@ class AlertPolicyConditionConditionAbsentAggregation {
   /// is not defined, this field is
   /// ignored.
   final List<String>? groupByFields;
-
   /// The approach to be used to align
   /// individual time series. Not all
   /// alignment functions may be applied
@@ -97,41 +95,21 @@ class AlertPolicyConditionConditionAbsentAggregation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final alignmentPeriodValue = alignmentPeriod;
-    if (alignmentPeriodValue != null) {
-      map['alignmentPeriod'] = alignmentPeriodValue;
-    }
-    final crossSeriesReducerValue = crossSeriesReducer;
-    if (crossSeriesReducerValue != null) {
-      map['crossSeriesReducer'] = crossSeriesReducerValue;
-    }
-    final groupByFieldsValue = groupByFields;
-    if (groupByFieldsValue != null) {
-      map['groupByFields'] = groupByFieldsValue;
-    }
-    final perSeriesAlignerValue = perSeriesAligner;
-    if (perSeriesAlignerValue != null) {
-      map['perSeriesAligner'] = perSeriesAlignerValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'alignmentPeriod': ?alignmentPeriod,
+      'crossSeriesReducer': ?crossSeriesReducer,
+      'groupByFields': ?groupByFields,
+      'perSeriesAligner': ?perSeriesAligner,
+    };
   }
 
-  factory AlertPolicyConditionConditionAbsentAggregation.fromMap(
-      Map<String, dynamic> map) {
+  factory AlertPolicyConditionConditionAbsentAggregation.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionAbsentAggregation(
-      alignmentPeriod: map['alignmentPeriod'] == null
-          ? null
-          : map['alignmentPeriod'] as String,
-      crossSeriesReducer: map['crossSeriesReducer'] == null
-          ? null
-          : map['crossSeriesReducer'] as String,
-      groupByFields: map['groupByFields'] == null
-          ? null
-          : (map['groupByFields'] as List).cast<String>(),
-      perSeriesAligner: map['perSeriesAligner'] == null
-          ? null
-          : map['perSeriesAligner'] as String,
+      alignmentPeriod: map['alignmentPeriod'] == null ? null : map['alignmentPeriod'] as String,
+      crossSeriesReducer: map['crossSeriesReducer'] == null ? null : map['crossSeriesReducer'] as String,
+      groupByFields: map['groupByFields'] == null ? null : (map['groupByFields'] as List).cast<String>(),
+      perSeriesAligner: map['perSeriesAligner'] == null ? null : map['perSeriesAligner'] as String,
     );
   }
 }
+

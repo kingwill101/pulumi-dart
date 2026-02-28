@@ -7,19 +7,14 @@ import 'vmware_ip_block_response.dart';
 class VmwareSeesawConfigResponse {
   /// Enable two load balancer VMs to achieve a highly-available Seesaw load balancer.
   final bool enableHa;
-
   /// In general the following format should be used for the Seesaw group name: seesaw-for-[cluster_name].
   final String group;
-
   /// The IP Blocks to be used by the Seesaw load balancer
   final List<VmwareIpBlockResponse> ipBlocks;
-
   /// MasterIP is the IP announced by the master of Seesaw group.
   final String masterIp;
-
   /// Name to be used by Stackdriver.
   final String stackdriverName;
-
   /// Names of the VMs created for this Seesaw group.
   final List<String> vms;
 
@@ -40,29 +35,25 @@ class VmwareSeesawConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enableHa'] = enableHa;
-    map['group'] = group;
-    map['ipBlocks'] =
-        pulumi.Input.encodeList<VmwareIpBlockResponse, Map<String, dynamic>>(
-            ipBlocks, (value) => value.toMap());
-    map['masterIp'] = masterIp;
-    map['stackdriverName'] = stackdriverName;
-    map['vms'] = vms;
-    return map;
+    return <String, dynamic>{
+      'enableHa': enableHa,
+      'group': group,
+      'ipBlocks': pulumi.Input.encodeList<VmwareIpBlockResponse, Map<String, dynamic>>(ipBlocks, (value) => value.toMap()),
+      'masterIp': masterIp,
+      'stackdriverName': stackdriverName,
+      'vms': vms,
+    };
   }
 
   factory VmwareSeesawConfigResponse.fromMap(Map<String, dynamic> map) {
     return VmwareSeesawConfigResponse(
       enableHa: map['enableHa'] as bool,
       group: map['group'] as String,
-      ipBlocks: pulumi.Input.decodeList<VmwareIpBlockResponse>(
-          map['ipBlocks'],
-          (value) => VmwareIpBlockResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      ipBlocks: pulumi.Input.decodeList<VmwareIpBlockResponse>(map['ipBlocks'], (value) => VmwareIpBlockResponse.fromMap((value as Map).cast<String, dynamic>())),
       masterIp: map['masterIp'] as String,
       stackdriverName: map['stackdriverName'] as String,
       vms: (map['vms'] as List).cast<String>(),
     );
   }
 }
+

@@ -16,3 +16,4 @@ enum ArtifactState {
     throw ArgumentError('Unknown ArtifactState value: $value');
   }
 }
+

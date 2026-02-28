@@ -19,17 +19,17 @@ class GetCustomerArgs {
     required String accountId,
     required String channelPartnerLinkId,
     required String customerId,
-  })  : accountId = pulumi.Input.asInput<String>(accountId),
-        channelPartnerLinkId =
-            pulumi.Input.asInput<String>(channelPartnerLinkId),
-        customerId = pulumi.Input.asInput<String>(customerId);
+  }) :
+      accountId = pulumi.Input.asInput<String>(accountId),
+      channelPartnerLinkId = pulumi.Input.asInput<String>(channelPartnerLinkId),
+      customerId = pulumi.Input.asInput<String>(customerId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accountId'] = accountId;
-    map['channelPartnerLinkId'] = channelPartnerLinkId;
-    map['customerId'] = customerId;
-    return map;
+    return <String, dynamic>{
+      'accountId': accountId,
+      'channelPartnerLinkId': channelPartnerLinkId,
+      'customerId': customerId,
+    };
   }
 
   factory GetCustomerArgs.fromMap(Map<String, dynamic> map) {
@@ -40,3 +40,4 @@ class GetCustomerArgs {
     );
   }
 }
+

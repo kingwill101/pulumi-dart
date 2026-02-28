@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TaskDefinitionUlimit {
   final int hardLimit;
   final String name;
@@ -16,11 +17,11 @@ class TaskDefinitionUlimit {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['hardLimit'] = hardLimit;
-    map['name'] = name;
-    map['softLimit'] = softLimit;
-    return map;
+    return <String, dynamic>{
+      'hardLimit': hardLimit,
+      'name': name,
+      'softLimit': softLimit,
+    };
   }
 
   factory TaskDefinitionUlimit.fromMap(Map<String, dynamic> map) {
@@ -31,3 +32,4 @@ class TaskDefinitionUlimit {
     );
   }
 }
+

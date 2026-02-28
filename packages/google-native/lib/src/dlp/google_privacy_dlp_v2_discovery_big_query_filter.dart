@@ -6,7 +6,6 @@ import 'google_privacy_dlp_v2_big_query_table_collection.dart';
 class GooglePrivacyDlpV2DiscoveryBigQueryFilter {
   /// Catch-all. This should always be the last filter in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.
   final Map<String, dynamic>? otherTables;
-
   /// A specific set of tables for this filter to apply to. A table collection must be specified in only one filter per config. If a table id or dataset is empty, Cloud DLP assumes all tables in that collection must be profiled. Must specify a project ID.
   final GooglePrivacyDlpV2BigQueryTableCollection? tables;
 
@@ -19,28 +18,17 @@ class GooglePrivacyDlpV2DiscoveryBigQueryFilter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final otherTablesValue = otherTables;
-    if (otherTablesValue != null) {
-      map['otherTables'] = otherTablesValue;
-    }
-    final tablesValue = tables;
-    if (tablesValue != null) {
-      map['tables'] = tablesValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'otherTables': ?otherTables,
+      'tables': ?tables == null ? null : tables!.toMap(),
+    };
   }
 
-  factory GooglePrivacyDlpV2DiscoveryBigQueryFilter.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2DiscoveryBigQueryFilter.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DiscoveryBigQueryFilter(
-      otherTables: map['otherTables'] == null
-          ? null
-          : (map['otherTables'] as Map).cast<String, dynamic>(),
-      tables: map['tables'] == null
-          ? null
-          : GooglePrivacyDlpV2BigQueryTableCollection.fromMap(
-              (map['tables'] as Map).cast<String, dynamic>()),
+      otherTables: map['otherTables'] == null ? null : (map['otherTables'] as Map).cast<String, dynamic>(),
+      tables: map['tables'] == null ? null : GooglePrivacyDlpV2BigQueryTableCollection.fromMap((map['tables'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

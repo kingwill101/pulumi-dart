@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PlanRuleScanAction {
   /// Malware scanner to use for the scan action. Currently only `GUARDDUTY` is supported.
   final String malwareScanner;
-
   /// Scanning mode to use for the scan action. Valid values are `FULL_SCAN` and `INCREMENTAL_SCAN`.
   final String scanMode;
 
@@ -16,10 +16,10 @@ class PlanRuleScanAction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['malwareScanner'] = malwareScanner;
-    map['scanMode'] = scanMode;
-    return map;
+    return <String, dynamic>{
+      'malwareScanner': malwareScanner,
+      'scanMode': scanMode,
+    };
   }
 
   factory PlanRuleScanAction.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class PlanRuleScanAction {
     );
   }
 }
+

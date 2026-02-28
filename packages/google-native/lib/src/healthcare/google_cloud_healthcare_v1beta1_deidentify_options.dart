@@ -8,16 +8,12 @@ import 'date_shift_config_healthcare_v1beta1.dart';
 class GoogleCloudHealthcareV1beta1DeidentifyOptions {
   /// Character mask config for CharacterMaskField.
   final CharacterMaskConfigHealthcareV1beta1? characterMaskConfig;
-
   /// Configure contextual de-id.
   final Map<String, dynamic>? contextualDeid;
-
   /// Crypto hash config for CharacterMaskField.
   final CryptoHashConfigHealthcareV1beta1? cryptoHashConfig;
-
   /// Date shifting config for CharacterMaskField.
   final DateShiftConfigHealthcareV1beta1? dateShiftConfig;
-
   /// Configure keeping extensions by default.
   final Map<String, dynamic>? keepExtensions;
 
@@ -36,51 +32,23 @@ class GoogleCloudHealthcareV1beta1DeidentifyOptions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final characterMaskConfigValue = characterMaskConfig;
-    if (characterMaskConfigValue != null) {
-      map['characterMaskConfig'] = characterMaskConfigValue.toMap();
-    }
-    final contextualDeidValue = contextualDeid;
-    if (contextualDeidValue != null) {
-      map['contextualDeid'] = contextualDeidValue;
-    }
-    final cryptoHashConfigValue = cryptoHashConfig;
-    if (cryptoHashConfigValue != null) {
-      map['cryptoHashConfig'] = cryptoHashConfigValue.toMap();
-    }
-    final dateShiftConfigValue = dateShiftConfig;
-    if (dateShiftConfigValue != null) {
-      map['dateShiftConfig'] = dateShiftConfigValue.toMap();
-    }
-    final keepExtensionsValue = keepExtensions;
-    if (keepExtensionsValue != null) {
-      map['keepExtensions'] = keepExtensionsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'characterMaskConfig': ?characterMaskConfig == null ? null : characterMaskConfig!.toMap(),
+      'contextualDeid': ?contextualDeid,
+      'cryptoHashConfig': ?cryptoHashConfig == null ? null : cryptoHashConfig!.toMap(),
+      'dateShiftConfig': ?dateShiftConfig == null ? null : dateShiftConfig!.toMap(),
+      'keepExtensions': ?keepExtensions,
+    };
   }
 
-  factory GoogleCloudHealthcareV1beta1DeidentifyOptions.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudHealthcareV1beta1DeidentifyOptions.fromMap(Map<String, dynamic> map) {
     return GoogleCloudHealthcareV1beta1DeidentifyOptions(
-      characterMaskConfig: map['characterMaskConfig'] == null
-          ? null
-          : CharacterMaskConfigHealthcareV1beta1.fromMap(
-              (map['characterMaskConfig'] as Map).cast<String, dynamic>()),
-      contextualDeid: map['contextualDeid'] == null
-          ? null
-          : (map['contextualDeid'] as Map).cast<String, dynamic>(),
-      cryptoHashConfig: map['cryptoHashConfig'] == null
-          ? null
-          : CryptoHashConfigHealthcareV1beta1.fromMap(
-              (map['cryptoHashConfig'] as Map).cast<String, dynamic>()),
-      dateShiftConfig: map['dateShiftConfig'] == null
-          ? null
-          : DateShiftConfigHealthcareV1beta1.fromMap(
-              (map['dateShiftConfig'] as Map).cast<String, dynamic>()),
-      keepExtensions: map['keepExtensions'] == null
-          ? null
-          : (map['keepExtensions'] as Map).cast<String, dynamic>(),
+      characterMaskConfig: map['characterMaskConfig'] == null ? null : CharacterMaskConfigHealthcareV1beta1.fromMap((map['characterMaskConfig'] as Map).cast<String, dynamic>()),
+      contextualDeid: map['contextualDeid'] == null ? null : (map['contextualDeid'] as Map).cast<String, dynamic>(),
+      cryptoHashConfig: map['cryptoHashConfig'] == null ? null : CryptoHashConfigHealthcareV1beta1.fromMap((map['cryptoHashConfig'] as Map).cast<String, dynamic>()),
+      dateShiftConfig: map['dateShiftConfig'] == null ? null : DateShiftConfigHealthcareV1beta1.fromMap((map['dateShiftConfig'] as Map).cast<String, dynamic>()),
+      keepExtensions: map['keepExtensions'] == null ? null : (map['keepExtensions'] as Map).cast<String, dynamic>(),
     );
   }
 }
+

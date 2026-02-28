@@ -7,7 +7,6 @@ import 'method_policy_response.dart';
 class ControlResponse {
   /// The service controller environment to use. If empty, no control plane feature (like quota and billing) will be enabled. The recommended value for most services is servicecontrol.googleapis.com
   final String environment;
-
   /// Defines policies applying to the API methods of the service.
   final List<MethodPolicyResponse> methodPolicies;
 
@@ -20,21 +19,17 @@ class ControlResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['environment'] = environment;
-    map['methodPolicies'] =
-        pulumi.Input.encodeList<MethodPolicyResponse, Map<String, dynamic>>(
-            methodPolicies, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'environment': environment,
+      'methodPolicies': pulumi.Input.encodeList<MethodPolicyResponse, Map<String, dynamic>>(methodPolicies, (value) => value.toMap()),
+    };
   }
 
   factory ControlResponse.fromMap(Map<String, dynamic> map) {
     return ControlResponse(
       environment: map['environment'] as String,
-      methodPolicies: pulumi.Input.decodeList<MethodPolicyResponse>(
-          map['methodPolicies'],
-          (value) => MethodPolicyResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      methodPolicies: pulumi.Input.decodeList<MethodPolicyResponse>(map['methodPolicies'], (value) => MethodPolicyResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

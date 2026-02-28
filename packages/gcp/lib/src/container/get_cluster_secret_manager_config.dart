@@ -6,7 +6,6 @@ import 'get_cluster_secret_manager_config_rotation_config.dart';
 class GetClusterSecretManagerConfig {
   /// Enable the Secret manager csi component.
   final bool enabled;
-
   /// Configuration for Secret Manager auto rotation.
   final List<GetClusterSecretManagerConfigRotationConfig> rotationConfigs;
 
@@ -19,22 +18,17 @@ class GetClusterSecretManagerConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    map['rotationConfigs'] = pulumi.Input.encodeList<
-        GetClusterSecretManagerConfigRotationConfig,
-        Map<String, dynamic>>(rotationConfigs, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+      'rotationConfigs': pulumi.Input.encodeList<GetClusterSecretManagerConfigRotationConfig, Map<String, dynamic>>(rotationConfigs, (value) => value.toMap()),
+    };
   }
 
   factory GetClusterSecretManagerConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterSecretManagerConfig(
       enabled: map['enabled'] as bool,
-      rotationConfigs:
-          pulumi.Input.decodeList<GetClusterSecretManagerConfigRotationConfig>(
-              map['rotationConfigs'],
-              (value) => GetClusterSecretManagerConfigRotationConfig.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      rotationConfigs: pulumi.Input.decodeList<GetClusterSecretManagerConfigRotationConfig>(map['rotationConfigs'], (value) => GetClusterSecretManagerConfigRotationConfig.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

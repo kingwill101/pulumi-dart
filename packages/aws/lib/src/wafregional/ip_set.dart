@@ -162,13 +162,10 @@ import 'ip_set_ip_set_descriptor.dart';
 class IpSet extends pulumi.CustomResource {
   /// The ARN of the WAF IPSet.
   late final pulumi.Output<String> arn;
-
   /// One or more pairs specifying the IP address type (IPV4 or IPV6) and the IP address range (in CIDR notation) from which web requests originate.
   late final pulumi.Output<List<IpSetIpSetDescriptor>?> ipSetDescriptors;
-
   /// The name or description of the IPSet.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -187,8 +184,7 @@ class IpSet extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
-    this.ipSetDescriptors =
-        registerOutput<List<IpSetIpSetDescriptor>?>('ipSetDescriptors');
+    this.ipSetDescriptors = registerOutput<List<IpSetIpSetDescriptor>?>('ipSetDescriptors');
     this.name = registerOutput<String>('name');
     this.region = registerOutput<String>('region');
   }

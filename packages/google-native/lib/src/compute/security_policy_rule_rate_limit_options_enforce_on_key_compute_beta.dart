@@ -13,15 +13,13 @@ enum SecurityPolicyRuleRateLimitOptionsEnforceOnKeyComputeBeta {
   const SecurityPolicyRuleRateLimitOptionsEnforceOnKeyComputeBeta(this.value);
   final String value;
 
-  static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyComputeBeta fromValue(
-      String value) {
-    for (final item
-        in SecurityPolicyRuleRateLimitOptionsEnforceOnKeyComputeBeta.values) {
+  static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyComputeBeta fromValue(String value) {
+    for (final item in SecurityPolicyRuleRateLimitOptionsEnforceOnKeyComputeBeta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown SecurityPolicyRuleRateLimitOptionsEnforceOnKeyComputeBeta value: $value');
+    throw ArgumentError('Unknown SecurityPolicyRuleRateLimitOptionsEnforceOnKeyComputeBeta value: $value');
   }
 }
+

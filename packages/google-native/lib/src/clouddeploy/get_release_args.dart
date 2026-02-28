@@ -22,21 +22,19 @@ class GetReleaseArgs {
     required String location,
     String? project,
     required String releaseId,
-  })  : deliveryPipelineId = pulumi.Input.asInput<String>(deliveryPipelineId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        releaseId = pulumi.Input.asInput<String>(releaseId);
+  }) :
+      deliveryPipelineId = pulumi.Input.asInput<String>(deliveryPipelineId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      releaseId = pulumi.Input.asInput<String>(releaseId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['deliveryPipelineId'] = deliveryPipelineId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['releaseId'] = releaseId;
-    return map;
+    return <String, dynamic>{
+      'deliveryPipelineId': deliveryPipelineId,
+      'location': location,
+      'project': ?project,
+      'releaseId': releaseId,
+    };
   }
 
   factory GetReleaseArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetReleaseArgs {
     );
   }
 }
+

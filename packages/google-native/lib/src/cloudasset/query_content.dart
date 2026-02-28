@@ -14,20 +14,15 @@ class QueryContent {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final iamPolicyAnalysisQueryValue = iamPolicyAnalysisQuery;
-    if (iamPolicyAnalysisQueryValue != null) {
-      map['iamPolicyAnalysisQuery'] = iamPolicyAnalysisQueryValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'iamPolicyAnalysisQuery': ?iamPolicyAnalysisQuery == null ? null : iamPolicyAnalysisQuery!.toMap(),
+    };
   }
 
   factory QueryContent.fromMap(Map<String, dynamic> map) {
     return QueryContent(
-      iamPolicyAnalysisQuery: map['iamPolicyAnalysisQuery'] == null
-          ? null
-          : IamPolicyAnalysisQuery.fromMap(
-              (map['iamPolicyAnalysisQuery'] as Map).cast<String, dynamic>()),
+      iamPolicyAnalysisQuery: map['iamPolicyAnalysisQuery'] == null ? null : IamPolicyAnalysisQuery.fromMap((map['iamPolicyAnalysisQuery'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

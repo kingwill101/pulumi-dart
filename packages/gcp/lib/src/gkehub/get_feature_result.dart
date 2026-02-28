@@ -12,7 +12,6 @@ class GetFeatureResult {
   final String deleteTime;
   final Map<String, String> effectiveLabels;
   final List<GetFeatureFleetDefaultMemberConfig> fleetDefaultMemberConfigs;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final Map<String, String> labels;
@@ -58,33 +57,22 @@ class GetFeatureResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['deleteTime'] = deleteTime;
-    map['effectiveLabels'] = effectiveLabels;
-    map['fleetDefaultMemberConfigs'] = pulumi.Input.encodeList<
-            GetFeatureFleetDefaultMemberConfig, Map<String, dynamic>>(
-        fleetDefaultMemberConfigs, (value) => value.toMap());
-    map['id'] = id;
-    map['labels'] = labels;
-    map['location'] = location;
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['pulumiLabels'] = pulumiLabels;
-    map['resourceStates'] =
-        pulumi.Input.encodeList<GetFeatureResourceState, Map<String, dynamic>>(
-            resourceStates, (value) => value.toMap());
-    map['specs'] =
-        pulumi.Input.encodeList<GetFeatureSpec, Map<String, dynamic>>(
-            specs, (value) => value.toMap());
-    map['states'] =
-        pulumi.Input.encodeList<GetFeatureState, Map<String, dynamic>>(
-            states, (value) => value.toMap());
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'deleteTime': deleteTime,
+      'effectiveLabels': effectiveLabels,
+      'fleetDefaultMemberConfigs': pulumi.Input.encodeList<GetFeatureFleetDefaultMemberConfig, Map<String, dynamic>>(fleetDefaultMemberConfigs, (value) => value.toMap()),
+      'id': id,
+      'labels': labels,
+      'location': location,
+      'name': name,
+      'project': ?project,
+      'pulumiLabels': pulumiLabels,
+      'resourceStates': pulumi.Input.encodeList<GetFeatureResourceState, Map<String, dynamic>>(resourceStates, (value) => value.toMap()),
+      'specs': pulumi.Input.encodeList<GetFeatureSpec, Map<String, dynamic>>(specs, (value) => value.toMap()),
+      'states': pulumi.Input.encodeList<GetFeatureState, Map<String, dynamic>>(states, (value) => value.toMap()),
+      'updateTime': updateTime,
+    };
   }
 
   factory GetFeatureResult.fromMap(Map<String, dynamic> map) {
@@ -92,30 +80,18 @@ class GetFeatureResult {
       createTime: map['createTime'] as String,
       deleteTime: map['deleteTime'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      fleetDefaultMemberConfigs:
-          pulumi.Input.decodeList<GetFeatureFleetDefaultMemberConfig>(
-              map['fleetDefaultMemberConfigs'],
-              (value) => GetFeatureFleetDefaultMemberConfig.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      fleetDefaultMemberConfigs: pulumi.Input.decodeList<GetFeatureFleetDefaultMemberConfig>(map['fleetDefaultMemberConfigs'], (value) => GetFeatureFleetDefaultMemberConfig.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
       name: map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      resourceStates: pulumi.Input.decodeList<GetFeatureResourceState>(
-          map['resourceStates'],
-          (value) => GetFeatureResourceState.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      specs: pulumi.Input.decodeList<GetFeatureSpec>(
-          map['specs'],
-          (value) =>
-              GetFeatureSpec.fromMap((value as Map).cast<String, dynamic>())),
-      states: pulumi.Input.decodeList<GetFeatureState>(
-          map['states'],
-          (value) =>
-              GetFeatureState.fromMap((value as Map).cast<String, dynamic>())),
+      resourceStates: pulumi.Input.decodeList<GetFeatureResourceState>(map['resourceStates'], (value) => GetFeatureResourceState.fromMap((value as Map).cast<String, dynamic>())),
+      specs: pulumi.Input.decodeList<GetFeatureSpec>(map['specs'], (value) => GetFeatureSpec.fromMap((value as Map).cast<String, dynamic>())),
+      states: pulumi.Input.decodeList<GetFeatureState>(map['states'], (value) => GetFeatureState.fromMap((value as Map).cast<String, dynamic>())),
       updateTime: map['updateTime'] as String,
     );
   }
 }
+

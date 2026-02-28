@@ -14,7 +14,7 @@ enum PatchConfigRebootConfigOsconfigV1beta {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown PatchConfigRebootConfigOsconfigV1beta value: $value');
+    throw ArgumentError('Unknown PatchConfigRebootConfigOsconfigV1beta value: $value');
   }
 }
+

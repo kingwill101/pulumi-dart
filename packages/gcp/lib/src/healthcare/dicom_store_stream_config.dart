@@ -14,15 +14,15 @@ class DicomStoreStreamConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bigqueryDestination'] = bigqueryDestination.toMap();
-    return map;
+    return <String, dynamic>{
+      'bigqueryDestination': bigqueryDestination.toMap(),
+    };
   }
 
   factory DicomStoreStreamConfig.fromMap(Map<String, dynamic> map) {
     return DicomStoreStreamConfig(
-      bigqueryDestination: DicomStoreStreamConfigBigqueryDestination.fromMap(
-          (map['bigqueryDestination'] as Map).cast<String, dynamic>()),
+      bigqueryDestination: DicomStoreStreamConfigBigqueryDestination.fromMap((map['bigqueryDestination'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

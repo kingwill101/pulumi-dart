@@ -7,14 +7,13 @@ enum EnterpriseCrmEventbusProtoLogSettingsSeedPeriod {
   const EnterpriseCrmEventbusProtoLogSettingsSeedPeriod(this.value);
   final String value;
 
-  static EnterpriseCrmEventbusProtoLogSettingsSeedPeriod fromValue(
-      String value) {
+  static EnterpriseCrmEventbusProtoLogSettingsSeedPeriod fromValue(String value) {
     for (final item in EnterpriseCrmEventbusProtoLogSettingsSeedPeriod.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown EnterpriseCrmEventbusProtoLogSettingsSeedPeriod value: $value');
+    throw ArgumentError('Unknown EnterpriseCrmEventbusProtoLogSettingsSeedPeriod value: $value');
   }
 }
+

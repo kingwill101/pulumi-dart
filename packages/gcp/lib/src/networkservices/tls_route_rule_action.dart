@@ -15,24 +15,15 @@ class TlsRouteRuleAction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final destinationsValue = destinations;
-    if (destinationsValue != null) {
-      map['destinations'] = pulumi.Input.encodeList<
-          TlsRouteRuleActionDestination,
-          Map<String, dynamic>>(destinationsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'destinations': ?destinations == null ? null : pulumi.Input.encodeList<TlsRouteRuleActionDestination, Map<String, dynamic>>(destinations!, (value) => value.toMap()),
+    };
   }
 
   factory TlsRouteRuleAction.fromMap(Map<String, dynamic> map) {
     return TlsRouteRuleAction(
-      destinations: map['destinations'] == null
-          ? null
-          : pulumi.Input.decodeList<TlsRouteRuleActionDestination>(
-              map['destinations'],
-              (value) => TlsRouteRuleActionDestination.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      destinations: map['destinations'] == null ? null : pulumi.Input.decodeList<TlsRouteRuleActionDestination>(map['destinations'], (value) => TlsRouteRuleActionDestination.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -16,14 +16,15 @@ class GetDatastoreArgs {
   GetDatastoreArgs({
     required String datastoreId,
     required String organizationId,
-  })  : datastoreId = pulumi.Input.asInput<String>(datastoreId),
-        organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) :
+      datastoreId = pulumi.Input.asInput<String>(datastoreId),
+      organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['datastoreId'] = datastoreId;
-    map['organizationId'] = organizationId;
-    return map;
+    return <String, dynamic>{
+      'datastoreId': datastoreId,
+      'organizationId': organizationId,
+    };
   }
 
   factory GetDatastoreArgs.fromMap(Map<String, dynamic> map) {
@@ -33,3 +34,4 @@ class GetDatastoreArgs {
     );
   }
 }
+

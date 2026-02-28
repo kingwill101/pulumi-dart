@@ -1,22 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSubscription.
 class GetSubscriptionResult {
   /// Name of the API product for which the developer is purchasing a subscription.
   final String apiproduct;
-
   /// Time when the API product subscription was created in milliseconds since epoch.
   final String createdAt;
-
   /// Time when the API product subscription ends in milliseconds since epoch.
   final String endTime;
-
   /// Time when the API product subscription was last modified in milliseconds since epoch.
   final String lastModifiedAt;
-
   /// Name of the API product subscription.
   final String name;
-
   /// Time when the API product subscription starts in milliseconds since epoch.
   final String startTime;
 
@@ -37,14 +33,14 @@ class GetSubscriptionResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['apiproduct'] = apiproduct;
-    map['createdAt'] = createdAt;
-    map['endTime'] = endTime;
-    map['lastModifiedAt'] = lastModifiedAt;
-    map['name'] = name;
-    map['startTime'] = startTime;
-    return map;
+    return <String, dynamic>{
+      'apiproduct': apiproduct,
+      'createdAt': createdAt,
+      'endTime': endTime,
+      'lastModifiedAt': lastModifiedAt,
+      'name': name,
+      'startTime': startTime,
+    };
   }
 
   factory GetSubscriptionResult.fromMap(Map<String, dynamic> map) {
@@ -58,3 +54,4 @@ class GetSubscriptionResult {
     );
   }
 }
+

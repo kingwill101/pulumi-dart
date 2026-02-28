@@ -11,19 +11,14 @@ import 'cost_category_rule_rule_tags.dart';
 class CostCategoryRuleRule {
   /// Return results that match both `Dimension` objects.
   final List<CostCategoryRuleRuleAnd>? ands;
-
   /// Configuration block for the filter that's based on `CostCategory` values. See below.
   final CostCategoryRuleRuleCostCategory? costCategory;
-
   /// Configuration block for the specific `Dimension` to use for `Expression`. See below.
   final CostCategoryRuleRuleDimension? dimension;
-
   /// Return results that match both `Dimension` object.
   final CostCategoryRuleRuleNot? not;
-
   /// Return results that match both `Dimension` object.
   final List<CostCategoryRuleRuleOr>? ors;
-
   /// Configuration block for the specific `Tag` to use for `Expression`. See below.
   final CostCategoryRuleRuleTags? tags;
 
@@ -44,67 +39,25 @@ class CostCategoryRuleRule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final andsValue = ands;
-    if (andsValue != null) {
-      map['ands'] = pulumi.Input.encodeList<CostCategoryRuleRuleAnd,
-          Map<String, dynamic>>(andsValue, (value) => value.toMap());
-    }
-    final costCategoryValue = costCategory;
-    if (costCategoryValue != null) {
-      map['costCategory'] = costCategoryValue.toMap();
-    }
-    final dimensionValue = dimension;
-    if (dimensionValue != null) {
-      map['dimension'] = dimensionValue.toMap();
-    }
-    final notValue = not;
-    if (notValue != null) {
-      map['not'] = notValue.toMap();
-    }
-    final orsValue = ors;
-    if (orsValue != null) {
-      map['ors'] =
-          pulumi.Input.encodeList<CostCategoryRuleRuleOr, Map<String, dynamic>>(
-              orsValue, (value) => value.toMap());
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'ands': ?ands == null ? null : pulumi.Input.encodeList<CostCategoryRuleRuleAnd, Map<String, dynamic>>(ands!, (value) => value.toMap()),
+      'costCategory': ?costCategory == null ? null : costCategory!.toMap(),
+      'dimension': ?dimension == null ? null : dimension!.toMap(),
+      'not': ?not == null ? null : not!.toMap(),
+      'ors': ?ors == null ? null : pulumi.Input.encodeList<CostCategoryRuleRuleOr, Map<String, dynamic>>(ors!, (value) => value.toMap()),
+      'tags': ?tags == null ? null : tags!.toMap(),
+    };
   }
 
   factory CostCategoryRuleRule.fromMap(Map<String, dynamic> map) {
     return CostCategoryRuleRule(
-      ands: map['ands'] == null
-          ? null
-          : pulumi.Input.decodeList<CostCategoryRuleRuleAnd>(
-              map['ands'],
-              (value) => CostCategoryRuleRuleAnd.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      costCategory: map['costCategory'] == null
-          ? null
-          : CostCategoryRuleRuleCostCategory.fromMap(
-              (map['costCategory'] as Map).cast<String, dynamic>()),
-      dimension: map['dimension'] == null
-          ? null
-          : CostCategoryRuleRuleDimension.fromMap(
-              (map['dimension'] as Map).cast<String, dynamic>()),
-      not: map['not'] == null
-          ? null
-          : CostCategoryRuleRuleNot.fromMap(
-              (map['not'] as Map).cast<String, dynamic>()),
-      ors: map['ors'] == null
-          ? null
-          : pulumi.Input.decodeList<CostCategoryRuleRuleOr>(
-              map['ors'],
-              (value) => CostCategoryRuleRuleOr.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null
-          ? null
-          : CostCategoryRuleRuleTags.fromMap(
-              (map['tags'] as Map).cast<String, dynamic>()),
+      ands: map['ands'] == null ? null : pulumi.Input.decodeList<CostCategoryRuleRuleAnd>(map['ands'], (value) => CostCategoryRuleRuleAnd.fromMap((value as Map).cast<String, dynamic>())),
+      costCategory: map['costCategory'] == null ? null : CostCategoryRuleRuleCostCategory.fromMap((map['costCategory'] as Map).cast<String, dynamic>()),
+      dimension: map['dimension'] == null ? null : CostCategoryRuleRuleDimension.fromMap((map['dimension'] as Map).cast<String, dynamic>()),
+      not: map['not'] == null ? null : CostCategoryRuleRuleNot.fromMap((map['not'] as Map).cast<String, dynamic>()),
+      ors: map['ors'] == null ? null : pulumi.Input.decodeList<CostCategoryRuleRuleOr>(map['ors'], (value) => CostCategoryRuleRuleOr.fromMap((value as Map).cast<String, dynamic>())),
+      tags: map['tags'] == null ? null : CostCategoryRuleRuleTags.fromMap((map['tags'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -22,7 +22,7 @@ enum InterconnectAttachmentBandwidth {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown InterconnectAttachmentBandwidth value: $value');
+    throw ArgumentError('Unknown InterconnectAttachmentBandwidth value: $value');
   }
 }
+

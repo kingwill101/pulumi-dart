@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterAddonsConfigStatefulHaConfig {
   final bool enabled;
 
@@ -10,15 +11,15 @@ class ClusterAddonsConfigStatefulHaConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory ClusterAddonsConfigStatefulHaConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterAddonsConfigStatefulHaConfig.fromMap(Map<String, dynamic> map) {
     return ClusterAddonsConfigStatefulHaConfig(
       enabled: map['enabled'] as bool,
     );
   }
 }
+

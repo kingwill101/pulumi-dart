@@ -6,10 +6,8 @@ import 'metric_descriptor_metadata_launch_stage.dart';
 class MetricDescriptorMetadata {
   /// The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
   final String? ingestDelay;
-
   /// Deprecated. Must use the MetricDescriptor.launch_stage instead.
   final MetricDescriptorMetadataLaunchStage? launchStage;
-
   /// The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
   final String? samplePeriod;
 
@@ -24,32 +22,19 @@ class MetricDescriptorMetadata {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final ingestDelayValue = ingestDelay;
-    if (ingestDelayValue != null) {
-      map['ingestDelay'] = ingestDelayValue;
-    }
-    final launchStageValue = launchStage;
-    if (launchStageValue != null) {
-      map['launchStage'] = launchStageValue.value;
-    }
-    final samplePeriodValue = samplePeriod;
-    if (samplePeriodValue != null) {
-      map['samplePeriod'] = samplePeriodValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'ingestDelay': ?ingestDelay,
+      'launchStage': ?launchStage == null ? null : launchStage!.value,
+      'samplePeriod': ?samplePeriod,
+    };
   }
 
   factory MetricDescriptorMetadata.fromMap(Map<String, dynamic> map) {
     return MetricDescriptorMetadata(
-      ingestDelay:
-          map['ingestDelay'] == null ? null : map['ingestDelay'] as String,
-      launchStage: map['launchStage'] == null
-          ? null
-          : MetricDescriptorMetadataLaunchStage.fromValue(
-              map['launchStage'] as String),
-      samplePeriod:
-          map['samplePeriod'] == null ? null : map['samplePeriod'] as String,
+      ingestDelay: map['ingestDelay'] == null ? null : map['ingestDelay'] as String,
+      launchStage: map['launchStage'] == null ? null : MetricDescriptorMetadataLaunchStage.fromValue(map['launchStage'] as String),
+      samplePeriod: map['samplePeriod'] == null ? null : map['samplePeriod'] as String,
     );
   }
 }
+

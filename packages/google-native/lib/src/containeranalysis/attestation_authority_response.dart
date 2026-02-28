@@ -13,15 +13,15 @@ class AttestationAuthorityResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['hint'] = hint.toMap();
-    return map;
+    return <String, dynamic>{
+      'hint': hint.toMap(),
+    };
   }
 
   factory AttestationAuthorityResponse.fromMap(Map<String, dynamic> map) {
     return AttestationAuthorityResponse(
-      hint: AttestationAuthorityHintResponse.fromMap(
-          (map['hint'] as Map).cast<String, dynamic>()),
+      hint: AttestationAuthorityHintResponse.fromMap((map['hint'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

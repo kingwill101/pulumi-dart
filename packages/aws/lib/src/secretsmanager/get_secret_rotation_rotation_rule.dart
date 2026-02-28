@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetSecretRotationRotationRule {
   /// Number of days between automatic scheduled rotations of the secret.
   final int automaticallyAfterDays;
-
   /// Length of the rotation window in hours.
   final String duration;
-
   /// A `cron()` or `rate()` expression that defines the schedule for rotating the secret.
   final String scheduleExpression;
 
@@ -21,11 +20,11 @@ class GetSecretRotationRotationRule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['automaticallyAfterDays'] = automaticallyAfterDays;
-    map['duration'] = duration;
-    map['scheduleExpression'] = scheduleExpression;
-    return map;
+    return <String, dynamic>{
+      'automaticallyAfterDays': automaticallyAfterDays,
+      'duration': duration,
+      'scheduleExpression': scheduleExpression,
+    };
   }
 
   factory GetSecretRotationRotationRule.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class GetSecretRotationRotationRule {
     );
   }
 }
+

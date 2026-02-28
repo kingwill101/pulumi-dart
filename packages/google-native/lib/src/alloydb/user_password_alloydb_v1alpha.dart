@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The username/password for a database user. Used for specifying initial users at cluster creation time.
 class UserPasswordAlloydbV1alpha {
   /// The initial password for the user.
   final String? password;
-
   /// The database username.
   final String? user;
 
@@ -17,16 +17,10 @@ class UserPasswordAlloydbV1alpha {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final passwordValue = password;
-    if (passwordValue != null) {
-      map['password'] = passwordValue;
-    }
-    final userValue = user;
-    if (userValue != null) {
-      map['user'] = userValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'password': ?password,
+      'user': ?user,
+    };
   }
 
   factory UserPasswordAlloydbV1alpha.fromMap(Map<String, dynamic> map) {
@@ -36,3 +30,4 @@ class UserPasswordAlloydbV1alpha {
     );
   }
 }
+

@@ -7,7 +7,6 @@ import 'worker_config.dart';
 class PrivatePoolV1Config {
   /// Network configuration for the pool.
   final NetworkConfig? networkConfig;
-
   /// Machine configuration for the workers in the pool.
   final WorkerConfig? workerConfig;
 
@@ -20,28 +19,17 @@ class PrivatePoolV1Config {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final networkConfigValue = networkConfig;
-    if (networkConfigValue != null) {
-      map['networkConfig'] = networkConfigValue.toMap();
-    }
-    final workerConfigValue = workerConfig;
-    if (workerConfigValue != null) {
-      map['workerConfig'] = workerConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'networkConfig': ?networkConfig == null ? null : networkConfig!.toMap(),
+      'workerConfig': ?workerConfig == null ? null : workerConfig!.toMap(),
+    };
   }
 
   factory PrivatePoolV1Config.fromMap(Map<String, dynamic> map) {
     return PrivatePoolV1Config(
-      networkConfig: map['networkConfig'] == null
-          ? null
-          : NetworkConfig.fromMap(
-              (map['networkConfig'] as Map).cast<String, dynamic>()),
-      workerConfig: map['workerConfig'] == null
-          ? null
-          : WorkerConfig.fromMap(
-              (map['workerConfig'] as Map).cast<String, dynamic>()),
+      networkConfig: map['networkConfig'] == null ? null : NetworkConfig.fromMap((map['networkConfig'] as Map).cast<String, dynamic>()),
+      workerConfig: map['workerConfig'] == null ? null : WorkerConfig.fromMap((map['workerConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -16,17 +16,15 @@ class GetGlobalAddressComputeV1Args {
   GetGlobalAddressComputeV1Args({
     required String address,
     String? project,
-  })  : address = pulumi.Input.asInput<String>(address),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      address = pulumi.Input.asInput<String>(address),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['address'] = address;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'address': address,
+      'project': ?project,
+    };
   }
 
   factory GetGlobalAddressComputeV1Args.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetGlobalAddressComputeV1Args {
     );
   }
 }
+

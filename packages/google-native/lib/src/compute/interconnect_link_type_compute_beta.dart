@@ -12,7 +12,7 @@ enum InterconnectLinkTypeComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown InterconnectLinkTypeComputeBeta value: $value');
+    throw ArgumentError('Unknown InterconnectLinkTypeComputeBeta value: $value');
   }
 }
+

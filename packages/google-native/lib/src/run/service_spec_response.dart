@@ -8,7 +8,6 @@ import 'traffic_target_response.dart';
 class ServiceSpecResponse {
   /// Holds the latest specification for the Revision to be stamped out.
   final RevisionTemplateResponse template;
-
   /// Specifies how to distribute traffic over a collection of Knative Revisions and Configurations to the Service's main URL.
   final List<TrafficTargetResponse> traffic;
 
@@ -21,22 +20,17 @@ class ServiceSpecResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['template'] = template.toMap();
-    map['traffic'] =
-        pulumi.Input.encodeList<TrafficTargetResponse, Map<String, dynamic>>(
-            traffic, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'template': template.toMap(),
+      'traffic': pulumi.Input.encodeList<TrafficTargetResponse, Map<String, dynamic>>(traffic, (value) => value.toMap()),
+    };
   }
 
   factory ServiceSpecResponse.fromMap(Map<String, dynamic> map) {
     return ServiceSpecResponse(
-      template: RevisionTemplateResponse.fromMap(
-          (map['template'] as Map).cast<String, dynamic>()),
-      traffic: pulumi.Input.decodeList<TrafficTargetResponse>(
-          map['traffic'],
-          (value) => TrafficTargetResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      template: RevisionTemplateResponse.fromMap((map['template'] as Map).cast<String, dynamic>()),
+      traffic: pulumi.Input.decodeList<TrafficTargetResponse>(map['traffic'], (value) => TrafficTargetResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

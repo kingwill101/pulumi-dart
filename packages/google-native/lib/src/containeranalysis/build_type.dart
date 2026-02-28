@@ -6,7 +6,6 @@ import 'build_signature.dart';
 class BuildType {
   /// Version of the builder which produced this Note.
   final String? builderVersion;
-
   /// Signature of the build in Occurrences pointing to the Note containing this `BuilderDetails`.
   final BuildSignature? signature;
 
@@ -19,27 +18,17 @@ class BuildType {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final builderVersionValue = builderVersion;
-    if (builderVersionValue != null) {
-      map['builderVersion'] = builderVersionValue;
-    }
-    final signatureValue = signature;
-    if (signatureValue != null) {
-      map['signature'] = signatureValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'builderVersion': ?builderVersion,
+      'signature': ?signature == null ? null : signature!.toMap(),
+    };
   }
 
   factory BuildType.fromMap(Map<String, dynamic> map) {
     return BuildType(
-      builderVersion: map['builderVersion'] == null
-          ? null
-          : map['builderVersion'] as String,
-      signature: map['signature'] == null
-          ? null
-          : BuildSignature.fromMap(
-              (map['signature'] as Map).cast<String, dynamic>()),
+      builderVersion: map['builderVersion'] == null ? null : map['builderVersion'] as String,
+      signature: map['signature'] == null ? null : BuildSignature.fromMap((map['signature'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LiteTopicPartitionConfigCapacity {
   /// Subscribe throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
   final int publishMibPerSec;
-
   /// Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
   final int subscribeMibPerSec;
 
@@ -16,10 +16,10 @@ class LiteTopicPartitionConfigCapacity {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['publishMibPerSec'] = publishMibPerSec;
-    map['subscribeMibPerSec'] = subscribeMibPerSec;
-    return map;
+    return <String, dynamic>{
+      'publishMibPerSec': publishMibPerSec,
+      'subscribeMibPerSec': subscribeMibPerSec,
+    };
   }
 
   factory LiteTopicPartitionConfigCapacity.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class LiteTopicPartitionConfigCapacity {
     );
   }
 }
+

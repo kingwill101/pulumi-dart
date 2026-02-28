@@ -14,20 +14,15 @@ class JobConfigOverlayAnimation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final animationFadeValue = animationFade;
-    if (animationFadeValue != null) {
-      map['animationFade'] = animationFadeValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'animationFade': ?animationFade == null ? null : animationFade!.toMap(),
+    };
   }
 
   factory JobConfigOverlayAnimation.fromMap(Map<String, dynamic> map) {
     return JobConfigOverlayAnimation(
-      animationFade: map['animationFade'] == null
-          ? null
-          : JobConfigOverlayAnimationAnimationFade.fromMap(
-              (map['animationFade'] as Map).cast<String, dynamic>()),
+      animationFade: map['animationFade'] == null ? null : JobConfigOverlayAnimationAnimationFade.fromMap((map['animationFade'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

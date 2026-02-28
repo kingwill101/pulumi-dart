@@ -5,8 +5,7 @@ import 'lifecycle_policy_policy_details_action_cross_region_copy_retain_rule.dar
 
 class LifecyclePolicyPolicyDetailsActionCrossRegionCopy {
   /// The encryption settings for the copied snapshot. See the `encryption_configuration` block. Max of 1 per action.
-  final LifecyclePolicyPolicyDetailsActionCrossRegionCopyEncryptionConfiguration
-      encryptionConfiguration;
+  final LifecyclePolicyPolicyDetailsActionCrossRegionCopyEncryptionConfiguration encryptionConfiguration;
   final LifecyclePolicyPolicyDetailsActionCrossRegionCopyRetainRule? retainRule;
   final String target;
 
@@ -21,28 +20,19 @@ class LifecyclePolicyPolicyDetailsActionCrossRegionCopy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['encryptionConfiguration'] = encryptionConfiguration.toMap();
-    final retainRuleValue = retainRule;
-    if (retainRuleValue != null) {
-      map['retainRule'] = retainRuleValue.toMap();
-    }
-    map['target'] = target;
-    return map;
+    return <String, dynamic>{
+      'encryptionConfiguration': encryptionConfiguration.toMap(),
+      'retainRule': ?retainRule == null ? null : retainRule!.toMap(),
+      'target': target,
+    };
   }
 
-  factory LifecyclePolicyPolicyDetailsActionCrossRegionCopy.fromMap(
-      Map<String, dynamic> map) {
+  factory LifecyclePolicyPolicyDetailsActionCrossRegionCopy.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailsActionCrossRegionCopy(
-      encryptionConfiguration:
-          LifecyclePolicyPolicyDetailsActionCrossRegionCopyEncryptionConfiguration
-              .fromMap((map['encryptionConfiguration'] as Map)
-                  .cast<String, dynamic>()),
-      retainRule: map['retainRule'] == null
-          ? null
-          : LifecyclePolicyPolicyDetailsActionCrossRegionCopyRetainRule.fromMap(
-              (map['retainRule'] as Map).cast<String, dynamic>()),
+      encryptionConfiguration: LifecyclePolicyPolicyDetailsActionCrossRegionCopyEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>()),
+      retainRule: map['retainRule'] == null ? null : LifecyclePolicyPolicyDetailsActionCrossRegionCopyRetainRule.fromMap((map['retainRule'] as Map).cast<String, dynamic>()),
       target: map['target'] as String,
     );
   }
 }
+

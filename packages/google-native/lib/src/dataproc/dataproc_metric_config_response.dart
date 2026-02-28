@@ -15,19 +15,15 @@ class DataprocMetricConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['metrics'] =
-        pulumi.Input.encodeList<MetricResponse, Map<String, dynamic>>(
-            metrics, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'metrics': pulumi.Input.encodeList<MetricResponse, Map<String, dynamic>>(metrics, (value) => value.toMap()),
+    };
   }
 
   factory DataprocMetricConfigResponse.fromMap(Map<String, dynamic> map) {
     return DataprocMetricConfigResponse(
-      metrics: pulumi.Input.decodeList<MetricResponse>(
-          map['metrics'],
-          (value) =>
-              MetricResponse.fromMap((value as Map).cast<String, dynamic>())),
+      metrics: pulumi.Input.decodeList<MetricResponse>(map['metrics'], (value) => MetricResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

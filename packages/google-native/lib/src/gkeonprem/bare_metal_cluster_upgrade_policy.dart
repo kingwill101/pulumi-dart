@@ -14,20 +14,15 @@ class BareMetalClusterUpgradePolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final policyValue = policy;
-    if (policyValue != null) {
-      map['policy'] = policyValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'policy': ?policy == null ? null : policy!.value,
+    };
   }
 
   factory BareMetalClusterUpgradePolicy.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterUpgradePolicy(
-      policy: map['policy'] == null
-          ? null
-          : BareMetalClusterUpgradePolicyPolicy.fromValue(
-              map['policy'] as String),
+      policy: map['policy'] == null ? null : BareMetalClusterUpgradePolicyPolicy.fromValue(map['policy'] as String),
     );
   }
 }
+

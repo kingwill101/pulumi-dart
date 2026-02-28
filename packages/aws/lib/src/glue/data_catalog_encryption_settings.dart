@@ -164,12 +164,8 @@ import 'data_catalog_encryption_settings_data_catalog_encryption_settings.dart';
 class DataCatalogEncryptionSettings extends pulumi.CustomResource {
   /// The ID of the Data Catalog to set the security configuration for. If none is provided, the AWS account ID is used by default.
   late final pulumi.Output<String> catalogId;
-
   /// The security configuration to set. see Data Catalog Encryption Settings.
-  late final pulumi
-      .Output<DataCatalogEncryptionSettingsDataCatalogEncryptionSettings>
-      dataCatalogEncryptionSettings;
-
+  late final pulumi.Output<DataCatalogEncryptionSettingsDataCatalogEncryptionSettings> dataCatalogEncryptionSettings;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -188,9 +184,7 @@ class DataCatalogEncryptionSettings extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.catalogId = registerOutput<String>('catalogId');
-    this.dataCatalogEncryptionSettings = registerOutput<
-            DataCatalogEncryptionSettingsDataCatalogEncryptionSettings>(
-        'dataCatalogEncryptionSettings');
+    this.dataCatalogEncryptionSettings = registerOutput<DataCatalogEncryptionSettingsDataCatalogEncryptionSettings>('dataCatalogEncryptionSettings');
     this.region = registerOutput<String>('region');
   }
 }

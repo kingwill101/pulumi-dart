@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for the Integration add-on.
 class GoogleCloudApigeeV1IntegrationConfig {
   /// Flag that specifies whether the Integration add-on is enabled.
@@ -12,18 +13,15 @@ class GoogleCloudApigeeV1IntegrationConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
-  factory GoogleCloudApigeeV1IntegrationConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1IntegrationConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1IntegrationConfig(
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
     );
   }
 }
+

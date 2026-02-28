@@ -14,15 +14,13 @@ class GetTiersArgs {
   /// [project] The Project ID for which to list tiers. If `project` is not provided, the project defined within the default provider configuration is used.
   GetTiersArgs({
     String? project,
-  }) : project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+    };
   }
 
   factory GetTiersArgs.fromMap(Map<String, dynamic> map) {
@@ -31,3 +29,4 @@ class GetTiersArgs {
     );
   }
 }
+

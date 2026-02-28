@@ -1660,10 +1660,8 @@ import 'iampolicy_args.dart';
 class IAMPolicy extends pulumi.CustomResource {
   /// (Computed) The etag of the folder's IAM policy.
   late final pulumi.Output<String> etag;
-
   /// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
   late final pulumi.Output<String> folder;
-
   /// The `gcp.organizations.getIAMPolicy` data source that represents
   /// the IAM policy that will be applied to the folder. The policy will be
   /// merged with any existing policy applied to the folder.

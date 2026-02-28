@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Forward SSH Tunnel connectivity.
 class ForwardSshTunnelConnectivityResponseDatastreamV1alpha1 {
   /// Hostname for the SSH tunnel.
   final String hostname;
-
   /// Input only. SSH password.
   final String password;
-
   /// Port for the SSH tunnel, default value is 22.
   final int port;
-
   /// Input only. SSH private key.
   final String privateKey;
-
   /// Username for the SSH tunnel.
   final String username;
 
@@ -32,17 +29,16 @@ class ForwardSshTunnelConnectivityResponseDatastreamV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['hostname'] = hostname;
-    map['password'] = password;
-    map['port'] = port;
-    map['privateKey'] = privateKey;
-    map['username'] = username;
-    return map;
+    return <String, dynamic>{
+      'hostname': hostname,
+      'password': password,
+      'port': port,
+      'privateKey': privateKey,
+      'username': username,
+    };
   }
 
-  factory ForwardSshTunnelConnectivityResponseDatastreamV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory ForwardSshTunnelConnectivityResponseDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return ForwardSshTunnelConnectivityResponseDatastreamV1alpha1(
       hostname: map['hostname'] as String,
       password: map['password'] as String,
@@ -52,3 +48,4 @@ class ForwardSshTunnelConnectivityResponseDatastreamV1alpha1 {
     );
   }
 }
+

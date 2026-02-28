@@ -13,19 +13,19 @@ class GetInboundSamlSsoProfileCloudidentityV1beta1Args {
   /// [inboundSamlSsoProfileId] Required.
   GetInboundSamlSsoProfileCloudidentityV1beta1Args({
     required String inboundSamlSsoProfileId,
-  }) : inboundSamlSsoProfileId =
-            pulumi.Input.asInput<String>(inboundSamlSsoProfileId);
+  }) :
+      inboundSamlSsoProfileId = pulumi.Input.asInput<String>(inboundSamlSsoProfileId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['inboundSamlSsoProfileId'] = inboundSamlSsoProfileId;
-    return map;
+    return <String, dynamic>{
+      'inboundSamlSsoProfileId': inboundSamlSsoProfileId,
+    };
   }
 
-  factory GetInboundSamlSsoProfileCloudidentityV1beta1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetInboundSamlSsoProfileCloudidentityV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetInboundSamlSsoProfileCloudidentityV1beta1Args(
       inboundSamlSsoProfileId: map['inboundSamlSsoProfileId'] as String,
     );
   }
 }
+

@@ -480,45 +480,32 @@ import 'pipeline_vpc_options.dart';
 class Pipeline extends pulumi.CustomResource {
   /// Key-value pairs to configure persistent buffering for the pipeline. See `buffer_options` below.
   late final pulumi.Output<PipelineBufferOptions?> bufferOptions;
-
   /// Key-value pairs to configure encryption for data that is written to a persistent buffer. See `encryption_at_rest_options` below.
-  late final pulumi.Output<PipelineEncryptionAtRestOptions?>
-      encryptionAtRestOptions;
-
+  late final pulumi.Output<PipelineEncryptionAtRestOptions?> encryptionAtRestOptions;
   /// The list of ingestion endpoints for the pipeline, which you can send data to.
   late final pulumi.Output<List<String>> ingestEndpointUrls;
-
   /// Key-value pairs to configure log publishing. See `log_publishing_options` below.
   late final pulumi.Output<PipelineLogPublishingOptions?> logPublishingOptions;
-
   /// The maximum pipeline capacity, in Ingestion Compute Units (ICUs).
   late final pulumi.Output<int> maxUnits;
-
   /// The minimum pipeline capacity, in Ingestion Compute Units (ICUs).
   late final pulumi.Output<int> minUnits;
-
   /// Amazon Resource Name (ARN) of the pipeline.
   late final pulumi.Output<String> pipelineArn;
-
   /// The pipeline configuration in YAML format. This argument accepts the pipeline configuration as a string or within a .yaml file. If you provide the configuration as a string, each new line must be escaped with \n.
   late final pulumi.Output<String> pipelineConfigurationBody;
-
   /// The name of the OpenSearch Ingestion pipeline to create. Pipeline names are unique across the pipelines owned by an account within an AWS Region.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> pipelineName;
-
   /// ARN of the IAM role that grants the pipeline permission to access AWS resources.
   late final pulumi.Output<String> pipelineRoleArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A map of tags to assign to the pipeline. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<PipelineTimeouts?> timeouts;
-
   /// Container for the values required to configure VPC access for the pipeline. If you don't specify these values, OpenSearch Ingestion creates the pipeline with a public endpoint. See `vpc_options` below.
   late final pulumi.Output<PipelineVpcOptions?> vpcOptions;
 
@@ -536,20 +523,14 @@ class Pipeline extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.bufferOptions =
-        registerOutput<PipelineBufferOptions?>('bufferOptions');
-    this.encryptionAtRestOptions =
-        registerOutput<PipelineEncryptionAtRestOptions?>(
-            'encryptionAtRestOptions');
-    this.ingestEndpointUrls =
-        registerOutput<List<String>>('ingestEndpointUrls');
-    this.logPublishingOptions =
-        registerOutput<PipelineLogPublishingOptions?>('logPublishingOptions');
+    this.bufferOptions = registerOutput<PipelineBufferOptions?>('bufferOptions');
+    this.encryptionAtRestOptions = registerOutput<PipelineEncryptionAtRestOptions?>('encryptionAtRestOptions');
+    this.ingestEndpointUrls = registerOutput<List<String>>('ingestEndpointUrls');
+    this.logPublishingOptions = registerOutput<PipelineLogPublishingOptions?>('logPublishingOptions');
     this.maxUnits = registerOutput<int>('maxUnits');
     this.minUnits = registerOutput<int>('minUnits');
     this.pipelineArn = registerOutput<String>('pipelineArn');
-    this.pipelineConfigurationBody =
-        registerOutput<String>('pipelineConfigurationBody');
+    this.pipelineConfigurationBody = registerOutput<String>('pipelineConfigurationBody');
     this.pipelineName = registerOutput<String>('pipelineName');
     this.pipelineRoleArn = registerOutput<String>('pipelineRoleArn');
     this.region = registerOutput<String>('region');

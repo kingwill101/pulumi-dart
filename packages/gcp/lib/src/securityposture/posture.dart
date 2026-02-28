@@ -733,40 +733,29 @@ import 'posture_policy_set.dart';
 class Posture extends pulumi.CustomResource {
   /// Time the Posture was created in UTC.
   late final pulumi.Output<String> createTime;
-
   /// Description of the posture.
   late final pulumi.Output<String?> description;
-
   /// For Resource freshness validation (https://google.aip.dev/154)
   late final pulumi.Output<String> etag;
-
   /// Location of the resource, eg: global.
   late final pulumi.Output<String> location;
-
   /// Name of the posture.
   late final pulumi.Output<String> name;
-
   /// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
   late final pulumi.Output<String> parent;
-
   /// List of policy sets for the posture.
   /// Structure is documented below.
   late final pulumi.Output<List<PosturePolicySet>> policySets;
-
   /// Id of the posture. It is an immutable field.
   late final pulumi.Output<String> postureId;
-
   /// If set, there are currently changes in flight to the posture.
   late final pulumi.Output<bool> reconciling;
-
   /// Revision_id of the posture.
   late final pulumi.Output<String> revisionId;
-
   /// State of the posture. Update to state field should not be triggered along with
   /// with other field updates.
   /// Possible values are: `DEPRECATED`, `DRAFT`, `ACTIVE`.
   late final pulumi.Output<String> state;
-
   /// Time the Posture was updated in UTC.
   late final pulumi.Output<String> updateTime;
 

@@ -14,21 +14,15 @@ class DatascanDataProfileSpecPostScanActions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final bigqueryExportValue = bigqueryExport;
-    if (bigqueryExportValue != null) {
-      map['bigqueryExport'] = bigqueryExportValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'bigqueryExport': ?bigqueryExport == null ? null : bigqueryExport!.toMap(),
+    };
   }
 
-  factory DatascanDataProfileSpecPostScanActions.fromMap(
-      Map<String, dynamic> map) {
+  factory DatascanDataProfileSpecPostScanActions.fromMap(Map<String, dynamic> map) {
     return DatascanDataProfileSpecPostScanActions(
-      bigqueryExport: map['bigqueryExport'] == null
-          ? null
-          : DatascanDataProfileSpecPostScanActionsBigqueryExport.fromMap(
-              (map['bigqueryExport'] as Map).cast<String, dynamic>()),
+      bigqueryExport: map['bigqueryExport'] == null ? null : DatascanDataProfileSpecPostScanActionsBigqueryExport.fromMap((map['bigqueryExport'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

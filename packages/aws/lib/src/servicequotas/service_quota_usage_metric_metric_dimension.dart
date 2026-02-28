@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ServiceQuotaUsageMetricMetricDimension {
   final String? class_;
   final String? resource;
@@ -19,28 +20,15 @@ class ServiceQuotaUsageMetricMetricDimension {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final class_Value = class_;
-    if (class_Value != null) {
-      map['class'] = class_Value;
-    }
-    final resourceValue = resource;
-    if (resourceValue != null) {
-      map['resource'] = resourceValue;
-    }
-    final serviceValue = service;
-    if (serviceValue != null) {
-      map['service'] = serviceValue;
-    }
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'class': ?class_,
+      'resource': ?resource,
+      'service': ?service,
+      'type': ?type,
+    };
   }
 
-  factory ServiceQuotaUsageMetricMetricDimension.fromMap(
-      Map<String, dynamic> map) {
+  factory ServiceQuotaUsageMetricMetricDimension.fromMap(Map<String, dynamic> map) {
     return ServiceQuotaUsageMetricMetricDimension(
       class_: map['class'] == null ? null : map['class'] as String,
       resource: map['resource'] == null ? null : map['resource'] as String,
@@ -49,3 +37,4 @@ class ServiceQuotaUsageMetricMetricDimension {
     );
   }
 }
+

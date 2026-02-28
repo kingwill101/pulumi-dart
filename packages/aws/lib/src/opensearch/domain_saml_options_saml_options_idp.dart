@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DomainSamlOptionsSamlOptionsIdp {
   /// Unique Entity ID of the application in SAML Identity Provider.
   final String entityId;
-
   /// Metadata of the SAML application in xml format.
   final String metadataContent;
 
@@ -16,10 +16,10 @@ class DomainSamlOptionsSamlOptionsIdp {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['entityId'] = entityId;
-    map['metadataContent'] = metadataContent;
-    return map;
+    return <String, dynamic>{
+      'entityId': entityId,
+      'metadataContent': metadataContent,
+    };
   }
 
   factory DomainSamlOptionsSamlOptionsIdp.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class DomainSamlOptionsSamlOptionsIdp {
     );
   }
 }
+

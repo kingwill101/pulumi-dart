@@ -15,3 +15,4 @@ enum NpmRepositoryPublicRepository {
     throw ArgumentError('Unknown NpmRepositoryPublicRepository value: $value');
   }
 }
+

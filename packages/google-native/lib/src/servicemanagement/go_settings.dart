@@ -14,20 +14,15 @@ class GoSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final commonValue = common;
-    if (commonValue != null) {
-      map['common'] = commonValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'common': ?common == null ? null : common!.toMap(),
+    };
   }
 
   factory GoSettings.fromMap(Map<String, dynamic> map) {
     return GoSettings(
-      common: map['common'] == null
-          ? null
-          : CommonLanguageSettings.fromMap(
-              (map['common'] as Map).cast<String, dynamic>()),
+      common: map['common'] == null ? null : CommonLanguageSettings.fromMap((map['common'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

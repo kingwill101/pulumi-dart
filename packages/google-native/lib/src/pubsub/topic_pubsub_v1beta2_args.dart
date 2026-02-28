@@ -20,22 +20,17 @@ class TopicPubsubV1beta2Args {
     String? name,
     String? project,
     required String topicId,
-  })  : name = pulumi.Input.asOptionalInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        topicId = pulumi.Input.asInput<String>(topicId);
+  }) :
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      topicId = pulumi.Input.asInput<String>(topicId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['topicId'] = topicId;
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+      'project': ?project,
+      'topicId': topicId,
+    };
   }
 
   factory TopicPubsubV1beta2Args.fromMap(Map<String, dynamic> map) {
@@ -46,3 +41,4 @@ class TopicPubsubV1beta2Args {
     );
   }
 }
+

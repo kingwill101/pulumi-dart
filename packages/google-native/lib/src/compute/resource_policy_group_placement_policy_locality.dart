@@ -13,7 +13,7 @@ enum ResourcePolicyGroupPlacementPolicyLocality {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown ResourcePolicyGroupPlacementPolicyLocality value: $value');
+    throw ArgumentError('Unknown ResourcePolicyGroupPlacementPolicyLocality value: $value');
   }
 }
+

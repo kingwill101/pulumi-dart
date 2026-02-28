@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Load balancing specific fields for network endpoint group.
 class NetworkEndpointGroupLbNetworkEndpointGroupResponseComputeBeta {
   /// The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
   final int defaultPort;
-
   /// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
   final String network;
-
   /// Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
   final String subnetwork;
-
   /// The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.
   final String zone;
 
@@ -27,16 +25,15 @@ class NetworkEndpointGroupLbNetworkEndpointGroupResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['defaultPort'] = defaultPort;
-    map['network'] = network;
-    map['subnetwork'] = subnetwork;
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'defaultPort': defaultPort,
+      'network': network,
+      'subnetwork': subnetwork,
+      'zone': zone,
+    };
   }
 
-  factory NetworkEndpointGroupLbNetworkEndpointGroupResponseComputeBeta.fromMap(
-      Map<String, dynamic> map) {
+  factory NetworkEndpointGroupLbNetworkEndpointGroupResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return NetworkEndpointGroupLbNetworkEndpointGroupResponseComputeBeta(
       defaultPort: map['defaultPort'] as int,
       network: map['network'] as String,
@@ -45,3 +42,4 @@ class NetworkEndpointGroupLbNetworkEndpointGroupResponseComputeBeta {
     );
   }
 }
+

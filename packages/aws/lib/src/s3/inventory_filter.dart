@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InventoryFilter {
   /// Prefix that an object must have to be included in the inventory results.
   final String? prefix;
@@ -11,12 +12,9 @@ class InventoryFilter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final prefixValue = prefix;
-    if (prefixValue != null) {
-      map['prefix'] = prefixValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'prefix': ?prefix,
+    };
   }
 
   factory InventoryFilter.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class InventoryFilter {
     );
   }
 }
+

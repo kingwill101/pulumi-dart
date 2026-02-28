@@ -6,10 +6,8 @@ import 'get_sorganization.dart';
 /// Result data returned by getS.
 class GetSResult {
   final String? filter;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of all retrieved organizations. Structure is defined below.
   final List<GetSOrganization> organizations;
 
@@ -24,26 +22,19 @@ class GetSResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final filterValue = filter;
-    if (filterValue != null) {
-      map['filter'] = filterValue;
-    }
-    map['id'] = id;
-    map['organizations'] =
-        pulumi.Input.encodeList<GetSOrganization, Map<String, dynamic>>(
-            organizations, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'filter': ?filter,
+      'id': id,
+      'organizations': pulumi.Input.encodeList<GetSOrganization, Map<String, dynamic>>(organizations, (value) => value.toMap()),
+    };
   }
 
   factory GetSResult.fromMap(Map<String, dynamic> map) {
     return GetSResult(
       filter: map['filter'] == null ? null : map['filter'] as String,
       id: map['id'] as String,
-      organizations: pulumi.Input.decodeList<GetSOrganization>(
-          map['organizations'],
-          (value) =>
-              GetSOrganization.fromMap((value as Map).cast<String, dynamic>())),
+      organizations: pulumi.Input.decodeList<GetSOrganization>(map['organizations'], (value) => GetSOrganization.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

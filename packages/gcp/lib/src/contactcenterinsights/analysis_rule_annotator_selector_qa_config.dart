@@ -14,21 +14,15 @@ class AnalysisRuleAnnotatorSelectorQaConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final scorecardListValue = scorecardList;
-    if (scorecardListValue != null) {
-      map['scorecardList'] = scorecardListValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'scorecardList': ?scorecardList == null ? null : scorecardList!.toMap(),
+    };
   }
 
-  factory AnalysisRuleAnnotatorSelectorQaConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory AnalysisRuleAnnotatorSelectorQaConfig.fromMap(Map<String, dynamic> map) {
     return AnalysisRuleAnnotatorSelectorQaConfig(
-      scorecardList: map['scorecardList'] == null
-          ? null
-          : AnalysisRuleAnnotatorSelectorQaConfigScorecardList.fromMap(
-              (map['scorecardList'] as Map).cast<String, dynamic>()),
+      scorecardList: map['scorecardList'] == null ? null : AnalysisRuleAnnotatorSelectorQaConfigScorecardList.fromMap((map['scorecardList'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

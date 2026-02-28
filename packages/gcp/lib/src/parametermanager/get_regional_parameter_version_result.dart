@@ -1,30 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRegionalParameterVersion.
 class GetRegionalParameterVersionResult {
   /// The time at which the Regional Parameter Version was created.
   final String createTime;
-
   /// The current state of the Regional Parameter Version.
   final bool disabled;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
   final String kmsKeyVersion;
   final String location;
-
   /// The resource name of the Regional Parameter Version. Format:
   /// `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}/versions/{{parameter_version_id}}`
   final String name;
   final String parameter;
-
   /// The regional parameter data.
   final String parameterData;
   final String parameterVersionId;
   final String project;
-
   /// The time at which the Regional Parameter Version was last updated.
   final String updateTime;
 
@@ -55,19 +50,19 @@ class GetRegionalParameterVersionResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['disabled'] = disabled;
-    map['id'] = id;
-    map['kmsKeyVersion'] = kmsKeyVersion;
-    map['location'] = location;
-    map['name'] = name;
-    map['parameter'] = parameter;
-    map['parameterData'] = parameterData;
-    map['parameterVersionId'] = parameterVersionId;
-    map['project'] = project;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'disabled': disabled,
+      'id': id,
+      'kmsKeyVersion': kmsKeyVersion,
+      'location': location,
+      'name': name,
+      'parameter': parameter,
+      'parameterData': parameterData,
+      'parameterVersionId': parameterVersionId,
+      'project': project,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetRegionalParameterVersionResult.fromMap(Map<String, dynamic> map) {
@@ -86,3 +81,4 @@ class GetRegionalParameterVersionResult {
     );
   }
 }
+

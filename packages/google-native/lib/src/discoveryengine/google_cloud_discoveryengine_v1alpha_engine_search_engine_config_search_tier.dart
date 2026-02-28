@@ -4,20 +4,16 @@ enum GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTier {
   searchTierStandard("SEARCH_TIER_STANDARD"),
   searchTierEnterprise("SEARCH_TIER_ENTERPRISE");
 
-  const GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTier(
-      this.value);
+  const GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTier(this.value);
   final String value;
 
-  static GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTier
-      fromValue(String value) {
-    for (final item
-        in GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTier
-            .values) {
+  static GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTier fromValue(String value) {
+    for (final item in GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTier.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTier value: $value');
+    throw ArgumentError('Unknown GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTier value: $value');
   }
 }
+

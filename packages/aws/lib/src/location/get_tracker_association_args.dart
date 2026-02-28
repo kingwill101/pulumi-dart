@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTrackerAssociationArgs {
   /// ARN of the geofence collection associated to tracker resource.
   final pulumi.Input<String> consumerArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Name of the tracker resource associated with a geofence collection.
   final pulumi.Input<String> trackerName;
 
@@ -24,19 +22,17 @@ class GetTrackerAssociationArgs {
     required String consumerArn,
     String? region,
     required String trackerName,
-  })  : consumerArn = pulumi.Input.asInput<String>(consumerArn),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        trackerName = pulumi.Input.asInput<String>(trackerName);
+  }) :
+      consumerArn = pulumi.Input.asInput<String>(consumerArn),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      trackerName = pulumi.Input.asInput<String>(trackerName);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['consumerArn'] = consumerArn;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['trackerName'] = trackerName;
-    return map;
+    return <String, dynamic>{
+      'consumerArn': consumerArn,
+      'region': ?region,
+      'trackerName': trackerName,
+    };
   }
 
   factory GetTrackerAssociationArgs.fromMap(Map<String, dynamic> map) {
@@ -47,3 +43,4 @@ class GetTrackerAssociationArgs {
     );
   }
 }
+

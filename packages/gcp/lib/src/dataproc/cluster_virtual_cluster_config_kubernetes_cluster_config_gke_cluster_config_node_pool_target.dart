@@ -5,14 +5,11 @@ import 'cluster_virtual_cluster_config_kubernetes_cluster_config_gke_cluster_con
 class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget {
   /// The target GKE node pool.
   final String nodePool;
-
   /// The configuration for the GKE node pool.
   /// If specified, Dataproc attempts to create a node pool with the specified shape.
   /// If one with the same name already exists, it is verified against all specified fields.
   /// If a field differs, the virtual cluster creation will fail.
-  final ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig?
-      nodePoolConfig;
-
+  final ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig? nodePoolConfig;
   /// The roles associated with the GKE node pool.
   /// One of `"DEFAULT"`, `"CONTROLLER"`, `"SPARK_DRIVER"` or `"SPARK_EXECUTOR"`.
   final List<String> roles;
@@ -28,25 +25,19 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['nodePool'] = nodePool;
-    final nodePoolConfigValue = nodePoolConfig;
-    if (nodePoolConfigValue != null) {
-      map['nodePoolConfig'] = nodePoolConfigValue.toMap();
-    }
-    map['roles'] = roles;
-    return map;
+    return <String, dynamic>{
+      'nodePool': nodePool,
+      'nodePoolConfig': ?nodePoolConfig == null ? null : nodePoolConfig!.toMap(),
+      'roles': roles,
+    };
   }
 
-  factory ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget.fromMap(Map<String, dynamic> map) {
     return ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget(
       nodePool: map['nodePool'] as String,
-      nodePoolConfig: map['nodePoolConfig'] == null
-          ? null
-          : ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig
-              .fromMap((map['nodePoolConfig'] as Map).cast<String, dynamic>()),
+      nodePoolConfig: map['nodePoolConfig'] == null ? null : ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig.fromMap((map['nodePoolConfig'] as Map).cast<String, dynamic>()),
       roles: (map['roles'] as List).cast<String>(),
     );
   }
 }
+

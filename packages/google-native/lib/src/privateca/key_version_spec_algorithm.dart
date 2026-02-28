@@ -22,3 +22,4 @@ enum KeyVersionSpecAlgorithm {
     throw ArgumentError('Unknown KeyVersionSpecAlgorithm value: $value');
   }
 }
+

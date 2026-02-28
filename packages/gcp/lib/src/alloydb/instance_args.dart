@@ -25,12 +25,10 @@ class InstanceArgs {
   /// Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.'
   /// Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.
   final pulumi.Input<String>? activationPolicy;
-
   /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
-
   /// 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
   /// Note that primary and read instances can have different availability types.
   /// Primary instances can be either ZONAL or REGIONAL. Read Pool instances can also be either ZONAL or REGIONAL.
@@ -39,57 +37,43 @@ class InstanceArgs {
   /// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.'
   /// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
   final pulumi.Input<String>? availabilityType;
-
   /// Client connection specific configurations.
   /// Structure is documented below.
   final pulumi.Input<InstanceClientConnectionConfig>? clientConnectionConfig;
-
   /// Identifies the alloydb cluster. Must be in the format
   /// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
   final pulumi.Input<String> cluster;
-
   /// Configuration for Managed Connection Pool.
   /// Structure is documented below.
   final pulumi.Input<InstanceConnectionPoolConfig>? connectionPoolConfig;
-
   /// Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
   final pulumi.Input<Map<String, String>>? databaseFlags;
-
   /// User-settable and human-readable display name for the Instance.
   final pulumi.Input<String>? displayName;
-
   /// The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
   final pulumi.Input<String>? gceZone;
-
   /// The ID of the alloydb instance.
   final pulumi.Input<String> instanceId;
   final pulumi.Input<String> instanceType;
-
   /// User-defined labels for the alloydb instance.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Configurations for the machines that host the underlying database engine.
   /// Structure is documented below.
   final pulumi.Input<InstanceMachineConfig>? machineConfig;
-
   /// Instance level network configuration.
   /// Structure is documented below.
   final pulumi.Input<InstanceNetworkConfig>? networkConfig;
-
   /// Configuration for enhanced query insights.
   /// Structure is documented below.
   final pulumi.Input<InstanceObservabilityConfig>? observabilityConfig;
-
   /// Configuration for Private Service Connect (PSC) for the instance.
   /// Structure is documented below.
   final pulumi.Input<InstancePscInstanceConfig>? pscInstanceConfig;
-
   /// Configuration for query insights.
   /// Structure is documented below.
   final pulumi.Input<InstanceQueryInsightsConfig>? queryInsightsConfig;
-
   /// Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
   /// Structure is documented below.
   final pulumi.Input<InstanceReadPoolConfig>? readPoolConfig;
@@ -132,181 +116,70 @@ class InstanceArgs {
     InstancePscInstanceConfig? pscInstanceConfig,
     InstanceQueryInsightsConfig? queryInsightsConfig,
     InstanceReadPoolConfig? readPoolConfig,
-  })  : activationPolicy =
-            pulumi.Input.asOptionalInput<String>(activationPolicy),
-        annotations =
-            pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-        availabilityType =
-            pulumi.Input.asOptionalInput<String>(availabilityType),
-        clientConnectionConfig =
-            pulumi.Input.asOptionalInput<InstanceClientConnectionConfig>(
-                clientConnectionConfig),
-        cluster = pulumi.Input.asInput<String>(cluster),
-        connectionPoolConfig =
-            pulumi.Input.asOptionalInput<InstanceConnectionPoolConfig>(
-                connectionPoolConfig),
-        databaseFlags =
-            pulumi.Input.asOptionalInput<Map<String, String>>(databaseFlags),
-        displayName = pulumi.Input.asOptionalInput<String>(displayName),
-        gceZone = pulumi.Input.asOptionalInput<String>(gceZone),
-        instanceId = pulumi.Input.asInput<String>(instanceId),
-        instanceType = pulumi.Input.asInput<String>(instanceType),
-        labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-        machineConfig =
-            pulumi.Input.asOptionalInput<InstanceMachineConfig>(machineConfig),
-        networkConfig =
-            pulumi.Input.asOptionalInput<InstanceNetworkConfig>(networkConfig),
-        observabilityConfig =
-            pulumi.Input.asOptionalInput<InstanceObservabilityConfig>(
-                observabilityConfig),
-        pscInstanceConfig =
-            pulumi.Input.asOptionalInput<InstancePscInstanceConfig>(
-                pscInstanceConfig),
-        queryInsightsConfig =
-            pulumi.Input.asOptionalInput<InstanceQueryInsightsConfig>(
-                queryInsightsConfig),
-        readPoolConfig = pulumi.Input.asOptionalInput<InstanceReadPoolConfig>(
-            readPoolConfig);
+  }) :
+      activationPolicy = pulumi.Input.asOptionalInput<String>(activationPolicy),
+      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
+      availabilityType = pulumi.Input.asOptionalInput<String>(availabilityType),
+      clientConnectionConfig = pulumi.Input.asOptionalInput<InstanceClientConnectionConfig>(clientConnectionConfig),
+      cluster = pulumi.Input.asInput<String>(cluster),
+      connectionPoolConfig = pulumi.Input.asOptionalInput<InstanceConnectionPoolConfig>(connectionPoolConfig),
+      databaseFlags = pulumi.Input.asOptionalInput<Map<String, String>>(databaseFlags),
+      displayName = pulumi.Input.asOptionalInput<String>(displayName),
+      gceZone = pulumi.Input.asOptionalInput<String>(gceZone),
+      instanceId = pulumi.Input.asInput<String>(instanceId),
+      instanceType = pulumi.Input.asInput<String>(instanceType),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      machineConfig = pulumi.Input.asOptionalInput<InstanceMachineConfig>(machineConfig),
+      networkConfig = pulumi.Input.asOptionalInput<InstanceNetworkConfig>(networkConfig),
+      observabilityConfig = pulumi.Input.asOptionalInput<InstanceObservabilityConfig>(observabilityConfig),
+      pscInstanceConfig = pulumi.Input.asOptionalInput<InstancePscInstanceConfig>(pscInstanceConfig),
+      queryInsightsConfig = pulumi.Input.asOptionalInput<InstanceQueryInsightsConfig>(queryInsightsConfig),
+      readPoolConfig = pulumi.Input.asOptionalInput<InstanceReadPoolConfig>(readPoolConfig);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final activationPolicyValue = activationPolicy;
-    if (activationPolicyValue != null) {
-      map['activationPolicy'] = activationPolicyValue;
-    }
-    final annotationsValue = annotations;
-    if (annotationsValue != null) {
-      map['annotations'] = annotationsValue;
-    }
-    final availabilityTypeValue = availabilityType;
-    if (availabilityTypeValue != null) {
-      map['availabilityType'] = availabilityTypeValue;
-    }
-    final clientConnectionConfigValue = clientConnectionConfig;
-    if (clientConnectionConfigValue != null) {
-      map['clientConnectionConfig'] = pulumi.Input.mapOptionalInputValue<
-              InstanceClientConnectionConfig, Map<String, dynamic>>(
-          clientConnectionConfigValue, (value) => value.toMap());
-    }
-    map['cluster'] = cluster;
-    final connectionPoolConfigValue = connectionPoolConfig;
-    if (connectionPoolConfigValue != null) {
-      map['connectionPoolConfig'] = pulumi.Input.mapOptionalInputValue<
-              InstanceConnectionPoolConfig, Map<String, dynamic>>(
-          connectionPoolConfigValue, (value) => value.toMap());
-    }
-    final databaseFlagsValue = databaseFlags;
-    if (databaseFlagsValue != null) {
-      map['databaseFlags'] = databaseFlagsValue;
-    }
-    final displayNameValue = displayName;
-    if (displayNameValue != null) {
-      map['displayName'] = displayNameValue;
-    }
-    final gceZoneValue = gceZone;
-    if (gceZoneValue != null) {
-      map['gceZone'] = gceZoneValue;
-    }
-    map['instanceId'] = instanceId;
-    map['instanceType'] = instanceType;
-    final labelsValue = labels;
-    if (labelsValue != null) {
-      map['labels'] = labelsValue;
-    }
-    final machineConfigValue = machineConfig;
-    if (machineConfigValue != null) {
-      map['machineConfig'] = pulumi.Input.mapOptionalInputValue<
-          InstanceMachineConfig,
-          Map<String, dynamic>>(machineConfigValue, (value) => value.toMap());
-    }
-    final networkConfigValue = networkConfig;
-    if (networkConfigValue != null) {
-      map['networkConfig'] = pulumi.Input.mapOptionalInputValue<
-          InstanceNetworkConfig,
-          Map<String, dynamic>>(networkConfigValue, (value) => value.toMap());
-    }
-    final observabilityConfigValue = observabilityConfig;
-    if (observabilityConfigValue != null) {
-      map['observabilityConfig'] = pulumi.Input.mapOptionalInputValue<
-              InstanceObservabilityConfig, Map<String, dynamic>>(
-          observabilityConfigValue, (value) => value.toMap());
-    }
-    final pscInstanceConfigValue = pscInstanceConfig;
-    if (pscInstanceConfigValue != null) {
-      map['pscInstanceConfig'] = pulumi.Input.mapOptionalInputValue<
-              InstancePscInstanceConfig, Map<String, dynamic>>(
-          pscInstanceConfigValue, (value) => value.toMap());
-    }
-    final queryInsightsConfigValue = queryInsightsConfig;
-    if (queryInsightsConfigValue != null) {
-      map['queryInsightsConfig'] = pulumi.Input.mapOptionalInputValue<
-              InstanceQueryInsightsConfig, Map<String, dynamic>>(
-          queryInsightsConfigValue, (value) => value.toMap());
-    }
-    final readPoolConfigValue = readPoolConfig;
-    if (readPoolConfigValue != null) {
-      map['readPoolConfig'] = pulumi.Input.mapOptionalInputValue<
-          InstanceReadPoolConfig,
-          Map<String, dynamic>>(readPoolConfigValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'activationPolicy': ?activationPolicy,
+      'annotations': ?annotations,
+      'availabilityType': ?availabilityType,
+      'clientConnectionConfig': ?pulumi.Input.mapOptionalInputValue<InstanceClientConnectionConfig, Map<String, dynamic>>(clientConnectionConfig, (value) => value.toMap()),
+      'cluster': cluster,
+      'connectionPoolConfig': ?pulumi.Input.mapOptionalInputValue<InstanceConnectionPoolConfig, Map<String, dynamic>>(connectionPoolConfig, (value) => value.toMap()),
+      'databaseFlags': ?databaseFlags,
+      'displayName': ?displayName,
+      'gceZone': ?gceZone,
+      'instanceId': instanceId,
+      'instanceType': instanceType,
+      'labels': ?labels,
+      'machineConfig': ?pulumi.Input.mapOptionalInputValue<InstanceMachineConfig, Map<String, dynamic>>(machineConfig, (value) => value.toMap()),
+      'networkConfig': ?pulumi.Input.mapOptionalInputValue<InstanceNetworkConfig, Map<String, dynamic>>(networkConfig, (value) => value.toMap()),
+      'observabilityConfig': ?pulumi.Input.mapOptionalInputValue<InstanceObservabilityConfig, Map<String, dynamic>>(observabilityConfig, (value) => value.toMap()),
+      'pscInstanceConfig': ?pulumi.Input.mapOptionalInputValue<InstancePscInstanceConfig, Map<String, dynamic>>(pscInstanceConfig, (value) => value.toMap()),
+      'queryInsightsConfig': ?pulumi.Input.mapOptionalInputValue<InstanceQueryInsightsConfig, Map<String, dynamic>>(queryInsightsConfig, (value) => value.toMap()),
+      'readPoolConfig': ?pulumi.Input.mapOptionalInputValue<InstanceReadPoolConfig, Map<String, dynamic>>(readPoolConfig, (value) => value.toMap()),
+    };
   }
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      activationPolicy: map['activationPolicy'] == null
-          ? null
-          : map['activationPolicy'] as String,
-      annotations: map['annotations'] == null
-          ? null
-          : (map['annotations'] as Map).cast<String, String>(),
-      availabilityType: map['availabilityType'] == null
-          ? null
-          : map['availabilityType'] as String,
-      clientConnectionConfig: map['clientConnectionConfig'] == null
-          ? null
-          : InstanceClientConnectionConfig.fromMap(
-              (map['clientConnectionConfig'] as Map).cast<String, dynamic>()),
+      activationPolicy: map['activationPolicy'] == null ? null : map['activationPolicy'] as String,
+      annotations: map['annotations'] == null ? null : (map['annotations'] as Map).cast<String, String>(),
+      availabilityType: map['availabilityType'] == null ? null : map['availabilityType'] as String,
+      clientConnectionConfig: map['clientConnectionConfig'] == null ? null : InstanceClientConnectionConfig.fromMap((map['clientConnectionConfig'] as Map).cast<String, dynamic>()),
       cluster: map['cluster'] as String,
-      connectionPoolConfig: map['connectionPoolConfig'] == null
-          ? null
-          : InstanceConnectionPoolConfig.fromMap(
-              (map['connectionPoolConfig'] as Map).cast<String, dynamic>()),
-      databaseFlags: map['databaseFlags'] == null
-          ? null
-          : (map['databaseFlags'] as Map).cast<String, String>(),
-      displayName:
-          map['displayName'] == null ? null : map['displayName'] as String,
+      connectionPoolConfig: map['connectionPoolConfig'] == null ? null : InstanceConnectionPoolConfig.fromMap((map['connectionPoolConfig'] as Map).cast<String, dynamic>()),
+      databaseFlags: map['databaseFlags'] == null ? null : (map['databaseFlags'] as Map).cast<String, String>(),
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
       gceZone: map['gceZone'] == null ? null : map['gceZone'] as String,
       instanceId: map['instanceId'] as String,
       instanceType: map['instanceType'] as String,
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
-      machineConfig: map['machineConfig'] == null
-          ? null
-          : InstanceMachineConfig.fromMap(
-              (map['machineConfig'] as Map).cast<String, dynamic>()),
-      networkConfig: map['networkConfig'] == null
-          ? null
-          : InstanceNetworkConfig.fromMap(
-              (map['networkConfig'] as Map).cast<String, dynamic>()),
-      observabilityConfig: map['observabilityConfig'] == null
-          ? null
-          : InstanceObservabilityConfig.fromMap(
-              (map['observabilityConfig'] as Map).cast<String, dynamic>()),
-      pscInstanceConfig: map['pscInstanceConfig'] == null
-          ? null
-          : InstancePscInstanceConfig.fromMap(
-              (map['pscInstanceConfig'] as Map).cast<String, dynamic>()),
-      queryInsightsConfig: map['queryInsightsConfig'] == null
-          ? null
-          : InstanceQueryInsightsConfig.fromMap(
-              (map['queryInsightsConfig'] as Map).cast<String, dynamic>()),
-      readPoolConfig: map['readPoolConfig'] == null
-          ? null
-          : InstanceReadPoolConfig.fromMap(
-              (map['readPoolConfig'] as Map).cast<String, dynamic>()),
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
+      machineConfig: map['machineConfig'] == null ? null : InstanceMachineConfig.fromMap((map['machineConfig'] as Map).cast<String, dynamic>()),
+      networkConfig: map['networkConfig'] == null ? null : InstanceNetworkConfig.fromMap((map['networkConfig'] as Map).cast<String, dynamic>()),
+      observabilityConfig: map['observabilityConfig'] == null ? null : InstanceObservabilityConfig.fromMap((map['observabilityConfig'] as Map).cast<String, dynamic>()),
+      pscInstanceConfig: map['pscInstanceConfig'] == null ? null : InstancePscInstanceConfig.fromMap((map['pscInstanceConfig'] as Map).cast<String, dynamic>()),
+      queryInsightsConfig: map['queryInsightsConfig'] == null ? null : InstanceQueryInsightsConfig.fromMap((map['queryInsightsConfig'] as Map).cast<String, dynamic>()),
+      readPoolConfig: map['readPoolConfig'] == null ? null : InstanceReadPoolConfig.fromMap((map['readPoolConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

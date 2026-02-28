@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CoreNetworkPolicyAttachmentArgs {
   /// ID of the core network that a policy will be attached to and made `LIVE`.
   final pulumi.Input<String> coreNetworkId;
-
   /// Policy document for creating a core network. Note that updating this argument will result in the new policy document version being set as the `LATEST` and `LIVE` policy document. Refer to the [Core network policies documentation](https://docs.aws.amazon.com/network-manager/latest/cloudwan/cloudwan-policy-change-sets.html) for more information.
   final pulumi.Input<String> policyDocument;
 
@@ -19,14 +18,15 @@ class CoreNetworkPolicyAttachmentArgs {
   CoreNetworkPolicyAttachmentArgs({
     required String coreNetworkId,
     required String policyDocument,
-  })  : coreNetworkId = pulumi.Input.asInput<String>(coreNetworkId),
-        policyDocument = pulumi.Input.asInput<String>(policyDocument);
+  }) :
+      coreNetworkId = pulumi.Input.asInput<String>(coreNetworkId),
+      policyDocument = pulumi.Input.asInput<String>(policyDocument);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['coreNetworkId'] = coreNetworkId;
-    map['policyDocument'] = policyDocument;
-    return map;
+    return <String, dynamic>{
+      'coreNetworkId': coreNetworkId,
+      'policyDocument': policyDocument,
+    };
   }
 
   factory CoreNetworkPolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +36,4 @@ class CoreNetworkPolicyAttachmentArgs {
     );
   }
 }
+

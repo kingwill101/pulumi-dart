@@ -16,14 +16,15 @@ class GetBillingAccountExclusionArgs {
   GetBillingAccountExclusionArgs({
     required String billingAccountId,
     required String exclusionId,
-  })  : billingAccountId = pulumi.Input.asInput<String>(billingAccountId),
-        exclusionId = pulumi.Input.asInput<String>(exclusionId);
+  }) :
+      billingAccountId = pulumi.Input.asInput<String>(billingAccountId),
+      exclusionId = pulumi.Input.asInput<String>(exclusionId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['billingAccountId'] = billingAccountId;
-    map['exclusionId'] = exclusionId;
-    return map;
+    return <String, dynamic>{
+      'billingAccountId': billingAccountId,
+      'exclusionId': exclusionId,
+    };
   }
 
   factory GetBillingAccountExclusionArgs.fromMap(Map<String, dynamic> map) {
@@ -33,3 +34,4 @@ class GetBillingAccountExclusionArgs {
     );
   }
 }
+

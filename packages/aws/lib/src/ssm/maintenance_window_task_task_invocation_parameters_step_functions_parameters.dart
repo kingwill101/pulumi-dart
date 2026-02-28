@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters {
   /// The inputs for the STEP_FUNCTION task.
   final String? input;
-
   /// The name of the STEP_FUNCTION task.
   final String? name;
 
@@ -16,23 +16,17 @@ class MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final inputValue = input;
-    if (inputValue != null) {
-      map['input'] = inputValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'input': ?input,
+      'name': ?name,
+    };
   }
 
-  factory MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters.fromMap(
-      Map<String, dynamic> map) {
+  factory MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters(
       input: map['input'] == null ? null : map['input'] as String,
       name: map['name'] == null ? null : map['name'] as String,
     );
   }
 }
+

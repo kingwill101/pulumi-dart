@@ -715,40 +715,28 @@ import 'environment_profile_user_parameter.dart';
 class EnvironmentProfile extends pulumi.CustomResource {
   /// Id of the AWS account being used.
   late final pulumi.Output<String> awsAccountId;
-
   /// Desired region for environment profile.
   late final pulumi.Output<String> awsAccountRegion;
-
   /// Creation time of environment profile.
   late final pulumi.Output<String> createdAt;
-
   /// Creator of environment profile.
   late final pulumi.Output<String> createdBy;
-
   /// Description of environment profile.
   late final pulumi.Output<String> description;
-
   /// Domain Identifier for environment profile.
   late final pulumi.Output<String> domainIdentifier;
-
   /// ID of the blueprint which the environment will be created with.
   late final pulumi.Output<String> environmentBlueprintIdentifier;
-
   /// Name of the environment profile.
   late final pulumi.Output<String> name;
-
   /// Project identifier for environment profile.
   late final pulumi.Output<String> projectIdentifier;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Time of last update to environment profile.
   late final pulumi.Output<String> updatedAt;
-
   /// Array of user parameters of the environment profile with the following attributes:
-  late final pulumi.Output<List<EnvironmentProfileUserParameter>?>
-      userParameters;
+  late final pulumi.Output<List<EnvironmentProfileUserParameter>?> userParameters;
 
   /// Creates a new [EnvironmentProfile].
   /// [name] The Pulumi resource name.
@@ -770,14 +758,11 @@ class EnvironmentProfile extends pulumi.CustomResource {
     this.createdBy = registerOutput<String>('createdBy');
     this.description = registerOutput<String>('description');
     this.domainIdentifier = registerOutput<String>('domainIdentifier');
-    this.environmentBlueprintIdentifier =
-        registerOutput<String>('environmentBlueprintIdentifier');
+    this.environmentBlueprintIdentifier = registerOutput<String>('environmentBlueprintIdentifier');
     this.name = registerOutput<String>('name');
     this.projectIdentifier = registerOutput<String>('projectIdentifier');
     this.region = registerOutput<String>('region');
     this.updatedAt = registerOutput<String>('updatedAt');
-    this.userParameters =
-        registerOutput<List<EnvironmentProfileUserParameter>?>(
-            'userParameters');
+    this.userParameters = registerOutput<List<EnvironmentProfileUserParameter>?>('userParameters');
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MeshSpecServiceDiscovery {
   /// The IP version to use to control traffic within the mesh. Valid values are `IPv6_PREFERRED`, `IPv4_PREFERRED`, `IPv4_ONLY`, and `IPv6_ONLY`.
   final String? ipPreference;
@@ -11,18 +12,15 @@ class MeshSpecServiceDiscovery {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final ipPreferenceValue = ipPreference;
-    if (ipPreferenceValue != null) {
-      map['ipPreference'] = ipPreferenceValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'ipPreference': ?ipPreference,
+    };
   }
 
   factory MeshSpecServiceDiscovery.fromMap(Map<String, dynamic> map) {
     return MeshSpecServiceDiscovery(
-      ipPreference:
-          map['ipPreference'] == null ? null : map['ipPreference'] as String,
+      ipPreference: map['ipPreference'] == null ? null : map['ipPreference'] as String,
     );
   }
 }
+

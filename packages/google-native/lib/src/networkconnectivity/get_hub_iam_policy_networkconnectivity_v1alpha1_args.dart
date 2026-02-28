@@ -19,34 +19,25 @@ class GetHubIamPolicyNetworkconnectivityV1alpha1Args {
     required String hubId,
     int? optionsRequestedPolicyVersion,
     String? project,
-  })  : hubId = pulumi.Input.asInput<String>(hubId),
-        optionsRequestedPolicyVersion =
-            pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      hubId = pulumi.Input.asInput<String>(hubId),
+      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['hubId'] = hubId;
-    final optionsRequestedPolicyVersionValue = optionsRequestedPolicyVersion;
-    if (optionsRequestedPolicyVersionValue != null) {
-      map['optionsRequestedPolicyVersion'] = optionsRequestedPolicyVersionValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'hubId': hubId,
+      'optionsRequestedPolicyVersion': ?optionsRequestedPolicyVersion,
+      'project': ?project,
+    };
   }
 
-  factory GetHubIamPolicyNetworkconnectivityV1alpha1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetHubIamPolicyNetworkconnectivityV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return GetHubIamPolicyNetworkconnectivityV1alpha1Args(
       hubId: map['hubId'] as String,
-      optionsRequestedPolicyVersion:
-          map['optionsRequestedPolicyVersion'] == null
-              ? null
-              : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

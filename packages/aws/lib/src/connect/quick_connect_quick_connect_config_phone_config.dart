@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class QuickConnectQuickConnectConfigPhoneConfig {
   /// Specifies the phone number in in E.164 format.
   final String phoneNumber;
@@ -11,15 +12,15 @@ class QuickConnectQuickConnectConfigPhoneConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['phoneNumber'] = phoneNumber;
-    return map;
+    return <String, dynamic>{
+      'phoneNumber': phoneNumber,
+    };
   }
 
-  factory QuickConnectQuickConnectConfigPhoneConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory QuickConnectQuickConnectConfigPhoneConfig.fromMap(Map<String, dynamic> map) {
     return QuickConnectQuickConnectConfigPhoneConfig(
       phoneNumber: map['phoneNumber'] as String,
     );
   }
 }
+

@@ -14,20 +14,15 @@ class WorkstationConfigHost {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final gceInstanceValue = gceInstance;
-    if (gceInstanceValue != null) {
-      map['gceInstance'] = gceInstanceValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'gceInstance': ?gceInstance == null ? null : gceInstance!.toMap(),
+    };
   }
 
   factory WorkstationConfigHost.fromMap(Map<String, dynamic> map) {
     return WorkstationConfigHost(
-      gceInstance: map['gceInstance'] == null
-          ? null
-          : WorkstationConfigHostGceInstance.fromMap(
-              (map['gceInstance'] as Map).cast<String, dynamic>()),
+      gceInstance: map['gceInstance'] == null ? null : WorkstationConfigHostGceInstance.fromMap((map['gceInstance'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

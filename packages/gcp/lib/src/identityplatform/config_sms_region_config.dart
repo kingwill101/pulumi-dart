@@ -7,7 +7,6 @@ class ConfigSmsRegionConfig {
   /// A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
   /// Structure is documented below.
   final ConfigSmsRegionConfigAllowByDefault? allowByDefault;
-
   /// A policy of only allowing regions by explicitly adding them to an allowlist.
   /// Structure is documented below.
   final ConfigSmsRegionConfigAllowlistOnly? allowlistOnly;
@@ -21,28 +20,17 @@ class ConfigSmsRegionConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final allowByDefaultValue = allowByDefault;
-    if (allowByDefaultValue != null) {
-      map['allowByDefault'] = allowByDefaultValue.toMap();
-    }
-    final allowlistOnlyValue = allowlistOnly;
-    if (allowlistOnlyValue != null) {
-      map['allowlistOnly'] = allowlistOnlyValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'allowByDefault': ?allowByDefault == null ? null : allowByDefault!.toMap(),
+      'allowlistOnly': ?allowlistOnly == null ? null : allowlistOnly!.toMap(),
+    };
   }
 
   factory ConfigSmsRegionConfig.fromMap(Map<String, dynamic> map) {
     return ConfigSmsRegionConfig(
-      allowByDefault: map['allowByDefault'] == null
-          ? null
-          : ConfigSmsRegionConfigAllowByDefault.fromMap(
-              (map['allowByDefault'] as Map).cast<String, dynamic>()),
-      allowlistOnly: map['allowlistOnly'] == null
-          ? null
-          : ConfigSmsRegionConfigAllowlistOnly.fromMap(
-              (map['allowlistOnly'] as Map).cast<String, dynamic>()),
+      allowByDefault: map['allowByDefault'] == null ? null : ConfigSmsRegionConfigAllowByDefault.fromMap((map['allowByDefault'] as Map).cast<String, dynamic>()),
+      allowlistOnly: map['allowlistOnly'] == null ? null : ConfigSmsRegionConfigAllowlistOnly.fromMap((map['allowlistOnly'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

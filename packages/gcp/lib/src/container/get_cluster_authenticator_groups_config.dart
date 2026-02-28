@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterAuthenticatorGroupsConfig {
   /// The name of the RBAC security group for use with Google security groups in Kubernetes RBAC. Group name must be in format gke-security-groups@yourdomain.com.
   final String securityGroup;
@@ -11,15 +12,15 @@ class GetClusterAuthenticatorGroupsConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['securityGroup'] = securityGroup;
-    return map;
+    return <String, dynamic>{
+      'securityGroup': securityGroup,
+    };
   }
 
-  factory GetClusterAuthenticatorGroupsConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GetClusterAuthenticatorGroupsConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterAuthenticatorGroupsConfig(
       securityGroup: map['securityGroup'] as String,
     );
   }
 }
+

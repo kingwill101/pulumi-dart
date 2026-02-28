@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCertificateArgs {
   /// ARN of the certificate issued by the private certificate authority.
   final pulumi.Input<String> arn;
-
   /// ARN of the certificate authority.
   final pulumi.Input<String> certificateAuthorityArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -24,20 +22,17 @@ class GetCertificateArgs {
     required String arn,
     required String certificateAuthorityArn,
     String? region,
-  })  : arn = pulumi.Input.asInput<String>(arn),
-        certificateAuthorityArn =
-            pulumi.Input.asInput<String>(certificateAuthorityArn),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      arn = pulumi.Input.asInput<String>(arn),
+      certificateAuthorityArn = pulumi.Input.asInput<String>(certificateAuthorityArn),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['certificateAuthorityArn'] = certificateAuthorityArn;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'certificateAuthorityArn': certificateAuthorityArn,
+      'region': ?region,
+    };
   }
 
   factory GetCertificateArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +43,4 @@ class GetCertificateArgs {
     );
   }
 }
+

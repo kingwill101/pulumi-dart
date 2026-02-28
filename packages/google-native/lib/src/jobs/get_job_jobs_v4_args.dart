@@ -19,19 +19,17 @@ class GetJobJobsV4Args {
     required String jobId,
     String? project,
     required String tenantId,
-  })  : jobId = pulumi.Input.asInput<String>(jobId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        tenantId = pulumi.Input.asInput<String>(tenantId);
+  }) :
+      jobId = pulumi.Input.asInput<String>(jobId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      tenantId = pulumi.Input.asInput<String>(tenantId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['jobId'] = jobId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['tenantId'] = tenantId;
-    return map;
+    return <String, dynamic>{
+      'jobId': jobId,
+      'project': ?project,
+      'tenantId': tenantId,
+    };
   }
 
   factory GetJobJobsV4Args.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetJobJobsV4Args {
     );
   }
 }
+

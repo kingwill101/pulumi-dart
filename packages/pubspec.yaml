@@ -5,6 +5,7 @@ environment:
 workspace:
   - aws
   - awsx
+  - docker
   - gcp
   - gcp-global-cloudrun
   - google-native

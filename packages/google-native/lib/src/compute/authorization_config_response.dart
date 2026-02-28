@@ -15,19 +15,15 @@ class AuthorizationConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['policies'] =
-        pulumi.Input.encodeList<RbacPolicyResponse, Map<String, dynamic>>(
-            policies, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'policies': pulumi.Input.encodeList<RbacPolicyResponse, Map<String, dynamic>>(policies, (value) => value.toMap()),
+    };
   }
 
   factory AuthorizationConfigResponse.fromMap(Map<String, dynamic> map) {
     return AuthorizationConfigResponse(
-      policies: pulumi.Input.decodeList<RbacPolicyResponse>(
-          map['policies'],
-          (value) => RbacPolicyResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      policies: pulumi.Input.decodeList<RbacPolicyResponse>(map['policies'], (value) => RbacPolicyResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

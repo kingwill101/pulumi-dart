@@ -1,39 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getConnection.
 class GetConnectionResult {
   /// ARN of the connection.
   final String arn;
-
   /// Direct Connect endpoint on which the physical connection terminates.
   final String awsDevice;
-
   /// Bandwidth of the connection.
   final String bandwidth;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// AWS Direct Connect location where the connection is located.
   final String location;
   final String name;
-
   /// ID of the AWS account that owns the connection.
   final String ownerAccountId;
-
   /// The name of the AWS Direct Connect service provider associated with the connection.
   final String partnerName;
-
   /// Name of the service provider associated with the connection.
   final String providerName;
   final String region;
-
   /// State of the connection.
   final String state;
-
   /// Map of tags for the resource.
   final Map<String, String> tags;
-
   /// The VLAN ID.
   final int vlanId;
 
@@ -68,21 +59,21 @@ class GetConnectionResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['awsDevice'] = awsDevice;
-    map['bandwidth'] = bandwidth;
-    map['id'] = id;
-    map['location'] = location;
-    map['name'] = name;
-    map['ownerAccountId'] = ownerAccountId;
-    map['partnerName'] = partnerName;
-    map['providerName'] = providerName;
-    map['region'] = region;
-    map['state'] = state;
-    map['tags'] = tags;
-    map['vlanId'] = vlanId;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'awsDevice': awsDevice,
+      'bandwidth': bandwidth,
+      'id': id,
+      'location': location,
+      'name': name,
+      'ownerAccountId': ownerAccountId,
+      'partnerName': partnerName,
+      'providerName': providerName,
+      'region': region,
+      'state': state,
+      'tags': tags,
+      'vlanId': vlanId,
+    };
   }
 
   factory GetConnectionResult.fromMap(Map<String, dynamic> map) {
@@ -103,3 +94,4 @@ class GetConnectionResult {
     );
   }
 }
+

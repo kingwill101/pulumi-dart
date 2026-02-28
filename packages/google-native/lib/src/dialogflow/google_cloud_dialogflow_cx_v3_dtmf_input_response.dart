@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents the input for dtmf event.
 class GoogleCloudDialogflowCxV3DtmfInputResponse {
   /// The dtmf digits.
   final String digits;
-
   /// The finish digit (if any).
   final String finishDigit;
 
@@ -17,17 +17,17 @@ class GoogleCloudDialogflowCxV3DtmfInputResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['digits'] = digits;
-    map['finishDigit'] = finishDigit;
-    return map;
+    return <String, dynamic>{
+      'digits': digits,
+      'finishDigit': finishDigit,
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3DtmfInputResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3DtmfInputResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3DtmfInputResponse(
       digits: map['digits'] as String,
       finishDigit: map['finishDigit'] as String,
     );
   }
 }
+

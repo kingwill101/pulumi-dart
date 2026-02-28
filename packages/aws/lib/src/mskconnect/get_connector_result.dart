@@ -1,21 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getConnector.
 class GetConnectorResult {
   /// ARN of the connector.
   final String arn;
-
   /// Summary description of the connector.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String region;
-
   /// A map of tags assigned to the resource.
   final Map<String, String> tags;
-
   /// Current version of the connector.
   final String version;
 
@@ -38,15 +35,15 @@ class GetConnectorResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['description'] = description;
-    map['id'] = id;
-    map['name'] = name;
-    map['region'] = region;
-    map['tags'] = tags;
-    map['version'] = version;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'description': description,
+      'id': id,
+      'name': name,
+      'region': region,
+      'tags': tags,
+      'version': version,
+    };
   }
 
   factory GetConnectorResult.fromMap(Map<String, dynamic> map) {
@@ -61,3 +58,4 @@ class GetConnectorResult {
     );
   }
 }
+

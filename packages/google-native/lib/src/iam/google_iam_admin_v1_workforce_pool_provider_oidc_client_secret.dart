@@ -14,21 +14,15 @@ class GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final valueValue = value;
-    if (valueValue != null) {
-      map['value'] = valueValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'value': ?value == null ? null : value!.toMap(),
+    };
   }
 
-  factory GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret.fromMap(Map<String, dynamic> map) {
     return GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret(
-      value: map['value'] == null
-          ? null
-          : GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue.fromMap(
-              (map['value'] as Map).cast<String, dynamic>()),
+      value: map['value'] == null ? null : GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue.fromMap((map['value'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

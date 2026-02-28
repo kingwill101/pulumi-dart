@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppVersionSnapshotToolOpenApiToolTlsConfigCaCert {
   /// (Output)
   /// The allowed custom CA certificates (in DER format) for
@@ -13,7 +14,6 @@ class AppVersionSnapshotToolOpenApiToolTlsConfigCaCert {
   /// -out example.com.crt \
   /// -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
   final String? cert;
-
   /// The display name of the app version.
   final String? displayName;
 
@@ -26,24 +26,17 @@ class AppVersionSnapshotToolOpenApiToolTlsConfigCaCert {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final certValue = cert;
-    if (certValue != null) {
-      map['cert'] = certValue;
-    }
-    final displayNameValue = displayName;
-    if (displayNameValue != null) {
-      map['displayName'] = displayNameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cert': ?cert,
+      'displayName': ?displayName,
+    };
   }
 
-  factory AppVersionSnapshotToolOpenApiToolTlsConfigCaCert.fromMap(
-      Map<String, dynamic> map) {
+  factory AppVersionSnapshotToolOpenApiToolTlsConfigCaCert.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolOpenApiToolTlsConfigCaCert(
       cert: map['cert'] == null ? null : map['cert'] as String,
-      displayName:
-          map['displayName'] == null ? null : map['displayName'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
     );
   }
 }
+

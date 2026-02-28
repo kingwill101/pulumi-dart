@@ -114,10 +114,8 @@ import 'endpoint_private_dns_args.dart';
 class EndpointPrivateDns extends pulumi.CustomResource {
   /// Indicates whether a private hosted zone is associated with the VPC. Only applicable for `Interface` endpoints.
   late final pulumi.Output<bool> privateDnsEnabled;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// VPC endpoint identifier.
   late final pulumi.Output<String> vpcEndpointId;
 

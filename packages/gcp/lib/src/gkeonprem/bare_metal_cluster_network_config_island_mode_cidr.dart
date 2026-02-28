@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BareMetalClusterNetworkConfigIslandModeCidr {
   /// All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation.
   final List<String> podAddressCidrBlocks;
-
   /// All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation.
   final List<String> serviceAddressCidrBlocks;
 
@@ -16,19 +16,17 @@ class BareMetalClusterNetworkConfigIslandModeCidr {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['podAddressCidrBlocks'] = podAddressCidrBlocks;
-    map['serviceAddressCidrBlocks'] = serviceAddressCidrBlocks;
-    return map;
+    return <String, dynamic>{
+      'podAddressCidrBlocks': podAddressCidrBlocks,
+      'serviceAddressCidrBlocks': serviceAddressCidrBlocks,
+    };
   }
 
-  factory BareMetalClusterNetworkConfigIslandModeCidr.fromMap(
-      Map<String, dynamic> map) {
+  factory BareMetalClusterNetworkConfigIslandModeCidr.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterNetworkConfigIslandModeCidr(
-      podAddressCidrBlocks:
-          (map['podAddressCidrBlocks'] as List).cast<String>(),
-      serviceAddressCidrBlocks:
-          (map['serviceAddressCidrBlocks'] as List).cast<String>(),
+      podAddressCidrBlocks: (map['podAddressCidrBlocks'] as List).cast<String>(),
+      serviceAddressCidrBlocks: (map['serviceAddressCidrBlocks'] as List).cast<String>(),
     );
   }
 }
+

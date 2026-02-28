@@ -6,13 +6,9 @@ import 'job_template_job_template_data_configuration_overrides_monitoring_config
 
 class JobTemplateJobTemplateDataConfigurationOverrides {
   /// The configurations for the application running by the job run.
-  final List<
-          JobTemplateJobTemplateDataConfigurationOverridesApplicationConfiguration>?
-      applicationConfigurations;
-
+  final List<JobTemplateJobTemplateDataConfigurationOverridesApplicationConfiguration>? applicationConfigurations;
   /// The configurations for monitoring.
-  final JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfiguration?
-      monitoringConfiguration;
+  final JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfiguration? monitoringConfiguration;
 
   /// Creates a new [JobTemplateJobTemplateDataConfigurationOverrides].
   /// [applicationConfigurations] The configurations for the application running by the job run.
@@ -23,37 +19,17 @@ class JobTemplateJobTemplateDataConfigurationOverrides {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final applicationConfigurationsValue = applicationConfigurations;
-    if (applicationConfigurationsValue != null) {
-      map['applicationConfigurations'] = pulumi.Input.encodeList<
-          JobTemplateJobTemplateDataConfigurationOverridesApplicationConfiguration,
-          Map<String,
-              dynamic>>(applicationConfigurationsValue, (value) => value.toMap());
-    }
-    final monitoringConfigurationValue = monitoringConfiguration;
-    if (monitoringConfigurationValue != null) {
-      map['monitoringConfiguration'] = monitoringConfigurationValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'applicationConfigurations': ?applicationConfigurations == null ? null : pulumi.Input.encodeList<JobTemplateJobTemplateDataConfigurationOverridesApplicationConfiguration, Map<String, dynamic>>(applicationConfigurations!, (value) => value.toMap()),
+      'monitoringConfiguration': ?monitoringConfiguration == null ? null : monitoringConfiguration!.toMap(),
+    };
   }
 
-  factory JobTemplateJobTemplateDataConfigurationOverrides.fromMap(
-      Map<String, dynamic> map) {
+  factory JobTemplateJobTemplateDataConfigurationOverrides.fromMap(Map<String, dynamic> map) {
     return JobTemplateJobTemplateDataConfigurationOverrides(
-      applicationConfigurations: map['applicationConfigurations'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  JobTemplateJobTemplateDataConfigurationOverridesApplicationConfiguration>(
-              map['applicationConfigurations'],
-              (value) =>
-                  JobTemplateJobTemplateDataConfigurationOverridesApplicationConfiguration
-                      .fromMap((value as Map).cast<String, dynamic>())),
-      monitoringConfiguration: map['monitoringConfiguration'] == null
-          ? null
-          : JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfiguration
-              .fromMap((map['monitoringConfiguration'] as Map)
-                  .cast<String, dynamic>()),
+      applicationConfigurations: map['applicationConfigurations'] == null ? null : pulumi.Input.decodeList<JobTemplateJobTemplateDataConfigurationOverridesApplicationConfiguration>(map['applicationConfigurations'], (value) => JobTemplateJobTemplateDataConfigurationOverridesApplicationConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      monitoringConfiguration: map['monitoringConfiguration'] == null ? null : JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfiguration.fromMap((map['monitoringConfiguration'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

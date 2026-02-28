@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Specifies the VIP config for the VMware user cluster load balancer.
 class VmwareVipConfigResponse {
   /// The VIP which you previously set aside for the Kubernetes API of this cluster.
   final String controlPlaneVip;
-
   /// The VIP which you previously set aside for ingress traffic into this cluster.
   final String ingressVip;
 
@@ -17,10 +17,10 @@ class VmwareVipConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['controlPlaneVip'] = controlPlaneVip;
-    map['ingressVip'] = ingressVip;
-    return map;
+    return <String, dynamic>{
+      'controlPlaneVip': controlPlaneVip,
+      'ingressVip': ingressVip,
+    };
   }
 
   factory VmwareVipConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class VmwareVipConfigResponse {
     );
   }
 }
+

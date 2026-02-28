@@ -15,139 +15,96 @@ import 'get_instance_root_block_device.dart';
 class GetInstanceResult {
   /// ID of the AMI used to launch the instance.
   final String ami;
-
   /// ARN of the instance.
   final String arn;
-
   /// Whether or not the Instance is associated with a public IP address or not (Boolean).
   final bool associatePublicIpAddress;
-
   /// Availability zone of the Instance.
   final String availabilityZone;
-
   /// Credit specification of the Instance.
   final List<GetInstanceCreditSpecification> creditSpecifications;
-
   /// Whether or not EC2 Instance Stop Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html#Using_StopProtection) is enabled (Boolean).
   final bool disableApiStop;
-
   /// Whether or not [EC2 Instance Termination Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingDisableAPITermination) is enabled (Boolean).
   final bool disableApiTermination;
-
   /// EBS block device mappings of the Instance.
   final List<GetInstanceEbsBlockDevice> ebsBlockDevices;
-
   /// Whether the Instance is EBS optimized or not (Boolean).
   final bool ebsOptimized;
-
   /// Enclave options of the instance.
   final List<GetInstanceEnclaveOption> enclaveOptions;
-
   /// Ephemeral block device mappings of the Instance.
   final List<GetInstanceEphemeralBlockDevice> ephemeralBlockDevices;
   final List<GetInstanceFilter>? filters;
   final bool? getPasswordData;
   final bool? getUserData;
-
   /// ID of the dedicated host the instance will be assigned to.
   final String hostId;
-
   /// ARN of the host resource group the instance is associated with.
   final String hostResourceGroupArn;
-
   /// Name of the instance profile associated with the Instance.
   final String iamInstanceProfile;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? instanceId;
-
   /// State of the instance. One of: `pending`, `running`, `shutting-down`, `terminated`, `stopping`, `stopped`. See [Instance Lifecycle](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html) for more information.
   final String instanceState;
   final Map<String, String> instanceTags;
-
   /// Type of the Instance.
   final String instanceType;
-
   /// IPv6 addresses associated to the Instance, if applicable. **NOTE**: Unlike the IPv4 address, this doesn't change if you attach an EIP to the instance.
   final List<String> ipv6Addresses;
-
   /// Key name of the Instance.
   final String keyName;
-
   /// Time the instance was launched.
   final String launchTime;
-
   /// Maintenance and recovery options for the instance.
   final List<GetInstanceMaintenanceOption> maintenanceOptions;
-
   /// Metadata options of the Instance.
   final List<GetInstanceMetadataOption> metadataOptions;
-
   /// Whether detailed monitoring is enabled or disabled for the Instance (Boolean).
   final bool monitoring;
-
   /// ID of the network interface that was created with the Instance.
   final String networkInterfaceId;
-
   /// ARN of the Outpost.
   final String outpostArn;
-
   /// Base-64 encoded encrypted password data for the instance. Useful for getting the administrator password for instances running Microsoft Windows. This attribute is only exported if `get_password_data` is true. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
   final String passwordData;
-
   /// Placement group of the Instance.
   final String placementGroup;
-
   /// Placement group ID of the Instance.
   final String placementGroupId;
-
   /// Number of the partition the instance is in.
   final int placementPartitionNumber;
-
   /// Private DNS name assigned to the Instance. Can only be used inside the Amazon EC2, and only available if you've enabled DNS hostnames for your VPC.
   final String privateDns;
-
   /// Options for the instance hostname.
   final List<GetInstancePrivateDnsNameOption> privateDnsNameOptions;
-
   /// Private IP address assigned to the Instance.
   final String privateIp;
-
   /// Public DNS name assigned to the Instance. For EC2-VPC, this is only available if you've enabled DNS hostnames for your VPC.
   final String publicDns;
-
   /// Public IP address assigned to the Instance, if applicable. **NOTE**: If you are using an `aws.ec2.Eip` with your instance, you should refer to the EIP's address directly and not use `public_ip`, as this field will change after the EIP is attached.
   final String publicIp;
   final String region;
-
   /// Root block device mappings of the Instance
   final List<GetInstanceRootBlockDevice> rootBlockDevices;
-
   /// Secondary private IPv4 addresses assigned to the instance's primary network interface (eth0) in a VPC.
   final List<String> secondaryPrivateIps;
-
   /// Associated security groups.
   final List<String> securityGroups;
-
   /// Whether the network interface performs source/destination checking (Boolean).
   final bool sourceDestCheck;
-
   /// VPC subnet ID.
   final String subnetId;
-
   /// Map of tags assigned to the Instance.
   final Map<String, String> tags;
-
   /// Tenancy of the instance: `dedicated`, `default`, `host`.
   final String tenancy;
-
   /// SHA-1 hash of User Data supplied to the Instance.
   final String userData;
-
   /// Base64 encoded contents of User Data supplied to the Instance. This attribute is only exported if `get_user_data` is true.
   final String userDataBase64;
-
   /// Associated security groups in a non-default VPC.
   final List<String> vpcSecurityGroupIds;
 
@@ -256,86 +213,58 @@ class GetInstanceResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ami'] = ami;
-    map['arn'] = arn;
-    map['associatePublicIpAddress'] = associatePublicIpAddress;
-    map['availabilityZone'] = availabilityZone;
-    map['creditSpecifications'] = pulumi.Input.encodeList<
-        GetInstanceCreditSpecification,
-        Map<String, dynamic>>(creditSpecifications, (value) => value.toMap());
-    map['disableApiStop'] = disableApiStop;
-    map['disableApiTermination'] = disableApiTermination;
-    map['ebsBlockDevices'] = pulumi.Input.encodeList<GetInstanceEbsBlockDevice,
-        Map<String, dynamic>>(ebsBlockDevices, (value) => value.toMap());
-    map['ebsOptimized'] = ebsOptimized;
-    map['enclaveOptions'] =
-        pulumi.Input.encodeList<GetInstanceEnclaveOption, Map<String, dynamic>>(
-            enclaveOptions, (value) => value.toMap());
-    map['ephemeralBlockDevices'] = pulumi.Input.encodeList<
-        GetInstanceEphemeralBlockDevice,
-        Map<String, dynamic>>(ephemeralBlockDevices, (value) => value.toMap());
-    final filtersValue = filters;
-    if (filtersValue != null) {
-      map['filters'] =
-          pulumi.Input.encodeList<GetInstanceFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
-    }
-    final getPasswordDataValue = getPasswordData;
-    if (getPasswordDataValue != null) {
-      map['getPasswordData'] = getPasswordDataValue;
-    }
-    final getUserDataValue = getUserData;
-    if (getUserDataValue != null) {
-      map['getUserData'] = getUserDataValue;
-    }
-    map['hostId'] = hostId;
-    map['hostResourceGroupArn'] = hostResourceGroupArn;
-    map['iamInstanceProfile'] = iamInstanceProfile;
-    map['id'] = id;
-    final instanceIdValue = instanceId;
-    if (instanceIdValue != null) {
-      map['instanceId'] = instanceIdValue;
-    }
-    map['instanceState'] = instanceState;
-    map['instanceTags'] = instanceTags;
-    map['instanceType'] = instanceType;
-    map['ipv6Addresses'] = ipv6Addresses;
-    map['keyName'] = keyName;
-    map['launchTime'] = launchTime;
-    map['maintenanceOptions'] = pulumi.Input.encodeList<
-        GetInstanceMaintenanceOption,
-        Map<String, dynamic>>(maintenanceOptions, (value) => value.toMap());
-    map['metadataOptions'] = pulumi.Input.encodeList<GetInstanceMetadataOption,
-        Map<String, dynamic>>(metadataOptions, (value) => value.toMap());
-    map['monitoring'] = monitoring;
-    map['networkInterfaceId'] = networkInterfaceId;
-    map['outpostArn'] = outpostArn;
-    map['passwordData'] = passwordData;
-    map['placementGroup'] = placementGroup;
-    map['placementGroupId'] = placementGroupId;
-    map['placementPartitionNumber'] = placementPartitionNumber;
-    map['privateDns'] = privateDns;
-    map['privateDnsNameOptions'] = pulumi.Input.encodeList<
-        GetInstancePrivateDnsNameOption,
-        Map<String, dynamic>>(privateDnsNameOptions, (value) => value.toMap());
-    map['privateIp'] = privateIp;
-    map['publicDns'] = publicDns;
-    map['publicIp'] = publicIp;
-    map['region'] = region;
-    map['rootBlockDevices'] = pulumi.Input.encodeList<
-        GetInstanceRootBlockDevice,
-        Map<String, dynamic>>(rootBlockDevices, (value) => value.toMap());
-    map['secondaryPrivateIps'] = secondaryPrivateIps;
-    map['securityGroups'] = securityGroups;
-    map['sourceDestCheck'] = sourceDestCheck;
-    map['subnetId'] = subnetId;
-    map['tags'] = tags;
-    map['tenancy'] = tenancy;
-    map['userData'] = userData;
-    map['userDataBase64'] = userDataBase64;
-    map['vpcSecurityGroupIds'] = vpcSecurityGroupIds;
-    return map;
+    return <String, dynamic>{
+      'ami': ami,
+      'arn': arn,
+      'associatePublicIpAddress': associatePublicIpAddress,
+      'availabilityZone': availabilityZone,
+      'creditSpecifications': pulumi.Input.encodeList<GetInstanceCreditSpecification, Map<String, dynamic>>(creditSpecifications, (value) => value.toMap()),
+      'disableApiStop': disableApiStop,
+      'disableApiTermination': disableApiTermination,
+      'ebsBlockDevices': pulumi.Input.encodeList<GetInstanceEbsBlockDevice, Map<String, dynamic>>(ebsBlockDevices, (value) => value.toMap()),
+      'ebsOptimized': ebsOptimized,
+      'enclaveOptions': pulumi.Input.encodeList<GetInstanceEnclaveOption, Map<String, dynamic>>(enclaveOptions, (value) => value.toMap()),
+      'ephemeralBlockDevices': pulumi.Input.encodeList<GetInstanceEphemeralBlockDevice, Map<String, dynamic>>(ephemeralBlockDevices, (value) => value.toMap()),
+      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetInstanceFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'getPasswordData': ?getPasswordData,
+      'getUserData': ?getUserData,
+      'hostId': hostId,
+      'hostResourceGroupArn': hostResourceGroupArn,
+      'iamInstanceProfile': iamInstanceProfile,
+      'id': id,
+      'instanceId': ?instanceId,
+      'instanceState': instanceState,
+      'instanceTags': instanceTags,
+      'instanceType': instanceType,
+      'ipv6Addresses': ipv6Addresses,
+      'keyName': keyName,
+      'launchTime': launchTime,
+      'maintenanceOptions': pulumi.Input.encodeList<GetInstanceMaintenanceOption, Map<String, dynamic>>(maintenanceOptions, (value) => value.toMap()),
+      'metadataOptions': pulumi.Input.encodeList<GetInstanceMetadataOption, Map<String, dynamic>>(metadataOptions, (value) => value.toMap()),
+      'monitoring': monitoring,
+      'networkInterfaceId': networkInterfaceId,
+      'outpostArn': outpostArn,
+      'passwordData': passwordData,
+      'placementGroup': placementGroup,
+      'placementGroupId': placementGroupId,
+      'placementPartitionNumber': placementPartitionNumber,
+      'privateDns': privateDns,
+      'privateDnsNameOptions': pulumi.Input.encodeList<GetInstancePrivateDnsNameOption, Map<String, dynamic>>(privateDnsNameOptions, (value) => value.toMap()),
+      'privateIp': privateIp,
+      'publicDns': publicDns,
+      'publicIp': publicIp,
+      'region': region,
+      'rootBlockDevices': pulumi.Input.encodeList<GetInstanceRootBlockDevice, Map<String, dynamic>>(rootBlockDevices, (value) => value.toMap()),
+      'secondaryPrivateIps': secondaryPrivateIps,
+      'securityGroups': securityGroups,
+      'sourceDestCheck': sourceDestCheck,
+      'subnetId': subnetId,
+      'tags': tags,
+      'tenancy': tenancy,
+      'userData': userData,
+      'userDataBase64': userDataBase64,
+      'vpcSecurityGroupIds': vpcSecurityGroupIds,
+    };
   }
 
   factory GetInstanceResult.fromMap(Map<String, dynamic> map) {
@@ -344,58 +273,29 @@ class GetInstanceResult {
       arn: map['arn'] as String,
       associatePublicIpAddress: map['associatePublicIpAddress'] as bool,
       availabilityZone: map['availabilityZone'] as String,
-      creditSpecifications:
-          pulumi.Input.decodeList<GetInstanceCreditSpecification>(
-              map['creditSpecifications'],
-              (value) => GetInstanceCreditSpecification.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      creditSpecifications: pulumi.Input.decodeList<GetInstanceCreditSpecification>(map['creditSpecifications'], (value) => GetInstanceCreditSpecification.fromMap((value as Map).cast<String, dynamic>())),
       disableApiStop: map['disableApiStop'] as bool,
       disableApiTermination: map['disableApiTermination'] as bool,
-      ebsBlockDevices: pulumi.Input.decodeList<GetInstanceEbsBlockDevice>(
-          map['ebsBlockDevices'],
-          (value) => GetInstanceEbsBlockDevice.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      ebsBlockDevices: pulumi.Input.decodeList<GetInstanceEbsBlockDevice>(map['ebsBlockDevices'], (value) => GetInstanceEbsBlockDevice.fromMap((value as Map).cast<String, dynamic>())),
       ebsOptimized: map['ebsOptimized'] as bool,
-      enclaveOptions: pulumi.Input.decodeList<GetInstanceEnclaveOption>(
-          map['enclaveOptions'],
-          (value) => GetInstanceEnclaveOption.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      ephemeralBlockDevices:
-          pulumi.Input.decodeList<GetInstanceEphemeralBlockDevice>(
-              map['ephemeralBlockDevices'],
-              (value) => GetInstanceEphemeralBlockDevice.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetInstanceFilter>(
-              map['filters'],
-              (value) => GetInstanceFilter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      getPasswordData: map['getPasswordData'] == null
-          ? null
-          : map['getPasswordData'] as bool,
-      getUserData:
-          map['getUserData'] == null ? null : map['getUserData'] as bool,
+      enclaveOptions: pulumi.Input.decodeList<GetInstanceEnclaveOption>(map['enclaveOptions'], (value) => GetInstanceEnclaveOption.fromMap((value as Map).cast<String, dynamic>())),
+      ephemeralBlockDevices: pulumi.Input.decodeList<GetInstanceEphemeralBlockDevice>(map['ephemeralBlockDevices'], (value) => GetInstanceEphemeralBlockDevice.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetInstanceFilter>(map['filters'], (value) => GetInstanceFilter.fromMap((value as Map).cast<String, dynamic>())),
+      getPasswordData: map['getPasswordData'] == null ? null : map['getPasswordData'] as bool,
+      getUserData: map['getUserData'] == null ? null : map['getUserData'] as bool,
       hostId: map['hostId'] as String,
       hostResourceGroupArn: map['hostResourceGroupArn'] as String,
       iamInstanceProfile: map['iamInstanceProfile'] as String,
       id: map['id'] as String,
-      instanceId:
-          map['instanceId'] == null ? null : map['instanceId'] as String,
+      instanceId: map['instanceId'] == null ? null : map['instanceId'] as String,
       instanceState: map['instanceState'] as String,
       instanceTags: (map['instanceTags'] as Map).cast<String, String>(),
       instanceType: map['instanceType'] as String,
       ipv6Addresses: (map['ipv6Addresses'] as List).cast<String>(),
       keyName: map['keyName'] as String,
       launchTime: map['launchTime'] as String,
-      maintenanceOptions: pulumi.Input.decodeList<GetInstanceMaintenanceOption>(
-          map['maintenanceOptions'],
-          (value) => GetInstanceMaintenanceOption.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      metadataOptions: pulumi.Input.decodeList<GetInstanceMetadataOption>(
-          map['metadataOptions'],
-          (value) => GetInstanceMetadataOption.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      maintenanceOptions: pulumi.Input.decodeList<GetInstanceMaintenanceOption>(map['maintenanceOptions'], (value) => GetInstanceMaintenanceOption.fromMap((value as Map).cast<String, dynamic>())),
+      metadataOptions: pulumi.Input.decodeList<GetInstanceMetadataOption>(map['metadataOptions'], (value) => GetInstanceMetadataOption.fromMap((value as Map).cast<String, dynamic>())),
       monitoring: map['monitoring'] as bool,
       networkInterfaceId: map['networkInterfaceId'] as String,
       outpostArn: map['outpostArn'] as String,
@@ -404,19 +304,12 @@ class GetInstanceResult {
       placementGroupId: map['placementGroupId'] as String,
       placementPartitionNumber: map['placementPartitionNumber'] as int,
       privateDns: map['privateDns'] as String,
-      privateDnsNameOptions:
-          pulumi.Input.decodeList<GetInstancePrivateDnsNameOption>(
-              map['privateDnsNameOptions'],
-              (value) => GetInstancePrivateDnsNameOption.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      privateDnsNameOptions: pulumi.Input.decodeList<GetInstancePrivateDnsNameOption>(map['privateDnsNameOptions'], (value) => GetInstancePrivateDnsNameOption.fromMap((value as Map).cast<String, dynamic>())),
       privateIp: map['privateIp'] as String,
       publicDns: map['publicDns'] as String,
       publicIp: map['publicIp'] as String,
       region: map['region'] as String,
-      rootBlockDevices: pulumi.Input.decodeList<GetInstanceRootBlockDevice>(
-          map['rootBlockDevices'],
-          (value) => GetInstanceRootBlockDevice.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      rootBlockDevices: pulumi.Input.decodeList<GetInstanceRootBlockDevice>(map['rootBlockDevices'], (value) => GetInstanceRootBlockDevice.fromMap((value as Map).cast<String, dynamic>())),
       secondaryPrivateIps: (map['secondaryPrivateIps'] as List).cast<String>(),
       securityGroups: (map['securityGroups'] as List).cast<String>(),
       sourceDestCheck: map['sourceDestCheck'] as bool,
@@ -429,3 +322,4 @@ class GetInstanceResult {
     );
   }
 }
+

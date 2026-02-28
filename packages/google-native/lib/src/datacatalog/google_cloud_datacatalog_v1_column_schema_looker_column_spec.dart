@@ -14,21 +14,15 @@ class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'type': ?type == null ? null : type!.value,
+    };
   }
 
-  factory GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec(
-      type: map['type'] == null
-          ? null
-          : GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType.fromValue(
-              map['type'] as String),
+      type: map['type'] == null ? null : GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType.fromValue(map['type'] as String),
     );
   }
 }
+

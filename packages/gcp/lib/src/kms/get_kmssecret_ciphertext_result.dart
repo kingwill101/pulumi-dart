@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getKMSSecretCiphertext.
 class GetKMSSecretCiphertextResult {
   /// Contains the result of encrypting the provided plaintext, encoded in base64.
   final String ciphertext;
   final String cryptoKey;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String plaintext;
@@ -23,12 +23,12 @@ class GetKMSSecretCiphertextResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ciphertext'] = ciphertext;
-    map['cryptoKey'] = cryptoKey;
-    map['id'] = id;
-    map['plaintext'] = plaintext;
-    return map;
+    return <String, dynamic>{
+      'ciphertext': ciphertext,
+      'cryptoKey': cryptoKey,
+      'id': id,
+      'plaintext': plaintext,
+    };
   }
 
   factory GetKMSSecretCiphertextResult.fromMap(Map<String, dynamic> map) {
@@ -40,3 +40,4 @@ class GetKMSSecretCiphertextResult {
     );
   }
 }
+

@@ -6,14 +6,13 @@ enum NetworkAttachmentConnectionPreferenceComputeV1 {
   const NetworkAttachmentConnectionPreferenceComputeV1(this.value);
   final String value;
 
-  static NetworkAttachmentConnectionPreferenceComputeV1 fromValue(
-      String value) {
+  static NetworkAttachmentConnectionPreferenceComputeV1 fromValue(String value) {
     for (final item in NetworkAttachmentConnectionPreferenceComputeV1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown NetworkAttachmentConnectionPreferenceComputeV1 value: $value');
+    throw ArgumentError('Unknown NetworkAttachmentConnectionPreferenceComputeV1 value: $value');
   }
 }
+

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getLedger.
 class GetLedgerResult {
   final String arn;
   final bool deletionProtection;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String kmsKey;
@@ -34,16 +34,16 @@ class GetLedgerResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['deletionProtection'] = deletionProtection;
-    map['id'] = id;
-    map['kmsKey'] = kmsKey;
-    map['name'] = name;
-    map['permissionsMode'] = permissionsMode;
-    map['region'] = region;
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'deletionProtection': deletionProtection,
+      'id': id,
+      'kmsKey': kmsKey,
+      'name': name,
+      'permissionsMode': permissionsMode,
+      'region': region,
+      'tags': tags,
+    };
   }
 
   factory GetLedgerResult.fromMap(Map<String, dynamic> map) {
@@ -59,3 +59,4 @@ class GetLedgerResult {
     );
   }
 }
+

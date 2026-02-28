@@ -13,7 +13,7 @@ enum RuleBasicProfileNetworksecurityV1beta1 {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown RuleBasicProfileNetworksecurityV1beta1 value: $value');
+    throw ArgumentError('Unknown RuleBasicProfileNetworksecurityV1beta1 value: $value');
   }
 }
+

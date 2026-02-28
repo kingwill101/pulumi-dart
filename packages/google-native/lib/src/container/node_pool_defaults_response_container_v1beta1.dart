@@ -14,16 +14,15 @@ class NodePoolDefaultsResponseContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['nodeConfigDefaults'] = nodeConfigDefaults.toMap();
-    return map;
+    return <String, dynamic>{
+      'nodeConfigDefaults': nodeConfigDefaults.toMap(),
+    };
   }
 
-  factory NodePoolDefaultsResponseContainerV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory NodePoolDefaultsResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NodePoolDefaultsResponseContainerV1beta1(
-      nodeConfigDefaults: NodeConfigDefaultsResponseContainerV1beta1.fromMap(
-          (map['nodeConfigDefaults'] as Map).cast<String, dynamic>()),
+      nodeConfigDefaults: NodeConfigDefaultsResponseContainerV1beta1.fromMap((map['nodeConfigDefaults'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

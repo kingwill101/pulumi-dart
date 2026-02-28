@@ -9,14 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ChannelConnectionArgs {
   /// Input only. Activation token for the channel. The token will be used during the creation of ChannelConnection to bind the channel with the provider project. This field will not be stored in the provider resource.
   final pulumi.Input<String>? activationToken;
-
   /// The name of the connected subscriber Channel. This is a weak reference to avoid cross project and cross accounts references. This must be in `projects/{project}/location/{location}/channels/{channel_id}` format.
   final pulumi.Input<String> channel;
-
   /// Required. The user-provided ID to be assigned to the channel connection.
   final pulumi.Input<String> channelConnectionId;
   final pulumi.Input<String>? location;
-
   /// The name of the connection.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
@@ -35,41 +32,28 @@ class ChannelConnectionArgs {
     String? location,
     String? name,
     String? project,
-  })  : activationToken = pulumi.Input.asOptionalInput<String>(activationToken),
-        channel = pulumi.Input.asInput<String>(channel),
-        channelConnectionId = pulumi.Input.asInput<String>(channelConnectionId),
-        location = pulumi.Input.asOptionalInput<String>(location),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      activationToken = pulumi.Input.asOptionalInput<String>(activationToken),
+      channel = pulumi.Input.asInput<String>(channel),
+      channelConnectionId = pulumi.Input.asInput<String>(channelConnectionId),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final activationTokenValue = activationToken;
-    if (activationTokenValue != null) {
-      map['activationToken'] = activationTokenValue;
-    }
-    map['channel'] = channel;
-    map['channelConnectionId'] = channelConnectionId;
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'activationToken': ?activationToken,
+      'channel': channel,
+      'channelConnectionId': channelConnectionId,
+      'location': ?location,
+      'name': ?name,
+      'project': ?project,
+    };
   }
 
   factory ChannelConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ChannelConnectionArgs(
-      activationToken: map['activationToken'] == null
-          ? null
-          : map['activationToken'] as String,
+      activationToken: map['activationToken'] == null ? null : map['activationToken'] as String,
       channel: map['channel'] as String,
       channelConnectionId: map['channelConnectionId'] as String,
       location: map['location'] == null ? null : map['location'] as String,
@@ -78,3 +62,4 @@ class ChannelConnectionArgs {
     );
   }
 }
+

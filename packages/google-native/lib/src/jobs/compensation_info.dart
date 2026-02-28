@@ -15,24 +15,15 @@ class CompensationInfo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final entriesValue = entries;
-    if (entriesValue != null) {
-      map['entries'] =
-          pulumi.Input.encodeList<CompensationEntry, Map<String, dynamic>>(
-              entriesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'entries': ?entries == null ? null : pulumi.Input.encodeList<CompensationEntry, Map<String, dynamic>>(entries!, (value) => value.toMap()),
+    };
   }
 
   factory CompensationInfo.fromMap(Map<String, dynamic> map) {
     return CompensationInfo(
-      entries: map['entries'] == null
-          ? null
-          : pulumi.Input.decodeList<CompensationEntry>(
-              map['entries'],
-              (value) => CompensationEntry.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      entries: map['entries'] == null ? null : pulumi.Input.decodeList<CompensationEntry>(map['entries'], (value) => CompensationEntry.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -161,15 +161,12 @@ class InstanceSettings extends pulumi.CustomResource {
   /// The fingerprint used for optimistic locking of this resource.  Used
   /// internally during updates.
   late final pulumi.Output<String> fingerprint;
-
   /// The metadata key/value pairs assigned to all the instances in the corresponding scope.
   /// Structure is documented below.
   late final pulumi.Output<InstanceSettingsMetadata?> metadata;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// A reference to the zone where the machine resides.
   late final pulumi.Output<String> zone;
 

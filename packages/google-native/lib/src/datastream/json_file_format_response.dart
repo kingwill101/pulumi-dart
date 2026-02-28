@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// JSON file format configuration.
 class JsonFileFormatResponse {
   /// Compression of the loaded JSON file.
   final String compression;
-
   /// The schema file format along JSON data files.
   final String schemaFileFormat;
 
@@ -17,10 +17,10 @@ class JsonFileFormatResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['compression'] = compression;
-    map['schemaFileFormat'] = schemaFileFormat;
-    return map;
+    return <String, dynamic>{
+      'compression': compression,
+      'schemaFileFormat': schemaFileFormat,
+    };
   }
 
   factory JsonFileFormatResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class JsonFileFormatResponse {
     );
   }
 }
+

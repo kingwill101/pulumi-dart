@@ -1,29 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetAutonomousDatabasesAutonomousDatabasePropertyConnectionUrl {
   /// Oracle Application Express (APEX) URL.
   final String apexUri;
-
   /// The URL of the Database Transforms for the Autonomous Database.
   final String databaseTransformsUri;
-
   /// The URL of the Graph Studio for the Autonomous Database.
   final String graphStudioUri;
-
   /// The URL of the Oracle Machine Learning (OML) Notebook for the Autonomous
   /// Database.
   final String machineLearningNotebookUri;
-
   /// The URL of Machine Learning user management the Autonomous Database.
   final String machineLearningUserManagementUri;
-
   /// The URL of the MongoDB API for the Autonomous Database.
   final String mongoDbUri;
-
   /// The Oracle REST Data Services (ORDS) URL of the Web Access for the
   /// Autonomous Database.
   final String ordsUri;
-
   /// The URL of the Oracle SQL Developer Web for the Autonomous Database.
   final String sqlDevWebUri;
 
@@ -48,30 +42,29 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyConnectionUrl {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['apexUri'] = apexUri;
-    map['databaseTransformsUri'] = databaseTransformsUri;
-    map['graphStudioUri'] = graphStudioUri;
-    map['machineLearningNotebookUri'] = machineLearningNotebookUri;
-    map['machineLearningUserManagementUri'] = machineLearningUserManagementUri;
-    map['mongoDbUri'] = mongoDbUri;
-    map['ordsUri'] = ordsUri;
-    map['sqlDevWebUri'] = sqlDevWebUri;
-    return map;
+    return <String, dynamic>{
+      'apexUri': apexUri,
+      'databaseTransformsUri': databaseTransformsUri,
+      'graphStudioUri': graphStudioUri,
+      'machineLearningNotebookUri': machineLearningNotebookUri,
+      'machineLearningUserManagementUri': machineLearningUserManagementUri,
+      'mongoDbUri': mongoDbUri,
+      'ordsUri': ordsUri,
+      'sqlDevWebUri': sqlDevWebUri,
+    };
   }
 
-  factory GetAutonomousDatabasesAutonomousDatabasePropertyConnectionUrl.fromMap(
-      Map<String, dynamic> map) {
+  factory GetAutonomousDatabasesAutonomousDatabasePropertyConnectionUrl.fromMap(Map<String, dynamic> map) {
     return GetAutonomousDatabasesAutonomousDatabasePropertyConnectionUrl(
       apexUri: map['apexUri'] as String,
       databaseTransformsUri: map['databaseTransformsUri'] as String,
       graphStudioUri: map['graphStudioUri'] as String,
       machineLearningNotebookUri: map['machineLearningNotebookUri'] as String,
-      machineLearningUserManagementUri:
-          map['machineLearningUserManagementUri'] as String,
+      machineLearningUserManagementUri: map['machineLearningUserManagementUri'] as String,
       mongoDbUri: map['mongoDbUri'] as String,
       ordsUri: map['ordsUri'] as String,
       sqlDevWebUri: map['sqlDevWebUri'] as String,
     );
   }
 }
+

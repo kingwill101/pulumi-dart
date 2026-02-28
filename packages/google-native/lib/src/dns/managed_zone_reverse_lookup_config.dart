@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ManagedZoneReverseLookupConfig {
   final String? kind;
 
@@ -10,12 +11,9 @@ class ManagedZoneReverseLookupConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final kindValue = kind;
-    if (kindValue != null) {
-      map['kind'] = kindValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'kind': ?kind,
+    };
   }
 
   factory ManagedZoneReverseLookupConfig.fromMap(Map<String, dynamic> map) {
@@ -24,3 +22,4 @@ class ManagedZoneReverseLookupConfig {
     );
   }
 }
+

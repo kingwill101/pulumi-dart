@@ -6,7 +6,6 @@ import 'file_reference.dart';
 class ObbFile {
   /// Opaque Binary Blob (OBB) file(s) to install on the device.
   final FileReference obb;
-
   /// OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
   final String obbFileName;
 
@@ -19,10 +18,10 @@ class ObbFile {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['obb'] = obb.toMap();
-    map['obbFileName'] = obbFileName;
-    return map;
+    return <String, dynamic>{
+      'obb': obb.toMap(),
+      'obbFileName': obbFileName,
+    };
   }
 
   factory ObbFile.fromMap(Map<String, dynamic> map) {
@@ -32,3 +31,4 @@ class ObbFile {
     );
   }
 }
+

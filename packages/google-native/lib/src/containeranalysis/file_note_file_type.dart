@@ -25,3 +25,4 @@ enum FileNoteFileType {
     throw ArgumentError('Unknown FileNoteFileType value: $value');
   }
 }
+

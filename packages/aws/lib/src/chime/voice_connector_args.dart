@@ -9,18 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VoiceConnectorArgs {
   /// The AWS Region in which the Amazon Chime Voice Connector is created. Default value: `us-east-1`
   final pulumi.Input<String>? awsRegion;
-
   /// The name of the Amazon Chime Voice Connector.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// When enabled, requires encryption for the Amazon Chime Voice Connector.
   ///
   /// The following arguments are optional:
   final pulumi.Input<bool> requireEncryption;
-
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -36,32 +32,21 @@ class VoiceConnectorArgs {
     String? region,
     required bool requireEncryption,
     Map<String, String>? tags,
-  })  : awsRegion = pulumi.Input.asOptionalInput<String>(awsRegion),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        requireEncryption = pulumi.Input.asInput<bool>(requireEncryption),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      awsRegion = pulumi.Input.asOptionalInput<String>(awsRegion),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      requireEncryption = pulumi.Input.asInput<bool>(requireEncryption),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final awsRegionValue = awsRegion;
-    if (awsRegionValue != null) {
-      map['awsRegion'] = awsRegionValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['requireEncryption'] = requireEncryption;
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'awsRegion': ?awsRegion,
+      'name': ?name,
+      'region': ?region,
+      'requireEncryption': requireEncryption,
+      'tags': ?tags,
+    };
   }
 
   factory VoiceConnectorArgs.fromMap(Map<String, dynamic> map) {
@@ -70,9 +55,8 @@ class VoiceConnectorArgs {
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       requireEncryption: map['requireEncryption'] as bool,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

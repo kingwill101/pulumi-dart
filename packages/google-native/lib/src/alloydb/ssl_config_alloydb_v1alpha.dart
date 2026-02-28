@@ -7,7 +7,6 @@ import 'ssl_config_ssl_mode_alloydb_v1alpha.dart';
 class SslConfigAlloydbV1alpha {
   /// Optional. Certificate Authority (CA) source. Only CA_SOURCE_MANAGED is supported currently, and is the default value.
   final SslConfigCaSourceAlloydbV1alpha? caSource;
-
   /// Optional. SSL mode. Specifies client-server SSL/TLS connection behavior.
   final SslConfigSslModeAlloydbV1alpha? sslMode;
 
@@ -20,27 +19,17 @@ class SslConfigAlloydbV1alpha {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final caSourceValue = caSource;
-    if (caSourceValue != null) {
-      map['caSource'] = caSourceValue.value;
-    }
-    final sslModeValue = sslMode;
-    if (sslModeValue != null) {
-      map['sslMode'] = sslModeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'caSource': ?caSource == null ? null : caSource!.value,
+      'sslMode': ?sslMode == null ? null : sslMode!.value,
+    };
   }
 
   factory SslConfigAlloydbV1alpha.fromMap(Map<String, dynamic> map) {
     return SslConfigAlloydbV1alpha(
-      caSource: map['caSource'] == null
-          ? null
-          : SslConfigCaSourceAlloydbV1alpha.fromValue(
-              map['caSource'] as String),
-      sslMode: map['sslMode'] == null
-          ? null
-          : SslConfigSslModeAlloydbV1alpha.fromValue(map['sslMode'] as String),
+      caSource: map['caSource'] == null ? null : SslConfigCaSourceAlloydbV1alpha.fromValue(map['caSource'] as String),
+      sslMode: map['sslMode'] == null ? null : SslConfigSslModeAlloydbV1alpha.fromValue(map['sslMode'] as String),
     );
   }
 }
+

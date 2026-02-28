@@ -36,32 +36,29 @@ class EnterpriseCrmEventbusProtoValueTypeResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['booleanValue'] = booleanValue;
-    map['doubleArray'] = doubleArray.toMap();
-    map['doubleValue'] = doubleValue;
-    map['intArray'] = intArray.toMap();
-    map['intValue'] = intValue;
-    map['protoValue'] = protoValue;
-    map['stringArray'] = stringArray.toMap();
-    map['stringValue'] = stringValue;
-    return map;
+    return <String, dynamic>{
+      'booleanValue': booleanValue,
+      'doubleArray': doubleArray.toMap(),
+      'doubleValue': doubleValue,
+      'intArray': intArray.toMap(),
+      'intValue': intValue,
+      'protoValue': protoValue,
+      'stringArray': stringArray.toMap(),
+      'stringValue': stringValue,
+    };
   }
 
-  factory EnterpriseCrmEventbusProtoValueTypeResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoValueTypeResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoValueTypeResponse(
       booleanValue: map['booleanValue'] as bool,
-      doubleArray: EnterpriseCrmEventbusProtoDoubleArrayResponse.fromMap(
-          (map['doubleArray'] as Map).cast<String, dynamic>()),
+      doubleArray: EnterpriseCrmEventbusProtoDoubleArrayResponse.fromMap((map['doubleArray'] as Map).cast<String, dynamic>()),
       doubleValue: map['doubleValue'] as double,
-      intArray: EnterpriseCrmEventbusProtoIntArrayResponse.fromMap(
-          (map['intArray'] as Map).cast<String, dynamic>()),
+      intArray: EnterpriseCrmEventbusProtoIntArrayResponse.fromMap((map['intArray'] as Map).cast<String, dynamic>()),
       intValue: map['intValue'] as String,
       protoValue: (map['protoValue'] as Map).cast<String, String>(),
-      stringArray: EnterpriseCrmEventbusProtoStringArrayResponse.fromMap(
-          (map['stringArray'] as Map).cast<String, dynamic>()),
+      stringArray: EnterpriseCrmEventbusProtoStringArrayResponse.fromMap((map['stringArray'] as Map).cast<String, dynamic>()),
       stringValue: map['stringValue'] as String,
     );
   }
 }
+

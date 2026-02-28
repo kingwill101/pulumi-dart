@@ -16,18 +16,15 @@ class GetPublicAdvertisedPrefixArgs {
   GetPublicAdvertisedPrefixArgs({
     String? project,
     required String publicAdvertisedPrefix,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        publicAdvertisedPrefix =
-            pulumi.Input.asInput<String>(publicAdvertisedPrefix);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      publicAdvertisedPrefix = pulumi.Input.asInput<String>(publicAdvertisedPrefix);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['publicAdvertisedPrefix'] = publicAdvertisedPrefix;
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'publicAdvertisedPrefix': publicAdvertisedPrefix,
+    };
   }
 
   factory GetPublicAdvertisedPrefixArgs.fromMap(Map<String, dynamic> map) {
@@ -37,3 +34,4 @@ class GetPublicAdvertisedPrefixArgs {
     );
   }
 }
+

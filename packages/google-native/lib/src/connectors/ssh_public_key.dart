@@ -6,13 +6,10 @@ import 'secret.dart';
 class SshPublicKey {
   /// Format of SSH Client cert.
   final String? certType;
-
   /// SSH Client Cert. It should contain both public and private key.
   final Secret? sshClientCert;
-
   /// Password (passphrase) for ssh client certificate if it has one.
   final Secret? sshClientCertPass;
-
   /// The user account used to authenticate.
   final String? username;
 
@@ -29,38 +26,21 @@ class SshPublicKey {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final certTypeValue = certType;
-    if (certTypeValue != null) {
-      map['certType'] = certTypeValue;
-    }
-    final sshClientCertValue = sshClientCert;
-    if (sshClientCertValue != null) {
-      map['sshClientCert'] = sshClientCertValue.toMap();
-    }
-    final sshClientCertPassValue = sshClientCertPass;
-    if (sshClientCertPassValue != null) {
-      map['sshClientCertPass'] = sshClientCertPassValue.toMap();
-    }
-    final usernameValue = username;
-    if (usernameValue != null) {
-      map['username'] = usernameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'certType': ?certType,
+      'sshClientCert': ?sshClientCert == null ? null : sshClientCert!.toMap(),
+      'sshClientCertPass': ?sshClientCertPass == null ? null : sshClientCertPass!.toMap(),
+      'username': ?username,
+    };
   }
 
   factory SshPublicKey.fromMap(Map<String, dynamic> map) {
     return SshPublicKey(
       certType: map['certType'] == null ? null : map['certType'] as String,
-      sshClientCert: map['sshClientCert'] == null
-          ? null
-          : Secret.fromMap(
-              (map['sshClientCert'] as Map).cast<String, dynamic>()),
-      sshClientCertPass: map['sshClientCertPass'] == null
-          ? null
-          : Secret.fromMap(
-              (map['sshClientCertPass'] as Map).cast<String, dynamic>()),
+      sshClientCert: map['sshClientCert'] == null ? null : Secret.fromMap((map['sshClientCert'] as Map).cast<String, dynamic>()),
+      sshClientCertPass: map['sshClientCertPass'] == null ? null : Secret.fromMap((map['sshClientCertPass'] as Map).cast<String, dynamic>()),
       username: map['username'] == null ? null : map['username'] as String,
     );
   }
 }
+

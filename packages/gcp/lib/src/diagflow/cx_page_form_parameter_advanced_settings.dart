@@ -18,21 +18,15 @@ class CxPageFormParameterAdvancedSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dtmfSettingsValue = dtmfSettings;
-    if (dtmfSettingsValue != null) {
-      map['dtmfSettings'] = dtmfSettingsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'dtmfSettings': ?dtmfSettings == null ? null : dtmfSettings!.toMap(),
+    };
   }
 
-  factory CxPageFormParameterAdvancedSettings.fromMap(
-      Map<String, dynamic> map) {
+  factory CxPageFormParameterAdvancedSettings.fromMap(Map<String, dynamic> map) {
     return CxPageFormParameterAdvancedSettings(
-      dtmfSettings: map['dtmfSettings'] == null
-          ? null
-          : CxPageFormParameterAdvancedSettingsDtmfSettings.fromMap(
-              (map['dtmfSettings'] as Map).cast<String, dynamic>()),
+      dtmfSettings: map['dtmfSettings'] == null ? null : CxPageFormParameterAdvancedSettingsDtmfSettings.fromMap((map['dtmfSettings'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

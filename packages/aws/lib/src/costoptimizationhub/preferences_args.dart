@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PreferencesArgs {
   /// Customize whether the member accounts can see the "After Discounts" savings estimates. Valid values are `All` and `None`. Default value is `All`.
   final pulumi.Input<String>? memberAccountDiscountVisibility;
-
   /// Customize how estimated monthly savings are calculated. Valid values are `BeforeDiscounts` and `AfterDiscounts`. Default value is `BeforeDiscounts`.
   final pulumi.Input<String>? savingsEstimationMode;
 
@@ -19,35 +18,22 @@ class PreferencesArgs {
   PreferencesArgs({
     String? memberAccountDiscountVisibility,
     String? savingsEstimationMode,
-  })  : memberAccountDiscountVisibility = pulumi.Input.asOptionalInput<String>(
-            memberAccountDiscountVisibility),
-        savingsEstimationMode =
-            pulumi.Input.asOptionalInput<String>(savingsEstimationMode);
+  }) :
+      memberAccountDiscountVisibility = pulumi.Input.asOptionalInput<String>(memberAccountDiscountVisibility),
+      savingsEstimationMode = pulumi.Input.asOptionalInput<String>(savingsEstimationMode);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final memberAccountDiscountVisibilityValue =
-        memberAccountDiscountVisibility;
-    if (memberAccountDiscountVisibilityValue != null) {
-      map['memberAccountDiscountVisibility'] =
-          memberAccountDiscountVisibilityValue;
-    }
-    final savingsEstimationModeValue = savingsEstimationMode;
-    if (savingsEstimationModeValue != null) {
-      map['savingsEstimationMode'] = savingsEstimationModeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'memberAccountDiscountVisibility': ?memberAccountDiscountVisibility,
+      'savingsEstimationMode': ?savingsEstimationMode,
+    };
   }
 
   factory PreferencesArgs.fromMap(Map<String, dynamic> map) {
     return PreferencesArgs(
-      memberAccountDiscountVisibility:
-          map['memberAccountDiscountVisibility'] == null
-              ? null
-              : map['memberAccountDiscountVisibility'] as String,
-      savingsEstimationMode: map['savingsEstimationMode'] == null
-          ? null
-          : map['savingsEstimationMode'] as String,
+      memberAccountDiscountVisibility: map['memberAccountDiscountVisibility'] == null ? null : map['memberAccountDiscountVisibility'] as String,
+      savingsEstimationMode: map['savingsEstimationMode'] == null ? null : map['savingsEstimationMode'] as String,
     );
   }
 }
+

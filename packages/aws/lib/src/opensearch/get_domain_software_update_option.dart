@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDomainSoftwareUpdateOption {
   /// Enabled or disabled.
   final bool autoSoftwareUpdateEnabled;
@@ -11,9 +12,9 @@ class GetDomainSoftwareUpdateOption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['autoSoftwareUpdateEnabled'] = autoSoftwareUpdateEnabled;
-    return map;
+    return <String, dynamic>{
+      'autoSoftwareUpdateEnabled': autoSoftwareUpdateEnabled,
+    };
   }
 
   factory GetDomainSoftwareUpdateOption.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetDomainSoftwareUpdateOption {
     );
   }
 }
+

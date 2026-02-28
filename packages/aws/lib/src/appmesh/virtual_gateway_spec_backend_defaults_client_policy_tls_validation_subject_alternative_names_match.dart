@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch {
   /// Values sent must match the specified values exactly.
   final List<String> exacts;
@@ -11,15 +12,15 @@ class VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternati
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['exacts'] = exacts;
-    return map;
+    return <String, dynamic>{
+      'exacts': exacts,
+    };
   }
 
-  factory VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch.fromMap(
-      Map<String, dynamic> map) {
+  factory VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch(
       exacts: (map['exacts'] as List).cast<String>(),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// End previous overlay animation from the video. Without `AnimationEnd`, the overlay object will keep the state of previous animation until the end of the video.
 class AnimationEndResponse {
   /// The time to end overlay object, in seconds. Default: 0
@@ -12,9 +13,9 @@ class AnimationEndResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['startTimeOffset'] = startTimeOffset;
-    return map;
+    return <String, dynamic>{
+      'startTimeOffset': startTimeOffset,
+    };
   }
 
   factory AnimationEndResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class AnimationEndResponse {
     );
   }
 }
+

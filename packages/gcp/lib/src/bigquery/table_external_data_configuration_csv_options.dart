@@ -1,22 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TableExternalDataConfigurationCsvOptions {
   /// Indicates if BigQuery should accept rows
   /// that are missing trailing optional columns.
   final bool? allowJaggedRows;
-
   /// Indicates if BigQuery should allow
   /// quoted data sections that contain newline characters in a CSV file.
   /// The default value is false.
   final bool? allowQuotedNewlines;
-
   /// The character encoding of the data. The supported
   /// values are UTF-8 or ISO-8859-1.
   final String? encoding;
-
   /// The separator for fields in a CSV file.
   final String? fieldDelimiter;
-
   /// The value that is used to quote data sections in a
   /// CSV file. If your data does not contain quoted sections, set the
   /// property value to an empty string. If your data contains quoted newline
@@ -25,11 +22,9 @@ class TableExternalDataConfigurationCsvOptions {
   /// limitations with default values, this value is required to be
   /// explicitly set.
   final String quote;
-
   /// The number of rows at the top of a CSV
   /// file that BigQuery will skip when reading the data.
   final int? skipLeadingRows;
-
   /// Specifies how source columns are matched
   /// to the table schema. Valid values are `POSITION` (columns matched by position,
   /// assuming same ordering as the schema) or `NAME` (columns matched by name,
@@ -57,54 +52,27 @@ class TableExternalDataConfigurationCsvOptions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final allowJaggedRowsValue = allowJaggedRows;
-    if (allowJaggedRowsValue != null) {
-      map['allowJaggedRows'] = allowJaggedRowsValue;
-    }
-    final allowQuotedNewlinesValue = allowQuotedNewlines;
-    if (allowQuotedNewlinesValue != null) {
-      map['allowQuotedNewlines'] = allowQuotedNewlinesValue;
-    }
-    final encodingValue = encoding;
-    if (encodingValue != null) {
-      map['encoding'] = encodingValue;
-    }
-    final fieldDelimiterValue = fieldDelimiter;
-    if (fieldDelimiterValue != null) {
-      map['fieldDelimiter'] = fieldDelimiterValue;
-    }
-    map['quote'] = quote;
-    final skipLeadingRowsValue = skipLeadingRows;
-    if (skipLeadingRowsValue != null) {
-      map['skipLeadingRows'] = skipLeadingRowsValue;
-    }
-    final sourceColumnMatchValue = sourceColumnMatch;
-    if (sourceColumnMatchValue != null) {
-      map['sourceColumnMatch'] = sourceColumnMatchValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'allowJaggedRows': ?allowJaggedRows,
+      'allowQuotedNewlines': ?allowQuotedNewlines,
+      'encoding': ?encoding,
+      'fieldDelimiter': ?fieldDelimiter,
+      'quote': quote,
+      'skipLeadingRows': ?skipLeadingRows,
+      'sourceColumnMatch': ?sourceColumnMatch,
+    };
   }
 
-  factory TableExternalDataConfigurationCsvOptions.fromMap(
-      Map<String, dynamic> map) {
+  factory TableExternalDataConfigurationCsvOptions.fromMap(Map<String, dynamic> map) {
     return TableExternalDataConfigurationCsvOptions(
-      allowJaggedRows: map['allowJaggedRows'] == null
-          ? null
-          : map['allowJaggedRows'] as bool,
-      allowQuotedNewlines: map['allowQuotedNewlines'] == null
-          ? null
-          : map['allowQuotedNewlines'] as bool,
+      allowJaggedRows: map['allowJaggedRows'] == null ? null : map['allowJaggedRows'] as bool,
+      allowQuotedNewlines: map['allowQuotedNewlines'] == null ? null : map['allowQuotedNewlines'] as bool,
       encoding: map['encoding'] == null ? null : map['encoding'] as String,
-      fieldDelimiter: map['fieldDelimiter'] == null
-          ? null
-          : map['fieldDelimiter'] as String,
+      fieldDelimiter: map['fieldDelimiter'] == null ? null : map['fieldDelimiter'] as String,
       quote: map['quote'] as String,
-      skipLeadingRows:
-          map['skipLeadingRows'] == null ? null : map['skipLeadingRows'] as int,
-      sourceColumnMatch: map['sourceColumnMatch'] == null
-          ? null
-          : map['sourceColumnMatch'] as String,
+      skipLeadingRows: map['skipLeadingRows'] == null ? null : map['skipLeadingRows'] as int,
+      sourceColumnMatch: map['sourceColumnMatch'] == null ? null : map['sourceColumnMatch'] as String,
     );
   }
 }
+

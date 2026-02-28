@@ -15,19 +15,15 @@ class VirtualRepositoryConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['upstreamPolicies'] =
-        pulumi.Input.encodeList<UpstreamPolicyResponse, Map<String, dynamic>>(
-            upstreamPolicies, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'upstreamPolicies': pulumi.Input.encodeList<UpstreamPolicyResponse, Map<String, dynamic>>(upstreamPolicies, (value) => value.toMap()),
+    };
   }
 
   factory VirtualRepositoryConfigResponse.fromMap(Map<String, dynamic> map) {
     return VirtualRepositoryConfigResponse(
-      upstreamPolicies: pulumi.Input.decodeList<UpstreamPolicyResponse>(
-          map['upstreamPolicies'],
-          (value) => UpstreamPolicyResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      upstreamPolicies: pulumi.Input.decodeList<UpstreamPolicyResponse>(map['upstreamPolicies'], (value) => UpstreamPolicyResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

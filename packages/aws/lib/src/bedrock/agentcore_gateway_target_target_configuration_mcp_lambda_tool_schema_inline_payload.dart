@@ -6,17 +6,12 @@ import 'agentcore_gateway_target_target_configuration_mcp_lambda_tool_schema_inl
 class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload {
   /// Description of what the tool does.
   final String description;
-
   /// Schema for the tool's input. See `schema_definition` below.
-  final AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchema
-      inputSchema;
-
+  final AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchema inputSchema;
   /// Name of the tool.
   final String name;
-
   /// Schema for the tool's output. See `schema_definition` below.
-  final AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchema?
-      outputSchema;
+  final AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchema? outputSchema;
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload].
   /// [description] Description of what the tool does.
@@ -31,29 +26,21 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload 
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['description'] = description;
-    map['inputSchema'] = inputSchema.toMap();
-    map['name'] = name;
-    final outputSchemaValue = outputSchema;
-    if (outputSchemaValue != null) {
-      map['outputSchema'] = outputSchemaValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'description': description,
+      'inputSchema': inputSchema.toMap(),
+      'name': name,
+      'outputSchema': ?outputSchema == null ? null : outputSchema!.toMap(),
+    };
   }
 
-  factory AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload(
       description: map['description'] as String,
-      inputSchema:
-          AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchema
-              .fromMap((map['inputSchema'] as Map).cast<String, dynamic>()),
+      inputSchema: AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchema.fromMap((map['inputSchema'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      outputSchema: map['outputSchema'] == null
-          ? null
-          : AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchema
-              .fromMap((map['outputSchema'] as Map).cast<String, dynamic>()),
+      outputSchema: map['outputSchema'] == null ? null : AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchema.fromMap((map['outputSchema'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

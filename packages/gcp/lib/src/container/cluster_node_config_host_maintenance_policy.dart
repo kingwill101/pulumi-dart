@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterNodeConfigHostMaintenancePolicy {
   /// .
   final String maintenanceInterval;
@@ -11,15 +12,15 @@ class ClusterNodeConfigHostMaintenancePolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maintenanceInterval'] = maintenanceInterval;
-    return map;
+    return <String, dynamic>{
+      'maintenanceInterval': maintenanceInterval,
+    };
   }
 
-  factory ClusterNodeConfigHostMaintenancePolicy.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterNodeConfigHostMaintenancePolicy.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigHostMaintenancePolicy(
       maintenanceInterval: map['maintenanceInterval'] as String,
     );
   }
 }
+

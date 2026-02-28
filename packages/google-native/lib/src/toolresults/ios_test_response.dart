@@ -9,16 +9,12 @@ import 'ios_xc_test_response.dart';
 class IosTestResponse {
   /// Information about the application under test.
   final IosAppInfoResponse iosAppInfo;
-
   /// An iOS Robo test.
   final Map<String, dynamic> iosRoboTest;
-
   /// An iOS test loop.
   final IosTestLoopResponse iosTestLoop;
-
   /// An iOS XCTest.
   final IosXcTestResponse iosXcTest;
-
   /// Max time a test is allowed to run before it is automatically cancelled.
   final DurationResponse testTimeout;
 
@@ -37,26 +33,23 @@ class IosTestResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['iosAppInfo'] = iosAppInfo.toMap();
-    map['iosRoboTest'] = iosRoboTest;
-    map['iosTestLoop'] = iosTestLoop.toMap();
-    map['iosXcTest'] = iosXcTest.toMap();
-    map['testTimeout'] = testTimeout.toMap();
-    return map;
+    return <String, dynamic>{
+      'iosAppInfo': iosAppInfo.toMap(),
+      'iosRoboTest': iosRoboTest,
+      'iosTestLoop': iosTestLoop.toMap(),
+      'iosXcTest': iosXcTest.toMap(),
+      'testTimeout': testTimeout.toMap(),
+    };
   }
 
   factory IosTestResponse.fromMap(Map<String, dynamic> map) {
     return IosTestResponse(
-      iosAppInfo: IosAppInfoResponse.fromMap(
-          (map['iosAppInfo'] as Map).cast<String, dynamic>()),
+      iosAppInfo: IosAppInfoResponse.fromMap((map['iosAppInfo'] as Map).cast<String, dynamic>()),
       iosRoboTest: (map['iosRoboTest'] as Map).cast<String, dynamic>(),
-      iosTestLoop: IosTestLoopResponse.fromMap(
-          (map['iosTestLoop'] as Map).cast<String, dynamic>()),
-      iosXcTest: IosXcTestResponse.fromMap(
-          (map['iosXcTest'] as Map).cast<String, dynamic>()),
-      testTimeout: DurationResponse.fromMap(
-          (map['testTimeout'] as Map).cast<String, dynamic>()),
+      iosTestLoop: IosTestLoopResponse.fromMap((map['iosTestLoop'] as Map).cast<String, dynamic>()),
+      iosXcTest: IosXcTestResponse.fromMap((map['iosXcTest'] as Map).cast<String, dynamic>()),
+      testTimeout: DurationResponse.fromMap((map['testTimeout'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,26 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSecurityProfile.
 class GetSecurityProfileResult {
   /// ARN of the Security Profile.
   final String arn;
-
   /// Description of the Security Profile.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instanceId;
   final String name;
-
   /// The organization resource identifier for the security profile.
   final String organizationResourceId;
-
   /// List of permissions assigned to the security profile.
   final List<String> permissions;
   final String region;
   final String securityProfileId;
-
   /// Map of tags to assign to the Security Profile.
   final Map<String, String> tags;
 
@@ -49,18 +45,18 @@ class GetSecurityProfileResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['description'] = description;
-    map['id'] = id;
-    map['instanceId'] = instanceId;
-    map['name'] = name;
-    map['organizationResourceId'] = organizationResourceId;
-    map['permissions'] = permissions;
-    map['region'] = region;
-    map['securityProfileId'] = securityProfileId;
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'description': description,
+      'id': id,
+      'instanceId': instanceId,
+      'name': name,
+      'organizationResourceId': organizationResourceId,
+      'permissions': permissions,
+      'region': region,
+      'securityProfileId': securityProfileId,
+      'tags': tags,
+    };
   }
 
   factory GetSecurityProfileResult.fromMap(Map<String, dynamic> map) {
@@ -78,3 +74,4 @@ class GetSecurityProfileResult {
     );
   }
 }
+

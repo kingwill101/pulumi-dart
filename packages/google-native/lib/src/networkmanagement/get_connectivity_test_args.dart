@@ -16,17 +16,15 @@ class GetConnectivityTestArgs {
   GetConnectivityTestArgs({
     required String connectivityTestId,
     String? project,
-  })  : connectivityTestId = pulumi.Input.asInput<String>(connectivityTestId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      connectivityTestId = pulumi.Input.asInput<String>(connectivityTestId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['connectivityTestId'] = connectivityTestId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'connectivityTestId': connectivityTestId,
+      'project': ?project,
+    };
   }
 
   factory GetConnectivityTestArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetConnectivityTestArgs {
     );
   }
 }
+

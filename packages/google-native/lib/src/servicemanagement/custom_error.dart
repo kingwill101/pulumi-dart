@@ -7,7 +7,6 @@ import 'custom_error_rule.dart';
 class CustomError {
   /// The list of custom error rules that apply to individual API messages. **NOTE:** All service configuration rules follow "last one wins" order.
   final List<CustomErrorRule>? rules;
-
   /// The list of custom error detail types, e.g. 'google.foo.v1.CustomError'.
   final List<String>? types;
 
@@ -20,30 +19,17 @@ class CustomError {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final rulesValue = rules;
-    if (rulesValue != null) {
-      map['rules'] =
-          pulumi.Input.encodeList<CustomErrorRule, Map<String, dynamic>>(
-              rulesValue, (value) => value.toMap());
-    }
-    final typesValue = types;
-    if (typesValue != null) {
-      map['types'] = typesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'rules': ?rules == null ? null : pulumi.Input.encodeList<CustomErrorRule, Map<String, dynamic>>(rules!, (value) => value.toMap()),
+      'types': ?types,
+    };
   }
 
   factory CustomError.fromMap(Map<String, dynamic> map) {
     return CustomError(
-      rules: map['rules'] == null
-          ? null
-          : pulumi.Input.decodeList<CustomErrorRule>(
-              map['rules'],
-              (value) => CustomErrorRule.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      types:
-          map['types'] == null ? null : (map['types'] as List).cast<String>(),
+      rules: map['rules'] == null ? null : pulumi.Input.decodeList<CustomErrorRule>(map['rules'], (value) => CustomErrorRule.fromMap((value as Map).cast<String, dynamic>())),
+      types: map['types'] == null ? null : (map['types'] as List).cast<String>(),
     );
   }
 }
+

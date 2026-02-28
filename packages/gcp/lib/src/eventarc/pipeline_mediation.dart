@@ -14,20 +14,15 @@ class PipelineMediation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final transformationValue = transformation;
-    if (transformationValue != null) {
-      map['transformation'] = transformationValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'transformation': ?transformation == null ? null : transformation!.toMap(),
+    };
   }
 
   factory PipelineMediation.fromMap(Map<String, dynamic> map) {
     return PipelineMediation(
-      transformation: map['transformation'] == null
-          ? null
-          : PipelineMediationTransformation.fromMap(
-              (map['transformation'] as Map).cast<String, dynamic>()),
+      transformation: map['transformation'] == null ? null : PipelineMediationTransformation.fromMap((map['transformation'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

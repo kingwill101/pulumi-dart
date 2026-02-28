@@ -7,10 +7,8 @@ import 'google_cloud_aiplatform_v1_gcs_destination_response.dart';
 class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselineResponse {
   /// BigQuery location for BatchExplain output.
   final GoogleCloudAiplatformV1BigQueryDestinationResponse bigquery;
-
   /// Cloud Storage location for BatchExplain output.
   final GoogleCloudAiplatformV1GcsDestinationResponse gcs;
-
   /// The storage format of the predictions generated BatchPrediction job.
   final String predictionFormat;
 
@@ -25,21 +23,19 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExpl
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bigquery'] = bigquery.toMap();
-    map['gcs'] = gcs.toMap();
-    map['predictionFormat'] = predictionFormat;
-    return map;
+    return <String, dynamic>{
+      'bigquery': bigquery.toMap(),
+      'gcs': gcs.toMap(),
+      'predictionFormat': predictionFormat,
+    };
   }
 
-  factory GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselineResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselineResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselineResponse(
-      bigquery: GoogleCloudAiplatformV1BigQueryDestinationResponse.fromMap(
-          (map['bigquery'] as Map).cast<String, dynamic>()),
-      gcs: GoogleCloudAiplatformV1GcsDestinationResponse.fromMap(
-          (map['gcs'] as Map).cast<String, dynamic>()),
+      bigquery: GoogleCloudAiplatformV1BigQueryDestinationResponse.fromMap((map['bigquery'] as Map).cast<String, dynamic>()),
+      gcs: GoogleCloudAiplatformV1GcsDestinationResponse.fromMap((map['gcs'] as Map).cast<String, dynamic>()),
       predictionFormat: map['predictionFormat'] as String,
     );
   }
 }
+

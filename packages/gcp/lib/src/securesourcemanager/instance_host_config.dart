@@ -1,18 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceHostConfig {
   /// (Output)
   /// API hostname.
   final String? api;
-
   /// (Output)
   /// Git HTTP hostname.
   final String? gitHttp;
-
   /// (Output)
   /// Git SSH hostname.
   final String? gitSsh;
-
   /// (Output)
   /// HTML hostname.
   final String? html;
@@ -30,24 +28,12 @@ class InstanceHostConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final apiValue = api;
-    if (apiValue != null) {
-      map['api'] = apiValue;
-    }
-    final gitHttpValue = gitHttp;
-    if (gitHttpValue != null) {
-      map['gitHttp'] = gitHttpValue;
-    }
-    final gitSshValue = gitSsh;
-    if (gitSshValue != null) {
-      map['gitSsh'] = gitSshValue;
-    }
-    final htmlValue = html;
-    if (htmlValue != null) {
-      map['html'] = htmlValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'api': ?api,
+      'gitHttp': ?gitHttp,
+      'gitSsh': ?gitSsh,
+      'html': ?html,
+    };
   }
 
   factory InstanceHostConfig.fromMap(Map<String, dynamic> map) {
@@ -59,3 +45,4 @@ class InstanceHostConfig {
     );
   }
 }
+

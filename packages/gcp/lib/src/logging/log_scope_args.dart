@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogScopeArgs {
   /// Describes this log scopes.
   final pulumi.Input<String>? description;
-
   /// The location of the resource. The only supported location is global so far.
   final pulumi.Input<String>? location;
-
   /// The resource name of the log scope. For example: \`projects/my-project/locations/global/logScopes/my-log-scope\`
   final pulumi.Input<String>? name;
-
   /// The parent of the resource.
   final pulumi.Input<String>? parent;
-
   /// Names of one or more parent resources : *  \`projects/[PROJECT_ID]\` May alternatively be one or more views : * \`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
   final pulumi.Input<List<String>> resourceNames;
 
@@ -34,38 +30,26 @@ class LogScopeArgs {
     String? name,
     String? parent,
     required List<String> resourceNames,
-  })  : description = pulumi.Input.asOptionalInput<String>(description),
-        location = pulumi.Input.asOptionalInput<String>(location),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        parent = pulumi.Input.asOptionalInput<String>(parent),
-        resourceNames = pulumi.Input.asInput<List<String>>(resourceNames);
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      parent = pulumi.Input.asOptionalInput<String>(parent),
+      resourceNames = pulumi.Input.asInput<List<String>>(resourceNames);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final parentValue = parent;
-    if (parentValue != null) {
-      map['parent'] = parentValue;
-    }
-    map['resourceNames'] = resourceNames;
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'location': ?location,
+      'name': ?name,
+      'parent': ?parent,
+      'resourceNames': resourceNames,
+    };
   }
 
   factory LogScopeArgs.fromMap(Map<String, dynamic> map) {
     return LogScopeArgs(
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       location: map['location'] == null ? null : map['location'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       parent: map['parent'] == null ? null : map['parent'] as String,
@@ -73,3 +57,4 @@ class LogScopeArgs {
     );
   }
 }
+

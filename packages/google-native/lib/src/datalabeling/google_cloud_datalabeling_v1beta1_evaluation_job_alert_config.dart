@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Provides details for how an evaluation job sends email alerts based on the results of a run.
 class GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig {
   /// An email address to send alerts to.
   final String email;
-
   /// A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email.
   final double minAcceptableMeanAveragePrecision;
 
@@ -17,19 +17,17 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['email'] = email;
-    map['minAcceptableMeanAveragePrecision'] =
-        minAcceptableMeanAveragePrecision;
-    return map;
+    return <String, dynamic>{
+      'email': email,
+      'minAcceptableMeanAveragePrecision': minAcceptableMeanAveragePrecision,
+    };
   }
 
-  factory GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig(
       email: map['email'] as String,
-      minAcceptableMeanAveragePrecision:
-          map['minAcceptableMeanAveragePrecision'] as double,
+      minAcceptableMeanAveragePrecision: map['minAcceptableMeanAveragePrecision'] as double,
     );
   }
 }
+

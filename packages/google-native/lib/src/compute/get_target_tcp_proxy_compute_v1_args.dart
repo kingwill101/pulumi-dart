@@ -16,17 +16,15 @@ class GetTargetTcpProxyComputeV1Args {
   GetTargetTcpProxyComputeV1Args({
     String? project,
     required String targetTcpProxy,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        targetTcpProxy = pulumi.Input.asInput<String>(targetTcpProxy);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      targetTcpProxy = pulumi.Input.asInput<String>(targetTcpProxy);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['targetTcpProxy'] = targetTcpProxy;
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'targetTcpProxy': targetTcpProxy,
+    };
   }
 
   factory GetTargetTcpProxyComputeV1Args.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetTargetTcpProxyComputeV1Args {
     );
   }
 }
+

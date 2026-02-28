@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CxAgentSpeechToTextSettings {
   /// Whether to use speech adaptation for speech recognition.
   final bool? enableSpeechAdaptation;
@@ -11,19 +12,15 @@ class CxAgentSpeechToTextSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enableSpeechAdaptationValue = enableSpeechAdaptation;
-    if (enableSpeechAdaptationValue != null) {
-      map['enableSpeechAdaptation'] = enableSpeechAdaptationValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enableSpeechAdaptation': ?enableSpeechAdaptation,
+    };
   }
 
   factory CxAgentSpeechToTextSettings.fromMap(Map<String, dynamic> map) {
     return CxAgentSpeechToTextSettings(
-      enableSpeechAdaptation: map['enableSpeechAdaptation'] == null
-          ? null
-          : map['enableSpeechAdaptation'] as bool,
+      enableSpeechAdaptation: map['enableSpeechAdaptation'] == null ? null : map['enableSpeechAdaptation'] as bool,
     );
   }
 }
+

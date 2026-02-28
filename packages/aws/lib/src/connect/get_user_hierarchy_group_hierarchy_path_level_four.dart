@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetUserHierarchyGroupHierarchyPathLevelFour {
   /// ARN of the hierarchy group.
   final String arn;
-
   /// The identifier of the hierarchy group.
   final String id;
-
   /// Returns information on a specific hierarchy group by name
   ///
   /// > **NOTE:** `instance_id` and one of either `name` or `hierarchy_group_id` is required.
@@ -23,15 +22,14 @@ class GetUserHierarchyGroupHierarchyPathLevelFour {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['id'] = id;
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'id': id,
+      'name': name,
+    };
   }
 
-  factory GetUserHierarchyGroupHierarchyPathLevelFour.fromMap(
-      Map<String, dynamic> map) {
+  factory GetUserHierarchyGroupHierarchyPathLevelFour.fromMap(Map<String, dynamic> map) {
     return GetUserHierarchyGroupHierarchyPathLevelFour(
       arn: map['arn'] as String,
       id: map['id'] as String,
@@ -39,3 +37,4 @@ class GetUserHierarchyGroupHierarchyPathLevelFour {
     );
   }
 }
+

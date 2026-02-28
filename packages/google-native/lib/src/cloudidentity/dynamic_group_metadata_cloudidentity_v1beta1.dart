@@ -15,25 +15,15 @@ class DynamicGroupMetadataCloudidentityV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final queriesValue = queries;
-    if (queriesValue != null) {
-      map['queries'] = pulumi.Input.encodeList<
-          DynamicGroupQueryCloudidentityV1beta1,
-          Map<String, dynamic>>(queriesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'queries': ?queries == null ? null : pulumi.Input.encodeList<DynamicGroupQueryCloudidentityV1beta1, Map<String, dynamic>>(queries!, (value) => value.toMap()),
+    };
   }
 
-  factory DynamicGroupMetadataCloudidentityV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory DynamicGroupMetadataCloudidentityV1beta1.fromMap(Map<String, dynamic> map) {
     return DynamicGroupMetadataCloudidentityV1beta1(
-      queries: map['queries'] == null
-          ? null
-          : pulumi.Input.decodeList<DynamicGroupQueryCloudidentityV1beta1>(
-              map['queries'],
-              (value) => DynamicGroupQueryCloudidentityV1beta1.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      queries: map['queries'] == null ? null : pulumi.Input.decodeList<DynamicGroupQueryCloudidentityV1beta1>(map['queries'], (value) => DynamicGroupQueryCloudidentityV1beta1.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

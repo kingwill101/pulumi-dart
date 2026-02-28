@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetAuthorityAccessUrl {
   /// The URL where this CertificateAuthority's CA certificate is published. This will only be
   /// set for CAs that have been activated.
   final String caCertificateAccessUrl;
-
   /// The URL where this CertificateAuthority's CRLs are published. This will only be set for
   /// CAs that have been activated.
   final List<String> crlAccessUrls;
@@ -18,10 +18,10 @@ class GetAuthorityAccessUrl {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['caCertificateAccessUrl'] = caCertificateAccessUrl;
-    map['crlAccessUrls'] = crlAccessUrls;
-    return map;
+    return <String, dynamic>{
+      'caCertificateAccessUrl': caCertificateAccessUrl,
+      'crlAccessUrls': crlAccessUrls,
+    };
   }
 
   factory GetAuthorityAccessUrl.fromMap(Map<String, dynamic> map) {
@@ -31,3 +31,4 @@ class GetAuthorityAccessUrl {
     );
   }
 }
+

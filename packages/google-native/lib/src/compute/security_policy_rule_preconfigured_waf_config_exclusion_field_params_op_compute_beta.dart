@@ -6,20 +6,16 @@ enum SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpComputeBeta {
   equalsAny("EQUALS_ANY"),
   startsWith("STARTS_WITH");
 
-  const SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpComputeBeta(
-      this.value);
+  const SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpComputeBeta(this.value);
   final String value;
 
-  static SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpComputeBeta
-      fromValue(String value) {
-    for (final item
-        in SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpComputeBeta
-            .values) {
+  static SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpComputeBeta fromValue(String value) {
+    for (final item in SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpComputeBeta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpComputeBeta value: $value');
+    throw ArgumentError('Unknown SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpComputeBeta value: $value');
   }
 }
+

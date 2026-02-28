@@ -8,13 +8,10 @@ import 'google_cloud_aiplatform_v1_model_monitoring_objective_config_explanation
 class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaseline {
   /// BigQuery location for BatchExplain output.
   final GoogleCloudAiplatformV1BigQueryDestination? bigquery;
-
   /// Cloud Storage location for BatchExplain output.
   final GoogleCloudAiplatformV1GcsDestination? gcs;
-
   /// The storage format of the predictions generated BatchPrediction job.
-  final GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormat?
-      predictionFormat;
+  final GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormat? predictionFormat;
 
   /// Creates a new [GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaseline].
   /// [bigquery] BigQuery location for BatchExplain output.
@@ -27,37 +24,19 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExpl
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final bigqueryValue = bigquery;
-    if (bigqueryValue != null) {
-      map['bigquery'] = bigqueryValue.toMap();
-    }
-    final gcsValue = gcs;
-    if (gcsValue != null) {
-      map['gcs'] = gcsValue.toMap();
-    }
-    final predictionFormatValue = predictionFormat;
-    if (predictionFormatValue != null) {
-      map['predictionFormat'] = predictionFormatValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'bigquery': ?bigquery == null ? null : bigquery!.toMap(),
+      'gcs': ?gcs == null ? null : gcs!.toMap(),
+      'predictionFormat': ?predictionFormat == null ? null : predictionFormat!.value,
+    };
   }
 
-  factory GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaseline.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaseline.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaseline(
-      bigquery: map['bigquery'] == null
-          ? null
-          : GoogleCloudAiplatformV1BigQueryDestination.fromMap(
-              (map['bigquery'] as Map).cast<String, dynamic>()),
-      gcs: map['gcs'] == null
-          ? null
-          : GoogleCloudAiplatformV1GcsDestination.fromMap(
-              (map['gcs'] as Map).cast<String, dynamic>()),
-      predictionFormat: map['predictionFormat'] == null
-          ? null
-          : GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormat
-              .fromValue(map['predictionFormat'] as String),
+      bigquery: map['bigquery'] == null ? null : GoogleCloudAiplatformV1BigQueryDestination.fromMap((map['bigquery'] as Map).cast<String, dynamic>()),
+      gcs: map['gcs'] == null ? null : GoogleCloudAiplatformV1GcsDestination.fromMap((map['gcs'] as Map).cast<String, dynamic>()),
+      predictionFormat: map['predictionFormat'] == null ? null : GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormat.fromValue(map['predictionFormat'] as String),
     );
   }
 }
+

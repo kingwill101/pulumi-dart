@@ -15,24 +15,15 @@ class FieldIndexConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final indexesValue = indexes;
-    if (indexesValue != null) {
-      map['indexes'] =
-          pulumi.Input.encodeList<FieldIndexConfigIndex, Map<String, dynamic>>(
-              indexesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'indexes': ?indexes == null ? null : pulumi.Input.encodeList<FieldIndexConfigIndex, Map<String, dynamic>>(indexes!, (value) => value.toMap()),
+    };
   }
 
   factory FieldIndexConfig.fromMap(Map<String, dynamic> map) {
     return FieldIndexConfig(
-      indexes: map['indexes'] == null
-          ? null
-          : pulumi.Input.decodeList<FieldIndexConfigIndex>(
-              map['indexes'],
-              (value) => FieldIndexConfigIndex.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      indexes: map['indexes'] == null ? null : pulumi.Input.decodeList<FieldIndexConfigIndex>(map['indexes'], (value) => FieldIndexConfigIndex.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterNodeConfigWindowsNodeConfig {
   /// The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
   final String? osversion;
@@ -11,12 +12,9 @@ class ClusterNodeConfigWindowsNodeConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final osversionValue = osversion;
-    if (osversionValue != null) {
-      map['osversion'] = osversionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'osversion': ?osversion,
+    };
   }
 
   factory ClusterNodeConfigWindowsNodeConfig.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class ClusterNodeConfigWindowsNodeConfig {
     );
   }
 }
+

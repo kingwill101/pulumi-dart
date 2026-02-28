@@ -17,20 +17,15 @@ class ManagedZoneForwardingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['targetNameServers'] = pulumi.Input.encodeList<
-        ManagedZoneForwardingConfigTargetNameServer,
-        Map<String, dynamic>>(targetNameServers, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'targetNameServers': pulumi.Input.encodeList<ManagedZoneForwardingConfigTargetNameServer, Map<String, dynamic>>(targetNameServers, (value) => value.toMap()),
+    };
   }
 
   factory ManagedZoneForwardingConfig.fromMap(Map<String, dynamic> map) {
     return ManagedZoneForwardingConfig(
-      targetNameServers:
-          pulumi.Input.decodeList<ManagedZoneForwardingConfigTargetNameServer>(
-              map['targetNameServers'],
-              (value) => ManagedZoneForwardingConfigTargetNameServer.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      targetNameServers: pulumi.Input.decodeList<ManagedZoneForwardingConfigTargetNameServer>(map['targetNameServers'], (value) => ManagedZoneForwardingConfigTargetNameServer.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

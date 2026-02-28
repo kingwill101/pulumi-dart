@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WorkflowOnExceptionStepTagStepDetailsTag {
   final String key;
-
   /// The value that corresponds to the key.
   final String value;
 
@@ -15,17 +15,17 @@ class WorkflowOnExceptionStepTagStepDetailsTag {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
-  factory WorkflowOnExceptionStepTagStepDetailsTag.fromMap(
-      Map<String, dynamic> map) {
+  factory WorkflowOnExceptionStepTagStepDetailsTag.fromMap(Map<String, dynamic> map) {
     return WorkflowOnExceptionStepTagStepDetailsTag(
       key: map['key'] as String,
       value: map['value'] as String,
     );
   }
 }
+

@@ -6,9 +6,7 @@ import 'google_cloud_aiplatform_v1_feature_view_feature_registry_source_feature_
 /// A Feature Registry source for features that need to be synced to Online Store.
 class GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource {
   /// List of features that need to be synced to Online Store.
-  final List<
-          GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup>
-      featureGroups;
+  final List<GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup> featureGroups;
 
   /// Creates a new [GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource].
   /// [featureGroups] List of features that need to be synced to Online Store.
@@ -17,22 +15,15 @@ class GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['featureGroups'] = pulumi.Input.encodeList<
-        GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup,
-        Map<String, dynamic>>(featureGroups, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'featureGroups': pulumi.Input.encodeList<GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup, Map<String, dynamic>>(featureGroups, (value) => value.toMap()),
+    };
   }
 
-  factory GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource(
-      featureGroups: pulumi.Input.decodeList<
-              GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup>(
-          map['featureGroups'],
-          (value) =>
-              GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      featureGroups: pulumi.Input.decodeList<GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup>(map['featureGroups'], (value) => GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

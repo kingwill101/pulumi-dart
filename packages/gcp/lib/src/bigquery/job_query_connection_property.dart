@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class JobQueryConnectionProperty {
   /// The key of the property to set. Currently supported connection properties:
   final String key;
-
   /// The value of the property to set.
   final String value;
 
@@ -16,10 +16,10 @@ class JobQueryConnectionProperty {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
   factory JobQueryConnectionProperty.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class JobQueryConnectionProperty {
     );
   }
 }
+

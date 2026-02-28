@@ -13,21 +13,15 @@ class VirtualNodeSpecBackendVirtualServiceClientPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final tlsValue = tls;
-    if (tlsValue != null) {
-      map['tls'] = tlsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'tls': ?tls == null ? null : tls!.toMap(),
+    };
   }
 
-  factory VirtualNodeSpecBackendVirtualServiceClientPolicy.fromMap(
-      Map<String, dynamic> map) {
+  factory VirtualNodeSpecBackendVirtualServiceClientPolicy.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecBackendVirtualServiceClientPolicy(
-      tls: map['tls'] == null
-          ? null
-          : VirtualNodeSpecBackendVirtualServiceClientPolicyTls.fromMap(
-              (map['tls'] as Map).cast<String, dynamic>()),
+      tls: map['tls'] == null ? null : VirtualNodeSpecBackendVirtualServiceClientPolicyTls.fromMap((map['tls'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

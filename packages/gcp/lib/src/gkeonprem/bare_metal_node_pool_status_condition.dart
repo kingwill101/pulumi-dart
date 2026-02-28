@@ -1,20 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BareMetalNodePoolStatusCondition {
   /// (Output)
   /// Last time the condition transit from one status to another.
   final String? lastTransitionTime;
-
   /// Human-readable message indicating details about last transition.
   final String? message;
-
   /// Machine-readable message indicating details about last transition.
   final String? reason;
-
   /// (Output)
   /// The lifecycle state of the condition.
   final String? state;
-
   /// Type of the condition.
   /// (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
   final String? type;
@@ -34,35 +31,18 @@ class BareMetalNodePoolStatusCondition {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final lastTransitionTimeValue = lastTransitionTime;
-    if (lastTransitionTimeValue != null) {
-      map['lastTransitionTime'] = lastTransitionTimeValue;
-    }
-    final messageValue = message;
-    if (messageValue != null) {
-      map['message'] = messageValue;
-    }
-    final reasonValue = reason;
-    if (reasonValue != null) {
-      map['reason'] = reasonValue;
-    }
-    final stateValue = state;
-    if (stateValue != null) {
-      map['state'] = stateValue;
-    }
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'lastTransitionTime': ?lastTransitionTime,
+      'message': ?message,
+      'reason': ?reason,
+      'state': ?state,
+      'type': ?type,
+    };
   }
 
   factory BareMetalNodePoolStatusCondition.fromMap(Map<String, dynamic> map) {
     return BareMetalNodePoolStatusCondition(
-      lastTransitionTime: map['lastTransitionTime'] == null
-          ? null
-          : map['lastTransitionTime'] as String,
+      lastTransitionTime: map['lastTransitionTime'] == null ? null : map['lastTransitionTime'] as String,
       message: map['message'] == null ? null : map['message'] as String,
       reason: map['reason'] == null ? null : map['reason'] as String,
       state: map['state'] == null ? null : map['state'] as String,
@@ -70,3 +50,4 @@ class BareMetalNodePoolStatusCondition {
     );
   }
 }
+

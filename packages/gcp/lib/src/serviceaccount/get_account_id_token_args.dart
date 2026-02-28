@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountIdTokenArgs {
   /// Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.   Used only when using impersonation mode.
   final pulumi.Input<List<String>>? delegates;
-
   /// Include the verified email in the claim. Used only when using impersonation mode.
   final pulumi.Input<bool>? includeEmail;
-
   /// The audience claim for the `id_token`.
   final pulumi.Input<String> targetAudience;
-
   /// The email of the service account being impersonated.  Used only when using impersonation mode.
   final pulumi.Input<String>? targetServiceAccount;
 
@@ -29,41 +26,28 @@ class GetAccountIdTokenArgs {
     bool? includeEmail,
     required String targetAudience,
     String? targetServiceAccount,
-  })  : delegates = pulumi.Input.asOptionalInput<List<String>>(delegates),
-        includeEmail = pulumi.Input.asOptionalInput<bool>(includeEmail),
-        targetAudience = pulumi.Input.asInput<String>(targetAudience),
-        targetServiceAccount =
-            pulumi.Input.asOptionalInput<String>(targetServiceAccount);
+  }) :
+      delegates = pulumi.Input.asOptionalInput<List<String>>(delegates),
+      includeEmail = pulumi.Input.asOptionalInput<bool>(includeEmail),
+      targetAudience = pulumi.Input.asInput<String>(targetAudience),
+      targetServiceAccount = pulumi.Input.asOptionalInput<String>(targetServiceAccount);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final delegatesValue = delegates;
-    if (delegatesValue != null) {
-      map['delegates'] = delegatesValue;
-    }
-    final includeEmailValue = includeEmail;
-    if (includeEmailValue != null) {
-      map['includeEmail'] = includeEmailValue;
-    }
-    map['targetAudience'] = targetAudience;
-    final targetServiceAccountValue = targetServiceAccount;
-    if (targetServiceAccountValue != null) {
-      map['targetServiceAccount'] = targetServiceAccountValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'delegates': ?delegates,
+      'includeEmail': ?includeEmail,
+      'targetAudience': targetAudience,
+      'targetServiceAccount': ?targetServiceAccount,
+    };
   }
 
   factory GetAccountIdTokenArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountIdTokenArgs(
-      delegates: map['delegates'] == null
-          ? null
-          : (map['delegates'] as List).cast<String>(),
-      includeEmail:
-          map['includeEmail'] == null ? null : map['includeEmail'] as bool,
+      delegates: map['delegates'] == null ? null : (map['delegates'] as List).cast<String>(),
+      includeEmail: map['includeEmail'] == null ? null : map['includeEmail'] as bool,
       targetAudience: map['targetAudience'] as String,
-      targetServiceAccount: map['targetServiceAccount'] == null
-          ? null
-          : map['targetServiceAccount'] as String,
+      targetServiceAccount: map['targetServiceAccount'] == null ? null : map['targetServiceAccount'] as String,
     );
   }
 }
+

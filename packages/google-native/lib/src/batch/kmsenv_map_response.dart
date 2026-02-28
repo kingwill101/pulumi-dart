@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class KMSEnvMapResponse {
   /// The value of the cipherText response from the `encrypt` method.
   final String cipherText;
-
   /// The name of the KMS key that will be used to decrypt the cipher text.
   final String keyName;
 
@@ -16,10 +16,10 @@ class KMSEnvMapResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cipherText'] = cipherText;
-    map['keyName'] = keyName;
-    return map;
+    return <String, dynamic>{
+      'cipherText': cipherText,
+      'keyName': keyName,
+    };
   }
 
   factory KMSEnvMapResponse.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class KMSEnvMapResponse {
     );
   }
 }
+

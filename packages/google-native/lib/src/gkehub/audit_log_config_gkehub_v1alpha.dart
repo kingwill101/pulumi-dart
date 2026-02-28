@@ -6,7 +6,6 @@ import 'audit_log_config_log_type_gkehub_v1alpha.dart';
 class AuditLogConfigGkehubV1alpha {
   /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   final List<String>? exemptedMembers;
-
   /// The log type that this config enables.
   final AuditLogConfigLogTypeGkehubV1alpha? logType;
 
@@ -19,27 +18,17 @@ class AuditLogConfigGkehubV1alpha {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final exemptedMembersValue = exemptedMembers;
-    if (exemptedMembersValue != null) {
-      map['exemptedMembers'] = exemptedMembersValue;
-    }
-    final logTypeValue = logType;
-    if (logTypeValue != null) {
-      map['logType'] = logTypeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'exemptedMembers': ?exemptedMembers,
+      'logType': ?logType == null ? null : logType!.value,
+    };
   }
 
   factory AuditLogConfigGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return AuditLogConfigGkehubV1alpha(
-      exemptedMembers: map['exemptedMembers'] == null
-          ? null
-          : (map['exemptedMembers'] as List).cast<String>(),
-      logType: map['logType'] == null
-          ? null
-          : AuditLogConfigLogTypeGkehubV1alpha.fromValue(
-              map['logType'] as String),
+      exemptedMembers: map['exemptedMembers'] == null ? null : (map['exemptedMembers'] as List).cast<String>(),
+      logType: map['logType'] == null ? null : AuditLogConfigLogTypeGkehubV1alpha.fromValue(map['logType'] as String),
     );
   }
 }
+

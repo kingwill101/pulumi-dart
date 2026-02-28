@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RuleEvaluationMode {
   /// The mode of an evaluation.
   final String? mode;
@@ -11,12 +12,9 @@ class RuleEvaluationMode {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final modeValue = mode;
-    if (modeValue != null) {
-      map['mode'] = modeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'mode': ?mode,
+    };
   }
 
   factory RuleEvaluationMode.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class RuleEvaluationMode {
     );
   }
 }
+

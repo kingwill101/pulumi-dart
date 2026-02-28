@@ -14,20 +14,15 @@ class FleetObservabilityRoutingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final modeValue = mode;
-    if (modeValue != null) {
-      map['mode'] = modeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'mode': ?mode == null ? null : mode!.value,
+    };
   }
 
   factory FleetObservabilityRoutingConfig.fromMap(Map<String, dynamic> map) {
     return FleetObservabilityRoutingConfig(
-      mode: map['mode'] == null
-          ? null
-          : FleetObservabilityRoutingConfigMode.fromValue(
-              map['mode'] as String),
+      mode: map['mode'] == null ? null : FleetObservabilityRoutingConfigMode.fromValue(map['mode'] as String),
     );
   }
 }
+

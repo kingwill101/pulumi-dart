@@ -120,22 +120,16 @@ import 'vpn_gateway_args.dart';
 class VpnGateway extends pulumi.CustomResource {
   /// The Autonomous System Number (ASN) for the Amazon side of the gateway. If you don't specify an ASN, the virtual private gateway is created with the default ASN.
   late final pulumi.Output<String> amazonSideAsn;
-
   /// Amazon Resource Name (ARN) of the VPN Gateway.
   late final pulumi.Output<String> arn;
-
   /// The Availability Zone for the virtual private gateway.
   late final pulumi.Output<String?> availabilityZone;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The VPC ID to create in.
   late final pulumi.Output<String> vpcId;
 

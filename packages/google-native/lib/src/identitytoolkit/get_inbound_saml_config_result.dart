@@ -7,16 +7,12 @@ import 'google_cloud_identitytoolkit_admin_v2_sp_config_response.dart';
 class GetInboundSamlConfigResult {
   /// The config's display name set by developers.
   final String displayName;
-
   /// True if allows the user to sign in with the provider.
   final bool enabled;
-
   /// The SAML IdP (Identity Provider) configuration when the project acts as the relying party.
   final GoogleCloudIdentitytoolkitAdminV2IdpConfigResponse idpConfig;
-
   /// The name of the InboundSamlConfig resource, for example: 'projects/my-awesome-project/inboundSamlConfigs/my-config-id'. Ignored during create requests.
   final String name;
-
   /// The SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an authentication assertion issued by a SAML identity provider.
   final GoogleCloudIdentitytoolkitAdminV2SpConfigResponse spConfig;
 
@@ -35,24 +31,23 @@ class GetInboundSamlConfigResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['displayName'] = displayName;
-    map['enabled'] = enabled;
-    map['idpConfig'] = idpConfig.toMap();
-    map['name'] = name;
-    map['spConfig'] = spConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'displayName': displayName,
+      'enabled': enabled,
+      'idpConfig': idpConfig.toMap(),
+      'name': name,
+      'spConfig': spConfig.toMap(),
+    };
   }
 
   factory GetInboundSamlConfigResult.fromMap(Map<String, dynamic> map) {
     return GetInboundSamlConfigResult(
       displayName: map['displayName'] as String,
       enabled: map['enabled'] as bool,
-      idpConfig: GoogleCloudIdentitytoolkitAdminV2IdpConfigResponse.fromMap(
-          (map['idpConfig'] as Map).cast<String, dynamic>()),
+      idpConfig: GoogleCloudIdentitytoolkitAdminV2IdpConfigResponse.fromMap((map['idpConfig'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      spConfig: GoogleCloudIdentitytoolkitAdminV2SpConfigResponse.fromMap(
-          (map['spConfig'] as Map).cast<String, dynamic>()),
+      spConfig: GoogleCloudIdentitytoolkitAdminV2SpConfigResponse.fromMap((map['spConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

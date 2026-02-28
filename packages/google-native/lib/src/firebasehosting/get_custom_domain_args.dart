@@ -19,19 +19,17 @@ class GetCustomDomainArgs {
     required String customDomainId,
     String? project,
     required String siteId,
-  })  : customDomainId = pulumi.Input.asInput<String>(customDomainId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        siteId = pulumi.Input.asInput<String>(siteId);
+  }) :
+      customDomainId = pulumi.Input.asInput<String>(customDomainId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      siteId = pulumi.Input.asInput<String>(siteId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['customDomainId'] = customDomainId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['siteId'] = siteId;
-    return map;
+    return <String, dynamic>{
+      'customDomainId': customDomainId,
+      'project': ?project,
+      'siteId': siteId,
+    };
   }
 
   factory GetCustomDomainArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetCustomDomainArgs {
     );
   }
 }
+

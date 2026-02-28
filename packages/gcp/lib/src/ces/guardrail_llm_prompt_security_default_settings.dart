@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GuardrailLlmPromptSecurityDefaultSettings {
   /// (Output)
   /// The default prompt template used by the system.
@@ -14,20 +15,15 @@ class GuardrailLlmPromptSecurityDefaultSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final defaultPromptTemplateValue = defaultPromptTemplate;
-    if (defaultPromptTemplateValue != null) {
-      map['defaultPromptTemplate'] = defaultPromptTemplateValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'defaultPromptTemplate': ?defaultPromptTemplate,
+    };
   }
 
-  factory GuardrailLlmPromptSecurityDefaultSettings.fromMap(
-      Map<String, dynamic> map) {
+  factory GuardrailLlmPromptSecurityDefaultSettings.fromMap(Map<String, dynamic> map) {
     return GuardrailLlmPromptSecurityDefaultSettings(
-      defaultPromptTemplate: map['defaultPromptTemplate'] == null
-          ? null
-          : map['defaultPromptTemplate'] as String,
+      defaultPromptTemplate: map['defaultPromptTemplate'] == null ? null : map['defaultPromptTemplate'] as String,
     );
   }
 }
+

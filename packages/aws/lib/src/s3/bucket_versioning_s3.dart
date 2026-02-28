@@ -559,19 +559,14 @@ import 'bucket_versioning_versioning_configuration.dart';
 class BucketVersioningS3 extends pulumi.CustomResource {
   /// Name of the S3 bucket.
   late final pulumi.Output<String> bucket;
-
   /// Account ID of the expected bucket owner.
   late final pulumi.Output<String?> expectedBucketOwner;
-
   /// Concatenation of the authentication device's serial number, a space, and the value that is displayed on your authentication device.
   late final pulumi.Output<String?> mfa;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Configuration block for the versioning parameters. See below.
-  late final pulumi.Output<BucketVersioningVersioningConfiguration>
-      versioningConfiguration;
+  late final pulumi.Output<BucketVersioningVersioningConfiguration> versioningConfiguration;
 
   /// Creates a new [BucketVersioningS3].
   /// [name] The Pulumi resource name.
@@ -591,8 +586,6 @@ class BucketVersioningS3 extends pulumi.CustomResource {
     this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     this.mfa = registerOutput<String?>('mfa');
     this.region = registerOutput<String>('region');
-    this.versioningConfiguration =
-        registerOutput<BucketVersioningVersioningConfiguration>(
-            'versioningConfiguration');
+    this.versioningConfiguration = registerOutput<BucketVersioningVersioningConfiguration>('versioningConfiguration');
   }
 }

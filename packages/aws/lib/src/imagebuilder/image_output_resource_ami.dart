@@ -1,18 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ImageOutputResourceAmi {
   /// Account identifier of the AMI.
   final String? accountId;
-
   /// Description of the AMI.
   final String? description;
-
   /// Identifier of the AMI.
   final String? image;
-
   /// Name of the AMI.
   final String? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final String? region;
 
@@ -31,38 +28,23 @@ class ImageOutputResourceAmi {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final accountIdValue = accountId;
-    if (accountIdValue != null) {
-      map['accountId'] = accountIdValue;
-    }
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final imageValue = image;
-    if (imageValue != null) {
-      map['image'] = imageValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'accountId': ?accountId,
+      'description': ?description,
+      'image': ?image,
+      'name': ?name,
+      'region': ?region,
+    };
   }
 
   factory ImageOutputResourceAmi.fromMap(Map<String, dynamic> map) {
     return ImageOutputResourceAmi(
       accountId: map['accountId'] == null ? null : map['accountId'] as String,
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       image: map['image'] == null ? null : map['image'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

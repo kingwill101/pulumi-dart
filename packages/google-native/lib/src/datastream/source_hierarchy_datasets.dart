@@ -14,20 +14,15 @@ class SourceHierarchyDatasets {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final datasetTemplateValue = datasetTemplate;
-    if (datasetTemplateValue != null) {
-      map['datasetTemplate'] = datasetTemplateValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'datasetTemplate': ?datasetTemplate == null ? null : datasetTemplate!.toMap(),
+    };
   }
 
   factory SourceHierarchyDatasets.fromMap(Map<String, dynamic> map) {
     return SourceHierarchyDatasets(
-      datasetTemplate: map['datasetTemplate'] == null
-          ? null
-          : DatasetTemplate.fromMap(
-              (map['datasetTemplate'] as Map).cast<String, dynamic>()),
+      datasetTemplate: map['datasetTemplate'] == null ? null : DatasetTemplate.fromMap((map['datasetTemplate'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

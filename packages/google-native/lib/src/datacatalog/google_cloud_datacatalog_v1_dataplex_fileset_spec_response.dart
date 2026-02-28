@@ -14,16 +14,15 @@ class GoogleCloudDatacatalogV1DataplexFilesetSpecResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dataplexSpec'] = dataplexSpec.toMap();
-    return map;
+    return <String, dynamic>{
+      'dataplexSpec': dataplexSpec.toMap(),
+    };
   }
 
-  factory GoogleCloudDatacatalogV1DataplexFilesetSpecResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1DataplexFilesetSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1DataplexFilesetSpecResponse(
-      dataplexSpec: GoogleCloudDatacatalogV1DataplexSpecResponse.fromMap(
-          (map['dataplexSpec'] as Map).cast<String, dynamic>()),
+      dataplexSpec: GoogleCloudDatacatalogV1DataplexSpecResponse.fromMap((map['dataplexSpec'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

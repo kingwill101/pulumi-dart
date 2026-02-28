@@ -15,7 +15,7 @@ enum TlsInspectionPolicyTlsFeatureProfile {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown TlsInspectionPolicyTlsFeatureProfile value: $value');
+    throw ArgumentError('Unknown TlsInspectionPolicyTlsFeatureProfile value: $value');
   }
 }
+

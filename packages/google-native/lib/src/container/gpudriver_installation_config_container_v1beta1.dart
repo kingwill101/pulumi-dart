@@ -5,8 +5,7 @@ import 'gpudriver_installation_config_gpu_driver_version_container_v1beta1.dart'
 /// GPUDriverInstallationConfig specifies the version of GPU driver to be auto installed.
 class GPUDriverInstallationConfigContainerV1beta1 {
   /// Mode for how the GPU driver is installed.
-  final GPUDriverInstallationConfigGpuDriverVersionContainerV1beta1?
-      gpuDriverVersion;
+  final GPUDriverInstallationConfigGpuDriverVersionContainerV1beta1? gpuDriverVersion;
 
   /// Creates a new [GPUDriverInstallationConfigContainerV1beta1].
   /// [gpuDriverVersion] Mode for how the GPU driver is installed.
@@ -15,21 +14,15 @@ class GPUDriverInstallationConfigContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final gpuDriverVersionValue = gpuDriverVersion;
-    if (gpuDriverVersionValue != null) {
-      map['gpuDriverVersion'] = gpuDriverVersionValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'gpuDriverVersion': ?gpuDriverVersion == null ? null : gpuDriverVersion!.value,
+    };
   }
 
-  factory GPUDriverInstallationConfigContainerV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory GPUDriverInstallationConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return GPUDriverInstallationConfigContainerV1beta1(
-      gpuDriverVersion: map['gpuDriverVersion'] == null
-          ? null
-          : GPUDriverInstallationConfigGpuDriverVersionContainerV1beta1
-              .fromValue(map['gpuDriverVersion'] as String),
+      gpuDriverVersion: map['gpuDriverVersion'] == null ? null : GPUDriverInstallationConfigGpuDriverVersionContainerV1beta1.fromValue(map['gpuDriverVersion'] as String),
     );
   }
 }
+

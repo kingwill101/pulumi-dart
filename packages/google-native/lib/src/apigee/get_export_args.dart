@@ -19,16 +19,17 @@ class GetExportArgs {
     required String environmentId,
     required String exportId,
     required String organizationId,
-  })  : environmentId = pulumi.Input.asInput<String>(environmentId),
-        exportId = pulumi.Input.asInput<String>(exportId),
-        organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) :
+      environmentId = pulumi.Input.asInput<String>(environmentId),
+      exportId = pulumi.Input.asInput<String>(exportId),
+      organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['environmentId'] = environmentId;
-    map['exportId'] = exportId;
-    map['organizationId'] = organizationId;
-    return map;
+    return <String, dynamic>{
+      'environmentId': environmentId,
+      'exportId': exportId,
+      'organizationId': organizationId,
+    };
   }
 
   factory GetExportArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +40,4 @@ class GetExportArgs {
     );
   }
 }
+

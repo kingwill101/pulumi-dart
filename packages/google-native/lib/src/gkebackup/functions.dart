@@ -71,8 +71,7 @@ Future<GetBackupPlanBackupIamPolicyResult> getBackupPlanBackupIamPolicy(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkebackup_v1_get_backup_plan_backup_volume_backup_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetBackupPlanBackupVolumeBackupIamPolicyResult>
-    getBackupPlanBackupVolumeBackupIamPolicy(
+Future<GetBackupPlanBackupVolumeBackupIamPolicyResult> getBackupPlanBackupVolumeBackupIamPolicy(
   GetBackupPlanBackupVolumeBackupIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -168,8 +167,7 @@ Future<GetRestorePlanRestoreIamPolicyResult> getRestorePlanRestoreIamPolicy(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkebackup_v1_get_restore_plan_restore_volume_restore_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRestorePlanRestoreVolumeRestoreIamPolicyResult>
-    getRestorePlanRestoreVolumeRestoreIamPolicy(
+Future<GetRestorePlanRestoreVolumeRestoreIamPolicyResult> getRestorePlanRestoreVolumeRestoreIamPolicy(
   GetRestorePlanRestoreVolumeRestoreIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

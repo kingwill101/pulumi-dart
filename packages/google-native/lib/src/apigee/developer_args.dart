@@ -10,32 +10,23 @@ import 'google_cloud_apigee_v1_attribute.dart';
 class DeveloperArgs {
   /// Access type.
   final pulumi.Input<String>? accessType;
-
   /// Developer app family.
   final pulumi.Input<String>? appFamily;
-
   /// List of apps associated with the developer.
   final pulumi.Input<List<String>>? apps;
-
   /// Optional. Developer attributes (name/value pairs). The custom attribute limit is 18.
   final pulumi.Input<List<GoogleCloudApigeeV1Attribute>>? attributes;
-
   /// List of companies associated with the developer.
   final pulumi.Input<List<String>>? companies;
-
   /// ID of the developer. **Note**: IDs are generated internally by Apigee and are not guaranteed to stay the same over time.
   final pulumi.Input<String>? developerId;
-
   /// Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
   final pulumi.Input<String> email;
-
   /// First name of the developer.
   final pulumi.Input<String> firstName;
-
   /// Last name of the developer.
   final pulumi.Input<String> lastName;
   final pulumi.Input<String> organizationId;
-
   /// User name of the developer. Not used by Apigee hybrid.
   final pulumi.Input<String> userName;
 
@@ -63,75 +54,43 @@ class DeveloperArgs {
     required String lastName,
     required String organizationId,
     required String userName,
-  })  : accessType = pulumi.Input.asOptionalInput<String>(accessType),
-        appFamily = pulumi.Input.asOptionalInput<String>(appFamily),
-        apps = pulumi.Input.asOptionalInput<List<String>>(apps),
-        attributes =
-            pulumi.Input.asOptionalInput<List<GoogleCloudApigeeV1Attribute>>(
-                attributes),
-        companies = pulumi.Input.asOptionalInput<List<String>>(companies),
-        developerId = pulumi.Input.asOptionalInput<String>(developerId),
-        email = pulumi.Input.asInput<String>(email),
-        firstName = pulumi.Input.asInput<String>(firstName),
-        lastName = pulumi.Input.asInput<String>(lastName),
-        organizationId = pulumi.Input.asInput<String>(organizationId),
-        userName = pulumi.Input.asInput<String>(userName);
+  }) :
+      accessType = pulumi.Input.asOptionalInput<String>(accessType),
+      appFamily = pulumi.Input.asOptionalInput<String>(appFamily),
+      apps = pulumi.Input.asOptionalInput<List<String>>(apps),
+      attributes = pulumi.Input.asOptionalInput<List<GoogleCloudApigeeV1Attribute>>(attributes),
+      companies = pulumi.Input.asOptionalInput<List<String>>(companies),
+      developerId = pulumi.Input.asOptionalInput<String>(developerId),
+      email = pulumi.Input.asInput<String>(email),
+      firstName = pulumi.Input.asInput<String>(firstName),
+      lastName = pulumi.Input.asInput<String>(lastName),
+      organizationId = pulumi.Input.asInput<String>(organizationId),
+      userName = pulumi.Input.asInput<String>(userName);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final accessTypeValue = accessType;
-    if (accessTypeValue != null) {
-      map['accessType'] = accessTypeValue;
-    }
-    final appFamilyValue = appFamily;
-    if (appFamilyValue != null) {
-      map['appFamily'] = appFamilyValue;
-    }
-    final appsValue = apps;
-    if (appsValue != null) {
-      map['apps'] = appsValue;
-    }
-    final attributesValue = attributes;
-    if (attributesValue != null) {
-      map['attributes'] = pulumi.Input.mapOptionalInputValue<
-              List<GoogleCloudApigeeV1Attribute>, List<Map<String, dynamic>>>(
-          attributesValue,
-          (value) => pulumi.Input.encodeList<GoogleCloudApigeeV1Attribute,
-              Map<String, dynamic>>(value, (value) => value.toMap()));
-    }
-    final companiesValue = companies;
-    if (companiesValue != null) {
-      map['companies'] = companiesValue;
-    }
-    final developerIdValue = developerId;
-    if (developerIdValue != null) {
-      map['developerId'] = developerIdValue;
-    }
-    map['email'] = email;
-    map['firstName'] = firstName;
-    map['lastName'] = lastName;
-    map['organizationId'] = organizationId;
-    map['userName'] = userName;
-    return map;
+    return <String, dynamic>{
+      'accessType': ?accessType,
+      'appFamily': ?appFamily,
+      'apps': ?apps,
+      'attributes': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudApigeeV1Attribute>, List<Map<String, dynamic>>>(attributes, (value) => pulumi.Input.encodeList<GoogleCloudApigeeV1Attribute, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'companies': ?companies,
+      'developerId': ?developerId,
+      'email': email,
+      'firstName': firstName,
+      'lastName': lastName,
+      'organizationId': organizationId,
+      'userName': userName,
+    };
   }
 
   factory DeveloperArgs.fromMap(Map<String, dynamic> map) {
     return DeveloperArgs(
-      accessType:
-          map['accessType'] == null ? null : map['accessType'] as String,
+      accessType: map['accessType'] == null ? null : map['accessType'] as String,
       appFamily: map['appFamily'] == null ? null : map['appFamily'] as String,
       apps: map['apps'] == null ? null : (map['apps'] as List).cast<String>(),
-      attributes: map['attributes'] == null
-          ? null
-          : pulumi.Input.decodeList<GoogleCloudApigeeV1Attribute>(
-              map['attributes'],
-              (value) => GoogleCloudApigeeV1Attribute.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      companies: map['companies'] == null
-          ? null
-          : (map['companies'] as List).cast<String>(),
-      developerId:
-          map['developerId'] == null ? null : map['developerId'] as String,
+      attributes: map['attributes'] == null ? null : pulumi.Input.decodeList<GoogleCloudApigeeV1Attribute>(map['attributes'], (value) => GoogleCloudApigeeV1Attribute.fromMap((value as Map).cast<String, dynamic>())),
+      companies: map['companies'] == null ? null : (map['companies'] as List).cast<String>(),
+      developerId: map['developerId'] == null ? null : map['developerId'] as String,
       email: map['email'] as String,
       firstName: map['firstName'] as String,
       lastName: map['lastName'] as String,
@@ -140,3 +99,4 @@ class DeveloperArgs {
     );
   }
 }
+

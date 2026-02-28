@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetAncestryAncestor {
   /// If it's a project, the `project_id` is exported, else the numeric folder id or organization id.
   final String id;
-
   /// One of `"project"`, `"folder"` or `"organization"`.
   final String type;
 
@@ -16,10 +16,10 @@ class GetAncestryAncestor {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'type': type,
+    };
   }
 
   factory GetAncestryAncestor.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetAncestryAncestor {
     );
   }
 }
+

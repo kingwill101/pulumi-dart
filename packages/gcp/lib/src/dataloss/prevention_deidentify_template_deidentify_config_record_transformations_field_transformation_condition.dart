@@ -5,8 +5,7 @@ import 'prevention_deidentify_template_deidentify_config_record_transformations_
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition {
   /// An expression, consisting of an operator and conditions.
   /// Structure is documented below.
-  final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions?
-      expressions;
+  final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions? expressions;
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition].
   /// [expressions] An expression, consisting of an operator and conditions.
@@ -15,21 +14,15 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final expressionsValue = expressions;
-    if (expressionsValue != null) {
-      map['expressions'] = expressionsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'expressions': ?expressions == null ? null : expressions!.toMap(),
+    };
   }
 
-  factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition.fromMap(
-      Map<String, dynamic> map) {
+  factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition(
-      expressions: map['expressions'] == null
-          ? null
-          : PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions
-              .fromMap((map['expressions'] as Map).cast<String, dynamic>()),
+      expressions: map['expressions'] == null ? null : PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions.fromMap((map['expressions'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

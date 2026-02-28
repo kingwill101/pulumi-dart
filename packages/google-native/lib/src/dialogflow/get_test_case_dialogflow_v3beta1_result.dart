@@ -9,26 +9,18 @@ import 'google_cloud_dialogflow_cx_v3beta1_test_config_response.dart';
 class GetTestCaseDialogflowV3beta1Result {
   /// When the test was created.
   final String creationTime;
-
   /// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
   final String displayName;
-
   /// The latest test result.
   final GoogleCloudDialogflowCxV3beta1TestCaseResultResponse lastTestResult;
-
   /// The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.
   final String name;
-
   /// Additional freeform notes about the test case. Limit of 400 characters.
   final String notes;
-
   /// Tags are short descriptions that users may apply to test cases for organizational and filtering purposes. Each tag should start with "#" and has a limit of 30 characters.
   final List<String> tags;
-
   /// The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
-  final List<GoogleCloudDialogflowCxV3beta1ConversationTurnResponse>
-      testCaseConversationTurns;
-
+  final List<GoogleCloudDialogflowCxV3beta1ConversationTurnResponse> testCaseConversationTurns;
   /// Config for the test case.
   final GoogleCloudDialogflowCxV3beta1TestConfigResponse testConfig;
 
@@ -53,39 +45,29 @@ class GetTestCaseDialogflowV3beta1Result {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['creationTime'] = creationTime;
-    map['displayName'] = displayName;
-    map['lastTestResult'] = lastTestResult.toMap();
-    map['name'] = name;
-    map['notes'] = notes;
-    map['tags'] = tags;
-    map['testCaseConversationTurns'] = pulumi.Input.encodeList<
-            GoogleCloudDialogflowCxV3beta1ConversationTurnResponse,
-            Map<String, dynamic>>(
-        testCaseConversationTurns, (value) => value.toMap());
-    map['testConfig'] = testConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'creationTime': creationTime,
+      'displayName': displayName,
+      'lastTestResult': lastTestResult.toMap(),
+      'name': name,
+      'notes': notes,
+      'tags': tags,
+      'testCaseConversationTurns': pulumi.Input.encodeList<GoogleCloudDialogflowCxV3beta1ConversationTurnResponse, Map<String, dynamic>>(testCaseConversationTurns, (value) => value.toMap()),
+      'testConfig': testConfig.toMap(),
+    };
   }
 
   factory GetTestCaseDialogflowV3beta1Result.fromMap(Map<String, dynamic> map) {
     return GetTestCaseDialogflowV3beta1Result(
       creationTime: map['creationTime'] as String,
       displayName: map['displayName'] as String,
-      lastTestResult:
-          GoogleCloudDialogflowCxV3beta1TestCaseResultResponse.fromMap(
-              (map['lastTestResult'] as Map).cast<String, dynamic>()),
+      lastTestResult: GoogleCloudDialogflowCxV3beta1TestCaseResultResponse.fromMap((map['lastTestResult'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       notes: map['notes'] as String,
       tags: (map['tags'] as List).cast<String>(),
-      testCaseConversationTurns: pulumi.Input.decodeList<
-              GoogleCloudDialogflowCxV3beta1ConversationTurnResponse>(
-          map['testCaseConversationTurns'],
-          (value) =>
-              GoogleCloudDialogflowCxV3beta1ConversationTurnResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      testConfig: GoogleCloudDialogflowCxV3beta1TestConfigResponse.fromMap(
-          (map['testConfig'] as Map).cast<String, dynamic>()),
+      testCaseConversationTurns: pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1ConversationTurnResponse>(map['testCaseConversationTurns'], (value) => GoogleCloudDialogflowCxV3beta1ConversationTurnResponse.fromMap((value as Map).cast<String, dynamic>())),
+      testConfig: GoogleCloudDialogflowCxV3beta1TestConfigResponse.fromMap((map['testConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

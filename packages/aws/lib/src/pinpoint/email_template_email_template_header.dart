@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EmailTemplateEmailTemplateHeader {
   /// Name of the message header. The header name can contain up to 126 characters.
   final String? name;
-
   /// Value of the message header. The header value can contain up to 870 characters, including the length of any rendered attributes. For example if you add the {CreationDate} attribute, it renders as YYYY-MM-DDTHH:MM:SS.SSSZ and is 24 characters in length.
   final String? value;
 
@@ -16,16 +16,10 @@ class EmailTemplateEmailTemplateHeader {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final valueValue = value;
-    if (valueValue != null) {
-      map['value'] = valueValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+      'value': ?value,
+    };
   }
 
   factory EmailTemplateEmailTemplateHeader.fromMap(Map<String, dynamic> map) {
@@ -35,3 +29,4 @@ class EmailTemplateEmailTemplateHeader {
     );
   }
 }
+

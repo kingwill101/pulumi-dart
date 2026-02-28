@@ -14,16 +14,15 @@ class GooglePrivacyDlpV2DiscoveryTargetResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bigQueryTarget'] = bigQueryTarget.toMap();
-    return map;
+    return <String, dynamic>{
+      'bigQueryTarget': bigQueryTarget.toMap(),
+    };
   }
 
-  factory GooglePrivacyDlpV2DiscoveryTargetResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2DiscoveryTargetResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DiscoveryTargetResponse(
-      bigQueryTarget: GooglePrivacyDlpV2BigQueryDiscoveryTargetResponse.fromMap(
-          (map['bigQueryTarget'] as Map).cast<String, dynamic>()),
+      bigQueryTarget: GooglePrivacyDlpV2BigQueryDiscoveryTargetResponse.fromMap((map['bigQueryTarget'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -19,22 +19,17 @@ class GetSchemaArgs {
     String? project,
     required String schemaId,
     String? view,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        schemaId = pulumi.Input.asInput<String>(schemaId),
-        view = pulumi.Input.asOptionalInput<String>(view);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      schemaId = pulumi.Input.asInput<String>(schemaId),
+      view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['schemaId'] = schemaId;
-    final viewValue = view;
-    if (viewValue != null) {
-      map['view'] = viewValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'schemaId': schemaId,
+      'view': ?view,
+    };
   }
 
   factory GetSchemaArgs.fromMap(Map<String, dynamic> map) {
@@ -45,3 +40,4 @@ class GetSchemaArgs {
     );
   }
 }
+

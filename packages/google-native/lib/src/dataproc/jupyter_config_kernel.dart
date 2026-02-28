@@ -16,3 +16,4 @@ enum JupyterConfigKernel {
     throw ArgumentError('Unknown JupyterConfigKernel value: $value');
   }
 }
+

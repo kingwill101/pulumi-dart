@@ -6,7 +6,6 @@ import 'authorization_logging_options_response.dart';
 class CloudAuditOptionsResponse {
   /// Information used by the Cloud Audit Logging pipeline.
   final AuthorizationLoggingOptionsResponse authorizationLoggingOptions;
-
   /// The log_name to populate in the Cloud Audit Record.
   final String logName;
 
@@ -19,17 +18,17 @@ class CloudAuditOptionsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['authorizationLoggingOptions'] = authorizationLoggingOptions.toMap();
-    map['logName'] = logName;
-    return map;
+    return <String, dynamic>{
+      'authorizationLoggingOptions': authorizationLoggingOptions.toMap(),
+      'logName': logName,
+    };
   }
 
   factory CloudAuditOptionsResponse.fromMap(Map<String, dynamic> map) {
     return CloudAuditOptionsResponse(
-      authorizationLoggingOptions: AuthorizationLoggingOptionsResponse.fromMap(
-          (map['authorizationLoggingOptions'] as Map).cast<String, dynamic>()),
+      authorizationLoggingOptions: AuthorizationLoggingOptionsResponse.fromMap((map['authorizationLoggingOptions'] as Map).cast<String, dynamic>()),
       logName: map['logName'] as String,
     );
   }
 }
+

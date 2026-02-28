@@ -15,20 +15,15 @@ class UserManagedResponseSecretmanagerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['replicas'] = pulumi.Input.encodeList<
-        ReplicaResponseSecretmanagerV1beta1,
-        Map<String, dynamic>>(replicas, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'replicas': pulumi.Input.encodeList<ReplicaResponseSecretmanagerV1beta1, Map<String, dynamic>>(replicas, (value) => value.toMap()),
+    };
   }
 
-  factory UserManagedResponseSecretmanagerV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory UserManagedResponseSecretmanagerV1beta1.fromMap(Map<String, dynamic> map) {
     return UserManagedResponseSecretmanagerV1beta1(
-      replicas: pulumi.Input.decodeList<ReplicaResponseSecretmanagerV1beta1>(
-          map['replicas'],
-          (value) => ReplicaResponseSecretmanagerV1beta1.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      replicas: pulumi.Input.decodeList<ReplicaResponseSecretmanagerV1beta1>(map['replicas'], (value) => ReplicaResponseSecretmanagerV1beta1.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -6,16 +6,12 @@ import 'google_cloud_apigee_v1_api_category_response.dart';
 class GetApicategoryResult {
   /// The API category resource.
   final GoogleCloudApigeeV1ApiCategoryResponse data;
-
   /// Unique error code for the request, if any.
   final String errorCode;
-
   /// Description of the operation.
   final String message;
-
   /// Unique ID of the request.
   final String requestId;
-
   /// Status of the operation.
   final String status;
 
@@ -34,19 +30,18 @@ class GetApicategoryResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['data'] = data.toMap();
-    map['errorCode'] = errorCode;
-    map['message'] = message;
-    map['requestId'] = requestId;
-    map['status'] = status;
-    return map;
+    return <String, dynamic>{
+      'data': data.toMap(),
+      'errorCode': errorCode,
+      'message': message,
+      'requestId': requestId,
+      'status': status,
+    };
   }
 
   factory GetApicategoryResult.fromMap(Map<String, dynamic> map) {
     return GetApicategoryResult(
-      data: GoogleCloudApigeeV1ApiCategoryResponse.fromMap(
-          (map['data'] as Map).cast<String, dynamic>()),
+      data: GoogleCloudApigeeV1ApiCategoryResponse.fromMap((map['data'] as Map).cast<String, dynamic>()),
       errorCode: map['errorCode'] as String,
       message: map['message'] as String,
       requestId: map['requestId'] as String,
@@ -54,3 +49,4 @@ class GetApicategoryResult {
     );
   }
 }
+

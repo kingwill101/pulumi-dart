@@ -13,18 +13,19 @@ class GetOrganizationSecurityPolicyComputeBetaArgs {
   /// [securityPolicy] Required.
   GetOrganizationSecurityPolicyComputeBetaArgs({
     required String securityPolicy,
-  }) : securityPolicy = pulumi.Input.asInput<String>(securityPolicy);
+  }) :
+      securityPolicy = pulumi.Input.asInput<String>(securityPolicy);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['securityPolicy'] = securityPolicy;
-    return map;
+    return <String, dynamic>{
+      'securityPolicy': securityPolicy,
+    };
   }
 
-  factory GetOrganizationSecurityPolicyComputeBetaArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetOrganizationSecurityPolicyComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationSecurityPolicyComputeBetaArgs(
       securityPolicy: map['securityPolicy'] as String,
     );
   }
 }
+

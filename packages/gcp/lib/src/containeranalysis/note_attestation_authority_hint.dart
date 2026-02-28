@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NoteAttestationAuthorityHint {
   /// The human readable name of this Attestation Authority, for
   /// example "qa".
@@ -12,9 +13,9 @@ class NoteAttestationAuthorityHint {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['humanReadableName'] = humanReadableName;
-    return map;
+    return <String, dynamic>{
+      'humanReadableName': humanReadableName,
+    };
   }
 
   factory NoteAttestationAuthorityHint.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class NoteAttestationAuthorityHint {
     );
   }
 }
+

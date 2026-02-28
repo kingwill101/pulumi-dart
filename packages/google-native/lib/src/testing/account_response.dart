@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Identifies an account and how to log into it.
 class AccountResponse {
   /// An automatic google login account.
@@ -12,9 +13,9 @@ class AccountResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['googleAuto'] = googleAuto;
-    return map;
+    return <String, dynamic>{
+      'googleAuto': googleAuto,
+    };
   }
 
   factory AccountResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class AccountResponse {
     );
   }
 }
+

@@ -6,12 +6,10 @@ import 'get_subnetworks_subnetwork.dart';
 /// Result data returned by getSubnetworks.
 class GetSubnetworksResult {
   final String? filter;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? project;
   final String? region;
-
   /// A list of all retrieved GCE subnetworks. Structure is defined below.
   final List<GetSubnetworksSubnetwork> subnetworks;
 
@@ -30,24 +28,13 @@ class GetSubnetworksResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final filterValue = filter;
-    if (filterValue != null) {
-      map['filter'] = filterValue;
-    }
-    map['id'] = id;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['subnetworks'] =
-        pulumi.Input.encodeList<GetSubnetworksSubnetwork, Map<String, dynamic>>(
-            subnetworks, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'filter': ?filter,
+      'id': id,
+      'project': ?project,
+      'region': ?region,
+      'subnetworks': pulumi.Input.encodeList<GetSubnetworksSubnetwork, Map<String, dynamic>>(subnetworks, (value) => value.toMap()),
+    };
   }
 
   factory GetSubnetworksResult.fromMap(Map<String, dynamic> map) {
@@ -56,10 +43,8 @@ class GetSubnetworksResult {
       id: map['id'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      subnetworks: pulumi.Input.decodeList<GetSubnetworksSubnetwork>(
-          map['subnetworks'],
-          (value) => GetSubnetworksSubnetwork.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      subnetworks: pulumi.Input.decodeList<GetSubnetworksSubnetwork>(map['subnetworks'], (value) => GetSubnetworksSubnetwork.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

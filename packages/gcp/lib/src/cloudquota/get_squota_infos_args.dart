@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSQuotaInfosArgs {
   /// Parent value of QuotaInfo resources. Listing across different resource containers (such as 'projects/-') is not allowed. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number].
   final pulumi.Input<String> parent;
-
   /// The name of the service in which the quotas are defined.
   final pulumi.Input<String> service;
 
@@ -19,14 +18,15 @@ class GetSQuotaInfosArgs {
   GetSQuotaInfosArgs({
     required String parent,
     required String service,
-  })  : parent = pulumi.Input.asInput<String>(parent),
-        service = pulumi.Input.asInput<String>(service);
+  }) :
+      parent = pulumi.Input.asInput<String>(parent),
+      service = pulumi.Input.asInput<String>(service);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['parent'] = parent;
-    map['service'] = service;
-    return map;
+    return <String, dynamic>{
+      'parent': parent,
+      'service': service,
+    };
   }
 
   factory GetSQuotaInfosArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +36,4 @@ class GetSQuotaInfosArgs {
     );
   }
 }
+

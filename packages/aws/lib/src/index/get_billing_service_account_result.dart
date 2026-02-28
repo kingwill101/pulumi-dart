@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getBillingServiceAccount.
 class GetBillingServiceAccountResult {
   /// ARN of the AWS billing service account.
   final String arn;
-
   /// ID of the AWS billing service account.
   final String id;
 
@@ -17,10 +17,10 @@ class GetBillingServiceAccountResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['id'] = id;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'id': id,
+    };
   }
 
   factory GetBillingServiceAccountResult.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class GetBillingServiceAccountResult {
     );
   }
 }
+

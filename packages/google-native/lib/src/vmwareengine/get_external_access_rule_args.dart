@@ -22,22 +22,19 @@ class GetExternalAccessRuleArgs {
     required String location,
     required String networkPolicyId,
     String? project,
-  })  : externalAccessRuleId =
-            pulumi.Input.asInput<String>(externalAccessRuleId),
-        location = pulumi.Input.asInput<String>(location),
-        networkPolicyId = pulumi.Input.asInput<String>(networkPolicyId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      externalAccessRuleId = pulumi.Input.asInput<String>(externalAccessRuleId),
+      location = pulumi.Input.asInput<String>(location),
+      networkPolicyId = pulumi.Input.asInput<String>(networkPolicyId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['externalAccessRuleId'] = externalAccessRuleId;
-    map['location'] = location;
-    map['networkPolicyId'] = networkPolicyId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'externalAccessRuleId': externalAccessRuleId,
+      'location': location,
+      'networkPolicyId': networkPolicyId,
+      'project': ?project,
+    };
   }
 
   factory GetExternalAccessRuleArgs.fromMap(Map<String, dynamic> map) {
@@ -49,3 +46,4 @@ class GetExternalAccessRuleArgs {
     );
   }
 }
+

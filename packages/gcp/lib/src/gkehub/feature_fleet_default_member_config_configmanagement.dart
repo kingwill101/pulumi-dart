@@ -6,11 +6,9 @@ class FeatureFleetDefaultMemberConfigConfigmanagement {
   /// ConfigSync configuration for the cluster
   /// Structure is documented below.
   final FeatureFleetDefaultMemberConfigConfigmanagementConfigSync? configSync;
-
   /// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
   /// Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
   final String? management;
-
   /// Version of Config Sync installed
   final String? version;
 
@@ -25,32 +23,19 @@ class FeatureFleetDefaultMemberConfigConfigmanagement {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final configSyncValue = configSync;
-    if (configSyncValue != null) {
-      map['configSync'] = configSyncValue.toMap();
-    }
-    final managementValue = management;
-    if (managementValue != null) {
-      map['management'] = managementValue;
-    }
-    final versionValue = version;
-    if (versionValue != null) {
-      map['version'] = versionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'configSync': ?configSync == null ? null : configSync!.toMap(),
+      'management': ?management,
+      'version': ?version,
+    };
   }
 
-  factory FeatureFleetDefaultMemberConfigConfigmanagement.fromMap(
-      Map<String, dynamic> map) {
+  factory FeatureFleetDefaultMemberConfigConfigmanagement.fromMap(Map<String, dynamic> map) {
     return FeatureFleetDefaultMemberConfigConfigmanagement(
-      configSync: map['configSync'] == null
-          ? null
-          : FeatureFleetDefaultMemberConfigConfigmanagementConfigSync.fromMap(
-              (map['configSync'] as Map).cast<String, dynamic>()),
-      management:
-          map['management'] == null ? null : map['management'] as String,
+      configSync: map['configSync'] == null ? null : FeatureFleetDefaultMemberConfigConfigmanagementConfigSync.fromMap((map['configSync'] as Map).cast<String, dynamic>()),
+      management: map['management'] == null ? null : map['management'] as String,
       version: map['version'] == null ? null : map['version'] as String,
     );
   }
 }
+

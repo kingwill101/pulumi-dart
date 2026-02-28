@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDomainCognitoOption {
   /// Whether node to node encryption is enabled.
   final bool enabled;
-
   /// The Cognito Identity pool used by the domain.
   final String identityPoolId;
-
   /// The IAM Role with the AmazonESCognitoAccess policy attached.
   final String roleArn;
-
   /// The Cognito User pool used by the domain.
   final String userPoolId;
 
@@ -26,12 +24,12 @@ class GetDomainCognitoOption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    map['identityPoolId'] = identityPoolId;
-    map['roleArn'] = roleArn;
-    map['userPoolId'] = userPoolId;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+      'identityPoolId': identityPoolId,
+      'roleArn': roleArn,
+      'userPoolId': userPoolId,
+    };
   }
 
   factory GetDomainCognitoOption.fromMap(Map<String, dynamic> map) {
@@ -43,3 +41,4 @@ class GetDomainCognitoOption {
     );
   }
 }
+

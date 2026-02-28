@@ -433,10 +433,8 @@ import 'log_resource_policy_args.dart';
 class LogResourcePolicy extends pulumi.CustomResource {
   /// Details of the resource policy, including the identity of the principal that is enabled to put logs to this account. This is formatted as a JSON string. Maximum length of 5120 characters.
   late final pulumi.Output<String> policyDocument;
-
   /// Name of the resource policy.
   late final pulumi.Output<String> policyName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

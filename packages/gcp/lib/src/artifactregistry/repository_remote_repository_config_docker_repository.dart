@@ -5,9 +5,7 @@ import 'repository_remote_repository_config_docker_repository_custom_repository.
 class RepositoryRemoteRepositoryConfigDockerRepository {
   /// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
   /// Structure is documented below.
-  final RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository?
-      customRepository;
-
+  final RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository? customRepository;
   /// Address of the remote repository.
   /// Possible values are: `DOCKER_HUB`.
   final String? publicRepository;
@@ -21,29 +19,17 @@ class RepositoryRemoteRepositoryConfigDockerRepository {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final customRepositoryValue = customRepository;
-    if (customRepositoryValue != null) {
-      map['customRepository'] = customRepositoryValue.toMap();
-    }
-    final publicRepositoryValue = publicRepository;
-    if (publicRepositoryValue != null) {
-      map['publicRepository'] = publicRepositoryValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'customRepository': ?customRepository == null ? null : customRepository!.toMap(),
+      'publicRepository': ?publicRepository,
+    };
   }
 
-  factory RepositoryRemoteRepositoryConfigDockerRepository.fromMap(
-      Map<String, dynamic> map) {
+  factory RepositoryRemoteRepositoryConfigDockerRepository.fromMap(Map<String, dynamic> map) {
     return RepositoryRemoteRepositoryConfigDockerRepository(
-      customRepository: map['customRepository'] == null
-          ? null
-          : RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository
-              .fromMap(
-                  (map['customRepository'] as Map).cast<String, dynamic>()),
-      publicRepository: map['publicRepository'] == null
-          ? null
-          : map['publicRepository'] as String,
+      customRepository: map['customRepository'] == null ? null : RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository.fromMap((map['customRepository'] as Map).cast<String, dynamic>()),
+      publicRepository: map['publicRepository'] == null ? null : map['publicRepository'] as String,
     );
   }
 }
+

@@ -14,21 +14,15 @@ class BareMetalLoadBalancerNodePoolConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nodePoolConfigValue = nodePoolConfig;
-    if (nodePoolConfigValue != null) {
-      map['nodePoolConfig'] = nodePoolConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'nodePoolConfig': ?nodePoolConfig == null ? null : nodePoolConfig!.toMap(),
+    };
   }
 
-  factory BareMetalLoadBalancerNodePoolConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory BareMetalLoadBalancerNodePoolConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalLoadBalancerNodePoolConfig(
-      nodePoolConfig: map['nodePoolConfig'] == null
-          ? null
-          : BareMetalNodePoolConfig.fromMap(
-              (map['nodePoolConfig'] as Map).cast<String, dynamic>()),
+      nodePoolConfig: map['nodePoolConfig'] == null ? null : BareMetalNodePoolConfig.fromMap((map['nodePoolConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

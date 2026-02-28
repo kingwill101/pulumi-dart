@@ -9,7 +9,6 @@ class GetRegionBackendServiceBackend {
   /// See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
   /// for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION", "CUSTOM_METRICS"]
   final String balancingMode;
-
   /// A multiplier applied to the group's maximum servicing capacity
   /// (based on UTILIZATION, RATE or CONNECTION).
   ///
@@ -21,18 +20,14 @@ class GetRegionBackendServiceBackend {
   /// A setting of 0 means the group is completely drained, offering
   /// 0% of its available Capacity. Valid range is [0.0,1.0].
   final double capacityScaler;
-
   /// The set of custom metrics that are used for <code>CUSTOM_METRICS</code> BalancingMode.
   final List<GetRegionBackendServiceBackendCustomMetric> customMetrics;
-
   /// An optional description of this resource.
   /// Provide this property when you create the resource.
   final String description;
-
   /// This field designates whether this is a failover backend. More
   /// than one failover backend can be configured for a given RegionBackendService.
   final bool failover;
-
   /// The fully-qualified URL of an Instance Group or Network Endpoint
   /// Group resource. In case of instance group this defines the list
   /// of instances that serve traffic. Member virtual machine
@@ -54,7 +49,6 @@ class GetRegionBackendServiceBackend {
   /// Group resource using the fully-qualified URL, rather than a
   /// partial URL.
   final String group;
-
   /// The max number of simultaneous connections for the group. Can
   /// be used with either CONNECTION or UTILIZATION balancing modes.
   /// Cannot be set for INTERNAL backend services.
@@ -63,7 +57,6 @@ class GetRegionBackendServiceBackend {
   /// of maxConnectionsPerInstance or maxConnectionsPerEndpoint,
   /// as appropriate for group type, must be set.
   final int maxConnections;
-
   /// The max number of simultaneous connections that a single backend
   /// network endpoint can handle. Cannot be set
   /// for INTERNAL backend services.
@@ -73,7 +66,6 @@ class GetRegionBackendServiceBackend {
   /// CONNECTION mode, either maxConnections or
   /// maxConnectionsPerEndpoint must be set.
   final int maxConnectionsPerEndpoint;
-
   /// The max number of simultaneous connections that a single
   /// backend instance can handle. Cannot be set for INTERNAL backend
   /// services.
@@ -83,20 +75,16 @@ class GetRegionBackendServiceBackend {
   /// For CONNECTION mode, either maxConnections or
   /// maxConnectionsPerInstance must be set.
   final int maxConnectionsPerInstance;
-
   /// Defines a maximum number of in-flight requests for the whole NEG
   /// or instance group. Not available if backend's balancingMode is RATE
   /// or CONNECTION.
   final int maxInFlightRequests;
-
   /// Defines a maximum number of in-flight requests for a single endpoint.
   /// Not available if backend's balancingMode is RATE or CONNECTION.
   final int maxInFlightRequestsPerEndpoint;
-
   /// Defines a maximum number of in-flight requests for a single VM.
   /// Not available if backend's balancingMode is RATE or CONNECTION.
   final int maxInFlightRequestsPerInstance;
-
   /// The max requests per second (RPS) of the group. Cannot be set
   /// for INTERNAL backend services.
   ///
@@ -105,26 +93,22 @@ class GetRegionBackendServiceBackend {
   /// of maxRatePerInstance or maxRatePerEndpoint, as appropriate for
   /// group type, must be set.
   final int maxRate;
-
   /// The max requests per second (RPS) that a single backend network
   /// endpoint can handle. This is used to calculate the capacity of
   /// the group. Can be used in either balancing mode. For RATE mode,
   /// either maxRate or maxRatePerEndpoint must be set. Cannot be set
   /// for INTERNAL backend services.
   final double maxRatePerEndpoint;
-
   /// The max requests per second (RPS) that a single backend
   /// instance can handle. This is used to calculate the capacity of
   /// the group. Can be used in either balancing mode. For RATE mode,
   /// either maxRate or maxRatePerInstance must be set. Cannot be set
   /// for INTERNAL backend services.
   final double maxRatePerInstance;
-
   /// Used when balancingMode is UTILIZATION. This ratio defines the
   /// CPU utilization target for the group. Valid range is [0.0, 1.0].
   /// Cannot be set for INTERNAL backend services.
   final double maxUtilization;
-
   /// This field specifies how long a connection should be kept alive for:
   /// - LONG: Most of the requests are expected to take more than multiple
   /// seconds to finish.
@@ -170,38 +154,32 @@ class GetRegionBackendServiceBackend {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['balancingMode'] = balancingMode;
-    map['capacityScaler'] = capacityScaler;
-    map['customMetrics'] = pulumi.Input.encodeList<
-        GetRegionBackendServiceBackendCustomMetric,
-        Map<String, dynamic>>(customMetrics, (value) => value.toMap());
-    map['description'] = description;
-    map['failover'] = failover;
-    map['group'] = group;
-    map['maxConnections'] = maxConnections;
-    map['maxConnectionsPerEndpoint'] = maxConnectionsPerEndpoint;
-    map['maxConnectionsPerInstance'] = maxConnectionsPerInstance;
-    map['maxInFlightRequests'] = maxInFlightRequests;
-    map['maxInFlightRequestsPerEndpoint'] = maxInFlightRequestsPerEndpoint;
-    map['maxInFlightRequestsPerInstance'] = maxInFlightRequestsPerInstance;
-    map['maxRate'] = maxRate;
-    map['maxRatePerEndpoint'] = maxRatePerEndpoint;
-    map['maxRatePerInstance'] = maxRatePerInstance;
-    map['maxUtilization'] = maxUtilization;
-    map['trafficDuration'] = trafficDuration;
-    return map;
+    return <String, dynamic>{
+      'balancingMode': balancingMode,
+      'capacityScaler': capacityScaler,
+      'customMetrics': pulumi.Input.encodeList<GetRegionBackendServiceBackendCustomMetric, Map<String, dynamic>>(customMetrics, (value) => value.toMap()),
+      'description': description,
+      'failover': failover,
+      'group': group,
+      'maxConnections': maxConnections,
+      'maxConnectionsPerEndpoint': maxConnectionsPerEndpoint,
+      'maxConnectionsPerInstance': maxConnectionsPerInstance,
+      'maxInFlightRequests': maxInFlightRequests,
+      'maxInFlightRequestsPerEndpoint': maxInFlightRequestsPerEndpoint,
+      'maxInFlightRequestsPerInstance': maxInFlightRequestsPerInstance,
+      'maxRate': maxRate,
+      'maxRatePerEndpoint': maxRatePerEndpoint,
+      'maxRatePerInstance': maxRatePerInstance,
+      'maxUtilization': maxUtilization,
+      'trafficDuration': trafficDuration,
+    };
   }
 
   factory GetRegionBackendServiceBackend.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceBackend(
       balancingMode: map['balancingMode'] as String,
       capacityScaler: map['capacityScaler'] as double,
-      customMetrics:
-          pulumi.Input.decodeList<GetRegionBackendServiceBackendCustomMetric>(
-              map['customMetrics'],
-              (value) => GetRegionBackendServiceBackendCustomMetric.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      customMetrics: pulumi.Input.decodeList<GetRegionBackendServiceBackendCustomMetric>(map['customMetrics'], (value) => GetRegionBackendServiceBackendCustomMetric.fromMap((value as Map).cast<String, dynamic>())),
       description: map['description'] as String,
       failover: map['failover'] as bool,
       group: map['group'] as String,
@@ -209,10 +187,8 @@ class GetRegionBackendServiceBackend {
       maxConnectionsPerEndpoint: map['maxConnectionsPerEndpoint'] as int,
       maxConnectionsPerInstance: map['maxConnectionsPerInstance'] as int,
       maxInFlightRequests: map['maxInFlightRequests'] as int,
-      maxInFlightRequestsPerEndpoint:
-          map['maxInFlightRequestsPerEndpoint'] as int,
-      maxInFlightRequestsPerInstance:
-          map['maxInFlightRequestsPerInstance'] as int,
+      maxInFlightRequestsPerEndpoint: map['maxInFlightRequestsPerEndpoint'] as int,
+      maxInFlightRequestsPerInstance: map['maxInFlightRequestsPerInstance'] as int,
       maxRate: map['maxRate'] as int,
       maxRatePerEndpoint: map['maxRatePerEndpoint'] as double,
       maxRatePerInstance: map['maxRatePerInstance'] as double,
@@ -221,3 +197,4 @@ class GetRegionBackendServiceBackend {
     );
   }
 }
+

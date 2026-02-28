@@ -175,7 +175,6 @@ import 'invitation_accepter_args.dart';
 class InvitationAccepter extends pulumi.CustomResource {
   /// ARN of the behavior graph that the member account is accepting the invitation for.
   late final pulumi.Output<String> graphArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

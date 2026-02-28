@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TaskNotebookInfrastructureSpecBatch {
   /// Total number of job executors. Executor Count should be between 2 and 100. [Default=2]
   final int? executorsCount;
-
   /// Max configurable executors. If maxExecutorsCount > executorsCount, then auto-scaling is enabled. Max Executor Count should be between 2 and 1000. [Default=1000]
   final int? maxExecutorsCount;
 
@@ -16,26 +16,17 @@ class TaskNotebookInfrastructureSpecBatch {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final executorsCountValue = executorsCount;
-    if (executorsCountValue != null) {
-      map['executorsCount'] = executorsCountValue;
-    }
-    final maxExecutorsCountValue = maxExecutorsCount;
-    if (maxExecutorsCountValue != null) {
-      map['maxExecutorsCount'] = maxExecutorsCountValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'executorsCount': ?executorsCount,
+      'maxExecutorsCount': ?maxExecutorsCount,
+    };
   }
 
-  factory TaskNotebookInfrastructureSpecBatch.fromMap(
-      Map<String, dynamic> map) {
+  factory TaskNotebookInfrastructureSpecBatch.fromMap(Map<String, dynamic> map) {
     return TaskNotebookInfrastructureSpecBatch(
-      executorsCount:
-          map['executorsCount'] == null ? null : map['executorsCount'] as int,
-      maxExecutorsCount: map['maxExecutorsCount'] == null
-          ? null
-          : map['maxExecutorsCount'] as int,
+      executorsCount: map['executorsCount'] == null ? null : map['executorsCount'] as int,
+      maxExecutorsCount: map['maxExecutorsCount'] == null ? null : map['maxExecutorsCount'] as int,
     );
   }
 }
+

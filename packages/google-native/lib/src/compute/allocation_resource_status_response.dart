@@ -5,8 +5,7 @@ import 'allocation_resource_status_specific_skuallocation_response.dart';
 /// [Output Only] Contains output only fields.
 class AllocationResourceStatusResponse {
   /// Allocation Properties of this reservation.
-  final AllocationResourceStatusSpecificSKUAllocationResponse
-      specificSkuAllocation;
+  final AllocationResourceStatusSpecificSKUAllocationResponse specificSkuAllocation;
 
   /// Creates a new [AllocationResourceStatusResponse].
   /// [specificSkuAllocation] Allocation Properties of this reservation.
@@ -15,16 +14,15 @@ class AllocationResourceStatusResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['specificSkuAllocation'] = specificSkuAllocation.toMap();
-    return map;
+    return <String, dynamic>{
+      'specificSkuAllocation': specificSkuAllocation.toMap(),
+    };
   }
 
   factory AllocationResourceStatusResponse.fromMap(Map<String, dynamic> map) {
     return AllocationResourceStatusResponse(
-      specificSkuAllocation:
-          AllocationResourceStatusSpecificSKUAllocationResponse.fromMap(
-              (map['specificSkuAllocation'] as Map).cast<String, dynamic>()),
+      specificSkuAllocation: AllocationResourceStatusSpecificSKUAllocationResponse.fromMap((map['specificSkuAllocation'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

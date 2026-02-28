@@ -15,18 +15,15 @@ class StackTraceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['elements'] = pulumi.Input.encodeList<StackTraceElementResponse,
-        Map<String, dynamic>>(elements, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'elements': pulumi.Input.encodeList<StackTraceElementResponse, Map<String, dynamic>>(elements, (value) => value.toMap()),
+    };
   }
 
   factory StackTraceResponse.fromMap(Map<String, dynamic> map) {
     return StackTraceResponse(
-      elements: pulumi.Input.decodeList<StackTraceElementResponse>(
-          map['elements'],
-          (value) => StackTraceElementResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      elements: pulumi.Input.decodeList<StackTraceElementResponse>(map['elements'], (value) => StackTraceElementResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DeviceDevice {
   /// A description for the device.
   final String? description;
-
   /// The name of the device.
   final String deviceName;
-
   /// Amazon Web Services Internet of Things (IoT) object name.
   final String? iotThingName;
 
@@ -21,26 +20,19 @@ class DeviceDevice {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    map['deviceName'] = deviceName;
-    final iotThingNameValue = iotThingName;
-    if (iotThingNameValue != null) {
-      map['iotThingName'] = iotThingNameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'deviceName': deviceName,
+      'iotThingName': ?iotThingName,
+    };
   }
 
   factory DeviceDevice.fromMap(Map<String, dynamic> map) {
     return DeviceDevice(
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       deviceName: map['deviceName'] as String,
-      iotThingName:
-          map['iotThingName'] == null ? null : map['iotThingName'] as String,
+      iotThingName: map['iotThingName'] == null ? null : map['iotThingName'] as String,
     );
   }
 }
+

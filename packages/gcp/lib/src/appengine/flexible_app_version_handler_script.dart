@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FlexibleAppVersionHandlerScript {
   /// Path to the script from the application root directory.
   final String scriptPath;
@@ -11,9 +12,9 @@ class FlexibleAppVersionHandlerScript {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['scriptPath'] = scriptPath;
-    return map;
+    return <String, dynamic>{
+      'scriptPath': scriptPath,
+    };
   }
 
   factory FlexibleAppVersionHandlerScript.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class FlexibleAppVersionHandlerScript {
     );
   }
 }
+

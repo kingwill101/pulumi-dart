@@ -6,7 +6,6 @@ import 'get_broker_engine_types_broker_engine_type_engine_version.dart';
 class GetBrokerEngineTypesBrokerEngineType {
   /// MQ engine type to return version details for.
   final String engineType;
-
   /// List of engine versions. See Engine Versions.
   final List<GetBrokerEngineTypesBrokerEngineTypeEngineVersion> engineVersions;
 
@@ -19,23 +18,17 @@ class GetBrokerEngineTypesBrokerEngineType {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['engineType'] = engineType;
-    map['engineVersions'] = pulumi.Input.encodeList<
-        GetBrokerEngineTypesBrokerEngineTypeEngineVersion,
-        Map<String, dynamic>>(engineVersions, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'engineType': engineType,
+      'engineVersions': pulumi.Input.encodeList<GetBrokerEngineTypesBrokerEngineTypeEngineVersion, Map<String, dynamic>>(engineVersions, (value) => value.toMap()),
+    };
   }
 
-  factory GetBrokerEngineTypesBrokerEngineType.fromMap(
-      Map<String, dynamic> map) {
+  factory GetBrokerEngineTypesBrokerEngineType.fromMap(Map<String, dynamic> map) {
     return GetBrokerEngineTypesBrokerEngineType(
       engineType: map['engineType'] as String,
-      engineVersions: pulumi.Input.decodeList<
-              GetBrokerEngineTypesBrokerEngineTypeEngineVersion>(
-          map['engineVersions'],
-          (value) => GetBrokerEngineTypesBrokerEngineTypeEngineVersion.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      engineVersions: pulumi.Input.decodeList<GetBrokerEngineTypesBrokerEngineTypeEngineVersion>(map['engineVersions'], (value) => GetBrokerEngineTypesBrokerEngineTypeEngineVersion.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

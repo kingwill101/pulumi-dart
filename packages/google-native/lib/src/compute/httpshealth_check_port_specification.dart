@@ -13,7 +13,7 @@ enum HTTPSHealthCheckPortSpecification {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown HTTPSHealthCheckPortSpecification value: $value');
+    throw ArgumentError('Unknown HTTPSHealthCheckPortSpecification value: $value');
   }
 }
+

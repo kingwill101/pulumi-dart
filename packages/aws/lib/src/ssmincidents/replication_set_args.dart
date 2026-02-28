@@ -10,10 +10,8 @@ import 'replication_set_region.dart';
 class ReplicationSetArgs {
   /// The replication set's Regions. Use `regions` instead.
   final pulumi.Input<List<ReplicationSetRegion>>? region;
-
   /// The replication set's Regions.
   final pulumi.Input<List<ReplicationSetRegion>>? regions;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// For information about the maximum allowed number of Regions and tag value constraints, see [CreateReplicationSet in the *AWS Systems Manager Incident Manager API Reference*](https://docs.aws.amazon.com/incident-manager/latest/APIReference/API_CreateReplicationSet.html).
@@ -37,54 +35,25 @@ class ReplicationSetArgs {
     List<ReplicationSetRegion>? region,
     List<ReplicationSetRegion>? regions,
     Map<String, String>? tags,
-  })  : region =
-            pulumi.Input.asOptionalInput<List<ReplicationSetRegion>>(region),
-        regions =
-            pulumi.Input.asOptionalInput<List<ReplicationSetRegion>>(regions),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      region = pulumi.Input.asOptionalInput<List<ReplicationSetRegion>>(region),
+      regions = pulumi.Input.asOptionalInput<List<ReplicationSetRegion>>(regions),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = pulumi.Input.mapOptionalInputValue<
-              List<ReplicationSetRegion>, List<Map<String, dynamic>>>(
-          regionValue,
-          (value) => pulumi.Input.encodeList<ReplicationSetRegion,
-              Map<String, dynamic>>(value, (value) => value.toMap()));
-    }
-    final regionsValue = regions;
-    if (regionsValue != null) {
-      map['regions'] = pulumi.Input.mapOptionalInputValue<
-              List<ReplicationSetRegion>, List<Map<String, dynamic>>>(
-          regionsValue,
-          (value) => pulumi.Input.encodeList<ReplicationSetRegion,
-              Map<String, dynamic>>(value, (value) => value.toMap()));
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'region': ?pulumi.Input.mapOptionalInputValue<List<ReplicationSetRegion>, List<Map<String, dynamic>>>(region, (value) => pulumi.Input.encodeList<ReplicationSetRegion, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'regions': ?pulumi.Input.mapOptionalInputValue<List<ReplicationSetRegion>, List<Map<String, dynamic>>>(regions, (value) => pulumi.Input.encodeList<ReplicationSetRegion, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'tags': ?tags,
+    };
   }
 
   factory ReplicationSetArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationSetArgs(
-      region: map['region'] == null
-          ? null
-          : pulumi.Input.decodeList<ReplicationSetRegion>(
-              map['region'],
-              (value) => ReplicationSetRegion.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      regions: map['regions'] == null
-          ? null
-          : pulumi.Input.decodeList<ReplicationSetRegion>(
-              map['regions'],
-              (value) => ReplicationSetRegion.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      region: map['region'] == null ? null : pulumi.Input.decodeList<ReplicationSetRegion>(map['region'], (value) => ReplicationSetRegion.fromMap((value as Map).cast<String, dynamic>())),
+      regions: map['regions'] == null ? null : pulumi.Input.decodeList<ReplicationSetRegion>(map['regions'], (value) => ReplicationSetRegion.fromMap((value as Map).cast<String, dynamic>())),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

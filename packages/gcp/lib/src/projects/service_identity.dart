@@ -177,14 +177,11 @@ import 'service_identity_args.dart';
 class ServiceIdentity extends pulumi.CustomResource {
   /// The email address of the Google managed service account.
   late final pulumi.Output<String> email;
-
   /// The Identity of the Google managed service account in the form 'serviceAccount:{email}'. This value is often used to refer to the service account in order to grant IAM permissions.
   late final pulumi.Output<String> member;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The service to generate identity for.
   ///
   /// - - -

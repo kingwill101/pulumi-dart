@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InputDestination {
   /// A unique name for the location the RTMP stream is being pushed to.
   final String streamName;
@@ -11,9 +12,9 @@ class InputDestination {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['streamName'] = streamName;
-    return map;
+    return <String, dynamic>{
+      'streamName': streamName,
+    };
   }
 
   factory InputDestination.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class InputDestination {
     );
   }
 }
+

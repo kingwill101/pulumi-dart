@@ -7,8 +7,7 @@ class AppVersionSnapshotGuardrailModelSafety {
   /// (Output)
   /// List of safety settings.
   /// Structure is documented below.
-  final List<AppVersionSnapshotGuardrailModelSafetySafetySetting>?
-      safetySettings;
+  final List<AppVersionSnapshotGuardrailModelSafetySafetySetting>? safetySettings;
 
   /// Creates a new [AppVersionSnapshotGuardrailModelSafety].
   /// [safetySettings] (Output)
@@ -17,27 +16,15 @@ class AppVersionSnapshotGuardrailModelSafety {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final safetySettingsValue = safetySettings;
-    if (safetySettingsValue != null) {
-      map['safetySettings'] = pulumi.Input.encodeList<
-          AppVersionSnapshotGuardrailModelSafetySafetySetting,
-          Map<String, dynamic>>(safetySettingsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'safetySettings': ?safetySettings == null ? null : pulumi.Input.encodeList<AppVersionSnapshotGuardrailModelSafetySafetySetting, Map<String, dynamic>>(safetySettings!, (value) => value.toMap()),
+    };
   }
 
-  factory AppVersionSnapshotGuardrailModelSafety.fromMap(
-      Map<String, dynamic> map) {
+  factory AppVersionSnapshotGuardrailModelSafety.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotGuardrailModelSafety(
-      safetySettings: map['safetySettings'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  AppVersionSnapshotGuardrailModelSafetySafetySetting>(
-              map['safetySettings'],
-              (value) =>
-                  AppVersionSnapshotGuardrailModelSafetySafetySetting.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      safetySettings: map['safetySettings'] == null ? null : pulumi.Input.decodeList<AppVersionSnapshotGuardrailModelSafetySafetySetting>(map['safetySettings'], (value) => AppVersionSnapshotGuardrailModelSafetySafetySetting.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

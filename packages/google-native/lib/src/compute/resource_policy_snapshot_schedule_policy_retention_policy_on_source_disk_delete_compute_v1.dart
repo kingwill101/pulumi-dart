@@ -4,20 +4,16 @@ enum ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteComput
   keepAutoSnapshots("KEEP_AUTO_SNAPSHOTS"),
   unspecifiedOnSourceDiskDelete("UNSPECIFIED_ON_SOURCE_DISK_DELETE");
 
-  const ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteComputeV1(
-      this.value);
+  const ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteComputeV1(this.value);
   final String value;
 
-  static ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteComputeV1
-      fromValue(String value) {
-    for (final item
-        in ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteComputeV1
-            .values) {
+  static ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteComputeV1 fromValue(String value) {
+    for (final item in ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteComputeV1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteComputeV1 value: $value');
+    throw ArgumentError('Unknown ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteComputeV1 value: $value');
   }
 }
+

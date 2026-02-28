@@ -15,24 +15,15 @@ class OracleRdbms {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final oracleSchemasValue = oracleSchemas;
-    if (oracleSchemasValue != null) {
-      map['oracleSchemas'] =
-          pulumi.Input.encodeList<OracleSchema, Map<String, dynamic>>(
-              oracleSchemasValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'oracleSchemas': ?oracleSchemas == null ? null : pulumi.Input.encodeList<OracleSchema, Map<String, dynamic>>(oracleSchemas!, (value) => value.toMap()),
+    };
   }
 
   factory OracleRdbms.fromMap(Map<String, dynamic> map) {
     return OracleRdbms(
-      oracleSchemas: map['oracleSchemas'] == null
-          ? null
-          : pulumi.Input.decodeList<OracleSchema>(
-              map['oracleSchemas'],
-              (value) =>
-                  OracleSchema.fromMap((value as Map).cast<String, dynamic>())),
+      oracleSchemas: map['oracleSchemas'] == null ? null : pulumi.Input.decodeList<OracleSchema>(map['oracleSchemas'], (value) => OracleSchema.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -286,10 +286,8 @@ import 'rest_api_policy_args.dart';
 class RestApiPolicy extends pulumi.CustomResource {
   /// JSON formatted policy document that controls access to the API Gateway.
   late final pulumi.Output<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ID of the REST API.
   late final pulumi.Output<String> restApiId;
 

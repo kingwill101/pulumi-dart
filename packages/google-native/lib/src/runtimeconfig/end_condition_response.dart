@@ -14,15 +14,15 @@ class EndConditionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cardinality'] = cardinality.toMap();
-    return map;
+    return <String, dynamic>{
+      'cardinality': cardinality.toMap(),
+    };
   }
 
   factory EndConditionResponse.fromMap(Map<String, dynamic> map) {
     return EndConditionResponse(
-      cardinality: CardinalityResponse.fromMap(
-          (map['cardinality'] as Map).cast<String, dynamic>()),
+      cardinality: CardinalityResponse.fromMap((map['cardinality'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -14,12 +14,13 @@ class GetCryptoKeyIamPolicyArgs {
   /// [cryptoKeyId] The crypto key ID, in the form
   GetCryptoKeyIamPolicyArgs({
     required String cryptoKeyId,
-  }) : cryptoKeyId = pulumi.Input.asInput<String>(cryptoKeyId);
+  }) :
+      cryptoKeyId = pulumi.Input.asInput<String>(cryptoKeyId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cryptoKeyId'] = cryptoKeyId;
-    return map;
+    return <String, dynamic>{
+      'cryptoKeyId': cryptoKeyId,
+    };
   }
 
   factory GetCryptoKeyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -28,3 +29,4 @@ class GetCryptoKeyIamPolicyArgs {
     );
   }
 }
+

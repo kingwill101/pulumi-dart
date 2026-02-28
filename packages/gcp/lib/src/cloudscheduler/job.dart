@@ -1203,7 +1203,6 @@ class Job extends pulumi.CustomResource {
   /// send a request to the service instance
   /// Structure is documented below.
   late final pulumi.Output<JobAppEngineHttpTarget?> appEngineHttpTarget;
-
   /// The deadline for job attempts. If the request handler does not respond by this deadline then the request is
   /// cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in
   /// execution logs. Cloud Scheduler will retry the job according to the RetryConfig.
@@ -1213,48 +1212,37 @@ class Job extends pulumi.CustomResource {
   /// * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
   late final pulumi.Output<String?> attemptDeadline;
-
   /// A human-readable description for the job.
   /// This string must not contain more than 500 characters.
   late final pulumi.Output<String?> description;
-
   /// HTTP target.
   /// If the job providers a http_target the cron will
   /// send a request to the targeted url
   /// Structure is documented below.
   late final pulumi.Output<JobHttpTarget?> httpTarget;
-
   /// The name of the job.
   late final pulumi.Output<String> name;
-
   /// Sets the job to a paused state. Jobs default to being enabled when this property is not set.
   late final pulumi.Output<bool> paused;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Pub/Sub target
   /// If the job providers a Pub/Sub target the cron will publish
   /// a message to the provided topic
   /// Structure is documented below.
   late final pulumi.Output<JobPubsubTarget?> pubsubTarget;
-
   /// Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
   late final pulumi.Output<String> region;
-
   /// By default, if a job does not complete successfully,
   /// meaning that an acknowledgement is not received from the handler,
   /// then it will be retried with exponential backoff according to the settings
   /// Structure is documented below.
   late final pulumi.Output<JobRetryConfig?> retryConfig;
-
   /// Describes the schedule on which the job will be executed.
   late final pulumi.Output<String?> schedule;
-
   /// State of the job.
   late final pulumi.Output<String> state;
-
   /// Specifies the time zone to be used in interpreting schedule.
   /// The value of this field must be a time zone name from the tz database.
   late final pulumi.Output<String?> timeZone;
@@ -1273,8 +1261,7 @@ class Job extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.appEngineHttpTarget =
-        registerOutput<JobAppEngineHttpTarget?>('appEngineHttpTarget');
+    this.appEngineHttpTarget = registerOutput<JobAppEngineHttpTarget?>('appEngineHttpTarget');
     this.attemptDeadline = registerOutput<String?>('attemptDeadline');
     this.description = registerOutput<String?>('description');
     this.httpTarget = registerOutput<JobHttpTarget?>('httpTarget');

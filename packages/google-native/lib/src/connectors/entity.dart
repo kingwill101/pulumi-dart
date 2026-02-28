@@ -6,11 +6,9 @@ import 'entity_args.dart';
 class Entity extends pulumi.CustomResource {
   late final pulumi.Output<String> connectionId;
   late final pulumi.Output<String> entityTypeId;
-
   /// Fields of the entity. The key is name of the field and the value contains the applicable `google.protobuf.Value` entry for this field.
   late final pulumi.Output<Map<String, String>> fields;
   late final pulumi.Output<String> location;
-
   /// Resource name of the Entity. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}/entities/{id}
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;

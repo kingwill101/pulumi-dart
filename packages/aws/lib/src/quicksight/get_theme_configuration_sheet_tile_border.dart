@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetThemeConfigurationSheetTileBorder {
   /// This Boolean value controls whether to display sheet margins.
   final bool show;
@@ -11,15 +12,15 @@ class GetThemeConfigurationSheetTileBorder {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['show'] = show;
-    return map;
+    return <String, dynamic>{
+      'show': show,
+    };
   }
 
-  factory GetThemeConfigurationSheetTileBorder.fromMap(
-      Map<String, dynamic> map) {
+  factory GetThemeConfigurationSheetTileBorder.fromMap(Map<String, dynamic> map) {
     return GetThemeConfigurationSheetTileBorder(
       show: map['show'] as bool,
     );
   }
 }
+

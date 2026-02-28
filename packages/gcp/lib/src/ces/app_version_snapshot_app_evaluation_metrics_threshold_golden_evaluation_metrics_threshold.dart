@@ -8,16 +8,11 @@ class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThre
   /// (Output)
   /// Expectation level metrics thresholds.
   /// Structure is documented below.
-  final List<
-          AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold>?
-      expectationLevelMetricsThresholds;
-
+  final List<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold>? expectationLevelMetricsThresholds;
   /// (Output)
   /// Turn level metrics thresholds.
   /// Structure is documented below.
-  final List<
-          AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold>?
-      turnLevelMetricsThresholds;
+  final List<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold>? turnLevelMetricsThresholds;
 
   /// Creates a new [AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold].
   /// [expectationLevelMetricsThresholds] (Output)
@@ -28,46 +23,17 @@ class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThre
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final expectationLevelMetricsThresholdsValue =
-        expectationLevelMetricsThresholds;
-    if (expectationLevelMetricsThresholdsValue != null) {
-      map['expectationLevelMetricsThresholds'] = pulumi.Input.encodeList<
-              AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold,
-              Map<String, dynamic>>(
-          expectationLevelMetricsThresholdsValue, (value) => value.toMap());
-    }
-    final turnLevelMetricsThresholdsValue = turnLevelMetricsThresholds;
-    if (turnLevelMetricsThresholdsValue != null) {
-      map['turnLevelMetricsThresholds'] = pulumi.Input.encodeList<
-          AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold,
-          Map<String,
-              dynamic>>(turnLevelMetricsThresholdsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'expectationLevelMetricsThresholds': ?expectationLevelMetricsThresholds == null ? null : pulumi.Input.encodeList<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold, Map<String, dynamic>>(expectationLevelMetricsThresholds!, (value) => value.toMap()),
+      'turnLevelMetricsThresholds': ?turnLevelMetricsThresholds == null ? null : pulumi.Input.encodeList<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold, Map<String, dynamic>>(turnLevelMetricsThresholds!, (value) => value.toMap()),
+    };
   }
 
-  factory AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold.fromMap(
-      Map<String, dynamic> map) {
+  factory AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold(
-      expectationLevelMetricsThresholds: map[
-                  'expectationLevelMetricsThresholds'] ==
-              null
-          ? null
-          : pulumi.Input.decodeList<
-                  AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold>(
-              map['expectationLevelMetricsThresholds'],
-              (value) =>
-                  AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold
-                      .fromMap((value as Map).cast<String, dynamic>())),
-      turnLevelMetricsThresholds: map['turnLevelMetricsThresholds'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold>(
-              map['turnLevelMetricsThresholds'],
-              (value) =>
-                  AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      expectationLevelMetricsThresholds: map['expectationLevelMetricsThresholds'] == null ? null : pulumi.Input.decodeList<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold>(map['expectationLevelMetricsThresholds'], (value) => AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold.fromMap((value as Map).cast<String, dynamic>())),
+      turnLevelMetricsThresholds: map['turnLevelMetricsThresholds'] == null ? null : pulumi.Input.decodeList<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold>(map['turnLevelMetricsThresholds'], (value) => AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -7,7 +7,6 @@ import 'google_privacy_dlp_v2_word_list.dart';
 class GooglePrivacyDlpV2Dictionary {
   /// Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
   final GooglePrivacyDlpV2CloudStoragePath? cloudStoragePath;
-
   /// List of words or phrases to search for.
   final GooglePrivacyDlpV2WordList? wordList;
 
@@ -20,28 +19,17 @@ class GooglePrivacyDlpV2Dictionary {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cloudStoragePathValue = cloudStoragePath;
-    if (cloudStoragePathValue != null) {
-      map['cloudStoragePath'] = cloudStoragePathValue.toMap();
-    }
-    final wordListValue = wordList;
-    if (wordListValue != null) {
-      map['wordList'] = wordListValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'cloudStoragePath': ?cloudStoragePath == null ? null : cloudStoragePath!.toMap(),
+      'wordList': ?wordList == null ? null : wordList!.toMap(),
+    };
   }
 
   factory GooglePrivacyDlpV2Dictionary.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2Dictionary(
-      cloudStoragePath: map['cloudStoragePath'] == null
-          ? null
-          : GooglePrivacyDlpV2CloudStoragePath.fromMap(
-              (map['cloudStoragePath'] as Map).cast<String, dynamic>()),
-      wordList: map['wordList'] == null
-          ? null
-          : GooglePrivacyDlpV2WordList.fromMap(
-              (map['wordList'] as Map).cast<String, dynamic>()),
+      cloudStoragePath: map['cloudStoragePath'] == null ? null : GooglePrivacyDlpV2CloudStoragePath.fromMap((map['cloudStoragePath'] as Map).cast<String, dynamic>()),
+      wordList: map['wordList'] == null ? null : GooglePrivacyDlpV2WordList.fromMap((map['wordList'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

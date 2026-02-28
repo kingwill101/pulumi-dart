@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WorkstationConfigHostGceInstanceBoostConfigAccelerator {
   /// Number of accelerator cards exposed to the instance.
   final int count;
-
   /// Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
   final String type;
 
@@ -16,17 +16,17 @@ class WorkstationConfigHostGceInstanceBoostConfigAccelerator {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['count'] = count;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'count': count,
+      'type': type,
+    };
   }
 
-  factory WorkstationConfigHostGceInstanceBoostConfigAccelerator.fromMap(
-      Map<String, dynamic> map) {
+  factory WorkstationConfigHostGceInstanceBoostConfigAccelerator.fromMap(Map<String, dynamic> map) {
     return WorkstationConfigHostGceInstanceBoostConfigAccelerator(
       count: map['count'] as int,
       type: map['type'] as String,
     );
   }
 }
+

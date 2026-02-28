@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SecurityScanConfigSchedule {
   /// The duration of time between executions in days
   final int intervalDurationDays;
-
   /// A timestamp indicates when the next run will be scheduled. The value is refreshed
   /// by the server after each run. If unspecified, it will default to current server time,
   /// which means the scan will be scheduled to start immediately.
@@ -18,20 +18,17 @@ class SecurityScanConfigSchedule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['intervalDurationDays'] = intervalDurationDays;
-    final scheduleTimeValue = scheduleTime;
-    if (scheduleTimeValue != null) {
-      map['scheduleTime'] = scheduleTimeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'intervalDurationDays': intervalDurationDays,
+      'scheduleTime': ?scheduleTime,
+    };
   }
 
   factory SecurityScanConfigSchedule.fromMap(Map<String, dynamic> map) {
     return SecurityScanConfigSchedule(
       intervalDurationDays: map['intervalDurationDays'] as int,
-      scheduleTime:
-          map['scheduleTime'] == null ? null : map['scheduleTime'] as String,
+      scheduleTime: map['scheduleTime'] == null ? null : map['scheduleTime'] as String,
     );
   }
 }
+

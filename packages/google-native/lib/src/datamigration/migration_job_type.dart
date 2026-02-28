@@ -16,3 +16,4 @@ enum MigrationJobType {
     throw ArgumentError('Unknown MigrationJobType value: $value');
   }
 }
+

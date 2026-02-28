@@ -1,37 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetConnectivityTestsConnectivityTestDestination {
   /// A Cloud SQL instance URI.
   final String cloudSqlInstance;
-
   /// Forwarding rule URI. Forwarding rules are frontends for load balancers,
   /// PSC endpoints, and Protocol Forwarding.
   final String forwardingRule;
-
   /// A DNS endpoint of Google Kubernetes Engine cluster control plane.
   final String fqdn;
-
   /// A cluster URI for Google Kubernetes Engine cluster control plane.
   final String gkeMasterCluster;
-
   /// A Compute Engine instance URI.
   final String instance;
-
   /// The IP address of the endpoint.
   final String ipAddress;
-
   /// A VPC network URI.
   final String network;
-
   /// The IP protocol port of the endpoint.
   final int port;
-
   /// Project ID where the endpoint is located.
   final String projectId;
-
   /// A Redis Cluster URI.
   final String redisCluster;
-
   /// A Redis Instance URI.
   final String redisInstance;
 
@@ -62,23 +53,22 @@ class GetConnectivityTestsConnectivityTestDestination {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cloudSqlInstance'] = cloudSqlInstance;
-    map['forwardingRule'] = forwardingRule;
-    map['fqdn'] = fqdn;
-    map['gkeMasterCluster'] = gkeMasterCluster;
-    map['instance'] = instance;
-    map['ipAddress'] = ipAddress;
-    map['network'] = network;
-    map['port'] = port;
-    map['projectId'] = projectId;
-    map['redisCluster'] = redisCluster;
-    map['redisInstance'] = redisInstance;
-    return map;
+    return <String, dynamic>{
+      'cloudSqlInstance': cloudSqlInstance,
+      'forwardingRule': forwardingRule,
+      'fqdn': fqdn,
+      'gkeMasterCluster': gkeMasterCluster,
+      'instance': instance,
+      'ipAddress': ipAddress,
+      'network': network,
+      'port': port,
+      'projectId': projectId,
+      'redisCluster': redisCluster,
+      'redisInstance': redisInstance,
+    };
   }
 
-  factory GetConnectivityTestsConnectivityTestDestination.fromMap(
-      Map<String, dynamic> map) {
+  factory GetConnectivityTestsConnectivityTestDestination.fromMap(Map<String, dynamic> map) {
     return GetConnectivityTestsConnectivityTestDestination(
       cloudSqlInstance: map['cloudSqlInstance'] as String,
       forwardingRule: map['forwardingRule'] as String,
@@ -94,3 +84,4 @@ class GetConnectivityTestsConnectivityTestDestination {
     );
   }
 }
+

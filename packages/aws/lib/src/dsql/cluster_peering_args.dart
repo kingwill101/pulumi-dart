@@ -10,14 +10,11 @@ import 'cluster_peering_timeouts.dart';
 class ClusterPeeringArgs {
   /// List of DSQL Cluster ARNs to be peered to this cluster.
   final pulumi.Input<List<String>> clusters;
-
   /// DSQL Cluster Identifier.
   final pulumi.Input<String> identifier;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   final pulumi.Input<ClusterPeeringTimeouts>? timeouts;
-
   /// Witness region for a multi-region cluster.
   final pulumi.Input<String> witnessRegion;
 
@@ -33,29 +30,21 @@ class ClusterPeeringArgs {
     String? region,
     ClusterPeeringTimeouts? timeouts,
     required String witnessRegion,
-  })  : clusters = pulumi.Input.asInput<List<String>>(clusters),
-        identifier = pulumi.Input.asInput<String>(identifier),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        timeouts =
-            pulumi.Input.asOptionalInput<ClusterPeeringTimeouts>(timeouts),
-        witnessRegion = pulumi.Input.asInput<String>(witnessRegion);
+  }) :
+      clusters = pulumi.Input.asInput<List<String>>(clusters),
+      identifier = pulumi.Input.asInput<String>(identifier),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      timeouts = pulumi.Input.asOptionalInput<ClusterPeeringTimeouts>(timeouts),
+      witnessRegion = pulumi.Input.asInput<String>(witnessRegion);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clusters'] = clusters;
-    map['identifier'] = identifier;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final timeoutsValue = timeouts;
-    if (timeoutsValue != null) {
-      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
-          ClusterPeeringTimeouts,
-          Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
-    }
-    map['witnessRegion'] = witnessRegion;
-    return map;
+    return <String, dynamic>{
+      'clusters': clusters,
+      'identifier': identifier,
+      'region': ?region,
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<ClusterPeeringTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'witnessRegion': witnessRegion,
+    };
   }
 
   factory ClusterPeeringArgs.fromMap(Map<String, dynamic> map) {
@@ -63,11 +52,9 @@ class ClusterPeeringArgs {
       clusters: (map['clusters'] as List).cast<String>(),
       identifier: map['identifier'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      timeouts: map['timeouts'] == null
-          ? null
-          : ClusterPeeringTimeouts.fromMap(
-              (map['timeouts'] as Map).cast<String, dynamic>()),
+      timeouts: map['timeouts'] == null ? null : ClusterPeeringTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
       witnessRegion: map['witnessRegion'] as String,
     );
   }
 }
+

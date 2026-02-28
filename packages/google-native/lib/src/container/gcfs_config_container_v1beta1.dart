@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// GcfsConfig contains configurations of Google Container File System.
 class GcfsConfigContainerV1beta1 {
   /// Whether to use GCFS.
@@ -12,12 +13,9 @@ class GcfsConfigContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory GcfsConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class GcfsConfigContainerV1beta1 {
     );
   }
 }
+

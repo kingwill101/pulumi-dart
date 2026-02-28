@@ -6,7 +6,6 @@ import 'double_comparison_filter_value_comparison.dart';
 class DoubleComparisonFilter {
   /// Double compare value to be used
   final double value;
-
   /// Relation between source value and compare value
   final DoubleComparisonFilterValueComparison valueComparison;
 
@@ -19,17 +18,17 @@ class DoubleComparisonFilter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['value'] = value;
-    map['valueComparison'] = valueComparison.value;
-    return map;
+    return <String, dynamic>{
+      'value': value,
+      'valueComparison': valueComparison.value,
+    };
   }
 
   factory DoubleComparisonFilter.fromMap(Map<String, dynamic> map) {
     return DoubleComparisonFilter(
       value: map['value'] as double,
-      valueComparison: DoubleComparisonFilterValueComparison.fromValue(
-          map['valueComparison'] as String),
+      valueComparison: DoubleComparisonFilterValueComparison.fromValue(map['valueComparison'] as String),
     );
   }
 }
+

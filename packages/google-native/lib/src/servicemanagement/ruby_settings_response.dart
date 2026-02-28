@@ -14,15 +14,15 @@ class RubySettingsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['common'] = common.toMap();
-    return map;
+    return <String, dynamic>{
+      'common': common.toMap(),
+    };
   }
 
   factory RubySettingsResponse.fromMap(Map<String, dynamic> map) {
     return RubySettingsResponse(
-      common: CommonLanguageSettingsResponse.fromMap(
-          (map['common'] as Map).cast<String, dynamic>()),
+      common: CommonLanguageSettingsResponse.fromMap((map['common'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

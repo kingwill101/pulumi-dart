@@ -6,13 +6,10 @@ import 'postal_address_response_domains_v1beta1.dart';
 class ContactResponseDomainsV1beta1 {
   /// Email address of the contact.
   final String email;
-
   /// Fax number of the contact in international format. For example, `"+1-800-555-0123"`.
   final String faxNumber;
-
   /// Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
   final String phoneNumber;
-
   /// Postal address of the contact.
   final PostalAddressResponseDomainsV1beta1 postalAddress;
 
@@ -29,12 +26,12 @@ class ContactResponseDomainsV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['email'] = email;
-    map['faxNumber'] = faxNumber;
-    map['phoneNumber'] = phoneNumber;
-    map['postalAddress'] = postalAddress.toMap();
-    return map;
+    return <String, dynamic>{
+      'email': email,
+      'faxNumber': faxNumber,
+      'phoneNumber': phoneNumber,
+      'postalAddress': postalAddress.toMap(),
+    };
   }
 
   factory ContactResponseDomainsV1beta1.fromMap(Map<String, dynamic> map) {
@@ -42,8 +39,8 @@ class ContactResponseDomainsV1beta1 {
       email: map['email'] as String,
       faxNumber: map['faxNumber'] as String,
       phoneNumber: map['phoneNumber'] as String,
-      postalAddress: PostalAddressResponseDomainsV1beta1.fromMap(
-          (map['postalAddress'] as Map).cast<String, dynamic>()),
+      postalAddress: PostalAddressResponseDomainsV1beta1.fromMap((map['postalAddress'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

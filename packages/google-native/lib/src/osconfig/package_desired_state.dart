@@ -17,3 +17,4 @@ enum PackageDesiredState {
     throw ArgumentError('Unknown PackageDesiredState value: $value');
   }
 }
+

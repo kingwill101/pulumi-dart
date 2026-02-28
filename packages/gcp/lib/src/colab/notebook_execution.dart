@@ -2335,49 +2335,33 @@ import 'notebook_execution_gcs_notebook_source.dart';
 class NotebookExecution extends pulumi.CustomResource {
   /// Compute configuration to use for an execution job
   /// Structure is documented below.
-  late final pulumi.Output<NotebookExecutionCustomEnvironmentSpec?>
-      customEnvironmentSpec;
-
+  late final pulumi.Output<NotebookExecutionCustomEnvironmentSpec?> customEnvironmentSpec;
   /// The Dataform Repository containing the input notebook.
   /// Structure is documented below.
-  late final pulumi.Output<NotebookExecutionDataformRepositorySource?>
-      dataformRepositorySource;
-
+  late final pulumi.Output<NotebookExecutionDataformRepositorySource?> dataformRepositorySource;
   /// The content of the input notebook in ipynb format.
   /// Structure is documented below.
-  late final pulumi.Output<NotebookExecutionDirectNotebookSource?>
-      directNotebookSource;
-
+  late final pulumi.Output<NotebookExecutionDirectNotebookSource?> directNotebookSource;
   /// Required. The display name of the Notebook Execution.
   late final pulumi.Output<String> displayName;
-
   /// Max running time of the execution job in seconds (default 86400s / 24 hrs).
   late final pulumi.Output<String?> executionTimeout;
-
   /// The user email to run the execution as.
   late final pulumi.Output<String?> executionUser;
-
   /// The Cloud Storage uri for the input notebook.
   /// Structure is documented below.
-  late final pulumi.Output<NotebookExecutionGcsNotebookSource?>
-      gcsNotebookSource;
-
+  late final pulumi.Output<NotebookExecutionGcsNotebookSource?> gcsNotebookSource;
   /// The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
   late final pulumi.Output<String> gcsOutputUri;
-
   /// The location for the resource: https://cloud.google.com/colab/docs/locations
   late final pulumi.Output<String> location;
-
   /// User specified ID for the Notebook Execution Job
   late final pulumi.Output<String> notebookExecutionJobId;
-
   /// The NotebookRuntimeTemplate to source compute configuration from.
   late final pulumi.Output<String?> notebookRuntimeTemplateResourceName;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The service account to run the execution as.
   late final pulumi.Output<String?> serviceAccount;
 
@@ -2395,27 +2379,17 @@ class NotebookExecution extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.customEnvironmentSpec =
-        registerOutput<NotebookExecutionCustomEnvironmentSpec?>(
-            'customEnvironmentSpec');
-    this.dataformRepositorySource =
-        registerOutput<NotebookExecutionDataformRepositorySource?>(
-            'dataformRepositorySource');
-    this.directNotebookSource =
-        registerOutput<NotebookExecutionDirectNotebookSource?>(
-            'directNotebookSource');
+    this.customEnvironmentSpec = registerOutput<NotebookExecutionCustomEnvironmentSpec?>('customEnvironmentSpec');
+    this.dataformRepositorySource = registerOutput<NotebookExecutionDataformRepositorySource?>('dataformRepositorySource');
+    this.directNotebookSource = registerOutput<NotebookExecutionDirectNotebookSource?>('directNotebookSource');
     this.displayName = registerOutput<String>('displayName');
     this.executionTimeout = registerOutput<String?>('executionTimeout');
     this.executionUser = registerOutput<String?>('executionUser');
-    this.gcsNotebookSource =
-        registerOutput<NotebookExecutionGcsNotebookSource?>(
-            'gcsNotebookSource');
+    this.gcsNotebookSource = registerOutput<NotebookExecutionGcsNotebookSource?>('gcsNotebookSource');
     this.gcsOutputUri = registerOutput<String>('gcsOutputUri');
     this.location = registerOutput<String>('location');
-    this.notebookExecutionJobId =
-        registerOutput<String>('notebookExecutionJobId');
-    this.notebookRuntimeTemplateResourceName =
-        registerOutput<String?>('notebookRuntimeTemplateResourceName');
+    this.notebookExecutionJobId = registerOutput<String>('notebookExecutionJobId');
+    this.notebookRuntimeTemplateResourceName = registerOutput<String?>('notebookRuntimeTemplateResourceName');
     this.project = registerOutput<String>('project');
     this.serviceAccount = registerOutput<String?>('serviceAccount');
   }

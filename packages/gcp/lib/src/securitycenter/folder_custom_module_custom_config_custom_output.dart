@@ -15,27 +15,15 @@ class FolderCustomModuleCustomConfigCustomOutput {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final propertiesValue = properties;
-    if (propertiesValue != null) {
-      map['properties'] = pulumi.Input.encodeList<
-          FolderCustomModuleCustomConfigCustomOutputProperty,
-          Map<String, dynamic>>(propertiesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'properties': ?properties == null ? null : pulumi.Input.encodeList<FolderCustomModuleCustomConfigCustomOutputProperty, Map<String, dynamic>>(properties!, (value) => value.toMap()),
+    };
   }
 
-  factory FolderCustomModuleCustomConfigCustomOutput.fromMap(
-      Map<String, dynamic> map) {
+  factory FolderCustomModuleCustomConfigCustomOutput.fromMap(Map<String, dynamic> map) {
     return FolderCustomModuleCustomConfigCustomOutput(
-      properties: map['properties'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  FolderCustomModuleCustomConfigCustomOutputProperty>(
-              map['properties'],
-              (value) =>
-                  FolderCustomModuleCustomConfigCustomOutputProperty.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      properties: map['properties'] == null ? null : pulumi.Input.decodeList<FolderCustomModuleCustomConfigCustomOutputProperty>(map['properties'], (value) => FolderCustomModuleCustomConfigCustomOutputProperty.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

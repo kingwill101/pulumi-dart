@@ -15,7 +15,7 @@ enum GoogleCloudDialogflowV2SuggestionFeatureType {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GoogleCloudDialogflowV2SuggestionFeatureType value: $value');
+    throw ArgumentError('Unknown GoogleCloudDialogflowV2SuggestionFeatureType value: $value');
   }
 }
+

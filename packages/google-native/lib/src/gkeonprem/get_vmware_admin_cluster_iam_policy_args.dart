@@ -22,37 +22,28 @@ class GetVmwareAdminClusterIamPolicyArgs {
     int? optionsRequestedPolicyVersion,
     String? project,
     required String vmwareAdminClusterId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        optionsRequestedPolicyVersion =
-            pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        vmwareAdminClusterId =
-            pulumi.Input.asInput<String>(vmwareAdminClusterId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      vmwareAdminClusterId = pulumi.Input.asInput<String>(vmwareAdminClusterId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final optionsRequestedPolicyVersionValue = optionsRequestedPolicyVersion;
-    if (optionsRequestedPolicyVersionValue != null) {
-      map['optionsRequestedPolicyVersion'] = optionsRequestedPolicyVersionValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['vmwareAdminClusterId'] = vmwareAdminClusterId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'optionsRequestedPolicyVersion': ?optionsRequestedPolicyVersion,
+      'project': ?project,
+      'vmwareAdminClusterId': vmwareAdminClusterId,
+    };
   }
 
   factory GetVmwareAdminClusterIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetVmwareAdminClusterIamPolicyArgs(
       location: map['location'] as String,
-      optionsRequestedPolicyVersion:
-          map['optionsRequestedPolicyVersion'] == null
-              ? null
-              : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       vmwareAdminClusterId: map['vmwareAdminClusterId'] as String,
     );
   }
 }
+

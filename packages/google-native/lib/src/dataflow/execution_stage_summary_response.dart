@@ -9,22 +9,16 @@ import 'stage_source_response.dart';
 class ExecutionStageSummaryResponse {
   /// Collections produced and consumed by component transforms of this stage.
   final List<ComponentSourceResponse> componentSource;
-
   /// Transforms that comprise this execution stage.
   final List<ComponentTransformResponse> componentTransform;
-
   /// Input sources for this stage.
   final List<StageSourceResponse> inputSource;
-
   /// Type of transform this stage is executing.
   final String kind;
-
   /// Dataflow service generated name for this stage.
   final String name;
-
   /// Output sources for this stage.
   final List<StageSourceResponse> outputSource;
-
   /// Other stages that must complete before this stage can run.
   final List<String> prerequisiteStage;
 
@@ -47,46 +41,27 @@ class ExecutionStageSummaryResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['componentSource'] =
-        pulumi.Input.encodeList<ComponentSourceResponse, Map<String, dynamic>>(
-            componentSource, (value) => value.toMap());
-    map['componentTransform'] = pulumi.Input.encodeList<
-        ComponentTransformResponse,
-        Map<String, dynamic>>(componentTransform, (value) => value.toMap());
-    map['inputSource'] =
-        pulumi.Input.encodeList<StageSourceResponse, Map<String, dynamic>>(
-            inputSource, (value) => value.toMap());
-    map['kind'] = kind;
-    map['name'] = name;
-    map['outputSource'] =
-        pulumi.Input.encodeList<StageSourceResponse, Map<String, dynamic>>(
-            outputSource, (value) => value.toMap());
-    map['prerequisiteStage'] = prerequisiteStage;
-    return map;
+    return <String, dynamic>{
+      'componentSource': pulumi.Input.encodeList<ComponentSourceResponse, Map<String, dynamic>>(componentSource, (value) => value.toMap()),
+      'componentTransform': pulumi.Input.encodeList<ComponentTransformResponse, Map<String, dynamic>>(componentTransform, (value) => value.toMap()),
+      'inputSource': pulumi.Input.encodeList<StageSourceResponse, Map<String, dynamic>>(inputSource, (value) => value.toMap()),
+      'kind': kind,
+      'name': name,
+      'outputSource': pulumi.Input.encodeList<StageSourceResponse, Map<String, dynamic>>(outputSource, (value) => value.toMap()),
+      'prerequisiteStage': prerequisiteStage,
+    };
   }
 
   factory ExecutionStageSummaryResponse.fromMap(Map<String, dynamic> map) {
     return ExecutionStageSummaryResponse(
-      componentSource: pulumi.Input.decodeList<ComponentSourceResponse>(
-          map['componentSource'],
-          (value) => ComponentSourceResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      componentTransform: pulumi.Input.decodeList<ComponentTransformResponse>(
-          map['componentTransform'],
-          (value) => ComponentTransformResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      inputSource: pulumi.Input.decodeList<StageSourceResponse>(
-          map['inputSource'],
-          (value) => StageSourceResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      componentSource: pulumi.Input.decodeList<ComponentSourceResponse>(map['componentSource'], (value) => ComponentSourceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      componentTransform: pulumi.Input.decodeList<ComponentTransformResponse>(map['componentTransform'], (value) => ComponentTransformResponse.fromMap((value as Map).cast<String, dynamic>())),
+      inputSource: pulumi.Input.decodeList<StageSourceResponse>(map['inputSource'], (value) => StageSourceResponse.fromMap((value as Map).cast<String, dynamic>())),
       kind: map['kind'] as String,
       name: map['name'] as String,
-      outputSource: pulumi.Input.decodeList<StageSourceResponse>(
-          map['outputSource'],
-          (value) => StageSourceResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      outputSource: pulumi.Input.decodeList<StageSourceResponse>(map['outputSource'], (value) => StageSourceResponse.fromMap((value as Map).cast<String, dynamic>())),
       prerequisiteStage: (map['prerequisiteStage'] as List).cast<String>(),
     );
   }
 }
+

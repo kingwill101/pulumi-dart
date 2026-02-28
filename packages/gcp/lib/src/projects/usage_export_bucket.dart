@@ -126,10 +126,8 @@ class UsageExportBucket extends pulumi.CustomResource {
   ///
   /// - - -
   late final pulumi.Output<String> bucketName;
-
   /// A prefix for the reports, for instance, the project name.
   late final pulumi.Output<String?> prefix;
-
   /// The project to set the export bucket on. If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
 

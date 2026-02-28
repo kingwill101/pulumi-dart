@@ -1,22 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AutonomousDatabasePropertiesLocalStandbyDb {
   /// The date and time the Autonomous Data Guard role was switched for the
   /// standby Autonomous Database.
   final String? dataGuardRoleChangedTime;
-
   /// The date and time the Disaster Recovery role was switched for the standby
   /// Autonomous Database.
   final String? disasterRecoveryRoleChangedTime;
-
   /// The amount of time, in seconds, that the data of the standby database lags
   /// in comparison to the data of the primary database.
   final String? lagTimeDuration;
-
   /// The additional details about the current lifecycle state of the
   /// Autonomous Database.
   final String? lifecycleDetails;
-
   /// Possible values:
   /// STATE_UNSPECIFIED
   /// PROVISIONING
@@ -57,49 +54,23 @@ class AutonomousDatabasePropertiesLocalStandbyDb {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dataGuardRoleChangedTimeValue = dataGuardRoleChangedTime;
-    if (dataGuardRoleChangedTimeValue != null) {
-      map['dataGuardRoleChangedTime'] = dataGuardRoleChangedTimeValue;
-    }
-    final disasterRecoveryRoleChangedTimeValue =
-        disasterRecoveryRoleChangedTime;
-    if (disasterRecoveryRoleChangedTimeValue != null) {
-      map['disasterRecoveryRoleChangedTime'] =
-          disasterRecoveryRoleChangedTimeValue;
-    }
-    final lagTimeDurationValue = lagTimeDuration;
-    if (lagTimeDurationValue != null) {
-      map['lagTimeDuration'] = lagTimeDurationValue;
-    }
-    final lifecycleDetailsValue = lifecycleDetails;
-    if (lifecycleDetailsValue != null) {
-      map['lifecycleDetails'] = lifecycleDetailsValue;
-    }
-    final stateValue = state;
-    if (stateValue != null) {
-      map['state'] = stateValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'dataGuardRoleChangedTime': ?dataGuardRoleChangedTime,
+      'disasterRecoveryRoleChangedTime': ?disasterRecoveryRoleChangedTime,
+      'lagTimeDuration': ?lagTimeDuration,
+      'lifecycleDetails': ?lifecycleDetails,
+      'state': ?state,
+    };
   }
 
-  factory AutonomousDatabasePropertiesLocalStandbyDb.fromMap(
-      Map<String, dynamic> map) {
+  factory AutonomousDatabasePropertiesLocalStandbyDb.fromMap(Map<String, dynamic> map) {
     return AutonomousDatabasePropertiesLocalStandbyDb(
-      dataGuardRoleChangedTime: map['dataGuardRoleChangedTime'] == null
-          ? null
-          : map['dataGuardRoleChangedTime'] as String,
-      disasterRecoveryRoleChangedTime:
-          map['disasterRecoveryRoleChangedTime'] == null
-              ? null
-              : map['disasterRecoveryRoleChangedTime'] as String,
-      lagTimeDuration: map['lagTimeDuration'] == null
-          ? null
-          : map['lagTimeDuration'] as String,
-      lifecycleDetails: map['lifecycleDetails'] == null
-          ? null
-          : map['lifecycleDetails'] as String,
+      dataGuardRoleChangedTime: map['dataGuardRoleChangedTime'] == null ? null : map['dataGuardRoleChangedTime'] as String,
+      disasterRecoveryRoleChangedTime: map['disasterRecoveryRoleChangedTime'] == null ? null : map['disasterRecoveryRoleChangedTime'] as String,
+      lagTimeDuration: map['lagTimeDuration'] == null ? null : map['lagTimeDuration'] as String,
+      lifecycleDetails: map['lifecycleDetails'] == null ? null : map['lifecycleDetails'] as String,
       state: map['state'] == null ? null : map['state'] as String,
     );
   }
 }
+

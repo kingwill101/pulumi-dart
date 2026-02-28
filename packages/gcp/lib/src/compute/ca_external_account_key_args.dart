@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CaExternalAccountKeyArgs {
   /// Location for the externalAccountKey. Currently only `global` is supported.
   final pulumi.Input<String>? location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -20,20 +19,15 @@ class CaExternalAccountKeyArgs {
   CaExternalAccountKeyArgs({
     String? location,
     String? project,
-  })  : location = pulumi.Input.asOptionalInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      location = pulumi.Input.asOptionalInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'location': ?location,
+      'project': ?project,
+    };
   }
 
   factory CaExternalAccountKeyArgs.fromMap(Map<String, dynamic> map) {
@@ -43,3 +37,4 @@ class CaExternalAccountKeyArgs {
     );
   }
 }
+

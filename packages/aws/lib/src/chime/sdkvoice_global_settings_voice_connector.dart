@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SdkvoiceGlobalSettingsVoiceConnector {
   /// The S3 bucket that stores the Voice Connector's call detail records.
   final String? cdrBucket;
@@ -11,18 +12,15 @@ class SdkvoiceGlobalSettingsVoiceConnector {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cdrBucketValue = cdrBucket;
-    if (cdrBucketValue != null) {
-      map['cdrBucket'] = cdrBucketValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cdrBucket': ?cdrBucket,
+    };
   }
 
-  factory SdkvoiceGlobalSettingsVoiceConnector.fromMap(
-      Map<String, dynamic> map) {
+  factory SdkvoiceGlobalSettingsVoiceConnector.fromMap(Map<String, dynamic> map) {
     return SdkvoiceGlobalSettingsVoiceConnector(
       cdrBucket: map['cdrBucket'] == null ? null : map['cdrBucket'] as String,
     );
   }
 }
+

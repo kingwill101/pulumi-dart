@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRoutersRouterNat {
   final bool enableEndpointIndependentMapping;
   final int icmpIdleTimeoutSec;
@@ -37,34 +38,33 @@ class GetRoutersRouterNat {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enableEndpointIndependentMapping'] = enableEndpointIndependentMapping;
-    map['icmpIdleTimeoutSec'] = icmpIdleTimeoutSec;
-    map['minPortsPerVm'] = minPortsPerVm;
-    map['name'] = name;
-    map['natIpAllocateOption'] = natIpAllocateOption;
-    map['natIps'] = natIps;
-    map['sourceSubnetworkIpRangesToNat'] = sourceSubnetworkIpRangesToNat;
-    map['tcpEstablishedIdleTimeoutSec'] = tcpEstablishedIdleTimeoutSec;
-    map['tcpTransitoryIdleTimeoutSec'] = tcpTransitoryIdleTimeoutSec;
-    map['udpIdleTimeoutSec'] = udpIdleTimeoutSec;
-    return map;
+    return <String, dynamic>{
+      'enableEndpointIndependentMapping': enableEndpointIndependentMapping,
+      'icmpIdleTimeoutSec': icmpIdleTimeoutSec,
+      'minPortsPerVm': minPortsPerVm,
+      'name': name,
+      'natIpAllocateOption': natIpAllocateOption,
+      'natIps': natIps,
+      'sourceSubnetworkIpRangesToNat': sourceSubnetworkIpRangesToNat,
+      'tcpEstablishedIdleTimeoutSec': tcpEstablishedIdleTimeoutSec,
+      'tcpTransitoryIdleTimeoutSec': tcpTransitoryIdleTimeoutSec,
+      'udpIdleTimeoutSec': udpIdleTimeoutSec,
+    };
   }
 
   factory GetRoutersRouterNat.fromMap(Map<String, dynamic> map) {
     return GetRoutersRouterNat(
-      enableEndpointIndependentMapping:
-          map['enableEndpointIndependentMapping'] as bool,
+      enableEndpointIndependentMapping: map['enableEndpointIndependentMapping'] as bool,
       icmpIdleTimeoutSec: map['icmpIdleTimeoutSec'] as int,
       minPortsPerVm: map['minPortsPerVm'] as int,
       name: map['name'] as String,
       natIpAllocateOption: map['natIpAllocateOption'] as String,
       natIps: (map['natIps'] as List).cast<String>(),
-      sourceSubnetworkIpRangesToNat:
-          map['sourceSubnetworkIpRangesToNat'] as String,
+      sourceSubnetworkIpRangesToNat: map['sourceSubnetworkIpRangesToNat'] as String,
       tcpEstablishedIdleTimeoutSec: map['tcpEstablishedIdleTimeoutSec'] as int,
       tcpTransitoryIdleTimeoutSec: map['tcpTransitoryIdleTimeoutSec'] as int,
       udpIdleTimeoutSec: map['udpIdleTimeoutSec'] as int,
     );
   }
 }
+

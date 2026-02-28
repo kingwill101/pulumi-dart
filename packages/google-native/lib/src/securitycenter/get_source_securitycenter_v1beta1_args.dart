@@ -16,14 +16,15 @@ class GetSourceSecuritycenterV1beta1Args {
   GetSourceSecuritycenterV1beta1Args({
     required String organizationId,
     required String sourceId,
-  })  : organizationId = pulumi.Input.asInput<String>(organizationId),
-        sourceId = pulumi.Input.asInput<String>(sourceId);
+  }) :
+      organizationId = pulumi.Input.asInput<String>(organizationId),
+      sourceId = pulumi.Input.asInput<String>(sourceId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['organizationId'] = organizationId;
-    map['sourceId'] = sourceId;
-    return map;
+    return <String, dynamic>{
+      'organizationId': organizationId,
+      'sourceId': sourceId,
+    };
   }
 
   factory GetSourceSecuritycenterV1beta1Args.fromMap(Map<String, dynamic> map) {
@@ -33,3 +34,4 @@ class GetSourceSecuritycenterV1beta1Args {
     );
   }
 }
+

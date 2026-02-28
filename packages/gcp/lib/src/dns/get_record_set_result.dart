@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRecordSet.
 class GetRecordSetResult {
   /// The provider-assigned unique ID for this managed resource.
@@ -7,10 +8,8 @@ class GetRecordSetResult {
   final String managedZone;
   final String name;
   final String? project;
-
   /// The string data for the records in this record set.
   final List<String> rrdatas;
-
   /// The time-to-live of this record set (seconds).
   final int ttl;
   final String type;
@@ -34,18 +33,15 @@ class GetRecordSetResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['managedZone'] = managedZone;
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['rrdatas'] = rrdatas;
-    map['ttl'] = ttl;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'managedZone': managedZone,
+      'name': name,
+      'project': ?project,
+      'rrdatas': rrdatas,
+      'ttl': ttl,
+      'type': type,
+    };
   }
 
   factory GetRecordSetResult.fromMap(Map<String, dynamic> map) {
@@ -60,3 +56,4 @@ class GetRecordSetResult {
     );
   }
 }
+

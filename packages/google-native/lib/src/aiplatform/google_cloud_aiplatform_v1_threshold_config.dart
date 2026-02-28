@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The config for feature monitoring threshold.
 class GoogleCloudAiplatformV1ThresholdConfig {
   /// Specify a threshold value that can trigger the alert. If this threshold config is for feature distribution distance: 1. For categorical feature, the distribution distance is calculated by L-inifinity norm. 2. For numerical feature, the distribution distance is calculated by Jensen–Shannon divergence. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature.
@@ -12,18 +13,15 @@ class GoogleCloudAiplatformV1ThresholdConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final valueValue = value;
-    if (valueValue != null) {
-      map['value'] = valueValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
-  factory GoogleCloudAiplatformV1ThresholdConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1ThresholdConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1ThresholdConfig(
       value: map['value'] == null ? null : map['value'] as double,
     );
   }
 }
+

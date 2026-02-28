@@ -6,7 +6,6 @@ import 'theme_configuration_sheet_tile_layout.dart';
 class ThemeConfigurationSheet {
   /// The display options for tiles. See tile.
   final ThemeConfigurationSheetTile? tile;
-
   /// The layout options for tiles. See tile_layout.
   final ThemeConfigurationSheetTileLayout? tileLayout;
 
@@ -19,28 +18,17 @@ class ThemeConfigurationSheet {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final tileValue = tile;
-    if (tileValue != null) {
-      map['tile'] = tileValue.toMap();
-    }
-    final tileLayoutValue = tileLayout;
-    if (tileLayoutValue != null) {
-      map['tileLayout'] = tileLayoutValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'tile': ?tile == null ? null : tile!.toMap(),
+      'tileLayout': ?tileLayout == null ? null : tileLayout!.toMap(),
+    };
   }
 
   factory ThemeConfigurationSheet.fromMap(Map<String, dynamic> map) {
     return ThemeConfigurationSheet(
-      tile: map['tile'] == null
-          ? null
-          : ThemeConfigurationSheetTile.fromMap(
-              (map['tile'] as Map).cast<String, dynamic>()),
-      tileLayout: map['tileLayout'] == null
-          ? null
-          : ThemeConfigurationSheetTileLayout.fromMap(
-              (map['tileLayout'] as Map).cast<String, dynamic>()),
+      tile: map['tile'] == null ? null : ThemeConfigurationSheetTile.fromMap((map['tile'] as Map).cast<String, dynamic>()),
+      tileLayout: map['tileLayout'] == null ? null : ThemeConfigurationSheetTileLayout.fromMap((map['tileLayout'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

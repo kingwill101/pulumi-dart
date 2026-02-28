@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SubscriptionMessageTransformJavascriptUdf {
   /// JavaScript code that contains a function `function_name` with the
   /// following signature:
@@ -30,7 +31,6 @@ class SubscriptionMessageTransformJavascriptUdf {
   /// }
   /// ```
   final String code;
-
   /// Name of the JavaScript function that should be applied to Pub/Sub messages.
   final String functionName;
 
@@ -43,17 +43,17 @@ class SubscriptionMessageTransformJavascriptUdf {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['code'] = code;
-    map['functionName'] = functionName;
-    return map;
+    return <String, dynamic>{
+      'code': code,
+      'functionName': functionName,
+    };
   }
 
-  factory SubscriptionMessageTransformJavascriptUdf.fromMap(
-      Map<String, dynamic> map) {
+  factory SubscriptionMessageTransformJavascriptUdf.fromMap(Map<String, dynamic> map) {
     return SubscriptionMessageTransformJavascriptUdf(
       code: map['code'] as String,
       functionName: map['functionName'] as String,
     );
   }
 }
+

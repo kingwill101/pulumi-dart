@@ -16,24 +16,22 @@ class GetDeploymentDeploymentmanagerV2Args {
   GetDeploymentDeploymentmanagerV2Args({
     required String deployment,
     String? project,
-  })  : deployment = pulumi.Input.asInput<String>(deployment),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      deployment = pulumi.Input.asInput<String>(deployment),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['deployment'] = deployment;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'deployment': deployment,
+      'project': ?project,
+    };
   }
 
-  factory GetDeploymentDeploymentmanagerV2Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetDeploymentDeploymentmanagerV2Args.fromMap(Map<String, dynamic> map) {
     return GetDeploymentDeploymentmanagerV2Args(
       deployment: map['deployment'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

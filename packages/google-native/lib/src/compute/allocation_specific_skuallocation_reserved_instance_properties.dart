@@ -9,25 +9,16 @@ import 'allocation_specific_skuallocation_reserved_instance_properties_maintenan
 class AllocationSpecificSKUAllocationReservedInstanceProperties {
   /// Specifies accelerator type and count.
   final List<AcceleratorConfig>? guestAccelerators;
-
   /// Specifies amount of local ssd to reserve with each instance. The type of disk is local-ssd.
-  final List<
-          AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk>?
-      localSsds;
-
+  final List<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk>? localSsds;
   /// An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
   final String? locationHint;
-
   /// Specifies type of machine (name only) which has fixed number of vCPUs and fixed amount of memory. This also includes specifying custom machine type following custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY pattern.
   final String? machineType;
-
   /// Specifies the number of hours after reservation creation where instances using the reservation won't be scheduled for maintenance.
   final int? maintenanceFreezeDurationHours;
-
   /// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
-  final AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval?
-      maintenanceInterval;
-
+  final AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval? maintenanceInterval;
   /// Minimum cpu platform the reservation.
   final String? minCpuPlatform;
 
@@ -50,75 +41,27 @@ class AllocationSpecificSKUAllocationReservedInstanceProperties {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final guestAcceleratorsValue = guestAccelerators;
-    if (guestAcceleratorsValue != null) {
-      map['guestAccelerators'] =
-          pulumi.Input.encodeList<AcceleratorConfig, Map<String, dynamic>>(
-              guestAcceleratorsValue, (value) => value.toMap());
-    }
-    final localSsdsValue = localSsds;
-    if (localSsdsValue != null) {
-      map['localSsds'] = pulumi.Input.encodeList<
-          AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk,
-          Map<String, dynamic>>(localSsdsValue, (value) => value.toMap());
-    }
-    final locationHintValue = locationHint;
-    if (locationHintValue != null) {
-      map['locationHint'] = locationHintValue;
-    }
-    final machineTypeValue = machineType;
-    if (machineTypeValue != null) {
-      map['machineType'] = machineTypeValue;
-    }
-    final maintenanceFreezeDurationHoursValue = maintenanceFreezeDurationHours;
-    if (maintenanceFreezeDurationHoursValue != null) {
-      map['maintenanceFreezeDurationHours'] =
-          maintenanceFreezeDurationHoursValue;
-    }
-    final maintenanceIntervalValue = maintenanceInterval;
-    if (maintenanceIntervalValue != null) {
-      map['maintenanceInterval'] = maintenanceIntervalValue.value;
-    }
-    final minCpuPlatformValue = minCpuPlatform;
-    if (minCpuPlatformValue != null) {
-      map['minCpuPlatform'] = minCpuPlatformValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'guestAccelerators': ?guestAccelerators == null ? null : pulumi.Input.encodeList<AcceleratorConfig, Map<String, dynamic>>(guestAccelerators!, (value) => value.toMap()),
+      'localSsds': ?localSsds == null ? null : pulumi.Input.encodeList<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk, Map<String, dynamic>>(localSsds!, (value) => value.toMap()),
+      'locationHint': ?locationHint,
+      'machineType': ?machineType,
+      'maintenanceFreezeDurationHours': ?maintenanceFreezeDurationHours,
+      'maintenanceInterval': ?maintenanceInterval == null ? null : maintenanceInterval!.value,
+      'minCpuPlatform': ?minCpuPlatform,
+    };
   }
 
-  factory AllocationSpecificSKUAllocationReservedInstanceProperties.fromMap(
-      Map<String, dynamic> map) {
+  factory AllocationSpecificSKUAllocationReservedInstanceProperties.fromMap(Map<String, dynamic> map) {
     return AllocationSpecificSKUAllocationReservedInstanceProperties(
-      guestAccelerators: map['guestAccelerators'] == null
-          ? null
-          : pulumi.Input.decodeList<AcceleratorConfig>(
-              map['guestAccelerators'],
-              (value) => AcceleratorConfig.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      localSsds: map['localSsds'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk>(
-              map['localSsds'],
-              (value) =>
-                  AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk
-                      .fromMap((value as Map).cast<String, dynamic>())),
-      locationHint:
-          map['locationHint'] == null ? null : map['locationHint'] as String,
-      machineType:
-          map['machineType'] == null ? null : map['machineType'] as String,
-      maintenanceFreezeDurationHours:
-          map['maintenanceFreezeDurationHours'] == null
-              ? null
-              : map['maintenanceFreezeDurationHours'] as int,
-      maintenanceInterval: map['maintenanceInterval'] == null
-          ? null
-          : AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval
-              .fromValue(map['maintenanceInterval'] as String),
-      minCpuPlatform: map['minCpuPlatform'] == null
-          ? null
-          : map['minCpuPlatform'] as String,
+      guestAccelerators: map['guestAccelerators'] == null ? null : pulumi.Input.decodeList<AcceleratorConfig>(map['guestAccelerators'], (value) => AcceleratorConfig.fromMap((value as Map).cast<String, dynamic>())),
+      localSsds: map['localSsds'] == null ? null : pulumi.Input.decodeList<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk>(map['localSsds'], (value) => AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk.fromMap((value as Map).cast<String, dynamic>())),
+      locationHint: map['locationHint'] == null ? null : map['locationHint'] as String,
+      machineType: map['machineType'] == null ? null : map['machineType'] as String,
+      maintenanceFreezeDurationHours: map['maintenanceFreezeDurationHours'] == null ? null : map['maintenanceFreezeDurationHours'] as int,
+      maintenanceInterval: map['maintenanceInterval'] == null ? null : AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval.fromValue(map['maintenanceInterval'] as String),
+      minCpuPlatform: map['minCpuPlatform'] == null ? null : map['minCpuPlatform'] as String,
     );
   }
 }
+

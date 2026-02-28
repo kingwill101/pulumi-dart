@@ -6,13 +6,10 @@ import 'local_copy.dart';
 class PipelineParameter {
   /// The default value for this parameter. Can be overridden at runtime. If `localCopy` is present, then this must be a Google Cloud Storage path beginning with `gs://`.
   final String? defaultValue;
-
   /// Human-readable description.
   final String? description;
-
   /// If present, this parameter is marked for copying to and from the VM. `LocalCopy` indicates where on the VM the file should be. The value given to this parameter (either at runtime or using `defaultValue`) must be the remote path where the file should be.
   final LocalCopy? localCopy;
-
   /// Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
   final String name;
 
@@ -29,34 +26,21 @@ class PipelineParameter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final defaultValueValue = defaultValue;
-    if (defaultValueValue != null) {
-      map['defaultValue'] = defaultValueValue;
-    }
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final localCopyValue = localCopy;
-    if (localCopyValue != null) {
-      map['localCopy'] = localCopyValue.toMap();
-    }
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'defaultValue': ?defaultValue,
+      'description': ?description,
+      'localCopy': ?localCopy == null ? null : localCopy!.toMap(),
+      'name': name,
+    };
   }
 
   factory PipelineParameter.fromMap(Map<String, dynamic> map) {
     return PipelineParameter(
-      defaultValue:
-          map['defaultValue'] == null ? null : map['defaultValue'] as String,
-      description:
-          map['description'] == null ? null : map['description'] as String,
-      localCopy: map['localCopy'] == null
-          ? null
-          : LocalCopy.fromMap(
-              (map['localCopy'] as Map).cast<String, dynamic>()),
+      defaultValue: map['defaultValue'] == null ? null : map['defaultValue'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
+      localCopy: map['localCopy'] == null ? null : LocalCopy.fromMap((map['localCopy'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
     );
   }
 }
+

@@ -14,15 +14,15 @@ class SyntheticMonitorTargetResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cloudFunctionV2'] = cloudFunctionV2.toMap();
-    return map;
+    return <String, dynamic>{
+      'cloudFunctionV2': cloudFunctionV2.toMap(),
+    };
   }
 
   factory SyntheticMonitorTargetResponse.fromMap(Map<String, dynamic> map) {
     return SyntheticMonitorTargetResponse(
-      cloudFunctionV2: CloudFunctionV2TargetResponse.fromMap(
-          (map['cloudFunctionV2'] as Map).cast<String, dynamic>()),
+      cloudFunctionV2: CloudFunctionV2TargetResponse.fromMap((map['cloudFunctionV2'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

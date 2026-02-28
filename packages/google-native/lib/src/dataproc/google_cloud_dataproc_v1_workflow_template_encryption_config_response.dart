@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Encryption settings for the encrypting customer core content. NEXT ID: 2
 class GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse {
   /// Optional. The Cloud KMS key name to use for encrypting customer core content.
@@ -12,15 +13,15 @@ class GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kmsKey'] = kmsKey;
-    return map;
+    return <String, dynamic>{
+      'kmsKey': kmsKey,
+    };
   }
 
-  factory GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse(
       kmsKey: map['kmsKey'] as String,
     );
   }
 }
+

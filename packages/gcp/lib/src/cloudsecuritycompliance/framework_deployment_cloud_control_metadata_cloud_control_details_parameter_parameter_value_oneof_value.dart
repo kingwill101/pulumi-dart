@@ -5,11 +5,9 @@ import 'framework_deployment_cloud_control_metadata_cloud_control_details_parame
 class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue {
   /// The name of the parameter.
   final String? name;
-
   /// The value of the parameter.
   /// Structure is documented below.
-  final FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue?
-      parameterValue;
+  final FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue? parameterValue;
 
   /// Creates a new [FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue].
   /// [name] The name of the parameter.
@@ -20,26 +18,17 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParamet
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final parameterValueValue = parameterValue;
-    if (parameterValueValue != null) {
-      map['parameterValue'] = parameterValueValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+      'parameterValue': ?parameterValue == null ? null : parameterValue!.toMap(),
+    };
   }
 
-  factory FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue.fromMap(
-      Map<String, dynamic> map) {
+  factory FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue.fromMap(Map<String, dynamic> map) {
     return FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue(
       name: map['name'] == null ? null : map['name'] as String,
-      parameterValue: map['parameterValue'] == null
-          ? null
-          : FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue
-              .fromMap((map['parameterValue'] as Map).cast<String, dynamic>()),
+      parameterValue: map['parameterValue'] == null ? null : FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue.fromMap((map['parameterValue'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

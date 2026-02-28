@@ -13,21 +13,15 @@ class ClusterBrokerNodeGroupInfoStorageInfo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final ebsStorageInfoValue = ebsStorageInfo;
-    if (ebsStorageInfoValue != null) {
-      map['ebsStorageInfo'] = ebsStorageInfoValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'ebsStorageInfo': ?ebsStorageInfo == null ? null : ebsStorageInfo!.toMap(),
+    };
   }
 
-  factory ClusterBrokerNodeGroupInfoStorageInfo.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterBrokerNodeGroupInfoStorageInfo.fromMap(Map<String, dynamic> map) {
     return ClusterBrokerNodeGroupInfoStorageInfo(
-      ebsStorageInfo: map['ebsStorageInfo'] == null
-          ? null
-          : ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo.fromMap(
-              (map['ebsStorageInfo'] as Map).cast<String, dynamic>()),
+      ebsStorageInfo: map['ebsStorageInfo'] == null ? null : ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo.fromMap((map['ebsStorageInfo'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

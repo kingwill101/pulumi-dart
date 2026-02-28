@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// This message describes a subordinate CA's issuer certificate chain. This wrapper exists for compatibility reasons.
 class SubordinateConfigChain {
   /// Expected to be in leaf-to-root order according to RFC 5246.
@@ -12,9 +13,9 @@ class SubordinateConfigChain {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['pemCertificates'] = pemCertificates;
-    return map;
+    return <String, dynamic>{
+      'pemCertificates': pemCertificates,
+    };
   }
 
   factory SubordinateConfigChain.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class SubordinateConfigChain {
     );
   }
 }
+

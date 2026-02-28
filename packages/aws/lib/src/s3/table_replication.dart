@@ -148,13 +148,10 @@ import 'table_replication_rule.dart';
 class TableReplication extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ARN referencing the IAM role assumed by S3 when replicating tables.
   late final pulumi.Output<String> role;
-
   /// Replication rules. See Rule below for more details.
   late final pulumi.Output<TableReplicationRule?> rule;
-
   /// ARN referencing the Table that owns this replication configuration.
   late final pulumi.Output<String> tableArn;
   late final pulumi.Output<String> versionToken;

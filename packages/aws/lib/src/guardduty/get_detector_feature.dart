@@ -5,12 +5,9 @@ import 'get_detector_feature_additional_configuration.dart';
 
 class GetDetectorFeature {
   /// Additional feature configuration.
-  final List<GetDetectorFeatureAdditionalConfiguration>
-      additionalConfigurations;
-
+  final List<GetDetectorFeatureAdditionalConfiguration> additionalConfigurations;
   /// The name of the detector feature.
   final String name;
-
   /// Current status of the detector.
   final String status;
 
@@ -25,24 +22,19 @@ class GetDetectorFeature {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['additionalConfigurations'] = pulumi.Input.encodeList<
-            GetDetectorFeatureAdditionalConfiguration, Map<String, dynamic>>(
-        additionalConfigurations, (value) => value.toMap());
-    map['name'] = name;
-    map['status'] = status;
-    return map;
+    return <String, dynamic>{
+      'additionalConfigurations': pulumi.Input.encodeList<GetDetectorFeatureAdditionalConfiguration, Map<String, dynamic>>(additionalConfigurations, (value) => value.toMap()),
+      'name': name,
+      'status': status,
+    };
   }
 
   factory GetDetectorFeature.fromMap(Map<String, dynamic> map) {
     return GetDetectorFeature(
-      additionalConfigurations:
-          pulumi.Input.decodeList<GetDetectorFeatureAdditionalConfiguration>(
-              map['additionalConfigurations'],
-              (value) => GetDetectorFeatureAdditionalConfiguration.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      additionalConfigurations: pulumi.Input.decodeList<GetDetectorFeatureAdditionalConfiguration>(map['additionalConfigurations'], (value) => GetDetectorFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       status: map['status'] as String,
     );
   }
 }
+

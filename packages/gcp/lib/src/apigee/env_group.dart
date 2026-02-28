@@ -337,10 +337,8 @@ import 'env_group_args.dart';
 class EnvGroup extends pulumi.CustomResource {
   /// Hostnames of the environment group.
   late final pulumi.Output<List<String>?> hostnames;
-
   /// The resource ID of the environment group.
   late final pulumi.Output<String> name;
-
   /// The Apigee Organization associated with the Apigee environment group,
   /// in the format `organizations/{{org_name}}`.
   late final pulumi.Output<String> orgId;

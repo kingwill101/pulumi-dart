@@ -957,37 +957,28 @@ class Snapshot extends pulumi.CustomResource {
   /// example, for chargeback tracking.  When you describe your snapshot
   /// resource, this field is visible only if it has a non-empty value.
   late final pulumi.Output<String?> chainName;
-
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
-
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
-
   /// Size of the snapshot, specified in GB.
   late final pulumi.Output<int> diskSizeGb;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
   late final pulumi.Output<bool?> guestFlush;
-
   /// The fingerprint used for optimistic locking of this resource. Used
   /// internally during updates.
   late final pulumi.Output<String> labelFingerprint;
-
   /// Labels to apply to this Snapshot.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// A list of public visible licenses that apply to this snapshot. This
   /// can be because the original image had licenses attached (such as a
   /// Windows image).  snapshotEncryptionKey nested object Encrypts the
   /// snapshot using a customer-supplied encryption key.
   late final pulumi.Output<List<String>> licenses;
-
   /// Name of the resource; provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -996,18 +987,14 @@ class Snapshot extends pulumi.CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
-
   /// Encrypts the snapshot using a customer-supplied encryption key.
   /// After you encrypt a snapshot using a customer-supplied key, you must
   /// provide the same key if you use the snapshot later. For example, you
@@ -1019,37 +1006,27 @@ class Snapshot extends pulumi.CustomResource {
   /// then the snapshot will be encrypted using an automatically generated
   /// key and you do not need to provide a key to use the snapshot later.
   /// Structure is documented below.
-  late final pulumi.Output<SnapshotSnapshotEncryptionKey?>
-      snapshotEncryptionKey;
-
+  late final pulumi.Output<SnapshotSnapshotEncryptionKey?> snapshotEncryptionKey;
   /// The unique identifier for the resource.
   late final pulumi.Output<int> snapshotId;
-
   /// Indicates the type of the snapshot.
   /// Possible values are: `ARCHIVE`, `STANDARD`.
   late final pulumi.Output<String?> snapshotType;
-
   /// A reference to the disk used to create this snapshot.
   late final pulumi.Output<String> sourceDisk;
-
   /// The customer-supplied encryption key of the source snapshot. Required
   /// if the source snapshot is protected by a customer-supplied encryption
   /// key.
   /// Structure is documented below.
-  late final pulumi.Output<SnapshotSourceDiskEncryptionKey?>
-      sourceDiskEncryptionKey;
-
+  late final pulumi.Output<SnapshotSourceDiskEncryptionKey?> sourceDiskEncryptionKey;
   /// A reference to the instant snapshot used to create this snapshot.
   late final pulumi.Output<String?> sourceInstantSnapshot;
-
   /// A size of the storage used by the snapshot. As snapshots share
   /// storage, this number is expected to change with snapshot
   /// creation/deletion.
   late final pulumi.Output<int> storageBytes;
-
   /// Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
   late final pulumi.Output<List<String>> storageLocations;
-
   /// A reference to the zone where the disk is hosted.
   late final pulumi.Output<String> zone;
 
@@ -1071,8 +1048,7 @@ class Snapshot extends pulumi.CustomResource {
     this.creationTimestamp = registerOutput<String>('creationTimestamp');
     this.description = registerOutput<String?>('description');
     this.diskSizeGb = registerOutput<int>('diskSizeGb');
-    this.effectiveLabels =
-        registerOutput<Map<String, String>>('effectiveLabels');
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     this.guestFlush = registerOutput<bool?>('guestFlush');
     this.labelFingerprint = registerOutput<String>('labelFingerprint');
     this.labels = registerOutput<Map<String, String>?>('labels');
@@ -1081,16 +1057,12 @@ class Snapshot extends pulumi.CustomResource {
     this.project = registerOutput<String>('project');
     this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.selfLink = registerOutput<String>('selfLink');
-    this.snapshotEncryptionKey =
-        registerOutput<SnapshotSnapshotEncryptionKey?>('snapshotEncryptionKey');
+    this.snapshotEncryptionKey = registerOutput<SnapshotSnapshotEncryptionKey?>('snapshotEncryptionKey');
     this.snapshotId = registerOutput<int>('snapshotId');
     this.snapshotType = registerOutput<String?>('snapshotType');
     this.sourceDisk = registerOutput<String>('sourceDisk');
-    this.sourceDiskEncryptionKey =
-        registerOutput<SnapshotSourceDiskEncryptionKey?>(
-            'sourceDiskEncryptionKey');
-    this.sourceInstantSnapshot =
-        registerOutput<String?>('sourceInstantSnapshot');
+    this.sourceDiskEncryptionKey = registerOutput<SnapshotSourceDiskEncryptionKey?>('sourceDiskEncryptionKey');
+    this.sourceInstantSnapshot = registerOutput<String?>('sourceInstantSnapshot');
     this.storageBytes = registerOutput<int>('storageBytes');
     this.storageLocations = registerOutput<List<String>>('storageLocations');
     this.zone = registerOutput<String>('zone');

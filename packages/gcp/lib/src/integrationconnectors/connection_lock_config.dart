@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConnectionLockConfig {
   /// Indicates whether or not the connection is locked.
   final bool locked;
-
   /// Describes why a connection is locked.
   final String? reason;
 
@@ -16,13 +16,10 @@ class ConnectionLockConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['locked'] = locked;
-    final reasonValue = reason;
-    if (reasonValue != null) {
-      map['reason'] = reasonValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'locked': locked,
+      'reason': ?reason,
+    };
   }
 
   factory ConnectionLockConfig.fromMap(Map<String, dynamic> map) {
@@ -32,3 +29,4 @@ class ConnectionLockConfig {
     );
   }
 }
+

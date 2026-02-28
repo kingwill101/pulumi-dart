@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ApiEventConfigDefaultPublishAuthMode {
   /// Type of authentication. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`, `AWS_LAMBDA`.
   final String authType;
@@ -11,15 +12,15 @@ class ApiEventConfigDefaultPublishAuthMode {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['authType'] = authType;
-    return map;
+    return <String, dynamic>{
+      'authType': authType,
+    };
   }
 
-  factory ApiEventConfigDefaultPublishAuthMode.fromMap(
-      Map<String, dynamic> map) {
+  factory ApiEventConfigDefaultPublishAuthMode.fromMap(Map<String, dynamic> map) {
     return ApiEventConfigDefaultPublishAuthMode(
       authType: map['authType'] as String,
     );
   }
 }
+

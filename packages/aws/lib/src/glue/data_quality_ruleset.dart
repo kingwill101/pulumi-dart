@@ -447,34 +447,24 @@ import 'data_quality_ruleset_target_table.dart';
 class DataQualityRuleset extends pulumi.CustomResource {
   /// ARN of the Glue Data Quality Ruleset.
   late final pulumi.Output<String> arn;
-
   /// The time and date that this data quality ruleset was created.
   late final pulumi.Output<String> createdOn;
-
   /// Description of the data quality ruleset.
   late final pulumi.Output<String?> description;
-
   /// The time and date that this data quality ruleset was created.
   late final pulumi.Output<String> lastModifiedOn;
-
   /// Name of the data quality ruleset.
   late final pulumi.Output<String> name;
-
   /// When a ruleset was created from a recommendation run, this run ID is generated to link the two together.
   late final pulumi.Output<String> recommendationRunId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A Data Quality Definition Language (DQDL) ruleset. For more information, see the AWS Glue developer guide.
   late final pulumi.Output<String> ruleset;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// A Configuration block specifying a target table associated with the data quality ruleset. See `target_table` below.
   late final pulumi.Output<DataQualityRulesetTargetTable?> targetTable;
 
@@ -502,7 +492,6 @@ class DataQualityRuleset extends pulumi.CustomResource {
     this.ruleset = registerOutput<String>('ruleset');
     this.tags = registerOutput<Map<String, String>?>('tags');
     this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.targetTable =
-        registerOutput<DataQualityRulesetTargetTable?>('targetTable');
+    this.targetTable = registerOutput<DataQualityRulesetTargetTable?>('targetTable');
   }
 }

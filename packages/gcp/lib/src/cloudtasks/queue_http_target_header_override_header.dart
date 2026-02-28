@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class QueueHttpTargetHeaderOverrideHeader {
   /// The Key of the header.
   final String key;
-
   /// The Value of the header.
   final String value;
 
@@ -16,17 +16,17 @@ class QueueHttpTargetHeaderOverrideHeader {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
-  factory QueueHttpTargetHeaderOverrideHeader.fromMap(
-      Map<String, dynamic> map) {
+  factory QueueHttpTargetHeaderOverrideHeader.fromMap(Map<String, dynamic> map) {
     return QueueHttpTargetHeaderOverrideHeader(
       key: map['key'] as String,
       value: map['value'] as String,
     );
   }
 }
+

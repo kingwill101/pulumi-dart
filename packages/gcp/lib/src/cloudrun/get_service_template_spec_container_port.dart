@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetServiceTemplateSpecContainerPort {
   /// Port number the container listens on. This must be a valid port number (between 1 and 65535). Defaults to "8080".
   final int containerPort;
-
   /// The name of the Cloud Run Service.
   final String name;
-
   /// Protocol for port. Must be "TCP". Defaults to "TCP".
   final String protocol;
 
@@ -21,15 +20,14 @@ class GetServiceTemplateSpecContainerPort {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['containerPort'] = containerPort;
-    map['name'] = name;
-    map['protocol'] = protocol;
-    return map;
+    return <String, dynamic>{
+      'containerPort': containerPort,
+      'name': name,
+      'protocol': protocol,
+    };
   }
 
-  factory GetServiceTemplateSpecContainerPort.fromMap(
-      Map<String, dynamic> map) {
+  factory GetServiceTemplateSpecContainerPort.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateSpecContainerPort(
       containerPort: map['containerPort'] as int,
       name: map['name'] as String,
@@ -37,3 +35,4 @@ class GetServiceTemplateSpecContainerPort {
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetImagePipelineImageTestsConfiguration {
   /// Whether image tests are enabled.
   final bool imageTestsEnabled;
-
   /// Number of minutes before image tests time out.
   final int timeoutMinutes;
 
@@ -16,17 +16,17 @@ class GetImagePipelineImageTestsConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['imageTestsEnabled'] = imageTestsEnabled;
-    map['timeoutMinutes'] = timeoutMinutes;
-    return map;
+    return <String, dynamic>{
+      'imageTestsEnabled': imageTestsEnabled,
+      'timeoutMinutes': timeoutMinutes,
+    };
   }
 
-  factory GetImagePipelineImageTestsConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory GetImagePipelineImageTestsConfiguration.fromMap(Map<String, dynamic> map) {
     return GetImagePipelineImageTestsConfiguration(
       imageTestsEnabled: map['imageTestsEnabled'] as bool,
       timeoutMinutes: map['timeoutMinutes'] as int,
     );
   }
 }
+

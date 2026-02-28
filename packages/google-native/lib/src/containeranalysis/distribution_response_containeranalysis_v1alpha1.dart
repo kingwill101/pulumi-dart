@@ -6,19 +6,14 @@ import 'version_response_containeranalysis_v1alpha1.dart';
 class DistributionResponseContaineranalysisV1alpha1 {
   /// The CPU architecture for which packages in this distribution channel were built
   final String architecture;
-
   /// The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
   final String cpeUri;
-
   /// The distribution channel-specific description of this package.
   final String description;
-
   /// The latest available version of this package in this distribution channel.
   final VersionResponseContaineranalysisV1alpha1 latestVersion;
-
   /// A freeform string denoting the maintainer of this package.
   final String maintainer;
-
   /// The distribution channel-specific homepage for this package.
   final String url;
 
@@ -39,26 +34,25 @@ class DistributionResponseContaineranalysisV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['architecture'] = architecture;
-    map['cpeUri'] = cpeUri;
-    map['description'] = description;
-    map['latestVersion'] = latestVersion.toMap();
-    map['maintainer'] = maintainer;
-    map['url'] = url;
-    return map;
+    return <String, dynamic>{
+      'architecture': architecture,
+      'cpeUri': cpeUri,
+      'description': description,
+      'latestVersion': latestVersion.toMap(),
+      'maintainer': maintainer,
+      'url': url,
+    };
   }
 
-  factory DistributionResponseContaineranalysisV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory DistributionResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return DistributionResponseContaineranalysisV1alpha1(
       architecture: map['architecture'] as String,
       cpeUri: map['cpeUri'] as String,
       description: map['description'] as String,
-      latestVersion: VersionResponseContaineranalysisV1alpha1.fromMap(
-          (map['latestVersion'] as Map).cast<String, dynamic>()),
+      latestVersion: VersionResponseContaineranalysisV1alpha1.fromMap((map['latestVersion'] as Map).cast<String, dynamic>()),
       maintainer: map['maintainer'] as String,
       url: map['url'] as String,
     );
   }
 }
+

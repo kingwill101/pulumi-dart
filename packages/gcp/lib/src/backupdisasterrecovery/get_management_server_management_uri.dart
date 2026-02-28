@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetManagementServerManagementUri {
   /// The management console api endpoint.
   final String api;
-
   /// The management console webUi.
   final String webUi;
 
@@ -16,10 +16,10 @@ class GetManagementServerManagementUri {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['api'] = api;
-    map['webUi'] = webUi;
-    return map;
+    return <String, dynamic>{
+      'api': api,
+      'webUi': webUi,
+    };
   }
 
   factory GetManagementServerManagementUri.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetManagementServerManagementUri {
     );
   }
 }
+

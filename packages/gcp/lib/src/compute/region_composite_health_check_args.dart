@@ -10,7 +10,6 @@ class RegionCompositeHealthCheckArgs {
   /// An optional description of this resource. Provide this property when you
   /// create the resource.
   final pulumi.Input<String>? description;
-
   /// URL to the destination resource. Must be set. Must be a
   /// ForwardingRule. The ForwardingRule must have
   /// load balancing scheme INTERNAL or
@@ -18,14 +17,12 @@ class RegionCompositeHealthCheckArgs {
   /// as the CompositeHealthCheck (cross-region deployment for
   /// INTERNAL_MANAGED is not supported). Can be mutated.
   final pulumi.Input<String> healthDestination;
-
   /// URLs to the HealthSource resources whose results are AND'ed.
   /// I.e. he aggregated result is is HEALTHY only if all sources
   /// are HEALTHY. Must have at least 1. Must not have more than 10.
   /// Must be regional and in the same region as the
   /// CompositeHealthCheck. Can be mutated.
   final pulumi.Input<List<String>>? healthSources;
-
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
@@ -34,11 +31,9 @@ class RegionCompositeHealthCheckArgs {
   /// be a dash, lowercase letter, or digit, except the last character, which
   /// cannot be a dash.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// URL of the region where the composite health check resides.
   final pulumi.Input<String> region;
 
@@ -56,48 +51,34 @@ class RegionCompositeHealthCheckArgs {
     String? name,
     String? project,
     required String region,
-  })  : description = pulumi.Input.asOptionalInput<String>(description),
-        healthDestination = pulumi.Input.asInput<String>(healthDestination),
-        healthSources =
-            pulumi.Input.asOptionalInput<List<String>>(healthSources),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asInput<String>(region);
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      healthDestination = pulumi.Input.asInput<String>(healthDestination),
+      healthSources = pulumi.Input.asOptionalInput<List<String>>(healthSources),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    map['healthDestination'] = healthDestination;
-    final healthSourcesValue = healthSources;
-    if (healthSourcesValue != null) {
-      map['healthSources'] = healthSourcesValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'healthDestination': healthDestination,
+      'healthSources': ?healthSources,
+      'name': ?name,
+      'project': ?project,
+      'region': region,
+    };
   }
 
   factory RegionCompositeHealthCheckArgs.fromMap(Map<String, dynamic> map) {
     return RegionCompositeHealthCheckArgs(
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       healthDestination: map['healthDestination'] as String,
-      healthSources: map['healthSources'] == null
-          ? null
-          : (map['healthSources'] as List).cast<String>(),
+      healthSources: map['healthSources'] == null ? null : (map['healthSources'] as List).cast<String>(),
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       region: map['region'] as String,
     );
   }
 }
+

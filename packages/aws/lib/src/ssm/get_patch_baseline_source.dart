@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetPatchBaselineSource {
   /// Value of the yum repo configuration.
   final String configuration;
-
   /// Name specified to identify the patch source.
   final String name;
-
   /// Specific operating system versions a patch repository applies to.
   final List<String> products;
 
@@ -21,11 +20,11 @@ class GetPatchBaselineSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['configuration'] = configuration;
-    map['name'] = name;
-    map['products'] = products;
-    return map;
+    return <String, dynamic>{
+      'configuration': configuration,
+      'name': name,
+      'products': products,
+    };
   }
 
   factory GetPatchBaselineSource.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class GetPatchBaselineSource {
     );
   }
 }
+

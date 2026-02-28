@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTagsFilterTags {
   final String? key;
   final List<String>? matchOptions;
@@ -16,30 +17,19 @@ class GetTagsFilterTags {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final keyValue = key;
-    if (keyValue != null) {
-      map['key'] = keyValue;
-    }
-    final matchOptionsValue = matchOptions;
-    if (matchOptionsValue != null) {
-      map['matchOptions'] = matchOptionsValue;
-    }
-    final valuesValue = values;
-    if (valuesValue != null) {
-      map['values'] = valuesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'key': ?key,
+      'matchOptions': ?matchOptions,
+      'values': ?values,
+    };
   }
 
   factory GetTagsFilterTags.fromMap(Map<String, dynamic> map) {
     return GetTagsFilterTags(
       key: map['key'] == null ? null : map['key'] as String,
-      matchOptions: map['matchOptions'] == null
-          ? null
-          : (map['matchOptions'] as List).cast<String>(),
-      values:
-          map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      matchOptions: map['matchOptions'] == null ? null : (map['matchOptions'] as List).cast<String>(),
+      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
     );
   }
 }
+

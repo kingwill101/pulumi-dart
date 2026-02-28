@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetServiceHealthCheckCustomConfig {
   /// The number of 30-second intervals that you want service discovery to wait before it changes the health status of a service instance.  Maximum value of 10.
   final int failureThreshold;
@@ -11,9 +12,9 @@ class GetServiceHealthCheckCustomConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['failureThreshold'] = failureThreshold;
-    return map;
+    return <String, dynamic>{
+      'failureThreshold': failureThreshold,
+    };
   }
 
   factory GetServiceHealthCheckCustomConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetServiceHealthCheckCustomConfig {
     );
   }
 }
+

@@ -7,7 +7,6 @@ import 'weekly_maintenance_window_day.dart';
 class WeeklyMaintenanceWindow {
   /// The day of week that maintenance updates occur.
   final WeeklyMaintenanceWindowDay day;
-
   /// Start time of the window in UTC time.
   final TimeOfDay startTime;
 
@@ -20,17 +19,17 @@ class WeeklyMaintenanceWindow {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['day'] = day.value;
-    map['startTime'] = startTime.toMap();
-    return map;
+    return <String, dynamic>{
+      'day': day.value,
+      'startTime': startTime.toMap(),
+    };
   }
 
   factory WeeklyMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return WeeklyMaintenanceWindow(
       day: WeeklyMaintenanceWindowDay.fromValue(map['day'] as String),
-      startTime:
-          TimeOfDay.fromMap((map['startTime'] as Map).cast<String, dynamic>()),
+      startTime: TimeOfDay.fromMap((map['startTime'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

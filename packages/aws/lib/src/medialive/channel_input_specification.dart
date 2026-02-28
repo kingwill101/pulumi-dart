@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ChannelInputSpecification {
   final String codec;
   final String inputResolution;
@@ -16,11 +17,11 @@ class ChannelInputSpecification {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['codec'] = codec;
-    map['inputResolution'] = inputResolution;
-    map['maximumBitrate'] = maximumBitrate;
-    return map;
+    return <String, dynamic>{
+      'codec': codec,
+      'inputResolution': inputResolution,
+      'maximumBitrate': maximumBitrate,
+    };
   }
 
   factory ChannelInputSpecification.fromMap(Map<String, dynamic> map) {
@@ -31,3 +32,4 @@ class ChannelInputSpecification {
     );
   }
 }
+

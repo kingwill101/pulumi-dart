@@ -15,24 +15,15 @@ class LoggingComponentConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enableComponentsValue = enableComponents;
-    if (enableComponentsValue != null) {
-      map['enableComponents'] = pulumi.Input.encodeList<
-          LoggingComponentConfigEnableComponentsItem,
-          String>(enableComponentsValue, (value) => value.value);
-    }
-    return map;
+    return <String, dynamic>{
+      'enableComponents': ?enableComponents == null ? null : pulumi.Input.encodeList<LoggingComponentConfigEnableComponentsItem, String>(enableComponents!, (value) => value.value),
+    };
   }
 
   factory LoggingComponentConfig.fromMap(Map<String, dynamic> map) {
     return LoggingComponentConfig(
-      enableComponents: map['enableComponents'] == null
-          ? null
-          : pulumi.Input.decodeList<LoggingComponentConfigEnableComponentsItem>(
-              map['enableComponents'],
-              (value) => LoggingComponentConfigEnableComponentsItem.fromValue(
-                  value as String)),
+      enableComponents: map['enableComponents'] == null ? null : pulumi.Input.decodeList<LoggingComponentConfigEnableComponentsItem>(map['enableComponents'], (value) => LoggingComponentConfigEnableComponentsItem.fromValue(value as String)),
     );
   }
 }
+

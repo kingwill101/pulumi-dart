@@ -25,30 +25,24 @@ class GetDatasetVersionAiplatformV1beta1Args {
     required String location,
     String? project,
     String? readMask,
-  })  : datasetId = pulumi.Input.asInput<String>(datasetId),
-        datasetVersionId = pulumi.Input.asInput<String>(datasetVersionId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        readMask = pulumi.Input.asOptionalInput<String>(readMask);
+  }) :
+      datasetId = pulumi.Input.asInput<String>(datasetId),
+      datasetVersionId = pulumi.Input.asInput<String>(datasetVersionId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      readMask = pulumi.Input.asOptionalInput<String>(readMask);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['datasetId'] = datasetId;
-    map['datasetVersionId'] = datasetVersionId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final readMaskValue = readMask;
-    if (readMaskValue != null) {
-      map['readMask'] = readMaskValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'datasetId': datasetId,
+      'datasetVersionId': datasetVersionId,
+      'location': location,
+      'project': ?project,
+      'readMask': ?readMask,
+    };
   }
 
-  factory GetDatasetVersionAiplatformV1beta1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetDatasetVersionAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetDatasetVersionAiplatformV1beta1Args(
       datasetId: map['datasetId'] as String,
       datasetVersionId: map['datasetVersionId'] as String,
@@ -58,3 +52,4 @@ class GetDatasetVersionAiplatformV1beta1Args {
     );
   }
 }
+

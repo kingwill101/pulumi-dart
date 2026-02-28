@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDistributionTenantDomain {
   /// An associated domain of the distribution tenant. Exactly one of `id` or `domain` must be specified.
   final String domain;
-
   /// Current status of the distribution tenant. `Deployed` if the
   /// distribution tenant's information is fully propagated throughout the Amazon
   /// CloudFront system.
@@ -18,10 +18,10 @@ class GetDistributionTenantDomain {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['domain'] = domain;
-    map['status'] = status;
-    return map;
+    return <String, dynamic>{
+      'domain': domain,
+      'status': status,
+    };
   }
 
   factory GetDistributionTenantDomain.fromMap(Map<String, dynamic> map) {
@@ -31,3 +31,4 @@ class GetDistributionTenantDomain {
     );
   }
 }
+

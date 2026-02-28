@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AgentcoreBrowserNetworkConfigurationVpcConfig {
   /// Set of security group IDs for the VPC configuration.
   final List<String> securityGroups;
-
   /// Set of subnet IDs for the VPC configuration.
   final List<String> subnets;
 
@@ -16,17 +16,17 @@ class AgentcoreBrowserNetworkConfigurationVpcConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['securityGroups'] = securityGroups;
-    map['subnets'] = subnets;
-    return map;
+    return <String, dynamic>{
+      'securityGroups': securityGroups,
+      'subnets': subnets,
+    };
   }
 
-  factory AgentcoreBrowserNetworkConfigurationVpcConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentcoreBrowserNetworkConfigurationVpcConfig.fromMap(Map<String, dynamic> map) {
     return AgentcoreBrowserNetworkConfigurationVpcConfig(
       securityGroups: (map['securityGroups'] as List).cast<String>(),
       subnets: (map['subnets'] as List).cast<String>(),
     );
   }
 }
+

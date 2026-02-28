@@ -8,7 +8,6 @@ import 'google_privacy_dlp_v2_inspection_rule.dart';
 class GooglePrivacyDlpV2InspectionRuleSet {
   /// List of infoTypes this rule set is applied to.
   final List<GooglePrivacyDlpV2InfoType>? infoTypes;
-
   /// Set of rules to be applied to infoTypes. The rules are applied in order.
   final List<GooglePrivacyDlpV2InspectionRule>? rules;
 
@@ -21,35 +20,17 @@ class GooglePrivacyDlpV2InspectionRuleSet {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final infoTypesValue = infoTypes;
-    if (infoTypesValue != null) {
-      map['infoTypes'] = pulumi.Input.encodeList<GooglePrivacyDlpV2InfoType,
-          Map<String, dynamic>>(infoTypesValue, (value) => value.toMap());
-    }
-    final rulesValue = rules;
-    if (rulesValue != null) {
-      map['rules'] = pulumi.Input.encodeList<GooglePrivacyDlpV2InspectionRule,
-          Map<String, dynamic>>(rulesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'infoTypes': ?infoTypes == null ? null : pulumi.Input.encodeList<GooglePrivacyDlpV2InfoType, Map<String, dynamic>>(infoTypes!, (value) => value.toMap()),
+      'rules': ?rules == null ? null : pulumi.Input.encodeList<GooglePrivacyDlpV2InspectionRule, Map<String, dynamic>>(rules!, (value) => value.toMap()),
+    };
   }
 
-  factory GooglePrivacyDlpV2InspectionRuleSet.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2InspectionRuleSet.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2InspectionRuleSet(
-      infoTypes: map['infoTypes'] == null
-          ? null
-          : pulumi.Input.decodeList<GooglePrivacyDlpV2InfoType>(
-              map['infoTypes'],
-              (value) => GooglePrivacyDlpV2InfoType.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      rules: map['rules'] == null
-          ? null
-          : pulumi.Input.decodeList<GooglePrivacyDlpV2InspectionRule>(
-              map['rules'],
-              (value) => GooglePrivacyDlpV2InspectionRule.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      infoTypes: map['infoTypes'] == null ? null : pulumi.Input.decodeList<GooglePrivacyDlpV2InfoType>(map['infoTypes'], (value) => GooglePrivacyDlpV2InfoType.fromMap((value as Map).cast<String, dynamic>())),
+      rules: map['rules'] == null ? null : pulumi.Input.decodeList<GooglePrivacyDlpV2InspectionRule>(map['rules'], (value) => GooglePrivacyDlpV2InspectionRule.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

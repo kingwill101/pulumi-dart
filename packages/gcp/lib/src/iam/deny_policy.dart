@@ -428,16 +428,12 @@ import 'deny_policy_rule.dart';
 class DenyPolicy extends pulumi.CustomResource {
   /// The display name of the rule.
   late final pulumi.Output<String?> displayName;
-
   /// The hash of the resource. Used internally during updates.
   late final pulumi.Output<String> etag;
-
   /// The name of the policy.
   late final pulumi.Output<String> name;
-
   /// The attachment point is identified by its URL-encoded full resource name.
   late final pulumi.Output<String> parent;
-
   /// Rules to be applied.
   /// Structure is documented below.
   late final pulumi.Output<List<DenyPolicyRule>> rules;

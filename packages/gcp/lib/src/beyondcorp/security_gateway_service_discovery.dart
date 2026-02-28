@@ -14,20 +14,15 @@ class SecurityGatewayServiceDiscovery {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final apiGatewayValue = apiGateway;
-    if (apiGatewayValue != null) {
-      map['apiGateway'] = apiGatewayValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'apiGateway': ?apiGateway == null ? null : apiGateway!.toMap(),
+    };
   }
 
   factory SecurityGatewayServiceDiscovery.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayServiceDiscovery(
-      apiGateway: map['apiGateway'] == null
-          ? null
-          : SecurityGatewayServiceDiscoveryApiGateway.fromMap(
-              (map['apiGateway'] as Map).cast<String, dynamic>()),
+      apiGateway: map['apiGateway'] == null ? null : SecurityGatewayServiceDiscoveryApiGateway.fromMap((map['apiGateway'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

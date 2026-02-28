@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WorkstationConfigEncryptionKey {
   /// The name of the Google Cloud KMS encryption key.
   final String kmsKey;
-
   /// The service account to use with the specified KMS key.
   final String kmsKeyServiceAccount;
 
@@ -16,10 +16,10 @@ class WorkstationConfigEncryptionKey {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kmsKey'] = kmsKey;
-    map['kmsKeyServiceAccount'] = kmsKeyServiceAccount;
-    return map;
+    return <String, dynamic>{
+      'kmsKey': kmsKey,
+      'kmsKeyServiceAccount': kmsKeyServiceAccount,
+    };
   }
 
   factory WorkstationConfigEncryptionKey.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class WorkstationConfigEncryptionKey {
     );
   }
 }
+

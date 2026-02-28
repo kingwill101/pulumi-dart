@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SecurityGatewayApplicationUpstreamEgressPolicy {
   /// Required. List of regions where the application sends traffic to.
   final List<String> regions;
@@ -11,15 +12,15 @@ class SecurityGatewayApplicationUpstreamEgressPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['regions'] = regions;
-    return map;
+    return <String, dynamic>{
+      'regions': regions,
+    };
   }
 
-  factory SecurityGatewayApplicationUpstreamEgressPolicy.fromMap(
-      Map<String, dynamic> map) {
+  factory SecurityGatewayApplicationUpstreamEgressPolicy.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayApplicationUpstreamEgressPolicy(
       regions: (map['regions'] as List).cast<String>(),
     );
   }
 }
+

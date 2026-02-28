@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents the spec to match discrete values from parent parameter.
 class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec {
   /// Matches values of the parent parameter with type 'DISCRETE'. All values must exist in `discrete_value_spec` of parent parameter.
@@ -12,19 +13,15 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final valuesValue = values;
-    if (valuesValue != null) {
-      map['values'] = valuesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'values': ?values,
+    };
   }
 
-  factory GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec(
-      values:
-          map['values'] == null ? null : (map['values'] as List).cast<double>(),
+      values: map['values'] == null ? null : (map['values'] as List).cast<double>(),
     );
   }
 }
+

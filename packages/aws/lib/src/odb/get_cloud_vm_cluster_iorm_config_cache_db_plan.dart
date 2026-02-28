@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetCloudVmClusterIormConfigCacheDbPlan {
   final String dbName;
   final String flashCacheLimit;
@@ -16,15 +17,14 @@ class GetCloudVmClusterIormConfigCacheDbPlan {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dbName'] = dbName;
-    map['flashCacheLimit'] = flashCacheLimit;
-    map['share'] = share;
-    return map;
+    return <String, dynamic>{
+      'dbName': dbName,
+      'flashCacheLimit': flashCacheLimit,
+      'share': share,
+    };
   }
 
-  factory GetCloudVmClusterIormConfigCacheDbPlan.fromMap(
-      Map<String, dynamic> map) {
+  factory GetCloudVmClusterIormConfigCacheDbPlan.fromMap(Map<String, dynamic> map) {
     return GetCloudVmClusterIormConfigCacheDbPlan(
       dbName: map['dbName'] as String,
       flashCacheLimit: map['flashCacheLimit'] as String,
@@ -32,3 +32,4 @@ class GetCloudVmClusterIormConfigCacheDbPlan {
     );
   }
 }
+

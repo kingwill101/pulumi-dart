@@ -8,22 +8,16 @@ import 'membership_role_response.dart';
 class GetMembershipResult {
   /// The time when the `Membership` was created.
   final String createTime;
-
   /// Delivery setting associated with the membership.
   final String deliverySetting;
-
   /// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group}/memberships/{membership}`.
   final String name;
-
   /// Immutable. The `EntityKey` of the member.
   final EntityKeyResponse preferredMemberKey;
-
   /// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
   final List<MembershipRoleResponse> roles;
-
   /// The type of the membership.
   final String type;
-
   /// The time when the `Membership` was last updated.
   final String updateTime;
 
@@ -46,17 +40,15 @@ class GetMembershipResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['deliverySetting'] = deliverySetting;
-    map['name'] = name;
-    map['preferredMemberKey'] = preferredMemberKey.toMap();
-    map['roles'] =
-        pulumi.Input.encodeList<MembershipRoleResponse, Map<String, dynamic>>(
-            roles, (value) => value.toMap());
-    map['type'] = type;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'deliverySetting': deliverySetting,
+      'name': name,
+      'preferredMemberKey': preferredMemberKey.toMap(),
+      'roles': pulumi.Input.encodeList<MembershipRoleResponse, Map<String, dynamic>>(roles, (value) => value.toMap()),
+      'type': type,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetMembershipResult.fromMap(Map<String, dynamic> map) {
@@ -64,14 +56,11 @@ class GetMembershipResult {
       createTime: map['createTime'] as String,
       deliverySetting: map['deliverySetting'] as String,
       name: map['name'] as String,
-      preferredMemberKey: EntityKeyResponse.fromMap(
-          (map['preferredMemberKey'] as Map).cast<String, dynamic>()),
-      roles: pulumi.Input.decodeList<MembershipRoleResponse>(
-          map['roles'],
-          (value) => MembershipRoleResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      preferredMemberKey: EntityKeyResponse.fromMap((map['preferredMemberKey'] as Map).cast<String, dynamic>()),
+      roles: pulumi.Input.decodeList<MembershipRoleResponse>(map['roles'], (value) => MembershipRoleResponse.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
       updateTime: map['updateTime'] as String,
     );
   }
 }
+

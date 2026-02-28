@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnvironmentIamPolicyArgs {
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> envId;
-
   /// The Apigee Organization associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}`.
   /// Used to find the parent resource to bind the IAM policy to
@@ -21,14 +20,15 @@ class GetEnvironmentIamPolicyArgs {
   GetEnvironmentIamPolicyArgs({
     required String envId,
     required String orgId,
-  })  : envId = pulumi.Input.asInput<String>(envId),
-        orgId = pulumi.Input.asInput<String>(orgId);
+  }) :
+      envId = pulumi.Input.asInput<String>(envId),
+      orgId = pulumi.Input.asInput<String>(orgId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['envId'] = envId;
-    map['orgId'] = orgId;
-    return map;
+    return <String, dynamic>{
+      'envId': envId,
+      'orgId': orgId,
+    };
   }
 
   factory GetEnvironmentIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -38,3 +38,4 @@ class GetEnvironmentIamPolicyArgs {
     );
   }
 }
+

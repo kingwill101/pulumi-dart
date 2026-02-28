@@ -7,18 +7,14 @@ import 'get_site_location.dart';
 class GetSiteResult {
   /// ARN of the site.
   final String arn;
-
   /// Description of the site.
   final String description;
   final String globalNetworkId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Site location as documented below.
   final List<GetSiteLocation> locations;
   final String siteId;
-
   /// Key-value tags for the Site.
   final Map<String, String> tags;
 
@@ -41,17 +37,15 @@ class GetSiteResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['description'] = description;
-    map['globalNetworkId'] = globalNetworkId;
-    map['id'] = id;
-    map['locations'] =
-        pulumi.Input.encodeList<GetSiteLocation, Map<String, dynamic>>(
-            locations, (value) => value.toMap());
-    map['siteId'] = siteId;
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'description': description,
+      'globalNetworkId': globalNetworkId,
+      'id': id,
+      'locations': pulumi.Input.encodeList<GetSiteLocation, Map<String, dynamic>>(locations, (value) => value.toMap()),
+      'siteId': siteId,
+      'tags': tags,
+    };
   }
 
   factory GetSiteResult.fromMap(Map<String, dynamic> map) {
@@ -60,12 +54,10 @@ class GetSiteResult {
       description: map['description'] as String,
       globalNetworkId: map['globalNetworkId'] as String,
       id: map['id'] as String,
-      locations: pulumi.Input.decodeList<GetSiteLocation>(
-          map['locations'],
-          (value) =>
-              GetSiteLocation.fromMap((value as Map).cast<String, dynamic>())),
+      locations: pulumi.Input.decodeList<GetSiteLocation>(map['locations'], (value) => GetSiteLocation.fromMap((value as Map).cast<String, dynamic>())),
       siteId: map['siteId'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

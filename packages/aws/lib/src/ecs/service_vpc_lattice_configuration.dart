@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ServiceVpcLatticeConfiguration {
   /// The name of the port for a target group associated with the VPC Lattice configuration.
   final String portName;
-
   /// The ARN of the IAM role to associate with this volume. This is the Amazon ECS infrastructure IAM role that is used to manage your AWS infrastructure.
   final String roleArn;
-
   /// The full ARN of the target group or groups associated with the VPC Lattice configuration.
   final String targetGroupArn;
 
@@ -21,11 +20,11 @@ class ServiceVpcLatticeConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['portName'] = portName;
-    map['roleArn'] = roleArn;
-    map['targetGroupArn'] = targetGroupArn;
-    return map;
+    return <String, dynamic>{
+      'portName': portName,
+      'roleArn': roleArn,
+      'targetGroupArn': targetGroupArn,
+    };
   }
 
   factory ServiceVpcLatticeConfiguration.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class ServiceVpcLatticeConfiguration {
     );
   }
 }
+

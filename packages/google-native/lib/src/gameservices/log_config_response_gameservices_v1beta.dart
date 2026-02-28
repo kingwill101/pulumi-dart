@@ -8,10 +8,8 @@ import 'data_access_options_response_gameservices_v1beta.dart';
 class LogConfigResponseGameservicesV1beta {
   /// Cloud audit options.
   final CloudAuditOptionsResponseGameservicesV1beta cloudAudit;
-
   /// Counter options.
   final CounterOptionsResponseGameservicesV1beta counter;
-
   /// Data access options.
   final DataAccessOptionsResponseGameservicesV1beta dataAccess;
 
@@ -26,22 +24,19 @@ class LogConfigResponseGameservicesV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cloudAudit'] = cloudAudit.toMap();
-    map['counter'] = counter.toMap();
-    map['dataAccess'] = dataAccess.toMap();
-    return map;
+    return <String, dynamic>{
+      'cloudAudit': cloudAudit.toMap(),
+      'counter': counter.toMap(),
+      'dataAccess': dataAccess.toMap(),
+    };
   }
 
-  factory LogConfigResponseGameservicesV1beta.fromMap(
-      Map<String, dynamic> map) {
+  factory LogConfigResponseGameservicesV1beta.fromMap(Map<String, dynamic> map) {
     return LogConfigResponseGameservicesV1beta(
-      cloudAudit: CloudAuditOptionsResponseGameservicesV1beta.fromMap(
-          (map['cloudAudit'] as Map).cast<String, dynamic>()),
-      counter: CounterOptionsResponseGameservicesV1beta.fromMap(
-          (map['counter'] as Map).cast<String, dynamic>()),
-      dataAccess: DataAccessOptionsResponseGameservicesV1beta.fromMap(
-          (map['dataAccess'] as Map).cast<String, dynamic>()),
+      cloudAudit: CloudAuditOptionsResponseGameservicesV1beta.fromMap((map['cloudAudit'] as Map).cast<String, dynamic>()),
+      counter: CounterOptionsResponseGameservicesV1beta.fromMap((map['counter'] as Map).cast<String, dynamic>()),
+      dataAccess: DataAccessOptionsResponseGameservicesV1beta.fromMap((map['dataAccess'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

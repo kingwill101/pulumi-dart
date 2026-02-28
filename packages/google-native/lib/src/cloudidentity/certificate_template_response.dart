@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// CertificateTemplate (v3 Extension in X.509).
 class CertificateTemplateResponse {
   /// The Major version of the template. Example: 100.
   final int majorVersion;
-
   /// The minor version of the template. Example: 12.
   final int minorVersion;
 
@@ -17,10 +17,10 @@ class CertificateTemplateResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['majorVersion'] = majorVersion;
-    map['minorVersion'] = minorVersion;
-    return map;
+    return <String, dynamic>{
+      'majorVersion': majorVersion,
+      'minorVersion': minorVersion,
+    };
   }
 
   factory CertificateTemplateResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class CertificateTemplateResponse {
     );
   }
 }
+

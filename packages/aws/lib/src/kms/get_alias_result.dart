@@ -1,20 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getAlias.
 class GetAliasResult {
   /// Amazon Resource Name(ARN) of the key alias.
   final String arn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Name of the alias
   final String name;
   final String region;
-
   /// ARN pointed to by the alias.
   final String targetKeyArn;
-
   /// Key identifier pointed to by the alias.
   final String targetKeyId;
 
@@ -35,14 +32,14 @@ class GetAliasResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['id'] = id;
-    map['name'] = name;
-    map['region'] = region;
-    map['targetKeyArn'] = targetKeyArn;
-    map['targetKeyId'] = targetKeyId;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'id': id,
+      'name': name,
+      'region': region,
+      'targetKeyArn': targetKeyArn,
+      'targetKeyId': targetKeyId,
+    };
   }
 
   factory GetAliasResult.fromMap(Map<String, dynamic> map) {
@@ -56,3 +53,4 @@ class GetAliasResult {
     );
   }
 }
+

@@ -14,37 +14,26 @@ import 'spark_sql_job_response_dataproc_v1beta2.dart';
 class OrderedJobResponseDataprocV1beta2 {
   /// Optional. Job is a Hadoop job.
   final HadoopJobResponseDataprocV1beta2 hadoopJob;
-
   /// Optional. Job is a Hive job.
   final HiveJobResponseDataprocV1beta2 hiveJob;
-
   /// Optional. The labels to associate with this job.Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given job.
   final Map<String, String> labels;
-
   /// Optional. Job is a Pig job.
   final PigJobResponseDataprocV1beta2 pigJob;
-
   /// Optional. The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
   final List<String> prerequisiteStepIds;
-
   /// Optional. Job is a Presto job.
   final PrestoJobResponseDataprocV1beta2 prestoJob;
-
   /// Optional. Job is a PySpark job.
   final PySparkJobResponseDataprocV1beta2 pysparkJob;
-
   /// Optional. Job scheduling configuration.
   final JobSchedulingResponseDataprocV1beta2 scheduling;
-
   /// Optional. Job is a Spark job.
   final SparkJobResponseDataprocV1beta2 sparkJob;
-
   /// Optional. Job is a SparkR job.
   final SparkRJobResponseDataprocV1beta2 sparkRJob;
-
   /// Optional. Job is a SparkSql job.
   final SparkSqlJobResponseDataprocV1beta2 sparkSqlJob;
-
   /// The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
   final String stepId;
 
@@ -77,45 +66,37 @@ class OrderedJobResponseDataprocV1beta2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['hadoopJob'] = hadoopJob.toMap();
-    map['hiveJob'] = hiveJob.toMap();
-    map['labels'] = labels;
-    map['pigJob'] = pigJob.toMap();
-    map['prerequisiteStepIds'] = prerequisiteStepIds;
-    map['prestoJob'] = prestoJob.toMap();
-    map['pysparkJob'] = pysparkJob.toMap();
-    map['scheduling'] = scheduling.toMap();
-    map['sparkJob'] = sparkJob.toMap();
-    map['sparkRJob'] = sparkRJob.toMap();
-    map['sparkSqlJob'] = sparkSqlJob.toMap();
-    map['stepId'] = stepId;
-    return map;
+    return <String, dynamic>{
+      'hadoopJob': hadoopJob.toMap(),
+      'hiveJob': hiveJob.toMap(),
+      'labels': labels,
+      'pigJob': pigJob.toMap(),
+      'prerequisiteStepIds': prerequisiteStepIds,
+      'prestoJob': prestoJob.toMap(),
+      'pysparkJob': pysparkJob.toMap(),
+      'scheduling': scheduling.toMap(),
+      'sparkJob': sparkJob.toMap(),
+      'sparkRJob': sparkRJob.toMap(),
+      'sparkSqlJob': sparkSqlJob.toMap(),
+      'stepId': stepId,
+    };
   }
 
   factory OrderedJobResponseDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return OrderedJobResponseDataprocV1beta2(
-      hadoopJob: HadoopJobResponseDataprocV1beta2.fromMap(
-          (map['hadoopJob'] as Map).cast<String, dynamic>()),
-      hiveJob: HiveJobResponseDataprocV1beta2.fromMap(
-          (map['hiveJob'] as Map).cast<String, dynamic>()),
+      hadoopJob: HadoopJobResponseDataprocV1beta2.fromMap((map['hadoopJob'] as Map).cast<String, dynamic>()),
+      hiveJob: HiveJobResponseDataprocV1beta2.fromMap((map['hiveJob'] as Map).cast<String, dynamic>()),
       labels: (map['labels'] as Map).cast<String, String>(),
-      pigJob: PigJobResponseDataprocV1beta2.fromMap(
-          (map['pigJob'] as Map).cast<String, dynamic>()),
+      pigJob: PigJobResponseDataprocV1beta2.fromMap((map['pigJob'] as Map).cast<String, dynamic>()),
       prerequisiteStepIds: (map['prerequisiteStepIds'] as List).cast<String>(),
-      prestoJob: PrestoJobResponseDataprocV1beta2.fromMap(
-          (map['prestoJob'] as Map).cast<String, dynamic>()),
-      pysparkJob: PySparkJobResponseDataprocV1beta2.fromMap(
-          (map['pysparkJob'] as Map).cast<String, dynamic>()),
-      scheduling: JobSchedulingResponseDataprocV1beta2.fromMap(
-          (map['scheduling'] as Map).cast<String, dynamic>()),
-      sparkJob: SparkJobResponseDataprocV1beta2.fromMap(
-          (map['sparkJob'] as Map).cast<String, dynamic>()),
-      sparkRJob: SparkRJobResponseDataprocV1beta2.fromMap(
-          (map['sparkRJob'] as Map).cast<String, dynamic>()),
-      sparkSqlJob: SparkSqlJobResponseDataprocV1beta2.fromMap(
-          (map['sparkSqlJob'] as Map).cast<String, dynamic>()),
+      prestoJob: PrestoJobResponseDataprocV1beta2.fromMap((map['prestoJob'] as Map).cast<String, dynamic>()),
+      pysparkJob: PySparkJobResponseDataprocV1beta2.fromMap((map['pysparkJob'] as Map).cast<String, dynamic>()),
+      scheduling: JobSchedulingResponseDataprocV1beta2.fromMap((map['scheduling'] as Map).cast<String, dynamic>()),
+      sparkJob: SparkJobResponseDataprocV1beta2.fromMap((map['sparkJob'] as Map).cast<String, dynamic>()),
+      sparkRJob: SparkRJobResponseDataprocV1beta2.fromMap((map['sparkRJob'] as Map).cast<String, dynamic>()),
+      sparkSqlJob: SparkSqlJobResponseDataprocV1beta2.fromMap((map['sparkSqlJob'] as Map).cast<String, dynamic>()),
       stepId: map['stepId'] as String,
     );
   }
 }
+

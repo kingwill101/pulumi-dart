@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RegionInstanceTemplateServiceAccount {
   /// The service account e-mail address. If not given, the
   /// default Google Compute Engine service account is used.
   final String? email;
-
   /// A list of service scopes. Both OAuth2 URLs and gcloud
   /// short names are supported. To allow full access to all Cloud APIs, use the
   /// `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
@@ -26,20 +26,17 @@ class RegionInstanceTemplateServiceAccount {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final emailValue = email;
-    if (emailValue != null) {
-      map['email'] = emailValue;
-    }
-    map['scopes'] = scopes;
-    return map;
+    return <String, dynamic>{
+      'email': ?email,
+      'scopes': scopes,
+    };
   }
 
-  factory RegionInstanceTemplateServiceAccount.fromMap(
-      Map<String, dynamic> map) {
+  factory RegionInstanceTemplateServiceAccount.fromMap(Map<String, dynamic> map) {
     return RegionInstanceTemplateServiceAccount(
       email: map['email'] == null ? null : map['email'] as String,
       scopes: (map['scopes'] as List).cast<String>(),
     );
   }
 }
+

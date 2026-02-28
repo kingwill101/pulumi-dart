@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetAiIndexIndexStat {
   /// The number of shards in the Index.
   final int shardsCount;
-
   /// The number of vectors in the Index.
   final String vectorsCount;
 
@@ -16,10 +16,10 @@ class GetAiIndexIndexStat {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['shardsCount'] = shardsCount;
-    map['vectorsCount'] = vectorsCount;
-    return map;
+    return <String, dynamic>{
+      'shardsCount': shardsCount,
+      'vectorsCount': vectorsCount,
+    };
   }
 
   factory GetAiIndexIndexStat.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetAiIndexIndexStat {
     );
   }
 }
+

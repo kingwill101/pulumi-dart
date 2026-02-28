@@ -20,7 +20,7 @@ enum FeatureGroupFeatureValueTypeAiplatformV1beta1 {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown FeatureGroupFeatureValueTypeAiplatformV1beta1 value: $value');
+    throw ArgumentError('Unknown FeatureGroupFeatureValueTypeAiplatformV1beta1 value: $value');
   }
 }
+

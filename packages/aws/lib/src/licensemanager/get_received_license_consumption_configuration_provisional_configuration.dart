@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetReceivedLicenseConsumptionConfigurationProvisionalConfiguration {
   /// Maximum time for the provisional configuration, in minutes.
   final int maxTimeToLiveInMinutes;
@@ -11,15 +12,15 @@ class GetReceivedLicenseConsumptionConfigurationProvisionalConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maxTimeToLiveInMinutes'] = maxTimeToLiveInMinutes;
-    return map;
+    return <String, dynamic>{
+      'maxTimeToLiveInMinutes': maxTimeToLiveInMinutes,
+    };
   }
 
-  factory GetReceivedLicenseConsumptionConfigurationProvisionalConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory GetReceivedLicenseConsumptionConfigurationProvisionalConfiguration.fromMap(Map<String, dynamic> map) {
     return GetReceivedLicenseConsumptionConfigurationProvisionalConfiguration(
       maxTimeToLiveInMinutes: map['maxTimeToLiveInMinutes'] as int,
     );
   }
 }
+

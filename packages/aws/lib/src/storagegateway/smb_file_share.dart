@@ -236,93 +236,64 @@ import 'smb_file_share_cache_attributes.dart';
 class SmbFileShare extends pulumi.CustomResource {
   /// The files and folders on this share will only be visible to users with read access. Default value is `false`.
   late final pulumi.Output<bool?> accessBasedEnumeration;
-
   /// A list of users in the Active Directory that have admin access to the file share. Only valid if `authentication` is set to `ActiveDirectory`.
   late final pulumi.Output<List<String>?> adminUserLists;
-
   /// Amazon Resource Name (ARN) of the SMB File Share.
   late final pulumi.Output<String> arn;
-
   /// The Amazon Resource Name (ARN) of the CloudWatch Log Group used for the audit logs.
   late final pulumi.Output<String?> auditDestinationArn;
-
   /// The authentication method that users use to access the file share. Defaults to `ActiveDirectory`. Valid values: `ActiveDirectory`, `GuestAccess`.
   late final pulumi.Output<String?> authentication;
-
   /// The region of the S3 buck used by the file share. Required when specifying a `vpc_endpoint_dns_name`.
   late final pulumi.Output<String?> bucketRegion;
-
   /// Refresh cache information. see `cache_attributes` Block for more details.
   late final pulumi.Output<SmbFileShareCacheAttributes?> cacheAttributes;
-
   /// The case of an object name in an Amazon S3 bucket. For `ClientSpecified`, the client determines the case sensitivity. For `CaseSensitive`, the gateway determines the case sensitivity. The default value is `ClientSpecified`.
   late final pulumi.Output<String?> caseSensitivity;
-
   /// The default [storage class](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_CreateNFSFileShare.html#StorageGateway-CreateNFSFileShare-request-DefaultStorageClass) for objects put into an Amazon S3 bucket by the file gateway. Defaults to `S3_STANDARD`.
   late final pulumi.Output<String?> defaultStorageClass;
-
   /// The name of the file share. Must be set if an S3 prefix name is set in `location_arn`.
   late final pulumi.Output<String> fileShareName;
-
   /// ID of the SMB File Share.
   late final pulumi.Output<String> fileshareId;
-
   /// Amazon Resource Name (ARN) of the file gateway.
   late final pulumi.Output<String> gatewayArn;
-
   /// Boolean value that enables guessing of the MIME type for uploaded objects based on file extensions. Defaults to `true`.
   late final pulumi.Output<bool?> guessMimeTypeEnabled;
-
   /// A list of users in the Active Directory that are not allowed to access the file share. Only valid if `authentication` is set to `ActiveDirectory`.
   late final pulumi.Output<List<String>?> invalidUserLists;
-
   /// Boolean value if `true` to use Amazon S3 server side encryption with your own AWS KMS key, or `false` to use a key managed by Amazon S3. Defaults to `false`.
   late final pulumi.Output<bool?> kmsEncrypted;
-
   /// Amazon Resource Name (ARN) for KMS key used for Amazon S3 server side encryption. This value can only be set when `kms_encrypted` is true.
   late final pulumi.Output<String?> kmsKeyArn;
-
   /// The ARN of the backed storage used for storing file data.
   late final pulumi.Output<String> locationArn;
-
   /// The notification policy of the file share. For more information see the [AWS Documentation](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_CreateNFSFileShare.html#StorageGateway-CreateNFSFileShare-request-NotificationPolicy). Default value is `{}`.
   late final pulumi.Output<String?> notificationPolicy;
-
   /// Access Control List permission for S3 objects. Defaults to `private`.
   late final pulumi.Output<String?> objectAcl;
-
   /// Boolean to indicate Opportunistic lock (oplock) status. Defaults to `true`.
   late final pulumi.Output<bool> oplocksEnabled;
-
   /// File share path used by the NFS client to identify the mount point.
   late final pulumi.Output<String> path;
-
   /// Boolean to indicate write status of file share. File share does not accept writes if `true`. Defaults to `false`.
   late final pulumi.Output<bool?> readOnly;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Boolean who pays the cost of the request and the data download from the Amazon S3 bucket. Set this value to `true` if you want the requester to pay instead of the bucket owner. Defaults to `false`.
   late final pulumi.Output<bool?> requesterPays;
-
   /// The ARN of the AWS Identity and Access Management (IAM) role that a file gateway assumes when it accesses the underlying storage.
   late final pulumi.Output<String> roleArn;
-
   /// Set this value to `true` to enable ACL (access control list) on the SMB fileshare. Set it to `false` to map file and directory permissions to the POSIX permissions. This setting applies only to `ActiveDirectory` authentication type.
   late final pulumi.Output<bool?> smbAclEnabled;
-
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// **Note:** If you have previously included a `cache_attributes` block in your configuration, removing it will not reset the refresh cache value and the previous value will remain. You must explicitly set a new value to change it.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// A list of users in the Active Directory that are allowed to access the file share. If you need to specify an Active directory group, add '@' before the name of the group. It will be set on Allowed group in AWS console. Only valid if `authentication` is set to `ActiveDirectory`.
   late final pulumi.Output<List<String>?> validUserLists;
-
   /// The DNS name of the VPC endpoint for S3 private link.
   late final pulumi.Output<String?> vpcEndpointDnsName;
 
@@ -340,15 +311,13 @@ class SmbFileShare extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.accessBasedEnumeration =
-        registerOutput<bool?>('accessBasedEnumeration');
+    this.accessBasedEnumeration = registerOutput<bool?>('accessBasedEnumeration');
     this.adminUserLists = registerOutput<List<String>?>('adminUserLists');
     this.arn = registerOutput<String>('arn');
     this.auditDestinationArn = registerOutput<String?>('auditDestinationArn');
     this.authentication = registerOutput<String?>('authentication');
     this.bucketRegion = registerOutput<String?>('bucketRegion');
-    this.cacheAttributes =
-        registerOutput<SmbFileShareCacheAttributes?>('cacheAttributes');
+    this.cacheAttributes = registerOutput<SmbFileShareCacheAttributes?>('cacheAttributes');
     this.caseSensitivity = registerOutput<String?>('caseSensitivity');
     this.defaultStorageClass = registerOutput<String?>('defaultStorageClass');
     this.fileShareName = registerOutput<String>('fileShareName');

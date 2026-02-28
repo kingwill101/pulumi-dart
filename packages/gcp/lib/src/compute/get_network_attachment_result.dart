@@ -59,38 +59,29 @@ class GetNetworkAttachmentResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['connectionEndpoints'] = pulumi.Input.encodeList<
-        GetNetworkAttachmentConnectionEndpoint,
-        Map<String, dynamic>>(connectionEndpoints, (value) => value.toMap());
-    map['connectionPreference'] = connectionPreference;
-    map['creationTimestamp'] = creationTimestamp;
-    map['description'] = description;
-    map['fingerprint'] = fingerprint;
-    map['id'] = id;
-    map['kind'] = kind;
-    map['name'] = name;
-    map['network'] = network;
-    map['producerAcceptLists'] = producerAcceptLists;
-    map['producerRejectLists'] = producerRejectLists;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['region'] = region;
-    map['selfLink'] = selfLink;
-    map['selfLinkWithId'] = selfLinkWithId;
-    map['subnetworks'] = subnetworks;
-    return map;
+    return <String, dynamic>{
+      'connectionEndpoints': pulumi.Input.encodeList<GetNetworkAttachmentConnectionEndpoint, Map<String, dynamic>>(connectionEndpoints, (value) => value.toMap()),
+      'connectionPreference': connectionPreference,
+      'creationTimestamp': creationTimestamp,
+      'description': description,
+      'fingerprint': fingerprint,
+      'id': id,
+      'kind': kind,
+      'name': name,
+      'network': network,
+      'producerAcceptLists': producerAcceptLists,
+      'producerRejectLists': producerRejectLists,
+      'project': ?project,
+      'region': region,
+      'selfLink': selfLink,
+      'selfLinkWithId': selfLinkWithId,
+      'subnetworks': subnetworks,
+    };
   }
 
   factory GetNetworkAttachmentResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkAttachmentResult(
-      connectionEndpoints:
-          pulumi.Input.decodeList<GetNetworkAttachmentConnectionEndpoint>(
-              map['connectionEndpoints'],
-              (value) => GetNetworkAttachmentConnectionEndpoint.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      connectionEndpoints: pulumi.Input.decodeList<GetNetworkAttachmentConnectionEndpoint>(map['connectionEndpoints'], (value) => GetNetworkAttachmentConnectionEndpoint.fromMap((value as Map).cast<String, dynamic>())),
       connectionPreference: map['connectionPreference'] as String,
       creationTimestamp: map['creationTimestamp'] as String,
       description: map['description'] as String,
@@ -109,3 +100,4 @@ class GetNetworkAttachmentResult {
     );
   }
 }
+

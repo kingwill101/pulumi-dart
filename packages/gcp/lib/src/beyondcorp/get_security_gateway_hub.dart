@@ -17,22 +17,17 @@ class GetSecurityGatewayHub {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['internetGateways'] = pulumi.Input.encodeList<
-        GetSecurityGatewayHubInternetGateway,
-        Map<String, dynamic>>(internetGateways, (value) => value.toMap());
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'internetGateways': pulumi.Input.encodeList<GetSecurityGatewayHubInternetGateway, Map<String, dynamic>>(internetGateways, (value) => value.toMap()),
+      'region': region,
+    };
   }
 
   factory GetSecurityGatewayHub.fromMap(Map<String, dynamic> map) {
     return GetSecurityGatewayHub(
-      internetGateways:
-          pulumi.Input.decodeList<GetSecurityGatewayHubInternetGateway>(
-              map['internetGateways'],
-              (value) => GetSecurityGatewayHubInternetGateway.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      internetGateways: pulumi.Input.decodeList<GetSecurityGatewayHubInternetGateway>(map['internetGateways'], (value) => GetSecurityGatewayHubInternetGateway.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
     );
   }
 }
+

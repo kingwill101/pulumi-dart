@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TaskSetScale {
   /// The unit of measure for the scale value. Default: `PERCENT`.
   final String? unit;
-
   /// The value, specified as a percent total of a service's `desiredCount`, to scale the task set. Defaults to `0` if not specified. Accepted values are numbers between 0.0 and 100.0.
   final double? value;
 
@@ -16,16 +16,10 @@ class TaskSetScale {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final unitValue = unit;
-    if (unitValue != null) {
-      map['unit'] = unitValue;
-    }
-    final valueValue = value;
-    if (valueValue != null) {
-      map['value'] = valueValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'unit': ?unit,
+      'value': ?value,
+    };
   }
 
   factory TaskSetScale.fromMap(Map<String, dynamic> map) {
@@ -35,3 +29,4 @@ class TaskSetScale {
     );
   }
 }
+

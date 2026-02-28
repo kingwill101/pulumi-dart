@@ -11,7 +11,6 @@ class ClientArgs {
   /// is attached to. The format is
   /// `projects/{project_number}/brands/{brand_id}`.
   final pulumi.Input<String> brand;
-
   /// Human-friendly name given to the OAuth client.
   final pulumi.Input<String> displayName;
 
@@ -21,14 +20,15 @@ class ClientArgs {
   ClientArgs({
     required String brand,
     required String displayName,
-  })  : brand = pulumi.Input.asInput<String>(brand),
-        displayName = pulumi.Input.asInput<String>(displayName);
+  }) :
+      brand = pulumi.Input.asInput<String>(brand),
+      displayName = pulumi.Input.asInput<String>(displayName);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['brand'] = brand;
-    map['displayName'] = displayName;
-    return map;
+    return <String, dynamic>{
+      'brand': brand,
+      'displayName': displayName,
+    };
   }
 
   factory ClientArgs.fromMap(Map<String, dynamic> map) {
@@ -38,3 +38,4 @@ class ClientArgs {
     );
   }
 }
+

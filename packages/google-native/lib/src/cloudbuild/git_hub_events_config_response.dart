@@ -7,19 +7,14 @@ import 'push_filter_response.dart';
 class GitHubEventsConfigResponse {
   /// Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
   final String enterpriseConfigResourceName;
-
   /// The installationID that emits the GitHub event.
   final String installationId;
-
   /// Name of the repository. For example: The name for https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
   final String name;
-
   /// Owner of the repository. For example: The owner for https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
   final String owner;
-
   /// filter to match changes in pull requests.
   final PullRequestFilterResponse pullRequest;
-
   /// filter to match changes in refs like branches, tags.
   final PushFilterResponse push;
 
@@ -40,27 +35,25 @@ class GitHubEventsConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enterpriseConfigResourceName'] = enterpriseConfigResourceName;
-    map['installationId'] = installationId;
-    map['name'] = name;
-    map['owner'] = owner;
-    map['pullRequest'] = pullRequest.toMap();
-    map['push'] = push.toMap();
-    return map;
+    return <String, dynamic>{
+      'enterpriseConfigResourceName': enterpriseConfigResourceName,
+      'installationId': installationId,
+      'name': name,
+      'owner': owner,
+      'pullRequest': pullRequest.toMap(),
+      'push': push.toMap(),
+    };
   }
 
   factory GitHubEventsConfigResponse.fromMap(Map<String, dynamic> map) {
     return GitHubEventsConfigResponse(
-      enterpriseConfigResourceName:
-          map['enterpriseConfigResourceName'] as String,
+      enterpriseConfigResourceName: map['enterpriseConfigResourceName'] as String,
       installationId: map['installationId'] as String,
       name: map['name'] as String,
       owner: map['owner'] as String,
-      pullRequest: PullRequestFilterResponse.fromMap(
-          (map['pullRequest'] as Map).cast<String, dynamic>()),
-      push: PushFilterResponse.fromMap(
-          (map['push'] as Map).cast<String, dynamic>()),
+      pullRequest: PullRequestFilterResponse.fromMap((map['pullRequest'] as Map).cast<String, dynamic>()),
+      push: PushFilterResponse.fromMap((map['push'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

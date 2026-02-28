@@ -13,21 +13,15 @@ class AgentcoreGatewayProtocolConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final mcpValue = mcp;
-    if (mcpValue != null) {
-      map['mcp'] = mcpValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'mcp': ?mcp == null ? null : mcp!.toMap(),
+    };
   }
 
-  factory AgentcoreGatewayProtocolConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentcoreGatewayProtocolConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayProtocolConfiguration(
-      mcp: map['mcp'] == null
-          ? null
-          : AgentcoreGatewayProtocolConfigurationMcp.fromMap(
-              (map['mcp'] as Map).cast<String, dynamic>()),
+      mcp: map['mcp'] == null ? null : AgentcoreGatewayProtocolConfigurationMcp.fromMap((map['mcp'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

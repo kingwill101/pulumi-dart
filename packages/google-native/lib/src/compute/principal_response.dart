@@ -1,34 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// [Deprecated] All fields defined in a principal are ANDed.
 class PrincipalResponse {
   /// An expression to specify custom condition.
   final String condition;
-
   /// The groups the principal belongs to. Exact match, prefix match, and suffix match are supported.
   final List<String> groups;
-
   /// IPv4 or IPv6 address or range (In CIDR format)
   final List<String> ips;
-
   /// The namespaces. Exact match, prefix match, and suffix match are supported.
   final List<String> namespaces;
-
   /// Negate of groups. Specifies exclusions.
   final List<String> notGroups;
-
   /// Negate of IPs. Specifies exclusions.
   final List<String> notIps;
-
   /// Negate of namespaces. Specifies exclusions.
   final List<String> notNamespaces;
-
   /// Negate of users. Specifies exclusions.
   final List<String> notUsers;
-
   /// A map of Istio attribute to expected values. Exact match, prefix match, and suffix match are supported for values. For example, `request.headers[version]: "v1"`. The properties are ANDed together.
   final Map<String, String> properties;
-
   /// The user names/IDs or service accounts. Exact match, prefix match, and suffix match are supported.
   final List<String> users;
 
@@ -57,18 +49,18 @@ class PrincipalResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['condition'] = condition;
-    map['groups'] = groups;
-    map['ips'] = ips;
-    map['namespaces'] = namespaces;
-    map['notGroups'] = notGroups;
-    map['notIps'] = notIps;
-    map['notNamespaces'] = notNamespaces;
-    map['notUsers'] = notUsers;
-    map['properties'] = properties;
-    map['users'] = users;
-    return map;
+    return <String, dynamic>{
+      'condition': condition,
+      'groups': groups,
+      'ips': ips,
+      'namespaces': namespaces,
+      'notGroups': notGroups,
+      'notIps': notIps,
+      'notNamespaces': notNamespaces,
+      'notUsers': notUsers,
+      'properties': properties,
+      'users': users,
+    };
   }
 
   factory PrincipalResponse.fromMap(Map<String, dynamic> map) {
@@ -86,3 +78,4 @@ class PrincipalResponse {
     );
   }
 }
+

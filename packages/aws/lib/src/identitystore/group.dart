@@ -118,24 +118,18 @@ import 'group_external_id.dart';
 class Group extends pulumi.CustomResource {
   /// ARN of the Group.
   late final pulumi.Output<String> arn;
-
   /// A string containing the description of the group.
   late final pulumi.Output<String?> description;
-
   /// A string containing the name of the group. This value is commonly displayed when the group is referenced.
   late final pulumi.Output<String> displayName;
-
   /// A list of external IDs that contains the identifiers issued to this resource by an external identity provider. See External IDs below.
   late final pulumi.Output<List<GroupExternalId>> externalIds;
-
   /// The identifier of the newly created group in the identity store.
   late final pulumi.Output<String> groupId;
-
   /// The globally unique identifier for the identity store.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> identityStoreId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

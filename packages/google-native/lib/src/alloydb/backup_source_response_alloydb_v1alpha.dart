@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Message describing a BackupSource.
 class BackupSourceResponseAlloydbV1alpha {
   /// The name of the backup resource with the format: * projects/{project}/locations/{region}/backups/{backup_id}
   final String backupName;
-
   /// The system-generated UID of the backup which was used to create this resource. The UID is generated when the backup is created, and it is retained until the backup is deleted.
   final String backupUid;
 
@@ -17,10 +17,10 @@ class BackupSourceResponseAlloydbV1alpha {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['backupName'] = backupName;
-    map['backupUid'] = backupUid;
-    return map;
+    return <String, dynamic>{
+      'backupName': backupName,
+      'backupUid': backupUid,
+    };
   }
 
   factory BackupSourceResponseAlloydbV1alpha.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class BackupSourceResponseAlloydbV1alpha {
     );
   }
 }
+

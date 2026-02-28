@@ -229,22 +229,17 @@ import 'fulfillment_generic_web_service.dart';
 class Fulfillment extends pulumi.CustomResource {
   /// The human-readable name of the fulfillment, unique within the agent.
   late final pulumi.Output<String> displayName;
-
   /// Whether fulfillment is enabled.
   late final pulumi.Output<bool?> enabled;
-
   /// The field defines whether the fulfillment is enabled for certain features.
   /// Structure is documented below.
   late final pulumi.Output<List<FulfillmentFeature>?> features;
-
   /// Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
   /// Structure is documented below.
   late final pulumi.Output<FulfillmentGenericWebService?> genericWebService;
-
   /// The unique identifier of the fulfillment.
   /// Format: projects/<Project ID>/agent/fulfillment - projects/<Project ID>/locations/<Location ID>/agent/fulfillment
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -266,8 +261,7 @@ class Fulfillment extends pulumi.CustomResource {
     this.displayName = registerOutput<String>('displayName');
     this.enabled = registerOutput<bool?>('enabled');
     this.features = registerOutput<List<FulfillmentFeature>?>('features');
-    this.genericWebService =
-        registerOutput<FulfillmentGenericWebService?>('genericWebService');
+    this.genericWebService = registerOutput<FulfillmentGenericWebService?>('genericWebService');
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
   }

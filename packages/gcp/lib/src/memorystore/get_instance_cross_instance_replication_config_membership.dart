@@ -6,13 +6,9 @@ import 'get_instance_cross_instance_replication_config_membership_secondary_inst
 
 class GetInstanceCrossInstanceReplicationConfigMembership {
   /// Details of the primary instance that is used as the replication source for all the secondary instances.
-  final List<GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstance>
-      primaryInstances;
-
+  final List<GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstance> primaryInstances;
   /// List of secondary instances that are replicating from the primary instance.
-  final List<
-          GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstance>
-      secondaryInstances;
+  final List<GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstance> secondaryInstances;
 
   /// Creates a new [GetInstanceCrossInstanceReplicationConfigMembership].
   /// [primaryInstances] Details of the primary instance that is used as the replication source for all the secondary instances.
@@ -23,31 +19,17 @@ class GetInstanceCrossInstanceReplicationConfigMembership {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['primaryInstances'] = pulumi.Input.encodeList<
-        GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstance,
-        Map<String, dynamic>>(primaryInstances, (value) => value.toMap());
-    map['secondaryInstances'] = pulumi.Input.encodeList<
-        GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstance,
-        Map<String, dynamic>>(secondaryInstances, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'primaryInstances': pulumi.Input.encodeList<GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstance, Map<String, dynamic>>(primaryInstances, (value) => value.toMap()),
+      'secondaryInstances': pulumi.Input.encodeList<GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstance, Map<String, dynamic>>(secondaryInstances, (value) => value.toMap()),
+    };
   }
 
-  factory GetInstanceCrossInstanceReplicationConfigMembership.fromMap(
-      Map<String, dynamic> map) {
+  factory GetInstanceCrossInstanceReplicationConfigMembership.fromMap(Map<String, dynamic> map) {
     return GetInstanceCrossInstanceReplicationConfigMembership(
-      primaryInstances: pulumi.Input.decodeList<
-              GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstance>(
-          map['primaryInstances'],
-          (value) =>
-              GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstance
-                  .fromMap((value as Map).cast<String, dynamic>())),
-      secondaryInstances: pulumi.Input.decodeList<
-              GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstance>(
-          map['secondaryInstances'],
-          (value) =>
-              GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstance
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      primaryInstances: pulumi.Input.decodeList<GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstance>(map['primaryInstances'], (value) => GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstance.fromMap((value as Map).cast<String, dynamic>())),
+      secondaryInstances: pulumi.Input.decodeList<GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstance>(map['secondaryInstances'], (value) => GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstance.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

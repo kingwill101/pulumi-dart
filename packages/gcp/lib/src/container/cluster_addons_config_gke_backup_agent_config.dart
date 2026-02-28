@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterAddonsConfigGkeBackupAgentConfig {
   final bool enabled;
 
@@ -10,15 +11,15 @@ class ClusterAddonsConfigGkeBackupAgentConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory ClusterAddonsConfigGkeBackupAgentConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterAddonsConfigGkeBackupAgentConfig.fromMap(Map<String, dynamic> map) {
     return ClusterAddonsConfigGkeBackupAgentConfig(
       enabled: map['enabled'] as bool,
     );
   }
 }
+

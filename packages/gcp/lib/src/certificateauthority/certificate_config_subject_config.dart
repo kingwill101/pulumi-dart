@@ -7,7 +7,6 @@ class CertificateConfigSubjectConfig {
   /// Contains distinguished name fields such as the location and organization.
   /// Structure is documented below.
   final CertificateConfigSubjectConfigSubject subject;
-
   /// The subject alternative name fields.
   /// Structure is documented below.
   final CertificateConfigSubjectConfigSubjectAltName? subjectAltName;
@@ -21,23 +20,17 @@ class CertificateConfigSubjectConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['subject'] = subject.toMap();
-    final subjectAltNameValue = subjectAltName;
-    if (subjectAltNameValue != null) {
-      map['subjectAltName'] = subjectAltNameValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'subject': subject.toMap(),
+      'subjectAltName': ?subjectAltName == null ? null : subjectAltName!.toMap(),
+    };
   }
 
   factory CertificateConfigSubjectConfig.fromMap(Map<String, dynamic> map) {
     return CertificateConfigSubjectConfig(
-      subject: CertificateConfigSubjectConfigSubject.fromMap(
-          (map['subject'] as Map).cast<String, dynamic>()),
-      subjectAltName: map['subjectAltName'] == null
-          ? null
-          : CertificateConfigSubjectConfigSubjectAltName.fromMap(
-              (map['subjectAltName'] as Map).cast<String, dynamic>()),
+      subject: CertificateConfigSubjectConfigSubject.fromMap((map['subject'] as Map).cast<String, dynamic>()),
+      subjectAltName: map['subjectAltName'] == null ? null : CertificateConfigSubjectConfigSubjectAltName.fromMap((map['subjectAltName'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

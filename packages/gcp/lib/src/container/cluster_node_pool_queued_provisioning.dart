@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterNodePoolQueuedProvisioning {
   /// Whether nodes in this node pool are obtainable solely through the ProvisioningRequest API
   final bool enabled;
@@ -11,9 +12,9 @@ class ClusterNodePoolQueuedProvisioning {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory ClusterNodePoolQueuedProvisioning.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class ClusterNodePoolQueuedProvisioning {
     );
   }
 }
+

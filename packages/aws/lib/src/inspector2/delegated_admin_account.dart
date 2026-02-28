@@ -121,10 +121,8 @@ import 'delegated_admin_account_args.dart';
 class DelegatedAdminAccount extends pulumi.CustomResource {
   /// Account to enable as delegated admin account.
   late final pulumi.Output<String> accountId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Status of this delegated admin account.
   late final pulumi.Output<String> relationshipStatus;
 

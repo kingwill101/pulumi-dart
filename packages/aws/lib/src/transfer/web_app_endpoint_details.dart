@@ -13,20 +13,15 @@ class WebAppEndpointDetails {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final vpcValue = vpc;
-    if (vpcValue != null) {
-      map['vpc'] = vpcValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'vpc': ?vpc == null ? null : vpc!.toMap(),
+    };
   }
 
   factory WebAppEndpointDetails.fromMap(Map<String, dynamic> map) {
     return WebAppEndpointDetails(
-      vpc: map['vpc'] == null
-          ? null
-          : WebAppEndpointDetailsVpc.fromMap(
-              (map['vpc'] as Map).cast<String, dynamic>()),
+      vpc: map['vpc'] == null ? null : WebAppEndpointDetailsVpc.fromMap((map['vpc'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -7,7 +7,6 @@ class ListenerRuleAction {
   /// Describes the rule action that returns a custom HTTP response.
   /// See `fixed_response` Block for details.
   final ListenerRuleActionFixedResponse? fixedResponse;
-
   /// The forward action. Traffic that matches the rule is forwarded to the specified target groups.
   /// See `forward` Block for details.
   final ListenerRuleActionForward? forward;
@@ -21,28 +20,17 @@ class ListenerRuleAction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final fixedResponseValue = fixedResponse;
-    if (fixedResponseValue != null) {
-      map['fixedResponse'] = fixedResponseValue.toMap();
-    }
-    final forwardValue = forward;
-    if (forwardValue != null) {
-      map['forward'] = forwardValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'fixedResponse': ?fixedResponse == null ? null : fixedResponse!.toMap(),
+      'forward': ?forward == null ? null : forward!.toMap(),
+    };
   }
 
   factory ListenerRuleAction.fromMap(Map<String, dynamic> map) {
     return ListenerRuleAction(
-      fixedResponse: map['fixedResponse'] == null
-          ? null
-          : ListenerRuleActionFixedResponse.fromMap(
-              (map['fixedResponse'] as Map).cast<String, dynamic>()),
-      forward: map['forward'] == null
-          ? null
-          : ListenerRuleActionForward.fromMap(
-              (map['forward'] as Map).cast<String, dynamic>()),
+      fixedResponse: map['fixedResponse'] == null ? null : ListenerRuleActionFixedResponse.fromMap((map['fixedResponse'] as Map).cast<String, dynamic>()),
+      forward: map['forward'] == null ? null : ListenerRuleActionForward.fromMap((map['forward'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

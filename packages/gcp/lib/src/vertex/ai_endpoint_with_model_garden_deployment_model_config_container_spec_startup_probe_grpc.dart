@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpc {
   /// Port number of the gRPC service. Number must be in the range 1 to 65535.
   final int? port;
-
   /// Service is the name of the service to place in the gRPC
   /// HealthCheckRequest. See
   /// https://github.com/grpc/grpc/blob/master/doc/health-checking.md.
@@ -19,23 +19,17 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrp
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final portValue = port;
-    if (portValue != null) {
-      map['port'] = portValue;
-    }
-    final serviceValue = service;
-    if (serviceValue != null) {
-      map['service'] = serviceValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'port': ?port,
+      'service': ?service,
+    };
   }
 
-  factory AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpc.fromMap(
-      Map<String, dynamic> map) {
+  factory AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpc.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpc(
       port: map['port'] == null ? null : map['port'] as int,
       service: map['service'] == null ? null : map['service'] as String,
     );
   }
 }
+

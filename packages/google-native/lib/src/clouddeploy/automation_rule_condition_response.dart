@@ -14,15 +14,15 @@ class AutomationRuleConditionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['targetsPresentCondition'] = targetsPresentCondition.toMap();
-    return map;
+    return <String, dynamic>{
+      'targetsPresentCondition': targetsPresentCondition.toMap(),
+    };
   }
 
   factory AutomationRuleConditionResponse.fromMap(Map<String, dynamic> map) {
     return AutomationRuleConditionResponse(
-      targetsPresentCondition: TargetsPresentConditionResponse.fromMap(
-          (map['targetsPresentCondition'] as Map).cast<String, dynamic>()),
+      targetsPresentCondition: TargetsPresentConditionResponse.fromMap((map['targetsPresentCondition'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

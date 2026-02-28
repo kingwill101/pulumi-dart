@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetBucketObjectRetention {
   /// The object retention mode. Supported values include: "Unlocked", "Locked".
   final String mode;
-
   /// Time in RFC 3339 (e.g. 2030-01-01T02:03:04Z) until which object retention protects this object.
   final String retainUntilTime;
 
@@ -16,10 +16,10 @@ class GetBucketObjectRetention {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['mode'] = mode;
-    map['retainUntilTime'] = retainUntilTime;
-    return map;
+    return <String, dynamic>{
+      'mode': mode,
+      'retainUntilTime': retainUntilTime,
+    };
   }
 
   factory GetBucketObjectRetention.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetBucketObjectRetention {
     );
   }
 }
+

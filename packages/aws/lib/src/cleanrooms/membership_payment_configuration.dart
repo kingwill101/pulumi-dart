@@ -12,15 +12,15 @@ class MembershipPaymentConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['queryCompute'] = queryCompute.toMap();
-    return map;
+    return <String, dynamic>{
+      'queryCompute': queryCompute.toMap(),
+    };
   }
 
   factory MembershipPaymentConfiguration.fromMap(Map<String, dynamic> map) {
     return MembershipPaymentConfiguration(
-      queryCompute: MembershipPaymentConfigurationQueryCompute.fromMap(
-          (map['queryCompute'] as Map).cast<String, dynamic>()),
+      queryCompute: MembershipPaymentConfigurationQueryCompute.fromMap((map['queryCompute'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

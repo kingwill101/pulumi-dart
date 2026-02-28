@@ -191,8 +191,7 @@ Future<GetPrivateCloudClusterIamPolicyResult> getPrivateCloudClusterIamPolicy(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_vmwareengine_v1_get_private_cloud_hcx_activation_key_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPrivateCloudHcxActivationKeyIamPolicyResult>
-    getPrivateCloudHcxActivationKeyIamPolicy(
+Future<GetPrivateCloudHcxActivationKeyIamPolicyResult> getPrivateCloudHcxActivationKeyIamPolicy(
   GetPrivateCloudHcxActivationKeyIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

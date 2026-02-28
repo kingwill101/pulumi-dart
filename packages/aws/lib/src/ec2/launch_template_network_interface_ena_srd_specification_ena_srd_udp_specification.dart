@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LaunchTemplateNetworkInterfaceEnaSrdSpecificationEnaSrdUdpSpecification {
   /// Whether to enable UDP traffic optimization through ENA Express. Requires `ena_srd_enabled` to be `true`.
   ///
@@ -13,20 +14,15 @@ class LaunchTemplateNetworkInterfaceEnaSrdSpecificationEnaSrdUdpSpecification {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enaSrdUdpEnabledValue = enaSrdUdpEnabled;
-    if (enaSrdUdpEnabledValue != null) {
-      map['enaSrdUdpEnabled'] = enaSrdUdpEnabledValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enaSrdUdpEnabled': ?enaSrdUdpEnabled,
+    };
   }
 
-  factory LaunchTemplateNetworkInterfaceEnaSrdSpecificationEnaSrdUdpSpecification.fromMap(
-      Map<String, dynamic> map) {
+  factory LaunchTemplateNetworkInterfaceEnaSrdSpecificationEnaSrdUdpSpecification.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateNetworkInterfaceEnaSrdSpecificationEnaSrdUdpSpecification(
-      enaSrdUdpEnabled: map['enaSrdUdpEnabled'] == null
-          ? null
-          : map['enaSrdUdpEnabled'] as bool,
+      enaSrdUdpEnabled: map['enaSrdUdpEnabled'] == null ? null : map['enaSrdUdpEnabled'] as bool,
     );
   }
 }
+

@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// More info about Metric: https://docs.apigee.com/api-platform/analytics/analytics-reference#metrics
 class GoogleCloudApigeeV1QueryMetric {
   /// Alias for the metric. Alias will be used to replace metric name in query results.
   final String? alias;
-
   /// Aggregation function: avg, min, max, or sum.
   final String? function;
-
   /// Metric name.
   final String name;
-
   /// One of `+`, `-`, `/`, `%`, `*`.
   final String? operator;
-
   /// Operand value should be provided when operator is set.
   final String? value;
 
@@ -32,25 +29,13 @@ class GoogleCloudApigeeV1QueryMetric {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final aliasValue = alias;
-    if (aliasValue != null) {
-      map['alias'] = aliasValue;
-    }
-    final functionValue = function;
-    if (functionValue != null) {
-      map['function'] = functionValue;
-    }
-    map['name'] = name;
-    final operatorValue = operator;
-    if (operatorValue != null) {
-      map['operator'] = operatorValue;
-    }
-    final valueValue = value;
-    if (valueValue != null) {
-      map['value'] = valueValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'alias': ?alias,
+      'function': ?function,
+      'name': name,
+      'operator': ?operator,
+      'value': ?value,
+    };
   }
 
   factory GoogleCloudApigeeV1QueryMetric.fromMap(Map<String, dynamic> map) {
@@ -63,3 +48,4 @@ class GoogleCloudApigeeV1QueryMetric {
     );
   }
 }
+

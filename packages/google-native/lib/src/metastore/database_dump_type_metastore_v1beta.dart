@@ -13,7 +13,7 @@ enum DatabaseDumpTypeMetastoreV1beta {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown DatabaseDumpTypeMetastoreV1beta value: $value');
+    throw ArgumentError('Unknown DatabaseDumpTypeMetastoreV1beta value: $value');
   }
 }
+

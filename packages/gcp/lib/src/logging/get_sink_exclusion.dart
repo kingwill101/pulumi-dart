@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetSinkExclusion {
   /// A description of this exclusion.
   final String description;
-
   /// Whether this exclusion is disabled and it does not exclude any log entries.
   final bool disabled;
-
   /// An advanced logs filter that matches the log entries to be excluded.
   final String filter;
-
   /// A client-assigned identifier, such as `load-balancer-exclusion`.
   final String name;
 
@@ -26,12 +24,12 @@ class GetSinkExclusion {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['description'] = description;
-    map['disabled'] = disabled;
-    map['filter'] = filter;
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'description': description,
+      'disabled': disabled,
+      'filter': filter,
+      'name': name,
+    };
   }
 
   factory GetSinkExclusion.fromMap(Map<String, dynamic> map) {
@@ -43,3 +41,4 @@ class GetSinkExclusion {
     );
   }
 }
+

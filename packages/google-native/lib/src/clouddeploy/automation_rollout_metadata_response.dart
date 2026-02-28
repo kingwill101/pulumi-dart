@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// AutomationRolloutMetadata contains Automation-related actions that were performed on a rollout.
 class AutomationRolloutMetadataResponse {
   /// The IDs of the AutomationRuns initiated by an advance rollout rule.
   final List<String> advanceAutomationRuns;
-
   /// The ID of the AutomationRun initiated by a promote release rule.
   final String promoteAutomationRun;
-
   /// The IDs of the AutomationRuns initiated by a repair rollout rule.
   final List<String> repairAutomationRuns;
 
@@ -22,20 +21,19 @@ class AutomationRolloutMetadataResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['advanceAutomationRuns'] = advanceAutomationRuns;
-    map['promoteAutomationRun'] = promoteAutomationRun;
-    map['repairAutomationRuns'] = repairAutomationRuns;
-    return map;
+    return <String, dynamic>{
+      'advanceAutomationRuns': advanceAutomationRuns,
+      'promoteAutomationRun': promoteAutomationRun,
+      'repairAutomationRuns': repairAutomationRuns,
+    };
   }
 
   factory AutomationRolloutMetadataResponse.fromMap(Map<String, dynamic> map) {
     return AutomationRolloutMetadataResponse(
-      advanceAutomationRuns:
-          (map['advanceAutomationRuns'] as List).cast<String>(),
+      advanceAutomationRuns: (map['advanceAutomationRuns'] as List).cast<String>(),
       promoteAutomationRun: map['promoteAutomationRun'] as String,
-      repairAutomationRuns:
-          (map['repairAutomationRuns'] as List).cast<String>(),
+      repairAutomationRuns: (map['repairAutomationRuns'] as List).cast<String>(),
     );
   }
 }
+

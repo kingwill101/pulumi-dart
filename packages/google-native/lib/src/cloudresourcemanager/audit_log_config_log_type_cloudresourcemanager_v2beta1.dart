@@ -8,15 +8,13 @@ enum AuditLogConfigLogTypeCloudresourcemanagerV2beta1 {
   const AuditLogConfigLogTypeCloudresourcemanagerV2beta1(this.value);
   final String value;
 
-  static AuditLogConfigLogTypeCloudresourcemanagerV2beta1 fromValue(
-      String value) {
-    for (final item
-        in AuditLogConfigLogTypeCloudresourcemanagerV2beta1.values) {
+  static AuditLogConfigLogTypeCloudresourcemanagerV2beta1 fromValue(String value) {
+    for (final item in AuditLogConfigLogTypeCloudresourcemanagerV2beta1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown AuditLogConfigLogTypeCloudresourcemanagerV2beta1 value: $value');
+    throw ArgumentError('Unknown AuditLogConfigLogTypeCloudresourcemanagerV2beta1 value: $value');
   }
 }
+

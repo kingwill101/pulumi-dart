@@ -7,7 +7,6 @@ import 'autoscaling_targets.dart';
 class ClusterAutoscalingConfig {
   /// Autoscaling limits for this cluster.
   final AutoscalingLimits autoscalingLimits;
-
   /// Autoscaling targets for this cluster.
   final AutoscalingTargets autoscalingTargets;
 
@@ -20,18 +19,17 @@ class ClusterAutoscalingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['autoscalingLimits'] = autoscalingLimits.toMap();
-    map['autoscalingTargets'] = autoscalingTargets.toMap();
-    return map;
+    return <String, dynamic>{
+      'autoscalingLimits': autoscalingLimits.toMap(),
+      'autoscalingTargets': autoscalingTargets.toMap(),
+    };
   }
 
   factory ClusterAutoscalingConfig.fromMap(Map<String, dynamic> map) {
     return ClusterAutoscalingConfig(
-      autoscalingLimits: AutoscalingLimits.fromMap(
-          (map['autoscalingLimits'] as Map).cast<String, dynamic>()),
-      autoscalingTargets: AutoscalingTargets.fromMap(
-          (map['autoscalingTargets'] as Map).cast<String, dynamic>()),
+      autoscalingLimits: AutoscalingLimits.fromMap((map['autoscalingLimits'] as Map).cast<String, dynamic>()),
+      autoscalingTargets: AutoscalingTargets.fromMap((map['autoscalingTargets'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -14,15 +14,15 @@ class TestTimingResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['testProcessDuration'] = testProcessDuration.toMap();
-    return map;
+    return <String, dynamic>{
+      'testProcessDuration': testProcessDuration.toMap(),
+    };
   }
 
   factory TestTimingResponse.fromMap(Map<String, dynamic> map) {
     return TestTimingResponse(
-      testProcessDuration: DurationResponse.fromMap(
-          (map['testProcessDuration'] as Map).cast<String, dynamic>()),
+      testProcessDuration: DurationResponse.fromMap((map['testProcessDuration'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

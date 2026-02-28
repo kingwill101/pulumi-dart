@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetCustomModelValidationMetric {
   /// The validation loss associated with the validator.
   final double validationLoss;
@@ -11,9 +12,9 @@ class GetCustomModelValidationMetric {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['validationLoss'] = validationLoss;
-    return map;
+    return <String, dynamic>{
+      'validationLoss': validationLoss,
+    };
   }
 
   factory GetCustomModelValidationMetric.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetCustomModelValidationMetric {
     );
   }
 }
+

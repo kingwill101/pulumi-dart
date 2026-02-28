@@ -12,7 +12,6 @@ class SloRequestBasedSli {
   /// Exactly one of `distribution_cut` or `good_total_ratio` can be set.
   /// Structure is documented below.
   final SloRequestBasedSliDistributionCut? distributionCut;
-
   /// A means to compute a ratio of `good_service` to `total_service`.
   /// Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
   /// Must specify exactly two of good, bad, and total service filters.
@@ -31,28 +30,17 @@ class SloRequestBasedSli {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final distributionCutValue = distributionCut;
-    if (distributionCutValue != null) {
-      map['distributionCut'] = distributionCutValue.toMap();
-    }
-    final goodTotalRatioValue = goodTotalRatio;
-    if (goodTotalRatioValue != null) {
-      map['goodTotalRatio'] = goodTotalRatioValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'distributionCut': ?distributionCut == null ? null : distributionCut!.toMap(),
+      'goodTotalRatio': ?goodTotalRatio == null ? null : goodTotalRatio!.toMap(),
+    };
   }
 
   factory SloRequestBasedSli.fromMap(Map<String, dynamic> map) {
     return SloRequestBasedSli(
-      distributionCut: map['distributionCut'] == null
-          ? null
-          : SloRequestBasedSliDistributionCut.fromMap(
-              (map['distributionCut'] as Map).cast<String, dynamic>()),
-      goodTotalRatio: map['goodTotalRatio'] == null
-          ? null
-          : SloRequestBasedSliGoodTotalRatio.fromMap(
-              (map['goodTotalRatio'] as Map).cast<String, dynamic>()),
+      distributionCut: map['distributionCut'] == null ? null : SloRequestBasedSliDistributionCut.fromMap((map['distributionCut'] as Map).cast<String, dynamic>()),
+      goodTotalRatio: map['goodTotalRatio'] == null ? null : SloRequestBasedSliGoodTotalRatio.fromMap((map['goodTotalRatio'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

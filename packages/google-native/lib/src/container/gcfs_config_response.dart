@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// GcfsConfig contains configurations of Google Container File System (image streaming).
 class GcfsConfigResponse {
   /// Whether to use GCFS.
@@ -12,9 +13,9 @@ class GcfsConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory GcfsConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class GcfsConfigResponse {
     );
   }
 }
+

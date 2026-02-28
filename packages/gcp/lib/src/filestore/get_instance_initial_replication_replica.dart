@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInstanceInitialReplicationReplica {
   /// The peer instance.
   final String peerInstance;
@@ -11,15 +12,15 @@ class GetInstanceInitialReplicationReplica {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['peerInstance'] = peerInstance;
-    return map;
+    return <String, dynamic>{
+      'peerInstance': peerInstance,
+    };
   }
 
-  factory GetInstanceInitialReplicationReplica.fromMap(
-      Map<String, dynamic> map) {
+  factory GetInstanceInitialReplicationReplica.fromMap(Map<String, dynamic> map) {
     return GetInstanceInitialReplicationReplica(
       peerInstance: map['peerInstance'] as String,
     );
   }
 }
+

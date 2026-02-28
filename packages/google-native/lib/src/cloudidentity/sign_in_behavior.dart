@@ -14,20 +14,15 @@ class SignInBehavior {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final redirectConditionValue = redirectCondition;
-    if (redirectConditionValue != null) {
-      map['redirectCondition'] = redirectConditionValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'redirectCondition': ?redirectCondition == null ? null : redirectCondition!.value,
+    };
   }
 
   factory SignInBehavior.fromMap(Map<String, dynamic> map) {
     return SignInBehavior(
-      redirectCondition: map['redirectCondition'] == null
-          ? null
-          : SignInBehaviorRedirectCondition.fromValue(
-              map['redirectCondition'] as String),
+      redirectCondition: map['redirectCondition'] == null ? null : SignInBehaviorRedirectCondition.fromValue(map['redirectCondition'] as String),
     );
   }
 }
+

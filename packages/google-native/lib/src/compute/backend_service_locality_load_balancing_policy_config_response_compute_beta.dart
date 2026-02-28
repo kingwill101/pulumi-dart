@@ -5,10 +5,8 @@ import 'backend_service_locality_load_balancing_policy_config_policy_response_co
 
 /// Container for either a built-in LB policy supported by gRPC or Envoy or a custom one implemented by the end user.
 class BackendServiceLocalityLoadBalancingPolicyConfigResponseComputeBeta {
-  final BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseComputeBeta
-      customPolicy;
-  final BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseComputeBeta
-      policy;
+  final BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseComputeBeta customPolicy;
+  final BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseComputeBeta policy;
 
   /// Creates a new [BackendServiceLocalityLoadBalancingPolicyConfigResponseComputeBeta].
   /// [customPolicy] Required.
@@ -19,21 +17,17 @@ class BackendServiceLocalityLoadBalancingPolicyConfigResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['customPolicy'] = customPolicy.toMap();
-    map['policy'] = policy.toMap();
-    return map;
+    return <String, dynamic>{
+      'customPolicy': customPolicy.toMap(),
+      'policy': policy.toMap(),
+    };
   }
 
-  factory BackendServiceLocalityLoadBalancingPolicyConfigResponseComputeBeta.fromMap(
-      Map<String, dynamic> map) {
+  factory BackendServiceLocalityLoadBalancingPolicyConfigResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return BackendServiceLocalityLoadBalancingPolicyConfigResponseComputeBeta(
-      customPolicy:
-          BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseComputeBeta
-              .fromMap((map['customPolicy'] as Map).cast<String, dynamic>()),
-      policy:
-          BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseComputeBeta
-              .fromMap((map['policy'] as Map).cast<String, dynamic>()),
+      customPolicy: BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseComputeBeta.fromMap((map['customPolicy'] as Map).cast<String, dynamic>()),
+      policy: BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseComputeBeta.fromMap((map['policy'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,27 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetFoldersFolder {
   /// The timestamp of when the folder was created
   final String createTime;
-
   /// The timestamp of when the folder was requested to be deleted (if applicable)
   final String deleteTime;
-
   /// The display name of the folder
   final String displayName;
-
   /// Entity tag identifier of the folder
   final String etag;
-
   /// The id of the folder
   final String name;
-
   /// The parent id of the folder
   final String parent;
-
   /// The lifecycle state of the folder
   final String state;
-
   /// The timestamp of when the folder was last modified
   final String updateTime;
 
@@ -46,16 +40,16 @@ class GetFoldersFolder {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['deleteTime'] = deleteTime;
-    map['displayName'] = displayName;
-    map['etag'] = etag;
-    map['name'] = name;
-    map['parent'] = parent;
-    map['state'] = state;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'deleteTime': deleteTime,
+      'displayName': displayName,
+      'etag': etag,
+      'name': name,
+      'parent': parent,
+      'state': state,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetFoldersFolder.fromMap(Map<String, dynamic> map) {
@@ -71,3 +65,4 @@ class GetFoldersFolder {
     );
   }
 }
+

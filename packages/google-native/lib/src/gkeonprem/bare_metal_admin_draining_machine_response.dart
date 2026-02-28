@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// BareMetalAdminDrainingMachine represents the machines that are currently draining.
 class BareMetalAdminDrainingMachineResponse {
   /// Draining machine IP address.
   final String nodeIp;
-
   /// The count of pods yet to drain.
   final int podCount;
 
@@ -17,17 +17,17 @@ class BareMetalAdminDrainingMachineResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['nodeIp'] = nodeIp;
-    map['podCount'] = podCount;
-    return map;
+    return <String, dynamic>{
+      'nodeIp': nodeIp,
+      'podCount': podCount,
+    };
   }
 
-  factory BareMetalAdminDrainingMachineResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory BareMetalAdminDrainingMachineResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminDrainingMachineResponse(
       nodeIp: map['nodeIp'] as String,
       podCount: map['podCount'] as int,
     );
   }
 }
+

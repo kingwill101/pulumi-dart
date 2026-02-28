@@ -22,36 +22,28 @@ class GetRestorePlanIamPolicyArgs {
     int? optionsRequestedPolicyVersion,
     String? project,
     required String restorePlanId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        optionsRequestedPolicyVersion =
-            pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        restorePlanId = pulumi.Input.asInput<String>(restorePlanId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      restorePlanId = pulumi.Input.asInput<String>(restorePlanId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final optionsRequestedPolicyVersionValue = optionsRequestedPolicyVersion;
-    if (optionsRequestedPolicyVersionValue != null) {
-      map['optionsRequestedPolicyVersion'] = optionsRequestedPolicyVersionValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['restorePlanId'] = restorePlanId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'optionsRequestedPolicyVersion': ?optionsRequestedPolicyVersion,
+      'project': ?project,
+      'restorePlanId': restorePlanId,
+    };
   }
 
   factory GetRestorePlanIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRestorePlanIamPolicyArgs(
       location: map['location'] as String,
-      optionsRequestedPolicyVersion:
-          map['optionsRequestedPolicyVersion'] == null
-              ? null
-              : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       restorePlanId: map['restorePlanId'] as String,
     );
   }
 }
+

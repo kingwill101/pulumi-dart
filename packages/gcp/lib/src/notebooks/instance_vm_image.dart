@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceVmImage {
   /// Use this VM image family to find the image; the newest image in this family will be used.
   final String? imageFamily;
-
   /// Use VM image name to find the image.
   final String? imageName;
-
   /// The name of the Google Cloud project that this VM image belongs to.
   /// Format: projects/{project_id}
   final String project;
@@ -22,25 +21,19 @@ class InstanceVmImage {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final imageFamilyValue = imageFamily;
-    if (imageFamilyValue != null) {
-      map['imageFamily'] = imageFamilyValue;
-    }
-    final imageNameValue = imageName;
-    if (imageNameValue != null) {
-      map['imageName'] = imageNameValue;
-    }
-    map['project'] = project;
-    return map;
+    return <String, dynamic>{
+      'imageFamily': ?imageFamily,
+      'imageName': ?imageName,
+      'project': project,
+    };
   }
 
   factory InstanceVmImage.fromMap(Map<String, dynamic> map) {
     return InstanceVmImage(
-      imageFamily:
-          map['imageFamily'] == null ? null : map['imageFamily'] as String,
+      imageFamily: map['imageFamily'] == null ? null : map['imageFamily'] as String,
       imageName: map['imageName'] == null ? null : map['imageName'] as String,
       project: map['project'] as String,
     );
   }
 }
+

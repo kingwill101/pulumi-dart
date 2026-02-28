@@ -14,21 +14,15 @@ class FleetObservabilityFeatureSpecGkehubV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final loggingConfigValue = loggingConfig;
-    if (loggingConfigValue != null) {
-      map['loggingConfig'] = loggingConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'loggingConfig': ?loggingConfig == null ? null : loggingConfig!.toMap(),
+    };
   }
 
-  factory FleetObservabilityFeatureSpecGkehubV1beta.fromMap(
-      Map<String, dynamic> map) {
+  factory FleetObservabilityFeatureSpecGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return FleetObservabilityFeatureSpecGkehubV1beta(
-      loggingConfig: map['loggingConfig'] == null
-          ? null
-          : FleetObservabilityLoggingConfigGkehubV1beta.fromMap(
-              (map['loggingConfig'] as Map).cast<String, dynamic>()),
+      loggingConfig: map['loggingConfig'] == null ? null : FleetObservabilityLoggingConfigGkehubV1beta.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

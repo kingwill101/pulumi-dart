@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Installs a deb via dpkg.
 class SoftwareRecipeStepInstallDpkgResponse {
   /// The id of the relevant artifact in the recipe.
@@ -12,15 +13,15 @@ class SoftwareRecipeStepInstallDpkgResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['artifactId'] = artifactId;
-    return map;
+    return <String, dynamic>{
+      'artifactId': artifactId,
+    };
   }
 
-  factory SoftwareRecipeStepInstallDpkgResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory SoftwareRecipeStepInstallDpkgResponse.fromMap(Map<String, dynamic> map) {
     return SoftwareRecipeStepInstallDpkgResponse(
       artifactId: map['artifactId'] as String,
     );
   }
 }
+

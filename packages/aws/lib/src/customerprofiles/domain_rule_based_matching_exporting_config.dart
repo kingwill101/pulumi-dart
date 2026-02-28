@@ -12,21 +12,15 @@ class DomainRuleBasedMatchingExportingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final s3ExportingValue = s3Exporting;
-    if (s3ExportingValue != null) {
-      map['s3Exporting'] = s3ExportingValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      's3Exporting': ?s3Exporting == null ? null : s3Exporting!.toMap(),
+    };
   }
 
-  factory DomainRuleBasedMatchingExportingConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory DomainRuleBasedMatchingExportingConfig.fromMap(Map<String, dynamic> map) {
     return DomainRuleBasedMatchingExportingConfig(
-      s3Exporting: map['s3Exporting'] == null
-          ? null
-          : DomainRuleBasedMatchingExportingConfigS3Exporting.fromMap(
-              (map['s3Exporting'] as Map).cast<String, dynamic>()),
+      s3Exporting: map['s3Exporting'] == null ? null : DomainRuleBasedMatchingExportingConfigS3Exporting.fromMap((map['s3Exporting'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A Pub/Sub destination.
 class PubsubDestination {
   /// The name of the Pub/Sub topic to publish to. Example: `projects/PROJECT_ID/topics/TOPIC_ID`.
@@ -12,12 +13,9 @@ class PubsubDestination {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final topicValue = topic;
-    if (topicValue != null) {
-      map['topic'] = topicValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'topic': ?topic,
+    };
   }
 
   factory PubsubDestination.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class PubsubDestination {
     );
   }
 }
+

@@ -193,33 +193,25 @@ import 'v2_project_notification_config_streaming_config.dart';
 class V2ProjectNotificationConfig extends pulumi.CustomResource {
   /// This must be unique within the project.
   late final pulumi.Output<String> configId;
-
   /// The description of the notification config (max of 1024 characters).
   late final pulumi.Output<String?> description;
-
   /// Location ID for the parent project. Defaults to `global` if location is not provided.
   late final pulumi.Output<String?> location;
-
   /// The resource name of this notification config, in the format
   /// `projects/{{projectId}}/locations/{{location}}/notificationConfigs/{{config_id}}`.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The Pub/Sub topic to send notifications to. Its format is
   /// "projects/[project_id]/topics/[topic]".
   late final pulumi.Output<String?> pubsubTopic;
-
   /// The service account that needs "pubsub.topics.publish" permission to
   /// publish to the Pub/Sub topic.
   late final pulumi.Output<String> serviceAccount;
-
   /// The config for triggering streaming-based notifications.
   /// Structure is documented below.
-  late final pulumi.Output<V2ProjectNotificationConfigStreamingConfig>
-      streamingConfig;
+  late final pulumi.Output<V2ProjectNotificationConfigStreamingConfig> streamingConfig;
 
   /// Creates a new [V2ProjectNotificationConfig].
   /// [name] The Pulumi resource name.
@@ -242,8 +234,6 @@ class V2ProjectNotificationConfig extends pulumi.CustomResource {
     this.project = registerOutput<String>('project');
     this.pubsubTopic = registerOutput<String?>('pubsubTopic');
     this.serviceAccount = registerOutput<String>('serviceAccount');
-    this.streamingConfig =
-        registerOutput<V2ProjectNotificationConfigStreamingConfig>(
-            'streamingConfig');
+    this.streamingConfig = registerOutput<V2ProjectNotificationConfigStreamingConfig>('streamingConfig');
   }
 }

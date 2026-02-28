@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Container message for hash values.
 class HashResponse {
   /// The type of hash that was performed.
   final String type;
-
   /// The hash value.
   final String value;
 
@@ -17,10 +17,10 @@ class HashResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['type'] = type;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'type': type,
+      'value': value,
+    };
   }
 
   factory HashResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class HashResponse {
     );
   }
 }
+

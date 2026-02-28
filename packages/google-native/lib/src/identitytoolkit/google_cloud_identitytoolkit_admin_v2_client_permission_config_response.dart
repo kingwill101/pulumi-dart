@@ -14,17 +14,15 @@ class GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['permissions'] = permissions.toMap();
-    return map;
+    return <String, dynamic>{
+      'permissions': permissions.toMap(),
+    };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigResponse(
-      permissions:
-          GoogleCloudIdentitytoolkitAdminV2ClientPermissionsResponse.fromMap(
-              (map['permissions'] as Map).cast<String, dynamic>()),
+      permissions: GoogleCloudIdentitytoolkitAdminV2ClientPermissionsResponse.fromMap((map['permissions'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

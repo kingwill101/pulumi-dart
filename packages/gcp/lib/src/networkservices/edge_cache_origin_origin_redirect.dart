@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EdgeCacheOriginOriginRedirect {
   /// The set of redirect response codes that the CDN
   /// follows. Values of
@@ -14,19 +15,15 @@ class EdgeCacheOriginOriginRedirect {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final redirectConditionsValue = redirectConditions;
-    if (redirectConditionsValue != null) {
-      map['redirectConditions'] = redirectConditionsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'redirectConditions': ?redirectConditions,
+    };
   }
 
   factory EdgeCacheOriginOriginRedirect.fromMap(Map<String, dynamic> map) {
     return EdgeCacheOriginOriginRedirect(
-      redirectConditions: map['redirectConditions'] == null
-          ? null
-          : (map['redirectConditions'] as List).cast<String>(),
+      redirectConditions: map['redirectConditions'] == null ? null : (map['redirectConditions'] as List).cast<String>(),
     );
   }
 }
+

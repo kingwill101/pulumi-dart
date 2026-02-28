@@ -214,22 +214,16 @@ import 'rule_predicate.dart';
 class Rule extends pulumi.CustomResource {
   /// The ARN of the WAF Regional Rule.
   late final pulumi.Output<String> arn;
-
   /// The name or description for the Amazon CloudWatch metric of this rule.
   late final pulumi.Output<String> metricName;
-
   /// The name or description of the rule.
   late final pulumi.Output<String> name;
-
   /// The objects to include in a rule (documented below).
   late final pulumi.Output<List<RulePredicate>?> predicates;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 

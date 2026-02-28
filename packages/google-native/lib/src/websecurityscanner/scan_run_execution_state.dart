@@ -17,3 +17,4 @@ enum ScanRunExecutionState {
     throw ArgumentError('Unknown ScanRunExecutionState value: $value');
   }
 }
+

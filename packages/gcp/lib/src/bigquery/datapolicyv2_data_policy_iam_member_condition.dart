@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class Datapolicyv2DataPolicyIamMemberCondition {
   final String? description;
   final String expression;
@@ -16,23 +17,19 @@ class Datapolicyv2DataPolicyIamMemberCondition {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    map['expression'] = expression;
-    map['title'] = title;
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'expression': expression,
+      'title': title,
+    };
   }
 
-  factory Datapolicyv2DataPolicyIamMemberCondition.fromMap(
-      Map<String, dynamic> map) {
+  factory Datapolicyv2DataPolicyIamMemberCondition.fromMap(Map<String, dynamic> map) {
     return Datapolicyv2DataPolicyIamMemberCondition(
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       expression: map['expression'] as String,
       title: map['title'] as String,
     );
   }
 }
+

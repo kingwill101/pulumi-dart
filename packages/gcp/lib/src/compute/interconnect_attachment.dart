@@ -779,10 +779,8 @@ class InterconnectAttachment extends pulumi.CustomResource {
   /// Whether the VLAN attachment is enabled or disabled.  When using
   /// PARTNER type this will Pre-Activate the interconnect attachment
   late final pulumi.Output<bool?> adminEnabled;
-
   /// URL of the AttachmentGroup that includes this Attachment.
   late final pulumi.Output<String> attachmentGroup;
-
   /// Provisioned bandwidth capacity for the interconnect attachment.
   /// For attachments of type DEDICATED, the user can set the bandwidth.
   /// For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
@@ -790,23 +788,18 @@ class InterconnectAttachment extends pulumi.CustomResource {
   /// Defaults to BPS_10G
   /// Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`, `BPS_100G`, `BPS_400G`.
   late final pulumi.Output<String> bandwidth;
-
   /// Single IPv4 address + prefix length to be configured on the cloud router interface for this
   /// interconnect attachment. Example: 203.0.113.1/29
   late final pulumi.Output<String?> candidateCloudRouterIpAddress;
-
   /// Single IPv6 address + prefix length to be configured on the cloud router interface for this
   /// interconnect attachment. Example: 2001:db8::1/125
   late final pulumi.Output<String?> candidateCloudRouterIpv6Address;
-
   /// Single IPv4 address + prefix length to be configured on the customer router interface for this
   /// interconnect attachment. Example: 203.0.113.2/29
   late final pulumi.Output<String?> candidateCustomerRouterIpAddress;
-
   /// Single IPv6 address + prefix length to be configured on the customer router interface for this
   /// interconnect attachment. Example: 2001:db8::2/125
   late final pulumi.Output<String?> candidateCustomerRouterIpv6Address;
-
   /// Up to 16 candidate prefixes that can be used to restrict the allocation
   /// of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
   /// All prefixes must be within link-local address space (169.254.0.0/16)
@@ -815,29 +808,22 @@ class InterconnectAttachment extends pulumi.CustomResource {
   /// fail if all possible /29s are in use on Google's edge. If not supplied,
   /// Google will randomly select an unused /29 from all of link-local space.
   late final pulumi.Output<List<String>?> candidateSubnets;
-
   /// IPv4 address + prefix length to be configured on Cloud Router
   /// Interface for this interconnect attachment.
   late final pulumi.Output<String> cloudRouterIpAddress;
-
   /// IPv6 address + prefix length to be configured on Cloud Router
   /// Interface for this interconnect attachment.
   late final pulumi.Output<String> cloudRouterIpv6Address;
-
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
-
   /// IPv4 address + prefix length to be configured on the customer
   /// router subinterface for this interconnect attachment.
   late final pulumi.Output<String> customerRouterIpAddress;
-
   /// IPv6 address + prefix length to be configured on the customer
   /// router subinterface for this interconnect attachment.
   late final pulumi.Output<String> customerRouterIpv6Address;
-
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
-
   /// Desired availability domain for the attachment. Only available for type
   /// PARTNER, at creation time. For improved reliability, customers should
   /// configure a pair of attachments with one per availability domain. The
@@ -845,10 +831,8 @@ class InterconnectAttachment extends pulumi.CustomResource {
   /// pairing key so that the provisioned circuit will lie in the specified
   /// domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
   late final pulumi.Output<String> edgeAvailabilityDomain;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Indicates the user-supplied encryption option of this interconnect
   /// attachment. Can only be specified at attachment creation for PARTNER or
   /// DEDICATED attachments.
@@ -863,16 +847,13 @@ class InterconnectAttachment extends pulumi.CustomResource {
   /// Default value is `NONE`.
   /// Possible values are: `NONE`, `IPSEC`.
   late final pulumi.Output<String?> encryption;
-
   /// Google reference ID, to be used when raising support tickets with
   /// Google or otherwise to debug backend connectivity issues.
   late final pulumi.Output<String> googleReferenceId;
-
   /// URL of the underlying Interconnect object that this attachment's
   /// traffic will traverse through. Required if type is DEDICATED, must not
   /// be set if type is PARTNER.
   late final pulumi.Output<String?> interconnect;
-
   /// URL of addresses that have been reserved for the interconnect attachment,
   /// Used only for interconnect attachment that has the encryption option as
   /// IPSEC.
@@ -889,29 +870,24 @@ class InterconnectAttachment extends pulumi.CustomResource {
   /// interconnect attachment, the HA VPN gateway's IP address will be
   /// allocated from regional external IP address pool.
   late final pulumi.Output<List<String>?> ipsecInternalAddresses;
-
   /// L2 Interconnect Attachment related configuration.
   /// Structure is documented below.
   late final pulumi.Output<InterconnectAttachmentL2Forwarding?> l2Forwarding;
-
   /// A fingerprint for the labels being applied to this Interconnect, which is essentially a hash
   /// of the labels set used for optimistic locking. The fingerprint is initially generated by
   /// Compute Engine and changes after every request to modify or update labels.
   /// You must always provide an up-to-date fingerprint hash in order to update or change labels,
   /// otherwise the request will fail with error 412 conditionNotMet.
   late final pulumi.Output<String> labelFingerprint;
-
   /// Labels for this resource. These can only be added or modified by the setLabels
   /// method. Each label key/value pair must comply with RFC1035. Label values may be empty.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment.
   /// Valid values are 1440, 1460, 1500, and 8896. If not specified, the value will default to 1440.
   late final pulumi.Output<String> mtu;
-
   /// Name of the resource. Provided by the client when the resource is created. The
   /// name must be 1-63 characters long, and comply with RFC1035. Specifically, the
   /// name must be 1-63 characters long and match the regular expression
@@ -919,23 +895,18 @@ class InterconnectAttachment extends pulumi.CustomResource {
   /// lowercase letter, and all following characters must be a dash, lowercase
   /// letter, or digit, except the last character, which cannot be a dash.
   late final pulumi.Output<String> name;
-
   /// [Output only for type PARTNER. Not present for DEDICATED]. The opaque
   /// identifier of an PARTNER attachment used to initiate provisioning with
   /// a selected partner. Of the form "XXXXX/region/domain"
   late final pulumi.Output<String> pairingKey;
-
   /// [Output only for type PARTNER. Not present for DEDICATED]. Optional
   /// BGP ASN for the router that should be supplied by a layer 3 Partner if
   /// they configured BGP on behalf of the customer.
   late final pulumi.Output<String> partnerAsn;
-
   /// Information specific to an InterconnectAttachment. This property
   /// is populated if the interconnect that this is attached to is of type DEDICATED.
   /// Structure is documented below.
-  late final pulumi.Output<List<InterconnectAttachmentPrivateInterconnectInfo>>
-      privateInterconnectInfos;
-
+  late final pulumi.Output<List<InterconnectAttachmentPrivateInterconnectInfo>> privateInterconnectInfos;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   ///
@@ -943,33 +914,26 @@ class InterconnectAttachment extends pulumi.CustomResource {
   ///
   /// <a name="nested_l2_forwarding"></a>The `l2_forwarding` block supports:
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Region where the regional interconnect attachment resides.
   late final pulumi.Output<String> region;
-
   /// URL of the cloud router to be used for dynamic routing. This router must be in
   /// the same region as this InterconnectAttachment. The InterconnectAttachment will
   /// automatically connect the Interconnect to the network & region within which the
   /// Cloud Router is configured.
   late final pulumi.Output<String?> router;
-
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
-
   /// The stack type for this interconnect attachment to identify whether the IPv6
   /// feature is enabled or not. If not specified, IPV4_ONLY will be used.
   /// This field can be both set at interconnect attachments creation and update
   /// interconnect attachment operations.
   /// Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
   late final pulumi.Output<String> stackType;
-
   /// [Output Only] The current state of this attachment's functionality.
   late final pulumi.Output<String> state;
-
   /// Length of the IPv4 subnet mask. Allowed values: 29 (default), 30. The default value is 29,
   /// except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a
   /// constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure
@@ -977,12 +941,10 @@ class InterconnectAttachment extends pulumi.CustomResource {
   /// requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it
   /// gives Google Cloud Support more debugging visibility.
   late final pulumi.Output<int?> subnetLength;
-
   /// The type of InterconnectAttachment you wish to create. Defaults to
   /// DEDICATED.
   /// Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`, `L2_DEDICATED`.
   late final pulumi.Output<String> type;
-
   /// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
   /// using PARTNER type this will be managed upstream.
   late final pulumi.Output<int> vlanTag8021q;
@@ -1004,44 +966,31 @@ class InterconnectAttachment extends pulumi.CustomResource {
     this.adminEnabled = registerOutput<bool?>('adminEnabled');
     this.attachmentGroup = registerOutput<String>('attachmentGroup');
     this.bandwidth = registerOutput<String>('bandwidth');
-    this.candidateCloudRouterIpAddress =
-        registerOutput<String?>('candidateCloudRouterIpAddress');
-    this.candidateCloudRouterIpv6Address =
-        registerOutput<String?>('candidateCloudRouterIpv6Address');
-    this.candidateCustomerRouterIpAddress =
-        registerOutput<String?>('candidateCustomerRouterIpAddress');
-    this.candidateCustomerRouterIpv6Address =
-        registerOutput<String?>('candidateCustomerRouterIpv6Address');
+    this.candidateCloudRouterIpAddress = registerOutput<String?>('candidateCloudRouterIpAddress');
+    this.candidateCloudRouterIpv6Address = registerOutput<String?>('candidateCloudRouterIpv6Address');
+    this.candidateCustomerRouterIpAddress = registerOutput<String?>('candidateCustomerRouterIpAddress');
+    this.candidateCustomerRouterIpv6Address = registerOutput<String?>('candidateCustomerRouterIpv6Address');
     this.candidateSubnets = registerOutput<List<String>?>('candidateSubnets');
     this.cloudRouterIpAddress = registerOutput<String>('cloudRouterIpAddress');
-    this.cloudRouterIpv6Address =
-        registerOutput<String>('cloudRouterIpv6Address');
+    this.cloudRouterIpv6Address = registerOutput<String>('cloudRouterIpv6Address');
     this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.customerRouterIpAddress =
-        registerOutput<String>('customerRouterIpAddress');
-    this.customerRouterIpv6Address =
-        registerOutput<String>('customerRouterIpv6Address');
+    this.customerRouterIpAddress = registerOutput<String>('customerRouterIpAddress');
+    this.customerRouterIpv6Address = registerOutput<String>('customerRouterIpv6Address');
     this.description = registerOutput<String?>('description');
-    this.edgeAvailabilityDomain =
-        registerOutput<String>('edgeAvailabilityDomain');
-    this.effectiveLabels =
-        registerOutput<Map<String, String>>('effectiveLabels');
+    this.edgeAvailabilityDomain = registerOutput<String>('edgeAvailabilityDomain');
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     this.encryption = registerOutput<String?>('encryption');
     this.googleReferenceId = registerOutput<String>('googleReferenceId');
     this.interconnect = registerOutput<String?>('interconnect');
-    this.ipsecInternalAddresses =
-        registerOutput<List<String>?>('ipsecInternalAddresses');
-    this.l2Forwarding =
-        registerOutput<InterconnectAttachmentL2Forwarding?>('l2Forwarding');
+    this.ipsecInternalAddresses = registerOutput<List<String>?>('ipsecInternalAddresses');
+    this.l2Forwarding = registerOutput<InterconnectAttachmentL2Forwarding?>('l2Forwarding');
     this.labelFingerprint = registerOutput<String>('labelFingerprint');
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.mtu = registerOutput<String>('mtu');
     this.name = registerOutput<String>('name');
     this.pairingKey = registerOutput<String>('pairingKey');
     this.partnerAsn = registerOutput<String>('partnerAsn');
-    this.privateInterconnectInfos =
-        registerOutput<List<InterconnectAttachmentPrivateInterconnectInfo>>(
-            'privateInterconnectInfos');
+    this.privateInterconnectInfos = registerOutput<List<InterconnectAttachmentPrivateInterconnectInfo>>('privateInterconnectInfos');
     this.project = registerOutput<String>('project');
     this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.region = registerOutput<String>('region');

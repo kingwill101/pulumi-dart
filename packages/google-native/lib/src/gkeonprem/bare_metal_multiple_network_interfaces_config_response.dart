@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Specifies the multiple networking interfaces cluster configuration.
 class BareMetalMultipleNetworkInterfacesConfigResponse {
   /// Whether to enable multiple network interfaces for your pods. When set network_config.advanced_networking is automatically set to true.
@@ -12,15 +13,15 @@ class BareMetalMultipleNetworkInterfacesConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory BareMetalMultipleNetworkInterfacesConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory BareMetalMultipleNetworkInterfacesConfigResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalMultipleNetworkInterfacesConfigResponse(
       enabled: map['enabled'] as bool,
     );
   }
 }
+

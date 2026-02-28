@@ -742,40 +742,27 @@ class KeystoresAliasesSelfSignedCert extends pulumi.CustomResource {
   /// This must be provided for all formats except selfsignedcert; self-signed certs may specify the alias in either
   /// this parameter or the JSON body.
   late final pulumi.Output<String> alias;
-
   /// Validity duration of certificate, in days. Accepts positive non-zero value. Defaults to 365.
   late final pulumi.Output<int?> certValidityInDays;
-
   /// Chain of certificates under this alias.
   /// Structure is documented below.
-  late final pulumi.Output<List<KeystoresAliasesSelfSignedCertCertsInfo>>
-      certsInfos;
-
+  late final pulumi.Output<List<KeystoresAliasesSelfSignedCertCertsInfo>> certsInfos;
   /// The Apigee environment name
   late final pulumi.Output<String> environment;
-
   /// Key size. Default and maximum value is 2048 bits.
   late final pulumi.Output<String?> keySize;
-
   /// The Apigee keystore name associated in an Apigee environment
   late final pulumi.Output<String> keystore;
-
   /// The Apigee Organization name associated with the Apigee environment
   late final pulumi.Output<String> orgId;
-
   /// Signature algorithm to generate private key. Valid values are SHA512withRSA, SHA384withRSA, and SHA256withRSA
   late final pulumi.Output<String> sigAlg;
-
   /// Subject details.
   /// Structure is documented below.
   late final pulumi.Output<KeystoresAliasesSelfSignedCertSubject> subject;
-
   /// List of alternative host names. Maximum length is 255 characters for each value.
   /// Structure is documented below.
-  late final pulumi
-      .Output<KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames?>
-      subjectAlternativeDnsNames;
-
+  late final pulumi.Output<KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames?> subjectAlternativeDnsNames;
   /// Optional.Type of Alias
   late final pulumi.Output<String> type;
 
@@ -795,19 +782,14 @@ class KeystoresAliasesSelfSignedCert extends pulumi.CustomResource {
         ) {
     this.alias = registerOutput<String>('alias');
     this.certValidityInDays = registerOutput<int?>('certValidityInDays');
-    this.certsInfos =
-        registerOutput<List<KeystoresAliasesSelfSignedCertCertsInfo>>(
-            'certsInfos');
+    this.certsInfos = registerOutput<List<KeystoresAliasesSelfSignedCertCertsInfo>>('certsInfos');
     this.environment = registerOutput<String>('environment');
     this.keySize = registerOutput<String?>('keySize');
     this.keystore = registerOutput<String>('keystore');
     this.orgId = registerOutput<String>('orgId');
     this.sigAlg = registerOutput<String>('sigAlg');
-    this.subject =
-        registerOutput<KeystoresAliasesSelfSignedCertSubject>('subject');
-    this.subjectAlternativeDnsNames = registerOutput<
-            KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames?>(
-        'subjectAlternativeDnsNames');
+    this.subject = registerOutput<KeystoresAliasesSelfSignedCertSubject>('subject');
+    this.subjectAlternativeDnsNames = registerOutput<KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames?>('subjectAlternativeDnsNames');
     this.type = registerOutput<String>('type');
   }
 }

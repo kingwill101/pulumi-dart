@@ -7,7 +7,6 @@ class PreventionStoredInfoTypeDictionary {
   /// Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
   /// Structure is documented below.
   final PreventionStoredInfoTypeDictionaryCloudStoragePath? cloudStoragePath;
-
   /// List of words or phrases to search for.
   /// Structure is documented below.
   final PreventionStoredInfoTypeDictionaryWordList? wordList;
@@ -21,28 +20,17 @@ class PreventionStoredInfoTypeDictionary {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cloudStoragePathValue = cloudStoragePath;
-    if (cloudStoragePathValue != null) {
-      map['cloudStoragePath'] = cloudStoragePathValue.toMap();
-    }
-    final wordListValue = wordList;
-    if (wordListValue != null) {
-      map['wordList'] = wordListValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'cloudStoragePath': ?cloudStoragePath == null ? null : cloudStoragePath!.toMap(),
+      'wordList': ?wordList == null ? null : wordList!.toMap(),
+    };
   }
 
   factory PreventionStoredInfoTypeDictionary.fromMap(Map<String, dynamic> map) {
     return PreventionStoredInfoTypeDictionary(
-      cloudStoragePath: map['cloudStoragePath'] == null
-          ? null
-          : PreventionStoredInfoTypeDictionaryCloudStoragePath.fromMap(
-              (map['cloudStoragePath'] as Map).cast<String, dynamic>()),
-      wordList: map['wordList'] == null
-          ? null
-          : PreventionStoredInfoTypeDictionaryWordList.fromMap(
-              (map['wordList'] as Map).cast<String, dynamic>()),
+      cloudStoragePath: map['cloudStoragePath'] == null ? null : PreventionStoredInfoTypeDictionaryCloudStoragePath.fromMap((map['cloudStoragePath'] as Map).cast<String, dynamic>()),
+      wordList: map['wordList'] == null ? null : PreventionStoredInfoTypeDictionaryWordList.fromMap((map['wordList'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

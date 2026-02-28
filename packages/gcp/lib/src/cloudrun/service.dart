@@ -2538,29 +2538,23 @@ class Service extends pulumi.CustomResource {
   /// (For legacy support, if `template.metadata.name` is unset in state while
   /// this field is set to false, the revision name will still autogenerate.)
   late final pulumi.Output<bool?> autogenerateRevisionName;
-
   /// The location of the cloud run instance. eg us-central1
   late final pulumi.Output<String> location;
-
   /// Metadata associated with this Service, including name, namespace, labels,
   /// and annotations.
   /// Structure is documented below.
   late final pulumi.Output<ServiceMetadata> metadata;
-
   /// Name must be unique within a Google Cloud project and region.
   /// Is required when creating resources. Name is primarily intended
   /// for creation idempotence and configuration definition. Cannot be updated.
   /// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// (Output)
   /// Status of the condition, one of True, False, Unknown.
   late final pulumi.Output<List<ServiceStatus>> statuses;
-
   /// template holds the latest specification for the Revision to
   /// be stamped out. The template references the container image, and may also
   /// include labels and annotations that should be attached to the Revision.
@@ -2572,7 +2566,6 @@ class Service extends pulumi.CustomResource {
   /// responsible for materializing the container image from source.
   /// Structure is documented below.
   late final pulumi.Output<ServiceTemplate?> template;
-
   /// Traffic specifies how to distribute traffic over a collection of Knative Revisions
   /// and Configurations
   /// Structure is documented below.
@@ -2592,8 +2585,7 @@ class Service extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.autogenerateRevisionName =
-        registerOutput<bool?>('autogenerateRevisionName');
+    this.autogenerateRevisionName = registerOutput<bool?>('autogenerateRevisionName');
     this.location = registerOutput<String>('location');
     this.metadata = registerOutput<ServiceMetadata>('metadata');
     this.name = registerOutput<String>('name');

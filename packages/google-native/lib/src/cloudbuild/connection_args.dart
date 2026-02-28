@@ -12,27 +12,19 @@ import 'google_devtools_cloudbuild_v2_git_lab_config.dart';
 class ConnectionArgs {
   /// Allows clients to store small amounts of arbitrary data.
   final pulumi.Input<Map<String, String>>? annotations;
-
   /// Required. The ID to use for the Connection, which will become the final component of the Connection's resource name. Names must be unique per-project per-location. Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
   final pulumi.Input<String> connectionId;
-
   /// If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
   final pulumi.Input<bool>? disabled;
-
   /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
   final pulumi.Input<String>? etag;
-
   /// Configuration for connections to github.com.
   final pulumi.Input<GitHubConfig>? githubConfig;
-
   /// Configuration for connections to an instance of GitHub Enterprise.
-  final pulumi.Input<GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig>?
-      githubEnterpriseConfig;
-
+  final pulumi.Input<GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig>? githubEnterpriseConfig;
   /// Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
   final pulumi.Input<GoogleDevtoolsCloudbuildV2GitLabConfig>? gitlabConfig;
   final pulumi.Input<String>? location;
-
   /// Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
@@ -59,92 +51,46 @@ class ConnectionArgs {
     String? location,
     String? name,
     String? project,
-  })  : annotations =
-            pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-        connectionId = pulumi.Input.asInput<String>(connectionId),
-        disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-        etag = pulumi.Input.asOptionalInput<String>(etag),
-        githubConfig = pulumi.Input.asOptionalInput<GitHubConfig>(githubConfig),
-        githubEnterpriseConfig = pulumi.Input.asOptionalInput<
-                GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig>(
-            githubEnterpriseConfig),
-        gitlabConfig = pulumi.Input.asOptionalInput<
-            GoogleDevtoolsCloudbuildV2GitLabConfig>(gitlabConfig),
-        location = pulumi.Input.asOptionalInput<String>(location),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
+      connectionId = pulumi.Input.asInput<String>(connectionId),
+      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
+      etag = pulumi.Input.asOptionalInput<String>(etag),
+      githubConfig = pulumi.Input.asOptionalInput<GitHubConfig>(githubConfig),
+      githubEnterpriseConfig = pulumi.Input.asOptionalInput<GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig>(githubEnterpriseConfig),
+      gitlabConfig = pulumi.Input.asOptionalInput<GoogleDevtoolsCloudbuildV2GitLabConfig>(gitlabConfig),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final annotationsValue = annotations;
-    if (annotationsValue != null) {
-      map['annotations'] = annotationsValue;
-    }
-    map['connectionId'] = connectionId;
-    final disabledValue = disabled;
-    if (disabledValue != null) {
-      map['disabled'] = disabledValue;
-    }
-    final etagValue = etag;
-    if (etagValue != null) {
-      map['etag'] = etagValue;
-    }
-    final githubConfigValue = githubConfig;
-    if (githubConfigValue != null) {
-      map['githubConfig'] = pulumi.Input.mapOptionalInputValue<GitHubConfig,
-          Map<String, dynamic>>(githubConfigValue, (value) => value.toMap());
-    }
-    final githubEnterpriseConfigValue = githubEnterpriseConfig;
-    if (githubEnterpriseConfigValue != null) {
-      map['githubEnterpriseConfig'] = pulumi.Input.mapOptionalInputValue<
-              GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig,
-              Map<String, dynamic>>(
-          githubEnterpriseConfigValue, (value) => value.toMap());
-    }
-    final gitlabConfigValue = gitlabConfig;
-    if (gitlabConfigValue != null) {
-      map['gitlabConfig'] = pulumi.Input.mapOptionalInputValue<
-          GoogleDevtoolsCloudbuildV2GitLabConfig,
-          Map<String, dynamic>>(gitlabConfigValue, (value) => value.toMap());
-    }
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'annotations': ?annotations,
+      'connectionId': connectionId,
+      'disabled': ?disabled,
+      'etag': ?etag,
+      'githubConfig': ?pulumi.Input.mapOptionalInputValue<GitHubConfig, Map<String, dynamic>>(githubConfig, (value) => value.toMap()),
+      'githubEnterpriseConfig': ?pulumi.Input.mapOptionalInputValue<GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig, Map<String, dynamic>>(githubEnterpriseConfig, (value) => value.toMap()),
+      'gitlabConfig': ?pulumi.Input.mapOptionalInputValue<GoogleDevtoolsCloudbuildV2GitLabConfig, Map<String, dynamic>>(gitlabConfig, (value) => value.toMap()),
+      'location': ?location,
+      'name': ?name,
+      'project': ?project,
+    };
   }
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      annotations: map['annotations'] == null
-          ? null
-          : (map['annotations'] as Map).cast<String, String>(),
+      annotations: map['annotations'] == null ? null : (map['annotations'] as Map).cast<String, String>(),
       connectionId: map['connectionId'] as String,
       disabled: map['disabled'] == null ? null : map['disabled'] as bool,
       etag: map['etag'] == null ? null : map['etag'] as String,
-      githubConfig: map['githubConfig'] == null
-          ? null
-          : GitHubConfig.fromMap(
-              (map['githubConfig'] as Map).cast<String, dynamic>()),
-      githubEnterpriseConfig: map['githubEnterpriseConfig'] == null
-          ? null
-          : GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig.fromMap(
-              (map['githubEnterpriseConfig'] as Map).cast<String, dynamic>()),
-      gitlabConfig: map['gitlabConfig'] == null
-          ? null
-          : GoogleDevtoolsCloudbuildV2GitLabConfig.fromMap(
-              (map['gitlabConfig'] as Map).cast<String, dynamic>()),
+      githubConfig: map['githubConfig'] == null ? null : GitHubConfig.fromMap((map['githubConfig'] as Map).cast<String, dynamic>()),
+      githubEnterpriseConfig: map['githubEnterpriseConfig'] == null ? null : GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig.fromMap((map['githubEnterpriseConfig'] as Map).cast<String, dynamic>()),
+      gitlabConfig: map['gitlabConfig'] == null ? null : GoogleDevtoolsCloudbuildV2GitLabConfig.fromMap((map['gitlabConfig'] as Map).cast<String, dynamic>()),
       location: map['location'] == null ? null : map['location'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

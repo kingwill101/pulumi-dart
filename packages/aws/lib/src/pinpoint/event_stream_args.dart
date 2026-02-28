@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventStreamArgs {
   /// The application ID.
   final pulumi.Input<String> applicationId;
-
   /// The Amazon Resource Name (ARN) of the Amazon Kinesis stream or Firehose delivery stream to which you want to publish events.
   final pulumi.Input<String> destinationStreamArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The IAM role that authorizes Amazon Pinpoint to publish events to the stream in your account.
   final pulumi.Input<String> roleArn;
 
@@ -29,22 +26,19 @@ class EventStreamArgs {
     required String destinationStreamArn,
     String? region,
     required String roleArn,
-  })  : applicationId = pulumi.Input.asInput<String>(applicationId),
-        destinationStreamArn =
-            pulumi.Input.asInput<String>(destinationStreamArn),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        roleArn = pulumi.Input.asInput<String>(roleArn);
+  }) :
+      applicationId = pulumi.Input.asInput<String>(applicationId),
+      destinationStreamArn = pulumi.Input.asInput<String>(destinationStreamArn),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      roleArn = pulumi.Input.asInput<String>(roleArn);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['applicationId'] = applicationId;
-    map['destinationStreamArn'] = destinationStreamArn;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['roleArn'] = roleArn;
-    return map;
+    return <String, dynamic>{
+      'applicationId': applicationId,
+      'destinationStreamArn': destinationStreamArn,
+      'region': ?region,
+      'roleArn': roleArn,
+    };
   }
 
   factory EventStreamArgs.fromMap(Map<String, dynamic> map) {
@@ -56,3 +50,4 @@ class EventStreamArgs {
     );
   }
 }
+

@@ -16,17 +16,15 @@ class GetSiteArgs {
   GetSiteArgs({
     String? project,
     required String siteId,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        siteId = pulumi.Input.asInput<String>(siteId);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      siteId = pulumi.Input.asInput<String>(siteId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['siteId'] = siteId;
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'siteId': siteId,
+    };
   }
 
   factory GetSiteArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetSiteArgs {
     );
   }
 }
+

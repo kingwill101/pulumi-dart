@@ -16,10 +16,8 @@ class GetKeyRingsArgs {
   ///
   /// [See the documentation about using filters](https://cloud.google.com/kms/docs/sorting-and-filtering)
   final pulumi.Input<String>? filter;
-
   /// The location that the underlying key ring resides in. e.g us-west1
   final pulumi.Input<String> location;
-
   /// The Project ID of the project.
   final pulumi.Input<String>? project;
 
@@ -31,22 +29,17 @@ class GetKeyRingsArgs {
     String? filter,
     required String location,
     String? project,
-  })  : filter = pulumi.Input.asOptionalInput<String>(filter),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      filter = pulumi.Input.asOptionalInput<String>(filter),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final filterValue = filter;
-    if (filterValue != null) {
-      map['filter'] = filterValue;
-    }
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'filter': ?filter,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetKeyRingsArgs.fromMap(Map<String, dynamic> map) {
@@ -57,3 +50,4 @@ class GetKeyRingsArgs {
     );
   }
 }
+

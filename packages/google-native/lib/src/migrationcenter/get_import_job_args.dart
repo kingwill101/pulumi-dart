@@ -22,24 +22,19 @@ class GetImportJobArgs {
     required String location,
     String? project,
     String? view,
-  })  : importJobId = pulumi.Input.asInput<String>(importJobId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        view = pulumi.Input.asOptionalInput<String>(view);
+  }) :
+      importJobId = pulumi.Input.asInput<String>(importJobId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['importJobId'] = importJobId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final viewValue = view;
-    if (viewValue != null) {
-      map['view'] = viewValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'importJobId': importJobId,
+      'location': location,
+      'project': ?project,
+      'view': ?view,
+    };
   }
 
   factory GetImportJobArgs.fromMap(Map<String, dynamic> map) {
@@ -51,3 +46,4 @@ class GetImportJobArgs {
     );
   }
 }
+

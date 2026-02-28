@@ -15,24 +15,15 @@ class GoogleCloudDatacatalogV1Schema {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final columnsValue = columns;
-    if (columnsValue != null) {
-      map['columns'] = pulumi.Input.encodeList<
-          GoogleCloudDatacatalogV1ColumnSchema,
-          Map<String, dynamic>>(columnsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'columns': ?columns == null ? null : pulumi.Input.encodeList<GoogleCloudDatacatalogV1ColumnSchema, Map<String, dynamic>>(columns!, (value) => value.toMap()),
+    };
   }
 
   factory GoogleCloudDatacatalogV1Schema.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1Schema(
-      columns: map['columns'] == null
-          ? null
-          : pulumi.Input.decodeList<GoogleCloudDatacatalogV1ColumnSchema>(
-              map['columns'],
-              (value) => GoogleCloudDatacatalogV1ColumnSchema.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      columns: map['columns'] == null ? null : pulumi.Input.decodeList<GoogleCloudDatacatalogV1ColumnSchema>(map['columns'], (value) => GoogleCloudDatacatalogV1ColumnSchema.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

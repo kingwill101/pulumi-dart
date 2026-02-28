@@ -10,22 +10,17 @@ class ReservationResourceStatus {
   /// Health information for the reservation.
   /// Structure is documented below.
   final List<ReservationResourceStatusHealthInfo>? healthInfos;
-
   /// (Output)
   /// The number of reservation blocks associated with this reservation.
   final int? reservationBlockCount;
-
   /// (Output)
   /// Maintenance information for this reservation
   /// Structure is documented below.
-  final List<ReservationResourceStatusReservationMaintenance>?
-      reservationMaintenances;
-
+  final List<ReservationResourceStatusReservationMaintenance>? reservationMaintenances;
   /// (Output)
   /// Allocation Properties of this reservation.
   /// Structure is documented below.
-  final List<ReservationResourceStatusSpecificSkuAllocation>?
-      specificSkuAllocations;
+  final List<ReservationResourceStatusSpecificSkuAllocation>? specificSkuAllocations;
 
   /// Creates a new [ReservationResourceStatus].
   /// [healthInfos] (Output)
@@ -40,60 +35,21 @@ class ReservationResourceStatus {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final healthInfosValue = healthInfos;
-    if (healthInfosValue != null) {
-      map['healthInfos'] = pulumi.Input.encodeList<
-          ReservationResourceStatusHealthInfo,
-          Map<String, dynamic>>(healthInfosValue, (value) => value.toMap());
-    }
-    final reservationBlockCountValue = reservationBlockCount;
-    if (reservationBlockCountValue != null) {
-      map['reservationBlockCount'] = reservationBlockCountValue;
-    }
-    final reservationMaintenancesValue = reservationMaintenances;
-    if (reservationMaintenancesValue != null) {
-      map['reservationMaintenances'] = pulumi.Input.encodeList<
-              ReservationResourceStatusReservationMaintenance,
-              Map<String, dynamic>>(
-          reservationMaintenancesValue, (value) => value.toMap());
-    }
-    final specificSkuAllocationsValue = specificSkuAllocations;
-    if (specificSkuAllocationsValue != null) {
-      map['specificSkuAllocations'] = pulumi.Input.encodeList<
-              ReservationResourceStatusSpecificSkuAllocation,
-              Map<String, dynamic>>(
-          specificSkuAllocationsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'healthInfos': ?healthInfos == null ? null : pulumi.Input.encodeList<ReservationResourceStatusHealthInfo, Map<String, dynamic>>(healthInfos!, (value) => value.toMap()),
+      'reservationBlockCount': ?reservationBlockCount,
+      'reservationMaintenances': ?reservationMaintenances == null ? null : pulumi.Input.encodeList<ReservationResourceStatusReservationMaintenance, Map<String, dynamic>>(reservationMaintenances!, (value) => value.toMap()),
+      'specificSkuAllocations': ?specificSkuAllocations == null ? null : pulumi.Input.encodeList<ReservationResourceStatusSpecificSkuAllocation, Map<String, dynamic>>(specificSkuAllocations!, (value) => value.toMap()),
+    };
   }
 
   factory ReservationResourceStatus.fromMap(Map<String, dynamic> map) {
     return ReservationResourceStatus(
-      healthInfos: map['healthInfos'] == null
-          ? null
-          : pulumi.Input.decodeList<ReservationResourceStatusHealthInfo>(
-              map['healthInfos'],
-              (value) => ReservationResourceStatusHealthInfo.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      reservationBlockCount: map['reservationBlockCount'] == null
-          ? null
-          : map['reservationBlockCount'] as int,
-      reservationMaintenances: map['reservationMaintenances'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  ReservationResourceStatusReservationMaintenance>(
-              map['reservationMaintenances'],
-              (value) =>
-                  ReservationResourceStatusReservationMaintenance.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      specificSkuAllocations: map['specificSkuAllocations'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  ReservationResourceStatusSpecificSkuAllocation>(
-              map['specificSkuAllocations'],
-              (value) => ReservationResourceStatusSpecificSkuAllocation.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      healthInfos: map['healthInfos'] == null ? null : pulumi.Input.decodeList<ReservationResourceStatusHealthInfo>(map['healthInfos'], (value) => ReservationResourceStatusHealthInfo.fromMap((value as Map).cast<String, dynamic>())),
+      reservationBlockCount: map['reservationBlockCount'] == null ? null : map['reservationBlockCount'] as int,
+      reservationMaintenances: map['reservationMaintenances'] == null ? null : pulumi.Input.decodeList<ReservationResourceStatusReservationMaintenance>(map['reservationMaintenances'], (value) => ReservationResourceStatusReservationMaintenance.fromMap((value as Map).cast<String, dynamic>())),
+      specificSkuAllocations: map['specificSkuAllocations'] == null ? null : pulumi.Input.decodeList<ReservationResourceStatusSpecificSkuAllocation>(map['specificSkuAllocations'], (value) => ReservationResourceStatusSpecificSkuAllocation.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

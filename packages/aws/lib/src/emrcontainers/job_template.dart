@@ -163,22 +163,16 @@ import 'job_template_job_template_data.dart';
 class JobTemplate extends pulumi.CustomResource {
   /// ARN of the job template.
   late final pulumi.Output<String> arn;
-
   /// The job template data which holds values of StartJobRun API request.
   late final pulumi.Output<JobTemplateJobTemplateData> jobTemplateData;
-
   /// The KMS key ARN used to encrypt the job template.
   late final pulumi.Output<String?> kmsKeyArn;
-
   /// The specified name of the job template.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -197,8 +191,7 @@ class JobTemplate extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
-    this.jobTemplateData =
-        registerOutput<JobTemplateJobTemplateData>('jobTemplateData');
+    this.jobTemplateData = registerOutput<JobTemplateJobTemplateData>('jobTemplateData');
     this.kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
     this.region = registerOutput<String>('region');

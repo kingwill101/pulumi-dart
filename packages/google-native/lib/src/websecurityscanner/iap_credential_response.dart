@@ -14,15 +14,15 @@ class IapCredentialResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['iapTestServiceAccountInfo'] = iapTestServiceAccountInfo.toMap();
-    return map;
+    return <String, dynamic>{
+      'iapTestServiceAccountInfo': iapTestServiceAccountInfo.toMap(),
+    };
   }
 
   factory IapCredentialResponse.fromMap(Map<String, dynamic> map) {
     return IapCredentialResponse(
-      iapTestServiceAccountInfo: IapTestServiceAccountInfoResponse.fromMap(
-          (map['iapTestServiceAccountInfo'] as Map).cast<String, dynamic>()),
+      iapTestServiceAccountInfo: IapTestServiceAccountInfoResponse.fromMap((map['iapTestServiceAccountInfo'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

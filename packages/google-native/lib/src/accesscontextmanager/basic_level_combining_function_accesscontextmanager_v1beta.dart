@@ -6,15 +6,13 @@ enum BasicLevelCombiningFunctionAccesscontextmanagerV1beta {
   const BasicLevelCombiningFunctionAccesscontextmanagerV1beta(this.value);
   final String value;
 
-  static BasicLevelCombiningFunctionAccesscontextmanagerV1beta fromValue(
-      String value) {
-    for (final item
-        in BasicLevelCombiningFunctionAccesscontextmanagerV1beta.values) {
+  static BasicLevelCombiningFunctionAccesscontextmanagerV1beta fromValue(String value) {
+    for (final item in BasicLevelCombiningFunctionAccesscontextmanagerV1beta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown BasicLevelCombiningFunctionAccesscontextmanagerV1beta value: $value');
+    throw ArgumentError('Unknown BasicLevelCombiningFunctionAccesscontextmanagerV1beta value: $value');
   }
 }
+

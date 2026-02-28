@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A set of Shielded Instance options.
 class ShieldedInstanceConfigResponse {
   /// Defines whether the instance has Secure Boot enabled.
@@ -12,9 +13,9 @@ class ShieldedInstanceConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enableSecureBoot'] = enableSecureBoot;
-    return map;
+    return <String, dynamic>{
+      'enableSecureBoot': enableSecureBoot,
+    };
   }
 
   factory ShieldedInstanceConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class ShieldedInstanceConfigResponse {
     );
   }
 }
+

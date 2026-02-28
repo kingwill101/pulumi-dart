@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecification {
   /// The ID of the launch template. Conflicts with `name`.
   final String? id;
-
   /// The name of the launch template. Conflicts with `id`.
   final String? name;
-
   /// Template version. Unlike the autoscaling equivalent, does not support `$Latest` or `$Default`, so use the launch_template resource's attribute, e.g., `"${aws_launch_template.foo.latest_version}"`. It will use the default version if omitted.
   ///
   /// **Note:** The specified launch template can specify only a subset of the
@@ -25,24 +24,14 @@ class SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecification {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final idValue = id;
-    if (idValue != null) {
-      map['id'] = idValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final versionValue = version;
-    if (versionValue != null) {
-      map['version'] = versionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'id': ?id,
+      'name': ?name,
+      'version': ?version,
+    };
   }
 
-  factory SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecification.fromMap(
-      Map<String, dynamic> map) {
+  factory SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecification.fromMap(Map<String, dynamic> map) {
     return SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecification(
       id: map['id'] == null ? null : map['id'] as String,
       name: map['name'] == null ? null : map['name'] as String,
@@ -50,3 +39,4 @@ class SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecification {
     );
   }
 }
+

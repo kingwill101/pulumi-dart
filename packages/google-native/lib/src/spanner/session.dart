@@ -6,18 +6,14 @@ import 'session_args.dart';
 class Session extends pulumi.CustomResource {
   /// The approximate timestamp when the session is last used. It is typically earlier than the actual last use time.
   late final pulumi.Output<String> approximateLastUseTime;
-
   /// The timestamp when the session is created.
   late final pulumi.Output<String> createTime;
-
   /// The database role which created this session.
   late final pulumi.Output<String> creatorRole;
   late final pulumi.Output<String> databaseId;
   late final pulumi.Output<String> instanceId;
-
   /// The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
   late final pulumi.Output<Map<String, String>> labels;
-
   /// The name of the session. This is always system-assigned.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
@@ -36,8 +32,7 @@ class Session extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.approximateLastUseTime =
-        registerOutput<String>('approximateLastUseTime');
+    this.approximateLastUseTime = registerOutput<String>('approximateLastUseTime');
     this.createTime = registerOutput<String>('createTime');
     this.creatorRole = registerOutput<String>('creatorRole');
     this.databaseId = registerOutput<String>('databaseId');

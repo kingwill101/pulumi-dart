@@ -15,21 +15,15 @@ class GoogleCloudDataplexV1DataProfileResultProfileResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['fields'] = pulumi.Input.encodeList<
-        GoogleCloudDataplexV1DataProfileResultProfileFieldResponse,
-        Map<String, dynamic>>(fields, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'fields': pulumi.Input.encodeList<GoogleCloudDataplexV1DataProfileResultProfileFieldResponse, Map<String, dynamic>>(fields, (value) => value.toMap()),
+    };
   }
 
-  factory GoogleCloudDataplexV1DataProfileResultProfileResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1DataProfileResultProfileResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataProfileResultProfileResponse(
-      fields: pulumi.Input.decodeList<
-              GoogleCloudDataplexV1DataProfileResultProfileFieldResponse>(
-          map['fields'],
-          (value) => GoogleCloudDataplexV1DataProfileResultProfileFieldResponse
-              .fromMap((value as Map).cast<String, dynamic>())),
+      fields: pulumi.Input.decodeList<GoogleCloudDataplexV1DataProfileResultProfileFieldResponse>(map['fields'], (value) => GoogleCloudDataplexV1DataProfileResultProfileFieldResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

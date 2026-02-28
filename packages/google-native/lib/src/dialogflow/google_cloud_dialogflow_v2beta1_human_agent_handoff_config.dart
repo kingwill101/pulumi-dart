@@ -6,12 +6,9 @@ import 'google_cloud_dialogflow_v2beta1_human_agent_handoff_config_salesforce_li
 /// Defines the hand off to a live agent, typically on which external agent service provider to connect to a conversation. Currently, this feature is not general available, please contact Google to get access.
 class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfig {
   /// Uses LivePerson (https://www.liveperson.com).
-  final GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfig?
-      livePersonConfig;
-
+  final GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfig? livePersonConfig;
   /// Uses Salesforce Live Agent.
-  final GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfig?
-      salesforceLiveAgentConfig;
+  final GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfig? salesforceLiveAgentConfig;
 
   /// Creates a new [GoogleCloudDialogflowV2beta1HumanAgentHandoffConfig].
   /// [livePersonConfig] Uses LivePerson (https://www.liveperson.com).
@@ -22,31 +19,17 @@ class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final livePersonConfigValue = livePersonConfig;
-    if (livePersonConfigValue != null) {
-      map['livePersonConfig'] = livePersonConfigValue.toMap();
-    }
-    final salesforceLiveAgentConfigValue = salesforceLiveAgentConfig;
-    if (salesforceLiveAgentConfigValue != null) {
-      map['salesforceLiveAgentConfig'] = salesforceLiveAgentConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'livePersonConfig': ?livePersonConfig == null ? null : livePersonConfig!.toMap(),
+      'salesforceLiveAgentConfig': ?salesforceLiveAgentConfig == null ? null : salesforceLiveAgentConfig!.toMap(),
+    };
   }
 
-  factory GoogleCloudDialogflowV2beta1HumanAgentHandoffConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1HumanAgentHandoffConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1HumanAgentHandoffConfig(
-      livePersonConfig: map['livePersonConfig'] == null
-          ? null
-          : GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfig
-              .fromMap(
-                  (map['livePersonConfig'] as Map).cast<String, dynamic>()),
-      salesforceLiveAgentConfig: map['salesforceLiveAgentConfig'] == null
-          ? null
-          : GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfig
-              .fromMap((map['salesforceLiveAgentConfig'] as Map)
-                  .cast<String, dynamic>()),
+      livePersonConfig: map['livePersonConfig'] == null ? null : GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfig.fromMap((map['livePersonConfig'] as Map).cast<String, dynamic>()),
+      salesforceLiveAgentConfig: map['salesforceLiveAgentConfig'] == null ? null : GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfig.fromMap((map['salesforceLiveAgentConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

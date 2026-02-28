@@ -14,9 +14,9 @@ class KeyData {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['keySpec'] = keySpec.value;
-    return map;
+    return <String, dynamic>{
+      'keySpec': keySpec.value,
+    };
   }
 
   factory KeyData.fromMap(Map<String, dynamic> map) {
@@ -25,3 +25,4 @@ class KeyData {
     );
   }
 }
+

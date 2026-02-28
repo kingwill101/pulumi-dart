@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DnsZonePeeringConfig {
   /// The name of the producer VPC network.
   final String targetNetworkId;
-
   /// The ID of the project that contains the producer VPC network.
   final String targetProjectId;
 
@@ -16,10 +16,10 @@ class DnsZonePeeringConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['targetNetworkId'] = targetNetworkId;
-    map['targetProjectId'] = targetProjectId;
-    return map;
+    return <String, dynamic>{
+      'targetNetworkId': targetNetworkId,
+      'targetProjectId': targetProjectId,
+    };
   }
 
   factory DnsZonePeeringConfig.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class DnsZonePeeringConfig {
     );
   }
 }
+

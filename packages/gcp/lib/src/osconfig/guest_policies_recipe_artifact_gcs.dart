@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GuestPoliciesRecipeArtifactGcs {
   /// Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
   /// this value would be my-bucket.
   final String? bucket;
-
   /// Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
   /// https://storage.googleapis.com/my-bucket/foo/bar#1234567 this value would be 1234567.
   final int? generation;
-
   /// Name of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
   /// this value would be foo/bar.
   final String? object;
@@ -24,20 +23,11 @@ class GuestPoliciesRecipeArtifactGcs {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final bucketValue = bucket;
-    if (bucketValue != null) {
-      map['bucket'] = bucketValue;
-    }
-    final generationValue = generation;
-    if (generationValue != null) {
-      map['generation'] = generationValue;
-    }
-    final objectValue = object;
-    if (objectValue != null) {
-      map['object'] = objectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'bucket': ?bucket,
+      'generation': ?generation,
+      'object': ?object,
+    };
   }
 
   factory GuestPoliciesRecipeArtifactGcs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +38,4 @@ class GuestPoliciesRecipeArtifactGcs {
     );
   }
 }
+

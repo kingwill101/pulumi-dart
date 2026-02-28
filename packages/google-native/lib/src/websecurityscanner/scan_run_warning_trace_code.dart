@@ -19,3 +19,4 @@ enum ScanRunWarningTraceCode {
     throw ArgumentError('Unknown ScanRunWarningTraceCode value: $value');
   }
 }
+

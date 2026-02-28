@@ -7,31 +7,22 @@ import 'upgrade_history_entry_state.dart';
 class UpgradeHistoryEntry {
   /// Action. Rolloback or Upgrade.
   final UpgradeHistoryEntryAction? action;
-
   /// The container image before this instance upgrade.
   final String? containerImage;
-
   /// The time that this instance upgrade history entry is created.
   final String? createTime;
-
   /// The framework of this notebook instance.
   final String? framework;
-
   /// The snapshot of the boot disk of this notebook instance before upgrade.
   final String? snapshot;
-
   /// The state of this instance upgrade history entry.
   final UpgradeHistoryEntryState? state;
-
   /// Target VM Image. Format: `ainotebooks-vm/project/image-name/name`.
   final String? targetImage;
-
   /// Target VM Version, like m63.
   final String? targetVersion;
-
   /// The version of the notebook instance before this upgrade.
   final String? version;
-
   /// The VM image before this instance upgrade.
   final String? vmImage;
 
@@ -60,71 +51,33 @@ class UpgradeHistoryEntry {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final actionValue = action;
-    if (actionValue != null) {
-      map['action'] = actionValue.value;
-    }
-    final containerImageValue = containerImage;
-    if (containerImageValue != null) {
-      map['containerImage'] = containerImageValue;
-    }
-    final createTimeValue = createTime;
-    if (createTimeValue != null) {
-      map['createTime'] = createTimeValue;
-    }
-    final frameworkValue = framework;
-    if (frameworkValue != null) {
-      map['framework'] = frameworkValue;
-    }
-    final snapshotValue = snapshot;
-    if (snapshotValue != null) {
-      map['snapshot'] = snapshotValue;
-    }
-    final stateValue = state;
-    if (stateValue != null) {
-      map['state'] = stateValue.value;
-    }
-    final targetImageValue = targetImage;
-    if (targetImageValue != null) {
-      map['targetImage'] = targetImageValue;
-    }
-    final targetVersionValue = targetVersion;
-    if (targetVersionValue != null) {
-      map['targetVersion'] = targetVersionValue;
-    }
-    final versionValue = version;
-    if (versionValue != null) {
-      map['version'] = versionValue;
-    }
-    final vmImageValue = vmImage;
-    if (vmImageValue != null) {
-      map['vmImage'] = vmImageValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'action': ?action == null ? null : action!.value,
+      'containerImage': ?containerImage,
+      'createTime': ?createTime,
+      'framework': ?framework,
+      'snapshot': ?snapshot,
+      'state': ?state == null ? null : state!.value,
+      'targetImage': ?targetImage,
+      'targetVersion': ?targetVersion,
+      'version': ?version,
+      'vmImage': ?vmImage,
+    };
   }
 
   factory UpgradeHistoryEntry.fromMap(Map<String, dynamic> map) {
     return UpgradeHistoryEntry(
-      action: map['action'] == null
-          ? null
-          : UpgradeHistoryEntryAction.fromValue(map['action'] as String),
-      containerImage: map['containerImage'] == null
-          ? null
-          : map['containerImage'] as String,
-      createTime:
-          map['createTime'] == null ? null : map['createTime'] as String,
+      action: map['action'] == null ? null : UpgradeHistoryEntryAction.fromValue(map['action'] as String),
+      containerImage: map['containerImage'] == null ? null : map['containerImage'] as String,
+      createTime: map['createTime'] == null ? null : map['createTime'] as String,
       framework: map['framework'] == null ? null : map['framework'] as String,
       snapshot: map['snapshot'] == null ? null : map['snapshot'] as String,
-      state: map['state'] == null
-          ? null
-          : UpgradeHistoryEntryState.fromValue(map['state'] as String),
-      targetImage:
-          map['targetImage'] == null ? null : map['targetImage'] as String,
-      targetVersion:
-          map['targetVersion'] == null ? null : map['targetVersion'] as String,
+      state: map['state'] == null ? null : UpgradeHistoryEntryState.fromValue(map['state'] as String),
+      targetImage: map['targetImage'] == null ? null : map['targetImage'] as String,
+      targetVersion: map['targetVersion'] == null ? null : map['targetVersion'] as String,
       version: map['version'] == null ? null : map['version'] as String,
       vmImage: map['vmImage'] == null ? null : map['vmImage'] as String,
     );
   }
 }
+

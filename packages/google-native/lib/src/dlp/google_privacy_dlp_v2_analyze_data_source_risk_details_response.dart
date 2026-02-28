@@ -14,29 +14,20 @@ import 'google_privacy_dlp_v2_requested_risk_analysis_options_response.dart';
 class GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse {
   /// Categorical stats result
   final GooglePrivacyDlpV2CategoricalStatsResultResponse categoricalStatsResult;
-
   /// Delta-presence result
-  final GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse
-      deltaPresenceEstimationResult;
-
+  final GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse deltaPresenceEstimationResult;
   /// K-anonymity result
   final GooglePrivacyDlpV2KAnonymityResultResponse kAnonymityResult;
-
   /// K-map result
   final GooglePrivacyDlpV2KMapEstimationResultResponse kMapEstimationResult;
-
   /// L-divesity result
   final GooglePrivacyDlpV2LDiversityResultResponse lDiversityResult;
-
   /// Numerical stats result
   final GooglePrivacyDlpV2NumericalStatsResultResponse numericalStatsResult;
-
   /// The configuration used for this job.
   final GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse requestedOptions;
-
   /// Privacy metric to compute.
   final GooglePrivacyDlpV2PrivacyMetricResponse requestedPrivacyMetric;
-
   /// Input dataset to compute metrics over.
   final GooglePrivacyDlpV2BigQueryTableResponse requestedSourceTable;
 
@@ -63,47 +54,31 @@ class GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['categoricalStatsResult'] = categoricalStatsResult.toMap();
-    map['deltaPresenceEstimationResult'] =
-        deltaPresenceEstimationResult.toMap();
-    map['kAnonymityResult'] = kAnonymityResult.toMap();
-    map['kMapEstimationResult'] = kMapEstimationResult.toMap();
-    map['lDiversityResult'] = lDiversityResult.toMap();
-    map['numericalStatsResult'] = numericalStatsResult.toMap();
-    map['requestedOptions'] = requestedOptions.toMap();
-    map['requestedPrivacyMetric'] = requestedPrivacyMetric.toMap();
-    map['requestedSourceTable'] = requestedSourceTable.toMap();
-    return map;
+    return <String, dynamic>{
+      'categoricalStatsResult': categoricalStatsResult.toMap(),
+      'deltaPresenceEstimationResult': deltaPresenceEstimationResult.toMap(),
+      'kAnonymityResult': kAnonymityResult.toMap(),
+      'kMapEstimationResult': kMapEstimationResult.toMap(),
+      'lDiversityResult': lDiversityResult.toMap(),
+      'numericalStatsResult': numericalStatsResult.toMap(),
+      'requestedOptions': requestedOptions.toMap(),
+      'requestedPrivacyMetric': requestedPrivacyMetric.toMap(),
+      'requestedSourceTable': requestedSourceTable.toMap(),
+    };
   }
 
-  factory GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse(
-      categoricalStatsResult:
-          GooglePrivacyDlpV2CategoricalStatsResultResponse.fromMap(
-              (map['categoricalStatsResult'] as Map).cast<String, dynamic>()),
-      deltaPresenceEstimationResult:
-          GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse.fromMap(
-              (map['deltaPresenceEstimationResult'] as Map)
-                  .cast<String, dynamic>()),
-      kAnonymityResult: GooglePrivacyDlpV2KAnonymityResultResponse.fromMap(
-          (map['kAnonymityResult'] as Map).cast<String, dynamic>()),
-      kMapEstimationResult:
-          GooglePrivacyDlpV2KMapEstimationResultResponse.fromMap(
-              (map['kMapEstimationResult'] as Map).cast<String, dynamic>()),
-      lDiversityResult: GooglePrivacyDlpV2LDiversityResultResponse.fromMap(
-          (map['lDiversityResult'] as Map).cast<String, dynamic>()),
-      numericalStatsResult:
-          GooglePrivacyDlpV2NumericalStatsResultResponse.fromMap(
-              (map['numericalStatsResult'] as Map).cast<String, dynamic>()),
-      requestedOptions:
-          GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse.fromMap(
-              (map['requestedOptions'] as Map).cast<String, dynamic>()),
-      requestedPrivacyMetric: GooglePrivacyDlpV2PrivacyMetricResponse.fromMap(
-          (map['requestedPrivacyMetric'] as Map).cast<String, dynamic>()),
-      requestedSourceTable: GooglePrivacyDlpV2BigQueryTableResponse.fromMap(
-          (map['requestedSourceTable'] as Map).cast<String, dynamic>()),
+      categoricalStatsResult: GooglePrivacyDlpV2CategoricalStatsResultResponse.fromMap((map['categoricalStatsResult'] as Map).cast<String, dynamic>()),
+      deltaPresenceEstimationResult: GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse.fromMap((map['deltaPresenceEstimationResult'] as Map).cast<String, dynamic>()),
+      kAnonymityResult: GooglePrivacyDlpV2KAnonymityResultResponse.fromMap((map['kAnonymityResult'] as Map).cast<String, dynamic>()),
+      kMapEstimationResult: GooglePrivacyDlpV2KMapEstimationResultResponse.fromMap((map['kMapEstimationResult'] as Map).cast<String, dynamic>()),
+      lDiversityResult: GooglePrivacyDlpV2LDiversityResultResponse.fromMap((map['lDiversityResult'] as Map).cast<String, dynamic>()),
+      numericalStatsResult: GooglePrivacyDlpV2NumericalStatsResultResponse.fromMap((map['numericalStatsResult'] as Map).cast<String, dynamic>()),
+      requestedOptions: GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse.fromMap((map['requestedOptions'] as Map).cast<String, dynamic>()),
+      requestedPrivacyMetric: GooglePrivacyDlpV2PrivacyMetricResponse.fromMap((map['requestedPrivacyMetric'] as Map).cast<String, dynamic>()),
+      requestedSourceTable: GooglePrivacyDlpV2BigQueryTableResponse.fromMap((map['requestedSourceTable'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcSecurityGroupRulesExclusiveArgs {
   /// Egress rule IDs.
   final pulumi.Input<List<String>> egressRuleIds;
-
   /// Ingress rule IDs.
   final pulumi.Input<List<String>> ingressRuleIds;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// ID of the security group.
   final pulumi.Input<String> securityGroupId;
 
@@ -29,21 +26,19 @@ class VpcSecurityGroupRulesExclusiveArgs {
     required List<String> ingressRuleIds,
     String? region,
     required String securityGroupId,
-  })  : egressRuleIds = pulumi.Input.asInput<List<String>>(egressRuleIds),
-        ingressRuleIds = pulumi.Input.asInput<List<String>>(ingressRuleIds),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        securityGroupId = pulumi.Input.asInput<String>(securityGroupId);
+  }) :
+      egressRuleIds = pulumi.Input.asInput<List<String>>(egressRuleIds),
+      ingressRuleIds = pulumi.Input.asInput<List<String>>(ingressRuleIds),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      securityGroupId = pulumi.Input.asInput<String>(securityGroupId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['egressRuleIds'] = egressRuleIds;
-    map['ingressRuleIds'] = ingressRuleIds;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['securityGroupId'] = securityGroupId;
-    return map;
+    return <String, dynamic>{
+      'egressRuleIds': egressRuleIds,
+      'ingressRuleIds': ingressRuleIds,
+      'region': ?region,
+      'securityGroupId': securityGroupId,
+    };
   }
 
   factory VpcSecurityGroupRulesExclusiveArgs.fromMap(Map<String, dynamic> map) {
@@ -55,3 +50,4 @@ class VpcSecurityGroupRulesExclusiveArgs {
     );
   }
 }
+

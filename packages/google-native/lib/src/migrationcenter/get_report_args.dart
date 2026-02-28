@@ -25,26 +25,21 @@ class GetReportArgs {
     required String reportConfigId,
     required String reportId,
     String? view,
-  })  : location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        reportConfigId = pulumi.Input.asInput<String>(reportConfigId),
-        reportId = pulumi.Input.asInput<String>(reportId),
-        view = pulumi.Input.asOptionalInput<String>(view);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      reportConfigId = pulumi.Input.asInput<String>(reportConfigId),
+      reportId = pulumi.Input.asInput<String>(reportId),
+      view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['reportConfigId'] = reportConfigId;
-    map['reportId'] = reportId;
-    final viewValue = view;
-    if (viewValue != null) {
-      map['view'] = viewValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+      'reportConfigId': reportConfigId,
+      'reportId': reportId,
+      'view': ?view,
+    };
   }
 
   factory GetReportArgs.fromMap(Map<String, dynamic> map) {
@@ -57,3 +52,4 @@ class GetReportArgs {
     );
   }
 }
+

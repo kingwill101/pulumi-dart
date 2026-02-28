@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents an integer value range.
 class HttpRouteHeaderMatchIntegerRange {
   /// End of the range (exclusive)
   final int? end;
-
   /// Start of the range (inclusive)
   final int? start;
 
@@ -17,16 +17,10 @@ class HttpRouteHeaderMatchIntegerRange {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final endValue = end;
-    if (endValue != null) {
-      map['end'] = endValue;
-    }
-    final startValue = start;
-    if (startValue != null) {
-      map['start'] = startValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'end': ?end,
+      'start': ?start,
+    };
   }
 
   factory HttpRouteHeaderMatchIntegerRange.fromMap(Map<String, dynamic> map) {
@@ -36,3 +30,4 @@ class HttpRouteHeaderMatchIntegerRange {
     );
   }
 }
+

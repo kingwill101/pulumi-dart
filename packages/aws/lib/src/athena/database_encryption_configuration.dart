@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DatabaseEncryptionConfiguration {
   /// Type of key; one of `SSE_S3`, `SSE_KMS`, `CSE_KMS`
   final String encryptionOption;
-
   /// KMS key ARN or ID; required for key types `SSE_KMS` and `CSE_KMS`.
   final String? kmsKey;
 
@@ -16,13 +16,10 @@ class DatabaseEncryptionConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['encryptionOption'] = encryptionOption;
-    final kmsKeyValue = kmsKey;
-    if (kmsKeyValue != null) {
-      map['kmsKey'] = kmsKeyValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'encryptionOption': encryptionOption,
+      'kmsKey': ?kmsKey,
+    };
   }
 
   factory DatabaseEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
@@ -32,3 +29,4 @@ class DatabaseEncryptionConfiguration {
     );
   }
 }
+

@@ -9,15 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionDiskResourcePolicyAttachmentArgs {
   /// The name of the regional disk in which the resource policies are attached to.
   final pulumi.Input<String> disk;
-
   /// The resource policy to be attached to the disk for scheduling snapshot
   /// creation. Do not specify the self link.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// A reference to the region where the disk resides.
   final pulumi.Input<String>? region;
 
@@ -31,31 +28,22 @@ class RegionDiskResourcePolicyAttachmentArgs {
     String? name,
     String? project,
     String? region,
-  })  : disk = pulumi.Input.asInput<String>(disk),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      disk = pulumi.Input.asInput<String>(disk),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['disk'] = disk;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'disk': disk,
+      'name': ?name,
+      'project': ?project,
+      'region': ?region,
+    };
   }
 
-  factory RegionDiskResourcePolicyAttachmentArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory RegionDiskResourcePolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return RegionDiskResourcePolicyAttachmentArgs(
       disk: map['disk'] as String,
       name: map['name'] == null ? null : map['name'] as String,
@@ -64,3 +52,4 @@ class RegionDiskResourcePolicyAttachmentArgs {
     );
   }
 }
+

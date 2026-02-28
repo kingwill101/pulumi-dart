@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SecurityProfileThreatPreventionProfileThreatOverride {
   /// Threat action.
   /// Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
   final String action;
-
   /// Vendor-specific ID of a threat to override.
   final String threatId;
-
   /// (Output)
   /// Type of threat.
   final String? type;
@@ -23,18 +22,14 @@ class SecurityProfileThreatPreventionProfileThreatOverride {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['action'] = action;
-    map['threatId'] = threatId;
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'action': action,
+      'threatId': threatId,
+      'type': ?type,
+    };
   }
 
-  factory SecurityProfileThreatPreventionProfileThreatOverride.fromMap(
-      Map<String, dynamic> map) {
+  factory SecurityProfileThreatPreventionProfileThreatOverride.fromMap(Map<String, dynamic> map) {
     return SecurityProfileThreatPreventionProfileThreatOverride(
       action: map['action'] as String,
       threatId: map['threatId'] as String,
@@ -42,3 +37,4 @@ class SecurityProfileThreatPreventionProfileThreatOverride {
     );
   }
 }
+

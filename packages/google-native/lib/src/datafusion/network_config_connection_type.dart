@@ -16,3 +16,4 @@ enum NetworkConfigConnectionType {
     throw ArgumentError('Unknown NetworkConfigConnectionType value: $value');
   }
 }
+

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Start and end times for a build execution phase.
 class TimeSpanResponse {
   /// End of time span.
   final String endTime;
-
   /// Start of time span.
   final String startTime;
 
@@ -17,10 +17,10 @@ class TimeSpanResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['endTime'] = endTime;
-    map['startTime'] = startTime;
-    return map;
+    return <String, dynamic>{
+      'endTime': endTime,
+      'startTime': startTime,
+    };
   }
 
   factory TimeSpanResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class TimeSpanResponse {
     );
   }
 }
+

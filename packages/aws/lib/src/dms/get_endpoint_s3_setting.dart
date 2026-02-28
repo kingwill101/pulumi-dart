@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetEndpointS3Setting {
   final bool addColumnName;
   final String bucketFolder;
@@ -124,48 +125,47 @@ class GetEndpointS3Setting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['addColumnName'] = addColumnName;
-    map['bucketFolder'] = bucketFolder;
-    map['bucketName'] = bucketName;
-    map['cannedAclForObjects'] = cannedAclForObjects;
-    map['cdcInsertsAndUpdates'] = cdcInsertsAndUpdates;
-    map['cdcInsertsOnly'] = cdcInsertsOnly;
-    map['cdcMaxBatchInterval'] = cdcMaxBatchInterval;
-    map['cdcMinFileSize'] = cdcMinFileSize;
-    map['cdcPath'] = cdcPath;
-    map['compressionType'] = compressionType;
-    map['csvDelimiter'] = csvDelimiter;
-    map['csvNoSupValue'] = csvNoSupValue;
-    map['csvNullValue'] = csvNullValue;
-    map['csvRowDelimiter'] = csvRowDelimiter;
-    map['dataFormat'] = dataFormat;
-    map['dataPageSize'] = dataPageSize;
-    map['datePartitionDelimiter'] = datePartitionDelimiter;
-    map['datePartitionEnabled'] = datePartitionEnabled;
-    map['datePartitionSequence'] = datePartitionSequence;
-    map['dictPageSizeLimit'] = dictPageSizeLimit;
-    map['enableStatistics'] = enableStatistics;
-    map['encodingType'] = encodingType;
-    map['encryptionMode'] = encryptionMode;
-    map['externalTableDefinition'] = externalTableDefinition;
-    map['glueCatalogGeneration'] = glueCatalogGeneration;
-    map['ignoreHeaderRows'] = ignoreHeaderRows;
-    map['ignoreHeadersRow'] = ignoreHeadersRow;
-    map['includeOpForFullLoad'] = includeOpForFullLoad;
-    map['maxFileSize'] = maxFileSize;
-    map['parquetTimestampInMillisecond'] = parquetTimestampInMillisecond;
-    map['parquetVersion'] = parquetVersion;
-    map['preserveTransactions'] = preserveTransactions;
-    map['rfc4180'] = rfc4180;
-    map['rowGroupLength'] = rowGroupLength;
-    map['serverSideEncryptionKmsKeyId'] = serverSideEncryptionKmsKeyId;
-    map['serviceAccessRoleArn'] = serviceAccessRoleArn;
-    map['timestampColumnName'] = timestampColumnName;
-    map['useCsvNoSupValue'] = useCsvNoSupValue;
-    map['useTaskStartTimeForFullLoadTimestamp'] =
-        useTaskStartTimeForFullLoadTimestamp;
-    return map;
+    return <String, dynamic>{
+      'addColumnName': addColumnName,
+      'bucketFolder': bucketFolder,
+      'bucketName': bucketName,
+      'cannedAclForObjects': cannedAclForObjects,
+      'cdcInsertsAndUpdates': cdcInsertsAndUpdates,
+      'cdcInsertsOnly': cdcInsertsOnly,
+      'cdcMaxBatchInterval': cdcMaxBatchInterval,
+      'cdcMinFileSize': cdcMinFileSize,
+      'cdcPath': cdcPath,
+      'compressionType': compressionType,
+      'csvDelimiter': csvDelimiter,
+      'csvNoSupValue': csvNoSupValue,
+      'csvNullValue': csvNullValue,
+      'csvRowDelimiter': csvRowDelimiter,
+      'dataFormat': dataFormat,
+      'dataPageSize': dataPageSize,
+      'datePartitionDelimiter': datePartitionDelimiter,
+      'datePartitionEnabled': datePartitionEnabled,
+      'datePartitionSequence': datePartitionSequence,
+      'dictPageSizeLimit': dictPageSizeLimit,
+      'enableStatistics': enableStatistics,
+      'encodingType': encodingType,
+      'encryptionMode': encryptionMode,
+      'externalTableDefinition': externalTableDefinition,
+      'glueCatalogGeneration': glueCatalogGeneration,
+      'ignoreHeaderRows': ignoreHeaderRows,
+      'ignoreHeadersRow': ignoreHeadersRow,
+      'includeOpForFullLoad': includeOpForFullLoad,
+      'maxFileSize': maxFileSize,
+      'parquetTimestampInMillisecond': parquetTimestampInMillisecond,
+      'parquetVersion': parquetVersion,
+      'preserveTransactions': preserveTransactions,
+      'rfc4180': rfc4180,
+      'rowGroupLength': rowGroupLength,
+      'serverSideEncryptionKmsKeyId': serverSideEncryptionKmsKeyId,
+      'serviceAccessRoleArn': serviceAccessRoleArn,
+      'timestampColumnName': timestampColumnName,
+      'useCsvNoSupValue': useCsvNoSupValue,
+      'useTaskStartTimeForFullLoadTimestamp': useTaskStartTimeForFullLoadTimestamp,
+    };
   }
 
   factory GetEndpointS3Setting.fromMap(Map<String, dynamic> map) {
@@ -199,19 +199,17 @@ class GetEndpointS3Setting {
       ignoreHeadersRow: map['ignoreHeadersRow'] as int,
       includeOpForFullLoad: map['includeOpForFullLoad'] as bool,
       maxFileSize: map['maxFileSize'] as int,
-      parquetTimestampInMillisecond:
-          map['parquetTimestampInMillisecond'] as bool,
+      parquetTimestampInMillisecond: map['parquetTimestampInMillisecond'] as bool,
       parquetVersion: map['parquetVersion'] as String,
       preserveTransactions: map['preserveTransactions'] as bool,
       rfc4180: map['rfc4180'] as bool,
       rowGroupLength: map['rowGroupLength'] as int,
-      serverSideEncryptionKmsKeyId:
-          map['serverSideEncryptionKmsKeyId'] as String,
+      serverSideEncryptionKmsKeyId: map['serverSideEncryptionKmsKeyId'] as String,
       serviceAccessRoleArn: map['serviceAccessRoleArn'] as String,
       timestampColumnName: map['timestampColumnName'] as String,
       useCsvNoSupValue: map['useCsvNoSupValue'] as bool,
-      useTaskStartTimeForFullLoadTimestamp:
-          map['useTaskStartTimeForFullLoadTimestamp'] as bool,
+      useTaskStartTimeForFullLoadTimestamp: map['useTaskStartTimeForFullLoadTimestamp'] as bool,
     );
   }
 }
+

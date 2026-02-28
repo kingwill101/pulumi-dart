@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Justification provides the justification when the state of the assessment if NOT_AFFECTED.
 class JustificationResponse {
   /// Additional details on why this justification was chosen.
   final String details;
-
   /// The justification type for this vulnerability.
   final String justificationType;
 
@@ -17,10 +17,10 @@ class JustificationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['details'] = details;
-    map['justificationType'] = justificationType;
-    return map;
+    return <String, dynamic>{
+      'details': details,
+      'justificationType': justificationType,
+    };
   }
 
   factory JustificationResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class JustificationResponse {
     );
   }
 }
+

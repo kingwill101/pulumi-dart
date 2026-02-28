@@ -17,3 +17,4 @@ enum KeyDataKeySpec {
     throw ArgumentError('Unknown KeyDataKeySpec value: $value');
   }
 }
+

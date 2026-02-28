@@ -1,18 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetBucketObjectsBucketObject {
   /// [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data.
   final String contentType;
-
   /// A url reference to download this object.
   final String mediaLink;
-
   /// The name of the object.
   final String name;
-
   /// A url reference to this object.
   final String selfLink;
-
   /// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the bucket object.
   final String storageClass;
 
@@ -31,13 +28,13 @@ class GetBucketObjectsBucketObject {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['contentType'] = contentType;
-    map['mediaLink'] = mediaLink;
-    map['name'] = name;
-    map['selfLink'] = selfLink;
-    map['storageClass'] = storageClass;
-    return map;
+    return <String, dynamic>{
+      'contentType': contentType,
+      'mediaLink': mediaLink,
+      'name': name,
+      'selfLink': selfLink,
+      'storageClass': storageClass,
+    };
   }
 
   factory GetBucketObjectsBucketObject.fromMap(Map<String, dynamic> map) {
@@ -50,3 +47,4 @@ class GetBucketObjectsBucketObject {
     );
   }
 }
+

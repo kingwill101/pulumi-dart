@@ -6,7 +6,6 @@ import 'oauth_credential.dart';
 class GitHubConfig {
   /// GitHub App installation id.
   final String? appInstallationId;
-
   /// OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App.
   final OAuthCredential? authorizerCredential;
 
@@ -19,27 +18,17 @@ class GitHubConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final appInstallationIdValue = appInstallationId;
-    if (appInstallationIdValue != null) {
-      map['appInstallationId'] = appInstallationIdValue;
-    }
-    final authorizerCredentialValue = authorizerCredential;
-    if (authorizerCredentialValue != null) {
-      map['authorizerCredential'] = authorizerCredentialValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'appInstallationId': ?appInstallationId,
+      'authorizerCredential': ?authorizerCredential == null ? null : authorizerCredential!.toMap(),
+    };
   }
 
   factory GitHubConfig.fromMap(Map<String, dynamic> map) {
     return GitHubConfig(
-      appInstallationId: map['appInstallationId'] == null
-          ? null
-          : map['appInstallationId'] as String,
-      authorizerCredential: map['authorizerCredential'] == null
-          ? null
-          : OAuthCredential.fromMap(
-              (map['authorizerCredential'] as Map).cast<String, dynamic>()),
+      appInstallationId: map['appInstallationId'] == null ? null : map['appInstallationId'] as String,
+      authorizerCredential: map['authorizerCredential'] == null ? null : OAuthCredential.fromMap((map['authorizerCredential'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

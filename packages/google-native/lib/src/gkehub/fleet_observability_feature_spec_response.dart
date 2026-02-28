@@ -14,16 +14,15 @@ class FleetObservabilityFeatureSpecResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['loggingConfig'] = loggingConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'loggingConfig': loggingConfig.toMap(),
+    };
   }
 
-  factory FleetObservabilityFeatureSpecResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory FleetObservabilityFeatureSpecResponse.fromMap(Map<String, dynamic> map) {
     return FleetObservabilityFeatureSpecResponse(
-      loggingConfig: FleetObservabilityLoggingConfigResponse.fromMap(
-          (map['loggingConfig'] as Map).cast<String, dynamic>()),
+      loggingConfig: FleetObservabilityLoggingConfigResponse.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

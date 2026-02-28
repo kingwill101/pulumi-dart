@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TrustedTokenIssuerTrustedTokenIssuerConfigurationOidcJwtConfiguration {
   /// Specifies the path of the source attribute in the JWT from the trusted token issuer.
   final String claimAttributePath;
-
   /// Specifies path of the destination attribute in a JWT from IAM Identity Center. The attribute mapped by this JMESPath expression is compared against the attribute mapped by `claim_attribute_path` when a trusted token issuer token is exchanged for an IAM Identity Center token.
   final String identityStoreAttributePath;
-
   /// Specifies the URL that IAM Identity Center uses for OpenID Discovery. OpenID Discovery is used to obtain the information required to verify the tokens that the trusted token issuer generates.
   final String issuerUrl;
-
   /// The method that the trusted token issuer can use to retrieve the JSON Web Key Set used to verify a JWT. Valid values are `OPEN_ID_DISCOVERY`
   final String jwksRetrievalOption;
 
@@ -26,16 +24,15 @@ class TrustedTokenIssuerTrustedTokenIssuerConfigurationOidcJwtConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['claimAttributePath'] = claimAttributePath;
-    map['identityStoreAttributePath'] = identityStoreAttributePath;
-    map['issuerUrl'] = issuerUrl;
-    map['jwksRetrievalOption'] = jwksRetrievalOption;
-    return map;
+    return <String, dynamic>{
+      'claimAttributePath': claimAttributePath,
+      'identityStoreAttributePath': identityStoreAttributePath,
+      'issuerUrl': issuerUrl,
+      'jwksRetrievalOption': jwksRetrievalOption,
+    };
   }
 
-  factory TrustedTokenIssuerTrustedTokenIssuerConfigurationOidcJwtConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory TrustedTokenIssuerTrustedTokenIssuerConfigurationOidcJwtConfiguration.fromMap(Map<String, dynamic> map) {
     return TrustedTokenIssuerTrustedTokenIssuerConfigurationOidcJwtConfiguration(
       claimAttributePath: map['claimAttributePath'] as String,
       identityStoreAttributePath: map['identityStoreAttributePath'] as String,
@@ -44,3 +41,4 @@ class TrustedTokenIssuerTrustedTokenIssuerConfigurationOidcJwtConfiguration {
     );
   }
 }
+

@@ -10,19 +10,15 @@ import 'user_profile_timeouts.dart';
 class UserProfileArgs {
   /// The domain identifier.
   final pulumi.Input<String> domainIdentifier;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The user profile status.
   final pulumi.Input<String>? status;
   final pulumi.Input<UserProfileTimeouts>? timeouts;
-
   /// The user identifier.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> userIdentifier;
-
   /// The user type.
   final pulumi.Input<String>? userType;
 
@@ -40,35 +36,23 @@ class UserProfileArgs {
     UserProfileTimeouts? timeouts,
     required String userIdentifier,
     String? userType,
-  })  : domainIdentifier = pulumi.Input.asInput<String>(domainIdentifier),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        status = pulumi.Input.asOptionalInput<String>(status),
-        timeouts = pulumi.Input.asOptionalInput<UserProfileTimeouts>(timeouts),
-        userIdentifier = pulumi.Input.asInput<String>(userIdentifier),
-        userType = pulumi.Input.asOptionalInput<String>(userType);
+  }) :
+      domainIdentifier = pulumi.Input.asInput<String>(domainIdentifier),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      status = pulumi.Input.asOptionalInput<String>(status),
+      timeouts = pulumi.Input.asOptionalInput<UserProfileTimeouts>(timeouts),
+      userIdentifier = pulumi.Input.asInput<String>(userIdentifier),
+      userType = pulumi.Input.asOptionalInput<String>(userType);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['domainIdentifier'] = domainIdentifier;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final statusValue = status;
-    if (statusValue != null) {
-      map['status'] = statusValue;
-    }
-    final timeoutsValue = timeouts;
-    if (timeoutsValue != null) {
-      map['timeouts'] = pulumi.Input.mapOptionalInputValue<UserProfileTimeouts,
-          Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
-    }
-    map['userIdentifier'] = userIdentifier;
-    final userTypeValue = userType;
-    if (userTypeValue != null) {
-      map['userType'] = userTypeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'domainIdentifier': domainIdentifier,
+      'region': ?region,
+      'status': ?status,
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<UserProfileTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'userIdentifier': userIdentifier,
+      'userType': ?userType,
+    };
   }
 
   factory UserProfileArgs.fromMap(Map<String, dynamic> map) {
@@ -76,12 +60,10 @@ class UserProfileArgs {
       domainIdentifier: map['domainIdentifier'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       status: map['status'] == null ? null : map['status'] as String,
-      timeouts: map['timeouts'] == null
-          ? null
-          : UserProfileTimeouts.fromMap(
-              (map['timeouts'] as Map).cast<String, dynamic>()),
+      timeouts: map['timeouts'] == null ? null : UserProfileTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
       userIdentifier: map['userIdentifier'] as String,
       userType: map['userType'] == null ? null : map['userType'] as String,
     );
   }
 }
+

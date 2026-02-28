@@ -8,7 +8,6 @@ import 'dynamic_group_status_response_cloudidentity_v1beta1.dart';
 class DynamicGroupMetadataResponseCloudidentityV1beta1 {
   /// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
   final List<DynamicGroupQueryResponseCloudidentityV1beta1> queries;
-
   /// Status of the dynamic group.
   final DynamicGroupStatusResponseCloudidentityV1beta1 status;
 
@@ -21,24 +20,17 @@ class DynamicGroupMetadataResponseCloudidentityV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['queries'] = pulumi.Input.encodeList<
-        DynamicGroupQueryResponseCloudidentityV1beta1,
-        Map<String, dynamic>>(queries, (value) => value.toMap());
-    map['status'] = status.toMap();
-    return map;
+    return <String, dynamic>{
+      'queries': pulumi.Input.encodeList<DynamicGroupQueryResponseCloudidentityV1beta1, Map<String, dynamic>>(queries, (value) => value.toMap()),
+      'status': status.toMap(),
+    };
   }
 
-  factory DynamicGroupMetadataResponseCloudidentityV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory DynamicGroupMetadataResponseCloudidentityV1beta1.fromMap(Map<String, dynamic> map) {
     return DynamicGroupMetadataResponseCloudidentityV1beta1(
-      queries: pulumi.Input.decodeList<
-              DynamicGroupQueryResponseCloudidentityV1beta1>(
-          map['queries'],
-          (value) => DynamicGroupQueryResponseCloudidentityV1beta1.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      status: DynamicGroupStatusResponseCloudidentityV1beta1.fromMap(
-          (map['status'] as Map).cast<String, dynamic>()),
+      queries: pulumi.Input.decodeList<DynamicGroupQueryResponseCloudidentityV1beta1>(map['queries'], (value) => DynamicGroupQueryResponseCloudidentityV1beta1.fromMap((value as Map).cast<String, dynamic>())),
+      status: DynamicGroupStatusResponseCloudidentityV1beta1.fromMap((map['status'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

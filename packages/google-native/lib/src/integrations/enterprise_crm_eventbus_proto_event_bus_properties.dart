@@ -15,25 +15,15 @@ class EnterpriseCrmEventbusProtoEventBusProperties {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final propertiesValue = properties;
-    if (propertiesValue != null) {
-      map['properties'] = pulumi.Input.encodeList<
-          EnterpriseCrmEventbusProtoPropertyEntry,
-          Map<String, dynamic>>(propertiesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'properties': ?properties == null ? null : pulumi.Input.encodeList<EnterpriseCrmEventbusProtoPropertyEntry, Map<String, dynamic>>(properties!, (value) => value.toMap()),
+    };
   }
 
-  factory EnterpriseCrmEventbusProtoEventBusProperties.fromMap(
-      Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoEventBusProperties.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoEventBusProperties(
-      properties: map['properties'] == null
-          ? null
-          : pulumi.Input.decodeList<EnterpriseCrmEventbusProtoPropertyEntry>(
-              map['properties'],
-              (value) => EnterpriseCrmEventbusProtoPropertyEntry.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      properties: map['properties'] == null ? null : pulumi.Input.decodeList<EnterpriseCrmEventbusProtoPropertyEntry>(map['properties'], (value) => EnterpriseCrmEventbusProtoPropertyEntry.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

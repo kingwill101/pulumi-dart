@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRegionSSLPolicy.
 class GetRegionSSLPolicyResult {
   final String creationTimestamp;
@@ -7,7 +8,6 @@ class GetRegionSSLPolicyResult {
   final String description;
   final List<String> enabledFeatures;
   final String fingerprint;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String minTlsVersion;
@@ -46,26 +46,20 @@ class GetRegionSSLPolicyResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['creationTimestamp'] = creationTimestamp;
-    map['customFeatures'] = customFeatures;
-    map['description'] = description;
-    map['enabledFeatures'] = enabledFeatures;
-    map['fingerprint'] = fingerprint;
-    map['id'] = id;
-    map['minTlsVersion'] = minTlsVersion;
-    map['name'] = name;
-    map['profile'] = profile;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['selfLink'] = selfLink;
-    return map;
+    return <String, dynamic>{
+      'creationTimestamp': creationTimestamp,
+      'customFeatures': customFeatures,
+      'description': description,
+      'enabledFeatures': enabledFeatures,
+      'fingerprint': fingerprint,
+      'id': id,
+      'minTlsVersion': minTlsVersion,
+      'name': name,
+      'profile': profile,
+      'project': ?project,
+      'region': ?region,
+      'selfLink': selfLink,
+    };
   }
 
   factory GetRegionSSLPolicyResult.fromMap(Map<String, dynamic> map) {
@@ -85,3 +79,4 @@ class GetRegionSSLPolicyResult {
     );
   }
 }
+

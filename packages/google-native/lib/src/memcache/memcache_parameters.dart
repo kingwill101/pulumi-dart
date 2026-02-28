@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MemcacheParameters {
   /// User defined set of parameters to use in the memcached process.
   final Map<String, String>? params;
@@ -11,19 +12,15 @@ class MemcacheParameters {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final paramsValue = params;
-    if (paramsValue != null) {
-      map['params'] = paramsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'params': ?params,
+    };
   }
 
   factory MemcacheParameters.fromMap(Map<String, dynamic> map) {
     return MemcacheParameters(
-      params: map['params'] == null
-          ? null
-          : (map['params'] as Map).cast<String, String>(),
+      params: map['params'] == null ? null : (map['params'] as Map).cast<String, String>(),
     );
   }
 }
+

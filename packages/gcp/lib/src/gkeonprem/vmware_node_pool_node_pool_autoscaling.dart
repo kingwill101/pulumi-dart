@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VMwareNodePoolNodePoolAutoscaling {
   /// Maximum number of replicas in the NodePool.
   final int maxReplicas;
-
   /// Minimum number of replicas in the NodePool.
   final int minReplicas;
 
@@ -16,10 +16,10 @@ class VMwareNodePoolNodePoolAutoscaling {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maxReplicas'] = maxReplicas;
-    map['minReplicas'] = minReplicas;
-    return map;
+    return <String, dynamic>{
+      'maxReplicas': maxReplicas,
+      'minReplicas': minReplicas,
+    };
   }
 
   factory VMwareNodePoolNodePoolAutoscaling.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class VMwareNodePoolNodePoolAutoscaling {
     );
   }
 }
+

@@ -3,20 +3,16 @@ enum SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility
   premium("PREMIUM"),
   standard("STANDARD");
 
-  const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility(
-      this.value);
+  const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility(this.value);
   final String value;
 
-  static SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility
-      fromValue(String value) {
-    for (final item
-        in SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility
-            .values) {
+  static SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility fromValue(String value) {
+    for (final item in SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility value: $value');
+    throw ArgumentError('Unknown SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility value: $value');
   }
 }
+

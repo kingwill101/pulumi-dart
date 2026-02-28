@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RulesetMetadata {
   /// Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these.
   final List<String>? services;
@@ -11,19 +12,15 @@ class RulesetMetadata {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final servicesValue = services;
-    if (servicesValue != null) {
-      map['services'] = servicesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'services': ?services,
+    };
   }
 
   factory RulesetMetadata.fromMap(Map<String, dynamic> map) {
     return RulesetMetadata(
-      services: map['services'] == null
-          ? null
-          : (map['services'] as List).cast<String>(),
+      services: map['services'] == null ? null : (map['services'] as List).cast<String>(),
     );
   }
 }
+

@@ -606,16 +606,12 @@ import 'recorder_recording_mode.dart';
 class Recorder extends pulumi.CustomResource {
   /// The name of the recorder. Defaults to `default`. Changing it recreates the resource.
   late final pulumi.Output<String> name;
-
   /// Recording group - see below.
   late final pulumi.Output<RecorderRecordingGroup> recordingGroup;
-
   /// Recording mode - see below.
   late final pulumi.Output<RecorderRecordingMode> recordingMode;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Amazon Resource Name (ARN) of the IAM role. Used to make read or write requests to the delivery channel and to describe the AWS resources associated with the account. See [AWS Docs](http://docs.aws.amazon.com/config/latest/developerguide/iamrole-permissions.html) for more details.
   late final pulumi.Output<String> roleArn;
 
@@ -634,8 +630,7 @@ class Recorder extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.name = registerOutput<String>('name');
-    this.recordingGroup =
-        registerOutput<RecorderRecordingGroup>('recordingGroup');
+    this.recordingGroup = registerOutput<RecorderRecordingGroup>('recordingGroup');
     this.recordingMode = registerOutput<RecorderRecordingMode>('recordingMode');
     this.region = registerOutput<String>('region');
     this.roleArn = registerOutput<String>('roleArn');

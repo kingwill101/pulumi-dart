@@ -17,3 +17,4 @@ enum EngineSolutionType {
     throw ArgumentError('Unknown EngineSolutionType value: $value');
   }
 }
+

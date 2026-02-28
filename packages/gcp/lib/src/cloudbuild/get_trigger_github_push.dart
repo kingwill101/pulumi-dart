@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTriggerGithubPush {
   /// Regex of branches to match.  Specify only one of branch or tag.
   final String branch;
-
   /// When true, only trigger a build if the revision regex does NOT match the git_ref regex.
   final bool invertRegex;
-
   /// Regex of tags to match.  Specify only one of branch or tag.
   final String tag;
 
@@ -21,11 +20,11 @@ class GetTriggerGithubPush {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['branch'] = branch;
-    map['invertRegex'] = invertRegex;
-    map['tag'] = tag;
-    return map;
+    return <String, dynamic>{
+      'branch': branch,
+      'invertRegex': invertRegex,
+      'tag': tag,
+    };
   }
 
   factory GetTriggerGithubPush.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class GetTriggerGithubPush {
     );
   }
 }
+

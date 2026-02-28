@@ -14,17 +14,15 @@ class ServiceTemplateSpecContainerEnvValueFrom {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['secretKeyRef'] = secretKeyRef.toMap();
-    return map;
+    return <String, dynamic>{
+      'secretKeyRef': secretKeyRef.toMap(),
+    };
   }
 
-  factory ServiceTemplateSpecContainerEnvValueFrom.fromMap(
-      Map<String, dynamic> map) {
+  factory ServiceTemplateSpecContainerEnvValueFrom.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateSpecContainerEnvValueFrom(
-      secretKeyRef:
-          ServiceTemplateSpecContainerEnvValueFromSecretKeyRef.fromMap(
-              (map['secretKeyRef'] as Map).cast<String, dynamic>()),
+      secretKeyRef: ServiceTemplateSpecContainerEnvValueFromSecretKeyRef.fromMap((map['secretKeyRef'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

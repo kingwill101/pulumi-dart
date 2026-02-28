@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getOutpostInstanceType.
 class GetOutpostInstanceTypeResult {
   final String arn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instanceType;
@@ -25,16 +25,13 @@ class GetOutpostInstanceTypeResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['id'] = id;
-    map['instanceType'] = instanceType;
-    final preferredInstanceTypesValue = preferredInstanceTypes;
-    if (preferredInstanceTypesValue != null) {
-      map['preferredInstanceTypes'] = preferredInstanceTypesValue;
-    }
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'id': id,
+      'instanceType': instanceType,
+      'preferredInstanceTypes': ?preferredInstanceTypes,
+      'region': region,
+    };
   }
 
   factory GetOutpostInstanceTypeResult.fromMap(Map<String, dynamic> map) {
@@ -42,10 +39,9 @@ class GetOutpostInstanceTypeResult {
       arn: map['arn'] as String,
       id: map['id'] as String,
       instanceType: map['instanceType'] as String,
-      preferredInstanceTypes: map['preferredInstanceTypes'] == null
-          ? null
-          : (map['preferredInstanceTypes'] as List).cast<String>(),
+      preferredInstanceTypes: map['preferredInstanceTypes'] == null ? null : (map['preferredInstanceTypes'] as List).cast<String>(),
       region: map['region'] as String,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EnvironmentHighAvailabilityConfig {
   /// Desired number of instances for the Environment.
   final int desiredCapacity;
@@ -11,9 +12,9 @@ class EnvironmentHighAvailabilityConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['desiredCapacity'] = desiredCapacity;
-    return map;
+    return <String, dynamic>{
+      'desiredCapacity': desiredCapacity,
+    };
   }
 
   factory EnvironmentHighAvailabilityConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class EnvironmentHighAvailabilityConfig {
     );
   }
 }
+

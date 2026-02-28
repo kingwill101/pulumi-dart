@@ -1,22 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getManagedZone.
 class GetManagedZoneResult {
   /// A textual description field.
   final String description;
-
   /// The fully qualified DNS name of this zone, e.g. `example.io.`.
   final String dnsName;
   final String id;
   final String managedZoneId;
   final String name;
-
   /// The list of nameservers that will be authoritative for this
   /// domain. Use NS records to redirect from your DNS provider to these names,
   /// thus making Google Cloud DNS authoritative for this zone.
   final List<String> nameServers;
   final String? project;
-
   /// The zone's visibility: public zones are exposed to the Internet,
   /// while private zones are visible only to Virtual Private Cloud resources.
   final String visibility;
@@ -42,19 +40,16 @@ class GetManagedZoneResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['description'] = description;
-    map['dnsName'] = dnsName;
-    map['id'] = id;
-    map['managedZoneId'] = managedZoneId;
-    map['name'] = name;
-    map['nameServers'] = nameServers;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['visibility'] = visibility;
-    return map;
+    return <String, dynamic>{
+      'description': description,
+      'dnsName': dnsName,
+      'id': id,
+      'managedZoneId': managedZoneId,
+      'name': name,
+      'nameServers': nameServers,
+      'project': ?project,
+      'visibility': visibility,
+    };
   }
 
   factory GetManagedZoneResult.fromMap(Map<String, dynamic> map) {
@@ -70,3 +65,4 @@ class GetManagedZoneResult {
     );
   }
 }
+

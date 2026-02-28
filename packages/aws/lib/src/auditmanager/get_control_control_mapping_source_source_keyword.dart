@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetControlControlMappingSourceSourceKeyword {
   final String keywordInputType;
   final String keywordValue;
@@ -13,17 +14,17 @@ class GetControlControlMappingSourceSourceKeyword {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['keywordInputType'] = keywordInputType;
-    map['keywordValue'] = keywordValue;
-    return map;
+    return <String, dynamic>{
+      'keywordInputType': keywordInputType,
+      'keywordValue': keywordValue,
+    };
   }
 
-  factory GetControlControlMappingSourceSourceKeyword.fromMap(
-      Map<String, dynamic> map) {
+  factory GetControlControlMappingSourceSourceKeyword.fromMap(Map<String, dynamic> map) {
     return GetControlControlMappingSourceSourceKeyword(
       keywordInputType: map['keywordInputType'] as String,
       keywordValue: map['keywordValue'] as String,
     );
   }
 }
+

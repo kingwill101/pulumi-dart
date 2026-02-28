@@ -831,21 +831,16 @@ class Router extends pulumi.CustomResource {
   /// BGP information specific to this router.
   /// Structure is documented below.
   late final pulumi.Output<RouterBgp?> bgp;
-
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
-
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
-
   /// Indicates if a router is dedicated for use with encrypted VLAN
   /// attachments (interconnectAttachments).
   late final pulumi.Output<bool?> encryptedInterconnectRouter;
-
   /// Keys used for MD5 authentication.
   /// Structure is documented below.
   late final pulumi.Output<RouterMd5AuthenticationKeys?> md5AuthenticationKeys;
-
   /// Name of the resource. The name must be 1-63 characters long, and
   /// comply with RFC1035. Specifically, the name must be 1-63 characters
   /// long and match the regular expression `a-z?`
@@ -853,24 +848,18 @@ class Router extends pulumi.CustomResource {
   /// following characters must be a dash, lowercase letter, or digit,
   /// except the last character, which cannot be a dash.
   late final pulumi.Output<String> name;
-
   /// A URI of an NCC Gateway spoke
   late final pulumi.Output<String?> nccGateway;
-
   /// A reference to the network to which this router belongs.
   late final pulumi.Output<String?> network;
-
   /// Additional params passed with the request, but not persisted as part of resource payload
   /// Structure is documented below.
   late final pulumi.Output<RouterParams?> params;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Region where the router resides.
   late final pulumi.Output<String> region;
-
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
 
@@ -891,10 +880,8 @@ class Router extends pulumi.CustomResource {
     this.bgp = registerOutput<RouterBgp?>('bgp');
     this.creationTimestamp = registerOutput<String>('creationTimestamp');
     this.description = registerOutput<String?>('description');
-    this.encryptedInterconnectRouter =
-        registerOutput<bool?>('encryptedInterconnectRouter');
-    this.md5AuthenticationKeys =
-        registerOutput<RouterMd5AuthenticationKeys?>('md5AuthenticationKeys');
+    this.encryptedInterconnectRouter = registerOutput<bool?>('encryptedInterconnectRouter');
+    this.md5AuthenticationKeys = registerOutput<RouterMd5AuthenticationKeys?>('md5AuthenticationKeys');
     this.name = registerOutput<String>('name');
     this.nccGateway = registerOutput<String?>('nccGateway');
     this.network = registerOutput<String?>('network');

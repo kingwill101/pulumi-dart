@@ -18,7 +18,7 @@ enum MetricDescriptorMetadataLaunchStage {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown MetricDescriptorMetadataLaunchStage value: $value');
+    throw ArgumentError('Unknown MetricDescriptorMetadataLaunchStage value: $value');
   }
 }
+

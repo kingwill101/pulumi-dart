@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DevEnvironmentPersistentStorage {
   /// The size of the persistent storage in gigabytes (specifically GiB). Valid values for storage are based on memory sizes in 16GB increments. Valid values are 16, 32, and 64.
   final int size;
@@ -11,9 +12,9 @@ class DevEnvironmentPersistentStorage {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['size'] = size;
-    return map;
+    return <String, dynamic>{
+      'size': size,
+    };
   }
 
   factory DevEnvironmentPersistentStorage.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class DevEnvironmentPersistentStorage {
     );
   }
 }
+

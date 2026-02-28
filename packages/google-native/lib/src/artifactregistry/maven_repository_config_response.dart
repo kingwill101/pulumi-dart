@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type.
 class MavenRepositoryConfigResponse {
   /// The repository with this flag will allow publishing the same snapshot versions.
   final bool allowSnapshotOverwrites;
-
   /// Version policy defines the versions that the registry will accept.
   final String versionPolicy;
 
@@ -17,10 +17,10 @@ class MavenRepositoryConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allowSnapshotOverwrites'] = allowSnapshotOverwrites;
-    map['versionPolicy'] = versionPolicy;
-    return map;
+    return <String, dynamic>{
+      'allowSnapshotOverwrites': allowSnapshotOverwrites,
+      'versionPolicy': versionPolicy,
+    };
   }
 
   factory MavenRepositoryConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class MavenRepositoryConfigResponse {
     );
   }
 }
+

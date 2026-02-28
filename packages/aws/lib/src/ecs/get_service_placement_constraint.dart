@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetServicePlacementConstraint {
   /// Cluster query language expression
   final String expression;
-
   /// Constraint type
   final String type;
 
@@ -16,10 +16,10 @@ class GetServicePlacementConstraint {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['expression'] = expression;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'expression': expression,
+      'type': type,
+    };
   }
 
   factory GetServicePlacementConstraint.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetServicePlacementConstraint {
     );
   }
 }
+

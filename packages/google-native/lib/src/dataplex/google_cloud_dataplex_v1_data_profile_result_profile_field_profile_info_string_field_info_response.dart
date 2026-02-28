@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The profile information for a string type field.
 class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse {
   /// Average length of non-null values in the scanned data.
   final double averageLength;
-
   /// Maximum length of non-null values in the scanned data.
   final String maxLength;
-
   /// Minimum length of non-null values in the scanned data.
   final String minLength;
 
@@ -22,15 +21,14 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldIn
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['averageLength'] = averageLength;
-    map['maxLength'] = maxLength;
-    map['minLength'] = minLength;
-    return map;
+    return <String, dynamic>{
+      'averageLength': averageLength,
+      'maxLength': maxLength,
+      'minLength': minLength,
+    };
   }
 
-  factory GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse(
       averageLength: map['averageLength'] as double,
       maxLength: map['maxLength'] as String,
@@ -38,3 +36,4 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldIn
     );
   }
 }
+

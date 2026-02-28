@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The PSC configurations on producer side.
 class ProducerPscConfigResponse {
   /// The resource path of a service attachment. Example: projects/{projectNumOrId}/regions/{region}/serviceAttachments/{resourceId}.
@@ -12,9 +13,9 @@ class ProducerPscConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['serviceAttachmentUri'] = serviceAttachmentUri;
-    return map;
+    return <String, dynamic>{
+      'serviceAttachmentUri': serviceAttachmentUri,
+    };
   }
 
   factory ProducerPscConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class ProducerPscConfigResponse {
     );
   }
 }
+

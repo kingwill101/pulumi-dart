@@ -19,16 +19,17 @@ class GetSavedQueryArgs {
     required String savedQueryId,
     required String v1Id,
     required String v1Id1,
-  })  : savedQueryId = pulumi.Input.asInput<String>(savedQueryId),
-        v1Id = pulumi.Input.asInput<String>(v1Id),
-        v1Id1 = pulumi.Input.asInput<String>(v1Id1);
+  }) :
+      savedQueryId = pulumi.Input.asInput<String>(savedQueryId),
+      v1Id = pulumi.Input.asInput<String>(v1Id),
+      v1Id1 = pulumi.Input.asInput<String>(v1Id1);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['savedQueryId'] = savedQueryId;
-    map['v1Id'] = v1Id;
-    map['v1Id1'] = v1Id1;
-    return map;
+    return <String, dynamic>{
+      'savedQueryId': savedQueryId,
+      'v1Id': v1Id,
+      'v1Id1': v1Id1,
+    };
   }
 
   factory GetSavedQueryArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +40,4 @@ class GetSavedQueryArgs {
     );
   }
 }
+

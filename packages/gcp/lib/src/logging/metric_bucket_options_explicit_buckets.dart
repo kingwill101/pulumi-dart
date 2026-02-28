@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MetricBucketOptionsExplicitBuckets {
   /// The values must be monotonically increasing.
   final List<double> bounds;
@@ -11,9 +12,9 @@ class MetricBucketOptionsExplicitBuckets {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bounds'] = bounds;
-    return map;
+    return <String, dynamic>{
+      'bounds': bounds,
+    };
   }
 
   factory MetricBucketOptionsExplicitBuckets.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class MetricBucketOptionsExplicitBuckets {
     );
   }
 }
+

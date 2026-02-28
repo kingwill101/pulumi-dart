@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefaultSupportedIdpConfigArgs {
   /// OAuth client ID
   final pulumi.Input<String> clientId;
-
   /// OAuth client secret
   final pulumi.Input<String> clientSecret;
-
   /// If this IDP allows the user to sign in
   final pulumi.Input<bool>? enabled;
-
   /// ID of the IDP. Possible values include:
   /// * `apple.com`
   /// * `facebook.com`
@@ -28,7 +25,6 @@ class DefaultSupportedIdpConfigArgs {
   /// * `twitter.com`
   /// * `yahoo.com`
   final pulumi.Input<String> idpId;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -45,26 +41,21 @@ class DefaultSupportedIdpConfigArgs {
     bool? enabled,
     required String idpId,
     String? project,
-  })  : clientId = pulumi.Input.asInput<String>(clientId),
-        clientSecret = pulumi.Input.asInput<String>(clientSecret),
-        enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-        idpId = pulumi.Input.asInput<String>(idpId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      clientId = pulumi.Input.asInput<String>(clientId),
+      clientSecret = pulumi.Input.asInput<String>(clientSecret),
+      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
+      idpId = pulumi.Input.asInput<String>(idpId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clientId'] = clientId;
-    map['clientSecret'] = clientSecret;
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    map['idpId'] = idpId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'clientId': clientId,
+      'clientSecret': clientSecret,
+      'enabled': ?enabled,
+      'idpId': idpId,
+      'project': ?project,
+    };
   }
 
   factory DefaultSupportedIdpConfigArgs.fromMap(Map<String, dynamic> map) {
@@ -77,3 +68,4 @@ class DefaultSupportedIdpConfigArgs {
     );
   }
 }
+

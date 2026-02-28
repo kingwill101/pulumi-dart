@@ -6,10 +6,8 @@ import 'google_cloud_dialogflow_v2_intent_message_browse_carousel_card_browse_ca
 class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction {
   /// URL
   final String url;
-
   /// Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.
-  final GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint?
-      urlTypeHint;
+  final GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint? urlTypeHint;
 
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction].
   /// [url] URL
@@ -20,23 +18,17 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIt
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['url'] = url;
-    final urlTypeHintValue = urlTypeHint;
-    if (urlTypeHintValue != null) {
-      map['urlTypeHint'] = urlTypeHintValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'url': url,
+      'urlTypeHint': ?urlTypeHint == null ? null : urlTypeHint!.value,
+    };
   }
 
-  factory GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction(
       url: map['url'] as String,
-      urlTypeHint: map['urlTypeHint'] == null
-          ? null
-          : GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint
-              .fromValue(map['urlTypeHint'] as String),
+      urlTypeHint: map['urlTypeHint'] == null ? null : GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint.fromValue(map['urlTypeHint'] as String),
     );
   }
 }
+

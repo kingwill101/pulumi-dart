@@ -7,7 +7,6 @@ import 'workload_config.dart';
 class ProtectConfig {
   /// WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
   final WorkloadConfig? workloadConfig;
-
   /// Sets which mode to use for Protect workload vulnerability scanning feature.
   final ProtectConfigWorkloadVulnerabilityMode? workloadVulnerabilityMode;
 
@@ -20,28 +19,17 @@ class ProtectConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final workloadConfigValue = workloadConfig;
-    if (workloadConfigValue != null) {
-      map['workloadConfig'] = workloadConfigValue.toMap();
-    }
-    final workloadVulnerabilityModeValue = workloadVulnerabilityMode;
-    if (workloadVulnerabilityModeValue != null) {
-      map['workloadVulnerabilityMode'] = workloadVulnerabilityModeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'workloadConfig': ?workloadConfig == null ? null : workloadConfig!.toMap(),
+      'workloadVulnerabilityMode': ?workloadVulnerabilityMode == null ? null : workloadVulnerabilityMode!.value,
+    };
   }
 
   factory ProtectConfig.fromMap(Map<String, dynamic> map) {
     return ProtectConfig(
-      workloadConfig: map['workloadConfig'] == null
-          ? null
-          : WorkloadConfig.fromMap(
-              (map['workloadConfig'] as Map).cast<String, dynamic>()),
-      workloadVulnerabilityMode: map['workloadVulnerabilityMode'] == null
-          ? null
-          : ProtectConfigWorkloadVulnerabilityMode.fromValue(
-              map['workloadVulnerabilityMode'] as String),
+      workloadConfig: map['workloadConfig'] == null ? null : WorkloadConfig.fromMap((map['workloadConfig'] as Map).cast<String, dynamic>()),
+      workloadVulnerabilityMode: map['workloadVulnerabilityMode'] == null ? null : ProtectConfigWorkloadVulnerabilityMode.fromValue(map['workloadVulnerabilityMode'] as String),
     );
   }
 }
+

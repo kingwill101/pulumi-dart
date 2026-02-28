@@ -1,21 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RoutingProfileQueueConfig {
   /// Specifies the channels agents can handle in the Contact Control Panel (CCP) for this routing profile. Valid values are `VOICE`, `CHAT`, `TASK`.
   final String channel;
-
   /// Specifies the delay, in seconds, that a contact should be in the queue before they are routed to an available agent
   final int delay;
-
   /// Specifies the order in which contacts are to be handled for the queue.
   final int priority;
-
   /// ARN for the queue.
   final String? queueArn;
-
   /// Specifies the identifier for the queue.
   final String queueId;
-
   /// Name for the queue.
   final String? queueName;
 
@@ -36,20 +32,14 @@ class RoutingProfileQueueConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['channel'] = channel;
-    map['delay'] = delay;
-    map['priority'] = priority;
-    final queueArnValue = queueArn;
-    if (queueArnValue != null) {
-      map['queueArn'] = queueArnValue;
-    }
-    map['queueId'] = queueId;
-    final queueNameValue = queueName;
-    if (queueNameValue != null) {
-      map['queueName'] = queueNameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'channel': channel,
+      'delay': delay,
+      'priority': priority,
+      'queueArn': ?queueArn,
+      'queueId': queueId,
+      'queueName': ?queueName,
+    };
   }
 
   factory RoutingProfileQueueConfig.fromMap(Map<String, dynamic> map) {
@@ -63,3 +53,4 @@ class RoutingProfileQueueConfig {
     );
   }
 }
+

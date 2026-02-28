@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TopicRuleErrorActionS3 {
   /// The Amazon S3 bucket name.
   final String bucketName;
-
   /// The Amazon S3 canned ACL that controls access to the object identified by the object key. [Valid values](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl).
   final String? cannedAcl;
-
   /// The object key.
   final String key;
-
   /// The ARN of the IAM role that grants access.
   final String roleArn;
 
@@ -26,15 +24,12 @@ class TopicRuleErrorActionS3 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucketName'] = bucketName;
-    final cannedAclValue = cannedAcl;
-    if (cannedAclValue != null) {
-      map['cannedAcl'] = cannedAclValue;
-    }
-    map['key'] = key;
-    map['roleArn'] = roleArn;
-    return map;
+    return <String, dynamic>{
+      'bucketName': bucketName,
+      'cannedAcl': ?cannedAcl,
+      'key': key,
+      'roleArn': roleArn,
+    };
   }
 
   factory TopicRuleErrorActionS3.fromMap(Map<String, dynamic> map) {
@@ -46,3 +41,4 @@ class TopicRuleErrorActionS3 {
     );
   }
 }
+

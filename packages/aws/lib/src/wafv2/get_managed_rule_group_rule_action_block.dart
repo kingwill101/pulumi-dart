@@ -13,20 +13,15 @@ class GetManagedRuleGroupRuleActionBlock {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['customResponses'] = pulumi.Input.encodeList<
-        GetManagedRuleGroupRuleActionBlockCustomResponse,
-        Map<String, dynamic>>(customResponses, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'customResponses': pulumi.Input.encodeList<GetManagedRuleGroupRuleActionBlockCustomResponse, Map<String, dynamic>>(customResponses, (value) => value.toMap()),
+    };
   }
 
   factory GetManagedRuleGroupRuleActionBlock.fromMap(Map<String, dynamic> map) {
     return GetManagedRuleGroupRuleActionBlock(
-      customResponses: pulumi.Input.decodeList<
-              GetManagedRuleGroupRuleActionBlockCustomResponse>(
-          map['customResponses'],
-          (value) => GetManagedRuleGroupRuleActionBlockCustomResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      customResponses: pulumi.Input.decodeList<GetManagedRuleGroupRuleActionBlockCustomResponse>(map['customResponses'], (value) => GetManagedRuleGroupRuleActionBlockCustomResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

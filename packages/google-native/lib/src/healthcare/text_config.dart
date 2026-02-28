@@ -6,10 +6,8 @@ import 'info_type_transformation.dart';
 class TextConfig {
   /// Transformations to apply to the detected data, overridden by `exclude_info_types`.
   final List<InfoTypeTransformation>? additionalTransformations;
-
   /// InfoTypes to skip transforming, overriding `additional_transformations`.
   final List<String>? excludeInfoTypes;
-
   /// The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
   final List<InfoTypeTransformation>? transformations;
 
@@ -24,43 +22,19 @@ class TextConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final additionalTransformationsValue = additionalTransformations;
-    if (additionalTransformationsValue != null) {
-      map['additionalTransformations'] =
-          pulumi.Input.encodeList<InfoTypeTransformation, Map<String, dynamic>>(
-              additionalTransformationsValue, (value) => value.toMap());
-    }
-    final excludeInfoTypesValue = excludeInfoTypes;
-    if (excludeInfoTypesValue != null) {
-      map['excludeInfoTypes'] = excludeInfoTypesValue;
-    }
-    final transformationsValue = transformations;
-    if (transformationsValue != null) {
-      map['transformations'] =
-          pulumi.Input.encodeList<InfoTypeTransformation, Map<String, dynamic>>(
-              transformationsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'additionalTransformations': ?additionalTransformations == null ? null : pulumi.Input.encodeList<InfoTypeTransformation, Map<String, dynamic>>(additionalTransformations!, (value) => value.toMap()),
+      'excludeInfoTypes': ?excludeInfoTypes,
+      'transformations': ?transformations == null ? null : pulumi.Input.encodeList<InfoTypeTransformation, Map<String, dynamic>>(transformations!, (value) => value.toMap()),
+    };
   }
 
   factory TextConfig.fromMap(Map<String, dynamic> map) {
     return TextConfig(
-      additionalTransformations: map['additionalTransformations'] == null
-          ? null
-          : pulumi.Input.decodeList<InfoTypeTransformation>(
-              map['additionalTransformations'],
-              (value) => InfoTypeTransformation.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      excludeInfoTypes: map['excludeInfoTypes'] == null
-          ? null
-          : (map['excludeInfoTypes'] as List).cast<String>(),
-      transformations: map['transformations'] == null
-          ? null
-          : pulumi.Input.decodeList<InfoTypeTransformation>(
-              map['transformations'],
-              (value) => InfoTypeTransformation.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      additionalTransformations: map['additionalTransformations'] == null ? null : pulumi.Input.decodeList<InfoTypeTransformation>(map['additionalTransformations'], (value) => InfoTypeTransformation.fromMap((value as Map).cast<String, dynamic>())),
+      excludeInfoTypes: map['excludeInfoTypes'] == null ? null : (map['excludeInfoTypes'] as List).cast<String>(),
+      transformations: map['transformations'] == null ? null : pulumi.Input.decodeList<InfoTypeTransformation>(map['transformations'], (value) => InfoTypeTransformation.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -6,16 +6,12 @@ import 'group_args.dart';
 class Group extends pulumi.CustomResource {
   /// A user-assigned name for this group, used only for display purposes.
   late final pulumi.Output<String> displayName;
-
   /// The filter used to determine which monitored resources belong to this group.
   late final pulumi.Output<String> filter;
-
   /// If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.
   late final pulumi.Output<bool> isCluster;
-
   /// The name of this group. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that is generated automatically.
   late final pulumi.Output<String> name;
-
   /// The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
   late final pulumi.Output<String> parentName;
   late final pulumi.Output<String> project;

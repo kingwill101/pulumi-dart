@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PlanTriggerCondition {
   /// Name of the associated alarm.
   final String associatedAlarmName;
-
   /// Condition to check. Valid values: `red`, `green`.
   final String condition;
 
@@ -16,10 +16,10 @@ class PlanTriggerCondition {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['associatedAlarmName'] = associatedAlarmName;
-    map['condition'] = condition;
-    return map;
+    return <String, dynamic>{
+      'associatedAlarmName': associatedAlarmName,
+      'condition': condition,
+    };
   }
 
   factory PlanTriggerCondition.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class PlanTriggerCondition {
     );
   }
 }
+

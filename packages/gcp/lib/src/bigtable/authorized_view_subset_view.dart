@@ -8,7 +8,6 @@ class AuthorizedViewSubsetView {
   ///
   /// -----
   final List<AuthorizedViewSubsetViewFamilySubset>? familySubsets;
-
   /// A list of Base64-encoded row prefixes to be included in the authorized view. To provide access to all rows, include the empty string as a prefix ("").
   final List<String>? rowPrefixes;
 
@@ -21,31 +20,17 @@ class AuthorizedViewSubsetView {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final familySubsetsValue = familySubsets;
-    if (familySubsetsValue != null) {
-      map['familySubsets'] = pulumi.Input.encodeList<
-          AuthorizedViewSubsetViewFamilySubset,
-          Map<String, dynamic>>(familySubsetsValue, (value) => value.toMap());
-    }
-    final rowPrefixesValue = rowPrefixes;
-    if (rowPrefixesValue != null) {
-      map['rowPrefixes'] = rowPrefixesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'familySubsets': ?familySubsets == null ? null : pulumi.Input.encodeList<AuthorizedViewSubsetViewFamilySubset, Map<String, dynamic>>(familySubsets!, (value) => value.toMap()),
+      'rowPrefixes': ?rowPrefixes,
+    };
   }
 
   factory AuthorizedViewSubsetView.fromMap(Map<String, dynamic> map) {
     return AuthorizedViewSubsetView(
-      familySubsets: map['familySubsets'] == null
-          ? null
-          : pulumi.Input.decodeList<AuthorizedViewSubsetViewFamilySubset>(
-              map['familySubsets'],
-              (value) => AuthorizedViewSubsetViewFamilySubset.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      rowPrefixes: map['rowPrefixes'] == null
-          ? null
-          : (map['rowPrefixes'] as List).cast<String>(),
+      familySubsets: map['familySubsets'] == null ? null : pulumi.Input.decodeList<AuthorizedViewSubsetViewFamilySubset>(map['familySubsets'], (value) => AuthorizedViewSubsetViewFamilySubset.fromMap((value as Map).cast<String, dynamic>())),
+      rowPrefixes: map['rowPrefixes'] == null ? null : (map['rowPrefixes'] as List).cast<String>(),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetConnectionVgwTelemetry {
   final int acceptedRouteCount;
   final String lastStatusChange;
@@ -22,13 +23,13 @@ class GetConnectionVgwTelemetry {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['acceptedRouteCount'] = acceptedRouteCount;
-    map['lastStatusChange'] = lastStatusChange;
-    map['outsideIpAddress'] = outsideIpAddress;
-    map['status'] = status;
-    map['statusMessage'] = statusMessage;
-    return map;
+    return <String, dynamic>{
+      'acceptedRouteCount': acceptedRouteCount,
+      'lastStatusChange': lastStatusChange,
+      'outsideIpAddress': outsideIpAddress,
+      'status': status,
+      'statusMessage': statusMessage,
+    };
   }
 
   factory GetConnectionVgwTelemetry.fromMap(Map<String, dynamic> map) {
@@ -41,3 +42,4 @@ class GetConnectionVgwTelemetry {
     );
   }
 }
+

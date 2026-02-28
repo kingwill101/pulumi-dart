@@ -14,18 +14,15 @@ class GetInstanceStateInfo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['updateInfos'] = pulumi.Input.encodeList<GetInstanceStateInfoUpdateInfo,
-        Map<String, dynamic>>(updateInfos, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'updateInfos': pulumi.Input.encodeList<GetInstanceStateInfoUpdateInfo, Map<String, dynamic>>(updateInfos, (value) => value.toMap()),
+    };
   }
 
   factory GetInstanceStateInfo.fromMap(Map<String, dynamic> map) {
     return GetInstanceStateInfo(
-      updateInfos: pulumi.Input.decodeList<GetInstanceStateInfoUpdateInfo>(
-          map['updateInfos'],
-          (value) => GetInstanceStateInfoUpdateInfo.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      updateInfos: pulumi.Input.decodeList<GetInstanceStateInfoUpdateInfo>(map['updateInfos'], (value) => GetInstanceStateInfoUpdateInfo.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

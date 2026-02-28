@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetGroupTransitiveMembershipsMembershipRole {
   /// The name of the TransitiveMembershipRole. One of OWNER, MANAGER, MEMBER.
   final String role;
@@ -11,15 +12,15 @@ class GetGroupTransitiveMembershipsMembershipRole {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['role'] = role;
-    return map;
+    return <String, dynamic>{
+      'role': role,
+    };
   }
 
-  factory GetGroupTransitiveMembershipsMembershipRole.fromMap(
-      Map<String, dynamic> map) {
+  factory GetGroupTransitiveMembershipsMembershipRole.fromMap(Map<String, dynamic> map) {
     return GetGroupTransitiveMembershipsMembershipRole(
       role: map['role'] as String,
     );
   }
 }
+

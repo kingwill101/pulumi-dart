@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTableWarmThroughput {
   final int readUnitsPerSecond;
   final int writeUnitsPerSecond;
@@ -13,10 +14,10 @@ class GetTableWarmThroughput {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['readUnitsPerSecond'] = readUnitsPerSecond;
-    map['writeUnitsPerSecond'] = writeUnitsPerSecond;
-    return map;
+    return <String, dynamic>{
+      'readUnitsPerSecond': readUnitsPerSecond,
+      'writeUnitsPerSecond': writeUnitsPerSecond,
+    };
   }
 
   factory GetTableWarmThroughput.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class GetTableWarmThroughput {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A TextAnnotation specifies a text range that includes sensitive information.
 class SensitiveTextAnnotation {
   /// Maps from a resource slice. For example, FHIR resource field path to a set of sensitive text findings. For example, Appointment.Narrative text1 --> {findings_1, findings_2, findings_3}
@@ -12,19 +13,15 @@ class SensitiveTextAnnotation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final detailsValue = details;
-    if (detailsValue != null) {
-      map['details'] = detailsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'details': ?details,
+    };
   }
 
   factory SensitiveTextAnnotation.fromMap(Map<String, dynamic> map) {
     return SensitiveTextAnnotation(
-      details: map['details'] == null
-          ? null
-          : (map['details'] as Map).cast<String, String>(),
+      details: map['details'] == null ? null : (map['details'] as Map).cast<String, String>(),
     );
   }
 }
+

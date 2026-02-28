@@ -1,31 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// For display only. Metadata associated with a Compute Engine VPN tunnel.
 class VpnTunnelInfoResponse {
   /// Name of a VPN tunnel.
   final String displayName;
-
   /// URI of a Compute Engine network where the VPN tunnel is configured.
   final String networkUri;
-
   /// Name of a Google Cloud region where this VPN tunnel is configured.
   final String region;
-
   /// URI of a VPN gateway at remote end of the tunnel.
   final String remoteGateway;
-
   /// Remote VPN gateway's IP address.
   final String remoteGatewayIp;
-
   /// Type of the routing policy.
   final String routingType;
-
   /// URI of the VPN gateway at local end of the tunnel.
   final String sourceGateway;
-
   /// Local VPN gateway's IP address.
   final String sourceGatewayIp;
-
   /// URI of a VPN tunnel.
   final String uri;
 
@@ -52,17 +45,17 @@ class VpnTunnelInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['displayName'] = displayName;
-    map['networkUri'] = networkUri;
-    map['region'] = region;
-    map['remoteGateway'] = remoteGateway;
-    map['remoteGatewayIp'] = remoteGatewayIp;
-    map['routingType'] = routingType;
-    map['sourceGateway'] = sourceGateway;
-    map['sourceGatewayIp'] = sourceGatewayIp;
-    map['uri'] = uri;
-    return map;
+    return <String, dynamic>{
+      'displayName': displayName,
+      'networkUri': networkUri,
+      'region': region,
+      'remoteGateway': remoteGateway,
+      'remoteGatewayIp': remoteGatewayIp,
+      'routingType': routingType,
+      'sourceGateway': sourceGateway,
+      'sourceGatewayIp': sourceGatewayIp,
+      'uri': uri,
+    };
   }
 
   factory VpnTunnelInfoResponse.fromMap(Map<String, dynamic> map) {
@@ -79,3 +72,4 @@ class VpnTunnelInfoResponse {
     );
   }
 }
+

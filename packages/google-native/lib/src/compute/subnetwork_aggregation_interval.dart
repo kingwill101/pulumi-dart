@@ -19,3 +19,4 @@ enum SubnetworkAggregationInterval {
     throw ArgumentError('Unknown SubnetworkAggregationInterval value: $value');
   }
 }
+

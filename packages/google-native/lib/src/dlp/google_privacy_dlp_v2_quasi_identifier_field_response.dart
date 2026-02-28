@@ -6,7 +6,6 @@ import 'google_privacy_dlp_v2_field_id_response.dart';
 class GooglePrivacyDlpV2QuasiIdentifierFieldResponse {
   /// A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table that contains statistical information on the possible values of this column (below).
   final String customTag;
-
   /// Identifies the column.
   final GooglePrivacyDlpV2FieldIdResponse field;
 
@@ -19,18 +18,17 @@ class GooglePrivacyDlpV2QuasiIdentifierFieldResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['customTag'] = customTag;
-    map['field'] = field.toMap();
-    return map;
+    return <String, dynamic>{
+      'customTag': customTag,
+      'field': field.toMap(),
+    };
   }
 
-  factory GooglePrivacyDlpV2QuasiIdentifierFieldResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2QuasiIdentifierFieldResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2QuasiIdentifierFieldResponse(
       customTag: map['customTag'] as String,
-      field: GooglePrivacyDlpV2FieldIdResponse.fromMap(
-          (map['field'] as Map).cast<String, dynamic>()),
+      field: GooglePrivacyDlpV2FieldIdResponse.fromMap((map['field'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

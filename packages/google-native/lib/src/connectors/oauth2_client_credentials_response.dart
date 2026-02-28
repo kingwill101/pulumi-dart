@@ -6,7 +6,6 @@ import 'secret_response.dart';
 class Oauth2ClientCredentialsResponse {
   /// The client identifier.
   final String clientId;
-
   /// Secret version reference containing the client secret.
   final SecretResponse clientSecret;
 
@@ -19,17 +18,17 @@ class Oauth2ClientCredentialsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clientId'] = clientId;
-    map['clientSecret'] = clientSecret.toMap();
-    return map;
+    return <String, dynamic>{
+      'clientId': clientId,
+      'clientSecret': clientSecret.toMap(),
+    };
   }
 
   factory Oauth2ClientCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return Oauth2ClientCredentialsResponse(
       clientId: map['clientId'] as String,
-      clientSecret: SecretResponse.fromMap(
-          (map['clientSecret'] as Map).cast<String, dynamic>()),
+      clientSecret: SecretResponse.fromMap((map['clientSecret'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

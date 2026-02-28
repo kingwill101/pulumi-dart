@@ -14,20 +14,15 @@ class HttpConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final httpEnabledStateValue = httpEnabledState;
-    if (httpEnabledStateValue != null) {
-      map['httpEnabledState'] = httpEnabledStateValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'httpEnabledState': ?httpEnabledState == null ? null : httpEnabledState!.value,
+    };
   }
 
   factory HttpConfig.fromMap(Map<String, dynamic> map) {
     return HttpConfig(
-      httpEnabledState: map['httpEnabledState'] == null
-          ? null
-          : HttpConfigHttpEnabledState.fromValue(
-              map['httpEnabledState'] as String),
+      httpEnabledState: map['httpEnabledState'] == null ? null : HttpConfigHttpEnabledState.fromValue(map['httpEnabledState'] as String),
     );
   }
 }
+

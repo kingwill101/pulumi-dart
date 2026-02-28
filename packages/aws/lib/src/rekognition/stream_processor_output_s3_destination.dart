@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class StreamProcessorOutputS3Destination {
   /// Name of the Amazon S3 bucket you want to associate with the streaming video project.
   final String? bucket;
-
   /// The prefix value of the location within the bucket that you want the information to be published to.
   final String? keyPrefix;
 
@@ -16,16 +16,10 @@ class StreamProcessorOutputS3Destination {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final bucketValue = bucket;
-    if (bucketValue != null) {
-      map['bucket'] = bucketValue;
-    }
-    final keyPrefixValue = keyPrefix;
-    if (keyPrefixValue != null) {
-      map['keyPrefix'] = keyPrefixValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'bucket': ?bucket,
+      'keyPrefix': ?keyPrefix,
+    };
   }
 
   factory StreamProcessorOutputS3Destination.fromMap(Map<String, dynamic> map) {
@@ -35,3 +29,4 @@ class StreamProcessorOutputS3Destination {
     );
   }
 }
+

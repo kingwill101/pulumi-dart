@@ -14,16 +14,15 @@ class QueuedResourceStatusFailedDataResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['error'] = error.toMap();
-    return map;
+    return <String, dynamic>{
+      'error': error.toMap(),
+    };
   }
 
-  factory QueuedResourceStatusFailedDataResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory QueuedResourceStatusFailedDataResponse.fromMap(Map<String, dynamic> map) {
     return QueuedResourceStatusFailedDataResponse(
-      error: QueuedResourceStatusFailedDataErrorResponse.fromMap(
-          (map['error'] as Map).cast<String, dynamic>()),
+      error: QueuedResourceStatusFailedDataErrorResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

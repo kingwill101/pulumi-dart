@@ -16,7 +16,6 @@ class EntryGcsFilesetSpec {
   /// * gs://bucket_name/a/*/b: matches all files in bucket_name that match a/*/b pattern, such as a/c/b, a/d/b
   /// * gs://another_bucket/a.txt: matches gs://another_bucket/a.txt
   final List<String> filePatterns;
-
   /// (Output)
   /// Sample files contained in this fileset, not all files contained in this fileset are represented here.
   /// Structure is documented below.
@@ -34,26 +33,17 @@ class EntryGcsFilesetSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['filePatterns'] = filePatterns;
-    final sampleGcsFileSpecsValue = sampleGcsFileSpecs;
-    if (sampleGcsFileSpecsValue != null) {
-      map['sampleGcsFileSpecs'] = pulumi.Input.encodeList<
-              EntryGcsFilesetSpecSampleGcsFileSpec, Map<String, dynamic>>(
-          sampleGcsFileSpecsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'filePatterns': filePatterns,
+      'sampleGcsFileSpecs': ?sampleGcsFileSpecs == null ? null : pulumi.Input.encodeList<EntryGcsFilesetSpecSampleGcsFileSpec, Map<String, dynamic>>(sampleGcsFileSpecs!, (value) => value.toMap()),
+    };
   }
 
   factory EntryGcsFilesetSpec.fromMap(Map<String, dynamic> map) {
     return EntryGcsFilesetSpec(
       filePatterns: (map['filePatterns'] as List).cast<String>(),
-      sampleGcsFileSpecs: map['sampleGcsFileSpecs'] == null
-          ? null
-          : pulumi.Input.decodeList<EntryGcsFilesetSpecSampleGcsFileSpec>(
-              map['sampleGcsFileSpecs'],
-              (value) => EntryGcsFilesetSpecSampleGcsFileSpec.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      sampleGcsFileSpecs: map['sampleGcsFileSpecs'] == null ? null : pulumi.Input.decodeList<EntryGcsFilesetSpecSampleGcsFileSpec>(map['sampleGcsFileSpecs'], (value) => EntryGcsFilesetSpecSampleGcsFileSpec.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

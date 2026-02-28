@@ -11,15 +11,13 @@ enum GlobalNetworkEndpointGroupNetworkEndpointTypeComputeBeta {
   const GlobalNetworkEndpointGroupNetworkEndpointTypeComputeBeta(this.value);
   final String value;
 
-  static GlobalNetworkEndpointGroupNetworkEndpointTypeComputeBeta fromValue(
-      String value) {
-    for (final item
-        in GlobalNetworkEndpointGroupNetworkEndpointTypeComputeBeta.values) {
+  static GlobalNetworkEndpointGroupNetworkEndpointTypeComputeBeta fromValue(String value) {
+    for (final item in GlobalNetworkEndpointGroupNetworkEndpointTypeComputeBeta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GlobalNetworkEndpointGroupNetworkEndpointTypeComputeBeta value: $value');
+    throw ArgumentError('Unknown GlobalNetworkEndpointGroupNetworkEndpointTypeComputeBeta value: $value');
   }
 }
+

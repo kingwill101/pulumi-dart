@@ -7,14 +7,12 @@ import 'get_instance_persistence_config_rdb_config.dart';
 class GetInstancePersistenceConfig {
   /// Configuration for AOF based persistence.
   final List<GetInstancePersistenceConfigAofConfig> aofConfigs;
-
   /// Optional. Current persistence mode.
   /// Possible values:
   /// DISABLED
   /// RDB
   /// AOF Possible values: ["DISABLED", "RDB", "AOF"]
   final String mode;
-
   /// Configuration for RDB based persistence.
   final List<GetInstancePersistenceConfigRdbConfig> rdbConfigs;
 
@@ -29,30 +27,19 @@ class GetInstancePersistenceConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['aofConfigs'] = pulumi.Input.encodeList<
-        GetInstancePersistenceConfigAofConfig,
-        Map<String, dynamic>>(aofConfigs, (value) => value.toMap());
-    map['mode'] = mode;
-    map['rdbConfigs'] = pulumi.Input.encodeList<
-        GetInstancePersistenceConfigRdbConfig,
-        Map<String, dynamic>>(rdbConfigs, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'aofConfigs': pulumi.Input.encodeList<GetInstancePersistenceConfigAofConfig, Map<String, dynamic>>(aofConfigs, (value) => value.toMap()),
+      'mode': mode,
+      'rdbConfigs': pulumi.Input.encodeList<GetInstancePersistenceConfigRdbConfig, Map<String, dynamic>>(rdbConfigs, (value) => value.toMap()),
+    };
   }
 
   factory GetInstancePersistenceConfig.fromMap(Map<String, dynamic> map) {
     return GetInstancePersistenceConfig(
-      aofConfigs:
-          pulumi.Input.decodeList<GetInstancePersistenceConfigAofConfig>(
-              map['aofConfigs'],
-              (value) => GetInstancePersistenceConfigAofConfig.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      aofConfigs: pulumi.Input.decodeList<GetInstancePersistenceConfigAofConfig>(map['aofConfigs'], (value) => GetInstancePersistenceConfigAofConfig.fromMap((value as Map).cast<String, dynamic>())),
       mode: map['mode'] as String,
-      rdbConfigs:
-          pulumi.Input.decodeList<GetInstancePersistenceConfigRdbConfig>(
-              map['rdbConfigs'],
-              (value) => GetInstancePersistenceConfigRdbConfig.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      rdbConfigs: pulumi.Input.decodeList<GetInstancePersistenceConfigRdbConfig>(map['rdbConfigs'], (value) => GetInstancePersistenceConfigRdbConfig.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

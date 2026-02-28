@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppVersionSnapshotToolOpenApiToolApiAuthenticationApiKeyConfig {
   /// (Output)
   /// The name of the SecretManager secret version resource storing the API key.
@@ -8,12 +9,10 @@ class AppVersionSnapshotToolOpenApiToolApiAuthenticationApiKeyConfig {
   /// service agent
   /// `service-@gcp-sa-ces.iam.gserviceaccount.com`.
   final String? apiKeySecretVersion;
-
   /// (Output)
   /// The parameter name or the header name of the API key.
   /// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
   final String? keyName;
-
   /// (Output)
   /// Key location in the request.
   /// Possible values:
@@ -32,32 +31,19 @@ class AppVersionSnapshotToolOpenApiToolApiAuthenticationApiKeyConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final apiKeySecretVersionValue = apiKeySecretVersion;
-    if (apiKeySecretVersionValue != null) {
-      map['apiKeySecretVersion'] = apiKeySecretVersionValue;
-    }
-    final keyNameValue = keyName;
-    if (keyNameValue != null) {
-      map['keyName'] = keyNameValue;
-    }
-    final requestLocationValue = requestLocation;
-    if (requestLocationValue != null) {
-      map['requestLocation'] = requestLocationValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'apiKeySecretVersion': ?apiKeySecretVersion,
+      'keyName': ?keyName,
+      'requestLocation': ?requestLocation,
+    };
   }
 
-  factory AppVersionSnapshotToolOpenApiToolApiAuthenticationApiKeyConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory AppVersionSnapshotToolOpenApiToolApiAuthenticationApiKeyConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolOpenApiToolApiAuthenticationApiKeyConfig(
-      apiKeySecretVersion: map['apiKeySecretVersion'] == null
-          ? null
-          : map['apiKeySecretVersion'] as String,
+      apiKeySecretVersion: map['apiKeySecretVersion'] == null ? null : map['apiKeySecretVersion'] as String,
       keyName: map['keyName'] == null ? null : map['keyName'] as String,
-      requestLocation: map['requestLocation'] == null
-          ? null
-          : map['requestLocation'] as String,
+      requestLocation: map['requestLocation'] == null ? null : map['requestLocation'] as String,
     );
   }
 }
+

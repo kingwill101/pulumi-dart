@@ -14,22 +14,15 @@ class ReplicationConfigurationReplicationConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['rules'] = pulumi.Input.encodeList<
-        ReplicationConfigurationReplicationConfigurationRule,
-        Map<String, dynamic>>(rules, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'rules': pulumi.Input.encodeList<ReplicationConfigurationReplicationConfigurationRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
+    };
   }
 
-  factory ReplicationConfigurationReplicationConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory ReplicationConfigurationReplicationConfiguration.fromMap(Map<String, dynamic> map) {
     return ReplicationConfigurationReplicationConfiguration(
-      rules: pulumi.Input.decodeList<
-              ReplicationConfigurationReplicationConfigurationRule>(
-          map['rules'],
-          (value) =>
-              ReplicationConfigurationReplicationConfigurationRule.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      rules: pulumi.Input.decodeList<ReplicationConfigurationReplicationConfigurationRule>(map['rules'], (value) => ReplicationConfigurationReplicationConfigurationRule.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

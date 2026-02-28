@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainNameApiAssociationArgs {
   /// API ID.
   final pulumi.Input<String> apiId;
-
   /// Appsync domain name.
   final pulumi.Input<String> domainName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -24,19 +22,17 @@ class DomainNameApiAssociationArgs {
     required String apiId,
     required String domainName,
     String? region,
-  })  : apiId = pulumi.Input.asInput<String>(apiId),
-        domainName = pulumi.Input.asInput<String>(domainName),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      apiId = pulumi.Input.asInput<String>(apiId),
+      domainName = pulumi.Input.asInput<String>(domainName),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['apiId'] = apiId;
-    map['domainName'] = domainName;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'apiId': apiId,
+      'domainName': domainName,
+      'region': ?region,
+    };
   }
 
   factory DomainNameApiAssociationArgs.fromMap(Map<String, dynamic> map) {
@@ -47,3 +43,4 @@ class DomainNameApiAssociationArgs {
     );
   }
 }
+

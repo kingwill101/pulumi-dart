@@ -6,7 +6,6 @@ import 'time_partitioning_type.dart';
 class TimePartitioning {
   /// Number of milliseconds for which to keep the storage for a partition.
   final String? expirationMs;
-
   /// Type of partitioning.
   final TimePartitioningType? type;
 
@@ -19,25 +18,17 @@ class TimePartitioning {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final expirationMsValue = expirationMs;
-    if (expirationMsValue != null) {
-      map['expirationMs'] = expirationMsValue;
-    }
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'expirationMs': ?expirationMs,
+      'type': ?type == null ? null : type!.value,
+    };
   }
 
   factory TimePartitioning.fromMap(Map<String, dynamic> map) {
     return TimePartitioning(
-      expirationMs:
-          map['expirationMs'] == null ? null : map['expirationMs'] as String,
-      type: map['type'] == null
-          ? null
-          : TimePartitioningType.fromValue(map['type'] as String),
+      expirationMs: map['expirationMs'] == null ? null : map['expirationMs'] as String,
+      type: map['type'] == null ? null : TimePartitioningType.fromValue(map['type'] as String),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AgentKnowledgeBaseKnowledgeBaseConfigurationKendraKnowledgeBaseConfiguration {
   /// ARN of the Amazon Kendra index.
   final String kendraIndexArn;
@@ -11,15 +12,15 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationKendraKnowledgeBaseConfigurati
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kendraIndexArn'] = kendraIndexArn;
-    return map;
+    return <String, dynamic>{
+      'kendraIndexArn': kendraIndexArn,
+    };
   }
 
-  factory AgentKnowledgeBaseKnowledgeBaseConfigurationKendraKnowledgeBaseConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentKnowledgeBaseKnowledgeBaseConfigurationKendraKnowledgeBaseConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationKendraKnowledgeBaseConfiguration(
       kendraIndexArn: map['kendraIndexArn'] as String,
     );
   }
 }
+

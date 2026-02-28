@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PacketMirroringMirroredResourceInfoInstanceInfoResponseComputeBeta {
   /// Unique identifier for the instance; defined by the server.
   final String canonicalUrl;
-
   /// Resource URL to the virtual machine instance which is being mirrored.
   final String url;
 
@@ -16,17 +16,17 @@ class PacketMirroringMirroredResourceInfoInstanceInfoResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['canonicalUrl'] = canonicalUrl;
-    map['url'] = url;
-    return map;
+    return <String, dynamic>{
+      'canonicalUrl': canonicalUrl,
+      'url': url,
+    };
   }
 
-  factory PacketMirroringMirroredResourceInfoInstanceInfoResponseComputeBeta.fromMap(
-      Map<String, dynamic> map) {
+  factory PacketMirroringMirroredResourceInfoInstanceInfoResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return PacketMirroringMirroredResourceInfoInstanceInfoResponseComputeBeta(
       canonicalUrl: map['canonicalUrl'] as String,
       url: map['url'] as String,
     );
   }
 }
+

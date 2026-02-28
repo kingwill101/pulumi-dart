@@ -14,12 +14,13 @@ class GetTagKeysArgs {
   /// [parent] The resource name of the parent organization or project. It can be in format `organizations/{org_id}` or `projects/{project_id_or_number}`.
   GetTagKeysArgs({
     required String parent,
-  }) : parent = pulumi.Input.asInput<String>(parent);
+  }) :
+      parent = pulumi.Input.asInput<String>(parent);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['parent'] = parent;
-    return map;
+    return <String, dynamic>{
+      'parent': parent,
+    };
   }
 
   factory GetTagKeysArgs.fromMap(Map<String, dynamic> map) {
@@ -28,3 +29,4 @@ class GetTagKeysArgs {
     );
   }
 }
+

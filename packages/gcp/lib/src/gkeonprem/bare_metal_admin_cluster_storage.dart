@@ -9,7 +9,6 @@ class BareMetalAdminClusterStorage {
   /// user, which can be done before or after cluster creation.
   /// Structure is documented below.
   final BareMetalAdminClusterStorageLvpNodeMountsConfig lvpNodeMountsConfig;
-
   /// Specifies the config for local PersistentVolumes backed by
   /// subdirectories in a shared filesystem. These subdirectores are
   /// automatically created during cluster creation.
@@ -25,19 +24,17 @@ class BareMetalAdminClusterStorage {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['lvpNodeMountsConfig'] = lvpNodeMountsConfig.toMap();
-    map['lvpShareConfig'] = lvpShareConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'lvpNodeMountsConfig': lvpNodeMountsConfig.toMap(),
+      'lvpShareConfig': lvpShareConfig.toMap(),
+    };
   }
 
   factory BareMetalAdminClusterStorage.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterStorage(
-      lvpNodeMountsConfig:
-          BareMetalAdminClusterStorageLvpNodeMountsConfig.fromMap(
-              (map['lvpNodeMountsConfig'] as Map).cast<String, dynamic>()),
-      lvpShareConfig: BareMetalAdminClusterStorageLvpShareConfig.fromMap(
-          (map['lvpShareConfig'] as Map).cast<String, dynamic>()),
+      lvpNodeMountsConfig: BareMetalAdminClusterStorageLvpNodeMountsConfig.fromMap((map['lvpNodeMountsConfig'] as Map).cast<String, dynamic>()),
+      lvpShareConfig: BareMetalAdminClusterStorageLvpShareConfig.fromMap((map['lvpShareConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

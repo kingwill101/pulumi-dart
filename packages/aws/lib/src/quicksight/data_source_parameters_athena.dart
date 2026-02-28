@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataSourceParametersAthena {
   /// The work-group to which to connect.
   final String? workGroup;
@@ -11,12 +12,9 @@ class DataSourceParametersAthena {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final workGroupValue = workGroup;
-    if (workGroupValue != null) {
-      map['workGroup'] = workGroupValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'workGroup': ?workGroup,
+    };
   }
 
   factory DataSourceParametersAthena.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class DataSourceParametersAthena {
     );
   }
 }
+

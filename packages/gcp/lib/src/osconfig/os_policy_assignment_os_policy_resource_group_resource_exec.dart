@@ -9,7 +9,6 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExec {
   /// indicates a failure running enforce. Structure is
   /// documented below.
   final OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce? enforce;
-
   /// What to run to validate this resource is in the
   /// desired state. An exit code of 100 indicates "in desired state", and exit
   /// code of 101 indicates "not in desired state". Any other exit code indicates
@@ -26,25 +25,17 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enforceValue = enforce;
-    if (enforceValue != null) {
-      map['enforce'] = enforceValue.toMap();
-    }
-    map['validate'] = validate.toMap();
-    return map;
+    return <String, dynamic>{
+      'enforce': ?enforce == null ? null : enforce!.toMap(),
+      'validate': validate.toMap(),
+    };
   }
 
-  factory OsPolicyAssignmentOsPolicyResourceGroupResourceExec.fromMap(
-      Map<String, dynamic> map) {
+  factory OsPolicyAssignmentOsPolicyResourceGroupResourceExec.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourceExec(
-      enforce: map['enforce'] == null
-          ? null
-          : OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce.fromMap(
-              (map['enforce'] as Map).cast<String, dynamic>()),
-      validate:
-          OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate.fromMap(
-              (map['validate'] as Map).cast<String, dynamic>()),
+      enforce: map['enforce'] == null ? null : OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce.fromMap((map['enforce'] as Map).cast<String, dynamic>()),
+      validate: OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate.fromMap((map['validate'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

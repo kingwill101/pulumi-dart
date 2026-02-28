@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Header details for a given header to be added to Endpoint.
 class HeaderResponse {
   /// Key of Header.
   final String key;
-
   /// Value of Header.
   final String value;
 
@@ -17,10 +17,10 @@ class HeaderResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
   factory HeaderResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class HeaderResponse {
     );
   }
 }
+

@@ -14,7 +14,7 @@ enum GoogleCloudMlV1StudyConfigAlgorithm {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GoogleCloudMlV1StudyConfigAlgorithm value: $value');
+    throw ArgumentError('Unknown GoogleCloudMlV1StudyConfigAlgorithm value: $value');
   }
 }
+

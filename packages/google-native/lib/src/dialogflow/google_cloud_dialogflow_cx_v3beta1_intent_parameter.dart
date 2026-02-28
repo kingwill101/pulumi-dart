@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents an intent parameter.
 class GoogleCloudDialogflowCxV3beta1IntentParameter {
   /// The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
   final String entityType;
-
   /// The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
   final String id;
-
   /// Indicates whether the parameter represents a list of values.
   final bool? isList;
-
   /// Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
   final bool? redact;
 
@@ -27,22 +25,15 @@ class GoogleCloudDialogflowCxV3beta1IntentParameter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['entityType'] = entityType;
-    map['id'] = id;
-    final isListValue = isList;
-    if (isListValue != null) {
-      map['isList'] = isListValue;
-    }
-    final redactValue = redact;
-    if (redactValue != null) {
-      map['redact'] = redactValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'entityType': entityType,
+      'id': id,
+      'isList': ?isList,
+      'redact': ?redact,
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1IntentParameter.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1IntentParameter.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1IntentParameter(
       entityType: map['entityType'] as String,
       id: map['id'] as String,
@@ -51,3 +42,4 @@ class GoogleCloudDialogflowCxV3beta1IntentParameter {
     );
   }
 }
+

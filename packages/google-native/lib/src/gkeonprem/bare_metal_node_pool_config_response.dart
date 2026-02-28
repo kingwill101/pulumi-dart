@@ -9,16 +9,12 @@ import 'node_taint_response.dart';
 class BareMetalNodePoolConfigResponse {
   /// The modifiable kubelet configurations for the bare metal machines.
   final BareMetalKubeletConfigResponse kubeletConfig;
-
   /// The labels assigned to nodes of this node pool. An object containing a list of key/value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   final Map<String, String> labels;
-
   /// The list of machine addresses in the bare metal node pool.
   final List<BareMetalNodeConfigResponse> nodeConfigs;
-
   /// Specifies the nodes operating system (default: LINUX).
   final String operatingSystem;
-
   /// The initial taints assigned to nodes of this node pool.
   final List<NodeTaintResponse> taints;
 
@@ -37,32 +33,23 @@ class BareMetalNodePoolConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kubeletConfig'] = kubeletConfig.toMap();
-    map['labels'] = labels;
-    map['nodeConfigs'] = pulumi.Input.encodeList<BareMetalNodeConfigResponse,
-        Map<String, dynamic>>(nodeConfigs, (value) => value.toMap());
-    map['operatingSystem'] = operatingSystem;
-    map['taints'] =
-        pulumi.Input.encodeList<NodeTaintResponse, Map<String, dynamic>>(
-            taints, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'kubeletConfig': kubeletConfig.toMap(),
+      'labels': labels,
+      'nodeConfigs': pulumi.Input.encodeList<BareMetalNodeConfigResponse, Map<String, dynamic>>(nodeConfigs, (value) => value.toMap()),
+      'operatingSystem': operatingSystem,
+      'taints': pulumi.Input.encodeList<NodeTaintResponse, Map<String, dynamic>>(taints, (value) => value.toMap()),
+    };
   }
 
   factory BareMetalNodePoolConfigResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalNodePoolConfigResponse(
-      kubeletConfig: BareMetalKubeletConfigResponse.fromMap(
-          (map['kubeletConfig'] as Map).cast<String, dynamic>()),
+      kubeletConfig: BareMetalKubeletConfigResponse.fromMap((map['kubeletConfig'] as Map).cast<String, dynamic>()),
       labels: (map['labels'] as Map).cast<String, String>(),
-      nodeConfigs: pulumi.Input.decodeList<BareMetalNodeConfigResponse>(
-          map['nodeConfigs'],
-          (value) => BareMetalNodeConfigResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      nodeConfigs: pulumi.Input.decodeList<BareMetalNodeConfigResponse>(map['nodeConfigs'], (value) => BareMetalNodeConfigResponse.fromMap((value as Map).cast<String, dynamic>())),
       operatingSystem: map['operatingSystem'] as String,
-      taints: pulumi.Input.decodeList<NodeTaintResponse>(
-          map['taints'],
-          (value) => NodeTaintResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      taints: pulumi.Input.decodeList<NodeTaintResponse>(map['taints'], (value) => NodeTaintResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

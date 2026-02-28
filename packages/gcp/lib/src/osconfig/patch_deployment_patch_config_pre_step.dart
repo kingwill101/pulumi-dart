@@ -6,13 +6,10 @@ import 'patch_deployment_patch_config_pre_step_windows_exec_step_config.dart';
 class PatchDeploymentPatchConfigPreStep {
   /// The ExecStepConfig for all Linux VMs targeted by the PatchJob.
   /// Structure is documented below.
-  final PatchDeploymentPatchConfigPreStepLinuxExecStepConfig?
-      linuxExecStepConfig;
-
+  final PatchDeploymentPatchConfigPreStepLinuxExecStepConfig? linuxExecStepConfig;
   /// The ExecStepConfig for all Windows VMs targeted by the PatchJob.
   /// Structure is documented below.
-  final PatchDeploymentPatchConfigPreStepWindowsExecStepConfig?
-      windowsExecStepConfig;
+  final PatchDeploymentPatchConfigPreStepWindowsExecStepConfig? windowsExecStepConfig;
 
   /// Creates a new [PatchDeploymentPatchConfigPreStep].
   /// [linuxExecStepConfig] The ExecStepConfig for all Linux VMs targeted by the PatchJob.
@@ -23,28 +20,17 @@ class PatchDeploymentPatchConfigPreStep {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final linuxExecStepConfigValue = linuxExecStepConfig;
-    if (linuxExecStepConfigValue != null) {
-      map['linuxExecStepConfig'] = linuxExecStepConfigValue.toMap();
-    }
-    final windowsExecStepConfigValue = windowsExecStepConfig;
-    if (windowsExecStepConfigValue != null) {
-      map['windowsExecStepConfig'] = windowsExecStepConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'linuxExecStepConfig': ?linuxExecStepConfig == null ? null : linuxExecStepConfig!.toMap(),
+      'windowsExecStepConfig': ?windowsExecStepConfig == null ? null : windowsExecStepConfig!.toMap(),
+    };
   }
 
   factory PatchDeploymentPatchConfigPreStep.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentPatchConfigPreStep(
-      linuxExecStepConfig: map['linuxExecStepConfig'] == null
-          ? null
-          : PatchDeploymentPatchConfigPreStepLinuxExecStepConfig.fromMap(
-              (map['linuxExecStepConfig'] as Map).cast<String, dynamic>()),
-      windowsExecStepConfig: map['windowsExecStepConfig'] == null
-          ? null
-          : PatchDeploymentPatchConfigPreStepWindowsExecStepConfig.fromMap(
-              (map['windowsExecStepConfig'] as Map).cast<String, dynamic>()),
+      linuxExecStepConfig: map['linuxExecStepConfig'] == null ? null : PatchDeploymentPatchConfigPreStepLinuxExecStepConfig.fromMap((map['linuxExecStepConfig'] as Map).cast<String, dynamic>()),
+      windowsExecStepConfig: map['windowsExecStepConfig'] == null ? null : PatchDeploymentPatchConfigPreStepWindowsExecStepConfig.fromMap((map['windowsExecStepConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

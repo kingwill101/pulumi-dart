@@ -12,7 +12,7 @@ enum RouterNatEndpointTypesItemComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown RouterNatEndpointTypesItemComputeBeta value: $value');
+    throw ArgumentError('Unknown RouterNatEndpointTypesItemComputeBeta value: $value');
   }
 }
+

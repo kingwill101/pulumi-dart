@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// TCPSocketAction describes an action based on opening a socket
 class GoogleCloudRunV2TCPSocketAction {
   /// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
@@ -12,12 +13,9 @@ class GoogleCloudRunV2TCPSocketAction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final portValue = port;
-    if (portValue != null) {
-      map['port'] = portValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'port': ?port,
+    };
   }
 
   factory GoogleCloudRunV2TCPSocketAction.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class GoogleCloudRunV2TCPSocketAction {
     );
   }
 }
+

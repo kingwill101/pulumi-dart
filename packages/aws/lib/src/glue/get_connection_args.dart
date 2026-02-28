@@ -10,10 +10,8 @@ class GetConnectionArgs {
   /// Concatenation of the catalog ID and connection name. For example, if your account ID is
   /// `123456789123` and the connection name is `conn` then the ID is `123456789123:conn`.
   final pulumi.Input<String> id;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Tags assigned to the resource
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -25,31 +23,25 @@ class GetConnectionArgs {
     required String id,
     String? region,
     Map<String, String>? tags,
-  })  : id = pulumi.Input.asInput<String>(id),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      id = pulumi.Input.asInput<String>(id),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'region': ?region,
+      'tags': ?tags,
+    };
   }
 
   factory GetConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectionArgs(
       id: map['id'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

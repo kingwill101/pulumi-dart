@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetGatewayRouteSpecHttpRouteActionRewriteHostname {
   final String defaultTargetHostname;
 
@@ -10,15 +11,15 @@ class GetGatewayRouteSpecHttpRouteActionRewriteHostname {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['defaultTargetHostname'] = defaultTargetHostname;
-    return map;
+    return <String, dynamic>{
+      'defaultTargetHostname': defaultTargetHostname,
+    };
   }
 
-  factory GetGatewayRouteSpecHttpRouteActionRewriteHostname.fromMap(
-      Map<String, dynamic> map) {
+  factory GetGatewayRouteSpecHttpRouteActionRewriteHostname.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpecHttpRouteActionRewriteHostname(
       defaultTargetHostname: map['defaultTargetHostname'] as String,
     );
   }
 }
+

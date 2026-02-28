@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// EnterpriseConfig is the cluster enterprise configuration.
 class EnterpriseConfigResponse {
   /// [Output only] cluster_tier specifies the premium tier of the cluster.
@@ -12,9 +13,9 @@ class EnterpriseConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clusterTier'] = clusterTier;
-    return map;
+    return <String, dynamic>{
+      'clusterTier': clusterTier,
+    };
   }
 
   factory EnterpriseConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class EnterpriseConfigResponse {
     );
   }
 }
+

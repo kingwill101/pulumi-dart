@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FieldTtlConfig {
   /// (Output)
   /// The state of TTL (time-to-live) configuration for documents that have this Field set.
@@ -12,12 +13,9 @@ class FieldTtlConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final stateValue = state;
-    if (stateValue != null) {
-      map['state'] = stateValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'state': ?state,
+    };
   }
 
   factory FieldTtlConfig.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class FieldTtlConfig {
     );
   }
 }
+

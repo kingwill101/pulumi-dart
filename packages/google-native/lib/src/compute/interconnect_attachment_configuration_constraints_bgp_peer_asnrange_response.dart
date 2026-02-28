@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse {
   final int max;
   final int min;
@@ -13,17 +14,17 @@ class InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['max'] = max;
-    map['min'] = min;
-    return map;
+    return <String, dynamic>{
+      'max': max,
+      'min': min,
+    };
   }
 
-  factory InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse(
       max: map['max'] as int,
       min: map['min'] as int,
     );
   }
 }
+

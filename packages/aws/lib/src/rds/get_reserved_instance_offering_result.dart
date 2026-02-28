@@ -1,19 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getReservedInstanceOffering.
 class GetReservedInstanceOfferingResult {
   /// Currency code for the reserved DB instance.
   final String currencyCode;
   final String dbInstanceClass;
   final int duration;
-
   /// Fixed price charged for this reserved DB instance.
   final double fixedPrice;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool multiAz;
-
   /// Unique identifier for the reservation.
   final String offeringId;
   final String offeringType;
@@ -45,18 +43,18 @@ class GetReservedInstanceOfferingResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['currencyCode'] = currencyCode;
-    map['dbInstanceClass'] = dbInstanceClass;
-    map['duration'] = duration;
-    map['fixedPrice'] = fixedPrice;
-    map['id'] = id;
-    map['multiAz'] = multiAz;
-    map['offeringId'] = offeringId;
-    map['offeringType'] = offeringType;
-    map['productDescription'] = productDescription;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'currencyCode': currencyCode,
+      'dbInstanceClass': dbInstanceClass,
+      'duration': duration,
+      'fixedPrice': fixedPrice,
+      'id': id,
+      'multiAz': multiAz,
+      'offeringId': offeringId,
+      'offeringType': offeringType,
+      'productDescription': productDescription,
+      'region': region,
+    };
   }
 
   factory GetReservedInstanceOfferingResult.fromMap(Map<String, dynamic> map) {
@@ -74,3 +72,4 @@ class GetReservedInstanceOfferingResult {
     );
   }
 }
+

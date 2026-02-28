@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterMeshCertificates {
   /// Controls the issuance of workload mTLS certificates. It is enabled by default. Workload Identity is required, see workload_config.
   final bool enableCertificates;
@@ -11,9 +12,9 @@ class ClusterMeshCertificates {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enableCertificates'] = enableCertificates;
-    return map;
+    return <String, dynamic>{
+      'enableCertificates': enableCertificates,
+    };
   }
 
   factory ClusterMeshCertificates.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class ClusterMeshCertificates {
     );
   }
 }
+

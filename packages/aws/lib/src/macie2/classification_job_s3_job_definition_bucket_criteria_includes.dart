@@ -14,27 +14,15 @@ class ClassificationJobS3JobDefinitionBucketCriteriaIncludes {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final andsValue = ands;
-    if (andsValue != null) {
-      map['ands'] = pulumi.Input.encodeList<
-          ClassificationJobS3JobDefinitionBucketCriteriaIncludesAnd,
-          Map<String, dynamic>>(andsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'ands': ?ands == null ? null : pulumi.Input.encodeList<ClassificationJobS3JobDefinitionBucketCriteriaIncludesAnd, Map<String, dynamic>>(ands!, (value) => value.toMap()),
+    };
   }
 
-  factory ClassificationJobS3JobDefinitionBucketCriteriaIncludes.fromMap(
-      Map<String, dynamic> map) {
+  factory ClassificationJobS3JobDefinitionBucketCriteriaIncludes.fromMap(Map<String, dynamic> map) {
     return ClassificationJobS3JobDefinitionBucketCriteriaIncludes(
-      ands: map['ands'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  ClassificationJobS3JobDefinitionBucketCriteriaIncludesAnd>(
-              map['ands'],
-              (value) =>
-                  ClassificationJobS3JobDefinitionBucketCriteriaIncludesAnd
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      ands: map['ands'] == null ? null : pulumi.Input.decodeList<ClassificationJobS3JobDefinitionBucketCriteriaIncludesAnd>(map['ands'], (value) => ClassificationJobS3JobDefinitionBucketCriteriaIncludesAnd.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

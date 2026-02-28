@@ -222,17 +222,12 @@ import 'managed_scaling_policy_compute_limit.dart';
 class ManagedScalingPolicy extends pulumi.CustomResource {
   /// ID of the EMR cluster
   late final pulumi.Output<String> clusterId;
-
   /// Configuration block with compute limit settings. Described below.
-  late final pulumi.Output<List<ManagedScalingPolicyComputeLimit>>
-      computeLimits;
-
+  late final pulumi.Output<List<ManagedScalingPolicyComputeLimit>> computeLimits;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Specifies the scaling strategy. When set to `ADVANCED`, the `utilization_performance_index` argument can be used to configure an advanced scaling strategy. An advanced scaling strategy requires Amazon EMR on EC2 version 7.0 or later. Valid values: `ADVANCED`, `DEFAULT`.
   late final pulumi.Output<String?> scalingStrategy;
-
   /// Integer value that represents the advanced scaling strategy. Higher values optimize for performance, while lower values optimize for resource conservation. A value of `50` provides a balance between performance and resource conservation. See [the AWS documentation](https://docs.aws.amazon.com/emr/latest/ManagementGuide/managed-scaling-allocation-strategy-optimized.html#managed-scaling-allocation-strategy-optimized-getting-started) for more details. Required when `scaling_strategy` is set to `ADVANCED`. Valid values: `1`, `25`, `50`, `75`, `100`.
   late final pulumi.Output<int?> utilizationPerformanceIndex;
 
@@ -251,11 +246,9 @@ class ManagedScalingPolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.clusterId = registerOutput<String>('clusterId');
-    this.computeLimits =
-        registerOutput<List<ManagedScalingPolicyComputeLimit>>('computeLimits');
+    this.computeLimits = registerOutput<List<ManagedScalingPolicyComputeLimit>>('computeLimits');
     this.region = registerOutput<String>('region');
     this.scalingStrategy = registerOutput<String?>('scalingStrategy');
-    this.utilizationPerformanceIndex =
-        registerOutput<int?>('utilizationPerformanceIndex');
+    this.utilizationPerformanceIndex = registerOutput<int?>('utilizationPerformanceIndex');
   }
 }

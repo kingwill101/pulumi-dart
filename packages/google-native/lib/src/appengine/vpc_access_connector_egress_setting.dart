@@ -13,7 +13,7 @@ enum VpcAccessConnectorEgressSetting {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown VpcAccessConnectorEgressSetting value: $value');
+    throw ArgumentError('Unknown VpcAccessConnectorEgressSetting value: $value');
   }
 }
+

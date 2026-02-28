@@ -10,10 +10,8 @@ import 'registry_scanning_configuration_rule.dart';
 class RegistryScanningConfigurationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// One or multiple blocks specifying scanning rules to determine which repository filters are used and at what frequency scanning will occur. See below for schema.
   final pulumi.Input<List<RegistryScanningConfigurationRule>>? rules;
-
   /// the scanning type to set for the registry. Can be either `ENHANCED` or `BASIC`.
   final pulumi.Input<String> scanType;
 
@@ -25,40 +23,25 @@ class RegistryScanningConfigurationArgs {
     String? region,
     List<RegistryScanningConfigurationRule>? rules,
     required String scanType,
-  })  : region = pulumi.Input.asOptionalInput<String>(region),
-        rules = pulumi.Input.asOptionalInput<
-            List<RegistryScanningConfigurationRule>>(rules),
-        scanType = pulumi.Input.asInput<String>(scanType);
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      rules = pulumi.Input.asOptionalInput<List<RegistryScanningConfigurationRule>>(rules),
+      scanType = pulumi.Input.asInput<String>(scanType);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final rulesValue = rules;
-    if (rulesValue != null) {
-      map['rules'] = pulumi.Input.mapOptionalInputValue<
-              List<RegistryScanningConfigurationRule>,
-              List<Map<String, dynamic>>>(
-          rulesValue,
-          (value) => pulumi.Input.encodeList<RegistryScanningConfigurationRule,
-              Map<String, dynamic>>(value, (value) => value.toMap()));
-    }
-    map['scanType'] = scanType;
-    return map;
+    return <String, dynamic>{
+      'region': ?region,
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<RegistryScanningConfigurationRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<RegistryScanningConfigurationRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'scanType': scanType,
+    };
   }
 
   factory RegistryScanningConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return RegistryScanningConfigurationArgs(
       region: map['region'] == null ? null : map['region'] as String,
-      rules: map['rules'] == null
-          ? null
-          : pulumi.Input.decodeList<RegistryScanningConfigurationRule>(
-              map['rules'],
-              (value) => RegistryScanningConfigurationRule.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      rules: map['rules'] == null ? null : pulumi.Input.decodeList<RegistryScanningConfigurationRule>(map['rules'], (value) => RegistryScanningConfigurationRule.fromMap((value as Map).cast<String, dynamic>())),
       scanType: map['scanType'] as String,
     );
   }
 }
+

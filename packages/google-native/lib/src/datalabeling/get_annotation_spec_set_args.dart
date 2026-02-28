@@ -16,17 +16,15 @@ class GetAnnotationSpecSetArgs {
   GetAnnotationSpecSetArgs({
     required String annotationSpecSetId,
     String? project,
-  })  : annotationSpecSetId = pulumi.Input.asInput<String>(annotationSpecSetId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      annotationSpecSetId = pulumi.Input.asInput<String>(annotationSpecSetId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['annotationSpecSetId'] = annotationSpecSetId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'annotationSpecSetId': annotationSpecSetId,
+      'project': ?project,
+    };
   }
 
   factory GetAnnotationSpecSetArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetAnnotationSpecSetArgs {
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'trail_advanced_event_selector_field_selector.dart';
 class TrailAdvancedEventSelector {
   /// Specifies the selector statements in an advanced event selector. Fields documented below.
   final List<TrailAdvancedEventSelectorFieldSelector> fieldSelectors;
-
   /// Name of the trail.
   final String? name;
 
@@ -19,25 +18,17 @@ class TrailAdvancedEventSelector {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['fieldSelectors'] = pulumi.Input.encodeList<
-        TrailAdvancedEventSelectorFieldSelector,
-        Map<String, dynamic>>(fieldSelectors, (value) => value.toMap());
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'fieldSelectors': pulumi.Input.encodeList<TrailAdvancedEventSelectorFieldSelector, Map<String, dynamic>>(fieldSelectors, (value) => value.toMap()),
+      'name': ?name,
+    };
   }
 
   factory TrailAdvancedEventSelector.fromMap(Map<String, dynamic> map) {
     return TrailAdvancedEventSelector(
-      fieldSelectors:
-          pulumi.Input.decodeList<TrailAdvancedEventSelectorFieldSelector>(
-              map['fieldSelectors'],
-              (value) => TrailAdvancedEventSelectorFieldSelector.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      fieldSelectors: pulumi.Input.decodeList<TrailAdvancedEventSelectorFieldSelector>(map['fieldSelectors'], (value) => TrailAdvancedEventSelectorFieldSelector.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] == null ? null : map['name'] as String,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DicomStoreStreamConfigBigqueryDestination {
   /// a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
   final String tableUri;
@@ -11,15 +12,15 @@ class DicomStoreStreamConfigBigqueryDestination {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['tableUri'] = tableUri;
-    return map;
+    return <String, dynamic>{
+      'tableUri': tableUri,
+    };
   }
 
-  factory DicomStoreStreamConfigBigqueryDestination.fromMap(
-      Map<String, dynamic> map) {
+  factory DicomStoreStreamConfigBigqueryDestination.fromMap(Map<String, dynamic> map) {
     return DicomStoreStreamConfigBigqueryDestination(
       tableUri: map['tableUri'] as String,
     );
   }
 }
+

@@ -15,24 +15,15 @@ class GoogleCloudApigeeV1ProfileConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final categoriesValue = categories;
-    if (categoriesValue != null) {
-      map['categories'] = pulumi.Input.encodeList<
-          GoogleCloudApigeeV1ProfileConfigCategory,
-          Map<String, dynamic>>(categoriesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'categories': ?categories == null ? null : pulumi.Input.encodeList<GoogleCloudApigeeV1ProfileConfigCategory, Map<String, dynamic>>(categories!, (value) => value.toMap()),
+    };
   }
 
   factory GoogleCloudApigeeV1ProfileConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1ProfileConfig(
-      categories: map['categories'] == null
-          ? null
-          : pulumi.Input.decodeList<GoogleCloudApigeeV1ProfileConfigCategory>(
-              map['categories'],
-              (value) => GoogleCloudApigeeV1ProfileConfigCategory.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      categories: map['categories'] == null ? null : pulumi.Input.decodeList<GoogleCloudApigeeV1ProfileConfigCategory>(map['categories'], (value) => GoogleCloudApigeeV1ProfileConfigCategory.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

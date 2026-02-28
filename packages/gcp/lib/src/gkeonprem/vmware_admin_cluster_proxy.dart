@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VmwareAdminClusterProxy {
   /// A comma-separated list of IP addresses, IP address ranges,
   /// host names, and domain names that should not go through the proxy server.
   final String? noProxy;
-
   /// The proxy url.
   final String url;
 
@@ -17,13 +17,10 @@ class VmwareAdminClusterProxy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final noProxyValue = noProxy;
-    if (noProxyValue != null) {
-      map['noProxy'] = noProxyValue;
-    }
-    map['url'] = url;
-    return map;
+    return <String, dynamic>{
+      'noProxy': ?noProxy,
+      'url': url,
+    };
   }
 
   factory VmwareAdminClusterProxy.fromMap(Map<String, dynamic> map) {
@@ -33,3 +30,4 @@ class VmwareAdminClusterProxy {
     );
   }
 }
+

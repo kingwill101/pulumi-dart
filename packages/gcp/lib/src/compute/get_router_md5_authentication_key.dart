@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRouterMd5AuthenticationKey {
   /// Value of the key used for MD5 authentication.
   final String key;
-
   /// The name of the router.
   final String name;
 
@@ -16,10 +16,10 @@ class GetRouterMd5AuthenticationKey {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'name': name,
+    };
   }
 
   factory GetRouterMd5AuthenticationKey.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetRouterMd5AuthenticationKey {
     );
   }
 }
+

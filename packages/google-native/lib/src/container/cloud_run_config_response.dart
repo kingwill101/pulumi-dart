@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration options for the Cloud Run feature.
 class CloudRunConfigResponse {
   /// Whether Cloud Run addon is enabled for this cluster.
   final bool disabled;
-
   /// Which load balancer type is installed for Cloud Run.
   final String loadBalancerType;
 
@@ -17,10 +17,10 @@ class CloudRunConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['disabled'] = disabled;
-    map['loadBalancerType'] = loadBalancerType;
-    return map;
+    return <String, dynamic>{
+      'disabled': disabled,
+      'loadBalancerType': loadBalancerType,
+    };
   }
 
   factory CloudRunConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class CloudRunConfigResponse {
     );
   }
 }
+

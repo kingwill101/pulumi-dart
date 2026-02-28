@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Specifies the resources used to actively manage an instance group.
 class ManagedGroupConfigResponseDataprocV1beta2 {
   /// The name of the Instance Group Manager for this group.
   final String instanceGroupManagerName;
-
   /// The name of the Instance Template used for the Managed Instance Group.
   final String instanceTemplateName;
 
@@ -17,17 +17,17 @@ class ManagedGroupConfigResponseDataprocV1beta2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['instanceGroupManagerName'] = instanceGroupManagerName;
-    map['instanceTemplateName'] = instanceTemplateName;
-    return map;
+    return <String, dynamic>{
+      'instanceGroupManagerName': instanceGroupManagerName,
+      'instanceTemplateName': instanceTemplateName,
+    };
   }
 
-  factory ManagedGroupConfigResponseDataprocV1beta2.fromMap(
-      Map<String, dynamic> map) {
+  factory ManagedGroupConfigResponseDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return ManagedGroupConfigResponseDataprocV1beta2(
       instanceGroupManagerName: map['instanceGroupManagerName'] as String,
       instanceTemplateName: map['instanceTemplateName'] as String,
     );
   }
 }
+

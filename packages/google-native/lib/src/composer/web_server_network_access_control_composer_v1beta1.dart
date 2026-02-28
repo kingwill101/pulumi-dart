@@ -15,25 +15,15 @@ class WebServerNetworkAccessControlComposerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final allowedIpRangesValue = allowedIpRanges;
-    if (allowedIpRangesValue != null) {
-      map['allowedIpRanges'] = pulumi.Input.encodeList<
-          AllowedIpRangeComposerV1beta1,
-          Map<String, dynamic>>(allowedIpRangesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'allowedIpRanges': ?allowedIpRanges == null ? null : pulumi.Input.encodeList<AllowedIpRangeComposerV1beta1, Map<String, dynamic>>(allowedIpRanges!, (value) => value.toMap()),
+    };
   }
 
-  factory WebServerNetworkAccessControlComposerV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory WebServerNetworkAccessControlComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return WebServerNetworkAccessControlComposerV1beta1(
-      allowedIpRanges: map['allowedIpRanges'] == null
-          ? null
-          : pulumi.Input.decodeList<AllowedIpRangeComposerV1beta1>(
-              map['allowedIpRanges'],
-              (value) => AllowedIpRangeComposerV1beta1.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      allowedIpRanges: map['allowedIpRanges'] == null ? null : pulumi.Input.decodeList<AllowedIpRangeComposerV1beta1>(map['allowedIpRanges'], (value) => AllowedIpRangeComposerV1beta1.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

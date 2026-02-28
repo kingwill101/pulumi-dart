@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class QueryLogArgs {
   /// CloudWatch log group ARN to send query logs.
   final pulumi.Input<String> cloudwatchLogGroupArn;
-
   /// Route53 hosted zone ID to enable query logs.
   final pulumi.Input<String> zoneId;
 
@@ -19,15 +18,15 @@ class QueryLogArgs {
   QueryLogArgs({
     required String cloudwatchLogGroupArn,
     required String zoneId,
-  })  : cloudwatchLogGroupArn =
-            pulumi.Input.asInput<String>(cloudwatchLogGroupArn),
-        zoneId = pulumi.Input.asInput<String>(zoneId);
+  }) :
+      cloudwatchLogGroupArn = pulumi.Input.asInput<String>(cloudwatchLogGroupArn),
+      zoneId = pulumi.Input.asInput<String>(zoneId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cloudwatchLogGroupArn'] = cloudwatchLogGroupArn;
-    map['zoneId'] = zoneId;
-    return map;
+    return <String, dynamic>{
+      'cloudwatchLogGroupArn': cloudwatchLogGroupArn,
+      'zoneId': zoneId,
+    };
   }
 
   factory QueryLogArgs.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class QueryLogArgs {
     );
   }
 }
+

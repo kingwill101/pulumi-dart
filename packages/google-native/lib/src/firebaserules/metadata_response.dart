@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Metadata for a Ruleset.
 class MetadataResponse {
   /// Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these.
@@ -12,9 +13,9 @@ class MetadataResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['services'] = services;
-    return map;
+    return <String, dynamic>{
+      'services': services,
+    };
   }
 
   factory MetadataResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class MetadataResponse {
     );
   }
 }
+

@@ -19,19 +19,17 @@ class GetReservationComputeV1Args {
     String? project,
     required String reservation,
     required String zone,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        reservation = pulumi.Input.asInput<String>(reservation),
-        zone = pulumi.Input.asInput<String>(zone);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      reservation = pulumi.Input.asInput<String>(reservation),
+      zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['reservation'] = reservation;
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'reservation': reservation,
+      'zone': zone,
+    };
   }
 
   factory GetReservationComputeV1Args.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetReservationComputeV1Args {
     );
   }
 }
+

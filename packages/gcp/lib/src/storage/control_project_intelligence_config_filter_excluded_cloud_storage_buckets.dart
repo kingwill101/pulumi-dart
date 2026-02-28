@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ControlProjectIntelligenceConfigFilterExcludedCloudStorageBuckets {
   /// List of bucket id regexes to exclude in the storage intelligence plan.
   final List<String> bucketIdRegexes;
@@ -11,15 +12,15 @@ class ControlProjectIntelligenceConfigFilterExcludedCloudStorageBuckets {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucketIdRegexes'] = bucketIdRegexes;
-    return map;
+    return <String, dynamic>{
+      'bucketIdRegexes': bucketIdRegexes,
+    };
   }
 
-  factory ControlProjectIntelligenceConfigFilterExcludedCloudStorageBuckets.fromMap(
-      Map<String, dynamic> map) {
+  factory ControlProjectIntelligenceConfigFilterExcludedCloudStorageBuckets.fromMap(Map<String, dynamic> map) {
     return ControlProjectIntelligenceConfigFilterExcludedCloudStorageBuckets(
       bucketIdRegexes: (map['bucketIdRegexes'] as List).cast<String>(),
     );
   }
 }
+

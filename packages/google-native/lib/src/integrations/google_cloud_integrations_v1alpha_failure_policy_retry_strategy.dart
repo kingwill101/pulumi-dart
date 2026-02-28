@@ -12,15 +12,13 @@ enum GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy {
   const GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy(this.value);
   final String value;
 
-  static GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy fromValue(
-      String value) {
-    for (final item
-        in GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy.values) {
+  static GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy fromValue(String value) {
+    for (final item in GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy value: $value');
+    throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy value: $value');
   }
 }
+

@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Message defining the location of a BigQuery table. A table is uniquely identified by its project_id, dataset_id, and table_name. Within a query a table is often referenced with a string in the format of: `:.` or `..`.
 class GooglePrivacyDlpV2BigQueryTable {
   /// Dataset ID of the table.
   final String? datasetId;
-
   /// The Google Cloud Platform project ID of the project containing the table. If omitted, project ID is inferred from the API call.
   final String? project;
-
   /// Name of the table.
   final String? tableId;
 
@@ -22,20 +21,11 @@ class GooglePrivacyDlpV2BigQueryTable {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final datasetIdValue = datasetId;
-    if (datasetIdValue != null) {
-      map['datasetId'] = datasetIdValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final tableIdValue = tableId;
-    if (tableIdValue != null) {
-      map['tableId'] = tableIdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'datasetId': ?datasetId,
+      'project': ?project,
+      'tableId': ?tableId,
+    };
   }
 
   factory GooglePrivacyDlpV2BigQueryTable.fromMap(Map<String, dynamic> map) {
@@ -46,3 +36,4 @@ class GooglePrivacyDlpV2BigQueryTable {
     );
   }
 }
+

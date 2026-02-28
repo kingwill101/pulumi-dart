@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSubscriptionIamPolicy.
 class GetSubscriptionIamPolicyResult {
   /// (Computed) The etag of the IAM policy.
   final String etag;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// (Computed) The policy data
   final String policyData;
   final String project;
@@ -28,13 +27,13 @@ class GetSubscriptionIamPolicyResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['etag'] = etag;
-    map['id'] = id;
-    map['policyData'] = policyData;
-    map['project'] = project;
-    map['subscription'] = subscription;
-    return map;
+    return <String, dynamic>{
+      'etag': etag,
+      'id': id,
+      'policyData': policyData,
+      'project': project,
+      'subscription': subscription,
+    };
   }
 
   factory GetSubscriptionIamPolicyResult.fromMap(Map<String, dynamic> map) {
@@ -47,3 +46,4 @@ class GetSubscriptionIamPolicyResult {
     );
   }
 }
+

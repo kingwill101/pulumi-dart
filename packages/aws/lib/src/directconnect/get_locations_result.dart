@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getLocations.
 class GetLocationsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Code for the locations.
   final List<String> locationCodes;
   final String region;
@@ -20,11 +20,11 @@ class GetLocationsResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['locationCodes'] = locationCodes;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'locationCodes': locationCodes,
+      'region': region,
+    };
   }
 
   factory GetLocationsResult.fromMap(Map<String, dynamic> map) {
@@ -35,3 +35,4 @@ class GetLocationsResult {
     );
   }
 }
+

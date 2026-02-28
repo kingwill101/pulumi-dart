@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LfTagExpressionExpression {
   /// The key-name for the LF-Tag.
   final String tagKey;
-
   /// A list of possible values for the LF-Tag
   final List<String> tagValues;
 
@@ -16,10 +16,10 @@ class LfTagExpressionExpression {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['tagKey'] = tagKey;
-    map['tagValues'] = tagValues;
-    return map;
+    return <String, dynamic>{
+      'tagKey': tagKey,
+      'tagValues': tagValues,
+    };
   }
 
   factory LfTagExpressionExpression.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class LfTagExpressionExpression {
     );
   }
 }
+

@@ -16,3 +16,4 @@ enum RuleBasicProfile {
     throw ArgumentError('Unknown RuleBasicProfile value: $value');
   }
 }
+

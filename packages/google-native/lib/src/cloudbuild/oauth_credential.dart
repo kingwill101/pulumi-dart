@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents an OAuth token of the account that authorized the Connection, and associated metadata.
 class OAuthCredential {
   /// A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
@@ -12,19 +13,15 @@ class OAuthCredential {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final oauthTokenSecretVersionValue = oauthTokenSecretVersion;
-    if (oauthTokenSecretVersionValue != null) {
-      map['oauthTokenSecretVersion'] = oauthTokenSecretVersionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'oauthTokenSecretVersion': ?oauthTokenSecretVersion,
+    };
   }
 
   factory OAuthCredential.fromMap(Map<String, dynamic> map) {
     return OAuthCredential(
-      oauthTokenSecretVersion: map['oauthTokenSecretVersion'] == null
-          ? null
-          : map['oauthTokenSecretVersion'] as String,
+      oauthTokenSecretVersion: map['oauthTokenSecretVersion'] == null ? null : map['oauthTokenSecretVersion'] as String,
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WorkspaceVpcConfiguration {
   /// The list of Amazon EC2 security group IDs attached to the Amazon VPC for your Grafana workspace to connect.
   final List<String> securityGroupIds;
-
   /// The list of Amazon EC2 subnet IDs created in the Amazon VPC for your Grafana workspace to connect.
   final List<String> subnetIds;
 
@@ -16,10 +16,10 @@ class WorkspaceVpcConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['securityGroupIds'] = securityGroupIds;
-    map['subnetIds'] = subnetIds;
-    return map;
+    return <String, dynamic>{
+      'securityGroupIds': securityGroupIds,
+      'subnetIds': subnetIds,
+    };
   }
 
   factory WorkspaceVpcConfiguration.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class WorkspaceVpcConfiguration {
     );
   }
 }
+

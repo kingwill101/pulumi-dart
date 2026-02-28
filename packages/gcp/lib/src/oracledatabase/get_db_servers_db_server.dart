@@ -17,20 +17,17 @@ class GetDbServersDbServer {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['displayName'] = displayName;
-    map['properties'] = pulumi.Input.encodeList<GetDbServersDbServerProperty,
-        Map<String, dynamic>>(properties, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'displayName': displayName,
+      'properties': pulumi.Input.encodeList<GetDbServersDbServerProperty, Map<String, dynamic>>(properties, (value) => value.toMap()),
+    };
   }
 
   factory GetDbServersDbServer.fromMap(Map<String, dynamic> map) {
     return GetDbServersDbServer(
       displayName: map['displayName'] as String,
-      properties: pulumi.Input.decodeList<GetDbServersDbServerProperty>(
-          map['properties'],
-          (value) => GetDbServersDbServerProperty.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      properties: pulumi.Input.decodeList<GetDbServersDbServerProperty>(map['properties'], (value) => GetDbServersDbServerProperty.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

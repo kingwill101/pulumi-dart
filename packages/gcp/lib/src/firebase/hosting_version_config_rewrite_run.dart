@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class HostingVersionConfigRewriteRun {
   /// Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
   final String? region;
-
   /// User-defined ID of the Cloud Run service.
   final String serviceId;
 
@@ -16,13 +16,10 @@ class HostingVersionConfigRewriteRun {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['serviceId'] = serviceId;
-    return map;
+    return <String, dynamic>{
+      'region': ?region,
+      'serviceId': serviceId,
+    };
   }
 
   factory HostingVersionConfigRewriteRun.fromMap(Map<String, dynamic> map) {
@@ -32,3 +29,4 @@ class HostingVersionConfigRewriteRun {
     );
   }
 }
+

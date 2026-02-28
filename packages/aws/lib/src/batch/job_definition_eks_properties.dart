@@ -13,15 +13,15 @@ class JobDefinitionEksProperties {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['podProperties'] = podProperties.toMap();
-    return map;
+    return <String, dynamic>{
+      'podProperties': podProperties.toMap(),
+    };
   }
 
   factory JobDefinitionEksProperties.fromMap(Map<String, dynamic> map) {
     return JobDefinitionEksProperties(
-      podProperties: JobDefinitionEksPropertiesPodProperties.fromMap(
-          (map['podProperties'] as Map).cast<String, dynamic>()),
+      podProperties: JobDefinitionEksPropertiesPodProperties.fromMap((map['podProperties'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

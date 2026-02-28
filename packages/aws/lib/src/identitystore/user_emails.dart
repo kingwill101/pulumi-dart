@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class UserEmails {
   /// When `true`, this is the primary email associated with the user.
   final bool? primary;
-
   /// The type of email.
   final String? type;
-
   /// The email address. This value must be unique across the identity store.
   final String? value;
 
@@ -21,20 +20,11 @@ class UserEmails {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final primaryValue = primary;
-    if (primaryValue != null) {
-      map['primary'] = primaryValue;
-    }
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue;
-    }
-    final valueValue = value;
-    if (valueValue != null) {
-      map['value'] = valueValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'primary': ?primary,
+      'type': ?type,
+      'value': ?value,
+    };
   }
 
   factory UserEmails.fromMap(Map<String, dynamic> map) {
@@ -45,3 +35,4 @@ class UserEmails {
     );
   }
 }
+

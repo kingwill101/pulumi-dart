@@ -23,14 +23,13 @@ enum WorkloadComplianceRegimeAssuredworkloadsV1beta1 {
   const WorkloadComplianceRegimeAssuredworkloadsV1beta1(this.value);
   final String value;
 
-  static WorkloadComplianceRegimeAssuredworkloadsV1beta1 fromValue(
-      String value) {
+  static WorkloadComplianceRegimeAssuredworkloadsV1beta1 fromValue(String value) {
     for (final item in WorkloadComplianceRegimeAssuredworkloadsV1beta1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown WorkloadComplianceRegimeAssuredworkloadsV1beta1 value: $value');
+    throw ArgumentError('Unknown WorkloadComplianceRegimeAssuredworkloadsV1beta1 value: $value');
   }
 }
+

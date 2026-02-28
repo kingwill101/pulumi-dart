@@ -139,8 +139,7 @@ Future<GetApiApigatewayV1betaResult> getApiApigatewayV1beta(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigateway_v1beta_get_api_config_iam_policy_apigateway_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetApiConfigIamPolicyApigatewayV1betaResult>
-    getApiConfigIamPolicyApigatewayV1beta(
+Future<GetApiConfigIamPolicyApigatewayV1betaResult> getApiConfigIamPolicyApigatewayV1beta(
   GetApiConfigIamPolicyApigatewayV1betaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -204,8 +203,7 @@ Future<GetGatewayApigatewayV1betaResult> getGatewayApigatewayV1beta(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigateway_v1beta_get_gateway_iam_policy_apigateway_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetGatewayIamPolicyApigatewayV1betaResult>
-    getGatewayIamPolicyApigatewayV1beta(
+Future<GetGatewayIamPolicyApigatewayV1betaResult> getGatewayIamPolicyApigatewayV1beta(
   GetGatewayIamPolicyApigatewayV1betaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

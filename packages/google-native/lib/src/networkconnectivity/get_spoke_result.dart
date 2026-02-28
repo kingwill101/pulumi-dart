@@ -11,46 +11,32 @@ import 'state_reason_response.dart';
 class GetSpokeResult {
   /// The time the spoke was created.
   final String createTime;
-
   /// An optional description of the spoke.
   final String description;
-
   /// Optional. The name of the group that this spoke is associated with.
   final String group;
-
   /// Immutable. The name of the hub that this spoke is attached to.
   final String hub;
-
   /// Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
   final Map<String, String> labels;
-
   /// VLAN attachments that are associated with the spoke.
   final LinkedInterconnectAttachmentsResponse linkedInterconnectAttachments;
-
   /// Router appliance instances that are associated with the spoke.
   final LinkedRouterApplianceInstancesResponse linkedRouterApplianceInstances;
-
   /// Optional. VPC network that is associated with the spoke.
   final LinkedVpcNetworkResponse linkedVpcNetwork;
-
   /// VPN tunnels that are associated with the spoke.
   final LinkedVpnTunnelsResponse linkedVpnTunnels;
-
   /// Immutable. The name of the spoke. Spoke names must be unique. They use the following form: `projects/{project_number}/locations/{region}/spokes/{spoke_id}`
   final String name;
-
   /// The reasons for current state of the spoke. Only present when the spoke is in the `INACTIVE` state.
   final List<StateReasonResponse> reasons;
-
   /// The type of resource associated with the spoke.
   final String spokeType;
-
   /// The current lifecycle state of this spoke.
   final String state;
-
   /// The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different `unique_id`.
   final String uniqueId;
-
   /// The time the spoke was last updated.
   final String updateTime;
 
@@ -89,27 +75,23 @@ class GetSpokeResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['description'] = description;
-    map['group'] = group;
-    map['hub'] = hub;
-    map['labels'] = labels;
-    map['linkedInterconnectAttachments'] =
-        linkedInterconnectAttachments.toMap();
-    map['linkedRouterApplianceInstances'] =
-        linkedRouterApplianceInstances.toMap();
-    map['linkedVpcNetwork'] = linkedVpcNetwork.toMap();
-    map['linkedVpnTunnels'] = linkedVpnTunnels.toMap();
-    map['name'] = name;
-    map['reasons'] =
-        pulumi.Input.encodeList<StateReasonResponse, Map<String, dynamic>>(
-            reasons, (value) => value.toMap());
-    map['spokeType'] = spokeType;
-    map['state'] = state;
-    map['uniqueId'] = uniqueId;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'description': description,
+      'group': group,
+      'hub': hub,
+      'labels': labels,
+      'linkedInterconnectAttachments': linkedInterconnectAttachments.toMap(),
+      'linkedRouterApplianceInstances': linkedRouterApplianceInstances.toMap(),
+      'linkedVpcNetwork': linkedVpcNetwork.toMap(),
+      'linkedVpnTunnels': linkedVpnTunnels.toMap(),
+      'name': name,
+      'reasons': pulumi.Input.encodeList<StateReasonResponse, Map<String, dynamic>>(reasons, (value) => value.toMap()),
+      'spokeType': spokeType,
+      'state': state,
+      'uniqueId': uniqueId,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetSpokeResult.fromMap(Map<String, dynamic> map) {
@@ -119,23 +101,12 @@ class GetSpokeResult {
       group: map['group'] as String,
       hub: map['hub'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
-      linkedInterconnectAttachments:
-          LinkedInterconnectAttachmentsResponse.fromMap(
-              (map['linkedInterconnectAttachments'] as Map)
-                  .cast<String, dynamic>()),
-      linkedRouterApplianceInstances:
-          LinkedRouterApplianceInstancesResponse.fromMap(
-              (map['linkedRouterApplianceInstances'] as Map)
-                  .cast<String, dynamic>()),
-      linkedVpcNetwork: LinkedVpcNetworkResponse.fromMap(
-          (map['linkedVpcNetwork'] as Map).cast<String, dynamic>()),
-      linkedVpnTunnels: LinkedVpnTunnelsResponse.fromMap(
-          (map['linkedVpnTunnels'] as Map).cast<String, dynamic>()),
+      linkedInterconnectAttachments: LinkedInterconnectAttachmentsResponse.fromMap((map['linkedInterconnectAttachments'] as Map).cast<String, dynamic>()),
+      linkedRouterApplianceInstances: LinkedRouterApplianceInstancesResponse.fromMap((map['linkedRouterApplianceInstances'] as Map).cast<String, dynamic>()),
+      linkedVpcNetwork: LinkedVpcNetworkResponse.fromMap((map['linkedVpcNetwork'] as Map).cast<String, dynamic>()),
+      linkedVpnTunnels: LinkedVpnTunnelsResponse.fromMap((map['linkedVpnTunnels'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      reasons: pulumi.Input.decodeList<StateReasonResponse>(
-          map['reasons'],
-          (value) => StateReasonResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      reasons: pulumi.Input.decodeList<StateReasonResponse>(map['reasons'], (value) => StateReasonResponse.fromMap((value as Map).cast<String, dynamic>())),
       spokeType: map['spokeType'] as String,
       state: map['state'] as String,
       uniqueId: map['uniqueId'] as String,
@@ -143,3 +114,4 @@ class GetSpokeResult {
     );
   }
 }
+

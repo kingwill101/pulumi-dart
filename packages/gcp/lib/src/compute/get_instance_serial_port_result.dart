@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getInstanceSerialPort.
 class GetInstanceSerialPortResult {
   /// The output of the serial port. Serial port output is available only when the VM instance is running, and logs are limited to the most recent 1 MB of output per port.
   final String contents;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instance;
@@ -29,14 +29,14 @@ class GetInstanceSerialPortResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['contents'] = contents;
-    map['id'] = id;
-    map['instance'] = instance;
-    map['port'] = port;
-    map['project'] = project;
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'contents': contents,
+      'id': id,
+      'instance': instance,
+      'port': port,
+      'project': project,
+      'zone': zone,
+    };
   }
 
   factory GetInstanceSerialPortResult.fromMap(Map<String, dynamic> map) {
@@ -50,3 +50,4 @@ class GetInstanceSerialPortResult {
     );
   }
 }
+

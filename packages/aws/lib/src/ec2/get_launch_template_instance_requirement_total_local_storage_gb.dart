@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetLaunchTemplateInstanceRequirementTotalLocalStorageGb {
   final double max;
   final double min;
@@ -13,17 +14,17 @@ class GetLaunchTemplateInstanceRequirementTotalLocalStorageGb {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['max'] = max;
-    map['min'] = min;
-    return map;
+    return <String, dynamic>{
+      'max': max,
+      'min': min,
+    };
   }
 
-  factory GetLaunchTemplateInstanceRequirementTotalLocalStorageGb.fromMap(
-      Map<String, dynamic> map) {
+  factory GetLaunchTemplateInstanceRequirementTotalLocalStorageGb.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateInstanceRequirementTotalLocalStorageGb(
       max: map['max'] as double,
       min: map['min'] as double,
     );
   }
 }
+

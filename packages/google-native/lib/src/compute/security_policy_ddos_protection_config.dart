@@ -12,20 +12,15 @@ class SecurityPolicyDdosProtectionConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final ddosProtectionValue = ddosProtection;
-    if (ddosProtectionValue != null) {
-      map['ddosProtection'] = ddosProtectionValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'ddosProtection': ?ddosProtection == null ? null : ddosProtection!.value,
+    };
   }
 
   factory SecurityPolicyDdosProtectionConfig.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyDdosProtectionConfig(
-      ddosProtection: map['ddosProtection'] == null
-          ? null
-          : SecurityPolicyDdosProtectionConfigDdosProtection.fromValue(
-              map['ddosProtection'] as String),
+      ddosProtection: map['ddosProtection'] == null ? null : SecurityPolicyDdosProtectionConfigDdosProtection.fromValue(map['ddosProtection'] as String),
     );
   }
 }
+

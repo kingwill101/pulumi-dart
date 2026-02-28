@@ -12,7 +12,7 @@ enum EnvironmentConfigResilienceMode {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown EnvironmentConfigResilienceMode value: $value');
+    throw ArgumentError('Unknown EnvironmentConfigResilienceMode value: $value');
   }
 }
+

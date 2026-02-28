@@ -14,24 +14,15 @@ class FindingsFilterFindingCriteria {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final criterionsValue = criterions;
-    if (criterionsValue != null) {
-      map['criterions'] = pulumi.Input.encodeList<
-          FindingsFilterFindingCriteriaCriterion,
-          Map<String, dynamic>>(criterionsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'criterions': ?criterions == null ? null : pulumi.Input.encodeList<FindingsFilterFindingCriteriaCriterion, Map<String, dynamic>>(criterions!, (value) => value.toMap()),
+    };
   }
 
   factory FindingsFilterFindingCriteria.fromMap(Map<String, dynamic> map) {
     return FindingsFilterFindingCriteria(
-      criterions: map['criterions'] == null
-          ? null
-          : pulumi.Input.decodeList<FindingsFilterFindingCriteriaCriterion>(
-              map['criterions'],
-              (value) => FindingsFilterFindingCriteriaCriterion.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      criterions: map['criterions'] == null ? null : pulumi.Input.decodeList<FindingsFilterFindingCriteriaCriterion>(map['criterions'], (value) => FindingsFilterFindingCriteriaCriterion.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

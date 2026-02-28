@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// JWT claims used for the jwt-bearer authorization grant.
 class JwtClaimsResponse {
   /// Value for the "aud" claim.
   final String audience;
-
   /// Value for the "iss" claim.
   final String issuer;
-
   /// Value for the "sub" claim.
   final String subject;
 
@@ -22,11 +21,11 @@ class JwtClaimsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['audience'] = audience;
-    map['issuer'] = issuer;
-    map['subject'] = subject;
-    return map;
+    return <String, dynamic>{
+      'audience': audience,
+      'issuer': issuer,
+      'subject': subject,
+    };
   }
 
   factory JwtClaimsResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class JwtClaimsResponse {
     );
   }
 }
+

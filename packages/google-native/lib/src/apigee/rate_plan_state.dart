@@ -16,3 +16,4 @@ enum RatePlanState {
     throw ArgumentError('Unknown RatePlanState value: $value');
   }
 }
+

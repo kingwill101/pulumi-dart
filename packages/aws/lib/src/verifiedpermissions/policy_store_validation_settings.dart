@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PolicyStoreValidationSettings {
   /// The mode for the validation settings. Valid values: `OFF`, `STRICT`.
   ///
@@ -13,9 +14,9 @@ class PolicyStoreValidationSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['mode'] = mode;
-    return map;
+    return <String, dynamic>{
+      'mode': mode,
+    };
   }
 
   factory PolicyStoreValidationSettings.fromMap(Map<String, dynamic> map) {
@@ -24,3 +25,4 @@ class PolicyStoreValidationSettings {
     );
   }
 }
+

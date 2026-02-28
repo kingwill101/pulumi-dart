@@ -5,8 +5,7 @@ import 'prevention_discovery_config_target_cloud_storage_target_filter_collectio
 class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPattern {
   /// Regex for Cloud Storage.
   /// Structure is documented below.
-  final PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegex?
-      cloudStorageRegex;
+  final PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegex? cloudStorageRegex;
 
   /// Creates a new [PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPattern].
   /// [cloudStorageRegex] Regex for Cloud Storage.
@@ -15,22 +14,15 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRe
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cloudStorageRegexValue = cloudStorageRegex;
-    if (cloudStorageRegexValue != null) {
-      map['cloudStorageRegex'] = cloudStorageRegexValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'cloudStorageRegex': ?cloudStorageRegex == null ? null : cloudStorageRegex!.toMap(),
+    };
   }
 
-  factory PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPattern.fromMap(
-      Map<String, dynamic> map) {
+  factory PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPattern.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPattern(
-      cloudStorageRegex: map['cloudStorageRegex'] == null
-          ? null
-          : PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegex
-              .fromMap(
-                  (map['cloudStorageRegex'] as Map).cast<String, dynamic>()),
+      cloudStorageRegex: map['cloudStorageRegex'] == null ? null : PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegex.fromMap((map['cloudStorageRegex'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

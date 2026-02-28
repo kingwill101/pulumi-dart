@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MultitenantDistributionViewerCertificate {
   /// ARN of the AWS Certificate Manager certificate that you wish to use with this distribution. Required when using a custom SSL certificate.
   final String? acmCertificateArn;
-
   /// Whether to use the CloudFront default certificate. Cannot be used with `acm_certificate_arn`.
   final bool? cloudfrontDefaultCertificate;
-
   /// Minimum version of the SSL protocol that you want CloudFront to use for HTTPS connections. Default: `TLSv1`.
   final String? minimumProtocolVersion;
-
   /// How you want CloudFront to serve HTTPS requests. Valid values are `sni-only` and `vip`. Required when `acm_certificate_arn` is specified.
   final String? sslSupportMethod;
 
@@ -26,41 +24,21 @@ class MultitenantDistributionViewerCertificate {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final acmCertificateArnValue = acmCertificateArn;
-    if (acmCertificateArnValue != null) {
-      map['acmCertificateArn'] = acmCertificateArnValue;
-    }
-    final cloudfrontDefaultCertificateValue = cloudfrontDefaultCertificate;
-    if (cloudfrontDefaultCertificateValue != null) {
-      map['cloudfrontDefaultCertificate'] = cloudfrontDefaultCertificateValue;
-    }
-    final minimumProtocolVersionValue = minimumProtocolVersion;
-    if (minimumProtocolVersionValue != null) {
-      map['minimumProtocolVersion'] = minimumProtocolVersionValue;
-    }
-    final sslSupportMethodValue = sslSupportMethod;
-    if (sslSupportMethodValue != null) {
-      map['sslSupportMethod'] = sslSupportMethodValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'acmCertificateArn': ?acmCertificateArn,
+      'cloudfrontDefaultCertificate': ?cloudfrontDefaultCertificate,
+      'minimumProtocolVersion': ?minimumProtocolVersion,
+      'sslSupportMethod': ?sslSupportMethod,
+    };
   }
 
-  factory MultitenantDistributionViewerCertificate.fromMap(
-      Map<String, dynamic> map) {
+  factory MultitenantDistributionViewerCertificate.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionViewerCertificate(
-      acmCertificateArn: map['acmCertificateArn'] == null
-          ? null
-          : map['acmCertificateArn'] as String,
-      cloudfrontDefaultCertificate: map['cloudfrontDefaultCertificate'] == null
-          ? null
-          : map['cloudfrontDefaultCertificate'] as bool,
-      minimumProtocolVersion: map['minimumProtocolVersion'] == null
-          ? null
-          : map['minimumProtocolVersion'] as String,
-      sslSupportMethod: map['sslSupportMethod'] == null
-          ? null
-          : map['sslSupportMethod'] as String,
+      acmCertificateArn: map['acmCertificateArn'] == null ? null : map['acmCertificateArn'] as String,
+      cloudfrontDefaultCertificate: map['cloudfrontDefaultCertificate'] == null ? null : map['cloudfrontDefaultCertificate'] as bool,
+      minimumProtocolVersion: map['minimumProtocolVersion'] == null ? null : map['minimumProtocolVersion'] as String,
+      sslSupportMethod: map['sslSupportMethod'] == null ? null : map['sslSupportMethod'] as String,
     );
   }
 }
+

@@ -200,10 +200,8 @@ import 'domain_identity_verification_args.dart';
 class DomainIdentityVerification extends pulumi.CustomResource {
   /// The ARN of the domain identity.
   late final pulumi.Output<String> arn;
-
   /// The domain name of the SES domain identity to verify.
   late final pulumi.Output<String> domain;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

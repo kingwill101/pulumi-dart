@@ -165,10 +165,8 @@ import 'log_index_policy_args.dart';
 class LogIndexPolicy extends pulumi.CustomResource {
   /// Log group name to set the policy for.
   late final pulumi.Output<String> logGroupName;
-
   /// JSON policy document. This is a JSON formatted string.
   late final pulumi.Output<String> policyDocument;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

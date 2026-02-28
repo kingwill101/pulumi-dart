@@ -14,18 +14,15 @@ class GetClusterStateInfo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['updateInfos'] = pulumi.Input.encodeList<GetClusterStateInfoUpdateInfo,
-        Map<String, dynamic>>(updateInfos, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'updateInfos': pulumi.Input.encodeList<GetClusterStateInfoUpdateInfo, Map<String, dynamic>>(updateInfos, (value) => value.toMap()),
+    };
   }
 
   factory GetClusterStateInfo.fromMap(Map<String, dynamic> map) {
     return GetClusterStateInfo(
-      updateInfos: pulumi.Input.decodeList<GetClusterStateInfoUpdateInfo>(
-          map['updateInfos'],
-          (value) => GetClusterStateInfoUpdateInfo.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      updateInfos: pulumi.Input.decodeList<GetClusterStateInfoUpdateInfo>(map['updateInfos'], (value) => GetClusterStateInfoUpdateInfo.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

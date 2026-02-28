@@ -5,18 +5,14 @@ import 'instance_args.dart';
 class Instance extends pulumi.CustomResource {
   /// The globally unique identifier of the database instance.
   late final pulumi.Output<String?> databaseId;
-
   /// Output Only. The globally unique hostname of the database.
   late final pulumi.Output<String> databaseUrl;
   late final pulumi.Output<String> location;
-
   /// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// The database's lifecycle state. Read-only.
   late final pulumi.Output<String> state;
-
   /// Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
   late final pulumi.Output<String> type;
 

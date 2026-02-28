@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Apply a hash function on the value.
 class ApplyHash {
   /// Optional. Generate UUID from the data's byte array
@@ -12,19 +13,15 @@ class ApplyHash {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final uuidFromBytesValue = uuidFromBytes;
-    if (uuidFromBytesValue != null) {
-      map['uuidFromBytes'] = uuidFromBytesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'uuidFromBytes': ?uuidFromBytes,
+    };
   }
 
   factory ApplyHash.fromMap(Map<String, dynamic> map) {
     return ApplyHash(
-      uuidFromBytes: map['uuidFromBytes'] == null
-          ? null
-          : (map['uuidFromBytes'] as Map).cast<String, dynamic>(),
+      uuidFromBytes: map['uuidFromBytes'] == null ? null : (map['uuidFromBytes'] as Map).cast<String, dynamic>(),
     );
   }
 }
+

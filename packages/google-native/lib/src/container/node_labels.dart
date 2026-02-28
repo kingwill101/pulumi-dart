@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Collection of node-level [Kubernetes labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels).
 class NodeLabels {
   /// Map of node label keys and node label values.
@@ -12,19 +13,15 @@ class NodeLabels {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final labelsValue = labels;
-    if (labelsValue != null) {
-      map['labels'] = labelsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'labels': ?labels,
+    };
   }
 
   factory NodeLabels.fromMap(Map<String, dynamic> map) {
     return NodeLabels(
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
     );
   }
 }
+

@@ -6,32 +6,23 @@ import 'custom_connector_args.dart';
 class CustomConnector extends pulumi.CustomResource {
   /// Created time.
   late final pulumi.Output<String> createTime;
-
   /// Required. Identifier to assign to the CreateCustomConnector. Must be unique within scope of the parent resource.
   late final pulumi.Output<String> customConnectorId;
-
   /// Type of the custom connector.
   late final pulumi.Output<String> customConnectorType;
-
   /// Optional. Description of the resource.
   late final pulumi.Output<String> description;
-
   /// Optional. Display name.
   late final pulumi.Output<String> displayName;
-
   /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
   late final pulumi.Output<Map<String, String>> labels;
-
   /// Launch stage.
   late final pulumi.Output<String> launchStage;
-
   /// Optional. Logo of the resource.
   late final pulumi.Output<String> logo;
-
   /// Identifier. Resource name of the CustomConnector. Format: projects/{project}/locations/{location}/customConnectors/{connector}
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// Updated time.
   late final pulumi.Output<String> updateTime;
 

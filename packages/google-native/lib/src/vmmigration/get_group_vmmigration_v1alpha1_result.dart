@@ -1,22 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getGroup.
 class GetGroupVmmigrationV1alpha1Result {
   /// The create time timestamp.
   final String createTime;
-
   /// User-provided description of the group.
   final String description;
-
   /// Display name is a user defined name for this group which can be updated.
   final String displayName;
-
   /// Immutable. The target type of this group.
   final String migrationTargetType;
-
   /// The Group name.
   final String name;
-
   /// The update time timestamp.
   final String updateTime;
 
@@ -37,14 +33,14 @@ class GetGroupVmmigrationV1alpha1Result {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['description'] = description;
-    map['displayName'] = displayName;
-    map['migrationTargetType'] = migrationTargetType;
-    map['name'] = name;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'description': description,
+      'displayName': displayName,
+      'migrationTargetType': migrationTargetType,
+      'name': name,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetGroupVmmigrationV1alpha1Result.fromMap(Map<String, dynamic> map) {
@@ -58,3 +54,4 @@ class GetGroupVmmigrationV1alpha1Result {
     );
   }
 }
+

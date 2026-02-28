@@ -20,3 +20,4 @@ enum FeedContentType {
     throw ArgumentError('Unknown FeedContentType value: $value');
   }
 }
+

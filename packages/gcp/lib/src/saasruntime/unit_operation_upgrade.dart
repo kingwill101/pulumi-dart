@@ -7,7 +7,6 @@ class UnitOperationUpgrade {
   /// Set of input variables. Maximum 100. (optional)
   /// Structure is documented below.
   final List<UnitOperationUpgradeInputVariable>? inputVariables;
-
   /// Reference to the Release object to use for the Unit. (optional).
   final String? release;
 
@@ -20,29 +19,17 @@ class UnitOperationUpgrade {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final inputVariablesValue = inputVariables;
-    if (inputVariablesValue != null) {
-      map['inputVariables'] = pulumi.Input.encodeList<
-          UnitOperationUpgradeInputVariable,
-          Map<String, dynamic>>(inputVariablesValue, (value) => value.toMap());
-    }
-    final releaseValue = release;
-    if (releaseValue != null) {
-      map['release'] = releaseValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'inputVariables': ?inputVariables == null ? null : pulumi.Input.encodeList<UnitOperationUpgradeInputVariable, Map<String, dynamic>>(inputVariables!, (value) => value.toMap()),
+      'release': ?release,
+    };
   }
 
   factory UnitOperationUpgrade.fromMap(Map<String, dynamic> map) {
     return UnitOperationUpgrade(
-      inputVariables: map['inputVariables'] == null
-          ? null
-          : pulumi.Input.decodeList<UnitOperationUpgradeInputVariable>(
-              map['inputVariables'],
-              (value) => UnitOperationUpgradeInputVariable.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      inputVariables: map['inputVariables'] == null ? null : pulumi.Input.decodeList<UnitOperationUpgradeInputVariable>(map['inputVariables'], (value) => UnitOperationUpgradeInputVariable.fromMap((value as Map).cast<String, dynamic>())),
       release: map['release'] == null ? null : map['release'] as String,
     );
   }
 }
+

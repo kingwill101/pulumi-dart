@@ -15,23 +15,15 @@ class BucketLifecycle {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final ruleValue = rule;
-    if (ruleValue != null) {
-      map['rule'] = pulumi.Input.encodeList<BucketLifecycleRuleItem,
-          Map<String, dynamic>>(ruleValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'rule': ?rule == null ? null : pulumi.Input.encodeList<BucketLifecycleRuleItem, Map<String, dynamic>>(rule!, (value) => value.toMap()),
+    };
   }
 
   factory BucketLifecycle.fromMap(Map<String, dynamic> map) {
     return BucketLifecycle(
-      rule: map['rule'] == null
-          ? null
-          : pulumi.Input.decodeList<BucketLifecycleRuleItem>(
-              map['rule'],
-              (value) => BucketLifecycleRuleItem.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      rule: map['rule'] == null ? null : pulumi.Input.decodeList<BucketLifecycleRuleItem>(map['rule'], (value) => BucketLifecycleRuleItem.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

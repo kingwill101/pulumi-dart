@@ -13,15 +13,15 @@ class PolicyDns64Config {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['scope'] = scope.toMap();
-    return map;
+    return <String, dynamic>{
+      'scope': scope.toMap(),
+    };
   }
 
   factory PolicyDns64Config.fromMap(Map<String, dynamic> map) {
     return PolicyDns64Config(
-      scope: PolicyDns64ConfigScope.fromMap(
-          (map['scope'] as Map).cast<String, dynamic>()),
+      scope: PolicyDns64ConfigScope.fromMap((map['scope'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

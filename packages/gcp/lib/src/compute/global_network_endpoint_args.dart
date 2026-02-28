@@ -10,16 +10,12 @@ class GlobalNetworkEndpointArgs {
   /// Fully qualified domain name of network endpoint.
   /// This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
   final pulumi.Input<String>? fqdn;
-
   /// The global network endpoint group this endpoint is part of.
   final pulumi.Input<String> globalNetworkEndpointGroup;
-
   /// IPv4 address external endpoint.
   final pulumi.Input<String>? ipAddress;
-
   /// Port number of the external endpoint.
   final pulumi.Input<int> port;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -36,30 +32,21 @@ class GlobalNetworkEndpointArgs {
     String? ipAddress,
     required int port,
     String? project,
-  })  : fqdn = pulumi.Input.asOptionalInput<String>(fqdn),
-        globalNetworkEndpointGroup =
-            pulumi.Input.asInput<String>(globalNetworkEndpointGroup),
-        ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
-        port = pulumi.Input.asInput<int>(port),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      fqdn = pulumi.Input.asOptionalInput<String>(fqdn),
+      globalNetworkEndpointGroup = pulumi.Input.asInput<String>(globalNetworkEndpointGroup),
+      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
+      port = pulumi.Input.asInput<int>(port),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final fqdnValue = fqdn;
-    if (fqdnValue != null) {
-      map['fqdn'] = fqdnValue;
-    }
-    map['globalNetworkEndpointGroup'] = globalNetworkEndpointGroup;
-    final ipAddressValue = ipAddress;
-    if (ipAddressValue != null) {
-      map['ipAddress'] = ipAddressValue;
-    }
-    map['port'] = port;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'fqdn': ?fqdn,
+      'globalNetworkEndpointGroup': globalNetworkEndpointGroup,
+      'ipAddress': ?ipAddress,
+      'port': port,
+      'project': ?project,
+    };
   }
 
   factory GlobalNetworkEndpointArgs.fromMap(Map<String, dynamic> map) {
@@ -72,3 +59,4 @@ class GlobalNetworkEndpointArgs {
     );
   }
 }
+

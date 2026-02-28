@@ -5,7 +5,6 @@ import 'thing_group_properties_attribute_payload.dart';
 class ThingGroupProperties {
   /// The Thing Group attributes. Defined below.
   final ThingGroupPropertiesAttributePayload? attributePayload;
-
   /// A description of the Thing Group.
   final String? description;
 
@@ -18,26 +17,17 @@ class ThingGroupProperties {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final attributePayloadValue = attributePayload;
-    if (attributePayloadValue != null) {
-      map['attributePayload'] = attributePayloadValue.toMap();
-    }
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'attributePayload': ?attributePayload == null ? null : attributePayload!.toMap(),
+      'description': ?description,
+    };
   }
 
   factory ThingGroupProperties.fromMap(Map<String, dynamic> map) {
     return ThingGroupProperties(
-      attributePayload: map['attributePayload'] == null
-          ? null
-          : ThingGroupPropertiesAttributePayload.fromMap(
-              (map['attributePayload'] as Map).cast<String, dynamic>()),
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      attributePayload: map['attributePayload'] == null ? null : ThingGroupPropertiesAttributePayload.fromMap((map['attributePayload'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : map['description'] as String,
     );
   }
 }
+

@@ -16,14 +16,15 @@ class GetWorkforcePoolIamPolicyArgs {
   GetWorkforcePoolIamPolicyArgs({
     required String location,
     required String workforcePoolId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        workforcePoolId = pulumi.Input.asInput<String>(workforcePoolId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      workforcePoolId = pulumi.Input.asInput<String>(workforcePoolId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    map['workforcePoolId'] = workforcePoolId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'workforcePoolId': workforcePoolId,
+    };
   }
 
   factory GetWorkforcePoolIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -33,3 +34,4 @@ class GetWorkforcePoolIamPolicyArgs {
     );
   }
 }
+

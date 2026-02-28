@@ -1,18 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetNetworkPeeringConnectionsOdbPeeringConnection {
   /// The Amazon Resource Name (ARN) for the  ODB network peering connection.
   final String arn;
-
   /// Display name of the ODB network peering connection.
   final String displayName;
-
   /// The unique identifier of the  ODB network peering connection.
   final String id;
-
   /// ARN of the ODB network peering connection.
   final String odbNetworkArn;
-
   /// ARN of the peer network peering connection.
   final String peerNetworkArn;
 
@@ -31,17 +28,16 @@ class GetNetworkPeeringConnectionsOdbPeeringConnection {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['displayName'] = displayName;
-    map['id'] = id;
-    map['odbNetworkArn'] = odbNetworkArn;
-    map['peerNetworkArn'] = peerNetworkArn;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'displayName': displayName,
+      'id': id,
+      'odbNetworkArn': odbNetworkArn,
+      'peerNetworkArn': peerNetworkArn,
+    };
   }
 
-  factory GetNetworkPeeringConnectionsOdbPeeringConnection.fromMap(
-      Map<String, dynamic> map) {
+  factory GetNetworkPeeringConnectionsOdbPeeringConnection.fromMap(Map<String, dynamic> map) {
     return GetNetworkPeeringConnectionsOdbPeeringConnection(
       arn: map['arn'] as String,
       displayName: map['displayName'] as String,
@@ -51,3 +47,4 @@ class GetNetworkPeeringConnectionsOdbPeeringConnection {
     );
   }
 }
+

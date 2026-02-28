@@ -21,20 +21,19 @@ class ResourceStatusResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['physicalHost'] = physicalHost;
-    map['scheduling'] = scheduling.toMap();
-    map['upcomingMaintenance'] = upcomingMaintenance.toMap();
-    return map;
+    return <String, dynamic>{
+      'physicalHost': physicalHost,
+      'scheduling': scheduling.toMap(),
+      'upcomingMaintenance': upcomingMaintenance.toMap(),
+    };
   }
 
   factory ResourceStatusResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return ResourceStatusResponseComputeBeta(
       physicalHost: map['physicalHost'] as String,
-      scheduling: ResourceStatusSchedulingResponseComputeBeta.fromMap(
-          (map['scheduling'] as Map).cast<String, dynamic>()),
-      upcomingMaintenance: UpcomingMaintenanceResponseComputeBeta.fromMap(
-          (map['upcomingMaintenance'] as Map).cast<String, dynamic>()),
+      scheduling: ResourceStatusSchedulingResponseComputeBeta.fromMap((map['scheduling'] as Map).cast<String, dynamic>()),
+      upcomingMaintenance: UpcomingMaintenanceResponseComputeBeta.fromMap((map['upcomingMaintenance'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

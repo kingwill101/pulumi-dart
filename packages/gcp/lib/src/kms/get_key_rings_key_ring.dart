@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetKeyRingsKeyRing {
   final String id;
   final String name;
@@ -13,10 +14,10 @@ class GetKeyRingsKeyRing {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'name': name,
+    };
   }
 
   factory GetKeyRingsKeyRing.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class GetKeyRingsKeyRing {
     );
   }
 }
+

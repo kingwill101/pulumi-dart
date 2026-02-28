@@ -13,15 +13,15 @@ class CatalogTableOpenTableFormatInput {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['icebergInput'] = icebergInput.toMap();
-    return map;
+    return <String, dynamic>{
+      'icebergInput': icebergInput.toMap(),
+    };
   }
 
   factory CatalogTableOpenTableFormatInput.fromMap(Map<String, dynamic> map) {
     return CatalogTableOpenTableFormatInput(
-      icebergInput: CatalogTableOpenTableFormatInputIcebergInput.fromMap(
-          (map['icebergInput'] as Map).cast<String, dynamic>()),
+      icebergInput: CatalogTableOpenTableFormatInputIcebergInput.fromMap((map['icebergInput'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

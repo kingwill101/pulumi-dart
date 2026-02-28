@@ -610,33 +610,25 @@ import 'backup_schedule_spec.dart';
 class BackupSchedule extends pulumi.CustomResource {
   /// The database to create the backup schedule on.
   late final pulumi.Output<String> database;
-
   /// Configuration for the encryption of the backup schedule.
   /// Structure is documented below.
   late final pulumi.Output<BackupScheduleEncryptionConfig> encryptionConfig;
-
   /// The schedule creates only full backups..
   late final pulumi.Output<Map<String, dynamic>?> fullBackupSpec;
-
   /// The schedule creates incremental backup chains.
   late final pulumi.Output<Map<String, dynamic>?> incrementalBackupSpec;
-
   /// The instance to create the database on.
   late final pulumi.Output<String> instance;
-
   /// A unique identifier for the backup schedule, which cannot be changed after
   /// the backup schedule is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
   /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: '3.5s'.
   /// You can set this to a value up to 366 days.
   late final pulumi.Output<String> retentionDuration;
-
   /// Defines specifications of the backup schedule.
   /// Structure is documented below.
   late final pulumi.Output<BackupScheduleSpec?> spec;
@@ -656,12 +648,9 @@ class BackupSchedule extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.database = registerOutput<String>('database');
-    this.encryptionConfig =
-        registerOutput<BackupScheduleEncryptionConfig>('encryptionConfig');
-    this.fullBackupSpec =
-        registerOutput<Map<String, dynamic>?>('fullBackupSpec');
-    this.incrementalBackupSpec =
-        registerOutput<Map<String, dynamic>?>('incrementalBackupSpec');
+    this.encryptionConfig = registerOutput<BackupScheduleEncryptionConfig>('encryptionConfig');
+    this.fullBackupSpec = registerOutput<Map<String, dynamic>?>('fullBackupSpec');
+    this.incrementalBackupSpec = registerOutput<Map<String, dynamic>?>('incrementalBackupSpec');
     this.instance = registerOutput<String>('instance');
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');

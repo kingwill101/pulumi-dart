@@ -17,3 +17,4 @@ enum RepositoryMode {
     throw ArgumentError('Unknown RepositoryMode value: $value');
   }
 }
+

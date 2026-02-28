@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RegionInstanceGroupManagerStatusStatefulPerInstanceConfig {
   /// A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status `EFFECTIVE` or there are no per-instance-configs.
   final bool? allEffective;
@@ -11,19 +12,15 @@ class RegionInstanceGroupManagerStatusStatefulPerInstanceConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final allEffectiveValue = allEffective;
-    if (allEffectiveValue != null) {
-      map['allEffective'] = allEffectiveValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'allEffective': ?allEffective,
+    };
   }
 
-  factory RegionInstanceGroupManagerStatusStatefulPerInstanceConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory RegionInstanceGroupManagerStatusStatefulPerInstanceConfig.fromMap(Map<String, dynamic> map) {
     return RegionInstanceGroupManagerStatusStatefulPerInstanceConfig(
-      allEffective:
-          map['allEffective'] == null ? null : map['allEffective'] as bool,
+      allEffective: map['allEffective'] == null ? null : map['allEffective'] as bool,
     );
   }
 }
+

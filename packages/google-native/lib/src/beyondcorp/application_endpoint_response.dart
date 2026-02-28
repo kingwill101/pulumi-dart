@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// ApplicationEndpoint represents a remote application endpoint.
 class ApplicationEndpointResponse {
   /// Hostname or IP address of the remote application endpoint.
   final String host;
-
   /// Port of the remote application endpoint.
   final int port;
 
@@ -17,10 +17,10 @@ class ApplicationEndpointResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['host'] = host;
-    map['port'] = port;
-    return map;
+    return <String, dynamic>{
+      'host': host,
+      'port': port,
+    };
   }
 
   factory ApplicationEndpointResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class ApplicationEndpointResponse {
     );
   }
 }
+

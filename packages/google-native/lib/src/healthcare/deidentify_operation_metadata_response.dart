@@ -14,16 +14,15 @@ class DeidentifyOperationMetadataResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['fhirOutput'] = fhirOutput.toMap();
-    return map;
+    return <String, dynamic>{
+      'fhirOutput': fhirOutput.toMap(),
+    };
   }
 
-  factory DeidentifyOperationMetadataResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory DeidentifyOperationMetadataResponse.fromMap(Map<String, dynamic> map) {
     return DeidentifyOperationMetadataResponse(
-      fhirOutput: FhirOutputResponse.fromMap(
-          (map['fhirOutput'] as Map).cast<String, dynamic>()),
+      fhirOutput: FhirOutputResponse.fromMap((map['fhirOutput'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

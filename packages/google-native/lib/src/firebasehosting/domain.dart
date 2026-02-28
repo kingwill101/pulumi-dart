@@ -8,21 +8,16 @@ import 'domain_redirect_response.dart';
 class Domain extends pulumi.CustomResource {
   /// The domain name of the association.
   late final pulumi.Output<String> domainName;
-
   /// If set, the domain should redirect with the provided parameters.
   late final pulumi.Output<DomainRedirectResponse> domainRedirect;
   late final pulumi.Output<String> project;
-
   /// Information about the provisioning of certificates and the health of the DNS resolution for the domain.
   late final pulumi.Output<DomainProvisioningResponse> provisioning;
-
   /// The site name of the association.
   late final pulumi.Output<String> site;
   late final pulumi.Output<String> siteId;
-
   /// Additional status of the domain association.
   late final pulumi.Output<String> status;
-
   /// The time at which the domain was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -41,11 +36,9 @@ class Domain extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.domainName = registerOutput<String>('domainName');
-    this.domainRedirect =
-        registerOutput<DomainRedirectResponse>('domainRedirect');
+    this.domainRedirect = registerOutput<DomainRedirectResponse>('domainRedirect');
     this.project = registerOutput<String>('project');
-    this.provisioning =
-        registerOutput<DomainProvisioningResponse>('provisioning');
+    this.provisioning = registerOutput<DomainProvisioningResponse>('provisioning');
     this.site = registerOutput<String>('site');
     this.siteId = registerOutput<String>('siteId');
     this.status = registerOutput<String>('status');

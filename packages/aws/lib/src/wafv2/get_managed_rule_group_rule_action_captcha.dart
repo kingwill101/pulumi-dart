@@ -4,8 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_managed_rule_group_rule_action_captcha_custom_request_handling.dart';
 
 class GetManagedRuleGroupRuleActionCaptcha {
-  final List<GetManagedRuleGroupRuleActionCaptchaCustomRequestHandling>
-      customRequestHandlings;
+  final List<GetManagedRuleGroupRuleActionCaptchaCustomRequestHandling> customRequestHandlings;
 
   /// Creates a new [GetManagedRuleGroupRuleActionCaptcha].
   /// [customRequestHandlings] Required.
@@ -14,22 +13,15 @@ class GetManagedRuleGroupRuleActionCaptcha {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['customRequestHandlings'] = pulumi.Input.encodeList<
-        GetManagedRuleGroupRuleActionCaptchaCustomRequestHandling,
-        Map<String, dynamic>>(customRequestHandlings, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'customRequestHandlings': pulumi.Input.encodeList<GetManagedRuleGroupRuleActionCaptchaCustomRequestHandling, Map<String, dynamic>>(customRequestHandlings, (value) => value.toMap()),
+    };
   }
 
-  factory GetManagedRuleGroupRuleActionCaptcha.fromMap(
-      Map<String, dynamic> map) {
+  factory GetManagedRuleGroupRuleActionCaptcha.fromMap(Map<String, dynamic> map) {
     return GetManagedRuleGroupRuleActionCaptcha(
-      customRequestHandlings: pulumi.Input.decodeList<
-              GetManagedRuleGroupRuleActionCaptchaCustomRequestHandling>(
-          map['customRequestHandlings'],
-          (value) =>
-              GetManagedRuleGroupRuleActionCaptchaCustomRequestHandling.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      customRequestHandlings: pulumi.Input.decodeList<GetManagedRuleGroupRuleActionCaptchaCustomRequestHandling>(map['customRequestHandlings'], (value) => GetManagedRuleGroupRuleActionCaptchaCustomRequestHandling.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

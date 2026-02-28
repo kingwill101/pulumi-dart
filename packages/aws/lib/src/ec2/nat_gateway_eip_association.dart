@@ -115,12 +115,10 @@ class NatGatewayEipAssociation extends pulumi.CustomResource {
   /// The ID of the Elastic IP Allocation to associate with the NAT Gateway.
   late final pulumi.Output<String> allocationId;
   late final pulumi.Output<String> associationId;
-
   /// The ID of the NAT Gateway to associate the Elastic IP Allocation to.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> natGatewayId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<NatGatewayEipAssociationTimeouts?> timeouts;
@@ -143,7 +141,6 @@ class NatGatewayEipAssociation extends pulumi.CustomResource {
     this.associationId = registerOutput<String>('associationId');
     this.natGatewayId = registerOutput<String>('natGatewayId');
     this.region = registerOutput<String>('region');
-    this.timeouts =
-        registerOutput<NatGatewayEipAssociationTimeouts?>('timeouts');
+    this.timeouts = registerOutput<NatGatewayEipAssociationTimeouts?>('timeouts');
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeVpcConfiguration {
   /// The VPCE ID for Firehose to privately connect with Snowflake.
   final String privateLinkVpceId;
@@ -11,15 +12,15 @@ class FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeVpcConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['privateLinkVpceId'] = privateLinkVpceId;
-    return map;
+    return <String, dynamic>{
+      'privateLinkVpceId': privateLinkVpceId,
+    };
   }
 
-  factory FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeVpcConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeVpcConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeVpcConfiguration(
       privateLinkVpceId: map['privateLinkVpceId'] as String,
     );
   }
 }
+

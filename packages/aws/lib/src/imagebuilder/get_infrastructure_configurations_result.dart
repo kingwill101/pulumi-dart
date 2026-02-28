@@ -8,10 +8,8 @@ class GetInfrastructureConfigurationsResult {
   /// Set of ARNs of the matched Image Builder Infrastructure Configurations.
   final List<String> arns;
   final List<GetInfrastructureConfigurationsFilter>? filters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Set of names of the matched Image Builder Infrastructure Configurations.
   final List<String> names;
   final String region;
@@ -31,33 +29,23 @@ class GetInfrastructureConfigurationsResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arns'] = arns;
-    final filtersValue = filters;
-    if (filtersValue != null) {
-      map['filters'] = pulumi.Input.encodeList<
-          GetInfrastructureConfigurationsFilter,
-          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
-    }
-    map['id'] = id;
-    map['names'] = names;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'arns': arns,
+      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetInfrastructureConfigurationsFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'id': id,
+      'names': names,
+      'region': region,
+    };
   }
 
-  factory GetInfrastructureConfigurationsResult.fromMap(
-      Map<String, dynamic> map) {
+  factory GetInfrastructureConfigurationsResult.fromMap(Map<String, dynamic> map) {
     return GetInfrastructureConfigurationsResult(
       arns: (map['arns'] as List).cast<String>(),
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetInfrastructureConfigurationsFilter>(
-              map['filters'],
-              (value) => GetInfrastructureConfigurationsFilter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetInfrastructureConfigurationsFilter>(map['filters'], (value) => GetInfrastructureConfigurationsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       names: (map['names'] as List).cast<String>(),
       region: map['region'] as String,
     );
   }
 }
+

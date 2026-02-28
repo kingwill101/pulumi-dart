@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption {
   /// This field is set when upgrades are about to commence with the approximate start time for the upgrades, in RFC3339 text format.
   final String autoUpgradeStartTime;
-
   /// This field is set when upgrades are about to commence with the description of the upgrade.
   final String description;
 
@@ -16,17 +16,17 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['autoUpgradeStartTime'] = autoUpgradeStartTime;
-    map['description'] = description;
-    return map;
+    return <String, dynamic>{
+      'autoUpgradeStartTime': autoUpgradeStartTime,
+      'description': description,
+    };
   }
 
-  factory GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption.fromMap(
-      Map<String, dynamic> map) {
+  factory GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption.fromMap(Map<String, dynamic> map) {
     return GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption(
       autoUpgradeStartTime: map['autoUpgradeStartTime'] as String,
       description: map['description'] as String,
     );
   }
 }
+

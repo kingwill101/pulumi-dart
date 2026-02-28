@@ -9,14 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ParameterVersionArgs {
   /// The current state of Parameter Version. This field is only applicable for updating Parameter Version.
   final pulumi.Input<bool>? disabled;
-
   /// Parameter Manager Parameter resource.
   final pulumi.Input<String> parameter;
-
   /// The Parameter data.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String> parameterData;
-
   /// Version ID of the Parameter Version Resource. This must be unique within the Parameter.
   final pulumi.Input<String> parameterVersionId;
 
@@ -30,21 +27,19 @@ class ParameterVersionArgs {
     required String parameter,
     required String parameterData,
     required String parameterVersionId,
-  })  : disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-        parameter = pulumi.Input.asInput<String>(parameter),
-        parameterData = pulumi.Input.asInput<String>(parameterData),
-        parameterVersionId = pulumi.Input.asInput<String>(parameterVersionId);
+  }) :
+      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
+      parameter = pulumi.Input.asInput<String>(parameter),
+      parameterData = pulumi.Input.asInput<String>(parameterData),
+      parameterVersionId = pulumi.Input.asInput<String>(parameterVersionId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final disabledValue = disabled;
-    if (disabledValue != null) {
-      map['disabled'] = disabledValue;
-    }
-    map['parameter'] = parameter;
-    map['parameterData'] = parameterData;
-    map['parameterVersionId'] = parameterVersionId;
-    return map;
+    return <String, dynamic>{
+      'disabled': ?disabled,
+      'parameter': parameter,
+      'parameterData': parameterData,
+      'parameterVersionId': parameterVersionId,
+    };
   }
 
   factory ParameterVersionArgs.fromMap(Map<String, dynamic> map) {
@@ -56,3 +51,4 @@ class ParameterVersionArgs {
     );
   }
 }
+

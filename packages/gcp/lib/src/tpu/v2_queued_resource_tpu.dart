@@ -15,23 +15,15 @@ class V2QueuedResourceTpu {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nodeSpecsValue = nodeSpecs;
-    if (nodeSpecsValue != null) {
-      map['nodeSpecs'] = pulumi.Input.encodeList<V2QueuedResourceTpuNodeSpec,
-          Map<String, dynamic>>(nodeSpecsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'nodeSpecs': ?nodeSpecs == null ? null : pulumi.Input.encodeList<V2QueuedResourceTpuNodeSpec, Map<String, dynamic>>(nodeSpecs!, (value) => value.toMap()),
+    };
   }
 
   factory V2QueuedResourceTpu.fromMap(Map<String, dynamic> map) {
     return V2QueuedResourceTpu(
-      nodeSpecs: map['nodeSpecs'] == null
-          ? null
-          : pulumi.Input.decodeList<V2QueuedResourceTpuNodeSpec>(
-              map['nodeSpecs'],
-              (value) => V2QueuedResourceTpuNodeSpec.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      nodeSpecs: map['nodeSpecs'] == null ? null : pulumi.Input.decodeList<V2QueuedResourceTpuNodeSpec>(map['nodeSpecs'], (value) => V2QueuedResourceTpuNodeSpec.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

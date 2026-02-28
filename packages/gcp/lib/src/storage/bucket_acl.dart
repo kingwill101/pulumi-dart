@@ -167,13 +167,10 @@ class BucketACL extends pulumi.CustomResource {
   ///
   /// - - -
   late final pulumi.Output<String> bucket;
-
   /// Configure this ACL to be the default ACL.
   late final pulumi.Output<String?> defaultAcl;
-
   /// The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `role_entity` is not.
   late final pulumi.Output<String?> predefinedAcl;
-
   /// List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefined_acl` is not.
   late final pulumi.Output<List<String>> roleEntities;
 

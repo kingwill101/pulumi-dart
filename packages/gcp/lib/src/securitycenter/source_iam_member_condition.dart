@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SourceIamMemberCondition {
   /// The description of the source (max of 1024 characters).
   final String? description;
@@ -17,22 +18,19 @@ class SourceIamMemberCondition {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    map['expression'] = expression;
-    map['title'] = title;
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'expression': expression,
+      'title': title,
+    };
   }
 
   factory SourceIamMemberCondition.fromMap(Map<String, dynamic> map) {
     return SourceIamMemberCondition(
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       expression: map['expression'] as String,
       title: map['title'] as String,
     );
   }
 }
+

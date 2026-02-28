@@ -14,19 +14,15 @@ class LoggingVariantConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final variantValue = variant;
-    if (variantValue != null) {
-      map['variant'] = variantValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'variant': ?variant == null ? null : variant!.value,
+    };
   }
 
   factory LoggingVariantConfig.fromMap(Map<String, dynamic> map) {
     return LoggingVariantConfig(
-      variant: map['variant'] == null
-          ? null
-          : LoggingVariantConfigVariant.fromValue(map['variant'] as String),
+      variant: map['variant'] == null ? null : LoggingVariantConfigVariant.fromValue(map['variant'] as String),
     );
   }
 }
+

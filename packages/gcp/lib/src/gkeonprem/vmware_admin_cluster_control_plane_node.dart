@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VmwareAdminClusterControlPlaneNode {
   /// The number of vCPUs for the control-plane node of the admin cluster.
   final int? cpus;
-
   /// The number of mebibytes of memory for the control-plane node of the admin cluster.
   final int? memory;
-
   /// The number of control plane nodes for this VMware admin cluster.
   final int? replicas;
 
@@ -21,20 +20,11 @@ class VmwareAdminClusterControlPlaneNode {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cpusValue = cpus;
-    if (cpusValue != null) {
-      map['cpus'] = cpusValue;
-    }
-    final memoryValue = memory;
-    if (memoryValue != null) {
-      map['memory'] = memoryValue;
-    }
-    final replicasValue = replicas;
-    if (replicasValue != null) {
-      map['replicas'] = replicasValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cpus': ?cpus,
+      'memory': ?memory,
+      'replicas': ?replicas,
+    };
   }
 
   factory VmwareAdminClusterControlPlaneNode.fromMap(Map<String, dynamic> map) {
@@ -45,3 +35,4 @@ class VmwareAdminClusterControlPlaneNode {
     );
   }
 }
+

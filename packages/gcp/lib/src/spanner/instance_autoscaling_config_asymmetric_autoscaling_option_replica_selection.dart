@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection {
   /// The location of the replica to apply asymmetric autoscaling options.
   final String location;
@@ -11,15 +12,15 @@ class InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+    };
   }
 
-  factory InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection.fromMap(
-      Map<String, dynamic> map) {
+  factory InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection.fromMap(Map<String, dynamic> map) {
     return InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection(
       location: map['location'] as String,
     );
   }
 }
+

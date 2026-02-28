@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Label object for TypeProviders
 class TypeProviderLabelEntry {
   /// Key of the label
   final String? key;
-
   /// Value of the label
   final String? value;
 
@@ -17,16 +17,10 @@ class TypeProviderLabelEntry {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final keyValue = key;
-    if (keyValue != null) {
-      map['key'] = keyValue;
-    }
-    final valueValue = value;
-    if (valueValue != null) {
-      map['value'] = valueValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'key': ?key,
+      'value': ?value,
+    };
   }
 
   factory TypeProviderLabelEntry.fromMap(Map<String, dynamic> map) {
@@ -36,3 +30,4 @@ class TypeProviderLabelEntry {
     );
   }
 }
+

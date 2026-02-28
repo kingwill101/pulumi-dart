@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A status to accept. Either a status code class like "2xx", or an integer status code like "200".
 class ResponseStatusCodeResponse {
   /// A class of status codes to accept.
   final String statusClass;
-
   /// A status code to accept.
   final int statusValue;
 
@@ -17,10 +17,10 @@ class ResponseStatusCodeResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['statusClass'] = statusClass;
-    map['statusValue'] = statusValue;
-    return map;
+    return <String, dynamic>{
+      'statusClass': statusClass,
+      'statusValue': statusValue,
+    };
   }
 
   factory ResponseStatusCodeResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class ResponseStatusCodeResponse {
     );
   }
 }
+

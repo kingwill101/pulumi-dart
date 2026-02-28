@@ -13,20 +13,15 @@ class GetGatewayRouteSpecGrpcRouteAction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['targets'] = pulumi.Input.encodeList<
-        GetGatewayRouteSpecGrpcRouteActionTarget,
-        Map<String, dynamic>>(targets, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'targets': pulumi.Input.encodeList<GetGatewayRouteSpecGrpcRouteActionTarget, Map<String, dynamic>>(targets, (value) => value.toMap()),
+    };
   }
 
   factory GetGatewayRouteSpecGrpcRouteAction.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpecGrpcRouteAction(
-      targets:
-          pulumi.Input.decodeList<GetGatewayRouteSpecGrpcRouteActionTarget>(
-              map['targets'],
-              (value) => GetGatewayRouteSpecGrpcRouteActionTarget.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      targets: pulumi.Input.decodeList<GetGatewayRouteSpecGrpcRouteActionTarget>(map['targets'], (value) => GetGatewayRouteSpecGrpcRouteActionTarget.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PhoneNumberStatus {
   /// The status message.
   final String? message;
-
   /// The status of the phone number. Valid Values: `CLAIMED` | `IN_PROGRESS` | `FAILED`.
   final String? status;
 
@@ -16,16 +16,10 @@ class PhoneNumberStatus {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final messageValue = message;
-    if (messageValue != null) {
-      map['message'] = messageValue;
-    }
-    final statusValue = status;
-    if (statusValue != null) {
-      map['status'] = statusValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'message': ?message,
+      'status': ?status,
+    };
   }
 
   factory PhoneNumberStatus.fromMap(Map<String, dynamic> map) {
@@ -35,3 +29,4 @@ class PhoneNumberStatus {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTableTableConstraintPrimaryKey {
   /// The columns that are composed of the primary key constraint.
   final List<String> columns;
@@ -11,9 +12,9 @@ class GetTableTableConstraintPrimaryKey {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['columns'] = columns;
-    return map;
+    return <String, dynamic>{
+      'columns': columns,
+    };
   }
 
   factory GetTableTableConstraintPrimaryKey.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetTableTableConstraintPrimaryKey {
     );
   }
 }
+

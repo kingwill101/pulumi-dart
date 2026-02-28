@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents the network configuration required for the VMware user clusters with DHCP IP configurations.
 class VmwareDhcpIpConfigResponse {
   /// enabled is a flag to mark if DHCP IP allocation is used for VMware user clusters.
@@ -12,9 +13,9 @@ class VmwareDhcpIpConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory VmwareDhcpIpConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class VmwareDhcpIpConfigResponse {
     );
   }
 }
+

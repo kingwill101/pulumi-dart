@@ -5,8 +5,7 @@ import 'flow_destination_flow_config_destination_connector_properties_s3_s3_outp
 class FlowDestinationFlowConfigDestinationConnectorPropertiesS3 {
   final String bucketName;
   final String? bucketPrefix;
-  final FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfig?
-      s3OutputFormatConfig;
+  final FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfig? s3OutputFormatConfig;
 
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesS3].
   /// [bucketName] Required.
@@ -19,30 +18,19 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesS3 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucketName'] = bucketName;
-    final bucketPrefixValue = bucketPrefix;
-    if (bucketPrefixValue != null) {
-      map['bucketPrefix'] = bucketPrefixValue;
-    }
-    final s3OutputFormatConfigValue = s3OutputFormatConfig;
-    if (s3OutputFormatConfigValue != null) {
-      map['s3OutputFormatConfig'] = s3OutputFormatConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'bucketName': bucketName,
+      'bucketPrefix': ?bucketPrefix,
+      's3OutputFormatConfig': ?s3OutputFormatConfig == null ? null : s3OutputFormatConfig!.toMap(),
+    };
   }
 
-  factory FlowDestinationFlowConfigDestinationConnectorPropertiesS3.fromMap(
-      Map<String, dynamic> map) {
+  factory FlowDestinationFlowConfigDestinationConnectorPropertiesS3.fromMap(Map<String, dynamic> map) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesS3(
       bucketName: map['bucketName'] as String,
-      bucketPrefix:
-          map['bucketPrefix'] == null ? null : map['bucketPrefix'] as String,
-      s3OutputFormatConfig: map['s3OutputFormatConfig'] == null
-          ? null
-          : FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfig
-              .fromMap(
-                  (map['s3OutputFormatConfig'] as Map).cast<String, dynamic>()),
+      bucketPrefix: map['bucketPrefix'] == null ? null : map['bucketPrefix'] as String,
+      s3OutputFormatConfig: map['s3OutputFormatConfig'] == null ? null : FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfig.fromMap((map['s3OutputFormatConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

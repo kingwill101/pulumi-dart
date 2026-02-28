@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EnvironmentContainerImage {
   /// The path to the container image repository.
   /// For example: gcr.io/{project_id}/{imageName}
   final String repository;
-
   /// The tag of the container image. If not specified, this defaults to the latest tag.
   final String? tag;
 
@@ -17,13 +17,10 @@ class EnvironmentContainerImage {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['repository'] = repository;
-    final tagValue = tag;
-    if (tagValue != null) {
-      map['tag'] = tagValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'repository': repository,
+      'tag': ?tag,
+    };
   }
 
   factory EnvironmentContainerImage.fromMap(Map<String, dynamic> map) {
@@ -33,3 +30,4 @@ class EnvironmentContainerImage {
     );
   }
 }
+

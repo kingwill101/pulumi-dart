@@ -7,10 +7,8 @@ import 'package_manager.dart';
 class Package {
   /// The desired_state the agent should maintain for this package. The default is to ensure the package is installed.
   final PackageDesiredState? desiredState;
-
   /// Type of package manager that can be used to install this package. If a system does not have the package manager, the package is not installed or removed no error message is returned. By default, or if you specify `ANY`, the agent attempts to install and remove this package using the default package manager. This is useful when creating a policy that applies to different types of systems. The default behavior is ANY.
   final PackageManager? manager;
-
   /// The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
   final String name;
 
@@ -25,28 +23,19 @@ class Package {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final desiredStateValue = desiredState;
-    if (desiredStateValue != null) {
-      map['desiredState'] = desiredStateValue.value;
-    }
-    final managerValue = manager;
-    if (managerValue != null) {
-      map['manager'] = managerValue.value;
-    }
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'desiredState': ?desiredState == null ? null : desiredState!.value,
+      'manager': ?manager == null ? null : manager!.value,
+      'name': name,
+    };
   }
 
   factory Package.fromMap(Map<String, dynamic> map) {
     return Package(
-      desiredState: map['desiredState'] == null
-          ? null
-          : PackageDesiredState.fromValue(map['desiredState'] as String),
-      manager: map['manager'] == null
-          ? null
-          : PackageManager.fromValue(map['manager'] as String),
+      desiredState: map['desiredState'] == null ? null : PackageDesiredState.fromValue(map['desiredState'] as String),
+      manager: map['manager'] == null ? null : PackageManager.fromValue(map['manager'] as String),
       name: map['name'] as String,
     );
   }
 }
+

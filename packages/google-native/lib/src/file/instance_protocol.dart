@@ -16,3 +16,4 @@ enum InstanceProtocol {
     throw ArgumentError('Unknown InstanceProtocol value: $value');
   }
 }
+

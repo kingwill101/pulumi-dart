@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration {
   /// Unique identifier of the guardrail.
   final String guardrailIdentifier;
-
   /// Version of the guardrail.
   final String guardrailVersion;
 
@@ -16,17 +16,17 @@ class GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['guardrailIdentifier'] = guardrailIdentifier;
-    map['guardrailVersion'] = guardrailVersion;
-    return map;
+    return <String, dynamic>{
+      'guardrailIdentifier': guardrailIdentifier,
+      'guardrailVersion': guardrailVersion,
+    };
   }
 
-  factory GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration.fromMap(Map<String, dynamic> map) {
     return GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration(
       guardrailIdentifier: map['guardrailIdentifier'] as String,
       guardrailVersion: map['guardrailVersion'] as String,
     );
   }
 }
+

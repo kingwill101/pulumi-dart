@@ -124,31 +124,22 @@ import 'app_resource_spec.dart';
 class App extends pulumi.CustomResource {
   /// The name of the app.
   late final pulumi.Output<String> appName;
-
   /// The type of app. Valid values are `JupyterServer`, `KernelGateway`, `RStudioServerPro`, `RSessionGateway`, `TensorBoard`, `CodeEditor`, `JupyterLab`, `DetailedProfiler`, and `Canvas`.
   late final pulumi.Output<String> appType;
-
   /// The Amazon Resource Name (ARN) of the app.
   late final pulumi.Output<String> arn;
-
   /// The domain ID.
   late final pulumi.Output<String> domainId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance.See Resource Spec below.
   late final pulumi.Output<AppResourceSpec> resourceSpec;
-
   /// The name of the space. At least one of `user_profile_name` or `space_name` required.
   late final pulumi.Output<String?> spaceName;
-
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The user profile name. At least one of `user_profile_name` or `space_name` required.
   late final pulumi.Output<String?> userProfileName;
 

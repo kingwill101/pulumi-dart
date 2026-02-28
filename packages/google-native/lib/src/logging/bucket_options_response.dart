@@ -8,10 +8,8 @@ import 'linear_response.dart';
 class BucketOptionsResponse {
   /// The explicit buckets.
   final ExplicitResponse explicitBuckets;
-
   /// The exponential buckets.
   final ExponentialResponse exponentialBuckets;
-
   /// The linear bucket.
   final LinearResponse linearBuckets;
 
@@ -26,21 +24,19 @@ class BucketOptionsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['explicitBuckets'] = explicitBuckets.toMap();
-    map['exponentialBuckets'] = exponentialBuckets.toMap();
-    map['linearBuckets'] = linearBuckets.toMap();
-    return map;
+    return <String, dynamic>{
+      'explicitBuckets': explicitBuckets.toMap(),
+      'exponentialBuckets': exponentialBuckets.toMap(),
+      'linearBuckets': linearBuckets.toMap(),
+    };
   }
 
   factory BucketOptionsResponse.fromMap(Map<String, dynamic> map) {
     return BucketOptionsResponse(
-      explicitBuckets: ExplicitResponse.fromMap(
-          (map['explicitBuckets'] as Map).cast<String, dynamic>()),
-      exponentialBuckets: ExponentialResponse.fromMap(
-          (map['exponentialBuckets'] as Map).cast<String, dynamic>()),
-      linearBuckets: LinearResponse.fromMap(
-          (map['linearBuckets'] as Map).cast<String, dynamic>()),
+      explicitBuckets: ExplicitResponse.fromMap((map['explicitBuckets'] as Map).cast<String, dynamic>()),
+      exponentialBuckets: ExponentialResponse.fromMap((map['exponentialBuckets'] as Map).cast<String, dynamic>()),
+      linearBuckets: LinearResponse.fromMap((map['linearBuckets'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

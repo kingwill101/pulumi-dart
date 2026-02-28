@@ -14,16 +14,15 @@ class GoogleCloudDataplexV1ContentNotebook {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kernelType'] = kernelType.value;
-    return map;
+    return <String, dynamic>{
+      'kernelType': kernelType.value,
+    };
   }
 
-  factory GoogleCloudDataplexV1ContentNotebook.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1ContentNotebook.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1ContentNotebook(
-      kernelType: GoogleCloudDataplexV1ContentNotebookKernelType.fromValue(
-          map['kernelType'] as String),
+      kernelType: GoogleCloudDataplexV1ContentNotebookKernelType.fromValue(map['kernelType'] as String),
     );
   }
 }
+

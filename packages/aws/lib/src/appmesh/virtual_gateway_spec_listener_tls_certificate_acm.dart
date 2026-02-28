@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VirtualGatewaySpecListenerTlsCertificateAcm {
   /// ARN for the certificate.
   final String certificateArn;
@@ -11,15 +12,15 @@ class VirtualGatewaySpecListenerTlsCertificateAcm {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['certificateArn'] = certificateArn;
-    return map;
+    return <String, dynamic>{
+      'certificateArn': certificateArn,
+    };
   }
 
-  factory VirtualGatewaySpecListenerTlsCertificateAcm.fromMap(
-      Map<String, dynamic> map) {
+  factory VirtualGatewaySpecListenerTlsCertificateAcm.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecListenerTlsCertificateAcm(
       certificateArn: map['certificateArn'] as String,
     );
   }
 }
+

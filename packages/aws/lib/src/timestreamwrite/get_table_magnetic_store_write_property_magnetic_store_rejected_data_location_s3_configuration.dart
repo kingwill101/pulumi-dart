@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocationS3Configuration {
   /// Name of S3 bucket.
   final String bucketName;
   final String encryptionOption;
-
   /// AWS KMS key ID for S3 location with AWS maanged key.
   final String kmsKeyId;
-
   /// Object key preview for S3 location.
   final String objectKeyPrefix;
 
@@ -24,16 +23,15 @@ class GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocationS3Confi
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucketName'] = bucketName;
-    map['encryptionOption'] = encryptionOption;
-    map['kmsKeyId'] = kmsKeyId;
-    map['objectKeyPrefix'] = objectKeyPrefix;
-    return map;
+    return <String, dynamic>{
+      'bucketName': bucketName,
+      'encryptionOption': encryptionOption,
+      'kmsKeyId': kmsKeyId,
+      'objectKeyPrefix': objectKeyPrefix,
+    };
   }
 
-  factory GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocationS3Configuration.fromMap(
-      Map<String, dynamic> map) {
+  factory GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocationS3Configuration.fromMap(Map<String, dynamic> map) {
     return GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocationS3Configuration(
       bucketName: map['bucketName'] as String,
       encryptionOption: map['encryptionOption'] as String,
@@ -42,3 +40,4 @@ class GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocationS3Confi
     );
   }
 }
+

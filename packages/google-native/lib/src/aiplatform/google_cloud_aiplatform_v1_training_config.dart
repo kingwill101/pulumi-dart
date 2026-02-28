@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// CMLE training config. For every active learning labeling iteration, system will train a machine learning model on CMLE. The trained model will be used by data sampling algorithm to select DataItems.
 class GoogleCloudAiplatformV1TrainingConfig {
   /// The timeout hours for the CMLE training job, expressed in milli hours i.e. 1,000 value in this field means 1 hour.
@@ -12,20 +13,15 @@ class GoogleCloudAiplatformV1TrainingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final timeoutTrainingMilliHoursValue = timeoutTrainingMilliHours;
-    if (timeoutTrainingMilliHoursValue != null) {
-      map['timeoutTrainingMilliHours'] = timeoutTrainingMilliHoursValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'timeoutTrainingMilliHours': ?timeoutTrainingMilliHours,
+    };
   }
 
-  factory GoogleCloudAiplatformV1TrainingConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1TrainingConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1TrainingConfig(
-      timeoutTrainingMilliHours: map['timeoutTrainingMilliHours'] == null
-          ? null
-          : map['timeoutTrainingMilliHours'] as String,
+      timeoutTrainingMilliHours: map['timeoutTrainingMilliHours'] == null ? null : map['timeoutTrainingMilliHours'] as String,
     );
   }
 }
+

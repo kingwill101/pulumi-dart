@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// **Service Mesh**: Spec for a single Membership for the servicemesh feature
 class ServiceMeshMembershipSpecResponse {
   /// Deprecated: use `management` instead Enables automatic control plane management.
   final String controlPlane;
-
   /// Enables automatic Service Mesh management.
   final String management;
 
@@ -17,10 +17,10 @@ class ServiceMeshMembershipSpecResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['controlPlane'] = controlPlane;
-    map['management'] = management;
-    return map;
+    return <String, dynamic>{
+      'controlPlane': controlPlane,
+      'management': management,
+    };
   }
 
   factory ServiceMeshMembershipSpecResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class ServiceMeshMembershipSpecResponse {
     );
   }
 }
+

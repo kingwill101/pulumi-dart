@@ -9,19 +9,15 @@ import 'get_bucket_object_content_retention.dart';
 class GetBucketObjectContentResult {
   final String bucket;
   final String cacheControl;
-
   /// (Computed) The content of the object.
   final String content;
-
   /// (Computed) Base64 encoded version of the object content.
   /// Use this when dealing with binary data.
   final String contentBase64;
-
   /// (Computed) Base64 encoded SHA512 checksum of file content.
   final String contentBase64sha512;
   final String contentDisposition;
   final String contentEncoding;
-
   /// (Computed) Hex encoded SHA512 checksum of file content.
   final String contentHexsha512;
   final String contentLanguage;
@@ -34,7 +30,6 @@ class GetBucketObjectContentResult {
   final bool eventBasedHold;
   final bool forceEmptyContentType;
   final int generation;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String kmsKeyName;
@@ -120,44 +115,40 @@ class GetBucketObjectContentResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucket'] = bucket;
-    map['cacheControl'] = cacheControl;
-    map['content'] = content;
-    map['contentBase64'] = contentBase64;
-    map['contentBase64sha512'] = contentBase64sha512;
-    map['contentDisposition'] = contentDisposition;
-    map['contentEncoding'] = contentEncoding;
-    map['contentHexsha512'] = contentHexsha512;
-    map['contentLanguage'] = contentLanguage;
-    map['contentType'] = contentType;
-    map['contexts'] = pulumi.Input.encodeList<GetBucketObjectContentContext,
-        Map<String, dynamic>>(contexts, (value) => value.toMap());
-    map['crc32c'] = crc32c;
-    map['customerEncryptions'] = pulumi.Input.encodeList<
-        GetBucketObjectContentCustomerEncryption,
-        Map<String, dynamic>>(customerEncryptions, (value) => value.toMap());
-    map['deletionPolicy'] = deletionPolicy;
-    map['detectMd5hash'] = detectMd5hash;
-    map['eventBasedHold'] = eventBasedHold;
-    map['forceEmptyContentType'] = forceEmptyContentType;
-    map['generation'] = generation;
-    map['id'] = id;
-    map['kmsKeyName'] = kmsKeyName;
-    map['md5hash'] = md5hash;
-    map['md5hexhash'] = md5hexhash;
-    map['mediaLink'] = mediaLink;
-    map['metadata'] = metadata;
-    map['name'] = name;
-    map['outputName'] = outputName;
-    map['retentions'] = pulumi.Input.encodeList<GetBucketObjectContentRetention,
-        Map<String, dynamic>>(retentions, (value) => value.toMap());
-    map['selfLink'] = selfLink;
-    map['source'] = source;
-    map['sourceMd5hash'] = sourceMd5hash;
-    map['storageClass'] = storageClass;
-    map['temporaryHold'] = temporaryHold;
-    return map;
+    return <String, dynamic>{
+      'bucket': bucket,
+      'cacheControl': cacheControl,
+      'content': content,
+      'contentBase64': contentBase64,
+      'contentBase64sha512': contentBase64sha512,
+      'contentDisposition': contentDisposition,
+      'contentEncoding': contentEncoding,
+      'contentHexsha512': contentHexsha512,
+      'contentLanguage': contentLanguage,
+      'contentType': contentType,
+      'contexts': pulumi.Input.encodeList<GetBucketObjectContentContext, Map<String, dynamic>>(contexts, (value) => value.toMap()),
+      'crc32c': crc32c,
+      'customerEncryptions': pulumi.Input.encodeList<GetBucketObjectContentCustomerEncryption, Map<String, dynamic>>(customerEncryptions, (value) => value.toMap()),
+      'deletionPolicy': deletionPolicy,
+      'detectMd5hash': detectMd5hash,
+      'eventBasedHold': eventBasedHold,
+      'forceEmptyContentType': forceEmptyContentType,
+      'generation': generation,
+      'id': id,
+      'kmsKeyName': kmsKeyName,
+      'md5hash': md5hash,
+      'md5hexhash': md5hexhash,
+      'mediaLink': mediaLink,
+      'metadata': metadata,
+      'name': name,
+      'outputName': outputName,
+      'retentions': pulumi.Input.encodeList<GetBucketObjectContentRetention, Map<String, dynamic>>(retentions, (value) => value.toMap()),
+      'selfLink': selfLink,
+      'source': source,
+      'sourceMd5hash': sourceMd5hash,
+      'storageClass': storageClass,
+      'temporaryHold': temporaryHold,
+    };
   }
 
   factory GetBucketObjectContentResult.fromMap(Map<String, dynamic> map) {
@@ -172,16 +163,9 @@ class GetBucketObjectContentResult {
       contentHexsha512: map['contentHexsha512'] as String,
       contentLanguage: map['contentLanguage'] as String,
       contentType: map['contentType'] as String,
-      contexts: pulumi.Input.decodeList<GetBucketObjectContentContext>(
-          map['contexts'],
-          (value) => GetBucketObjectContentContext.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      contexts: pulumi.Input.decodeList<GetBucketObjectContentContext>(map['contexts'], (value) => GetBucketObjectContentContext.fromMap((value as Map).cast<String, dynamic>())),
       crc32c: map['crc32c'] as String,
-      customerEncryptions:
-          pulumi.Input.decodeList<GetBucketObjectContentCustomerEncryption>(
-              map['customerEncryptions'],
-              (value) => GetBucketObjectContentCustomerEncryption.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      customerEncryptions: pulumi.Input.decodeList<GetBucketObjectContentCustomerEncryption>(map['customerEncryptions'], (value) => GetBucketObjectContentCustomerEncryption.fromMap((value as Map).cast<String, dynamic>())),
       deletionPolicy: map['deletionPolicy'] as String,
       detectMd5hash: map['detectMd5hash'] as String,
       eventBasedHold: map['eventBasedHold'] as bool,
@@ -195,10 +179,7 @@ class GetBucketObjectContentResult {
       metadata: (map['metadata'] as Map).cast<String, String>(),
       name: map['name'] as String,
       outputName: map['outputName'] as String,
-      retentions: pulumi.Input.decodeList<GetBucketObjectContentRetention>(
-          map['retentions'],
-          (value) => GetBucketObjectContentRetention.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      retentions: pulumi.Input.decodeList<GetBucketObjectContentRetention>(map['retentions'], (value) => GetBucketObjectContentRetention.fromMap((value as Map).cast<String, dynamic>())),
       selfLink: map['selfLink'] as String,
       source: map['source'] as String,
       sourceMd5hash: map['sourceMd5hash'] as String,
@@ -207,3 +188,4 @@ class GetBucketObjectContentResult {
     );
   }
 }
+

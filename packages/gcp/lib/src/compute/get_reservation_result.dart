@@ -81,42 +81,30 @@ class GetReservationResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['blockNames'] = blockNames;
-    map['commitment'] = commitment;
-    map['creationTimestamp'] = creationTimestamp;
-    map['deleteAfterDurations'] = pulumi.Input.encodeList<
-        GetReservationDeleteAfterDuration,
-        Map<String, dynamic>>(deleteAfterDurations, (value) => value.toMap());
-    map['deleteAtTime'] = deleteAtTime;
-    map['description'] = description;
-    map['enableEmergentMaintenance'] = enableEmergentMaintenance;
-    map['id'] = id;
-    map['kind'] = kind;
-    map['linkedCommitments'] = linkedCommitments;
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['reservationBlockCount'] = reservationBlockCount;
-    map['reservationSharingPolicies'] = pulumi.Input.encodeList<
-            GetReservationReservationSharingPolicy, Map<String, dynamic>>(
-        reservationSharingPolicies, (value) => value.toMap());
-    map['resourceStatuses'] = pulumi.Input.encodeList<
-        GetReservationResourceStatus,
-        Map<String, dynamic>>(resourceStatuses, (value) => value.toMap());
-    map['satisfiesPzs'] = satisfiesPzs;
-    map['selfLink'] = selfLink;
-    map['shareSettings'] = pulumi.Input.encodeList<GetReservationShareSetting,
-        Map<String, dynamic>>(shareSettings, (value) => value.toMap());
-    map['specificReservationRequired'] = specificReservationRequired;
-    map['specificReservations'] = pulumi.Input.encodeList<
-        GetReservationSpecificReservation,
-        Map<String, dynamic>>(specificReservations, (value) => value.toMap());
-    map['status'] = status;
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'blockNames': blockNames,
+      'commitment': commitment,
+      'creationTimestamp': creationTimestamp,
+      'deleteAfterDurations': pulumi.Input.encodeList<GetReservationDeleteAfterDuration, Map<String, dynamic>>(deleteAfterDurations, (value) => value.toMap()),
+      'deleteAtTime': deleteAtTime,
+      'description': description,
+      'enableEmergentMaintenance': enableEmergentMaintenance,
+      'id': id,
+      'kind': kind,
+      'linkedCommitments': linkedCommitments,
+      'name': name,
+      'project': ?project,
+      'reservationBlockCount': reservationBlockCount,
+      'reservationSharingPolicies': pulumi.Input.encodeList<GetReservationReservationSharingPolicy, Map<String, dynamic>>(reservationSharingPolicies, (value) => value.toMap()),
+      'resourceStatuses': pulumi.Input.encodeList<GetReservationResourceStatus, Map<String, dynamic>>(resourceStatuses, (value) => value.toMap()),
+      'satisfiesPzs': satisfiesPzs,
+      'selfLink': selfLink,
+      'shareSettings': pulumi.Input.encodeList<GetReservationShareSetting, Map<String, dynamic>>(shareSettings, (value) => value.toMap()),
+      'specificReservationRequired': specificReservationRequired,
+      'specificReservations': pulumi.Input.encodeList<GetReservationSpecificReservation, Map<String, dynamic>>(specificReservations, (value) => value.toMap()),
+      'status': status,
+      'zone': zone,
+    };
   }
 
   factory GetReservationResult.fromMap(Map<String, dynamic> map) {
@@ -124,11 +112,7 @@ class GetReservationResult {
       blockNames: (map['blockNames'] as List).cast<String>(),
       commitment: map['commitment'] as String,
       creationTimestamp: map['creationTimestamp'] as String,
-      deleteAfterDurations:
-          pulumi.Input.decodeList<GetReservationDeleteAfterDuration>(
-              map['deleteAfterDurations'],
-              (value) => GetReservationDeleteAfterDuration.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      deleteAfterDurations: pulumi.Input.decodeList<GetReservationDeleteAfterDuration>(map['deleteAfterDurations'], (value) => GetReservationDeleteAfterDuration.fromMap((value as Map).cast<String, dynamic>())),
       deleteAtTime: map['deleteAtTime'] as String,
       description: map['description'] as String,
       enableEmergentMaintenance: map['enableEmergentMaintenance'] as bool,
@@ -138,29 +122,16 @@ class GetReservationResult {
       name: map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       reservationBlockCount: map['reservationBlockCount'] as int,
-      reservationSharingPolicies:
-          pulumi.Input.decodeList<GetReservationReservationSharingPolicy>(
-              map['reservationSharingPolicies'],
-              (value) => GetReservationReservationSharingPolicy.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      resourceStatuses: pulumi.Input.decodeList<GetReservationResourceStatus>(
-          map['resourceStatuses'],
-          (value) => GetReservationResourceStatus.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      reservationSharingPolicies: pulumi.Input.decodeList<GetReservationReservationSharingPolicy>(map['reservationSharingPolicies'], (value) => GetReservationReservationSharingPolicy.fromMap((value as Map).cast<String, dynamic>())),
+      resourceStatuses: pulumi.Input.decodeList<GetReservationResourceStatus>(map['resourceStatuses'], (value) => GetReservationResourceStatus.fromMap((value as Map).cast<String, dynamic>())),
       satisfiesPzs: map['satisfiesPzs'] as bool,
       selfLink: map['selfLink'] as String,
-      shareSettings: pulumi.Input.decodeList<GetReservationShareSetting>(
-          map['shareSettings'],
-          (value) => GetReservationShareSetting.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      shareSettings: pulumi.Input.decodeList<GetReservationShareSetting>(map['shareSettings'], (value) => GetReservationShareSetting.fromMap((value as Map).cast<String, dynamic>())),
       specificReservationRequired: map['specificReservationRequired'] as bool,
-      specificReservations:
-          pulumi.Input.decodeList<GetReservationSpecificReservation>(
-              map['specificReservations'],
-              (value) => GetReservationSpecificReservation.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      specificReservations: pulumi.Input.decodeList<GetReservationSpecificReservation>(map['specificReservations'], (value) => GetReservationSpecificReservation.fromMap((value as Map).cast<String, dynamic>())),
       status: map['status'] as String,
       zone: map['zone'] as String,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EventTargetDeadLetterConfig {
   /// ARN of the SQS queue specified as the target for the dead-letter queue.
   final String? arn;
@@ -11,12 +12,9 @@ class EventTargetDeadLetterConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final arnValue = arn;
-    if (arnValue != null) {
-      map['arn'] = arnValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'arn': ?arn,
+    };
   }
 
   factory EventTargetDeadLetterConfig.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class EventTargetDeadLetterConfig {
     );
   }
 }
+

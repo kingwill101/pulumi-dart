@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// MembershipState describes the state of a Membership resource.
 class MembershipStateResponse {
   /// The current state of the Membership resource.
@@ -12,9 +13,9 @@ class MembershipStateResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['code'] = code;
-    return map;
+    return <String, dynamic>{
+      'code': code,
+    };
   }
 
   factory MembershipStateResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class MembershipStateResponse {
     );
   }
 }
+

@@ -1,15 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getOutposts.
 class GetOutpostsResult {
   /// Set of Amazon Resource Names (ARNs).
   final List<String> arns;
   final String availabilityZone;
   final String availabilityZoneId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Set of identifiers.
   final List<String> ids;
   final String ownerId;
@@ -37,16 +36,16 @@ class GetOutpostsResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arns'] = arns;
-    map['availabilityZone'] = availabilityZone;
-    map['availabilityZoneId'] = availabilityZoneId;
-    map['id'] = id;
-    map['ids'] = ids;
-    map['ownerId'] = ownerId;
-    map['region'] = region;
-    map['siteId'] = siteId;
-    return map;
+    return <String, dynamic>{
+      'arns': arns,
+      'availabilityZone': availabilityZone,
+      'availabilityZoneId': availabilityZoneId,
+      'id': id,
+      'ids': ids,
+      'ownerId': ownerId,
+      'region': region,
+      'siteId': siteId,
+    };
   }
 
   factory GetOutpostsResult.fromMap(Map<String, dynamic> map) {
@@ -62,3 +61,4 @@ class GetOutpostsResult {
     );
   }
 }
+

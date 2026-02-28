@@ -1,24 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getWorkerConfiguration.
 class GetWorkerConfigurationResult {
   /// the ARN of the worker configuration.
   final String arn;
-
   /// a summary description of the worker configuration.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// an ID of the latest successfully created revision of the worker configuration.
   final int latestRevision;
   final String name;
-
   /// contents of connect-distributed.properties file.
   final String propertiesFileContent;
   final String region;
-
   /// A map of tags assigned to the resource.
   final Map<String, String> tags;
 
@@ -43,16 +39,16 @@ class GetWorkerConfigurationResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['description'] = description;
-    map['id'] = id;
-    map['latestRevision'] = latestRevision;
-    map['name'] = name;
-    map['propertiesFileContent'] = propertiesFileContent;
-    map['region'] = region;
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'description': description,
+      'id': id,
+      'latestRevision': latestRevision,
+      'name': name,
+      'propertiesFileContent': propertiesFileContent,
+      'region': region,
+      'tags': tags,
+    };
   }
 
   factory GetWorkerConfigurationResult.fromMap(Map<String, dynamic> map) {
@@ -68,3 +64,4 @@ class GetWorkerConfigurationResult {
     );
   }
 }
+

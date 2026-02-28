@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetLaunchTemplateCapacityReservationSpecificationCapacityReservationTarget {
   final String capacityReservationId;
   final String capacityReservationResourceGroupArn;
@@ -13,19 +14,17 @@ class GetLaunchTemplateCapacityReservationSpecificationCapacityReservationTarget
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['capacityReservationId'] = capacityReservationId;
-    map['capacityReservationResourceGroupArn'] =
-        capacityReservationResourceGroupArn;
-    return map;
+    return <String, dynamic>{
+      'capacityReservationId': capacityReservationId,
+      'capacityReservationResourceGroupArn': capacityReservationResourceGroupArn,
+    };
   }
 
-  factory GetLaunchTemplateCapacityReservationSpecificationCapacityReservationTarget.fromMap(
-      Map<String, dynamic> map) {
+  factory GetLaunchTemplateCapacityReservationSpecificationCapacityReservationTarget.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateCapacityReservationSpecificationCapacityReservationTarget(
       capacityReservationId: map['capacityReservationId'] as String,
-      capacityReservationResourceGroupArn:
-          map['capacityReservationResourceGroupArn'] as String,
+      capacityReservationResourceGroupArn: map['capacityReservationResourceGroupArn'] as String,
     );
   }
 }
+

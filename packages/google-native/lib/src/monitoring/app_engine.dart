@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// App Engine service. Learn more at https://cloud.google.com/appengine.
 class AppEngine {
   /// The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource (https://cloud.google.com/monitoring/api/resources#tag_gae_app).
@@ -12,12 +13,9 @@ class AppEngine {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final moduleIdValue = moduleId;
-    if (moduleIdValue != null) {
-      map['moduleId'] = moduleIdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'moduleId': ?moduleId,
+    };
   }
 
   factory AppEngine.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class AppEngine {
     );
   }
 }
+

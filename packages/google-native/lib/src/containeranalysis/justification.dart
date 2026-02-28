@@ -6,7 +6,6 @@ import 'justification_justification_type.dart';
 class Justification {
   /// Additional details on why this justification was chosen.
   final String? details;
-
   /// The justification type for this vulnerability.
   final JustificationJustificationType? justificationType;
 
@@ -19,25 +18,17 @@ class Justification {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final detailsValue = details;
-    if (detailsValue != null) {
-      map['details'] = detailsValue;
-    }
-    final justificationTypeValue = justificationType;
-    if (justificationTypeValue != null) {
-      map['justificationType'] = justificationTypeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'details': ?details,
+      'justificationType': ?justificationType == null ? null : justificationType!.value,
+    };
   }
 
   factory Justification.fromMap(Map<String, dynamic> map) {
     return Justification(
       details: map['details'] == null ? null : map['details'] as String,
-      justificationType: map['justificationType'] == null
-          ? null
-          : JustificationJustificationType.fromValue(
-              map['justificationType'] as String),
+      justificationType: map['justificationType'] == null ? null : JustificationJustificationType.fromValue(map['justificationType'] as String),
     );
   }
 }
+

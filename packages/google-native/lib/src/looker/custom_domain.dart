@@ -6,7 +6,6 @@ import 'custom_domain_state.dart';
 class CustomDomain {
   /// Domain name.
   final String? domain;
-
   /// Domain state.
   final CustomDomainState? state;
 
@@ -19,24 +18,17 @@ class CustomDomain {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final domainValue = domain;
-    if (domainValue != null) {
-      map['domain'] = domainValue;
-    }
-    final stateValue = state;
-    if (stateValue != null) {
-      map['state'] = stateValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'domain': ?domain,
+      'state': ?state == null ? null : state!.value,
+    };
   }
 
   factory CustomDomain.fromMap(Map<String, dynamic> map) {
     return CustomDomain(
       domain: map['domain'] == null ? null : map['domain'] as String,
-      state: map['state'] == null
-          ? null
-          : CustomDomainState.fromValue(map['state'] as String),
+      state: map['state'] == null ? null : CustomDomainState.fromValue(map['state'] as String),
     );
   }
 }
+

@@ -7,7 +7,6 @@ import 'egress_to.dart';
 class EgressPolicy {
   /// Defines conditions on the source of a request causing this EgressPolicy to apply.
   final EgressFrom? egressFrom;
-
   /// Defines the conditions on the ApiOperation and destination resources that cause this EgressPolicy to apply.
   final EgressTo? egressTo;
 
@@ -20,27 +19,17 @@ class EgressPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final egressFromValue = egressFrom;
-    if (egressFromValue != null) {
-      map['egressFrom'] = egressFromValue.toMap();
-    }
-    final egressToValue = egressTo;
-    if (egressToValue != null) {
-      map['egressTo'] = egressToValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'egressFrom': ?egressFrom == null ? null : egressFrom!.toMap(),
+      'egressTo': ?egressTo == null ? null : egressTo!.toMap(),
+    };
   }
 
   factory EgressPolicy.fromMap(Map<String, dynamic> map) {
     return EgressPolicy(
-      egressFrom: map['egressFrom'] == null
-          ? null
-          : EgressFrom.fromMap(
-              (map['egressFrom'] as Map).cast<String, dynamic>()),
-      egressTo: map['egressTo'] == null
-          ? null
-          : EgressTo.fromMap((map['egressTo'] as Map).cast<String, dynamic>()),
+      egressFrom: map['egressFrom'] == null ? null : EgressFrom.fromMap((map['egressFrom'] as Map).cast<String, dynamic>()),
+      egressTo: map['egressTo'] == null ? null : EgressTo.fromMap((map['egressTo'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

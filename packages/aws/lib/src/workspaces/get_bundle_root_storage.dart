@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetBundleRootStorage {
   /// Size of the user storage.
   final String capacity;
@@ -11,9 +12,9 @@ class GetBundleRootStorage {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['capacity'] = capacity;
-    return map;
+    return <String, dynamic>{
+      'capacity': capacity,
+    };
   }
 
   factory GetBundleRootStorage.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetBundleRootStorage {
     );
   }
 }
+

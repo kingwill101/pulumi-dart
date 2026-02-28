@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Autoscaling config for connector deployment system metrics.
 class HPAConfigResponse {
   /// Percent CPU utilization where HPA triggers autoscaling.
   final String cpuUtilizationThreshold;
-
   /// Percent Memory utilization where HPA triggers autoscaling.
   final String memoryUtilizationThreshold;
 
@@ -17,10 +17,10 @@ class HPAConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cpuUtilizationThreshold'] = cpuUtilizationThreshold;
-    map['memoryUtilizationThreshold'] = memoryUtilizationThreshold;
-    return map;
+    return <String, dynamic>{
+      'cpuUtilizationThreshold': cpuUtilizationThreshold,
+      'memoryUtilizationThreshold': memoryUtilizationThreshold,
+    };
   }
 
   factory HPAConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class HPAConfigResponse {
     );
   }
 }
+

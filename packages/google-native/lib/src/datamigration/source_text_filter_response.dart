@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Filter for text-based data types like varchar.
 class SourceTextFilterResponse {
   /// Optional. The filter will match columns with length smaller than or equal to this number.
   final String sourceMaxLengthFilter;
-
   /// Optional. The filter will match columns with length greater than or equal to this number.
   final String sourceMinLengthFilter;
 
@@ -17,10 +17,10 @@ class SourceTextFilterResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['sourceMaxLengthFilter'] = sourceMaxLengthFilter;
-    map['sourceMinLengthFilter'] = sourceMinLengthFilter;
-    return map;
+    return <String, dynamic>{
+      'sourceMaxLengthFilter': sourceMaxLengthFilter,
+      'sourceMinLengthFilter': sourceMinLengthFilter,
+    };
   }
 
   factory SourceTextFilterResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class SourceTextFilterResponse {
     );
   }
 }
+

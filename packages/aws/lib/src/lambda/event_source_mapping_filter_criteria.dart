@@ -14,24 +14,15 @@ class EventSourceMappingFilterCriteria {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final filtersValue = filters;
-    if (filtersValue != null) {
-      map['filters'] = pulumi.Input.encodeList<
-          EventSourceMappingFilterCriteriaFilter,
-          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'filters': ?filters == null ? null : pulumi.Input.encodeList<EventSourceMappingFilterCriteriaFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+    };
   }
 
   factory EventSourceMappingFilterCriteria.fromMap(Map<String, dynamic> map) {
     return EventSourceMappingFilterCriteria(
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<EventSourceMappingFilterCriteriaFilter>(
-              map['filters'],
-              (value) => EventSourceMappingFilterCriteriaFilter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<EventSourceMappingFilterCriteriaFilter>(map['filters'], (value) => EventSourceMappingFilterCriteriaFilter.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBucketsArgs {
   /// Filter results to buckets whose names begin with this prefix.
   final pulumi.Input<String>? prefix;
-
   /// The ID of the project. If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
 
@@ -19,20 +18,15 @@ class GetBucketsArgs {
   GetBucketsArgs({
     String? prefix,
     String? project,
-  })  : prefix = pulumi.Input.asOptionalInput<String>(prefix),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      prefix = pulumi.Input.asOptionalInput<String>(prefix),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final prefixValue = prefix;
-    if (prefixValue != null) {
-      map['prefix'] = prefixValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'prefix': ?prefix,
+      'project': ?project,
+    };
   }
 
   factory GetBucketsArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +36,4 @@ class GetBucketsArgs {
     );
   }
 }
+

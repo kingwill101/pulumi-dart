@@ -14,19 +14,15 @@ class WebAclRuleStatementNotStatement {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['statements'] =
-        pulumi.Input.encodeList<WebAclRuleStatement, Map<String, dynamic>>(
-            statements, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'statements': pulumi.Input.encodeList<WebAclRuleStatement, Map<String, dynamic>>(statements, (value) => value.toMap()),
+    };
   }
 
   factory WebAclRuleStatementNotStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementNotStatement(
-      statements: pulumi.Input.decodeList<WebAclRuleStatement>(
-          map['statements'],
-          (value) => WebAclRuleStatement.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      statements: pulumi.Input.decodeList<WebAclRuleStatement>(map['statements'], (value) => WebAclRuleStatement.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

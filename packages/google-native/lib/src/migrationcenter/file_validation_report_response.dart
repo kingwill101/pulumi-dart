@@ -8,13 +8,10 @@ import 'import_row_error_response.dart';
 class FileValidationReportResponse {
   /// List of file level errors.
   final List<ImportErrorResponse> fileErrors;
-
   /// The name of the file.
   final String fileName;
-
   /// Flag indicating that processing was aborted due to maximum number of errors.
   final bool partialReport;
-
   /// Partial list of rows that encountered validation error.
   final List<ImportRowErrorResponse> rowErrors;
 
@@ -31,30 +28,21 @@ class FileValidationReportResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['fileErrors'] =
-        pulumi.Input.encodeList<ImportErrorResponse, Map<String, dynamic>>(
-            fileErrors, (value) => value.toMap());
-    map['fileName'] = fileName;
-    map['partialReport'] = partialReport;
-    map['rowErrors'] =
-        pulumi.Input.encodeList<ImportRowErrorResponse, Map<String, dynamic>>(
-            rowErrors, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'fileErrors': pulumi.Input.encodeList<ImportErrorResponse, Map<String, dynamic>>(fileErrors, (value) => value.toMap()),
+      'fileName': fileName,
+      'partialReport': partialReport,
+      'rowErrors': pulumi.Input.encodeList<ImportRowErrorResponse, Map<String, dynamic>>(rowErrors, (value) => value.toMap()),
+    };
   }
 
   factory FileValidationReportResponse.fromMap(Map<String, dynamic> map) {
     return FileValidationReportResponse(
-      fileErrors: pulumi.Input.decodeList<ImportErrorResponse>(
-          map['fileErrors'],
-          (value) => ImportErrorResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      fileErrors: pulumi.Input.decodeList<ImportErrorResponse>(map['fileErrors'], (value) => ImportErrorResponse.fromMap((value as Map).cast<String, dynamic>())),
       fileName: map['fileName'] as String,
       partialReport: map['partialReport'] as bool,
-      rowErrors: pulumi.Input.decodeList<ImportRowErrorResponse>(
-          map['rowErrors'],
-          (value) => ImportRowErrorResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      rowErrors: pulumi.Input.decodeList<ImportRowErrorResponse>(map['rowErrors'], (value) => ImportRowErrorResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -19,19 +19,17 @@ class GetConnectorVpcaccessV1beta1Args {
     required String connectorId,
     required String location,
     String? project,
-  })  : connectorId = pulumi.Input.asInput<String>(connectorId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      connectorId = pulumi.Input.asInput<String>(connectorId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['connectorId'] = connectorId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'connectorId': connectorId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetConnectorVpcaccessV1beta1Args.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetConnectorVpcaccessV1beta1Args {
     );
   }
 }
+

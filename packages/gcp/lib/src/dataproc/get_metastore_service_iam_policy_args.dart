@@ -13,11 +13,9 @@ class GetMetastoreServiceIamPolicyArgs {
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
   final pulumi.Input<String>? location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> serviceId;
 
@@ -29,22 +27,17 @@ class GetMetastoreServiceIamPolicyArgs {
     String? location,
     String? project,
     required String serviceId,
-  })  : location = pulumi.Input.asOptionalInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        serviceId = pulumi.Input.asInput<String>(serviceId);
+  }) :
+      location = pulumi.Input.asOptionalInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      serviceId = pulumi.Input.asInput<String>(serviceId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['serviceId'] = serviceId;
-    return map;
+    return <String, dynamic>{
+      'location': ?location,
+      'project': ?project,
+      'serviceId': serviceId,
+    };
   }
 
   factory GetMetastoreServiceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -55,3 +48,4 @@ class GetMetastoreServiceIamPolicyArgs {
     );
   }
 }
+

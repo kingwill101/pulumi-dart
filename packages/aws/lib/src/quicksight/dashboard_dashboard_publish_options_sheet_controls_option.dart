@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DashboardDashboardPublishOptionsSheetControlsOption {
   /// Visibility state. Possibles values: EXPANDED, COLLAPSED.
   final String? visibilityState;
@@ -11,20 +12,15 @@ class DashboardDashboardPublishOptionsSheetControlsOption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final visibilityStateValue = visibilityState;
-    if (visibilityStateValue != null) {
-      map['visibilityState'] = visibilityStateValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'visibilityState': ?visibilityState,
+    };
   }
 
-  factory DashboardDashboardPublishOptionsSheetControlsOption.fromMap(
-      Map<String, dynamic> map) {
+  factory DashboardDashboardPublishOptionsSheetControlsOption.fromMap(Map<String, dynamic> map) {
     return DashboardDashboardPublishOptionsSheetControlsOption(
-      visibilityState: map['visibilityState'] == null
-          ? null
-          : map['visibilityState'] as String,
+      visibilityState: map['visibilityState'] == null ? null : map['visibilityState'] as String,
     );
   }
 }
+

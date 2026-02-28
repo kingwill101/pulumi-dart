@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransitGatewayConnectPeerAssociationArgs {
   /// ID of the device.
   final pulumi.Input<String> deviceId;
-
   /// ID of the global network.
   final pulumi.Input<String> globalNetworkId;
-
   /// ID of the link.
   final pulumi.Input<String>? linkId;
-
   /// ARN of the Connect peer.
   ///
   /// The following arguments are optional:
@@ -31,32 +28,28 @@ class TransitGatewayConnectPeerAssociationArgs {
     required String globalNetworkId,
     String? linkId,
     required String transitGatewayConnectPeerArn,
-  })  : deviceId = pulumi.Input.asInput<String>(deviceId),
-        globalNetworkId = pulumi.Input.asInput<String>(globalNetworkId),
-        linkId = pulumi.Input.asOptionalInput<String>(linkId),
-        transitGatewayConnectPeerArn =
-            pulumi.Input.asInput<String>(transitGatewayConnectPeerArn);
+  }) :
+      deviceId = pulumi.Input.asInput<String>(deviceId),
+      globalNetworkId = pulumi.Input.asInput<String>(globalNetworkId),
+      linkId = pulumi.Input.asOptionalInput<String>(linkId),
+      transitGatewayConnectPeerArn = pulumi.Input.asInput<String>(transitGatewayConnectPeerArn);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['deviceId'] = deviceId;
-    map['globalNetworkId'] = globalNetworkId;
-    final linkIdValue = linkId;
-    if (linkIdValue != null) {
-      map['linkId'] = linkIdValue;
-    }
-    map['transitGatewayConnectPeerArn'] = transitGatewayConnectPeerArn;
-    return map;
+    return <String, dynamic>{
+      'deviceId': deviceId,
+      'globalNetworkId': globalNetworkId,
+      'linkId': ?linkId,
+      'transitGatewayConnectPeerArn': transitGatewayConnectPeerArn,
+    };
   }
 
-  factory TransitGatewayConnectPeerAssociationArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory TransitGatewayConnectPeerAssociationArgs.fromMap(Map<String, dynamic> map) {
     return TransitGatewayConnectPeerAssociationArgs(
       deviceId: map['deviceId'] as String,
       globalNetworkId: map['globalNetworkId'] as String,
       linkId: map['linkId'] == null ? null : map['linkId'] as String,
-      transitGatewayConnectPeerArn:
-          map['transitGatewayConnectPeerArn'] as String,
+      transitGatewayConnectPeerArn: map['transitGatewayConnectPeerArn'] as String,
     );
   }
 }
+

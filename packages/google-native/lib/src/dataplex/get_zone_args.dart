@@ -22,21 +22,19 @@ class GetZoneArgs {
     required String location,
     String? project,
     required String zone,
-  })  : lakeId = pulumi.Input.asInput<String>(lakeId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        zone = pulumi.Input.asInput<String>(zone);
+  }) :
+      lakeId = pulumi.Input.asInput<String>(lakeId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['lakeId'] = lakeId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'lakeId': lakeId,
+      'location': location,
+      'project': ?project,
+      'zone': zone,
+    };
   }
 
   factory GetZoneArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetZoneArgs {
     );
   }
 }
+

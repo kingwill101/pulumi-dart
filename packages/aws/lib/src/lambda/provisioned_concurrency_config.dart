@@ -221,18 +221,14 @@ import 'provisioned_concurrency_config_args.dart';
 class ProvisionedConcurrencyConfig extends pulumi.CustomResource {
   /// Name or Amazon Resource Name (ARN) of the Lambda Function.
   late final pulumi.Output<String> functionName;
-
   /// Amount of capacity to allocate. Must be greater than or equal to 1.
   late final pulumi.Output<int> provisionedConcurrentExecutions;
-
   /// Lambda Function version or Lambda Alias name.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> qualifier;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Whether to retain the provisioned concurrency configuration upon destruction. Defaults to `false`. If set to `true`, the resource is simply removed from state instead.
   late final pulumi.Output<bool?> skipDestroy;
 
@@ -251,8 +247,7 @@ class ProvisionedConcurrencyConfig extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.functionName = registerOutput<String>('functionName');
-    this.provisionedConcurrentExecutions =
-        registerOutput<int>('provisionedConcurrentExecutions');
+    this.provisionedConcurrentExecutions = registerOutput<int>('provisionedConcurrentExecutions');
     this.qualifier = registerOutput<String>('qualifier');
     this.region = registerOutput<String>('region');
     this.skipDestroy = registerOutput<bool?>('skipDestroy');

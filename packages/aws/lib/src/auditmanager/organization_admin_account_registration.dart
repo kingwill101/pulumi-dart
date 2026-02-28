@@ -102,10 +102,8 @@ import 'organization_admin_account_registration_args.dart';
 class OrganizationAdminAccountRegistration extends pulumi.CustomResource {
   /// Identifier for the organization administrator account.
   late final pulumi.Output<String> adminAccountId;
-
   /// Identifier for the organization.
   late final pulumi.Output<String> organizationId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

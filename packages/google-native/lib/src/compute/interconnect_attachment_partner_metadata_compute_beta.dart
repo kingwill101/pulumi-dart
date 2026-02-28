@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Informational metadata about Partner attachments from Partners to display to customers. These fields are propagated from PARTNER_PROVIDER attachments to their corresponding PARTNER attachments.
 class InterconnectAttachmentPartnerMetadataComputeBeta {
   /// Plain text name of the Interconnect this attachment is connected to, as displayed in the Partner's portal. For instance "Chicago 1". This value may be validated to match approved Partner values.
   final String? interconnectName;
-
   /// Plain text name of the Partner providing this attachment. This value may be validated to match approved Partner values.
   final String? partnerName;
-
   /// URL of the Partner's portal for this Attachment. Partners may customise this to be a deep link to the specific resource on the Partner portal. This value may be validated to match approved Partner values.
   final String? portalUrl;
 
@@ -22,31 +21,19 @@ class InterconnectAttachmentPartnerMetadataComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final interconnectNameValue = interconnectName;
-    if (interconnectNameValue != null) {
-      map['interconnectName'] = interconnectNameValue;
-    }
-    final partnerNameValue = partnerName;
-    if (partnerNameValue != null) {
-      map['partnerName'] = partnerNameValue;
-    }
-    final portalUrlValue = portalUrl;
-    if (portalUrlValue != null) {
-      map['portalUrl'] = portalUrlValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'interconnectName': ?interconnectName,
+      'partnerName': ?partnerName,
+      'portalUrl': ?portalUrl,
+    };
   }
 
-  factory InterconnectAttachmentPartnerMetadataComputeBeta.fromMap(
-      Map<String, dynamic> map) {
+  factory InterconnectAttachmentPartnerMetadataComputeBeta.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentPartnerMetadataComputeBeta(
-      interconnectName: map['interconnectName'] == null
-          ? null
-          : map['interconnectName'] as String,
-      partnerName:
-          map['partnerName'] == null ? null : map['partnerName'] as String,
+      interconnectName: map['interconnectName'] == null ? null : map['interconnectName'] as String,
+      partnerName: map['partnerName'] == null ? null : map['partnerName'] as String,
       portalUrl: map['portalUrl'] == null ? null : map['portalUrl'] as String,
     );
   }
 }
+

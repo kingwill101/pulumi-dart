@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Contains runtime daemon metrics, such as OS and kernels and sessions stats.
 class RuntimeMetricsResponse {
   /// The system metrics.
@@ -12,9 +13,9 @@ class RuntimeMetricsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['systemMetrics'] = systemMetrics;
-    return map;
+    return <String, dynamic>{
+      'systemMetrics': systemMetrics,
+    };
   }
 
   factory RuntimeMetricsResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class RuntimeMetricsResponse {
     );
   }
 }
+

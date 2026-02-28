@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RecordFailoverRoutingPolicy {
   /// `PRIMARY` or `SECONDARY`. A `PRIMARY` record will be served if its healthcheck is passing, otherwise the `SECONDARY` will be served. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring-options.html#dns-failover-failover-rrsets
   final String type;
@@ -11,9 +12,9 @@ class RecordFailoverRoutingPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory RecordFailoverRoutingPolicy.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class RecordFailoverRoutingPolicy {
     );
   }
 }
+

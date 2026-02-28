@@ -7,7 +7,6 @@ import 'service_networking_response.dart';
 class KubernetesConfigResponse {
   /// Kubernetes Gateway API service mesh configuration.
   final GatewayServiceMeshResponse gatewayServiceMesh;
-
   /// Kubernetes Service networking configuration.
   final ServiceNetworkingResponse serviceNetworking;
 
@@ -20,18 +19,17 @@ class KubernetesConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gatewayServiceMesh'] = gatewayServiceMesh.toMap();
-    map['serviceNetworking'] = serviceNetworking.toMap();
-    return map;
+    return <String, dynamic>{
+      'gatewayServiceMesh': gatewayServiceMesh.toMap(),
+      'serviceNetworking': serviceNetworking.toMap(),
+    };
   }
 
   factory KubernetesConfigResponse.fromMap(Map<String, dynamic> map) {
     return KubernetesConfigResponse(
-      gatewayServiceMesh: GatewayServiceMeshResponse.fromMap(
-          (map['gatewayServiceMesh'] as Map).cast<String, dynamic>()),
-      serviceNetworking: ServiceNetworkingResponse.fromMap(
-          (map['serviceNetworking'] as Map).cast<String, dynamic>()),
+      gatewayServiceMesh: GatewayServiceMeshResponse.fromMap((map['gatewayServiceMesh'] as Map).cast<String, dynamic>()),
+      serviceNetworking: ServiceNetworkingResponse.fromMap((map['serviceNetworking'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

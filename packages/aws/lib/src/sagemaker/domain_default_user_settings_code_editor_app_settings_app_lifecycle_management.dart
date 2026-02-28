@@ -4,8 +4,7 @@ import 'domain_default_user_settings_code_editor_app_settings_app_lifecycle_mana
 
 class DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagement {
   /// Settings related to idle shutdown of Studio applications. see `idle_settings` Block below.
-  final DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings?
-      idleSettings;
+  final DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings? idleSettings;
 
   /// Creates a new [DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagement].
   /// [idleSettings] Settings related to idle shutdown of Studio applications. see `idle_settings` Block below.
@@ -14,21 +13,15 @@ class DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagement {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final idleSettingsValue = idleSettings;
-    if (idleSettingsValue != null) {
-      map['idleSettings'] = idleSettingsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'idleSettings': ?idleSettings == null ? null : idleSettings!.toMap(),
+    };
   }
 
-  factory DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagement.fromMap(
-      Map<String, dynamic> map) {
+  factory DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagement.fromMap(Map<String, dynamic> map) {
     return DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagement(
-      idleSettings: map['idleSettings'] == null
-          ? null
-          : DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings
-              .fromMap((map['idleSettings'] as Map).cast<String, dynamic>()),
+      idleSettings: map['idleSettings'] == null ? null : DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings.fromMap((map['idleSettings'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

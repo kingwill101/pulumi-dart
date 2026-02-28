@@ -8,16 +8,12 @@ import 'identity_service_oidc_config_response.dart';
 class IdentityServiceAuthMethodResponse {
   /// AzureAD specific Configuration.
   final IdentityServiceAzureADConfigResponse azureadConfig;
-
   /// GoogleConfig specific configuration.
   final IdentityServiceGoogleConfigResponse googleConfig;
-
   /// Identifier for auth config.
   final String name;
-
   /// OIDC specific configuration.
   final IdentityServiceOidcConfigResponse oidcConfig;
-
   /// Proxy server address to use for auth method.
   final String proxy;
 
@@ -36,25 +32,23 @@ class IdentityServiceAuthMethodResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['azureadConfig'] = azureadConfig.toMap();
-    map['googleConfig'] = googleConfig.toMap();
-    map['name'] = name;
-    map['oidcConfig'] = oidcConfig.toMap();
-    map['proxy'] = proxy;
-    return map;
+    return <String, dynamic>{
+      'azureadConfig': azureadConfig.toMap(),
+      'googleConfig': googleConfig.toMap(),
+      'name': name,
+      'oidcConfig': oidcConfig.toMap(),
+      'proxy': proxy,
+    };
   }
 
   factory IdentityServiceAuthMethodResponse.fromMap(Map<String, dynamic> map) {
     return IdentityServiceAuthMethodResponse(
-      azureadConfig: IdentityServiceAzureADConfigResponse.fromMap(
-          (map['azureadConfig'] as Map).cast<String, dynamic>()),
-      googleConfig: IdentityServiceGoogleConfigResponse.fromMap(
-          (map['googleConfig'] as Map).cast<String, dynamic>()),
+      azureadConfig: IdentityServiceAzureADConfigResponse.fromMap((map['azureadConfig'] as Map).cast<String, dynamic>()),
+      googleConfig: IdentityServiceGoogleConfigResponse.fromMap((map['googleConfig'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      oidcConfig: IdentityServiceOidcConfigResponse.fromMap(
-          (map['oidcConfig'] as Map).cast<String, dynamic>()),
+      oidcConfig: IdentityServiceOidcConfigResponse.fromMap((map['oidcConfig'] as Map).cast<String, dynamic>()),
       proxy: map['proxy'] as String,
     );
   }
 }
+

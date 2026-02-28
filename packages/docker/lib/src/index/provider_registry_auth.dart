@@ -1,0 +1,55 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class ProviderRegistryAuth {
+  /// Address of the registry
+  final String address;
+  final bool? authDisabled;
+  /// Path to docker json file for registry auth. Defaults to `~/.docker/config.json`. If `DOCKER_CONFIG` is set, the value of `DOCKER_CONFIG` is used as the path. `config_file` has predencen over all other options.
+  final String? configFile;
+  /// Plain content of the docker json file for registry auth. `config_file_content` has precedence over username/password.
+  final String? configFileContent;
+  /// Password for the registry. Defaults to `DOCKER_REGISTRY_PASS` env variable if set.
+  final String? password;
+  /// Username for the registry. Defaults to `DOCKER_REGISTRY_USER` env variable if set.
+  final String? username;
+
+  /// Creates a new [ProviderRegistryAuth].
+  /// [address] Address of the registry
+  /// [authDisabled] Optional.
+  /// [configFile] Path to docker json file for registry auth. Defaults to `~/.docker/config.json`. If `DOCKER_CONFIG` is set, the value of `DOCKER_CONFIG` is used as the path. `config_file` has predencen over all other options.
+  /// [configFileContent] Plain content of the docker json file for registry auth. `config_file_content` has precedence over username/password.
+  /// [password] Password for the registry. Defaults to `DOCKER_REGISTRY_PASS` env variable if set.
+  /// [username] Username for the registry. Defaults to `DOCKER_REGISTRY_USER` env variable if set.
+  ProviderRegistryAuth({
+    required this.address,
+    this.authDisabled,
+    this.configFile,
+    this.configFileContent,
+    this.password,
+    this.username,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'address': address,
+      'authDisabled': ?authDisabled,
+      'configFile': ?configFile,
+      'configFileContent': ?configFileContent,
+      'password': ?password,
+      'username': ?username,
+    };
+  }
+
+  factory ProviderRegistryAuth.fromMap(Map<String, dynamic> map) {
+    return ProviderRegistryAuth(
+      address: map['address'] as String,
+      authDisabled: map['authDisabled'] == null ? null : map['authDisabled'] as bool,
+      configFile: map['configFile'] == null ? null : map['configFile'] as String,
+      configFileContent: map['configFileContent'] == null ? null : map['configFileContent'] as String,
+      password: map['password'] == null ? null : map['password'] as String,
+      username: map['username'] == null ? null : map['username'] as String,
+    );
+  }
+}
+

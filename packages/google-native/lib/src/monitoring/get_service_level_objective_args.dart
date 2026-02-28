@@ -25,24 +25,21 @@ class GetServiceLevelObjectiveArgs {
     required String v3Id,
     required String v3Id1,
     String? view,
-  })  : serviceId = pulumi.Input.asInput<String>(serviceId),
-        serviceLevelObjectiveId =
-            pulumi.Input.asInput<String>(serviceLevelObjectiveId),
-        v3Id = pulumi.Input.asInput<String>(v3Id),
-        v3Id1 = pulumi.Input.asInput<String>(v3Id1),
-        view = pulumi.Input.asOptionalInput<String>(view);
+  }) :
+      serviceId = pulumi.Input.asInput<String>(serviceId),
+      serviceLevelObjectiveId = pulumi.Input.asInput<String>(serviceLevelObjectiveId),
+      v3Id = pulumi.Input.asInput<String>(v3Id),
+      v3Id1 = pulumi.Input.asInput<String>(v3Id1),
+      view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['serviceId'] = serviceId;
-    map['serviceLevelObjectiveId'] = serviceLevelObjectiveId;
-    map['v3Id'] = v3Id;
-    map['v3Id1'] = v3Id1;
-    final viewValue = view;
-    if (viewValue != null) {
-      map['view'] = viewValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'serviceId': serviceId,
+      'serviceLevelObjectiveId': serviceLevelObjectiveId,
+      'v3Id': v3Id,
+      'v3Id1': v3Id1,
+      'view': ?view,
+    };
   }
 
   factory GetServiceLevelObjectiveArgs.fromMap(Map<String, dynamic> map) {
@@ -55,3 +52,4 @@ class GetServiceLevelObjectiveArgs {
     );
   }
 }
+

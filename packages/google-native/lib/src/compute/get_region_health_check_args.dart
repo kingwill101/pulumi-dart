@@ -19,19 +19,17 @@ class GetRegionHealthCheckArgs {
     required String healthCheck,
     String? project,
     required String region,
-  })  : healthCheck = pulumi.Input.asInput<String>(healthCheck),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asInput<String>(region);
+  }) :
+      healthCheck = pulumi.Input.asInput<String>(healthCheck),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['healthCheck'] = healthCheck;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'healthCheck': healthCheck,
+      'project': ?project,
+      'region': region,
+    };
   }
 
   factory GetRegionHealthCheckArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetRegionHealthCheckArgs {
     );
   }
 }
+

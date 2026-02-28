@@ -7,7 +7,6 @@ import 'skaffold_supported_condition_response.dart';
 class ReleaseConditionResponse {
   /// Details around the Releases's overall status.
   final ReleaseReadyConditionResponse releaseReadyCondition;
-
   /// Details around the support state of the release's skaffold version.
   final SkaffoldSupportedConditionResponse skaffoldSupportedCondition;
 
@@ -20,18 +19,17 @@ class ReleaseConditionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['releaseReadyCondition'] = releaseReadyCondition.toMap();
-    map['skaffoldSupportedCondition'] = skaffoldSupportedCondition.toMap();
-    return map;
+    return <String, dynamic>{
+      'releaseReadyCondition': releaseReadyCondition.toMap(),
+      'skaffoldSupportedCondition': skaffoldSupportedCondition.toMap(),
+    };
   }
 
   factory ReleaseConditionResponse.fromMap(Map<String, dynamic> map) {
     return ReleaseConditionResponse(
-      releaseReadyCondition: ReleaseReadyConditionResponse.fromMap(
-          (map['releaseReadyCondition'] as Map).cast<String, dynamic>()),
-      skaffoldSupportedCondition: SkaffoldSupportedConditionResponse.fromMap(
-          (map['skaffoldSupportedCondition'] as Map).cast<String, dynamic>()),
+      releaseReadyCondition: ReleaseReadyConditionResponse.fromMap((map['releaseReadyCondition'] as Map).cast<String, dynamic>()),
+      skaffoldSupportedCondition: SkaffoldSupportedConditionResponse.fromMap((map['skaffoldSupportedCondition'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

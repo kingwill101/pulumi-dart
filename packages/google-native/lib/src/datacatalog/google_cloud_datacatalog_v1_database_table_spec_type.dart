@@ -13,7 +13,7 @@ enum GoogleCloudDatacatalogV1DatabaseTableSpecType {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GoogleCloudDatacatalogV1DatabaseTableSpecType value: $value');
+    throw ArgumentError('Unknown GoogleCloudDatacatalogV1DatabaseTableSpecType value: $value');
   }
 }
+

@@ -25,26 +25,21 @@ class GetInstanceAlloydbV1betaArgs {
     required String location,
     String? project,
     String? view,
-  })  : clusterId = pulumi.Input.asInput<String>(clusterId),
-        instanceId = pulumi.Input.asInput<String>(instanceId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        view = pulumi.Input.asOptionalInput<String>(view);
+  }) :
+      clusterId = pulumi.Input.asInput<String>(clusterId),
+      instanceId = pulumi.Input.asInput<String>(instanceId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clusterId'] = clusterId;
-    map['instanceId'] = instanceId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final viewValue = view;
-    if (viewValue != null) {
-      map['view'] = viewValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'clusterId': clusterId,
+      'instanceId': instanceId,
+      'location': location,
+      'project': ?project,
+      'view': ?view,
+    };
   }
 
   factory GetInstanceAlloydbV1betaArgs.fromMap(Map<String, dynamic> map) {
@@ -57,3 +52,4 @@ class GetInstanceAlloydbV1betaArgs {
     );
   }
 }
+

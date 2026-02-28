@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation {
   final String owner;
 
@@ -10,15 +11,15 @@ class GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['owner'] = owner;
-    return map;
+    return <String, dynamic>{
+      'owner': owner,
+    };
   }
 
-  factory GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation.fromMap(
-      Map<String, dynamic> map) {
+  factory GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation.fromMap(Map<String, dynamic> map) {
     return GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation(
       owner: map['owner'] as String,
     );
   }
 }
+

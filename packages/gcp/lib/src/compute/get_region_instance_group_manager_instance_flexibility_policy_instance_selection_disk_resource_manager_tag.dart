@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag {
   /// The unique key of the resource manager tag to assign to disks. Keys must be in the format tagKeys/{tag_key_id}.
   final String key;
-
   /// The value of the resource manager tag to assign to disks. Values must be in the format tagValues/456.
   final String value;
 
@@ -16,17 +16,17 @@ class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDis
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
-  factory GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag.fromMap(
-      Map<String, dynamic> map) {
+  factory GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag(
       key: map['key'] as String,
       value: map['value'] as String,
     );
   }
 }
+

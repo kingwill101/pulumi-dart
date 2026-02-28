@@ -5,15 +5,13 @@ enum NetworkPerformanceConfigTotalEgressBandwidthTierComputeBeta {
   const NetworkPerformanceConfigTotalEgressBandwidthTierComputeBeta(this.value);
   final String value;
 
-  static NetworkPerformanceConfigTotalEgressBandwidthTierComputeBeta fromValue(
-      String value) {
-    for (final item
-        in NetworkPerformanceConfigTotalEgressBandwidthTierComputeBeta.values) {
+  static NetworkPerformanceConfigTotalEgressBandwidthTierComputeBeta fromValue(String value) {
+    for (final item in NetworkPerformanceConfigTotalEgressBandwidthTierComputeBeta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown NetworkPerformanceConfigTotalEgressBandwidthTierComputeBeta value: $value');
+    throw ArgumentError('Unknown NetworkPerformanceConfigTotalEgressBandwidthTierComputeBeta value: $value');
   }
 }
+

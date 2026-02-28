@@ -16,3 +16,4 @@ enum GroupMigrationTargetType {
     throw ArgumentError('Unknown GroupMigrationTargetType value: $value');
   }
 }
+

@@ -10,7 +10,6 @@ class ProjectCloudArmorTierArgs {
   /// Managed protection tier to be set.
   /// Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
   final pulumi.Input<String> cloudArmorTier;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -21,17 +20,15 @@ class ProjectCloudArmorTierArgs {
   ProjectCloudArmorTierArgs({
     required String cloudArmorTier,
     String? project,
-  })  : cloudArmorTier = pulumi.Input.asInput<String>(cloudArmorTier),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      cloudArmorTier = pulumi.Input.asInput<String>(cloudArmorTier),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cloudArmorTier'] = cloudArmorTier;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cloudArmorTier': cloudArmorTier,
+      'project': ?project,
+    };
   }
 
   factory ProjectCloudArmorTierArgs.fromMap(Map<String, dynamic> map) {
@@ -41,3 +38,4 @@ class ProjectCloudArmorTierArgs {
     );
   }
 }
+

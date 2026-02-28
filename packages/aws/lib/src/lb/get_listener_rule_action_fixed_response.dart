@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetListenerRuleActionFixedResponse {
   /// Content type of the response.
   final String contentType;
-
   /// Message body of the response.
   final String messageBody;
-
   /// The HTTP redirect code.
   final String statusCode;
 
@@ -21,11 +20,11 @@ class GetListenerRuleActionFixedResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['contentType'] = contentType;
-    map['messageBody'] = messageBody;
-    map['statusCode'] = statusCode;
-    return map;
+    return <String, dynamic>{
+      'contentType': contentType,
+      'messageBody': messageBody,
+      'statusCode': statusCode,
+    };
   }
 
   factory GetListenerRuleActionFixedResponse.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class GetListenerRuleActionFixedResponse {
     );
   }
 }
+

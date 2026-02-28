@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerMountPoint {
   /// The absolute file path in the container where the tmpfs volume is mounted.
   final String containerPath;
-
   /// If this value is true, the container has read-only access to the volume.
   final bool readOnly;
-
   /// The name of the volume to mount.
   final String sourceVolume;
 
@@ -21,15 +20,14 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerMountPoint {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['containerPath'] = containerPath;
-    map['readOnly'] = readOnly;
-    map['sourceVolume'] = sourceVolume;
-    return map;
+    return <String, dynamic>{
+      'containerPath': containerPath,
+      'readOnly': readOnly,
+      'sourceVolume': sourceVolume,
+    };
   }
 
-  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerMountPoint.fromMap(
-      Map<String, dynamic> map) {
+  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerMountPoint.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerMountPoint(
       containerPath: map['containerPath'] as String,
       readOnly: map['readOnly'] as bool,
@@ -37,3 +35,4 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerMountPoint {
     );
   }
 }
+

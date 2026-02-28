@@ -7,10 +7,8 @@ import 'time_of_day_response.dart';
 class DenyMaintenancePeriodResponse {
   /// End date of the deny maintenance period.
   final DateResponse endDate;
-
   /// Start date of the deny maintenance period.
   final DateResponse startDate;
-
   /// Time in UTC when the period starts and ends.
   final TimeOfDayResponse time;
 
@@ -25,21 +23,19 @@ class DenyMaintenancePeriodResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['endDate'] = endDate.toMap();
-    map['startDate'] = startDate.toMap();
-    map['time'] = time.toMap();
-    return map;
+    return <String, dynamic>{
+      'endDate': endDate.toMap(),
+      'startDate': startDate.toMap(),
+      'time': time.toMap(),
+    };
   }
 
   factory DenyMaintenancePeriodResponse.fromMap(Map<String, dynamic> map) {
     return DenyMaintenancePeriodResponse(
-      endDate:
-          DateResponse.fromMap((map['endDate'] as Map).cast<String, dynamic>()),
-      startDate: DateResponse.fromMap(
-          (map['startDate'] as Map).cast<String, dynamic>()),
-      time: TimeOfDayResponse.fromMap(
-          (map['time'] as Map).cast<String, dynamic>()),
+      endDate: DateResponse.fromMap((map['endDate'] as Map).cast<String, dynamic>()),
+      startDate: DateResponse.fromMap((map['startDate'] as Map).cast<String, dynamic>()),
+      time: TimeOfDayResponse.fromMap((map['time'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

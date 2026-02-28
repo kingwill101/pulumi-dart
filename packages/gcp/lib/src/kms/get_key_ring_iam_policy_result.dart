@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getKeyRingIamPolicy.
 class GetKeyRingIamPolicyResult {
   /// (Computed) The etag of the IAM policy.
   final String etag;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String keyRingId;
-
   /// (Computed) The policy data
   final String policyData;
 
@@ -25,12 +24,12 @@ class GetKeyRingIamPolicyResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['etag'] = etag;
-    map['id'] = id;
-    map['keyRingId'] = keyRingId;
-    map['policyData'] = policyData;
-    return map;
+    return <String, dynamic>{
+      'etag': etag,
+      'id': id,
+      'keyRingId': keyRingId,
+      'policyData': policyData,
+    };
   }
 
   factory GetKeyRingIamPolicyResult.fromMap(Map<String, dynamic> map) {
@@ -42,3 +41,4 @@ class GetKeyRingIamPolicyResult {
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetContactArgs {
   /// The Amazon Resource Name (ARN) of the contact or escalation plan.
   final pulumi.Input<String> arn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Map of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -24,31 +22,25 @@ class GetContactArgs {
     required String arn,
     String? region,
     Map<String, String>? tags,
-  })  : arn = pulumi.Input.asInput<String>(arn),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      arn = pulumi.Input.asInput<String>(arn),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'region': ?region,
+      'tags': ?tags,
+    };
   }
 
   factory GetContactArgs.fromMap(Map<String, dynamic> map) {
     return GetContactArgs(
       arn: map['arn'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

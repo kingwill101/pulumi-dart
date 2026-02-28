@@ -7,21 +7,16 @@ import 'annotation_args.dart';
 class Annotation extends pulumi.CustomResource {
   /// Create time stamp.
   late final pulumi.Output<String> createTime;
-
   /// Labels as key value pairs.
   late final pulumi.Output<Map<String, String>> labels;
   late final pulumi.Output<String> location;
-
   /// name of resource.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// Optional. An optional request ID to identify requests.
   late final pulumi.Output<String?> requestId;
-
   /// Type of an annotation.
   late final pulumi.Output<String> type;
-
   /// Update time stamp.
   late final pulumi.Output<String> updateTime;
 

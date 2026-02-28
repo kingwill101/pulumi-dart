@@ -15,22 +15,15 @@ class OperationErrorResponseDeploymentmanagerV2beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['errors'] = pulumi.Input.encodeList<
-        OperationErrorErrorsItemResponseDeploymentmanagerV2beta,
-        Map<String, dynamic>>(errors, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'errors': pulumi.Input.encodeList<OperationErrorErrorsItemResponseDeploymentmanagerV2beta, Map<String, dynamic>>(errors, (value) => value.toMap()),
+    };
   }
 
-  factory OperationErrorResponseDeploymentmanagerV2beta.fromMap(
-      Map<String, dynamic> map) {
+  factory OperationErrorResponseDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return OperationErrorResponseDeploymentmanagerV2beta(
-      errors: pulumi.Input.decodeList<
-              OperationErrorErrorsItemResponseDeploymentmanagerV2beta>(
-          map['errors'],
-          (value) =>
-              OperationErrorErrorsItemResponseDeploymentmanagerV2beta.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      errors: pulumi.Input.decodeList<OperationErrorErrorsItemResponseDeploymentmanagerV2beta>(map['errors'], (value) => OperationErrorErrorsItemResponseDeploymentmanagerV2beta.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

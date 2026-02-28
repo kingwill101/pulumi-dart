@@ -175,13 +175,10 @@ import 'schema_definition.dart';
 class Schema extends pulumi.CustomResource {
   /// The definition of the schema.
   late final pulumi.Output<SchemaDefinition> definition;
-
   /// (Optional) Identifies the namespaces of the entities referenced by this schema.
   late final pulumi.Output<List<String>> namespaces;
-
   /// The ID of the Policy Store.
   late final pulumi.Output<String> policyStoreId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

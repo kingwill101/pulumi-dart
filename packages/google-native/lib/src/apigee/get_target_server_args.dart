@@ -19,16 +19,17 @@ class GetTargetServerArgs {
     required String environmentId,
     required String organizationId,
     required String targetserverId,
-  })  : environmentId = pulumi.Input.asInput<String>(environmentId),
-        organizationId = pulumi.Input.asInput<String>(organizationId),
-        targetserverId = pulumi.Input.asInput<String>(targetserverId);
+  }) :
+      environmentId = pulumi.Input.asInput<String>(environmentId),
+      organizationId = pulumi.Input.asInput<String>(organizationId),
+      targetserverId = pulumi.Input.asInput<String>(targetserverId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['environmentId'] = environmentId;
-    map['organizationId'] = organizationId;
-    map['targetserverId'] = targetserverId;
-    return map;
+    return <String, dynamic>{
+      'environmentId': environmentId,
+      'organizationId': organizationId,
+      'targetserverId': targetserverId,
+    };
   }
 
   factory GetTargetServerArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +40,4 @@ class GetTargetServerArgs {
     );
   }
 }
+

@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getCertificate.
 class GetCertificateResult {
   final String arn;
-
   /// PEM-encoded certificate value.
   final String certificate;
   final String certificateAuthorityArn;
-
   /// PEM-encoded certificate chain that includes any intermediate certificates and chains up to root CA.
   final String certificateChain;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -32,14 +30,14 @@ class GetCertificateResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['certificate'] = certificate;
-    map['certificateAuthorityArn'] = certificateAuthorityArn;
-    map['certificateChain'] = certificateChain;
-    map['id'] = id;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'certificate': certificate,
+      'certificateAuthorityArn': certificateAuthorityArn,
+      'certificateChain': certificateChain,
+      'id': id,
+      'region': region,
+    };
   }
 
   factory GetCertificateResult.fromMap(Map<String, dynamic> map) {
@@ -53,3 +51,4 @@ class GetCertificateResult {
     );
   }
 }
+

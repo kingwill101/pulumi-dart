@@ -13,20 +13,15 @@ class VirtualGatewaySpecLogging {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final accessLogValue = accessLog;
-    if (accessLogValue != null) {
-      map['accessLog'] = accessLogValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'accessLog': ?accessLog == null ? null : accessLog!.toMap(),
+    };
   }
 
   factory VirtualGatewaySpecLogging.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecLogging(
-      accessLog: map['accessLog'] == null
-          ? null
-          : VirtualGatewaySpecLoggingAccessLog.fromMap(
-              (map['accessLog'] as Map).cast<String, dynamic>()),
+      accessLog: map['accessLog'] == null ? null : VirtualGatewaySpecLoggingAccessLog.fromMap((map['accessLog'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

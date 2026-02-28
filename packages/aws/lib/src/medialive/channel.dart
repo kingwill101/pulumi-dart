@@ -521,52 +521,37 @@ import 'channel_vpc.dart';
 class Channel extends pulumi.CustomResource {
   /// ARN of the Channel.
   late final pulumi.Output<String> arn;
-
   /// Specification of CDI inputs for this channel. See CDI Input Specification for more details.
   late final pulumi.Output<ChannelCdiInputSpecification?> cdiInputSpecification;
-
   /// Concise argument description.
   late final pulumi.Output<String> channelClass;
-
   /// ID of the Channel.
   late final pulumi.Output<String> channelId;
-
   /// Destinations for channel. See Destinations for more details.
   late final pulumi.Output<List<ChannelDestination>> destinations;
-
   /// Encoder settings. See Encoder Settings for more details.
   late final pulumi.Output<ChannelEncoderSettings> encoderSettings;
-
   /// Input attachments for the channel. See Input Attachments for more details.
   late final pulumi.Output<List<ChannelInputAttachment>> inputAttachments;
-
   /// Specification of network and file inputs for the channel.
   late final pulumi.Output<ChannelInputSpecification> inputSpecification;
-
   /// The log level to write to Cloudwatch logs.
   late final pulumi.Output<String> logLevel;
-
   /// Maintenance settings for this channel. See Maintenance for more details.
   late final pulumi.Output<ChannelMaintenance> maintenance;
-
   /// Name of the Channel.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Concise argument description.
   late final pulumi.Output<String?> roleArn;
-
   /// Whether to start/stop channel. Default: `false`
   late final pulumi.Output<bool?> startChannel;
-
   /// A map of tags to assign to the channel. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Settings for the VPC outputs. See VPC for more details.
   late final pulumi.Output<ChannelVpc?> vpc;
 
@@ -585,18 +570,13 @@ class Channel extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
-    this.cdiInputSpecification =
-        registerOutput<ChannelCdiInputSpecification?>('cdiInputSpecification');
+    this.cdiInputSpecification = registerOutput<ChannelCdiInputSpecification?>('cdiInputSpecification');
     this.channelClass = registerOutput<String>('channelClass');
     this.channelId = registerOutput<String>('channelId');
-    this.destinations =
-        registerOutput<List<ChannelDestination>>('destinations');
-    this.encoderSettings =
-        registerOutput<ChannelEncoderSettings>('encoderSettings');
-    this.inputAttachments =
-        registerOutput<List<ChannelInputAttachment>>('inputAttachments');
-    this.inputSpecification =
-        registerOutput<ChannelInputSpecification>('inputSpecification');
+    this.destinations = registerOutput<List<ChannelDestination>>('destinations');
+    this.encoderSettings = registerOutput<ChannelEncoderSettings>('encoderSettings');
+    this.inputAttachments = registerOutput<List<ChannelInputAttachment>>('inputAttachments');
+    this.inputSpecification = registerOutput<ChannelInputSpecification>('inputSpecification');
     this.logLevel = registerOutput<String>('logLevel');
     this.maintenance = registerOutput<ChannelMaintenance>('maintenance');
     this.name = registerOutput<String>('name');

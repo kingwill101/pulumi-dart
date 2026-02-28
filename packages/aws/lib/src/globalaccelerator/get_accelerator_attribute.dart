@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetAcceleratorAttribute {
   final bool flowLogsEnabled;
   final String flowLogsS3Bucket;
@@ -16,11 +17,11 @@ class GetAcceleratorAttribute {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['flowLogsEnabled'] = flowLogsEnabled;
-    map['flowLogsS3Bucket'] = flowLogsS3Bucket;
-    map['flowLogsS3Prefix'] = flowLogsS3Prefix;
-    return map;
+    return <String, dynamic>{
+      'flowLogsEnabled': flowLogsEnabled,
+      'flowLogsS3Bucket': flowLogsS3Bucket,
+      'flowLogsS3Prefix': flowLogsS3Prefix,
+    };
   }
 
   factory GetAcceleratorAttribute.fromMap(Map<String, dynamic> map) {
@@ -31,3 +32,4 @@ class GetAcceleratorAttribute {
     );
   }
 }
+

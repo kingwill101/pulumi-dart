@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Used for time-dependent conditions. Example: Want to have rule applied for week long sale.
 class GoogleCloudRetailV2alphaConditionTimeRangeResponse {
   /// End of time range. Range is inclusive.
   final String endTime;
-
   /// Start of time range. Range is inclusive.
   final String startTime;
 
@@ -17,17 +17,17 @@ class GoogleCloudRetailV2alphaConditionTimeRangeResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['endTime'] = endTime;
-    map['startTime'] = startTime;
-    return map;
+    return <String, dynamic>{
+      'endTime': endTime,
+      'startTime': startTime,
+    };
   }
 
-  factory GoogleCloudRetailV2alphaConditionTimeRangeResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudRetailV2alphaConditionTimeRangeResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaConditionTimeRangeResponse(
       endTime: map['endTime'] as String,
       startTime: map['startTime'] as String,
     );
   }
 }
+

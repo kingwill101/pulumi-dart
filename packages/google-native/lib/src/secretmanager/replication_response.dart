@@ -7,7 +7,6 @@ import 'user_managed_response.dart';
 class ReplicationResponse {
   /// The Secret will automatically be replicated without any restrictions.
   final AutomaticResponse automatic;
-
   /// The Secret will only be replicated into the locations specified.
   final UserManagedResponse userManaged;
 
@@ -20,18 +19,17 @@ class ReplicationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['automatic'] = automatic.toMap();
-    map['userManaged'] = userManaged.toMap();
-    return map;
+    return <String, dynamic>{
+      'automatic': automatic.toMap(),
+      'userManaged': userManaged.toMap(),
+    };
   }
 
   factory ReplicationResponse.fromMap(Map<String, dynamic> map) {
     return ReplicationResponse(
-      automatic: AutomaticResponse.fromMap(
-          (map['automatic'] as Map).cast<String, dynamic>()),
-      userManaged: UserManagedResponse.fromMap(
-          (map['userManaged'] as Map).cast<String, dynamic>()),
+      automatic: AutomaticResponse.fromMap((map['automatic'] as Map).cast<String, dynamic>()),
+      userManaged: UserManagedResponse.fromMap((map['userManaged'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

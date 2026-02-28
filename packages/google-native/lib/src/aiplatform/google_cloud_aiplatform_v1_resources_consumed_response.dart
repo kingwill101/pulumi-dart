@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Statistics information about resource consumption.
 class GoogleCloudAiplatformV1ResourcesConsumedResponse {
   /// The number of replica hours used. Note that many replicas may run in parallel, and additionally any given work may be queued for some time. Therefore this value is not strictly related to wall time.
@@ -12,15 +13,15 @@ class GoogleCloudAiplatformV1ResourcesConsumedResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['replicaHours'] = replicaHours;
-    return map;
+    return <String, dynamic>{
+      'replicaHours': replicaHours,
+    };
   }
 
-  factory GoogleCloudAiplatformV1ResourcesConsumedResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1ResourcesConsumedResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1ResourcesConsumedResponse(
       replicaHours: map['replicaHours'] as double,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTableGlobalSecondaryIndexOnDemandThroughput {
   final int maxReadRequestUnits;
   final int maxWriteRequestUnits;
@@ -13,17 +14,17 @@ class GetTableGlobalSecondaryIndexOnDemandThroughput {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maxReadRequestUnits'] = maxReadRequestUnits;
-    map['maxWriteRequestUnits'] = maxWriteRequestUnits;
-    return map;
+    return <String, dynamic>{
+      'maxReadRequestUnits': maxReadRequestUnits,
+      'maxWriteRequestUnits': maxWriteRequestUnits,
+    };
   }
 
-  factory GetTableGlobalSecondaryIndexOnDemandThroughput.fromMap(
-      Map<String, dynamic> map) {
+  factory GetTableGlobalSecondaryIndexOnDemandThroughput.fromMap(Map<String, dynamic> map) {
     return GetTableGlobalSecondaryIndexOnDemandThroughput(
       maxReadRequestUnits: map['maxReadRequestUnits'] as int,
       maxWriteRequestUnits: map['maxWriteRequestUnits'] as int,
     );
   }
 }
+

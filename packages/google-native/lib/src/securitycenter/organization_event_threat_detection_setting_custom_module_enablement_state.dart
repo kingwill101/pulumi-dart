@@ -4,20 +4,16 @@ enum OrganizationEventThreatDetectionSettingCustomModuleEnablementState {
   enabled("ENABLED"),
   disabled("DISABLED");
 
-  const OrganizationEventThreatDetectionSettingCustomModuleEnablementState(
-      this.value);
+  const OrganizationEventThreatDetectionSettingCustomModuleEnablementState(this.value);
   final String value;
 
-  static OrganizationEventThreatDetectionSettingCustomModuleEnablementState
-      fromValue(String value) {
-    for (final item
-        in OrganizationEventThreatDetectionSettingCustomModuleEnablementState
-            .values) {
+  static OrganizationEventThreatDetectionSettingCustomModuleEnablementState fromValue(String value) {
+    for (final item in OrganizationEventThreatDetectionSettingCustomModuleEnablementState.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown OrganizationEventThreatDetectionSettingCustomModuleEnablementState value: $value');
+    throw ArgumentError('Unknown OrganizationEventThreatDetectionSettingCustomModuleEnablementState value: $value');
   }
 }
+

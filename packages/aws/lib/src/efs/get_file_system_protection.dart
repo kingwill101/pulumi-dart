@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetFileSystemProtection {
   final String replicationOverwrite;
 
@@ -10,9 +11,9 @@ class GetFileSystemProtection {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['replicationOverwrite'] = replicationOverwrite;
-    return map;
+    return <String, dynamic>{
+      'replicationOverwrite': replicationOverwrite,
+    };
   }
 
   factory GetFileSystemProtection.fromMap(Map<String, dynamic> map) {
@@ -21,3 +22,4 @@ class GetFileSystemProtection {
     );
   }
 }
+

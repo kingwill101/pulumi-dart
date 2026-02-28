@@ -14,16 +14,15 @@ class GoogleCloudChannelV1RepricingConditionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['skuGroupCondition'] = skuGroupCondition.toMap();
-    return map;
+    return <String, dynamic>{
+      'skuGroupCondition': skuGroupCondition.toMap(),
+    };
   }
 
-  factory GoogleCloudChannelV1RepricingConditionResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudChannelV1RepricingConditionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1RepricingConditionResponse(
-      skuGroupCondition: GoogleCloudChannelV1SkuGroupConditionResponse.fromMap(
-          (map['skuGroupCondition'] as Map).cast<String, dynamic>()),
+      skuGroupCondition: GoogleCloudChannelV1SkuGroupConditionResponse.fromMap((map['skuGroupCondition'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

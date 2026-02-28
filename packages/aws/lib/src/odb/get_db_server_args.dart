@@ -9,12 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDbServerArgs {
   /// The unique identifier of the cloud vm cluster.
   final pulumi.Input<String> cloudExadataInfrastructureId;
-
   /// The unique identifier of db node associated with vm cluster.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> id;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -26,28 +24,25 @@ class GetDbServerArgs {
     required String cloudExadataInfrastructureId,
     required String id,
     String? region,
-  })  : cloudExadataInfrastructureId =
-            pulumi.Input.asInput<String>(cloudExadataInfrastructureId),
-        id = pulumi.Input.asInput<String>(id),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      cloudExadataInfrastructureId = pulumi.Input.asInput<String>(cloudExadataInfrastructureId),
+      id = pulumi.Input.asInput<String>(id),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cloudExadataInfrastructureId'] = cloudExadataInfrastructureId;
-    map['id'] = id;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cloudExadataInfrastructureId': cloudExadataInfrastructureId,
+      'id': id,
+      'region': ?region,
+    };
   }
 
   factory GetDbServerArgs.fromMap(Map<String, dynamic> map) {
     return GetDbServerArgs(
-      cloudExadataInfrastructureId:
-          map['cloudExadataInfrastructureId'] as String,
+      cloudExadataInfrastructureId: map['cloudExadataInfrastructureId'] as String,
       id: map['id'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

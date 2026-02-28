@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EventBusLogConfig {
   /// Whether EventBridge include detailed event information in the records it generates. Valid values are `NONE` and `FULL`.
   final String? includeDetail;
-
   /// Level of logging detail to include. Valid values are `OFF`, `ERROR`, `INFO`, and `TRACE`.
   final String? level;
 
@@ -16,23 +16,17 @@ class EventBusLogConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final includeDetailValue = includeDetail;
-    if (includeDetailValue != null) {
-      map['includeDetail'] = includeDetailValue;
-    }
-    final levelValue = level;
-    if (levelValue != null) {
-      map['level'] = levelValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'includeDetail': ?includeDetail,
+      'level': ?level,
+    };
   }
 
   factory EventBusLogConfig.fromMap(Map<String, dynamic> map) {
     return EventBusLogConfig(
-      includeDetail:
-          map['includeDetail'] == null ? null : map['includeDetail'] as String,
+      includeDetail: map['includeDetail'] == null ? null : map['includeDetail'] as String,
       level: map['level'] == null ? null : map['level'] as String,
     );
   }
 }
+

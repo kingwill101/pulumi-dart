@@ -17,7 +17,7 @@ enum UptimeCheckConfigSelectedRegionsItem {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown UptimeCheckConfigSelectedRegionsItem value: $value');
+    throw ArgumentError('Unknown UptimeCheckConfigSelectedRegionsItem value: $value');
   }
 }
+

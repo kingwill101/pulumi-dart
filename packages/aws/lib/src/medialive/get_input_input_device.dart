@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInputInputDevice {
   /// The ID of the Input.
   final String id;
@@ -11,9 +12,9 @@ class GetInputInputDevice {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory GetInputInputDevice.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetInputInputDevice {
     );
   }
 }
+

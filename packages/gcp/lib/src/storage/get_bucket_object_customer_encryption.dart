@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetBucketObjectCustomerEncryption {
   /// The encryption algorithm. Default: AES256
   final String encryptionAlgorithm;
-
   /// Base64 encoded customer supplied encryption key.
   final String encryptionKey;
 
@@ -16,10 +16,10 @@ class GetBucketObjectCustomerEncryption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['encryptionAlgorithm'] = encryptionAlgorithm;
-    map['encryptionKey'] = encryptionKey;
-    return map;
+    return <String, dynamic>{
+      'encryptionAlgorithm': encryptionAlgorithm,
+      'encryptionKey': encryptionKey,
+    };
   }
 
   factory GetBucketObjectCustomerEncryption.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetBucketObjectCustomerEncryption {
     );
   }
 }
+

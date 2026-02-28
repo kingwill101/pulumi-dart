@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RepositoryGroupRepository {
   /// Required. The Git branch pattern used for indexing in RE2 syntax.
   /// See https://github.com/google/re2/wiki/syntax for syntax.
   final String branchPattern;
-
   /// Required. The DeveloperConnect repository full resource name, relative resource name
   /// or resource URL to be indexed.
   final String resource;
@@ -18,10 +18,10 @@ class RepositoryGroupRepository {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['branchPattern'] = branchPattern;
-    map['resource'] = resource;
-    return map;
+    return <String, dynamic>{
+      'branchPattern': branchPattern,
+      'resource': resource,
+    };
   }
 
   factory RepositoryGroupRepository.fromMap(Map<String, dynamic> map) {
@@ -31,3 +31,4 @@ class RepositoryGroupRepository {
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DistributionOriginOriginShield {
   /// Whether the distribution is enabled to accept end user requests for content.
   final bool enabled;
-
   /// AWS Region for Origin Shield. To specify a region, use the region code, not the region name. For example, specify the US East (Ohio) region as `us-east-2`.
   final String? originShieldRegion;
 
@@ -16,21 +16,17 @@ class DistributionOriginOriginShield {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    final originShieldRegionValue = originShieldRegion;
-    if (originShieldRegionValue != null) {
-      map['originShieldRegion'] = originShieldRegionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+      'originShieldRegion': ?originShieldRegion,
+    };
   }
 
   factory DistributionOriginOriginShield.fromMap(Map<String, dynamic> map) {
     return DistributionOriginOriginShield(
       enabled: map['enabled'] as bool,
-      originShieldRegion: map['originShieldRegion'] == null
-          ? null
-          : map['originShieldRegion'] as String,
+      originShieldRegion: map['originShieldRegion'] == null ? null : map['originShieldRegion'] as String,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// InterconnectAttachment that this route applies to.
 class InterconnectAttachment {
   /// Optional. Cloud region to install this policy-based route on interconnect attachment. Use `all` to install it on all interconnect attachments.
@@ -12,12 +13,9 @@ class InterconnectAttachment {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'region': ?region,
+    };
   }
 
   factory InterconnectAttachment.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class InterconnectAttachment {
     );
   }
 }
+

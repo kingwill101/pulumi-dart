@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BucketIpFilterPublicNetworkSource {
   /// The list of public IPv4 and IPv6 CIDR ranges that can access the bucket and its data.
   final List<String> allowedIpCidrRanges;
@@ -11,9 +12,9 @@ class BucketIpFilterPublicNetworkSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allowedIpCidrRanges'] = allowedIpCidrRanges;
-    return map;
+    return <String, dynamic>{
+      'allowedIpCidrRanges': allowedIpCidrRanges,
+    };
   }
 
   factory BucketIpFilterPublicNetworkSource.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class BucketIpFilterPublicNetworkSource {
     );
   }
 }
+

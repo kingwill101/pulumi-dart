@@ -11,43 +11,30 @@ import 'stage_canary_settings.dart';
 class StageArgs {
   /// Enables access logs for the API stage. See Access Log Settings below.
   final pulumi.Input<StageAccessLogSettings>? accessLogSettings;
-
   /// Whether a cache cluster is enabled for the stage
   final pulumi.Input<bool>? cacheClusterEnabled;
-
   /// Size of the cache cluster for the stage, if enabled. Allowed values include `0.5`, `1.6`, `6.1`, `13.5`, `28.4`, `58.2`, `118` and `237`.
   final pulumi.Input<String>? cacheClusterSize;
-
   /// Configuration settings of a canary deployment. See Canary Settings below.
   final pulumi.Input<StageCanarySettings>? canarySettings;
-
   /// Identifier of a client certificate for the stage.
   final pulumi.Input<String>? clientCertificateId;
-
   /// ID of the deployment that the stage points to
   final pulumi.Input<String> deployment;
-
   /// Description of the stage.
   final pulumi.Input<String>? description;
-
   /// Version of the associated API documentation.
   final pulumi.Input<String>? documentationVersion;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// ID of the associated REST API
   final pulumi.Input<String> restApi;
-
   /// Name of the stage
   final pulumi.Input<String> stageName;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Map that defines the stage variables.
   final pulumi.Input<Map<String, String>>? variables;
-
   /// Whether active tracing with X-ray is enabled. Defaults to `false`.
   final pulumi.Input<bool>? xrayTracingEnabled;
 
@@ -81,123 +68,58 @@ class StageArgs {
     Map<String, String>? tags,
     Map<String, String>? variables,
     bool? xrayTracingEnabled,
-  })  : accessLogSettings =
-            pulumi.Input.asOptionalInput<StageAccessLogSettings>(
-                accessLogSettings),
-        cacheClusterEnabled =
-            pulumi.Input.asOptionalInput<bool>(cacheClusterEnabled),
-        cacheClusterSize =
-            pulumi.Input.asOptionalInput<String>(cacheClusterSize),
-        canarySettings =
-            pulumi.Input.asOptionalInput<StageCanarySettings>(canarySettings),
-        clientCertificateId =
-            pulumi.Input.asOptionalInput<String>(clientCertificateId),
-        deployment = pulumi.Input.asInput<String>(deployment),
-        description = pulumi.Input.asOptionalInput<String>(description),
-        documentationVersion =
-            pulumi.Input.asOptionalInput<String>(documentationVersion),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        restApi = pulumi.Input.asInput<String>(restApi),
-        stageName = pulumi.Input.asInput<String>(stageName),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-        variables =
-            pulumi.Input.asOptionalInput<Map<String, String>>(variables),
-        xrayTracingEnabled =
-            pulumi.Input.asOptionalInput<bool>(xrayTracingEnabled);
+  }) :
+      accessLogSettings = pulumi.Input.asOptionalInput<StageAccessLogSettings>(accessLogSettings),
+      cacheClusterEnabled = pulumi.Input.asOptionalInput<bool>(cacheClusterEnabled),
+      cacheClusterSize = pulumi.Input.asOptionalInput<String>(cacheClusterSize),
+      canarySettings = pulumi.Input.asOptionalInput<StageCanarySettings>(canarySettings),
+      clientCertificateId = pulumi.Input.asOptionalInput<String>(clientCertificateId),
+      deployment = pulumi.Input.asInput<String>(deployment),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      documentationVersion = pulumi.Input.asOptionalInput<String>(documentationVersion),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      restApi = pulumi.Input.asInput<String>(restApi),
+      stageName = pulumi.Input.asInput<String>(stageName),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      variables = pulumi.Input.asOptionalInput<Map<String, String>>(variables),
+      xrayTracingEnabled = pulumi.Input.asOptionalInput<bool>(xrayTracingEnabled);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final accessLogSettingsValue = accessLogSettings;
-    if (accessLogSettingsValue != null) {
-      map['accessLogSettings'] = pulumi.Input.mapOptionalInputValue<
-              StageAccessLogSettings, Map<String, dynamic>>(
-          accessLogSettingsValue, (value) => value.toMap());
-    }
-    final cacheClusterEnabledValue = cacheClusterEnabled;
-    if (cacheClusterEnabledValue != null) {
-      map['cacheClusterEnabled'] = cacheClusterEnabledValue;
-    }
-    final cacheClusterSizeValue = cacheClusterSize;
-    if (cacheClusterSizeValue != null) {
-      map['cacheClusterSize'] = cacheClusterSizeValue;
-    }
-    final canarySettingsValue = canarySettings;
-    if (canarySettingsValue != null) {
-      map['canarySettings'] = pulumi.Input.mapOptionalInputValue<
-          StageCanarySettings,
-          Map<String, dynamic>>(canarySettingsValue, (value) => value.toMap());
-    }
-    final clientCertificateIdValue = clientCertificateId;
-    if (clientCertificateIdValue != null) {
-      map['clientCertificateId'] = clientCertificateIdValue;
-    }
-    map['deployment'] = deployment;
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final documentationVersionValue = documentationVersion;
-    if (documentationVersionValue != null) {
-      map['documentationVersion'] = documentationVersionValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['restApi'] = restApi;
-    map['stageName'] = stageName;
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    final variablesValue = variables;
-    if (variablesValue != null) {
-      map['variables'] = variablesValue;
-    }
-    final xrayTracingEnabledValue = xrayTracingEnabled;
-    if (xrayTracingEnabledValue != null) {
-      map['xrayTracingEnabled'] = xrayTracingEnabledValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'accessLogSettings': ?pulumi.Input.mapOptionalInputValue<StageAccessLogSettings, Map<String, dynamic>>(accessLogSettings, (value) => value.toMap()),
+      'cacheClusterEnabled': ?cacheClusterEnabled,
+      'cacheClusterSize': ?cacheClusterSize,
+      'canarySettings': ?pulumi.Input.mapOptionalInputValue<StageCanarySettings, Map<String, dynamic>>(canarySettings, (value) => value.toMap()),
+      'clientCertificateId': ?clientCertificateId,
+      'deployment': deployment,
+      'description': ?description,
+      'documentationVersion': ?documentationVersion,
+      'region': ?region,
+      'restApi': restApi,
+      'stageName': stageName,
+      'tags': ?tags,
+      'variables': ?variables,
+      'xrayTracingEnabled': ?xrayTracingEnabled,
+    };
   }
 
   factory StageArgs.fromMap(Map<String, dynamic> map) {
     return StageArgs(
-      accessLogSettings: map['accessLogSettings'] == null
-          ? null
-          : StageAccessLogSettings.fromMap(
-              (map['accessLogSettings'] as Map).cast<String, dynamic>()),
-      cacheClusterEnabled: map['cacheClusterEnabled'] == null
-          ? null
-          : map['cacheClusterEnabled'] as bool,
-      cacheClusterSize: map['cacheClusterSize'] == null
-          ? null
-          : map['cacheClusterSize'] as String,
-      canarySettings: map['canarySettings'] == null
-          ? null
-          : StageCanarySettings.fromMap(
-              (map['canarySettings'] as Map).cast<String, dynamic>()),
-      clientCertificateId: map['clientCertificateId'] == null
-          ? null
-          : map['clientCertificateId'] as String,
+      accessLogSettings: map['accessLogSettings'] == null ? null : StageAccessLogSettings.fromMap((map['accessLogSettings'] as Map).cast<String, dynamic>()),
+      cacheClusterEnabled: map['cacheClusterEnabled'] == null ? null : map['cacheClusterEnabled'] as bool,
+      cacheClusterSize: map['cacheClusterSize'] == null ? null : map['cacheClusterSize'] as String,
+      canarySettings: map['canarySettings'] == null ? null : StageCanarySettings.fromMap((map['canarySettings'] as Map).cast<String, dynamic>()),
+      clientCertificateId: map['clientCertificateId'] == null ? null : map['clientCertificateId'] as String,
       deployment: map['deployment'] as String,
-      description:
-          map['description'] == null ? null : map['description'] as String,
-      documentationVersion: map['documentationVersion'] == null
-          ? null
-          : map['documentationVersion'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
+      documentationVersion: map['documentationVersion'] == null ? null : map['documentationVersion'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       restApi: map['restApi'] as String,
       stageName: map['stageName'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
-      variables: map['variables'] == null
-          ? null
-          : (map['variables'] as Map).cast<String, String>(),
-      xrayTracingEnabled: map['xrayTracingEnabled'] == null
-          ? null
-          : map['xrayTracingEnabled'] as bool,
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      variables: map['variables'] == null ? null : (map['variables'] as Map).cast<String, String>(),
+      xrayTracingEnabled: map['xrayTracingEnabled'] == null ? null : map['xrayTracingEnabled'] as bool,
     );
   }
 }
+

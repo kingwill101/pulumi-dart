@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetLoadBalancerListener {
   final int instancePort;
   final String instanceProtocol;
@@ -22,13 +23,13 @@ class GetLoadBalancerListener {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['instancePort'] = instancePort;
-    map['instanceProtocol'] = instanceProtocol;
-    map['lbPort'] = lbPort;
-    map['lbProtocol'] = lbProtocol;
-    map['sslCertificateId'] = sslCertificateId;
-    return map;
+    return <String, dynamic>{
+      'instancePort': instancePort,
+      'instanceProtocol': instanceProtocol,
+      'lbPort': lbPort,
+      'lbProtocol': lbProtocol,
+      'sslCertificateId': sslCertificateId,
+    };
   }
 
   factory GetLoadBalancerListener.fromMap(Map<String, dynamic> map) {
@@ -41,3 +42,4 @@ class GetLoadBalancerListener {
     );
   }
 }
+

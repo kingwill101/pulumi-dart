@@ -15,20 +15,15 @@ class TriggerBuildAvailableSecrets {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['secretManagers'] = pulumi.Input.encodeList<
-        TriggerBuildAvailableSecretsSecretManager,
-        Map<String, dynamic>>(secretManagers, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'secretManagers': pulumi.Input.encodeList<TriggerBuildAvailableSecretsSecretManager, Map<String, dynamic>>(secretManagers, (value) => value.toMap()),
+    };
   }
 
   factory TriggerBuildAvailableSecrets.fromMap(Map<String, dynamic> map) {
     return TriggerBuildAvailableSecrets(
-      secretManagers:
-          pulumi.Input.decodeList<TriggerBuildAvailableSecretsSecretManager>(
-              map['secretManagers'],
-              (value) => TriggerBuildAvailableSecretsSecretManager.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      secretManagers: pulumi.Input.decodeList<TriggerBuildAvailableSecretsSecretManager>(map['secretManagers'], (value) => TriggerBuildAvailableSecretsSecretManager.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

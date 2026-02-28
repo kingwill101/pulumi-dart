@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RecordsExclusiveResourceRecordSetResourceRecord {
   /// DNS record value.
   final String value;
@@ -11,15 +12,15 @@ class RecordsExclusiveResourceRecordSetResourceRecord {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'value': value,
+    };
   }
 
-  factory RecordsExclusiveResourceRecordSetResourceRecord.fromMap(
-      Map<String, dynamic> map) {
+  factory RecordsExclusiveResourceRecordSetResourceRecord.fromMap(Map<String, dynamic> map) {
     return RecordsExclusiveResourceRecordSetResourceRecord(
       value: map['value'] as String,
     );
   }
 }
+

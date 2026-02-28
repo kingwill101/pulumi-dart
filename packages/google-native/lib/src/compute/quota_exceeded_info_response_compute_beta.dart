@@ -1,22 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Additional details for quota exceeded error for resource quota.
 class QuotaExceededInfoResponseComputeBeta {
   /// The map holding related quota dimensions.
   final Map<String, String> dimensions;
-
   /// Future quota limit being rolled out. The limit's unit depends on the quota type or metric.
   final double futureLimit;
-
   /// Current effective quota limit. The limit's unit depends on the quota type or metric.
   final double limit;
-
   /// The name of the quota limit.
   final String limitName;
-
   /// The Compute Engine quota metric name.
   final String metricName;
-
   /// Rollout status of the future quota limit.
   final String rolloutStatus;
 
@@ -37,18 +33,17 @@ class QuotaExceededInfoResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dimensions'] = dimensions;
-    map['futureLimit'] = futureLimit;
-    map['limit'] = limit;
-    map['limitName'] = limitName;
-    map['metricName'] = metricName;
-    map['rolloutStatus'] = rolloutStatus;
-    return map;
+    return <String, dynamic>{
+      'dimensions': dimensions,
+      'futureLimit': futureLimit,
+      'limit': limit,
+      'limitName': limitName,
+      'metricName': metricName,
+      'rolloutStatus': rolloutStatus,
+    };
   }
 
-  factory QuotaExceededInfoResponseComputeBeta.fromMap(
-      Map<String, dynamic> map) {
+  factory QuotaExceededInfoResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return QuotaExceededInfoResponseComputeBeta(
       dimensions: (map['dimensions'] as Map).cast<String, String>(),
       futureLimit: map['futureLimit'] as double,
@@ -59,3 +54,4 @@ class QuotaExceededInfoResponseComputeBeta {
     );
   }
 }
+

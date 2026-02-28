@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceMessageResponse {
   /// A code that correspond to one type of user-facing message.
   final String code;
-
   /// Message on memcached instance which will be exposed to users.
   final String message;
 
@@ -16,10 +16,10 @@ class InstanceMessageResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['code'] = code;
-    map['message'] = message;
-    return map;
+    return <String, dynamic>{
+      'code': code,
+      'message': message,
+    };
   }
 
   factory InstanceMessageResponse.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class InstanceMessageResponse {
     );
   }
 }
+

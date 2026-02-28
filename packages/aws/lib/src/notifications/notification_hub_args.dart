@@ -18,30 +18,22 @@ class NotificationHubArgs {
   NotificationHubArgs({
     required String notificationHubRegion,
     NotificationHubTimeouts? timeouts,
-  })  : notificationHubRegion =
-            pulumi.Input.asInput<String>(notificationHubRegion),
-        timeouts =
-            pulumi.Input.asOptionalInput<NotificationHubTimeouts>(timeouts);
+  }) :
+      notificationHubRegion = pulumi.Input.asInput<String>(notificationHubRegion),
+      timeouts = pulumi.Input.asOptionalInput<NotificationHubTimeouts>(timeouts);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['notificationHubRegion'] = notificationHubRegion;
-    final timeoutsValue = timeouts;
-    if (timeoutsValue != null) {
-      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
-          NotificationHubTimeouts,
-          Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'notificationHubRegion': notificationHubRegion,
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<NotificationHubTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+    };
   }
 
   factory NotificationHubArgs.fromMap(Map<String, dynamic> map) {
     return NotificationHubArgs(
       notificationHubRegion: map['notificationHubRegion'] as String,
-      timeouts: map['timeouts'] == null
-          ? null
-          : NotificationHubTimeouts.fromMap(
-              (map['timeouts'] as Map).cast<String, dynamic>()),
+      timeouts: map['timeouts'] == null ? null : NotificationHubTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

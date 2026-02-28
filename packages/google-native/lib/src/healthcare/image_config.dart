@@ -14,20 +14,15 @@ class ImageConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final textRedactionModeValue = textRedactionMode;
-    if (textRedactionModeValue != null) {
-      map['textRedactionMode'] = textRedactionModeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'textRedactionMode': ?textRedactionMode == null ? null : textRedactionMode!.value,
+    };
   }
 
   factory ImageConfig.fromMap(Map<String, dynamic> map) {
     return ImageConfig(
-      textRedactionMode: map['textRedactionMode'] == null
-          ? null
-          : ImageConfigTextRedactionMode.fromValue(
-              map['textRedactionMode'] as String),
+      textRedactionMode: map['textRedactionMode'] == null ? null : ImageConfigTextRedactionMode.fromValue(map['textRedactionMode'] as String),
     );
   }
 }
+

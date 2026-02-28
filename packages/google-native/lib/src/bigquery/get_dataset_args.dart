@@ -19,30 +19,25 @@ class GetDatasetArgs {
     required String datasetId,
     String? datasetView,
     String? project,
-  })  : datasetId = pulumi.Input.asInput<String>(datasetId),
-        datasetView = pulumi.Input.asOptionalInput<String>(datasetView),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      datasetId = pulumi.Input.asInput<String>(datasetId),
+      datasetView = pulumi.Input.asOptionalInput<String>(datasetView),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['datasetId'] = datasetId;
-    final datasetViewValue = datasetView;
-    if (datasetViewValue != null) {
-      map['datasetView'] = datasetViewValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'datasetId': datasetId,
+      'datasetView': ?datasetView,
+      'project': ?project,
+    };
   }
 
   factory GetDatasetArgs.fromMap(Map<String, dynamic> map) {
     return GetDatasetArgs(
       datasetId: map['datasetId'] as String,
-      datasetView:
-          map['datasetView'] == null ? null : map['datasetView'] as String,
+      datasetView: map['datasetView'] == null ? null : map['datasetView'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

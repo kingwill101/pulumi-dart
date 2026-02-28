@@ -14,7 +14,7 @@ enum DistributionPolicyTargetShapeComputeV1 {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown DistributionPolicyTargetShapeComputeV1 value: $value');
+    throw ArgumentError('Unknown DistributionPolicyTargetShapeComputeV1 value: $value');
   }
 }
+

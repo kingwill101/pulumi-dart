@@ -7,7 +7,6 @@ import 'secret_response.dart';
 class Oauth2JwtBearerResponse {
   /// Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate. This private key will be used to sign JWTs used for the jwt-bearer authorization grant. Specified in the form as: `projects/*/secrets/*/versions/*`.
   final SecretResponse clientKey;
-
   /// JwtClaims providers fields to generate the token.
   final JwtClaimsResponse jwtClaims;
 
@@ -20,18 +19,17 @@ class Oauth2JwtBearerResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clientKey'] = clientKey.toMap();
-    map['jwtClaims'] = jwtClaims.toMap();
-    return map;
+    return <String, dynamic>{
+      'clientKey': clientKey.toMap(),
+      'jwtClaims': jwtClaims.toMap(),
+    };
   }
 
   factory Oauth2JwtBearerResponse.fromMap(Map<String, dynamic> map) {
     return Oauth2JwtBearerResponse(
-      clientKey: SecretResponse.fromMap(
-          (map['clientKey'] as Map).cast<String, dynamic>()),
-      jwtClaims: JwtClaimsResponse.fromMap(
-          (map['jwtClaims'] as Map).cast<String, dynamic>()),
+      clientKey: SecretResponse.fromMap((map['clientKey'] as Map).cast<String, dynamic>()),
+      jwtClaims: JwtClaimsResponse.fromMap((map['jwtClaims'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

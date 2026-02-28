@@ -171,10 +171,8 @@ import 'table_bucket_policy_args.dart';
 class TableBucketPolicy extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Amazon Web Services resource-based policy document in JSON format.
   late final pulumi.Output<String> resourcePolicy;
-
   /// ARN referencing the Table Bucket that owns this policy.
   late final pulumi.Output<String> tableBucketArn;
 

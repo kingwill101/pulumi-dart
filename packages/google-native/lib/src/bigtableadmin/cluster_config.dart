@@ -14,20 +14,15 @@ class ClusterConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final clusterAutoscalingConfigValue = clusterAutoscalingConfig;
-    if (clusterAutoscalingConfigValue != null) {
-      map['clusterAutoscalingConfig'] = clusterAutoscalingConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'clusterAutoscalingConfig': ?clusterAutoscalingConfig == null ? null : clusterAutoscalingConfig!.toMap(),
+    };
   }
 
   factory ClusterConfig.fromMap(Map<String, dynamic> map) {
     return ClusterConfig(
-      clusterAutoscalingConfig: map['clusterAutoscalingConfig'] == null
-          ? null
-          : ClusterAutoscalingConfig.fromMap(
-              (map['clusterAutoscalingConfig'] as Map).cast<String, dynamic>()),
+      clusterAutoscalingConfig: map['clusterAutoscalingConfig'] == null ? null : ClusterAutoscalingConfig.fromMap((map['clusterAutoscalingConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

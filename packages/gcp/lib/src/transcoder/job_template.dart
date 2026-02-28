@@ -3204,29 +3204,22 @@ class JobTemplate extends pulumi.CustomResource {
   /// The configuration for this template.
   /// Structure is documented below.
   late final pulumi.Output<JobTemplateConfig> config;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// ID to use for the Transcoding job template.
   late final pulumi.Output<String> jobTemplateId;
-
   /// The labels associated with this job template. You can use these to organize and group your job templates.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The location of the transcoding job template resource.
   late final pulumi.Output<String> location;
-
   /// The resource name of the job template.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
@@ -3246,8 +3239,7 @@ class JobTemplate extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.config = registerOutput<JobTemplateConfig>('config');
-    this.effectiveLabels =
-        registerOutput<Map<String, String>>('effectiveLabels');
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     this.jobTemplateId = registerOutput<String>('jobTemplateId');
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.location = registerOutput<String>('location');

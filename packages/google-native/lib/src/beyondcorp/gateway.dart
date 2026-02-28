@@ -14,9 +14,9 @@ class Gateway {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['type'] = type.value;
-    return map;
+    return <String, dynamic>{
+      'type': type.value,
+    };
   }
 
   factory Gateway.fromMap(Map<String, dynamic> map) {
@@ -25,3 +25,4 @@ class Gateway {
     );
   }
 }
+

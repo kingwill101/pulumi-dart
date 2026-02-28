@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EventEndpointReplicationConfig {
   /// The state of event replication. Valid values: `ENABLED`, `DISABLED`. The default state is `ENABLED`, which means you must supply a `role_arn`. If you don't have a `role_arn` or you don't want event replication enabled, set `state` to `DISABLED`.
   final String? state;
@@ -11,12 +12,9 @@ class EventEndpointReplicationConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final stateValue = state;
-    if (stateValue != null) {
-      map['state'] = stateValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'state': ?state,
+    };
   }
 
   factory EventEndpointReplicationConfig.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class EventEndpointReplicationConfig {
     );
   }
 }
+

@@ -14,10 +14,8 @@ class IamMemberRemoveArgs {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   final pulumi.Input<String> member;
-
   /// The project id of the target project.
   final pulumi.Input<String> project;
-
   /// The target role that should be removed.
   final pulumi.Input<String> role;
 
@@ -29,16 +27,17 @@ class IamMemberRemoveArgs {
     required String member,
     required String project,
     required String role,
-  })  : member = pulumi.Input.asInput<String>(member),
-        project = pulumi.Input.asInput<String>(project),
-        role = pulumi.Input.asInput<String>(role);
+  }) :
+      member = pulumi.Input.asInput<String>(member),
+      project = pulumi.Input.asInput<String>(project),
+      role = pulumi.Input.asInput<String>(role);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['member'] = member;
-    map['project'] = project;
-    map['role'] = role;
-    return map;
+    return <String, dynamic>{
+      'member': member,
+      'project': project,
+      'role': role,
+    };
   }
 
   factory IamMemberRemoveArgs.fromMap(Map<String, dynamic> map) {
@@ -49,3 +48,4 @@ class IamMemberRemoveArgs {
     );
   }
 }
+

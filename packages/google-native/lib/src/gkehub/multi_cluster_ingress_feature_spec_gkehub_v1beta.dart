@@ -6,7 +6,6 @@ import 'multi_cluster_ingress_feature_spec_billing_gkehub_v1beta.dart';
 class MultiClusterIngressFeatureSpecGkehubV1beta {
   /// Deprecated: This field will be ignored and should not be set. Customer's billing structure.
   final MultiClusterIngressFeatureSpecBillingGkehubV1beta? billing;
-
   /// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
   final String? configMembership;
 
@@ -19,28 +18,17 @@ class MultiClusterIngressFeatureSpecGkehubV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final billingValue = billing;
-    if (billingValue != null) {
-      map['billing'] = billingValue.value;
-    }
-    final configMembershipValue = configMembership;
-    if (configMembershipValue != null) {
-      map['configMembership'] = configMembershipValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'billing': ?billing == null ? null : billing!.value,
+      'configMembership': ?configMembership,
+    };
   }
 
-  factory MultiClusterIngressFeatureSpecGkehubV1beta.fromMap(
-      Map<String, dynamic> map) {
+  factory MultiClusterIngressFeatureSpecGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return MultiClusterIngressFeatureSpecGkehubV1beta(
-      billing: map['billing'] == null
-          ? null
-          : MultiClusterIngressFeatureSpecBillingGkehubV1beta.fromValue(
-              map['billing'] as String),
-      configMembership: map['configMembership'] == null
-          ? null
-          : map['configMembership'] as String,
+      billing: map['billing'] == null ? null : MultiClusterIngressFeatureSpecBillingGkehubV1beta.fromValue(map['billing'] as String),
+      configMembership: map['configMembership'] == null ? null : map['configMembership'] as String,
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GlobalSecondaryIndexWarmThroughput {
   /// Number of read operations this index can instantaneously support.
   final int readUnitsPerSecond;
-
   /// Number of write operations this index can instantaneously support.
   final int writeUnitsPerSecond;
 
@@ -16,10 +16,10 @@ class GlobalSecondaryIndexWarmThroughput {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['readUnitsPerSecond'] = readUnitsPerSecond;
-    map['writeUnitsPerSecond'] = writeUnitsPerSecond;
-    return map;
+    return <String, dynamic>{
+      'readUnitsPerSecond': readUnitsPerSecond,
+      'writeUnitsPerSecond': writeUnitsPerSecond,
+    };
   }
 
   factory GlobalSecondaryIndexWarmThroughput.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GlobalSecondaryIndexWarmThroughput {
     );
   }
 }
+

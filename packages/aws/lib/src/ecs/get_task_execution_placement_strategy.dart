@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTaskExecutionPlacementStrategy {
   /// The field to apply the placement strategy against.
   final String? field;
-
   /// The type of placement strategy. Valid values are `random`, `spread`, and `binpack`.
   ///
   /// For more information, see the [Placement Strategy](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PlacementStrategy.html) documentation.
@@ -18,13 +18,10 @@ class GetTaskExecutionPlacementStrategy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final fieldValue = field;
-    if (fieldValue != null) {
-      map['field'] = fieldValue;
-    }
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'field': ?field,
+      'type': type,
+    };
   }
 
   factory GetTaskExecutionPlacementStrategy.fromMap(Map<String, dynamic> map) {
@@ -34,3 +31,4 @@ class GetTaskExecutionPlacementStrategy {
     );
   }
 }
+

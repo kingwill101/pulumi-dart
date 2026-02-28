@@ -5,8 +5,7 @@ import 'guardrail_contextual_grounding_policy_config_filters_config.dart';
 
 class GuardrailContextualGroundingPolicyConfig {
   /// One or more blocks defining contextual grounding filter configs. See Contextual Grounding Filters Config for more information.
-  final List<GuardrailContextualGroundingPolicyConfigFiltersConfig>?
-      filtersConfigs;
+  final List<GuardrailContextualGroundingPolicyConfigFiltersConfig>? filtersConfigs;
 
   /// Creates a new [GuardrailContextualGroundingPolicyConfig].
   /// [filtersConfigs] One or more blocks defining contextual grounding filter configs. See Contextual Grounding Filters Config for more information.
@@ -15,27 +14,15 @@ class GuardrailContextualGroundingPolicyConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final filtersConfigsValue = filtersConfigs;
-    if (filtersConfigsValue != null) {
-      map['filtersConfigs'] = pulumi.Input.encodeList<
-          GuardrailContextualGroundingPolicyConfigFiltersConfig,
-          Map<String, dynamic>>(filtersConfigsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'filtersConfigs': ?filtersConfigs == null ? null : pulumi.Input.encodeList<GuardrailContextualGroundingPolicyConfigFiltersConfig, Map<String, dynamic>>(filtersConfigs!, (value) => value.toMap()),
+    };
   }
 
-  factory GuardrailContextualGroundingPolicyConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GuardrailContextualGroundingPolicyConfig.fromMap(Map<String, dynamic> map) {
     return GuardrailContextualGroundingPolicyConfig(
-      filtersConfigs: map['filtersConfigs'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  GuardrailContextualGroundingPolicyConfigFiltersConfig>(
-              map['filtersConfigs'],
-              (value) =>
-                  GuardrailContextualGroundingPolicyConfigFiltersConfig.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      filtersConfigs: map['filtersConfigs'] == null ? null : pulumi.Input.decodeList<GuardrailContextualGroundingPolicyConfigFiltersConfig>(map['filtersConfigs'], (value) => GuardrailContextualGroundingPolicyConfigFiltersConfig.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

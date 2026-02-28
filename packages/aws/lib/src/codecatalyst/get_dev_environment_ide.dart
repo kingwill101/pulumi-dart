@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDevEnvironmentIde {
   final String name;
   final String runtime;
@@ -13,10 +14,10 @@ class GetDevEnvironmentIde {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['runtime'] = runtime;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'runtime': runtime,
+    };
   }
 
   factory GetDevEnvironmentIde.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class GetDevEnvironmentIde {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents the event to trigger.
 class GoogleCloudDialogflowCxV3beta1EventInput {
   /// Name of the event.
@@ -12,18 +13,15 @@ class GoogleCloudDialogflowCxV3beta1EventInput {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final eventValue = event;
-    if (eventValue != null) {
-      map['event'] = eventValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'event': ?event,
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1EventInput.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1EventInput.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1EventInput(
       event: map['event'] == null ? null : map['event'] as String,
     );
   }
 }
+

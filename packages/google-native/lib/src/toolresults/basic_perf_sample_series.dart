@@ -21,35 +21,19 @@ class BasicPerfSampleSeries {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final perfMetricTypeValue = perfMetricType;
-    if (perfMetricTypeValue != null) {
-      map['perfMetricType'] = perfMetricTypeValue.value;
-    }
-    final perfUnitValue = perfUnit;
-    if (perfUnitValue != null) {
-      map['perfUnit'] = perfUnitValue.value;
-    }
-    final sampleSeriesLabelValue = sampleSeriesLabel;
-    if (sampleSeriesLabelValue != null) {
-      map['sampleSeriesLabel'] = sampleSeriesLabelValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'perfMetricType': ?perfMetricType == null ? null : perfMetricType!.value,
+      'perfUnit': ?perfUnit == null ? null : perfUnit!.value,
+      'sampleSeriesLabel': ?sampleSeriesLabel == null ? null : sampleSeriesLabel!.value,
+    };
   }
 
   factory BasicPerfSampleSeries.fromMap(Map<String, dynamic> map) {
     return BasicPerfSampleSeries(
-      perfMetricType: map['perfMetricType'] == null
-          ? null
-          : BasicPerfSampleSeriesPerfMetricType.fromValue(
-              map['perfMetricType'] as String),
-      perfUnit: map['perfUnit'] == null
-          ? null
-          : BasicPerfSampleSeriesPerfUnit.fromValue(map['perfUnit'] as String),
-      sampleSeriesLabel: map['sampleSeriesLabel'] == null
-          ? null
-          : BasicPerfSampleSeriesSampleSeriesLabel.fromValue(
-              map['sampleSeriesLabel'] as String),
+      perfMetricType: map['perfMetricType'] == null ? null : BasicPerfSampleSeriesPerfMetricType.fromValue(map['perfMetricType'] as String),
+      perfUnit: map['perfUnit'] == null ? null : BasicPerfSampleSeriesPerfUnit.fromValue(map['perfUnit'] as String),
+      sampleSeriesLabel: map['sampleSeriesLabel'] == null ? null : BasicPerfSampleSeriesSampleSeriesLabel.fromValue(map['sampleSeriesLabel'] as String),
     );
   }
 }
+

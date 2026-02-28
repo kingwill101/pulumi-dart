@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TopicRuleErrorActionCloudwatchAlarm {
   /// The CloudWatch alarm name.
   final String alarmName;
-
   /// The IAM role ARN that allows access to the CloudWatch alarm.
   final String roleArn;
-
   /// The reason for the alarm change.
   final String stateReason;
-
   /// The value of the alarm state. Acceptable values are: OK, ALARM, INSUFFICIENT_DATA.
   final String stateValue;
 
@@ -26,16 +24,15 @@ class TopicRuleErrorActionCloudwatchAlarm {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['alarmName'] = alarmName;
-    map['roleArn'] = roleArn;
-    map['stateReason'] = stateReason;
-    map['stateValue'] = stateValue;
-    return map;
+    return <String, dynamic>{
+      'alarmName': alarmName,
+      'roleArn': roleArn,
+      'stateReason': stateReason,
+      'stateValue': stateValue,
+    };
   }
 
-  factory TopicRuleErrorActionCloudwatchAlarm.fromMap(
-      Map<String, dynamic> map) {
+  factory TopicRuleErrorActionCloudwatchAlarm.fromMap(Map<String, dynamic> map) {
     return TopicRuleErrorActionCloudwatchAlarm(
       alarmName: map['alarmName'] as String,
       roleArn: map['roleArn'] as String,
@@ -44,3 +41,4 @@ class TopicRuleErrorActionCloudwatchAlarm {
     );
   }
 }
+

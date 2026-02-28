@@ -17,12 +17,13 @@ class GetHl7V2StoreIamPolicyArgs {
   /// [hl7V2StoreId] The HL7v2 store ID, in the form
   GetHl7V2StoreIamPolicyArgs({
     required String hl7V2StoreId,
-  }) : hl7V2StoreId = pulumi.Input.asInput<String>(hl7V2StoreId);
+  }) :
+      hl7V2StoreId = pulumi.Input.asInput<String>(hl7V2StoreId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['hl7V2StoreId'] = hl7V2StoreId;
-    return map;
+    return <String, dynamic>{
+      'hl7V2StoreId': hl7V2StoreId,
+    };
   }
 
   factory GetHl7V2StoreIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -31,3 +32,4 @@ class GetHl7V2StoreIamPolicyArgs {
     );
   }
 }
+

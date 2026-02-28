@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetBundleComputeType {
   /// Name of the bundle. You cannot combine this parameter with `bundle_id`.
   final String name;
@@ -11,9 +12,9 @@ class GetBundleComputeType {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetBundleComputeType.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetBundleComputeType {
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AwsNodePoolConfigProxyConfig {
   /// The ARN of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
   final String secretArn;
-
   /// The version string of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
   final String secretVersion;
 
@@ -16,10 +16,10 @@ class AwsNodePoolConfigProxyConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['secretArn'] = secretArn;
-    map['secretVersion'] = secretVersion;
-    return map;
+    return <String, dynamic>{
+      'secretArn': secretArn,
+      'secretVersion': secretVersion,
+    };
   }
 
   factory AwsNodePoolConfigProxyConfig.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class AwsNodePoolConfigProxyConfig {
     );
   }
 }
+

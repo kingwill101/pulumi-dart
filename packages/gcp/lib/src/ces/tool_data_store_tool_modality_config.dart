@@ -8,17 +8,14 @@ class ToolDataStoreToolModalityConfig {
   /// Grounding configuration.
   /// Structure is documented below.
   final ToolDataStoreToolModalityConfigGroundingConfig? groundingConfig;
-
   /// The modality type.
   /// Possible values:
   /// TEXT
   /// AUDIO
   final String modalityType;
-
   /// Rewriter configuration.
   /// Structure is documented below.
   final ToolDataStoreToolModalityConfigRewriterConfig? rewriterConfig;
-
   /// Summarization configuration.
   /// Structure is documented below.
   final ToolDataStoreToolModalityConfigSummarizationConfig? summarizationConfig;
@@ -36,38 +33,21 @@ class ToolDataStoreToolModalityConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final groundingConfigValue = groundingConfig;
-    if (groundingConfigValue != null) {
-      map['groundingConfig'] = groundingConfigValue.toMap();
-    }
-    map['modalityType'] = modalityType;
-    final rewriterConfigValue = rewriterConfig;
-    if (rewriterConfigValue != null) {
-      map['rewriterConfig'] = rewriterConfigValue.toMap();
-    }
-    final summarizationConfigValue = summarizationConfig;
-    if (summarizationConfigValue != null) {
-      map['summarizationConfig'] = summarizationConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'groundingConfig': ?groundingConfig == null ? null : groundingConfig!.toMap(),
+      'modalityType': modalityType,
+      'rewriterConfig': ?rewriterConfig == null ? null : rewriterConfig!.toMap(),
+      'summarizationConfig': ?summarizationConfig == null ? null : summarizationConfig!.toMap(),
+    };
   }
 
   factory ToolDataStoreToolModalityConfig.fromMap(Map<String, dynamic> map) {
     return ToolDataStoreToolModalityConfig(
-      groundingConfig: map['groundingConfig'] == null
-          ? null
-          : ToolDataStoreToolModalityConfigGroundingConfig.fromMap(
-              (map['groundingConfig'] as Map).cast<String, dynamic>()),
+      groundingConfig: map['groundingConfig'] == null ? null : ToolDataStoreToolModalityConfigGroundingConfig.fromMap((map['groundingConfig'] as Map).cast<String, dynamic>()),
       modalityType: map['modalityType'] as String,
-      rewriterConfig: map['rewriterConfig'] == null
-          ? null
-          : ToolDataStoreToolModalityConfigRewriterConfig.fromMap(
-              (map['rewriterConfig'] as Map).cast<String, dynamic>()),
-      summarizationConfig: map['summarizationConfig'] == null
-          ? null
-          : ToolDataStoreToolModalityConfigSummarizationConfig.fromMap(
-              (map['summarizationConfig'] as Map).cast<String, dynamic>()),
+      rewriterConfig: map['rewriterConfig'] == null ? null : ToolDataStoreToolModalityConfigRewriterConfig.fromMap((map['rewriterConfig'] as Map).cast<String, dynamic>()),
+      summarizationConfig: map['summarizationConfig'] == null ? null : ToolDataStoreToolModalityConfigSummarizationConfig.fromMap((map['summarizationConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

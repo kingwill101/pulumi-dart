@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterProtectConfigWorkloadConfig {
   /// Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
   final String auditMode;
@@ -11,15 +12,15 @@ class GetClusterProtectConfigWorkloadConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['auditMode'] = auditMode;
-    return map;
+    return <String, dynamic>{
+      'auditMode': auditMode,
+    };
   }
 
-  factory GetClusterProtectConfigWorkloadConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GetClusterProtectConfigWorkloadConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterProtectConfigWorkloadConfig(
       auditMode: map['auditMode'] as String,
     );
   }
 }
+

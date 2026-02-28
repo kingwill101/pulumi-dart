@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WebAclRuleStatementRateBasedStatementCustomKeyLabelNamespace {
   /// The namespace to use for aggregation
   final String namespace;
@@ -11,15 +12,15 @@ class WebAclRuleStatementRateBasedStatementCustomKeyLabelNamespace {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['namespace'] = namespace;
-    return map;
+    return <String, dynamic>{
+      'namespace': namespace,
+    };
   }
 
-  factory WebAclRuleStatementRateBasedStatementCustomKeyLabelNamespace.fromMap(
-      Map<String, dynamic> map) {
+  factory WebAclRuleStatementRateBasedStatementCustomKeyLabelNamespace.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRateBasedStatementCustomKeyLabelNamespace(
       namespace: map['namespace'] as String,
     );
   }
 }
+

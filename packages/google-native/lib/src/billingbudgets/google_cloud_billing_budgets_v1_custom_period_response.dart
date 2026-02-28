@@ -6,7 +6,6 @@ import 'google_type_date_response.dart';
 class GoogleCloudBillingBudgetsV1CustomPeriodResponse {
   /// Optional. The end date of the time period. Budgets with elapsed end date won't be processed. If unset, specifies to track all usage incurred since the start_date.
   final GoogleTypeDateResponse endDate;
-
   /// The start date must be after January 1, 2017.
   final GoogleTypeDateResponse startDate;
 
@@ -19,19 +18,17 @@ class GoogleCloudBillingBudgetsV1CustomPeriodResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['endDate'] = endDate.toMap();
-    map['startDate'] = startDate.toMap();
-    return map;
+    return <String, dynamic>{
+      'endDate': endDate.toMap(),
+      'startDate': startDate.toMap(),
+    };
   }
 
-  factory GoogleCloudBillingBudgetsV1CustomPeriodResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudBillingBudgetsV1CustomPeriodResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBillingBudgetsV1CustomPeriodResponse(
-      endDate: GoogleTypeDateResponse.fromMap(
-          (map['endDate'] as Map).cast<String, dynamic>()),
-      startDate: GoogleTypeDateResponse.fromMap(
-          (map['startDate'] as Map).cast<String, dynamic>()),
+      endDate: GoogleTypeDateResponse.fromMap((map['endDate'] as Map).cast<String, dynamic>()),
+      startDate: GoogleTypeDateResponse.fromMap((map['startDate'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

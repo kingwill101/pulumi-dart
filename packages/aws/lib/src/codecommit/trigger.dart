@@ -163,13 +163,10 @@ import 'trigger_trigger.dart';
 class Trigger extends pulumi.CustomResource {
   /// System-generated unique identifier.
   late final pulumi.Output<String> configurationId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The name for the repository. This needs to be less than 100 characters.
   late final pulumi.Output<String> repositoryName;
-
   /// The name of the trigger.
   late final pulumi.Output<List<TriggerTrigger>> triggers;
 

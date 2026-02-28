@@ -6,10 +6,8 @@ import 'machine_preferences_response_migrationcenter_v1alpha1.dart';
 class ComputeEnginePreferencesResponseMigrationcenterV1alpha1 {
   /// License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
   final String licenseType;
-
   /// Preferences concerning the machine types to consider on Compute Engine.
   final MachinePreferencesResponseMigrationcenterV1alpha1 machinePreferences;
-
   /// Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
   final String persistentDiskType;
 
@@ -24,21 +22,19 @@ class ComputeEnginePreferencesResponseMigrationcenterV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['licenseType'] = licenseType;
-    map['machinePreferences'] = machinePreferences.toMap();
-    map['persistentDiskType'] = persistentDiskType;
-    return map;
+    return <String, dynamic>{
+      'licenseType': licenseType,
+      'machinePreferences': machinePreferences.toMap(),
+      'persistentDiskType': persistentDiskType,
+    };
   }
 
-  factory ComputeEnginePreferencesResponseMigrationcenterV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory ComputeEnginePreferencesResponseMigrationcenterV1alpha1.fromMap(Map<String, dynamic> map) {
     return ComputeEnginePreferencesResponseMigrationcenterV1alpha1(
       licenseType: map['licenseType'] as String,
-      machinePreferences:
-          MachinePreferencesResponseMigrationcenterV1alpha1.fromMap(
-              (map['machinePreferences'] as Map).cast<String, dynamic>()),
+      machinePreferences: MachinePreferencesResponseMigrationcenterV1alpha1.fromMap((map['machinePreferences'] as Map).cast<String, dynamic>()),
       persistentDiskType: map['persistentDiskType'] as String,
     );
   }
 }
+

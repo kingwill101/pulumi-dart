@@ -6,7 +6,6 @@ import 'threat_override_action.dart';
 class ThreatOverride {
   /// Threat action override. For some threat types, only a subset of actions applies.
   final ThreatOverrideAction action;
-
   /// Vendor-specific ID of a threat to override.
   final String threatId;
 
@@ -19,10 +18,10 @@ class ThreatOverride {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['action'] = action.value;
-    map['threatId'] = threatId;
-    return map;
+    return <String, dynamic>{
+      'action': action.value,
+      'threatId': threatId,
+    };
   }
 
   factory ThreatOverride.fromMap(Map<String, dynamic> map) {
@@ -32,3 +31,4 @@ class ThreatOverride {
     );
   }
 }
+

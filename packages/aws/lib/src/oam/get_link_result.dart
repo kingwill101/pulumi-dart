@@ -7,27 +7,20 @@ import 'get_link_link_configuration.dart';
 class GetLinkResult {
   /// ARN of the link.
   final String arn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Label that is assigned to this link.
   final String label;
-
   /// Human-readable name used to identify this source account when you are viewing data from it in the monitoring account.
   final String labelTemplate;
-
   /// Configuration for creating filters that specify that only some metric namespaces or log groups are to be shared from the source account to the monitoring account. See `link_configuration` Block for details.
   final List<GetLinkLinkConfiguration> linkConfigurations;
-
   /// ID string that AWS generated as part of the link ARN.
   final String linkId;
   final String linkIdentifier;
   final String region;
-
   /// Types of data that the source account shares with the monitoring account.
   final List<String> resourceTypes;
-
   /// ARN of the sink that is used for this link.
   final String sinkArn;
   final Map<String, String> tags;
@@ -59,21 +52,19 @@ class GetLinkResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['id'] = id;
-    map['label'] = label;
-    map['labelTemplate'] = labelTemplate;
-    map['linkConfigurations'] =
-        pulumi.Input.encodeList<GetLinkLinkConfiguration, Map<String, dynamic>>(
-            linkConfigurations, (value) => value.toMap());
-    map['linkId'] = linkId;
-    map['linkIdentifier'] = linkIdentifier;
-    map['region'] = region;
-    map['resourceTypes'] = resourceTypes;
-    map['sinkArn'] = sinkArn;
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'id': id,
+      'label': label,
+      'labelTemplate': labelTemplate,
+      'linkConfigurations': pulumi.Input.encodeList<GetLinkLinkConfiguration, Map<String, dynamic>>(linkConfigurations, (value) => value.toMap()),
+      'linkId': linkId,
+      'linkIdentifier': linkIdentifier,
+      'region': region,
+      'resourceTypes': resourceTypes,
+      'sinkArn': sinkArn,
+      'tags': tags,
+    };
   }
 
   factory GetLinkResult.fromMap(Map<String, dynamic> map) {
@@ -82,10 +73,7 @@ class GetLinkResult {
       id: map['id'] as String,
       label: map['label'] as String,
       labelTemplate: map['labelTemplate'] as String,
-      linkConfigurations: pulumi.Input.decodeList<GetLinkLinkConfiguration>(
-          map['linkConfigurations'],
-          (value) => GetLinkLinkConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      linkConfigurations: pulumi.Input.decodeList<GetLinkLinkConfiguration>(map['linkConfigurations'], (value) => GetLinkLinkConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       linkId: map['linkId'] as String,
       linkIdentifier: map['linkIdentifier'] as String,
       region: map['region'] as String,
@@ -95,3 +83,4 @@ class GetLinkResult {
     );
   }
 }
+

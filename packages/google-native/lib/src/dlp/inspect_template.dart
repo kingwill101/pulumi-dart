@@ -7,22 +7,16 @@ import 'inspect_template_args.dart';
 class InspectTemplate extends pulumi.CustomResource {
   /// The creation timestamp of an inspectTemplate.
   late final pulumi.Output<String> createTime;
-
   /// Short description (max 256 chars).
   late final pulumi.Output<String> description;
-
   /// Display name (max 256 chars).
   late final pulumi.Output<String> displayName;
-
   /// The core content of the template. Configuration of the scanning process.
-  late final pulumi.Output<GooglePrivacyDlpV2InspectConfigResponse>
-      inspectConfig;
+  late final pulumi.Output<GooglePrivacyDlpV2InspectConfigResponse> inspectConfig;
   late final pulumi.Output<String> location;
-
   /// The template name. The template will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// The last update timestamp of an inspectTemplate.
   late final pulumi.Output<String> updateTime;
 
@@ -43,9 +37,7 @@ class InspectTemplate extends pulumi.CustomResource {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String>('description');
     this.displayName = registerOutput<String>('displayName');
-    this.inspectConfig =
-        registerOutput<GooglePrivacyDlpV2InspectConfigResponse>(
-            'inspectConfig');
+    this.inspectConfig = registerOutput<GooglePrivacyDlpV2InspectConfigResponse>('inspectConfig');
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');

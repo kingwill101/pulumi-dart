@@ -6,7 +6,6 @@ class AiReasoningEngineSpecDeploymentSpecSecretEnv {
   /// The name of the environment variable. Must be a valid C
   /// identifier.
   final String name;
-
   /// Reference to a secret stored in the Cloud Secret Manager
   /// that will provide the value for this environment variable.
   /// Structure is documented below.
@@ -21,18 +20,17 @@ class AiReasoningEngineSpecDeploymentSpecSecretEnv {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['secretRef'] = secretRef.toMap();
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'secretRef': secretRef.toMap(),
+    };
   }
 
-  factory AiReasoningEngineSpecDeploymentSpecSecretEnv.fromMap(
-      Map<String, dynamic> map) {
+  factory AiReasoningEngineSpecDeploymentSpecSecretEnv.fromMap(Map<String, dynamic> map) {
     return AiReasoningEngineSpecDeploymentSpecSecretEnv(
       name: map['name'] as String,
-      secretRef: AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRef.fromMap(
-          (map['secretRef'] as Map).cast<String, dynamic>()),
+      secretRef: AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRef.fromMap((map['secretRef'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

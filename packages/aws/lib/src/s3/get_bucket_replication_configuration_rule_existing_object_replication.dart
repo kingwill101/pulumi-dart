@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetBucketReplicationConfigurationRuleExistingObjectReplication {
   final String status;
 
@@ -10,15 +11,15 @@ class GetBucketReplicationConfigurationRuleExistingObjectReplication {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['status'] = status;
-    return map;
+    return <String, dynamic>{
+      'status': status,
+    };
   }
 
-  factory GetBucketReplicationConfigurationRuleExistingObjectReplication.fromMap(
-      Map<String, dynamic> map) {
+  factory GetBucketReplicationConfigurationRuleExistingObjectReplication.fromMap(Map<String, dynamic> map) {
     return GetBucketReplicationConfigurationRuleExistingObjectReplication(
       status: map['status'] as String,
     );
   }
 }
+

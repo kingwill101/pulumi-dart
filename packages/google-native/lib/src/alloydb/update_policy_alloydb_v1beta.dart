@@ -14,19 +14,15 @@ class UpdatePolicyAlloydbV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final modeValue = mode;
-    if (modeValue != null) {
-      map['mode'] = modeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'mode': ?mode == null ? null : mode!.value,
+    };
   }
 
   factory UpdatePolicyAlloydbV1beta.fromMap(Map<String, dynamic> map) {
     return UpdatePolicyAlloydbV1beta(
-      mode: map['mode'] == null
-          ? null
-          : UpdatePolicyModeAlloydbV1beta.fromValue(map['mode'] as String),
+      mode: map['mode'] == null ? null : UpdatePolicyModeAlloydbV1beta.fromValue(map['mode'] as String),
     );
   }
 }
+

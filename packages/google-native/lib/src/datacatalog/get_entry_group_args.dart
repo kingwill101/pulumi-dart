@@ -22,24 +22,19 @@ class GetEntryGroupArgs {
     required String location,
     String? project,
     String? readMask,
-  })  : entryGroupId = pulumi.Input.asInput<String>(entryGroupId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        readMask = pulumi.Input.asOptionalInput<String>(readMask);
+  }) :
+      entryGroupId = pulumi.Input.asInput<String>(entryGroupId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      readMask = pulumi.Input.asOptionalInput<String>(readMask);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['entryGroupId'] = entryGroupId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final readMaskValue = readMask;
-    if (readMaskValue != null) {
-      map['readMask'] = readMaskValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'entryGroupId': entryGroupId,
+      'location': location,
+      'project': ?project,
+      'readMask': ?readMask,
+    };
   }
 
   factory GetEntryGroupArgs.fromMap(Map<String, dynamic> map) {
@@ -51,3 +46,4 @@ class GetEntryGroupArgs {
     );
   }
 }
+

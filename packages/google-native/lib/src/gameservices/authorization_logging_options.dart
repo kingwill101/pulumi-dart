@@ -14,20 +14,15 @@ class AuthorizationLoggingOptions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final permissionTypeValue = permissionType;
-    if (permissionTypeValue != null) {
-      map['permissionType'] = permissionTypeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'permissionType': ?permissionType == null ? null : permissionType!.value,
+    };
   }
 
   factory AuthorizationLoggingOptions.fromMap(Map<String, dynamic> map) {
     return AuthorizationLoggingOptions(
-      permissionType: map['permissionType'] == null
-          ? null
-          : AuthorizationLoggingOptionsPermissionType.fromValue(
-              map['permissionType'] as String),
+      permissionType: map['permissionType'] == null ? null : AuthorizationLoggingOptionsPermissionType.fromValue(map['permissionType'] as String),
     );
   }
 }
+

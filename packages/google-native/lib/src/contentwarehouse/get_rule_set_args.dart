@@ -19,19 +19,17 @@ class GetRuleSetArgs {
     required String location,
     String? project,
     required String ruleSetId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        ruleSetId = pulumi.Input.asInput<String>(ruleSetId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      ruleSetId = pulumi.Input.asInput<String>(ruleSetId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['ruleSetId'] = ruleSetId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+      'ruleSetId': ruleSetId,
+    };
   }
 
   factory GetRuleSetArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetRuleSetArgs {
     );
   }
 }
+

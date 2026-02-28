@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ResponsePolicyGkeCluster {
   /// The resource name of the cluster to bind this ManagedZone to.
   /// This should be specified in the format like
@@ -13,9 +14,9 @@ class ResponsePolicyGkeCluster {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gkeClusterName'] = gkeClusterName;
-    return map;
+    return <String, dynamic>{
+      'gkeClusterName': gkeClusterName,
+    };
   }
 
   factory ResponsePolicyGkeCluster.fromMap(Map<String, dynamic> map) {
@@ -24,3 +25,4 @@ class ResponsePolicyGkeCluster {
     );
   }
 }
+

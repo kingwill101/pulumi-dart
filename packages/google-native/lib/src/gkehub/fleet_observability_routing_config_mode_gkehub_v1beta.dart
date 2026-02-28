@@ -7,14 +7,13 @@ enum FleetObservabilityRoutingConfigModeGkehubV1beta {
   const FleetObservabilityRoutingConfigModeGkehubV1beta(this.value);
   final String value;
 
-  static FleetObservabilityRoutingConfigModeGkehubV1beta fromValue(
-      String value) {
+  static FleetObservabilityRoutingConfigModeGkehubV1beta fromValue(String value) {
     for (final item in FleetObservabilityRoutingConfigModeGkehubV1beta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown FleetObservabilityRoutingConfigModeGkehubV1beta value: $value');
+    throw ArgumentError('Unknown FleetObservabilityRoutingConfigModeGkehubV1beta value: $value');
   }
 }
+

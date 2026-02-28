@@ -9,11 +9,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EntryArgs {
   final pulumi.Input<String> apiId;
   final pulumi.Input<String> keyvaluemapId;
-
   /// Resource URI that can be used to identify the scope of the key value map entries.
   final pulumi.Input<String>? name;
   final pulumi.Input<String> organizationId;
-
   /// Data or payload that is being retrieved and associated with the unique key.
   final pulumi.Input<String> value;
 
@@ -29,23 +27,21 @@ class EntryArgs {
     String? name,
     required String organizationId,
     required String value,
-  })  : apiId = pulumi.Input.asInput<String>(apiId),
-        keyvaluemapId = pulumi.Input.asInput<String>(keyvaluemapId),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        organizationId = pulumi.Input.asInput<String>(organizationId),
-        value = pulumi.Input.asInput<String>(value);
+  }) :
+      apiId = pulumi.Input.asInput<String>(apiId),
+      keyvaluemapId = pulumi.Input.asInput<String>(keyvaluemapId),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      organizationId = pulumi.Input.asInput<String>(organizationId),
+      value = pulumi.Input.asInput<String>(value);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['apiId'] = apiId;
-    map['keyvaluemapId'] = keyvaluemapId;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    map['organizationId'] = organizationId;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'apiId': apiId,
+      'keyvaluemapId': keyvaluemapId,
+      'name': ?name,
+      'organizationId': organizationId,
+      'value': value,
+    };
   }
 
   factory EntryArgs.fromMap(Map<String, dynamic> map) {
@@ -58,3 +54,4 @@ class EntryArgs {
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcEndpointServiceAllowedPrincipleArgs {
   /// The ARN of the principal to allow permissions.
   final pulumi.Input<String> principalArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The ID of the VPC endpoint service to allow permission.
   final pulumi.Input<String> vpcEndpointServiceId;
 
@@ -24,24 +22,20 @@ class VpcEndpointServiceAllowedPrincipleArgs {
     required String principalArn,
     String? region,
     required String vpcEndpointServiceId,
-  })  : principalArn = pulumi.Input.asInput<String>(principalArn),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        vpcEndpointServiceId =
-            pulumi.Input.asInput<String>(vpcEndpointServiceId);
+  }) :
+      principalArn = pulumi.Input.asInput<String>(principalArn),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      vpcEndpointServiceId = pulumi.Input.asInput<String>(vpcEndpointServiceId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['principalArn'] = principalArn;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['vpcEndpointServiceId'] = vpcEndpointServiceId;
-    return map;
+    return <String, dynamic>{
+      'principalArn': principalArn,
+      'region': ?region,
+      'vpcEndpointServiceId': vpcEndpointServiceId,
+    };
   }
 
-  factory VpcEndpointServiceAllowedPrincipleArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory VpcEndpointServiceAllowedPrincipleArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointServiceAllowedPrincipleArgs(
       principalArn: map['principalArn'] as String,
       region: map['region'] == null ? null : map['region'] as String,
@@ -49,3 +43,4 @@ class VpcEndpointServiceAllowedPrincipleArgs {
     );
   }
 }
+

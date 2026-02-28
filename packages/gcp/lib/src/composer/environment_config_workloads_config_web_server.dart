@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EnvironmentConfigWorkloadsConfigWebServer {
   /// CPU request and limit for Airflow web server.
   final double? cpu;
-
   /// Memory (GB) request and limit for Airflow web server.
   final double? memoryGb;
-
   /// Storage (GB) request and limit for Airflow web server.
   final double? storageGb;
 
@@ -21,24 +20,14 @@ class EnvironmentConfigWorkloadsConfigWebServer {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cpuValue = cpu;
-    if (cpuValue != null) {
-      map['cpu'] = cpuValue;
-    }
-    final memoryGbValue = memoryGb;
-    if (memoryGbValue != null) {
-      map['memoryGb'] = memoryGbValue;
-    }
-    final storageGbValue = storageGb;
-    if (storageGbValue != null) {
-      map['storageGb'] = storageGbValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cpu': ?cpu,
+      'memoryGb': ?memoryGb,
+      'storageGb': ?storageGb,
+    };
   }
 
-  factory EnvironmentConfigWorkloadsConfigWebServer.fromMap(
-      Map<String, dynamic> map) {
+  factory EnvironmentConfigWorkloadsConfigWebServer.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfigWorkloadsConfigWebServer(
       cpu: map['cpu'] == null ? null : map['cpu'] as double,
       memoryGb: map['memoryGb'] == null ? null : map['memoryGb'] as double,
@@ -46,3 +35,4 @@ class EnvironmentConfigWorkloadsConfigWebServer {
     );
   }
 }
+

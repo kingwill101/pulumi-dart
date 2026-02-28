@@ -7,18 +7,13 @@ import 'google_cloud_dialogflow_cx_v3beta1_fulfillment.dart';
 /// The Knowledge Connector settings for this page or flow. This includes information such as the attached Knowledge Bases, and the way to execute fulfillment.
 class GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings {
   /// Optional. List of related data store connections.
-  final List<GoogleCloudDialogflowCxV3beta1DataStoreConnection>?
-      dataStoreConnections;
-
+  final List<GoogleCloudDialogflowCxV3beta1DataStoreConnection>? dataStoreConnections;
   /// Whether Knowledge Connector is enabled or not.
   final bool? enabled;
-
   /// The target flow to transition to. Format: `projects//locations//agents//flows/`.
   final String? targetFlow;
-
   /// The target page to transition to. Format: `projects//locations//agents//flows//pages/`.
   final String? targetPage;
-
   /// The fulfillment to be triggered. When the answers from the Knowledge Connector are selected by Dialogflow, you can utitlize the request scoped parameter `$request.knowledge.answers` (contains up to the 5 highest confidence answers) and `$request.knowledge.questions` (contains the corresponding questions) to construct the fulfillment.
   final GoogleCloudDialogflowCxV3beta1Fulfillment? triggerFulfillment;
 
@@ -37,53 +32,23 @@ class GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dataStoreConnectionsValue = dataStoreConnections;
-    if (dataStoreConnectionsValue != null) {
-      map['dataStoreConnections'] = pulumi.Input.encodeList<
-              GoogleCloudDialogflowCxV3beta1DataStoreConnection,
-              Map<String, dynamic>>(
-          dataStoreConnectionsValue, (value) => value.toMap());
-    }
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    final targetFlowValue = targetFlow;
-    if (targetFlowValue != null) {
-      map['targetFlow'] = targetFlowValue;
-    }
-    final targetPageValue = targetPage;
-    if (targetPageValue != null) {
-      map['targetPage'] = targetPageValue;
-    }
-    final triggerFulfillmentValue = triggerFulfillment;
-    if (triggerFulfillmentValue != null) {
-      map['triggerFulfillment'] = triggerFulfillmentValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'dataStoreConnections': ?dataStoreConnections == null ? null : pulumi.Input.encodeList<GoogleCloudDialogflowCxV3beta1DataStoreConnection, Map<String, dynamic>>(dataStoreConnections!, (value) => value.toMap()),
+      'enabled': ?enabled,
+      'targetFlow': ?targetFlow,
+      'targetPage': ?targetPage,
+      'triggerFulfillment': ?triggerFulfillment == null ? null : triggerFulfillment!.toMap(),
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings(
-      dataStoreConnections: map['dataStoreConnections'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  GoogleCloudDialogflowCxV3beta1DataStoreConnection>(
-              map['dataStoreConnections'],
-              (value) =>
-                  GoogleCloudDialogflowCxV3beta1DataStoreConnection.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      dataStoreConnections: map['dataStoreConnections'] == null ? null : pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1DataStoreConnection>(map['dataStoreConnections'], (value) => GoogleCloudDialogflowCxV3beta1DataStoreConnection.fromMap((value as Map).cast<String, dynamic>())),
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      targetFlow:
-          map['targetFlow'] == null ? null : map['targetFlow'] as String,
-      targetPage:
-          map['targetPage'] == null ? null : map['targetPage'] as String,
-      triggerFulfillment: map['triggerFulfillment'] == null
-          ? null
-          : GoogleCloudDialogflowCxV3beta1Fulfillment.fromMap(
-              (map['triggerFulfillment'] as Map).cast<String, dynamic>()),
+      targetFlow: map['targetFlow'] == null ? null : map['targetFlow'] as String,
+      targetPage: map['targetPage'] == null ? null : map['targetPage'] as String,
+      triggerFulfillment: map['triggerFulfillment'] == null ? null : GoogleCloudDialogflowCxV3beta1Fulfillment.fromMap((map['triggerFulfillment'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

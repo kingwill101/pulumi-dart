@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterNodePoolAutoConfigNetworkTag {
   /// List of network tags applied to auto-provisioned node pools.
   final List<String> tags;
@@ -11,15 +12,15 @@ class GetClusterNodePoolAutoConfigNetworkTag {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'tags': tags,
+    };
   }
 
-  factory GetClusterNodePoolAutoConfigNetworkTag.fromMap(
-      Map<String, dynamic> map) {
+  factory GetClusterNodePoolAutoConfigNetworkTag.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolAutoConfigNetworkTag(
       tags: (map['tags'] as List).cast<String>(),
     );
   }
 }
+

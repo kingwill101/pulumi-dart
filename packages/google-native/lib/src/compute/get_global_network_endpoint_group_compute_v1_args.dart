@@ -16,25 +16,22 @@ class GetGlobalNetworkEndpointGroupComputeV1Args {
   GetGlobalNetworkEndpointGroupComputeV1Args({
     required String networkEndpointGroup,
     String? project,
-  })  : networkEndpointGroup =
-            pulumi.Input.asInput<String>(networkEndpointGroup),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      networkEndpointGroup = pulumi.Input.asInput<String>(networkEndpointGroup),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['networkEndpointGroup'] = networkEndpointGroup;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'networkEndpointGroup': networkEndpointGroup,
+      'project': ?project,
+    };
   }
 
-  factory GetGlobalNetworkEndpointGroupComputeV1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetGlobalNetworkEndpointGroupComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetGlobalNetworkEndpointGroupComputeV1Args(
       networkEndpointGroup: map['networkEndpointGroup'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

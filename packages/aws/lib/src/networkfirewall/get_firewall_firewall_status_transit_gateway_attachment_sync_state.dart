@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetFirewallFirewallStatusTransitGatewayAttachmentSyncState {
   /// The unique identifier of the transit gateway attachment.
   final String attachmentId;
-
   /// A message providing additional information about the current status.
   final String statusMessage;
-
   /// The current status of the transit gateway attachment.
   final String transitGatewayAttachmentStatus;
 
@@ -21,20 +20,19 @@ class GetFirewallFirewallStatusTransitGatewayAttachmentSyncState {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['attachmentId'] = attachmentId;
-    map['statusMessage'] = statusMessage;
-    map['transitGatewayAttachmentStatus'] = transitGatewayAttachmentStatus;
-    return map;
+    return <String, dynamic>{
+      'attachmentId': attachmentId,
+      'statusMessage': statusMessage,
+      'transitGatewayAttachmentStatus': transitGatewayAttachmentStatus,
+    };
   }
 
-  factory GetFirewallFirewallStatusTransitGatewayAttachmentSyncState.fromMap(
-      Map<String, dynamic> map) {
+  factory GetFirewallFirewallStatusTransitGatewayAttachmentSyncState.fromMap(Map<String, dynamic> map) {
     return GetFirewallFirewallStatusTransitGatewayAttachmentSyncState(
       attachmentId: map['attachmentId'] as String,
       statusMessage: map['statusMessage'] as String,
-      transitGatewayAttachmentStatus:
-          map['transitGatewayAttachmentStatus'] as String,
+      transitGatewayAttachmentStatus: map['transitGatewayAttachmentStatus'] as String,
     );
   }
 }
+

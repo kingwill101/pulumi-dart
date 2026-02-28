@@ -7,27 +7,21 @@ import 'get_key_pair_filter.dart';
 class GetKeyPairResult {
   /// ARN of the Key Pair.
   final String arn;
-
   /// Timestamp for when the key pair was created in ISO 8601 format.
   final String createTime;
   final List<GetKeyPairFilter>? filters;
-
   /// SHA-1 digest of the DER encoded private key.
   final String fingerprint;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool? includePublicKey;
   final String? keyName;
   final String? keyPairId;
-
   /// Type of key pair.
   final String keyType;
-
   /// Public key material.
   final String publicKey;
   final String region;
-
   /// Any tags assigned to the Key Pair.
   final Map<String, String> tags;
 
@@ -60,51 +54,30 @@ class GetKeyPairResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['createTime'] = createTime;
-    final filtersValue = filters;
-    if (filtersValue != null) {
-      map['filters'] =
-          pulumi.Input.encodeList<GetKeyPairFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
-    }
-    map['fingerprint'] = fingerprint;
-    map['id'] = id;
-    final includePublicKeyValue = includePublicKey;
-    if (includePublicKeyValue != null) {
-      map['includePublicKey'] = includePublicKeyValue;
-    }
-    final keyNameValue = keyName;
-    if (keyNameValue != null) {
-      map['keyName'] = keyNameValue;
-    }
-    final keyPairIdValue = keyPairId;
-    if (keyPairIdValue != null) {
-      map['keyPairId'] = keyPairIdValue;
-    }
-    map['keyType'] = keyType;
-    map['publicKey'] = publicKey;
-    map['region'] = region;
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'createTime': createTime,
+      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetKeyPairFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'fingerprint': fingerprint,
+      'id': id,
+      'includePublicKey': ?includePublicKey,
+      'keyName': ?keyName,
+      'keyPairId': ?keyPairId,
+      'keyType': keyType,
+      'publicKey': publicKey,
+      'region': region,
+      'tags': tags,
+    };
   }
 
   factory GetKeyPairResult.fromMap(Map<String, dynamic> map) {
     return GetKeyPairResult(
       arn: map['arn'] as String,
       createTime: map['createTime'] as String,
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetKeyPairFilter>(
-              map['filters'],
-              (value) => GetKeyPairFilter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetKeyPairFilter>(map['filters'], (value) => GetKeyPairFilter.fromMap((value as Map).cast<String, dynamic>())),
       fingerprint: map['fingerprint'] as String,
       id: map['id'] as String,
-      includePublicKey: map['includePublicKey'] == null
-          ? null
-          : map['includePublicKey'] as bool,
+      includePublicKey: map['includePublicKey'] == null ? null : map['includePublicKey'] as bool,
       keyName: map['keyName'] == null ? null : map['keyName'] as String,
       keyPairId: map['keyPairId'] == null ? null : map['keyPairId'] as String,
       keyType: map['keyType'] as String,
@@ -114,3 +87,4 @@ class GetKeyPairResult {
     );
   }
 }
+

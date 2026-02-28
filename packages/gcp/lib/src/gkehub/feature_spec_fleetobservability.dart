@@ -14,20 +14,15 @@ class FeatureSpecFleetobservability {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final loggingConfigValue = loggingConfig;
-    if (loggingConfigValue != null) {
-      map['loggingConfig'] = loggingConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'loggingConfig': ?loggingConfig == null ? null : loggingConfig!.toMap(),
+    };
   }
 
   factory FeatureSpecFleetobservability.fromMap(Map<String, dynamic> map) {
     return FeatureSpecFleetobservability(
-      loggingConfig: map['loggingConfig'] == null
-          ? null
-          : FeatureSpecFleetobservabilityLoggingConfig.fromMap(
-              (map['loggingConfig'] as Map).cast<String, dynamic>()),
+      loggingConfig: map['loggingConfig'] == null ? null : FeatureSpecFleetobservabilityLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

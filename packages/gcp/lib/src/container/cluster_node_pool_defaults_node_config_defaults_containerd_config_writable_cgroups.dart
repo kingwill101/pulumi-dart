@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroups {
   /// Whether writable cgroups are enabled.
   final bool enabled;
@@ -11,15 +12,15 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroups {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroups.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroups.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroups(
       enabled: map['enabled'] as bool,
     );
   }
 }
+

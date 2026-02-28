@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAzureVersionsArgs {
   /// The location to list versions for.
   final pulumi.Input<String>? location;
-
   /// ID of the project to list available cluster versions for. Should match the project the cluster will be deployed to.
   /// Defaults to the project that the provider is authenticated with.
   final pulumi.Input<String>? project;
@@ -20,20 +19,15 @@ class GetAzureVersionsArgs {
   GetAzureVersionsArgs({
     String? location,
     String? project,
-  })  : location = pulumi.Input.asOptionalInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      location = pulumi.Input.asOptionalInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'location': ?location,
+      'project': ?project,
+    };
   }
 
   factory GetAzureVersionsArgs.fromMap(Map<String, dynamic> map) {
@@ -43,3 +37,4 @@ class GetAzureVersionsArgs {
     );
   }
 }
+

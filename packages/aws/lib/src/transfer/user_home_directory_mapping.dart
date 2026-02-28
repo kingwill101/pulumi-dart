@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class UserHomeDirectoryMapping {
   /// Represents an entry and a target.
   final String entry;
-
   /// Represents the map target.
   ///
   /// The `Restricted` option is achieved using the following mapping:
@@ -25,10 +25,10 @@ class UserHomeDirectoryMapping {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['entry'] = entry;
-    map['target'] = target;
-    return map;
+    return <String, dynamic>{
+      'entry': entry,
+      'target': target,
+    };
   }
 
   factory UserHomeDirectoryMapping.fromMap(Map<String, dynamic> map) {
@@ -38,3 +38,4 @@ class UserHomeDirectoryMapping {
     );
   }
 }
+

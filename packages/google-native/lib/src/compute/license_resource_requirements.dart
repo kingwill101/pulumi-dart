@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LicenseResourceRequirements {
   /// Minimum number of guest cpus required to use the Instance. Enforced at Instance creation and Instance start.
   final int? minGuestCpuCount;
-
   /// Minimum memory required to use the Instance. Enforced at Instance creation and Instance start.
   final int? minMemoryMb;
 
@@ -16,25 +16,17 @@ class LicenseResourceRequirements {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final minGuestCpuCountValue = minGuestCpuCount;
-    if (minGuestCpuCountValue != null) {
-      map['minGuestCpuCount'] = minGuestCpuCountValue;
-    }
-    final minMemoryMbValue = minMemoryMb;
-    if (minMemoryMbValue != null) {
-      map['minMemoryMb'] = minMemoryMbValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'minGuestCpuCount': ?minGuestCpuCount,
+      'minMemoryMb': ?minMemoryMb,
+    };
   }
 
   factory LicenseResourceRequirements.fromMap(Map<String, dynamic> map) {
     return LicenseResourceRequirements(
-      minGuestCpuCount: map['minGuestCpuCount'] == null
-          ? null
-          : map['minGuestCpuCount'] as int,
-      minMemoryMb:
-          map['minMemoryMb'] == null ? null : map['minMemoryMb'] as int,
+      minGuestCpuCount: map['minGuestCpuCount'] == null ? null : map['minGuestCpuCount'] as int,
+      minMemoryMb: map['minMemoryMb'] == null ? null : map['minMemoryMb'] as int,
     );
   }
 }
+

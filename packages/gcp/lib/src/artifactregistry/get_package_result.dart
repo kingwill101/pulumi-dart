@@ -1,23 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getPackage.
 class GetPackageResult {
   /// Client specified annotations.
   final Map<String, String> annotations;
-
   /// The time, as a RFC 3339 string, this package was created.
   final String createTime;
-
   /// The display name of the package.
   final String displayName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
   final String name;
   final String? project;
   final String repositoryId;
-
   /// The time, as a RFC 3339 string, this package was last updated. This includes publishing a new version of the package.
   final String updateTime;
 
@@ -44,20 +41,17 @@ class GetPackageResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['annotations'] = annotations;
-    map['createTime'] = createTime;
-    map['displayName'] = displayName;
-    map['id'] = id;
-    map['location'] = location;
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['repositoryId'] = repositoryId;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'annotations': annotations,
+      'createTime': createTime,
+      'displayName': displayName,
+      'id': id,
+      'location': location,
+      'name': name,
+      'project': ?project,
+      'repositoryId': repositoryId,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetPackageResult.fromMap(Map<String, dynamic> map) {
@@ -74,3 +68,4 @@ class GetPackageResult {
     );
   }
 }
+

@@ -15,19 +15,15 @@ class AutomationResourceSelectorResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['targets'] =
-        pulumi.Input.encodeList<TargetAttributeResponse, Map<String, dynamic>>(
-            targets, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'targets': pulumi.Input.encodeList<TargetAttributeResponse, Map<String, dynamic>>(targets, (value) => value.toMap()),
+    };
   }
 
   factory AutomationResourceSelectorResponse.fromMap(Map<String, dynamic> map) {
     return AutomationResourceSelectorResponse(
-      targets: pulumi.Input.decodeList<TargetAttributeResponse>(
-          map['targets'],
-          (value) => TargetAttributeResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      targets: pulumi.Input.decodeList<TargetAttributeResponse>(map['targets'], (value) => TargetAttributeResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

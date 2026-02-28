@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// An alias to a repo revision.
 class GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse {
   /// The alias kind.
   final String kind;
-
   /// The alias name.
   final String name;
 
@@ -17,17 +17,17 @@ class GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kind'] = kind;
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'kind': kind,
+      'name': name,
+    };
   }
 
-  factory GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse(
       kind: map['kind'] as String,
       name: map['name'] as String,
     );
   }
 }
+

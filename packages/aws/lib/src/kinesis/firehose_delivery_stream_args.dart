@@ -21,67 +21,39 @@ import 'firehose_delivery_stream_splunk_configuration.dart';
 class FirehoseDeliveryStreamArgs {
   /// The Amazon Resource Name (ARN) specifying the Stream
   final pulumi.Input<String>? arn;
-
   /// This is the destination to where the data is delivered. The only options are `s3` (Deprecated, use `extended_s3` instead), `extended_s3`, `redshift`, `elasticsearch`, `splunk`, `http_endpoint`, `opensearch`, `opensearchserverless` and `snowflake`.
   final pulumi.Input<String> destination;
   final pulumi.Input<String>? destinationId;
-
   /// Configuration options when `destination` is `elasticsearch`. See `elasticsearch_configuration` block below for details.
-  final pulumi.Input<FirehoseDeliveryStreamElasticsearchConfiguration>?
-      elasticsearchConfiguration;
-
+  final pulumi.Input<FirehoseDeliveryStreamElasticsearchConfiguration>? elasticsearchConfiguration;
   /// Enhanced configuration options for the s3 destination. See `extended_s3_configuration` block below for details.
-  final pulumi.Input<FirehoseDeliveryStreamExtendedS3Configuration>?
-      extendedS3Configuration;
-
+  final pulumi.Input<FirehoseDeliveryStreamExtendedS3Configuration>? extendedS3Configuration;
   /// Configuration options when `destination` is `http_endpoint`. Requires the user to also specify an `s3_configuration` block.  See `http_endpoint_configuration` block below for details.
-  final pulumi.Input<FirehoseDeliveryStreamHttpEndpointConfiguration>?
-      httpEndpointConfiguration;
-
+  final pulumi.Input<FirehoseDeliveryStreamHttpEndpointConfiguration>? httpEndpointConfiguration;
   /// Configuration options when `destination` is `iceberg`. See `iceberg_configuration` block below for details.
-  final pulumi.Input<FirehoseDeliveryStreamIcebergConfiguration>?
-      icebergConfiguration;
-
+  final pulumi.Input<FirehoseDeliveryStreamIcebergConfiguration>? icebergConfiguration;
   /// The stream and role Amazon Resource Names (ARNs) for a Kinesis data stream used as the source for a delivery stream. See `kinesis_source_configuration` block below for details.
-  final pulumi.Input<FirehoseDeliveryStreamKinesisSourceConfiguration>?
-      kinesisSourceConfiguration;
-
+  final pulumi.Input<FirehoseDeliveryStreamKinesisSourceConfiguration>? kinesisSourceConfiguration;
   /// The configuration for the Amazon MSK cluster to be used as the source for a delivery stream. See `msk_source_configuration` block below for details.
-  final pulumi.Input<FirehoseDeliveryStreamMskSourceConfiguration>?
-      mskSourceConfiguration;
-
+  final pulumi.Input<FirehoseDeliveryStreamMskSourceConfiguration>? mskSourceConfiguration;
   /// A name to identify the stream. This is unique to the AWS account and region the Stream is created in. When using for WAF logging, name must be prefixed with `aws-waf-logs-`. See [AWS Documentation](https://docs.aws.amazon.com/waf/latest/developerguide/waf-policies.html#waf-policies-logging-config) for more details.
   final pulumi.Input<String>? name;
-
   /// Configuration options when `destination` is `opensearch`. See `opensearch_configuration` block below for details.
-  final pulumi.Input<FirehoseDeliveryStreamOpensearchConfiguration>?
-      opensearchConfiguration;
-
+  final pulumi.Input<FirehoseDeliveryStreamOpensearchConfiguration>? opensearchConfiguration;
   /// Configuration options when `destination` is `opensearchserverless`. See `opensearchserverless_configuration` block below for details.
-  final pulumi.Input<FirehoseDeliveryStreamOpensearchserverlessConfiguration>?
-      opensearchserverlessConfiguration;
-
+  final pulumi.Input<FirehoseDeliveryStreamOpensearchserverlessConfiguration>? opensearchserverlessConfiguration;
   /// Configuration options when `destination` is `redshift`. Requires the user to also specify an `s3_configuration` block. See `redshift_configuration` block below for details.
-  final pulumi.Input<FirehoseDeliveryStreamRedshiftConfiguration>?
-      redshiftConfiguration;
-
+  final pulumi.Input<FirehoseDeliveryStreamRedshiftConfiguration>? redshiftConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Encrypt at rest options. See `server_side_encryption` block below for details.
-  final pulumi.Input<FirehoseDeliveryStreamServerSideEncryption>?
-      serverSideEncryption;
-
+  final pulumi.Input<FirehoseDeliveryStreamServerSideEncryption>? serverSideEncryption;
   /// Configuration options when `destination` is `snowflake`. See `snowflake_configuration` block below for details.
-  final pulumi.Input<FirehoseDeliveryStreamSnowflakeConfiguration>?
-      snowflakeConfiguration;
-
+  final pulumi.Input<FirehoseDeliveryStreamSnowflakeConfiguration>? snowflakeConfiguration;
   /// Configuration options when `destination` is `splunk`. See `splunk_configuration` block below for details.
   ///
   /// **NOTE:** Server-side encryption should not be enabled when a kinesis stream is configured as the source of the firehose delivery stream.
-  final pulumi.Input<FirehoseDeliveryStreamSplunkConfiguration>?
-      splunkConfiguration;
-
+  final pulumi.Input<FirehoseDeliveryStreamSplunkConfiguration>? splunkConfiguration;
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<String>? versionId;
@@ -110,18 +82,15 @@ class FirehoseDeliveryStreamArgs {
     String? arn,
     required String destination,
     String? destinationId,
-    FirehoseDeliveryStreamElasticsearchConfiguration?
-        elasticsearchConfiguration,
+    FirehoseDeliveryStreamElasticsearchConfiguration? elasticsearchConfiguration,
     FirehoseDeliveryStreamExtendedS3Configuration? extendedS3Configuration,
     FirehoseDeliveryStreamHttpEndpointConfiguration? httpEndpointConfiguration,
     FirehoseDeliveryStreamIcebergConfiguration? icebergConfiguration,
-    FirehoseDeliveryStreamKinesisSourceConfiguration?
-        kinesisSourceConfiguration,
+    FirehoseDeliveryStreamKinesisSourceConfiguration? kinesisSourceConfiguration,
     FirehoseDeliveryStreamMskSourceConfiguration? mskSourceConfiguration,
     String? name,
     FirehoseDeliveryStreamOpensearchConfiguration? opensearchConfiguration,
-    FirehoseDeliveryStreamOpensearchserverlessConfiguration?
-        opensearchserverlessConfiguration,
+    FirehoseDeliveryStreamOpensearchserverlessConfiguration? opensearchserverlessConfiguration,
     FirehoseDeliveryStreamRedshiftConfiguration? redshiftConfiguration,
     String? region,
     FirehoseDeliveryStreamServerSideEncryption? serverSideEncryption,
@@ -129,224 +98,73 @@ class FirehoseDeliveryStreamArgs {
     FirehoseDeliveryStreamSplunkConfiguration? splunkConfiguration,
     Map<String, String>? tags,
     String? versionId,
-  })  : arn = pulumi.Input.asOptionalInput<String>(arn),
-        destination = pulumi.Input.asInput<String>(destination),
-        destinationId = pulumi.Input.asOptionalInput<String>(destinationId),
-        elasticsearchConfiguration = pulumi.Input.asOptionalInput<
-                FirehoseDeliveryStreamElasticsearchConfiguration>(
-            elasticsearchConfiguration),
-        extendedS3Configuration = pulumi.Input.asOptionalInput<
-                FirehoseDeliveryStreamExtendedS3Configuration>(
-            extendedS3Configuration),
-        httpEndpointConfiguration = pulumi.Input.asOptionalInput<
-                FirehoseDeliveryStreamHttpEndpointConfiguration>(
-            httpEndpointConfiguration),
-        icebergConfiguration = pulumi.Input.asOptionalInput<
-            FirehoseDeliveryStreamIcebergConfiguration>(icebergConfiguration),
-        kinesisSourceConfiguration = pulumi.Input.asOptionalInput<
-                FirehoseDeliveryStreamKinesisSourceConfiguration>(
-            kinesisSourceConfiguration),
-        mskSourceConfiguration = pulumi.Input.asOptionalInput<
-                FirehoseDeliveryStreamMskSourceConfiguration>(
-            mskSourceConfiguration),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        opensearchConfiguration = pulumi.Input.asOptionalInput<
-                FirehoseDeliveryStreamOpensearchConfiguration>(
-            opensearchConfiguration),
-        opensearchserverlessConfiguration = pulumi.Input.asOptionalInput<
-                FirehoseDeliveryStreamOpensearchserverlessConfiguration>(
-            opensearchserverlessConfiguration),
-        redshiftConfiguration = pulumi.Input.asOptionalInput<
-            FirehoseDeliveryStreamRedshiftConfiguration>(redshiftConfiguration),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        serverSideEncryption = pulumi.Input.asOptionalInput<
-            FirehoseDeliveryStreamServerSideEncryption>(serverSideEncryption),
-        snowflakeConfiguration = pulumi.Input.asOptionalInput<
-                FirehoseDeliveryStreamSnowflakeConfiguration>(
-            snowflakeConfiguration),
-        splunkConfiguration = pulumi.Input.asOptionalInput<
-            FirehoseDeliveryStreamSplunkConfiguration>(splunkConfiguration),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-        versionId = pulumi.Input.asOptionalInput<String>(versionId);
+  }) :
+      arn = pulumi.Input.asOptionalInput<String>(arn),
+      destination = pulumi.Input.asInput<String>(destination),
+      destinationId = pulumi.Input.asOptionalInput<String>(destinationId),
+      elasticsearchConfiguration = pulumi.Input.asOptionalInput<FirehoseDeliveryStreamElasticsearchConfiguration>(elasticsearchConfiguration),
+      extendedS3Configuration = pulumi.Input.asOptionalInput<FirehoseDeliveryStreamExtendedS3Configuration>(extendedS3Configuration),
+      httpEndpointConfiguration = pulumi.Input.asOptionalInput<FirehoseDeliveryStreamHttpEndpointConfiguration>(httpEndpointConfiguration),
+      icebergConfiguration = pulumi.Input.asOptionalInput<FirehoseDeliveryStreamIcebergConfiguration>(icebergConfiguration),
+      kinesisSourceConfiguration = pulumi.Input.asOptionalInput<FirehoseDeliveryStreamKinesisSourceConfiguration>(kinesisSourceConfiguration),
+      mskSourceConfiguration = pulumi.Input.asOptionalInput<FirehoseDeliveryStreamMskSourceConfiguration>(mskSourceConfiguration),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      opensearchConfiguration = pulumi.Input.asOptionalInput<FirehoseDeliveryStreamOpensearchConfiguration>(opensearchConfiguration),
+      opensearchserverlessConfiguration = pulumi.Input.asOptionalInput<FirehoseDeliveryStreamOpensearchserverlessConfiguration>(opensearchserverlessConfiguration),
+      redshiftConfiguration = pulumi.Input.asOptionalInput<FirehoseDeliveryStreamRedshiftConfiguration>(redshiftConfiguration),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      serverSideEncryption = pulumi.Input.asOptionalInput<FirehoseDeliveryStreamServerSideEncryption>(serverSideEncryption),
+      snowflakeConfiguration = pulumi.Input.asOptionalInput<FirehoseDeliveryStreamSnowflakeConfiguration>(snowflakeConfiguration),
+      splunkConfiguration = pulumi.Input.asOptionalInput<FirehoseDeliveryStreamSplunkConfiguration>(splunkConfiguration),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      versionId = pulumi.Input.asOptionalInput<String>(versionId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final arnValue = arn;
-    if (arnValue != null) {
-      map['arn'] = arnValue;
-    }
-    map['destination'] = destination;
-    final destinationIdValue = destinationId;
-    if (destinationIdValue != null) {
-      map['destinationId'] = destinationIdValue;
-    }
-    final elasticsearchConfigurationValue = elasticsearchConfiguration;
-    if (elasticsearchConfigurationValue != null) {
-      map['elasticsearchConfiguration'] = pulumi.Input.mapOptionalInputValue<
-              FirehoseDeliveryStreamElasticsearchConfiguration,
-              Map<String, dynamic>>(
-          elasticsearchConfigurationValue, (value) => value.toMap());
-    }
-    final extendedS3ConfigurationValue = extendedS3Configuration;
-    if (extendedS3ConfigurationValue != null) {
-      map['extendedS3Configuration'] = pulumi.Input.mapOptionalInputValue<
-              FirehoseDeliveryStreamExtendedS3Configuration,
-              Map<String, dynamic>>(
-          extendedS3ConfigurationValue, (value) => value.toMap());
-    }
-    final httpEndpointConfigurationValue = httpEndpointConfiguration;
-    if (httpEndpointConfigurationValue != null) {
-      map['httpEndpointConfiguration'] = pulumi.Input.mapOptionalInputValue<
-              FirehoseDeliveryStreamHttpEndpointConfiguration,
-              Map<String, dynamic>>(
-          httpEndpointConfigurationValue, (value) => value.toMap());
-    }
-    final icebergConfigurationValue = icebergConfiguration;
-    if (icebergConfigurationValue != null) {
-      map['icebergConfiguration'] = pulumi.Input.mapOptionalInputValue<
-              FirehoseDeliveryStreamIcebergConfiguration, Map<String, dynamic>>(
-          icebergConfigurationValue, (value) => value.toMap());
-    }
-    final kinesisSourceConfigurationValue = kinesisSourceConfiguration;
-    if (kinesisSourceConfigurationValue != null) {
-      map['kinesisSourceConfiguration'] = pulumi.Input.mapOptionalInputValue<
-              FirehoseDeliveryStreamKinesisSourceConfiguration,
-              Map<String, dynamic>>(
-          kinesisSourceConfigurationValue, (value) => value.toMap());
-    }
-    final mskSourceConfigurationValue = mskSourceConfiguration;
-    if (mskSourceConfigurationValue != null) {
-      map['mskSourceConfiguration'] = pulumi.Input.mapOptionalInputValue<
-              FirehoseDeliveryStreamMskSourceConfiguration,
-              Map<String, dynamic>>(
-          mskSourceConfigurationValue, (value) => value.toMap());
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final opensearchConfigurationValue = opensearchConfiguration;
-    if (opensearchConfigurationValue != null) {
-      map['opensearchConfiguration'] = pulumi.Input.mapOptionalInputValue<
-              FirehoseDeliveryStreamOpensearchConfiguration,
-              Map<String, dynamic>>(
-          opensearchConfigurationValue, (value) => value.toMap());
-    }
-    final opensearchserverlessConfigurationValue =
-        opensearchserverlessConfiguration;
-    if (opensearchserverlessConfigurationValue != null) {
-      map['opensearchserverlessConfiguration'] =
-          pulumi.Input.mapOptionalInputValue<
-                  FirehoseDeliveryStreamOpensearchserverlessConfiguration,
-                  Map<String, dynamic>>(
-              opensearchserverlessConfigurationValue, (value) => value.toMap());
-    }
-    final redshiftConfigurationValue = redshiftConfiguration;
-    if (redshiftConfigurationValue != null) {
-      map['redshiftConfiguration'] = pulumi.Input.mapOptionalInputValue<
-              FirehoseDeliveryStreamRedshiftConfiguration,
-              Map<String, dynamic>>(
-          redshiftConfigurationValue, (value) => value.toMap());
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final serverSideEncryptionValue = serverSideEncryption;
-    if (serverSideEncryptionValue != null) {
-      map['serverSideEncryption'] = pulumi.Input.mapOptionalInputValue<
-              FirehoseDeliveryStreamServerSideEncryption, Map<String, dynamic>>(
-          serverSideEncryptionValue, (value) => value.toMap());
-    }
-    final snowflakeConfigurationValue = snowflakeConfiguration;
-    if (snowflakeConfigurationValue != null) {
-      map['snowflakeConfiguration'] = pulumi.Input.mapOptionalInputValue<
-              FirehoseDeliveryStreamSnowflakeConfiguration,
-              Map<String, dynamic>>(
-          snowflakeConfigurationValue, (value) => value.toMap());
-    }
-    final splunkConfigurationValue = splunkConfiguration;
-    if (splunkConfigurationValue != null) {
-      map['splunkConfiguration'] = pulumi.Input.mapOptionalInputValue<
-              FirehoseDeliveryStreamSplunkConfiguration, Map<String, dynamic>>(
-          splunkConfigurationValue, (value) => value.toMap());
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    final versionIdValue = versionId;
-    if (versionIdValue != null) {
-      map['versionId'] = versionIdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'arn': ?arn,
+      'destination': destination,
+      'destinationId': ?destinationId,
+      'elasticsearchConfiguration': ?pulumi.Input.mapOptionalInputValue<FirehoseDeliveryStreamElasticsearchConfiguration, Map<String, dynamic>>(elasticsearchConfiguration, (value) => value.toMap()),
+      'extendedS3Configuration': ?pulumi.Input.mapOptionalInputValue<FirehoseDeliveryStreamExtendedS3Configuration, Map<String, dynamic>>(extendedS3Configuration, (value) => value.toMap()),
+      'httpEndpointConfiguration': ?pulumi.Input.mapOptionalInputValue<FirehoseDeliveryStreamHttpEndpointConfiguration, Map<String, dynamic>>(httpEndpointConfiguration, (value) => value.toMap()),
+      'icebergConfiguration': ?pulumi.Input.mapOptionalInputValue<FirehoseDeliveryStreamIcebergConfiguration, Map<String, dynamic>>(icebergConfiguration, (value) => value.toMap()),
+      'kinesisSourceConfiguration': ?pulumi.Input.mapOptionalInputValue<FirehoseDeliveryStreamKinesisSourceConfiguration, Map<String, dynamic>>(kinesisSourceConfiguration, (value) => value.toMap()),
+      'mskSourceConfiguration': ?pulumi.Input.mapOptionalInputValue<FirehoseDeliveryStreamMskSourceConfiguration, Map<String, dynamic>>(mskSourceConfiguration, (value) => value.toMap()),
+      'name': ?name,
+      'opensearchConfiguration': ?pulumi.Input.mapOptionalInputValue<FirehoseDeliveryStreamOpensearchConfiguration, Map<String, dynamic>>(opensearchConfiguration, (value) => value.toMap()),
+      'opensearchserverlessConfiguration': ?pulumi.Input.mapOptionalInputValue<FirehoseDeliveryStreamOpensearchserverlessConfiguration, Map<String, dynamic>>(opensearchserverlessConfiguration, (value) => value.toMap()),
+      'redshiftConfiguration': ?pulumi.Input.mapOptionalInputValue<FirehoseDeliveryStreamRedshiftConfiguration, Map<String, dynamic>>(redshiftConfiguration, (value) => value.toMap()),
+      'region': ?region,
+      'serverSideEncryption': ?pulumi.Input.mapOptionalInputValue<FirehoseDeliveryStreamServerSideEncryption, Map<String, dynamic>>(serverSideEncryption, (value) => value.toMap()),
+      'snowflakeConfiguration': ?pulumi.Input.mapOptionalInputValue<FirehoseDeliveryStreamSnowflakeConfiguration, Map<String, dynamic>>(snowflakeConfiguration, (value) => value.toMap()),
+      'splunkConfiguration': ?pulumi.Input.mapOptionalInputValue<FirehoseDeliveryStreamSplunkConfiguration, Map<String, dynamic>>(splunkConfiguration, (value) => value.toMap()),
+      'tags': ?tags,
+      'versionId': ?versionId,
+    };
   }
 
   factory FirehoseDeliveryStreamArgs.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamArgs(
       arn: map['arn'] == null ? null : map['arn'] as String,
       destination: map['destination'] as String,
-      destinationId:
-          map['destinationId'] == null ? null : map['destinationId'] as String,
-      elasticsearchConfiguration: map['elasticsearchConfiguration'] == null
-          ? null
-          : FirehoseDeliveryStreamElasticsearchConfiguration.fromMap(
-              (map['elasticsearchConfiguration'] as Map)
-                  .cast<String, dynamic>()),
-      extendedS3Configuration: map['extendedS3Configuration'] == null
-          ? null
-          : FirehoseDeliveryStreamExtendedS3Configuration.fromMap(
-              (map['extendedS3Configuration'] as Map).cast<String, dynamic>()),
-      httpEndpointConfiguration: map['httpEndpointConfiguration'] == null
-          ? null
-          : FirehoseDeliveryStreamHttpEndpointConfiguration.fromMap(
-              (map['httpEndpointConfiguration'] as Map)
-                  .cast<String, dynamic>()),
-      icebergConfiguration: map['icebergConfiguration'] == null
-          ? null
-          : FirehoseDeliveryStreamIcebergConfiguration.fromMap(
-              (map['icebergConfiguration'] as Map).cast<String, dynamic>()),
-      kinesisSourceConfiguration: map['kinesisSourceConfiguration'] == null
-          ? null
-          : FirehoseDeliveryStreamKinesisSourceConfiguration.fromMap(
-              (map['kinesisSourceConfiguration'] as Map)
-                  .cast<String, dynamic>()),
-      mskSourceConfiguration: map['mskSourceConfiguration'] == null
-          ? null
-          : FirehoseDeliveryStreamMskSourceConfiguration.fromMap(
-              (map['mskSourceConfiguration'] as Map).cast<String, dynamic>()),
+      destinationId: map['destinationId'] == null ? null : map['destinationId'] as String,
+      elasticsearchConfiguration: map['elasticsearchConfiguration'] == null ? null : FirehoseDeliveryStreamElasticsearchConfiguration.fromMap((map['elasticsearchConfiguration'] as Map).cast<String, dynamic>()),
+      extendedS3Configuration: map['extendedS3Configuration'] == null ? null : FirehoseDeliveryStreamExtendedS3Configuration.fromMap((map['extendedS3Configuration'] as Map).cast<String, dynamic>()),
+      httpEndpointConfiguration: map['httpEndpointConfiguration'] == null ? null : FirehoseDeliveryStreamHttpEndpointConfiguration.fromMap((map['httpEndpointConfiguration'] as Map).cast<String, dynamic>()),
+      icebergConfiguration: map['icebergConfiguration'] == null ? null : FirehoseDeliveryStreamIcebergConfiguration.fromMap((map['icebergConfiguration'] as Map).cast<String, dynamic>()),
+      kinesisSourceConfiguration: map['kinesisSourceConfiguration'] == null ? null : FirehoseDeliveryStreamKinesisSourceConfiguration.fromMap((map['kinesisSourceConfiguration'] as Map).cast<String, dynamic>()),
+      mskSourceConfiguration: map['mskSourceConfiguration'] == null ? null : FirehoseDeliveryStreamMskSourceConfiguration.fromMap((map['mskSourceConfiguration'] as Map).cast<String, dynamic>()),
       name: map['name'] == null ? null : map['name'] as String,
-      opensearchConfiguration: map['opensearchConfiguration'] == null
-          ? null
-          : FirehoseDeliveryStreamOpensearchConfiguration.fromMap(
-              (map['opensearchConfiguration'] as Map).cast<String, dynamic>()),
-      opensearchserverlessConfiguration:
-          map['opensearchserverlessConfiguration'] == null
-              ? null
-              : FirehoseDeliveryStreamOpensearchserverlessConfiguration.fromMap(
-                  (map['opensearchserverlessConfiguration'] as Map)
-                      .cast<String, dynamic>()),
-      redshiftConfiguration: map['redshiftConfiguration'] == null
-          ? null
-          : FirehoseDeliveryStreamRedshiftConfiguration.fromMap(
-              (map['redshiftConfiguration'] as Map).cast<String, dynamic>()),
+      opensearchConfiguration: map['opensearchConfiguration'] == null ? null : FirehoseDeliveryStreamOpensearchConfiguration.fromMap((map['opensearchConfiguration'] as Map).cast<String, dynamic>()),
+      opensearchserverlessConfiguration: map['opensearchserverlessConfiguration'] == null ? null : FirehoseDeliveryStreamOpensearchserverlessConfiguration.fromMap((map['opensearchserverlessConfiguration'] as Map).cast<String, dynamic>()),
+      redshiftConfiguration: map['redshiftConfiguration'] == null ? null : FirehoseDeliveryStreamRedshiftConfiguration.fromMap((map['redshiftConfiguration'] as Map).cast<String, dynamic>()),
       region: map['region'] == null ? null : map['region'] as String,
-      serverSideEncryption: map['serverSideEncryption'] == null
-          ? null
-          : FirehoseDeliveryStreamServerSideEncryption.fromMap(
-              (map['serverSideEncryption'] as Map).cast<String, dynamic>()),
-      snowflakeConfiguration: map['snowflakeConfiguration'] == null
-          ? null
-          : FirehoseDeliveryStreamSnowflakeConfiguration.fromMap(
-              (map['snowflakeConfiguration'] as Map).cast<String, dynamic>()),
-      splunkConfiguration: map['splunkConfiguration'] == null
-          ? null
-          : FirehoseDeliveryStreamSplunkConfiguration.fromMap(
-              (map['splunkConfiguration'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      serverSideEncryption: map['serverSideEncryption'] == null ? null : FirehoseDeliveryStreamServerSideEncryption.fromMap((map['serverSideEncryption'] as Map).cast<String, dynamic>()),
+      snowflakeConfiguration: map['snowflakeConfiguration'] == null ? null : FirehoseDeliveryStreamSnowflakeConfiguration.fromMap((map['snowflakeConfiguration'] as Map).cast<String, dynamic>()),
+      splunkConfiguration: map['splunkConfiguration'] == null ? null : FirehoseDeliveryStreamSplunkConfiguration.fromMap((map['splunkConfiguration'] as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
       versionId: map['versionId'] == null ? null : map['versionId'] as String,
     );
   }
 }
+

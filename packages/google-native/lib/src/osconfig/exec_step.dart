@@ -6,7 +6,6 @@ import 'exec_step_config.dart';
 class ExecStep {
   /// The ExecStepConfig for all Linux VMs targeted by the PatchJob.
   final ExecStepConfig? linuxExecStepConfig;
-
   /// The ExecStepConfig for all Windows VMs targeted by the PatchJob.
   final ExecStepConfig? windowsExecStepConfig;
 
@@ -19,28 +18,17 @@ class ExecStep {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final linuxExecStepConfigValue = linuxExecStepConfig;
-    if (linuxExecStepConfigValue != null) {
-      map['linuxExecStepConfig'] = linuxExecStepConfigValue.toMap();
-    }
-    final windowsExecStepConfigValue = windowsExecStepConfig;
-    if (windowsExecStepConfigValue != null) {
-      map['windowsExecStepConfig'] = windowsExecStepConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'linuxExecStepConfig': ?linuxExecStepConfig == null ? null : linuxExecStepConfig!.toMap(),
+      'windowsExecStepConfig': ?windowsExecStepConfig == null ? null : windowsExecStepConfig!.toMap(),
+    };
   }
 
   factory ExecStep.fromMap(Map<String, dynamic> map) {
     return ExecStep(
-      linuxExecStepConfig: map['linuxExecStepConfig'] == null
-          ? null
-          : ExecStepConfig.fromMap(
-              (map['linuxExecStepConfig'] as Map).cast<String, dynamic>()),
-      windowsExecStepConfig: map['windowsExecStepConfig'] == null
-          ? null
-          : ExecStepConfig.fromMap(
-              (map['windowsExecStepConfig'] as Map).cast<String, dynamic>()),
+      linuxExecStepConfig: map['linuxExecStepConfig'] == null ? null : ExecStepConfig.fromMap((map['linuxExecStepConfig'] as Map).cast<String, dynamic>()),
+      windowsExecStepConfig: map['windowsExecStepConfig'] == null ? null : ExecStepConfig.fromMap((map['windowsExecStepConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

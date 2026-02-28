@@ -1,18 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetPatchBaselinesBaselineIdentity {
   /// Description of the patch baseline.
   final String baselineDescription;
-
   /// ID of the patch baseline.
   final String baselineId;
-
   /// Name of the patch baseline.
   final String baselineName;
-
   /// Indicates whether this is the default baseline. AWS Systems Manager supports creating multiple default patch baselines. For example, you can create a default patch baseline for each operating system.
   final bool defaultBaseline;
-
   /// Operating system the patch baseline applies to.
   final String operatingSystem;
 
@@ -31,13 +28,13 @@ class GetPatchBaselinesBaselineIdentity {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['baselineDescription'] = baselineDescription;
-    map['baselineId'] = baselineId;
-    map['baselineName'] = baselineName;
-    map['defaultBaseline'] = defaultBaseline;
-    map['operatingSystem'] = operatingSystem;
-    return map;
+    return <String, dynamic>{
+      'baselineDescription': baselineDescription,
+      'baselineId': baselineId,
+      'baselineName': baselineName,
+      'defaultBaseline': defaultBaseline,
+      'operatingSystem': operatingSystem,
+    };
   }
 
   factory GetPatchBaselinesBaselineIdentity.fromMap(Map<String, dynamic> map) {
@@ -50,3 +47,4 @@ class GetPatchBaselinesBaselineIdentity {
     );
   }
 }
+

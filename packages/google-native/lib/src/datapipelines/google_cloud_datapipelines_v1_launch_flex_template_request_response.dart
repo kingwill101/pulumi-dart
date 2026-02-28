@@ -5,15 +5,11 @@ import 'google_cloud_datapipelines_v1_launch_flex_template_parameter_response.da
 /// A request to launch a Dataflow job from a Flex Template.
 class GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponse {
   /// Parameter to launch a job from a Flex Template.
-  final GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponse
-      launchParameter;
-
+  final GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponse launchParameter;
   /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request. For example, `us-central1`, `us-west1`.
   final String location;
-
   /// The ID of the Cloud Platform project that the job belongs to.
   final String project;
-
   /// If true, the request is validated but not actually executed. Defaults to false.
   final bool validateOnly;
 
@@ -30,23 +26,21 @@ class GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['launchParameter'] = launchParameter.toMap();
-    map['location'] = location;
-    map['project'] = project;
-    map['validateOnly'] = validateOnly;
-    return map;
+    return <String, dynamic>{
+      'launchParameter': launchParameter.toMap(),
+      'location': location,
+      'project': project,
+      'validateOnly': validateOnly,
+    };
   }
 
-  factory GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponse(
-      launchParameter:
-          GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponse.fromMap(
-              (map['launchParameter'] as Map).cast<String, dynamic>()),
+      launchParameter: GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponse.fromMap((map['launchParameter'] as Map).cast<String, dynamic>()),
       location: map['location'] as String,
       project: map['project'] as String,
       validateOnly: map['validateOnly'] as bool,
     );
   }
 }
+

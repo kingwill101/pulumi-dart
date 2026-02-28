@@ -9,6 +9,5 @@ topics:
     - random
 environment:
     sdk: ^3.10.0
-resolution: workspace
 dependencies:
     pulumi: ^1.0.0

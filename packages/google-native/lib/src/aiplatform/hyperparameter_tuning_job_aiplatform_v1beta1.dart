@@ -11,55 +11,36 @@ import 'hyperparameter_tuning_job_aiplatform_v1beta1_args.dart';
 class HyperparameterTuningJobAiplatformV1beta1 extends pulumi.CustomResource {
   /// Time when the HyperparameterTuningJob was created.
   late final pulumi.Output<String> createTime;
-
   /// The display name of the HyperparameterTuningJob. The name can be up to 128 characters long and can consist of any UTF-8 characters.
   late final pulumi.Output<String> displayName;
-
   /// Customer-managed encryption key options for a HyperparameterTuningJob. If this is set, then all resources created by the HyperparameterTuningJob will be encrypted with the provided encryption key.
-  late final pulumi.Output<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>
-      encryptionSpec;
-
+  late final pulumi.Output<GoogleCloudAiplatformV1beta1EncryptionSpecResponse> encryptionSpec;
   /// Time when the HyperparameterTuningJob entered any of the following states: `JOB_STATE_SUCCEEDED`, `JOB_STATE_FAILED`, `JOB_STATE_CANCELLED`.
   late final pulumi.Output<String> endTime;
-
   /// Only populated when job's state is JOB_STATE_FAILED or JOB_STATE_CANCELLED.
   late final pulumi.Output<GoogleRpcStatusResponseAiplatformV1beta1> error;
-
   /// The labels with user-defined metadata to organize HyperparameterTuningJobs. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
   late final pulumi.Output<Map<String, String>> labels;
   late final pulumi.Output<String> location;
-
   /// The number of failed Trials that need to be seen before failing the HyperparameterTuningJob. If set to 0, Vertex AI decides how many Trials must fail before the whole job fails.
   late final pulumi.Output<int> maxFailedTrialCount;
-
   /// The desired total number of Trials.
   late final pulumi.Output<int> maxTrialCount;
-
   /// Resource name of the HyperparameterTuningJob.
   late final pulumi.Output<String> name;
-
   /// The desired number of Trials to run in parallel.
   late final pulumi.Output<int> parallelTrialCount;
   late final pulumi.Output<String> project;
-
   /// Time when the HyperparameterTuningJob for the first time entered the `JOB_STATE_RUNNING` state.
   late final pulumi.Output<String> startTime;
-
   /// The detailed state of the job.
   late final pulumi.Output<String> state;
-
   /// Study configuration of the HyperparameterTuningJob.
-  late final pulumi.Output<GoogleCloudAiplatformV1beta1StudySpecResponse>
-      studySpec;
-
+  late final pulumi.Output<GoogleCloudAiplatformV1beta1StudySpecResponse> studySpec;
   /// The spec of a trial job. The same spec applies to the CustomJobs created in all the trials.
-  late final pulumi.Output<GoogleCloudAiplatformV1beta1CustomJobSpecResponse>
-      trialJobSpec;
-
+  late final pulumi.Output<GoogleCloudAiplatformV1beta1CustomJobSpecResponse> trialJobSpec;
   /// Trials of the HyperparameterTuningJob.
-  late final pulumi.Output<List<GoogleCloudAiplatformV1beta1TrialResponse>>
-      trials;
-
+  late final pulumi.Output<List<GoogleCloudAiplatformV1beta1TrialResponse>> trials;
   /// Time when the HyperparameterTuningJob was most recently updated.
   late final pulumi.Output<String> updateTime;
 
@@ -79,12 +60,9 @@ class HyperparameterTuningJobAiplatformV1beta1 extends pulumi.CustomResource {
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.displayName = registerOutput<String>('displayName');
-    this.encryptionSpec =
-        registerOutput<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>(
-            'encryptionSpec');
+    this.encryptionSpec = registerOutput<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>('encryptionSpec');
     this.endTime = registerOutput<String>('endTime');
-    this.error =
-        registerOutput<GoogleRpcStatusResponseAiplatformV1beta1>('error');
+    this.error = registerOutput<GoogleRpcStatusResponseAiplatformV1beta1>('error');
     this.labels = registerOutput<Map<String, String>>('labels');
     this.location = registerOutput<String>('location');
     this.maxFailedTrialCount = registerOutput<int>('maxFailedTrialCount');
@@ -94,15 +72,9 @@ class HyperparameterTuningJobAiplatformV1beta1 extends pulumi.CustomResource {
     this.project = registerOutput<String>('project');
     this.startTime = registerOutput<String>('startTime');
     this.state = registerOutput<String>('state');
-    this.studySpec =
-        registerOutput<GoogleCloudAiplatformV1beta1StudySpecResponse>(
-            'studySpec');
-    this.trialJobSpec =
-        registerOutput<GoogleCloudAiplatformV1beta1CustomJobSpecResponse>(
-            'trialJobSpec');
-    this.trials =
-        registerOutput<List<GoogleCloudAiplatformV1beta1TrialResponse>>(
-            'trials');
+    this.studySpec = registerOutput<GoogleCloudAiplatformV1beta1StudySpecResponse>('studySpec');
+    this.trialJobSpec = registerOutput<GoogleCloudAiplatformV1beta1CustomJobSpecResponse>('trialJobSpec');
+    this.trials = registerOutput<List<GoogleCloudAiplatformV1beta1TrialResponse>>('trials');
     this.updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -13,20 +13,15 @@ class RuleGroupRuleCaptchaConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final immunityTimePropertyValue = immunityTimeProperty;
-    if (immunityTimePropertyValue != null) {
-      map['immunityTimeProperty'] = immunityTimePropertyValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'immunityTimeProperty': ?immunityTimeProperty == null ? null : immunityTimeProperty!.toMap(),
+    };
   }
 
   factory RuleGroupRuleCaptchaConfig.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleCaptchaConfig(
-      immunityTimeProperty: map['immunityTimeProperty'] == null
-          ? null
-          : RuleGroupRuleCaptchaConfigImmunityTimeProperty.fromMap(
-              (map['immunityTimeProperty'] as Map).cast<String, dynamic>()),
+      immunityTimeProperty: map['immunityTimeProperty'] == null ? null : RuleGroupRuleCaptchaConfigImmunityTimeProperty.fromMap((map['immunityTimeProperty'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

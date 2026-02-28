@@ -14,20 +14,15 @@ class GetAppConnectorPrincipalInfo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['serviceAccounts'] = pulumi.Input.encodeList<
-        GetAppConnectorPrincipalInfoServiceAccount,
-        Map<String, dynamic>>(serviceAccounts, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'serviceAccounts': pulumi.Input.encodeList<GetAppConnectorPrincipalInfoServiceAccount, Map<String, dynamic>>(serviceAccounts, (value) => value.toMap()),
+    };
   }
 
   factory GetAppConnectorPrincipalInfo.fromMap(Map<String, dynamic> map) {
     return GetAppConnectorPrincipalInfo(
-      serviceAccounts:
-          pulumi.Input.decodeList<GetAppConnectorPrincipalInfoServiceAccount>(
-              map['serviceAccounts'],
-              (value) => GetAppConnectorPrincipalInfoServiceAccount.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      serviceAccounts: pulumi.Input.decodeList<GetAppConnectorPrincipalInfoServiceAccount>(map['serviceAccounts'], (value) => GetAppConnectorPrincipalInfoServiceAccount.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

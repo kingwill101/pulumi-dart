@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LoadBalancerIpamPools {
   /// The ID of the IPv4 IPAM pool.
   final String ipv4IpamPoolId;
@@ -11,9 +12,9 @@ class LoadBalancerIpamPools {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ipv4IpamPoolId'] = ipv4IpamPoolId;
-    return map;
+    return <String, dynamic>{
+      'ipv4IpamPoolId': ipv4IpamPoolId,
+    };
   }
 
   factory LoadBalancerIpamPools.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class LoadBalancerIpamPools {
     );
   }
 }
+

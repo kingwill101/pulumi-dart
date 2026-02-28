@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FrameworkDeploymentCloudControlDeploymentReference {
   /// (Output)
   /// The name of the CloudControlDeployment. The format is:
@@ -13,20 +14,15 @@ class FrameworkDeploymentCloudControlDeploymentReference {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cloudControlDeploymentValue = cloudControlDeployment;
-    if (cloudControlDeploymentValue != null) {
-      map['cloudControlDeployment'] = cloudControlDeploymentValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cloudControlDeployment': ?cloudControlDeployment,
+    };
   }
 
-  factory FrameworkDeploymentCloudControlDeploymentReference.fromMap(
-      Map<String, dynamic> map) {
+  factory FrameworkDeploymentCloudControlDeploymentReference.fromMap(Map<String, dynamic> map) {
     return FrameworkDeploymentCloudControlDeploymentReference(
-      cloudControlDeployment: map['cloudControlDeployment'] == null
-          ? null
-          : map['cloudControlDeployment'] as String,
+      cloudControlDeployment: map['cloudControlDeployment'] == null ? null : map['cloudControlDeployment'] as String,
     );
   }
 }
+

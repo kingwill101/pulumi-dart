@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LoggingConfigurationDestinationConfigurationCloudwatchLogs {
   /// Name of the Amazon Cloudwatch Logs destination where chat activity will be logged.
   final String logGroupName;
@@ -11,15 +12,15 @@ class LoggingConfigurationDestinationConfigurationCloudwatchLogs {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['logGroupName'] = logGroupName;
-    return map;
+    return <String, dynamic>{
+      'logGroupName': logGroupName,
+    };
   }
 
-  factory LoggingConfigurationDestinationConfigurationCloudwatchLogs.fromMap(
-      Map<String, dynamic> map) {
+  factory LoggingConfigurationDestinationConfigurationCloudwatchLogs.fromMap(Map<String, dynamic> map) {
     return LoggingConfigurationDestinationConfigurationCloudwatchLogs(
       logGroupName: map['logGroupName'] as String,
     );
   }
 }
+

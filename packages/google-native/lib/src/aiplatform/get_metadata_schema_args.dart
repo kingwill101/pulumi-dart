@@ -22,21 +22,19 @@ class GetMetadataSchemaArgs {
     required String metadataSchemaId,
     required String metadataStoreId,
     String? project,
-  })  : location = pulumi.Input.asInput<String>(location),
-        metadataSchemaId = pulumi.Input.asInput<String>(metadataSchemaId),
-        metadataStoreId = pulumi.Input.asInput<String>(metadataStoreId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      metadataSchemaId = pulumi.Input.asInput<String>(metadataSchemaId),
+      metadataStoreId = pulumi.Input.asInput<String>(metadataStoreId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    map['metadataSchemaId'] = metadataSchemaId;
-    map['metadataStoreId'] = metadataStoreId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'metadataSchemaId': metadataSchemaId,
+      'metadataStoreId': metadataStoreId,
+      'project': ?project,
+    };
   }
 
   factory GetMetadataSchemaArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetMetadataSchemaArgs {
     );
   }
 }
+

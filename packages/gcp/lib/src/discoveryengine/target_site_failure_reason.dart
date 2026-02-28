@@ -14,20 +14,15 @@ class TargetSiteFailureReason {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final quotaFailureValue = quotaFailure;
-    if (quotaFailureValue != null) {
-      map['quotaFailure'] = quotaFailureValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'quotaFailure': ?quotaFailure == null ? null : quotaFailure!.toMap(),
+    };
   }
 
   factory TargetSiteFailureReason.fromMap(Map<String, dynamic> map) {
     return TargetSiteFailureReason(
-      quotaFailure: map['quotaFailure'] == null
-          ? null
-          : TargetSiteFailureReasonQuotaFailure.fromMap(
-              (map['quotaFailure'] as Map).cast<String, dynamic>()),
+      quotaFailure: map['quotaFailure'] == null ? null : TargetSiteFailureReasonQuotaFailure.fromMap((map['quotaFailure'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

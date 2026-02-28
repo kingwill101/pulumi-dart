@@ -6,14 +6,11 @@ import 'get_provisioning_artifacts_provisioning_artifact_detail.dart';
 /// Result data returned by getProvisioningArtifacts.
 class GetProvisioningArtifactsResult {
   final String? acceptLanguage;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String productId;
-
   /// List with information about the provisioning artifacts. See details below.
-  final List<GetProvisioningArtifactsProvisioningArtifactDetail>
-      provisioningArtifactDetails;
+  final List<GetProvisioningArtifactsProvisioningArtifactDetail> provisioningArtifactDetails;
   final String region;
 
   /// Creates a new [GetProvisioningArtifactsResult].
@@ -31,34 +28,23 @@ class GetProvisioningArtifactsResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final acceptLanguageValue = acceptLanguage;
-    if (acceptLanguageValue != null) {
-      map['acceptLanguage'] = acceptLanguageValue;
-    }
-    map['id'] = id;
-    map['productId'] = productId;
-    map['provisioningArtifactDetails'] = pulumi.Input.encodeList<
-            GetProvisioningArtifactsProvisioningArtifactDetail,
-            Map<String, dynamic>>(
-        provisioningArtifactDetails, (value) => value.toMap());
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'acceptLanguage': ?acceptLanguage,
+      'id': id,
+      'productId': productId,
+      'provisioningArtifactDetails': pulumi.Input.encodeList<GetProvisioningArtifactsProvisioningArtifactDetail, Map<String, dynamic>>(provisioningArtifactDetails, (value) => value.toMap()),
+      'region': region,
+    };
   }
 
   factory GetProvisioningArtifactsResult.fromMap(Map<String, dynamic> map) {
     return GetProvisioningArtifactsResult(
-      acceptLanguage: map['acceptLanguage'] == null
-          ? null
-          : map['acceptLanguage'] as String,
+      acceptLanguage: map['acceptLanguage'] == null ? null : map['acceptLanguage'] as String,
       id: map['id'] as String,
       productId: map['productId'] as String,
-      provisioningArtifactDetails: pulumi.Input.decodeList<
-              GetProvisioningArtifactsProvisioningArtifactDetail>(
-          map['provisioningArtifactDetails'],
-          (value) => GetProvisioningArtifactsProvisioningArtifactDetail.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      provisioningArtifactDetails: pulumi.Input.decodeList<GetProvisioningArtifactsProvisioningArtifactDetail>(map['provisioningArtifactDetails'], (value) => GetProvisioningArtifactsProvisioningArtifactDetail.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
     );
   }
 }
+

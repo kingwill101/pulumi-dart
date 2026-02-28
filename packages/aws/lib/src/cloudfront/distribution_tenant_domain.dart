@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DistributionTenantDomain {
   /// Set of domains associated with the distribution tenant.
   final String domain;
-
   /// Current status of the distribution tenant.
   final String? status;
 
@@ -16,13 +16,10 @@ class DistributionTenantDomain {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['domain'] = domain;
-    final statusValue = status;
-    if (statusValue != null) {
-      map['status'] = statusValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'domain': domain,
+      'status': ?status,
+    };
   }
 
   factory DistributionTenantDomain.fromMap(Map<String, dynamic> map) {
@@ -32,3 +29,4 @@ class DistributionTenantDomain {
     );
   }
 }
+

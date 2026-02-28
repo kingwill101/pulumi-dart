@@ -19,19 +19,17 @@ class GetCustomJobAiplatformV1beta1Args {
     required String customJobId,
     required String location,
     String? project,
-  })  : customJobId = pulumi.Input.asInput<String>(customJobId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      customJobId = pulumi.Input.asInput<String>(customJobId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['customJobId'] = customJobId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'customJobId': customJobId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetCustomJobAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetCustomJobAiplatformV1beta1Args {
     );
   }
 }
+

@@ -5,8 +5,7 @@ import 'repository_remote_repository_config_yum_repository_public_repository.dar
 class RepositoryRemoteRepositoryConfigYumRepository {
   /// One of the publicly available Yum repositories supported by Artifact Registry.
   /// Structure is documented below.
-  final RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository?
-      publicRepository;
+  final RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository? publicRepository;
 
   /// Creates a new [RepositoryRemoteRepositoryConfigYumRepository].
   /// [publicRepository] One of the publicly available Yum repositories supported by Artifact Registry.
@@ -15,22 +14,15 @@ class RepositoryRemoteRepositoryConfigYumRepository {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final publicRepositoryValue = publicRepository;
-    if (publicRepositoryValue != null) {
-      map['publicRepository'] = publicRepositoryValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'publicRepository': ?publicRepository == null ? null : publicRepository!.toMap(),
+    };
   }
 
-  factory RepositoryRemoteRepositoryConfigYumRepository.fromMap(
-      Map<String, dynamic> map) {
+  factory RepositoryRemoteRepositoryConfigYumRepository.fromMap(Map<String, dynamic> map) {
     return RepositoryRemoteRepositoryConfigYumRepository(
-      publicRepository: map['publicRepository'] == null
-          ? null
-          : RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository
-              .fromMap(
-                  (map['publicRepository'] as Map).cast<String, dynamic>()),
+      publicRepository: map['publicRepository'] == null ? null : RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository.fromMap((map['publicRepository'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

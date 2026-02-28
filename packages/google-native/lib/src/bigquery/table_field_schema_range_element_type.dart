@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Optional. The subtype of the RANGE, if the type of this field is RANGE. If the type is RANGE, this field is required. Possible values for the field element type of a RANGE include: - DATE - DATETIME - TIMESTAMP
 class TableFieldSchemaRangeElementType {
   /// The field element type of a RANGE
@@ -12,12 +13,9 @@ class TableFieldSchemaRangeElementType {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'type': ?type,
+    };
   }
 
   factory TableFieldSchemaRangeElementType.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class TableFieldSchemaRangeElementType {
     );
   }
 }
+

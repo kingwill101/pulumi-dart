@@ -4,12 +4,9 @@ import 'policy_target_tracking_scaling_policy_configuration_customized_metric_sp
 
 class PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStat {
   /// Structure that defines the CloudWatch metric to return, including the metric name, namespace, and dimensions.
-  final PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStatMetric
-      metric;
-
+  final PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStatMetric metric;
   /// Statistic of the metrics to return.
   final String stat;
-
   /// Unit of the metrics to return.
   final String? unit;
 
@@ -24,24 +21,19 @@ class PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificatio
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['metric'] = metric.toMap();
-    map['stat'] = stat;
-    final unitValue = unit;
-    if (unitValue != null) {
-      map['unit'] = unitValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'metric': metric.toMap(),
+      'stat': stat,
+      'unit': ?unit,
+    };
   }
 
-  factory PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStat.fromMap(
-      Map<String, dynamic> map) {
+  factory PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStat.fromMap(Map<String, dynamic> map) {
     return PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStat(
-      metric:
-          PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStatMetric
-              .fromMap((map['metric'] as Map).cast<String, dynamic>()),
+      metric: PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStatMetric.fromMap((map['metric'] as Map).cast<String, dynamic>()),
       stat: map['stat'] as String,
       unit: map['unit'] == null ? null : map['unit'] as String,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterAddonsConfigGcpFilestoreCsiDriverConfig {
   final bool enabled;
 
@@ -10,15 +11,15 @@ class ClusterAddonsConfigGcpFilestoreCsiDriverConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory ClusterAddonsConfigGcpFilestoreCsiDriverConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterAddonsConfigGcpFilestoreCsiDriverConfig.fromMap(Map<String, dynamic> map) {
     return ClusterAddonsConfigGcpFilestoreCsiDriverConfig(
       enabled: map['enabled'] as bool,
     );
   }
 }
+

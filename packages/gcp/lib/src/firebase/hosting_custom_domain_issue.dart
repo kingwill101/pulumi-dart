@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class HostingCustomDomainIssue {
   /// The status code, which should be an enum value of `google.rpc.Code`
   final int? code;
-
   /// A list of messages that carry the error details.
   final String? details;
-
   /// Error message
   final String? message;
 
@@ -21,20 +20,11 @@ class HostingCustomDomainIssue {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final codeValue = code;
-    if (codeValue != null) {
-      map['code'] = codeValue;
-    }
-    final detailsValue = details;
-    if (detailsValue != null) {
-      map['details'] = detailsValue;
-    }
-    final messageValue = message;
-    if (messageValue != null) {
-      map['message'] = messageValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'code': ?code,
+      'details': ?details,
+      'message': ?message,
+    };
   }
 
   factory HostingCustomDomainIssue.fromMap(Map<String, dynamic> map) {
@@ -45,3 +35,4 @@ class HostingCustomDomainIssue {
     );
   }
 }
+

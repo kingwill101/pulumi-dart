@@ -16,43 +16,34 @@ class UnitOperationArgs {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
-
   /// Deprovision is the unit operation that deprovision the underlying
   /// resources represented by a Unit. Can only execute if the Unit is currently
   /// provisioned.
   final pulumi.Input<Map<String, dynamic>>? deprovision;
-
   /// The labels on the resource, which can be used for categorization.
   /// similar to Kubernetes resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Provision is the unit operation that provision the underlying resources
   /// represented by a Unit. Can only execute if the Unit is not currently
   /// provisioned.
   /// Structure is documented below.
   final pulumi.Input<UnitOperationProvision>? provision;
-
   /// The Unit a given UnitOperation will act upon.
   final pulumi.Input<String> unit;
-
   /// The ID value for the new unit operation.
   final pulumi.Input<String> unitOperationId;
-
   /// Upgrade is the unit operation that upgrades a provisioned unit, which may
   /// also include the underlying resources represented by a Unit. Can only execute
   /// if the Unit is currently provisioned.
   /// Structure is documented below.
   final pulumi.Input<UnitOperationUpgrade>? upgrade;
-
   /// If true, wait for the UnitOperation to reach a terminal state (SUCCEEDED, FAILED, CANCELLED)
   /// before completing the apply.
   final pulumi.Input<bool>? waitForCompletion;
@@ -79,86 +70,46 @@ class UnitOperationArgs {
     required String unitOperationId,
     UnitOperationUpgrade? upgrade,
     bool? waitForCompletion,
-  })  : annotations =
-            pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-        deprovision =
-            pulumi.Input.asOptionalInput<Map<String, dynamic>>(deprovision),
-        labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        provision =
-            pulumi.Input.asOptionalInput<UnitOperationProvision>(provision),
-        unit = pulumi.Input.asInput<String>(unit),
-        unitOperationId = pulumi.Input.asInput<String>(unitOperationId),
-        upgrade = pulumi.Input.asOptionalInput<UnitOperationUpgrade>(upgrade),
-        waitForCompletion =
-            pulumi.Input.asOptionalInput<bool>(waitForCompletion);
+  }) :
+      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
+      deprovision = pulumi.Input.asOptionalInput<Map<String, dynamic>>(deprovision),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      provision = pulumi.Input.asOptionalInput<UnitOperationProvision>(provision),
+      unit = pulumi.Input.asInput<String>(unit),
+      unitOperationId = pulumi.Input.asInput<String>(unitOperationId),
+      upgrade = pulumi.Input.asOptionalInput<UnitOperationUpgrade>(upgrade),
+      waitForCompletion = pulumi.Input.asOptionalInput<bool>(waitForCompletion);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final annotationsValue = annotations;
-    if (annotationsValue != null) {
-      map['annotations'] = annotationsValue;
-    }
-    final deprovisionValue = deprovision;
-    if (deprovisionValue != null) {
-      map['deprovision'] = deprovisionValue;
-    }
-    final labelsValue = labels;
-    if (labelsValue != null) {
-      map['labels'] = labelsValue;
-    }
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final provisionValue = provision;
-    if (provisionValue != null) {
-      map['provision'] = pulumi.Input.mapOptionalInputValue<
-          UnitOperationProvision,
-          Map<String, dynamic>>(provisionValue, (value) => value.toMap());
-    }
-    map['unit'] = unit;
-    map['unitOperationId'] = unitOperationId;
-    final upgradeValue = upgrade;
-    if (upgradeValue != null) {
-      map['upgrade'] = pulumi.Input.mapOptionalInputValue<UnitOperationUpgrade,
-          Map<String, dynamic>>(upgradeValue, (value) => value.toMap());
-    }
-    final waitForCompletionValue = waitForCompletion;
-    if (waitForCompletionValue != null) {
-      map['waitForCompletion'] = waitForCompletionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'annotations': ?annotations,
+      'deprovision': ?deprovision,
+      'labels': ?labels,
+      'location': location,
+      'project': ?project,
+      'provision': ?pulumi.Input.mapOptionalInputValue<UnitOperationProvision, Map<String, dynamic>>(provision, (value) => value.toMap()),
+      'unit': unit,
+      'unitOperationId': unitOperationId,
+      'upgrade': ?pulumi.Input.mapOptionalInputValue<UnitOperationUpgrade, Map<String, dynamic>>(upgrade, (value) => value.toMap()),
+      'waitForCompletion': ?waitForCompletion,
+    };
   }
 
   factory UnitOperationArgs.fromMap(Map<String, dynamic> map) {
     return UnitOperationArgs(
-      annotations: map['annotations'] == null
-          ? null
-          : (map['annotations'] as Map).cast<String, String>(),
-      deprovision: map['deprovision'] == null
-          ? null
-          : (map['deprovision'] as Map).cast<String, dynamic>(),
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      annotations: map['annotations'] == null ? null : (map['annotations'] as Map).cast<String, String>(),
+      deprovision: map['deprovision'] == null ? null : (map['deprovision'] as Map).cast<String, dynamic>(),
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      provision: map['provision'] == null
-          ? null
-          : UnitOperationProvision.fromMap(
-              (map['provision'] as Map).cast<String, dynamic>()),
+      provision: map['provision'] == null ? null : UnitOperationProvision.fromMap((map['provision'] as Map).cast<String, dynamic>()),
       unit: map['unit'] as String,
       unitOperationId: map['unitOperationId'] as String,
-      upgrade: map['upgrade'] == null
-          ? null
-          : UnitOperationUpgrade.fromMap(
-              (map['upgrade'] as Map).cast<String, dynamic>()),
-      waitForCompletion: map['waitForCompletion'] == null
-          ? null
-          : map['waitForCompletion'] as bool,
+      upgrade: map['upgrade'] == null ? null : UnitOperationUpgrade.fromMap((map['upgrade'] as Map).cast<String, dynamic>()),
+      waitForCompletion: map['waitForCompletion'] == null ? null : map['waitForCompletion'] as bool,
     );
   }
 }
+

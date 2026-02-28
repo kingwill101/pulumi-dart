@@ -16,3 +16,4 @@ enum SettingsAvailabilityType {
     throw ArgumentError('Unknown SettingsAvailabilityType value: $value');
   }
 }
+

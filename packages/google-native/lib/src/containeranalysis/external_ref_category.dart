@@ -18,3 +18,4 @@ enum ExternalRefCategory {
     throw ArgumentError('Unknown ExternalRefCategory value: $value');
   }
 }
+

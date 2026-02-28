@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getEndpoint.
 class GetEndpointResult {
   /// Endpoint based on `endpoint_type`:
@@ -10,7 +11,6 @@ class GetEndpointResult {
   /// * `iot:Jobs`: `IDENTIFIER.jobs.iot.REGION.amazonaws.com`
   final String endpointAddress;
   final String? endpointType;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -28,24 +28,21 @@ class GetEndpointResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['endpointAddress'] = endpointAddress;
-    final endpointTypeValue = endpointType;
-    if (endpointTypeValue != null) {
-      map['endpointType'] = endpointTypeValue;
-    }
-    map['id'] = id;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'endpointAddress': endpointAddress,
+      'endpointType': ?endpointType,
+      'id': id,
+      'region': region,
+    };
   }
 
   factory GetEndpointResult.fromMap(Map<String, dynamic> map) {
     return GetEndpointResult(
       endpointAddress: map['endpointAddress'] as String,
-      endpointType:
-          map['endpointType'] == null ? null : map['endpointType'] as String,
+      endpointType: map['endpointType'] == null ? null : map['endpointType'] as String,
       id: map['id'] as String,
       region: map['region'] as String,
     );
   }
 }
+

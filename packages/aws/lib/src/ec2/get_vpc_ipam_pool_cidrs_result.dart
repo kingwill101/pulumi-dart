@@ -7,10 +7,8 @@ import 'get_vpc_ipam_pool_cidrs_ipam_pool_cidr.dart';
 /// Result data returned by getVpcIpamPoolCidrs.
 class GetVpcIpamPoolCidrsResult {
   final List<GetVpcIpamPoolCidrsFilter>? filters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The CIDRs provisioned into the IPAM pool, described below.
   final List<GetVpcIpamPoolCidrsIpamPoolCidr> ipamPoolCidrs;
   final String ipamPoolId;
@@ -31,36 +29,23 @@ class GetVpcIpamPoolCidrsResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final filtersValue = filters;
-    if (filtersValue != null) {
-      map['filters'] = pulumi.Input.encodeList<GetVpcIpamPoolCidrsFilter,
-          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
-    }
-    map['id'] = id;
-    map['ipamPoolCidrs'] = pulumi.Input.encodeList<
-        GetVpcIpamPoolCidrsIpamPoolCidr,
-        Map<String, dynamic>>(ipamPoolCidrs, (value) => value.toMap());
-    map['ipamPoolId'] = ipamPoolId;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetVpcIpamPoolCidrsFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'id': id,
+      'ipamPoolCidrs': pulumi.Input.encodeList<GetVpcIpamPoolCidrsIpamPoolCidr, Map<String, dynamic>>(ipamPoolCidrs, (value) => value.toMap()),
+      'ipamPoolId': ipamPoolId,
+      'region': region,
+    };
   }
 
   factory GetVpcIpamPoolCidrsResult.fromMap(Map<String, dynamic> map) {
     return GetVpcIpamPoolCidrsResult(
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetVpcIpamPoolCidrsFilter>(
-              map['filters'],
-              (value) => GetVpcIpamPoolCidrsFilter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetVpcIpamPoolCidrsFilter>(map['filters'], (value) => GetVpcIpamPoolCidrsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      ipamPoolCidrs: pulumi.Input.decodeList<GetVpcIpamPoolCidrsIpamPoolCidr>(
-          map['ipamPoolCidrs'],
-          (value) => GetVpcIpamPoolCidrsIpamPoolCidr.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      ipamPoolCidrs: pulumi.Input.decodeList<GetVpcIpamPoolCidrsIpamPoolCidr>(map['ipamPoolCidrs'], (value) => GetVpcIpamPoolCidrsIpamPoolCidr.fromMap((value as Map).cast<String, dynamic>())),
       ipamPoolId: map['ipamPoolId'] as String,
       region: map['region'] as String,
     );
   }
 }
+

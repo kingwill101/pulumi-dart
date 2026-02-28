@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig {
   /// The number of CPU's in the VM instance.
   final int cpuCount;
@@ -11,15 +12,15 @@ class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cpuCount'] = cpuCount;
-    return map;
+    return <String, dynamic>{
+      'cpuCount': cpuCount,
+    };
   }
 
-  factory ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig(
       cpuCount: map['cpuCount'] as int,
     );
   }
 }
+

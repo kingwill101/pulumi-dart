@@ -9,13 +9,10 @@ import 'ospolicy_resource_repository_resource_zypper_repository.dart';
 class OSPolicyResourceRepositoryResource {
   /// An Apt Repository.
   final OSPolicyResourceRepositoryResourceAptRepository? apt;
-
   /// A Goo Repository.
   final OSPolicyResourceRepositoryResourceGooRepository? goo;
-
   /// A Yum Repository.
   final OSPolicyResourceRepositoryResourceYumRepository? yum;
-
   /// A Zypper Repository.
   final OSPolicyResourceRepositoryResourceZypperRepository? zypper;
 
@@ -32,44 +29,21 @@ class OSPolicyResourceRepositoryResource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final aptValue = apt;
-    if (aptValue != null) {
-      map['apt'] = aptValue.toMap();
-    }
-    final gooValue = goo;
-    if (gooValue != null) {
-      map['goo'] = gooValue.toMap();
-    }
-    final yumValue = yum;
-    if (yumValue != null) {
-      map['yum'] = yumValue.toMap();
-    }
-    final zypperValue = zypper;
-    if (zypperValue != null) {
-      map['zypper'] = zypperValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'apt': ?apt == null ? null : apt!.toMap(),
+      'goo': ?goo == null ? null : goo!.toMap(),
+      'yum': ?yum == null ? null : yum!.toMap(),
+      'zypper': ?zypper == null ? null : zypper!.toMap(),
+    };
   }
 
   factory OSPolicyResourceRepositoryResource.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourceRepositoryResource(
-      apt: map['apt'] == null
-          ? null
-          : OSPolicyResourceRepositoryResourceAptRepository.fromMap(
-              (map['apt'] as Map).cast<String, dynamic>()),
-      goo: map['goo'] == null
-          ? null
-          : OSPolicyResourceRepositoryResourceGooRepository.fromMap(
-              (map['goo'] as Map).cast<String, dynamic>()),
-      yum: map['yum'] == null
-          ? null
-          : OSPolicyResourceRepositoryResourceYumRepository.fromMap(
-              (map['yum'] as Map).cast<String, dynamic>()),
-      zypper: map['zypper'] == null
-          ? null
-          : OSPolicyResourceRepositoryResourceZypperRepository.fromMap(
-              (map['zypper'] as Map).cast<String, dynamic>()),
+      apt: map['apt'] == null ? null : OSPolicyResourceRepositoryResourceAptRepository.fromMap((map['apt'] as Map).cast<String, dynamic>()),
+      goo: map['goo'] == null ? null : OSPolicyResourceRepositoryResourceGooRepository.fromMap((map['goo'] as Map).cast<String, dynamic>()),
+      yum: map['yum'] == null ? null : OSPolicyResourceRepositoryResourceYumRepository.fromMap((map['yum'] as Map).cast<String, dynamic>()),
+      zypper: map['zypper'] == null ? null : OSPolicyResourceRepositoryResourceZypperRepository.fromMap((map['zypper'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

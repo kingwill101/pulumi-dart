@@ -520,22 +520,16 @@ import 'account_assignment_args.dart';
 class AccountAssignment extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the SSO Instance.
   late final pulumi.Output<String> instanceArn;
-
   /// The Amazon Resource Name (ARN) of the Permission Set that the admin wants to grant the principal access to.
   late final pulumi.Output<String> permissionSetArn;
-
   /// An identifier for an object in SSO, such as a user or group. PrincipalIds are GUIDs (For example, `f81d4fae-7dec-11d0-a765-00a0c91e6bf6`).
   late final pulumi.Output<String> principalId;
-
   /// The entity type for which the assignment will be created. Valid values: `USER`, `GROUP`.
   late final pulumi.Output<String> principalType;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// An AWS account identifier, typically a 10-12 digit string.
   late final pulumi.Output<String> targetId;
-
   /// The entity type for which the assignment will be created. Valid values: `AWS_ACCOUNT`.
   late final pulumi.Output<String> targetType;
 

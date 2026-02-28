@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class IpGroupRule {
   /// The description of the IP group.
   final String? description;
-
   /// The IP address range, in CIDR notation, e.g., `10.0.0.0/16`
   final String source;
 
@@ -16,20 +16,17 @@ class IpGroupRule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    map['source'] = source;
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'source': source,
+    };
   }
 
   factory IpGroupRule.fromMap(Map<String, dynamic> map) {
     return IpGroupRule(
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       source: map['source'] as String,
     );
   }
 }
+

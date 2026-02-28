@@ -5,9 +5,7 @@ import 'get_region_instance_template_reservation_affinity_specific_reservation.d
 
 class GetRegionInstanceTemplateReservationAffinity {
   /// Specifies the label selector for the reservation to use.
-  final List<GetRegionInstanceTemplateReservationAffinitySpecificReservation>
-      specificReservations;
-
+  final List<GetRegionInstanceTemplateReservationAffinitySpecificReservation> specificReservations;
   /// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
   final String type;
 
@@ -20,24 +18,17 @@ class GetRegionInstanceTemplateReservationAffinity {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['specificReservations'] = pulumi.Input.encodeList<
-        GetRegionInstanceTemplateReservationAffinitySpecificReservation,
-        Map<String, dynamic>>(specificReservations, (value) => value.toMap());
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'specificReservations': pulumi.Input.encodeList<GetRegionInstanceTemplateReservationAffinitySpecificReservation, Map<String, dynamic>>(specificReservations, (value) => value.toMap()),
+      'type': type,
+    };
   }
 
-  factory GetRegionInstanceTemplateReservationAffinity.fromMap(
-      Map<String, dynamic> map) {
+  factory GetRegionInstanceTemplateReservationAffinity.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceTemplateReservationAffinity(
-      specificReservations: pulumi.Input.decodeList<
-              GetRegionInstanceTemplateReservationAffinitySpecificReservation>(
-          map['specificReservations'],
-          (value) =>
-              GetRegionInstanceTemplateReservationAffinitySpecificReservation
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      specificReservations: pulumi.Input.decodeList<GetRegionInstanceTemplateReservationAffinitySpecificReservation>(map['specificReservations'], (value) => GetRegionInstanceTemplateReservationAffinitySpecificReservation.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }
 }
+

@@ -7,7 +7,6 @@ import 'import_file_response_deploymentmanager_v2.dart';
 class TargetConfigurationResponseDeploymentmanagerV2 {
   /// The configuration to use for this deployment.
   final ConfigFileResponseDeploymentmanagerV2 config;
-
   /// Specifies any files to import for this configuration. This can be used to import templates or other files. For example, you might import a text file in order to use the file in a template.
   final List<ImportFileResponseDeploymentmanagerV2> imports;
 
@@ -20,23 +19,17 @@ class TargetConfigurationResponseDeploymentmanagerV2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['config'] = config.toMap();
-    map['imports'] = pulumi.Input.encodeList<
-        ImportFileResponseDeploymentmanagerV2,
-        Map<String, dynamic>>(imports, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'config': config.toMap(),
+      'imports': pulumi.Input.encodeList<ImportFileResponseDeploymentmanagerV2, Map<String, dynamic>>(imports, (value) => value.toMap()),
+    };
   }
 
-  factory TargetConfigurationResponseDeploymentmanagerV2.fromMap(
-      Map<String, dynamic> map) {
+  factory TargetConfigurationResponseDeploymentmanagerV2.fromMap(Map<String, dynamic> map) {
     return TargetConfigurationResponseDeploymentmanagerV2(
-      config: ConfigFileResponseDeploymentmanagerV2.fromMap(
-          (map['config'] as Map).cast<String, dynamic>()),
-      imports: pulumi.Input.decodeList<ImportFileResponseDeploymentmanagerV2>(
-          map['imports'],
-          (value) => ImportFileResponseDeploymentmanagerV2.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      config: ConfigFileResponseDeploymentmanagerV2.fromMap((map['config'] as Map).cast<String, dynamic>()),
+      imports: pulumi.Input.decodeList<ImportFileResponseDeploymentmanagerV2>(map['imports'], (value) => ImportFileResponseDeploymentmanagerV2.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

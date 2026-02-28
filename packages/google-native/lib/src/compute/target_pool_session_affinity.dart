@@ -21,3 +21,4 @@ enum TargetPoolSessionAffinity {
     throw ArgumentError('Unknown TargetPoolSessionAffinity value: $value');
   }
 }
+

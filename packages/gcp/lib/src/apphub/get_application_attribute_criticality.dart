@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetApplicationAttributeCriticality {
   /// Criticality type. Possible values: ["MISSION_CRITICAL", "HIGH", "MEDIUM", "LOW"]
   final String type;
@@ -11,9 +12,9 @@ class GetApplicationAttributeCriticality {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory GetApplicationAttributeCriticality.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetApplicationAttributeCriticality {
     );
   }
 }
+

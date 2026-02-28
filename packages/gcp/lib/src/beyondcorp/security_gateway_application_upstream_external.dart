@@ -15,21 +15,15 @@ class SecurityGatewayApplicationUpstreamExternal {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['endpoints'] = pulumi.Input.encodeList<
-        SecurityGatewayApplicationUpstreamExternalEndpoint,
-        Map<String, dynamic>>(endpoints, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'endpoints': pulumi.Input.encodeList<SecurityGatewayApplicationUpstreamExternalEndpoint, Map<String, dynamic>>(endpoints, (value) => value.toMap()),
+    };
   }
 
-  factory SecurityGatewayApplicationUpstreamExternal.fromMap(
-      Map<String, dynamic> map) {
+  factory SecurityGatewayApplicationUpstreamExternal.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayApplicationUpstreamExternal(
-      endpoints: pulumi.Input.decodeList<
-              SecurityGatewayApplicationUpstreamExternalEndpoint>(
-          map['endpoints'],
-          (value) => SecurityGatewayApplicationUpstreamExternalEndpoint.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      endpoints: pulumi.Input.decodeList<SecurityGatewayApplicationUpstreamExternalEndpoint>(map['endpoints'], (value) => SecurityGatewayApplicationUpstreamExternalEndpoint.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

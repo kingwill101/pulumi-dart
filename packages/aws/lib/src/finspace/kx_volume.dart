@@ -168,37 +168,27 @@ class KxVolume extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) identifier of the KX volume.
   late final pulumi.Output<String> arn;
   late final pulumi.Output<List<KxVolumeAttachedCluster>> attachedClusters;
-
   /// The identifier of the AWS Availability Zone IDs.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<List<String>> availabilityZones;
-
   /// The number of availability zones you want to assign per volume. Currently, Finspace only support SINGLE for volumes.
   /// * `SINGLE` - Assigns one availability zone per volume.
   late final pulumi.Output<String> azMode;
-
   /// The timestamp at which the volume was created in FinSpace. The value is determined as epoch time in milliseconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.
   late final pulumi.Output<String> createdTimestamp;
-
   /// Description of the volume.
   late final pulumi.Output<String?> description;
-
   /// A unique identifier for the kdb environment, whose clusters can attach to the volume.
   late final pulumi.Output<String> environmentId;
-
   /// Last timestamp at which the volume was updated in FinSpace. Value determined as epoch time in seconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000.
   late final pulumi.Output<String> lastModifiedTimestamp;
-
   /// Unique name for the volumr that you want to create.
   late final pulumi.Output<String> name;
-
   /// Specifies the configuration for the Network attached storage (`NAS_1`) file system volume. This parameter is required when `volume_type` is `NAS_1`. See `nas1_configuration` Argument Reference below.
   late final pulumi.Output<List<KxVolumeNas1Configuration>?> nas1Configurations;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The status of volume creation.
   /// * `CREATING` - The volume creation is in progress.
   /// * `CREATE_FAILED` - The volume creation has failed.
@@ -210,14 +200,11 @@ class KxVolume extends pulumi.CustomResource {
   /// * `DELETE_FAILED` - The system failed to delete the volume.
   /// * `DELETED` - The volume is successfully deleted.
   late final pulumi.Output<String> status;
-
   /// The error message when a failed state occurs.
   late final pulumi.Output<String> statusReason;
-
   /// A list of key-value pairs to label the volume. You can add up to 50 tags to a volume
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The type of file system volume. Currently, FinSpace only supports the `NAS_1` volume type. When you select the `NAS_1` volume type, you must also provide `nas1_configuration`.
   late final pulumi.Output<String> type;
 
@@ -236,18 +223,15 @@ class KxVolume extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
-    this.attachedClusters =
-        registerOutput<List<KxVolumeAttachedCluster>>('attachedClusters');
+    this.attachedClusters = registerOutput<List<KxVolumeAttachedCluster>>('attachedClusters');
     this.availabilityZones = registerOutput<List<String>>('availabilityZones');
     this.azMode = registerOutput<String>('azMode');
     this.createdTimestamp = registerOutput<String>('createdTimestamp');
     this.description = registerOutput<String?>('description');
     this.environmentId = registerOutput<String>('environmentId');
-    this.lastModifiedTimestamp =
-        registerOutput<String>('lastModifiedTimestamp');
+    this.lastModifiedTimestamp = registerOutput<String>('lastModifiedTimestamp');
     this.name = registerOutput<String>('name');
-    this.nas1Configurations =
-        registerOutput<List<KxVolumeNas1Configuration>?>('nas1Configurations');
+    this.nas1Configurations = registerOutput<List<KxVolumeNas1Configuration>?>('nas1Configurations');
     this.region = registerOutput<String>('region');
     this.status = registerOutput<String>('status');
     this.statusReason = registerOutput<String>('statusReason');

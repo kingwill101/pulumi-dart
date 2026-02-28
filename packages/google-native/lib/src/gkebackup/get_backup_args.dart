@@ -22,21 +22,19 @@ class GetBackupArgs {
     required String backupPlanId,
     required String location,
     String? project,
-  })  : backupId = pulumi.Input.asInput<String>(backupId),
-        backupPlanId = pulumi.Input.asInput<String>(backupPlanId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      backupId = pulumi.Input.asInput<String>(backupId),
+      backupPlanId = pulumi.Input.asInput<String>(backupPlanId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['backupId'] = backupId;
-    map['backupPlanId'] = backupPlanId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'backupId': backupId,
+      'backupPlanId': backupPlanId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetBackupArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetBackupArgs {
     );
   }
 }
+

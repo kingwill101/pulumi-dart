@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CxTestCaseLastTestResultConversationTurnUserInputInputText {
   /// The natural language text to be processed. Text length must not exceed 256 characters.
   final String text;
@@ -11,15 +12,15 @@ class CxTestCaseLastTestResultConversationTurnUserInputInputText {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['text'] = text;
-    return map;
+    return <String, dynamic>{
+      'text': text,
+    };
   }
 
-  factory CxTestCaseLastTestResultConversationTurnUserInputInputText.fromMap(
-      Map<String, dynamic> map) {
+  factory CxTestCaseLastTestResultConversationTurnUserInputInputText.fromMap(Map<String, dynamic> map) {
     return CxTestCaseLastTestResultConversationTurnUserInputInputText(
       text: map['text'] as String,
     );
   }
 }
+

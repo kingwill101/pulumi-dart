@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRouterBgpAdvertisedIpRange {
   /// User-specified description for the IP range.
   final String description;
-
   /// The IP range to advertise. The value must be a
   /// CIDR-formatted string.
   final String range;
@@ -17,10 +17,10 @@ class GetRouterBgpAdvertisedIpRange {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['description'] = description;
-    map['range'] = range;
-    return map;
+    return <String, dynamic>{
+      'description': description,
+      'range': range,
+    };
   }
 
   factory GetRouterBgpAdvertisedIpRange.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class GetRouterBgpAdvertisedIpRange {
     );
   }
 }
+

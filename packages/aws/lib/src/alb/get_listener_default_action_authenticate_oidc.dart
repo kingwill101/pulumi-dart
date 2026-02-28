@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetListenerDefaultActionAuthenticateOidc {
   final Map<String, String> authenticationRequestExtraParams;
   final String authorizationEndpoint;
@@ -40,27 +41,24 @@ class GetListenerDefaultActionAuthenticateOidc {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['authenticationRequestExtraParams'] = authenticationRequestExtraParams;
-    map['authorizationEndpoint'] = authorizationEndpoint;
-    map['clientId'] = clientId;
-    map['clientSecret'] = clientSecret;
-    map['issuer'] = issuer;
-    map['onUnauthenticatedRequest'] = onUnauthenticatedRequest;
-    map['scope'] = scope;
-    map['sessionCookieName'] = sessionCookieName;
-    map['sessionTimeout'] = sessionTimeout;
-    map['tokenEndpoint'] = tokenEndpoint;
-    map['userInfoEndpoint'] = userInfoEndpoint;
-    return map;
+    return <String, dynamic>{
+      'authenticationRequestExtraParams': authenticationRequestExtraParams,
+      'authorizationEndpoint': authorizationEndpoint,
+      'clientId': clientId,
+      'clientSecret': clientSecret,
+      'issuer': issuer,
+      'onUnauthenticatedRequest': onUnauthenticatedRequest,
+      'scope': scope,
+      'sessionCookieName': sessionCookieName,
+      'sessionTimeout': sessionTimeout,
+      'tokenEndpoint': tokenEndpoint,
+      'userInfoEndpoint': userInfoEndpoint,
+    };
   }
 
-  factory GetListenerDefaultActionAuthenticateOidc.fromMap(
-      Map<String, dynamic> map) {
+  factory GetListenerDefaultActionAuthenticateOidc.fromMap(Map<String, dynamic> map) {
     return GetListenerDefaultActionAuthenticateOidc(
-      authenticationRequestExtraParams:
-          (map['authenticationRequestExtraParams'] as Map)
-              .cast<String, String>(),
+      authenticationRequestExtraParams: (map['authenticationRequestExtraParams'] as Map).cast<String, String>(),
       authorizationEndpoint: map['authorizationEndpoint'] as String,
       clientId: map['clientId'] as String,
       clientSecret: map['clientSecret'] as String,
@@ -74,3 +72,4 @@ class GetListenerDefaultActionAuthenticateOidc {
     );
   }
 }
+

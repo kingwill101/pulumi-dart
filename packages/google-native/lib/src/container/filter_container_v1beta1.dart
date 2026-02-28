@@ -15,24 +15,15 @@ class FilterContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final eventTypeValue = eventType;
-    if (eventTypeValue != null) {
-      map['eventType'] =
-          pulumi.Input.encodeList<FilterEventTypeItemContainerV1beta1, String>(
-              eventTypeValue, (value) => value.value);
-    }
-    return map;
+    return <String, dynamic>{
+      'eventType': ?eventType == null ? null : pulumi.Input.encodeList<FilterEventTypeItemContainerV1beta1, String>(eventType!, (value) => value.value),
+    };
   }
 
   factory FilterContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return FilterContainerV1beta1(
-      eventType: map['eventType'] == null
-          ? null
-          : pulumi.Input.decodeList<FilterEventTypeItemContainerV1beta1>(
-              map['eventType'],
-              (value) => FilterEventTypeItemContainerV1beta1.fromValue(
-                  value as String)),
+      eventType: map['eventType'] == null ? null : pulumi.Input.decodeList<FilterEventTypeItemContainerV1beta1>(map['eventType'], (value) => FilterEventTypeItemContainerV1beta1.fromValue(value as String)),
     );
   }
 }
+

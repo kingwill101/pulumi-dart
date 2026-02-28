@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterCostManagementConfig {
   /// Whether to enable the [cost allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
   final bool enabled;
@@ -11,9 +12,9 @@ class ClusterCostManagementConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory ClusterCostManagementConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class ClusterCostManagementConfig {
     );
   }
 }
+

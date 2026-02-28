@@ -426,24 +426,19 @@ class NetworkEndpoint extends pulumi.CustomResource {
   /// This is required for network endpoints of type GCE_VM_IP_PORT.
   /// The instance must be in the same zone of network endpoint group.
   late final pulumi.Output<String?> instance;
-
   /// IPv4 address of network endpoint. The IP address must belong
   /// to a VM in GCE (either the primary IP or as part of an aliased IP
   /// range).
   late final pulumi.Output<String> ipAddress;
-
   /// The network endpoint group this endpoint is part of.
   late final pulumi.Output<String> networkEndpointGroup;
-
   /// Port number of network endpoint.
   /// **Note** `port` is required unless the Network Endpoint Group is created
   /// with the type of `GCE_VM_IP`
   late final pulumi.Output<int?> port;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Zone where the containing network endpoint group is located.
   late final pulumi.Output<String> zone;
 

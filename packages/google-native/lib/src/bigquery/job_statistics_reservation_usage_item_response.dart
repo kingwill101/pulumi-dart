@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class JobStatisticsReservationUsageItemResponse {
   /// Reservation name or "unreserved" for on-demand resources usage.
   final String name;
-
   /// Slot-milliseconds the job spent in the given reservation.
   final String slotMs;
 
@@ -16,17 +16,17 @@ class JobStatisticsReservationUsageItemResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['slotMs'] = slotMs;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'slotMs': slotMs,
+    };
   }
 
-  factory JobStatisticsReservationUsageItemResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory JobStatisticsReservationUsageItemResponse.fromMap(Map<String, dynamic> map) {
     return JobStatisticsReservationUsageItemResponse(
       name: map['name'] as String,
       slotMs: map['slotMs'] as String,
     );
   }
 }
+

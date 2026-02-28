@@ -16,3 +16,4 @@ enum InstanceAvailabilityType {
     throw ArgumentError('Unknown InstanceAvailabilityType value: $value');
   }
 }
+

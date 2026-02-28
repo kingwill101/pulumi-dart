@@ -16,14 +16,15 @@ class GetCustomConstraintArgs {
   GetCustomConstraintArgs({
     required String customConstraintId,
     required String organizationId,
-  })  : customConstraintId = pulumi.Input.asInput<String>(customConstraintId),
-        organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) :
+      customConstraintId = pulumi.Input.asInput<String>(customConstraintId),
+      organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['customConstraintId'] = customConstraintId;
-    map['organizationId'] = organizationId;
-    return map;
+    return <String, dynamic>{
+      'customConstraintId': customConstraintId,
+      'organizationId': organizationId,
+    };
   }
 
   factory GetCustomConstraintArgs.fromMap(Map<String, dynamic> map) {
@@ -33,3 +34,4 @@ class GetCustomConstraintArgs {
     );
   }
 }
+

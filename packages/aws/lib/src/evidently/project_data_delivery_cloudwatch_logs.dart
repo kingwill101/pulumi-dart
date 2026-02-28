@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ProjectDataDeliveryCloudwatchLogs {
   /// The name of the log group where the project stores evaluation events.
   final String? logGroup;
@@ -11,12 +12,9 @@ class ProjectDataDeliveryCloudwatchLogs {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final logGroupValue = logGroup;
-    if (logGroupValue != null) {
-      map['logGroup'] = logGroupValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'logGroup': ?logGroup,
+    };
   }
 
   factory ProjectDataDeliveryCloudwatchLogs.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class ProjectDataDeliveryCloudwatchLogs {
     );
   }
 }
+

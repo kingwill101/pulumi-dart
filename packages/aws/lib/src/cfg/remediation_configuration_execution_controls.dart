@@ -13,21 +13,15 @@ class RemediationConfigurationExecutionControls {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final ssmControlsValue = ssmControls;
-    if (ssmControlsValue != null) {
-      map['ssmControls'] = ssmControlsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'ssmControls': ?ssmControls == null ? null : ssmControls!.toMap(),
+    };
   }
 
-  factory RemediationConfigurationExecutionControls.fromMap(
-      Map<String, dynamic> map) {
+  factory RemediationConfigurationExecutionControls.fromMap(Map<String, dynamic> map) {
     return RemediationConfigurationExecutionControls(
-      ssmControls: map['ssmControls'] == null
-          ? null
-          : RemediationConfigurationExecutionControlsSsmControls.fromMap(
-              (map['ssmControls'] as Map).cast<String, dynamic>()),
+      ssmControls: map['ssmControls'] == null ? null : RemediationConfigurationExecutionControlsSsmControls.fromMap((map['ssmControls'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

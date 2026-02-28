@@ -8,10 +8,8 @@ class GetEipsResult {
   /// List of all the allocation IDs for address for use with EC2-VPC.
   final List<String> allocationIds;
   final List<GetEipsFilter>? filters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// List of all the Elastic IP addresses.
   final List<String> publicIps;
   final String region;
@@ -34,39 +32,25 @@ class GetEipsResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allocationIds'] = allocationIds;
-    final filtersValue = filters;
-    if (filtersValue != null) {
-      map['filters'] =
-          pulumi.Input.encodeList<GetEipsFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
-    }
-    map['id'] = id;
-    map['publicIps'] = publicIps;
-    map['region'] = region;
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'allocationIds': allocationIds,
+      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetEipsFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'id': id,
+      'publicIps': publicIps,
+      'region': region,
+      'tags': ?tags,
+    };
   }
 
   factory GetEipsResult.fromMap(Map<String, dynamic> map) {
     return GetEipsResult(
       allocationIds: (map['allocationIds'] as List).cast<String>(),
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetEipsFilter>(
-              map['filters'],
-              (value) => GetEipsFilter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetEipsFilter>(map['filters'], (value) => GetEipsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       publicIps: (map['publicIps'] as List).cast<String>(),
       region: map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

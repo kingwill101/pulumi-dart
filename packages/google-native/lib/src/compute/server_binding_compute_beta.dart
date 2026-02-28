@@ -12,19 +12,15 @@ class ServerBindingComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'type': ?type == null ? null : type!.value,
+    };
   }
 
   factory ServerBindingComputeBeta.fromMap(Map<String, dynamic> map) {
     return ServerBindingComputeBeta(
-      type: map['type'] == null
-          ? null
-          : ServerBindingTypeComputeBeta.fromValue(map['type'] as String),
+      type: map['type'] == null ? null : ServerBindingTypeComputeBeta.fromValue(map['type'] as String),
     );
   }
 }
+

@@ -113,22 +113,16 @@ import 'tag_option_resource_association_args.dart';
 class TagOptionResourceAssociation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ARN of the resource.
   late final pulumi.Output<String> resourceArn;
-
   /// Creation time of the resource.
   late final pulumi.Output<String> resourceCreatedTime;
-
   /// Description of the resource.
   late final pulumi.Output<String> resourceDescription;
-
   /// Resource identifier.
   late final pulumi.Output<String> resourceId;
-
   /// Description of the resource.
   late final pulumi.Output<String> resourceName;
-
   /// Tag Option identifier.
   late final pulumi.Output<String> tagOptionId;
 

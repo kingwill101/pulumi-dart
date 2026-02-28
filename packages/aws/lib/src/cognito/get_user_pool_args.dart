@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserPoolArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The cognito pool ID
   final pulumi.Input<String> userPoolId;
 
@@ -19,17 +18,15 @@ class GetUserPoolArgs {
   GetUserPoolArgs({
     String? region,
     required String userPoolId,
-  })  : region = pulumi.Input.asOptionalInput<String>(region),
-        userPoolId = pulumi.Input.asInput<String>(userPoolId);
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      userPoolId = pulumi.Input.asInput<String>(userPoolId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['userPoolId'] = userPoolId;
-    return map;
+    return <String, dynamic>{
+      'region': ?region,
+      'userPoolId': userPoolId,
+    };
   }
 
   factory GetUserPoolArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +36,4 @@ class GetUserPoolArgs {
     );
   }
 }
+

@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Policy that defines the task retry logic and failure type. If no FailurePolicy is defined for a task, all its dependent tasks will not be executed (i.e, a `retry_strategy` of NONE will be applied).
 class EnterpriseCrmEventbusProtoFailurePolicyResponse {
   /// Required if retry_strategy is FIXED_INTERVAL or LINEAR/EXPONENTIAL_BACKOFF/RESTART_WORKFLOW_WITH_BACKOFF. Defines the initial interval for backoff.
   final String intervalInSeconds;
-
   /// Required if retry_strategy is FIXED_INTERVAL or LINEAR/EXPONENTIAL_BACKOFF/RESTART_WORKFLOW_WITH_BACKOFF. Defines the number of times the task will be retried if failed.
   final int maxNumRetries;
-
   /// Defines what happens to the task upon failure.
   final String retryStrategy;
 
@@ -22,15 +21,14 @@ class EnterpriseCrmEventbusProtoFailurePolicyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['intervalInSeconds'] = intervalInSeconds;
-    map['maxNumRetries'] = maxNumRetries;
-    map['retryStrategy'] = retryStrategy;
-    return map;
+    return <String, dynamic>{
+      'intervalInSeconds': intervalInSeconds,
+      'maxNumRetries': maxNumRetries,
+      'retryStrategy': retryStrategy,
+    };
   }
 
-  factory EnterpriseCrmEventbusProtoFailurePolicyResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoFailurePolicyResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoFailurePolicyResponse(
       intervalInSeconds: map['intervalInSeconds'] as String,
       maxNumRetries: map['maxNumRetries'] as int,
@@ -38,3 +36,4 @@ class EnterpriseCrmEventbusProtoFailurePolicyResponse {
     );
   }
 }
+

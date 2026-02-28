@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TableGlobalSecondaryIndexKeySchema {
   /// Name of the attribute; must be defined as an attribute in the resource.
   final String attributeName;
-
   /// The type of key. Valid values are `HASH` (partition key) or `RANGE` (sort key). You can specify up to 4 attributes with `key_type = "HASH"` and up to 4 attributes with `key_type = "RANGE"`.
   final String keyType;
 
@@ -16,10 +16,10 @@ class TableGlobalSecondaryIndexKeySchema {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['attributeName'] = attributeName;
-    map['keyType'] = keyType;
-    return map;
+    return <String, dynamic>{
+      'attributeName': attributeName,
+      'keyType': keyType,
+    };
   }
 
   factory TableGlobalSecondaryIndexKeySchema.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class TableGlobalSecondaryIndexKeySchema {
     );
   }
 }
+

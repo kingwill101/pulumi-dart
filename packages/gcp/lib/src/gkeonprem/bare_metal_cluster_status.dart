@@ -8,7 +8,6 @@ class BareMetalClusterStatus {
   /// ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
   /// Structure is documented below.
   final List<BareMetalClusterStatusCondition>? conditions;
-
   /// (Output)
   /// Human-friendly representation of the error message from the user cluster
   /// controller. The error message can be temporary as the user cluster
@@ -26,30 +25,17 @@ class BareMetalClusterStatus {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final conditionsValue = conditions;
-    if (conditionsValue != null) {
-      map['conditions'] = pulumi.Input.encodeList<
-          BareMetalClusterStatusCondition,
-          Map<String, dynamic>>(conditionsValue, (value) => value.toMap());
-    }
-    final errorMessageValue = errorMessage;
-    if (errorMessageValue != null) {
-      map['errorMessage'] = errorMessageValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<BareMetalClusterStatusCondition, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+      'errorMessage': ?errorMessage,
+    };
   }
 
   factory BareMetalClusterStatus.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterStatus(
-      conditions: map['conditions'] == null
-          ? null
-          : pulumi.Input.decodeList<BareMetalClusterStatusCondition>(
-              map['conditions'],
-              (value) => BareMetalClusterStatusCondition.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      errorMessage:
-          map['errorMessage'] == null ? null : map['errorMessage'] as String,
+      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<BareMetalClusterStatusCondition>(map['conditions'], (value) => BareMetalClusterStatusCondition.fromMap((value as Map).cast<String, dynamic>())),
+      errorMessage: map['errorMessage'] == null ? null : map['errorMessage'] as String,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConnectionBitbucketDataCenterConfigServiceDirectoryConfig {
   /// Required. The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
   final String service;
@@ -11,15 +12,15 @@ class ConnectionBitbucketDataCenterConfigServiceDirectoryConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['service'] = service;
-    return map;
+    return <String, dynamic>{
+      'service': service,
+    };
   }
 
-  factory ConnectionBitbucketDataCenterConfigServiceDirectoryConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory ConnectionBitbucketDataCenterConfigServiceDirectoryConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionBitbucketDataCenterConfigServiceDirectoryConfig(
       service: map['service'] as String,
     );
   }
 }
+

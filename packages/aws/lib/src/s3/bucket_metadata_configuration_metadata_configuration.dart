@@ -7,16 +7,11 @@ import 'bucket_metadata_configuration_metadata_configuration_journal_table_confi
 
 class BucketMetadataConfigurationMetadataConfiguration {
   /// Destination information for the S3 Metadata configuration.
-  final List<BucketMetadataConfigurationMetadataConfigurationDestination>?
-      destinations;
-
+  final List<BucketMetadataConfigurationMetadataConfigurationDestination>? destinations;
   /// Inventory table configuration. See `inventory_table_configuration` Block for details.
-  final BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguration
-      inventoryTableConfiguration;
-
+  final BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguration inventoryTableConfiguration;
   /// Journal table configuration. See `journal_table_configuration` Block for details.
-  final BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration
-      journalTableConfiguration;
+  final BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration journalTableConfiguration;
 
   /// Creates a new [BucketMetadataConfigurationMetadataConfiguration].
   /// [destinations] Destination information for the S3 Metadata configuration.
@@ -29,37 +24,19 @@ class BucketMetadataConfigurationMetadataConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final destinationsValue = destinations;
-    if (destinationsValue != null) {
-      map['destinations'] = pulumi.Input.encodeList<
-          BucketMetadataConfigurationMetadataConfigurationDestination,
-          Map<String, dynamic>>(destinationsValue, (value) => value.toMap());
-    }
-    map['inventoryTableConfiguration'] = inventoryTableConfiguration.toMap();
-    map['journalTableConfiguration'] = journalTableConfiguration.toMap();
-    return map;
+    return <String, dynamic>{
+      'destinations': ?destinations == null ? null : pulumi.Input.encodeList<BucketMetadataConfigurationMetadataConfigurationDestination, Map<String, dynamic>>(destinations!, (value) => value.toMap()),
+      'inventoryTableConfiguration': inventoryTableConfiguration.toMap(),
+      'journalTableConfiguration': journalTableConfiguration.toMap(),
+    };
   }
 
-  factory BucketMetadataConfigurationMetadataConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory BucketMetadataConfigurationMetadataConfiguration.fromMap(Map<String, dynamic> map) {
     return BucketMetadataConfigurationMetadataConfiguration(
-      destinations: map['destinations'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  BucketMetadataConfigurationMetadataConfigurationDestination>(
-              map['destinations'],
-              (value) =>
-                  BucketMetadataConfigurationMetadataConfigurationDestination
-                      .fromMap((value as Map).cast<String, dynamic>())),
-      inventoryTableConfiguration:
-          BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguration
-              .fromMap((map['inventoryTableConfiguration'] as Map)
-                  .cast<String, dynamic>()),
-      journalTableConfiguration:
-          BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration
-              .fromMap((map['journalTableConfiguration'] as Map)
-                  .cast<String, dynamic>()),
+      destinations: map['destinations'] == null ? null : pulumi.Input.decodeList<BucketMetadataConfigurationMetadataConfigurationDestination>(map['destinations'], (value) => BucketMetadataConfigurationMetadataConfigurationDestination.fromMap((value as Map).cast<String, dynamic>())),
+      inventoryTableConfiguration: BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguration.fromMap((map['inventoryTableConfiguration'] as Map).cast<String, dynamic>()),
+      journalTableConfiguration: BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration.fromMap((map['journalTableConfiguration'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

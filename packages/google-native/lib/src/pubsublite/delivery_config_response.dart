@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The settings for a subscription's message delivery.
 class DeliveryConfigResponse {
   /// The DeliveryRequirement for this subscription.
@@ -12,9 +13,9 @@ class DeliveryConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['deliveryRequirement'] = deliveryRequirement;
-    return map;
+    return <String, dynamic>{
+      'deliveryRequirement': deliveryRequirement,
+    };
   }
 
   factory DeliveryConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class DeliveryConfigResponse {
     );
   }
 }
+

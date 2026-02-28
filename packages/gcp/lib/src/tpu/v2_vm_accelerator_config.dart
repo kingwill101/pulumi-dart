@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class V2VmAcceleratorConfig {
   /// Topology of TPU in chips.
   final String topology;
-
   /// Type of TPU. Please select one of the allowed types: https://cloud.google.com/tpu/docs/reference/rest/v2/AcceleratorConfig#Type
   final String type;
 
@@ -16,10 +16,10 @@ class V2VmAcceleratorConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['topology'] = topology;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'topology': topology,
+      'type': type,
+    };
   }
 
   factory V2VmAcceleratorConfig.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class V2VmAcceleratorConfig {
     );
   }
 }
+

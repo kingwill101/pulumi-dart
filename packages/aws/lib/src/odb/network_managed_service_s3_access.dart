@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NetworkManagedServiceS3Access {
   final String domainName;
   final List<String> ipv4Addresses;
-
   /// Specifies the endpoint policy for Amazon S3 access from the ODB network.
   final String s3PolicyDocument;
-
   /// The status of the network resource.
   final String status;
 
@@ -23,12 +22,12 @@ class NetworkManagedServiceS3Access {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['domainName'] = domainName;
-    map['ipv4Addresses'] = ipv4Addresses;
-    map['s3PolicyDocument'] = s3PolicyDocument;
-    map['status'] = status;
-    return map;
+    return <String, dynamic>{
+      'domainName': domainName,
+      'ipv4Addresses': ipv4Addresses,
+      's3PolicyDocument': s3PolicyDocument,
+      'status': status,
+    };
   }
 
   factory NetworkManagedServiceS3Access.fromMap(Map<String, dynamic> map) {
@@ -40,3 +39,4 @@ class NetworkManagedServiceS3Access {
     );
   }
 }
+

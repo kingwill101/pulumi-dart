@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPullThroughCacheRuleArgs {
   /// The repository name prefix to use when caching images from the source registry.
   final pulumi.Input<String> ecrRepositoryPrefix;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -19,17 +18,15 @@ class GetPullThroughCacheRuleArgs {
   GetPullThroughCacheRuleArgs({
     required String ecrRepositoryPrefix,
     String? region,
-  })  : ecrRepositoryPrefix = pulumi.Input.asInput<String>(ecrRepositoryPrefix),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      ecrRepositoryPrefix = pulumi.Input.asInput<String>(ecrRepositoryPrefix),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ecrRepositoryPrefix'] = ecrRepositoryPrefix;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'ecrRepositoryPrefix': ecrRepositoryPrefix,
+      'region': ?region,
+    };
   }
 
   factory GetPullThroughCacheRuleArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +36,4 @@ class GetPullThroughCacheRuleArgs {
     );
   }
 }
+

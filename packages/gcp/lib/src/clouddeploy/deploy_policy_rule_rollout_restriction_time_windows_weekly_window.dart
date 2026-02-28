@@ -7,16 +7,12 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow {
   /// Days of week. If left empty, all days of the week will be included.
   /// Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
   final List<String>? daysOfWeeks;
-
   /// End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
   /// Structure is documented below.
-  final DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime?
-      endTime;
-
+  final DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime? endTime;
   /// Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
   /// Structure is documented below.
-  final DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime?
-      startTime;
+  final DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime? startTime;
 
   /// Creates a new [DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow].
   /// [daysOfWeeks] Days of week. If left empty, all days of the week will be included.
@@ -29,36 +25,19 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final daysOfWeeksValue = daysOfWeeks;
-    if (daysOfWeeksValue != null) {
-      map['daysOfWeeks'] = daysOfWeeksValue;
-    }
-    final endTimeValue = endTime;
-    if (endTimeValue != null) {
-      map['endTime'] = endTimeValue.toMap();
-    }
-    final startTimeValue = startTime;
-    if (startTimeValue != null) {
-      map['startTime'] = startTimeValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'daysOfWeeks': ?daysOfWeeks,
+      'endTime': ?endTime == null ? null : endTime!.toMap(),
+      'startTime': ?startTime == null ? null : startTime!.toMap(),
+    };
   }
 
-  factory DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow.fromMap(
-      Map<String, dynamic> map) {
+  factory DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow.fromMap(Map<String, dynamic> map) {
     return DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow(
-      daysOfWeeks: map['daysOfWeeks'] == null
-          ? null
-          : (map['daysOfWeeks'] as List).cast<String>(),
-      endTime: map['endTime'] == null
-          ? null
-          : DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime
-              .fromMap((map['endTime'] as Map).cast<String, dynamic>()),
-      startTime: map['startTime'] == null
-          ? null
-          : DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime
-              .fromMap((map['startTime'] as Map).cast<String, dynamic>()),
+      daysOfWeeks: map['daysOfWeeks'] == null ? null : (map['daysOfWeeks'] as List).cast<String>(),
+      endTime: map['endTime'] == null ? null : DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime.fromMap((map['endTime'] as Map).cast<String, dynamic>()),
+      startTime: map['startTime'] == null ? null : DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime.fromMap((map['startTime'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -19,19 +19,17 @@ class GetDocumentArgs {
     required String documentId,
     required String location,
     String? project,
-  })  : documentId = pulumi.Input.asInput<String>(documentId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      documentId = pulumi.Input.asInput<String>(documentId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['documentId'] = documentId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'documentId': documentId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetDocumentArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetDocumentArgs {
     );
   }
 }
+

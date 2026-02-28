@@ -19,19 +19,17 @@ class GetTargetVpnGatewayComputeBetaArgs {
     String? project,
     required String region,
     required String targetVpnGateway,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asInput<String>(region),
-        targetVpnGateway = pulumi.Input.asInput<String>(targetVpnGateway);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asInput<String>(region),
+      targetVpnGateway = pulumi.Input.asInput<String>(targetVpnGateway);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['region'] = region;
-    map['targetVpnGateway'] = targetVpnGateway;
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'region': region,
+      'targetVpnGateway': targetVpnGateway,
+    };
   }
 
   factory GetTargetVpnGatewayComputeBetaArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetTargetVpnGatewayComputeBetaArgs {
     );
   }
 }
+

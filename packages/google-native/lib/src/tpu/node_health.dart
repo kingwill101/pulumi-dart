@@ -19,3 +19,4 @@ enum NodeHealth {
     throw ArgumentError('Unknown NodeHealth value: $value');
   }
 }
+

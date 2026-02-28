@@ -10,11 +10,9 @@ class GetNetworkAttachmentArgs {
   /// The name of the network attachment to retrieve.
   /// The name must be unique within the region.
   final pulumi.Input<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The region in which the network attachment resides.
   /// For example, `europe-west1`.
   final pulumi.Input<String> region;
@@ -27,19 +25,17 @@ class GetNetworkAttachmentArgs {
     required String name,
     String? project,
     required String region,
-  })  : name = pulumi.Input.asInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asInput<String>(region);
+  }) :
+      name = pulumi.Input.asInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'project': ?project,
+      'region': region,
+    };
   }
 
   factory GetNetworkAttachmentArgs.fromMap(Map<String, dynamic> map) {
@@ -50,3 +46,4 @@ class GetNetworkAttachmentArgs {
     );
   }
 }
+

@@ -1,21 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetBrokerNodesNodeInfoList {
   /// Attached elastic network interface of the broker
   final String attachedEniId;
-
   /// ID of the broker
   final double brokerId;
-
   /// Client subnet to which this broker node belongs
   final String clientSubnet;
-
   /// The client virtual private cloud (VPC) IP address
   final String clientVpcIpAddress;
-
   /// Set of endpoints for accessing the broker. This does not include ports
   final List<String> endpoints;
-
   /// ARN of the node
   final String nodeArn;
 
@@ -36,14 +32,14 @@ class GetBrokerNodesNodeInfoList {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['attachedEniId'] = attachedEniId;
-    map['brokerId'] = brokerId;
-    map['clientSubnet'] = clientSubnet;
-    map['clientVpcIpAddress'] = clientVpcIpAddress;
-    map['endpoints'] = endpoints;
-    map['nodeArn'] = nodeArn;
-    return map;
+    return <String, dynamic>{
+      'attachedEniId': attachedEniId,
+      'brokerId': brokerId,
+      'clientSubnet': clientSubnet,
+      'clientVpcIpAddress': clientVpcIpAddress,
+      'endpoints': endpoints,
+      'nodeArn': nodeArn,
+    };
   }
 
   factory GetBrokerNodesNodeInfoList.fromMap(Map<String, dynamic> map) {
@@ -57,3 +53,4 @@ class GetBrokerNodesNodeInfoList {
     );
   }
 }
+

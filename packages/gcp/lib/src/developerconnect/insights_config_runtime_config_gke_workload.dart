@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InsightsConfigRuntimeConfigGkeWorkload {
   /// The name of the GKE cluster.
   /// Format:
   /// `projects/{project}/locations/{location}/clusters/{cluster}`.
   final String cluster;
-
   /// (Output)
   /// The name of the GKE deployment.
   /// Format:
@@ -21,21 +21,17 @@ class InsightsConfigRuntimeConfigGkeWorkload {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cluster'] = cluster;
-    final deploymentValue = deployment;
-    if (deploymentValue != null) {
-      map['deployment'] = deploymentValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cluster': cluster,
+      'deployment': ?deployment,
+    };
   }
 
-  factory InsightsConfigRuntimeConfigGkeWorkload.fromMap(
-      Map<String, dynamic> map) {
+  factory InsightsConfigRuntimeConfigGkeWorkload.fromMap(Map<String, dynamic> map) {
     return InsightsConfigRuntimeConfigGkeWorkload(
       cluster: map['cluster'] as String,
-      deployment:
-          map['deployment'] == null ? null : map['deployment'] as String,
+      deployment: map['deployment'] == null ? null : map['deployment'] as String,
     );
   }
 }
+

@@ -22,25 +22,22 @@ class GetTaxonomyPolicyTagIamPolicyDatacatalogV1beta1Args {
     required String policyTagId,
     String? project,
     required String taxonomyId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        policyTagId = pulumi.Input.asInput<String>(policyTagId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        taxonomyId = pulumi.Input.asInput<String>(taxonomyId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      policyTagId = pulumi.Input.asInput<String>(policyTagId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      taxonomyId = pulumi.Input.asInput<String>(taxonomyId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    map['policyTagId'] = policyTagId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['taxonomyId'] = taxonomyId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'policyTagId': policyTagId,
+      'project': ?project,
+      'taxonomyId': taxonomyId,
+    };
   }
 
-  factory GetTaxonomyPolicyTagIamPolicyDatacatalogV1beta1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetTaxonomyPolicyTagIamPolicyDatacatalogV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetTaxonomyPolicyTagIamPolicyDatacatalogV1beta1Args(
       location: map['location'] as String,
       policyTagId: map['policyTagId'] as String,
@@ -49,3 +46,4 @@ class GetTaxonomyPolicyTagIamPolicyDatacatalogV1beta1Args {
     );
   }
 }
+

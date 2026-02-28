@@ -9,16 +9,12 @@ import 'text_config_response.dart';
 class DeidentifyConfigResponse {
   /// Configures de-id of application/DICOM content.
   final DicomConfigResponse dicom;
-
   /// Configures de-id of application/FHIR content.
   final FhirConfigResponse fhir;
-
   /// Configures de-identification of image pixels wherever they are found in the source_dataset.
   final ImageConfigResponse image;
-
   /// Configures de-identification of text wherever it is found in the source_dataset.
   final TextConfigResponse text;
-
   /// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within TextConfig, and must also be excluded within ImageConfig if image redaction is required.
   final bool useRegionalDataProcessing;
 
@@ -37,26 +33,23 @@ class DeidentifyConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dicom'] = dicom.toMap();
-    map['fhir'] = fhir.toMap();
-    map['image'] = image.toMap();
-    map['text'] = text.toMap();
-    map['useRegionalDataProcessing'] = useRegionalDataProcessing;
-    return map;
+    return <String, dynamic>{
+      'dicom': dicom.toMap(),
+      'fhir': fhir.toMap(),
+      'image': image.toMap(),
+      'text': text.toMap(),
+      'useRegionalDataProcessing': useRegionalDataProcessing,
+    };
   }
 
   factory DeidentifyConfigResponse.fromMap(Map<String, dynamic> map) {
     return DeidentifyConfigResponse(
-      dicom: DicomConfigResponse.fromMap(
-          (map['dicom'] as Map).cast<String, dynamic>()),
-      fhir: FhirConfigResponse.fromMap(
-          (map['fhir'] as Map).cast<String, dynamic>()),
-      image: ImageConfigResponse.fromMap(
-          (map['image'] as Map).cast<String, dynamic>()),
-      text: TextConfigResponse.fromMap(
-          (map['text'] as Map).cast<String, dynamic>()),
+      dicom: DicomConfigResponse.fromMap((map['dicom'] as Map).cast<String, dynamic>()),
+      fhir: FhirConfigResponse.fromMap((map['fhir'] as Map).cast<String, dynamic>()),
+      image: ImageConfigResponse.fromMap((map['image'] as Map).cast<String, dynamic>()),
+      text: TextConfigResponse.fromMap((map['text'] as Map).cast<String, dynamic>()),
       useRegionalDataProcessing: map['useRegionalDataProcessing'] as bool,
     );
   }
 }
+

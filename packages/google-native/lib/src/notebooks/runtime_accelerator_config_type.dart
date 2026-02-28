@@ -26,3 +26,4 @@ enum RuntimeAcceleratorConfigType {
     throw ArgumentError('Unknown RuntimeAcceleratorConfigType value: $value');
   }
 }
+

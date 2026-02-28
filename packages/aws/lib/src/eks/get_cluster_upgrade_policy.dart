@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterUpgradePolicy {
   /// Support type to use for the cluster.
   final String supportType;
@@ -11,9 +12,9 @@ class GetClusterUpgradePolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['supportType'] = supportType;
-    return map;
+    return <String, dynamic>{
+      'supportType': supportType,
+    };
   }
 
   factory GetClusterUpgradePolicy.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetClusterUpgradePolicy {
     );
   }
 }
+

@@ -15,20 +15,15 @@ class ReportSummaryChartDataResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dataPoints'] = pulumi.Input.encodeList<
-        ReportSummaryChartDataDataPointResponse,
-        Map<String, dynamic>>(dataPoints, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'dataPoints': pulumi.Input.encodeList<ReportSummaryChartDataDataPointResponse, Map<String, dynamic>>(dataPoints, (value) => value.toMap()),
+    };
   }
 
   factory ReportSummaryChartDataResponse.fromMap(Map<String, dynamic> map) {
     return ReportSummaryChartDataResponse(
-      dataPoints:
-          pulumi.Input.decodeList<ReportSummaryChartDataDataPointResponse>(
-              map['dataPoints'],
-              (value) => ReportSummaryChartDataDataPointResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      dataPoints: pulumi.Input.decodeList<ReportSummaryChartDataDataPointResponse>(map['dataPoints'], (value) => ReportSummaryChartDataDataPointResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

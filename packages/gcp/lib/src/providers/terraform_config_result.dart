@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by terraformConfig.
 class TerraformConfigResult {
   final Map<String, dynamic> result;
@@ -11,9 +12,9 @@ class TerraformConfigResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['result'] = result;
-    return map;
+    return <String, dynamic>{
+      'result': result,
+    };
   }
 
   factory TerraformConfigResult.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class TerraformConfigResult {
     );
   }
 }
+

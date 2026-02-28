@@ -14,16 +14,15 @@ class BareMetalAdminControlPlaneNodePoolConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['nodePoolConfig'] = nodePoolConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'nodePoolConfig': nodePoolConfig.toMap(),
+    };
   }
 
-  factory BareMetalAdminControlPlaneNodePoolConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory BareMetalAdminControlPlaneNodePoolConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminControlPlaneNodePoolConfig(
-      nodePoolConfig: BareMetalNodePoolConfig.fromMap(
-          (map['nodePoolConfig'] as Map).cast<String, dynamic>()),
+      nodePoolConfig: BareMetalNodePoolConfig.fromMap((map['nodePoolConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

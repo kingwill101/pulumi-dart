@@ -6,14 +6,10 @@ import 'get_job_definition_node_property_node_range_property_container_log_confi
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfiguration {
   /// The log driver to use for the container.
   final String logDriver;
-
   /// The configuration options to send to the log driver.
   final Map<String, String> options;
-
   /// The secrets to pass to the log configuration.
-  final List<
-          GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfigurationSecretOption>
-      secretOptions;
+  final List<GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfigurationSecretOption> secretOptions;
 
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfiguration].
   /// [logDriver] The log driver to use for the container.
@@ -26,26 +22,19 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['logDriver'] = logDriver;
-    map['options'] = options;
-    map['secretOptions'] = pulumi.Input.encodeList<
-        GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfigurationSecretOption,
-        Map<String, dynamic>>(secretOptions, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'logDriver': logDriver,
+      'options': options,
+      'secretOptions': pulumi.Input.encodeList<GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfigurationSecretOption, Map<String, dynamic>>(secretOptions, (value) => value.toMap()),
+    };
   }
 
-  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfiguration.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfiguration(
       logDriver: map['logDriver'] as String,
       options: (map['options'] as Map).cast<String, String>(),
-      secretOptions: pulumi.Input.decodeList<
-              GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfigurationSecretOption>(
-          map['secretOptions'],
-          (value) =>
-              GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfigurationSecretOption
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      secretOptions: pulumi.Input.decodeList<GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfigurationSecretOption>(map['secretOptions'], (value) => GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfigurationSecretOption.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

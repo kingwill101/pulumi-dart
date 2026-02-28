@@ -59,8 +59,7 @@ Future<GetSecretSecretmanagerV1beta1Result> getSecretSecretmanagerV1beta1(
 /// Gets the access control policy for a secret. Returns empty policy if the secret exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_secretmanager_v1beta1_get_secret_iam_policy_secretmanager_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSecretIamPolicySecretmanagerV1beta1Result>
-    getSecretIamPolicySecretmanagerV1beta1(
+Future<GetSecretIamPolicySecretmanagerV1beta1Result> getSecretIamPolicySecretmanagerV1beta1(
   GetSecretIamPolicySecretmanagerV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {

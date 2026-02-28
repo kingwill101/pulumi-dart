@@ -6,10 +6,8 @@ import 'fleet_observability_routing_config_response_gkehub_v1beta.dart';
 class FleetObservabilityLoggingConfigResponseGkehubV1beta {
   /// Specified if applying the default routing config to logs not specified in other configs.
   final FleetObservabilityRoutingConfigResponseGkehubV1beta defaultConfig;
-
   /// Specified if applying the routing config to all logs for all fleet scopes.
-  final FleetObservabilityRoutingConfigResponseGkehubV1beta
-      fleetScopeLogsConfig;
+  final FleetObservabilityRoutingConfigResponseGkehubV1beta fleetScopeLogsConfig;
 
   /// Creates a new [FleetObservabilityLoggingConfigResponseGkehubV1beta].
   /// [defaultConfig] Specified if applying the default routing config to logs not specified in other configs.
@@ -20,21 +18,17 @@ class FleetObservabilityLoggingConfigResponseGkehubV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['defaultConfig'] = defaultConfig.toMap();
-    map['fleetScopeLogsConfig'] = fleetScopeLogsConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'defaultConfig': defaultConfig.toMap(),
+      'fleetScopeLogsConfig': fleetScopeLogsConfig.toMap(),
+    };
   }
 
-  factory FleetObservabilityLoggingConfigResponseGkehubV1beta.fromMap(
-      Map<String, dynamic> map) {
+  factory FleetObservabilityLoggingConfigResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return FleetObservabilityLoggingConfigResponseGkehubV1beta(
-      defaultConfig:
-          FleetObservabilityRoutingConfigResponseGkehubV1beta.fromMap(
-              (map['defaultConfig'] as Map).cast<String, dynamic>()),
-      fleetScopeLogsConfig:
-          FleetObservabilityRoutingConfigResponseGkehubV1beta.fromMap(
-              (map['fleetScopeLogsConfig'] as Map).cast<String, dynamic>()),
+      defaultConfig: FleetObservabilityRoutingConfigResponseGkehubV1beta.fromMap((map['defaultConfig'] as Map).cast<String, dynamic>()),
+      fleetScopeLogsConfig: FleetObservabilityRoutingConfigResponseGkehubV1beta.fromMap((map['fleetScopeLogsConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

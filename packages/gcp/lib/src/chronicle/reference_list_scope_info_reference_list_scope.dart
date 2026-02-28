@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ReferenceListScopeInfoReferenceListScope {
   /// Optional. The list of scope names of the reference list. The scope names should be
   /// full resource names and should be of the format:
@@ -13,20 +14,15 @@ class ReferenceListScopeInfoReferenceListScope {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final scopeNamesValue = scopeNames;
-    if (scopeNamesValue != null) {
-      map['scopeNames'] = scopeNamesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'scopeNames': ?scopeNames,
+    };
   }
 
-  factory ReferenceListScopeInfoReferenceListScope.fromMap(
-      Map<String, dynamic> map) {
+  factory ReferenceListScopeInfoReferenceListScope.fromMap(Map<String, dynamic> map) {
     return ReferenceListScopeInfoReferenceListScope(
-      scopeNames: map['scopeNames'] == null
-          ? null
-          : (map['scopeNames'] as List).cast<String>(),
+      scopeNames: map['scopeNames'] == null ? null : (map['scopeNames'] as List).cast<String>(),
     );
   }
 }
+

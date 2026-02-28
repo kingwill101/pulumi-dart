@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// An artifact that can be deployed in some runtime.
 class DeploymentNote {
   /// Resource URI for the artifact being deployed.
@@ -12,9 +13,9 @@ class DeploymentNote {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['resourceUri'] = resourceUri;
-    return map;
+    return <String, dynamic>{
+      'resourceUri': resourceUri,
+    };
   }
 
   factory DeploymentNote.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class DeploymentNote {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PlanWorkflowStepCustomActionLambdaConfigUngraceful {
   /// Behavior when ungraceful. Valid values: `skip`.
   final String behavior;
@@ -11,15 +12,15 @@ class PlanWorkflowStepCustomActionLambdaConfigUngraceful {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['behavior'] = behavior;
-    return map;
+    return <String, dynamic>{
+      'behavior': behavior,
+    };
   }
 
-  factory PlanWorkflowStepCustomActionLambdaConfigUngraceful.fromMap(
-      Map<String, dynamic> map) {
+  factory PlanWorkflowStepCustomActionLambdaConfigUngraceful.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepCustomActionLambdaConfigUngraceful(
       behavior: map['behavior'] as String,
     );
   }
 }
+

@@ -19,19 +19,17 @@ class GetTensorboardArgs {
     required String location,
     String? project,
     required String tensorboardId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        tensorboardId = pulumi.Input.asInput<String>(tensorboardId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      tensorboardId = pulumi.Input.asInput<String>(tensorboardId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['tensorboardId'] = tensorboardId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+      'tensorboardId': tensorboardId,
+    };
   }
 
   factory GetTensorboardArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetTensorboardArgs {
     );
   }
 }
+

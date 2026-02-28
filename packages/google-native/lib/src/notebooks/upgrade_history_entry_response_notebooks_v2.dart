@@ -1,31 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The entry of VM image upgrade history.
 class UpgradeHistoryEntryResponseNotebooksV2 {
   /// Optional. Action. Rolloback or Upgrade.
   final String action;
-
   /// Optional. The container image before this instance upgrade.
   final String containerImage;
-
   /// Immutable. The time that this instance upgrade history entry is created.
   final String createTime;
-
   /// Optional. The framework of this notebook instance.
   final String framework;
-
   /// Optional. The snapshot of the boot disk of this notebook instance before upgrade.
   final String snapshot;
-
   /// The state of this instance upgrade history entry.
   final String state;
-
   /// Optional. Target VM Version, like m63.
   final String targetVersion;
-
   /// Optional. The version of the notebook instance before this upgrade.
   final String version;
-
   /// Optional. The VM image before this instance upgrade.
   final String vmImage;
 
@@ -52,21 +45,20 @@ class UpgradeHistoryEntryResponseNotebooksV2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['action'] = action;
-    map['containerImage'] = containerImage;
-    map['createTime'] = createTime;
-    map['framework'] = framework;
-    map['snapshot'] = snapshot;
-    map['state'] = state;
-    map['targetVersion'] = targetVersion;
-    map['version'] = version;
-    map['vmImage'] = vmImage;
-    return map;
+    return <String, dynamic>{
+      'action': action,
+      'containerImage': containerImage,
+      'createTime': createTime,
+      'framework': framework,
+      'snapshot': snapshot,
+      'state': state,
+      'targetVersion': targetVersion,
+      'version': version,
+      'vmImage': vmImage,
+    };
   }
 
-  factory UpgradeHistoryEntryResponseNotebooksV2.fromMap(
-      Map<String, dynamic> map) {
+  factory UpgradeHistoryEntryResponseNotebooksV2.fromMap(Map<String, dynamic> map) {
     return UpgradeHistoryEntryResponseNotebooksV2(
       action: map['action'] as String,
       containerImage: map['containerImage'] as String,
@@ -80,3 +72,4 @@ class UpgradeHistoryEntryResponseNotebooksV2 {
     );
   }
 }
+

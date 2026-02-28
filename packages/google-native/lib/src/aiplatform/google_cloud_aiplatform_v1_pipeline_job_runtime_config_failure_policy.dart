@@ -4,20 +4,16 @@ enum GoogleCloudAiplatformV1PipelineJobRuntimeConfigFailurePolicy {
   pipelineFailurePolicyFailSlow("PIPELINE_FAILURE_POLICY_FAIL_SLOW"),
   pipelineFailurePolicyFailFast("PIPELINE_FAILURE_POLICY_FAIL_FAST");
 
-  const GoogleCloudAiplatformV1PipelineJobRuntimeConfigFailurePolicy(
-      this.value);
+  const GoogleCloudAiplatformV1PipelineJobRuntimeConfigFailurePolicy(this.value);
   final String value;
 
-  static GoogleCloudAiplatformV1PipelineJobRuntimeConfigFailurePolicy fromValue(
-      String value) {
-    for (final item
-        in GoogleCloudAiplatformV1PipelineJobRuntimeConfigFailurePolicy
-            .values) {
+  static GoogleCloudAiplatformV1PipelineJobRuntimeConfigFailurePolicy fromValue(String value) {
+    for (final item in GoogleCloudAiplatformV1PipelineJobRuntimeConfigFailurePolicy.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GoogleCloudAiplatformV1PipelineJobRuntimeConfigFailurePolicy value: $value');
+    throw ArgumentError('Unknown GoogleCloudAiplatformV1PipelineJobRuntimeConfigFailurePolicy value: $value');
   }
 }
+

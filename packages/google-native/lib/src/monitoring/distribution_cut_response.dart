@@ -6,7 +6,6 @@ import 'google_monitoring_v3_range_response.dart';
 class DistributionCutResponse {
   /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries aggregating values. Must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE.
   final String distributionFilter;
-
   /// Range of values considered "good." For a one-sided range, set one bound to an infinite value.
   final GoogleMonitoringV3RangeResponse range;
 
@@ -19,17 +18,17 @@ class DistributionCutResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['distributionFilter'] = distributionFilter;
-    map['range'] = range.toMap();
-    return map;
+    return <String, dynamic>{
+      'distributionFilter': distributionFilter,
+      'range': range.toMap(),
+    };
   }
 
   factory DistributionCutResponse.fromMap(Map<String, dynamic> map) {
     return DistributionCutResponse(
       distributionFilter: map['distributionFilter'] as String,
-      range: GoogleMonitoringV3RangeResponse.fromMap(
-          (map['range'] as Map).cast<String, dynamic>()),
+      range: GoogleMonitoringV3RangeResponse.fromMap((map['range'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

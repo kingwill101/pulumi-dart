@@ -10,10 +10,8 @@ import 'instance_logging_configuration_access_logs.dart';
 class InstanceLoggingConfigurationArgs {
   /// A block that specifies the configuration options for Verified Access instances. Detailed below.
   final pulumi.Input<InstanceLoggingConfigurationAccessLogs> accessLogs;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The ID of the Verified Access instance.
   final pulumi.Input<String> verifiedaccessInstanceId;
 
@@ -25,32 +23,25 @@ class InstanceLoggingConfigurationArgs {
     required InstanceLoggingConfigurationAccessLogs accessLogs,
     String? region,
     required String verifiedaccessInstanceId,
-  })  : accessLogs =
-            pulumi.Input.asInput<InstanceLoggingConfigurationAccessLogs>(
-                accessLogs),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        verifiedaccessInstanceId =
-            pulumi.Input.asInput<String>(verifiedaccessInstanceId);
+  }) :
+      accessLogs = pulumi.Input.asInput<InstanceLoggingConfigurationAccessLogs>(accessLogs),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      verifiedaccessInstanceId = pulumi.Input.asInput<String>(verifiedaccessInstanceId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accessLogs'] = pulumi.Input.mapInputValue<
-        InstanceLoggingConfigurationAccessLogs,
-        Map<String, dynamic>>(accessLogs, (value) => value.toMap());
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['verifiedaccessInstanceId'] = verifiedaccessInstanceId;
-    return map;
+    return <String, dynamic>{
+      'accessLogs': pulumi.Input.mapInputValue<InstanceLoggingConfigurationAccessLogs, Map<String, dynamic>>(accessLogs, (value) => value.toMap()),
+      'region': ?region,
+      'verifiedaccessInstanceId': verifiedaccessInstanceId,
+    };
   }
 
   factory InstanceLoggingConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return InstanceLoggingConfigurationArgs(
-      accessLogs: InstanceLoggingConfigurationAccessLogs.fromMap(
-          (map['accessLogs'] as Map).cast<String, dynamic>()),
+      accessLogs: InstanceLoggingConfigurationAccessLogs.fromMap((map['accessLogs'] as Map).cast<String, dynamic>()),
       region: map['region'] == null ? null : map['region'] as String,
       verifiedaccessInstanceId: map['verifiedaccessInstanceId'] as String,
     );
   }
 }
+

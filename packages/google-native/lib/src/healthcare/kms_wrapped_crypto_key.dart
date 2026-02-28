@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. The key must grant the Cloud IAM permission `cloudkms.cryptoKeyVersions.useToDecrypt` to the project's Cloud Healthcare Service Agent service account. For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
 class KmsWrappedCryptoKey {
   /// The resource name of the KMS CryptoKey to use for unwrapping. For example, `projects/{project_id}/locations/{location_id}/keyRings/{keyring}/cryptoKeys/{key}`.
   final String cryptoKey;
-
   /// The wrapped data crypto key.
   final String wrappedKey;
 
@@ -17,10 +17,10 @@ class KmsWrappedCryptoKey {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cryptoKey'] = cryptoKey;
-    map['wrappedKey'] = wrappedKey;
-    return map;
+    return <String, dynamic>{
+      'cryptoKey': cryptoKey,
+      'wrappedKey': wrappedKey,
+    };
   }
 
   factory KmsWrappedCryptoKey.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class KmsWrappedCryptoKey {
     );
   }
 }
+

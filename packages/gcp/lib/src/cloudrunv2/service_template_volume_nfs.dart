@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ServiceTemplateVolumeNfs {
   /// Path that is exported by the NFS server.
   final String path;
-
   /// If true, mount the NFS volume as read only
   final bool? readOnly;
-
   /// Hostname or IP address of the NFS server
   final String server;
 
@@ -21,14 +20,11 @@ class ServiceTemplateVolumeNfs {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['path'] = path;
-    final readOnlyValue = readOnly;
-    if (readOnlyValue != null) {
-      map['readOnly'] = readOnlyValue;
-    }
-    map['server'] = server;
-    return map;
+    return <String, dynamic>{
+      'path': path,
+      'readOnly': ?readOnly,
+      'server': server,
+    };
   }
 
   factory ServiceTemplateVolumeNfs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +35,4 @@ class ServiceTemplateVolumeNfs {
     );
   }
 }
+

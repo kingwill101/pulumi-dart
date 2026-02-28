@@ -15,7 +15,6 @@ class GetInstanceResult {
   final String discoveryEndpoint;
   final String displayName;
   final Map<String, String> effectiveLabels;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final Map<String, String> labels;
@@ -83,46 +82,30 @@ class GetInstanceResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['authorizedNetwork'] = authorizedNetwork;
-    map['createTime'] = createTime;
-    map['deletionProtection'] = deletionProtection;
-    map['discoveryEndpoint'] = discoveryEndpoint;
-    map['displayName'] = displayName;
-    map['effectiveLabels'] = effectiveLabels;
-    map['id'] = id;
-    map['labels'] = labels;
-    map['maintenancePolicies'] = pulumi.Input.encodeList<
-        GetInstanceMaintenancePolicy,
-        Map<String, dynamic>>(maintenancePolicies, (value) => value.toMap());
-    map['maintenanceSchedules'] = pulumi.Input.encodeList<
-        GetInstanceMaintenanceSchedule,
-        Map<String, dynamic>>(maintenanceSchedules, (value) => value.toMap());
-    map['memcacheFullVersion'] = memcacheFullVersion;
-    map['memcacheNodes'] =
-        pulumi.Input.encodeList<GetInstanceMemcacheNode, Map<String, dynamic>>(
-            memcacheNodes, (value) => value.toMap());
-    map['memcacheParameters'] = pulumi.Input.encodeList<
-        GetInstanceMemcacheParameter,
-        Map<String, dynamic>>(memcacheParameters, (value) => value.toMap());
-    map['memcacheVersion'] = memcacheVersion;
-    map['name'] = name;
-    map['nodeConfigs'] =
-        pulumi.Input.encodeList<GetInstanceNodeConfig, Map<String, dynamic>>(
-            nodeConfigs, (value) => value.toMap());
-    map['nodeCount'] = nodeCount;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['pulumiLabels'] = pulumiLabels;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['reservedIpRangeIds'] = reservedIpRangeIds;
-    map['zones'] = zones;
-    return map;
+    return <String, dynamic>{
+      'authorizedNetwork': authorizedNetwork,
+      'createTime': createTime,
+      'deletionProtection': deletionProtection,
+      'discoveryEndpoint': discoveryEndpoint,
+      'displayName': displayName,
+      'effectiveLabels': effectiveLabels,
+      'id': id,
+      'labels': labels,
+      'maintenancePolicies': pulumi.Input.encodeList<GetInstanceMaintenancePolicy, Map<String, dynamic>>(maintenancePolicies, (value) => value.toMap()),
+      'maintenanceSchedules': pulumi.Input.encodeList<GetInstanceMaintenanceSchedule, Map<String, dynamic>>(maintenanceSchedules, (value) => value.toMap()),
+      'memcacheFullVersion': memcacheFullVersion,
+      'memcacheNodes': pulumi.Input.encodeList<GetInstanceMemcacheNode, Map<String, dynamic>>(memcacheNodes, (value) => value.toMap()),
+      'memcacheParameters': pulumi.Input.encodeList<GetInstanceMemcacheParameter, Map<String, dynamic>>(memcacheParameters, (value) => value.toMap()),
+      'memcacheVersion': memcacheVersion,
+      'name': name,
+      'nodeConfigs': pulumi.Input.encodeList<GetInstanceNodeConfig, Map<String, dynamic>>(nodeConfigs, (value) => value.toMap()),
+      'nodeCount': nodeCount,
+      'project': ?project,
+      'pulumiLabels': pulumiLabels,
+      'region': ?region,
+      'reservedIpRangeIds': reservedIpRangeIds,
+      'zones': zones,
+    };
   }
 
   factory GetInstanceResult.fromMap(Map<String, dynamic> map) {
@@ -135,31 +118,14 @@ class GetInstanceResult {
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       id: map['id'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
-      maintenancePolicies:
-          pulumi.Input.decodeList<GetInstanceMaintenancePolicy>(
-              map['maintenancePolicies'],
-              (value) => GetInstanceMaintenancePolicy.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      maintenanceSchedules:
-          pulumi.Input.decodeList<GetInstanceMaintenanceSchedule>(
-              map['maintenanceSchedules'],
-              (value) => GetInstanceMaintenanceSchedule.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      maintenancePolicies: pulumi.Input.decodeList<GetInstanceMaintenancePolicy>(map['maintenancePolicies'], (value) => GetInstanceMaintenancePolicy.fromMap((value as Map).cast<String, dynamic>())),
+      maintenanceSchedules: pulumi.Input.decodeList<GetInstanceMaintenanceSchedule>(map['maintenanceSchedules'], (value) => GetInstanceMaintenanceSchedule.fromMap((value as Map).cast<String, dynamic>())),
       memcacheFullVersion: map['memcacheFullVersion'] as String,
-      memcacheNodes: pulumi.Input.decodeList<GetInstanceMemcacheNode>(
-          map['memcacheNodes'],
-          (value) => GetInstanceMemcacheNode.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      memcacheParameters: pulumi.Input.decodeList<GetInstanceMemcacheParameter>(
-          map['memcacheParameters'],
-          (value) => GetInstanceMemcacheParameter.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      memcacheNodes: pulumi.Input.decodeList<GetInstanceMemcacheNode>(map['memcacheNodes'], (value) => GetInstanceMemcacheNode.fromMap((value as Map).cast<String, dynamic>())),
+      memcacheParameters: pulumi.Input.decodeList<GetInstanceMemcacheParameter>(map['memcacheParameters'], (value) => GetInstanceMemcacheParameter.fromMap((value as Map).cast<String, dynamic>())),
       memcacheVersion: map['memcacheVersion'] as String,
       name: map['name'] as String,
-      nodeConfigs: pulumi.Input.decodeList<GetInstanceNodeConfig>(
-          map['nodeConfigs'],
-          (value) => GetInstanceNodeConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      nodeConfigs: pulumi.Input.decodeList<GetInstanceNodeConfig>(map['nodeConfigs'], (value) => GetInstanceNodeConfig.fromMap((value as Map).cast<String, dynamic>())),
       nodeCount: map['nodeCount'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
@@ -169,3 +135,4 @@ class GetInstanceResult {
     );
   }
 }
+

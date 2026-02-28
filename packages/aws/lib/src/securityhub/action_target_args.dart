@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ActionTargetArgs {
   /// The name of the custom action target.
   final pulumi.Input<String> description;
-
   /// The ID for the custom action target.
   final pulumi.Input<String> identifier;
-
   /// The description for the custom action target.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -29,24 +26,19 @@ class ActionTargetArgs {
     required String identifier,
     String? name,
     String? region,
-  })  : description = pulumi.Input.asInput<String>(description),
-        identifier = pulumi.Input.asInput<String>(identifier),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      description = pulumi.Input.asInput<String>(description),
+      identifier = pulumi.Input.asInput<String>(identifier),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['description'] = description;
-    map['identifier'] = identifier;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'description': description,
+      'identifier': identifier,
+      'name': ?name,
+      'region': ?region,
+    };
   }
 
   factory ActionTargetArgs.fromMap(Map<String, dynamic> map) {
@@ -58,3 +50,4 @@ class ActionTargetArgs {
     );
   }
 }
+

@@ -14,20 +14,15 @@ class AnnotationSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cloudHealthcareSourceValue = cloudHealthcareSource;
-    if (cloudHealthcareSourceValue != null) {
-      map['cloudHealthcareSource'] = cloudHealthcareSourceValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'cloudHealthcareSource': ?cloudHealthcareSource == null ? null : cloudHealthcareSource!.toMap(),
+    };
   }
 
   factory AnnotationSource.fromMap(Map<String, dynamic> map) {
     return AnnotationSource(
-      cloudHealthcareSource: map['cloudHealthcareSource'] == null
-          ? null
-          : CloudHealthcareSource.fromMap(
-              (map['cloudHealthcareSource'] as Map).cast<String, dynamic>()),
+      cloudHealthcareSource: map['cloudHealthcareSource'] == null ? null : CloudHealthcareSource.fromMap((map['cloudHealthcareSource'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

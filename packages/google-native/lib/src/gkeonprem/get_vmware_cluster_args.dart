@@ -22,24 +22,19 @@ class GetVmwareClusterArgs {
     String? project,
     String? view,
     required String vmwareClusterId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        view = pulumi.Input.asOptionalInput<String>(view),
-        vmwareClusterId = pulumi.Input.asInput<String>(vmwareClusterId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      view = pulumi.Input.asOptionalInput<String>(view),
+      vmwareClusterId = pulumi.Input.asInput<String>(vmwareClusterId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final viewValue = view;
-    if (viewValue != null) {
-      map['view'] = viewValue;
-    }
-    map['vmwareClusterId'] = vmwareClusterId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+      'view': ?view,
+      'vmwareClusterId': vmwareClusterId,
+    };
   }
 
   factory GetVmwareClusterArgs.fromMap(Map<String, dynamic> map) {
@@ -51,3 +46,4 @@ class GetVmwareClusterArgs {
     );
   }
 }
+

@@ -14,12 +14,13 @@ class GetBucketIamPolicyArgs {
   /// [bucket] Used to find the parent resource to bind the IAM policy to
   GetBucketIamPolicyArgs({
     required String bucket,
-  }) : bucket = pulumi.Input.asInput<String>(bucket);
+  }) :
+      bucket = pulumi.Input.asInput<String>(bucket);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucket'] = bucket;
-    return map;
+    return <String, dynamic>{
+      'bucket': bucket,
+    };
   }
 
   factory GetBucketIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -28,3 +29,4 @@ class GetBucketIamPolicyArgs {
     );
   }
 }
+

@@ -10,43 +10,26 @@ class ResourcePolicyComputeBeta extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
   late final pulumi.Output<String> description;
-
   /// Resource policy for disk consistency groups.
   late final pulumi.Output<Map<String, dynamic>> diskConsistencyGroupPolicy;
-
   /// Resource policy for instances for placement configuration.
-  late final pulumi
-      .Output<ResourcePolicyGroupPlacementPolicyResponseComputeBeta>
-      groupPlacementPolicy;
-
+  late final pulumi.Output<ResourcePolicyGroupPlacementPolicyResponseComputeBeta> groupPlacementPolicy;
   /// Resource policy for scheduling instance operations.
-  late final pulumi
-      .Output<ResourcePolicyInstanceSchedulePolicyResponseComputeBeta>
-      instanceSchedulePolicy;
-
+  late final pulumi.Output<ResourcePolicyInstanceSchedulePolicyResponseComputeBeta> instanceSchedulePolicy;
   /// Type of the resource. Always compute#resource_policies for resource policies.
   late final pulumi.Output<String> kind;
-
   /// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
   late final pulumi.Output<String> region;
-
   /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   late final pulumi.Output<String?> requestId;
-
   /// The system status of the resource policy.
-  late final pulumi.Output<ResourcePolicyResourceStatusResponseComputeBeta>
-      resourceStatus;
-
+  late final pulumi.Output<ResourcePolicyResourceStatusResponseComputeBeta> resourceStatus;
   /// Server-defined fully-qualified URL for this resource.
   late final pulumi.Output<String> selfLink;
-
   /// Resource policy for persistent disks for creating snapshots.
-  late final pulumi
-      .Output<ResourcePolicySnapshotSchedulePolicyResponseComputeBeta>
-      snapshotSchedulePolicy;
-
+  late final pulumi.Output<ResourcePolicySnapshotSchedulePolicyResponseComputeBeta> snapshotSchedulePolicy;
   /// The status of resource policy creation.
   late final pulumi.Output<String> status;
 
@@ -66,26 +49,17 @@ class ResourcePolicyComputeBeta extends pulumi.CustomResource {
         ) {
     this.creationTimestamp = registerOutput<String>('creationTimestamp');
     this.description = registerOutput<String>('description');
-    this.diskConsistencyGroupPolicy =
-        registerOutput<Map<String, dynamic>>('diskConsistencyGroupPolicy');
-    this.groupPlacementPolicy =
-        registerOutput<ResourcePolicyGroupPlacementPolicyResponseComputeBeta>(
-            'groupPlacementPolicy');
-    this.instanceSchedulePolicy =
-        registerOutput<ResourcePolicyInstanceSchedulePolicyResponseComputeBeta>(
-            'instanceSchedulePolicy');
+    this.diskConsistencyGroupPolicy = registerOutput<Map<String, dynamic>>('diskConsistencyGroupPolicy');
+    this.groupPlacementPolicy = registerOutput<ResourcePolicyGroupPlacementPolicyResponseComputeBeta>('groupPlacementPolicy');
+    this.instanceSchedulePolicy = registerOutput<ResourcePolicyInstanceSchedulePolicyResponseComputeBeta>('instanceSchedulePolicy');
     this.kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
     this.region = registerOutput<String>('region');
     this.requestId = registerOutput<String?>('requestId');
-    this.resourceStatus =
-        registerOutput<ResourcePolicyResourceStatusResponseComputeBeta>(
-            'resourceStatus');
+    this.resourceStatus = registerOutput<ResourcePolicyResourceStatusResponseComputeBeta>('resourceStatus');
     this.selfLink = registerOutput<String>('selfLink');
-    this.snapshotSchedulePolicy =
-        registerOutput<ResourcePolicySnapshotSchedulePolicyResponseComputeBeta>(
-            'snapshotSchedulePolicy');
+    this.snapshotSchedulePolicy = registerOutput<ResourcePolicySnapshotSchedulePolicyResponseComputeBeta>('snapshotSchedulePolicy');
     this.status = registerOutput<String>('status');
   }
 }

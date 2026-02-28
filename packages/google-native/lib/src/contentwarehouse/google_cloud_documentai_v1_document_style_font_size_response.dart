@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Font size with unit.
 class GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse {
   /// Font size for the text.
   final double size;
-
   /// Unit for the font size. Follows CSS naming (such as `in`, `px`, and `pt`).
   final String unit;
 
@@ -17,17 +17,17 @@ class GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['size'] = size;
-    map['unit'] = unit;
-    return map;
+    return <String, dynamic>{
+      'size': size,
+      'unit': unit,
+    };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse(
       size: map['size'] as double,
       unit: map['unit'] as String,
     );
   }
 }
+

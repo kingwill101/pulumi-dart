@@ -7,15 +7,11 @@ import 'google_cloud_aiplatform_v1beta1_machine_spec_response.dart';
 /// A description of resources that are dedicated to a DeployedModel, and that need a higher degree of manual configuration.
 class GoogleCloudAiplatformV1beta1DedicatedResourcesResponse {
   /// Immutable. The metric specifications that overrides a resource utilization metric (CPU utilization, accelerator's duty cycle, and so on) target value (default to 60 if not set). At most one entry is allowed per metric. If machine_spec.accelerator_count is above 0, the autoscaling will be based on both CPU utilization and accelerator's duty cycle metrics and scale up when either metrics exceeds its target value while scale down if both metrics are under their target value. The default target value is 60 for both metrics. If machine_spec.accelerator_count is 0, the autoscaling will be based on CPU utilization metric only with default target value 60 if not explicitly set. For example, in the case of Online Prediction, if you want to override target CPU utilization to 80, you should set autoscaling_metric_specs.metric_name to `aiplatform.googleapis.com/prediction/online/cpu/utilization` and autoscaling_metric_specs.target to `80`.
-  final List<GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponse>
-      autoscalingMetricSpecs;
-
+  final List<GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponse> autoscalingMetricSpecs;
   /// Immutable. The specification of a single machine used by the prediction.
   final GoogleCloudAiplatformV1beta1MachineSpecResponse machineSpec;
-
   /// Immutable. The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, will use min_replica_count as the default value. The value of this field impacts the charge against Vertex CPU and GPU quotas. Specifically, you will be charged for (max_replica_count * number of cores in the selected machine type) and (max_replica_count * number of GPUs per replica in the selected machine type).
   final int maxReplicaCount;
-
   /// Immutable. The minimum number of machine replicas this DeployedModel will be always deployed on. This value must be greater than or equal to 1. If traffic against the DeployedModel increases, it may dynamically be deployed onto more replicas, and as traffic decreases, some of these extra replicas may be freed.
   final int minReplicaCount;
 
@@ -32,29 +28,21 @@ class GoogleCloudAiplatformV1beta1DedicatedResourcesResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['autoscalingMetricSpecs'] = pulumi.Input.encodeList<
-        GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponse,
-        Map<String, dynamic>>(autoscalingMetricSpecs, (value) => value.toMap());
-    map['machineSpec'] = machineSpec.toMap();
-    map['maxReplicaCount'] = maxReplicaCount;
-    map['minReplicaCount'] = minReplicaCount;
-    return map;
+    return <String, dynamic>{
+      'autoscalingMetricSpecs': pulumi.Input.encodeList<GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponse, Map<String, dynamic>>(autoscalingMetricSpecs, (value) => value.toMap()),
+      'machineSpec': machineSpec.toMap(),
+      'maxReplicaCount': maxReplicaCount,
+      'minReplicaCount': minReplicaCount,
+    };
   }
 
-  factory GoogleCloudAiplatformV1beta1DedicatedResourcesResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1DedicatedResourcesResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1DedicatedResourcesResponse(
-      autoscalingMetricSpecs: pulumi.Input.decodeList<
-              GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponse>(
-          map['autoscalingMetricSpecs'],
-          (value) =>
-              GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      machineSpec: GoogleCloudAiplatformV1beta1MachineSpecResponse.fromMap(
-          (map['machineSpec'] as Map).cast<String, dynamic>()),
+      autoscalingMetricSpecs: pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponse>(map['autoscalingMetricSpecs'], (value) => GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponse.fromMap((value as Map).cast<String, dynamic>())),
+      machineSpec: GoogleCloudAiplatformV1beta1MachineSpecResponse.fromMap((map['machineSpec'] as Map).cast<String, dynamic>()),
       maxReplicaCount: map['maxReplicaCount'] as int,
       minReplicaCount: map['minReplicaCount'] as int,
     );
   }
 }
+

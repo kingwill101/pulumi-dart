@@ -223,19 +223,14 @@ import 'usage_plan_key_args.dart';
 class UsagePlanKey extends pulumi.CustomResource {
   /// Identifier of the API key resource.
   late final pulumi.Output<String> keyId;
-
   /// Type of the API key resource. Currently, the valid key type is API_KEY.
   late final pulumi.Output<String> keyType;
-
   /// Name of a usage plan key.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Id of the usage plan resource representing to associate the key to.
   late final pulumi.Output<String> usagePlanId;
-
   /// Value of a usage plan key.
   late final pulumi.Output<String> value;
 

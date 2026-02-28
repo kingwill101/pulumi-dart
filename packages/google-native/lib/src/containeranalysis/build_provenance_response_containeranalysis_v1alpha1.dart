@@ -9,37 +9,26 @@ import 'source_response_containeranalysis_v1alpha1.dart';
 class BuildProvenanceResponseContaineranalysisV1alpha1 {
   /// Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
   final Map<String, String> buildOptions;
-
   /// Version string of the builder at the time this build was executed.
   final String builderVersion;
-
   /// Output of the build.
   final List<ArtifactResponseContaineranalysisV1alpha1> builtArtifacts;
-
   /// Commands requested by the build.
   final List<CommandResponseContaineranalysisV1alpha1> commands;
-
   /// Time at which the build was created.
   final String createTime;
-
   /// E-mail address of the user who initiated this build. Note that this was the user's e-mail address at the time the build was initiated; this address may not represent the same end-user for all time.
   final String creator;
-
   /// Time at which execution of the build was finished.
   final String finishTime;
-
   /// Google Cloud Storage bucket where logs were written.
   final String logsBucket;
-
   /// ID of the project.
   final String project;
-
   /// Details of the Source input to the build.
   final SourceResponseContaineranalysisV1alpha1 sourceProvenance;
-
   /// Time at which execution of the build was started.
   final String startTime;
-
   /// Trigger identifier if the build was triggered automatically; empty if not.
   final String triggerId;
 
@@ -72,50 +61,37 @@ class BuildProvenanceResponseContaineranalysisV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['buildOptions'] = buildOptions;
-    map['builderVersion'] = builderVersion;
-    map['builtArtifacts'] = pulumi.Input.encodeList<
-        ArtifactResponseContaineranalysisV1alpha1,
-        Map<String, dynamic>>(builtArtifacts, (value) => value.toMap());
-    map['commands'] = pulumi.Input.encodeList<
-        CommandResponseContaineranalysisV1alpha1,
-        Map<String, dynamic>>(commands, (value) => value.toMap());
-    map['createTime'] = createTime;
-    map['creator'] = creator;
-    map['finishTime'] = finishTime;
-    map['logsBucket'] = logsBucket;
-    map['project'] = project;
-    map['sourceProvenance'] = sourceProvenance.toMap();
-    map['startTime'] = startTime;
-    map['triggerId'] = triggerId;
-    return map;
+    return <String, dynamic>{
+      'buildOptions': buildOptions,
+      'builderVersion': builderVersion,
+      'builtArtifacts': pulumi.Input.encodeList<ArtifactResponseContaineranalysisV1alpha1, Map<String, dynamic>>(builtArtifacts, (value) => value.toMap()),
+      'commands': pulumi.Input.encodeList<CommandResponseContaineranalysisV1alpha1, Map<String, dynamic>>(commands, (value) => value.toMap()),
+      'createTime': createTime,
+      'creator': creator,
+      'finishTime': finishTime,
+      'logsBucket': logsBucket,
+      'project': project,
+      'sourceProvenance': sourceProvenance.toMap(),
+      'startTime': startTime,
+      'triggerId': triggerId,
+    };
   }
 
-  factory BuildProvenanceResponseContaineranalysisV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory BuildProvenanceResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return BuildProvenanceResponseContaineranalysisV1alpha1(
       buildOptions: (map['buildOptions'] as Map).cast<String, String>(),
       builderVersion: map['builderVersion'] as String,
-      builtArtifacts:
-          pulumi.Input.decodeList<ArtifactResponseContaineranalysisV1alpha1>(
-              map['builtArtifacts'],
-              (value) => ArtifactResponseContaineranalysisV1alpha1.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      commands:
-          pulumi.Input.decodeList<CommandResponseContaineranalysisV1alpha1>(
-              map['commands'],
-              (value) => CommandResponseContaineranalysisV1alpha1.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      builtArtifacts: pulumi.Input.decodeList<ArtifactResponseContaineranalysisV1alpha1>(map['builtArtifacts'], (value) => ArtifactResponseContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
+      commands: pulumi.Input.decodeList<CommandResponseContaineranalysisV1alpha1>(map['commands'], (value) => CommandResponseContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
       createTime: map['createTime'] as String,
       creator: map['creator'] as String,
       finishTime: map['finishTime'] as String,
       logsBucket: map['logsBucket'] as String,
       project: map['project'] as String,
-      sourceProvenance: SourceResponseContaineranalysisV1alpha1.fromMap(
-          (map['sourceProvenance'] as Map).cast<String, dynamic>()),
+      sourceProvenance: SourceResponseContaineranalysisV1alpha1.fromMap((map['sourceProvenance'] as Map).cast<String, dynamic>()),
       startTime: map['startTime'] as String,
       triggerId: map['triggerId'] as String,
     );
   }
 }
+

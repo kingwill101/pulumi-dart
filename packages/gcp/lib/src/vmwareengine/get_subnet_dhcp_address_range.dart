@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetSubnetDhcpAddressRange {
   /// The first IP address of the range.
   final String firstAddress;
-
   /// The last IP address of the range.
   final String lastAddress;
 
@@ -16,10 +16,10 @@ class GetSubnetDhcpAddressRange {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['firstAddress'] = firstAddress;
-    map['lastAddress'] = lastAddress;
-    return map;
+    return <String, dynamic>{
+      'firstAddress': firstAddress,
+      'lastAddress': lastAddress,
+    };
   }
 
   factory GetSubnetDhcpAddressRange.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetSubnetDhcpAddressRange {
     );
   }
 }
+

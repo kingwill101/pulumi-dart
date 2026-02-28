@@ -10,19 +10,15 @@ import 'custom_service_telemetry.dart';
 class CustomServiceArgs {
   /// Name used for UI elements listing this Service.
   final pulumi.Input<String>? displayName;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// An optional service ID to use. If not given, the server will generate a
   /// service ID.
   final pulumi.Input<String>? serviceId;
-
   /// Configuration for how to query telemetry on a Service.
   /// Structure is documented below.
   final pulumi.Input<CustomServiceTelemetry>? telemetry;
-
   /// Labels which have been used to annotate the service. Label keys must start
   /// with a letter. Label keys and values may contain lowercase letters,
   /// numbers, underscores, and dashes. Label keys and values have a maximum
@@ -43,54 +39,31 @@ class CustomServiceArgs {
     String? serviceId,
     CustomServiceTelemetry? telemetry,
     Map<String, String>? userLabels,
-  })  : displayName = pulumi.Input.asOptionalInput<String>(displayName),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        serviceId = pulumi.Input.asOptionalInput<String>(serviceId),
-        telemetry =
-            pulumi.Input.asOptionalInput<CustomServiceTelemetry>(telemetry),
-        userLabels =
-            pulumi.Input.asOptionalInput<Map<String, String>>(userLabels);
+  }) :
+      displayName = pulumi.Input.asOptionalInput<String>(displayName),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      serviceId = pulumi.Input.asOptionalInput<String>(serviceId),
+      telemetry = pulumi.Input.asOptionalInput<CustomServiceTelemetry>(telemetry),
+      userLabels = pulumi.Input.asOptionalInput<Map<String, String>>(userLabels);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final displayNameValue = displayName;
-    if (displayNameValue != null) {
-      map['displayName'] = displayNameValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final serviceIdValue = serviceId;
-    if (serviceIdValue != null) {
-      map['serviceId'] = serviceIdValue;
-    }
-    final telemetryValue = telemetry;
-    if (telemetryValue != null) {
-      map['telemetry'] = pulumi.Input.mapOptionalInputValue<
-          CustomServiceTelemetry,
-          Map<String, dynamic>>(telemetryValue, (value) => value.toMap());
-    }
-    final userLabelsValue = userLabels;
-    if (userLabelsValue != null) {
-      map['userLabels'] = userLabelsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'displayName': ?displayName,
+      'project': ?project,
+      'serviceId': ?serviceId,
+      'telemetry': ?pulumi.Input.mapOptionalInputValue<CustomServiceTelemetry, Map<String, dynamic>>(telemetry, (value) => value.toMap()),
+      'userLabels': ?userLabels,
+    };
   }
 
   factory CustomServiceArgs.fromMap(Map<String, dynamic> map) {
     return CustomServiceArgs(
-      displayName:
-          map['displayName'] == null ? null : map['displayName'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       serviceId: map['serviceId'] == null ? null : map['serviceId'] as String,
-      telemetry: map['telemetry'] == null
-          ? null
-          : CustomServiceTelemetry.fromMap(
-              (map['telemetry'] as Map).cast<String, dynamic>()),
-      userLabels: map['userLabels'] == null
-          ? null
-          : (map['userLabels'] as Map).cast<String, String>(),
+      telemetry: map['telemetry'] == null ? null : CustomServiceTelemetry.fromMap((map['telemetry'] as Map).cast<String, dynamic>()),
+      userLabels: map['userLabels'] == null ? null : (map['userLabels'] as Map).cast<String, String>(),
     );
   }
 }
+

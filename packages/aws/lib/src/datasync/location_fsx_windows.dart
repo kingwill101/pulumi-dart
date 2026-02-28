@@ -127,37 +127,26 @@ import 'location_fsx_windows_args.dart';
 class LocationFsxWindows extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the DataSync Location.
   late final pulumi.Output<String> arn;
-
   /// The time that the FSx for Windows location was created.
   late final pulumi.Output<String> creationTime;
-
   /// The name of the Windows domain that the FSx for Windows server belongs to.
   late final pulumi.Output<String?> domain;
-
   /// The Amazon Resource Name (ARN) for the FSx for Windows file system.
   late final pulumi.Output<String> fsxFilesystemArn;
-
   /// The password of the user who has the permissions to access files and folders in the FSx for Windows file system.
   late final pulumi.Output<String> password;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The Amazon Resource Names (ARNs) of the security groups that are to use to configure the FSx for Windows file system.
   late final pulumi.Output<List<String>> securityGroupArns;
-
   /// Subdirectory to perform actions as source or destination.
   late final pulumi.Output<String> subdirectory;
-
   /// Key-value pairs of resource tags to assign to the DataSync Location. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The URL of the FSx for Windows location that was described.
   late final pulumi.Output<String> uri;
-
   /// The user who has the permissions to access files and folders in the FSx for Windows file system.
   late final pulumi.Output<String> user;
 

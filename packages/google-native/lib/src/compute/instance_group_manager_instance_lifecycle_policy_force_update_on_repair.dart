@@ -3,20 +3,16 @@ enum InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair {
   no("NO"),
   yes("YES");
 
-  const InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair(
-      this.value);
+  const InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair(this.value);
   final String value;
 
-  static InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair
-      fromValue(String value) {
-    for (final item
-        in InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair
-            .values) {
+  static InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair fromValue(String value) {
+    for (final item in InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair value: $value');
+    throw ArgumentError('Unknown InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair value: $value');
   }
 }
+

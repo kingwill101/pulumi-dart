@@ -14,19 +14,15 @@ class WorkloadConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final auditModeValue = auditMode;
-    if (auditModeValue != null) {
-      map['auditMode'] = auditModeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'auditMode': ?auditMode == null ? null : auditMode!.value,
+    };
   }
 
   factory WorkloadConfig.fromMap(Map<String, dynamic> map) {
     return WorkloadConfig(
-      auditMode: map['auditMode'] == null
-          ? null
-          : WorkloadConfigAuditMode.fromValue(map['auditMode'] as String),
+      auditMode: map['auditMode'] == null ? null : WorkloadConfigAuditMode.fromValue(map['auditMode'] as String),
     );
   }
 }
+

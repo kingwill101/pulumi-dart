@@ -19,19 +19,17 @@ class GetMigrationJobArgs {
     required String location,
     required String migrationJobId,
     String? project,
-  })  : location = pulumi.Input.asInput<String>(location),
-        migrationJobId = pulumi.Input.asInput<String>(migrationJobId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      migrationJobId = pulumi.Input.asInput<String>(migrationJobId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    map['migrationJobId'] = migrationJobId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'migrationJobId': migrationJobId,
+      'project': ?project,
+    };
   }
 
   factory GetMigrationJobArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetMigrationJobArgs {
     );
   }
 }
+

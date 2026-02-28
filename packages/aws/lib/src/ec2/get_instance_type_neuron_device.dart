@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInstanceTypeNeuronDevice {
   final int coreCount;
   final int coreVersion;
   final int count;
-
   /// Size of the instance memory, in MiB.
   final int memorySize;
   final String name;
@@ -24,13 +24,13 @@ class GetInstanceTypeNeuronDevice {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['coreCount'] = coreCount;
-    map['coreVersion'] = coreVersion;
-    map['count'] = count;
-    map['memorySize'] = memorySize;
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'coreCount': coreCount,
+      'coreVersion': coreVersion,
+      'count': count,
+      'memorySize': memorySize,
+      'name': name,
+    };
   }
 
   factory GetInstanceTypeNeuronDevice.fromMap(Map<String, dynamic> map) {
@@ -43,3 +43,4 @@ class GetInstanceTypeNeuronDevice {
     );
   }
 }
+

@@ -14,20 +14,15 @@ class EndpointMatcher {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final metadataLabelMatcherValue = metadataLabelMatcher;
-    if (metadataLabelMatcherValue != null) {
-      map['metadataLabelMatcher'] = metadataLabelMatcherValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'metadataLabelMatcher': ?metadataLabelMatcher == null ? null : metadataLabelMatcher!.toMap(),
+    };
   }
 
   factory EndpointMatcher.fromMap(Map<String, dynamic> map) {
     return EndpointMatcher(
-      metadataLabelMatcher: map['metadataLabelMatcher'] == null
-          ? null
-          : EndpointMatcherMetadataLabelMatcher.fromMap(
-              (map['metadataLabelMatcher'] as Map).cast<String, dynamic>()),
+      metadataLabelMatcher: map['metadataLabelMatcher'] == null ? null : EndpointMatcherMetadataLabelMatcher.fromMap((map['metadataLabelMatcher'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

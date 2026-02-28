@@ -25,23 +25,21 @@ class GetTestCaseArgs {
     String? project,
     required String testCaseId,
     required String versionId,
-  })  : integrationId = pulumi.Input.asInput<String>(integrationId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        testCaseId = pulumi.Input.asInput<String>(testCaseId),
-        versionId = pulumi.Input.asInput<String>(versionId);
+  }) :
+      integrationId = pulumi.Input.asInput<String>(integrationId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      testCaseId = pulumi.Input.asInput<String>(testCaseId),
+      versionId = pulumi.Input.asInput<String>(versionId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['integrationId'] = integrationId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['testCaseId'] = testCaseId;
-    map['versionId'] = versionId;
-    return map;
+    return <String, dynamic>{
+      'integrationId': integrationId,
+      'location': location,
+      'project': ?project,
+      'testCaseId': testCaseId,
+      'versionId': versionId,
+    };
   }
 
   factory GetTestCaseArgs.fromMap(Map<String, dynamic> map) {
@@ -54,3 +52,4 @@ class GetTestCaseArgs {
     );
   }
 }
+

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Resource requests defined for connection pods of a given connector type.
 class ResourceRequestsResponse {
   /// CPU request.
   final String cpu;
-
   /// Memory request.
   final String memory;
 
@@ -17,10 +17,10 @@ class ResourceRequestsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cpu'] = cpu;
-    map['memory'] = memory;
-    return map;
+    return <String, dynamic>{
+      'cpu': cpu,
+      'memory': memory,
+    };
   }
 
   factory ResourceRequestsResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class ResourceRequestsResponse {
     );
   }
 }
+

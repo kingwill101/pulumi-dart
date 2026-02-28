@@ -4,8 +4,7 @@ import 'scheduled_query_notification_configuration_sns_configuration.dart';
 
 class ScheduledQueryNotificationConfiguration {
   /// Configuration block for details about the Amazon Simple Notification Service (SNS) configuration. See below.
-  final ScheduledQueryNotificationConfigurationSnsConfiguration
-      snsConfiguration;
+  final ScheduledQueryNotificationConfigurationSnsConfiguration snsConfiguration;
 
   /// Creates a new [ScheduledQueryNotificationConfiguration].
   /// [snsConfiguration] Configuration block for details about the Amazon Simple Notification Service (SNS) configuration. See below.
@@ -14,17 +13,15 @@ class ScheduledQueryNotificationConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['snsConfiguration'] = snsConfiguration.toMap();
-    return map;
+    return <String, dynamic>{
+      'snsConfiguration': snsConfiguration.toMap(),
+    };
   }
 
-  factory ScheduledQueryNotificationConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory ScheduledQueryNotificationConfiguration.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryNotificationConfiguration(
-      snsConfiguration:
-          ScheduledQueryNotificationConfigurationSnsConfiguration.fromMap(
-              (map['snsConfiguration'] as Map).cast<String, dynamic>()),
+      snsConfiguration: ScheduledQueryNotificationConfigurationSnsConfiguration.fromMap((map['snsConfiguration'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

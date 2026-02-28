@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataSourceParametersSpark {
   /// The host to which to connect.
   final String host;
-
   /// The warehouse to which to connect.
   final int port;
 
@@ -16,10 +16,10 @@ class DataSourceParametersSpark {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['host'] = host;
-    map['port'] = port;
-    return map;
+    return <String, dynamic>{
+      'host': host,
+      'port': port,
+    };
   }
 
   factory DataSourceParametersSpark.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class DataSourceParametersSpark {
     );
   }
 }
+

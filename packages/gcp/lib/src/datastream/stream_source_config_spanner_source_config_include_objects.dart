@@ -15,22 +15,15 @@ class StreamSourceConfigSpannerSourceConfigIncludeObjects {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['schemas'] = pulumi.Input.encodeList<
-        StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema,
-        Map<String, dynamic>>(schemas, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'schemas': pulumi.Input.encodeList<StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema, Map<String, dynamic>>(schemas, (value) => value.toMap()),
+    };
   }
 
-  factory StreamSourceConfigSpannerSourceConfigIncludeObjects.fromMap(
-      Map<String, dynamic> map) {
+  factory StreamSourceConfigSpannerSourceConfigIncludeObjects.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigSpannerSourceConfigIncludeObjects(
-      schemas: pulumi.Input.decodeList<
-              StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema>(
-          map['schemas'],
-          (value) =>
-              StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      schemas: pulumi.Input.decodeList<StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema>(map['schemas'], (value) => StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

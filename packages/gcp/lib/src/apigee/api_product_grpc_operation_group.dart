@@ -15,26 +15,15 @@ class ApiProductGrpcOperationGroup {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final operationConfigsValue = operationConfigs;
-    if (operationConfigsValue != null) {
-      map['operationConfigs'] = pulumi.Input.encodeList<
-              ApiProductGrpcOperationGroupOperationConfig,
-              Map<String, dynamic>>(
-          operationConfigsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'operationConfigs': ?operationConfigs == null ? null : pulumi.Input.encodeList<ApiProductGrpcOperationGroupOperationConfig, Map<String, dynamic>>(operationConfigs!, (value) => value.toMap()),
+    };
   }
 
   factory ApiProductGrpcOperationGroup.fromMap(Map<String, dynamic> map) {
     return ApiProductGrpcOperationGroup(
-      operationConfigs: map['operationConfigs'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  ApiProductGrpcOperationGroupOperationConfig>(
-              map['operationConfigs'],
-              (value) => ApiProductGrpcOperationGroupOperationConfig.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      operationConfigs: map['operationConfigs'] == null ? null : pulumi.Input.decodeList<ApiProductGrpcOperationGroupOperationConfig>(map['operationConfigs'], (value) => ApiProductGrpcOperationGroupOperationConfig.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

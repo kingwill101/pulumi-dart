@@ -14,20 +14,15 @@ class WidgetConfigUiBranding {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final logoValue = logo;
-    if (logoValue != null) {
-      map['logo'] = logoValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'logo': ?logo == null ? null : logo!.toMap(),
+    };
   }
 
   factory WidgetConfigUiBranding.fromMap(Map<String, dynamic> map) {
     return WidgetConfigUiBranding(
-      logo: map['logo'] == null
-          ? null
-          : WidgetConfigUiBrandingLogo.fromMap(
-              (map['logo'] as Map).cast<String, dynamic>()),
+      logo: map['logo'] == null ? null : WidgetConfigUiBrandingLogo.fromMap((map['logo'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

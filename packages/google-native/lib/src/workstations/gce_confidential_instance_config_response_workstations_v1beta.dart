@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A set of Compute Engine Confidential VM instance options.
 class GceConfidentialInstanceConfigResponseWorkstationsV1beta {
   /// Optional. Whether the instance has confidential compute enabled.
@@ -12,15 +13,15 @@ class GceConfidentialInstanceConfigResponseWorkstationsV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enableConfidentialCompute'] = enableConfidentialCompute;
-    return map;
+    return <String, dynamic>{
+      'enableConfidentialCompute': enableConfidentialCompute,
+    };
   }
 
-  factory GceConfidentialInstanceConfigResponseWorkstationsV1beta.fromMap(
-      Map<String, dynamic> map) {
+  factory GceConfidentialInstanceConfigResponseWorkstationsV1beta.fromMap(Map<String, dynamic> map) {
     return GceConfidentialInstanceConfigResponseWorkstationsV1beta(
       enableConfidentialCompute: map['enableConfidentialCompute'] as bool,
     );
   }
 }
+

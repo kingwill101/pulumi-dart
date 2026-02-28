@@ -13,7 +13,7 @@ enum RegionCommitmentCategoryComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown RegionCommitmentCategoryComputeBeta value: $value');
+    throw ArgumentError('Unknown RegionCommitmentCategoryComputeBeta value: $value');
   }
 }
+

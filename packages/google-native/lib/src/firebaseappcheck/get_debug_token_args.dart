@@ -19,19 +19,17 @@ class GetDebugTokenArgs {
     required String appId,
     required String debugTokenId,
     String? project,
-  })  : appId = pulumi.Input.asInput<String>(appId),
-        debugTokenId = pulumi.Input.asInput<String>(debugTokenId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      appId = pulumi.Input.asInput<String>(appId),
+      debugTokenId = pulumi.Input.asInput<String>(debugTokenId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['appId'] = appId;
-    map['debugTokenId'] = debugTokenId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'appId': appId,
+      'debugTokenId': debugTokenId,
+      'project': ?project,
+    };
   }
 
   factory GetDebugTokenArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetDebugTokenArgs {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Additional information about how a Cloud Dataflow job will be executed that isn't contained in the submitted job.
 class JobExecutionInfoResponse {
   /// A mapping from each stage to the information about that stage.
@@ -12,9 +13,9 @@ class JobExecutionInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['stages'] = stages;
-    return map;
+    return <String, dynamic>{
+      'stages': stages,
+    };
   }
 
   factory JobExecutionInfoResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class JobExecutionInfoResponse {
     );
   }
 }
+

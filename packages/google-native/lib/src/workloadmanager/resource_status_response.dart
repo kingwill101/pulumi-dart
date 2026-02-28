@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Message describing resource status
 class ResourceStatusResponse {
   /// Historical: Used before 2023-05-22 the new version of rule id if exists
   final List<String> rulesNewerVersions;
-
   /// State of the resource
   final String state;
 
@@ -17,10 +17,10 @@ class ResourceStatusResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['rulesNewerVersions'] = rulesNewerVersions;
-    map['state'] = state;
-    return map;
+    return <String, dynamic>{
+      'rulesNewerVersions': rulesNewerVersions,
+      'state': state,
+    };
   }
 
   factory ResourceStatusResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class ResourceStatusResponse {
     );
   }
 }
+

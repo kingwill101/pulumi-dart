@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AssessmentScopeAwsService {
   /// Name of the Amazon Web Service.
   final String serviceName;
@@ -11,9 +12,9 @@ class AssessmentScopeAwsService {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['serviceName'] = serviceName;
-    return map;
+    return <String, dynamic>{
+      'serviceName': serviceName,
+    };
   }
 
   factory AssessmentScopeAwsService.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class AssessmentScopeAwsService {
     );
   }
 }
+

@@ -13,16 +13,15 @@ class AnalyticsConfigurationStorageClassAnalysis {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dataExport'] = dataExport.toMap();
-    return map;
+    return <String, dynamic>{
+      'dataExport': dataExport.toMap(),
+    };
   }
 
-  factory AnalyticsConfigurationStorageClassAnalysis.fromMap(
-      Map<String, dynamic> map) {
+  factory AnalyticsConfigurationStorageClassAnalysis.fromMap(Map<String, dynamic> map) {
     return AnalyticsConfigurationStorageClassAnalysis(
-      dataExport: AnalyticsConfigurationStorageClassAnalysisDataExport.fromMap(
-          (map['dataExport'] as Map).cast<String, dynamic>()),
+      dataExport: AnalyticsConfigurationStorageClassAnalysisDataExport.fromMap((map['dataExport'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

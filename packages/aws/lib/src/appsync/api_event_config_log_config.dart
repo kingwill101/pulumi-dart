@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ApiEventConfigLogConfig {
   /// ARN of the IAM role for CloudWatch logs.
   final String cloudwatchLogsRoleArn;
-
   /// Log level. Valid values: `NONE`, `ERROR`, `ALL`, `INFO`, `DEBUG`.
   final String logLevel;
 
@@ -16,10 +16,10 @@ class ApiEventConfigLogConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cloudwatchLogsRoleArn'] = cloudwatchLogsRoleArn;
-    map['logLevel'] = logLevel;
-    return map;
+    return <String, dynamic>{
+      'cloudwatchLogsRoleArn': cloudwatchLogsRoleArn,
+      'logLevel': logLevel,
+    };
   }
 
   factory ApiEventConfigLogConfig.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class ApiEventConfigLogConfig {
     );
   }
 }
+

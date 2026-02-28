@@ -395,7 +395,8 @@ Future<GetBillingAccountResult> getBillingAccount(
 ///         zone: us-east1-a
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetClientConfigResult> getClientConfig({
+Future<GetClientConfigResult> getClientConfig(
+  {
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
@@ -548,7 +549,8 @@ Future<GetClientConfigResult> getClientConfig({
 ///         zone: us-east1-a
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfo({
+Future<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfo(
+  {
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;

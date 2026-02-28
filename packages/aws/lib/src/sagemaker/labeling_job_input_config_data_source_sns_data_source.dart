@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LabelingJobInputConfigDataSourceSnsDataSource {
   /// SNS input topic ARN.
   final String snsTopicArn;
@@ -11,15 +12,15 @@ class LabelingJobInputConfigDataSourceSnsDataSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['snsTopicArn'] = snsTopicArn;
-    return map;
+    return <String, dynamic>{
+      'snsTopicArn': snsTopicArn,
+    };
   }
 
-  factory LabelingJobInputConfigDataSourceSnsDataSource.fromMap(
-      Map<String, dynamic> map) {
+  factory LabelingJobInputConfigDataSourceSnsDataSource.fromMap(Map<String, dynamic> map) {
     return LabelingJobInputConfigDataSourceSnsDataSource(
       snsTopicArn: map['snsTopicArn'] as String,
     );
   }
 }
+

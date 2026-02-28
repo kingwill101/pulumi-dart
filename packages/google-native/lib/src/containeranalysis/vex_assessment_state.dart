@@ -18,3 +18,4 @@ enum VexAssessmentState {
     throw ArgumentError('Unknown VexAssessmentState value: $value');
   }
 }
+

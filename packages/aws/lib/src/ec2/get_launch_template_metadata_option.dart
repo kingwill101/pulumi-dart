@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetLaunchTemplateMetadataOption {
   final String httpEndpoint;
   final String httpProtocolIpv6;
@@ -22,13 +23,13 @@ class GetLaunchTemplateMetadataOption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['httpEndpoint'] = httpEndpoint;
-    map['httpProtocolIpv6'] = httpProtocolIpv6;
-    map['httpPutResponseHopLimit'] = httpPutResponseHopLimit;
-    map['httpTokens'] = httpTokens;
-    map['instanceMetadataTags'] = instanceMetadataTags;
-    return map;
+    return <String, dynamic>{
+      'httpEndpoint': httpEndpoint,
+      'httpProtocolIpv6': httpProtocolIpv6,
+      'httpPutResponseHopLimit': httpPutResponseHopLimit,
+      'httpTokens': httpTokens,
+      'instanceMetadataTags': instanceMetadataTags,
+    };
   }
 
   factory GetLaunchTemplateMetadataOption.fromMap(Map<String, dynamic> map) {
@@ -41,3 +42,4 @@ class GetLaunchTemplateMetadataOption {
     );
   }
 }
+

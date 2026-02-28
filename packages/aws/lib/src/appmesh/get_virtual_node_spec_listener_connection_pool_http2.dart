@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetVirtualNodeSpecListenerConnectionPoolHttp2 {
   final int maxRequests;
 
@@ -10,15 +11,15 @@ class GetVirtualNodeSpecListenerConnectionPoolHttp2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maxRequests'] = maxRequests;
-    return map;
+    return <String, dynamic>{
+      'maxRequests': maxRequests,
+    };
   }
 
-  factory GetVirtualNodeSpecListenerConnectionPoolHttp2.fromMap(
-      Map<String, dynamic> map) {
+  factory GetVirtualNodeSpecListenerConnectionPoolHttp2.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecListenerConnectionPoolHttp2(
       maxRequests: map['maxRequests'] as int,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for direct-path (via ALTS) with workload identity.
 class WorkloadALTSConfig {
   /// enable_alts controls whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workload_pool must be non-empty).
@@ -12,12 +13,9 @@ class WorkloadALTSConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enableAltsValue = enableAlts;
-    if (enableAltsValue != null) {
-      map['enableAlts'] = enableAltsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enableAlts': ?enableAlts,
+    };
   }
 
   factory WorkloadALTSConfig.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class WorkloadALTSConfig {
     );
   }
 }
+

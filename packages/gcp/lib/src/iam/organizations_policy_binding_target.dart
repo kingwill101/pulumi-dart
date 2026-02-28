@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class OrganizationsPolicyBindingTarget {
   /// Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
   /// Examples for each one of the following supported principal set types:
@@ -16,18 +17,15 @@ class OrganizationsPolicyBindingTarget {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final principalSetValue = principalSet;
-    if (principalSetValue != null) {
-      map['principalSet'] = principalSetValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'principalSet': ?principalSet,
+    };
   }
 
   factory OrganizationsPolicyBindingTarget.fromMap(Map<String, dynamic> map) {
     return OrganizationsPolicyBindingTarget(
-      principalSet:
-          map['principalSet'] == null ? null : map['principalSet'] as String,
+      principalSet: map['principalSet'] == null ? null : map['principalSet'] as String,
     );
   }
 }
+

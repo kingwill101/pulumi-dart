@@ -13,19 +13,15 @@ class OriginAuthenticationMethod {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final jwtValue = jwt;
-    if (jwtValue != null) {
-      map['jwt'] = jwtValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'jwt': ?jwt == null ? null : jwt!.toMap(),
+    };
   }
 
   factory OriginAuthenticationMethod.fromMap(Map<String, dynamic> map) {
     return OriginAuthenticationMethod(
-      jwt: map['jwt'] == null
-          ? null
-          : Jwt.fromMap((map['jwt'] as Map).cast<String, dynamic>()),
+      jwt: map['jwt'] == null ? null : Jwt.fromMap((map['jwt'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

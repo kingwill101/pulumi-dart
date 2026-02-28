@@ -7,7 +7,6 @@ import 'secret.dart';
 class Oauth2JwtBearer {
   /// Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate. This private key will be used to sign JWTs used for the jwt-bearer authorization grant. Specified in the form as: `projects/*/secrets/*/versions/*`.
   final Secret? clientKey;
-
   /// JwtClaims providers fields to generate the token.
   final JwtClaims? jwtClaims;
 
@@ -20,27 +19,17 @@ class Oauth2JwtBearer {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final clientKeyValue = clientKey;
-    if (clientKeyValue != null) {
-      map['clientKey'] = clientKeyValue.toMap();
-    }
-    final jwtClaimsValue = jwtClaims;
-    if (jwtClaimsValue != null) {
-      map['jwtClaims'] = jwtClaimsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'clientKey': ?clientKey == null ? null : clientKey!.toMap(),
+      'jwtClaims': ?jwtClaims == null ? null : jwtClaims!.toMap(),
+    };
   }
 
   factory Oauth2JwtBearer.fromMap(Map<String, dynamic> map) {
     return Oauth2JwtBearer(
-      clientKey: map['clientKey'] == null
-          ? null
-          : Secret.fromMap((map['clientKey'] as Map).cast<String, dynamic>()),
-      jwtClaims: map['jwtClaims'] == null
-          ? null
-          : JwtClaims.fromMap(
-              (map['jwtClaims'] as Map).cast<String, dynamic>()),
+      clientKey: map['clientKey'] == null ? null : Secret.fromMap((map['clientKey'] as Map).cast<String, dynamic>()),
+      jwtClaims: map['jwtClaims'] == null ? null : JwtClaims.fromMap((map['jwtClaims'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

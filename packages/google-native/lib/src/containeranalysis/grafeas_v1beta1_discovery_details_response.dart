@@ -14,16 +14,15 @@ class GrafeasV1beta1DiscoveryDetailsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['discovered'] = discovered.toMap();
-    return map;
+    return <String, dynamic>{
+      'discovered': discovered.toMap(),
+    };
   }
 
-  factory GrafeasV1beta1DiscoveryDetailsResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GrafeasV1beta1DiscoveryDetailsResponse.fromMap(Map<String, dynamic> map) {
     return GrafeasV1beta1DiscoveryDetailsResponse(
-      discovered: DiscoveredResponseContaineranalysisV1beta1.fromMap(
-          (map['discovered'] as Map).cast<String, dynamic>()),
+      discovered: DiscoveredResponseContaineranalysisV1beta1.fromMap((map['discovered'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VersionArgs {
   /// The developer-provided description of this version.
   final pulumi.Input<String>? description;
-
   /// The Flow to create an Version for.
   /// Format: projects/<Project ID>/agent.
   final pulumi.Input<String>? parent;
@@ -20,27 +19,22 @@ class VersionArgs {
   VersionArgs({
     String? description,
     String? parent,
-  })  : description = pulumi.Input.asOptionalInput<String>(description),
-        parent = pulumi.Input.asOptionalInput<String>(parent);
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      parent = pulumi.Input.asOptionalInput<String>(parent);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final parentValue = parent;
-    if (parentValue != null) {
-      map['parent'] = parentValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'parent': ?parent,
+    };
   }
 
   factory VersionArgs.fromMap(Map<String, dynamic> map) {
     return VersionArgs(
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       parent: map['parent'] == null ? null : map['parent'] as String,
     );
   }
 }
+

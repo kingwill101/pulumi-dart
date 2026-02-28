@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DmlStatisticsResponse {
   /// Number of deleted Rows. populated by DML DELETE, MERGE and TRUNCATE statements.
   final String deletedRowCount;
-
   /// Number of inserted Rows. Populated by DML INSERT and MERGE statements.
   final String insertedRowCount;
-
   /// Number of updated Rows. Populated by DML UPDATE and MERGE statements.
   final String updatedRowCount;
 
@@ -21,11 +20,11 @@ class DmlStatisticsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['deletedRowCount'] = deletedRowCount;
-    map['insertedRowCount'] = insertedRowCount;
-    map['updatedRowCount'] = updatedRowCount;
-    return map;
+    return <String, dynamic>{
+      'deletedRowCount': deletedRowCount,
+      'insertedRowCount': insertedRowCount,
+      'updatedRowCount': updatedRowCount,
+    };
   }
 
   factory DmlStatisticsResponse.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class DmlStatisticsResponse {
     );
   }
 }
+

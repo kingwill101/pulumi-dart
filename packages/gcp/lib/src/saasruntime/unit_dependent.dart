@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class UnitDependent {
   /// (Output)
   /// Alias for the name of the dependency.
   final String? alias;
-
   /// (Output)
   /// A reference to the Unit object.
   final String? unit;
@@ -18,16 +18,10 @@ class UnitDependent {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final aliasValue = alias;
-    if (aliasValue != null) {
-      map['alias'] = aliasValue;
-    }
-    final unitValue = unit;
-    if (unitValue != null) {
-      map['unit'] = unitValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'alias': ?alias,
+      'unit': ?unit,
+    };
   }
 
   factory UnitDependent.fromMap(Map<String, dynamic> map) {
@@ -37,3 +31,4 @@ class UnitDependent {
     );
   }
 }
+

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetServiceEvent {
   /// Time when task set was created (RFC3339 format)
   final String createdAt;
-
   /// Task set ID
   final String id;
-
   /// Event message
   final String message;
 
@@ -21,11 +20,11 @@ class GetServiceEvent {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createdAt'] = createdAt;
-    map['id'] = id;
-    map['message'] = message;
-    return map;
+    return <String, dynamic>{
+      'createdAt': createdAt,
+      'id': id,
+      'message': message,
+    };
   }
 
   factory GetServiceEvent.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class GetServiceEvent {
     );
   }
 }
+

@@ -10,37 +10,26 @@ import 'source_config_response_datastream_v1alpha1.dart';
 class GetStreamDatastreamV1alpha1Result {
   /// Automatically backfill objects included in the stream source configuration. Specific objects can be excluded.
   final BackfillAllStrategyResponseDatastreamV1alpha1 backfillAll;
-
   /// Do not automatically backfill any objects.
   final Map<String, dynamic> backfillNone;
-
   /// The creation time of the stream.
   final String createTime;
-
   /// Immutable. A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
   final String customerManagedEncryptionKey;
-
   /// Destination connection profile configuration.
   final DestinationConfigResponseDatastreamV1alpha1 destinationConfig;
-
   /// Display name.
   final String displayName;
-
   /// Errors on the Stream.
   final List<ErrorResponseDatastreamV1alpha1> errors;
-
   /// Labels.
   final Map<String, String> labels;
-
   /// The stream's name.
   final String name;
-
   /// Source connection profile configuration.
   final SourceConfigResponseDatastreamV1alpha1 sourceConfig;
-
   /// The state of the stream.
   final String state;
-
   /// The last update time of the stream.
   final String updateTime;
 
@@ -73,44 +62,37 @@ class GetStreamDatastreamV1alpha1Result {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['backfillAll'] = backfillAll.toMap();
-    map['backfillNone'] = backfillNone;
-    map['createTime'] = createTime;
-    map['customerManagedEncryptionKey'] = customerManagedEncryptionKey;
-    map['destinationConfig'] = destinationConfig.toMap();
-    map['displayName'] = displayName;
-    map['errors'] = pulumi.Input.encodeList<ErrorResponseDatastreamV1alpha1,
-        Map<String, dynamic>>(errors, (value) => value.toMap());
-    map['labels'] = labels;
-    map['name'] = name;
-    map['sourceConfig'] = sourceConfig.toMap();
-    map['state'] = state;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'backfillAll': backfillAll.toMap(),
+      'backfillNone': backfillNone,
+      'createTime': createTime,
+      'customerManagedEncryptionKey': customerManagedEncryptionKey,
+      'destinationConfig': destinationConfig.toMap(),
+      'displayName': displayName,
+      'errors': pulumi.Input.encodeList<ErrorResponseDatastreamV1alpha1, Map<String, dynamic>>(errors, (value) => value.toMap()),
+      'labels': labels,
+      'name': name,
+      'sourceConfig': sourceConfig.toMap(),
+      'state': state,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetStreamDatastreamV1alpha1Result.fromMap(Map<String, dynamic> map) {
     return GetStreamDatastreamV1alpha1Result(
-      backfillAll: BackfillAllStrategyResponseDatastreamV1alpha1.fromMap(
-          (map['backfillAll'] as Map).cast<String, dynamic>()),
+      backfillAll: BackfillAllStrategyResponseDatastreamV1alpha1.fromMap((map['backfillAll'] as Map).cast<String, dynamic>()),
       backfillNone: (map['backfillNone'] as Map).cast<String, dynamic>(),
       createTime: map['createTime'] as String,
-      customerManagedEncryptionKey:
-          map['customerManagedEncryptionKey'] as String,
-      destinationConfig: DestinationConfigResponseDatastreamV1alpha1.fromMap(
-          (map['destinationConfig'] as Map).cast<String, dynamic>()),
+      customerManagedEncryptionKey: map['customerManagedEncryptionKey'] as String,
+      destinationConfig: DestinationConfigResponseDatastreamV1alpha1.fromMap((map['destinationConfig'] as Map).cast<String, dynamic>()),
       displayName: map['displayName'] as String,
-      errors: pulumi.Input.decodeList<ErrorResponseDatastreamV1alpha1>(
-          map['errors'],
-          (value) => ErrorResponseDatastreamV1alpha1.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      errors: pulumi.Input.decodeList<ErrorResponseDatastreamV1alpha1>(map['errors'], (value) => ErrorResponseDatastreamV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      sourceConfig: SourceConfigResponseDatastreamV1alpha1.fromMap(
-          (map['sourceConfig'] as Map).cast<String, dynamic>()),
+      sourceConfig: SourceConfigResponseDatastreamV1alpha1.fromMap((map['sourceConfig'] as Map).cast<String, dynamic>()),
       state: map['state'] as String,
       updateTime: map['updateTime'] as String,
     );
   }
 }
+

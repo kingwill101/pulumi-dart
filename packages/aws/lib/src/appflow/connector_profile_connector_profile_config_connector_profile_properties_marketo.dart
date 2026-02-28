@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesMarketo {
   final String instanceUrl;
 
@@ -10,15 +11,15 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesMarketo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['instanceUrl'] = instanceUrl;
-    return map;
+    return <String, dynamic>{
+      'instanceUrl': instanceUrl,
+    };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesMarketo.fromMap(
-      Map<String, dynamic> map) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesMarketo.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesMarketo(
       instanceUrl: map['instanceUrl'] as String,
     );
   }
 }
+

@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getNetworkPeering.
 class GetNetworkPeeringResult {
   final String createTime;
   final String description;
   final bool exportCustomRoutes;
   final bool exportCustomRoutesWithPublicIp;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool importCustomRoutes;
@@ -61,28 +61,25 @@ class GetNetworkPeeringResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['description'] = description;
-    map['exportCustomRoutes'] = exportCustomRoutes;
-    map['exportCustomRoutesWithPublicIp'] = exportCustomRoutesWithPublicIp;
-    map['id'] = id;
-    map['importCustomRoutes'] = importCustomRoutes;
-    map['importCustomRoutesWithPublicIp'] = importCustomRoutesWithPublicIp;
-    map['name'] = name;
-    map['peerNetwork'] = peerNetwork;
-    map['peerNetworkType'] = peerNetworkType;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['state'] = state;
-    map['stateDetails'] = stateDetails;
-    map['uid'] = uid;
-    map['updateTime'] = updateTime;
-    map['vmwareEngineNetwork'] = vmwareEngineNetwork;
-    map['vmwareEngineNetworkCanonical'] = vmwareEngineNetworkCanonical;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'description': description,
+      'exportCustomRoutes': exportCustomRoutes,
+      'exportCustomRoutesWithPublicIp': exportCustomRoutesWithPublicIp,
+      'id': id,
+      'importCustomRoutes': importCustomRoutes,
+      'importCustomRoutesWithPublicIp': importCustomRoutesWithPublicIp,
+      'name': name,
+      'peerNetwork': peerNetwork,
+      'peerNetworkType': peerNetworkType,
+      'project': ?project,
+      'state': state,
+      'stateDetails': stateDetails,
+      'uid': uid,
+      'updateTime': updateTime,
+      'vmwareEngineNetwork': vmwareEngineNetwork,
+      'vmwareEngineNetworkCanonical': vmwareEngineNetworkCanonical,
+    };
   }
 
   factory GetNetworkPeeringResult.fromMap(Map<String, dynamic> map) {
@@ -90,12 +87,10 @@ class GetNetworkPeeringResult {
       createTime: map['createTime'] as String,
       description: map['description'] as String,
       exportCustomRoutes: map['exportCustomRoutes'] as bool,
-      exportCustomRoutesWithPublicIp:
-          map['exportCustomRoutesWithPublicIp'] as bool,
+      exportCustomRoutesWithPublicIp: map['exportCustomRoutesWithPublicIp'] as bool,
       id: map['id'] as String,
       importCustomRoutes: map['importCustomRoutes'] as bool,
-      importCustomRoutesWithPublicIp:
-          map['importCustomRoutesWithPublicIp'] as bool,
+      importCustomRoutesWithPublicIp: map['importCustomRoutesWithPublicIp'] as bool,
       name: map['name'] as String,
       peerNetwork: map['peerNetwork'] as String,
       peerNetworkType: map['peerNetworkType'] as String,
@@ -105,8 +100,8 @@ class GetNetworkPeeringResult {
       uid: map['uid'] as String,
       updateTime: map['updateTime'] as String,
       vmwareEngineNetwork: map['vmwareEngineNetwork'] as String,
-      vmwareEngineNetworkCanonical:
-          map['vmwareEngineNetworkCanonical'] as String,
+      vmwareEngineNetworkCanonical: map['vmwareEngineNetworkCanonical'] as String,
     );
   }
 }
+

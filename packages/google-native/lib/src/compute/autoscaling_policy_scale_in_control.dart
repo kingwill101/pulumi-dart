@@ -6,7 +6,6 @@ import 'fixed_or_percent.dart';
 class AutoscalingPolicyScaleInControl {
   /// Maximum allowed number (or %) of VMs that can be deducted from the peak recommendation during the window autoscaler looks at when computing recommendations. Possibly all these VMs can be deleted at once so user service needs to be prepared to lose that many VMs in one step.
   final FixedOrPercent? maxScaledInReplicas;
-
   /// How far back autoscaling looks when computing recommendations to include directives regarding slower scale in, as described above.
   final int? timeWindowSec;
 
@@ -19,26 +18,17 @@ class AutoscalingPolicyScaleInControl {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final maxScaledInReplicasValue = maxScaledInReplicas;
-    if (maxScaledInReplicasValue != null) {
-      map['maxScaledInReplicas'] = maxScaledInReplicasValue.toMap();
-    }
-    final timeWindowSecValue = timeWindowSec;
-    if (timeWindowSecValue != null) {
-      map['timeWindowSec'] = timeWindowSecValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'maxScaledInReplicas': ?maxScaledInReplicas == null ? null : maxScaledInReplicas!.toMap(),
+      'timeWindowSec': ?timeWindowSec,
+    };
   }
 
   factory AutoscalingPolicyScaleInControl.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyScaleInControl(
-      maxScaledInReplicas: map['maxScaledInReplicas'] == null
-          ? null
-          : FixedOrPercent.fromMap(
-              (map['maxScaledInReplicas'] as Map).cast<String, dynamic>()),
-      timeWindowSec:
-          map['timeWindowSec'] == null ? null : map['timeWindowSec'] as int,
+      maxScaledInReplicas: map['maxScaledInReplicas'] == null ? null : FixedOrPercent.fromMap((map['maxScaledInReplicas'] as Map).cast<String, dynamic>()),
+      timeWindowSec: map['timeWindowSec'] == null ? null : map['timeWindowSec'] as int,
     );
   }
 }
+

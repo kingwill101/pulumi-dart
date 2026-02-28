@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents a Goo package repository. These is added to a repo file that is stored at C:/ProgramData/GooGet/repos/google_osconfig.repo.
 class GooRepositoryResponse {
   /// The name of the repository.
   final String name;
-
   /// The url of the repository.
   final String url;
 
@@ -17,10 +17,10 @@ class GooRepositoryResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['url'] = url;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'url': url,
+    };
   }
 
   factory GooRepositoryResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class GooRepositoryResponse {
     );
   }
 }
+

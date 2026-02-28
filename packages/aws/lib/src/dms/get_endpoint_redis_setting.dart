@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetEndpointRedisSetting {
   final String authPassword;
   final String authType;
@@ -28,15 +29,15 @@ class GetEndpointRedisSetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['authPassword'] = authPassword;
-    map['authType'] = authType;
-    map['authUserName'] = authUserName;
-    map['port'] = port;
-    map['serverName'] = serverName;
-    map['sslCaCertificateArn'] = sslCaCertificateArn;
-    map['sslSecurityProtocol'] = sslSecurityProtocol;
-    return map;
+    return <String, dynamic>{
+      'authPassword': authPassword,
+      'authType': authType,
+      'authUserName': authUserName,
+      'port': port,
+      'serverName': serverName,
+      'sslCaCertificateArn': sslCaCertificateArn,
+      'sslSecurityProtocol': sslSecurityProtocol,
+    };
   }
 
   factory GetEndpointRedisSetting.fromMap(Map<String, dynamic> map) {
@@ -51,3 +52,4 @@ class GetEndpointRedisSetting {
     );
   }
 }
+

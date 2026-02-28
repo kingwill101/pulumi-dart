@@ -6,7 +6,6 @@ import 'google_cloud_dialogflow_cx_v3_version_variants.dart';
 class GoogleCloudDialogflowCxV3VariantsHistory {
   /// Update time of the variants.
   final String? updateTime;
-
   /// The flow versions as the variants.
   final GoogleCloudDialogflowCxV3VersionVariants? versionVariants;
 
@@ -19,27 +18,17 @@ class GoogleCloudDialogflowCxV3VariantsHistory {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final updateTimeValue = updateTime;
-    if (updateTimeValue != null) {
-      map['updateTime'] = updateTimeValue;
-    }
-    final versionVariantsValue = versionVariants;
-    if (versionVariantsValue != null) {
-      map['versionVariants'] = versionVariantsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'updateTime': ?updateTime,
+      'versionVariants': ?versionVariants == null ? null : versionVariants!.toMap(),
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3VariantsHistory.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3VariantsHistory.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3VariantsHistory(
-      updateTime:
-          map['updateTime'] == null ? null : map['updateTime'] as String,
-      versionVariants: map['versionVariants'] == null
-          ? null
-          : GoogleCloudDialogflowCxV3VersionVariants.fromMap(
-              (map['versionVariants'] as Map).cast<String, dynamic>()),
+      updateTime: map['updateTime'] == null ? null : map['updateTime'] as String,
+      versionVariants: map['versionVariants'] == null ? null : GoogleCloudDialogflowCxV3VersionVariants.fromMap((map['versionVariants'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

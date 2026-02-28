@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataSourcePermission {
   /// Set of IAM actions to grant or revoke permissions on. Max of 16 items.
   final List<String> actions;
-
   /// The Amazon Resource Name (ARN) of the principal.
   final String principal;
 
@@ -16,10 +16,10 @@ class DataSourcePermission {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['actions'] = actions;
-    map['principal'] = principal;
-    return map;
+    return <String, dynamic>{
+      'actions': actions,
+      'principal': principal,
+    };
   }
 
   factory DataSourcePermission.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class DataSourcePermission {
     );
   }
 }
+

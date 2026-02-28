@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServicecatalogPortfolioStatusArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Whether Service Catalog is enabled or disabled in SageMaker. Valid values are `Enabled` and `Disabled`.
   final pulumi.Input<String> status;
 
@@ -19,17 +18,15 @@ class ServicecatalogPortfolioStatusArgs {
   ServicecatalogPortfolioStatusArgs({
     String? region,
     required String status,
-  })  : region = pulumi.Input.asOptionalInput<String>(region),
-        status = pulumi.Input.asInput<String>(status);
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      status = pulumi.Input.asInput<String>(status);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['status'] = status;
-    return map;
+    return <String, dynamic>{
+      'region': ?region,
+      'status': status,
+    };
   }
 
   factory ServicecatalogPortfolioStatusArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +36,4 @@ class ServicecatalogPortfolioStatusArgs {
     );
   }
 }
+

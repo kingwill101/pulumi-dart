@@ -14,15 +14,15 @@ class BareMetalMaintenanceStatusResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['machineDrainStatus'] = machineDrainStatus.toMap();
-    return map;
+    return <String, dynamic>{
+      'machineDrainStatus': machineDrainStatus.toMap(),
+    };
   }
 
   factory BareMetalMaintenanceStatusResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalMaintenanceStatusResponse(
-      machineDrainStatus: BareMetalMachineDrainStatusResponse.fromMap(
-          (map['machineDrainStatus'] as Map).cast<String, dynamic>()),
+      machineDrainStatus: BareMetalMachineDrainStatusResponse.fromMap((map['machineDrainStatus'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

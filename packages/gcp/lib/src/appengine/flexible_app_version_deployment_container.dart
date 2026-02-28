@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FlexibleAppVersionDeploymentContainer {
   /// URI to the hosted container image in Google Container Registry. The URI must be fully qualified and include a tag or digest.
   /// Examples: "gcr.io/my-project/image:tag" or "gcr.io/my-project/image@digest"
@@ -12,15 +13,15 @@ class FlexibleAppVersionDeploymentContainer {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['image'] = image;
-    return map;
+    return <String, dynamic>{
+      'image': image,
+    };
   }
 
-  factory FlexibleAppVersionDeploymentContainer.fromMap(
-      Map<String, dynamic> map) {
+  factory FlexibleAppVersionDeploymentContainer.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionDeploymentContainer(
       image: map['image'] as String,
     );
   }
 }
+

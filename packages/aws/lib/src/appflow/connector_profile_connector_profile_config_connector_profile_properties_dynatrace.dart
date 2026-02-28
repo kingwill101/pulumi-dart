@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDynatrace {
   final String instanceUrl;
 
@@ -10,15 +11,15 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDynatrace 
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['instanceUrl'] = instanceUrl;
-    return map;
+    return <String, dynamic>{
+      'instanceUrl': instanceUrl,
+    };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDynatrace.fromMap(
-      Map<String, dynamic> map) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDynatrace.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDynatrace(
       instanceUrl: map['instanceUrl'] as String,
     );
   }
 }
+

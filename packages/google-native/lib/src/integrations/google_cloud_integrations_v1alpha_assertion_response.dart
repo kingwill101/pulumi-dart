@@ -6,13 +6,10 @@ import 'google_cloud_integrations_v1alpha_event_parameter_response.dart';
 class GoogleCloudIntegrationsV1alphaAssertionResponse {
   /// The type of assertion to perform.
   final String assertionStrategy;
-
   /// Optional. Standard filter expression for ASSERT_CONDITION to succeed
   final String condition;
-
   /// Optional. Key-value pair for ASSERT_EQUALS, ASSERT_NOT_EQUALS, ASSERT_CONTAINS to succeed
   final GoogleCloudIntegrationsV1alphaEventParameterResponse parameter;
-
   /// Number of times given task should be retried in case of ASSERT_FAILED_EXECUTION
   final int retryCount;
 
@@ -29,22 +26,21 @@ class GoogleCloudIntegrationsV1alphaAssertionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['assertionStrategy'] = assertionStrategy;
-    map['condition'] = condition;
-    map['parameter'] = parameter.toMap();
-    map['retryCount'] = retryCount;
-    return map;
+    return <String, dynamic>{
+      'assertionStrategy': assertionStrategy,
+      'condition': condition,
+      'parameter': parameter.toMap(),
+      'retryCount': retryCount,
+    };
   }
 
-  factory GoogleCloudIntegrationsV1alphaAssertionResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaAssertionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaAssertionResponse(
       assertionStrategy: map['assertionStrategy'] as String,
       condition: map['condition'] as String,
-      parameter: GoogleCloudIntegrationsV1alphaEventParameterResponse.fromMap(
-          (map['parameter'] as Map).cast<String, dynamic>()),
+      parameter: GoogleCloudIntegrationsV1alphaEventParameterResponse.fromMap((map['parameter'] as Map).cast<String, dynamic>()),
       retryCount: map['retryCount'] as int,
     );
   }
 }
+

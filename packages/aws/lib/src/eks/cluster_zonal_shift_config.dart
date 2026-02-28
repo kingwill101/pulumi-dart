@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterZonalShiftConfig {
   /// Whether zonal shift is enabled for the cluster.
   final bool? enabled;
@@ -11,12 +12,9 @@ class ClusterZonalShiftConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory ClusterZonalShiftConfig.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class ClusterZonalShiftConfig {
     );
   }
 }
+

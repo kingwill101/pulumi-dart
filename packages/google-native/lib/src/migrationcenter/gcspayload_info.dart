@@ -6,7 +6,6 @@ import 'gcspayload_info_format.dart';
 class GCSPayloadInfo {
   /// The import job format.
   final GCSPayloadInfoFormat? format;
-
   /// The payload path in Google Cloud Storage.
   final String? path;
 
@@ -19,24 +18,17 @@ class GCSPayloadInfo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final formatValue = format;
-    if (formatValue != null) {
-      map['format'] = formatValue.value;
-    }
-    final pathValue = path;
-    if (pathValue != null) {
-      map['path'] = pathValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'format': ?format == null ? null : format!.value,
+      'path': ?path,
+    };
   }
 
   factory GCSPayloadInfo.fromMap(Map<String, dynamic> map) {
     return GCSPayloadInfo(
-      format: map['format'] == null
-          ? null
-          : GCSPayloadInfoFormat.fromValue(map['format'] as String),
+      format: map['format'] == null ? null : GCSPayloadInfoFormat.fromValue(map['format'] as String),
       path: map['path'] == null ? null : map['path'] as String,
     );
   }
 }
+

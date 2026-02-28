@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FlexibleAppVersionResourcesVolume {
   /// Unique name for the volume.
   final String name;
-
   /// Volume size in gigabytes.
   final int sizeGb;
-
   /// Underlying volume type, e.g. 'tmpfs'.
   final String volumeType;
 
@@ -21,11 +20,11 @@ class FlexibleAppVersionResourcesVolume {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['sizeGb'] = sizeGb;
-    map['volumeType'] = volumeType;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'sizeGb': sizeGb,
+      'volumeType': volumeType,
+    };
   }
 
   factory FlexibleAppVersionResourcesVolume.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class FlexibleAppVersionResourcesVolume {
     );
   }
 }
+

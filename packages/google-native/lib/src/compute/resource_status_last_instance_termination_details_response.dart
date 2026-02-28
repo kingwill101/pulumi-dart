@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ResourceStatusLastInstanceTerminationDetailsResponse {
   /// Reason for termination
   final String terminationReason;
@@ -11,15 +12,15 @@ class ResourceStatusLastInstanceTerminationDetailsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['terminationReason'] = terminationReason;
-    return map;
+    return <String, dynamic>{
+      'terminationReason': terminationReason,
+    };
   }
 
-  factory ResourceStatusLastInstanceTerminationDetailsResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory ResourceStatusLastInstanceTerminationDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ResourceStatusLastInstanceTerminationDetailsResponse(
       terminationReason: map['terminationReason'] as String,
     );
   }
 }
+

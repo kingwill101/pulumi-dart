@@ -14,17 +14,15 @@ class OrganizationConfigurationDatasourcesKubernetes {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['auditLogs'] = auditLogs.toMap();
-    return map;
+    return <String, dynamic>{
+      'auditLogs': auditLogs.toMap(),
+    };
   }
 
-  factory OrganizationConfigurationDatasourcesKubernetes.fromMap(
-      Map<String, dynamic> map) {
+  factory OrganizationConfigurationDatasourcesKubernetes.fromMap(Map<String, dynamic> map) {
     return OrganizationConfigurationDatasourcesKubernetes(
-      auditLogs:
-          OrganizationConfigurationDatasourcesKubernetesAuditLogs.fromMap(
-              (map['auditLogs'] as Map).cast<String, dynamic>()),
+      auditLogs: OrganizationConfigurationDatasourcesKubernetesAuditLogs.fromMap((map['auditLogs'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

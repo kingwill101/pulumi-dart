@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDataQualityRulesRuleStatisticRangeExpectation {
   /// The maximum column value allowed for a row to pass this validation.
   final String maxValue;
-
   /// The minimum column value allowed for a row to pass this validation.
   final String minValue;
-
   /// The list of aggregate metrics a rule can be evaluated against.
   /// Possible values: ["STATISTIC_UNDEFINED", "MEAN", "MIN", "MAX"]
   final String statistic;
-
   /// Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
   final bool strictMaxEnabled;
-
   /// Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.
   final bool strictMinEnabled;
 
@@ -32,17 +29,16 @@ class GetDataQualityRulesRuleStatisticRangeExpectation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maxValue'] = maxValue;
-    map['minValue'] = minValue;
-    map['statistic'] = statistic;
-    map['strictMaxEnabled'] = strictMaxEnabled;
-    map['strictMinEnabled'] = strictMinEnabled;
-    return map;
+    return <String, dynamic>{
+      'maxValue': maxValue,
+      'minValue': minValue,
+      'statistic': statistic,
+      'strictMaxEnabled': strictMaxEnabled,
+      'strictMinEnabled': strictMinEnabled,
+    };
   }
 
-  factory GetDataQualityRulesRuleStatisticRangeExpectation.fromMap(
-      Map<String, dynamic> map) {
+  factory GetDataQualityRulesRuleStatisticRangeExpectation.fromMap(Map<String, dynamic> map) {
     return GetDataQualityRulesRuleStatisticRangeExpectation(
       maxValue: map['maxValue'] as String,
       minValue: map['minValue'] as String,
@@ -52,3 +48,4 @@ class GetDataQualityRulesRuleStatisticRangeExpectation {
     );
   }
 }
+

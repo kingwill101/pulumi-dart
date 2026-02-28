@@ -14,15 +14,15 @@ class ApiConfigOpenapiDocument {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['document'] = document.toMap();
-    return map;
+    return <String, dynamic>{
+      'document': document.toMap(),
+    };
   }
 
   factory ApiConfigOpenapiDocument.fromMap(Map<String, dynamic> map) {
     return ApiConfigOpenapiDocument(
-      document: ApiConfigOpenapiDocumentDocument.fromMap(
-          (map['document'] as Map).cast<String, dynamic>()),
+      document: ApiConfigOpenapiDocumentDocument.fromMap((map['document'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

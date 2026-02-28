@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConfigurationAggregatorAccountAggregationSource {
   /// List of 12-digit account IDs of the account(s) being aggregated.
   final List<String> accountIds;
-
   /// If true, aggregate existing AWS Config regions and future regions.
   final bool? allRegions;
-
   /// List of source regions being aggregated.
   ///
   /// Either `regions` or `all_regions` (as true) must be specified.
@@ -23,27 +22,19 @@ class ConfigurationAggregatorAccountAggregationSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accountIds'] = accountIds;
-    final allRegionsValue = allRegions;
-    if (allRegionsValue != null) {
-      map['allRegions'] = allRegionsValue;
-    }
-    final regionsValue = regions;
-    if (regionsValue != null) {
-      map['regions'] = regionsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'accountIds': accountIds,
+      'allRegions': ?allRegions,
+      'regions': ?regions,
+    };
   }
 
-  factory ConfigurationAggregatorAccountAggregationSource.fromMap(
-      Map<String, dynamic> map) {
+  factory ConfigurationAggregatorAccountAggregationSource.fromMap(Map<String, dynamic> map) {
     return ConfigurationAggregatorAccountAggregationSource(
       accountIds: (map['accountIds'] as List).cast<String>(),
       allRegions: map['allRegions'] == null ? null : map['allRegions'] as bool,
-      regions: map['regions'] == null
-          ? null
-          : (map['regions'] as List).cast<String>(),
+      regions: map['regions'] == null ? null : (map['regions'] as List).cast<String>(),
     );
   }
 }
+

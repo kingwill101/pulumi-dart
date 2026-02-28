@@ -7,28 +7,20 @@ import 'google_rpc_status_response.dart';
 class PscConnectionResponse {
   /// The resource reference of the consumer address.
   final String consumerAddress;
-
   /// The resource reference of the PSC Forwarding Rule within the consumer VPC.
   final String consumerForwardingRule;
-
   /// The project where the PSC connection is created.
   final String consumerTargetProject;
-
   /// The most recent error during operating this connection.
   final GoogleRpcStatusResponse error;
-
   /// The error info for the latest error during operating this connection.
   final GoogleRpcErrorInfoResponse errorInfo;
-
   /// The error type indicates whether the error is consumer facing, producer facing or system internal.
   final String errorType;
-
   /// The last Compute Engine operation to setup PSC connection.
   final String gceOperation;
-
   /// The PSC connection id of the PSC forwarding rule.
   final String pscConnectionId;
-
   /// State of the PSC Connection
   final String state;
 
@@ -55,17 +47,17 @@ class PscConnectionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['consumerAddress'] = consumerAddress;
-    map['consumerForwardingRule'] = consumerForwardingRule;
-    map['consumerTargetProject'] = consumerTargetProject;
-    map['error'] = error.toMap();
-    map['errorInfo'] = errorInfo.toMap();
-    map['errorType'] = errorType;
-    map['gceOperation'] = gceOperation;
-    map['pscConnectionId'] = pscConnectionId;
-    map['state'] = state;
-    return map;
+    return <String, dynamic>{
+      'consumerAddress': consumerAddress,
+      'consumerForwardingRule': consumerForwardingRule,
+      'consumerTargetProject': consumerTargetProject,
+      'error': error.toMap(),
+      'errorInfo': errorInfo.toMap(),
+      'errorType': errorType,
+      'gceOperation': gceOperation,
+      'pscConnectionId': pscConnectionId,
+      'state': state,
+    };
   }
 
   factory PscConnectionResponse.fromMap(Map<String, dynamic> map) {
@@ -73,10 +65,8 @@ class PscConnectionResponse {
       consumerAddress: map['consumerAddress'] as String,
       consumerForwardingRule: map['consumerForwardingRule'] as String,
       consumerTargetProject: map['consumerTargetProject'] as String,
-      error: GoogleRpcStatusResponse.fromMap(
-          (map['error'] as Map).cast<String, dynamic>()),
-      errorInfo: GoogleRpcErrorInfoResponse.fromMap(
-          (map['errorInfo'] as Map).cast<String, dynamic>()),
+      error: GoogleRpcStatusResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
+      errorInfo: GoogleRpcErrorInfoResponse.fromMap((map['errorInfo'] as Map).cast<String, dynamic>()),
       errorType: map['errorType'] as String,
       gceOperation: map['gceOperation'] as String,
       pscConnectionId: map['pscConnectionId'] as String,
@@ -84,3 +74,4 @@ class PscConnectionResponse {
     );
   }
 }
+

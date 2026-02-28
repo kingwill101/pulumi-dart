@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Information about the issue.
 class GoogleCloudContactcenterinsightsV1IssueAssignmentResponse {
   /// Immutable. Display name of the assigned issue. This field is set at time of analyis and immutable since then.
   final String displayName;
-
   /// Resource name of the assigned issue.
   final String issue;
-
   /// Score indicating the likelihood of the issue assignment. currently bounded on [0,1].
   final double score;
 
@@ -22,15 +21,14 @@ class GoogleCloudContactcenterinsightsV1IssueAssignmentResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['displayName'] = displayName;
-    map['issue'] = issue;
-    map['score'] = score;
-    return map;
+    return <String, dynamic>{
+      'displayName': displayName,
+      'issue': issue,
+      'score': score,
+    };
   }
 
-  factory GoogleCloudContactcenterinsightsV1IssueAssignmentResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudContactcenterinsightsV1IssueAssignmentResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1IssueAssignmentResponse(
       displayName: map['displayName'] as String,
       issue: map['issue'] as String,
@@ -38,3 +36,4 @@ class GoogleCloudContactcenterinsightsV1IssueAssignmentResponse {
     );
   }
 }
+

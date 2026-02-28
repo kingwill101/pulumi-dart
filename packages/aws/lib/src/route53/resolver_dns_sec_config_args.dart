@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResolverDnsSecConfigArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The ID of the virtual private cloud (VPC) that you're updating the DNSSEC validation status for.
   final pulumi.Input<String> resourceId;
 
@@ -19,17 +18,15 @@ class ResolverDnsSecConfigArgs {
   ResolverDnsSecConfigArgs({
     String? region,
     required String resourceId,
-  })  : region = pulumi.Input.asOptionalInput<String>(region),
-        resourceId = pulumi.Input.asInput<String>(resourceId);
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      resourceId = pulumi.Input.asInput<String>(resourceId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['resourceId'] = resourceId;
-    return map;
+    return <String, dynamic>{
+      'region': ?region,
+      'resourceId': resourceId,
+    };
   }
 
   factory ResolverDnsSecConfigArgs.fromMap(Map<String, dynamic> map) {
@@ -39,3 +36,4 @@ class ResolverDnsSecConfigArgs {
     );
   }
 }
+

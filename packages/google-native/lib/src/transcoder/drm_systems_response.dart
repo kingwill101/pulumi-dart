@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Defines configuration for DRM systems in use.
 class DrmSystemsResponse {
   /// Clearkey configuration.
   final Map<String, dynamic> clearkey;
-
   /// Fairplay configuration.
   final Map<String, dynamic> fairplay;
-
   /// Playready configuration.
   final Map<String, dynamic> playready;
-
   /// Widevine configuration.
   final Map<String, dynamic> widevine;
 
@@ -27,12 +25,12 @@ class DrmSystemsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clearkey'] = clearkey;
-    map['fairplay'] = fairplay;
-    map['playready'] = playready;
-    map['widevine'] = widevine;
-    return map;
+    return <String, dynamic>{
+      'clearkey': clearkey,
+      'fairplay': fairplay,
+      'playready': playready,
+      'widevine': widevine,
+    };
   }
 
   factory DrmSystemsResponse.fromMap(Map<String, dynamic> map) {
@@ -44,3 +42,4 @@ class DrmSystemsResponse {
     );
   }
 }
+

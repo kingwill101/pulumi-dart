@@ -32,60 +32,25 @@ class SlsaProvenanceZeroTwo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final buildConfigValue = buildConfig;
-    if (buildConfigValue != null) {
-      map['buildConfig'] = buildConfigValue;
-    }
-    final buildTypeValue = buildType;
-    if (buildTypeValue != null) {
-      map['buildType'] = buildTypeValue;
-    }
-    final builderValue = builder;
-    if (builderValue != null) {
-      map['builder'] = builderValue.toMap();
-    }
-    final invocationValue = invocation;
-    if (invocationValue != null) {
-      map['invocation'] = invocationValue.toMap();
-    }
-    final materialsValue = materials;
-    if (materialsValue != null) {
-      map['materials'] = pulumi.Input.encodeList<
-          GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial,
-          Map<String, dynamic>>(materialsValue, (value) => value.toMap());
-    }
-    final metadataValue = metadata;
-    if (metadataValue != null) {
-      map['metadata'] = metadataValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'buildConfig': ?buildConfig,
+      'buildType': ?buildType,
+      'builder': ?builder == null ? null : builder!.toMap(),
+      'invocation': ?invocation == null ? null : invocation!.toMap(),
+      'materials': ?materials == null ? null : pulumi.Input.encodeList<GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial, Map<String, dynamic>>(materials!, (value) => value.toMap()),
+      'metadata': ?metadata == null ? null : metadata!.toMap(),
+    };
   }
 
   factory SlsaProvenanceZeroTwo.fromMap(Map<String, dynamic> map) {
     return SlsaProvenanceZeroTwo(
-      buildConfig: map['buildConfig'] == null
-          ? null
-          : (map['buildConfig'] as Map).cast<String, String>(),
+      buildConfig: map['buildConfig'] == null ? null : (map['buildConfig'] as Map).cast<String, String>(),
       buildType: map['buildType'] == null ? null : map['buildType'] as String,
-      builder: map['builder'] == null
-          ? null
-          : GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder.fromMap(
-              (map['builder'] as Map).cast<String, dynamic>()),
-      invocation: map['invocation'] == null
-          ? null
-          : GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation.fromMap(
-              (map['invocation'] as Map).cast<String, dynamic>()),
-      materials: map['materials'] == null
-          ? null
-          : pulumi.Input.decodeList<GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial>(
-              map['materials'],
-              (value) => GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      metadata: map['metadata'] == null
-          ? null
-          : GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata.fromMap(
-              (map['metadata'] as Map).cast<String, dynamic>()),
+      builder: map['builder'] == null ? null : GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder.fromMap((map['builder'] as Map).cast<String, dynamic>()),
+      invocation: map['invocation'] == null ? null : GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation.fromMap((map['invocation'] as Map).cast<String, dynamic>()),
+      materials: map['materials'] == null ? null : pulumi.Input.decodeList<GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial>(map['materials'], (value) => GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial.fromMap((value as Map).cast<String, dynamic>())),
+      metadata: map['metadata'] == null ? null : GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

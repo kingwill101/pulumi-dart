@@ -25,23 +25,21 @@ class GetEntityArgs {
     required String entityTypeId,
     required String location,
     String? project,
-  })  : connectionId = pulumi.Input.asInput<String>(connectionId),
-        entityId = pulumi.Input.asInput<String>(entityId),
-        entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      connectionId = pulumi.Input.asInput<String>(connectionId),
+      entityId = pulumi.Input.asInput<String>(entityId),
+      entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['connectionId'] = connectionId;
-    map['entityId'] = entityId;
-    map['entityTypeId'] = entityTypeId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'connectionId': connectionId,
+      'entityId': entityId,
+      'entityTypeId': entityTypeId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetEntityArgs.fromMap(Map<String, dynamic> map) {
@@ -54,3 +52,4 @@ class GetEntityArgs {
     );
   }
 }
+

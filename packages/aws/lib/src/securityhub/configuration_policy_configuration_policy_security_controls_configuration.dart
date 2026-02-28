@@ -6,14 +6,10 @@ import 'configuration_policy_configuration_policy_security_controls_configuratio
 class ConfigurationPolicyConfigurationPolicySecurityControlsConfiguration {
   /// A list of security controls that are disabled in the configuration policy Security Hub enables all other controls (including newly released controls) other than the listed controls. Conflicts with `enabled_control_identifiers`.
   final List<String>? disabledControlIdentifiers;
-
   /// A list of security controls that are enabled in the configuration policy. Security Hub disables all other controls (including newly released controls) other than the listed controls. Conflicts with `disabled_control_identifiers`.
   final List<String>? enabledControlIdentifiers;
-
   /// A list of control parameter customizations that are included in a configuration policy. Include multiple blocks to define multiple control custom parameters. See below.
-  final List<
-          ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameter>?
-      securityControlCustomParameters;
+  final List<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameter>? securityControlCustomParameters;
 
   /// Creates a new [ConfigurationPolicyConfigurationPolicySecurityControlsConfiguration].
   /// [disabledControlIdentifiers] A list of security controls that are disabled in the configuration policy Security Hub enables all other controls (including newly released controls) other than the listed controls. Conflicts with `enabled_control_identifiers`.
@@ -26,44 +22,19 @@ class ConfigurationPolicyConfigurationPolicySecurityControlsConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final disabledControlIdentifiersValue = disabledControlIdentifiers;
-    if (disabledControlIdentifiersValue != null) {
-      map['disabledControlIdentifiers'] = disabledControlIdentifiersValue;
-    }
-    final enabledControlIdentifiersValue = enabledControlIdentifiers;
-    if (enabledControlIdentifiersValue != null) {
-      map['enabledControlIdentifiers'] = enabledControlIdentifiersValue;
-    }
-    final securityControlCustomParametersValue =
-        securityControlCustomParameters;
-    if (securityControlCustomParametersValue != null) {
-      map['securityControlCustomParameters'] = pulumi.Input.encodeList<
-              ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameter,
-              Map<String, dynamic>>(
-          securityControlCustomParametersValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'disabledControlIdentifiers': ?disabledControlIdentifiers,
+      'enabledControlIdentifiers': ?enabledControlIdentifiers,
+      'securityControlCustomParameters': ?securityControlCustomParameters == null ? null : pulumi.Input.encodeList<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameter, Map<String, dynamic>>(securityControlCustomParameters!, (value) => value.toMap()),
+    };
   }
 
-  factory ConfigurationPolicyConfigurationPolicySecurityControlsConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory ConfigurationPolicyConfigurationPolicySecurityControlsConfiguration.fromMap(Map<String, dynamic> map) {
     return ConfigurationPolicyConfigurationPolicySecurityControlsConfiguration(
-      disabledControlIdentifiers: map['disabledControlIdentifiers'] == null
-          ? null
-          : (map['disabledControlIdentifiers'] as List).cast<String>(),
-      enabledControlIdentifiers: map['enabledControlIdentifiers'] == null
-          ? null
-          : (map['enabledControlIdentifiers'] as List).cast<String>(),
-      securityControlCustomParameters: map['securityControlCustomParameters'] ==
-              null
-          ? null
-          : pulumi.Input.decodeList<
-                  ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameter>(
-              map['securityControlCustomParameters'],
-              (value) =>
-                  ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameter
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      disabledControlIdentifiers: map['disabledControlIdentifiers'] == null ? null : (map['disabledControlIdentifiers'] as List).cast<String>(),
+      enabledControlIdentifiers: map['enabledControlIdentifiers'] == null ? null : (map['enabledControlIdentifiers'] as List).cast<String>(),
+      securityControlCustomParameters: map['securityControlCustomParameters'] == null ? null : pulumi.Input.decodeList<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameter>(map['securityControlCustomParameters'], (value) => ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameter.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

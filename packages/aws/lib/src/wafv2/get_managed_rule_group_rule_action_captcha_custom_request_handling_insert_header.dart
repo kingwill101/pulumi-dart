@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetManagedRuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader {
   /// Managed rule group name.
   final String name;
@@ -14,17 +15,17 @@ class GetManagedRuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
-  factory GetManagedRuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader.fromMap(
-      Map<String, dynamic> map) {
+  factory GetManagedRuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader.fromMap(Map<String, dynamic> map) {
     return GetManagedRuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader(
       name: map['name'] as String,
       value: map['value'] as String,
     );
   }
 }
+

@@ -7,7 +7,6 @@ import 'job_response.dart';
 class ChildRolloutJobsResponse {
   /// List of AdvanceChildRolloutJobs
   final List<JobResponse> advanceRolloutJobs;
-
   /// List of CreateChildRolloutJobs
   final List<JobResponse> createRolloutJobs;
 
@@ -20,26 +19,17 @@ class ChildRolloutJobsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['advanceRolloutJobs'] =
-        pulumi.Input.encodeList<JobResponse, Map<String, dynamic>>(
-            advanceRolloutJobs, (value) => value.toMap());
-    map['createRolloutJobs'] =
-        pulumi.Input.encodeList<JobResponse, Map<String, dynamic>>(
-            createRolloutJobs, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'advanceRolloutJobs': pulumi.Input.encodeList<JobResponse, Map<String, dynamic>>(advanceRolloutJobs, (value) => value.toMap()),
+      'createRolloutJobs': pulumi.Input.encodeList<JobResponse, Map<String, dynamic>>(createRolloutJobs, (value) => value.toMap()),
+    };
   }
 
   factory ChildRolloutJobsResponse.fromMap(Map<String, dynamic> map) {
     return ChildRolloutJobsResponse(
-      advanceRolloutJobs: pulumi.Input.decodeList<JobResponse>(
-          map['advanceRolloutJobs'],
-          (value) =>
-              JobResponse.fromMap((value as Map).cast<String, dynamic>())),
-      createRolloutJobs: pulumi.Input.decodeList<JobResponse>(
-          map['createRolloutJobs'],
-          (value) =>
-              JobResponse.fromMap((value as Map).cast<String, dynamic>())),
+      advanceRolloutJobs: pulumi.Input.decodeList<JobResponse>(map['advanceRolloutJobs'], (value) => JobResponse.fromMap((value as Map).cast<String, dynamic>())),
+      createRolloutJobs: pulumi.Input.decodeList<JobResponse>(map['createRolloutJobs'], (value) => JobResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

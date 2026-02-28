@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Specifies the locations for fetching the provenance attestations.
 class AttestationSourceResponse {
   /// The IDs of the GCP projects storing the SLSA attestations as Container Analysis Occurrences.
@@ -12,16 +13,15 @@ class AttestationSourceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['containerAnalysisAttestationProjects'] =
-        containerAnalysisAttestationProjects;
-    return map;
+    return <String, dynamic>{
+      'containerAnalysisAttestationProjects': containerAnalysisAttestationProjects,
+    };
   }
 
   factory AttestationSourceResponse.fromMap(Map<String, dynamic> map) {
     return AttestationSourceResponse(
-      containerAnalysisAttestationProjects:
-          (map['containerAnalysisAttestationProjects'] as List).cast<String>(),
+      containerAnalysisAttestationProjects: (map['containerAnalysisAttestationProjects'] as List).cast<String>(),
     );
   }
 }
+

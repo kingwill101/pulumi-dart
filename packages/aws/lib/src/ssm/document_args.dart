@@ -10,31 +10,22 @@ import 'document_attachments_source.dart';
 class DocumentArgs {
   /// One or more configuration blocks describing attachments sources to a version of a document. See `attachments_source` block below for details.
   final pulumi.Input<List<DocumentAttachmentsSource>>? attachmentsSources;
-
   /// The content for the SSM document in JSON or YAML format. The content of the document must not exceed 64KB. This quota also includes the content specified for input parameters at runtime. We recommend storing the contents for your new document in an external JSON or YAML file and referencing the file in a command.
   final pulumi.Input<String> content;
-
   /// The format of the document. Valid values: `JSON`, `TEXT`, `YAML`.
   final pulumi.Input<String>? documentFormat;
-
   /// The type of the document. For a list of valid values, see the [API Reference](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_CreateDocument.html#systemsmanager-CreateDocument-request-DocumentType).
   final pulumi.Input<String> documentType;
-
   /// The name of the document.
   final pulumi.Input<String>? name;
-
   /// Additional permissions to attach to the document. See Permissions below for details.
   final pulumi.Input<Map<String, String>>? permissions;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// A map of tags to assign to the object. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The target type which defines the kinds of resources the document can run on. For example, `/AWS::EC2::Instance`. For a list of valid resource types, see [AWS resource and property types reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html).
   final pulumi.Input<String>? targetType;
-
   /// The version of the artifact associated with the document. For example, `12.6`. This value is unique across all versions of a document, and can't be changed.
   final pulumi.Input<String>? versionName;
 
@@ -60,88 +51,46 @@ class DocumentArgs {
     Map<String, String>? tags,
     String? targetType,
     String? versionName,
-  })  : attachmentsSources =
-            pulumi.Input.asOptionalInput<List<DocumentAttachmentsSource>>(
-                attachmentsSources),
-        content = pulumi.Input.asInput<String>(content),
-        documentFormat = pulumi.Input.asOptionalInput<String>(documentFormat),
-        documentType = pulumi.Input.asInput<String>(documentType),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        permissions =
-            pulumi.Input.asOptionalInput<Map<String, String>>(permissions),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-        targetType = pulumi.Input.asOptionalInput<String>(targetType),
-        versionName = pulumi.Input.asOptionalInput<String>(versionName);
+  }) :
+      attachmentsSources = pulumi.Input.asOptionalInput<List<DocumentAttachmentsSource>>(attachmentsSources),
+      content = pulumi.Input.asInput<String>(content),
+      documentFormat = pulumi.Input.asOptionalInput<String>(documentFormat),
+      documentType = pulumi.Input.asInput<String>(documentType),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      permissions = pulumi.Input.asOptionalInput<Map<String, String>>(permissions),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      targetType = pulumi.Input.asOptionalInput<String>(targetType),
+      versionName = pulumi.Input.asOptionalInput<String>(versionName);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final attachmentsSourcesValue = attachmentsSources;
-    if (attachmentsSourcesValue != null) {
-      map['attachmentsSources'] = pulumi.Input.mapOptionalInputValue<
-              List<DocumentAttachmentsSource>, List<Map<String, dynamic>>>(
-          attachmentsSourcesValue,
-          (value) => pulumi.Input.encodeList<DocumentAttachmentsSource,
-              Map<String, dynamic>>(value, (value) => value.toMap()));
-    }
-    map['content'] = content;
-    final documentFormatValue = documentFormat;
-    if (documentFormatValue != null) {
-      map['documentFormat'] = documentFormatValue;
-    }
-    map['documentType'] = documentType;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final permissionsValue = permissions;
-    if (permissionsValue != null) {
-      map['permissions'] = permissionsValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    final targetTypeValue = targetType;
-    if (targetTypeValue != null) {
-      map['targetType'] = targetTypeValue;
-    }
-    final versionNameValue = versionName;
-    if (versionNameValue != null) {
-      map['versionName'] = versionNameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'attachmentsSources': ?pulumi.Input.mapOptionalInputValue<List<DocumentAttachmentsSource>, List<Map<String, dynamic>>>(attachmentsSources, (value) => pulumi.Input.encodeList<DocumentAttachmentsSource, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'content': content,
+      'documentFormat': ?documentFormat,
+      'documentType': documentType,
+      'name': ?name,
+      'permissions': ?permissions,
+      'region': ?region,
+      'tags': ?tags,
+      'targetType': ?targetType,
+      'versionName': ?versionName,
+    };
   }
 
   factory DocumentArgs.fromMap(Map<String, dynamic> map) {
     return DocumentArgs(
-      attachmentsSources: map['attachmentsSources'] == null
-          ? null
-          : pulumi.Input.decodeList<DocumentAttachmentsSource>(
-              map['attachmentsSources'],
-              (value) => DocumentAttachmentsSource.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      attachmentsSources: map['attachmentsSources'] == null ? null : pulumi.Input.decodeList<DocumentAttachmentsSource>(map['attachmentsSources'], (value) => DocumentAttachmentsSource.fromMap((value as Map).cast<String, dynamic>())),
       content: map['content'] as String,
-      documentFormat: map['documentFormat'] == null
-          ? null
-          : map['documentFormat'] as String,
+      documentFormat: map['documentFormat'] == null ? null : map['documentFormat'] as String,
       documentType: map['documentType'] as String,
       name: map['name'] == null ? null : map['name'] as String,
-      permissions: map['permissions'] == null
-          ? null
-          : (map['permissions'] as Map).cast<String, String>(),
+      permissions: map['permissions'] == null ? null : (map['permissions'] as Map).cast<String, String>(),
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
-      targetType:
-          map['targetType'] == null ? null : map['targetType'] as String,
-      versionName:
-          map['versionName'] == null ? null : map['versionName'] as String,
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      targetType: map['targetType'] == null ? null : map['targetType'] as String,
+      versionName: map['versionName'] == null ? null : map['versionName'] as String,
     );
   }
 }
+

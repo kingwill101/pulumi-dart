@@ -9,11 +9,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGatewayIamPolicyArgs {
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> gateway;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The region of the gateway for the API.
   /// Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
@@ -28,22 +26,17 @@ class GetGatewayIamPolicyArgs {
     required String gateway,
     String? project,
     String? region,
-  })  : gateway = pulumi.Input.asInput<String>(gateway),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      gateway = pulumi.Input.asInput<String>(gateway),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gateway'] = gateway;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'gateway': gateway,
+      'project': ?project,
+      'region': ?region,
+    };
   }
 
   factory GetGatewayIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -54,3 +47,4 @@ class GetGatewayIamPolicyArgs {
     );
   }
 }
+

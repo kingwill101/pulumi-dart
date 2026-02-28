@@ -6,14 +6,13 @@ enum SecuritySettingRedactionScopeDialogflowV3beta1 {
   const SecuritySettingRedactionScopeDialogflowV3beta1(this.value);
   final String value;
 
-  static SecuritySettingRedactionScopeDialogflowV3beta1 fromValue(
-      String value) {
+  static SecuritySettingRedactionScopeDialogflowV3beta1 fromValue(String value) {
     for (final item in SecuritySettingRedactionScopeDialogflowV3beta1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown SecuritySettingRedactionScopeDialogflowV3beta1 value: $value');
+    throw ArgumentError('Unknown SecuritySettingRedactionScopeDialogflowV3beta1 value: $value');
   }
 }
+

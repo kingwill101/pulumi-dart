@@ -6,15 +6,13 @@ enum RegionInstanceGroupManagerListManagedInstancesResults {
   const RegionInstanceGroupManagerListManagedInstancesResults(this.value);
   final String value;
 
-  static RegionInstanceGroupManagerListManagedInstancesResults fromValue(
-      String value) {
-    for (final item
-        in RegionInstanceGroupManagerListManagedInstancesResults.values) {
+  static RegionInstanceGroupManagerListManagedInstancesResults fromValue(String value) {
+    for (final item in RegionInstanceGroupManagerListManagedInstancesResults.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown RegionInstanceGroupManagerListManagedInstancesResults value: $value');
+    throw ArgumentError('Unknown RegionInstanceGroupManagerListManagedInstancesResults value: $value');
   }
 }
+

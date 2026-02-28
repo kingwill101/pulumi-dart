@@ -14,20 +14,15 @@ class BareMetalClusterSecurityConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final authorizationValue = authorization;
-    if (authorizationValue != null) {
-      map['authorization'] = authorizationValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'authorization': ?authorization == null ? null : authorization!.toMap(),
+    };
   }
 
   factory BareMetalClusterSecurityConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterSecurityConfig(
-      authorization: map['authorization'] == null
-          ? null
-          : BareMetalClusterSecurityConfigAuthorization.fromMap(
-              (map['authorization'] as Map).cast<String, dynamic>()),
+      authorization: map['authorization'] == null ? null : BareMetalClusterSecurityConfigAuthorization.fromMap((map['authorization'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

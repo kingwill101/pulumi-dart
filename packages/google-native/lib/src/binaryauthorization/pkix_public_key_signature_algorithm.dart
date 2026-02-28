@@ -29,7 +29,7 @@ enum PkixPublicKeySignatureAlgorithm {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown PkixPublicKeySignatureAlgorithm value: $value');
+    throw ArgumentError('Unknown PkixPublicKeySignatureAlgorithm value: $value');
   }
 }
+

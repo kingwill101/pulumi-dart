@@ -6,23 +6,17 @@ import 'billing_account_bucket_view_args.dart';
 class BillingAccountBucketView extends pulumi.CustomResource {
   late final pulumi.Output<String> billingAccountId;
   late final pulumi.Output<String> bucketId;
-
   /// The creation timestamp of the view.
   late final pulumi.Output<String> createTime;
-
   /// Describes this view.
   late final pulumi.Output<String> description;
-
   /// Filter that restricts which log entries in a bucket are visible in this view.Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log idFor example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
   late final pulumi.Output<String> filter;
   late final pulumi.Output<String> location;
-
   /// The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
   late final pulumi.Output<String> name;
-
   /// The last update timestamp of the view.
   late final pulumi.Output<String> updateTime;
-
   /// Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
   late final pulumi.Output<String> viewId;
 

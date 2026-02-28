@@ -12,27 +12,21 @@ class GuestPoliciesRecipeUpdateStep {
   /// Extracts an archive into the specified directory.
   /// Structure is documented below.
   final GuestPoliciesRecipeUpdateStepArchiveExtraction? archiveExtraction;
-
   /// Installs a deb file via dpkg.
   /// Structure is documented below.
   final GuestPoliciesRecipeUpdateStepDpkgInstallation? dpkgInstallation;
-
   /// Copies a file onto the instance.
   /// Structure is documented below.
   final GuestPoliciesRecipeUpdateStepFileCopy? fileCopy;
-
   /// Executes an artifact or local file.
   /// Structure is documented below.
   final GuestPoliciesRecipeUpdateStepFileExec? fileExec;
-
   /// Installs an MSI file.
   /// Structure is documented below.
   final GuestPoliciesRecipeUpdateStepMsiInstallation? msiInstallation;
-
   /// Installs an rpm file via the rpm utility.
   /// Structure is documented below.
   final GuestPoliciesRecipeUpdateStepRpmInstallation? rpmInstallation;
-
   /// Runs commands in a shell.
   /// Structure is documented below.
   final GuestPoliciesRecipeUpdateStepScriptRun? scriptRun;
@@ -56,68 +50,27 @@ class GuestPoliciesRecipeUpdateStep {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final archiveExtractionValue = archiveExtraction;
-    if (archiveExtractionValue != null) {
-      map['archiveExtraction'] = archiveExtractionValue.toMap();
-    }
-    final dpkgInstallationValue = dpkgInstallation;
-    if (dpkgInstallationValue != null) {
-      map['dpkgInstallation'] = dpkgInstallationValue.toMap();
-    }
-    final fileCopyValue = fileCopy;
-    if (fileCopyValue != null) {
-      map['fileCopy'] = fileCopyValue.toMap();
-    }
-    final fileExecValue = fileExec;
-    if (fileExecValue != null) {
-      map['fileExec'] = fileExecValue.toMap();
-    }
-    final msiInstallationValue = msiInstallation;
-    if (msiInstallationValue != null) {
-      map['msiInstallation'] = msiInstallationValue.toMap();
-    }
-    final rpmInstallationValue = rpmInstallation;
-    if (rpmInstallationValue != null) {
-      map['rpmInstallation'] = rpmInstallationValue.toMap();
-    }
-    final scriptRunValue = scriptRun;
-    if (scriptRunValue != null) {
-      map['scriptRun'] = scriptRunValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'archiveExtraction': ?archiveExtraction == null ? null : archiveExtraction!.toMap(),
+      'dpkgInstallation': ?dpkgInstallation == null ? null : dpkgInstallation!.toMap(),
+      'fileCopy': ?fileCopy == null ? null : fileCopy!.toMap(),
+      'fileExec': ?fileExec == null ? null : fileExec!.toMap(),
+      'msiInstallation': ?msiInstallation == null ? null : msiInstallation!.toMap(),
+      'rpmInstallation': ?rpmInstallation == null ? null : rpmInstallation!.toMap(),
+      'scriptRun': ?scriptRun == null ? null : scriptRun!.toMap(),
+    };
   }
 
   factory GuestPoliciesRecipeUpdateStep.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesRecipeUpdateStep(
-      archiveExtraction: map['archiveExtraction'] == null
-          ? null
-          : GuestPoliciesRecipeUpdateStepArchiveExtraction.fromMap(
-              (map['archiveExtraction'] as Map).cast<String, dynamic>()),
-      dpkgInstallation: map['dpkgInstallation'] == null
-          ? null
-          : GuestPoliciesRecipeUpdateStepDpkgInstallation.fromMap(
-              (map['dpkgInstallation'] as Map).cast<String, dynamic>()),
-      fileCopy: map['fileCopy'] == null
-          ? null
-          : GuestPoliciesRecipeUpdateStepFileCopy.fromMap(
-              (map['fileCopy'] as Map).cast<String, dynamic>()),
-      fileExec: map['fileExec'] == null
-          ? null
-          : GuestPoliciesRecipeUpdateStepFileExec.fromMap(
-              (map['fileExec'] as Map).cast<String, dynamic>()),
-      msiInstallation: map['msiInstallation'] == null
-          ? null
-          : GuestPoliciesRecipeUpdateStepMsiInstallation.fromMap(
-              (map['msiInstallation'] as Map).cast<String, dynamic>()),
-      rpmInstallation: map['rpmInstallation'] == null
-          ? null
-          : GuestPoliciesRecipeUpdateStepRpmInstallation.fromMap(
-              (map['rpmInstallation'] as Map).cast<String, dynamic>()),
-      scriptRun: map['scriptRun'] == null
-          ? null
-          : GuestPoliciesRecipeUpdateStepScriptRun.fromMap(
-              (map['scriptRun'] as Map).cast<String, dynamic>()),
+      archiveExtraction: map['archiveExtraction'] == null ? null : GuestPoliciesRecipeUpdateStepArchiveExtraction.fromMap((map['archiveExtraction'] as Map).cast<String, dynamic>()),
+      dpkgInstallation: map['dpkgInstallation'] == null ? null : GuestPoliciesRecipeUpdateStepDpkgInstallation.fromMap((map['dpkgInstallation'] as Map).cast<String, dynamic>()),
+      fileCopy: map['fileCopy'] == null ? null : GuestPoliciesRecipeUpdateStepFileCopy.fromMap((map['fileCopy'] as Map).cast<String, dynamic>()),
+      fileExec: map['fileExec'] == null ? null : GuestPoliciesRecipeUpdateStepFileExec.fromMap((map['fileExec'] as Map).cast<String, dynamic>()),
+      msiInstallation: map['msiInstallation'] == null ? null : GuestPoliciesRecipeUpdateStepMsiInstallation.fromMap((map['msiInstallation'] as Map).cast<String, dynamic>()),
+      rpmInstallation: map['rpmInstallation'] == null ? null : GuestPoliciesRecipeUpdateStepRpmInstallation.fromMap((map['rpmInstallation'] as Map).cast<String, dynamic>()),
+      scriptRun: map['scriptRun'] == null ? null : GuestPoliciesRecipeUpdateStepScriptRun.fromMap((map['scriptRun'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -7,15 +7,13 @@ enum GoogleCloudDataplexV1StorageFormatCompressionFormat {
   const GoogleCloudDataplexV1StorageFormatCompressionFormat(this.value);
   final String value;
 
-  static GoogleCloudDataplexV1StorageFormatCompressionFormat fromValue(
-      String value) {
-    for (final item
-        in GoogleCloudDataplexV1StorageFormatCompressionFormat.values) {
+  static GoogleCloudDataplexV1StorageFormatCompressionFormat fromValue(String value) {
+    for (final item in GoogleCloudDataplexV1StorageFormatCompressionFormat.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GoogleCloudDataplexV1StorageFormatCompressionFormat value: $value');
+    throw ArgumentError('Unknown GoogleCloudDataplexV1StorageFormatCompressionFormat value: $value');
   }
 }
+

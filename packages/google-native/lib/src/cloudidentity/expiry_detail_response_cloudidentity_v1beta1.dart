@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The `MembershipRole` expiry details.
 class ExpiryDetailResponseCloudidentityV1beta1 {
   /// The time at which the `MembershipRole` will expire.
@@ -12,15 +13,15 @@ class ExpiryDetailResponseCloudidentityV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['expireTime'] = expireTime;
-    return map;
+    return <String, dynamic>{
+      'expireTime': expireTime,
+    };
   }
 
-  factory ExpiryDetailResponseCloudidentityV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory ExpiryDetailResponseCloudidentityV1beta1.fromMap(Map<String, dynamic> map) {
     return ExpiryDetailResponseCloudidentityV1beta1(
       expireTime: map['expireTime'] as String,
     );
   }
 }
+

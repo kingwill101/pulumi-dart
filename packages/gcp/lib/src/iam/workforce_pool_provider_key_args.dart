@@ -11,20 +11,15 @@ class WorkforcePoolProviderKeyArgs {
   /// Immutable. Public half of the asymmetric key.
   /// Structure is documented below.
   final pulumi.Input<WorkforcePoolProviderKeyKeyData> keyData;
-
   /// The ID to use for the key, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
   final pulumi.Input<String> keyId;
-
   /// The location for the resource.
   final pulumi.Input<String> location;
-
   /// The ID of the provider.
   final pulumi.Input<String> providerId;
-
   /// The purpose of the key.
   /// Possible values are: `ENCRYPTION`.
   final pulumi.Input<String> use;
-
   /// The ID of the workforce pool.
   final pulumi.Input<String> workforcePoolId;
 
@@ -42,30 +37,28 @@ class WorkforcePoolProviderKeyArgs {
     required String providerId,
     required String use,
     required String workforcePoolId,
-  })  : keyData =
-            pulumi.Input.asInput<WorkforcePoolProviderKeyKeyData>(keyData),
-        keyId = pulumi.Input.asInput<String>(keyId),
-        location = pulumi.Input.asInput<String>(location),
-        providerId = pulumi.Input.asInput<String>(providerId),
-        use = pulumi.Input.asInput<String>(use),
-        workforcePoolId = pulumi.Input.asInput<String>(workforcePoolId);
+  }) :
+      keyData = pulumi.Input.asInput<WorkforcePoolProviderKeyKeyData>(keyData),
+      keyId = pulumi.Input.asInput<String>(keyId),
+      location = pulumi.Input.asInput<String>(location),
+      providerId = pulumi.Input.asInput<String>(providerId),
+      use = pulumi.Input.asInput<String>(use),
+      workforcePoolId = pulumi.Input.asInput<String>(workforcePoolId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['keyData'] = pulumi.Input.mapInputValue<WorkforcePoolProviderKeyKeyData,
-        Map<String, dynamic>>(keyData, (value) => value.toMap());
-    map['keyId'] = keyId;
-    map['location'] = location;
-    map['providerId'] = providerId;
-    map['use'] = use;
-    map['workforcePoolId'] = workforcePoolId;
-    return map;
+    return <String, dynamic>{
+      'keyData': pulumi.Input.mapInputValue<WorkforcePoolProviderKeyKeyData, Map<String, dynamic>>(keyData, (value) => value.toMap()),
+      'keyId': keyId,
+      'location': location,
+      'providerId': providerId,
+      'use': use,
+      'workforcePoolId': workforcePoolId,
+    };
   }
 
   factory WorkforcePoolProviderKeyArgs.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderKeyArgs(
-      keyData: WorkforcePoolProviderKeyKeyData.fromMap(
-          (map['keyData'] as Map).cast<String, dynamic>()),
+      keyData: WorkforcePoolProviderKeyKeyData.fromMap((map['keyData'] as Map).cast<String, dynamic>()),
       keyId: map['keyId'] as String,
       location: map['location'] as String,
       providerId: map['providerId'] as String,
@@ -74,3 +67,4 @@ class WorkforcePoolProviderKeyArgs {
     );
   }
 }
+

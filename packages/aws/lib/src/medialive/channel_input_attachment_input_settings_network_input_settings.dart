@@ -4,9 +4,7 @@ import 'channel_input_attachment_input_settings_network_input_settings_hls_input
 
 class ChannelInputAttachmentInputSettingsNetworkInputSettings {
   /// Specifies HLS input settings when the uri is for a HLS manifest. See HLS Input Settings for more details.
-  final ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings?
-      hlsInputSettings;
-
+  final ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings? hlsInputSettings;
   /// Check HTTPS server certificates.
   final String? serverValidation;
 
@@ -19,29 +17,17 @@ class ChannelInputAttachmentInputSettingsNetworkInputSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final hlsInputSettingsValue = hlsInputSettings;
-    if (hlsInputSettingsValue != null) {
-      map['hlsInputSettings'] = hlsInputSettingsValue.toMap();
-    }
-    final serverValidationValue = serverValidation;
-    if (serverValidationValue != null) {
-      map['serverValidation'] = serverValidationValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'hlsInputSettings': ?hlsInputSettings == null ? null : hlsInputSettings!.toMap(),
+      'serverValidation': ?serverValidation,
+    };
   }
 
-  factory ChannelInputAttachmentInputSettingsNetworkInputSettings.fromMap(
-      Map<String, dynamic> map) {
+  factory ChannelInputAttachmentInputSettingsNetworkInputSettings.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsNetworkInputSettings(
-      hlsInputSettings: map['hlsInputSettings'] == null
-          ? null
-          : ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings
-              .fromMap(
-                  (map['hlsInputSettings'] as Map).cast<String, dynamic>()),
-      serverValidation: map['serverValidation'] == null
-          ? null
-          : map['serverValidation'] as String,
+      hlsInputSettings: map['hlsInputSettings'] == null ? null : ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings.fromMap((map['hlsInputSettings'] as Map).cast<String, dynamic>()),
+      serverValidation: map['serverValidation'] == null ? null : map['serverValidation'] as String,
     );
   }
 }
+

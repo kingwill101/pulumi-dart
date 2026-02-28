@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A custom error rule.
 class CustomErrorRuleResponse {
   /// Mark this message as possible payload in error response. Otherwise, objects of this type will be filtered when they appear in error payload.
   final bool isErrorType;
-
   /// Selects messages to which this rule applies. Refer to selector for syntax details.
   final String selector;
 
@@ -17,10 +17,10 @@ class CustomErrorRuleResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['isErrorType'] = isErrorType;
-    map['selector'] = selector;
-    return map;
+    return <String, dynamic>{
+      'isErrorType': isErrorType,
+      'selector': selector,
+    };
   }
 
   factory CustomErrorRuleResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class CustomErrorRuleResponse {
     );
   }
 }
+

@@ -22,18 +22,19 @@ class GetOrganizationBucketViewArgs {
     required String location,
     required String organizationId,
     required String viewId,
-  })  : bucketId = pulumi.Input.asInput<String>(bucketId),
-        location = pulumi.Input.asInput<String>(location),
-        organizationId = pulumi.Input.asInput<String>(organizationId),
-        viewId = pulumi.Input.asInput<String>(viewId);
+  }) :
+      bucketId = pulumi.Input.asInput<String>(bucketId),
+      location = pulumi.Input.asInput<String>(location),
+      organizationId = pulumi.Input.asInput<String>(organizationId),
+      viewId = pulumi.Input.asInput<String>(viewId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucketId'] = bucketId;
-    map['location'] = location;
-    map['organizationId'] = organizationId;
-    map['viewId'] = viewId;
-    return map;
+    return <String, dynamic>{
+      'bucketId': bucketId,
+      'location': location,
+      'organizationId': organizationId,
+      'viewId': viewId,
+    };
   }
 
   factory GetOrganizationBucketViewArgs.fromMap(Map<String, dynamic> map) {
@@ -45,3 +46,4 @@ class GetOrganizationBucketViewArgs {
     );
   }
 }
+

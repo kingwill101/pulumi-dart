@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Standard options for isolating this app profile's traffic from other use cases.
 class StandardIsolationResponse {
   /// The priority of requests sent using this app profile.
@@ -12,9 +13,9 @@ class StandardIsolationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['priority'] = priority;
-    return map;
+    return <String, dynamic>{
+      'priority': priority,
+    };
   }
 
   factory StandardIsolationResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class StandardIsolationResponse {
     );
   }
 }
+

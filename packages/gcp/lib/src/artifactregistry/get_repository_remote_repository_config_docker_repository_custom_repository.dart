@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository {
   /// Specific uri to the registry, e.g. '"https://registry-1.docker.io"'
   final String uri;
@@ -11,15 +12,15 @@ class GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['uri'] = uri;
-    return map;
+    return <String, dynamic>{
+      'uri': uri,
+    };
   }
 
-  factory GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository.fromMap(
-      Map<String, dynamic> map) {
+  factory GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository.fromMap(Map<String, dynamic> map) {
     return GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository(
       uri: map['uri'] as String,
     );
   }
 }
+

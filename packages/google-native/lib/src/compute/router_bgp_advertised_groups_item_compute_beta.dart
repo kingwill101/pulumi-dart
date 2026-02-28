@@ -10,7 +10,7 @@ enum RouterBgpAdvertisedGroupsItemComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown RouterBgpAdvertisedGroupsItemComputeBeta value: $value');
+    throw ArgumentError('Unknown RouterBgpAdvertisedGroupsItemComputeBeta value: $value');
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetGroupMembershipsGroupMembershipMemberId {
   /// User identifier of the group member.
   final String userId;
@@ -11,15 +12,15 @@ class GetGroupMembershipsGroupMembershipMemberId {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['userId'] = userId;
-    return map;
+    return <String, dynamic>{
+      'userId': userId,
+    };
   }
 
-  factory GetGroupMembershipsGroupMembershipMemberId.fromMap(
-      Map<String, dynamic> map) {
+  factory GetGroupMembershipsGroupMembershipMemberId.fromMap(Map<String, dynamic> map) {
     return GetGroupMembershipsGroupMembershipMemberId(
       userId: map['userId'] as String,
     );
   }
 }
+

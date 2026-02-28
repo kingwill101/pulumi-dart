@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConversationProfileNewMessageEventNotificationConfig {
   /// Format of the message
   /// Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
   final String? messageFormat;
-
   /// Name of the Pub/Sub topic to publish conversation events
   final String? topic;
 
@@ -17,24 +17,17 @@ class ConversationProfileNewMessageEventNotificationConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final messageFormatValue = messageFormat;
-    if (messageFormatValue != null) {
-      map['messageFormat'] = messageFormatValue;
-    }
-    final topicValue = topic;
-    if (topicValue != null) {
-      map['topic'] = topicValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'messageFormat': ?messageFormat,
+      'topic': ?topic,
+    };
   }
 
-  factory ConversationProfileNewMessageEventNotificationConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory ConversationProfileNewMessageEventNotificationConfig.fromMap(Map<String, dynamic> map) {
     return ConversationProfileNewMessageEventNotificationConfig(
-      messageFormat:
-          map['messageFormat'] == null ? null : map['messageFormat'] as String,
+      messageFormat: map['messageFormat'] == null ? null : map['messageFormat'] as String,
       topic: map['topic'] == null ? null : map['topic'] as String,
     );
   }
 }
+

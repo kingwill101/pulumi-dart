@@ -14,7 +14,7 @@ enum NfsExportOptionsSecurityFlavorsItem {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown NfsExportOptionsSecurityFlavorsItem value: $value');
+    throw ArgumentError('Unknown NfsExportOptionsSecurityFlavorsItem value: $value');
   }
 }
+

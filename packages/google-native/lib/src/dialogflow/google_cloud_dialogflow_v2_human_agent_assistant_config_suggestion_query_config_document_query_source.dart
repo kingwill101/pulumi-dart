@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Document source settings. Supported features: SMART_REPLY, SMART_COMPOSE.
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource {
   /// Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, at most 5 documents are supported.
@@ -12,15 +13,15 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocum
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['documents'] = documents;
-    return map;
+    return <String, dynamic>{
+      'documents': documents,
+    };
   }
 
-  factory GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource(
       documents: (map['documents'] as List).cast<String>(),
     );
   }
 }
+

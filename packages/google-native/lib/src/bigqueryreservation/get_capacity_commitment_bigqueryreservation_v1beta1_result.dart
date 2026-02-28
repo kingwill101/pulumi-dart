@@ -6,28 +6,20 @@ import 'status_response_bigqueryreservation_v1beta1.dart';
 class GetCapacityCommitmentBigqueryreservationV1beta1Result {
   /// The end of the current commitment period. It is applicable only for ACTIVE capacity commitments.
   final String commitmentEndTime;
-
   /// The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
   final String commitmentStartTime;
-
   /// For FAILED commitment plan, provides the reason of failure.
   final StatusResponseBigqueryreservationV1beta1 failureStatus;
-
   /// Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
   final bool multiRegionAuxiliary;
-
   /// The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123` The commitment_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
   final String name;
-
   /// Capacity commitment commitment plan.
   final String plan;
-
   /// The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL commitments.
   final String renewalPlan;
-
   /// Number of slots in this commitment.
   final String slotCount;
-
   /// State of the commitment.
   final String state;
 
@@ -54,26 +46,24 @@ class GetCapacityCommitmentBigqueryreservationV1beta1Result {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['commitmentEndTime'] = commitmentEndTime;
-    map['commitmentStartTime'] = commitmentStartTime;
-    map['failureStatus'] = failureStatus.toMap();
-    map['multiRegionAuxiliary'] = multiRegionAuxiliary;
-    map['name'] = name;
-    map['plan'] = plan;
-    map['renewalPlan'] = renewalPlan;
-    map['slotCount'] = slotCount;
-    map['state'] = state;
-    return map;
+    return <String, dynamic>{
+      'commitmentEndTime': commitmentEndTime,
+      'commitmentStartTime': commitmentStartTime,
+      'failureStatus': failureStatus.toMap(),
+      'multiRegionAuxiliary': multiRegionAuxiliary,
+      'name': name,
+      'plan': plan,
+      'renewalPlan': renewalPlan,
+      'slotCount': slotCount,
+      'state': state,
+    };
   }
 
-  factory GetCapacityCommitmentBigqueryreservationV1beta1Result.fromMap(
-      Map<String, dynamic> map) {
+  factory GetCapacityCommitmentBigqueryreservationV1beta1Result.fromMap(Map<String, dynamic> map) {
     return GetCapacityCommitmentBigqueryreservationV1beta1Result(
       commitmentEndTime: map['commitmentEndTime'] as String,
       commitmentStartTime: map['commitmentStartTime'] as String,
-      failureStatus: StatusResponseBigqueryreservationV1beta1.fromMap(
-          (map['failureStatus'] as Map).cast<String, dynamic>()),
+      failureStatus: StatusResponseBigqueryreservationV1beta1.fromMap((map['failureStatus'] as Map).cast<String, dynamic>()),
       multiRegionAuxiliary: map['multiRegionAuxiliary'] as bool,
       name: map['name'] as String,
       plan: map['plan'] as String,
@@ -83,3 +73,4 @@ class GetCapacityCommitmentBigqueryreservationV1beta1Result {
     );
   }
 }
+

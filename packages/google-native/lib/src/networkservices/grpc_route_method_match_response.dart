@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Specifies a match against a method.
 class GrpcRouteMethodMatchResponse {
   /// Optional. Specifies that matches are case sensitive. The default value is true. case_sensitive must not be used with a type of REGULAR_EXPRESSION.
   final bool caseSensitive;
-
   /// Name of the method to match against. If unspecified, will match all methods.
   final String grpcMethod;
-
   /// Name of the service to match against. If unspecified, will match all services.
   final String grpcService;
-
   /// Optional. Specifies how to match against the name. If not specified, a default value of "EXACT" is used.
   final String type;
 
@@ -27,12 +25,12 @@ class GrpcRouteMethodMatchResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['caseSensitive'] = caseSensitive;
-    map['grpcMethod'] = grpcMethod;
-    map['grpcService'] = grpcService;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'caseSensitive': caseSensitive,
+      'grpcMethod': grpcMethod,
+      'grpcService': grpcService,
+      'type': type,
+    };
   }
 
   factory GrpcRouteMethodMatchResponse.fromMap(Map<String, dynamic> map) {
@@ -44,3 +42,4 @@ class GrpcRouteMethodMatchResponse {
     );
   }
 }
+

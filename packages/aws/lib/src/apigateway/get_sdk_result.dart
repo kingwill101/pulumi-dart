@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSdk.
 class GetSdkResult {
   /// SDK as a string.
   final String body;
-
   /// Content-disposition header value in the HTTP response.
   final String contentDisposition;
-
   /// Content-type header value in the HTTP response.
   final String contentType;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final Map<String, String>? parameters;
@@ -42,20 +40,17 @@ class GetSdkResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['body'] = body;
-    map['contentDisposition'] = contentDisposition;
-    map['contentType'] = contentType;
-    map['id'] = id;
-    final parametersValue = parameters;
-    if (parametersValue != null) {
-      map['parameters'] = parametersValue;
-    }
-    map['region'] = region;
-    map['restApiId'] = restApiId;
-    map['sdkType'] = sdkType;
-    map['stageName'] = stageName;
-    return map;
+    return <String, dynamic>{
+      'body': body,
+      'contentDisposition': contentDisposition,
+      'contentType': contentType,
+      'id': id,
+      'parameters': ?parameters,
+      'region': region,
+      'restApiId': restApiId,
+      'sdkType': sdkType,
+      'stageName': stageName,
+    };
   }
 
   factory GetSdkResult.fromMap(Map<String, dynamic> map) {
@@ -64,9 +59,7 @@ class GetSdkResult {
       contentDisposition: map['contentDisposition'] as String,
       contentType: map['contentType'] as String,
       id: map['id'] as String,
-      parameters: map['parameters'] == null
-          ? null
-          : (map['parameters'] as Map).cast<String, String>(),
+      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, String>(),
       region: map['region'] as String,
       restApiId: map['restApiId'] as String,
       sdkType: map['sdkType'] as String,
@@ -74,3 +67,4 @@ class GetSdkResult {
     );
   }
 }
+

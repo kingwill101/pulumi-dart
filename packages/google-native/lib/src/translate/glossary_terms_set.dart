@@ -15,24 +15,15 @@ class GlossaryTermsSet {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final termsValue = terms;
-    if (termsValue != null) {
-      map['terms'] =
-          pulumi.Input.encodeList<GlossaryTerm, Map<String, dynamic>>(
-              termsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'terms': ?terms == null ? null : pulumi.Input.encodeList<GlossaryTerm, Map<String, dynamic>>(terms!, (value) => value.toMap()),
+    };
   }
 
   factory GlossaryTermsSet.fromMap(Map<String, dynamic> map) {
     return GlossaryTermsSet(
-      terms: map['terms'] == null
-          ? null
-          : pulumi.Input.decodeList<GlossaryTerm>(
-              map['terms'],
-              (value) =>
-                  GlossaryTerm.fromMap((value as Map).cast<String, dynamic>())),
+      terms: map['terms'] == null ? null : pulumi.Input.decodeList<GlossaryTerm>(map['terms'], (value) => GlossaryTerm.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

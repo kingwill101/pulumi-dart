@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The bucket's logging configuration, which defines the destination bucket and optional name prefix for the current bucket's logs.
 class BucketLoggingResponse {
   /// The destination bucket where the current bucket's logs should be placed.
   final String logBucket;
-
   /// A prefix for log object names.
   final String logObjectPrefix;
 
@@ -17,10 +17,10 @@ class BucketLoggingResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['logBucket'] = logBucket;
-    map['logObjectPrefix'] = logObjectPrefix;
-    return map;
+    return <String, dynamic>{
+      'logBucket': logBucket,
+      'logObjectPrefix': logObjectPrefix,
+    };
   }
 
   factory BucketLoggingResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class BucketLoggingResponse {
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'chart_options_mode.dart';
 class ChartOptions {
   /// Preview: Configures whether the charted values are shown on the horizontal or vertical axis. By default, values are represented the vertical axis. This is a preview feature and may be subject to change before final release.
   final bool? displayHorizontal;
-
   /// The chart mode.
   final ChartOptionsMode? mode;
 
@@ -19,26 +18,17 @@ class ChartOptions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final displayHorizontalValue = displayHorizontal;
-    if (displayHorizontalValue != null) {
-      map['displayHorizontal'] = displayHorizontalValue;
-    }
-    final modeValue = mode;
-    if (modeValue != null) {
-      map['mode'] = modeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'displayHorizontal': ?displayHorizontal,
+      'mode': ?mode == null ? null : mode!.value,
+    };
   }
 
   factory ChartOptions.fromMap(Map<String, dynamic> map) {
     return ChartOptions(
-      displayHorizontal: map['displayHorizontal'] == null
-          ? null
-          : map['displayHorizontal'] as bool,
-      mode: map['mode'] == null
-          ? null
-          : ChartOptionsMode.fromValue(map['mode'] as String),
+      displayHorizontal: map['displayHorizontal'] == null ? null : map['displayHorizontal'] as bool,
+      mode: map['mode'] == null ? null : ChartOptionsMode.fromValue(map['mode'] as String),
     );
   }
 }
+

@@ -19,23 +19,20 @@ class GetRegionSslCertificateComputeBetaArgs {
     String? project,
     required String region,
     required String sslCertificate,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asInput<String>(region),
-        sslCertificate = pulumi.Input.asInput<String>(sslCertificate);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asInput<String>(region),
+      sslCertificate = pulumi.Input.asInput<String>(sslCertificate);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['region'] = region;
-    map['sslCertificate'] = sslCertificate;
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'region': region,
+      'sslCertificate': sslCertificate,
+    };
   }
 
-  factory GetRegionSslCertificateComputeBetaArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetRegionSslCertificateComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionSslCertificateComputeBetaArgs(
       project: map['project'] == null ? null : map['project'] as String,
       region: map['region'] as String,
@@ -43,3 +40,4 @@ class GetRegionSslCertificateComputeBetaArgs {
     );
   }
 }
+

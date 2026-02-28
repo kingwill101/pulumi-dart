@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetManagedPrefixListEntry {
   final String cidr;
   final String description;
@@ -13,10 +14,10 @@ class GetManagedPrefixListEntry {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cidr'] = cidr;
-    map['description'] = description;
-    return map;
+    return <String, dynamic>{
+      'cidr': cidr,
+      'description': description,
+    };
   }
 
   factory GetManagedPrefixListEntry.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class GetManagedPrefixListEntry {
     );
   }
 }
+

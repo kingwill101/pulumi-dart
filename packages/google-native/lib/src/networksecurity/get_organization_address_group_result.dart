@@ -1,31 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getOrganizationAddressGroup.
 class GetOrganizationAddressGroupResult {
   /// Capacity of the Address Group
   final int capacity;
-
   /// The timestamp when the resource was created.
   final String createTime;
-
   /// Optional. Free-text description of the resource.
   final String description;
-
   /// Optional. List of items.
   final List<String> items;
-
   /// Optional. Set of label tags associated with the AddressGroup resource.
   final Map<String, String> labels;
-
   /// Name of the AddressGroup resource. It matches pattern `projects/*/locations/{location}/addressGroups/`.
   final String name;
-
   /// Server-defined fully-qualified URL for this resource.
   final String selfLink;
-
   /// The type of the Address Group. Possible values are "IPv4" or "IPV6".
   final String type;
-
   /// The timestamp when the resource was updated.
   final String updateTime;
 
@@ -52,17 +45,17 @@ class GetOrganizationAddressGroupResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['capacity'] = capacity;
-    map['createTime'] = createTime;
-    map['description'] = description;
-    map['items'] = items;
-    map['labels'] = labels;
-    map['name'] = name;
-    map['selfLink'] = selfLink;
-    map['type'] = type;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'capacity': capacity,
+      'createTime': createTime,
+      'description': description,
+      'items': items,
+      'labels': labels,
+      'name': name,
+      'selfLink': selfLink,
+      'type': type,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetOrganizationAddressGroupResult.fromMap(Map<String, dynamic> map) {
@@ -79,3 +72,4 @@ class GetOrganizationAddressGroupResult {
     );
   }
 }
+

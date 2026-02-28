@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TargetSiteSiteVerificationInfo {
   /// Site verification state indicating the ownership and validity.
   /// Possible values are: `VERIFIED`, `UNVERIFIED`, `EXEMPTED`.
   final String? siteVerificationState;
-
   /// Latest site verification time.
   final String? verifyTime;
 
@@ -17,25 +17,17 @@ class TargetSiteSiteVerificationInfo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final siteVerificationStateValue = siteVerificationState;
-    if (siteVerificationStateValue != null) {
-      map['siteVerificationState'] = siteVerificationStateValue;
-    }
-    final verifyTimeValue = verifyTime;
-    if (verifyTimeValue != null) {
-      map['verifyTime'] = verifyTimeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'siteVerificationState': ?siteVerificationState,
+      'verifyTime': ?verifyTime,
+    };
   }
 
   factory TargetSiteSiteVerificationInfo.fromMap(Map<String, dynamic> map) {
     return TargetSiteSiteVerificationInfo(
-      siteVerificationState: map['siteVerificationState'] == null
-          ? null
-          : map['siteVerificationState'] as String,
-      verifyTime:
-          map['verifyTime'] == null ? null : map['verifyTime'] as String,
+      siteVerificationState: map['siteVerificationState'] == null ? null : map['siteVerificationState'] as String,
+      verifyTime: map['verifyTime'] == null ? null : map['verifyTime'] as String,
     );
   }
 }
+

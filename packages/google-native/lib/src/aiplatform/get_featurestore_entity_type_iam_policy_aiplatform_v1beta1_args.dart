@@ -25,40 +25,31 @@ class GetFeaturestoreEntityTypeIamPolicyAiplatformV1beta1Args {
     required String location,
     int? optionsRequestedPolicyVersion,
     String? project,
-  })  : entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
-        featurestoreId = pulumi.Input.asInput<String>(featurestoreId),
-        location = pulumi.Input.asInput<String>(location),
-        optionsRequestedPolicyVersion =
-            pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
+      featurestoreId = pulumi.Input.asInput<String>(featurestoreId),
+      location = pulumi.Input.asInput<String>(location),
+      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['entityTypeId'] = entityTypeId;
-    map['featurestoreId'] = featurestoreId;
-    map['location'] = location;
-    final optionsRequestedPolicyVersionValue = optionsRequestedPolicyVersion;
-    if (optionsRequestedPolicyVersionValue != null) {
-      map['optionsRequestedPolicyVersion'] = optionsRequestedPolicyVersionValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'entityTypeId': entityTypeId,
+      'featurestoreId': featurestoreId,
+      'location': location,
+      'optionsRequestedPolicyVersion': ?optionsRequestedPolicyVersion,
+      'project': ?project,
+    };
   }
 
-  factory GetFeaturestoreEntityTypeIamPolicyAiplatformV1beta1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetFeaturestoreEntityTypeIamPolicyAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetFeaturestoreEntityTypeIamPolicyAiplatformV1beta1Args(
       entityTypeId: map['entityTypeId'] as String,
       featurestoreId: map['featurestoreId'] as String,
       location: map['location'] as String,
-      optionsRequestedPolicyVersion:
-          map['optionsRequestedPolicyVersion'] == null
-              ? null
-              : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

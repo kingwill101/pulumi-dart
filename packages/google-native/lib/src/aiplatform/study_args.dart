@@ -12,7 +12,6 @@ class StudyArgs {
   final pulumi.Input<String> displayName;
   final pulumi.Input<String>? location;
   final pulumi.Input<String>? project;
-
   /// Configuration of the Study.
   final pulumi.Input<GoogleCloudAiplatformV1StudySpec> studySpec;
 
@@ -26,27 +25,19 @@ class StudyArgs {
     String? location,
     String? project,
     required GoogleCloudAiplatformV1StudySpec studySpec,
-  })  : displayName = pulumi.Input.asInput<String>(displayName),
-        location = pulumi.Input.asOptionalInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        studySpec =
-            pulumi.Input.asInput<GoogleCloudAiplatformV1StudySpec>(studySpec);
+  }) :
+      displayName = pulumi.Input.asInput<String>(displayName),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      studySpec = pulumi.Input.asInput<GoogleCloudAiplatformV1StudySpec>(studySpec);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['displayName'] = displayName;
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['studySpec'] = pulumi.Input.mapInputValue<
-        GoogleCloudAiplatformV1StudySpec,
-        Map<String, dynamic>>(studySpec, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'displayName': displayName,
+      'location': ?location,
+      'project': ?project,
+      'studySpec': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1StudySpec, Map<String, dynamic>>(studySpec, (value) => value.toMap()),
+    };
   }
 
   factory StudyArgs.fromMap(Map<String, dynamic> map) {
@@ -54,8 +45,8 @@ class StudyArgs {
       displayName: map['displayName'] as String,
       location: map['location'] == null ? null : map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      studySpec: GoogleCloudAiplatformV1StudySpec.fromMap(
-          (map['studySpec'] as Map).cast<String, dynamic>()),
+      studySpec: GoogleCloudAiplatformV1StudySpec.fromMap((map['studySpec'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

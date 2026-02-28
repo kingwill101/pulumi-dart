@@ -6,7 +6,6 @@ import 'index_config_type.dart';
 class IndexConfig {
   /// The LogEntry field path to index.Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation( https://cloud.google.com/logging/docs/view/advanced-queries#indexed-fields) for details.For example: jsonPayload.request.status
   final String fieldPath;
-
   /// The type of data in this index.
   final IndexConfigType type;
 
@@ -19,10 +18,10 @@ class IndexConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['fieldPath'] = fieldPath;
-    map['type'] = type.value;
-    return map;
+    return <String, dynamic>{
+      'fieldPath': fieldPath,
+      'type': type.value,
+    };
   }
 
   factory IndexConfig.fromMap(Map<String, dynamic> map) {
@@ -32,3 +31,4 @@ class IndexConfig {
     );
   }
 }
+

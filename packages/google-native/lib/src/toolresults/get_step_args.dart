@@ -22,21 +22,19 @@ class GetStepArgs {
     required String historyId,
     String? project,
     required String stepId,
-  })  : executionId = pulumi.Input.asInput<String>(executionId),
-        historyId = pulumi.Input.asInput<String>(historyId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        stepId = pulumi.Input.asInput<String>(stepId);
+  }) :
+      executionId = pulumi.Input.asInput<String>(executionId),
+      historyId = pulumi.Input.asInput<String>(historyId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      stepId = pulumi.Input.asInput<String>(stepId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['executionId'] = executionId;
-    map['historyId'] = historyId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['stepId'] = stepId;
-    return map;
+    return <String, dynamic>{
+      'executionId': executionId,
+      'historyId': historyId,
+      'project': ?project,
+      'stepId': stepId,
+    };
   }
 
   factory GetStepArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetStepArgs {
     );
   }
 }
+

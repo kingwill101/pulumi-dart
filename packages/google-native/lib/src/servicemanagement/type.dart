@@ -10,22 +10,16 @@ import 'type_syntax.dart';
 class Type {
   /// The source edition string, only valid when syntax is SYNTAX_EDITIONS.
   final String? edition;
-
   /// The list of fields.
   final List<Field>? fields;
-
   /// The fully qualified message name.
   final String? name;
-
   /// The list of types appearing in `oneof` definitions in this type.
   final List<String>? oneofs;
-
   /// The protocol buffer options.
   final List<Option>? options;
-
   /// The source context.
   final SourceContext? sourceContext;
-
   /// The source syntax.
   final TypeSyntax? syntax;
 
@@ -48,63 +42,27 @@ class Type {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final editionValue = edition;
-    if (editionValue != null) {
-      map['edition'] = editionValue;
-    }
-    final fieldsValue = fields;
-    if (fieldsValue != null) {
-      map['fields'] = pulumi.Input.encodeList<Field, Map<String, dynamic>>(
-          fieldsValue, (value) => value.toMap());
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final oneofsValue = oneofs;
-    if (oneofsValue != null) {
-      map['oneofs'] = oneofsValue;
-    }
-    final optionsValue = options;
-    if (optionsValue != null) {
-      map['options'] = pulumi.Input.encodeList<Option, Map<String, dynamic>>(
-          optionsValue, (value) => value.toMap());
-    }
-    final sourceContextValue = sourceContext;
-    if (sourceContextValue != null) {
-      map['sourceContext'] = sourceContextValue.toMap();
-    }
-    final syntaxValue = syntax;
-    if (syntaxValue != null) {
-      map['syntax'] = syntaxValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'edition': ?edition,
+      'fields': ?fields == null ? null : pulumi.Input.encodeList<Field, Map<String, dynamic>>(fields!, (value) => value.toMap()),
+      'name': ?name,
+      'oneofs': ?oneofs,
+      'options': ?options == null ? null : pulumi.Input.encodeList<Option, Map<String, dynamic>>(options!, (value) => value.toMap()),
+      'sourceContext': ?sourceContext == null ? null : sourceContext!.toMap(),
+      'syntax': ?syntax == null ? null : syntax!.value,
+    };
   }
 
   factory Type.fromMap(Map<String, dynamic> map) {
     return Type(
       edition: map['edition'] == null ? null : map['edition'] as String,
-      fields: map['fields'] == null
-          ? null
-          : pulumi.Input.decodeList<Field>(map['fields'],
-              (value) => Field.fromMap((value as Map).cast<String, dynamic>())),
+      fields: map['fields'] == null ? null : pulumi.Input.decodeList<Field>(map['fields'], (value) => Field.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] == null ? null : map['name'] as String,
-      oneofs:
-          map['oneofs'] == null ? null : (map['oneofs'] as List).cast<String>(),
-      options: map['options'] == null
-          ? null
-          : pulumi.Input.decodeList<Option>(
-              map['options'],
-              (value) =>
-                  Option.fromMap((value as Map).cast<String, dynamic>())),
-      sourceContext: map['sourceContext'] == null
-          ? null
-          : SourceContext.fromMap(
-              (map['sourceContext'] as Map).cast<String, dynamic>()),
-      syntax: map['syntax'] == null
-          ? null
-          : TypeSyntax.fromValue(map['syntax'] as String),
+      oneofs: map['oneofs'] == null ? null : (map['oneofs'] as List).cast<String>(),
+      options: map['options'] == null ? null : pulumi.Input.decodeList<Option>(map['options'], (value) => Option.fromMap((value as Map).cast<String, dynamic>())),
+      sourceContext: map['sourceContext'] == null ? null : SourceContext.fromMap((map['sourceContext'] as Map).cast<String, dynamic>()),
+      syntax: map['syntax'] == null ? null : TypeSyntax.fromValue(map['syntax'] as String),
     );
   }
 }
+

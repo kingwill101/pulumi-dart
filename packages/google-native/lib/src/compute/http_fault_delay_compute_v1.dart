@@ -6,7 +6,6 @@ import 'duration_compute_v1.dart';
 class HttpFaultDelayComputeV1 {
   /// Specifies the value of the fixed delay interval.
   final DurationComputeV1? fixedDelay;
-
   /// The percentage of traffic for connections, operations, or requests for which a delay is introduced as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
   final double? percentage;
 
@@ -19,26 +18,17 @@ class HttpFaultDelayComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final fixedDelayValue = fixedDelay;
-    if (fixedDelayValue != null) {
-      map['fixedDelay'] = fixedDelayValue.toMap();
-    }
-    final percentageValue = percentage;
-    if (percentageValue != null) {
-      map['percentage'] = percentageValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'fixedDelay': ?fixedDelay == null ? null : fixedDelay!.toMap(),
+      'percentage': ?percentage,
+    };
   }
 
   factory HttpFaultDelayComputeV1.fromMap(Map<String, dynamic> map) {
     return HttpFaultDelayComputeV1(
-      fixedDelay: map['fixedDelay'] == null
-          ? null
-          : DurationComputeV1.fromMap(
-              (map['fixedDelay'] as Map).cast<String, dynamic>()),
-      percentage:
-          map['percentage'] == null ? null : map['percentage'] as double,
+      fixedDelay: map['fixedDelay'] == null ? null : DurationComputeV1.fromMap((map['fixedDelay'] as Map).cast<String, dynamic>()),
+      percentage: map['percentage'] == null ? null : map['percentage'] as double,
     );
   }
 }
+

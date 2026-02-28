@@ -5,9 +5,7 @@ import 'prevention_deidentify_template_deidentify_config_record_transformations_
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions {
   /// Conditions to apply to the expression.
   /// Structure is documented below.
-  final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions?
-      conditions;
-
+  final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions? conditions;
   /// The operator to apply to the result of conditions. Default and currently only supported value is AND.
   /// Default value is `AND`.
   /// Possible values are: `AND`.
@@ -22,28 +20,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final conditionsValue = conditions;
-    if (conditionsValue != null) {
-      map['conditions'] = conditionsValue.toMap();
-    }
-    final logicalOperatorValue = logicalOperator;
-    if (logicalOperatorValue != null) {
-      map['logicalOperator'] = logicalOperatorValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'conditions': ?conditions == null ? null : conditions!.toMap(),
+      'logicalOperator': ?logicalOperator,
+    };
   }
 
-  factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions.fromMap(
-      Map<String, dynamic> map) {
+  factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions(
-      conditions: map['conditions'] == null
-          ? null
-          : PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions
-              .fromMap((map['conditions'] as Map).cast<String, dynamic>()),
-      logicalOperator: map['logicalOperator'] == null
-          ? null
-          : map['logicalOperator'] as String,
+      conditions: map['conditions'] == null ? null : PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions.fromMap((map['conditions'] as Map).cast<String, dynamic>()),
+      logicalOperator: map['logicalOperator'] == null ? null : map['logicalOperator'] as String,
     );
   }
 }
+

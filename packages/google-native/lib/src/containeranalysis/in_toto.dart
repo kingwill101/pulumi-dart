@@ -8,17 +8,13 @@ import 'signing_key.dart';
 class InToto {
   /// This field contains the expected command used to perform the step.
   final List<String>? expectedCommand;
-
   /// The following fields contain in-toto artifact rules identifying the artifacts that enter this supply chain step, and exit the supply chain step, i.e. materials and products of the step.
   final List<ArtifactRule>? expectedMaterials;
   final List<ArtifactRule>? expectedProducts;
-
   /// This field contains the public keys that can be used to verify the signatures on the step metadata.
   final List<SigningKey>? signingKeys;
-
   /// This field identifies the name of the step in the supply chain.
   final String? stepName;
-
   /// This field contains a value that indicates the minimum number of keys that need to be used to sign the step's in-toto link.
   final String? threshold;
 
@@ -39,65 +35,25 @@ class InToto {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final expectedCommandValue = expectedCommand;
-    if (expectedCommandValue != null) {
-      map['expectedCommand'] = expectedCommandValue;
-    }
-    final expectedMaterialsValue = expectedMaterials;
-    if (expectedMaterialsValue != null) {
-      map['expectedMaterials'] =
-          pulumi.Input.encodeList<ArtifactRule, Map<String, dynamic>>(
-              expectedMaterialsValue, (value) => value.toMap());
-    }
-    final expectedProductsValue = expectedProducts;
-    if (expectedProductsValue != null) {
-      map['expectedProducts'] =
-          pulumi.Input.encodeList<ArtifactRule, Map<String, dynamic>>(
-              expectedProductsValue, (value) => value.toMap());
-    }
-    final signingKeysValue = signingKeys;
-    if (signingKeysValue != null) {
-      map['signingKeys'] =
-          pulumi.Input.encodeList<SigningKey, Map<String, dynamic>>(
-              signingKeysValue, (value) => value.toMap());
-    }
-    final stepNameValue = stepName;
-    if (stepNameValue != null) {
-      map['stepName'] = stepNameValue;
-    }
-    final thresholdValue = threshold;
-    if (thresholdValue != null) {
-      map['threshold'] = thresholdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'expectedCommand': ?expectedCommand,
+      'expectedMaterials': ?expectedMaterials == null ? null : pulumi.Input.encodeList<ArtifactRule, Map<String, dynamic>>(expectedMaterials!, (value) => value.toMap()),
+      'expectedProducts': ?expectedProducts == null ? null : pulumi.Input.encodeList<ArtifactRule, Map<String, dynamic>>(expectedProducts!, (value) => value.toMap()),
+      'signingKeys': ?signingKeys == null ? null : pulumi.Input.encodeList<SigningKey, Map<String, dynamic>>(signingKeys!, (value) => value.toMap()),
+      'stepName': ?stepName,
+      'threshold': ?threshold,
+    };
   }
 
   factory InToto.fromMap(Map<String, dynamic> map) {
     return InToto(
-      expectedCommand: map['expectedCommand'] == null
-          ? null
-          : (map['expectedCommand'] as List).cast<String>(),
-      expectedMaterials: map['expectedMaterials'] == null
-          ? null
-          : pulumi.Input.decodeList<ArtifactRule>(
-              map['expectedMaterials'],
-              (value) =>
-                  ArtifactRule.fromMap((value as Map).cast<String, dynamic>())),
-      expectedProducts: map['expectedProducts'] == null
-          ? null
-          : pulumi.Input.decodeList<ArtifactRule>(
-              map['expectedProducts'],
-              (value) =>
-                  ArtifactRule.fromMap((value as Map).cast<String, dynamic>())),
-      signingKeys: map['signingKeys'] == null
-          ? null
-          : pulumi.Input.decodeList<SigningKey>(
-              map['signingKeys'],
-              (value) =>
-                  SigningKey.fromMap((value as Map).cast<String, dynamic>())),
+      expectedCommand: map['expectedCommand'] == null ? null : (map['expectedCommand'] as List).cast<String>(),
+      expectedMaterials: map['expectedMaterials'] == null ? null : pulumi.Input.decodeList<ArtifactRule>(map['expectedMaterials'], (value) => ArtifactRule.fromMap((value as Map).cast<String, dynamic>())),
+      expectedProducts: map['expectedProducts'] == null ? null : pulumi.Input.decodeList<ArtifactRule>(map['expectedProducts'], (value) => ArtifactRule.fromMap((value as Map).cast<String, dynamic>())),
+      signingKeys: map['signingKeys'] == null ? null : pulumi.Input.decodeList<SigningKey>(map['signingKeys'], (value) => SigningKey.fromMap((value as Map).cast<String, dynamic>())),
       stepName: map['stepName'] == null ? null : map['stepName'] as String,
       threshold: map['threshold'] == null ? null : map['threshold'] as String,
     );
   }
 }
+

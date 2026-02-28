@@ -9,10 +9,7 @@ class URLMapPathMatcherRouteRuleCustomErrorResponsePolicy {
   /// For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX).
   /// If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
   /// Structure is documented below.
-  final List<
-          URLMapPathMatcherRouteRuleCustomErrorResponsePolicyErrorResponseRule>?
-      errorResponseRules;
-
+  final List<URLMapPathMatcherRouteRuleCustomErrorResponsePolicyErrorResponseRule>? errorResponseRules;
   /// The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
   /// https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
   /// compute/v1/projects/project/global/backendBuckets/myBackendBucket
@@ -30,34 +27,17 @@ class URLMapPathMatcherRouteRuleCustomErrorResponsePolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final errorResponseRulesValue = errorResponseRules;
-    if (errorResponseRulesValue != null) {
-      map['errorResponseRules'] = pulumi.Input.encodeList<
-          URLMapPathMatcherRouteRuleCustomErrorResponsePolicyErrorResponseRule,
-          Map<String,
-              dynamic>>(errorResponseRulesValue, (value) => value.toMap());
-    }
-    final errorServiceValue = errorService;
-    if (errorServiceValue != null) {
-      map['errorService'] = errorServiceValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'errorResponseRules': ?errorResponseRules == null ? null : pulumi.Input.encodeList<URLMapPathMatcherRouteRuleCustomErrorResponsePolicyErrorResponseRule, Map<String, dynamic>>(errorResponseRules!, (value) => value.toMap()),
+      'errorService': ?errorService,
+    };
   }
 
-  factory URLMapPathMatcherRouteRuleCustomErrorResponsePolicy.fromMap(
-      Map<String, dynamic> map) {
+  factory URLMapPathMatcherRouteRuleCustomErrorResponsePolicy.fromMap(Map<String, dynamic> map) {
     return URLMapPathMatcherRouteRuleCustomErrorResponsePolicy(
-      errorResponseRules: map['errorResponseRules'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  URLMapPathMatcherRouteRuleCustomErrorResponsePolicyErrorResponseRule>(
-              map['errorResponseRules'],
-              (value) =>
-                  URLMapPathMatcherRouteRuleCustomErrorResponsePolicyErrorResponseRule
-                      .fromMap((value as Map).cast<String, dynamic>())),
-      errorService:
-          map['errorService'] == null ? null : map['errorService'] as String,
+      errorResponseRules: map['errorResponseRules'] == null ? null : pulumi.Input.decodeList<URLMapPathMatcherRouteRuleCustomErrorResponsePolicyErrorResponseRule>(map['errorResponseRules'], (value) => URLMapPathMatcherRouteRuleCustomErrorResponsePolicyErrorResponseRule.fromMap((value as Map).cast<String, dynamic>())),
+      errorService: map['errorService'] == null ? null : map['errorService'] as String,
     );
   }
 }
+

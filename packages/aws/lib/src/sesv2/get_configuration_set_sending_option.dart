@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetConfigurationSetSendingOption {
   /// Specifies whether email sending is enabled.
   final bool sendingEnabled;
@@ -11,9 +12,9 @@ class GetConfigurationSetSendingOption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['sendingEnabled'] = sendingEnabled;
-    return map;
+    return <String, dynamic>{
+      'sendingEnabled': sendingEnabled,
+    };
   }
 
   factory GetConfigurationSetSendingOption.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetConfigurationSetSendingOption {
     );
   }
 }
+

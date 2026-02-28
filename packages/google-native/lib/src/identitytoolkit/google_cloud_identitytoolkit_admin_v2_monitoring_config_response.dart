@@ -14,17 +14,15 @@ class GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['requestLogging'] = requestLogging.toMap();
-    return map;
+    return <String, dynamic>{
+      'requestLogging': requestLogging.toMap(),
+    };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse(
-      requestLogging:
-          GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponse.fromMap(
-              (map['requestLogging'] as Map).cast<String, dynamic>()),
+      requestLogging: GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponse.fromMap((map['requestLogging'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

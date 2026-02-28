@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsAcceleratorTotalMemoryMib {
   final int? max;
   final int? min;
@@ -13,23 +14,17 @@ class GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsAcceler
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final maxValue = max;
-    if (maxValue != null) {
-      map['max'] = maxValue;
-    }
-    final minValue = min;
-    if (minValue != null) {
-      map['min'] = minValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'max': ?max,
+      'min': ?min,
+    };
   }
 
-  factory GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsAcceleratorTotalMemoryMib.fromMap(
-      Map<String, dynamic> map) {
+  factory GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsAcceleratorTotalMemoryMib.fromMap(Map<String, dynamic> map) {
     return GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsAcceleratorTotalMemoryMib(
       max: map['max'] == null ? null : map['max'] as int,
       min: map['min'] == null ? null : map['min'] as int,
     );
   }
 }
+

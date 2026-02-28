@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CapacityProviderVpcConfig {
   /// List of security group IDs for the VPC.
   final List<String> securityGroupIds;
-
   /// List of subnet IDs for the VPC.
   final List<String> subnetIds;
 
@@ -16,10 +16,10 @@ class CapacityProviderVpcConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['securityGroupIds'] = securityGroupIds;
-    map['subnetIds'] = subnetIds;
-    return map;
+    return <String, dynamic>{
+      'securityGroupIds': securityGroupIds,
+      'subnetIds': subnetIds,
+    };
   }
 
   factory CapacityProviderVpcConfig.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class CapacityProviderVpcConfig {
     );
   }
 }
+

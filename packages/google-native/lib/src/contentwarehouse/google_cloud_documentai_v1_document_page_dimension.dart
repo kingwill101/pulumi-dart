@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Dimension for the page.
 class GoogleCloudDocumentaiV1DocumentPageDimension {
   /// Page height.
   final double? height;
-
   /// Dimension unit.
   final String? unit;
-
   /// Page width.
   final double? width;
 
@@ -22,24 +21,14 @@ class GoogleCloudDocumentaiV1DocumentPageDimension {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final heightValue = height;
-    if (heightValue != null) {
-      map['height'] = heightValue;
-    }
-    final unitValue = unit;
-    if (unitValue != null) {
-      map['unit'] = unitValue;
-    }
-    final widthValue = width;
-    if (widthValue != null) {
-      map['width'] = widthValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'height': ?height,
+      'unit': ?unit,
+      'width': ?width,
+    };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentPageDimension.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentPageDimension.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageDimension(
       height: map['height'] == null ? null : map['height'] as double,
       unit: map['unit'] == null ? null : map['unit'] as String,
@@ -47,3 +36,4 @@ class GoogleCloudDocumentaiV1DocumentPageDimension {
     );
   }
 }
+

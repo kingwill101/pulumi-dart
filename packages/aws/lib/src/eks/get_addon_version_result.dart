@@ -1,15 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getAddonVersion.
 class GetAddonVersionResult {
   final String addonName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String kubernetesVersion;
   final bool? mostRecent;
   final String region;
-
   /// Version of the EKS add-on.
   final String version;
 
@@ -30,17 +29,14 @@ class GetAddonVersionResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['addonName'] = addonName;
-    map['id'] = id;
-    map['kubernetesVersion'] = kubernetesVersion;
-    final mostRecentValue = mostRecent;
-    if (mostRecentValue != null) {
-      map['mostRecent'] = mostRecentValue;
-    }
-    map['region'] = region;
-    map['version'] = version;
-    return map;
+    return <String, dynamic>{
+      'addonName': addonName,
+      'id': id,
+      'kubernetesVersion': kubernetesVersion,
+      'mostRecent': ?mostRecent,
+      'region': region,
+      'version': version,
+    };
   }
 
   factory GetAddonVersionResult.fromMap(Map<String, dynamic> map) {
@@ -54,3 +50,4 @@ class GetAddonVersionResult {
     );
   }
 }
+

@@ -14,3 +14,4 @@ enum ImageSourceTypeComputeV1 {
     throw ArgumentError('Unknown ImageSourceTypeComputeV1 value: $value');
   }
 }
+

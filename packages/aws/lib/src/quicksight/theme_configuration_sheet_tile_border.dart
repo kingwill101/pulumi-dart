@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ThemeConfigurationSheetTileBorder {
   /// The option to enable display of borders for visuals.
   final bool? show;
@@ -11,12 +12,9 @@ class ThemeConfigurationSheetTileBorder {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final showValue = show;
-    if (showValue != null) {
-      map['show'] = showValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'show': ?show,
+    };
   }
 
   factory ThemeConfigurationSheetTileBorder.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class ThemeConfigurationSheetTileBorder {
     );
   }
 }
+

@@ -7,9 +7,7 @@ class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType {
   /// not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
   /// specified in another InfoTypeLimit.
   /// Structure is documented below.
-  final PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoType?
-      infoType;
-
+  final PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoType? infoType;
   /// Max findings limit for the given infoType.
   final int? maxFindings;
 
@@ -22,27 +20,17 @@ class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final infoTypeValue = infoType;
-    if (infoTypeValue != null) {
-      map['infoType'] = infoTypeValue.toMap();
-    }
-    final maxFindingsValue = maxFindings;
-    if (maxFindingsValue != null) {
-      map['maxFindings'] = maxFindingsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'infoType': ?infoType == null ? null : infoType!.toMap(),
+      'maxFindings': ?maxFindings,
+    };
   }
 
-  factory PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType.fromMap(
-      Map<String, dynamic> map) {
+  factory PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType(
-      infoType: map['infoType'] == null
-          ? null
-          : PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoType
-              .fromMap((map['infoType'] as Map).cast<String, dynamic>()),
-      maxFindings:
-          map['maxFindings'] == null ? null : map['maxFindings'] as int,
+      infoType: map['infoType'] == null ? null : PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoType.fromMap((map['infoType'] as Map).cast<String, dynamic>()),
+      maxFindings: map['maxFindings'] == null ? null : map['maxFindings'] as int,
     );
   }
 }
+

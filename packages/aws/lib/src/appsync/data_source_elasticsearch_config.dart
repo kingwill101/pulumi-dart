@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataSourceElasticsearchConfig {
   /// HTTP endpoint of the Elasticsearch domain.
   final String endpoint;
-
   /// AWS region of Elasticsearch domain. Defaults to current region.
   final String? region;
 
@@ -16,13 +16,10 @@ class DataSourceElasticsearchConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['endpoint'] = endpoint;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'endpoint': endpoint,
+      'region': ?region,
+    };
   }
 
   factory DataSourceElasticsearchConfig.fromMap(Map<String, dynamic> map) {
@@ -32,3 +29,4 @@ class DataSourceElasticsearchConfig {
     );
   }
 }
+

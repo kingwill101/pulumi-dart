@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DeploymentGroupTriggerConfiguration {
   /// The event type or types for which notifications are triggered. Some values that are supported: `DeploymentStart`, `DeploymentSuccess`, `DeploymentFailure`, `DeploymentStop`, `DeploymentRollback`, `InstanceStart`, `InstanceSuccess`, `InstanceFailure`.  See [the CodeDeploy documentation](http://docs.aws.amazon.com/codedeploy/latest/userguide/monitoring-sns-event-notifications-create-trigger.html) for all possible values.
   final List<String> triggerEvents;
-
   /// The name of the notification trigger.
   final String triggerName;
-
   /// The ARN of the SNS topic through which notifications are sent.
   final String triggerTargetArn;
 
@@ -21,15 +20,14 @@ class DeploymentGroupTriggerConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['triggerEvents'] = triggerEvents;
-    map['triggerName'] = triggerName;
-    map['triggerTargetArn'] = triggerTargetArn;
-    return map;
+    return <String, dynamic>{
+      'triggerEvents': triggerEvents,
+      'triggerName': triggerName,
+      'triggerTargetArn': triggerTargetArn,
+    };
   }
 
-  factory DeploymentGroupTriggerConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory DeploymentGroupTriggerConfiguration.fromMap(Map<String, dynamic> map) {
     return DeploymentGroupTriggerConfiguration(
       triggerEvents: (map['triggerEvents'] as List).cast<String>(),
       triggerName: map['triggerName'] as String,
@@ -37,3 +35,4 @@ class DeploymentGroupTriggerConfiguration {
     );
   }
 }
+

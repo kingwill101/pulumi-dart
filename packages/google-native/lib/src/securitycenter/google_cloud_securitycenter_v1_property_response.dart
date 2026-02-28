@@ -6,7 +6,6 @@ import 'expr_response.dart';
 class GoogleCloudSecuritycenterV1PropertyResponse {
   /// Name of the property for the custom output.
   final String name;
-
   /// The CEL expression for the custom output. A resource property can be specified to return the value of the property or a text string enclosed in quotation marks.
   final ExprResponse valueExpression;
 
@@ -19,18 +18,17 @@ class GoogleCloudSecuritycenterV1PropertyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['valueExpression'] = valueExpression.toMap();
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'valueExpression': valueExpression.toMap(),
+    };
   }
 
-  factory GoogleCloudSecuritycenterV1PropertyResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudSecuritycenterV1PropertyResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudSecuritycenterV1PropertyResponse(
       name: map['name'] as String,
-      valueExpression: ExprResponse.fromMap(
-          (map['valueExpression'] as Map).cast<String, dynamic>()),
+      valueExpression: ExprResponse.fromMap((map['valueExpression'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

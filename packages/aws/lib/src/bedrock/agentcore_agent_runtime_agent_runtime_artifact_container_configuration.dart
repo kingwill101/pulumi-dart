@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfiguration {
   /// URI of the container image in Amazon ECR.
   final String containerUri;
@@ -11,15 +12,15 @@ class AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['containerUri'] = containerUri;
-    return map;
+    return <String, dynamic>{
+      'containerUri': containerUri,
+    };
   }
 
-  factory AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfiguration(
       containerUri: map['containerUri'] as String,
     );
   }
 }
+

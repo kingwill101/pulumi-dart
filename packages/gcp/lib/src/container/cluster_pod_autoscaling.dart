@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterPodAutoscaling {
   /// Enable the Horizontal Pod Autoscaling profile for this cluster.
   /// Acceptable values are:
@@ -15,9 +16,9 @@ class ClusterPodAutoscaling {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['hpaProfile'] = hpaProfile;
-    return map;
+    return <String, dynamic>{
+      'hpaProfile': hpaProfile,
+    };
   }
 
   factory ClusterPodAutoscaling.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class ClusterPodAutoscaling {
     );
   }
 }
+

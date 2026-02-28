@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getUserPools.
 class GetUserPoolsResult {
   /// Set of cognito user pool Amazon Resource Names (ARNs).
   final List<String> arns;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Set of cognito user pool ids.
   final List<String> ids;
   final String name;
@@ -28,13 +27,13 @@ class GetUserPoolsResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arns'] = arns;
-    map['id'] = id;
-    map['ids'] = ids;
-    map['name'] = name;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'arns': arns,
+      'id': id,
+      'ids': ids,
+      'name': name,
+      'region': region,
+    };
   }
 
   factory GetUserPoolsResult.fromMap(Map<String, dynamic> map) {
@@ -47,3 +46,4 @@ class GetUserPoolsResult {
     );
   }
 }
+

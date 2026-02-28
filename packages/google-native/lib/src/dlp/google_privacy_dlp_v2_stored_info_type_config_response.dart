@@ -8,17 +8,12 @@ import 'google_privacy_dlp_v2_regex_response.dart';
 class GooglePrivacyDlpV2StoredInfoTypeConfigResponse {
   /// Description of the StoredInfoType (max 256 characters).
   final String description;
-
   /// Store dictionary-based CustomInfoType.
   final GooglePrivacyDlpV2DictionaryResponse dictionary;
-
   /// Display name of the StoredInfoType (max 256 characters).
   final String displayName;
-
   /// StoredInfoType where findings are defined by a dictionary of phrases.
-  final GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse
-      largeCustomDictionary;
-
+  final GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse largeCustomDictionary;
   /// Store regular expression-based StoredInfoType.
   final GooglePrivacyDlpV2RegexResponse regex;
 
@@ -37,27 +32,23 @@ class GooglePrivacyDlpV2StoredInfoTypeConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['description'] = description;
-    map['dictionary'] = dictionary.toMap();
-    map['displayName'] = displayName;
-    map['largeCustomDictionary'] = largeCustomDictionary.toMap();
-    map['regex'] = regex.toMap();
-    return map;
+    return <String, dynamic>{
+      'description': description,
+      'dictionary': dictionary.toMap(),
+      'displayName': displayName,
+      'largeCustomDictionary': largeCustomDictionary.toMap(),
+      'regex': regex.toMap(),
+    };
   }
 
-  factory GooglePrivacyDlpV2StoredInfoTypeConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2StoredInfoTypeConfigResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2StoredInfoTypeConfigResponse(
       description: map['description'] as String,
-      dictionary: GooglePrivacyDlpV2DictionaryResponse.fromMap(
-          (map['dictionary'] as Map).cast<String, dynamic>()),
+      dictionary: GooglePrivacyDlpV2DictionaryResponse.fromMap((map['dictionary'] as Map).cast<String, dynamic>()),
       displayName: map['displayName'] as String,
-      largeCustomDictionary:
-          GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse.fromMap(
-              (map['largeCustomDictionary'] as Map).cast<String, dynamic>()),
-      regex: GooglePrivacyDlpV2RegexResponse.fromMap(
-          (map['regex'] as Map).cast<String, dynamic>()),
+      largeCustomDictionary: GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse.fromMap((map['largeCustomDictionary'] as Map).cast<String, dynamic>()),
+      regex: GooglePrivacyDlpV2RegexResponse.fromMap((map['regex'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

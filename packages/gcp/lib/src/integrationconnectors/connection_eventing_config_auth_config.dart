@@ -7,16 +7,12 @@ import 'connection_eventing_config_auth_config_user_password.dart';
 class ConnectionEventingConfigAuthConfig {
   /// List containing additional auth configs.
   /// Structure is documented below.
-  final List<ConnectionEventingConfigAuthConfigAdditionalVariable>?
-      additionalVariables;
-
+  final List<ConnectionEventingConfigAuthConfigAdditionalVariable>? additionalVariables;
   /// The type of authentication configured.
   final String? authKey;
-
   /// authType of the Connection
   /// Possible values are: `USER_PASSWORD`.
   final String authType;
-
   /// User password for Authentication.
   /// Structure is documented below.
   final ConnectionEventingConfigAuthConfigUserPassword userPassword;
@@ -34,37 +30,21 @@ class ConnectionEventingConfigAuthConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final additionalVariablesValue = additionalVariables;
-    if (additionalVariablesValue != null) {
-      map['additionalVariables'] = pulumi.Input.encodeList<
-              ConnectionEventingConfigAuthConfigAdditionalVariable,
-              Map<String, dynamic>>(
-          additionalVariablesValue, (value) => value.toMap());
-    }
-    final authKeyValue = authKey;
-    if (authKeyValue != null) {
-      map['authKey'] = authKeyValue;
-    }
-    map['authType'] = authType;
-    map['userPassword'] = userPassword.toMap();
-    return map;
+    return <String, dynamic>{
+      'additionalVariables': ?additionalVariables == null ? null : pulumi.Input.encodeList<ConnectionEventingConfigAuthConfigAdditionalVariable, Map<String, dynamic>>(additionalVariables!, (value) => value.toMap()),
+      'authKey': ?authKey,
+      'authType': authType,
+      'userPassword': userPassword.toMap(),
+    };
   }
 
   factory ConnectionEventingConfigAuthConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionEventingConfigAuthConfig(
-      additionalVariables: map['additionalVariables'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  ConnectionEventingConfigAuthConfigAdditionalVariable>(
-              map['additionalVariables'],
-              (value) =>
-                  ConnectionEventingConfigAuthConfigAdditionalVariable.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      additionalVariables: map['additionalVariables'] == null ? null : pulumi.Input.decodeList<ConnectionEventingConfigAuthConfigAdditionalVariable>(map['additionalVariables'], (value) => ConnectionEventingConfigAuthConfigAdditionalVariable.fromMap((value as Map).cast<String, dynamic>())),
       authKey: map['authKey'] == null ? null : map['authKey'] as String,
       authType: map['authType'] as String,
-      userPassword: ConnectionEventingConfigAuthConfigUserPassword.fromMap(
-          (map['userPassword'] as Map).cast<String, dynamic>()),
+      userPassword: ConnectionEventingConfigAuthConfigUserPassword.fromMap((map['userPassword'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

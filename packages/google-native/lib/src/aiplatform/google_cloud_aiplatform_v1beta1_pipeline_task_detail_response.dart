@@ -10,43 +10,28 @@ import 'google_rpc_status_response_aiplatform_v1beta1.dart';
 class GoogleCloudAiplatformV1beta1PipelineTaskDetailResponse {
   /// Task create time.
   final String createTime;
-
   /// Task end time.
   final String endTime;
-
   /// The error that occurred during task execution. Only populated when the task's state is FAILED or CANCELLED.
   final GoogleRpcStatusResponseAiplatformV1beta1 error;
-
   /// The execution metadata of the task.
   final GoogleCloudAiplatformV1beta1ExecutionResponse execution;
-
   /// The detailed execution info.
-  final GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailResponse
-      executorDetail;
-
+  final GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailResponse executorDetail;
   /// The runtime input artifacts of the task.
   final Map<String, String> inputs;
-
   /// The runtime output artifacts of the task.
   final Map<String, String> outputs;
-
   /// The id of the parent task if the task is within a component scope. Empty if the task is at the root level.
   final String parentTaskId;
-
   /// A list of task status. This field keeps a record of task status evolving over time.
-  final List<
-          GoogleCloudAiplatformV1beta1PipelineTaskDetailPipelineTaskStatusResponse>
-      pipelineTaskStatus;
-
+  final List<GoogleCloudAiplatformV1beta1PipelineTaskDetailPipelineTaskStatusResponse> pipelineTaskStatus;
   /// Task start time.
   final String startTime;
-
   /// State of the task.
   final String state;
-
   /// The system generated ID of the task.
   final String taskId;
-
   /// The user specified name of the task that is defined in pipeline_spec.
   final String taskName;
 
@@ -81,46 +66,34 @@ class GoogleCloudAiplatformV1beta1PipelineTaskDetailResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['endTime'] = endTime;
-    map['error'] = error.toMap();
-    map['execution'] = execution.toMap();
-    map['executorDetail'] = executorDetail.toMap();
-    map['inputs'] = inputs;
-    map['outputs'] = outputs;
-    map['parentTaskId'] = parentTaskId;
-    map['pipelineTaskStatus'] = pulumi.Input.encodeList<
-        GoogleCloudAiplatformV1beta1PipelineTaskDetailPipelineTaskStatusResponse,
-        Map<String, dynamic>>(pipelineTaskStatus, (value) => value.toMap());
-    map['startTime'] = startTime;
-    map['state'] = state;
-    map['taskId'] = taskId;
-    map['taskName'] = taskName;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'endTime': endTime,
+      'error': error.toMap(),
+      'execution': execution.toMap(),
+      'executorDetail': executorDetail.toMap(),
+      'inputs': inputs,
+      'outputs': outputs,
+      'parentTaskId': parentTaskId,
+      'pipelineTaskStatus': pulumi.Input.encodeList<GoogleCloudAiplatformV1beta1PipelineTaskDetailPipelineTaskStatusResponse, Map<String, dynamic>>(pipelineTaskStatus, (value) => value.toMap()),
+      'startTime': startTime,
+      'state': state,
+      'taskId': taskId,
+      'taskName': taskName,
+    };
   }
 
-  factory GoogleCloudAiplatformV1beta1PipelineTaskDetailResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1PipelineTaskDetailResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1PipelineTaskDetailResponse(
       createTime: map['createTime'] as String,
       endTime: map['endTime'] as String,
-      error: GoogleRpcStatusResponseAiplatformV1beta1.fromMap(
-          (map['error'] as Map).cast<String, dynamic>()),
-      execution: GoogleCloudAiplatformV1beta1ExecutionResponse.fromMap(
-          (map['execution'] as Map).cast<String, dynamic>()),
-      executorDetail:
-          GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailResponse
-              .fromMap((map['executorDetail'] as Map).cast<String, dynamic>()),
+      error: GoogleRpcStatusResponseAiplatformV1beta1.fromMap((map['error'] as Map).cast<String, dynamic>()),
+      execution: GoogleCloudAiplatformV1beta1ExecutionResponse.fromMap((map['execution'] as Map).cast<String, dynamic>()),
+      executorDetail: GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailResponse.fromMap((map['executorDetail'] as Map).cast<String, dynamic>()),
       inputs: (map['inputs'] as Map).cast<String, String>(),
       outputs: (map['outputs'] as Map).cast<String, String>(),
       parentTaskId: map['parentTaskId'] as String,
-      pipelineTaskStatus: pulumi.Input.decodeList<
-              GoogleCloudAiplatformV1beta1PipelineTaskDetailPipelineTaskStatusResponse>(
-          map['pipelineTaskStatus'],
-          (value) =>
-              GoogleCloudAiplatformV1beta1PipelineTaskDetailPipelineTaskStatusResponse
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      pipelineTaskStatus: pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1PipelineTaskDetailPipelineTaskStatusResponse>(map['pipelineTaskStatus'], (value) => GoogleCloudAiplatformV1beta1PipelineTaskDetailPipelineTaskStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
       startTime: map['startTime'] as String,
       state: map['state'] as String,
       taskId: map['taskId'] as String,
@@ -128,3 +101,4 @@ class GoogleCloudAiplatformV1beta1PipelineTaskDetailResponse {
     );
   }
 }
+

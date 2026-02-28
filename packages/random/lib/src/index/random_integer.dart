@@ -212,16 +212,12 @@ import 'random_integer_args.dart';
 class RandomInteger extends pulumi.CustomResource {
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
   late final pulumi.Output<Map<String, String>?> keepers;
-
   /// The maximum inclusive value of the range.
   late final pulumi.Output<int> max;
-
   /// The minimum inclusive value of the range.
   late final pulumi.Output<int> min;
-
   /// The random integer result.
   late final pulumi.Output<int> result;
-
   /// A custom seed to always produce the same value.
   late final pulumi.Output<String?> seed;
 

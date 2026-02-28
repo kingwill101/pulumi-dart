@@ -13,11 +13,9 @@ class ClusterOutpostConfig {
   ///
   /// For a list of the available Amazon EC2 instance types, see Compute and storage in AWS Outposts rack features  The control plane is not automatically scaled by Amazon EKS.
   final String controlPlaneInstanceType;
-
   /// An object representing the placement configuration for all the control plane instances of your local Amazon EKS cluster on AWS Outpost.
   /// The `control_plane_placement` configuration block supports the following arguments:
   final ClusterOutpostConfigControlPlanePlacement? controlPlanePlacement;
-
   /// The ARN of the Outpost that you want to use for your local Amazon EKS cluster on Outposts. This argument is a list of arns, but only a single Outpost ARN is supported currently.
   final List<String> outpostArns;
 
@@ -32,24 +30,19 @@ class ClusterOutpostConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['controlPlaneInstanceType'] = controlPlaneInstanceType;
-    final controlPlanePlacementValue = controlPlanePlacement;
-    if (controlPlanePlacementValue != null) {
-      map['controlPlanePlacement'] = controlPlanePlacementValue.toMap();
-    }
-    map['outpostArns'] = outpostArns;
-    return map;
+    return <String, dynamic>{
+      'controlPlaneInstanceType': controlPlaneInstanceType,
+      'controlPlanePlacement': ?controlPlanePlacement == null ? null : controlPlanePlacement!.toMap(),
+      'outpostArns': outpostArns,
+    };
   }
 
   factory ClusterOutpostConfig.fromMap(Map<String, dynamic> map) {
     return ClusterOutpostConfig(
       controlPlaneInstanceType: map['controlPlaneInstanceType'] as String,
-      controlPlanePlacement: map['controlPlanePlacement'] == null
-          ? null
-          : ClusterOutpostConfigControlPlanePlacement.fromMap(
-              (map['controlPlanePlacement'] as Map).cast<String, dynamic>()),
+      controlPlanePlacement: map['controlPlanePlacement'] == null ? null : ClusterOutpostConfigControlPlanePlacement.fromMap((map['controlPlanePlacement'] as Map).cast<String, dynamic>()),
       outpostArns: (map['outpostArns'] as List).cast<String>(),
     );
   }
 }
+

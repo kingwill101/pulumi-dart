@@ -12,11 +12,9 @@ class GetEngineVersionsArgs {
   /// versions may not be available. If `location`, `region`, and `zone` are not
   /// specified, the provider-level zone must be set and is used instead.
   final pulumi.Input<String>? location;
-
   /// ID of the project to list available cluster versions for. Should match the project the cluster will be deployed to.
   /// Defaults to the project that the provider is authenticated with.
   final pulumi.Input<String>? project;
-
   /// If provided, the provider will only return versions
   /// that match the string prefix. For example, `1.11.` will match all `1.11` series
   /// releases. Since this is just a string match, it's recommended that you append a
@@ -33,33 +31,25 @@ class GetEngineVersionsArgs {
     String? location,
     String? project,
     String? versionPrefix,
-  })  : location = pulumi.Input.asOptionalInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        versionPrefix = pulumi.Input.asOptionalInput<String>(versionPrefix);
+  }) :
+      location = pulumi.Input.asOptionalInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      versionPrefix = pulumi.Input.asOptionalInput<String>(versionPrefix);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final versionPrefixValue = versionPrefix;
-    if (versionPrefixValue != null) {
-      map['versionPrefix'] = versionPrefixValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'location': ?location,
+      'project': ?project,
+      'versionPrefix': ?versionPrefix,
+    };
   }
 
   factory GetEngineVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetEngineVersionsArgs(
       location: map['location'] == null ? null : map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      versionPrefix:
-          map['versionPrefix'] == null ? null : map['versionPrefix'] as String,
+      versionPrefix: map['versionPrefix'] == null ? null : map['versionPrefix'] as String,
     );
   }
 }
+

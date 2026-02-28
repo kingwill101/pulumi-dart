@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getEntity.
 class GetEntityResult {
   /// Fields of the entity. The key is name of the field and the value contains the applicable `google.protobuf.Value` entry for this field.
   final Map<String, String> fields;
-
   /// Resource name of the Entity. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}/entities/{id}
   final String name;
 
@@ -17,10 +17,10 @@ class GetEntityResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['fields'] = fields;
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'fields': fields,
+      'name': name,
+    };
   }
 
   factory GetEntityResult.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class GetEntityResult {
     );
   }
 }
+

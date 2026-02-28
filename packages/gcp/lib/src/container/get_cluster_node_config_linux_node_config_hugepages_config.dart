@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterNodeConfigLinuxNodeConfigHugepagesConfig {
   /// Amount of 1G hugepages.
   final int hugepageSize1g;
-
   /// Amount of 2M hugepages.
   final int hugepageSize2m;
 
@@ -16,17 +16,17 @@ class GetClusterNodeConfigLinuxNodeConfigHugepagesConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['hugepageSize1g'] = hugepageSize1g;
-    map['hugepageSize2m'] = hugepageSize2m;
-    return map;
+    return <String, dynamic>{
+      'hugepageSize1g': hugepageSize1g,
+      'hugepageSize2m': hugepageSize2m,
+    };
   }
 
-  factory GetClusterNodeConfigLinuxNodeConfigHugepagesConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GetClusterNodeConfigLinuxNodeConfigHugepagesConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNodeConfigLinuxNodeConfigHugepagesConfig(
       hugepageSize1g: map['hugepageSize1g'] as int,
       hugepageSize2m: map['hugepageSize2m'] as int,
     );
   }
 }
+

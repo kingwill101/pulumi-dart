@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BotAssociationLexBot {
   /// The Region that the Amazon Lex (V1) bot was created in. Defaults to current region.
   final String? lexRegion;
-
   /// The name of the Amazon Lex (V1) bot.
   final String name;
 
@@ -16,13 +16,10 @@ class BotAssociationLexBot {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final lexRegionValue = lexRegion;
-    if (lexRegionValue != null) {
-      map['lexRegion'] = lexRegionValue;
-    }
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'lexRegion': ?lexRegion,
+      'name': name,
+    };
   }
 
   factory BotAssociationLexBot.fromMap(Map<String, dynamic> map) {
@@ -32,3 +29,4 @@ class BotAssociationLexBot {
     );
   }
 }
+

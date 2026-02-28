@@ -9,18 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AiLogicPromptTemplateArgs {
   /// The display name of the PromptTemplate.
   final pulumi.Input<String>? displayName;
-
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The unique ID of the PromptTemplate, which is the final component of the
   /// PromptTemplate's resource name.
   final pulumi.Input<String> templateId;
-
   /// The DotPrompt raw template string.
   final pulumi.Input<String> templateString;
 
@@ -36,32 +32,26 @@ class AiLogicPromptTemplateArgs {
     String? project,
     required String templateId,
     required String templateString,
-  })  : displayName = pulumi.Input.asOptionalInput<String>(displayName),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        templateId = pulumi.Input.asInput<String>(templateId),
-        templateString = pulumi.Input.asInput<String>(templateString);
+  }) :
+      displayName = pulumi.Input.asOptionalInput<String>(displayName),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      templateId = pulumi.Input.asInput<String>(templateId),
+      templateString = pulumi.Input.asInput<String>(templateString);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final displayNameValue = displayName;
-    if (displayNameValue != null) {
-      map['displayName'] = displayNameValue;
-    }
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['templateId'] = templateId;
-    map['templateString'] = templateString;
-    return map;
+    return <String, dynamic>{
+      'displayName': ?displayName,
+      'location': location,
+      'project': ?project,
+      'templateId': templateId,
+      'templateString': templateString,
+    };
   }
 
   factory AiLogicPromptTemplateArgs.fromMap(Map<String, dynamic> map) {
     return AiLogicPromptTemplateArgs(
-      displayName:
-          map['displayName'] == null ? null : map['displayName'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       templateId: map['templateId'] as String,
@@ -69,3 +59,4 @@ class AiLogicPromptTemplateArgs {
     );
   }
 }
+

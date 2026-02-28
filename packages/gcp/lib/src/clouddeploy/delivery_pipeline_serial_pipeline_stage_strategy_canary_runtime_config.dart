@@ -5,12 +5,9 @@ import 'delivery_pipeline_serial_pipeline_stage_strategy_canary_runtime_config_k
 
 class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig {
   /// Cloud Run runtime configuration.
-  final DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun?
-      cloudRun;
-
+  final DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun? cloudRun;
   /// Kubernetes runtime configuration.
-  final DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes?
-      kubernetes;
+  final DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes? kubernetes;
 
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig].
   /// [cloudRun] Cloud Run runtime configuration.
@@ -21,29 +18,17 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cloudRunValue = cloudRun;
-    if (cloudRunValue != null) {
-      map['cloudRun'] = cloudRunValue.toMap();
-    }
-    final kubernetesValue = kubernetes;
-    if (kubernetesValue != null) {
-      map['kubernetes'] = kubernetesValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'cloudRun': ?cloudRun == null ? null : cloudRun!.toMap(),
+      'kubernetes': ?kubernetes == null ? null : kubernetes!.toMap(),
+    };
   }
 
-  factory DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig.fromMap(Map<String, dynamic> map) {
     return DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig(
-      cloudRun: map['cloudRun'] == null
-          ? null
-          : DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun
-              .fromMap((map['cloudRun'] as Map).cast<String, dynamic>()),
-      kubernetes: map['kubernetes'] == null
-          ? null
-          : DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes
-              .fromMap((map['kubernetes'] as Map).cast<String, dynamic>()),
+      cloudRun: map['cloudRun'] == null ? null : DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun.fromMap((map['cloudRun'] as Map).cast<String, dynamic>()),
+      kubernetes: map['kubernetes'] == null ? null : DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes.fromMap((map['kubernetes'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

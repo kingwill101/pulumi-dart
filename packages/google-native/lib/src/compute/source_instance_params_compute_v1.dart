@@ -15,24 +15,15 @@ class SourceInstanceParamsComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final diskConfigsValue = diskConfigs;
-    if (diskConfigsValue != null) {
-      map['diskConfigs'] = pulumi.Input.encodeList<
-          DiskInstantiationConfigComputeV1,
-          Map<String, dynamic>>(diskConfigsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'diskConfigs': ?diskConfigs == null ? null : pulumi.Input.encodeList<DiskInstantiationConfigComputeV1, Map<String, dynamic>>(diskConfigs!, (value) => value.toMap()),
+    };
   }
 
   factory SourceInstanceParamsComputeV1.fromMap(Map<String, dynamic> map) {
     return SourceInstanceParamsComputeV1(
-      diskConfigs: map['diskConfigs'] == null
-          ? null
-          : pulumi.Input.decodeList<DiskInstantiationConfigComputeV1>(
-              map['diskConfigs'],
-              (value) => DiskInstantiationConfigComputeV1.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      diskConfigs: map['diskConfigs'] == null ? null : pulumi.Input.decodeList<DiskInstantiationConfigComputeV1>(map['diskConfigs'], (value) => DiskInstantiationConfigComputeV1.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

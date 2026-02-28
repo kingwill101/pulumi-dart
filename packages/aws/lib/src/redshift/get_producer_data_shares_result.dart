@@ -7,10 +7,8 @@ import 'get_producer_data_shares_data_share.dart';
 class GetProducerDataSharesResult {
   /// An array of all data shares in the producer. See `data_shares` below.
   final List<GetProducerDataSharesDataShare> dataShares;
-
   /// Producer ARN.
   final String id;
-
   /// ARN (Amazon Resource Name) of the producer.
   final String producerArn;
   final String region;
@@ -31,25 +29,18 @@ class GetProducerDataSharesResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dataShares'] = pulumi.Input.encodeList<GetProducerDataSharesDataShare,
-        Map<String, dynamic>>(dataShares, (value) => value.toMap());
-    map['id'] = id;
-    map['producerArn'] = producerArn;
-    map['region'] = region;
-    final statusValue = status;
-    if (statusValue != null) {
-      map['status'] = statusValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'dataShares': pulumi.Input.encodeList<GetProducerDataSharesDataShare, Map<String, dynamic>>(dataShares, (value) => value.toMap()),
+      'id': id,
+      'producerArn': producerArn,
+      'region': region,
+      'status': ?status,
+    };
   }
 
   factory GetProducerDataSharesResult.fromMap(Map<String, dynamic> map) {
     return GetProducerDataSharesResult(
-      dataShares: pulumi.Input.decodeList<GetProducerDataSharesDataShare>(
-          map['dataShares'],
-          (value) => GetProducerDataSharesDataShare.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      dataShares: pulumi.Input.decodeList<GetProducerDataSharesDataShare>(map['dataShares'], (value) => GetProducerDataSharesDataShare.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       producerArn: map['producerArn'] as String,
       region: map['region'] as String,
@@ -57,3 +48,4 @@ class GetProducerDataSharesResult {
     );
   }
 }
+

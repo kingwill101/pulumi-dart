@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DashboardParametersIntegerParameter {
   /// Display name for the dashboard.
   final String name;
@@ -14,17 +15,17 @@ class DashboardParametersIntegerParameter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['values'] = values;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'values': values,
+    };
   }
 
-  factory DashboardParametersIntegerParameter.fromMap(
-      Map<String, dynamic> map) {
+  factory DashboardParametersIntegerParameter.fromMap(Map<String, dynamic> map) {
     return DashboardParametersIntegerParameter(
       name: map['name'] as String,
       values: (map['values'] as List).cast<int>(),
     );
   }
 }
+

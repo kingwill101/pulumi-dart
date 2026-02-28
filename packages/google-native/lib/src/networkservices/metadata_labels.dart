@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Defines a name-pair value for a single label.
 class MetadataLabels {
   /// Label name presented as key in xDS Node Metadata.
   final String labelName;
-
   /// Label value presented as value corresponding to the above key, in xDS Node Metadata.
   final String labelValue;
 
@@ -17,10 +17,10 @@ class MetadataLabels {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['labelName'] = labelName;
-    map['labelValue'] = labelValue;
-    return map;
+    return <String, dynamic>{
+      'labelName': labelName,
+      'labelValue': labelValue,
+    };
   }
 
   factory MetadataLabels.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class MetadataLabels {
     );
   }
 }
+

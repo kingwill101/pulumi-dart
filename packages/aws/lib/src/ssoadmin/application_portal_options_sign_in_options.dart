@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ApplicationPortalOptionsSignInOptions {
   /// URL that accepts authentication requests for an application.
   final String? applicationUrl;
-
   /// Determines how IAM Identity Center navigates the user to the target application.
   /// Valid values are `APPLICATION` and `IDENTITY_CENTER`.
   /// If `APPLICATION` is set, IAM Identity Center redirects the customer to the configured `application_url`.
@@ -19,22 +19,17 @@ class ApplicationPortalOptionsSignInOptions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final applicationUrlValue = applicationUrl;
-    if (applicationUrlValue != null) {
-      map['applicationUrl'] = applicationUrlValue;
-    }
-    map['origin'] = origin;
-    return map;
+    return <String, dynamic>{
+      'applicationUrl': ?applicationUrl,
+      'origin': origin,
+    };
   }
 
-  factory ApplicationPortalOptionsSignInOptions.fromMap(
-      Map<String, dynamic> map) {
+  factory ApplicationPortalOptionsSignInOptions.fromMap(Map<String, dynamic> map) {
     return ApplicationPortalOptionsSignInOptions(
-      applicationUrl: map['applicationUrl'] == null
-          ? null
-          : map['applicationUrl'] as String,
+      applicationUrl: map['applicationUrl'] == null ? null : map['applicationUrl'] as String,
       origin: map['origin'] as String,
     );
   }
 }
+

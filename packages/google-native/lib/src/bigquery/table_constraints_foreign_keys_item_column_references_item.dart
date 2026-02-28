@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TableConstraintsForeignKeysItemColumnReferencesItem {
   final String? referencedColumn;
   final String? referencingColumn;
@@ -13,27 +14,17 @@ class TableConstraintsForeignKeysItemColumnReferencesItem {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final referencedColumnValue = referencedColumn;
-    if (referencedColumnValue != null) {
-      map['referencedColumn'] = referencedColumnValue;
-    }
-    final referencingColumnValue = referencingColumn;
-    if (referencingColumnValue != null) {
-      map['referencingColumn'] = referencingColumnValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'referencedColumn': ?referencedColumn,
+      'referencingColumn': ?referencingColumn,
+    };
   }
 
-  factory TableConstraintsForeignKeysItemColumnReferencesItem.fromMap(
-      Map<String, dynamic> map) {
+  factory TableConstraintsForeignKeysItemColumnReferencesItem.fromMap(Map<String, dynamic> map) {
     return TableConstraintsForeignKeysItemColumnReferencesItem(
-      referencedColumn: map['referencedColumn'] == null
-          ? null
-          : map['referencedColumn'] as String,
-      referencingColumn: map['referencingColumn'] == null
-          ? null
-          : map['referencingColumn'] as String,
+      referencedColumn: map['referencedColumn'] == null ? null : map['referencedColumn'] as String,
+      referencingColumn: map['referencingColumn'] == null ? null : map['referencingColumn'] as String,
     );
   }
 }
+

@@ -6,16 +6,12 @@ import 'status_response.dart';
 class UpgradeStatusResponse {
   /// Provides details on the state of the upgrade operation in case of an error.
   final StatusResponse error;
-
   /// The version from which we upgraded.
   final String previousVersion;
-
   /// The time the operation was started.
   final String startTime;
-
   /// The state of the upgradeAppliance operation.
   final String state;
-
   /// The version to upgrade to.
   final String version;
 
@@ -34,19 +30,18 @@ class UpgradeStatusResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['error'] = error.toMap();
-    map['previousVersion'] = previousVersion;
-    map['startTime'] = startTime;
-    map['state'] = state;
-    map['version'] = version;
-    return map;
+    return <String, dynamic>{
+      'error': error.toMap(),
+      'previousVersion': previousVersion,
+      'startTime': startTime,
+      'state': state,
+      'version': version,
+    };
   }
 
   factory UpgradeStatusResponse.fromMap(Map<String, dynamic> map) {
     return UpgradeStatusResponse(
-      error:
-          StatusResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
+      error: StatusResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
       previousVersion: map['previousVersion'] as String,
       startTime: map['startTime'] as String,
       state: map['state'] as String,
@@ -54,3 +49,4 @@ class UpgradeStatusResponse {
     );
   }
 }
+

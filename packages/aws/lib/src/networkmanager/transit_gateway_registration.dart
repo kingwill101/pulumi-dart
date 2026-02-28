@@ -148,7 +148,6 @@ import 'transit_gateway_registration_args.dart';
 class TransitGatewayRegistration extends pulumi.CustomResource {
   /// ID of the Global Network to register to.
   late final pulumi.Output<String> globalNetworkId;
-
   /// ARN of the Transit Gateway to register.
   late final pulumi.Output<String> transitGatewayArn;
 

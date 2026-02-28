@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Deployment Manager will call these methods during the events of creation/deletion/update/get/setIamPolicy
 class MethodMapResponse {
   /// The action identifier for the create method to be used for this collection
   final String create;
-
   /// The action identifier for the delete method to be used for this collection
   final String delete;
-
   /// The action identifier for the get method to be used for this collection
   final String get;
-
   /// The action identifier for the setIamPolicy method to be used for this collection
   final String setIamPolicy;
-
   /// The action identifier for the update method to be used for this collection
   final String update;
 
@@ -32,13 +29,13 @@ class MethodMapResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['create'] = create;
-    map['delete'] = delete;
-    map['get'] = get;
-    map['setIamPolicy'] = setIamPolicy;
-    map['update'] = update;
-    return map;
+    return <String, dynamic>{
+      'create': create,
+      'delete': delete,
+      'get': get,
+      'setIamPolicy': setIamPolicy,
+      'update': update,
+    };
   }
 
   factory MethodMapResponse.fromMap(Map<String, dynamic> map) {
@@ -51,3 +48,4 @@ class MethodMapResponse {
     );
   }
 }
+

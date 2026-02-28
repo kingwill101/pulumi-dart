@@ -7,7 +7,6 @@ import 'peripherals_config.dart';
 class EnvironmentConfig {
   /// Optional. Execution configuration for a workload.
   final ExecutionConfig? executionConfig;
-
   /// Optional. Peripherals configuration that workload has access to.
   final PeripheralsConfig? peripheralsConfig;
 
@@ -20,28 +19,17 @@ class EnvironmentConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final executionConfigValue = executionConfig;
-    if (executionConfigValue != null) {
-      map['executionConfig'] = executionConfigValue.toMap();
-    }
-    final peripheralsConfigValue = peripheralsConfig;
-    if (peripheralsConfigValue != null) {
-      map['peripheralsConfig'] = peripheralsConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'executionConfig': ?executionConfig == null ? null : executionConfig!.toMap(),
+      'peripheralsConfig': ?peripheralsConfig == null ? null : peripheralsConfig!.toMap(),
+    };
   }
 
   factory EnvironmentConfig.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfig(
-      executionConfig: map['executionConfig'] == null
-          ? null
-          : ExecutionConfig.fromMap(
-              (map['executionConfig'] as Map).cast<String, dynamic>()),
-      peripheralsConfig: map['peripheralsConfig'] == null
-          ? null
-          : PeripheralsConfig.fromMap(
-              (map['peripheralsConfig'] as Map).cast<String, dynamic>()),
+      executionConfig: map['executionConfig'] == null ? null : ExecutionConfig.fromMap((map['executionConfig'] as Map).cast<String, dynamic>()),
+      peripheralsConfig: map['peripheralsConfig'] == null ? null : PeripheralsConfig.fromMap((map['peripheralsConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -10,13 +10,10 @@ import 'get_spot_price_filter.dart';
 class GetSpotPriceArgs {
   /// Availability zone in which to query Spot price information.
   final pulumi.Input<String>? availabilityZone;
-
   /// One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSpotPriceHistory.html) for supported filters. Detailed below.
   final pulumi.Input<List<GetSpotPriceFilter>>? filters;
-
   /// Type of instance for which to query Spot Price information.
   final pulumi.Input<String>? instanceType;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -30,53 +27,28 @@ class GetSpotPriceArgs {
     List<GetSpotPriceFilter>? filters,
     String? instanceType,
     String? region,
-  })  : availabilityZone =
-            pulumi.Input.asOptionalInput<String>(availabilityZone),
-        filters =
-            pulumi.Input.asOptionalInput<List<GetSpotPriceFilter>>(filters),
-        instanceType = pulumi.Input.asOptionalInput<String>(instanceType),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      availabilityZone = pulumi.Input.asOptionalInput<String>(availabilityZone),
+      filters = pulumi.Input.asOptionalInput<List<GetSpotPriceFilter>>(filters),
+      instanceType = pulumi.Input.asOptionalInput<String>(instanceType),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final availabilityZoneValue = availabilityZone;
-    if (availabilityZoneValue != null) {
-      map['availabilityZone'] = availabilityZoneValue;
-    }
-    final filtersValue = filters;
-    if (filtersValue != null) {
-      map['filters'] = pulumi.Input.mapOptionalInputValue<
-              List<GetSpotPriceFilter>, List<Map<String, dynamic>>>(
-          filtersValue,
-          (value) =>
-              pulumi.Input.encodeList<GetSpotPriceFilter, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
-    }
-    final instanceTypeValue = instanceType;
-    if (instanceTypeValue != null) {
-      map['instanceType'] = instanceTypeValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'availabilityZone': ?availabilityZone,
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetSpotPriceFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetSpotPriceFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'instanceType': ?instanceType,
+      'region': ?region,
+    };
   }
 
   factory GetSpotPriceArgs.fromMap(Map<String, dynamic> map) {
     return GetSpotPriceArgs(
-      availabilityZone: map['availabilityZone'] == null
-          ? null
-          : map['availabilityZone'] as String,
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetSpotPriceFilter>(
-              map['filters'],
-              (value) => GetSpotPriceFilter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      instanceType:
-          map['instanceType'] == null ? null : map['instanceType'] as String,
+      availabilityZone: map['availabilityZone'] == null ? null : map['availabilityZone'] as String,
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetSpotPriceFilter>(map['filters'], (value) => GetSpotPriceFilter.fromMap((value as Map).cast<String, dynamic>())),
+      instanceType: map['instanceType'] == null ? null : map['instanceType'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

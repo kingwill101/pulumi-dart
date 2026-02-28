@@ -113,11 +113,9 @@ import 'service_config_args.dart';
 class ServiceConfig extends pulumi.CustomResource {
   /// The location in which the Service config is to be initialized.
   late final pulumi.Output<String> location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The resource type to which the default service config will be applied.
   late final pulumi.Output<String> resourceType;
 

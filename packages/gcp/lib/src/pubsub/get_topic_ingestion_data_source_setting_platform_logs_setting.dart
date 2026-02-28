@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTopicIngestionDataSourceSettingPlatformLogsSetting {
   /// The minimum severity level of Platform Logs that will be written. If unspecified,
   /// no Platform Logs will be written. Default value: "SEVERITY_UNSPECIFIED" Possible values: ["SEVERITY_UNSPECIFIED", "DISABLED", "DEBUG", "INFO", "WARNING", "ERROR"]
@@ -12,15 +13,15 @@ class GetTopicIngestionDataSourceSettingPlatformLogsSetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['severity'] = severity;
-    return map;
+    return <String, dynamic>{
+      'severity': severity,
+    };
   }
 
-  factory GetTopicIngestionDataSourceSettingPlatformLogsSetting.fromMap(
-      Map<String, dynamic> map) {
+  factory GetTopicIngestionDataSourceSettingPlatformLogsSetting.fromMap(Map<String, dynamic> map) {
     return GetTopicIngestionDataSourceSettingPlatformLogsSetting(
       severity: map['severity'] as String,
     );
   }
 }
+

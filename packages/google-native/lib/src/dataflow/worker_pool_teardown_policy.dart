@@ -17,3 +17,4 @@ enum WorkerPoolTeardownPolicy {
     throw ArgumentError('Unknown WorkerPoolTeardownPolicy value: $value');
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetPatchBaselinesFilter {
   /// Filter key. See the [AWS SSM documentation](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_DescribePatchBaselines.html) for valid values.
   final String key;
-
   /// Filter values. See the [AWS SSM documentation](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_DescribePatchBaselines.html) for example values.
   final List<String> values;
 
@@ -16,10 +16,10 @@ class GetPatchBaselinesFilter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    map['values'] = values;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'values': values,
+    };
   }
 
   factory GetPatchBaselinesFilter.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetPatchBaselinesFilter {
     );
   }
 }
+

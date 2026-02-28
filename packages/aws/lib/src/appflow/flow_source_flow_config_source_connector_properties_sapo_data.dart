@@ -5,14 +5,10 @@ import 'flow_source_flow_config_source_connector_properties_sapo_data_parallelis
 
 class FlowSourceFlowConfigSourceConnectorPropertiesSapoData {
   final String objectPath;
-
   /// Sets the page size for each concurrent process that transfers OData records from your SAP instance.
-  final FlowSourceFlowConfigSourceConnectorPropertiesSapoDataPaginationConfig?
-      paginationConfig;
-
+  final FlowSourceFlowConfigSourceConnectorPropertiesSapoDataPaginationConfig? paginationConfig;
   /// Sets the number of concurrent processes that transfers OData records from your SAP instance.
-  final FlowSourceFlowConfigSourceConnectorPropertiesSapoDataParallelismConfig?
-      parallelismConfig;
+  final FlowSourceFlowConfigSourceConnectorPropertiesSapoDataParallelismConfig? parallelismConfig;
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesSapoData].
   /// [objectPath] Required.
@@ -25,33 +21,19 @@ class FlowSourceFlowConfigSourceConnectorPropertiesSapoData {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['objectPath'] = objectPath;
-    final paginationConfigValue = paginationConfig;
-    if (paginationConfigValue != null) {
-      map['paginationConfig'] = paginationConfigValue.toMap();
-    }
-    final parallelismConfigValue = parallelismConfig;
-    if (parallelismConfigValue != null) {
-      map['parallelismConfig'] = parallelismConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'objectPath': objectPath,
+      'paginationConfig': ?paginationConfig == null ? null : paginationConfig!.toMap(),
+      'parallelismConfig': ?parallelismConfig == null ? null : parallelismConfig!.toMap(),
+    };
   }
 
-  factory FlowSourceFlowConfigSourceConnectorPropertiesSapoData.fromMap(
-      Map<String, dynamic> map) {
+  factory FlowSourceFlowConfigSourceConnectorPropertiesSapoData.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorPropertiesSapoData(
       objectPath: map['objectPath'] as String,
-      paginationConfig: map['paginationConfig'] == null
-          ? null
-          : FlowSourceFlowConfigSourceConnectorPropertiesSapoDataPaginationConfig
-              .fromMap(
-                  (map['paginationConfig'] as Map).cast<String, dynamic>()),
-      parallelismConfig: map['parallelismConfig'] == null
-          ? null
-          : FlowSourceFlowConfigSourceConnectorPropertiesSapoDataParallelismConfig
-              .fromMap(
-                  (map['parallelismConfig'] as Map).cast<String, dynamic>()),
+      paginationConfig: map['paginationConfig'] == null ? null : FlowSourceFlowConfigSourceConnectorPropertiesSapoDataPaginationConfig.fromMap((map['paginationConfig'] as Map).cast<String, dynamic>()),
+      parallelismConfig: map['parallelismConfig'] == null ? null : FlowSourceFlowConfigSourceConnectorPropertiesSapoDataParallelismConfig.fromMap((map['parallelismConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

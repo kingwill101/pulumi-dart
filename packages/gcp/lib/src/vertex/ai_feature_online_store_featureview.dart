@@ -2839,56 +2839,39 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
   /// Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.
   /// Structure is documented below.
-  late final pulumi.Output<AiFeatureOnlineStoreFeatureviewBigQuerySource?>
-      bigQuerySource;
-
+  late final pulumi.Output<AiFeatureOnlineStoreFeatureviewBigQuerySource?> bigQuerySource;
   /// The timestamp of when the featureOnlinestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   late final pulumi.Output<String> createTime;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// The name of the FeatureOnlineStore to use for the featureview.
   late final pulumi.Output<String> featureOnlineStore;
-
   /// Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
   /// Structure is documented below.
-  late final pulumi
-      .Output<AiFeatureOnlineStoreFeatureviewFeatureRegistrySource?>
-      featureRegistrySource;
-
+  late final pulumi.Output<AiFeatureOnlineStoreFeatureviewFeatureRegistrySource?> featureRegistrySource;
   /// A set of key/value label pairs to assign to this FeatureView.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Name of the FeatureView. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The region for the resource. It should be the same as the featureonlinestore region.
   late final pulumi.Output<String> region;
-
   /// Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
   /// Structure is documented below.
-  late final pulumi.Output<AiFeatureOnlineStoreFeatureviewSyncConfig?>
-      syncConfig;
-
+  late final pulumi.Output<AiFeatureOnlineStoreFeatureviewSyncConfig?> syncConfig;
   /// The timestamp of when the featureOnlinestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   late final pulumi.Output<String> updateTime;
-
   /// Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
   /// Structure is documented below.
-  late final pulumi.Output<AiFeatureOnlineStoreFeatureviewVectorSearchConfig?>
-      vectorSearchConfig;
+  late final pulumi.Output<AiFeatureOnlineStoreFeatureviewVectorSearchConfig?> vectorSearchConfig;
 
   /// Creates a new [AiFeatureOnlineStoreFeatureview].
   /// [name] The Pulumi resource name.
@@ -2904,27 +2887,18 @@ class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.bigQuerySource =
-        registerOutput<AiFeatureOnlineStoreFeatureviewBigQuerySource?>(
-            'bigQuerySource');
+    this.bigQuerySource = registerOutput<AiFeatureOnlineStoreFeatureviewBigQuerySource?>('bigQuerySource');
     this.createTime = registerOutput<String>('createTime');
-    this.effectiveLabels =
-        registerOutput<Map<String, String>>('effectiveLabels');
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     this.featureOnlineStore = registerOutput<String>('featureOnlineStore');
-    this.featureRegistrySource =
-        registerOutput<AiFeatureOnlineStoreFeatureviewFeatureRegistrySource?>(
-            'featureRegistrySource');
+    this.featureRegistrySource = registerOutput<AiFeatureOnlineStoreFeatureviewFeatureRegistrySource?>('featureRegistrySource');
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
     this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.region = registerOutput<String>('region');
-    this.syncConfig =
-        registerOutput<AiFeatureOnlineStoreFeatureviewSyncConfig?>(
-            'syncConfig');
+    this.syncConfig = registerOutput<AiFeatureOnlineStoreFeatureviewSyncConfig?>('syncConfig');
     this.updateTime = registerOutput<String>('updateTime');
-    this.vectorSearchConfig =
-        registerOutput<AiFeatureOnlineStoreFeatureviewVectorSearchConfig?>(
-            'vectorSearchConfig');
+    this.vectorSearchConfig = registerOutput<AiFeatureOnlineStoreFeatureviewVectorSearchConfig?>('vectorSearchConfig');
   }
 }

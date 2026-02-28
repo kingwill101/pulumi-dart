@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConnectorPluginCustomPlugin {
   /// The Amazon Resource Name (ARN) of the custom plugin.
   final String arn;
-
   /// The revision of the custom plugin.
   final int revision;
 
@@ -16,10 +16,10 @@ class ConnectorPluginCustomPlugin {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['revision'] = revision;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'revision': revision,
+    };
   }
 
   factory ConnectorPluginCustomPlugin.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class ConnectorPluginCustomPlugin {
     );
   }
 }
+

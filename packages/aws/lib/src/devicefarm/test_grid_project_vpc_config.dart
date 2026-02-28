@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TestGridProjectVpcConfig {
   /// A list of VPC security group IDs in your Amazon VPC.
   final List<String> securityGroupIds;
-
   /// A list of VPC subnet IDs in your Amazon VPC.
   final List<String> subnetIds;
-
   /// The ID of the Amazon VPC.
   final String vpcId;
 
@@ -21,11 +20,11 @@ class TestGridProjectVpcConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['securityGroupIds'] = securityGroupIds;
-    map['subnetIds'] = subnetIds;
-    map['vpcId'] = vpcId;
-    return map;
+    return <String, dynamic>{
+      'securityGroupIds': securityGroupIds,
+      'subnetIds': subnetIds,
+      'vpcId': vpcId,
+    };
   }
 
   factory TestGridProjectVpcConfig.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class TestGridProjectVpcConfig {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Defines an object for the byproducts field in in-toto links. The suggested fields are "stderr", "stdout", and "return-value".
 class ByProductsResponse {
   final Map<String, String> customValues;
@@ -11,9 +12,9 @@ class ByProductsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['customValues'] = customValues;
-    return map;
+    return <String, dynamic>{
+      'customValues': customValues,
+    };
   }
 
   factory ByProductsResponse.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class ByProductsResponse {
     );
   }
 }
+

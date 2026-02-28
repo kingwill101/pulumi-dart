@@ -5,15 +5,10 @@ import 'application_application_configuration_sql_application_configuration_refe
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSource {
   final String? referenceId;
-
   /// Describes the format of the data in the streaming source, and how each data element maps to corresponding columns created in the in-application stream.
-  final ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchema
-      referenceSchema;
-
+  final ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchema referenceSchema;
   /// Identifies the S3 bucket and object that contains the reference data.
-  final ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceS3ReferenceDataSource
-      s3ReferenceDataSource;
-
+  final ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceS3ReferenceDataSource s3ReferenceDataSource;
   /// The name of the in-application table to create.
   final String tableName;
 
@@ -30,30 +25,21 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDat
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final referenceIdValue = referenceId;
-    if (referenceIdValue != null) {
-      map['referenceId'] = referenceIdValue;
-    }
-    map['referenceSchema'] = referenceSchema.toMap();
-    map['s3ReferenceDataSource'] = s3ReferenceDataSource.toMap();
-    map['tableName'] = tableName;
-    return map;
+    return <String, dynamic>{
+      'referenceId': ?referenceId,
+      'referenceSchema': referenceSchema.toMap(),
+      's3ReferenceDataSource': s3ReferenceDataSource.toMap(),
+      'tableName': tableName,
+    };
   }
 
-  factory ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSource.fromMap(
-      Map<String, dynamic> map) {
+  factory ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSource.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSource(
-      referenceId:
-          map['referenceId'] == null ? null : map['referenceId'] as String,
-      referenceSchema:
-          ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchema
-              .fromMap((map['referenceSchema'] as Map).cast<String, dynamic>()),
-      s3ReferenceDataSource:
-          ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceS3ReferenceDataSource
-              .fromMap((map['s3ReferenceDataSource'] as Map)
-                  .cast<String, dynamic>()),
+      referenceId: map['referenceId'] == null ? null : map['referenceId'] as String,
+      referenceSchema: ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchema.fromMap((map['referenceSchema'] as Map).cast<String, dynamic>()),
+      s3ReferenceDataSource: ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceS3ReferenceDataSource.fromMap((map['s3ReferenceDataSource'] as Map).cast<String, dynamic>()),
       tableName: map['tableName'] as String,
     );
   }
 }
+

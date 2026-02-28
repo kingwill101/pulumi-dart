@@ -6,7 +6,6 @@ import 'labeling_job_input_config_data_source.dart';
 class LabelingJobInputConfig {
   /// Attributes of the data. Fields are documented below.
   final LabelingJobInputConfigDataAttributes? dataAttributes;
-
   /// Location of the input data.. Fields are documented below.
   final LabelingJobInputConfigDataSource dataSource;
 
@@ -19,23 +18,17 @@ class LabelingJobInputConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dataAttributesValue = dataAttributes;
-    if (dataAttributesValue != null) {
-      map['dataAttributes'] = dataAttributesValue.toMap();
-    }
-    map['dataSource'] = dataSource.toMap();
-    return map;
+    return <String, dynamic>{
+      'dataAttributes': ?dataAttributes == null ? null : dataAttributes!.toMap(),
+      'dataSource': dataSource.toMap(),
+    };
   }
 
   factory LabelingJobInputConfig.fromMap(Map<String, dynamic> map) {
     return LabelingJobInputConfig(
-      dataAttributes: map['dataAttributes'] == null
-          ? null
-          : LabelingJobInputConfigDataAttributes.fromMap(
-              (map['dataAttributes'] as Map).cast<String, dynamic>()),
-      dataSource: LabelingJobInputConfigDataSource.fromMap(
-          (map['dataSource'] as Map).cast<String, dynamic>()),
+      dataAttributes: map['dataAttributes'] == null ? null : LabelingJobInputConfigDataAttributes.fromMap((map['dataAttributes'] as Map).cast<String, dynamic>()),
+      dataSource: LabelingJobInputConfigDataSource.fromMap((map['dataSource'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

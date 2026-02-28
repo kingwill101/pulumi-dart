@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// FleetLifecycleState describes the state of a Fleet resource.
 class FleetLifecycleStateResponse {
   /// The current state of the Fleet resource.
@@ -12,9 +13,9 @@ class FleetLifecycleStateResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['code'] = code;
-    return map;
+    return <String, dynamic>{
+      'code': code,
+    };
   }
 
   factory FleetLifecycleStateResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class FleetLifecycleStateResponse {
     );
   }
 }
+

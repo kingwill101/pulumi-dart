@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class OutboundConnectionRemoteDomainInfo {
   /// The name of the remote domain.
   final String domainName;
-
   /// The Account ID of the owner of the remote domain.
   final String ownerId;
-
   /// The region of the remote domain.
   final String region;
 
@@ -21,11 +20,11 @@ class OutboundConnectionRemoteDomainInfo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['domainName'] = domainName;
-    map['ownerId'] = ownerId;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'domainName': domainName,
+      'ownerId': ownerId,
+      'region': region,
+    };
   }
 
   factory OutboundConnectionRemoteDomainInfo.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class OutboundConnectionRemoteDomainInfo {
     );
   }
 }
+

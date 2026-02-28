@@ -6,10 +6,8 @@ import 'version.dart';
 class Location {
   /// Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)
   final String? cpeUri;
-
   /// The path from which we gathered that this package/version is installed.
   final String? path;
-
   /// Deprecated. The version installed at this location.
   final Version? version;
 
@@ -24,29 +22,19 @@ class Location {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cpeUriValue = cpeUri;
-    if (cpeUriValue != null) {
-      map['cpeUri'] = cpeUriValue;
-    }
-    final pathValue = path;
-    if (pathValue != null) {
-      map['path'] = pathValue;
-    }
-    final versionValue = version;
-    if (versionValue != null) {
-      map['version'] = versionValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'cpeUri': ?cpeUri,
+      'path': ?path,
+      'version': ?version == null ? null : version!.toMap(),
+    };
   }
 
   factory Location.fromMap(Map<String, dynamic> map) {
     return Location(
       cpeUri: map['cpeUri'] == null ? null : map['cpeUri'] as String,
       path: map['path'] == null ? null : map['path'] as String,
-      version: map['version'] == null
-          ? null
-          : Version.fromMap((map['version'] as Map).cast<String, dynamic>()),
+      version: map['version'] == null ? null : Version.fromMap((map['version'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

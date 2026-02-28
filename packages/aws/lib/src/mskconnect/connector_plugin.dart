@@ -13,15 +13,15 @@ class ConnectorPlugin {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['customPlugin'] = customPlugin.toMap();
-    return map;
+    return <String, dynamic>{
+      'customPlugin': customPlugin.toMap(),
+    };
   }
 
   factory ConnectorPlugin.fromMap(Map<String, dynamic> map) {
     return ConnectorPlugin(
-      customPlugin: ConnectorPluginCustomPlugin.fromMap(
-          (map['customPlugin'] as Map).cast<String, dynamic>()),
+      customPlugin: ConnectorPluginCustomPlugin.fromMap((map['customPlugin'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

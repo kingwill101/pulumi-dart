@@ -6,7 +6,6 @@ import 'filter_response.dart';
 class CompositeFilterResponse {
   /// The logic operator of the sub filter.
   final String logicOperator;
-
   /// Sub filters.
   final List<FilterResponse> subFilters;
 
@@ -19,21 +18,17 @@ class CompositeFilterResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['logicOperator'] = logicOperator;
-    map['subFilters'] =
-        pulumi.Input.encodeList<FilterResponse, Map<String, dynamic>>(
-            subFilters, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'logicOperator': logicOperator,
+      'subFilters': pulumi.Input.encodeList<FilterResponse, Map<String, dynamic>>(subFilters, (value) => value.toMap()),
+    };
   }
 
   factory CompositeFilterResponse.fromMap(Map<String, dynamic> map) {
     return CompositeFilterResponse(
       logicOperator: map['logicOperator'] as String,
-      subFilters: pulumi.Input.decodeList<FilterResponse>(
-          map['subFilters'],
-          (value) =>
-              FilterResponse.fromMap((value as Map).cast<String, dynamic>())),
+      subFilters: pulumi.Input.decodeList<FilterResponse>(map['subFilters'], (value) => FilterResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

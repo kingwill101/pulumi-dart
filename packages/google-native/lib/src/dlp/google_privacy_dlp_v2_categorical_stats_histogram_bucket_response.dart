@@ -7,16 +7,12 @@ import 'google_privacy_dlp_v2_value_frequency_response.dart';
 class GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse {
   /// Total number of values in this bucket.
   final String bucketSize;
-
   /// Total number of distinct values in this bucket.
   final String bucketValueCount;
-
   /// Sample of value frequencies in this bucket. The total number of values returned per bucket is capped at 20.
   final List<GooglePrivacyDlpV2ValueFrequencyResponse> bucketValues;
-
   /// Lower bound on the value frequency of the values in this bucket.
   final String valueFrequencyLowerBound;
-
   /// Upper bound on the value frequency of the values in this bucket.
   final String valueFrequencyUpperBound;
 
@@ -35,29 +31,23 @@ class GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucketSize'] = bucketSize;
-    map['bucketValueCount'] = bucketValueCount;
-    map['bucketValues'] = pulumi.Input.encodeList<
-        GooglePrivacyDlpV2ValueFrequencyResponse,
-        Map<String, dynamic>>(bucketValues, (value) => value.toMap());
-    map['valueFrequencyLowerBound'] = valueFrequencyLowerBound;
-    map['valueFrequencyUpperBound'] = valueFrequencyUpperBound;
-    return map;
+    return <String, dynamic>{
+      'bucketSize': bucketSize,
+      'bucketValueCount': bucketValueCount,
+      'bucketValues': pulumi.Input.encodeList<GooglePrivacyDlpV2ValueFrequencyResponse, Map<String, dynamic>>(bucketValues, (value) => value.toMap()),
+      'valueFrequencyLowerBound': valueFrequencyLowerBound,
+      'valueFrequencyUpperBound': valueFrequencyUpperBound,
+    };
   }
 
-  factory GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse(
       bucketSize: map['bucketSize'] as String,
       bucketValueCount: map['bucketValueCount'] as String,
-      bucketValues:
-          pulumi.Input.decodeList<GooglePrivacyDlpV2ValueFrequencyResponse>(
-              map['bucketValues'],
-              (value) => GooglePrivacyDlpV2ValueFrequencyResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      bucketValues: pulumi.Input.decodeList<GooglePrivacyDlpV2ValueFrequencyResponse>(map['bucketValues'], (value) => GooglePrivacyDlpV2ValueFrequencyResponse.fromMap((value as Map).cast<String, dynamic>())),
       valueFrequencyLowerBound: map['valueFrequencyLowerBound'] as String,
       valueFrequencyUpperBound: map['valueFrequencyUpperBound'] as String,
     );
   }
 }
+

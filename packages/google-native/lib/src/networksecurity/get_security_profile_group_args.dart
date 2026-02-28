@@ -19,17 +19,17 @@ class GetSecurityProfileGroupArgs {
     required String location,
     required String organizationId,
     required String securityProfileGroupId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        organizationId = pulumi.Input.asInput<String>(organizationId),
-        securityProfileGroupId =
-            pulumi.Input.asInput<String>(securityProfileGroupId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      organizationId = pulumi.Input.asInput<String>(organizationId),
+      securityProfileGroupId = pulumi.Input.asInput<String>(securityProfileGroupId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    map['organizationId'] = organizationId;
-    map['securityProfileGroupId'] = securityProfileGroupId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'organizationId': organizationId,
+      'securityProfileGroupId': securityProfileGroupId,
+    };
   }
 
   factory GetSecurityProfileGroupArgs.fromMap(Map<String, dynamic> map) {
@@ -40,3 +40,4 @@ class GetSecurityProfileGroupArgs {
     );
   }
 }
+

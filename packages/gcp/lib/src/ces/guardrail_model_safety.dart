@@ -15,20 +15,15 @@ class GuardrailModelSafety {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['safetySettings'] = pulumi.Input.encodeList<
-        GuardrailModelSafetySafetySetting,
-        Map<String, dynamic>>(safetySettings, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'safetySettings': pulumi.Input.encodeList<GuardrailModelSafetySafetySetting, Map<String, dynamic>>(safetySettings, (value) => value.toMap()),
+    };
   }
 
   factory GuardrailModelSafety.fromMap(Map<String, dynamic> map) {
     return GuardrailModelSafety(
-      safetySettings:
-          pulumi.Input.decodeList<GuardrailModelSafetySafetySetting>(
-              map['safetySettings'],
-              (value) => GuardrailModelSafetySafetySetting.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      safetySettings: pulumi.Input.decodeList<GuardrailModelSafetySafetySetting>(map['safetySettings'], (value) => GuardrailModelSafetySafetySetting.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

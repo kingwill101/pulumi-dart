@@ -6,13 +6,10 @@ import 'test_targets_for_shard_response.dart';
 class ShardResponse {
   /// The estimated shard duration based on previous test case timing records, if available.
   final String estimatedShardDuration;
-
   /// The total number of shards.
   final int numShards;
-
   /// The index of the shard among all the shards.
   final int shardIndex;
-
   /// Test targets for each shard. Only set for manual sharding.
   final TestTargetsForShardResponse testTargetsForShard;
 
@@ -29,12 +26,12 @@ class ShardResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['estimatedShardDuration'] = estimatedShardDuration;
-    map['numShards'] = numShards;
-    map['shardIndex'] = shardIndex;
-    map['testTargetsForShard'] = testTargetsForShard.toMap();
-    return map;
+    return <String, dynamic>{
+      'estimatedShardDuration': estimatedShardDuration,
+      'numShards': numShards,
+      'shardIndex': shardIndex,
+      'testTargetsForShard': testTargetsForShard.toMap(),
+    };
   }
 
   factory ShardResponse.fromMap(Map<String, dynamic> map) {
@@ -42,8 +39,8 @@ class ShardResponse {
       estimatedShardDuration: map['estimatedShardDuration'] as String,
       numShards: map['numShards'] as int,
       shardIndex: map['shardIndex'] as int,
-      testTargetsForShard: TestTargetsForShardResponse.fromMap(
-          (map['testTargetsForShard'] as Map).cast<String, dynamic>()),
+      testTargetsForShard: TestTargetsForShardResponse.fromMap((map['testTargetsForShard'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

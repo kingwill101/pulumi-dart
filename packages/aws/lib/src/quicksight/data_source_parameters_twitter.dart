@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataSourceParametersTwitter {
   /// The maximum number of rows to query.
   final int maxRows;
-
   /// The Twitter query to retrieve the data.
   final String query;
 
@@ -16,10 +16,10 @@ class DataSourceParametersTwitter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maxRows'] = maxRows;
-    map['query'] = query;
-    return map;
+    return <String, dynamic>{
+      'maxRows': maxRows,
+      'query': query,
+    };
   }
 
   factory DataSourceParametersTwitter.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class DataSourceParametersTwitter {
     );
   }
 }
+

@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
 class MavenArtifactResponse {
   /// Maven `artifactId` value used when uploading the artifact to Artifact Registry.
   final String artifactId;
-
   /// Maven `groupId` value used when uploading the artifact to Artifact Registry.
   final String groupId;
-
   /// Path to an artifact in the build's workspace to be uploaded to Artifact Registry. This can be either an absolute path, e.g. /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from /workspace, e.g. my-app/target/my-app-1.0.SNAPSHOT.jar.
   final String path;
-
   /// Artifact Registry repository, in the form "https://$REGION-maven.pkg.dev/$PROJECT/$REPOSITORY" Artifact in the workspace specified by path will be uploaded to Artifact Registry with this location as a prefix.
   final String repository;
-
   /// Maven `version` value used when uploading the artifact to Artifact Registry.
   final String version;
 
@@ -32,13 +29,13 @@ class MavenArtifactResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['artifactId'] = artifactId;
-    map['groupId'] = groupId;
-    map['path'] = path;
-    map['repository'] = repository;
-    map['version'] = version;
-    return map;
+    return <String, dynamic>{
+      'artifactId': artifactId,
+      'groupId': groupId,
+      'path': path,
+      'repository': repository,
+      'version': version,
+    };
   }
 
   factory MavenArtifactResponse.fromMap(Map<String, dynamic> map) {
@@ -51,3 +48,4 @@ class MavenArtifactResponse {
     );
   }
 }
+

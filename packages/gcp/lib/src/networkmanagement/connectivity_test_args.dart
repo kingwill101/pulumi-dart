@@ -11,11 +11,9 @@ import 'connectivity_test_source.dart';
 class ConnectivityTestArgs {
   /// Whether the analysis should skip firewall checking. Default value is false.
   final pulumi.Input<bool>? bypassFirewallChecks;
-
   /// The user-supplied description of the Connectivity Test.
   /// Maximum of 512 characters.
   final pulumi.Input<String>? description;
-
   /// Required. Destination specification of the Connectivity Test.
   /// You can use a combination of destination IP address, URI of a supported
   /// endpoint, project ID, or VPC network to identify the destination location.
@@ -24,32 +22,25 @@ class ConnectivityTestArgs {
   /// destination that you don't intend to test.
   /// Structure is documented below.
   final pulumi.Input<ConnectivityTestDestination> destination;
-
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Unique name for the connectivity test.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// IP Protocol of the test. When not provided, "TCP" is assumed.
   final pulumi.Input<String>? protocol;
-
   /// Other projects that may be relevant for reachability analysis.
   /// This is applicable to scenarios where a test can cross project
   /// boundaries.
   final pulumi.Input<List<String>>? relatedProjects;
-
   /// Whether run analysis for the return path from destination to source.
   /// Default value is false.
   final pulumi.Input<bool>? roundTrip;
-
   /// Required. Source specification of the Connectivity Test.
   /// You can use a combination of source IP address, URI of a supported
   /// endpoint, project ID, or VPC network to identify the source location.
@@ -81,82 +72,46 @@ class ConnectivityTestArgs {
     List<String>? relatedProjects,
     bool? roundTrip,
     required ConnectivityTestSource source,
-  })  : bypassFirewallChecks =
-            pulumi.Input.asOptionalInput<bool>(bypassFirewallChecks),
-        description = pulumi.Input.asOptionalInput<String>(description),
-        destination =
-            pulumi.Input.asInput<ConnectivityTestDestination>(destination),
-        labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        protocol = pulumi.Input.asOptionalInput<String>(protocol),
-        relatedProjects =
-            pulumi.Input.asOptionalInput<List<String>>(relatedProjects),
-        roundTrip = pulumi.Input.asOptionalInput<bool>(roundTrip),
-        source = pulumi.Input.asInput<ConnectivityTestSource>(source);
+  }) :
+      bypassFirewallChecks = pulumi.Input.asOptionalInput<bool>(bypassFirewallChecks),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      destination = pulumi.Input.asInput<ConnectivityTestDestination>(destination),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      protocol = pulumi.Input.asOptionalInput<String>(protocol),
+      relatedProjects = pulumi.Input.asOptionalInput<List<String>>(relatedProjects),
+      roundTrip = pulumi.Input.asOptionalInput<bool>(roundTrip),
+      source = pulumi.Input.asInput<ConnectivityTestSource>(source);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final bypassFirewallChecksValue = bypassFirewallChecks;
-    if (bypassFirewallChecksValue != null) {
-      map['bypassFirewallChecks'] = bypassFirewallChecksValue;
-    }
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    map['destination'] = pulumi.Input.mapInputValue<ConnectivityTestDestination,
-        Map<String, dynamic>>(destination, (value) => value.toMap());
-    final labelsValue = labels;
-    if (labelsValue != null) {
-      map['labels'] = labelsValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final protocolValue = protocol;
-    if (protocolValue != null) {
-      map['protocol'] = protocolValue;
-    }
-    final relatedProjectsValue = relatedProjects;
-    if (relatedProjectsValue != null) {
-      map['relatedProjects'] = relatedProjectsValue;
-    }
-    final roundTripValue = roundTrip;
-    if (roundTripValue != null) {
-      map['roundTrip'] = roundTripValue;
-    }
-    map['source'] = pulumi.Input.mapInputValue<ConnectivityTestSource,
-        Map<String, dynamic>>(source, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'bypassFirewallChecks': ?bypassFirewallChecks,
+      'description': ?description,
+      'destination': pulumi.Input.mapInputValue<ConnectivityTestDestination, Map<String, dynamic>>(destination, (value) => value.toMap()),
+      'labels': ?labels,
+      'name': ?name,
+      'project': ?project,
+      'protocol': ?protocol,
+      'relatedProjects': ?relatedProjects,
+      'roundTrip': ?roundTrip,
+      'source': pulumi.Input.mapInputValue<ConnectivityTestSource, Map<String, dynamic>>(source, (value) => value.toMap()),
+    };
   }
 
   factory ConnectivityTestArgs.fromMap(Map<String, dynamic> map) {
     return ConnectivityTestArgs(
-      bypassFirewallChecks: map['bypassFirewallChecks'] == null
-          ? null
-          : map['bypassFirewallChecks'] as bool,
-      description:
-          map['description'] == null ? null : map['description'] as String,
-      destination: ConnectivityTestDestination.fromMap(
-          (map['destination'] as Map).cast<String, dynamic>()),
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      bypassFirewallChecks: map['bypassFirewallChecks'] == null ? null : map['bypassFirewallChecks'] as bool,
+      description: map['description'] == null ? null : map['description'] as String,
+      destination: ConnectivityTestDestination.fromMap((map['destination'] as Map).cast<String, dynamic>()),
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      relatedProjects: map['relatedProjects'] == null
-          ? null
-          : (map['relatedProjects'] as List).cast<String>(),
+      relatedProjects: map['relatedProjects'] == null ? null : (map['relatedProjects'] as List).cast<String>(),
       roundTrip: map['roundTrip'] == null ? null : map['roundTrip'] as bool,
-      source: ConnectivityTestSource.fromMap(
-          (map['source'] as Map).cast<String, dynamic>()),
+      source: ConnectivityTestSource.fromMap((map['source'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

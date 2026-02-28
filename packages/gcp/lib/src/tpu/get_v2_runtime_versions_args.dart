@@ -10,7 +10,6 @@ class GetV2RuntimeVersionsArgs {
   /// The project to list versions for. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The zone to list versions for. If it
   /// is not provided, the provider zone is used.
   final pulumi.Input<String>? zone;
@@ -21,20 +20,15 @@ class GetV2RuntimeVersionsArgs {
   GetV2RuntimeVersionsArgs({
     String? project,
     String? zone,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        zone = pulumi.Input.asOptionalInput<String>(zone);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      zone = pulumi.Input.asOptionalInput<String>(zone);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final zoneValue = zone;
-    if (zoneValue != null) {
-      map['zone'] = zoneValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'zone': ?zone,
+    };
   }
 
   factory GetV2RuntimeVersionsArgs.fromMap(Map<String, dynamic> map) {
@@ -44,3 +38,4 @@ class GetV2RuntimeVersionsArgs {
     );
   }
 }
+

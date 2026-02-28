@@ -192,10 +192,8 @@ class DomainDkim extends pulumi.CustomResource {
   /// Find out more about verifying domains in Amazon SES
   /// in the [AWS SES docs](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html).
   late final pulumi.Output<List<String>> dkimTokens;
-
   /// Verified domain name to generate DKIM tokens for.
   late final pulumi.Output<String> domain;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

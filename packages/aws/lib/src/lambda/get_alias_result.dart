@@ -1,20 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getAlias.
 class GetAliasResult {
   /// ARN identifying the Lambda function alias.
   final String arn;
-
   /// Description of the alias.
   final String description;
   final String functionName;
-
   /// Lambda function version which the alias uses.
   final String functionVersion;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// ARN to be used for invoking Lambda Function from API Gateway - to be used in `aws.apigateway.Integration`'s `uri`.
   final String invokeArn;
   final String name;
@@ -41,16 +38,16 @@ class GetAliasResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['description'] = description;
-    map['functionName'] = functionName;
-    map['functionVersion'] = functionVersion;
-    map['id'] = id;
-    map['invokeArn'] = invokeArn;
-    map['name'] = name;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'description': description,
+      'functionName': functionName,
+      'functionVersion': functionVersion,
+      'id': id,
+      'invokeArn': invokeArn,
+      'name': name,
+      'region': region,
+    };
   }
 
   factory GetAliasResult.fromMap(Map<String, dynamic> map) {
@@ -66,3 +63,4 @@ class GetAliasResult {
     );
   }
 }
+

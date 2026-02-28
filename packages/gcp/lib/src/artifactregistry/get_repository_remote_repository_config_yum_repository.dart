@@ -5,8 +5,7 @@ import 'get_repository_remote_repository_config_yum_repository_public_repository
 
 class GetRepositoryRemoteRepositoryConfigYumRepository {
   /// One of the publicly available Yum repositories supported by Artifact Registry.
-  final List<GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository>
-      publicRepositories;
+  final List<GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository> publicRepositories;
 
   /// Creates a new [GetRepositoryRemoteRepositoryConfigYumRepository].
   /// [publicRepositories] One of the publicly available Yum repositories supported by Artifact Registry.
@@ -15,22 +14,15 @@ class GetRepositoryRemoteRepositoryConfigYumRepository {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['publicRepositories'] = pulumi.Input.encodeList<
-        GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository,
-        Map<String, dynamic>>(publicRepositories, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'publicRepositories': pulumi.Input.encodeList<GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository, Map<String, dynamic>>(publicRepositories, (value) => value.toMap()),
+    };
   }
 
-  factory GetRepositoryRemoteRepositoryConfigYumRepository.fromMap(
-      Map<String, dynamic> map) {
+  factory GetRepositoryRemoteRepositoryConfigYumRepository.fromMap(Map<String, dynamic> map) {
     return GetRepositoryRemoteRepositoryConfigYumRepository(
-      publicRepositories: pulumi.Input.decodeList<
-              GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository>(
-          map['publicRepositories'],
-          (value) =>
-              GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      publicRepositories: pulumi.Input.decodeList<GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository>(map['publicRepositories'], (value) => GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

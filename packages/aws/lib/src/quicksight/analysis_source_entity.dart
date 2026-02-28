@@ -13,20 +13,15 @@ class AnalysisSourceEntity {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final sourceTemplateValue = sourceTemplate;
-    if (sourceTemplateValue != null) {
-      map['sourceTemplate'] = sourceTemplateValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'sourceTemplate': ?sourceTemplate == null ? null : sourceTemplate!.toMap(),
+    };
   }
 
   factory AnalysisSourceEntity.fromMap(Map<String, dynamic> map) {
     return AnalysisSourceEntity(
-      sourceTemplate: map['sourceTemplate'] == null
-          ? null
-          : AnalysisSourceEntitySourceTemplate.fromMap(
-              (map['sourceTemplate'] as Map).cast<String, dynamic>()),
+      sourceTemplate: map['sourceTemplate'] == null ? null : AnalysisSourceEntitySourceTemplate.fromMap((map['sourceTemplate'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -22,21 +22,19 @@ class GetReleaseConfigArgs {
     String? project,
     required String releaseConfigId,
     required String repositoryId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        releaseConfigId = pulumi.Input.asInput<String>(releaseConfigId),
-        repositoryId = pulumi.Input.asInput<String>(repositoryId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      releaseConfigId = pulumi.Input.asInput<String>(releaseConfigId),
+      repositoryId = pulumi.Input.asInput<String>(repositoryId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['releaseConfigId'] = releaseConfigId;
-    map['repositoryId'] = repositoryId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+      'releaseConfigId': releaseConfigId,
+      'repositoryId': repositoryId,
+    };
   }
 
   factory GetReleaseConfigArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetReleaseConfigArgs {
     );
   }
 }
+

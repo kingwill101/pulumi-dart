@@ -5,8 +5,7 @@ import 'backend_service_network_pass_through_lb_traffic_policy_zonal_affinity.da
 class BackendServiceNetworkPassThroughLbTrafficPolicy {
   /// When configured, new connections are load balanced across healthy backend endpoints in the local zone.
   /// Structure is documented below.
-  final BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity?
-      zonalAffinity;
+  final BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity? zonalAffinity;
 
   /// Creates a new [BackendServiceNetworkPassThroughLbTrafficPolicy].
   /// [zonalAffinity] When configured, new connections are load balanced across healthy backend endpoints in the local zone.
@@ -15,21 +14,15 @@ class BackendServiceNetworkPassThroughLbTrafficPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final zonalAffinityValue = zonalAffinity;
-    if (zonalAffinityValue != null) {
-      map['zonalAffinity'] = zonalAffinityValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'zonalAffinity': ?zonalAffinity == null ? null : zonalAffinity!.toMap(),
+    };
   }
 
-  factory BackendServiceNetworkPassThroughLbTrafficPolicy.fromMap(
-      Map<String, dynamic> map) {
+  factory BackendServiceNetworkPassThroughLbTrafficPolicy.fromMap(Map<String, dynamic> map) {
     return BackendServiceNetworkPassThroughLbTrafficPolicy(
-      zonalAffinity: map['zonalAffinity'] == null
-          ? null
-          : BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity
-              .fromMap((map['zonalAffinity'] as Map).cast<String, dynamic>()),
+      zonalAffinity: map['zonalAffinity'] == null ? null : BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity.fromMap((map['zonalAffinity'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -10,7 +10,6 @@ class GetSolutionStackArgs {
   /// If more than one result is returned, use the most
   /// recent solution stack.
   final pulumi.Input<bool>? mostRecent;
-
   /// Regex string to apply to the solution stack list returned
   /// by AWS. See [Elastic Beanstalk Supported Platforms][beanstalk-platforms] from
   /// AWS documentation for reference solution stack names.
@@ -19,7 +18,6 @@ class GetSolutionStackArgs {
   /// this call will fail. Ensure that your search is specific enough to return
   /// a single solution stack, or use `most_recent` to choose the most recent one.
   final pulumi.Input<String> nameRegex;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -31,22 +29,17 @@ class GetSolutionStackArgs {
     bool? mostRecent,
     required String nameRegex,
     String? region,
-  })  : mostRecent = pulumi.Input.asOptionalInput<bool>(mostRecent),
-        nameRegex = pulumi.Input.asInput<String>(nameRegex),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      mostRecent = pulumi.Input.asOptionalInput<bool>(mostRecent),
+      nameRegex = pulumi.Input.asInput<String>(nameRegex),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final mostRecentValue = mostRecent;
-    if (mostRecentValue != null) {
-      map['mostRecent'] = mostRecentValue;
-    }
-    map['nameRegex'] = nameRegex;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'mostRecent': ?mostRecent,
+      'nameRegex': nameRegex,
+      'region': ?region,
+    };
   }
 
   factory GetSolutionStackArgs.fromMap(Map<String, dynamic> map) {
@@ -57,3 +50,4 @@ class GetSolutionStackArgs {
     );
   }
 }
+

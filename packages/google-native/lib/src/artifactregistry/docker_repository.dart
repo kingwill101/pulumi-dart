@@ -14,20 +14,15 @@ class DockerRepository {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final publicRepositoryValue = publicRepository;
-    if (publicRepositoryValue != null) {
-      map['publicRepository'] = publicRepositoryValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'publicRepository': ?publicRepository == null ? null : publicRepository!.value,
+    };
   }
 
   factory DockerRepository.fromMap(Map<String, dynamic> map) {
     return DockerRepository(
-      publicRepository: map['publicRepository'] == null
-          ? null
-          : DockerRepositoryPublicRepository.fromValue(
-              map['publicRepository'] as String),
+      publicRepository: map['publicRepository'] == null ? null : DockerRepositoryPublicRepository.fromValue(map['publicRepository'] as String),
     );
   }
 }
+

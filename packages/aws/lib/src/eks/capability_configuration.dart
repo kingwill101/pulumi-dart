@@ -13,20 +13,15 @@ class CapabilityConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final argoCdValue = argoCd;
-    if (argoCdValue != null) {
-      map['argoCd'] = argoCdValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'argoCd': ?argoCd == null ? null : argoCd!.toMap(),
+    };
   }
 
   factory CapabilityConfiguration.fromMap(Map<String, dynamic> map) {
     return CapabilityConfiguration(
-      argoCd: map['argoCd'] == null
-          ? null
-          : CapabilityConfigurationArgoCd.fromMap(
-              (map['argoCd'] as Map).cast<String, dynamic>()),
+      argoCd: map['argoCd'] == null ? null : CapabilityConfigurationArgoCd.fromMap((map['argoCd'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetParametersArgs {
   /// Filter string, adhering to the rules in List-operation filtering. List only parameters matching the filter. If filter is empty, all parameters are listed.
   final pulumi.Input<String>? filter;
-
   /// The ID of the project.
   final pulumi.Input<String>? project;
 
@@ -19,20 +18,15 @@ class GetParametersArgs {
   GetParametersArgs({
     String? filter,
     String? project,
-  })  : filter = pulumi.Input.asOptionalInput<String>(filter),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      filter = pulumi.Input.asOptionalInput<String>(filter),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final filterValue = filter;
-    if (filterValue != null) {
-      map['filter'] = filterValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'filter': ?filter,
+      'project': ?project,
+    };
   }
 
   factory GetParametersArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +36,4 @@ class GetParametersArgs {
     );
   }
 }
+

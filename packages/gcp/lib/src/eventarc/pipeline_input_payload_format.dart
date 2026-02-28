@@ -7,10 +7,8 @@ class PipelineInputPayloadFormat {
   /// The format of an AVRO message payload.
   /// Structure is documented below.
   final PipelineInputPayloadFormatAvro? avro;
-
   /// The format of a JSON message payload.
   final Map<String, dynamic>? json;
-
   /// The format of a Protobuf message payload.
   /// Structure is documented below.
   final PipelineInputPayloadFormatProtobuf? protobuf;
@@ -26,35 +24,19 @@ class PipelineInputPayloadFormat {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final avroValue = avro;
-    if (avroValue != null) {
-      map['avro'] = avroValue.toMap();
-    }
-    final jsonValue = json;
-    if (jsonValue != null) {
-      map['json'] = jsonValue;
-    }
-    final protobufValue = protobuf;
-    if (protobufValue != null) {
-      map['protobuf'] = protobufValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'avro': ?avro == null ? null : avro!.toMap(),
+      'json': ?json,
+      'protobuf': ?protobuf == null ? null : protobuf!.toMap(),
+    };
   }
 
   factory PipelineInputPayloadFormat.fromMap(Map<String, dynamic> map) {
     return PipelineInputPayloadFormat(
-      avro: map['avro'] == null
-          ? null
-          : PipelineInputPayloadFormatAvro.fromMap(
-              (map['avro'] as Map).cast<String, dynamic>()),
-      json: map['json'] == null
-          ? null
-          : (map['json'] as Map).cast<String, dynamic>(),
-      protobuf: map['protobuf'] == null
-          ? null
-          : PipelineInputPayloadFormatProtobuf.fromMap(
-              (map['protobuf'] as Map).cast<String, dynamic>()),
+      avro: map['avro'] == null ? null : PipelineInputPayloadFormatAvro.fromMap((map['avro'] as Map).cast<String, dynamic>()),
+      json: map['json'] == null ? null : (map['json'] as Map).cast<String, dynamic>(),
+      protobuf: map['protobuf'] == null ? null : PipelineInputPayloadFormatProtobuf.fromMap((map['protobuf'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -8,7 +8,6 @@ class EdgeCacheOriginOriginOverrideAction {
   /// headers, for request handled by this origin.
   /// Structure is documented below.
   final EdgeCacheOriginOriginOverrideActionHeaderAction? headerAction;
-
   /// The URL rewrite configuration for request that are
   /// handled by this origin.
   /// Structure is documented below.
@@ -23,29 +22,17 @@ class EdgeCacheOriginOriginOverrideAction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final headerActionValue = headerAction;
-    if (headerActionValue != null) {
-      map['headerAction'] = headerActionValue.toMap();
-    }
-    final urlRewriteValue = urlRewrite;
-    if (urlRewriteValue != null) {
-      map['urlRewrite'] = urlRewriteValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'headerAction': ?headerAction == null ? null : headerAction!.toMap(),
+      'urlRewrite': ?urlRewrite == null ? null : urlRewrite!.toMap(),
+    };
   }
 
-  factory EdgeCacheOriginOriginOverrideAction.fromMap(
-      Map<String, dynamic> map) {
+  factory EdgeCacheOriginOriginOverrideAction.fromMap(Map<String, dynamic> map) {
     return EdgeCacheOriginOriginOverrideAction(
-      headerAction: map['headerAction'] == null
-          ? null
-          : EdgeCacheOriginOriginOverrideActionHeaderAction.fromMap(
-              (map['headerAction'] as Map).cast<String, dynamic>()),
-      urlRewrite: map['urlRewrite'] == null
-          ? null
-          : EdgeCacheOriginOriginOverrideActionUrlRewrite.fromMap(
-              (map['urlRewrite'] as Map).cast<String, dynamic>()),
+      headerAction: map['headerAction'] == null ? null : EdgeCacheOriginOriginOverrideActionHeaderAction.fromMap((map['headerAction'] as Map).cast<String, dynamic>()),
+      urlRewrite: map['urlRewrite'] == null ? null : EdgeCacheOriginOriginOverrideActionUrlRewrite.fromMap((map['urlRewrite'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

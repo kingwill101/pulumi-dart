@@ -28,28 +28,23 @@ class GetMessageArgs {
     required String messageId,
     String? project,
     String? view,
-  })  : datasetId = pulumi.Input.asInput<String>(datasetId),
-        hl7V2StoreId = pulumi.Input.asInput<String>(hl7V2StoreId),
-        location = pulumi.Input.asInput<String>(location),
-        messageId = pulumi.Input.asInput<String>(messageId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        view = pulumi.Input.asOptionalInput<String>(view);
+  }) :
+      datasetId = pulumi.Input.asInput<String>(datasetId),
+      hl7V2StoreId = pulumi.Input.asInput<String>(hl7V2StoreId),
+      location = pulumi.Input.asInput<String>(location),
+      messageId = pulumi.Input.asInput<String>(messageId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['datasetId'] = datasetId;
-    map['hl7V2StoreId'] = hl7V2StoreId;
-    map['location'] = location;
-    map['messageId'] = messageId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final viewValue = view;
-    if (viewValue != null) {
-      map['view'] = viewValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'datasetId': datasetId,
+      'hl7V2StoreId': hl7V2StoreId,
+      'location': location,
+      'messageId': messageId,
+      'project': ?project,
+      'view': ?view,
+    };
   }
 
   factory GetMessageArgs.fromMap(Map<String, dynamic> map) {
@@ -63,3 +58,4 @@ class GetMessageArgs {
     );
   }
 }
+

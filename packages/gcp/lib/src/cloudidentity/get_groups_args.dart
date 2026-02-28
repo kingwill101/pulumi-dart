@@ -14,12 +14,13 @@ class GetGroupsArgs {
   /// [parent] The parent resource under which to list all Groups. Must be of the form identitysources/{identity_source_id} for external- identity-mapped groups or customers/{customer_id} for Google Groups.
   GetGroupsArgs({
     required String parent,
-  }) : parent = pulumi.Input.asInput<String>(parent);
+  }) :
+      parent = pulumi.Input.asInput<String>(parent);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['parent'] = parent;
-    return map;
+    return <String, dynamic>{
+      'parent': parent,
+    };
   }
 
   factory GetGroupsArgs.fromMap(Map<String, dynamic> map) {
@@ -28,3 +29,4 @@ class GetGroupsArgs {
     );
   }
 }
+

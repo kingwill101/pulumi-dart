@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRegionalSecretsSecretRotation {
   /// Timestamp in UTC at which the secret is scheduled to rotate.
   final String nextRotationTime;
-
   /// The Duration between rotation notifications.
   final String rotationPeriod;
 
@@ -16,10 +16,10 @@ class GetRegionalSecretsSecretRotation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['nextRotationTime'] = nextRotationTime;
-    map['rotationPeriod'] = rotationPeriod;
-    return map;
+    return <String, dynamic>{
+      'nextRotationTime': nextRotationTime,
+      'rotationPeriod': rotationPeriod,
+    };
   }
 
   factory GetRegionalSecretsSecretRotation.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetRegionalSecretsSecretRotation {
     );
   }
 }
+

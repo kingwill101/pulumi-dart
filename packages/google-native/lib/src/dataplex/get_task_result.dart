@@ -10,40 +10,28 @@ import 'google_cloud_dataplex_v1_task_trigger_spec_response.dart';
 class GetTaskResult {
   /// The time when the task was created.
   final String createTime;
-
   /// Optional. Description of the task.
   final String description;
-
   /// Optional. User friendly display name.
   final String displayName;
-
   /// Spec related to how a task is executed.
   final GoogleCloudDataplexV1TaskExecutionSpecResponse executionSpec;
-
   /// Status of the latest task executions.
   final GoogleCloudDataplexV1TaskExecutionStatusResponse executionStatus;
-
   /// Optional. User-defined labels for the task.
   final Map<String, String> labels;
-
   /// The relative resource name of the task, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/ tasks/{task_id}.
   final String name;
-
   /// Config related to running scheduled Notebooks.
   final GoogleCloudDataplexV1TaskNotebookTaskConfigResponse notebook;
-
   /// Config related to running custom Spark tasks.
   final GoogleCloudDataplexV1TaskSparkTaskConfigResponse spark;
-
   /// Current state of the task.
   final String state;
-
   /// Spec related to how often and when a task should be triggered.
   final GoogleCloudDataplexV1TaskTriggerSpecResponse triggerSpec;
-
   /// System generated globally unique ID for the task. This ID will be different if the task is deleted and re-created with the same name.
   final String uid;
-
   /// The time when the task was last updated.
   final String updateTime;
 
@@ -78,21 +66,21 @@ class GetTaskResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['description'] = description;
-    map['displayName'] = displayName;
-    map['executionSpec'] = executionSpec.toMap();
-    map['executionStatus'] = executionStatus.toMap();
-    map['labels'] = labels;
-    map['name'] = name;
-    map['notebook'] = notebook.toMap();
-    map['spark'] = spark.toMap();
-    map['state'] = state;
-    map['triggerSpec'] = triggerSpec.toMap();
-    map['uid'] = uid;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'description': description,
+      'displayName': displayName,
+      'executionSpec': executionSpec.toMap(),
+      'executionStatus': executionStatus.toMap(),
+      'labels': labels,
+      'name': name,
+      'notebook': notebook.toMap(),
+      'spark': spark.toMap(),
+      'state': state,
+      'triggerSpec': triggerSpec.toMap(),
+      'uid': uid,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetTaskResult.fromMap(Map<String, dynamic> map) {
@@ -100,21 +88,17 @@ class GetTaskResult {
       createTime: map['createTime'] as String,
       description: map['description'] as String,
       displayName: map['displayName'] as String,
-      executionSpec: GoogleCloudDataplexV1TaskExecutionSpecResponse.fromMap(
-          (map['executionSpec'] as Map).cast<String, dynamic>()),
-      executionStatus: GoogleCloudDataplexV1TaskExecutionStatusResponse.fromMap(
-          (map['executionStatus'] as Map).cast<String, dynamic>()),
+      executionSpec: GoogleCloudDataplexV1TaskExecutionSpecResponse.fromMap((map['executionSpec'] as Map).cast<String, dynamic>()),
+      executionStatus: GoogleCloudDataplexV1TaskExecutionStatusResponse.fromMap((map['executionStatus'] as Map).cast<String, dynamic>()),
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      notebook: GoogleCloudDataplexV1TaskNotebookTaskConfigResponse.fromMap(
-          (map['notebook'] as Map).cast<String, dynamic>()),
-      spark: GoogleCloudDataplexV1TaskSparkTaskConfigResponse.fromMap(
-          (map['spark'] as Map).cast<String, dynamic>()),
+      notebook: GoogleCloudDataplexV1TaskNotebookTaskConfigResponse.fromMap((map['notebook'] as Map).cast<String, dynamic>()),
+      spark: GoogleCloudDataplexV1TaskSparkTaskConfigResponse.fromMap((map['spark'] as Map).cast<String, dynamic>()),
       state: map['state'] as String,
-      triggerSpec: GoogleCloudDataplexV1TaskTriggerSpecResponse.fromMap(
-          (map['triggerSpec'] as Map).cast<String, dynamic>()),
+      triggerSpec: GoogleCloudDataplexV1TaskTriggerSpecResponse.fromMap((map['triggerSpec'] as Map).cast<String, dynamic>()),
       uid: map['uid'] as String,
       updateTime: map['updateTime'] as String,
     );
   }
 }
+

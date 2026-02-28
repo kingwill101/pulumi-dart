@@ -9,10 +9,8 @@ import 'google_privacy_dlp_v2_quasi_identifier_field.dart';
 class GooglePrivacyDlpV2StatisticalTable {
   /// Quasi-identifier columns.
   final List<GooglePrivacyDlpV2QuasiIdentifierField> quasiIds;
-
   /// The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
   final GooglePrivacyDlpV2FieldId relativeFrequency;
-
   /// Auxiliary table location.
   final GooglePrivacyDlpV2BigQueryTable table;
 
@@ -27,25 +25,19 @@ class GooglePrivacyDlpV2StatisticalTable {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['quasiIds'] = pulumi.Input.encodeList<
-        GooglePrivacyDlpV2QuasiIdentifierField,
-        Map<String, dynamic>>(quasiIds, (value) => value.toMap());
-    map['relativeFrequency'] = relativeFrequency.toMap();
-    map['table'] = table.toMap();
-    return map;
+    return <String, dynamic>{
+      'quasiIds': pulumi.Input.encodeList<GooglePrivacyDlpV2QuasiIdentifierField, Map<String, dynamic>>(quasiIds, (value) => value.toMap()),
+      'relativeFrequency': relativeFrequency.toMap(),
+      'table': table.toMap(),
+    };
   }
 
   factory GooglePrivacyDlpV2StatisticalTable.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2StatisticalTable(
-      quasiIds: pulumi.Input.decodeList<GooglePrivacyDlpV2QuasiIdentifierField>(
-          map['quasiIds'],
-          (value) => GooglePrivacyDlpV2QuasiIdentifierField.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      relativeFrequency: GooglePrivacyDlpV2FieldId.fromMap(
-          (map['relativeFrequency'] as Map).cast<String, dynamic>()),
-      table: GooglePrivacyDlpV2BigQueryTable.fromMap(
-          (map['table'] as Map).cast<String, dynamic>()),
+      quasiIds: pulumi.Input.decodeList<GooglePrivacyDlpV2QuasiIdentifierField>(map['quasiIds'], (value) => GooglePrivacyDlpV2QuasiIdentifierField.fromMap((value as Map).cast<String, dynamic>())),
+      relativeFrequency: GooglePrivacyDlpV2FieldId.fromMap((map['relativeFrequency'] as Map).cast<String, dynamic>()),
+      table: GooglePrivacyDlpV2BigQueryTable.fromMap((map['table'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

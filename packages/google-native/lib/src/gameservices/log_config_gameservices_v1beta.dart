@@ -8,10 +8,8 @@ import 'data_access_options_gameservices_v1beta.dart';
 class LogConfigGameservicesV1beta {
   /// Cloud audit options.
   final CloudAuditOptionsGameservicesV1beta? cloudAudit;
-
   /// Counter options.
   final CounterOptionsGameservicesV1beta? counter;
-
   /// Data access options.
   final DataAccessOptionsGameservicesV1beta? dataAccess;
 
@@ -26,36 +24,19 @@ class LogConfigGameservicesV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cloudAuditValue = cloudAudit;
-    if (cloudAuditValue != null) {
-      map['cloudAudit'] = cloudAuditValue.toMap();
-    }
-    final counterValue = counter;
-    if (counterValue != null) {
-      map['counter'] = counterValue.toMap();
-    }
-    final dataAccessValue = dataAccess;
-    if (dataAccessValue != null) {
-      map['dataAccess'] = dataAccessValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'cloudAudit': ?cloudAudit == null ? null : cloudAudit!.toMap(),
+      'counter': ?counter == null ? null : counter!.toMap(),
+      'dataAccess': ?dataAccess == null ? null : dataAccess!.toMap(),
+    };
   }
 
   factory LogConfigGameservicesV1beta.fromMap(Map<String, dynamic> map) {
     return LogConfigGameservicesV1beta(
-      cloudAudit: map['cloudAudit'] == null
-          ? null
-          : CloudAuditOptionsGameservicesV1beta.fromMap(
-              (map['cloudAudit'] as Map).cast<String, dynamic>()),
-      counter: map['counter'] == null
-          ? null
-          : CounterOptionsGameservicesV1beta.fromMap(
-              (map['counter'] as Map).cast<String, dynamic>()),
-      dataAccess: map['dataAccess'] == null
-          ? null
-          : DataAccessOptionsGameservicesV1beta.fromMap(
-              (map['dataAccess'] as Map).cast<String, dynamic>()),
+      cloudAudit: map['cloudAudit'] == null ? null : CloudAuditOptionsGameservicesV1beta.fromMap((map['cloudAudit'] as Map).cast<String, dynamic>()),
+      counter: map['counter'] == null ? null : CounterOptionsGameservicesV1beta.fromMap((map['counter'] as Map).cast<String, dynamic>()),
+      dataAccess: map['dataAccess'] == null ? null : DataAccessOptionsGameservicesV1beta.fromMap((map['dataAccess'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

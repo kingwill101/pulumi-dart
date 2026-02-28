@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SigningJobRevocationRecord {
   final String? reason;
   final String? revokedAt;
@@ -16,20 +17,11 @@ class SigningJobRevocationRecord {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final reasonValue = reason;
-    if (reasonValue != null) {
-      map['reason'] = reasonValue;
-    }
-    final revokedAtValue = revokedAt;
-    if (revokedAtValue != null) {
-      map['revokedAt'] = revokedAtValue;
-    }
-    final revokedByValue = revokedBy;
-    if (revokedByValue != null) {
-      map['revokedBy'] = revokedByValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'reason': ?reason,
+      'revokedAt': ?revokedAt,
+      'revokedBy': ?revokedBy,
+    };
   }
 
   factory SigningJobRevocationRecord.fromMap(Map<String, dynamic> map) {
@@ -40,3 +32,4 @@ class SigningJobRevocationRecord {
     );
   }
 }
+

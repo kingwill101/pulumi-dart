@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDiscoveredServiceArgs {
   /// The location of the discovered service.
   final pulumi.Input<String> location;
-
   /// The host project of the discovered service.
   final pulumi.Input<String>? project;
-
   /// The uri of the service.
   final pulumi.Input<String> serviceUri;
 
@@ -24,19 +22,17 @@ class GetDiscoveredServiceArgs {
     required String location,
     String? project,
     required String serviceUri,
-  })  : location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        serviceUri = pulumi.Input.asInput<String>(serviceUri);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      serviceUri = pulumi.Input.asInput<String>(serviceUri);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['serviceUri'] = serviceUri;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+      'serviceUri': serviceUri,
+    };
   }
 
   factory GetDiscoveredServiceArgs.fromMap(Map<String, dynamic> map) {
@@ -47,3 +43,4 @@ class GetDiscoveredServiceArgs {
     );
   }
 }
+

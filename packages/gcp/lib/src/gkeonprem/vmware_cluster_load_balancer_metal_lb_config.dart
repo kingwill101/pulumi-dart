@@ -17,21 +17,15 @@ class VMwareClusterLoadBalancerMetalLbConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['addressPools'] = pulumi.Input.encodeList<
-        VMwareClusterLoadBalancerMetalLbConfigAddressPool,
-        Map<String, dynamic>>(addressPools, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'addressPools': pulumi.Input.encodeList<VMwareClusterLoadBalancerMetalLbConfigAddressPool, Map<String, dynamic>>(addressPools, (value) => value.toMap()),
+    };
   }
 
-  factory VMwareClusterLoadBalancerMetalLbConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory VMwareClusterLoadBalancerMetalLbConfig.fromMap(Map<String, dynamic> map) {
     return VMwareClusterLoadBalancerMetalLbConfig(
-      addressPools: pulumi.Input.decodeList<
-              VMwareClusterLoadBalancerMetalLbConfigAddressPool>(
-          map['addressPools'],
-          (value) => VMwareClusterLoadBalancerMetalLbConfigAddressPool.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      addressPools: pulumi.Input.decodeList<VMwareClusterLoadBalancerMetalLbConfigAddressPool>(map['addressPools'], (value) => VMwareClusterLoadBalancerMetalLbConfigAddressPool.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

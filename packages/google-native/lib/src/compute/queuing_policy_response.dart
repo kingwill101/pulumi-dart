@@ -6,7 +6,6 @@ import 'duration_response.dart';
 class QueuingPolicyResponse {
   /// Relative deadline for waiting for capacity.
   final DurationResponse validUntilDuration;
-
   /// Absolute deadline for waiting for capacity in RFC3339 text format.
   final String validUntilTime;
 
@@ -19,17 +18,17 @@ class QueuingPolicyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['validUntilDuration'] = validUntilDuration.toMap();
-    map['validUntilTime'] = validUntilTime;
-    return map;
+    return <String, dynamic>{
+      'validUntilDuration': validUntilDuration.toMap(),
+      'validUntilTime': validUntilTime,
+    };
   }
 
   factory QueuingPolicyResponse.fromMap(Map<String, dynamic> map) {
     return QueuingPolicyResponse(
-      validUntilDuration: DurationResponse.fromMap(
-          (map['validUntilDuration'] as Map).cast<String, dynamic>()),
+      validUntilDuration: DurationResponse.fromMap((map['validUntilDuration'] as Map).cast<String, dynamic>()),
       validUntilTime: map['validUntilTime'] as String,
     );
   }
 }
+

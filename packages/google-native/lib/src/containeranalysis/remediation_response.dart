@@ -6,10 +6,8 @@ import 'related_url_response.dart';
 class RemediationResponse {
   /// Contains a comprehensive human-readable discussion of the remediation.
   final String details;
-
   /// The type of remediation that can be applied.
   final String remediationType;
-
   /// Contains the URL where to obtain the remediation.
   final RelatedUrlResponse remediationUri;
 
@@ -24,19 +22,19 @@ class RemediationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['details'] = details;
-    map['remediationType'] = remediationType;
-    map['remediationUri'] = remediationUri.toMap();
-    return map;
+    return <String, dynamic>{
+      'details': details,
+      'remediationType': remediationType,
+      'remediationUri': remediationUri.toMap(),
+    };
   }
 
   factory RemediationResponse.fromMap(Map<String, dynamic> map) {
     return RemediationResponse(
       details: map['details'] as String,
       remediationType: map['remediationType'] as String,
-      remediationUri: RelatedUrlResponse.fromMap(
-          (map['remediationUri'] as Map).cast<String, dynamic>()),
+      remediationUri: RelatedUrlResponse.fromMap((map['remediationUri'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

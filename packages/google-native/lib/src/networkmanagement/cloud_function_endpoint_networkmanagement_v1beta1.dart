@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Wrapper for Cloud Function attributes.
 class CloudFunctionEndpointNetworkmanagementV1beta1 {
   /// A [Cloud Function](https://cloud.google.com/functions) name.
@@ -12,18 +13,15 @@ class CloudFunctionEndpointNetworkmanagementV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final uriValue = uri;
-    if (uriValue != null) {
-      map['uri'] = uriValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'uri': ?uri,
+    };
   }
 
-  factory CloudFunctionEndpointNetworkmanagementV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory CloudFunctionEndpointNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
     return CloudFunctionEndpointNetworkmanagementV1beta1(
       uri: map['uri'] == null ? null : map['uri'] as String,
     );
   }
 }
+

@@ -10,7 +10,6 @@ import 'source_iam_member_condition.dart';
 class SourceIamMemberArgs {
   final pulumi.Input<SourceIamMemberCondition>? condition;
   final pulumi.Input<String> member;
-
   /// The organization whose Cloud Security Command Center the Source
   /// lives in.
   final pulumi.Input<String> organization;
@@ -29,34 +28,26 @@ class SourceIamMemberArgs {
     required String organization,
     required String role,
     required String source,
-  })  : condition =
-            pulumi.Input.asOptionalInput<SourceIamMemberCondition>(condition),
-        member = pulumi.Input.asInput<String>(member),
-        organization = pulumi.Input.asInput<String>(organization),
-        role = pulumi.Input.asInput<String>(role),
-        source = pulumi.Input.asInput<String>(source);
+  }) :
+      condition = pulumi.Input.asOptionalInput<SourceIamMemberCondition>(condition),
+      member = pulumi.Input.asInput<String>(member),
+      organization = pulumi.Input.asInput<String>(organization),
+      role = pulumi.Input.asInput<String>(role),
+      source = pulumi.Input.asInput<String>(source);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final conditionValue = condition;
-    if (conditionValue != null) {
-      map['condition'] = pulumi.Input.mapOptionalInputValue<
-          SourceIamMemberCondition,
-          Map<String, dynamic>>(conditionValue, (value) => value.toMap());
-    }
-    map['member'] = member;
-    map['organization'] = organization;
-    map['role'] = role;
-    map['source'] = source;
-    return map;
+    return <String, dynamic>{
+      'condition': ?pulumi.Input.mapOptionalInputValue<SourceIamMemberCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'member': member,
+      'organization': organization,
+      'role': role,
+      'source': source,
+    };
   }
 
   factory SourceIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return SourceIamMemberArgs(
-      condition: map['condition'] == null
-          ? null
-          : SourceIamMemberCondition.fromMap(
-              (map['condition'] as Map).cast<String, dynamic>()),
+      condition: map['condition'] == null ? null : SourceIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
       member: map['member'] as String,
       organization: map['organization'] as String,
       role: map['role'] as String,
@@ -64,3 +55,4 @@ class SourceIamMemberArgs {
     );
   }
 }
+

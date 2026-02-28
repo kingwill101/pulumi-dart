@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcs {
   /// Required. Bucket of the Cloud Storage object.
   final String bucket;
-
   /// Generation number of the Cloud Storage object.
   final String? generation;
-
   /// Required. Name of the Cloud Storage object.
   final String object;
 
@@ -21,23 +20,19 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucket'] = bucket;
-    final generationValue = generation;
-    if (generationValue != null) {
-      map['generation'] = generationValue;
-    }
-    map['object'] = object;
-    return map;
+    return <String, dynamic>{
+      'bucket': bucket,
+      'generation': ?generation,
+      'object': object,
+    };
   }
 
-  factory V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcs.fromMap(
-      Map<String, dynamic> map) {
+  factory V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcs.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcs(
       bucket: map['bucket'] as String,
-      generation:
-          map['generation'] == null ? null : map['generation'] as String,
+      generation: map['generation'] == null ? null : map['generation'] as String,
       object: map['object'] as String,
     );
   }
 }
+

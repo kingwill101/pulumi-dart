@@ -124,17 +124,13 @@ import 'serverless_vpc_endpoint_timeouts.dart';
 class ServerlessVpcEndpoint extends pulumi.CustomResource {
   /// Name of the interface endpoint.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// One or more security groups that define the ports, protocols, and sources for inbound traffic that you are authorizing into your endpoint. Up to 5 security groups can be provided.
   late final pulumi.Output<List<String>> securityGroupIds;
-
   /// One or more subnet IDs from which you'll access OpenSearch Serverless. Up to 6 subnets can be provided.
   late final pulumi.Output<List<String>> subnetIds;
   late final pulumi.Output<ServerlessVpcEndpointTimeouts?> timeouts;
-
   /// ID of the VPC from which you'll access OpenSearch Serverless.
   ///
   /// The following arguments are optional:

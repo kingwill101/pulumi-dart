@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class HoursOfOperationConfigStartTime {
   /// Specifies the hour of opening.
   final int hours;
-
   /// Specifies the minute of opening.
   final int minutes;
 
@@ -16,10 +16,10 @@ class HoursOfOperationConfigStartTime {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['hours'] = hours;
-    map['minutes'] = minutes;
-    return map;
+    return <String, dynamic>{
+      'hours': hours,
+      'minutes': minutes,
+    };
   }
 
   factory HoursOfOperationConfigStartTime.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class HoursOfOperationConfigStartTime {
     );
   }
 }
+

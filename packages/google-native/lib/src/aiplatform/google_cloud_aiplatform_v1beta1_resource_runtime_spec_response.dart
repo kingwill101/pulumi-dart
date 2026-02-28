@@ -7,10 +7,8 @@ import 'google_cloud_aiplatform_v1beta1_service_account_spec_response.dart';
 class GoogleCloudAiplatformV1beta1ResourceRuntimeSpecResponse {
   /// Optional. Ray cluster configuration. Required when creating a dedicated RayCluster on the PersistentResource.
   final GoogleCloudAiplatformV1beta1RaySpecResponse raySpec;
-
   /// Optional. Configure the use of workload identity on the PersistentResource
-  final GoogleCloudAiplatformV1beta1ServiceAccountSpecResponse
-      serviceAccountSpec;
+  final GoogleCloudAiplatformV1beta1ServiceAccountSpecResponse serviceAccountSpec;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1ResourceRuntimeSpecResponse].
   /// [raySpec] Optional. Ray cluster configuration. Required when creating a dedicated RayCluster on the PersistentResource.
@@ -21,20 +19,17 @@ class GoogleCloudAiplatformV1beta1ResourceRuntimeSpecResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['raySpec'] = raySpec.toMap();
-    map['serviceAccountSpec'] = serviceAccountSpec.toMap();
-    return map;
+    return <String, dynamic>{
+      'raySpec': raySpec.toMap(),
+      'serviceAccountSpec': serviceAccountSpec.toMap(),
+    };
   }
 
-  factory GoogleCloudAiplatformV1beta1ResourceRuntimeSpecResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1ResourceRuntimeSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ResourceRuntimeSpecResponse(
-      raySpec: GoogleCloudAiplatformV1beta1RaySpecResponse.fromMap(
-          (map['raySpec'] as Map).cast<String, dynamic>()),
-      serviceAccountSpec:
-          GoogleCloudAiplatformV1beta1ServiceAccountSpecResponse.fromMap(
-              (map['serviceAccountSpec'] as Map).cast<String, dynamic>()),
+      raySpec: GoogleCloudAiplatformV1beta1RaySpecResponse.fromMap((map['raySpec'] as Map).cast<String, dynamic>()),
+      serviceAccountSpec: GoogleCloudAiplatformV1beta1ServiceAccountSpecResponse.fromMap((map['serviceAccountSpec'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

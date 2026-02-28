@@ -146,19 +146,14 @@ import 'secret_rotation_rotation_rules.dart';
 class SecretRotation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Specifies whether to rotate the secret immediately or wait until the next scheduled rotation window. The rotation schedule is defined in `rotation_rules`. For secrets that use a Lambda rotation function to rotate, if you don't immediately rotate the secret, Secrets Manager tests the rotation configuration by running the testSecret step (https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotate-secrets_how.html) of the Lambda rotation function. The test creates an AWSPENDING version of the secret and then removes it. Defaults to `true`.
   late final pulumi.Output<bool?> rotateImmediately;
-
   /// Specifies whether automatic rotation is enabled for this secret.
   late final pulumi.Output<bool> rotationEnabled;
-
   /// Specifies the ARN of the Lambda function that can rotate the secret. Must be supplied if the secret is not managed by AWS.
   late final pulumi.Output<String?> rotationLambdaArn;
-
   /// A structure that defines the rotation configuration for this secret. Defined below.
   late final pulumi.Output<SecretRotationRotationRules> rotationRules;
-
   /// Specifies the secret to which you want to add a new version. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret. The secret must already exist.
   late final pulumi.Output<String> secretId;
 
@@ -180,8 +175,7 @@ class SecretRotation extends pulumi.CustomResource {
     this.rotateImmediately = registerOutput<bool?>('rotateImmediately');
     this.rotationEnabled = registerOutput<bool>('rotationEnabled');
     this.rotationLambdaArn = registerOutput<String?>('rotationLambdaArn');
-    this.rotationRules =
-        registerOutput<SecretRotationRotationRules>('rotationRules');
+    this.rotationRules = registerOutput<SecretRotationRotationRules>('rotationRules');
     this.secretId = registerOutput<String>('secretId');
   }
 }

@@ -10,18 +10,14 @@ import 'ai_metadata_store_encryption_spec.dart';
 class AiMetadataStoreArgs {
   /// Description of the MetadataStore.
   final pulumi.Input<String>? description;
-
   /// Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
   /// Structure is documented below.
   final pulumi.Input<AiMetadataStoreEncryptionSpec>? encryptionSpec;
-
   /// The name of the MetadataStore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The region of the Metadata Store. eg us-central1
   final pulumi.Input<String>? region;
 
@@ -37,52 +33,31 @@ class AiMetadataStoreArgs {
     String? name,
     String? project,
     String? region,
-  })  : description = pulumi.Input.asOptionalInput<String>(description),
-        encryptionSpec =
-            pulumi.Input.asOptionalInput<AiMetadataStoreEncryptionSpec>(
-                encryptionSpec),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      encryptionSpec = pulumi.Input.asOptionalInput<AiMetadataStoreEncryptionSpec>(encryptionSpec),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final encryptionSpecValue = encryptionSpec;
-    if (encryptionSpecValue != null) {
-      map['encryptionSpec'] = pulumi.Input.mapOptionalInputValue<
-          AiMetadataStoreEncryptionSpec,
-          Map<String, dynamic>>(encryptionSpecValue, (value) => value.toMap());
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'encryptionSpec': ?pulumi.Input.mapOptionalInputValue<AiMetadataStoreEncryptionSpec, Map<String, dynamic>>(encryptionSpec, (value) => value.toMap()),
+      'name': ?name,
+      'project': ?project,
+      'region': ?region,
+    };
   }
 
   factory AiMetadataStoreArgs.fromMap(Map<String, dynamic> map) {
     return AiMetadataStoreArgs(
-      description:
-          map['description'] == null ? null : map['description'] as String,
-      encryptionSpec: map['encryptionSpec'] == null
-          ? null
-          : AiMetadataStoreEncryptionSpec.fromMap(
-              (map['encryptionSpec'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : map['description'] as String,
+      encryptionSpec: map['encryptionSpec'] == null ? null : AiMetadataStoreEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>()),
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

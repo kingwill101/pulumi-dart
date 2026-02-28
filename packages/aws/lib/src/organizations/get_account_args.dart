@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountArgs {
   /// Account ID number of a delegated administrator account in the organization.
   final pulumi.Input<String> accountId;
-
   /// Map of tags for the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -19,25 +18,22 @@ class GetAccountArgs {
   GetAccountArgs({
     required String accountId,
     Map<String, String>? tags,
-  })  : accountId = pulumi.Input.asInput<String>(accountId),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      accountId = pulumi.Input.asInput<String>(accountId),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accountId'] = accountId;
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'accountId': accountId,
+      'tags': ?tags,
+    };
   }
 
   factory GetAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountArgs(
       accountId: map['accountId'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

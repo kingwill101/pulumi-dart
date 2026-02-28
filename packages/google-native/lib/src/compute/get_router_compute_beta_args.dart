@@ -19,19 +19,17 @@ class GetRouterComputeBetaArgs {
     String? project,
     required String region,
     required String router,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asInput<String>(region),
-        router = pulumi.Input.asInput<String>(router);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asInput<String>(region),
+      router = pulumi.Input.asInput<String>(router);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['region'] = region;
-    map['router'] = router;
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'region': region,
+      'router': router,
+    };
   }
 
   factory GetRouterComputeBetaArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetRouterComputeBetaArgs {
     );
   }
 }
+

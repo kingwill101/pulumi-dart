@@ -6,7 +6,6 @@ import 'aggregation_function_response.dart';
 class MeasureResponse {
   /// The aggregation function applied to the input column. This must not be set to "none" unless binning is disabled on the dimension. The aggregation function is used to group points on the dimension bins.
   final AggregationFunctionResponse aggregationFunction;
-
   /// The column name within in the dataset used for the measure.
   final String column;
 
@@ -19,17 +18,17 @@ class MeasureResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['aggregationFunction'] = aggregationFunction.toMap();
-    map['column'] = column;
-    return map;
+    return <String, dynamic>{
+      'aggregationFunction': aggregationFunction.toMap(),
+      'column': column,
+    };
   }
 
   factory MeasureResponse.fromMap(Map<String, dynamic> map) {
     return MeasureResponse(
-      aggregationFunction: AggregationFunctionResponse.fromMap(
-          (map['aggregationFunction'] as Map).cast<String, dynamic>()),
+      aggregationFunction: AggregationFunctionResponse.fromMap((map['aggregationFunction'] as Map).cast<String, dynamic>()),
       column: map['column'] as String,
     );
   }
 }
+

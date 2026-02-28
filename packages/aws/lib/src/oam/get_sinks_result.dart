@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSinks.
 class GetSinksResult {
   /// Set of ARN of the Sinks.
   final List<String> arns;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -20,11 +20,11 @@ class GetSinksResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arns'] = arns;
-    map['id'] = id;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'arns': arns,
+      'id': id,
+      'region': region,
+    };
   }
 
   factory GetSinksResult.fromMap(Map<String, dynamic> map) {
@@ -35,3 +35,4 @@ class GetSinksResult {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getKubeconfig.
 class GetKubeconfigResult {
   final String kubeconfig;
@@ -11,9 +12,9 @@ class GetKubeconfigResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kubeconfig'] = kubeconfig;
-    return map;
+    return <String, dynamic>{
+      'kubeconfig': kubeconfig,
+    };
   }
 
   factory GetKubeconfigResult.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetKubeconfigResult {
     );
   }
 }
+

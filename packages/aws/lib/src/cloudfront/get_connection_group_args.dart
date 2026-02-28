@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConnectionGroupArgs {
   /// Identifier for the connection group. For example: `EDFDVBD632BHDS5`. Exactly one of `id` or `routing_endpoint` must be specified.
   final pulumi.Input<String>? id;
-
   /// Routing endpoint for the connection group. For example: `d111111abcdef8.cloudfront.net`. Exactly one of `id` or `routing_endpoint` must be specified.
   final pulumi.Input<String>? routingEndpoint;
 
@@ -19,28 +18,22 @@ class GetConnectionGroupArgs {
   GetConnectionGroupArgs({
     String? id,
     String? routingEndpoint,
-  })  : id = pulumi.Input.asOptionalInput<String>(id),
-        routingEndpoint = pulumi.Input.asOptionalInput<String>(routingEndpoint);
+  }) :
+      id = pulumi.Input.asOptionalInput<String>(id),
+      routingEndpoint = pulumi.Input.asOptionalInput<String>(routingEndpoint);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final idValue = id;
-    if (idValue != null) {
-      map['id'] = idValue;
-    }
-    final routingEndpointValue = routingEndpoint;
-    if (routingEndpointValue != null) {
-      map['routingEndpoint'] = routingEndpointValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'id': ?id,
+      'routingEndpoint': ?routingEndpoint,
+    };
   }
 
   factory GetConnectionGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectionGroupArgs(
       id: map['id'] == null ? null : map['id'] as String,
-      routingEndpoint: map['routingEndpoint'] == null
-          ? null
-          : map['routingEndpoint'] as String,
+      routingEndpoint: map['routingEndpoint'] == null ? null : map['routingEndpoint'] as String,
     );
   }
 }
+

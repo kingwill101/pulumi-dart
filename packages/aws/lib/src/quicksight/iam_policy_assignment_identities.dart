@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class IamPolicyAssignmentIdentities {
   /// Array of Quicksight group names to assign the policy to.
   final List<String>? groups;
-
   /// Array of Quicksight user names to assign the policy to.
   final List<String>? users;
 
@@ -16,24 +16,17 @@ class IamPolicyAssignmentIdentities {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final groupsValue = groups;
-    if (groupsValue != null) {
-      map['groups'] = groupsValue;
-    }
-    final usersValue = users;
-    if (usersValue != null) {
-      map['users'] = usersValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'groups': ?groups,
+      'users': ?users,
+    };
   }
 
   factory IamPolicyAssignmentIdentities.fromMap(Map<String, dynamic> map) {
     return IamPolicyAssignmentIdentities(
-      groups:
-          map['groups'] == null ? null : (map['groups'] as List).cast<String>(),
-      users:
-          map['users'] == null ? null : (map['users'] as List).cast<String>(),
+      groups: map['groups'] == null ? null : (map['groups'] as List).cast<String>(),
+      users: map['users'] == null ? null : (map['users'] as List).cast<String>(),
     );
   }
 }
+

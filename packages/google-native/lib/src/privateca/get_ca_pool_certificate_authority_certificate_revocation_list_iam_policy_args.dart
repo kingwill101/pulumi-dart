@@ -28,45 +28,34 @@ class GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs {
     required String location,
     int? optionsRequestedPolicyVersion,
     String? project,
-  })  : caPoolId = pulumi.Input.asInput<String>(caPoolId),
-        certificateAuthorityId =
-            pulumi.Input.asInput<String>(certificateAuthorityId),
-        certificateRevocationListId =
-            pulumi.Input.asInput<String>(certificateRevocationListId),
-        location = pulumi.Input.asInput<String>(location),
-        optionsRequestedPolicyVersion =
-            pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      caPoolId = pulumi.Input.asInput<String>(caPoolId),
+      certificateAuthorityId = pulumi.Input.asInput<String>(certificateAuthorityId),
+      certificateRevocationListId = pulumi.Input.asInput<String>(certificateRevocationListId),
+      location = pulumi.Input.asInput<String>(location),
+      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['caPoolId'] = caPoolId;
-    map['certificateAuthorityId'] = certificateAuthorityId;
-    map['certificateRevocationListId'] = certificateRevocationListId;
-    map['location'] = location;
-    final optionsRequestedPolicyVersionValue = optionsRequestedPolicyVersion;
-    if (optionsRequestedPolicyVersionValue != null) {
-      map['optionsRequestedPolicyVersion'] = optionsRequestedPolicyVersionValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'caPoolId': caPoolId,
+      'certificateAuthorityId': certificateAuthorityId,
+      'certificateRevocationListId': certificateRevocationListId,
+      'location': location,
+      'optionsRequestedPolicyVersion': ?optionsRequestedPolicyVersion,
+      'project': ?project,
+    };
   }
 
-  factory GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs(
       caPoolId: map['caPoolId'] as String,
       certificateAuthorityId: map['certificateAuthorityId'] as String,
       certificateRevocationListId: map['certificateRevocationListId'] as String,
       location: map['location'] as String,
-      optionsRequestedPolicyVersion:
-          map['optionsRequestedPolicyVersion'] == null
-              ? null
-              : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

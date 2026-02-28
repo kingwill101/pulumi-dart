@@ -8,11 +8,9 @@ class CloudControlParameterSpecValidation {
   /// Allowed set of values for the parameter.
   /// Structure is documented below.
   final CloudControlParameterSpecValidationAllowedValues? allowedValues;
-
   /// Number range for number parameters.
   /// Structure is documented below.
   final CloudControlParameterSpecValidationIntRange? intRange;
-
   /// Regular Expression Validator for parameter values.
   /// Structure is documented below.
   final CloudControlParameterSpecValidationRegexpPattern? regexpPattern;
@@ -28,37 +26,19 @@ class CloudControlParameterSpecValidation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final allowedValuesValue = allowedValues;
-    if (allowedValuesValue != null) {
-      map['allowedValues'] = allowedValuesValue.toMap();
-    }
-    final intRangeValue = intRange;
-    if (intRangeValue != null) {
-      map['intRange'] = intRangeValue.toMap();
-    }
-    final regexpPatternValue = regexpPattern;
-    if (regexpPatternValue != null) {
-      map['regexpPattern'] = regexpPatternValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'allowedValues': ?allowedValues == null ? null : allowedValues!.toMap(),
+      'intRange': ?intRange == null ? null : intRange!.toMap(),
+      'regexpPattern': ?regexpPattern == null ? null : regexpPattern!.toMap(),
+    };
   }
 
-  factory CloudControlParameterSpecValidation.fromMap(
-      Map<String, dynamic> map) {
+  factory CloudControlParameterSpecValidation.fromMap(Map<String, dynamic> map) {
     return CloudControlParameterSpecValidation(
-      allowedValues: map['allowedValues'] == null
-          ? null
-          : CloudControlParameterSpecValidationAllowedValues.fromMap(
-              (map['allowedValues'] as Map).cast<String, dynamic>()),
-      intRange: map['intRange'] == null
-          ? null
-          : CloudControlParameterSpecValidationIntRange.fromMap(
-              (map['intRange'] as Map).cast<String, dynamic>()),
-      regexpPattern: map['regexpPattern'] == null
-          ? null
-          : CloudControlParameterSpecValidationRegexpPattern.fromMap(
-              (map['regexpPattern'] as Map).cast<String, dynamic>()),
+      allowedValues: map['allowedValues'] == null ? null : CloudControlParameterSpecValidationAllowedValues.fromMap((map['allowedValues'] as Map).cast<String, dynamic>()),
+      intRange: map['intRange'] == null ? null : CloudControlParameterSpecValidationIntRange.fromMap((map['intRange'] as Map).cast<String, dynamic>()),
+      regexpPattern: map['regexpPattern'] == null ? null : CloudControlParameterSpecValidationRegexpPattern.fromMap((map['regexpPattern'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

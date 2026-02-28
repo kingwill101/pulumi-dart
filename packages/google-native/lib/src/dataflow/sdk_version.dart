@@ -6,10 +6,8 @@ import 'sdk_version_sdk_support_status.dart';
 class SdkVersion {
   /// The support status for this SDK version.
   final SdkVersionSdkSupportStatus? sdkSupportStatus;
-
   /// The version of the SDK used to run the job.
   final String? version;
-
   /// A readable string describing the version of the SDK.
   final String? versionDisplayName;
 
@@ -24,32 +22,19 @@ class SdkVersion {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final sdkSupportStatusValue = sdkSupportStatus;
-    if (sdkSupportStatusValue != null) {
-      map['sdkSupportStatus'] = sdkSupportStatusValue.value;
-    }
-    final versionValue = version;
-    if (versionValue != null) {
-      map['version'] = versionValue;
-    }
-    final versionDisplayNameValue = versionDisplayName;
-    if (versionDisplayNameValue != null) {
-      map['versionDisplayName'] = versionDisplayNameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'sdkSupportStatus': ?sdkSupportStatus == null ? null : sdkSupportStatus!.value,
+      'version': ?version,
+      'versionDisplayName': ?versionDisplayName,
+    };
   }
 
   factory SdkVersion.fromMap(Map<String, dynamic> map) {
     return SdkVersion(
-      sdkSupportStatus: map['sdkSupportStatus'] == null
-          ? null
-          : SdkVersionSdkSupportStatus.fromValue(
-              map['sdkSupportStatus'] as String),
+      sdkSupportStatus: map['sdkSupportStatus'] == null ? null : SdkVersionSdkSupportStatus.fromValue(map['sdkSupportStatus'] as String),
       version: map['version'] == null ? null : map['version'] as String,
-      versionDisplayName: map['versionDisplayName'] == null
-          ? null
-          : map['versionDisplayName'] as String,
+      versionDisplayName: map['versionDisplayName'] == null ? null : map['versionDisplayName'] as String,
     );
   }
 }
+

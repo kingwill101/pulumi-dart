@@ -14,7 +14,7 @@ enum EntityTypeKindDialogflowV3beta1 {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown EntityTypeKindDialogflowV3beta1 value: $value');
+    throw ArgumentError('Unknown EntityTypeKindDialogflowV3beta1 value: $value');
   }
 }
+

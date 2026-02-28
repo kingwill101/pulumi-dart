@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TargetMultiTarget {
   /// Required. The target_ids of this multiTarget.
   final List<String> targetIds;
@@ -11,9 +12,9 @@ class TargetMultiTarget {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['targetIds'] = targetIds;
-    return map;
+    return <String, dynamic>{
+      'targetIds': targetIds,
+    };
   }
 
   factory TargetMultiTarget.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class TargetMultiTarget {
     );
   }
 }
+

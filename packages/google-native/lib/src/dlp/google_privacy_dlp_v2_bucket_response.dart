@@ -6,10 +6,8 @@ import 'google_privacy_dlp_v2_value_response.dart';
 class GooglePrivacyDlpV2BucketResponse {
   /// Upper bound of the range, exclusive; type must match min.
   final GooglePrivacyDlpV2ValueResponse max;
-
   /// Lower bound of the range, inclusive. Type should be the same as max if used.
   final GooglePrivacyDlpV2ValueResponse min;
-
   /// Replacement value for this bucket.
   final GooglePrivacyDlpV2ValueResponse replacementValue;
 
@@ -24,21 +22,19 @@ class GooglePrivacyDlpV2BucketResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['max'] = max.toMap();
-    map['min'] = min.toMap();
-    map['replacementValue'] = replacementValue.toMap();
-    return map;
+    return <String, dynamic>{
+      'max': max.toMap(),
+      'min': min.toMap(),
+      'replacementValue': replacementValue.toMap(),
+    };
   }
 
   factory GooglePrivacyDlpV2BucketResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2BucketResponse(
-      max: GooglePrivacyDlpV2ValueResponse.fromMap(
-          (map['max'] as Map).cast<String, dynamic>()),
-      min: GooglePrivacyDlpV2ValueResponse.fromMap(
-          (map['min'] as Map).cast<String, dynamic>()),
-      replacementValue: GooglePrivacyDlpV2ValueResponse.fromMap(
-          (map['replacementValue'] as Map).cast<String, dynamic>()),
+      max: GooglePrivacyDlpV2ValueResponse.fromMap((map['max'] as Map).cast<String, dynamic>()),
+      min: GooglePrivacyDlpV2ValueResponse.fromMap((map['min'] as Map).cast<String, dynamic>()),
+      replacementValue: GooglePrivacyDlpV2ValueResponse.fromMap((map['replacementValue'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

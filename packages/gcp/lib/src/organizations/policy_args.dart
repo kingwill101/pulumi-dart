@@ -13,18 +13,14 @@ class PolicyArgs {
   /// A boolean policy is a constraint that is either enforced or not. Structure is documented
   /// below.
   final pulumi.Input<PolicyBooleanPolicy>? booleanPolicy;
-
   /// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
   ///
   /// - - -
   final pulumi.Input<String> constraint;
-
   /// A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
   final pulumi.Input<PolicyListPolicy>? listPolicy;
-
   /// The numeric ID of the organization to set the policy for.
   final pulumi.Input<String> orgId;
-
   /// A restore policy is a constraint to restore the default policy. Structure is documented below.
   ///
   /// > **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
@@ -32,7 +28,6 @@ class PolicyArgs {
   ///
   /// - - -
   final pulumi.Input<PolicyRestorePolicy>? restorePolicy;
-
   /// Version of the Policy. Default version is 0.
   final pulumi.Input<int>? version;
 
@@ -50,60 +45,34 @@ class PolicyArgs {
     required String orgId,
     PolicyRestorePolicy? restorePolicy,
     int? version,
-  })  : booleanPolicy =
-            pulumi.Input.asOptionalInput<PolicyBooleanPolicy>(booleanPolicy),
-        constraint = pulumi.Input.asInput<String>(constraint),
-        listPolicy = pulumi.Input.asOptionalInput<PolicyListPolicy>(listPolicy),
-        orgId = pulumi.Input.asInput<String>(orgId),
-        restorePolicy =
-            pulumi.Input.asOptionalInput<PolicyRestorePolicy>(restorePolicy),
-        version = pulumi.Input.asOptionalInput<int>(version);
+  }) :
+      booleanPolicy = pulumi.Input.asOptionalInput<PolicyBooleanPolicy>(booleanPolicy),
+      constraint = pulumi.Input.asInput<String>(constraint),
+      listPolicy = pulumi.Input.asOptionalInput<PolicyListPolicy>(listPolicy),
+      orgId = pulumi.Input.asInput<String>(orgId),
+      restorePolicy = pulumi.Input.asOptionalInput<PolicyRestorePolicy>(restorePolicy),
+      version = pulumi.Input.asOptionalInput<int>(version);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final booleanPolicyValue = booleanPolicy;
-    if (booleanPolicyValue != null) {
-      map['booleanPolicy'] = pulumi.Input.mapOptionalInputValue<
-          PolicyBooleanPolicy,
-          Map<String, dynamic>>(booleanPolicyValue, (value) => value.toMap());
-    }
-    map['constraint'] = constraint;
-    final listPolicyValue = listPolicy;
-    if (listPolicyValue != null) {
-      map['listPolicy'] = pulumi.Input.mapOptionalInputValue<PolicyListPolicy,
-          Map<String, dynamic>>(listPolicyValue, (value) => value.toMap());
-    }
-    map['orgId'] = orgId;
-    final restorePolicyValue = restorePolicy;
-    if (restorePolicyValue != null) {
-      map['restorePolicy'] = pulumi.Input.mapOptionalInputValue<
-          PolicyRestorePolicy,
-          Map<String, dynamic>>(restorePolicyValue, (value) => value.toMap());
-    }
-    final versionValue = version;
-    if (versionValue != null) {
-      map['version'] = versionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'booleanPolicy': ?pulumi.Input.mapOptionalInputValue<PolicyBooleanPolicy, Map<String, dynamic>>(booleanPolicy, (value) => value.toMap()),
+      'constraint': constraint,
+      'listPolicy': ?pulumi.Input.mapOptionalInputValue<PolicyListPolicy, Map<String, dynamic>>(listPolicy, (value) => value.toMap()),
+      'orgId': orgId,
+      'restorePolicy': ?pulumi.Input.mapOptionalInputValue<PolicyRestorePolicy, Map<String, dynamic>>(restorePolicy, (value) => value.toMap()),
+      'version': ?version,
+    };
   }
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      booleanPolicy: map['booleanPolicy'] == null
-          ? null
-          : PolicyBooleanPolicy.fromMap(
-              (map['booleanPolicy'] as Map).cast<String, dynamic>()),
+      booleanPolicy: map['booleanPolicy'] == null ? null : PolicyBooleanPolicy.fromMap((map['booleanPolicy'] as Map).cast<String, dynamic>()),
       constraint: map['constraint'] as String,
-      listPolicy: map['listPolicy'] == null
-          ? null
-          : PolicyListPolicy.fromMap(
-              (map['listPolicy'] as Map).cast<String, dynamic>()),
+      listPolicy: map['listPolicy'] == null ? null : PolicyListPolicy.fromMap((map['listPolicy'] as Map).cast<String, dynamic>()),
       orgId: map['orgId'] as String,
-      restorePolicy: map['restorePolicy'] == null
-          ? null
-          : PolicyRestorePolicy.fromMap(
-              (map['restorePolicy'] as Map).cast<String, dynamic>()),
+      restorePolicy: map['restorePolicy'] == null ? null : PolicyRestorePolicy.fromMap((map['restorePolicy'] as Map).cast<String, dynamic>()),
       version: map['version'] == null ? null : map['version'] as int,
     );
   }
 }
+

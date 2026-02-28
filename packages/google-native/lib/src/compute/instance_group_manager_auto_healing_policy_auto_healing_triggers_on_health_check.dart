@@ -3,20 +3,16 @@ enum InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheck {
   off("OFF"),
   on("ON");
 
-  const InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheck(
-      this.value);
+  const InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheck(this.value);
   final String value;
 
-  static InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheck
-      fromValue(String value) {
-    for (final item
-        in InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheck
-            .values) {
+  static InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheck fromValue(String value) {
+    for (final item in InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheck.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheck value: $value');
+    throw ArgumentError('Unknown InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheck value: $value');
   }
 }
+

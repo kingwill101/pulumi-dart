@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Encryption configuration for a bucket.
 class BucketEncryptionResponse {
   /// A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
@@ -12,9 +13,9 @@ class BucketEncryptionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['defaultKmsKeyName'] = defaultKmsKeyName;
-    return map;
+    return <String, dynamic>{
+      'defaultKmsKeyName': defaultKmsKeyName,
+    };
   }
 
   factory BucketEncryptionResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class BucketEncryptionResponse {
     );
   }
 }
+

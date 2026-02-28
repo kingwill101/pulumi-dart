@@ -6,7 +6,6 @@ import 'google_cloud_ml_v1_accelerator_config_type.dart';
 class GoogleCloudMlV1AcceleratorConfig {
   /// The number of accelerators to attach to each machine running the job.
   final String? count;
-
   /// The type of accelerator to use.
   final GoogleCloudMlV1AcceleratorConfigType? type;
 
@@ -19,25 +18,17 @@ class GoogleCloudMlV1AcceleratorConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final countValue = count;
-    if (countValue != null) {
-      map['count'] = countValue;
-    }
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'count': ?count,
+      'type': ?type == null ? null : type!.value,
+    };
   }
 
   factory GoogleCloudMlV1AcceleratorConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1AcceleratorConfig(
       count: map['count'] == null ? null : map['count'] as String,
-      type: map['type'] == null
-          ? null
-          : GoogleCloudMlV1AcceleratorConfigType.fromValue(
-              map['type'] as String),
+      type: map['type'] == null ? null : GoogleCloudMlV1AcceleratorConfigType.fromValue(map['type'] as String),
     );
   }
 }
+

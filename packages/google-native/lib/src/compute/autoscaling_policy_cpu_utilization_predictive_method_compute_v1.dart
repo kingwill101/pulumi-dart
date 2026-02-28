@@ -6,15 +6,13 @@ enum AutoscalingPolicyCpuUtilizationPredictiveMethodComputeV1 {
   const AutoscalingPolicyCpuUtilizationPredictiveMethodComputeV1(this.value);
   final String value;
 
-  static AutoscalingPolicyCpuUtilizationPredictiveMethodComputeV1 fromValue(
-      String value) {
-    for (final item
-        in AutoscalingPolicyCpuUtilizationPredictiveMethodComputeV1.values) {
+  static AutoscalingPolicyCpuUtilizationPredictiveMethodComputeV1 fromValue(String value) {
+    for (final item in AutoscalingPolicyCpuUtilizationPredictiveMethodComputeV1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown AutoscalingPolicyCpuUtilizationPredictiveMethodComputeV1 value: $value');
+    throw ArgumentError('Unknown AutoscalingPolicyCpuUtilizationPredictiveMethodComputeV1 value: $value');
   }
 }
+

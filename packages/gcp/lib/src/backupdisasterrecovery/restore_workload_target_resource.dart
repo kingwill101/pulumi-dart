@@ -14,20 +14,15 @@ class RestoreWorkloadTargetResource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final gcpResourceValue = gcpResource;
-    if (gcpResourceValue != null) {
-      map['gcpResource'] = gcpResourceValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'gcpResource': ?gcpResource == null ? null : gcpResource!.toMap(),
+    };
   }
 
   factory RestoreWorkloadTargetResource.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadTargetResource(
-      gcpResource: map['gcpResource'] == null
-          ? null
-          : RestoreWorkloadTargetResourceGcpResource.fromMap(
-              (map['gcpResource'] as Map).cast<String, dynamic>()),
+      gcpResource: map['gcpResource'] == null ? null : RestoreWorkloadTargetResourceGcpResource.fromMap((map['gcpResource'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

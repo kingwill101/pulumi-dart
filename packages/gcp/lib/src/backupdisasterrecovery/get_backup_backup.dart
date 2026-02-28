@@ -1,21 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetBackupBackup {
   /// Id of the requesting object, Backup.
   final String backupId;
-
   /// The ID of the Backup Vault of the Data Source in which the Backup belongs.
   final String backupVaultId;
-
   /// The time when the backup was created.
   final String createTime;
-
   /// The ID of the Data Source in which the Backup belongs.
   final String dataSourceId;
-
   /// The location in which the Backup belongs.
   final String location;
-
   /// Name of the resource.
   final String name;
 
@@ -36,14 +32,14 @@ class GetBackupBackup {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['backupId'] = backupId;
-    map['backupVaultId'] = backupVaultId;
-    map['createTime'] = createTime;
-    map['dataSourceId'] = dataSourceId;
-    map['location'] = location;
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'backupId': backupId,
+      'backupVaultId': backupVaultId,
+      'createTime': createTime,
+      'dataSourceId': dataSourceId,
+      'location': location,
+      'name': name,
+    };
   }
 
   factory GetBackupBackup.fromMap(Map<String, dynamic> map) {
@@ -57,3 +53,4 @@ class GetBackupBackup {
     );
   }
 }
+

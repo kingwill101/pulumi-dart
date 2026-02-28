@@ -18,3 +18,4 @@ enum SecurityPolicyType {
     throw ArgumentError('Unknown SecurityPolicyType value: $value');
   }
 }
+

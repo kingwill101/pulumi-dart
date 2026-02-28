@@ -10,7 +10,6 @@ import 'source_iam_binding_condition.dart';
 class SourceIamBindingArgs {
   final pulumi.Input<SourceIamBindingCondition>? condition;
   final pulumi.Input<List<String>> members;
-
   /// The organization whose Cloud Security Command Center the Source
   /// lives in.
   final pulumi.Input<String> organization;
@@ -29,34 +28,26 @@ class SourceIamBindingArgs {
     required String organization,
     required String role,
     required String source,
-  })  : condition =
-            pulumi.Input.asOptionalInput<SourceIamBindingCondition>(condition),
-        members = pulumi.Input.asInput<List<String>>(members),
-        organization = pulumi.Input.asInput<String>(organization),
-        role = pulumi.Input.asInput<String>(role),
-        source = pulumi.Input.asInput<String>(source);
+  }) :
+      condition = pulumi.Input.asOptionalInput<SourceIamBindingCondition>(condition),
+      members = pulumi.Input.asInput<List<String>>(members),
+      organization = pulumi.Input.asInput<String>(organization),
+      role = pulumi.Input.asInput<String>(role),
+      source = pulumi.Input.asInput<String>(source);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final conditionValue = condition;
-    if (conditionValue != null) {
-      map['condition'] = pulumi.Input.mapOptionalInputValue<
-          SourceIamBindingCondition,
-          Map<String, dynamic>>(conditionValue, (value) => value.toMap());
-    }
-    map['members'] = members;
-    map['organization'] = organization;
-    map['role'] = role;
-    map['source'] = source;
-    return map;
+    return <String, dynamic>{
+      'condition': ?pulumi.Input.mapOptionalInputValue<SourceIamBindingCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'members': members,
+      'organization': organization,
+      'role': role,
+      'source': source,
+    };
   }
 
   factory SourceIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return SourceIamBindingArgs(
-      condition: map['condition'] == null
-          ? null
-          : SourceIamBindingCondition.fromMap(
-              (map['condition'] as Map).cast<String, dynamic>()),
+      condition: map['condition'] == null ? null : SourceIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
       members: (map['members'] as List).cast<String>(),
       organization: map['organization'] as String,
       role: map['role'] as String,
@@ -64,3 +55,4 @@ class SourceIamBindingArgs {
     );
   }
 }
+

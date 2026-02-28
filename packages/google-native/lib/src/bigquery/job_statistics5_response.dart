@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class JobStatistics5Response {
   /// Number of logical bytes copied to the destination table.
   final String copiedLogicalBytes;
-
   /// Number of rows copied to the destination table.
   final String copiedRows;
 
@@ -16,10 +16,10 @@ class JobStatistics5Response {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['copiedLogicalBytes'] = copiedLogicalBytes;
-    map['copiedRows'] = copiedRows;
-    return map;
+    return <String, dynamic>{
+      'copiedLogicalBytes': copiedLogicalBytes,
+      'copiedRows': copiedRows,
+    };
   }
 
   factory JobStatistics5Response.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class JobStatistics5Response {
     );
   }
 }
+

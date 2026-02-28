@@ -117,30 +117,22 @@ import 'connection_args.dart';
 class Connection extends pulumi.CustomResource {
   /// ARN of the connection.
   late final pulumi.Output<String> arn;
-
   /// ID of the second device in the connection.
   late final pulumi.Output<String> connectedDeviceId;
-
   /// ID of the link for the second device.
   late final pulumi.Output<String?> connectedLinkId;
-
   /// Description of the connection.
   late final pulumi.Output<String?> description;
-
   /// ID of the first device in the connection.
   late final pulumi.Output<String> deviceId;
-
   /// ID of the global network.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> globalNetworkId;
-
   /// ID of the link for the first device.
   late final pulumi.Output<String?> linkId;
-
   /// Key-value tags for the connection. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 

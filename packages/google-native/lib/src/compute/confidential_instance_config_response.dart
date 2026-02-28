@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A set of Confidential Instance options.
 class ConfidentialInstanceConfigResponse {
   /// Defines the type of technology used by the confidential instance.
   final String confidentialInstanceType;
-
   /// Defines whether the instance should have confidential compute enabled.
   final bool enableConfidentialCompute;
 
@@ -17,10 +17,10 @@ class ConfidentialInstanceConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['confidentialInstanceType'] = confidentialInstanceType;
-    map['enableConfidentialCompute'] = enableConfidentialCompute;
-    return map;
+    return <String, dynamic>{
+      'confidentialInstanceType': confidentialInstanceType,
+      'enableConfidentialCompute': enableConfidentialCompute,
+    };
   }
 
   factory ConfidentialInstanceConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class ConfidentialInstanceConfigResponse {
     );
   }
 }
+

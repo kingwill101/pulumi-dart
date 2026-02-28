@@ -14,3 +14,4 @@ enum DataAccessOptionsLogMode {
     throw ArgumentError('Unknown DataAccessOptionsLogMode value: $value');
   }
 }
+

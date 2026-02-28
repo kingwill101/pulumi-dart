@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getNatAddress.
 class GetNatAddressResult {
   /// The static IPV4 address.
   final String ipAddress;
-
   /// Resource ID of the NAT address.
   final String name;
-
   /// State of the nat address.
   final String state;
 
@@ -22,11 +21,11 @@ class GetNatAddressResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ipAddress'] = ipAddress;
-    map['name'] = name;
-    map['state'] = state;
-    return map;
+    return <String, dynamic>{
+      'ipAddress': ipAddress,
+      'name': name,
+      'state': state,
+    };
   }
 
   factory GetNatAddressResult.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class GetNatAddressResult {
     );
   }
 }
+

@@ -7,7 +7,6 @@ import 'database_type_provider_datamigration_v1beta1.dart';
 class DatabaseTypeDatamigrationV1beta1 {
   /// The database engine.
   final DatabaseTypeEngineDatamigrationV1beta1? engine;
-
   /// The database provider.
   final DatabaseTypeProviderDatamigrationV1beta1? provider;
 
@@ -20,28 +19,17 @@ class DatabaseTypeDatamigrationV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final engineValue = engine;
-    if (engineValue != null) {
-      map['engine'] = engineValue.value;
-    }
-    final providerValue = provider;
-    if (providerValue != null) {
-      map['provider'] = providerValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'engine': ?engine == null ? null : engine!.value,
+      'provider': ?provider == null ? null : provider!.value,
+    };
   }
 
   factory DatabaseTypeDatamigrationV1beta1.fromMap(Map<String, dynamic> map) {
     return DatabaseTypeDatamigrationV1beta1(
-      engine: map['engine'] == null
-          ? null
-          : DatabaseTypeEngineDatamigrationV1beta1.fromValue(
-              map['engine'] as String),
-      provider: map['provider'] == null
-          ? null
-          : DatabaseTypeProviderDatamigrationV1beta1.fromValue(
-              map['provider'] as String),
+      engine: map['engine'] == null ? null : DatabaseTypeEngineDatamigrationV1beta1.fromValue(map['engine'] as String),
+      provider: map['provider'] == null ? null : DatabaseTypeProviderDatamigrationV1beta1.fromValue(map['provider'] as String),
     );
   }
 }
+

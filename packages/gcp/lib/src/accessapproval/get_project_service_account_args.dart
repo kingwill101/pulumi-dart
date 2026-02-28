@@ -14,12 +14,13 @@ class GetProjectServiceAccountArgs {
   /// [projectId] The project ID the service account was created for.
   GetProjectServiceAccountArgs({
     required String projectId,
-  }) : projectId = pulumi.Input.asInput<String>(projectId);
+  }) :
+      projectId = pulumi.Input.asInput<String>(projectId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['projectId'] = projectId;
-    return map;
+    return <String, dynamic>{
+      'projectId': projectId,
+    };
   }
 
   factory GetProjectServiceAccountArgs.fromMap(Map<String, dynamic> map) {
@@ -28,3 +29,4 @@ class GetProjectServiceAccountArgs {
     );
   }
 }
+

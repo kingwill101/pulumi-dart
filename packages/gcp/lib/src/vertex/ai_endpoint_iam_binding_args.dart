@@ -29,42 +29,28 @@ class AiEndpointIamBindingArgs {
     required List<String> members,
     String? project,
     required String role,
-  })  : condition = pulumi.Input.asOptionalInput<AiEndpointIamBindingCondition>(
-            condition),
-        endpoint = pulumi.Input.asInput<String>(endpoint),
-        location = pulumi.Input.asOptionalInput<String>(location),
-        members = pulumi.Input.asInput<List<String>>(members),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        role = pulumi.Input.asInput<String>(role);
+  }) :
+      condition = pulumi.Input.asOptionalInput<AiEndpointIamBindingCondition>(condition),
+      endpoint = pulumi.Input.asInput<String>(endpoint),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      members = pulumi.Input.asInput<List<String>>(members),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      role = pulumi.Input.asInput<String>(role);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final conditionValue = condition;
-    if (conditionValue != null) {
-      map['condition'] = pulumi.Input.mapOptionalInputValue<
-          AiEndpointIamBindingCondition,
-          Map<String, dynamic>>(conditionValue, (value) => value.toMap());
-    }
-    map['endpoint'] = endpoint;
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    map['members'] = members;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['role'] = role;
-    return map;
+    return <String, dynamic>{
+      'condition': ?pulumi.Input.mapOptionalInputValue<AiEndpointIamBindingCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'endpoint': endpoint,
+      'location': ?location,
+      'members': members,
+      'project': ?project,
+      'role': role,
+    };
   }
 
   factory AiEndpointIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return AiEndpointIamBindingArgs(
-      condition: map['condition'] == null
-          ? null
-          : AiEndpointIamBindingCondition.fromMap(
-              (map['condition'] as Map).cast<String, dynamic>()),
+      condition: map['condition'] == null ? null : AiEndpointIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
       endpoint: map['endpoint'] as String,
       location: map['location'] == null ? null : map['location'] as String,
       members: (map['members'] as List).cast<String>(),
@@ -73,3 +59,4 @@ class AiEndpointIamBindingArgs {
     );
   }
 }
+

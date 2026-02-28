@@ -106,7 +106,6 @@ import 'subscription_args.dart';
 class Subscription extends pulumi.CustomResource {
   /// Toggle for automated renewal of the subscription. Valid values are `ENABLED` or `DISABLED`. Default is `ENABLED`.
   late final pulumi.Output<String> autoRenew;
-
   /// Skip attempting to disable automated renewal upon destruction. If set to `true`, the `auto_renew` value will be left as-is and the resource will simply be removed from state.
   late final pulumi.Output<bool?> skipDestroy;
 

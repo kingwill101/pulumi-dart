@@ -22,24 +22,19 @@ class GetInstanceArgs {
     String? project,
     String? view,
     required String zone,
-  })  : instance = pulumi.Input.asInput<String>(instance),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        view = pulumi.Input.asOptionalInput<String>(view),
-        zone = pulumi.Input.asInput<String>(zone);
+  }) :
+      instance = pulumi.Input.asInput<String>(instance),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      view = pulumi.Input.asOptionalInput<String>(view),
+      zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['instance'] = instance;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final viewValue = view;
-    if (viewValue != null) {
-      map['view'] = viewValue;
-    }
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'instance': instance,
+      'project': ?project,
+      'view': ?view,
+      'zone': zone,
+    };
   }
 
   factory GetInstanceArgs.fromMap(Map<String, dynamic> map) {
@@ -51,3 +46,4 @@ class GetInstanceArgs {
     );
   }
 }
+

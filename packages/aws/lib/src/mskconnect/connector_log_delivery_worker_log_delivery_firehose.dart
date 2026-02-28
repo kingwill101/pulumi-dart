@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConnectorLogDeliveryWorkerLogDeliveryFirehose {
   /// The name of the Kinesis Data Firehose delivery stream that is the destination for log delivery.
   final String? deliveryStream;
-
   /// Specifies whether connector logs get delivered to Amazon Kinesis Data Firehose.
   final bool enabled;
 
@@ -16,22 +16,17 @@ class ConnectorLogDeliveryWorkerLogDeliveryFirehose {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final deliveryStreamValue = deliveryStream;
-    if (deliveryStreamValue != null) {
-      map['deliveryStream'] = deliveryStreamValue;
-    }
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'deliveryStream': ?deliveryStream,
+      'enabled': enabled,
+    };
   }
 
-  factory ConnectorLogDeliveryWorkerLogDeliveryFirehose.fromMap(
-      Map<String, dynamic> map) {
+  factory ConnectorLogDeliveryWorkerLogDeliveryFirehose.fromMap(Map<String, dynamic> map) {
     return ConnectorLogDeliveryWorkerLogDeliveryFirehose(
-      deliveryStream: map['deliveryStream'] == null
-          ? null
-          : map['deliveryStream'] as String,
+      deliveryStream: map['deliveryStream'] == null ? null : map['deliveryStream'] as String,
       enabled: map['enabled'] as bool,
     );
   }
 }
+

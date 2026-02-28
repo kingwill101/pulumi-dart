@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RuleGroupRuleStatementSqliMatchStatementFieldToMatchBody {
   final String? oversizeHandling;
 
@@ -10,20 +11,15 @@ class RuleGroupRuleStatementSqliMatchStatementFieldToMatchBody {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final oversizeHandlingValue = oversizeHandling;
-    if (oversizeHandlingValue != null) {
-      map['oversizeHandling'] = oversizeHandlingValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'oversizeHandling': ?oversizeHandling,
+    };
   }
 
-  factory RuleGroupRuleStatementSqliMatchStatementFieldToMatchBody.fromMap(
-      Map<String, dynamic> map) {
+  factory RuleGroupRuleStatementSqliMatchStatementFieldToMatchBody.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementSqliMatchStatementFieldToMatchBody(
-      oversizeHandling: map['oversizeHandling'] == null
-          ? null
-          : map['oversizeHandling'] as String,
+      oversizeHandling: map['oversizeHandling'] == null ? null : map['oversizeHandling'] as String,
     );
   }
 }
+

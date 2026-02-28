@@ -14,16 +14,15 @@ class GoogleCloudDataplexV1ContentSqlScript {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['engine'] = engine.value;
-    return map;
+    return <String, dynamic>{
+      'engine': engine.value,
+    };
   }
 
-  factory GoogleCloudDataplexV1ContentSqlScript.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1ContentSqlScript.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1ContentSqlScript(
-      engine: GoogleCloudDataplexV1ContentSqlScriptEngine.fromValue(
-          map['engine'] as String),
+      engine: GoogleCloudDataplexV1ContentSqlScriptEngine.fromValue(map['engine'] as String),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetSigningJobSignedObjectS3 {
   final String bucket;
   final String key;
@@ -13,10 +14,10 @@ class GetSigningJobSignedObjectS3 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucket'] = bucket;
-    map['key'] = key;
-    return map;
+    return <String, dynamic>{
+      'bucket': bucket,
+      'key': key,
+    };
   }
 
   factory GetSigningJobSignedObjectS3.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class GetSigningJobSignedObjectS3 {
     );
   }
 }
+

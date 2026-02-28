@@ -6,15 +6,13 @@ enum SecurityPolicyDdosProtectionConfigDdosProtection {
   const SecurityPolicyDdosProtectionConfigDdosProtection(this.value);
   final String value;
 
-  static SecurityPolicyDdosProtectionConfigDdosProtection fromValue(
-      String value) {
-    for (final item
-        in SecurityPolicyDdosProtectionConfigDdosProtection.values) {
+  static SecurityPolicyDdosProtectionConfigDdosProtection fromValue(String value) {
+    for (final item in SecurityPolicyDdosProtectionConfigDdosProtection.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown SecurityPolicyDdosProtectionConfigDdosProtection value: $value');
+    throw ArgumentError('Unknown SecurityPolicyDdosProtectionConfigDdosProtection value: $value');
   }
 }
+

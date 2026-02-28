@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetProfilingGroupAgentOrchestrationConfig {
   final bool profilingEnabled;
 
@@ -10,15 +11,15 @@ class GetProfilingGroupAgentOrchestrationConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['profilingEnabled'] = profilingEnabled;
-    return map;
+    return <String, dynamic>{
+      'profilingEnabled': profilingEnabled,
+    };
   }
 
-  factory GetProfilingGroupAgentOrchestrationConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GetProfilingGroupAgentOrchestrationConfig.fromMap(Map<String, dynamic> map) {
     return GetProfilingGroupAgentOrchestrationConfig(
       profilingEnabled: map['profilingEnabled'] as bool,
     );
   }
 }
+

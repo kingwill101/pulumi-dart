@@ -7,10 +7,8 @@ import 'google_devtools_containeranalysis_v1alpha1_repo_id.dart';
 class GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext {
   /// An alias, which may be a branch or tag.
   final GoogleDevtoolsContaineranalysisV1alpha1AliasContext? aliasContext;
-
   /// The ID of the repo.
   final GoogleDevtoolsContaineranalysisV1alpha1RepoId? repoId;
-
   /// A revision ID.
   final String? revisionId;
 
@@ -25,35 +23,19 @@ class GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final aliasContextValue = aliasContext;
-    if (aliasContextValue != null) {
-      map['aliasContext'] = aliasContextValue.toMap();
-    }
-    final repoIdValue = repoId;
-    if (repoIdValue != null) {
-      map['repoId'] = repoIdValue.toMap();
-    }
-    final revisionIdValue = revisionId;
-    if (revisionIdValue != null) {
-      map['revisionId'] = revisionIdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'aliasContext': ?aliasContext == null ? null : aliasContext!.toMap(),
+      'repoId': ?repoId == null ? null : repoId!.toMap(),
+      'revisionId': ?revisionId,
+    };
   }
 
-  factory GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext(
-      aliasContext: map['aliasContext'] == null
-          ? null
-          : GoogleDevtoolsContaineranalysisV1alpha1AliasContext.fromMap(
-              (map['aliasContext'] as Map).cast<String, dynamic>()),
-      repoId: map['repoId'] == null
-          ? null
-          : GoogleDevtoolsContaineranalysisV1alpha1RepoId.fromMap(
-              (map['repoId'] as Map).cast<String, dynamic>()),
-      revisionId:
-          map['revisionId'] == null ? null : map['revisionId'] as String,
+      aliasContext: map['aliasContext'] == null ? null : GoogleDevtoolsContaineranalysisV1alpha1AliasContext.fromMap((map['aliasContext'] as Map).cast<String, dynamic>()),
+      repoId: map['repoId'] == null ? null : GoogleDevtoolsContaineranalysisV1alpha1RepoId.fromMap((map['repoId'] as Map).cast<String, dynamic>()),
+      revisionId: map['revisionId'] == null ? null : map['revisionId'] as String,
     );
   }
 }
+

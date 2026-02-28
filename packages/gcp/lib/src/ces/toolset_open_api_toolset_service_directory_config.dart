@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ToolsetOpenApiToolsetServiceDirectoryConfig {
   /// The name of [Service
   /// Directory](https://cloud.google.com/service-directory) service.
@@ -16,15 +17,15 @@ class ToolsetOpenApiToolsetServiceDirectoryConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['service'] = service;
-    return map;
+    return <String, dynamic>{
+      'service': service,
+    };
   }
 
-  factory ToolsetOpenApiToolsetServiceDirectoryConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory ToolsetOpenApiToolsetServiceDirectoryConfig.fromMap(Map<String, dynamic> map) {
     return ToolsetOpenApiToolsetServiceDirectoryConfig(
       service: map['service'] as String,
     );
   }
 }
+

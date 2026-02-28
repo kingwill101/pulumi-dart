@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SinkPolicyArgs {
   /// JSON policy to use. If you are updating an existing policy, the entire existing policy is replaced by what you specify here.
   final pulumi.Input<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// ARN of the sink to attach this policy to.
   final pulumi.Input<String> sinkIdentifier;
 
@@ -24,19 +22,17 @@ class SinkPolicyArgs {
     required String policy,
     String? region,
     required String sinkIdentifier,
-  })  : policy = pulumi.Input.asInput<String>(policy),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        sinkIdentifier = pulumi.Input.asInput<String>(sinkIdentifier);
+  }) :
+      policy = pulumi.Input.asInput<String>(policy),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      sinkIdentifier = pulumi.Input.asInput<String>(sinkIdentifier);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['policy'] = policy;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['sinkIdentifier'] = sinkIdentifier;
-    return map;
+    return <String, dynamic>{
+      'policy': policy,
+      'region': ?region,
+      'sinkIdentifier': sinkIdentifier,
+    };
   }
 
   factory SinkPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -47,3 +43,4 @@ class SinkPolicyArgs {
     );
   }
 }
+

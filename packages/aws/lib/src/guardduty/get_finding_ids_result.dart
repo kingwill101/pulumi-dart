@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getFindingIds.
 class GetFindingIdsResult {
   final String detectorId;
-
   /// A list of finding IDs for the specified detector.
   final List<String> findingIds;
-
   /// Indicates whether findings are present for the specified detector.
   final bool hasFindings;
   final String id;
@@ -27,13 +26,13 @@ class GetFindingIdsResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['detectorId'] = detectorId;
-    map['findingIds'] = findingIds;
-    map['hasFindings'] = hasFindings;
-    map['id'] = id;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'detectorId': detectorId,
+      'findingIds': findingIds,
+      'hasFindings': hasFindings,
+      'id': id,
+      'region': region,
+    };
   }
 
   factory GetFindingIdsResult.fromMap(Map<String, dynamic> map) {
@@ -46,3 +45,4 @@ class GetFindingIdsResult {
     );
   }
 }
+

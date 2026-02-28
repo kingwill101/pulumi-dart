@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Npm package to upload to Artifact Registry upon successful completion of all build steps.
 class NpmPackageResponse {
   /// Path to the package.json. e.g. workspace/path/to/package
   final String packagePath;
-
   /// Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY" Npm package in the workspace specified by path will be zipped and uploaded to Artifact Registry with this location as a prefix.
   final String repository;
 
@@ -17,10 +17,10 @@ class NpmPackageResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['packagePath'] = packagePath;
-    map['repository'] = repository;
-    return map;
+    return <String, dynamic>{
+      'packagePath': packagePath,
+      'repository': repository,
+    };
   }
 
   factory NpmPackageResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class NpmPackageResponse {
     );
   }
 }
+

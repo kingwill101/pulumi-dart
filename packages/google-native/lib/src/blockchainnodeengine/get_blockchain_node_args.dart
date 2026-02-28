@@ -19,19 +19,17 @@ class GetBlockchainNodeArgs {
     required String blockchainNodeId,
     required String location,
     String? project,
-  })  : blockchainNodeId = pulumi.Input.asInput<String>(blockchainNodeId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      blockchainNodeId = pulumi.Input.asInput<String>(blockchainNodeId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['blockchainNodeId'] = blockchainNodeId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'blockchainNodeId': blockchainNodeId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetBlockchainNodeArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetBlockchainNodeArgs {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents export format supported by the Model. All formats export to Google Cloud Storage.
 class GoogleCloudAiplatformV1beta1ModelExportFormatResponse {
   /// The content of this Model that may be exported.
@@ -12,15 +13,15 @@ class GoogleCloudAiplatformV1beta1ModelExportFormatResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['exportableContents'] = exportableContents;
-    return map;
+    return <String, dynamic>{
+      'exportableContents': exportableContents,
+    };
   }
 
-  factory GoogleCloudAiplatformV1beta1ModelExportFormatResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1ModelExportFormatResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ModelExportFormatResponse(
       exportableContents: (map['exportableContents'] as List).cast<String>(),
     );
   }
 }
+

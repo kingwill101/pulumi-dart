@@ -106,7 +106,6 @@ class SecurityTokenServicePreferences extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.globalEndpointTokenVersion =
-        registerOutput<String>('globalEndpointTokenVersion');
+    this.globalEndpointTokenVersion = registerOutput<String>('globalEndpointTokenVersion');
   }
 }

@@ -148,31 +148,22 @@ import 'permission_set_args.dart';
 class PermissionSet extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the Permission Set.
   late final pulumi.Output<String> arn;
-
   /// The date the Permission Set was created in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
   late final pulumi.Output<String> createdDate;
-
   /// The description of the Permission Set.
   late final pulumi.Output<String?> description;
-
   /// The Amazon Resource Name (ARN) of the SSO Instance under which the operation will be executed.
   late final pulumi.Output<String> instanceArn;
-
   /// The name of the Permission Set.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The relay state URL used to redirect users within the application during the federation authentication process.
   late final pulumi.Output<String?> relayState;
-
   /// The length of time that the application user sessions are valid in the ISO-8601 standard. Default: `PT1H`.
   late final pulumi.Output<String?> sessionDuration;
-
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 

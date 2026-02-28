@@ -10,13 +10,10 @@ import 'account_settings_timeouts.dart';
 class AccountSettingsArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   final pulumi.Input<String>? awsAccountId;
-
   /// The default namespace for this Amazon Web Services account. Currently, the default is `default`.
   final pulumi.Input<String>? defaultNamespace;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// A boolean value that determines whether or not an Amazon QuickSight account can be deleted. If `true`, it does not allow the account to be deleted and results in an error message if a user tries to make a DeleteAccountSubscription request. If `false`, it will allow the account to be deleted.
   final pulumi.Input<bool>? terminationProtectionEnabled;
   final pulumi.Input<AccountSettingsTimeouts>? timeouts;
@@ -33,57 +30,31 @@ class AccountSettingsArgs {
     String? region,
     bool? terminationProtectionEnabled,
     AccountSettingsTimeouts? timeouts,
-  })  : awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-        defaultNamespace =
-            pulumi.Input.asOptionalInput<String>(defaultNamespace),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        terminationProtectionEnabled =
-            pulumi.Input.asOptionalInput<bool>(terminationProtectionEnabled),
-        timeouts =
-            pulumi.Input.asOptionalInput<AccountSettingsTimeouts>(timeouts);
+  }) :
+      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
+      defaultNamespace = pulumi.Input.asOptionalInput<String>(defaultNamespace),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      terminationProtectionEnabled = pulumi.Input.asOptionalInput<bool>(terminationProtectionEnabled),
+      timeouts = pulumi.Input.asOptionalInput<AccountSettingsTimeouts>(timeouts);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final awsAccountIdValue = awsAccountId;
-    if (awsAccountIdValue != null) {
-      map['awsAccountId'] = awsAccountIdValue;
-    }
-    final defaultNamespaceValue = defaultNamespace;
-    if (defaultNamespaceValue != null) {
-      map['defaultNamespace'] = defaultNamespaceValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final terminationProtectionEnabledValue = terminationProtectionEnabled;
-    if (terminationProtectionEnabledValue != null) {
-      map['terminationProtectionEnabled'] = terminationProtectionEnabledValue;
-    }
-    final timeoutsValue = timeouts;
-    if (timeoutsValue != null) {
-      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
-          AccountSettingsTimeouts,
-          Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'awsAccountId': ?awsAccountId,
+      'defaultNamespace': ?defaultNamespace,
+      'region': ?region,
+      'terminationProtectionEnabled': ?terminationProtectionEnabled,
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<AccountSettingsTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+    };
   }
 
   factory AccountSettingsArgs.fromMap(Map<String, dynamic> map) {
     return AccountSettingsArgs(
-      awsAccountId:
-          map['awsAccountId'] == null ? null : map['awsAccountId'] as String,
-      defaultNamespace: map['defaultNamespace'] == null
-          ? null
-          : map['defaultNamespace'] as String,
+      awsAccountId: map['awsAccountId'] == null ? null : map['awsAccountId'] as String,
+      defaultNamespace: map['defaultNamespace'] == null ? null : map['defaultNamespace'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      terminationProtectionEnabled: map['terminationProtectionEnabled'] == null
-          ? null
-          : map['terminationProtectionEnabled'] as bool,
-      timeouts: map['timeouts'] == null
-          ? null
-          : AccountSettingsTimeouts.fromMap(
-              (map['timeouts'] as Map).cast<String, dynamic>()),
+      terminationProtectionEnabled: map['terminationProtectionEnabled'] == null ? null : map['terminationProtectionEnabled'] as bool,
+      timeouts: map['timeouts'] == null ? null : AccountSettingsTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

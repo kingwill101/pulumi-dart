@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDeviceLocation {
   /// Physical address.
   final String address;
-
   /// Latitude.
   final String latitude;
-
   /// Longitude.
   final String longitude;
 
@@ -21,11 +20,11 @@ class GetDeviceLocation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['address'] = address;
-    map['latitude'] = latitude;
-    map['longitude'] = longitude;
-    return map;
+    return <String, dynamic>{
+      'address': address,
+      'latitude': latitude,
+      'longitude': longitude,
+    };
   }
 
   factory GetDeviceLocation.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class GetDeviceLocation {
     );
   }
 }
+

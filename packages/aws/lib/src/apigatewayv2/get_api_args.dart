@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApiArgs {
   /// API identifier.
   final pulumi.Input<String> apiId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Map of resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -24,31 +22,25 @@ class GetApiArgs {
     required String apiId,
     String? region,
     Map<String, String>? tags,
-  })  : apiId = pulumi.Input.asInput<String>(apiId),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      apiId = pulumi.Input.asInput<String>(apiId),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['apiId'] = apiId;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'apiId': apiId,
+      'region': ?region,
+      'tags': ?tags,
+    };
   }
 
   factory GetApiArgs.fromMap(Map<String, dynamic> map) {
     return GetApiArgs(
       apiId: map['apiId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

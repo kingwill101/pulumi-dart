@@ -22,41 +22,21 @@ class EndpointNetworkInterfaceOptions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final networkInterfaceIdValue = networkInterfaceId;
-    if (networkInterfaceIdValue != null) {
-      map['networkInterfaceId'] = networkInterfaceIdValue;
-    }
-    final portValue = port;
-    if (portValue != null) {
-      map['port'] = portValue;
-    }
-    final portRangesValue = portRanges;
-    if (portRangesValue != null) {
-      map['portRanges'] = pulumi.Input.encodeList<
-          EndpointNetworkInterfaceOptionsPortRange,
-          Map<String, dynamic>>(portRangesValue, (value) => value.toMap());
-    }
-    final protocolValue = protocol;
-    if (protocolValue != null) {
-      map['protocol'] = protocolValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'networkInterfaceId': ?networkInterfaceId,
+      'port': ?port,
+      'portRanges': ?portRanges == null ? null : pulumi.Input.encodeList<EndpointNetworkInterfaceOptionsPortRange, Map<String, dynamic>>(portRanges!, (value) => value.toMap()),
+      'protocol': ?protocol,
+    };
   }
 
   factory EndpointNetworkInterfaceOptions.fromMap(Map<String, dynamic> map) {
     return EndpointNetworkInterfaceOptions(
-      networkInterfaceId: map['networkInterfaceId'] == null
-          ? null
-          : map['networkInterfaceId'] as String,
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : map['networkInterfaceId'] as String,
       port: map['port'] == null ? null : map['port'] as int,
-      portRanges: map['portRanges'] == null
-          ? null
-          : pulumi.Input.decodeList<EndpointNetworkInterfaceOptionsPortRange>(
-              map['portRanges'],
-              (value) => EndpointNetworkInterfaceOptionsPortRange.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      portRanges: map['portRanges'] == null ? null : pulumi.Input.decodeList<EndpointNetworkInterfaceOptionsPortRange>(map['portRanges'], (value) => EndpointNetworkInterfaceOptionsPortRange.fromMap((value as Map).cast<String, dynamic>())),
       protocol: map['protocol'] == null ? null : map['protocol'] as String,
     );
   }
 }
+

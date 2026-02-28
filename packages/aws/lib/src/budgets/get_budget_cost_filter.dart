@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetBudgetCostFilter {
   /// The name of a budget. Unique within accounts.
   ///
@@ -16,10 +17,10 @@ class GetBudgetCostFilter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['values'] = values;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'values': values,
+    };
   }
 
   factory GetBudgetCostFilter.fromMap(Map<String, dynamic> map) {
@@ -29,3 +30,4 @@ class GetBudgetCostFilter {
     );
   }
 }
+

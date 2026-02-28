@@ -14,20 +14,15 @@ class GooglePrivacyDlpV2RecordCondition {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final expressionsValue = expressions;
-    if (expressionsValue != null) {
-      map['expressions'] = expressionsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'expressions': ?expressions == null ? null : expressions!.toMap(),
+    };
   }
 
   factory GooglePrivacyDlpV2RecordCondition.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2RecordCondition(
-      expressions: map['expressions'] == null
-          ? null
-          : GooglePrivacyDlpV2Expressions.fromMap(
-              (map['expressions'] as Map).cast<String, dynamic>()),
+      expressions: map['expressions'] == null ? null : GooglePrivacyDlpV2Expressions.fromMap((map['expressions'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

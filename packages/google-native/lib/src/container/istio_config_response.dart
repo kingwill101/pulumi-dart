@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration options for Istio addon.
 class IstioConfigResponse {
   /// The specified Istio auth mode, either none, or mutual TLS.
   final String auth;
-
   /// Whether Istio is enabled for this cluster.
   final bool disabled;
 
@@ -17,10 +17,10 @@ class IstioConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['auth'] = auth;
-    map['disabled'] = disabled;
-    return map;
+    return <String, dynamic>{
+      'auth': auth,
+      'disabled': disabled,
+    };
   }
 
   factory IstioConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class IstioConfigResponse {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetLaunchTemplateMonitoring {
   final bool enabled;
 
@@ -10,9 +11,9 @@ class GetLaunchTemplateMonitoring {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory GetLaunchTemplateMonitoring.fromMap(Map<String, dynamic> map) {
@@ -21,3 +22,4 @@ class GetLaunchTemplateMonitoring {
     );
   }
 }
+

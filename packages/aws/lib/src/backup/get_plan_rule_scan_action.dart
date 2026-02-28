@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetPlanRuleScanAction {
   final String malwareScanner;
   final String scanMode;
@@ -13,10 +14,10 @@ class GetPlanRuleScanAction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['malwareScanner'] = malwareScanner;
-    map['scanMode'] = scanMode;
-    return map;
+    return <String, dynamic>{
+      'malwareScanner': malwareScanner,
+      'scanMode': scanMode,
+    };
   }
 
   factory GetPlanRuleScanAction.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class GetPlanRuleScanAction {
     );
   }
 }
+

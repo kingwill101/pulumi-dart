@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A vertex represents a 2D point in the image. NOTE: the vertex coordinates are in the same scale as the original image.
 class VertexResponse {
   /// X coordinate.
   final int x;
-
   /// Y coordinate.
   final int y;
 
@@ -17,10 +17,10 @@ class VertexResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['x'] = x;
-    map['y'] = y;
-    return map;
+    return <String, dynamic>{
+      'x': x,
+      'y': y,
+    };
   }
 
   factory VertexResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class VertexResponse {
     );
   }
 }
+

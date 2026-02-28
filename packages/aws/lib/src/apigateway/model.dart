@@ -185,19 +185,14 @@ import 'model_args.dart';
 class Model extends pulumi.CustomResource {
   /// Content type of the model
   late final pulumi.Output<String> contentType;
-
   /// Description of the model
   late final pulumi.Output<String?> description;
-
   /// Name of the model
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ID of the associated REST API
   late final pulumi.Output<String> restApi;
-
   /// Schema of the model in a JSON form
   late final pulumi.Output<String?> schema;
 

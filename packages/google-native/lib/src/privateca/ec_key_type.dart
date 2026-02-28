@@ -14,20 +14,15 @@ class EcKeyType {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final signatureAlgorithmValue = signatureAlgorithm;
-    if (signatureAlgorithmValue != null) {
-      map['signatureAlgorithm'] = signatureAlgorithmValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'signatureAlgorithm': ?signatureAlgorithm == null ? null : signatureAlgorithm!.value,
+    };
   }
 
   factory EcKeyType.fromMap(Map<String, dynamic> map) {
     return EcKeyType(
-      signatureAlgorithm: map['signatureAlgorithm'] == null
-          ? null
-          : EcKeyTypeSignatureAlgorithm.fromValue(
-              map['signatureAlgorithm'] as String),
+      signatureAlgorithm: map['signatureAlgorithm'] == null ? null : EcKeyTypeSignatureAlgorithm.fromValue(map['signatureAlgorithm'] as String),
     );
   }
 }
+

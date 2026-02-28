@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Defines IP configuration where this Certificate Map is serving.
 class IpConfigResponse {
   /// An external IP address.
   final String ipAddress;
-
   /// Ports.
   final List<int> ports;
 
@@ -17,10 +17,10 @@ class IpConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ipAddress'] = ipAddress;
-    map['ports'] = ports;
-    return map;
+    return <String, dynamic>{
+      'ipAddress': ipAddress,
+      'ports': ports,
+    };
   }
 
   factory IpConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class IpConfigResponse {
     );
   }
 }
+

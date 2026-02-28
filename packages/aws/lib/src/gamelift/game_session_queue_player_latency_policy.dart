@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GameSessionQueuePlayerLatencyPolicy {
   /// Maximum latency value that is allowed for any player.
   final int maximumIndividualPlayerLatencyMilliseconds;
-
   /// Length of time that the policy is enforced while placing a new game session. Absence of value for this attribute means that the policy is enforced until the queue times out.
   final int? policyDurationSeconds;
 
@@ -16,24 +16,17 @@ class GameSessionQueuePlayerLatencyPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maximumIndividualPlayerLatencyMilliseconds'] =
-        maximumIndividualPlayerLatencyMilliseconds;
-    final policyDurationSecondsValue = policyDurationSeconds;
-    if (policyDurationSecondsValue != null) {
-      map['policyDurationSeconds'] = policyDurationSecondsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'maximumIndividualPlayerLatencyMilliseconds': maximumIndividualPlayerLatencyMilliseconds,
+      'policyDurationSeconds': ?policyDurationSeconds,
+    };
   }
 
-  factory GameSessionQueuePlayerLatencyPolicy.fromMap(
-      Map<String, dynamic> map) {
+  factory GameSessionQueuePlayerLatencyPolicy.fromMap(Map<String, dynamic> map) {
     return GameSessionQueuePlayerLatencyPolicy(
-      maximumIndividualPlayerLatencyMilliseconds:
-          map['maximumIndividualPlayerLatencyMilliseconds'] as int,
-      policyDurationSeconds: map['policyDurationSeconds'] == null
-          ? null
-          : map['policyDurationSeconds'] as int,
+      maximumIndividualPlayerLatencyMilliseconds: map['maximumIndividualPlayerLatencyMilliseconds'] as int,
+      policyDurationSeconds: map['policyDurationSeconds'] == null ? null : map['policyDurationSeconds'] as int,
     );
   }
 }
+

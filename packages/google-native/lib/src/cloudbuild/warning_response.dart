@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A non-fatal problem encountered during the execution of the build.
 class WarningResponse {
   /// The priority for this warning.
   final String priority;
-
   /// Explanation of the warning generated.
   final String text;
 
@@ -17,10 +17,10 @@ class WarningResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['priority'] = priority;
-    map['text'] = text;
-    return map;
+    return <String, dynamic>{
+      'priority': priority,
+      'text': text,
+    };
   }
 
   factory WarningResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class WarningResponse {
     );
   }
 }
+

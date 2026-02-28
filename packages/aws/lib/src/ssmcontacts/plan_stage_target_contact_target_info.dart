@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PlanStageTargetContactTargetInfo {
   /// The Amazon Resource Name (ARN) of the contact.
   final String? contactId;
-
   /// A Boolean value determining if the contact's acknowledgement stops the progress of stages in the plan.
   final bool isEssential;
 
@@ -16,13 +16,10 @@ class PlanStageTargetContactTargetInfo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final contactIdValue = contactId;
-    if (contactIdValue != null) {
-      map['contactId'] = contactIdValue;
-    }
-    map['isEssential'] = isEssential;
-    return map;
+    return <String, dynamic>{
+      'contactId': ?contactId,
+      'isEssential': isEssential,
+    };
   }
 
   factory PlanStageTargetContactTargetInfo.fromMap(Map<String, dynamic> map) {
@@ -32,3 +29,4 @@ class PlanStageTargetContactTargetInfo {
     );
   }
 }
+

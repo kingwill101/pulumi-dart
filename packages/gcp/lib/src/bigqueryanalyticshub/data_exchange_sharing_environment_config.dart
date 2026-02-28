@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataExchangeSharingEnvironmentConfig {
   /// Data Clean Room (DCR), used for privacy-safe and secured data sharing.
   final Map<String, dynamic>? dcrExchangeConfig;
-
   /// Default Analytics Hub data exchange, used for secured data sharing.
   final Map<String, dynamic>? defaultExchangeConfig;
 
@@ -16,27 +16,17 @@ class DataExchangeSharingEnvironmentConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dcrExchangeConfigValue = dcrExchangeConfig;
-    if (dcrExchangeConfigValue != null) {
-      map['dcrExchangeConfig'] = dcrExchangeConfigValue;
-    }
-    final defaultExchangeConfigValue = defaultExchangeConfig;
-    if (defaultExchangeConfigValue != null) {
-      map['defaultExchangeConfig'] = defaultExchangeConfigValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'dcrExchangeConfig': ?dcrExchangeConfig,
+      'defaultExchangeConfig': ?defaultExchangeConfig,
+    };
   }
 
-  factory DataExchangeSharingEnvironmentConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory DataExchangeSharingEnvironmentConfig.fromMap(Map<String, dynamic> map) {
     return DataExchangeSharingEnvironmentConfig(
-      dcrExchangeConfig: map['dcrExchangeConfig'] == null
-          ? null
-          : (map['dcrExchangeConfig'] as Map).cast<String, dynamic>(),
-      defaultExchangeConfig: map['defaultExchangeConfig'] == null
-          ? null
-          : (map['defaultExchangeConfig'] as Map).cast<String, dynamic>(),
+      dcrExchangeConfig: map['dcrExchangeConfig'] == null ? null : (map['dcrExchangeConfig'] as Map).cast<String, dynamic>(),
+      defaultExchangeConfig: map['defaultExchangeConfig'] == null ? null : (map['defaultExchangeConfig'] as Map).cast<String, dynamic>(),
     );
   }
 }
+

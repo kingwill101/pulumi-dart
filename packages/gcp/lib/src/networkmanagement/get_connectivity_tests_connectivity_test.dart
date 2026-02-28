@@ -7,37 +7,27 @@ import 'get_connectivity_tests_connectivity_test_source.dart';
 class GetConnectivityTestsConnectivityTest {
   /// Whether the analysis should skip firewall checking.
   final bool bypassFirewallChecks;
-
   /// The user-supplied description of the Connectivity Test.
   final String description;
-
   /// Destination specification of the Connectivity Test.
   /// Structure is documented below.
   final List<GetConnectivityTestsConnectivityTestDestination> destinations;
   final Map<String, String> effectiveLabels;
-
   /// Resource labels to represent user-provided metadata.
   final Map<String, String> labels;
-
   /// Unique name for the connectivity test.
   final String name;
-
   /// The ID of the project.
   final String project;
-
   /// IP Protocol of the test.
   final String protocol;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final Map<String, String> pulumiLabels;
-
   /// Other projects that may be relevant for reachability analysis.
   final List<String> relatedProjects;
-
   /// Whether run analysis for the return path from destination to source.
   final bool roundTrip;
-
   /// Source specification of the Connectivity Test.
   /// Structure is documented below.
   final List<GetConnectivityTestsConnectivityTestSource> sources;
@@ -71,36 +61,27 @@ class GetConnectivityTestsConnectivityTest {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bypassFirewallChecks'] = bypassFirewallChecks;
-    map['description'] = description;
-    map['destinations'] = pulumi.Input.encodeList<
-        GetConnectivityTestsConnectivityTestDestination,
-        Map<String, dynamic>>(destinations, (value) => value.toMap());
-    map['effectiveLabels'] = effectiveLabels;
-    map['labels'] = labels;
-    map['name'] = name;
-    map['project'] = project;
-    map['protocol'] = protocol;
-    map['pulumiLabels'] = pulumiLabels;
-    map['relatedProjects'] = relatedProjects;
-    map['roundTrip'] = roundTrip;
-    map['sources'] = pulumi.Input.encodeList<
-        GetConnectivityTestsConnectivityTestSource,
-        Map<String, dynamic>>(sources, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'bypassFirewallChecks': bypassFirewallChecks,
+      'description': description,
+      'destinations': pulumi.Input.encodeList<GetConnectivityTestsConnectivityTestDestination, Map<String, dynamic>>(destinations, (value) => value.toMap()),
+      'effectiveLabels': effectiveLabels,
+      'labels': labels,
+      'name': name,
+      'project': project,
+      'protocol': protocol,
+      'pulumiLabels': pulumiLabels,
+      'relatedProjects': relatedProjects,
+      'roundTrip': roundTrip,
+      'sources': pulumi.Input.encodeList<GetConnectivityTestsConnectivityTestSource, Map<String, dynamic>>(sources, (value) => value.toMap()),
+    };
   }
 
-  factory GetConnectivityTestsConnectivityTest.fromMap(
-      Map<String, dynamic> map) {
+  factory GetConnectivityTestsConnectivityTest.fromMap(Map<String, dynamic> map) {
     return GetConnectivityTestsConnectivityTest(
       bypassFirewallChecks: map['bypassFirewallChecks'] as bool,
       description: map['description'] as String,
-      destinations: pulumi.Input.decodeList<
-              GetConnectivityTestsConnectivityTestDestination>(
-          map['destinations'],
-          (value) => GetConnectivityTestsConnectivityTestDestination.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      destinations: pulumi.Input.decodeList<GetConnectivityTestsConnectivityTestDestination>(map['destinations'], (value) => GetConnectivityTestsConnectivityTestDestination.fromMap((value as Map).cast<String, dynamic>())),
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
@@ -109,11 +90,8 @@ class GetConnectivityTestsConnectivityTest {
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       relatedProjects: (map['relatedProjects'] as List).cast<String>(),
       roundTrip: map['roundTrip'] as bool,
-      sources:
-          pulumi.Input.decodeList<GetConnectivityTestsConnectivityTestSource>(
-              map['sources'],
-              (value) => GetConnectivityTestsConnectivityTestSource.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      sources: pulumi.Input.decodeList<GetConnectivityTestsConnectivityTestSource>(map['sources'], (value) => GetConnectivityTestsConnectivityTestSource.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

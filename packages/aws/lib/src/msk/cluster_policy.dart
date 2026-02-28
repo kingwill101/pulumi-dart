@@ -266,10 +266,8 @@ class ClusterPolicy extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) that uniquely identifies the cluster.
   late final pulumi.Output<String> clusterArn;
   late final pulumi.Output<String> currentVersion;
-
   /// Resource policy for cluster.
   late final pulumi.Output<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

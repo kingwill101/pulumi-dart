@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class OrganizationPolicyRestorePolicy {
   /// May only be set to true. If set, then the default Policy is restored.
   final bool default_;
@@ -11,9 +12,9 @@ class OrganizationPolicyRestorePolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['default'] = default_;
-    return map;
+    return <String, dynamic>{
+      'default': default_,
+    };
   }
 
   factory OrganizationPolicyRestorePolicy.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class OrganizationPolicyRestorePolicy {
     );
   }
 }
+

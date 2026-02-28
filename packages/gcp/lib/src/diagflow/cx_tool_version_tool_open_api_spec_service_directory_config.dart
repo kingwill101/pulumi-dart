@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CxToolVersionToolOpenApiSpecServiceDirectoryConfig {
   /// The name of [Service Directory](https://cloud.google.com/service-directory/docs) service.
   /// Format: projects/<ProjectID>/locations/<LocationID>/namespaces/<NamespaceID>/services/<ServiceID>. LocationID of the service directory must be the same as the location of the agent.
@@ -12,15 +13,15 @@ class CxToolVersionToolOpenApiSpecServiceDirectoryConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['service'] = service;
-    return map;
+    return <String, dynamic>{
+      'service': service,
+    };
   }
 
-  factory CxToolVersionToolOpenApiSpecServiceDirectoryConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory CxToolVersionToolOpenApiSpecServiceDirectoryConfig.fromMap(Map<String, dynamic> map) {
     return CxToolVersionToolOpenApiSpecServiceDirectoryConfig(
       service: map['service'] as String,
     );
   }
 }
+

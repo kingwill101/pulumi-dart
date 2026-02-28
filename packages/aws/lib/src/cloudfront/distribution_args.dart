@@ -19,76 +19,50 @@ import 'distribution_viewer_mtls_config.dart';
 class DistributionArgs {
   /// Extra CNAMEs (alternate domain names), if any, for this distribution.
   final pulumi.Input<List<String>>? aliases;
-
   /// ID of the Anycast static IP list that is associated with the distribution.
   final pulumi.Input<String>? anycastIpListId;
-
   /// Any comments you want to include about the distribution.
   final pulumi.Input<String>? comment;
-
   /// A connection function association configuration block (maximum one).
-  final pulumi.Input<DistributionConnectionFunctionAssociation>?
-      connectionFunctionAssociation;
-
+  final pulumi.Input<DistributionConnectionFunctionAssociation>? connectionFunctionAssociation;
   /// Identifier of a continuous deployment policy. This argument should only be set on a production distribution. See the `aws.cloudfront.ContinuousDeploymentPolicy` resource for additional details.
   final pulumi.Input<String>? continuousDeploymentPolicyId;
-
   /// One or more custom error response elements (multiples allowed).
-  final pulumi.Input<List<DistributionCustomErrorResponse>>?
-      customErrorResponses;
-
+  final pulumi.Input<List<DistributionCustomErrorResponse>>? customErrorResponses;
   /// Default cache behavior for this distribution (maximum one). Requires either `cache_policy_id` (preferred) or `forwarded_values` (deprecated) be set.
   final pulumi.Input<DistributionDefaultCacheBehavior> defaultCacheBehavior;
-
   /// Object that you want CloudFront to return (for example, index.html) when an end user requests the root URL.
   final pulumi.Input<String>? defaultRootObject;
-
   /// Whether the distribution is enabled to accept end user requests for content.
   final pulumi.Input<bool> enabled;
-
   /// Maximum HTTP version to support on the distribution. Allowed values are `http1.1`, `http2`, `http2and3` and `http3`. The default is `http2`.
   final pulumi.Input<String>? httpVersion;
-
   /// Whether the IPv6 is enabled for the distribution.
   final pulumi.Input<bool>? isIpv6Enabled;
-
   /// The logging configuration that controls how logs are written to your distribution (maximum one). AWS provides two versions of access logs for CloudFront: Legacy and v2. This argument configures legacy version standard logs.
   final pulumi.Input<DistributionLoggingConfig>? loggingConfig;
-
   /// Ordered list of cache behaviors resource for this distribution. List from top to bottom in order of precedence. The topmost cache behavior will have precedence 0.
-  final pulumi.Input<List<DistributionOrderedCacheBehavior>>?
-      orderedCacheBehaviors;
-
+  final pulumi.Input<List<DistributionOrderedCacheBehavior>>? orderedCacheBehaviors;
   /// One or more origin_group for this distribution (multiples allowed).
   final pulumi.Input<List<DistributionOriginGroup>>? originGroups;
-
   /// One or more origins for this distribution (multiples allowed).
   final pulumi.Input<List<DistributionOrigin>> origins;
-
   /// Price class for this distribution. One of `PriceClass_All`, `PriceClass_200`, `PriceClass_100`.
   final pulumi.Input<String>? priceClass;
-
   /// The restriction configuration for this distribution (maximum one).
   final pulumi.Input<DistributionRestrictions> restrictions;
-
   /// Disables the distribution instead of deleting it when destroying the resource through the provider. If this is set, the distribution needs to be deleted manually afterwards. Default: `false`.
   final pulumi.Input<bool>? retainOnDelete;
-
   /// A Boolean that indicates whether this is a staging distribution. Defaults to `false`.
   final pulumi.Input<bool>? staging;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The SSL configuration for this distribution (maximum one).
   final pulumi.Input<DistributionViewerCertificate> viewerCertificate;
-
   /// The viewer mTLS configuration for this distribution (maximum one).
   final pulumi.Input<DistributionViewerMtlsConfig>? viewerMtlsConfig;
-
   /// If enabled, the resource will wait for the distribution status to change from `InProgress` to `Deployed`. Setting this to`false` will skip the process. Default: `true`.
   final pulumi.Input<bool>? waitForDeployment;
-
   /// Unique identifier that specifies the AWS WAF web ACL, if any, to associate with this distribution. To specify a web ACL created using the latest version of AWS WAF (WAFv2), use the ACL ARN, for example `aws_wafv2_web_acl.example.arn`. To specify a web ACL created using AWS WAF Classic, use the ACL ID, for example `aws_waf_web_acl.example.id`. The WAF Web ACL must exist in the WAF Global (CloudFront) region and the credentials configuring this argument must have `waf:GetWebACL` permissions assigned.
   final pulumi.Input<String>? webAclId;
 
@@ -142,238 +116,88 @@ class DistributionArgs {
     DistributionViewerMtlsConfig? viewerMtlsConfig,
     bool? waitForDeployment,
     String? webAclId,
-  })  : aliases = pulumi.Input.asOptionalInput<List<String>>(aliases),
-        anycastIpListId = pulumi.Input.asOptionalInput<String>(anycastIpListId),
-        comment = pulumi.Input.asOptionalInput<String>(comment),
-        connectionFunctionAssociation = pulumi.Input.asOptionalInput<
-                DistributionConnectionFunctionAssociation>(
-            connectionFunctionAssociation),
-        continuousDeploymentPolicyId =
-            pulumi.Input.asOptionalInput<String>(continuousDeploymentPolicyId),
-        customErrorResponses =
-            pulumi.Input.asOptionalInput<List<DistributionCustomErrorResponse>>(
-                customErrorResponses),
-        defaultCacheBehavior =
-            pulumi.Input.asInput<DistributionDefaultCacheBehavior>(
-                defaultCacheBehavior),
-        defaultRootObject =
-            pulumi.Input.asOptionalInput<String>(defaultRootObject),
-        enabled = pulumi.Input.asInput<bool>(enabled),
-        httpVersion = pulumi.Input.asOptionalInput<String>(httpVersion),
-        isIpv6Enabled = pulumi.Input.asOptionalInput<bool>(isIpv6Enabled),
-        loggingConfig = pulumi.Input.asOptionalInput<DistributionLoggingConfig>(
-            loggingConfig),
-        orderedCacheBehaviors = pulumi.Input.asOptionalInput<
-            List<DistributionOrderedCacheBehavior>>(orderedCacheBehaviors),
-        originGroups =
-            pulumi.Input.asOptionalInput<List<DistributionOriginGroup>>(
-                originGroups),
-        origins = pulumi.Input.asInput<List<DistributionOrigin>>(origins),
-        priceClass = pulumi.Input.asOptionalInput<String>(priceClass),
-        restrictions =
-            pulumi.Input.asInput<DistributionRestrictions>(restrictions),
-        retainOnDelete = pulumi.Input.asOptionalInput<bool>(retainOnDelete),
-        staging = pulumi.Input.asOptionalInput<bool>(staging),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-        viewerCertificate = pulumi.Input.asInput<DistributionViewerCertificate>(
-            viewerCertificate),
-        viewerMtlsConfig =
-            pulumi.Input.asOptionalInput<DistributionViewerMtlsConfig>(
-                viewerMtlsConfig),
-        waitForDeployment =
-            pulumi.Input.asOptionalInput<bool>(waitForDeployment),
-        webAclId = pulumi.Input.asOptionalInput<String>(webAclId);
+  }) :
+      aliases = pulumi.Input.asOptionalInput<List<String>>(aliases),
+      anycastIpListId = pulumi.Input.asOptionalInput<String>(anycastIpListId),
+      comment = pulumi.Input.asOptionalInput<String>(comment),
+      connectionFunctionAssociation = pulumi.Input.asOptionalInput<DistributionConnectionFunctionAssociation>(connectionFunctionAssociation),
+      continuousDeploymentPolicyId = pulumi.Input.asOptionalInput<String>(continuousDeploymentPolicyId),
+      customErrorResponses = pulumi.Input.asOptionalInput<List<DistributionCustomErrorResponse>>(customErrorResponses),
+      defaultCacheBehavior = pulumi.Input.asInput<DistributionDefaultCacheBehavior>(defaultCacheBehavior),
+      defaultRootObject = pulumi.Input.asOptionalInput<String>(defaultRootObject),
+      enabled = pulumi.Input.asInput<bool>(enabled),
+      httpVersion = pulumi.Input.asOptionalInput<String>(httpVersion),
+      isIpv6Enabled = pulumi.Input.asOptionalInput<bool>(isIpv6Enabled),
+      loggingConfig = pulumi.Input.asOptionalInput<DistributionLoggingConfig>(loggingConfig),
+      orderedCacheBehaviors = pulumi.Input.asOptionalInput<List<DistributionOrderedCacheBehavior>>(orderedCacheBehaviors),
+      originGroups = pulumi.Input.asOptionalInput<List<DistributionOriginGroup>>(originGroups),
+      origins = pulumi.Input.asInput<List<DistributionOrigin>>(origins),
+      priceClass = pulumi.Input.asOptionalInput<String>(priceClass),
+      restrictions = pulumi.Input.asInput<DistributionRestrictions>(restrictions),
+      retainOnDelete = pulumi.Input.asOptionalInput<bool>(retainOnDelete),
+      staging = pulumi.Input.asOptionalInput<bool>(staging),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      viewerCertificate = pulumi.Input.asInput<DistributionViewerCertificate>(viewerCertificate),
+      viewerMtlsConfig = pulumi.Input.asOptionalInput<DistributionViewerMtlsConfig>(viewerMtlsConfig),
+      waitForDeployment = pulumi.Input.asOptionalInput<bool>(waitForDeployment),
+      webAclId = pulumi.Input.asOptionalInput<String>(webAclId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final aliasesValue = aliases;
-    if (aliasesValue != null) {
-      map['aliases'] = aliasesValue;
-    }
-    final anycastIpListIdValue = anycastIpListId;
-    if (anycastIpListIdValue != null) {
-      map['anycastIpListId'] = anycastIpListIdValue;
-    }
-    final commentValue = comment;
-    if (commentValue != null) {
-      map['comment'] = commentValue;
-    }
-    final connectionFunctionAssociationValue = connectionFunctionAssociation;
-    if (connectionFunctionAssociationValue != null) {
-      map['connectionFunctionAssociation'] = pulumi.Input.mapOptionalInputValue<
-              DistributionConnectionFunctionAssociation, Map<String, dynamic>>(
-          connectionFunctionAssociationValue, (value) => value.toMap());
-    }
-    final continuousDeploymentPolicyIdValue = continuousDeploymentPolicyId;
-    if (continuousDeploymentPolicyIdValue != null) {
-      map['continuousDeploymentPolicyId'] = continuousDeploymentPolicyIdValue;
-    }
-    final customErrorResponsesValue = customErrorResponses;
-    if (customErrorResponsesValue != null) {
-      map['customErrorResponses'] = pulumi.Input.mapOptionalInputValue<
-              List<DistributionCustomErrorResponse>,
-              List<Map<String, dynamic>>>(
-          customErrorResponsesValue,
-          (value) => pulumi.Input.encodeList<DistributionCustomErrorResponse,
-              Map<String, dynamic>>(value, (value) => value.toMap()));
-    }
-    map['defaultCacheBehavior'] = pulumi.Input.mapInputValue<
-        DistributionDefaultCacheBehavior,
-        Map<String, dynamic>>(defaultCacheBehavior, (value) => value.toMap());
-    final defaultRootObjectValue = defaultRootObject;
-    if (defaultRootObjectValue != null) {
-      map['defaultRootObject'] = defaultRootObjectValue;
-    }
-    map['enabled'] = enabled;
-    final httpVersionValue = httpVersion;
-    if (httpVersionValue != null) {
-      map['httpVersion'] = httpVersionValue;
-    }
-    final isIpv6EnabledValue = isIpv6Enabled;
-    if (isIpv6EnabledValue != null) {
-      map['isIpv6Enabled'] = isIpv6EnabledValue;
-    }
-    final loggingConfigValue = loggingConfig;
-    if (loggingConfigValue != null) {
-      map['loggingConfig'] = pulumi.Input.mapOptionalInputValue<
-          DistributionLoggingConfig,
-          Map<String, dynamic>>(loggingConfigValue, (value) => value.toMap());
-    }
-    final orderedCacheBehaviorsValue = orderedCacheBehaviors;
-    if (orderedCacheBehaviorsValue != null) {
-      map['orderedCacheBehaviors'] = pulumi.Input.mapOptionalInputValue<
-              List<DistributionOrderedCacheBehavior>,
-              List<Map<String, dynamic>>>(
-          orderedCacheBehaviorsValue,
-          (value) => pulumi.Input.encodeList<DistributionOrderedCacheBehavior,
-              Map<String, dynamic>>(value, (value) => value.toMap()));
-    }
-    final originGroupsValue = originGroups;
-    if (originGroupsValue != null) {
-      map['originGroups'] = pulumi.Input.mapOptionalInputValue<
-              List<DistributionOriginGroup>, List<Map<String, dynamic>>>(
-          originGroupsValue,
-          (value) => pulumi.Input.encodeList<DistributionOriginGroup,
-              Map<String, dynamic>>(value, (value) => value.toMap()));
-    }
-    map['origins'] = pulumi.Input.mapInputValue<List<DistributionOrigin>,
-            List<Map<String, dynamic>>>(
-        origins,
-        (value) =>
-            pulumi.Input.encodeList<DistributionOrigin, Map<String, dynamic>>(
-                value, (value) => value.toMap()));
-    final priceClassValue = priceClass;
-    if (priceClassValue != null) {
-      map['priceClass'] = priceClassValue;
-    }
-    map['restrictions'] = pulumi.Input.mapInputValue<DistributionRestrictions,
-        Map<String, dynamic>>(restrictions, (value) => value.toMap());
-    final retainOnDeleteValue = retainOnDelete;
-    if (retainOnDeleteValue != null) {
-      map['retainOnDelete'] = retainOnDeleteValue;
-    }
-    final stagingValue = staging;
-    if (stagingValue != null) {
-      map['staging'] = stagingValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    map['viewerCertificate'] = pulumi.Input.mapInputValue<
-        DistributionViewerCertificate,
-        Map<String, dynamic>>(viewerCertificate, (value) => value.toMap());
-    final viewerMtlsConfigValue = viewerMtlsConfig;
-    if (viewerMtlsConfigValue != null) {
-      map['viewerMtlsConfig'] = pulumi.Input.mapOptionalInputValue<
-              DistributionViewerMtlsConfig, Map<String, dynamic>>(
-          viewerMtlsConfigValue, (value) => value.toMap());
-    }
-    final waitForDeploymentValue = waitForDeployment;
-    if (waitForDeploymentValue != null) {
-      map['waitForDeployment'] = waitForDeploymentValue;
-    }
-    final webAclIdValue = webAclId;
-    if (webAclIdValue != null) {
-      map['webAclId'] = webAclIdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'aliases': ?aliases,
+      'anycastIpListId': ?anycastIpListId,
+      'comment': ?comment,
+      'connectionFunctionAssociation': ?pulumi.Input.mapOptionalInputValue<DistributionConnectionFunctionAssociation, Map<String, dynamic>>(connectionFunctionAssociation, (value) => value.toMap()),
+      'continuousDeploymentPolicyId': ?continuousDeploymentPolicyId,
+      'customErrorResponses': ?pulumi.Input.mapOptionalInputValue<List<DistributionCustomErrorResponse>, List<Map<String, dynamic>>>(customErrorResponses, (value) => pulumi.Input.encodeList<DistributionCustomErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'defaultCacheBehavior': pulumi.Input.mapInputValue<DistributionDefaultCacheBehavior, Map<String, dynamic>>(defaultCacheBehavior, (value) => value.toMap()),
+      'defaultRootObject': ?defaultRootObject,
+      'enabled': enabled,
+      'httpVersion': ?httpVersion,
+      'isIpv6Enabled': ?isIpv6Enabled,
+      'loggingConfig': ?pulumi.Input.mapOptionalInputValue<DistributionLoggingConfig, Map<String, dynamic>>(loggingConfig, (value) => value.toMap()),
+      'orderedCacheBehaviors': ?pulumi.Input.mapOptionalInputValue<List<DistributionOrderedCacheBehavior>, List<Map<String, dynamic>>>(orderedCacheBehaviors, (value) => pulumi.Input.encodeList<DistributionOrderedCacheBehavior, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'originGroups': ?pulumi.Input.mapOptionalInputValue<List<DistributionOriginGroup>, List<Map<String, dynamic>>>(originGroups, (value) => pulumi.Input.encodeList<DistributionOriginGroup, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'origins': pulumi.Input.mapInputValue<List<DistributionOrigin>, List<Map<String, dynamic>>>(origins, (value) => pulumi.Input.encodeList<DistributionOrigin, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'priceClass': ?priceClass,
+      'restrictions': pulumi.Input.mapInputValue<DistributionRestrictions, Map<String, dynamic>>(restrictions, (value) => value.toMap()),
+      'retainOnDelete': ?retainOnDelete,
+      'staging': ?staging,
+      'tags': ?tags,
+      'viewerCertificate': pulumi.Input.mapInputValue<DistributionViewerCertificate, Map<String, dynamic>>(viewerCertificate, (value) => value.toMap()),
+      'viewerMtlsConfig': ?pulumi.Input.mapOptionalInputValue<DistributionViewerMtlsConfig, Map<String, dynamic>>(viewerMtlsConfig, (value) => value.toMap()),
+      'waitForDeployment': ?waitForDeployment,
+      'webAclId': ?webAclId,
+    };
   }
 
   factory DistributionArgs.fromMap(Map<String, dynamic> map) {
     return DistributionArgs(
-      aliases: map['aliases'] == null
-          ? null
-          : (map['aliases'] as List).cast<String>(),
-      anycastIpListId: map['anycastIpListId'] == null
-          ? null
-          : map['anycastIpListId'] as String,
+      aliases: map['aliases'] == null ? null : (map['aliases'] as List).cast<String>(),
+      anycastIpListId: map['anycastIpListId'] == null ? null : map['anycastIpListId'] as String,
       comment: map['comment'] == null ? null : map['comment'] as String,
-      connectionFunctionAssociation:
-          map['connectionFunctionAssociation'] == null
-              ? null
-              : DistributionConnectionFunctionAssociation.fromMap(
-                  (map['connectionFunctionAssociation'] as Map)
-                      .cast<String, dynamic>()),
-      continuousDeploymentPolicyId: map['continuousDeploymentPolicyId'] == null
-          ? null
-          : map['continuousDeploymentPolicyId'] as String,
-      customErrorResponses: map['customErrorResponses'] == null
-          ? null
-          : pulumi.Input.decodeList<DistributionCustomErrorResponse>(
-              map['customErrorResponses'],
-              (value) => DistributionCustomErrorResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      defaultCacheBehavior: DistributionDefaultCacheBehavior.fromMap(
-          (map['defaultCacheBehavior'] as Map).cast<String, dynamic>()),
-      defaultRootObject: map['defaultRootObject'] == null
-          ? null
-          : map['defaultRootObject'] as String,
+      connectionFunctionAssociation: map['connectionFunctionAssociation'] == null ? null : DistributionConnectionFunctionAssociation.fromMap((map['connectionFunctionAssociation'] as Map).cast<String, dynamic>()),
+      continuousDeploymentPolicyId: map['continuousDeploymentPolicyId'] == null ? null : map['continuousDeploymentPolicyId'] as String,
+      customErrorResponses: map['customErrorResponses'] == null ? null : pulumi.Input.decodeList<DistributionCustomErrorResponse>(map['customErrorResponses'], (value) => DistributionCustomErrorResponse.fromMap((value as Map).cast<String, dynamic>())),
+      defaultCacheBehavior: DistributionDefaultCacheBehavior.fromMap((map['defaultCacheBehavior'] as Map).cast<String, dynamic>()),
+      defaultRootObject: map['defaultRootObject'] == null ? null : map['defaultRootObject'] as String,
       enabled: map['enabled'] as bool,
-      httpVersion:
-          map['httpVersion'] == null ? null : map['httpVersion'] as String,
-      isIpv6Enabled:
-          map['isIpv6Enabled'] == null ? null : map['isIpv6Enabled'] as bool,
-      loggingConfig: map['loggingConfig'] == null
-          ? null
-          : DistributionLoggingConfig.fromMap(
-              (map['loggingConfig'] as Map).cast<String, dynamic>()),
-      orderedCacheBehaviors: map['orderedCacheBehaviors'] == null
-          ? null
-          : pulumi.Input.decodeList<DistributionOrderedCacheBehavior>(
-              map['orderedCacheBehaviors'],
-              (value) => DistributionOrderedCacheBehavior.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      originGroups: map['originGroups'] == null
-          ? null
-          : pulumi.Input.decodeList<DistributionOriginGroup>(
-              map['originGroups'],
-              (value) => DistributionOriginGroup.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      origins: pulumi.Input.decodeList<DistributionOrigin>(
-          map['origins'],
-          (value) => DistributionOrigin.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      priceClass:
-          map['priceClass'] == null ? null : map['priceClass'] as String,
-      restrictions: DistributionRestrictions.fromMap(
-          (map['restrictions'] as Map).cast<String, dynamic>()),
-      retainOnDelete:
-          map['retainOnDelete'] == null ? null : map['retainOnDelete'] as bool,
+      httpVersion: map['httpVersion'] == null ? null : map['httpVersion'] as String,
+      isIpv6Enabled: map['isIpv6Enabled'] == null ? null : map['isIpv6Enabled'] as bool,
+      loggingConfig: map['loggingConfig'] == null ? null : DistributionLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>()),
+      orderedCacheBehaviors: map['orderedCacheBehaviors'] == null ? null : pulumi.Input.decodeList<DistributionOrderedCacheBehavior>(map['orderedCacheBehaviors'], (value) => DistributionOrderedCacheBehavior.fromMap((value as Map).cast<String, dynamic>())),
+      originGroups: map['originGroups'] == null ? null : pulumi.Input.decodeList<DistributionOriginGroup>(map['originGroups'], (value) => DistributionOriginGroup.fromMap((value as Map).cast<String, dynamic>())),
+      origins: pulumi.Input.decodeList<DistributionOrigin>(map['origins'], (value) => DistributionOrigin.fromMap((value as Map).cast<String, dynamic>())),
+      priceClass: map['priceClass'] == null ? null : map['priceClass'] as String,
+      restrictions: DistributionRestrictions.fromMap((map['restrictions'] as Map).cast<String, dynamic>()),
+      retainOnDelete: map['retainOnDelete'] == null ? null : map['retainOnDelete'] as bool,
       staging: map['staging'] == null ? null : map['staging'] as bool,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
-      viewerCertificate: DistributionViewerCertificate.fromMap(
-          (map['viewerCertificate'] as Map).cast<String, dynamic>()),
-      viewerMtlsConfig: map['viewerMtlsConfig'] == null
-          ? null
-          : DistributionViewerMtlsConfig.fromMap(
-              (map['viewerMtlsConfig'] as Map).cast<String, dynamic>()),
-      waitForDeployment: map['waitForDeployment'] == null
-          ? null
-          : map['waitForDeployment'] as bool,
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      viewerCertificate: DistributionViewerCertificate.fromMap((map['viewerCertificate'] as Map).cast<String, dynamic>()),
+      viewerMtlsConfig: map['viewerMtlsConfig'] == null ? null : DistributionViewerMtlsConfig.fromMap((map['viewerMtlsConfig'] as Map).cast<String, dynamic>()),
+      waitForDeployment: map['waitForDeployment'] == null ? null : map['waitForDeployment'] as bool,
       webAclId: map['webAclId'] == null ? null : map['webAclId'] as String,
     );
   }
 }
+

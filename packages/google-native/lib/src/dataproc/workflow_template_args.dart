@@ -13,26 +13,19 @@ import 'workflow_template_placement.dart';
 class WorkflowTemplateArgs {
   /// Optional. Timeout duration for the DAG of jobs, expressed in seconds (see JSON representation of duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a managed cluster, the cluster is deleted.
   final pulumi.Input<String>? dagTimeout;
-
   /// Optional. Encryption settings for the encrypting customer core content.
-  final pulumi.Input<GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig>?
-      encryptionConfig;
+  final pulumi.Input<GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig>? encryptionConfig;
   final pulumi.Input<String>? id;
-
   /// The Directed Acyclic Graph of Jobs to submit.
   final pulumi.Input<List<OrderedJob>> jobs;
-
   /// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be associated with a template.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
-
   /// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
   final pulumi.Input<List<TemplateParameter>>? parameters;
-
   /// WorkflowTemplate scheduling information.
   final pulumi.Input<WorkflowTemplatePlacement> placement;
   final pulumi.Input<String>? project;
-
   /// Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
   final pulumi.Input<int>? version;
 
@@ -58,99 +51,46 @@ class WorkflowTemplateArgs {
     required WorkflowTemplatePlacement placement,
     String? project,
     int? version,
-  })  : dagTimeout = pulumi.Input.asOptionalInput<String>(dagTimeout),
-        encryptionConfig = pulumi.Input.asOptionalInput<
-                GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig>(
-            encryptionConfig),
-        id = pulumi.Input.asOptionalInput<String>(id),
-        jobs = pulumi.Input.asInput<List<OrderedJob>>(jobs),
-        labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-        location = pulumi.Input.asOptionalInput<String>(location),
-        parameters =
-            pulumi.Input.asOptionalInput<List<TemplateParameter>>(parameters),
-        placement = pulumi.Input.asInput<WorkflowTemplatePlacement>(placement),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        version = pulumi.Input.asOptionalInput<int>(version);
+  }) :
+      dagTimeout = pulumi.Input.asOptionalInput<String>(dagTimeout),
+      encryptionConfig = pulumi.Input.asOptionalInput<GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig>(encryptionConfig),
+      id = pulumi.Input.asOptionalInput<String>(id),
+      jobs = pulumi.Input.asInput<List<OrderedJob>>(jobs),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      parameters = pulumi.Input.asOptionalInput<List<TemplateParameter>>(parameters),
+      placement = pulumi.Input.asInput<WorkflowTemplatePlacement>(placement),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      version = pulumi.Input.asOptionalInput<int>(version);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dagTimeoutValue = dagTimeout;
-    if (dagTimeoutValue != null) {
-      map['dagTimeout'] = dagTimeoutValue;
-    }
-    final encryptionConfigValue = encryptionConfig;
-    if (encryptionConfigValue != null) {
-      map['encryptionConfig'] = pulumi.Input.mapOptionalInputValue<
-              GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig,
-              Map<String, dynamic>>(
-          encryptionConfigValue, (value) => value.toMap());
-    }
-    final idValue = id;
-    if (idValue != null) {
-      map['id'] = idValue;
-    }
-    map['jobs'] = pulumi.Input.mapInputValue<List<OrderedJob>,
-            List<Map<String, dynamic>>>(
-        jobs,
-        (value) => pulumi.Input.encodeList<OrderedJob, Map<String, dynamic>>(
-            value, (value) => value.toMap()));
-    final labelsValue = labels;
-    if (labelsValue != null) {
-      map['labels'] = labelsValue;
-    }
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    final parametersValue = parameters;
-    if (parametersValue != null) {
-      map['parameters'] = pulumi.Input.mapOptionalInputValue<
-              List<TemplateParameter>, List<Map<String, dynamic>>>(
-          parametersValue,
-          (value) =>
-              pulumi.Input.encodeList<TemplateParameter, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
-    }
-    map['placement'] = pulumi.Input.mapInputValue<WorkflowTemplatePlacement,
-        Map<String, dynamic>>(placement, (value) => value.toMap());
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final versionValue = version;
-    if (versionValue != null) {
-      map['version'] = versionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'dagTimeout': ?dagTimeout,
+      'encryptionConfig': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig, Map<String, dynamic>>(encryptionConfig, (value) => value.toMap()),
+      'id': ?id,
+      'jobs': pulumi.Input.mapInputValue<List<OrderedJob>, List<Map<String, dynamic>>>(jobs, (value) => pulumi.Input.encodeList<OrderedJob, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'labels': ?labels,
+      'location': ?location,
+      'parameters': ?pulumi.Input.mapOptionalInputValue<List<TemplateParameter>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<TemplateParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'placement': pulumi.Input.mapInputValue<WorkflowTemplatePlacement, Map<String, dynamic>>(placement, (value) => value.toMap()),
+      'project': ?project,
+      'version': ?version,
+    };
   }
 
   factory WorkflowTemplateArgs.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplateArgs(
-      dagTimeout:
-          map['dagTimeout'] == null ? null : map['dagTimeout'] as String,
-      encryptionConfig: map['encryptionConfig'] == null
-          ? null
-          : GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig.fromMap(
-              (map['encryptionConfig'] as Map).cast<String, dynamic>()),
+      dagTimeout: map['dagTimeout'] == null ? null : map['dagTimeout'] as String,
+      encryptionConfig: map['encryptionConfig'] == null ? null : GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>()),
       id: map['id'] == null ? null : map['id'] as String,
-      jobs: pulumi.Input.decodeList<OrderedJob>(
-          map['jobs'],
-          (value) =>
-              OrderedJob.fromMap((value as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      jobs: pulumi.Input.decodeList<OrderedJob>(map['jobs'], (value) => OrderedJob.fromMap((value as Map).cast<String, dynamic>())),
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       location: map['location'] == null ? null : map['location'] as String,
-      parameters: map['parameters'] == null
-          ? null
-          : pulumi.Input.decodeList<TemplateParameter>(
-              map['parameters'],
-              (value) => TemplateParameter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      placement: WorkflowTemplatePlacement.fromMap(
-          (map['placement'] as Map).cast<String, dynamic>()),
+      parameters: map['parameters'] == null ? null : pulumi.Input.decodeList<TemplateParameter>(map['parameters'], (value) => TemplateParameter.fromMap((value as Map).cast<String, dynamic>())),
+      placement: WorkflowTemplatePlacement.fromMap((map['placement'] as Map).cast<String, dynamic>()),
       project: map['project'] == null ? null : map['project'] as String,
       version: map['version'] == null ? null : map['version'] as int,
     );
   }
 }
+

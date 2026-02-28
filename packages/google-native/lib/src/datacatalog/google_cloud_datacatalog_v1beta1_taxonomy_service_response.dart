@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The source system of the Taxonomy.
 class GoogleCloudDatacatalogV1beta1TaxonomyServiceResponse {
   /// The service agent for the service.
   final String identity;
-
   /// The Google Cloud service name.
   final String name;
 
@@ -17,17 +17,17 @@ class GoogleCloudDatacatalogV1beta1TaxonomyServiceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['identity'] = identity;
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'identity': identity,
+      'name': name,
+    };
   }
 
-  factory GoogleCloudDatacatalogV1beta1TaxonomyServiceResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1beta1TaxonomyServiceResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1beta1TaxonomyServiceResponse(
       identity: map['identity'] as String,
       name: map['name'] as String,
     );
   }
 }
+

@@ -8,7 +8,6 @@ import 'grpc_route_method_match_response.dart';
 class GrpcRouteRouteMatchResponse {
   /// Optional. Specifies a collection of headers to match.
   final List<GrpcRouteHeaderMatchResponse> headers;
-
   /// Optional. A gRPC method to match against. If this field is empty or omitted, will match all methods.
   final GrpcRouteMethodMatchResponse method;
 
@@ -21,21 +20,17 @@ class GrpcRouteRouteMatchResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['headers'] = pulumi.Input.encodeList<GrpcRouteHeaderMatchResponse,
-        Map<String, dynamic>>(headers, (value) => value.toMap());
-    map['method'] = method.toMap();
-    return map;
+    return <String, dynamic>{
+      'headers': pulumi.Input.encodeList<GrpcRouteHeaderMatchResponse, Map<String, dynamic>>(headers, (value) => value.toMap()),
+      'method': method.toMap(),
+    };
   }
 
   factory GrpcRouteRouteMatchResponse.fromMap(Map<String, dynamic> map) {
     return GrpcRouteRouteMatchResponse(
-      headers: pulumi.Input.decodeList<GrpcRouteHeaderMatchResponse>(
-          map['headers'],
-          (value) => GrpcRouteHeaderMatchResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      method: GrpcRouteMethodMatchResponse.fromMap(
-          (map['method'] as Map).cast<String, dynamic>()),
+      headers: pulumi.Input.decodeList<GrpcRouteHeaderMatchResponse>(map['headers'], (value) => GrpcRouteHeaderMatchResponse.fromMap((value as Map).cast<String, dynamic>())),
+      method: GrpcRouteMethodMatchResponse.fromMap((map['method'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,21 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class StackSetOperationPreferences {
   /// The number of accounts, per Region, for which this operation can fail before AWS CloudFormation stops the operation in that Region.
   final int? failureToleranceCount;
-
   /// The percentage of accounts, per Region, for which this stack operation can fail before AWS CloudFormation stops the operation in that Region.
   final int? failureTolerancePercentage;
-
   /// The maximum number of accounts in which to perform this operation at one time.
   final int? maxConcurrentCount;
-
   /// The maximum percentage of accounts in which to perform this operation at one time.
   final int? maxConcurrentPercentage;
-
   /// The concurrency type of deploying StackSets operations in Regions, could be in parallel or one Region at a time.
   final String? regionConcurrencyType;
-
   /// The order of the Regions in where you want to perform the stack operation.
   final List<String>? regionOrders;
 
@@ -36,54 +32,25 @@ class StackSetOperationPreferences {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final failureToleranceCountValue = failureToleranceCount;
-    if (failureToleranceCountValue != null) {
-      map['failureToleranceCount'] = failureToleranceCountValue;
-    }
-    final failureTolerancePercentageValue = failureTolerancePercentage;
-    if (failureTolerancePercentageValue != null) {
-      map['failureTolerancePercentage'] = failureTolerancePercentageValue;
-    }
-    final maxConcurrentCountValue = maxConcurrentCount;
-    if (maxConcurrentCountValue != null) {
-      map['maxConcurrentCount'] = maxConcurrentCountValue;
-    }
-    final maxConcurrentPercentageValue = maxConcurrentPercentage;
-    if (maxConcurrentPercentageValue != null) {
-      map['maxConcurrentPercentage'] = maxConcurrentPercentageValue;
-    }
-    final regionConcurrencyTypeValue = regionConcurrencyType;
-    if (regionConcurrencyTypeValue != null) {
-      map['regionConcurrencyType'] = regionConcurrencyTypeValue;
-    }
-    final regionOrdersValue = regionOrders;
-    if (regionOrdersValue != null) {
-      map['regionOrders'] = regionOrdersValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'failureToleranceCount': ?failureToleranceCount,
+      'failureTolerancePercentage': ?failureTolerancePercentage,
+      'maxConcurrentCount': ?maxConcurrentCount,
+      'maxConcurrentPercentage': ?maxConcurrentPercentage,
+      'regionConcurrencyType': ?regionConcurrencyType,
+      'regionOrders': ?regionOrders,
+    };
   }
 
   factory StackSetOperationPreferences.fromMap(Map<String, dynamic> map) {
     return StackSetOperationPreferences(
-      failureToleranceCount: map['failureToleranceCount'] == null
-          ? null
-          : map['failureToleranceCount'] as int,
-      failureTolerancePercentage: map['failureTolerancePercentage'] == null
-          ? null
-          : map['failureTolerancePercentage'] as int,
-      maxConcurrentCount: map['maxConcurrentCount'] == null
-          ? null
-          : map['maxConcurrentCount'] as int,
-      maxConcurrentPercentage: map['maxConcurrentPercentage'] == null
-          ? null
-          : map['maxConcurrentPercentage'] as int,
-      regionConcurrencyType: map['regionConcurrencyType'] == null
-          ? null
-          : map['regionConcurrencyType'] as String,
-      regionOrders: map['regionOrders'] == null
-          ? null
-          : (map['regionOrders'] as List).cast<String>(),
+      failureToleranceCount: map['failureToleranceCount'] == null ? null : map['failureToleranceCount'] as int,
+      failureTolerancePercentage: map['failureTolerancePercentage'] == null ? null : map['failureTolerancePercentage'] as int,
+      maxConcurrentCount: map['maxConcurrentCount'] == null ? null : map['maxConcurrentCount'] as int,
+      maxConcurrentPercentage: map['maxConcurrentPercentage'] == null ? null : map['maxConcurrentPercentage'] as int,
+      regionConcurrencyType: map['regionConcurrencyType'] == null ? null : map['regionConcurrencyType'] as String,
+      regionOrders: map['regionOrders'] == null ? null : (map['regionOrders'] as List).cast<String>(),
     );
   }
 }
+

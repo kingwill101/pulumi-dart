@@ -6,7 +6,6 @@ import 'secret_response.dart';
 class UserPasswordResponse {
   /// Secret version reference containing the password.
   final SecretResponse password;
-
   /// Username.
   final String username;
 
@@ -19,17 +18,17 @@ class UserPasswordResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['password'] = password.toMap();
-    map['username'] = username;
-    return map;
+    return <String, dynamic>{
+      'password': password.toMap(),
+      'username': username,
+    };
   }
 
   factory UserPasswordResponse.fromMap(Map<String, dynamic> map) {
     return UserPasswordResponse(
-      password: SecretResponse.fromMap(
-          (map['password'] as Map).cast<String, dynamic>()),
+      password: SecretResponse.fromMap((map['password'] as Map).cast<String, dynamic>()),
       username: map['username'] as String,
     );
   }
 }
+

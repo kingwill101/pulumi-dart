@@ -9,7 +9,6 @@ class PrincipalAccessBoundaryPolicyDetails {
   /// PAB policy version will be set to the current latest version, and this version
   /// won't get updated when new versions are released.
   final String? enforcementVersion;
-
   /// A list of principal access boundary policy rules. The number of rules in a policy is limited to 500.
   /// Structure is documented below.
   final List<PrincipalAccessBoundaryPolicyDetailsRule> rules;
@@ -23,27 +22,17 @@ class PrincipalAccessBoundaryPolicyDetails {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enforcementVersionValue = enforcementVersion;
-    if (enforcementVersionValue != null) {
-      map['enforcementVersion'] = enforcementVersionValue;
-    }
-    map['rules'] = pulumi.Input.encodeList<
-        PrincipalAccessBoundaryPolicyDetailsRule,
-        Map<String, dynamic>>(rules, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'enforcementVersion': ?enforcementVersion,
+      'rules': pulumi.Input.encodeList<PrincipalAccessBoundaryPolicyDetailsRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
+    };
   }
 
-  factory PrincipalAccessBoundaryPolicyDetails.fromMap(
-      Map<String, dynamic> map) {
+  factory PrincipalAccessBoundaryPolicyDetails.fromMap(Map<String, dynamic> map) {
     return PrincipalAccessBoundaryPolicyDetails(
-      enforcementVersion: map['enforcementVersion'] == null
-          ? null
-          : map['enforcementVersion'] as String,
-      rules: pulumi.Input.decodeList<PrincipalAccessBoundaryPolicyDetailsRule>(
-          map['rules'],
-          (value) => PrincipalAccessBoundaryPolicyDetailsRule.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      enforcementVersion: map['enforcementVersion'] == null ? null : map['enforcementVersion'] as String,
+      rules: pulumi.Input.decodeList<PrincipalAccessBoundaryPolicyDetailsRule>(map['rules'], (value) => PrincipalAccessBoundaryPolicyDetailsRule.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

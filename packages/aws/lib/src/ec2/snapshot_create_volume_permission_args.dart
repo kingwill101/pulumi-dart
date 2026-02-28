@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SnapshotCreateVolumePermissionArgs {
   /// An AWS Account ID to add create volume permissions. The AWS Account cannot be the snapshot's owner
   final pulumi.Input<String> accountId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// A snapshot ID
   final pulumi.Input<String> snapshotId;
 
@@ -24,19 +22,17 @@ class SnapshotCreateVolumePermissionArgs {
     required String accountId,
     String? region,
     required String snapshotId,
-  })  : accountId = pulumi.Input.asInput<String>(accountId),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        snapshotId = pulumi.Input.asInput<String>(snapshotId);
+  }) :
+      accountId = pulumi.Input.asInput<String>(accountId),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      snapshotId = pulumi.Input.asInput<String>(snapshotId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accountId'] = accountId;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['snapshotId'] = snapshotId;
-    return map;
+    return <String, dynamic>{
+      'accountId': accountId,
+      'region': ?region,
+      'snapshotId': snapshotId,
+    };
   }
 
   factory SnapshotCreateVolumePermissionArgs.fromMap(Map<String, dynamic> map) {
@@ -47,3 +43,4 @@ class SnapshotCreateVolumePermissionArgs {
     );
   }
 }
+

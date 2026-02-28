@@ -9,7 +9,6 @@ import 'get_service_traffic.dart';
 /// Result data returned by getService.
 class GetServiceResult {
   final bool autogenerateRevisionName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
@@ -43,28 +42,17 @@ class GetServiceResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['autogenerateRevisionName'] = autogenerateRevisionName;
-    map['id'] = id;
-    map['location'] = location;
-    map['metadatas'] =
-        pulumi.Input.encodeList<GetServiceMetadata, Map<String, dynamic>>(
-            metadatas, (value) => value.toMap());
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['statuses'] =
-        pulumi.Input.encodeList<GetServiceStatus, Map<String, dynamic>>(
-            statuses, (value) => value.toMap());
-    map['templates'] =
-        pulumi.Input.encodeList<GetServiceTemplate, Map<String, dynamic>>(
-            templates, (value) => value.toMap());
-    map['traffics'] =
-        pulumi.Input.encodeList<GetServiceTraffic, Map<String, dynamic>>(
-            traffics, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'autogenerateRevisionName': autogenerateRevisionName,
+      'id': id,
+      'location': location,
+      'metadatas': pulumi.Input.encodeList<GetServiceMetadata, Map<String, dynamic>>(metadatas, (value) => value.toMap()),
+      'name': name,
+      'project': ?project,
+      'statuses': pulumi.Input.encodeList<GetServiceStatus, Map<String, dynamic>>(statuses, (value) => value.toMap()),
+      'templates': pulumi.Input.encodeList<GetServiceTemplate, Map<String, dynamic>>(templates, (value) => value.toMap()),
+      'traffics': pulumi.Input.encodeList<GetServiceTraffic, Map<String, dynamic>>(traffics, (value) => value.toMap()),
+    };
   }
 
   factory GetServiceResult.fromMap(Map<String, dynamic> map) {
@@ -72,24 +60,13 @@ class GetServiceResult {
       autogenerateRevisionName: map['autogenerateRevisionName'] as bool,
       id: map['id'] as String,
       location: map['location'] as String,
-      metadatas: pulumi.Input.decodeList<GetServiceMetadata>(
-          map['metadatas'],
-          (value) => GetServiceMetadata.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      metadatas: pulumi.Input.decodeList<GetServiceMetadata>(map['metadatas'], (value) => GetServiceMetadata.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      statuses: pulumi.Input.decodeList<GetServiceStatus>(
-          map['statuses'],
-          (value) =>
-              GetServiceStatus.fromMap((value as Map).cast<String, dynamic>())),
-      templates: pulumi.Input.decodeList<GetServiceTemplate>(
-          map['templates'],
-          (value) => GetServiceTemplate.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      traffics: pulumi.Input.decodeList<GetServiceTraffic>(
-          map['traffics'],
-          (value) => GetServiceTraffic.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      statuses: pulumi.Input.decodeList<GetServiceStatus>(map['statuses'], (value) => GetServiceStatus.fromMap((value as Map).cast<String, dynamic>())),
+      templates: pulumi.Input.decodeList<GetServiceTemplate>(map['templates'], (value) => GetServiceTemplate.fromMap((value as Map).cast<String, dynamic>())),
+      traffics: pulumi.Input.decodeList<GetServiceTraffic>(map['traffics'], (value) => GetServiceTraffic.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

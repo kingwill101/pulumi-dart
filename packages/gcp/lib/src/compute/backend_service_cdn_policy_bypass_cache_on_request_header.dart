@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BackendServiceCdnPolicyBypassCacheOnRequestHeader {
   /// The header field name to match on when bypassing cache. Values are case-insensitive.
   final String headerName;
@@ -11,15 +12,15 @@ class BackendServiceCdnPolicyBypassCacheOnRequestHeader {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['headerName'] = headerName;
-    return map;
+    return <String, dynamic>{
+      'headerName': headerName,
+    };
   }
 
-  factory BackendServiceCdnPolicyBypassCacheOnRequestHeader.fromMap(
-      Map<String, dynamic> map) {
+  factory BackendServiceCdnPolicyBypassCacheOnRequestHeader.fromMap(Map<String, dynamic> map) {
     return BackendServiceCdnPolicyBypassCacheOnRequestHeader(
       headerName: map['headerName'] as String,
     );
   }
 }
+

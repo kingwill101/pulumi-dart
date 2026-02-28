@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AwsClusterControlPlaneConfigEncryption {
   /// The ARN of the AWS KMS key used to encrypt cluster configuration.
   final String kmsKeyArn;
@@ -11,15 +12,15 @@ class AwsClusterControlPlaneConfigEncryption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kmsKeyArn'] = kmsKeyArn;
-    return map;
+    return <String, dynamic>{
+      'kmsKeyArn': kmsKeyArn,
+    };
   }
 
-  factory AwsClusterControlPlaneConfigEncryption.fromMap(
-      Map<String, dynamic> map) {
+  factory AwsClusterControlPlaneConfigEncryption.fromMap(Map<String, dynamic> map) {
     return AwsClusterControlPlaneConfigEncryption(
       kmsKeyArn: map['kmsKeyArn'] as String,
     );
   }
 }
+

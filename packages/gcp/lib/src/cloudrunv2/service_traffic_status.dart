@@ -1,22 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ServiceTrafficStatus {
   /// (Output)
   /// Specifies percent of the traffic to this Revision.
   final int? percent;
-
   /// (Output)
   /// Revision to which this traffic is sent.
   final String? revision;
-
   /// (Output)
   /// Indicates the string used in the URI to exclusively reference this target.
   final String? tag;
-
   /// (Output)
   /// The allocation type for this traffic target.
   final String? type;
-
   /// (Output)
   /// Displays the target URI.
   final String? uri;
@@ -36,28 +33,13 @@ class ServiceTrafficStatus {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final percentValue = percent;
-    if (percentValue != null) {
-      map['percent'] = percentValue;
-    }
-    final revisionValue = revision;
-    if (revisionValue != null) {
-      map['revision'] = revisionValue;
-    }
-    final tagValue = tag;
-    if (tagValue != null) {
-      map['tag'] = tagValue;
-    }
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue;
-    }
-    final uriValue = uri;
-    if (uriValue != null) {
-      map['uri'] = uriValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'percent': ?percent,
+      'revision': ?revision,
+      'tag': ?tag,
+      'type': ?type,
+      'uri': ?uri,
+    };
   }
 
   factory ServiceTrafficStatus.fromMap(Map<String, dynamic> map) {
@@ -70,3 +52,4 @@ class ServiceTrafficStatus {
     );
   }
 }
+

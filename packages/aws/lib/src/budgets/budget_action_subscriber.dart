@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BudgetActionSubscriber {
   /// The address that AWS sends budget notifications to, either an SNS topic or an email.
   final String address;
-
   /// The type of notification that AWS sends to a subscriber. Valid values are `SNS` or `EMAIL`.
   final String subscriptionType;
 
@@ -16,10 +16,10 @@ class BudgetActionSubscriber {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['address'] = address;
-    map['subscriptionType'] = subscriptionType;
-    return map;
+    return <String, dynamic>{
+      'address': address,
+      'subscriptionType': subscriptionType,
+    };
   }
 
   factory BudgetActionSubscriber.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class BudgetActionSubscriber {
     );
   }
 }
+

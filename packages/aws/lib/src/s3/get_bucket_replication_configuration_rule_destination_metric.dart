@@ -4,9 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_bucket_replication_configuration_rule_destination_metric_event_threshold.dart';
 
 class GetBucketReplicationConfigurationRuleDestinationMetric {
-  final List<
-          GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold>
-      eventThresholds;
+  final List<GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold> eventThresholds;
   final String status;
 
   /// Creates a new [GetBucketReplicationConfigurationRuleDestinationMetric].
@@ -18,24 +16,17 @@ class GetBucketReplicationConfigurationRuleDestinationMetric {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['eventThresholds'] = pulumi.Input.encodeList<
-        GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold,
-        Map<String, dynamic>>(eventThresholds, (value) => value.toMap());
-    map['status'] = status;
-    return map;
+    return <String, dynamic>{
+      'eventThresholds': pulumi.Input.encodeList<GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold, Map<String, dynamic>>(eventThresholds, (value) => value.toMap()),
+      'status': status,
+    };
   }
 
-  factory GetBucketReplicationConfigurationRuleDestinationMetric.fromMap(
-      Map<String, dynamic> map) {
+  factory GetBucketReplicationConfigurationRuleDestinationMetric.fromMap(Map<String, dynamic> map) {
     return GetBucketReplicationConfigurationRuleDestinationMetric(
-      eventThresholds: pulumi.Input.decodeList<
-              GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold>(
-          map['eventThresholds'],
-          (value) =>
-              GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      eventThresholds: pulumi.Input.decodeList<GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold>(map['eventThresholds'], (value) => GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold.fromMap((value as Map).cast<String, dynamic>())),
       status: map['status'] as String,
     );
   }
 }
+

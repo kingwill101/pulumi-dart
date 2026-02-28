@@ -25,23 +25,21 @@ class GetCloneJobArgs {
     required String migratingVmId,
     String? project,
     required String sourceId,
-  })  : cloneJobId = pulumi.Input.asInput<String>(cloneJobId),
-        location = pulumi.Input.asInput<String>(location),
-        migratingVmId = pulumi.Input.asInput<String>(migratingVmId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        sourceId = pulumi.Input.asInput<String>(sourceId);
+  }) :
+      cloneJobId = pulumi.Input.asInput<String>(cloneJobId),
+      location = pulumi.Input.asInput<String>(location),
+      migratingVmId = pulumi.Input.asInput<String>(migratingVmId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      sourceId = pulumi.Input.asInput<String>(sourceId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cloneJobId'] = cloneJobId;
-    map['location'] = location;
-    map['migratingVmId'] = migratingVmId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['sourceId'] = sourceId;
-    return map;
+    return <String, dynamic>{
+      'cloneJobId': cloneJobId,
+      'location': location,
+      'migratingVmId': migratingVmId,
+      'project': ?project,
+      'sourceId': sourceId,
+    };
   }
 
   factory GetCloneJobArgs.fromMap(Map<String, dynamic> map) {
@@ -54,3 +52,4 @@ class GetCloneJobArgs {
     );
   }
 }
+

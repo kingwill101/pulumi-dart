@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NodeTemplateNodeTypeFlexibilityResponse {
   final String cpus;
   final String localSsd;
@@ -16,15 +17,14 @@ class NodeTemplateNodeTypeFlexibilityResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cpus'] = cpus;
-    map['localSsd'] = localSsd;
-    map['memory'] = memory;
-    return map;
+    return <String, dynamic>{
+      'cpus': cpus,
+      'localSsd': localSsd,
+      'memory': memory,
+    };
   }
 
-  factory NodeTemplateNodeTypeFlexibilityResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory NodeTemplateNodeTypeFlexibilityResponse.fromMap(Map<String, dynamic> map) {
     return NodeTemplateNodeTypeFlexibilityResponse(
       cpus: map['cpus'] as String,
       localSsd: map['localSsd'] as String,
@@ -32,3 +32,4 @@ class NodeTemplateNodeTypeFlexibilityResponse {
     );
   }
 }
+

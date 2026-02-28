@@ -233,19 +233,14 @@ import 'event_rule_args.dart';
 class EventRule extends pulumi.CustomResource {
   /// ARN of the Event Rule.
   late final pulumi.Output<String> arn;
-
   /// JSON string defining the event pattern to match. Maximum length is 4096 characters.
   late final pulumi.Output<String?> eventPattern;
-
   /// Type of event to match. Must be between 1 and 128 characters, and match the pattern `([a-zA-Z0-9 \-\(\)])+`.
   late final pulumi.Output<String> eventType;
-
   /// ARN of the notification configuration to associate with this event rule. Must match the pattern `arn:aws:notifications::[0-9]{12}:configuration/[a-z0-9]{27}`.
   late final pulumi.Output<String> notificationConfigurationArn;
-
   /// Set of AWS regions where the event rule will be applied. Each region must be between 2 and 25 characters, and match the pattern `([a-z]{1,2})-([a-z]{1,15}-)+([0-9])`.
   late final pulumi.Output<List<String>> regions;
-
   /// Source of the event. Must be between 1 and 36 characters, and match the pattern `aws.([a-z0-9\-])+`.
   ///
   /// The following arguments are optional:
@@ -268,8 +263,7 @@ class EventRule extends pulumi.CustomResource {
     this.arn = registerOutput<String>('arn');
     this.eventPattern = registerOutput<String?>('eventPattern');
     this.eventType = registerOutput<String>('eventType');
-    this.notificationConfigurationArn =
-        registerOutput<String>('notificationConfigurationArn');
+    this.notificationConfigurationArn = registerOutput<String>('notificationConfigurationArn');
     this.regions = registerOutput<List<String>>('regions');
     this.source = registerOutput<String>('source');
   }

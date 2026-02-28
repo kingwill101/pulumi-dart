@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// ReleaseChannel indicates which release channel a cluster is subscribed to. Release channels are arranged in order of risk. When a cluster is subscribed to a release channel, Google maintains both the master version and the node version. Node auto-upgrade defaults to true and cannot be disabled.
 class ReleaseChannelResponseContainerV1beta1 {
   /// channel specifies which release channel the cluster is subscribed to.
@@ -12,15 +13,15 @@ class ReleaseChannelResponseContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['channel'] = channel;
-    return map;
+    return <String, dynamic>{
+      'channel': channel,
+    };
   }
 
-  factory ReleaseChannelResponseContainerV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory ReleaseChannelResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return ReleaseChannelResponseContainerV1beta1(
       channel: map['channel'] as String,
     );
   }
 }
+

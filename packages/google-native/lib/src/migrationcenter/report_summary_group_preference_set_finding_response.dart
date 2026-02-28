@@ -10,37 +10,26 @@ import 'virtual_machine_preferences_response.dart';
 class ReportSummaryGroupPreferenceSetFindingResponse {
   /// A set of findings that applies to Compute Engine machines in the input.
   final ReportSummaryComputeEngineFindingResponse computeEngineFinding;
-
   /// Description for the Preference Set.
   final String description;
-
   /// Display Name of the Preference Set
   final String displayName;
-
   /// A set of preferences that applies to all machines in the context.
   final VirtualMachinePreferencesResponse machinePreferences;
-
   /// Compute monthly cost for this preference set.
   final MoneyResponse monthlyCostCompute;
-
   /// Network Egress monthly cost for this preference set.
   final MoneyResponse monthlyCostNetworkEgress;
-
   /// Licensing monthly cost for this preference set.
   final MoneyResponse monthlyCostOsLicense;
-
   /// Miscellaneous monthly cost for this preference set.
   final MoneyResponse monthlyCostOther;
-
   /// Storage monthly cost for this preference set.
   final MoneyResponse monthlyCostStorage;
-
   /// Total monthly cost for this preference set.
   final MoneyResponse monthlyCostTotal;
-
   /// A set of findings that applies to Sole-Tenant machines in the input.
   final ReportSummarySoleTenantFindingResponse soleTenantFinding;
-
   /// A set of findings that applies to VMWare machines in the input.
   final ReportSummaryVmwareEngineFindingResponse vmwareEngineFinding;
 
@@ -73,47 +62,37 @@ class ReportSummaryGroupPreferenceSetFindingResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['computeEngineFinding'] = computeEngineFinding.toMap();
-    map['description'] = description;
-    map['displayName'] = displayName;
-    map['machinePreferences'] = machinePreferences.toMap();
-    map['monthlyCostCompute'] = monthlyCostCompute.toMap();
-    map['monthlyCostNetworkEgress'] = monthlyCostNetworkEgress.toMap();
-    map['monthlyCostOsLicense'] = monthlyCostOsLicense.toMap();
-    map['monthlyCostOther'] = monthlyCostOther.toMap();
-    map['monthlyCostStorage'] = monthlyCostStorage.toMap();
-    map['monthlyCostTotal'] = monthlyCostTotal.toMap();
-    map['soleTenantFinding'] = soleTenantFinding.toMap();
-    map['vmwareEngineFinding'] = vmwareEngineFinding.toMap();
-    return map;
+    return <String, dynamic>{
+      'computeEngineFinding': computeEngineFinding.toMap(),
+      'description': description,
+      'displayName': displayName,
+      'machinePreferences': machinePreferences.toMap(),
+      'monthlyCostCompute': monthlyCostCompute.toMap(),
+      'monthlyCostNetworkEgress': monthlyCostNetworkEgress.toMap(),
+      'monthlyCostOsLicense': monthlyCostOsLicense.toMap(),
+      'monthlyCostOther': monthlyCostOther.toMap(),
+      'monthlyCostStorage': monthlyCostStorage.toMap(),
+      'monthlyCostTotal': monthlyCostTotal.toMap(),
+      'soleTenantFinding': soleTenantFinding.toMap(),
+      'vmwareEngineFinding': vmwareEngineFinding.toMap(),
+    };
   }
 
-  factory ReportSummaryGroupPreferenceSetFindingResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory ReportSummaryGroupPreferenceSetFindingResponse.fromMap(Map<String, dynamic> map) {
     return ReportSummaryGroupPreferenceSetFindingResponse(
-      computeEngineFinding: ReportSummaryComputeEngineFindingResponse.fromMap(
-          (map['computeEngineFinding'] as Map).cast<String, dynamic>()),
+      computeEngineFinding: ReportSummaryComputeEngineFindingResponse.fromMap((map['computeEngineFinding'] as Map).cast<String, dynamic>()),
       description: map['description'] as String,
       displayName: map['displayName'] as String,
-      machinePreferences: VirtualMachinePreferencesResponse.fromMap(
-          (map['machinePreferences'] as Map).cast<String, dynamic>()),
-      monthlyCostCompute: MoneyResponse.fromMap(
-          (map['monthlyCostCompute'] as Map).cast<String, dynamic>()),
-      monthlyCostNetworkEgress: MoneyResponse.fromMap(
-          (map['monthlyCostNetworkEgress'] as Map).cast<String, dynamic>()),
-      monthlyCostOsLicense: MoneyResponse.fromMap(
-          (map['monthlyCostOsLicense'] as Map).cast<String, dynamic>()),
-      monthlyCostOther: MoneyResponse.fromMap(
-          (map['monthlyCostOther'] as Map).cast<String, dynamic>()),
-      monthlyCostStorage: MoneyResponse.fromMap(
-          (map['monthlyCostStorage'] as Map).cast<String, dynamic>()),
-      monthlyCostTotal: MoneyResponse.fromMap(
-          (map['monthlyCostTotal'] as Map).cast<String, dynamic>()),
-      soleTenantFinding: ReportSummarySoleTenantFindingResponse.fromMap(
-          (map['soleTenantFinding'] as Map).cast<String, dynamic>()),
-      vmwareEngineFinding: ReportSummaryVmwareEngineFindingResponse.fromMap(
-          (map['vmwareEngineFinding'] as Map).cast<String, dynamic>()),
+      machinePreferences: VirtualMachinePreferencesResponse.fromMap((map['machinePreferences'] as Map).cast<String, dynamic>()),
+      monthlyCostCompute: MoneyResponse.fromMap((map['monthlyCostCompute'] as Map).cast<String, dynamic>()),
+      monthlyCostNetworkEgress: MoneyResponse.fromMap((map['monthlyCostNetworkEgress'] as Map).cast<String, dynamic>()),
+      monthlyCostOsLicense: MoneyResponse.fromMap((map['monthlyCostOsLicense'] as Map).cast<String, dynamic>()),
+      monthlyCostOther: MoneyResponse.fromMap((map['monthlyCostOther'] as Map).cast<String, dynamic>()),
+      monthlyCostStorage: MoneyResponse.fromMap((map['monthlyCostStorage'] as Map).cast<String, dynamic>()),
+      monthlyCostTotal: MoneyResponse.fromMap((map['monthlyCostTotal'] as Map).cast<String, dynamic>()),
+      soleTenantFinding: ReportSummarySoleTenantFindingResponse.fromMap((map['soleTenantFinding'] as Map).cast<String, dynamic>()),
+      vmwareEngineFinding: ReportSummaryVmwareEngineFindingResponse.fromMap((map['vmwareEngineFinding'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

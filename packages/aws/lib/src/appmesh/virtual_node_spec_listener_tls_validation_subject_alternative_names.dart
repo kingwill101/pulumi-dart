@@ -13,16 +13,15 @@ class VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['match'] = match.toMap();
-    return map;
+    return <String, dynamic>{
+      'match': match.toMap(),
+    };
   }
 
-  factory VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames.fromMap(
-      Map<String, dynamic> map) {
+  factory VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames(
-      match: VirtualNodeSpecListenerTlsValidationSubjectAlternativeNamesMatch
-          .fromMap((map['match'] as Map).cast<String, dynamic>()),
+      match: VirtualNodeSpecListenerTlsValidationSubjectAlternativeNamesMatch.fromMap((map['match'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

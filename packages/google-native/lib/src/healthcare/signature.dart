@@ -6,13 +6,10 @@ import 'image.dart';
 class Signature {
   /// Optional. An image of the user's signature.
   final Image? image;
-
   /// Optional. Metadata associated with the user's signature. For example, the user's name or the user's title.
   final Map<String, String>? metadata;
-
   /// Optional. Timestamp of the signature.
   final String? signatureTime;
-
   /// User's UUID provided by the client.
   final String userId;
 
@@ -29,34 +26,21 @@ class Signature {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final imageValue = image;
-    if (imageValue != null) {
-      map['image'] = imageValue.toMap();
-    }
-    final metadataValue = metadata;
-    if (metadataValue != null) {
-      map['metadata'] = metadataValue;
-    }
-    final signatureTimeValue = signatureTime;
-    if (signatureTimeValue != null) {
-      map['signatureTime'] = signatureTimeValue;
-    }
-    map['userId'] = userId;
-    return map;
+    return <String, dynamic>{
+      'image': ?image == null ? null : image!.toMap(),
+      'metadata': ?metadata,
+      'signatureTime': ?signatureTime,
+      'userId': userId,
+    };
   }
 
   factory Signature.fromMap(Map<String, dynamic> map) {
     return Signature(
-      image: map['image'] == null
-          ? null
-          : Image.fromMap((map['image'] as Map).cast<String, dynamic>()),
-      metadata: map['metadata'] == null
-          ? null
-          : (map['metadata'] as Map).cast<String, String>(),
-      signatureTime:
-          map['signatureTime'] == null ? null : map['signatureTime'] as String,
+      image: map['image'] == null ? null : Image.fromMap((map['image'] as Map).cast<String, dynamic>()),
+      metadata: map['metadata'] == null ? null : (map['metadata'] as Map).cast<String, String>(),
+      signatureTime: map['signatureTime'] == null ? null : map['signatureTime'] as String,
       userId: map['userId'] as String,
     );
   }
 }
+

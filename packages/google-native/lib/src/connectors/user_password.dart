@@ -6,7 +6,6 @@ import 'secret.dart';
 class UserPassword {
   /// Secret version reference containing the password.
   final Secret? password;
-
   /// Username.
   final String? username;
 
@@ -19,24 +18,17 @@ class UserPassword {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final passwordValue = password;
-    if (passwordValue != null) {
-      map['password'] = passwordValue.toMap();
-    }
-    final usernameValue = username;
-    if (usernameValue != null) {
-      map['username'] = usernameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'password': ?password == null ? null : password!.toMap(),
+      'username': ?username,
+    };
   }
 
   factory UserPassword.fromMap(Map<String, dynamic> map) {
     return UserPassword(
-      password: map['password'] == null
-          ? null
-          : Secret.fromMap((map['password'] as Map).cast<String, dynamic>()),
+      password: map['password'] == null ? null : Secret.fromMap((map['password'] as Map).cast<String, dynamic>()),
       username: map['username'] == null ? null : map['username'] as String,
     );
   }
 }
+

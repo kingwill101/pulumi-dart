@@ -1,25 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRepository.
 class GetRepositoryResult {
   /// Allows clients to store small amounts of arbitrary data.
   final Map<String, String> annotations;
-
   /// Server assigned timestamp for when the connection was created.
   final String createTime;
-
   /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
   final String etag;
-
   /// Immutable. Resource name of the repository, in the format `projects/*/locations/*/connections/*/repositories/*`.
   final String name;
-
   /// Git Clone HTTPS URI.
   final String remoteUri;
-
   /// Server assigned timestamp for when the connection was updated.
   final String updateTime;
-
   /// External ID of the webhook created for the repository.
   final String webhookId;
 
@@ -42,15 +37,15 @@ class GetRepositoryResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['annotations'] = annotations;
-    map['createTime'] = createTime;
-    map['etag'] = etag;
-    map['name'] = name;
-    map['remoteUri'] = remoteUri;
-    map['updateTime'] = updateTime;
-    map['webhookId'] = webhookId;
-    return map;
+    return <String, dynamic>{
+      'annotations': annotations,
+      'createTime': createTime,
+      'etag': etag,
+      'name': name,
+      'remoteUri': remoteUri,
+      'updateTime': updateTime,
+      'webhookId': webhookId,
+    };
   }
 
   factory GetRepositoryResult.fromMap(Map<String, dynamic> map) {
@@ -65,3 +60,4 @@ class GetRepositoryResult {
     );
   }
 }
+

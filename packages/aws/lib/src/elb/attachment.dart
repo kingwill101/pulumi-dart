@@ -113,10 +113,8 @@ import 'attachment_args.dart';
 class Attachment extends pulumi.CustomResource {
   /// The name of the ELB.
   late final pulumi.Output<String> elb;
-
   /// Instance ID to place in the ELB pool.
   late final pulumi.Output<String> instance;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

@@ -6,25 +6,18 @@ import 'google_cloud_dialogflow_cx_v3beta1_barge_in_config_response.dart';
 class GoogleCloudDialogflowCxV3beta1InputAudioConfigResponse {
   /// Audio encoding of the audio content to process.
   final String audioEncoding;
-
   /// Configuration of barge-in behavior during the streaming of input audio.
   final GoogleCloudDialogflowCxV3beta1BargeInConfigResponse bargeInConfig;
-
   /// Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words, e.g. start and end time offsets. If false or unspecified, Speech doesn't return any word-level information.
   final bool enableWordInfo;
-
   /// Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you specify a model, the following models typically have the best performance: - phone_call (best for Agent Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search (best for very short utterances and commands)
   final String model;
-
   /// Optional. Which variant of the Speech model to use.
   final String modelVariant;
-
   /// Optional. A list of strings containing words and phrases that the speech recognizer should recognize with higher likelihood. See [the Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints) for more details.
   final List<String> phraseHints;
-
   /// Sample rate (in Hertz) of the audio content sent in the query. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics) for more details.
   final int sampleRateHertz;
-
   /// Optional. If `false` (default), recognition does not cease until the client closes the stream. If `true`, the recognizer will detect a single spoken utterance in input audio. Recognition ceases when it detects the audio's voice has stopped or paused. In this case, once a detected intent is received, the client should close the stream and start a new request with a new stream as needed. Note: This setting is relevant only for streaming methods.
   final bool singleUtterance;
 
@@ -49,25 +42,22 @@ class GoogleCloudDialogflowCxV3beta1InputAudioConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['audioEncoding'] = audioEncoding;
-    map['bargeInConfig'] = bargeInConfig.toMap();
-    map['enableWordInfo'] = enableWordInfo;
-    map['model'] = model;
-    map['modelVariant'] = modelVariant;
-    map['phraseHints'] = phraseHints;
-    map['sampleRateHertz'] = sampleRateHertz;
-    map['singleUtterance'] = singleUtterance;
-    return map;
+    return <String, dynamic>{
+      'audioEncoding': audioEncoding,
+      'bargeInConfig': bargeInConfig.toMap(),
+      'enableWordInfo': enableWordInfo,
+      'model': model,
+      'modelVariant': modelVariant,
+      'phraseHints': phraseHints,
+      'sampleRateHertz': sampleRateHertz,
+      'singleUtterance': singleUtterance,
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1InputAudioConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1InputAudioConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1InputAudioConfigResponse(
       audioEncoding: map['audioEncoding'] as String,
-      bargeInConfig:
-          GoogleCloudDialogflowCxV3beta1BargeInConfigResponse.fromMap(
-              (map['bargeInConfig'] as Map).cast<String, dynamic>()),
+      bargeInConfig: GoogleCloudDialogflowCxV3beta1BargeInConfigResponse.fromMap((map['bargeInConfig'] as Map).cast<String, dynamic>()),
       enableWordInfo: map['enableWordInfo'] as bool,
       model: map['model'] as String,
       modelVariant: map['modelVariant'] as String,
@@ -77,3 +67,4 @@ class GoogleCloudDialogflowCxV3beta1InputAudioConfigResponse {
     );
   }
 }
+

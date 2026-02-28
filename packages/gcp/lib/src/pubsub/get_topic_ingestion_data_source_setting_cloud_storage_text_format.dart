@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTopicIngestionDataSourceSettingCloudStorageTextFormat {
   /// The delimiter to use when using the 'text' format. Each line of text as
   /// specified by the delimiter will be set to the 'data' field of a Pub/Sub
@@ -13,15 +14,15 @@ class GetTopicIngestionDataSourceSettingCloudStorageTextFormat {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['delimiter'] = delimiter;
-    return map;
+    return <String, dynamic>{
+      'delimiter': delimiter,
+    };
   }
 
-  factory GetTopicIngestionDataSourceSettingCloudStorageTextFormat.fromMap(
-      Map<String, dynamic> map) {
+  factory GetTopicIngestionDataSourceSettingCloudStorageTextFormat.fromMap(Map<String, dynamic> map) {
     return GetTopicIngestionDataSourceSettingCloudStorageTextFormat(
       delimiter: map['delimiter'] as String,
     );
   }
 }
+

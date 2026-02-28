@@ -5,9 +5,7 @@ import 'cluster_node_pool_node_config_containerd_config_registry_host_host_clien
 
 class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClient {
   /// Configures the client certificate.
-  final ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientCert
-      cert;
-
+  final ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientCert cert;
   /// Configures the client private key.
   final ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientKey? key;
 
@@ -20,24 +18,17 @@ class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClient {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cert'] = cert.toMap();
-    final keyValue = key;
-    if (keyValue != null) {
-      map['key'] = keyValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'cert': cert.toMap(),
+      'key': ?key == null ? null : key!.toMap(),
+    };
   }
 
-  factory ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClient.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClient.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClient(
-      cert: ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientCert
-          .fromMap((map['cert'] as Map).cast<String, dynamic>()),
-      key: map['key'] == null
-          ? null
-          : ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientKey
-              .fromMap((map['key'] as Map).cast<String, dynamic>()),
+      cert: ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientCert.fromMap((map['cert'] as Map).cast<String, dynamic>()),
+      key: map['key'] == null ? null : ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientKey.fromMap((map['key'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

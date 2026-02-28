@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetSigningProfileSigningMaterial {
   /// ARN of the certificate used for signing.
   final String certificateArn;
@@ -11,9 +12,9 @@ class GetSigningProfileSigningMaterial {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['certificateArn'] = certificateArn;
-    return map;
+    return <String, dynamic>{
+      'certificateArn': certificateArn,
+    };
   }
 
   factory GetSigningProfileSigningMaterial.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetSigningProfileSigningMaterial {
     );
   }
 }
+

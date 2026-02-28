@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification {
   /// DTMF character that clears the accumulated DTMF digits and immediately ends the input.
   final String deletionCharacter;
-
   /// DTMF character that immediately ends input. If the user does not press this character, the input ends after the end timeout.
   final String endCharacter;
-
   /// How long the bot should wait after the last DTMF character input before assuming that the input has concluded.
   final int endTimeoutMs;
-
   /// Maximum number of DTMF digits allowed in an utterance.
   final int maxLength;
 
@@ -26,16 +24,15 @@ class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecific
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['deletionCharacter'] = deletionCharacter;
-    map['endCharacter'] = endCharacter;
-    map['endTimeoutMs'] = endTimeoutMs;
-    map['maxLength'] = maxLength;
-    return map;
+    return <String, dynamic>{
+      'deletionCharacter': deletionCharacter,
+      'endCharacter': endCharacter,
+      'endTimeoutMs': endTimeoutMs,
+      'maxLength': maxLength,
+    };
   }
 
-  factory V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification.fromMap(
-      Map<String, dynamic> map) {
+  factory V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification(
       deletionCharacter: map['deletionCharacter'] as String,
       endCharacter: map['endCharacter'] as String,
@@ -44,3 +41,4 @@ class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecific
     );
   }
 }
+

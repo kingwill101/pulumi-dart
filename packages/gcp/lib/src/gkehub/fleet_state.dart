@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FleetState {
   /// (Output)
   /// Describes the state of a Fleet resource.
@@ -12,12 +13,9 @@ class FleetState {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final codeValue = code;
-    if (codeValue != null) {
-      map['code'] = codeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'code': ?code,
+    };
   }
 
   factory FleetState.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class FleetState {
     );
   }
 }
+

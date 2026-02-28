@@ -230,10 +230,8 @@ import 'redrive_allow_policy_args.dart';
 class RedriveAllowPolicy extends pulumi.CustomResource {
   /// The URL of the SQS Queue to which to attach the policy
   late final pulumi.Output<String> queueUrl;
-
   /// The JSON redrive allow policy for the SQS queue. Learn more in the [Amazon SQS dead-letter queues documentation](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html).
   late final pulumi.Output<String> redriveAllowPolicy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

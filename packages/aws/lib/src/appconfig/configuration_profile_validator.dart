@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConfigurationProfileValidator {
   /// Either the JSON Schema content or the ARN of an AWS Lambda function.
   final String? content;
-
   /// Type of validator. Valid values: `JSON_SCHEMA` and `LAMBDA`.
   final String type;
 
@@ -16,13 +16,10 @@ class ConfigurationProfileValidator {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final contentValue = content;
-    if (contentValue != null) {
-      map['content'] = contentValue;
-    }
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'content': ?content,
+      'type': type,
+    };
   }
 
   factory ConfigurationProfileValidator.fromMap(Map<String, dynamic> map) {
@@ -32,3 +29,4 @@ class ConfigurationProfileValidator {
     );
   }
 }
+

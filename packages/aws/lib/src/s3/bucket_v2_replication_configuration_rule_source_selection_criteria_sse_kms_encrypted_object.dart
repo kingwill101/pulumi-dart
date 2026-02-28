@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BucketV2ReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject {
   /// Boolean which indicates if this criteria is enabled.
   final bool enabled;
@@ -11,15 +12,15 @@ class BucketV2ReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncrypted
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory BucketV2ReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject.fromMap(
-      Map<String, dynamic> map) {
+  factory BucketV2ReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject.fromMap(Map<String, dynamic> map) {
     return BucketV2ReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject(
       enabled: map['enabled'] as bool,
     );
   }
 }
+

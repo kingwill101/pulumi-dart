@@ -5,8 +5,7 @@ import 'google_cloud_retail_v2_model_frequently_bought_together_features_config.
 /// Additional model features config.
 class GoogleCloudRetailV2ModelModelFeaturesConfig {
   /// Additional configs for frequently-bought-together models.
-  final GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig?
-      frequentlyBoughtTogetherConfig;
+  final GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig? frequentlyBoughtTogetherConfig;
 
   /// Creates a new [GoogleCloudRetailV2ModelModelFeaturesConfig].
   /// [frequentlyBoughtTogetherConfig] Additional configs for frequently-bought-together models.
@@ -15,24 +14,15 @@ class GoogleCloudRetailV2ModelModelFeaturesConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final frequentlyBoughtTogetherConfigValue = frequentlyBoughtTogetherConfig;
-    if (frequentlyBoughtTogetherConfigValue != null) {
-      map['frequentlyBoughtTogetherConfig'] =
-          frequentlyBoughtTogetherConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'frequentlyBoughtTogetherConfig': ?frequentlyBoughtTogetherConfig == null ? null : frequentlyBoughtTogetherConfig!.toMap(),
+    };
   }
 
-  factory GoogleCloudRetailV2ModelModelFeaturesConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudRetailV2ModelModelFeaturesConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2ModelModelFeaturesConfig(
-      frequentlyBoughtTogetherConfig:
-          map['frequentlyBoughtTogetherConfig'] == null
-              ? null
-              : GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig
-                  .fromMap((map['frequentlyBoughtTogetherConfig'] as Map)
-                      .cast<String, dynamic>()),
+      frequentlyBoughtTogetherConfig: map['frequentlyBoughtTogetherConfig'] == null ? null : GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig.fromMap((map['frequentlyBoughtTogetherConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

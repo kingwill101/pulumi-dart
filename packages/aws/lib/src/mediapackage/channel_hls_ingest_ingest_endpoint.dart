@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ChannelHlsIngestIngestEndpoint {
   /// The password
   final String? password;
-
   /// The URL
   final String? url;
-
   /// The username
   final String? username;
 
@@ -21,20 +20,11 @@ class ChannelHlsIngestIngestEndpoint {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final passwordValue = password;
-    if (passwordValue != null) {
-      map['password'] = passwordValue;
-    }
-    final urlValue = url;
-    if (urlValue != null) {
-      map['url'] = urlValue;
-    }
-    final usernameValue = username;
-    if (usernameValue != null) {
-      map['username'] = usernameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'password': ?password,
+      'url': ?url,
+      'username': ?username,
+    };
   }
 
   factory ChannelHlsIngestIngestEndpoint.fromMap(Map<String, dynamic> map) {
@@ -45,3 +35,4 @@ class ChannelHlsIngestIngestEndpoint {
     );
   }
 }
+

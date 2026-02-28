@@ -16,14 +16,12 @@ class AlertPolicyConditionConditionAbsent {
   /// order specified.
   /// Structure is documented below.
   final List<AlertPolicyConditionConditionAbsentAggregation>? aggregations;
-
   /// The amount of time that a time series must
   /// fail to report new data to be considered
   /// failing. Currently, only values that are a
   /// multiple of a minute--e.g. 60s, 120s, or 300s
   /// --are supported.
   final String duration;
-
   /// A filter that identifies which time series
   /// should be compared with the threshold.The
   /// filter is similar to the one that is
@@ -37,7 +35,6 @@ class AlertPolicyConditionConditionAbsent {
   /// field may not exceed 2048 Unicode characters
   /// in length.
   final String? filter;
-
   /// The number/percent of time series for which
   /// the comparison must hold in order for the
   /// condition to trigger. If unspecified, then
@@ -60,41 +57,21 @@ class AlertPolicyConditionConditionAbsent {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final aggregationsValue = aggregations;
-    if (aggregationsValue != null) {
-      map['aggregations'] = pulumi.Input.encodeList<
-          AlertPolicyConditionConditionAbsentAggregation,
-          Map<String, dynamic>>(aggregationsValue, (value) => value.toMap());
-    }
-    map['duration'] = duration;
-    final filterValue = filter;
-    if (filterValue != null) {
-      map['filter'] = filterValue;
-    }
-    final triggerValue = trigger;
-    if (triggerValue != null) {
-      map['trigger'] = triggerValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'aggregations': ?aggregations == null ? null : pulumi.Input.encodeList<AlertPolicyConditionConditionAbsentAggregation, Map<String, dynamic>>(aggregations!, (value) => value.toMap()),
+      'duration': duration,
+      'filter': ?filter,
+      'trigger': ?trigger == null ? null : trigger!.toMap(),
+    };
   }
 
-  factory AlertPolicyConditionConditionAbsent.fromMap(
-      Map<String, dynamic> map) {
+  factory AlertPolicyConditionConditionAbsent.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionAbsent(
-      aggregations: map['aggregations'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  AlertPolicyConditionConditionAbsentAggregation>(
-              map['aggregations'],
-              (value) => AlertPolicyConditionConditionAbsentAggregation.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      aggregations: map['aggregations'] == null ? null : pulumi.Input.decodeList<AlertPolicyConditionConditionAbsentAggregation>(map['aggregations'], (value) => AlertPolicyConditionConditionAbsentAggregation.fromMap((value as Map).cast<String, dynamic>())),
       duration: map['duration'] as String,
       filter: map['filter'] == null ? null : map['filter'] as String,
-      trigger: map['trigger'] == null
-          ? null
-          : AlertPolicyConditionConditionAbsentTrigger.fromMap(
-              (map['trigger'] as Map).cast<String, dynamic>()),
+      trigger: map['trigger'] == null ? null : AlertPolicyConditionConditionAbsentTrigger.fromMap((map['trigger'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

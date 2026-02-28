@@ -14,19 +14,15 @@ class GetResponsePlanIntegration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['pagerduties'] = pulumi.Input.encodeList<
-        GetResponsePlanIntegrationPagerduty,
-        Map<String, dynamic>>(pagerduties, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'pagerduties': pulumi.Input.encodeList<GetResponsePlanIntegrationPagerduty, Map<String, dynamic>>(pagerduties, (value) => value.toMap()),
+    };
   }
 
   factory GetResponsePlanIntegration.fromMap(Map<String, dynamic> map) {
     return GetResponsePlanIntegration(
-      pagerduties: pulumi.Input.decodeList<GetResponsePlanIntegrationPagerduty>(
-          map['pagerduties'],
-          (value) => GetResponsePlanIntegrationPagerduty.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      pagerduties: pulumi.Input.decodeList<GetResponsePlanIntegrationPagerduty>(map['pagerduties'], (value) => GetResponsePlanIntegrationPagerduty.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTableView {
   /// A query that BigQuery executes when the view is referenced.
   final String query;
-
   /// Specifies whether to use BigQuery's legacy SQL for this view. If set to false, the view will use BigQuery's standard SQL
   final bool useLegacySql;
 
@@ -16,10 +16,10 @@ class GetTableView {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['query'] = query;
-    map['useLegacySql'] = useLegacySql;
-    return map;
+    return <String, dynamic>{
+      'query': query,
+      'useLegacySql': useLegacySql,
+    };
   }
 
   factory GetTableView.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetTableView {
     );
   }
 }
+

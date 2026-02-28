@@ -7,15 +7,13 @@ enum GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode {
   const GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode(this.value);
   final String value;
 
-  static GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode fromValue(
-      String value) {
-    for (final item
-        in GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode.values) {
+  static GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode fromValue(String value) {
+    for (final item in GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode value: $value');
+    throw ArgumentError('Unknown GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode value: $value');
   }
 }
+

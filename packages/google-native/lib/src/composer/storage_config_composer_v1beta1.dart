@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The configuration for data storage in the environment.
 class StorageConfigComposerV1beta1 {
   /// Optional. The name of the Cloud Storage bucket used by the environment. No `gs://` prefix.
@@ -12,12 +13,9 @@ class StorageConfigComposerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final bucketValue = bucket;
-    if (bucketValue != null) {
-      map['bucket'] = bucketValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'bucket': ?bucket,
+    };
   }
 
   factory StorageConfigComposerV1beta1.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class StorageConfigComposerV1beta1 {
     );
   }
 }
+

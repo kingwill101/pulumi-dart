@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for the Monetization add-on.
 class GoogleCloudApigeeV1MonetizationConfigResponse {
   /// Flag that specifies whether the Monetization add-on is enabled.
@@ -12,15 +13,15 @@ class GoogleCloudApigeeV1MonetizationConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory GoogleCloudApigeeV1MonetizationConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1MonetizationConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1MonetizationConfigResponse(
       enabled: map['enabled'] as bool,
     );
   }
 }
+

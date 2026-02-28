@@ -12,7 +12,7 @@ topics:
     - category-cloud
 environment:
     sdk: ^3.10.0
-resolution: workspace
 dependencies:
     pulumi: ^1.0.0
-    pulumi_aws: any
+    pulumi_aws: ^7.15.0
+    pulumi_docker: ^4.6.0

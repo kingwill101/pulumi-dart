@@ -7,7 +7,6 @@ import 'audit_log_config_response_networkconnectivity_v1alpha1.dart';
 class AuditConfigResponseNetworkconnectivityV1alpha1 {
   /// The configuration for logging of each type of permission.
   final List<AuditLogConfigResponseNetworkconnectivityV1alpha1> auditLogConfigs;
-
   /// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
   final String service;
 
@@ -20,23 +19,17 @@ class AuditConfigResponseNetworkconnectivityV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['auditLogConfigs'] = pulumi.Input.encodeList<
-        AuditLogConfigResponseNetworkconnectivityV1alpha1,
-        Map<String, dynamic>>(auditLogConfigs, (value) => value.toMap());
-    map['service'] = service;
-    return map;
+    return <String, dynamic>{
+      'auditLogConfigs': pulumi.Input.encodeList<AuditLogConfigResponseNetworkconnectivityV1alpha1, Map<String, dynamic>>(auditLogConfigs, (value) => value.toMap()),
+      'service': service,
+    };
   }
 
-  factory AuditConfigResponseNetworkconnectivityV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory AuditConfigResponseNetworkconnectivityV1alpha1.fromMap(Map<String, dynamic> map) {
     return AuditConfigResponseNetworkconnectivityV1alpha1(
-      auditLogConfigs: pulumi.Input.decodeList<
-              AuditLogConfigResponseNetworkconnectivityV1alpha1>(
-          map['auditLogConfigs'],
-          (value) => AuditLogConfigResponseNetworkconnectivityV1alpha1.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      auditLogConfigs: pulumi.Input.decodeList<AuditLogConfigResponseNetworkconnectivityV1alpha1>(map['auditLogConfigs'], (value) => AuditLogConfigResponseNetworkconnectivityV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
       service: map['service'] as String,
     );
   }
 }
+

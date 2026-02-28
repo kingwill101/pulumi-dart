@@ -156,16 +156,12 @@ import 'random_shuffle_args.dart';
 class RandomShuffle extends pulumi.CustomResource {
   /// The list of strings to shuffle.
   late final pulumi.Output<List<String>> inputs;
-
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
   late final pulumi.Output<Map<String, String>?> keepers;
-
   /// The number of results to return. Defaults to the number of items in the `input` list. If fewer items are requested, some elements will be excluded from the result. If more items are requested, items will be repeated in the result but not more frequently than the number of items in the input list.
   late final pulumi.Output<int?> resultCount;
-
   /// Random permutation of the list of strings given in `input`. The number of elements is determined by `result_count` if set, or the number of elements in `input`.
   late final pulumi.Output<List<String>> results;
-
   /// Arbitrary string with which to seed the random number generator, in order to produce less-volatile permutations of the list.
   late final pulumi.Output<String?> seed;
 

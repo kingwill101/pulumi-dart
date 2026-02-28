@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WorkloadIdentityPoolProviderAws {
   /// The AWS account ID.
   final String accountId;
@@ -11,9 +12,9 @@ class WorkloadIdentityPoolProviderAws {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accountId'] = accountId;
-    return map;
+    return <String, dynamic>{
+      'accountId': accountId,
+    };
   }
 
   factory WorkloadIdentityPoolProviderAws.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class WorkloadIdentityPoolProviderAws {
     );
   }
 }
+

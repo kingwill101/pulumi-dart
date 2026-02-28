@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getDicomStoreIamPolicy.
 class GetDicomStoreIamPolicyResult {
   final String dicomStoreId;
-
   /// (Computed) The etag of the IAM policy.
   final String etag;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// (Computed) The policy data
   final String policyData;
 
@@ -26,12 +24,12 @@ class GetDicomStoreIamPolicyResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dicomStoreId'] = dicomStoreId;
-    map['etag'] = etag;
-    map['id'] = id;
-    map['policyData'] = policyData;
-    return map;
+    return <String, dynamic>{
+      'dicomStoreId': dicomStoreId,
+      'etag': etag,
+      'id': id,
+      'policyData': policyData,
+    };
   }
 
   factory GetDicomStoreIamPolicyResult.fromMap(Map<String, dynamic> map) {
@@ -43,3 +41,4 @@ class GetDicomStoreIamPolicyResult {
     );
   }
 }
+

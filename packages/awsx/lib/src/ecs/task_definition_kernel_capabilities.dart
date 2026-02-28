@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TaskDefinitionKernelCapabilities {
   final List<String>? add;
   final List<String>? drop;
@@ -7,19 +8,16 @@ class TaskDefinitionKernelCapabilities {
   /// Creates a new [TaskDefinitionKernelCapabilities].
   /// [add] Optional.
   /// [drop] Optional.
-  TaskDefinitionKernelCapabilities({this.add, this.drop});
+  TaskDefinitionKernelCapabilities({
+    this.add,
+    this.drop,
+  });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final addValue = add;
-    if (addValue != null) {
-      map['add'] = addValue;
-    }
-    final dropValue = drop;
-    if (dropValue != null) {
-      map['drop'] = dropValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'add': ?add,
+      'drop': ?drop,
+    };
   }
 
   factory TaskDefinitionKernelCapabilities.fromMap(Map<String, dynamic> map) {
@@ -29,3 +27,4 @@ class TaskDefinitionKernelCapabilities {
     );
   }
 }
+

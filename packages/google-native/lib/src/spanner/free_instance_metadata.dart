@@ -14,20 +14,15 @@ class FreeInstanceMetadata {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final expireBehaviorValue = expireBehavior;
-    if (expireBehaviorValue != null) {
-      map['expireBehavior'] = expireBehaviorValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'expireBehavior': ?expireBehavior == null ? null : expireBehavior!.value,
+    };
   }
 
   factory FreeInstanceMetadata.fromMap(Map<String, dynamic> map) {
     return FreeInstanceMetadata(
-      expireBehavior: map['expireBehavior'] == null
-          ? null
-          : FreeInstanceMetadataExpireBehavior.fromValue(
-              map['expireBehavior'] as String),
+      expireBehavior: map['expireBehavior'] == null ? null : FreeInstanceMetadataExpireBehavior.fromValue(map['expireBehavior'] as String),
     );
   }
 }
+

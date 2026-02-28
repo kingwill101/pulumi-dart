@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WorkspaceSettings {
   /// Project IDs for data projects hosted in a workspace.
   final List<String> dataProjectIds;
@@ -11,9 +12,9 @@ class WorkspaceSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dataProjectIds'] = dataProjectIds;
-    return map;
+    return <String, dynamic>{
+      'dataProjectIds': dataProjectIds,
+    };
   }
 
   factory WorkspaceSettings.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class WorkspaceSettings {
     );
   }
 }
+

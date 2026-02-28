@@ -9,39 +9,28 @@ class GetThemeResult {
   /// ARN of the theme.
   final String arn;
   final String awsAccountId;
-
   /// The ID of the theme that a custom theme will inherit from. All themes inherit from one of the starting themes defined by Amazon QuickSight.
   final String baseThemeId;
-
   /// The theme configuration, which contains the theme display properties. See configuration.
   final List<GetThemeConfiguration> configurations;
-
   /// The time that the theme was created.
   final String createdTime;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The time that the theme was last updated.
   final String lastUpdatedTime;
-
   /// Display name of the theme.
   final String name;
-
   /// A set of resource permissions on the theme. See permissions.
   final List<GetThemePermission> permissions;
   final String region;
-
   /// The theme creation status.
   final String status;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final Map<String, String> tags;
   final String themeId;
-
   /// A description of the current theme version being created/updated.
   final String versionDescription;
-
   /// The version number of the theme version.
   final int versionNumber;
 
@@ -80,27 +69,23 @@ class GetThemeResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['awsAccountId'] = awsAccountId;
-    map['baseThemeId'] = baseThemeId;
-    map['configurations'] =
-        pulumi.Input.encodeList<GetThemeConfiguration, Map<String, dynamic>>(
-            configurations, (value) => value.toMap());
-    map['createdTime'] = createdTime;
-    map['id'] = id;
-    map['lastUpdatedTime'] = lastUpdatedTime;
-    map['name'] = name;
-    map['permissions'] =
-        pulumi.Input.encodeList<GetThemePermission, Map<String, dynamic>>(
-            permissions, (value) => value.toMap());
-    map['region'] = region;
-    map['status'] = status;
-    map['tags'] = tags;
-    map['themeId'] = themeId;
-    map['versionDescription'] = versionDescription;
-    map['versionNumber'] = versionNumber;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'awsAccountId': awsAccountId,
+      'baseThemeId': baseThemeId,
+      'configurations': pulumi.Input.encodeList<GetThemeConfiguration, Map<String, dynamic>>(configurations, (value) => value.toMap()),
+      'createdTime': createdTime,
+      'id': id,
+      'lastUpdatedTime': lastUpdatedTime,
+      'name': name,
+      'permissions': pulumi.Input.encodeList<GetThemePermission, Map<String, dynamic>>(permissions, (value) => value.toMap()),
+      'region': region,
+      'status': status,
+      'tags': tags,
+      'themeId': themeId,
+      'versionDescription': versionDescription,
+      'versionNumber': versionNumber,
+    };
   }
 
   factory GetThemeResult.fromMap(Map<String, dynamic> map) {
@@ -108,18 +93,12 @@ class GetThemeResult {
       arn: map['arn'] as String,
       awsAccountId: map['awsAccountId'] as String,
       baseThemeId: map['baseThemeId'] as String,
-      configurations: pulumi.Input.decodeList<GetThemeConfiguration>(
-          map['configurations'],
-          (value) => GetThemeConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      configurations: pulumi.Input.decodeList<GetThemeConfiguration>(map['configurations'], (value) => GetThemeConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       createdTime: map['createdTime'] as String,
       id: map['id'] as String,
       lastUpdatedTime: map['lastUpdatedTime'] as String,
       name: map['name'] as String,
-      permissions: pulumi.Input.decodeList<GetThemePermission>(
-          map['permissions'],
-          (value) => GetThemePermission.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      permissions: pulumi.Input.decodeList<GetThemePermission>(map['permissions'], (value) => GetThemePermission.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
       status: map['status'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
@@ -129,3 +108,4 @@ class GetThemeResult {
     );
   }
 }
+

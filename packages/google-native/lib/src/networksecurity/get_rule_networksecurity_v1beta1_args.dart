@@ -22,22 +22,19 @@ class GetRuleNetworksecurityV1beta1Args {
     required String location,
     String? project,
     required String ruleId,
-  })  : gatewaySecurityPolicyId =
-            pulumi.Input.asInput<String>(gatewaySecurityPolicyId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        ruleId = pulumi.Input.asInput<String>(ruleId);
+  }) :
+      gatewaySecurityPolicyId = pulumi.Input.asInput<String>(gatewaySecurityPolicyId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      ruleId = pulumi.Input.asInput<String>(ruleId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gatewaySecurityPolicyId'] = gatewaySecurityPolicyId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['ruleId'] = ruleId;
-    return map;
+    return <String, dynamic>{
+      'gatewaySecurityPolicyId': gatewaySecurityPolicyId,
+      'location': location,
+      'project': ?project,
+      'ruleId': ruleId,
+    };
   }
 
   factory GetRuleNetworksecurityV1beta1Args.fromMap(Map<String, dynamic> map) {
@@ -49,3 +46,4 @@ class GetRuleNetworksecurityV1beta1Args {
     );
   }
 }
+

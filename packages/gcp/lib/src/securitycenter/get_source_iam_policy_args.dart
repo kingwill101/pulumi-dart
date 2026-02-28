@@ -8,7 +8,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_securitycenter_get_source_iam_policy_get_source_iam_policy_args_doc}
 class GetSourceIamPolicyArgs {
   final pulumi.Input<String> organization;
-
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> source;
 
@@ -18,14 +17,15 @@ class GetSourceIamPolicyArgs {
   GetSourceIamPolicyArgs({
     required String organization,
     required String source,
-  })  : organization = pulumi.Input.asInput<String>(organization),
-        source = pulumi.Input.asInput<String>(source);
+  }) :
+      organization = pulumi.Input.asInput<String>(organization),
+      source = pulumi.Input.asInput<String>(source);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['organization'] = organization;
-    map['source'] = source;
-    return map;
+    return <String, dynamic>{
+      'organization': organization,
+      'source': source,
+    };
   }
 
   factory GetSourceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -35,3 +35,4 @@ class GetSourceIamPolicyArgs {
     );
   }
 }
+

@@ -17,3 +17,4 @@ enum DocumentKnowledgeTypesItem {
     throw ArgumentError('Unknown DocumentKnowledgeTypesItem value: $value');
   }
 }
+

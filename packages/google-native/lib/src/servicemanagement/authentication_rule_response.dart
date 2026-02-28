@@ -8,13 +8,10 @@ import 'oauth_requirements_response.dart';
 class AuthenticationRuleResponse {
   /// If true, the service accepts API keys without any other credential. This flag only applies to HTTP and gRPC requests.
   final bool allowWithoutCredential;
-
   /// The requirements for OAuth credentials.
   final OAuthRequirementsResponse oauth;
-
   /// Requirements for additional authentication providers.
   final List<AuthRequirementResponse> requirements;
-
   /// Selects the methods to which this rule applies. Refer to selector for syntax details.
   final String selector;
 
@@ -31,26 +28,21 @@ class AuthenticationRuleResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allowWithoutCredential'] = allowWithoutCredential;
-    map['oauth'] = oauth.toMap();
-    map['requirements'] =
-        pulumi.Input.encodeList<AuthRequirementResponse, Map<String, dynamic>>(
-            requirements, (value) => value.toMap());
-    map['selector'] = selector;
-    return map;
+    return <String, dynamic>{
+      'allowWithoutCredential': allowWithoutCredential,
+      'oauth': oauth.toMap(),
+      'requirements': pulumi.Input.encodeList<AuthRequirementResponse, Map<String, dynamic>>(requirements, (value) => value.toMap()),
+      'selector': selector,
+    };
   }
 
   factory AuthenticationRuleResponse.fromMap(Map<String, dynamic> map) {
     return AuthenticationRuleResponse(
       allowWithoutCredential: map['allowWithoutCredential'] as bool,
-      oauth: OAuthRequirementsResponse.fromMap(
-          (map['oauth'] as Map).cast<String, dynamic>()),
-      requirements: pulumi.Input.decodeList<AuthRequirementResponse>(
-          map['requirements'],
-          (value) => AuthRequirementResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      oauth: OAuthRequirementsResponse.fromMap((map['oauth'] as Map).cast<String, dynamic>()),
+      requirements: pulumi.Input.decodeList<AuthRequirementResponse>(map['requirements'], (value) => AuthRequirementResponse.fromMap((value as Map).cast<String, dynamic>())),
       selector: map['selector'] as String,
     );
   }
 }
+

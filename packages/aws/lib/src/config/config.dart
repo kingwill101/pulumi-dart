@@ -8,37 +8,6 @@ import 'default_tags.dart';
 import 'endpoints.dart';
 import 'ignore_tags.dart';
 
-int? _parseIntConfig(String? value) {
-  if (value == null) {
-    return null;
-  }
-  return int.tryParse(value);
-}
-
-double? _parseDoubleConfig(String? value) {
-  if (value == null) {
-    return null;
-  }
-  return double.tryParse(value);
-}
-
-bool? _parseBoolConfig(String? value) {
-  if (value == null) {
-    return null;
-  }
-
-  switch (value.toLowerCase()) {
-    case 'true':
-    case '1':
-      return true;
-    case 'false':
-    case '0':
-      return false;
-    default:
-      return null;
-  }
-}
-
 /// Configuration values for the aws package.
 class AwsConfig {
   const AwsConfig();
@@ -71,23 +40,14 @@ class AwsConfig {
 
   AssumeRoleWithWebIdentity? get assumeRoleWithWebIdentity {
     final raw = _raw('assumeRoleWithWebIdentity');
-    return raw == null
-        ? null
-        : AssumeRoleWithWebIdentity.fromMap(
-            (jsonDecode(raw) as Map).cast<String, dynamic>());
+    return raw == null ? null : AssumeRoleWithWebIdentity.fromMap((jsonDecode(raw) as Map).cast<String, dynamic>());
   }
 
-  bool get assumeRoleWithWebIdentityIsSecret =>
-      _isSecret('assumeRoleWithWebIdentity');
+  bool get assumeRoleWithWebIdentityIsSecret => _isSecret('assumeRoleWithWebIdentity');
 
   List<AssumeRoles>? get assumeRoles {
     final raw = _raw('assumeRoles');
-    return raw == null
-        ? null
-        : pulumi.Input.decodeList<AssumeRoles>(
-            jsonDecode(raw),
-            (value) =>
-                AssumeRoles.fromMap((value as Map).cast<String, dynamic>()));
+    return raw == null ? null : pulumi.Input.decodeList<AssumeRoles>(jsonDecode(raw), (value) => AssumeRoles.fromMap((value as Map).cast<String, dynamic>()));
   }
 
   bool get assumeRolesIsSecret => _isSecret('assumeRoles');
@@ -103,9 +63,7 @@ class AwsConfig {
   /// Configuration block with settings to default resource tags across all resources.
   DefaultTags? get defaultTags {
     final raw = _raw('defaultTags');
-    return raw == null
-        ? null
-        : DefaultTags.fromMap((jsonDecode(raw) as Map).cast<String, dynamic>());
+    return raw == null ? null : DefaultTags.fromMap((jsonDecode(raw) as Map).cast<String, dynamic>());
   }
 
   bool get defaultTagsIsSecret => _isSecret('defaultTags');
@@ -116,8 +74,7 @@ class AwsConfig {
     return raw;
   }
 
-  bool get ec2MetadataServiceEndpointIsSecret =>
-      _isSecret('ec2MetadataServiceEndpoint');
+  bool get ec2MetadataServiceEndpointIsSecret => _isSecret('ec2MetadataServiceEndpoint');
 
   /// Protocol to use with EC2 metadata service endpoint.Valid values are `IPv4` and `IPv6`. Can also be configured using the `AWS_EC2_METADATA_SERVICE_ENDPOINT_MODE` environment variable.
   String? get ec2MetadataServiceEndpointMode {
@@ -125,17 +82,11 @@ class AwsConfig {
     return raw;
   }
 
-  bool get ec2MetadataServiceEndpointModeIsSecret =>
-      _isSecret('ec2MetadataServiceEndpointMode');
+  bool get ec2MetadataServiceEndpointModeIsSecret => _isSecret('ec2MetadataServiceEndpointMode');
 
   List<Endpoints>? get endpoints {
     final raw = _raw('endpoints');
-    return raw == null
-        ? null
-        : pulumi.Input.decodeList<Endpoints>(
-            jsonDecode(raw),
-            (value) =>
-                Endpoints.fromMap((value as Map).cast<String, dynamic>()));
+    return raw == null ? null : pulumi.Input.decodeList<Endpoints>(jsonDecode(raw), (value) => Endpoints.fromMap((value as Map).cast<String, dynamic>()));
   }
 
   bool get endpointsIsSecret => _isSecret('endpoints');
@@ -166,9 +117,7 @@ class AwsConfig {
   /// Configuration block with settings to ignore resource tags across all resources.
   IgnoreTags? get ignoreTags {
     final raw = _raw('ignoreTags');
-    return raw == null
-        ? null
-        : IgnoreTags.fromMap((jsonDecode(raw) as Map).cast<String, dynamic>());
+    return raw == null ? null : IgnoreTags.fromMap((jsonDecode(raw) as Map).cast<String, dynamic>());
   }
 
   bool get ignoreTagsIsSecret => _isSecret('ignoreTags');
@@ -176,7 +125,7 @@ class AwsConfig {
   /// Explicitly allow the provider to perform "insecure" SSL requests. If omitted, default value is `false`
   bool? get insecure {
     final raw = _raw('insecure');
-    return _parseBoolConfig(raw);
+    return (raw).toBool();
   }
 
   bool get insecureIsSecret => _isSecret('insecure');
@@ -186,7 +135,7 @@ class AwsConfig {
   /// thrown.
   int? get maxRetries {
     final raw = _raw('maxRetries');
-    return _parseIntConfig(raw);
+    return (raw).toInt();
   }
 
   bool get maxRetriesIsSecret => _isSecret('maxRetries');
@@ -231,8 +180,7 @@ class AwsConfig {
     return raw;
   }
 
-  bool get s3UsEast1RegionalEndpointIsSecret =>
-      _isSecret('s3UsEast1RegionalEndpoint');
+  bool get s3UsEast1RegionalEndpointIsSecret => _isSecret('s3UsEast1RegionalEndpoint');
 
   /// Set this to true to enable the request to use path-style addressing,
   /// i.e., https://s3.amazonaws.com/BUCKET/KEY. By default, the S3 client will
@@ -240,7 +188,7 @@ class AwsConfig {
   /// (https://BUCKET.s3.amazonaws.com/KEY). Specific to the Amazon S3 service.
   bool? get s3UsePathStyle {
     final raw = _raw('s3UsePathStyle');
-    return _parseBoolConfig(raw);
+    return (raw).toBool();
   }
 
   bool get s3UsePathStyleIsSecret => _isSecret('s3UsePathStyle');
@@ -268,22 +216,20 @@ class AwsConfig {
     return raw == null ? null : (jsonDecode(raw) as List).cast<String>();
   }
 
-  bool get sharedCredentialsFilesIsSecret =>
-      _isSecret('sharedCredentialsFiles');
+  bool get sharedCredentialsFilesIsSecret => _isSecret('sharedCredentialsFiles');
 
   /// Skip the credentials validation via STS API. Used for AWS API implementations that do not have STS available/implemented.
   bool? get skipCredentialsValidation {
     final raw = _raw('skipCredentialsValidation');
-    return _parseBoolConfig(raw);
+    return (raw).toBool();
   }
 
-  bool get skipCredentialsValidationIsSecret =>
-      _isSecret('skipCredentialsValidation');
+  bool get skipCredentialsValidationIsSecret => _isSecret('skipCredentialsValidation');
 
   /// Skip the AWS Metadata API check. Used for AWS API implementations that do not have a metadata api endpoint.
   bool? get skipMetadataApiCheck {
     final raw = _raw('skipMetadataApiCheck');
-    return _parseBoolConfig(raw);
+    return (raw).toBool();
   }
 
   bool get skipMetadataApiCheckIsSecret => _isSecret('skipMetadataApiCheck');
@@ -291,7 +237,7 @@ class AwsConfig {
   /// Skip static validation of region name. Used by users of alternative AWS-like APIs or users w/ access to regions that are not public (yet).
   bool? get skipRegionValidation {
     final raw = _raw('skipRegionValidation');
-    return _parseBoolConfig(raw);
+    return (raw).toBool();
   }
 
   bool get skipRegionValidationIsSecret => _isSecret('skipRegionValidation');
@@ -299,11 +245,10 @@ class AwsConfig {
   /// Skip requesting the account ID. Used for AWS API implementations that do not have IAM/STS API and/or metadata API.
   bool? get skipRequestingAccountId {
     final raw = _raw('skipRequestingAccountId');
-    return _parseBoolConfig(raw);
+    return (raw).toBool();
   }
 
-  bool get skipRequestingAccountIdIsSecret =>
-      _isSecret('skipRequestingAccountId');
+  bool get skipRequestingAccountIdIsSecret => _isSecret('skipRequestingAccountId');
 
   /// The region where AWS STS operations will take place. Examples
   /// are us-east-1 and us-west-2.
@@ -334,16 +279,15 @@ class AwsConfig {
   /// The capacity of the AWS SDK's token bucket rate limiter.
   int? get tokenBucketRateLimiterCapacity {
     final raw = _raw('tokenBucketRateLimiterCapacity');
-    return _parseIntConfig(raw);
+    return (raw).toInt();
   }
 
-  bool get tokenBucketRateLimiterCapacityIsSecret =>
-      _isSecret('tokenBucketRateLimiterCapacity');
+  bool get tokenBucketRateLimiterCapacityIsSecret => _isSecret('tokenBucketRateLimiterCapacity');
 
   /// Resolve an endpoint with DualStack capability
   bool? get useDualstackEndpoint {
     final raw = _raw('useDualstackEndpoint');
-    return _parseBoolConfig(raw);
+    return (raw).toBool();
   }
 
   bool get useDualstackEndpointIsSecret => _isSecret('useDualstackEndpoint');
@@ -351,7 +295,7 @@ class AwsConfig {
   /// Resolve an endpoint with FIPS capability
   bool? get useFipsEndpoint {
     final raw = _raw('useFipsEndpoint');
-    return _parseBoolConfig(raw);
+    return (raw).toBool();
   }
 
   bool get useFipsEndpointIsSecret => _isSecret('useFipsEndpoint');
@@ -363,6 +307,8 @@ class AwsConfig {
   }
 
   bool get userAgentsIsSecret => _isSecret('userAgents');
+
 }
 
 final config = AwsConfig();
+

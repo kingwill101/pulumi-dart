@@ -8,29 +8,20 @@ import 'template_contents_response_deploymentmanager_v2beta.dart';
 class CompositeTypeDeploymentmanagerV2beta extends pulumi.CustomResource {
   /// An optional textual description of the resource; provided by the client when the resource is created.
   late final pulumi.Output<String> description;
-
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> insertTime;
-
   /// Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
-  late final pulumi
-      .Output<List<CompositeTypeLabelEntryResponseDeploymentmanagerV2beta>>
-      labels;
-
+  late final pulumi.Output<List<CompositeTypeLabelEntryResponseDeploymentmanagerV2beta>> labels;
   /// Name of the composite type, must follow the expression: `[a-z]([-a-z0-9_.]{0,61}[a-z0-9])?`.
   late final pulumi.Output<String> name;
-
   /// The Operation that most recently ran, or is currently running, on this composite type.
   late final pulumi.Output<OperationResponseDeploymentmanagerV2beta> operation;
   late final pulumi.Output<String> project;
-
   /// Server defined URL for the resource.
   late final pulumi.Output<String> selfLink;
   late final pulumi.Output<String> status;
-
   /// Files for the template type.
-  late final pulumi.Output<TemplateContentsResponseDeploymentmanagerV2beta>
-      templateContents;
+  late final pulumi.Output<TemplateContentsResponseDeploymentmanagerV2beta> templateContents;
 
   /// Creates a new [CompositeTypeDeploymentmanagerV2beta].
   /// [name] The Pulumi resource name.
@@ -48,16 +39,12 @@ class CompositeTypeDeploymentmanagerV2beta extends pulumi.CustomResource {
         ) {
     this.description = registerOutput<String>('description');
     this.insertTime = registerOutput<String>('insertTime');
-    this.labels = registerOutput<
-        List<CompositeTypeLabelEntryResponseDeploymentmanagerV2beta>>('labels');
+    this.labels = registerOutput<List<CompositeTypeLabelEntryResponseDeploymentmanagerV2beta>>('labels');
     this.name = registerOutput<String>('name');
-    this.operation =
-        registerOutput<OperationResponseDeploymentmanagerV2beta>('operation');
+    this.operation = registerOutput<OperationResponseDeploymentmanagerV2beta>('operation');
     this.project = registerOutput<String>('project');
     this.selfLink = registerOutput<String>('selfLink');
     this.status = registerOutput<String>('status');
-    this.templateContents =
-        registerOutput<TemplateContentsResponseDeploymentmanagerV2beta>(
-            'templateContents');
+    this.templateContents = registerOutput<TemplateContentsResponseDeploymentmanagerV2beta>('templateContents');
   }
 }

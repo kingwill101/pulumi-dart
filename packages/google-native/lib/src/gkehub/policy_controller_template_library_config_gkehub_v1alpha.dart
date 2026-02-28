@@ -5,8 +5,7 @@ import 'policy_controller_template_library_config_installation_gkehub_v1alpha.da
 /// The config specifying which default library templates to install.
 class PolicyControllerTemplateLibraryConfigGkehubV1alpha {
   /// Configures the manner in which the template library is installed on the cluster.
-  final PolicyControllerTemplateLibraryConfigInstallationGkehubV1alpha?
-      installation;
+  final PolicyControllerTemplateLibraryConfigInstallationGkehubV1alpha? installation;
 
   /// Creates a new [PolicyControllerTemplateLibraryConfigGkehubV1alpha].
   /// [installation] Configures the manner in which the template library is installed on the cluster.
@@ -15,21 +14,15 @@ class PolicyControllerTemplateLibraryConfigGkehubV1alpha {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final installationValue = installation;
-    if (installationValue != null) {
-      map['installation'] = installationValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'installation': ?installation == null ? null : installation!.value,
+    };
   }
 
-  factory PolicyControllerTemplateLibraryConfigGkehubV1alpha.fromMap(
-      Map<String, dynamic> map) {
+  factory PolicyControllerTemplateLibraryConfigGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return PolicyControllerTemplateLibraryConfigGkehubV1alpha(
-      installation: map['installation'] == null
-          ? null
-          : PolicyControllerTemplateLibraryConfigInstallationGkehubV1alpha
-              .fromValue(map['installation'] as String),
+      installation: map['installation'] == null ? null : PolicyControllerTemplateLibraryConfigInstallationGkehubV1alpha.fromValue(map['installation'] as String),
     );
   }
 }
+

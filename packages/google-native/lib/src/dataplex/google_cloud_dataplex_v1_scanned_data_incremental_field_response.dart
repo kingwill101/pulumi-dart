@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A data range denoted by a pair of start/end values of a field.
 class GoogleCloudDataplexV1ScannedDataIncrementalFieldResponse {
   /// Value that marks the end of the range.
   final String end;
-
   /// The field that contains values which monotonically increases over time (e.g. a timestamp column).
   final String field;
-
   /// Value that marks the start of the range.
   final String start;
 
@@ -22,15 +21,14 @@ class GoogleCloudDataplexV1ScannedDataIncrementalFieldResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['end'] = end;
-    map['field'] = field;
-    map['start'] = start;
-    return map;
+    return <String, dynamic>{
+      'end': end,
+      'field': field,
+      'start': start,
+    };
   }
 
-  factory GoogleCloudDataplexV1ScannedDataIncrementalFieldResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1ScannedDataIncrementalFieldResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1ScannedDataIncrementalFieldResponse(
       end: map['end'] as String,
       field: map['field'] as String,
@@ -38,3 +36,4 @@ class GoogleCloudDataplexV1ScannedDataIncrementalFieldResponse {
     );
   }
 }
+

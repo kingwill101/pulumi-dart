@@ -14,22 +14,19 @@ class GetGlobalNetworksArgs {
   /// [tags] Restricts the list to the global networks with these tags.
   GetGlobalNetworksArgs({
     Map<String, String>? tags,
-  }) : tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'tags': ?tags,
+    };
   }
 
   factory GetGlobalNetworksArgs.fromMap(Map<String, dynamic> map) {
     return GetGlobalNetworksArgs(
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

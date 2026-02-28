@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetMembershipEndpointGkeCluster {
   final String resourceLink;
 
@@ -10,9 +11,9 @@ class GetMembershipEndpointGkeCluster {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['resourceLink'] = resourceLink;
-    return map;
+    return <String, dynamic>{
+      'resourceLink': resourceLink,
+    };
   }
 
   factory GetMembershipEndpointGkeCluster.fromMap(Map<String, dynamic> map) {
@@ -21,3 +22,4 @@ class GetMembershipEndpointGkeCluster {
     );
   }
 }
+

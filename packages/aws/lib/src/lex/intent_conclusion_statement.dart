@@ -16,24 +16,17 @@ class IntentConclusionStatement {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['messages'] = pulumi.Input.encodeList<IntentConclusionStatementMessage,
-        Map<String, dynamic>>(messages, (value) => value.toMap());
-    final responseCardValue = responseCard;
-    if (responseCardValue != null) {
-      map['responseCard'] = responseCardValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'messages': pulumi.Input.encodeList<IntentConclusionStatementMessage, Map<String, dynamic>>(messages, (value) => value.toMap()),
+      'responseCard': ?responseCard,
+    };
   }
 
   factory IntentConclusionStatement.fromMap(Map<String, dynamic> map) {
     return IntentConclusionStatement(
-      messages: pulumi.Input.decodeList<IntentConclusionStatementMessage>(
-          map['messages'],
-          (value) => IntentConclusionStatementMessage.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      responseCard:
-          map['responseCard'] == null ? null : map['responseCard'] as String,
+      messages: pulumi.Input.decodeList<IntentConclusionStatementMessage>(map['messages'], (value) => IntentConclusionStatementMessage.fromMap((value as Map).cast<String, dynamic>())),
+      responseCard: map['responseCard'] == null ? null : map['responseCard'] as String,
     );
   }
 }
+

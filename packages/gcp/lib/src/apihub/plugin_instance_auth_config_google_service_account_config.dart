@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PluginInstanceAuthConfigGoogleServiceAccountConfig {
   /// The service account to be used for authenticating request.
   /// The `iam.serviceAccounts.getAccessToken` permission should be granted on
@@ -13,15 +14,15 @@ class PluginInstanceAuthConfigGoogleServiceAccountConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['serviceAccount'] = serviceAccount;
-    return map;
+    return <String, dynamic>{
+      'serviceAccount': serviceAccount,
+    };
   }
 
-  factory PluginInstanceAuthConfigGoogleServiceAccountConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory PluginInstanceAuthConfigGoogleServiceAccountConfig.fromMap(Map<String, dynamic> map) {
     return PluginInstanceAuthConfigGoogleServiceAccountConfig(
       serviceAccount: map['serviceAccount'] as String,
     );
   }
 }
+

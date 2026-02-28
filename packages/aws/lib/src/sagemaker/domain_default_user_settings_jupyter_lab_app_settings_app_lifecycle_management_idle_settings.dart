@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings {
   /// The time that SageMaker AI waits after the application becomes idle before shutting it down. Valid values are between `60` and `525600`.
   final int? idleTimeoutInMinutes;
-
   /// Indicates whether idle shutdown is activated for the application type. Valid values are `ENABLED` and `DISABLED`.
   final String? lifecycleManagement;
-
   /// The maximum value in minutes that custom idle shutdown can be set to by the user. Valid values are between `60` and `525600`.
   final int? maxIdleTimeoutInMinutes;
-
   /// The minimum value in minutes that custom idle shutdown can be set to by the user. Valid values are between `60` and `525600`.
   final int? minIdleTimeoutInMinutes;
 
@@ -26,41 +24,21 @@ class DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSe
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final idleTimeoutInMinutesValue = idleTimeoutInMinutes;
-    if (idleTimeoutInMinutesValue != null) {
-      map['idleTimeoutInMinutes'] = idleTimeoutInMinutesValue;
-    }
-    final lifecycleManagementValue = lifecycleManagement;
-    if (lifecycleManagementValue != null) {
-      map['lifecycleManagement'] = lifecycleManagementValue;
-    }
-    final maxIdleTimeoutInMinutesValue = maxIdleTimeoutInMinutes;
-    if (maxIdleTimeoutInMinutesValue != null) {
-      map['maxIdleTimeoutInMinutes'] = maxIdleTimeoutInMinutesValue;
-    }
-    final minIdleTimeoutInMinutesValue = minIdleTimeoutInMinutes;
-    if (minIdleTimeoutInMinutesValue != null) {
-      map['minIdleTimeoutInMinutes'] = minIdleTimeoutInMinutesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'idleTimeoutInMinutes': ?idleTimeoutInMinutes,
+      'lifecycleManagement': ?lifecycleManagement,
+      'maxIdleTimeoutInMinutes': ?maxIdleTimeoutInMinutes,
+      'minIdleTimeoutInMinutes': ?minIdleTimeoutInMinutes,
+    };
   }
 
-  factory DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings.fromMap(
-      Map<String, dynamic> map) {
+  factory DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings.fromMap(Map<String, dynamic> map) {
     return DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings(
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null
-          ? null
-          : map['idleTimeoutInMinutes'] as int,
-      lifecycleManagement: map['lifecycleManagement'] == null
-          ? null
-          : map['lifecycleManagement'] as String,
-      maxIdleTimeoutInMinutes: map['maxIdleTimeoutInMinutes'] == null
-          ? null
-          : map['maxIdleTimeoutInMinutes'] as int,
-      minIdleTimeoutInMinutes: map['minIdleTimeoutInMinutes'] == null
-          ? null
-          : map['minIdleTimeoutInMinutes'] as int,
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : map['idleTimeoutInMinutes'] as int,
+      lifecycleManagement: map['lifecycleManagement'] == null ? null : map['lifecycleManagement'] as String,
+      maxIdleTimeoutInMinutes: map['maxIdleTimeoutInMinutes'] == null ? null : map['maxIdleTimeoutInMinutes'] as int,
+      minIdleTimeoutInMinutes: map['minIdleTimeoutInMinutes'] == null ? null : map['minIdleTimeoutInMinutes'] as int,
     );
   }
 }
+

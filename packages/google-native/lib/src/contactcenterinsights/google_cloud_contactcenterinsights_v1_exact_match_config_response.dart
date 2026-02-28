@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Exact match configuration.
 class GoogleCloudContactcenterinsightsV1ExactMatchConfigResponse {
   /// Whether to consider case sensitivity when performing an exact match.
@@ -12,15 +13,15 @@ class GoogleCloudContactcenterinsightsV1ExactMatchConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['caseSensitive'] = caseSensitive;
-    return map;
+    return <String, dynamic>{
+      'caseSensitive': caseSensitive,
+    };
   }
 
-  factory GoogleCloudContactcenterinsightsV1ExactMatchConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudContactcenterinsightsV1ExactMatchConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1ExactMatchConfigResponse(
       caseSensitive: map['caseSensitive'] as bool,
     );
   }
 }
+

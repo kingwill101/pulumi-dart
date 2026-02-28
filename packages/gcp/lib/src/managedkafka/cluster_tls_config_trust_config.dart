@@ -15,24 +15,15 @@ class ClusterTlsConfigTrustConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final casConfigsValue = casConfigs;
-    if (casConfigsValue != null) {
-      map['casConfigs'] = pulumi.Input.encodeList<
-          ClusterTlsConfigTrustConfigCasConfig,
-          Map<String, dynamic>>(casConfigsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'casConfigs': ?casConfigs == null ? null : pulumi.Input.encodeList<ClusterTlsConfigTrustConfigCasConfig, Map<String, dynamic>>(casConfigs!, (value) => value.toMap()),
+    };
   }
 
   factory ClusterTlsConfigTrustConfig.fromMap(Map<String, dynamic> map) {
     return ClusterTlsConfigTrustConfig(
-      casConfigs: map['casConfigs'] == null
-          ? null
-          : pulumi.Input.decodeList<ClusterTlsConfigTrustConfigCasConfig>(
-              map['casConfigs'],
-              (value) => ClusterTlsConfigTrustConfigCasConfig.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      casConfigs: map['casConfigs'] == null ? null : pulumi.Input.decodeList<ClusterTlsConfigTrustConfigCasConfig>(map['casConfigs'], (value) => ClusterTlsConfigTrustConfigCasConfig.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

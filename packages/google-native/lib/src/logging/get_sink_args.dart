@@ -16,17 +16,15 @@ class GetSinkArgs {
   GetSinkArgs({
     String? project,
     required String sinkId,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        sinkId = pulumi.Input.asInput<String>(sinkId);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      sinkId = pulumi.Input.asInput<String>(sinkId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['sinkId'] = sinkId;
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'sinkId': sinkId,
+    };
   }
 
   factory GetSinkArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetSinkArgs {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WebAclRuleAction {
   /// valid values are: `BLOCK`, `ALLOW`, or `COUNT`
   final String type;
@@ -11,9 +12,9 @@ class WebAclRuleAction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory WebAclRuleAction.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class WebAclRuleAction {
     );
   }
 }
+

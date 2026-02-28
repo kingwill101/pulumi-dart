@@ -14,25 +14,15 @@ class GetListenerRuleConditionQueryString {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final valuesValue = values;
-    if (valuesValue != null) {
-      map['values'] = pulumi.Input.encodeList<
-          GetListenerRuleConditionQueryStringValue,
-          Map<String, dynamic>>(valuesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'values': ?values == null ? null : pulumi.Input.encodeList<GetListenerRuleConditionQueryStringValue, Map<String, dynamic>>(values!, (value) => value.toMap()),
+    };
   }
 
-  factory GetListenerRuleConditionQueryString.fromMap(
-      Map<String, dynamic> map) {
+  factory GetListenerRuleConditionQueryString.fromMap(Map<String, dynamic> map) {
     return GetListenerRuleConditionQueryString(
-      values: map['values'] == null
-          ? null
-          : pulumi.Input.decodeList<GetListenerRuleConditionQueryStringValue>(
-              map['values'],
-              (value) => GetListenerRuleConditionQueryStringValue.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      values: map['values'] == null ? null : pulumi.Input.decodeList<GetListenerRuleConditionQueryStringValue>(map['values'], (value) => GetListenerRuleConditionQueryStringValue.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

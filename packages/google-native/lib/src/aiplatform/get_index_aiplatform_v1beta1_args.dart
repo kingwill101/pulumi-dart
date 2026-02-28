@@ -19,19 +19,17 @@ class GetIndexAiplatformV1beta1Args {
     required String indexId,
     required String location,
     String? project,
-  })  : indexId = pulumi.Input.asInput<String>(indexId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      indexId = pulumi.Input.asInput<String>(indexId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['indexId'] = indexId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'indexId': indexId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetIndexAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetIndexAiplatformV1beta1Args {
     );
   }
 }
+

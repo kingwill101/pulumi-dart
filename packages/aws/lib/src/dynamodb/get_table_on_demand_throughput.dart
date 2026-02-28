@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTableOnDemandThroughput {
   final int maxReadRequestUnits;
   final int maxWriteRequestUnits;
@@ -13,10 +14,10 @@ class GetTableOnDemandThroughput {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maxReadRequestUnits'] = maxReadRequestUnits;
-    map['maxWriteRequestUnits'] = maxWriteRequestUnits;
-    return map;
+    return <String, dynamic>{
+      'maxReadRequestUnits': maxReadRequestUnits,
+      'maxWriteRequestUnits': maxWriteRequestUnits,
+    };
   }
 
   factory GetTableOnDemandThroughput.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class GetTableOnDemandThroughput {
     );
   }
 }
+

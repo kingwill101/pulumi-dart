@@ -12,7 +12,6 @@ class PerfSampleSeries extends pulumi.CustomResource {
   late final pulumi.Output<String> executionId;
   late final pulumi.Output<String> historyId;
   late final pulumi.Output<String> project;
-
   /// A sample series id
   late final pulumi.Output<String> sampleSeriesId;
   late final pulumi.Output<String> stepId;
@@ -31,8 +30,7 @@ class PerfSampleSeries extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.basicPerfSampleSeries =
-        registerOutput<BasicPerfSampleSeriesResponse>('basicPerfSampleSeries');
+    this.basicPerfSampleSeries = registerOutput<BasicPerfSampleSeriesResponse>('basicPerfSampleSeries');
     this.executionId = registerOutput<String>('executionId');
     this.historyId = registerOutput<String>('historyId');
     this.project = registerOutput<String>('project');

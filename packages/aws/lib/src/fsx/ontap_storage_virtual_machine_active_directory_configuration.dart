@@ -5,8 +5,7 @@ import 'ontap_storage_virtual_machine_active_directory_configuration_self_manage
 class OntapStorageVirtualMachineActiveDirectoryConfiguration {
   /// The NetBIOS name of the Active Directory computer object that will be created for your SVM. This is often the same as the SVM name but can be different. AWS limits to 15 characters because of standard NetBIOS naming limits.
   final String? netbiosName;
-  final OntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration?
-      selfManagedActiveDirectoryConfiguration;
+  final OntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration? selfManagedActiveDirectoryConfiguration;
 
   /// Creates a new [OntapStorageVirtualMachineActiveDirectoryConfiguration].
   /// [netbiosName] The NetBIOS name of the Active Directory computer object that will be created for your SVM. This is often the same as the SVM name but can be different. AWS limits to 15 characters because of standard NetBIOS naming limits.
@@ -17,32 +16,17 @@ class OntapStorageVirtualMachineActiveDirectoryConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final netbiosNameValue = netbiosName;
-    if (netbiosNameValue != null) {
-      map['netbiosName'] = netbiosNameValue;
-    }
-    final selfManagedActiveDirectoryConfigurationValue =
-        selfManagedActiveDirectoryConfiguration;
-    if (selfManagedActiveDirectoryConfigurationValue != null) {
-      map['selfManagedActiveDirectoryConfiguration'] =
-          selfManagedActiveDirectoryConfigurationValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'netbiosName': ?netbiosName,
+      'selfManagedActiveDirectoryConfiguration': ?selfManagedActiveDirectoryConfiguration == null ? null : selfManagedActiveDirectoryConfiguration!.toMap(),
+    };
   }
 
-  factory OntapStorageVirtualMachineActiveDirectoryConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory OntapStorageVirtualMachineActiveDirectoryConfiguration.fromMap(Map<String, dynamic> map) {
     return OntapStorageVirtualMachineActiveDirectoryConfiguration(
-      netbiosName:
-          map['netbiosName'] == null ? null : map['netbiosName'] as String,
-      selfManagedActiveDirectoryConfiguration: map[
-                  'selfManagedActiveDirectoryConfiguration'] ==
-              null
-          ? null
-          : OntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration
-              .fromMap((map['selfManagedActiveDirectoryConfiguration'] as Map)
-                  .cast<String, dynamic>()),
+      netbiosName: map['netbiosName'] == null ? null : map['netbiosName'] as String,
+      selfManagedActiveDirectoryConfiguration: map['selfManagedActiveDirectoryConfiguration'] == null ? null : OntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration.fromMap((map['selfManagedActiveDirectoryConfiguration'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

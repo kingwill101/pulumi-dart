@@ -6,13 +6,10 @@ import 'prevention_job_trigger_inspect_job_inspect_config_rule_set_rule_hotword_
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRule {
   /// The rule that specifies conditions when findings of infoTypes specified in InspectionRuleSet are removed from results.
   /// Structure is documented below.
-  final PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule?
-      exclusionRule;
-
+  final PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule? exclusionRule;
   /// Hotword-based detection rule.
   /// Structure is documented below.
-  final PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRule?
-      hotwordRule;
+  final PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRule? hotwordRule;
 
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigRuleSetRule].
   /// [exclusionRule] The rule that specifies conditions when findings of infoTypes specified in InspectionRuleSet are removed from results.
@@ -23,29 +20,17 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final exclusionRuleValue = exclusionRule;
-    if (exclusionRuleValue != null) {
-      map['exclusionRule'] = exclusionRuleValue.toMap();
-    }
-    final hotwordRuleValue = hotwordRule;
-    if (hotwordRuleValue != null) {
-      map['hotwordRule'] = hotwordRuleValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'exclusionRule': ?exclusionRule == null ? null : exclusionRule!.toMap(),
+      'hotwordRule': ?hotwordRule == null ? null : hotwordRule!.toMap(),
+    };
   }
 
-  factory PreventionJobTriggerInspectJobInspectConfigRuleSetRule.fromMap(
-      Map<String, dynamic> map) {
+  factory PreventionJobTriggerInspectJobInspectConfigRuleSetRule.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobInspectConfigRuleSetRule(
-      exclusionRule: map['exclusionRule'] == null
-          ? null
-          : PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule
-              .fromMap((map['exclusionRule'] as Map).cast<String, dynamic>()),
-      hotwordRule: map['hotwordRule'] == null
-          ? null
-          : PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRule
-              .fromMap((map['hotwordRule'] as Map).cast<String, dynamic>()),
+      exclusionRule: map['exclusionRule'] == null ? null : PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule.fromMap((map['exclusionRule'] as Map).cast<String, dynamic>()),
+      hotwordRule: map['hotwordRule'] == null ? null : PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRule.fromMap((map['hotwordRule'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

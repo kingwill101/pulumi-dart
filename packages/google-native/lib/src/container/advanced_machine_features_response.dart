@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Specifies options for controlling advanced machine features.
 class AdvancedMachineFeaturesResponse {
   /// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
@@ -12,9 +13,9 @@ class AdvancedMachineFeaturesResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['threadsPerCore'] = threadsPerCore;
-    return map;
+    return <String, dynamic>{
+      'threadsPerCore': threadsPerCore,
+    };
   }
 
   factory AdvancedMachineFeaturesResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class AdvancedMachineFeaturesResponse {
     );
   }
 }
+

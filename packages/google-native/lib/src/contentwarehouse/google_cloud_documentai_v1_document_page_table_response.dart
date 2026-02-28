@@ -10,18 +10,12 @@ import 'google_cloud_documentai_v1_document_provenance_response.dart';
 class GoogleCloudDocumentaiV1DocumentPageTableResponse {
   /// Body rows of the table.
   final List<GoogleCloudDocumentaiV1DocumentPageTableTableRowResponse> bodyRows;
-
   /// A list of detected languages together with confidence.
-  final List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse>
-      detectedLanguages;
-
+  final List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse> detectedLanguages;
   /// Header rows of the table.
-  final List<GoogleCloudDocumentaiV1DocumentPageTableTableRowResponse>
-      headerRows;
-
+  final List<GoogleCloudDocumentaiV1DocumentPageTableTableRowResponse> headerRows;
   /// Layout for Table.
   final GoogleCloudDocumentaiV1DocumentPageLayoutResponse layout;
-
   /// The history of this table.
   final GoogleCloudDocumentaiV1DocumentProvenanceResponse provenance;
 
@@ -40,45 +34,23 @@ class GoogleCloudDocumentaiV1DocumentPageTableResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bodyRows'] = pulumi.Input.encodeList<
-        GoogleCloudDocumentaiV1DocumentPageTableTableRowResponse,
-        Map<String, dynamic>>(bodyRows, (value) => value.toMap());
-    map['detectedLanguages'] = pulumi.Input.encodeList<
-        GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse,
-        Map<String, dynamic>>(detectedLanguages, (value) => value.toMap());
-    map['headerRows'] = pulumi.Input.encodeList<
-        GoogleCloudDocumentaiV1DocumentPageTableTableRowResponse,
-        Map<String, dynamic>>(headerRows, (value) => value.toMap());
-    map['layout'] = layout.toMap();
-    map['provenance'] = provenance.toMap();
-    return map;
+    return <String, dynamic>{
+      'bodyRows': pulumi.Input.encodeList<GoogleCloudDocumentaiV1DocumentPageTableTableRowResponse, Map<String, dynamic>>(bodyRows, (value) => value.toMap()),
+      'detectedLanguages': pulumi.Input.encodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse, Map<String, dynamic>>(detectedLanguages, (value) => value.toMap()),
+      'headerRows': pulumi.Input.encodeList<GoogleCloudDocumentaiV1DocumentPageTableTableRowResponse, Map<String, dynamic>>(headerRows, (value) => value.toMap()),
+      'layout': layout.toMap(),
+      'provenance': provenance.toMap(),
+    };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentPageTableResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentPageTableResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageTableResponse(
-      bodyRows: pulumi.Input.decodeList<
-              GoogleCloudDocumentaiV1DocumentPageTableTableRowResponse>(
-          map['bodyRows'],
-          (value) =>
-              GoogleCloudDocumentaiV1DocumentPageTableTableRowResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      detectedLanguages: pulumi.Input.decodeList<
-              GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse>(
-          map['detectedLanguages'],
-          (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse
-              .fromMap((value as Map).cast<String, dynamic>())),
-      headerRows: pulumi.Input.decodeList<
-              GoogleCloudDocumentaiV1DocumentPageTableTableRowResponse>(
-          map['headerRows'],
-          (value) =>
-              GoogleCloudDocumentaiV1DocumentPageTableTableRowResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      layout: GoogleCloudDocumentaiV1DocumentPageLayoutResponse.fromMap(
-          (map['layout'] as Map).cast<String, dynamic>()),
-      provenance: GoogleCloudDocumentaiV1DocumentProvenanceResponse.fromMap(
-          (map['provenance'] as Map).cast<String, dynamic>()),
+      bodyRows: pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageTableTableRowResponse>(map['bodyRows'], (value) => GoogleCloudDocumentaiV1DocumentPageTableTableRowResponse.fromMap((value as Map).cast<String, dynamic>())),
+      detectedLanguages: pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse>(map['detectedLanguages'], (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse.fromMap((value as Map).cast<String, dynamic>())),
+      headerRows: pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageTableTableRowResponse>(map['headerRows'], (value) => GoogleCloudDocumentaiV1DocumentPageTableTableRowResponse.fromMap((value as Map).cast<String, dynamic>())),
+      layout: GoogleCloudDocumentaiV1DocumentPageLayoutResponse.fromMap((map['layout'] as Map).cast<String, dynamic>()),
+      provenance: GoogleCloudDocumentaiV1DocumentProvenanceResponse.fromMap((map['provenance'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

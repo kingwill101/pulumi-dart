@@ -8,46 +8,31 @@ import 'google_type_postal_address_response.dart';
 /// Auto-naming is currently not supported for this resource.
 class Customer extends pulumi.CustomResource {
   late final pulumi.Output<String> accountId;
-
   /// Secondary contact email. You need to provide an alternate email to create different domains if a primary contact email already exists. Users will receive a notification with credentials when you create an admin.google.com account. Secondary emails are also recovery email addresses. Alternate emails are optional when you create Team customers.
   late final pulumi.Output<String> alternateEmail;
-
   /// Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
   late final pulumi.Output<String> channelPartnerId;
   late final pulumi.Output<String> channelPartnerLinkId;
-
   /// The customer's Cloud Identity ID if the customer has a Cloud Identity resource.
   late final pulumi.Output<String> cloudIdentityId;
-
   /// Cloud Identity information for the customer. Populated only if a Cloud Identity account exists for this customer.
-  late final pulumi.Output<GoogleCloudChannelV1CloudIdentityInfoResponse>
-      cloudIdentityInfo;
-
+  late final pulumi.Output<GoogleCloudChannelV1CloudIdentityInfoResponse> cloudIdentityInfo;
   /// Optional. External CRM ID for the customer. Populated only if a CRM ID exists for this customer.
   late final pulumi.Output<String> correlationId;
-
   /// Time when the customer was created.
   late final pulumi.Output<String> createTime;
-
   /// The customer's primary domain. Must match the primary contact email's domain.
   late final pulumi.Output<String> domain;
-
   /// Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
   late final pulumi.Output<String> languageCode;
-
   /// Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id}
   late final pulumi.Output<String> name;
-
   /// Name of the organization that the customer entity represents.
   late final pulumi.Output<String> orgDisplayName;
-
   /// The organization address for the customer. To enforce US laws and embargoes, we require a region, postal code, and address lines. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
   late final pulumi.Output<GoogleTypePostalAddressResponse> orgPostalAddress;
-
   /// Primary contact info.
-  late final pulumi.Output<GoogleCloudChannelV1ContactInfoResponse>
-      primaryContactInfo;
-
+  late final pulumi.Output<GoogleCloudChannelV1ContactInfoResponse> primaryContactInfo;
   /// Time when the customer was updated.
   late final pulumi.Output<String> updateTime;
 
@@ -70,20 +55,15 @@ class Customer extends pulumi.CustomResource {
     this.channelPartnerId = registerOutput<String>('channelPartnerId');
     this.channelPartnerLinkId = registerOutput<String>('channelPartnerLinkId');
     this.cloudIdentityId = registerOutput<String>('cloudIdentityId');
-    this.cloudIdentityInfo =
-        registerOutput<GoogleCloudChannelV1CloudIdentityInfoResponse>(
-            'cloudIdentityInfo');
+    this.cloudIdentityInfo = registerOutput<GoogleCloudChannelV1CloudIdentityInfoResponse>('cloudIdentityInfo');
     this.correlationId = registerOutput<String>('correlationId');
     this.createTime = registerOutput<String>('createTime');
     this.domain = registerOutput<String>('domain');
     this.languageCode = registerOutput<String>('languageCode');
     this.name = registerOutput<String>('name');
     this.orgDisplayName = registerOutput<String>('orgDisplayName');
-    this.orgPostalAddress =
-        registerOutput<GoogleTypePostalAddressResponse>('orgPostalAddress');
-    this.primaryContactInfo =
-        registerOutput<GoogleCloudChannelV1ContactInfoResponse>(
-            'primaryContactInfo');
+    this.orgPostalAddress = registerOutput<GoogleTypePostalAddressResponse>('orgPostalAddress');
+    this.primaryContactInfo = registerOutput<GoogleCloudChannelV1ContactInfoResponse>('primaryContactInfo');
     this.updateTime = registerOutput<String>('updateTime');
   }
 }

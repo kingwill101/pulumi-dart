@@ -15,18 +15,14 @@ class AutonomousDatabasePropertiesScheduledOperationDetail {
   /// SATURDAY
   /// SUNDAY
   final String? dayOfWeek;
-
   /// Represents a time of day. The date and time zone are either not significant
   /// or are specified elsewhere. An API may choose to allow leap seconds. Related
   /// types are google.type.Date and 'google.protobuf.Timestamp'.
-  final List<AutonomousDatabasePropertiesScheduledOperationDetailStartTime>?
-      startTimes;
-
+  final List<AutonomousDatabasePropertiesScheduledOperationDetailStartTime>? startTimes;
   /// Represents a time of day. The date and time zone are either not significant
   /// or are specified elsewhere. An API may choose to allow leap seconds. Related
   /// types are google.type.Date and 'google.protobuf.Timestamp'.
-  final List<AutonomousDatabasePropertiesScheduledOperationDetailStopTime>?
-      stopTimes;
+  final List<AutonomousDatabasePropertiesScheduledOperationDetailStopTime>? stopTimes;
 
   /// Creates a new [AutonomousDatabasePropertiesScheduledOperationDetail].
   /// [dayOfWeek] Possible values:
@@ -39,46 +35,19 @@ class AutonomousDatabasePropertiesScheduledOperationDetail {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dayOfWeekValue = dayOfWeek;
-    if (dayOfWeekValue != null) {
-      map['dayOfWeek'] = dayOfWeekValue;
-    }
-    final startTimesValue = startTimes;
-    if (startTimesValue != null) {
-      map['startTimes'] = pulumi.Input.encodeList<
-          AutonomousDatabasePropertiesScheduledOperationDetailStartTime,
-          Map<String, dynamic>>(startTimesValue, (value) => value.toMap());
-    }
-    final stopTimesValue = stopTimes;
-    if (stopTimesValue != null) {
-      map['stopTimes'] = pulumi.Input.encodeList<
-          AutonomousDatabasePropertiesScheduledOperationDetailStopTime,
-          Map<String, dynamic>>(stopTimesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'dayOfWeek': ?dayOfWeek,
+      'startTimes': ?startTimes == null ? null : pulumi.Input.encodeList<AutonomousDatabasePropertiesScheduledOperationDetailStartTime, Map<String, dynamic>>(startTimes!, (value) => value.toMap()),
+      'stopTimes': ?stopTimes == null ? null : pulumi.Input.encodeList<AutonomousDatabasePropertiesScheduledOperationDetailStopTime, Map<String, dynamic>>(stopTimes!, (value) => value.toMap()),
+    };
   }
 
-  factory AutonomousDatabasePropertiesScheduledOperationDetail.fromMap(
-      Map<String, dynamic> map) {
+  factory AutonomousDatabasePropertiesScheduledOperationDetail.fromMap(Map<String, dynamic> map) {
     return AutonomousDatabasePropertiesScheduledOperationDetail(
       dayOfWeek: map['dayOfWeek'] == null ? null : map['dayOfWeek'] as String,
-      startTimes: map['startTimes'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  AutonomousDatabasePropertiesScheduledOperationDetailStartTime>(
-              map['startTimes'],
-              (value) =>
-                  AutonomousDatabasePropertiesScheduledOperationDetailStartTime
-                      .fromMap((value as Map).cast<String, dynamic>())),
-      stopTimes: map['stopTimes'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  AutonomousDatabasePropertiesScheduledOperationDetailStopTime>(
-              map['stopTimes'],
-              (value) =>
-                  AutonomousDatabasePropertiesScheduledOperationDetailStopTime
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      startTimes: map['startTimes'] == null ? null : pulumi.Input.decodeList<AutonomousDatabasePropertiesScheduledOperationDetailStartTime>(map['startTimes'], (value) => AutonomousDatabasePropertiesScheduledOperationDetailStartTime.fromMap((value as Map).cast<String, dynamic>())),
+      stopTimes: map['stopTimes'] == null ? null : pulumi.Input.decodeList<AutonomousDatabasePropertiesScheduledOperationDetailStopTime>(map['stopTimes'], (value) => AutonomousDatabasePropertiesScheduledOperationDetailStopTime.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

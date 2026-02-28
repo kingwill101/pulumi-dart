@@ -141,30 +141,22 @@ import 'link_bandwidth.dart';
 class Link extends pulumi.CustomResource {
   /// Link ARN.
   late final pulumi.Output<String> arn;
-
   /// Upload speed and download speed in Mbps. See below.
   late final pulumi.Output<LinkBandwidth> bandwidth;
-
   /// Description of the link.
   late final pulumi.Output<String?> description;
-
   /// ID of the global network.
   late final pulumi.Output<String> globalNetworkId;
-
   /// Provider of the link.
   late final pulumi.Output<String?> providerName;
-
   /// ID of the site.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> siteId;
-
   /// Key-value tags for the link. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Type of the link.
   late final pulumi.Output<String?> type;
 

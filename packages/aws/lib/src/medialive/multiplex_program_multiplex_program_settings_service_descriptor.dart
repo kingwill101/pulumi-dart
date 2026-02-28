@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MultiplexProgramMultiplexProgramSettingsServiceDescriptor {
   /// Unique provider name.
   final String providerName;
-
   /// Unique service name.
   final String serviceName;
 
@@ -16,17 +16,17 @@ class MultiplexProgramMultiplexProgramSettingsServiceDescriptor {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['providerName'] = providerName;
-    map['serviceName'] = serviceName;
-    return map;
+    return <String, dynamic>{
+      'providerName': providerName,
+      'serviceName': serviceName,
+    };
   }
 
-  factory MultiplexProgramMultiplexProgramSettingsServiceDescriptor.fromMap(
-      Map<String, dynamic> map) {
+  factory MultiplexProgramMultiplexProgramSettingsServiceDescriptor.fromMap(Map<String, dynamic> map) {
     return MultiplexProgramMultiplexProgramSettingsServiceDescriptor(
       providerName: map['providerName'] as String,
       serviceName: map['serviceName'] as String,
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonth {
   /// Specifies the day of the week. Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
   final String dayOfWeek;
-
   /// WeekOfMonth enumerates possible weeks in the month, e.g. the first, third, or last week of the month. Possible values: ["WEEK_OF_MONTH_UNSPECIFIED", "FIRST", "SECOND", "THIRD", "FOURTH", "LAST"]
   final String weekOfMonth;
 
@@ -16,17 +16,17 @@ class GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonth {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dayOfWeek'] = dayOfWeek;
-    map['weekOfMonth'] = weekOfMonth;
-    return map;
+    return <String, dynamic>{
+      'dayOfWeek': dayOfWeek,
+      'weekOfMonth': weekOfMonth,
+    };
   }
 
-  factory GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonth.fromMap(
-      Map<String, dynamic> map) {
+  factory GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonth.fromMap(Map<String, dynamic> map) {
     return GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonth(
       dayOfWeek: map['dayOfWeek'] as String,
       weekOfMonth: map['weekOfMonth'] as String,
     );
   }
 }
+

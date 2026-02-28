@@ -1,18 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getStreamKey.
 class GetStreamKeyResult {
   /// ARN of the Stream Key.
   final String arn;
   final String channelArn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
-
   /// Map of tags assigned to the resource.
   final Map<String, String> tags;
-
   /// Stream Key value.
   final String value;
 
@@ -33,14 +31,14 @@ class GetStreamKeyResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['channelArn'] = channelArn;
-    map['id'] = id;
-    map['region'] = region;
-    map['tags'] = tags;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'channelArn': channelArn,
+      'id': id,
+      'region': region,
+      'tags': tags,
+      'value': value,
+    };
   }
 
   factory GetStreamKeyResult.fromMap(Map<String, dynamic> map) {
@@ -54,3 +52,4 @@ class GetStreamKeyResult {
     );
   }
 }
+

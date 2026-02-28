@@ -7,7 +7,6 @@ import 'individual_outcome_response.dart';
 class PrimaryStepResponse {
   /// Step Id and outcome of each individual step.
   final List<IndividualOutcomeResponse> individualOutcome;
-
   /// Rollup test status of multiple steps that were run with the same configuration as a group.
   final String rollUp;
 
@@ -20,21 +19,17 @@ class PrimaryStepResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['individualOutcome'] = pulumi.Input.encodeList<
-        IndividualOutcomeResponse,
-        Map<String, dynamic>>(individualOutcome, (value) => value.toMap());
-    map['rollUp'] = rollUp;
-    return map;
+    return <String, dynamic>{
+      'individualOutcome': pulumi.Input.encodeList<IndividualOutcomeResponse, Map<String, dynamic>>(individualOutcome, (value) => value.toMap()),
+      'rollUp': rollUp,
+    };
   }
 
   factory PrimaryStepResponse.fromMap(Map<String, dynamic> map) {
     return PrimaryStepResponse(
-      individualOutcome: pulumi.Input.decodeList<IndividualOutcomeResponse>(
-          map['individualOutcome'],
-          (value) => IndividualOutcomeResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      individualOutcome: pulumi.Input.decodeList<IndividualOutcomeResponse>(map['individualOutcome'], (value) => IndividualOutcomeResponse.fromMap((value as Map).cast<String, dynamic>())),
       rollUp: map['rollUp'] as String,
     );
   }
 }
+

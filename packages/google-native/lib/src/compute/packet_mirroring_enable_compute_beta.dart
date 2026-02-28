@@ -12,7 +12,7 @@ enum PacketMirroringEnableComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown PacketMirroringEnableComputeBeta value: $value');
+    throw ArgumentError('Unknown PacketMirroringEnableComputeBeta value: $value');
   }
 }
+

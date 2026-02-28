@@ -9,14 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FolderExclusionArgs {
   /// Optional. A description of this exclusion.
   final pulumi.Input<String>? description;
-
   /// Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field.
   final pulumi.Input<bool>? disabled;
-
   /// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries.For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)
   final pulumi.Input<String> filter;
   final pulumi.Input<String> folderId;
-
   /// A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
   final pulumi.Input<String>? name;
 
@@ -32,35 +29,26 @@ class FolderExclusionArgs {
     required String filter,
     required String folderId,
     String? name,
-  })  : description = pulumi.Input.asOptionalInput<String>(description),
-        disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-        filter = pulumi.Input.asInput<String>(filter),
-        folderId = pulumi.Input.asInput<String>(folderId),
-        name = pulumi.Input.asOptionalInput<String>(name);
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
+      filter = pulumi.Input.asInput<String>(filter),
+      folderId = pulumi.Input.asInput<String>(folderId),
+      name = pulumi.Input.asOptionalInput<String>(name);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final disabledValue = disabled;
-    if (disabledValue != null) {
-      map['disabled'] = disabledValue;
-    }
-    map['filter'] = filter;
-    map['folderId'] = folderId;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'disabled': ?disabled,
+      'filter': filter,
+      'folderId': folderId,
+      'name': ?name,
+    };
   }
 
   factory FolderExclusionArgs.fromMap(Map<String, dynamic> map) {
     return FolderExclusionArgs(
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       disabled: map['disabled'] == null ? null : map['disabled'] as bool,
       filter: map['filter'] as String,
       folderId: map['folderId'] as String,
@@ -68,3 +56,4 @@ class FolderExclusionArgs {
     );
   }
 }
+

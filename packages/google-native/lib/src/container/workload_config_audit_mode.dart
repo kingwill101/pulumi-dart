@@ -18,3 +18,4 @@ enum WorkloadConfigAuditMode {
     throw ArgumentError('Unknown WorkloadConfigAuditMode value: $value');
   }
 }
+

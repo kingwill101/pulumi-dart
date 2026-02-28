@@ -5,8 +5,7 @@ import 'bare_metal_cluster_load_balancer_metal_lb_config_load_balancer_node_pool
 class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfig {
   /// The generic configuration for a node pool running a load balancer.
   /// Structure is documented below.
-  final BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfig?
-      nodePoolConfig;
+  final BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfig? nodePoolConfig;
 
   /// Creates a new [BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfig].
   /// [nodePoolConfig] The generic configuration for a node pool running a load balancer.
@@ -15,21 +14,15 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nodePoolConfigValue = nodePoolConfig;
-    if (nodePoolConfigValue != null) {
-      map['nodePoolConfig'] = nodePoolConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'nodePoolConfig': ?nodePoolConfig == null ? null : nodePoolConfig!.toMap(),
+    };
   }
 
-  factory BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfig(
-      nodePoolConfig: map['nodePoolConfig'] == null
-          ? null
-          : BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfig
-              .fromMap((map['nodePoolConfig'] as Map).cast<String, dynamic>()),
+      nodePoolConfig: map['nodePoolConfig'] == null ? null : BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfig.fromMap((map['nodePoolConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

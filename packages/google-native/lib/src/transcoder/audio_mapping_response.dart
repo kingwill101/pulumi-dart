@@ -1,22 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs.
 class AudioMappingResponse {
   /// The EditAtom.key that references the atom with audio inputs in the JobConfig.edit_list.
   final String atomKey;
-
   /// Audio volume control in dB. Negative values decrease volume, positive values increase. The default is 0.
   final double gainDb;
-
   /// The zero-based index of the channel in the input audio stream.
   final int inputChannel;
-
   /// The Input.key that identifies the input file.
   final String inputKey;
-
   /// The zero-based index of the track in the input file.
   final int inputTrack;
-
   /// The zero-based index of the channel in the output audio stream.
   final int outputChannel;
 
@@ -37,14 +33,14 @@ class AudioMappingResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['atomKey'] = atomKey;
-    map['gainDb'] = gainDb;
-    map['inputChannel'] = inputChannel;
-    map['inputKey'] = inputKey;
-    map['inputTrack'] = inputTrack;
-    map['outputChannel'] = outputChannel;
-    return map;
+    return <String, dynamic>{
+      'atomKey': atomKey,
+      'gainDb': gainDb,
+      'inputChannel': inputChannel,
+      'inputKey': inputKey,
+      'inputTrack': inputTrack,
+      'outputChannel': outputChannel,
+    };
   }
 
   factory AudioMappingResponse.fromMap(Map<String, dynamic> map) {
@@ -58,3 +54,4 @@ class AudioMappingResponse {
     );
   }
 }
+

@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Edit atom.
 class EditAtom {
   /// End time in seconds for the atom, relative to the input file timeline. When `end_time_offset` is not specified, the `inputs` are used until the end of the atom.
   final String? endTimeOffset;
-
   /// List of Input.key values identifying files that should be used in this atom. The listed `inputs` must have the same timeline.
   final List<String>? inputs;
-
   /// A unique key for this atom. Must be specified when using advanced mapping.
   final String? key;
-
   /// Start time in seconds for the atom, relative to the input file timeline. The default is `0s`.
   final String? startTimeOffset;
 
@@ -27,36 +25,21 @@ class EditAtom {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final endTimeOffsetValue = endTimeOffset;
-    if (endTimeOffsetValue != null) {
-      map['endTimeOffset'] = endTimeOffsetValue;
-    }
-    final inputsValue = inputs;
-    if (inputsValue != null) {
-      map['inputs'] = inputsValue;
-    }
-    final keyValue = key;
-    if (keyValue != null) {
-      map['key'] = keyValue;
-    }
-    final startTimeOffsetValue = startTimeOffset;
-    if (startTimeOffsetValue != null) {
-      map['startTimeOffset'] = startTimeOffsetValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'endTimeOffset': ?endTimeOffset,
+      'inputs': ?inputs,
+      'key': ?key,
+      'startTimeOffset': ?startTimeOffset,
+    };
   }
 
   factory EditAtom.fromMap(Map<String, dynamic> map) {
     return EditAtom(
-      endTimeOffset:
-          map['endTimeOffset'] == null ? null : map['endTimeOffset'] as String,
-      inputs:
-          map['inputs'] == null ? null : (map['inputs'] as List).cast<String>(),
+      endTimeOffset: map['endTimeOffset'] == null ? null : map['endTimeOffset'] as String,
+      inputs: map['inputs'] == null ? null : (map['inputs'] as List).cast<String>(),
       key: map['key'] == null ? null : map['key'] as String,
-      startTimeOffset: map['startTimeOffset'] == null
-          ? null
-          : map['startTimeOffset'] as String,
+      startTimeOffset: map['startTimeOffset'] == null ? null : map['startTimeOffset'] as String,
     );
   }
 }
+

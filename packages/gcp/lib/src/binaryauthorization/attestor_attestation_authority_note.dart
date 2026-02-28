@@ -15,7 +15,6 @@ class AttestorAttestationAuthorityNote {
   /// account email; future versions may use an email based on a
   /// different naming pattern.
   final String? delegationServiceAccountEmail;
-
   /// The resource name of a ATTESTATION_AUTHORITY Note, created by the
   /// user. If the Note is in a different project from the Attestor, it
   /// should be specified in the format `projects/*/notes/*` (or the legacy
@@ -24,7 +23,6 @@ class AttestorAttestationAuthorityNote {
   /// ATTESTATION_AUTHORITY Occurrence that names a container image
   /// and that links to this Note.
   final String noteReference;
-
   /// Public keys that verify attestations signed by this attestor. This
   /// field may be updated.
   /// If this field is non-empty, one of the specified public keys must
@@ -46,34 +44,19 @@ class AttestorAttestationAuthorityNote {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final delegationServiceAccountEmailValue = delegationServiceAccountEmail;
-    if (delegationServiceAccountEmailValue != null) {
-      map['delegationServiceAccountEmail'] = delegationServiceAccountEmailValue;
-    }
-    map['noteReference'] = noteReference;
-    final publicKeysValue = publicKeys;
-    if (publicKeysValue != null) {
-      map['publicKeys'] = pulumi.Input.encodeList<
-          AttestorAttestationAuthorityNotePublicKey,
-          Map<String, dynamic>>(publicKeysValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'delegationServiceAccountEmail': ?delegationServiceAccountEmail,
+      'noteReference': noteReference,
+      'publicKeys': ?publicKeys == null ? null : pulumi.Input.encodeList<AttestorAttestationAuthorityNotePublicKey, Map<String, dynamic>>(publicKeys!, (value) => value.toMap()),
+    };
   }
 
   factory AttestorAttestationAuthorityNote.fromMap(Map<String, dynamic> map) {
     return AttestorAttestationAuthorityNote(
-      delegationServiceAccountEmail:
-          map['delegationServiceAccountEmail'] == null
-              ? null
-              : map['delegationServiceAccountEmail'] as String,
+      delegationServiceAccountEmail: map['delegationServiceAccountEmail'] == null ? null : map['delegationServiceAccountEmail'] as String,
       noteReference: map['noteReference'] as String,
-      publicKeys: map['publicKeys'] == null
-          ? null
-          : pulumi.Input.decodeList<AttestorAttestationAuthorityNotePublicKey>(
-              map['publicKeys'],
-              (value) => AttestorAttestationAuthorityNotePublicKey.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      publicKeys: map['publicKeys'] == null ? null : pulumi.Input.decodeList<AttestorAttestationAuthorityNotePublicKey>(map['publicKeys'], (value) => AttestorAttestationAuthorityNotePublicKey.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

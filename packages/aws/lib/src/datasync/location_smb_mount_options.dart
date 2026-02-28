@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LocationSmbMountOptions {
   /// The specific SMB version that you want DataSync to use for mounting your SMB share. Valid values: `AUTOMATIC`, `SMB2`, and `SMB3`. Default: `AUTOMATIC`
   final String? version;
@@ -11,12 +12,9 @@ class LocationSmbMountOptions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final versionValue = version;
-    if (versionValue != null) {
-      map['version'] = versionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'version': ?version,
+    };
   }
 
   factory LocationSmbMountOptions.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class LocationSmbMountOptions {
     );
   }
 }
+

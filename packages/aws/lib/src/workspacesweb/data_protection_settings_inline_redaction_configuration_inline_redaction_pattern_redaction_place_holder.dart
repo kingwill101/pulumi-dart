@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolder {
   /// The redaction placeholder text that will replace the redacted text in session for the custom text redaction placeholder type.
   final String? redactionPlaceHolderText;
-
   /// The redaction placeholder type that will replace the redacted text in session. Currently, only `CustomText` is supported.
   final String redactionPlaceHolderType;
 
@@ -16,22 +16,17 @@ class DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRe
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final redactionPlaceHolderTextValue = redactionPlaceHolderText;
-    if (redactionPlaceHolderTextValue != null) {
-      map['redactionPlaceHolderText'] = redactionPlaceHolderTextValue;
-    }
-    map['redactionPlaceHolderType'] = redactionPlaceHolderType;
-    return map;
+    return <String, dynamic>{
+      'redactionPlaceHolderText': ?redactionPlaceHolderText,
+      'redactionPlaceHolderType': redactionPlaceHolderType,
+    };
   }
 
-  factory DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolder.fromMap(
-      Map<String, dynamic> map) {
+  factory DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolder.fromMap(Map<String, dynamic> map) {
     return DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolder(
-      redactionPlaceHolderText: map['redactionPlaceHolderText'] == null
-          ? null
-          : map['redactionPlaceHolderText'] as String,
+      redactionPlaceHolderText: map['redactionPlaceHolderText'] == null ? null : map['redactionPlaceHolderText'] as String,
       redactionPlaceHolderType: map['redactionPlaceHolderType'] as String,
     );
   }
 }
+

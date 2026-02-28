@@ -7,15 +7,13 @@ enum GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult {
   const GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult(this.value);
   final String value;
 
-  static GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult fromValue(
-      String value) {
-    for (final item
-        in GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult.values) {
+  static GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult fromValue(String value) {
+    for (final item in GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult value: $value');
+    throw ArgumentError('Unknown GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult value: $value');
   }
 }
+

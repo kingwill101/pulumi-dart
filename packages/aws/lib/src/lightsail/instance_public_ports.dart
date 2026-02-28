@@ -289,12 +289,10 @@ import 'instance_public_ports_port_info.dart';
 class InstancePublicPorts extends pulumi.CustomResource {
   /// Name of the instance for which to open ports.
   late final pulumi.Output<String> instanceName;
-
   /// Descriptor of the ports to open for the specified instance. AWS closes all currently open ports that are not included in this argument. See `port_info` Block for details.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<List<InstancePublicPortsPortInfo>> portInfos;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -313,8 +311,7 @@ class InstancePublicPorts extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.instanceName = registerOutput<String>('instanceName');
-    this.portInfos =
-        registerOutput<List<InstancePublicPortsPortInfo>>('portInfos');
+    this.portInfos = registerOutput<List<InstancePublicPortsPortInfo>>('portInfos');
     this.region = registerOutput<String>('region');
   }
 }

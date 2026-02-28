@@ -19,3 +19,4 @@ enum ImportDataFileFormat {
     throw ArgumentError('Unknown ImportDataFileFormat value: $value');
   }
 }
+

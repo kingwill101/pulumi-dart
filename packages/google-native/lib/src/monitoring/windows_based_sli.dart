@@ -7,16 +7,12 @@ import 'performance_threshold.dart';
 class WindowsBasedSli {
   /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries with ValueType = BOOL. The window is good if any true values appear in the window.
   final String? goodBadMetricFilter;
-
   /// A window is good if its performance is high enough.
   final PerformanceThreshold? goodTotalRatioThreshold;
-
   /// A window is good if the metric's value is in a good range, averaged across returned streams.
   final MetricRange? metricMeanInRange;
-
   /// A window is good if the metric's value is in a good range, summed across returned streams.
   final MetricRange? metricSumInRange;
-
   /// Duration over which window quality is evaluated. Must be an integer fraction of a day and at least 60s.
   final String? windowPeriod;
 
@@ -35,49 +31,23 @@ class WindowsBasedSli {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final goodBadMetricFilterValue = goodBadMetricFilter;
-    if (goodBadMetricFilterValue != null) {
-      map['goodBadMetricFilter'] = goodBadMetricFilterValue;
-    }
-    final goodTotalRatioThresholdValue = goodTotalRatioThreshold;
-    if (goodTotalRatioThresholdValue != null) {
-      map['goodTotalRatioThreshold'] = goodTotalRatioThresholdValue.toMap();
-    }
-    final metricMeanInRangeValue = metricMeanInRange;
-    if (metricMeanInRangeValue != null) {
-      map['metricMeanInRange'] = metricMeanInRangeValue.toMap();
-    }
-    final metricSumInRangeValue = metricSumInRange;
-    if (metricSumInRangeValue != null) {
-      map['metricSumInRange'] = metricSumInRangeValue.toMap();
-    }
-    final windowPeriodValue = windowPeriod;
-    if (windowPeriodValue != null) {
-      map['windowPeriod'] = windowPeriodValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'goodBadMetricFilter': ?goodBadMetricFilter,
+      'goodTotalRatioThreshold': ?goodTotalRatioThreshold == null ? null : goodTotalRatioThreshold!.toMap(),
+      'metricMeanInRange': ?metricMeanInRange == null ? null : metricMeanInRange!.toMap(),
+      'metricSumInRange': ?metricSumInRange == null ? null : metricSumInRange!.toMap(),
+      'windowPeriod': ?windowPeriod,
+    };
   }
 
   factory WindowsBasedSli.fromMap(Map<String, dynamic> map) {
     return WindowsBasedSli(
-      goodBadMetricFilter: map['goodBadMetricFilter'] == null
-          ? null
-          : map['goodBadMetricFilter'] as String,
-      goodTotalRatioThreshold: map['goodTotalRatioThreshold'] == null
-          ? null
-          : PerformanceThreshold.fromMap(
-              (map['goodTotalRatioThreshold'] as Map).cast<String, dynamic>()),
-      metricMeanInRange: map['metricMeanInRange'] == null
-          ? null
-          : MetricRange.fromMap(
-              (map['metricMeanInRange'] as Map).cast<String, dynamic>()),
-      metricSumInRange: map['metricSumInRange'] == null
-          ? null
-          : MetricRange.fromMap(
-              (map['metricSumInRange'] as Map).cast<String, dynamic>()),
-      windowPeriod:
-          map['windowPeriod'] == null ? null : map['windowPeriod'] as String,
+      goodBadMetricFilter: map['goodBadMetricFilter'] == null ? null : map['goodBadMetricFilter'] as String,
+      goodTotalRatioThreshold: map['goodTotalRatioThreshold'] == null ? null : PerformanceThreshold.fromMap((map['goodTotalRatioThreshold'] as Map).cast<String, dynamic>()),
+      metricMeanInRange: map['metricMeanInRange'] == null ? null : MetricRange.fromMap((map['metricMeanInRange'] as Map).cast<String, dynamic>()),
+      metricSumInRange: map['metricSumInRange'] == null ? null : MetricRange.fromMap((map['metricSumInRange'] as Map).cast<String, dynamic>()),
+      windowPeriod: map['windowPeriod'] == null ? null : map['windowPeriod'] as String,
     );
   }
 }
+

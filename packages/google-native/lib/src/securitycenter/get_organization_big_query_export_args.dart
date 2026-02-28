@@ -16,14 +16,15 @@ class GetOrganizationBigQueryExportArgs {
   GetOrganizationBigQueryExportArgs({
     required String bigQueryExportId,
     required String organizationId,
-  })  : bigQueryExportId = pulumi.Input.asInput<String>(bigQueryExportId),
-        organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) :
+      bigQueryExportId = pulumi.Input.asInput<String>(bigQueryExportId),
+      organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bigQueryExportId'] = bigQueryExportId;
-    map['organizationId'] = organizationId;
-    return map;
+    return <String, dynamic>{
+      'bigQueryExportId': bigQueryExportId,
+      'organizationId': organizationId,
+    };
   }
 
   factory GetOrganizationBigQueryExportArgs.fromMap(Map<String, dynamic> map) {
@@ -33,3 +34,4 @@ class GetOrganizationBigQueryExportArgs {
     );
   }
 }
+

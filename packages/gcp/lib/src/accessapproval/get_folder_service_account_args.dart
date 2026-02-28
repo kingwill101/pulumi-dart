@@ -14,12 +14,13 @@ class GetFolderServiceAccountArgs {
   /// [folderId] The folder ID the service account was created for.
   GetFolderServiceAccountArgs({
     required String folderId,
-  }) : folderId = pulumi.Input.asInput<String>(folderId);
+  }) :
+      folderId = pulumi.Input.asInput<String>(folderId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['folderId'] = folderId;
-    return map;
+    return <String, dynamic>{
+      'folderId': folderId,
+    };
   }
 
   factory GetFolderServiceAccountArgs.fromMap(Map<String, dynamic> map) {
@@ -28,3 +29,4 @@ class GetFolderServiceAccountArgs {
     );
   }
 }
+

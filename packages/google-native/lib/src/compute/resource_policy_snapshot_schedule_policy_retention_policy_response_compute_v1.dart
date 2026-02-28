@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Policy for retention of scheduled snapshots.
 class ResourcePolicySnapshotSchedulePolicyRetentionPolicyResponseComputeV1 {
   /// Maximum age of the snapshot that is allowed to be kept.
   final int maxRetentionDays;
-
   /// Specifies the behavior to apply to scheduled snapshots when the source disk is deleted.
   final String onSourceDiskDelete;
 
@@ -17,17 +17,17 @@ class ResourcePolicySnapshotSchedulePolicyRetentionPolicyResponseComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maxRetentionDays'] = maxRetentionDays;
-    map['onSourceDiskDelete'] = onSourceDiskDelete;
-    return map;
+    return <String, dynamic>{
+      'maxRetentionDays': maxRetentionDays,
+      'onSourceDiskDelete': onSourceDiskDelete,
+    };
   }
 
-  factory ResourcePolicySnapshotSchedulePolicyRetentionPolicyResponseComputeV1.fromMap(
-      Map<String, dynamic> map) {
+  factory ResourcePolicySnapshotSchedulePolicyRetentionPolicyResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return ResourcePolicySnapshotSchedulePolicyRetentionPolicyResponseComputeV1(
       maxRetentionDays: map['maxRetentionDays'] as int,
       onSourceDiskDelete: map['onSourceDiskDelete'] as String,
     );
   }
 }
+

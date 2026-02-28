@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterStorageConfigBlockStorage {
   /// Indicates if the block storage capability is enabled on your EKS Auto Mode cluster. If the block storage capability is enabled, EKS Auto Mode will create and delete block storage volumes in your Amazon Web Services account.
   final bool? enabled;
@@ -11,12 +12,9 @@ class ClusterStorageConfigBlockStorage {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory ClusterStorageConfigBlockStorage.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class ClusterStorageConfigBlockStorage {
     );
   }
 }
+

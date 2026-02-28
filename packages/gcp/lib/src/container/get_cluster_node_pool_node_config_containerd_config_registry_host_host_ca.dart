@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCa {
   /// URI for the Secret Manager secret that hosts the certificate.
   final String gcpSecretManagerSecretUri;
@@ -11,15 +12,15 @@ class GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCa {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gcpSecretManagerSecretUri'] = gcpSecretManagerSecretUri;
-    return map;
+    return <String, dynamic>{
+      'gcpSecretManagerSecretUri': gcpSecretManagerSecretUri,
+    };
   }
 
-  factory GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCa.fromMap(
-      Map<String, dynamic> map) {
+  factory GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCa.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCa(
       gcpSecretManagerSecretUri: map['gcpSecretManagerSecretUri'] as String,
     );
   }
 }
+

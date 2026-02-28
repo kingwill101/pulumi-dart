@@ -14,21 +14,15 @@ class GetVirtualClusterContainerProviderInfo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['eksInfos'] = pulumi.Input.encodeList<
-        GetVirtualClusterContainerProviderInfoEksInfo,
-        Map<String, dynamic>>(eksInfos, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'eksInfos': pulumi.Input.encodeList<GetVirtualClusterContainerProviderInfoEksInfo, Map<String, dynamic>>(eksInfos, (value) => value.toMap()),
+    };
   }
 
-  factory GetVirtualClusterContainerProviderInfo.fromMap(
-      Map<String, dynamic> map) {
+  factory GetVirtualClusterContainerProviderInfo.fromMap(Map<String, dynamic> map) {
     return GetVirtualClusterContainerProviderInfo(
-      eksInfos: pulumi.Input.decodeList<
-              GetVirtualClusterContainerProviderInfoEksInfo>(
-          map['eksInfos'],
-          (value) => GetVirtualClusterContainerProviderInfoEksInfo.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      eksInfos: pulumi.Input.decodeList<GetVirtualClusterContainerProviderInfoEksInfo>(map['eksInfos'], (value) => GetVirtualClusterContainerProviderInfoEksInfo.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

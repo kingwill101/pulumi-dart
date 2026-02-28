@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class OptInPrincipal {
   final String dataLakePrincipalIdentifier;
 
@@ -10,9 +11,9 @@ class OptInPrincipal {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dataLakePrincipalIdentifier'] = dataLakePrincipalIdentifier;
-    return map;
+    return <String, dynamic>{
+      'dataLakePrincipalIdentifier': dataLakePrincipalIdentifier,
+    };
   }
 
   factory OptInPrincipal.fromMap(Map<String, dynamic> map) {
@@ -21,3 +22,4 @@ class OptInPrincipal {
     );
   }
 }
+

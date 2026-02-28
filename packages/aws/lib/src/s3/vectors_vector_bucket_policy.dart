@@ -202,10 +202,8 @@ import 'vectors_vector_bucket_policy_args.dart';
 class VectorsVectorBucketPolicy extends pulumi.CustomResource {
   /// The policy document.
   late final pulumi.Output<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ARN of the vector bucket.
   ///
   /// The following arguments are optional:

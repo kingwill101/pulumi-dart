@@ -12,21 +12,15 @@ class InternetMonitorInternetMeasurementsLogDelivery {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final s3ConfigValue = s3Config;
-    if (s3ConfigValue != null) {
-      map['s3Config'] = s3ConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      's3Config': ?s3Config == null ? null : s3Config!.toMap(),
+    };
   }
 
-  factory InternetMonitorInternetMeasurementsLogDelivery.fromMap(
-      Map<String, dynamic> map) {
+  factory InternetMonitorInternetMeasurementsLogDelivery.fromMap(Map<String, dynamic> map) {
     return InternetMonitorInternetMeasurementsLogDelivery(
-      s3Config: map['s3Config'] == null
-          ? null
-          : InternetMonitorInternetMeasurementsLogDeliveryS3Config.fromMap(
-              (map['s3Config'] as Map).cast<String, dynamic>()),
+      s3Config: map['s3Config'] == null ? null : InternetMonitorInternetMeasurementsLogDeliveryS3Config.fromMap((map['s3Config'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

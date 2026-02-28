@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FeatureEvaluationRule {
   /// The name for the new feature. Minimum length of `1`. Maximum length of `127`.
   final String? name;
-
   /// This value is `aws.evidently.splits` if this is an evaluation rule for a launch, and it is `aws.evidently.onlineab` if this is an evaluation rule for an experiment.
   final String? type;
 
@@ -16,16 +16,10 @@ class FeatureEvaluationRule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+      'type': ?type,
+    };
   }
 
   factory FeatureEvaluationRule.fromMap(Map<String, dynamic> map) {
@@ -35,3 +29,4 @@ class FeatureEvaluationRule {
     );
   }
 }
+

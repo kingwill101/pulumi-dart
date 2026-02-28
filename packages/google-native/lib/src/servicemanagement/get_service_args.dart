@@ -13,12 +13,13 @@ class GetServiceArgs {
   /// [serviceName] Required.
   GetServiceArgs({
     required String serviceName,
-  }) : serviceName = pulumi.Input.asInput<String>(serviceName);
+  }) :
+      serviceName = pulumi.Input.asInput<String>(serviceName);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['serviceName'] = serviceName;
-    return map;
+    return <String, dynamic>{
+      'serviceName': serviceName,
+    };
   }
 
   factory GetServiceArgs.fromMap(Map<String, dynamic> map) {
@@ -27,3 +28,4 @@ class GetServiceArgs {
     );
   }
 }
+

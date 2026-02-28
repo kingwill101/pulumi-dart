@@ -10,16 +10,12 @@ import 'shared_directory_target.dart';
 class SharedDirectoryArgs {
   /// Identifier of the Managed Microsoft AD directory that you want to share with other accounts.
   final pulumi.Input<String> directoryId;
-
   /// Method used when sharing a directory. Valid values are `ORGANIZATIONS` and `HANDSHAKE`. Default is `HANDSHAKE`.
   final pulumi.Input<String>? method;
-
   /// Message sent by the directory owner to the directory consumer to help the directory consumer administrator determine whether to approve or reject the share invitation.
   final pulumi.Input<String>? notes;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Identifier for the directory consumer account with whom the directory is to be shared. See below.
   ///
   /// The following arguments are optional:
@@ -37,31 +33,21 @@ class SharedDirectoryArgs {
     String? notes,
     String? region,
     required SharedDirectoryTarget target,
-  })  : directoryId = pulumi.Input.asInput<String>(directoryId),
-        method = pulumi.Input.asOptionalInput<String>(method),
-        notes = pulumi.Input.asOptionalInput<String>(notes),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        target = pulumi.Input.asInput<SharedDirectoryTarget>(target);
+  }) :
+      directoryId = pulumi.Input.asInput<String>(directoryId),
+      method = pulumi.Input.asOptionalInput<String>(method),
+      notes = pulumi.Input.asOptionalInput<String>(notes),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      target = pulumi.Input.asInput<SharedDirectoryTarget>(target);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['directoryId'] = directoryId;
-    final methodValue = method;
-    if (methodValue != null) {
-      map['method'] = methodValue;
-    }
-    final notesValue = notes;
-    if (notesValue != null) {
-      map['notes'] = notesValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['target'] =
-        pulumi.Input.mapInputValue<SharedDirectoryTarget, Map<String, dynamic>>(
-            target, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'directoryId': directoryId,
+      'method': ?method,
+      'notes': ?notes,
+      'region': ?region,
+      'target': pulumi.Input.mapInputValue<SharedDirectoryTarget, Map<String, dynamic>>(target, (value) => value.toMap()),
+    };
   }
 
   factory SharedDirectoryArgs.fromMap(Map<String, dynamic> map) {
@@ -70,8 +56,8 @@ class SharedDirectoryArgs {
       method: map['method'] == null ? null : map['method'] as String,
       notes: map['notes'] == null ? null : map['notes'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      target: SharedDirectoryTarget.fromMap(
-          (map['target'] as Map).cast<String, dynamic>()),
+      target: SharedDirectoryTarget.fromMap((map['target'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

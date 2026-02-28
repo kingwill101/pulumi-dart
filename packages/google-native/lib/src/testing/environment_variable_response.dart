@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A key-value pair passed as an environment variable to the test.
 class EnvironmentVariableResponse {
   /// Key for the environment variable.
   final String key;
-
   /// Value for the environment variable.
   final String value;
 
@@ -17,10 +17,10 @@ class EnvironmentVariableResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
   factory EnvironmentVariableResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class EnvironmentVariableResponse {
     );
   }
 }
+

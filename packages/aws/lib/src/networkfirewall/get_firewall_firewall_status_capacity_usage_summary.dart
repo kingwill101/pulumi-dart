@@ -14,21 +14,15 @@ class GetFirewallFirewallStatusCapacityUsageSummary {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cidrs'] = pulumi.Input.encodeList<
-        GetFirewallFirewallStatusCapacityUsageSummaryCidr,
-        Map<String, dynamic>>(cidrs, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'cidrs': pulumi.Input.encodeList<GetFirewallFirewallStatusCapacityUsageSummaryCidr, Map<String, dynamic>>(cidrs, (value) => value.toMap()),
+    };
   }
 
-  factory GetFirewallFirewallStatusCapacityUsageSummary.fromMap(
-      Map<String, dynamic> map) {
+  factory GetFirewallFirewallStatusCapacityUsageSummary.fromMap(Map<String, dynamic> map) {
     return GetFirewallFirewallStatusCapacityUsageSummary(
-      cidrs: pulumi.Input.decodeList<
-              GetFirewallFirewallStatusCapacityUsageSummaryCidr>(
-          map['cidrs'],
-          (value) => GetFirewallFirewallStatusCapacityUsageSummaryCidr.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      cidrs: pulumi.Input.decodeList<GetFirewallFirewallStatusCapacityUsageSummaryCidr>(map['cidrs'], (value) => GetFirewallFirewallStatusCapacityUsageSummaryCidr.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

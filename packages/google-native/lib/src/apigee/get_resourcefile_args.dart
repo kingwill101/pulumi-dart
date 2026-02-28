@@ -22,18 +22,19 @@ class GetResourcefileArgs {
     required String name,
     required String organizationId,
     required String type,
-  })  : environmentId = pulumi.Input.asInput<String>(environmentId),
-        name = pulumi.Input.asInput<String>(name),
-        organizationId = pulumi.Input.asInput<String>(organizationId),
-        type = pulumi.Input.asInput<String>(type);
+  }) :
+      environmentId = pulumi.Input.asInput<String>(environmentId),
+      name = pulumi.Input.asInput<String>(name),
+      organizationId = pulumi.Input.asInput<String>(organizationId),
+      type = pulumi.Input.asInput<String>(type);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['environmentId'] = environmentId;
-    map['name'] = name;
-    map['organizationId'] = organizationId;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'environmentId': environmentId,
+      'name': name,
+      'organizationId': organizationId,
+      'type': type,
+    };
   }
 
   factory GetResourcefileArgs.fromMap(Map<String, dynamic> map) {
@@ -45,3 +46,4 @@ class GetResourcefileArgs {
     );
   }
 }
+

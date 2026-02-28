@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetActivityArgs {
   /// ARN that identifies the activity.
   final pulumi.Input<String>? arn;
-
   /// Name that identifies the activity.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -24,25 +22,17 @@ class GetActivityArgs {
     String? arn,
     String? name,
     String? region,
-  })  : arn = pulumi.Input.asOptionalInput<String>(arn),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      arn = pulumi.Input.asOptionalInput<String>(arn),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final arnValue = arn;
-    if (arnValue != null) {
-      map['arn'] = arnValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'arn': ?arn,
+      'name': ?name,
+      'region': ?region,
+    };
   }
 
   factory GetActivityArgs.fromMap(Map<String, dynamic> map) {
@@ -53,3 +43,4 @@ class GetActivityArgs {
     );
   }
 }
+

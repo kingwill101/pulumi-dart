@@ -492,10 +492,8 @@ import 'recorder_status_args.dart';
 class RecorderStatus extends pulumi.CustomResource {
   /// Whether the configuration recorder should be enabled or disabled.
   late final pulumi.Output<bool> isEnabled;
-
   /// The name of the recorder
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

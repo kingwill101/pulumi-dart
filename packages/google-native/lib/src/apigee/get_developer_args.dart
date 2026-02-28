@@ -19,19 +19,17 @@ class GetDeveloperArgs {
     String? action,
     required String developerId,
     required String organizationId,
-  })  : action = pulumi.Input.asOptionalInput<String>(action),
-        developerId = pulumi.Input.asInput<String>(developerId),
-        organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) :
+      action = pulumi.Input.asOptionalInput<String>(action),
+      developerId = pulumi.Input.asInput<String>(developerId),
+      organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final actionValue = action;
-    if (actionValue != null) {
-      map['action'] = actionValue;
-    }
-    map['developerId'] = developerId;
-    map['organizationId'] = organizationId;
-    return map;
+    return <String, dynamic>{
+      'action': ?action,
+      'developerId': developerId,
+      'organizationId': organizationId,
+    };
   }
 
   factory GetDeveloperArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetDeveloperArgs {
     );
   }
 }
+

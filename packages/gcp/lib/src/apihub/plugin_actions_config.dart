@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PluginActionsConfig {
   /// The description of the operation performed by the action.
   final String description;
-
   /// The display name of the action.
   final String displayName;
-
   /// The id of the action.
   final String id;
-
   /// The trigger mode supported by the action.
   /// Possible values:
   /// TRIGGER_MODE_UNSPECIFIED
@@ -31,12 +29,12 @@ class PluginActionsConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['description'] = description;
-    map['displayName'] = displayName;
-    map['id'] = id;
-    map['triggerMode'] = triggerMode;
-    return map;
+    return <String, dynamic>{
+      'description': description,
+      'displayName': displayName,
+      'id': id,
+      'triggerMode': triggerMode,
+    };
   }
 
   factory PluginActionsConfig.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class PluginActionsConfig {
     );
   }
 }
+

@@ -15,25 +15,15 @@ class PolicyControllerMonitoringConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final backendsValue = backends;
-    if (backendsValue != null) {
-      map['backends'] = pulumi.Input.encodeList<
-          PolicyControllerMonitoringConfigBackendsItem,
-          String>(backendsValue, (value) => value.value);
-    }
-    return map;
+    return <String, dynamic>{
+      'backends': ?backends == null ? null : pulumi.Input.encodeList<PolicyControllerMonitoringConfigBackendsItem, String>(backends!, (value) => value.value),
+    };
   }
 
   factory PolicyControllerMonitoringConfig.fromMap(Map<String, dynamic> map) {
     return PolicyControllerMonitoringConfig(
-      backends: map['backends'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  PolicyControllerMonitoringConfigBackendsItem>(
-              map['backends'],
-              (value) => PolicyControllerMonitoringConfigBackendsItem.fromValue(
-                  value as String)),
+      backends: map['backends'] == null ? null : pulumi.Input.decodeList<PolicyControllerMonitoringConfigBackendsItem>(map['backends'], (value) => PolicyControllerMonitoringConfigBackendsItem.fromValue(value as String)),
     );
   }
 }
+

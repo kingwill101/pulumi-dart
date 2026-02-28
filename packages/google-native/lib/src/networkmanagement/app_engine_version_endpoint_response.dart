@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Wrapper for the App Engine service version attributes.
 class AppEngineVersionEndpointResponse {
   /// An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions) name.
@@ -12,9 +13,9 @@ class AppEngineVersionEndpointResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['uri'] = uri;
-    return map;
+    return <String, dynamic>{
+      'uri': uri,
+    };
   }
 
   factory AppEngineVersionEndpointResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class AppEngineVersionEndpointResponse {
     );
   }
 }
+

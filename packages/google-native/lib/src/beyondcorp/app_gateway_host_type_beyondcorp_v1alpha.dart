@@ -12,7 +12,7 @@ enum AppGatewayHostTypeBeyondcorpV1alpha {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown AppGatewayHostTypeBeyondcorpV1alpha value: $value');
+    throw ArgumentError('Unknown AppGatewayHostTypeBeyondcorpV1alpha value: $value');
   }
 }
+

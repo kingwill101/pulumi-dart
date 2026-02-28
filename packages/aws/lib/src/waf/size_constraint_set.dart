@@ -160,13 +160,10 @@ import 'size_constraint_set_size_constraint.dart';
 class SizeConstraintSet extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN).
   late final pulumi.Output<String> arn;
-
   /// Name or description of the Size Constraint Set.
   late final pulumi.Output<String> name;
-
   /// Parts of web requests that you want to inspect the size of.
-  late final pulumi.Output<List<SizeConstraintSetSizeConstraint>?>
-      sizeConstraints;
+  late final pulumi.Output<List<SizeConstraintSetSizeConstraint>?> sizeConstraints;
 
   /// Creates a new [SizeConstraintSet].
   /// [name] The Pulumi resource name.
@@ -184,8 +181,6 @@ class SizeConstraintSet extends pulumi.CustomResource {
         ) {
     this.arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.sizeConstraints =
-        registerOutput<List<SizeConstraintSetSizeConstraint>?>(
-            'sizeConstraints');
+    this.sizeConstraints = registerOutput<List<SizeConstraintSetSizeConstraint>?>('sizeConstraints');
   }
 }

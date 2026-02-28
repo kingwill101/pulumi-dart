@@ -14,20 +14,15 @@ class HostWorkstationsV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final gceInstanceValue = gceInstance;
-    if (gceInstanceValue != null) {
-      map['gceInstance'] = gceInstanceValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'gceInstance': ?gceInstance == null ? null : gceInstance!.toMap(),
+    };
   }
 
   factory HostWorkstationsV1beta.fromMap(Map<String, dynamic> map) {
     return HostWorkstationsV1beta(
-      gceInstance: map['gceInstance'] == null
-          ? null
-          : GceInstanceWorkstationsV1beta.fromMap(
-              (map['gceInstance'] as Map).cast<String, dynamic>()),
+      gceInstance: map['gceInstance'] == null ? null : GceInstanceWorkstationsV1beta.fromMap((map['gceInstance'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

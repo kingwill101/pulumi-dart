@@ -6,11 +6,9 @@ class ListenerRuleMatchHttpMatchHeaderMatch {
   /// Indicates whether the match is case sensitive.
   /// Default is `false`.
   final bool? caseSensitive;
-
   /// The header match type.
   /// See Header Match `match` Block for details.
   final ListenerRuleMatchHttpMatchHeaderMatchMatch match;
-
   /// The name of the header.
   final String name;
 
@@ -25,24 +23,19 @@ class ListenerRuleMatchHttpMatchHeaderMatch {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final caseSensitiveValue = caseSensitive;
-    if (caseSensitiveValue != null) {
-      map['caseSensitive'] = caseSensitiveValue;
-    }
-    map['match'] = match.toMap();
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'caseSensitive': ?caseSensitive,
+      'match': match.toMap(),
+      'name': name,
+    };
   }
 
-  factory ListenerRuleMatchHttpMatchHeaderMatch.fromMap(
-      Map<String, dynamic> map) {
+  factory ListenerRuleMatchHttpMatchHeaderMatch.fromMap(Map<String, dynamic> map) {
     return ListenerRuleMatchHttpMatchHeaderMatch(
-      caseSensitive:
-          map['caseSensitive'] == null ? null : map['caseSensitive'] as bool,
-      match: ListenerRuleMatchHttpMatchHeaderMatchMatch.fromMap(
-          (map['match'] as Map).cast<String, dynamic>()),
+      caseSensitive: map['caseSensitive'] == null ? null : map['caseSensitive'] as bool,
+      match: ListenerRuleMatchHttpMatchHeaderMatchMatch.fromMap((map['match'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterLogDeliveryConfiguration {
   final String destination;
   final String destinationType;
@@ -19,12 +20,12 @@ class GetClusterLogDeliveryConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['destination'] = destination;
-    map['destinationType'] = destinationType;
-    map['logFormat'] = logFormat;
-    map['logType'] = logType;
-    return map;
+    return <String, dynamic>{
+      'destination': destination,
+      'destinationType': destinationType,
+      'logFormat': logFormat,
+      'logType': logType,
+    };
   }
 
   factory GetClusterLogDeliveryConfiguration.fromMap(Map<String, dynamic> map) {
@@ -36,3 +37,4 @@ class GetClusterLogDeliveryConfiguration {
     );
   }
 }
+

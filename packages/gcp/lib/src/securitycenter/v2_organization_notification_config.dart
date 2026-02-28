@@ -187,33 +187,25 @@ import 'v2_organization_notification_config_streaming_config.dart';
 class V2OrganizationNotificationConfig extends pulumi.CustomResource {
   /// This must be unique within the organization.
   late final pulumi.Output<String> configId;
-
   /// The description of the notification config (max of 1024 characters).
   late final pulumi.Output<String?> description;
-
   /// location Id is provided by organization. If not provided, Use global as default.
   late final pulumi.Output<String?> location;
-
   /// The resource name of this notification config, in the format
   /// `organizations/{{organization}}/notificationConfigs/{{config_id}}`.
   late final pulumi.Output<String> name;
-
   /// The organization whose Cloud Security Command Center the Notification
   /// Config lives in.
   late final pulumi.Output<String> organization;
-
   /// The Pub/Sub topic to send notifications to. Its format is
   /// "projects/[project_id]/topics/[topic]".
   late final pulumi.Output<String> pubsubTopic;
-
   /// The service account that needs "pubsub.topics.publish" permission to
   /// publish to the Pub/Sub topic.
   late final pulumi.Output<String> serviceAccount;
-
   /// The config for triggering streaming-based notifications.
   /// Structure is documented below.
-  late final pulumi.Output<V2OrganizationNotificationConfigStreamingConfig>
-      streamingConfig;
+  late final pulumi.Output<V2OrganizationNotificationConfigStreamingConfig> streamingConfig;
 
   /// Creates a new [V2OrganizationNotificationConfig].
   /// [name] The Pulumi resource name.
@@ -236,8 +228,6 @@ class V2OrganizationNotificationConfig extends pulumi.CustomResource {
     this.organization = registerOutput<String>('organization');
     this.pubsubTopic = registerOutput<String>('pubsubTopic');
     this.serviceAccount = registerOutput<String>('serviceAccount');
-    this.streamingConfig =
-        registerOutput<V2OrganizationNotificationConfigStreamingConfig>(
-            'streamingConfig');
+    this.streamingConfig = registerOutput<V2OrganizationNotificationConfigStreamingConfig>('streamingConfig');
   }
 }

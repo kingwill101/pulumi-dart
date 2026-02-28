@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LocationAzureBlobSasConfiguration {
   /// A SAS token that provides permissions to access your Azure Blob Storage.
   final String token;
@@ -11,9 +12,9 @@ class LocationAzureBlobSasConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['token'] = token;
-    return map;
+    return <String, dynamic>{
+      'token': token,
+    };
   }
 
   factory LocationAzureBlobSasConfiguration.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class LocationAzureBlobSasConfiguration {
     );
   }
 }
+

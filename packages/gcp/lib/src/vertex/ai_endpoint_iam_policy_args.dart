@@ -22,24 +22,19 @@ class AiEndpointIamPolicyArgs {
     String? location,
     required String policyData,
     String? project,
-  })  : endpoint = pulumi.Input.asInput<String>(endpoint),
-        location = pulumi.Input.asOptionalInput<String>(location),
-        policyData = pulumi.Input.asInput<String>(policyData),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      endpoint = pulumi.Input.asInput<String>(endpoint),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      policyData = pulumi.Input.asInput<String>(policyData),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['endpoint'] = endpoint;
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    map['policyData'] = policyData;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'endpoint': endpoint,
+      'location': ?location,
+      'policyData': policyData,
+      'project': ?project,
+    };
   }
 
   factory AiEndpointIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -51,3 +46,4 @@ class AiEndpointIamPolicyArgs {
     );
   }
 }
+

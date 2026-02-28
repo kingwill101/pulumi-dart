@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A game loop test of an iOS application.
 class IosTestLoop {
   /// Bundle ID of the app.
@@ -12,12 +13,9 @@ class IosTestLoop {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final bundleIdValue = bundleId;
-    if (bundleIdValue != null) {
-      map['bundleId'] = bundleIdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'bundleId': ?bundleId,
+    };
   }
 
   factory IosTestLoop.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class IosTestLoop {
     );
   }
 }
+

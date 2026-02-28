@@ -1,15 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getServerlessAccessPolicy.
 class GetServerlessAccessPolicyResult {
   /// Description of the policy. Typically used to store information about the permissions defined in the policy.
   final String description;
   final String id;
   final String name;
-
   /// JSON policy document to use as the content for the new policy.
   final String policy;
-
   /// Version of the policy.
   final String policyVersion;
   final String region;
@@ -34,15 +33,15 @@ class GetServerlessAccessPolicyResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['description'] = description;
-    map['id'] = id;
-    map['name'] = name;
-    map['policy'] = policy;
-    map['policyVersion'] = policyVersion;
-    map['region'] = region;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'description': description,
+      'id': id,
+      'name': name,
+      'policy': policy,
+      'policyVersion': policyVersion,
+      'region': region,
+      'type': type,
+    };
   }
 
   factory GetServerlessAccessPolicyResult.fromMap(Map<String, dynamic> map) {
@@ -57,3 +56,4 @@ class GetServerlessAccessPolicyResult {
     );
   }
 }
+

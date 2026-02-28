@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTablesArgs {
   /// The dataset ID.
   final pulumi.Input<String> datasetId;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -20,17 +19,15 @@ class GetTablesArgs {
   GetTablesArgs({
     required String datasetId,
     String? project,
-  })  : datasetId = pulumi.Input.asInput<String>(datasetId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      datasetId = pulumi.Input.asInput<String>(datasetId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['datasetId'] = datasetId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'datasetId': datasetId,
+      'project': ?project,
+    };
   }
 
   factory GetTablesArgs.fromMap(Map<String, dynamic> map) {
@@ -40,3 +37,4 @@ class GetTablesArgs {
     );
   }
 }
+

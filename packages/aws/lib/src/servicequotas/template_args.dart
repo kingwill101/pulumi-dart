@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TemplateArgs {
   /// AWS Region to which the template applies.
   final pulumi.Input<String>? awsRegion;
-
   /// Quota identifier. To find the quota code for a specific quota, use the aws.servicequotas.ServiceQuota data source.
   final pulumi.Input<String> quotaCode;
-
   /// AWS Region to which the template applies. Use `aws.getRegion` instead.
   final pulumi.Input<String>? region;
-
   /// Service identifier. To find the service code value for an AWS service, use the aws.servicequotas.getService data source.
   final pulumi.Input<String> serviceCode;
-
   /// The new, increased value for the quota.
   final pulumi.Input<double> value;
 
@@ -34,26 +30,21 @@ class TemplateArgs {
     String? region,
     required String serviceCode,
     required double value,
-  })  : awsRegion = pulumi.Input.asOptionalInput<String>(awsRegion),
-        quotaCode = pulumi.Input.asInput<String>(quotaCode),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        serviceCode = pulumi.Input.asInput<String>(serviceCode),
-        value = pulumi.Input.asInput<double>(value);
+  }) :
+      awsRegion = pulumi.Input.asOptionalInput<String>(awsRegion),
+      quotaCode = pulumi.Input.asInput<String>(quotaCode),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      serviceCode = pulumi.Input.asInput<String>(serviceCode),
+      value = pulumi.Input.asInput<double>(value);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final awsRegionValue = awsRegion;
-    if (awsRegionValue != null) {
-      map['awsRegion'] = awsRegionValue;
-    }
-    map['quotaCode'] = quotaCode;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['serviceCode'] = serviceCode;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'awsRegion': ?awsRegion,
+      'quotaCode': quotaCode,
+      'region': ?region,
+      'serviceCode': serviceCode,
+      'value': value,
+    };
   }
 
   factory TemplateArgs.fromMap(Map<String, dynamic> map) {
@@ -66,3 +57,4 @@ class TemplateArgs {
     );
   }
 }
+

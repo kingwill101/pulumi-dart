@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetVpcCidrBlockAssociation {
   /// Association ID for the IPv4 CIDR block.
   final String associationId;
-
   /// Cidr block of the desired VPC.
   final String cidrBlock;
-
   /// Current state of the desired VPC.
   /// Can be either `"pending"` or `"available"`.
   final String state;
@@ -22,11 +21,11 @@ class GetVpcCidrBlockAssociation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['associationId'] = associationId;
-    map['cidrBlock'] = cidrBlock;
-    map['state'] = state;
-    return map;
+    return <String, dynamic>{
+      'associationId': associationId,
+      'cidrBlock': cidrBlock,
+      'state': state,
+    };
   }
 
   factory GetVpcCidrBlockAssociation.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class GetVpcCidrBlockAssociation {
     );
   }
 }
+

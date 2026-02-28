@@ -7,16 +7,12 @@ import 'display_data_response.dart';
 class TransformSummaryResponse {
   /// Transform-specific display data.
   final List<DisplayDataResponse> displayData;
-
   /// User names for all collection inputs to this transform.
   final List<String> inputCollectionName;
-
   /// Type of transform.
   final String kind;
-
   /// User provided name for this transform instance.
   final String name;
-
   /// User names for all collection outputs to this transform.
   final List<String> outputCollectionName;
 
@@ -35,28 +31,23 @@ class TransformSummaryResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['displayData'] =
-        pulumi.Input.encodeList<DisplayDataResponse, Map<String, dynamic>>(
-            displayData, (value) => value.toMap());
-    map['inputCollectionName'] = inputCollectionName;
-    map['kind'] = kind;
-    map['name'] = name;
-    map['outputCollectionName'] = outputCollectionName;
-    return map;
+    return <String, dynamic>{
+      'displayData': pulumi.Input.encodeList<DisplayDataResponse, Map<String, dynamic>>(displayData, (value) => value.toMap()),
+      'inputCollectionName': inputCollectionName,
+      'kind': kind,
+      'name': name,
+      'outputCollectionName': outputCollectionName,
+    };
   }
 
   factory TransformSummaryResponse.fromMap(Map<String, dynamic> map) {
     return TransformSummaryResponse(
-      displayData: pulumi.Input.decodeList<DisplayDataResponse>(
-          map['displayData'],
-          (value) => DisplayDataResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      displayData: pulumi.Input.decodeList<DisplayDataResponse>(map['displayData'], (value) => DisplayDataResponse.fromMap((value as Map).cast<String, dynamic>())),
       inputCollectionName: (map['inputCollectionName'] as List).cast<String>(),
       kind: map['kind'] as String,
       name: map['name'] as String,
-      outputCollectionName:
-          (map['outputCollectionName'] as List).cast<String>(),
+      outputCollectionName: (map['outputCollectionName'] as List).cast<String>(),
     );
   }
 }
+

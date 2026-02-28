@@ -15,26 +15,15 @@ class MonitoringComponentConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enableComponentsValue = enableComponents;
-    if (enableComponentsValue != null) {
-      map['enableComponents'] = pulumi.Input.encodeList<
-          MonitoringComponentConfigEnableComponentsItem,
-          String>(enableComponentsValue, (value) => value.value);
-    }
-    return map;
+    return <String, dynamic>{
+      'enableComponents': ?enableComponents == null ? null : pulumi.Input.encodeList<MonitoringComponentConfigEnableComponentsItem, String>(enableComponents!, (value) => value.value),
+    };
   }
 
   factory MonitoringComponentConfig.fromMap(Map<String, dynamic> map) {
     return MonitoringComponentConfig(
-      enableComponents: map['enableComponents'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  MonitoringComponentConfigEnableComponentsItem>(
-              map['enableComponents'],
-              (value) =>
-                  MonitoringComponentConfigEnableComponentsItem.fromValue(
-                      value as String)),
+      enableComponents: map['enableComponents'] == null ? null : pulumi.Input.decodeList<MonitoringComponentConfigEnableComponentsItem>(map['enableComponents'], (value) => MonitoringComponentConfigEnableComponentsItem.fromValue(value as String)),
     );
   }
 }
+

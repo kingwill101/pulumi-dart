@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CryptoKeyPrimary {
   /// The resource name for the CryptoKey.
   final String? name;
-
   /// (Output)
   /// The current state of the CryptoKeyVersion.
   final String? state;
@@ -17,16 +17,10 @@ class CryptoKeyPrimary {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final stateValue = state;
-    if (stateValue != null) {
-      map['state'] = stateValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+      'state': ?state,
+    };
   }
 
   factory CryptoKeyPrimary.fromMap(Map<String, dynamic> map) {
@@ -36,3 +30,4 @@ class CryptoKeyPrimary {
     );
   }
 }
+

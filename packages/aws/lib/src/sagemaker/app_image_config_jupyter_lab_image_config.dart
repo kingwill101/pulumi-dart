@@ -6,7 +6,6 @@ import 'app_image_config_jupyter_lab_image_config_file_system_config.dart';
 class AppImageConfigJupyterLabImageConfig {
   /// The configuration used to run the application image container. See Container Config details below.
   final AppImageConfigJupyterLabImageConfigContainerConfig? containerConfig;
-
   /// The URL where the Git repository is located. See File System Config details below.
   final AppImageConfigJupyterLabImageConfigFileSystemConfig? fileSystemConfig;
 
@@ -19,29 +18,17 @@ class AppImageConfigJupyterLabImageConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final containerConfigValue = containerConfig;
-    if (containerConfigValue != null) {
-      map['containerConfig'] = containerConfigValue.toMap();
-    }
-    final fileSystemConfigValue = fileSystemConfig;
-    if (fileSystemConfigValue != null) {
-      map['fileSystemConfig'] = fileSystemConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'containerConfig': ?containerConfig == null ? null : containerConfig!.toMap(),
+      'fileSystemConfig': ?fileSystemConfig == null ? null : fileSystemConfig!.toMap(),
+    };
   }
 
-  factory AppImageConfigJupyterLabImageConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory AppImageConfigJupyterLabImageConfig.fromMap(Map<String, dynamic> map) {
     return AppImageConfigJupyterLabImageConfig(
-      containerConfig: map['containerConfig'] == null
-          ? null
-          : AppImageConfigJupyterLabImageConfigContainerConfig.fromMap(
-              (map['containerConfig'] as Map).cast<String, dynamic>()),
-      fileSystemConfig: map['fileSystemConfig'] == null
-          ? null
-          : AppImageConfigJupyterLabImageConfigFileSystemConfig.fromMap(
-              (map['fileSystemConfig'] as Map).cast<String, dynamic>()),
+      containerConfig: map['containerConfig'] == null ? null : AppImageConfigJupyterLabImageConfigContainerConfig.fromMap((map['containerConfig'] as Map).cast<String, dynamic>()),
+      fileSystemConfig: map['fileSystemConfig'] == null ? null : AppImageConfigJupyterLabImageConfigFileSystemConfig.fromMap((map['fileSystemConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

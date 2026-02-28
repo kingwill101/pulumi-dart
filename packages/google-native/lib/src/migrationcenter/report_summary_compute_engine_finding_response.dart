@@ -7,16 +7,12 @@ import 'report_summary_machine_series_allocation_response.dart';
 class ReportSummaryComputeEngineFindingResponse {
   /// Count of assets which were allocated.
   final String allocatedAssetCount;
-
   /// Set of disk types allocated to assets.
   final List<String> allocatedDiskTypes;
-
   /// Set of regions in which the assets were allocated.
   final List<String> allocatedRegions;
-
   /// Distribution of assets based on the Machine Series.
-  final List<ReportSummaryMachineSeriesAllocationResponse>
-      machineSeriesAllocations;
+  final List<ReportSummaryMachineSeriesAllocationResponse> machineSeriesAllocations;
 
   /// Creates a new [ReportSummaryComputeEngineFindingResponse].
   /// [allocatedAssetCount] Count of assets which were allocated.
@@ -31,27 +27,21 @@ class ReportSummaryComputeEngineFindingResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allocatedAssetCount'] = allocatedAssetCount;
-    map['allocatedDiskTypes'] = allocatedDiskTypes;
-    map['allocatedRegions'] = allocatedRegions;
-    map['machineSeriesAllocations'] = pulumi.Input.encodeList<
-            ReportSummaryMachineSeriesAllocationResponse, Map<String, dynamic>>(
-        machineSeriesAllocations, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'allocatedAssetCount': allocatedAssetCount,
+      'allocatedDiskTypes': allocatedDiskTypes,
+      'allocatedRegions': allocatedRegions,
+      'machineSeriesAllocations': pulumi.Input.encodeList<ReportSummaryMachineSeriesAllocationResponse, Map<String, dynamic>>(machineSeriesAllocations, (value) => value.toMap()),
+    };
   }
 
-  factory ReportSummaryComputeEngineFindingResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory ReportSummaryComputeEngineFindingResponse.fromMap(Map<String, dynamic> map) {
     return ReportSummaryComputeEngineFindingResponse(
       allocatedAssetCount: map['allocatedAssetCount'] as String,
       allocatedDiskTypes: (map['allocatedDiskTypes'] as List).cast<String>(),
       allocatedRegions: (map['allocatedRegions'] as List).cast<String>(),
-      machineSeriesAllocations:
-          pulumi.Input.decodeList<ReportSummaryMachineSeriesAllocationResponse>(
-              map['machineSeriesAllocations'],
-              (value) => ReportSummaryMachineSeriesAllocationResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      machineSeriesAllocations: pulumi.Input.decodeList<ReportSummaryMachineSeriesAllocationResponse>(map['machineSeriesAllocations'], (value) => ReportSummaryMachineSeriesAllocationResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -14,20 +14,15 @@ class TenantClient {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final permissionsValue = permissions;
-    if (permissionsValue != null) {
-      map['permissions'] = permissionsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'permissions': ?permissions == null ? null : permissions!.toMap(),
+    };
   }
 
   factory TenantClient.fromMap(Map<String, dynamic> map) {
     return TenantClient(
-      permissions: map['permissions'] == null
-          ? null
-          : TenantClientPermissions.fromMap(
-              (map['permissions'] as Map).cast<String, dynamic>()),
+      permissions: map['permissions'] == null ? null : TenantClientPermissions.fromMap((map['permissions'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

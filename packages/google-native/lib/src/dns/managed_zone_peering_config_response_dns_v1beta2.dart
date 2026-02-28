@@ -4,7 +4,6 @@ import 'managed_zone_peering_config_target_network_response_dns_v1beta2.dart';
 
 class ManagedZonePeeringConfigResponseDnsV1beta2 {
   final String kind;
-
   /// The network with which to peer.
   final ManagedZonePeeringConfigTargetNetworkResponseDnsV1beta2 targetNetwork;
 
@@ -17,19 +16,17 @@ class ManagedZonePeeringConfigResponseDnsV1beta2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kind'] = kind;
-    map['targetNetwork'] = targetNetwork.toMap();
-    return map;
+    return <String, dynamic>{
+      'kind': kind,
+      'targetNetwork': targetNetwork.toMap(),
+    };
   }
 
-  factory ManagedZonePeeringConfigResponseDnsV1beta2.fromMap(
-      Map<String, dynamic> map) {
+  factory ManagedZonePeeringConfigResponseDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return ManagedZonePeeringConfigResponseDnsV1beta2(
       kind: map['kind'] as String,
-      targetNetwork:
-          ManagedZonePeeringConfigTargetNetworkResponseDnsV1beta2.fromMap(
-              (map['targetNetwork'] as Map).cast<String, dynamic>()),
+      targetNetwork: ManagedZonePeeringConfigTargetNetworkResponseDnsV1beta2.fromMap((map['targetNetwork'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

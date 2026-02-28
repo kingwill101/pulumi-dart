@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getResource.
 class GetResourceResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Set to the ID of the parent Resource.
   final String parentId;
   final String path;
-
   /// Set to the path relative to the parent Resource.
   final String pathPart;
   final String region;
@@ -31,14 +30,14 @@ class GetResourceResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['parentId'] = parentId;
-    map['path'] = path;
-    map['pathPart'] = pathPart;
-    map['region'] = region;
-    map['restApiId'] = restApiId;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'parentId': parentId,
+      'path': path,
+      'pathPart': pathPart,
+      'region': region,
+      'restApiId': restApiId,
+    };
   }
 
   factory GetResourceResult.fromMap(Map<String, dynamic> map) {
@@ -52,3 +51,4 @@ class GetResourceResult {
     );
   }
 }
+

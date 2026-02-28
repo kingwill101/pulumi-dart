@@ -1,18 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTestablePermissionsPermission {
   /// Whether the corresponding API has been enabled for the resource.
   final bool apiDisabled;
-
   /// The level of support for custom roles. Can be one of `"NOT_SUPPORTED"`, `"SUPPORTED"`, `"TESTING"`. Default is `"SUPPORTED"`
   final String customSupportLevel;
-
   /// Name of the permission.
   final String name;
-
   /// Release stage of the permission.
   final String stage;
-
   /// Human readable title of the permission.
   final String title;
 
@@ -31,13 +28,13 @@ class GetTestablePermissionsPermission {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['apiDisabled'] = apiDisabled;
-    map['customSupportLevel'] = customSupportLevel;
-    map['name'] = name;
-    map['stage'] = stage;
-    map['title'] = title;
-    return map;
+    return <String, dynamic>{
+      'apiDisabled': apiDisabled,
+      'customSupportLevel': customSupportLevel,
+      'name': name,
+      'stage': stage,
+      'title': title,
+    };
   }
 
   factory GetTestablePermissionsPermission.fromMap(Map<String, dynamic> map) {
@@ -50,3 +47,4 @@ class GetTestablePermissionsPermission {
     );
   }
 }
+

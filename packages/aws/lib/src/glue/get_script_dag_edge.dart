@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetScriptDagEdge {
   /// ID of the node at which the edge starts.
   final String source;
-
   /// ID of the node at which the edge ends.
   final String target;
-
   /// Target of the edge.
   final String? targetParameter;
 
@@ -21,23 +20,19 @@ class GetScriptDagEdge {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['source'] = source;
-    map['target'] = target;
-    final targetParameterValue = targetParameter;
-    if (targetParameterValue != null) {
-      map['targetParameter'] = targetParameterValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'source': source,
+      'target': target,
+      'targetParameter': ?targetParameter,
+    };
   }
 
   factory GetScriptDagEdge.fromMap(Map<String, dynamic> map) {
     return GetScriptDagEdge(
       source: map['source'] as String,
       target: map['target'] as String,
-      targetParameter: map['targetParameter'] == null
-          ? null
-          : map['targetParameter'] as String,
+      targetParameter: map['targetParameter'] == null ? null : map['targetParameter'] as String,
     );
   }
 }
+

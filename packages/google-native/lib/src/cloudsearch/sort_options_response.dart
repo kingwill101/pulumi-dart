@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SortOptionsResponse {
   /// The name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
   final String operatorName;
-
   /// Ascending is the default sort order
   final String sortOrder;
 
@@ -16,10 +16,10 @@ class SortOptionsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['operatorName'] = operatorName;
-    map['sortOrder'] = sortOrder;
-    return map;
+    return <String, dynamic>{
+      'operatorName': operatorName,
+      'sortOrder': sortOrder,
+    };
   }
 
   factory SortOptionsResponse.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class SortOptionsResponse {
     );
   }
 }
+

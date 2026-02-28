@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConfigFileDeploymentmanagerV2beta {
   /// The contents of the file.
   final String? content;
@@ -11,12 +12,9 @@ class ConfigFileDeploymentmanagerV2beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final contentValue = content;
-    if (contentValue != null) {
-      map['content'] = contentValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'content': ?content,
+    };
   }
 
   factory ConfigFileDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class ConfigFileDeploymentmanagerV2beta {
     );
   }
 }
+

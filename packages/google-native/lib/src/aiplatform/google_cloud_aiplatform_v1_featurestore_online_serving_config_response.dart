@@ -6,10 +6,8 @@ import 'google_cloud_aiplatform_v1_featurestore_online_serving_config_scaling_re
 class GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigResponse {
   /// The number of nodes for the online store. The number of nodes doesn't scale automatically, but you can manually update the number of nodes. If set to 0, the featurestore will not have an online store and cannot be used for online serving.
   final int fixedNodeCount;
-
   /// Online serving scaling configuration. Only one of `fixed_node_count` and `scaling` can be set. Setting one will reset the other.
-  final GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigScalingResponse
-      scaling;
+  final GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigScalingResponse scaling;
 
   /// Creates a new [GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigResponse].
   /// [fixedNodeCount] The number of nodes for the online store. The number of nodes doesn't scale automatically, but you can manually update the number of nodes. If set to 0, the featurestore will not have an online store and cannot be used for online serving.
@@ -20,19 +18,17 @@ class GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['fixedNodeCount'] = fixedNodeCount;
-    map['scaling'] = scaling.toMap();
-    return map;
+    return <String, dynamic>{
+      'fixedNodeCount': fixedNodeCount,
+      'scaling': scaling.toMap(),
+    };
   }
 
-  factory GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigResponse(
       fixedNodeCount: map['fixedNodeCount'] as int,
-      scaling:
-          GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigScalingResponse
-              .fromMap((map['scaling'] as Map).cast<String, dynamic>()),
+      scaling: GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigScalingResponse.fromMap((map['scaling'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

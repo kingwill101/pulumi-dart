@@ -14,21 +14,15 @@ class EnterpriseCrmEventbusProtoTaskUiModuleConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final moduleIdValue = moduleId;
-    if (moduleIdValue != null) {
-      map['moduleId'] = moduleIdValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'moduleId': ?moduleId == null ? null : moduleId!.value,
+    };
   }
 
-  factory EnterpriseCrmEventbusProtoTaskUiModuleConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoTaskUiModuleConfig.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoTaskUiModuleConfig(
-      moduleId: map['moduleId'] == null
-          ? null
-          : EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId.fromValue(
-              map['moduleId'] as String),
+      moduleId: map['moduleId'] == null ? null : EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId.fromValue(map['moduleId'] as String),
     );
   }
 }
+

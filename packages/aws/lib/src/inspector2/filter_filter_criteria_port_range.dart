@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FilterFilterCriteriaPortRange {
   /// (Required) The beginning of the port range, inclusive.
   final int beginInclusive;
-
   /// (Required) The end of the port range, inclusive.
   final int endInclusive;
 
@@ -16,10 +16,10 @@ class FilterFilterCriteriaPortRange {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['beginInclusive'] = beginInclusive;
-    map['endInclusive'] = endInclusive;
-    return map;
+    return <String, dynamic>{
+      'beginInclusive': beginInclusive,
+      'endInclusive': endInclusive,
+    };
   }
 
   factory FilterFilterCriteriaPortRange.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class FilterFilterCriteriaPortRange {
     );
   }
 }
+

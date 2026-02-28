@@ -6,7 +6,6 @@ import 'get_instance_initial_replication_replica.dart';
 class GetInstanceInitialReplication {
   /// The replication role.
   final List<GetInstanceInitialReplicationReplica> replicas;
-
   /// The replication role. Default value: "STANDBY" Possible values: ["ROLE_UNSPECIFIED", "ACTIVE", "STANDBY"]
   final String role;
 
@@ -19,21 +18,17 @@ class GetInstanceInitialReplication {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['replicas'] = pulumi.Input.encodeList<
-        GetInstanceInitialReplicationReplica,
-        Map<String, dynamic>>(replicas, (value) => value.toMap());
-    map['role'] = role;
-    return map;
+    return <String, dynamic>{
+      'replicas': pulumi.Input.encodeList<GetInstanceInitialReplicationReplica, Map<String, dynamic>>(replicas, (value) => value.toMap()),
+      'role': role,
+    };
   }
 
   factory GetInstanceInitialReplication.fromMap(Map<String, dynamic> map) {
     return GetInstanceInitialReplication(
-      replicas: pulumi.Input.decodeList<GetInstanceInitialReplicationReplica>(
-          map['replicas'],
-          (value) => GetInstanceInitialReplicationReplica.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      replicas: pulumi.Input.decodeList<GetInstanceInitialReplicationReplica>(map['replicas'], (value) => GetInstanceInitialReplicationReplica.fromMap((value as Map).cast<String, dynamic>())),
       role: map['role'] as String,
     );
   }
 }
+

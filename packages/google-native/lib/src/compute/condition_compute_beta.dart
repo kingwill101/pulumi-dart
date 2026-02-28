@@ -8,16 +8,12 @@ import 'condition_sys_compute_beta.dart';
 class ConditionComputeBeta {
   /// This is deprecated and has no effect. Do not use.
   final ConditionIamComputeBeta? iam;
-
   /// This is deprecated and has no effect. Do not use.
   final ConditionOpComputeBeta? op;
-
   /// This is deprecated and has no effect. Do not use.
   final String? svc;
-
   /// This is deprecated and has no effect. Do not use.
   final ConditionSysComputeBeta? sys;
-
   /// This is deprecated and has no effect. Do not use.
   final List<String>? values;
 
@@ -36,44 +32,23 @@ class ConditionComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final iamValue = iam;
-    if (iamValue != null) {
-      map['iam'] = iamValue.value;
-    }
-    final opValue = op;
-    if (opValue != null) {
-      map['op'] = opValue.value;
-    }
-    final svcValue = svc;
-    if (svcValue != null) {
-      map['svc'] = svcValue;
-    }
-    final sysValue = sys;
-    if (sysValue != null) {
-      map['sys'] = sysValue.value;
-    }
-    final valuesValue = values;
-    if (valuesValue != null) {
-      map['values'] = valuesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'iam': ?iam == null ? null : iam!.value,
+      'op': ?op == null ? null : op!.value,
+      'svc': ?svc,
+      'sys': ?sys == null ? null : sys!.value,
+      'values': ?values,
+    };
   }
 
   factory ConditionComputeBeta.fromMap(Map<String, dynamic> map) {
     return ConditionComputeBeta(
-      iam: map['iam'] == null
-          ? null
-          : ConditionIamComputeBeta.fromValue(map['iam'] as String),
-      op: map['op'] == null
-          ? null
-          : ConditionOpComputeBeta.fromValue(map['op'] as String),
+      iam: map['iam'] == null ? null : ConditionIamComputeBeta.fromValue(map['iam'] as String),
+      op: map['op'] == null ? null : ConditionOpComputeBeta.fromValue(map['op'] as String),
       svc: map['svc'] == null ? null : map['svc'] as String,
-      sys: map['sys'] == null
-          ? null
-          : ConditionSysComputeBeta.fromValue(map['sys'] as String),
-      values:
-          map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      sys: map['sys'] == null ? null : ConditionSysComputeBeta.fromValue(map['sys'] as String),
+      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
     );
   }
 }
+

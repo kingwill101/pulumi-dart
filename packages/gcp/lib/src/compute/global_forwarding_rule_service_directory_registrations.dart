@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GlobalForwardingRuleServiceDirectoryRegistrations {
   /// Service Directory namespace to register the forwarding rule under.
   final String? namespace;
-
   /// [Optional] Service Directory region to register this global forwarding rule under.
   /// Default to "us-central1". Only used for PSC for Google APIs. All PSC for
   /// Google APIs Forwarding Rules on the same network should use the same Service
@@ -19,25 +19,17 @@ class GlobalForwardingRuleServiceDirectoryRegistrations {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final namespaceValue = namespace;
-    if (namespaceValue != null) {
-      map['namespace'] = namespaceValue;
-    }
-    final serviceDirectoryRegionValue = serviceDirectoryRegion;
-    if (serviceDirectoryRegionValue != null) {
-      map['serviceDirectoryRegion'] = serviceDirectoryRegionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'namespace': ?namespace,
+      'serviceDirectoryRegion': ?serviceDirectoryRegion,
+    };
   }
 
-  factory GlobalForwardingRuleServiceDirectoryRegistrations.fromMap(
-      Map<String, dynamic> map) {
+  factory GlobalForwardingRuleServiceDirectoryRegistrations.fromMap(Map<String, dynamic> map) {
     return GlobalForwardingRuleServiceDirectoryRegistrations(
       namespace: map['namespace'] == null ? null : map['namespace'] as String,
-      serviceDirectoryRegion: map['serviceDirectoryRegion'] == null
-          ? null
-          : map['serviceDirectoryRegion'] as String,
+      serviceDirectoryRegion: map['serviceDirectoryRegion'] == null ? null : map['serviceDirectoryRegion'] as String,
     );
   }
 }
+

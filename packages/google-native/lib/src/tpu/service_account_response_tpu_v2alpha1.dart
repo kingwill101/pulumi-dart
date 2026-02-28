@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A service account.
 class ServiceAccountResponseTpuV2alpha1 {
   /// Email address of the service account. If empty, default Compute service account will be used.
   final String email;
-
   /// The list of scopes to be made available for this service account. If empty, access to all Cloud APIs will be allowed.
   final List<String> scope;
 
@@ -17,10 +17,10 @@ class ServiceAccountResponseTpuV2alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['email'] = email;
-    map['scope'] = scope;
-    return map;
+    return <String, dynamic>{
+      'email': email,
+      'scope': scope,
+    };
   }
 
   factory ServiceAccountResponseTpuV2alpha1.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class ServiceAccountResponseTpuV2alpha1 {
     );
   }
 }
+

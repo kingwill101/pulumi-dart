@@ -19,20 +19,15 @@ class TagTemplateFieldTypeEnumType {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allowedValues'] = pulumi.Input.encodeList<
-        TagTemplateFieldTypeEnumTypeAllowedValue,
-        Map<String, dynamic>>(allowedValues, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'allowedValues': pulumi.Input.encodeList<TagTemplateFieldTypeEnumTypeAllowedValue, Map<String, dynamic>>(allowedValues, (value) => value.toMap()),
+    };
   }
 
   factory TagTemplateFieldTypeEnumType.fromMap(Map<String, dynamic> map) {
     return TagTemplateFieldTypeEnumType(
-      allowedValues:
-          pulumi.Input.decodeList<TagTemplateFieldTypeEnumTypeAllowedValue>(
-              map['allowedValues'],
-              (value) => TagTemplateFieldTypeEnumTypeAllowedValue.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      allowedValues: pulumi.Input.decodeList<TagTemplateFieldTypeEnumTypeAllowedValue>(map['allowedValues'], (value) => TagTemplateFieldTypeEnumTypeAllowedValue.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

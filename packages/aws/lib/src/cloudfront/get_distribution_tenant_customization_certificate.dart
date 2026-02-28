@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDistributionTenantCustomizationCertificate {
   /// ARN (Amazon Resource Name) for the distribution tenant.
   final String arn;
@@ -11,15 +12,15 @@ class GetDistributionTenantCustomizationCertificate {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+    };
   }
 
-  factory GetDistributionTenantCustomizationCertificate.fromMap(
-      Map<String, dynamic> map) {
+  factory GetDistributionTenantCustomizationCertificate.fromMap(Map<String, dynamic> map) {
     return GetDistributionTenantCustomizationCertificate(
       arn: map['arn'] as String,
     );
   }
 }
+

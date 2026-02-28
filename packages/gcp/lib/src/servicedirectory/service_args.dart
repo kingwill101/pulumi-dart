@@ -12,10 +12,8 @@ class ServiceArgs {
   /// up to 2000 characters, spread across all key-value pairs.
   /// Metadata that goes beyond any these limits will be rejected.
   final pulumi.Input<Map<String, String>>? metadata;
-
   /// The resource name of the namespace this service will belong to.
   final pulumi.Input<String> namespace;
-
   /// The Resource ID must be 1-63 characters long, including digits,
   /// lowercase letters or the hyphen character.
   final pulumi.Input<String> serviceId;
@@ -28,28 +26,25 @@ class ServiceArgs {
     Map<String, String>? metadata,
     required String namespace,
     required String serviceId,
-  })  : metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-        namespace = pulumi.Input.asInput<String>(namespace),
-        serviceId = pulumi.Input.asInput<String>(serviceId);
+  }) :
+      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
+      namespace = pulumi.Input.asInput<String>(namespace),
+      serviceId = pulumi.Input.asInput<String>(serviceId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final metadataValue = metadata;
-    if (metadataValue != null) {
-      map['metadata'] = metadataValue;
-    }
-    map['namespace'] = namespace;
-    map['serviceId'] = serviceId;
-    return map;
+    return <String, dynamic>{
+      'metadata': ?metadata,
+      'namespace': namespace,
+      'serviceId': serviceId,
+    };
   }
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      metadata: map['metadata'] == null
-          ? null
-          : (map['metadata'] as Map).cast<String, String>(),
+      metadata: map['metadata'] == null ? null : (map['metadata'] as Map).cast<String, String>(),
       namespace: map['namespace'] as String,
       serviceId: map['serviceId'] as String,
     );
   }
 }
+

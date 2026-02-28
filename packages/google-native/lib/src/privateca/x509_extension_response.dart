@@ -6,10 +6,8 @@ import 'object_id_response.dart';
 class X509ExtensionResponse {
   /// Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
   final bool critical;
-
   /// The OID for this X.509 extension.
   final ObjectIdResponse objectId;
-
   /// The value of this X.509 extension.
   final String value;
 
@@ -24,19 +22,19 @@ class X509ExtensionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['critical'] = critical;
-    map['objectId'] = objectId.toMap();
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'critical': critical,
+      'objectId': objectId.toMap(),
+      'value': value,
+    };
   }
 
   factory X509ExtensionResponse.fromMap(Map<String, dynamic> map) {
     return X509ExtensionResponse(
       critical: map['critical'] as bool,
-      objectId: ObjectIdResponse.fromMap(
-          (map['objectId'] as Map).cast<String, dynamic>()),
+      objectId: ObjectIdResponse.fromMap((map['objectId'] as Map).cast<String, dynamic>()),
       value: map['value'] as String,
     );
   }
 }
+

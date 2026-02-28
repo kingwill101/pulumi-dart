@@ -248,13 +248,10 @@ import 'identity_policy_args.dart';
 class IdentityPolicy extends pulumi.CustomResource {
   /// Name or Amazon Resource Name (ARN) of the SES Identity.
   late final pulumi.Output<String> identity;
-
   /// Name of the policy.
   late final pulumi.Output<String> name;
-
   /// JSON string of the policy.
   late final pulumi.Output<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

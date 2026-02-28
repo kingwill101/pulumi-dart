@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Contains information of the customer's network configurations.
 class ConsumerResponseMetastoreV1beta {
   /// The location of the endpoint URI. Format: projects/{project}/locations/{location}.
   final String endpointLocation;
-
   /// The URI of the endpoint used to access the metastore service.
   final String endpointUri;
-
   /// Immutable. The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
   final String subnetwork;
 
@@ -22,11 +21,11 @@ class ConsumerResponseMetastoreV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['endpointLocation'] = endpointLocation;
-    map['endpointUri'] = endpointUri;
-    map['subnetwork'] = subnetwork;
-    return map;
+    return <String, dynamic>{
+      'endpointLocation': endpointLocation,
+      'endpointUri': endpointUri,
+      'subnetwork': subnetwork,
+    };
   }
 
   factory ConsumerResponseMetastoreV1beta.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class ConsumerResponseMetastoreV1beta {
     );
   }
 }
+

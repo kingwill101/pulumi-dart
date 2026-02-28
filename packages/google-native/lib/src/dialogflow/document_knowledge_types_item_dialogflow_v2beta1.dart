@@ -15,7 +15,7 @@ enum DocumentKnowledgeTypesItemDialogflowV2beta1 {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown DocumentKnowledgeTypesItemDialogflowV2beta1 value: $value');
+    throw ArgumentError('Unknown DocumentKnowledgeTypesItemDialogflowV2beta1 value: $value');
   }
 }
+

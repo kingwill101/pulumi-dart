@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// An empty spec for actuation feature. This is required since Feature proto requires a spec.
 class NamespaceActuationFeatureSpecResponse {
   /// actuation_mode controls the behavior of the controller
@@ -12,15 +13,15 @@ class NamespaceActuationFeatureSpecResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['actuationMode'] = actuationMode;
-    return map;
+    return <String, dynamic>{
+      'actuationMode': actuationMode,
+    };
   }
 
-  factory NamespaceActuationFeatureSpecResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory NamespaceActuationFeatureSpecResponse.fromMap(Map<String, dynamic> map) {
     return NamespaceActuationFeatureSpecResponse(
       actuationMode: map['actuationMode'] as String,
     );
   }
 }
+

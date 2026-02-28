@@ -14,20 +14,15 @@ class GetClusterStorageConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['blockStorages'] = pulumi.Input.encodeList<
-        GetClusterStorageConfigBlockStorage,
-        Map<String, dynamic>>(blockStorages, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'blockStorages': pulumi.Input.encodeList<GetClusterStorageConfigBlockStorage, Map<String, dynamic>>(blockStorages, (value) => value.toMap()),
+    };
   }
 
   factory GetClusterStorageConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterStorageConfig(
-      blockStorages:
-          pulumi.Input.decodeList<GetClusterStorageConfigBlockStorage>(
-              map['blockStorages'],
-              (value) => GetClusterStorageConfigBlockStorage.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      blockStorages: pulumi.Input.decodeList<GetClusterStorageConfigBlockStorage>(map['blockStorages'], (value) => GetClusterStorageConfigBlockStorage.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

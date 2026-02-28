@@ -16,17 +16,15 @@ class GetRoleArgs {
   GetRoleArgs({
     String? project,
     required String roleId,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        roleId = pulumi.Input.asInput<String>(roleId);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      roleId = pulumi.Input.asInput<String>(roleId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['roleId'] = roleId;
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'roleId': roleId,
+    };
   }
 
   factory GetRoleArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetRoleArgs {
     );
   }
 }
+

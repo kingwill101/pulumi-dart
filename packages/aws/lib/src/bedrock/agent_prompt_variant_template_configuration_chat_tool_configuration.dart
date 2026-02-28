@@ -6,12 +6,9 @@ import 'agent_prompt_variant_template_configuration_chat_tool_configuration_tool
 
 class AgentPromptVariantTemplateConfigurationChatToolConfiguration {
   /// Defines which tools the model should request when invoked. See Tool Choice for more information.
-  final AgentPromptVariantTemplateConfigurationChatToolConfigurationToolChoice?
-      toolChoice;
-
+  final AgentPromptVariantTemplateConfigurationChatToolConfigurationToolChoice? toolChoice;
   /// A list of tools to pass to a model. See Tool for more information.
-  final List<AgentPromptVariantTemplateConfigurationChatToolConfigurationTool>?
-      tools;
+  final List<AgentPromptVariantTemplateConfigurationChatToolConfigurationTool>? tools;
 
   /// Creates a new [AgentPromptVariantTemplateConfigurationChatToolConfiguration].
   /// [toolChoice] Defines which tools the model should request when invoked. See Tool Choice for more information.
@@ -22,35 +19,17 @@ class AgentPromptVariantTemplateConfigurationChatToolConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final toolChoiceValue = toolChoice;
-    if (toolChoiceValue != null) {
-      map['toolChoice'] = toolChoiceValue.toMap();
-    }
-    final toolsValue = tools;
-    if (toolsValue != null) {
-      map['tools'] = pulumi.Input.encodeList<
-          AgentPromptVariantTemplateConfigurationChatToolConfigurationTool,
-          Map<String, dynamic>>(toolsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'toolChoice': ?toolChoice == null ? null : toolChoice!.toMap(),
+      'tools': ?tools == null ? null : pulumi.Input.encodeList<AgentPromptVariantTemplateConfigurationChatToolConfigurationTool, Map<String, dynamic>>(tools!, (value) => value.toMap()),
+    };
   }
 
-  factory AgentPromptVariantTemplateConfigurationChatToolConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentPromptVariantTemplateConfigurationChatToolConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentPromptVariantTemplateConfigurationChatToolConfiguration(
-      toolChoice: map['toolChoice'] == null
-          ? null
-          : AgentPromptVariantTemplateConfigurationChatToolConfigurationToolChoice
-              .fromMap((map['toolChoice'] as Map).cast<String, dynamic>()),
-      tools: map['tools'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  AgentPromptVariantTemplateConfigurationChatToolConfigurationTool>(
-              map['tools'],
-              (value) =>
-                  AgentPromptVariantTemplateConfigurationChatToolConfigurationTool
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      toolChoice: map['toolChoice'] == null ? null : AgentPromptVariantTemplateConfigurationChatToolConfigurationToolChoice.fromMap((map['toolChoice'] as Map).cast<String, dynamic>()),
+      tools: map['tools'] == null ? null : pulumi.Input.decodeList<AgentPromptVariantTemplateConfigurationChatToolConfigurationTool>(map['tools'], (value) => AgentPromptVariantTemplateConfigurationChatToolConfigurationTool.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

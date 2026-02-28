@@ -8,28 +8,18 @@ import 'google_cloud_beyondcorp_partnerservices_v1alpha_transport_info_response.
 class GetProxyConfigResult {
   /// Timestamp when the resource was created.
   final String createTime;
-
   /// Optional. An arbitrary caller-provided name for the ProxyConfig. Cannot exceed 64 characters.
   final String displayName;
-
   /// Optional. Information to encrypt JWT for the proxy server.
-  final GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse
-      encryptionInfo;
-
+  final GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse encryptionInfo;
   /// ProxyConfig resource name.
   final String name;
-
   /// The URI of the proxy server.
   final String proxyUri;
-
   /// Routing info to direct traffic to the proxy server.
-  final GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponse
-      routingInfo;
-
+  final GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponse routingInfo;
   /// Transport layer information to verify for the proxy server.
-  final GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse
-      transportInfo;
-
+  final GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse transportInfo;
   /// Timestamp when the resource was last modified.
   final String updateTime;
 
@@ -54,34 +44,29 @@ class GetProxyConfigResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['displayName'] = displayName;
-    map['encryptionInfo'] = encryptionInfo.toMap();
-    map['name'] = name;
-    map['proxyUri'] = proxyUri;
-    map['routingInfo'] = routingInfo.toMap();
-    map['transportInfo'] = transportInfo.toMap();
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'displayName': displayName,
+      'encryptionInfo': encryptionInfo.toMap(),
+      'name': name,
+      'proxyUri': proxyUri,
+      'routingInfo': routingInfo.toMap(),
+      'transportInfo': transportInfo.toMap(),
+      'updateTime': updateTime,
+    };
   }
 
   factory GetProxyConfigResult.fromMap(Map<String, dynamic> map) {
     return GetProxyConfigResult(
       createTime: map['createTime'] as String,
       displayName: map['displayName'] as String,
-      encryptionInfo:
-          GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse
-              .fromMap((map['encryptionInfo'] as Map).cast<String, dynamic>()),
+      encryptionInfo: GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse.fromMap((map['encryptionInfo'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       proxyUri: map['proxyUri'] as String,
-      routingInfo:
-          GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponse
-              .fromMap((map['routingInfo'] as Map).cast<String, dynamic>()),
-      transportInfo:
-          GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse
-              .fromMap((map['transportInfo'] as Map).cast<String, dynamic>()),
+      routingInfo: GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponse.fromMap((map['routingInfo'] as Map).cast<String, dynamic>()),
+      transportInfo: GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse.fromMap((map['transportInfo'] as Map).cast<String, dynamic>()),
       updateTime: map['updateTime'] as String,
     );
   }
 }
+

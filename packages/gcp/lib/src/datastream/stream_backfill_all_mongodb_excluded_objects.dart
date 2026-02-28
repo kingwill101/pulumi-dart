@@ -15,21 +15,15 @@ class StreamBackfillAllMongodbExcludedObjects {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['databases'] = pulumi.Input.encodeList<
-        StreamBackfillAllMongodbExcludedObjectsDatabase,
-        Map<String, dynamic>>(databases, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'databases': pulumi.Input.encodeList<StreamBackfillAllMongodbExcludedObjectsDatabase, Map<String, dynamic>>(databases, (value) => value.toMap()),
+    };
   }
 
-  factory StreamBackfillAllMongodbExcludedObjects.fromMap(
-      Map<String, dynamic> map) {
+  factory StreamBackfillAllMongodbExcludedObjects.fromMap(Map<String, dynamic> map) {
     return StreamBackfillAllMongodbExcludedObjects(
-      databases: pulumi.Input.decodeList<
-              StreamBackfillAllMongodbExcludedObjectsDatabase>(
-          map['databases'],
-          (value) => StreamBackfillAllMongodbExcludedObjectsDatabase.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      databases: pulumi.Input.decodeList<StreamBackfillAllMongodbExcludedObjectsDatabase>(map['databases'], (value) => StreamBackfillAllMongodbExcludedObjectsDatabase.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

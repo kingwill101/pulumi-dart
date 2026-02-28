@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Controls sign-in behavior.
 class SignInBehaviorResponse {
   /// When to redirect sign-ins to the IdP.
@@ -12,9 +13,9 @@ class SignInBehaviorResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['redirectCondition'] = redirectCondition;
-    return map;
+    return <String, dynamic>{
+      'redirectCondition': redirectCondition,
+    };
   }
 
   factory SignInBehaviorResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class SignInBehaviorResponse {
     );
   }
 }
+

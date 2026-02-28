@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDbServersArgs {
   /// The Exadata Infrastructure id.
   final pulumi.Input<String> cloudExadataInfrastructure;
-
   /// The location of resource.
   final pulumi.Input<String> location;
-
   /// The project to which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -25,20 +23,17 @@ class GetDbServersArgs {
     required String cloudExadataInfrastructure,
     required String location,
     String? project,
-  })  : cloudExadataInfrastructure =
-            pulumi.Input.asInput<String>(cloudExadataInfrastructure),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      cloudExadataInfrastructure = pulumi.Input.asInput<String>(cloudExadataInfrastructure),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cloudExadataInfrastructure'] = cloudExadataInfrastructure;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cloudExadataInfrastructure': cloudExadataInfrastructure,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetDbServersArgs.fromMap(Map<String, dynamic> map) {
@@ -49,3 +44,4 @@ class GetDbServersArgs {
     );
   }
 }
+

@@ -7,22 +7,16 @@ import 'config_management_oci_config.dart';
 class ConfigManagementConfigSync {
   /// Set to true to allow the vertical scaling. Defaults to false which disallows vertical scaling. This field is deprecated.
   final bool? allowVerticalScale;
-
   /// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
   final bool? enabled;
-
   /// Git repo configuration for the cluster.
   final ConfigManagementGitConfig? git;
-
   /// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA. This field is required when automatic Feature management is enabled.
   final String? metricsGcpServiceAccountEmail;
-
   /// OCI repo configuration for the cluster
   final ConfigManagementOciConfig? oci;
-
   /// Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
   final bool? preventDrift;
-
   /// Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
   final String? sourceFormat;
 
@@ -45,60 +39,27 @@ class ConfigManagementConfigSync {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final allowVerticalScaleValue = allowVerticalScale;
-    if (allowVerticalScaleValue != null) {
-      map['allowVerticalScale'] = allowVerticalScaleValue;
-    }
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    final gitValue = git;
-    if (gitValue != null) {
-      map['git'] = gitValue.toMap();
-    }
-    final metricsGcpServiceAccountEmailValue = metricsGcpServiceAccountEmail;
-    if (metricsGcpServiceAccountEmailValue != null) {
-      map['metricsGcpServiceAccountEmail'] = metricsGcpServiceAccountEmailValue;
-    }
-    final ociValue = oci;
-    if (ociValue != null) {
-      map['oci'] = ociValue.toMap();
-    }
-    final preventDriftValue = preventDrift;
-    if (preventDriftValue != null) {
-      map['preventDrift'] = preventDriftValue;
-    }
-    final sourceFormatValue = sourceFormat;
-    if (sourceFormatValue != null) {
-      map['sourceFormat'] = sourceFormatValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'allowVerticalScale': ?allowVerticalScale,
+      'enabled': ?enabled,
+      'git': ?git == null ? null : git!.toMap(),
+      'metricsGcpServiceAccountEmail': ?metricsGcpServiceAccountEmail,
+      'oci': ?oci == null ? null : oci!.toMap(),
+      'preventDrift': ?preventDrift,
+      'sourceFormat': ?sourceFormat,
+    };
   }
 
   factory ConfigManagementConfigSync.fromMap(Map<String, dynamic> map) {
     return ConfigManagementConfigSync(
-      allowVerticalScale: map['allowVerticalScale'] == null
-          ? null
-          : map['allowVerticalScale'] as bool,
+      allowVerticalScale: map['allowVerticalScale'] == null ? null : map['allowVerticalScale'] as bool,
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      git: map['git'] == null
-          ? null
-          : ConfigManagementGitConfig.fromMap(
-              (map['git'] as Map).cast<String, dynamic>()),
-      metricsGcpServiceAccountEmail:
-          map['metricsGcpServiceAccountEmail'] == null
-              ? null
-              : map['metricsGcpServiceAccountEmail'] as String,
-      oci: map['oci'] == null
-          ? null
-          : ConfigManagementOciConfig.fromMap(
-              (map['oci'] as Map).cast<String, dynamic>()),
-      preventDrift:
-          map['preventDrift'] == null ? null : map['preventDrift'] as bool,
-      sourceFormat:
-          map['sourceFormat'] == null ? null : map['sourceFormat'] as String,
+      git: map['git'] == null ? null : ConfigManagementGitConfig.fromMap((map['git'] as Map).cast<String, dynamic>()),
+      metricsGcpServiceAccountEmail: map['metricsGcpServiceAccountEmail'] == null ? null : map['metricsGcpServiceAccountEmail'] as String,
+      oci: map['oci'] == null ? null : ConfigManagementOciConfig.fromMap((map['oci'] as Map).cast<String, dynamic>()),
+      preventDrift: map['preventDrift'] == null ? null : map['preventDrift'] as bool,
+      sourceFormat: map['sourceFormat'] == null ? null : map['sourceFormat'] as String,
     );
   }
 }
+

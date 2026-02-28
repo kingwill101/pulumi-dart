@@ -25,25 +25,23 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['buildFinishedOn'] = buildFinishedOn;
-    map['buildInvocationId'] = buildInvocationId;
-    map['buildStartedOn'] = buildStartedOn;
-    map['completeness'] = completeness.toMap();
-    map['reproducible'] = reproducible;
-    return map;
+    return <String, dynamic>{
+      'buildFinishedOn': buildFinishedOn,
+      'buildInvocationId': buildInvocationId,
+      'buildStartedOn': buildStartedOn,
+      'completeness': completeness.toMap(),
+      'reproducible': reproducible,
+    };
   }
 
-  factory GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse.fromMap(Map<String, dynamic> map) {
     return GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse(
       buildFinishedOn: map['buildFinishedOn'] as String,
       buildInvocationId: map['buildInvocationId'] as String,
       buildStartedOn: map['buildStartedOn'] as String,
-      completeness:
-          GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse.fromMap(
-              (map['completeness'] as Map).cast<String, dynamic>()),
+      completeness: GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse.fromMap((map['completeness'] as Map).cast<String, dynamic>()),
       reproducible: map['reproducible'] as bool,
     );
   }
 }
+

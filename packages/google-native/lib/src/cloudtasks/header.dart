@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Defines a header message. A header can have a key and a value.
 class Header {
   /// The Key of the header.
   final String? key;
-
   /// The Value of the header.
   final String? value;
 
@@ -17,16 +17,10 @@ class Header {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final keyValue = key;
-    if (keyValue != null) {
-      map['key'] = keyValue;
-    }
-    final valueValue = value;
-    if (valueValue != null) {
-      map['value'] = valueValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'key': ?key,
+      'value': ?value,
+    };
   }
 
   factory Header.fromMap(Map<String, dynamic> map) {
@@ -36,3 +30,4 @@ class Header {
     );
   }
 }
+

@@ -1,22 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// This is not supported or used by Cloud Run.
 class OwnerReferenceResponse {
   /// This is not supported or used by Cloud Run.
   final String apiVersion;
-
   /// This is not supported or used by Cloud Run.
   final bool blockOwnerDeletion;
-
   /// This is not supported or used by Cloud Run.
   final bool controller;
-
   /// This is not supported or used by Cloud Run.
   final String kind;
-
   /// This is not supported or used by Cloud Run.
   final String name;
-
   /// This is not supported or used by Cloud Run.
   final String uid;
 
@@ -37,14 +33,14 @@ class OwnerReferenceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['apiVersion'] = apiVersion;
-    map['blockOwnerDeletion'] = blockOwnerDeletion;
-    map['controller'] = controller;
-    map['kind'] = kind;
-    map['name'] = name;
-    map['uid'] = uid;
-    return map;
+    return <String, dynamic>{
+      'apiVersion': apiVersion,
+      'blockOwnerDeletion': blockOwnerDeletion,
+      'controller': controller,
+      'kind': kind,
+      'name': name,
+      'uid': uid,
+    };
   }
 
   factory OwnerReferenceResponse.fromMap(Map<String, dynamic> map) {
@@ -58,3 +54,4 @@ class OwnerReferenceResponse {
     );
   }
 }
+

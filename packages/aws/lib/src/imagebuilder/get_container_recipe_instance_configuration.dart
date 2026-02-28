@@ -5,9 +5,7 @@ import 'get_container_recipe_instance_configuration_block_device_mapping.dart';
 
 class GetContainerRecipeInstanceConfiguration {
   /// Set of objects with block device mappings for the instance configuration.
-  final List<GetContainerRecipeInstanceConfigurationBlockDeviceMapping>
-      blockDeviceMappings;
-
+  final List<GetContainerRecipeInstanceConfigurationBlockDeviceMapping> blockDeviceMappings;
   /// AMI ID of the base image for container build and test instance.
   final String image;
 
@@ -20,24 +18,17 @@ class GetContainerRecipeInstanceConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['blockDeviceMappings'] = pulumi.Input.encodeList<
-        GetContainerRecipeInstanceConfigurationBlockDeviceMapping,
-        Map<String, dynamic>>(blockDeviceMappings, (value) => value.toMap());
-    map['image'] = image;
-    return map;
+    return <String, dynamic>{
+      'blockDeviceMappings': pulumi.Input.encodeList<GetContainerRecipeInstanceConfigurationBlockDeviceMapping, Map<String, dynamic>>(blockDeviceMappings, (value) => value.toMap()),
+      'image': image,
+    };
   }
 
-  factory GetContainerRecipeInstanceConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory GetContainerRecipeInstanceConfiguration.fromMap(Map<String, dynamic> map) {
     return GetContainerRecipeInstanceConfiguration(
-      blockDeviceMappings: pulumi.Input.decodeList<
-              GetContainerRecipeInstanceConfigurationBlockDeviceMapping>(
-          map['blockDeviceMappings'],
-          (value) =>
-              GetContainerRecipeInstanceConfigurationBlockDeviceMapping.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      blockDeviceMappings: pulumi.Input.decodeList<GetContainerRecipeInstanceConfigurationBlockDeviceMapping>(map['blockDeviceMappings'], (value) => GetContainerRecipeInstanceConfigurationBlockDeviceMapping.fromMap((value as Map).cast<String, dynamic>())),
       image: map['image'] as String,
     );
   }
 }
+

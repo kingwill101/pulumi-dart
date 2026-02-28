@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetAutonomousDatabasesAutonomousDatabaseSourceConfig {
   /// This field specifies if the replication of automatic backups is enabled when creating a Data Guard.
   final bool automaticBackupsReplicationEnabled;
-
   /// The name of the primary Autonomous Database that is used to create a Peer Autonomous Database from a source.
   final String autonomousDatabase;
 
@@ -16,19 +16,17 @@ class GetAutonomousDatabasesAutonomousDatabaseSourceConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['automaticBackupsReplicationEnabled'] =
-        automaticBackupsReplicationEnabled;
-    map['autonomousDatabase'] = autonomousDatabase;
-    return map;
+    return <String, dynamic>{
+      'automaticBackupsReplicationEnabled': automaticBackupsReplicationEnabled,
+      'autonomousDatabase': autonomousDatabase,
+    };
   }
 
-  factory GetAutonomousDatabasesAutonomousDatabaseSourceConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GetAutonomousDatabasesAutonomousDatabaseSourceConfig.fromMap(Map<String, dynamic> map) {
     return GetAutonomousDatabasesAutonomousDatabaseSourceConfig(
-      automaticBackupsReplicationEnabled:
-          map['automaticBackupsReplicationEnabled'] as bool,
+      automaticBackupsReplicationEnabled: map['automaticBackupsReplicationEnabled'] as bool,
       autonomousDatabase: map['autonomousDatabase'] as String,
     );
   }
 }
+

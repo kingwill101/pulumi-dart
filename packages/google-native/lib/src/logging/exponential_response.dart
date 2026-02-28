@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Specifies an exponential sequence of buckets that have a width that is proportional to the value of the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): scale * (growth_factor ^ i).Lower bound (1 <= i < N): scale * (growth_factor ^ (i - 1)).
 class ExponentialResponse {
   /// Must be greater than 1.
   final double growthFactor;
-
   /// Must be greater than 0.
   final int numFiniteBuckets;
-
   /// Must be greater than 0.
   final double scale;
 
@@ -22,11 +21,11 @@ class ExponentialResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['growthFactor'] = growthFactor;
-    map['numFiniteBuckets'] = numFiniteBuckets;
-    map['scale'] = scale;
-    return map;
+    return <String, dynamic>{
+      'growthFactor': growthFactor,
+      'numFiniteBuckets': numFiniteBuckets,
+      'scale': scale,
+    };
   }
 
   factory ExponentialResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class ExponentialResponse {
     );
   }
 }
+

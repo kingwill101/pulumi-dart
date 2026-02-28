@@ -6,7 +6,6 @@ class ConnectionAuthConfigUserPassword {
   /// Password for Authentication.
   /// Structure is documented below.
   final ConnectionAuthConfigUserPasswordPassword? password;
-
   /// Username for Authentication.
   final String username;
 
@@ -19,22 +18,17 @@ class ConnectionAuthConfigUserPassword {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final passwordValue = password;
-    if (passwordValue != null) {
-      map['password'] = passwordValue.toMap();
-    }
-    map['username'] = username;
-    return map;
+    return <String, dynamic>{
+      'password': ?password == null ? null : password!.toMap(),
+      'username': username,
+    };
   }
 
   factory ConnectionAuthConfigUserPassword.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthConfigUserPassword(
-      password: map['password'] == null
-          ? null
-          : ConnectionAuthConfigUserPasswordPassword.fromMap(
-              (map['password'] as Map).cast<String, dynamic>()),
+      password: map['password'] == null ? null : ConnectionAuthConfigUserPasswordPassword.fromMap((map['password'] as Map).cast<String, dynamic>()),
       username: map['username'] as String,
     );
   }
 }
+

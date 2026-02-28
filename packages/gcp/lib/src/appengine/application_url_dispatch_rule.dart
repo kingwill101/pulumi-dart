@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ApplicationUrlDispatchRule {
   final String? domain;
   final String? path;
@@ -16,20 +17,11 @@ class ApplicationUrlDispatchRule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final domainValue = domain;
-    if (domainValue != null) {
-      map['domain'] = domainValue;
-    }
-    final pathValue = path;
-    if (pathValue != null) {
-      map['path'] = pathValue;
-    }
-    final serviceValue = service;
-    if (serviceValue != null) {
-      map['service'] = serviceValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'domain': ?domain,
+      'path': ?path,
+      'service': ?service,
+    };
   }
 
   factory ApplicationUrlDispatchRule.fromMap(Map<String, dynamic> map) {
@@ -40,3 +32,4 @@ class ApplicationUrlDispatchRule {
     );
   }
 }
+

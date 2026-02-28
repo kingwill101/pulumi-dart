@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AgentFlowDefinitionNodeConfigurationLambdaFunction {
   /// The Amazon Resource Name (ARN) of the Lambda function to invoke.
   final String lambdaArn;
@@ -11,15 +12,15 @@ class AgentFlowDefinitionNodeConfigurationLambdaFunction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['lambdaArn'] = lambdaArn;
-    return map;
+    return <String, dynamic>{
+      'lambdaArn': lambdaArn,
+    };
   }
 
-  factory AgentFlowDefinitionNodeConfigurationLambdaFunction.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentFlowDefinitionNodeConfigurationLambdaFunction.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationLambdaFunction(
       lambdaArn: map['lambdaArn'] as String,
     );
   }
 }
+

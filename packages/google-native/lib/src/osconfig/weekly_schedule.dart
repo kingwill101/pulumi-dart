@@ -14,9 +14,9 @@ class WeeklySchedule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dayOfWeek'] = dayOfWeek.value;
-    return map;
+    return <String, dynamic>{
+      'dayOfWeek': dayOfWeek.value,
+    };
   }
 
   factory WeeklySchedule.fromMap(Map<String, dynamic> map) {
@@ -25,3 +25,4 @@ class WeeklySchedule {
     );
   }
 }
+

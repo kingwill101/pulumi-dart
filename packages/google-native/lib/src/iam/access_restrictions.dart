@@ -7,7 +7,6 @@ import 'service_config.dart';
 class AccessRestrictions {
   /// Optional. Immutable. Services allowed for web sign-in with the workforce pool. If not set by default there are no restrictions.
   final List<ServiceConfig>? allowedServices;
-
   /// Optional. Disable programmatic sign-in by disabling token issue via the Security Token API endpoint. See [Security Token Service API] (https://cloud.google.com/iam/docs/reference/sts/rest).
   final bool? disableProgrammaticSignin;
 
@@ -20,31 +19,17 @@ class AccessRestrictions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final allowedServicesValue = allowedServices;
-    if (allowedServicesValue != null) {
-      map['allowedServices'] =
-          pulumi.Input.encodeList<ServiceConfig, Map<String, dynamic>>(
-              allowedServicesValue, (value) => value.toMap());
-    }
-    final disableProgrammaticSigninValue = disableProgrammaticSignin;
-    if (disableProgrammaticSigninValue != null) {
-      map['disableProgrammaticSignin'] = disableProgrammaticSigninValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'allowedServices': ?allowedServices == null ? null : pulumi.Input.encodeList<ServiceConfig, Map<String, dynamic>>(allowedServices!, (value) => value.toMap()),
+      'disableProgrammaticSignin': ?disableProgrammaticSignin,
+    };
   }
 
   factory AccessRestrictions.fromMap(Map<String, dynamic> map) {
     return AccessRestrictions(
-      allowedServices: map['allowedServices'] == null
-          ? null
-          : pulumi.Input.decodeList<ServiceConfig>(
-              map['allowedServices'],
-              (value) => ServiceConfig.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      disableProgrammaticSignin: map['disableProgrammaticSignin'] == null
-          ? null
-          : map['disableProgrammaticSignin'] as bool,
+      allowedServices: map['allowedServices'] == null ? null : pulumi.Input.decodeList<ServiceConfig>(map['allowedServices'], (value) => ServiceConfig.fromMap((value as Map).cast<String, dynamic>())),
+      disableProgrammaticSignin: map['disableProgrammaticSignin'] == null ? null : map['disableProgrammaticSignin'] as bool,
     );
   }
 }
+

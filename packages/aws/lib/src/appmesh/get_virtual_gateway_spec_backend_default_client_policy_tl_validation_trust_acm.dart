@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrustAcm {
   final List<String> certificateAuthorityArns;
 
@@ -10,16 +11,15 @@ class GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrustAcm {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['certificateAuthorityArns'] = certificateAuthorityArns;
-    return map;
+    return <String, dynamic>{
+      'certificateAuthorityArns': certificateAuthorityArns,
+    };
   }
 
-  factory GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrustAcm.fromMap(
-      Map<String, dynamic> map) {
+  factory GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrustAcm.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrustAcm(
-      certificateAuthorityArns:
-          (map['certificateAuthorityArns'] as List).cast<String>(),
+      certificateAuthorityArns: (map['certificateAuthorityArns'] as List).cast<String>(),
     );
   }
 }
+

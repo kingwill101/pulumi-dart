@@ -374,68 +374,50 @@ import 'job_status.dart';
 class Job extends pulumi.CustomResource {
   /// If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
   late final pulumi.Output<String> driverControlsFilesUri;
-
   /// A URI pointing to the location of the stdout of the job's driver program.
   late final pulumi.Output<String> driverOutputResourceUri;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   ///
   /// * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
   ///
   /// * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// By default, you can only delete inactive jobs within
   /// Dataproc. Setting this to true, and calling destroy, will ensure that the
   /// job is first cancelled before issuing the delete.
   late final pulumi.Output<bool?> forceDelete;
-
   /// The config of Hadoop job
   late final pulumi.Output<JobHadoopConfig?> hadoopConfig;
-
   /// The config of hive job
   late final pulumi.Output<JobHiveConfig?> hiveConfig;
-
   /// The list of labels (key/value pairs) to add to the job.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The config of pag job.
   late final pulumi.Output<JobPigConfig?> pigConfig;
-
   /// The config of job placement.
   late final pulumi.Output<JobPlacement> placement;
-
   /// The config of presto job
   late final pulumi.Output<JobPrestoConfig?> prestoConfig;
-
   /// The project in which the `cluster` can be found and jobs
   /// subsequently run against. If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The config of pySpark job.
   late final pulumi.Output<JobPysparkConfig?> pysparkConfig;
-
   /// The reference of the job
   late final pulumi.Output<JobReference> reference;
-
   /// The Cloud Dataproc region. This essentially determines which clusters are available
   /// for this job to be submitted to. If not specified, defaults to `global`.
   late final pulumi.Output<String?> region;
-
   /// Optional. Job scheduling configuration.
   late final pulumi.Output<JobScheduling?> scheduling;
-
   /// The config of the Spark job.
   late final pulumi.Output<JobSparkConfig?> sparkConfig;
-
   /// The config of SparkSql job
   late final pulumi.Output<JobSparksqlConfig?> sparksqlConfig;
-
   /// The status of the job.
   late final pulumi.Output<List<JobStatus>> statuses;
 
@@ -453,12 +435,9 @@ class Job extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.driverControlsFilesUri =
-        registerOutput<String>('driverControlsFilesUri');
-    this.driverOutputResourceUri =
-        registerOutput<String>('driverOutputResourceUri');
-    this.effectiveLabels =
-        registerOutput<Map<String, String>>('effectiveLabels');
+    this.driverControlsFilesUri = registerOutput<String>('driverControlsFilesUri');
+    this.driverOutputResourceUri = registerOutput<String>('driverOutputResourceUri');
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     this.forceDelete = registerOutput<bool?>('forceDelete');
     this.hadoopConfig = registerOutput<JobHadoopConfig?>('hadoopConfig');
     this.hiveConfig = registerOutput<JobHiveConfig?>('hiveConfig');

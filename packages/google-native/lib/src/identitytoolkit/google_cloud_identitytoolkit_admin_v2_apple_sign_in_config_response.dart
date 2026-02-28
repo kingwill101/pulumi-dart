@@ -17,19 +17,17 @@ class GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bundleIds'] = bundleIds;
-    map['codeFlowConfig'] = codeFlowConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'bundleIds': bundleIds,
+      'codeFlowConfig': codeFlowConfig.toMap(),
+    };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse(
       bundleIds: (map['bundleIds'] as List).cast<String>(),
-      codeFlowConfig:
-          GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigResponse.fromMap(
-              (map['codeFlowConfig'] as Map).cast<String, dynamic>()),
+      codeFlowConfig: GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigResponse.fromMap((map['codeFlowConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

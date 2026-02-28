@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getEnvgroupAttachment.
 class GetEnvgroupAttachmentResult {
   /// The time at which the environment group attachment was created as milliseconds since epoch.
   final String createdAt;
-
   /// ID of the attached environment.
   final String environment;
-
   /// ID of the environment group.
   final String environmentGroupId;
-
   /// ID of the environment group attachment.
   final String name;
 
@@ -27,12 +25,12 @@ class GetEnvgroupAttachmentResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createdAt'] = createdAt;
-    map['environment'] = environment;
-    map['environmentGroupId'] = environmentGroupId;
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'createdAt': createdAt,
+      'environment': environment,
+      'environmentGroupId': environmentGroupId,
+      'name': name,
+    };
   }
 
   factory GetEnvgroupAttachmentResult.fromMap(Map<String, dynamic> map) {
@@ -44,3 +42,4 @@ class GetEnvgroupAttachmentResult {
     );
   }
 }
+

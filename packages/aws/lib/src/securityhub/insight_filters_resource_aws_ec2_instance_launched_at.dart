@@ -5,10 +5,8 @@ import 'insight_filters_resource_aws_ec2_instance_launched_at_date_range.dart';
 class InsightFiltersResourceAwsEc2InstanceLaunchedAt {
   /// A configuration block of the date range for the date filter. See date_range below for more details.
   final InsightFiltersResourceAwsEc2InstanceLaunchedAtDateRange? dateRange;
-
   /// An end date for the date filter. Required with `start` if `date_range` is not specified.
   final String? end;
-
   /// A start date for the date filter. Required with `end` if `date_range` is not specified.
   final String? start;
 
@@ -23,31 +21,19 @@ class InsightFiltersResourceAwsEc2InstanceLaunchedAt {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dateRangeValue = dateRange;
-    if (dateRangeValue != null) {
-      map['dateRange'] = dateRangeValue.toMap();
-    }
-    final endValue = end;
-    if (endValue != null) {
-      map['end'] = endValue;
-    }
-    final startValue = start;
-    if (startValue != null) {
-      map['start'] = startValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'dateRange': ?dateRange == null ? null : dateRange!.toMap(),
+      'end': ?end,
+      'start': ?start,
+    };
   }
 
-  factory InsightFiltersResourceAwsEc2InstanceLaunchedAt.fromMap(
-      Map<String, dynamic> map) {
+  factory InsightFiltersResourceAwsEc2InstanceLaunchedAt.fromMap(Map<String, dynamic> map) {
     return InsightFiltersResourceAwsEc2InstanceLaunchedAt(
-      dateRange: map['dateRange'] == null
-          ? null
-          : InsightFiltersResourceAwsEc2InstanceLaunchedAtDateRange.fromMap(
-              (map['dateRange'] as Map).cast<String, dynamic>()),
+      dateRange: map['dateRange'] == null ? null : InsightFiltersResourceAwsEc2InstanceLaunchedAtDateRange.fromMap((map['dateRange'] as Map).cast<String, dynamic>()),
       end: map['end'] == null ? null : map['end'] as String,
       start: map['start'] == null ? null : map['start'] as String,
     );
   }
 }
+

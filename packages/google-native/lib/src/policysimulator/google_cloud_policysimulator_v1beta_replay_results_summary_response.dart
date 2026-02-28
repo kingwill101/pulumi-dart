@@ -6,19 +6,14 @@ import 'google_type_date_response_policysimulator_v1beta.dart';
 class GoogleCloudPolicysimulatorV1betaReplayResultsSummaryResponse {
   /// The number of replayed log entries with a difference between baseline and simulated policies.
   final int differenceCount;
-
   /// The number of log entries that could not be replayed.
   final int errorCount;
-
   /// The total number of log entries replayed.
   final int logCount;
-
   /// The date of the newest log entry replayed.
   final GoogleTypeDateResponsePolicysimulatorV1beta newestDate;
-
   /// The date of the oldest log entry replayed.
   final GoogleTypeDateResponsePolicysimulatorV1beta oldestDate;
-
   /// The number of replayed log entries with no difference between baseline and simulated policies.
   final int unchangedCount;
 
@@ -39,27 +34,25 @@ class GoogleCloudPolicysimulatorV1betaReplayResultsSummaryResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['differenceCount'] = differenceCount;
-    map['errorCount'] = errorCount;
-    map['logCount'] = logCount;
-    map['newestDate'] = newestDate.toMap();
-    map['oldestDate'] = oldestDate.toMap();
-    map['unchangedCount'] = unchangedCount;
-    return map;
+    return <String, dynamic>{
+      'differenceCount': differenceCount,
+      'errorCount': errorCount,
+      'logCount': logCount,
+      'newestDate': newestDate.toMap(),
+      'oldestDate': oldestDate.toMap(),
+      'unchangedCount': unchangedCount,
+    };
   }
 
-  factory GoogleCloudPolicysimulatorV1betaReplayResultsSummaryResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudPolicysimulatorV1betaReplayResultsSummaryResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudPolicysimulatorV1betaReplayResultsSummaryResponse(
       differenceCount: map['differenceCount'] as int,
       errorCount: map['errorCount'] as int,
       logCount: map['logCount'] as int,
-      newestDate: GoogleTypeDateResponsePolicysimulatorV1beta.fromMap(
-          (map['newestDate'] as Map).cast<String, dynamic>()),
-      oldestDate: GoogleTypeDateResponsePolicysimulatorV1beta.fromMap(
-          (map['oldestDate'] as Map).cast<String, dynamic>()),
+      newestDate: GoogleTypeDateResponsePolicysimulatorV1beta.fromMap((map['newestDate'] as Map).cast<String, dynamic>()),
+      oldestDate: GoogleTypeDateResponsePolicysimulatorV1beta.fromMap((map['oldestDate'] as Map).cast<String, dynamic>()),
       unchangedCount: map['unchangedCount'] as int,
     );
   }
 }
+

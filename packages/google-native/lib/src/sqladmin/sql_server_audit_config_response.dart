@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// SQL Server specific audit configuration.
 class SqlServerAuditConfigResponse {
   /// The name of the destination bucket (e.g., gs://mybucket).
   final String bucket;
-
   /// This is always sql#sqlServerAuditConfig
   final String kind;
-
   /// How long to keep generated audit files.
   final String retentionInterval;
-
   /// How often to upload generated audit files.
   final String uploadInterval;
 
@@ -27,12 +25,12 @@ class SqlServerAuditConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucket'] = bucket;
-    map['kind'] = kind;
-    map['retentionInterval'] = retentionInterval;
-    map['uploadInterval'] = uploadInterval;
-    return map;
+    return <String, dynamic>{
+      'bucket': bucket,
+      'kind': kind,
+      'retentionInterval': retentionInterval,
+      'uploadInterval': uploadInterval,
+    };
   }
 
   factory SqlServerAuditConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -44,3 +42,4 @@ class SqlServerAuditConfigResponse {
     );
   }
 }
+

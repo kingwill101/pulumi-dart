@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTriggerDeveloperConnectEventConfigPush {
   /// Regex of branches to match.
   final String branch;
-
   /// If true, only trigger a build if the revision regex does NOT match the git_ref regex.
   final bool invertRegex;
-
   /// Regex of tags to match.
   final String tag;
 
@@ -21,15 +20,14 @@ class GetTriggerDeveloperConnectEventConfigPush {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['branch'] = branch;
-    map['invertRegex'] = invertRegex;
-    map['tag'] = tag;
-    return map;
+    return <String, dynamic>{
+      'branch': branch,
+      'invertRegex': invertRegex,
+      'tag': tag,
+    };
   }
 
-  factory GetTriggerDeveloperConnectEventConfigPush.fromMap(
-      Map<String, dynamic> map) {
+  factory GetTriggerDeveloperConnectEventConfigPush.fromMap(Map<String, dynamic> map) {
     return GetTriggerDeveloperConnectEventConfigPush(
       branch: map['branch'] as String,
       invertRegex: map['invertRegex'] as bool,
@@ -37,3 +35,4 @@ class GetTriggerDeveloperConnectEventConfigPush {
     );
   }
 }
+

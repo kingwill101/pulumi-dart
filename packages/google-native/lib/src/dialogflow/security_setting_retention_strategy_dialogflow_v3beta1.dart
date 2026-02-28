@@ -6,15 +6,13 @@ enum SecuritySettingRetentionStrategyDialogflowV3beta1 {
   const SecuritySettingRetentionStrategyDialogflowV3beta1(this.value);
   final String value;
 
-  static SecuritySettingRetentionStrategyDialogflowV3beta1 fromValue(
-      String value) {
-    for (final item
-        in SecuritySettingRetentionStrategyDialogflowV3beta1.values) {
+  static SecuritySettingRetentionStrategyDialogflowV3beta1 fromValue(String value) {
+    for (final item in SecuritySettingRetentionStrategyDialogflowV3beta1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown SecuritySettingRetentionStrategyDialogflowV3beta1 value: $value');
+    throw ArgumentError('Unknown SecuritySettingRetentionStrategyDialogflowV3beta1 value: $value');
   }
 }
+

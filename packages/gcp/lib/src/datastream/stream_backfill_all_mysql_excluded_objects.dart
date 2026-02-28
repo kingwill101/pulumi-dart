@@ -15,21 +15,15 @@ class StreamBackfillAllMysqlExcludedObjects {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['mysqlDatabases'] = pulumi.Input.encodeList<
-        StreamBackfillAllMysqlExcludedObjectsMysqlDatabase,
-        Map<String, dynamic>>(mysqlDatabases, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'mysqlDatabases': pulumi.Input.encodeList<StreamBackfillAllMysqlExcludedObjectsMysqlDatabase, Map<String, dynamic>>(mysqlDatabases, (value) => value.toMap()),
+    };
   }
 
-  factory StreamBackfillAllMysqlExcludedObjects.fromMap(
-      Map<String, dynamic> map) {
+  factory StreamBackfillAllMysqlExcludedObjects.fromMap(Map<String, dynamic> map) {
     return StreamBackfillAllMysqlExcludedObjects(
-      mysqlDatabases: pulumi.Input.decodeList<
-              StreamBackfillAllMysqlExcludedObjectsMysqlDatabase>(
-          map['mysqlDatabases'],
-          (value) => StreamBackfillAllMysqlExcludedObjectsMysqlDatabase.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      mysqlDatabases: pulumi.Input.decodeList<StreamBackfillAllMysqlExcludedObjectsMysqlDatabase>(map['mysqlDatabases'], (value) => StreamBackfillAllMysqlExcludedObjectsMysqlDatabase.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

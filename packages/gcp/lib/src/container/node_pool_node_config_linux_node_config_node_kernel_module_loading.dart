@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading {
   /// The policy for kernel module loading.
   final String? policy;
@@ -11,18 +12,15 @@ class NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final policyValue = policy;
-    if (policyValue != null) {
-      map['policy'] = policyValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'policy': ?policy,
+    };
   }
 
-  factory NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading.fromMap(
-      Map<String, dynamic> map) {
+  factory NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading(
       policy: map['policy'] == null ? null : map['policy'] as String,
     );
   }
 }
+

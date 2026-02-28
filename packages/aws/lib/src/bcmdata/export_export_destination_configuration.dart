@@ -14,27 +14,15 @@ class ExportExportDestinationConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final s3DestinationsValue = s3Destinations;
-    if (s3DestinationsValue != null) {
-      map['s3Destinations'] = pulumi.Input.encodeList<
-          ExportExportDestinationConfigurationS3Destination,
-          Map<String, dynamic>>(s3DestinationsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      's3Destinations': ?s3Destinations == null ? null : pulumi.Input.encodeList<ExportExportDestinationConfigurationS3Destination, Map<String, dynamic>>(s3Destinations!, (value) => value.toMap()),
+    };
   }
 
-  factory ExportExportDestinationConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory ExportExportDestinationConfiguration.fromMap(Map<String, dynamic> map) {
     return ExportExportDestinationConfiguration(
-      s3Destinations: map['s3Destinations'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  ExportExportDestinationConfigurationS3Destination>(
-              map['s3Destinations'],
-              (value) =>
-                  ExportExportDestinationConfigurationS3Destination.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      s3Destinations: map['s3Destinations'] == null ? null : pulumi.Input.decodeList<ExportExportDestinationConfigurationS3Destination>(map['s3Destinations'], (value) => ExportExportDestinationConfigurationS3Destination.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class OccurenceAttestationSignature {
   /// The identifier for the public key that verifies this
   /// signature. MUST be an RFC3986 conformant
@@ -12,7 +13,6 @@ class OccurenceAttestationSignature {
   /// * RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization):
   /// * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU"
   final String publicKeyId;
-
   /// The content of the signature, an opaque bytestring.
   /// The payload that this signature verifies MUST be
   /// unambiguously provided with the Signature during
@@ -31,13 +31,10 @@ class OccurenceAttestationSignature {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['publicKeyId'] = publicKeyId;
-    final signatureValue = signature;
-    if (signatureValue != null) {
-      map['signature'] = signatureValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'publicKeyId': publicKeyId,
+      'signature': ?signature,
+    };
   }
 
   factory OccurenceAttestationSignature.fromMap(Map<String, dynamic> map) {
@@ -47,3 +44,4 @@ class OccurenceAttestationSignature {
     );
   }
 }
+

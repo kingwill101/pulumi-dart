@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TemplateFilterConfigSdpSettingsBasicConfig {
   /// Tells whether the Sensitive Data Protection basic config is enabled or
   /// disabled.
@@ -15,20 +16,15 @@ class TemplateFilterConfigSdpSettingsBasicConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final filterEnforcementValue = filterEnforcement;
-    if (filterEnforcementValue != null) {
-      map['filterEnforcement'] = filterEnforcementValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'filterEnforcement': ?filterEnforcement,
+    };
   }
 
-  factory TemplateFilterConfigSdpSettingsBasicConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory TemplateFilterConfigSdpSettingsBasicConfig.fromMap(Map<String, dynamic> map) {
     return TemplateFilterConfigSdpSettingsBasicConfig(
-      filterEnforcement: map['filterEnforcement'] == null
-          ? null
-          : map['filterEnforcement'] as String,
+      filterEnforcement: map['filterEnforcement'] == null ? null : map['filterEnforcement'] as String,
     );
   }
 }
+

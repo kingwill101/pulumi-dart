@@ -12,7 +12,6 @@ class VpcOriginArgs {
   /// Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<VpcOriginTimeouts>? timeouts;
-
   /// The VPC origin endpoint configuration.
   ///
   /// The following arguments are optional:
@@ -26,40 +25,25 @@ class VpcOriginArgs {
     Map<String, String>? tags,
     VpcOriginTimeouts? timeouts,
     required VpcOriginVpcOriginEndpointConfig vpcOriginEndpointConfig,
-  })  : tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-        timeouts = pulumi.Input.asOptionalInput<VpcOriginTimeouts>(timeouts),
-        vpcOriginEndpointConfig =
-            pulumi.Input.asInput<VpcOriginVpcOriginEndpointConfig>(
-                vpcOriginEndpointConfig);
+  }) :
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      timeouts = pulumi.Input.asOptionalInput<VpcOriginTimeouts>(timeouts),
+      vpcOriginEndpointConfig = pulumi.Input.asInput<VpcOriginVpcOriginEndpointConfig>(vpcOriginEndpointConfig);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    final timeoutsValue = timeouts;
-    if (timeoutsValue != null) {
-      map['timeouts'] = pulumi.Input.mapOptionalInputValue<VpcOriginTimeouts,
-          Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
-    }
-    map['vpcOriginEndpointConfig'] = pulumi.Input.mapInputValue<
-            VpcOriginVpcOriginEndpointConfig, Map<String, dynamic>>(
-        vpcOriginEndpointConfig, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'tags': ?tags,
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<VpcOriginTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'vpcOriginEndpointConfig': pulumi.Input.mapInputValue<VpcOriginVpcOriginEndpointConfig, Map<String, dynamic>>(vpcOriginEndpointConfig, (value) => value.toMap()),
+    };
   }
 
   factory VpcOriginArgs.fromMap(Map<String, dynamic> map) {
     return VpcOriginArgs(
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
-      timeouts: map['timeouts'] == null
-          ? null
-          : VpcOriginTimeouts.fromMap(
-              (map['timeouts'] as Map).cast<String, dynamic>()),
-      vpcOriginEndpointConfig: VpcOriginVpcOriginEndpointConfig.fromMap(
-          (map['vpcOriginEndpointConfig'] as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      timeouts: map['timeouts'] == null ? null : VpcOriginTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
+      vpcOriginEndpointConfig: VpcOriginVpcOriginEndpointConfig.fromMap((map['vpcOriginEndpointConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EventEndpointRoutingConfigFailoverConfigSecondary {
   /// The name of the secondary Region.
   final String? route;
@@ -11,18 +12,15 @@ class EventEndpointRoutingConfigFailoverConfigSecondary {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final routeValue = route;
-    if (routeValue != null) {
-      map['route'] = routeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'route': ?route,
+    };
   }
 
-  factory EventEndpointRoutingConfigFailoverConfigSecondary.fromMap(
-      Map<String, dynamic> map) {
+  factory EventEndpointRoutingConfigFailoverConfigSecondary.fromMap(Map<String, dynamic> map) {
     return EventEndpointRoutingConfigFailoverConfigSecondary(
       route: map['route'] == null ? null : map['route'] as String,
     );
   }
 }
+

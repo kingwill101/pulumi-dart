@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEmailIdentityMailFromAttributesArgs {
   /// The name of the email identity.
   final pulumi.Input<String> emailIdentity;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -19,24 +18,22 @@ class GetEmailIdentityMailFromAttributesArgs {
   GetEmailIdentityMailFromAttributesArgs({
     required String emailIdentity,
     String? region,
-  })  : emailIdentity = pulumi.Input.asInput<String>(emailIdentity),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      emailIdentity = pulumi.Input.asInput<String>(emailIdentity),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['emailIdentity'] = emailIdentity;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'emailIdentity': emailIdentity,
+      'region': ?region,
+    };
   }
 
-  factory GetEmailIdentityMailFromAttributesArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetEmailIdentityMailFromAttributesArgs.fromMap(Map<String, dynamic> map) {
     return GetEmailIdentityMailFromAttributesArgs(
       emailIdentity: map['emailIdentity'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

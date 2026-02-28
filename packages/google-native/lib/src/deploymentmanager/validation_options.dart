@@ -7,7 +7,6 @@ import 'validation_options_undeclared_properties.dart';
 class ValidationOptions {
   /// Customize how deployment manager will validate the resource against schema errors.
   final ValidationOptionsSchemaValidation? schemaValidation;
-
   /// Specify what to do with extra properties when executing a request.
   final ValidationOptionsUndeclaredProperties? undeclaredProperties;
 
@@ -20,28 +19,17 @@ class ValidationOptions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final schemaValidationValue = schemaValidation;
-    if (schemaValidationValue != null) {
-      map['schemaValidation'] = schemaValidationValue.value;
-    }
-    final undeclaredPropertiesValue = undeclaredProperties;
-    if (undeclaredPropertiesValue != null) {
-      map['undeclaredProperties'] = undeclaredPropertiesValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'schemaValidation': ?schemaValidation == null ? null : schemaValidation!.value,
+      'undeclaredProperties': ?undeclaredProperties == null ? null : undeclaredProperties!.value,
+    };
   }
 
   factory ValidationOptions.fromMap(Map<String, dynamic> map) {
     return ValidationOptions(
-      schemaValidation: map['schemaValidation'] == null
-          ? null
-          : ValidationOptionsSchemaValidation.fromValue(
-              map['schemaValidation'] as String),
-      undeclaredProperties: map['undeclaredProperties'] == null
-          ? null
-          : ValidationOptionsUndeclaredProperties.fromValue(
-              map['undeclaredProperties'] as String),
+      schemaValidation: map['schemaValidation'] == null ? null : ValidationOptionsSchemaValidation.fromValue(map['schemaValidation'] as String),
+      undeclaredProperties: map['undeclaredProperties'] == null ? null : ValidationOptionsUndeclaredProperties.fromValue(map['undeclaredProperties'] as String),
     );
   }
 }
+

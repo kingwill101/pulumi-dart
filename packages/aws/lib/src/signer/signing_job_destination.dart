@@ -13,15 +13,15 @@ class SigningJobDestination {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['s3'] = s3.toMap();
-    return map;
+    return <String, dynamic>{
+      's3': s3.toMap(),
+    };
   }
 
   factory SigningJobDestination.fromMap(Map<String, dynamic> map) {
     return SigningJobDestination(
-      s3: SigningJobDestinationS3.fromMap(
-          (map['s3'] as Map).cast<String, dynamic>()),
+      s3: SigningJobDestinationS3.fromMap((map['s3'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

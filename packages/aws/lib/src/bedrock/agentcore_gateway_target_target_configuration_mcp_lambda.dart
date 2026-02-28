@@ -5,7 +5,6 @@ import 'agentcore_gateway_target_target_configuration_mcp_lambda_tool_schema.dar
 class AgentcoreGatewayTargetTargetConfigurationMcpLambda {
   /// ARN of the Lambda function to invoke.
   final String lambdaArn;
-
   /// Schema definition for the tool. See `tool_schema` below.
   final AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema toolSchema;
 
@@ -18,19 +17,17 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambda {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['lambdaArn'] = lambdaArn;
-    map['toolSchema'] = toolSchema.toMap();
-    return map;
+    return <String, dynamic>{
+      'lambdaArn': lambdaArn,
+      'toolSchema': toolSchema.toMap(),
+    };
   }
 
-  factory AgentcoreGatewayTargetTargetConfigurationMcpLambda.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentcoreGatewayTargetTargetConfigurationMcpLambda.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetTargetConfigurationMcpLambda(
       lambdaArn: map['lambdaArn'] as String,
-      toolSchema:
-          AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema.fromMap(
-              (map['toolSchema'] as Map).cast<String, dynamic>()),
+      toolSchema: AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema.fromMap((map['toolSchema'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

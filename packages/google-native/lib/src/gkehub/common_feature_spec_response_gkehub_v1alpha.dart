@@ -12,25 +12,18 @@ import 'namespace_actuation_feature_spec_response.dart';
 class CommonFeatureSpecResponseGkehubV1alpha {
   /// Anthos Observability spec
   final AnthosObservabilityFeatureSpecResponse anthosobservability;
-
   /// Appdevexperience specific spec.
   final Map<String, dynamic> appdevexperience;
-
   /// Cloud Audit Logging-specific spec.
   final CloudAuditLoggingFeatureSpecResponse cloudauditlogging;
-
   /// ClusterUpgrade (fleet-based) feature spec.
   final ClusterUpgradeFleetSpecResponseGkehubV1alpha clusterupgrade;
-
   /// FleetObservability feature spec.
   final FleetObservabilityFeatureSpecResponseGkehubV1alpha fleetobservability;
-
   /// Multicluster Ingress-specific spec.
   final MultiClusterIngressFeatureSpecResponseGkehubV1alpha multiclusteringress;
-
   /// Namespace Actuation feature spec
   final NamespaceActuationFeatureSpecResponse namespaceactuation;
-
   /// Workload Certificate spec.
   final FeatureSpecResponse workloadcertificate;
 
@@ -55,39 +48,29 @@ class CommonFeatureSpecResponseGkehubV1alpha {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['anthosobservability'] = anthosobservability.toMap();
-    map['appdevexperience'] = appdevexperience;
-    map['cloudauditlogging'] = cloudauditlogging.toMap();
-    map['clusterupgrade'] = clusterupgrade.toMap();
-    map['fleetobservability'] = fleetobservability.toMap();
-    map['multiclusteringress'] = multiclusteringress.toMap();
-    map['namespaceactuation'] = namespaceactuation.toMap();
-    map['workloadcertificate'] = workloadcertificate.toMap();
-    return map;
+    return <String, dynamic>{
+      'anthosobservability': anthosobservability.toMap(),
+      'appdevexperience': appdevexperience,
+      'cloudauditlogging': cloudauditlogging.toMap(),
+      'clusterupgrade': clusterupgrade.toMap(),
+      'fleetobservability': fleetobservability.toMap(),
+      'multiclusteringress': multiclusteringress.toMap(),
+      'namespaceactuation': namespaceactuation.toMap(),
+      'workloadcertificate': workloadcertificate.toMap(),
+    };
   }
 
-  factory CommonFeatureSpecResponseGkehubV1alpha.fromMap(
-      Map<String, dynamic> map) {
+  factory CommonFeatureSpecResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return CommonFeatureSpecResponseGkehubV1alpha(
-      anthosobservability: AnthosObservabilityFeatureSpecResponse.fromMap(
-          (map['anthosobservability'] as Map).cast<String, dynamic>()),
-      appdevexperience:
-          (map['appdevexperience'] as Map).cast<String, dynamic>(),
-      cloudauditlogging: CloudAuditLoggingFeatureSpecResponse.fromMap(
-          (map['cloudauditlogging'] as Map).cast<String, dynamic>()),
-      clusterupgrade: ClusterUpgradeFleetSpecResponseGkehubV1alpha.fromMap(
-          (map['clusterupgrade'] as Map).cast<String, dynamic>()),
-      fleetobservability:
-          FleetObservabilityFeatureSpecResponseGkehubV1alpha.fromMap(
-              (map['fleetobservability'] as Map).cast<String, dynamic>()),
-      multiclusteringress:
-          MultiClusterIngressFeatureSpecResponseGkehubV1alpha.fromMap(
-              (map['multiclusteringress'] as Map).cast<String, dynamic>()),
-      namespaceactuation: NamespaceActuationFeatureSpecResponse.fromMap(
-          (map['namespaceactuation'] as Map).cast<String, dynamic>()),
-      workloadcertificate: FeatureSpecResponse.fromMap(
-          (map['workloadcertificate'] as Map).cast<String, dynamic>()),
+      anthosobservability: AnthosObservabilityFeatureSpecResponse.fromMap((map['anthosobservability'] as Map).cast<String, dynamic>()),
+      appdevexperience: (map['appdevexperience'] as Map).cast<String, dynamic>(),
+      cloudauditlogging: CloudAuditLoggingFeatureSpecResponse.fromMap((map['cloudauditlogging'] as Map).cast<String, dynamic>()),
+      clusterupgrade: ClusterUpgradeFleetSpecResponseGkehubV1alpha.fromMap((map['clusterupgrade'] as Map).cast<String, dynamic>()),
+      fleetobservability: FleetObservabilityFeatureSpecResponseGkehubV1alpha.fromMap((map['fleetobservability'] as Map).cast<String, dynamic>()),
+      multiclusteringress: MultiClusterIngressFeatureSpecResponseGkehubV1alpha.fromMap((map['multiclusteringress'] as Map).cast<String, dynamic>()),
+      namespaceactuation: NamespaceActuationFeatureSpecResponse.fromMap((map['namespaceactuation'] as Map).cast<String, dynamic>()),
+      workloadcertificate: FeatureSpecResponse.fromMap((map['workloadcertificate'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

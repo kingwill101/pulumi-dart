@@ -6,7 +6,6 @@ import 'get_local_gateway_route_table_filter.dart';
 /// Result data returned by getLocalGatewayRouteTable.
 class GetLocalGatewayRouteTableResult {
   final List<GetLocalGatewayRouteTableFilter>? filters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String localGatewayId;
@@ -37,30 +36,21 @@ class GetLocalGatewayRouteTableResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final filtersValue = filters;
-    if (filtersValue != null) {
-      map['filters'] = pulumi.Input.encodeList<GetLocalGatewayRouteTableFilter,
-          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
-    }
-    map['id'] = id;
-    map['localGatewayId'] = localGatewayId;
-    map['localGatewayRouteTableId'] = localGatewayRouteTableId;
-    map['outpostArn'] = outpostArn;
-    map['region'] = region;
-    map['state'] = state;
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetLocalGatewayRouteTableFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'id': id,
+      'localGatewayId': localGatewayId,
+      'localGatewayRouteTableId': localGatewayRouteTableId,
+      'outpostArn': outpostArn,
+      'region': region,
+      'state': state,
+      'tags': tags,
+    };
   }
 
   factory GetLocalGatewayRouteTableResult.fromMap(Map<String, dynamic> map) {
     return GetLocalGatewayRouteTableResult(
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetLocalGatewayRouteTableFilter>(
-              map['filters'],
-              (value) => GetLocalGatewayRouteTableFilter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetLocalGatewayRouteTableFilter>(map['filters'], (value) => GetLocalGatewayRouteTableFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       localGatewayId: map['localGatewayId'] as String,
       localGatewayRouteTableId: map['localGatewayRouteTableId'] as String,
@@ -71,3 +61,4 @@ class GetLocalGatewayRouteTableResult {
     );
   }
 }
+

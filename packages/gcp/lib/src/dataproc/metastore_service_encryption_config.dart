@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MetastoreServiceEncryptionConfig {
   /// The fully qualified customer provided Cloud KMS key name to use for customer data encryption.
   /// Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
@@ -12,9 +13,9 @@ class MetastoreServiceEncryptionConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kmsKey'] = kmsKey;
-    return map;
+    return <String, dynamic>{
+      'kmsKey': kmsKey,
+    };
   }
 
   factory MetastoreServiceEncryptionConfig.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class MetastoreServiceEncryptionConfig {
     );
   }
 }
+

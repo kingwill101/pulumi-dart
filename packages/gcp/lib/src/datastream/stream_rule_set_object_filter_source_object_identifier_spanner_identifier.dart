@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier {
   /// The schema name.
   final String? schema;
-
   /// The table name.
   final String table;
 
@@ -16,20 +16,17 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final schemaValue = schema;
-    if (schemaValue != null) {
-      map['schema'] = schemaValue;
-    }
-    map['table'] = table;
-    return map;
+    return <String, dynamic>{
+      'schema': ?schema,
+      'table': table,
+    };
   }
 
-  factory StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier.fromMap(
-      Map<String, dynamic> map) {
+  factory StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier.fromMap(Map<String, dynamic> map) {
     return StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier(
       schema: map['schema'] == null ? null : map['schema'] as String,
       table: map['table'] as String,
     );
   }
 }
+

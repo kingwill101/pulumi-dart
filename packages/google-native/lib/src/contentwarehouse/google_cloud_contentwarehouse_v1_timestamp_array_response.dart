@@ -15,22 +15,15 @@ class GoogleCloudContentwarehouseV1TimestampArrayResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['values'] = pulumi.Input.encodeList<
-        GoogleCloudContentwarehouseV1TimestampValueResponse,
-        Map<String, dynamic>>(values, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'values': pulumi.Input.encodeList<GoogleCloudContentwarehouseV1TimestampValueResponse, Map<String, dynamic>>(values, (value) => value.toMap()),
+    };
   }
 
-  factory GoogleCloudContentwarehouseV1TimestampArrayResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudContentwarehouseV1TimestampArrayResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1TimestampArrayResponse(
-      values: pulumi.Input.decodeList<
-              GoogleCloudContentwarehouseV1TimestampValueResponse>(
-          map['values'],
-          (value) =>
-              GoogleCloudContentwarehouseV1TimestampValueResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      values: pulumi.Input.decodeList<GoogleCloudContentwarehouseV1TimestampValueResponse>(map['values'], (value) => GoogleCloudContentwarehouseV1TimestampValueResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

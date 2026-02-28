@@ -1,25 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// MySQL Column.
 class MysqlColumnResponseDatastreamV1alpha1 {
   /// Column collation.
   final String collation;
-
   /// Column name.
   final String columnName;
-
   /// The MySQL data type. Full data types list can be found here: https://dev.mysql.com/doc/refman/8.0/en/data-types.html
   final String dataType;
-
   /// Column length.
   final int length;
-
   /// Whether or not the column can accept a null value.
   final bool nullable;
-
   /// The ordinal position of the column in the table.
   final int ordinalPosition;
-
   /// Whether or not the column represents a primary key.
   final bool primaryKey;
 
@@ -42,19 +37,18 @@ class MysqlColumnResponseDatastreamV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['collation'] = collation;
-    map['columnName'] = columnName;
-    map['dataType'] = dataType;
-    map['length'] = length;
-    map['nullable'] = nullable;
-    map['ordinalPosition'] = ordinalPosition;
-    map['primaryKey'] = primaryKey;
-    return map;
+    return <String, dynamic>{
+      'collation': collation,
+      'columnName': columnName,
+      'dataType': dataType,
+      'length': length,
+      'nullable': nullable,
+      'ordinalPosition': ordinalPosition,
+      'primaryKey': primaryKey,
+    };
   }
 
-  factory MysqlColumnResponseDatastreamV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory MysqlColumnResponseDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return MysqlColumnResponseDatastreamV1alpha1(
       collation: map['collation'] as String,
       columnName: map['columnName'] as String,
@@ -66,3 +60,4 @@ class MysqlColumnResponseDatastreamV1alpha1 {
     );
   }
 }
+

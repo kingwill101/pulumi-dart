@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDatabaseInstancesInstanceSettingDataCacheConfig {
   /// Whether data cache is enabled for the instance.
   final bool dataCacheEnabled;
@@ -11,15 +12,15 @@ class GetDatabaseInstancesInstanceSettingDataCacheConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dataCacheEnabled'] = dataCacheEnabled;
-    return map;
+    return <String, dynamic>{
+      'dataCacheEnabled': dataCacheEnabled,
+    };
   }
 
-  factory GetDatabaseInstancesInstanceSettingDataCacheConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GetDatabaseInstancesInstanceSettingDataCacheConfig.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstancesInstanceSettingDataCacheConfig(
       dataCacheEnabled: map['dataCacheEnabled'] as bool,
     );
   }
 }
+

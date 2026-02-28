@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CxAgentTextToSpeechSettings {
   /// Configuration of how speech should be synthesized, mapping from [language](https://cloud.google.com/dialogflow/cx/docs/reference/language) to [SynthesizeSpeechConfig](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#synthesizespeechconfig).
   /// These settings affect:
@@ -14,19 +15,15 @@ class CxAgentTextToSpeechSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final synthesizeSpeechConfigsValue = synthesizeSpeechConfigs;
-    if (synthesizeSpeechConfigsValue != null) {
-      map['synthesizeSpeechConfigs'] = synthesizeSpeechConfigsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'synthesizeSpeechConfigs': ?synthesizeSpeechConfigs,
+    };
   }
 
   factory CxAgentTextToSpeechSettings.fromMap(Map<String, dynamic> map) {
     return CxAgentTextToSpeechSettings(
-      synthesizeSpeechConfigs: map['synthesizeSpeechConfigs'] == null
-          ? null
-          : map['synthesizeSpeechConfigs'] as String,
+      synthesizeSpeechConfigs: map['synthesizeSpeechConfigs'] == null ? null : map['synthesizeSpeechConfigs'] as String,
     );
   }
 }
+

@@ -22,25 +22,22 @@ class GetMetadataImportMetastoreV1betaArgs {
     required String metadataImportId,
     String? project,
     required String serviceId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        metadataImportId = pulumi.Input.asInput<String>(metadataImportId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        serviceId = pulumi.Input.asInput<String>(serviceId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      metadataImportId = pulumi.Input.asInput<String>(metadataImportId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      serviceId = pulumi.Input.asInput<String>(serviceId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    map['metadataImportId'] = metadataImportId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['serviceId'] = serviceId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'metadataImportId': metadataImportId,
+      'project': ?project,
+      'serviceId': serviceId,
+    };
   }
 
-  factory GetMetadataImportMetastoreV1betaArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetMetadataImportMetastoreV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetMetadataImportMetastoreV1betaArgs(
       location: map['location'] as String,
       metadataImportId: map['metadataImportId'] as String,
@@ -49,3 +46,4 @@ class GetMetadataImportMetastoreV1betaArgs {
     );
   }
 }
+

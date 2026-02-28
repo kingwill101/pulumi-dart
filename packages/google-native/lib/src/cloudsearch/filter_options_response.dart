@@ -6,7 +6,6 @@ import 'filter_response.dart';
 class FilterOptionsResponse {
   /// Generic filter to restrict the search, such as `lang:en`, `site:xyz`.
   final FilterResponse filter;
-
   /// If object_type is set, only objects of that type are returned. This should correspond to the name of the object that was registered within the definition of schema. The maximum length is 256 characters.
   final String objectType;
 
@@ -19,17 +18,17 @@ class FilterOptionsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['filter'] = filter.toMap();
-    map['objectType'] = objectType;
-    return map;
+    return <String, dynamic>{
+      'filter': filter.toMap(),
+      'objectType': objectType,
+    };
   }
 
   factory FilterOptionsResponse.fromMap(Map<String, dynamic> map) {
     return FilterOptionsResponse(
-      filter: FilterResponse.fromMap(
-          (map['filter'] as Map).cast<String, dynamic>()),
+      filter: FilterResponse.fromMap((map['filter'] as Map).cast<String, dynamic>()),
       objectType: map['objectType'] as String,
     );
   }
 }
+

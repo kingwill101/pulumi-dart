@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetVirtualNodeSpecListenerTlCertificateSd {
   final String secretName;
 
@@ -10,15 +11,15 @@ class GetVirtualNodeSpecListenerTlCertificateSd {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['secretName'] = secretName;
-    return map;
+    return <String, dynamic>{
+      'secretName': secretName,
+    };
   }
 
-  factory GetVirtualNodeSpecListenerTlCertificateSd.fromMap(
-      Map<String, dynamic> map) {
+  factory GetVirtualNodeSpecListenerTlCertificateSd.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecListenerTlCertificateSd(
       secretName: map['secretName'] as String,
     );
   }
 }
+

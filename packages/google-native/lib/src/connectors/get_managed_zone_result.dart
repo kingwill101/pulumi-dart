@@ -1,28 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getManagedZone.
 class GetManagedZoneResult {
   /// Created time.
   final String createTime;
-
   /// Optional. Description of the resource.
   final String description;
-
   /// DNS Name of the resource
   final String dns;
-
   /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
   final Map<String, String> labels;
-
   /// Resource name of the Managed Zone. Format: projects/{project}/locations/global/managedZones/{managed_zone}
   final String name;
-
   /// The name of the Target Project
   final String targetProject;
-
   /// The name of the Target Project VPC Network
   final String targetVpc;
-
   /// Updated time.
   final String updateTime;
 
@@ -47,16 +41,16 @@ class GetManagedZoneResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['description'] = description;
-    map['dns'] = dns;
-    map['labels'] = labels;
-    map['name'] = name;
-    map['targetProject'] = targetProject;
-    map['targetVpc'] = targetVpc;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'description': description,
+      'dns': dns,
+      'labels': labels,
+      'name': name,
+      'targetProject': targetProject,
+      'targetVpc': targetVpc,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetManagedZoneResult.fromMap(Map<String, dynamic> map) {
@@ -72,3 +66,4 @@ class GetManagedZoneResult {
     );
   }
 }
+

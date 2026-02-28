@@ -9,14 +9,11 @@ class GlossaryEntry extends pulumi.CustomResource {
   late final pulumi.Output<String> description;
   late final pulumi.Output<String> glossaryId;
   late final pulumi.Output<String> location;
-
   /// The resource name of the entry. Format: "projects/*/locations/*/glossaries/*/glossaryEntries/*"
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// Used for an unidirectional glossary.
   late final pulumi.Output<GlossaryTermsPairResponse> termsPair;
-
   /// Used for an equivalent term sets glossary.
   late final pulumi.Output<GlossaryTermsSetResponse> termsSet;
 

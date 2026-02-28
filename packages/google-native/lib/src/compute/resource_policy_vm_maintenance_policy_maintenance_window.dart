@@ -13,21 +13,15 @@ class ResourcePolicyVmMaintenancePolicyMaintenanceWindow {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dailyMaintenanceWindowValue = dailyMaintenanceWindow;
-    if (dailyMaintenanceWindowValue != null) {
-      map['dailyMaintenanceWindow'] = dailyMaintenanceWindowValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'dailyMaintenanceWindow': ?dailyMaintenanceWindow == null ? null : dailyMaintenanceWindow!.toMap(),
+    };
   }
 
-  factory ResourcePolicyVmMaintenancePolicyMaintenanceWindow.fromMap(
-      Map<String, dynamic> map) {
+  factory ResourcePolicyVmMaintenancePolicyMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyVmMaintenancePolicyMaintenanceWindow(
-      dailyMaintenanceWindow: map['dailyMaintenanceWindow'] == null
-          ? null
-          : ResourcePolicyDailyCycle.fromMap(
-              (map['dailyMaintenanceWindow'] as Map).cast<String, dynamic>()),
+      dailyMaintenanceWindow: map['dailyMaintenanceWindow'] == null ? null : ResourcePolicyDailyCycle.fromMap((map['dailyMaintenanceWindow'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents a machine that is currently drained.
 class BareMetalDrainedMachineResponse {
   /// Drained machine IP address.
@@ -12,9 +13,9 @@ class BareMetalDrainedMachineResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['nodeIp'] = nodeIp;
-    return map;
+    return <String, dynamic>{
+      'nodeIp': nodeIp,
+    };
   }
 
   factory BareMetalDrainedMachineResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class BareMetalDrainedMachineResponse {
     );
   }
 }
+

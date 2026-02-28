@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateAuthorityCertificateArgs {
   /// PEM-encoded certificate for the Certificate Authority.
   final pulumi.Input<String> certificate;
-
   /// ARN of the Certificate Authority.
   final pulumi.Input<String> certificateAuthorityArn;
-
   /// PEM-encoded certificate chain that includes any intermediate certificates and chains up to root CA. Required for subordinate Certificate Authorities. Not allowed for root Certificate Authorities.
   final pulumi.Input<String>? certificateChain;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -29,37 +26,28 @@ class CertificateAuthorityCertificateArgs {
     required String certificateAuthorityArn,
     String? certificateChain,
     String? region,
-  })  : certificate = pulumi.Input.asInput<String>(certificate),
-        certificateAuthorityArn =
-            pulumi.Input.asInput<String>(certificateAuthorityArn),
-        certificateChain =
-            pulumi.Input.asOptionalInput<String>(certificateChain),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      certificate = pulumi.Input.asInput<String>(certificate),
+      certificateAuthorityArn = pulumi.Input.asInput<String>(certificateAuthorityArn),
+      certificateChain = pulumi.Input.asOptionalInput<String>(certificateChain),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['certificate'] = certificate;
-    map['certificateAuthorityArn'] = certificateAuthorityArn;
-    final certificateChainValue = certificateChain;
-    if (certificateChainValue != null) {
-      map['certificateChain'] = certificateChainValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'certificate': certificate,
+      'certificateAuthorityArn': certificateAuthorityArn,
+      'certificateChain': ?certificateChain,
+      'region': ?region,
+    };
   }
 
-  factory CertificateAuthorityCertificateArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory CertificateAuthorityCertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateAuthorityCertificateArgs(
       certificate: map['certificate'] as String,
       certificateAuthorityArn: map['certificateAuthorityArn'] as String,
-      certificateChain: map['certificateChain'] == null
-          ? null
-          : map['certificateChain'] as String,
+      certificateChain: map['certificateChain'] == null ? null : map['certificateChain'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

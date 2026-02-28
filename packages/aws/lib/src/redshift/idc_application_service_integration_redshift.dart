@@ -13,21 +13,15 @@ class IdcApplicationServiceIntegrationRedshift {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final connectValue = connect;
-    if (connectValue != null) {
-      map['connect'] = connectValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'connect': ?connect == null ? null : connect!.toMap(),
+    };
   }
 
-  factory IdcApplicationServiceIntegrationRedshift.fromMap(
-      Map<String, dynamic> map) {
+  factory IdcApplicationServiceIntegrationRedshift.fromMap(Map<String, dynamic> map) {
     return IdcApplicationServiceIntegrationRedshift(
-      connect: map['connect'] == null
-          ? null
-          : IdcApplicationServiceIntegrationRedshiftConnect.fromMap(
-              (map['connect'] as Map).cast<String, dynamic>()),
+      connect: map['connect'] == null ? null : IdcApplicationServiceIntegrationRedshiftConnect.fromMap((map['connect'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

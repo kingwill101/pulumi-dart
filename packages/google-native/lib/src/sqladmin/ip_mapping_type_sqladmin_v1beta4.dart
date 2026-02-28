@@ -18,3 +18,4 @@ enum IpMappingTypeSqladminV1beta4 {
     throw ArgumentError('Unknown IpMappingTypeSqladminV1beta4 value: $value');
   }
 }
+

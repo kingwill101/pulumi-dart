@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterNodeConfigLocalNvmeSsdBlockConfig {
   /// Number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size.
   final int localSsdCount;
@@ -11,15 +12,15 @@ class GetClusterNodeConfigLocalNvmeSsdBlockConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['localSsdCount'] = localSsdCount;
-    return map;
+    return <String, dynamic>{
+      'localSsdCount': localSsdCount,
+    };
   }
 
-  factory GetClusterNodeConfigLocalNvmeSsdBlockConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GetClusterNodeConfigLocalNvmeSsdBlockConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNodeConfigLocalNvmeSsdBlockConfig(
       localSsdCount: map['localSsdCount'] as int,
     );
   }
 }
+

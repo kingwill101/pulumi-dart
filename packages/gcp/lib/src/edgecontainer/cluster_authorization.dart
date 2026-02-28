@@ -16,15 +16,15 @@ class ClusterAuthorization {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['adminUsers'] = adminUsers.toMap();
-    return map;
+    return <String, dynamic>{
+      'adminUsers': adminUsers.toMap(),
+    };
   }
 
   factory ClusterAuthorization.fromMap(Map<String, dynamic> map) {
     return ClusterAuthorization(
-      adminUsers: ClusterAuthorizationAdminUsers.fromMap(
-          (map['adminUsers'] as Map).cast<String, dynamic>()),
+      adminUsers: ClusterAuthorizationAdminUsers.fromMap((map['adminUsers'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

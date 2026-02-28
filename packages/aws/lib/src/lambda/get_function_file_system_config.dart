@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetFunctionFileSystemConfig {
   /// ARN of the Amazon EFS Access Point that provides access to the file system.
   final String arn;
-
   /// Path where the function can access the file system, starting with `/mnt/`.
   final String localMountPath;
 
@@ -16,10 +16,10 @@ class GetFunctionFileSystemConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['localMountPath'] = localMountPath;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'localMountPath': localMountPath,
+    };
   }
 
   factory GetFunctionFileSystemConfig.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetFunctionFileSystemConfig {
     );
   }
 }
+

@@ -7,25 +7,17 @@ import 'google_cloud_dialogflow_v2beta1_entity_type_entity_response.dart';
 class EntityTypeDialogflowV2beta1 extends pulumi.CustomResource {
   /// Optional. Indicates whether the entity type can be automatically expanded.
   late final pulumi.Output<String> autoExpansionMode;
-
   /// The name of the entity type.
   late final pulumi.Output<String> displayName;
-
   /// Optional. Enables fuzzy entity extraction during classification.
   late final pulumi.Output<bool> enableFuzzyExtraction;
-
   /// Optional. The collection of entity entries associated with the entity type.
-  late final pulumi
-      .Output<List<GoogleCloudDialogflowV2beta1EntityTypeEntityResponse>>
-      entities;
-
+  late final pulumi.Output<List<GoogleCloudDialogflowV2beta1EntityTypeEntityResponse>> entities;
   /// Indicates the kind of entity type.
   late final pulumi.Output<String> kind;
-
   /// Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
   late final pulumi.Output<String?> languageCode;
   late final pulumi.Output<String> location;
-
   /// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Supported formats: - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
@@ -47,8 +39,7 @@ class EntityTypeDialogflowV2beta1 extends pulumi.CustomResource {
     this.autoExpansionMode = registerOutput<String>('autoExpansionMode');
     this.displayName = registerOutput<String>('displayName');
     this.enableFuzzyExtraction = registerOutput<bool>('enableFuzzyExtraction');
-    this.entities = registerOutput<
-        List<GoogleCloudDialogflowV2beta1EntityTypeEntityResponse>>('entities');
+    this.entities = registerOutput<List<GoogleCloudDialogflowV2beta1EntityTypeEntityResponse>>('entities');
     this.kind = registerOutput<String>('kind');
     this.languageCode = registerOutput<String?>('languageCode');
     this.location = registerOutput<String>('location');

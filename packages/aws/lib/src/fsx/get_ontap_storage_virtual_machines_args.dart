@@ -10,7 +10,6 @@ import 'get_ontap_storage_virtual_machines_filter.dart';
 class GetOntapStorageVirtualMachinesArgs {
   /// Configuration block. Detailed below.
   final pulumi.Input<List<GetOntapStorageVirtualMachinesFilter>>? filters;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -20,38 +19,22 @@ class GetOntapStorageVirtualMachinesArgs {
   GetOntapStorageVirtualMachinesArgs({
     List<GetOntapStorageVirtualMachinesFilter>? filters,
     String? region,
-  })  : filters = pulumi.Input.asOptionalInput<
-            List<GetOntapStorageVirtualMachinesFilter>>(filters),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      filters = pulumi.Input.asOptionalInput<List<GetOntapStorageVirtualMachinesFilter>>(filters),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final filtersValue = filters;
-    if (filtersValue != null) {
-      map['filters'] = pulumi.Input.mapOptionalInputValue<
-              List<GetOntapStorageVirtualMachinesFilter>,
-              List<Map<String, dynamic>>>(
-          filtersValue,
-          (value) => pulumi.Input.encodeList<
-              GetOntapStorageVirtualMachinesFilter,
-              Map<String, dynamic>>(value, (value) => value.toMap()));
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetOntapStorageVirtualMachinesFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetOntapStorageVirtualMachinesFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'region': ?region,
+    };
   }
 
   factory GetOntapStorageVirtualMachinesArgs.fromMap(Map<String, dynamic> map) {
     return GetOntapStorageVirtualMachinesArgs(
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetOntapStorageVirtualMachinesFilter>(
-              map['filters'],
-              (value) => GetOntapStorageVirtualMachinesFilter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetOntapStorageVirtualMachinesFilter>(map['filters'], (value) => GetOntapStorageVirtualMachinesFilter.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

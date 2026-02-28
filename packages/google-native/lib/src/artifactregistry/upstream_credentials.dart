@@ -14,22 +14,15 @@ class UpstreamCredentials {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final usernamePasswordCredentialsValue = usernamePasswordCredentials;
-    if (usernamePasswordCredentialsValue != null) {
-      map['usernamePasswordCredentials'] =
-          usernamePasswordCredentialsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'usernamePasswordCredentials': ?usernamePasswordCredentials == null ? null : usernamePasswordCredentials!.toMap(),
+    };
   }
 
   factory UpstreamCredentials.fromMap(Map<String, dynamic> map) {
     return UpstreamCredentials(
-      usernamePasswordCredentials: map['usernamePasswordCredentials'] == null
-          ? null
-          : UsernamePasswordCredentials.fromMap(
-              (map['usernamePasswordCredentials'] as Map)
-                  .cast<String, dynamic>()),
+      usernamePasswordCredentials: map['usernamePasswordCredentials'] == null ? null : UsernamePasswordCredentials.fromMap((map['usernamePasswordCredentials'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

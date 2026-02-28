@@ -15,3 +15,4 @@ enum InterconnectLinkTypeComputeV1 {
     throw ArgumentError('Unknown InterconnectLinkTypeComputeV1 value: $value');
   }
 }
+

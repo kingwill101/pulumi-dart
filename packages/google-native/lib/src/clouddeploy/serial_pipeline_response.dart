@@ -15,19 +15,15 @@ class SerialPipelineResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['stages'] =
-        pulumi.Input.encodeList<StageResponse, Map<String, dynamic>>(
-            stages, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'stages': pulumi.Input.encodeList<StageResponse, Map<String, dynamic>>(stages, (value) => value.toMap()),
+    };
   }
 
   factory SerialPipelineResponse.fromMap(Map<String, dynamic> map) {
     return SerialPipelineResponse(
-      stages: pulumi.Input.decodeList<StageResponse>(
-          map['stages'],
-          (value) =>
-              StageResponse.fromMap((value as Map).cast<String, dynamic>())),
+      stages: pulumi.Input.decodeList<StageResponse>(map['stages'], (value) => StageResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

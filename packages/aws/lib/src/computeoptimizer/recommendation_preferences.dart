@@ -327,37 +327,24 @@ import 'recommendation_preferences_utilization_preference.dart';
 class RecommendationPreferences extends pulumi.CustomResource {
   /// The status of the enhanced infrastructure metrics recommendation preference. Valid values: `Active`, `Inactive`.
   late final pulumi.Output<String?> enhancedInfrastructureMetrics;
-
   /// The provider of the external metrics recommendation preference. See External Metrics Preference below.
-  late final pulumi.Output<RecommendationPreferencesExternalMetricsPreference?>
-      externalMetricsPreference;
-
+  late final pulumi.Output<RecommendationPreferencesExternalMetricsPreference?> externalMetricsPreference;
   /// The status of the inferred workload types recommendation preference. Valid values: `Active`, `Inactive`.
   late final pulumi.Output<String?> inferredWorkloadTypes;
-
   /// The preference to control the number of days the utilization metrics of the AWS resource are analyzed. Valid values: `DAYS_14`, `DAYS_32`, `DAYS_93`.
   late final pulumi.Output<String> lookBackPeriod;
-
   /// The preference to control which resource type values are considered when generating rightsizing recommendations. See Preferred Resources below.
-  late final pulumi.Output<List<RecommendationPreferencesPreferredResource>?>
-      preferredResources;
-
+  late final pulumi.Output<List<RecommendationPreferencesPreferredResource>?> preferredResources;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The target resource type of the recommendation preferences. Valid values: `Ec2Instance`, `AutoScalingGroup`, `RdsDBInstance`, `AuroraDBClusterStorage`.
   late final pulumi.Output<String> resourceType;
-
   /// The status of the savings estimation mode preference. Valid values: `AfterDiscounts`, `BeforeDiscounts`.
   late final pulumi.Output<String?> savingsEstimationMode;
-
   /// The scope of the recommendation preferences. See Scope below.
   late final pulumi.Output<RecommendationPreferencesScope> scope;
-
   /// The preference to control the resource’s CPU utilization threshold, CPU utilization headroom, and memory utilization headroom. See Utilization Preferences below.
-  late final pulumi
-      .Output<List<RecommendationPreferencesUtilizationPreference>?>
-      utilizationPreferences;
+  late final pulumi.Output<List<RecommendationPreferencesUtilizationPreference>?> utilizationPreferences;
 
   /// Creates a new [RecommendationPreferences].
   /// [name] The Pulumi resource name.
@@ -373,24 +360,15 @@ class RecommendationPreferences extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.enhancedInfrastructureMetrics =
-        registerOutput<String?>('enhancedInfrastructureMetrics');
-    this.externalMetricsPreference =
-        registerOutput<RecommendationPreferencesExternalMetricsPreference?>(
-            'externalMetricsPreference');
-    this.inferredWorkloadTypes =
-        registerOutput<String?>('inferredWorkloadTypes');
+    this.enhancedInfrastructureMetrics = registerOutput<String?>('enhancedInfrastructureMetrics');
+    this.externalMetricsPreference = registerOutput<RecommendationPreferencesExternalMetricsPreference?>('externalMetricsPreference');
+    this.inferredWorkloadTypes = registerOutput<String?>('inferredWorkloadTypes');
     this.lookBackPeriod = registerOutput<String>('lookBackPeriod');
-    this.preferredResources =
-        registerOutput<List<RecommendationPreferencesPreferredResource>?>(
-            'preferredResources');
+    this.preferredResources = registerOutput<List<RecommendationPreferencesPreferredResource>?>('preferredResources');
     this.region = registerOutput<String>('region');
     this.resourceType = registerOutput<String>('resourceType');
-    this.savingsEstimationMode =
-        registerOutput<String?>('savingsEstimationMode');
+    this.savingsEstimationMode = registerOutput<String?>('savingsEstimationMode');
     this.scope = registerOutput<RecommendationPreferencesScope>('scope');
-    this.utilizationPreferences =
-        registerOutput<List<RecommendationPreferencesUtilizationPreference>?>(
-            'utilizationPreferences');
+    this.utilizationPreferences = registerOutput<List<RecommendationPreferencesUtilizationPreference>?>('utilizationPreferences');
   }
 }

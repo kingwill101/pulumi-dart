@@ -22,21 +22,19 @@ class GetSnapshotArgs {
     required String location,
     String? project,
     required String snapshotId,
-  })  : instanceId = pulumi.Input.asInput<String>(instanceId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        snapshotId = pulumi.Input.asInput<String>(snapshotId);
+  }) :
+      instanceId = pulumi.Input.asInput<String>(instanceId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      snapshotId = pulumi.Input.asInput<String>(snapshotId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['instanceId'] = instanceId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['snapshotId'] = snapshotId;
-    return map;
+    return <String, dynamic>{
+      'instanceId': instanceId,
+      'location': location,
+      'project': ?project,
+      'snapshotId': snapshotId,
+    };
   }
 
   factory GetSnapshotArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetSnapshotArgs {
     );
   }
 }
+

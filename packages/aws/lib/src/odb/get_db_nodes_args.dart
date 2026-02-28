@@ -11,7 +11,6 @@ class GetDbNodesArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> cloudVmClusterId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -21,17 +20,15 @@ class GetDbNodesArgs {
   GetDbNodesArgs({
     required String cloudVmClusterId,
     String? region,
-  })  : cloudVmClusterId = pulumi.Input.asInput<String>(cloudVmClusterId),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      cloudVmClusterId = pulumi.Input.asInput<String>(cloudVmClusterId),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cloudVmClusterId'] = cloudVmClusterId;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cloudVmClusterId': cloudVmClusterId,
+      'region': ?region,
+    };
   }
 
   factory GetDbNodesArgs.fromMap(Map<String, dynamic> map) {
@@ -41,3 +38,4 @@ class GetDbNodesArgs {
     );
   }
 }
+

@@ -13,21 +13,15 @@ class DataAccessOptionsGameservicesV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final logModeValue = logMode;
-    if (logModeValue != null) {
-      map['logMode'] = logModeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'logMode': ?logMode == null ? null : logMode!.value,
+    };
   }
 
-  factory DataAccessOptionsGameservicesV1beta.fromMap(
-      Map<String, dynamic> map) {
+  factory DataAccessOptionsGameservicesV1beta.fromMap(Map<String, dynamic> map) {
     return DataAccessOptionsGameservicesV1beta(
-      logMode: map['logMode'] == null
-          ? null
-          : DataAccessOptionsLogModeGameservicesV1beta.fromValue(
-              map['logMode'] as String),
+      logMode: map['logMode'] == null ? null : DataAccessOptionsLogModeGameservicesV1beta.fromValue(map['logMode'] as String),
     );
   }
 }
+

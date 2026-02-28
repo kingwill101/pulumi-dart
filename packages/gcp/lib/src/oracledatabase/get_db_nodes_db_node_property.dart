@@ -1,27 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDbNodesDbNodeProperty {
   /// Output only
   final int dbNodeStorageSizeGb;
-
   /// Output only
   final String dbServerOcid;
-
   /// Output only
   final String hostname;
-
   /// Output only
   final int memorySizeGb;
-
   /// Output only
   final String ocid;
-
   /// Output only
   final int ocpuCount;
-
   /// Output only
   final String state;
-
   /// Output only
   final int totalCpuCoreCount;
 
@@ -46,16 +40,16 @@ class GetDbNodesDbNodeProperty {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dbNodeStorageSizeGb'] = dbNodeStorageSizeGb;
-    map['dbServerOcid'] = dbServerOcid;
-    map['hostname'] = hostname;
-    map['memorySizeGb'] = memorySizeGb;
-    map['ocid'] = ocid;
-    map['ocpuCount'] = ocpuCount;
-    map['state'] = state;
-    map['totalCpuCoreCount'] = totalCpuCoreCount;
-    return map;
+    return <String, dynamic>{
+      'dbNodeStorageSizeGb': dbNodeStorageSizeGb,
+      'dbServerOcid': dbServerOcid,
+      'hostname': hostname,
+      'memorySizeGb': memorySizeGb,
+      'ocid': ocid,
+      'ocpuCount': ocpuCount,
+      'state': state,
+      'totalCpuCoreCount': totalCpuCoreCount,
+    };
   }
 
   factory GetDbNodesDbNodeProperty.fromMap(Map<String, dynamic> map) {
@@ -71,3 +65,4 @@ class GetDbNodesDbNodeProperty {
     );
   }
 }
+

@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents a color in the RGB color space.
 class GooglePrivacyDlpV2Color {
   /// The amount of blue in the color as a value in the interval [0, 1].
   final double? blue;
-
   /// The amount of green in the color as a value in the interval [0, 1].
   final double? green;
-
   /// The amount of red in the color as a value in the interval [0, 1].
   final double? red;
 
@@ -22,20 +21,11 @@ class GooglePrivacyDlpV2Color {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final blueValue = blue;
-    if (blueValue != null) {
-      map['blue'] = blueValue;
-    }
-    final greenValue = green;
-    if (greenValue != null) {
-      map['green'] = greenValue;
-    }
-    final redValue = red;
-    if (redValue != null) {
-      map['red'] = redValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'blue': ?blue,
+      'green': ?green,
+      'red': ?red,
+    };
   }
 
   factory GooglePrivacyDlpV2Color.fromMap(Map<String, dynamic> map) {
@@ -46,3 +36,4 @@ class GooglePrivacyDlpV2Color {
     );
   }
 }
+

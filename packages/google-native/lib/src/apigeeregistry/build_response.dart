@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Build information of the Instance if it's in `ACTIVE` state.
 class BuildResponse {
   /// Commit ID of the latest commit in the build.
   final String commitId;
-
   /// Commit time of the latest commit in the build.
   final String commitTime;
-
   /// Path of the open source repository: github.com/apigee/registry.
   final String repo;
 
@@ -22,11 +21,11 @@ class BuildResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['commitId'] = commitId;
-    map['commitTime'] = commitTime;
-    map['repo'] = repo;
-    return map;
+    return <String, dynamic>{
+      'commitId': commitId,
+      'commitTime': commitTime,
+      'repo': repo,
+    };
   }
 
   factory BuildResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class BuildResponse {
     );
   }
 }
+

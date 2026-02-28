@@ -148,22 +148,16 @@ import 'usage_limit_args.dart';
 class UsageLimit extends pulumi.CustomResource {
   /// The limit amount. If time-based, this amount is in Redshift Processing Units (RPU) consumed per hour. If data-based, this amount is in terabytes (TB) of data transferred between Regions in cross-account sharing. The value must be a positive number.
   late final pulumi.Output<int> amount;
-
   /// Amazon Resource Name (ARN) of the Redshift Serverless Usage Limit.
   late final pulumi.Output<String> arn;
-
   /// The action that Amazon Redshift Serverless takes when the limit is reached. Valid values are `log`, `emit-metric`, and `deactivate`. The default is `log`.
   late final pulumi.Output<String?> breachAction;
-
   /// The time period that the amount applies to. A weekly period begins on Sunday. Valid values are `daily`, `weekly`, and `monthly`. The default is `monthly`.
   late final pulumi.Output<String?> period;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The Amazon Resource Name (ARN) of the Amazon Redshift Serverless resource to create the usage limit for.
   late final pulumi.Output<String> resourceArn;
-
   /// The type of Amazon Redshift Serverless usage to create a usage limit for. Valid values are `serverless-compute` or `cross-region-datasharing`.
   late final pulumi.Output<String> usageType;
 

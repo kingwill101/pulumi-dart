@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The `MembershipRole` expiry details.
 class ExpiryDetailResponse {
   /// The time at which the `MembershipRole` will expire.
@@ -12,9 +13,9 @@ class ExpiryDetailResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['expireTime'] = expireTime;
-    return map;
+    return <String, dynamic>{
+      'expireTime': expireTime,
+    };
   }
 
   factory ExpiryDetailResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class ExpiryDetailResponse {
     );
   }
 }
+

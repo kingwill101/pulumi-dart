@@ -13,21 +13,15 @@ class EventSourceMappingDestinationConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final onFailureValue = onFailure;
-    if (onFailureValue != null) {
-      map['onFailure'] = onFailureValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'onFailure': ?onFailure == null ? null : onFailure!.toMap(),
+    };
   }
 
-  factory EventSourceMappingDestinationConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory EventSourceMappingDestinationConfig.fromMap(Map<String, dynamic> map) {
     return EventSourceMappingDestinationConfig(
-      onFailure: map['onFailure'] == null
-          ? null
-          : EventSourceMappingDestinationConfigOnFailure.fromMap(
-              (map['onFailure'] as Map).cast<String, dynamic>()),
+      onFailure: map['onFailure'] == null ? null : EventSourceMappingDestinationConfigOnFailure.fromMap((map['onFailure'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

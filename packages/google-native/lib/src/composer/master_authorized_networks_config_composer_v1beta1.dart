@@ -7,7 +7,6 @@ import 'cidr_block_composer_v1beta1.dart';
 class MasterAuthorizedNetworksConfigComposerV1beta1 {
   /// Up to 50 external networks that could access Kubernetes master through HTTPS.
   final List<CidrBlockComposerV1beta1>? cidrBlocks;
-
   /// Whether or not master authorized networks feature is enabled.
   final bool? enabled;
 
@@ -20,29 +19,17 @@ class MasterAuthorizedNetworksConfigComposerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cidrBlocksValue = cidrBlocks;
-    if (cidrBlocksValue != null) {
-      map['cidrBlocks'] = pulumi.Input.encodeList<CidrBlockComposerV1beta1,
-          Map<String, dynamic>>(cidrBlocksValue, (value) => value.toMap());
-    }
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cidrBlocks': ?cidrBlocks == null ? null : pulumi.Input.encodeList<CidrBlockComposerV1beta1, Map<String, dynamic>>(cidrBlocks!, (value) => value.toMap()),
+      'enabled': ?enabled,
+    };
   }
 
-  factory MasterAuthorizedNetworksConfigComposerV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory MasterAuthorizedNetworksConfigComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return MasterAuthorizedNetworksConfigComposerV1beta1(
-      cidrBlocks: map['cidrBlocks'] == null
-          ? null
-          : pulumi.Input.decodeList<CidrBlockComposerV1beta1>(
-              map['cidrBlocks'],
-              (value) => CidrBlockComposerV1beta1.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      cidrBlocks: map['cidrBlocks'] == null ? null : pulumi.Input.decodeList<CidrBlockComposerV1beta1>(map['cidrBlocks'], (value) => CidrBlockComposerV1beta1.fromMap((value as Map).cast<String, dynamic>())),
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
     );
   }
 }
+

@@ -14,15 +14,15 @@ class TransportResponseEventarcV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['pubsub'] = pubsub.toMap();
-    return map;
+    return <String, dynamic>{
+      'pubsub': pubsub.toMap(),
+    };
   }
 
   factory TransportResponseEventarcV1beta1.fromMap(Map<String, dynamic> map) {
     return TransportResponseEventarcV1beta1(
-      pubsub: PubsubResponseEventarcV1beta1.fromMap(
-          (map['pubsub'] as Map).cast<String, dynamic>()),
+      pubsub: PubsubResponseEventarcV1beta1.fromMap((map['pubsub'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -5,8 +5,7 @@ import 'cluster_network_performance_config_total_egress_bandwidth_tier_container
 /// Configuration of all network bandwidth tiers
 class ClusterNetworkPerformanceConfigContainerV1beta1 {
   /// Specifies the total network bandwidth tier for the NodePool.
-  final ClusterNetworkPerformanceConfigTotalEgressBandwidthTierContainerV1beta1?
-      totalEgressBandwidthTier;
+  final ClusterNetworkPerformanceConfigTotalEgressBandwidthTierContainerV1beta1? totalEgressBandwidthTier;
 
   /// Creates a new [ClusterNetworkPerformanceConfigContainerV1beta1].
   /// [totalEgressBandwidthTier] Specifies the total network bandwidth tier for the NodePool.
@@ -15,21 +14,15 @@ class ClusterNetworkPerformanceConfigContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final totalEgressBandwidthTierValue = totalEgressBandwidthTier;
-    if (totalEgressBandwidthTierValue != null) {
-      map['totalEgressBandwidthTier'] = totalEgressBandwidthTierValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'totalEgressBandwidthTier': ?totalEgressBandwidthTier == null ? null : totalEgressBandwidthTier!.value,
+    };
   }
 
-  factory ClusterNetworkPerformanceConfigContainerV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterNetworkPerformanceConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return ClusterNetworkPerformanceConfigContainerV1beta1(
-      totalEgressBandwidthTier: map['totalEgressBandwidthTier'] == null
-          ? null
-          : ClusterNetworkPerformanceConfigTotalEgressBandwidthTierContainerV1beta1
-              .fromValue(map['totalEgressBandwidthTier'] as String),
+      totalEgressBandwidthTier: map['totalEgressBandwidthTier'] == null ? null : ClusterNetworkPerformanceConfigTotalEgressBandwidthTierContainerV1beta1.fromValue(map['totalEgressBandwidthTier'] as String),
     );
   }
 }
+

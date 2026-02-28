@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Float values.
 class GoogleCloudContentwarehouseV1FloatArray {
   /// List of float values.
@@ -12,19 +13,15 @@ class GoogleCloudContentwarehouseV1FloatArray {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final valuesValue = values;
-    if (valuesValue != null) {
-      map['values'] = valuesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'values': ?values,
+    };
   }
 
-  factory GoogleCloudContentwarehouseV1FloatArray.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudContentwarehouseV1FloatArray.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1FloatArray(
-      values:
-          map['values'] == null ? null : (map['values'] as List).cast<double>(),
+      values: map['values'] == null ? null : (map['values'] as List).cast<double>(),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ApplicationScope {
   /// Required. Scope Type.
   /// Possible values:
@@ -15,9 +16,9 @@ class ApplicationScope {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory ApplicationScope.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class ApplicationScope {
     );
   }
 }
+

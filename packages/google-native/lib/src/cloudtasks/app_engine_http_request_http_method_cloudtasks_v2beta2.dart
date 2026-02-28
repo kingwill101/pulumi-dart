@@ -12,14 +12,13 @@ enum AppEngineHttpRequestHttpMethodCloudtasksV2beta2 {
   const AppEngineHttpRequestHttpMethodCloudtasksV2beta2(this.value);
   final String value;
 
-  static AppEngineHttpRequestHttpMethodCloudtasksV2beta2 fromValue(
-      String value) {
+  static AppEngineHttpRequestHttpMethodCloudtasksV2beta2 fromValue(String value) {
     for (final item in AppEngineHttpRequestHttpMethodCloudtasksV2beta2.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown AppEngineHttpRequestHttpMethodCloudtasksV2beta2 value: $value');
+    throw ArgumentError('Unknown AppEngineHttpRequestHttpMethodCloudtasksV2beta2 value: $value');
   }
 }
+

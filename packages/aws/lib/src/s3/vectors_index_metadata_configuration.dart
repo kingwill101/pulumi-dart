@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VectorsIndexMetadataConfiguration {
   /// List of non-filterable metadata keys.
   final List<String> nonFilterableMetadataKeys;
@@ -11,15 +12,15 @@ class VectorsIndexMetadataConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['nonFilterableMetadataKeys'] = nonFilterableMetadataKeys;
-    return map;
+    return <String, dynamic>{
+      'nonFilterableMetadataKeys': nonFilterableMetadataKeys,
+    };
   }
 
   factory VectorsIndexMetadataConfiguration.fromMap(Map<String, dynamic> map) {
     return VectorsIndexMetadataConfiguration(
-      nonFilterableMetadataKeys:
-          (map['nonFilterableMetadataKeys'] as List).cast<String>(),
+      nonFilterableMetadataKeys: (map['nonFilterableMetadataKeys'] as List).cast<String>(),
     );
   }
 }
+

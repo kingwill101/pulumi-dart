@@ -100,31 +100,22 @@ import 'license_grant_accepter_args.dart';
 class LicenseGrantAccepter extends pulumi.CustomResource {
   /// A list of the allowed operations for the grant.
   late final pulumi.Output<List<String>> allowedOperations;
-
   /// The ARN of the grant to accept.
   late final pulumi.Output<String> grantArn;
-
   /// The home region for the license.
   late final pulumi.Output<String> homeRegion;
-
   /// The ARN of the license for the grant.
   late final pulumi.Output<String> licenseArn;
-
   /// The Name of the grant.
   late final pulumi.Output<String> name;
-
   /// The parent ARN.
   late final pulumi.Output<String> parentArn;
-
   /// The target account for the grant.
   late final pulumi.Output<String> principal;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The grant status.
   late final pulumi.Output<String> status;
-
   /// The grant version.
   late final pulumi.Output<String> version;
 

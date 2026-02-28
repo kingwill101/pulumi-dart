@@ -22,21 +22,19 @@ class GetNamespaceWorkloadIamPolicyArgs {
     required String namespaceId,
     String? project,
     required String workloadId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        namespaceId = pulumi.Input.asInput<String>(namespaceId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        workloadId = pulumi.Input.asInput<String>(workloadId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      namespaceId = pulumi.Input.asInput<String>(namespaceId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      workloadId = pulumi.Input.asInput<String>(workloadId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    map['namespaceId'] = namespaceId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['workloadId'] = workloadId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'namespaceId': namespaceId,
+      'project': ?project,
+      'workloadId': workloadId,
+    };
   }
 
   factory GetNamespaceWorkloadIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetNamespaceWorkloadIamPolicyArgs {
     );
   }
 }
+

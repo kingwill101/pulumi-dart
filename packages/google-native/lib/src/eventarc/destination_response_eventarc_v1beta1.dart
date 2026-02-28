@@ -14,15 +14,15 @@ class DestinationResponseEventarcV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cloudRunService'] = cloudRunService.toMap();
-    return map;
+    return <String, dynamic>{
+      'cloudRunService': cloudRunService.toMap(),
+    };
   }
 
   factory DestinationResponseEventarcV1beta1.fromMap(Map<String, dynamic> map) {
     return DestinationResponseEventarcV1beta1(
-      cloudRunService: CloudRunServiceResponse.fromMap(
-          (map['cloudRunService'] as Map).cast<String, dynamic>()),
+      cloudRunService: CloudRunServiceResponse.fromMap((map['cloudRunService'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

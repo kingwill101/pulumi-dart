@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getCipherText.
 class GetCipherTextResult {
   /// Base64 encoded ciphertext
   final String ciphertextBlob;
   final Map<String, String>? context;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String keyId;
@@ -29,25 +29,20 @@ class GetCipherTextResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ciphertextBlob'] = ciphertextBlob;
-    final contextValue = context;
-    if (contextValue != null) {
-      map['context'] = contextValue;
-    }
-    map['id'] = id;
-    map['keyId'] = keyId;
-    map['plaintext'] = plaintext;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'ciphertextBlob': ciphertextBlob,
+      'context': ?context,
+      'id': id,
+      'keyId': keyId,
+      'plaintext': plaintext,
+      'region': region,
+    };
   }
 
   factory GetCipherTextResult.fromMap(Map<String, dynamic> map) {
     return GetCipherTextResult(
       ciphertextBlob: map['ciphertextBlob'] as String,
-      context: map['context'] == null
-          ? null
-          : (map['context'] as Map).cast<String, String>(),
+      context: map['context'] == null ? null : (map['context'] as Map).cast<String, String>(),
       id: map['id'] as String,
       keyId: map['keyId'] as String,
       plaintext: map['plaintext'] as String,
@@ -55,3 +50,4 @@ class GetCipherTextResult {
     );
   }
 }
+

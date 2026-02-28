@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetLaunchTemplateSecondaryInterface {
   final bool deleteOnTermination;
   final int deviceIndex;
@@ -28,19 +29,18 @@ class GetLaunchTemplateSecondaryInterface {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['deleteOnTermination'] = deleteOnTermination;
-    map['deviceIndex'] = deviceIndex;
-    map['interfaceType'] = interfaceType;
-    map['networkCardIndex'] = networkCardIndex;
-    map['privateIpAddressCount'] = privateIpAddressCount;
-    map['privateIpAddresses'] = privateIpAddresses;
-    map['secondarySubnetId'] = secondarySubnetId;
-    return map;
+    return <String, dynamic>{
+      'deleteOnTermination': deleteOnTermination,
+      'deviceIndex': deviceIndex,
+      'interfaceType': interfaceType,
+      'networkCardIndex': networkCardIndex,
+      'privateIpAddressCount': privateIpAddressCount,
+      'privateIpAddresses': privateIpAddresses,
+      'secondarySubnetId': secondarySubnetId,
+    };
   }
 
-  factory GetLaunchTemplateSecondaryInterface.fromMap(
-      Map<String, dynamic> map) {
+  factory GetLaunchTemplateSecondaryInterface.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateSecondaryInterface(
       deleteOnTermination: map['deleteOnTermination'] as bool,
       deviceIndex: map['deviceIndex'] as int,
@@ -52,3 +52,4 @@ class GetLaunchTemplateSecondaryInterface {
     );
   }
 }
+

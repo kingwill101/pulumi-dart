@@ -391,13 +391,10 @@ import 'vpc_security_group_rules_exclusive_args.dart';
 class VpcSecurityGroupRulesExclusive extends pulumi.CustomResource {
   /// Egress rule IDs.
   late final pulumi.Output<List<String>> egressRuleIds;
-
   /// Ingress rule IDs.
   late final pulumi.Output<List<String>> ingressRuleIds;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ID of the security group.
   late final pulumi.Output<String> securityGroupId;
 

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SecurityGatewayApplicationUpstreamNetwork {
   /// Required. Network name is of the format:
   /// `projects/{project}/global/networks/{network}`
@@ -12,15 +13,15 @@ class SecurityGatewayApplicationUpstreamNetwork {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory SecurityGatewayApplicationUpstreamNetwork.fromMap(
-      Map<String, dynamic> map) {
+  factory SecurityGatewayApplicationUpstreamNetwork.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayApplicationUpstreamNetwork(
       name: map['name'] as String,
     );
   }
 }
+

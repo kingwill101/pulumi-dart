@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetServerlessCacheCacheUsageLimitsEcpuPerSecond {
   /// The maximum number of ECPUs the cache can consume per second.
   final int maximum;
-
   /// The minimum number of ECPUs the cache can consume per second.
   final int minimum;
 
@@ -16,17 +16,17 @@ class GetServerlessCacheCacheUsageLimitsEcpuPerSecond {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maximum'] = maximum;
-    map['minimum'] = minimum;
-    return map;
+    return <String, dynamic>{
+      'maximum': maximum,
+      'minimum': minimum,
+    };
   }
 
-  factory GetServerlessCacheCacheUsageLimitsEcpuPerSecond.fromMap(
-      Map<String, dynamic> map) {
+  factory GetServerlessCacheCacheUsageLimitsEcpuPerSecond.fromMap(Map<String, dynamic> map) {
     return GetServerlessCacheCacheUsageLimitsEcpuPerSecond(
       maximum: map['maximum'] as int,
       minimum: map['minimum'] as int,
     );
   }
 }
+

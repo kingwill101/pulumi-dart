@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationAssignmentArgs {
   /// ARN of the application.
   final pulumi.Input<String> applicationArn;
-
   /// An identifier for an object in IAM Identity Center, such as a user or group.
   final pulumi.Input<String> principalId;
-
   /// Entity type for which the assignment will be created. Valid values are `USER` or `GROUP`.
   final pulumi.Input<String> principalType;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -29,21 +26,19 @@ class ApplicationAssignmentArgs {
     required String principalId,
     required String principalType,
     String? region,
-  })  : applicationArn = pulumi.Input.asInput<String>(applicationArn),
-        principalId = pulumi.Input.asInput<String>(principalId),
-        principalType = pulumi.Input.asInput<String>(principalType),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      applicationArn = pulumi.Input.asInput<String>(applicationArn),
+      principalId = pulumi.Input.asInput<String>(principalId),
+      principalType = pulumi.Input.asInput<String>(principalType),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['applicationArn'] = applicationArn;
-    map['principalId'] = principalId;
-    map['principalType'] = principalType;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'applicationArn': applicationArn,
+      'principalId': principalId,
+      'principalType': principalType,
+      'region': ?region,
+    };
   }
 
   factory ApplicationAssignmentArgs.fromMap(Map<String, dynamic> map) {
@@ -55,3 +50,4 @@ class ApplicationAssignmentArgs {
     );
   }
 }
+

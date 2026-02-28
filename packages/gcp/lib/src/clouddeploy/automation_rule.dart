@@ -9,15 +9,12 @@ class AutomationRule {
   /// Optional. The `AdvanceRolloutRule` will automatically advance a successful Rollout.
   /// Structure is documented below.
   final AutomationRuleAdvanceRolloutRule? advanceRolloutRule;
-
   /// Optional. `PromoteReleaseRule` will automatically promote a release from the current target to a specified target.
   /// Structure is documented below.
   final AutomationRulePromoteReleaseRule? promoteReleaseRule;
-
   /// Optional. The RepairRolloutRule will automatically repair a failed rollout.
   /// Structure is documented below.
   final AutomationRuleRepairRolloutRule? repairRolloutRule;
-
   /// Optional. The `TimedPromoteReleaseRule` will automatically promote a release from the current target(s) to the specified target(s) on a configured schedule.
   /// Structure is documented below.
   final AutomationRuleTimedPromoteReleaseRule? timedPromoteReleaseRule;
@@ -35,44 +32,21 @@ class AutomationRule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final advanceRolloutRuleValue = advanceRolloutRule;
-    if (advanceRolloutRuleValue != null) {
-      map['advanceRolloutRule'] = advanceRolloutRuleValue.toMap();
-    }
-    final promoteReleaseRuleValue = promoteReleaseRule;
-    if (promoteReleaseRuleValue != null) {
-      map['promoteReleaseRule'] = promoteReleaseRuleValue.toMap();
-    }
-    final repairRolloutRuleValue = repairRolloutRule;
-    if (repairRolloutRuleValue != null) {
-      map['repairRolloutRule'] = repairRolloutRuleValue.toMap();
-    }
-    final timedPromoteReleaseRuleValue = timedPromoteReleaseRule;
-    if (timedPromoteReleaseRuleValue != null) {
-      map['timedPromoteReleaseRule'] = timedPromoteReleaseRuleValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'advanceRolloutRule': ?advanceRolloutRule == null ? null : advanceRolloutRule!.toMap(),
+      'promoteReleaseRule': ?promoteReleaseRule == null ? null : promoteReleaseRule!.toMap(),
+      'repairRolloutRule': ?repairRolloutRule == null ? null : repairRolloutRule!.toMap(),
+      'timedPromoteReleaseRule': ?timedPromoteReleaseRule == null ? null : timedPromoteReleaseRule!.toMap(),
+    };
   }
 
   factory AutomationRule.fromMap(Map<String, dynamic> map) {
     return AutomationRule(
-      advanceRolloutRule: map['advanceRolloutRule'] == null
-          ? null
-          : AutomationRuleAdvanceRolloutRule.fromMap(
-              (map['advanceRolloutRule'] as Map).cast<String, dynamic>()),
-      promoteReleaseRule: map['promoteReleaseRule'] == null
-          ? null
-          : AutomationRulePromoteReleaseRule.fromMap(
-              (map['promoteReleaseRule'] as Map).cast<String, dynamic>()),
-      repairRolloutRule: map['repairRolloutRule'] == null
-          ? null
-          : AutomationRuleRepairRolloutRule.fromMap(
-              (map['repairRolloutRule'] as Map).cast<String, dynamic>()),
-      timedPromoteReleaseRule: map['timedPromoteReleaseRule'] == null
-          ? null
-          : AutomationRuleTimedPromoteReleaseRule.fromMap(
-              (map['timedPromoteReleaseRule'] as Map).cast<String, dynamic>()),
+      advanceRolloutRule: map['advanceRolloutRule'] == null ? null : AutomationRuleAdvanceRolloutRule.fromMap((map['advanceRolloutRule'] as Map).cast<String, dynamic>()),
+      promoteReleaseRule: map['promoteReleaseRule'] == null ? null : AutomationRulePromoteReleaseRule.fromMap((map['promoteReleaseRule'] as Map).cast<String, dynamic>()),
+      repairRolloutRule: map['repairRolloutRule'] == null ? null : AutomationRuleRepairRolloutRule.fromMap((map['repairRolloutRule'] as Map).cast<String, dynamic>()),
+      timedPromoteReleaseRule: map['timedPromoteReleaseRule'] == null ? null : AutomationRuleTimedPromoteReleaseRule.fromMap((map['timedPromoteReleaseRule'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -32,11 +32,9 @@ import 'instance_attachment_args.dart';
 class InstanceAttachment extends pulumi.CustomResource {
   /// The resource ID of the environment.
   late final pulumi.Output<String> environment;
-
   /// The Apigee instance associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
   late final pulumi.Output<String> instanceId;
-
   /// The name of the newly created  attachment (output parameter).
   late final pulumi.Output<String> name;
 

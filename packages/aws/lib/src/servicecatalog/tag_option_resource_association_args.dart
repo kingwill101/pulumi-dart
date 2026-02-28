@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TagOptionResourceAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Resource identifier.
   final pulumi.Input<String> resourceId;
-
   /// Tag Option identifier.
   final pulumi.Input<String> tagOptionId;
 
@@ -24,19 +22,17 @@ class TagOptionResourceAssociationArgs {
     String? region,
     required String resourceId,
     required String tagOptionId,
-  })  : region = pulumi.Input.asOptionalInput<String>(region),
-        resourceId = pulumi.Input.asInput<String>(resourceId),
-        tagOptionId = pulumi.Input.asInput<String>(tagOptionId);
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      resourceId = pulumi.Input.asInput<String>(resourceId),
+      tagOptionId = pulumi.Input.asInput<String>(tagOptionId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['resourceId'] = resourceId;
-    map['tagOptionId'] = tagOptionId;
-    return map;
+    return <String, dynamic>{
+      'region': ?region,
+      'resourceId': resourceId,
+      'tagOptionId': tagOptionId,
+    };
   }
 
   factory TagOptionResourceAssociationArgs.fromMap(Map<String, dynamic> map) {
@@ -47,3 +43,4 @@ class TagOptionResourceAssociationArgs {
     );
   }
 }
+

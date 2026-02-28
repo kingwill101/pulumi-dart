@@ -10,21 +10,16 @@ import 'membership_rbac_role_binding_role.dart';
 class MembershipRbacRoleBindingArgs {
   /// Location of the Membership
   final pulumi.Input<String> location;
-
   /// Id of the membership
   final pulumi.Input<String> membershipId;
-
   /// The client-provided identifier of the RBAC Role Binding.
   final pulumi.Input<String> membershipRbacRoleBindingId;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Role to bind to the principal.
   /// Structure is documented below.
   final pulumi.Input<MembershipRbacRoleBindingRole> role;
-
   /// Principal that is be authorized in the cluster (at least of one the oneof
   /// is required). Updating one will unset the other automatically.
   /// user is the name of the user as seen by the kubernetes cluster, example
@@ -45,27 +40,23 @@ class MembershipRbacRoleBindingArgs {
     String? project,
     required MembershipRbacRoleBindingRole role,
     required String user,
-  })  : location = pulumi.Input.asInput<String>(location),
-        membershipId = pulumi.Input.asInput<String>(membershipId),
-        membershipRbacRoleBindingId =
-            pulumi.Input.asInput<String>(membershipRbacRoleBindingId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        role = pulumi.Input.asInput<MembershipRbacRoleBindingRole>(role),
-        user = pulumi.Input.asInput<String>(user);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      membershipId = pulumi.Input.asInput<String>(membershipId),
+      membershipRbacRoleBindingId = pulumi.Input.asInput<String>(membershipRbacRoleBindingId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      role = pulumi.Input.asInput<MembershipRbacRoleBindingRole>(role),
+      user = pulumi.Input.asInput<String>(user);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    map['membershipId'] = membershipId;
-    map['membershipRbacRoleBindingId'] = membershipRbacRoleBindingId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['role'] = pulumi.Input.mapInputValue<MembershipRbacRoleBindingRole,
-        Map<String, dynamic>>(role, (value) => value.toMap());
-    map['user'] = user;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'membershipId': membershipId,
+      'membershipRbacRoleBindingId': membershipRbacRoleBindingId,
+      'project': ?project,
+      'role': pulumi.Input.mapInputValue<MembershipRbacRoleBindingRole, Map<String, dynamic>>(role, (value) => value.toMap()),
+      'user': user,
+    };
   }
 
   factory MembershipRbacRoleBindingArgs.fromMap(Map<String, dynamic> map) {
@@ -74,9 +65,9 @@ class MembershipRbacRoleBindingArgs {
       membershipId: map['membershipId'] as String,
       membershipRbacRoleBindingId: map['membershipRbacRoleBindingId'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      role: MembershipRbacRoleBindingRole.fromMap(
-          (map['role'] as Map).cast<String, dynamic>()),
+      role: MembershipRbacRoleBindingRole.fromMap((map['role'] as Map).cast<String, dynamic>()),
       user: map['user'] as String,
     );
   }
 }
+

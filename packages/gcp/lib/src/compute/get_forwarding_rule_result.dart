@@ -14,7 +14,6 @@ class GetForwardingRuleResult {
   final String description;
   final Map<String, String> effectiveLabels;
   final int forwardingRuleId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String ipAddress;
@@ -38,8 +37,7 @@ class GetForwardingRuleResult {
   final bool recreateClosedPsc;
   final String? region;
   final String selfLink;
-  final List<GetForwardingRuleServiceDirectoryRegistration>
-      serviceDirectoryRegistrations;
+  final List<GetForwardingRuleServiceDirectoryRegistration> serviceDirectoryRegistrations;
   final String serviceLabel;
   final String serviceName;
   final List<String> sourceIpRanges;
@@ -125,54 +123,45 @@ class GetForwardingRuleResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allPorts'] = allPorts;
-    map['allowGlobalAccess'] = allowGlobalAccess;
-    map['allowPscGlobalAccess'] = allowPscGlobalAccess;
-    map['backendService'] = backendService;
-    map['baseForwardingRule'] = baseForwardingRule;
-    map['creationTimestamp'] = creationTimestamp;
-    map['description'] = description;
-    map['effectiveLabels'] = effectiveLabels;
-    map['forwardingRuleId'] = forwardingRuleId;
-    map['id'] = id;
-    map['ipAddress'] = ipAddress;
-    map['ipCollection'] = ipCollection;
-    map['ipProtocol'] = ipProtocol;
-    map['ipVersion'] = ipVersion;
-    map['isMirroringCollector'] = isMirroringCollector;
-    map['labelFingerprint'] = labelFingerprint;
-    map['labels'] = labels;
-    map['loadBalancingScheme'] = loadBalancingScheme;
-    map['name'] = name;
-    map['network'] = network;
-    map['networkTier'] = networkTier;
-    map['noAutomateDnsZone'] = noAutomateDnsZone;
-    map['portRange'] = portRange;
-    map['ports'] = ports;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['pscConnectionId'] = pscConnectionId;
-    map['pscConnectionStatus'] = pscConnectionStatus;
-    map['pulumiLabels'] = pulumiLabels;
-    map['recreateClosedPsc'] = recreateClosedPsc;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['selfLink'] = selfLink;
-    map['serviceDirectoryRegistrations'] = pulumi.Input.encodeList<
-            GetForwardingRuleServiceDirectoryRegistration,
-            Map<String, dynamic>>(
-        serviceDirectoryRegistrations, (value) => value.toMap());
-    map['serviceLabel'] = serviceLabel;
-    map['serviceName'] = serviceName;
-    map['sourceIpRanges'] = sourceIpRanges;
-    map['subnetwork'] = subnetwork;
-    map['target'] = target;
-    return map;
+    return <String, dynamic>{
+      'allPorts': allPorts,
+      'allowGlobalAccess': allowGlobalAccess,
+      'allowPscGlobalAccess': allowPscGlobalAccess,
+      'backendService': backendService,
+      'baseForwardingRule': baseForwardingRule,
+      'creationTimestamp': creationTimestamp,
+      'description': description,
+      'effectiveLabels': effectiveLabels,
+      'forwardingRuleId': forwardingRuleId,
+      'id': id,
+      'ipAddress': ipAddress,
+      'ipCollection': ipCollection,
+      'ipProtocol': ipProtocol,
+      'ipVersion': ipVersion,
+      'isMirroringCollector': isMirroringCollector,
+      'labelFingerprint': labelFingerprint,
+      'labels': labels,
+      'loadBalancingScheme': loadBalancingScheme,
+      'name': name,
+      'network': network,
+      'networkTier': networkTier,
+      'noAutomateDnsZone': noAutomateDnsZone,
+      'portRange': portRange,
+      'ports': ports,
+      'project': ?project,
+      'pscConnectionId': pscConnectionId,
+      'pscConnectionStatus': pscConnectionStatus,
+      'pulumiLabels': pulumiLabels,
+      'recreateClosedPsc': recreateClosedPsc,
+      'region': ?region,
+      'selfLink': selfLink,
+      'serviceDirectoryRegistrations': pulumi.Input.encodeList<GetForwardingRuleServiceDirectoryRegistration, Map<String, dynamic>>(serviceDirectoryRegistrations, (value) => value.toMap()),
+      'serviceLabel': serviceLabel,
+      'serviceName': serviceName,
+      'sourceIpRanges': sourceIpRanges,
+      'subnetwork': subnetwork,
+      'target': target,
+    };
   }
 
   factory GetForwardingRuleResult.fromMap(Map<String, dynamic> map) {
@@ -208,11 +197,7 @@ class GetForwardingRuleResult {
       recreateClosedPsc: map['recreateClosedPsc'] as bool,
       region: map['region'] == null ? null : map['region'] as String,
       selfLink: map['selfLink'] as String,
-      serviceDirectoryRegistrations: pulumi.Input.decodeList<
-              GetForwardingRuleServiceDirectoryRegistration>(
-          map['serviceDirectoryRegistrations'],
-          (value) => GetForwardingRuleServiceDirectoryRegistration.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      serviceDirectoryRegistrations: pulumi.Input.decodeList<GetForwardingRuleServiceDirectoryRegistration>(map['serviceDirectoryRegistrations'], (value) => GetForwardingRuleServiceDirectoryRegistration.fromMap((value as Map).cast<String, dynamic>())),
       serviceLabel: map['serviceLabel'] as String,
       serviceName: map['serviceName'] as String,
       sourceIpRanges: (map['sourceIpRanges'] as List).cast<String>(),
@@ -221,3 +206,4 @@ class GetForwardingRuleResult {
     );
   }
 }
+

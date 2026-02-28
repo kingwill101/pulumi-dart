@@ -16,3 +16,4 @@ enum DataPolicyDataPolicyType {
     throw ArgumentError('Unknown DataPolicyDataPolicyType value: $value');
   }
 }
+

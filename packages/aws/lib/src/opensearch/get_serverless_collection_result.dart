@@ -1,41 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getServerlessCollection.
 class GetServerlessCollectionResult {
   /// Amazon Resource Name (ARN) of the collection.
   final String arn;
-
   /// Collection-specific endpoint used to submit index, search, and data upload requests to an OpenSearch Serverless collection.
   final String collectionEndpoint;
-
   /// Date the Collection was created.
   final String createdDate;
-
   /// Collection-specific endpoint used to access OpenSearch Dashboards.
   final String dashboardEndpoint;
-
   /// Description of the collection.
   final String description;
-
   /// A failure code associated with the collection.
   final String failureCode;
   final String failureMessage;
   final String id;
-
   /// The ARN of the Amazon Web Services KMS key used to encrypt the collection.
   final String kmsKeyArn;
-
   /// Date the Collection was last modified.
   final String lastModifiedDate;
   final String name;
   final String region;
-
   /// Indicates whether standby replicas should be used for a collection.
   final String standbyReplicas;
-
   /// A map of tags to assign to the collection.
   final Map<String, String> tags;
-
   /// Type of collection.
   final String type;
 
@@ -74,23 +65,23 @@ class GetServerlessCollectionResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['collectionEndpoint'] = collectionEndpoint;
-    map['createdDate'] = createdDate;
-    map['dashboardEndpoint'] = dashboardEndpoint;
-    map['description'] = description;
-    map['failureCode'] = failureCode;
-    map['failureMessage'] = failureMessage;
-    map['id'] = id;
-    map['kmsKeyArn'] = kmsKeyArn;
-    map['lastModifiedDate'] = lastModifiedDate;
-    map['name'] = name;
-    map['region'] = region;
-    map['standbyReplicas'] = standbyReplicas;
-    map['tags'] = tags;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'collectionEndpoint': collectionEndpoint,
+      'createdDate': createdDate,
+      'dashboardEndpoint': dashboardEndpoint,
+      'description': description,
+      'failureCode': failureCode,
+      'failureMessage': failureMessage,
+      'id': id,
+      'kmsKeyArn': kmsKeyArn,
+      'lastModifiedDate': lastModifiedDate,
+      'name': name,
+      'region': region,
+      'standbyReplicas': standbyReplicas,
+      'tags': tags,
+      'type': type,
+    };
   }
 
   factory GetServerlessCollectionResult.fromMap(Map<String, dynamic> map) {
@@ -113,3 +104,4 @@ class GetServerlessCollectionResult {
     );
   }
 }
+

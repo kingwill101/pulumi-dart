@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionTargetTcpProxyArgs {
   /// A reference to the BackendService resource.
   final pulumi.Input<String> backendService;
-
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
-
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -21,21 +19,17 @@ class RegionTargetTcpProxyArgs {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// This field only applies when the forwarding rule that references
   /// this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
   final pulumi.Input<bool>? proxyBind;
-
   /// Specifies the type of proxy header to append before sending data to
   /// the backend.
   /// Default value is `NONE`.
   /// Possible values are: `NONE`, `PROXY_V1`.
   final pulumi.Input<String>? proxyHeader;
-
   /// The Region in which the created target TCP proxy should reside.
   /// If it is not provided, the provider region is used.
   final pulumi.Input<String>? region;
@@ -56,55 +50,37 @@ class RegionTargetTcpProxyArgs {
     bool? proxyBind,
     String? proxyHeader,
     String? region,
-  })  : backendService = pulumi.Input.asInput<String>(backendService),
-        description = pulumi.Input.asOptionalInput<String>(description),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        proxyBind = pulumi.Input.asOptionalInput<bool>(proxyBind),
-        proxyHeader = pulumi.Input.asOptionalInput<String>(proxyHeader),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      backendService = pulumi.Input.asInput<String>(backendService),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      proxyBind = pulumi.Input.asOptionalInput<bool>(proxyBind),
+      proxyHeader = pulumi.Input.asOptionalInput<String>(proxyHeader),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['backendService'] = backendService;
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final proxyBindValue = proxyBind;
-    if (proxyBindValue != null) {
-      map['proxyBind'] = proxyBindValue;
-    }
-    final proxyHeaderValue = proxyHeader;
-    if (proxyHeaderValue != null) {
-      map['proxyHeader'] = proxyHeaderValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'backendService': backendService,
+      'description': ?description,
+      'name': ?name,
+      'project': ?project,
+      'proxyBind': ?proxyBind,
+      'proxyHeader': ?proxyHeader,
+      'region': ?region,
+    };
   }
 
   factory RegionTargetTcpProxyArgs.fromMap(Map<String, dynamic> map) {
     return RegionTargetTcpProxyArgs(
       backendService: map['backendService'] as String,
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       proxyBind: map['proxyBind'] == null ? null : map['proxyBind'] as bool,
-      proxyHeader:
-          map['proxyHeader'] == null ? null : map['proxyHeader'] as String,
+      proxyHeader: map['proxyHeader'] == null ? null : map['proxyHeader'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

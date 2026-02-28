@@ -794,20 +794,15 @@ class AiLogicConfig extends pulumi.CustomResource {
   /// API key is stored in this configuration *on the server* so that you do
   /// **not** add your Gemini API key directly into your app's codebase.
   /// Structure is documented below.
-  late final pulumi.Output<AiLogicConfigGenerativeLanguageConfig?>
-      generativeLanguageConfig;
-
+  late final pulumi.Output<AiLogicConfigGenerativeLanguageConfig?> generativeLanguageConfig;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String?> location;
-
   /// Identifier. The resource name of the config.
   /// Format: projects/{project}/locations/{location}/config
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Configuration for telemetry.
   /// Telemetry is the collection of metrics, logs, and traces recorded by the
   /// Firebase AI Logic backend.
@@ -828,13 +823,10 @@ class AiLogicConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.generativeLanguageConfig =
-        registerOutput<AiLogicConfigGenerativeLanguageConfig?>(
-            'generativeLanguageConfig');
+    this.generativeLanguageConfig = registerOutput<AiLogicConfigGenerativeLanguageConfig?>('generativeLanguageConfig');
     this.location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
-    this.telemetryConfig =
-        registerOutput<AiLogicConfigTelemetryConfig?>('telemetryConfig');
+    this.telemetryConfig = registerOutput<AiLogicConfigTelemetryConfig?>('telemetryConfig');
   }
 }

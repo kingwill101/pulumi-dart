@@ -1,18 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications {
   /// Notification mode for grant activated.
   /// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
   final String? grantActivated;
-
   /// Notification mode for grant activation failed.
   /// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
   final String? grantActivationFailed;
-
   /// Notification mode for grant ended.
   /// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
   final String? grantEnded;
-
   /// Notification mode for grant externally modified.
   /// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
   final String? grantExternallyModified;
@@ -30,40 +28,21 @@ class SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificati
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final grantActivatedValue = grantActivated;
-    if (grantActivatedValue != null) {
-      map['grantActivated'] = grantActivatedValue;
-    }
-    final grantActivationFailedValue = grantActivationFailed;
-    if (grantActivationFailedValue != null) {
-      map['grantActivationFailed'] = grantActivationFailedValue;
-    }
-    final grantEndedValue = grantEnded;
-    if (grantEndedValue != null) {
-      map['grantEnded'] = grantEndedValue;
-    }
-    final grantExternallyModifiedValue = grantExternallyModified;
-    if (grantExternallyModifiedValue != null) {
-      map['grantExternallyModified'] = grantExternallyModifiedValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'grantActivated': ?grantActivated,
+      'grantActivationFailed': ?grantActivationFailed,
+      'grantEnded': ?grantEnded,
+      'grantExternallyModified': ?grantExternallyModified,
+    };
   }
 
-  factory SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications.fromMap(
-      Map<String, dynamic> map) {
+  factory SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications.fromMap(Map<String, dynamic> map) {
     return SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications(
-      grantActivated: map['grantActivated'] == null
-          ? null
-          : map['grantActivated'] as String,
-      grantActivationFailed: map['grantActivationFailed'] == null
-          ? null
-          : map['grantActivationFailed'] as String,
-      grantEnded:
-          map['grantEnded'] == null ? null : map['grantEnded'] as String,
-      grantExternallyModified: map['grantExternallyModified'] == null
-          ? null
-          : map['grantExternallyModified'] as String,
+      grantActivated: map['grantActivated'] == null ? null : map['grantActivated'] as String,
+      grantActivationFailed: map['grantActivationFailed'] == null ? null : map['grantActivationFailed'] as String,
+      grantEnded: map['grantEnded'] == null ? null : map['grantEnded'] as String,
+      grantExternallyModified: map['grantExternallyModified'] == null ? null : map['grantExternallyModified'] as String,
     );
   }
 }
+

@@ -16,3 +16,4 @@ enum ClusterUpdateDesiredStackType {
     throw ArgumentError('Unknown ClusterUpdateDesiredStackType value: $value');
   }
 }
+

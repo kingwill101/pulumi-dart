@@ -14,16 +14,15 @@ class BareMetalNodePoolUpgradePolicyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['parallelUpgradeConfig'] = parallelUpgradeConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'parallelUpgradeConfig': parallelUpgradeConfig.toMap(),
+    };
   }
 
-  factory BareMetalNodePoolUpgradePolicyResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory BareMetalNodePoolUpgradePolicyResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalNodePoolUpgradePolicyResponse(
-      parallelUpgradeConfig: BareMetalParallelUpgradeConfigResponse.fromMap(
-          (map['parallelUpgradeConfig'] as Map).cast<String, dynamic>()),
+      parallelUpgradeConfig: BareMetalParallelUpgradeConfigResponse.fromMap((map['parallelUpgradeConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

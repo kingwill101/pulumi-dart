@@ -11,7 +11,6 @@ class GetImagesArgs {
   ///
   /// - - -
   final pulumi.Input<String>? filter;
-
   /// The project in which the resource belongs. If it is not
   /// provided, the provider project is used. If you are using a
   /// [public base image][pubimg], be sure to specify the correct Image Project.
@@ -23,20 +22,15 @@ class GetImagesArgs {
   GetImagesArgs({
     String? filter,
     String? project,
-  })  : filter = pulumi.Input.asOptionalInput<String>(filter),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      filter = pulumi.Input.asOptionalInput<String>(filter),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final filterValue = filter;
-    if (filterValue != null) {
-      map['filter'] = filterValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'filter': ?filter,
+      'project': ?project,
+    };
   }
 
   factory GetImagesArgs.fromMap(Map<String, dynamic> map) {
@@ -46,3 +40,4 @@ class GetImagesArgs {
     );
   }
 }
+

@@ -6,9 +6,7 @@ import 'google_cloud_dialogflow_cx_v3beta1_response_message_response.dart';
 /// The list of messages or conditional cases to activate for this case.
 class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContentResponse {
   /// Additional cases to be evaluated.
-  final GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesResponse
-      additionalCases;
-
+  final GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesResponse additionalCases;
   /// Returned message.
   final GoogleCloudDialogflowCxV3beta1ResponseMessageResponse message;
 
@@ -21,20 +19,17 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContentRe
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['additionalCases'] = additionalCases.toMap();
-    map['message'] = message.toMap();
-    return map;
+    return <String, dynamic>{
+      'additionalCases': additionalCases.toMap(),
+      'message': message.toMap(),
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContentResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContentResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContentResponse(
-      additionalCases:
-          GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesResponse
-              .fromMap((map['additionalCases'] as Map).cast<String, dynamic>()),
-      message: GoogleCloudDialogflowCxV3beta1ResponseMessageResponse.fromMap(
-          (map['message'] as Map).cast<String, dynamic>()),
+      additionalCases: GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesResponse.fromMap((map['additionalCases'] as Map).cast<String, dynamic>()),
+      message: GoogleCloudDialogflowCxV3beta1ResponseMessageResponse.fromMap((map['message'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

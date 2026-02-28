@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getDatasetVersion.
 class GetDatasetVersionResult {
   /// Name of the associated BigQuery dataset.
   final String bigQueryDatasetName;
-
   /// Timestamp when this DatasetVersion was created.
   final String createTime;
-
   /// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
   final String etag;
-
   /// The resource name of the DatasetVersion.
   final String name;
-
   /// Timestamp when this DatasetVersion was last updated.
   final String updateTime;
 
@@ -32,13 +29,13 @@ class GetDatasetVersionResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bigQueryDatasetName'] = bigQueryDatasetName;
-    map['createTime'] = createTime;
-    map['etag'] = etag;
-    map['name'] = name;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'bigQueryDatasetName': bigQueryDatasetName,
+      'createTime': createTime,
+      'etag': etag,
+      'name': name,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetDatasetVersionResult.fromMap(Map<String, dynamic> map) {
@@ -51,3 +48,4 @@ class GetDatasetVersionResult {
     );
   }
 }
+

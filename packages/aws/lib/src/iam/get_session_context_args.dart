@@ -16,12 +16,13 @@ class GetSessionContextArgs {
   /// [arn] ARN for an assumed role.
   GetSessionContextArgs({
     required String arn,
-  }) : arn = pulumi.Input.asInput<String>(arn);
+  }) :
+      arn = pulumi.Input.asInput<String>(arn);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+    };
   }
 
   factory GetSessionContextArgs.fromMap(Map<String, dynamic> map) {
@@ -30,3 +31,4 @@ class GetSessionContextArgs {
     );
   }
 }
+

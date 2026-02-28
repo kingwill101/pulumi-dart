@@ -14,19 +14,15 @@ class TableSchemaResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['fields'] =
-        pulumi.Input.encodeList<TableFieldSchemaResponse, Map<String, dynamic>>(
-            fields, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'fields': pulumi.Input.encodeList<TableFieldSchemaResponse, Map<String, dynamic>>(fields, (value) => value.toMap()),
+    };
   }
 
   factory TableSchemaResponse.fromMap(Map<String, dynamic> map) {
     return TableSchemaResponse(
-      fields: pulumi.Input.decodeList<TableFieldSchemaResponse>(
-          map['fields'],
-          (value) => TableFieldSchemaResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      fields: pulumi.Input.decodeList<TableFieldSchemaResponse>(map['fields'], (value) => TableFieldSchemaResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

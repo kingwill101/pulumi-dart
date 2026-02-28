@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInstanceTypeGpus {
   final int count;
   final String manufacturer;
-
   /// Size of the instance memory, in MiB.
   final int memorySize;
   final String name;
@@ -21,12 +21,12 @@ class GetInstanceTypeGpus {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['count'] = count;
-    map['manufacturer'] = manufacturer;
-    map['memorySize'] = memorySize;
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'count': count,
+      'manufacturer': manufacturer,
+      'memorySize': memorySize,
+      'name': name,
+    };
   }
 
   factory GetInstanceTypeGpus.fromMap(Map<String, dynamic> map) {
@@ -38,3 +38,4 @@ class GetInstanceTypeGpus {
     );
   }
 }
+

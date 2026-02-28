@@ -19,19 +19,17 @@ class GetSpecialistPoolArgs {
     required String location,
     String? project,
     required String specialistPoolId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        specialistPoolId = pulumi.Input.asInput<String>(specialistPoolId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      specialistPoolId = pulumi.Input.asInput<String>(specialistPoolId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['specialistPoolId'] = specialistPoolId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+      'specialistPoolId': specialistPoolId,
+    };
   }
 
   factory GetSpecialistPoolArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetSpecialistPoolArgs {
     );
   }
 }
+

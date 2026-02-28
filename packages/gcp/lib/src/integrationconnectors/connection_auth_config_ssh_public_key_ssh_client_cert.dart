@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConnectionAuthConfigSshPublicKeySshClientCert {
   /// The resource name of the secret version in the format,
   /// format as: projects/*/secrets/*/versions/*.
@@ -12,15 +13,15 @@ class ConnectionAuthConfigSshPublicKeySshClientCert {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['secretVersion'] = secretVersion;
-    return map;
+    return <String, dynamic>{
+      'secretVersion': secretVersion,
+    };
   }
 
-  factory ConnectionAuthConfigSshPublicKeySshClientCert.fromMap(
-      Map<String, dynamic> map) {
+  factory ConnectionAuthConfigSshPublicKeySshClientCert.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthConfigSshPublicKeySshClientCert(
       secretVersion: map['secretVersion'] as String,
     );
   }
 }
+

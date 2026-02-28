@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ServiceServicePropertyIdentity {
   /// (Output)
   /// The principal of the identity.
@@ -12,12 +13,9 @@ class ServiceServicePropertyIdentity {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final principalValue = principal;
-    if (principalValue != null) {
-      map['principal'] = principalValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'principal': ?principal,
+    };
   }
 
   factory ServiceServicePropertyIdentity.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class ServiceServicePropertyIdentity {
     );
   }
 }
+

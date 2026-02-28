@@ -7,24 +7,18 @@ import 'get_map_configuration.dart';
 class GetMapResult {
   /// List of configurations that specify the map tile style selected from a partner data provider.
   final List<GetMapConfiguration> configurations;
-
   /// Timestamp for when the map resource was created in ISO 8601 format.
   final String createTime;
-
   /// Optional description for the map resource.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// ARN for the map resource.
   final String mapArn;
   final String mapName;
   final String region;
-
   /// Key-value map of resource tags for the map.
   final Map<String, String> tags;
-
   /// Timestamp for when the map resource was last updated in ISO 8601 format.
   final String updateTime;
 
@@ -51,27 +45,22 @@ class GetMapResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['configurations'] =
-        pulumi.Input.encodeList<GetMapConfiguration, Map<String, dynamic>>(
-            configurations, (value) => value.toMap());
-    map['createTime'] = createTime;
-    map['description'] = description;
-    map['id'] = id;
-    map['mapArn'] = mapArn;
-    map['mapName'] = mapName;
-    map['region'] = region;
-    map['tags'] = tags;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'configurations': pulumi.Input.encodeList<GetMapConfiguration, Map<String, dynamic>>(configurations, (value) => value.toMap()),
+      'createTime': createTime,
+      'description': description,
+      'id': id,
+      'mapArn': mapArn,
+      'mapName': mapName,
+      'region': region,
+      'tags': tags,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetMapResult.fromMap(Map<String, dynamic> map) {
     return GetMapResult(
-      configurations: pulumi.Input.decodeList<GetMapConfiguration>(
-          map['configurations'],
-          (value) => GetMapConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      configurations: pulumi.Input.decodeList<GetMapConfiguration>(map['configurations'], (value) => GetMapConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       createTime: map['createTime'] as String,
       description: map['description'] as String,
       id: map['id'] as String,
@@ -83,3 +72,4 @@ class GetMapResult {
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'pkix_public_key_set_response.dart';
 class AttestationAuthenticatorResponse {
   /// Optional. A user-provided name for this `AttestationAuthenticator`. This field has no effect on the policy evaluation behavior except to improve readability of messages in evaluation results.
   final String displayName;
-
   /// Optional. A set of raw PKIX SubjectPublicKeyInfo format public keys. If any public key in the set validates the attestation signature, then the signature is considered authenticated (i.e. any one key is sufficient to authenticate).
   final PkixPublicKeySetResponse pkixPublicKeySet;
 
@@ -19,17 +18,17 @@ class AttestationAuthenticatorResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['displayName'] = displayName;
-    map['pkixPublicKeySet'] = pkixPublicKeySet.toMap();
-    return map;
+    return <String, dynamic>{
+      'displayName': displayName,
+      'pkixPublicKeySet': pkixPublicKeySet.toMap(),
+    };
   }
 
   factory AttestationAuthenticatorResponse.fromMap(Map<String, dynamic> map) {
     return AttestationAuthenticatorResponse(
       displayName: map['displayName'] as String,
-      pkixPublicKeySet: PkixPublicKeySetResponse.fromMap(
-          (map['pkixPublicKeySet'] as Map).cast<String, dynamic>()),
+      pkixPublicKeySet: PkixPublicKeySetResponse.fromMap((map['pkixPublicKeySet'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

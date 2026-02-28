@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GroupMembershipRoleExpiryDetail {
   /// The time at which the MembershipRole will expire.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
@@ -14,9 +15,9 @@ class GroupMembershipRoleExpiryDetail {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['expireTime'] = expireTime;
-    return map;
+    return <String, dynamic>{
+      'expireTime': expireTime,
+    };
   }
 
   factory GroupMembershipRoleExpiryDetail.fromMap(Map<String, dynamic> map) {
@@ -25,3 +26,4 @@ class GroupMembershipRoleExpiryDetail {
     );
   }
 }
+

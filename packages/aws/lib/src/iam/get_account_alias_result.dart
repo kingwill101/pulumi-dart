@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getAccountAlias.
 class GetAccountAliasResult {
   /// Alias associated with the AWS account.
   final String accountAlias;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
 
@@ -17,10 +17,10 @@ class GetAccountAliasResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accountAlias'] = accountAlias;
-    map['id'] = id;
-    return map;
+    return <String, dynamic>{
+      'accountAlias': accountAlias,
+      'id': id,
+    };
   }
 
   factory GetAccountAliasResult.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class GetAccountAliasResult {
     );
   }
 }
+

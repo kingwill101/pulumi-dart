@@ -19,19 +19,17 @@ class GetRuntimeArgs {
     required String location,
     String? project,
     required String runtimeId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        runtimeId = pulumi.Input.asInput<String>(runtimeId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      runtimeId = pulumi.Input.asInput<String>(runtimeId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['runtimeId'] = runtimeId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+      'runtimeId': runtimeId,
+    };
   }
 
   factory GetRuntimeArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetRuntimeArgs {
     );
   }
 }
+

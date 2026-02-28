@@ -13,21 +13,15 @@ class AgentcoreGatewayTargetTargetConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final mcpValue = mcp;
-    if (mcpValue != null) {
-      map['mcp'] = mcpValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'mcp': ?mcp == null ? null : mcp!.toMap(),
+    };
   }
 
-  factory AgentcoreGatewayTargetTargetConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentcoreGatewayTargetTargetConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetTargetConfiguration(
-      mcp: map['mcp'] == null
-          ? null
-          : AgentcoreGatewayTargetTargetConfigurationMcp.fromMap(
-              (map['mcp'] as Map).cast<String, dynamic>()),
+      mcp: map['mcp'] == null ? null : AgentcoreGatewayTargetTargetConfigurationMcp.fromMap((map['mcp'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

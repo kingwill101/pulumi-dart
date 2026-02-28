@@ -5,11 +5,9 @@ import 'environment_entry_args.dart';
 class EnvironmentEntry extends pulumi.CustomResource {
   late final pulumi.Output<String> environmentId;
   late final pulumi.Output<String> keyvaluemapId;
-
   /// Resource URI that can be used to identify the scope of the key value map entries.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> organizationId;
-
   /// Data or payload that is being retrieved and associated with the unique key.
   late final pulumi.Output<String> value;
 

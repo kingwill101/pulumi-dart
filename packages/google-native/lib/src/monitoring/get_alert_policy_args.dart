@@ -16,17 +16,15 @@ class GetAlertPolicyArgs {
   GetAlertPolicyArgs({
     required String alertPolicyId,
     String? project,
-  })  : alertPolicyId = pulumi.Input.asInput<String>(alertPolicyId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      alertPolicyId = pulumi.Input.asInput<String>(alertPolicyId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['alertPolicyId'] = alertPolicyId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'alertPolicyId': alertPolicyId,
+      'project': ?project,
+    };
   }
 
   factory GetAlertPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetAlertPolicyArgs {
     );
   }
 }
+

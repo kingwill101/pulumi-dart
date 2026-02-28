@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Read-only password status.
 class PasswordStatusResponseSqladminV1beta4 {
   /// If true, user does not have login privileges.
   final bool locked;
-
   /// The expiration time of the current password.
   final String passwordExpirationTime;
 
@@ -17,17 +17,17 @@ class PasswordStatusResponseSqladminV1beta4 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['locked'] = locked;
-    map['passwordExpirationTime'] = passwordExpirationTime;
-    return map;
+    return <String, dynamic>{
+      'locked': locked,
+      'passwordExpirationTime': passwordExpirationTime,
+    };
   }
 
-  factory PasswordStatusResponseSqladminV1beta4.fromMap(
-      Map<String, dynamic> map) {
+  factory PasswordStatusResponseSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return PasswordStatusResponseSqladminV1beta4(
       locked: map['locked'] as bool,
       passwordExpirationTime: map['passwordExpirationTime'] as String,
     );
   }
 }
+

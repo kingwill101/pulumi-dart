@@ -5,9 +5,7 @@ import 'get_cluster_node_pool_node_config_containerd_config_registry_host_host.d
 
 class GetClusterNodePoolNodeConfigContainerdConfigRegistryHost {
   /// Configures a list of host-specific configurations for the server.
-  final List<GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHost>
-      hosts;
-
+  final List<GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHost> hosts;
   /// Defines the host name of the registry server.
   final String server;
 
@@ -20,24 +18,17 @@ class GetClusterNodePoolNodeConfigContainerdConfigRegistryHost {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['hosts'] = pulumi.Input.encodeList<
-        GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHost,
-        Map<String, dynamic>>(hosts, (value) => value.toMap());
-    map['server'] = server;
-    return map;
+    return <String, dynamic>{
+      'hosts': pulumi.Input.encodeList<GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHost, Map<String, dynamic>>(hosts, (value) => value.toMap()),
+      'server': server,
+    };
   }
 
-  factory GetClusterNodePoolNodeConfigContainerdConfigRegistryHost.fromMap(
-      Map<String, dynamic> map) {
+  factory GetClusterNodePoolNodeConfigContainerdConfigRegistryHost.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfigContainerdConfigRegistryHost(
-      hosts: pulumi.Input.decodeList<
-              GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHost>(
-          map['hosts'],
-          (value) =>
-              GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHost
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      hosts: pulumi.Input.decodeList<GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHost>(map['hosts'], (value) => GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHost.fromMap((value as Map).cast<String, dynamic>())),
       server: map['server'] as String,
     );
   }
 }
+

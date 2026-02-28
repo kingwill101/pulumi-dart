@@ -13,15 +13,15 @@ class InventoryDestination {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucket'] = bucket.toMap();
-    return map;
+    return <String, dynamic>{
+      'bucket': bucket.toMap(),
+    };
   }
 
   factory InventoryDestination.fromMap(Map<String, dynamic> map) {
     return InventoryDestination(
-      bucket: InventoryDestinationBucket.fromMap(
-          (map['bucket'] as Map).cast<String, dynamic>()),
+      bucket: InventoryDestinationBucket.fromMap((map['bucket'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

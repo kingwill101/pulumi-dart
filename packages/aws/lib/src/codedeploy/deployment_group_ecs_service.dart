@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DeploymentGroupEcsService {
   /// The name of the ECS cluster.
   final String clusterName;
-
   /// The name of the ECS service.
   final String serviceName;
 
@@ -16,10 +16,10 @@ class DeploymentGroupEcsService {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clusterName'] = clusterName;
-    map['serviceName'] = serviceName;
-    return map;
+    return <String, dynamic>{
+      'clusterName': clusterName,
+      'serviceName': serviceName,
+    };
   }
 
   factory DeploymentGroupEcsService.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class DeploymentGroupEcsService {
     );
   }
 }
+

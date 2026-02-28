@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getClusters.
 class GetClustersResult {
   /// List of ECS cluster ARNs associated with the account.
   final List<String> clusterArns;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -20,11 +20,11 @@ class GetClustersResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clusterArns'] = clusterArns;
-    map['id'] = id;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'clusterArns': clusterArns,
+      'id': id,
+      'region': region,
+    };
   }
 
   factory GetClustersResult.fromMap(Map<String, dynamic> map) {
@@ -35,3 +35,4 @@ class GetClustersResult {
     );
   }
 }
+

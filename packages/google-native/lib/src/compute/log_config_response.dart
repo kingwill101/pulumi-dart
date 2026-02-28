@@ -8,10 +8,8 @@ import 'log_config_data_access_options_response.dart';
 class LogConfigResponse {
   /// This is deprecated and has no effect. Do not use.
   final LogConfigCloudAuditOptionsResponse cloudAudit;
-
   /// This is deprecated and has no effect. Do not use.
   final LogConfigCounterOptionsResponse counter;
-
   /// This is deprecated and has no effect. Do not use.
   final LogConfigDataAccessOptionsResponse dataAccess;
 
@@ -26,21 +24,19 @@ class LogConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cloudAudit'] = cloudAudit.toMap();
-    map['counter'] = counter.toMap();
-    map['dataAccess'] = dataAccess.toMap();
-    return map;
+    return <String, dynamic>{
+      'cloudAudit': cloudAudit.toMap(),
+      'counter': counter.toMap(),
+      'dataAccess': dataAccess.toMap(),
+    };
   }
 
   factory LogConfigResponse.fromMap(Map<String, dynamic> map) {
     return LogConfigResponse(
-      cloudAudit: LogConfigCloudAuditOptionsResponse.fromMap(
-          (map['cloudAudit'] as Map).cast<String, dynamic>()),
-      counter: LogConfigCounterOptionsResponse.fromMap(
-          (map['counter'] as Map).cast<String, dynamic>()),
-      dataAccess: LogConfigDataAccessOptionsResponse.fromMap(
-          (map['dataAccess'] as Map).cast<String, dynamic>()),
+      cloudAudit: LogConfigCloudAuditOptionsResponse.fromMap((map['cloudAudit'] as Map).cast<String, dynamic>()),
+      counter: LogConfigCounterOptionsResponse.fromMap((map['counter'] as Map).cast<String, dynamic>()),
+      dataAccess: LogConfigDataAccessOptionsResponse.fromMap((map['dataAccess'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -181,22 +181,16 @@ import 'vpc_link_args.dart';
 /// ```
 class VpcLink extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
-
   /// Description of the VPC link.
   late final pulumi.Output<String?> description;
-
   /// Name used to label and identify the VPC link.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// List of network load balancer arns in the VPC targeted by the VPC link. Currently AWS only supports 1 target.
   late final pulumi.Output<String> targetArn;
 

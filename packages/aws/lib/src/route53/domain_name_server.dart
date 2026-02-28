@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DomainNameServer {
   /// Glue IP addresses of a name server. The list can contain only one IPv4 and one IPv6 address.
   final List<String> glueIps;
-
   /// The fully qualified host name of the name server.
   final String name;
 
@@ -16,10 +16,10 @@ class DomainNameServer {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['glueIps'] = glueIps;
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'glueIps': glueIps,
+      'name': name,
+    };
   }
 
   factory DomainNameServer.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class DomainNameServer {
     );
   }
 }
+

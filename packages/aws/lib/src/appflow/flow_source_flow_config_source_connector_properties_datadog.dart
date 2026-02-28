@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FlowSourceFlowConfigSourceConnectorPropertiesDatadog {
   final String object;
 
@@ -10,15 +11,15 @@ class FlowSourceFlowConfigSourceConnectorPropertiesDatadog {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['object'] = object;
-    return map;
+    return <String, dynamic>{
+      'object': object,
+    };
   }
 
-  factory FlowSourceFlowConfigSourceConnectorPropertiesDatadog.fromMap(
-      Map<String, dynamic> map) {
+  factory FlowSourceFlowConfigSourceConnectorPropertiesDatadog.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorPropertiesDatadog(
       object: map['object'] as String,
     );
   }
 }
+

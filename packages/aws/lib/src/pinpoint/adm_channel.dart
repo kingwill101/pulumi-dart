@@ -135,16 +135,12 @@ import 'adm_channel_args.dart';
 class AdmChannel extends pulumi.CustomResource {
   /// The application ID.
   late final pulumi.Output<String> applicationId;
-
   /// Client ID (part of OAuth Credentials) obtained via Amazon Developer Account.
   late final pulumi.Output<String> clientId;
-
   /// Client Secret (part of OAuth Credentials) obtained via Amazon Developer Account.
   late final pulumi.Output<String> clientSecret;
-
   /// Specifies whether to enable the channel. Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

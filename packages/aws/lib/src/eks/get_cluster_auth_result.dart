@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getClusterAuth.
 class GetClusterAuthResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String region;
-
   /// Token to use to authenticate with the cluster.
   final String token;
 
@@ -23,12 +23,12 @@ class GetClusterAuthResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['name'] = name;
-    map['region'] = region;
-    map['token'] = token;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'name': name,
+      'region': region,
+      'token': token,
+    };
   }
 
   factory GetClusterAuthResult.fromMap(Map<String, dynamic> map) {
@@ -40,3 +40,4 @@ class GetClusterAuthResult {
     );
   }
 }
+

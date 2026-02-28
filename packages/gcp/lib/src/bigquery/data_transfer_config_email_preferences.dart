@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataTransferConfigEmailPreferences {
   /// If true, email notifications will be sent on transfer run failures.
   final bool enableFailureEmail;
@@ -11,9 +12,9 @@ class DataTransferConfigEmailPreferences {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enableFailureEmail'] = enableFailureEmail;
-    return map;
+    return <String, dynamic>{
+      'enableFailureEmail': enableFailureEmail,
+    };
   }
 
   factory DataTransferConfigEmailPreferences.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class DataTransferConfigEmailPreferences {
     );
   }
 }
+

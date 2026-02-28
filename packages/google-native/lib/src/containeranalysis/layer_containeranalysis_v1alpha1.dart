@@ -6,7 +6,6 @@ import 'layer_directive.dart';
 class LayerContaineranalysisV1alpha1 {
   /// The recovered arguments to the Dockerfile directive.
   final String? arguments;
-
   /// The recovered Dockerfile directive used to construct this layer.
   final LayerDirective? directive;
 
@@ -19,24 +18,17 @@ class LayerContaineranalysisV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final argumentsValue = arguments;
-    if (argumentsValue != null) {
-      map['arguments'] = argumentsValue;
-    }
-    final directiveValue = directive;
-    if (directiveValue != null) {
-      map['directive'] = directiveValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'arguments': ?arguments,
+      'directive': ?directive == null ? null : directive!.value,
+    };
   }
 
   factory LayerContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return LayerContaineranalysisV1alpha1(
       arguments: map['arguments'] == null ? null : map['arguments'] as String,
-      directive: map['directive'] == null
-          ? null
-          : LayerDirective.fromValue(map['directive'] as String),
+      directive: map['directive'] == null ? null : LayerDirective.fromValue(map['directive'] as String),
     );
   }
 }
+

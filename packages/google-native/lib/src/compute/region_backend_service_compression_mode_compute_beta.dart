@@ -6,14 +6,13 @@ enum RegionBackendServiceCompressionModeComputeBeta {
   const RegionBackendServiceCompressionModeComputeBeta(this.value);
   final String value;
 
-  static RegionBackendServiceCompressionModeComputeBeta fromValue(
-      String value) {
+  static RegionBackendServiceCompressionModeComputeBeta fromValue(String value) {
     for (final item in RegionBackendServiceCompressionModeComputeBeta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown RegionBackendServiceCompressionModeComputeBeta value: $value');
+    throw ArgumentError('Unknown RegionBackendServiceCompressionModeComputeBeta value: $value');
   }
 }
+

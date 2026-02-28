@@ -8,27 +8,20 @@ import 'instance_args.dart';
 class Instance extends pulumi.CustomResource {
   /// Build info of the Instance if it's in `ACTIVE` state.
   late final pulumi.Output<BuildResponse> build;
-
   /// Config of the Instance.
   late final pulumi.Output<ConfigResponse> config;
-
   /// Creation timestamp.
   late final pulumi.Output<String> createTime;
-
   /// Required. Identifier to assign to the Instance. Must be unique within scope of the parent resource.
   late final pulumi.Output<String> instanceId;
   late final pulumi.Output<String> location;
-
   /// Format: `projects/*/locations/*/instance`. Currently only `locations/global` is supported.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// The current state of the Instance.
   late final pulumi.Output<String> state;
-
   /// Extra information of Instance.State if the state is `FAILED`.
   late final pulumi.Output<String> stateMessage;
-
   /// Last update timestamp.
   late final pulumi.Output<String> updateTime;
 

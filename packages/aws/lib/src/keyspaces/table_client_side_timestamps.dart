@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TableClientSideTimestamps {
   /// Shows how to enable client-side timestamps settings for the specified table. Valid values: `ENABLED`.
   final String status;
@@ -11,9 +12,9 @@ class TableClientSideTimestamps {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['status'] = status;
-    return map;
+    return <String, dynamic>{
+      'status': status,
+    };
   }
 
   factory TableClientSideTimestamps.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class TableClientSideTimestamps {
     );
   }
 }
+

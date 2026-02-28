@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AgentPromptVariantMetadata {
   /// Key of a metadata tag for a prompt variant.
   final String key;
-
   /// Value of a metadata tag for a prompt variant.
   final String value;
 
@@ -16,10 +16,10 @@ class AgentPromptVariantMetadata {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
   factory AgentPromptVariantMetadata.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class AgentPromptVariantMetadata {
     );
   }
 }
+

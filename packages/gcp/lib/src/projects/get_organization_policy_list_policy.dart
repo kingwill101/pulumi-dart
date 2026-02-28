@@ -7,13 +7,10 @@ import 'get_organization_policy_list_policy_deny.dart';
 class GetOrganizationPolicyListPolicy {
   /// One or the other must be set.
   final List<GetOrganizationPolicyListPolicyAllow> allows;
-
   /// One or the other must be set.
   final List<GetOrganizationPolicyListPolicyDeny> denies;
-
   /// If set to true, the values from the effective Policy of the parent resource are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
   final bool inheritFromParent;
-
   /// The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
   final String suggestedValue;
 
@@ -30,29 +27,21 @@ class GetOrganizationPolicyListPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allows'] = pulumi.Input.encodeList<
-        GetOrganizationPolicyListPolicyAllow,
-        Map<String, dynamic>>(allows, (value) => value.toMap());
-    map['denies'] = pulumi.Input.encodeList<GetOrganizationPolicyListPolicyDeny,
-        Map<String, dynamic>>(denies, (value) => value.toMap());
-    map['inheritFromParent'] = inheritFromParent;
-    map['suggestedValue'] = suggestedValue;
-    return map;
+    return <String, dynamic>{
+      'allows': pulumi.Input.encodeList<GetOrganizationPolicyListPolicyAllow, Map<String, dynamic>>(allows, (value) => value.toMap()),
+      'denies': pulumi.Input.encodeList<GetOrganizationPolicyListPolicyDeny, Map<String, dynamic>>(denies, (value) => value.toMap()),
+      'inheritFromParent': inheritFromParent,
+      'suggestedValue': suggestedValue,
+    };
   }
 
   factory GetOrganizationPolicyListPolicy.fromMap(Map<String, dynamic> map) {
     return GetOrganizationPolicyListPolicy(
-      allows: pulumi.Input.decodeList<GetOrganizationPolicyListPolicyAllow>(
-          map['allows'],
-          (value) => GetOrganizationPolicyListPolicyAllow.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      denies: pulumi.Input.decodeList<GetOrganizationPolicyListPolicyDeny>(
-          map['denies'],
-          (value) => GetOrganizationPolicyListPolicyDeny.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      allows: pulumi.Input.decodeList<GetOrganizationPolicyListPolicyAllow>(map['allows'], (value) => GetOrganizationPolicyListPolicyAllow.fromMap((value as Map).cast<String, dynamic>())),
+      denies: pulumi.Input.decodeList<GetOrganizationPolicyListPolicyDeny>(map['denies'], (value) => GetOrganizationPolicyListPolicyDeny.fromMap((value as Map).cast<String, dynamic>())),
       inheritFromParent: map['inheritFromParent'] as bool,
       suggestedValue: map['suggestedValue'] as String,
     );
   }
 }
+

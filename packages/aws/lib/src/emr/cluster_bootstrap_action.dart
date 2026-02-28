@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterBootstrapAction {
   /// List of command line arguments to pass to the bootstrap action script.
   final List<String>? args;
-
   /// Name of the bootstrap action.
   final String name;
-
   /// Location of the script to run during a bootstrap action. Can be either a location in Amazon S3 or on a local file system.
   final String path;
 
@@ -21,14 +20,11 @@ class ClusterBootstrapAction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final argsValue = args;
-    if (argsValue != null) {
-      map['args'] = argsValue;
-    }
-    map['name'] = name;
-    map['path'] = path;
-    return map;
+    return <String, dynamic>{
+      'args': ?args,
+      'name': name,
+      'path': path,
+    };
   }
 
   factory ClusterBootstrapAction.fromMap(Map<String, dynamic> map) {
@@ -39,3 +35,4 @@ class ClusterBootstrapAction {
     );
   }
 }
+

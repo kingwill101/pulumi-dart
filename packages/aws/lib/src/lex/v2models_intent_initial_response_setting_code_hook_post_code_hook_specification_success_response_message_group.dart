@@ -6,13 +6,9 @@ import 'v2models_intent_initial_response_setting_code_hook_post_code_hook_specif
 
 class V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroup {
   /// Configuration block for the primary message that Amazon Lex should send to the user. See `message`.
-  final V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupMessage?
-      message;
-
+  final V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupMessage? message;
   /// Configuration blocks for message variations to send to the user. When variations are defined, Amazon Lex chooses the primary message or one of the variations to send to the user. See `variation`.
-  final List<
-          V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupVariation>?
-      variations;
+  final List<V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupVariation>? variations;
 
   /// Creates a new [V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroup].
   /// [message] Configuration block for the primary message that Amazon Lex should send to the user. See `message`.
@@ -23,35 +19,17 @@ class V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSucce
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final messageValue = message;
-    if (messageValue != null) {
-      map['message'] = messageValue.toMap();
-    }
-    final variationsValue = variations;
-    if (variationsValue != null) {
-      map['variations'] = pulumi.Input.encodeList<
-          V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupVariation,
-          Map<String, dynamic>>(variationsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'message': ?message == null ? null : message!.toMap(),
+      'variations': ?variations == null ? null : pulumi.Input.encodeList<V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupVariation, Map<String, dynamic>>(variations!, (value) => value.toMap()),
+    };
   }
 
-  factory V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroup.fromMap(
-      Map<String, dynamic> map) {
+  factory V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroup.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroup(
-      message: map['message'] == null
-          ? null
-          : V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupMessage
-              .fromMap((map['message'] as Map).cast<String, dynamic>()),
-      variations: map['variations'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupVariation>(
-              map['variations'],
-              (value) =>
-                  V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupVariation
-                      .fromMap((value as Map).cast<String, dynamic>())),
+      message: map['message'] == null ? null : V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupMessage.fromMap((map['message'] as Map).cast<String, dynamic>()),
+      variations: map['variations'] == null ? null : pulumi.Input.decodeList<V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupVariation>(map['variations'], (value) => V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupVariation.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

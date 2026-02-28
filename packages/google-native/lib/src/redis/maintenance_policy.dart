@@ -7,7 +7,6 @@ import 'weekly_maintenance_window.dart';
 class MaintenancePolicy {
   /// Optional. Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512.
   final String? description;
-
   /// Optional. Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_window is expected to be one.
   final List<WeeklyMaintenanceWindow>? weeklyMaintenanceWindow;
 
@@ -20,30 +19,17 @@ class MaintenancePolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final weeklyMaintenanceWindowValue = weeklyMaintenanceWindow;
-    if (weeklyMaintenanceWindowValue != null) {
-      map['weeklyMaintenanceWindow'] = pulumi.Input.encodeList<
-              WeeklyMaintenanceWindow, Map<String, dynamic>>(
-          weeklyMaintenanceWindowValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'weeklyMaintenanceWindow': ?weeklyMaintenanceWindow == null ? null : pulumi.Input.encodeList<WeeklyMaintenanceWindow, Map<String, dynamic>>(weeklyMaintenanceWindow!, (value) => value.toMap()),
+    };
   }
 
   factory MaintenancePolicy.fromMap(Map<String, dynamic> map) {
     return MaintenancePolicy(
-      description:
-          map['description'] == null ? null : map['description'] as String,
-      weeklyMaintenanceWindow: map['weeklyMaintenanceWindow'] == null
-          ? null
-          : pulumi.Input.decodeList<WeeklyMaintenanceWindow>(
-              map['weeklyMaintenanceWindow'],
-              (value) => WeeklyMaintenanceWindow.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : map['description'] as String,
+      weeklyMaintenanceWindow: map['weeklyMaintenanceWindow'] == null ? null : pulumi.Input.decodeList<WeeklyMaintenanceWindow>(map['weeklyMaintenanceWindow'], (value) => WeeklyMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

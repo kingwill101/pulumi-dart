@@ -7,31 +7,22 @@ import 'option_response.dart';
 class FieldResponse {
   /// The field cardinality.
   final String cardinality;
-
   /// The string value of the default value of this field. Proto2 syntax only.
   final String defaultValue;
-
   /// The field JSON name.
   final String jsonName;
-
   /// The field type.
   final String kind;
-
   /// The field name.
   final String name;
-
   /// The field number.
   final int number;
-
   /// The index of the field type in `Type.oneofs`, for message or enumeration types. The first type has index 1; zero means the type is not in the list.
   final int oneofIndex;
-
   /// The protocol buffer options.
   final List<OptionResponse> options;
-
   /// Whether to use alternative packed wire representation.
   final bool packed;
-
   /// The field type URL, without the scheme, for message or enumeration types. Example: `"type.googleapis.com/google.protobuf.Timestamp"`.
   final String typeUrl;
 
@@ -60,20 +51,18 @@ class FieldResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cardinality'] = cardinality;
-    map['defaultValue'] = defaultValue;
-    map['jsonName'] = jsonName;
-    map['kind'] = kind;
-    map['name'] = name;
-    map['number'] = number;
-    map['oneofIndex'] = oneofIndex;
-    map['options'] =
-        pulumi.Input.encodeList<OptionResponse, Map<String, dynamic>>(
-            options, (value) => value.toMap());
-    map['packed'] = packed;
-    map['typeUrl'] = typeUrl;
-    return map;
+    return <String, dynamic>{
+      'cardinality': cardinality,
+      'defaultValue': defaultValue,
+      'jsonName': jsonName,
+      'kind': kind,
+      'name': name,
+      'number': number,
+      'oneofIndex': oneofIndex,
+      'options': pulumi.Input.encodeList<OptionResponse, Map<String, dynamic>>(options, (value) => value.toMap()),
+      'packed': packed,
+      'typeUrl': typeUrl,
+    };
   }
 
   factory FieldResponse.fromMap(Map<String, dynamic> map) {
@@ -85,12 +74,10 @@ class FieldResponse {
       name: map['name'] as String,
       number: map['number'] as int,
       oneofIndex: map['oneofIndex'] as int,
-      options: pulumi.Input.decodeList<OptionResponse>(
-          map['options'],
-          (value) =>
-              OptionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      options: pulumi.Input.decodeList<OptionResponse>(map['options'], (value) => OptionResponse.fromMap((value as Map).cast<String, dynamic>())),
       packed: map['packed'] as bool,
       typeUrl: map['typeUrl'] as String,
     );
   }
 }
+

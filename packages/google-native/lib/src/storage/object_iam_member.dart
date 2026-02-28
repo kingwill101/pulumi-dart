@@ -6,10 +6,8 @@ import 'object_iam_member_args.dart';
 class ObjectIamMember extends pulumi.CustomResource {
   /// An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.
   late final pulumi.Output<Condition?> condition;
-
   /// The etag of the resource's IAM policy.
   late final pulumi.Output<String> etag;
-
   /// A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:
   /// - allUsers — A special identifier that represents anyone on the internet; with or without a Google account.
   /// - allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -21,13 +19,10 @@ class ObjectIamMember extends pulumi.CustomResource {
   /// - projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project
   /// - projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project
   late final pulumi.Output<String> member;
-
   /// The name of the resource to manage IAM policies for.
   late final pulumi.Output<String> name;
-
   /// The project in which the resource belongs. If it is not provided, a default will be supplied.
   late final pulumi.Output<String> project;
-
   /// The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
   /// The new IAM roles are:
   /// - roles/storage.admin — Full control of Google Cloud Storage resources.

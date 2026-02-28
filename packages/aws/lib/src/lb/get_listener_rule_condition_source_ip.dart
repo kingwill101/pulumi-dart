@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetListenerRuleConditionSourceIp {
   /// Set of `key`-`value` pairs indicating the query string parameters to match.
   final List<String> values;
@@ -11,9 +12,9 @@ class GetListenerRuleConditionSourceIp {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['values'] = values;
-    return map;
+    return <String, dynamic>{
+      'values': values,
+    };
   }
 
   factory GetListenerRuleConditionSourceIp.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetListenerRuleConditionSourceIp {
     );
   }
 }
+

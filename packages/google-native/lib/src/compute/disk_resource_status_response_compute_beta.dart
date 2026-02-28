@@ -3,9 +3,7 @@
 import 'disk_resource_status_async_replication_status_response_compute_beta.dart';
 
 class DiskResourceStatusResponseComputeBeta {
-  final DiskResourceStatusAsyncReplicationStatusResponseComputeBeta
-      asyncPrimaryDisk;
-
+  final DiskResourceStatusAsyncReplicationStatusResponseComputeBeta asyncPrimaryDisk;
   /// Key: disk, value: AsyncReplicationStatus message
   final Map<String, String> asyncSecondaryDisks;
 
@@ -18,20 +16,17 @@ class DiskResourceStatusResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['asyncPrimaryDisk'] = asyncPrimaryDisk.toMap();
-    map['asyncSecondaryDisks'] = asyncSecondaryDisks;
-    return map;
+    return <String, dynamic>{
+      'asyncPrimaryDisk': asyncPrimaryDisk.toMap(),
+      'asyncSecondaryDisks': asyncSecondaryDisks,
+    };
   }
 
-  factory DiskResourceStatusResponseComputeBeta.fromMap(
-      Map<String, dynamic> map) {
+  factory DiskResourceStatusResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return DiskResourceStatusResponseComputeBeta(
-      asyncPrimaryDisk:
-          DiskResourceStatusAsyncReplicationStatusResponseComputeBeta.fromMap(
-              (map['asyncPrimaryDisk'] as Map).cast<String, dynamic>()),
-      asyncSecondaryDisks:
-          (map['asyncSecondaryDisks'] as Map).cast<String, String>(),
+      asyncPrimaryDisk: DiskResourceStatusAsyncReplicationStatusResponseComputeBeta.fromMap((map['asyncPrimaryDisk'] as Map).cast<String, dynamic>()),
+      asyncSecondaryDisks: (map['asyncSecondaryDisks'] as Map).cast<String, String>(),
     );
   }
 }
+

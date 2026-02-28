@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Jupyter configuration for an interactive session.
 class JupyterConfigResponse {
   /// Optional. Display name, shown in the Jupyter kernelspec card.
   final String displayName;
-
   /// Optional. Kernel
   final String kernel;
 
@@ -17,10 +17,10 @@ class JupyterConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['displayName'] = displayName;
-    map['kernel'] = kernel;
-    return map;
+    return <String, dynamic>{
+      'displayName': displayName,
+      'kernel': kernel,
+    };
   }
 
   factory JupyterConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class JupyterConfigResponse {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SubscriptionExpirationPolicy {
   /// Specifies the "time-to-live" duration for an associated resource. The
   /// resource expires if it is not active for a period of ttl.
@@ -15,9 +16,9 @@ class SubscriptionExpirationPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ttl'] = ttl;
-    return map;
+    return <String, dynamic>{
+      'ttl': ttl,
+    };
   }
 
   factory SubscriptionExpirationPolicy.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class SubscriptionExpirationPolicy {
     );
   }
 }
+

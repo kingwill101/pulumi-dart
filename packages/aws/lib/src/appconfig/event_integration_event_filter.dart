@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EventIntegrationEventFilter {
   /// Source of the events.
   final String source;
@@ -11,9 +12,9 @@ class EventIntegrationEventFilter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['source'] = source;
-    return map;
+    return <String, dynamic>{
+      'source': source,
+    };
   }
 
   factory EventIntegrationEventFilter.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class EventIntegrationEventFilter {
     );
   }
 }
+

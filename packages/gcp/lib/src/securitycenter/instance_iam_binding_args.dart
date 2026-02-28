@@ -10,14 +10,11 @@ import 'instance_iam_binding_condition.dart';
 class InstanceIamBindingArgs {
   final pulumi.Input<InstanceIamBindingCondition>? condition;
   final pulumi.Input<List<String>> members;
-
   /// The ID of the instance or a fully qualified identifier for the instance.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The region of the Data Fusion instance.
   final pulumi.Input<String>? region;
   final pulumi.Input<String> role;
@@ -36,45 +33,28 @@ class InstanceIamBindingArgs {
     String? project,
     String? region,
     required String role,
-  })  : condition = pulumi.Input.asOptionalInput<InstanceIamBindingCondition>(
-            condition),
-        members = pulumi.Input.asInput<List<String>>(members),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        role = pulumi.Input.asInput<String>(role);
+  }) :
+      condition = pulumi.Input.asOptionalInput<InstanceIamBindingCondition>(condition),
+      members = pulumi.Input.asInput<List<String>>(members),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      role = pulumi.Input.asInput<String>(role);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final conditionValue = condition;
-    if (conditionValue != null) {
-      map['condition'] = pulumi.Input.mapOptionalInputValue<
-          InstanceIamBindingCondition,
-          Map<String, dynamic>>(conditionValue, (value) => value.toMap());
-    }
-    map['members'] = members;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['role'] = role;
-    return map;
+    return <String, dynamic>{
+      'condition': ?pulumi.Input.mapOptionalInputValue<InstanceIamBindingCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'members': members,
+      'name': ?name,
+      'project': ?project,
+      'region': ?region,
+      'role': role,
+    };
   }
 
   factory InstanceIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return InstanceIamBindingArgs(
-      condition: map['condition'] == null
-          ? null
-          : InstanceIamBindingCondition.fromMap(
-              (map['condition'] as Map).cast<String, dynamic>()),
+      condition: map['condition'] == null ? null : InstanceIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
       members: (map['members'] as List).cast<String>(),
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -83,3 +63,4 @@ class InstanceIamBindingArgs {
     );
   }
 }
+

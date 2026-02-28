@@ -15,27 +15,15 @@ class GooglePrivacyDlpV2BigQueryTableTypes {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final typesValue = types;
-    if (typesValue != null) {
-      map['types'] = pulumi.Input.encodeList<
-          GooglePrivacyDlpV2BigQueryTableTypesTypesItem,
-          String>(typesValue, (value) => value.value);
-    }
-    return map;
+    return <String, dynamic>{
+      'types': ?types == null ? null : pulumi.Input.encodeList<GooglePrivacyDlpV2BigQueryTableTypesTypesItem, String>(types!, (value) => value.value),
+    };
   }
 
-  factory GooglePrivacyDlpV2BigQueryTableTypes.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2BigQueryTableTypes.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2BigQueryTableTypes(
-      types: map['types'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  GooglePrivacyDlpV2BigQueryTableTypesTypesItem>(
-              map['types'],
-              (value) =>
-                  GooglePrivacyDlpV2BigQueryTableTypesTypesItem.fromValue(
-                      value as String)),
+      types: map['types'] == null ? null : pulumi.Input.decodeList<GooglePrivacyDlpV2BigQueryTableTypesTypesItem>(map['types'], (value) => GooglePrivacyDlpV2BigQueryTableTypesTypesItem.fromValue(value as String)),
     );
   }
 }
+

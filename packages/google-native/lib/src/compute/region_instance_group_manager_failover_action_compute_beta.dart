@@ -6,15 +6,13 @@ enum RegionInstanceGroupManagerFailoverActionComputeBeta {
   const RegionInstanceGroupManagerFailoverActionComputeBeta(this.value);
   final String value;
 
-  static RegionInstanceGroupManagerFailoverActionComputeBeta fromValue(
-      String value) {
-    for (final item
-        in RegionInstanceGroupManagerFailoverActionComputeBeta.values) {
+  static RegionInstanceGroupManagerFailoverActionComputeBeta fromValue(String value) {
+    for (final item in RegionInstanceGroupManagerFailoverActionComputeBeta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown RegionInstanceGroupManagerFailoverActionComputeBeta value: $value');
+    throw ArgumentError('Unknown RegionInstanceGroupManagerFailoverActionComputeBeta value: $value');
   }
 }
+

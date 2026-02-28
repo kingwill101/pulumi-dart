@@ -13,12 +13,13 @@ class GetGroupArgs {
   /// [groupId] Required.
   GetGroupArgs({
     required String groupId,
-  }) : groupId = pulumi.Input.asInput<String>(groupId);
+  }) :
+      groupId = pulumi.Input.asInput<String>(groupId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['groupId'] = groupId;
-    return map;
+    return <String, dynamic>{
+      'groupId': groupId,
+    };
   }
 
   factory GetGroupArgs.fromMap(Map<String, dynamic> map) {
@@ -27,3 +28,4 @@ class GetGroupArgs {
     );
   }
 }
+

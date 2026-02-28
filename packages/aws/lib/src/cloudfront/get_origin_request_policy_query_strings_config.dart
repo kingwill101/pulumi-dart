@@ -16,24 +16,17 @@ class GetOriginRequestPolicyQueryStringsConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['queryStringBehavior'] = queryStringBehavior;
-    map['queryStrings'] = pulumi.Input.encodeList<
-        GetOriginRequestPolicyQueryStringsConfigQueryString,
-        Map<String, dynamic>>(queryStrings, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'queryStringBehavior': queryStringBehavior,
+      'queryStrings': pulumi.Input.encodeList<GetOriginRequestPolicyQueryStringsConfigQueryString, Map<String, dynamic>>(queryStrings, (value) => value.toMap()),
+    };
   }
 
-  factory GetOriginRequestPolicyQueryStringsConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GetOriginRequestPolicyQueryStringsConfig.fromMap(Map<String, dynamic> map) {
     return GetOriginRequestPolicyQueryStringsConfig(
       queryStringBehavior: map['queryStringBehavior'] as String,
-      queryStrings: pulumi.Input.decodeList<
-              GetOriginRequestPolicyQueryStringsConfigQueryString>(
-          map['queryStrings'],
-          (value) =>
-              GetOriginRequestPolicyQueryStringsConfigQueryString.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      queryStrings: pulumi.Input.decodeList<GetOriginRequestPolicyQueryStringsConfigQueryString>(map['queryStrings'], (value) => GetOriginRequestPolicyQueryStringsConfigQueryString.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

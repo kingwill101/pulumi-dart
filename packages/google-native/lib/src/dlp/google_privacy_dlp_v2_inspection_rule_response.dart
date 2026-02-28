@@ -7,7 +7,6 @@ import 'google_privacy_dlp_v2_hotword_rule_response.dart';
 class GooglePrivacyDlpV2InspectionRuleResponse {
   /// Exclusion rule.
   final GooglePrivacyDlpV2ExclusionRuleResponse exclusionRule;
-
   /// Hotword-based detection rule.
   final GooglePrivacyDlpV2HotwordRuleResponse hotwordRule;
 
@@ -20,19 +19,17 @@ class GooglePrivacyDlpV2InspectionRuleResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['exclusionRule'] = exclusionRule.toMap();
-    map['hotwordRule'] = hotwordRule.toMap();
-    return map;
+    return <String, dynamic>{
+      'exclusionRule': exclusionRule.toMap(),
+      'hotwordRule': hotwordRule.toMap(),
+    };
   }
 
-  factory GooglePrivacyDlpV2InspectionRuleResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2InspectionRuleResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2InspectionRuleResponse(
-      exclusionRule: GooglePrivacyDlpV2ExclusionRuleResponse.fromMap(
-          (map['exclusionRule'] as Map).cast<String, dynamic>()),
-      hotwordRule: GooglePrivacyDlpV2HotwordRuleResponse.fromMap(
-          (map['hotwordRule'] as Map).cast<String, dynamic>()),
+      exclusionRule: GooglePrivacyDlpV2ExclusionRuleResponse.fromMap((map['exclusionRule'] as Map).cast<String, dynamic>()),
+      hotwordRule: GooglePrivacyDlpV2HotwordRuleResponse.fromMap((map['hotwordRule'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

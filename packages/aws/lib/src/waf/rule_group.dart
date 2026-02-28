@@ -192,19 +192,14 @@ import 'rule_group_args.dart';
 class RuleGroup extends pulumi.CustomResource {
   /// A list of activated rules, see below
   late final pulumi.Output<List<RuleGroupActivatedRule>?> activatedRules;
-
   /// The ARN of the WAF rule group.
   late final pulumi.Output<String> arn;
-
   /// A friendly name for the metrics from the rule group
   late final pulumi.Output<String> metricName;
-
   /// Name of the rule group. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   late final pulumi.Output<String> name;
-
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -222,8 +217,7 @@ class RuleGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.activatedRules =
-        registerOutput<List<RuleGroupActivatedRule>?>('activatedRules');
+    this.activatedRules = registerOutput<List<RuleGroupActivatedRule>?>('activatedRules');
     this.arn = registerOutput<String>('arn');
     this.metricName = registerOutput<String>('metricName');
     this.name = registerOutput<String>('name');

@@ -10,27 +10,20 @@ import 'control_control_mapping_source.dart';
 class ControlArgs {
   /// Recommended actions to carry out if the control isn't fulfilled.
   final pulumi.Input<String>? actionPlanInstructions;
-
   /// Title of the action plan for remediating the control.
   final pulumi.Input<String>? actionPlanTitle;
-
   /// Data mapping sources. See `control_mapping_sources` below.
   ///
   /// The following arguments are optional:
   final pulumi.Input<List<ControlControlMappingSource>>? controlMappingSources;
-
   /// Description of the control.
   final pulumi.Input<String>? description;
-
   /// Name of the control.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// A map of tags to assign to the control. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Steps to follow to determine if the control is satisfied.
   final pulumi.Input<String>? testingInformation;
 
@@ -52,84 +45,40 @@ class ControlArgs {
     String? region,
     Map<String, String>? tags,
     String? testingInformation,
-  })  : actionPlanInstructions =
-            pulumi.Input.asOptionalInput<String>(actionPlanInstructions),
-        actionPlanTitle = pulumi.Input.asOptionalInput<String>(actionPlanTitle),
-        controlMappingSources =
-            pulumi.Input.asOptionalInput<List<ControlControlMappingSource>>(
-                controlMappingSources),
-        description = pulumi.Input.asOptionalInput<String>(description),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-        testingInformation =
-            pulumi.Input.asOptionalInput<String>(testingInformation);
+  }) :
+      actionPlanInstructions = pulumi.Input.asOptionalInput<String>(actionPlanInstructions),
+      actionPlanTitle = pulumi.Input.asOptionalInput<String>(actionPlanTitle),
+      controlMappingSources = pulumi.Input.asOptionalInput<List<ControlControlMappingSource>>(controlMappingSources),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      testingInformation = pulumi.Input.asOptionalInput<String>(testingInformation);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final actionPlanInstructionsValue = actionPlanInstructions;
-    if (actionPlanInstructionsValue != null) {
-      map['actionPlanInstructions'] = actionPlanInstructionsValue;
-    }
-    final actionPlanTitleValue = actionPlanTitle;
-    if (actionPlanTitleValue != null) {
-      map['actionPlanTitle'] = actionPlanTitleValue;
-    }
-    final controlMappingSourcesValue = controlMappingSources;
-    if (controlMappingSourcesValue != null) {
-      map['controlMappingSources'] = pulumi.Input.mapOptionalInputValue<
-              List<ControlControlMappingSource>, List<Map<String, dynamic>>>(
-          controlMappingSourcesValue,
-          (value) => pulumi.Input.encodeList<ControlControlMappingSource,
-              Map<String, dynamic>>(value, (value) => value.toMap()));
-    }
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    final testingInformationValue = testingInformation;
-    if (testingInformationValue != null) {
-      map['testingInformation'] = testingInformationValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'actionPlanInstructions': ?actionPlanInstructions,
+      'actionPlanTitle': ?actionPlanTitle,
+      'controlMappingSources': ?pulumi.Input.mapOptionalInputValue<List<ControlControlMappingSource>, List<Map<String, dynamic>>>(controlMappingSources, (value) => pulumi.Input.encodeList<ControlControlMappingSource, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'description': ?description,
+      'name': ?name,
+      'region': ?region,
+      'tags': ?tags,
+      'testingInformation': ?testingInformation,
+    };
   }
 
   factory ControlArgs.fromMap(Map<String, dynamic> map) {
     return ControlArgs(
-      actionPlanInstructions: map['actionPlanInstructions'] == null
-          ? null
-          : map['actionPlanInstructions'] as String,
-      actionPlanTitle: map['actionPlanTitle'] == null
-          ? null
-          : map['actionPlanTitle'] as String,
-      controlMappingSources: map['controlMappingSources'] == null
-          ? null
-          : pulumi.Input.decodeList<ControlControlMappingSource>(
-              map['controlMappingSources'],
-              (value) => ControlControlMappingSource.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      actionPlanInstructions: map['actionPlanInstructions'] == null ? null : map['actionPlanInstructions'] as String,
+      actionPlanTitle: map['actionPlanTitle'] == null ? null : map['actionPlanTitle'] as String,
+      controlMappingSources: map['controlMappingSources'] == null ? null : pulumi.Input.decodeList<ControlControlMappingSource>(map['controlMappingSources'], (value) => ControlControlMappingSource.fromMap((value as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : map['description'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
-      testingInformation: map['testingInformation'] == null
-          ? null
-          : map['testingInformation'] as String,
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      testingInformation: map['testingInformation'] == null ? null : map['testingInformation'] as String,
     );
   }
 }
+

@@ -9,13 +9,10 @@ import 'zypper_repository.dart';
 class PackageRepository {
   /// An Apt Repository.
   final AptRepository? apt;
-
   /// A Goo Repository.
   final GooRepository? goo;
-
   /// A Yum Repository.
   final YumRepository? yum;
-
   /// A Zypper Repository.
   final ZypperRepository? zypper;
 
@@ -32,41 +29,21 @@ class PackageRepository {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final aptValue = apt;
-    if (aptValue != null) {
-      map['apt'] = aptValue.toMap();
-    }
-    final gooValue = goo;
-    if (gooValue != null) {
-      map['goo'] = gooValue.toMap();
-    }
-    final yumValue = yum;
-    if (yumValue != null) {
-      map['yum'] = yumValue.toMap();
-    }
-    final zypperValue = zypper;
-    if (zypperValue != null) {
-      map['zypper'] = zypperValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'apt': ?apt == null ? null : apt!.toMap(),
+      'goo': ?goo == null ? null : goo!.toMap(),
+      'yum': ?yum == null ? null : yum!.toMap(),
+      'zypper': ?zypper == null ? null : zypper!.toMap(),
+    };
   }
 
   factory PackageRepository.fromMap(Map<String, dynamic> map) {
     return PackageRepository(
-      apt: map['apt'] == null
-          ? null
-          : AptRepository.fromMap((map['apt'] as Map).cast<String, dynamic>()),
-      goo: map['goo'] == null
-          ? null
-          : GooRepository.fromMap((map['goo'] as Map).cast<String, dynamic>()),
-      yum: map['yum'] == null
-          ? null
-          : YumRepository.fromMap((map['yum'] as Map).cast<String, dynamic>()),
-      zypper: map['zypper'] == null
-          ? null
-          : ZypperRepository.fromMap(
-              (map['zypper'] as Map).cast<String, dynamic>()),
+      apt: map['apt'] == null ? null : AptRepository.fromMap((map['apt'] as Map).cast<String, dynamic>()),
+      goo: map['goo'] == null ? null : GooRepository.fromMap((map['goo'] as Map).cast<String, dynamic>()),
+      yum: map['yum'] == null ? null : YumRepository.fromMap((map['yum'] as Map).cast<String, dynamic>()),
+      zypper: map['zypper'] == null ? null : ZypperRepository.fromMap((map['zypper'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

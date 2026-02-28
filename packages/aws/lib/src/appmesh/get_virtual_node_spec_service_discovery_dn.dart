@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetVirtualNodeSpecServiceDiscoveryDn {
   final String hostname;
   final String ipPreference;
@@ -16,15 +17,14 @@ class GetVirtualNodeSpecServiceDiscoveryDn {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['hostname'] = hostname;
-    map['ipPreference'] = ipPreference;
-    map['responseType'] = responseType;
-    return map;
+    return <String, dynamic>{
+      'hostname': hostname,
+      'ipPreference': ipPreference,
+      'responseType': responseType,
+    };
   }
 
-  factory GetVirtualNodeSpecServiceDiscoveryDn.fromMap(
-      Map<String, dynamic> map) {
+  factory GetVirtualNodeSpecServiceDiscoveryDn.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecServiceDiscoveryDn(
       hostname: map['hostname'] as String,
       ipPreference: map['ipPreference'] as String,
@@ -32,3 +32,4 @@ class GetVirtualNodeSpecServiceDiscoveryDn {
     );
   }
 }
+

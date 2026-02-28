@@ -7,19 +7,14 @@ import 'stack_trace_response.dart';
 class TestIssueResponse {
   /// Category of issue. Required.
   final String category;
-
   /// A brief human-readable message describing the issue. Required.
   final String errorMessage;
-
   /// Severity of issue. Required.
   final String severity;
-
   /// Deprecated in favor of stack trace fields inside specific warnings.
   final StackTraceResponse stackTrace;
-
   /// Type of issue. Required.
   final String type;
-
   /// Warning message with additional details of the issue. Should always be a message from com.google.devtools.toolresults.v1.warnings
   final AnyResponse warning;
 
@@ -40,14 +35,14 @@ class TestIssueResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['category'] = category;
-    map['errorMessage'] = errorMessage;
-    map['severity'] = severity;
-    map['stackTrace'] = stackTrace.toMap();
-    map['type'] = type;
-    map['warning'] = warning.toMap();
-    return map;
+    return <String, dynamic>{
+      'category': category,
+      'errorMessage': errorMessage,
+      'severity': severity,
+      'stackTrace': stackTrace.toMap(),
+      'type': type,
+      'warning': warning.toMap(),
+    };
   }
 
   factory TestIssueResponse.fromMap(Map<String, dynamic> map) {
@@ -55,11 +50,10 @@ class TestIssueResponse {
       category: map['category'] as String,
       errorMessage: map['errorMessage'] as String,
       severity: map['severity'] as String,
-      stackTrace: StackTraceResponse.fromMap(
-          (map['stackTrace'] as Map).cast<String, dynamic>()),
+      stackTrace: StackTraceResponse.fromMap((map['stackTrace'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      warning:
-          AnyResponse.fromMap((map['warning'] as Map).cast<String, dynamic>()),
+      warning: AnyResponse.fromMap((map['warning'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

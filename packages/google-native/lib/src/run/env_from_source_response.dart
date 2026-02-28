@@ -7,10 +7,8 @@ import 'secret_env_source_response.dart';
 class EnvFromSourceResponse {
   /// The ConfigMap to select from
   final ConfigMapEnvSourceResponse configMapRef;
-
   /// An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
   final String prefix;
-
   /// The Secret to select from
   final SecretEnvSourceResponse secretRef;
 
@@ -25,20 +23,19 @@ class EnvFromSourceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['configMapRef'] = configMapRef.toMap();
-    map['prefix'] = prefix;
-    map['secretRef'] = secretRef.toMap();
-    return map;
+    return <String, dynamic>{
+      'configMapRef': configMapRef.toMap(),
+      'prefix': prefix,
+      'secretRef': secretRef.toMap(),
+    };
   }
 
   factory EnvFromSourceResponse.fromMap(Map<String, dynamic> map) {
     return EnvFromSourceResponse(
-      configMapRef: ConfigMapEnvSourceResponse.fromMap(
-          (map['configMapRef'] as Map).cast<String, dynamic>()),
+      configMapRef: ConfigMapEnvSourceResponse.fromMap((map['configMapRef'] as Map).cast<String, dynamic>()),
       prefix: map['prefix'] as String,
-      secretRef: SecretEnvSourceResponse.fromMap(
-          (map['secretRef'] as Map).cast<String, dynamic>()),
+      secretRef: SecretEnvSourceResponse.fromMap((map['secretRef'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

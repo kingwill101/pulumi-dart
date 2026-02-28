@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RegionBackendServiceCdnPolicyCacheKeyPolicy {
   /// If true requests to different hosts will be cached separately.
   final bool? includeHost;
-
   /// Names of cookies to include in cache keys.
   final List<String>? includeNamedCookies;
-
   /// If true, http and https requests will be cached separately.
   final bool? includeProtocol;
-
   /// If true, include query string parameters in the cache key
   /// according to query_string_whitelist and
   /// query_string_blacklist. If neither is set, the entire query
@@ -17,14 +15,12 @@ class RegionBackendServiceCdnPolicyCacheKeyPolicy {
   /// If false, the query string will be excluded from the cache
   /// key entirely.
   final bool? includeQueryString;
-
   /// Names of query string parameters to exclude in cache keys.
   /// All other parameters will be included. Either specify
   /// query_string_whitelist or query_string_blacklist, not both.
   /// '&' and '=' will be percent encoded and not treated as
   /// delimiters.
   final List<String>? queryStringBlacklists;
-
   /// Names of query string parameters to include in cache keys.
   /// All other parameters will be excluded. Either specify
   /// query_string_whitelist or query_string_blacklist, not both.
@@ -49,54 +45,25 @@ class RegionBackendServiceCdnPolicyCacheKeyPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final includeHostValue = includeHost;
-    if (includeHostValue != null) {
-      map['includeHost'] = includeHostValue;
-    }
-    final includeNamedCookiesValue = includeNamedCookies;
-    if (includeNamedCookiesValue != null) {
-      map['includeNamedCookies'] = includeNamedCookiesValue;
-    }
-    final includeProtocolValue = includeProtocol;
-    if (includeProtocolValue != null) {
-      map['includeProtocol'] = includeProtocolValue;
-    }
-    final includeQueryStringValue = includeQueryString;
-    if (includeQueryStringValue != null) {
-      map['includeQueryString'] = includeQueryStringValue;
-    }
-    final queryStringBlacklistsValue = queryStringBlacklists;
-    if (queryStringBlacklistsValue != null) {
-      map['queryStringBlacklists'] = queryStringBlacklistsValue;
-    }
-    final queryStringWhitelistsValue = queryStringWhitelists;
-    if (queryStringWhitelistsValue != null) {
-      map['queryStringWhitelists'] = queryStringWhitelistsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'includeHost': ?includeHost,
+      'includeNamedCookies': ?includeNamedCookies,
+      'includeProtocol': ?includeProtocol,
+      'includeQueryString': ?includeQueryString,
+      'queryStringBlacklists': ?queryStringBlacklists,
+      'queryStringWhitelists': ?queryStringWhitelists,
+    };
   }
 
-  factory RegionBackendServiceCdnPolicyCacheKeyPolicy.fromMap(
-      Map<String, dynamic> map) {
+  factory RegionBackendServiceCdnPolicyCacheKeyPolicy.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceCdnPolicyCacheKeyPolicy(
-      includeHost:
-          map['includeHost'] == null ? null : map['includeHost'] as bool,
-      includeNamedCookies: map['includeNamedCookies'] == null
-          ? null
-          : (map['includeNamedCookies'] as List).cast<String>(),
-      includeProtocol: map['includeProtocol'] == null
-          ? null
-          : map['includeProtocol'] as bool,
-      includeQueryString: map['includeQueryString'] == null
-          ? null
-          : map['includeQueryString'] as bool,
-      queryStringBlacklists: map['queryStringBlacklists'] == null
-          ? null
-          : (map['queryStringBlacklists'] as List).cast<String>(),
-      queryStringWhitelists: map['queryStringWhitelists'] == null
-          ? null
-          : (map['queryStringWhitelists'] as List).cast<String>(),
+      includeHost: map['includeHost'] == null ? null : map['includeHost'] as bool,
+      includeNamedCookies: map['includeNamedCookies'] == null ? null : (map['includeNamedCookies'] as List).cast<String>(),
+      includeProtocol: map['includeProtocol'] == null ? null : map['includeProtocol'] as bool,
+      includeQueryString: map['includeQueryString'] == null ? null : map['includeQueryString'] as bool,
+      queryStringBlacklists: map['queryStringBlacklists'] == null ? null : (map['queryStringBlacklists'] as List).cast<String>(),
+      queryStringWhitelists: map['queryStringWhitelists'] == null ? null : (map['queryStringWhitelists'] as List).cast<String>(),
     );
   }
 }
+

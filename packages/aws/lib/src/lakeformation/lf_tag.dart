@@ -132,13 +132,10 @@ import 'lf_tag_args.dart';
 class LfTag extends pulumi.CustomResource {
   /// ID of the Data Catalog to create the tag in. If omitted, this defaults to the AWS Account ID.
   late final pulumi.Output<String> catalogId;
-
   /// Key-name for the tag.
   late final pulumi.Output<String> key;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// List of possible values an attribute can take.
   late final pulumi.Output<List<String>> values;
 

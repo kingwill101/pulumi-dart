@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BareMetalAdminClusterProxy {
   /// A list of IPs, hostnames, and domains that should skip the proxy.
   /// For example: ["127.0.0.1", "example.com", ".corp", "localhost"].
   final List<String>? noProxies;
-
   /// Specifies the address of your proxy server.
   /// For Example: http://domain
   /// WARNING: Do not provide credentials in the format
@@ -20,21 +20,17 @@ class BareMetalAdminClusterProxy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final noProxiesValue = noProxies;
-    if (noProxiesValue != null) {
-      map['noProxies'] = noProxiesValue;
-    }
-    map['uri'] = uri;
-    return map;
+    return <String, dynamic>{
+      'noProxies': ?noProxies,
+      'uri': uri,
+    };
   }
 
   factory BareMetalAdminClusterProxy.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterProxy(
-      noProxies: map['noProxies'] == null
-          ? null
-          : (map['noProxies'] as List).cast<String>(),
+      noProxies: map['noProxies'] == null ? null : (map['noProxies'] as List).cast<String>(),
       uri: map['uri'] as String,
     );
   }
 }
+

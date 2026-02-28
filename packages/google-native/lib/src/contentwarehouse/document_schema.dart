@@ -6,26 +6,18 @@ import 'google_cloud_contentwarehouse_v1_property_definition_response.dart';
 class DocumentSchema extends pulumi.CustomResource {
   /// The time when the document schema is created.
   late final pulumi.Output<String> createTime;
-
   /// Schema description.
   late final pulumi.Output<String> description;
-
   /// Name of the schema given by the user. Must be unique per project.
   late final pulumi.Output<String> displayName;
-
   /// Document Type, true refers the document is a folder, otherwise it is a typical document.
   late final pulumi.Output<bool> documentIsFolder;
   late final pulumi.Output<String> location;
-
   /// The resource name of the document schema. Format: projects/{project_number}/locations/{location}/documentSchemas/{document_schema_id}. The name is ignored when creating a document schema.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// Document details.
-  late final pulumi
-      .Output<List<GoogleCloudContentwarehouseV1PropertyDefinitionResponse>>
-      propertyDefinitions;
-
+  late final pulumi.Output<List<GoogleCloudContentwarehouseV1PropertyDefinitionResponse>> propertyDefinitions;
   /// The time when the document schema is last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -50,9 +42,7 @@ class DocumentSchema extends pulumi.CustomResource {
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
-    this.propertyDefinitions = registerOutput<
-            List<GoogleCloudContentwarehouseV1PropertyDefinitionResponse>>(
-        'propertyDefinitions');
+    this.propertyDefinitions = registerOutput<List<GoogleCloudContentwarehouseV1PropertyDefinitionResponse>>('propertyDefinitions');
     this.updateTime = registerOutput<String>('updateTime');
   }
 }

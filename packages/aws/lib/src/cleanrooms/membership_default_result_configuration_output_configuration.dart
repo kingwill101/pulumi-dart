@@ -12,16 +12,15 @@ class MembershipDefaultResultConfigurationOutputConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['s3'] = s3.toMap();
-    return map;
+    return <String, dynamic>{
+      's3': s3.toMap(),
+    };
   }
 
-  factory MembershipDefaultResultConfigurationOutputConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory MembershipDefaultResultConfigurationOutputConfiguration.fromMap(Map<String, dynamic> map) {
     return MembershipDefaultResultConfigurationOutputConfiguration(
-      s3: MembershipDefaultResultConfigurationOutputConfigurationS3.fromMap(
-          (map['s3'] as Map).cast<String, dynamic>()),
+      s3: MembershipDefaultResultConfigurationOutputConfigurationS3.fromMap((map['s3'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

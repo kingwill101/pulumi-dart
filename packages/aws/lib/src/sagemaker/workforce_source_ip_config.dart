@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WorkforceSourceIpConfig {
   /// A list of up to 10 CIDR values.
   final List<String> cidrs;
@@ -11,9 +12,9 @@ class WorkforceSourceIpConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cidrs'] = cidrs;
-    return map;
+    return <String, dynamic>{
+      'cidrs': cidrs,
+    };
   }
 
   factory WorkforceSourceIpConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class WorkforceSourceIpConfig {
     );
   }
 }
+

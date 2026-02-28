@@ -7,13 +7,10 @@ import 'google_privacy_dlp_v2_or_conditions_response.dart';
 class GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponse {
   /// BigQuery table must have been created after this date. Used to avoid backfilling.
   final String createdAfter;
-
   /// At least one of the conditions must be true for a table to be scanned.
   final GooglePrivacyDlpV2OrConditionsResponse orConditions;
-
   /// Restrict discovery to categories of table types.
   final String typeCollection;
-
   /// Restrict discovery to specific table types.
   final GooglePrivacyDlpV2BigQueryTableTypesResponse types;
 
@@ -30,23 +27,21 @@ class GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createdAfter'] = createdAfter;
-    map['orConditions'] = orConditions.toMap();
-    map['typeCollection'] = typeCollection;
-    map['types'] = types.toMap();
-    return map;
+    return <String, dynamic>{
+      'createdAfter': createdAfter,
+      'orConditions': orConditions.toMap(),
+      'typeCollection': typeCollection,
+      'types': types.toMap(),
+    };
   }
 
-  factory GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DiscoveryBigQueryConditionsResponse(
       createdAfter: map['createdAfter'] as String,
-      orConditions: GooglePrivacyDlpV2OrConditionsResponse.fromMap(
-          (map['orConditions'] as Map).cast<String, dynamic>()),
+      orConditions: GooglePrivacyDlpV2OrConditionsResponse.fromMap((map['orConditions'] as Map).cast<String, dynamic>()),
       typeCollection: map['typeCollection'] as String,
-      types: GooglePrivacyDlpV2BigQueryTableTypesResponse.fromMap(
-          (map['types'] as Map).cast<String, dynamic>()),
+      types: GooglePrivacyDlpV2BigQueryTableTypesResponse.fromMap((map['types'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentityNotificationTopicArgs {
   /// The identity for which the Amazon SNS topic will be set. You can specify an identity by using its name or by using its Amazon Resource Name (ARN).
   final pulumi.Input<String> identity;
-
   /// Whether SES should include original email headers in SNS notifications of this type. `false` by default.
   final pulumi.Input<bool>? includeOriginalHeaders;
-
   /// The type of notifications that will be published to the specified Amazon SNS topic. Valid Values: `Bounce`, `Complaint` or `Delivery`.
   final pulumi.Input<String> notificationType;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The Amazon Resource Name (ARN) of the Amazon SNS topic. Can be set to `""` (an empty string) to disable publishing.
   final pulumi.Input<String>? topicArn;
 
@@ -34,41 +30,31 @@ class IdentityNotificationTopicArgs {
     required String notificationType,
     String? region,
     String? topicArn,
-  })  : identity = pulumi.Input.asInput<String>(identity),
-        includeOriginalHeaders =
-            pulumi.Input.asOptionalInput<bool>(includeOriginalHeaders),
-        notificationType = pulumi.Input.asInput<String>(notificationType),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        topicArn = pulumi.Input.asOptionalInput<String>(topicArn);
+  }) :
+      identity = pulumi.Input.asInput<String>(identity),
+      includeOriginalHeaders = pulumi.Input.asOptionalInput<bool>(includeOriginalHeaders),
+      notificationType = pulumi.Input.asInput<String>(notificationType),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      topicArn = pulumi.Input.asOptionalInput<String>(topicArn);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['identity'] = identity;
-    final includeOriginalHeadersValue = includeOriginalHeaders;
-    if (includeOriginalHeadersValue != null) {
-      map['includeOriginalHeaders'] = includeOriginalHeadersValue;
-    }
-    map['notificationType'] = notificationType;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final topicArnValue = topicArn;
-    if (topicArnValue != null) {
-      map['topicArn'] = topicArnValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'identity': identity,
+      'includeOriginalHeaders': ?includeOriginalHeaders,
+      'notificationType': notificationType,
+      'region': ?region,
+      'topicArn': ?topicArn,
+    };
   }
 
   factory IdentityNotificationTopicArgs.fromMap(Map<String, dynamic> map) {
     return IdentityNotificationTopicArgs(
       identity: map['identity'] as String,
-      includeOriginalHeaders: map['includeOriginalHeaders'] == null
-          ? null
-          : map['includeOriginalHeaders'] as bool,
+      includeOriginalHeaders: map['includeOriginalHeaders'] == null ? null : map['includeOriginalHeaders'] as bool,
       notificationType: map['notificationType'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       topicArn: map['topicArn'] == null ? null : map['topicArn'] as String,
     );
   }
 }
+

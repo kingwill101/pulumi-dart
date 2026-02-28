@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
 class GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponse {
   /// The x509 certificate
@@ -12,15 +13,15 @@ class GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['x509Certificate'] = x509Certificate;
-    return map;
+    return <String, dynamic>{
+      'x509Certificate': x509Certificate,
+    };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponse(
       x509Certificate: map['x509Certificate'] as String,
     );
   }
 }
+

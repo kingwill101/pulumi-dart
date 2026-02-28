@@ -29,24 +29,18 @@ import 'service_perimeter_ingress_policy_ingress_to.dart';
 class ServicePerimeterIngressPolicy extends pulumi.CustomResource {
   /// The name of the Access Policy this resource belongs to.
   late final pulumi.Output<String> accessPolicyId;
-
   /// The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
   late final pulumi.Output<String> etag;
-
   /// Defines the conditions on the source of a request causing this `IngressPolicy`
   /// to apply.
   /// Structure is documented below.
-  late final pulumi.Output<ServicePerimeterIngressPolicyIngressFrom?>
-      ingressFrom;
-
+  late final pulumi.Output<ServicePerimeterIngressPolicyIngressFrom?> ingressFrom;
   /// Defines the conditions on the `ApiOperation` and request destination that cause
   /// this `IngressPolicy` to apply.
   /// Structure is documented below.
   late final pulumi.Output<ServicePerimeterIngressPolicyIngressTo?> ingressTo;
-
   /// The name of the Service Perimeter to add this resource to.
   late final pulumi.Output<String> perimeter;
-
   /// Human readable title. Must be unique within the perimeter. Does not affect behavior.
   late final pulumi.Output<String?> title;
 
@@ -66,11 +60,8 @@ class ServicePerimeterIngressPolicy extends pulumi.CustomResource {
         ) {
     this.accessPolicyId = registerOutput<String>('accessPolicyId');
     this.etag = registerOutput<String>('etag');
-    this.ingressFrom =
-        registerOutput<ServicePerimeterIngressPolicyIngressFrom?>(
-            'ingressFrom');
-    this.ingressTo =
-        registerOutput<ServicePerimeterIngressPolicyIngressTo?>('ingressTo');
+    this.ingressFrom = registerOutput<ServicePerimeterIngressPolicyIngressFrom?>('ingressFrom');
+    this.ingressTo = registerOutput<ServicePerimeterIngressPolicyIngressTo?>('ingressTo');
     this.perimeter = registerOutput<String>('perimeter');
     this.title = registerOutput<String?>('title');
   }

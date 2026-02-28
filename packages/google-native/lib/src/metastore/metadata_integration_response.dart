@@ -14,15 +14,15 @@ class MetadataIntegrationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dataCatalogConfig'] = dataCatalogConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'dataCatalogConfig': dataCatalogConfig.toMap(),
+    };
   }
 
   factory MetadataIntegrationResponse.fromMap(Map<String, dynamic> map) {
     return MetadataIntegrationResponse(
-      dataCatalogConfig: DataCatalogConfigResponse.fromMap(
-          (map['dataCatalogConfig'] as Map).cast<String, dynamic>()),
+      dataCatalogConfig: DataCatalogConfigResponse.fromMap((map['dataCatalogConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

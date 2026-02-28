@@ -5,13 +5,10 @@ import 'instance_cluster_autoscaling_config.dart';
 class InstanceCluster {
   /// [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
   final InstanceClusterAutoscalingConfig? autoscalingConfig;
-
   /// The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
   final String clusterId;
-
   /// Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
   final String? kmsKeyName;
-
   /// The node scaling factor for this cluster. One of `"NodeScalingFactor1X"` or `"NodeScalingFactor2X"`. Defaults to `"NodeScalingFactor1X"`. If `"NodeScalingFactor2X"` is specified, then `num_nodes`, `min_nodes`, and `max_nodes` would need to be specified in increments of 2. This value cannot be updated after the cluster is created.
   ///
   /// > **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
@@ -23,18 +20,14 @@ class InstanceCluster {
   /// `gcp.bigtable.Instance` resource. If these values are changing, use a new
   /// `cluster_id`.
   final String? nodeScalingFactor;
-
   /// The number of nodes in the cluster.
   /// If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
   final int? numNodes;
-
   /// describes the current state of the cluster.
   final String? state;
-
   /// The storage type to use. One of `"SSD"` or
   /// `"HDD"`. Defaults to `"SSD"`.
   final String? storageType;
-
   /// The zone to create the Cloud Bigtable cluster in. If it not
   /// specified, the provider zone is used. Each cluster must have a different zone in the same region. Zones that support
   /// Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
@@ -61,56 +54,29 @@ class InstanceCluster {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final autoscalingConfigValue = autoscalingConfig;
-    if (autoscalingConfigValue != null) {
-      map['autoscalingConfig'] = autoscalingConfigValue.toMap();
-    }
-    map['clusterId'] = clusterId;
-    final kmsKeyNameValue = kmsKeyName;
-    if (kmsKeyNameValue != null) {
-      map['kmsKeyName'] = kmsKeyNameValue;
-    }
-    final nodeScalingFactorValue = nodeScalingFactor;
-    if (nodeScalingFactorValue != null) {
-      map['nodeScalingFactor'] = nodeScalingFactorValue;
-    }
-    final numNodesValue = numNodes;
-    if (numNodesValue != null) {
-      map['numNodes'] = numNodesValue;
-    }
-    final stateValue = state;
-    if (stateValue != null) {
-      map['state'] = stateValue;
-    }
-    final storageTypeValue = storageType;
-    if (storageTypeValue != null) {
-      map['storageType'] = storageTypeValue;
-    }
-    final zoneValue = zone;
-    if (zoneValue != null) {
-      map['zone'] = zoneValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'autoscalingConfig': ?autoscalingConfig == null ? null : autoscalingConfig!.toMap(),
+      'clusterId': clusterId,
+      'kmsKeyName': ?kmsKeyName,
+      'nodeScalingFactor': ?nodeScalingFactor,
+      'numNodes': ?numNodes,
+      'state': ?state,
+      'storageType': ?storageType,
+      'zone': ?zone,
+    };
   }
 
   factory InstanceCluster.fromMap(Map<String, dynamic> map) {
     return InstanceCluster(
-      autoscalingConfig: map['autoscalingConfig'] == null
-          ? null
-          : InstanceClusterAutoscalingConfig.fromMap(
-              (map['autoscalingConfig'] as Map).cast<String, dynamic>()),
+      autoscalingConfig: map['autoscalingConfig'] == null ? null : InstanceClusterAutoscalingConfig.fromMap((map['autoscalingConfig'] as Map).cast<String, dynamic>()),
       clusterId: map['clusterId'] as String,
-      kmsKeyName:
-          map['kmsKeyName'] == null ? null : map['kmsKeyName'] as String,
-      nodeScalingFactor: map['nodeScalingFactor'] == null
-          ? null
-          : map['nodeScalingFactor'] as String,
+      kmsKeyName: map['kmsKeyName'] == null ? null : map['kmsKeyName'] as String,
+      nodeScalingFactor: map['nodeScalingFactor'] == null ? null : map['nodeScalingFactor'] as String,
       numNodes: map['numNodes'] == null ? null : map['numNodes'] as int,
       state: map['state'] == null ? null : map['state'] as String,
-      storageType:
-          map['storageType'] == null ? null : map['storageType'] as String,
+      storageType: map['storageType'] == null ? null : map['storageType'] as String,
       zone: map['zone'] == null ? null : map['zone'] as String,
     );
   }
 }
+

@@ -15,19 +15,15 @@ class SlsaCheckResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['rules'] =
-        pulumi.Input.encodeList<VerificationRuleResponse, Map<String, dynamic>>(
-            rules, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'rules': pulumi.Input.encodeList<VerificationRuleResponse, Map<String, dynamic>>(rules, (value) => value.toMap()),
+    };
   }
 
   factory SlsaCheckResponse.fromMap(Map<String, dynamic> map) {
     return SlsaCheckResponse(
-      rules: pulumi.Input.decodeList<VerificationRuleResponse>(
-          map['rules'],
-          (value) => VerificationRuleResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      rules: pulumi.Input.decodeList<VerificationRuleResponse>(map['rules'], (value) => VerificationRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

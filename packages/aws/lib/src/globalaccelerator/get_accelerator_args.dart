@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAcceleratorArgs {
   /// Full ARN of the Global Accelerator.
   final pulumi.Input<String>? arn;
-
   /// Unique name of the Global Accelerator.
   ///
   /// > **NOTE:** When both `arn` and `name` are specified, `arn` takes precedence.
@@ -21,20 +20,15 @@ class GetAcceleratorArgs {
   GetAcceleratorArgs({
     String? arn,
     String? name,
-  })  : arn = pulumi.Input.asOptionalInput<String>(arn),
-        name = pulumi.Input.asOptionalInput<String>(name);
+  }) :
+      arn = pulumi.Input.asOptionalInput<String>(arn),
+      name = pulumi.Input.asOptionalInput<String>(name);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final arnValue = arn;
-    if (arnValue != null) {
-      map['arn'] = arnValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'arn': ?arn,
+      'name': ?name,
+    };
   }
 
   factory GetAcceleratorArgs.fromMap(Map<String, dynamic> map) {
@@ -44,3 +38,4 @@ class GetAcceleratorArgs {
     );
   }
 }
+

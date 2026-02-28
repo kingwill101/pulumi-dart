@@ -22,21 +22,19 @@ class GetRegistryGroupIamPolicyArgs {
     required String location,
     String? project,
     required String registryId,
-  })  : groupId = pulumi.Input.asInput<String>(groupId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        registryId = pulumi.Input.asInput<String>(registryId);
+  }) :
+      groupId = pulumi.Input.asInput<String>(groupId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      registryId = pulumi.Input.asInput<String>(registryId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['groupId'] = groupId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['registryId'] = registryId;
-    return map;
+    return <String, dynamic>{
+      'groupId': groupId,
+      'location': location,
+      'project': ?project,
+      'registryId': registryId,
+    };
   }
 
   factory GetRegistryGroupIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetRegistryGroupIamPolicyArgs {
     );
   }
 }
+

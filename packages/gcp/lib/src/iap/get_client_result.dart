@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getClient.
 class GetClientResult {
   final String brand;
   final String clientId;
   final String displayName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String secret;
@@ -25,13 +25,13 @@ class GetClientResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['brand'] = brand;
-    map['clientId'] = clientId;
-    map['displayName'] = displayName;
-    map['id'] = id;
-    map['secret'] = secret;
-    return map;
+    return <String, dynamic>{
+      'brand': brand,
+      'clientId': clientId,
+      'displayName': displayName,
+      'id': id,
+      'secret': secret,
+    };
   }
 
   factory GetClientResult.fromMap(Map<String, dynamic> map) {
@@ -44,3 +44,4 @@ class GetClientResult {
     );
   }
 }
+

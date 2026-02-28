@@ -8,11 +8,9 @@ class GetCoipPoolResult {
   /// ARN of the COIP pool
   final String arn;
   final List<GetCoipPoolFilter>? filters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String localGatewayRouteTableId;
-
   /// Set of CIDR blocks in pool
   final List<String> poolCidrs;
   final String poolId;
@@ -40,32 +38,22 @@ class GetCoipPoolResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    final filtersValue = filters;
-    if (filtersValue != null) {
-      map['filters'] =
-          pulumi.Input.encodeList<GetCoipPoolFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
-    }
-    map['id'] = id;
-    map['localGatewayRouteTableId'] = localGatewayRouteTableId;
-    map['poolCidrs'] = poolCidrs;
-    map['poolId'] = poolId;
-    map['region'] = region;
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetCoipPoolFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'id': id,
+      'localGatewayRouteTableId': localGatewayRouteTableId,
+      'poolCidrs': poolCidrs,
+      'poolId': poolId,
+      'region': region,
+      'tags': tags,
+    };
   }
 
   factory GetCoipPoolResult.fromMap(Map<String, dynamic> map) {
     return GetCoipPoolResult(
       arn: map['arn'] as String,
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetCoipPoolFilter>(
-              map['filters'],
-              (value) => GetCoipPoolFilter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetCoipPoolFilter>(map['filters'], (value) => GetCoipPoolFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       localGatewayRouteTableId: map['localGatewayRouteTableId'] as String,
       poolCidrs: (map['poolCidrs'] as List).cast<String>(),
@@ -75,3 +63,4 @@ class GetCoipPoolResult {
     );
   }
 }
+

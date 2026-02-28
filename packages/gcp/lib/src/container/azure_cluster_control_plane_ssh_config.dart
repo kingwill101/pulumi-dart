@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AzureClusterControlPlaneSshConfig {
   /// The SSH public key data for VMs managed by Anthos. This accepts the authorized_keys file format used in OpenSSH according to the sshd(8) manual page.
   final String authorizedKey;
@@ -11,9 +12,9 @@ class AzureClusterControlPlaneSshConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['authorizedKey'] = authorizedKey;
-    return map;
+    return <String, dynamic>{
+      'authorizedKey': authorizedKey,
+    };
   }
 
   factory AzureClusterControlPlaneSshConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class AzureClusterControlPlaneSshConfig {
     );
   }
 }
+

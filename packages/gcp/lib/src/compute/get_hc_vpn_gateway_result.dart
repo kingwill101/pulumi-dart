@@ -8,7 +8,6 @@ class GetHcVpnGatewayResult {
   final String description;
   final Map<String, String> effectiveLabels;
   final String gatewayIpVersion;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String labelFingerprint;
@@ -55,29 +54,22 @@ class GetHcVpnGatewayResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['description'] = description;
-    map['effectiveLabels'] = effectiveLabels;
-    map['gatewayIpVersion'] = gatewayIpVersion;
-    map['id'] = id;
-    map['labelFingerprint'] = labelFingerprint;
-    map['labels'] = labels;
-    map['name'] = name;
-    map['network'] = network;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['pulumiLabels'] = pulumiLabels;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['selfLink'] = selfLink;
-    map['stackType'] = stackType;
-    map['vpnInterfaces'] = pulumi.Input.encodeList<GetHcVpnGatewayVpnInterface,
-        Map<String, dynamic>>(vpnInterfaces, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'description': description,
+      'effectiveLabels': effectiveLabels,
+      'gatewayIpVersion': gatewayIpVersion,
+      'id': id,
+      'labelFingerprint': labelFingerprint,
+      'labels': labels,
+      'name': name,
+      'network': network,
+      'project': ?project,
+      'pulumiLabels': pulumiLabels,
+      'region': ?region,
+      'selfLink': selfLink,
+      'stackType': stackType,
+      'vpnInterfaces': pulumi.Input.encodeList<GetHcVpnGatewayVpnInterface, Map<String, dynamic>>(vpnInterfaces, (value) => value.toMap()),
+    };
   }
 
   factory GetHcVpnGatewayResult.fromMap(Map<String, dynamic> map) {
@@ -95,10 +87,8 @@ class GetHcVpnGatewayResult {
       region: map['region'] == null ? null : map['region'] as String,
       selfLink: map['selfLink'] as String,
       stackType: map['stackType'] as String,
-      vpnInterfaces: pulumi.Input.decodeList<GetHcVpnGatewayVpnInterface>(
-          map['vpnInterfaces'],
-          (value) => GetHcVpnGatewayVpnInterface.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      vpnInterfaces: pulumi.Input.decodeList<GetHcVpnGatewayVpnInterface>(map['vpnInterfaces'], (value) => GetHcVpnGatewayVpnInterface.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

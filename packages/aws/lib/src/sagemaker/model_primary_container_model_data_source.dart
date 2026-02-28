@@ -14,21 +14,15 @@ class ModelPrimaryContainerModelDataSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['s3DataSources'] = pulumi.Input.encodeList<
-        ModelPrimaryContainerModelDataSourceS3DataSource,
-        Map<String, dynamic>>(s3DataSources, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      's3DataSources': pulumi.Input.encodeList<ModelPrimaryContainerModelDataSourceS3DataSource, Map<String, dynamic>>(s3DataSources, (value) => value.toMap()),
+    };
   }
 
-  factory ModelPrimaryContainerModelDataSource.fromMap(
-      Map<String, dynamic> map) {
+  factory ModelPrimaryContainerModelDataSource.fromMap(Map<String, dynamic> map) {
     return ModelPrimaryContainerModelDataSource(
-      s3DataSources: pulumi.Input.decodeList<
-              ModelPrimaryContainerModelDataSourceS3DataSource>(
-          map['s3DataSources'],
-          (value) => ModelPrimaryContainerModelDataSourceS3DataSource.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      s3DataSources: pulumi.Input.decodeList<ModelPrimaryContainerModelDataSourceS3DataSource>(map['s3DataSources'], (value) => ModelPrimaryContainerModelDataSourceS3DataSource.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

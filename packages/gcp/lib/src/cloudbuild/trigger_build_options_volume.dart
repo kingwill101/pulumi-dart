@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TriggerBuildOptionsVolume {
   /// Name of the volume to mount.
   /// Volume names must be unique per build step and must be valid names for Docker volumes.
   /// Each named volume must be used by at least two build steps.
   final String? name;
-
   /// Path at which to mount the volume.
   /// Paths must be absolute and cannot conflict with other volume paths on the same
   /// build step or with certain reserved volume paths.
@@ -20,16 +20,10 @@ class TriggerBuildOptionsVolume {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final pathValue = path;
-    if (pathValue != null) {
-      map['path'] = pathValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+      'path': ?path,
+    };
   }
 
   factory TriggerBuildOptionsVolume.fromMap(Map<String, dynamic> map) {
@@ -39,3 +33,4 @@ class TriggerBuildOptionsVolume {
     );
   }
 }
+

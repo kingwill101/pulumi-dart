@@ -14,20 +14,15 @@ class DestinationEventarcV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cloudRunServiceValue = cloudRunService;
-    if (cloudRunServiceValue != null) {
-      map['cloudRunService'] = cloudRunServiceValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'cloudRunService': ?cloudRunService == null ? null : cloudRunService!.toMap(),
+    };
   }
 
   factory DestinationEventarcV1beta1.fromMap(Map<String, dynamic> map) {
     return DestinationEventarcV1beta1(
-      cloudRunService: map['cloudRunService'] == null
-          ? null
-          : CloudRunService.fromMap(
-              (map['cloudRunService'] as Map).cast<String, dynamic>()),
+      cloudRunService: map['cloudRunService'] == null ? null : CloudRunService.fromMap((map['cloudRunService'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

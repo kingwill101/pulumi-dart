@@ -9,17 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityMonitoringConditionArgs {
   /// Resource ID of the security monitoring condition.
   final pulumi.Input<String> conditionId;
-
   /// A nested object resource.
   final pulumi.Input<Map<String, dynamic>>? includeAllResources;
-
   /// The Apigee Organization associated with the Apigee Security Monitoring Condition,
   /// in the format `organizations/{{org_name}}`.
   final pulumi.Input<String> orgId;
-
   /// ID of security profile of the security monitoring condition.
   final pulumi.Input<String> profile;
-
   /// ID of security profile of the security monitoring condition.
   final pulumi.Input<String> scope;
 
@@ -35,36 +31,31 @@ class SecurityMonitoringConditionArgs {
     required String orgId,
     required String profile,
     required String scope,
-  })  : conditionId = pulumi.Input.asInput<String>(conditionId),
-        includeAllResources =
-            pulumi.Input.asOptionalInput<Map<String, dynamic>>(
-                includeAllResources),
-        orgId = pulumi.Input.asInput<String>(orgId),
-        profile = pulumi.Input.asInput<String>(profile),
-        scope = pulumi.Input.asInput<String>(scope);
+  }) :
+      conditionId = pulumi.Input.asInput<String>(conditionId),
+      includeAllResources = pulumi.Input.asOptionalInput<Map<String, dynamic>>(includeAllResources),
+      orgId = pulumi.Input.asInput<String>(orgId),
+      profile = pulumi.Input.asInput<String>(profile),
+      scope = pulumi.Input.asInput<String>(scope);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['conditionId'] = conditionId;
-    final includeAllResourcesValue = includeAllResources;
-    if (includeAllResourcesValue != null) {
-      map['includeAllResources'] = includeAllResourcesValue;
-    }
-    map['orgId'] = orgId;
-    map['profile'] = profile;
-    map['scope'] = scope;
-    return map;
+    return <String, dynamic>{
+      'conditionId': conditionId,
+      'includeAllResources': ?includeAllResources,
+      'orgId': orgId,
+      'profile': profile,
+      'scope': scope,
+    };
   }
 
   factory SecurityMonitoringConditionArgs.fromMap(Map<String, dynamic> map) {
     return SecurityMonitoringConditionArgs(
       conditionId: map['conditionId'] as String,
-      includeAllResources: map['includeAllResources'] == null
-          ? null
-          : (map['includeAllResources'] as Map).cast<String, dynamic>(),
+      includeAllResources: map['includeAllResources'] == null ? null : (map['includeAllResources'] as Map).cast<String, dynamic>(),
       orgId: map['orgId'] as String,
       profile: map['profile'] as String,
       scope: map['scope'] as String,
     );
   }
 }
+

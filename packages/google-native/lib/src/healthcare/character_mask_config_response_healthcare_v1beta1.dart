@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Mask a string by replacing its characters with a fixed character.
 class CharacterMaskConfigResponseHealthcareV1beta1 {
   /// Character to mask the sensitive values. If not supplied, defaults to "*".
@@ -12,15 +13,15 @@ class CharacterMaskConfigResponseHealthcareV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maskingCharacter'] = maskingCharacter;
-    return map;
+    return <String, dynamic>{
+      'maskingCharacter': maskingCharacter,
+    };
   }
 
-  factory CharacterMaskConfigResponseHealthcareV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory CharacterMaskConfigResponseHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return CharacterMaskConfigResponseHealthcareV1beta1(
       maskingCharacter: map['maskingCharacter'] as String,
     );
   }
 }
+

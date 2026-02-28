@@ -7,10 +7,8 @@ import 'status_condition_code.dart';
 class StatusCondition {
   /// Canonical code of the condition.
   final StatusConditionCanonicalCode? canonicalCode;
-
   /// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
   final StatusConditionCode? code;
-
   /// Human-friendly representation of the condition
   final String? message;
 
@@ -25,32 +23,19 @@ class StatusCondition {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final canonicalCodeValue = canonicalCode;
-    if (canonicalCodeValue != null) {
-      map['canonicalCode'] = canonicalCodeValue.value;
-    }
-    final codeValue = code;
-    if (codeValue != null) {
-      map['code'] = codeValue.value;
-    }
-    final messageValue = message;
-    if (messageValue != null) {
-      map['message'] = messageValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'canonicalCode': ?canonicalCode == null ? null : canonicalCode!.value,
+      'code': ?code == null ? null : code!.value,
+      'message': ?message,
+    };
   }
 
   factory StatusCondition.fromMap(Map<String, dynamic> map) {
     return StatusCondition(
-      canonicalCode: map['canonicalCode'] == null
-          ? null
-          : StatusConditionCanonicalCode.fromValue(
-              map['canonicalCode'] as String),
-      code: map['code'] == null
-          ? null
-          : StatusConditionCode.fromValue(map['code'] as String),
+      canonicalCode: map['canonicalCode'] == null ? null : StatusConditionCanonicalCode.fromValue(map['canonicalCode'] as String),
+      code: map['code'] == null ? null : StatusConditionCode.fromValue(map['code'] as String),
       message: map['message'] == null ? null : map['message'] as String,
     );
   }
 }
+

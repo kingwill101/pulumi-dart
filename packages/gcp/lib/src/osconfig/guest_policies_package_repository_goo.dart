@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GuestPoliciesPackageRepositoryGoo {
   /// The name of the repository.
   final String name;
-
   /// The url of the repository.
   final String url;
 
@@ -16,10 +16,10 @@ class GuestPoliciesPackageRepositoryGoo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['url'] = url;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'url': url,
+    };
   }
 
   factory GuestPoliciesPackageRepositoryGoo.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GuestPoliciesPackageRepositoryGoo {
     );
   }
 }
+

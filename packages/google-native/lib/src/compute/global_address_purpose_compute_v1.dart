@@ -21,3 +21,4 @@ enum GlobalAddressPurposeComputeV1 {
     throw ArgumentError('Unknown GlobalAddressPurposeComputeV1 value: $value');
   }
 }
+

@@ -12,7 +12,7 @@ enum ResourcePolicyGroupPlacementPolicyScope {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown ResourcePolicyGroupPlacementPolicyScope value: $value');
+    throw ArgumentError('Unknown ResourcePolicyGroupPlacementPolicyScope value: $value');
   }
 }
+

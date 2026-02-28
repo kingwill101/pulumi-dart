@@ -14,15 +14,15 @@ class EntitlementPrivilegedAccess {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gcpIamAccess'] = gcpIamAccess.toMap();
-    return map;
+    return <String, dynamic>{
+      'gcpIamAccess': gcpIamAccess.toMap(),
+    };
   }
 
   factory EntitlementPrivilegedAccess.fromMap(Map<String, dynamic> map) {
     return EntitlementPrivilegedAccess(
-      gcpIamAccess: EntitlementPrivilegedAccessGcpIamAccess.fromMap(
-          (map['gcpIamAccess'] as Map).cast<String, dynamic>()),
+      gcpIamAccess: EntitlementPrivilegedAccessGcpIamAccess.fromMap((map['gcpIamAccess'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -5,13 +5,10 @@ import 'v2models_intent_closing_setting_conditional_default_branch_next_step_int
 class V2modelsIntentClosingSettingConditionalDefaultBranchNextStepIntentSlot {
   /// Which attempt to configure. Valid values are `Initial`, `Retry1`, `Retry2`, `Retry3`, `Retry4`, `Retry5`.
   final String mapBlockKey;
-
   /// When the shape value is `List`, `values` contains a list of slot values. When the value is `Scalar`, `value` contains a single value.
   final String? shape;
-
   /// Configuration block for the current value of the slot. See `value`.
-  final V2modelsIntentClosingSettingConditionalDefaultBranchNextStepIntentSlotValue?
-      value;
+  final V2modelsIntentClosingSettingConditionalDefaultBranchNextStepIntentSlotValue? value;
 
   /// Creates a new [V2modelsIntentClosingSettingConditionalDefaultBranchNextStepIntentSlot].
   /// [mapBlockKey] Which attempt to configure. Valid values are `Initial`, `Retry1`, `Retry2`, `Retry3`, `Retry4`, `Retry5`.
@@ -24,28 +21,19 @@ class V2modelsIntentClosingSettingConditionalDefaultBranchNextStepIntentSlot {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['mapBlockKey'] = mapBlockKey;
-    final shapeValue = shape;
-    if (shapeValue != null) {
-      map['shape'] = shapeValue;
-    }
-    final valueValue = value;
-    if (valueValue != null) {
-      map['value'] = valueValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'mapBlockKey': mapBlockKey,
+      'shape': ?shape,
+      'value': ?value == null ? null : value!.toMap(),
+    };
   }
 
-  factory V2modelsIntentClosingSettingConditionalDefaultBranchNextStepIntentSlot.fromMap(
-      Map<String, dynamic> map) {
+  factory V2modelsIntentClosingSettingConditionalDefaultBranchNextStepIntentSlot.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentClosingSettingConditionalDefaultBranchNextStepIntentSlot(
       mapBlockKey: map['mapBlockKey'] as String,
       shape: map['shape'] == null ? null : map['shape'] as String,
-      value: map['value'] == null
-          ? null
-          : V2modelsIntentClosingSettingConditionalDefaultBranchNextStepIntentSlotValue
-              .fromMap((map['value'] as Map).cast<String, dynamic>()),
+      value: map['value'] == null ? null : V2modelsIntentClosingSettingConditionalDefaultBranchNextStepIntentSlotValue.fromMap((map['value'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

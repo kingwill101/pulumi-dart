@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SnapshotArgs {
   /// The namespace to create a snapshot for.
   final pulumi.Input<String> namespaceName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// How long to retain the created snapshot. Default value is `-1`.
   final pulumi.Input<int>? retentionPeriod;
-
   /// The name of the snapshot.
   final pulumi.Input<String> snapshotName;
 
@@ -29,33 +26,28 @@ class SnapshotArgs {
     String? region,
     int? retentionPeriod,
     required String snapshotName,
-  })  : namespaceName = pulumi.Input.asInput<String>(namespaceName),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        retentionPeriod = pulumi.Input.asOptionalInput<int>(retentionPeriod),
-        snapshotName = pulumi.Input.asInput<String>(snapshotName);
+  }) :
+      namespaceName = pulumi.Input.asInput<String>(namespaceName),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      retentionPeriod = pulumi.Input.asOptionalInput<int>(retentionPeriod),
+      snapshotName = pulumi.Input.asInput<String>(snapshotName);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['namespaceName'] = namespaceName;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final retentionPeriodValue = retentionPeriod;
-    if (retentionPeriodValue != null) {
-      map['retentionPeriod'] = retentionPeriodValue;
-    }
-    map['snapshotName'] = snapshotName;
-    return map;
+    return <String, dynamic>{
+      'namespaceName': namespaceName,
+      'region': ?region,
+      'retentionPeriod': ?retentionPeriod,
+      'snapshotName': snapshotName,
+    };
   }
 
   factory SnapshotArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotArgs(
       namespaceName: map['namespaceName'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      retentionPeriod:
-          map['retentionPeriod'] == null ? null : map['retentionPeriod'] as int,
+      retentionPeriod: map['retentionPeriod'] == null ? null : map['retentionPeriod'] as int,
       snapshotName: map['snapshotName'] as String,
     );
   }
 }
+

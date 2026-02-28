@@ -10,28 +10,20 @@ import 'zypper_settings_response_osconfig_v1beta.dart';
 class PatchConfigResponseOsconfigV1beta {
   /// Apt update settings. Use this setting to override the default `apt` patch rules.
   final AptSettingsResponseOsconfigV1beta apt;
-
   /// Goo update settings. Use this setting to override the default `goo` patch rules.
   final Map<String, dynamic> goo;
-
   /// Allows the patch job to run on Managed instance groups (MIGs).
   final bool migInstancesAllowed;
-
   /// The `ExecStep` to run after the patch update.
   final ExecStepResponseOsconfigV1beta postStep;
-
   /// The `ExecStep` to run before the patch update.
   final ExecStepResponseOsconfigV1beta preStep;
-
   /// Post-patch reboot settings.
   final String rebootConfig;
-
   /// Windows update settings. Use this override the default windows patch rules.
   final WindowsUpdateSettingsResponseOsconfigV1beta windowsUpdate;
-
   /// Yum update settings. Use this setting to override the default `yum` patch rules.
   final YumSettingsResponseOsconfigV1beta yum;
-
   /// Zypper update settings. Use this setting to override the default `zypper` patch rules.
   final ZypperSettingsResponseOsconfigV1beta zypper;
 
@@ -58,36 +50,31 @@ class PatchConfigResponseOsconfigV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['apt'] = apt.toMap();
-    map['goo'] = goo;
-    map['migInstancesAllowed'] = migInstancesAllowed;
-    map['postStep'] = postStep.toMap();
-    map['preStep'] = preStep.toMap();
-    map['rebootConfig'] = rebootConfig;
-    map['windowsUpdate'] = windowsUpdate.toMap();
-    map['yum'] = yum.toMap();
-    map['zypper'] = zypper.toMap();
-    return map;
+    return <String, dynamic>{
+      'apt': apt.toMap(),
+      'goo': goo,
+      'migInstancesAllowed': migInstancesAllowed,
+      'postStep': postStep.toMap(),
+      'preStep': preStep.toMap(),
+      'rebootConfig': rebootConfig,
+      'windowsUpdate': windowsUpdate.toMap(),
+      'yum': yum.toMap(),
+      'zypper': zypper.toMap(),
+    };
   }
 
   factory PatchConfigResponseOsconfigV1beta.fromMap(Map<String, dynamic> map) {
     return PatchConfigResponseOsconfigV1beta(
-      apt: AptSettingsResponseOsconfigV1beta.fromMap(
-          (map['apt'] as Map).cast<String, dynamic>()),
+      apt: AptSettingsResponseOsconfigV1beta.fromMap((map['apt'] as Map).cast<String, dynamic>()),
       goo: (map['goo'] as Map).cast<String, dynamic>(),
       migInstancesAllowed: map['migInstancesAllowed'] as bool,
-      postStep: ExecStepResponseOsconfigV1beta.fromMap(
-          (map['postStep'] as Map).cast<String, dynamic>()),
-      preStep: ExecStepResponseOsconfigV1beta.fromMap(
-          (map['preStep'] as Map).cast<String, dynamic>()),
+      postStep: ExecStepResponseOsconfigV1beta.fromMap((map['postStep'] as Map).cast<String, dynamic>()),
+      preStep: ExecStepResponseOsconfigV1beta.fromMap((map['preStep'] as Map).cast<String, dynamic>()),
       rebootConfig: map['rebootConfig'] as String,
-      windowsUpdate: WindowsUpdateSettingsResponseOsconfigV1beta.fromMap(
-          (map['windowsUpdate'] as Map).cast<String, dynamic>()),
-      yum: YumSettingsResponseOsconfigV1beta.fromMap(
-          (map['yum'] as Map).cast<String, dynamic>()),
-      zypper: ZypperSettingsResponseOsconfigV1beta.fromMap(
-          (map['zypper'] as Map).cast<String, dynamic>()),
+      windowsUpdate: WindowsUpdateSettingsResponseOsconfigV1beta.fromMap((map['windowsUpdate'] as Map).cast<String, dynamic>()),
+      yum: YumSettingsResponseOsconfigV1beta.fromMap((map['yum'] as Map).cast<String, dynamic>()),
+      zypper: ZypperSettingsResponseOsconfigV1beta.fromMap((map['zypper'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

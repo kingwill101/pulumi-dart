@@ -15,21 +15,15 @@ class StreamBackfillAllSqlServerExcludedObjects {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['schemas'] = pulumi.Input.encodeList<
-        StreamBackfillAllSqlServerExcludedObjectsSchema,
-        Map<String, dynamic>>(schemas, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'schemas': pulumi.Input.encodeList<StreamBackfillAllSqlServerExcludedObjectsSchema, Map<String, dynamic>>(schemas, (value) => value.toMap()),
+    };
   }
 
-  factory StreamBackfillAllSqlServerExcludedObjects.fromMap(
-      Map<String, dynamic> map) {
+  factory StreamBackfillAllSqlServerExcludedObjects.fromMap(Map<String, dynamic> map) {
     return StreamBackfillAllSqlServerExcludedObjects(
-      schemas: pulumi.Input.decodeList<
-              StreamBackfillAllSqlServerExcludedObjectsSchema>(
-          map['schemas'],
-          (value) => StreamBackfillAllSqlServerExcludedObjectsSchema.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      schemas: pulumi.Input.decodeList<StreamBackfillAllSqlServerExcludedObjectsSchema>(map['schemas'], (value) => StreamBackfillAllSqlServerExcludedObjectsSchema.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

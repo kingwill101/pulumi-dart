@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ModelCardSecurityConfig {
   /// KMS key ARN.
   final String kmsKeyId;
@@ -11,9 +12,9 @@ class ModelCardSecurityConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kmsKeyId'] = kmsKeyId;
-    return map;
+    return <String, dynamic>{
+      'kmsKeyId': kmsKeyId,
+    };
   }
 
   factory ModelCardSecurityConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class ModelCardSecurityConfig {
     );
   }
 }
+

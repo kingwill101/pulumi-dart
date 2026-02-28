@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WorkstationConfigReadinessCheck {
   /// Path to which the request should be sent.
   final String path;
-
   /// Port to which the request should be sent.
   final int port;
 
@@ -16,10 +16,10 @@ class WorkstationConfigReadinessCheck {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['path'] = path;
-    map['port'] = port;
-    return map;
+    return <String, dynamic>{
+      'path': path,
+      'port': port,
+    };
   }
 
   factory WorkstationConfigReadinessCheck.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class WorkstationConfigReadinessCheck {
     );
   }
 }
+

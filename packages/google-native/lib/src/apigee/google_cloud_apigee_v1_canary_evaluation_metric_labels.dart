@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Labels that can be used to filter Apigee metrics.
 class GoogleCloudApigeeV1CanaryEvaluationMetricLabels {
   /// The environment ID associated with the metrics.
   final String? env;
-
   /// The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
   final String instanceId;
-
   /// The location associated with the metrics.
   final String location;
 
@@ -22,18 +21,14 @@ class GoogleCloudApigeeV1CanaryEvaluationMetricLabels {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final envValue = env;
-    if (envValue != null) {
-      map['env'] = envValue;
-    }
-    map['instanceId'] = instanceId;
-    map['location'] = location;
-    return map;
+    return <String, dynamic>{
+      'env': ?env,
+      'instanceId': instanceId,
+      'location': location,
+    };
   }
 
-  factory GoogleCloudApigeeV1CanaryEvaluationMetricLabels.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1CanaryEvaluationMetricLabels.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1CanaryEvaluationMetricLabels(
       env: map['env'] == null ? null : map['env'] as String,
       instanceId: map['instanceId'] as String,
@@ -41,3 +36,4 @@ class GoogleCloudApigeeV1CanaryEvaluationMetricLabels {
     );
   }
 }
+

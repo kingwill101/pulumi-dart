@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTiersTier {
   /// The maximum disk size of this tier in bytes.
   final int diskQuota;
-
   /// The maximum ram usage of this tier in bytes.
   final int ram;
-
   /// The applicable regions for this tier.
   final List<String> regions;
-
   /// An identifier for the machine type, for example, db-custom-1-3840.
   final String tier;
 
@@ -26,12 +24,12 @@ class GetTiersTier {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['diskQuota'] = diskQuota;
-    map['ram'] = ram;
-    map['regions'] = regions;
-    map['tier'] = tier;
-    return map;
+    return <String, dynamic>{
+      'diskQuota': diskQuota,
+      'ram': ram,
+      'regions': regions,
+      'tier': tier,
+    };
   }
 
   factory GetTiersTier.fromMap(Map<String, dynamic> map) {
@@ -43,3 +41,4 @@ class GetTiersTier {
     );
   }
 }
+

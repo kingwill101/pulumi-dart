@@ -3,20 +3,16 @@ enum PolicyAlternativeNameServerConfigTargetNameServerForwardingPathDnsV1beta2 {
   default_("default"),
   private("private");
 
-  const PolicyAlternativeNameServerConfigTargetNameServerForwardingPathDnsV1beta2(
-      this.value);
+  const PolicyAlternativeNameServerConfigTargetNameServerForwardingPathDnsV1beta2(this.value);
   final String value;
 
-  static PolicyAlternativeNameServerConfigTargetNameServerForwardingPathDnsV1beta2
-      fromValue(String value) {
-    for (final item
-        in PolicyAlternativeNameServerConfigTargetNameServerForwardingPathDnsV1beta2
-            .values) {
+  static PolicyAlternativeNameServerConfigTargetNameServerForwardingPathDnsV1beta2 fromValue(String value) {
+    for (final item in PolicyAlternativeNameServerConfigTargetNameServerForwardingPathDnsV1beta2.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown PolicyAlternativeNameServerConfigTargetNameServerForwardingPathDnsV1beta2 value: $value');
+    throw ArgumentError('Unknown PolicyAlternativeNameServerConfigTargetNameServerForwardingPathDnsV1beta2 value: $value');
   }
 }
+

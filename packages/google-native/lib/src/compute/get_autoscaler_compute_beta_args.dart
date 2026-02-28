@@ -19,19 +19,17 @@ class GetAutoscalerComputeBetaArgs {
     required String autoscaler,
     String? project,
     required String zone,
-  })  : autoscaler = pulumi.Input.asInput<String>(autoscaler),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        zone = pulumi.Input.asInput<String>(zone);
+  }) :
+      autoscaler = pulumi.Input.asInput<String>(autoscaler),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['autoscaler'] = autoscaler;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'autoscaler': autoscaler,
+      'project': ?project,
+      'zone': zone,
+    };
   }
 
   factory GetAutoscalerComputeBetaArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetAutoscalerComputeBetaArgs {
     );
   }
 }
+

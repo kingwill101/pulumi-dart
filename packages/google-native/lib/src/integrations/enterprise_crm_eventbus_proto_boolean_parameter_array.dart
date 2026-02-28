@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EnterpriseCrmEventbusProtoBooleanParameterArray {
   final List<bool>? booleanValues;
 
@@ -10,20 +11,15 @@ class EnterpriseCrmEventbusProtoBooleanParameterArray {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final booleanValuesValue = booleanValues;
-    if (booleanValuesValue != null) {
-      map['booleanValues'] = booleanValuesValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'booleanValues': ?booleanValues,
+    };
   }
 
-  factory EnterpriseCrmEventbusProtoBooleanParameterArray.fromMap(
-      Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoBooleanParameterArray.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoBooleanParameterArray(
-      booleanValues: map['booleanValues'] == null
-          ? null
-          : (map['booleanValues'] as List).cast<bool>(),
+      booleanValues: map['booleanValues'] == null ? null : (map['booleanValues'] as List).cast<bool>(),
     );
   }
 }
+

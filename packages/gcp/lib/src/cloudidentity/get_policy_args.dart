@@ -14,12 +14,13 @@ class GetPolicyArgs {
   /// [name] The resource name of the policy to retrieve. Format: `policies/{policy_id}`.
   GetPolicyArgs({
     required String name,
-  }) : name = pulumi.Input.asInput<String>(name);
+  }) :
+      name = pulumi.Input.asInput<String>(name);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -28,3 +29,4 @@ class GetPolicyArgs {
     );
   }
 }
+

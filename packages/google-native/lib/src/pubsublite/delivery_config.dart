@@ -14,20 +14,15 @@ class DeliveryConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final deliveryRequirementValue = deliveryRequirement;
-    if (deliveryRequirementValue != null) {
-      map['deliveryRequirement'] = deliveryRequirementValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'deliveryRequirement': ?deliveryRequirement == null ? null : deliveryRequirement!.value,
+    };
   }
 
   factory DeliveryConfig.fromMap(Map<String, dynamic> map) {
     return DeliveryConfig(
-      deliveryRequirement: map['deliveryRequirement'] == null
-          ? null
-          : DeliveryConfigDeliveryRequirement.fromValue(
-              map['deliveryRequirement'] as String),
+      deliveryRequirement: map['deliveryRequirement'] == null ? null : DeliveryConfigDeliveryRequirement.fromValue(map['deliveryRequirement'] as String),
     );
   }
 }
+

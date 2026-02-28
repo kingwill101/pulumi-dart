@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfigurationPostCallAnalyticsSettings {
   /// Should output be redacted.
   final String? contentRedactionOutput;
-
   /// ARN of the role used by AWS Transcribe to upload your post call analysis.
   final String dataAccessRoleArn;
-
   /// ID of the KMS key used to encrypt the output.
   final String? outputEncryptionKmsKeyId;
-
   /// The Amazon S3 location where you want your Call Analytics post-call transcription output stored.
   final String outputLocation;
 
@@ -26,31 +24,21 @@ class MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProc
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final contentRedactionOutputValue = contentRedactionOutput;
-    if (contentRedactionOutputValue != null) {
-      map['contentRedactionOutput'] = contentRedactionOutputValue;
-    }
-    map['dataAccessRoleArn'] = dataAccessRoleArn;
-    final outputEncryptionKmsKeyIdValue = outputEncryptionKmsKeyId;
-    if (outputEncryptionKmsKeyIdValue != null) {
-      map['outputEncryptionKmsKeyId'] = outputEncryptionKmsKeyIdValue;
-    }
-    map['outputLocation'] = outputLocation;
-    return map;
+    return <String, dynamic>{
+      'contentRedactionOutput': ?contentRedactionOutput,
+      'dataAccessRoleArn': dataAccessRoleArn,
+      'outputEncryptionKmsKeyId': ?outputEncryptionKmsKeyId,
+      'outputLocation': outputLocation,
+    };
   }
 
-  factory MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfigurationPostCallAnalyticsSettings.fromMap(
-      Map<String, dynamic> map) {
+  factory MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfigurationPostCallAnalyticsSettings.fromMap(Map<String, dynamic> map) {
     return MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfigurationPostCallAnalyticsSettings(
-      contentRedactionOutput: map['contentRedactionOutput'] == null
-          ? null
-          : map['contentRedactionOutput'] as String,
+      contentRedactionOutput: map['contentRedactionOutput'] == null ? null : map['contentRedactionOutput'] as String,
       dataAccessRoleArn: map['dataAccessRoleArn'] as String,
-      outputEncryptionKmsKeyId: map['outputEncryptionKmsKeyId'] == null
-          ? null
-          : map['outputEncryptionKmsKeyId'] as String,
+      outputEncryptionKmsKeyId: map['outputEncryptionKmsKeyId'] == null ? null : map['outputEncryptionKmsKeyId'] as String,
       outputLocation: map['outputLocation'] as String,
     );
   }
 }
+

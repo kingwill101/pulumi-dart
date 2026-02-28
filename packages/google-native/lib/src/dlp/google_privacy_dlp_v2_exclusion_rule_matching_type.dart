@@ -14,7 +14,7 @@ enum GooglePrivacyDlpV2ExclusionRuleMatchingType {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GooglePrivacyDlpV2ExclusionRuleMatchingType value: $value');
+    throw ArgumentError('Unknown GooglePrivacyDlpV2ExclusionRuleMatchingType value: $value');
   }
 }
+

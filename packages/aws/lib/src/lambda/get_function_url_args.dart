@@ -11,10 +11,8 @@ class GetFunctionUrlArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> functionName;
-
   /// Alias name or `$LATEST`.
   final pulumi.Input<String>? qualifier;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -26,22 +24,17 @@ class GetFunctionUrlArgs {
     required String functionName,
     String? qualifier,
     String? region,
-  })  : functionName = pulumi.Input.asInput<String>(functionName),
-        qualifier = pulumi.Input.asOptionalInput<String>(qualifier),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      functionName = pulumi.Input.asInput<String>(functionName),
+      qualifier = pulumi.Input.asOptionalInput<String>(qualifier),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['functionName'] = functionName;
-    final qualifierValue = qualifier;
-    if (qualifierValue != null) {
-      map['qualifier'] = qualifierValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'functionName': functionName,
+      'qualifier': ?qualifier,
+      'region': ?region,
+    };
   }
 
   factory GetFunctionUrlArgs.fromMap(Map<String, dynamic> map) {
@@ -52,3 +45,4 @@ class GetFunctionUrlArgs {
     );
   }
 }
+

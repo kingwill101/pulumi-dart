@@ -8,7 +8,6 @@ class ManagedZonePrivateVisibilityConfig {
   /// The list of Google Kubernetes Engine clusters that can see this zone.
   final List<ManagedZonePrivateVisibilityConfigGKECluster>? gkeClusters;
   final String? kind;
-
   /// The list of VPC networks that can see this zone.
   final List<ManagedZonePrivateVisibilityConfigNetwork>? networks;
 
@@ -23,42 +22,19 @@ class ManagedZonePrivateVisibilityConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final gkeClustersValue = gkeClusters;
-    if (gkeClustersValue != null) {
-      map['gkeClusters'] = pulumi.Input.encodeList<
-          ManagedZonePrivateVisibilityConfigGKECluster,
-          Map<String, dynamic>>(gkeClustersValue, (value) => value.toMap());
-    }
-    final kindValue = kind;
-    if (kindValue != null) {
-      map['kind'] = kindValue;
-    }
-    final networksValue = networks;
-    if (networksValue != null) {
-      map['networks'] = pulumi.Input.encodeList<
-          ManagedZonePrivateVisibilityConfigNetwork,
-          Map<String, dynamic>>(networksValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'gkeClusters': ?gkeClusters == null ? null : pulumi.Input.encodeList<ManagedZonePrivateVisibilityConfigGKECluster, Map<String, dynamic>>(gkeClusters!, (value) => value.toMap()),
+      'kind': ?kind,
+      'networks': ?networks == null ? null : pulumi.Input.encodeList<ManagedZonePrivateVisibilityConfigNetwork, Map<String, dynamic>>(networks!, (value) => value.toMap()),
+    };
   }
 
   factory ManagedZonePrivateVisibilityConfig.fromMap(Map<String, dynamic> map) {
     return ManagedZonePrivateVisibilityConfig(
-      gkeClusters: map['gkeClusters'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  ManagedZonePrivateVisibilityConfigGKECluster>(
-              map['gkeClusters'],
-              (value) => ManagedZonePrivateVisibilityConfigGKECluster.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      gkeClusters: map['gkeClusters'] == null ? null : pulumi.Input.decodeList<ManagedZonePrivateVisibilityConfigGKECluster>(map['gkeClusters'], (value) => ManagedZonePrivateVisibilityConfigGKECluster.fromMap((value as Map).cast<String, dynamic>())),
       kind: map['kind'] == null ? null : map['kind'] as String,
-      networks: map['networks'] == null
-          ? null
-          : pulumi.Input.decodeList<ManagedZonePrivateVisibilityConfigNetwork>(
-              map['networks'],
-              (value) => ManagedZonePrivateVisibilityConfigNetwork.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      networks: map['networks'] == null ? null : pulumi.Input.decodeList<ManagedZonePrivateVisibilityConfigNetwork>(map['networks'], (value) => ManagedZonePrivateVisibilityConfigNetwork.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

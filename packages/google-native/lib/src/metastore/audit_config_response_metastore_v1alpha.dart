@@ -7,7 +7,6 @@ import 'audit_log_config_response_metastore_v1alpha.dart';
 class AuditConfigResponseMetastoreV1alpha {
   /// The configuration for logging of each type of permission.
   final List<AuditLogConfigResponseMetastoreV1alpha> auditLogConfigs;
-
   /// Specifies a service that will be enabled for audit logging. For example, storage.googleapis.com, cloudsql.googleapis.com. allServices is a special value that covers all services.
   final String service;
 
@@ -20,23 +19,17 @@ class AuditConfigResponseMetastoreV1alpha {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['auditLogConfigs'] = pulumi.Input.encodeList<
-        AuditLogConfigResponseMetastoreV1alpha,
-        Map<String, dynamic>>(auditLogConfigs, (value) => value.toMap());
-    map['service'] = service;
-    return map;
+    return <String, dynamic>{
+      'auditLogConfigs': pulumi.Input.encodeList<AuditLogConfigResponseMetastoreV1alpha, Map<String, dynamic>>(auditLogConfigs, (value) => value.toMap()),
+      'service': service,
+    };
   }
 
-  factory AuditConfigResponseMetastoreV1alpha.fromMap(
-      Map<String, dynamic> map) {
+  factory AuditConfigResponseMetastoreV1alpha.fromMap(Map<String, dynamic> map) {
     return AuditConfigResponseMetastoreV1alpha(
-      auditLogConfigs:
-          pulumi.Input.decodeList<AuditLogConfigResponseMetastoreV1alpha>(
-              map['auditLogConfigs'],
-              (value) => AuditLogConfigResponseMetastoreV1alpha.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      auditLogConfigs: pulumi.Input.decodeList<AuditLogConfigResponseMetastoreV1alpha>(map['auditLogConfigs'], (value) => AuditLogConfigResponseMetastoreV1alpha.fromMap((value as Map).cast<String, dynamic>())),
       service: map['service'] as String,
     );
   }
 }
+

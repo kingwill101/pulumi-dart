@@ -8,15 +8,13 @@ enum GoogleCloudDialogflowCxV3ExperimentResultMetricCountType {
   const GoogleCloudDialogflowCxV3ExperimentResultMetricCountType(this.value);
   final String value;
 
-  static GoogleCloudDialogflowCxV3ExperimentResultMetricCountType fromValue(
-      String value) {
-    for (final item
-        in GoogleCloudDialogflowCxV3ExperimentResultMetricCountType.values) {
+  static GoogleCloudDialogflowCxV3ExperimentResultMetricCountType fromValue(String value) {
+    for (final item in GoogleCloudDialogflowCxV3ExperimentResultMetricCountType.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown GoogleCloudDialogflowCxV3ExperimentResultMetricCountType value: $value');
+    throw ArgumentError('Unknown GoogleCloudDialogflowCxV3ExperimentResultMetricCountType value: $value');
   }
 }
+

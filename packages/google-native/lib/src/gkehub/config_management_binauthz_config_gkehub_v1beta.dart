@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for Binauthz
 class ConfigManagementBinauthzConfigGkehubV1beta {
   /// Whether binauthz is enabled in this cluster.
@@ -12,18 +13,15 @@ class ConfigManagementBinauthzConfigGkehubV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
-  factory ConfigManagementBinauthzConfigGkehubV1beta.fromMap(
-      Map<String, dynamic> map) {
+  factory ConfigManagementBinauthzConfigGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return ConfigManagementBinauthzConfigGkehubV1beta(
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
     );
   }
 }
+

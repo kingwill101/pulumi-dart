@@ -25,26 +25,21 @@ class GetDeviceArgs {
     required String location,
     String? project,
     required String registryId,
-  })  : deviceId = pulumi.Input.asInput<String>(deviceId),
-        fieldMask = pulumi.Input.asOptionalInput<String>(fieldMask),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        registryId = pulumi.Input.asInput<String>(registryId);
+  }) :
+      deviceId = pulumi.Input.asInput<String>(deviceId),
+      fieldMask = pulumi.Input.asOptionalInput<String>(fieldMask),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      registryId = pulumi.Input.asInput<String>(registryId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['deviceId'] = deviceId;
-    final fieldMaskValue = fieldMask;
-    if (fieldMaskValue != null) {
-      map['fieldMask'] = fieldMaskValue;
-    }
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['registryId'] = registryId;
-    return map;
+    return <String, dynamic>{
+      'deviceId': deviceId,
+      'fieldMask': ?fieldMask,
+      'location': location,
+      'project': ?project,
+      'registryId': registryId,
+    };
   }
 
   factory GetDeviceArgs.fromMap(Map<String, dynamic> map) {
@@ -57,3 +52,4 @@ class GetDeviceArgs {
     );
   }
 }
+

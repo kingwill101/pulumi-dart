@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class JobQueryDefaultDataset {
   /// The dataset. Can be specified `{{dataset_id}}` if `project_id` is also set,
   /// or of the form `projects/{{project}}/datasets/{{dataset_id}}` if not.
   final String datasetId;
-
   /// The ID of the project containing this table.
   final String? projectId;
 
@@ -17,13 +17,10 @@ class JobQueryDefaultDataset {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['datasetId'] = datasetId;
-    final projectIdValue = projectId;
-    if (projectIdValue != null) {
-      map['projectId'] = projectIdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'datasetId': datasetId,
+      'projectId': ?projectId,
+    };
   }
 
   factory JobQueryDefaultDataset.fromMap(Map<String, dynamic> map) {
@@ -33,3 +30,4 @@ class JobQueryDefaultDataset {
     );
   }
 }
+

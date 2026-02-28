@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ImageLoggingConfiguration {
   /// Name of the CloudWatch Log Group to send logs to.
   final String logGroupName;
@@ -11,9 +12,9 @@ class ImageLoggingConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['logGroupName'] = logGroupName;
-    return map;
+    return <String, dynamic>{
+      'logGroupName': logGroupName,
+    };
   }
 
   factory ImageLoggingConfiguration.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class ImageLoggingConfiguration {
     );
   }
 }
+

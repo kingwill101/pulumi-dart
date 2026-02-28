@@ -241,13 +241,10 @@ class Client extends pulumi.CustomResource {
   /// is attached to. The format is
   /// `projects/{project_number}/brands/{brand_id}`.
   late final pulumi.Output<String> brand;
-
   /// Output only. Unique identifier of the OAuth client.
   late final pulumi.Output<String> clientId;
-
   /// Human-friendly name given to the OAuth client.
   late final pulumi.Output<String> displayName;
-
   /// Output only. Client secret of the OAuth client.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   late final pulumi.Output<String> secret;

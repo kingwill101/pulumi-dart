@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetEndpointClientConnectOption {
   final bool enabled;
   final String lambdaFunctionArn;
@@ -13,10 +14,10 @@ class GetEndpointClientConnectOption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    map['lambdaFunctionArn'] = lambdaFunctionArn;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+      'lambdaFunctionArn': lambdaFunctionArn,
+    };
   }
 
   factory GetEndpointClientConnectOption.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class GetEndpointClientConnectOption {
     );
   }
 }
+

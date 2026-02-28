@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResourcePolicyArgs {
   /// The name of the Resource Policy.
   final pulumi.Input<String> name;
-
   /// Project from which to list the Resource Policy. Defaults to project declared in the provider.
   final pulumi.Input<String>? project;
-
   /// Region where the Resource Policy resides.
   final pulumi.Input<String>? region;
 
@@ -24,22 +22,17 @@ class GetResourcePolicyArgs {
     required String name,
     String? project,
     String? region,
-  })  : name = pulumi.Input.asInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      name = pulumi.Input.asInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'project': ?project,
+      'region': ?region,
+    };
   }
 
   factory GetResourcePolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -50,3 +43,4 @@ class GetResourcePolicyArgs {
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterSystemAddonsConfigIngress {
   /// Whether Ingress is disabled.
   final bool? disabled;
-
   /// Ingress VIP.
   final String? ipv4Vip;
 
@@ -16,16 +16,10 @@ class ClusterSystemAddonsConfigIngress {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final disabledValue = disabled;
-    if (disabledValue != null) {
-      map['disabled'] = disabledValue;
-    }
-    final ipv4VipValue = ipv4Vip;
-    if (ipv4VipValue != null) {
-      map['ipv4Vip'] = ipv4VipValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'disabled': ?disabled,
+      'ipv4Vip': ?ipv4Vip,
+    };
   }
 
   factory ClusterSystemAddonsConfigIngress.fromMap(Map<String, dynamic> map) {
@@ -35,3 +29,4 @@ class ClusterSystemAddonsConfigIngress {
     );
   }
 }
+

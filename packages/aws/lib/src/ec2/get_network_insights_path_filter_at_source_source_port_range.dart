@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetNetworkInsightsPathFilterAtSourceSourcePortRange {
   final int fromPort;
   final int toPort;
@@ -13,17 +14,17 @@ class GetNetworkInsightsPathFilterAtSourceSourcePortRange {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['fromPort'] = fromPort;
-    map['toPort'] = toPort;
-    return map;
+    return <String, dynamic>{
+      'fromPort': fromPort,
+      'toPort': toPort,
+    };
   }
 
-  factory GetNetworkInsightsPathFilterAtSourceSourcePortRange.fromMap(
-      Map<String, dynamic> map) {
+  factory GetNetworkInsightsPathFilterAtSourceSourcePortRange.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsPathFilterAtSourceSourcePortRange(
       fromPort: map['fromPort'] as int,
       toPort: map['toPort'] as int,
     );
   }
 }
+

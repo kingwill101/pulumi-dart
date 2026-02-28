@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CertificateCertificateDescriptionX509DescriptionPolicyId {
   /// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
   final List<int>? objectIdPaths;
@@ -11,20 +12,15 @@ class CertificateCertificateDescriptionX509DescriptionPolicyId {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final objectIdPathsValue = objectIdPaths;
-    if (objectIdPathsValue != null) {
-      map['objectIdPaths'] = objectIdPathsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'objectIdPaths': ?objectIdPaths,
+    };
   }
 
-  factory CertificateCertificateDescriptionX509DescriptionPolicyId.fromMap(
-      Map<String, dynamic> map) {
+  factory CertificateCertificateDescriptionX509DescriptionPolicyId.fromMap(Map<String, dynamic> map) {
     return CertificateCertificateDescriptionX509DescriptionPolicyId(
-      objectIdPaths: map['objectIdPaths'] == null
-          ? null
-          : (map['objectIdPaths'] as List).cast<int>(),
+      objectIdPaths: map['objectIdPaths'] == null ? null : (map['objectIdPaths'] as List).cast<int>(),
     );
   }
 }
+

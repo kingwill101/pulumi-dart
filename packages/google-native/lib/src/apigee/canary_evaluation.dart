@@ -9,32 +9,22 @@ import 'google_cloud_apigee_v1_canary_evaluation_metric_labels_response.dart';
 class CanaryEvaluation extends pulumi.CustomResource {
   /// The stable version that is serving requests.
   late final pulumi.Output<String> control;
-
   /// Create time of the canary evaluation.
   late final pulumi.Output<String> createTime;
-
   /// End time for the evaluation's analysis.
   late final pulumi.Output<String> endTime;
   late final pulumi.Output<String> instanceId;
-
   /// Labels used to filter the metrics used for a canary evaluation.
-  late final pulumi
-      .Output<GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse>
-      metricLabels;
-
+  late final pulumi.Output<GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse> metricLabels;
   /// Name of the canary evalution.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> organizationId;
-
   /// Start time for the canary evaluation's analysis.
   late final pulumi.Output<String> startTime;
-
   /// The current state of the canary evaluation.
   late final pulumi.Output<String> state;
-
   /// The newer version that is serving requests.
   late final pulumi.Output<String> treatment;
-
   /// The resulting verdict of the canary evaluations: NONE, PASS, or FAIL.
   late final pulumi.Output<String> verdict;
 
@@ -56,9 +46,7 @@ class CanaryEvaluation extends pulumi.CustomResource {
     this.createTime = registerOutput<String>('createTime');
     this.endTime = registerOutput<String>('endTime');
     this.instanceId = registerOutput<String>('instanceId');
-    this.metricLabels =
-        registerOutput<GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse>(
-            'metricLabels');
+    this.metricLabels = registerOutput<GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse>('metricLabels');
     this.name = registerOutput<String>('name');
     this.organizationId = registerOutput<String>('organizationId');
     this.startTime = registerOutput<String>('startTime');

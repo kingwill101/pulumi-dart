@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BuildMetadataResponse {
   final String finishedOn;
   final String invocationId;
@@ -16,11 +17,11 @@ class BuildMetadataResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['finishedOn'] = finishedOn;
-    map['invocationId'] = invocationId;
-    map['startedOn'] = startedOn;
-    return map;
+    return <String, dynamic>{
+      'finishedOn': finishedOn,
+      'invocationId': invocationId,
+      'startedOn': startedOn,
+    };
   }
 
   factory BuildMetadataResponse.fromMap(Map<String, dynamic> map) {
@@ -31,3 +32,4 @@ class BuildMetadataResponse {
     );
   }
 }
+

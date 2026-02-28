@@ -22,21 +22,19 @@ class GetAnnotationStoreArgs {
     required String datasetId,
     required String location,
     String? project,
-  })  : annotationStoreId = pulumi.Input.asInput<String>(annotationStoreId),
-        datasetId = pulumi.Input.asInput<String>(datasetId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      annotationStoreId = pulumi.Input.asInput<String>(annotationStoreId),
+      datasetId = pulumi.Input.asInput<String>(datasetId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['annotationStoreId'] = annotationStoreId;
-    map['datasetId'] = datasetId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'annotationStoreId': annotationStoreId,
+      'datasetId': datasetId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetAnnotationStoreArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetAnnotationStoreArgs {
     );
   }
 }
+

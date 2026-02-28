@@ -10,7 +10,6 @@ import 'disk_async_replication_secondary_disk.dart';
 class DiskAsyncReplicationArgs {
   /// The primary disk (source of replication).
   final pulumi.Input<String> primaryDisk;
-
   /// The secondary disk (target of replication). You can specify only one value. Structure is documented below.
   ///
   /// The `secondary_disk` block includes:
@@ -22,24 +21,22 @@ class DiskAsyncReplicationArgs {
   DiskAsyncReplicationArgs({
     required String primaryDisk,
     required DiskAsyncReplicationSecondaryDisk secondaryDisk,
-  })  : primaryDisk = pulumi.Input.asInput<String>(primaryDisk),
-        secondaryDisk = pulumi.Input.asInput<DiskAsyncReplicationSecondaryDisk>(
-            secondaryDisk);
+  }) :
+      primaryDisk = pulumi.Input.asInput<String>(primaryDisk),
+      secondaryDisk = pulumi.Input.asInput<DiskAsyncReplicationSecondaryDisk>(secondaryDisk);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['primaryDisk'] = primaryDisk;
-    map['secondaryDisk'] = pulumi.Input.mapInputValue<
-        DiskAsyncReplicationSecondaryDisk,
-        Map<String, dynamic>>(secondaryDisk, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'primaryDisk': primaryDisk,
+      'secondaryDisk': pulumi.Input.mapInputValue<DiskAsyncReplicationSecondaryDisk, Map<String, dynamic>>(secondaryDisk, (value) => value.toMap()),
+    };
   }
 
   factory DiskAsyncReplicationArgs.fromMap(Map<String, dynamic> map) {
     return DiskAsyncReplicationArgs(
       primaryDisk: map['primaryDisk'] as String,
-      secondaryDisk: DiskAsyncReplicationSecondaryDisk.fromMap(
-          (map['secondaryDisk'] as Map).cast<String, dynamic>()),
+      secondaryDisk: DiskAsyncReplicationSecondaryDisk.fromMap((map['secondaryDisk'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

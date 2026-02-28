@@ -6,7 +6,6 @@ import 'json_path_matcher_json_matcher.dart';
 class JsonPathMatcher {
   /// The type of JSONPath match that will be applied to the JSON output (ContentMatcher.content)
   final JsonPathMatcherJsonMatcher? jsonMatcher;
-
   /// JSONPath within the response output pointing to the expected ContentMatcher::content to match against.
   final String? jsonPath;
 
@@ -19,24 +18,17 @@ class JsonPathMatcher {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final jsonMatcherValue = jsonMatcher;
-    if (jsonMatcherValue != null) {
-      map['jsonMatcher'] = jsonMatcherValue.value;
-    }
-    final jsonPathValue = jsonPath;
-    if (jsonPathValue != null) {
-      map['jsonPath'] = jsonPathValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'jsonMatcher': ?jsonMatcher == null ? null : jsonMatcher!.value,
+      'jsonPath': ?jsonPath,
+    };
   }
 
   factory JsonPathMatcher.fromMap(Map<String, dynamic> map) {
     return JsonPathMatcher(
-      jsonMatcher: map['jsonMatcher'] == null
-          ? null
-          : JsonPathMatcherJsonMatcher.fromValue(map['jsonMatcher'] as String),
+      jsonMatcher: map['jsonMatcher'] == null ? null : JsonPathMatcherJsonMatcher.fromValue(map['jsonMatcher'] as String),
       jsonPath: map['jsonPath'] == null ? null : map['jsonPath'] as String,
     );
   }
 }
+

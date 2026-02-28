@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetSlotTypeEnumerationValue {
   final List<String> synonyms;
   final String value;
@@ -13,10 +14,10 @@ class GetSlotTypeEnumerationValue {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['synonyms'] = synonyms;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'synonyms': synonyms,
+      'value': value,
+    };
   }
 
   factory GetSlotTypeEnumerationValue.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class GetSlotTypeEnumerationValue {
     );
   }
 }
+

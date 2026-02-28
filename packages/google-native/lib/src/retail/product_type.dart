@@ -17,3 +17,4 @@ enum ProductType {
     throw ArgumentError('Unknown ProductType value: $value');
   }
 }
+

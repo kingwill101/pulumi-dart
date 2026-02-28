@@ -7,46 +7,35 @@ import 'get_subnetwork_secondary_ip_range.dart';
 class GetSubnetworkResult {
   /// Description of this subnetwork.
   final String description;
-
   /// The external IPv6 address range that is assigned to this subnetwork.
   final String externalIpv6Prefix;
-
   /// The IP address of the gateway.
   final String gatewayAddress;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The internal IPv6 address range that is assigned to this subnetwork.
   final String internalIpv6Prefix;
-
   /// The range of IP addresses belonging to this subnetwork
   /// secondary range.
   final String ipCidrRange;
-
   /// The access type of IPv6 address this subnet holds. Possible values are: `EXTERNAL`, `INTERNAL`.
   final String ipv6AccessType;
   final String? name;
-
   /// The network name or resource link to the parent
   /// network of this subnetwork.
   final String network;
-
   /// Whether the VMs in this subnet
   /// can access Google services without assigned external IP
   /// addresses.
   final bool privateIpGoogleAccess;
   final String project;
   final String region;
-
   /// An array of configurations for secondary IP ranges for
   /// VM instances contained in this subnetwork. Structure is documented below.
   final List<GetSubnetworkSecondaryIpRange> secondaryIpRanges;
   final String selfLink;
-
   /// The stack type for the subnet. Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
   final String stackType;
-
   /// The numeric ID of the resource.
   final int subnetworkId;
 
@@ -87,29 +76,24 @@ class GetSubnetworkResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['description'] = description;
-    map['externalIpv6Prefix'] = externalIpv6Prefix;
-    map['gatewayAddress'] = gatewayAddress;
-    map['id'] = id;
-    map['internalIpv6Prefix'] = internalIpv6Prefix;
-    map['ipCidrRange'] = ipCidrRange;
-    map['ipv6AccessType'] = ipv6AccessType;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    map['network'] = network;
-    map['privateIpGoogleAccess'] = privateIpGoogleAccess;
-    map['project'] = project;
-    map['region'] = region;
-    map['secondaryIpRanges'] = pulumi.Input.encodeList<
-        GetSubnetworkSecondaryIpRange,
-        Map<String, dynamic>>(secondaryIpRanges, (value) => value.toMap());
-    map['selfLink'] = selfLink;
-    map['stackType'] = stackType;
-    map['subnetworkId'] = subnetworkId;
-    return map;
+    return <String, dynamic>{
+      'description': description,
+      'externalIpv6Prefix': externalIpv6Prefix,
+      'gatewayAddress': gatewayAddress,
+      'id': id,
+      'internalIpv6Prefix': internalIpv6Prefix,
+      'ipCidrRange': ipCidrRange,
+      'ipv6AccessType': ipv6AccessType,
+      'name': ?name,
+      'network': network,
+      'privateIpGoogleAccess': privateIpGoogleAccess,
+      'project': project,
+      'region': region,
+      'secondaryIpRanges': pulumi.Input.encodeList<GetSubnetworkSecondaryIpRange, Map<String, dynamic>>(secondaryIpRanges, (value) => value.toMap()),
+      'selfLink': selfLink,
+      'stackType': stackType,
+      'subnetworkId': subnetworkId,
+    };
   }
 
   factory GetSubnetworkResult.fromMap(Map<String, dynamic> map) {
@@ -126,13 +110,11 @@ class GetSubnetworkResult {
       privateIpGoogleAccess: map['privateIpGoogleAccess'] as bool,
       project: map['project'] as String,
       region: map['region'] as String,
-      secondaryIpRanges: pulumi.Input.decodeList<GetSubnetworkSecondaryIpRange>(
-          map['secondaryIpRanges'],
-          (value) => GetSubnetworkSecondaryIpRange.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      secondaryIpRanges: pulumi.Input.decodeList<GetSubnetworkSecondaryIpRange>(map['secondaryIpRanges'], (value) => GetSubnetworkSecondaryIpRange.fromMap((value as Map).cast<String, dynamic>())),
       selfLink: map['selfLink'] as String,
       stackType: map['stackType'] as String,
       subnetworkId: map['subnetworkId'] as int,
     );
   }
 }
+

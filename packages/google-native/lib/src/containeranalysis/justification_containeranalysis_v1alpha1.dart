@@ -6,10 +6,8 @@ import 'justification_justification_type_containeranalysis_v1alpha1.dart';
 class JustificationContaineranalysisV1alpha1 {
   /// Additional details on why this justification was chosen.
   final String? details;
-
   /// The justification type for this vulnerability.
-  final JustificationJustificationTypeContaineranalysisV1alpha1?
-      justificationType;
+  final JustificationJustificationTypeContaineranalysisV1alpha1? justificationType;
 
   /// Creates a new [JustificationContaineranalysisV1alpha1].
   /// [details] Additional details on why this justification was chosen.
@@ -20,26 +18,17 @@ class JustificationContaineranalysisV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final detailsValue = details;
-    if (detailsValue != null) {
-      map['details'] = detailsValue;
-    }
-    final justificationTypeValue = justificationType;
-    if (justificationTypeValue != null) {
-      map['justificationType'] = justificationTypeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'details': ?details,
+      'justificationType': ?justificationType == null ? null : justificationType!.value,
+    };
   }
 
-  factory JustificationContaineranalysisV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory JustificationContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return JustificationContaineranalysisV1alpha1(
       details: map['details'] == null ? null : map['details'] as String,
-      justificationType: map['justificationType'] == null
-          ? null
-          : JustificationJustificationTypeContaineranalysisV1alpha1.fromValue(
-              map['justificationType'] as String),
+      justificationType: map['justificationType'] == null ? null : JustificationJustificationTypeContaineranalysisV1alpha1.fromValue(map['justificationType'] as String),
     );
   }
 }
+

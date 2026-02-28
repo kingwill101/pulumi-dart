@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConnectionGitlabEnterpriseConfigServiceDirectoryConfig {
   /// Required. The Service Directory service name.
   /// Format:
@@ -13,15 +14,15 @@ class ConnectionGitlabEnterpriseConfigServiceDirectoryConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['service'] = service;
-    return map;
+    return <String, dynamic>{
+      'service': service,
+    };
   }
 
-  factory ConnectionGitlabEnterpriseConfigServiceDirectoryConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory ConnectionGitlabEnterpriseConfigServiceDirectoryConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionGitlabEnterpriseConfigServiceDirectoryConfig(
       service: map['service'] as String,
     );
   }
 }
+

@@ -13,21 +13,15 @@ class AgentcoreGatewayInterceptorConfigurationInterceptor {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final lambdaValue = lambda;
-    if (lambdaValue != null) {
-      map['lambda'] = lambdaValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'lambda': ?lambda == null ? null : lambda!.toMap(),
+    };
   }
 
-  factory AgentcoreGatewayInterceptorConfigurationInterceptor.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentcoreGatewayInterceptorConfigurationInterceptor.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayInterceptorConfigurationInterceptor(
-      lambda: map['lambda'] == null
-          ? null
-          : AgentcoreGatewayInterceptorConfigurationInterceptorLambda.fromMap(
-              (map['lambda'] as Map).cast<String, dynamic>()),
+      lambda: map['lambda'] == null ? null : AgentcoreGatewayInterceptorConfigurationInterceptorLambda.fromMap((map['lambda'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

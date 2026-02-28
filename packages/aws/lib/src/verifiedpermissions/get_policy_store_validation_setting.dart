@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetPolicyStoreValidationSetting {
   final String mode;
 
@@ -10,9 +11,9 @@ class GetPolicyStoreValidationSetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['mode'] = mode;
-    return map;
+    return <String, dynamic>{
+      'mode': mode,
+    };
   }
 
   factory GetPolicyStoreValidationSetting.fromMap(Map<String, dynamic> map) {
@@ -21,3 +22,4 @@ class GetPolicyStoreValidationSetting {
     );
   }
 }
+

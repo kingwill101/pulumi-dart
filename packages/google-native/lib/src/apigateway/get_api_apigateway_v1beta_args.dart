@@ -19,19 +19,17 @@ class GetApiApigatewayV1betaArgs {
     required String apiId,
     required String location,
     String? project,
-  })  : apiId = pulumi.Input.asInput<String>(apiId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      apiId = pulumi.Input.asInput<String>(apiId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['apiId'] = apiId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'apiId': apiId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetApiApigatewayV1betaArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetApiApigatewayV1betaArgs {
     );
   }
 }
+

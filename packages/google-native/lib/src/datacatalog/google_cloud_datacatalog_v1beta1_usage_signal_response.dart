@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The set of all usage signals that we store in Data Catalog.
 class GoogleCloudDatacatalogV1beta1UsageSignalResponse {
   /// The timestamp of the end of the usage statistics duration.
   final String updateTime;
-
   /// Usage statistics over each of the pre-defined time ranges, supported strings for time ranges are {"24H", "7D", "30D"}.
   final Map<String, String> usageWithinTimeRange;
 
@@ -17,18 +17,17 @@ class GoogleCloudDatacatalogV1beta1UsageSignalResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['updateTime'] = updateTime;
-    map['usageWithinTimeRange'] = usageWithinTimeRange;
-    return map;
+    return <String, dynamic>{
+      'updateTime': updateTime,
+      'usageWithinTimeRange': usageWithinTimeRange,
+    };
   }
 
-  factory GoogleCloudDatacatalogV1beta1UsageSignalResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1beta1UsageSignalResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1beta1UsageSignalResponse(
       updateTime: map['updateTime'] as String,
-      usageWithinTimeRange:
-          (map['usageWithinTimeRange'] as Map).cast<String, String>(),
+      usageWithinTimeRange: (map['usageWithinTimeRange'] as Map).cast<String, String>(),
     );
   }
 }
+

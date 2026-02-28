@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class PipelineParallelismConfiguration {
   /// The max number of steps that can be executed in parallel.
   final int maxParallelExecutionSteps;
@@ -11,9 +12,9 @@ class PipelineParallelismConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maxParallelExecutionSteps'] = maxParallelExecutionSteps;
-    return map;
+    return <String, dynamic>{
+      'maxParallelExecutionSteps': maxParallelExecutionSteps,
+    };
   }
 
   factory PipelineParallelismConfiguration.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class PipelineParallelismConfiguration {
     );
   }
 }
+

@@ -28,25 +28,23 @@ class GetContextDialogflowV2beta1Args {
     String? project,
     required String sessionId,
     required String userId,
-  })  : contextId = pulumi.Input.asInput<String>(contextId),
-        environmentId = pulumi.Input.asInput<String>(environmentId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        sessionId = pulumi.Input.asInput<String>(sessionId),
-        userId = pulumi.Input.asInput<String>(userId);
+  }) :
+      contextId = pulumi.Input.asInput<String>(contextId),
+      environmentId = pulumi.Input.asInput<String>(environmentId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      sessionId = pulumi.Input.asInput<String>(sessionId),
+      userId = pulumi.Input.asInput<String>(userId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['contextId'] = contextId;
-    map['environmentId'] = environmentId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['sessionId'] = sessionId;
-    map['userId'] = userId;
-    return map;
+    return <String, dynamic>{
+      'contextId': contextId,
+      'environmentId': environmentId,
+      'location': location,
+      'project': ?project,
+      'sessionId': sessionId,
+      'userId': userId,
+    };
   }
 
   factory GetContextDialogflowV2beta1Args.fromMap(Map<String, dynamic> map) {
@@ -60,3 +58,4 @@ class GetContextDialogflowV2beta1Args {
     );
   }
 }
+

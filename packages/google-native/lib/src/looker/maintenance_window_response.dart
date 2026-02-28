@@ -6,7 +6,6 @@ import 'time_of_day_response.dart';
 class MaintenanceWindowResponse {
   /// Day of the week for this MaintenanceWindow (in UTC).
   final String dayOfWeek;
-
   /// Time in UTC when the period starts. Maintenance will be scheduled within 60 minutes.
   final TimeOfDayResponse startTime;
 
@@ -19,17 +18,17 @@ class MaintenanceWindowResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dayOfWeek'] = dayOfWeek;
-    map['startTime'] = startTime.toMap();
-    return map;
+    return <String, dynamic>{
+      'dayOfWeek': dayOfWeek,
+      'startTime': startTime.toMap(),
+    };
   }
 
   factory MaintenanceWindowResponse.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowResponse(
       dayOfWeek: map['dayOfWeek'] as String,
-      startTime: TimeOfDayResponse.fromMap(
-          (map['startTime'] as Map).cast<String, dynamic>()),
+      startTime: TimeOfDayResponse.fromMap((map['startTime'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -16,14 +16,15 @@ class GetInstanceArgs {
   GetInstanceArgs({
     required String instanceId,
     required String organizationId,
-  })  : instanceId = pulumi.Input.asInput<String>(instanceId),
-        organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) :
+      instanceId = pulumi.Input.asInput<String>(instanceId),
+      organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['instanceId'] = instanceId;
-    map['organizationId'] = organizationId;
-    return map;
+    return <String, dynamic>{
+      'instanceId': instanceId,
+      'organizationId': organizationId,
+    };
   }
 
   factory GetInstanceArgs.fromMap(Map<String, dynamic> map) {
@@ -33,3 +34,4 @@ class GetInstanceArgs {
     );
   }
 }
+

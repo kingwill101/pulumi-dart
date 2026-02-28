@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MeshSpecEgressFilter {
   /// Egress filter type. By default, the type is `DROP_ALL`. Valid values are `ALLOW_ALL` and `DROP_ALL`.
   final String? type;
@@ -11,12 +12,9 @@ class MeshSpecEgressFilter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'type': ?type,
+    };
   }
 
   factory MeshSpecEgressFilter.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class MeshSpecEgressFilter {
     );
   }
 }
+

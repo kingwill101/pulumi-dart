@@ -19,19 +19,17 @@ class GetSourceVmmigrationV1alpha1Args {
     required String location,
     String? project,
     required String sourceId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        sourceId = pulumi.Input.asInput<String>(sourceId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      sourceId = pulumi.Input.asInput<String>(sourceId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['sourceId'] = sourceId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+      'sourceId': sourceId,
+    };
   }
 
   factory GetSourceVmmigrationV1alpha1Args.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetSourceVmmigrationV1alpha1Args {
     );
   }
 }
+

@@ -7,7 +7,6 @@ import 'google_privacy_dlp_v2_discovery_table_modified_cadence.dart';
 class GooglePrivacyDlpV2DiscoveryGenerationCadence {
   /// Governs when to update data profiles when a schema is modified.
   final GooglePrivacyDlpV2DiscoverySchemaModifiedCadence? schemaModifiedCadence;
-
   /// Governs when to update data profiles when a table is modified.
   final GooglePrivacyDlpV2DiscoveryTableModifiedCadence? tableModifiedCadence;
 
@@ -20,29 +19,17 @@ class GooglePrivacyDlpV2DiscoveryGenerationCadence {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final schemaModifiedCadenceValue = schemaModifiedCadence;
-    if (schemaModifiedCadenceValue != null) {
-      map['schemaModifiedCadence'] = schemaModifiedCadenceValue.toMap();
-    }
-    final tableModifiedCadenceValue = tableModifiedCadence;
-    if (tableModifiedCadenceValue != null) {
-      map['tableModifiedCadence'] = tableModifiedCadenceValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'schemaModifiedCadence': ?schemaModifiedCadence == null ? null : schemaModifiedCadence!.toMap(),
+      'tableModifiedCadence': ?tableModifiedCadence == null ? null : tableModifiedCadence!.toMap(),
+    };
   }
 
-  factory GooglePrivacyDlpV2DiscoveryGenerationCadence.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2DiscoveryGenerationCadence.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DiscoveryGenerationCadence(
-      schemaModifiedCadence: map['schemaModifiedCadence'] == null
-          ? null
-          : GooglePrivacyDlpV2DiscoverySchemaModifiedCadence.fromMap(
-              (map['schemaModifiedCadence'] as Map).cast<String, dynamic>()),
-      tableModifiedCadence: map['tableModifiedCadence'] == null
-          ? null
-          : GooglePrivacyDlpV2DiscoveryTableModifiedCadence.fromMap(
-              (map['tableModifiedCadence'] as Map).cast<String, dynamic>()),
+      schemaModifiedCadence: map['schemaModifiedCadence'] == null ? null : GooglePrivacyDlpV2DiscoverySchemaModifiedCadence.fromMap((map['schemaModifiedCadence'] as Map).cast<String, dynamic>()),
+      tableModifiedCadence: map['tableModifiedCadence'] == null ? null : GooglePrivacyDlpV2DiscoveryTableModifiedCadence.fromMap((map['tableModifiedCadence'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -16,21 +16,22 @@ class GetFolderSecurityHealthAnalyticsSettingCustomModuleArgs {
   GetFolderSecurityHealthAnalyticsSettingCustomModuleArgs({
     required String customModuleId,
     required String folderId,
-  })  : customModuleId = pulumi.Input.asInput<String>(customModuleId),
-        folderId = pulumi.Input.asInput<String>(folderId);
+  }) :
+      customModuleId = pulumi.Input.asInput<String>(customModuleId),
+      folderId = pulumi.Input.asInput<String>(folderId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['customModuleId'] = customModuleId;
-    map['folderId'] = folderId;
-    return map;
+    return <String, dynamic>{
+      'customModuleId': customModuleId,
+      'folderId': folderId,
+    };
   }
 
-  factory GetFolderSecurityHealthAnalyticsSettingCustomModuleArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetFolderSecurityHealthAnalyticsSettingCustomModuleArgs.fromMap(Map<String, dynamic> map) {
     return GetFolderSecurityHealthAnalyticsSettingCustomModuleArgs(
       customModuleId: map['customModuleId'] as String,
       folderId: map['folderId'] as String,
     );
   }
 }
+

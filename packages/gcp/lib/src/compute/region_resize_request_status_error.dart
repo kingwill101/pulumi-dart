@@ -16,24 +16,15 @@ class RegionResizeRequestStatusError {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final errorsValue = errors;
-    if (errorsValue != null) {
-      map['errors'] = pulumi.Input.encodeList<
-          RegionResizeRequestStatusErrorError,
-          Map<String, dynamic>>(errorsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'errors': ?errors == null ? null : pulumi.Input.encodeList<RegionResizeRequestStatusErrorError, Map<String, dynamic>>(errors!, (value) => value.toMap()),
+    };
   }
 
   factory RegionResizeRequestStatusError.fromMap(Map<String, dynamic> map) {
     return RegionResizeRequestStatusError(
-      errors: map['errors'] == null
-          ? null
-          : pulumi.Input.decodeList<RegionResizeRequestStatusErrorError>(
-              map['errors'],
-              (value) => RegionResizeRequestStatusErrorError.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      errors: map['errors'] == null ? null : pulumi.Input.decodeList<RegionResizeRequestStatusErrorError>(map['errors'], (value) => RegionResizeRequestStatusErrorError.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

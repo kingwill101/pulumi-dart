@@ -1,21 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getAccountPublicAccessBlock.
 class GetAccountPublicAccessBlockResult {
   final String? accountId;
-
   /// Whether or not Amazon S3 should block public ACLs for buckets in this account is enabled. Returns as `true` or `false`.
   final bool blockPublicAcls;
-
   /// Whether or not Amazon S3 should block public bucket policies for buckets in this account is enabled. Returns as `true` or `false`.
   final bool blockPublicPolicy;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Whether or not Amazon S3 should ignore public ACLs for buckets in this account is enabled. Returns as `true` or `false`.
   final bool ignorePublicAcls;
-
   /// Whether or not Amazon S3 should restrict public bucket policies for buckets in this account is enabled. Returns as `true` or `false`.
   final bool restrictPublicBuckets;
 
@@ -36,17 +32,14 @@ class GetAccountPublicAccessBlockResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final accountIdValue = accountId;
-    if (accountIdValue != null) {
-      map['accountId'] = accountIdValue;
-    }
-    map['blockPublicAcls'] = blockPublicAcls;
-    map['blockPublicPolicy'] = blockPublicPolicy;
-    map['id'] = id;
-    map['ignorePublicAcls'] = ignorePublicAcls;
-    map['restrictPublicBuckets'] = restrictPublicBuckets;
-    return map;
+    return <String, dynamic>{
+      'accountId': ?accountId,
+      'blockPublicAcls': blockPublicAcls,
+      'blockPublicPolicy': blockPublicPolicy,
+      'id': id,
+      'ignorePublicAcls': ignorePublicAcls,
+      'restrictPublicBuckets': restrictPublicBuckets,
+    };
   }
 
   factory GetAccountPublicAccessBlockResult.fromMap(Map<String, dynamic> map) {
@@ -60,3 +53,4 @@ class GetAccountPublicAccessBlockResult {
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TableColumnFamily {
   /// The name of the column family.
   final String family;
-
   /// The type of the column family.
   final String? type;
 
@@ -16,13 +16,10 @@ class TableColumnFamily {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['family'] = family;
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'family': family,
+      'type': ?type,
+    };
   }
 
   factory TableColumnFamily.fromMap(Map<String, dynamic> map) {
@@ -32,3 +29,4 @@ class TableColumnFamily {
     );
   }
 }
+

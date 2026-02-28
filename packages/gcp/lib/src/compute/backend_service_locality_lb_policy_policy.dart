@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BackendServiceLocalityLbPolicyPolicy {
   /// The name of a locality load balancer policy to be used. The value
   /// should be one of the predefined ones as supported by localityLbPolicy,
@@ -37,15 +38,15 @@ class BackendServiceLocalityLbPolicyPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory BackendServiceLocalityLbPolicyPolicy.fromMap(
-      Map<String, dynamic> map) {
+  factory BackendServiceLocalityLbPolicyPolicy.fromMap(Map<String, dynamic> map) {
     return BackendServiceLocalityLbPolicyPolicy(
       name: map['name'] as String,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DistributionDefaultCacheBehavior {
   /// Cache behavior of the distribution. Valid values: `cache`, `dont-cache`.
   final String behavior;
@@ -11,9 +12,9 @@ class DistributionDefaultCacheBehavior {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['behavior'] = behavior;
-    return map;
+    return <String, dynamic>{
+      'behavior': behavior,
+    };
   }
 
   factory DistributionDefaultCacheBehavior.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class DistributionDefaultCacheBehavior {
     );
   }
 }
+

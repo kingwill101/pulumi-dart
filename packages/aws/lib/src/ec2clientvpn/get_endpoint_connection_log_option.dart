@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetEndpointConnectionLogOption {
   final String cloudwatchLogGroup;
   final String cloudwatchLogStream;
@@ -16,11 +17,11 @@ class GetEndpointConnectionLogOption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cloudwatchLogGroup'] = cloudwatchLogGroup;
-    map['cloudwatchLogStream'] = cloudwatchLogStream;
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'cloudwatchLogGroup': cloudwatchLogGroup,
+      'cloudwatchLogStream': cloudwatchLogStream,
+      'enabled': enabled,
+    };
   }
 
   factory GetEndpointConnectionLogOption.fromMap(Map<String, dynamic> map) {
@@ -31,3 +32,4 @@ class GetEndpointConnectionLogOption {
     );
   }
 }
+

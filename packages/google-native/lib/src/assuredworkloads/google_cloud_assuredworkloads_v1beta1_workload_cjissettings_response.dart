@@ -5,8 +5,7 @@ import 'google_cloud_assuredworkloads_v1beta1_workload_kmssettings_response.dart
 /// Settings specific to resources needed for CJIS.
 class GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsResponse {
   /// Input only. Immutable. Settings used to create a CMEK crypto key.
-  final GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse
-      kmsSettings;
+  final GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse kmsSettings;
 
   /// Creates a new [GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsResponse].
   /// [kmsSettings] Input only. Immutable. Settings used to create a CMEK crypto key.
@@ -15,17 +14,15 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kmsSettings'] = kmsSettings.toMap();
-    return map;
+    return <String, dynamic>{
+      'kmsSettings': kmsSettings.toMap(),
+    };
   }
 
-  factory GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsResponse(
-      kmsSettings:
-          GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse.fromMap(
-              (map['kmsSettings'] as Map).cast<String, dynamic>()),
+      kmsSettings: GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse.fromMap((map['kmsSettings'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

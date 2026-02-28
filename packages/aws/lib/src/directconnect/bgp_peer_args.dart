@@ -9,24 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BgpPeerArgs {
   /// The address family for the BGP peer. `ipv4 ` or `ipv6`.
   final pulumi.Input<String> addressFamily;
-
   /// The IPv4 CIDR address to use to send traffic to Amazon.
   /// Required for IPv4 BGP peers on public virtual interfaces.
   final pulumi.Input<String>? amazonAddress;
-
   /// The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
   final pulumi.Input<int> bgpAsn;
-
   /// The authentication key for BGP configuration.
   final pulumi.Input<String>? bgpAuthKey;
-
   /// The IPv4 CIDR destination address to which Amazon should send traffic.
   /// Required for IPv4 BGP peers on public virtual interfaces.
   final pulumi.Input<String>? customerAddress;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The ID of the Direct Connect virtual interface on which to create the BGP peer.
   final pulumi.Input<String> virtualInterfaceId;
 
@@ -46,51 +40,37 @@ class BgpPeerArgs {
     String? customerAddress,
     String? region,
     required String virtualInterfaceId,
-  })  : addressFamily = pulumi.Input.asInput<String>(addressFamily),
-        amazonAddress = pulumi.Input.asOptionalInput<String>(amazonAddress),
-        bgpAsn = pulumi.Input.asInput<int>(bgpAsn),
-        bgpAuthKey = pulumi.Input.asOptionalInput<String>(bgpAuthKey),
-        customerAddress = pulumi.Input.asOptionalInput<String>(customerAddress),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        virtualInterfaceId = pulumi.Input.asInput<String>(virtualInterfaceId);
+  }) :
+      addressFamily = pulumi.Input.asInput<String>(addressFamily),
+      amazonAddress = pulumi.Input.asOptionalInput<String>(amazonAddress),
+      bgpAsn = pulumi.Input.asInput<int>(bgpAsn),
+      bgpAuthKey = pulumi.Input.asOptionalInput<String>(bgpAuthKey),
+      customerAddress = pulumi.Input.asOptionalInput<String>(customerAddress),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      virtualInterfaceId = pulumi.Input.asInput<String>(virtualInterfaceId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['addressFamily'] = addressFamily;
-    final amazonAddressValue = amazonAddress;
-    if (amazonAddressValue != null) {
-      map['amazonAddress'] = amazonAddressValue;
-    }
-    map['bgpAsn'] = bgpAsn;
-    final bgpAuthKeyValue = bgpAuthKey;
-    if (bgpAuthKeyValue != null) {
-      map['bgpAuthKey'] = bgpAuthKeyValue;
-    }
-    final customerAddressValue = customerAddress;
-    if (customerAddressValue != null) {
-      map['customerAddress'] = customerAddressValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['virtualInterfaceId'] = virtualInterfaceId;
-    return map;
+    return <String, dynamic>{
+      'addressFamily': addressFamily,
+      'amazonAddress': ?amazonAddress,
+      'bgpAsn': bgpAsn,
+      'bgpAuthKey': ?bgpAuthKey,
+      'customerAddress': ?customerAddress,
+      'region': ?region,
+      'virtualInterfaceId': virtualInterfaceId,
+    };
   }
 
   factory BgpPeerArgs.fromMap(Map<String, dynamic> map) {
     return BgpPeerArgs(
       addressFamily: map['addressFamily'] as String,
-      amazonAddress:
-          map['amazonAddress'] == null ? null : map['amazonAddress'] as String,
+      amazonAddress: map['amazonAddress'] == null ? null : map['amazonAddress'] as String,
       bgpAsn: map['bgpAsn'] as int,
-      bgpAuthKey:
-          map['bgpAuthKey'] == null ? null : map['bgpAuthKey'] as String,
-      customerAddress: map['customerAddress'] == null
-          ? null
-          : map['customerAddress'] as String,
+      bgpAuthKey: map['bgpAuthKey'] == null ? null : map['bgpAuthKey'] as String,
+      customerAddress: map['customerAddress'] == null ? null : map['customerAddress'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       virtualInterfaceId: map['virtualInterfaceId'] as String,
     );
   }
 }
+

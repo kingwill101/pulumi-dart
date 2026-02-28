@@ -6,13 +6,10 @@ import 'cloud_sql_settings_response_datamigration_v1beta1.dart';
 class CloudSqlConnectionProfileResponseDatamigrationV1beta1 {
   /// The Cloud SQL instance ID that this connection profile is associated with.
   final String cloudSqlId;
-
   /// The Cloud SQL database instance's private IP.
   final String privateIp;
-
   /// The Cloud SQL database instance's public IP.
   final String publicIp;
-
   /// Immutable. Metadata used to create the destination Cloud SQL database.
   final CloudSqlSettingsResponseDatamigrationV1beta1 settings;
 
@@ -29,22 +26,21 @@ class CloudSqlConnectionProfileResponseDatamigrationV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cloudSqlId'] = cloudSqlId;
-    map['privateIp'] = privateIp;
-    map['publicIp'] = publicIp;
-    map['settings'] = settings.toMap();
-    return map;
+    return <String, dynamic>{
+      'cloudSqlId': cloudSqlId,
+      'privateIp': privateIp,
+      'publicIp': publicIp,
+      'settings': settings.toMap(),
+    };
   }
 
-  factory CloudSqlConnectionProfileResponseDatamigrationV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory CloudSqlConnectionProfileResponseDatamigrationV1beta1.fromMap(Map<String, dynamic> map) {
     return CloudSqlConnectionProfileResponseDatamigrationV1beta1(
       cloudSqlId: map['cloudSqlId'] as String,
       privateIp: map['privateIp'] as String,
       publicIp: map['publicIp'] as String,
-      settings: CloudSqlSettingsResponseDatamigrationV1beta1.fromMap(
-          (map['settings'] as Map).cast<String, dynamic>()),
+      settings: CloudSqlSettingsResponseDatamigrationV1beta1.fromMap((map['settings'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -15,18 +15,15 @@ class TableMetadataIcebergSchema {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['fields'] = pulumi.Input.encodeList<TableMetadataIcebergSchemaField,
-        Map<String, dynamic>>(fields, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'fields': pulumi.Input.encodeList<TableMetadataIcebergSchemaField, Map<String, dynamic>>(fields, (value) => value.toMap()),
+    };
   }
 
   factory TableMetadataIcebergSchema.fromMap(Map<String, dynamic> map) {
     return TableMetadataIcebergSchema(
-      fields: pulumi.Input.decodeList<TableMetadataIcebergSchemaField>(
-          map['fields'],
-          (value) => TableMetadataIcebergSchemaField.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      fields: pulumi.Input.decodeList<TableMetadataIcebergSchemaField>(map['fields'], (value) => TableMetadataIcebergSchemaField.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

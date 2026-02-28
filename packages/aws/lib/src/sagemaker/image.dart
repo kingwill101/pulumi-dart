@@ -111,25 +111,18 @@ import 'image_args.dart';
 class Image extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) assigned by AWS to this Image.
   late final pulumi.Output<String> arn;
-
   /// The description of the image.
   late final pulumi.Output<String?> description;
-
   /// The display name of the image. When the image is added to a domain (must be unique to the domain).
   late final pulumi.Output<String?> displayName;
-
   /// The name of the image. Must be unique to your account.
   late final pulumi.Output<String> imageName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The Amazon Resource Name (ARN) of an IAM role that enables Amazon SageMaker AI to perform tasks on your behalf.
   late final pulumi.Output<String> roleArn;
-
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 

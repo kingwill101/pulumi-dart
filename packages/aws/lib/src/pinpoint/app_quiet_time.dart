@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppQuietTime {
   /// The default end time for quiet time in ISO 8601 format. Required if `start` is set
   final String? end;
-
   /// The default start time for quiet time in ISO 8601 format. Required if `end` is set
   final String? start;
 
@@ -16,16 +16,10 @@ class AppQuietTime {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final endValue = end;
-    if (endValue != null) {
-      map['end'] = endValue;
-    }
-    final startValue = start;
-    if (startValue != null) {
-      map['start'] = startValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'end': ?end,
+      'start': ?start,
+    };
   }
 
   factory AppQuietTime.fromMap(Map<String, dynamic> map) {
@@ -35,3 +29,4 @@ class AppQuietTime {
     );
   }
 }
+

@@ -4,8 +4,7 @@ import 'allocation_aggregate_reservation_reserved_resource_info_accelerator_resp
 
 class AllocationAggregateReservationReservedResourceInfoResponse {
   /// Properties of accelerator resources in this reservation.
-  final AllocationAggregateReservationReservedResourceInfoAcceleratorResponse
-      accelerator;
+  final AllocationAggregateReservationReservedResourceInfoAcceleratorResponse accelerator;
 
   /// Creates a new [AllocationAggregateReservationReservedResourceInfoResponse].
   /// [accelerator] Properties of accelerator resources in this reservation.
@@ -14,17 +13,15 @@ class AllocationAggregateReservationReservedResourceInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accelerator'] = accelerator.toMap();
-    return map;
+    return <String, dynamic>{
+      'accelerator': accelerator.toMap(),
+    };
   }
 
-  factory AllocationAggregateReservationReservedResourceInfoResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory AllocationAggregateReservationReservedResourceInfoResponse.fromMap(Map<String, dynamic> map) {
     return AllocationAggregateReservationReservedResourceInfoResponse(
-      accelerator:
-          AllocationAggregateReservationReservedResourceInfoAcceleratorResponse
-              .fromMap((map['accelerator'] as Map).cast<String, dynamic>()),
+      accelerator: AllocationAggregateReservationReservedResourceInfoAcceleratorResponse.fromMap((map['accelerator'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

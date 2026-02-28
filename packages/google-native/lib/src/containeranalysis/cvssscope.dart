@@ -15,3 +15,4 @@ enum CVSSScope {
     throw ArgumentError('Unknown CVSSScope value: $value');
   }
 }
+

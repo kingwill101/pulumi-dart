@@ -14,20 +14,15 @@ class GetEntitlementPrivilegedAccess {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gcpIamAccesses'] = pulumi.Input.encodeList<
-        GetEntitlementPrivilegedAccessGcpIamAccess,
-        Map<String, dynamic>>(gcpIamAccesses, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'gcpIamAccesses': pulumi.Input.encodeList<GetEntitlementPrivilegedAccessGcpIamAccess, Map<String, dynamic>>(gcpIamAccesses, (value) => value.toMap()),
+    };
   }
 
   factory GetEntitlementPrivilegedAccess.fromMap(Map<String, dynamic> map) {
     return GetEntitlementPrivilegedAccess(
-      gcpIamAccesses:
-          pulumi.Input.decodeList<GetEntitlementPrivilegedAccessGcpIamAccess>(
-              map['gcpIamAccesses'],
-              (value) => GetEntitlementPrivilegedAccessGcpIamAccess.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      gcpIamAccesses: pulumi.Input.decodeList<GetEntitlementPrivilegedAccessGcpIamAccess>(map['gcpIamAccesses'], (value) => GetEntitlementPrivilegedAccessGcpIamAccess.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

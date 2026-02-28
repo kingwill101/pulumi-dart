@@ -19,19 +19,17 @@ class GetBackupRunSqladminV1beta4Args {
     required String id,
     required String instance,
     String? project,
-  })  : id = pulumi.Input.asInput<String>(id),
-        instance = pulumi.Input.asInput<String>(instance),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      id = pulumi.Input.asInput<String>(id),
+      instance = pulumi.Input.asInput<String>(instance),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['instance'] = instance;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'instance': instance,
+      'project': ?project,
+    };
   }
 
   factory GetBackupRunSqladminV1beta4Args.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetBackupRunSqladminV1beta4Args {
     );
   }
 }
+

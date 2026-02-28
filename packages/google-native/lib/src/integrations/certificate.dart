@@ -7,33 +7,23 @@ import 'google_cloud_integrations_v1alpha_client_certificate_response.dart';
 class Certificate extends pulumi.CustomResource {
   /// Status of the certificate
   late final pulumi.Output<String> certificateStatus;
-
   /// Immutable. Credential id that will be used to register with trawler INTERNAL_ONLY
   late final pulumi.Output<String> credentialId;
-
   /// Description of the certificate
   late final pulumi.Output<String> description;
-
   /// Name of the certificate
   late final pulumi.Output<String> displayName;
   late final pulumi.Output<String> location;
-
   /// Auto generated primary key
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> productId;
   late final pulumi.Output<String> project;
-
   /// Input only. Raw client certificate which would be registered with trawler
-  late final pulumi
-      .Output<GoogleCloudIntegrationsV1alphaClientCertificateResponse>
-      rawCertificate;
-
+  late final pulumi.Output<GoogleCloudIntegrationsV1alphaClientCertificateResponse> rawCertificate;
   /// Immutable. Requestor ID to be used to register certificate with trawler
   late final pulumi.Output<String> requestorId;
-
   /// The timestamp after which certificate will expire
   late final pulumi.Output<String> validEndTime;
-
   /// The timestamp after which certificate will be valid
   late final pulumi.Output<String> validStartTime;
 
@@ -59,9 +49,7 @@ class Certificate extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     this.productId = registerOutput<String>('productId');
     this.project = registerOutput<String>('project');
-    this.rawCertificate =
-        registerOutput<GoogleCloudIntegrationsV1alphaClientCertificateResponse>(
-            'rawCertificate');
+    this.rawCertificate = registerOutput<GoogleCloudIntegrationsV1alphaClientCertificateResponse>('rawCertificate');
     this.requestorId = registerOutput<String>('requestorId');
     this.validEndTime = registerOutput<String>('validEndTime');
     this.validStartTime = registerOutput<String>('validStartTime');

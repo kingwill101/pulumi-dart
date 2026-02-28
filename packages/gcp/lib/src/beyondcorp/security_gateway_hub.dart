@@ -6,7 +6,6 @@ class SecurityGatewayHub {
   /// Internet Gateway configuration.
   /// Structure is documented below.
   final SecurityGatewayHubInternetGateway? internetGateway;
-
   /// The identifier for this object. Format specified above.
   final String region;
 
@@ -19,22 +18,17 @@ class SecurityGatewayHub {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final internetGatewayValue = internetGateway;
-    if (internetGatewayValue != null) {
-      map['internetGateway'] = internetGatewayValue.toMap();
-    }
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'internetGateway': ?internetGateway == null ? null : internetGateway!.toMap(),
+      'region': region,
+    };
   }
 
   factory SecurityGatewayHub.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayHub(
-      internetGateway: map['internetGateway'] == null
-          ? null
-          : SecurityGatewayHubInternetGateway.fromMap(
-              (map['internetGateway'] as Map).cast<String, dynamic>()),
+      internetGateway: map['internetGateway'] == null ? null : SecurityGatewayHubInternetGateway.fromMap((map['internetGateway'] as Map).cast<String, dynamic>()),
       region: map['region'] as String,
     );
   }
 }
+

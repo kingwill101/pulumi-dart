@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EnvironmentStorageConfig {
   /// Optional. Name of an existing Cloud Storage bucket to be used by the environment.
   final String bucket;
@@ -11,9 +12,9 @@ class EnvironmentStorageConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucket'] = bucket;
-    return map;
+    return <String, dynamic>{
+      'bucket': bucket,
+    };
   }
 
   factory EnvironmentStorageConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class EnvironmentStorageConfig {
     );
   }
 }
+

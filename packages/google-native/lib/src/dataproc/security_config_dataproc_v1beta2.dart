@@ -14,20 +14,15 @@ class SecurityConfigDataprocV1beta2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final kerberosConfigValue = kerberosConfig;
-    if (kerberosConfigValue != null) {
-      map['kerberosConfig'] = kerberosConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'kerberosConfig': ?kerberosConfig == null ? null : kerberosConfig!.toMap(),
+    };
   }
 
   factory SecurityConfigDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return SecurityConfigDataprocV1beta2(
-      kerberosConfig: map['kerberosConfig'] == null
-          ? null
-          : KerberosConfigDataprocV1beta2.fromMap(
-              (map['kerberosConfig'] as Map).cast<String, dynamic>()),
+      kerberosConfig: map['kerberosConfig'] == null ? null : KerberosConfigDataprocV1beta2.fromMap((map['kerberosConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -4,9 +4,7 @@ import 'agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_con
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfiguration {
   /// Configurations for authentication to Amazon Redshift. See `auth_configuration` block for details.
-  final AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfigurationAuthConfiguration
-      authConfiguration;
-
+  final AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfigurationAuthConfiguration authConfiguration;
   /// ID of the Amazon Redshift cluster.
   final String clusterIdentifier;
 
@@ -19,20 +17,17 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['authConfiguration'] = authConfiguration.toMap();
-    map['clusterIdentifier'] = clusterIdentifier;
-    return map;
+    return <String, dynamic>{
+      'authConfiguration': authConfiguration.toMap(),
+      'clusterIdentifier': clusterIdentifier,
+    };
   }
 
-  factory AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfiguration(
-      authConfiguration:
-          AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfigurationAuthConfiguration
-              .fromMap(
-                  (map['authConfiguration'] as Map).cast<String, dynamic>()),
+      authConfiguration: AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfigurationAuthConfiguration.fromMap((map['authConfiguration'] as Map).cast<String, dynamic>()),
       clusterIdentifier: map['clusterIdentifier'] as String,
     );
   }
 }
+

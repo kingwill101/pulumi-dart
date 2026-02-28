@@ -20,15 +20,15 @@ class EntitlementApprovalWorkflow {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['manualApprovals'] = manualApprovals.toMap();
-    return map;
+    return <String, dynamic>{
+      'manualApprovals': manualApprovals.toMap(),
+    };
   }
 
   factory EntitlementApprovalWorkflow.fromMap(Map<String, dynamic> map) {
     return EntitlementApprovalWorkflow(
-      manualApprovals: EntitlementApprovalWorkflowManualApprovals.fromMap(
-          (map['manualApprovals'] as Map).cast<String, dynamic>()),
+      manualApprovals: EntitlementApprovalWorkflowManualApprovals.fromMap((map['manualApprovals'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -10,11 +10,9 @@ class GetWorkloadIdentityPoolProviderArgs {
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The id of the pool which is the
   /// final component of the pool resource name.
   final pulumi.Input<String> workloadIdentityPoolId;
-
   /// The id of the provider which is the
   /// final component of the resource name.
   ///
@@ -29,30 +27,25 @@ class GetWorkloadIdentityPoolProviderArgs {
     String? project,
     required String workloadIdentityPoolId,
     required String workloadIdentityPoolProviderId,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        workloadIdentityPoolId =
-            pulumi.Input.asInput<String>(workloadIdentityPoolId),
-        workloadIdentityPoolProviderId =
-            pulumi.Input.asInput<String>(workloadIdentityPoolProviderId);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      workloadIdentityPoolId = pulumi.Input.asInput<String>(workloadIdentityPoolId),
+      workloadIdentityPoolProviderId = pulumi.Input.asInput<String>(workloadIdentityPoolProviderId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['workloadIdentityPoolId'] = workloadIdentityPoolId;
-    map['workloadIdentityPoolProviderId'] = workloadIdentityPoolProviderId;
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'workloadIdentityPoolId': workloadIdentityPoolId,
+      'workloadIdentityPoolProviderId': workloadIdentityPoolProviderId,
+    };
   }
 
-  factory GetWorkloadIdentityPoolProviderArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetWorkloadIdentityPoolProviderArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkloadIdentityPoolProviderArgs(
       project: map['project'] == null ? null : map['project'] as String,
       workloadIdentityPoolId: map['workloadIdentityPoolId'] as String,
-      workloadIdentityPoolProviderId:
-          map['workloadIdentityPoolProviderId'] as String,
+      workloadIdentityPoolProviderId: map['workloadIdentityPoolProviderId'] as String,
     );
   }
 }
+

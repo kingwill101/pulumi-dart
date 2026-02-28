@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// TCPSocketAction describes an action based on opening a socket
 class TCPSocketAction {
   /// Not supported by Cloud Run.
   final String? host;
-
   /// Port number to access on the container. Number must be in the range 1 to 65535.
   final int? port;
 
@@ -17,16 +17,10 @@ class TCPSocketAction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final hostValue = host;
-    if (hostValue != null) {
-      map['host'] = hostValue;
-    }
-    final portValue = port;
-    if (portValue != null) {
-      map['port'] = portValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'host': ?host,
+      'port': ?port,
+    };
   }
 
   factory TCPSocketAction.fromMap(Map<String, dynamic> map) {
@@ -36,3 +30,4 @@ class TCPSocketAction {
     );
   }
 }
+

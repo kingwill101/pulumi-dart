@@ -14,19 +14,15 @@ class HttpsTrigger {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final securityLevelValue = securityLevel;
-    if (securityLevelValue != null) {
-      map['securityLevel'] = securityLevelValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'securityLevel': ?securityLevel == null ? null : securityLevel!.value,
+    };
   }
 
   factory HttpsTrigger.fromMap(Map<String, dynamic> map) {
     return HttpsTrigger(
-      securityLevel: map['securityLevel'] == null
-          ? null
-          : HttpsTriggerSecurityLevel.fromValue(map['securityLevel'] as String),
+      securityLevel: map['securityLevel'] == null ? null : HttpsTriggerSecurityLevel.fromValue(map['securityLevel'] as String),
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SparkLoggingInfoResponse {
   /// Project ID used for logging
   final String project;
-
   /// Resource type used for logging
   final String resourceType;
 
@@ -16,10 +16,10 @@ class SparkLoggingInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['project'] = project;
-    map['resourceType'] = resourceType;
-    return map;
+    return <String, dynamic>{
+      'project': project,
+      'resourceType': resourceType,
+    };
   }
 
   factory SparkLoggingInfoResponse.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class SparkLoggingInfoResponse {
     );
   }
 }
+

@@ -351,30 +351,22 @@ class ExternalAddress extends pulumi.CustomResource {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
   /// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
-
   /// User-provided description for this resource.
   late final pulumi.Output<String?> description;
-
   /// The external IP address of a workload VM.
   late final pulumi.Output<String> externalIp;
-
   /// The internal IP address of a workload VM.
   late final pulumi.Output<String> internalIp;
-
   /// The ID of the external IP Address.
   late final pulumi.Output<String> name;
-
   /// The resource name of the private cloud to create a new external address in.
   /// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
   /// For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
   late final pulumi.Output<String> parent;
-
   /// State of the resource.
   late final pulumi.Output<String> state;
-
   /// System-generated unique identifier for the resource.
   late final pulumi.Output<String> uid;
-
   /// Last updated time of this resource.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
   /// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".

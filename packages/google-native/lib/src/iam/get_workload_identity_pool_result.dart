@@ -1,22 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getWorkloadIdentityPool.
 class GetWorkloadIdentityPoolResult {
   /// A description of the pool. Cannot exceed 256 characters.
   final String description;
-
   /// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
   final bool disabled;
-
   /// A display name for the pool. Cannot exceed 32 characters.
   final String displayName;
-
   /// Time after which the workload identity pool will be permanently purged and cannot be recovered.
   final String expireTime;
-
   /// The resource name of the pool.
   final String name;
-
   /// The state of the pool.
   final String state;
 
@@ -37,14 +33,14 @@ class GetWorkloadIdentityPoolResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['description'] = description;
-    map['disabled'] = disabled;
-    map['displayName'] = displayName;
-    map['expireTime'] = expireTime;
-    map['name'] = name;
-    map['state'] = state;
-    return map;
+    return <String, dynamic>{
+      'description': description,
+      'disabled': disabled,
+      'displayName': displayName,
+      'expireTime': expireTime,
+      'name': name,
+      'state': state,
+    };
   }
 
   factory GetWorkloadIdentityPoolResult.fromMap(Map<String, dynamic> map) {
@@ -58,3 +54,4 @@ class GetWorkloadIdentityPoolResult {
     );
   }
 }
+

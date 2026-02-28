@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RegionHealthCheckGrpcTlsHealthCheck {
   /// The gRPC service name for the health check.
   /// The value of grpcServiceName has the following meanings by convention:
@@ -7,11 +8,9 @@ class RegionHealthCheckGrpcTlsHealthCheck {
   /// * Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
   /// The grpcServiceName can only be ASCII.
   final String? grpcServiceName;
-
   /// The port number for the health check request.
   /// Must be specified if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
   final int? port;
-
   /// Specifies how port is selected for health checking, can be one of the
   /// following values:
   /// * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
@@ -35,32 +34,19 @@ class RegionHealthCheckGrpcTlsHealthCheck {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final grpcServiceNameValue = grpcServiceName;
-    if (grpcServiceNameValue != null) {
-      map['grpcServiceName'] = grpcServiceNameValue;
-    }
-    final portValue = port;
-    if (portValue != null) {
-      map['port'] = portValue;
-    }
-    final portSpecificationValue = portSpecification;
-    if (portSpecificationValue != null) {
-      map['portSpecification'] = portSpecificationValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'grpcServiceName': ?grpcServiceName,
+      'port': ?port,
+      'portSpecification': ?portSpecification,
+    };
   }
 
-  factory RegionHealthCheckGrpcTlsHealthCheck.fromMap(
-      Map<String, dynamic> map) {
+  factory RegionHealthCheckGrpcTlsHealthCheck.fromMap(Map<String, dynamic> map) {
     return RegionHealthCheckGrpcTlsHealthCheck(
-      grpcServiceName: map['grpcServiceName'] == null
-          ? null
-          : map['grpcServiceName'] as String,
+      grpcServiceName: map['grpcServiceName'] == null ? null : map['grpcServiceName'] as String,
       port: map['port'] == null ? null : map['port'] as int,
-      portSpecification: map['portSpecification'] == null
-          ? null
-          : map['portSpecification'] as String,
+      portSpecification: map['portSpecification'] == null ? null : map['portSpecification'] as String,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BareMetalAdminClusterLoadBalancerVipConfig {
   /// The VIP which you previously set aside for the Kubernetes API of this Bare Metal Admin Cluster.
   final String controlPlaneVip;
@@ -11,15 +12,15 @@ class BareMetalAdminClusterLoadBalancerVipConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['controlPlaneVip'] = controlPlaneVip;
-    return map;
+    return <String, dynamic>{
+      'controlPlaneVip': controlPlaneVip,
+    };
   }
 
-  factory BareMetalAdminClusterLoadBalancerVipConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory BareMetalAdminClusterLoadBalancerVipConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterLoadBalancerVipConfig(
       controlPlaneVip: map['controlPlaneVip'] as String,
     );
   }
 }
+

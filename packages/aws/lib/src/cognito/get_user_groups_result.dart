@@ -7,7 +7,6 @@ import 'get_user_groups_group.dart';
 class GetUserGroupsResult {
   /// List of groups. See `groups` below.
   final List<GetUserGroupsGroup> groups;
-
   /// User pool identifier.
   final String id;
   final String region;
@@ -26,25 +25,21 @@ class GetUserGroupsResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['groups'] =
-        pulumi.Input.encodeList<GetUserGroupsGroup, Map<String, dynamic>>(
-            groups, (value) => value.toMap());
-    map['id'] = id;
-    map['region'] = region;
-    map['userPoolId'] = userPoolId;
-    return map;
+    return <String, dynamic>{
+      'groups': pulumi.Input.encodeList<GetUserGroupsGroup, Map<String, dynamic>>(groups, (value) => value.toMap()),
+      'id': id,
+      'region': region,
+      'userPoolId': userPoolId,
+    };
   }
 
   factory GetUserGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetUserGroupsResult(
-      groups: pulumi.Input.decodeList<GetUserGroupsGroup>(
-          map['groups'],
-          (value) => GetUserGroupsGroup.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      groups: pulumi.Input.decodeList<GetUserGroupsGroup>(map['groups'], (value) => GetUserGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       region: map['region'] as String,
       userPoolId: map['userPoolId'] as String,
     );
   }
 }
+

@@ -20,23 +20,17 @@ class BareMetalNodePoolArgs {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
-
   /// The cluster this node pool belongs to.
   final pulumi.Input<String> bareMetalCluster;
-
   /// The display name for the Bare Metal Node Pool.
   final pulumi.Input<String>? displayName;
-
   /// The location of the resource.
   final pulumi.Input<String> location;
-
   /// The bare metal node pool name.
   final pulumi.Input<String>? name;
-
   /// Node pool configuration.
   /// Structure is documented below.
   final pulumi.Input<BareMetalNodePoolNodePoolConfig> nodePoolConfig;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -57,55 +51,37 @@ class BareMetalNodePoolArgs {
     String? name,
     required BareMetalNodePoolNodePoolConfig nodePoolConfig,
     String? project,
-  })  : annotations =
-            pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-        bareMetalCluster = pulumi.Input.asInput<String>(bareMetalCluster),
-        displayName = pulumi.Input.asOptionalInput<String>(displayName),
-        location = pulumi.Input.asInput<String>(location),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        nodePoolConfig = pulumi.Input.asInput<BareMetalNodePoolNodePoolConfig>(
-            nodePoolConfig),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
+      bareMetalCluster = pulumi.Input.asInput<String>(bareMetalCluster),
+      displayName = pulumi.Input.asOptionalInput<String>(displayName),
+      location = pulumi.Input.asInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      nodePoolConfig = pulumi.Input.asInput<BareMetalNodePoolNodePoolConfig>(nodePoolConfig),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final annotationsValue = annotations;
-    if (annotationsValue != null) {
-      map['annotations'] = annotationsValue;
-    }
-    map['bareMetalCluster'] = bareMetalCluster;
-    final displayNameValue = displayName;
-    if (displayNameValue != null) {
-      map['displayName'] = displayNameValue;
-    }
-    map['location'] = location;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    map['nodePoolConfig'] = pulumi.Input.mapInputValue<
-        BareMetalNodePoolNodePoolConfig,
-        Map<String, dynamic>>(nodePoolConfig, (value) => value.toMap());
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'annotations': ?annotations,
+      'bareMetalCluster': bareMetalCluster,
+      'displayName': ?displayName,
+      'location': location,
+      'name': ?name,
+      'nodePoolConfig': pulumi.Input.mapInputValue<BareMetalNodePoolNodePoolConfig, Map<String, dynamic>>(nodePoolConfig, (value) => value.toMap()),
+      'project': ?project,
+    };
   }
 
   factory BareMetalNodePoolArgs.fromMap(Map<String, dynamic> map) {
     return BareMetalNodePoolArgs(
-      annotations: map['annotations'] == null
-          ? null
-          : (map['annotations'] as Map).cast<String, String>(),
+      annotations: map['annotations'] == null ? null : (map['annotations'] as Map).cast<String, String>(),
       bareMetalCluster: map['bareMetalCluster'] as String,
-      displayName:
-          map['displayName'] == null ? null : map['displayName'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
       location: map['location'] as String,
       name: map['name'] == null ? null : map['name'] as String,
-      nodePoolConfig: BareMetalNodePoolNodePoolConfig.fromMap(
-          (map['nodePoolConfig'] as Map).cast<String, dynamic>()),
+      nodePoolConfig: BareMetalNodePoolNodePoolConfig.fromMap((map['nodePoolConfig'] as Map).cast<String, dynamic>()),
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

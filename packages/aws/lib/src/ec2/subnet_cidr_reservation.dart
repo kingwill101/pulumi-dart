@@ -115,19 +115,14 @@ import 'subnet_cidr_reservation_args.dart';
 class SubnetCidrReservation extends pulumi.CustomResource {
   /// The CIDR block for the reservation.
   late final pulumi.Output<String> cidrBlock;
-
   /// A brief description of the reservation.
   late final pulumi.Output<String?> description;
-
   /// ID of the AWS account that owns this CIDR reservation.
   late final pulumi.Output<String> ownerId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The type of reservation to create. Valid values: `explicit`, `prefix`
   late final pulumi.Output<String> reservationType;
-
   /// The ID of the subnet to create the reservation for.
   late final pulumi.Output<String> subnetId;
 

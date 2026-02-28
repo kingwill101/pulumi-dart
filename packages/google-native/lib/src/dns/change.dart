@@ -9,22 +9,17 @@ import 'resource_record_set_response.dart';
 class Change extends pulumi.CustomResource {
   /// Which ResourceRecordSets to add?
   late final pulumi.Output<List<ResourceRecordSetResponse>> additions;
-
   /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
   late final pulumi.Output<String?> clientOperationId;
-
   /// Which ResourceRecordSets to remove? Must match existing data exactly.
   late final pulumi.Output<List<ResourceRecordSetResponse>> deletions;
-
   /// If the DNS queries for the zone will be served.
   late final pulumi.Output<bool> isServing;
   late final pulumi.Output<String> kind;
   late final pulumi.Output<String> managedZone;
   late final pulumi.Output<String> project;
-
   /// The time that this operation was started by the server (output only). This is in RFC3339 text format.
   late final pulumi.Output<String> startTime;
-
   /// Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
   late final pulumi.Output<String> status;
 
@@ -42,11 +37,9 @@ class Change extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.additions =
-        registerOutput<List<ResourceRecordSetResponse>>('additions');
+    this.additions = registerOutput<List<ResourceRecordSetResponse>>('additions');
     this.clientOperationId = registerOutput<String?>('clientOperationId');
-    this.deletions =
-        registerOutput<List<ResourceRecordSetResponse>>('deletions');
+    this.deletions = registerOutput<List<ResourceRecordSetResponse>>('deletions');
     this.isServing = registerOutput<bool>('isServing');
     this.kind = registerOutput<String>('kind');
     this.managedZone = registerOutput<String>('managedZone');

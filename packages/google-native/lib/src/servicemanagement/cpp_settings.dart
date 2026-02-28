@@ -14,20 +14,15 @@ class CppSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final commonValue = common;
-    if (commonValue != null) {
-      map['common'] = commonValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'common': ?common == null ? null : common!.toMap(),
+    };
   }
 
   factory CppSettings.fromMap(Map<String, dynamic> map) {
     return CppSettings(
-      common: map['common'] == null
-          ? null
-          : CommonLanguageSettings.fromMap(
-              (map['common'] as Map).cast<String, dynamic>()),
+      common: map['common'] == null ? null : CommonLanguageSettings.fromMap((map['common'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

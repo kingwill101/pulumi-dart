@@ -1,11 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EnvironmentLoggingConfigurationWorkerLogs {
   final String? cloudWatchLogGroupArn;
-
   /// Enabling or disabling the collection of logs
   final bool? enabled;
-
   /// Logging level. Valid values: `CRITICAL`, `ERROR`, `WARNING`, `INFO`, `DEBUG`. Will be `INFO` by default.
   final String? logLevel;
 
@@ -20,30 +19,19 @@ class EnvironmentLoggingConfigurationWorkerLogs {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cloudWatchLogGroupArnValue = cloudWatchLogGroupArn;
-    if (cloudWatchLogGroupArnValue != null) {
-      map['cloudWatchLogGroupArn'] = cloudWatchLogGroupArnValue;
-    }
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    final logLevelValue = logLevel;
-    if (logLevelValue != null) {
-      map['logLevel'] = logLevelValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cloudWatchLogGroupArn': ?cloudWatchLogGroupArn,
+      'enabled': ?enabled,
+      'logLevel': ?logLevel,
+    };
   }
 
-  factory EnvironmentLoggingConfigurationWorkerLogs.fromMap(
-      Map<String, dynamic> map) {
+  factory EnvironmentLoggingConfigurationWorkerLogs.fromMap(Map<String, dynamic> map) {
     return EnvironmentLoggingConfigurationWorkerLogs(
-      cloudWatchLogGroupArn: map['cloudWatchLogGroupArn'] == null
-          ? null
-          : map['cloudWatchLogGroupArn'] as String,
+      cloudWatchLogGroupArn: map['cloudWatchLogGroupArn'] == null ? null : map['cloudWatchLogGroupArn'] as String,
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
       logLevel: map['logLevel'] == null ? null : map['logLevel'] as String,
     );
   }
 }
+

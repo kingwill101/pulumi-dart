@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Indicates the location at which a package was found.
 class GrafeasV1FileLocation {
   /// For jars that are contained inside .war files, this filepath can indicate the path to war file combined with the path to jar file.
@@ -12,12 +13,9 @@ class GrafeasV1FileLocation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final filePathValue = filePath;
-    if (filePathValue != null) {
-      map['filePath'] = filePathValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'filePath': ?filePath,
+    };
   }
 
   factory GrafeasV1FileLocation.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class GrafeasV1FileLocation {
     );
   }
 }
+

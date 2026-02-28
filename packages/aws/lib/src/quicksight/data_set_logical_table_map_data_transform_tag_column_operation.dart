@@ -6,7 +6,6 @@ import 'data_set_logical_table_map_data_transform_tag_column_operation_tag.dart'
 class DataSetLogicalTableMapDataTransformTagColumnOperation {
   /// Column name.
   final String columnName;
-
   /// The dataset column tag, currently only used for geospatial type tagging. See tags.
   final List<DataSetLogicalTableMapDataTransformTagColumnOperationTag> tags;
 
@@ -19,24 +18,17 @@ class DataSetLogicalTableMapDataTransformTagColumnOperation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['columnName'] = columnName;
-    map['tags'] = pulumi.Input.encodeList<
-        DataSetLogicalTableMapDataTransformTagColumnOperationTag,
-        Map<String, dynamic>>(tags, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'columnName': columnName,
+      'tags': pulumi.Input.encodeList<DataSetLogicalTableMapDataTransformTagColumnOperationTag, Map<String, dynamic>>(tags, (value) => value.toMap()),
+    };
   }
 
-  factory DataSetLogicalTableMapDataTransformTagColumnOperation.fromMap(
-      Map<String, dynamic> map) {
+  factory DataSetLogicalTableMapDataTransformTagColumnOperation.fromMap(Map<String, dynamic> map) {
     return DataSetLogicalTableMapDataTransformTagColumnOperation(
       columnName: map['columnName'] as String,
-      tags: pulumi.Input.decodeList<
-              DataSetLogicalTableMapDataTransformTagColumnOperationTag>(
-          map['tags'],
-          (value) =>
-              DataSetLogicalTableMapDataTransformTagColumnOperationTag.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      tags: pulumi.Input.decodeList<DataSetLogicalTableMapDataTransformTagColumnOperationTag>(map['tags'], (value) => DataSetLogicalTableMapDataTransformTagColumnOperationTag.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

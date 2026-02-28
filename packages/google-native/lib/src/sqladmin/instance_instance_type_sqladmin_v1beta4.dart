@@ -14,7 +14,7 @@ enum InstanceInstanceTypeSqladminV1beta4 {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown InstanceInstanceTypeSqladminV1beta4 value: $value');
+    throw ArgumentError('Unknown InstanceInstanceTypeSqladminV1beta4 value: $value');
   }
 }
+

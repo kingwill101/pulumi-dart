@@ -10,18 +10,14 @@ import 'group_migration_target_type.dart';
 class GroupArgs {
   /// User-provided description of the group.
   final pulumi.Input<String>? description;
-
   /// Display name is a user defined name for this group which can be updated.
   final pulumi.Input<String>? displayName;
-
   /// Required. The group identifier.
   final pulumi.Input<String> groupId;
   final pulumi.Input<String>? location;
-
   /// Immutable. The target type of this group.
   final pulumi.Input<GroupMigrationTargetType>? migrationTargetType;
   final pulumi.Input<String>? project;
-
   /// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   final pulumi.Input<String>? requestId;
 
@@ -41,62 +37,37 @@ class GroupArgs {
     GroupMigrationTargetType? migrationTargetType,
     String? project,
     String? requestId,
-  })  : description = pulumi.Input.asOptionalInput<String>(description),
-        displayName = pulumi.Input.asOptionalInput<String>(displayName),
-        groupId = pulumi.Input.asInput<String>(groupId),
-        location = pulumi.Input.asOptionalInput<String>(location),
-        migrationTargetType =
-            pulumi.Input.asOptionalInput<GroupMigrationTargetType>(
-                migrationTargetType),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        requestId = pulumi.Input.asOptionalInput<String>(requestId);
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      displayName = pulumi.Input.asOptionalInput<String>(displayName),
+      groupId = pulumi.Input.asInput<String>(groupId),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      migrationTargetType = pulumi.Input.asOptionalInput<GroupMigrationTargetType>(migrationTargetType),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      requestId = pulumi.Input.asOptionalInput<String>(requestId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final displayNameValue = displayName;
-    if (displayNameValue != null) {
-      map['displayName'] = displayNameValue;
-    }
-    map['groupId'] = groupId;
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    final migrationTargetTypeValue = migrationTargetType;
-    if (migrationTargetTypeValue != null) {
-      map['migrationTargetType'] =
-          pulumi.Input.mapOptionalInputValue<GroupMigrationTargetType, String>(
-              migrationTargetTypeValue, (value) => value.value);
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final requestIdValue = requestId;
-    if (requestIdValue != null) {
-      map['requestId'] = requestIdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'displayName': ?displayName,
+      'groupId': groupId,
+      'location': ?location,
+      'migrationTargetType': ?pulumi.Input.mapOptionalInputValue<GroupMigrationTargetType, String>(migrationTargetType, (value) => value.value),
+      'project': ?project,
+      'requestId': ?requestId,
+    };
   }
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      description:
-          map['description'] == null ? null : map['description'] as String,
-      displayName:
-          map['displayName'] == null ? null : map['displayName'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
       groupId: map['groupId'] as String,
       location: map['location'] == null ? null : map['location'] as String,
-      migrationTargetType: map['migrationTargetType'] == null
-          ? null
-          : GroupMigrationTargetType.fromValue(
-              map['migrationTargetType'] as String),
+      migrationTargetType: map['migrationTargetType'] == null ? null : GroupMigrationTargetType.fromValue(map['migrationTargetType'] as String),
       project: map['project'] == null ? null : map['project'] as String,
       requestId: map['requestId'] == null ? null : map['requestId'] as String,
     );
   }
 }
+

@@ -14,19 +14,15 @@ class GetMembershipEndpoint {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['gkeClusters'] = pulumi.Input.encodeList<
-        GetMembershipEndpointGkeCluster,
-        Map<String, dynamic>>(gkeClusters, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'gkeClusters': pulumi.Input.encodeList<GetMembershipEndpointGkeCluster, Map<String, dynamic>>(gkeClusters, (value) => value.toMap()),
+    };
   }
 
   factory GetMembershipEndpoint.fromMap(Map<String, dynamic> map) {
     return GetMembershipEndpoint(
-      gkeClusters: pulumi.Input.decodeList<GetMembershipEndpointGkeCluster>(
-          map['gkeClusters'],
-          (value) => GetMembershipEndpointGkeCluster.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      gkeClusters: pulumi.Input.decodeList<GetMembershipEndpointGkeCluster>(map['gkeClusters'], (value) => GetMembershipEndpointGkeCluster.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

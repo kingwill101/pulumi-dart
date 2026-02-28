@@ -15,24 +15,15 @@ class GoogleCloudDialogflowCxV3Form {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final parametersValue = parameters;
-    if (parametersValue != null) {
-      map['parameters'] = pulumi.Input.encodeList<
-          GoogleCloudDialogflowCxV3FormParameter,
-          Map<String, dynamic>>(parametersValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'parameters': ?parameters == null ? null : pulumi.Input.encodeList<GoogleCloudDialogflowCxV3FormParameter, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+    };
   }
 
   factory GoogleCloudDialogflowCxV3Form.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3Form(
-      parameters: map['parameters'] == null
-          ? null
-          : pulumi.Input.decodeList<GoogleCloudDialogflowCxV3FormParameter>(
-              map['parameters'],
-              (value) => GoogleCloudDialogflowCxV3FormParameter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      parameters: map['parameters'] == null ? null : pulumi.Input.decodeList<GoogleCloudDialogflowCxV3FormParameter>(map['parameters'], (value) => GoogleCloudDialogflowCxV3FormParameter.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

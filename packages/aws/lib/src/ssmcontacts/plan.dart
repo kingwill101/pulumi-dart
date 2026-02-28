@@ -601,10 +601,8 @@ import 'plan_stage.dart';
 class Plan extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the contact or escalation plan.
   late final pulumi.Output<String> contactId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// One or more configuration blocks for specifying a list of stages that the escalation plan or engagement plan uses to engage contacts and contact methods. See Stage below for more details.
   late final pulumi.Output<List<PlanStage>> stages;
 

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for secrets stored in Google Secret Manager.
 class SecretManagerSourceResponse {
   /// The name of the Secret Version containing the encryption key in the following format: `projects/{project}/secrets/{secret_id}/versions/{version_number}` Note that only numbered versions are supported. Aliases like "latest" are not supported.
@@ -12,9 +13,9 @@ class SecretManagerSourceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['secretVersion'] = secretVersion;
-    return map;
+    return <String, dynamic>{
+      'secretVersion': secretVersion,
+    };
   }
 
   factory SecretManagerSourceResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class SecretManagerSourceResponse {
     );
   }
 }
+

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetLaunchConfigurationMetadataOption {
   /// State of the metadata service: `enabled`, `disabled`.
   final String httpEndpoint;
-
   /// The desired HTTP PUT response hop limit for instance metadata requests.
   final int httpPutResponseHopLimit;
-
   /// If session tokens are required: `optional`, `required`.
   final String httpTokens;
 
@@ -21,15 +20,14 @@ class GetLaunchConfigurationMetadataOption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['httpEndpoint'] = httpEndpoint;
-    map['httpPutResponseHopLimit'] = httpPutResponseHopLimit;
-    map['httpTokens'] = httpTokens;
-    return map;
+    return <String, dynamic>{
+      'httpEndpoint': httpEndpoint,
+      'httpPutResponseHopLimit': httpPutResponseHopLimit,
+      'httpTokens': httpTokens,
+    };
   }
 
-  factory GetLaunchConfigurationMetadataOption.fromMap(
-      Map<String, dynamic> map) {
+  factory GetLaunchConfigurationMetadataOption.fromMap(Map<String, dynamic> map) {
     return GetLaunchConfigurationMetadataOption(
       httpEndpoint: map['httpEndpoint'] as String,
       httpPutResponseHopLimit: map['httpPutResponseHopLimit'] as int,
@@ -37,3 +35,4 @@ class GetLaunchConfigurationMetadataOption {
     );
   }
 }
+

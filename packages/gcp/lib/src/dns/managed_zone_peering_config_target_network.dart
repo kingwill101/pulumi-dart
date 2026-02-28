@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ManagedZonePeeringConfigTargetNetwork {
   /// The id or fully qualified URL of the VPC network to forward queries to.
   /// This should be formatted like `projects/{project}/global/networks/{network}` or
@@ -13,15 +14,15 @@ class ManagedZonePeeringConfigTargetNetwork {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['networkUrl'] = networkUrl;
-    return map;
+    return <String, dynamic>{
+      'networkUrl': networkUrl,
+    };
   }
 
-  factory ManagedZonePeeringConfigTargetNetwork.fromMap(
-      Map<String, dynamic> map) {
+  factory ManagedZonePeeringConfigTargetNetwork.fromMap(Map<String, dynamic> map) {
     return ManagedZonePeeringConfigTargetNetwork(
       networkUrl: map['networkUrl'] as String,
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetServiceMultiRegionSetting {
   /// System-generated unique id for the multi-region Service.
   final String multiRegionId;
-
   /// The list of regions to deploy the multi-region Service.
   final List<String> regions;
 
@@ -16,10 +16,10 @@ class GetServiceMultiRegionSetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['multiRegionId'] = multiRegionId;
-    map['regions'] = regions;
-    return map;
+    return <String, dynamic>{
+      'multiRegionId': multiRegionId,
+      'regions': regions,
+    };
   }
 
   factory GetServiceMultiRegionSetting.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetServiceMultiRegionSetting {
     );
   }
 }
+

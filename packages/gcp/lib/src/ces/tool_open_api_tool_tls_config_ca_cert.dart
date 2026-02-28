@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ToolOpenApiToolTlsConfigCaCert {
   /// (Output)
   /// The allowed custom CA certificates (in DER format) for
@@ -14,7 +15,6 @@ class ToolOpenApiToolTlsConfigCaCert {
   /// -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
   /// A base64-encoded string.
   final String? cert;
-
   /// (Output)
   /// The name of the allowed custom CA certificates. This
   /// can be used to disambiguate the custom CA certificates.
@@ -29,23 +29,17 @@ class ToolOpenApiToolTlsConfigCaCert {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final certValue = cert;
-    if (certValue != null) {
-      map['cert'] = certValue;
-    }
-    final displayNameValue = displayName;
-    if (displayNameValue != null) {
-      map['displayName'] = displayNameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cert': ?cert,
+      'displayName': ?displayName,
+    };
   }
 
   factory ToolOpenApiToolTlsConfigCaCert.fromMap(Map<String, dynamic> map) {
     return ToolOpenApiToolTlsConfigCaCert(
       cert: map['cert'] == null ? null : map['cert'] as String,
-      displayName:
-          map['displayName'] == null ? null : map['displayName'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
     );
   }
 }
+

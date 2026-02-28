@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BucketV2Logging {
   /// Name of the bucket that will receive the log objects.
   final String targetBucket;
-
   /// To specify a key prefix for log objects.
   final String? targetPrefix;
 
@@ -16,20 +16,17 @@ class BucketV2Logging {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['targetBucket'] = targetBucket;
-    final targetPrefixValue = targetPrefix;
-    if (targetPrefixValue != null) {
-      map['targetPrefix'] = targetPrefixValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'targetBucket': targetBucket,
+      'targetPrefix': ?targetPrefix,
+    };
   }
 
   factory BucketV2Logging.fromMap(Map<String, dynamic> map) {
     return BucketV2Logging(
       targetBucket: map['targetBucket'] as String,
-      targetPrefix:
-          map['targetPrefix'] == null ? null : map['targetPrefix'] as String,
+      targetPrefix: map['targetPrefix'] == null ? null : map['targetPrefix'] as String,
     );
   }
 }
+

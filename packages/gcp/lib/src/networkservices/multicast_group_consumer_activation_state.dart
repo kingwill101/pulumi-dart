@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MulticastGroupConsumerActivationState {
   /// (Output)
   /// The state of the multicast resource.
@@ -20,18 +21,15 @@ class MulticastGroupConsumerActivationState {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final stateValue = state;
-    if (stateValue != null) {
-      map['state'] = stateValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'state': ?state,
+    };
   }
 
-  factory MulticastGroupConsumerActivationState.fromMap(
-      Map<String, dynamic> map) {
+  factory MulticastGroupConsumerActivationState.fromMap(Map<String, dynamic> map) {
     return MulticastGroupConsumerActivationState(
       state: map['state'] == null ? null : map['state'] as String,
     );
   }
 }
+

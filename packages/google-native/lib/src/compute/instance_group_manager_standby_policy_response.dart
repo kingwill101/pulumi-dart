@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceGroupManagerStandbyPolicyResponse {
   final int initialDelaySec;
-
   /// Defines behaviour of using instances from standby pool to resize MIG.
   final String mode;
 
@@ -15,17 +15,17 @@ class InstanceGroupManagerStandbyPolicyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['initialDelaySec'] = initialDelaySec;
-    map['mode'] = mode;
-    return map;
+    return <String, dynamic>{
+      'initialDelaySec': initialDelaySec,
+      'mode': mode,
+    };
   }
 
-  factory InstanceGroupManagerStandbyPolicyResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory InstanceGroupManagerStandbyPolicyResponse.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerStandbyPolicyResponse(
       initialDelaySec: map['initialDelaySec'] as int,
       mode: map['mode'] as String,
     );
   }
 }
+

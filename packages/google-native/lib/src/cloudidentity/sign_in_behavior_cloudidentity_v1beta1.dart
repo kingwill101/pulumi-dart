@@ -14,20 +14,15 @@ class SignInBehaviorCloudidentityV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final redirectConditionValue = redirectCondition;
-    if (redirectConditionValue != null) {
-      map['redirectCondition'] = redirectConditionValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'redirectCondition': ?redirectCondition == null ? null : redirectCondition!.value,
+    };
   }
 
   factory SignInBehaviorCloudidentityV1beta1.fromMap(Map<String, dynamic> map) {
     return SignInBehaviorCloudidentityV1beta1(
-      redirectCondition: map['redirectCondition'] == null
-          ? null
-          : SignInBehaviorRedirectConditionCloudidentityV1beta1.fromValue(
-              map['redirectCondition'] as String),
+      redirectCondition: map['redirectCondition'] == null ? null : SignInBehaviorRedirectConditionCloudidentityV1beta1.fromValue(map['redirectCondition'] as String),
     );
   }
 }
+

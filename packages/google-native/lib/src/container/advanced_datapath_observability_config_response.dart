@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// AdvancedDatapathObservabilityConfig specifies configuration of observability features of advanced datapath.
 class AdvancedDatapathObservabilityConfigResponse {
   /// Expose flow metrics on nodes
   final bool enableMetrics;
-
   /// Method used to make Relay available
   final String relayMode;
 
@@ -17,17 +17,17 @@ class AdvancedDatapathObservabilityConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enableMetrics'] = enableMetrics;
-    map['relayMode'] = relayMode;
-    return map;
+    return <String, dynamic>{
+      'enableMetrics': enableMetrics,
+      'relayMode': relayMode,
+    };
   }
 
-  factory AdvancedDatapathObservabilityConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory AdvancedDatapathObservabilityConfigResponse.fromMap(Map<String, dynamic> map) {
     return AdvancedDatapathObservabilityConfigResponse(
       enableMetrics: map['enableMetrics'] as bool,
       relayMode: map['relayMode'] as String,
     );
   }
 }
+

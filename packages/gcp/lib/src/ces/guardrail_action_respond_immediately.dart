@@ -16,20 +16,15 @@ class GuardrailActionRespondImmediately {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['responses'] = pulumi.Input.encodeList<
-        GuardrailActionRespondImmediatelyResponse,
-        Map<String, dynamic>>(responses, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'responses': pulumi.Input.encodeList<GuardrailActionRespondImmediatelyResponse, Map<String, dynamic>>(responses, (value) => value.toMap()),
+    };
   }
 
   factory GuardrailActionRespondImmediately.fromMap(Map<String, dynamic> map) {
     return GuardrailActionRespondImmediately(
-      responses:
-          pulumi.Input.decodeList<GuardrailActionRespondImmediatelyResponse>(
-              map['responses'],
-              (value) => GuardrailActionRespondImmediatelyResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      responses: pulumi.Input.decodeList<GuardrailActionRespondImmediatelyResponse>(map['responses'], (value) => GuardrailActionRespondImmediatelyResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

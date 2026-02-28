@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// ConnectionStatus indicates the state of the connection.
 class ConnectionStatusResponse {
   /// Description.
   final String description;
-
   /// State.
   final String state;
-
   /// Status provides detailed information for the state.
   final String status;
 
@@ -22,11 +21,11 @@ class ConnectionStatusResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['description'] = description;
-    map['state'] = state;
-    map['status'] = status;
-    return map;
+    return <String, dynamic>{
+      'description': description,
+      'state': state,
+      'status': status,
+    };
   }
 
   factory ConnectionStatusResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class ConnectionStatusResponse {
     );
   }
 }
+

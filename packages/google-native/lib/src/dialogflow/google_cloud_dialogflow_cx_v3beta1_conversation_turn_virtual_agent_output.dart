@@ -10,19 +10,14 @@ import 'google_rpc_status_dialogflow_v3beta1.dart';
 class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput {
   /// The Page on which the utterance was spoken. Only name and displayName will be set.
   final GoogleCloudDialogflowCxV3beta1Page? currentPage;
-
   /// Input only. The diagnostic info output for the turn. Required to calculate the testing coverage.
   final Map<String, String> diagnosticInfo;
-
   /// The session parameters available to the bot at this point.
   final Map<String, String>? sessionParameters;
-
   /// Response error from the agent in the test result. If set, other output is empty.
   final GoogleRpcStatusDialogflowV3beta1? status;
-
   /// The text responses from the agent for the turn.
   final List<GoogleCloudDialogflowCxV3beta1ResponseMessageText>? textResponses;
-
   /// The Intent that triggered the response. Only name and displayName will be set.
   final GoogleCloudDialogflowCxV3beta1Intent? triggeredIntent;
 
@@ -43,60 +38,25 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final currentPageValue = currentPage;
-    if (currentPageValue != null) {
-      map['currentPage'] = currentPageValue.toMap();
-    }
-    map['diagnosticInfo'] = diagnosticInfo;
-    final sessionParametersValue = sessionParameters;
-    if (sessionParametersValue != null) {
-      map['sessionParameters'] = sessionParametersValue;
-    }
-    final statusValue = status;
-    if (statusValue != null) {
-      map['status'] = statusValue.toMap();
-    }
-    final textResponsesValue = textResponses;
-    if (textResponsesValue != null) {
-      map['textResponses'] = pulumi.Input.encodeList<
-          GoogleCloudDialogflowCxV3beta1ResponseMessageText,
-          Map<String, dynamic>>(textResponsesValue, (value) => value.toMap());
-    }
-    final triggeredIntentValue = triggeredIntent;
-    if (triggeredIntentValue != null) {
-      map['triggeredIntent'] = triggeredIntentValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'currentPage': ?currentPage == null ? null : currentPage!.toMap(),
+      'diagnosticInfo': diagnosticInfo,
+      'sessionParameters': ?sessionParameters,
+      'status': ?status == null ? null : status!.toMap(),
+      'textResponses': ?textResponses == null ? null : pulumi.Input.encodeList<GoogleCloudDialogflowCxV3beta1ResponseMessageText, Map<String, dynamic>>(textResponses!, (value) => value.toMap()),
+      'triggeredIntent': ?triggeredIntent == null ? null : triggeredIntent!.toMap(),
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput(
-      currentPage: map['currentPage'] == null
-          ? null
-          : GoogleCloudDialogflowCxV3beta1Page.fromMap(
-              (map['currentPage'] as Map).cast<String, dynamic>()),
+      currentPage: map['currentPage'] == null ? null : GoogleCloudDialogflowCxV3beta1Page.fromMap((map['currentPage'] as Map).cast<String, dynamic>()),
       diagnosticInfo: (map['diagnosticInfo'] as Map).cast<String, String>(),
-      sessionParameters: map['sessionParameters'] == null
-          ? null
-          : (map['sessionParameters'] as Map).cast<String, String>(),
-      status: map['status'] == null
-          ? null
-          : GoogleRpcStatusDialogflowV3beta1.fromMap(
-              (map['status'] as Map).cast<String, dynamic>()),
-      textResponses: map['textResponses'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  GoogleCloudDialogflowCxV3beta1ResponseMessageText>(
-              map['textResponses'],
-              (value) =>
-                  GoogleCloudDialogflowCxV3beta1ResponseMessageText.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      triggeredIntent: map['triggeredIntent'] == null
-          ? null
-          : GoogleCloudDialogflowCxV3beta1Intent.fromMap(
-              (map['triggeredIntent'] as Map).cast<String, dynamic>()),
+      sessionParameters: map['sessionParameters'] == null ? null : (map['sessionParameters'] as Map).cast<String, String>(),
+      status: map['status'] == null ? null : GoogleRpcStatusDialogflowV3beta1.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      textResponses: map['textResponses'] == null ? null : pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1ResponseMessageText>(map['textResponses'], (value) => GoogleCloudDialogflowCxV3beta1ResponseMessageText.fromMap((value as Map).cast<String, dynamic>())),
+      triggeredIntent: map['triggeredIntent'] == null ? null : GoogleCloudDialogflowCxV3beta1Intent.fromMap((map['triggeredIntent'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

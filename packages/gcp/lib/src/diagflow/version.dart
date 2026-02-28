@@ -389,17 +389,13 @@ import 'version_args.dart';
 class Version extends pulumi.CustomResource {
   /// The developer-provided description of this version.
   late final pulumi.Output<String?> description;
-
   /// The unique identifier of this agent version.
   late final pulumi.Output<String> name;
-
   /// The Flow to create an Version for.
   /// Format: projects/<Project ID>/agent.
   late final pulumi.Output<String?> parent;
-
   /// The status of this version.
   late final pulumi.Output<String> status;
-
   /// The sequential number of this version.
   late final pulumi.Output<int> versionNumber;
 

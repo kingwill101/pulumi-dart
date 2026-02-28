@@ -14,21 +14,15 @@ class GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final permissionsValue = permissions;
-    if (permissionsValue != null) {
-      map['permissions'] = permissionsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'permissions': ?permissions == null ? null : permissions!.toMap(),
+    };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig(
-      permissions: map['permissions'] == null
-          ? null
-          : GoogleCloudIdentitytoolkitAdminV2ClientPermissions.fromMap(
-              (map['permissions'] as Map).cast<String, dynamic>()),
+      permissions: map['permissions'] == null ? null : GoogleCloudIdentitytoolkitAdminV2ClientPermissions.fromMap((map['permissions'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

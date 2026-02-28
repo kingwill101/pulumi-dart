@@ -100,13 +100,10 @@ import 'logging_options_args.dart';
 class LoggingOptions extends pulumi.CustomResource {
   /// The default logging level. Valid Values: `"DEBUG"`, `"INFO"`, `"ERROR"`, `"WARN"`, `"DISABLED"`.
   late final pulumi.Output<String> defaultLogLevel;
-
   /// If `true` all logs are disabled. The default is `false`.
   late final pulumi.Output<bool?> disableAllLogs;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ARN of the role that allows IoT to write to Cloudwatch logs.
   late final pulumi.Output<String> roleArn;
 

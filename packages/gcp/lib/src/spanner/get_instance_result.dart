@@ -12,7 +12,6 @@ class GetInstanceResult {
   final String edition;
   final Map<String, String> effectiveLabels;
   final bool forceDestroy;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instanceType;
@@ -61,47 +60,32 @@ class GetInstanceResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['autoscalingConfigs'] = pulumi.Input.encodeList<
-        GetInstanceAutoscalingConfig,
-        Map<String, dynamic>>(autoscalingConfigs, (value) => value.toMap());
-    final configValue = config;
-    if (configValue != null) {
-      map['config'] = configValue;
-    }
-    map['defaultBackupScheduleType'] = defaultBackupScheduleType;
-    final displayNameValue = displayName;
-    if (displayNameValue != null) {
-      map['displayName'] = displayNameValue;
-    }
-    map['edition'] = edition;
-    map['effectiveLabels'] = effectiveLabels;
-    map['forceDestroy'] = forceDestroy;
-    map['id'] = id;
-    map['instanceType'] = instanceType;
-    map['labels'] = labels;
-    map['name'] = name;
-    map['numNodes'] = numNodes;
-    map['processingUnits'] = processingUnits;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['pulumiLabels'] = pulumiLabels;
-    map['state'] = state;
-    return map;
+    return <String, dynamic>{
+      'autoscalingConfigs': pulumi.Input.encodeList<GetInstanceAutoscalingConfig, Map<String, dynamic>>(autoscalingConfigs, (value) => value.toMap()),
+      'config': ?config,
+      'defaultBackupScheduleType': defaultBackupScheduleType,
+      'displayName': ?displayName,
+      'edition': edition,
+      'effectiveLabels': effectiveLabels,
+      'forceDestroy': forceDestroy,
+      'id': id,
+      'instanceType': instanceType,
+      'labels': labels,
+      'name': name,
+      'numNodes': numNodes,
+      'processingUnits': processingUnits,
+      'project': ?project,
+      'pulumiLabels': pulumiLabels,
+      'state': state,
+    };
   }
 
   factory GetInstanceResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceResult(
-      autoscalingConfigs: pulumi.Input.decodeList<GetInstanceAutoscalingConfig>(
-          map['autoscalingConfigs'],
-          (value) => GetInstanceAutoscalingConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      autoscalingConfigs: pulumi.Input.decodeList<GetInstanceAutoscalingConfig>(map['autoscalingConfigs'], (value) => GetInstanceAutoscalingConfig.fromMap((value as Map).cast<String, dynamic>())),
       config: map['config'] == null ? null : map['config'] as String,
       defaultBackupScheduleType: map['defaultBackupScheduleType'] as String,
-      displayName:
-          map['displayName'] == null ? null : map['displayName'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
       edition: map['edition'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       forceDestroy: map['forceDestroy'] as bool,
@@ -117,3 +101,4 @@ class GetInstanceResult {
     );
   }
 }
+

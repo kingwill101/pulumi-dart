@@ -14,7 +14,7 @@ enum ApigatewayAuditLogConfigLogType {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown ApigatewayAuditLogConfigLogType value: $value');
+    throw ArgumentError('Unknown ApigatewayAuditLogConfigLogType value: $value');
   }
 }
+

@@ -14,3 +14,4 @@ enum NodeGroupRolesItem {
     throw ArgumentError('Unknown NodeGroupRolesItem value: $value');
   }
 }
+

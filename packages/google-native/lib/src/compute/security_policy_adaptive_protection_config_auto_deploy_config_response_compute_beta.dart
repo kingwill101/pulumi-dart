@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration options for Adaptive Protection auto-deploy feature.
 class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseComputeBeta {
   final double confidenceThreshold;
@@ -20,16 +21,15 @@ class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseComputeBeta 
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['confidenceThreshold'] = confidenceThreshold;
-    map['expirationSec'] = expirationSec;
-    map['impactedBaselineThreshold'] = impactedBaselineThreshold;
-    map['loadThreshold'] = loadThreshold;
-    return map;
+    return <String, dynamic>{
+      'confidenceThreshold': confidenceThreshold,
+      'expirationSec': expirationSec,
+      'impactedBaselineThreshold': impactedBaselineThreshold,
+      'loadThreshold': loadThreshold,
+    };
   }
 
-  factory SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseComputeBeta.fromMap(
-      Map<String, dynamic> map) {
+  factory SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseComputeBeta(
       confidenceThreshold: map['confidenceThreshold'] as double,
       expirationSec: map['expirationSec'] as int,
@@ -38,3 +38,4 @@ class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseComputeBeta 
     );
   }
 }
+

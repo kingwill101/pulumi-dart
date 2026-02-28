@@ -7,7 +7,6 @@ import 'get_organizational_unit_child_accounts_account.dart';
 class GetOrganizationalUnitChildAccountsResult {
   /// List of child accounts, which have the following attributes:
   final List<GetOrganizationalUnitChildAccountsAccount> accounts;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String parentId;
@@ -23,25 +22,19 @@ class GetOrganizationalUnitChildAccountsResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accounts'] = pulumi.Input.encodeList<
-        GetOrganizationalUnitChildAccountsAccount,
-        Map<String, dynamic>>(accounts, (value) => value.toMap());
-    map['id'] = id;
-    map['parentId'] = parentId;
-    return map;
+    return <String, dynamic>{
+      'accounts': pulumi.Input.encodeList<GetOrganizationalUnitChildAccountsAccount, Map<String, dynamic>>(accounts, (value) => value.toMap()),
+      'id': id,
+      'parentId': parentId,
+    };
   }
 
-  factory GetOrganizationalUnitChildAccountsResult.fromMap(
-      Map<String, dynamic> map) {
+  factory GetOrganizationalUnitChildAccountsResult.fromMap(Map<String, dynamic> map) {
     return GetOrganizationalUnitChildAccountsResult(
-      accounts:
-          pulumi.Input.decodeList<GetOrganizationalUnitChildAccountsAccount>(
-              map['accounts'],
-              (value) => GetOrganizationalUnitChildAccountsAccount.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      accounts: pulumi.Input.decodeList<GetOrganizationalUnitChildAccountsAccount>(map['accounts'], (value) => GetOrganizationalUnitChildAccountsAccount.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       parentId: map['parentId'] as String,
     );
   }
 }
+

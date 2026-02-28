@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for the Kubernetes Dashboard.
 class KubernetesDashboard {
   /// Whether the Kubernetes Dashboard is enabled for this cluster.
@@ -12,12 +13,9 @@ class KubernetesDashboard {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final disabledValue = disabled;
-    if (disabledValue != null) {
-      map['disabled'] = disabledValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'disabled': ?disabled,
+    };
   }
 
   factory KubernetesDashboard.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class KubernetesDashboard {
     );
   }
 }
+

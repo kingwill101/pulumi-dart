@@ -12,7 +12,7 @@ enum RegionBackendServiceCompressionModeComputeV1 {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown RegionBackendServiceCompressionModeComputeV1 value: $value');
+    throw ArgumentError('Unknown RegionBackendServiceCompressionModeComputeV1 value: $value');
   }
 }
+

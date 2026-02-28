@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ServiceTemplateScaling {
   /// Combined maximum number of instances for all revisions receiving traffic.
   final int? maxInstanceCount;
-
   /// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
   final int? minInstanceCount;
 
@@ -16,26 +16,17 @@ class ServiceTemplateScaling {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final maxInstanceCountValue = maxInstanceCount;
-    if (maxInstanceCountValue != null) {
-      map['maxInstanceCount'] = maxInstanceCountValue;
-    }
-    final minInstanceCountValue = minInstanceCount;
-    if (minInstanceCountValue != null) {
-      map['minInstanceCount'] = minInstanceCountValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'maxInstanceCount': ?maxInstanceCount,
+      'minInstanceCount': ?minInstanceCount,
+    };
   }
 
   factory ServiceTemplateScaling.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateScaling(
-      maxInstanceCount: map['maxInstanceCount'] == null
-          ? null
-          : map['maxInstanceCount'] as int,
-      minInstanceCount: map['minInstanceCount'] == null
-          ? null
-          : map['minInstanceCount'] as int,
+      maxInstanceCount: map['maxInstanceCount'] == null ? null : map['maxInstanceCount'] as int,
+      minInstanceCount: map['minInstanceCount'] == null ? null : map['minInstanceCount'] as int,
     );
   }
 }
+

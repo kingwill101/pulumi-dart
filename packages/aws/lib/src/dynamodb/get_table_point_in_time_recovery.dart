@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetTablePointInTimeRecovery {
   final bool enabled;
   final int recoveryPeriodInDays;
@@ -13,10 +14,10 @@ class GetTablePointInTimeRecovery {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    map['recoveryPeriodInDays'] = recoveryPeriodInDays;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+      'recoveryPeriodInDays': recoveryPeriodInDays,
+    };
   }
 
   factory GetTablePointInTimeRecovery.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class GetTablePointInTimeRecovery {
     );
   }
 }
+

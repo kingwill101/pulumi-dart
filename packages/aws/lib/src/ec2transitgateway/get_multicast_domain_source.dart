@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetMulticastDomainSource {
   /// The IP address assigned to the transit gateway multicast group.
   final String groupIpAddress;
-
   /// The group members' network interface ID.
   final String networkInterfaceId;
 
@@ -16,10 +16,10 @@ class GetMulticastDomainSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['groupIpAddress'] = groupIpAddress;
-    map['networkInterfaceId'] = networkInterfaceId;
-    return map;
+    return <String, dynamic>{
+      'groupIpAddress': groupIpAddress,
+      'networkInterfaceId': networkInterfaceId,
+    };
   }
 
   factory GetMulticastDomainSource.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetMulticastDomainSource {
     );
   }
 }
+

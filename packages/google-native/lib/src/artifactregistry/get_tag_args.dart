@@ -25,23 +25,21 @@ class GetTagArgs {
     String? project,
     required String repositoryId,
     required String tagId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        packageId = pulumi.Input.asInput<String>(packageId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        repositoryId = pulumi.Input.asInput<String>(repositoryId),
-        tagId = pulumi.Input.asInput<String>(tagId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      packageId = pulumi.Input.asInput<String>(packageId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      repositoryId = pulumi.Input.asInput<String>(repositoryId),
+      tagId = pulumi.Input.asInput<String>(tagId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    map['packageId'] = packageId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['repositoryId'] = repositoryId;
-    map['tagId'] = tagId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'packageId': packageId,
+      'project': ?project,
+      'repositoryId': repositoryId,
+      'tagId': tagId,
+    };
   }
 
   factory GetTagArgs.fromMap(Map<String, dynamic> map) {
@@ -54,3 +52,4 @@ class GetTagArgs {
     );
   }
 }
+

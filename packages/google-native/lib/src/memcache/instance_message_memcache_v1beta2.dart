@@ -5,7 +5,6 @@ import 'instance_message_code_memcache_v1beta2.dart';
 class InstanceMessageMemcacheV1beta2 {
   /// A code that correspond to one type of user-facing message.
   final InstanceMessageCodeMemcacheV1beta2? code;
-
   /// Message on memcached instance which will be exposed to users.
   final String? message;
 
@@ -18,24 +17,17 @@ class InstanceMessageMemcacheV1beta2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final codeValue = code;
-    if (codeValue != null) {
-      map['code'] = codeValue.value;
-    }
-    final messageValue = message;
-    if (messageValue != null) {
-      map['message'] = messageValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'code': ?code == null ? null : code!.value,
+      'message': ?message,
+    };
   }
 
   factory InstanceMessageMemcacheV1beta2.fromMap(Map<String, dynamic> map) {
     return InstanceMessageMemcacheV1beta2(
-      code: map['code'] == null
-          ? null
-          : InstanceMessageCodeMemcacheV1beta2.fromValue(map['code'] as String),
+      code: map['code'] == null ? null : InstanceMessageCodeMemcacheV1beta2.fromValue(map['code'] as String),
       message: map['message'] == null ? null : map['message'] as String,
     );
   }
 }
+

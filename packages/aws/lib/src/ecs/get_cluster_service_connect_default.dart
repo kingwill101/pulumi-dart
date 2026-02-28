@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterServiceConnectDefault {
   final String namespace;
 
@@ -10,9 +11,9 @@ class GetClusterServiceConnectDefault {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['namespace'] = namespace;
-    return map;
+    return <String, dynamic>{
+      'namespace': namespace,
+    };
   }
 
   factory GetClusterServiceConnectDefault.fromMap(Map<String, dynamic> map) {
@@ -21,3 +22,4 @@ class GetClusterServiceConnectDefault {
     );
   }
 }
+

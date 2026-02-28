@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Specifies the node access related settings for the bare metal admin cluster.
 class BareMetalAdminNodeAccessConfig {
   /// LoginUser is the user name used to access node machines. It defaults to "root" if not set.
@@ -12,9 +13,9 @@ class BareMetalAdminNodeAccessConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['loginUser'] = loginUser;
-    return map;
+    return <String, dynamic>{
+      'loginUser': loginUser,
+    };
   }
 
   factory BareMetalAdminNodeAccessConfig.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class BareMetalAdminNodeAccessConfig {
     );
   }
 }
+

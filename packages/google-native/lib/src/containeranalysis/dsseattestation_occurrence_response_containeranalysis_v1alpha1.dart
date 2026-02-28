@@ -18,19 +18,17 @@ class DSSEAttestationOccurrenceResponseContaineranalysisV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['envelope'] = envelope.toMap();
-    map['statement'] = statement.toMap();
-    return map;
+    return <String, dynamic>{
+      'envelope': envelope.toMap(),
+      'statement': statement.toMap(),
+    };
   }
 
-  factory DSSEAttestationOccurrenceResponseContaineranalysisV1alpha1.fromMap(
-      Map<String, dynamic> map) {
+  factory DSSEAttestationOccurrenceResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return DSSEAttestationOccurrenceResponseContaineranalysisV1alpha1(
-      envelope: EnvelopeResponseContaineranalysisV1alpha1.fromMap(
-          (map['envelope'] as Map).cast<String, dynamic>()),
-      statement: InTotoStatementResponseContaineranalysisV1alpha1.fromMap(
-          (map['statement'] as Map).cast<String, dynamic>()),
+      envelope: EnvelopeResponseContaineranalysisV1alpha1.fromMap((map['envelope'] as Map).cast<String, dynamic>()),
+      statement: InTotoStatementResponseContaineranalysisV1alpha1.fromMap((map['statement'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FleetStackAssociationArgs {
   /// Name of the fleet.
   final pulumi.Input<String> fleetName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Name of the stack.
   final pulumi.Input<String> stackName;
 
@@ -24,19 +22,17 @@ class FleetStackAssociationArgs {
     required String fleetName,
     String? region,
     required String stackName,
-  })  : fleetName = pulumi.Input.asInput<String>(fleetName),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        stackName = pulumi.Input.asInput<String>(stackName);
+  }) :
+      fleetName = pulumi.Input.asInput<String>(fleetName),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      stackName = pulumi.Input.asInput<String>(stackName);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['fleetName'] = fleetName;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['stackName'] = stackName;
-    return map;
+    return <String, dynamic>{
+      'fleetName': fleetName,
+      'region': ?region,
+      'stackName': stackName,
+    };
   }
 
   factory FleetStackAssociationArgs.fromMap(Map<String, dynamic> map) {
@@ -47,3 +43,4 @@ class FleetStackAssociationArgs {
     );
   }
 }
+

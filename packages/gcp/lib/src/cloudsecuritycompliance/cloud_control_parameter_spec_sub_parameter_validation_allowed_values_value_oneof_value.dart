@@ -5,11 +5,9 @@ import 'cloud_control_parameter_spec_sub_parameter_validation_allowed_values_val
 class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue {
   /// The name of the parameter.
   final String? name;
-
   /// The value of the parameter.
   /// Structure is documented below.
-  final CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue?
-      parameterValue;
+  final CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue? parameterValue;
 
   /// Creates a new [CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue].
   /// [name] The name of the parameter.
@@ -20,26 +18,17 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValu
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final parameterValueValue = parameterValue;
-    if (parameterValueValue != null) {
-      map['parameterValue'] = parameterValueValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+      'parameterValue': ?parameterValue == null ? null : parameterValue!.toMap(),
+    };
   }
 
-  factory CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue.fromMap(
-      Map<String, dynamic> map) {
+  factory CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue.fromMap(Map<String, dynamic> map) {
     return CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue(
       name: map['name'] == null ? null : map['name'] as String,
-      parameterValue: map['parameterValue'] == null
-          ? null
-          : CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue
-              .fromMap((map['parameterValue'] as Map).cast<String, dynamic>()),
+      parameterValue: map['parameterValue'] == null ? null : CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue.fromMap((map['parameterValue'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

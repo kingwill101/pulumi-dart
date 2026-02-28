@@ -3,20 +3,16 @@ enum RegionHealthCheckServiceHealthStatusAggregationStrategyComputeBeta {
   and("AND"),
   noAggregation("NO_AGGREGATION");
 
-  const RegionHealthCheckServiceHealthStatusAggregationStrategyComputeBeta(
-      this.value);
+  const RegionHealthCheckServiceHealthStatusAggregationStrategyComputeBeta(this.value);
   final String value;
 
-  static RegionHealthCheckServiceHealthStatusAggregationStrategyComputeBeta
-      fromValue(String value) {
-    for (final item
-        in RegionHealthCheckServiceHealthStatusAggregationStrategyComputeBeta
-            .values) {
+  static RegionHealthCheckServiceHealthStatusAggregationStrategyComputeBeta fromValue(String value) {
+    for (final item in RegionHealthCheckServiceHealthStatusAggregationStrategyComputeBeta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown RegionHealthCheckServiceHealthStatusAggregationStrategyComputeBeta value: $value');
+    throw ArgumentError('Unknown RegionHealthCheckServiceHealthStatusAggregationStrategyComputeBeta value: $value');
   }
 }
+

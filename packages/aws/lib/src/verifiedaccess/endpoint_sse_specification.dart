@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EndpointSseSpecification {
   final bool? customerManagedKeyEnabled;
   final String? kmsKeyArn;
@@ -13,24 +14,17 @@ class EndpointSseSpecification {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final customerManagedKeyEnabledValue = customerManagedKeyEnabled;
-    if (customerManagedKeyEnabledValue != null) {
-      map['customerManagedKeyEnabled'] = customerManagedKeyEnabledValue;
-    }
-    final kmsKeyArnValue = kmsKeyArn;
-    if (kmsKeyArnValue != null) {
-      map['kmsKeyArn'] = kmsKeyArnValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'customerManagedKeyEnabled': ?customerManagedKeyEnabled,
+      'kmsKeyArn': ?kmsKeyArn,
+    };
   }
 
   factory EndpointSseSpecification.fromMap(Map<String, dynamic> map) {
     return EndpointSseSpecification(
-      customerManagedKeyEnabled: map['customerManagedKeyEnabled'] == null
-          ? null
-          : map['customerManagedKeyEnabled'] as bool,
+      customerManagedKeyEnabled: map['customerManagedKeyEnabled'] == null ? null : map['customerManagedKeyEnabled'] as bool,
       kmsKeyArn: map['kmsKeyArn'] == null ? null : map['kmsKeyArn'] as String,
     );
   }
 }
+

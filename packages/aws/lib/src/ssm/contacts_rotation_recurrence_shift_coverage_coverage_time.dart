@@ -6,7 +6,6 @@ import 'contacts_rotation_recurrence_shift_coverage_coverage_time_start.dart';
 class ContactsRotationRecurrenceShiftCoverageCoverageTime {
   /// (Required) The end time of the on-call shift. See Hand Off Time for more details.
   final ContactsRotationRecurrenceShiftCoverageCoverageTimeEnd? end;
-
   /// (Required) The start time of the on-call shift. See Hand Off Time for more details.
   final ContactsRotationRecurrenceShiftCoverageCoverageTimeStart? start;
 
@@ -19,29 +18,17 @@ class ContactsRotationRecurrenceShiftCoverageCoverageTime {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final endValue = end;
-    if (endValue != null) {
-      map['end'] = endValue.toMap();
-    }
-    final startValue = start;
-    if (startValue != null) {
-      map['start'] = startValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'end': ?end == null ? null : end!.toMap(),
+      'start': ?start == null ? null : start!.toMap(),
+    };
   }
 
-  factory ContactsRotationRecurrenceShiftCoverageCoverageTime.fromMap(
-      Map<String, dynamic> map) {
+  factory ContactsRotationRecurrenceShiftCoverageCoverageTime.fromMap(Map<String, dynamic> map) {
     return ContactsRotationRecurrenceShiftCoverageCoverageTime(
-      end: map['end'] == null
-          ? null
-          : ContactsRotationRecurrenceShiftCoverageCoverageTimeEnd.fromMap(
-              (map['end'] as Map).cast<String, dynamic>()),
-      start: map['start'] == null
-          ? null
-          : ContactsRotationRecurrenceShiftCoverageCoverageTimeStart.fromMap(
-              (map['start'] as Map).cast<String, dynamic>()),
+      end: map['end'] == null ? null : ContactsRotationRecurrenceShiftCoverageCoverageTimeEnd.fromMap((map['end'] as Map).cast<String, dynamic>()),
+      start: map['start'] == null ? null : ContactsRotationRecurrenceShiftCoverageCoverageTimeStart.fromMap((map['start'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

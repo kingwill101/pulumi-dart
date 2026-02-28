@@ -6,19 +6,14 @@ import 'google_cloud_datacatalog_v1_vertex_model_source_info_response.dart';
 class GoogleCloudDatacatalogV1VertexModelSpecResponse {
   /// URI of the Docker image to be used as the custom container for serving predictions.
   final String containerImageUri;
-
   /// User provided version aliases so that a model version can be referenced via alias
   final List<String> versionAliases;
-
   /// The description of this version.
   final String versionDescription;
-
   /// The version ID of the model.
   final String versionId;
-
   /// Source of a Vertex model.
-  final GoogleCloudDatacatalogV1VertexModelSourceInfoResponse
-      vertexModelSourceInfo;
+  final GoogleCloudDatacatalogV1VertexModelSourceInfoResponse vertexModelSourceInfo;
 
   /// Creates a new [GoogleCloudDatacatalogV1VertexModelSpecResponse].
   /// [containerImageUri] URI of the Docker image to be used as the custom container for serving predictions.
@@ -35,25 +30,23 @@ class GoogleCloudDatacatalogV1VertexModelSpecResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['containerImageUri'] = containerImageUri;
-    map['versionAliases'] = versionAliases;
-    map['versionDescription'] = versionDescription;
-    map['versionId'] = versionId;
-    map['vertexModelSourceInfo'] = vertexModelSourceInfo.toMap();
-    return map;
+    return <String, dynamic>{
+      'containerImageUri': containerImageUri,
+      'versionAliases': versionAliases,
+      'versionDescription': versionDescription,
+      'versionId': versionId,
+      'vertexModelSourceInfo': vertexModelSourceInfo.toMap(),
+    };
   }
 
-  factory GoogleCloudDatacatalogV1VertexModelSpecResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1VertexModelSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1VertexModelSpecResponse(
       containerImageUri: map['containerImageUri'] as String,
       versionAliases: (map['versionAliases'] as List).cast<String>(),
       versionDescription: map['versionDescription'] as String,
       versionId: map['versionId'] as String,
-      vertexModelSourceInfo:
-          GoogleCloudDatacatalogV1VertexModelSourceInfoResponse.fromMap(
-              (map['vertexModelSourceInfo'] as Map).cast<String, dynamic>()),
+      vertexModelSourceInfo: GoogleCloudDatacatalogV1VertexModelSourceInfoResponse.fromMap((map['vertexModelSourceInfo'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

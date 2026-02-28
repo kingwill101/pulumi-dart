@@ -1,22 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// KubernetesMetadata provides informational metadata for Memberships representing Kubernetes clusters.
 class KubernetesMetadataResponse {
   /// Kubernetes API server version string as reported by `/version`.
   final String kubernetesApiServerVersion;
-
   /// The total memory capacity as reported by the sum of all Kubernetes nodes resources, defined in MB.
   final int memoryMb;
-
   /// Node count as reported by Kubernetes nodes resources.
   final int nodeCount;
-
   /// Node providerID as reported by the first node in the list of nodes on the Kubernetes endpoint. On Kubernetes platforms that support zero-node clusters (like GKE-on-GCP), the node_count will be zero and the node_provider_id will be empty.
   final String nodeProviderId;
-
   /// The time at which these details were last updated. This update_time is different from the Membership-level update_time since EndpointDetails are updated internally for API consumers.
   final String updateTime;
-
   /// vCPU count as reported by Kubernetes nodes resources.
   final int vcpuCount;
 
@@ -37,14 +33,14 @@ class KubernetesMetadataResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kubernetesApiServerVersion'] = kubernetesApiServerVersion;
-    map['memoryMb'] = memoryMb;
-    map['nodeCount'] = nodeCount;
-    map['nodeProviderId'] = nodeProviderId;
-    map['updateTime'] = updateTime;
-    map['vcpuCount'] = vcpuCount;
-    return map;
+    return <String, dynamic>{
+      'kubernetesApiServerVersion': kubernetesApiServerVersion,
+      'memoryMb': memoryMb,
+      'nodeCount': nodeCount,
+      'nodeProviderId': nodeProviderId,
+      'updateTime': updateTime,
+      'vcpuCount': vcpuCount,
+    };
   }
 
   factory KubernetesMetadataResponse.fromMap(Map<String, dynamic> map) {
@@ -58,3 +54,4 @@ class KubernetesMetadataResponse {
     );
   }
 }
+

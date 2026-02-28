@@ -8,15 +8,13 @@ enum ScanConfigTargetPlatformsItemWebsecurityscannerV1beta {
   const ScanConfigTargetPlatformsItemWebsecurityscannerV1beta(this.value);
   final String value;
 
-  static ScanConfigTargetPlatformsItemWebsecurityscannerV1beta fromValue(
-      String value) {
-    for (final item
-        in ScanConfigTargetPlatformsItemWebsecurityscannerV1beta.values) {
+  static ScanConfigTargetPlatformsItemWebsecurityscannerV1beta fromValue(String value) {
+    for (final item in ScanConfigTargetPlatformsItemWebsecurityscannerV1beta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown ScanConfigTargetPlatformsItemWebsecurityscannerV1beta value: $value');
+    throw ArgumentError('Unknown ScanConfigTargetPlatformsItemWebsecurityscannerV1beta value: $value');
   }
 }
+

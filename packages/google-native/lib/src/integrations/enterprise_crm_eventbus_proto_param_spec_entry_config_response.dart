@@ -1,26 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EnterpriseCrmEventbusProtoParamSpecEntryConfigResponse {
   /// A short phrase to describe what this parameter contains.
   final String descriptivePhrase;
-
   /// Detailed help text for this parameter containing information not provided elsewhere. For example, instructions on how to migrate from a deprecated parameter.
   final String helpText;
-
   /// Whether the default value is hidden in the UI.
   final bool hideDefaultValue;
   final String inputDisplayOption;
-
   /// Whether this field is hidden in the UI.
   final bool isHidden;
-
   /// A user-friendly label for the parameter.
   final String label;
   final String parameterNameOption;
-
   /// A user-friendly label for subSection under which the parameter will be displayed.
   final String subSectionLabel;
-
   /// Placeholder text which will appear in the UI input form for this parameter.
   final String uiPlaceholderText;
 
@@ -47,21 +42,20 @@ class EnterpriseCrmEventbusProtoParamSpecEntryConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['descriptivePhrase'] = descriptivePhrase;
-    map['helpText'] = helpText;
-    map['hideDefaultValue'] = hideDefaultValue;
-    map['inputDisplayOption'] = inputDisplayOption;
-    map['isHidden'] = isHidden;
-    map['label'] = label;
-    map['parameterNameOption'] = parameterNameOption;
-    map['subSectionLabel'] = subSectionLabel;
-    map['uiPlaceholderText'] = uiPlaceholderText;
-    return map;
+    return <String, dynamic>{
+      'descriptivePhrase': descriptivePhrase,
+      'helpText': helpText,
+      'hideDefaultValue': hideDefaultValue,
+      'inputDisplayOption': inputDisplayOption,
+      'isHidden': isHidden,
+      'label': label,
+      'parameterNameOption': parameterNameOption,
+      'subSectionLabel': subSectionLabel,
+      'uiPlaceholderText': uiPlaceholderText,
+    };
   }
 
-  factory EnterpriseCrmEventbusProtoParamSpecEntryConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoParamSpecEntryConfigResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoParamSpecEntryConfigResponse(
       descriptivePhrase: map['descriptivePhrase'] as String,
       helpText: map['helpText'] as String,
@@ -75,3 +69,4 @@ class EnterpriseCrmEventbusProtoParamSpecEntryConfigResponse {
     );
   }
 }
+

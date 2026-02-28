@@ -18,3 +18,4 @@ enum CVSSv3AttackVector {
     throw ArgumentError('Unknown CVSSv3AttackVector value: $value');
   }
 }
+

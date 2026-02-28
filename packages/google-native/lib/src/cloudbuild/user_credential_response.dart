@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents a personal access token that authorized the Connection, and associated metadata.
 class UserCredentialResponse {
   /// A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
   final String userTokenSecretVersion;
-
   /// The username associated to this token.
   final String username;
 
@@ -17,10 +17,10 @@ class UserCredentialResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['userTokenSecretVersion'] = userTokenSecretVersion;
-    map['username'] = username;
-    return map;
+    return <String, dynamic>{
+      'userTokenSecretVersion': userTokenSecretVersion,
+      'username': username,
+    };
   }
 
   factory UserCredentialResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class UserCredentialResponse {
     );
   }
 }
+

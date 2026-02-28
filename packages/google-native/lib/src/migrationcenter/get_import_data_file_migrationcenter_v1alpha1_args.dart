@@ -22,25 +22,22 @@ class GetImportDataFileMigrationcenterV1alpha1Args {
     required String importJobId,
     required String location,
     String? project,
-  })  : importDataFileId = pulumi.Input.asInput<String>(importDataFileId),
-        importJobId = pulumi.Input.asInput<String>(importJobId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      importDataFileId = pulumi.Input.asInput<String>(importDataFileId),
+      importJobId = pulumi.Input.asInput<String>(importJobId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['importDataFileId'] = importDataFileId;
-    map['importJobId'] = importJobId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'importDataFileId': importDataFileId,
+      'importJobId': importJobId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
-  factory GetImportDataFileMigrationcenterV1alpha1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetImportDataFileMigrationcenterV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return GetImportDataFileMigrationcenterV1alpha1Args(
       importDataFileId: map['importDataFileId'] as String,
       importJobId: map['importJobId'] as String,
@@ -49,3 +46,4 @@ class GetImportDataFileMigrationcenterV1alpha1Args {
     );
   }
 }
+

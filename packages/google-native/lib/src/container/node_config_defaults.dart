@@ -7,7 +7,6 @@ import 'node_pool_logging_config.dart';
 class NodeConfigDefaults {
   /// GCFS (Google Container File System, also known as Riptide) options.
   final GcfsConfig? gcfsConfig;
-
   /// Logging configuration for node pools.
   final NodePoolLoggingConfig? loggingConfig;
 
@@ -20,28 +19,17 @@ class NodeConfigDefaults {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final gcfsConfigValue = gcfsConfig;
-    if (gcfsConfigValue != null) {
-      map['gcfsConfig'] = gcfsConfigValue.toMap();
-    }
-    final loggingConfigValue = loggingConfig;
-    if (loggingConfigValue != null) {
-      map['loggingConfig'] = loggingConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'gcfsConfig': ?gcfsConfig == null ? null : gcfsConfig!.toMap(),
+      'loggingConfig': ?loggingConfig == null ? null : loggingConfig!.toMap(),
+    };
   }
 
   factory NodeConfigDefaults.fromMap(Map<String, dynamic> map) {
     return NodeConfigDefaults(
-      gcfsConfig: map['gcfsConfig'] == null
-          ? null
-          : GcfsConfig.fromMap(
-              (map['gcfsConfig'] as Map).cast<String, dynamic>()),
-      loggingConfig: map['loggingConfig'] == null
-          ? null
-          : NodePoolLoggingConfig.fromMap(
-              (map['loggingConfig'] as Map).cast<String, dynamic>()),
+      gcfsConfig: map['gcfsConfig'] == null ? null : GcfsConfig.fromMap((map['gcfsConfig'] as Map).cast<String, dynamic>()),
+      loggingConfig: map['loggingConfig'] == null ? null : NodePoolLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

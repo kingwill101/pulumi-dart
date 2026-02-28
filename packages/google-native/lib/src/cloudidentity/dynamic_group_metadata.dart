@@ -15,24 +15,15 @@ class DynamicGroupMetadata {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final queriesValue = queries;
-    if (queriesValue != null) {
-      map['queries'] =
-          pulumi.Input.encodeList<DynamicGroupQuery, Map<String, dynamic>>(
-              queriesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'queries': ?queries == null ? null : pulumi.Input.encodeList<DynamicGroupQuery, Map<String, dynamic>>(queries!, (value) => value.toMap()),
+    };
   }
 
   factory DynamicGroupMetadata.fromMap(Map<String, dynamic> map) {
     return DynamicGroupMetadata(
-      queries: map['queries'] == null
-          ? null
-          : pulumi.Input.decodeList<DynamicGroupQuery>(
-              map['queries'],
-              (value) => DynamicGroupQuery.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      queries: map['queries'] == null ? null : pulumi.Input.decodeList<DynamicGroupQuery>(map['queries'], (value) => DynamicGroupQuery.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

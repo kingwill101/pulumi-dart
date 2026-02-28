@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// An artifact that can be deployed in some runtime.
 class DeployableResponseContaineranalysisV1beta1 {
   /// Resource URI for the artifact being deployed.
@@ -12,15 +13,15 @@ class DeployableResponseContaineranalysisV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['resourceUri'] = resourceUri;
-    return map;
+    return <String, dynamic>{
+      'resourceUri': resourceUri,
+    };
   }
 
-  factory DeployableResponseContaineranalysisV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory DeployableResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return DeployableResponseContaineranalysisV1beta1(
       resourceUri: (map['resourceUri'] as List).cast<String>(),
     );
   }
 }
+

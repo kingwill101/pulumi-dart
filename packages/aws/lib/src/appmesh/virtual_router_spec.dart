@@ -15,23 +15,15 @@ class VirtualRouterSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final listenersValue = listeners;
-    if (listenersValue != null) {
-      map['listeners'] = pulumi.Input.encodeList<VirtualRouterSpecListener,
-          Map<String, dynamic>>(listenersValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'listeners': ?listeners == null ? null : pulumi.Input.encodeList<VirtualRouterSpecListener, Map<String, dynamic>>(listeners!, (value) => value.toMap()),
+    };
   }
 
   factory VirtualRouterSpec.fromMap(Map<String, dynamic> map) {
     return VirtualRouterSpec(
-      listeners: map['listeners'] == null
-          ? null
-          : pulumi.Input.decodeList<VirtualRouterSpecListener>(
-              map['listeners'],
-              (value) => VirtualRouterSpecListener.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      listeners: map['listeners'] == null ? null : pulumi.Input.decodeList<VirtualRouterSpecListener>(map['listeners'], (value) => VirtualRouterSpecListener.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

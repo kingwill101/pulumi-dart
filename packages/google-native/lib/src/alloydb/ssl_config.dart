@@ -7,7 +7,6 @@ import 'ssl_config_ssl_mode.dart';
 class SslConfig {
   /// Optional. Certificate Authority (CA) source. Only CA_SOURCE_MANAGED is supported currently, and is the default value.
   final SslConfigCaSource? caSource;
-
   /// Optional. SSL mode. Specifies client-server SSL/TLS connection behavior.
   final SslConfigSslMode? sslMode;
 
@@ -20,26 +19,17 @@ class SslConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final caSourceValue = caSource;
-    if (caSourceValue != null) {
-      map['caSource'] = caSourceValue.value;
-    }
-    final sslModeValue = sslMode;
-    if (sslModeValue != null) {
-      map['sslMode'] = sslModeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'caSource': ?caSource == null ? null : caSource!.value,
+      'sslMode': ?sslMode == null ? null : sslMode!.value,
+    };
   }
 
   factory SslConfig.fromMap(Map<String, dynamic> map) {
     return SslConfig(
-      caSource: map['caSource'] == null
-          ? null
-          : SslConfigCaSource.fromValue(map['caSource'] as String),
-      sslMode: map['sslMode'] == null
-          ? null
-          : SslConfigSslMode.fromValue(map['sslMode'] as String),
+      caSource: map['caSource'] == null ? null : SslConfigCaSource.fromValue(map['caSource'] as String),
+      sslMode: map['sslMode'] == null ? null : SslConfigSslMode.fromValue(map['sslMode'] as String),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRoute.
 class GetRouteResult {
   final String carrierGatewayId;
@@ -9,7 +10,6 @@ class GetRouteResult {
   final String destinationPrefixListId;
   final String egressOnlyGatewayId;
   final String gatewayId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instanceId;
@@ -58,24 +58,24 @@ class GetRouteResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['carrierGatewayId'] = carrierGatewayId;
-    map['coreNetworkArn'] = coreNetworkArn;
-    map['destinationCidrBlock'] = destinationCidrBlock;
-    map['destinationIpv6CidrBlock'] = destinationIpv6CidrBlock;
-    map['destinationPrefixListId'] = destinationPrefixListId;
-    map['egressOnlyGatewayId'] = egressOnlyGatewayId;
-    map['gatewayId'] = gatewayId;
-    map['id'] = id;
-    map['instanceId'] = instanceId;
-    map['localGatewayId'] = localGatewayId;
-    map['natGatewayId'] = natGatewayId;
-    map['networkInterfaceId'] = networkInterfaceId;
-    map['region'] = region;
-    map['routeTableId'] = routeTableId;
-    map['transitGatewayId'] = transitGatewayId;
-    map['vpcPeeringConnectionId'] = vpcPeeringConnectionId;
-    return map;
+    return <String, dynamic>{
+      'carrierGatewayId': carrierGatewayId,
+      'coreNetworkArn': coreNetworkArn,
+      'destinationCidrBlock': destinationCidrBlock,
+      'destinationIpv6CidrBlock': destinationIpv6CidrBlock,
+      'destinationPrefixListId': destinationPrefixListId,
+      'egressOnlyGatewayId': egressOnlyGatewayId,
+      'gatewayId': gatewayId,
+      'id': id,
+      'instanceId': instanceId,
+      'localGatewayId': localGatewayId,
+      'natGatewayId': natGatewayId,
+      'networkInterfaceId': networkInterfaceId,
+      'region': region,
+      'routeTableId': routeTableId,
+      'transitGatewayId': transitGatewayId,
+      'vpcPeeringConnectionId': vpcPeeringConnectionId,
+    };
   }
 
   factory GetRouteResult.fromMap(Map<String, dynamic> map) {
@@ -99,3 +99,4 @@ class GetRouteResult {
     );
   }
 }
+

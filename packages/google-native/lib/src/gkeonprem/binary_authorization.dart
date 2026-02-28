@@ -14,20 +14,15 @@ class BinaryAuthorization {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final evaluationModeValue = evaluationMode;
-    if (evaluationModeValue != null) {
-      map['evaluationMode'] = evaluationModeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'evaluationMode': ?evaluationMode == null ? null : evaluationMode!.value,
+    };
   }
 
   factory BinaryAuthorization.fromMap(Map<String, dynamic> map) {
     return BinaryAuthorization(
-      evaluationMode: map['evaluationMode'] == null
-          ? null
-          : BinaryAuthorizationEvaluationMode.fromValue(
-              map['evaluationMode'] as String),
+      evaluationMode: map['evaluationMode'] == null ? null : BinaryAuthorizationEvaluationMode.fromValue(map['evaluationMode'] as String),
     );
   }
 }
+

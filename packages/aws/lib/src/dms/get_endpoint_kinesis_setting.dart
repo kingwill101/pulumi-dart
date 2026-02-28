@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetEndpointKinesisSetting {
   final bool includeControlDetails;
   final bool includeNullAndEmpty;
@@ -37,18 +38,18 @@ class GetEndpointKinesisSetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['includeControlDetails'] = includeControlDetails;
-    map['includeNullAndEmpty'] = includeNullAndEmpty;
-    map['includePartitionValue'] = includePartitionValue;
-    map['includeTableAlterOperations'] = includeTableAlterOperations;
-    map['includeTransactionDetails'] = includeTransactionDetails;
-    map['messageFormat'] = messageFormat;
-    map['partitionIncludeSchemaTable'] = partitionIncludeSchemaTable;
-    map['serviceAccessRoleArn'] = serviceAccessRoleArn;
-    map['streamArn'] = streamArn;
-    map['useLargeIntegerValue'] = useLargeIntegerValue;
-    return map;
+    return <String, dynamic>{
+      'includeControlDetails': includeControlDetails,
+      'includeNullAndEmpty': includeNullAndEmpty,
+      'includePartitionValue': includePartitionValue,
+      'includeTableAlterOperations': includeTableAlterOperations,
+      'includeTransactionDetails': includeTransactionDetails,
+      'messageFormat': messageFormat,
+      'partitionIncludeSchemaTable': partitionIncludeSchemaTable,
+      'serviceAccessRoleArn': serviceAccessRoleArn,
+      'streamArn': streamArn,
+      'useLargeIntegerValue': useLargeIntegerValue,
+    };
   }
 
   factory GetEndpointKinesisSetting.fromMap(Map<String, dynamic> map) {
@@ -66,3 +67,4 @@ class GetEndpointKinesisSetting {
     );
   }
 }
+

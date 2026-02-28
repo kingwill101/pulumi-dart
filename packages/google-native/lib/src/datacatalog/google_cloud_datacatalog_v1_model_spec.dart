@@ -14,20 +14,15 @@ class GoogleCloudDatacatalogV1ModelSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final vertexModelSpecValue = vertexModelSpec;
-    if (vertexModelSpecValue != null) {
-      map['vertexModelSpec'] = vertexModelSpecValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'vertexModelSpec': ?vertexModelSpec == null ? null : vertexModelSpec!.toMap(),
+    };
   }
 
   factory GoogleCloudDatacatalogV1ModelSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1ModelSpec(
-      vertexModelSpec: map['vertexModelSpec'] == null
-          ? null
-          : GoogleCloudDatacatalogV1VertexModelSpec.fromMap(
-              (map['vertexModelSpec'] as Map).cast<String, dynamic>()),
+      vertexModelSpec: map['vertexModelSpec'] == null ? null : GoogleCloudDatacatalogV1VertexModelSpec.fromMap((map['vertexModelSpec'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

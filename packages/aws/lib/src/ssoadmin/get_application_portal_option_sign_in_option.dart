@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetApplicationPortalOptionSignInOption {
   final String applicationUrl;
   final String origin;
@@ -13,17 +14,17 @@ class GetApplicationPortalOptionSignInOption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['applicationUrl'] = applicationUrl;
-    map['origin'] = origin;
-    return map;
+    return <String, dynamic>{
+      'applicationUrl': applicationUrl,
+      'origin': origin,
+    };
   }
 
-  factory GetApplicationPortalOptionSignInOption.fromMap(
-      Map<String, dynamic> map) {
+  factory GetApplicationPortalOptionSignInOption.fromMap(Map<String, dynamic> map) {
     return GetApplicationPortalOptionSignInOption(
       applicationUrl: map['applicationUrl'] as String,
       origin: map['origin'] as String,
     );
   }
 }
+

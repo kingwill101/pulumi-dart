@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A test of an iOS application that uses the XCTest framework.
 class IosXcTestResponse {
   /// Bundle ID of the app.
   final String bundleId;
-
   /// Xcode version that the test was run with.
   final String xcodeVersion;
 
@@ -17,10 +17,10 @@ class IosXcTestResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bundleId'] = bundleId;
-    map['xcodeVersion'] = xcodeVersion;
-    return map;
+    return <String, dynamic>{
+      'bundleId': bundleId,
+      'xcodeVersion': xcodeVersion,
+    };
   }
 
   factory IosXcTestResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class IosXcTestResponse {
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock {
   /// cidr_block must be specified in CIDR notation.
   final String cidrBlock;
-
   /// display_name is a field for users to identify CIDR blocks.
   final String displayName;
 
@@ -16,17 +16,17 @@ class GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cidrBlock'] = cidrBlock;
-    map['displayName'] = displayName;
-    return map;
+    return <String, dynamic>{
+      'cidrBlock': cidrBlock,
+      'displayName': displayName,
+    };
   }
 
-  factory GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock.fromMap(
-      Map<String, dynamic> map) {
+  factory GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock(
       cidrBlock: map['cidrBlock'] as String,
       displayName: map['displayName'] as String,
     );
   }
 }
+

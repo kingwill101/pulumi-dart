@@ -8,22 +8,16 @@ import 'identity_response.dart';
 class WindowsUpdateResponse {
   /// The list of categories to which the update belongs.
   final List<CategoryResponse> categories;
-
   /// The localized description of the update.
   final String description;
-
   /// Required - The unique identifier for the update.
   final IdentityResponse identity;
-
   /// The Microsoft Knowledge Base article IDs that are associated with the update.
   final List<String> kbArticleIds;
-
   /// The last published timestamp of the update.
   final String lastPublishedTimestamp;
-
   /// The hyperlink to the support information for the update.
   final String supportUrl;
-
   /// The localized title of the update.
   final String title;
 
@@ -46,28 +40,22 @@ class WindowsUpdateResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['categories'] =
-        pulumi.Input.encodeList<CategoryResponse, Map<String, dynamic>>(
-            categories, (value) => value.toMap());
-    map['description'] = description;
-    map['identity'] = identity.toMap();
-    map['kbArticleIds'] = kbArticleIds;
-    map['lastPublishedTimestamp'] = lastPublishedTimestamp;
-    map['supportUrl'] = supportUrl;
-    map['title'] = title;
-    return map;
+    return <String, dynamic>{
+      'categories': pulumi.Input.encodeList<CategoryResponse, Map<String, dynamic>>(categories, (value) => value.toMap()),
+      'description': description,
+      'identity': identity.toMap(),
+      'kbArticleIds': kbArticleIds,
+      'lastPublishedTimestamp': lastPublishedTimestamp,
+      'supportUrl': supportUrl,
+      'title': title,
+    };
   }
 
   factory WindowsUpdateResponse.fromMap(Map<String, dynamic> map) {
     return WindowsUpdateResponse(
-      categories: pulumi.Input.decodeList<CategoryResponse>(
-          map['categories'],
-          (value) =>
-              CategoryResponse.fromMap((value as Map).cast<String, dynamic>())),
+      categories: pulumi.Input.decodeList<CategoryResponse>(map['categories'], (value) => CategoryResponse.fromMap((value as Map).cast<String, dynamic>())),
       description: map['description'] as String,
-      identity: IdentityResponse.fromMap(
-          (map['identity'] as Map).cast<String, dynamic>()),
+      identity: IdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
       kbArticleIds: (map['kbArticleIds'] as List).cast<String>(),
       lastPublishedTimestamp: map['lastPublishedTimestamp'] as String,
       supportUrl: map['supportUrl'] as String,
@@ -75,3 +63,4 @@ class WindowsUpdateResponse {
     );
   }
 }
+

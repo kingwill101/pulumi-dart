@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 class AuditLogConfigResponseGameservicesV1beta {
   /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   final List<String> exemptedMembers;
   final bool ignoreChildExemptions;
-
   /// The log type that this config enables.
   final String logType;
 
@@ -20,15 +20,14 @@ class AuditLogConfigResponseGameservicesV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['exemptedMembers'] = exemptedMembers;
-    map['ignoreChildExemptions'] = ignoreChildExemptions;
-    map['logType'] = logType;
-    return map;
+    return <String, dynamic>{
+      'exemptedMembers': exemptedMembers,
+      'ignoreChildExemptions': ignoreChildExemptions,
+      'logType': logType,
+    };
   }
 
-  factory AuditLogConfigResponseGameservicesV1beta.fromMap(
-      Map<String, dynamic> map) {
+  factory AuditLogConfigResponseGameservicesV1beta.fromMap(Map<String, dynamic> map) {
     return AuditLogConfigResponseGameservicesV1beta(
       exemptedMembers: (map['exemptedMembers'] as List).cast<String>(),
       ignoreChildExemptions: map['ignoreChildExemptions'] as bool,
@@ -36,3 +35,4 @@ class AuditLogConfigResponseGameservicesV1beta {
     );
   }
 }
+

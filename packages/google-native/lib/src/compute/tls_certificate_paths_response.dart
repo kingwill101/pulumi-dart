@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// [Deprecated] The paths to the mounted TLS Certificates and private key. The paths to the mounted TLS Certificates and private key.
 class TlsCertificatePathsResponse {
   /// The path to the file holding the client or server TLS certificate to use.
   final String certificatePath;
-
   /// The path to the file holding the client or server private key.
   final String privateKeyPath;
 
@@ -17,10 +17,10 @@ class TlsCertificatePathsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['certificatePath'] = certificatePath;
-    map['privateKeyPath'] = privateKeyPath;
-    return map;
+    return <String, dynamic>{
+      'certificatePath': certificatePath,
+      'privateKeyPath': privateKeyPath,
+    };
   }
 
   factory TlsCertificatePathsResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class TlsCertificatePathsResponse {
     );
   }
 }
+

@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PreparedStatementArgs {
   /// Brief explanation of prepared statement. Maximum length of 1024.
   final pulumi.Input<String>? description;
-
   /// The name of the prepared statement. Maximum length of 256.
   final pulumi.Input<String>? name;
-
   /// The query string for the prepared statement.
   final pulumi.Input<String> queryStatement;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The name of the workgroup to which the prepared statement belongs.
   final pulumi.Input<String> workgroup;
 
@@ -34,35 +30,26 @@ class PreparedStatementArgs {
     required String queryStatement,
     String? region,
     required String workgroup,
-  })  : description = pulumi.Input.asOptionalInput<String>(description),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        queryStatement = pulumi.Input.asInput<String>(queryStatement),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        workgroup = pulumi.Input.asInput<String>(workgroup);
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      queryStatement = pulumi.Input.asInput<String>(queryStatement),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      workgroup = pulumi.Input.asInput<String>(workgroup);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    map['queryStatement'] = queryStatement;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['workgroup'] = workgroup;
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'name': ?name,
+      'queryStatement': queryStatement,
+      'region': ?region,
+      'workgroup': workgroup,
+    };
   }
 
   factory PreparedStatementArgs.fromMap(Map<String, dynamic> map) {
     return PreparedStatementArgs(
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       queryStatement: map['queryStatement'] as String,
       region: map['region'] == null ? null : map['region'] as String,
@@ -70,3 +57,4 @@ class PreparedStatementArgs {
     );
   }
 }
+

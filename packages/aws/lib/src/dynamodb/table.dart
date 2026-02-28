@@ -1945,102 +1945,70 @@ import 'table_warm_throughput.dart';
 class Table extends pulumi.CustomResource {
   /// ARN of the table
   late final pulumi.Output<String> arn;
-
   /// Set of nested attribute definitions. Only required for `hash_key` and `range_key` attributes. See below.
   late final pulumi.Output<List<TableAttribute>> attributes;
-
   /// Controls how you are charged for read and write throughput and how you manage capacity. The valid values are `PROVISIONED` and `PAY_PER_REQUEST`. Defaults to `PROVISIONED`.
   late final pulumi.Output<String?> billingMode;
-
   /// Enables deletion protection for table. Defaults to `false`.
   late final pulumi.Output<bool?> deletionProtectionEnabled;
-
   /// Describe a GSI for the table; subject to the normal limits on the number of GSIs, projected attributes, etc. See below.
-  late final pulumi.Output<List<TableGlobalSecondaryIndex>>
-      globalSecondaryIndexes;
-
+  late final pulumi.Output<List<TableGlobalSecondaryIndex>> globalSecondaryIndexes;
   /// Witness Region in a Multi-Region Strong Consistency deployment. **Note** This must be used alongside a single `replica` with `consistency_mode` set to `STRONG`. Other combinations will fail to provision. See below.
   late final pulumi.Output<TableGlobalTableWitness> globalTableWitness;
-
   /// Attribute to use as the hash (partition) key. Must also be defined as an `attribute`. See below.
   late final pulumi.Output<String> hashKey;
-
   /// Import Amazon S3 data into a new table. See below.
   late final pulumi.Output<TableImportTable?> importTable;
-
   /// Describe an LSI on the table; these can only be allocated _at creation_ so you cannot change this definition after you have created the resource. See below.
-  late final pulumi.Output<List<TableLocalSecondaryIndex>?>
-      localSecondaryIndexes;
-
+  late final pulumi.Output<List<TableLocalSecondaryIndex>?> localSecondaryIndexes;
   /// Unique within a region name of the table.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Sets the maximum number of read and write units for the specified on-demand table. See below.
   late final pulumi.Output<TableOnDemandThroughput?> onDemandThroughput;
-
   /// Enable point-in-time recovery options. See below.
   late final pulumi.Output<TablePointInTimeRecovery> pointInTimeRecovery;
-
   /// Attribute to use as the range (sort) key. Must also be defined as an `attribute`, see below.
   late final pulumi.Output<String?> rangeKey;
-
   /// Number of read units for this table. If the `billing_mode` is `PROVISIONED`, this field is required.
   late final pulumi.Output<int> readCapacity;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Configuration block(s) with [DynamoDB Global Tables V2 (version 2019.11.21)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html) replication configurations. See below.
   late final pulumi.Output<List<TableReplica>?> replicas;
-
   /// Time of the point-in-time recovery point to restore.
   late final pulumi.Output<String?> restoreDateTime;
-
   /// Name of the table to restore. Must match the name of an existing table.
   late final pulumi.Output<String?> restoreSourceName;
-
   /// ARN of the source table to restore. Must be supplied for cross-region restores.
   late final pulumi.Output<String?> restoreSourceTableArn;
-
   /// If set, restores table to the most recent point-in-time recovery point.
   late final pulumi.Output<bool?> restoreToLatestTime;
-
   /// Encryption at rest options. AWS DynamoDB tables are automatically encrypted at rest with an AWS-owned Customer Master Key if this argument isn't specified. Must be supplied for cross-region restores. See below.
   late final pulumi.Output<TableServerSideEncryption> serverSideEncryption;
-
   /// ARN of the Table Stream. Only available when `stream_enabled = true`
   late final pulumi.Output<String> streamArn;
-
   /// Whether Streams are enabled.
   late final pulumi.Output<bool?> streamEnabled;
-
   /// Timestamp, in ISO 8601 format, for this stream. Note that this timestamp is not a unique identifier for the stream on its own. However, the combination of AWS customer ID, table name and this field is guaranteed to be unique. It can be used for creating CloudWatch Alarms. Only available when `stream_enabled = true`.
   late final pulumi.Output<String> streamLabel;
-
   /// When an item in the table is modified, StreamViewType determines what information is written to the table's stream.
   /// Valid values are `KEYS_ONLY`, `NEW_IMAGE`, `OLD_IMAGE`, `NEW_AND_OLD_IMAGES`.
   /// Only valid when `stream_enabled` is true.
   late final pulumi.Output<String> streamViewType;
-
   /// Storage class of the table.
   /// Valid values are `STANDARD` and `STANDARD_INFREQUENT_ACCESS`.
   /// Default value is `STANDARD`.
   late final pulumi.Output<String?> tableClass;
-
   /// A map of tags to populate on the created table. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Configuration block for TTL. See below.
   late final pulumi.Output<TableTtl> ttl;
-
   /// Sets the number of warm read and write units for the specified table. See below.
   late final pulumi.Output<TableWarmThroughput> warmThroughput;
-
   /// Number of write units for this table. If the `billing_mode` is `PROVISIONED`, this field is required.
   late final pulumi.Output<int> writeCapacity;
 
@@ -2061,34 +2029,24 @@ class Table extends pulumi.CustomResource {
     this.arn = registerOutput<String>('arn');
     this.attributes = registerOutput<List<TableAttribute>>('attributes');
     this.billingMode = registerOutput<String?>('billingMode');
-    this.deletionProtectionEnabled =
-        registerOutput<bool?>('deletionProtectionEnabled');
-    this.globalSecondaryIndexes =
-        registerOutput<List<TableGlobalSecondaryIndex>>(
-            'globalSecondaryIndexes');
-    this.globalTableWitness =
-        registerOutput<TableGlobalTableWitness>('globalTableWitness');
+    this.deletionProtectionEnabled = registerOutput<bool?>('deletionProtectionEnabled');
+    this.globalSecondaryIndexes = registerOutput<List<TableGlobalSecondaryIndex>>('globalSecondaryIndexes');
+    this.globalTableWitness = registerOutput<TableGlobalTableWitness>('globalTableWitness');
     this.hashKey = registerOutput<String>('hashKey');
     this.importTable = registerOutput<TableImportTable?>('importTable');
-    this.localSecondaryIndexes =
-        registerOutput<List<TableLocalSecondaryIndex>?>(
-            'localSecondaryIndexes');
+    this.localSecondaryIndexes = registerOutput<List<TableLocalSecondaryIndex>?>('localSecondaryIndexes');
     this.name = registerOutput<String>('name');
-    this.onDemandThroughput =
-        registerOutput<TableOnDemandThroughput?>('onDemandThroughput');
-    this.pointInTimeRecovery =
-        registerOutput<TablePointInTimeRecovery>('pointInTimeRecovery');
+    this.onDemandThroughput = registerOutput<TableOnDemandThroughput?>('onDemandThroughput');
+    this.pointInTimeRecovery = registerOutput<TablePointInTimeRecovery>('pointInTimeRecovery');
     this.rangeKey = registerOutput<String?>('rangeKey');
     this.readCapacity = registerOutput<int>('readCapacity');
     this.region = registerOutput<String>('region');
     this.replicas = registerOutput<List<TableReplica>?>('replicas');
     this.restoreDateTime = registerOutput<String?>('restoreDateTime');
     this.restoreSourceName = registerOutput<String?>('restoreSourceName');
-    this.restoreSourceTableArn =
-        registerOutput<String?>('restoreSourceTableArn');
+    this.restoreSourceTableArn = registerOutput<String?>('restoreSourceTableArn');
     this.restoreToLatestTime = registerOutput<bool?>('restoreToLatestTime');
-    this.serverSideEncryption =
-        registerOutput<TableServerSideEncryption>('serverSideEncryption');
+    this.serverSideEncryption = registerOutput<TableServerSideEncryption>('serverSideEncryption');
     this.streamArn = registerOutput<String>('streamArn');
     this.streamEnabled = registerOutput<bool?>('streamEnabled');
     this.streamLabel = registerOutput<String>('streamLabel');

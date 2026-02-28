@@ -7,7 +7,6 @@ import 'resource_manager_tags_container_v1beta1.dart';
 class NodePoolAutoConfigContainerV1beta1 {
   /// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035.
   final NetworkTagsContainerV1beta1? networkTags;
-
   /// Resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies.
   final ResourceManagerTagsContainerV1beta1? resourceManagerTags;
 
@@ -20,28 +19,17 @@ class NodePoolAutoConfigContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final networkTagsValue = networkTags;
-    if (networkTagsValue != null) {
-      map['networkTags'] = networkTagsValue.toMap();
-    }
-    final resourceManagerTagsValue = resourceManagerTags;
-    if (resourceManagerTagsValue != null) {
-      map['resourceManagerTags'] = resourceManagerTagsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'networkTags': ?networkTags == null ? null : networkTags!.toMap(),
+      'resourceManagerTags': ?resourceManagerTags == null ? null : resourceManagerTags!.toMap(),
+    };
   }
 
   factory NodePoolAutoConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NodePoolAutoConfigContainerV1beta1(
-      networkTags: map['networkTags'] == null
-          ? null
-          : NetworkTagsContainerV1beta1.fromMap(
-              (map['networkTags'] as Map).cast<String, dynamic>()),
-      resourceManagerTags: map['resourceManagerTags'] == null
-          ? null
-          : ResourceManagerTagsContainerV1beta1.fromMap(
-              (map['resourceManagerTags'] as Map).cast<String, dynamic>()),
+      networkTags: map['networkTags'] == null ? null : NetworkTagsContainerV1beta1.fromMap((map['networkTags'] as Map).cast<String, dynamic>()),
+      resourceManagerTags: map['resourceManagerTags'] == null ? null : ResourceManagerTagsContainerV1beta1.fromMap((map['resourceManagerTags'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

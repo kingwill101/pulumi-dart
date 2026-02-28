@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class VpnConnectionDetailCloudVpn {
   /// (Output)
   /// The created Cloud VPN gateway name.
@@ -12,12 +13,9 @@ class VpnConnectionDetailCloudVpn {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final gatewayValue = gateway;
-    if (gatewayValue != null) {
-      map['gateway'] = gatewayValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'gateway': ?gateway,
+    };
   }
 
   factory VpnConnectionDetailCloudVpn.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class VpnConnectionDetailCloudVpn {
     );
   }
 }
+

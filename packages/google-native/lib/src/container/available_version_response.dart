@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Deprecated.
 class AvailableVersionResponse {
   /// Reason for availability.
   final String reason;
-
   /// Kubernetes version.
   final String version;
 
@@ -17,10 +17,10 @@ class AvailableVersionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['reason'] = reason;
-    map['version'] = version;
-    return map;
+    return <String, dynamic>{
+      'reason': reason,
+      'version': version,
+    };
   }
 
   factory AvailableVersionResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class AvailableVersionResponse {
     );
   }
 }
+

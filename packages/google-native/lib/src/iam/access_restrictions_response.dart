@@ -7,7 +7,6 @@ import 'service_config_response.dart';
 class AccessRestrictionsResponse {
   /// Optional. Immutable. Services allowed for web sign-in with the workforce pool. If not set by default there are no restrictions.
   final List<ServiceConfigResponse> allowedServices;
-
   /// Optional. Disable programmatic sign-in by disabling token issue via the Security Token API endpoint. See [Security Token Service API] (https://cloud.google.com/iam/docs/reference/sts/rest).
   final bool disableProgrammaticSignin;
 
@@ -20,21 +19,17 @@ class AccessRestrictionsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allowedServices'] =
-        pulumi.Input.encodeList<ServiceConfigResponse, Map<String, dynamic>>(
-            allowedServices, (value) => value.toMap());
-    map['disableProgrammaticSignin'] = disableProgrammaticSignin;
-    return map;
+    return <String, dynamic>{
+      'allowedServices': pulumi.Input.encodeList<ServiceConfigResponse, Map<String, dynamic>>(allowedServices, (value) => value.toMap()),
+      'disableProgrammaticSignin': disableProgrammaticSignin,
+    };
   }
 
   factory AccessRestrictionsResponse.fromMap(Map<String, dynamic> map) {
     return AccessRestrictionsResponse(
-      allowedServices: pulumi.Input.decodeList<ServiceConfigResponse>(
-          map['allowedServices'],
-          (value) => ServiceConfigResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      allowedServices: pulumi.Input.decodeList<ServiceConfigResponse>(map['allowedServices'], (value) => ServiceConfigResponse.fromMap((value as Map).cast<String, dynamic>())),
       disableProgrammaticSignin: map['disableProgrammaticSignin'] as bool,
     );
   }
 }
+

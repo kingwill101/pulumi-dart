@@ -9,47 +9,35 @@ import 'get_vpc_endpoint_filter.dart';
 class GetVpcEndpointResult {
   /// ARN of the VPC endpoint.
   final String arn;
-
   /// List of CIDR blocks for the exposed AWS service. Applicable for endpoints of type `Gateway`.
   final List<String> cidrBlocks;
-
   /// DNS entries for the VPC Endpoint. Applicable for endpoints of type `Interface`. DNS entry blocks are documented below.
   final List<GetVpcEndpointDnsEntry> dnsEntries;
-
   /// DNS options for the VPC Endpoint. DNS options blocks are documented below.
   final List<GetVpcEndpointDnsOption> dnsOptions;
   final List<GetVpcEndpointFilter>? filters;
   final String id;
   final String ipAddressType;
-
   /// One or more network interfaces for the VPC Endpoint. Applicable for endpoints of type `Interface`.
   final List<String> networkInterfaceIds;
-
   /// ID of the AWS account that owns the VPC endpoint.
   final String ownerId;
-
   /// Policy document associated with the VPC Endpoint. Applicable for endpoints of type `Gateway`.
   final String policy;
-
   /// Prefix list ID of the exposed AWS service. Applicable for endpoints of type `Gateway`.
   final String prefixListId;
-
   /// Whether or not the VPC is associated with a private hosted zone - `true` or `false`. Applicable for endpoints of type `Interface`.
   final bool privateDnsEnabled;
   final String region;
-
   /// Whether or not the VPC Endpoint is being managed by its service - `true` or `false`.
   final bool requesterManaged;
-
   /// One or more route tables associated with the VPC Endpoint. Applicable for endpoints of type `Gateway`.
   final List<String> routeTableIds;
-
   /// One or more security groups associated with the network interfaces. Applicable for endpoints of type `Interface`.
   final List<String> securityGroupIds;
   final String serviceName;
   final String serviceRegion;
   final String state;
-
   /// One or more subnets in which the VPC Endpoint is located. Applicable for endpoints of type `Interface`.
   final List<String> subnetIds;
   final Map<String, String> tags;
@@ -107,60 +95,40 @@ class GetVpcEndpointResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['cidrBlocks'] = cidrBlocks;
-    map['dnsEntries'] =
-        pulumi.Input.encodeList<GetVpcEndpointDnsEntry, Map<String, dynamic>>(
-            dnsEntries, (value) => value.toMap());
-    map['dnsOptions'] =
-        pulumi.Input.encodeList<GetVpcEndpointDnsOption, Map<String, dynamic>>(
-            dnsOptions, (value) => value.toMap());
-    final filtersValue = filters;
-    if (filtersValue != null) {
-      map['filters'] =
-          pulumi.Input.encodeList<GetVpcEndpointFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
-    }
-    map['id'] = id;
-    map['ipAddressType'] = ipAddressType;
-    map['networkInterfaceIds'] = networkInterfaceIds;
-    map['ownerId'] = ownerId;
-    map['policy'] = policy;
-    map['prefixListId'] = prefixListId;
-    map['privateDnsEnabled'] = privateDnsEnabled;
-    map['region'] = region;
-    map['requesterManaged'] = requesterManaged;
-    map['routeTableIds'] = routeTableIds;
-    map['securityGroupIds'] = securityGroupIds;
-    map['serviceName'] = serviceName;
-    map['serviceRegion'] = serviceRegion;
-    map['state'] = state;
-    map['subnetIds'] = subnetIds;
-    map['tags'] = tags;
-    map['vpcEndpointType'] = vpcEndpointType;
-    map['vpcId'] = vpcId;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'cidrBlocks': cidrBlocks,
+      'dnsEntries': pulumi.Input.encodeList<GetVpcEndpointDnsEntry, Map<String, dynamic>>(dnsEntries, (value) => value.toMap()),
+      'dnsOptions': pulumi.Input.encodeList<GetVpcEndpointDnsOption, Map<String, dynamic>>(dnsOptions, (value) => value.toMap()),
+      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetVpcEndpointFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'id': id,
+      'ipAddressType': ipAddressType,
+      'networkInterfaceIds': networkInterfaceIds,
+      'ownerId': ownerId,
+      'policy': policy,
+      'prefixListId': prefixListId,
+      'privateDnsEnabled': privateDnsEnabled,
+      'region': region,
+      'requesterManaged': requesterManaged,
+      'routeTableIds': routeTableIds,
+      'securityGroupIds': securityGroupIds,
+      'serviceName': serviceName,
+      'serviceRegion': serviceRegion,
+      'state': state,
+      'subnetIds': subnetIds,
+      'tags': tags,
+      'vpcEndpointType': vpcEndpointType,
+      'vpcId': vpcId,
+    };
   }
 
   factory GetVpcEndpointResult.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointResult(
       arn: map['arn'] as String,
       cidrBlocks: (map['cidrBlocks'] as List).cast<String>(),
-      dnsEntries: pulumi.Input.decodeList<GetVpcEndpointDnsEntry>(
-          map['dnsEntries'],
-          (value) => GetVpcEndpointDnsEntry.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      dnsOptions: pulumi.Input.decodeList<GetVpcEndpointDnsOption>(
-          map['dnsOptions'],
-          (value) => GetVpcEndpointDnsOption.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetVpcEndpointFilter>(
-              map['filters'],
-              (value) => GetVpcEndpointFilter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      dnsEntries: pulumi.Input.decodeList<GetVpcEndpointDnsEntry>(map['dnsEntries'], (value) => GetVpcEndpointDnsEntry.fromMap((value as Map).cast<String, dynamic>())),
+      dnsOptions: pulumi.Input.decodeList<GetVpcEndpointDnsOption>(map['dnsOptions'], (value) => GetVpcEndpointDnsOption.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetVpcEndpointFilter>(map['filters'], (value) => GetVpcEndpointFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ipAddressType: map['ipAddressType'] as String,
       networkInterfaceIds: (map['networkInterfaceIds'] as List).cast<String>(),
@@ -182,3 +150,4 @@ class GetVpcEndpointResult {
     );
   }
 }
+

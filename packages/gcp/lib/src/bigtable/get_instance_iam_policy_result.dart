@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getInstanceIamPolicy.
 class GetInstanceIamPolicyResult {
   /// (Computed) The etag of the IAM policy.
   final String etag;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instance;
-
   /// (Computed) The policy data
   final String policyData;
   final String project;
@@ -28,13 +27,13 @@ class GetInstanceIamPolicyResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['etag'] = etag;
-    map['id'] = id;
-    map['instance'] = instance;
-    map['policyData'] = policyData;
-    map['project'] = project;
-    return map;
+    return <String, dynamic>{
+      'etag': etag,
+      'id': id,
+      'instance': instance,
+      'policyData': policyData,
+      'project': project,
+    };
   }
 
   factory GetInstanceIamPolicyResult.fromMap(Map<String, dynamic> map) {
@@ -47,3 +46,4 @@ class GetInstanceIamPolicyResult {
     );
   }
 }
+

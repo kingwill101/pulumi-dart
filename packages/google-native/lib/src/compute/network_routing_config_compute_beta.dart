@@ -14,20 +14,15 @@ class NetworkRoutingConfigComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final routingModeValue = routingMode;
-    if (routingModeValue != null) {
-      map['routingMode'] = routingModeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'routingMode': ?routingMode == null ? null : routingMode!.value,
+    };
   }
 
   factory NetworkRoutingConfigComputeBeta.fromMap(Map<String, dynamic> map) {
     return NetworkRoutingConfigComputeBeta(
-      routingMode: map['routingMode'] == null
-          ? null
-          : NetworkRoutingConfigRoutingModeComputeBeta.fromValue(
-              map['routingMode'] as String),
+      routingMode: map['routingMode'] == null ? null : NetworkRoutingConfigRoutingModeComputeBeta.fromValue(map['routingMode'] as String),
     );
   }
 }
+

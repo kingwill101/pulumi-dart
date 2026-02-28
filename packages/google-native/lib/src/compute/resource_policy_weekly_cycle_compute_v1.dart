@@ -15,25 +15,15 @@ class ResourcePolicyWeeklyCycleComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dayOfWeeksValue = dayOfWeeks;
-    if (dayOfWeeksValue != null) {
-      map['dayOfWeeks'] = pulumi.Input.encodeList<
-          ResourcePolicyWeeklyCycleDayOfWeekComputeV1,
-          Map<String, dynamic>>(dayOfWeeksValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'dayOfWeeks': ?dayOfWeeks == null ? null : pulumi.Input.encodeList<ResourcePolicyWeeklyCycleDayOfWeekComputeV1, Map<String, dynamic>>(dayOfWeeks!, (value) => value.toMap()),
+    };
   }
 
   factory ResourcePolicyWeeklyCycleComputeV1.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyWeeklyCycleComputeV1(
-      dayOfWeeks: map['dayOfWeeks'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  ResourcePolicyWeeklyCycleDayOfWeekComputeV1>(
-              map['dayOfWeeks'],
-              (value) => ResourcePolicyWeeklyCycleDayOfWeekComputeV1.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      dayOfWeeks: map['dayOfWeeks'] == null ? null : pulumi.Input.decodeList<ResourcePolicyWeeklyCycleDayOfWeekComputeV1>(map['dayOfWeeks'], (value) => ResourcePolicyWeeklyCycleDayOfWeekComputeV1.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

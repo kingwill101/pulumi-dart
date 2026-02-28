@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetEndpointMongodbSetting {
   final String authMechanism;
   final String authSource;
@@ -25,14 +26,14 @@ class GetEndpointMongodbSetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['authMechanism'] = authMechanism;
-    map['authSource'] = authSource;
-    map['authType'] = authType;
-    map['docsToInvestigate'] = docsToInvestigate;
-    map['extractDocId'] = extractDocId;
-    map['nestingLevel'] = nestingLevel;
-    return map;
+    return <String, dynamic>{
+      'authMechanism': authMechanism,
+      'authSource': authSource,
+      'authType': authType,
+      'docsToInvestigate': docsToInvestigate,
+      'extractDocId': extractDocId,
+      'nestingLevel': nestingLevel,
+    };
   }
 
   factory GetEndpointMongodbSetting.fromMap(Map<String, dynamic> map) {
@@ -46,3 +47,4 @@ class GetEndpointMongodbSetting {
     );
   }
 }
+

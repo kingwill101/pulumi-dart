@@ -8,15 +8,13 @@ enum AuditLogConfigLogTypeNetworkconnectivityV1alpha1 {
   const AuditLogConfigLogTypeNetworkconnectivityV1alpha1(this.value);
   final String value;
 
-  static AuditLogConfigLogTypeNetworkconnectivityV1alpha1 fromValue(
-      String value) {
-    for (final item
-        in AuditLogConfigLogTypeNetworkconnectivityV1alpha1.values) {
+  static AuditLogConfigLogTypeNetworkconnectivityV1alpha1 fromValue(String value) {
+    for (final item in AuditLogConfigLogTypeNetworkconnectivityV1alpha1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown AuditLogConfigLogTypeNetworkconnectivityV1alpha1 value: $value');
+    throw ArgumentError('Unknown AuditLogConfigLogTypeNetworkconnectivityV1alpha1 value: $value');
   }
 }
+

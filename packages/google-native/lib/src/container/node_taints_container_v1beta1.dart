@@ -15,23 +15,15 @@ class NodeTaintsContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final taintsValue = taints;
-    if (taintsValue != null) {
-      map['taints'] = pulumi.Input.encodeList<NodeTaintContainerV1beta1,
-          Map<String, dynamic>>(taintsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'taints': ?taints == null ? null : pulumi.Input.encodeList<NodeTaintContainerV1beta1, Map<String, dynamic>>(taints!, (value) => value.toMap()),
+    };
   }
 
   factory NodeTaintsContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NodeTaintsContainerV1beta1(
-      taints: map['taints'] == null
-          ? null
-          : pulumi.Input.decodeList<NodeTaintContainerV1beta1>(
-              map['taints'],
-              (value) => NodeTaintContainerV1beta1.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      taints: map['taints'] == null ? null : pulumi.Input.decodeList<NodeTaintContainerV1beta1>(map['taints'], (value) => NodeTaintContainerV1beta1.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

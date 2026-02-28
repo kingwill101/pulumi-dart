@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetSecurityGatewayHubInternetGateway {
   /// Output only. List of IP addresses assigned to the Cloud NAT.
   final List<String> assignedIps;
@@ -11,15 +12,15 @@ class GetSecurityGatewayHubInternetGateway {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['assignedIps'] = assignedIps;
-    return map;
+    return <String, dynamic>{
+      'assignedIps': assignedIps,
+    };
   }
 
-  factory GetSecurityGatewayHubInternetGateway.fromMap(
-      Map<String, dynamic> map) {
+  factory GetSecurityGatewayHubInternetGateway.fromMap(Map<String, dynamic> map) {
     return GetSecurityGatewayHubInternetGateway(
       assignedIps: (map['assignedIps'] as List).cast<String>(),
     );
   }
 }
+

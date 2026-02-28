@@ -15,24 +15,15 @@ class DataSamplingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final behaviorsValue = behaviors;
-    if (behaviorsValue != null) {
-      map['behaviors'] =
-          pulumi.Input.encodeList<DataSamplingConfigBehaviorsItem, String>(
-              behaviorsValue, (value) => value.value);
-    }
-    return map;
+    return <String, dynamic>{
+      'behaviors': ?behaviors == null ? null : pulumi.Input.encodeList<DataSamplingConfigBehaviorsItem, String>(behaviors!, (value) => value.value),
+    };
   }
 
   factory DataSamplingConfig.fromMap(Map<String, dynamic> map) {
     return DataSamplingConfig(
-      behaviors: map['behaviors'] == null
-          ? null
-          : pulumi.Input.decodeList<DataSamplingConfigBehaviorsItem>(
-              map['behaviors'],
-              (value) =>
-                  DataSamplingConfigBehaviorsItem.fromValue(value as String)),
+      behaviors: map['behaviors'] == null ? null : pulumi.Input.decodeList<DataSamplingConfigBehaviorsItem>(map['behaviors'], (value) => DataSamplingConfigBehaviorsItem.fromValue(value as String)),
     );
   }
 }
+

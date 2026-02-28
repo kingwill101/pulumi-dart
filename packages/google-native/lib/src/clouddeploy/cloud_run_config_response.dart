@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// CloudRunConfig contains the Cloud Run runtime configuration.
 class CloudRunConfigResponse {
   /// Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
@@ -12,9 +13,9 @@ class CloudRunConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['automaticTrafficControl'] = automaticTrafficControl;
-    return map;
+    return <String, dynamic>{
+      'automaticTrafficControl': automaticTrafficControl,
+    };
   }
 
   factory CloudRunConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class CloudRunConfigResponse {
     );
   }
 }
+

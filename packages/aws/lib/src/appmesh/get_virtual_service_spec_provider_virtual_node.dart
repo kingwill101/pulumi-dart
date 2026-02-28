@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetVirtualServiceSpecProviderVirtualNode {
   final String virtualNodeName;
 
@@ -10,15 +11,15 @@ class GetVirtualServiceSpecProviderVirtualNode {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['virtualNodeName'] = virtualNodeName;
-    return map;
+    return <String, dynamic>{
+      'virtualNodeName': virtualNodeName,
+    };
   }
 
-  factory GetVirtualServiceSpecProviderVirtualNode.fromMap(
-      Map<String, dynamic> map) {
+  factory GetVirtualServiceSpecProviderVirtualNode.fromMap(Map<String, dynamic> map) {
     return GetVirtualServiceSpecProviderVirtualNode(
       virtualNodeName: map['virtualNodeName'] as String,
     );
   }
 }
+

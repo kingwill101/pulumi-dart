@@ -8,7 +8,6 @@ import 'bare_metal_control_plane_node_pool_config_response.dart';
 class BareMetalControlPlaneConfigResponse {
   /// Customizes the default API server args. Only a subset of customized flags are supported. For the exact format, refer to the [API server documentation](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/).
   final List<BareMetalApiServerArgumentResponse> apiServerArgs;
-
   /// Configures the node pool running the control plane.
   final BareMetalControlPlaneNodePoolConfigResponse controlPlaneNodePoolConfig;
 
@@ -21,26 +20,17 @@ class BareMetalControlPlaneConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['apiServerArgs'] = pulumi.Input.encodeList<
-        BareMetalApiServerArgumentResponse,
-        Map<String, dynamic>>(apiServerArgs, (value) => value.toMap());
-    map['controlPlaneNodePoolConfig'] = controlPlaneNodePoolConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'apiServerArgs': pulumi.Input.encodeList<BareMetalApiServerArgumentResponse, Map<String, dynamic>>(apiServerArgs, (value) => value.toMap()),
+      'controlPlaneNodePoolConfig': controlPlaneNodePoolConfig.toMap(),
+    };
   }
 
-  factory BareMetalControlPlaneConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory BareMetalControlPlaneConfigResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalControlPlaneConfigResponse(
-      apiServerArgs:
-          pulumi.Input.decodeList<BareMetalApiServerArgumentResponse>(
-              map['apiServerArgs'],
-              (value) => BareMetalApiServerArgumentResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      controlPlaneNodePoolConfig:
-          BareMetalControlPlaneNodePoolConfigResponse.fromMap(
-              (map['controlPlaneNodePoolConfig'] as Map)
-                  .cast<String, dynamic>()),
+      apiServerArgs: pulumi.Input.decodeList<BareMetalApiServerArgumentResponse>(map['apiServerArgs'], (value) => BareMetalApiServerArgumentResponse.fromMap((value as Map).cast<String, dynamic>())),
+      controlPlaneNodePoolConfig: BareMetalControlPlaneNodePoolConfigResponse.fromMap((map['controlPlaneNodePoolConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

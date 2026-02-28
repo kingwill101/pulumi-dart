@@ -1,25 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDataSourceReferencesDataSourceReference {
   /// The state of the backup config for the data source.
   final String backupConfigState;
-
   /// The number of backups for the data source.
   final int backupCount;
-
   /// The underlying data source resource.
   final String dataSource;
-
   /// The GCP resource name for the data source.
   final String gcpResourceName;
-
   /// The state of the last backup.
   final String lastBackupState;
-
   /// The last time a successful backup was made.
   final String lastSuccessfulBackupTime;
   final String name;
-
   /// The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `resource_type` is deprecated and will be removed in a future major release.
   final String resourceType;
 
@@ -44,20 +39,19 @@ class GetDataSourceReferencesDataSourceReference {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['backupConfigState'] = backupConfigState;
-    map['backupCount'] = backupCount;
-    map['dataSource'] = dataSource;
-    map['gcpResourceName'] = gcpResourceName;
-    map['lastBackupState'] = lastBackupState;
-    map['lastSuccessfulBackupTime'] = lastSuccessfulBackupTime;
-    map['name'] = name;
-    map['resourceType'] = resourceType;
-    return map;
+    return <String, dynamic>{
+      'backupConfigState': backupConfigState,
+      'backupCount': backupCount,
+      'dataSource': dataSource,
+      'gcpResourceName': gcpResourceName,
+      'lastBackupState': lastBackupState,
+      'lastSuccessfulBackupTime': lastSuccessfulBackupTime,
+      'name': name,
+      'resourceType': resourceType,
+    };
   }
 
-  factory GetDataSourceReferencesDataSourceReference.fromMap(
-      Map<String, dynamic> map) {
+  factory GetDataSourceReferencesDataSourceReference.fromMap(Map<String, dynamic> map) {
     return GetDataSourceReferencesDataSourceReference(
       backupConfigState: map['backupConfigState'] as String,
       backupCount: map['backupCount'] as int,
@@ -70,3 +64,4 @@ class GetDataSourceReferencesDataSourceReference {
     );
   }
 }
+

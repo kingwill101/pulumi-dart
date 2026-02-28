@@ -22,21 +22,19 @@ class GetContextArgs {
     required String location,
     required String metadataStoreId,
     String? project,
-  })  : contextId = pulumi.Input.asInput<String>(contextId),
-        location = pulumi.Input.asInput<String>(location),
-        metadataStoreId = pulumi.Input.asInput<String>(metadataStoreId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      contextId = pulumi.Input.asInput<String>(contextId),
+      location = pulumi.Input.asInput<String>(location),
+      metadataStoreId = pulumi.Input.asInput<String>(metadataStoreId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['contextId'] = contextId;
-    map['location'] = location;
-    map['metadataStoreId'] = metadataStoreId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'contextId': contextId,
+      'location': location,
+      'metadataStoreId': metadataStoreId,
+      'project': ?project,
+    };
   }
 
   factory GetContextArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetContextArgs {
     );
   }
 }
+

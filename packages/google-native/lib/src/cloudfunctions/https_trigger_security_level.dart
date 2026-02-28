@@ -16,3 +16,4 @@ enum HttpsTriggerSecurityLevel {
     throw ArgumentError('Unknown HttpsTriggerSecurityLevel value: $value');
   }
 }
+

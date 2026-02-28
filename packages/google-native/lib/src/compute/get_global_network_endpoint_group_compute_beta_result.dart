@@ -11,61 +11,41 @@ import 'network_endpoint_group_serverless_deployment_response_compute_beta.dart'
 class GetGlobalNetworkEndpointGroupComputeBetaResult {
   /// Metadata defined as annotations on the network endpoint group.
   final Map<String, String> annotations;
-
   /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
   final NetworkEndpointGroupAppEngineResponseComputeBeta appEngine;
-
   /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
   final NetworkEndpointGroupCloudFunctionResponseComputeBeta cloudFunction;
-
   /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
   final NetworkEndpointGroupCloudRunResponseComputeBeta cloudRun;
-
   /// Creation timestamp in RFC3339 text format.
   final String creationTimestamp;
-
   /// The default port used if the port number is not specified in the network endpoint.
   final int defaultPort;
-
   /// An optional description of this resource. Provide this property when you create the resource.
   final String description;
-
   /// Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
   final String kind;
-
   /// This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.
-  final NetworkEndpointGroupLbNetworkEndpointGroupResponseComputeBeta
-      loadBalancer;
-
+  final NetworkEndpointGroupLbNetworkEndpointGroupResponseComputeBeta loadBalancer;
   /// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
   final String name;
-
   /// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
   final String network;
-
   /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
   final String networkEndpointType;
   final NetworkEndpointGroupPscDataResponseComputeBeta pscData;
-
   /// The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
   final String pscTargetService;
-
   /// The URL of the region where the network endpoint group is located.
   final String region;
-
   /// Server-defined URL for the resource.
   final String selfLink;
-
   /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
-  final NetworkEndpointGroupServerlessDeploymentResponseComputeBeta
-      serverlessDeployment;
-
+  final NetworkEndpointGroupServerlessDeploymentResponseComputeBeta serverlessDeployment;
   /// [Output only] Number of network endpoints in the network endpoint group.
   final int size;
-
   /// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
   final String subnetwork;
-
   /// The URL of the zone where the network endpoint group is located.
   final String zone;
 
@@ -114,62 +94,53 @@ class GetGlobalNetworkEndpointGroupComputeBetaResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['annotations'] = annotations;
-    map['appEngine'] = appEngine.toMap();
-    map['cloudFunction'] = cloudFunction.toMap();
-    map['cloudRun'] = cloudRun.toMap();
-    map['creationTimestamp'] = creationTimestamp;
-    map['defaultPort'] = defaultPort;
-    map['description'] = description;
-    map['kind'] = kind;
-    map['loadBalancer'] = loadBalancer.toMap();
-    map['name'] = name;
-    map['network'] = network;
-    map['networkEndpointType'] = networkEndpointType;
-    map['pscData'] = pscData.toMap();
-    map['pscTargetService'] = pscTargetService;
-    map['region'] = region;
-    map['selfLink'] = selfLink;
-    map['serverlessDeployment'] = serverlessDeployment.toMap();
-    map['size'] = size;
-    map['subnetwork'] = subnetwork;
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'annotations': annotations,
+      'appEngine': appEngine.toMap(),
+      'cloudFunction': cloudFunction.toMap(),
+      'cloudRun': cloudRun.toMap(),
+      'creationTimestamp': creationTimestamp,
+      'defaultPort': defaultPort,
+      'description': description,
+      'kind': kind,
+      'loadBalancer': loadBalancer.toMap(),
+      'name': name,
+      'network': network,
+      'networkEndpointType': networkEndpointType,
+      'pscData': pscData.toMap(),
+      'pscTargetService': pscTargetService,
+      'region': region,
+      'selfLink': selfLink,
+      'serverlessDeployment': serverlessDeployment.toMap(),
+      'size': size,
+      'subnetwork': subnetwork,
+      'zone': zone,
+    };
   }
 
-  factory GetGlobalNetworkEndpointGroupComputeBetaResult.fromMap(
-      Map<String, dynamic> map) {
+  factory GetGlobalNetworkEndpointGroupComputeBetaResult.fromMap(Map<String, dynamic> map) {
     return GetGlobalNetworkEndpointGroupComputeBetaResult(
       annotations: (map['annotations'] as Map).cast<String, String>(),
-      appEngine: NetworkEndpointGroupAppEngineResponseComputeBeta.fromMap(
-          (map['appEngine'] as Map).cast<String, dynamic>()),
-      cloudFunction:
-          NetworkEndpointGroupCloudFunctionResponseComputeBeta.fromMap(
-              (map['cloudFunction'] as Map).cast<String, dynamic>()),
-      cloudRun: NetworkEndpointGroupCloudRunResponseComputeBeta.fromMap(
-          (map['cloudRun'] as Map).cast<String, dynamic>()),
+      appEngine: NetworkEndpointGroupAppEngineResponseComputeBeta.fromMap((map['appEngine'] as Map).cast<String, dynamic>()),
+      cloudFunction: NetworkEndpointGroupCloudFunctionResponseComputeBeta.fromMap((map['cloudFunction'] as Map).cast<String, dynamic>()),
+      cloudRun: NetworkEndpointGroupCloudRunResponseComputeBeta.fromMap((map['cloudRun'] as Map).cast<String, dynamic>()),
       creationTimestamp: map['creationTimestamp'] as String,
       defaultPort: map['defaultPort'] as int,
       description: map['description'] as String,
       kind: map['kind'] as String,
-      loadBalancer:
-          NetworkEndpointGroupLbNetworkEndpointGroupResponseComputeBeta.fromMap(
-              (map['loadBalancer'] as Map).cast<String, dynamic>()),
+      loadBalancer: NetworkEndpointGroupLbNetworkEndpointGroupResponseComputeBeta.fromMap((map['loadBalancer'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       network: map['network'] as String,
       networkEndpointType: map['networkEndpointType'] as String,
-      pscData: NetworkEndpointGroupPscDataResponseComputeBeta.fromMap(
-          (map['pscData'] as Map).cast<String, dynamic>()),
+      pscData: NetworkEndpointGroupPscDataResponseComputeBeta.fromMap((map['pscData'] as Map).cast<String, dynamic>()),
       pscTargetService: map['pscTargetService'] as String,
       region: map['region'] as String,
       selfLink: map['selfLink'] as String,
-      serverlessDeployment:
-          NetworkEndpointGroupServerlessDeploymentResponseComputeBeta.fromMap(
-              (map['serverlessDeployment'] as Map).cast<String, dynamic>()),
+      serverlessDeployment: NetworkEndpointGroupServerlessDeploymentResponseComputeBeta.fromMap((map['serverlessDeployment'] as Map).cast<String, dynamic>()),
       size: map['size'] as int,
       subnetwork: map['subnetwork'] as String,
       zone: map['zone'] as String,
     );
   }
 }
+

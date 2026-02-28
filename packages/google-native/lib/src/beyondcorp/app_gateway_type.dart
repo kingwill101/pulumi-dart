@@ -15,3 +15,4 @@ enum AppGatewayType {
     throw ArgumentError('Unknown AppGatewayType value: $value');
   }
 }
+

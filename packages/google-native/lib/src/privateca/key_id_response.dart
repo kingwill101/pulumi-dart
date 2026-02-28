@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A KeyId identifies a specific public key, usually by hashing the public key.
 class KeyIdResponse {
   /// Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
@@ -12,9 +13,9 @@ class KeyIdResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['keyId'] = keyId;
-    return map;
+    return <String, dynamic>{
+      'keyId': keyId,
+    };
   }
 
   factory KeyIdResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class KeyIdResponse {
     );
   }
 }
+

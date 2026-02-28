@@ -10,17 +10,13 @@ import 'google_privacy_dlp_v2_deidentify_config.dart';
 class OrganizationsDeidentifyTemplateArgs {
   /// The core content of the template.
   final pulumi.Input<GooglePrivacyDlpV2DeidentifyConfig>? deidentifyConfig;
-
   /// Short description (max 256 chars).
   final pulumi.Input<String>? description;
-
   /// Display name (max 256 chars).
   final pulumi.Input<String>? displayName;
-
   /// Deprecated. This field has no effect.
   final pulumi.Input<String>? location;
   final pulumi.Input<String> organizationId;
-
   /// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
   final pulumi.Input<String>? templateId;
 
@@ -38,58 +34,34 @@ class OrganizationsDeidentifyTemplateArgs {
     String? location,
     required String organizationId,
     String? templateId,
-  })  : deidentifyConfig =
-            pulumi.Input.asOptionalInput<GooglePrivacyDlpV2DeidentifyConfig>(
-                deidentifyConfig),
-        description = pulumi.Input.asOptionalInput<String>(description),
-        displayName = pulumi.Input.asOptionalInput<String>(displayName),
-        location = pulumi.Input.asOptionalInput<String>(location),
-        organizationId = pulumi.Input.asInput<String>(organizationId),
-        templateId = pulumi.Input.asOptionalInput<String>(templateId);
+  }) :
+      deidentifyConfig = pulumi.Input.asOptionalInput<GooglePrivacyDlpV2DeidentifyConfig>(deidentifyConfig),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      displayName = pulumi.Input.asOptionalInput<String>(displayName),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      organizationId = pulumi.Input.asInput<String>(organizationId),
+      templateId = pulumi.Input.asOptionalInput<String>(templateId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final deidentifyConfigValue = deidentifyConfig;
-    if (deidentifyConfigValue != null) {
-      map['deidentifyConfig'] = pulumi.Input.mapOptionalInputValue<
-              GooglePrivacyDlpV2DeidentifyConfig, Map<String, dynamic>>(
-          deidentifyConfigValue, (value) => value.toMap());
-    }
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final displayNameValue = displayName;
-    if (displayNameValue != null) {
-      map['displayName'] = displayNameValue;
-    }
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    map['organizationId'] = organizationId;
-    final templateIdValue = templateId;
-    if (templateIdValue != null) {
-      map['templateId'] = templateIdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'deidentifyConfig': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2DeidentifyConfig, Map<String, dynamic>>(deidentifyConfig, (value) => value.toMap()),
+      'description': ?description,
+      'displayName': ?displayName,
+      'location': ?location,
+      'organizationId': organizationId,
+      'templateId': ?templateId,
+    };
   }
 
-  factory OrganizationsDeidentifyTemplateArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory OrganizationsDeidentifyTemplateArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationsDeidentifyTemplateArgs(
-      deidentifyConfig: map['deidentifyConfig'] == null
-          ? null
-          : GooglePrivacyDlpV2DeidentifyConfig.fromMap(
-              (map['deidentifyConfig'] as Map).cast<String, dynamic>()),
-      description:
-          map['description'] == null ? null : map['description'] as String,
-      displayName:
-          map['displayName'] == null ? null : map['displayName'] as String,
+      deidentifyConfig: map['deidentifyConfig'] == null ? null : GooglePrivacyDlpV2DeidentifyConfig.fromMap((map['deidentifyConfig'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : map['description'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
       location: map['location'] == null ? null : map['location'] as String,
       organizationId: map['organizationId'] as String,
-      templateId:
-          map['templateId'] == null ? null : map['templateId'] as String,
+      templateId: map['templateId'] == null ? null : map['templateId'] as String,
     );
   }
 }
+

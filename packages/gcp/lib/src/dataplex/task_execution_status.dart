@@ -8,7 +8,6 @@ class TaskExecutionStatus {
   /// latest job execution.
   /// Structure is documented below.
   final List<TaskExecutionStatusLatestJob>? latestJobs;
-
   /// (Output)
   /// Last update time of the status.
   final String? updateTime;
@@ -22,29 +21,17 @@ class TaskExecutionStatus {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final latestJobsValue = latestJobs;
-    if (latestJobsValue != null) {
-      map['latestJobs'] = pulumi.Input.encodeList<TaskExecutionStatusLatestJob,
-          Map<String, dynamic>>(latestJobsValue, (value) => value.toMap());
-    }
-    final updateTimeValue = updateTime;
-    if (updateTimeValue != null) {
-      map['updateTime'] = updateTimeValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'latestJobs': ?latestJobs == null ? null : pulumi.Input.encodeList<TaskExecutionStatusLatestJob, Map<String, dynamic>>(latestJobs!, (value) => value.toMap()),
+      'updateTime': ?updateTime,
+    };
   }
 
   factory TaskExecutionStatus.fromMap(Map<String, dynamic> map) {
     return TaskExecutionStatus(
-      latestJobs: map['latestJobs'] == null
-          ? null
-          : pulumi.Input.decodeList<TaskExecutionStatusLatestJob>(
-              map['latestJobs'],
-              (value) => TaskExecutionStatusLatestJob.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      updateTime:
-          map['updateTime'] == null ? null : map['updateTime'] as String,
+      latestJobs: map['latestJobs'] == null ? null : pulumi.Input.decodeList<TaskExecutionStatusLatestJob>(map['latestJobs'], (value) => TaskExecutionStatusLatestJob.fromMap((value as Map).cast<String, dynamic>())),
+      updateTime: map['updateTime'] == null ? null : map['updateTime'] as String,
     );
   }
 }
+

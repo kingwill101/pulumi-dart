@@ -1,18 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MirroringEndpointGroupAssociation {
   /// (Output)
   /// The connected deployment group's resource name, for example:
   /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
   /// See https://google.aip.dev/124.
   final String? name;
-
   /// (Output)
   /// The associated network, for example:
   /// projects/123456789/global/networks/my-network.
   /// See https://google.aip.dev/124.
   final String? network;
-
   /// (Output)
   /// The current state of the association in this location.
   /// Possible values:
@@ -32,20 +31,11 @@ class MirroringEndpointGroupAssociation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final networkValue = network;
-    if (networkValue != null) {
-      map['network'] = networkValue;
-    }
-    final stateValue = state;
-    if (stateValue != null) {
-      map['state'] = stateValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+      'network': ?network,
+      'state': ?state,
+    };
   }
 
   factory MirroringEndpointGroupAssociation.fromMap(Map<String, dynamic> map) {
@@ -56,3 +46,4 @@ class MirroringEndpointGroupAssociation {
     );
   }
 }
+

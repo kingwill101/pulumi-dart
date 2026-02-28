@@ -2,8 +2,7 @@
 enum PullRequestFilterCommentControl {
   commentsDisabled("COMMENTS_DISABLED"),
   commentsEnabled("COMMENTS_ENABLED"),
-  commentsEnabledForExternalContributorsOnly(
-      "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY");
+  commentsEnabledForExternalContributorsOnly("COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY");
 
   const PullRequestFilterCommentControl(this.value);
   final String value;
@@ -14,7 +13,7 @@ enum PullRequestFilterCommentControl {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown PullRequestFilterCommentControl value: $value');
+    throw ArgumentError('Unknown PullRequestFilterCommentControl value: $value');
   }
 }
+

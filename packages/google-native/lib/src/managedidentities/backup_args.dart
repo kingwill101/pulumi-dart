@@ -10,7 +10,6 @@ class BackupArgs {
   /// Required. Backup Id, unique name to identify the backups with the following restrictions: * Must be lowercase letters, numbers, and hyphens * Must start with a letter. * Must contain between 1-63 characters. * Must end with a number or a letter. * Must be unique within the domain.
   final pulumi.Input<String> backupId;
   final pulumi.Input<String> domainId;
-
   /// Optional. Resource labels to represent user provided metadata.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? project;
@@ -25,34 +24,28 @@ class BackupArgs {
     required String domainId,
     Map<String, String>? labels,
     String? project,
-  })  : backupId = pulumi.Input.asInput<String>(backupId),
-        domainId = pulumi.Input.asInput<String>(domainId),
-        labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      backupId = pulumi.Input.asInput<String>(backupId),
+      domainId = pulumi.Input.asInput<String>(domainId),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['backupId'] = backupId;
-    map['domainId'] = domainId;
-    final labelsValue = labels;
-    if (labelsValue != null) {
-      map['labels'] = labelsValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'backupId': backupId,
+      'domainId': domainId,
+      'labels': ?labels,
+      'project': ?project,
+    };
   }
 
   factory BackupArgs.fromMap(Map<String, dynamic> map) {
     return BackupArgs(
       backupId: map['backupId'] as String,
       domainId: map['domainId'] as String,
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

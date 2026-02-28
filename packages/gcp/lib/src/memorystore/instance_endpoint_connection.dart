@@ -14,20 +14,15 @@ class InstanceEndpointConnection {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final pscAutoConnectionValue = pscAutoConnection;
-    if (pscAutoConnectionValue != null) {
-      map['pscAutoConnection'] = pscAutoConnectionValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'pscAutoConnection': ?pscAutoConnection == null ? null : pscAutoConnection!.toMap(),
+    };
   }
 
   factory InstanceEndpointConnection.fromMap(Map<String, dynamic> map) {
     return InstanceEndpointConnection(
-      pscAutoConnection: map['pscAutoConnection'] == null
-          ? null
-          : InstanceEndpointConnectionPscAutoConnection.fromMap(
-              (map['pscAutoConnection'] as Map).cast<String, dynamic>()),
+      pscAutoConnection: map['pscAutoConnection'] == null ? null : InstanceEndpointConnectionPscAutoConnection.fromMap((map['pscAutoConnection'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

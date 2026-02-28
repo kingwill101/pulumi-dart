@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInstanceFilter {
   /// Name of the filter.
   /// For a full reference of filter names, see [describe-instances in the AWS CLI reference][1].
   final String name;
-
   /// One or more values to match.
   final List<String> values;
 
@@ -17,10 +17,10 @@ class GetInstanceFilter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['values'] = values;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'values': values,
+    };
   }
 
   factory GetInstanceFilter.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class GetInstanceFilter {
     );
   }
 }
+

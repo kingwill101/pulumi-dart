@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConnectionSslConfigAdditionalVariableSecretValue {
   /// Secret version of Secret Value for Config variable.
   final String secretVersion;
@@ -11,15 +12,15 @@ class ConnectionSslConfigAdditionalVariableSecretValue {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['secretVersion'] = secretVersion;
-    return map;
+    return <String, dynamic>{
+      'secretVersion': secretVersion,
+    };
   }
 
-  factory ConnectionSslConfigAdditionalVariableSecretValue.fromMap(
-      Map<String, dynamic> map) {
+  factory ConnectionSslConfigAdditionalVariableSecretValue.fromMap(Map<String, dynamic> map) {
     return ConnectionSslConfigAdditionalVariableSecretValue(
       secretVersion: map['secretVersion'] as String,
     );
   }
 }
+

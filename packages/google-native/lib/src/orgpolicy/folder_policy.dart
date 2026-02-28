@@ -7,16 +7,12 @@ import 'google_cloud_orgpolicy_v2_policy_spec_response.dart';
 /// Auto-naming is currently not supported for this resource.
 class FolderPolicy extends pulumi.CustomResource {
   /// Deprecated.
-  late final pulumi.Output<GoogleCloudOrgpolicyV2AlternatePolicySpecResponse>
-      alternate;
-
+  late final pulumi.Output<GoogleCloudOrgpolicyV2AlternatePolicySpecResponse> alternate;
   /// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
   late final pulumi.Output<GoogleCloudOrgpolicyV2PolicySpecResponse> dryRunSpec;
   late final pulumi.Output<String> folderId;
-
   /// Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
   late final pulumi.Output<String> name;
-
   /// Basic information about the Organization Policy.
   late final pulumi.Output<GoogleCloudOrgpolicyV2PolicySpecResponse> spec;
 
@@ -34,14 +30,10 @@ class FolderPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.alternate =
-        registerOutput<GoogleCloudOrgpolicyV2AlternatePolicySpecResponse>(
-            'alternate');
-    this.dryRunSpec =
-        registerOutput<GoogleCloudOrgpolicyV2PolicySpecResponse>('dryRunSpec');
+    this.alternate = registerOutput<GoogleCloudOrgpolicyV2AlternatePolicySpecResponse>('alternate');
+    this.dryRunSpec = registerOutput<GoogleCloudOrgpolicyV2PolicySpecResponse>('dryRunSpec');
     this.folderId = registerOutput<String>('folderId');
     this.name = registerOutput<String>('name');
-    this.spec =
-        registerOutput<GoogleCloudOrgpolicyV2PolicySpecResponse>('spec');
+    this.spec = registerOutput<GoogleCloudOrgpolicyV2PolicySpecResponse>('spec');
   }
 }

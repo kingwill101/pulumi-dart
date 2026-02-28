@@ -6,7 +6,6 @@ import 'google_iam_v1_audit_log_config_log_type_dns_v1beta2.dart';
 class GoogleIamV1AuditLogConfigDnsV1beta2 {
   /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   final List<String>? exemptedMembers;
-
   /// The log type that this config enables.
   final GoogleIamV1AuditLogConfigLogTypeDnsV1beta2? logType;
 
@@ -19,28 +18,17 @@ class GoogleIamV1AuditLogConfigDnsV1beta2 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final exemptedMembersValue = exemptedMembers;
-    if (exemptedMembersValue != null) {
-      map['exemptedMembers'] = exemptedMembersValue;
-    }
-    final logTypeValue = logType;
-    if (logTypeValue != null) {
-      map['logType'] = logTypeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'exemptedMembers': ?exemptedMembers,
+      'logType': ?logType == null ? null : logType!.value,
+    };
   }
 
-  factory GoogleIamV1AuditLogConfigDnsV1beta2.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleIamV1AuditLogConfigDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return GoogleIamV1AuditLogConfigDnsV1beta2(
-      exemptedMembers: map['exemptedMembers'] == null
-          ? null
-          : (map['exemptedMembers'] as List).cast<String>(),
-      logType: map['logType'] == null
-          ? null
-          : GoogleIamV1AuditLogConfigLogTypeDnsV1beta2.fromValue(
-              map['logType'] as String),
+      exemptedMembers: map['exemptedMembers'] == null ? null : (map['exemptedMembers'] as List).cast<String>(),
+      logType: map['logType'] == null ? null : GoogleIamV1AuditLogConfigLogTypeDnsV1beta2.fromValue(map['logType'] as String),
     );
   }
 }
+

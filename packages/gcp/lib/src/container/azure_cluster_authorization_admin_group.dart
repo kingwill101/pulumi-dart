@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AzureClusterAuthorizationAdminGroup {
   /// The name of the group, e.g. `my-group@domain.com`.
   final String group;
@@ -11,15 +12,15 @@ class AzureClusterAuthorizationAdminGroup {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['group'] = group;
-    return map;
+    return <String, dynamic>{
+      'group': group,
+    };
   }
 
-  factory AzureClusterAuthorizationAdminGroup.fromMap(
-      Map<String, dynamic> map) {
+  factory AzureClusterAuthorizationAdminGroup.fromMap(Map<String, dynamic> map) {
     return AzureClusterAuthorizationAdminGroup(
       group: map['group'] as String,
     );
   }
 }
+

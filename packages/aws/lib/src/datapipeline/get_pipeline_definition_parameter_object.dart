@@ -5,7 +5,6 @@ import 'get_pipeline_definition_parameter_object_attribute.dart';
 
 class GetPipelineDefinitionParameterObject {
   final List<GetPipelineDefinitionParameterObjectAttribute> attributes;
-
   /// ID of the object.
   final String id;
 
@@ -18,23 +17,17 @@ class GetPipelineDefinitionParameterObject {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['attributes'] = pulumi.Input.encodeList<
-        GetPipelineDefinitionParameterObjectAttribute,
-        Map<String, dynamic>>(attributes, (value) => value.toMap());
-    map['id'] = id;
-    return map;
+    return <String, dynamic>{
+      'attributes': pulumi.Input.encodeList<GetPipelineDefinitionParameterObjectAttribute, Map<String, dynamic>>(attributes, (value) => value.toMap()),
+      'id': id,
+    };
   }
 
-  factory GetPipelineDefinitionParameterObject.fromMap(
-      Map<String, dynamic> map) {
+  factory GetPipelineDefinitionParameterObject.fromMap(Map<String, dynamic> map) {
     return GetPipelineDefinitionParameterObject(
-      attributes: pulumi.Input.decodeList<
-              GetPipelineDefinitionParameterObjectAttribute>(
-          map['attributes'],
-          (value) => GetPipelineDefinitionParameterObjectAttribute.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      attributes: pulumi.Input.decodeList<GetPipelineDefinitionParameterObjectAttribute>(map['attributes'], (value) => GetPipelineDefinitionParameterObjectAttribute.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
     );
   }
 }
+

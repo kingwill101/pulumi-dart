@@ -5,9 +5,7 @@ import 'table_bucket_maintenance_configuration_iceberg_unreferenced_file_removal
 class TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemoval {
   /// Settings object for unreferenced file removal.
   /// See `iceberg_unreferenced_file_removal.settings` below.
-  final TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemovalSettings
-      settings;
-
+  final TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemovalSettings settings;
   /// Whether the configuration is enabled.
   /// Valid values are `enabled` and `disabled`.
   final String status;
@@ -21,19 +19,17 @@ class TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemoval {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['settings'] = settings.toMap();
-    map['status'] = status;
-    return map;
+    return <String, dynamic>{
+      'settings': settings.toMap(),
+      'status': status,
+    };
   }
 
-  factory TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemoval.fromMap(
-      Map<String, dynamic> map) {
+  factory TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemoval.fromMap(Map<String, dynamic> map) {
     return TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemoval(
-      settings:
-          TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemovalSettings
-              .fromMap((map['settings'] as Map).cast<String, dynamic>()),
+      settings: TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemovalSettings.fromMap((map['settings'] as Map).cast<String, dynamic>()),
       status: map['status'] as String,
     );
   }
 }
+

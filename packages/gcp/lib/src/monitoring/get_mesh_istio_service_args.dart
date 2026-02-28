@@ -10,11 +10,9 @@ class GetMeshIstioServiceArgs {
   /// Identifier for the mesh in which this Istio service is defined.
   /// Corresponds to the meshUid metric label in Istio metrics.
   final pulumi.Input<String> meshUid;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The name of the Istio service underlying this service.
   /// Corresponds to the destination_service_name metric label in Istio metrics.
   ///
@@ -22,7 +20,6 @@ class GetMeshIstioServiceArgs {
   ///
   /// Other optional fields include:
   final pulumi.Input<String> serviceName;
-
   /// The namespace of the Istio service underlying this service.
   /// Corresponds to the destination_service_namespace metric label in Istio metrics.
   final pulumi.Input<String> serviceNamespace;
@@ -37,21 +34,19 @@ class GetMeshIstioServiceArgs {
     String? project,
     required String serviceName,
     required String serviceNamespace,
-  })  : meshUid = pulumi.Input.asInput<String>(meshUid),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        serviceName = pulumi.Input.asInput<String>(serviceName),
-        serviceNamespace = pulumi.Input.asInput<String>(serviceNamespace);
+  }) :
+      meshUid = pulumi.Input.asInput<String>(meshUid),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      serviceName = pulumi.Input.asInput<String>(serviceName),
+      serviceNamespace = pulumi.Input.asInput<String>(serviceNamespace);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['meshUid'] = meshUid;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['serviceName'] = serviceName;
-    map['serviceNamespace'] = serviceNamespace;
-    return map;
+    return <String, dynamic>{
+      'meshUid': meshUid,
+      'project': ?project,
+      'serviceName': serviceName,
+      'serviceNamespace': serviceNamespace,
+    };
   }
 
   factory GetMeshIstioServiceArgs.fromMap(Map<String, dynamic> map) {
@@ -63,3 +58,4 @@ class GetMeshIstioServiceArgs {
     );
   }
 }
+

@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InsightFiltersFindingProviderFieldsConfidence {
   /// The equal-to condition to be applied to a single field when querying for findings, provided as a String.
   final String? eq;
-
   /// The greater-than-equal condition to be applied to a single field when querying for findings, provided as a String.
   final String? gte;
-
   /// The less-than-equal condition to be applied to a single field when querying for findings, provided as a String.
   final String? lte;
 
@@ -21,24 +20,14 @@ class InsightFiltersFindingProviderFieldsConfidence {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final eqValue = eq;
-    if (eqValue != null) {
-      map['eq'] = eqValue;
-    }
-    final gteValue = gte;
-    if (gteValue != null) {
-      map['gte'] = gteValue;
-    }
-    final lteValue = lte;
-    if (lteValue != null) {
-      map['lte'] = lteValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'eq': ?eq,
+      'gte': ?gte,
+      'lte': ?lte,
+    };
   }
 
-  factory InsightFiltersFindingProviderFieldsConfidence.fromMap(
-      Map<String, dynamic> map) {
+  factory InsightFiltersFindingProviderFieldsConfidence.fromMap(Map<String, dynamic> map) {
     return InsightFiltersFindingProviderFieldsConfidence(
       eq: map['eq'] == null ? null : map['eq'] as String,
       gte: map['gte'] == null ? null : map['gte'] as String,
@@ -46,3 +35,4 @@ class InsightFiltersFindingProviderFieldsConfidence {
     );
   }
 }
+

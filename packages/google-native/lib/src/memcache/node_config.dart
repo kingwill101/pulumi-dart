@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for a Memcached Node.
 class NodeConfig {
   /// Number of cpus per Memcached node.
   final int cpuCount;
-
   /// Memory size in MiB for each Memcached node.
   final int memorySizeMb;
 
@@ -17,10 +17,10 @@ class NodeConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cpuCount'] = cpuCount;
-    map['memorySizeMb'] = memorySizeMb;
-    return map;
+    return <String, dynamic>{
+      'cpuCount': cpuCount,
+      'memorySizeMb': memorySizeMb,
+    };
   }
 
   factory NodeConfig.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class NodeConfig {
     );
   }
 }
+

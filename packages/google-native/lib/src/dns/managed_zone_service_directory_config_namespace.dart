@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ManagedZoneServiceDirectoryConfigNamespace {
   /// The time that the namespace backing this zone was deleted; an empty string if it still exists. This is in RFC3339 text format. Output only.
   final String? deletionTime;
   final String? kind;
-
   /// The fully qualified URL of the namespace associated with the zone. Format must be https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
   final String? namespaceUrl;
 
@@ -19,30 +19,19 @@ class ManagedZoneServiceDirectoryConfigNamespace {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final deletionTimeValue = deletionTime;
-    if (deletionTimeValue != null) {
-      map['deletionTime'] = deletionTimeValue;
-    }
-    final kindValue = kind;
-    if (kindValue != null) {
-      map['kind'] = kindValue;
-    }
-    final namespaceUrlValue = namespaceUrl;
-    if (namespaceUrlValue != null) {
-      map['namespaceUrl'] = namespaceUrlValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'deletionTime': ?deletionTime,
+      'kind': ?kind,
+      'namespaceUrl': ?namespaceUrl,
+    };
   }
 
-  factory ManagedZoneServiceDirectoryConfigNamespace.fromMap(
-      Map<String, dynamic> map) {
+  factory ManagedZoneServiceDirectoryConfigNamespace.fromMap(Map<String, dynamic> map) {
     return ManagedZoneServiceDirectoryConfigNamespace(
-      deletionTime:
-          map['deletionTime'] == null ? null : map['deletionTime'] as String,
+      deletionTime: map['deletionTime'] == null ? null : map['deletionTime'] as String,
       kind: map['kind'] == null ? null : map['kind'] as String,
-      namespaceUrl:
-          map['namespaceUrl'] == null ? null : map['namespaceUrl'] as String,
+      namespaceUrl: map['namespaceUrl'] == null ? null : map['namespaceUrl'] as String,
     );
   }
 }
+

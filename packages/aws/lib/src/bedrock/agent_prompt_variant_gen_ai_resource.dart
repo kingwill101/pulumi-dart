@@ -13,20 +13,15 @@ class AgentPromptVariantGenAiResource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final agentValue = agent;
-    if (agentValue != null) {
-      map['agent'] = agentValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'agent': ?agent == null ? null : agent!.toMap(),
+    };
   }
 
   factory AgentPromptVariantGenAiResource.fromMap(Map<String, dynamic> map) {
     return AgentPromptVariantGenAiResource(
-      agent: map['agent'] == null
-          ? null
-          : AgentPromptVariantGenAiResourceAgent.fromMap(
-              (map['agent'] as Map).cast<String, dynamic>()),
+      agent: map['agent'] == null ? null : AgentPromptVariantGenAiResourceAgent.fromMap((map['agent'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

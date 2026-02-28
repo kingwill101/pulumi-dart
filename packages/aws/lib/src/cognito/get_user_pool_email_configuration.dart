@@ -1,18 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetUserPoolEmailConfiguration {
   /// - Configuration set used for sending emails.
   final String configurationSet;
-
   /// - Email sending account.
   final String emailSendingAccount;
-
   /// - Email sender address.
   final String from;
-
   /// - Reply-to email address.
   final String replyToEmailAddress;
-
   /// - Source Amazon Resource Name (ARN) for emails.
   final String sourceArn;
 
@@ -31,13 +28,13 @@ class GetUserPoolEmailConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['configurationSet'] = configurationSet;
-    map['emailSendingAccount'] = emailSendingAccount;
-    map['from'] = from;
-    map['replyToEmailAddress'] = replyToEmailAddress;
-    map['sourceArn'] = sourceArn;
-    return map;
+    return <String, dynamic>{
+      'configurationSet': configurationSet,
+      'emailSendingAccount': emailSendingAccount,
+      'from': from,
+      'replyToEmailAddress': replyToEmailAddress,
+      'sourceArn': sourceArn,
+    };
   }
 
   factory GetUserPoolEmailConfiguration.fromMap(Map<String, dynamic> map) {
@@ -50,3 +47,4 @@ class GetUserPoolEmailConfiguration {
     );
   }
 }
+

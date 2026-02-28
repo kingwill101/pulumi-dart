@@ -20,25 +20,17 @@ class KeyRingArgs {
     String? keyRingId,
     String? location,
     String? project,
-  })  : keyRingId = pulumi.Input.asOptionalInput<String>(keyRingId),
-        location = pulumi.Input.asOptionalInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      keyRingId = pulumi.Input.asOptionalInput<String>(keyRingId),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final keyRingIdValue = keyRingId;
-    if (keyRingIdValue != null) {
-      map['keyRingId'] = keyRingIdValue;
-    }
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'keyRingId': ?keyRingId,
+      'location': ?location,
+      'project': ?project,
+    };
   }
 
   factory KeyRingArgs.fromMap(Map<String, dynamic> map) {
@@ -49,3 +41,4 @@ class KeyRingArgs {
     );
   }
 }
+

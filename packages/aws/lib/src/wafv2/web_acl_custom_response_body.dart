@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WebAclCustomResponseBody {
   /// Payload of the custom response.
   final String content;
-
   /// Type of content in the payload that you are defining in the `content` argument. Valid values are `TEXT_PLAIN`, `TEXT_HTML`, or `APPLICATION_JSON`.
   final String contentType;
-
   /// Unique key identifying the custom response body. This is referenced by the `custom_response_body_key` argument in the `custom_response` block.
   final String key;
 
@@ -21,11 +20,11 @@ class WebAclCustomResponseBody {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['content'] = content;
-    map['contentType'] = contentType;
-    map['key'] = key;
-    return map;
+    return <String, dynamic>{
+      'content': content,
+      'contentType': contentType,
+      'key': key,
+    };
   }
 
   factory WebAclCustomResponseBody.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class WebAclCustomResponseBody {
     );
   }
 }
+

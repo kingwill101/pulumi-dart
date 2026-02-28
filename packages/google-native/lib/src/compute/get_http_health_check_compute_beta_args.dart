@@ -16,17 +16,15 @@ class GetHttpHealthCheckComputeBetaArgs {
   GetHttpHealthCheckComputeBetaArgs({
     required String httpHealthCheck,
     String? project,
-  })  : httpHealthCheck = pulumi.Input.asInput<String>(httpHealthCheck),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      httpHealthCheck = pulumi.Input.asInput<String>(httpHealthCheck),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['httpHealthCheck'] = httpHealthCheck;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'httpHealthCheck': httpHealthCheck,
+      'project': ?project,
+    };
   }
 
   factory GetHttpHealthCheckComputeBetaArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetHttpHealthCheckComputeBetaArgs {
     );
   }
 }
+

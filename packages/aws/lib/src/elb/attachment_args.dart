@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AttachmentArgs {
   /// The name of the ELB.
   final pulumi.Input<String> elb;
-
   /// Instance ID to place in the ELB pool.
   final pulumi.Input<String> instance;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -24,19 +22,17 @@ class AttachmentArgs {
     required String elb,
     required String instance,
     String? region,
-  })  : elb = pulumi.Input.asInput<String>(elb),
-        instance = pulumi.Input.asInput<String>(instance),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      elb = pulumi.Input.asInput<String>(elb),
+      instance = pulumi.Input.asInput<String>(instance),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['elb'] = elb;
-    map['instance'] = instance;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'elb': elb,
+      'instance': instance,
+      'region': ?region,
+    };
   }
 
   factory AttachmentArgs.fromMap(Map<String, dynamic> map) {
@@ -47,3 +43,4 @@ class AttachmentArgs {
     );
   }
 }
+

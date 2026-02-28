@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NetworkInsightsAnalysisExplanationRouteTableRoute {
   final String? destinationCidr;
   final String? destinationPrefixListId;
@@ -37,77 +38,33 @@ class NetworkInsightsAnalysisExplanationRouteTableRoute {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final destinationCidrValue = destinationCidr;
-    if (destinationCidrValue != null) {
-      map['destinationCidr'] = destinationCidrValue;
-    }
-    final destinationPrefixListIdValue = destinationPrefixListId;
-    if (destinationPrefixListIdValue != null) {
-      map['destinationPrefixListId'] = destinationPrefixListIdValue;
-    }
-    final egressOnlyInternetGatewayIdValue = egressOnlyInternetGatewayId;
-    if (egressOnlyInternetGatewayIdValue != null) {
-      map['egressOnlyInternetGatewayId'] = egressOnlyInternetGatewayIdValue;
-    }
-    final gatewayIdValue = gatewayId;
-    if (gatewayIdValue != null) {
-      map['gatewayId'] = gatewayIdValue;
-    }
-    final instanceIdValue = instanceId;
-    if (instanceIdValue != null) {
-      map['instanceId'] = instanceIdValue;
-    }
-    final natGatewayIdValue = natGatewayId;
-    if (natGatewayIdValue != null) {
-      map['natGatewayId'] = natGatewayIdValue;
-    }
-    final networkInterfaceIdValue = networkInterfaceId;
-    if (networkInterfaceIdValue != null) {
-      map['networkInterfaceId'] = networkInterfaceIdValue;
-    }
-    final originValue = origin;
-    if (originValue != null) {
-      map['origin'] = originValue;
-    }
-    final transitGatewayIdValue = transitGatewayId;
-    if (transitGatewayIdValue != null) {
-      map['transitGatewayId'] = transitGatewayIdValue;
-    }
-    final vpcPeeringConnectionIdValue = vpcPeeringConnectionId;
-    if (vpcPeeringConnectionIdValue != null) {
-      map['vpcPeeringConnectionId'] = vpcPeeringConnectionIdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'destinationCidr': ?destinationCidr,
+      'destinationPrefixListId': ?destinationPrefixListId,
+      'egressOnlyInternetGatewayId': ?egressOnlyInternetGatewayId,
+      'gatewayId': ?gatewayId,
+      'instanceId': ?instanceId,
+      'natGatewayId': ?natGatewayId,
+      'networkInterfaceId': ?networkInterfaceId,
+      'origin': ?origin,
+      'transitGatewayId': ?transitGatewayId,
+      'vpcPeeringConnectionId': ?vpcPeeringConnectionId,
+    };
   }
 
-  factory NetworkInsightsAnalysisExplanationRouteTableRoute.fromMap(
-      Map<String, dynamic> map) {
+  factory NetworkInsightsAnalysisExplanationRouteTableRoute.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisExplanationRouteTableRoute(
-      destinationCidr: map['destinationCidr'] == null
-          ? null
-          : map['destinationCidr'] as String,
-      destinationPrefixListId: map['destinationPrefixListId'] == null
-          ? null
-          : map['destinationPrefixListId'] as String,
-      egressOnlyInternetGatewayId: map['egressOnlyInternetGatewayId'] == null
-          ? null
-          : map['egressOnlyInternetGatewayId'] as String,
+      destinationCidr: map['destinationCidr'] == null ? null : map['destinationCidr'] as String,
+      destinationPrefixListId: map['destinationPrefixListId'] == null ? null : map['destinationPrefixListId'] as String,
+      egressOnlyInternetGatewayId: map['egressOnlyInternetGatewayId'] == null ? null : map['egressOnlyInternetGatewayId'] as String,
       gatewayId: map['gatewayId'] == null ? null : map['gatewayId'] as String,
-      instanceId:
-          map['instanceId'] == null ? null : map['instanceId'] as String,
-      natGatewayId:
-          map['natGatewayId'] == null ? null : map['natGatewayId'] as String,
-      networkInterfaceId: map['networkInterfaceId'] == null
-          ? null
-          : map['networkInterfaceId'] as String,
+      instanceId: map['instanceId'] == null ? null : map['instanceId'] as String,
+      natGatewayId: map['natGatewayId'] == null ? null : map['natGatewayId'] as String,
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : map['networkInterfaceId'] as String,
       origin: map['origin'] == null ? null : map['origin'] as String,
-      transitGatewayId: map['transitGatewayId'] == null
-          ? null
-          : map['transitGatewayId'] as String,
-      vpcPeeringConnectionId: map['vpcPeeringConnectionId'] == null
-          ? null
-          : map['vpcPeeringConnectionId'] as String,
+      transitGatewayId: map['transitGatewayId'] == null ? null : map['transitGatewayId'] as String,
+      vpcPeeringConnectionId: map['vpcPeeringConnectionId'] == null ? null : map['vpcPeeringConnectionId'] as String,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Encryption configuration for a Cloud Spanner database.
 class EncryptionConfigResponse {
   /// The Cloud KMS key to be used for encrypting and decrypting the database. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
@@ -12,9 +13,9 @@ class EncryptionConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kmsKeyName'] = kmsKeyName;
-    return map;
+    return <String, dynamic>{
+      'kmsKeyName': kmsKeyName,
+    };
   }
 
   factory EncryptionConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class EncryptionConfigResponse {
     );
   }
 }
+

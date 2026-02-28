@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ApplicationAttributesEnvironment {
   /// Environment type.
   /// Possible values are: `PRODUCTION`, `STAGING`, `TEST`, `DEVELOPMENT`.
@@ -12,9 +13,9 @@ class ApplicationAttributesEnvironment {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory ApplicationAttributesEnvironment.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class ApplicationAttributesEnvironment {
     );
   }
 }
+

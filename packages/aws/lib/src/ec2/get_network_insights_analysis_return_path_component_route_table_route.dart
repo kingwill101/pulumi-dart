@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetNetworkInsightsAnalysisReturnPathComponentRouteTableRoute {
   final String destinationCidr;
   final String destinationPrefixListId;
@@ -37,22 +38,21 @@ class GetNetworkInsightsAnalysisReturnPathComponentRouteTableRoute {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['destinationCidr'] = destinationCidr;
-    map['destinationPrefixListId'] = destinationPrefixListId;
-    map['egressOnlyInternetGatewayId'] = egressOnlyInternetGatewayId;
-    map['gatewayId'] = gatewayId;
-    map['instanceId'] = instanceId;
-    map['natGatewayId'] = natGatewayId;
-    map['networkInterfaceId'] = networkInterfaceId;
-    map['origin'] = origin;
-    map['transitGatewayId'] = transitGatewayId;
-    map['vpcPeeringConnectionId'] = vpcPeeringConnectionId;
-    return map;
+    return <String, dynamic>{
+      'destinationCidr': destinationCidr,
+      'destinationPrefixListId': destinationPrefixListId,
+      'egressOnlyInternetGatewayId': egressOnlyInternetGatewayId,
+      'gatewayId': gatewayId,
+      'instanceId': instanceId,
+      'natGatewayId': natGatewayId,
+      'networkInterfaceId': networkInterfaceId,
+      'origin': origin,
+      'transitGatewayId': transitGatewayId,
+      'vpcPeeringConnectionId': vpcPeeringConnectionId,
+    };
   }
 
-  factory GetNetworkInsightsAnalysisReturnPathComponentRouteTableRoute.fromMap(
-      Map<String, dynamic> map) {
+  factory GetNetworkInsightsAnalysisReturnPathComponentRouteTableRoute.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsAnalysisReturnPathComponentRouteTableRoute(
       destinationCidr: map['destinationCidr'] as String,
       destinationPrefixListId: map['destinationPrefixListId'] as String,
@@ -67,3 +67,4 @@ class GetNetworkInsightsAnalysisReturnPathComponentRouteTableRoute {
     );
   }
 }
+

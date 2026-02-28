@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Log configuration for the connection.
 class ConnectorsLogConfigResponse {
   /// Enabled represents whether logging is enabled or not for a connection.
@@ -12,9 +13,9 @@ class ConnectorsLogConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory ConnectorsLogConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class ConnectorsLogConfigResponse {
     );
   }
 }
+

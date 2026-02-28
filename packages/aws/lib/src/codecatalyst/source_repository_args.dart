@@ -9,18 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SourceRepositoryArgs {
   /// The description of the project. This description will be displayed to all users of the project. We recommend providing a brief description of the project and its intended purpose.
   final pulumi.Input<String>? description;
-
   /// The name of the source repository. For more information about name requirements, see [Quotas for source repositories](https://docs.aws.amazon.com/codecatalyst/latest/userguide/source-quotas.html).
   final pulumi.Input<String>? name;
-
   /// The name of the project in the CodeCatalyst space.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> projectName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The name of the CodeCatalyst space.
   final pulumi.Input<String> spaceName;
 
@@ -36,35 +32,26 @@ class SourceRepositoryArgs {
     required String projectName,
     String? region,
     required String spaceName,
-  })  : description = pulumi.Input.asOptionalInput<String>(description),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        projectName = pulumi.Input.asInput<String>(projectName),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        spaceName = pulumi.Input.asInput<String>(spaceName);
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      projectName = pulumi.Input.asInput<String>(projectName),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      spaceName = pulumi.Input.asInput<String>(spaceName);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    map['projectName'] = projectName;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['spaceName'] = spaceName;
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'name': ?name,
+      'projectName': projectName,
+      'region': ?region,
+      'spaceName': spaceName,
+    };
   }
 
   factory SourceRepositoryArgs.fromMap(Map<String, dynamic> map) {
     return SourceRepositoryArgs(
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       projectName: map['projectName'] as String,
       region: map['region'] == null ? null : map['region'] as String,
@@ -72,3 +59,4 @@ class SourceRepositoryArgs {
     );
   }
 }
+

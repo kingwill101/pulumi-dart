@@ -197,16 +197,12 @@ import 'custom_domain_association_args.dart';
 class CustomDomainAssociation extends pulumi.CustomResource {
   /// ARN of the certificate for the custom domain association.
   late final pulumi.Output<String> customDomainCertificateArn;
-
   /// Expiration time for the certificate.
   late final pulumi.Output<String> customDomainCertificateExpiryTime;
-
   /// Custom domain to associate with the workgroup.
   late final pulumi.Output<String> customDomainName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Name of the workgroup.
   late final pulumi.Output<String> workgroupName;
 
@@ -224,10 +220,8 @@ class CustomDomainAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.customDomainCertificateArn =
-        registerOutput<String>('customDomainCertificateArn');
-    this.customDomainCertificateExpiryTime =
-        registerOutput<String>('customDomainCertificateExpiryTime');
+    this.customDomainCertificateArn = registerOutput<String>('customDomainCertificateArn');
+    this.customDomainCertificateExpiryTime = registerOutput<String>('customDomainCertificateExpiryTime');
     this.customDomainName = registerOutput<String>('customDomainName');
     this.region = registerOutput<String>('region');
     this.workgroupName = registerOutput<String>('workgroupName');

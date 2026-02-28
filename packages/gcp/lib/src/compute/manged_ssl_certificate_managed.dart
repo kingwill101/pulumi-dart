@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MangedSslCertificateManaged {
   /// Domains for which a managed SSL certificate will be valid.  Currently,
   /// there can be up to 100 domains in this list.
@@ -12,9 +13,9 @@ class MangedSslCertificateManaged {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['domains'] = domains;
-    return map;
+    return <String, dynamic>{
+      'domains': domains,
+    };
   }
 
   factory MangedSslCertificateManaged.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class MangedSslCertificateManaged {
     );
   }
 }
+

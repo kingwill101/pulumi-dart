@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetFunctionEnvironment {
   /// Map of environment variables that are accessible from the function code during execution.
   final Map<String, String> variables;
@@ -11,9 +12,9 @@ class GetFunctionEnvironment {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['variables'] = variables;
-    return map;
+    return <String, dynamic>{
+      'variables': variables,
+    };
   }
 
   factory GetFunctionEnvironment.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetFunctionEnvironment {
     );
   }
 }
+

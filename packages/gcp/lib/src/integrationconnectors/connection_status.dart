@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConnectionStatus {
   /// An arbitrary description for the Connection.
   final String? description;
-
   /// (Output)
   /// State of the Eventing
   final String? state;
-
   /// (Output)
   /// Current status of eventing.
   /// Structure is documented below.
@@ -24,28 +23,19 @@ class ConnectionStatus {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final stateValue = state;
-    if (stateValue != null) {
-      map['state'] = stateValue;
-    }
-    final statusValue = status;
-    if (statusValue != null) {
-      map['status'] = statusValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'state': ?state,
+      'status': ?status,
+    };
   }
 
   factory ConnectionStatus.fromMap(Map<String, dynamic> map) {
     return ConnectionStatus(
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       state: map['state'] == null ? null : map['state'] as String,
       status: map['status'] == null ? null : map['status'] as String,
     );
   }
 }
+

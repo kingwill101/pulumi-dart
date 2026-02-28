@@ -13,18 +13,19 @@ class GetFolderIamPolicyCloudresourcemanagerV3Args {
   /// [folderId] Required.
   GetFolderIamPolicyCloudresourcemanagerV3Args({
     required String folderId,
-  }) : folderId = pulumi.Input.asInput<String>(folderId);
+  }) :
+      folderId = pulumi.Input.asInput<String>(folderId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['folderId'] = folderId;
-    return map;
+    return <String, dynamic>{
+      'folderId': folderId,
+    };
   }
 
-  factory GetFolderIamPolicyCloudresourcemanagerV3Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetFolderIamPolicyCloudresourcemanagerV3Args.fromMap(Map<String, dynamic> map) {
     return GetFolderIamPolicyCloudresourcemanagerV3Args(
       folderId: map['folderId'] as String,
     );
   }
 }
+

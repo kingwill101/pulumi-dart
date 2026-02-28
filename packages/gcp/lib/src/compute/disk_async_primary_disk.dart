@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DiskAsyncPrimaryDisk {
   /// Primary disk for asynchronous disk replication.
   final String disk;
@@ -11,9 +12,9 @@ class DiskAsyncPrimaryDisk {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['disk'] = disk;
-    return map;
+    return <String, dynamic>{
+      'disk': disk,
+    };
   }
 
   factory DiskAsyncPrimaryDisk.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class DiskAsyncPrimaryDisk {
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'maintenance_window_day_of_week_metastore_v1beta.dart';
 class MaintenanceWindowMetastoreV1beta {
   /// The day of week, when the window starts.
   final MaintenanceWindowDayOfWeekMetastoreV1beta? dayOfWeek;
-
   /// The hour of day (0-23) when the window starts.
   final int? hourOfDay;
 
@@ -19,25 +18,17 @@ class MaintenanceWindowMetastoreV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dayOfWeekValue = dayOfWeek;
-    if (dayOfWeekValue != null) {
-      map['dayOfWeek'] = dayOfWeekValue.value;
-    }
-    final hourOfDayValue = hourOfDay;
-    if (hourOfDayValue != null) {
-      map['hourOfDay'] = hourOfDayValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'dayOfWeek': ?dayOfWeek == null ? null : dayOfWeek!.value,
+      'hourOfDay': ?hourOfDay,
+    };
   }
 
   factory MaintenanceWindowMetastoreV1beta.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowMetastoreV1beta(
-      dayOfWeek: map['dayOfWeek'] == null
-          ? null
-          : MaintenanceWindowDayOfWeekMetastoreV1beta.fromValue(
-              map['dayOfWeek'] as String),
+      dayOfWeek: map['dayOfWeek'] == null ? null : MaintenanceWindowDayOfWeekMetastoreV1beta.fromValue(map['dayOfWeek'] as String),
       hourOfDay: map['hourOfDay'] == null ? null : map['hourOfDay'] as int,
     );
   }
 }
+

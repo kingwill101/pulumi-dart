@@ -15,24 +15,15 @@ class SoleTenantConfigContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nodeAffinitiesValue = nodeAffinities;
-    if (nodeAffinitiesValue != null) {
-      map['nodeAffinities'] = pulumi.Input.encodeList<
-          NodeAffinityContainerV1beta1,
-          Map<String, dynamic>>(nodeAffinitiesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'nodeAffinities': ?nodeAffinities == null ? null : pulumi.Input.encodeList<NodeAffinityContainerV1beta1, Map<String, dynamic>>(nodeAffinities!, (value) => value.toMap()),
+    };
   }
 
   factory SoleTenantConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return SoleTenantConfigContainerV1beta1(
-      nodeAffinities: map['nodeAffinities'] == null
-          ? null
-          : pulumi.Input.decodeList<NodeAffinityContainerV1beta1>(
-              map['nodeAffinities'],
-              (value) => NodeAffinityContainerV1beta1.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      nodeAffinities: map['nodeAffinities'] == null ? null : pulumi.Input.decodeList<NodeAffinityContainerV1beta1>(map['nodeAffinities'], (value) => NodeAffinityContainerV1beta1.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

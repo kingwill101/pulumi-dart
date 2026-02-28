@@ -14,7 +14,6 @@ class GetProjectCmekSettingsArgs {
   /// The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
   /// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
   final pulumi.Input<String>? kmsKeyName;
-
   /// The ID of the project.
   final pulumi.Input<String> project;
 
@@ -24,24 +23,22 @@ class GetProjectCmekSettingsArgs {
   GetProjectCmekSettingsArgs({
     String? kmsKeyName,
     required String project,
-  })  : kmsKeyName = pulumi.Input.asOptionalInput<String>(kmsKeyName),
-        project = pulumi.Input.asInput<String>(project);
+  }) :
+      kmsKeyName = pulumi.Input.asOptionalInput<String>(kmsKeyName),
+      project = pulumi.Input.asInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final kmsKeyNameValue = kmsKeyName;
-    if (kmsKeyNameValue != null) {
-      map['kmsKeyName'] = kmsKeyNameValue;
-    }
-    map['project'] = project;
-    return map;
+    return <String, dynamic>{
+      'kmsKeyName': ?kmsKeyName,
+      'project': project,
+    };
   }
 
   factory GetProjectCmekSettingsArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectCmekSettingsArgs(
-      kmsKeyName:
-          map['kmsKeyName'] == null ? null : map['kmsKeyName'] as String,
+      kmsKeyName: map['kmsKeyName'] == null ? null : map['kmsKeyName'] as String,
       project: map['project'] as String,
     );
   }
 }
+

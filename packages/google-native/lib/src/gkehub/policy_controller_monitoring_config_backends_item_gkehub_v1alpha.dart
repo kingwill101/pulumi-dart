@@ -6,15 +6,13 @@ enum PolicyControllerMonitoringConfigBackendsItemGkehubV1alpha {
   const PolicyControllerMonitoringConfigBackendsItemGkehubV1alpha(this.value);
   final String value;
 
-  static PolicyControllerMonitoringConfigBackendsItemGkehubV1alpha fromValue(
-      String value) {
-    for (final item
-        in PolicyControllerMonitoringConfigBackendsItemGkehubV1alpha.values) {
+  static PolicyControllerMonitoringConfigBackendsItemGkehubV1alpha fromValue(String value) {
+    for (final item in PolicyControllerMonitoringConfigBackendsItemGkehubV1alpha.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown PolicyControllerMonitoringConfigBackendsItemGkehubV1alpha value: $value');
+    throw ArgumentError('Unknown PolicyControllerMonitoringConfigBackendsItemGkehubV1alpha value: $value');
   }
 }
+

@@ -269,13 +269,10 @@ import 'instance_state_args.dart';
 class InstanceState extends pulumi.CustomResource {
   /// Whether to request a forced stop when `state` is `stopped`. Otherwise (_i.e._, `state` is `running`), ignored. When an instance is forced to stop, it does not flush file system caches or file system metadata, and you must subsequently perform file system check and repair. Not recommended for Windows instances. Defaults to `false`.
   late final pulumi.Output<bool?> force;
-
   /// ID of the instance.
   late final pulumi.Output<String> instanceId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// State of the instance. Valid values are `stopped`, `running`.
   ///
   /// The following arguments are optional:

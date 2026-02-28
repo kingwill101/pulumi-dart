@@ -22,21 +22,19 @@ class GetIndexFirestoreV1beta2Args {
     required String databaseId,
     required String indexId,
     String? project,
-  })  : collectionGroupId = pulumi.Input.asInput<String>(collectionGroupId),
-        databaseId = pulumi.Input.asInput<String>(databaseId),
-        indexId = pulumi.Input.asInput<String>(indexId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      collectionGroupId = pulumi.Input.asInput<String>(collectionGroupId),
+      databaseId = pulumi.Input.asInput<String>(databaseId),
+      indexId = pulumi.Input.asInput<String>(indexId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['collectionGroupId'] = collectionGroupId;
-    map['databaseId'] = databaseId;
-    map['indexId'] = indexId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'collectionGroupId': collectionGroupId,
+      'databaseId': databaseId,
+      'indexId': indexId,
+      'project': ?project,
+    };
   }
 
   factory GetIndexFirestoreV1beta2Args.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetIndexFirestoreV1beta2Args {
     );
   }
 }
+

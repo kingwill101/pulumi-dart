@@ -16,25 +16,17 @@ class BotAbortStatement {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['messages'] =
-        pulumi.Input.encodeList<BotAbortStatementMessage, Map<String, dynamic>>(
-            messages, (value) => value.toMap());
-    final responseCardValue = responseCard;
-    if (responseCardValue != null) {
-      map['responseCard'] = responseCardValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'messages': pulumi.Input.encodeList<BotAbortStatementMessage, Map<String, dynamic>>(messages, (value) => value.toMap()),
+      'responseCard': ?responseCard,
+    };
   }
 
   factory BotAbortStatement.fromMap(Map<String, dynamic> map) {
     return BotAbortStatement(
-      messages: pulumi.Input.decodeList<BotAbortStatementMessage>(
-          map['messages'],
-          (value) => BotAbortStatementMessage.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      responseCard:
-          map['responseCard'] == null ? null : map['responseCard'] as String,
+      messages: pulumi.Input.decodeList<BotAbortStatementMessage>(map['messages'], (value) => BotAbortStatementMessage.fromMap((value as Map).cast<String, dynamic>())),
+      responseCard: map['responseCard'] == null ? null : map['responseCard'] as String,
     );
   }
 }
+

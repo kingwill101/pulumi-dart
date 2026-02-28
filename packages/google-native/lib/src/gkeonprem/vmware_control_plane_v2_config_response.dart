@@ -14,15 +14,15 @@ class VmwareControlPlaneV2ConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['controlPlaneIpBlock'] = controlPlaneIpBlock.toMap();
-    return map;
+    return <String, dynamic>{
+      'controlPlaneIpBlock': controlPlaneIpBlock.toMap(),
+    };
   }
 
   factory VmwareControlPlaneV2ConfigResponse.fromMap(Map<String, dynamic> map) {
     return VmwareControlPlaneV2ConfigResponse(
-      controlPlaneIpBlock: VmwareIpBlockResponse.fromMap(
-          (map['controlPlaneIpBlock'] as Map).cast<String, dynamic>()),
+      controlPlaneIpBlock: VmwareIpBlockResponse.fromMap((map['controlPlaneIpBlock'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

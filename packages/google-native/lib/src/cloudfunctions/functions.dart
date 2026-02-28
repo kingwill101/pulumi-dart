@@ -67,8 +67,7 @@ Future<GetFunctionCloudfunctionsV2Result> getFunctionCloudfunctionsV2(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudfunctions_v2_get_function_iam_policy_cloudfunctions_v2_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetFunctionIamPolicyCloudfunctionsV2Result>
-    getFunctionIamPolicyCloudfunctionsV2(
+Future<GetFunctionIamPolicyCloudfunctionsV2Result> getFunctionIamPolicyCloudfunctionsV2(
   GetFunctionIamPolicyCloudfunctionsV2Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -100,8 +99,7 @@ Future<GetFunctionCloudfunctionsV2alphaResult> getFunctionCloudfunctionsV2alpha(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudfunctions_v2alpha_get_function_iam_policy_cloudfunctions_v2alpha_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetFunctionIamPolicyCloudfunctionsV2alphaResult>
-    getFunctionIamPolicyCloudfunctionsV2alpha(
+Future<GetFunctionIamPolicyCloudfunctionsV2alphaResult> getFunctionIamPolicyCloudfunctionsV2alpha(
   GetFunctionIamPolicyCloudfunctionsV2alphaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -133,8 +131,7 @@ Future<GetFunctionCloudfunctionsV2betaResult> getFunctionCloudfunctionsV2beta(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudfunctions_v2beta_get_function_iam_policy_cloudfunctions_v2beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetFunctionIamPolicyCloudfunctionsV2betaResult>
-    getFunctionIamPolicyCloudfunctionsV2beta(
+Future<GetFunctionIamPolicyCloudfunctionsV2betaResult> getFunctionIamPolicyCloudfunctionsV2beta(
   GetFunctionIamPolicyCloudfunctionsV2betaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

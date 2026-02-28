@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getZones.
 class GetZonesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of zones available in the given region
   final List<String> names;
   final String project;
@@ -26,19 +26,13 @@ class GetZonesResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['names'] = names;
-    map['project'] = project;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final statusValue = status;
-    if (statusValue != null) {
-      map['status'] = statusValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'names': names,
+      'project': project,
+      'region': ?region,
+      'status': ?status,
+    };
   }
 
   factory GetZonesResult.fromMap(Map<String, dynamic> map) {
@@ -51,3 +45,4 @@ class GetZonesResult {
     );
   }
 }
+

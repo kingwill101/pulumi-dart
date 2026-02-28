@@ -1131,17 +1131,14 @@ import 'ca_pool_publishing_options.dart';
 class CaPool extends pulumi.CustomResource {
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Used when customer would like to encrypt data at rest. The customer-provided key will be used
   /// to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
   /// customer data will remain unencrypted.
   /// Structure is documented below.
   late final pulumi.Output<CaPoolEncryptionSpec?> encryptionSpec;
-
   /// The IssuancePolicy to control how Certificates will be issued from this CaPool.
   /// Structure is documented below.
   late final pulumi.Output<CaPoolIssuancePolicy?> issuancePolicy;
-
   /// Labels with user-defined metadata.
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
   /// "1.3kg", "count": "3" }.
@@ -1149,26 +1146,20 @@ class CaPool extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Location of the CaPool. A full list of valid locations can be found by
   /// running `gcloud privateca locations list`.
   late final pulumi.Output<String> location;
-
   /// The name for this CaPool.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
   /// Structure is documented below.
   late final pulumi.Output<CaPoolPublishingOptions?> publishingOptions;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The Tier of this CaPool.
   /// Possible values are: `ENTERPRISE`, `DEVOPS`.
   late final pulumi.Output<String> tier;
@@ -1187,18 +1178,14 @@ class CaPool extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.effectiveLabels =
-        registerOutput<Map<String, String>>('effectiveLabels');
-    this.encryptionSpec =
-        registerOutput<CaPoolEncryptionSpec?>('encryptionSpec');
-    this.issuancePolicy =
-        registerOutput<CaPoolIssuancePolicy?>('issuancePolicy');
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    this.encryptionSpec = registerOutput<CaPoolEncryptionSpec?>('encryptionSpec');
+    this.issuancePolicy = registerOutput<CaPoolIssuancePolicy?>('issuancePolicy');
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
-    this.publishingOptions =
-        registerOutput<CaPoolPublishingOptions?>('publishingOptions');
+    this.publishingOptions = registerOutput<CaPoolPublishingOptions?>('publishingOptions');
     this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.tier = registerOutput<String>('tier');
   }

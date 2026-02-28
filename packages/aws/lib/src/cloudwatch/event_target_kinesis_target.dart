@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EventTargetKinesisTarget {
   /// The JSON path to be extracted from the event and used as the partition key.
   final String? partitionKeyPath;
@@ -11,19 +12,15 @@ class EventTargetKinesisTarget {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final partitionKeyPathValue = partitionKeyPath;
-    if (partitionKeyPathValue != null) {
-      map['partitionKeyPath'] = partitionKeyPathValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'partitionKeyPath': ?partitionKeyPath,
+    };
   }
 
   factory EventTargetKinesisTarget.fromMap(Map<String, dynamic> map) {
     return EventTargetKinesisTarget(
-      partitionKeyPath: map['partitionKeyPath'] == null
-          ? null
-          : map['partitionKeyPath'] as String,
+      partitionKeyPath: map['partitionKeyPath'] == null ? null : map['partitionKeyPath'] as String,
     );
   }
 }
+

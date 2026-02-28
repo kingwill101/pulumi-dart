@@ -19,29 +19,25 @@ class GetModelDeploymentMonitoringJobArgs {
     required String location,
     required String modelDeploymentMonitoringJobId,
     String? project,
-  })  : location = pulumi.Input.asInput<String>(location),
-        modelDeploymentMonitoringJobId =
-            pulumi.Input.asInput<String>(modelDeploymentMonitoringJobId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      modelDeploymentMonitoringJobId = pulumi.Input.asInput<String>(modelDeploymentMonitoringJobId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    map['modelDeploymentMonitoringJobId'] = modelDeploymentMonitoringJobId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'modelDeploymentMonitoringJobId': modelDeploymentMonitoringJobId,
+      'project': ?project,
+    };
   }
 
-  factory GetModelDeploymentMonitoringJobArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetModelDeploymentMonitoringJobArgs.fromMap(Map<String, dynamic> map) {
     return GetModelDeploymentMonitoringJobArgs(
       location: map['location'] as String,
-      modelDeploymentMonitoringJobId:
-          map['modelDeploymentMonitoringJobId'] as String,
+      modelDeploymentMonitoringJobId: map['modelDeploymentMonitoringJobId'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

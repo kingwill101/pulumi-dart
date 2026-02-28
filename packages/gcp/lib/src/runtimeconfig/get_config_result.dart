@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getConfig.
 class GetConfigResult {
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -22,15 +22,12 @@ class GetConfigResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['description'] = description;
-    map['id'] = id;
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'description': description,
+      'id': id,
+      'name': name,
+      'project': ?project,
+    };
   }
 
   factory GetConfigResult.fromMap(Map<String, dynamic> map) {
@@ -42,3 +39,4 @@ class GetConfigResult {
     );
   }
 }
+

@@ -16,24 +16,15 @@ class VMwareClusterValidationCheckStatus {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final resultsValue = results;
-    if (resultsValue != null) {
-      map['results'] = pulumi.Input.encodeList<
-          VMwareClusterValidationCheckStatusResult,
-          Map<String, dynamic>>(resultsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'results': ?results == null ? null : pulumi.Input.encodeList<VMwareClusterValidationCheckStatusResult, Map<String, dynamic>>(results!, (value) => value.toMap()),
+    };
   }
 
   factory VMwareClusterValidationCheckStatus.fromMap(Map<String, dynamic> map) {
     return VMwareClusterValidationCheckStatus(
-      results: map['results'] == null
-          ? null
-          : pulumi.Input.decodeList<VMwareClusterValidationCheckStatusResult>(
-              map['results'],
-              (value) => VMwareClusterValidationCheckStatusResult.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      results: map['results'] == null ? null : pulumi.Input.decodeList<VMwareClusterValidationCheckStatusResult>(map['results'], (value) => VMwareClusterValidationCheckStatusResult.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

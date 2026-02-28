@@ -19,24 +19,20 @@ class GetInterconnectAttachmentComputeBetaArgs {
     required String interconnectAttachment,
     String? project,
     required String region,
-  })  : interconnectAttachment =
-            pulumi.Input.asInput<String>(interconnectAttachment),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asInput<String>(region);
+  }) :
+      interconnectAttachment = pulumi.Input.asInput<String>(interconnectAttachment),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['interconnectAttachment'] = interconnectAttachment;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'interconnectAttachment': interconnectAttachment,
+      'project': ?project,
+      'region': region,
+    };
   }
 
-  factory GetInterconnectAttachmentComputeBetaArgs.fromMap(
-      Map<String, dynamic> map) {
+  factory GetInterconnectAttachmentComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetInterconnectAttachmentComputeBetaArgs(
       interconnectAttachment: map['interconnectAttachment'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -44,3 +40,4 @@ class GetInterconnectAttachmentComputeBetaArgs {
     );
   }
 }
+

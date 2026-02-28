@@ -15,18 +15,15 @@ class VmwareMetalLbConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['addressPools'] = pulumi.Input.encodeList<VmwareAddressPoolResponse,
-        Map<String, dynamic>>(addressPools, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'addressPools': pulumi.Input.encodeList<VmwareAddressPoolResponse, Map<String, dynamic>>(addressPools, (value) => value.toMap()),
+    };
   }
 
   factory VmwareMetalLbConfigResponse.fromMap(Map<String, dynamic> map) {
     return VmwareMetalLbConfigResponse(
-      addressPools: pulumi.Input.decodeList<VmwareAddressPoolResponse>(
-          map['addressPools'],
-          (value) => VmwareAddressPoolResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      addressPools: pulumi.Input.decodeList<VmwareAddressPoolResponse>(map['addressPools'], (value) => VmwareAddressPoolResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

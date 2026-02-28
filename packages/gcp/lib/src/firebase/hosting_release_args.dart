@@ -10,13 +10,10 @@ class HostingReleaseArgs {
   /// The ID of the channel to which the release belongs. If not provided, the release will
   /// belong to the default "live" channel
   final pulumi.Input<String>? channelId;
-
   /// The deploy description when the release was created. The value can be up to 512 characters.
   final pulumi.Input<String>? message;
-
   /// Required. The ID of the site to which the release belongs.
   final pulumi.Input<String> siteId;
-
   /// The type of the release; indicates what happened to the content of the site. There is no need to specify
   /// `DEPLOY` or `ROLLBACK` type if a `version_name` is provided.
   /// DEPLOY: A version was uploaded to Firebase Hosting and released. Output only.
@@ -24,7 +21,6 @@ class HostingReleaseArgs {
   /// SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
   /// Possible values are: `DEPLOY`, `ROLLBACK`, `SITE_DISABLE`.
   final pulumi.Input<String>? type;
-
   /// The unique identifier for a version, in the format: sites/SITE_ID/versions/VERSION_ID.
   /// The content of the version specified will be actively displayed on the appropriate URL.
   /// The Version must belong to the same site as in the `site_id`.
@@ -43,32 +39,21 @@ class HostingReleaseArgs {
     required String siteId,
     String? type,
     String? versionName,
-  })  : channelId = pulumi.Input.asOptionalInput<String>(channelId),
-        message = pulumi.Input.asOptionalInput<String>(message),
-        siteId = pulumi.Input.asInput<String>(siteId),
-        type = pulumi.Input.asOptionalInput<String>(type),
-        versionName = pulumi.Input.asOptionalInput<String>(versionName);
+  }) :
+      channelId = pulumi.Input.asOptionalInput<String>(channelId),
+      message = pulumi.Input.asOptionalInput<String>(message),
+      siteId = pulumi.Input.asInput<String>(siteId),
+      type = pulumi.Input.asOptionalInput<String>(type),
+      versionName = pulumi.Input.asOptionalInput<String>(versionName);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final channelIdValue = channelId;
-    if (channelIdValue != null) {
-      map['channelId'] = channelIdValue;
-    }
-    final messageValue = message;
-    if (messageValue != null) {
-      map['message'] = messageValue;
-    }
-    map['siteId'] = siteId;
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue;
-    }
-    final versionNameValue = versionName;
-    if (versionNameValue != null) {
-      map['versionName'] = versionNameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'channelId': ?channelId,
+      'message': ?message,
+      'siteId': siteId,
+      'type': ?type,
+      'versionName': ?versionName,
+    };
   }
 
   factory HostingReleaseArgs.fromMap(Map<String, dynamic> map) {
@@ -77,8 +62,8 @@ class HostingReleaseArgs {
       message: map['message'] == null ? null : map['message'] as String,
       siteId: map['siteId'] as String,
       type: map['type'] == null ? null : map['type'] as String,
-      versionName:
-          map['versionName'] == null ? null : map['versionName'] as String,
+      versionName: map['versionName'] == null ? null : map['versionName'] as String,
     );
   }
 }
+

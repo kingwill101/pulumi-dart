@@ -14,15 +14,15 @@ class QueueHttpTargetHeaderOverride {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['header'] = header.toMap();
-    return map;
+    return <String, dynamic>{
+      'header': header.toMap(),
+    };
   }
 
   factory QueueHttpTargetHeaderOverride.fromMap(Map<String, dynamic> map) {
     return QueueHttpTargetHeaderOverride(
-      header: QueueHttpTargetHeaderOverrideHeader.fromMap(
-          (map['header'] as Map).cast<String, dynamic>()),
+      header: QueueHttpTargetHeaderOverrideHeader.fromMap((map['header'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

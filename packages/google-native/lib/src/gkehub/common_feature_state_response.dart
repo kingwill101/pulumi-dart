@@ -9,13 +9,10 @@ import 'fleet_observability_feature_state_response.dart';
 class CommonFeatureStateResponse {
   /// Appdevexperience specific state.
   final AppDevExperienceFeatureStateResponse appdevexperience;
-
   /// ClusterUpgrade fleet-level state.
   final ClusterUpgradeFleetStateResponse clusterupgrade;
-
   /// FleetObservability feature state.
   final FleetObservabilityFeatureStateResponse fleetobservability;
-
   /// The "running state" of the Feature in this Hub.
   final FeatureStateResponse state;
 
@@ -32,24 +29,21 @@ class CommonFeatureStateResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['appdevexperience'] = appdevexperience.toMap();
-    map['clusterupgrade'] = clusterupgrade.toMap();
-    map['fleetobservability'] = fleetobservability.toMap();
-    map['state'] = state.toMap();
-    return map;
+    return <String, dynamic>{
+      'appdevexperience': appdevexperience.toMap(),
+      'clusterupgrade': clusterupgrade.toMap(),
+      'fleetobservability': fleetobservability.toMap(),
+      'state': state.toMap(),
+    };
   }
 
   factory CommonFeatureStateResponse.fromMap(Map<String, dynamic> map) {
     return CommonFeatureStateResponse(
-      appdevexperience: AppDevExperienceFeatureStateResponse.fromMap(
-          (map['appdevexperience'] as Map).cast<String, dynamic>()),
-      clusterupgrade: ClusterUpgradeFleetStateResponse.fromMap(
-          (map['clusterupgrade'] as Map).cast<String, dynamic>()),
-      fleetobservability: FleetObservabilityFeatureStateResponse.fromMap(
-          (map['fleetobservability'] as Map).cast<String, dynamic>()),
-      state: FeatureStateResponse.fromMap(
-          (map['state'] as Map).cast<String, dynamic>()),
+      appdevexperience: AppDevExperienceFeatureStateResponse.fromMap((map['appdevexperience'] as Map).cast<String, dynamic>()),
+      clusterupgrade: ClusterUpgradeFleetStateResponse.fromMap((map['clusterupgrade'] as Map).cast<String, dynamic>()),
+      fleetobservability: FleetObservabilityFeatureStateResponse.fromMap((map['fleetobservability'] as Map).cast<String, dynamic>()),
+      state: FeatureStateResponse.fromMap((map['state'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

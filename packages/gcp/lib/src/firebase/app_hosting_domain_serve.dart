@@ -14,20 +14,15 @@ class AppHostingDomainServe {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final redirectValue = redirect;
-    if (redirectValue != null) {
-      map['redirect'] = redirectValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'redirect': ?redirect == null ? null : redirect!.toMap(),
+    };
   }
 
   factory AppHostingDomainServe.fromMap(Map<String, dynamic> map) {
     return AppHostingDomainServe(
-      redirect: map['redirect'] == null
-          ? null
-          : AppHostingDomainServeRedirect.fromMap(
-              (map['redirect'] as Map).cast<String, dynamic>()),
+      redirect: map['redirect'] == null ? null : AppHostingDomainServeRedirect.fromMap((map['redirect'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

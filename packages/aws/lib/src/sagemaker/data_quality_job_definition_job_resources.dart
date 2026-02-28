@@ -13,16 +13,15 @@ class DataQualityJobDefinitionJobResources {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clusterConfig'] = clusterConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'clusterConfig': clusterConfig.toMap(),
+    };
   }
 
-  factory DataQualityJobDefinitionJobResources.fromMap(
-      Map<String, dynamic> map) {
+  factory DataQualityJobDefinitionJobResources.fromMap(Map<String, dynamic> map) {
     return DataQualityJobDefinitionJobResources(
-      clusterConfig: DataQualityJobDefinitionJobResourcesClusterConfig.fromMap(
-          (map['clusterConfig'] as Map).cast<String, dynamic>()),
+      clusterConfig: DataQualityJobDefinitionJobResourcesClusterConfig.fromMap((map['clusterConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

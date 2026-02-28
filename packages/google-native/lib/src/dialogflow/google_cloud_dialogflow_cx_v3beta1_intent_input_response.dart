@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents the intent to trigger programmatically rather than as a result of natural language processing.
 class GoogleCloudDialogflowCxV3beta1IntentInputResponse {
   /// The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
@@ -12,15 +13,15 @@ class GoogleCloudDialogflowCxV3beta1IntentInputResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['intent'] = intent;
-    return map;
+    return <String, dynamic>{
+      'intent': intent,
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1IntentInputResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1IntentInputResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1IntentInputResponse(
       intent: map['intent'] as String,
     );
   }
 }
+

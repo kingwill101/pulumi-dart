@@ -12,40 +12,28 @@ import 'status_response.dart';
 class CloneJob extends pulumi.CustomResource {
   /// Required. The clone job identifier.
   late final pulumi.Output<String> cloneJobId;
-
   /// Details of the target Persistent Disks in Compute Engine.
-  late final pulumi.Output<ComputeEngineDisksTargetDetailsResponse>
-      computeEngineDisksTargetDetails;
-
+  late final pulumi.Output<ComputeEngineDisksTargetDetailsResponse> computeEngineDisksTargetDetails;
   /// Details of the target VM in Compute Engine.
-  late final pulumi.Output<ComputeEngineTargetDetailsResponse>
-      computeEngineTargetDetails;
-
+  late final pulumi.Output<ComputeEngineTargetDetailsResponse> computeEngineTargetDetails;
   /// The time the clone job was created (as an API call, not when it was actually created in the target).
   late final pulumi.Output<String> createTime;
-
   /// The time the clone job was ended.
   late final pulumi.Output<String> endTime;
-
   /// Provides details for the errors that led to the Clone Job's state.
   late final pulumi.Output<StatusResponse> error;
   late final pulumi.Output<String> location;
   late final pulumi.Output<String> migratingVmId;
-
   /// The name of the clone.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   late final pulumi.Output<String?> requestId;
   late final pulumi.Output<String> sourceId;
-
   /// State of the clone job.
   late final pulumi.Output<String> state;
-
   /// The time the state was last updated.
   late final pulumi.Output<String> stateTime;
-
   /// The clone steps list representing its progress.
   late final pulumi.Output<List<CloneStepResponse>> steps;
 
@@ -64,12 +52,8 @@ class CloneJob extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.cloneJobId = registerOutput<String>('cloneJobId');
-    this.computeEngineDisksTargetDetails =
-        registerOutput<ComputeEngineDisksTargetDetailsResponse>(
-            'computeEngineDisksTargetDetails');
-    this.computeEngineTargetDetails =
-        registerOutput<ComputeEngineTargetDetailsResponse>(
-            'computeEngineTargetDetails');
+    this.computeEngineDisksTargetDetails = registerOutput<ComputeEngineDisksTargetDetailsResponse>('computeEngineDisksTargetDetails');
+    this.computeEngineTargetDetails = registerOutput<ComputeEngineTargetDetailsResponse>('computeEngineTargetDetails');
     this.createTime = registerOutput<String>('createTime');
     this.endTime = registerOutput<String>('endTime');
     this.error = registerOutput<StatusResponse>('error');

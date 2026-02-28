@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataQualityJobDefinitionStoppingCondition {
   /// The maximum runtime allowed in seconds.
   final int? maxRuntimeInSeconds;
@@ -11,20 +12,15 @@ class DataQualityJobDefinitionStoppingCondition {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final maxRuntimeInSecondsValue = maxRuntimeInSeconds;
-    if (maxRuntimeInSecondsValue != null) {
-      map['maxRuntimeInSeconds'] = maxRuntimeInSecondsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'maxRuntimeInSeconds': ?maxRuntimeInSeconds,
+    };
   }
 
-  factory DataQualityJobDefinitionStoppingCondition.fromMap(
-      Map<String, dynamic> map) {
+  factory DataQualityJobDefinitionStoppingCondition.fromMap(Map<String, dynamic> map) {
     return DataQualityJobDefinitionStoppingCondition(
-      maxRuntimeInSeconds: map['maxRuntimeInSeconds'] == null
-          ? null
-          : map['maxRuntimeInSeconds'] as int,
+      maxRuntimeInSeconds: map['maxRuntimeInSeconds'] == null ? null : map['maxRuntimeInSeconds'] as int,
     );
   }
 }
+

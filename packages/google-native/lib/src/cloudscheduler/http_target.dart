@@ -8,19 +8,14 @@ import 'oidc_token.dart';
 class HttpTarget {
   /// HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error to set body on a job with an incompatible HttpMethod.
   final String? body;
-
   /// HTTP request headers. This map contains the header field names and values. The user can specify HTTP request headers to send with the job's HTTP request. Repeated headers are not supported, but a header value can contain commas. The following headers represent a subset of the headers that accompany the job's HTTP request. Some HTTP request headers are ignored or replaced. A partial list of headers that are ignored or replaced is below: * Host: This will be computed by Cloud Scheduler and derived from uri. * `Content-Length`: This will be computed by Cloud Scheduler. * `User-Agent`: This will be set to `"Google-Cloud-Scheduler"`. * `X-Google-*`: Google internal use only. * `X-AppEngine-*`: Google internal use only. * `X-CloudScheduler`: This header will be set to true. * `X-CloudScheduler-JobName`: This header will contain the job name. * `X-CloudScheduler-ScheduleTime`: For Cloud Scheduler jobs specified in the unix-cron format, this header will contain the job schedule time in RFC3339 UTC "Zulu" format. If the job has a body and the following headers are not set by the user, Cloud Scheduler sets default values: * `Content-Type`: This will be set to `"application/octet-stream"`. You can override this default by explicitly setting `Content-Type` to a particular media type when creating the job. For example, you can set `Content-Type` to `"application/json"`. The total size of headers must be less than 80KB.
   final Map<String, String>? headers;
-
   /// Which HTTP method to use for the request.
   final HttpTargetHttpMethod? httpMethod;
-
   /// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
   final OAuthToken? oauthToken;
-
   /// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
   final OidcToken? oidcToken;
-
   /// The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
   final String uri;
 
@@ -41,49 +36,25 @@ class HttpTarget {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final bodyValue = body;
-    if (bodyValue != null) {
-      map['body'] = bodyValue;
-    }
-    final headersValue = headers;
-    if (headersValue != null) {
-      map['headers'] = headersValue;
-    }
-    final httpMethodValue = httpMethod;
-    if (httpMethodValue != null) {
-      map['httpMethod'] = httpMethodValue.value;
-    }
-    final oauthTokenValue = oauthToken;
-    if (oauthTokenValue != null) {
-      map['oauthToken'] = oauthTokenValue.toMap();
-    }
-    final oidcTokenValue = oidcToken;
-    if (oidcTokenValue != null) {
-      map['oidcToken'] = oidcTokenValue.toMap();
-    }
-    map['uri'] = uri;
-    return map;
+    return <String, dynamic>{
+      'body': ?body,
+      'headers': ?headers,
+      'httpMethod': ?httpMethod == null ? null : httpMethod!.value,
+      'oauthToken': ?oauthToken == null ? null : oauthToken!.toMap(),
+      'oidcToken': ?oidcToken == null ? null : oidcToken!.toMap(),
+      'uri': uri,
+    };
   }
 
   factory HttpTarget.fromMap(Map<String, dynamic> map) {
     return HttpTarget(
       body: map['body'] == null ? null : map['body'] as String,
-      headers: map['headers'] == null
-          ? null
-          : (map['headers'] as Map).cast<String, String>(),
-      httpMethod: map['httpMethod'] == null
-          ? null
-          : HttpTargetHttpMethod.fromValue(map['httpMethod'] as String),
-      oauthToken: map['oauthToken'] == null
-          ? null
-          : OAuthToken.fromMap(
-              (map['oauthToken'] as Map).cast<String, dynamic>()),
-      oidcToken: map['oidcToken'] == null
-          ? null
-          : OidcToken.fromMap(
-              (map['oidcToken'] as Map).cast<String, dynamic>()),
+      headers: map['headers'] == null ? null : (map['headers'] as Map).cast<String, String>(),
+      httpMethod: map['httpMethod'] == null ? null : HttpTargetHttpMethod.fromValue(map['httpMethod'] as String),
+      oauthToken: map['oauthToken'] == null ? null : OAuthToken.fromMap((map['oauthToken'] as Map).cast<String, dynamic>()),
+      oidcToken: map['oidcToken'] == null ? null : OidcToken.fromMap((map['oidcToken'] as Map).cast<String, dynamic>()),
       uri: map['uri'] as String,
     );
   }
 }
+

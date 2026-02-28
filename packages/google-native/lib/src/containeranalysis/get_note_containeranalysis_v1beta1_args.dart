@@ -16,24 +16,22 @@ class GetNoteContaineranalysisV1beta1Args {
   GetNoteContaineranalysisV1beta1Args({
     required String noteId,
     String? project,
-  })  : noteId = pulumi.Input.asInput<String>(noteId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      noteId = pulumi.Input.asInput<String>(noteId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['noteId'] = noteId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'noteId': noteId,
+      'project': ?project,
+    };
   }
 
-  factory GetNoteContaineranalysisV1beta1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetNoteContaineranalysisV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetNoteContaineranalysisV1beta1Args(
       noteId: map['noteId'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

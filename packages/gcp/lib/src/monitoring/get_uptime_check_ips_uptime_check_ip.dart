@@ -1,16 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetUptimeCheckIPsUptimeCheckIp {
   /// The IP address from which the Uptime check originates. This is a fully specified IP address
   /// (not an IP address range). Most IP addresses, as of this publication, are in IPv4 format; however, one should not
   /// rely on the IP addresses being in IPv4 format indefinitely, and should support interpreting this field in either
   /// IPv4 or IPv6 format.
   final String ipAddress;
-
   /// A more specific location within the region that typically encodes a particular city/town/metro
   /// (and its containing state/province or country) within the broader umbrella region category.
   final String location;
-
   /// A broad region category in which the IP address is located.
   final String region;
 
@@ -25,11 +24,11 @@ class GetUptimeCheckIPsUptimeCheckIp {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ipAddress'] = ipAddress;
-    map['location'] = location;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'ipAddress': ipAddress,
+      'location': location,
+      'region': region,
+    };
   }
 
   factory GetUptimeCheckIPsUptimeCheckIp.fromMap(Map<String, dynamic> map) {
@@ -40,3 +39,4 @@ class GetUptimeCheckIPsUptimeCheckIp {
     );
   }
 }
+

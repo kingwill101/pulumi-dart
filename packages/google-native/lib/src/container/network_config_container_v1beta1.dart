@@ -13,39 +13,26 @@ import 'service_external_ips_config_container_v1beta1.dart';
 class NetworkConfigContainerV1beta1 {
   /// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
   final NetworkConfigDatapathProviderContainerV1beta1? datapathProvider;
-
   /// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
   final DefaultSnatStatusContainerV1beta1? defaultSnatStatus;
-
   /// DNSConfig contains clusterDNS config for this cluster.
   final DNSConfigContainerV1beta1? dnsConfig;
-
   /// Whether FQDN Network Policy is enabled on this cluster.
   final bool? enableFqdnNetworkPolicy;
-
   /// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
   final bool? enableIntraNodeVisibility;
-
   /// Whether L4ILB Subsetting is enabled for this cluster.
   final bool? enableL4ilbSubsetting;
-
   /// Whether multi-networking is enabled for this cluster.
   final bool? enableMultiNetworking;
-
   /// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
   final GatewayAPIConfigContainerV1beta1? gatewayApiConfig;
-
   /// Specify the details of in-transit encryption.
   final NetworkConfigInTransitEncryptionConfig? inTransitEncryptionConfig;
-
   /// Network bandwidth tier configuration.
-  final ClusterNetworkPerformanceConfigContainerV1beta1?
-      networkPerformanceConfig;
-
+  final ClusterNetworkPerformanceConfigContainerV1beta1? networkPerformanceConfig;
   /// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
-  final NetworkConfigPrivateIpv6GoogleAccessContainerV1beta1?
-      privateIpv6GoogleAccess;
-
+  final NetworkConfigPrivateIpv6GoogleAccessContainerV1beta1? privateIpv6GoogleAccess;
   /// ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
   final ServiceExternalIPsConfigContainerV1beta1? serviceExternalIpsConfig;
 
@@ -78,104 +65,37 @@ class NetworkConfigContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final datapathProviderValue = datapathProvider;
-    if (datapathProviderValue != null) {
-      map['datapathProvider'] = datapathProviderValue.value;
-    }
-    final defaultSnatStatusValue = defaultSnatStatus;
-    if (defaultSnatStatusValue != null) {
-      map['defaultSnatStatus'] = defaultSnatStatusValue.toMap();
-    }
-    final dnsConfigValue = dnsConfig;
-    if (dnsConfigValue != null) {
-      map['dnsConfig'] = dnsConfigValue.toMap();
-    }
-    final enableFqdnNetworkPolicyValue = enableFqdnNetworkPolicy;
-    if (enableFqdnNetworkPolicyValue != null) {
-      map['enableFqdnNetworkPolicy'] = enableFqdnNetworkPolicyValue;
-    }
-    final enableIntraNodeVisibilityValue = enableIntraNodeVisibility;
-    if (enableIntraNodeVisibilityValue != null) {
-      map['enableIntraNodeVisibility'] = enableIntraNodeVisibilityValue;
-    }
-    final enableL4ilbSubsettingValue = enableL4ilbSubsetting;
-    if (enableL4ilbSubsettingValue != null) {
-      map['enableL4ilbSubsetting'] = enableL4ilbSubsettingValue;
-    }
-    final enableMultiNetworkingValue = enableMultiNetworking;
-    if (enableMultiNetworkingValue != null) {
-      map['enableMultiNetworking'] = enableMultiNetworkingValue;
-    }
-    final gatewayApiConfigValue = gatewayApiConfig;
-    if (gatewayApiConfigValue != null) {
-      map['gatewayApiConfig'] = gatewayApiConfigValue.toMap();
-    }
-    final inTransitEncryptionConfigValue = inTransitEncryptionConfig;
-    if (inTransitEncryptionConfigValue != null) {
-      map['inTransitEncryptionConfig'] = inTransitEncryptionConfigValue.value;
-    }
-    final networkPerformanceConfigValue = networkPerformanceConfig;
-    if (networkPerformanceConfigValue != null) {
-      map['networkPerformanceConfig'] = networkPerformanceConfigValue.toMap();
-    }
-    final privateIpv6GoogleAccessValue = privateIpv6GoogleAccess;
-    if (privateIpv6GoogleAccessValue != null) {
-      map['privateIpv6GoogleAccess'] = privateIpv6GoogleAccessValue.value;
-    }
-    final serviceExternalIpsConfigValue = serviceExternalIpsConfig;
-    if (serviceExternalIpsConfigValue != null) {
-      map['serviceExternalIpsConfig'] = serviceExternalIpsConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'datapathProvider': ?datapathProvider == null ? null : datapathProvider!.value,
+      'defaultSnatStatus': ?defaultSnatStatus == null ? null : defaultSnatStatus!.toMap(),
+      'dnsConfig': ?dnsConfig == null ? null : dnsConfig!.toMap(),
+      'enableFqdnNetworkPolicy': ?enableFqdnNetworkPolicy,
+      'enableIntraNodeVisibility': ?enableIntraNodeVisibility,
+      'enableL4ilbSubsetting': ?enableL4ilbSubsetting,
+      'enableMultiNetworking': ?enableMultiNetworking,
+      'gatewayApiConfig': ?gatewayApiConfig == null ? null : gatewayApiConfig!.toMap(),
+      'inTransitEncryptionConfig': ?inTransitEncryptionConfig == null ? null : inTransitEncryptionConfig!.value,
+      'networkPerformanceConfig': ?networkPerformanceConfig == null ? null : networkPerformanceConfig!.toMap(),
+      'privateIpv6GoogleAccess': ?privateIpv6GoogleAccess == null ? null : privateIpv6GoogleAccess!.value,
+      'serviceExternalIpsConfig': ?serviceExternalIpsConfig == null ? null : serviceExternalIpsConfig!.toMap(),
+    };
   }
 
   factory NetworkConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NetworkConfigContainerV1beta1(
-      datapathProvider: map['datapathProvider'] == null
-          ? null
-          : NetworkConfigDatapathProviderContainerV1beta1.fromValue(
-              map['datapathProvider'] as String),
-      defaultSnatStatus: map['defaultSnatStatus'] == null
-          ? null
-          : DefaultSnatStatusContainerV1beta1.fromMap(
-              (map['defaultSnatStatus'] as Map).cast<String, dynamic>()),
-      dnsConfig: map['dnsConfig'] == null
-          ? null
-          : DNSConfigContainerV1beta1.fromMap(
-              (map['dnsConfig'] as Map).cast<String, dynamic>()),
-      enableFqdnNetworkPolicy: map['enableFqdnNetworkPolicy'] == null
-          ? null
-          : map['enableFqdnNetworkPolicy'] as bool,
-      enableIntraNodeVisibility: map['enableIntraNodeVisibility'] == null
-          ? null
-          : map['enableIntraNodeVisibility'] as bool,
-      enableL4ilbSubsetting: map['enableL4ilbSubsetting'] == null
-          ? null
-          : map['enableL4ilbSubsetting'] as bool,
-      enableMultiNetworking: map['enableMultiNetworking'] == null
-          ? null
-          : map['enableMultiNetworking'] as bool,
-      gatewayApiConfig: map['gatewayApiConfig'] == null
-          ? null
-          : GatewayAPIConfigContainerV1beta1.fromMap(
-              (map['gatewayApiConfig'] as Map).cast<String, dynamic>()),
-      inTransitEncryptionConfig: map['inTransitEncryptionConfig'] == null
-          ? null
-          : NetworkConfigInTransitEncryptionConfig.fromValue(
-              map['inTransitEncryptionConfig'] as String),
-      networkPerformanceConfig: map['networkPerformanceConfig'] == null
-          ? null
-          : ClusterNetworkPerformanceConfigContainerV1beta1.fromMap(
-              (map['networkPerformanceConfig'] as Map).cast<String, dynamic>()),
-      privateIpv6GoogleAccess: map['privateIpv6GoogleAccess'] == null
-          ? null
-          : NetworkConfigPrivateIpv6GoogleAccessContainerV1beta1.fromValue(
-              map['privateIpv6GoogleAccess'] as String),
-      serviceExternalIpsConfig: map['serviceExternalIpsConfig'] == null
-          ? null
-          : ServiceExternalIPsConfigContainerV1beta1.fromMap(
-              (map['serviceExternalIpsConfig'] as Map).cast<String, dynamic>()),
+      datapathProvider: map['datapathProvider'] == null ? null : NetworkConfigDatapathProviderContainerV1beta1.fromValue(map['datapathProvider'] as String),
+      defaultSnatStatus: map['defaultSnatStatus'] == null ? null : DefaultSnatStatusContainerV1beta1.fromMap((map['defaultSnatStatus'] as Map).cast<String, dynamic>()),
+      dnsConfig: map['dnsConfig'] == null ? null : DNSConfigContainerV1beta1.fromMap((map['dnsConfig'] as Map).cast<String, dynamic>()),
+      enableFqdnNetworkPolicy: map['enableFqdnNetworkPolicy'] == null ? null : map['enableFqdnNetworkPolicy'] as bool,
+      enableIntraNodeVisibility: map['enableIntraNodeVisibility'] == null ? null : map['enableIntraNodeVisibility'] as bool,
+      enableL4ilbSubsetting: map['enableL4ilbSubsetting'] == null ? null : map['enableL4ilbSubsetting'] as bool,
+      enableMultiNetworking: map['enableMultiNetworking'] == null ? null : map['enableMultiNetworking'] as bool,
+      gatewayApiConfig: map['gatewayApiConfig'] == null ? null : GatewayAPIConfigContainerV1beta1.fromMap((map['gatewayApiConfig'] as Map).cast<String, dynamic>()),
+      inTransitEncryptionConfig: map['inTransitEncryptionConfig'] == null ? null : NetworkConfigInTransitEncryptionConfig.fromValue(map['inTransitEncryptionConfig'] as String),
+      networkPerformanceConfig: map['networkPerformanceConfig'] == null ? null : ClusterNetworkPerformanceConfigContainerV1beta1.fromMap((map['networkPerformanceConfig'] as Map).cast<String, dynamic>()),
+      privateIpv6GoogleAccess: map['privateIpv6GoogleAccess'] == null ? null : NetworkConfigPrivateIpv6GoogleAccessContainerV1beta1.fromValue(map['privateIpv6GoogleAccess'] as String),
+      serviceExternalIpsConfig: map['serviceExternalIpsConfig'] == null ? null : ServiceExternalIPsConfigContainerV1beta1.fromMap((map['serviceExternalIpsConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

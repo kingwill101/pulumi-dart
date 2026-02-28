@@ -11,42 +11,33 @@ import 'pipeline_workload.dart';
 class PipelineArgs {
   /// The display name of the pipeline. It can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), and underscores (_).
   final pulumi.Input<String>? displayName;
-
   /// "The pipeline name. For example': 'projects/PROJECT_ID/locations/LOCATION_ID/pipelines/PIPELINE_ID."
   /// "- PROJECT_ID can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), and periods (.). For more information, see Identifying projects."
   /// "LOCATION_ID is the canonical ID for the pipeline's location. The list of available locations can be obtained by calling google.cloud.location.Locations.ListLocations. Note that the Data Pipelines service is not available in all regions. It depends on Cloud Scheduler, an App Engine application, so it's only available in App Engine regions."
   /// "PIPELINE_ID is the ID of the pipeline. Must be unique for the selected project and location."
   final pulumi.Input<String>? name;
-
   /// The sources of the pipeline (for example, Dataplex). The keys and values are set by the corresponding sources during pipeline creation.
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   final pulumi.Input<Map<String, String>>? pipelineSources;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// A reference to the region
   final pulumi.Input<String>? region;
-
   /// Internal scheduling information for a pipeline. If this information is provided, periodic jobs will be created per the schedule. If not, users are responsible for creating jobs externally.
   /// https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#schedulespec
   /// Structure is documented below.
   final pulumi.Input<PipelineScheduleInfo>? scheduleInfo;
-
   /// Optional. A service account email to be used with the Cloud Scheduler job. If not specified, the default compute engine service account will be used.
   final pulumi.Input<String>? schedulerServiceAccountEmail;
-
   /// The state of the pipeline. When the pipeline is created, the state is set to 'PIPELINE_STATE_ACTIVE' by default. State changes can be requested by setting the state to stopping, paused, or resuming. State cannot be changed through pipelines.patch requests.
   /// https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state
   /// Possible values are: `STATE_UNSPECIFIED`, `STATE_RESUMING`, `STATE_ACTIVE`, `STATE_STOPPING`, `STATE_ARCHIVED`, `STATE_PAUSED`.
   final pulumi.Input<String> state;
-
   /// The type of the pipeline. This field affects the scheduling of the pipeline and the type of metrics to show for the pipeline.
   /// https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#pipelinetype
   /// Possible values are: `PIPELINE_TYPE_UNSPECIFIED`, `PIPELINE_TYPE_BATCH`, `PIPELINE_TYPE_STREAMING`.
   final pulumi.Input<String> type;
-
   /// Workload information for creating new jobs.
   /// https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#workload
   /// Structure is documented below.
@@ -74,85 +65,46 @@ class PipelineArgs {
     required String state,
     required String type,
     PipelineWorkload? workload,
-  })  : displayName = pulumi.Input.asOptionalInput<String>(displayName),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        pipelineSources =
-            pulumi.Input.asOptionalInput<Map<String, String>>(pipelineSources),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        scheduleInfo =
-            pulumi.Input.asOptionalInput<PipelineScheduleInfo>(scheduleInfo),
-        schedulerServiceAccountEmail =
-            pulumi.Input.asOptionalInput<String>(schedulerServiceAccountEmail),
-        state = pulumi.Input.asInput<String>(state),
-        type = pulumi.Input.asInput<String>(type),
-        workload = pulumi.Input.asOptionalInput<PipelineWorkload>(workload);
+  }) :
+      displayName = pulumi.Input.asOptionalInput<String>(displayName),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      pipelineSources = pulumi.Input.asOptionalInput<Map<String, String>>(pipelineSources),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      scheduleInfo = pulumi.Input.asOptionalInput<PipelineScheduleInfo>(scheduleInfo),
+      schedulerServiceAccountEmail = pulumi.Input.asOptionalInput<String>(schedulerServiceAccountEmail),
+      state = pulumi.Input.asInput<String>(state),
+      type = pulumi.Input.asInput<String>(type),
+      workload = pulumi.Input.asOptionalInput<PipelineWorkload>(workload);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final displayNameValue = displayName;
-    if (displayNameValue != null) {
-      map['displayName'] = displayNameValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final pipelineSourcesValue = pipelineSources;
-    if (pipelineSourcesValue != null) {
-      map['pipelineSources'] = pipelineSourcesValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final scheduleInfoValue = scheduleInfo;
-    if (scheduleInfoValue != null) {
-      map['scheduleInfo'] = pulumi.Input.mapOptionalInputValue<
-          PipelineScheduleInfo,
-          Map<String, dynamic>>(scheduleInfoValue, (value) => value.toMap());
-    }
-    final schedulerServiceAccountEmailValue = schedulerServiceAccountEmail;
-    if (schedulerServiceAccountEmailValue != null) {
-      map['schedulerServiceAccountEmail'] = schedulerServiceAccountEmailValue;
-    }
-    map['state'] = state;
-    map['type'] = type;
-    final workloadValue = workload;
-    if (workloadValue != null) {
-      map['workload'] = pulumi.Input.mapOptionalInputValue<PipelineWorkload,
-          Map<String, dynamic>>(workloadValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'displayName': ?displayName,
+      'name': ?name,
+      'pipelineSources': ?pipelineSources,
+      'project': ?project,
+      'region': ?region,
+      'scheduleInfo': ?pulumi.Input.mapOptionalInputValue<PipelineScheduleInfo, Map<String, dynamic>>(scheduleInfo, (value) => value.toMap()),
+      'schedulerServiceAccountEmail': ?schedulerServiceAccountEmail,
+      'state': state,
+      'type': type,
+      'workload': ?pulumi.Input.mapOptionalInputValue<PipelineWorkload, Map<String, dynamic>>(workload, (value) => value.toMap()),
+    };
   }
 
   factory PipelineArgs.fromMap(Map<String, dynamic> map) {
     return PipelineArgs(
-      displayName:
-          map['displayName'] == null ? null : map['displayName'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
       name: map['name'] == null ? null : map['name'] as String,
-      pipelineSources: map['pipelineSources'] == null
-          ? null
-          : (map['pipelineSources'] as Map).cast<String, String>(),
+      pipelineSources: map['pipelineSources'] == null ? null : (map['pipelineSources'] as Map).cast<String, String>(),
       project: map['project'] == null ? null : map['project'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      scheduleInfo: map['scheduleInfo'] == null
-          ? null
-          : PipelineScheduleInfo.fromMap(
-              (map['scheduleInfo'] as Map).cast<String, dynamic>()),
-      schedulerServiceAccountEmail: map['schedulerServiceAccountEmail'] == null
-          ? null
-          : map['schedulerServiceAccountEmail'] as String,
+      scheduleInfo: map['scheduleInfo'] == null ? null : PipelineScheduleInfo.fromMap((map['scheduleInfo'] as Map).cast<String, dynamic>()),
+      schedulerServiceAccountEmail: map['schedulerServiceAccountEmail'] == null ? null : map['schedulerServiceAccountEmail'] as String,
       state: map['state'] as String,
       type: map['type'] as String,
-      workload: map['workload'] == null
-          ? null
-          : PipelineWorkload.fromMap(
-              (map['workload'] as Map).cast<String, dynamic>()),
+      workload: map['workload'] == null ? null : PipelineWorkload.fromMap((map['workload'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class Hl7StoreNotificationConfig {
   /// The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
   /// PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
@@ -16,9 +17,9 @@ class Hl7StoreNotificationConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['pubsubTopic'] = pubsubTopic;
-    return map;
+    return <String, dynamic>{
+      'pubsubTopic': pubsubTopic,
+    };
   }
 
   factory Hl7StoreNotificationConfig.fromMap(Map<String, dynamic> map) {
@@ -27,3 +28,4 @@ class Hl7StoreNotificationConfig {
     );
   }
 }
+

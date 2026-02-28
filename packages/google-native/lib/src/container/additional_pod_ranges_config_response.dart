@@ -7,7 +7,6 @@ import 'range_info_response.dart';
 class AdditionalPodRangesConfigResponse {
   /// [Output only] Information for additional pod range.
   final List<RangeInfoResponse> podRangeInfo;
-
   /// Name for pod secondary ipv4 range which has the actual range defined ahead.
   final List<String> podRangeNames;
 
@@ -20,21 +19,17 @@ class AdditionalPodRangesConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['podRangeInfo'] =
-        pulumi.Input.encodeList<RangeInfoResponse, Map<String, dynamic>>(
-            podRangeInfo, (value) => value.toMap());
-    map['podRangeNames'] = podRangeNames;
-    return map;
+    return <String, dynamic>{
+      'podRangeInfo': pulumi.Input.encodeList<RangeInfoResponse, Map<String, dynamic>>(podRangeInfo, (value) => value.toMap()),
+      'podRangeNames': podRangeNames,
+    };
   }
 
   factory AdditionalPodRangesConfigResponse.fromMap(Map<String, dynamic> map) {
     return AdditionalPodRangesConfigResponse(
-      podRangeInfo: pulumi.Input.decodeList<RangeInfoResponse>(
-          map['podRangeInfo'],
-          (value) => RangeInfoResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      podRangeInfo: pulumi.Input.decodeList<RangeInfoResponse>(map['podRangeInfo'], (value) => RangeInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
       podRangeNames: (map['podRangeNames'] as List).cast<String>(),
     );
   }
 }
+

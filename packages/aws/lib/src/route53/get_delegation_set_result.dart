@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getDelegationSet.
 class GetDelegationSetResult {
   /// ARN of the Delegation Set.
   final String arn;
-
   /// Caller Reference of the delegation set.
   final String callerReference;
   final String id;
-
   /// List of DNS name servers for the delegation set.
   final List<String> nameServers;
 
@@ -25,12 +24,12 @@ class GetDelegationSetResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['callerReference'] = callerReference;
-    map['id'] = id;
-    map['nameServers'] = nameServers;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'callerReference': callerReference,
+      'id': id,
+      'nameServers': nameServers,
+    };
   }
 
   factory GetDelegationSetResult.fromMap(Map<String, dynamic> map) {
@@ -42,3 +41,4 @@ class GetDelegationSetResult {
     );
   }
 }
+

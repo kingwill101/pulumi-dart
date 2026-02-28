@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getDirectoryBuckets.
 class GetDirectoryBucketsResult {
   /// Bucket ARNs.
   final List<String> arns;
-
   /// Buckets names.
   final List<String> buckets;
   final String id;
@@ -23,12 +23,12 @@ class GetDirectoryBucketsResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arns'] = arns;
-    map['buckets'] = buckets;
-    map['id'] = id;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'arns': arns,
+      'buckets': buckets,
+      'id': id,
+      'region': region,
+    };
   }
 
   factory GetDirectoryBucketsResult.fromMap(Map<String, dynamic> map) {
@@ -40,3 +40,4 @@ class GetDirectoryBucketsResult {
     );
   }
 }
+

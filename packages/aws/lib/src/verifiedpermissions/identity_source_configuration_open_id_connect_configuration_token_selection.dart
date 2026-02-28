@@ -5,12 +5,9 @@ import 'identity_source_configuration_open_id_connect_configuration_token_select
 
 class IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelection {
   /// The OIDC configuration for processing access tokens. See Access Token Only below.
-  final IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionAccessTokenOnly?
-      accessTokenOnly;
-
+  final IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionAccessTokenOnly? accessTokenOnly;
   /// The OIDC configuration for processing identity (ID) tokens. See Identity Token Only below.
-  final IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionIdentityTokenOnly?
-      identityTokenOnly;
+  final IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionIdentityTokenOnly? identityTokenOnly;
 
   /// Creates a new [IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelection].
   /// [accessTokenOnly] The OIDC configuration for processing access tokens. See Access Token Only below.
@@ -21,30 +18,17 @@ class IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelection {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final accessTokenOnlyValue = accessTokenOnly;
-    if (accessTokenOnlyValue != null) {
-      map['accessTokenOnly'] = accessTokenOnlyValue.toMap();
-    }
-    final identityTokenOnlyValue = identityTokenOnly;
-    if (identityTokenOnlyValue != null) {
-      map['identityTokenOnly'] = identityTokenOnlyValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'accessTokenOnly': ?accessTokenOnly == null ? null : accessTokenOnly!.toMap(),
+      'identityTokenOnly': ?identityTokenOnly == null ? null : identityTokenOnly!.toMap(),
+    };
   }
 
-  factory IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelection.fromMap(
-      Map<String, dynamic> map) {
+  factory IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelection.fromMap(Map<String, dynamic> map) {
     return IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelection(
-      accessTokenOnly: map['accessTokenOnly'] == null
-          ? null
-          : IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionAccessTokenOnly
-              .fromMap((map['accessTokenOnly'] as Map).cast<String, dynamic>()),
-      identityTokenOnly: map['identityTokenOnly'] == null
-          ? null
-          : IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionIdentityTokenOnly
-              .fromMap(
-                  (map['identityTokenOnly'] as Map).cast<String, dynamic>()),
+      accessTokenOnly: map['accessTokenOnly'] == null ? null : IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionAccessTokenOnly.fromMap((map['accessTokenOnly'] as Map).cast<String, dynamic>()),
+      identityTokenOnly: map['identityTokenOnly'] == null ? null : IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionIdentityTokenOnly.fromMap((map['identityTokenOnly'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

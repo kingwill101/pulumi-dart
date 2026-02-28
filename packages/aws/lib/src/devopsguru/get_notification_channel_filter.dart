@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetNotificationChannelFilter {
   /// Events to receive notifications for.
   final List<String> messageTypes;
-
   /// Severity levels to receive notifications for.
   final List<String> severities;
 
@@ -16,10 +16,10 @@ class GetNotificationChannelFilter {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['messageTypes'] = messageTypes;
-    map['severities'] = severities;
-    return map;
+    return <String, dynamic>{
+      'messageTypes': messageTypes,
+      'severities': severities,
+    };
   }
 
   factory GetNotificationChannelFilter.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetNotificationChannelFilter {
     );
   }
 }
+

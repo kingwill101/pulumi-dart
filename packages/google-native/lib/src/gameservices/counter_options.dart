@@ -7,10 +7,8 @@ import 'custom_field.dart';
 class CounterOptions {
   /// Custom fields.
   final List<CustomField>? customFields;
-
   /// The field value to attribute.
   final String? field;
-
   /// The metric to update.
   final String? metric;
 
@@ -25,34 +23,19 @@ class CounterOptions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final customFieldsValue = customFields;
-    if (customFieldsValue != null) {
-      map['customFields'] =
-          pulumi.Input.encodeList<CustomField, Map<String, dynamic>>(
-              customFieldsValue, (value) => value.toMap());
-    }
-    final fieldValue = field;
-    if (fieldValue != null) {
-      map['field'] = fieldValue;
-    }
-    final metricValue = metric;
-    if (metricValue != null) {
-      map['metric'] = metricValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'customFields': ?customFields == null ? null : pulumi.Input.encodeList<CustomField, Map<String, dynamic>>(customFields!, (value) => value.toMap()),
+      'field': ?field,
+      'metric': ?metric,
+    };
   }
 
   factory CounterOptions.fromMap(Map<String, dynamic> map) {
     return CounterOptions(
-      customFields: map['customFields'] == null
-          ? null
-          : pulumi.Input.decodeList<CustomField>(
-              map['customFields'],
-              (value) =>
-                  CustomField.fromMap((value as Map).cast<String, dynamic>())),
+      customFields: map['customFields'] == null ? null : pulumi.Input.decodeList<CustomField>(map['customFields'], (value) => CustomField.fromMap((value as Map).cast<String, dynamic>())),
       field: map['field'] == null ? null : map['field'] as String,
       metric: map['metric'] == null ? null : map['metric'] as String,
     );
   }
 }
+

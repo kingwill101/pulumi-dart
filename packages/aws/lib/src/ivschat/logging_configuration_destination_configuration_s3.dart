@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LoggingConfigurationDestinationConfigurationS3 {
   /// Name of the Amazon S3 bucket where chat activity will be logged.
   ///
@@ -13,15 +14,15 @@ class LoggingConfigurationDestinationConfigurationS3 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucketName'] = bucketName;
-    return map;
+    return <String, dynamic>{
+      'bucketName': bucketName,
+    };
   }
 
-  factory LoggingConfigurationDestinationConfigurationS3.fromMap(
-      Map<String, dynamic> map) {
+  factory LoggingConfigurationDestinationConfigurationS3.fromMap(Map<String, dynamic> map) {
     return LoggingConfigurationDestinationConfigurationS3(
       bucketName: map['bucketName'] as String,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BatchOperationsJobDeleteObject {
   /// enable flag to permanently delete object and all object versions if versioning is enabled on bucket.
   final bool permanentObjectDeletionEnabled;
@@ -11,15 +12,15 @@ class BatchOperationsJobDeleteObject {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['permanentObjectDeletionEnabled'] = permanentObjectDeletionEnabled;
-    return map;
+    return <String, dynamic>{
+      'permanentObjectDeletionEnabled': permanentObjectDeletionEnabled,
+    };
   }
 
   factory BatchOperationsJobDeleteObject.fromMap(Map<String, dynamic> map) {
     return BatchOperationsJobDeleteObject(
-      permanentObjectDeletionEnabled:
-          map['permanentObjectDeletionEnabled'] as bool,
+      permanentObjectDeletionEnabled: map['permanentObjectDeletionEnabled'] as bool,
     );
   }
 }
+

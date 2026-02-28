@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource {
   /// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
   final String? accessLevel;
-
   /// A Google Cloud resource that is allowed to egress the perimeter.
   /// Requests from these resources are allowed to access data outside the perimeter.
   /// Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -21,24 +21,17 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final accessLevelValue = accessLevel;
-    if (accessLevelValue != null) {
-      map['accessLevel'] = accessLevelValue;
-    }
-    final resourceValue = resource;
-    if (resourceValue != null) {
-      map['resource'] = resourceValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'accessLevel': ?accessLevel,
+      'resource': ?resource,
+    };
   }
 
-  factory ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource.fromMap(
-      Map<String, dynamic> map) {
+  factory ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource.fromMap(Map<String, dynamic> map) {
     return ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource(
-      accessLevel:
-          map['accessLevel'] == null ? null : map['accessLevel'] as String,
+      accessLevel: map['accessLevel'] == null ? null : map['accessLevel'] as String,
       resource: map['resource'] == null ? null : map['resource'] as String,
     );
   }
 }
+

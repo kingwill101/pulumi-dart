@@ -7,40 +7,28 @@ import 'trust_response.dart';
 class GetDomainResult {
   /// Optional. The name of delegated administrator account used to perform Active Directory operations. If not specified, `setupadmin` will be used.
   final String admin;
-
   /// Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
   final bool auditLogsEnabled;
-
   /// Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
   final List<String> authorizedNetworks;
-
   /// The time the instance was created.
   final String createTime;
-
   /// The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory set up on an internal network.
   final String fqdn;
-
   /// Optional. Resource labels that can contain user-provided metadata.
   final Map<String, String> labels;
-
   /// Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
   final List<String> locations;
-
   /// The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
   final String name;
-
   /// The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
   final String reservedIpRange;
-
   /// The current state of this domain.
   final String state;
-
   /// Additional information about the current status of this domain, if available.
   final String statusMessage;
-
   /// The current trusts associated with the domain.
   final List<TrustResponse> trusts;
-
   /// The last update time.
   final String updateTime;
 
@@ -75,23 +63,21 @@ class GetDomainResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['admin'] = admin;
-    map['auditLogsEnabled'] = auditLogsEnabled;
-    map['authorizedNetworks'] = authorizedNetworks;
-    map['createTime'] = createTime;
-    map['fqdn'] = fqdn;
-    map['labels'] = labels;
-    map['locations'] = locations;
-    map['name'] = name;
-    map['reservedIpRange'] = reservedIpRange;
-    map['state'] = state;
-    map['statusMessage'] = statusMessage;
-    map['trusts'] =
-        pulumi.Input.encodeList<TrustResponse, Map<String, dynamic>>(
-            trusts, (value) => value.toMap());
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'admin': admin,
+      'auditLogsEnabled': auditLogsEnabled,
+      'authorizedNetworks': authorizedNetworks,
+      'createTime': createTime,
+      'fqdn': fqdn,
+      'labels': labels,
+      'locations': locations,
+      'name': name,
+      'reservedIpRange': reservedIpRange,
+      'state': state,
+      'statusMessage': statusMessage,
+      'trusts': pulumi.Input.encodeList<TrustResponse, Map<String, dynamic>>(trusts, (value) => value.toMap()),
+      'updateTime': updateTime,
+    };
   }
 
   factory GetDomainResult.fromMap(Map<String, dynamic> map) {
@@ -107,11 +93,9 @@ class GetDomainResult {
       reservedIpRange: map['reservedIpRange'] as String,
       state: map['state'] as String,
       statusMessage: map['statusMessage'] as String,
-      trusts: pulumi.Input.decodeList<TrustResponse>(
-          map['trusts'],
-          (value) =>
-              TrustResponse.fromMap((value as Map).cast<String, dynamic>())),
+      trusts: pulumi.Input.decodeList<TrustResponse>(map['trusts'], (value) => TrustResponse.fromMap((value as Map).cast<String, dynamic>())),
       updateTime: map['updateTime'] as String,
     );
   }
 }
+

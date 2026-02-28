@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getOrderableDbInstance.
 class GetOrderableDbInstanceResult {
   /// Availability zones where the instance is available.
   final List<String> availabilityZones;
   final String? engine;
   final String engineVersion;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instanceClass;
@@ -38,26 +38,17 @@ class GetOrderableDbInstanceResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['availabilityZones'] = availabilityZones;
-    final engineValue = engine;
-    if (engineValue != null) {
-      map['engine'] = engineValue;
-    }
-    map['engineVersion'] = engineVersion;
-    map['id'] = id;
-    map['instanceClass'] = instanceClass;
-    final licenseModelValue = licenseModel;
-    if (licenseModelValue != null) {
-      map['licenseModel'] = licenseModelValue;
-    }
-    final preferredInstanceClassesValue = preferredInstanceClasses;
-    if (preferredInstanceClassesValue != null) {
-      map['preferredInstanceClasses'] = preferredInstanceClassesValue;
-    }
-    map['region'] = region;
-    map['vpc'] = vpc;
-    return map;
+    return <String, dynamic>{
+      'availabilityZones': availabilityZones,
+      'engine': ?engine,
+      'engineVersion': engineVersion,
+      'id': id,
+      'instanceClass': instanceClass,
+      'licenseModel': ?licenseModel,
+      'preferredInstanceClasses': ?preferredInstanceClasses,
+      'region': region,
+      'vpc': vpc,
+    };
   }
 
   factory GetOrderableDbInstanceResult.fromMap(Map<String, dynamic> map) {
@@ -67,13 +58,11 @@ class GetOrderableDbInstanceResult {
       engineVersion: map['engineVersion'] as String,
       id: map['id'] as String,
       instanceClass: map['instanceClass'] as String,
-      licenseModel:
-          map['licenseModel'] == null ? null : map['licenseModel'] as String,
-      preferredInstanceClasses: map['preferredInstanceClasses'] == null
-          ? null
-          : (map['preferredInstanceClasses'] as List).cast<String>(),
+      licenseModel: map['licenseModel'] == null ? null : map['licenseModel'] as String,
+      preferredInstanceClasses: map['preferredInstanceClasses'] == null ? null : (map['preferredInstanceClasses'] as List).cast<String>(),
       region: map['region'] as String,
       vpc: map['vpc'] as bool,
     );
   }
 }
+

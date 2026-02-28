@@ -14,15 +14,15 @@ class BareMetalSecurityConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['authorization'] = authorization.toMap();
-    return map;
+    return <String, dynamic>{
+      'authorization': authorization.toMap(),
+    };
   }
 
   factory BareMetalSecurityConfigResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalSecurityConfigResponse(
-      authorization: AuthorizationResponse.fromMap(
-          (map['authorization'] as Map).cast<String, dynamic>()),
+      authorization: AuthorizationResponse.fromMap((map['authorization'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange {
   /// The final port in the range of TCP ports.
   final int maxRange;
-
   /// The first port in the range of TCP ports.
   final int minRange;
 
@@ -16,17 +16,17 @@ class BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maxRange'] = maxRange;
-    map['minRange'] = minRange;
-    return map;
+    return <String, dynamic>{
+      'maxRange': maxRange,
+      'minRange': minRange,
+    };
   }
 
-  factory BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange.fromMap(
-      Map<String, dynamic> map) {
+  factory BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange.fromMap(Map<String, dynamic> map) {
     return BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange(
       maxRange: map['maxRange'] as int,
       minRange: map['minRange'] as int,
     );
   }
 }
+

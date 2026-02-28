@@ -9,13 +9,10 @@ import 'ssl_settings_appengine_v1beta.dart';
 /// {@macro pulumi_appengine_v1beta_domain_mapping_appengine_v1beta_args_doc}
 class DomainMappingAppengineV1betaArgs {
   final pulumi.Input<String> appId;
-
   /// Relative name of the domain serving the application. Example: example.com.
   final pulumi.Input<String>? id;
-
   /// Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
   final pulumi.Input<String>? overrideStrategy;
-
   /// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
   final pulumi.Input<SslSettingsAppengineV1beta>? sslSettings;
 
@@ -29,44 +26,28 @@ class DomainMappingAppengineV1betaArgs {
     String? id,
     String? overrideStrategy,
     SslSettingsAppengineV1beta? sslSettings,
-  })  : appId = pulumi.Input.asInput<String>(appId),
-        id = pulumi.Input.asOptionalInput<String>(id),
-        overrideStrategy =
-            pulumi.Input.asOptionalInput<String>(overrideStrategy),
-        sslSettings = pulumi.Input.asOptionalInput<SslSettingsAppengineV1beta>(
-            sslSettings);
+  }) :
+      appId = pulumi.Input.asInput<String>(appId),
+      id = pulumi.Input.asOptionalInput<String>(id),
+      overrideStrategy = pulumi.Input.asOptionalInput<String>(overrideStrategy),
+      sslSettings = pulumi.Input.asOptionalInput<SslSettingsAppengineV1beta>(sslSettings);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['appId'] = appId;
-    final idValue = id;
-    if (idValue != null) {
-      map['id'] = idValue;
-    }
-    final overrideStrategyValue = overrideStrategy;
-    if (overrideStrategyValue != null) {
-      map['overrideStrategy'] = overrideStrategyValue;
-    }
-    final sslSettingsValue = sslSettings;
-    if (sslSettingsValue != null) {
-      map['sslSettings'] = pulumi.Input.mapOptionalInputValue<
-          SslSettingsAppengineV1beta,
-          Map<String, dynamic>>(sslSettingsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'appId': appId,
+      'id': ?id,
+      'overrideStrategy': ?overrideStrategy,
+      'sslSettings': ?pulumi.Input.mapOptionalInputValue<SslSettingsAppengineV1beta, Map<String, dynamic>>(sslSettings, (value) => value.toMap()),
+    };
   }
 
   factory DomainMappingAppengineV1betaArgs.fromMap(Map<String, dynamic> map) {
     return DomainMappingAppengineV1betaArgs(
       appId: map['appId'] as String,
       id: map['id'] == null ? null : map['id'] as String,
-      overrideStrategy: map['overrideStrategy'] == null
-          ? null
-          : map['overrideStrategy'] as String,
-      sslSettings: map['sslSettings'] == null
-          ? null
-          : SslSettingsAppengineV1beta.fromMap(
-              (map['sslSettings'] as Map).cast<String, dynamic>()),
+      overrideStrategy: map['overrideStrategy'] == null ? null : map['overrideStrategy'] as String,
+      sslSettings: map['sslSettings'] == null ? null : SslSettingsAppengineV1beta.fromMap((map['sslSettings'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

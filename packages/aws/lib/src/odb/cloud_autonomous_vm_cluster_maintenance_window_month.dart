@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CloudAutonomousVmClusterMaintenanceWindowMonth {
   final String name;
 
@@ -10,15 +11,15 @@ class CloudAutonomousVmClusterMaintenanceWindowMonth {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory CloudAutonomousVmClusterMaintenanceWindowMonth.fromMap(
-      Map<String, dynamic> map) {
+  factory CloudAutonomousVmClusterMaintenanceWindowMonth.fromMap(Map<String, dynamic> map) {
     return CloudAutonomousVmClusterMaintenanceWindowMonth(
       name: map['name'] as String,
     );
   }
 }
+

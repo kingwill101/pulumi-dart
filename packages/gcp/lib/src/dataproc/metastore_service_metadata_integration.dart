@@ -14,17 +14,15 @@ class MetastoreServiceMetadataIntegration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dataCatalogConfig'] = dataCatalogConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'dataCatalogConfig': dataCatalogConfig.toMap(),
+    };
   }
 
-  factory MetastoreServiceMetadataIntegration.fromMap(
-      Map<String, dynamic> map) {
+  factory MetastoreServiceMetadataIntegration.fromMap(Map<String, dynamic> map) {
     return MetastoreServiceMetadataIntegration(
-      dataCatalogConfig:
-          MetastoreServiceMetadataIntegrationDataCatalogConfig.fromMap(
-              (map['dataCatalogConfig'] as Map).cast<String, dynamic>()),
+      dataCatalogConfig: MetastoreServiceMetadataIntegrationDataCatalogConfig.fromMap((map['dataCatalogConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

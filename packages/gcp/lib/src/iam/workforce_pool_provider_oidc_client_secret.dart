@@ -14,21 +14,15 @@ class WorkforcePoolProviderOidcClientSecret {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final valueValue = value;
-    if (valueValue != null) {
-      map['value'] = valueValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'value': ?value == null ? null : value!.toMap(),
+    };
   }
 
-  factory WorkforcePoolProviderOidcClientSecret.fromMap(
-      Map<String, dynamic> map) {
+  factory WorkforcePoolProviderOidcClientSecret.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderOidcClientSecret(
-      value: map['value'] == null
-          ? null
-          : WorkforcePoolProviderOidcClientSecretValue.fromMap(
-              (map['value'] as Map).cast<String, dynamic>()),
+      value: map['value'] == null ? null : WorkforcePoolProviderOidcClientSecretValue.fromMap((map['value'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Resource level annotation.
 class ResourceAnnotation {
   /// A description of the annotation record.
@@ -12,12 +13,9 @@ class ResourceAnnotation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final labelValue = label;
-    if (labelValue != null) {
-      map['label'] = labelValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'label': ?label,
+    };
   }
 
   factory ResourceAnnotation.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class ResourceAnnotation {
     );
   }
 }
+

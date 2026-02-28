@@ -17,3 +17,4 @@ enum FhirStoreVersion {
     throw ArgumentError('Unknown FhirStoreVersion value: $value');
   }
 }
+

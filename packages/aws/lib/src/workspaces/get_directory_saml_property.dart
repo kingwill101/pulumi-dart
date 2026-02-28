@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDirectorySamlProperty {
   final String relayStateParameterName;
   final String status;
@@ -16,11 +17,11 @@ class GetDirectorySamlProperty {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['relayStateParameterName'] = relayStateParameterName;
-    map['status'] = status;
-    map['userAccessUrl'] = userAccessUrl;
-    return map;
+    return <String, dynamic>{
+      'relayStateParameterName': relayStateParameterName,
+      'status': status,
+      'userAccessUrl': userAccessUrl,
+    };
   }
 
   factory GetDirectorySamlProperty.fromMap(Map<String, dynamic> map) {
@@ -31,3 +32,4 @@ class GetDirectorySamlProperty {
     );
   }
 }
+

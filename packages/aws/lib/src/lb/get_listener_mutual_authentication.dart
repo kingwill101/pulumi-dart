@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetListenerMutualAuthentication {
   final String advertiseTrustStoreCaNames;
   final bool ignoreClientCertificateExpiry;
@@ -19,21 +20,21 @@ class GetListenerMutualAuthentication {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['advertiseTrustStoreCaNames'] = advertiseTrustStoreCaNames;
-    map['ignoreClientCertificateExpiry'] = ignoreClientCertificateExpiry;
-    map['mode'] = mode;
-    map['trustStoreArn'] = trustStoreArn;
-    return map;
+    return <String, dynamic>{
+      'advertiseTrustStoreCaNames': advertiseTrustStoreCaNames,
+      'ignoreClientCertificateExpiry': ignoreClientCertificateExpiry,
+      'mode': mode,
+      'trustStoreArn': trustStoreArn,
+    };
   }
 
   factory GetListenerMutualAuthentication.fromMap(Map<String, dynamic> map) {
     return GetListenerMutualAuthentication(
       advertiseTrustStoreCaNames: map['advertiseTrustStoreCaNames'] as String,
-      ignoreClientCertificateExpiry:
-          map['ignoreClientCertificateExpiry'] as bool,
+      ignoreClientCertificateExpiry: map['ignoreClientCertificateExpiry'] as bool,
       mode: map['mode'] as String,
       trustStoreArn: map['trustStoreArn'] as String,
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EventTargetSagemakerPipelineTargetPipelineParameterList {
   /// Name of parameter to start execution of a SageMaker AI Model Building Pipeline.
   final String name;
-
   /// Value of parameter to start execution of a SageMaker AI Model Building Pipeline.
   final String value;
 
@@ -16,17 +16,17 @@ class EventTargetSagemakerPipelineTargetPipelineParameterList {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
-  factory EventTargetSagemakerPipelineTargetPipelineParameterList.fromMap(
-      Map<String, dynamic> map) {
+  factory EventTargetSagemakerPipelineTargetPipelineParameterList.fromMap(Map<String, dynamic> map) {
     return EventTargetSagemakerPipelineTargetPipelineParameterList(
       name: map['name'] as String,
       value: map['value'] as String,
     );
   }
 }
+

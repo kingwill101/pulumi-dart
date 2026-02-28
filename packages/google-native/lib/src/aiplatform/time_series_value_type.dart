@@ -17,3 +17,4 @@ enum TimeSeriesValueType {
     throw ArgumentError('Unknown TimeSeriesValueType value: $value');
   }
 }
+

@@ -13,15 +13,15 @@ class VirtualRouterSpecListener {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['portMapping'] = portMapping.toMap();
-    return map;
+    return <String, dynamic>{
+      'portMapping': portMapping.toMap(),
+    };
   }
 
   factory VirtualRouterSpecListener.fromMap(Map<String, dynamic> map) {
     return VirtualRouterSpecListener(
-      portMapping: VirtualRouterSpecListenerPortMapping.fromMap(
-          (map['portMapping'] as Map).cast<String, dynamic>()),
+      portMapping: VirtualRouterSpecListenerPortMapping.fromMap((map['portMapping'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

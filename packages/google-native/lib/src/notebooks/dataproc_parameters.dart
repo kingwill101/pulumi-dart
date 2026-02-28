@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Parameters used in Dataproc JobType executions.
 class DataprocParameters {
   /// URI for cluster used to run Dataproc execution. Format: `projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}`
@@ -12,12 +13,9 @@ class DataprocParameters {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final clusterValue = cluster;
-    if (clusterValue != null) {
-      map['cluster'] = clusterValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'cluster': ?cluster,
+    };
   }
 
   factory DataprocParameters.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class DataprocParameters {
     );
   }
 }
+

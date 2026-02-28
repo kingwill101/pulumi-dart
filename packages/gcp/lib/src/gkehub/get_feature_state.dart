@@ -14,19 +14,15 @@ class GetFeatureState {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['states'] =
-        pulumi.Input.encodeList<GetFeatureStateState, Map<String, dynamic>>(
-            states, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'states': pulumi.Input.encodeList<GetFeatureStateState, Map<String, dynamic>>(states, (value) => value.toMap()),
+    };
   }
 
   factory GetFeatureState.fromMap(Map<String, dynamic> map) {
     return GetFeatureState(
-      states: pulumi.Input.decodeList<GetFeatureStateState>(
-          map['states'],
-          (value) => GetFeatureStateState.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      states: pulumi.Input.decodeList<GetFeatureStateState>(map['states'], (value) => GetFeatureStateState.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

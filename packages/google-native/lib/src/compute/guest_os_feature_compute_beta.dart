@@ -14,19 +14,15 @@ class GuestOsFeatureComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'type': ?type == null ? null : type!.value,
+    };
   }
 
   factory GuestOsFeatureComputeBeta.fromMap(Map<String, dynamic> map) {
     return GuestOsFeatureComputeBeta(
-      type: map['type'] == null
-          ? null
-          : GuestOsFeatureTypeComputeBeta.fromValue(map['type'] as String),
+      type: map['type'] == null ? null : GuestOsFeatureTypeComputeBeta.fromValue(map['type'] as String),
     );
   }
 }
+

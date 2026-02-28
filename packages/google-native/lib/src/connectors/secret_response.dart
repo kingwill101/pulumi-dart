@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Secret provides a reference to entries in Secret Manager.
 class SecretResponse {
   /// The resource name of the secret version in the format, format as: `projects/*/secrets/*/versions/*`.
@@ -12,9 +13,9 @@ class SecretResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['secretVersion'] = secretVersion;
-    return map;
+    return <String, dynamic>{
+      'secretVersion': secretVersion,
+    };
   }
 
   factory SecretResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class SecretResponse {
     );
   }
 }
+

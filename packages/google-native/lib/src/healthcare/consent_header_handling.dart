@@ -14,19 +14,15 @@ class ConsentHeaderHandling {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final profileValue = profile;
-    if (profileValue != null) {
-      map['profile'] = profileValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'profile': ?profile == null ? null : profile!.value,
+    };
   }
 
   factory ConsentHeaderHandling.fromMap(Map<String, dynamic> map) {
     return ConsentHeaderHandling(
-      profile: map['profile'] == null
-          ? null
-          : ConsentHeaderHandlingProfile.fromValue(map['profile'] as String),
+      profile: map['profile'] == null ? null : ConsentHeaderHandlingProfile.fromValue(map['profile'] as String),
     );
   }
 }
+

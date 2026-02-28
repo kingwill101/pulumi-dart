@@ -14,9 +14,9 @@ class GoogleDomainsDns {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dsState'] = dsState.value;
-    return map;
+    return <String, dynamic>{
+      'dsState': dsState.value,
+    };
   }
 
   factory GoogleDomainsDns.fromMap(Map<String, dynamic> map) {
@@ -25,3 +25,4 @@ class GoogleDomainsDns {
     );
   }
 }
+

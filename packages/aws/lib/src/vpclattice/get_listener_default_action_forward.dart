@@ -13,20 +13,15 @@ class GetListenerDefaultActionForward {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['targetGroups'] = pulumi.Input.encodeList<
-        GetListenerDefaultActionForwardTargetGroup,
-        Map<String, dynamic>>(targetGroups, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'targetGroups': pulumi.Input.encodeList<GetListenerDefaultActionForwardTargetGroup, Map<String, dynamic>>(targetGroups, (value) => value.toMap()),
+    };
   }
 
   factory GetListenerDefaultActionForward.fromMap(Map<String, dynamic> map) {
     return GetListenerDefaultActionForward(
-      targetGroups:
-          pulumi.Input.decodeList<GetListenerDefaultActionForwardTargetGroup>(
-              map['targetGroups'],
-              (value) => GetListenerDefaultActionForwardTargetGroup.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      targetGroups: pulumi.Input.decodeList<GetListenerDefaultActionForwardTargetGroup>(map['targetGroups'], (value) => GetListenerDefaultActionForwardTargetGroup.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

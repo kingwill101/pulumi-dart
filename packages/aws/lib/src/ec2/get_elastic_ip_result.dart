@@ -6,57 +6,40 @@ import 'get_elastic_ip_filter.dart';
 /// Result data returned by getElasticIp.
 class GetElasticIpResult {
   final String arn;
-
   /// ID representing the association of the address with an instance in a VPC.
   final String associationId;
-
   /// Carrier IP address.
   final String carrierIp;
-
   /// Customer Owned IP.
   final String customerOwnedIp;
-
   /// The ID of a Customer Owned IP Pool. For more on customer owned IP addressed check out [Customer-owned IP addresses guide](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing)
   final String customerOwnedIpv4Pool;
-
   /// Whether the address is for use in EC2-Classic (standard) or in a VPC (vpc).
   final String domain;
   final List<GetElasticIpFilter>? filters;
-
   /// If VPC Elastic IP, the allocation identifier. If EC2-Classic Elastic IP, the public IP address.
   final String id;
-
   /// ID of the instance that the address is associated with (if any).
   final String instanceId;
-
   /// The ID of an IPAM pool which has an Amazon-provided or BYOIP public IPv4 CIDR provisioned to it.
   final String ipamPoolId;
-
   /// The ID of the network interface.
   final String networkInterfaceId;
-
   /// The ID of the AWS account that owns the network interface.
   final String networkInterfaceOwnerId;
-
   /// Private DNS associated with the Elastic IP address.
   final String privateDns;
-
   /// Private IP address associated with the Elastic IP address.
   final String privateIp;
-
   /// The DNS pointer (PTR) record for the IP address.
   final String ptrRecord;
-
   /// Public DNS associated with the Elastic IP address.
   final String publicDns;
-
   /// Public IP address of Elastic IP.
   final String publicIp;
-
   /// ID of an address pool.
   final String publicIpv4Pool;
   final String region;
-
   /// Key-value map of tags associated with Elastic IP.
   final Map<String, String> tags;
 
@@ -105,33 +88,28 @@ class GetElasticIpResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['associationId'] = associationId;
-    map['carrierIp'] = carrierIp;
-    map['customerOwnedIp'] = customerOwnedIp;
-    map['customerOwnedIpv4Pool'] = customerOwnedIpv4Pool;
-    map['domain'] = domain;
-    final filtersValue = filters;
-    if (filtersValue != null) {
-      map['filters'] =
-          pulumi.Input.encodeList<GetElasticIpFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
-    }
-    map['id'] = id;
-    map['instanceId'] = instanceId;
-    map['ipamPoolId'] = ipamPoolId;
-    map['networkInterfaceId'] = networkInterfaceId;
-    map['networkInterfaceOwnerId'] = networkInterfaceOwnerId;
-    map['privateDns'] = privateDns;
-    map['privateIp'] = privateIp;
-    map['ptrRecord'] = ptrRecord;
-    map['publicDns'] = publicDns;
-    map['publicIp'] = publicIp;
-    map['publicIpv4Pool'] = publicIpv4Pool;
-    map['region'] = region;
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'associationId': associationId,
+      'carrierIp': carrierIp,
+      'customerOwnedIp': customerOwnedIp,
+      'customerOwnedIpv4Pool': customerOwnedIpv4Pool,
+      'domain': domain,
+      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetElasticIpFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'id': id,
+      'instanceId': instanceId,
+      'ipamPoolId': ipamPoolId,
+      'networkInterfaceId': networkInterfaceId,
+      'networkInterfaceOwnerId': networkInterfaceOwnerId,
+      'privateDns': privateDns,
+      'privateIp': privateIp,
+      'ptrRecord': ptrRecord,
+      'publicDns': publicDns,
+      'publicIp': publicIp,
+      'publicIpv4Pool': publicIpv4Pool,
+      'region': region,
+      'tags': tags,
+    };
   }
 
   factory GetElasticIpResult.fromMap(Map<String, dynamic> map) {
@@ -142,12 +120,7 @@ class GetElasticIpResult {
       customerOwnedIp: map['customerOwnedIp'] as String,
       customerOwnedIpv4Pool: map['customerOwnedIpv4Pool'] as String,
       domain: map['domain'] as String,
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetElasticIpFilter>(
-              map['filters'],
-              (value) => GetElasticIpFilter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetElasticIpFilter>(map['filters'], (value) => GetElasticIpFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       instanceId: map['instanceId'] as String,
       ipamPoolId: map['ipamPoolId'] as String,
@@ -164,3 +137,4 @@ class GetElasticIpResult {
     );
   }
 }
+

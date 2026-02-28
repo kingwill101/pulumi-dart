@@ -10,17 +10,13 @@ import 'template_metadata_response.dart';
 /// on Google Cloud even though it will be deleted from Pulumi state.
 class Template extends pulumi.CustomResource {
   late final pulumi.Output<String> location;
-
   /// The template metadata describing the template name, available parameters, etc.
   late final pulumi.Output<TemplateMetadataResponse> metadata;
   late final pulumi.Output<String> project;
-
   /// Describes the runtime metadata with SDKInfo and available parameters.
   late final pulumi.Output<RuntimeMetadataResponse> runtimeMetadata;
-
   /// The status of the get template request. Any problems with the request will be indicated in the error_details.
   late final pulumi.Output<StatusResponse> status;
-
   /// Template Type.
   late final pulumi.Output<String> templateType;
 
@@ -41,8 +37,7 @@ class Template extends pulumi.CustomResource {
     this.location = registerOutput<String>('location');
     this.metadata = registerOutput<TemplateMetadataResponse>('metadata');
     this.project = registerOutput<String>('project');
-    this.runtimeMetadata =
-        registerOutput<RuntimeMetadataResponse>('runtimeMetadata');
+    this.runtimeMetadata = registerOutput<RuntimeMetadataResponse>('runtimeMetadata');
     this.status = registerOutput<StatusResponse>('status');
     this.templateType = registerOutput<String>('templateType');
   }

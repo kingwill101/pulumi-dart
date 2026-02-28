@@ -16,17 +16,15 @@ class GetBackendBucketComputeV1Args {
   GetBackendBucketComputeV1Args({
     required String backendBucket,
     String? project,
-  })  : backendBucket = pulumi.Input.asInput<String>(backendBucket),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      backendBucket = pulumi.Input.asInput<String>(backendBucket),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['backendBucket'] = backendBucket;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'backendBucket': backendBucket,
+      'project': ?project,
+    };
   }
 
   factory GetBackendBucketComputeV1Args.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetBackendBucketComputeV1Args {
     );
   }
 }
+

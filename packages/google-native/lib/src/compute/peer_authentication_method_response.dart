@@ -14,15 +14,15 @@ class PeerAuthenticationMethodResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['mtls'] = mtls.toMap();
-    return map;
+    return <String, dynamic>{
+      'mtls': mtls.toMap(),
+    };
   }
 
   factory PeerAuthenticationMethodResponse.fromMap(Map<String, dynamic> map) {
     return PeerAuthenticationMethodResponse(
-      mtls: MutualTlsResponse.fromMap(
-          (map['mtls'] as Map).cast<String, dynamic>()),
+      mtls: MutualTlsResponse.fromMap((map['mtls'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

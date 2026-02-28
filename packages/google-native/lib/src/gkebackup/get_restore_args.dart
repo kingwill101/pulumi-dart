@@ -22,21 +22,19 @@ class GetRestoreArgs {
     String? project,
     required String restoreId,
     required String restorePlanId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        restoreId = pulumi.Input.asInput<String>(restoreId),
-        restorePlanId = pulumi.Input.asInput<String>(restorePlanId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      restoreId = pulumi.Input.asInput<String>(restoreId),
+      restorePlanId = pulumi.Input.asInput<String>(restorePlanId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['restoreId'] = restoreId;
-    map['restorePlanId'] = restorePlanId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+      'restoreId': restoreId,
+      'restorePlanId': restorePlanId,
+    };
   }
 
   factory GetRestoreArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetRestoreArgs {
     );
   }
 }
+

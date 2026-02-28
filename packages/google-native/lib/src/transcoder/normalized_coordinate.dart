@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// 2D normalized coordinates. Default: `{0.0, 0.0}`
 class NormalizedCoordinate {
   /// Normalized x coordinate.
   final double? x;
-
   /// Normalized y coordinate.
   final double? y;
 
@@ -17,16 +17,10 @@ class NormalizedCoordinate {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final xValue = x;
-    if (xValue != null) {
-      map['x'] = xValue;
-    }
-    final yValue = y;
-    if (yValue != null) {
-      map['y'] = yValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'x': ?x,
+      'y': ?y,
+    };
   }
 
   factory NormalizedCoordinate.fromMap(Map<String, dynamic> map) {
@@ -36,3 +30,4 @@ class NormalizedCoordinate {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig {
   /// Oauth token value or parameter name to pass it through.
   final String oauthToken;
@@ -11,15 +12,15 @@ class CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['oauthToken'] = oauthToken;
-    return map;
+    return <String, dynamic>{
+      'oauthToken': oauthToken,
+    };
   }
 
-  factory CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig.fromMap(Map<String, dynamic> map) {
     return CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig(
       oauthToken: map['oauthToken'] as String,
     );
   }
 }
+

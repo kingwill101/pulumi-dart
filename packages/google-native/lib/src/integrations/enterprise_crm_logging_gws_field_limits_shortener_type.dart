@@ -10,14 +10,13 @@ enum EnterpriseCrmLoggingGwsFieldLimitsShortenerType {
   const EnterpriseCrmLoggingGwsFieldLimitsShortenerType(this.value);
   final String value;
 
-  static EnterpriseCrmLoggingGwsFieldLimitsShortenerType fromValue(
-      String value) {
+  static EnterpriseCrmLoggingGwsFieldLimitsShortenerType fromValue(String value) {
     for (final item in EnterpriseCrmLoggingGwsFieldLimitsShortenerType.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown EnterpriseCrmLoggingGwsFieldLimitsShortenerType value: $value');
+    throw ArgumentError('Unknown EnterpriseCrmLoggingGwsFieldLimitsShortenerType value: $value');
   }
 }
+

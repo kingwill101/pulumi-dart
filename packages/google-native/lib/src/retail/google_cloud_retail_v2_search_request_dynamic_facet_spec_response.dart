@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// The specifications of dynamically generated facets.
 class GoogleCloudRetailV2SearchRequestDynamicFacetSpecResponse {
   /// Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset.
@@ -12,15 +13,15 @@ class GoogleCloudRetailV2SearchRequestDynamicFacetSpecResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['mode'] = mode;
-    return map;
+    return <String, dynamic>{
+      'mode': mode,
+    };
   }
 
-  factory GoogleCloudRetailV2SearchRequestDynamicFacetSpecResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudRetailV2SearchRequestDynamicFacetSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2SearchRequestDynamicFacetSpecResponse(
       mode: map['mode'] as String,
     );
   }
 }
+

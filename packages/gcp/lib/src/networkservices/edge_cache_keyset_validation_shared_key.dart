@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EdgeCacheKeysetValidationSharedKey {
   /// The name of the secret version in Secret Manager.
   /// The resource name of the secret version must be in the format `projects/*/secrets/*/versions/*` where the `*` values are replaced by the secrets themselves.
@@ -16,9 +17,9 @@ class EdgeCacheKeysetValidationSharedKey {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['secretVersion'] = secretVersion;
-    return map;
+    return <String, dynamic>{
+      'secretVersion': secretVersion,
+    };
   }
 
   factory EdgeCacheKeysetValidationSharedKey.fromMap(Map<String, dynamic> map) {
@@ -27,3 +28,4 @@ class EdgeCacheKeysetValidationSharedKey {
     );
   }
 }
+

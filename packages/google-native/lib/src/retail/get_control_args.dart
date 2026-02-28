@@ -22,21 +22,19 @@ class GetControlArgs {
     required String controlId,
     required String location,
     String? project,
-  })  : catalogId = pulumi.Input.asInput<String>(catalogId),
-        controlId = pulumi.Input.asInput<String>(controlId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      catalogId = pulumi.Input.asInput<String>(catalogId),
+      controlId = pulumi.Input.asInput<String>(controlId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['catalogId'] = catalogId;
-    map['controlId'] = controlId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'catalogId': catalogId,
+      'controlId': controlId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetControlArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetControlArgs {
     );
   }
 }
+

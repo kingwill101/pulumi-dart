@@ -13,12 +13,13 @@ class GetSubscriptionPubsubV1beta1aArgs {
   /// [subscriptionId] Required.
   GetSubscriptionPubsubV1beta1aArgs({
     required String subscriptionId,
-  }) : subscriptionId = pulumi.Input.asInput<String>(subscriptionId);
+  }) :
+      subscriptionId = pulumi.Input.asInput<String>(subscriptionId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['subscriptionId'] = subscriptionId;
-    return map;
+    return <String, dynamic>{
+      'subscriptionId': subscriptionId,
+    };
   }
 
   factory GetSubscriptionPubsubV1beta1aArgs.fromMap(Map<String, dynamic> map) {
@@ -27,3 +28,4 @@ class GetSubscriptionPubsubV1beta1aArgs {
     );
   }
 }
+

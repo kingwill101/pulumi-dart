@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class UserProfileDetailIam {
   final String arn;
 
@@ -10,9 +11,9 @@ class UserProfileDetailIam {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+    };
   }
 
   factory UserProfileDetailIam.fromMap(Map<String, dynamic> map) {
@@ -21,3 +22,4 @@ class UserProfileDetailIam {
     );
   }
 }
+

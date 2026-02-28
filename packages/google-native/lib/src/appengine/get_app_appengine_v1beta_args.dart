@@ -16,26 +16,22 @@ class GetAppAppengineV1betaArgs {
   GetAppAppengineV1betaArgs({
     required String appId,
     String? includeExtraData,
-  })  : appId = pulumi.Input.asInput<String>(appId),
-        includeExtraData =
-            pulumi.Input.asOptionalInput<String>(includeExtraData);
+  }) :
+      appId = pulumi.Input.asInput<String>(appId),
+      includeExtraData = pulumi.Input.asOptionalInput<String>(includeExtraData);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['appId'] = appId;
-    final includeExtraDataValue = includeExtraData;
-    if (includeExtraDataValue != null) {
-      map['includeExtraData'] = includeExtraDataValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'appId': appId,
+      'includeExtraData': ?includeExtraData,
+    };
   }
 
   factory GetAppAppengineV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetAppAppengineV1betaArgs(
       appId: map['appId'] as String,
-      includeExtraData: map['includeExtraData'] == null
-          ? null
-          : map['includeExtraData'] as String,
+      includeExtraData: map['includeExtraData'] == null ? null : map['includeExtraData'] as String,
     );
   }
 }
+

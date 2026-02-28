@@ -7,55 +7,40 @@ import 'get_snapshot_filter.dart';
 class GetSnapshotResult {
   /// ARN of the EBS Snapshot.
   final String arn;
-
   /// The data encryption key identifier for the snapshot.
   final String dataEncryptionKeyId;
-
   /// Description for the snapshot
   final String description;
-
   /// Whether the snapshot is encrypted.
   final bool encrypted;
   final List<GetSnapshotFilter>? filters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// ARN for the KMS encryption key.
   final String kmsKeyId;
   final bool? mostRecent;
-
   /// ARN of the Outpost on which the snapshot is stored.
   final String outpostArn;
-
   /// Value from an Amazon-maintained list (`amazon`, `aws-marketplace`, `microsoft`) of snapshot owners.
   final String ownerAlias;
-
   /// AWS account ID of the EBS snapshot owner.
   final String ownerId;
   final List<String>? owners;
   final String region;
   final List<String>? restorableByUserIds;
-
   /// Snapshot ID (e.g., snap-59fcb34e).
   final String snapshotId;
   final List<String>? snapshotIds;
-
   /// Time stamp when the snapshot was initiated.
   final String startTime;
-
   /// Snapshot state.
   final String state;
-
   /// Storage tier in which the snapshot is stored.
   final String storageTier;
-
   /// Map of tags for the resource.
   final Map<String, String> tags;
-
   /// Volume ID (e.g., vol-59fcb34e).
   final String volumeId;
-
   /// Size of the drive in GiBs.
   final int volumeSize;
 
@@ -108,47 +93,30 @@ class GetSnapshotResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['dataEncryptionKeyId'] = dataEncryptionKeyId;
-    map['description'] = description;
-    map['encrypted'] = encrypted;
-    final filtersValue = filters;
-    if (filtersValue != null) {
-      map['filters'] =
-          pulumi.Input.encodeList<GetSnapshotFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
-    }
-    map['id'] = id;
-    map['kmsKeyId'] = kmsKeyId;
-    final mostRecentValue = mostRecent;
-    if (mostRecentValue != null) {
-      map['mostRecent'] = mostRecentValue;
-    }
-    map['outpostArn'] = outpostArn;
-    map['ownerAlias'] = ownerAlias;
-    map['ownerId'] = ownerId;
-    final ownersValue = owners;
-    if (ownersValue != null) {
-      map['owners'] = ownersValue;
-    }
-    map['region'] = region;
-    final restorableByUserIdsValue = restorableByUserIds;
-    if (restorableByUserIdsValue != null) {
-      map['restorableByUserIds'] = restorableByUserIdsValue;
-    }
-    map['snapshotId'] = snapshotId;
-    final snapshotIdsValue = snapshotIds;
-    if (snapshotIdsValue != null) {
-      map['snapshotIds'] = snapshotIdsValue;
-    }
-    map['startTime'] = startTime;
-    map['state'] = state;
-    map['storageTier'] = storageTier;
-    map['tags'] = tags;
-    map['volumeId'] = volumeId;
-    map['volumeSize'] = volumeSize;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'dataEncryptionKeyId': dataEncryptionKeyId,
+      'description': description,
+      'encrypted': encrypted,
+      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetSnapshotFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'id': id,
+      'kmsKeyId': kmsKeyId,
+      'mostRecent': ?mostRecent,
+      'outpostArn': outpostArn,
+      'ownerAlias': ownerAlias,
+      'ownerId': ownerId,
+      'owners': ?owners,
+      'region': region,
+      'restorableByUserIds': ?restorableByUserIds,
+      'snapshotId': snapshotId,
+      'snapshotIds': ?snapshotIds,
+      'startTime': startTime,
+      'state': state,
+      'storageTier': storageTier,
+      'tags': tags,
+      'volumeId': volumeId,
+      'volumeSize': volumeSize,
+    };
   }
 
   factory GetSnapshotResult.fromMap(Map<String, dynamic> map) {
@@ -157,28 +125,18 @@ class GetSnapshotResult {
       dataEncryptionKeyId: map['dataEncryptionKeyId'] as String,
       description: map['description'] as String,
       encrypted: map['encrypted'] as bool,
-      filters: map['filters'] == null
-          ? null
-          : pulumi.Input.decodeList<GetSnapshotFilter>(
-              map['filters'],
-              (value) => GetSnapshotFilter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetSnapshotFilter>(map['filters'], (value) => GetSnapshotFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       kmsKeyId: map['kmsKeyId'] as String,
       mostRecent: map['mostRecent'] == null ? null : map['mostRecent'] as bool,
       outpostArn: map['outpostArn'] as String,
       ownerAlias: map['ownerAlias'] as String,
       ownerId: map['ownerId'] as String,
-      owners:
-          map['owners'] == null ? null : (map['owners'] as List).cast<String>(),
+      owners: map['owners'] == null ? null : (map['owners'] as List).cast<String>(),
       region: map['region'] as String,
-      restorableByUserIds: map['restorableByUserIds'] == null
-          ? null
-          : (map['restorableByUserIds'] as List).cast<String>(),
+      restorableByUserIds: map['restorableByUserIds'] == null ? null : (map['restorableByUserIds'] as List).cast<String>(),
       snapshotId: map['snapshotId'] as String,
-      snapshotIds: map['snapshotIds'] == null
-          ? null
-          : (map['snapshotIds'] as List).cast<String>(),
+      snapshotIds: map['snapshotIds'] == null ? null : (map['snapshotIds'] as List).cast<String>(),
       startTime: map['startTime'] as String,
       state: map['state'] as String,
       storageTier: map['storageTier'] as String,
@@ -188,3 +146,4 @@ class GetSnapshotResult {
     );
   }
 }
+

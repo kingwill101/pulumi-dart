@@ -1,31 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// SslCerts Resource
 class SslCertResponse {
   /// PEM representation.
   final String cert;
-
   /// Serial number, as extracted from the certificate.
   final String certSerialNumber;
-
   /// User supplied name. Constrained to [a-zA-Z.-_ ]+.
   final String commonName;
-
   /// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`
   final String createTime;
-
   /// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
   final String expirationTime;
-
   /// Name of the database instance.
   final String instance;
-
   /// This is always `sql#sslCert`.
   final String kind;
-
   /// The URI of this resource.
   final String selfLink;
-
   /// Sha1 Fingerprint.
   final String sha1Fingerprint;
 
@@ -52,17 +45,17 @@ class SslCertResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cert'] = cert;
-    map['certSerialNumber'] = certSerialNumber;
-    map['commonName'] = commonName;
-    map['createTime'] = createTime;
-    map['expirationTime'] = expirationTime;
-    map['instance'] = instance;
-    map['kind'] = kind;
-    map['selfLink'] = selfLink;
-    map['sha1Fingerprint'] = sha1Fingerprint;
-    return map;
+    return <String, dynamic>{
+      'cert': cert,
+      'certSerialNumber': certSerialNumber,
+      'commonName': commonName,
+      'createTime': createTime,
+      'expirationTime': expirationTime,
+      'instance': instance,
+      'kind': kind,
+      'selfLink': selfLink,
+      'sha1Fingerprint': sha1Fingerprint,
+    };
   }
 
   factory SslCertResponse.fromMap(Map<String, dynamic> map) {
@@ -79,3 +72,4 @@ class SslCertResponse {
     );
   }
 }
+

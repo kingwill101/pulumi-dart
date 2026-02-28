@@ -15,27 +15,15 @@ class SecurityPolicyRulePreconfiguredWafConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final exclusionsValue = exclusions;
-    if (exclusionsValue != null) {
-      map['exclusions'] = pulumi.Input.encodeList<
-          SecurityPolicyRulePreconfiguredWafConfigExclusion,
-          Map<String, dynamic>>(exclusionsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'exclusions': ?exclusions == null ? null : pulumi.Input.encodeList<SecurityPolicyRulePreconfiguredWafConfigExclusion, Map<String, dynamic>>(exclusions!, (value) => value.toMap()),
+    };
   }
 
-  factory SecurityPolicyRulePreconfiguredWafConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory SecurityPolicyRulePreconfiguredWafConfig.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRulePreconfiguredWafConfig(
-      exclusions: map['exclusions'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  SecurityPolicyRulePreconfiguredWafConfigExclusion>(
-              map['exclusions'],
-              (value) =>
-                  SecurityPolicyRulePreconfiguredWafConfigExclusion.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      exclusions: map['exclusions'] == null ? null : pulumi.Input.decodeList<SecurityPolicyRulePreconfiguredWafConfigExclusion>(map['exclusions'], (value) => SecurityPolicyRulePreconfiguredWafConfigExclusion.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -8,10 +8,8 @@ import 'google_privacy_dlp_v2_unwrapped_crypto_key_response.dart';
 class GooglePrivacyDlpV2CryptoKeyResponse {
   /// Key wrapped using Cloud KMS
   final GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse kmsWrapped;
-
   /// Transient crypto key
   final GooglePrivacyDlpV2TransientCryptoKeyResponse transient;
-
   /// Unwrapped crypto key
   final GooglePrivacyDlpV2UnwrappedCryptoKeyResponse unwrapped;
 
@@ -26,22 +24,19 @@ class GooglePrivacyDlpV2CryptoKeyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kmsWrapped'] = kmsWrapped.toMap();
-    map['transient'] = transient.toMap();
-    map['unwrapped'] = unwrapped.toMap();
-    return map;
+    return <String, dynamic>{
+      'kmsWrapped': kmsWrapped.toMap(),
+      'transient': transient.toMap(),
+      'unwrapped': unwrapped.toMap(),
+    };
   }
 
-  factory GooglePrivacyDlpV2CryptoKeyResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2CryptoKeyResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2CryptoKeyResponse(
-      kmsWrapped: GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse.fromMap(
-          (map['kmsWrapped'] as Map).cast<String, dynamic>()),
-      transient: GooglePrivacyDlpV2TransientCryptoKeyResponse.fromMap(
-          (map['transient'] as Map).cast<String, dynamic>()),
-      unwrapped: GooglePrivacyDlpV2UnwrappedCryptoKeyResponse.fromMap(
-          (map['unwrapped'] as Map).cast<String, dynamic>()),
+      kmsWrapped: GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse.fromMap((map['kmsWrapped'] as Map).cast<String, dynamic>()),
+      transient: GooglePrivacyDlpV2TransientCryptoKeyResponse.fromMap((map['transient'] as Map).cast<String, dynamic>()),
+      unwrapped: GooglePrivacyDlpV2UnwrappedCryptoKeyResponse.fromMap((map['unwrapped'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

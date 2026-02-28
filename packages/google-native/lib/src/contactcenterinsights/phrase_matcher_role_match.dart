@@ -18,3 +18,4 @@ enum PhraseMatcherRoleMatch {
     throw ArgumentError('Unknown PhraseMatcherRoleMatch value: $value');
   }
 }
+

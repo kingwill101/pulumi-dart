@@ -25,36 +25,31 @@ class GetFlowDialogflowV3beta1Args {
     String? languageCode,
     required String location,
     String? project,
-  })  : agentId = pulumi.Input.asInput<String>(agentId),
-        flowId = pulumi.Input.asInput<String>(flowId),
-        languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      agentId = pulumi.Input.asInput<String>(agentId),
+      flowId = pulumi.Input.asInput<String>(flowId),
+      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['agentId'] = agentId;
-    map['flowId'] = flowId;
-    final languageCodeValue = languageCode;
-    if (languageCodeValue != null) {
-      map['languageCode'] = languageCodeValue;
-    }
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'agentId': agentId,
+      'flowId': flowId,
+      'languageCode': ?languageCode,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetFlowDialogflowV3beta1Args.fromMap(Map<String, dynamic> map) {
     return GetFlowDialogflowV3beta1Args(
       agentId: map['agentId'] as String,
       flowId: map['flowId'] as String,
-      languageCode:
-          map['languageCode'] == null ? null : map['languageCode'] as String,
+      languageCode: map['languageCode'] == null ? null : map['languageCode'] as String,
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

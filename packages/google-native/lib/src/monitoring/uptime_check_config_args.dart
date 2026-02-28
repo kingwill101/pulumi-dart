@@ -18,48 +18,33 @@ import 'uptime_check_config_selected_regions_item.dart';
 class UptimeCheckConfigArgs {
   /// The type of checkers to use to execute the Uptime check.
   final pulumi.Input<UptimeCheckConfigCheckerType>? checkerType;
-
   /// The content that is expected to appear in the data returned by the target server against which the check is run. Currently, only the first entry in the content_matchers list is supported, and additional entries will be ignored. This field is optional and should only be specified if a content match is required as part of the/ Uptime check.
   final pulumi.Input<List<ContentMatcher>>? contentMatchers;
-
   /// A human-friendly name for the Uptime check configuration. The display name should be unique within a Cloud Monitoring Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
   final pulumi.Input<String>? displayName;
-
   /// Contains information needed to make an HTTP or HTTPS check.
   final pulumi.Input<HttpCheck>? httpCheck;
-
   /// The internal checkers that this check will egress from. If is_internal is true and this list is empty, the check will egress from all the InternalCheckers configured for the project that owns this UptimeCheckConfig.
   final pulumi.Input<List<InternalChecker>>? internalCheckers;
-
   /// If this is true, then checks are made only from the 'internal_checkers'. If it is false, then checks are made only from the 'selected_regions'. It is an error to provide 'selected_regions' when is_internal is true, or to provide 'internal_checkers' when is_internal is false.
   final pulumi.Input<bool>? isInternal;
-
   /// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are valid for this field: uptime_url, gce_instance, gae_app, aws_ec2_instance, aws_elb_load_balancer k8s_service servicedirectory_service cloud_run_revision
   final pulumi.Input<MonitoredResourceMonitoringV3>? monitoredResource;
-
   /// Identifier. A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
   final pulumi.Input<String>? name;
-
   /// How often, in seconds, the Uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 60s.
   final pulumi.Input<String>? period;
   final pulumi.Input<String>? project;
-
   /// The group resource associated with the configuration.
   final pulumi.Input<ResourceGroup>? resourceGroup;
-
   /// The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
-  final pulumi.Input<List<UptimeCheckConfigSelectedRegionsItem>>?
-      selectedRegions;
-
+  final pulumi.Input<List<UptimeCheckConfigSelectedRegionsItem>>? selectedRegions;
   /// Specifies a Synthetic Monitor to invoke.
   final pulumi.Input<SyntheticMonitorTarget>? syntheticMonitor;
-
   /// Contains information needed to make a TCP check.
   final pulumi.Input<TcpCheck>? tcpCheck;
-
   /// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required.
   final pulumi.Input<String>? timeout;
-
   /// User-supplied key/value data to be used for organizing and identifying the UptimeCheckConfig objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
   final pulumi.Input<Map<String, String>>? userLabels;
 
@@ -97,181 +82,64 @@ class UptimeCheckConfigArgs {
     TcpCheck? tcpCheck,
     String? timeout,
     Map<String, String>? userLabels,
-  })  : checkerType =
-            pulumi.Input.asOptionalInput<UptimeCheckConfigCheckerType>(
-                checkerType),
-        contentMatchers =
-            pulumi.Input.asOptionalInput<List<ContentMatcher>>(contentMatchers),
-        displayName = pulumi.Input.asOptionalInput<String>(displayName),
-        httpCheck = pulumi.Input.asOptionalInput<HttpCheck>(httpCheck),
-        internalCheckers = pulumi.Input.asOptionalInput<List<InternalChecker>>(
-            internalCheckers),
-        isInternal = pulumi.Input.asOptionalInput<bool>(isInternal),
-        monitoredResource =
-            pulumi.Input.asOptionalInput<MonitoredResourceMonitoringV3>(
-                monitoredResource),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        period = pulumi.Input.asOptionalInput<String>(period),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        resourceGroup =
-            pulumi.Input.asOptionalInput<ResourceGroup>(resourceGroup),
-        selectedRegions = pulumi.Input.asOptionalInput<
-            List<UptimeCheckConfigSelectedRegionsItem>>(selectedRegions),
-        syntheticMonitor = pulumi.Input.asOptionalInput<SyntheticMonitorTarget>(
-            syntheticMonitor),
-        tcpCheck = pulumi.Input.asOptionalInput<TcpCheck>(tcpCheck),
-        timeout = pulumi.Input.asOptionalInput<String>(timeout),
-        userLabels =
-            pulumi.Input.asOptionalInput<Map<String, String>>(userLabels);
+  }) :
+      checkerType = pulumi.Input.asOptionalInput<UptimeCheckConfigCheckerType>(checkerType),
+      contentMatchers = pulumi.Input.asOptionalInput<List<ContentMatcher>>(contentMatchers),
+      displayName = pulumi.Input.asOptionalInput<String>(displayName),
+      httpCheck = pulumi.Input.asOptionalInput<HttpCheck>(httpCheck),
+      internalCheckers = pulumi.Input.asOptionalInput<List<InternalChecker>>(internalCheckers),
+      isInternal = pulumi.Input.asOptionalInput<bool>(isInternal),
+      monitoredResource = pulumi.Input.asOptionalInput<MonitoredResourceMonitoringV3>(monitoredResource),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      period = pulumi.Input.asOptionalInput<String>(period),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      resourceGroup = pulumi.Input.asOptionalInput<ResourceGroup>(resourceGroup),
+      selectedRegions = pulumi.Input.asOptionalInput<List<UptimeCheckConfigSelectedRegionsItem>>(selectedRegions),
+      syntheticMonitor = pulumi.Input.asOptionalInput<SyntheticMonitorTarget>(syntheticMonitor),
+      tcpCheck = pulumi.Input.asOptionalInput<TcpCheck>(tcpCheck),
+      timeout = pulumi.Input.asOptionalInput<String>(timeout),
+      userLabels = pulumi.Input.asOptionalInput<Map<String, String>>(userLabels);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final checkerTypeValue = checkerType;
-    if (checkerTypeValue != null) {
-      map['checkerType'] = pulumi.Input.mapOptionalInputValue<
-          UptimeCheckConfigCheckerType,
-          String>(checkerTypeValue, (value) => value.value);
-    }
-    final contentMatchersValue = contentMatchers;
-    if (contentMatchersValue != null) {
-      map['contentMatchers'] = pulumi.Input.mapOptionalInputValue<
-              List<ContentMatcher>, List<Map<String, dynamic>>>(
-          contentMatchersValue,
-          (value) =>
-              pulumi.Input.encodeList<ContentMatcher, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
-    }
-    final displayNameValue = displayName;
-    if (displayNameValue != null) {
-      map['displayName'] = displayNameValue;
-    }
-    final httpCheckValue = httpCheck;
-    if (httpCheckValue != null) {
-      map['httpCheck'] =
-          pulumi.Input.mapOptionalInputValue<HttpCheck, Map<String, dynamic>>(
-              httpCheckValue, (value) => value.toMap());
-    }
-    final internalCheckersValue = internalCheckers;
-    if (internalCheckersValue != null) {
-      map['internalCheckers'] = pulumi.Input.mapOptionalInputValue<
-              List<InternalChecker>, List<Map<String, dynamic>>>(
-          internalCheckersValue,
-          (value) =>
-              pulumi.Input.encodeList<InternalChecker, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
-    }
-    final isInternalValue = isInternal;
-    if (isInternalValue != null) {
-      map['isInternal'] = isInternalValue;
-    }
-    final monitoredResourceValue = monitoredResource;
-    if (monitoredResourceValue != null) {
-      map['monitoredResource'] = pulumi.Input.mapOptionalInputValue<
-              MonitoredResourceMonitoringV3, Map<String, dynamic>>(
-          monitoredResourceValue, (value) => value.toMap());
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final periodValue = period;
-    if (periodValue != null) {
-      map['period'] = periodValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final resourceGroupValue = resourceGroup;
-    if (resourceGroupValue != null) {
-      map['resourceGroup'] = pulumi.Input.mapOptionalInputValue<ResourceGroup,
-          Map<String, dynamic>>(resourceGroupValue, (value) => value.toMap());
-    }
-    final selectedRegionsValue = selectedRegions;
-    if (selectedRegionsValue != null) {
-      map['selectedRegions'] = pulumi.Input.mapOptionalInputValue<
-              List<UptimeCheckConfigSelectedRegionsItem>, List<String>>(
-          selectedRegionsValue,
-          (value) => pulumi.Input.encodeList<
-              UptimeCheckConfigSelectedRegionsItem,
-              String>(value, (value) => value.value));
-    }
-    final syntheticMonitorValue = syntheticMonitor;
-    if (syntheticMonitorValue != null) {
-      map['syntheticMonitor'] = pulumi.Input.mapOptionalInputValue<
-              SyntheticMonitorTarget, Map<String, dynamic>>(
-          syntheticMonitorValue, (value) => value.toMap());
-    }
-    final tcpCheckValue = tcpCheck;
-    if (tcpCheckValue != null) {
-      map['tcpCheck'] =
-          pulumi.Input.mapOptionalInputValue<TcpCheck, Map<String, dynamic>>(
-              tcpCheckValue, (value) => value.toMap());
-    }
-    final timeoutValue = timeout;
-    if (timeoutValue != null) {
-      map['timeout'] = timeoutValue;
-    }
-    final userLabelsValue = userLabels;
-    if (userLabelsValue != null) {
-      map['userLabels'] = userLabelsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'checkerType': ?pulumi.Input.mapOptionalInputValue<UptimeCheckConfigCheckerType, String>(checkerType, (value) => value.value),
+      'contentMatchers': ?pulumi.Input.mapOptionalInputValue<List<ContentMatcher>, List<Map<String, dynamic>>>(contentMatchers, (value) => pulumi.Input.encodeList<ContentMatcher, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'displayName': ?displayName,
+      'httpCheck': ?pulumi.Input.mapOptionalInputValue<HttpCheck, Map<String, dynamic>>(httpCheck, (value) => value.toMap()),
+      'internalCheckers': ?pulumi.Input.mapOptionalInputValue<List<InternalChecker>, List<Map<String, dynamic>>>(internalCheckers, (value) => pulumi.Input.encodeList<InternalChecker, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'isInternal': ?isInternal,
+      'monitoredResource': ?pulumi.Input.mapOptionalInputValue<MonitoredResourceMonitoringV3, Map<String, dynamic>>(monitoredResource, (value) => value.toMap()),
+      'name': ?name,
+      'period': ?period,
+      'project': ?project,
+      'resourceGroup': ?pulumi.Input.mapOptionalInputValue<ResourceGroup, Map<String, dynamic>>(resourceGroup, (value) => value.toMap()),
+      'selectedRegions': ?pulumi.Input.mapOptionalInputValue<List<UptimeCheckConfigSelectedRegionsItem>, List<String>>(selectedRegions, (value) => pulumi.Input.encodeList<UptimeCheckConfigSelectedRegionsItem, String>(value, (value) => value.value)),
+      'syntheticMonitor': ?pulumi.Input.mapOptionalInputValue<SyntheticMonitorTarget, Map<String, dynamic>>(syntheticMonitor, (value) => value.toMap()),
+      'tcpCheck': ?pulumi.Input.mapOptionalInputValue<TcpCheck, Map<String, dynamic>>(tcpCheck, (value) => value.toMap()),
+      'timeout': ?timeout,
+      'userLabels': ?userLabels,
+    };
   }
 
   factory UptimeCheckConfigArgs.fromMap(Map<String, dynamic> map) {
     return UptimeCheckConfigArgs(
-      checkerType: map['checkerType'] == null
-          ? null
-          : UptimeCheckConfigCheckerType.fromValue(
-              map['checkerType'] as String),
-      contentMatchers: map['contentMatchers'] == null
-          ? null
-          : pulumi.Input.decodeList<ContentMatcher>(
-              map['contentMatchers'],
-              (value) => ContentMatcher.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      displayName:
-          map['displayName'] == null ? null : map['displayName'] as String,
-      httpCheck: map['httpCheck'] == null
-          ? null
-          : HttpCheck.fromMap(
-              (map['httpCheck'] as Map).cast<String, dynamic>()),
-      internalCheckers: map['internalCheckers'] == null
-          ? null
-          : pulumi.Input.decodeList<InternalChecker>(
-              map['internalCheckers'],
-              (value) => InternalChecker.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      checkerType: map['checkerType'] == null ? null : UptimeCheckConfigCheckerType.fromValue(map['checkerType'] as String),
+      contentMatchers: map['contentMatchers'] == null ? null : pulumi.Input.decodeList<ContentMatcher>(map['contentMatchers'], (value) => ContentMatcher.fromMap((value as Map).cast<String, dynamic>())),
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      httpCheck: map['httpCheck'] == null ? null : HttpCheck.fromMap((map['httpCheck'] as Map).cast<String, dynamic>()),
+      internalCheckers: map['internalCheckers'] == null ? null : pulumi.Input.decodeList<InternalChecker>(map['internalCheckers'], (value) => InternalChecker.fromMap((value as Map).cast<String, dynamic>())),
       isInternal: map['isInternal'] == null ? null : map['isInternal'] as bool,
-      monitoredResource: map['monitoredResource'] == null
-          ? null
-          : MonitoredResourceMonitoringV3.fromMap(
-              (map['monitoredResource'] as Map).cast<String, dynamic>()),
+      monitoredResource: map['monitoredResource'] == null ? null : MonitoredResourceMonitoringV3.fromMap((map['monitoredResource'] as Map).cast<String, dynamic>()),
       name: map['name'] == null ? null : map['name'] as String,
       period: map['period'] == null ? null : map['period'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      resourceGroup: map['resourceGroup'] == null
-          ? null
-          : ResourceGroup.fromMap(
-              (map['resourceGroup'] as Map).cast<String, dynamic>()),
-      selectedRegions: map['selectedRegions'] == null
-          ? null
-          : pulumi.Input.decodeList<UptimeCheckConfigSelectedRegionsItem>(
-              map['selectedRegions'],
-              (value) => UptimeCheckConfigSelectedRegionsItem.fromValue(
-                  value as String)),
-      syntheticMonitor: map['syntheticMonitor'] == null
-          ? null
-          : SyntheticMonitorTarget.fromMap(
-              (map['syntheticMonitor'] as Map).cast<String, dynamic>()),
-      tcpCheck: map['tcpCheck'] == null
-          ? null
-          : TcpCheck.fromMap((map['tcpCheck'] as Map).cast<String, dynamic>()),
+      resourceGroup: map['resourceGroup'] == null ? null : ResourceGroup.fromMap((map['resourceGroup'] as Map).cast<String, dynamic>()),
+      selectedRegions: map['selectedRegions'] == null ? null : pulumi.Input.decodeList<UptimeCheckConfigSelectedRegionsItem>(map['selectedRegions'], (value) => UptimeCheckConfigSelectedRegionsItem.fromValue(value as String)),
+      syntheticMonitor: map['syntheticMonitor'] == null ? null : SyntheticMonitorTarget.fromMap((map['syntheticMonitor'] as Map).cast<String, dynamic>()),
+      tcpCheck: map['tcpCheck'] == null ? null : TcpCheck.fromMap((map['tcpCheck'] as Map).cast<String, dynamic>()),
       timeout: map['timeout'] == null ? null : map['timeout'] as String,
-      userLabels: map['userLabels'] == null
-          ? null
-          : (map['userLabels'] as Map).cast<String, String>(),
+      userLabels: map['userLabels'] == null ? null : (map['userLabels'] as Map).cast<String, String>(),
     );
   }
 }
+

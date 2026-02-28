@@ -13,38 +13,27 @@ import 'virtual_machine.dart';
 class PolicyBasedRouteArgs {
   /// Optional. An optional description of this resource. Provide this field when you create the resource.
   final pulumi.Input<String>? description;
-
   /// The filter to match L4 traffic.
   final pulumi.Input<Filter> filter;
-
   /// Optional. The interconnect attachments that this policy-based route applies to.
   final pulumi.Input<InterconnectAttachment>? interconnectAttachment;
-
   /// User-defined labels.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Immutable. A unique name of the resource in the form of `projects/{project_number}/locations/global/PolicyBasedRoutes/{policy_based_route_id}`
   final pulumi.Input<String>? name;
-
   /// Fully-qualified URL of the network that this route applies to, for example: projects/my-project/global/networks/my-network.
   final pulumi.Input<String> network;
-
   /// Optional. The IP address of a global-access-enabled L4 ILB that is the next hop for matching packets. For this version, only nextHopIlbIp is supported.
   final pulumi.Input<String>? nextHopIlbIp;
-
   /// Optional. Other routes that will be referenced to determine the next hop of the packet.
   final pulumi.Input<PolicyBasedRouteNextHopOtherRoutes>? nextHopOtherRoutes;
-
   /// Required. Unique id for the policy-based route to create.
   final pulumi.Input<String> policyBasedRouteId;
-
   /// Optional. The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
   final pulumi.Input<int>? priority;
   final pulumi.Input<String>? project;
-
   /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   final pulumi.Input<String>? requestId;
-
   /// Optional. VM instances to which this policy-based route applies to.
   final pulumi.Input<VirtualMachine>? virtualMachine;
 
@@ -76,107 +65,55 @@ class PolicyBasedRouteArgs {
     String? project,
     String? requestId,
     VirtualMachine? virtualMachine,
-  })  : description = pulumi.Input.asOptionalInput<String>(description),
-        filter = pulumi.Input.asInput<Filter>(filter),
-        interconnectAttachment =
-            pulumi.Input.asOptionalInput<InterconnectAttachment>(
-                interconnectAttachment),
-        labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        network = pulumi.Input.asInput<String>(network),
-        nextHopIlbIp = pulumi.Input.asOptionalInput<String>(nextHopIlbIp),
-        nextHopOtherRoutes =
-            pulumi.Input.asOptionalInput<PolicyBasedRouteNextHopOtherRoutes>(
-                nextHopOtherRoutes),
-        policyBasedRouteId = pulumi.Input.asInput<String>(policyBasedRouteId),
-        priority = pulumi.Input.asOptionalInput<int>(priority),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        requestId = pulumi.Input.asOptionalInput<String>(requestId),
-        virtualMachine =
-            pulumi.Input.asOptionalInput<VirtualMachine>(virtualMachine);
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      filter = pulumi.Input.asInput<Filter>(filter),
+      interconnectAttachment = pulumi.Input.asOptionalInput<InterconnectAttachment>(interconnectAttachment),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      network = pulumi.Input.asInput<String>(network),
+      nextHopIlbIp = pulumi.Input.asOptionalInput<String>(nextHopIlbIp),
+      nextHopOtherRoutes = pulumi.Input.asOptionalInput<PolicyBasedRouteNextHopOtherRoutes>(nextHopOtherRoutes),
+      policyBasedRouteId = pulumi.Input.asInput<String>(policyBasedRouteId),
+      priority = pulumi.Input.asOptionalInput<int>(priority),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      requestId = pulumi.Input.asOptionalInput<String>(requestId),
+      virtualMachine = pulumi.Input.asOptionalInput<VirtualMachine>(virtualMachine);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    map['filter'] = pulumi.Input.mapInputValue<Filter, Map<String, dynamic>>(
-        filter, (value) => value.toMap());
-    final interconnectAttachmentValue = interconnectAttachment;
-    if (interconnectAttachmentValue != null) {
-      map['interconnectAttachment'] = pulumi.Input.mapOptionalInputValue<
-              InterconnectAttachment, Map<String, dynamic>>(
-          interconnectAttachmentValue, (value) => value.toMap());
-    }
-    final labelsValue = labels;
-    if (labelsValue != null) {
-      map['labels'] = labelsValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    map['network'] = network;
-    final nextHopIlbIpValue = nextHopIlbIp;
-    if (nextHopIlbIpValue != null) {
-      map['nextHopIlbIp'] = nextHopIlbIpValue;
-    }
-    final nextHopOtherRoutesValue = nextHopOtherRoutes;
-    if (nextHopOtherRoutesValue != null) {
-      map['nextHopOtherRoutes'] = pulumi.Input.mapOptionalInputValue<
-          PolicyBasedRouteNextHopOtherRoutes,
-          String>(nextHopOtherRoutesValue, (value) => value.value);
-    }
-    map['policyBasedRouteId'] = policyBasedRouteId;
-    final priorityValue = priority;
-    if (priorityValue != null) {
-      map['priority'] = priorityValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final requestIdValue = requestId;
-    if (requestIdValue != null) {
-      map['requestId'] = requestIdValue;
-    }
-    final virtualMachineValue = virtualMachine;
-    if (virtualMachineValue != null) {
-      map['virtualMachine'] = pulumi.Input.mapOptionalInputValue<VirtualMachine,
-          Map<String, dynamic>>(virtualMachineValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'filter': pulumi.Input.mapInputValue<Filter, Map<String, dynamic>>(filter, (value) => value.toMap()),
+      'interconnectAttachment': ?pulumi.Input.mapOptionalInputValue<InterconnectAttachment, Map<String, dynamic>>(interconnectAttachment, (value) => value.toMap()),
+      'labels': ?labels,
+      'name': ?name,
+      'network': network,
+      'nextHopIlbIp': ?nextHopIlbIp,
+      'nextHopOtherRoutes': ?pulumi.Input.mapOptionalInputValue<PolicyBasedRouteNextHopOtherRoutes, String>(nextHopOtherRoutes, (value) => value.value),
+      'policyBasedRouteId': policyBasedRouteId,
+      'priority': ?priority,
+      'project': ?project,
+      'requestId': ?requestId,
+      'virtualMachine': ?pulumi.Input.mapOptionalInputValue<VirtualMachine, Map<String, dynamic>>(virtualMachine, (value) => value.toMap()),
+    };
   }
 
   factory PolicyBasedRouteArgs.fromMap(Map<String, dynamic> map) {
     return PolicyBasedRouteArgs(
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       filter: Filter.fromMap((map['filter'] as Map).cast<String, dynamic>()),
-      interconnectAttachment: map['interconnectAttachment'] == null
-          ? null
-          : InterconnectAttachment.fromMap(
-              (map['interconnectAttachment'] as Map).cast<String, dynamic>()),
-      labels: map['labels'] == null
-          ? null
-          : (map['labels'] as Map).cast<String, String>(),
+      interconnectAttachment: map['interconnectAttachment'] == null ? null : InterconnectAttachment.fromMap((map['interconnectAttachment'] as Map).cast<String, dynamic>()),
+      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
       name: map['name'] == null ? null : map['name'] as String,
       network: map['network'] as String,
-      nextHopIlbIp:
-          map['nextHopIlbIp'] == null ? null : map['nextHopIlbIp'] as String,
-      nextHopOtherRoutes: map['nextHopOtherRoutes'] == null
-          ? null
-          : PolicyBasedRouteNextHopOtherRoutes.fromValue(
-              map['nextHopOtherRoutes'] as String),
+      nextHopIlbIp: map['nextHopIlbIp'] == null ? null : map['nextHopIlbIp'] as String,
+      nextHopOtherRoutes: map['nextHopOtherRoutes'] == null ? null : PolicyBasedRouteNextHopOtherRoutes.fromValue(map['nextHopOtherRoutes'] as String),
       policyBasedRouteId: map['policyBasedRouteId'] as String,
       priority: map['priority'] == null ? null : map['priority'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       requestId: map['requestId'] == null ? null : map['requestId'] as String,
-      virtualMachine: map['virtualMachine'] == null
-          ? null
-          : VirtualMachine.fromMap(
-              (map['virtualMachine'] as Map).cast<String, dynamic>()),
+      virtualMachine: map['virtualMachine'] == null ? null : VirtualMachine.fromMap((map['virtualMachine'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

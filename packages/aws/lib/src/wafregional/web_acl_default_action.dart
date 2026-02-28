@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WebAclDefaultAction {
   /// Specifies how you want AWS WAF Regional to respond to requests that match the settings in a ruleE.g., `ALLOW`, `BLOCK` or `COUNT`
   final String type;
@@ -11,9 +12,9 @@ class WebAclDefaultAction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory WebAclDefaultAction.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class WebAclDefaultAction {
     );
   }
 }
+

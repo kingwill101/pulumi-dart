@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RepositoryUri {
   /// (Output)
   /// API is the URI for API access.
   final String? api;
-
   /// (Output)
   /// git_https is the git HTTPS URI for git operations.
   final String? gitHttps;
-
   /// (Output)
   /// HTML is the URI for the user to view the repository in a browser.
   final String? html;
@@ -24,20 +23,11 @@ class RepositoryUri {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final apiValue = api;
-    if (apiValue != null) {
-      map['api'] = apiValue;
-    }
-    final gitHttpsValue = gitHttps;
-    if (gitHttpsValue != null) {
-      map['gitHttps'] = gitHttpsValue;
-    }
-    final htmlValue = html;
-    if (htmlValue != null) {
-      map['html'] = htmlValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'api': ?api,
+      'gitHttps': ?gitHttps,
+      'html': ?html,
+    };
   }
 
   factory RepositoryUri.fromMap(Map<String, dynamic> map) {
@@ -48,3 +38,4 @@ class RepositoryUri {
     );
   }
 }
+

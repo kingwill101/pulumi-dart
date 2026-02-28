@@ -14,20 +14,15 @@ class GooglePrivacyDlpV2SensitivityScore {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final scoreValue = score;
-    if (scoreValue != null) {
-      map['score'] = scoreValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'score': ?score == null ? null : score!.value,
+    };
   }
 
   factory GooglePrivacyDlpV2SensitivityScore.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2SensitivityScore(
-      score: map['score'] == null
-          ? null
-          : GooglePrivacyDlpV2SensitivityScoreScore.fromValue(
-              map['score'] as String),
+      score: map['score'] == null ? null : GooglePrivacyDlpV2SensitivityScoreScore.fromValue(map['score'] as String),
     );
   }
 }
+

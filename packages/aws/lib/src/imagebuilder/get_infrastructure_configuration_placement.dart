@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInfrastructureConfigurationPlacement {
   /// Availability Zone where your build and test instances will launch.
   final String availabilityZone;
-
   /// ID of the Dedicated Host on which build and test instances run.
   final String hostId;
-
   /// ARN of the host resource group in which to launch build and test instances.
   final String hostResourceGroupArn;
-
   /// Placement tenancy of the instance.
   final String tenancy;
 
@@ -26,16 +24,15 @@ class GetInfrastructureConfigurationPlacement {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['availabilityZone'] = availabilityZone;
-    map['hostId'] = hostId;
-    map['hostResourceGroupArn'] = hostResourceGroupArn;
-    map['tenancy'] = tenancy;
-    return map;
+    return <String, dynamic>{
+      'availabilityZone': availabilityZone,
+      'hostId': hostId,
+      'hostResourceGroupArn': hostResourceGroupArn,
+      'tenancy': tenancy,
+    };
   }
 
-  factory GetInfrastructureConfigurationPlacement.fromMap(
-      Map<String, dynamic> map) {
+  factory GetInfrastructureConfigurationPlacement.fromMap(Map<String, dynamic> map) {
     return GetInfrastructureConfigurationPlacement(
       availabilityZone: map['availabilityZone'] as String,
       hostId: map['hostId'] as String,
@@ -44,3 +41,4 @@ class GetInfrastructureConfigurationPlacement {
     );
   }
 }
+

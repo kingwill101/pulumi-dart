@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents a weekly schedule.
 class WeeklyScheduleResponse {
   /// Day of the week.
@@ -12,9 +13,9 @@ class WeeklyScheduleResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dayOfWeek'] = dayOfWeek;
-    return map;
+    return <String, dynamic>{
+      'dayOfWeek': dayOfWeek,
+    };
   }
 
   factory WeeklyScheduleResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class WeeklyScheduleResponse {
     );
   }
 }
+

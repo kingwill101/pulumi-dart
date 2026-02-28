@@ -16,17 +16,15 @@ class GetTypeProviderArgs {
   GetTypeProviderArgs({
     String? project,
     required String typeProvider,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        typeProvider = pulumi.Input.asInput<String>(typeProvider);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      typeProvider = pulumi.Input.asInput<String>(typeProvider);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['typeProvider'] = typeProvider;
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'typeProvider': typeProvider,
+    };
   }
 
   factory GetTypeProviderArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetTypeProviderArgs {
     );
   }
 }
+

@@ -753,36 +753,26 @@ import 'listener_default_action.dart';
 class Listener extends pulumi.CustomResource {
   /// ARN of the listener.
   late final pulumi.Output<String> arn;
-
   /// Date and time that the listener was created, specified in ISO-8601 format.
   late final pulumi.Output<String> createdAt;
-
   /// Default action block for the default listener rule. Default action blocks are defined below.
   late final pulumi.Output<ListenerDefaultAction> defaultAction;
   late final pulumi.Output<String> lastUpdatedAt;
-
   /// Standalone ID of the listener, e.g. `listener-0a1b2c3d4e5f6g`.
   late final pulumi.Output<String> listenerId;
-
   /// Name of the listener. A listener name must be unique within a service. Valid characters are a-z, 0-9, and hyphens (-). You can't use a hyphen as the first or last character, or immediately after another hyphen.
   late final pulumi.Output<String> name;
-
   /// Listener port. You can specify a value from 1 to 65535. If `port` is not specified and `protocol` is HTTP, the value will default to 80. If `port` is not specified and `protocol` is HTTPS, the value will default to 443.
   late final pulumi.Output<int> port;
-
   /// Protocol for the listener. Supported values are `HTTP`, `HTTPS` or `TLS_PASSTHROUGH`
   late final pulumi.Output<String> protocol;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Amazon Resource Name (ARN) of the VPC Lattice service. You must include either the `service_arn` or `service_identifier` arguments.
   late final pulumi.Output<String> serviceArn;
-
   /// ID of the VPC Lattice service. You must include either the `service_arn` or `service_identifier` arguments.
   /// > **NOTE:** You must specify one of the following arguments: `service_arn` or `service_identifier`.
   late final pulumi.Output<String> serviceIdentifier;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;

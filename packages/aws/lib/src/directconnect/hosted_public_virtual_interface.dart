@@ -163,41 +163,29 @@ import 'hosted_public_virtual_interface_args.dart';
 class HostedPublicVirtualInterface extends pulumi.CustomResource {
   /// The address family for the BGP peer. `ipv4 ` or `ipv6`.
   late final pulumi.Output<String> addressFamily;
-
   /// The IPv4 CIDR address to use to send traffic to Amazon. Required for IPv4 BGP peers.
   late final pulumi.Output<String> amazonAddress;
   late final pulumi.Output<String> amazonSideAsn;
-
   /// The ARN of the virtual interface.
   late final pulumi.Output<String> arn;
-
   /// The Direct Connect endpoint on which the virtual interface terminates.
   late final pulumi.Output<String> awsDevice;
-
   /// The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
   late final pulumi.Output<int> bgpAsn;
-
   /// The authentication key for BGP configuration.
   late final pulumi.Output<String> bgpAuthKey;
-
   /// The ID of the Direct Connect connection (or LAG) on which to create the virtual interface.
   late final pulumi.Output<String> connectionId;
-
   /// The IPv4 CIDR destination address to which Amazon should send traffic. Required for IPv4 BGP peers.
   late final pulumi.Output<String> customerAddress;
-
   /// The name for the virtual interface.
   late final pulumi.Output<String> name;
-
   /// The AWS account that will own the new virtual interface.
   late final pulumi.Output<String> ownerAccountId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A list of routes to be advertised to the AWS network in this region.
   late final pulumi.Output<List<String>> routeFilterPrefixes;
-
   /// The VLAN ID.
   late final pulumi.Output<int> vlan;
 
@@ -227,8 +215,7 @@ class HostedPublicVirtualInterface extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     this.ownerAccountId = registerOutput<String>('ownerAccountId');
     this.region = registerOutput<String>('region');
-    this.routeFilterPrefixes =
-        registerOutput<List<String>>('routeFilterPrefixes');
+    this.routeFilterPrefixes = registerOutput<List<String>>('routeFilterPrefixes');
     this.vlan = registerOutput<int>('vlan');
   }
 }

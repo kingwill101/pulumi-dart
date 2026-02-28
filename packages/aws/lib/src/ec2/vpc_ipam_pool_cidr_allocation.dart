@@ -519,29 +519,21 @@ import 'vpc_ipam_pool_cidr_allocation_args.dart';
 class VpcIpamPoolCidrAllocation extends pulumi.CustomResource {
   /// The CIDR you want to assign to the pool.
   late final pulumi.Output<String> cidr;
-
   /// The description for the allocation.
   late final pulumi.Output<String?> description;
-
   /// Exclude a particular CIDR range from being returned by the pool.
   late final pulumi.Output<List<String>?> disallowedCidrs;
   late final pulumi.Output<String> ipamPoolAllocationId;
-
   /// The ID of the pool to which you want to assign a CIDR.
   late final pulumi.Output<String> ipamPoolId;
-
   /// The netmask length of the CIDR you would like to allocate to the IPAM pool. Valid Values: `0-128`.
   late final pulumi.Output<int> netmaskLength;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ID of the resource.
   late final pulumi.Output<String> resourceId;
-
   /// The owner of the resource.
   late final pulumi.Output<String> resourceOwner;
-
   /// The type of the resource.
   late final pulumi.Output<String> resourceType;
 

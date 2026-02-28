@@ -7,68 +7,47 @@ import 'route_warnings_item_response_compute_v1.dart';
 class RouteComputeV1 extends pulumi.CustomResource {
   /// AS path.
   late final pulumi.Output<List<RouteAsPathResponseComputeV1>> asPaths;
-
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
-
   /// An optional description of this resource. Provide this field when you create the resource.
   late final pulumi.Output<String> description;
-
   /// The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported. Must specify an IPv4 range (e.g. 192.0.2.0/24) or an IPv6 range in RFC 4291 format (e.g. 2001:db8::/32). IPv6 range will be displayed using RFC 5952 compressed format.
   late final pulumi.Output<String> destRange;
-
   /// Type of this resource. Always compute#routes for Route resources.
   late final pulumi.Output<String> kind;
-
   /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
   late final pulumi.Output<String> name;
-
   /// Fully-qualified URL of the network that this route applies to.
   late final pulumi.Output<String> network;
-
   /// The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL: projects/ project/global/gateways/default-internet-gateway
   late final pulumi.Output<String> nextHopGateway;
-
   /// The full resource name of the Network Connectivity Center hub that will handle matching packets.
   late final pulumi.Output<String> nextHopHub;
-
   /// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/compute/v1/projects/project/regions/region /forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule
   late final pulumi.Output<String> nextHopIlb;
-
   /// The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
   late final pulumi.Output<String> nextHopInstance;
-
   /// The network IP address of an instance that should handle matching packets. Both IPv6 address and IPv4 addresses are supported. Must specify an IPv4 address in dot-decimal notation (e.g. 192.0.2.99) or an IPv6 address in RFC 4291 format (e.g. 2001:db8::2d9:51:0:0 or 2001:db8:0:0:2d9:51:0:0). IPv6 addresses will be displayed using RFC 5952 compressed format (e.g. 2001:db8::2d9:51:0:0). Should never be an IPv4-mapped IPv6 address.
   late final pulumi.Output<String> nextHopIp;
-
   /// The URL of the local network if it should handle matching packets.
   late final pulumi.Output<String> nextHopNetwork;
-
   /// The network peering name that should handle matching packets, which should conform to RFC1035.
   late final pulumi.Output<String> nextHopPeering;
-
   /// The URL to a VpnTunnel that should handle matching packets.
   late final pulumi.Output<String> nextHopVpnTunnel;
-
   /// The priority of this route. Priority is used to break ties in cases where there is more than one matching route of equal prefix length. In cases where multiple routes have equal prefix length, the one with the lowest-numbered priority value wins. The default value is `1000`. The priority value must be from `0` to `65535`, inclusive.
   late final pulumi.Output<int> priority;
   late final pulumi.Output<String> project;
-
   /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   late final pulumi.Output<String?> requestId;
-
   /// [Output only] The status of the route.
   late final pulumi.Output<String> routeStatus;
-
   /// The type of this route, which can be one of the following values: - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers - 'SUBNET' for a route from a subnet of the VPC - 'BGP' for a route learned from a BGP peer of this router - 'STATIC' for a static route
   late final pulumi.Output<String> routeType;
-
   /// Server-defined fully-qualified URL for this resource.
   late final pulumi.Output<String> selfLink;
-
   /// A list of instance tags to which this route applies.
   late final pulumi.Output<List<String>> tags;
-
   /// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
   late final pulumi.Output<List<RouteWarningsItemResponseComputeV1>> warnings;
 
@@ -86,8 +65,7 @@ class RouteComputeV1 extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.asPaths =
-        registerOutput<List<RouteAsPathResponseComputeV1>>('asPaths');
+    this.asPaths = registerOutput<List<RouteAsPathResponseComputeV1>>('asPaths');
     this.creationTimestamp = registerOutput<String>('creationTimestamp');
     this.description = registerOutput<String>('description');
     this.destRange = registerOutput<String>('destRange');
@@ -109,7 +87,6 @@ class RouteComputeV1 extends pulumi.CustomResource {
     this.routeType = registerOutput<String>('routeType');
     this.selfLink = registerOutput<String>('selfLink');
     this.tags = registerOutput<List<String>>('tags');
-    this.warnings =
-        registerOutput<List<RouteWarningsItemResponseComputeV1>>('warnings');
+    this.warnings = registerOutput<List<RouteWarningsItemResponseComputeV1>>('warnings');
   }
 }

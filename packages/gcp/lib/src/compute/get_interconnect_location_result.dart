@@ -1,39 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getInterconnectLocation.
 class GetInterconnectLocationResult {
   /// The postal address of the Point of Presence.
   final String address;
-
   /// The availability zone for this InterconnectLocation.
   final String availabilityZone;
-
   /// The city for this location.
   final String city;
-
   /// The continent for this location.
   final String continent;
-
   /// A textual description of the resource.
   final String description;
-
   /// The name of the provider for this facility.
   final String facilityProvider;
-
   /// A provider-assigned Identifier for this facility.
   final String facilityProviderFacilityId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
-
   /// The PeeringDB facility ID for this facility.
   final String peeringdbFacilityId;
   final String project;
-
   /// The URI of the created resource.
   final String selfLink;
-
   /// The status of this InterconnectLocation.
   final String status;
 
@@ -68,21 +59,21 @@ class GetInterconnectLocationResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['address'] = address;
-    map['availabilityZone'] = availabilityZone;
-    map['city'] = city;
-    map['continent'] = continent;
-    map['description'] = description;
-    map['facilityProvider'] = facilityProvider;
-    map['facilityProviderFacilityId'] = facilityProviderFacilityId;
-    map['id'] = id;
-    map['name'] = name;
-    map['peeringdbFacilityId'] = peeringdbFacilityId;
-    map['project'] = project;
-    map['selfLink'] = selfLink;
-    map['status'] = status;
-    return map;
+    return <String, dynamic>{
+      'address': address,
+      'availabilityZone': availabilityZone,
+      'city': city,
+      'continent': continent,
+      'description': description,
+      'facilityProvider': facilityProvider,
+      'facilityProviderFacilityId': facilityProviderFacilityId,
+      'id': id,
+      'name': name,
+      'peeringdbFacilityId': peeringdbFacilityId,
+      'project': project,
+      'selfLink': selfLink,
+      'status': status,
+    };
   }
 
   factory GetInterconnectLocationResult.fromMap(Map<String, dynamic> map) {
@@ -103,3 +94,4 @@ class GetInterconnectLocationResult {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding {
   /// The relative resource name of the binauthz platform policy to audit. GKE
   /// platform policies have the following format:
@@ -13,18 +14,15 @@ class FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
-  factory FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding.fromMap(
-      Map<String, dynamic> map) {
+  factory FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding.fromMap(Map<String, dynamic> map) {
     return FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding(
       name: map['name'] == null ? null : map['name'] as String,
     );
   }
 }
+

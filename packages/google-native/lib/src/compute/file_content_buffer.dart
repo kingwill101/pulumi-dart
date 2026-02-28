@@ -5,7 +5,6 @@ import 'file_content_buffer_file_type.dart';
 class FileContentBuffer {
   /// The raw content in the secure keys file.
   final String? content;
-
   /// The file type of source file.
   final FileContentBufferFileType? fileType;
 
@@ -18,24 +17,17 @@ class FileContentBuffer {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final contentValue = content;
-    if (contentValue != null) {
-      map['content'] = contentValue;
-    }
-    final fileTypeValue = fileType;
-    if (fileTypeValue != null) {
-      map['fileType'] = fileTypeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'content': ?content,
+      'fileType': ?fileType == null ? null : fileType!.value,
+    };
   }
 
   factory FileContentBuffer.fromMap(Map<String, dynamic> map) {
     return FileContentBuffer(
       content: map['content'] == null ? null : map['content'] as String,
-      fileType: map['fileType'] == null
-          ? null
-          : FileContentBufferFileType.fromValue(map['fileType'] as String),
+      fileType: map['fileType'] == null ? null : FileContentBufferFileType.fromValue(map['fileType'] as String),
     );
   }
 }
+

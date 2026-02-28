@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetAuthorityConfigSubjectKeyId {
   /// The value of the KeyId in lowercase hexadecimal.
   final String keyId;
@@ -11,9 +12,9 @@ class GetAuthorityConfigSubjectKeyId {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['keyId'] = keyId;
-    return map;
+    return <String, dynamic>{
+      'keyId': keyId,
+    };
   }
 
   factory GetAuthorityConfigSubjectKeyId.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GetAuthorityConfigSubjectKeyId {
     );
   }
 }
+

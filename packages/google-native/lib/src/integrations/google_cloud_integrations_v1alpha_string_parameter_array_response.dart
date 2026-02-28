@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// This message only contains a field of string array.
 class GoogleCloudIntegrationsV1alphaStringParameterArrayResponse {
   /// String array.
@@ -12,15 +13,15 @@ class GoogleCloudIntegrationsV1alphaStringParameterArrayResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['stringValues'] = stringValues;
-    return map;
+    return <String, dynamic>{
+      'stringValues': stringValues,
+    };
   }
 
-  factory GoogleCloudIntegrationsV1alphaStringParameterArrayResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaStringParameterArrayResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaStringParameterArrayResponse(
       stringValues: (map['stringValues'] as List).cast<String>(),
     );
   }
 }
+

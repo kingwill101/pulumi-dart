@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DatabaseAclConfiguration {
   /// Amazon S3 canned ACL that Athena should specify when storing query results. Valid value is `BUCKET_OWNER_FULL_CONTROL`.
   ///
@@ -13,9 +14,9 @@ class DatabaseAclConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['s3AclOption'] = s3AclOption;
-    return map;
+    return <String, dynamic>{
+      's3AclOption': s3AclOption,
+    };
   }
 
   factory DatabaseAclConfiguration.fromMap(Map<String, dynamic> map) {
@@ -24,3 +25,4 @@ class DatabaseAclConfiguration {
     );
   }
 }
+

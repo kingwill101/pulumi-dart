@@ -9,15 +9,11 @@ class AppVersionSnapshotGuardrailAction {
   /// (Output)
   /// The agent will immediately respond with a generative answer.
   /// Structure is documented below.
-  final List<AppVersionSnapshotGuardrailActionGenerativeAnswer>?
-      generativeAnswers;
-
+  final List<AppVersionSnapshotGuardrailActionGenerativeAnswer>? generativeAnswers;
   /// (Output)
   /// The agent will immediately respond with a preconfigured response.
   /// Structure is documented below.
-  final List<AppVersionSnapshotGuardrailActionRespondImmediately>?
-      respondImmediatelies;
-
+  final List<AppVersionSnapshotGuardrailActionRespondImmediately>? respondImmediatelies;
   /// (Output)
   /// The agent will transfer the conversation to a different agent.
   /// Structure is documented below.
@@ -34,55 +30,19 @@ class AppVersionSnapshotGuardrailAction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final generativeAnswersValue = generativeAnswers;
-    if (generativeAnswersValue != null) {
-      map['generativeAnswers'] = pulumi.Input.encodeList<
-              AppVersionSnapshotGuardrailActionGenerativeAnswer,
-              Map<String, dynamic>>(
-          generativeAnswersValue, (value) => value.toMap());
-    }
-    final respondImmediateliesValue = respondImmediatelies;
-    if (respondImmediateliesValue != null) {
-      map['respondImmediatelies'] = pulumi.Input.encodeList<
-              AppVersionSnapshotGuardrailActionRespondImmediately,
-              Map<String, dynamic>>(
-          respondImmediateliesValue, (value) => value.toMap());
-    }
-    final transferAgentsValue = transferAgents;
-    if (transferAgentsValue != null) {
-      map['transferAgents'] = pulumi.Input.encodeList<
-          AppVersionSnapshotGuardrailActionTransferAgent,
-          Map<String, dynamic>>(transferAgentsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'generativeAnswers': ?generativeAnswers == null ? null : pulumi.Input.encodeList<AppVersionSnapshotGuardrailActionGenerativeAnswer, Map<String, dynamic>>(generativeAnswers!, (value) => value.toMap()),
+      'respondImmediatelies': ?respondImmediatelies == null ? null : pulumi.Input.encodeList<AppVersionSnapshotGuardrailActionRespondImmediately, Map<String, dynamic>>(respondImmediatelies!, (value) => value.toMap()),
+      'transferAgents': ?transferAgents == null ? null : pulumi.Input.encodeList<AppVersionSnapshotGuardrailActionTransferAgent, Map<String, dynamic>>(transferAgents!, (value) => value.toMap()),
+    };
   }
 
   factory AppVersionSnapshotGuardrailAction.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotGuardrailAction(
-      generativeAnswers: map['generativeAnswers'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  AppVersionSnapshotGuardrailActionGenerativeAnswer>(
-              map['generativeAnswers'],
-              (value) =>
-                  AppVersionSnapshotGuardrailActionGenerativeAnswer.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      respondImmediatelies: map['respondImmediatelies'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  AppVersionSnapshotGuardrailActionRespondImmediately>(
-              map['respondImmediatelies'],
-              (value) =>
-                  AppVersionSnapshotGuardrailActionRespondImmediately.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      transferAgents: map['transferAgents'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  AppVersionSnapshotGuardrailActionTransferAgent>(
-              map['transferAgents'],
-              (value) => AppVersionSnapshotGuardrailActionTransferAgent.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      generativeAnswers: map['generativeAnswers'] == null ? null : pulumi.Input.decodeList<AppVersionSnapshotGuardrailActionGenerativeAnswer>(map['generativeAnswers'], (value) => AppVersionSnapshotGuardrailActionGenerativeAnswer.fromMap((value as Map).cast<String, dynamic>())),
+      respondImmediatelies: map['respondImmediatelies'] == null ? null : pulumi.Input.decodeList<AppVersionSnapshotGuardrailActionRespondImmediately>(map['respondImmediatelies'], (value) => AppVersionSnapshotGuardrailActionRespondImmediately.fromMap((value as Map).cast<String, dynamic>())),
+      transferAgents: map['transferAgents'] == null ? null : pulumi.Input.decodeList<AppVersionSnapshotGuardrailActionTransferAgent>(map['transferAgents'], (value) => AppVersionSnapshotGuardrailActionTransferAgent.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

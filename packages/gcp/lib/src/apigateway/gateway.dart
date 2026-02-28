@@ -45,36 +45,27 @@ class Gateway extends pulumi.CustomResource {
   /// When changing api configs please ensure the new config is a new resource and the
   /// lifecycle rule `create_before_destroy` is set.
   late final pulumi.Output<String> apiConfig;
-
   /// The default API Gateway host name of the form {gatewayId}-{hash}.{region_code}.gateway.dev.
   late final pulumi.Output<String> defaultHostname;
-
   /// A user-visible name for the API.
   late final pulumi.Output<String> displayName;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
   late final pulumi.Output<String> gatewayId;
-
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Resource name of the Gateway. Format: projects/{project}/locations/{region}/gateways/{gateway}
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The region of the gateway for the API.
   late final pulumi.Output<String> region;
 
@@ -95,8 +86,7 @@ class Gateway extends pulumi.CustomResource {
     this.apiConfig = registerOutput<String>('apiConfig');
     this.defaultHostname = registerOutput<String>('defaultHostname');
     this.displayName = registerOutput<String>('displayName');
-    this.effectiveLabels =
-        registerOutput<Map<String, String>>('effectiveLabels');
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     this.gatewayId = registerOutput<String>('gatewayId');
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');

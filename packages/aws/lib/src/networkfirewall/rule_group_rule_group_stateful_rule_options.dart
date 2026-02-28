@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RuleGroupRuleGroupStatefulRuleOptions {
   /// Indicates how to manage the order of the rule evaluation for the rule group. Default value: `DEFAULT_ACTION_ORDER`. Valid values: `DEFAULT_ACTION_ORDER`, `STRICT_ORDER`.
   final String ruleOrder;
@@ -11,15 +12,15 @@ class RuleGroupRuleGroupStatefulRuleOptions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ruleOrder'] = ruleOrder;
-    return map;
+    return <String, dynamic>{
+      'ruleOrder': ruleOrder,
+    };
   }
 
-  factory RuleGroupRuleGroupStatefulRuleOptions.fromMap(
-      Map<String, dynamic> map) {
+  factory RuleGroupRuleGroupStatefulRuleOptions.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleGroupStatefulRuleOptions(
       ruleOrder: map['ruleOrder'] as String,
     );
   }
 }
+

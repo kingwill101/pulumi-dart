@@ -749,23 +749,18 @@ import 'external_vpn_gateway_interface.dart';
 class ExternalVpnGateway extends pulumi.CustomResource {
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// A list of interfaces on this external VPN gateway.
   /// Structure is documented below.
   late final pulumi.Output<List<ExternalVpnGatewayInterface>?> interfaces;
-
   /// The fingerprint used for optimistic locking of this resource.  Used
   /// internally during updates.
   late final pulumi.Output<String> labelFingerprint;
-
   /// Labels for the external VPN gateway resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -774,19 +769,15 @@ class ExternalVpnGateway extends pulumi.CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Indicates the redundancy type of this external VPN gateway
   /// Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
   late final pulumi.Output<String?> redundancyType;
-
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
 
@@ -805,10 +796,8 @@ class ExternalVpnGateway extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.description = registerOutput<String?>('description');
-    this.effectiveLabels =
-        registerOutput<Map<String, String>>('effectiveLabels');
-    this.interfaces =
-        registerOutput<List<ExternalVpnGatewayInterface>?>('interfaces');
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    this.interfaces = registerOutput<List<ExternalVpnGatewayInterface>?>('interfaces');
     this.labelFingerprint = registerOutput<String>('labelFingerprint');
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');

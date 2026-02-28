@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for the Sql Script content.
 class GoogleCloudDataplexV1ContentSqlScriptResponse {
   /// Query Engine to be used for the Sql Query.
@@ -12,15 +13,15 @@ class GoogleCloudDataplexV1ContentSqlScriptResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['engine'] = engine;
-    return map;
+    return <String, dynamic>{
+      'engine': engine,
+    };
   }
 
-  factory GoogleCloudDataplexV1ContentSqlScriptResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1ContentSqlScriptResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1ContentSqlScriptResponse(
       engine: map['engine'] as String,
     );
   }
 }
+

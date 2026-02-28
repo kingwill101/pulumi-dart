@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppTimeZoneSettings {
   /// The time zone of the app from the time zone database, e.g., America/Los_Angeles, Europe/Paris.
   final String? timeZone;
@@ -11,12 +12,9 @@ class AppTimeZoneSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final timeZoneValue = timeZone;
-    if (timeZoneValue != null) {
-      map['timeZone'] = timeZoneValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'timeZone': ?timeZone,
+    };
   }
 
   factory AppTimeZoneSettings.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class AppTimeZoneSettings {
     );
   }
 }
+

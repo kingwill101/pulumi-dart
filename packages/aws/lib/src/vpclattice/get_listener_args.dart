@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetListenerArgs {
   /// ID or Amazon Resource Name (ARN) of the listener
   final pulumi.Input<String> listenerIdentifier;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// ID or Amazon Resource Name (ARN) of the service network
   final pulumi.Input<String> serviceIdentifier;
-
   /// List of tags associated with the listener.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -29,24 +26,19 @@ class GetListenerArgs {
     String? region,
     required String serviceIdentifier,
     Map<String, String>? tags,
-  })  : listenerIdentifier = pulumi.Input.asInput<String>(listenerIdentifier),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        serviceIdentifier = pulumi.Input.asInput<String>(serviceIdentifier),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      listenerIdentifier = pulumi.Input.asInput<String>(listenerIdentifier),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      serviceIdentifier = pulumi.Input.asInput<String>(serviceIdentifier),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['listenerIdentifier'] = listenerIdentifier;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['serviceIdentifier'] = serviceIdentifier;
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'listenerIdentifier': listenerIdentifier,
+      'region': ?region,
+      'serviceIdentifier': serviceIdentifier,
+      'tags': ?tags,
+    };
   }
 
   factory GetListenerArgs.fromMap(Map<String, dynamic> map) {
@@ -54,9 +46,8 @@ class GetListenerArgs {
       listenerIdentifier: map['listenerIdentifier'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       serviceIdentifier: map['serviceIdentifier'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CustomRoutingListenerPortRange {
   /// The first port in the range of ports, inclusive.
   final int? fromPort;
-
   /// The last port in the range of ports, inclusive.
   final int? toPort;
 
@@ -16,16 +16,10 @@ class CustomRoutingListenerPortRange {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final fromPortValue = fromPort;
-    if (fromPortValue != null) {
-      map['fromPort'] = fromPortValue;
-    }
-    final toPortValue = toPort;
-    if (toPortValue != null) {
-      map['toPort'] = toPortValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'fromPort': ?fromPort,
+      'toPort': ?toPort,
+    };
   }
 
   factory CustomRoutingListenerPortRange.fromMap(Map<String, dynamic> map) {
@@ -35,3 +29,4 @@ class CustomRoutingListenerPortRange {
     );
   }
 }
+

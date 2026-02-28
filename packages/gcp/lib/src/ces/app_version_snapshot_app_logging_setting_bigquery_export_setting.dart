@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppVersionSnapshotAppLoggingSettingBigqueryExportSetting {
   /// (Output)
   /// The BigQuery dataset to export the data to.
   final String? dataset;
-
   /// (Output)
   /// Whether the guardrail is enabled.
   final bool? enabled;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final String? project;
@@ -24,24 +23,14 @@ class AppVersionSnapshotAppLoggingSettingBigqueryExportSetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final datasetValue = dataset;
-    if (datasetValue != null) {
-      map['dataset'] = datasetValue;
-    }
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'dataset': ?dataset,
+      'enabled': ?enabled,
+      'project': ?project,
+    };
   }
 
-  factory AppVersionSnapshotAppLoggingSettingBigqueryExportSetting.fromMap(
-      Map<String, dynamic> map) {
+  factory AppVersionSnapshotAppLoggingSettingBigqueryExportSetting.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppLoggingSettingBigqueryExportSetting(
       dataset: map['dataset'] == null ? null : map['dataset'] as String,
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
@@ -49,3 +38,4 @@ class AppVersionSnapshotAppLoggingSettingBigqueryExportSetting {
     );
   }
 }
+

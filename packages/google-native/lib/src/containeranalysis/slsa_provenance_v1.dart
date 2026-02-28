@@ -17,28 +17,17 @@ class SlsaProvenanceV1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final buildDefinitionValue = buildDefinition;
-    if (buildDefinitionValue != null) {
-      map['buildDefinition'] = buildDefinitionValue.toMap();
-    }
-    final runDetailsValue = runDetails;
-    if (runDetailsValue != null) {
-      map['runDetails'] = runDetailsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'buildDefinition': ?buildDefinition == null ? null : buildDefinition!.toMap(),
+      'runDetails': ?runDetails == null ? null : runDetails!.toMap(),
+    };
   }
 
   factory SlsaProvenanceV1.fromMap(Map<String, dynamic> map) {
     return SlsaProvenanceV1(
-      buildDefinition: map['buildDefinition'] == null
-          ? null
-          : BuildDefinition.fromMap(
-              (map['buildDefinition'] as Map).cast<String, dynamic>()),
-      runDetails: map['runDetails'] == null
-          ? null
-          : RunDetails.fromMap(
-              (map['runDetails'] as Map).cast<String, dynamic>()),
+      buildDefinition: map['buildDefinition'] == null ? null : BuildDefinition.fromMap((map['buildDefinition'] as Map).cast<String, dynamic>()),
+      runDetails: map['runDetails'] == null ? null : RunDetails.fromMap((map['runDetails'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

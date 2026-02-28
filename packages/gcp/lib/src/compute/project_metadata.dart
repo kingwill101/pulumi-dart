@@ -267,7 +267,6 @@ class ProjectMetadata extends pulumi.CustomResource {
   ///
   /// - - -
   late final pulumi.Output<Map<String, String>> metadata;
-
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   late final pulumi.Output<String> project;

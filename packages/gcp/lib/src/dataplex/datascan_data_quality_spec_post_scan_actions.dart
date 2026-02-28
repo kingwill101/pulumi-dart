@@ -7,11 +7,9 @@ class DatascanDataQualitySpecPostScanActions {
   /// If set, results will be exported to the provided BigQuery table.
   /// Structure is documented below.
   final DatascanDataQualitySpecPostScanActionsBigqueryExport? bigqueryExport;
-
   /// The configuration of notification report post scan action.
   /// Structure is documented below.
-  final DatascanDataQualitySpecPostScanActionsNotificationReport?
-      notificationReport;
+  final DatascanDataQualitySpecPostScanActionsNotificationReport? notificationReport;
 
   /// Creates a new [DatascanDataQualitySpecPostScanActions].
   /// [bigqueryExport] If set, results will be exported to the provided BigQuery table.
@@ -22,29 +20,17 @@ class DatascanDataQualitySpecPostScanActions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final bigqueryExportValue = bigqueryExport;
-    if (bigqueryExportValue != null) {
-      map['bigqueryExport'] = bigqueryExportValue.toMap();
-    }
-    final notificationReportValue = notificationReport;
-    if (notificationReportValue != null) {
-      map['notificationReport'] = notificationReportValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'bigqueryExport': ?bigqueryExport == null ? null : bigqueryExport!.toMap(),
+      'notificationReport': ?notificationReport == null ? null : notificationReport!.toMap(),
+    };
   }
 
-  factory DatascanDataQualitySpecPostScanActions.fromMap(
-      Map<String, dynamic> map) {
+  factory DatascanDataQualitySpecPostScanActions.fromMap(Map<String, dynamic> map) {
     return DatascanDataQualitySpecPostScanActions(
-      bigqueryExport: map['bigqueryExport'] == null
-          ? null
-          : DatascanDataQualitySpecPostScanActionsBigqueryExport.fromMap(
-              (map['bigqueryExport'] as Map).cast<String, dynamic>()),
-      notificationReport: map['notificationReport'] == null
-          ? null
-          : DatascanDataQualitySpecPostScanActionsNotificationReport.fromMap(
-              (map['notificationReport'] as Map).cast<String, dynamic>()),
+      bigqueryExport: map['bigqueryExport'] == null ? null : DatascanDataQualitySpecPostScanActionsBigqueryExport.fromMap((map['bigqueryExport'] as Map).cast<String, dynamic>()),
+      notificationReport: map['notificationReport'] == null ? null : DatascanDataQualitySpecPostScanActionsNotificationReport.fromMap((map['notificationReport'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -6,8 +6,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketo {
   final String? accessToken;
   final String clientId;
   final String clientSecret;
-  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketoOauthRequest?
-      oauthRequest;
+  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketoOauthRequest? oauthRequest;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketo].
   /// [accessToken] Optional.
@@ -22,31 +21,21 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final accessTokenValue = accessToken;
-    if (accessTokenValue != null) {
-      map['accessToken'] = accessTokenValue;
-    }
-    map['clientId'] = clientId;
-    map['clientSecret'] = clientSecret;
-    final oauthRequestValue = oauthRequest;
-    if (oauthRequestValue != null) {
-      map['oauthRequest'] = oauthRequestValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'accessToken': ?accessToken,
+      'clientId': clientId,
+      'clientSecret': clientSecret,
+      'oauthRequest': ?oauthRequest == null ? null : oauthRequest!.toMap(),
+    };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketo.fromMap(
-      Map<String, dynamic> map) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketo.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketo(
-      accessToken:
-          map['accessToken'] == null ? null : map['accessToken'] as String,
+      accessToken: map['accessToken'] == null ? null : map['accessToken'] as String,
       clientId: map['clientId'] as String,
       clientSecret: map['clientSecret'] as String,
-      oauthRequest: map['oauthRequest'] == null
-          ? null
-          : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketoOauthRequest
-              .fromMap((map['oauthRequest'] as Map).cast<String, dynamic>()),
+      oauthRequest: map['oauthRequest'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketoOauthRequest.fromMap((map['oauthRequest'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

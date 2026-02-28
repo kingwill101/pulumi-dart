@@ -7,10 +7,8 @@ import 'software_recipe_artifact_remote_response.dart';
 class SoftwareRecipeArtifactResponse {
   /// Defaults to false. When false, recipes are subject to validations based on the artifact type: Remote: A checksum must be specified, and only protocols with transport-layer security are permitted. GCS: An object generation number must be specified.
   final bool allowInsecure;
-
   /// A Google Cloud Storage artifact.
   final SoftwareRecipeArtifactGcsResponse gcs;
-
   /// A generic remote artifact.
   final SoftwareRecipeArtifactRemoteResponse remote;
 
@@ -25,20 +23,19 @@ class SoftwareRecipeArtifactResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allowInsecure'] = allowInsecure;
-    map['gcs'] = gcs.toMap();
-    map['remote'] = remote.toMap();
-    return map;
+    return <String, dynamic>{
+      'allowInsecure': allowInsecure,
+      'gcs': gcs.toMap(),
+      'remote': remote.toMap(),
+    };
   }
 
   factory SoftwareRecipeArtifactResponse.fromMap(Map<String, dynamic> map) {
     return SoftwareRecipeArtifactResponse(
       allowInsecure: map['allowInsecure'] as bool,
-      gcs: SoftwareRecipeArtifactGcsResponse.fromMap(
-          (map['gcs'] as Map).cast<String, dynamic>()),
-      remote: SoftwareRecipeArtifactRemoteResponse.fromMap(
-          (map['remote'] as Map).cast<String, dynamic>()),
+      gcs: SoftwareRecipeArtifactGcsResponse.fromMap((map['gcs'] as Map).cast<String, dynamic>()),
+      remote: SoftwareRecipeArtifactRemoteResponse.fromMap((map['remote'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

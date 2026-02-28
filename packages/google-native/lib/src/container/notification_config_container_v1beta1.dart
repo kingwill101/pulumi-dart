@@ -14,20 +14,15 @@ class NotificationConfigContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final pubsubValue = pubsub;
-    if (pubsubValue != null) {
-      map['pubsub'] = pubsubValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'pubsub': ?pubsub == null ? null : pubsub!.toMap(),
+    };
   }
 
   factory NotificationConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NotificationConfigContainerV1beta1(
-      pubsub: map['pubsub'] == null
-          ? null
-          : PubSubContainerV1beta1.fromMap(
-              (map['pubsub'] as Map).cast<String, dynamic>()),
+      pubsub: map['pubsub'] == null ? null : PubSubContainerV1beta1.fromMap((map['pubsub'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

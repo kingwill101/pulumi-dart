@@ -9,17 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionInstanceGroupArgs {
   /// The name of the instance group.  One of `name` or `self_link` must be provided.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If `self_link` is provided, this value is ignored.  If neither `self_link`
   /// nor `project` are provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The region in which the resource belongs.  If `self_link`
   /// is provided, this value is ignored.  If neither `self_link` nor `region` are
   /// provided, the provider region is used.
   final pulumi.Input<String>? region;
-
   /// The link to the instance group.  One of `name` or `self_link` must be provided.
   ///
   /// - - -
@@ -35,30 +32,19 @@ class GetRegionInstanceGroupArgs {
     String? project,
     String? region,
     String? selfLink,
-  })  : name = pulumi.Input.asOptionalInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        selfLink = pulumi.Input.asOptionalInput<String>(selfLink);
+  }) :
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      selfLink = pulumi.Input.asOptionalInput<String>(selfLink);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final selfLinkValue = selfLink;
-    if (selfLinkValue != null) {
-      map['selfLink'] = selfLinkValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+      'project': ?project,
+      'region': ?region,
+      'selfLink': ?selfLink,
+    };
   }
 
   factory GetRegionInstanceGroupArgs.fromMap(Map<String, dynamic> map) {
@@ -70,3 +56,4 @@ class GetRegionInstanceGroupArgs {
     );
   }
 }
+

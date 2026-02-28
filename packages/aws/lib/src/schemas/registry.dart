@@ -111,19 +111,14 @@ import 'registry_args.dart';
 class Registry extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the discoverer.
   late final pulumi.Output<String> arn;
-
   /// The description of the discoverer. Maximum of 256 characters.
   late final pulumi.Output<String?> description;
-
   /// The name of the custom event schema registry. Maximum of 64 characters consisting of lower case letters, upper case letters, 0-9, ., -, _.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 

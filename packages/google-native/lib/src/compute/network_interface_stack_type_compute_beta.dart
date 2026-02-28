@@ -12,7 +12,7 @@ enum NetworkInterfaceStackTypeComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown NetworkInterfaceStackTypeComputeBeta value: $value');
+    throw ArgumentError('Unknown NetworkInterfaceStackTypeComputeBeta value: $value');
   }
 }
+

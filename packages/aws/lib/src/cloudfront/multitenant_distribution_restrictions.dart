@@ -13,16 +13,15 @@ class MultitenantDistributionRestrictions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['geoRestriction'] = geoRestriction.toMap();
-    return map;
+    return <String, dynamic>{
+      'geoRestriction': geoRestriction.toMap(),
+    };
   }
 
-  factory MultitenantDistributionRestrictions.fromMap(
-      Map<String, dynamic> map) {
+  factory MultitenantDistributionRestrictions.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionRestrictions(
-      geoRestriction: MultitenantDistributionRestrictionsGeoRestriction.fromMap(
-          (map['geoRestriction'] as Map).cast<String, dynamic>()),
+      geoRestriction: MultitenantDistributionRestrictionsGeoRestriction.fromMap((map['geoRestriction'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

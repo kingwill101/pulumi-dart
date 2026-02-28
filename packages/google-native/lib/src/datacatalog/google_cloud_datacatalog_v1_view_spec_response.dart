@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Table view specification.
 class GoogleCloudDatacatalogV1ViewSpecResponse {
   /// The query that defines the table view.
@@ -12,15 +13,15 @@ class GoogleCloudDatacatalogV1ViewSpecResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['viewQuery'] = viewQuery;
-    return map;
+    return <String, dynamic>{
+      'viewQuery': viewQuery,
+    };
   }
 
-  factory GoogleCloudDatacatalogV1ViewSpecResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1ViewSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1ViewSpecResponse(
       viewQuery: map['viewQuery'] as String,
     );
   }
 }
+

@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerlessSecurityPolicyArgs {
   /// Description of the policy. Typically used to store information about the permissions defined in the policy.
   final pulumi.Input<String>? description;
-
   /// Name of the policy.
   final pulumi.Input<String>? name;
-
   /// JSON policy document to use as the content for the new policy
   final pulumi.Input<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Type of security policy. One of `encryption` or `network`.
   ///
   /// The following arguments are optional:
@@ -36,35 +32,26 @@ class ServerlessSecurityPolicyArgs {
     required String policy,
     String? region,
     required String type,
-  })  : description = pulumi.Input.asOptionalInput<String>(description),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        policy = pulumi.Input.asInput<String>(policy),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        type = pulumi.Input.asInput<String>(type);
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      policy = pulumi.Input.asInput<String>(policy),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      type = pulumi.Input.asInput<String>(type);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    map['policy'] = policy;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'name': ?name,
+      'policy': policy,
+      'region': ?region,
+      'type': type,
+    };
   }
 
   factory ServerlessSecurityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ServerlessSecurityPolicyArgs(
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       policy: map['policy'] as String,
       region: map['region'] == null ? null : map['region'] as String,
@@ -72,3 +59,4 @@ class ServerlessSecurityPolicyArgs {
     );
   }
 }
+

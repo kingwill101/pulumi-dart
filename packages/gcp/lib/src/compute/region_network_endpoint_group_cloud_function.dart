@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RegionNetworkEndpointGroupCloudFunction {
   /// A user-defined name of the Cloud Function.
   /// The function name is case-sensitive and must be 1-63 characters long.
   /// Example value: "func1".
   final String? function;
-
   /// A template to parse function field from a request URL. URL mask allows
   /// for routing to multiple Cloud Functions without having to create
   /// multiple Network Endpoint Groups and backend services.
@@ -23,23 +23,17 @@ class RegionNetworkEndpointGroupCloudFunction {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final functionValue = function;
-    if (functionValue != null) {
-      map['function'] = functionValue;
-    }
-    final urlMaskValue = urlMask;
-    if (urlMaskValue != null) {
-      map['urlMask'] = urlMaskValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'function': ?function,
+      'urlMask': ?urlMask,
+    };
   }
 
-  factory RegionNetworkEndpointGroupCloudFunction.fromMap(
-      Map<String, dynamic> map) {
+  factory RegionNetworkEndpointGroupCloudFunction.fromMap(Map<String, dynamic> map) {
     return RegionNetworkEndpointGroupCloudFunction(
       function: map['function'] == null ? null : map['function'] as String,
       urlMask: map['urlMask'] == null ? null : map['urlMask'] as String,
     );
   }
 }
+

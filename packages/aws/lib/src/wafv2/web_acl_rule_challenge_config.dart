@@ -13,20 +13,15 @@ class WebAclRuleChallengeConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final immunityTimePropertyValue = immunityTimeProperty;
-    if (immunityTimePropertyValue != null) {
-      map['immunityTimeProperty'] = immunityTimePropertyValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'immunityTimeProperty': ?immunityTimeProperty == null ? null : immunityTimeProperty!.toMap(),
+    };
   }
 
   factory WebAclRuleChallengeConfig.fromMap(Map<String, dynamic> map) {
     return WebAclRuleChallengeConfig(
-      immunityTimeProperty: map['immunityTimeProperty'] == null
-          ? null
-          : WebAclRuleChallengeConfigImmunityTimeProperty.fromMap(
-              (map['immunityTimeProperty'] as Map).cast<String, dynamic>()),
+      immunityTimeProperty: map['immunityTimeProperty'] == null ? null : WebAclRuleChallengeConfigImmunityTimeProperty.fromMap((map['immunityTimeProperty'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

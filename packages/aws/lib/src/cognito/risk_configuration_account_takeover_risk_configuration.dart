@@ -6,10 +6,8 @@ import 'risk_configuration_account_takeover_risk_configuration_notify_configurat
 class RiskConfigurationAccountTakeoverRiskConfiguration {
   /// Account takeover risk configuration actions. See details below.
   final RiskConfigurationAccountTakeoverRiskConfigurationActions actions;
-
   /// The notify configuration used to construct email notifications. See details below.
-  final RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfiguration?
-      notifyConfiguration;
+  final RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfiguration? notifyConfiguration;
 
   /// Creates a new [RiskConfigurationAccountTakeoverRiskConfiguration].
   /// [actions] Account takeover risk configuration actions. See details below.
@@ -20,25 +18,17 @@ class RiskConfigurationAccountTakeoverRiskConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['actions'] = actions.toMap();
-    final notifyConfigurationValue = notifyConfiguration;
-    if (notifyConfigurationValue != null) {
-      map['notifyConfiguration'] = notifyConfigurationValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'actions': actions.toMap(),
+      'notifyConfiguration': ?notifyConfiguration == null ? null : notifyConfiguration!.toMap(),
+    };
   }
 
-  factory RiskConfigurationAccountTakeoverRiskConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory RiskConfigurationAccountTakeoverRiskConfiguration.fromMap(Map<String, dynamic> map) {
     return RiskConfigurationAccountTakeoverRiskConfiguration(
-      actions: RiskConfigurationAccountTakeoverRiskConfigurationActions.fromMap(
-          (map['actions'] as Map).cast<String, dynamic>()),
-      notifyConfiguration: map['notifyConfiguration'] == null
-          ? null
-          : RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfiguration
-              .fromMap(
-                  (map['notifyConfiguration'] as Map).cast<String, dynamic>()),
+      actions: RiskConfigurationAccountTakeoverRiskConfigurationActions.fromMap((map['actions'] as Map).cast<String, dynamic>()),
+      notifyConfiguration: map['notifyConfiguration'] == null ? null : RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfiguration.fromMap((map['notifyConfiguration'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

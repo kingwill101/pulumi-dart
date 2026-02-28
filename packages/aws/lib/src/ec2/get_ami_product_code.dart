@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetAmiProductCode {
   final String productCodeId;
   final String productCodeType;
@@ -13,10 +14,10 @@ class GetAmiProductCode {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['productCodeId'] = productCodeId;
-    map['productCodeType'] = productCodeType;
-    return map;
+    return <String, dynamic>{
+      'productCodeId': productCodeId,
+      'productCodeType': productCodeType,
+    };
   }
 
   factory GetAmiProductCode.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class GetAmiProductCode {
     );
   }
 }
+

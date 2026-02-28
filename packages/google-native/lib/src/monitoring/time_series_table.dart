@@ -9,10 +9,8 @@ import 'time_series_table_metric_visualization.dart';
 class TimeSeriesTable {
   /// Optional. The list of the persistent column settings for the table.
   final List<ColumnSettings>? columnSettings;
-
   /// The data displayed in this table.
   final List<TableDataSet> dataSets;
-
   /// Optional. Store rendering strategy
   final TimeSeriesTableMetricVisualization? metricVisualization;
 
@@ -27,39 +25,19 @@ class TimeSeriesTable {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final columnSettingsValue = columnSettings;
-    if (columnSettingsValue != null) {
-      map['columnSettings'] =
-          pulumi.Input.encodeList<ColumnSettings, Map<String, dynamic>>(
-              columnSettingsValue, (value) => value.toMap());
-    }
-    map['dataSets'] =
-        pulumi.Input.encodeList<TableDataSet, Map<String, dynamic>>(
-            dataSets, (value) => value.toMap());
-    final metricVisualizationValue = metricVisualization;
-    if (metricVisualizationValue != null) {
-      map['metricVisualization'] = metricVisualizationValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'columnSettings': ?columnSettings == null ? null : pulumi.Input.encodeList<ColumnSettings, Map<String, dynamic>>(columnSettings!, (value) => value.toMap()),
+      'dataSets': pulumi.Input.encodeList<TableDataSet, Map<String, dynamic>>(dataSets, (value) => value.toMap()),
+      'metricVisualization': ?metricVisualization == null ? null : metricVisualization!.value,
+    };
   }
 
   factory TimeSeriesTable.fromMap(Map<String, dynamic> map) {
     return TimeSeriesTable(
-      columnSettings: map['columnSettings'] == null
-          ? null
-          : pulumi.Input.decodeList<ColumnSettings>(
-              map['columnSettings'],
-              (value) => ColumnSettings.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      dataSets: pulumi.Input.decodeList<TableDataSet>(
-          map['dataSets'],
-          (value) =>
-              TableDataSet.fromMap((value as Map).cast<String, dynamic>())),
-      metricVisualization: map['metricVisualization'] == null
-          ? null
-          : TimeSeriesTableMetricVisualization.fromValue(
-              map['metricVisualization'] as String),
+      columnSettings: map['columnSettings'] == null ? null : pulumi.Input.decodeList<ColumnSettings>(map['columnSettings'], (value) => ColumnSettings.fromMap((value as Map).cast<String, dynamic>())),
+      dataSets: pulumi.Input.decodeList<TableDataSet>(map['dataSets'], (value) => TableDataSet.fromMap((value as Map).cast<String, dynamic>())),
+      metricVisualization: map['metricVisualization'] == null ? null : TimeSeriesTableMetricVisualization.fromValue(map['metricVisualization'] as String),
     );
   }
 }
+

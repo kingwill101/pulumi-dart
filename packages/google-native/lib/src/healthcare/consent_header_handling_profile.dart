@@ -16,3 +16,4 @@ enum ConsentHeaderHandlingProfile {
     throw ArgumentError('Unknown ConsentHeaderHandlingProfile value: $value');
   }
 }
+

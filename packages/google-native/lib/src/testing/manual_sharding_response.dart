@@ -15,19 +15,15 @@ class ManualShardingResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['testTargetsForShard'] = pulumi.Input.encodeList<
-        TestTargetsForShardResponse,
-        Map<String, dynamic>>(testTargetsForShard, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'testTargetsForShard': pulumi.Input.encodeList<TestTargetsForShardResponse, Map<String, dynamic>>(testTargetsForShard, (value) => value.toMap()),
+    };
   }
 
   factory ManualShardingResponse.fromMap(Map<String, dynamic> map) {
     return ManualShardingResponse(
-      testTargetsForShard: pulumi.Input.decodeList<TestTargetsForShardResponse>(
-          map['testTargetsForShard'],
-          (value) => TestTargetsForShardResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      testTargetsForShard: pulumi.Input.decodeList<TestTargetsForShardResponse>(map['testTargetsForShard'], (value) => TestTargetsForShardResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

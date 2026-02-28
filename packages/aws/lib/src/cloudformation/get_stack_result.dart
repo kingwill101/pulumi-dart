@@ -1,39 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getStack.
 class GetStackResult {
   /// List of capabilities
   final List<String> capabilities;
-
   /// Description of the stack
   final String description;
-
   /// Whether the rollback of the stack is disabled when stack creation fails
   final bool disableRollback;
-
   /// ARN of the IAM role used to create the stack.
   final String iamRoleArn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
-
   /// List of SNS topic ARNs to publish stack related events
   final List<String> notificationArns;
-
   /// Map of outputs from the stack.
   final Map<String, String> outputs;
-
   /// Map of parameters that specify input parameters for the stack.
   final Map<String, String> parameters;
   final String region;
-
   /// Map of tags associated with this stack.
   final Map<String, String> tags;
-
   /// Structure containing the template body.
   final String templateBody;
-
   /// Amount of time that can pass before the stack status becomes `CREATE_FAILED`
   final int timeoutInMinutes;
 
@@ -68,21 +59,21 @@ class GetStackResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['capabilities'] = capabilities;
-    map['description'] = description;
-    map['disableRollback'] = disableRollback;
-    map['iamRoleArn'] = iamRoleArn;
-    map['id'] = id;
-    map['name'] = name;
-    map['notificationArns'] = notificationArns;
-    map['outputs'] = outputs;
-    map['parameters'] = parameters;
-    map['region'] = region;
-    map['tags'] = tags;
-    map['templateBody'] = templateBody;
-    map['timeoutInMinutes'] = timeoutInMinutes;
-    return map;
+    return <String, dynamic>{
+      'capabilities': capabilities,
+      'description': description,
+      'disableRollback': disableRollback,
+      'iamRoleArn': iamRoleArn,
+      'id': id,
+      'name': name,
+      'notificationArns': notificationArns,
+      'outputs': outputs,
+      'parameters': parameters,
+      'region': region,
+      'tags': tags,
+      'templateBody': templateBody,
+      'timeoutInMinutes': timeoutInMinutes,
+    };
   }
 
   factory GetStackResult.fromMap(Map<String, dynamic> map) {
@@ -103,3 +94,4 @@ class GetStackResult {
     );
   }
 }
+

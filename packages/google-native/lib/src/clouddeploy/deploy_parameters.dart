@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// DeployParameters contains deploy parameters information.
 class DeployParameters {
   /// Optional. Deploy parameters are applied to targets with match labels. If unspecified, deploy parameters are applied to all targets (including child targets of a multi-target).
   final Map<String, String>? matchTargetLabels;
-
   /// Values are deploy parameters in key-value pairs.
   final Map<String, String> values;
 
@@ -17,21 +17,17 @@ class DeployParameters {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final matchTargetLabelsValue = matchTargetLabels;
-    if (matchTargetLabelsValue != null) {
-      map['matchTargetLabels'] = matchTargetLabelsValue;
-    }
-    map['values'] = values;
-    return map;
+    return <String, dynamic>{
+      'matchTargetLabels': ?matchTargetLabels,
+      'values': values,
+    };
   }
 
   factory DeployParameters.fromMap(Map<String, dynamic> map) {
     return DeployParameters(
-      matchTargetLabels: map['matchTargetLabels'] == null
-          ? null
-          : (map['matchTargetLabels'] as Map).cast<String, String>(),
+      matchTargetLabels: map['matchTargetLabels'] == null ? null : (map['matchTargetLabels'] as Map).cast<String, String>(),
       values: (map['values'] as Map).cast<String, String>(),
     );
   }
 }
+

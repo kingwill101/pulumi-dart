@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RuleGroupRuleGroupRuleVariablesIpSetIpSet {
   /// Set of IP addresses and address ranges, in CIDR notation.
   final List<String> definitions;
@@ -11,15 +12,15 @@ class RuleGroupRuleGroupRuleVariablesIpSetIpSet {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['definitions'] = definitions;
-    return map;
+    return <String, dynamic>{
+      'definitions': definitions,
+    };
   }
 
-  factory RuleGroupRuleGroupRuleVariablesIpSetIpSet.fromMap(
-      Map<String, dynamic> map) {
+  factory RuleGroupRuleGroupRuleVariablesIpSetIpSet.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleGroupRuleVariablesIpSetIpSet(
       definitions: (map['definitions'] as List).cast<String>(),
     );
   }
 }
+

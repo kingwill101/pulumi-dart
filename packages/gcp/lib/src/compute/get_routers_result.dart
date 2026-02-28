@@ -24,14 +24,12 @@ class GetRoutersResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['project'] = project;
-    map['region'] = region;
-    map['routers'] =
-        pulumi.Input.encodeList<GetRoutersRouter, Map<String, dynamic>>(
-            routers, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'project': project,
+      'region': region,
+      'routers': pulumi.Input.encodeList<GetRoutersRouter, Map<String, dynamic>>(routers, (value) => value.toMap()),
+    };
   }
 
   factory GetRoutersResult.fromMap(Map<String, dynamic> map) {
@@ -39,10 +37,8 @@ class GetRoutersResult {
       id: map['id'] as String,
       project: map['project'] as String,
       region: map['region'] as String,
-      routers: pulumi.Input.decodeList<GetRoutersRouter>(
-          map['routers'],
-          (value) =>
-              GetRoutersRouter.fromMap((value as Map).cast<String, dynamic>())),
+      routers: pulumi.Input.decodeList<GetRoutersRouter>(map['routers'], (value) => GetRoutersRouter.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

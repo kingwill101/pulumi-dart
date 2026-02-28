@@ -16,17 +16,15 @@ class GetScanConfigArgs {
   GetScanConfigArgs({
     String? project,
     required String scanConfigId,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        scanConfigId = pulumi.Input.asInput<String>(scanConfigId);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      scanConfigId = pulumi.Input.asInput<String>(scanConfigId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['scanConfigId'] = scanConfigId;
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'scanConfigId': scanConfigId,
+    };
   }
 
   factory GetScanConfigArgs.fromMap(Map<String, dynamic> map) {
@@ -36,3 +34,4 @@ class GetScanConfigArgs {
     );
   }
 }
+

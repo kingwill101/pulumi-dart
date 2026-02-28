@@ -1,23 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getDefaultServiceAccount.
 class GetDefaultServiceAccountResult {
   /// The display name for the service account.
   final String displayName;
-
   /// Email address of the default service account used by VMs running in this project
   final String email;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
   final String member;
-
   /// The fully-qualified name of the service account.
   final String name;
   final String project;
-
   /// The unique id of the service account.
   final String uniqueId;
 
@@ -40,15 +36,15 @@ class GetDefaultServiceAccountResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['displayName'] = displayName;
-    map['email'] = email;
-    map['id'] = id;
-    map['member'] = member;
-    map['name'] = name;
-    map['project'] = project;
-    map['uniqueId'] = uniqueId;
-    return map;
+    return <String, dynamic>{
+      'displayName': displayName,
+      'email': email,
+      'id': id,
+      'member': member,
+      'name': name,
+      'project': project,
+      'uniqueId': uniqueId,
+    };
   }
 
   factory GetDefaultServiceAccountResult.fromMap(Map<String, dynamic> map) {
@@ -63,3 +59,4 @@ class GetDefaultServiceAccountResult {
     );
   }
 }
+

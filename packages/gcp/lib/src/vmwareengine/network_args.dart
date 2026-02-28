@@ -9,17 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkArgs {
   /// User-provided description for this VMware Engine network.
   final pulumi.Input<String>? description;
-
   /// The location where the VMwareEngineNetwork should reside.
   final pulumi.Input<String> location;
-
   /// The ID of the VMwareEngineNetwork.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// VMware Engine network type.
   /// Possible values are: `LEGACY`, `STANDARD`.
   final pulumi.Input<String> type;
@@ -36,35 +32,26 @@ class NetworkArgs {
     String? name,
     String? project,
     required String type,
-  })  : description = pulumi.Input.asOptionalInput<String>(description),
-        location = pulumi.Input.asInput<String>(location),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        type = pulumi.Input.asInput<String>(type);
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      location = pulumi.Input.asInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      type = pulumi.Input.asInput<String>(type);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    map['location'] = location;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'location': location,
+      'name': ?name,
+      'project': ?project,
+      'type': type,
+    };
   }
 
   factory NetworkArgs.fromMap(Map<String, dynamic> map) {
     return NetworkArgs(
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       location: map['location'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -72,3 +59,4 @@ class NetworkArgs {
     );
   }
 }
+

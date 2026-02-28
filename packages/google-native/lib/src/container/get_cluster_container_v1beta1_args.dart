@@ -25,23 +25,21 @@ class GetClusterContainerV1beta1Args {
     String? project,
     required String projectId,
     required String zone,
-  })  : clusterId = pulumi.Input.asInput<String>(clusterId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        projectId = pulumi.Input.asInput<String>(projectId),
-        zone = pulumi.Input.asInput<String>(zone);
+  }) :
+      clusterId = pulumi.Input.asInput<String>(clusterId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      projectId = pulumi.Input.asInput<String>(projectId),
+      zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clusterId'] = clusterId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['projectId'] = projectId;
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'clusterId': clusterId,
+      'location': location,
+      'project': ?project,
+      'projectId': projectId,
+      'zone': zone,
+    };
   }
 
   factory GetClusterContainerV1beta1Args.fromMap(Map<String, dynamic> map) {
@@ -54,3 +52,4 @@ class GetClusterContainerV1beta1Args {
     );
   }
 }
+

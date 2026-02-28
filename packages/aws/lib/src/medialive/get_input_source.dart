@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInputSource {
   final String passwordParam;
   final String url;
@@ -16,11 +17,11 @@ class GetInputSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['passwordParam'] = passwordParam;
-    map['url'] = url;
-    map['username'] = username;
-    return map;
+    return <String, dynamic>{
+      'passwordParam': passwordParam,
+      'url': url,
+      'username': username,
+    };
   }
 
   factory GetInputSource.fromMap(Map<String, dynamic> map) {
@@ -31,3 +32,4 @@ class GetInputSource {
     );
   }
 }
+

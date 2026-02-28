@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class JobHttpTargetOidcToken {
   /// Audience to be used when generating OIDC token. If not specified,
   /// the URI specified in target will be used.
   final String? audience;
-
   /// Service account email to be used for generating OAuth token.
   /// The service account must be within the same project as the job.
   final String serviceAccountEmail;
@@ -18,13 +18,10 @@ class JobHttpTargetOidcToken {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final audienceValue = audience;
-    if (audienceValue != null) {
-      map['audience'] = audienceValue;
-    }
-    map['serviceAccountEmail'] = serviceAccountEmail;
-    return map;
+    return <String, dynamic>{
+      'audience': ?audience,
+      'serviceAccountEmail': serviceAccountEmail,
+    };
   }
 
   factory JobHttpTargetOidcToken.fromMap(Map<String, dynamic> map) {
@@ -34,3 +31,4 @@ class JobHttpTargetOidcToken {
     );
   }
 }
+

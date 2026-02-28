@@ -5,12 +5,9 @@ import 'agent_data_source_vector_ingestion_configuration_custom_transformation_c
 
 class AgentDataSourceVectorIngestionConfigurationCustomTransformationConfiguration {
   /// The intermediate storage for custom transformation.
-  final AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorage?
-      intermediateStorage;
-
+  final AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorage? intermediateStorage;
   /// A custom processing step for documents moving through the data source ingestion pipeline.
-  final AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformation?
-      transformation;
+  final AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformation? transformation;
 
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationCustomTransformationConfiguration].
   /// [intermediateStorage] The intermediate storage for custom transformation.
@@ -21,30 +18,17 @@ class AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurati
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final intermediateStorageValue = intermediateStorage;
-    if (intermediateStorageValue != null) {
-      map['intermediateStorage'] = intermediateStorageValue.toMap();
-    }
-    final transformationValue = transformation;
-    if (transformationValue != null) {
-      map['transformation'] = transformationValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'intermediateStorage': ?intermediateStorage == null ? null : intermediateStorage!.toMap(),
+      'transformation': ?transformation == null ? null : transformation!.toMap(),
+    };
   }
 
-  factory AgentDataSourceVectorIngestionConfigurationCustomTransformationConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory AgentDataSourceVectorIngestionConfigurationCustomTransformationConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceVectorIngestionConfigurationCustomTransformationConfiguration(
-      intermediateStorage: map['intermediateStorage'] == null
-          ? null
-          : AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorage
-              .fromMap(
-                  (map['intermediateStorage'] as Map).cast<String, dynamic>()),
-      transformation: map['transformation'] == null
-          ? null
-          : AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformation
-              .fromMap((map['transformation'] as Map).cast<String, dynamic>()),
+      intermediateStorage: map['intermediateStorage'] == null ? null : AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorage.fromMap((map['intermediateStorage'] as Map).cast<String, dynamic>()),
+      transformation: map['transformation'] == null ? null : AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformation.fromMap((map['transformation'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

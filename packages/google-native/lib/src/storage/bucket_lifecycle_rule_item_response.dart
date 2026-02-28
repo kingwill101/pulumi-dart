@@ -6,7 +6,6 @@ import 'bucket_lifecycle_rule_item_condition_response.dart';
 class BucketLifecycleRuleItemResponse {
   /// The action to take.
   final BucketLifecycleRuleItemActionResponse action;
-
   /// The condition(s) under which the action will be taken.
   final BucketLifecycleRuleItemConditionResponse condition;
 
@@ -19,18 +18,17 @@ class BucketLifecycleRuleItemResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['action'] = action.toMap();
-    map['condition'] = condition.toMap();
-    return map;
+    return <String, dynamic>{
+      'action': action.toMap(),
+      'condition': condition.toMap(),
+    };
   }
 
   factory BucketLifecycleRuleItemResponse.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleRuleItemResponse(
-      action: BucketLifecycleRuleItemActionResponse.fromMap(
-          (map['action'] as Map).cast<String, dynamic>()),
-      condition: BucketLifecycleRuleItemConditionResponse.fromMap(
-          (map['condition'] as Map).cast<String, dynamic>()),
+      action: BucketLifecycleRuleItemActionResponse.fromMap((map['action'] as Map).cast<String, dynamic>()),
+      condition: BucketLifecycleRuleItemConditionResponse.fromMap((map['condition'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

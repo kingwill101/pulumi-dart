@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class UsagePlanThrottleSettings {
   final int? burstLimit;
   final double? rateLimit;
@@ -13,16 +14,10 @@ class UsagePlanThrottleSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final burstLimitValue = burstLimit;
-    if (burstLimitValue != null) {
-      map['burstLimit'] = burstLimitValue;
-    }
-    final rateLimitValue = rateLimit;
-    if (rateLimitValue != null) {
-      map['rateLimit'] = rateLimitValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'burstLimit': ?burstLimit,
+      'rateLimit': ?rateLimit,
+    };
   }
 
   factory UsagePlanThrottleSettings.fromMap(Map<String, dynamic> map) {
@@ -32,3 +27,4 @@ class UsagePlanThrottleSettings {
     );
   }
 }
+

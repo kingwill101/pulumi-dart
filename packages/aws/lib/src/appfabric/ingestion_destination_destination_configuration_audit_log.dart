@@ -4,8 +4,7 @@ import 'ingestion_destination_destination_configuration_audit_log_destination.da
 
 class IngestionDestinationDestinationConfigurationAuditLog {
   /// Contains information about an audit log destination. Only one destination (Firehose Stream) or (S3 Bucket) can be specified.
-  final IngestionDestinationDestinationConfigurationAuditLogDestination
-      destination;
+  final IngestionDestinationDestinationConfigurationAuditLogDestination destination;
 
   /// Creates a new [IngestionDestinationDestinationConfigurationAuditLog].
   /// [destination] Contains information about an audit log destination. Only one destination (Firehose Stream) or (S3 Bucket) can be specified.
@@ -14,17 +13,15 @@ class IngestionDestinationDestinationConfigurationAuditLog {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['destination'] = destination.toMap();
-    return map;
+    return <String, dynamic>{
+      'destination': destination.toMap(),
+    };
   }
 
-  factory IngestionDestinationDestinationConfigurationAuditLog.fromMap(
-      Map<String, dynamic> map) {
+  factory IngestionDestinationDestinationConfigurationAuditLog.fromMap(Map<String, dynamic> map) {
     return IngestionDestinationDestinationConfigurationAuditLog(
-      destination:
-          IngestionDestinationDestinationConfigurationAuditLogDestination
-              .fromMap((map['destination'] as Map).cast<String, dynamic>()),
+      destination: IngestionDestinationDestinationConfigurationAuditLogDestination.fromMap((map['destination'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -14,26 +14,15 @@ class GetListenerRuleTransformHostHeaderRewriteConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final rewritesValue = rewrites;
-    if (rewritesValue != null) {
-      map['rewrites'] = pulumi.Input.encodeList<
-          GetListenerRuleTransformHostHeaderRewriteConfigRewrite,
-          Map<String, dynamic>>(rewritesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'rewrites': ?rewrites == null ? null : pulumi.Input.encodeList<GetListenerRuleTransformHostHeaderRewriteConfigRewrite, Map<String, dynamic>>(rewrites!, (value) => value.toMap()),
+    };
   }
 
-  factory GetListenerRuleTransformHostHeaderRewriteConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GetListenerRuleTransformHostHeaderRewriteConfig.fromMap(Map<String, dynamic> map) {
     return GetListenerRuleTransformHostHeaderRewriteConfig(
-      rewrites: map['rewrites'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  GetListenerRuleTransformHostHeaderRewriteConfigRewrite>(
-              map['rewrites'],
-              (value) => GetListenerRuleTransformHostHeaderRewriteConfigRewrite
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      rewrites: map['rewrites'] == null ? null : pulumi.Input.decodeList<GetListenerRuleTransformHostHeaderRewriteConfigRewrite>(map['rewrites'], (value) => GetListenerRuleTransformHostHeaderRewriteConfigRewrite.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

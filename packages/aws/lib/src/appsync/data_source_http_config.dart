@@ -5,7 +5,6 @@ import 'data_source_http_config_authorization_config.dart';
 class DataSourceHttpConfig {
   /// Authorization configuration in case the HTTP endpoint requires authorization. See `authorization_config` Block for details.
   final DataSourceHttpConfigAuthorizationConfig? authorizationConfig;
-
   /// HTTP URL.
   final String endpoint;
 
@@ -18,22 +17,17 @@ class DataSourceHttpConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final authorizationConfigValue = authorizationConfig;
-    if (authorizationConfigValue != null) {
-      map['authorizationConfig'] = authorizationConfigValue.toMap();
-    }
-    map['endpoint'] = endpoint;
-    return map;
+    return <String, dynamic>{
+      'authorizationConfig': ?authorizationConfig == null ? null : authorizationConfig!.toMap(),
+      'endpoint': endpoint,
+    };
   }
 
   factory DataSourceHttpConfig.fromMap(Map<String, dynamic> map) {
     return DataSourceHttpConfig(
-      authorizationConfig: map['authorizationConfig'] == null
-          ? null
-          : DataSourceHttpConfigAuthorizationConfig.fromMap(
-              (map['authorizationConfig'] as Map).cast<String, dynamic>()),
+      authorizationConfig: map['authorizationConfig'] == null ? null : DataSourceHttpConfigAuthorizationConfig.fromMap((map['authorizationConfig'] as Map).cast<String, dynamic>()),
       endpoint: map['endpoint'] as String,
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// GitLabRepositoryId identifies a specific repository hosted on GitLab.com or GitLabEnterprise
 class GitLabRepositoryId {
   /// Identifier for the repository. example: "namespace/project-slug", namespace is usually the username or group ID
@@ -12,9 +13,9 @@ class GitLabRepositoryId {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory GitLabRepositoryId.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class GitLabRepositoryId {
     );
   }
 }
+

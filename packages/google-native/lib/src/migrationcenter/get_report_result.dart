@@ -6,25 +6,18 @@ import 'report_summary_response.dart';
 class GetReportResult {
   /// Creation timestamp.
   final String createTime;
-
   /// Free-text description.
   final String description;
-
   /// User-friendly display name. Maximum length is 63 characters.
   final String displayName;
-
   /// Name of resource.
   final String name;
-
   /// Report creation state.
   final String state;
-
   /// Summary view of the Report.
   final ReportSummaryResponse summary;
-
   /// Report type.
   final String type;
-
   /// Last update timestamp.
   final String updateTime;
 
@@ -49,16 +42,16 @@ class GetReportResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['description'] = description;
-    map['displayName'] = displayName;
-    map['name'] = name;
-    map['state'] = state;
-    map['summary'] = summary.toMap();
-    map['type'] = type;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'description': description,
+      'displayName': displayName,
+      'name': name,
+      'state': state,
+      'summary': summary.toMap(),
+      'type': type,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetReportResult.fromMap(Map<String, dynamic> map) {
@@ -68,10 +61,10 @@ class GetReportResult {
       displayName: map['displayName'] as String,
       name: map['name'] as String,
       state: map['state'] as String,
-      summary: ReportSummaryResponse.fromMap(
-          (map['summary'] as Map).cast<String, dynamic>()),
+      summary: ReportSummaryResponse.fromMap((map['summary'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       updateTime: map['updateTime'] as String,
     );
   }
 }
+

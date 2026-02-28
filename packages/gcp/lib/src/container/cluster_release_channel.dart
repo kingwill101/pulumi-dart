@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterReleaseChannel {
   /// The selected release channel.
   /// Accepted values are:
@@ -17,9 +18,9 @@ class ClusterReleaseChannel {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['channel'] = channel;
-    return map;
+    return <String, dynamic>{
+      'channel': channel,
+    };
   }
 
   factory ClusterReleaseChannel.fromMap(Map<String, dynamic> map) {
@@ -28,3 +29,4 @@ class ClusterReleaseChannel {
     );
   }
 }
+

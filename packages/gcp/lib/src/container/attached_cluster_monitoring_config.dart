@@ -5,8 +5,7 @@ import 'attached_cluster_monitoring_config_managed_prometheus_config.dart';
 class AttachedClusterMonitoringConfig {
   /// Enable Google Cloud Managed Service for Prometheus in the cluster.
   /// Structure is documented below.
-  final AttachedClusterMonitoringConfigManagedPrometheusConfig?
-      managedPrometheusConfig;
+  final AttachedClusterMonitoringConfigManagedPrometheusConfig? managedPrometheusConfig;
 
   /// Creates a new [AttachedClusterMonitoringConfig].
   /// [managedPrometheusConfig] Enable Google Cloud Managed Service for Prometheus in the cluster.
@@ -15,20 +14,15 @@ class AttachedClusterMonitoringConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final managedPrometheusConfigValue = managedPrometheusConfig;
-    if (managedPrometheusConfigValue != null) {
-      map['managedPrometheusConfig'] = managedPrometheusConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'managedPrometheusConfig': ?managedPrometheusConfig == null ? null : managedPrometheusConfig!.toMap(),
+    };
   }
 
   factory AttachedClusterMonitoringConfig.fromMap(Map<String, dynamic> map) {
     return AttachedClusterMonitoringConfig(
-      managedPrometheusConfig: map['managedPrometheusConfig'] == null
-          ? null
-          : AttachedClusterMonitoringConfigManagedPrometheusConfig.fromMap(
-              (map['managedPrometheusConfig'] as Map).cast<String, dynamic>()),
+      managedPrometheusConfig: map['managedPrometheusConfig'] == null ? null : AttachedClusterMonitoringConfigManagedPrometheusConfig.fromMap((map['managedPrometheusConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -235,10 +235,8 @@ import 'capability_args.dart';
 class Capability extends pulumi.CustomResource {
   /// Capability name that should be updated on the folder.
   late final pulumi.Output<String> capabilityName;
-
   /// Folder on which Capability needs to be updated in the format folders/folder_id.
   late final pulumi.Output<String> parent;
-
   /// Capability Value.
   late final pulumi.Output<bool> value;
 

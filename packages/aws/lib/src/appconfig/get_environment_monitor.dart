@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetEnvironmentMonitor {
   /// ARN of the Amazon CloudWatch alarm.
   final String alarmArn;
-
   /// ARN of an IAM role for AWS AppConfig to monitor.
   final String alarmRoleArn;
 
@@ -16,10 +16,10 @@ class GetEnvironmentMonitor {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['alarmArn'] = alarmArn;
-    map['alarmRoleArn'] = alarmRoleArn;
-    return map;
+    return <String, dynamic>{
+      'alarmArn': alarmArn,
+      'alarmRoleArn': alarmRoleArn,
+    };
   }
 
   factory GetEnvironmentMonitor.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetEnvironmentMonitor {
     );
   }
 }
+

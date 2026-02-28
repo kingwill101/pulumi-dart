@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetSecurityPolicyRecaptchaOptionsConfig {
   /// A field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
   final String redirectSiteKey;
@@ -11,15 +12,15 @@ class GetSecurityPolicyRecaptchaOptionsConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['redirectSiteKey'] = redirectSiteKey;
-    return map;
+    return <String, dynamic>{
+      'redirectSiteKey': redirectSiteKey,
+    };
   }
 
-  factory GetSecurityPolicyRecaptchaOptionsConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GetSecurityPolicyRecaptchaOptionsConfig.fromMap(Map<String, dynamic> map) {
     return GetSecurityPolicyRecaptchaOptionsConfig(
       redirectSiteKey: map['redirectSiteKey'] as String,
     );
   }
 }
+

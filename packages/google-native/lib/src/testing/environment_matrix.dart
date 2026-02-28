@@ -8,10 +8,8 @@ import 'ios_device_list.dart';
 class EnvironmentMatrix {
   /// A list of Android devices; the test will be run only on the specified devices.
   final AndroidDeviceList? androidDeviceList;
-
   /// A matrix of Android devices.
   final AndroidMatrix? androidMatrix;
-
   /// A list of iOS devices.
   final IosDeviceList? iosDeviceList;
 
@@ -26,36 +24,19 @@ class EnvironmentMatrix {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final androidDeviceListValue = androidDeviceList;
-    if (androidDeviceListValue != null) {
-      map['androidDeviceList'] = androidDeviceListValue.toMap();
-    }
-    final androidMatrixValue = androidMatrix;
-    if (androidMatrixValue != null) {
-      map['androidMatrix'] = androidMatrixValue.toMap();
-    }
-    final iosDeviceListValue = iosDeviceList;
-    if (iosDeviceListValue != null) {
-      map['iosDeviceList'] = iosDeviceListValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'androidDeviceList': ?androidDeviceList == null ? null : androidDeviceList!.toMap(),
+      'androidMatrix': ?androidMatrix == null ? null : androidMatrix!.toMap(),
+      'iosDeviceList': ?iosDeviceList == null ? null : iosDeviceList!.toMap(),
+    };
   }
 
   factory EnvironmentMatrix.fromMap(Map<String, dynamic> map) {
     return EnvironmentMatrix(
-      androidDeviceList: map['androidDeviceList'] == null
-          ? null
-          : AndroidDeviceList.fromMap(
-              (map['androidDeviceList'] as Map).cast<String, dynamic>()),
-      androidMatrix: map['androidMatrix'] == null
-          ? null
-          : AndroidMatrix.fromMap(
-              (map['androidMatrix'] as Map).cast<String, dynamic>()),
-      iosDeviceList: map['iosDeviceList'] == null
-          ? null
-          : IosDeviceList.fromMap(
-              (map['iosDeviceList'] as Map).cast<String, dynamic>()),
+      androidDeviceList: map['androidDeviceList'] == null ? null : AndroidDeviceList.fromMap((map['androidDeviceList'] as Map).cast<String, dynamic>()),
+      androidMatrix: map['androidMatrix'] == null ? null : AndroidMatrix.fromMap((map['androidMatrix'] as Map).cast<String, dynamic>()),
+      iosDeviceList: map['iosDeviceList'] == null ? null : IosDeviceList.fromMap((map['iosDeviceList'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

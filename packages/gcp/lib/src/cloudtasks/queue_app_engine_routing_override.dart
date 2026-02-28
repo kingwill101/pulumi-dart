@@ -1,18 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class QueueAppEngineRoutingOverride {
   /// (Output)
   /// The host that the task is sent to.
   final String? host;
-
   /// App instance.
   /// By default, the task is sent to an instance which is available when the task is attempted.
   final String? instance;
-
   /// App service.
   /// By default, the task is sent to the service which is the default service when the task is attempted.
   final String? service;
-
   /// App version.
   /// By default, the task is sent to the version which is the default version when the task is attempted.
   final String? version;
@@ -30,24 +28,12 @@ class QueueAppEngineRoutingOverride {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final hostValue = host;
-    if (hostValue != null) {
-      map['host'] = hostValue;
-    }
-    final instanceValue = instance;
-    if (instanceValue != null) {
-      map['instance'] = instanceValue;
-    }
-    final serviceValue = service;
-    if (serviceValue != null) {
-      map['service'] = serviceValue;
-    }
-    final versionValue = version;
-    if (versionValue != null) {
-      map['version'] = versionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'host': ?host,
+      'instance': ?instance,
+      'service': ?service,
+      'version': ?version,
+    };
   }
 
   factory QueueAppEngineRoutingOverride.fromMap(Map<String, dynamic> map) {
@@ -59,3 +45,4 @@ class QueueAppEngineRoutingOverride {
     );
   }
 }
+

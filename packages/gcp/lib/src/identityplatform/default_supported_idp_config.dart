@@ -147,13 +147,10 @@ import 'default_supported_idp_config_args.dart';
 class DefaultSupportedIdpConfig extends pulumi.CustomResource {
   /// OAuth client ID
   late final pulumi.Output<String> clientId;
-
   /// OAuth client secret
   late final pulumi.Output<String> clientSecret;
-
   /// If this IDP allows the user to sign in
   late final pulumi.Output<bool?> enabled;
-
   /// ID of the IDP. Possible values include:
   /// * `apple.com`
   /// * `facebook.com`
@@ -166,10 +163,8 @@ class DefaultSupportedIdpConfig extends pulumi.CustomResource {
   /// * `twitter.com`
   /// * `yahoo.com`
   late final pulumi.Output<String> idpId;
-
   /// The name of the DefaultSupportedIdpConfig resource
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;

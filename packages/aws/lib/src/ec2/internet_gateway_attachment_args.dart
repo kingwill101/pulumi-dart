@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InternetGatewayAttachmentArgs {
   /// The ID of the internet gateway.
   final pulumi.Input<String> internetGatewayId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The ID of the VPC.
   final pulumi.Input<String> vpcId;
 
@@ -24,19 +22,17 @@ class InternetGatewayAttachmentArgs {
     required String internetGatewayId,
     String? region,
     required String vpcId,
-  })  : internetGatewayId = pulumi.Input.asInput<String>(internetGatewayId),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        vpcId = pulumi.Input.asInput<String>(vpcId);
+  }) :
+      internetGatewayId = pulumi.Input.asInput<String>(internetGatewayId),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      vpcId = pulumi.Input.asInput<String>(vpcId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['internetGatewayId'] = internetGatewayId;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['vpcId'] = vpcId;
-    return map;
+    return <String, dynamic>{
+      'internetGatewayId': internetGatewayId,
+      'region': ?region,
+      'vpcId': vpcId,
+    };
   }
 
   factory InternetGatewayAttachmentArgs.fromMap(Map<String, dynamic> map) {
@@ -47,3 +43,4 @@ class InternetGatewayAttachmentArgs {
     );
   }
 }
+

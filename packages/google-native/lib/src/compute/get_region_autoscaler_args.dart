@@ -19,19 +19,17 @@ class GetRegionAutoscalerArgs {
     required String autoscaler,
     String? project,
     required String region,
-  })  : autoscaler = pulumi.Input.asInput<String>(autoscaler),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        region = pulumi.Input.asInput<String>(region);
+  }) :
+      autoscaler = pulumi.Input.asInput<String>(autoscaler),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['autoscaler'] = autoscaler;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'autoscaler': autoscaler,
+      'project': ?project,
+      'region': region,
+    };
   }
 
   factory GetRegionAutoscalerArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetRegionAutoscalerArgs {
     );
   }
 }
+

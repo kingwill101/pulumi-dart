@@ -10,15 +10,12 @@ class VariableArgs {
   /// The name of the variable to manage. Note that variable
   /// names can be hierarchical using slashes (e.g. "prod-variables/hostname").
   final pulumi.Input<String>? name;
-
   /// The name of the RuntimeConfig resource containing this
   /// variable.
   final pulumi.Input<String> parent;
-
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// or `value` - (Required) The content to associate with the variable.
   /// Exactly one of `text` or `variable` must be specified. If `text` is specified,
   /// it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
@@ -40,32 +37,21 @@ class VariableArgs {
     String? project,
     String? text,
     String? value,
-  })  : name = pulumi.Input.asOptionalInput<String>(name),
-        parent = pulumi.Input.asInput<String>(parent),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        text = pulumi.Input.asOptionalInput<String>(text),
-        value = pulumi.Input.asOptionalInput<String>(value);
+  }) :
+      name = pulumi.Input.asOptionalInput<String>(name),
+      parent = pulumi.Input.asInput<String>(parent),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      text = pulumi.Input.asOptionalInput<String>(text),
+      value = pulumi.Input.asOptionalInput<String>(value);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    map['parent'] = parent;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final textValue = text;
-    if (textValue != null) {
-      map['text'] = textValue;
-    }
-    final valueValue = value;
-    if (valueValue != null) {
-      map['value'] = valueValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+      'parent': parent,
+      'project': ?project,
+      'text': ?text,
+      'value': ?value,
+    };
   }
 
   factory VariableArgs.fromMap(Map<String, dynamic> map) {
@@ -78,3 +64,4 @@ class VariableArgs {
     );
   }
 }
+

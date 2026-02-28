@@ -14,20 +14,15 @@ class FeedOutputConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final pubsubDestinationValue = pubsubDestination;
-    if (pubsubDestinationValue != null) {
-      map['pubsubDestination'] = pubsubDestinationValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'pubsubDestination': ?pubsubDestination == null ? null : pubsubDestination!.toMap(),
+    };
   }
 
   factory FeedOutputConfig.fromMap(Map<String, dynamic> map) {
     return FeedOutputConfig(
-      pubsubDestination: map['pubsubDestination'] == null
-          ? null
-          : PubsubDestination.fromMap(
-              (map['pubsubDestination'] as Map).cast<String, dynamic>()),
+      pubsubDestination: map['pubsubDestination'] == null ? null : PubsubDestination.fromMap((map['pubsubDestination'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

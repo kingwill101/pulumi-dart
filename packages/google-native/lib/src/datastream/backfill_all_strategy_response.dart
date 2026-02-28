@@ -8,10 +8,8 @@ import 'postgresql_rdbms_response.dart';
 class BackfillAllStrategyResponse {
   /// MySQL data source objects to avoid backfilling.
   final MysqlRdbmsResponse mysqlExcludedObjects;
-
   /// Oracle data source objects to avoid backfilling.
   final OracleRdbmsResponse oracleExcludedObjects;
-
   /// PostgreSQL data source objects to avoid backfilling.
   final PostgresqlRdbmsResponse postgresqlExcludedObjects;
 
@@ -26,21 +24,19 @@ class BackfillAllStrategyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['mysqlExcludedObjects'] = mysqlExcludedObjects.toMap();
-    map['oracleExcludedObjects'] = oracleExcludedObjects.toMap();
-    map['postgresqlExcludedObjects'] = postgresqlExcludedObjects.toMap();
-    return map;
+    return <String, dynamic>{
+      'mysqlExcludedObjects': mysqlExcludedObjects.toMap(),
+      'oracleExcludedObjects': oracleExcludedObjects.toMap(),
+      'postgresqlExcludedObjects': postgresqlExcludedObjects.toMap(),
+    };
   }
 
   factory BackfillAllStrategyResponse.fromMap(Map<String, dynamic> map) {
     return BackfillAllStrategyResponse(
-      mysqlExcludedObjects: MysqlRdbmsResponse.fromMap(
-          (map['mysqlExcludedObjects'] as Map).cast<String, dynamic>()),
-      oracleExcludedObjects: OracleRdbmsResponse.fromMap(
-          (map['oracleExcludedObjects'] as Map).cast<String, dynamic>()),
-      postgresqlExcludedObjects: PostgresqlRdbmsResponse.fromMap(
-          (map['postgresqlExcludedObjects'] as Map).cast<String, dynamic>()),
+      mysqlExcludedObjects: MysqlRdbmsResponse.fromMap((map['mysqlExcludedObjects'] as Map).cast<String, dynamic>()),
+      oracleExcludedObjects: OracleRdbmsResponse.fromMap((map['oracleExcludedObjects'] as Map).cast<String, dynamic>()),
+      postgresqlExcludedObjects: PostgresqlRdbmsResponse.fromMap((map['postgresqlExcludedObjects'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum IstioConfigAuth {
     throw ArgumentError('Unknown IstioConfigAuth value: $value');
   }
 }
+

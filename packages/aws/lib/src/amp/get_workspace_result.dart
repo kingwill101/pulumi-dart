@@ -1,29 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getWorkspace.
 class GetWorkspaceResult {
   /// Prometheus workspace alias.
   final String alias;
-
   /// ARN of the Prometheus workspace.
   final String arn;
-
   /// Creation date of the Prometheus workspace.
   final String createdDate;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// ARN of the KMS key used to encrypt data in the Prometheus workspace.
   final String kmsKeyArn;
-
   /// Endpoint of the Prometheus workspace.
   final String prometheusEndpoint;
   final String region;
-
   /// Status of the Prometheus workspace.
   final String status;
-
   /// Tags assigned to the resource.
   final Map<String, String> tags;
   final String workspaceId;
@@ -53,18 +47,18 @@ class GetWorkspaceResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['alias'] = alias;
-    map['arn'] = arn;
-    map['createdDate'] = createdDate;
-    map['id'] = id;
-    map['kmsKeyArn'] = kmsKeyArn;
-    map['prometheusEndpoint'] = prometheusEndpoint;
-    map['region'] = region;
-    map['status'] = status;
-    map['tags'] = tags;
-    map['workspaceId'] = workspaceId;
-    return map;
+    return <String, dynamic>{
+      'alias': alias,
+      'arn': arn,
+      'createdDate': createdDate,
+      'id': id,
+      'kmsKeyArn': kmsKeyArn,
+      'prometheusEndpoint': prometheusEndpoint,
+      'region': region,
+      'status': status,
+      'tags': tags,
+      'workspaceId': workspaceId,
+    };
   }
 
   factory GetWorkspaceResult.fromMap(Map<String, dynamic> map) {
@@ -82,3 +76,4 @@ class GetWorkspaceResult {
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv {
   /// Name of the environment variable. Must be a valid C identifier.
   final String name;
-
   /// Variables that reference a $(VAR_NAME) are expanded
   /// using the previous defined environment variables in the container and
   /// any service environment variables. If a variable cannot be resolved,
@@ -22,17 +22,17 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
-  factory AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv.fromMap(
-      Map<String, dynamic> map) {
+  factory AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv(
       name: map['name'] as String,
       value: map['value'] as String,
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'agentcore_browser_recording_s3_location.dart';
 class AgentcoreBrowserRecording {
   /// Whether to enable recording for browser sessions. Defaults to `false`.
   final bool? enabled;
-
   /// S3 location where browser session recordings are stored. See `s3_location` below.
   final AgentcoreBrowserRecordingS3Location? s3Location;
 
@@ -18,25 +17,17 @@ class AgentcoreBrowserRecording {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    final s3LocationValue = s3Location;
-    if (s3LocationValue != null) {
-      map['s3Location'] = s3LocationValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'enabled': ?enabled,
+      's3Location': ?s3Location == null ? null : s3Location!.toMap(),
+    };
   }
 
   factory AgentcoreBrowserRecording.fromMap(Map<String, dynamic> map) {
     return AgentcoreBrowserRecording(
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      s3Location: map['s3Location'] == null
-          ? null
-          : AgentcoreBrowserRecordingS3Location.fromMap(
-              (map['s3Location'] as Map).cast<String, dynamic>()),
+      s3Location: map['s3Location'] == null ? null : AgentcoreBrowserRecordingS3Location.fromMap((map['s3Location'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

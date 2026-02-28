@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration options for networking connections in the Composer 2 environment.
 class NetworkingConfigResponseComposerV1beta1 {
   /// Optional. Indicates the user requested specifc connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment.
@@ -12,15 +13,15 @@ class NetworkingConfigResponseComposerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['connectionType'] = connectionType;
-    return map;
+    return <String, dynamic>{
+      'connectionType': connectionType,
+    };
   }
 
-  factory NetworkingConfigResponseComposerV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory NetworkingConfigResponseComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return NetworkingConfigResponseComposerV1beta1(
       connectionType: map['connectionType'] as String,
     );
   }
 }
+

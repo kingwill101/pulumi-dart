@@ -5,7 +5,6 @@ import 'managed_zone_forwarding_config_name_server_target.dart';
 
 class ManagedZoneForwardingConfig {
   final String? kind;
-
   /// List of target name servers to forward to. Cloud DNS selects the best available name server if more than one target is given.
   final List<ManagedZoneForwardingConfigNameServerTarget>? targetNameServers;
 
@@ -18,31 +17,17 @@ class ManagedZoneForwardingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final kindValue = kind;
-    if (kindValue != null) {
-      map['kind'] = kindValue;
-    }
-    final targetNameServersValue = targetNameServers;
-    if (targetNameServersValue != null) {
-      map['targetNameServers'] = pulumi.Input.encodeList<
-              ManagedZoneForwardingConfigNameServerTarget,
-              Map<String, dynamic>>(
-          targetNameServersValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'kind': ?kind,
+      'targetNameServers': ?targetNameServers == null ? null : pulumi.Input.encodeList<ManagedZoneForwardingConfigNameServerTarget, Map<String, dynamic>>(targetNameServers!, (value) => value.toMap()),
+    };
   }
 
   factory ManagedZoneForwardingConfig.fromMap(Map<String, dynamic> map) {
     return ManagedZoneForwardingConfig(
       kind: map['kind'] == null ? null : map['kind'] as String,
-      targetNameServers: map['targetNameServers'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  ManagedZoneForwardingConfigNameServerTarget>(
-              map['targetNameServers'],
-              (value) => ManagedZoneForwardingConfigNameServerTarget.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      targetNameServers: map['targetNameServers'] == null ? null : pulumi.Input.decodeList<ManagedZoneForwardingConfigNameServerTarget>(map['targetNameServers'], (value) => ManagedZoneForwardingConfigNameServerTarget.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

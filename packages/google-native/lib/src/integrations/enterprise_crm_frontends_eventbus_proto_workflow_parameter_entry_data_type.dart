@@ -19,20 +19,16 @@ enum EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataType {
   nonSerializableObject("NON_SERIALIZABLE_OBJECT"),
   jsonValue("JSON_VALUE");
 
-  const EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataType(
-      this.value);
+  const EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataType(this.value);
   final String value;
 
-  static EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataType
-      fromValue(String value) {
-    for (final item
-        in EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataType
-            .values) {
+  static EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataType fromValue(String value) {
+    for (final item in EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataType.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataType value: $value');
+    throw ArgumentError('Unknown EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataType value: $value');
   }
 }
+

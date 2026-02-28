@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRoles.
 class GetRolesResult {
   /// Set of ARNs of the matched IAM roles.
   final List<String> arns;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? nameRegex;
-
   /// Set of Names of the matched IAM roles.
   final List<String> names;
   final String? pathPrefix;
@@ -28,19 +27,13 @@ class GetRolesResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arns'] = arns;
-    map['id'] = id;
-    final nameRegexValue = nameRegex;
-    if (nameRegexValue != null) {
-      map['nameRegex'] = nameRegexValue;
-    }
-    map['names'] = names;
-    final pathPrefixValue = pathPrefix;
-    if (pathPrefixValue != null) {
-      map['pathPrefix'] = pathPrefixValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'arns': arns,
+      'id': id,
+      'nameRegex': ?nameRegex,
+      'names': names,
+      'pathPrefix': ?pathPrefix,
+    };
   }
 
   factory GetRolesResult.fromMap(Map<String, dynamic> map) {
@@ -49,8 +42,8 @@ class GetRolesResult {
       id: map['id'] as String,
       nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
       names: (map['names'] as List).cast<String>(),
-      pathPrefix:
-          map['pathPrefix'] == null ? null : map['pathPrefix'] as String,
+      pathPrefix: map['pathPrefix'] == null ? null : map['pathPrefix'] as String,
     );
   }
 }
+

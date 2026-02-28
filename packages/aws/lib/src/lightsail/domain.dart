@@ -95,12 +95,10 @@ import 'domain_args.dart';
 class Domain extends pulumi.CustomResource {
   /// ARN of the Lightsail domain.
   late final pulumi.Output<String> arn;
-
   /// Name of the Lightsail domain to manage.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> domainName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A securely stored value.
 class SecretResponse {
   /// The relative resource name of a Secret Manager secret version, in the following form:projects/{project_number}/secrets/{secret_id}/versions/{version_id}.
@@ -12,9 +13,9 @@ class SecretResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cloudSecret'] = cloudSecret;
-    return map;
+    return <String, dynamic>{
+      'cloudSecret': cloudSecret,
+    };
   }
 
   factory SecretResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class SecretResponse {
     );
   }
 }
+

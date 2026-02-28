@@ -223,7 +223,6 @@ import 'role_policies_exclusive_args.dart';
 class RolePoliciesExclusive extends pulumi.CustomResource {
   /// A list of inline policy names to be assigned to the role. Policies attached to this role but not configured in this argument will be removed.
   late final pulumi.Output<List<String>> policyNames;
-
   /// IAM role name.
   late final pulumi.Output<String> roleName;
 

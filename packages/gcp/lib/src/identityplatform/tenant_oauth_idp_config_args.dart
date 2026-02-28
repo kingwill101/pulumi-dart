@@ -9,26 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TenantOauthIdpConfigArgs {
   /// The client id of an OAuth client.
   final pulumi.Input<String> clientId;
-
   /// The client secret of the OAuth client, to enable OIDC code flow.
   final pulumi.Input<String>? clientSecret;
-
   /// Human friendly display name.
   final pulumi.Input<String> displayName;
-
   /// If this config allows users to sign in with the provider.
   final pulumi.Input<bool>? enabled;
-
   /// For OIDC Idps, the issuer identifier.
   final pulumi.Input<String> issuer;
-
   /// The name of the OauthIdpConfig. Must start with `oidc.`.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The name of the tenant where this OIDC IDP configuration resource exists
   final pulumi.Input<String> tenant;
 
@@ -50,45 +43,33 @@ class TenantOauthIdpConfigArgs {
     String? name,
     String? project,
     required String tenant,
-  })  : clientId = pulumi.Input.asInput<String>(clientId),
-        clientSecret = pulumi.Input.asOptionalInput<String>(clientSecret),
-        displayName = pulumi.Input.asInput<String>(displayName),
-        enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-        issuer = pulumi.Input.asInput<String>(issuer),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        tenant = pulumi.Input.asInput<String>(tenant);
+  }) :
+      clientId = pulumi.Input.asInput<String>(clientId),
+      clientSecret = pulumi.Input.asOptionalInput<String>(clientSecret),
+      displayName = pulumi.Input.asInput<String>(displayName),
+      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
+      issuer = pulumi.Input.asInput<String>(issuer),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      tenant = pulumi.Input.asInput<String>(tenant);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clientId'] = clientId;
-    final clientSecretValue = clientSecret;
-    if (clientSecretValue != null) {
-      map['clientSecret'] = clientSecretValue;
-    }
-    map['displayName'] = displayName;
-    final enabledValue = enabled;
-    if (enabledValue != null) {
-      map['enabled'] = enabledValue;
-    }
-    map['issuer'] = issuer;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['tenant'] = tenant;
-    return map;
+    return <String, dynamic>{
+      'clientId': clientId,
+      'clientSecret': ?clientSecret,
+      'displayName': displayName,
+      'enabled': ?enabled,
+      'issuer': issuer,
+      'name': ?name,
+      'project': ?project,
+      'tenant': tenant,
+    };
   }
 
   factory TenantOauthIdpConfigArgs.fromMap(Map<String, dynamic> map) {
     return TenantOauthIdpConfigArgs(
       clientId: map['clientId'] as String,
-      clientSecret:
-          map['clientSecret'] == null ? null : map['clientSecret'] as String,
+      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
       displayName: map['displayName'] as String,
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
       issuer: map['issuer'] as String,
@@ -98,3 +79,4 @@ class TenantOauthIdpConfigArgs {
     );
   }
 }
+

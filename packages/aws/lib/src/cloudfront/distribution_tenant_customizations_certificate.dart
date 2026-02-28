@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DistributionTenantCustomizationsCertificate {
   /// ARN of the distribution tenant.
   final String? arn;
@@ -11,18 +12,15 @@ class DistributionTenantCustomizationsCertificate {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final arnValue = arn;
-    if (arnValue != null) {
-      map['arn'] = arnValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'arn': ?arn,
+    };
   }
 
-  factory DistributionTenantCustomizationsCertificate.fromMap(
-      Map<String, dynamic> map) {
+  factory DistributionTenantCustomizationsCertificate.fromMap(Map<String, dynamic> map) {
     return DistributionTenantCustomizationsCertificate(
       arn: map['arn'] == null ? null : map['arn'] as String,
     );
   }
 }
+

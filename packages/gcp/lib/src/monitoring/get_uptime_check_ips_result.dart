@@ -7,7 +7,6 @@ import 'get_uptime_check_ips_uptime_check_ip.dart';
 class GetUptimeCheckIPsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of uptime check IPs used by Stackdriver Monitoring. Each `uptime_check_ip` contains:
   final List<GetUptimeCheckIPsUptimeCheckIp> uptimeCheckIps;
 
@@ -20,21 +19,17 @@ class GetUptimeCheckIPsResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['uptimeCheckIps'] = pulumi.Input.encodeList<
-        GetUptimeCheckIPsUptimeCheckIp,
-        Map<String, dynamic>>(uptimeCheckIps, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'uptimeCheckIps': pulumi.Input.encodeList<GetUptimeCheckIPsUptimeCheckIp, Map<String, dynamic>>(uptimeCheckIps, (value) => value.toMap()),
+    };
   }
 
   factory GetUptimeCheckIPsResult.fromMap(Map<String, dynamic> map) {
     return GetUptimeCheckIPsResult(
       id: map['id'] as String,
-      uptimeCheckIps: pulumi.Input.decodeList<GetUptimeCheckIPsUptimeCheckIp>(
-          map['uptimeCheckIps'],
-          (value) => GetUptimeCheckIPsUptimeCheckIp.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      uptimeCheckIps: pulumi.Input.decodeList<GetUptimeCheckIPsUptimeCheckIp>(map['uptimeCheckIps'], (value) => GetUptimeCheckIPsUptimeCheckIp.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

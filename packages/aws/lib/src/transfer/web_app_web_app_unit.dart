@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class WebAppWebAppUnit {
   final int provisioned;
 
@@ -10,9 +11,9 @@ class WebAppWebAppUnit {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['provisioned'] = provisioned;
-    return map;
+    return <String, dynamic>{
+      'provisioned': provisioned,
+    };
   }
 
   factory WebAppWebAppUnit.fromMap(Map<String, dynamic> map) {
@@ -21,3 +22,4 @@ class WebAppWebAppUnit {
     );
   }
 }
+

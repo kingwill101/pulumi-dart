@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GuardrailActionGenerativeAnswer {
   /// The prompt to use for the generative answer.
   final String prompt;
@@ -11,9 +12,9 @@ class GuardrailActionGenerativeAnswer {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['prompt'] = prompt;
-    return map;
+    return <String, dynamic>{
+      'prompt': prompt,
+    };
   }
 
   factory GuardrailActionGenerativeAnswer.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class GuardrailActionGenerativeAnswer {
     );
   }
 }
+

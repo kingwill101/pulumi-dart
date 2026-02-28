@@ -8,11 +8,9 @@ class TaskSparkInfrastructureSpec {
   /// Compute resources needed for a Task when using Dataproc Serverless.
   /// Structure is documented below.
   final TaskSparkInfrastructureSpecBatch? batch;
-
   /// Container Image Runtime Configuration.
   /// Structure is documented below.
   final TaskSparkInfrastructureSpecContainerImage? containerImage;
-
   /// Vpc network.
   /// Structure is documented below.
   final TaskSparkInfrastructureSpecVpcNetwork? vpcNetwork;
@@ -28,36 +26,19 @@ class TaskSparkInfrastructureSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final batchValue = batch;
-    if (batchValue != null) {
-      map['batch'] = batchValue.toMap();
-    }
-    final containerImageValue = containerImage;
-    if (containerImageValue != null) {
-      map['containerImage'] = containerImageValue.toMap();
-    }
-    final vpcNetworkValue = vpcNetwork;
-    if (vpcNetworkValue != null) {
-      map['vpcNetwork'] = vpcNetworkValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'batch': ?batch == null ? null : batch!.toMap(),
+      'containerImage': ?containerImage == null ? null : containerImage!.toMap(),
+      'vpcNetwork': ?vpcNetwork == null ? null : vpcNetwork!.toMap(),
+    };
   }
 
   factory TaskSparkInfrastructureSpec.fromMap(Map<String, dynamic> map) {
     return TaskSparkInfrastructureSpec(
-      batch: map['batch'] == null
-          ? null
-          : TaskSparkInfrastructureSpecBatch.fromMap(
-              (map['batch'] as Map).cast<String, dynamic>()),
-      containerImage: map['containerImage'] == null
-          ? null
-          : TaskSparkInfrastructureSpecContainerImage.fromMap(
-              (map['containerImage'] as Map).cast<String, dynamic>()),
-      vpcNetwork: map['vpcNetwork'] == null
-          ? null
-          : TaskSparkInfrastructureSpecVpcNetwork.fromMap(
-              (map['vpcNetwork'] as Map).cast<String, dynamic>()),
+      batch: map['batch'] == null ? null : TaskSparkInfrastructureSpecBatch.fromMap((map['batch'] as Map).cast<String, dynamic>()),
+      containerImage: map['containerImage'] == null ? null : TaskSparkInfrastructureSpecContainerImage.fromMap((map['containerImage'] as Map).cast<String, dynamic>()),
+      vpcNetwork: map['vpcNetwork'] == null ? null : TaskSparkInfrastructureSpecVpcNetwork.fromMap((map['vpcNetwork'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

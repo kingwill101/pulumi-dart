@@ -6,7 +6,6 @@ import 'alias_context_kind_containeranalysis_v1beta1.dart';
 class AliasContextContaineranalysisV1beta1 {
   /// The alias kind.
   final AliasContextKindContaineranalysisV1beta1? kind;
-
   /// The alias name.
   final String? name;
 
@@ -19,26 +18,17 @@ class AliasContextContaineranalysisV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final kindValue = kind;
-    if (kindValue != null) {
-      map['kind'] = kindValue.value;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'kind': ?kind == null ? null : kind!.value,
+      'name': ?name,
+    };
   }
 
-  factory AliasContextContaineranalysisV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory AliasContextContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return AliasContextContaineranalysisV1beta1(
-      kind: map['kind'] == null
-          ? null
-          : AliasContextKindContaineranalysisV1beta1.fromValue(
-              map['kind'] as String),
+      kind: map['kind'] == null ? null : AliasContextKindContaineranalysisV1beta1.fromValue(map['kind'] as String),
       name: map['name'] == null ? null : map['name'] as String,
     );
   }
 }
+

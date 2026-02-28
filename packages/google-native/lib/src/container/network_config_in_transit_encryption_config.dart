@@ -1,10 +1,8 @@
 /// Specify the details of in-transit encryption.
 enum NetworkConfigInTransitEncryptionConfig {
-  inTransitEncryptionConfigUnspecified(
-      "IN_TRANSIT_ENCRYPTION_CONFIG_UNSPECIFIED"),
+  inTransitEncryptionConfigUnspecified("IN_TRANSIT_ENCRYPTION_CONFIG_UNSPECIFIED"),
   inTransitEncryptionDisabled("IN_TRANSIT_ENCRYPTION_DISABLED"),
-  inTransitEncryptionInterNodeTransparent(
-      "IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT");
+  inTransitEncryptionInterNodeTransparent("IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT");
 
   const NetworkConfigInTransitEncryptionConfig(this.value);
   final String value;
@@ -15,7 +13,7 @@ enum NetworkConfigInTransitEncryptionConfig {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown NetworkConfigInTransitEncryptionConfig value: $value');
+    throw ArgumentError('Unknown NetworkConfigInTransitEncryptionConfig value: $value');
   }
 }
+

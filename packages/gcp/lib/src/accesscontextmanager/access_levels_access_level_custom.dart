@@ -16,15 +16,15 @@ class AccessLevelsAccessLevelCustom {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['expr'] = expr.toMap();
-    return map;
+    return <String, dynamic>{
+      'expr': expr.toMap(),
+    };
   }
 
   factory AccessLevelsAccessLevelCustom.fromMap(Map<String, dynamic> map) {
     return AccessLevelsAccessLevelCustom(
-      expr: AccessLevelsAccessLevelCustomExpr.fromMap(
-          (map['expr'] as Map).cast<String, dynamic>()),
+      expr: AccessLevelsAccessLevelCustomExpr.fromMap((map['expr'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

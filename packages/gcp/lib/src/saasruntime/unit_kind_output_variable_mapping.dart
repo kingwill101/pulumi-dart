@@ -7,11 +7,9 @@ class UnitKindOutputVariableMapping {
   /// Output variables whose values will be passed on to dependencies
   /// Structure is documented below.
   final UnitKindOutputVariableMappingFrom? from;
-
   /// Input variables whose values will be passed on to dependencies
   /// Structure is documented below.
   final UnitKindOutputVariableMappingTo? to;
-
   /// name of the variable
   final String variable;
 
@@ -26,30 +24,19 @@ class UnitKindOutputVariableMapping {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final fromValue = from;
-    if (fromValue != null) {
-      map['from'] = fromValue.toMap();
-    }
-    final toValue = to;
-    if (toValue != null) {
-      map['to'] = toValue.toMap();
-    }
-    map['variable'] = variable;
-    return map;
+    return <String, dynamic>{
+      'from': ?from == null ? null : from!.toMap(),
+      'to': ?to == null ? null : to!.toMap(),
+      'variable': variable,
+    };
   }
 
   factory UnitKindOutputVariableMapping.fromMap(Map<String, dynamic> map) {
     return UnitKindOutputVariableMapping(
-      from: map['from'] == null
-          ? null
-          : UnitKindOutputVariableMappingFrom.fromMap(
-              (map['from'] as Map).cast<String, dynamic>()),
-      to: map['to'] == null
-          ? null
-          : UnitKindOutputVariableMappingTo.fromMap(
-              (map['to'] as Map).cast<String, dynamic>()),
+      from: map['from'] == null ? null : UnitKindOutputVariableMappingFrom.fromMap((map['from'] as Map).cast<String, dynamic>()),
+      to: map['to'] == null ? null : UnitKindOutputVariableMappingTo.fromMap((map['to'] as Map).cast<String, dynamic>()),
       variable: map['variable'] as String,
     );
   }
 }
+

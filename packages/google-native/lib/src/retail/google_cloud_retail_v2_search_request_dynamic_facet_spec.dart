@@ -14,21 +14,15 @@ class GoogleCloudRetailV2SearchRequestDynamicFacetSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final modeValue = mode;
-    if (modeValue != null) {
-      map['mode'] = modeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'mode': ?mode == null ? null : mode!.value,
+    };
   }
 
-  factory GoogleCloudRetailV2SearchRequestDynamicFacetSpec.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudRetailV2SearchRequestDynamicFacetSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2SearchRequestDynamicFacetSpec(
-      mode: map['mode'] == null
-          ? null
-          : GoogleCloudRetailV2SearchRequestDynamicFacetSpecMode.fromValue(
-              map['mode'] as String),
+      mode: map['mode'] == null ? null : GoogleCloudRetailV2SearchRequestDynamicFacetSpecMode.fromValue(map['mode'] as String),
     );
   }
 }
+

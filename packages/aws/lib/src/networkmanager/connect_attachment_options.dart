@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConnectAttachmentOptions {
   /// Protocol used for the attachment connection. Valid values: `GRE`, `NO_ENCAP`.
   final String? protocol;
@@ -11,12 +12,9 @@ class ConnectAttachmentOptions {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final protocolValue = protocol;
-    if (protocolValue != null) {
-      map['protocol'] = protocolValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'protocol': ?protocol,
+    };
   }
 
   factory ConnectAttachmentOptions.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class ConnectAttachmentOptions {
     );
   }
 }
+

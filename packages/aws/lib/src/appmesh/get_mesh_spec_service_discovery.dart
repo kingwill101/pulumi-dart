@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetMeshSpecServiceDiscovery {
   final String ipPreference;
 
@@ -10,9 +11,9 @@ class GetMeshSpecServiceDiscovery {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['ipPreference'] = ipPreference;
-    return map;
+    return <String, dynamic>{
+      'ipPreference': ipPreference,
+    };
   }
 
   factory GetMeshSpecServiceDiscovery.fromMap(Map<String, dynamic> map) {
@@ -21,3 +22,4 @@ class GetMeshSpecServiceDiscovery {
     );
   }
 }
+

@@ -14,19 +14,15 @@ class UpdatePolicy {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final modeValue = mode;
-    if (modeValue != null) {
-      map['mode'] = modeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'mode': ?mode == null ? null : mode!.value,
+    };
   }
 
   factory UpdatePolicy.fromMap(Map<String, dynamic> map) {
     return UpdatePolicy(
-      mode: map['mode'] == null
-          ? null
-          : UpdatePolicyMode.fromValue(map['mode'] as String),
+      mode: map['mode'] == null ? null : UpdatePolicyMode.fromValue(map['mode'] as String),
     );
   }
 }
+

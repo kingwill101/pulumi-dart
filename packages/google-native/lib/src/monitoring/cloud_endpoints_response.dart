@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Cloud Endpoints service. Learn more at https://cloud.google.com/endpoints.
 class CloudEndpointsResponse {
   /// The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource (https://cloud.google.com/monitoring/api/resources#tag_api).
@@ -12,9 +13,9 @@ class CloudEndpointsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['service'] = service;
-    return map;
+    return <String, dynamic>{
+      'service': service,
+    };
   }
 
   factory CloudEndpointsResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class CloudEndpointsResponse {
     );
   }
 }
+

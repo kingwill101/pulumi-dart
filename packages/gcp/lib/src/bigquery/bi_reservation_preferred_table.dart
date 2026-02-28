@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BiReservationPreferredTable {
   /// The ID of the dataset in the above project.
   final String? datasetId;
-
   /// The assigned project ID of the project.
   final String? projectId;
-
   /// The ID of the table in the above dataset.
   final String? tableId;
 
@@ -21,20 +20,11 @@ class BiReservationPreferredTable {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final datasetIdValue = datasetId;
-    if (datasetIdValue != null) {
-      map['datasetId'] = datasetIdValue;
-    }
-    final projectIdValue = projectId;
-    if (projectIdValue != null) {
-      map['projectId'] = projectIdValue;
-    }
-    final tableIdValue = tableId;
-    if (tableIdValue != null) {
-      map['tableId'] = tableIdValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'datasetId': ?datasetId,
+      'projectId': ?projectId,
+      'tableId': ?tableId,
+    };
   }
 
   factory BiReservationPreferredTable.fromMap(Map<String, dynamic> map) {
@@ -45,3 +35,4 @@ class BiReservationPreferredTable {
     );
   }
 }
+

@@ -10,10 +10,8 @@ import 'workspaces.dart';
 class GetRemoteReferenceArgs {
   /// The remote backend hostname to connect to.
   final pulumi.Input<String>? hostname;
-
   /// The name of the organization containing the targeted workspace(s).
   final pulumi.Input<String> organization;
-
   /// The token used to authenticate with the remote backend.
   final pulumi.Input<String>? token;
   final pulumi.Input<Workspaces> workspaces;
@@ -28,28 +26,19 @@ class GetRemoteReferenceArgs {
     required String organization,
     String? token,
     required Workspaces workspaces,
-  }) : hostname = pulumi.Input.asOptionalInput<String>(hostname),
-       organization = pulumi.Input.asInput<String>(organization),
-       token = pulumi.Input.asOptionalInput<String>(token),
-       workspaces = pulumi.Input.asInput<Workspaces>(workspaces);
+  }) :
+      hostname = pulumi.Input.asOptionalInput<String>(hostname),
+      organization = pulumi.Input.asInput<String>(organization),
+      token = pulumi.Input.asOptionalInput<String>(token),
+      workspaces = pulumi.Input.asInput<Workspaces>(workspaces);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final hostnameValue = hostname;
-    if (hostnameValue != null) {
-      map['hostname'] = hostnameValue;
-    }
-    map['organization'] = organization;
-    final tokenValue = token;
-    if (tokenValue != null) {
-      map['token'] = tokenValue;
-    }
-    map['workspaces'] =
-        pulumi.Input.mapInputValue<Workspaces, Map<String, dynamic>>(
-          workspaces,
-          (value) => value.toMap(),
-        );
-    return map;
+    return <String, dynamic>{
+      'hostname': ?hostname,
+      'organization': organization,
+      'token': ?token,
+      'workspaces': pulumi.Input.mapInputValue<Workspaces, Map<String, dynamic>>(workspaces, (value) => value.toMap()),
+    };
   }
 
   factory GetRemoteReferenceArgs.fromMap(Map<String, dynamic> map) {
@@ -57,9 +46,8 @@ class GetRemoteReferenceArgs {
       hostname: map['hostname'] == null ? null : map['hostname'] as String,
       organization: map['organization'] as String,
       token: map['token'] == null ? null : map['token'] as String,
-      workspaces: Workspaces.fromMap(
-        (map['workspaces'] as Map).cast<String, dynamic>(),
-      ),
+      workspaces: Workspaces.fromMap((map['workspaces'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

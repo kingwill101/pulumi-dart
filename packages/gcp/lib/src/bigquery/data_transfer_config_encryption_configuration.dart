@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DataTransferConfigEncryptionConfiguration {
   /// The name of the KMS key used for encrypting BigQuery data.
   final String kmsKeyName;
@@ -11,15 +12,15 @@ class DataTransferConfigEncryptionConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kmsKeyName'] = kmsKeyName;
-    return map;
+    return <String, dynamic>{
+      'kmsKeyName': kmsKeyName,
+    };
   }
 
-  factory DataTransferConfigEncryptionConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory DataTransferConfigEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return DataTransferConfigEncryptionConfiguration(
       kmsKeyName: map['kmsKeyName'] as String,
     );
   }
 }
+

@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Additional information of a recommendation engine.
 class GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadataResponse {
   /// The state of data requirements for this engine: `DATA_OK` and `DATA_ERROR`. Engine cannot be trained if the data is in `DATA_ERROR` state. Engine can have `DATA_ERROR` state even if serving state is `ACTIVE`: engines were trained successfully before, but cannot be refreshed because the underlying engine no longer has sufficient data for training.
   final String dataState;
-
   /// The timestamp when the latest successful tune finished. Only applicable on Media Recommendation engines.
   final String lastTuneTime;
-
   /// The serving state of the engine: `ACTIVE`, `NOT_ACTIVE`.
   final String servingState;
-
   /// The latest tune operation id associated with the engine. Only applicable on Media Recommendation engines. If present, this operation id can be used to determine if there is an ongoing tune for this engine. To check the operation status, send the GetOperation request with this operation id in the engine resource format. If no tuning has happened for this engine, the string is empty.
   final String tuningOperation;
 
@@ -27,16 +25,15 @@ class GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadataResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dataState'] = dataState;
-    map['lastTuneTime'] = lastTuneTime;
-    map['servingState'] = servingState;
-    map['tuningOperation'] = tuningOperation;
-    return map;
+    return <String, dynamic>{
+      'dataState': dataState,
+      'lastTuneTime': lastTuneTime,
+      'servingState': servingState,
+      'tuningOperation': tuningOperation,
+    };
   }
 
-  factory GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadataResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadataResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadataResponse(
       dataState: map['dataState'] as String,
       lastTuneTime: map['lastTuneTime'] as String,
@@ -45,3 +42,4 @@ class GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadataResponse {
     );
   }
 }
+

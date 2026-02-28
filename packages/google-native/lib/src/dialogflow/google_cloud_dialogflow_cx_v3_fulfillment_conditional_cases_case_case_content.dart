@@ -7,7 +7,6 @@ import 'google_cloud_dialogflow_cx_v3_response_message.dart';
 class GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent {
   /// Additional cases to be evaluated.
   final GoogleCloudDialogflowCxV3FulfillmentConditionalCases? additionalCases;
-
   /// Returned message.
   final GoogleCloudDialogflowCxV3ResponseMessage? message;
 
@@ -20,29 +19,17 @@ class GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final additionalCasesValue = additionalCases;
-    if (additionalCasesValue != null) {
-      map['additionalCases'] = additionalCasesValue.toMap();
-    }
-    final messageValue = message;
-    if (messageValue != null) {
-      map['message'] = messageValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'additionalCases': ?additionalCases == null ? null : additionalCases!.toMap(),
+      'message': ?message == null ? null : message!.toMap(),
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent(
-      additionalCases: map['additionalCases'] == null
-          ? null
-          : GoogleCloudDialogflowCxV3FulfillmentConditionalCases.fromMap(
-              (map['additionalCases'] as Map).cast<String, dynamic>()),
-      message: map['message'] == null
-          ? null
-          : GoogleCloudDialogflowCxV3ResponseMessage.fromMap(
-              (map['message'] as Map).cast<String, dynamic>()),
+      additionalCases: map['additionalCases'] == null ? null : GoogleCloudDialogflowCxV3FulfillmentConditionalCases.fromMap((map['additionalCases'] as Map).cast<String, dynamic>()),
+      message: map['message'] == null ? null : GoogleCloudDialogflowCxV3ResponseMessage.fromMap((map['message'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class BucketAbacAbacStatus {
   /// ABAC status of the general purpose bucket.
   /// Valid values are `Enabled` and `Disabled`.
@@ -13,9 +14,9 @@ class BucketAbacAbacStatus {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['status'] = status;
-    return map;
+    return <String, dynamic>{
+      'status': status,
+    };
   }
 
   factory BucketAbacAbacStatus.fromMap(Map<String, dynamic> map) {
@@ -24,3 +25,4 @@ class BucketAbacAbacStatus {
     );
   }
 }
+

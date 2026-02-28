@@ -8,7 +8,6 @@ import 'http_route_route_match_response.dart';
 class HttpRouteRouteRuleResponse {
   /// The detailed rule defining how to route matched traffic.
   final HttpRouteRouteActionResponse action;
-
   /// A list of matches define conditions used for matching the rule against incoming HTTP requests. Each match is independent, i.e. this rule will be matched if ANY one of the matches is satisfied. If no matches field is specified, this rule will unconditionally match traffic. If a default rule is desired to be configured, add a rule with no matches specified to the end of the rules list.
   final List<HttpRouteRouteMatchResponse> matches;
 
@@ -21,21 +20,17 @@ class HttpRouteRouteRuleResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['action'] = action.toMap();
-    map['matches'] = pulumi.Input.encodeList<HttpRouteRouteMatchResponse,
-        Map<String, dynamic>>(matches, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'action': action.toMap(),
+      'matches': pulumi.Input.encodeList<HttpRouteRouteMatchResponse, Map<String, dynamic>>(matches, (value) => value.toMap()),
+    };
   }
 
   factory HttpRouteRouteRuleResponse.fromMap(Map<String, dynamic> map) {
     return HttpRouteRouteRuleResponse(
-      action: HttpRouteRouteActionResponse.fromMap(
-          (map['action'] as Map).cast<String, dynamic>()),
-      matches: pulumi.Input.decodeList<HttpRouteRouteMatchResponse>(
-          map['matches'],
-          (value) => HttpRouteRouteMatchResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      action: HttpRouteRouteActionResponse.fromMap((map['action'] as Map).cast<String, dynamic>()),
+      matches: pulumi.Input.decodeList<HttpRouteRouteMatchResponse>(map['matches'], (value) => HttpRouteRouteMatchResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

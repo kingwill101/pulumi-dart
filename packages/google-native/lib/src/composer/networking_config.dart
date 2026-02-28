@@ -14,20 +14,15 @@ class NetworkingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final connectionTypeValue = connectionType;
-    if (connectionTypeValue != null) {
-      map['connectionType'] = connectionTypeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'connectionType': ?connectionType == null ? null : connectionType!.value,
+    };
   }
 
   factory NetworkingConfig.fromMap(Map<String, dynamic> map) {
     return NetworkingConfig(
-      connectionType: map['connectionType'] == null
-          ? null
-          : NetworkingConfigConnectionType.fromValue(
-              map['connectionType'] as String),
+      connectionType: map['connectionType'] == null ? null : NetworkingConfigConnectionType.fromValue(map['connectionType'] as String),
     );
   }
 }
+

@@ -16,24 +16,22 @@ class GetDomainManagedidentitiesV1alpha1Args {
   GetDomainManagedidentitiesV1alpha1Args({
     required String domainId,
     String? project,
-  })  : domainId = pulumi.Input.asInput<String>(domainId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      domainId = pulumi.Input.asInput<String>(domainId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['domainId'] = domainId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'domainId': domainId,
+      'project': ?project,
+    };
   }
 
-  factory GetDomainManagedidentitiesV1alpha1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetDomainManagedidentitiesV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return GetDomainManagedidentitiesV1alpha1Args(
       domainId: map['domainId'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

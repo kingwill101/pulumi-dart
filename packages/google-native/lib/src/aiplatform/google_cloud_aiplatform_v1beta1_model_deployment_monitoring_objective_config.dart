@@ -6,10 +6,8 @@ import 'google_cloud_aiplatform_v1beta1_model_monitoring_objective_config.dart';
 class GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfig {
   /// The DeployedModel ID of the objective config.
   final String? deployedModelId;
-
   /// The objective config of for the modelmonitoring job of this deployed model.
-  final GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfig?
-      objectiveConfig;
+  final GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfig? objectiveConfig;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfig].
   /// [deployedModelId] The DeployedModel ID of the objective config.
@@ -20,28 +18,17 @@ class GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final deployedModelIdValue = deployedModelId;
-    if (deployedModelIdValue != null) {
-      map['deployedModelId'] = deployedModelIdValue;
-    }
-    final objectiveConfigValue = objectiveConfig;
-    if (objectiveConfigValue != null) {
-      map['objectiveConfig'] = objectiveConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'deployedModelId': ?deployedModelId,
+      'objectiveConfig': ?objectiveConfig == null ? null : objectiveConfig!.toMap(),
+    };
   }
 
-  factory GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfig(
-      deployedModelId: map['deployedModelId'] == null
-          ? null
-          : map['deployedModelId'] as String,
-      objectiveConfig: map['objectiveConfig'] == null
-          ? null
-          : GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfig.fromMap(
-              (map['objectiveConfig'] as Map).cast<String, dynamic>()),
+      deployedModelId: map['deployedModelId'] == null ? null : map['deployedModelId'] as String,
+      objectiveConfig: map['objectiveConfig'] == null ? null : GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfig.fromMap((map['objectiveConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

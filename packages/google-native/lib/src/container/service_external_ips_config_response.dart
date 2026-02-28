@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Config to block services with externalIPs field.
 class ServiceExternalIPsConfigResponse {
   /// Whether Services with ExternalIPs field are allowed or not.
@@ -12,9 +13,9 @@ class ServiceExternalIPsConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory ServiceExternalIPsConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class ServiceExternalIPsConfigResponse {
     );
   }
 }
+

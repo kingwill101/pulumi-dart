@@ -13,25 +13,15 @@ class RuleGroupRuleGroupReferenceSets {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final ipSetReferencesValue = ipSetReferences;
-    if (ipSetReferencesValue != null) {
-      map['ipSetReferences'] = pulumi.Input.encodeList<
-          RuleGroupRuleGroupReferenceSetsIpSetReference,
-          Map<String, dynamic>>(ipSetReferencesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'ipSetReferences': ?ipSetReferences == null ? null : pulumi.Input.encodeList<RuleGroupRuleGroupReferenceSetsIpSetReference, Map<String, dynamic>>(ipSetReferences!, (value) => value.toMap()),
+    };
   }
 
   factory RuleGroupRuleGroupReferenceSets.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleGroupReferenceSets(
-      ipSetReferences: map['ipSetReferences'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  RuleGroupRuleGroupReferenceSetsIpSetReference>(
-              map['ipSetReferences'],
-              (value) => RuleGroupRuleGroupReferenceSetsIpSetReference.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      ipSetReferences: map['ipSetReferences'] == null ? null : pulumi.Input.decodeList<RuleGroupRuleGroupReferenceSetsIpSetReference>(map['ipSetReferences'], (value) => RuleGroupRuleGroupReferenceSetsIpSetReference.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

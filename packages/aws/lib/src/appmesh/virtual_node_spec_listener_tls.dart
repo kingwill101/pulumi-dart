@@ -6,10 +6,8 @@ import 'virtual_node_spec_listener_tls_validation.dart';
 class VirtualNodeSpecListenerTls {
   /// Listener's TLS certificate.
   final VirtualNodeSpecListenerTlsCertificate certificate;
-
   /// Listener's TLS mode. Valid values: `DISABLED`, `PERMISSIVE`, `STRICT`.
   final String mode;
-
   /// Listener's Transport Layer Security (TLS) validation context.
   final VirtualNodeSpecListenerTlsValidation? validation;
 
@@ -24,25 +22,19 @@ class VirtualNodeSpecListenerTls {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['certificate'] = certificate.toMap();
-    map['mode'] = mode;
-    final validationValue = validation;
-    if (validationValue != null) {
-      map['validation'] = validationValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'certificate': certificate.toMap(),
+      'mode': mode,
+      'validation': ?validation == null ? null : validation!.toMap(),
+    };
   }
 
   factory VirtualNodeSpecListenerTls.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerTls(
-      certificate: VirtualNodeSpecListenerTlsCertificate.fromMap(
-          (map['certificate'] as Map).cast<String, dynamic>()),
+      certificate: VirtualNodeSpecListenerTlsCertificate.fromMap((map['certificate'] as Map).cast<String, dynamic>()),
       mode: map['mode'] as String,
-      validation: map['validation'] == null
-          ? null
-          : VirtualNodeSpecListenerTlsValidation.fromMap(
-              (map['validation'] as Map).cast<String, dynamic>()),
+      validation: map['validation'] == null ? null : VirtualNodeSpecListenerTlsValidation.fromMap((map['validation'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

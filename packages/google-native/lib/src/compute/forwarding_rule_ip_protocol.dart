@@ -21,3 +21,4 @@ enum ForwardingRuleIpProtocol {
     throw ArgumentError('Unknown ForwardingRuleIpProtocol value: $value');
   }
 }
+

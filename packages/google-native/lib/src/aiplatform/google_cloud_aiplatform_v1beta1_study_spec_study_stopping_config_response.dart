@@ -6,24 +6,16 @@ import 'google_cloud_aiplatform_v1beta1_study_time_constraint_response.dart';
 class GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigResponse {
   /// If the objective value has not improved for this much time, stop the study. WARNING: Effective only for single-objective studies.
   final String maxDurationNoProgress;
-
   /// If there are more than this many trials, stop the study.
   final int maxNumTrials;
-
   /// If the objective value has not improved for this many consecutive trials, stop the study. WARNING: Effective only for single-objective studies.
   final int maxNumTrialsNoProgress;
-
   /// If the specified time or duration has passed, stop the study.
-  final GoogleCloudAiplatformV1beta1StudyTimeConstraintResponse
-      maximumRuntimeConstraint;
-
+  final GoogleCloudAiplatformV1beta1StudyTimeConstraintResponse maximumRuntimeConstraint;
   /// If there are fewer than this many COMPLETED trials, do not stop the study.
   final int minNumTrials;
-
   /// Each "stopping rule" in this proto specifies an "if" condition. Before Vizier would generate a new suggestion, it first checks each specified stopping rule, from top to bottom in this list. Note that the first few rules (e.g. minimum_runtime_constraint, min_num_trials) will prevent other stopping rules from being evaluated until they are met. For example, setting `min_num_trials=5` and `always_stop_after= 1 hour` means that the Study will ONLY stop after it has 5 COMPLETED trials, even if more than an hour has passed since its creation. It follows the first applicable rule (whose "if" condition is satisfied) to make a stopping decision. If none of the specified rules are applicable, then Vizier decides that the study should not stop. If Vizier decides that the study should stop, the study enters STOPPING state (or STOPPING_ASAP if should_stop_asap = true). IMPORTANT: The automatic study state transition happens precisely as described above; that is, deleting trials or updating StudyConfig NEVER automatically moves the study state back to ACTIVE. If you want to _resume_ a Study that was stopped, 1) change the stopping conditions if necessary, 2) activate the study, and then 3) ask for suggestions. If the specified time or duration has not passed, do not stop the study.
-  final GoogleCloudAiplatformV1beta1StudyTimeConstraintResponse
-      minimumRuntimeConstraint;
-
+  final GoogleCloudAiplatformV1beta1StudyTimeConstraintResponse minimumRuntimeConstraint;
   /// If true, a Study enters STOPPING_ASAP whenever it would normally enters STOPPING state. The bottom line is: set to true if you want to interrupt on-going evaluations of Trials as soon as the study stopping condition is met. (Please see Study.State documentation for the source of truth).
   final bool shouldStopAsap;
 
@@ -46,31 +38,27 @@ class GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maxDurationNoProgress'] = maxDurationNoProgress;
-    map['maxNumTrials'] = maxNumTrials;
-    map['maxNumTrialsNoProgress'] = maxNumTrialsNoProgress;
-    map['maximumRuntimeConstraint'] = maximumRuntimeConstraint.toMap();
-    map['minNumTrials'] = minNumTrials;
-    map['minimumRuntimeConstraint'] = minimumRuntimeConstraint.toMap();
-    map['shouldStopAsap'] = shouldStopAsap;
-    return map;
+    return <String, dynamic>{
+      'maxDurationNoProgress': maxDurationNoProgress,
+      'maxNumTrials': maxNumTrials,
+      'maxNumTrialsNoProgress': maxNumTrialsNoProgress,
+      'maximumRuntimeConstraint': maximumRuntimeConstraint.toMap(),
+      'minNumTrials': minNumTrials,
+      'minimumRuntimeConstraint': minimumRuntimeConstraint.toMap(),
+      'shouldStopAsap': shouldStopAsap,
+    };
   }
 
-  factory GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigResponse(
       maxDurationNoProgress: map['maxDurationNoProgress'] as String,
       maxNumTrials: map['maxNumTrials'] as int,
       maxNumTrialsNoProgress: map['maxNumTrialsNoProgress'] as int,
-      maximumRuntimeConstraint:
-          GoogleCloudAiplatformV1beta1StudyTimeConstraintResponse.fromMap(
-              (map['maximumRuntimeConstraint'] as Map).cast<String, dynamic>()),
+      maximumRuntimeConstraint: GoogleCloudAiplatformV1beta1StudyTimeConstraintResponse.fromMap((map['maximumRuntimeConstraint'] as Map).cast<String, dynamic>()),
       minNumTrials: map['minNumTrials'] as int,
-      minimumRuntimeConstraint:
-          GoogleCloudAiplatformV1beta1StudyTimeConstraintResponse.fromMap(
-              (map['minimumRuntimeConstraint'] as Map).cast<String, dynamic>()),
+      minimumRuntimeConstraint: GoogleCloudAiplatformV1beta1StudyTimeConstraintResponse.fromMap((map['minimumRuntimeConstraint'] as Map).cast<String, dynamic>()),
       shouldStopAsap: map['shouldStopAsap'] as bool,
     );
   }
 }
+

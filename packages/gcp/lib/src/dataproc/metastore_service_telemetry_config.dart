@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MetastoreServiceTelemetryConfig {
   /// The output format of the Dataproc Metastore service's logs.
   /// Default value is `JSON`.
@@ -13,12 +14,9 @@ class MetastoreServiceTelemetryConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final logFormatValue = logFormat;
-    if (logFormatValue != null) {
-      map['logFormat'] = logFormatValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'logFormat': ?logFormat,
+    };
   }
 
   factory MetastoreServiceTelemetryConfig.fromMap(Map<String, dynamic> map) {
@@ -27,3 +25,4 @@ class MetastoreServiceTelemetryConfig {
     );
   }
 }
+

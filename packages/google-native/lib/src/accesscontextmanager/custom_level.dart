@@ -14,9 +14,9 @@ class CustomLevel {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['expr'] = expr.toMap();
-    return map;
+    return <String, dynamic>{
+      'expr': expr.toMap(),
+    };
   }
 
   factory CustomLevel.fromMap(Map<String, dynamic> map) {
@@ -25,3 +25,4 @@ class CustomLevel {
     );
   }
 }
+

@@ -16,3 +16,4 @@ enum DNSConfigClusterDnsScope {
     throw ArgumentError('Unknown DNSConfigClusterDnsScope value: $value');
   }
 }
+

@@ -8,11 +8,9 @@ class GetAddressesResult {
   /// A list of addresses matching the filter. Structure is defined below.
   final List<GetAddressesAddress> addresses;
   final String? filter;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String project;
-
   /// The region in which the address resides.
   final String? region;
 
@@ -31,29 +29,18 @@ class GetAddressesResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['addresses'] =
-        pulumi.Input.encodeList<GetAddressesAddress, Map<String, dynamic>>(
-            addresses, (value) => value.toMap());
-    final filterValue = filter;
-    if (filterValue != null) {
-      map['filter'] = filterValue;
-    }
-    map['id'] = id;
-    map['project'] = project;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'addresses': pulumi.Input.encodeList<GetAddressesAddress, Map<String, dynamic>>(addresses, (value) => value.toMap()),
+      'filter': ?filter,
+      'id': id,
+      'project': project,
+      'region': ?region,
+    };
   }
 
   factory GetAddressesResult.fromMap(Map<String, dynamic> map) {
     return GetAddressesResult(
-      addresses: pulumi.Input.decodeList<GetAddressesAddress>(
-          map['addresses'],
-          (value) => GetAddressesAddress.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      addresses: pulumi.Input.decodeList<GetAddressesAddress>(map['addresses'], (value) => GetAddressesAddress.fromMap((value as Map).cast<String, dynamic>())),
       filter: map['filter'] == null ? null : map['filter'] as String,
       id: map['id'] as String,
       project: map['project'] as String,
@@ -61,3 +48,4 @@ class GetAddressesResult {
     );
   }
 }
+

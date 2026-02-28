@@ -7,8 +7,7 @@ class ListingSubscriptionCommercialInfo {
   /// (Output)
   /// Cloud Marketplace commercial metadata for this subscription.
   /// Structure is documented below.
-  final List<ListingSubscriptionCommercialInfoCloudMarketplace>?
-      cloudMarketplaces;
+  final List<ListingSubscriptionCommercialInfoCloudMarketplace>? cloudMarketplaces;
 
   /// Creates a new [ListingSubscriptionCommercialInfo].
   /// [cloudMarketplaces] (Output)
@@ -17,27 +16,15 @@ class ListingSubscriptionCommercialInfo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final cloudMarketplacesValue = cloudMarketplaces;
-    if (cloudMarketplacesValue != null) {
-      map['cloudMarketplaces'] = pulumi.Input.encodeList<
-              ListingSubscriptionCommercialInfoCloudMarketplace,
-              Map<String, dynamic>>(
-          cloudMarketplacesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'cloudMarketplaces': ?cloudMarketplaces == null ? null : pulumi.Input.encodeList<ListingSubscriptionCommercialInfoCloudMarketplace, Map<String, dynamic>>(cloudMarketplaces!, (value) => value.toMap()),
+    };
   }
 
   factory ListingSubscriptionCommercialInfo.fromMap(Map<String, dynamic> map) {
     return ListingSubscriptionCommercialInfo(
-      cloudMarketplaces: map['cloudMarketplaces'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  ListingSubscriptionCommercialInfoCloudMarketplace>(
-              map['cloudMarketplaces'],
-              (value) =>
-                  ListingSubscriptionCommercialInfoCloudMarketplace.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      cloudMarketplaces: map['cloudMarketplaces'] == null ? null : pulumi.Input.decodeList<ListingSubscriptionCommercialInfoCloudMarketplace>(map['cloudMarketplaces'], (value) => ListingSubscriptionCommercialInfoCloudMarketplace.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

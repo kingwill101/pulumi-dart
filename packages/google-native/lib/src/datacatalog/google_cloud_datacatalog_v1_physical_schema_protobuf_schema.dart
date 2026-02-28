@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Schema in protocol buffer format.
 class GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema {
   /// Protocol buffer source of the schema.
@@ -12,18 +13,15 @@ class GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final textValue = text;
-    if (textValue != null) {
-      map['text'] = textValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'text': ?text,
+    };
   }
 
-  factory GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema(
       text: map['text'] == null ? null : map['text'] as String,
     );
   }
 }
+

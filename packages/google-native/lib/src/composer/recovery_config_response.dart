@@ -14,15 +14,15 @@ class RecoveryConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['scheduledSnapshotsConfig'] = scheduledSnapshotsConfig.toMap();
-    return map;
+    return <String, dynamic>{
+      'scheduledSnapshotsConfig': scheduledSnapshotsConfig.toMap(),
+    };
   }
 
   factory RecoveryConfigResponse.fromMap(Map<String, dynamic> map) {
     return RecoveryConfigResponse(
-      scheduledSnapshotsConfig: ScheduledSnapshotsConfigResponse.fromMap(
-          (map['scheduledSnapshotsConfig'] as Map).cast<String, dynamic>()),
+      scheduledSnapshotsConfig: ScheduledSnapshotsConfigResponse.fromMap((map['scheduledSnapshotsConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

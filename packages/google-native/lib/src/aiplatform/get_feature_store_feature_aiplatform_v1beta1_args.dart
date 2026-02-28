@@ -25,27 +25,24 @@ class GetFeatureStoreFeatureAiplatformV1beta1Args {
     required String featurestoreId,
     required String location,
     String? project,
-  })  : entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
-        featureId = pulumi.Input.asInput<String>(featureId),
-        featurestoreId = pulumi.Input.asInput<String>(featurestoreId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
+      featureId = pulumi.Input.asInput<String>(featureId),
+      featurestoreId = pulumi.Input.asInput<String>(featurestoreId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['entityTypeId'] = entityTypeId;
-    map['featureId'] = featureId;
-    map['featurestoreId'] = featurestoreId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'entityTypeId': entityTypeId,
+      'featureId': featureId,
+      'featurestoreId': featurestoreId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
-  factory GetFeatureStoreFeatureAiplatformV1beta1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetFeatureStoreFeatureAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetFeatureStoreFeatureAiplatformV1beta1Args(
       entityTypeId: map['entityTypeId'] as String,
       featureId: map['featureId'] as String,
@@ -55,3 +52,4 @@ class GetFeatureStoreFeatureAiplatformV1beta1Args {
     );
   }
 }
+

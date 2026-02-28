@@ -8,7 +8,6 @@ import 'metadata_filter_label_match_compute_beta.dart';
 class MetadataFilterComputeBeta {
   /// The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list must not be empty and can have at the most 64 entries.
   final List<MetadataFilterLabelMatchComputeBeta>? filterLabels;
-
   /// Specifies how individual filter label matches within the list of filterLabels and contributes toward the overall metadataFilter match. Supported values are: - MATCH_ANY: at least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: all filterLabels must have matching labels in the provided metadata.
   final MetadataFilterFilterMatchCriteriaComputeBeta? filterMatchCriteria;
 
@@ -21,32 +20,17 @@ class MetadataFilterComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final filterLabelsValue = filterLabels;
-    if (filterLabelsValue != null) {
-      map['filterLabels'] = pulumi.Input.encodeList<
-          MetadataFilterLabelMatchComputeBeta,
-          Map<String, dynamic>>(filterLabelsValue, (value) => value.toMap());
-    }
-    final filterMatchCriteriaValue = filterMatchCriteria;
-    if (filterMatchCriteriaValue != null) {
-      map['filterMatchCriteria'] = filterMatchCriteriaValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'filterLabels': ?filterLabels == null ? null : pulumi.Input.encodeList<MetadataFilterLabelMatchComputeBeta, Map<String, dynamic>>(filterLabels!, (value) => value.toMap()),
+      'filterMatchCriteria': ?filterMatchCriteria == null ? null : filterMatchCriteria!.value,
+    };
   }
 
   factory MetadataFilterComputeBeta.fromMap(Map<String, dynamic> map) {
     return MetadataFilterComputeBeta(
-      filterLabels: map['filterLabels'] == null
-          ? null
-          : pulumi.Input.decodeList<MetadataFilterLabelMatchComputeBeta>(
-              map['filterLabels'],
-              (value) => MetadataFilterLabelMatchComputeBeta.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      filterMatchCriteria: map['filterMatchCriteria'] == null
-          ? null
-          : MetadataFilterFilterMatchCriteriaComputeBeta.fromValue(
-              map['filterMatchCriteria'] as String),
+      filterLabels: map['filterLabels'] == null ? null : pulumi.Input.decodeList<MetadataFilterLabelMatchComputeBeta>(map['filterLabels'], (value) => MetadataFilterLabelMatchComputeBeta.fromMap((value as Map).cast<String, dynamic>())),
+      filterMatchCriteria: map['filterMatchCriteria'] == null ? null : MetadataFilterFilterMatchCriteriaComputeBeta.fromValue(map['filterMatchCriteria'] as String),
     );
   }
 }
+

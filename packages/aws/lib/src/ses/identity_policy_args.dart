@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentityPolicyArgs {
   /// Name or Amazon Resource Name (ARN) of the SES Identity.
   final pulumi.Input<String> identity;
-
   /// Name of the policy.
   final pulumi.Input<String>? name;
-
   /// JSON string of the policy.
   final pulumi.Input<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -29,24 +26,19 @@ class IdentityPolicyArgs {
     String? name,
     required String policy,
     String? region,
-  })  : identity = pulumi.Input.asInput<String>(identity),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        policy = pulumi.Input.asInput<String>(policy),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      identity = pulumi.Input.asInput<String>(identity),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      policy = pulumi.Input.asInput<String>(policy),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['identity'] = identity;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    map['policy'] = policy;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'identity': identity,
+      'name': ?name,
+      'policy': policy,
+      'region': ?region,
+    };
   }
 
   factory IdentityPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -58,3 +50,4 @@ class IdentityPolicyArgs {
     );
   }
 }
+

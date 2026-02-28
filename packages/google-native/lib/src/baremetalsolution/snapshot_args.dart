@@ -10,7 +10,6 @@ class SnapshotArgs {
   /// The description of the snapshot.
   final pulumi.Input<String>? description;
   final pulumi.Input<String>? location;
-
   /// The name of the snapshot.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
@@ -28,38 +27,26 @@ class SnapshotArgs {
     String? name,
     String? project,
     required String volumeId,
-  })  : description = pulumi.Input.asOptionalInput<String>(description),
-        location = pulumi.Input.asOptionalInput<String>(location),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        volumeId = pulumi.Input.asInput<String>(volumeId);
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      volumeId = pulumi.Input.asInput<String>(volumeId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['volumeId'] = volumeId;
-    return map;
+    return <String, dynamic>{
+      'description': ?description,
+      'location': ?location,
+      'name': ?name,
+      'project': ?project,
+      'volumeId': volumeId,
+    };
   }
 
   factory SnapshotArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotArgs(
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       location: map['location'] == null ? null : map['location'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -67,3 +54,4 @@ class SnapshotArgs {
     );
   }
 }
+

@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WebhookArgs {
   /// Unique ID for an Amplify app.
   final pulumi.Input<String> appId;
-
   /// Name for a branch that is part of the Amplify app.
   final pulumi.Input<String> branchName;
-
   /// Description for a webhook.
   final pulumi.Input<String>? description;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -29,33 +26,28 @@ class WebhookArgs {
     required String branchName,
     String? description,
     String? region,
-  })  : appId = pulumi.Input.asInput<String>(appId),
-        branchName = pulumi.Input.asInput<String>(branchName),
-        description = pulumi.Input.asOptionalInput<String>(description),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      appId = pulumi.Input.asInput<String>(appId),
+      branchName = pulumi.Input.asInput<String>(branchName),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['appId'] = appId;
-    map['branchName'] = branchName;
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'appId': appId,
+      'branchName': branchName,
+      'description': ?description,
+      'region': ?region,
+    };
   }
 
   factory WebhookArgs.fromMap(Map<String, dynamic> map) {
     return WebhookArgs(
       appId: map['appId'] as String,
       branchName: map['branchName'] as String,
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

@@ -14,21 +14,15 @@ class AnthosObservabilityFeatureSpecGkehubV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final defaultMembershipSpecValue = defaultMembershipSpec;
-    if (defaultMembershipSpecValue != null) {
-      map['defaultMembershipSpec'] = defaultMembershipSpecValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'defaultMembershipSpec': ?defaultMembershipSpec == null ? null : defaultMembershipSpec!.toMap(),
+    };
   }
 
-  factory AnthosObservabilityFeatureSpecGkehubV1beta.fromMap(
-      Map<String, dynamic> map) {
+  factory AnthosObservabilityFeatureSpecGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return AnthosObservabilityFeatureSpecGkehubV1beta(
-      defaultMembershipSpec: map['defaultMembershipSpec'] == null
-          ? null
-          : AnthosObservabilityMembershipSpecGkehubV1beta.fromMap(
-              (map['defaultMembershipSpec'] as Map).cast<String, dynamic>()),
+      defaultMembershipSpec: map['defaultMembershipSpec'] == null ? null : AnthosObservabilityMembershipSpecGkehubV1beta.fromMap((map['defaultMembershipSpec'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

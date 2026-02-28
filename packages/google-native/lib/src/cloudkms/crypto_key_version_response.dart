@@ -7,49 +7,34 @@ import 'key_operation_attestation_response.dart';
 class CryptoKeyVersionResponse {
   /// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
   final String algorithm;
-
   /// Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only provided for key versions with protection_level HSM.
   final KeyOperationAttestationResponse attestation;
-
   /// The time at which this CryptoKeyVersion was created.
   final String createTime;
-
   /// The time this CryptoKeyVersion's key material was destroyed. Only present if state is DESTROYED.
   final String destroyEventTime;
-
   /// The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED.
   final String destroyTime;
-
   /// The root cause of the most recent external destruction failure. Only present if state is EXTERNAL_DESTRUCTION_FAILED.
   final String externalDestructionFailureReason;
-
   /// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
   final ExternalProtectionLevelOptionsResponse externalProtectionLevelOptions;
-
   /// The time this CryptoKeyVersion's key material was generated.
   final String generateTime;
-
   /// The root cause of the most recent generation failure. Only present if state is GENERATION_FAILED.
   final String generationFailureReason;
-
   /// The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.
   final String importFailureReason;
-
   /// The name of the ImportJob used in the most recent import of this CryptoKeyVersion. Only present if the underlying key material was imported.
   final String importJob;
-
   /// The time at which this CryptoKeyVersion's key material was most recently imported.
   final String importTime;
-
   /// The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
   final String name;
-
   /// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
   final String protectionLevel;
-
   /// Whether or not this key version is eligible for reimport, by being specified as a target in ImportCryptoKeyVersionRequest.crypto_key_version.
   final bool reimportEligible;
-
   /// The current state of the CryptoKeyVersion.
   final String state;
 
@@ -90,41 +75,35 @@ class CryptoKeyVersionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['algorithm'] = algorithm;
-    map['attestation'] = attestation.toMap();
-    map['createTime'] = createTime;
-    map['destroyEventTime'] = destroyEventTime;
-    map['destroyTime'] = destroyTime;
-    map['externalDestructionFailureReason'] = externalDestructionFailureReason;
-    map['externalProtectionLevelOptions'] =
-        externalProtectionLevelOptions.toMap();
-    map['generateTime'] = generateTime;
-    map['generationFailureReason'] = generationFailureReason;
-    map['importFailureReason'] = importFailureReason;
-    map['importJob'] = importJob;
-    map['importTime'] = importTime;
-    map['name'] = name;
-    map['protectionLevel'] = protectionLevel;
-    map['reimportEligible'] = reimportEligible;
-    map['state'] = state;
-    return map;
+    return <String, dynamic>{
+      'algorithm': algorithm,
+      'attestation': attestation.toMap(),
+      'createTime': createTime,
+      'destroyEventTime': destroyEventTime,
+      'destroyTime': destroyTime,
+      'externalDestructionFailureReason': externalDestructionFailureReason,
+      'externalProtectionLevelOptions': externalProtectionLevelOptions.toMap(),
+      'generateTime': generateTime,
+      'generationFailureReason': generationFailureReason,
+      'importFailureReason': importFailureReason,
+      'importJob': importJob,
+      'importTime': importTime,
+      'name': name,
+      'protectionLevel': protectionLevel,
+      'reimportEligible': reimportEligible,
+      'state': state,
+    };
   }
 
   factory CryptoKeyVersionResponse.fromMap(Map<String, dynamic> map) {
     return CryptoKeyVersionResponse(
       algorithm: map['algorithm'] as String,
-      attestation: KeyOperationAttestationResponse.fromMap(
-          (map['attestation'] as Map).cast<String, dynamic>()),
+      attestation: KeyOperationAttestationResponse.fromMap((map['attestation'] as Map).cast<String, dynamic>()),
       createTime: map['createTime'] as String,
       destroyEventTime: map['destroyEventTime'] as String,
       destroyTime: map['destroyTime'] as String,
-      externalDestructionFailureReason:
-          map['externalDestructionFailureReason'] as String,
-      externalProtectionLevelOptions:
-          ExternalProtectionLevelOptionsResponse.fromMap(
-              (map['externalProtectionLevelOptions'] as Map)
-                  .cast<String, dynamic>()),
+      externalDestructionFailureReason: map['externalDestructionFailureReason'] as String,
+      externalProtectionLevelOptions: ExternalProtectionLevelOptionsResponse.fromMap((map['externalProtectionLevelOptions'] as Map).cast<String, dynamic>()),
       generateTime: map['generateTime'] as String,
       generationFailureReason: map['generationFailureReason'] as String,
       importFailureReason: map['importFailureReason'] as String,
@@ -137,3 +116,4 @@ class CryptoKeyVersionResponse {
     );
   }
 }
+

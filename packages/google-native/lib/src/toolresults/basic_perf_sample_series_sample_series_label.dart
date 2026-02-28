@@ -22,7 +22,7 @@ enum BasicPerfSampleSeriesSampleSeriesLabel {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown BasicPerfSampleSeriesSampleSeriesLabel value: $value');
+    throw ArgumentError('Unknown BasicPerfSampleSeriesSampleSeriesLabel value: $value');
   }
 }
+

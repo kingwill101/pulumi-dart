@@ -17,3 +17,4 @@ enum SubscriptionType {
     throw ArgumentError('Unknown SubscriptionType value: $value');
   }
 }
+

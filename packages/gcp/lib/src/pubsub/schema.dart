@@ -442,14 +442,11 @@ class Schema extends pulumi.CustomResource {
   /// error indicating that the limit has been reached require manually
   /// [deleting old revisions](https://cloud.google.com/pubsub/docs/delete-schema-revision).
   late final pulumi.Output<String?> definition;
-
   /// The ID to use for the schema, which will become the final component of the schema's resource name.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The type of the schema definition
   /// Default value is `TYPE_UNSPECIFIED`.
   /// Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.

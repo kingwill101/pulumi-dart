@@ -6,13 +6,10 @@ import 'bucket_access_control_project_team.dart';
 class BucketAccessControl {
   /// The name of the bucket.
   final String? bucket;
-
   /// The domain associated with the entity, if any.
   final String? domain;
-
   /// The email address associated with the entity, if any.
   final String? email;
-
   /// The entity holding the permission, in one of the following forms:
   /// - user-userId
   /// - user-email
@@ -26,25 +23,18 @@ class BucketAccessControl {
   /// - The group example@googlegroups.com would be group-example@googlegroups.com.
   /// - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
   final String? entity;
-
   /// The ID for the entity, if any.
   final String? entityId;
-
   /// HTTP 1.1 Entity tag for the access-control entry.
   final String? etag;
-
   /// The ID of the access-control entry.
   final String? id;
-
   /// The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
   final String? kind;
-
   /// The project team associated with the entity, if any.
   final BucketAccessControlProjectTeam? projectTeam;
-
   /// The access permission for the entity.
   final String? role;
-
   /// The link to this access-control entry.
   final String? selfLink;
 
@@ -75,52 +65,19 @@ class BucketAccessControl {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final bucketValue = bucket;
-    if (bucketValue != null) {
-      map['bucket'] = bucketValue;
-    }
-    final domainValue = domain;
-    if (domainValue != null) {
-      map['domain'] = domainValue;
-    }
-    final emailValue = email;
-    if (emailValue != null) {
-      map['email'] = emailValue;
-    }
-    final entityValue = entity;
-    if (entityValue != null) {
-      map['entity'] = entityValue;
-    }
-    final entityIdValue = entityId;
-    if (entityIdValue != null) {
-      map['entityId'] = entityIdValue;
-    }
-    final etagValue = etag;
-    if (etagValue != null) {
-      map['etag'] = etagValue;
-    }
-    final idValue = id;
-    if (idValue != null) {
-      map['id'] = idValue;
-    }
-    final kindValue = kind;
-    if (kindValue != null) {
-      map['kind'] = kindValue;
-    }
-    final projectTeamValue = projectTeam;
-    if (projectTeamValue != null) {
-      map['projectTeam'] = projectTeamValue.toMap();
-    }
-    final roleValue = role;
-    if (roleValue != null) {
-      map['role'] = roleValue;
-    }
-    final selfLinkValue = selfLink;
-    if (selfLinkValue != null) {
-      map['selfLink'] = selfLinkValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'bucket': ?bucket,
+      'domain': ?domain,
+      'email': ?email,
+      'entity': ?entity,
+      'entityId': ?entityId,
+      'etag': ?etag,
+      'id': ?id,
+      'kind': ?kind,
+      'projectTeam': ?projectTeam == null ? null : projectTeam!.toMap(),
+      'role': ?role,
+      'selfLink': ?selfLink,
+    };
   }
 
   factory BucketAccessControl.fromMap(Map<String, dynamic> map) {
@@ -133,12 +90,10 @@ class BucketAccessControl {
       etag: map['etag'] == null ? null : map['etag'] as String,
       id: map['id'] == null ? null : map['id'] as String,
       kind: map['kind'] == null ? null : map['kind'] as String,
-      projectTeam: map['projectTeam'] == null
-          ? null
-          : BucketAccessControlProjectTeam.fromMap(
-              (map['projectTeam'] as Map).cast<String, dynamic>()),
+      projectTeam: map['projectTeam'] == null ? null : BucketAccessControlProjectTeam.fromMap((map['projectTeam'] as Map).cast<String, dynamic>()),
       role: map['role'] == null ? null : map['role'] as String,
       selfLink: map['selfLink'] == null ? null : map['selfLink'] as String,
     );
   }
 }
+

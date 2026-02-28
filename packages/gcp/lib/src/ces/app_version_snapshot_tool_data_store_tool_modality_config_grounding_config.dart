@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfig {
   /// (Output)
   /// Whether summarization is disabled.
   final bool? disabled;
-
   /// (Output)
   /// The groundedness threshold of the answer based on the retrieved sources.
   /// The value has a configurable range of [1, 5]. The level is used to
@@ -24,25 +24,17 @@ class AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final disabledValue = disabled;
-    if (disabledValue != null) {
-      map['disabled'] = disabledValue;
-    }
-    final groundingLevelValue = groundingLevel;
-    if (groundingLevelValue != null) {
-      map['groundingLevel'] = groundingLevelValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'disabled': ?disabled,
+      'groundingLevel': ?groundingLevel,
+    };
   }
 
-  factory AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfig(
       disabled: map['disabled'] == null ? null : map['disabled'] as bool,
-      groundingLevel: map['groundingLevel'] == null
-          ? null
-          : map['groundingLevel'] as double,
+      groundingLevel: map['groundingLevel'] == null ? null : map['groundingLevel'] as double,
     );
   }
 }
+

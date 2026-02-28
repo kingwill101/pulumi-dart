@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MLTransformSchema {
   /// The type of data in the column.
   final String? dataType;
-
   /// The name you assign to this ML Transform. It must be unique in your account.
   final String? name;
 
@@ -16,16 +16,10 @@ class MLTransformSchema {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dataTypeValue = dataType;
-    if (dataTypeValue != null) {
-      map['dataType'] = dataTypeValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'dataType': ?dataType,
+      'name': ?name,
+    };
   }
 
   factory MLTransformSchema.fromMap(Map<String, dynamic> map) {
@@ -35,3 +29,4 @@ class MLTransformSchema {
     );
   }
 }
+

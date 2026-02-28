@@ -14,15 +14,15 @@ class GrafeasV1beta1DeploymentDetails {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['deployment'] = deployment.toMap();
-    return map;
+    return <String, dynamic>{
+      'deployment': deployment.toMap(),
+    };
   }
 
   factory GrafeasV1beta1DeploymentDetails.fromMap(Map<String, dynamic> map) {
     return GrafeasV1beta1DeploymentDetails(
-      deployment: DeploymentContaineranalysisV1beta1.fromMap(
-          (map['deployment'] as Map).cast<String, dynamic>()),
+      deployment: DeploymentContaineranalysisV1beta1.fromMap((map['deployment'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

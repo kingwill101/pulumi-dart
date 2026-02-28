@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class RuleGroupRuleStatementByteMatchStatementTextTransformation {
   /// The relative processing order for multiple transformations that are defined for a rule statement. AWS WAF processes all transformations, from lowest priority to highest, before inspecting the transformed content.
   final int priority;
-
   /// The transformation to apply, please refer to the Text Transformation [documentation](https://docs.aws.amazon.com/waf/latest/APIReference/API_TextTransformation.html) for more details.
   final String type;
 
@@ -16,17 +16,17 @@ class RuleGroupRuleStatementByteMatchStatementTextTransformation {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['priority'] = priority;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'priority': priority,
+      'type': type,
+    };
   }
 
-  factory RuleGroupRuleStatementByteMatchStatementTextTransformation.fromMap(
-      Map<String, dynamic> map) {
+  factory RuleGroupRuleStatementByteMatchStatementTextTransformation.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementByteMatchStatementTextTransformation(
       priority: map['priority'] as int,
       type: map['type'] as String,
     );
   }
 }
+

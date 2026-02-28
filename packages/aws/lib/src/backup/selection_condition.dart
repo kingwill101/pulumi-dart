@@ -9,13 +9,10 @@ import 'selection_condition_string_not_like.dart';
 class SelectionCondition {
   /// Filters the values of your tagged resources for only those resources that you tagged with the same value. Also called "exact matching". See below for details.
   final List<SelectionConditionStringEqual>? stringEquals;
-
   /// Filters the values of your tagged resources for matching tag values with the use of a wildcard character (`*`) anywhere in the string. For example, `prod*` or `*rod*` matches the tag value `production`. See below for details.
   final List<SelectionConditionStringLike>? stringLikes;
-
   /// Filters the values of your tagged resources for only those resources that you tagged that do not have the same value. Also called "negated matching". See below for details.
   final List<SelectionConditionStringNotEqual>? stringNotEquals;
-
   /// Filters the values of your tagged resources for non-matching tag values with the use of a wildcard character (`*`) anywhere in the string. See below for details.
   final List<SelectionConditionStringNotLike>? stringNotLikes;
 
@@ -32,59 +29,21 @@ class SelectionCondition {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final stringEqualsValue = stringEquals;
-    if (stringEqualsValue != null) {
-      map['stringEquals'] = pulumi.Input.encodeList<
-          SelectionConditionStringEqual,
-          Map<String, dynamic>>(stringEqualsValue, (value) => value.toMap());
-    }
-    final stringLikesValue = stringLikes;
-    if (stringLikesValue != null) {
-      map['stringLikes'] = pulumi.Input.encodeList<SelectionConditionStringLike,
-          Map<String, dynamic>>(stringLikesValue, (value) => value.toMap());
-    }
-    final stringNotEqualsValue = stringNotEquals;
-    if (stringNotEqualsValue != null) {
-      map['stringNotEquals'] = pulumi.Input.encodeList<
-          SelectionConditionStringNotEqual,
-          Map<String, dynamic>>(stringNotEqualsValue, (value) => value.toMap());
-    }
-    final stringNotLikesValue = stringNotLikes;
-    if (stringNotLikesValue != null) {
-      map['stringNotLikes'] = pulumi.Input.encodeList<
-          SelectionConditionStringNotLike,
-          Map<String, dynamic>>(stringNotLikesValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'stringEquals': ?stringEquals == null ? null : pulumi.Input.encodeList<SelectionConditionStringEqual, Map<String, dynamic>>(stringEquals!, (value) => value.toMap()),
+      'stringLikes': ?stringLikes == null ? null : pulumi.Input.encodeList<SelectionConditionStringLike, Map<String, dynamic>>(stringLikes!, (value) => value.toMap()),
+      'stringNotEquals': ?stringNotEquals == null ? null : pulumi.Input.encodeList<SelectionConditionStringNotEqual, Map<String, dynamic>>(stringNotEquals!, (value) => value.toMap()),
+      'stringNotLikes': ?stringNotLikes == null ? null : pulumi.Input.encodeList<SelectionConditionStringNotLike, Map<String, dynamic>>(stringNotLikes!, (value) => value.toMap()),
+    };
   }
 
   factory SelectionCondition.fromMap(Map<String, dynamic> map) {
     return SelectionCondition(
-      stringEquals: map['stringEquals'] == null
-          ? null
-          : pulumi.Input.decodeList<SelectionConditionStringEqual>(
-              map['stringEquals'],
-              (value) => SelectionConditionStringEqual.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      stringLikes: map['stringLikes'] == null
-          ? null
-          : pulumi.Input.decodeList<SelectionConditionStringLike>(
-              map['stringLikes'],
-              (value) => SelectionConditionStringLike.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      stringNotEquals: map['stringNotEquals'] == null
-          ? null
-          : pulumi.Input.decodeList<SelectionConditionStringNotEqual>(
-              map['stringNotEquals'],
-              (value) => SelectionConditionStringNotEqual.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      stringNotLikes: map['stringNotLikes'] == null
-          ? null
-          : pulumi.Input.decodeList<SelectionConditionStringNotLike>(
-              map['stringNotLikes'],
-              (value) => SelectionConditionStringNotLike.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      stringEquals: map['stringEquals'] == null ? null : pulumi.Input.decodeList<SelectionConditionStringEqual>(map['stringEquals'], (value) => SelectionConditionStringEqual.fromMap((value as Map).cast<String, dynamic>())),
+      stringLikes: map['stringLikes'] == null ? null : pulumi.Input.decodeList<SelectionConditionStringLike>(map['stringLikes'], (value) => SelectionConditionStringLike.fromMap((value as Map).cast<String, dynamic>())),
+      stringNotEquals: map['stringNotEquals'] == null ? null : pulumi.Input.decodeList<SelectionConditionStringNotEqual>(map['stringNotEquals'], (value) => SelectionConditionStringNotEqual.fromMap((value as Map).cast<String, dynamic>())),
+      stringNotLikes: map['stringNotLikes'] == null ? null : pulumi.Input.decodeList<SelectionConditionStringNotLike>(map['stringNotLikes'], (value) => SelectionConditionStringNotLike.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

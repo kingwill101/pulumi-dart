@@ -14,19 +14,15 @@ class GetThemeConfigurationSheetTile {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['borders'] = pulumi.Input.encodeList<
-        GetThemeConfigurationSheetTileBorder,
-        Map<String, dynamic>>(borders, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'borders': pulumi.Input.encodeList<GetThemeConfigurationSheetTileBorder, Map<String, dynamic>>(borders, (value) => value.toMap()),
+    };
   }
 
   factory GetThemeConfigurationSheetTile.fromMap(Map<String, dynamic> map) {
     return GetThemeConfigurationSheetTile(
-      borders: pulumi.Input.decodeList<GetThemeConfigurationSheetTileBorder>(
-          map['borders'],
-          (value) => GetThemeConfigurationSheetTileBorder.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      borders: pulumi.Input.decodeList<GetThemeConfigurationSheetTileBorder>(map['borders'], (value) => GetThemeConfigurationSheetTileBorder.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -19,20 +19,17 @@ class GetPersistentResourceArgs {
     required String location,
     required String persistentResourceId,
     String? project,
-  })  : location = pulumi.Input.asInput<String>(location),
-        persistentResourceId =
-            pulumi.Input.asInput<String>(persistentResourceId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      persistentResourceId = pulumi.Input.asInput<String>(persistentResourceId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    map['persistentResourceId'] = persistentResourceId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'persistentResourceId': persistentResourceId,
+      'project': ?project,
+    };
   }
 
   factory GetPersistentResourceArgs.fromMap(Map<String, dynamic> map) {
@@ -43,3 +40,4 @@ class GetPersistentResourceArgs {
     );
   }
 }
+

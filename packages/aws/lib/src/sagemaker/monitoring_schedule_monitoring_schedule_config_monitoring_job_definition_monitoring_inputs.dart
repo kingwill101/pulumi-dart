@@ -5,12 +5,9 @@ import 'monitoring_schedule_monitoring_schedule_config_monitoring_job_definition
 
 class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputs {
   /// Input object for the batch transform job. Fields are documented below.
-  final MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInput?
-      batchTransformInput;
-
+  final MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInput? batchTransformInput;
   /// Endpoint for a monitoring job. Fields are documented below.
-  final MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsEndpointInput?
-      endpointInput;
+  final MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsEndpointInput? endpointInput;
 
   /// Creates a new [MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputs].
   /// [batchTransformInput] Input object for the batch transform job. Fields are documented below.
@@ -21,30 +18,17 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitorin
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final batchTransformInputValue = batchTransformInput;
-    if (batchTransformInputValue != null) {
-      map['batchTransformInput'] = batchTransformInputValue.toMap();
-    }
-    final endpointInputValue = endpointInput;
-    if (endpointInputValue != null) {
-      map['endpointInput'] = endpointInputValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'batchTransformInput': ?batchTransformInput == null ? null : batchTransformInput!.toMap(),
+      'endpointInput': ?endpointInput == null ? null : endpointInput!.toMap(),
+    };
   }
 
-  factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputs.fromMap(
-      Map<String, dynamic> map) {
+  factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputs.fromMap(Map<String, dynamic> map) {
     return MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputs(
-      batchTransformInput: map['batchTransformInput'] == null
-          ? null
-          : MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInput
-              .fromMap(
-                  (map['batchTransformInput'] as Map).cast<String, dynamic>()),
-      endpointInput: map['endpointInput'] == null
-          ? null
-          : MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsEndpointInput
-              .fromMap((map['endpointInput'] as Map).cast<String, dynamic>()),
+      batchTransformInput: map['batchTransformInput'] == null ? null : MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInput.fromMap((map['batchTransformInput'] as Map).cast<String, dynamic>()),
+      endpointInput: map['endpointInput'] == null ? null : MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsEndpointInput.fromMap((map['endpointInput'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

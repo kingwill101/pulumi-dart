@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Specifies where the manifest is located.
 class TransferManifestResponse {
   /// Specifies the path to the manifest in Cloud Storage. The Google-managed service account for the transfer must have `storage.objects.get` permission for this object. An example path is `gs://bucket_name/path/manifest.csv`.
@@ -12,9 +13,9 @@ class TransferManifestResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+    };
   }
 
   factory TransferManifestResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class TransferManifestResponse {
     );
   }
 }
+

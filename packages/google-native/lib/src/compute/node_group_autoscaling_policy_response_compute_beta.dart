@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class NodeGroupAutoscalingPolicyResponseComputeBeta {
   /// The maximum number of nodes that the group should have. Must be set if autoscaling is enabled. Maximum value allowed is 100.
   final int maxNodes;
-
   /// The minimum number of nodes that the group should have.
   final int minNodes;
-
   /// The autoscaling mode. Set to one of: ON, OFF, or ONLY_SCALE_OUT. For more information, see Autoscaler modes.
   final String mode;
 
@@ -21,15 +20,14 @@ class NodeGroupAutoscalingPolicyResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maxNodes'] = maxNodes;
-    map['minNodes'] = minNodes;
-    map['mode'] = mode;
-    return map;
+    return <String, dynamic>{
+      'maxNodes': maxNodes,
+      'minNodes': minNodes,
+      'mode': mode,
+    };
   }
 
-  factory NodeGroupAutoscalingPolicyResponseComputeBeta.fromMap(
-      Map<String, dynamic> map) {
+  factory NodeGroupAutoscalingPolicyResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return NodeGroupAutoscalingPolicyResponseComputeBeta(
       maxNodes: map['maxNodes'] as int,
       minNodes: map['minNodes'] as int,
@@ -37,3 +35,4 @@ class NodeGroupAutoscalingPolicyResponseComputeBeta {
     );
   }
 }
+

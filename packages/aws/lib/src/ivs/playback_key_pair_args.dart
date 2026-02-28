@@ -9,15 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PlaybackKeyPairArgs {
   /// Playback Key Pair name.
   final pulumi.Input<String>? name;
-
   /// Public portion of a customer-generated key pair. Must be an ECDSA public key in PEM format.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> publicKey;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -31,27 +28,19 @@ class PlaybackKeyPairArgs {
     required String publicKey,
     String? region,
     Map<String, String>? tags,
-  })  : name = pulumi.Input.asOptionalInput<String>(name),
-        publicKey = pulumi.Input.asInput<String>(publicKey),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      name = pulumi.Input.asOptionalInput<String>(name),
+      publicKey = pulumi.Input.asInput<String>(publicKey),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    map['publicKey'] = publicKey;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+      'publicKey': publicKey,
+      'region': ?region,
+      'tags': ?tags,
+    };
   }
 
   factory PlaybackKeyPairArgs.fromMap(Map<String, dynamic> map) {
@@ -59,9 +48,8 @@ class PlaybackKeyPairArgs {
       name: map['name'] == null ? null : map['name'] as String,
       publicKey: map['publicKey'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

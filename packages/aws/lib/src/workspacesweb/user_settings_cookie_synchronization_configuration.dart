@@ -6,12 +6,9 @@ import 'user_settings_cookie_synchronization_configuration_blocklist.dart';
 
 class UserSettingsCookieSynchronizationConfiguration {
   /// List of cookie specifications that are allowed to be synchronized to the remote browser.
-  final List<UserSettingsCookieSynchronizationConfigurationAllowlist>?
-      allowlists;
-
+  final List<UserSettingsCookieSynchronizationConfigurationAllowlist>? allowlists;
   /// List of cookie specifications that are blocked from being synchronized to the remote browser.
-  final List<UserSettingsCookieSynchronizationConfigurationBlocklist>?
-      blocklists;
+  final List<UserSettingsCookieSynchronizationConfigurationBlocklist>? blocklists;
 
   /// Creates a new [UserSettingsCookieSynchronizationConfiguration].
   /// [allowlists] List of cookie specifications that are allowed to be synchronized to the remote browser.
@@ -22,39 +19,17 @@ class UserSettingsCookieSynchronizationConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final allowlistsValue = allowlists;
-    if (allowlistsValue != null) {
-      map['allowlists'] = pulumi.Input.encodeList<
-          UserSettingsCookieSynchronizationConfigurationAllowlist,
-          Map<String, dynamic>>(allowlistsValue, (value) => value.toMap());
-    }
-    final blocklistsValue = blocklists;
-    if (blocklistsValue != null) {
-      map['blocklists'] = pulumi.Input.encodeList<
-          UserSettingsCookieSynchronizationConfigurationBlocklist,
-          Map<String, dynamic>>(blocklistsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'allowlists': ?allowlists == null ? null : pulumi.Input.encodeList<UserSettingsCookieSynchronizationConfigurationAllowlist, Map<String, dynamic>>(allowlists!, (value) => value.toMap()),
+      'blocklists': ?blocklists == null ? null : pulumi.Input.encodeList<UserSettingsCookieSynchronizationConfigurationBlocklist, Map<String, dynamic>>(blocklists!, (value) => value.toMap()),
+    };
   }
 
-  factory UserSettingsCookieSynchronizationConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory UserSettingsCookieSynchronizationConfiguration.fromMap(Map<String, dynamic> map) {
     return UserSettingsCookieSynchronizationConfiguration(
-      allowlists: map['allowlists'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  UserSettingsCookieSynchronizationConfigurationAllowlist>(
-              map['allowlists'],
-              (value) => UserSettingsCookieSynchronizationConfigurationAllowlist
-                  .fromMap((value as Map).cast<String, dynamic>())),
-      blocklists: map['blocklists'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  UserSettingsCookieSynchronizationConfigurationBlocklist>(
-              map['blocklists'],
-              (value) => UserSettingsCookieSynchronizationConfigurationBlocklist
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      allowlists: map['allowlists'] == null ? null : pulumi.Input.decodeList<UserSettingsCookieSynchronizationConfigurationAllowlist>(map['allowlists'], (value) => UserSettingsCookieSynchronizationConfigurationAllowlist.fromMap((value as Map).cast<String, dynamic>())),
+      blocklists: map['blocklists'] == null ? null : pulumi.Input.decodeList<UserSettingsCookieSynchronizationConfigurationBlocklist>(map['blocklists'], (value) => UserSettingsCookieSynchronizationConfigurationBlocklist.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

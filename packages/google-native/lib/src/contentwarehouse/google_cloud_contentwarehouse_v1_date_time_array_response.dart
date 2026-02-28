@@ -15,19 +15,15 @@ class GoogleCloudContentwarehouseV1DateTimeArrayResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['values'] = pulumi.Input.encodeList<GoogleTypeDateTimeResponse,
-        Map<String, dynamic>>(values, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'values': pulumi.Input.encodeList<GoogleTypeDateTimeResponse, Map<String, dynamic>>(values, (value) => value.toMap()),
+    };
   }
 
-  factory GoogleCloudContentwarehouseV1DateTimeArrayResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudContentwarehouseV1DateTimeArrayResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1DateTimeArrayResponse(
-      values: pulumi.Input.decodeList<GoogleTypeDateTimeResponse>(
-          map['values'],
-          (value) => GoogleTypeDateTimeResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      values: pulumi.Input.decodeList<GoogleTypeDateTimeResponse>(map['values'], (value) => GoogleTypeDateTimeResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

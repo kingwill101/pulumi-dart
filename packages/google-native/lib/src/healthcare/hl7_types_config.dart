@@ -8,7 +8,6 @@ import 'version_source.dart';
 class Hl7TypesConfig {
   /// The HL7v2 type definitions.
   final List<Type>? type;
-
   /// The version selectors that this config applies to. A message must match ALL version sources to apply.
   final List<VersionSource>? version;
 
@@ -21,33 +20,17 @@ class Hl7TypesConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = pulumi.Input.encodeList<Type, Map<String, dynamic>>(
-          typeValue, (value) => value.toMap());
-    }
-    final versionValue = version;
-    if (versionValue != null) {
-      map['version'] =
-          pulumi.Input.encodeList<VersionSource, Map<String, dynamic>>(
-              versionValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'type': ?type == null ? null : pulumi.Input.encodeList<Type, Map<String, dynamic>>(type!, (value) => value.toMap()),
+      'version': ?version == null ? null : pulumi.Input.encodeList<VersionSource, Map<String, dynamic>>(version!, (value) => value.toMap()),
+    };
   }
 
   factory Hl7TypesConfig.fromMap(Map<String, dynamic> map) {
     return Hl7TypesConfig(
-      type: map['type'] == null
-          ? null
-          : pulumi.Input.decodeList<Type>(map['type'],
-              (value) => Type.fromMap((value as Map).cast<String, dynamic>())),
-      version: map['version'] == null
-          ? null
-          : pulumi.Input.decodeList<VersionSource>(
-              map['version'],
-              (value) => VersionSource.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      type: map['type'] == null ? null : pulumi.Input.decodeList<Type>(map['type'], (value) => Type.fromMap((value as Map).cast<String, dynamic>())),
+      version: map['version'] == null ? null : pulumi.Input.decodeList<VersionSource>(map['version'], (value) => VersionSource.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

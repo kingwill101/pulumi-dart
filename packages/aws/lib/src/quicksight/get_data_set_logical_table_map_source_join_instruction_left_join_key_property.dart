@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperty {
   final bool uniqueKey;
 
@@ -10,15 +11,15 @@ class GetDataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperty {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['uniqueKey'] = uniqueKey;
-    return map;
+    return <String, dynamic>{
+      'uniqueKey': uniqueKey,
+    };
   }
 
-  factory GetDataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperty.fromMap(
-      Map<String, dynamic> map) {
+  factory GetDataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperty.fromMap(Map<String, dynamic> map) {
     return GetDataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperty(
       uniqueKey: map['uniqueKey'] as bool,
     );
   }
 }
+

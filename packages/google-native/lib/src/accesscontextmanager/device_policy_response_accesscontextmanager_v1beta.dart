@@ -7,19 +7,14 @@ import 'os_constraint_response_accesscontextmanager_v1beta.dart';
 class DevicePolicyResponseAccesscontextmanagerV1beta {
   /// Allowed device management levels, an empty list allows all management levels.
   final List<String> allowedDeviceManagementLevels;
-
   /// Allowed encryptions statuses, an empty list allows all statuses.
   final List<String> allowedEncryptionStatuses;
-
   /// Allowed OS versions, an empty list allows all types and all versions.
   final List<OsConstraintResponseAccesscontextmanagerV1beta> osConstraints;
-
   /// Whether the device needs to be approved by the customer admin.
   final bool requireAdminApproval;
-
   /// Whether the device needs to be corp owned.
   final bool requireCorpOwned;
-
   /// Whether or not screenlock is required for the DevicePolicy to be true. Defaults to `false`.
   final bool requireScreenlock;
 
@@ -40,33 +35,25 @@ class DevicePolicyResponseAccesscontextmanagerV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allowedDeviceManagementLevels'] = allowedDeviceManagementLevels;
-    map['allowedEncryptionStatuses'] = allowedEncryptionStatuses;
-    map['osConstraints'] = pulumi.Input.encodeList<
-        OsConstraintResponseAccesscontextmanagerV1beta,
-        Map<String, dynamic>>(osConstraints, (value) => value.toMap());
-    map['requireAdminApproval'] = requireAdminApproval;
-    map['requireCorpOwned'] = requireCorpOwned;
-    map['requireScreenlock'] = requireScreenlock;
-    return map;
+    return <String, dynamic>{
+      'allowedDeviceManagementLevels': allowedDeviceManagementLevels,
+      'allowedEncryptionStatuses': allowedEncryptionStatuses,
+      'osConstraints': pulumi.Input.encodeList<OsConstraintResponseAccesscontextmanagerV1beta, Map<String, dynamic>>(osConstraints, (value) => value.toMap()),
+      'requireAdminApproval': requireAdminApproval,
+      'requireCorpOwned': requireCorpOwned,
+      'requireScreenlock': requireScreenlock,
+    };
   }
 
-  factory DevicePolicyResponseAccesscontextmanagerV1beta.fromMap(
-      Map<String, dynamic> map) {
+  factory DevicePolicyResponseAccesscontextmanagerV1beta.fromMap(Map<String, dynamic> map) {
     return DevicePolicyResponseAccesscontextmanagerV1beta(
-      allowedDeviceManagementLevels:
-          (map['allowedDeviceManagementLevels'] as List).cast<String>(),
-      allowedEncryptionStatuses:
-          (map['allowedEncryptionStatuses'] as List).cast<String>(),
-      osConstraints: pulumi.Input.decodeList<
-              OsConstraintResponseAccesscontextmanagerV1beta>(
-          map['osConstraints'],
-          (value) => OsConstraintResponseAccesscontextmanagerV1beta.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      allowedDeviceManagementLevels: (map['allowedDeviceManagementLevels'] as List).cast<String>(),
+      allowedEncryptionStatuses: (map['allowedEncryptionStatuses'] as List).cast<String>(),
+      osConstraints: pulumi.Input.decodeList<OsConstraintResponseAccesscontextmanagerV1beta>(map['osConstraints'], (value) => OsConstraintResponseAccesscontextmanagerV1beta.fromMap((value as Map).cast<String, dynamic>())),
       requireAdminApproval: map['requireAdminApproval'] as bool,
       requireCorpOwned: map['requireCorpOwned'] as bool,
       requireScreenlock: map['requireScreenlock'] as bool,
     );
   }
 }
+

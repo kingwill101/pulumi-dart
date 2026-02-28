@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ResolverRuleTargetIp {
   /// One IPv4 address that you want to forward DNS queries to.
   final String? ip;
-
   /// One IPv6 address that you want to forward DNS queries to.
   final String? ipv6;
-
   /// Port at `ip` that you want to forward DNS queries to. Default value is `53`.
   final int? port;
-
   /// Protocol for the resolver endpoint. Valid values can be found in the [AWS documentation](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_TargetAddress.html). Default value is `Do53`.
   final String? protocol;
 
@@ -26,24 +24,12 @@ class ResolverRuleTargetIp {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final ipValue = ip;
-    if (ipValue != null) {
-      map['ip'] = ipValue;
-    }
-    final ipv6Value = ipv6;
-    if (ipv6Value != null) {
-      map['ipv6'] = ipv6Value;
-    }
-    final portValue = port;
-    if (portValue != null) {
-      map['port'] = portValue;
-    }
-    final protocolValue = protocol;
-    if (protocolValue != null) {
-      map['protocol'] = protocolValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'ip': ?ip,
+      'ipv6': ?ipv6,
+      'port': ?port,
+      'protocol': ?protocol,
+    };
   }
 
   factory ResolverRuleTargetIp.fromMap(Map<String, dynamic> map) {
@@ -55,3 +41,4 @@ class ResolverRuleTargetIp {
     );
   }
 }
+

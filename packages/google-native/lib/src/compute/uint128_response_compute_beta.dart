@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class Uint128ResponseComputeBeta {
   final String high;
   final String low;
@@ -13,10 +14,10 @@ class Uint128ResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['high'] = high;
-    map['low'] = low;
-    return map;
+    return <String, dynamic>{
+      'high': high,
+      'low': low,
+    };
   }
 
   factory Uint128ResponseComputeBeta.fromMap(Map<String, dynamic> map) {
@@ -26,3 +27,4 @@ class Uint128ResponseComputeBeta {
     );
   }
 }
+

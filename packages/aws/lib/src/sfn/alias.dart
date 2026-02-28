@@ -219,22 +219,16 @@ import 'alias_routing_configuration.dart';
 class Alias extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) identifying your state machine alias.
   late final pulumi.Output<String> arn;
-
   /// The date the state machine alias was created.
   late final pulumi.Output<String> creationDate;
-
   /// Description of the alias.
   late final pulumi.Output<String?> description;
-
   /// Name for the alias you are creating.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The StateMachine alias' route configuration settings. Fields documented below
-  late final pulumi.Output<List<AliasRoutingConfiguration>>
-      routingConfigurations;
+  late final pulumi.Output<List<AliasRoutingConfiguration>> routingConfigurations;
 
   /// Creates a new [Alias].
   /// [name] The Pulumi resource name.
@@ -255,8 +249,6 @@ class Alias extends pulumi.CustomResource {
     this.description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     this.region = registerOutput<String>('region');
-    this.routingConfigurations =
-        registerOutput<List<AliasRoutingConfiguration>>(
-            'routingConfigurations');
+    this.routingConfigurations = registerOutput<List<AliasRoutingConfiguration>>('routingConfigurations');
   }
 }

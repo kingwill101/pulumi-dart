@@ -7,13 +7,10 @@ import 'database_dump_type_metastore_v1alpha.dart';
 class DatabaseDumpMetastoreV1alpha {
   /// The type of the database.
   final DatabaseDumpDatabaseTypeMetastoreV1alpha? databaseType;
-
   /// A Cloud Storage object or folder URI that specifies the source from which to import metadata. It must begin with gs://.
   final String? gcsUri;
-
   /// The name of the source database.
   final String? sourceDatabase;
-
   /// Optional. The type of the database dump. If unspecified, defaults to MYSQL.
   final DatabaseDumpTypeMetastoreV1alpha? type;
 
@@ -30,39 +27,21 @@ class DatabaseDumpMetastoreV1alpha {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final databaseTypeValue = databaseType;
-    if (databaseTypeValue != null) {
-      map['databaseType'] = databaseTypeValue.value;
-    }
-    final gcsUriValue = gcsUri;
-    if (gcsUriValue != null) {
-      map['gcsUri'] = gcsUriValue;
-    }
-    final sourceDatabaseValue = sourceDatabase;
-    if (sourceDatabaseValue != null) {
-      map['sourceDatabase'] = sourceDatabaseValue;
-    }
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'databaseType': ?databaseType == null ? null : databaseType!.value,
+      'gcsUri': ?gcsUri,
+      'sourceDatabase': ?sourceDatabase,
+      'type': ?type == null ? null : type!.value,
+    };
   }
 
   factory DatabaseDumpMetastoreV1alpha.fromMap(Map<String, dynamic> map) {
     return DatabaseDumpMetastoreV1alpha(
-      databaseType: map['databaseType'] == null
-          ? null
-          : DatabaseDumpDatabaseTypeMetastoreV1alpha.fromValue(
-              map['databaseType'] as String),
+      databaseType: map['databaseType'] == null ? null : DatabaseDumpDatabaseTypeMetastoreV1alpha.fromValue(map['databaseType'] as String),
       gcsUri: map['gcsUri'] == null ? null : map['gcsUri'] as String,
-      sourceDatabase: map['sourceDatabase'] == null
-          ? null
-          : map['sourceDatabase'] as String,
-      type: map['type'] == null
-          ? null
-          : DatabaseDumpTypeMetastoreV1alpha.fromValue(map['type'] as String),
+      sourceDatabase: map['sourceDatabase'] == null ? null : map['sourceDatabase'] as String,
+      type: map['type'] == null ? null : DatabaseDumpTypeMetastoreV1alpha.fromValue(map['type'] as String),
     );
   }
 }
+

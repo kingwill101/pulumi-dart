@@ -6,7 +6,6 @@ import 'analyzer_configuration_unused_access.dart';
 class AnalyzerConfiguration {
   /// Specifies the configuration of an internal access analyzer for an AWS organization or account. This configuration determines how the analyzer evaluates access within your AWS environment. See `internal_access` Block for details.
   final AnalyzerConfigurationInternalAccess? internalAccess;
-
   /// Specifies the configuration of an unused access analyzer for an AWS organization or account. See `unused_access` Block for details.
   final AnalyzerConfigurationUnusedAccess? unusedAccess;
 
@@ -19,28 +18,17 @@ class AnalyzerConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final internalAccessValue = internalAccess;
-    if (internalAccessValue != null) {
-      map['internalAccess'] = internalAccessValue.toMap();
-    }
-    final unusedAccessValue = unusedAccess;
-    if (unusedAccessValue != null) {
-      map['unusedAccess'] = unusedAccessValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'internalAccess': ?internalAccess == null ? null : internalAccess!.toMap(),
+      'unusedAccess': ?unusedAccess == null ? null : unusedAccess!.toMap(),
+    };
   }
 
   factory AnalyzerConfiguration.fromMap(Map<String, dynamic> map) {
     return AnalyzerConfiguration(
-      internalAccess: map['internalAccess'] == null
-          ? null
-          : AnalyzerConfigurationInternalAccess.fromMap(
-              (map['internalAccess'] as Map).cast<String, dynamic>()),
-      unusedAccess: map['unusedAccess'] == null
-          ? null
-          : AnalyzerConfigurationUnusedAccess.fromMap(
-              (map['unusedAccess'] as Map).cast<String, dynamic>()),
+      internalAccess: map['internalAccess'] == null ? null : AnalyzerConfigurationInternalAccess.fromMap((map['internalAccess'] as Map).cast<String, dynamic>()),
+      unusedAccess: map['unusedAccess'] == null ? null : AnalyzerConfigurationUnusedAccess.fromMap((map['unusedAccess'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

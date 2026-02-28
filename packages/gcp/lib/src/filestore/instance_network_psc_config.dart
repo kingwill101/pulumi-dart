@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class InstanceNetworkPscConfig {
   /// Consumer service project in which the Private Service Connect endpoint
   /// would be set up. This is optional, and only relevant in case the network
@@ -14,19 +15,15 @@ class InstanceNetworkPscConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final endpointProjectValue = endpointProject;
-    if (endpointProjectValue != null) {
-      map['endpointProject'] = endpointProjectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'endpointProject': ?endpointProject,
+    };
   }
 
   factory InstanceNetworkPscConfig.fromMap(Map<String, dynamic> map) {
     return InstanceNetworkPscConfig(
-      endpointProject: map['endpointProject'] == null
-          ? null
-          : map['endpointProject'] as String,
+      endpointProject: map['endpointProject'] == null ? null : map['endpointProject'] as String,
     );
   }
 }
+

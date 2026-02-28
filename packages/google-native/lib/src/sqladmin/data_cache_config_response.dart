@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Data cache configurations.
 class DataCacheConfigResponse {
   /// Whether data cache is enabled for the instance.
@@ -12,9 +13,9 @@ class DataCacheConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dataCacheEnabled'] = dataCacheEnabled;
-    return map;
+    return <String, dynamic>{
+      'dataCacheEnabled': dataCacheEnabled,
+    };
   }
 
   factory DataCacheConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class DataCacheConfigResponse {
     );
   }
 }
+

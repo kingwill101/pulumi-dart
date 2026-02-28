@@ -6,7 +6,6 @@ import 'google_cloud_ml_v1_study_config_metric_spec_goal.dart';
 class GoogleCloudMlV1StudyConfigMetricSpec {
   /// The optimization goal of the metric.
   final GoogleCloudMlV1StudyConfigMetricSpecGoal goal;
-
   /// The name of the metric.
   final String metric;
 
@@ -19,18 +18,17 @@ class GoogleCloudMlV1StudyConfigMetricSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['goal'] = goal.value;
-    map['metric'] = metric;
-    return map;
+    return <String, dynamic>{
+      'goal': goal.value,
+      'metric': metric,
+    };
   }
 
-  factory GoogleCloudMlV1StudyConfigMetricSpec.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudMlV1StudyConfigMetricSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1StudyConfigMetricSpec(
-      goal: GoogleCloudMlV1StudyConfigMetricSpecGoal.fromValue(
-          map['goal'] as String),
+      goal: GoogleCloudMlV1StudyConfigMetricSpecGoal.fromValue(map['goal'] as String),
       metric: map['metric'] as String,
     );
   }
 }
+

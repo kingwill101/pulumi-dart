@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration and status of a managed SSL certificate.
 class SslCertificateManagedSslCertificateComputeBeta {
   /// The domains for which a managed SSL certificate will be generated. Each Google-managed SSL certificate supports up to the [maximum number of domains per Google-managed SSL certificate](/load-balancing/docs/quotas#ssl_certificates).
@@ -12,20 +13,15 @@ class SslCertificateManagedSslCertificateComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final domainsValue = domains;
-    if (domainsValue != null) {
-      map['domains'] = domainsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'domains': ?domains,
+    };
   }
 
-  factory SslCertificateManagedSslCertificateComputeBeta.fromMap(
-      Map<String, dynamic> map) {
+  factory SslCertificateManagedSslCertificateComputeBeta.fromMap(Map<String, dynamic> map) {
     return SslCertificateManagedSslCertificateComputeBeta(
-      domains: map['domains'] == null
-          ? null
-          : (map['domains'] as List).cast<String>(),
+      domains: map['domains'] == null ? null : (map['domains'] as List).cast<String>(),
     );
   }
 }
+

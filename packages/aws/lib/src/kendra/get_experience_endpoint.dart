@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetExperienceEndpoint {
   /// Endpoint of your Amazon Kendra Experience.
   final String endpoint;
-
   /// Type of endpoint for your Amazon Kendra Experience.
   final String endpointType;
 
@@ -16,10 +16,10 @@ class GetExperienceEndpoint {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['endpoint'] = endpoint;
-    map['endpointType'] = endpointType;
-    return map;
+    return <String, dynamic>{
+      'endpoint': endpoint,
+      'endpointType': endpointType,
+    };
   }
 
   factory GetExperienceEndpoint.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetExperienceEndpoint {
     );
   }
 }
+

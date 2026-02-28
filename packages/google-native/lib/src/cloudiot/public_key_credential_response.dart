@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A public key format and data.
 class PublicKeyCredentialResponse {
   /// The format of the key.
   final String format;
-
   /// The key data.
   final String key;
 
@@ -17,10 +17,10 @@ class PublicKeyCredentialResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['format'] = format;
-    map['key'] = key;
-    return map;
+    return <String, dynamic>{
+      'format': format,
+      'key': key,
+    };
   }
 
   factory PublicKeyCredentialResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class PublicKeyCredentialResponse {
     );
   }
 }
+

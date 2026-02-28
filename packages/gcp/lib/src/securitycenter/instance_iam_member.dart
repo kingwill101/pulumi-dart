@@ -1442,14 +1442,11 @@ class InstanceIamMember extends pulumi.CustomResource {
   late final pulumi.Output<InstanceIamMemberCondition?> condition;
   late final pulumi.Output<String> etag;
   late final pulumi.Output<String> member;
-
   /// The ID of the instance or a fully qualified identifier for the instance.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The region of the Data Fusion instance.
   late final pulumi.Output<String> region;
   late final pulumi.Output<String> role;

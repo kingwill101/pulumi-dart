@@ -16,19 +16,15 @@ class ToolsetOpenApiToolsetTlsConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['caCerts'] = pulumi.Input.encodeList<
-        ToolsetOpenApiToolsetTlsConfigCaCert,
-        Map<String, dynamic>>(caCerts, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'caCerts': pulumi.Input.encodeList<ToolsetOpenApiToolsetTlsConfigCaCert, Map<String, dynamic>>(caCerts, (value) => value.toMap()),
+    };
   }
 
   factory ToolsetOpenApiToolsetTlsConfig.fromMap(Map<String, dynamic> map) {
     return ToolsetOpenApiToolsetTlsConfig(
-      caCerts: pulumi.Input.decodeList<ToolsetOpenApiToolsetTlsConfigCaCert>(
-          map['caCerts'],
-          (value) => ToolsetOpenApiToolsetTlsConfigCaCert.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      caCerts: pulumi.Input.decodeList<ToolsetOpenApiToolsetTlsConfigCaCert>(map['caCerts'], (value) => ToolsetOpenApiToolsetTlsConfigCaCert.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

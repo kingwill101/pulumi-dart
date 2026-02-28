@@ -13,7 +13,7 @@ enum LogConfigCloudAuditOptionsLogNameComputeV1 {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown LogConfigCloudAuditOptionsLogNameComputeV1 value: $value');
+    throw ArgumentError('Unknown LogConfigCloudAuditOptionsLogNameComputeV1 value: $value');
   }
 }
+

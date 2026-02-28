@@ -7,20 +7,13 @@ import 'instance_storage_config_storage_config_s3_config.dart';
 
 class InstanceStorageConfigStorageConfig {
   /// A block that specifies the configuration of the Kinesis Firehose delivery stream. Documented below.
-  final InstanceStorageConfigStorageConfigKinesisFirehoseConfig?
-      kinesisFirehoseConfig;
-
+  final InstanceStorageConfigStorageConfigKinesisFirehoseConfig? kinesisFirehoseConfig;
   /// A block that specifies the configuration of the Kinesis data stream. Documented below.
-  final InstanceStorageConfigStorageConfigKinesisStreamConfig?
-      kinesisStreamConfig;
-
+  final InstanceStorageConfigStorageConfigKinesisStreamConfig? kinesisStreamConfig;
   /// A block that specifies the configuration of the Kinesis video stream. Documented below.
-  final InstanceStorageConfigStorageConfigKinesisVideoStreamConfig?
-      kinesisVideoStreamConfig;
-
+  final InstanceStorageConfigStorageConfigKinesisVideoStreamConfig? kinesisVideoStreamConfig;
   /// A block that specifies the configuration of S3 Bucket. Documented below.
   final InstanceStorageConfigStorageConfigS3Config? s3Config;
-
   /// A valid storage type. Valid Values: `S3` | `KINESIS_VIDEO_STREAM` | `KINESIS_STREAM` | `KINESIS_FIREHOSE`.
   final String storageType;
 
@@ -39,46 +32,23 @@ class InstanceStorageConfigStorageConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final kinesisFirehoseConfigValue = kinesisFirehoseConfig;
-    if (kinesisFirehoseConfigValue != null) {
-      map['kinesisFirehoseConfig'] = kinesisFirehoseConfigValue.toMap();
-    }
-    final kinesisStreamConfigValue = kinesisStreamConfig;
-    if (kinesisStreamConfigValue != null) {
-      map['kinesisStreamConfig'] = kinesisStreamConfigValue.toMap();
-    }
-    final kinesisVideoStreamConfigValue = kinesisVideoStreamConfig;
-    if (kinesisVideoStreamConfigValue != null) {
-      map['kinesisVideoStreamConfig'] = kinesisVideoStreamConfigValue.toMap();
-    }
-    final s3ConfigValue = s3Config;
-    if (s3ConfigValue != null) {
-      map['s3Config'] = s3ConfigValue.toMap();
-    }
-    map['storageType'] = storageType;
-    return map;
+    return <String, dynamic>{
+      'kinesisFirehoseConfig': ?kinesisFirehoseConfig == null ? null : kinesisFirehoseConfig!.toMap(),
+      'kinesisStreamConfig': ?kinesisStreamConfig == null ? null : kinesisStreamConfig!.toMap(),
+      'kinesisVideoStreamConfig': ?kinesisVideoStreamConfig == null ? null : kinesisVideoStreamConfig!.toMap(),
+      's3Config': ?s3Config == null ? null : s3Config!.toMap(),
+      'storageType': storageType,
+    };
   }
 
   factory InstanceStorageConfigStorageConfig.fromMap(Map<String, dynamic> map) {
     return InstanceStorageConfigStorageConfig(
-      kinesisFirehoseConfig: map['kinesisFirehoseConfig'] == null
-          ? null
-          : InstanceStorageConfigStorageConfigKinesisFirehoseConfig.fromMap(
-              (map['kinesisFirehoseConfig'] as Map).cast<String, dynamic>()),
-      kinesisStreamConfig: map['kinesisStreamConfig'] == null
-          ? null
-          : InstanceStorageConfigStorageConfigKinesisStreamConfig.fromMap(
-              (map['kinesisStreamConfig'] as Map).cast<String, dynamic>()),
-      kinesisVideoStreamConfig: map['kinesisVideoStreamConfig'] == null
-          ? null
-          : InstanceStorageConfigStorageConfigKinesisVideoStreamConfig.fromMap(
-              (map['kinesisVideoStreamConfig'] as Map).cast<String, dynamic>()),
-      s3Config: map['s3Config'] == null
-          ? null
-          : InstanceStorageConfigStorageConfigS3Config.fromMap(
-              (map['s3Config'] as Map).cast<String, dynamic>()),
+      kinesisFirehoseConfig: map['kinesisFirehoseConfig'] == null ? null : InstanceStorageConfigStorageConfigKinesisFirehoseConfig.fromMap((map['kinesisFirehoseConfig'] as Map).cast<String, dynamic>()),
+      kinesisStreamConfig: map['kinesisStreamConfig'] == null ? null : InstanceStorageConfigStorageConfigKinesisStreamConfig.fromMap((map['kinesisStreamConfig'] as Map).cast<String, dynamic>()),
+      kinesisVideoStreamConfig: map['kinesisVideoStreamConfig'] == null ? null : InstanceStorageConfigStorageConfigKinesisVideoStreamConfig.fromMap((map['kinesisVideoStreamConfig'] as Map).cast<String, dynamic>()),
+      s3Config: map['s3Config'] == null ? null : InstanceStorageConfigStorageConfigS3Config.fromMap((map['s3Config'] as Map).cast<String, dynamic>()),
       storageType: map['storageType'] as String,
     );
   }
 }
+

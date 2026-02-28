@@ -14,20 +14,15 @@ class AppBundle {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final bundleLocationValue = bundleLocation;
-    if (bundleLocationValue != null) {
-      map['bundleLocation'] = bundleLocationValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'bundleLocation': ?bundleLocation == null ? null : bundleLocation!.toMap(),
+    };
   }
 
   factory AppBundle.fromMap(Map<String, dynamic> map) {
     return AppBundle(
-      bundleLocation: map['bundleLocation'] == null
-          ? null
-          : FileReference.fromMap(
-              (map['bundleLocation'] as Map).cast<String, dynamic>()),
+      bundleLocation: map['bundleLocation'] == null ? null : FileReference.fromMap((map['bundleLocation'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

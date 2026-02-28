@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DomainDefaultSpaceSettingsJupyterServerAppSettingsCodeRepository {
   /// The URL of the Git repository.
   final String repositoryUrl;
@@ -11,15 +12,15 @@ class DomainDefaultSpaceSettingsJupyterServerAppSettingsCodeRepository {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['repositoryUrl'] = repositoryUrl;
-    return map;
+    return <String, dynamic>{
+      'repositoryUrl': repositoryUrl,
+    };
   }
 
-  factory DomainDefaultSpaceSettingsJupyterServerAppSettingsCodeRepository.fromMap(
-      Map<String, dynamic> map) {
+  factory DomainDefaultSpaceSettingsJupyterServerAppSettingsCodeRepository.fromMap(Map<String, dynamic> map) {
     return DomainDefaultSpaceSettingsJupyterServerAppSettingsCodeRepository(
       repositoryUrl: map['repositoryUrl'] as String,
     );
   }
 }
+

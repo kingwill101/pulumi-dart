@@ -6,10 +6,8 @@ import 'get_agent_agent_versions_agent_version_summary.dart';
 /// Result data returned by getAgentAgentVersions.
 class GetAgentAgentVersionsResult {
   final String agentId;
-
   /// List of objects, each of which contains information about a version of the agent. See Agent Version Summaries
   final List<GetAgentAgentVersionsAgentVersionSummary>? agentVersionSummaries;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -27,30 +25,21 @@ class GetAgentAgentVersionsResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['agentId'] = agentId;
-    final agentVersionSummariesValue = agentVersionSummaries;
-    if (agentVersionSummariesValue != null) {
-      map['agentVersionSummaries'] = pulumi.Input.encodeList<
-              GetAgentAgentVersionsAgentVersionSummary, Map<String, dynamic>>(
-          agentVersionSummariesValue, (value) => value.toMap());
-    }
-    map['id'] = id;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'agentId': agentId,
+      'agentVersionSummaries': ?agentVersionSummaries == null ? null : pulumi.Input.encodeList<GetAgentAgentVersionsAgentVersionSummary, Map<String, dynamic>>(agentVersionSummaries!, (value) => value.toMap()),
+      'id': id,
+      'region': region,
+    };
   }
 
   factory GetAgentAgentVersionsResult.fromMap(Map<String, dynamic> map) {
     return GetAgentAgentVersionsResult(
       agentId: map['agentId'] as String,
-      agentVersionSummaries: map['agentVersionSummaries'] == null
-          ? null
-          : pulumi.Input.decodeList<GetAgentAgentVersionsAgentVersionSummary>(
-              map['agentVersionSummaries'],
-              (value) => GetAgentAgentVersionsAgentVersionSummary.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      agentVersionSummaries: map['agentVersionSummaries'] == null ? null : pulumi.Input.decodeList<GetAgentAgentVersionsAgentVersionSummary>(map['agentVersionSummaries'], (value) => GetAgentAgentVersionsAgentVersionSummary.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       region: map['region'] as String,
     );
   }
 }
+

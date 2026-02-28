@@ -20,30 +20,19 @@ class GetVirtualGatewaySpecListenerTl {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['certificates'] = pulumi.Input.encodeList<
-        GetVirtualGatewaySpecListenerTlCertificate,
-        Map<String, dynamic>>(certificates, (value) => value.toMap());
-    map['mode'] = mode;
-    map['validations'] = pulumi.Input.encodeList<
-        GetVirtualGatewaySpecListenerTlValidation,
-        Map<String, dynamic>>(validations, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'certificates': pulumi.Input.encodeList<GetVirtualGatewaySpecListenerTlCertificate, Map<String, dynamic>>(certificates, (value) => value.toMap()),
+      'mode': mode,
+      'validations': pulumi.Input.encodeList<GetVirtualGatewaySpecListenerTlValidation, Map<String, dynamic>>(validations, (value) => value.toMap()),
+    };
   }
 
   factory GetVirtualGatewaySpecListenerTl.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecListenerTl(
-      certificates:
-          pulumi.Input.decodeList<GetVirtualGatewaySpecListenerTlCertificate>(
-              map['certificates'],
-              (value) => GetVirtualGatewaySpecListenerTlCertificate.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      certificates: pulumi.Input.decodeList<GetVirtualGatewaySpecListenerTlCertificate>(map['certificates'], (value) => GetVirtualGatewaySpecListenerTlCertificate.fromMap((value as Map).cast<String, dynamic>())),
       mode: map['mode'] as String,
-      validations:
-          pulumi.Input.decodeList<GetVirtualGatewaySpecListenerTlValidation>(
-              map['validations'],
-              (value) => GetVirtualGatewaySpecListenerTlValidation.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      validations: pulumi.Input.decodeList<GetVirtualGatewaySpecListenerTlValidation>(map['validations'], (value) => GetVirtualGatewaySpecListenerTlValidation.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

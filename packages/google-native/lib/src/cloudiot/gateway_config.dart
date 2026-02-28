@@ -7,7 +7,6 @@ import 'gateway_config_gateway_type.dart';
 class GatewayConfig {
   /// Indicates how to authorize and/or authenticate devices to access the gateway.
   final GatewayConfigGatewayAuthMethod? gatewayAuthMethod;
-
   /// Indicates whether the device is a gateway.
   final GatewayConfigGatewayType? gatewayType;
 
@@ -20,27 +19,17 @@ class GatewayConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final gatewayAuthMethodValue = gatewayAuthMethod;
-    if (gatewayAuthMethodValue != null) {
-      map['gatewayAuthMethod'] = gatewayAuthMethodValue.value;
-    }
-    final gatewayTypeValue = gatewayType;
-    if (gatewayTypeValue != null) {
-      map['gatewayType'] = gatewayTypeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'gatewayAuthMethod': ?gatewayAuthMethod == null ? null : gatewayAuthMethod!.value,
+      'gatewayType': ?gatewayType == null ? null : gatewayType!.value,
+    };
   }
 
   factory GatewayConfig.fromMap(Map<String, dynamic> map) {
     return GatewayConfig(
-      gatewayAuthMethod: map['gatewayAuthMethod'] == null
-          ? null
-          : GatewayConfigGatewayAuthMethod.fromValue(
-              map['gatewayAuthMethod'] as String),
-      gatewayType: map['gatewayType'] == null
-          ? null
-          : GatewayConfigGatewayType.fromValue(map['gatewayType'] as String),
+      gatewayAuthMethod: map['gatewayAuthMethod'] == null ? null : GatewayConfigGatewayAuthMethod.fromValue(map['gatewayAuthMethod'] as String),
+      gatewayType: map['gatewayType'] == null ? null : GatewayConfigGatewayType.fromValue(map['gatewayType'] as String),
     );
   }
 }
+

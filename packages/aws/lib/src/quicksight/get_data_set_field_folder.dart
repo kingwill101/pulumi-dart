@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDataSetFieldFolder {
   final List<String> columns;
   final String description;
@@ -16,11 +17,11 @@ class GetDataSetFieldFolder {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['columns'] = columns;
-    map['description'] = description;
-    map['fieldFoldersId'] = fieldFoldersId;
-    return map;
+    return <String, dynamic>{
+      'columns': columns,
+      'description': description,
+      'fieldFoldersId': fieldFoldersId,
+    };
   }
 
   factory GetDataSetFieldFolder.fromMap(Map<String, dynamic> map) {
@@ -31,3 +32,4 @@ class GetDataSetFieldFolder {
     );
   }
 }
+

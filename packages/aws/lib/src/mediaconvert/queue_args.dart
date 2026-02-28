@@ -10,25 +10,18 @@ import 'queue_reservation_plan_settings.dart';
 class QueueArgs {
   /// The maximum number of jobs your queue can process concurrently. For on-demand queues, the value you enter is constrained by your service quotas for Maximum concurrent jobs, per on-demand queue and Maximum concurrent jobs, per account. For reserved queues, specify the number of jobs you can process concurrently in your reservation plan instead.
   final pulumi.Input<int>? concurrentJobs;
-
   /// A description of the queue
   final pulumi.Input<String>? description;
-
   /// A unique identifier describing the queue
   final pulumi.Input<String>? name;
-
   /// Specifies whether the pricing plan for the queue is on-demand or reserved. Valid values are `ON_DEMAND` or `RESERVED`. Default to `ON_DEMAND`.
   final pulumi.Input<String>? pricingPlan;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// A detail pricing plan of the  reserved queue. See below.
   final pulumi.Input<QueueReservationPlanSettings>? reservationPlanSettings;
-
   /// A status of the queue. Valid values are `ACTIVE` or `RESERVED`. Default to `PAUSED`.
   final pulumi.Input<String>? status;
-
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -50,74 +43,40 @@ class QueueArgs {
     QueueReservationPlanSettings? reservationPlanSettings,
     String? status,
     Map<String, String>? tags,
-  })  : concurrentJobs = pulumi.Input.asOptionalInput<int>(concurrentJobs),
-        description = pulumi.Input.asOptionalInput<String>(description),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        pricingPlan = pulumi.Input.asOptionalInput<String>(pricingPlan),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        reservationPlanSettings =
-            pulumi.Input.asOptionalInput<QueueReservationPlanSettings>(
-                reservationPlanSettings),
-        status = pulumi.Input.asOptionalInput<String>(status),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      concurrentJobs = pulumi.Input.asOptionalInput<int>(concurrentJobs),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      pricingPlan = pulumi.Input.asOptionalInput<String>(pricingPlan),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      reservationPlanSettings = pulumi.Input.asOptionalInput<QueueReservationPlanSettings>(reservationPlanSettings),
+      status = pulumi.Input.asOptionalInput<String>(status),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final concurrentJobsValue = concurrentJobs;
-    if (concurrentJobsValue != null) {
-      map['concurrentJobs'] = concurrentJobsValue;
-    }
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final pricingPlanValue = pricingPlan;
-    if (pricingPlanValue != null) {
-      map['pricingPlan'] = pricingPlanValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final reservationPlanSettingsValue = reservationPlanSettings;
-    if (reservationPlanSettingsValue != null) {
-      map['reservationPlanSettings'] = pulumi.Input.mapOptionalInputValue<
-              QueueReservationPlanSettings, Map<String, dynamic>>(
-          reservationPlanSettingsValue, (value) => value.toMap());
-    }
-    final statusValue = status;
-    if (statusValue != null) {
-      map['status'] = statusValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'concurrentJobs': ?concurrentJobs,
+      'description': ?description,
+      'name': ?name,
+      'pricingPlan': ?pricingPlan,
+      'region': ?region,
+      'reservationPlanSettings': ?pulumi.Input.mapOptionalInputValue<QueueReservationPlanSettings, Map<String, dynamic>>(reservationPlanSettings, (value) => value.toMap()),
+      'status': ?status,
+      'tags': ?tags,
+    };
   }
 
   factory QueueArgs.fromMap(Map<String, dynamic> map) {
     return QueueArgs(
-      concurrentJobs:
-          map['concurrentJobs'] == null ? null : map['concurrentJobs'] as int,
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      concurrentJobs: map['concurrentJobs'] == null ? null : map['concurrentJobs'] as int,
+      description: map['description'] == null ? null : map['description'] as String,
       name: map['name'] == null ? null : map['name'] as String,
-      pricingPlan:
-          map['pricingPlan'] == null ? null : map['pricingPlan'] as String,
+      pricingPlan: map['pricingPlan'] == null ? null : map['pricingPlan'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      reservationPlanSettings: map['reservationPlanSettings'] == null
-          ? null
-          : QueueReservationPlanSettings.fromMap(
-              (map['reservationPlanSettings'] as Map).cast<String, dynamic>()),
+      reservationPlanSettings: map['reservationPlanSettings'] == null ? null : QueueReservationPlanSettings.fromMap((map['reservationPlanSettings'] as Map).cast<String, dynamic>()),
       status: map['status'] == null ? null : map['status'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

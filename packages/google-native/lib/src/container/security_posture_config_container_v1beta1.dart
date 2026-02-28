@@ -7,10 +7,8 @@ import 'security_posture_config_vulnerability_mode_container_v1beta1.dart';
 class SecurityPostureConfigContainerV1beta1 {
   /// Sets which mode to use for Security Posture features.
   final SecurityPostureConfigModeContainerV1beta1? mode;
-
   /// Sets which mode to use for vulnerability scanning.
-  final SecurityPostureConfigVulnerabilityModeContainerV1beta1?
-      vulnerabilityMode;
+  final SecurityPostureConfigVulnerabilityModeContainerV1beta1? vulnerabilityMode;
 
   /// Creates a new [SecurityPostureConfigContainerV1beta1].
   /// [mode] Sets which mode to use for Security Posture features.
@@ -21,29 +19,17 @@ class SecurityPostureConfigContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final modeValue = mode;
-    if (modeValue != null) {
-      map['mode'] = modeValue.value;
-    }
-    final vulnerabilityModeValue = vulnerabilityMode;
-    if (vulnerabilityModeValue != null) {
-      map['vulnerabilityMode'] = vulnerabilityModeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'mode': ?mode == null ? null : mode!.value,
+      'vulnerabilityMode': ?vulnerabilityMode == null ? null : vulnerabilityMode!.value,
+    };
   }
 
-  factory SecurityPostureConfigContainerV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory SecurityPostureConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return SecurityPostureConfigContainerV1beta1(
-      mode: map['mode'] == null
-          ? null
-          : SecurityPostureConfigModeContainerV1beta1.fromValue(
-              map['mode'] as String),
-      vulnerabilityMode: map['vulnerabilityMode'] == null
-          ? null
-          : SecurityPostureConfigVulnerabilityModeContainerV1beta1.fromValue(
-              map['vulnerabilityMode'] as String),
+      mode: map['mode'] == null ? null : SecurityPostureConfigModeContainerV1beta1.fromValue(map['mode'] as String),
+      vulnerabilityMode: map['vulnerabilityMode'] == null ? null : SecurityPostureConfigVulnerabilityModeContainerV1beta1.fromValue(map['vulnerabilityMode'] as String),
     );
   }
 }
+

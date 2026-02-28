@@ -22,21 +22,19 @@ class GetNamespaceGkehubV1alphaArgs {
     required String namespaceId,
     String? project,
     required String scopeId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        namespaceId = pulumi.Input.asInput<String>(namespaceId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        scopeId = pulumi.Input.asInput<String>(scopeId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      namespaceId = pulumi.Input.asInput<String>(namespaceId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      scopeId = pulumi.Input.asInput<String>(scopeId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    map['namespaceId'] = namespaceId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['scopeId'] = scopeId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'namespaceId': namespaceId,
+      'project': ?project,
+      'scopeId': scopeId,
+    };
   }
 
   factory GetNamespaceGkehubV1alphaArgs.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetNamespaceGkehubV1alphaArgs {
     );
   }
 }
+

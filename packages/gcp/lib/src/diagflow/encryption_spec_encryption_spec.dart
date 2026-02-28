@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EncryptionSpecEncryptionSpec {
   /// The name of customer-managed encryption key that is used to secure a resource and its sub-resources.
   /// If empty, the resource is secured by the default Google encryption key.
@@ -14,9 +15,9 @@ class EncryptionSpecEncryptionSpec {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['kmsKey'] = kmsKey;
-    return map;
+    return <String, dynamic>{
+      'kmsKey': kmsKey,
+    };
   }
 
   factory EncryptionSpecEncryptionSpec.fromMap(Map<String, dynamic> map) {
@@ -25,3 +26,4 @@ class EncryptionSpecEncryptionSpec {
     );
   }
 }
+

@@ -8,17 +8,13 @@ import 'get_discovered_service_service_reference.dart';
 class GetDiscoveredServiceResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The location that the underlying resource resides in.
   final String location;
-
   /// Resource name of a Service. Format: "projects/{host-project-id}/locations/{location}/applications/{application-id}/services/{service-id}".
   final String name;
   final String? project;
-
   /// Properties of an underlying compute resource that can comprise a Service. Structure is documented below
   final List<GetDiscoveredServiceServiceProperty> serviceProperties;
-
   /// Reference to an underlying networking resource that can comprise a Service. Structure is documented below
   final List<GetDiscoveredServiceServiceReference> serviceReferences;
   final String serviceUri;
@@ -42,22 +38,15 @@ class GetDiscoveredServiceResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['location'] = location;
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['serviceProperties'] = pulumi.Input.encodeList<
-        GetDiscoveredServiceServiceProperty,
-        Map<String, dynamic>>(serviceProperties, (value) => value.toMap());
-    map['serviceReferences'] = pulumi.Input.encodeList<
-        GetDiscoveredServiceServiceReference,
-        Map<String, dynamic>>(serviceReferences, (value) => value.toMap());
-    map['serviceUri'] = serviceUri;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+      'location': location,
+      'name': name,
+      'project': ?project,
+      'serviceProperties': pulumi.Input.encodeList<GetDiscoveredServiceServiceProperty, Map<String, dynamic>>(serviceProperties, (value) => value.toMap()),
+      'serviceReferences': pulumi.Input.encodeList<GetDiscoveredServiceServiceReference, Map<String, dynamic>>(serviceReferences, (value) => value.toMap()),
+      'serviceUri': serviceUri,
+    };
   }
 
   factory GetDiscoveredServiceResult.fromMap(Map<String, dynamic> map) {
@@ -66,17 +55,10 @@ class GetDiscoveredServiceResult {
       location: map['location'] as String,
       name: map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      serviceProperties:
-          pulumi.Input.decodeList<GetDiscoveredServiceServiceProperty>(
-              map['serviceProperties'],
-              (value) => GetDiscoveredServiceServiceProperty.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      serviceReferences:
-          pulumi.Input.decodeList<GetDiscoveredServiceServiceReference>(
-              map['serviceReferences'],
-              (value) => GetDiscoveredServiceServiceReference.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      serviceProperties: pulumi.Input.decodeList<GetDiscoveredServiceServiceProperty>(map['serviceProperties'], (value) => GetDiscoveredServiceServiceProperty.fromMap((value as Map).cast<String, dynamic>())),
+      serviceReferences: pulumi.Input.decodeList<GetDiscoveredServiceServiceReference>(map['serviceReferences'], (value) => GetDiscoveredServiceServiceReference.fromMap((value as Map).cast<String, dynamic>())),
       serviceUri: map['serviceUri'] as String,
     );
   }
 }
+

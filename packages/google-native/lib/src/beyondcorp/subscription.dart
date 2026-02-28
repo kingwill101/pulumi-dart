@@ -7,30 +7,22 @@ import 'subscription_args.dart';
 class Subscription extends pulumi.CustomResource {
   /// Represents that, if subscription will renew or end when the term ends.
   late final pulumi.Output<bool> autoRenewEnabled;
-
   /// Create time of the subscription.
   late final pulumi.Output<String> createTime;
-
   /// End time of the subscription.
   late final pulumi.Output<String> endTime;
   late final pulumi.Output<String> location;
-
   /// Unique resource name of the Subscription. The name is ignored when creating a subscription.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> organizationId;
-
   /// Optional. Number of seats in the subscription.
   late final pulumi.Output<String> seatCount;
-
   /// SKU of subscription.
   late final pulumi.Output<String> sku;
-
   /// Start time of the subscription.
   late final pulumi.Output<String> startTime;
-
   /// The current state of the subscription.
   late final pulumi.Output<String> state;
-
   /// Type of subscription.
   late final pulumi.Output<String> type;
 

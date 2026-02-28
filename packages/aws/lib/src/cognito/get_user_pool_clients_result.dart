@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getUserPoolClients.
 class GetUserPoolClientsResult {
   /// List of Cognito user pool client IDs.
   final List<String> clientIds;
-
   /// List of Cognito user pool client names.
   final List<String> clientNames;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -28,13 +27,13 @@ class GetUserPoolClientsResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['clientIds'] = clientIds;
-    map['clientNames'] = clientNames;
-    map['id'] = id;
-    map['region'] = region;
-    map['userPoolId'] = userPoolId;
-    return map;
+    return <String, dynamic>{
+      'clientIds': clientIds,
+      'clientNames': clientNames,
+      'id': id,
+      'region': region,
+      'userPoolId': userPoolId,
+    };
   }
 
   factory GetUserPoolClientsResult.fromMap(Map<String, dynamic> map) {
@@ -47,3 +46,4 @@ class GetUserPoolClientsResult {
     );
   }
 }
+

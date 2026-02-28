@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EnvironmentAllSetting {
   /// A unique name for this Environment. This name is used
   /// in the application URL
@@ -21,15 +22,12 @@ class EnvironmentAllSetting {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['namespace'] = namespace;
-    final resourceValue = resource;
-    if (resourceValue != null) {
-      map['resource'] = resourceValue;
-    }
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'namespace': namespace,
+      'resource': ?resource,
+      'value': value,
+    };
   }
 
   factory EnvironmentAllSetting.fromMap(Map<String, dynamic> map) {
@@ -41,3 +39,4 @@ class EnvironmentAllSetting {
     );
   }
 }
+

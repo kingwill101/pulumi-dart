@@ -12,7 +12,6 @@ class GetInstanceResult {
   final Map<String, String> effectiveLabels;
   final String filesystem;
   final bool gkeSupportEnabled;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instanceId;
@@ -82,47 +81,36 @@ class GetInstanceResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accessRulesOptions'] = pulumi.Input.encodeList<
-        GetInstanceAccessRulesOption,
-        Map<String, dynamic>>(accessRulesOptions, (value) => value.toMap());
-    map['capacityGib'] = capacityGib;
-    map['createTime'] = createTime;
-    map['description'] = description;
-    map['effectiveLabels'] = effectiveLabels;
-    map['filesystem'] = filesystem;
-    map['gkeSupportEnabled'] = gkeSupportEnabled;
-    map['id'] = id;
-    map['instanceId'] = instanceId;
-    map['kmsKey'] = kmsKey;
-    map['labels'] = labels;
-    map['location'] = location;
-    map['mountPoint'] = mountPoint;
-    map['name'] = name;
-    map['network'] = network;
-    map['perUnitStorageThroughput'] = perUnitStorageThroughput;
-    map['placementPolicy'] = placementPolicy;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['pulumiLabels'] = pulumiLabels;
-    map['state'] = state;
-    map['stateReason'] = stateReason;
-    map['updateTime'] = updateTime;
-    final zoneValue = zone;
-    if (zoneValue != null) {
-      map['zone'] = zoneValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'accessRulesOptions': pulumi.Input.encodeList<GetInstanceAccessRulesOption, Map<String, dynamic>>(accessRulesOptions, (value) => value.toMap()),
+      'capacityGib': capacityGib,
+      'createTime': createTime,
+      'description': description,
+      'effectiveLabels': effectiveLabels,
+      'filesystem': filesystem,
+      'gkeSupportEnabled': gkeSupportEnabled,
+      'id': id,
+      'instanceId': instanceId,
+      'kmsKey': kmsKey,
+      'labels': labels,
+      'location': location,
+      'mountPoint': mountPoint,
+      'name': name,
+      'network': network,
+      'perUnitStorageThroughput': perUnitStorageThroughput,
+      'placementPolicy': placementPolicy,
+      'project': ?project,
+      'pulumiLabels': pulumiLabels,
+      'state': state,
+      'stateReason': stateReason,
+      'updateTime': updateTime,
+      'zone': ?zone,
+    };
   }
 
   factory GetInstanceResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceResult(
-      accessRulesOptions: pulumi.Input.decodeList<GetInstanceAccessRulesOption>(
-          map['accessRulesOptions'],
-          (value) => GetInstanceAccessRulesOption.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      accessRulesOptions: pulumi.Input.decodeList<GetInstanceAccessRulesOption>(map['accessRulesOptions'], (value) => GetInstanceAccessRulesOption.fromMap((value as Map).cast<String, dynamic>())),
       capacityGib: map['capacityGib'] as String,
       createTime: map['createTime'] as String,
       description: map['description'] as String,
@@ -148,3 +136,4 @@ class GetInstanceResult {
     );
   }
 }
+

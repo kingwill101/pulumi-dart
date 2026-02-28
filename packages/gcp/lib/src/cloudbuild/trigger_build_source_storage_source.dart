@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TriggerBuildSourceStorageSource {
   /// Google Cloud Storage bucket containing the source.
   final String bucket;
-
   /// Google Cloud Storage generation for the object.
   /// If the generation is omitted, the latest generation will be used
   final String? generation;
-
   /// Google Cloud Storage object containing the source.
   /// This object must be a gzipped archive file (.tar.gz) containing source to build.
   final String object;
@@ -23,22 +22,19 @@ class TriggerBuildSourceStorageSource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['bucket'] = bucket;
-    final generationValue = generation;
-    if (generationValue != null) {
-      map['generation'] = generationValue;
-    }
-    map['object'] = object;
-    return map;
+    return <String, dynamic>{
+      'bucket': bucket,
+      'generation': ?generation,
+      'object': object,
+    };
   }
 
   factory TriggerBuildSourceStorageSource.fromMap(Map<String, dynamic> map) {
     return TriggerBuildSourceStorageSource(
       bucket: map['bucket'] as String,
-      generation:
-          map['generation'] == null ? null : map['generation'] as String,
+      generation: map['generation'] == null ? null : map['generation'] as String,
       object: map['object'] as String,
     );
   }
 }
+

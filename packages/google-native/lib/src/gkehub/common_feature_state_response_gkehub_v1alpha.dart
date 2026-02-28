@@ -10,19 +10,14 @@ import 'service_mesh_feature_state_response.dart';
 class CommonFeatureStateResponseGkehubV1alpha {
   /// Appdevexperience specific state.
   final AppDevExperienceFeatureStateResponseGkehubV1alpha appdevexperience;
-
   /// ClusterUpgrade fleet-level state.
   final ClusterUpgradeFleetStateResponseGkehubV1alpha clusterupgrade;
-
   /// FleetObservability feature state.
   final FleetObservabilityFeatureStateResponseGkehubV1alpha fleetobservability;
-
   /// Namespace Actuation feature state.
   final Map<String, dynamic> namespaceactuation;
-
   /// Service Mesh-specific state.
   final ServiceMeshFeatureStateResponse servicemesh;
-
   /// The "running state" of the Feature in this Hub.
   final FeatureStateResponseGkehubV1alpha state;
 
@@ -43,33 +38,25 @@ class CommonFeatureStateResponseGkehubV1alpha {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['appdevexperience'] = appdevexperience.toMap();
-    map['clusterupgrade'] = clusterupgrade.toMap();
-    map['fleetobservability'] = fleetobservability.toMap();
-    map['namespaceactuation'] = namespaceactuation;
-    map['servicemesh'] = servicemesh.toMap();
-    map['state'] = state.toMap();
-    return map;
+    return <String, dynamic>{
+      'appdevexperience': appdevexperience.toMap(),
+      'clusterupgrade': clusterupgrade.toMap(),
+      'fleetobservability': fleetobservability.toMap(),
+      'namespaceactuation': namespaceactuation,
+      'servicemesh': servicemesh.toMap(),
+      'state': state.toMap(),
+    };
   }
 
-  factory CommonFeatureStateResponseGkehubV1alpha.fromMap(
-      Map<String, dynamic> map) {
+  factory CommonFeatureStateResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return CommonFeatureStateResponseGkehubV1alpha(
-      appdevexperience:
-          AppDevExperienceFeatureStateResponseGkehubV1alpha.fromMap(
-              (map['appdevexperience'] as Map).cast<String, dynamic>()),
-      clusterupgrade: ClusterUpgradeFleetStateResponseGkehubV1alpha.fromMap(
-          (map['clusterupgrade'] as Map).cast<String, dynamic>()),
-      fleetobservability:
-          FleetObservabilityFeatureStateResponseGkehubV1alpha.fromMap(
-              (map['fleetobservability'] as Map).cast<String, dynamic>()),
-      namespaceactuation:
-          (map['namespaceactuation'] as Map).cast<String, dynamic>(),
-      servicemesh: ServiceMeshFeatureStateResponse.fromMap(
-          (map['servicemesh'] as Map).cast<String, dynamic>()),
-      state: FeatureStateResponseGkehubV1alpha.fromMap(
-          (map['state'] as Map).cast<String, dynamic>()),
+      appdevexperience: AppDevExperienceFeatureStateResponseGkehubV1alpha.fromMap((map['appdevexperience'] as Map).cast<String, dynamic>()),
+      clusterupgrade: ClusterUpgradeFleetStateResponseGkehubV1alpha.fromMap((map['clusterupgrade'] as Map).cast<String, dynamic>()),
+      fleetobservability: FleetObservabilityFeatureStateResponseGkehubV1alpha.fromMap((map['fleetobservability'] as Map).cast<String, dynamic>()),
+      namespaceactuation: (map['namespaceactuation'] as Map).cast<String, dynamic>(),
+      servicemesh: ServiceMeshFeatureStateResponse.fromMap((map['servicemesh'] as Map).cast<String, dynamic>()),
+      state: FeatureStateResponseGkehubV1alpha.fromMap((map['state'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,21 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getAppregistryApplication.
 class GetAppregistryApplicationResult {
   /// A map with a single tag key-value pair used to associate resources with the application.
   final Map<String, String> applicationTag;
-
   /// ARN (Amazon Resource Name) of the application.
   final String arn;
-
   /// Description of the application.
   final String description;
   final String id;
-
   /// Name of the application.
   final String name;
   final String region;
-
   /// A map of tags assigned to the Application. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Map<String, String> tags;
 
@@ -38,15 +35,15 @@ class GetAppregistryApplicationResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['applicationTag'] = applicationTag;
-    map['arn'] = arn;
-    map['description'] = description;
-    map['id'] = id;
-    map['name'] = name;
-    map['region'] = region;
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'applicationTag': applicationTag,
+      'arn': arn,
+      'description': description,
+      'id': id,
+      'name': name,
+      'region': region,
+      'tags': tags,
+    };
   }
 
   factory GetAppregistryApplicationResult.fromMap(Map<String, dynamic> map) {
@@ -61,3 +58,4 @@ class GetAppregistryApplicationResult {
     );
   }
 }
+

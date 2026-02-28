@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents a metric to optimize.
 class GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecResponse {
   /// The optimization goal of the metric.
   final String goal;
-
   /// The ID of the metric. Must not contain whitespaces.
   final String metricId;
 
@@ -17,17 +17,17 @@ class GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecRes
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['goal'] = goal;
-    map['metricId'] = metricId;
-    return map;
+    return <String, dynamic>{
+      'goal': goal,
+      'metricId': metricId,
+    };
   }
 
-  factory GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecResponse(
       goal: map['goal'] as String,
       metricId: map['metricId'] as String,
     );
   }
 }
+

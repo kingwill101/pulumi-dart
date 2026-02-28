@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// RangeInfo contains the range name and the range utilization by this cluster.
 class RangeInfoResponse {
   /// [Output only] Name of a range.
   final String rangeName;
-
   /// [Output only] The utilization of the range.
   final double utilization;
 
@@ -17,10 +17,10 @@ class RangeInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['rangeName'] = rangeName;
-    map['utilization'] = utilization;
-    return map;
+    return <String, dynamic>{
+      'rangeName': rangeName,
+      'utilization': utilization,
+    };
   }
 
   factory RangeInfoResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class RangeInfoResponse {
     );
   }
 }
+

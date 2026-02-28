@@ -8,13 +8,10 @@ import 'video_stream_response.dart';
 class ElementaryStreamResponse {
   /// Encoding of an audio stream.
   final AudioStreamResponse audioStream;
-
   /// A unique key for this elementary stream.
   final String key;
-
   /// Encoding of a text stream. For example, closed captions or subtitles.
   final TextStreamResponse textStream;
-
   /// Encoding of a video stream.
   final VideoStreamResponse videoStream;
 
@@ -31,23 +28,21 @@ class ElementaryStreamResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['audioStream'] = audioStream.toMap();
-    map['key'] = key;
-    map['textStream'] = textStream.toMap();
-    map['videoStream'] = videoStream.toMap();
-    return map;
+    return <String, dynamic>{
+      'audioStream': audioStream.toMap(),
+      'key': key,
+      'textStream': textStream.toMap(),
+      'videoStream': videoStream.toMap(),
+    };
   }
 
   factory ElementaryStreamResponse.fromMap(Map<String, dynamic> map) {
     return ElementaryStreamResponse(
-      audioStream: AudioStreamResponse.fromMap(
-          (map['audioStream'] as Map).cast<String, dynamic>()),
+      audioStream: AudioStreamResponse.fromMap((map['audioStream'] as Map).cast<String, dynamic>()),
       key: map['key'] as String,
-      textStream: TextStreamResponse.fromMap(
-          (map['textStream'] as Map).cast<String, dynamic>()),
-      videoStream: VideoStreamResponse.fromMap(
-          (map['videoStream'] as Map).cast<String, dynamic>()),
+      textStream: TextStreamResponse.fromMap((map['textStream'] as Map).cast<String, dynamic>()),
+      videoStream: VideoStreamResponse.fromMap((map['videoStream'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

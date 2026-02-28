@@ -7,24 +7,18 @@ import 'get_instance_group_named_port.dart';
 class GetInstanceGroupResult {
   /// Textual description of the instance group.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// List of instances in the group.
   final List<String> instances;
   final String? name;
-
   /// List of named ports in the group.
   final List<GetInstanceGroupNamedPort> namedPorts;
-
   /// The URL of the network the instance group is in.
   final String network;
   final String project;
-
   /// The URI of the resource.
   final String selfLink;
-
   /// The number of instances in the group.
   final int size;
   final String zone;
@@ -54,22 +48,18 @@ class GetInstanceGroupResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['description'] = description;
-    map['id'] = id;
-    map['instances'] = instances;
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    map['namedPorts'] = pulumi.Input.encodeList<GetInstanceGroupNamedPort,
-        Map<String, dynamic>>(namedPorts, (value) => value.toMap());
-    map['network'] = network;
-    map['project'] = project;
-    map['selfLink'] = selfLink;
-    map['size'] = size;
-    map['zone'] = zone;
-    return map;
+    return <String, dynamic>{
+      'description': description,
+      'id': id,
+      'instances': instances,
+      'name': ?name,
+      'namedPorts': pulumi.Input.encodeList<GetInstanceGroupNamedPort, Map<String, dynamic>>(namedPorts, (value) => value.toMap()),
+      'network': network,
+      'project': project,
+      'selfLink': selfLink,
+      'size': size,
+      'zone': zone,
+    };
   }
 
   factory GetInstanceGroupResult.fromMap(Map<String, dynamic> map) {
@@ -78,10 +68,7 @@ class GetInstanceGroupResult {
       id: map['id'] as String,
       instances: (map['instances'] as List).cast<String>(),
       name: map['name'] == null ? null : map['name'] as String,
-      namedPorts: pulumi.Input.decodeList<GetInstanceGroupNamedPort>(
-          map['namedPorts'],
-          (value) => GetInstanceGroupNamedPort.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      namedPorts: pulumi.Input.decodeList<GetInstanceGroupNamedPort>(map['namedPorts'], (value) => GetInstanceGroupNamedPort.fromMap((value as Map).cast<String, dynamic>())),
       network: map['network'] as String,
       project: map['project'] as String,
       selfLink: map['selfLink'] as String,
@@ -90,3 +77,4 @@ class GetInstanceGroupResult {
     );
   }
 }
+

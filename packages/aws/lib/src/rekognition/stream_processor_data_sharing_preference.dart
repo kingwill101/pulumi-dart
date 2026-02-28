@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class StreamProcessorDataSharingPreference {
   /// Whether you are sharing data with Rekognition to improve model performance.
   final bool optIn;
@@ -11,15 +12,15 @@ class StreamProcessorDataSharingPreference {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['optIn'] = optIn;
-    return map;
+    return <String, dynamic>{
+      'optIn': optIn,
+    };
   }
 
-  factory StreamProcessorDataSharingPreference.fromMap(
-      Map<String, dynamic> map) {
+  factory StreamProcessorDataSharingPreference.fromMap(Map<String, dynamic> map) {
     return StreamProcessorDataSharingPreference(
       optIn: map['optIn'] as bool,
     );
   }
 }
+

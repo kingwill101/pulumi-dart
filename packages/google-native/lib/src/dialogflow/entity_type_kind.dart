@@ -17,3 +17,4 @@ enum EntityTypeKind {
     throw ArgumentError('Unknown EntityTypeKind value: $value');
   }
 }
+

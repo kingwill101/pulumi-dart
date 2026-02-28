@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A TPU accelerator configuration.
 class AcceleratorConfigResponse {
   /// Topology of TPU in chips.
   final String topology;
-
   /// Type of TPU.
   final String type;
 
@@ -17,10 +17,10 @@ class AcceleratorConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['topology'] = topology;
-    map['type'] = type;
-    return map;
+    return <String, dynamic>{
+      'topology': topology,
+      'type': type,
+    };
   }
 
   factory AcceleratorConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class AcceleratorConfigResponse {
     );
   }
 }
+

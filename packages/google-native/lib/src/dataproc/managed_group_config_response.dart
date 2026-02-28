@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Specifies the resources used to actively manage an instance group.
 class ManagedGroupConfigResponse {
   /// The name of the Instance Group Manager for this group.
   final String instanceGroupManagerName;
-
   /// The partial URI to the instance group manager for this group. E.g. projects/my-project/regions/us-central1/instanceGroupManagers/my-igm.
   final String instanceGroupManagerUri;
-
   /// The name of the Instance Template used for the Managed Instance Group.
   final String instanceTemplateName;
 
@@ -22,11 +21,11 @@ class ManagedGroupConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['instanceGroupManagerName'] = instanceGroupManagerName;
-    map['instanceGroupManagerUri'] = instanceGroupManagerUri;
-    map['instanceTemplateName'] = instanceTemplateName;
-    return map;
+    return <String, dynamic>{
+      'instanceGroupManagerName': instanceGroupManagerName,
+      'instanceGroupManagerUri': instanceGroupManagerUri,
+      'instanceTemplateName': instanceTemplateName,
+    };
   }
 
   factory ManagedGroupConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -37,3 +36,4 @@ class ManagedGroupConfigResponse {
     );
   }
 }
+

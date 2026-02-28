@@ -25,26 +25,21 @@ class GetVmwareNodePoolArgs {
     String? view,
     required String vmwareClusterId,
     required String vmwareNodePoolId,
-  })  : location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        view = pulumi.Input.asOptionalInput<String>(view),
-        vmwareClusterId = pulumi.Input.asInput<String>(vmwareClusterId),
-        vmwareNodePoolId = pulumi.Input.asInput<String>(vmwareNodePoolId);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      view = pulumi.Input.asOptionalInput<String>(view),
+      vmwareClusterId = pulumi.Input.asInput<String>(vmwareClusterId),
+      vmwareNodePoolId = pulumi.Input.asInput<String>(vmwareNodePoolId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    final viewValue = view;
-    if (viewValue != null) {
-      map['view'] = viewValue;
-    }
-    map['vmwareClusterId'] = vmwareClusterId;
-    map['vmwareNodePoolId'] = vmwareNodePoolId;
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+      'view': ?view,
+      'vmwareClusterId': vmwareClusterId,
+      'vmwareNodePoolId': vmwareNodePoolId,
+    };
   }
 
   factory GetVmwareNodePoolArgs.fromMap(Map<String, dynamic> map) {
@@ -57,3 +52,4 @@ class GetVmwareNodePoolArgs {
     );
   }
 }
+

@@ -14,15 +14,15 @@ class ProjectFeedFeedOutputConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['pubsubDestination'] = pubsubDestination.toMap();
-    return map;
+    return <String, dynamic>{
+      'pubsubDestination': pubsubDestination.toMap(),
+    };
   }
 
   factory ProjectFeedFeedOutputConfig.fromMap(Map<String, dynamic> map) {
     return ProjectFeedFeedOutputConfig(
-      pubsubDestination: ProjectFeedFeedOutputConfigPubsubDestination.fromMap(
-          (map['pubsubDestination'] as Map).cast<String, dynamic>()),
+      pubsubDestination: ProjectFeedFeedOutputConfigPubsubDestination.fromMap((map['pubsubDestination'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

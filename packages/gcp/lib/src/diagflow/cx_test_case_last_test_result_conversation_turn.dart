@@ -7,11 +7,9 @@ class CxTestCaseLastTestResultConversationTurn {
   /// The user input.
   /// Structure is documented below.
   final CxTestCaseLastTestResultConversationTurnUserInput? userInput;
-
   /// The virtual agent output.
   /// Structure is documented below.
-  final CxTestCaseLastTestResultConversationTurnVirtualAgentOutput?
-      virtualAgentOutput;
+  final CxTestCaseLastTestResultConversationTurnVirtualAgentOutput? virtualAgentOutput;
 
   /// Creates a new [CxTestCaseLastTestResultConversationTurn].
   /// [userInput] The user input.
@@ -22,29 +20,17 @@ class CxTestCaseLastTestResultConversationTurn {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final userInputValue = userInput;
-    if (userInputValue != null) {
-      map['userInput'] = userInputValue.toMap();
-    }
-    final virtualAgentOutputValue = virtualAgentOutput;
-    if (virtualAgentOutputValue != null) {
-      map['virtualAgentOutput'] = virtualAgentOutputValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'userInput': ?userInput == null ? null : userInput!.toMap(),
+      'virtualAgentOutput': ?virtualAgentOutput == null ? null : virtualAgentOutput!.toMap(),
+    };
   }
 
-  factory CxTestCaseLastTestResultConversationTurn.fromMap(
-      Map<String, dynamic> map) {
+  factory CxTestCaseLastTestResultConversationTurn.fromMap(Map<String, dynamic> map) {
     return CxTestCaseLastTestResultConversationTurn(
-      userInput: map['userInput'] == null
-          ? null
-          : CxTestCaseLastTestResultConversationTurnUserInput.fromMap(
-              (map['userInput'] as Map).cast<String, dynamic>()),
-      virtualAgentOutput: map['virtualAgentOutput'] == null
-          ? null
-          : CxTestCaseLastTestResultConversationTurnVirtualAgentOutput.fromMap(
-              (map['virtualAgentOutput'] as Map).cast<String, dynamic>()),
+      userInput: map['userInput'] == null ? null : CxTestCaseLastTestResultConversationTurnUserInput.fromMap((map['userInput'] as Map).cast<String, dynamic>()),
+      virtualAgentOutput: map['virtualAgentOutput'] == null ? null : CxTestCaseLastTestResultConversationTurnVirtualAgentOutput.fromMap((map['virtualAgentOutput'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

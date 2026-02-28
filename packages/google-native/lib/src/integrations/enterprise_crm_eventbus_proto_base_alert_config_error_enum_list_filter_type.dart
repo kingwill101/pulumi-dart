@@ -2,20 +2,16 @@ enum EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterType {
   defaultInclusive("DEFAULT_INCLUSIVE"),
   exclusive("EXCLUSIVE");
 
-  const EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterType(
-      this.value);
+  const EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterType(this.value);
   final String value;
 
-  static EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterType
-      fromValue(String value) {
-    for (final item
-        in EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterType
-            .values) {
+  static EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterType fromValue(String value) {
+    for (final item in EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterType.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterType value: $value');
+    throw ArgumentError('Unknown EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterType value: $value');
   }
 }
+

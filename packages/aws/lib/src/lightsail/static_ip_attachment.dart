@@ -182,13 +182,10 @@ import 'static_ip_attachment_args.dart';
 class StaticIpAttachment extends pulumi.CustomResource {
   /// Name of the Lightsail instance to attach the IP to.
   late final pulumi.Output<String> instanceName;
-
   /// Allocated static IP address.
   late final pulumi.Output<String> ipAddress;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Name of the allocated static IP.
   ///
   /// The following arguments are optional:

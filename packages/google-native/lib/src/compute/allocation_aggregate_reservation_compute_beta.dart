@@ -8,12 +8,9 @@ import 'allocation_aggregate_reservation_workload_type_compute_beta.dart';
 /// This reservation type is specified by total resource amounts (e.g. total count of CPUs) and can account for multiple instance SKUs. In other words, one can create instances of varying shapes against this reservation.
 class AllocationAggregateReservationComputeBeta {
   /// List of reserved resources (CPUs, memory, accelerators).
-  final List<AllocationAggregateReservationReservedResourceInfoComputeBeta>?
-      reservedResources;
-
+  final List<AllocationAggregateReservationReservedResourceInfoComputeBeta>? reservedResources;
   /// The VM family that all instances scheduled against this reservation must belong to.
   final AllocationAggregateReservationVmFamilyComputeBeta? vmFamily;
-
   /// The workload type of the instances that will target this reservation.
   final AllocationAggregateReservationWorkloadTypeComputeBeta? workloadType;
 
@@ -28,44 +25,19 @@ class AllocationAggregateReservationComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final reservedResourcesValue = reservedResources;
-    if (reservedResourcesValue != null) {
-      map['reservedResources'] = pulumi.Input.encodeList<
-              AllocationAggregateReservationReservedResourceInfoComputeBeta,
-              Map<String, dynamic>>(
-          reservedResourcesValue, (value) => value.toMap());
-    }
-    final vmFamilyValue = vmFamily;
-    if (vmFamilyValue != null) {
-      map['vmFamily'] = vmFamilyValue.value;
-    }
-    final workloadTypeValue = workloadType;
-    if (workloadTypeValue != null) {
-      map['workloadType'] = workloadTypeValue.value;
-    }
-    return map;
+    return <String, dynamic>{
+      'reservedResources': ?reservedResources == null ? null : pulumi.Input.encodeList<AllocationAggregateReservationReservedResourceInfoComputeBeta, Map<String, dynamic>>(reservedResources!, (value) => value.toMap()),
+      'vmFamily': ?vmFamily == null ? null : vmFamily!.value,
+      'workloadType': ?workloadType == null ? null : workloadType!.value,
+    };
   }
 
-  factory AllocationAggregateReservationComputeBeta.fromMap(
-      Map<String, dynamic> map) {
+  factory AllocationAggregateReservationComputeBeta.fromMap(Map<String, dynamic> map) {
     return AllocationAggregateReservationComputeBeta(
-      reservedResources: map['reservedResources'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  AllocationAggregateReservationReservedResourceInfoComputeBeta>(
-              map['reservedResources'],
-              (value) =>
-                  AllocationAggregateReservationReservedResourceInfoComputeBeta
-                      .fromMap((value as Map).cast<String, dynamic>())),
-      vmFamily: map['vmFamily'] == null
-          ? null
-          : AllocationAggregateReservationVmFamilyComputeBeta.fromValue(
-              map['vmFamily'] as String),
-      workloadType: map['workloadType'] == null
-          ? null
-          : AllocationAggregateReservationWorkloadTypeComputeBeta.fromValue(
-              map['workloadType'] as String),
+      reservedResources: map['reservedResources'] == null ? null : pulumi.Input.decodeList<AllocationAggregateReservationReservedResourceInfoComputeBeta>(map['reservedResources'], (value) => AllocationAggregateReservationReservedResourceInfoComputeBeta.fromMap((value as Map).cast<String, dynamic>())),
+      vmFamily: map['vmFamily'] == null ? null : AllocationAggregateReservationVmFamilyComputeBeta.fromValue(map['vmFamily'] as String),
+      workloadType: map['workloadType'] == null ? null : AllocationAggregateReservationWorkloadTypeComputeBeta.fromValue(map['workloadType'] as String),
     );
   }
 }
+

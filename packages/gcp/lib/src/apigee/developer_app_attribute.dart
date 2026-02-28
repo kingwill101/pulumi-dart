@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DeveloperAppAttribute {
   /// Key of the attribute
   final String? name;
-
   /// Value of the attribute
   final String? value;
 
@@ -16,16 +16,10 @@ class DeveloperAppAttribute {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final valueValue = value;
-    if (valueValue != null) {
-      map['value'] = valueValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+      'value': ?value,
+    };
   }
 
   factory DeveloperAppAttribute.fromMap(Map<String, dynamic> map) {
@@ -35,3 +29,4 @@ class DeveloperAppAttribute {
     );
   }
 }
+

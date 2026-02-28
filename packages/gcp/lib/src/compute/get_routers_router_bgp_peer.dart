@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetRoutersRouterBgpPeer {
   final String advertiseMode;
   final int advertisedRoutePriority;
@@ -37,18 +38,18 @@ class GetRoutersRouterBgpPeer {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['advertiseMode'] = advertiseMode;
-    map['advertisedRoutePriority'] = advertisedRoutePriority;
-    map['enable'] = enable;
-    map['enableIpv6'] = enableIpv6;
-    map['interfaceName'] = interfaceName;
-    map['ipAddress'] = ipAddress;
-    map['managementType'] = managementType;
-    map['name'] = name;
-    map['peerAsn'] = peerAsn;
-    map['peerIpAddress'] = peerIpAddress;
-    return map;
+    return <String, dynamic>{
+      'advertiseMode': advertiseMode,
+      'advertisedRoutePriority': advertisedRoutePriority,
+      'enable': enable,
+      'enableIpv6': enableIpv6,
+      'interfaceName': interfaceName,
+      'ipAddress': ipAddress,
+      'managementType': managementType,
+      'name': name,
+      'peerAsn': peerAsn,
+      'peerIpAddress': peerIpAddress,
+    };
   }
 
   factory GetRoutersRouterBgpPeer.fromMap(Map<String, dynamic> map) {
@@ -66,3 +67,4 @@ class GetRoutersRouterBgpPeer {
     );
   }
 }
+

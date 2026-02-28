@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// [PRIVATE FIELD] Config for pod CIDR size overprovisioning.
 class PodCIDROverprovisionConfig {
   /// Whether Pod CIDR overprovisioning is disabled. Note: Pod CIDR overprovisioning is enabled by default.
@@ -12,12 +13,9 @@ class PodCIDROverprovisionConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final disableValue = disable;
-    if (disableValue != null) {
-      map['disable'] = disableValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'disable': ?disable,
+    };
   }
 
   factory PodCIDROverprovisionConfig.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class PodCIDROverprovisionConfig {
     );
   }
 }
+

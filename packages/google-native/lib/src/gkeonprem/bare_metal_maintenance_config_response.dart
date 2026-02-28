@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Specifies configurations to put bare metal nodes in and out of maintenance.
 class BareMetalMaintenanceConfigResponse {
   /// All IPv4 address from these ranges will be placed into maintenance mode. Nodes in maintenance mode will be cordoned and drained. When both of these are true, the "baremetal.cluster.gke.io/maintenance" annotation will be set on the node resource.
@@ -12,15 +13,15 @@ class BareMetalMaintenanceConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['maintenanceAddressCidrBlocks'] = maintenanceAddressCidrBlocks;
-    return map;
+    return <String, dynamic>{
+      'maintenanceAddressCidrBlocks': maintenanceAddressCidrBlocks,
+    };
   }
 
   factory BareMetalMaintenanceConfigResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalMaintenanceConfigResponse(
-      maintenanceAddressCidrBlocks:
-          (map['maintenanceAddressCidrBlocks'] as List).cast<String>(),
+      maintenanceAddressCidrBlocks: (map['maintenanceAddressCidrBlocks'] as List).cast<String>(),
     );
   }
 }
+

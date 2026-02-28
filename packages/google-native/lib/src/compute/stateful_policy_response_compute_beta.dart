@@ -12,15 +12,15 @@ class StatefulPolicyResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['preservedState'] = preservedState.toMap();
-    return map;
+    return <String, dynamic>{
+      'preservedState': preservedState.toMap(),
+    };
   }
 
   factory StatefulPolicyResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return StatefulPolicyResponseComputeBeta(
-      preservedState: StatefulPolicyPreservedStateResponseComputeBeta.fromMap(
-          (map['preservedState'] as Map).cast<String, dynamic>()),
+      preservedState: StatefulPolicyPreservedStateResponseComputeBeta.fromMap((map['preservedState'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

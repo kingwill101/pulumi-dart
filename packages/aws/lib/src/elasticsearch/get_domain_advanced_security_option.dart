@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDomainAdvancedSecurityOption {
   /// Whether node to node encryption is enabled.
   final bool enabled;
-
   /// Whether the internal user database is enabled.
   final bool internalUserDatabaseEnabled;
 
@@ -16,10 +16,10 @@ class GetDomainAdvancedSecurityOption {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    map['internalUserDatabaseEnabled'] = internalUserDatabaseEnabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+      'internalUserDatabaseEnabled': internalUserDatabaseEnabled,
+    };
   }
 
   factory GetDomainAdvancedSecurityOption.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetDomainAdvancedSecurityOption {
     );
   }
 }
+

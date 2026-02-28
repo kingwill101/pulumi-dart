@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterCacheNode {
   final String address;
-
   /// Availability Zone for the cache cluster.
   final String availabilityZone;
   final String id;
   final String outpostArn;
-
   /// The port number on which each of the cache nodes will
   /// accept connections.
   final int port;
@@ -27,13 +26,13 @@ class GetClusterCacheNode {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['address'] = address;
-    map['availabilityZone'] = availabilityZone;
-    map['id'] = id;
-    map['outpostArn'] = outpostArn;
-    map['port'] = port;
-    return map;
+    return <String, dynamic>{
+      'address': address,
+      'availabilityZone': availabilityZone,
+      'id': id,
+      'outpostArn': outpostArn,
+      'port': port,
+    };
   }
 
   factory GetClusterCacheNode.fromMap(Map<String, dynamic> map) {
@@ -46,3 +45,4 @@ class GetClusterCacheNode {
     );
   }
 }
+

@@ -482,7 +482,6 @@ class EnvironmentKeyvaluemaps extends pulumi.CustomResource {
   /// The Apigee environment group associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
   late final pulumi.Output<String> envId;
-
   /// Required. ID of the key value map.
   late final pulumi.Output<String> name;
 

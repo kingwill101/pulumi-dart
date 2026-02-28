@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterPersistenceConfigAofConfig {
   /// Optional. Available fsync modes.
   ///
@@ -15,15 +16,15 @@ class GetClusterPersistenceConfigAofConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['appendFsync'] = appendFsync;
-    return map;
+    return <String, dynamic>{
+      'appendFsync': appendFsync,
+    };
   }
 
-  factory GetClusterPersistenceConfigAofConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GetClusterPersistenceConfigAofConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterPersistenceConfigAofConfig(
       appendFsync: map['appendFsync'] as String,
     );
   }
 }
+

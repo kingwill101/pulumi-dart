@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class V2FolderNotificationConfigStreamingConfig {
   /// Expression that defines the filter to apply across create/update
   /// events of assets or findings as specified by the event type. The
@@ -29,15 +30,15 @@ class V2FolderNotificationConfigStreamingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['filter'] = filter;
-    return map;
+    return <String, dynamic>{
+      'filter': filter,
+    };
   }
 
-  factory V2FolderNotificationConfigStreamingConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory V2FolderNotificationConfigStreamingConfig.fromMap(Map<String, dynamic> map) {
     return V2FolderNotificationConfigStreamingConfig(
       filter: map['filter'] as String,
     );
   }
 }
+

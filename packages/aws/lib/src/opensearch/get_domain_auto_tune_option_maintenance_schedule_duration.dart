@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetDomainAutoTuneOptionMaintenanceScheduleDuration {
   /// Unit of time.
   final String unit;
-
   /// Duration of an Auto-Tune maintenance window.
   final int value;
 
@@ -16,17 +16,17 @@ class GetDomainAutoTuneOptionMaintenanceScheduleDuration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['unit'] = unit;
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'unit': unit,
+      'value': value,
+    };
   }
 
-  factory GetDomainAutoTuneOptionMaintenanceScheduleDuration.fromMap(
-      Map<String, dynamic> map) {
+  factory GetDomainAutoTuneOptionMaintenanceScheduleDuration.fromMap(Map<String, dynamic> map) {
     return GetDomainAutoTuneOptionMaintenanceScheduleDuration(
       unit: map['unit'] as String,
       value: map['value'] as int,
     );
   }
 }
+

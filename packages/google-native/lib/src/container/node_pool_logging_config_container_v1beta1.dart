@@ -14,21 +14,15 @@ class NodePoolLoggingConfigContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final variantConfigValue = variantConfig;
-    if (variantConfigValue != null) {
-      map['variantConfig'] = variantConfigValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'variantConfig': ?variantConfig == null ? null : variantConfig!.toMap(),
+    };
   }
 
-  factory NodePoolLoggingConfigContainerV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory NodePoolLoggingConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NodePoolLoggingConfigContainerV1beta1(
-      variantConfig: map['variantConfig'] == null
-          ? null
-          : LoggingVariantConfigContainerV1beta1.fromMap(
-              (map['variantConfig'] as Map).cast<String, dynamic>()),
+      variantConfig: map['variantConfig'] == null ? null : LoggingVariantConfigContainerV1beta1.fromMap((map['variantConfig'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GrpcRouteRuleMatchHeader {
   /// Required. The key of the header.
   final String key;
-
   /// The type of match.
   /// Default value is `EXACT`.
   /// Possible values are: `TYPE_UNSPECIFIED`, `EXACT`, `REGULAR_EXPRESSION`.
   final String? type;
-
   /// Required. The value of the header.
   final String value;
 
@@ -23,14 +22,11 @@ class GrpcRouteRuleMatchHeader {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['key'] = key;
-    final typeValue = type;
-    if (typeValue != null) {
-      map['type'] = typeValue;
-    }
-    map['value'] = value;
-    return map;
+    return <String, dynamic>{
+      'key': key,
+      'type': ?type,
+      'value': value,
+    };
   }
 
   factory GrpcRouteRuleMatchHeader.fromMap(Map<String, dynamic> map) {
@@ -41,3 +37,4 @@ class GrpcRouteRuleMatchHeader {
     );
   }
 }
+

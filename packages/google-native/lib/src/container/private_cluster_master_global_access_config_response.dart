@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration for controlling master global access settings.
 class PrivateClusterMasterGlobalAccessConfigResponse {
   /// Whenever master is accessible globally or not.
@@ -12,15 +13,15 @@ class PrivateClusterMasterGlobalAccessConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory PrivateClusterMasterGlobalAccessConfigResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory PrivateClusterMasterGlobalAccessConfigResponse.fromMap(Map<String, dynamic> map) {
     return PrivateClusterMasterGlobalAccessConfigResponse(
       enabled: map['enabled'] as bool,
     );
   }
 }
+

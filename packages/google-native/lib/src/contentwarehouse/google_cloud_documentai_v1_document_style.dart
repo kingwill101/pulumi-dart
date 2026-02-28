@@ -8,25 +8,18 @@ import 'google_type_color.dart';
 class GoogleCloudDocumentaiV1DocumentStyle {
   /// Text background color.
   final GoogleTypeColor? backgroundColor;
-
   /// Text color.
   final GoogleTypeColor? color;
-
   /// Font family such as `Arial`, `Times New Roman`. https://www.w3schools.com/cssref/pr_font_font-family.asp
   final String? fontFamily;
-
   /// Font size.
   final GoogleCloudDocumentaiV1DocumentStyleFontSize? fontSize;
-
   /// [Font weight](https://www.w3schools.com/cssref/pr_font_weight.asp). Possible values are `normal`, `bold`, `bolder`, and `lighter`.
   final String? fontWeight;
-
   /// Text anchor indexing into the Document.text.
   final GoogleCloudDocumentaiV1DocumentTextAnchor? textAnchor;
-
   /// [Text decoration](https://www.w3schools.com/cssref/pr_text_text-decoration.asp). Follows CSS standard.
   final String? textDecoration;
-
   /// [Text style](https://www.w3schools.com/cssref/pr_font_font-style.asp). Possible values are `normal`, `italic`, and `oblique`.
   final String? textStyle;
 
@@ -51,69 +44,29 @@ class GoogleCloudDocumentaiV1DocumentStyle {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final backgroundColorValue = backgroundColor;
-    if (backgroundColorValue != null) {
-      map['backgroundColor'] = backgroundColorValue.toMap();
-    }
-    final colorValue = color;
-    if (colorValue != null) {
-      map['color'] = colorValue.toMap();
-    }
-    final fontFamilyValue = fontFamily;
-    if (fontFamilyValue != null) {
-      map['fontFamily'] = fontFamilyValue;
-    }
-    final fontSizeValue = fontSize;
-    if (fontSizeValue != null) {
-      map['fontSize'] = fontSizeValue.toMap();
-    }
-    final fontWeightValue = fontWeight;
-    if (fontWeightValue != null) {
-      map['fontWeight'] = fontWeightValue;
-    }
-    final textAnchorValue = textAnchor;
-    if (textAnchorValue != null) {
-      map['textAnchor'] = textAnchorValue.toMap();
-    }
-    final textDecorationValue = textDecoration;
-    if (textDecorationValue != null) {
-      map['textDecoration'] = textDecorationValue;
-    }
-    final textStyleValue = textStyle;
-    if (textStyleValue != null) {
-      map['textStyle'] = textStyleValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'backgroundColor': ?backgroundColor == null ? null : backgroundColor!.toMap(),
+      'color': ?color == null ? null : color!.toMap(),
+      'fontFamily': ?fontFamily,
+      'fontSize': ?fontSize == null ? null : fontSize!.toMap(),
+      'fontWeight': ?fontWeight,
+      'textAnchor': ?textAnchor == null ? null : textAnchor!.toMap(),
+      'textDecoration': ?textDecoration,
+      'textStyle': ?textStyle,
+    };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentStyle.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentStyle.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentStyle(
-      backgroundColor: map['backgroundColor'] == null
-          ? null
-          : GoogleTypeColor.fromMap(
-              (map['backgroundColor'] as Map).cast<String, dynamic>()),
-      color: map['color'] == null
-          ? null
-          : GoogleTypeColor.fromMap(
-              (map['color'] as Map).cast<String, dynamic>()),
-      fontFamily:
-          map['fontFamily'] == null ? null : map['fontFamily'] as String,
-      fontSize: map['fontSize'] == null
-          ? null
-          : GoogleCloudDocumentaiV1DocumentStyleFontSize.fromMap(
-              (map['fontSize'] as Map).cast<String, dynamic>()),
-      fontWeight:
-          map['fontWeight'] == null ? null : map['fontWeight'] as String,
-      textAnchor: map['textAnchor'] == null
-          ? null
-          : GoogleCloudDocumentaiV1DocumentTextAnchor.fromMap(
-              (map['textAnchor'] as Map).cast<String, dynamic>()),
-      textDecoration: map['textDecoration'] == null
-          ? null
-          : map['textDecoration'] as String,
+      backgroundColor: map['backgroundColor'] == null ? null : GoogleTypeColor.fromMap((map['backgroundColor'] as Map).cast<String, dynamic>()),
+      color: map['color'] == null ? null : GoogleTypeColor.fromMap((map['color'] as Map).cast<String, dynamic>()),
+      fontFamily: map['fontFamily'] == null ? null : map['fontFamily'] as String,
+      fontSize: map['fontSize'] == null ? null : GoogleCloudDocumentaiV1DocumentStyleFontSize.fromMap((map['fontSize'] as Map).cast<String, dynamic>()),
+      fontWeight: map['fontWeight'] == null ? null : map['fontWeight'] as String,
+      textAnchor: map['textAnchor'] == null ? null : GoogleCloudDocumentaiV1DocumentTextAnchor.fromMap((map['textAnchor'] as Map).cast<String, dynamic>()),
+      textDecoration: map['textDecoration'] == null ? null : map['textDecoration'] as String,
       textStyle: map['textStyle'] == null ? null : map['textStyle'] as String,
     );
   }
 }
+

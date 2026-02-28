@@ -9,7 +9,6 @@ class GetAppGatewayResult {
   final String displayName;
   final Map<String, String> effectiveLabels;
   final String hostType;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final Map<String, String> labels;
@@ -52,38 +51,26 @@ class GetAppGatewayResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allocatedConnections'] = pulumi.Input.encodeList<
-        GetAppGatewayAllocatedConnection,
-        Map<String, dynamic>>(allocatedConnections, (value) => value.toMap());
-    map['displayName'] = displayName;
-    map['effectiveLabels'] = effectiveLabels;
-    map['hostType'] = hostType;
-    map['id'] = id;
-    map['labels'] = labels;
-    map['name'] = name;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['pulumiLabels'] = pulumiLabels;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    map['state'] = state;
-    map['type'] = type;
-    map['uri'] = uri;
-    return map;
+    return <String, dynamic>{
+      'allocatedConnections': pulumi.Input.encodeList<GetAppGatewayAllocatedConnection, Map<String, dynamic>>(allocatedConnections, (value) => value.toMap()),
+      'displayName': displayName,
+      'effectiveLabels': effectiveLabels,
+      'hostType': hostType,
+      'id': id,
+      'labels': labels,
+      'name': name,
+      'project': ?project,
+      'pulumiLabels': pulumiLabels,
+      'region': ?region,
+      'state': state,
+      'type': type,
+      'uri': uri,
+    };
   }
 
   factory GetAppGatewayResult.fromMap(Map<String, dynamic> map) {
     return GetAppGatewayResult(
-      allocatedConnections:
-          pulumi.Input.decodeList<GetAppGatewayAllocatedConnection>(
-              map['allocatedConnections'],
-              (value) => GetAppGatewayAllocatedConnection.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      allocatedConnections: pulumi.Input.decodeList<GetAppGatewayAllocatedConnection>(map['allocatedConnections'], (value) => GetAppGatewayAllocatedConnection.fromMap((value as Map).cast<String, dynamic>())),
       displayName: map['displayName'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       hostType: map['hostType'] as String,
@@ -99,3 +86,4 @@ class GetAppGatewayResult {
     );
   }
 }
+

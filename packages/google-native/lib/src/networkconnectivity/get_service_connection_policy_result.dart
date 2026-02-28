@@ -8,34 +8,24 @@ import 'psc_connection_response.dart';
 class GetServiceConnectionPolicyResult {
   /// Time when the ServiceConnectionMap was created.
   final String createTime;
-
   /// A description of this resource.
   final String description;
-
   /// Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
   final String etag;
-
   /// The type of underlying resources used to create the connection.
   final String infrastructure;
-
   /// User-defined labels.
   final Map<String, String> labels;
-
   /// Immutable. The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: https://google.aip.dev/122#fields-representing-resource-names
   final String name;
-
   /// The resource path of the consumer network. Example: - projects/{projectNumOrId}/global/networks/{resourceId}.
   final String network;
-
   /// Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
   final PscConfigResponse pscConfig;
-
   /// [Output only] Information about each Private Service Connect connection.
   final List<PscConnectionResponse> pscConnections;
-
   /// The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass. It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
   final String serviceClass;
-
   /// Time when the ServiceConnectionMap was updated.
   final String updateTime;
 
@@ -66,21 +56,19 @@ class GetServiceConnectionPolicyResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['createTime'] = createTime;
-    map['description'] = description;
-    map['etag'] = etag;
-    map['infrastructure'] = infrastructure;
-    map['labels'] = labels;
-    map['name'] = name;
-    map['network'] = network;
-    map['pscConfig'] = pscConfig.toMap();
-    map['pscConnections'] =
-        pulumi.Input.encodeList<PscConnectionResponse, Map<String, dynamic>>(
-            pscConnections, (value) => value.toMap());
-    map['serviceClass'] = serviceClass;
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'createTime': createTime,
+      'description': description,
+      'etag': etag,
+      'infrastructure': infrastructure,
+      'labels': labels,
+      'name': name,
+      'network': network,
+      'pscConfig': pscConfig.toMap(),
+      'pscConnections': pulumi.Input.encodeList<PscConnectionResponse, Map<String, dynamic>>(pscConnections, (value) => value.toMap()),
+      'serviceClass': serviceClass,
+      'updateTime': updateTime,
+    };
   }
 
   factory GetServiceConnectionPolicyResult.fromMap(Map<String, dynamic> map) {
@@ -92,14 +80,11 @@ class GetServiceConnectionPolicyResult {
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
       network: map['network'] as String,
-      pscConfig: PscConfigResponse.fromMap(
-          (map['pscConfig'] as Map).cast<String, dynamic>()),
-      pscConnections: pulumi.Input.decodeList<PscConnectionResponse>(
-          map['pscConnections'],
-          (value) => PscConnectionResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      pscConfig: PscConfigResponse.fromMap((map['pscConfig'] as Map).cast<String, dynamic>()),
+      pscConnections: pulumi.Input.decodeList<PscConnectionResponse>(map['pscConnections'], (value) => PscConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
       serviceClass: map['serviceClass'] as String,
       updateTime: map['updateTime'] as String,
     );
   }
 }
+

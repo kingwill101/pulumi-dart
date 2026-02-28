@@ -7,7 +7,6 @@ import 'http_route_fault_injection_policy_delay_networkservices_v1beta1.dart';
 class HttpRouteFaultInjectionPolicyNetworkservicesV1beta1 {
   /// The specification for aborting to client requests.
   final HttpRouteFaultInjectionPolicyAbortNetworkservicesV1beta1? abort;
-
   /// The specification for injecting delay to client requests.
   final HttpRouteFaultInjectionPolicyDelayNetworkservicesV1beta1? delay;
 
@@ -20,29 +19,17 @@ class HttpRouteFaultInjectionPolicyNetworkservicesV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final abortValue = abort;
-    if (abortValue != null) {
-      map['abort'] = abortValue.toMap();
-    }
-    final delayValue = delay;
-    if (delayValue != null) {
-      map['delay'] = delayValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'abort': ?abort == null ? null : abort!.toMap(),
+      'delay': ?delay == null ? null : delay!.toMap(),
+    };
   }
 
-  factory HttpRouteFaultInjectionPolicyNetworkservicesV1beta1.fromMap(
-      Map<String, dynamic> map) {
+  factory HttpRouteFaultInjectionPolicyNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return HttpRouteFaultInjectionPolicyNetworkservicesV1beta1(
-      abort: map['abort'] == null
-          ? null
-          : HttpRouteFaultInjectionPolicyAbortNetworkservicesV1beta1.fromMap(
-              (map['abort'] as Map).cast<String, dynamic>()),
-      delay: map['delay'] == null
-          ? null
-          : HttpRouteFaultInjectionPolicyDelayNetworkservicesV1beta1.fromMap(
-              (map['delay'] as Map).cast<String, dynamic>()),
+      abort: map['abort'] == null ? null : HttpRouteFaultInjectionPolicyAbortNetworkservicesV1beta1.fromMap((map['abort'] as Map).cast<String, dynamic>()),
+      delay: map['delay'] == null ? null : HttpRouteFaultInjectionPolicyDelayNetworkservicesV1beta1.fromMap((map['delay'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

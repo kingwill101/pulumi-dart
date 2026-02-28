@@ -7,10 +7,8 @@ class CloudControlRule {
   /// expression](https://cloud.google.com/certificate-authority-service/docs/using-cel).
   /// Structure is documented below.
   final CloudControlRuleCelExpression? celExpression;
-
   /// Description of the Rule. The maximum length is 2000 characters.
   final String? description;
-
   /// The functionality enabled by the Rule.
   final List<String> ruleActionTypes;
 
@@ -25,28 +23,19 @@ class CloudControlRule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final celExpressionValue = celExpression;
-    if (celExpressionValue != null) {
-      map['celExpression'] = celExpressionValue.toMap();
-    }
-    final descriptionValue = description;
-    if (descriptionValue != null) {
-      map['description'] = descriptionValue;
-    }
-    map['ruleActionTypes'] = ruleActionTypes;
-    return map;
+    return <String, dynamic>{
+      'celExpression': ?celExpression == null ? null : celExpression!.toMap(),
+      'description': ?description,
+      'ruleActionTypes': ruleActionTypes,
+    };
   }
 
   factory CloudControlRule.fromMap(Map<String, dynamic> map) {
     return CloudControlRule(
-      celExpression: map['celExpression'] == null
-          ? null
-          : CloudControlRuleCelExpression.fromMap(
-              (map['celExpression'] as Map).cast<String, dynamic>()),
-      description:
-          map['description'] == null ? null : map['description'] as String,
+      celExpression: map['celExpression'] == null ? null : CloudControlRuleCelExpression.fromMap((map['celExpression'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : map['description'] as String,
       ruleActionTypes: (map['ruleActionTypes'] as List).cast<String>(),
     );
   }
 }
+

@@ -19,19 +19,17 @@ class GetTableIamPolicyArgs {
     required String datasetId,
     String? project,
     required String tableId,
-  })  : datasetId = pulumi.Input.asInput<String>(datasetId),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        tableId = pulumi.Input.asInput<String>(tableId);
+  }) :
+      datasetId = pulumi.Input.asInput<String>(datasetId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      tableId = pulumi.Input.asInput<String>(tableId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['datasetId'] = datasetId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['tableId'] = tableId;
-    return map;
+    return <String, dynamic>{
+      'datasetId': datasetId,
+      'project': ?project,
+      'tableId': tableId,
+    };
   }
 
   factory GetTableIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetTableIamPolicyArgs {
     );
   }
 }
+

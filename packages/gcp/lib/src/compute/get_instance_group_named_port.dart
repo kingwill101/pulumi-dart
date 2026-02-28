@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInstanceGroupNamedPort {
   /// The name of the instance group. Either `name` or `self_link` must be provided.
   final String name;
@@ -14,10 +15,10 @@ class GetInstanceGroupNamedPort {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['port'] = port;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'port': port,
+    };
   }
 
   factory GetInstanceGroupNamedPort.fromMap(Map<String, dynamic> map) {
@@ -27,3 +28,4 @@ class GetInstanceGroupNamedPort {
     );
   }
 }
+

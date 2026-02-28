@@ -7,7 +7,6 @@ import 'header_response.dart';
 class EndPointResponse {
   /// The URI of the Endpoint.
   final String endpointUri;
-
   /// List of Header to be added to the Endpoint.
   final List<HeaderResponse> headers;
 
@@ -20,21 +19,17 @@ class EndPointResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['endpointUri'] = endpointUri;
-    map['headers'] =
-        pulumi.Input.encodeList<HeaderResponse, Map<String, dynamic>>(
-            headers, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'endpointUri': endpointUri,
+      'headers': pulumi.Input.encodeList<HeaderResponse, Map<String, dynamic>>(headers, (value) => value.toMap()),
+    };
   }
 
   factory EndPointResponse.fromMap(Map<String, dynamic> map) {
     return EndPointResponse(
       endpointUri: map['endpointUri'] as String,
-      headers: pulumi.Input.decodeList<HeaderResponse>(
-          map['headers'],
-          (value) =>
-              HeaderResponse.fromMap((value as Map).cast<String, dynamic>())),
+      headers: pulumi.Input.decodeList<HeaderResponse>(map['headers'], (value) => HeaderResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

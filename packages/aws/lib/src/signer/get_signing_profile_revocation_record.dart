@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetSigningProfileRevocationRecord {
   final String revocationEffectiveFrom;
   final String revokedAt;
@@ -16,11 +17,11 @@ class GetSigningProfileRevocationRecord {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['revocationEffectiveFrom'] = revocationEffectiveFrom;
-    map['revokedAt'] = revokedAt;
-    map['revokedBy'] = revokedBy;
-    return map;
+    return <String, dynamic>{
+      'revocationEffectiveFrom': revocationEffectiveFrom,
+      'revokedAt': revokedAt,
+      'revokedBy': revokedBy,
+    };
   }
 
   factory GetSigningProfileRevocationRecord.fromMap(Map<String, dynamic> map) {
@@ -31,3 +32,4 @@ class GetSigningProfileRevocationRecord {
     );
   }
 }
+

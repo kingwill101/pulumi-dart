@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class HttpRouteRuleMatchHeaderRangeMatch {
   /// End of the range (exclusive).
   final int end;
-
   /// Start of the range (inclusive).
   final int start;
 
@@ -16,10 +16,10 @@ class HttpRouteRuleMatchHeaderRangeMatch {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['end'] = end;
-    map['start'] = start;
-    return map;
+    return <String, dynamic>{
+      'end': end,
+      'start': start,
+    };
   }
 
   factory HttpRouteRuleMatchHeaderRangeMatch.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class HttpRouteRuleMatchHeaderRangeMatch {
     );
   }
 }
+

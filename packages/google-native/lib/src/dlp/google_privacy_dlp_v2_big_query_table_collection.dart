@@ -14,21 +14,15 @@ class GooglePrivacyDlpV2BigQueryTableCollection {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final includeRegexesValue = includeRegexes;
-    if (includeRegexesValue != null) {
-      map['includeRegexes'] = includeRegexesValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'includeRegexes': ?includeRegexes == null ? null : includeRegexes!.toMap(),
+    };
   }
 
-  factory GooglePrivacyDlpV2BigQueryTableCollection.fromMap(
-      Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2BigQueryTableCollection.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2BigQueryTableCollection(
-      includeRegexes: map['includeRegexes'] == null
-          ? null
-          : GooglePrivacyDlpV2BigQueryRegexes.fromMap(
-              (map['includeRegexes'] as Map).cast<String, dynamic>()),
+      includeRegexes: map['includeRegexes'] == null ? null : GooglePrivacyDlpV2BigQueryRegexes.fromMap((map['includeRegexes'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

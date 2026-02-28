@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class CustomLogSourceAttribute {
   /// The ARN of the AWS Glue crawler.
   final String crawlerArn;
-
   /// The ARN of the AWS Glue database where results are written.
   final String databaseArn;
-
   /// The ARN of the AWS Glue table.
   final String tableArn;
 
@@ -21,11 +20,11 @@ class CustomLogSourceAttribute {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['crawlerArn'] = crawlerArn;
-    map['databaseArn'] = databaseArn;
-    map['tableArn'] = tableArn;
-    return map;
+    return <String, dynamic>{
+      'crawlerArn': crawlerArn,
+      'databaseArn': databaseArn,
+      'tableArn': tableArn,
+    };
   }
 
   factory CustomLogSourceAttribute.fromMap(Map<String, dynamic> map) {
@@ -36,3 +35,4 @@ class CustomLogSourceAttribute {
     );
   }
 }
+

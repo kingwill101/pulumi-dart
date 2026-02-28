@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// [Deprecated] This message specifies a header location to extract JWT token. This message specifies a header location to extract JWT token.
 class JwtHeaderResponse {
   /// The HTTP header name.
   final String name;
-
   /// The value prefix. The value format is "value_prefix" For example, for "Authorization: Bearer ", value_prefix="Bearer " with a space at the end.
   final String valuePrefix;
 
@@ -17,10 +17,10 @@ class JwtHeaderResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['valuePrefix'] = valuePrefix;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+      'valuePrefix': valuePrefix,
+    };
   }
 
   factory JwtHeaderResponse.fromMap(Map<String, dynamic> map) {
@@ -30,3 +30,4 @@ class JwtHeaderResponse {
     );
   }
 }
+

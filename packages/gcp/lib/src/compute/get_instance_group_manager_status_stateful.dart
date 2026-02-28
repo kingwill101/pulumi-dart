@@ -6,10 +6,8 @@ import 'get_instance_group_manager_status_stateful_per_instance_config.dart';
 class GetInstanceGroupManagerStatusStateful {
   /// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
   final bool hasStatefulConfig;
-
   /// Status of per-instance configs on the instances.
-  final List<GetInstanceGroupManagerStatusStatefulPerInstanceConfig>
-      perInstanceConfigs;
+  final List<GetInstanceGroupManagerStatusStatefulPerInstanceConfig> perInstanceConfigs;
 
   /// Creates a new [GetInstanceGroupManagerStatusStateful].
   /// [hasStatefulConfig] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
@@ -20,24 +18,17 @@ class GetInstanceGroupManagerStatusStateful {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['hasStatefulConfig'] = hasStatefulConfig;
-    map['perInstanceConfigs'] = pulumi.Input.encodeList<
-        GetInstanceGroupManagerStatusStatefulPerInstanceConfig,
-        Map<String, dynamic>>(perInstanceConfigs, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'hasStatefulConfig': hasStatefulConfig,
+      'perInstanceConfigs': pulumi.Input.encodeList<GetInstanceGroupManagerStatusStatefulPerInstanceConfig, Map<String, dynamic>>(perInstanceConfigs, (value) => value.toMap()),
+    };
   }
 
-  factory GetInstanceGroupManagerStatusStateful.fromMap(
-      Map<String, dynamic> map) {
+  factory GetInstanceGroupManagerStatusStateful.fromMap(Map<String, dynamic> map) {
     return GetInstanceGroupManagerStatusStateful(
       hasStatefulConfig: map['hasStatefulConfig'] as bool,
-      perInstanceConfigs: pulumi.Input.decodeList<
-              GetInstanceGroupManagerStatusStatefulPerInstanceConfig>(
-          map['perInstanceConfigs'],
-          (value) =>
-              GetInstanceGroupManagerStatusStatefulPerInstanceConfig.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      perInstanceConfigs: pulumi.Input.decodeList<GetInstanceGroupManagerStatusStatefulPerInstanceConfig>(map['perInstanceConfigs'], (value) => GetInstanceGroupManagerStatusStatefulPerInstanceConfig.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

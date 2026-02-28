@@ -16,3 +16,4 @@ enum LabelDescriptorValueType {
     throw ArgumentError('Unknown LabelDescriptorValueType value: $value');
   }
 }
+

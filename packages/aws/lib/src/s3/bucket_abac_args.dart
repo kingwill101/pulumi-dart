@@ -12,13 +12,10 @@ class BucketAbacArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<BucketAbacAbacStatus> abacStatus;
-
   /// General purpose bucket that you want to create the metadata configuration for.
   final pulumi.Input<String> bucket;
-
   /// Account ID of the expected bucket owner.
   final pulumi.Input<String>? expectedBucketOwner;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -32,38 +29,28 @@ class BucketAbacArgs {
     required String bucket,
     String? expectedBucketOwner,
     String? region,
-  })  : abacStatus = pulumi.Input.asInput<BucketAbacAbacStatus>(abacStatus),
-        bucket = pulumi.Input.asInput<String>(bucket),
-        expectedBucketOwner =
-            pulumi.Input.asOptionalInput<String>(expectedBucketOwner),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      abacStatus = pulumi.Input.asInput<BucketAbacAbacStatus>(abacStatus),
+      bucket = pulumi.Input.asInput<String>(bucket),
+      expectedBucketOwner = pulumi.Input.asOptionalInput<String>(expectedBucketOwner),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['abacStatus'] =
-        pulumi.Input.mapInputValue<BucketAbacAbacStatus, Map<String, dynamic>>(
-            abacStatus, (value) => value.toMap());
-    map['bucket'] = bucket;
-    final expectedBucketOwnerValue = expectedBucketOwner;
-    if (expectedBucketOwnerValue != null) {
-      map['expectedBucketOwner'] = expectedBucketOwnerValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'abacStatus': pulumi.Input.mapInputValue<BucketAbacAbacStatus, Map<String, dynamic>>(abacStatus, (value) => value.toMap()),
+      'bucket': bucket,
+      'expectedBucketOwner': ?expectedBucketOwner,
+      'region': ?region,
+    };
   }
 
   factory BucketAbacArgs.fromMap(Map<String, dynamic> map) {
     return BucketAbacArgs(
-      abacStatus: BucketAbacAbacStatus.fromMap(
-          (map['abacStatus'] as Map).cast<String, dynamic>()),
+      abacStatus: BucketAbacAbacStatus.fromMap((map['abacStatus'] as Map).cast<String, dynamic>()),
       bucket: map['bucket'] as String,
-      expectedBucketOwner: map['expectedBucketOwner'] == null
-          ? null
-          : map['expectedBucketOwner'] as String,
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : map['expectedBucketOwner'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
+

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EdgeCacheServiceLogConfig {
   /// Specifies whether to enable logging for traffic served by this service.
   final bool? enable;
-
   /// Configures the sampling rate of requests, where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0, and the value of the field must be in [0, 1].
   /// This field can only be specified if logging is enabled for this service.
   final double? sampleRate;
@@ -17,23 +17,17 @@ class EdgeCacheServiceLogConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enableValue = enable;
-    if (enableValue != null) {
-      map['enable'] = enableValue;
-    }
-    final sampleRateValue = sampleRate;
-    if (sampleRateValue != null) {
-      map['sampleRate'] = sampleRateValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enable': ?enable,
+      'sampleRate': ?sampleRate,
+    };
   }
 
   factory EdgeCacheServiceLogConfig.fromMap(Map<String, dynamic> map) {
     return EdgeCacheServiceLogConfig(
       enable: map['enable'] == null ? null : map['enable'] as bool,
-      sampleRate:
-          map['sampleRate'] == null ? null : map['sampleRate'] as double,
+      sampleRate: map['sampleRate'] == null ? null : map['sampleRate'] as double,
     );
   }
 }
+

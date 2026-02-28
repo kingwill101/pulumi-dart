@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getUserPoolSigningCertificate.
 class GetUserPoolSigningCertificateResult {
   /// Certificate string
   final String certificate;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -23,16 +23,15 @@ class GetUserPoolSigningCertificateResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['certificate'] = certificate;
-    map['id'] = id;
-    map['region'] = region;
-    map['userPoolId'] = userPoolId;
-    return map;
+    return <String, dynamic>{
+      'certificate': certificate,
+      'id': id,
+      'region': region,
+      'userPoolId': userPoolId,
+    };
   }
 
-  factory GetUserPoolSigningCertificateResult.fromMap(
-      Map<String, dynamic> map) {
+  factory GetUserPoolSigningCertificateResult.fromMap(Map<String, dynamic> map) {
     return GetUserPoolSigningCertificateResult(
       certificate: map['certificate'] as String,
       id: map['id'] as String,
@@ -41,3 +40,4 @@ class GetUserPoolSigningCertificateResult {
     );
   }
 }
+

@@ -14,20 +14,15 @@ class PrincipalInfo {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final serviceAccountValue = serviceAccount;
-    if (serviceAccountValue != null) {
-      map['serviceAccount'] = serviceAccountValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'serviceAccount': ?serviceAccount == null ? null : serviceAccount!.toMap(),
+    };
   }
 
   factory PrincipalInfo.fromMap(Map<String, dynamic> map) {
     return PrincipalInfo(
-      serviceAccount: map['serviceAccount'] == null
-          ? null
-          : ServiceAccount.fromMap(
-              (map['serviceAccount'] as Map).cast<String, dynamic>()),
+      serviceAccount: map['serviceAccount'] == null ? null : ServiceAccount.fromMap((map['serviceAccount'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

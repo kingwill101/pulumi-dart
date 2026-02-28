@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class DistributionConfigurationDistributionS3ExportConfiguration {
   /// The disk image format of the exported image (`RAW`, `VHD`, or `VMDK`)
   final String diskImageFormat;
-
   /// The name of the IAM role to use for exporting.
   final String roleName;
-
   /// The name of the S3 bucket to store the exported image in. The bucket needs to exist before the export configuration is created.
   final String s3Bucket;
-
   /// The prefix for the exported image.
   final String? s3Prefix;
 
@@ -26,19 +24,15 @@ class DistributionConfigurationDistributionS3ExportConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['diskImageFormat'] = diskImageFormat;
-    map['roleName'] = roleName;
-    map['s3Bucket'] = s3Bucket;
-    final s3PrefixValue = s3Prefix;
-    if (s3PrefixValue != null) {
-      map['s3Prefix'] = s3PrefixValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'diskImageFormat': diskImageFormat,
+      'roleName': roleName,
+      's3Bucket': s3Bucket,
+      's3Prefix': ?s3Prefix,
+    };
   }
 
-  factory DistributionConfigurationDistributionS3ExportConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory DistributionConfigurationDistributionS3ExportConfiguration.fromMap(Map<String, dynamic> map) {
     return DistributionConfigurationDistributionS3ExportConfiguration(
       diskImageFormat: map['diskImageFormat'] as String,
       roleName: map['roleName'] as String,
@@ -47,3 +41,4 @@ class DistributionConfigurationDistributionS3ExportConfiguration {
     );
   }
 }
+

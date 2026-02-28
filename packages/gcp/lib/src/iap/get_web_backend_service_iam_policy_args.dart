@@ -10,7 +10,6 @@ class GetWebBackendServiceIamPolicyArgs {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> webBackendService;
 
@@ -20,17 +19,15 @@ class GetWebBackendServiceIamPolicyArgs {
   GetWebBackendServiceIamPolicyArgs({
     String? project,
     required String webBackendService,
-  })  : project = pulumi.Input.asOptionalInput<String>(project),
-        webBackendService = pulumi.Input.asInput<String>(webBackendService);
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      webBackendService = pulumi.Input.asInput<String>(webBackendService);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['webBackendService'] = webBackendService;
-    return map;
+    return <String, dynamic>{
+      'project': ?project,
+      'webBackendService': webBackendService,
+    };
   }
 
   factory GetWebBackendServiceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -40,3 +37,4 @@ class GetWebBackendServiceIamPolicyArgs {
     );
   }
 }
+

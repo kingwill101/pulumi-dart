@@ -6,10 +6,8 @@ import 'stack_trace_response.dart';
 class ErrorResponse {
   /// Human-readable stack trace string.
   final String context;
-
   /// Error message and data returned represented as a JSON string.
   final String payload;
-
   /// Stack trace with detailed information of where error was generated.
   final StackTraceResponse stackTrace;
 
@@ -24,19 +22,19 @@ class ErrorResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['context'] = context;
-    map['payload'] = payload;
-    map['stackTrace'] = stackTrace.toMap();
-    return map;
+    return <String, dynamic>{
+      'context': context,
+      'payload': payload,
+      'stackTrace': stackTrace.toMap(),
+    };
   }
 
   factory ErrorResponse.fromMap(Map<String, dynamic> map) {
     return ErrorResponse(
       context: map['context'] as String,
       payload: map['payload'] as String,
-      stackTrace: StackTraceResponse.fromMap(
-          (map['stackTrace'] as Map).cast<String, dynamic>()),
+      stackTrace: StackTraceResponse.fromMap((map['stackTrace'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

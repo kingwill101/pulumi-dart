@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class SloBasicSliLatency {
   /// A duration string, e.g. 10s.
   /// Good service is defined to be the count of requests made to
@@ -13,9 +14,9 @@ class SloBasicSliLatency {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['threshold'] = threshold;
-    return map;
+    return <String, dynamic>{
+      'threshold': threshold,
+    };
   }
 
   factory SloBasicSliLatency.fromMap(Map<String, dynamic> map) {
@@ -24,3 +25,4 @@ class SloBasicSliLatency {
     );
   }
 }
+

@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// **Anthosobservability**: Per-Membership Feature spec.
 class AnthosObservabilityMembershipSpecResponseGkehubV1beta {
   /// Use full of metrics rather than optimized metrics. See https://cloud.google.com/anthos/clusters/docs/on-prem/1.8/concepts/logging-and-monitoring#optimized_metrics_default_metrics
   final bool doNotOptimizeMetrics;
-
   /// Enable collecting and reporting metrics and logs from user apps.
   final bool enableStackdriverOnApplications;
-
   /// the version of stackdriver operator used by this feature
   final String version;
 
@@ -22,20 +21,19 @@ class AnthosObservabilityMembershipSpecResponseGkehubV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['doNotOptimizeMetrics'] = doNotOptimizeMetrics;
-    map['enableStackdriverOnApplications'] = enableStackdriverOnApplications;
-    map['version'] = version;
-    return map;
+    return <String, dynamic>{
+      'doNotOptimizeMetrics': doNotOptimizeMetrics,
+      'enableStackdriverOnApplications': enableStackdriverOnApplications,
+      'version': version,
+    };
   }
 
-  factory AnthosObservabilityMembershipSpecResponseGkehubV1beta.fromMap(
-      Map<String, dynamic> map) {
+  factory AnthosObservabilityMembershipSpecResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return AnthosObservabilityMembershipSpecResponseGkehubV1beta(
       doNotOptimizeMetrics: map['doNotOptimizeMetrics'] as bool,
-      enableStackdriverOnApplications:
-          map['enableStackdriverOnApplications'] as bool,
+      enableStackdriverOnApplications: map['enableStackdriverOnApplications'] as bool,
       version: map['version'] as String,
     );
   }
 }
+

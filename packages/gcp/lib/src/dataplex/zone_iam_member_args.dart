@@ -9,18 +9,14 @@ import 'zone_iam_member_condition.dart';
 /// {@macro pulumi_dataplex_zone_iam_member_zone_iam_member_args_doc}
 class ZoneIamMemberArgs {
   final pulumi.Input<ZoneIamMemberCondition>? condition;
-
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> dataplexZone;
-
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> lake;
-
   /// Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
   final pulumi.Input<String>? location;
-
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -34,11 +30,9 @@ class ZoneIamMemberArgs {
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
   final pulumi.Input<String> member;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The role that should be applied. Only one
   /// `gcp.dataplex.ZoneIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -60,44 +54,30 @@ class ZoneIamMemberArgs {
     required String member,
     String? project,
     required String role,
-  })  : condition =
-            pulumi.Input.asOptionalInput<ZoneIamMemberCondition>(condition),
-        dataplexZone = pulumi.Input.asInput<String>(dataplexZone),
-        lake = pulumi.Input.asInput<String>(lake),
-        location = pulumi.Input.asOptionalInput<String>(location),
-        member = pulumi.Input.asInput<String>(member),
-        project = pulumi.Input.asOptionalInput<String>(project),
-        role = pulumi.Input.asInput<String>(role);
+  }) :
+      condition = pulumi.Input.asOptionalInput<ZoneIamMemberCondition>(condition),
+      dataplexZone = pulumi.Input.asInput<String>(dataplexZone),
+      lake = pulumi.Input.asInput<String>(lake),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      member = pulumi.Input.asInput<String>(member),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      role = pulumi.Input.asInput<String>(role);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final conditionValue = condition;
-    if (conditionValue != null) {
-      map['condition'] = pulumi.Input.mapOptionalInputValue<
-          ZoneIamMemberCondition,
-          Map<String, dynamic>>(conditionValue, (value) => value.toMap());
-    }
-    map['dataplexZone'] = dataplexZone;
-    map['lake'] = lake;
-    final locationValue = location;
-    if (locationValue != null) {
-      map['location'] = locationValue;
-    }
-    map['member'] = member;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    map['role'] = role;
-    return map;
+    return <String, dynamic>{
+      'condition': ?pulumi.Input.mapOptionalInputValue<ZoneIamMemberCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'dataplexZone': dataplexZone,
+      'lake': lake,
+      'location': ?location,
+      'member': member,
+      'project': ?project,
+      'role': role,
+    };
   }
 
   factory ZoneIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return ZoneIamMemberArgs(
-      condition: map['condition'] == null
-          ? null
-          : ZoneIamMemberCondition.fromMap(
-              (map['condition'] as Map).cast<String, dynamic>()),
+      condition: map['condition'] == null ? null : ZoneIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
       dataplexZone: map['dataplexZone'] as String,
       lake: map['lake'] as String,
       location: map['location'] == null ? null : map['location'] as String,
@@ -107,3 +87,4 @@ class ZoneIamMemberArgs {
     );
   }
 }
+

@@ -8,21 +8,16 @@ class GetUserHierarchyGroupResult {
   /// ARN of the hierarchy group.
   final String arn;
   final String hierarchyGroupId;
-
   /// Block that contains information about the levels in the hierarchy group. The `hierarchy_path` block is documented below.
   final List<GetUserHierarchyGroupHierarchyPath> hierarchyPaths;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instanceId;
-
   /// Identifier of the level in the hierarchy group.
   final String levelId;
-
   /// Name of the hierarchy group.
   final String name;
   final String region;
-
   /// Map of tags to assign to the hierarchy group.
   final Map<String, String> tags;
 
@@ -49,30 +44,24 @@ class GetUserHierarchyGroupResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['hierarchyGroupId'] = hierarchyGroupId;
-    map['hierarchyPaths'] = pulumi.Input.encodeList<
-        GetUserHierarchyGroupHierarchyPath,
-        Map<String, dynamic>>(hierarchyPaths, (value) => value.toMap());
-    map['id'] = id;
-    map['instanceId'] = instanceId;
-    map['levelId'] = levelId;
-    map['name'] = name;
-    map['region'] = region;
-    map['tags'] = tags;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'hierarchyGroupId': hierarchyGroupId,
+      'hierarchyPaths': pulumi.Input.encodeList<GetUserHierarchyGroupHierarchyPath, Map<String, dynamic>>(hierarchyPaths, (value) => value.toMap()),
+      'id': id,
+      'instanceId': instanceId,
+      'levelId': levelId,
+      'name': name,
+      'region': region,
+      'tags': tags,
+    };
   }
 
   factory GetUserHierarchyGroupResult.fromMap(Map<String, dynamic> map) {
     return GetUserHierarchyGroupResult(
       arn: map['arn'] as String,
       hierarchyGroupId: map['hierarchyGroupId'] as String,
-      hierarchyPaths:
-          pulumi.Input.decodeList<GetUserHierarchyGroupHierarchyPath>(
-              map['hierarchyPaths'],
-              (value) => GetUserHierarchyGroupHierarchyPath.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      hierarchyPaths: pulumi.Input.decodeList<GetUserHierarchyGroupHierarchyPath>(map['hierarchyPaths'], (value) => GetUserHierarchyGroupHierarchyPath.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       instanceId: map['instanceId'] as String,
       levelId: map['levelId'] as String,
@@ -82,3 +71,4 @@ class GetUserHierarchyGroupResult {
     );
   }
 }
+

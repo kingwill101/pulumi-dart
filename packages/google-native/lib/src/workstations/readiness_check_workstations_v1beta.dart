@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A readiness check to be performed on a workstation.
 class ReadinessCheckWorkstationsV1beta {
   /// Optional. Path to which the request should be sent.
   final String? path;
-
   /// Optional. Port to which the request should be sent.
   final int? port;
 
@@ -17,16 +17,10 @@ class ReadinessCheckWorkstationsV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final pathValue = path;
-    if (pathValue != null) {
-      map['path'] = pathValue;
-    }
-    final portValue = port;
-    if (portValue != null) {
-      map['port'] = portValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'path': ?path,
+      'port': ?port,
+    };
   }
 
   factory ReadinessCheckWorkstationsV1beta.fromMap(Map<String, dynamic> map) {
@@ -36,3 +30,4 @@ class ReadinessCheckWorkstationsV1beta {
     );
   }
 }
+

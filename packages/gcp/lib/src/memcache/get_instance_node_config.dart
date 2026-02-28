@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetInstanceNodeConfig {
   /// Number of CPUs per node.
   final int cpuCount;
-
   /// Memory size in Mebibytes for each memcache node.
   final int memorySizeMb;
 
@@ -16,10 +16,10 @@ class GetInstanceNodeConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cpuCount'] = cpuCount;
-    map['memorySizeMb'] = memorySizeMb;
-    return map;
+    return <String, dynamic>{
+      'cpuCount': cpuCount,
+      'memorySizeMb': memorySizeMb,
+    };
   }
 
   factory GetInstanceNodeConfig.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetInstanceNodeConfig {
     );
   }
 }
+

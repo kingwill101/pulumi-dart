@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// EdgeCluster contains information specific to Google Edge Clusters.
 class EdgeClusterResponseGkehubV1alpha {
   /// Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
@@ -12,9 +13,9 @@ class EdgeClusterResponseGkehubV1alpha {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['resourceLink'] = resourceLink;
-    return map;
+    return <String, dynamic>{
+      'resourceLink': resourceLink,
+    };
   }
 
   factory EdgeClusterResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class EdgeClusterResponseGkehubV1alpha {
     );
   }
 }
+

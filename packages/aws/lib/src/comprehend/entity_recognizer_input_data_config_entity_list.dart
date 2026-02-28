@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class EntityRecognizerInputDataConfigEntityList {
   /// Location of entity list.
   final String s3Uri;
@@ -11,15 +12,15 @@ class EntityRecognizerInputDataConfigEntityList {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['s3Uri'] = s3Uri;
-    return map;
+    return <String, dynamic>{
+      's3Uri': s3Uri,
+    };
   }
 
-  factory EntityRecognizerInputDataConfigEntityList.fromMap(
-      Map<String, dynamic> map) {
+  factory EntityRecognizerInputDataConfigEntityList.fromMap(Map<String, dynamic> map) {
     return EntityRecognizerInputDataConfigEntityList(
       s3Uri: map['s3Uri'] as String,
     );
   }
 }
+

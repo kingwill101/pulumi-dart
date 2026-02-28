@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class MirroringDeploymentGroupConnectedEndpointGroup {
   /// (Output)
   /// The connected endpoint group's resource name, for example:
@@ -14,18 +15,15 @@ class MirroringDeploymentGroupConnectedEndpointGroup {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
-  factory MirroringDeploymentGroupConnectedEndpointGroup.fromMap(
-      Map<String, dynamic> map) {
+  factory MirroringDeploymentGroupConnectedEndpointGroup.fromMap(Map<String, dynamic> map) {
     return MirroringDeploymentGroupConnectedEndpointGroup(
       name: map['name'] == null ? null : map['name'] as String,
     );
   }
 }
+

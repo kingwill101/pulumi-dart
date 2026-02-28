@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ConnectionProfileSpannerProfile {
   /// The full project and resource path for Spanner database. Format:
   /// projects/{project}/instances/{instance}/databases/{database}.
   final String database;
-
   /// The regional Spanner endpoint. Format:
   /// https://spanner.{region}.rep.googleapis.com.
   final String? host;
@@ -18,13 +18,10 @@ class ConnectionProfileSpannerProfile {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['database'] = database;
-    final hostValue = host;
-    if (hostValue != null) {
-      map['host'] = hostValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'database': database,
+      'host': ?host,
+    };
   }
 
   factory ConnectionProfileSpannerProfile.fromMap(Map<String, dynamic> map) {
@@ -34,3 +31,4 @@ class ConnectionProfileSpannerProfile {
     );
   }
 }
+

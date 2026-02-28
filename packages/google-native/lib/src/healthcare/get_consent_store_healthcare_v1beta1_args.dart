@@ -22,25 +22,22 @@ class GetConsentStoreHealthcareV1beta1Args {
     required String datasetId,
     required String location,
     String? project,
-  })  : consentStoreId = pulumi.Input.asInput<String>(consentStoreId),
-        datasetId = pulumi.Input.asInput<String>(datasetId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      consentStoreId = pulumi.Input.asInput<String>(consentStoreId),
+      datasetId = pulumi.Input.asInput<String>(datasetId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['consentStoreId'] = consentStoreId;
-    map['datasetId'] = datasetId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'consentStoreId': consentStoreId,
+      'datasetId': datasetId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
-  factory GetConsentStoreHealthcareV1beta1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetConsentStoreHealthcareV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetConsentStoreHealthcareV1beta1Args(
       consentStoreId: map['consentStoreId'] as String,
       datasetId: map['datasetId'] as String,
@@ -49,3 +46,4 @@ class GetConsentStoreHealthcareV1beta1Args {
     );
   }
 }
+

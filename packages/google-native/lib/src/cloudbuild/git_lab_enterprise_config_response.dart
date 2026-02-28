@@ -6,10 +6,8 @@ import 'service_directory_config_response.dart';
 class GitLabEnterpriseConfigResponse {
   /// Immutable. The URI of the GitlabEnterprise host.
   final String hostUri;
-
   /// The Service Directory configuration to be used when reaching out to the GitLab Enterprise instance.
   final ServiceDirectoryConfigResponse serviceDirectoryConfig;
-
   /// The SSL certificate to use in requests to GitLab Enterprise instances.
   final String sslCa;
 
@@ -24,19 +22,19 @@ class GitLabEnterpriseConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['hostUri'] = hostUri;
-    map['serviceDirectoryConfig'] = serviceDirectoryConfig.toMap();
-    map['sslCa'] = sslCa;
-    return map;
+    return <String, dynamic>{
+      'hostUri': hostUri,
+      'serviceDirectoryConfig': serviceDirectoryConfig.toMap(),
+      'sslCa': sslCa,
+    };
   }
 
   factory GitLabEnterpriseConfigResponse.fromMap(Map<String, dynamic> map) {
     return GitLabEnterpriseConfigResponse(
       hostUri: map['hostUri'] as String,
-      serviceDirectoryConfig: ServiceDirectoryConfigResponse.fromMap(
-          (map['serviceDirectoryConfig'] as Map).cast<String, dynamic>()),
+      serviceDirectoryConfig: ServiceDirectoryConfigResponse.fromMap((map['serviceDirectoryConfig'] as Map).cast<String, dynamic>()),
       sslCa: map['sslCa'] as String,
     );
   }
 }
+

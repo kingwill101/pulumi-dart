@@ -5,7 +5,6 @@ import 'risk_configuration_compromised_credentials_risk_configuration_actions.da
 class RiskConfigurationCompromisedCredentialsRiskConfiguration {
   /// The compromised credentials risk configuration actions. See details below.
   final RiskConfigurationCompromisedCredentialsRiskConfigurationActions actions;
-
   /// Perform the action for these events. The default is to perform all events if no event filter is specified. Valid values are `SIGN_IN`, `PASSWORD_CHANGE`, and `SIGN_UP`.
   final List<String>? eventFilters;
 
@@ -18,23 +17,17 @@ class RiskConfigurationCompromisedCredentialsRiskConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['actions'] = actions.toMap();
-    final eventFiltersValue = eventFilters;
-    if (eventFiltersValue != null) {
-      map['eventFilters'] = eventFiltersValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'actions': actions.toMap(),
+      'eventFilters': ?eventFilters,
+    };
   }
 
-  factory RiskConfigurationCompromisedCredentialsRiskConfiguration.fromMap(
-      Map<String, dynamic> map) {
+  factory RiskConfigurationCompromisedCredentialsRiskConfiguration.fromMap(Map<String, dynamic> map) {
     return RiskConfigurationCompromisedCredentialsRiskConfiguration(
-      actions: RiskConfigurationCompromisedCredentialsRiskConfigurationActions
-          .fromMap((map['actions'] as Map).cast<String, dynamic>()),
-      eventFilters: map['eventFilters'] == null
-          ? null
-          : (map['eventFilters'] as List).cast<String>(),
+      actions: RiskConfigurationCompromisedCredentialsRiskConfigurationActions.fromMap((map['actions'] as Map).cast<String, dynamic>()),
+      eventFilters: map['eventFilters'] == null ? null : (map['eventFilters'] as List).cast<String>(),
     );
   }
 }
+

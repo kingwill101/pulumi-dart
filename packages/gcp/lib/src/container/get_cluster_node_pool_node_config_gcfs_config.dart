@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetClusterNodePoolNodeConfigGcfsConfig {
   /// Whether or not GCFS is enabled
   final bool enabled;
@@ -11,15 +12,15 @@ class GetClusterNodePoolNodeConfigGcfsConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory GetClusterNodePoolNodeConfigGcfsConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory GetClusterNodePoolNodeConfigGcfsConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfigGcfsConfig(
       enabled: map['enabled'] as bool,
     );
   }
 }
+

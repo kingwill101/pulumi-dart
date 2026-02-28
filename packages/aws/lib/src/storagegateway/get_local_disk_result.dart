@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getLocalDisk.
 class GetLocalDiskResult {
   /// Disk identifierE.g., `pci-0000:03:00.0-scsi-0:0:0:0`
@@ -7,7 +8,6 @@ class GetLocalDiskResult {
   final String diskNode;
   final String diskPath;
   final String gatewayArn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -29,14 +29,14 @@ class GetLocalDiskResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['diskId'] = diskId;
-    map['diskNode'] = diskNode;
-    map['diskPath'] = diskPath;
-    map['gatewayArn'] = gatewayArn;
-    map['id'] = id;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'diskId': diskId,
+      'diskNode': diskNode,
+      'diskPath': diskPath,
+      'gatewayArn': gatewayArn,
+      'id': id,
+      'region': region,
+    };
   }
 
   factory GetLocalDiskResult.fromMap(Map<String, dynamic> map) {
@@ -50,3 +50,4 @@ class GetLocalDiskResult {
     );
   }
 }
+

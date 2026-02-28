@@ -8,7 +8,6 @@ import 'image_response.dart';
 class OverlayResponse {
   /// List of animations. The list should be chronological, without any time overlap.
   final List<AnimationResponse> animations;
-
   /// Image overlay.
   final ImageResponse image;
 
@@ -21,22 +20,17 @@ class OverlayResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['animations'] =
-        pulumi.Input.encodeList<AnimationResponse, Map<String, dynamic>>(
-            animations, (value) => value.toMap());
-    map['image'] = image.toMap();
-    return map;
+    return <String, dynamic>{
+      'animations': pulumi.Input.encodeList<AnimationResponse, Map<String, dynamic>>(animations, (value) => value.toMap()),
+      'image': image.toMap(),
+    };
   }
 
   factory OverlayResponse.fromMap(Map<String, dynamic> map) {
     return OverlayResponse(
-      animations: pulumi.Input.decodeList<AnimationResponse>(
-          map['animations'],
-          (value) => AnimationResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      image:
-          ImageResponse.fromMap((map['image'] as Map).cast<String, dynamic>()),
+      animations: pulumi.Input.decodeList<AnimationResponse>(map['animations'], (value) => AnimationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      image: ImageResponse.fromMap((map['image'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

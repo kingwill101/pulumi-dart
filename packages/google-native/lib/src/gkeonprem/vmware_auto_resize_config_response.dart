@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Represents auto resizing configurations for the VMware user cluster.
 class VmwareAutoResizeConfigResponse {
   /// Whether to enable controle plane node auto resizing.
@@ -12,9 +13,9 @@ class VmwareAutoResizeConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['enabled'] = enabled;
-    return map;
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory VmwareAutoResizeConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class VmwareAutoResizeConfigResponse {
     );
   }
 }
+

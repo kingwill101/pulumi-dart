@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetProxyAuth {
   final String authScheme;
   final String clientPasswordAuthType;
@@ -25,14 +26,14 @@ class GetProxyAuth {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['authScheme'] = authScheme;
-    map['clientPasswordAuthType'] = clientPasswordAuthType;
-    map['description'] = description;
-    map['iamAuth'] = iamAuth;
-    map['secretArn'] = secretArn;
-    map['username'] = username;
-    return map;
+    return <String, dynamic>{
+      'authScheme': authScheme,
+      'clientPasswordAuthType': clientPasswordAuthType,
+      'description': description,
+      'iamAuth': iamAuth,
+      'secretArn': secretArn,
+      'username': username,
+    };
   }
 
   factory GetProxyAuth.fromMap(Map<String, dynamic> map) {
@@ -46,3 +47,4 @@ class GetProxyAuth {
     );
   }
 }
+

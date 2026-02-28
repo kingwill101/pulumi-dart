@@ -14,21 +14,15 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final kmsSettingsValue = kmsSettings;
-    if (kmsSettingsValue != null) {
-      map['kmsSettings'] = kmsSettingsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'kmsSettings': ?kmsSettings == null ? null : kmsSettings!.toMap(),
+    };
   }
 
-  factory GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings(
-      kmsSettings: map['kmsSettings'] == null
-          ? null
-          : GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings.fromMap(
-              (map['kmsSettings'] as Map).cast<String, dynamic>()),
+      kmsSettings: map['kmsSettings'] == null ? null : GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings.fromMap((map['kmsSettings'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

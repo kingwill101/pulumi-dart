@@ -11,10 +11,8 @@ class TransferAgentPoolArgs {
   /// Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
   /// Structure is documented below.
   final pulumi.Input<TransferAgentPoolBandwidthLimit>? bandwidthLimit;
-
   /// Specifies the client-specified AgentPool description.
   final pulumi.Input<String>? displayName;
-
   /// The ID of the agent pool to create.
   /// The agentPoolId must meet the following requirements:
   /// * Length of 128 characters or less.
@@ -24,7 +22,6 @@ class TransferAgentPoolArgs {
   /// * One or more numerals or lowercase ASCII characters.
   /// As expressed by the regular expression: ^(?!goog)a-z?$.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -39,46 +36,28 @@ class TransferAgentPoolArgs {
     String? displayName,
     String? name,
     String? project,
-  })  : bandwidthLimit =
-            pulumi.Input.asOptionalInput<TransferAgentPoolBandwidthLimit>(
-                bandwidthLimit),
-        displayName = pulumi.Input.asOptionalInput<String>(displayName),
-        name = pulumi.Input.asOptionalInput<String>(name),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      bandwidthLimit = pulumi.Input.asOptionalInput<TransferAgentPoolBandwidthLimit>(bandwidthLimit),
+      displayName = pulumi.Input.asOptionalInput<String>(displayName),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final bandwidthLimitValue = bandwidthLimit;
-    if (bandwidthLimitValue != null) {
-      map['bandwidthLimit'] = pulumi.Input.mapOptionalInputValue<
-          TransferAgentPoolBandwidthLimit,
-          Map<String, dynamic>>(bandwidthLimitValue, (value) => value.toMap());
-    }
-    final displayNameValue = displayName;
-    if (displayNameValue != null) {
-      map['displayName'] = displayNameValue;
-    }
-    final nameValue = name;
-    if (nameValue != null) {
-      map['name'] = nameValue;
-    }
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'bandwidthLimit': ?pulumi.Input.mapOptionalInputValue<TransferAgentPoolBandwidthLimit, Map<String, dynamic>>(bandwidthLimit, (value) => value.toMap()),
+      'displayName': ?displayName,
+      'name': ?name,
+      'project': ?project,
+    };
   }
 
   factory TransferAgentPoolArgs.fromMap(Map<String, dynamic> map) {
     return TransferAgentPoolArgs(
-      bandwidthLimit: map['bandwidthLimit'] == null
-          ? null
-          : TransferAgentPoolBandwidthLimit.fromMap(
-              (map['bandwidthLimit'] as Map).cast<String, dynamic>()),
-      displayName:
-          map['displayName'] == null ? null : map['displayName'] as String,
+      bandwidthLimit: map['bandwidthLimit'] == null ? null : TransferAgentPoolBandwidthLimit.fromMap((map['bandwidthLimit'] as Map).cast<String, dynamic>()),
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
+

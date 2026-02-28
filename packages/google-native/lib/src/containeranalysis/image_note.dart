@@ -6,7 +6,6 @@ import 'fingerprint.dart';
 class ImageNote {
   /// Immutable. The fingerprint of the base image.
   final Fingerprint fingerprint;
-
   /// Immutable. The resource_url for the resource representing the basis of associated occurrence images.
   final String resourceUrl;
 
@@ -19,17 +18,17 @@ class ImageNote {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['fingerprint'] = fingerprint.toMap();
-    map['resourceUrl'] = resourceUrl;
-    return map;
+    return <String, dynamic>{
+      'fingerprint': fingerprint.toMap(),
+      'resourceUrl': resourceUrl,
+    };
   }
 
   factory ImageNote.fromMap(Map<String, dynamic> map) {
     return ImageNote(
-      fingerprint: Fingerprint.fromMap(
-          (map['fingerprint'] as Map).cast<String, dynamic>()),
+      fingerprint: Fingerprint.fromMap((map['fingerprint'] as Map).cast<String, dynamic>()),
       resourceUrl: map['resourceUrl'] as String,
     );
   }
 }
+

@@ -7,17 +7,13 @@ import 'data_policy_args.dart';
 class DataPolicy extends pulumi.CustomResource {
   /// The data masking policy that specifies the data masking rule to use.
   late final pulumi.Output<DataMaskingPolicyResponse> dataMaskingPolicy;
-
   /// User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {data_policy_id} in part of the resource name.
   late final pulumi.Output<String> dataPolicyId;
-
   /// Type of data policy.
   late final pulumi.Output<String> dataPolicyType;
   late final pulumi.Output<String> location;
-
   /// Resource name of this data policy, in the format of `projects/{project_number}/locations/{location_id}/dataPolicies/{data_policy_id}`.
   late final pulumi.Output<String> name;
-
   /// Policy tag resource name, in the format of `projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{policyTag_id}`.
   late final pulumi.Output<String> policyTag;
   late final pulumi.Output<String> project;
@@ -36,8 +32,7 @@ class DataPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.dataMaskingPolicy =
-        registerOutput<DataMaskingPolicyResponse>('dataMaskingPolicy');
+    this.dataMaskingPolicy = registerOutput<DataMaskingPolicyResponse>('dataMaskingPolicy');
     this.dataPolicyId = registerOutput<String>('dataPolicyId');
     this.dataPolicyType = registerOutput<String>('dataPolicyType');
     this.location = registerOutput<String>('location');

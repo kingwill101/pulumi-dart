@@ -8,10 +8,8 @@ import 'get_control_folder_intelligence_config_trial_config.dart';
 /// Result data returned by getControlFolderIntelligenceConfig.
 class GetControlFolderIntelligenceConfigResult {
   final String editionConfig;
-  final List<GetControlFolderIntelligenceConfigEffectiveIntelligenceConfig>
-      effectiveIntelligenceConfigs;
+  final List<GetControlFolderIntelligenceConfigEffectiveIntelligenceConfig> effectiveIntelligenceConfigs;
   final List<GetControlFolderIntelligenceConfigFilter> filters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -37,47 +35,27 @@ class GetControlFolderIntelligenceConfigResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['editionConfig'] = editionConfig;
-    map['effectiveIntelligenceConfigs'] = pulumi.Input.encodeList<
-            GetControlFolderIntelligenceConfigEffectiveIntelligenceConfig,
-            Map<String, dynamic>>(
-        effectiveIntelligenceConfigs, (value) => value.toMap());
-    map['filters'] = pulumi.Input.encodeList<
-        GetControlFolderIntelligenceConfigFilter,
-        Map<String, dynamic>>(filters, (value) => value.toMap());
-    map['id'] = id;
-    map['name'] = name;
-    map['trialConfigs'] = pulumi.Input.encodeList<
-        GetControlFolderIntelligenceConfigTrialConfig,
-        Map<String, dynamic>>(trialConfigs, (value) => value.toMap());
-    map['updateTime'] = updateTime;
-    return map;
+    return <String, dynamic>{
+      'editionConfig': editionConfig,
+      'effectiveIntelligenceConfigs': pulumi.Input.encodeList<GetControlFolderIntelligenceConfigEffectiveIntelligenceConfig, Map<String, dynamic>>(effectiveIntelligenceConfigs, (value) => value.toMap()),
+      'filters': pulumi.Input.encodeList<GetControlFolderIntelligenceConfigFilter, Map<String, dynamic>>(filters, (value) => value.toMap()),
+      'id': id,
+      'name': name,
+      'trialConfigs': pulumi.Input.encodeList<GetControlFolderIntelligenceConfigTrialConfig, Map<String, dynamic>>(trialConfigs, (value) => value.toMap()),
+      'updateTime': updateTime,
+    };
   }
 
-  factory GetControlFolderIntelligenceConfigResult.fromMap(
-      Map<String, dynamic> map) {
+  factory GetControlFolderIntelligenceConfigResult.fromMap(Map<String, dynamic> map) {
     return GetControlFolderIntelligenceConfigResult(
       editionConfig: map['editionConfig'] as String,
-      effectiveIntelligenceConfigs: pulumi.Input.decodeList<
-              GetControlFolderIntelligenceConfigEffectiveIntelligenceConfig>(
-          map['effectiveIntelligenceConfigs'],
-          (value) =>
-              GetControlFolderIntelligenceConfigEffectiveIntelligenceConfig
-                  .fromMap((value as Map).cast<String, dynamic>())),
-      filters:
-          pulumi.Input.decodeList<GetControlFolderIntelligenceConfigFilter>(
-              map['filters'],
-              (value) => GetControlFolderIntelligenceConfigFilter.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      effectiveIntelligenceConfigs: pulumi.Input.decodeList<GetControlFolderIntelligenceConfigEffectiveIntelligenceConfig>(map['effectiveIntelligenceConfigs'], (value) => GetControlFolderIntelligenceConfigEffectiveIntelligenceConfig.fromMap((value as Map).cast<String, dynamic>())),
+      filters: pulumi.Input.decodeList<GetControlFolderIntelligenceConfigFilter>(map['filters'], (value) => GetControlFolderIntelligenceConfigFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       name: map['name'] as String,
-      trialConfigs: pulumi.Input.decodeList<
-              GetControlFolderIntelligenceConfigTrialConfig>(
-          map['trialConfigs'],
-          (value) => GetControlFolderIntelligenceConfigTrialConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      trialConfigs: pulumi.Input.decodeList<GetControlFolderIntelligenceConfigTrialConfig>(map['trialConfigs'], (value) => GetControlFolderIntelligenceConfigTrialConfig.fromMap((value as Map).cast<String, dynamic>())),
       updateTime: map['updateTime'] as String,
     );
   }
 }
+

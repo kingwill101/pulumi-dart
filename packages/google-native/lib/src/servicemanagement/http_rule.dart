@@ -7,31 +7,22 @@ import 'custom_http_pattern.dart';
 class HttpRule {
   /// Additional HTTP bindings for the selector. Nested bindings must not contain an `additional_bindings` field themselves (that is, the nesting may only be one level deep).
   final List<HttpRule>? additionalBindings;
-
   /// The name of the request field whose value is mapped to the HTTP request body, or `*` for mapping all request fields not captured by the path pattern to the HTTP body, or omitted for not having any HTTP request body. NOTE: the referred field must be present at the top-level of the request message type.
   final String? body;
-
   /// The custom pattern is used for specifying an HTTP method that is not included in the `pattern` field, such as HEAD, or "*" to leave the HTTP method unspecified for this rule. The wild-card rule is useful for services that provide content to Web (HTML) clients.
   final CustomHttpPattern? custom;
-
   /// Maps to HTTP DELETE. Used for deleting a resource.
   final String? delete;
-
   /// Maps to HTTP GET. Used for listing and getting information about resources.
   final String? get;
-
   /// Maps to HTTP PATCH. Used for updating a resource.
   final String? patch;
-
   /// Maps to HTTP POST. Used for creating a resource or performing an action.
   final String? post;
-
   /// Maps to HTTP PUT. Used for replacing a resource.
   final String? put;
-
   /// Optional. The name of the response field whose value is mapped to the HTTP response body. When omitted, the entire response message will be used as the HTTP response body. NOTE: The referred field must be present at the top-level of the response message type.
   final String? responseBody;
-
   /// Selects a method to which this rule applies. Refer to selector for syntax details.
   final String? selector;
 
@@ -60,73 +51,33 @@ class HttpRule {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final additionalBindingsValue = additionalBindings;
-    if (additionalBindingsValue != null) {
-      map['additionalBindings'] =
-          pulumi.Input.encodeList<HttpRule, Map<String, dynamic>>(
-              additionalBindingsValue, (value) => value.toMap());
-    }
-    final bodyValue = body;
-    if (bodyValue != null) {
-      map['body'] = bodyValue;
-    }
-    final customValue = custom;
-    if (customValue != null) {
-      map['custom'] = customValue.toMap();
-    }
-    final deleteValue = delete;
-    if (deleteValue != null) {
-      map['delete'] = deleteValue;
-    }
-    final getValue = get;
-    if (getValue != null) {
-      map['get'] = getValue;
-    }
-    final patchValue = patch;
-    if (patchValue != null) {
-      map['patch'] = patchValue;
-    }
-    final postValue = post;
-    if (postValue != null) {
-      map['post'] = postValue;
-    }
-    final putValue = put;
-    if (putValue != null) {
-      map['put'] = putValue;
-    }
-    final responseBodyValue = responseBody;
-    if (responseBodyValue != null) {
-      map['responseBody'] = responseBodyValue;
-    }
-    final selectorValue = selector;
-    if (selectorValue != null) {
-      map['selector'] = selectorValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'additionalBindings': ?additionalBindings == null ? null : pulumi.Input.encodeList<HttpRule, Map<String, dynamic>>(additionalBindings!, (value) => value.toMap()),
+      'body': ?body,
+      'custom': ?custom == null ? null : custom!.toMap(),
+      'delete': ?delete,
+      'get': ?get,
+      'patch': ?patch,
+      'post': ?post,
+      'put': ?put,
+      'responseBody': ?responseBody,
+      'selector': ?selector,
+    };
   }
 
   factory HttpRule.fromMap(Map<String, dynamic> map) {
     return HttpRule(
-      additionalBindings: map['additionalBindings'] == null
-          ? null
-          : pulumi.Input.decodeList<HttpRule>(
-              map['additionalBindings'],
-              (value) =>
-                  HttpRule.fromMap((value as Map).cast<String, dynamic>())),
+      additionalBindings: map['additionalBindings'] == null ? null : pulumi.Input.decodeList<HttpRule>(map['additionalBindings'], (value) => HttpRule.fromMap((value as Map).cast<String, dynamic>())),
       body: map['body'] == null ? null : map['body'] as String,
-      custom: map['custom'] == null
-          ? null
-          : CustomHttpPattern.fromMap(
-              (map['custom'] as Map).cast<String, dynamic>()),
+      custom: map['custom'] == null ? null : CustomHttpPattern.fromMap((map['custom'] as Map).cast<String, dynamic>()),
       delete: map['delete'] == null ? null : map['delete'] as String,
       get: map['get'] == null ? null : map['get'] as String,
       patch: map['patch'] == null ? null : map['patch'] as String,
       post: map['post'] == null ? null : map['post'] as String,
       put: map['put'] == null ? null : map['put'] as String,
-      responseBody:
-          map['responseBody'] == null ? null : map['responseBody'] as String,
+      responseBody: map['responseBody'] == null ? null : map['responseBody'] as String,
       selector: map['selector'] == null ? null : map['selector'] as String,
     );
   }
 }
+

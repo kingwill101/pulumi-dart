@@ -6,7 +6,6 @@ import 'cluster_node_config_containerd_config_registry_host_host_client_key.dart
 class ClusterNodeConfigContainerdConfigRegistryHostHostClient {
   /// Configures the client certificate.
   final ClusterNodeConfigContainerdConfigRegistryHostHostClientCert cert;
-
   /// Configures the client private key.
   final ClusterNodeConfigContainerdConfigRegistryHostHostClientKey? key;
 
@@ -19,24 +18,17 @@ class ClusterNodeConfigContainerdConfigRegistryHostHostClient {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['cert'] = cert.toMap();
-    final keyValue = key;
-    if (keyValue != null) {
-      map['key'] = keyValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'cert': cert.toMap(),
+      'key': ?key == null ? null : key!.toMap(),
+    };
   }
 
-  factory ClusterNodeConfigContainerdConfigRegistryHostHostClient.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterNodeConfigContainerdConfigRegistryHostHostClient.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigContainerdConfigRegistryHostHostClient(
-      cert: ClusterNodeConfigContainerdConfigRegistryHostHostClientCert.fromMap(
-          (map['cert'] as Map).cast<String, dynamic>()),
-      key: map['key'] == null
-          ? null
-          : ClusterNodeConfigContainerdConfigRegistryHostHostClientKey.fromMap(
-              (map['key'] as Map).cast<String, dynamic>()),
+      cert: ClusterNodeConfigContainerdConfigRegistryHostHostClientCert.fromMap((map['cert'] as Map).cast<String, dynamic>()),
+      key: map['key'] == null ? null : ClusterNodeConfigContainerdConfigRegistryHostHostClientKey.fromMap((map['key'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

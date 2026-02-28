@@ -22,21 +22,19 @@ class GetDocumentDialogflowV2beta1Args {
     required String knowledgeBaseId,
     required String location,
     String? project,
-  })  : documentId = pulumi.Input.asInput<String>(documentId),
-        knowledgeBaseId = pulumi.Input.asInput<String>(knowledgeBaseId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      documentId = pulumi.Input.asInput<String>(documentId),
+      knowledgeBaseId = pulumi.Input.asInput<String>(knowledgeBaseId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['documentId'] = documentId;
-    map['knowledgeBaseId'] = knowledgeBaseId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'documentId': documentId,
+      'knowledgeBaseId': knowledgeBaseId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetDocumentDialogflowV2beta1Args.fromMap(Map<String, dynamic> map) {
@@ -48,3 +46,4 @@ class GetDocumentDialogflowV2beta1Args {
     );
   }
 }
+

@@ -7,15 +7,13 @@ enum MavenRepositoryConfigVersionPolicyArtifactregistryV1beta2 {
   const MavenRepositoryConfigVersionPolicyArtifactregistryV1beta2(this.value);
   final String value;
 
-  static MavenRepositoryConfigVersionPolicyArtifactregistryV1beta2 fromValue(
-      String value) {
-    for (final item
-        in MavenRepositoryConfigVersionPolicyArtifactregistryV1beta2.values) {
+  static MavenRepositoryConfigVersionPolicyArtifactregistryV1beta2 fromValue(String value) {
+    for (final item in MavenRepositoryConfigVersionPolicyArtifactregistryV1beta2.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown MavenRepositoryConfigVersionPolicyArtifactregistryV1beta2 value: $value');
+    throw ArgumentError('Unknown MavenRepositoryConfigVersionPolicyArtifactregistryV1beta2 value: $value');
   }
 }
+

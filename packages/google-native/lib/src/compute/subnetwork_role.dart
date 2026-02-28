@@ -15,3 +15,4 @@ enum SubnetworkRole {
     throw ArgumentError('Unknown SubnetworkRole value: $value');
   }
 }
+

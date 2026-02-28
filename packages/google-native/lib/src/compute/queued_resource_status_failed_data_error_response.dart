@@ -15,22 +15,15 @@ class QueuedResourceStatusFailedDataErrorResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['errors'] = pulumi.Input.encodeList<
-        QueuedResourceStatusFailedDataErrorErrorsItemResponse,
-        Map<String, dynamic>>(errors, (value) => value.toMap());
-    return map;
+    return <String, dynamic>{
+      'errors': pulumi.Input.encodeList<QueuedResourceStatusFailedDataErrorErrorsItemResponse, Map<String, dynamic>>(errors, (value) => value.toMap()),
+    };
   }
 
-  factory QueuedResourceStatusFailedDataErrorResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory QueuedResourceStatusFailedDataErrorResponse.fromMap(Map<String, dynamic> map) {
     return QueuedResourceStatusFailedDataErrorResponse(
-      errors: pulumi.Input.decodeList<
-              QueuedResourceStatusFailedDataErrorErrorsItemResponse>(
-          map['errors'],
-          (value) =>
-              QueuedResourceStatusFailedDataErrorErrorsItemResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      errors: pulumi.Input.decodeList<QueuedResourceStatusFailedDataErrorErrorsItemResponse>(map['errors'], (value) => QueuedResourceStatusFailedDataErrorErrorsItemResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

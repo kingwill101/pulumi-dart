@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Configuration options for Cloud Armor.
 class SecurityPolicyCloudArmorConfig {
   /// If set to true, enables Cloud Armor Machine Learning.
@@ -12,12 +13,9 @@ class SecurityPolicyCloudArmorConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final enableMlValue = enableMl;
-    if (enableMlValue != null) {
-      map['enableMl'] = enableMlValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'enableMl': ?enableMl,
+    };
   }
 
   factory SecurityPolicyCloudArmorConfig.fromMap(Map<String, dynamic> map) {
@@ -26,3 +24,4 @@ class SecurityPolicyCloudArmorConfig {
     );
   }
 }
+

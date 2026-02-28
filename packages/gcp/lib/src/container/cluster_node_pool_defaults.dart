@@ -13,20 +13,15 @@ class ClusterNodePoolDefaults {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final nodeConfigDefaultsValue = nodeConfigDefaults;
-    if (nodeConfigDefaultsValue != null) {
-      map['nodeConfigDefaults'] = nodeConfigDefaultsValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'nodeConfigDefaults': ?nodeConfigDefaults == null ? null : nodeConfigDefaults!.toMap(),
+    };
   }
 
   factory ClusterNodePoolDefaults.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolDefaults(
-      nodeConfigDefaults: map['nodeConfigDefaults'] == null
-          ? null
-          : ClusterNodePoolDefaultsNodeConfigDefaults.fromMap(
-              (map['nodeConfigDefaults'] as Map).cast<String, dynamic>()),
+      nodeConfigDefaults: map['nodeConfigDefaults'] == null ? null : ClusterNodePoolDefaultsNodeConfigDefaults.fromMap((map['nodeConfigDefaults'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

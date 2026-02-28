@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceAttachmentArgs {
   /// The resource ID of the environment.
   final pulumi.Input<String> environment;
-
   /// The Apigee instance associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
   final pulumi.Input<String> instanceId;
@@ -20,14 +19,15 @@ class InstanceAttachmentArgs {
   InstanceAttachmentArgs({
     required String environment,
     required String instanceId,
-  })  : environment = pulumi.Input.asInput<String>(environment),
-        instanceId = pulumi.Input.asInput<String>(instanceId);
+  }) :
+      environment = pulumi.Input.asInput<String>(environment),
+      instanceId = pulumi.Input.asInput<String>(instanceId);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['environment'] = environment;
-    map['instanceId'] = instanceId;
-    return map;
+    return <String, dynamic>{
+      'environment': environment,
+      'instanceId': instanceId,
+    };
   }
 
   factory InstanceAttachmentArgs.fromMap(Map<String, dynamic> map) {
@@ -37,3 +37,4 @@ class InstanceAttachmentArgs {
     );
   }
 }
+

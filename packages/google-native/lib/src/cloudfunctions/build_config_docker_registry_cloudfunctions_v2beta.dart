@@ -13,7 +13,7 @@ enum BuildConfigDockerRegistryCloudfunctionsV2beta {
         return item;
       }
     }
-    throw ArgumentError(
-        'Unknown BuildConfigDockerRegistryCloudfunctionsV2beta value: $value');
+    throw ArgumentError('Unknown BuildConfigDockerRegistryCloudfunctionsV2beta value: $value');
   }
 }
+

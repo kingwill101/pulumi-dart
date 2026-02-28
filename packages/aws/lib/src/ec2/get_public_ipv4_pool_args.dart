@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPublicIpv4PoolArgs {
   /// AWS resource IDs of a public IPv4 pool (as a string) for which this data source will fetch detailed information.
   final pulumi.Input<String> poolId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Any tags for the address pool.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -24,31 +22,25 @@ class GetPublicIpv4PoolArgs {
     required String poolId,
     String? region,
     Map<String, String>? tags,
-  })  : poolId = pulumi.Input.asInput<String>(poolId),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      poolId = pulumi.Input.asInput<String>(poolId),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['poolId'] = poolId;
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'poolId': poolId,
+      'region': ?region,
+      'tags': ?tags,
+    };
   }
 
   factory GetPublicIpv4PoolArgs.fromMap(Map<String, dynamic> map) {
     return GetPublicIpv4PoolArgs(
       poolId: map['poolId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

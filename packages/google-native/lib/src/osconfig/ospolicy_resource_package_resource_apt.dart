@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// A package managed by APT. - install: `apt-get update && apt-get -y install [name]` - remove: `apt-get -y remove [name]`
 class OSPolicyResourcePackageResourceAPT {
   /// Package name.
@@ -12,9 +13,9 @@ class OSPolicyResourcePackageResourceAPT {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory OSPolicyResourcePackageResourceAPT.fromMap(Map<String, dynamic> map) {
@@ -23,3 +24,4 @@ class OSPolicyResourcePackageResourceAPT {
     );
   }
 }
+

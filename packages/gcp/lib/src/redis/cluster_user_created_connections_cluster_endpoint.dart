@@ -5,8 +5,7 @@ import 'cluster_user_created_connections_cluster_endpoint_connection.dart';
 
 class ClusterUserCreatedConnectionsClusterEndpoint {
   /// Structure is documented below.
-  final List<ClusterUserCreatedConnectionsClusterEndpointConnection>?
-      connections;
+  final List<ClusterUserCreatedConnectionsClusterEndpointConnection>? connections;
 
   /// Creates a new [ClusterUserCreatedConnectionsClusterEndpoint].
   /// [connections] Structure is documented below.
@@ -15,26 +14,15 @@ class ClusterUserCreatedConnectionsClusterEndpoint {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final connectionsValue = connections;
-    if (connectionsValue != null) {
-      map['connections'] = pulumi.Input.encodeList<
-          ClusterUserCreatedConnectionsClusterEndpointConnection,
-          Map<String, dynamic>>(connectionsValue, (value) => value.toMap());
-    }
-    return map;
+    return <String, dynamic>{
+      'connections': ?connections == null ? null : pulumi.Input.encodeList<ClusterUserCreatedConnectionsClusterEndpointConnection, Map<String, dynamic>>(connections!, (value) => value.toMap()),
+    };
   }
 
-  factory ClusterUserCreatedConnectionsClusterEndpoint.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterUserCreatedConnectionsClusterEndpoint.fromMap(Map<String, dynamic> map) {
     return ClusterUserCreatedConnectionsClusterEndpoint(
-      connections: map['connections'] == null
-          ? null
-          : pulumi.Input.decodeList<
-                  ClusterUserCreatedConnectionsClusterEndpointConnection>(
-              map['connections'],
-              (value) => ClusterUserCreatedConnectionsClusterEndpointConnection
-                  .fromMap((value as Map).cast<String, dynamic>())),
+      connections: map['connections'] == null ? null : pulumi.Input.decodeList<ClusterUserCreatedConnectionsClusterEndpointConnection>(map['connections'], (value) => ClusterUserCreatedConnectionsClusterEndpointConnection.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

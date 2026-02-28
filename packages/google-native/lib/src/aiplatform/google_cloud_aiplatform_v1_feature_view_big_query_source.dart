@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GoogleCloudAiplatformV1FeatureViewBigQuerySource {
   /// Columns to construct entity_id / row keys. Start by supporting 1 only.
   final List<String> entityIdColumns;
-
   /// The BigQuery view URI that will be materialized on each sync trigger based on FeatureView.SyncConfig.
   final String uri;
 
@@ -16,17 +16,17 @@ class GoogleCloudAiplatformV1FeatureViewBigQuerySource {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['entityIdColumns'] = entityIdColumns;
-    map['uri'] = uri;
-    return map;
+    return <String, dynamic>{
+      'entityIdColumns': entityIdColumns,
+      'uri': uri,
+    };
   }
 
-  factory GoogleCloudAiplatformV1FeatureViewBigQuerySource.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1FeatureViewBigQuerySource.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1FeatureViewBigQuerySource(
       entityIdColumns: (map['entityIdColumns'] as List).cast<String>(),
       uri: map['uri'] as String,
     );
   }
 }
+

@@ -14,21 +14,15 @@ class RegionBackendServiceDynamicForwarding {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final ipPortSelectionValue = ipPortSelection;
-    if (ipPortSelectionValue != null) {
-      map['ipPortSelection'] = ipPortSelectionValue.toMap();
-    }
-    return map;
+    return <String, dynamic>{
+      'ipPortSelection': ?ipPortSelection == null ? null : ipPortSelection!.toMap(),
+    };
   }
 
-  factory RegionBackendServiceDynamicForwarding.fromMap(
-      Map<String, dynamic> map) {
+  factory RegionBackendServiceDynamicForwarding.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceDynamicForwarding(
-      ipPortSelection: map['ipPortSelection'] == null
-          ? null
-          : RegionBackendServiceDynamicForwardingIpPortSelection.fromMap(
-              (map['ipPortSelection'] as Map).cast<String, dynamic>()),
+      ipPortSelection: map['ipPortSelection'] == null ? null : RegionBackendServiceDynamicForwardingIpPortSelection.fromMap((map['ipPortSelection'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

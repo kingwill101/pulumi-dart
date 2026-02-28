@@ -20,3 +20,4 @@ enum AuthConfigState {
     throw ArgumentError('Unknown AuthConfigState value: $value');
   }
 }
+

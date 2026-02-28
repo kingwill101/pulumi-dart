@@ -514,75 +514,54 @@ import 'table_metadata.dart';
 class Table extends pulumi.CustomResource {
   /// ARN of the table.
   late final pulumi.Output<String> arn;
-
   /// Date and time when the namespace was created.
   late final pulumi.Output<String> createdAt;
-
   /// Account ID of the account that created the namespace.
   late final pulumi.Output<String> createdBy;
-
   /// A single table bucket encryption configuration object.
   /// See `encryption_configuration` below.
-  late final pulumi.Output<TableEncryptionConfiguration>
-      encryptionConfiguration;
-
+  late final pulumi.Output<TableEncryptionConfiguration> encryptionConfiguration;
   /// Format of the table.
   /// Must be `ICEBERG`.
   late final pulumi.Output<String> format;
-
   /// A single table bucket maintenance configuration object.
   /// See `maintenance_configuration` below.
-  late final pulumi.Output<TableMaintenanceConfiguration>
-      maintenanceConfiguration;
-
+  late final pulumi.Output<TableMaintenanceConfiguration> maintenanceConfiguration;
   /// Contains details about the table metadata. This configuration specifies the metadata format and schema for the table. Currently only supports Iceberg format.
   /// See `metadata` below.
   late final pulumi.Output<TableMetadata?> metadata;
-
   /// Location of table metadata.
   late final pulumi.Output<String> metadataLocation;
-
   /// Date and time when the namespace was last modified.
   late final pulumi.Output<String> modifiedAt;
-
   /// Account ID of the account that last modified the namespace.
   late final pulumi.Output<String> modifiedBy;
-
   /// Name of the table.
   /// Must be between 1 and 255 characters in length.
   /// Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number.
   /// A full list of table naming rules can be found in the [S3 Tables documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-buckets-naming.html#naming-rules-table).
   late final pulumi.Output<String> name;
-
   /// Name of the namespace for this table.
   /// Must be between 1 and 255 characters in length.
   /// Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number.
   late final pulumi.Output<String> namespace;
-
   /// Account ID of the account that owns the namespace.
   late final pulumi.Output<String> ownerAccountId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ARN referencing the Table Bucket that contains this Namespace.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> tableBucketArn;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Type of the table.
   /// One of `customer` or `aws`.
   late final pulumi.Output<String> type;
-
   /// Identifier for the current version of table data.
   late final pulumi.Output<String> versionToken;
-
   /// S3 URI pointing to the S3 Bucket that contains the table data.
   late final pulumi.Output<String> warehouseLocation;
 
@@ -603,12 +582,9 @@ class Table extends pulumi.CustomResource {
     this.arn = registerOutput<String>('arn');
     this.createdAt = registerOutput<String>('createdAt');
     this.createdBy = registerOutput<String>('createdBy');
-    this.encryptionConfiguration =
-        registerOutput<TableEncryptionConfiguration>('encryptionConfiguration');
+    this.encryptionConfiguration = registerOutput<TableEncryptionConfiguration>('encryptionConfiguration');
     this.format = registerOutput<String>('format');
-    this.maintenanceConfiguration =
-        registerOutput<TableMaintenanceConfiguration>(
-            'maintenanceConfiguration');
+    this.maintenanceConfiguration = registerOutput<TableMaintenanceConfiguration>('maintenanceConfiguration');
     this.metadata = registerOutput<TableMetadata?>('metadata');
     this.metadataLocation = registerOutput<String>('metadataLocation');
     this.modifiedAt = registerOutput<String>('modifiedAt');

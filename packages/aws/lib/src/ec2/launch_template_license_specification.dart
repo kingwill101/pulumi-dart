@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class LaunchTemplateLicenseSpecification {
   /// ARN of the license configuration.
   final String licenseConfigurationArn;
@@ -11,9 +12,9 @@ class LaunchTemplateLicenseSpecification {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['licenseConfigurationArn'] = licenseConfigurationArn;
-    return map;
+    return <String, dynamic>{
+      'licenseConfigurationArn': licenseConfigurationArn,
+    };
   }
 
   factory LaunchTemplateLicenseSpecification.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class LaunchTemplateLicenseSpecification {
     );
   }
 }
+

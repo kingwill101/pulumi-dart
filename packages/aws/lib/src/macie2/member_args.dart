@@ -9,25 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MemberArgs {
   /// The AWS account ID for the account.
   final pulumi.Input<String> accountId;
-
   /// The email address for the account.
   final pulumi.Input<String> email;
-
   /// Specifies whether to send an email notification to the root user of each account that the invitation will be sent to. This notification is in addition to an alert that the root user receives in AWS Personal Health Dashboard. To send an email notification to the root user of each account, set this value to `true`.
   final pulumi.Input<bool>? invitationDisableEmailNotification;
-
   /// A custom message to include in the invitation. Amazon Macie adds this message to the standard content that it sends for an invitation.
   final pulumi.Input<String>? invitationMessage;
-
   /// Send an invitation to a member
   final pulumi.Input<bool>? invite;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Specifies the status for the account. To enable Amazon Macie and start all Macie activities for the account, set this value to `ENABLED`. Valid values are `ENABLED` or `PAUSED`.
   final pulumi.Input<String>? status;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -49,67 +42,40 @@ class MemberArgs {
     String? region,
     String? status,
     Map<String, String>? tags,
-  })  : accountId = pulumi.Input.asInput<String>(accountId),
-        email = pulumi.Input.asInput<String>(email),
-        invitationDisableEmailNotification = pulumi.Input.asOptionalInput<bool>(
-            invitationDisableEmailNotification),
-        invitationMessage =
-            pulumi.Input.asOptionalInput<String>(invitationMessage),
-        invite = pulumi.Input.asOptionalInput<bool>(invite),
-        region = pulumi.Input.asOptionalInput<String>(region),
-        status = pulumi.Input.asOptionalInput<String>(status),
-        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) :
+      accountId = pulumi.Input.asInput<String>(accountId),
+      email = pulumi.Input.asInput<String>(email),
+      invitationDisableEmailNotification = pulumi.Input.asOptionalInput<bool>(invitationDisableEmailNotification),
+      invitationMessage = pulumi.Input.asOptionalInput<String>(invitationMessage),
+      invite = pulumi.Input.asOptionalInput<bool>(invite),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      status = pulumi.Input.asOptionalInput<String>(status),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['accountId'] = accountId;
-    map['email'] = email;
-    final invitationDisableEmailNotificationValue =
-        invitationDisableEmailNotification;
-    if (invitationDisableEmailNotificationValue != null) {
-      map['invitationDisableEmailNotification'] =
-          invitationDisableEmailNotificationValue;
-    }
-    final invitationMessageValue = invitationMessage;
-    if (invitationMessageValue != null) {
-      map['invitationMessage'] = invitationMessageValue;
-    }
-    final inviteValue = invite;
-    if (inviteValue != null) {
-      map['invite'] = inviteValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    final statusValue = status;
-    if (statusValue != null) {
-      map['status'] = statusValue;
-    }
-    final tagsValue = tags;
-    if (tagsValue != null) {
-      map['tags'] = tagsValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'accountId': accountId,
+      'email': email,
+      'invitationDisableEmailNotification': ?invitationDisableEmailNotification,
+      'invitationMessage': ?invitationMessage,
+      'invite': ?invite,
+      'region': ?region,
+      'status': ?status,
+      'tags': ?tags,
+    };
   }
 
   factory MemberArgs.fromMap(Map<String, dynamic> map) {
     return MemberArgs(
       accountId: map['accountId'] as String,
       email: map['email'] as String,
-      invitationDisableEmailNotification:
-          map['invitationDisableEmailNotification'] == null
-              ? null
-              : map['invitationDisableEmailNotification'] as bool,
-      invitationMessage: map['invitationMessage'] == null
-          ? null
-          : map['invitationMessage'] as String,
+      invitationDisableEmailNotification: map['invitationDisableEmailNotification'] == null ? null : map['invitationDisableEmailNotification'] as bool,
+      invitationMessage: map['invitationMessage'] == null ? null : map['invitationMessage'] as String,
       invite: map['invite'] == null ? null : map['invite'] as bool,
       region: map['region'] == null ? null : map['region'] as String,
       status: map['status'] == null ? null : map['status'] as String,
-      tags: map['tags'] == null
-          ? null
-          : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

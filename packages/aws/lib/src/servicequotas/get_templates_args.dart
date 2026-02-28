@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTemplatesArgs {
   /// AWS Region to which the quota increases apply.
   final pulumi.Input<String>? awsRegion;
-
   /// AWS Region to which the quota increases apply. Use `aws.getRegion` instead.
   final pulumi.Input<String>? region;
 
@@ -19,20 +18,15 @@ class GetTemplatesArgs {
   GetTemplatesArgs({
     String? awsRegion,
     String? region,
-  })  : awsRegion = pulumi.Input.asOptionalInput<String>(awsRegion),
-        region = pulumi.Input.asOptionalInput<String>(region);
+  }) :
+      awsRegion = pulumi.Input.asOptionalInput<String>(awsRegion),
+      region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final awsRegionValue = awsRegion;
-    if (awsRegionValue != null) {
-      map['awsRegion'] = awsRegionValue;
-    }
-    final regionValue = region;
-    if (regionValue != null) {
-      map['region'] = regionValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'awsRegion': ?awsRegion,
+      'region': ?region,
+    };
   }
 
   factory GetTemplatesArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +36,4 @@ class GetTemplatesArgs {
     );
   }
 }
+

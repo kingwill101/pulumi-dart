@@ -22,22 +22,19 @@ class GetManagementDnsZoneBindingArgs {
     required String managementDnsZoneBindingId,
     required String privateCloudId,
     String? project,
-  })  : location = pulumi.Input.asInput<String>(location),
-        managementDnsZoneBindingId =
-            pulumi.Input.asInput<String>(managementDnsZoneBindingId),
-        privateCloudId = pulumi.Input.asInput<String>(privateCloudId),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      managementDnsZoneBindingId = pulumi.Input.asInput<String>(managementDnsZoneBindingId),
+      privateCloudId = pulumi.Input.asInput<String>(privateCloudId),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['location'] = location;
-    map['managementDnsZoneBindingId'] = managementDnsZoneBindingId;
-    map['privateCloudId'] = privateCloudId;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'location': location,
+      'managementDnsZoneBindingId': managementDnsZoneBindingId,
+      'privateCloudId': privateCloudId,
+      'project': ?project,
+    };
   }
 
   factory GetManagementDnsZoneBindingArgs.fromMap(Map<String, dynamic> map) {
@@ -49,3 +46,4 @@ class GetManagementDnsZoneBindingArgs {
     );
   }
 }
+

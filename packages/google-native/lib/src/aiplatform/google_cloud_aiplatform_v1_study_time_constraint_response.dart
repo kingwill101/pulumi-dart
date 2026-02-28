@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Time-based Constraint for Study
 class GoogleCloudAiplatformV1StudyTimeConstraintResponse {
   /// Compares the wallclock time to this time. Must use UTC timezone.
   final String endTime;
-
   /// Counts the wallclock time passed since the creation of this Study.
   final String maxDuration;
 
@@ -17,17 +17,17 @@ class GoogleCloudAiplatformV1StudyTimeConstraintResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['endTime'] = endTime;
-    map['maxDuration'] = maxDuration;
-    return map;
+    return <String, dynamic>{
+      'endTime': endTime,
+      'maxDuration': maxDuration,
+    };
   }
 
-  factory GoogleCloudAiplatformV1StudyTimeConstraintResponse.fromMap(
-      Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1StudyTimeConstraintResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1StudyTimeConstraintResponse(
       endTime: map['endTime'] as String,
       maxDuration: map['maxDuration'] as String,
     );
   }
 }
+

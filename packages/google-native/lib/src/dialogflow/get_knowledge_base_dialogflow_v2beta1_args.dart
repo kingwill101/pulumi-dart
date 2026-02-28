@@ -19,23 +19,20 @@ class GetKnowledgeBaseDialogflowV2beta1Args {
     required String knowledgeBaseId,
     required String location,
     String? project,
-  })  : knowledgeBaseId = pulumi.Input.asInput<String>(knowledgeBaseId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      knowledgeBaseId = pulumi.Input.asInput<String>(knowledgeBaseId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['knowledgeBaseId'] = knowledgeBaseId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'knowledgeBaseId': knowledgeBaseId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
-  factory GetKnowledgeBaseDialogflowV2beta1Args.fromMap(
-      Map<String, dynamic> map) {
+  factory GetKnowledgeBaseDialogflowV2beta1Args.fromMap(Map<String, dynamic> map) {
     return GetKnowledgeBaseDialogflowV2beta1Args(
       knowledgeBaseId: map['knowledgeBaseId'] as String,
       location: map['location'] as String,
@@ -43,3 +40,4 @@ class GetKnowledgeBaseDialogflowV2beta1Args {
     );
   }
 }
+

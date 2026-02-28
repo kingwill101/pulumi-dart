@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetListenerRuleConditionHttpRequestMethod {
   /// Set of `key`-`value` pairs indicating the query string parameters to match.
   final List<String> values;
@@ -11,15 +12,15 @@ class GetListenerRuleConditionHttpRequestMethod {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['values'] = values;
-    return map;
+    return <String, dynamic>{
+      'values': values,
+    };
   }
 
-  factory GetListenerRuleConditionHttpRequestMethod.fromMap(
-      Map<String, dynamic> map) {
+  factory GetListenerRuleConditionHttpRequestMethod.fromMap(Map<String, dynamic> map) {
     return GetListenerRuleConditionHttpRequestMethod(
       values: (map['values'] as List).cast<String>(),
     );
   }
 }
+

@@ -137,31 +137,22 @@ import 'account_password_policy_args.dart';
 class AccountPasswordPolicy extends pulumi.CustomResource {
   /// Whether to allow users to change their own password
   late final pulumi.Output<bool?> allowUsersToChangePassword;
-
   /// Indicates whether passwords in the account expire. Returns `true` if `max_password_age` contains a value greater than `0`. Returns `false` if it is `0` or _not present_.
   late final pulumi.Output<bool> expirePasswords;
-
   /// Whether users are prevented from setting a new password after their password has expired (i.e., require administrator reset)
   late final pulumi.Output<bool> hardExpiry;
-
   /// The number of days that an user password is valid.
   late final pulumi.Output<int> maxPasswordAge;
-
   /// Minimum length to require for user passwords.
   late final pulumi.Output<int?> minimumPasswordLength;
-
   /// The number of previous passwords that users are prevented from reusing.
   late final pulumi.Output<int> passwordReusePrevention;
-
   /// Whether to require lowercase characters for user passwords.
   late final pulumi.Output<bool> requireLowercaseCharacters;
-
   /// Whether to require numbers for user passwords.
   late final pulumi.Output<bool> requireNumbers;
-
   /// Whether to require symbols for user passwords.
   late final pulumi.Output<bool> requireSymbols;
-
   /// Whether to require uppercase characters for user passwords.
   late final pulumi.Output<bool> requireUppercaseCharacters;
 
@@ -179,19 +170,15 @@ class AccountPasswordPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.allowUsersToChangePassword =
-        registerOutput<bool?>('allowUsersToChangePassword');
+    this.allowUsersToChangePassword = registerOutput<bool?>('allowUsersToChangePassword');
     this.expirePasswords = registerOutput<bool>('expirePasswords');
     this.hardExpiry = registerOutput<bool>('hardExpiry');
     this.maxPasswordAge = registerOutput<int>('maxPasswordAge');
     this.minimumPasswordLength = registerOutput<int?>('minimumPasswordLength');
-    this.passwordReusePrevention =
-        registerOutput<int>('passwordReusePrevention');
-    this.requireLowercaseCharacters =
-        registerOutput<bool>('requireLowercaseCharacters');
+    this.passwordReusePrevention = registerOutput<int>('passwordReusePrevention');
+    this.requireLowercaseCharacters = registerOutput<bool>('requireLowercaseCharacters');
     this.requireNumbers = registerOutput<bool>('requireNumbers');
     this.requireSymbols = registerOutput<bool>('requireSymbols');
-    this.requireUppercaseCharacters =
-        registerOutput<bool>('requireUppercaseCharacters');
+    this.requireUppercaseCharacters = registerOutput<bool>('requireUppercaseCharacters');
   }
 }

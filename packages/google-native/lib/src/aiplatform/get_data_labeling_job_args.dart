@@ -19,19 +19,17 @@ class GetDataLabelingJobArgs {
     required String dataLabelingJobId,
     required String location,
     String? project,
-  })  : dataLabelingJobId = pulumi.Input.asInput<String>(dataLabelingJobId),
-        location = pulumi.Input.asInput<String>(location),
-        project = pulumi.Input.asOptionalInput<String>(project);
+  }) :
+      dataLabelingJobId = pulumi.Input.asInput<String>(dataLabelingJobId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['dataLabelingJobId'] = dataLabelingJobId;
-    map['location'] = location;
-    final projectValue = project;
-    if (projectValue != null) {
-      map['project'] = projectValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'dataLabelingJobId': dataLabelingJobId,
+      'location': location,
+      'project': ?project,
+    };
   }
 
   factory GetDataLabelingJobArgs.fromMap(Map<String, dynamic> map) {
@@ -42,3 +40,4 @@ class GetDataLabelingJobArgs {
     );
   }
 }
+

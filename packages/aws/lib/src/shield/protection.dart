@@ -214,16 +214,12 @@ import 'protection_args.dart';
 class Protection extends pulumi.CustomResource {
   /// The ARN of the Protection.
   late final pulumi.Output<String> arn;
-
   /// A friendly name for the Protection you are creating.
   late final pulumi.Output<String> name;
-
   /// The ARN (Amazon Resource Name) of the resource to be protected.
   late final pulumi.Output<String> resourceArn;
-
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 

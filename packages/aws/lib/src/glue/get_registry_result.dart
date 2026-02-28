@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRegistry.
 class GetRegistryResult {
   /// Amazon Resource Name (ARN) of Glue Registry.
   final String arn;
-
   /// A description of the registry.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -28,13 +27,13 @@ class GetRegistryResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['arn'] = arn;
-    map['description'] = description;
-    map['id'] = id;
-    map['name'] = name;
-    map['region'] = region;
-    return map;
+    return <String, dynamic>{
+      'arn': arn,
+      'description': description,
+      'id': id,
+      'name': name,
+      'region': region,
+    };
   }
 
   factory GetRegistryResult.fromMap(Map<String, dynamic> map) {
@@ -47,3 +46,4 @@ class GetRegistryResult {
     );
   }
 }
+

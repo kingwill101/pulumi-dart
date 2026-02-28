@@ -107,8 +107,7 @@ Future<GetVersionResult> getVersion(
 /// Gets the specified SSL certificate.
 /// [args] Arguments passed to this invoke. {@macro pulumi_appengine_v1alpha_get_authorized_certificate_appengine_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAuthorizedCertificateAppengineV1alphaResult>
-    getAuthorizedCertificateAppengineV1alpha(
+Future<GetAuthorizedCertificateAppengineV1alphaResult> getAuthorizedCertificateAppengineV1alpha(
   GetAuthorizedCertificateAppengineV1alphaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -156,8 +155,7 @@ Future<GetAppAppengineV1betaResult> getAppAppengineV1beta(
 /// Gets the specified SSL certificate.
 /// [args] Arguments passed to this invoke. {@macro pulumi_appengine_v1beta_get_authorized_certificate_appengine_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAuthorizedCertificateAppengineV1betaResult>
-    getAuthorizedCertificateAppengineV1beta(
+Future<GetAuthorizedCertificateAppengineV1betaResult> getAuthorizedCertificateAppengineV1beta(
   GetAuthorizedCertificateAppengineV1betaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

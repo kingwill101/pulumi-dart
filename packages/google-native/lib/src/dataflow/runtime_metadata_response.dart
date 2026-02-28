@@ -8,7 +8,6 @@ import 'sdkinfo_response.dart';
 class RuntimeMetadataResponse {
   /// The parameters for the template.
   final List<ParameterMetadataResponse> parameters;
-
   /// SDK Info for the template.
   final SDKInfoResponse sdkInfo;
 
@@ -21,21 +20,17 @@ class RuntimeMetadataResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['parameters'] = pulumi.Input.encodeList<ParameterMetadataResponse,
-        Map<String, dynamic>>(parameters, (value) => value.toMap());
-    map['sdkInfo'] = sdkInfo.toMap();
-    return map;
+    return <String, dynamic>{
+      'parameters': pulumi.Input.encodeList<ParameterMetadataResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
+      'sdkInfo': sdkInfo.toMap(),
+    };
   }
 
   factory RuntimeMetadataResponse.fromMap(Map<String, dynamic> map) {
     return RuntimeMetadataResponse(
-      parameters: pulumi.Input.decodeList<ParameterMetadataResponse>(
-          map['parameters'],
-          (value) => ParameterMetadataResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      sdkInfo: SDKInfoResponse.fromMap(
-          (map['sdkInfo'] as Map).cast<String, dynamic>()),
+      parameters: pulumi.Input.decodeList<ParameterMetadataResponse>(map['parameters'], (value) => ParameterMetadataResponse.fromMap((value as Map).cast<String, dynamic>())),
+      sdkInfo: SDKInfoResponse.fromMap((map['sdkInfo'] as Map).cast<String, dynamic>()),
     );
   }
 }
+

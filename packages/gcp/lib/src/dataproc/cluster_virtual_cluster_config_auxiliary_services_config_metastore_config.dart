@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig {
   /// Resource name of an existing Dataproc Metastore service.
   final String? dataprocMetastoreService;
@@ -11,20 +12,15 @@ class ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final dataprocMetastoreServiceValue = dataprocMetastoreService;
-    if (dataprocMetastoreServiceValue != null) {
-      map['dataprocMetastoreService'] = dataprocMetastoreServiceValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'dataprocMetastoreService': ?dataprocMetastoreService,
+    };
   }
 
-  factory ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig.fromMap(
-      Map<String, dynamic> map) {
+  factory ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig.fromMap(Map<String, dynamic> map) {
     return ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig(
-      dataprocMetastoreService: map['dataprocMetastoreService'] == null
-          ? null
-          : map['dataprocMetastoreService'] as String,
+      dataprocMetastoreService: map['dataprocMetastoreService'] == null ? null : map['dataprocMetastoreService'] as String,
     );
   }
 }
+

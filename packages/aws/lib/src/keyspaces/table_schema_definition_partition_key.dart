@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class TableSchemaDefinitionPartitionKey {
   /// The name of the partition key column.
   final String name;
@@ -11,9 +12,9 @@ class TableSchemaDefinitionPartitionKey {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    return map;
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory TableSchemaDefinitionPartitionKey.fromMap(Map<String, dynamic> map) {
@@ -22,3 +23,4 @@ class TableSchemaDefinitionPartitionKey {
     );
   }
 }
+

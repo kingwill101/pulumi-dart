@@ -5,7 +5,6 @@ import 'table_reference_response.dart';
 class SnapshotDefinitionResponse {
   /// [Required] Reference describing the ID of the table that was snapshot.
   final TableReferenceResponse baseTableReference;
-
   /// [Required] The time at which the base table was snapshot. This value is reported in the JSON response using RFC3339 format.
   final String snapshotTime;
 
@@ -18,17 +17,17 @@ class SnapshotDefinitionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['baseTableReference'] = baseTableReference.toMap();
-    map['snapshotTime'] = snapshotTime;
-    return map;
+    return <String, dynamic>{
+      'baseTableReference': baseTableReference.toMap(),
+      'snapshotTime': snapshotTime,
+    };
   }
 
   factory SnapshotDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return SnapshotDefinitionResponse(
-      baseTableReference: TableReferenceResponse.fromMap(
-          (map['baseTableReference'] as Map).cast<String, dynamic>()),
+      baseTableReference: TableReferenceResponse.fromMap((map['baseTableReference'] as Map).cast<String, dynamic>()),
       snapshotTime: map['snapshotTime'] as String,
     );
   }
 }
+

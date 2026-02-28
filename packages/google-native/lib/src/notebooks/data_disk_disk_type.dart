@@ -18,3 +18,4 @@ enum DataDiskDiskType {
     throw ArgumentError('Unknown DataDiskDiskType value: $value');
   }
 }
+

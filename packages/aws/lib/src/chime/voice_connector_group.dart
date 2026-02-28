@@ -238,10 +238,8 @@ import 'voice_connector_group_connector.dart';
 class VoiceConnectorGroup extends pulumi.CustomResource {
   /// The Amazon Chime Voice Connectors to route inbound calls to.
   late final pulumi.Output<List<VoiceConnectorGroupConnector>?> connectors;
-
   /// The name of the Amazon Chime Voice Connector group.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -259,8 +257,7 @@ class VoiceConnectorGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.connectors =
-        registerOutput<List<VoiceConnectorGroupConnector>?>('connectors');
+    this.connectors = registerOutput<List<VoiceConnectorGroupConnector>?>('connectors');
     this.name = registerOutput<String>('name');
     this.region = registerOutput<String>('region');
   }

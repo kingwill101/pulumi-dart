@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class ServiceTemplateServiceMesh {
   /// The Mesh resource name. For more information see https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.meshes#resource:-mesh.
   final String? mesh;
@@ -11,12 +12,9 @@ class ServiceTemplateServiceMesh {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final meshValue = mesh;
-    if (meshValue != null) {
-      map['mesh'] = meshValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'mesh': ?mesh,
+    };
   }
 
   factory ServiceTemplateServiceMesh.fromMap(Map<String, dynamic> map) {
@@ -25,3 +23,4 @@ class ServiceTemplateServiceMesh {
     );
   }
 }
+

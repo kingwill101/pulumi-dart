@@ -6,22 +6,18 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce {
   /// Optional arguments to pass to the source during
   /// execution.
   final List<String>? args;
-
   /// A remote or local file. Structure is
   /// documented below.
   final OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile? file;
-
   /// The script interpreter to use. Possible values
   /// are: `INTERPRETER_UNSPECIFIED`, `NONE`, `SHELL`, `POWERSHELL`.
   final String interpreter;
-
   /// Only recorded for enforce Exec. Path to an
   /// output file (that is created by this Exec) whose content will be recorded in
   /// OSPolicyResourceCompliance after a successful run. Absence or failure to
   /// read this file will result in this ExecResource being non-compliant. Output
   /// file size is limited to 100K bytes.
   final String? outputFilePath;
-
   /// An inline script. The size of the script is limited to
   /// 1024 characters.
   final String? script;
@@ -41,40 +37,23 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final argsValue = args;
-    if (argsValue != null) {
-      map['args'] = argsValue;
-    }
-    final fileValue = file;
-    if (fileValue != null) {
-      map['file'] = fileValue.toMap();
-    }
-    map['interpreter'] = interpreter;
-    final outputFilePathValue = outputFilePath;
-    if (outputFilePathValue != null) {
-      map['outputFilePath'] = outputFilePathValue;
-    }
-    final scriptValue = script;
-    if (scriptValue != null) {
-      map['script'] = scriptValue;
-    }
-    return map;
+    return <String, dynamic>{
+      'args': ?args,
+      'file': ?file == null ? null : file!.toMap(),
+      'interpreter': interpreter,
+      'outputFilePath': ?outputFilePath,
+      'script': ?script,
+    };
   }
 
-  factory OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce.fromMap(
-      Map<String, dynamic> map) {
+  factory OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce(
       args: map['args'] == null ? null : (map['args'] as List).cast<String>(),
-      file: map['file'] == null
-          ? null
-          : OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile
-              .fromMap((map['file'] as Map).cast<String, dynamic>()),
+      file: map['file'] == null ? null : OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile.fromMap((map['file'] as Map).cast<String, dynamic>()),
       interpreter: map['interpreter'] as String,
-      outputFilePath: map['outputFilePath'] == null
-          ? null
-          : map['outputFilePath'] as String,
+      outputFilePath: map['outputFilePath'] == null ? null : map['outputFilePath'] as String,
       script: map['script'] == null ? null : map['script'] as String,
     );
   }
 }
+

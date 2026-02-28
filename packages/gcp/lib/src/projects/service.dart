@@ -123,18 +123,15 @@ class Service extends pulumi.CustomResource {
   /// If `true`, the usage of the service to be disabled will be checked and an error
   /// will be returned if the service to be disabled has usage in last 30 days.
   late final pulumi.Output<bool?> checkIfServiceHasUsageOnDestroy;
-
   /// If `true`, services that are enabled
   /// and which depend on this service should also be disabled when this service is
   /// destroyed. If `false` or unset, an error will be generated if any enabled
   /// services depend on this service when destroying it.
   late final pulumi.Output<bool?> disableDependentServices;
   late final pulumi.Output<bool?> disableOnDestroy;
-
   /// The project ID. If not provided, the provider project
   /// is used.
   late final pulumi.Output<String> project;
-
   /// The service to enable.
   late final pulumi.Output<String> service;
 
@@ -152,10 +149,8 @@ class Service extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.checkIfServiceHasUsageOnDestroy =
-        registerOutput<bool?>('checkIfServiceHasUsageOnDestroy');
-    this.disableDependentServices =
-        registerOutput<bool?>('disableDependentServices');
+    this.checkIfServiceHasUsageOnDestroy = registerOutput<bool?>('checkIfServiceHasUsageOnDestroy');
+    this.disableDependentServices = registerOutput<bool?>('disableDependentServices');
     this.disableOnDestroy = registerOutput<bool?>('disableOnDestroy');
     this.project = registerOutput<String>('project');
     this.service = registerOutput<String>('service');

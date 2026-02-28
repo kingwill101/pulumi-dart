@@ -123,14 +123,11 @@ import 'key_value_store_timeouts.dart';
 class KeyValueStore extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) identifying your CloudFront KeyValueStore.
   late final pulumi.Output<String> arn;
-
   /// Comment.
   late final pulumi.Output<String?> comment;
-
   /// ETag hash of the KeyValueStore.
   late final pulumi.Output<String> etag;
   late final pulumi.Output<String> lastModifiedTime;
-
   /// Unique name for your CloudFront KeyValueStore.
   ///
   /// The following arguments are optional:

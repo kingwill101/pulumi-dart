@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 class GetImageImagePermission {
   /// Boolean indicating if the image can be used for a fleet.
   final bool allowFleet;
-
   /// indicated whether the image can be used for an image builder.
   final bool allowImageBuilder;
 
@@ -16,10 +16,10 @@ class GetImageImagePermission {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['allowFleet'] = allowFleet;
-    map['allowImageBuilder'] = allowImageBuilder;
-    return map;
+    return <String, dynamic>{
+      'allowFleet': allowFleet,
+      'allowImageBuilder': allowImageBuilder,
+    };
   }
 
   factory GetImageImagePermission.fromMap(Map<String, dynamic> map) {
@@ -29,3 +29,4 @@ class GetImageImagePermission {
     );
   }
 }
+
