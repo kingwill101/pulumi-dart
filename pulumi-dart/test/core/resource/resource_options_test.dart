@@ -370,6 +370,56 @@ void main() {
       expect(original.hooks!.beforeCreate, hasLength(1));
       expect(original.hooks!.beforeCreate.single, same(originalHook));
     });
+
+    test('hideDiffs arrays append', () {
+      final merged = const ResourceOptions(
+        hideDiffs: ['a', 'b'],
+      ).merge(const ResourceOptions(hideDiffs: ['b', 'c']));
+
+      expect(merged.hideDiffs, equals(['a', 'b', 'b', 'c']));
+    });
+
+    test('replaceWith arrays append', () {
+      final merged = const ResourceOptions(
+        replaceWith: ['a', 'b'],
+      ).merge(const ResourceOptions(replaceWith: ['b', 'c']));
+
+      expect(merged.replaceWith, equals(['a', 'b', 'b', 'c']));
+    });
+
+    test('envVarMappings merge with later values overriding earlier ones', () {
+      final merged =
+          ResourceOptions(
+            envVarMappings: {'key1': 'value1', 'key2': 'value2'},
+          ).merge(
+            ResourceOptions(
+              envVarMappings: {'key2': 'updated', 'key3': 'value3'},
+            ),
+          );
+
+      expect(
+        merged.envVarMappings,
+        equals({'key1': 'value1', 'key2': 'updated', 'key3': 'value3'}),
+      );
+    });
+
+    test('urn field follows last-wins semantics', () {
+      final merged = ResourceOptions(
+        urn: Input.fromValue('urn:first'),
+      ).merge(ResourceOptions(urn: Input.fromValue('urn:second')));
+
+      expect(merged.urn, isNotNull);
+    });
+
+    test('id and urn are independent fields', () {
+      final merged = ResourceOptions(
+        id: Input.fromValue('resource-id'),
+        urn: Input.fromValue('urn:pulumi:stack::project::type::name'),
+      ).merge(const ResourceOptions());
+
+      expect(merged.id, isNotNull);
+      expect(merged.urn, isNotNull);
+    });
   });
 
   group('provider list merge semantics', () {

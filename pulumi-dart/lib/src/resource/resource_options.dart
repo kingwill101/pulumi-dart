@@ -60,6 +60,18 @@ class ResourceOptions {
   /// Existing resource ID for read/import-style operations.
   final Input<String>? id;
 
+  /// Existing resource URN for read-style operations.
+  final Input<String>? urn;
+
+  /// Property names to hide from diff output.
+  final List<String>? hideDiffs;
+
+  /// Property names that trigger replacement when changed.
+  final List<String>? replaceWith;
+
+  /// Environment variable mappings for provider configuration.
+  final Map<String, String>? envVarMappings;
+
   /// Parent resource used for hierarchy/provider inheritance.
   final Resource? parent;
 
@@ -119,6 +131,10 @@ class ResourceOptions {
 
   const ResourceOptions({
     this.id,
+    this.urn,
+    this.hideDiffs,
+    this.replaceWith,
+    this.envVarMappings,
     this.parent,
     this.dependsOn,
     this.protect,
@@ -157,6 +173,13 @@ class ResourceOptions {
 
     return ResourceOptions(
       id: options.id ?? id,
+      urn: options.urn ?? urn,
+      hideDiffs: [...?hideDiffs, ...?options.hideDiffs],
+      replaceWith: [...?replaceWith, ...?options.replaceWith],
+      envVarMappings: mergeEnvVarMappings(
+        envVarMappings,
+        options.envVarMappings,
+      ),
       parent: options.parent ?? parent,
       dependsOn: [...?dependsOn, ...?options.dependsOn],
       protect: options.protect ?? protect,
@@ -228,10 +251,36 @@ List<ProviderResource> mergeProviders(
   return byPackage.values.toList(growable: false);
 }
 
+/// Merges environment variable mappings, with later values overriding earlier ones.
+Map<String, String>? mergeEnvVarMappings(
+  Map<String, String>? mappings1,
+  Map<String, String>? mappings2,
+) {
+  if (mappings1 == null && mappings2 == null) {
+    return null;
+  }
+  final result = <String, String>{};
+  if (mappings1 != null) {
+    result.addAll(mappings1);
+  }
+  if (mappings2 != null) {
+    result.addAll(mappings2);
+  }
+  return result;
+}
+
 /// Creates a defensive copy of [options].
 ResourceOptions createComponentResourceOptionsCopy(ResourceOptions options) {
   return ResourceOptions(
     id: options.id,
+    urn: options.urn,
+    hideDiffs: options.hideDiffs != null ? List.from(options.hideDiffs!) : null,
+    replaceWith: options.replaceWith != null
+        ? List.from(options.replaceWith!)
+        : null,
+    envVarMappings: options.envVarMappings != null
+        ? Map.from(options.envVarMappings!)
+        : null,
     parent: options.parent,
     dependsOn: options.dependsOn != null ? List.from(options.dependsOn!) : null,
     protect: options.protect,

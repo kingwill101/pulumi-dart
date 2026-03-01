@@ -69,6 +69,10 @@ class ComponentResource extends Resource {
 class ComponentResourceOptions extends ResourceOptions {
   ComponentResourceOptions({
     super.id,
+    super.urn,
+    super.hideDiffs,
+    super.replaceWith,
+    super.envVarMappings,
     super.parent,
     super.dependsOn,
     super.protect,

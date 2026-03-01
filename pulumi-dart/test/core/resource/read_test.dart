@@ -161,5 +161,49 @@ void main() {
     test('id option is rejected for non-custom resources', () {
       expect(() => _ComponentWithId('bad-component'), throwsArgumentError);
     });
+
+    test('urn option is rejected for non-custom resources', () {
+      expect(
+        () => ComponentResource(
+          'test:index:WithUrnComponent',
+          'bad-urn-component',
+          const {},
+          ComponentResourceOptions(
+            urn: Input.fromValue(
+              'urn:pulumi:stack::project::test:index:Resource::name',
+            ),
+          ),
+        ),
+        throwsArgumentError,
+      );
+    });
+
+    test(
+      'custom resources with urn are read via monitor.readResource',
+      () async {
+        final foo = _ReadCustomResource(
+          'foo-urn',
+          {'a': Input.fromValue('bar')},
+          options: CustomResourceOptions(
+            urn: Input.fromValue(
+              'urn:pulumi:stack::project::test:read:resource::foo-urn',
+            ),
+            version: '0.17.9',
+          ),
+        );
+
+        await deployment.registerOutputs();
+
+        expect(monitor.readRequests, hasLength(1));
+
+        final readRequest = monitor.readRequests.first;
+        expect(readRequest.type, equals('test:read:resource'));
+        expect(
+          readRequest.id,
+          equals('urn:pulumi:stack::project::test:read:resource::foo-urn'),
+        );
+        expect(readRequest.version, equals('0.17.9'));
+      },
+    );
   });
 }

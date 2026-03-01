@@ -490,6 +490,12 @@ class CallbackServer implements ICallbackServer {
             ? null
             : List<String>.from(protoOpts.replaceOnChanges),
         replacementTrigger: replacementTrigger,
+        hideDiffs: protoOpts.hideDiff.isEmpty
+            ? null
+            : List<String>.from(protoOpts.hideDiff),
+        replaceWith: protoOpts.replaceWith.isEmpty
+            ? null
+            : List<String>.from(protoOpts.replaceWith),
       );
     }
 
@@ -524,6 +530,12 @@ class CallbackServer implements ICallbackServer {
           ? null
           : List<String>.from(protoOpts.replaceOnChanges),
       replacementTrigger: replacementTrigger,
+      hideDiffs: protoOpts.hideDiff.isEmpty
+          ? null
+          : List<String>.from(protoOpts.hideDiff),
+      replaceWith: protoOpts.replaceWith.isEmpty
+          ? null
+          : List<String>.from(protoOpts.replaceWith),
     );
   }
 
@@ -600,6 +612,17 @@ class CallbackServer implements ICallbackServer {
     }
     if (options.additionalSecretOutputs != null) {
       proto.additionalSecretOutputs.addAll(options.additionalSecretOutputs!);
+    }
+    if (options.hideDiffs != null) {
+      proto.hideDiff.addAll(options.hideDiffs!);
+    }
+    if (options.replaceWith != null) {
+      proto.replaceWith.addAll(options.replaceWith!);
+    }
+    if (options.envVarMappings != null) {
+      for (final entry in options.envVarMappings!.entries) {
+        proto.providers[entry.key] = entry.value;
+      }
     }
     for (final provider in options.providers) {
       final providerRef = await ProviderResource.register(provider);

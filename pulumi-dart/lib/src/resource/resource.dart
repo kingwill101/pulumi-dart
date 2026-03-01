@@ -104,6 +104,11 @@ abstract class Resource {
         'Cannot read an existing resource unless it has a custom provider',
       );
     }
+    if (options.urn != null && !custom) {
+      throw ArgumentError(
+        'Cannot read an existing resource unless it has a custom provider',
+      );
+    }
 
     // Initialize all Output properties
     completionSources = OutputCompletionSource.initializeOutputs(this);
@@ -514,6 +519,10 @@ ResourceOptions _copyResourceOptionsWithProvider(
 ) {
   return ResourceOptions(
     id: options.id,
+    urn: options.urn,
+    hideDiffs: options.hideDiffs,
+    replaceWith: options.replaceWith,
+    envVarMappings: options.envVarMappings,
     parent: options.parent,
     dependsOn: options.dependsOn,
     protect: options.protect,

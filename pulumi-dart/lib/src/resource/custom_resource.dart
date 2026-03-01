@@ -15,6 +15,10 @@ import 'resource_transformation.dart';
 class CustomResourceOptions extends ResourceOptions {
   CustomResourceOptions({
     super.id,
+    super.urn,
+    super.hideDiffs,
+    super.replaceWith,
+    super.envVarMappings,
     super.parent,
     super.dependsOn,
     super.protect,

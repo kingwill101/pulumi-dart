@@ -418,7 +418,7 @@ class DeploymentImpl extends Deployment
     models.RegisterPackageRequest? registerPackageRequest,
   }) async {
     try {
-      if (resource.isCustom && opts.id != null) {
+      if (resource.isCustom && (opts.id != null || opts.urn != null)) {
         await _readResource(
           resource: resource as CustomResource,
           args: args,
@@ -666,12 +666,31 @@ class DeploymentImpl extends Deployment
       );
     }
 
-    final idData = await opts.id!.toOutput().getData();
-    final readId = idData.value;
-    if (!idData.isKnown || readId == null || readId.isEmpty) {
+    if (opts.id == null && opts.urn == null) {
       throw ArgumentError(
-        'Cannot read resource "${resource.getResourceName()}" with an unknown or empty id.',
+        'Cannot read resource "${resource.getResourceName()}" without an id or urn.',
       );
+    }
+
+    late final String readId;
+    if (opts.id != null) {
+      final idData = await opts.id!.toOutput().getData();
+      final id = idData.value;
+      if (!idData.isKnown || id == null || id.isEmpty) {
+        throw ArgumentError(
+          'Cannot read resource "${resource.getResourceName()}" with an unknown or empty id.',
+        );
+      }
+      readId = id;
+    } else {
+      final urnData = await opts.urn!.toOutput().getData();
+      final urn = urnData.value;
+      if (!urnData.isKnown || urn == null || urn.isEmpty) {
+        throw ArgumentError(
+          'Cannot read resource "${resource.getResourceName()}" with an unknown or empty urn.',
+        );
+      }
+      readId = urn;
     }
 
     final request = ReadResourceRequest()
