@@ -954,6 +954,9 @@ void main() {
         expect(result.events.first.kind, equals('summaryEvent'));
         expect(result.events[1].sequence, equals(2));
         expect(result.events[1].kind, equals('resourcePreEvent'));
+        expect(result.summaryEvent, isNotNull);
+        expect(result.summaryEvent?.resourceChanges['create'], equals(2));
+        expect(result.summaryEvent?.resourceChanges['same'], equals(1));
         expect(result.changeSummary['create'], equals(2));
         expect(result.changeSummary['same'], equals(1));
         expect(observedEvents, hasLength(2));
@@ -1009,6 +1012,8 @@ void main() {
         final previewRefresh = await stack.previewRefreshResult();
         final previewDestroy = await stack.previewDestroyResult();
 
+        expect(previewRefresh.summaryEvent, isNotNull);
+        expect(previewDestroy.summaryEvent, isNotNull);
         expect(previewRefresh.changeSummary['same'], equals(3));
         expect(previewDestroy.changeSummary['delete'], equals(4));
         expect(

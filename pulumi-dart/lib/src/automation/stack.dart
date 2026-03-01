@@ -257,10 +257,12 @@ class Stack {
       captureEvents: captureEvents,
       onEvent: onEvent,
     );
+    final summaryEvent = _extractLatestSummaryEvent(events);
     final changeSummary = _extractChangeSummary(events);
     return AutomationPreviewResult(
       commandResult: result,
       events: events,
+      summaryEvent: summaryEvent,
       changeSummary: changeSummary,
     );
   }
@@ -285,10 +287,12 @@ class Stack {
       captureEvents: captureEvents,
       onEvent: onEvent,
     );
+    final summaryEvent = _extractLatestSummaryEvent(events);
     final changeSummary = _extractChangeSummary(events);
     return AutomationPreviewResult(
       commandResult: result,
       events: events,
+      summaryEvent: summaryEvent,
       changeSummary: changeSummary,
     );
   }
@@ -313,10 +317,12 @@ class Stack {
       captureEvents: captureEvents,
       onEvent: onEvent,
     );
+    final summaryEvent = _extractLatestSummaryEvent(events);
     final changeSummary = _extractChangeSummary(events);
     return AutomationPreviewResult(
       commandResult: result,
       events: events,
+      summaryEvent: summaryEvent,
       changeSummary: changeSummary,
     );
   }
@@ -604,32 +610,24 @@ class Stack {
 
   AutomationOpMap _extractChangeSummary(List<AutomationEngineEvent> events) {
     for (final event in events.reversed) {
-      final summaryEvent = event.raw['summaryEvent'];
-      if (summaryEvent is! Map) {
+      final summaryEvent = event.summaryEvent;
+      if (summaryEvent == null) {
         continue;
       }
-      final resourceChanges = summaryEvent['resourceChanges'];
-      if (resourceChanges is! Map) {
-        return const <String, int>{};
-      }
-      final parsed = <String, int>{};
-      for (final entry in resourceChanges.entries) {
-        final value = entry.value;
-        if (value is int) {
-          parsed['${entry.key}'] = value;
-          continue;
-        }
-        if (value is num) {
-          parsed['${entry.key}'] = value.toInt();
-          continue;
-        }
-        final asInt = int.tryParse('$value');
-        if (asInt != null) {
-          parsed['${entry.key}'] = asInt;
-        }
-      }
-      return parsed;
+      return summaryEvent.resourceChanges;
     }
     return const <String, int>{};
+  }
+
+  AutomationSummaryEvent? _extractLatestSummaryEvent(
+    List<AutomationEngineEvent> events,
+  ) {
+    for (final event in events.reversed) {
+      final summaryEvent = event.summaryEvent;
+      if (summaryEvent != null) {
+        return summaryEvent;
+      }
+    }
+    return null;
   }
 }

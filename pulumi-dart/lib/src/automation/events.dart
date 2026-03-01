@@ -83,6 +83,71 @@ class PolicyEvent {
   }
 }
 
+/// Summary event metadata emitted at the end of preview-style operations.
+class AutomationSummaryEvent {
+  const AutomationSummaryEvent({
+    required this.maybeCorrupt,
+    required this.durationSeconds,
+    required this.resourceChanges,
+    required this.policyPacks,
+    required this.raw,
+  });
+
+  factory AutomationSummaryEvent.fromJson(Map<String, dynamic> json) {
+    final resourceChanges = <String, int>{};
+    final rawResourceChanges = json['resourceChanges'];
+    if (rawResourceChanges is Map) {
+      for (final entry in rawResourceChanges.entries) {
+        final value = entry.value;
+        if (value is int) {
+          resourceChanges['${entry.key}'] = value;
+          continue;
+        }
+        if (value is num) {
+          resourceChanges['${entry.key}'] = value.toInt();
+          continue;
+        }
+        final parsed = int.tryParse('$value');
+        if (parsed != null) {
+          resourceChanges['${entry.key}'] = parsed;
+        }
+      }
+    }
+
+    final policyPacks = <String, String>{};
+    final rawPolicyPacks = json['PolicyPacks'] ?? json['policyPacks'];
+    if (rawPolicyPacks is Map) {
+      for (final entry in rawPolicyPacks.entries) {
+        policyPacks['${entry.key}'] = '${entry.value}';
+      }
+    }
+
+    int durationSeconds = 0;
+    final rawDuration = json['durationSeconds'];
+    if (rawDuration is int) {
+      durationSeconds = rawDuration;
+    } else if (rawDuration is num) {
+      durationSeconds = rawDuration.toInt();
+    } else if (rawDuration != null) {
+      durationSeconds = int.tryParse('$rawDuration') ?? 0;
+    }
+
+    return AutomationSummaryEvent(
+      maybeCorrupt: json['maybeCorrupt'] == true,
+      durationSeconds: durationSeconds,
+      resourceChanges: resourceChanges,
+      policyPacks: policyPacks,
+      raw: json,
+    );
+  }
+
+  final bool maybeCorrupt;
+  final int durationSeconds;
+  final Map<String, int> resourceChanges;
+  final Map<String, String> policyPacks;
+  final Map<String, dynamic> raw;
+}
+
 /// Pulumi engine event emitted through `--event-log`.
 class AutomationEngineEvent {
   const AutomationEngineEvent({required this.raw});
@@ -123,5 +188,19 @@ class AutomationEngineEvent {
       }
     }
     return 'unknown';
+  }
+
+  /// Parsed summary event when present.
+  AutomationSummaryEvent? get summaryEvent {
+    final summary = raw['summaryEvent'];
+    if (summary is Map<String, dynamic>) {
+      return AutomationSummaryEvent.fromJson(summary);
+    }
+    if (summary is Map) {
+      return AutomationSummaryEvent.fromJson(
+        summary.map((key, value) => MapEntry('$key', value)),
+      );
+    }
+    return null;
   }
 }

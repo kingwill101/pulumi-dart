@@ -139,9 +139,11 @@ class AutomationPreviewResult extends AutomationOperationResult {
     required super.commandResult,
     super.events = const <AutomationEngineEvent>[],
     this.changeSummary = const <String, int>{},
+    this.summaryEvent,
   });
 
   final AutomationOpMap changeSummary;
+  final AutomationSummaryEvent? summaryEvent;
 }
 
 /// Result for `pulumi up`.
