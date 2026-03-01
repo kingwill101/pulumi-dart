@@ -135,8 +135,15 @@ class AutomationUpdateSummary {
   });
 
   factory AutomationUpdateSummary.fromJson(Map<String, dynamic> json) {
-    DateTime? parseDate(String key) {
-      final value = json[key];
+    DateTime? parseDate(List<String> keys) {
+      dynamic value;
+      for (final key in keys) {
+        if (!json.containsKey(key)) {
+          continue;
+        }
+        value = json[key];
+        break;
+      }
       if (value == null) {
         return null;
       }
@@ -144,7 +151,7 @@ class AutomationUpdateSummary {
     }
 
     final environment = <String, String>{};
-    final rawEnvironment = json['environment'];
+    final rawEnvironment = json['environment'] ?? json['Environment'];
     if (rawEnvironment is Map) {
       for (final entry in rawEnvironment.entries) {
         environment['${entry.key}'] = '${entry.value}';
@@ -152,7 +159,7 @@ class AutomationUpdateSummary {
     }
 
     final config = <String, AutomationConfigValue>{};
-    final rawConfig = json['config'];
+    final rawConfig = json['config'] ?? json['Config'];
     if (rawConfig is Map) {
       for (final entry in rawConfig.entries) {
         final key = '${entry.key}';
@@ -173,7 +180,8 @@ class AutomationUpdateSummary {
     }
 
     final resourceChanges = <String, int>{};
-    final rawResourceChanges = json['resourceChanges'];
+    final rawResourceChanges =
+        json['resourceChanges'] ?? json['ResourceChanges'];
     if (rawResourceChanges is Map) {
       for (final entry in rawResourceChanges.entries) {
         final value = entry.value;
@@ -193,7 +201,7 @@ class AutomationUpdateSummary {
     }
 
     int? version;
-    final rawVersion = json['version'];
+    final rawVersion = json['version'] ?? json['Version'];
     if (rawVersion is int) {
       version = rawVersion;
     } else if (rawVersion is num) {
@@ -230,13 +238,19 @@ class AutomationUpdateSummary {
     }
 
     return AutomationUpdateSummary(
-      kind: json['kind'] == null ? null : '${json['kind']}',
-      startTime: parseDate('startTime'),
-      endTime: parseDate('endTime'),
-      message: json['message'] == null ? null : '${json['message']}',
+      kind: (json['kind'] ?? json['Kind']) == null
+          ? null
+          : '${json['kind'] ?? json['Kind']}',
+      startTime: parseDate(<String>['startTime', 'StartTime']),
+      endTime: parseDate(<String>['endTime', 'EndTime']),
+      message: (json['message'] ?? json['Message']) == null
+          ? null
+          : '${json['message'] ?? json['Message']}',
       environment: environment,
       config: config,
-      result: json['result'] == null ? null : '${json['result']}',
+      result: (json['result'] ?? json['Result']) == null
+          ? null
+          : '${json['result'] ?? json['Result']}',
       version: version,
       deployment: deployment,
       deploymentMap: deploymentMap,

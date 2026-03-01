@@ -71,5 +71,32 @@ void main() {
       expect(summary.deployment, equals('not-json'));
       expect(summary.deploymentMap, isNull);
     });
+
+    test('accepts PascalCase summary fields for compatibility', () {
+      final summary = AutomationUpdateSummary.fromJson(<String, dynamic>{
+        'Kind': 'update',
+        'StartTime': '2025-01-01T00:00:00Z',
+        'EndTime': '2025-01-01T00:00:10Z',
+        'Message': 'compat',
+        'Environment': <String, dynamic>{'PULUMI_HOME': '/tmp'},
+        'Config': <String, dynamic>{
+          'proj:key': <String, dynamic>{'value': 'v', 'secret': false},
+        },
+        'Result': 'succeeded',
+        'Version': 7,
+        'ResourceChanges': <String, dynamic>{'create': '1'},
+      });
+
+      expect(summary.kind, equals('update'));
+      expect(summary.result, equals('succeeded'));
+      expect(summary.version, equals(7));
+      expect(summary.message, equals('compat'));
+      expect(summary.environment['PULUMI_HOME'], equals('/tmp'));
+      expect(summary.config['proj:key']?.value, equals('v'));
+      expect(summary.resourceChanges['create'], equals(1));
+      expect(summary.duration, equals(const Duration(seconds: 10)));
+      expect(summary.parsedKind, equals(AutomationUpdateKind.update));
+      expect(summary.parsedResult, equals(AutomationUpdateResult.succeeded));
+    });
   });
 }
