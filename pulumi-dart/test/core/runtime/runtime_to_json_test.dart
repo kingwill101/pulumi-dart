@@ -97,5 +97,20 @@ void main() {
         equals('{"network":{"relaxedLocking":false}}'),
       );
     });
+
+    test('unknown outputs serialize to JSON null', () async {
+      final unknown = Output.createUnknown<int>();
+      expect(await runtimeToJson(unknown), equals('null'));
+    });
+
+    test('unknown nested map/list values propagate unknown result', () async {
+      final unknown = Output.createUnknown<String>();
+
+      expect(
+        await runtimeToJson({'known': 1, 'unknown': unknown}),
+        equals('null'),
+      );
+      expect(await runtimeToJson([1, unknown, 3]), equals('null'));
+    });
   });
 }

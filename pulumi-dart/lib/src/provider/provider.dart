@@ -172,22 +172,34 @@ abstract class Provider {
     Inputs inputs,
     ComponentResourceOptions options,
   ) async {
-    throw Exception('unknown resource type $type');
+    throw UnsupportedProviderOperationError(
+      operation: 'construct',
+      reason: 'unknown resource type $type',
+    );
   }
 
   /// Calls a provider method tied to component resources.
   Future<CallResult> call(String token, Inputs inputs) async {
-    throw Exception('unknown method $token');
+    throw UnsupportedProviderOperationError(
+      operation: 'call',
+      reason: 'unknown method $token',
+    );
   }
 
   /// Calls an invoke token exposed by the provider.
   Future<InvokeResult> invoke(String token, Map<String, dynamic> args) async {
-    throw Exception('unknown function $token');
+    throw UnsupportedProviderOperationError(
+      operation: 'invoke',
+      reason: 'unknown function $token',
+    );
   }
 
   /// Parameterizes the provider with CLI-style arguments.
   Future<ParameterizeResult> parameterizeArgs(List<String> args) async {
-    throw Exception('parameterizeArgs not implemented');
+    throw const UnsupportedProviderOperationError(
+      operation: 'parameterizeArgs',
+      reason: 'provider does not implement argument parameterization',
+    );
   }
 
   /// Parameterizes the provider with embedded parameter payloads.
@@ -196,8 +208,30 @@ abstract class Provider {
     String version,
     String value,
   ) async {
-    throw Exception('parameterizeValue not implemented');
+    throw const UnsupportedProviderOperationError(
+      operation: 'parameterizeValue',
+      reason: 'provider does not implement value parameterization',
+    );
   }
+}
+
+/// Indicates that a provider operation is intentionally unsupported.
+class UnsupportedProviderOperationError implements Exception {
+  /// Creates an unsupported-provider-operation error.
+  const UnsupportedProviderOperationError({
+    required this.operation,
+    required this.reason,
+  });
+
+  /// Provider API operation name (for example `invoke` or `construct`).
+  final String operation;
+
+  /// Human-readable explanation for why the operation is unsupported.
+  final String reason;
+
+  @override
+  String toString() =>
+      'provider operation "$operation" is unsupported: $reason';
 }
 
 /// Thrown when a single input property is invalid.

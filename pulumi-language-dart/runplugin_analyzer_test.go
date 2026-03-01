@@ -146,6 +146,120 @@ func TestRunPluginAnalyzerFailureStreamsExitCode(t *testing.T) {
 	assert.Equal(t, []int32{17}, server.exitCodes())
 }
 
+func TestRunPluginAnalyzerAttachFailsWhenNoPortPrinted(t *testing.T) {
+	execPath := newHelperDartExec(t)
+	host := &dartLanguageHost{
+		exec:          execPath,
+		engineAddress: "engine-address-not-used",
+	}
+
+	programDir := t.TempDir()
+	req := &pulumirpc.RunPluginRequest{
+		Pwd:  t.TempDir(),
+		Args: []string{"--policy-arg"},
+		Env: []string{
+			"HELPER_MODE=no-port",
+			"EXPECTED_PLUGIN_ARG=--policy-arg",
+			"EXPECTED_PROGRAM_DIR=" + programDir,
+		},
+		Kind: string(apitype.AnalyzerPlugin),
+		Info: &pulumirpc.ProgramInfo{ProgramDirectory: programDir},
+	}
+
+	server := newCaptureRunPluginServer(context.Background())
+	errCh := make(chan error, 1)
+	go func() {
+		errCh <- host.RunPlugin(req, server)
+	}()
+
+	err := server.configurePolicyProxyWhenReady(t, 10*time.Second, &pulumirpc.AnalyzerStackConfigureRequest{})
+	require.NoError(t, err)
+
+	select {
+	case err := <-errCh:
+		require.Error(t, err)
+		assert.Contains(t, err.Error(), "could not read policy pack port")
+	case <-time.After(15 * time.Second):
+		t.Fatal("timed out waiting for RunPlugin to return")
+	}
+}
+
+func TestRunPluginAnalyzerAttachFailsWhenPortIsMalformed(t *testing.T) {
+	execPath := newHelperDartExec(t)
+	host := &dartLanguageHost{
+		exec:          execPath,
+		engineAddress: "engine-address-not-used",
+	}
+
+	programDir := t.TempDir()
+	req := &pulumirpc.RunPluginRequest{
+		Pwd:  t.TempDir(),
+		Args: []string{"--policy-arg"},
+		Env: []string{
+			"HELPER_MODE=malformed-port",
+			"EXPECTED_PLUGIN_ARG=--policy-arg",
+			"EXPECTED_PROGRAM_DIR=" + programDir,
+		},
+		Kind: string(apitype.AnalyzerPlugin),
+		Info: &pulumirpc.ProgramInfo{ProgramDirectory: programDir},
+	}
+
+	server := newCaptureRunPluginServer(context.Background())
+	errCh := make(chan error, 1)
+	go func() {
+		errCh <- host.RunPlugin(req, server)
+	}()
+
+	err := server.configurePolicyProxyWhenReady(t, 10*time.Second, &pulumirpc.AnalyzerStackConfigureRequest{})
+	require.NoError(t, err)
+
+	select {
+	case err := <-errCh:
+		require.Error(t, err)
+		assert.Contains(t, err.Error(), "could not read policy pack port")
+	case <-time.After(15 * time.Second):
+		t.Fatal("timed out waiting for RunPlugin to return")
+	}
+}
+
+func TestRunPluginAnalyzerAttachFailsWhenPluginExitsEarly(t *testing.T) {
+	execPath := newHelperDartExec(t)
+	host := &dartLanguageHost{
+		exec:          execPath,
+		engineAddress: "engine-address-not-used",
+	}
+
+	programDir := t.TempDir()
+	req := &pulumirpc.RunPluginRequest{
+		Pwd:  t.TempDir(),
+		Args: []string{"--policy-arg"},
+		Env: []string{
+			"HELPER_MODE=exit-early",
+			"EXPECTED_PLUGIN_ARG=--policy-arg",
+			"EXPECTED_PROGRAM_DIR=" + programDir,
+		},
+		Kind: string(apitype.AnalyzerPlugin),
+		Info: &pulumirpc.ProgramInfo{ProgramDirectory: programDir},
+	}
+
+	server := newCaptureRunPluginServer(context.Background())
+	errCh := make(chan error, 1)
+	go func() {
+		errCh <- host.RunPlugin(req, server)
+	}()
+
+	err := server.configurePolicyProxyWhenReady(t, 10*time.Second, &pulumirpc.AnalyzerStackConfigureRequest{})
+	require.NoError(t, err)
+
+	select {
+	case err := <-errCh:
+		require.Error(t, err)
+		assert.Contains(t, err.Error(), "could not read policy pack port")
+	case <-time.After(15 * time.Second):
+		t.Fatal("timed out waiting for RunPlugin to return")
+	}
+}
+
 func configurePolicyProxy(port int, req *pulumirpc.AnalyzerStackConfigureRequest) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
@@ -366,6 +480,16 @@ func runAnalyzerHelperProcess() (int, error) {
 	args := helperProcessArgs()
 	if len(args) == 0 || args[0] != "run" {
 		return 17, fmt.Errorf("expected first arg to be 'run', got: %v", args)
+	}
+
+	switch os.Getenv("HELPER_MODE") {
+	case "no-port":
+		return 0, nil
+	case "malformed-port":
+		fmt.Println("not-a-port")
+		return 0, nil
+	case "exit-early":
+		return 23, nil
 	}
 
 	if expectedArg := os.Getenv("EXPECTED_PLUGIN_ARG"); expectedArg != "" {

@@ -299,6 +299,13 @@ class _RecordingProvider extends Provider {
   }
 }
 
+class _DefaultOnlyProvider extends Provider {
+  @override
+  Future<CreateResult> create(String urn, Map<String, dynamic> inputs) async {
+    return const CreateResult(id: 'id-1');
+  }
+}
+
 Input<dynamic> _inputWithDependency(dynamic value, String depUrn) {
   return Input.fromOutput(
     Output<dynamic>(
@@ -934,6 +941,62 @@ void main() {
         ),
       );
     });
+
+    test(
+      'default unsupported parameterize and invoke surface unimplemented',
+      () async {
+        final server = ProviderServer(_DefaultOnlyProvider());
+
+        await expectLater(
+          () => server.parameterize(
+            call,
+            providerpb.ParameterizeRequest(
+              args: providerpb.ParameterizeRequest_ParametersArgs(
+                args: const <String>['--env', 'dev'],
+              ),
+            ),
+          ),
+          throwsA(
+            isA<GrpcError>()
+                .having(
+                  (error) => error.code,
+                  'code',
+                  equals(StatusCode.unimplemented),
+                )
+                .having(
+                  (error) => error.message,
+                  'message',
+                  contains('parameterizeArgs'),
+                ),
+          ),
+        );
+
+        await expectLater(
+          () async {
+            return server.invoke(
+              call,
+              providerpb.InvokeRequest(
+                tok: 'pkg:index:getMissing',
+                args: await StructConverter.toStruct(<String, dynamic>{}),
+              ),
+            );
+          },
+          throwsA(
+            isA<GrpcError>()
+                .having(
+                  (error) => error.code,
+                  'code',
+                  equals(StatusCode.unimplemented),
+                )
+                .having(
+                  (error) => error.message,
+                  'message',
+                  contains('unknown function pkg:index:getMissing'),
+                ),
+          ),
+        );
+      },
+    );
 
     test('getSchema enforces version 0 and returns provider schema', () async {
       final server = ProviderServer(

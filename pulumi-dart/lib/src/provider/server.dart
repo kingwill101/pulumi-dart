@@ -167,11 +167,15 @@ class ProviderServer extends providergrpc.ResourceProviderServiceBase {
     providerpb.ParameterizeRequest request,
   ) async {
     if (request.hasArgs()) {
-      final result = await provider.parameterizeArgs(request.args.args);
-      return providerpb.ParameterizeResponse(
-        name: result.name,
-        version: result.version,
-      );
+      try {
+        final result = await provider.parameterizeArgs(request.args.args);
+        return providerpb.ParameterizeResponse(
+          name: result.name,
+          version: result.version,
+        );
+      } on UnsupportedProviderOperationError catch (error) {
+        throw GrpcError.unimplemented(error.toString());
+      }
     }
 
     if (request.hasValue()) {
@@ -184,15 +188,19 @@ class ProviderServer extends providergrpc.ResourceProviderServiceBase {
           );
         }
       })();
-      final result = await provider.parameterizeValue(
-        request.value.name,
-        request.value.version,
-        decodedValue,
-      );
-      return providerpb.ParameterizeResponse(
-        name: result.name,
-        version: result.version,
-      );
+      try {
+        final result = await provider.parameterizeValue(
+          request.value.name,
+          request.value.version,
+          decodedValue,
+        );
+        return providerpb.ParameterizeResponse(
+          name: result.name,
+          version: result.version,
+        );
+      } on UnsupportedProviderOperationError catch (error) {
+        throw GrpcError.unimplemented(error.toString());
+      }
     }
 
     throw GrpcError.invalidArgument('parameterization payload is missing');
@@ -290,7 +298,12 @@ class ProviderServer extends providergrpc.ResourceProviderServiceBase {
     providerpb.InvokeRequest request,
   ) async {
     final args = StructConverter.fromStruct(request.args);
-    final result = await provider.invoke(request.tok, args);
+    late final InvokeResult result;
+    try {
+      result = await provider.invoke(request.tok, args);
+    } on UnsupportedProviderOperationError catch (error) {
+      throw GrpcError.unimplemented(error.toString());
+    }
 
     final response = providerpb.InvokeResponse();
     response.return_1 = await StructConverter.toStruct(result.outputs);
@@ -329,7 +342,12 @@ class ProviderServer extends providergrpc.ResourceProviderServiceBase {
           request.args,
           (key) => request.argDependencies[key]?.urns ?? const <String>[],
         );
-        final result = await provider.call(request.tok, args);
+        late final CallResult result;
+        try {
+          result = await provider.call(request.tok, args);
+        } on UnsupportedProviderOperationError catch (error) {
+          throw GrpcError.unimplemented(error.toString());
+        }
 
         final serialized = await _serializeInputMap(
           'call(${request.tok})',
@@ -506,12 +524,17 @@ class ProviderServer extends providergrpc.ResourceProviderServiceBase {
       final options = _buildConstructOptions(request);
 
       try {
-        final result = await provider.construct(
-          request.name,
-          request.type,
-          inputs,
-          options,
-        );
+        late final ConstructResult result;
+        try {
+          result = await provider.construct(
+            request.name,
+            request.type,
+            inputs,
+            options,
+          );
+        } on UnsupportedProviderOperationError catch (error) {
+          throw GrpcError.unimplemented(error.toString());
+        }
 
         final response = providerpb.ConstructResponse();
         response.urn = await result.urn.toOutput().getValue();
