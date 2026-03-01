@@ -42,7 +42,7 @@ publish_to: none
 version: 0.1.0
 
 environment:
-  sdk: ^3.10.0
+  sdk: ^3.11.0
 
 dependencies:
   pulumi: ^1.0.0
@@ -57,7 +57,7 @@ publish_to: none
 version: 0.1.0
 
 environment:
-  sdk: ^3.10.0
+  sdk: ^3.11.0
 
 dependencies:
   pulumi:

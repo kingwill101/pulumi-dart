@@ -24,9 +24,24 @@ for clean-environment compatibility. Override with:
 
 - `PULUMI_DART_PULUMI_DEPENDENCY_PATH`
 - `PULUMI_DART_PULUMI_DEPENDENCY_VERSION`
+- `PULUMI_DART_PULUMI_DEPENDENCY_FROM_PUBDEV` (default: `true`)
+- `PULUMI_DART_PULUMI_DEPENDENCY_PUBDEV_URL` (default: `https://pub.dev/api/packages/pulumi`)
 - `PULUMI_DART_PULUMI_DEPENDENCY_GIT_URL`
 - `PULUMI_DART_PULUMI_DEPENDENCY_GIT_PATH`
 - `PULUMI_DART_PULUMI_DEPENDENCY_GIT_REF`
+
+Dependency source precedence for template rewrite:
+
+1. `PULUMI_DART_PULUMI_DEPENDENCY_PATH`
+2. `PULUMI_DART_PULUMI_DEPENDENCY_VERSION`
+3. Git dependency (`..._GIT_URL` / `..._GIT_PATH` / `..._GIT_REF`)
+
+Example using pub.dev version:
+
+```bash
+export PULUMI_DART_PULUMI_DEPENDENCY_VERSION="$(curl -fsSL https://pub.dev/api/packages/pulumi | jq -r '.latest.version')"
+pulumi new ./templates/dart-minimal
+```
 
 Disable template-time rewrite:
 

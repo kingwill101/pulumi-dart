@@ -478,8 +478,8 @@ func TestGeneratePackageEmitsArgsAndResultClasses(t *testing.T) {
 	assert.Contains(t, content, "class WidgetArgs")
 	assert.Contains(t, content, "final pulumi.Input<int> size;")
 	assert.Contains(t, content, "final pulumi.Input<String>? label;")
-	assert.Contains(t, content, "required Object size")
-	assert.Contains(t, content, "Object? label")
+	assert.Contains(t, content, "required pulumi.Input<int> size")
+	assert.Contains(t, content, "pulumi.Input<String>? label")
 	assert.Contains(t, content, "size = pulumi.Input.asInput<int>(size)")
 	assert.Contains(t, content, "WidgetArgs? args")
 	assert.Contains(t, content, "args?.toMap()")
@@ -495,7 +495,7 @@ func TestGeneratePackageEmitsArgsAndResultClasses(t *testing.T) {
 
 	assert.Contains(t, content, "class GetWidgetArgs")
 	assert.Contains(t, content, "final pulumi.Input<String> id;")
-	assert.Contains(t, content, "required Object id")
+	assert.Contains(t, content, "required pulumi.Input<String> id")
 	assert.Contains(t, content, "id = pulumi.Input.asInput<String>(id)")
 	assert.Contains(t, content, "class GetWidgetResult")
 	assert.Contains(t, content, "final String name;")
@@ -674,7 +674,7 @@ func TestGeneratePackageUsesWorkspacePulumiVersion(t *testing.T) {
 	rootPubspec := strings.TrimSpace(`
 name: root_workspace
 environment:
-  sdk: ^3.10.0
+  sdk: ^3.11.0
 workspace:
   - pulumi-dart
   - packages/command
@@ -688,7 +688,7 @@ name: pulumi
 version: 9.8.7
 resolution: workspace
 environment:
-  sdk: ^3.10.0
+  sdk: ^3.11.0
 `) + "\n"
 	require.NoError(t, os.WriteFile(filepath.Join(pulumiDir, "pubspec.yaml"), []byte(pulumiPubspec), 0o600))
 
@@ -771,7 +771,7 @@ name: pulumi_command
 description: A Pulumi package for executing commands locally or remotely.
 version: 1.0.0
 environment:
-  sdk: ^3.10.0
+  sdk: ^3.11.0
 dependencies:
   pulumi: ^1.0.0
 `) + "\n"
@@ -1792,9 +1792,9 @@ func TestGeneratePackageEmitsNamedTypesAndRefs(t *testing.T) {
 	assert.Contains(t, content, "static WidgetMode fromValue(String value)")
 
 	assert.Contains(t, content, "class WidgetMetadata")
-	assert.Contains(t, content, "final String owner;")
-	assert.Contains(t, content, "final WidgetMode mode;")
-	assert.Contains(t, content, "'mode': mode.value,")
+	assert.Contains(t, content, "final pulumi.Input<String> owner;")
+	assert.Contains(t, content, "final pulumi.Input<WidgetMode> mode;")
+	assert.Contains(t, content, "'mode': pulumi.Input.mapInputValue<WidgetMode, String>(mode, (value) => value.value),")
 	assert.Contains(t, content, "mode: WidgetMode.fromValue(map['mode'] as String)")
 
 	assert.Contains(t, content, "class WidgetArgs")
@@ -2245,7 +2245,7 @@ func TestGeneratePackageSanitizesRuntimeTypeFieldName(t *testing.T) {
 	require.NoError(t, err)
 
 	_, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
-	assert.Contains(t, content, "final String runtimeType_;")
+	assert.Contains(t, content, "final pulumi.Input<String> runtimeType_;")
 	assert.Contains(t, content, "'runtimeType': runtimeType_,")
 	assert.Contains(t, content, "runtimeType_: map['runtimeType'] as String")
 }

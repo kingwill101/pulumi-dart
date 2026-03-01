@@ -8,7 +8,7 @@ Before creating a Pulumi Dart project, install and configure the baseline toolch
 
 ## Required software
 
-- Dart SDK `>=3.10.0 <4.0.0`
+- Dart SDK `>=3.11.0 <4.0.0`
 - Pulumi CLI
 - A Pulumi backend login target:
   - Pulumi Cloud: `pulumi login`

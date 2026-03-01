@@ -122,7 +122,7 @@ class GetWidgetDetailsArgs {
   /// Creates a new [GetWidgetDetailsArgs].
   /// [id] Required.
   GetWidgetDetailsArgs({
-    required Object id,
+    required pulumi.Input<String> id,
   }) :
       id = pulumi.Input.asInput<String>(id);
 
@@ -222,8 +222,8 @@ class WidgetArgs {
   /// [metadata] Optional.
   /// [mode] Required.
   WidgetArgs({
-    Object? metadata,
-    required Object mode,
+    pulumi.Input<WidgetMetadata>? metadata,
+    required pulumi.Input<WidgetMode> mode,
   }) :
       metadata = pulumi.Input.asOptionalInput<WidgetMetadata>(metadata),
       mode = pulumi.Input.asInput<WidgetMode>(mode);
@@ -247,23 +247,26 @@ class WidgetArgs {
 // FILE: index/widget_metadata.dart
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'widget_mode.dart';
 
 class WidgetMetadata {
-  final WidgetMode mode;
-  final String owner;
+  final pulumi.Input<WidgetMode> mode;
+  final pulumi.Input<String> owner;
 
   /// Creates a new [WidgetMetadata].
   /// [mode] Required.
   /// [owner] Required.
   WidgetMetadata({
-    required this.mode,
-    required this.owner,
-  });
+    required pulumi.Input<WidgetMode> mode,
+    required pulumi.Input<String> owner,
+  }) :
+      mode = pulumi.Input.asInput<WidgetMode>(mode),
+      owner = pulumi.Input.asInput<String>(owner);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mode': mode.value,
+      'mode': pulumi.Input.mapInputValue<WidgetMode, String>(mode, (value) => value.value),
       'owner': owner,
     };
   }

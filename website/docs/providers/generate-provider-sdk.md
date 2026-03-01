@@ -34,7 +34,7 @@ publish_to: none
 version: 0.0.1
 
 environment:
-  sdk: ^3.10.0
+  sdk: ^3.11.0
 
 dependencies:
   pulumi: any
@@ -116,10 +116,38 @@ dart pub get
 - `PULUMI_DART_DEPENDENCY_REGISTRY`: local registry file path
 - `PULUMI_DART_DEPENDENCY_REGISTRY_URL`: remote registry URL fallback
 - `PULUMI_DART_UPDATE_EXISTING_PUBSPEC=true`: auto-update missing required deps in existing `pubspec.yaml`
+- `PULUMI_DART_PULUMI_DEPENDENCY_PATH`: force local path dependency for `pulumi`
+- `PULUMI_DART_PULUMI_DEPENDENCY_VERSION`: force hosted version constraint for `pulumi`
+- `PULUMI_DART_PULUMI_DEPENDENCY_FROM_PUBDEV`: fetch latest `pulumi` version from pub.dev when path/version are unset (default: `true`)
+- `PULUMI_DART_PULUMI_DEPENDENCY_PUBDEV_URL`: override pub.dev API URL (default: `https://pub.dev/api/packages/pulumi`)
+- `PULUMI_DART_PULUMI_DEPENDENCY_GIT_URL` / `..._GIT_PATH` / `..._GIT_REF`: force git source for `pulumi`
 
-## Notes on manual package files
+Pulumi dependency source precedence (non-workspace generation):
 
-The generator focuses on `lib/` sources by default. Keep hand-authored files like `README.md`, `CHANGELOG.md`, and `analysis_options.yaml` under your control in generated package roots.
+1. `PULUMI_DART_PULUMI_DEPENDENCY_PATH`
+2. `PULUMI_DART_PULUMI_DEPENDENCY_VERSION`
+3. Git dependency (`..._GIT_URL` / `..._GIT_PATH` / `..._GIT_REF`)
+
+If generation runs inside a Dart workspace and workspace resolution is active, generated
+provider pubspecs use the workspace `pulumi` package version.
+
+Example: use latest published pub.dev version for non-workspace generation:
+
+```bash
+export PULUMI_DART_PULUMI_DEPENDENCY_VERSION="$(curl -fsSL https://pub.dev/api/packages/pulumi | jq -r '.latest.version')"
+pulumi package add random
+```
+
+## Notes on package scaffolding files
+
+The generator writes default package scaffolding files when missing:
+
+- `README.md`
+- `CHANGELOG.md`
+- `analysis_options.yaml`
+- `example/main.dart`
+
+Existing files at those paths are preserved.
 
 ## Notes on unsupported/edge providers
 

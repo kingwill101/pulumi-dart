@@ -3,12 +3,13 @@ version: "3"
 vars:
   ROOT_DIR: "{{.TASKFILE_DIR}}"
   PACKAGES_DIR: "{{.ROOT_DIR}}/packages"
-  SCHEMAS_DIR: "{{.PACKAGES_DIR}}/schemas"
+  SDKS_DIR: "{{.PACKAGES_DIR}}/sdks"
+  SCHEMAS_DIR: "{{.PACKAGES_DIR}}/sdks/schemas"
   GEN_PROJECT_DIR: "{{.ROOT_DIR}}/.gen/sdk-gen"
   SMOKE_DIR: "{{.ROOT_DIR}}/.gen/smoke"
   ANALYSIS_DIR: "{{.PACKAGES_DIR}}/analysis"
   LANGUAGE_HOST_DIR: "{{.ROOT_DIR}}/pulumi-language-dart"
-  PULUMI_DART_PATH: "{{.ROOT_DIR}}/pulumi-dart"
+  PULUMI_DART_PATH: "{{.ROOT_DIR}}/packages/pulumi-dart"
   DEFAULT_PULUMI_CONFIG_PASSPHRASE: "banana"
   SMOKE_STACK_PREFIX: "dev"
   PRESERVE_EXAMPLES: "true"
@@ -159,6 +160,16 @@ tasks:
     cmds:
       - ./scripts/check-packages-workspace.sh
 
+  check:schema-drift:
+    desc: Check upstream provider schema drift
+    cmds:
+      - dart run tool/check_schema_drift.dart --pretty
+
+  generate:packages:
+    desc: Regenerate provider packages from packages/sdks/schema_sources.json
+    cmds:
+      - dart run tool/generate_packages.dart --all
+
   check-tools:
     desc: Verify required tooling for SDK generation
     cmds:
@@ -206,7 +217,7 @@ tasks:
         PROJECT_DIR="{{.GEN_PROJECT_DIR}}"
         mkdir -p "${PROJECT_DIR}"
         LOCAL_OVERRIDES=""
-        for PKG_PUBSPEC in "{{.PACKAGES_DIR}}"/*/pubspec.yaml; do
+        for PKG_PUBSPEC in "{{.SDKS_DIR}}"/*/pubspec.yaml; do
           [ -f "${PKG_PUBSPEC}" ] || continue
           PKG_NAME="$(sed -n 's/^name:[[:space:]]*//p' "${PKG_PUBSPEC}" | head -n 1)"
           [ -n "${PKG_NAME}" ] || continue
@@ -230,7 +241,7 @@ tasks:
         description: Pulumi Dart SDK generation workspace
         version: 0.0.1
         environment:
-          sdk: ^3.10.0
+          sdk: ^3.11.0
         dependencies:
           pulumi: any
         dependency_overrides:
@@ -280,7 +291,7 @@ tasks:
         PACKAGE="{{.PACKAGE}}"
         PROJECT_DIR="{{.GEN_PROJECT_DIR}}"
         SCHEMA_PATH="{{.SCHEMAS_DIR}}/${PACKAGE}.schema.json"
-        OUTPUT_DIR="{{.PACKAGES_DIR}}/${PACKAGE}"
+        OUTPUT_DIR="{{.SDKS_DIR}}/${PACKAGE}"
         PRESERVE_EXAMPLES="{{.PRESERVE_EXAMPLES}}"
         FORMAT_GENERATED="{{.FORMAT_GENERATED}}"
         STRICT_FORMAT="{{.STRICT_FORMAT}}"
@@ -447,7 +458,7 @@ tasks:
       - |
         set -eu
         PACKAGE="{{.PACKAGE}}"
-        SDK_DIR="{{.PACKAGES_DIR}}/${PACKAGE}"
+        SDK_DIR="{{.SDKS_DIR}}/${PACKAGE}"
         REPORT_PATH="{{.ANALYSIS_DIR}}/${PACKAGE}.analyze.machine.txt"
         REPORT_EXIT_PATH="${REPORT_PATH}.exitcode"
         OVERRIDES_PATH="${SDK_DIR}/pubspec_overrides.yaml"
@@ -614,11 +625,11 @@ tasks:
         publish_to: none
         version: 0.0.1
         environment:
-          sdk: ^3.10.0
+          sdk: ^3.11.0
         dependencies:
           pulumi: any
           ${PROVIDER_PACKAGE}:
-            path: {{.PACKAGES_DIR}}/${PACKAGE}
+            path: {{.SDKS_DIR}}/${PACKAGE}
         dependency_overrides:
           pulumi:
             path: {{.PULUMI_DART_PATH}}
@@ -754,7 +765,7 @@ tasks:
         PACKAGE="{{.PACKAGE}}"
         PACKAGE_UNDERSCORE="$(printf '%s' "${PACKAGE}" | tr '-' '_')"
         PROVIDER_PACKAGE="pulumi_${PACKAGE_UNDERSCORE}"
-        PROVIDER_DIR="{{.PACKAGES_DIR}}/${PACKAGE}"
+        PROVIDER_DIR="{{.SDKS_DIR}}/${PACKAGE}"
         PULUMI_DIR="{{.PULUMI_DART_PATH}}"
 
         if [ ! -d "${PROJECT_DIR}" ]; then

@@ -41,7 +41,7 @@ publish_to: none
 version: 0.1.0
 
 environment:
-  sdk: ^3.10.0
+  sdk: ^3.11.0
 
 dependencies:
   pulumi: ^1.0.0
@@ -69,10 +69,25 @@ You can customize source selection with environment variables:
 
 - `PULUMI_DART_PULUMI_DEPENDENCY_PATH`
 - `PULUMI_DART_PULUMI_DEPENDENCY_VERSION`
+- `PULUMI_DART_PULUMI_DEPENDENCY_FROM_PUBDEV` (default: `true`)
+- `PULUMI_DART_PULUMI_DEPENDENCY_PUBDEV_URL` (default: `https://pub.dev/api/packages/pulumi`)
 - `PULUMI_DART_PULUMI_DEPENDENCY_GIT_URL`
 - `PULUMI_DART_PULUMI_DEPENDENCY_GIT_PATH`
 - `PULUMI_DART_PULUMI_DEPENDENCY_GIT_REF`
 - `PULUMI_DART_TEMPLATE_REWRITE_PULUMI=false` to disable rewrite
+
+Dependency source precedence for template rewrite:
+
+1. `PULUMI_DART_PULUMI_DEPENDENCY_PATH`
+2. `PULUMI_DART_PULUMI_DEPENDENCY_VERSION`
+3. Git dependency (`..._GIT_URL` / `..._GIT_PATH` / `..._GIT_REF`)
+
+Example pinning to latest pub.dev release:
+
+```bash
+export PULUMI_DART_PULUMI_DEPENDENCY_VERSION="$(curl -fsSL https://pub.dev/api/packages/pulumi | jq -r '.latest.version')"
+pulumi new ./templates/dart-minimal -y --name my-dart-stack --stack dev --secrets-provider passphrase
+```
 
 For stricter generation checks (typically in CI):
 
@@ -87,7 +102,7 @@ publish_to: none
 version: 0.1.0
 
 environment:
-  sdk: ^3.10.0
+  sdk: ^3.11.0
 
 dependencies:
   pulumi: any
@@ -105,7 +120,7 @@ publish_to: none
 version: 0.1.0
 
 environment:
-  sdk: ^3.10.0
+  sdk: ^3.11.0
 
 dependencies:
   pulumi: any

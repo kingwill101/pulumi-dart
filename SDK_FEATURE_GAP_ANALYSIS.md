@@ -59,7 +59,7 @@ against upstream Pulumi behavior, based on the repository's current state.
     `policy` now uses `package:lints/recommended.yaml` and `lints` dependency
     in `dev_dependencies`.
   - workspace generation/publish workflow normalized for local and publishing flows:
-    - restored `packages/pubspec.yaml` workspace root to support local multi-package workflows.
+    - workspace root is now `pubspec.yaml` at repository root for local multi-package workflows.
     - generator again infers workspace by directory layout and applies `resolution: workspace`.
     - local-source `pulumi` dependency cases remain tagged with `publish_to: none`
       to keep workspace-only paths from being accidentally published.
@@ -213,8 +213,8 @@ Status: **Completed in this tranche**
 Status: **Resolved in this tranche**
 
 - Confirmed generation/workflow alignment:
-  - `packages/pubspec.yaml` workspace root now exists and lists local package
-    members plus local `pulumi` override.
+  - root `pubspec.yaml` now defines the repository workspace and lists
+    local package members.
   - generated package pubspecs include `resolution: workspace` within the workspace.
   - local path `pulumi` dependency generation continues to enforce
     `publish_to: none`.

@@ -4,7 +4,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd -- "${SCRIPT_DIR}/.." && pwd)"
 
-ROOT_PUBSPEC="${REPO_ROOT}/packages/pubspec.yaml"
+ROOT_PUBSPEC="${REPO_ROOT}/pubspec.yaml"
 
 if [[ ! -f "${ROOT_PUBSPEC}" ]]; then
   echo "Missing workspace pubspec: ${ROOT_PUBSPEC}" >&2
@@ -12,7 +12,7 @@ if [[ ! -f "${ROOT_PUBSPEC}" ]]; then
 fi
 
 if grep -Eq '^[[:space:]]*resolution:[[:space:]]*' "${ROOT_PUBSPEC}"; then
-  echo "Invalid root workspace pubspec: packages/pubspec.yaml must not set resolution." >&2
+  echo "Invalid root workspace pubspec: pubspec.yaml must not set resolution." >&2
   exit 1
 fi
 
@@ -31,7 +31,7 @@ mapfile -t workspace_members < <(
 )
 
 if [[ ${#workspace_members[@]} -eq 0 ]]; then
-  echo "No workspace members found in packages/pubspec.yaml" >&2
+  echo "No workspace members found in pubspec.yaml" >&2
   exit 1
 fi
 
@@ -40,20 +40,20 @@ errors=0
 
 for member in "${workspace_members[@]}"; do
   if [[ -n "${seen[${member}]:-}" ]]; then
-    echo "Duplicate workspace member in packages/pubspec.yaml: ${member}" >&2
+    echo "Duplicate workspace member in pubspec.yaml: ${member}" >&2
     errors=1
   fi
   seen["${member}"]=1
 
-  member_pubspec="${REPO_ROOT}/packages/${member}/pubspec.yaml"
+  member_pubspec="${REPO_ROOT}/${member}/pubspec.yaml"
   if [[ ! -f "${member_pubspec}" ]]; then
-    echo "Workspace member is missing pubspec: packages/${member}/pubspec.yaml" >&2
+    echo "Workspace member is missing pubspec: ${member}/pubspec.yaml" >&2
     errors=1
     continue
   fi
 
   if ! grep -Eq "^[[:space:]]*resolution:[[:space:]]*['\"]?workspace['\"]?[[:space:]]*$" "${member_pubspec}"; then
-    echo "Workspace member must set resolution: workspace -> packages/${member}/pubspec.yaml" >&2
+    echo "Workspace member must set resolution: workspace -> ${member}/pubspec.yaml" >&2
     errors=1
   fi
 done

@@ -8,12 +8,12 @@ This project monitors upstream Pulumi provider schemas for drift against the sch
 
 ## What is checked
 
-For each provider in `packages/schema_sources.json`:
+For each provider in `packages/sdks/schema_sources.json`:
 
-- local schema version in `packages/schemas/<provider>.schema.json`
+- local schema version in `packages/sdks/schemas/<provider>.schema.json`
 - upstream schema version from Pulumi Registry
 - canonical JSON SHA-256 checksum of local vs upstream schema
-- generated package version parity (`packages/<provider>/pubspec.yaml` vs local schema version)
+- generated package version parity (`packages/sdks/<provider>/pubspec.yaml` vs local schema version)
 
 ## Drift definition
 
@@ -29,19 +29,19 @@ Checksum drift catches cases where schema content changes without a version bump
 Check all providers:
 
 ```bash
-./scripts/check-schema-drift.sh --pretty
+dart run tool/check_schema_drift.dart --pretty
 ```
 
 Check one provider:
 
 ```bash
-./scripts/check-schema-drift.sh --provider aws --pretty
+dart run tool/check_schema_drift.dart --provider aws --pretty
 ```
 
 Fail non-zero if any drift is detected:
 
 ```bash
-./scripts/check-schema-drift.sh --fail-on-drift
+dart run tool/check_schema_drift.dart --fail-on-drift
 ```
 
 ## CI pipeline
@@ -53,22 +53,22 @@ Workflow:
 Behavior:
 
 - runs on schedule (daily), manual dispatch, and relevant pull requests
-- runs one matrix job per provider from `packages/schema_sources.json`
+- runs one matrix job per provider from `packages/sdks/schema_sources.json`
 - uploads per-provider JSON reports as workflow artifacts
 - fails provider job when drift is detected
 
 ## Update workflow when drift is detected
 
 1. Regenerate affected provider SDK from latest schema
-2. Commit updated `packages/schemas/<provider>.schema.json`
-3. Commit regenerated package output under `packages/<provider>/`
+2. Commit updated `packages/sdks/schemas/<provider>.schema.json`
+3. Commit regenerated package output under `packages/sdks/<provider>/`
 4. Re-run drift check locally
 
 ## Maintaining provider scope
 
 To add/remove providers from drift monitoring, update:
 
-- `packages/schema_sources.json`
+- `packages/sdks/schema_sources.json`
 
 ## Next steps
 

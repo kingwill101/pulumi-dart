@@ -64,7 +64,7 @@ publish_to: none
 version: 0.1.0
 
 environment:
-  sdk: ^3.10.0
+  sdk: ^3.11.0
 
 dependencies:
   pulumi:
@@ -125,14 +125,36 @@ User-facing templates live under [`templates/`](templates/README.md).
 
 By default, `pulumi-language-dart` rewrites unresolved `pulumi` dependency constraints
 during `pulumi new` to a known source dependency so clean-environment installs work.
+
+`pulumi` dependency source precedence (outside a Dart workspace):
+
+1. `PULUMI_DART_PULUMI_DEPENDENCY_PATH`
+2. `PULUMI_DART_PULUMI_DEPENDENCY_VERSION`
+3. Git dependency (`PULUMI_DART_PULUMI_DEPENDENCY_GIT_URL` / `..._GIT_PATH` / `..._GIT_REF`)
+
+When SDK generation runs inside a Dart workspace and workspace resolution is active,
+generated provider packages use the workspace `pulumi` package version directly.
+
 You can override source selection with:
 
 - `PULUMI_DART_PULUMI_DEPENDENCY_PATH`
 - `PULUMI_DART_PULUMI_DEPENDENCY_VERSION`
+- `PULUMI_DART_PULUMI_DEPENDENCY_FROM_PUBDEV` (default: `true`)
+- `PULUMI_DART_PULUMI_DEPENDENCY_PUBDEV_URL` (default: `https://pub.dev/api/packages/pulumi`)
 - `PULUMI_DART_PULUMI_DEPENDENCY_GIT_URL`
 - `PULUMI_DART_PULUMI_DEPENDENCY_GIT_PATH`
 - `PULUMI_DART_PULUMI_DEPENDENCY_GIT_REF`
 - `PULUMI_DART_TEMPLATE_REWRITE_PULUMI=false` to disable rewrite
+
+Useful non-workspace examples:
+
+```bash
+# Pin to explicit version
+export PULUMI_DART_PULUMI_DEPENDENCY_VERSION=0.0.1-dev
+
+# Or read latest published pub.dev version dynamically
+export PULUMI_DART_PULUMI_DEPENDENCY_VERSION="$(curl -fsSL https://pub.dev/api/packages/pulumi | jq -r '.latest.version')"
+```
 
 ## Generate Provider SDKs
 
@@ -158,7 +180,7 @@ name: sdk_gen
 publish_to: none
 version: 0.0.1
 environment:
-  sdk: ^3.10.0
+  sdk: ^3.11.0
 
 dependencies:
   pulumi: any

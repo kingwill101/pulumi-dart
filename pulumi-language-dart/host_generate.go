@@ -228,6 +228,7 @@ func (host *dartLanguageHost) GeneratePackage(
 	pubspec := buildGeneratedPubspec(packageName, localDependencies, requiredDependencies)
 	if shouldUseWorkspaceResolution(req.GetDirectory()) {
 		pubspec.Resolution = "workspace"
+		applyWorkspacePulumiDependencyVersion(&pubspec, req.GetDirectory())
 	}
 	applyLocalPathPublishPolicy(&pubspec)
 	applyPackageMetadataToPubspec(&pubspec, spec)
@@ -353,7 +354,33 @@ func (host *dartLanguageHost) GeneratePackage(
 	}
 	recordGeneratedOutput(publicLibraryFile)
 
+	extraFiles := map[string][]byte{}
 	for filename, contents := range req.GetExtraFiles() {
+		extraFiles[filename] = contents
+	}
+	for filename, contents := range defaultGeneratedExtraFiles(packageName, spec.Name, pubspec.Version) {
+		if _, hasExplicitFile := extraFiles[filename]; hasExplicitFile {
+			continue
+		}
+		outputPath, err := safeOutputPath(req.GetDirectory(), filename)
+		if err != nil {
+			return nil, fmt.Errorf("invalid default extra file path %q: %w", filename, err)
+		}
+		if _, err := os.Stat(outputPath); err == nil {
+			continue
+		} else if !os.IsNotExist(err) {
+			return nil, fmt.Errorf("failed to check default extra file %s: %w", filename, err)
+		}
+		extraFiles[filename] = contents
+	}
+
+	extraFilenames := make([]string, 0, len(extraFiles))
+	for filename := range extraFiles {
+		extraFilenames = append(extraFilenames, filename)
+	}
+	sort.Strings(extraFilenames)
+	for _, filename := range extraFilenames {
+		contents := extraFiles[filename]
 		outputPath, err := safeOutputPath(req.GetDirectory(), filename)
 		if err != nil {
 			return nil, fmt.Errorf("invalid extra file path %q: %w", filename, err)
@@ -934,7 +961,8 @@ func parseTruthyFalseyEnv(name string) (bool, bool) {
 }
 
 func directoryInPubWorkspace(outputDir string) bool {
-	if strings.TrimSpace(outputDir) == "" {
+	workspaceRoot := findNearestPubWorkspaceRoot(outputDir)
+	if workspaceRoot == "" {
 		return false
 	}
 
@@ -943,32 +971,121 @@ func directoryInPubWorkspace(outputDir string) bool {
 		return false
 	}
 
+	return outputDirWithinWorkspaceMembers(workspaceRoot, absOutputDir)
+}
+
+func applyWorkspacePulumiDependencyVersion(pubspec *PubSpec, outputDir string) bool {
+	if pubspec == nil {
+		return false
+	}
+
+	pulumiVersion := inferWorkspacePulumiPackageVersion(outputDir)
+	if strings.TrimSpace(pulumiVersion) == "" {
+		return false
+	}
+
+	if pubspec.Dependencies == nil {
+		pubspec.Dependencies = map[string]interface{}{}
+	}
+
+	if current, ok := pubspec.Dependencies["pulumi"].(string); ok && strings.TrimSpace(current) == pulumiVersion {
+		return false
+	}
+
+	pubspec.Dependencies["pulumi"] = pulumiVersion
+	if pubspec.DependencyOverrides != nil {
+		delete(pubspec.DependencyOverrides, "pulumi")
+		if len(pubspec.DependencyOverrides) == 0 {
+			pubspec.DependencyOverrides = nil
+		}
+	}
+
+	return true
+}
+
+func inferWorkspacePulumiPackageVersion(outputDir string) string {
+	workspaceRoot := findNearestPubWorkspaceRoot(outputDir)
+	if workspaceRoot == "" {
+		return ""
+	}
+
+	workspaceMembers, err := workspaceMembersFromPubspec(filepath.Join(workspaceRoot, "pubspec.yaml"))
+	if err != nil {
+		return ""
+	}
+
+	for _, memberPath := range workspaceMembers {
+		memberPath = strings.TrimSpace(memberPath)
+		if memberPath == "" {
+			continue
+		}
+		memberDir := filepath.Clean(filepath.Join(workspaceRoot, memberPath))
+		memberPubspec, err := ReadAndParsePubspec(filepath.Join(memberDir, "pubspec.yaml"))
+		if err != nil || memberPubspec == nil {
+			continue
+		}
+		if memberPubspec.Name == "pulumi" {
+			return strings.TrimSpace(memberPubspec.Version)
+		}
+	}
+
+	return ""
+}
+
+func defaultGeneratedExtraFiles(packageName, packagePath, packageVersion string) map[string][]byte {
+	return map[string][]byte{
+		"README.md":             generatedPackageReadme(packageName, packagePath),
+		"CHANGELOG.md":          generatedPackageChangelog(packageVersion),
+		"analysis_options.yaml": generatedPackageAnalysisOptions(),
+		"example/main.dart":     generatedPackageExampleMain(packageName),
+	}
+}
+
+func findNearestPubWorkspaceRoot(outputDir string) string {
+	if strings.TrimSpace(outputDir) == "" {
+		return ""
+	}
+
+	absOutputDir, err := filepath.Abs(outputDir)
+	if err != nil {
+		return ""
+	}
+
 	for searchDir := absOutputDir; ; searchDir = filepath.Dir(searchDir) {
 		pubspecPath := filepath.Join(searchDir, "pubspec.yaml")
-		workspaceMembers, err := workspaceMembersFromPubspec(pubspecPath)
-		if err == nil {
-			for _, member := range workspaceMembers {
-				memberPath := strings.TrimSpace(member)
-				if memberPath == "" {
-					continue
-				}
-				absMemberDir := filepath.Clean(filepath.Join(searchDir, memberPath))
-				rel, err := filepath.Rel(absMemberDir, absOutputDir)
-				if err != nil {
-					continue
-				}
-				if rel == "." || (rel != ".." && !strings.HasPrefix(rel, ".."+string(filepath.Separator))) {
-					return true
-				}
-			}
-			return false
+		if _, err := workspaceMembersFromPubspec(pubspecPath); err == nil {
+			return searchDir
 		}
 
 		parent := filepath.Dir(searchDir)
 		if parent == searchDir {
-			return false
+			return ""
 		}
 	}
+}
+
+func outputDirWithinWorkspaceMembers(workspaceRoot, absOutputDir string) bool {
+	workspaceMembers, err := workspaceMembersFromPubspec(filepath.Join(workspaceRoot, "pubspec.yaml"))
+	if err != nil {
+		return false
+	}
+
+	for _, member := range workspaceMembers {
+		memberPath := strings.TrimSpace(member)
+		if memberPath == "" {
+			continue
+		}
+		absMemberDir := filepath.Clean(filepath.Join(workspaceRoot, memberPath))
+		rel, err := filepath.Rel(absMemberDir, absOutputDir)
+		if err != nil {
+			continue
+		}
+		if rel == "." || (rel != ".." && !strings.HasPrefix(rel, ".."+string(filepath.Separator))) {
+			return true
+		}
+	}
+
+	return false
 }
 
 func workspaceMembersFromPubspec(pubspecPath string) ([]string, error) {

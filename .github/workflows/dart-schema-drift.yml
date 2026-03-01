@@ -7,9 +7,9 @@ on:
   pull_request:
     paths:
       - .github/workflows/dart-schema-drift.yml
-      - scripts/check-schema-drift.sh
-      - packages/schema_sources.json
-      - packages/schemas/*.schema.json
+      - tool/check_schema_drift.dart
+      - packages/sdks/schema_sources.json
+      - packages/sdks/schemas/*.schema.json
 
 permissions:
   contents: read
@@ -25,7 +25,7 @@ jobs:
         name: Build provider matrix
         run: |
           set -euo pipefail
-          MATRIX_JSON="$(jq -c '{provider: [.providers[].name]}' packages/schema_sources.json)"
+          MATRIX_JSON="$(jq -c '{provider: [.providers[].name]}' packages/sdks/schema_sources.json)"
           echo "matrix=${MATRIX_JSON}" >> "$GITHUB_OUTPUT"
 
   schema-drift:
@@ -38,12 +38,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+
       - name: Run drift check
         id: drift
         run: |
           set -euo pipefail
           REPORT_PATH="schema-drift-${{ matrix.provider }}.json"
-          ./scripts/check-schema-drift.sh --provider "${{ matrix.provider }}" --pretty > "${REPORT_PATH}"
+          dart run tool/check_schema_drift.dart --provider "${{ matrix.provider }}" --pretty > "${REPORT_PATH}"
           cat "${REPORT_PATH}"
 
           echo "report_path=${REPORT_PATH}" >> "$GITHUB_OUTPUT"

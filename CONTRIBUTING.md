@@ -23,9 +23,9 @@ Use these as the source of truth for contributor workflows:
 
 - `Taskfile.yml`: primary command entrypoint for setup, generation, smoke tests, and checks
 - `packages/README.md`: generated provider package workflow and conventions
-- `packages/schema_sources.json`: provider schema sources and local mapping
+- `packages/sdks/schema_sources.json`: provider schema sources and local mapping
 - `packages/sdk_dependency_registry.yaml`: cross-provider dependency mapping for generated pubspecs
-- `scripts/check-schema-drift.sh`: upstream schema drift detection
+- `tool/check_schema_drift.dart`: upstream schema drift detection
 - `scripts/install-pulumi-language-dart.sh`: install script for language host releases
 - `website/README.md`: docs site development commands
 
@@ -62,9 +62,9 @@ task smoke:preview PACKAGE=gcp
 ### Check Schema Drift
 
 ```bash
-./scripts/check-schema-drift.sh --pretty
-./scripts/check-schema-drift.sh --provider aws --pretty
-./scripts/check-schema-drift.sh --fail-on-drift
+dart run tool/check_schema_drift.dart --pretty
+dart run tool/check_schema_drift.dart --provider aws --pretty
+dart run tool/check_schema_drift.dart --fail-on-drift
 ```
 
 ## Pull Request Checklist

@@ -17,3 +17,6 @@ pulumi-language-dart/pulumi-language-dart
 
 # Local planning/tracking notes
 SDK_FEATURE_GAP_ANALYSIS.md
+
+# FVM Version Cache
+.fvm/

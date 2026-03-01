@@ -33,7 +33,7 @@ jobs:
       - name: Ensure pulumi submodule checkout
         run: git submodule update --init --recursive
 
-      - name: Validate packages workspace pubspec
+      - name: Validate repository workspace pubspec
         run: ./scripts/check-packages-workspace.sh
 
       - name: Install Pulumi CLI
@@ -50,6 +50,18 @@ jobs:
           cd pulumi-language-dart
           go build -o pulumi-language-dart .
 
+      - name: Install Dart language host for SDK generation
+        run: |
+          cd pulumi-language-dart
+          go install .
+          echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
+
+      - name: Regenerate provider SDK packages
+        run: dart run tool/generate_packages.dart --all
+
+      - name: Verify provider packages are up to date
+        run: git diff --exit-code -- packages
+
       - name: Test Dart language host
         run: |
           cd pulumi-language-dart
@@ -57,17 +69,17 @@ jobs:
 
       - name: Install Dart SDK package dependencies
         run: |
-          cd pulumi-dart
+          cd packages/sdks/pulumi-dart
           dart pub get
 
       - name: Analyze Dart SDK package
         run: |
-          cd pulumi-dart
+          cd packages/sdks/pulumi-dart
           dart analyze
 
       - name: Run Dart SDK package tests
         run: |
-          cd pulumi-dart
+          cd packages/sdks/pulumi-dart
           dart test
 
   proto-regeneration:
@@ -107,7 +119,7 @@ jobs:
         run: make generate
 
       - name: Verify protobuf stubs are up to date
-        run: git diff --exit-code -- pulumi-dart/lib/src/pulumirpc
+          run: git diff --exit-code -- packages/sdks/pulumi-dart/lib/src/pulumirpc
 
   website-docs:
     runs-on: ubuntu-latest

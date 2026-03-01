@@ -2248,16 +2248,16 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 			if !namedType.UseReferenceType {
 				continue
 			}
-			if classSpec := buildObjectClassSpec(
-				namedType.Name,
-				tokenModulePath(token),
-				t.Comment,
-				t.Properties,
-				namedTypeRefs,
-				true,
-				false,
-				pkg.Name,
-			); classSpec != nil {
+				if classSpec := buildObjectClassSpec(
+					namedType.Name,
+					tokenModulePath(token),
+					t.Comment,
+					t.Properties,
+					namedTypeRefs,
+					true,
+					true,
+					pkg.Name,
+				); classSpec != nil {
 				classSpec.CanonicalName = namedType.CanonicalName
 				spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
 			}
@@ -2926,10 +2926,12 @@ func objectClassPropertyDartType(objectClass packageObjectClassSpec, property pa
 
 func objectClassConstructorPropertyDartType(objectClass packageObjectClassSpec, property packagePropertySpec) string {
 	if objectClass.UsesInputTypes {
+		base := propertyBaseDartType(property)
+		typed := fmt.Sprintf("pulumi.Input<%s>", base)
 		if property.Required {
-			return "Object"
+			return typed
 		}
-		return "Object?"
+		return typed + "?"
 	}
 	base := propertyBaseDartType(property)
 	return nullableDartType(base, property.Required)
@@ -3132,6 +3134,12 @@ func objectClassFromMapExpression(objectClass packageObjectClassSpec, property p
 	sourceExpr := fmt.Sprintf("map[%s]", dartStringLiteral(property.Name))
 	typeSpec := propertyTypeSpec(property)
 	decodedExpr := typeSpecDecodeExpression(typeSpec, sourceExpr)
+	if objectClass.UsesInputTypes {
+		if property.Required {
+			return decodedExpr
+		}
+		return fmt.Sprintf("%s == null ? null : %s", sourceExpr, decodedExpr)
+	}
 	if property.Required {
 		return decodedExpr
 	}

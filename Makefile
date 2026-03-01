@@ -1,6 +1,6 @@
 GO := go
 PROTOC := protoc
-DART_OUT_DIR := pulumi-dart/lib/src/pulumirpc
+DART_OUT_DIR := packages/pulumi-dart/lib/src/pulumirpc
 PULUMI_REPO := https://github.com/pulumi/pulumi.git
 PULUMI_DIR := pulumi
 PULUMI_PROTO_DIR := $(PULUMI_DIR)/proto

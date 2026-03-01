@@ -28,7 +28,7 @@ publish_to: none
 version: 0.0.1
 
 environment:
-  sdk: ^3.10.0
+  sdk: ^3.11.0
 
 dependencies:
   pulumi: any

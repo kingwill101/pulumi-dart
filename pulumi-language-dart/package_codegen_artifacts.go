@@ -167,12 +167,12 @@ func buildGeneratedPubspec(
 		Description: "Generated Pulumi Dart project.",
 		Version:     "0.0.1",
 		Environment: map[string]string{
-			"sdk": "^3.10.0",
+			"sdk": "^3.11.0",
 		},
 		Dependencies: map[string]interface{}{},
 	}
 	pubspec.DevDependencies = map[string]interface{}{
-		"lints": "^5.0.0",
+		"lints": "^6.1.0",
 	}
 
 	schemaDependencyNames := make([]string, 0, len(schemaDependencies))

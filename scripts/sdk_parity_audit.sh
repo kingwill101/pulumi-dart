@@ -4,7 +4,7 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 NODEJS_TEST_DIR="${NODEJS_TEST_DIR:-${ROOT_DIR}/pulumi/sdk/nodejs/tests}"
 PYTHON_TEST_DIR="${PYTHON_TEST_DIR:-${ROOT_DIR}/pulumi/sdk/python/lib/test}"
-DART_CORE_DIR="${DART_CORE_DIR:-${ROOT_DIR}/pulumi-dart/test/core}"
+DART_CORE_DIR="${DART_CORE_DIR:-${ROOT_DIR}/packages/pulumi-dart/test/core}"
 IGNORE_FILE="${IGNORE_FILE:-${ROOT_DIR}/docs/sdk-parity-audit-ignore.txt}"
 FAIL_ON_MISSING="${FAIL_ON_MISSING:-false}"
 
