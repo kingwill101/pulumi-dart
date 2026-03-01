@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart';
-import 'package:pulumi/src/runtime_api.dart';
 import 'package:test/test.dart';
 
 class _TestMocks extends Mocks {

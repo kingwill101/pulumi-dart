@@ -84,6 +84,30 @@
 /// For CLI-driven automation workflows, import `package:pulumi/automation.dart`.
 /// For dynamic resource authoring APIs, import `package:pulumi/dynamic.dart`.
 ///
+/// ## Testing with mocks
+/// Use [runtime.setMocks] to configure a mock deployment for unit tests:
+/// ```dart
+/// import 'package:pulumi/pulumi.dart' as pulumi;
+///
+/// class TestMocks extends pulumi.Mocks {
+///   @override
+///   Future<(String?, Map<String, dynamic>)> newResource(
+///     pulumi.MockResourceArgs args,
+///   ) async {
+///     return ('id-1', args.inputs);
+///   }
+///
+///   @override
+///   Future<Map<String, dynamic>> call(pulumi.MockCallArgs args) async {
+///     return {};
+///   }
+/// }
+///
+/// void configure() {
+///   pulumi.runtime.setMocks(TestMocks());
+/// }
+/// ```
+///
 /// ## Entrypoint recommendation
 /// For application code, call [Deployment.runOrThrow]. For tests or custom
 /// runners, [Deployment.run] gives explicit exit-code control.
@@ -114,6 +138,7 @@ export 'src/monitor.dart';
 export 'src/type_token.dart';
 export 'src/urn.dart';
 export 'src/utils.dart';
+export 'src/runtime_api.dart';
 
 // Resource model and lifecycle controls.
 export 'src/resource/resource.dart';

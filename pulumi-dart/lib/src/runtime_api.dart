@@ -1,6 +1,5 @@
 import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart';
 import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
-import 'package:meta/meta.dart';
 
 import 'deployment/deployment.dart';
 import 'engine.dart';
@@ -12,13 +11,23 @@ import 'pulumirpc/pulumi/resource.pbgrpc.dart';
 import 'resource/resource.dart';
 import 'struct_converter.dart';
 
-@visibleForTesting
 class MockResourceArgs {
+  /// Pulumi type token being registered.
   final String type;
+
+  /// Logical resource name.
   final String name;
+
+  /// Resolved input properties.
   final Map<String, dynamic> inputs;
+
+  /// Provider reference when present.
   final String? provider;
+
+  /// Existing import/read ID when present.
   final String? id;
+
+  /// Whether this resource is custom.
   final bool custom;
 
   const MockResourceArgs({
@@ -31,18 +40,24 @@ class MockResourceArgs {
   });
 }
 
-@visibleForTesting
 class MockCallArgs {
+  /// Invoke token.
   final String token;
+
+  /// Resolved invoke arguments.
   final Map<String, dynamic> args;
+
+  /// Provider reference when present.
   final String? provider;
 
   const MockCallArgs({required this.token, required this.args, this.provider});
 }
 
-@visibleForTesting
 class MockRegisterResourceOutputsRequest {
+  /// Target resource URN.
   final String urn;
+
+  /// Registered output properties.
   final Map<String, Output<dynamic>> outputs;
 
   const MockRegisterResourceOutputsRequest({
@@ -51,21 +66,24 @@ class MockRegisterResourceOutputsRequest {
   });
 }
 
-@visibleForTesting
 abstract class Mocks {
+  /// Handles resource registration/read events in mock mode.
   Future<(String?, Map<String, dynamic>)> newResource(MockResourceArgs args);
 
+  /// Handles invoke/call events in mock mode.
   Future<Map<String, dynamic>> call(MockCallArgs args);
 
+  /// Optional hook for stack output registration.
   Future<void> registerResourceOutputs(
     MockRegisterResourceOutputsRequest args,
   ) async {}
 }
 
-@visibleForTesting
+/// Public runtime facade for configuring Pulumi test mocks.
 class RuntimeFacade {
   const RuntimeFacade();
 
+  /// Installs a mock-backed deployment instance for test execution.
   void setMocks(
     Mocks mocks, {
     String? project,
@@ -84,12 +102,13 @@ class RuntimeFacade {
     DeploymentImpl.setTestInstance(deployment);
   }
 
+  /// Clears active mock deployment state.
   void clearMocks() {
     DeploymentImpl.clearMockInstance();
   }
 }
 
-@visibleForTesting
+/// Runtime testing facade, exposed as `pulumi.runtime`.
 const RuntimeFacade runtime = RuntimeFacade();
 
 class _MockEngine implements Engine {
