@@ -16,6 +16,7 @@ vars:
   STRICT_FORMAT: "false"
   ANALYZE_FAIL_ON_ISSUES: "false"
   COVERAGE_LCOV: ""
+  COVERAGE_EXCLUDE_FILE: "{{.ROOT_DIR}}/.coverage_filter"
   DART_COVERAGE_BASELINE: "29.27"
   DAY1_PROVIDERS: "gcp gcp-global-cloudrun google-native"
   ALL_PROVIDERS: "gcp gcp-global-cloudrun google-native aws awsx random"
@@ -61,8 +62,46 @@ tasks:
         set -eu
         cd "{{.PULUMI_DART_PATH}}"
         mkdir -p coverage
+        EXCLUDE_FILE="{{.COVERAGE_EXCLUDE_FILE}}"
+
+        set +e
         dart test --coverage-path=coverage/lcov.info --coverage-package='^pulumi$'
-        echo "Coverage report: {{.PULUMI_DART_PATH}}/coverage/lcov.info"
+        TEST_EXIT_CODE=$?
+        set -e
+
+        if [ -f "${EXCLUDE_FILE}" ]; then
+          awk -v filter_file="${EXCLUDE_FILE}" '
+            BEGIN {
+              n = 0
+              while ((getline line < filter_file) > 0) {
+                gsub(/^[[:space:]]+|[[:space:]]+$/, "", line)
+                if (line == "" || substr(line, 1, 1) == "#") {
+                  continue
+                }
+                filters[++n] = line
+              }
+            }
+            /^SF:/ {
+              skip_file = 0
+              for (i = 1; i <= n; i++) {
+                if (index($0, filters[i]) > 0) {
+                  skip_file = 1
+                  break
+                }
+              }
+            }
+            !skip_file
+          ' coverage/lcov.info > coverage/lcov.filtered.info
+        else
+          cp coverage/lcov.info coverage/lcov.filtered.info
+        fi
+
+        if [ ${TEST_EXIT_CODE} -ne 0 ]; then
+          echo "Dart tests failed with status ${TEST_EXIT_CODE}. Coverage report: {{.PULUMI_DART_PATH}}/coverage/lcov.filtered.info"
+          exit ${TEST_EXIT_CODE}
+        fi
+
+        echo "Coverage report: {{.PULUMI_DART_PATH}}/coverage/lcov.filtered.info"
 
   test:coverage:ratchet:
     desc: Enforce non-regression against the Dart coverage baseline
@@ -70,7 +109,7 @@ tasks:
       - task: test:coverage
       - |
         set -eu
-        LCOV_PATH="{{.PULUMI_DART_PATH}}/coverage/lcov.info"
+        LCOV_PATH="{{.PULUMI_DART_PATH}}/coverage/lcov.filtered.info"
         BASELINE="{{.DART_COVERAGE_BASELINE}}"
         ACTUAL="$(awk -F: '/^LF:/{lf+=$2}/^LH:/{lh+=$2} END{if (lf==0) {print "0.00"} else {printf "%.2f", (100*lh/lf)}}' "${LCOV_PATH}")"
         echo "Coverage baseline: ${BASELINE}%"
@@ -85,7 +124,7 @@ tasks:
         cd "{{.PULUMI_DART_PATH}}"
         rm -rf mutation-test-report
         INPUT_COVERAGE="{{.COVERAGE_LCOV}}"
-        DEFAULT_COVERAGE="{{.PULUMI_DART_PATH}}/coverage/lcov.info"
+        DEFAULT_COVERAGE="{{.PULUMI_DART_PATH}}/coverage/lcov.filtered.info"
         if [ -z "${INPUT_COVERAGE}" ] && [ -f "${DEFAULT_COVERAGE}" ]; then
           INPUT_COVERAGE="${DEFAULT_COVERAGE}"
         fi
@@ -114,6 +153,11 @@ tasks:
     desc: Compare Dart core test surface against upstream NodeJS/Python SDK test topics
     cmds:
       - ./scripts/sdk_parity_audit.sh
+
+  check:workspace:
+    desc: Validate workspace pubspec conventions
+    cmds:
+      - ./scripts/check-packages-workspace.sh
 
   check-tools:
     desc: Verify required tooling for SDK generation

@@ -1,0 +1,10 @@
+name: pulumi_repo_tools
+description: Repository automation tools for pulumi-dart
+publish_to: none
+version: 0.0.1
+
+environment:
+  sdk: ^3.10.0
+
+dependencies:
+  path: ^1.9.1

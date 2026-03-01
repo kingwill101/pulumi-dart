@@ -139,8 +139,68 @@ You can override source selection with:
 In this repo, generated providers live under `packages/<provider>`.
 
 ```bash
-task setup
-task generate:provider PACKAGE=gcp
+curl -fsSL https://raw.githubusercontent.com/pulumi/pulumi-dart/main/scripts/install-pulumi-language-dart.sh | bash
+
+mkdir -p sdk-gen && cd sdk-gen
+```
+
+Create `Pulumi.yaml`:
+
+```yaml
+name: sdk-gen
+runtime: dart
+```
+
+Create `pubspec.yaml`:
+
+```yaml
+name: sdk_gen
+publish_to: none
+version: 0.0.1
+environment:
+  sdk: ^3.10.0
+
+dependencies:
+  pulumi: any
+
+dependency_overrides:
+  pulumi:
+    path: /abs/path/to/pulumi-dart/pulumi-dart
+```
+
+Install dependencies:
+
+```bash
+dart pub get
+```
+
+Generate one or more provider packages:
+
+```bash
+pulumi package add random
+pulumi package add aws@7.11.0
+pulumi package add ./path/to/provider.schema.json
+```
+
+Generated output appears in `sdks/<provider>`. Copy or move that directory into `packages/<provider>` as needed.
+
+If your workspace already contains the provider package, add it to your workspace `pubspec.yaml`
+and consume it directly without `path` overrides:
+
+```yaml
+workspace:
+  - packages/command
+
+dependencies:
+  pulumi_command: ^1.0.0
+```
+
+Then consume it from your app:
+
+```yaml
+dependencies:
+  pulumi_random:
+    path: /abs/path/to/sdk-gen/sdks/random
 ```
 
 Full details: [`packages/README.md`](packages/README.md)

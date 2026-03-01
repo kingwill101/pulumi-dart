@@ -700,6 +700,47 @@ dependencies:
 	assert.FileExists(t, filepath.Join(targetDir, "lib", "pulumi_sample.dart"))
 }
 
+func TestGeneratePackageSyncsToWorkspaceMember(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	rootDir := t.TempDir()
+
+	workspaceMemberDir := filepath.Join(rootDir, "command")
+	require.NoError(t, os.MkdirAll(workspaceMemberDir, 0o700))
+	existingPubspec := strings.TrimSpace(`
+name: pulumi_command
+description: A Pulumi package for executing commands locally or remotely.
+version: 1.0.0
+environment:
+  sdk: ^3.10.0
+dependencies:
+  pulumi: ^1.0.0
+`) + "\n"
+	require.NoError(t, os.WriteFile(filepath.Join(workspaceMemberDir, "pubspec.yaml"), []byte(existingPubspec), 0o600))
+
+	sdksDir := filepath.Join(rootDir, "sdks")
+	generatedDir := filepath.Join(sdksDir, "command")
+	require.NoError(t, os.MkdirAll(generatedDir, 0o700))
+
+	schema := `{
+		"name": "command",
+		"version": "1.2.3",
+		"resources": {
+			"command:index:Command": {}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: generatedDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	assert.FileExists(t, filepath.Join(generatedDir, "lib", "pulumi_command.dart"))
+	assert.FileExists(t, filepath.Join(workspaceMemberDir, "lib", "pulumi_command.dart"))
+}
+
 func TestGeneratePackageFailsWhenExistingPubspecMissingRequiredDependencies(t *testing.T) {
 	t.Parallel()
 
@@ -2521,4 +2562,38 @@ func TestGeneratePackageGoldenSnapshot(t *testing.T) {
 	rootContent, sdkContent := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
 	assertGoldenFile(t, filepath.Join("testdata", "generate_package", "sample_public.golden.dart"), rootContent)
 	assertGoldenFile(t, filepath.Join("testdata", "generate_package", "sample_sdk.golden.dart"), sdkContent)
+}
+
+func TestGeneratePackageEscapesDollarPrefixedPropertyNames(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"types": {
+			"sample:index:JsonSchemaProps": {
+				"type": "object",
+				"properties": {
+					"$ref": { "type": "string" },
+					"$schema": { "type": "string" }
+				}
+			}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	_, sdkContent := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
+	assert.Contains(t, sdkContent, `'\$ref': ?ref`)
+	assert.Contains(t, sdkContent, `'\$schema': ?schema`)
+	assert.Contains(t, sdkContent, `map['\$ref']`)
+	assert.Contains(t, sdkContent, `map['\$schema']`)
+	assert.NotContains(t, sdkContent, `map['$ref']`)
+	assert.NotContains(t, sdkContent, `map['$schema']`)
 }

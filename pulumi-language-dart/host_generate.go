@@ -369,6 +369,10 @@ func (host *dartLanguageHost) GeneratePackage(
 		}
 	}
 
+	if err := syncGeneratedCodeToWorkspaceMember(req.GetDirectory(), packageName); err != nil {
+		return nil, fmt.Errorf("failed to sync generated code to workspace member: %w", err)
+	}
+
 	return &pulumirpc.GeneratePackageResponse{
 		Diagnostics: rpcDiagnostics,
 	}, nil
@@ -984,4 +988,128 @@ func workspaceMembersFromPubspec(pubspecPath string) ([]string, error) {
 	}
 
 	return pubspec.Workspace, nil
+}
+
+func syncGeneratedCodeToWorkspaceMember(generatedDir, packageName string) error {
+	absGeneratedDir, err := filepath.Abs(generatedDir)
+	if err != nil {
+		return fmt.Errorf("failed to get absolute path of generated directory: %w", err)
+	}
+
+	parentDir := filepath.Dir(absGeneratedDir)
+	parentDirName := filepath.Base(parentDir)
+
+	grandparentDir := filepath.Dir(parentDir)
+	grandparentDirName := filepath.Base(grandparentDir)
+
+	var providerDir string
+	if grandparentDirName == "sdks" {
+		providerDir = parentDir
+	} else if parentDirName == "sdks" {
+		providerDir = absGeneratedDir
+	} else {
+		return nil
+	}
+
+	providerName := strings.TrimPrefix(packageName, "pulumi_")
+	packagesDir := filepath.Dir(filepath.Dir(providerDir))
+	workspaceMemberDir := filepath.Join(packagesDir, providerName)
+	pubspecPath := filepath.Join(workspaceMemberDir, "pubspec.yaml")
+	if _, err := os.Stat(pubspecPath); err != nil {
+		return nil
+	}
+
+	packagePubspec, err := ReadAndParsePubspec(pubspecPath)
+	if err != nil {
+		return nil
+	}
+
+	expectedPackageName := toDartPackageName("", packageName)
+	if packagePubspec.Name != expectedPackageName {
+		return nil
+	}
+
+	generatedPubspecPath := filepath.Join(absGeneratedDir, "pubspec.yaml")
+	_, err = os.ReadFile(generatedPubspecPath)
+	if err != nil {
+		return nil
+	}
+
+	generatedPubspec, err := ReadAndParsePubspec(generatedPubspecPath)
+	if err != nil {
+		return nil
+	}
+
+	didMutate := applyGeneratedPulumiDependency(packagePubspec, generatedPubspec)
+	didMutate = applyLocalPathPublishPolicy(packagePubspec) || didMutate
+
+	missingDependencies := missingRequiredDependencies(packagePubspec, generatedPubspec.Dependencies)
+	if len(missingDependencies) > 0 {
+		if shouldUpdateExistingPubspec() {
+			didMutate = true
+			if packagePubspec.Dependencies == nil {
+				packagePubspec.Dependencies = map[string]interface{}{}
+			}
+			for _, name := range missingDependencies {
+				packagePubspec.Dependencies[name] = generatedPubspec.Dependencies[name]
+			}
+		}
+	}
+
+	if didMutate {
+		updatedPubspecBytes, err := yaml.Marshal(packagePubspec)
+		if err != nil {
+			return fmt.Errorf("failed to marshal updated workspace member pubspec.yaml: %w", err)
+		}
+		if err := os.WriteFile(pubspecPath, updatedPubspecBytes, 0o600); err != nil {
+			return fmt.Errorf("failed to update workspace member pubspec.yaml: %w", err)
+		}
+	}
+
+	targetLibDir := filepath.Join(workspaceMemberDir, "lib")
+	if err := os.MkdirAll(targetLibDir, 0o700); err != nil {
+		return fmt.Errorf("failed to create target lib directory: %w", err)
+	}
+
+	generatedLibDir := filepath.Join(absGeneratedDir, "lib")
+	if _, err := os.Stat(generatedLibDir); err != nil {
+		return nil
+	}
+
+	if err := copyDirContents(generatedLibDir, targetLibDir); err != nil {
+		return fmt.Errorf("failed to copy generated lib to workspace member: %w", err)
+	}
+
+	return nil
+}
+
+func copyDirContents(src, dst string) error {
+	entries, err := os.ReadDir(src)
+	if err != nil {
+		return err
+	}
+
+	for _, entry := range entries {
+		srcPath := filepath.Join(src, entry.Name())
+		dstPath := filepath.Join(dst, entry.Name())
+
+		if entry.IsDir() {
+			if err := os.MkdirAll(dstPath, 0o700); err != nil {
+				return err
+			}
+			if err := copyDirContents(srcPath, dstPath); err != nil {
+				return err
+			}
+		} else {
+			data, err := os.ReadFile(srcPath)
+			if err != nil {
+				return err
+			}
+			if err := os.WriteFile(dstPath, data, 0o600); err != nil {
+				return err
+			}
+		}
+	}
+
+	return nil
 }

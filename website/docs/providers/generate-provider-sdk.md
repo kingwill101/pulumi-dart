@@ -76,6 +76,21 @@ Generated output goes under:
 
 - `sdks/<provider>/`
 
+If this package is already present in your repo workspace (for example you already have `packages/command`),
+add its package directory to your workspace pubspec first:
+
+```yaml
+workspace:
+  - command
+```
+
+Then consume it directly with your existing workspace dependency resolution:
+
+```yaml
+dependencies:
+  pulumi_command: ^1.0.0
+```
+
 ## 3. Consume generated package from application
 
 In your application `pubspec.yaml`:

@@ -1,0 +1,6 @@
+# Paths in this file are matched as plain string substrings against each `SF:` line
+# in lcov output.
+#
+# Exclude generated protobuf sources from coverage calculations so the report
+# focuses on maintained Dart source.
+lib/src/pulumirpc/

@@ -29,6 +29,7 @@ type PubSpec struct {
 	DevDependencies     map[string]interface{} `yaml:"dev_dependencies,omitempty" json:"dev_dependencies,omitempty"`
 	DependencyOverrides map[string]interface{} `yaml:"dependency_overrides,omitempty" json:"dependency_overrides,omitempty"`
 	Platforms           []string               `yaml:"platforms,omitempty" json:"platforms,omitempty"`
+	Workspace           []string               `yaml:"workspace,omitempty" json:"workspace,omitempty"`
 }
 
 // String returns a JSON-formatted string representation of the PubSpec struct.

@@ -4062,8 +4062,8 @@ func generatedResourceFile(
 			fmt.Fprintf(&b, "  %s(\n    String name, {\n    pulumi.CustomResourceOptions? options,\n  }) : super(\n          %s,\n          name,\n          const <String, dynamic>{},\n          options ?? pulumi.CustomResourceOptions(),\n        )", className, dartStringLiteral(providerPackageName))
 		}
 
-		if len(resource.OutputProperties) == 0 && len(resource.Methods) == 0 {
-			b.WriteString(";\n}\n")
+		if len(resource.OutputProperties) == 0 {
+			b.WriteString(";\n")
 		} else {
 			b.WriteString(" {\n")
 			for _, property := range resource.OutputProperties {
@@ -4075,9 +4075,10 @@ func generatedResourceFile(
 					dartStringLiteral(property.Name),
 				)
 			}
-			writeGeneratedResourceMethods(&b, token, resource, hasPackageRegistration)
-			b.WriteString("  }\n}\n")
+			b.WriteString("  }\n")
 		}
+		writeGeneratedResourceMethods(&b, token, resource, hasPackageRegistration)
+		b.WriteString("}\n")
 
 		return []byte(b.String())
 	}
@@ -4121,8 +4122,8 @@ func generatedResourceFile(
 			fmt.Fprintf(&b, signature, className, dartStringLiteral(token))
 		}
 
-		if len(resource.OutputProperties) == 0 && len(resource.Methods) == 0 {
-			b.WriteString(";\n}\n")
+		if len(resource.OutputProperties) == 0 {
+			b.WriteString(";\n")
 		} else {
 			b.WriteString(" {\n")
 			for _, property := range resource.OutputProperties {
@@ -4134,9 +4135,10 @@ func generatedResourceFile(
 					dartStringLiteral(property.Name),
 				)
 			}
-			writeGeneratedResourceMethods(&b, token, resource, hasPackageRegistration)
-			b.WriteString("  }\n}\n")
+			b.WriteString("  }\n")
 		}
+		writeGeneratedResourceMethods(&b, token, resource, hasPackageRegistration)
+		b.WriteString("}\n")
 		return []byte(b.String())
 	}
 
@@ -4199,27 +4201,27 @@ func generatedResourceFile(
 			resourceRegisterPackageArg,
 		)
 	}
-	if len(resource.OutputProperties) == 0 &&
-		len(resource.Methods) == 0 &&
-		resource.StateClass == "" {
-		b.WriteString(";\n}\n")
-		return []byte(b.String())
-	}
-	b.WriteString(" {\n")
-	for _, property := range resource.OutputProperties {
-		fmt.Fprintf(
-			&b,
-			"    this.%s = registerOutput<%s>(%s);\n",
-			property.FieldName,
-			resourceOutputValueType(property),
-			dartStringLiteral(property.Name),
-		)
+
+	if len(resource.OutputProperties) == 0 {
+		b.WriteString(";\n")
+	} else {
+		b.WriteString(" {\n")
+		for _, property := range resource.OutputProperties {
+			fmt.Fprintf(
+				&b,
+				"    this.%s = registerOutput<%s>(%s);\n",
+				property.FieldName,
+				resourceOutputValueType(property),
+				dartStringLiteral(property.Name),
+			)
+		}
+		b.WriteString("  }\n")
 	}
 	writeGeneratedResourceMethods(&b, token, resource, hasPackageRegistration)
 	if resource.StateClass != "" {
 		writeGeneratedResourceGetMethod(&b, token, resource, className)
 	}
-	b.WriteString("  }\n}\n")
+	b.WriteString("}\n")
 	return []byte(b.String())
 }
 

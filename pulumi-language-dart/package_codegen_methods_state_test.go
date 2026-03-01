@@ -310,4 +310,14 @@ func TestGeneratedResourceFileEmitsGetAndMethodWrappers(t *testing.T) {
 	assert.Contains(t, content, "Future<void> refresh() async")
 	assert.Contains(t, content, "await deployment.call(")
 	assert.Contains(t, content, "registerPackageRequest: package_registration.registerPackageRequest")
+	assert.Contains(
+		t,
+		content,
+		"options ?? pulumi.CustomResourceOptions(),\n          registerPackageRequest: package_registration.registerPackageRequest,\n        );\n\n  /// Gets details for this widget.",
+	)
+	assert.Contains(
+		t,
+		content,
+		"  }\n\n  /// Gets an existing [Widget] resource's state with the given [name] and [id].",
+	)
 }

@@ -33,6 +33,9 @@ jobs:
       - name: Ensure pulumi submodule checkout
         run: git submodule update --init --recursive
 
+      - name: Validate packages workspace pubspec
+        run: ./scripts/check-packages-workspace.sh
+
       - name: Install Pulumi CLI
         uses: pulumi/actions@v5
 
