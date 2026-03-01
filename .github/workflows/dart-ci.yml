@@ -231,11 +231,17 @@ jobs:
 
   dart-integration-tests-cloud:
     name: Dart integration tests (cloud-only)
-    if: ${{ secrets.PULUMI_ACCESS_TOKEN != '' }}
+    if: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN != '' }}
     runs-on: ubuntu-latest
-    env:
-      PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
     steps:
+      - name: Load cloud test secrets from 1Password
+        uses: 1password/load-secrets-action@v2
+        with:
+          export-env: true
+        env:
+          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
+          PULUMI_ACCESS_TOKEN: "op://devops/pulumi token/credential"
+
       - name: Checkout code
         uses: actions/checkout@v4
         with:
