@@ -107,6 +107,15 @@ abstract class Provider {
     return CheckResult(inputs: news);
   }
 
+  /// Validates provider configuration inputs.
+  Future<CheckResult> checkConfig(
+    String urn,
+    Map<String, dynamic> olds,
+    Map<String, dynamic> news,
+  ) async {
+    return check(urn, olds, news);
+  }
+
   /// Computes the impact of an update.
   Future<DiffResult> diff(
     String id,
@@ -115,6 +124,16 @@ abstract class Provider {
     Map<String, dynamic> news,
   ) async {
     return const DiffResult();
+  }
+
+  /// Computes the impact of provider configuration updates.
+  Future<DiffResult> diffConfig(
+    String id,
+    String urn,
+    Map<String, dynamic> olds,
+    Map<String, dynamic> news,
+  ) async {
+    return diff(id, urn, olds, news);
   }
 
   /// Creates a new custom resource instance.

@@ -33,9 +33,14 @@ class _RecordingProvider extends Provider {
   String? checkUrn;
   Map<String, dynamic>? checkOlds;
   Map<String, dynamic>? checkNews;
+  String? checkConfigUrn;
+  Map<String, dynamic>? checkConfigOlds;
+  Map<String, dynamic>? checkConfigNews;
 
   String? diffId;
   String? diffUrn;
+  String? diffConfigId;
+  String? diffConfigUrn;
 
   String? createUrn;
   Map<String, dynamic>? createInputs;
@@ -123,6 +128,23 @@ class _RecordingProvider extends Provider {
   }
 
   @override
+  Future<CheckResult> checkConfig(
+    String urn,
+    Map<String, dynamic> olds,
+    Map<String, dynamic> news,
+  ) async {
+    checkConfigUrn = urn;
+    checkConfigOlds = olds;
+    checkConfigNews = news;
+    return CheckResult(
+      inputs: <String, dynamic>{'normalized': true, ...news},
+      failures: const <CheckFailure>[
+        CheckFailure(property: 'region', reason: 'unsupported'),
+      ],
+    );
+  }
+
+  @override
   Future<DiffResult> diff(
     String id,
     String urn,
@@ -137,6 +159,18 @@ class _RecordingProvider extends Provider {
       stables: <String>['region'],
       deleteBeforeReplace: true,
     );
+  }
+
+  @override
+  Future<DiffResult> diffConfig(
+    String id,
+    String urn,
+    Map<String, dynamic> olds,
+    Map<String, dynamic> news,
+  ) async {
+    diffConfigId = id;
+    diffConfigUrn = urn;
+    return const DiffResult(changes: false, stables: <String>['region']);
   }
 
   @override
@@ -674,29 +708,52 @@ void main() {
       expect(response.acceptOutputs, isTrue);
     });
 
-    test('checkConfig and diffConfig are explicitly unimplemented', () async {
-      final server = ProviderServer(_RecordingProvider());
+    test('checkConfig and diffConfig delegate to provider contract', () async {
+      final provider = _RecordingProvider();
+      final server = ProviderServer(provider);
 
-      expect(
-        () => server.checkConfig(call, providerpb.CheckRequest()),
-        throwsA(
-          isA<GrpcError>().having(
-            (error) => error.code,
-            'code',
-            StatusCode.unimplemented,
-          ),
+      final checkConfig = await server.checkConfig(
+        call,
+        providerpb.CheckRequest(
+          urn: 'urn:pulumi:dev::proj::pulumi:providers:pkg::default',
+          olds: await StructConverter.toStruct(<String, dynamic>{
+            'region': 'us-west-1',
+          }),
+          news: await StructConverter.toStruct(<String, dynamic>{
+            'region': 'moon-1',
+          }),
         ),
       );
+      expect(provider.checkConfigUrn, contains('pulumi:providers:pkg'));
+      expect(provider.checkConfigOlds!['region'], equals('us-west-1'));
+      expect(provider.checkConfigNews!['region'], equals('moon-1'));
       expect(
-        () => server.diffConfig(call, providerpb.DiffRequest()),
-        throwsA(
-          isA<GrpcError>().having(
-            (error) => error.code,
-            'code',
-            StatusCode.unimplemented,
-          ),
+        StructConverter.fromStruct(checkConfig.inputs),
+        equals(<String, dynamic>{'normalized': true, 'region': 'moon-1'}),
+      );
+      expect(checkConfig.failures, hasLength(1));
+      expect(checkConfig.failures.single.property, equals('region'));
+
+      final diffConfig = await server.diffConfig(
+        call,
+        providerpb.DiffRequest(
+          id: 'default',
+          urn: 'urn:pulumi:dev::proj::pulumi:providers:pkg::default',
+          olds: await StructConverter.toStruct(<String, dynamic>{
+            'region': 'us-west-1',
+          }),
+          news: await StructConverter.toStruct(<String, dynamic>{
+            'region': 'moon-1',
+          }),
         ),
       );
+      expect(provider.diffConfigId, equals('default'));
+      expect(provider.diffConfigUrn, contains('pulumi:providers:pkg'));
+      expect(
+        diffConfig.changes,
+        equals(providerpb.DiffResponse_DiffChanges.DIFF_NONE),
+      );
+      expect(diffConfig.stables, contains('region'));
     });
 
     test('getMapping and getMappings return empty payloads', () async {

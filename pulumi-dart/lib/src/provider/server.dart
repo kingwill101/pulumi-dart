@@ -217,16 +217,57 @@ class ProviderServer extends providergrpc.ResourceProviderServiceBase {
   Future<providerpb.CheckResponse> checkConfig(
     ServiceCall call,
     providerpb.CheckRequest request,
-  ) {
-    throw GrpcError.unimplemented('Not yet implemented: CheckConfig');
+  ) async {
+    final olds = StructConverter.fromStruct(request.olds);
+    final news = StructConverter.fromStruct(request.news);
+    final result = await provider.checkConfig(request.urn, olds, news);
+
+    final response = providerpb.CheckResponse();
+    response.inputs = await StructConverter.toStruct(result.inputs ?? news);
+    response.failures.addAll(
+      result.failures.map(
+        (failure) => providerpb.CheckFailure(
+          property: failure.property,
+          reason: failure.reason,
+        ),
+      ),
+    );
+    return response;
   }
 
   @override
   Future<providerpb.DiffResponse> diffConfig(
     ServiceCall call,
     providerpb.DiffRequest request,
-  ) {
-    throw GrpcError.unimplemented('Not yet implemented: DiffConfig');
+  ) async {
+    final olds = StructConverter.fromStruct(request.olds);
+    final news = StructConverter.fromStruct(request.news);
+    final result = await provider.diffConfig(
+      request.id,
+      request.urn,
+      olds,
+      news,
+    );
+
+    final response = providerpb.DiffResponse();
+    if (result.changes == true) {
+      response.changes = providerpb.DiffResponse_DiffChanges.DIFF_SOME;
+    } else if (result.changes == false) {
+      response.changes = providerpb.DiffResponse_DiffChanges.DIFF_NONE;
+    } else {
+      response.changes = providerpb.DiffResponse_DiffChanges.DIFF_UNKNOWN;
+    }
+
+    if (result.replaces != null) {
+      response.replaces.addAll(result.replaces!);
+    }
+    if (result.stables != null) {
+      response.stables.addAll(result.stables!);
+    }
+    if (result.deleteBeforeReplace != null) {
+      response.deleteBeforeReplace = result.deleteBeforeReplace!;
+    }
+    return response;
   }
 
   @override
