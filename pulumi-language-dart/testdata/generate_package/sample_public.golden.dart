@@ -3,8 +3,10 @@
 library pulumi_sample;
 
 import 'package:pulumi_sample/index.dart' as _index;
+import 'package:pulumi_sample/providers.dart' as _providers;
 
 final index = _IndexModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
   _IndexModuleNamespace();
@@ -17,5 +19,10 @@ class _IndexModuleNamespace {
   final WidgetMetadataArgs = _index.WidgetMetadata.new;
   final WidgetMode = _index.WidgetMode.values;
   final getWidgetDetails = _index.getWidgetDetails;
+}
+
+class _ProvidersModuleNamespace {
+  _ProvidersModuleNamespace();
+  final Sample = _providers.ProviderProvider.new;
 }
 

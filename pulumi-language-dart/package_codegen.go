@@ -44,9 +44,12 @@ type packageParameterizationSpec struct {
 
 type packageResourceSpec struct {
 	IsComponent      bool                  `json:"isComponent"`
+	IsProvider       bool                  `json:"isProvider"`
 	Comment          string                `json:"-"`
+	StateClass       string                `json:"-"`
 	ArgsClass        string                `json:"-"`
 	OutputProperties []packagePropertySpec `json:"-"`
+	Methods          []packageResourceMethodSpec
 }
 
 type packageFunctionSpec struct {
@@ -54,6 +57,15 @@ type packageFunctionSpec struct {
 	HasArgs     bool   `json:"-"`
 	ArgsClass   string `json:"-"`
 	ResultClass string `json:"-"`
+}
+
+type packageResourceMethodSpec struct {
+	Name        string `json:"-"`
+	Token       string `json:"-"`
+	Comment     string `json:"-"`
+	ArgsClass   string `json:"-"`
+	ResultClass string `json:"-"`
+	HasReturn   bool   `json:"-"`
 }
 
 type packageObjectClassSpec struct {
@@ -130,6 +142,7 @@ type rawPackageSchema struct {
 	Config      rawConfigSpec              `json:"config"`
 	Resources   map[string]rawResourceSpec `json:"resources"`
 	Functions   map[string]rawFunctionSpec `json:"functions"`
+	Provider    *rawResourceSpec           `json:"provider"`
 }
 
 type rawConfigSpec struct {
@@ -139,12 +152,16 @@ type rawConfigSpec struct {
 }
 
 type rawResourceSpec struct {
+	Token           string                         `json:"token"`
 	Description     string                         `json:"description"`
 	IsComponent     bool                           `json:"isComponent"`
+	IsProvider      bool                           `json:"isProvider"`
+	StateInputs     *rawObjectSpec                 `json:"stateInputs"`
 	InputProperties map[string]rawPropertyTypeSpec `json:"inputProperties"`
 	RequiredInputs  []string                       `json:"requiredInputs"`
 	Properties      map[string]rawPropertyTypeSpec `json:"properties"`
 	Required        []string                       `json:"required"`
+	Methods         map[string]string              `json:"methods"`
 }
 
 type rawFunctionSpec struct {
@@ -221,6 +238,46 @@ func rawRequiredSet(required []string) map[string]struct{} {
 	return requiredSet
 }
 
+func mergeRawPropertySpecs(base map[string]rawPropertyTypeSpec, extra map[string]rawPropertyTypeSpec) map[string]rawPropertyTypeSpec {
+	merged := make(map[string]rawPropertyTypeSpec, len(base)+len(extra))
+	for key, value := range base {
+		merged[key] = value
+	}
+	for key, value := range extra {
+		if _, exists := merged[key]; !exists {
+			merged[key] = value
+		}
+	}
+	return merged
+}
+
+func appendDistinctStringSet(base []string, extras []string) []string {
+	existing := make(map[string]struct{}, len(base))
+	for _, item := range base {
+		existing[item] = struct{}{}
+	}
+	merged := append([]string{}, base...)
+	for _, item := range extras {
+		if _, seen := existing[item]; seen {
+			continue
+		}
+		existing[item] = struct{}{}
+		merged = append(merged, item)
+	}
+	return merged
+}
+
+func mergeRawMethods(base map[string]string, extra map[string]string) map[string]string {
+	merged := make(map[string]string, len(base)+len(extra))
+	for key, value := range base {
+		merged[key] = value
+	}
+	for key, value := range extra {
+		merged[key] = value
+	}
+	return merged
+}
+
 func enumValueName(preferred string, value any, used map[string]int) string {
 	candidate := preferred
 	if strings.TrimSpace(candidate) == "" {
@@ -236,7 +293,7 @@ func dartEnumLiteral(value any, typeName string) (string, bool) {
 		if !ok {
 			return "", false
 		}
-		return strconv.Quote(v), true
+		return dartDoubleQuotedStringLiteral(v), true
 	case "bool":
 		v, ok := value.(bool)
 		if !ok {
@@ -271,6 +328,45 @@ func dartEnumLiteral(value any, typeName string) (string, bool) {
 	default:
 		return "", false
 	}
+}
+
+func dartDoubleQuotedStringLiteral(value string) string {
+	quoted := strconv.Quote(value)
+	return strings.ReplaceAll(quoted, "$", `\$`)
+}
+
+func dartStringLiteral(value string) string {
+	var b strings.Builder
+	b.Grow(len(value) + 2)
+	b.WriteByte('\'')
+	for _, r := range value {
+		switch r {
+		case '\\':
+			b.WriteString(`\\`)
+		case '\'':
+			b.WriteString(`\'`)
+		case '$':
+			b.WriteString(`\$`)
+		case '\n':
+			b.WriteString(`\n`)
+		case '\r':
+			b.WriteString(`\r`)
+		case '\t':
+			b.WriteString(`\t`)
+		case '\b':
+			b.WriteString(`\b`)
+		case '\f':
+			b.WriteString(`\f`)
+		default:
+			if r < 0x20 {
+				fmt.Fprintf(&b, `\u%04x`, r)
+				continue
+			}
+			b.WriteRune(r)
+		}
+	}
+	b.WriteByte('\'')
+	return b.String()
 }
 
 func rawRefToken(ref string) string {
@@ -860,6 +956,55 @@ func makeRawResourceOutputPropertySpecs(
 	return fields
 }
 
+func schemaObjectPropertiesFromRef(objectType *schema.ObjectType) []*schema.Property {
+	if objectType == nil {
+		return nil
+	}
+	if objectType.InputShape != nil && (objectType.IsInputShape() || len(objectType.Properties) == 0) {
+		return objectType.InputShape.Properties
+	}
+	return objectType.Properties
+}
+
+func schemaPropertiesWithoutSelf(properties []*schema.Property) []*schema.Property {
+	if len(properties) == 0 {
+		return nil
+	}
+	filtered := make([]*schema.Property, 0, len(properties))
+	for _, property := range properties {
+		if property == nil || property.Name == "__self__" {
+			continue
+		}
+		filtered = append(filtered, property)
+	}
+	if len(filtered) == 0 {
+		return nil
+	}
+	return filtered
+}
+
+func rawObjectSpecPropertiesWithoutSelf(properties map[string]rawPropertyTypeSpec, required []string) (map[string]rawPropertyTypeSpec, []string) {
+	if len(properties) == 0 {
+		return map[string]rawPropertyTypeSpec{}, nil
+	}
+
+	filteredProperties := make(map[string]rawPropertyTypeSpec, len(properties))
+	filteredRequired := make([]string, 0, len(required))
+	for key, value := range properties {
+		if key == "__self__" {
+			continue
+		}
+		filteredProperties[key] = value
+	}
+	for _, property := range required {
+		if property != "__self__" {
+			filteredRequired = append(filteredRequired, property)
+		}
+	}
+	sort.Strings(filteredRequired)
+	return filteredProperties, filteredRequired
+}
+
 func parsePackageSchema(schemaJSON, outputDir string) (*packageSchema, error) {
 	var rawSpec rawPackageSchema
 	if err := json.Unmarshal([]byte(schemaJSON), &rawSpec); err != nil {
@@ -940,8 +1085,30 @@ func parsePackageSchema(schemaJSON, outputDir string) (*packageSchema, error) {
 
 	// Reserve resource type names up front so refs to #/resources/... can be
 	// strongly typed and stable while we build the remaining schema model.
-	resourceTokens := make([]string, 0, len(rawSpec.Resources))
-	for token := range rawSpec.Resources {
+	resourceSpecByToken := map[string]rawResourceSpec{}
+	for token, resource := range rawSpec.Resources {
+		resourceSpecByToken[token] = resource
+	}
+	if rawSpec.Provider != nil {
+		providerToken := strings.TrimSpace(rawSpec.Provider.Token)
+		if providerToken == "" {
+			providerToken = fmt.Sprintf("pulumi:providers:%s", rawSpec.Name)
+		}
+		provider := *rawSpec.Provider
+		provider.IsProvider = true
+		if existing, ok := resourceSpecByToken[providerToken]; ok {
+			existing.IsProvider = true
+			existing.RequiredInputs = appendDistinctStringSet(existing.RequiredInputs, provider.RequiredInputs)
+			existing.InputProperties = mergeRawPropertySpecs(existing.InputProperties, provider.InputProperties)
+			existing.Properties = mergeRawPropertySpecs(existing.Properties, provider.Properties)
+			existing.Methods = mergeRawMethods(existing.Methods, provider.Methods)
+			resourceSpecByToken[providerToken] = existing
+		} else {
+			resourceSpecByToken[providerToken] = provider
+		}
+	}
+	resourceTokens := make([]string, 0, len(resourceSpecByToken))
+	for token := range resourceSpecByToken {
 		resourceTokens = append(resourceTokens, token)
 	}
 	sort.Strings(resourceTokens)
@@ -1017,10 +1184,11 @@ func parsePackageSchema(schemaJSON, outputDir string) (*packageSchema, error) {
 	}
 
 	for _, token := range resourceTokens {
-		resource := rawSpec.Resources[token]
-		resourceBaseName := toDartClassName(tokenElementName(token))
+		resource := resourceSpecByToken[token]
+		resourceBaseName := resourceTypeBaseNameFromToken(token)
 		resourceSpec := packageResourceSpec{
 			IsComponent: resource.IsComponent,
+			IsProvider:  isProviderResourceToken(token) || resource.IsProvider,
 			Comment:     strings.TrimSpace(resource.Description),
 		}
 		if classSpec := makeRawObjectClassSpec(
@@ -1041,6 +1209,107 @@ func parsePackageSchema(schemaJSON, outputDir string) (*packageSchema, error) {
 			spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
 			resourceSpec.ArgsClass = classSpec.ClassName
 		}
+		if resource.StateInputs != nil {
+			stateProperties, stateRequired := rawObjectSpecPropertiesWithoutSelf(
+				resource.StateInputs.Properties,
+				resource.StateInputs.Required,
+			)
+			if classSpec := makeRawObjectClassSpec(
+				resourceBaseName,
+				tokenModulePath(token),
+				fmt.Sprintf("Input properties used for looking up and filtering %s resources.", resourceBaseName),
+				stateProperties,
+				stateRequired,
+				moduleScopedTypeNameSet(usedClassNamesByModule, tokenModulePath(token)),
+				namedTypeRefs,
+				true,
+				true,
+				externalRefs,
+				"State",
+				"ResourceState",
+			); classSpec != nil {
+				classSpec.CanonicalName = canonicalTypeName(resourceBaseName, "State")
+				spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
+				resourceSpec.StateClass = classSpec.ClassName
+			}
+		}
+
+		methodNames := make([]string, 0, len(resource.Methods))
+		for methodName := range resource.Methods {
+			methodNames = append(methodNames, methodName)
+		}
+		sort.Strings(methodNames)
+		methodSpecs := make([]packageResourceMethodSpec, 0, len(methodNames))
+		for _, methodName := range methodNames {
+			methodToken := strings.TrimSpace(resource.Methods[methodName])
+			method := packageResourceMethodSpec{
+				Name:  methodName,
+				Token: methodToken,
+			}
+			function, hasFunction := rawSpec.Functions[methodToken]
+			if hasFunction {
+				method.Comment = strings.TrimSpace(function.Description)
+			}
+
+			methodBaseName := resourceBaseName + toDartClassName(methodName)
+			if method.Name == "" {
+				method.Name = tokenElementName(method.Token)
+				if method.Name == "" {
+					method.Name = "invoke"
+				}
+				methodBaseName = resourceBaseName + toDartClassName(method.Name)
+			}
+
+			if hasFunction && function.Inputs != nil {
+				inputProperties, inputRequired := rawObjectSpecPropertiesWithoutSelf(
+					function.Inputs.Properties,
+					function.Inputs.Required,
+				)
+				if classSpec := makeRawObjectClassSpec(
+					methodBaseName,
+					tokenModulePath(token),
+					fmt.Sprintf("Arguments for %s.%s.", resourceBaseName, method.Name),
+					inputProperties,
+					inputRequired,
+					moduleScopedTypeNameSet(usedClassNamesByModule, tokenModulePath(token)),
+					namedTypeRefs,
+					true,
+					true,
+					externalRefs,
+					"Args",
+					"MethodArgs",
+				); classSpec != nil {
+					classSpec.CanonicalName = canonicalTypeName(resourceBaseName, toDartClassName(method.Name), "Args")
+					spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
+					method.ArgsClass = classSpec.ClassName
+				}
+			}
+
+			if hasFunction && function.Outputs != nil {
+				if classSpec := makeRawObjectClassSpec(
+					methodBaseName,
+					tokenModulePath(token),
+					fmt.Sprintf("Result data returned by %s.%s.", resourceBaseName, method.Name),
+					function.Outputs.Properties,
+					function.Outputs.Required,
+					moduleScopedTypeNameSet(usedClassNamesByModule, tokenModulePath(token)),
+					namedTypeRefs,
+					true,
+					false,
+					externalRefs,
+					"Result",
+					"MethodResult",
+				); classSpec != nil {
+					classSpec.CanonicalName = canonicalTypeName(resourceBaseName, toDartClassName(method.Name), "Result")
+					spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
+					method.ResultClass = classSpec.ClassName
+				}
+				method.HasReturn = true
+			}
+
+			methodSpecs = append(methodSpecs, method)
+		}
+		resourceSpec.Methods = methodSpecs
 		resourceSpec.OutputProperties = makeRawResourceOutputPropertySpecs(resource, namedTypeRefs, externalRefs)
 		spec.Resources[token] = resourceSpec
 	}
@@ -2048,13 +2317,24 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 		resourceByToken[resource.Token] = resource
 		resourceTokens = append(resourceTokens, resource.Token)
 	}
+	if pkg.Provider != nil {
+		providerToken := strings.TrimSpace(pkg.Provider.Token)
+		if providerToken == "" {
+			providerToken = fmt.Sprintf("pulumi:providers:%s", pkg.Name)
+		}
+		if _, exists := resourceByToken[providerToken]; !exists {
+			resourceByToken[providerToken] = pkg.Provider
+			resourceTokens = append(resourceTokens, providerToken)
+		}
+	}
 	sort.Strings(resourceTokens)
 
 	for _, token := range resourceTokens {
 		resource := resourceByToken[token]
-		resourceBaseName := toDartClassName(tokenElementName(resource.Token))
+		resourceBaseName := resourceTypeBaseNameFromToken(resource.Token)
 		resourceSpec := packageResourceSpec{
 			IsComponent: resource.IsComponent,
+			IsProvider:  isProviderResourceToken(resource.Token) || resource.IsProvider,
 			Comment:     strings.TrimSpace(resource.Comment),
 		}
 		if classSpec := makeObjectClassSpec(
@@ -2074,6 +2354,113 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 			spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
 			resourceSpec.ArgsClass = classSpec.ClassName
 		}
+
+		if stateClass := makeObjectClassSpec(
+			resourceBaseName,
+			tokenModulePath(resource.Token),
+			fmt.Sprintf("Input properties used for looking up and filtering %s resources.", resourceBaseName),
+			schemaPropertiesWithoutSelf(schemaObjectPropertiesFromRef(resource.StateInputs)),
+			moduleScopedTypeNameSet(usedClassNamesByModule, tokenModulePath(resource.Token)),
+			namedTypeRefs,
+			true,
+			true,
+			pkg.Name,
+			"State",
+			"ResourceState",
+		); stateClass != nil {
+			stateClass.CanonicalName = canonicalTypeName(resourceBaseName, "State")
+			spec.ObjectClasses = append(spec.ObjectClasses, *stateClass)
+			resourceSpec.StateClass = stateClass.ClassName
+		}
+
+		methods := append([]*schema.Method{}, resource.Methods...)
+		sort.Slice(methods, func(i, j int) bool {
+			left := strings.TrimSpace(methods[i].Name)
+			right := strings.TrimSpace(methods[j].Name)
+			if left == right {
+				leftToken := ""
+				rightToken := ""
+				if methods[i].Function != nil {
+					leftToken = methods[i].Function.Token
+				}
+				if methods[j].Function != nil {
+					rightToken = methods[j].Function.Token
+				}
+				return leftToken < rightToken
+			}
+			return left < right
+		})
+		methodSpecs := make([]packageResourceMethodSpec, 0, len(methods))
+		for _, method := range methods {
+			if method == nil {
+				continue
+			}
+
+			methodSpec := packageResourceMethodSpec{
+				Name: strings.TrimSpace(method.Name),
+			}
+			if method.Function != nil {
+				methodSpec.Token = strings.TrimSpace(method.Function.Token)
+				methodSpec.Comment = strings.TrimSpace(method.Function.Comment)
+			}
+			if methodSpec.Name == "" {
+				methodSpec.Name = tokenElementName(methodSpec.Token)
+			}
+			if methodSpec.Name == "" {
+				methodSpec.Name = "invoke"
+			}
+
+			methodBaseName := resourceBaseName + toDartClassName(methodSpec.Name)
+			if method.Function != nil {
+				inputProperties := schemaPropertiesWithoutSelf(schemaObjectPropertiesFromRef(method.Function.Inputs))
+				if classSpec := makeObjectClassSpec(
+					methodBaseName,
+					tokenModulePath(resource.Token),
+					fmt.Sprintf("Arguments for %s.%s.", resourceBaseName, methodSpec.Name),
+					inputProperties,
+					moduleScopedTypeNameSet(usedClassNamesByModule, tokenModulePath(resource.Token)),
+					namedTypeRefs,
+					true,
+					true,
+					pkg.Name,
+					"Args",
+					"MethodArgs",
+				); classSpec != nil {
+					classSpec.CanonicalName = canonicalTypeName(resourceBaseName, toDartClassName(methodSpec.Name), "Args")
+					spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
+					methodSpec.ArgsClass = classSpec.ClassName
+				}
+
+				resultProperties := schemaObjectPropertiesFromRef(method.Function.Outputs)
+				if len(resultProperties) == 0 {
+					if objectReturn, ok := method.Function.ReturnType.(*schema.ObjectType); ok {
+						resultProperties = schemaObjectPropertiesFromRef(objectReturn)
+					}
+				}
+				if classSpec := makeObjectClassSpec(
+					methodBaseName,
+					tokenModulePath(resource.Token),
+					fmt.Sprintf("Result data returned by %s.%s.", resourceBaseName, methodSpec.Name),
+					resultProperties,
+					moduleScopedTypeNameSet(usedClassNamesByModule, tokenModulePath(resource.Token)),
+					namedTypeRefs,
+					true,
+					false,
+					pkg.Name,
+					"Result",
+					"MethodResult",
+				); classSpec != nil {
+					classSpec.CanonicalName = canonicalTypeName(resourceBaseName, toDartClassName(methodSpec.Name), "Result")
+					spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
+					methodSpec.ResultClass = classSpec.ClassName
+				}
+
+				methodSpec.HasReturn = method.Function.Outputs != nil || method.Function.ReturnType != nil
+			}
+
+			methodSpecs = append(methodSpecs, methodSpec)
+		}
+		resourceSpec.Methods = methodSpecs
 		resourceSpec.OutputProperties = makeResourceOutputPropertySpecs(resource, namedTypeRefs, pkg.Name)
 		spec.Resources[resource.Token] = resourceSpec
 	}
@@ -2424,7 +2811,22 @@ func rewriteModuleRootSegment(module string) string {
 }
 
 func resourceClassNameFromToken(token string, used map[string]int) string {
+	if isProviderResourceToken(token) {
+		return uniqueQualifiedClassName("Provider", tokenModulePath(token), used, "Provider", "")
+	}
+
 	return uniqueQualifiedClassName(tokenElementName(token), tokenModulePath(token), used, "", "Resource", "Res")
+}
+
+func resourceTypeBaseNameFromToken(token string) string {
+	if isProviderResourceToken(token) {
+		return "Provider"
+	}
+	return toDartClassName(tokenElementName(token))
+}
+
+func isProviderResourceToken(token string) bool {
+	return strings.HasPrefix(strings.TrimSpace(token), "pulumi:providers:")
 }
 
 func functionNameCandidatesFromToken(token string) []string {
@@ -2721,7 +3123,7 @@ func typeSpecNeedsEncodeMapHelper(typeSpec packageTypeSpec) bool {
 }
 
 func objectClassFromMapExpression(objectClass packageObjectClassSpec, property packagePropertySpec) string {
-	sourceExpr := fmt.Sprintf("map['%s']", property.Name)
+	sourceExpr := fmt.Sprintf("map[%s]", dartStringLiteral(property.Name))
 	typeSpec := propertyTypeSpec(property)
 	decodedExpr := typeSpecDecodeExpression(typeSpec, sourceExpr)
 	if property.Required {
@@ -2862,7 +3264,7 @@ func writeGeneratedConfigClass(b *strings.Builder, configSpec packageConfigSpec)
 		writeDartDocComment(b, "  ", property.Comment)
 		getterType := configPropertyGetterType(property)
 		fmt.Fprintf(b, "  %s get %s {\n", getterType, property.FieldName)
-		fmt.Fprintf(b, "    final raw = _raw('%s');\n", property.Name)
+		fmt.Fprintf(b, "    final raw = _raw(%s);\n", dartStringLiteral(property.Name))
 		fmt.Fprintf(b, "    return %s;\n", configPropertyParseExpression(property, "raw"))
 		b.WriteString("  }\n\n")
 
@@ -2873,14 +3275,14 @@ func writeGeneratedConfigClass(b *strings.Builder, configSpec packageConfigSpec)
 			fmt.Fprintf(b, "    final value = %s;\n", property.FieldName)
 			fmt.Fprintf(
 				b,
-				"    if (value == null) {\n      throw ArgumentError(\"Missing required config value '%s'.\");\n    }\n",
-				property.Name,
+				"    if (value == null) {\n      throw ArgumentError(\"Missing required config value %s.\");\n    }\n",
+				dartStringLiteral(property.Name),
 			)
 			b.WriteString("    return value;\n")
 			b.WriteString("  }\n\n")
 		}
 
-		fmt.Fprintf(b, "  bool get %sIsSecret => _isSecret('%s');\n\n", property.FieldName, property.Name)
+		fmt.Fprintf(b, "  bool get %sIsSecret => _isSecret(%s);\n\n", property.FieldName, dartStringLiteral(property.Name))
 	}
 
 	b.WriteString("}\n\n")
@@ -3003,15 +3405,15 @@ func writeGeneratedObjectClass(b *strings.Builder, objectClass packageObjectClas
 		if property.Required {
 			fmt.Fprintf(
 				b,
-				"      '%s': %s,\n",
-				property.Name,
+				"      %s: %s,\n",
+				dartStringLiteral(property.Name),
 				objectClassToMapExpression(objectClass, property),
 			)
 		} else {
 			fmt.Fprintf(
 				b,
-				"      '%s': ?%s,\n",
-				property.Name,
+				"      %s: ?%s,\n",
+				dartStringLiteral(property.Name),
 				objectClassToMapExpression(objectClass, property),
 			)
 		}
@@ -3287,12 +3689,12 @@ pulumi.Input<U>? _mapOptionalInputValue<T, U>(pulumi.Input<T>? input, U Function
 				b.WriteString("\n")
 			}
 
-			signature := "  %s(\n    String name, {\n    pulumi.ComponentResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          null,\n          options ?? pulumi.ComponentResourceOptions(),\n        )"
+			signature := "  %s(\n    String name, {\n    pulumi.ComponentResourceOptions? options,\n  }) : super(\n          %s,\n          name,\n          null,\n          options ?? pulumi.ComponentResourceOptions(),\n        )"
 			if resource.ArgsClass != "" {
-				signature = "  %s(\n    String name, {\n    %s? args,\n    pulumi.ComponentResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          _mapToInputs(args?.toMap() ?? const {}),\n          options ?? pulumi.ComponentResourceOptions(),\n        )"
-				fmt.Fprintf(&b, signature, className, resource.ArgsClass, token)
+				signature = "  %s(\n    String name, {\n    %s? args,\n    pulumi.ComponentResourceOptions? options,\n  }) : super(\n          %s,\n          name,\n          _mapToInputs(args?.toMap() ?? const {}),\n          options ?? pulumi.ComponentResourceOptions(),\n        )"
+				fmt.Fprintf(&b, signature, className, resource.ArgsClass, dartStringLiteral(token))
 			} else {
-				fmt.Fprintf(&b, signature, className, token)
+				fmt.Fprintf(&b, signature, className, dartStringLiteral(token))
 			}
 
 			if len(resource.OutputProperties) == 0 {
@@ -3302,10 +3704,10 @@ pulumi.Input<U>? _mapOptionalInputValue<T, U>(pulumi.Input<T>? input, U Function
 				for _, property := range resource.OutputProperties {
 					fmt.Fprintf(
 						&b,
-						"    this.%s = registerOutput<%s>('%s');\n",
+						"    this.%s = registerOutput<%s>(%s);\n",
 						property.FieldName,
 						resourceOutputValueType(property),
-						property.Name,
+						dartStringLiteral(property.Name),
 					)
 				}
 				b.WriteString("  }\n}\n\n")
@@ -3329,18 +3731,18 @@ pulumi.Input<U>? _mapOptionalInputValue<T, U>(pulumi.Input<T>? input, U Function
 		if resource.ArgsClass != "" {
 			fmt.Fprintf(
 				&b,
-				"  %s(\n    String name, {\n    %s? args,\n    pulumi.CustomResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          _mapToInputs(args?.toMap() ?? const {}),\n          options ?? pulumi.CustomResourceOptions()%s,\n        )",
+				"  %s(\n    String name, {\n    %s? args,\n    pulumi.CustomResourceOptions? options,\n  }) : super(\n          %s,\n          name,\n          _mapToInputs(args?.toMap() ?? const {}),\n          options ?? pulumi.CustomResourceOptions()%s,\n        )",
 				className,
 				resource.ArgsClass,
-				token,
+				dartStringLiteral(token),
 				resourceRegisterPackageArg,
 			)
 		} else {
 			fmt.Fprintf(
 				&b,
-				"  %s(\n    String name, {\n    Map<String, dynamic>? args,\n    pulumi.CustomResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          _mapToInputs(args ?? const {}),\n          options ?? pulumi.CustomResourceOptions()%s,\n        )",
+				"  %s(\n    String name, {\n    Map<String, dynamic>? args,\n    pulumi.CustomResourceOptions? options,\n  }) : super(\n          %s,\n          name,\n          _mapToInputs(args ?? const {}),\n          options ?? pulumi.CustomResourceOptions()%s,\n        )",
 				className,
-				token,
+				dartStringLiteral(token),
 				resourceRegisterPackageArg,
 			)
 		}
@@ -3352,10 +3754,10 @@ pulumi.Input<U>? _mapOptionalInputValue<T, U>(pulumi.Input<T>? input, U Function
 		for _, property := range resource.OutputProperties {
 			fmt.Fprintf(
 				&b,
-				"    this.%s = registerOutput<%s>('%s');\n",
+				"    this.%s = registerOutput<%s>(%s);\n",
 				property.FieldName,
 				resourceOutputValueType(property),
-				property.Name,
+				dartStringLiteral(property.Name),
 			)
 		}
 		b.WriteString("  }\n}\n\n")
@@ -3384,11 +3786,11 @@ pulumi.Input<U>? _mapOptionalInputValue<T, U>(pulumi.Input<T>? input, U Function
 		if function.ResultClass != "" {
 			fmt.Fprintf(
 				&b,
-				"Future<%s> %s(\n  %s}) async {\n  final deployment = pulumi.Deployment.instance;\n  final result = await deployment.invoke<Map<String, dynamic>>(\n    '%s',\n    %s,\n    options: _toDeploymentInvokeOptions(options)%s,\n  );\n  return %s.fromMap(result);\n}\n\n",
+				"Future<%s> %s(\n  %s}) async {\n  final deployment = pulumi.Deployment.instance;\n  final result = await deployment.invoke<Map<String, dynamic>>(\n    %s,\n    %s,\n    options: _toDeploymentInvokeOptions(options)%s,\n  );\n  return %s.fromMap(result);\n}\n\n",
 				function.ResultClass,
 				funcName,
 				signatureArgs,
-				token,
+				dartStringLiteral(token),
 				invokeArgs,
 				invokeRegisterPackageArg,
 				function.ResultClass,
@@ -3398,10 +3800,10 @@ pulumi.Input<U>? _mapOptionalInputValue<T, U>(pulumi.Input<T>? input, U Function
 
 		fmt.Fprintf(
 			&b,
-			"Future<Map<String, dynamic>> %s(\n  %s}) async {\n  final deployment = pulumi.Deployment.instance;\n  return await deployment.invoke<Map<String, dynamic>>(\n    '%s',\n    %s,\n    options: _toDeploymentInvokeOptions(options)%s,\n  );\n}\n\n",
+			"Future<Map<String, dynamic>> %s(\n  %s}) async {\n  final deployment = pulumi.Deployment.instance;\n  return await deployment.invoke<Map<String, dynamic>>(\n    %s,\n    %s,\n    options: _toDeploymentInvokeOptions(options)%s,\n  );\n}\n\n",
 			funcName,
 			signatureArgs,
-			token,
+			dartStringLiteral(token),
 			invokeArgs,
 			invokeRegisterPackageArg,
 		)
@@ -3574,6 +3976,23 @@ func generatedResourceFile(
 			imports[relativeDartImportPath(filePath, path)] = struct{}{}
 		}
 	}
+	if resource.StateClass != "" {
+		if path, ok := resolveTypeFilePath(typeFilesByName, resource.StateClass, modulePath); ok {
+			imports[relativeDartImportPath(filePath, path)] = struct{}{}
+		}
+	}
+	for _, method := range resource.Methods {
+		if method.ArgsClass != "" {
+			if path, ok := resolveTypeFilePath(typeFilesByName, method.ArgsClass, modulePath); ok {
+				imports[relativeDartImportPath(filePath, path)] = struct{}{}
+			}
+		}
+		if method.ResultClass != "" {
+			if path, ok := resolveTypeFilePath(typeFilesByName, method.ResultClass, modulePath); ok {
+				imports[relativeDartImportPath(filePath, path)] = struct{}{}
+			}
+		}
+	}
 	for _, ref := range referencedTypesFromProperties(resource.OutputProperties) {
 		if path, ok := resolveTypeFilePath(typeFilesByName, ref, modulePath); ok {
 			imports[relativeDartImportPath(filePath, path)] = struct{}{}
@@ -3602,6 +4021,67 @@ func generatedResourceFile(
 	b.WriteString("\n")
 
 	writeDartDocComment(&b, "", resource.Comment)
+	if resource.IsProvider {
+		providerPackageName := tokenProviderName(token)
+		if providerPackageName == "" {
+			providerPackageName = strings.TrimSpace(token)
+		}
+		fmt.Fprintf(&b, "class %s extends pulumi.ProviderResource {\n", className)
+		for _, property := range resource.OutputProperties {
+			writeDartDocComment(&b, "  ", property.Comment)
+			fmt.Fprintf(
+				&b,
+				"  late final pulumi.Output<%s> %s;\n",
+				resourceOutputValueType(property),
+				property.FieldName,
+			)
+		}
+		if len(resource.OutputProperties) > 0 {
+			b.WriteString("\n")
+		}
+
+		if resource.ArgsClass != "" {
+			writeGeneratedResourceConstructorDoc(
+				&b,
+				"  ",
+				className,
+				"args",
+				fmt.Sprintf(
+					"Arguments used to configure this [%s]. {@macro %s}",
+					className,
+					argsClassDocMacroName(modulePath, resource.ArgsClass),
+				),
+			)
+		} else {
+			writeGeneratedResourceConstructorDoc(&b, "  ", className, "", "")
+		}
+
+		if resource.ArgsClass != "" {
+			fmt.Fprintf(&b, "  %s(\n    String name, {\n    %s? args,\n    pulumi.CustomResourceOptions? options,\n  }) : super(\n          %s,\n          name,\n          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),\n          options ?? pulumi.CustomResourceOptions(),\n        )", className, resource.ArgsClass, dartStringLiteral(providerPackageName))
+		} else {
+			fmt.Fprintf(&b, "  %s(\n    String name, {\n    pulumi.CustomResourceOptions? options,\n  }) : super(\n          %s,\n          name,\n          const <String, dynamic>{},\n          options ?? pulumi.CustomResourceOptions(),\n        )", className, dartStringLiteral(providerPackageName))
+		}
+
+		if len(resource.OutputProperties) == 0 && len(resource.Methods) == 0 {
+			b.WriteString(";\n}\n")
+		} else {
+			b.WriteString(" {\n")
+			for _, property := range resource.OutputProperties {
+				fmt.Fprintf(
+					&b,
+					"    this.%s = registerOutput<%s>(%s);\n",
+					property.FieldName,
+					resourceOutputValueType(property),
+					dartStringLiteral(property.Name),
+				)
+			}
+			writeGeneratedResourceMethods(&b, token, resource, hasPackageRegistration)
+			b.WriteString("  }\n}\n")
+		}
+
+		return []byte(b.String())
+	}
+
 	if resource.IsComponent {
 		fmt.Fprintf(&b, "class %s extends pulumi.ComponentResource {\n", className)
 		for _, property := range resource.OutputProperties {
@@ -3633,27 +4113,28 @@ func generatedResourceFile(
 			writeGeneratedResourceConstructorDoc(&b, "  ", className, "", "")
 		}
 
-		signature := "  %s(\n    String name, {\n    pulumi.ComponentResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          null,\n          options ?? pulumi.ComponentResourceOptions(),\n        )"
+		signature := "  %s(\n    String name, {\n    pulumi.ComponentResourceOptions? options,\n  }) : super(\n          %s,\n          name,\n          null,\n          options ?? pulumi.ComponentResourceOptions(),\n        )"
 		if resource.ArgsClass != "" {
-			signature = "  %s(\n    String name, {\n    %s? args,\n    pulumi.ComponentResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),\n          options ?? pulumi.ComponentResourceOptions(),\n        )"
-			fmt.Fprintf(&b, signature, className, resource.ArgsClass, token)
+			signature = "  %s(\n    String name, {\n    %s? args,\n    pulumi.ComponentResourceOptions? options,\n  }) : super(\n          %s,\n          name,\n          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),\n          options ?? pulumi.ComponentResourceOptions(),\n        )"
+			fmt.Fprintf(&b, signature, className, resource.ArgsClass, dartStringLiteral(token))
 		} else {
-			fmt.Fprintf(&b, signature, className, token)
+			fmt.Fprintf(&b, signature, className, dartStringLiteral(token))
 		}
 
-		if len(resource.OutputProperties) == 0 {
+		if len(resource.OutputProperties) == 0 && len(resource.Methods) == 0 {
 			b.WriteString(";\n}\n")
 		} else {
 			b.WriteString(" {\n")
 			for _, property := range resource.OutputProperties {
 				fmt.Fprintf(
 					&b,
-					"    this.%s = registerOutput<%s>('%s');\n",
+					"    this.%s = registerOutput<%s>(%s);\n",
 					property.FieldName,
 					resourceOutputValueType(property),
-					property.Name,
+					dartStringLiteral(property.Name),
 				)
 			}
+			writeGeneratedResourceMethods(&b, token, resource, hasPackageRegistration)
 			b.WriteString("  }\n}\n")
 		}
 		return []byte(b.String())
@@ -3703,22 +4184,24 @@ func generatedResourceFile(
 	if resource.ArgsClass != "" {
 		fmt.Fprintf(
 			&b,
-			"  %s(\n    String name, {\n    %s? args,\n    pulumi.CustomResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),\n          options ?? pulumi.CustomResourceOptions()%s,\n        )",
+			"  %s(\n    String name, {\n    %s? args,\n    pulumi.CustomResourceOptions? options,\n  }) : super(\n          %s,\n          name,\n          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),\n          options ?? pulumi.CustomResourceOptions()%s,\n        )",
 			className,
 			resource.ArgsClass,
-			token,
+			dartStringLiteral(token),
 			resourceRegisterPackageArg,
 		)
 	} else {
 		fmt.Fprintf(
 			&b,
-			"  %s(\n    String name, {\n    Map<String, dynamic>? args,\n    pulumi.CustomResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          pulumi.Input.mapToInputs(args ?? const {}),\n          options ?? pulumi.CustomResourceOptions()%s,\n        )",
+			"  %s(\n    String name, {\n    Map<String, dynamic>? args,\n    pulumi.CustomResourceOptions? options,\n  }) : super(\n          %s,\n          name,\n          pulumi.Input.mapToInputs(args ?? const {}),\n          options ?? pulumi.CustomResourceOptions()%s,\n        )",
 			className,
-			token,
+			dartStringLiteral(token),
 			resourceRegisterPackageArg,
 		)
 	}
-	if len(resource.OutputProperties) == 0 {
+	if len(resource.OutputProperties) == 0 &&
+		len(resource.Methods) == 0 &&
+		resource.StateClass == "" {
 		b.WriteString(";\n}\n")
 		return []byte(b.String())
 	}
@@ -3726,14 +4209,152 @@ func generatedResourceFile(
 	for _, property := range resource.OutputProperties {
 		fmt.Fprintf(
 			&b,
-			"    this.%s = registerOutput<%s>('%s');\n",
+			"    this.%s = registerOutput<%s>(%s);\n",
 			property.FieldName,
 			resourceOutputValueType(property),
-			property.Name,
+			dartStringLiteral(property.Name),
 		)
+	}
+	writeGeneratedResourceMethods(&b, token, resource, hasPackageRegistration)
+	if resource.StateClass != "" {
+		writeGeneratedResourceGetMethod(&b, token, resource, className)
 	}
 	b.WriteString("  }\n}\n")
 	return []byte(b.String())
+}
+
+func writeGeneratedResourceMethods(
+	b *strings.Builder,
+	resourceToken string,
+	resource packageResourceSpec,
+	hasPackageRegistration bool,
+) {
+	if len(resource.Methods) == 0 {
+		return
+	}
+
+	usedMethodNames := map[string]int{}
+	for _, method := range resource.Methods {
+		if method.Name == "" && method.Token == "" {
+			continue
+		}
+
+		methodNameCandidates := make([]string, 0, 3)
+		if method.Name != "" {
+			methodNameCandidates = append(methodNameCandidates, method.Name)
+		}
+		if method.Token != "" {
+			methodNameCandidates = append(methodNameCandidates, functionNameCandidatesFromToken(method.Token)...)
+		}
+		methodName := claimUniqueIdentifierFromCandidates(methodNameCandidates, usedMethodNames)
+
+		b.WriteString("\n")
+		writeDartDocComment(b, "  ", method.Comment)
+		if method.ArgsClass != "" {
+			fmt.Fprintf(
+				b,
+				"  /// [args] Arguments passed to this method call. {@macro %s}\n",
+				argsClassDocMacroName(tokenModulePath(resourceToken), method.ArgsClass),
+			)
+		}
+
+		callArgs := "const <String, dynamic>{}"
+		signature := ""
+		if method.ArgsClass != "" {
+			signature = fmt.Sprintf("({\n    %s? args,\n  })", method.ArgsClass)
+			callArgs = "args?.toMap() ?? const <String, dynamic>{}"
+		} else {
+			signature = "()"
+		}
+
+		registerPackageArg := ""
+		if hasPackageRegistration {
+			registerPackageArg = ",\n      registerPackageRequest: package_registration.registerPackageRequest"
+		}
+		methodToken := method.Token
+		if methodToken == "" {
+			methodToken = method.Name
+		}
+
+		if method.ResultClass != "" {
+			fmt.Fprintf(
+				b,
+				"  Future<%s> %s%s async {\n    final deployment = pulumi.Deployment.instance;\n    final result = await deployment.callWithResult<Map<String, dynamic>>(\n      %s,\n      %s,\n      self: this%s,\n    );\n    return %s.fromMap(result);\n  }\n",
+				method.ResultClass,
+				methodName,
+				signature,
+				dartStringLiteral(methodToken),
+				callArgs,
+				registerPackageArg,
+				method.ResultClass,
+			)
+			continue
+		}
+
+		if method.HasReturn {
+			fmt.Fprintf(
+				b,
+				"  Future<Map<String, dynamic>> %s%s async {\n    final deployment = pulumi.Deployment.instance;\n    return await deployment.callWithResult<Map<String, dynamic>>(\n      %s,\n      %s,\n      self: this%s,\n    );\n  }\n",
+				methodName,
+				signature,
+				dartStringLiteral(methodToken),
+				callArgs,
+				registerPackageArg,
+			)
+			continue
+		}
+
+		fmt.Fprintf(
+			b,
+			"  Future<void> %s%s async {\n    final deployment = pulumi.Deployment.instance;\n    await deployment.call(\n      %s,\n      %s,\n      self: this%s,\n    );\n  }\n",
+			methodName,
+			signature,
+			dartStringLiteral(methodToken),
+			callArgs,
+			registerPackageArg,
+		)
+	}
+}
+
+func writeGeneratedResourceGetMethod(
+	b *strings.Builder,
+	token string,
+	resource packageResourceSpec,
+	className string,
+) {
+	if resource.StateClass == "" || resource.IsProvider || resource.IsComponent {
+		return
+	}
+
+	fmt.Fprintf(
+		b,
+		"\n  /// Gets an existing [%s] resource's state with the given [name] and [id].\n  static %s get(\n    String name,\n    pulumi.Input<String> id, {\n    %s? state,\n  }) {\n    return %s._get(\n      name,\n      state: state?.toMap(),\n      options: pulumi.CustomResourceOptions(id: id),\n    );\n  }\n",
+		className,
+		className,
+		resource.StateClass,
+		className,
+	)
+	fmt.Fprintf(
+		b,
+		"\n  %s._get(\n    String name, {\n    Map<String, dynamic>? state,\n    pulumi.CustomResourceOptions? options,\n  }) : super(\n          %s,\n          name,\n          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),\n          options ?? pulumi.CustomResourceOptions(),\n        )",
+		className,
+		dartStringLiteral(token),
+	)
+	if len(resource.OutputProperties) == 0 {
+		b.WriteString(";\n")
+		return
+	}
+	b.WriteString(" {\n")
+	for _, property := range resource.OutputProperties {
+		fmt.Fprintf(
+			b,
+			"    this.%s = registerOutput<%s>(%s);\n",
+			property.FieldName,
+			resourceOutputValueType(property),
+			dartStringLiteral(property.Name),
+		)
+	}
+	b.WriteString("  }\n")
 }
 
 type generatedFunctionSpec struct {
@@ -3777,11 +4398,11 @@ func writeGeneratedFunctionDefinition(
 	if function.ResultClass != "" {
 		fmt.Fprintf(
 			b,
-			"Future<%s> %s(\n  %s}) async {\n  final deployment = pulumi.Deployment.instance;\n  final result = await deployment.invoke<Map<String, dynamic>>(\n    '%s',\n    %s,\n    options: pulumi.toDeploymentInvokeOptions(options)%s,\n  );\n  return %s.fromMap(result);\n}\n",
+			"Future<%s> %s(\n  %s}) async {\n  final deployment = pulumi.Deployment.instance;\n  final result = await deployment.invoke<Map<String, dynamic>>(\n    %s,\n    %s,\n    options: pulumi.toDeploymentInvokeOptions(options)%s,\n  );\n  return %s.fromMap(result);\n}\n",
 			function.ResultClass,
 			funcName,
 			signatureArgs,
-			token,
+			dartStringLiteral(token),
 			invokeArgs,
 			invokeRegisterPackageArg,
 			function.ResultClass,
@@ -3791,10 +4412,10 @@ func writeGeneratedFunctionDefinition(
 
 	fmt.Fprintf(
 		b,
-		"Future<Map<String, dynamic>> %s(\n  %s}) async {\n  final deployment = pulumi.Deployment.instance;\n  return await deployment.invoke<Map<String, dynamic>>(\n    '%s',\n    %s,\n    options: pulumi.toDeploymentInvokeOptions(options)%s,\n  );\n}\n",
+		"Future<Map<String, dynamic>> %s(\n  %s}) async {\n  final deployment = pulumi.Deployment.instance;\n  return await deployment.invoke<Map<String, dynamic>>(\n    %s,\n    %s,\n    options: pulumi.toDeploymentInvokeOptions(options)%s,\n  );\n}\n",
 		funcName,
 		signatureArgs,
-		token,
+		dartStringLiteral(token),
 		invokeArgs,
 		invokeRegisterPackageArg,
 	)
