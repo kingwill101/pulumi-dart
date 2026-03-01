@@ -159,6 +159,14 @@ class _RecordingProvider extends Provider {
       replaces: <String>['name'],
       stables: <String>['region'],
       deleteBeforeReplace: true,
+      diffs: <String>['name', 'tags'],
+      detailedDiff: <String, PropertyDiff>{
+        'name': PropertyDiff(
+          kind: PropertyDiffKind.updateReplace,
+          inputDiff: true,
+        ),
+        'tags.owner': PropertyDiff(kind: PropertyDiffKind.add),
+      },
     );
   }
 
@@ -294,6 +302,24 @@ class _RecordingProvider extends Provider {
           'constructed-dep',
           'urn:pulumi:dev::proj::pkg:index:ConstructDep::dep',
         ),
+      },
+    );
+  }
+}
+
+class _DetailedDiffConfigProvider extends _RecordingProvider {
+  @override
+  Future<DiffResult> diffConfig(
+    String id,
+    String urn,
+    Map<String, dynamic> olds,
+    Map<String, dynamic> news,
+  ) async {
+    return const DiffResult(
+      changes: true,
+      diffs: <String>['region'],
+      detailedDiff: <String, PropertyDiff>{
+        'region': PropertyDiff(kind: PropertyDiffKind.update, inputDiff: true),
       },
     );
   }
@@ -857,6 +883,36 @@ void main() {
       expect(diffConfig.stables, contains('region'));
     });
 
+    test('diffConfig includes explicit detailed diff payload', () async {
+      final server = ProviderServer(_DetailedDiffConfigProvider());
+
+      final response = await server.diffConfig(
+        call,
+        providerpb.DiffRequest(
+          id: 'default',
+          urn: 'urn:pulumi:dev::proj::pulumi:providers:pkg::default',
+          olds: await StructConverter.toStruct(<String, dynamic>{
+            'region': 'us-west-1',
+          }),
+          news: await StructConverter.toStruct(<String, dynamic>{
+            'region': 'moon-1',
+          }),
+        ),
+      );
+
+      expect(
+        response.changes,
+        equals(providerpb.DiffResponse_DiffChanges.DIFF_SOME),
+      );
+      expect(response.diffs, contains('region'));
+      expect(response.hasDetailedDiff, isTrue);
+      expect(
+        response.detailedDiff['region']?.kind,
+        equals(providerpb.PropertyDiff_Kind.UPDATE),
+      );
+      expect(response.detailedDiff['region']?.inputDiff, isTrue);
+    });
+
     test('getMapping and getMappings return empty payloads', () async {
       final server = ProviderServer(_RecordingProvider());
 
@@ -1064,6 +1120,18 @@ void main() {
       expect(diff.replaces, contains('name'));
       expect(diff.stables, contains('region'));
       expect(diff.deleteBeforeReplace, isTrue);
+      expect(diff.diffs, containsAll(<String>['name', 'tags']));
+      expect(diff.hasDetailedDiff, isTrue);
+      expect(
+        diff.detailedDiff['name']?.kind,
+        equals(providerpb.PropertyDiff_Kind.UPDATE_REPLACE),
+      );
+      expect(diff.detailedDiff['name']?.inputDiff, isTrue);
+      expect(
+        diff.detailedDiff['tags.owner']?.kind,
+        equals(providerpb.PropertyDiff_Kind.ADD),
+      );
+      expect(diff.detailedDiff['tags.owner']?.inputDiff, isFalse);
 
       final invoke = await server.invoke(
         call,

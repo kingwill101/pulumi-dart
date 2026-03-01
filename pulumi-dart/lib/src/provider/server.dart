@@ -256,26 +256,7 @@ class ProviderServer extends providergrpc.ResourceProviderServiceBase {
       olds,
       news,
     );
-
-    final response = providerpb.DiffResponse();
-    if (result.changes == true) {
-      response.changes = providerpb.DiffResponse_DiffChanges.DIFF_SOME;
-    } else if (result.changes == false) {
-      response.changes = providerpb.DiffResponse_DiffChanges.DIFF_NONE;
-    } else {
-      response.changes = providerpb.DiffResponse_DiffChanges.DIFF_UNKNOWN;
-    }
-
-    if (result.replaces != null) {
-      response.replaces.addAll(result.replaces!);
-    }
-    if (result.stables != null) {
-      response.stables.addAll(result.stables!);
-    }
-    if (result.deleteBeforeReplace != null) {
-      response.deleteBeforeReplace = result.deleteBeforeReplace!;
-    }
-    return response;
+    return _buildDiffResponse(result);
   }
 
   @override
@@ -417,7 +398,10 @@ class ProviderServer extends providergrpc.ResourceProviderServiceBase {
     final olds = StructConverter.fromStruct(request.olds);
     final news = StructConverter.fromStruct(request.news);
     final result = await provider.diff(request.id, request.urn, olds, news);
+    return _buildDiffResponse(result);
+  }
 
+  providerpb.DiffResponse _buildDiffResponse(DiffResult result) {
     final response = providerpb.DiffResponse();
     if (result.changes == true) {
       response.changes = providerpb.DiffResponse_DiffChanges.DIFF_SOME;
@@ -436,7 +420,36 @@ class ProviderServer extends providergrpc.ResourceProviderServiceBase {
     if (result.deleteBeforeReplace != null) {
       response.deleteBeforeReplace = result.deleteBeforeReplace!;
     }
+    if (result.diffs != null) {
+      response.diffs.addAll(result.diffs!);
+    }
+    if (result.detailedDiff != null) {
+      result.detailedDiff!.forEach((path, diff) {
+        response.detailedDiff[path] = providerpb.PropertyDiff(
+          kind: _toProtoPropertyDiffKind(diff.kind),
+          inputDiff: diff.inputDiff,
+        );
+      });
+      response.hasDetailedDiff = true;
+    }
     return response;
+  }
+
+  providerpb.PropertyDiff_Kind _toProtoPropertyDiffKind(PropertyDiffKind kind) {
+    switch (kind) {
+      case PropertyDiffKind.add:
+        return providerpb.PropertyDiff_Kind.ADD;
+      case PropertyDiffKind.addReplace:
+        return providerpb.PropertyDiff_Kind.ADD_REPLACE;
+      case PropertyDiffKind.delete:
+        return providerpb.PropertyDiff_Kind.DELETE;
+      case PropertyDiffKind.deleteReplace:
+        return providerpb.PropertyDiff_Kind.DELETE_REPLACE;
+      case PropertyDiffKind.update:
+        return providerpb.PropertyDiff_Kind.UPDATE;
+      case PropertyDiffKind.updateReplace:
+        return providerpb.PropertyDiff_Kind.UPDATE_REPLACE;
+    }
   }
 
   @override

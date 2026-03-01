@@ -18,18 +18,54 @@ class CheckResult {
 }
 
 /// Result returned from [Provider.diff].
+enum PropertyDiffKind {
+  /// Property was added.
+  add,
+
+  /// Property was added and requires replacement.
+  addReplace,
+
+  /// Property was deleted.
+  delete,
+
+  /// Property was deleted and requires replacement.
+  deleteReplace,
+
+  /// Property value was updated.
+  update,
+
+  /// Property value was updated and requires replacement.
+  updateReplace,
+}
+
+/// Detailed diff metadata for a single property path.
+class PropertyDiff {
+  const PropertyDiff({required this.kind, this.inputDiff = false});
+
+  /// Kind of change for the property.
+  final PropertyDiffKind kind;
+
+  /// Whether the diff is between old/new inputs rather than old/new state.
+  final bool inputDiff;
+}
+
+/// Result returned from [Provider.diff].
 class DiffResult {
   const DiffResult({
     this.changes,
     this.replaces,
     this.stables,
     this.deleteBeforeReplace,
+    this.diffs,
+    this.detailedDiff,
   });
 
   final bool? changes;
   final List<String>? replaces;
   final List<String>? stables;
   final bool? deleteBeforeReplace;
+  final List<String>? diffs;
+  final Map<String, PropertyDiff>? detailedDiff;
 }
 
 /// Result returned from [Provider.create].
