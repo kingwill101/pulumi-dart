@@ -1,0 +1,9 @@
+name: config_policy_pack
+description: Dart policy-config fixture.
+version: 2.0.0
+publish_to: none
+environment:
+  sdk: ^3.10.0
+
+dependencies:
+  pulumi_policy: ^1.0.0

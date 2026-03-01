@@ -1,0 +1,9 @@
+name: enforcement_config_policy_pack
+description: Dart policy enforcement override fixture.
+version: 3.0.0
+publish_to: none
+environment:
+  sdk: ^3.10.0
+
+dependencies:
+  pulumi_policy: ^1.0.0

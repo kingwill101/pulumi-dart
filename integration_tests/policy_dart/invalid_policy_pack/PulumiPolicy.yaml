@@ -1,0 +1,2 @@
+runtime: dart
+description: Invalid Dart policy pack fixture used for load-failure tests.

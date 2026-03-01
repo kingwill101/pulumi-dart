@@ -16,6 +16,7 @@ package integration_tests
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"os"
 	"os/exec"
@@ -154,6 +155,17 @@ func requireNoCommandError(t *testing.T, err error, stdout, stderr string) {
 	require.NoError(t, err)
 }
 
+func writePolicyPackConfig(t *testing.T, e *ptesting.Environment, name string, config map[string]any) string {
+	t.Helper()
+	path := filepath.Join(e.CWD, name+".json")
+
+	data, err := json.Marshal(config)
+	require.NoError(t, err)
+	require.NoError(t, os.WriteFile(path, data, 0o600))
+
+	return path
+}
+
 func TestAdvisoryPolicyPackDart(t *testing.T) {
 	e := ptesting.NewEnvironment(t)
 	defer e.DeleteIfNotFailed()
@@ -280,6 +292,119 @@ func TestRemediatePolicyPackDart(t *testing.T) {
 		"--policy-pack", "remediate_policy_pack",
 	)
 	requireNoCommandError(t, err, stdout, stderr)
+}
+
+func TestConfigPolicyPackDart(t *testing.T) {
+	e := ptesting.NewEnvironment(t)
+	defer e.DeleteIfNotFailed()
+	defer cleanupPolicyStack(e)
+
+	configurePolicyDartProject(t, e, "config_policy_pack")
+	e.RunCommand("pulumi", "config", "set", "value", "false")
+
+	policyConfigTrue := writePolicyPackConfig(t, e, "config_policy_pack_true", map[string]any{
+		"allowed": map[string]any{
+			"value": true,
+		},
+	})
+
+	stdout, _, err := e.GetCommandResults(
+		"pulumi", "up", "--skip-preview", "--yes",
+		"--policy-pack", "config_policy_pack",
+		"--policy-pack-config", policyConfigTrue,
+	)
+	require.Error(t, err)
+	assert.Contains(t, stdout, "allowed")
+	assert.Contains(t, stdout, "Property was false")
+
+	policyConfigFalse := writePolicyPackConfig(t, e, "config_policy_pack_false", map[string]any{
+		"allowed": map[string]any{
+			"value": false,
+		},
+	})
+
+	stdout, stderr, err := e.GetCommandResults(
+		"pulumi", "up", "--skip-preview", "--yes",
+		"--policy-pack", "config_policy_pack",
+		"--policy-pack-config", policyConfigFalse,
+	)
+	requireNoCommandError(t, err, stdout, stderr)
+}
+
+func TestEnforcementConfigPolicyPackDart(t *testing.T) {
+	e := ptesting.NewEnvironment(t)
+	defer e.DeleteIfNotFailed()
+	defer cleanupPolicyStack(e)
+
+	configurePolicyDartProject(t, e, "enforcement_config_policy_pack")
+	e.RunCommand("pulumi", "config", "set", "value", "true")
+
+	stdout, stderr, err := e.GetCommandResults(
+		"pulumi", "up", "--skip-preview", "--yes",
+		"--policy-pack", "enforcement_config_policy_pack",
+	)
+	requireNoCommandError(t, err, stdout, stderr)
+	assert.Contains(t, stdout, "advisory")
+	assert.Contains(t, stdout, "Property was true")
+
+	policyConfigMandatory := writePolicyPackConfig(t, e, "enforcement_config_policy_pack_mandatory", map[string]any{
+		"false": map[string]any{
+			"enforcementLevel": "mandatory",
+		},
+	})
+
+	stdout, _, err = e.GetCommandResults(
+		"pulumi", "up", "--skip-preview", "--yes",
+		"--policy-pack", "enforcement_config_policy_pack",
+		"--policy-pack-config", policyConfigMandatory,
+	)
+	require.Error(t, err)
+	assert.Contains(t, stdout, "mandatory")
+	assert.Contains(t, stdout, "Property was true")
+
+	policyConfigDisabled := writePolicyPackConfig(t, e, "enforcement_config_policy_pack_disabled", map[string]any{
+		"false": "disabled",
+	})
+
+	stdout, stderr, err = e.GetCommandResults(
+		"pulumi", "up", "--skip-preview", "--yes",
+		"--policy-pack", "enforcement_config_policy_pack",
+		"--policy-pack-config", policyConfigDisabled,
+	)
+	requireNoCommandError(t, err, stdout, stderr)
+	assert.NotContains(t, stdout, "Verifies property is false")
+}
+
+func TestInvalidPolicyPackDart(t *testing.T) {
+	e := ptesting.NewEnvironment(t)
+	defer e.DeleteIfNotFailed()
+	defer cleanupPolicyStack(e)
+
+	configurePolicyDartProject(t, e, "invalid_policy_pack")
+
+	stdout, _, err := e.GetCommandResults(
+		"pulumi", "preview", "--non-interactive",
+		"--policy-pack", "invalid_policy_pack",
+	)
+	require.Error(t, err)
+	assert.Contains(t, stdout, "invalid_policy_pack")
+}
+
+func TestSimplePolicyPackDart(t *testing.T) {
+	e := ptesting.NewEnvironment(t)
+	defer e.DeleteIfNotFailed()
+	defer cleanupPolicyStack(e)
+
+	configurePolicyDartProject(t, e, "simple_policy_pack")
+	e.RunCommand("pulumi", "config", "set", "value", "true")
+
+	stdout, _, err := e.GetCommandResults(
+		"pulumi", "up", "--skip-preview", "--yes",
+		"--policy-pack", "simple_policy_pack",
+	)
+	require.Error(t, err)
+	assert.Contains(t, stdout, "truthiness")
+	assert.Contains(t, stdout, "falsiness")
 }
 
 func TestPluginInstall(t *testing.T) {
