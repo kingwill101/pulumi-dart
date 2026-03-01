@@ -7,7 +7,7 @@ This package is manually maintained from upstream `pulumi-policy` APIs because `
 ## Status
 
 - Public policy authoring API surface is available (policy types, validation/remediation helpers, policy/stack argument models).
-- Analyzer runtime/server execution for Dart policy packs is not implemented yet.
+- Analyzer runtime/server execution for Dart policy packs is implemented.
 
 ## Installation
 

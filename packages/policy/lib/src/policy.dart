@@ -1,4 +1,20 @@
+// Required for Pulumi internal protobuf/runtime bindings.
+// ignore_for_file: implementation_imports
+
 import 'dart:async';
+import 'dart:io';
+
+import 'package:grpc/grpc.dart';
+import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart';
+import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
+import 'package:pulumi/src/constants.dart';
+import 'package:pulumi/src/pulumirpc/pulumi/analyzer.pb.dart' as analyzerpb;
+import 'package:pulumi/src/pulumirpc/pulumi/analyzer.pbgrpc.dart'
+    as analyzergrpc;
+import 'package:pulumi/src/pulumirpc/pulumi/plugin.pb.dart' as pluginpb;
+import 'package:pulumi/src/store/store.dart' as runtime_store;
+import 'package:pulumi/src/struct_converter.dart';
+import 'package:yaml/yaml.dart';
 
 /// Indicates the impact of a policy violation.
 enum EnforcementLevel {
@@ -387,7 +403,12 @@ class PolicyPackArgs {
 
 /// A policy pack that contains one or more policies.
 class PolicyPack {
-  PolicyPack(this.name, this.args, {this.initialConfig}) {
+  PolicyPack(
+    this.name,
+    this.args, {
+    this.initialConfig,
+    bool startServer = true,
+  }) {
     if (name.isEmpty) {
       throw ArgumentError.value(
         name,
@@ -410,12 +431,16 @@ class PolicyPack {
       );
     }
 
-    // TODO(pulumi-dart): implement analyzer gRPC runtime equivalent to
-    // pulumi-policy Node/Python SDKs.
-    throw UnsupportedError(
-      'Policy runtime is not implemented for Dart yet. '
-      'You can define policies with this package, but policy server execution is pending.',
-    );
+    _validatePolicyConfigSchemas(args.policies);
+    if (startServer) {
+      _bootPolicyPackServer(
+        this,
+        packVersion: _readPolicyPackVersion(),
+        defaultEnforcementLevel:
+            args.enforcementLevel ?? EnforcementLevel.advisory,
+        initialConfig: initialConfig,
+      );
+    }
   }
 
   static final RegExp _policyPackNameRegExp = RegExp(
@@ -558,3 +583,785 @@ bool isResourcePolicy(Policy policy) => policy is ResourceValidationPolicy;
 
 /// Returns `true` if [policy] is a [StackValidationPolicy].
 bool isStackPolicy(Policy policy) => policy is StackValidationPolicy;
+
+void _validatePolicyConfigSchemas(List<Policy> policies) {
+  for (final policy in policies) {
+    final schema = policy.configSchema;
+    if (schema == null) {
+      continue;
+    }
+
+    if (schema.properties.containsKey('enforcementLevel')) {
+      throw ArgumentError.value(
+        schema.properties,
+        'configSchema.properties',
+        'enforcementLevel cannot be explicitly specified in properties',
+      );
+    }
+
+    if (schema.required != null &&
+        schema.required!.contains('enforcementLevel')) {
+      throw ArgumentError.value(
+        schema.required,
+        'configSchema.required',
+        '"enforcementLevel" cannot be specified in required',
+      );
+    }
+  }
+}
+
+final RegExp _packNameRegExp = RegExp(r'^[a-zA-Z0-9-_.]{1,100}$');
+String? _servingPolicyPack;
+
+void _bootPolicyPackServer(
+  PolicyPack pack, {
+  required String packVersion,
+  required EnforcementLevel defaultEnforcementLevel,
+  required PolicyPackConfig? initialConfig,
+}) {
+  if (!_packNameRegExp.hasMatch(pack.name)) {
+    stderr.writeln(
+      'Invalid policy pack name "${pack.name}". '
+      'Policy pack names may only contain alphanumerics, hyphens, underscores, or periods.',
+    );
+    exit(1);
+  }
+
+  if (_servingPolicyPack != null) {
+    stderr.writeln(
+      "Already serving policy pack '$_servingPolicyPack'. "
+      'Only one policy pack may be defined per-process.',
+    );
+    exit(1);
+  }
+
+  _servingPolicyPack = pack.name;
+
+  unawaited(() async {
+    try {
+      final server = Server.create(
+        services: <Service>[
+          PolicyAnalyzerServer(
+            policyPackName: pack.name,
+            policyPackVersion: packVersion,
+            defaultEnforcementLevel: defaultEnforcementLevel,
+            policyPackArgs: pack.args,
+            initialConfig: initialConfig,
+          ),
+        ],
+      );
+      await server.serve(address: '127.0.0.1', port: 0);
+      // Analyzer protocol requires writing the selected port to stdout.
+      // ignore: avoid_print
+      print('${server.port}');
+    } on Object catch (error, stackTrace) {
+      stderr.writeln('fatal: $error');
+      stderr.writeln(stackTrace);
+      exit(1);
+    }
+  }());
+}
+
+String _readPolicyPackVersion() {
+  final pubspec = File('pubspec.yaml');
+  if (!pubspec.existsSync()) {
+    return '';
+  }
+
+  try {
+    final parsed = loadYaml(pubspec.readAsStringSync());
+    if (parsed is YamlMap && parsed['version'] != null) {
+      return parsed['version'].toString();
+    }
+  } on Object {
+    // Best-effort version detection; return empty version if parsing fails.
+  }
+
+  return '';
+}
+
+class PolicyAnalyzerServer extends analyzergrpc.AnalyzerServiceBase {
+  PolicyAnalyzerServer({
+    required this.policyPackName,
+    required this.policyPackVersion,
+    required this.defaultEnforcementLevel,
+    required this.policyPackArgs,
+    required this.initialConfig,
+  });
+
+  final String policyPackName;
+  final String policyPackVersion;
+  final EnforcementLevel defaultEnforcementLevel;
+  final PolicyPackArgs policyPackArgs;
+  final PolicyPackConfig? initialConfig;
+
+  analyzerpb.AnalyzerHandshakeRequest? handshakeRequest;
+  Map<String, _ConfiguredPolicy> _configuredPolicies =
+      <String, _ConfiguredPolicy>{};
+  Map<String, String> stackTags = <String, String>{};
+
+  @override
+  Future<analyzerpb.AnalyzerHandshakeResponse> handshake(
+    ServiceCall call,
+    analyzerpb.AnalyzerHandshakeRequest request,
+  ) async {
+    handshakeRequest = request;
+    return analyzerpb.AnalyzerHandshakeResponse();
+  }
+
+  @override
+  Future<analyzerpb.AnalyzerStackConfigureResponse> configureStack(
+    ServiceCall call,
+    analyzerpb.AnalyzerStackConfigureRequest request,
+  ) async {
+    stackTags = Map<String, String>.from(request.tags);
+
+    final options = runtime_store.getStore().settings.options;
+    options.project = request.project;
+    options.stack = request.stack;
+    options.organization = request.organization;
+    options.dryRun = request.dryRun;
+    runtime_store.setAllConfig(
+      Map<String, String>.from(request.config),
+      request.configSecretKeys,
+    );
+
+    return analyzerpb.AnalyzerStackConfigureResponse();
+  }
+
+  @override
+  Future<Empty> configure(
+    ServiceCall call,
+    analyzerpb.ConfigureAnalyzerRequest request,
+  ) async {
+    final configured = <String, _ConfiguredPolicy>{};
+    for (final entry in request.policyConfig.entries) {
+      configured[entry.key] = _ConfiguredPolicy(
+        enforcementLevel: _fromProtoEnforcement(entry.value.enforcementLevel),
+        properties: entry.value.hasProperties()
+            ? StructConverter.fromStruct(entry.value.properties)
+            : <String, Object?>{},
+      );
+    }
+    _configuredPolicies = configured;
+    return Empty();
+  }
+
+  @override
+  Future<analyzerpb.AnalyzerInfo> getAnalyzerInfo(
+    ServiceCall call,
+    Empty request,
+  ) async {
+    final info = analyzerpb.AnalyzerInfo(
+      name: policyPackName,
+      version: policyPackVersion,
+      supportsConfig: true,
+    );
+
+    if (policyPackArgs.displayName != null) {
+      info.displayName = policyPackArgs.displayName!;
+    }
+    if (policyPackArgs.description != null) {
+      info.description = policyPackArgs.description!;
+    }
+    if (policyPackArgs.readme != null) {
+      info.readme = policyPackArgs.readme!;
+    }
+    if (policyPackArgs.provider != null) {
+      info.provider = policyPackArgs.provider!;
+    }
+    if (policyPackArgs.tags != null) {
+      info.tags.addAll(policyPackArgs.tags!);
+    }
+    if (policyPackArgs.repository != null) {
+      info.repository = policyPackArgs.repository!;
+    }
+
+    for (final policy in policyPackArgs.policies) {
+      final policyInfo = analyzerpb.PolicyInfo(
+        name: policy.name,
+        description: policy.description,
+        enforcementLevel: _toProtoEnforcement(
+          policy.enforcementLevel ?? defaultEnforcementLevel,
+        ),
+        policyType: policy is StackValidationPolicy
+            ? analyzerpb.PolicyType.POLICY_TYPE_STACK
+            : analyzerpb.PolicyType.POLICY_TYPE_RESOURCE,
+      );
+
+      if (policy.displayName != null) {
+        policyInfo.displayName = policy.displayName!;
+      }
+      if (policy.severity != null) {
+        policyInfo.severity = _toProtoSeverity(policy.severity!);
+      }
+      if (policy.framework != null) {
+        policyInfo.framework = analyzerpb.PolicyComplianceFramework(
+          name: policy.framework?.name ?? '',
+          version: policy.framework?.version ?? '',
+          reference: policy.framework?.reference ?? '',
+          specification: policy.framework?.specification ?? '',
+        );
+      }
+      if (policy.tags != null) {
+        policyInfo.tags.addAll(policy.tags!);
+      }
+      if (policy.remediationSteps != null) {
+        policyInfo.remediationSteps = policy.remediationSteps!;
+      }
+      if (policy.url != null) {
+        policyInfo.url = policy.url!;
+      }
+
+      final schema = policy.configSchema;
+      if (schema != null) {
+        policyInfo.configSchema = analyzerpb.PolicyConfigSchema(
+          properties: await StructConverter.toStruct(schema.properties),
+          required: schema.required,
+        );
+      }
+
+      info.policies.add(policyInfo);
+    }
+
+    final initial = _normalizeInitialConfig(initialConfig);
+    for (final entry in initial.entries) {
+      final config = analyzerpb.PolicyConfig();
+      if (entry.value.enforcementLevel != null) {
+        config.enforcementLevel = _toProtoEnforcement(
+          entry.value.enforcementLevel!,
+        );
+      }
+      if (entry.value.properties.isNotEmpty) {
+        config.properties = await StructConverter.toStruct(
+          entry.value.properties,
+        );
+      }
+      info.initialConfig[entry.key] = config;
+    }
+
+    return info;
+  }
+
+  @override
+  Future<pluginpb.PluginInfo> getPluginInfo(
+    ServiceCall call,
+    Empty request,
+  ) async {
+    return pluginpb.PluginInfo(version: policyPackVersion);
+  }
+
+  @override
+  Future<analyzerpb.AnalyzeResponse> analyze(
+    ServiceCall call,
+    analyzerpb.AnalyzeRequest request,
+  ) async {
+    final diagnostics = <analyzerpb.AnalyzeDiagnostic>[];
+    final notApplicable = <analyzerpb.PolicyNotApplicable>[];
+
+    for (final policy in policyPackArgs.policies) {
+      if (policy is! ResourceValidationPolicy) {
+        continue;
+      }
+
+      final configured = _configuredPolicies[policy.name];
+      var enforcement =
+          configured?.enforcementLevel ??
+          policy.enforcementLevel ??
+          defaultEnforcementLevel;
+      if (enforcement == EnforcementLevel.disabled) {
+        continue;
+      }
+
+      if (policy.validateResource.isEmpty) {
+        notApplicable.add(
+          analyzerpb.PolicyNotApplicable(
+            policyName: policy.name,
+            reason: 'Policy does not implement validateResource',
+          ),
+        );
+        continue;
+      }
+
+      if (enforcement == EnforcementLevel.remediate) {
+        enforcement = EnforcementLevel.mandatory;
+      }
+
+      final args = _resourceValidationArgs(
+        request: request,
+        config: configured?.properties ?? <String, Object?>{},
+      );
+
+      for (final validate in policy.validateResource) {
+        try {
+          await validate(args, (message, [urn]) {
+            var violationMessage = policy.description;
+            if (message.isNotEmpty) {
+              violationMessage = '$violationMessage\n$message';
+            }
+
+            diagnostics.add(
+              analyzerpb.AnalyzeDiagnostic(
+                policyName: policy.name,
+                policyPackName: policyPackName,
+                policyPackVersion: policyPackVersion,
+                description: policy.description,
+                message: violationMessage,
+                enforcementLevel: _toProtoEnforcement(enforcement),
+                urn: urn ?? request.urn,
+                severity: policy.severity == null
+                    ? analyzerpb.PolicySeverity.POLICY_SEVERITY_UNSPECIFIED
+                    : _toProtoSeverity(policy.severity!),
+              ),
+            );
+          });
+        } on PolicyNotApplicableError catch (error) {
+          notApplicable.add(
+            analyzerpb.PolicyNotApplicable(
+              policyName: policy.name,
+              reason: error.reason ?? '',
+            ),
+          );
+        }
+      }
+    }
+
+    return analyzerpb.AnalyzeResponse(
+      diagnostics: diagnostics,
+      notApplicable: notApplicable,
+    );
+  }
+
+  @override
+  Future<analyzerpb.AnalyzeResponse> analyzeStack(
+    ServiceCall call,
+    analyzerpb.AnalyzeStackRequest request,
+  ) async {
+    final diagnostics = <analyzerpb.AnalyzeDiagnostic>[];
+    final notApplicable = <analyzerpb.PolicyNotApplicable>[];
+    final resources = request.resources
+        .map(_toPolicyResource)
+        .toList(growable: false);
+    final resourcesByUrn = <String, PolicyResource>{
+      for (final resource in resources) resource.urn: resource,
+    };
+
+    for (final resource in resources) {
+      final wire = request.resources.firstWhere((r) => r.urn == resource.urn);
+      if (wire.parent.isNotEmpty) {
+        resource.parent = resourcesByUrn[wire.parent];
+      }
+
+      for (final dependencyUrn in wire.dependencies) {
+        final dependency = resourcesByUrn[dependencyUrn];
+        if (dependency != null) {
+          resource.dependencies.add(dependency);
+        }
+      }
+
+      for (final propertyEntry in wire.propertyDependencies.entries) {
+        final dependencies = <PolicyResource>[];
+        for (final urn in propertyEntry.value.urns) {
+          final dependency = resourcesByUrn[urn];
+          if (dependency != null) {
+            dependencies.add(dependency);
+          }
+        }
+        resource.propertyDependencies[propertyEntry.key] = dependencies;
+      }
+    }
+
+    for (final policy in policyPackArgs.policies) {
+      if (policy is! StackValidationPolicy) {
+        continue;
+      }
+
+      final configured = _configuredPolicies[policy.name];
+      var enforcement =
+          configured?.enforcementLevel ??
+          policy.enforcementLevel ??
+          defaultEnforcementLevel;
+      if (enforcement == EnforcementLevel.disabled) {
+        continue;
+      }
+
+      if (enforcement == EnforcementLevel.remediate) {
+        enforcement = EnforcementLevel.mandatory;
+      }
+
+      final args = StackValidationArgs(
+        resources: resources,
+        stackTags: stackTags,
+        config: configured?.properties ?? const <String, Object?>{},
+      );
+
+      try {
+        await policy.validateStack(args, (message, [urn]) {
+          var violationMessage = policy.description;
+          if (message.isNotEmpty) {
+            violationMessage = '$violationMessage\n$message';
+          }
+
+          diagnostics.add(
+            analyzerpb.AnalyzeDiagnostic(
+              policyName: policy.name,
+              policyPackName: policyPackName,
+              policyPackVersion: policyPackVersion,
+              description: policy.description,
+              message: violationMessage,
+              enforcementLevel: _toProtoEnforcement(enforcement),
+              urn: urn ?? '',
+              severity: policy.severity == null
+                  ? analyzerpb.PolicySeverity.POLICY_SEVERITY_UNSPECIFIED
+                  : _toProtoSeverity(policy.severity!),
+            ),
+          );
+        });
+      } on PolicyNotApplicableError catch (error) {
+        notApplicable.add(
+          analyzerpb.PolicyNotApplicable(
+            policyName: policy.name,
+            reason: error.reason ?? '',
+          ),
+        );
+      }
+    }
+
+    return analyzerpb.AnalyzeResponse(
+      diagnostics: diagnostics,
+      notApplicable: notApplicable,
+    );
+  }
+
+  @override
+  Future<analyzerpb.RemediateResponse> remediate(
+    ServiceCall call,
+    analyzerpb.AnalyzeRequest request,
+  ) async {
+    final remediations = <analyzerpb.Remediation>[];
+    final notApplicable = <analyzerpb.PolicyNotApplicable>[];
+
+    var props = _structToObject(request.properties);
+
+    for (final policy in policyPackArgs.policies) {
+      if (policy is! ResourceValidationPolicy) {
+        continue;
+      }
+
+      final configured = _configuredPolicies[policy.name];
+      final enforcement =
+          configured?.enforcementLevel ??
+          policy.enforcementLevel ??
+          defaultEnforcementLevel;
+      if (enforcement != EnforcementLevel.remediate) {
+        continue;
+      }
+
+      if (policy.remediateResource == null) {
+        notApplicable.add(
+          analyzerpb.PolicyNotApplicable(
+            policyName: policy.name,
+            reason: 'Policy does not implement remediateResource',
+          ),
+        );
+        continue;
+      }
+
+      final args = ResourceValidationArgs(
+        type: request.type,
+        props: props,
+        urn: request.urn,
+        name: request.name,
+        opts: _toPolicyResourceOptions(request.options),
+        provider: request.hasProvider()
+            ? _toProviderResource(request.provider)
+            : null,
+        stackTags: stackTags,
+        config: configured?.properties ?? const <String, Object?>{},
+      );
+
+      try {
+        final result = await policy.remediateResource!(args);
+        if (result == null) {
+          continue;
+        }
+
+        props = result;
+        remediations.add(
+          analyzerpb.Remediation(
+            policyName: policy.name,
+            policyPackName: policyPackName,
+            policyPackVersion: policyPackVersion,
+            description: policy.description,
+            properties: await StructConverter.toStruct(
+              _normalizeRemediationProperties(result),
+            ),
+          ),
+        );
+      } on PolicyNotApplicableError catch (error) {
+        notApplicable.add(
+          analyzerpb.PolicyNotApplicable(
+            policyName: policy.name,
+            reason: error.reason ?? '',
+          ),
+        );
+      }
+    }
+
+    return analyzerpb.RemediateResponse(
+      remediations: remediations,
+      notApplicable: notApplicable,
+    );
+  }
+
+  @override
+  Future<Empty> cancel(ServiceCall call, Empty request) async {
+    return Empty();
+  }
+
+  ResourceValidationArgs _resourceValidationArgs({
+    required analyzerpb.AnalyzeRequest request,
+    required Map<String, Object?> config,
+  }) {
+    return ResourceValidationArgs(
+      type: request.type,
+      props: _structToObject(request.properties),
+      urn: request.urn,
+      name: request.name,
+      opts: _toPolicyResourceOptions(request.options),
+      provider: request.hasProvider()
+          ? _toProviderResource(request.provider)
+          : null,
+      stackTags: stackTags,
+      config: config,
+    );
+  }
+
+  PolicyResource _toPolicyResource(analyzerpb.AnalyzerResource resource) {
+    return PolicyResource(
+      type: resource.type,
+      props: _structToObject(resource.properties),
+      urn: resource.urn,
+      name: resource.name,
+      opts: _toPolicyResourceOptions(resource.options),
+      provider: resource.hasProvider()
+          ? _toProviderResource(resource.provider)
+          : null,
+      dependencies: <PolicyResource>[],
+      propertyDependencies: <String, List<PolicyResource>>{},
+    );
+  }
+}
+
+class _ConfiguredPolicy {
+  const _ConfiguredPolicy({
+    required this.enforcementLevel,
+    required this.properties,
+  });
+
+  final EnforcementLevel enforcementLevel;
+  final Map<String, Object?> properties;
+}
+
+class _InitialPolicyConfig {
+  const _InitialPolicyConfig({
+    this.enforcementLevel,
+    this.properties = const <String, Object?>{},
+  });
+
+  final EnforcementLevel? enforcementLevel;
+  final Map<String, Object?> properties;
+}
+
+Map<String, _InitialPolicyConfig> _normalizeInitialConfig(
+  PolicyPackConfig? initialConfig,
+) {
+  if (initialConfig == null) {
+    return const <String, _InitialPolicyConfig>{};
+  }
+
+  final normalized = <String, _InitialPolicyConfig>{};
+  for (final entry in initialConfig.entries) {
+    final value = entry.value;
+    if (value is EnforcementLevel) {
+      normalized[entry.key] = _InitialPolicyConfig(enforcementLevel: value);
+      continue;
+    }
+
+    if (value is String) {
+      final level = _parseEnforcementLevel(value);
+      if (level != null) {
+        normalized[entry.key] = _InitialPolicyConfig(enforcementLevel: level);
+      }
+      continue;
+    }
+
+    if (value is Map) {
+      EnforcementLevel? level;
+      final properties = <String, Object?>{};
+      for (final mapEntry in value.entries) {
+        final key = mapEntry.key.toString();
+        if (key == 'enforcementLevel') {
+          final parsed = mapEntry.value;
+          if (parsed is EnforcementLevel) {
+            level = parsed;
+          } else if (parsed is String) {
+            level = _parseEnforcementLevel(parsed);
+          }
+          continue;
+        }
+        properties[key] = mapEntry.value;
+      }
+
+      normalized[entry.key] = _InitialPolicyConfig(
+        enforcementLevel: level,
+        properties: properties,
+      );
+    }
+  }
+
+  return normalized;
+}
+
+PolicyResourceOptions _toPolicyResourceOptions(
+  analyzerpb.AnalyzerResourceOptions options,
+) {
+  return PolicyResourceOptions(
+    protect: options.protect,
+    ignoreChanges: options.ignoreChanges,
+    deleteBeforeReplace: options.deleteBeforeReplaceDefined
+        ? options.deleteBeforeReplace
+        : null,
+    aliases: options.aliases,
+    customTimeouts: PolicyCustomTimeouts(
+      createSeconds: options.hasCustomTimeouts()
+          ? options.customTimeouts.create_1
+          : 0,
+      updateSeconds: options.hasCustomTimeouts()
+          ? options.customTimeouts.update
+          : 0,
+      deleteSeconds: options.hasCustomTimeouts()
+          ? options.customTimeouts.delete
+          : 0,
+    ),
+    additionalSecretOutputs: options.additionalSecretOutputs,
+    parent: options.parent.isEmpty ? null : options.parent,
+  );
+}
+
+PolicyProviderResource _toProviderResource(
+  analyzerpb.AnalyzerProviderResource provider,
+) {
+  return PolicyProviderResource(
+    type: provider.type,
+    props: _structToObject(provider.properties),
+    urn: provider.urn,
+    name: provider.name,
+  );
+}
+
+Map<String, Object?> _structToObject(Struct struct) {
+  final map = StructConverter.fromStruct(struct);
+  return map.map((key, value) => MapEntry(key, value));
+}
+
+Map<String, Object?> _normalizeRemediationProperties(
+  Map<String, Object?> input,
+) {
+  return input.map(
+    (key, value) => MapEntry(key, _normalizeRemediationValue(value)),
+  );
+}
+
+dynamic _normalizeRemediationValue(dynamic value) {
+  if (value is Secret) {
+    return <String, dynamic>{
+      Constants.specialSigKey: Constants.specialSecretSig,
+      Constants.valueName: _normalizeRemediationValue(value.value),
+    };
+  }
+
+  if (value is Map) {
+    return value.map(
+      (key, item) => MapEntry(key.toString(), _normalizeRemediationValue(item)),
+    );
+  }
+
+  if (value is Iterable) {
+    return value.map(_normalizeRemediationValue).toList(growable: false);
+  }
+
+  if (value is num || value is bool || value is String || value == null) {
+    return value;
+  }
+
+  if (value is DateTime) {
+    return value.toUtc().toIso8601String();
+  }
+
+  if (value is Duration) {
+    return value.inMicroseconds / Duration.microsecondsPerSecond;
+  }
+
+  return value.toString();
+}
+
+analyzerpb.EnforcementLevel _toProtoEnforcement(
+  EnforcementLevel enforcementLevel,
+) {
+  switch (enforcementLevel) {
+    case EnforcementLevel.advisory:
+      return analyzerpb.EnforcementLevel.ADVISORY;
+    case EnforcementLevel.mandatory:
+      return analyzerpb.EnforcementLevel.MANDATORY;
+    case EnforcementLevel.remediate:
+      return analyzerpb.EnforcementLevel.REMEDIATE;
+    case EnforcementLevel.disabled:
+      return analyzerpb.EnforcementLevel.DISABLED;
+  }
+}
+
+EnforcementLevel _fromProtoEnforcement(
+  analyzerpb.EnforcementLevel enforcementLevel,
+) {
+  switch (enforcementLevel) {
+    case analyzerpb.EnforcementLevel.ADVISORY:
+      return EnforcementLevel.advisory;
+    case analyzerpb.EnforcementLevel.MANDATORY:
+      return EnforcementLevel.mandatory;
+    case analyzerpb.EnforcementLevel.DISABLED:
+      return EnforcementLevel.disabled;
+    case analyzerpb.EnforcementLevel.REMEDIATE:
+      return EnforcementLevel.remediate;
+  }
+
+  throw StateError('Unknown enforcement level: $enforcementLevel');
+}
+
+EnforcementLevel? _parseEnforcementLevel(String raw) {
+  switch (raw.toLowerCase()) {
+    case 'advisory':
+      return EnforcementLevel.advisory;
+    case 'mandatory':
+      return EnforcementLevel.mandatory;
+    case 'remediate':
+      return EnforcementLevel.remediate;
+    case 'disabled':
+      return EnforcementLevel.disabled;
+    default:
+      return null;
+  }
+}
+
+analyzerpb.PolicySeverity _toProtoSeverity(Severity severity) {
+  switch (severity) {
+    case Severity.low:
+      return analyzerpb.PolicySeverity.POLICY_SEVERITY_LOW;
+    case Severity.medium:
+      return analyzerpb.PolicySeverity.POLICY_SEVERITY_MEDIUM;
+    case Severity.high:
+      return analyzerpb.PolicySeverity.POLICY_SEVERITY_HIGH;
+    case Severity.critical:
+      return analyzerpb.PolicySeverity.POLICY_SEVERITY_CRITICAL;
+  }
+}
