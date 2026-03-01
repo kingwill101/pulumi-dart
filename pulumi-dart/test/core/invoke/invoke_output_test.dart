@@ -1,5 +1,8 @@
+import 'package:mockito/mockito.dart';
 import 'package:pulumi/pulumi.dart';
 import 'package:test/test.dart';
+
+import '../../mocks/mocks.mocks.dart';
 
 class _InvokeOutputMocks extends Mocks {
   int callCount = 0;
@@ -109,5 +112,52 @@ void main() {
       );
       await expectLater(empty.getValue(), throwsStateError);
     });
+
+    test(
+      'returns unknown and skips invoke when dependsOn custom resource id is unknown',
+      () async {
+        final mocks = _InvokeOutputMocks(<String, dynamic>{
+          'test:index:Echo': <String, dynamic>{'value': 1},
+        });
+        runtime.setMocks(mocks);
+
+        final dependency = MockCustomResource();
+        when(dependency.id).thenReturn(Output.createUnknown<String?>());
+
+        final result = invokeOutput<Map<String, dynamic>>(
+          'test:index:Echo',
+          <String, Input<dynamic>>{'value': Input.fromValue(1)},
+          options: InvokeOutputOptions(dependsOn: <Resource>[dependency]),
+        );
+
+        final data = await result.getData();
+        expect(data.isKnown, isFalse);
+        expect(data.resources, contains(dependency));
+        expect(mocks.callCount, equals(0));
+      },
+    );
+
+    test(
+      'propagates explicit dependency resources onto returned output',
+      () async {
+        final mocks = _InvokeOutputMocks(<String, dynamic>{
+          'test:index:Echo': <String, dynamic>{'value': 7},
+        });
+        runtime.setMocks(mocks);
+
+        final dependency = MockResource();
+        final result = invokeOutput<Map<String, dynamic>>(
+          'test:index:Echo',
+          <String, Input<dynamic>>{'value': Input.fromValue(7)},
+          options: InvokeOutputOptions(dependsOn: <Resource>[dependency]),
+        );
+
+        final data = await result.getData();
+        expect(data.isKnown, isTrue);
+        expect(data.value, equals(<String, dynamic>{'value': 7}));
+        expect(data.resources, contains(dependency));
+        expect(mocks.callCount, equals(1));
+      },
+    );
   });
 }
