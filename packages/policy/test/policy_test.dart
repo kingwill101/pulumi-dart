@@ -122,10 +122,7 @@ void main() {
           description: 'pack description',
         ),
         initialConfig: {
-          'policy-a': {
-            'enforcementLevel': 'disabled',
-            'flag': true,
-          },
+          'policy-a': {'enforcementLevel': 'disabled', 'flag': true},
         },
       );
 
@@ -231,6 +228,148 @@ void main() {
       );
       expect(response.diagnostics.single.message, contains('stack violation'));
     });
+
+    test(
+      'analyzeStack maps resource graph, options, and provider metadata',
+      () async {
+        final policy = StackValidationPolicy(
+          name: 'stack-graph-policy',
+          description: 'stack graph mapping',
+          enforcementLevel: EnforcementLevel.mandatory,
+          validateStack: (args, reportViolation) {
+            expect(args.stackTags['team'], equals('platform'));
+
+            final parent = args.resources.firstWhere((r) => r.name == 'parent');
+            final child = args.resources.firstWhere((r) => r.name == 'child');
+
+            expect(child.parent?.urn, equals(parent.urn));
+            expect(child.dependencies.map((d) => d.urn), contains(parent.urn));
+            expect(
+              child.propertyDependencies['nestedRef']?.map((d) => d.urn),
+              contains(parent.urn),
+            );
+
+            expect(child.opts.protect, isTrue);
+            expect(child.opts.ignoreChanges, contains('tags'));
+            expect(child.opts.deleteBeforeReplace, isTrue);
+            expect(
+              child.opts.aliases,
+              contains('urn:pulumi:dev::proj::alias::child'),
+            );
+            expect(child.opts.customTimeouts.createSeconds, equals(10));
+            expect(child.opts.customTimeouts.updateSeconds, equals(20));
+            expect(child.opts.customTimeouts.deleteSeconds, equals(30));
+            expect(child.opts.parent, equals(parent.urn));
+            expect(child.opts.additionalSecretOutputs, contains('token'));
+
+            expect(child.provider, isNotNull);
+            expect(
+              child.provider?.urn,
+              equals('urn:pulumi:dev::proj::pulumi:providers:test::default'),
+            );
+            expect(child.provider?.name, equals('default'));
+            expect(child.provider?.type, equals('pulumi:providers:test'));
+            expect(child.provider?.props['region'], equals('us-west-2'));
+
+            reportViolation('graph verified', child.urn);
+          },
+        );
+
+        final server = PolicyAnalyzerServer(
+          policyPackName: 'pack-a',
+          policyPackVersion: '1.0.0',
+          defaultEnforcementLevel: EnforcementLevel.advisory,
+          policyPackArgs: PolicyPackArgs(policies: [policy]),
+          initialConfig: null,
+        );
+
+        await server.configureStack(
+          call,
+          analyzerpb.AnalyzerStackConfigureRequest(
+            organization: 'acme',
+            project: 'proj',
+            stack: 'dev',
+            dryRun: true,
+            tags: const <MapEntry<String, String>>[
+              MapEntry('team', 'platform'),
+            ],
+          ),
+        );
+
+        final parentUrn = 'urn:pulumi:dev::proj::pkg:index:Resource::parent';
+        final childUrn = 'urn:pulumi:dev::proj::pkg:index:Resource::child';
+
+        final response = await server.analyzeStack(
+          call,
+          analyzerpb.AnalyzeStackRequest(
+            resources: [
+              analyzerpb.AnalyzerResource(
+                type: 'pkg:index:Resource',
+                urn: parentUrn,
+                name: 'parent',
+                options: analyzerpb.AnalyzerResourceOptions(),
+                properties: await StructConverter.toStruct({'name': 'parent'}),
+              ),
+              analyzerpb.AnalyzerResource(
+                type: 'pkg:index:Resource',
+                urn: childUrn,
+                name: 'child',
+                options: analyzerpb.AnalyzerResourceOptions(
+                  protect: true,
+                  ignoreChanges: const ['tags'],
+                  deleteBeforeReplace: true,
+                  deleteBeforeReplaceDefined: true,
+                  aliases: const ['urn:pulumi:dev::proj::alias::child'],
+                  additionalSecretOutputs: const ['token'],
+                  customTimeouts:
+                      analyzerpb.AnalyzerResourceOptions_CustomTimeouts(
+                        create_1: 10,
+                        update: 20,
+                        delete: 30,
+                      ),
+                  parent: parentUrn,
+                ),
+                provider: analyzerpb.AnalyzerProviderResource(
+                  type: 'pulumi:providers:test',
+                  urn: 'urn:pulumi:dev::proj::pulumi:providers:test::default',
+                  name: 'default',
+                  properties: await StructConverter.toStruct({
+                    'region': 'us-west-2',
+                  }),
+                ),
+                parent: parentUrn,
+                // Keep one unknown dependency to verify it is ignored.
+                dependencies: [
+                  parentUrn,
+                  'urn:pulumi:dev::proj::pkg:index:Resource::missing',
+                ],
+                propertyDependencies: [
+                  MapEntry(
+                    'nestedRef',
+                    analyzerpb.AnalyzerPropertyDependencies(
+                      urns: [
+                        parentUrn,
+                        'urn:pulumi:dev::proj::pkg:index:Resource::missing',
+                      ],
+                    ),
+                  ),
+                ],
+                properties: await StructConverter.toStruct({'name': 'child'}),
+              ),
+            ],
+          ),
+        );
+
+        expect(response.notApplicable, isEmpty);
+        expect(response.diagnostics, hasLength(1));
+        expect(
+          response.diagnostics.single.policyName,
+          equals('stack-graph-policy'),
+        );
+        expect(response.diagnostics.single.urn, equals(childUrn));
+        expect(response.diagnostics.single.message, contains('graph verified'));
+      },
+    );
 
     test('remediate returns transformed properties', () async {
       final policy = ResourceValidationPolicy(
