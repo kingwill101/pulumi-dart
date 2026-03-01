@@ -1,0 +1,6 @@
+name: aws-dart-lambda-webserver
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Lambda web server behind API Gateway, translated to Dart.

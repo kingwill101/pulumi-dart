@@ -1,0 +1,21 @@
+name: voting-app
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Voting app that uses containers
+template:
+  config:
+    aws:region:
+      description: The AWS region to deploy into
+      default: us-west-2
+    sql-admin-name:
+      description: The PostgreSQL admin username
+    sql-admin-password:
+      description: The PostgreSQL admin password
+      secret: true
+    sql-user-name:
+      description: The PostgreSQL application username
+    sql-user-password:
+      description: The PostgreSQL application password
+      secret: true

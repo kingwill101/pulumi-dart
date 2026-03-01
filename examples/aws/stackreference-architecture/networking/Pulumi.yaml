@@ -1,0 +1,10 @@
+name: networking-layer
+runtime: dart
+description: Networking layer for the aws-dart-stackreference-architecture
+template:
+  config:
+    aws:region:
+      description: The AWS region to deploy into.
+      default: us-west-2
+    azCount:
+      description: The number of Availability Zones to deploy the application into.

@@ -1,0 +1,6 @@
+name: aws-dart-netlify-cms-and-oauth
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Pulumi Dart translation of aws-ts-netlify-cms-and-oauth infrastructure

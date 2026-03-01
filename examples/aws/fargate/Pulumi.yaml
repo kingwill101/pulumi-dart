@@ -1,0 +1,11 @@
+name: aws-dart-fargate
+description: A Dockerized app running in AWS ECS Fargate, using Dart infrastructure as code
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+template:
+  config:
+    aws:region:
+      description: The AWS region to deploy into
+      default: us-east-1

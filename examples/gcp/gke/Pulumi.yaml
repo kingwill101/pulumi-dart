@@ -1,0 +1,12 @@
+name: gcp-dart-gke
+runtime: dart
+description: A Google Kubernetes Engine (GKE) cluster, with canary deployment
+template:
+  config:
+    gcp:project:
+      description: The Google Cloud project to deploy into
+    gcp:zone:
+      description: The Google Cloud zone
+    password:
+      description: Your cluster password
+      secret: true

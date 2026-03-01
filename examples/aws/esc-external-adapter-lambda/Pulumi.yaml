@@ -1,0 +1,6 @@
+name: aws-dart-esc-external-adapter-lambda
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: External secrets adapter for Pulumi ESC using AWS Lambda with JWT authentication

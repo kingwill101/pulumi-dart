@@ -1,0 +1,6 @@
+name: aws-ts-apigateway-lambda-serverless
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: API Gateway + Lambda serverless example translated to Dart.

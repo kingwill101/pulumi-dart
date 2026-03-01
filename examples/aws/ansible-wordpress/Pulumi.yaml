@@ -1,0 +1,6 @@
+name: aws_dart_ansible_wordpress
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Deploy an EC2 Wordpress server using Pulumi and Ansible.

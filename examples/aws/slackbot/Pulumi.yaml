@@ -1,0 +1,17 @@
+name: aws-go-slackbot
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Example application for building a Slack bot infrastructure with Pulumi and Dart
+template:
+  config:
+    aws:region:
+      description: The AWS region to deploy into
+      default: us-east-2
+    mentionbot:slackToken:
+      description: Slack bot OAuth token
+      secret: true
+    mentionbot:verificationToken:
+      description: Slack verification token
+      secret: true

@@ -1,0 +1,11 @@
+name: aws-dart-scheduled-function
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Basic example of AWS CloudWatch scheduled function.
+template:
+  config:
+    aws:region:
+      description: The AWS region to deploy into
+      default: us-east-1

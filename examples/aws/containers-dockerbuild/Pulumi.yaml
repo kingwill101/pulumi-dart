@@ -1,0 +1,12 @@
+name: aws-dart-containers-dockerbuild
+description: NGINX container example with Docker Build.
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+template:
+  description: An example that builds a Docker image and deploys a container to AWS Fargate.
+  config:
+    aws:region:
+      description: The AWS region to deploy into
+      default: us-west-2

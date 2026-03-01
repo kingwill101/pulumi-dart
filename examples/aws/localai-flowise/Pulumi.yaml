@@ -1,0 +1,9 @@
+name: localai-flowise-example
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: A Dart program to deploy an EKS cluster with LocalAI/Flowise baseline workloads
+
+config:
+  aws:region: eu-central-1

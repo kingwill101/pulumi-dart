@@ -1,0 +1,8 @@
+name: gcr-build-image
+runtime: dart
+description: Build and push a Docker image to Google Container Registry.
+
+template:
+  config:
+    gcp:project:
+      description: The Google Cloud project to deploy into

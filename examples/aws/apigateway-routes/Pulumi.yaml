@@ -1,0 +1,11 @@
+name: aws-dart-apigateway-routes
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Demonstration of API Gateway routes
+template:
+    config:
+      aws:region:
+        description: The AWS region to deploy into
+        default: us-east-2

@@ -1,0 +1,6 @@
+name: aws-dart-lambda-secrets
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Lambda secrets example in Dart.

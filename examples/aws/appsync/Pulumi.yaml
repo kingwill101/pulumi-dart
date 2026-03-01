@@ -1,0 +1,6 @@
+name: aws-ts-appsync
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: GraphQL endpoint in AWS AppSync with DynamoDB backend.

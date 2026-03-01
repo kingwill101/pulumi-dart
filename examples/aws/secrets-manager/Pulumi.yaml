@@ -1,0 +1,6 @@
+name: aws-dart-secrets-manager
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: A minimal AWS C# Pulumi program

@@ -1,0 +1,6 @@
+name: aws-dart-eks-gpu-dra
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Pulumi Dart translation of aws-ts-eks-gpu-dra

@@ -1,0 +1,24 @@
+name: gcp-dart-oidc-provider-pulumi-cloud
+description: Enables Pulumi Cloud to authenticate with an OIDC provider in Google Cloud
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: typescript
+
+template:
+  description: GCP OIDC setup for Pulumi ESC
+  config:
+    escEnvOrg:
+      description: Pulumi organization name for the generated ESC environment
+      default: pulumi
+    gcp:project:
+      description: The name of your GCP project
+    escEnvProject:
+      description: The name of the ESC project in which to place a generated environment.
+      default: gcloud
+    escEnvName:
+      description: The name of the ESC environment to generate.

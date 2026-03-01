@@ -1,0 +1,11 @@
+name: aws-dart-lambda-efs
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Example of using AWS Lambda with Amazon EFS in Dart
+template:
+  config:
+    aws:region:
+      description: The AWS region to deploy into
+      default: us-east-2

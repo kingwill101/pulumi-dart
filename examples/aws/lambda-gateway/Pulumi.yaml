@@ -1,0 +1,11 @@
+name: aws-dart-lambda-gateway
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Basic example of an AWS lambda With API Gateway
+template:
+  config:
+    aws:region:
+      description: The AWS region to deploy into
+      default: us-east-2

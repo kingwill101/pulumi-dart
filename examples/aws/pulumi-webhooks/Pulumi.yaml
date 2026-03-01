@@ -1,0 +1,16 @@
+name: aws-dart-pulumi-webhooks
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Lambda app that handles Pulumi webhook notifications.
+template:
+    config:
+      aws:region:
+        description: The AWS region to deploy into
+        default: us-east-2
+      aws-dart-pulumi-webhooks:slackChannel:
+        description: Channel to post messages into
+      aws-dart-pulumi-webhooks:slackWebhook:
+        description: Webhook URL from the Slack app
+        secret: true

@@ -1,0 +1,11 @@
+name: aws-ts-stepfunctions
+description: Basic example of AWS Step Functions in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+template:
+  config:
+    aws:region:
+      description: The AWS region to deploy into
+      default: us-east-2

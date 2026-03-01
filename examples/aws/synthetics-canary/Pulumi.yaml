@@ -1,0 +1,6 @@
+name: aws-dart-synthetics-canary
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Example to deploy an AWS synthetics canary with Dart.

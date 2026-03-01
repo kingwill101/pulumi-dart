@@ -1,0 +1,3 @@
+name: aws-dart-create-role
+runtime: dart
+description: Demonstrate use of AWS AssumeRole functionality (create role stack).

@@ -1,0 +1,3 @@
+name: gcp-instance-nginx
+description: Deploy a Nginx Server in a GCP instance
+runtime: dart

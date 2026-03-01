@@ -1,0 +1,6 @@
+name: aws-dart-cue-eks
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: CUE EKS example translated to Pulumi Dart

@@ -1,0 +1,15 @@
+name: aws_dart_containers_dockerbuild
+description: Pulumi AWS ECS containers example with Docker Build.
+version: 0.0.1
+resolution: workspace
+
+environment:
+  sdk: ^3.11.0
+dependencies:
+  pulumi: 0.1.0
+  pulumi_aws: any
+  pulumi_awsx: any
+  pulumi_docker_build: any
+
+dev_dependencies:
+  lints: ^6.1.0

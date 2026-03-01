@@ -1,0 +1,14 @@
+name: pulumi_dart_workspace
+publish_to: none
+
+environment:
+  sdk: ">=3.11.0 <4.0.0"
+
+workspace:
+  - packages/**
+  - examples/**
+
+dependencies:
+  crypto: ^3.0.7
+  path: ^1.9.1
+  

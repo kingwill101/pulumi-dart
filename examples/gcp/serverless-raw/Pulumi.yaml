@@ -1,0 +1,9 @@
+name: gcp-dart-serverless-raw
+runtime: dart
+description: 'Google Cloud Functions in Python, Go, and TypeScript deployed with Dart.'
+template:
+  config:
+    gcp:project:
+      description: The Google Cloud project to deploy into
+    gcp:region:
+      description: The Google Cloud region

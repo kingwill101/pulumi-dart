@@ -1,0 +1,16 @@
+name: aws_dart_netlify_cms_and_oauth
+description: Pulumi Dart translation of aws-ts-netlify-cms-and-oauth
+version: 0.0.1
+resolution: workspace
+
+environment:
+  sdk: ^3.11.0
+dependencies:
+  pulumi: 0.1.0
+  pulumi_aws: any
+  pulumi_awsx: any
+  mime: ^2.0.0
+  path: ^1.9.1
+
+dev_dependencies:
+  lints: ^6.1.0

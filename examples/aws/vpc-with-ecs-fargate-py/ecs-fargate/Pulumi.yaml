@@ -1,0 +1,3 @@
+name: fargate-with-crosswalk-vpc
+runtime: dart
+description: Fargate with crosswalk vpc

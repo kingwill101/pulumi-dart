@@ -1,0 +1,7 @@
+name: aws-dart-stackreference-department
+runtime: dart
+description: An AWS Dart Pulumi program demonstrating sharing configuration via StackReference resources
+template:
+  config:
+    departmentName:
+      description: The department name to use

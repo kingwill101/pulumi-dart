@@ -1,0 +1,13 @@
+name: aws_dart_eks_distro
+description: EKS distro state-store example in Dart.
+version: 0.0.1
+resolution: workspace
+
+environment:
+  sdk: ^3.11.0
+dependencies:
+  pulumi: 0.1.0
+  pulumi_aws: any
+
+dev_dependencies:
+  lints: ^6.1.0

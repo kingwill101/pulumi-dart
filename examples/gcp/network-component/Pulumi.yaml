@@ -1,0 +1,15 @@
+name: gcp-dart-network-component
+description: Pulumi GCP network-component example using ComponentResource.
+runtime: dart
+template:
+  config:
+    gcp:project:
+      description: The Google Cloud project to use.
+    gcp:zone:
+      description: The Google Cloud zone to use.
+    project:
+      description: A project name used for naming/tagging resources.
+    owner:
+      description: An owner name used for tagging resources.
+    subnet_cidr_blocks:
+      description: A list of subnet CIDR blocks for the VPC.

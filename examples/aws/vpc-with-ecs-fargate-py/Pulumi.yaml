@@ -1,0 +1,6 @@
+name: crosswalk-vpc
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: A well architected vpc built with crosswalk

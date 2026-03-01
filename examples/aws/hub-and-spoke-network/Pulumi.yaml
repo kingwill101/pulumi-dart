@@ -1,0 +1,11 @@
+name: aws-hub-and-spoke-with-inspection-vpc-dart
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Hub-and-spoke network with centralized egress using AWS Transit Gateway
+template:
+  config:
+    aws:region:
+      description: The AWS region to deploy into
+      default: us-east-2

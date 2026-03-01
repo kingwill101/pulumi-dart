@@ -1,0 +1,5 @@
+name: aws-ts-nextjs
+runtime:
+  name: dart
+  options:
+    resolution: workspace

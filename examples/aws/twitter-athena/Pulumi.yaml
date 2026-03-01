@@ -1,0 +1,24 @@
+name: aws-dart-twitter-athena
+description: Analyze tweets in AWS Athena
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+template:
+  config:
+    aws:region:
+      description: The AWS region to deploy into
+      default: us-west-2
+    aws-dart-twitter-athena:twitterAccessTokenKey:
+      description: Access token key
+    aws-dart-twitter-athena:twitterAccessTokenSecret:
+      description: Access token secret
+      secret: true
+    aws-dart-twitter-athena:twitterConsumerKey:
+      description: Consumer key
+    aws-dart-twitter-athena:twitterConsumerSecret:
+      description: Consumer secret
+      secret: true
+    aws-dart-twitter-athena:twitterQuery:
+      description: Search term to query for
+      default: Amazon Web Services

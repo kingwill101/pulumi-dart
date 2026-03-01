@@ -1,0 +1,6 @@
+name: aws-ts-ec2-provisioners
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: EC2 + remote provisioning via pulumi_command.

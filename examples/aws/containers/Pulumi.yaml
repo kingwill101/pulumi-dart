@@ -1,0 +1,11 @@
+name: aws-dart-containers
+description: NGINX container example
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+template:
+  config:
+    aws:region:
+      description: The AWS region to deploy into
+      default: us-west-2

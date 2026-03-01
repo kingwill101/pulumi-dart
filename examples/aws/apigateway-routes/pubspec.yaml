@@ -1,0 +1,14 @@
+name: aws_dart_apigateway_routes
+description: Pulumi API Gateway routes example in Dart.
+version: 0.0.1
+resolution: workspace
+
+environment:
+  sdk: ^3.11.0
+dependencies:
+  pulumi: 0.1.0
+  pulumi_aws: any
+  pulumi_aws_apigateway: any
+
+dev_dependencies:
+  lints: ^6.1.0

@@ -1,0 +1,6 @@
+name: aws-ts-apigateway-auth0
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Secure HTTP API using Auth0 JWT authorizer (Dart translation).

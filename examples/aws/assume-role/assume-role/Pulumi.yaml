@@ -1,0 +1,3 @@
+name: aws-dart-assume-role
+runtime: dart
+description: Demonstrate use of AWS AssumeRole functionality (assume role stack).

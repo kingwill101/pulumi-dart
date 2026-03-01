@@ -1,0 +1,16 @@
+name: cloud-run-deploy
+runtime: dart
+description: Deploy a Docker image to Cloud Run from GCR.
+
+template:
+  config:
+    gcp:project:
+      description: The Google Cloud project to deploy into
+    gcp:region:
+      description: The Google Cloud region to deploy into
+      default: us-central1
+    docker-config-file:
+      description: Path to your Docker config file for registry auth (typically ~/.docker/config.json)
+    image-name:
+      description: Image name in the target GCR repository
+      default: ruby-app

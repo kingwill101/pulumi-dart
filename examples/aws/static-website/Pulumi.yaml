@@ -1,0 +1,14 @@
+name: aws-dart-static-website
+description: Static website example (S3 website baseline) in Dart
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+template:
+  config:
+    aws:region:
+      description: The AWS region to deploy into
+      default: us-east-1
+    pathToWebsiteContents:
+      description: Relative path to the website's contents
+      default: ./www

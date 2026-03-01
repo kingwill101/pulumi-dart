@@ -1,0 +1,6 @@
+name: aws-ts-ecr-cache
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: ECR pull-through cache rules and optional credentials in Secrets Manager.

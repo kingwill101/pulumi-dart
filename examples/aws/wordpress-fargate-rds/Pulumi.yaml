@@ -1,0 +1,23 @@
+name: aws-dart-wordpress-fargate-rds
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Deploys WordPress in ECS Fargate with RDS backend.
+template:
+  config:
+    aws:region:
+      description: The AWS region to deploy into.
+      default: us-west-2
+    serviceName:
+      description: Prefix used for resources created by the program.
+      default: wp-fargate-rds
+    dbName:
+      description: The name of the MySQL DB created in RDS.
+      default: wordpress
+    dbUser:
+      description: The DB user created with access to the MySQL DB.
+      default: admin
+    dbPassword:
+      description: The password for the DB user. If omitted, a random password is generated.
+      secret: true

@@ -1,0 +1,6 @@
+name: aws-dart-webserver
+description: Basic Dart example of an AWS web server accessible over HTTP.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

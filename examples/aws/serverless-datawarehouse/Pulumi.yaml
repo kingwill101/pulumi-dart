@@ -1,0 +1,6 @@
+name: aws-dart-serverless-datawarehouse
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Serverless Analytics on AWS

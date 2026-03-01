@@ -1,0 +1,12 @@
+name: voting-app
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: MERN voting app baseline on EKS (Dart)
+
+template:
+  config:
+    aws:region:
+      description: The AWS region to deploy into
+      default: us-west-2

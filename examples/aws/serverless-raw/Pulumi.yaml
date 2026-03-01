@@ -1,0 +1,6 @@
+name: aws-ts-serverless-raw
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: A serverless API built directly with API Gateway and Lambda, translated to Dart.

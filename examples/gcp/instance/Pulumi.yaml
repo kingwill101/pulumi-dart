@@ -1,0 +1,3 @@
+name: gcp-dart-instance
+runtime: dart
+description: A Dart Pulumi program to create a GCP instance

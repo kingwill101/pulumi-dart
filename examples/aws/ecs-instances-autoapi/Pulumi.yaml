@@ -1,0 +1,6 @@
+name: aws_dart_ecs_instances_autoapi
+description: ECS on EC2 container instances with ALB in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

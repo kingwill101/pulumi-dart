@@ -1,0 +1,6 @@
+name: aws-ts-eks-distro
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: A minimal AWS TypeScript Pulumi program

@@ -1,0 +1,16 @@
+name: aws_dart_eks_gpu_dra
+description: Pulumi Dart translation of aws-ts-eks-gpu-dra
+version: 0.0.1
+resolution: workspace
+
+environment:
+  sdk: ^3.11.0
+dependencies:
+  pulumi: 0.1.0
+  pulumi_aws: any
+  pulumi_awsx: any
+  pulumi_eks: any
+  pulumi_kubernetes: any
+
+dev_dependencies:
+  lints: ^6.1.0

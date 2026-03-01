@@ -1,0 +1,3 @@
+name: gcp-dart-functions
+description: "A minimal Dart Pulumi program using Google Cloud Functions."
+runtime: dart

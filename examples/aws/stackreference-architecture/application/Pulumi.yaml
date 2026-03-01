@@ -1,0 +1,12 @@
+name: application-layer
+runtime: dart
+description: Application layer for the aws-dart-stackreference-architecture
+template:
+  config:
+    aws:region:
+      description: The AWS region to deploy into.
+      default: us-west-2
+    networkingStack:
+      description: "(Required) The reference to the networking stack on which the application will be deployed (in the form <organization_or_user>/<projectName>/<stackName>)"
+    databaseStack:
+      description: "(Required) The reference to the database stack so the application can fetch DB settings (in the form <organization_or_user>/<projectName>/<stackName>)"

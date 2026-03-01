@@ -1,0 +1,6 @@
+name: aws-ts-s3-lambda-copyzip
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Copy new S3 objects from one bucket to zipped objects in another bucket.

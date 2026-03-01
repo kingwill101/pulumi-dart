@@ -1,0 +1,6 @@
+name: aws-ts-lambda-thumbnailer
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Video thumbnail extractor using Lambda and S3 notifications.

@@ -1,0 +1,6 @@
+name: aws-dart-multi-language-lambda
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Pulumi program to demonstrate building and deploying multi-language AWS Lambda functions.

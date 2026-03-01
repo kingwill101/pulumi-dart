@@ -1,0 +1,14 @@
+name: aws-dart-voting-app
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Voting app using Redis and Flask containers.
+template:
+  config:
+    aws:region:
+      description: The AWS region to deploy into
+      default: us-west-2
+    redisPassword:
+      description: Redis password
+      secret: true

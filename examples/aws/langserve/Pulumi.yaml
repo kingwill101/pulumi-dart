@@ -1,0 +1,6 @@
+name: aws-dart-langserve
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Pulumi Dart translation of aws-py-langserve

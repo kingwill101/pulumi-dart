@@ -1,0 +1,7 @@
+name: aws-dart-stackreference-company
+runtime: dart
+description: An AWS Dart Pulumi program demonstrating sharing configuration via StackReference resources
+template:
+  config:
+    companyName:
+      description: The company name to use

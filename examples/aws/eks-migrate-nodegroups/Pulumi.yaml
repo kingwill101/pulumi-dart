@@ -1,0 +1,11 @@
+name: aws-dart-eks-migrate-nodegroups
+description: Creates an EKS cluster with managed node groups for migration scenarios.
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+template:
+  config:
+    aws:region:
+      description: The AWS region to deploy into
+      default: us-west-2

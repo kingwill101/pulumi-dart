@@ -1,0 +1,13 @@
+name: gcp_dart_instance
+description: Pulumi GCP instance example.
+version: 0.0.1
+resolution: workspace
+
+environment:
+  sdk: ^3.11.0
+dependencies:
+  pulumi: 0.1.0
+  pulumi_gcp: any
+
+dev_dependencies:
+  lints: ^6.1.0
