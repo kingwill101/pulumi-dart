@@ -153,6 +153,54 @@ class IntegrationProvider extends Provider {
   }
 
   @override
+  Future<CheckResult> checkConfig(
+    String urn,
+    Map<String, dynamic> olds,
+    Map<String, dynamic> news,
+  ) async {
+    final region = news['region']?.toString();
+    final failures = <CheckFailure>[];
+    if (region == null || region.isEmpty) {
+      failures.add(
+        const CheckFailure(property: 'region', reason: 'region is required'),
+      );
+    } else if (region.startsWith('invalid-')) {
+      failures.add(
+        const CheckFailure(
+          property: 'region',
+          reason: 'region must be a supported cloud region',
+        ),
+      );
+    }
+
+    return CheckResult(
+      inputs: <String, dynamic>{
+        ...news,
+        if (!news.containsKey('profile')) 'profile': 'default',
+      },
+      failures: failures,
+    );
+  }
+
+  @override
+  Future<DiffResult> diffConfig(
+    String id,
+    String urn,
+    Map<String, dynamic> olds,
+    Map<String, dynamic> news,
+  ) async {
+    final oldRegion = olds['region']?.toString();
+    final newRegion = news['region']?.toString();
+    final changed = oldRegion != newRegion;
+    return DiffResult(
+      changes: changed,
+      replaces: changed ? const <String>['region'] : const <String>[],
+      stables: changed ? const <String>[] : const <String>['region'],
+      deleteBeforeReplace: false,
+    );
+  }
+
+  @override
   Future<CreateResult> create(String urn, Map<String, dynamic> inputs) async {
     final type = _urnType(urn);
     if (type == 'testprovider:index:Random') {

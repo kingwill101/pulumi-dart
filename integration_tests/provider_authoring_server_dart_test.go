@@ -147,6 +147,41 @@ func TestProviderAuthoringServerDart(t *testing.T) {
 	assert.Equal(t, pulumirpc.DiffResponse_DIFF_NONE, diffResp.GetChanges())
 	assert.Len(t, diffResp.GetReplaces(), 0)
 
+	configOlds, err := structpb.NewStruct(map[string]any{"region": "us-west-2"})
+	require.NoError(t, err)
+	configNews, err := structpb.NewStruct(map[string]any{"region": "us-east-1"})
+	require.NoError(t, err)
+	checkConfigResp, err := client.CheckConfig(rpcCtx, &pulumirpc.CheckRequest{
+		Urn:  "urn:pulumi:dev::proj::pulumi:providers:testprovider::default",
+		Olds: configOlds,
+		News: configNews,
+	})
+	require.NoError(t, err)
+	assert.Len(t, checkConfigResp.GetFailures(), 0)
+	assert.Equal(t, "us-east-1", checkConfigResp.GetInputs().AsMap()["region"])
+	assert.Equal(t, "default", checkConfigResp.GetInputs().AsMap()["profile"])
+
+	invalidConfigNews, err := structpb.NewStruct(map[string]any{"region": "invalid-mars-1"})
+	require.NoError(t, err)
+	checkConfigInvalidResp, err := client.CheckConfig(rpcCtx, &pulumirpc.CheckRequest{
+		Urn:  "urn:pulumi:dev::proj::pulumi:providers:testprovider::default",
+		Olds: configOlds,
+		News: invalidConfigNews,
+	})
+	require.NoError(t, err)
+	require.Len(t, checkConfigInvalidResp.GetFailures(), 1)
+	assert.Equal(t, "region", checkConfigInvalidResp.GetFailures()[0].GetProperty())
+
+	diffConfigResp, err := client.DiffConfig(rpcCtx, &pulumirpc.DiffRequest{
+		Id:   "default",
+		Urn:  "urn:pulumi:dev::proj::pulumi:providers:testprovider::default",
+		Olds: configOlds,
+		News: configNews,
+	})
+	require.NoError(t, err)
+	assert.Equal(t, pulumirpc.DiffResponse_DIFF_SOME, diffConfigResp.GetChanges())
+	assert.Contains(t, diffConfigResp.GetReplaces(), "region")
+
 	createProps, err := structpb.NewStruct(map[string]any{"name": "created"})
 	require.NoError(t, err)
 	createResp, err := client.Create(rpcCtx, &pulumirpc.CreateRequest{
