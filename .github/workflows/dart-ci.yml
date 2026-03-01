@@ -194,6 +194,7 @@ jobs:
             [TestTracePropagationDart]=1
             [TestAutomationEnvironmentManagementDart]=1
             [TestAutomationRemoteWorkspaceLifecycleDart]=1
+            [TestPolicyPublishEnableDisableDart]=1
           )
 
           mapfile -t all_tests < <(go test -list . . | grep '^Test' | sort)
@@ -304,6 +305,7 @@ jobs:
             TestTracePropagationDart
             TestAutomationEnvironmentManagementDart
             TestAutomationRemoteWorkspaceLifecycleDart
+            TestPolicyPublishEnableDisableDart
           )
 
           selected=()

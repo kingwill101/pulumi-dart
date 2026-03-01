@@ -21,6 +21,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strings"
 	"testing"
 	"time"
 
@@ -585,7 +586,19 @@ func TestPolicyPublishEnableDisableDart(t *testing.T) {
 
 	org := os.Getenv("PULUMI_TEST_ORG")
 	if org == "" {
-		t.Skip("requires PULUMI_TEST_ORG for policy publish")
+		org = os.Getenv("PULUMI_ORGANIZATION")
+	}
+	if org == "" {
+		eProbe := ptesting.NewEnvironment(t)
+		defer eProbe.DeleteIfNotFailed()
+
+		configurePolicyDartProject(t, eProbe)
+		stdout, stderr, err := eProbe.GetCommandResults("pulumi", "whoami")
+		requireNoCommandError(t, err, stdout, stderr)
+		org = strings.TrimSpace(stdout)
+	}
+	if org == "" {
+		t.Skip("requires a resolvable Pulumi organization for policy publish")
 	}
 
 	e := ptesting.NewEnvironment(t)
