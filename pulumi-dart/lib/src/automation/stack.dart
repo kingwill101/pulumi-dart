@@ -10,7 +10,8 @@ import 'local_workspace.dart';
 import 'operation_results.dart';
 
 /// Callback invoked for each parsed Pulumi engine event.
-typedef AutomationEngineEventHandler = void Function(AutomationEngineEvent event);
+typedef AutomationEngineEventHandler =
+    void Function(AutomationEngineEvent event);
 
 /// Automation stack handle scoped to a [LocalWorkspace].
 class Stack {
@@ -256,7 +257,68 @@ class Stack {
       captureEvents: captureEvents,
       onEvent: onEvent,
     );
-    return AutomationPreviewResult(commandResult: result, events: events);
+    final changeSummary = _extractChangeSummary(events);
+    return AutomationPreviewResult(
+      commandResult: result,
+      events: events,
+      changeSummary: changeSummary,
+    );
+  }
+
+  /// Runs `pulumi refresh --preview-only` and returns a typed preview result.
+  Future<AutomationPreviewResult> previewRefreshResult({
+    bool nonInteractive = true,
+    bool check = true,
+    bool captureEvents = true,
+    AutomationEngineEventHandler? onEvent,
+    List<String> extraArgs = const <String>[],
+  }) async {
+    final args = <String>['refresh', '--stack', name, '--preview-only'];
+    if (nonInteractive) {
+      args.add('--non-interactive');
+    }
+    args.addAll(extraArgs);
+
+    final (result, events) = await _runStackCommand(
+      args,
+      check: check,
+      captureEvents: captureEvents,
+      onEvent: onEvent,
+    );
+    final changeSummary = _extractChangeSummary(events);
+    return AutomationPreviewResult(
+      commandResult: result,
+      events: events,
+      changeSummary: changeSummary,
+    );
+  }
+
+  /// Runs `pulumi destroy --preview-only` and returns a typed preview result.
+  Future<AutomationPreviewResult> previewDestroyResult({
+    bool nonInteractive = true,
+    bool check = true,
+    bool captureEvents = true,
+    AutomationEngineEventHandler? onEvent,
+    List<String> extraArgs = const <String>[],
+  }) async {
+    final args = <String>['destroy', '--stack', name, '--preview-only'];
+    if (nonInteractive) {
+      args.add('--non-interactive');
+    }
+    args.addAll(extraArgs);
+
+    final (result, events) = await _runStackCommand(
+      args,
+      check: check,
+      captureEvents: captureEvents,
+      onEvent: onEvent,
+    );
+    final changeSummary = _extractChangeSummary(events);
+    return AutomationPreviewResult(
+      commandResult: result,
+      events: events,
+      changeSummary: changeSummary,
+    );
   }
 
   /// Runs `pulumi up` and returns a typed operation result.
@@ -267,6 +329,8 @@ class Stack {
     bool check = true,
     bool captureEvents = true,
     bool includeOutputs = true,
+    bool includeSummary = true,
+    bool showSummarySecrets = false,
     AutomationEngineEventHandler? onEvent,
     List<String> extraArgs = const <String>[],
   }) async {
@@ -289,13 +353,18 @@ class Stack {
       onEvent: onEvent,
     );
     Map<String, AutomationOutputValue>? typedOutputs;
+    AutomationUpdateSummary? summary;
     if (includeOutputs && result.succeeded) {
       typedOutputs = await outputsWithMetadata();
+    }
+    if (includeSummary && result.succeeded) {
+      summary = await infoSummary(showSecrets: showSummarySecrets);
     }
     return AutomationUpResult(
       commandResult: result,
       events: events,
       outputs: typedOutputs,
+      summary: summary,
     );
   }
 
@@ -305,6 +374,8 @@ class Stack {
     bool nonInteractive = true,
     bool check = true,
     bool captureEvents = true,
+    bool includeSummary = true,
+    bool showSummarySecrets = false,
     AutomationEngineEventHandler? onEvent,
     List<String> extraArgs = const <String>[],
   }) async {
@@ -323,7 +394,15 @@ class Stack {
       captureEvents: captureEvents,
       onEvent: onEvent,
     );
-    return AutomationRefreshResult(commandResult: result, events: events);
+    AutomationUpdateSummary? summary;
+    if (includeSummary && result.succeeded) {
+      summary = await infoSummary(showSecrets: showSummarySecrets);
+    }
+    return AutomationRefreshResult(
+      commandResult: result,
+      events: events,
+      summary: summary,
+    );
   }
 
   /// Runs `pulumi destroy` and returns a typed operation result.
@@ -333,6 +412,8 @@ class Stack {
     bool nonInteractive = true,
     bool check = true,
     bool captureEvents = true,
+    bool includeSummary = true,
+    bool showSummarySecrets = false,
     AutomationEngineEventHandler? onEvent,
     List<String> extraArgs = const <String>[],
   }) async {
@@ -354,7 +435,15 @@ class Stack {
       captureEvents: captureEvents,
       onEvent: onEvent,
     );
-    return AutomationDestroyResult(commandResult: result, events: events);
+    AutomationUpdateSummary? summary;
+    if (includeSummary && result.succeeded) {
+      summary = await infoSummary(showSecrets: showSummarySecrets);
+    }
+    return AutomationDestroyResult(
+      commandResult: result,
+      events: events,
+      summary: summary,
+    );
   }
 
   /// Returns stack outputs from the last successful update.
@@ -412,6 +501,17 @@ class Stack {
   Future<Map<String, dynamic>?> info({bool showSecrets = false}) async {
     final entries = await history(pageSize: 1, showSecrets: showSecrets);
     return entries.isEmpty ? null : entries.first;
+  }
+
+  /// Returns the most recent stack update summary as a typed model.
+  Future<AutomationUpdateSummary?> infoSummary({
+    bool showSecrets = false,
+  }) async {
+    final latest = await info(showSecrets: showSecrets);
+    if (latest == null) {
+      return null;
+    }
+    return AutomationUpdateSummary.fromJson(latest);
   }
 
   /// Cancels the currently running update for this stack.
@@ -500,5 +600,36 @@ class Stack {
       }
     }
     return events;
+  }
+
+  AutomationOpMap _extractChangeSummary(List<AutomationEngineEvent> events) {
+    for (final event in events.reversed) {
+      final summaryEvent = event.raw['summaryEvent'];
+      if (summaryEvent is! Map) {
+        continue;
+      }
+      final resourceChanges = summaryEvent['resourceChanges'];
+      if (resourceChanges is! Map) {
+        return const <String, int>{};
+      }
+      final parsed = <String, int>{};
+      for (final entry in resourceChanges.entries) {
+        final value = entry.value;
+        if (value is int) {
+          parsed['${entry.key}'] = value;
+          continue;
+        }
+        if (value is num) {
+          parsed['${entry.key}'] = value.toInt();
+          continue;
+        }
+        final asInt = int.tryParse('$value');
+        if (asInt != null) {
+          parsed['${entry.key}'] = asInt;
+        }
+      }
+      return parsed;
+    }
+    return const <String, int>{};
   }
 }

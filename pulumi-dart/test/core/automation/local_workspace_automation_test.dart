@@ -921,7 +921,7 @@ void main() {
             }
             final eventLogPath = args[eventLogIndex + 1];
             await File(eventLogPath).writeAsString(
-              '{"sequence":1,"timestamp":"2025-01-01T00:00:00Z","summaryEvent":{"message":"preview complete"}}\n'
+              '{"sequence":1,"timestamp":"2025-01-01T00:00:00Z","summaryEvent":{"message":"preview complete","resourceChanges":{"create":2,"same":1}}}\n'
               '{"sequence":2,"timestamp":"2025-01-01T00:00:01Z","resourcePreEvent":{"metadata":{"op":"create"}}}\n',
             );
           },
@@ -954,6 +954,8 @@ void main() {
         expect(result.events.first.kind, equals('summaryEvent'));
         expect(result.events[1].sequence, equals(2));
         expect(result.events[1].kind, equals('resourcePreEvent'));
+        expect(result.changeSummary['create'], equals(2));
+        expect(result.changeSummary['same'], equals(1));
         expect(observedEvents, hasLength(2));
         expect(postCommandStacks, equals(<String>['dev']));
         expect(
@@ -966,6 +968,59 @@ void main() {
           containsAll(<String>['--color', 'never']),
         );
         expect(runner.requests.single.arguments, contains('--event-log'));
+      },
+    );
+
+    test(
+      'previewRefreshResult and previewDestroyResult expose changeSummary',
+      () async {
+        final runner = _FakeRunner(
+          <PulumiCommandResult>[
+            const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+            const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+          ],
+          onRequest: (request) async {
+            final args = request.arguments;
+            final eventLogIndex = args.indexOf('--event-log');
+            if (eventLogIndex == -1) {
+              return;
+            }
+            final eventLogPath = args[eventLogIndex + 1];
+            final command = args.first;
+            if (command == 'refresh') {
+              await File(eventLogPath).writeAsString(
+                '{"summaryEvent":{"resourceChanges":{"same":3}}}\n',
+              );
+              return;
+            }
+            await File(eventLogPath).writeAsString(
+              '{"summaryEvent":{"resourceChanges":{"delete":4}}}\n',
+            );
+          },
+        );
+        final workspace = await LocalWorkspace.create(
+          LocalWorkspaceOptions(
+            workDir: tempDir.path,
+            commandRunner: runner.call,
+          ),
+        );
+        final stack = Stack('dev', workspace);
+
+        final previewRefresh = await stack.previewRefreshResult();
+        final previewDestroy = await stack.previewDestroyResult();
+
+        expect(previewRefresh.changeSummary['same'], equals(3));
+        expect(previewDestroy.changeSummary['delete'], equals(4));
+        expect(
+          runner.requests[0].arguments.take(4).toList(),
+          equals(<String>['refresh', '--stack', 'dev', '--preview-only']),
+        );
+        expect(
+          runner.requests[1].arguments.take(4).toList(),
+          equals(<String>['destroy', '--stack', 'dev', '--preview-only']),
+        );
+        expect(runner.requests[0].arguments, contains('--event-log'));
+        expect(runner.requests[1].arguments, contains('--event-log'));
       },
     );
 
@@ -983,7 +1038,10 @@ void main() {
         );
         final stack = Stack('dev', workspace);
 
-        final result = await stack.upResult(includeOutputs: false);
+        final result = await stack.upResult(
+          includeOutputs: false,
+          includeSummary: false,
+        );
 
         expect(result.succeeded, isTrue);
         expect(result.outputs, isNull);
@@ -1026,7 +1084,10 @@ void main() {
       );
       final stack = Stack('dev', workspace);
 
-      final result = await stack.upResult(includeOutputs: true);
+      final result = await stack.upResult(
+        includeOutputs: true,
+        includeSummary: false,
+      );
 
       expect(result.succeeded, isTrue);
       expect(result.outputs, isNotNull);
@@ -1048,6 +1109,102 @@ void main() {
           '--stack',
           'dev',
           '--show-secrets',
+        ]),
+      );
+    });
+
+    test('up/refresh/destroy include typed summary parsed from history', () async {
+      final runner = _FakeRunner(<PulumiCommandResult>[
+        const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+        const PulumiCommandResult(
+          exitCode: 0,
+          stdout:
+              '[{"kind":"update","startTime":"2025-01-01T00:00:00Z","endTime":"2025-01-01T00:01:00Z","message":"deploy","environment":{"PULUMI_HOME":"/tmp"},"config":{"proj:plain":{"value":"v","secret":false},"proj:secret":{"secret":true}},"result":"succeeded","version":42,"resourceChanges":{"create":2,"same":1}}]',
+          stderr: '',
+        ),
+        const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+        const PulumiCommandResult(
+          exitCode: 0,
+          stdout:
+              '[{"kind":"refresh","startTime":"2025-01-02T00:00:00Z","endTime":"2025-01-02T00:01:00Z","message":"refresh","environment":{},"config":{},"result":"succeeded","version":43,"resourceChanges":{"same":3}}]',
+          stderr: '',
+        ),
+        const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+        const PulumiCommandResult(
+          exitCode: 0,
+          stdout:
+              '[{"kind":"destroy","startTime":"2025-01-03T00:00:00Z","endTime":"2025-01-03T00:01:00Z","message":"destroy","environment":{},"config":{},"result":"succeeded","version":44,"resourceChanges":{"delete":2}}]',
+          stderr: '',
+        ),
+      ]);
+      final workspace = await LocalWorkspace.create(
+        LocalWorkspaceOptions(
+          workDir: tempDir.path,
+          commandRunner: runner.call,
+        ),
+      );
+      final stack = Stack('dev', workspace);
+
+      final upResult = await stack.upResult(includeOutputs: false);
+      final refreshResult = await stack.refreshResult();
+      final destroyResult = await stack.destroyResult();
+
+      expect(upResult.summary, isNotNull);
+      expect(upResult.summary?.kind, equals('update'));
+      expect(upResult.summary?.result, equals('succeeded'));
+      expect(upResult.summary?.version, equals(42));
+      expect(upResult.summary?.resourceChanges['create'], equals(2));
+      expect(upResult.summary?.resourceChanges['same'], equals(1));
+      expect(upResult.summary?.config['proj:plain']?.value, equals('v'));
+      expect(upResult.summary?.config['proj:plain']?.secret, isFalse);
+      expect(
+        upResult.summary?.config['proj:secret']?.value,
+        equals('[secret]'),
+      );
+      expect(upResult.summary?.config['proj:secret']?.secret, isTrue);
+
+      expect(refreshResult.summary, isNotNull);
+      expect(refreshResult.summary?.kind, equals('refresh'));
+      expect(refreshResult.summary?.resourceChanges['same'], equals(3));
+
+      expect(destroyResult.summary, isNotNull);
+      expect(destroyResult.summary?.kind, equals('destroy'));
+      expect(destroyResult.summary?.resourceChanges['delete'], equals(2));
+
+      expect(
+        runner.requests[1].arguments,
+        equals(<String>[
+          'stack',
+          'history',
+          '--json',
+          '--stack',
+          'dev',
+          '--page-size',
+          '1',
+        ]),
+      );
+      expect(
+        runner.requests[3].arguments,
+        equals(<String>[
+          'stack',
+          'history',
+          '--json',
+          '--stack',
+          'dev',
+          '--page-size',
+          '1',
+        ]),
+      );
+      expect(
+        runner.requests[5].arguments,
+        equals(<String>[
+          'stack',
+          'history',
+          '--json',
+          '--stack',
+          'dev',
+          '--page-size',
+          '1',
         ]),
       );
     });
