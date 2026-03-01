@@ -18,17 +18,31 @@ import 'package:yaml/yaml.dart';
 
 /// Indicates the impact of a policy violation.
 enum EnforcementLevel {
+  /// Report as a warning but do not fail the update.
   advisory,
+
+  /// Report as an error and fail the update.
   mandatory,
+
+  /// Attempt to mutate resource inputs before validation completes.
   remediate,
+
+  /// Skip policy execution entirely.
   disabled,
 }
 
 /// Indicates the severity of a policy.
 enum Severity {
+  /// Informational impact.
   low,
+
+  /// Moderate impact.
   medium,
+
+  /// Significant impact.
   high,
+
+  /// Highest impact.
   critical,
 }
 
@@ -37,13 +51,19 @@ typedef ReportViolation = void Function(String message, [String? urn]);
 
 /// A value marked as secret so remediation output can preserve sensitivity.
 class Secret {
+  /// Creates a wrapper that marks [value] as secret in remediation outputs.
   const Secret(this.value);
 
+  /// The wrapped secret value.
   final Object? value;
 }
 
 /// JSON schema-like configuration metadata for a policy.
 class PolicyConfigSchema {
+  /// Creates a JSON-schema-like policy config schema.
+  ///
+  /// The key `enforcementLevel` is reserved and cannot be defined in
+  /// [properties] or [required].
   PolicyConfigSchema({
     required this.properties,
     this.required,
@@ -64,12 +84,16 @@ class PolicyConfigSchema {
     }
   }
 
+  /// JSON schema property definitions keyed by property name.
   final Map<String, Map<String, Object?>> properties;
+
+  /// Optional list of required configuration keys.
   final List<String>? required;
 }
 
 /// Represents a compliance framework that a policy belongs to.
 class PolicyComplianceFramework {
+  /// Creates policy compliance framework metadata.
   const PolicyComplianceFramework({
     this.name,
     this.version,
@@ -77,14 +101,22 @@ class PolicyComplianceFramework {
     this.specification,
   });
 
+  /// Framework name (for example, CIS or SOC2).
   final String? name;
+
+  /// Framework version.
   final String? version;
+
+  /// Optional external reference URL.
   final String? reference;
+
+  /// Optional framework specification text.
   final String? specification;
 }
 
 /// Base class for policies.
 abstract class Policy {
+  /// Creates a policy definition shared by resource and stack policies.
   Policy({
     required this.name,
     required this.description,
@@ -116,15 +148,34 @@ abstract class Policy {
     }
   }
 
+  /// Unique policy name.
   final String name;
+
+  /// Human-readable policy description.
   final String description;
+
+  /// Optional policy-specific default enforcement level.
   final EnforcementLevel? enforcementLevel;
+
+  /// Optional schema describing policy configuration.
   final PolicyConfigSchema? configSchema;
+
+  /// Optional display name shown in UIs.
   final String? displayName;
+
+  /// Optional policy severity.
   final Severity? severity;
+
+  /// Optional compliance framework metadata.
   final PolicyComplianceFramework? framework;
+
+  /// Optional policy tags.
   final List<String>? tags;
+
+  /// Optional remediation guidance shown to users.
   final String? remediationSteps;
+
+  /// Optional documentation URL.
   final String? url;
 }
 
@@ -150,6 +201,9 @@ typedef ResourceValidationRemediation =
 
 /// A policy that validates and/or remediates resource definitions.
 class ResourceValidationPolicy extends Policy {
+  /// Creates a resource policy.
+  ///
+  /// At least one validation callback or a remediation callback is required.
   ResourceValidationPolicy({
     required super.name,
     required super.description,
@@ -171,7 +225,10 @@ class ResourceValidationPolicy extends Policy {
     }
   }
 
+  /// Resource validation callbacks.
   final List<ResourceValidation> validateResource;
+
+  /// Optional remediation callback.
   final ResourceRemediation? remediateResource;
 }
 
@@ -184,6 +241,7 @@ typedef StackValidation =
 
 /// A policy that validates the full stack of resources.
 class StackValidationPolicy extends Policy {
+  /// Creates a stack-wide policy.
   StackValidationPolicy({
     required super.name,
     required super.description,
@@ -198,11 +256,13 @@ class StackValidationPolicy extends Policy {
     super.url,
   });
 
+  /// Stack validation callback.
   final StackValidation validateStack;
 }
 
 /// Resource options visible to policy runtime callbacks.
 class PolicyResourceOptions {
+  /// Creates resource options visible to policy callbacks.
   const PolicyResourceOptions({
     required this.protect,
     required this.ignoreChanges,
@@ -213,30 +273,50 @@ class PolicyResourceOptions {
     this.parent,
   });
 
+  /// Whether this resource is protected from deletion.
   final bool protect;
+
+  /// Resource properties ignored during diffs.
   final List<String> ignoreChanges;
+
+  /// Whether delete-before-replace is explicitly configured.
   final bool? deleteBeforeReplace;
+
+  /// Alias URNs configured for this resource.
   final List<String> aliases;
+
+  /// Custom timeouts configured for CRUD operations.
   final PolicyCustomTimeouts customTimeouts;
+
+  /// Additional output properties marked as secret.
   final List<String> additionalSecretOutputs;
+
+  /// Parent resource URN, when present.
   final String? parent;
 }
 
 /// Custom timeout settings visible to policy runtime callbacks.
 class PolicyCustomTimeouts {
+  /// Creates custom timeout settings.
   const PolicyCustomTimeouts({
     required this.createSeconds,
     required this.updateSeconds,
     required this.deleteSeconds,
   });
 
+  /// Create timeout in seconds.
   final double createSeconds;
+
+  /// Update timeout in seconds.
   final double updateSeconds;
+
+  /// Delete timeout in seconds.
   final double deleteSeconds;
 }
 
 /// Provider metadata available in policy callbacks.
 class PolicyProviderResource {
+  /// Creates provider metadata for policy callbacks.
   const PolicyProviderResource({
     required this.type,
     required this.props,
@@ -244,14 +324,22 @@ class PolicyProviderResource {
     required this.name,
   });
 
+  /// Provider type token.
   final String type;
+
+  /// Provider input properties.
   final Map<String, Object?> props;
+
+  /// Provider URN.
   final String urn;
+
+  /// Provider logical name.
   final String name;
 }
 
 /// Resource context available in policy callbacks.
 class PolicyResource {
+  /// Creates resource context passed to stack policy callbacks.
   PolicyResource({
     required this.type,
     required this.props,
@@ -264,18 +352,39 @@ class PolicyResource {
     this.parent,
   });
 
+  /// Resource type token.
   final String type;
+
+  /// Resource input properties.
   final Map<String, Object?> props;
+
+  /// Resource URN.
   final String urn;
+
+  /// Resource logical name.
   final String name;
+
+  /// Resource options.
   final PolicyResourceOptions opts;
+
+  /// Optional provider resource metadata.
   final PolicyProviderResource? provider;
+
+  /// Optional parent resource.
   PolicyResource? parent;
+
+  /// Dependency resources referenced by this resource.
   final List<PolicyResource> dependencies;
+
+  /// Property-level dependency graph keyed by property name.
   final Map<String, List<PolicyResource>> propertyDependencies;
 
+  /// Returns `true` when [resourceType] matches this resource type.
   bool isType(String resourceType) => type == resourceType;
 
+  /// Returns typed resource properties when this resource matches [resourceType].
+  ///
+  /// Returns `null` when the type does not match.
   T? asType<T extends Map<String, Object?>>(String resourceType) {
     if (!isType(resourceType)) {
       return null;
@@ -292,8 +401,10 @@ class PolicyResource {
 
 /// Thrown when a policy intentionally marks itself as not applicable.
 class PolicyNotApplicableError implements Exception {
+  /// Creates a not-applicable marker error with optional [reason].
   const PolicyNotApplicableError([this.reason]);
 
+  /// Optional textual explanation for non-applicability.
   final String? reason;
 
   @override
@@ -304,6 +415,7 @@ class PolicyNotApplicableError implements Exception {
 
 /// Context passed to resource validation/remediation callbacks.
 class ResourceValidationArgs {
+  /// Creates resource validation/remediation callback arguments.
   const ResourceValidationArgs({
     required this.type,
     required this.props,
@@ -315,17 +427,34 @@ class ResourceValidationArgs {
     Map<String, Object?> config = const {},
   }) : _config = config;
 
+  /// Resource type token.
   final String type;
+
+  /// Resource input properties.
   final Map<String, Object?> props;
+
+  /// Resource URN.
   final String urn;
+
+  /// Resource logical name.
   final String name;
+
+  /// Resource options.
   final PolicyResourceOptions opts;
+
+  /// Optional provider metadata.
   final PolicyProviderResource? provider;
+
+  /// Stack tags visible to analyzer plugins.
   final Map<String, String> stackTags;
   final Map<String, Object?> _config;
 
+  /// Returns `true` when [resourceType] matches [type].
   bool isType(String resourceType) => type == resourceType;
 
+  /// Returns typed [props] when the resource type matches [resourceType].
+  ///
+  /// Returns `null` when the type does not match.
   T? asType<T extends Map<String, Object?>>(String resourceType) {
     if (!isType(resourceType)) {
       return null;
@@ -338,6 +467,7 @@ class ResourceValidationArgs {
     );
   }
 
+  /// Returns typed policy config for this policy callback.
   T getConfig<T extends Map<String, Object?>>() {
     if (_config is T) {
       return _config;
@@ -345,22 +475,28 @@ class ResourceValidationArgs {
     throw StateError('Policy config was not assignable to requested type $T.');
   }
 
+  /// Throws [PolicyNotApplicableError] to skip this callback.
   Never notApplicable([String? reason]) =>
       throw PolicyNotApplicableError(reason);
 }
 
 /// Context passed to stack validation callbacks.
 class StackValidationArgs {
+  /// Creates stack validation callback arguments.
   const StackValidationArgs({
     required this.resources,
     required this.stackTags,
     Map<String, Object?> config = const {},
   }) : _config = config;
 
+  /// All resources in the stack graph.
   final List<PolicyResource> resources;
+
+  /// Stack tags visible to analyzer plugins.
   final Map<String, String> stackTags;
   final Map<String, Object?> _config;
 
+  /// Returns typed policy config for this stack callback.
   T getConfig<T extends Map<String, Object?>>() {
     if (_config is T) {
       return _config;
@@ -368,6 +504,7 @@ class StackValidationArgs {
     throw StateError('Policy config was not assignable to requested type $T.');
   }
 
+  /// Throws [PolicyNotApplicableError] to skip this callback.
   Never notApplicable([String? reason]) =>
       throw PolicyNotApplicableError(reason);
 }
@@ -376,10 +513,20 @@ class StackValidationArgs {
 typedef Policies = List<Policy>;
 
 /// Configuration map keyed by policy name.
+///
+/// Supported value shapes:
+///
+/// - `"policy-name": "mandatory"` (enforcement-only shorthand)
+/// - `"policy-name": EnforcementLevel.mandatory`
+/// - `"policy-name": {"enforcementLevel": "mandatory", ...props}`
+///
+/// The remaining map keys are passed to [ResourceValidationArgs.getConfig] or
+/// [StackValidationArgs.getConfig].
 typedef PolicyPackConfig = Map<String, Object?>;
 
 /// Construction arguments for [PolicyPack].
 class PolicyPackArgs {
+  /// Creates a policy pack metadata and policy definition object.
   const PolicyPackArgs({
     required this.policies,
     this.enforcementLevel,
@@ -391,18 +538,66 @@ class PolicyPackArgs {
     this.repository,
   });
 
+  /// Policies included in this pack.
   final Policies policies;
+
+  /// Optional pack-level default enforcement level.
   final EnforcementLevel? enforcementLevel;
+
+  /// Optional policy pack description.
   final String? description;
+
+  /// Optional policy pack display name.
   final String? displayName;
+
+  /// Optional policy pack README text.
   final String? readme;
+
+  /// Optional provider identifier.
   final String? provider;
+
+  /// Optional policy pack tags.
   final List<String>? tags;
+
+  /// Optional repository URL.
   final String? repository;
 }
 
 /// A policy pack that contains one or more policies.
 class PolicyPack {
+  /// Creates and optionally starts a policy analyzer server.
+  ///
+  /// Set [startServer] to `false` for unit tests that only validate
+  /// policy construction behavior.
+  ///
+  /// Template:
+  ///
+  /// ```dart
+  /// void main() {
+  ///   PolicyPack(
+  ///     'my-pack',
+  ///     PolicyPackArgs(
+  ///       enforcementLevel: EnforcementLevel.advisory,
+  ///       policies: [
+  ///         ResourceValidationPolicy(
+  ///           name: 'check-example',
+  ///           description: 'Example resource policy.',
+  ///           validateResource: [
+  ///             validateResourceOfType<Map<String, Object?>>(
+  ///               'pkg:index:Thing',
+  ///               (props, args, reportViolation) {
+  ///                 if (props['enabled'] != true) {
+  ///                   reportViolation('Thing must be enabled.');
+  ///                 }
+  ///               },
+  ///             ),
+  ///           ],
+  ///         ),
+  ///       ],
+  ///     ),
+  ///   );
+  /// }
+  /// ```
   PolicyPack(
     this.name,
     this.args, {
@@ -447,8 +642,13 @@ class PolicyPack {
     r'^[a-zA-Z0-9-_.]{1,100}$',
   );
 
+  /// Policy pack name.
   final String name;
+
+  /// Policy pack metadata and policy definitions.
   final PolicyPackArgs args;
+
+  /// Optional initial policy configuration map.
   final PolicyPackConfig? initialConfig;
 }
 
@@ -479,16 +679,34 @@ typedef TypedResourceValidationRemediation<
 
 /// Return value for [validateRemediateResourceOfType].
 class ValidateRemediateResource {
+  /// Creates a tuple-like object containing validate/remediate callbacks.
   const ValidateRemediateResource({
     required this.validateResource,
     required this.remediateResource,
   });
 
+  /// Type-scoped resource validation callback.
   final ResourceValidation validateResource;
+
+  /// Type-scoped resource remediation callback.
   final ResourceRemediation remediateResource;
 }
 
 /// Creates a type-scoped remediation callback for the provided [resourceType].
+///
+/// Template:
+///
+/// ```dart
+/// final remediate = remediateResourceOfType<Map<String, Object?>>(
+///   'pkg:index:Thing',
+///   (props, args) {
+///     if (props['enabled'] == false) {
+///       return {'enabled': true};
+///     }
+///     return null;
+///   },
+/// );
+/// ```
 ResourceRemediation
 remediateResourceOfType<TProps extends Map<String, Object?>>(
   String resourceType,
@@ -506,6 +724,19 @@ remediateResourceOfType<TProps extends Map<String, Object?>>(
 }
 
 /// Creates a type-scoped validation callback for the provided [resourceType].
+///
+/// Template:
+///
+/// ```dart
+/// final validate = validateResourceOfType<Map<String, Object?>>(
+///   'pkg:index:Thing',
+///   (props, args, reportViolation) {
+///     if (props['enabled'] != true) {
+///       reportViolation('Resource must be enabled.');
+///     }
+///   },
+/// );
+/// ```
 ResourceValidation validateResourceOfType<TProps extends Map<String, Object?>>(
   String resourceType,
   TypedResourceValidation<TProps> validate,
@@ -522,6 +753,24 @@ ResourceValidation validateResourceOfType<TProps extends Map<String, Object?>>(
 }
 
 /// Creates paired validate/remediate callbacks for one type-scoped implementation.
+///
+/// This helper is useful when remediation and validation share identical
+/// branching logic.
+///
+/// Template:
+///
+/// ```dart
+/// final callbacks = validateRemediateResourceOfType<Map<String, Object?>>(
+///   'pkg:index:Thing',
+///   (props, args, reportViolation) {
+///     if (props['enabled'] == true) {
+///       return null;
+///     }
+///     reportViolation('Resource was remediated to enabled=true.');
+///     return {'enabled': true};
+///   },
+/// );
+/// ```
 ValidateRemediateResource
 validateRemediateResourceOfType<TProps extends Map<String, Object?>>(
   String resourceType,
@@ -544,6 +793,19 @@ validateRemediateResourceOfType<TProps extends Map<String, Object?>>(
 }
 
 /// Creates a type-scoped stack validation callback for [resourceType].
+///
+/// Template:
+///
+/// ```dart
+/// final validateStack = validateStackResourcesOfType<Map<String, Object?>>(
+///   'pkg:index:Thing',
+///   (resources, args, reportViolation) {
+///     if (resources.length > 10) {
+///       reportViolation('Too many Thing resources in stack.');
+///     }
+///   },
+/// );
+/// ```
 StackValidation
 validateStackResourcesOfType<TProps extends Map<String, Object?>>(
   String resourceType,
@@ -613,6 +875,10 @@ void _validatePolicyConfigSchemas(List<Policy> policies) {
 final RegExp _packNameRegExp = RegExp(r'^[a-zA-Z0-9-_.]{1,100}$');
 String? _servingPolicyPack;
 
+/// Boots the in-process analyzer gRPC server for a policy pack.
+///
+/// The selected port is written to stdout to satisfy Pulumi's analyzer plugin
+/// handshake protocol.
 void _bootPolicyPackServer(
   PolicyPack pack, {
   required String packVersion,
@@ -662,6 +928,7 @@ void _bootPolicyPackServer(
   }());
 }
 
+/// Best-effort pubspec version lookup for plugin metadata.
 String _readPolicyPackVersion() {
   final pubspec = File('pubspec.yaml');
   if (!pubspec.existsSync()) {
@@ -680,7 +947,13 @@ String _readPolicyPackVersion() {
   return '';
 }
 
+/// gRPC analyzer server implementation used by Dart policy packs.
+///
+/// This service adapts analyzer protobuf messages into strongly typed policy
+/// callback arguments and returns diagnostics/remediation payloads expected by
+/// the Pulumi engine.
 class PolicyAnalyzerServer extends analyzergrpc.AnalyzerServiceBase {
+  /// Creates a new analyzer service for one policy pack process.
   PolicyAnalyzerServer({
     required this.policyPackName,
     required this.policyPackVersion,
@@ -695,11 +968,15 @@ class PolicyAnalyzerServer extends analyzergrpc.AnalyzerServiceBase {
   final PolicyPackArgs policyPackArgs;
   final PolicyPackConfig? initialConfig;
 
+  /// The latest handshake request, retained for diagnostics/testing.
   analyzerpb.AnalyzerHandshakeRequest? handshakeRequest;
   Map<String, _ConfiguredPolicy> _configuredPolicies =
       <String, _ConfiguredPolicy>{};
+
+  /// Stack tags supplied by [configureStack].
   Map<String, String> stackTags = <String, String>{};
 
+  /// Records analyzer handshake requests.
   @override
   Future<analyzerpb.AnalyzerHandshakeResponse> handshake(
     ServiceCall call,
@@ -709,6 +986,7 @@ class PolicyAnalyzerServer extends analyzergrpc.AnalyzerServiceBase {
     return analyzerpb.AnalyzerHandshakeResponse();
   }
 
+  /// Applies stack-scoped metadata and config supplied by the engine.
   @override
   Future<analyzerpb.AnalyzerStackConfigureResponse> configureStack(
     ServiceCall call,
@@ -729,6 +1007,7 @@ class PolicyAnalyzerServer extends analyzergrpc.AnalyzerServiceBase {
     return analyzerpb.AnalyzerStackConfigureResponse();
   }
 
+  /// Applies per-policy runtime config and enforcement overrides.
   @override
   Future<Empty> configure(
     ServiceCall call,
@@ -747,6 +1026,7 @@ class PolicyAnalyzerServer extends analyzergrpc.AnalyzerServiceBase {
     return Empty();
   }
 
+  /// Returns static analyzer metadata plus initial policy config.
   @override
   Future<analyzerpb.AnalyzerInfo> getAnalyzerInfo(
     ServiceCall call,
@@ -843,6 +1123,7 @@ class PolicyAnalyzerServer extends analyzergrpc.AnalyzerServiceBase {
     return info;
   }
 
+  /// Returns plugin metadata consumed by Pulumi plugin infrastructure.
   @override
   Future<pluginpb.PluginInfo> getPluginInfo(
     ServiceCall call,
@@ -851,6 +1132,7 @@ class PolicyAnalyzerServer extends analyzergrpc.AnalyzerServiceBase {
     return pluginpb.PluginInfo(version: policyPackVersion);
   }
 
+  /// Runs resource validation policies for a single resource request.
   @override
   Future<analyzerpb.AnalyzeResponse> analyze(
     ServiceCall call,
@@ -932,6 +1214,7 @@ class PolicyAnalyzerServer extends analyzergrpc.AnalyzerServiceBase {
     );
   }
 
+  /// Runs stack validation policies using the full stack resource graph.
   @override
   Future<analyzerpb.AnalyzeResponse> analyzeStack(
     ServiceCall call,
@@ -1033,6 +1316,7 @@ class PolicyAnalyzerServer extends analyzergrpc.AnalyzerServiceBase {
     );
   }
 
+  /// Runs resource remediation policies and returns transformed properties.
   @override
   Future<analyzerpb.RemediateResponse> remediate(
     ServiceCall call,
@@ -1114,11 +1398,16 @@ class PolicyAnalyzerServer extends analyzergrpc.AnalyzerServiceBase {
     );
   }
 
+  /// Cancels in-flight analyzer work.
+  ///
+  /// Dart policy callbacks are currently synchronous from the engine's
+  /// perspective, so this is a no-op response.
   @override
   Future<Empty> cancel(ServiceCall call, Empty request) async {
     return Empty();
   }
 
+  /// Creates resource callback arguments from wire analyze requests.
   ResourceValidationArgs _resourceValidationArgs({
     required analyzerpb.AnalyzeRequest request,
     required Map<String, Object?> config,
@@ -1137,6 +1426,7 @@ class PolicyAnalyzerServer extends analyzergrpc.AnalyzerServiceBase {
     );
   }
 
+  /// Creates stack-resource callback models from wire resources.
   PolicyResource _toPolicyResource(analyzerpb.AnalyzerResource resource) {
     return PolicyResource(
       type: resource.type,
@@ -1153,6 +1443,7 @@ class PolicyAnalyzerServer extends analyzergrpc.AnalyzerServiceBase {
   }
 }
 
+/// Runtime policy configuration resolved from Configure RPC requests.
 class _ConfiguredPolicy {
   const _ConfiguredPolicy({
     required this.enforcementLevel,
@@ -1163,6 +1454,7 @@ class _ConfiguredPolicy {
   final Map<String, Object?> properties;
 }
 
+/// Normalized initial policy configuration shape.
 class _InitialPolicyConfig {
   const _InitialPolicyConfig({
     this.enforcementLevel,
@@ -1173,6 +1465,7 @@ class _InitialPolicyConfig {
   final Map<String, Object?> properties;
 }
 
+/// Normalizes mixed initial config formats to a single internal shape.
 Map<String, _InitialPolicyConfig> _normalizeInitialConfig(
   PolicyPackConfig? initialConfig,
 ) {
@@ -1223,6 +1516,7 @@ Map<String, _InitialPolicyConfig> _normalizeInitialConfig(
   return normalized;
 }
 
+/// Converts analyzer wire options into callback-visible resource options.
 PolicyResourceOptions _toPolicyResourceOptions(
   analyzerpb.AnalyzerResourceOptions options,
 ) {
@@ -1249,6 +1543,7 @@ PolicyResourceOptions _toPolicyResourceOptions(
   );
 }
 
+/// Converts analyzer wire provider representation to callback provider context.
 PolicyProviderResource _toProviderResource(
   analyzerpb.AnalyzerProviderResource provider,
 ) {
@@ -1260,11 +1555,13 @@ PolicyProviderResource _toProviderResource(
   );
 }
 
+/// Converts protobuf struct values to plain Dart map values.
 Map<String, Object?> _structToObject(Struct struct) {
   final map = StructConverter.fromStruct(struct);
   return map.map((key, value) => MapEntry(key, value));
 }
 
+/// Normalizes remediation properties for protobuf struct serialization.
 Map<String, Object?> _normalizeRemediationProperties(
   Map<String, Object?> input,
 ) {
@@ -1273,6 +1570,10 @@ Map<String, Object?> _normalizeRemediationProperties(
   );
 }
 
+/// Recursively normalizes remediation values for wire transport.
+///
+/// This preserves Pulumi secret sentinels for [Secret] values and converts
+/// `DateTime`/`Duration` values into engine-compatible primitives.
 dynamic _normalizeRemediationValue(dynamic value) {
   if (value is Secret) {
     return <String, dynamic>{
@@ -1306,6 +1607,7 @@ dynamic _normalizeRemediationValue(dynamic value) {
   return value.toString();
 }
 
+/// Converts public enforcement enum values to analyzer protobuf values.
 analyzerpb.EnforcementLevel _toProtoEnforcement(
   EnforcementLevel enforcementLevel,
 ) {
@@ -1321,6 +1623,7 @@ analyzerpb.EnforcementLevel _toProtoEnforcement(
   }
 }
 
+/// Converts analyzer protobuf enforcement values to public enum values.
 EnforcementLevel _fromProtoEnforcement(
   analyzerpb.EnforcementLevel enforcementLevel,
 ) {
@@ -1338,6 +1641,7 @@ EnforcementLevel _fromProtoEnforcement(
   throw StateError('Unknown enforcement level: $enforcementLevel');
 }
 
+/// Parses string enforcement levels from config payloads.
 EnforcementLevel? _parseEnforcementLevel(String raw) {
   switch (raw.toLowerCase()) {
     case 'advisory':
@@ -1353,6 +1657,7 @@ EnforcementLevel? _parseEnforcementLevel(String raw) {
   }
 }
 
+/// Converts public severity enum values to analyzer protobuf values.
 analyzerpb.PolicySeverity _toProtoSeverity(Severity severity) {
   switch (severity) {
     case Severity.low:

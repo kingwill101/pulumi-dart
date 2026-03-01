@@ -38,6 +38,107 @@ final policy = ResourceValidationPolicy(
 );
 ```
 
+## Templates (macros)
+
+You can treat these helper builders as reusable policy templates/macros:
+
+- `validateResourceOfType<T>()`
+- `remediateResourceOfType<T>()`
+- `validateRemediateResourceOfType<T>()`
+- `validateStackResourcesOfType<T>()`
+
+### Template: resource validation
+
+```dart
+final policy = ResourceValidationPolicy(
+  name: 'require-tag',
+  description: 'Resources must define env tag.',
+  enforcementLevel: EnforcementLevel.mandatory,
+  validateResource: [
+    validateResourceOfType<Map<String, Object?>>(
+      'aws:s3/bucket:Bucket',
+      (props, args, reportViolation) {
+        final tags = props['tags'];
+        if (tags is! Map || !tags.containsKey('env')) {
+          reportViolation('Missing required env tag.');
+        }
+      },
+    ),
+  ],
+);
+```
+
+### Template: remediation
+
+```dart
+final policy = ResourceValidationPolicy(
+  name: 'default-versioning',
+  description: 'Enable versioning if omitted.',
+  enforcementLevel: EnforcementLevel.remediate,
+  remediateResource: remediateResourceOfType<Map<String, Object?>>(
+    'aws:s3/bucket:Bucket',
+    (props, args) {
+      if (props['versioning'] != true) {
+        return {'versioning': true};
+      }
+      return null;
+    },
+  ),
+);
+```
+
+### Template: combined validate + remediate
+
+```dart
+final callbacks = validateRemediateResourceOfType<Map<String, Object?>>(
+  'pkg:index:Thing',
+  (props, args, reportViolation) {
+    if (props['enabled'] == true) {
+      return null;
+    }
+    reportViolation('Resource remediated to enabled=true.');
+    return {'enabled': true};
+  },
+);
+
+final policy = ResourceValidationPolicy(
+  name: 'enforce-enabled',
+  description: 'Things should be enabled.',
+  enforcementLevel: EnforcementLevel.remediate,
+  validateResource: [callbacks.validateResource],
+  remediateResource: callbacks.remediateResource,
+);
+```
+
+### Template: stack-level policy
+
+```dart
+final policy = StackValidationPolicy(
+  name: 'limit-resources',
+  description: 'Maximum 10 buckets per stack.',
+  enforcementLevel: EnforcementLevel.mandatory,
+  validateStack: validateStackResourcesOfType<Map<String, Object?>>(
+    'aws:s3/bucket:Bucket',
+    (resources, args, reportViolation) {
+      if (resources.length > 10) {
+        reportViolation('Too many buckets in this stack.');
+      }
+    },
+  ),
+);
+```
+
+## Policy configuration
+
+Policy config is keyed by policy name. Supported value forms:
+
+- shorthand enforcement: `"policy-name": "mandatory"`
+- enum-like value: `"policy-name": "disabled"`
+- object form: `"policy-name": {"enforcementLevel": "mandatory", ...}`
+
+Any remaining object keys are available in callbacks through
+`args.getConfig<Map<String, Object?>>()`.
+
 ## Upstream
 
 - Repository: https://github.com/pulumi/pulumi-policy
