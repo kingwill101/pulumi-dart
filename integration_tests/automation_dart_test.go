@@ -104,6 +104,20 @@ func parseAutomationResult(t *testing.T, stdout string) map[string]any {
 	return nil
 }
 
+func pulumiCommandSupportsFlag(
+	t *testing.T,
+	e *ptesting.Environment,
+	flag string,
+	args ...string,
+) bool {
+	t.Helper()
+
+	helpArgs := append(append([]string{}, args...), "--help")
+	stdout, stderr := e.RunCommand("pulumi", helpArgs...)
+	combined := strings.ToLower(stdout + "\n" + stderr)
+	return strings.Contains(combined, strings.ToLower(flag))
+}
+
 func TestAutomationLocalWorkspaceLifecycleDart(t *testing.T) {
 	e := ptesting.NewEnvironment(t)
 	defer e.DeleteIfNotFailed()
@@ -181,7 +195,8 @@ func TestAutomationRemoteWorkspaceDart(t *testing.T) {
 	result := runAutomationRemoteDriver(t, e)
 
 	assert.Equal(t, float64(3), result["requestCount"])
-	assert.Equal(t, true, result["selectContainsRemote"])
+	assert.Equal(t, false, result["selectContainsRemote"])
+	assert.Equal(t, true, result["selectUsesStackLookup"])
 	assert.Equal(t, true, result["previewContainsRemote"])
 	assert.Equal(t, true, result["upContainsRemote"])
 	assert.Equal(t, true, result["experimentalEnvSet"])
@@ -196,11 +211,15 @@ func TestAutomationRemoteWorkspaceLifecycleDart(t *testing.T) {
 	if os.Getenv("PULUMI_TEST_DEPLOYMENTS_API") == "" {
 		t.Skip("requires Pulumi deployments API test environment (remote deployments endpoint)")
 	}
+	t.Setenv("PULUMI_EXPERIMENTAL", "true")
 
 	e := ptesting.NewEnvironment(t)
 	defer e.DeleteIfNotFailed()
 
 	configureAutomationDartProjectService(t, e)
+	if !pulumiCommandSupportsFlag(t, e, "--remote", "preview") {
+		t.Skip("requires Pulumi CLI remote operations support (--remote)")
+	}
 
 	org := os.Getenv("PULUMI_TEST_ORG")
 	if org == "" {
@@ -209,7 +228,7 @@ func TestAutomationRemoteWorkspaceLifecycleDart(t *testing.T) {
 	}
 	require.NotEmpty(t, org)
 
-	stackName := fmt.Sprintf("%s/automation-dart-remote/dev-%d", org, time.Now().UnixNano())
+	stackName := fmt.Sprintf("%s/go_remote_proj/dev-%d", org, time.Now().UnixNano())
 	e.Env = append(e.Env, "AUTOMATION_REMOTE_STACK="+stackName)
 	result := runAutomationRemoteLifecycleDriver(t, e)
 

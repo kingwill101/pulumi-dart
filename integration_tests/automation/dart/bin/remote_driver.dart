@@ -56,17 +56,24 @@ Future<void> main() async {
   final payload = <String, Object?>{
     'requestCount': runner.requests.length,
     'selectContainsRemote': runner.requests[0].arguments.contains('--remote'),
+    'selectUsesStackLookup': runner.requests[0].arguments.length >= 3 &&
+        runner.requests[0].arguments[0] == 'stack' &&
+        runner.requests[0].arguments[1] == '--stack',
     'previewContainsRemote': runner.requests[1].arguments.contains('--remote'),
     'upContainsRemote': runner.requests[2].arguments.contains('--remote'),
     'experimentalEnvSet': runner.requests.every(
       (request) => request.environment['PULUMI_EXPERIMENTAL'] == 'true',
     ),
-    'remoteEnvFlagPresent':
-        runner.requests[0].arguments.contains('--remote-env') &&
-            runner.requests[0].arguments.contains('REGION=us-west-2'),
-    'remoteEnvSecretFlagPresent':
-        runner.requests[0].arguments.contains('--remote-env-secret') &&
-            runner.requests[0].arguments.contains('API_KEY=secret-api-key'),
+    'remoteEnvFlagPresent': runner.requests.any(
+      (request) =>
+          request.arguments.contains('--remote-env') &&
+          request.arguments.contains('REGION=us-west-2'),
+    ),
+    'remoteEnvSecretFlagPresent': runner.requests.any(
+      (request) =>
+          request.arguments.contains('--remote-env-secret') &&
+          request.arguments.contains('API_KEY=secret-api-key'),
+    ),
   };
 
   stdout.writeln('AUTOMATION_RESULT:${jsonEncode(payload)}');

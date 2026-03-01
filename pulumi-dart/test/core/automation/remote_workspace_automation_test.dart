@@ -236,23 +236,20 @@ void main() {
             'stack',
             'init',
             'owner/project/stack',
-            '--remote',
-            'https://github.com/pulumi/test-repo.git',
-            '--remote-git-branch',
-            'refs/heads/main',
+            '--no-select',
           ]),
         );
         expect(
           runner.requests[1].arguments,
           equals(<String>[
             'preview',
-            '--stack',
-            'owner/project/stack',
-            '--non-interactive',
             '--remote',
             'https://github.com/pulumi/test-repo.git',
             '--remote-git-branch',
             'refs/heads/main',
+            '--stack',
+            'owner/project/stack',
+            '--non-interactive',
           ]),
         );
         expect(
@@ -295,15 +292,7 @@ void main() {
         expect(runner.requests, hasLength(2));
         expect(
           runner.requests[0].arguments,
-          equals(<String>[
-            'stack',
-            'select',
-            'owner/project/stack',
-            '--remote',
-            'https://github.com/pulumi/test-repo.git',
-            '--remote-git-branch',
-            'refs/heads/main',
-          ]),
+          equals(<String>['stack', '--stack', 'owner/project/stack']),
         );
         expect(
           runner.requests[1].arguments,
@@ -311,10 +300,7 @@ void main() {
             'stack',
             'init',
             'owner/project/stack',
-            '--remote',
-            'https://github.com/pulumi/test-repo.git',
-            '--remote-git-branch',
-            'refs/heads/main',
+            '--no-select',
           ]),
         );
       },

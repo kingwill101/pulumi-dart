@@ -101,15 +101,15 @@ void main() {
         runner.requests[1].arguments,
         equals(<String>[
           'up',
+          '--remote',
+          'https://github.com/pulumi/test-repo.git',
+          '--remote-git-branch',
+          'refs/heads/main',
           '--stack',
           'owner/project/stack',
           '--yes',
           '--skip-preview',
           '--non-interactive',
-          '--remote',
-          'https://github.com/pulumi/test-repo.git',
-          '--remote-git-branch',
-          'refs/heads/main',
         ]),
       );
       expect(

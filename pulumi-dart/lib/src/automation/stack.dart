@@ -424,11 +424,24 @@ class Stack {
     );
     Map<String, AutomationOutputValue>? typedOutputs;
     AutomationUpdateSummary? summary;
+    final effectiveShowSummarySecrets = workspace.remote
+        ? false
+        : showSummarySecrets;
+    AutomationUpdateSummary? remoteSummary;
+    if (workspace.remote &&
+        result.succeeded &&
+        (includeOutputs || includeSummary)) {
+      remoteSummary = await _awaitTerminalRemoteSummary(
+        showSecrets: effectiveShowSummarySecrets,
+      );
+    }
     if (includeOutputs && result.succeeded) {
       typedOutputs = await outputsWithMetadata();
     }
     if (includeSummary && result.succeeded) {
-      summary = await infoSummary(showSecrets: showSummarySecrets);
+      summary =
+          remoteSummary ??
+          await infoSummary(showSecrets: effectiveShowSummarySecrets);
     }
     return AutomationUpResult(
       commandResult: result,
@@ -465,8 +478,15 @@ class Stack {
       onEvent: onEvent,
     );
     AutomationUpdateSummary? summary;
+    final effectiveShowSummarySecrets = workspace.remote
+        ? false
+        : showSummarySecrets;
     if (includeSummary && result.succeeded) {
-      summary = await infoSummary(showSecrets: showSummarySecrets);
+      summary = workspace.remote
+          ? await _awaitTerminalRemoteSummary(
+              showSecrets: effectiveShowSummarySecrets,
+            )
+          : await infoSummary(showSecrets: effectiveShowSummarySecrets);
     }
     return AutomationRefreshResult(
       commandResult: result,
@@ -506,8 +526,15 @@ class Stack {
       onEvent: onEvent,
     );
     AutomationUpdateSummary? summary;
+    final effectiveShowSummarySecrets = workspace.remote
+        ? false
+        : showSummarySecrets;
     if (includeSummary && result.succeeded) {
-      summary = await infoSummary(showSecrets: showSummarySecrets);
+      summary = workspace.remote
+          ? await _awaitTerminalRemoteSummary(
+              showSecrets: effectiveShowSummarySecrets,
+            )
+          : await infoSummary(showSecrets: effectiveShowSummarySecrets);
     }
     return AutomationDestroyResult(
       commandResult: result,
@@ -546,7 +573,14 @@ class Stack {
     if (result.succeeded) {
       name = stackName;
       if (includeSummary) {
-        summary = await infoSummary(showSecrets: showSummarySecrets);
+        final effectiveShowSummarySecrets = workspace.remote
+            ? false
+            : showSummarySecrets;
+        summary = workspace.remote
+            ? await _awaitTerminalRemoteSummary(
+                showSecrets: effectiveShowSummarySecrets,
+              )
+            : await infoSummary(showSecrets: effectiveShowSummarySecrets);
       }
     }
 
@@ -634,9 +668,14 @@ class Stack {
 
       AutomationUpdateSummary? summary;
       if (includeSummary && result.succeeded) {
-        summary = await infoSummary(
-          showSecrets: showSummarySecrets && !workspace.remote,
-        );
+        final effectiveShowSummarySecrets = workspace.remote
+            ? false
+            : showSummarySecrets;
+        summary = workspace.remote
+            ? await _awaitTerminalRemoteSummary(
+                showSecrets: effectiveShowSummarySecrets,
+              )
+            : await infoSummary(showSecrets: effectiveShowSummarySecrets);
       }
 
       return AutomationImportResult(
@@ -727,6 +766,24 @@ class Stack {
       args.add('--yes');
     }
     return workspace.runPulumiCommand(args);
+  }
+
+  Future<AutomationUpdateSummary?> _awaitTerminalRemoteSummary({
+    required bool showSecrets,
+    Duration pollInterval = const Duration(seconds: 5),
+    int maxAttempts = 24,
+  }) async {
+    AutomationUpdateSummary? latest;
+    for (var attempt = 0; attempt < maxAttempts; attempt++) {
+      latest = await infoSummary(showSecrets: showSecrets);
+      final state = latest?.parsedResult;
+      if (state != AutomationUpdateResult.inProgress &&
+          state != AutomationUpdateResult.notStarted) {
+        return latest;
+      }
+      await Future<void>.delayed(pollInterval);
+    }
+    return latest;
   }
 
   Future<(PulumiCommandResult, List<AutomationEngineEvent>)> _runStackCommand(

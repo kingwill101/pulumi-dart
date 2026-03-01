@@ -561,6 +561,13 @@ class LocalWorkspace {
     if (!remote || remoteArgs.isEmpty || !_supportsRemoteArguments(arguments)) {
       return List<String>.from(arguments);
     }
+    final command = arguments.first;
+    if (command == 'up' ||
+        command == 'preview' ||
+        command == 'refresh' ||
+        command == 'destroy') {
+      return <String>[command, ...remoteArgs, ...arguments.skip(1)];
+    }
     return <String>[...arguments, ...remoteArgs];
   }
 
@@ -577,9 +584,7 @@ class LocalWorkspace {
     }
     if (command == 'stack' && arguments.length > 1) {
       final stackCommand = arguments[1];
-      return stackCommand == 'init' ||
-          stackCommand == 'select' ||
-          stackCommand == 'rename';
+      return stackCommand == 'rename';
     }
     return false;
   }
@@ -590,21 +595,21 @@ class LocalWorkspace {
     if (secretsProvider != null && secretsProvider!.trim().isNotEmpty) {
       args.addAll(<String>['--secrets-provider', secretsProvider!]);
     }
+    if (remote) {
+      args.add('--no-select');
+    }
     await runPulumiCommand(args);
   }
 
   /// Selects an existing stack in this workspace.
   Future<void> selectStackInWorkspace(String stackName) async {
-    await runPulumiCommand(['stack', 'select', stackName]);
+    await runPulumiCommand(_selectStackArguments(stackName));
   }
 
   /// Creates the stack when missing, otherwise selects it.
   Future<Stack> createOrSelectStackInWorkspace(String stackName) async {
-    final selectResult = await runPulumiCommand([
-      'stack',
-      'select',
-      stackName,
-    ], check: false);
+    final selectArgs = _selectStackArguments(stackName);
+    final selectResult = await runPulumiCommand(selectArgs, check: false);
     if (selectResult.succeeded) {
       return Stack(stackName, this);
     }
@@ -612,7 +617,7 @@ class LocalWorkspace {
     if (!_looksLikeMissingStackError(selectResult)) {
       final request = PulumiCommandRequest(
         executable: pulumiBinary,
-        arguments: ['stack', 'select', stackName],
+        arguments: selectArgs,
         workingDirectory: workDir,
         environment: <String, String>{
           ...Platform.environment,
@@ -627,6 +632,13 @@ class LocalWorkspace {
 
     await createStackInWorkspace(stackName);
     return Stack(stackName, this);
+  }
+
+  List<String> _selectStackArguments(String stackName) {
+    if (remote) {
+      return <String>['stack', '--stack', stackName];
+    }
+    return <String>['stack', 'select', stackName];
   }
 
   /// Removes an existing stack from this workspace.

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'local_workspace.dart';
 import 'stack.dart';
 
@@ -128,10 +130,19 @@ class RemoteWorkspace {
     RemoteGitProgramArgs args, {
     required RemoteWorkspaceOptions remoteOptions,
     required LocalWorkspaceOptions workspaceOptions,
-  }) {
+  }) async {
     final remoteArgs = buildRemoteWorkspaceArgs(args, options: remoteOptions);
+    final configuredWorkDir = workspaceOptions.workDir;
+    final workDir =
+        configuredWorkDir == null || configuredWorkDir.trim().isEmpty
+        ? (await Directory.systemTemp.createTemp('pulumi-remote-')).path
+        : configuredWorkDir;
     return LocalWorkspace.create(
-      workspaceOptions.copyWith(remote: true, remoteArgs: remoteArgs),
+      workspaceOptions.copyWith(
+        workDir: workDir,
+        remote: true,
+        remoteArgs: remoteArgs,
+      ),
     );
   }
 }
