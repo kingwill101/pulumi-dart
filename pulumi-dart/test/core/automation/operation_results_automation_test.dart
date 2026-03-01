@@ -99,4 +99,44 @@ void main() {
       expect(summary.parsedResult, equals(AutomationUpdateResult.succeeded));
     });
   });
+
+  group('automation operation permalink parsing', () {
+    test('parseOperationPermalink supports upstream stdout prefixes', () {
+      final cases = <String, String>{
+        'Permalink: https://app.pulumi.com/org/proj/stack/updates/1\n':
+            'https://app.pulumi.com/org/proj/stack/updates/1',
+        'View Live: https://app.pulumi.com/org/proj/stack/updates/2\n':
+            'https://app.pulumi.com/org/proj/stack/updates/2',
+        'View in Browser: https://app.pulumi.com/org/proj/stack/updates/3\n':
+            'https://app.pulumi.com/org/proj/stack/updates/3',
+        'View in Browser (Ctrl+O): https://app.pulumi.com/org/proj/stack/updates/4\n':
+            'https://app.pulumi.com/org/proj/stack/updates/4',
+      };
+
+      for (final entry in cases.entries) {
+        expect(parseOperationPermalink(entry.key), equals(entry.value));
+      }
+    });
+
+    test('parseOperationPermalink returns null when no permalink exists', () {
+      expect(parseOperationPermalink('no permalink here'), isNull);
+      expect(parseOperationPermalink('Permalink: \n'), isNull);
+    });
+
+    test('AutomationOperationResult exposes parsed permalink getter', () {
+      const result = AutomationUpResult(
+        commandResult: PulumiCommandResult(
+          exitCode: 0,
+          stdout:
+              'Previewing update\nPermalink: https://app.pulumi.com/org/proj/stack/updates/9\n',
+          stderr: '',
+        ),
+      );
+
+      expect(
+        result.permalink,
+        equals('https://app.pulumi.com/org/proj/stack/updates/9'),
+      );
+    });
+  });
 }

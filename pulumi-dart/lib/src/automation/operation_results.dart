@@ -7,6 +7,20 @@ import 'events.dart';
 /// Map of operation type to resource change count.
 typedef AutomationOpMap = Map<String, int>;
 
+final RegExp _operationPermalinkPattern = RegExp(
+  r'(?:View Live: |View in Browser: |View in Browser \(Ctrl\+O\): |Permalink: )([^\r\n]+)',
+);
+
+/// Extracts a Pulumi Console permalink from operation stdout, when present.
+String? parseOperationPermalink(String stdout) {
+  final match = _operationPermalinkPattern.firstMatch(stdout);
+  final permalink = match?.group(1)?.trim();
+  if (permalink == null || permalink.isEmpty) {
+    return null;
+  }
+  return permalink;
+}
+
 /// The kind of update operation represented by an [AutomationUpdateSummary].
 enum AutomationUpdateKind {
   update,
@@ -330,6 +344,9 @@ class AutomationOperationResult {
   String get stdout => commandResult.stdout;
   String get stderr => commandResult.stderr;
   bool get succeeded => commandResult.succeeded;
+
+  /// Pulumi Console permalink parsed from [stdout], when available.
+  String? get permalink => parseOperationPermalink(stdout);
 }
 
 /// Result for `pulumi preview`.
