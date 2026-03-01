@@ -175,10 +175,19 @@ class ProviderServer extends providergrpc.ResourceProviderServiceBase {
     }
 
     if (request.hasValue()) {
+      final decodedValue = (() {
+        try {
+          return utf8.decode(request.value.value);
+        } on FormatException {
+          throw GrpcError.invalidArgument(
+            'parameterization value is not valid UTF-8',
+          );
+        }
+      })();
       final result = await provider.parameterizeValue(
         request.value.name,
         request.value.version,
-        utf8.decode(request.value.value),
+        decodedValue,
       );
       return providerpb.ParameterizeResponse(
         name: result.name,

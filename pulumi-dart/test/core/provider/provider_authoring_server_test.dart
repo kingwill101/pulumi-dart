@@ -8,6 +8,7 @@ import 'package:pulumi/src/input.dart';
 import 'package:pulumi/src/output.dart';
 import 'package:pulumi/src/pulumirpc/pulumi/callback.pb.dart' as callbackpb;
 import 'package:pulumi/src/pulumirpc/pulumi/errors.pb.dart' as errorspb;
+import 'package:pulumi/src/pulumirpc/pulumi/plugin.pb.dart' as pluginpb;
 import 'package:pulumi/src/pulumirpc/pulumi/provider.pb.dart' as providerpb;
 import 'package:pulumi/src/pulumirpc/pulumi/resource.pb.dart' as resourcepb;
 import 'package:pulumi/src/pulumirpc/pulumi/resource.pbgrpc.dart'
@@ -35,11 +36,34 @@ class _RecordingProvider extends Provider {
   String? diffId;
   String? diffUrn;
 
+  String? createUrn;
+  Map<String, dynamic>? createInputs;
+  bool createReturnNullOuts = false;
+
+  String? readId;
+  String? readUrn;
+  Map<String, dynamic>? readProps;
+  String? readReturnId;
+  Map<String, dynamic>? readReturnProps;
+  Map<String, dynamic>? readReturnInputs;
+
+  String? updateId;
+  String? updateUrn;
+  Map<String, dynamic>? updateOlds;
+  Map<String, dynamic>? updateNews;
+  bool updateReturnNullOuts = false;
+
+  String? deleteId;
+  String? deleteUrn;
+  Map<String, dynamic>? deleteProps;
+
   String? invokeToken;
   Map<String, dynamic>? invokeArgs;
+  List<CheckFailure>? invokeFailures;
 
   String? callToken;
   Inputs? callArgs;
+  List<CheckFailure>? callFailures;
   bool failCallWithInputPropertyError = false;
   bool failCallWithInputPropertiesError = false;
 
@@ -52,6 +76,11 @@ class _RecordingProvider extends Provider {
 
   @override
   Future<CreateResult> create(String urn, Map<String, dynamic> inputs) async {
+    createUrn = urn;
+    createInputs = inputs;
+    if (createReturnNullOuts) {
+      return const CreateResult(id: 'id-123');
+    }
     return CreateResult(
       id: 'id-123',
       outs: <String, dynamic>{'urn': urn, ...inputs},
@@ -110,14 +139,56 @@ class _RecordingProvider extends Provider {
   }
 
   @override
+  Future<ReadResult> read(
+    String id,
+    String urn,
+    Map<String, dynamic>? props,
+  ) async {
+    readId = id;
+    readUrn = urn;
+    readProps = props;
+    return ReadResult(
+      id: readReturnId ?? id,
+      props: readReturnProps ?? props,
+      inputs: readReturnInputs,
+    );
+  }
+
+  @override
+  Future<UpdateResult> update(
+    String id,
+    String urn,
+    Map<String, dynamic> olds,
+    Map<String, dynamic> news,
+  ) async {
+    updateId = id;
+    updateUrn = urn;
+    updateOlds = olds;
+    updateNews = news;
+    if (updateReturnNullOuts) {
+      return const UpdateResult();
+    }
+    return UpdateResult(outs: <String, dynamic>{'updated': true, ...news});
+  }
+
+  @override
+  Future<void> delete(String id, String urn, Map<String, dynamic> props) async {
+    deleteId = id;
+    deleteUrn = urn;
+    deleteProps = props;
+  }
+
+  @override
   Future<InvokeResult> invoke(String token, Map<String, dynamic> args) async {
     invokeToken = token;
     invokeArgs = args;
-    return const InvokeResult(
+    return InvokeResult(
       outputs: <String, dynamic>{'ok': true},
-      failures: <CheckFailure>[
-        CheckFailure(property: 'arg', reason: 'bad value'),
-      ],
+      failures:
+          invokeFailures ??
+          const <CheckFailure>[
+            CheckFailure(property: 'arg', reason: 'bad value'),
+          ],
     );
   }
 
@@ -145,6 +216,7 @@ class _RecordingProvider extends Provider {
           'urn:pulumi:dev::proj::pkg:index:Dep::dep',
         ),
       },
+      failures: callFailures,
     );
   }
 
@@ -388,6 +460,10 @@ Future<providerpb.ConstructRequest> _newConstructRequest(
 
 void main() {
   group('provider internals', () {
+    test('parseProviderArgs returns null without engine address', () {
+      expect(parseProviderArgs(const <String>[]), isNull);
+    });
+
     test('parseProviderArgs strips --logflow injected flags', () {
       final parsed = parseProviderArgs(<String>[
         '--logtostderr',
@@ -467,6 +543,81 @@ void main() {
       },
     );
 
+    test(
+      'attach sets engine address and getPluginInfo returns version',
+      () async {
+        final server = ProviderServer(
+          _RecordingProvider(),
+          engineAddress: 'old',
+        );
+
+        final empty = await server.attach(
+          call,
+          pluginpb.PluginAttach(address: '127.0.0.1:9000'),
+        );
+        expect(empty, isA<Empty>());
+        expect(server.engineAddress, equals('127.0.0.1:9000'));
+
+        final pluginInfo = await server.getPluginInfo(call, Empty());
+        expect(pluginInfo.version, equals(''));
+      },
+    );
+
+    test('configure advertises provider runtime capabilities', () async {
+      final server = ProviderServer(_RecordingProvider());
+
+      final response = await server.configure(
+        call,
+        providerpb.ConfigureRequest(),
+      );
+      expect(response.acceptSecrets, isTrue);
+      expect(response.supportsPreview, isTrue);
+      expect(response.acceptResources, isTrue);
+      expect(response.acceptOutputs, isTrue);
+    });
+
+    test('checkConfig and diffConfig are explicitly unimplemented', () async {
+      final server = ProviderServer(_RecordingProvider());
+
+      expect(
+        () => server.checkConfig(call, providerpb.CheckRequest()),
+        throwsA(
+          isA<GrpcError>().having(
+            (error) => error.code,
+            'code',
+            StatusCode.unimplemented,
+          ),
+        ),
+      );
+      expect(
+        () => server.diffConfig(call, providerpb.DiffRequest()),
+        throwsA(
+          isA<GrpcError>().having(
+            (error) => error.code,
+            'code',
+            StatusCode.unimplemented,
+          ),
+        ),
+      );
+    });
+
+    test('getMapping and getMappings return empty payloads', () async {
+      final server = ProviderServer(_RecordingProvider());
+
+      final mapping = await server.getMapping(
+        call,
+        providerpb.GetMappingRequest(key: 'k', provider: 'p'),
+      );
+      expect(mapping.hasData(), isFalse);
+      expect(mapping.provider, isEmpty);
+
+      final mappings = await server.getMappings(
+        call,
+        providerpb.GetMappingsRequest(key: 'k'),
+      );
+      expect(mappings.providers, isEmpty);
+    });
+
     test('parameterize supports args and value payloads', () async {
       final provider = _RecordingProvider();
       final server = ProviderServer(provider);
@@ -496,6 +647,29 @@ void main() {
       expect(provider.parameterizedVersion, equals('2.0.0'));
       expect(provider.parameterizedValue, equals('payload'));
       expect(valueResponse.name, equals('value-subpkg'));
+    });
+
+    test('parameterize rejects non-UTF8 value payloads', () async {
+      final server = ProviderServer(_RecordingProvider());
+      expect(
+        () => server.parameterize(
+          call,
+          providerpb.ParameterizeRequest(
+            value: providerpb.ParameterizeRequest_ParametersValue(
+              name: 'bad',
+              version: '1.0.0',
+              value: <int>[0xC3, 0x28],
+            ),
+          ),
+        ),
+        throwsA(
+          isA<GrpcError>().having(
+            (error) => error.code,
+            'code',
+            equals(StatusCode.invalidArgument),
+          ),
+        ),
+      );
     });
 
     test('parameterize rejects missing payload', () async {
@@ -590,6 +764,147 @@ void main() {
       expect(provider.invokeArgs!['arg'], equals('x'));
       expect(invoke.failures.single.reason, equals('bad value'));
       expect(StructConverter.fromStruct(invoke.return_1)['ok'], isTrue);
+    });
+
+    test(
+      'create/read/update/delete delegate and apply CRUD fallback payloads',
+      () async {
+        final provider = _RecordingProvider()
+          ..createReturnNullOuts = true
+          ..updateReturnNullOuts = true
+          ..readReturnId = 'id-read'
+          ..readReturnProps = <String, dynamic>{'state': 'ok'}
+          ..readReturnInputs = <String, dynamic>{'input': 'value'};
+        final server = ProviderServer(provider);
+
+        final create = await server.create(
+          call,
+          providerpb.CreateRequest(
+            urn: 'urn:pulumi:dev::proj::pkg:type::res',
+            properties: await StructConverter.toStruct(<String, dynamic>{
+              'name': 'res',
+              'size': 3,
+            }),
+          ),
+        );
+        expect(provider.createUrn, contains('pkg:type::res'));
+        expect(provider.createInputs!['name'], equals('res'));
+        expect(create.id, equals('id-123'));
+        expect(
+          StructConverter.fromStruct(create.properties),
+          equals(<String, dynamic>{'name': 'res', 'size': 3.0}),
+        );
+
+        final read = await server.read(
+          call,
+          providerpb.ReadRequest(
+            id: 'id-123',
+            urn: 'urn:pulumi:dev::proj::pkg:type::res',
+            properties: await StructConverter.toStruct(<String, dynamic>{
+              'existing': true,
+            }),
+          ),
+        );
+        expect(provider.readId, equals('id-123'));
+        expect(provider.readUrn, contains('pkg:type::res'));
+        expect(provider.readProps!['existing'], isTrue);
+        expect(read.id, equals('id-read'));
+        expect(
+          StructConverter.fromStruct(read.properties),
+          equals(<String, dynamic>{'state': 'ok'}),
+        );
+        expect(
+          StructConverter.fromStruct(read.inputs),
+          equals(<String, dynamic>{'input': 'value'}),
+        );
+
+        final readWithoutProps = await server.read(
+          call,
+          providerpb.ReadRequest(
+            id: 'id-124',
+            urn: 'urn:pulumi:dev::proj::pkg:type::res',
+          ),
+        );
+        expect(provider.readProps, isNull);
+        expect(
+          StructConverter.fromStruct(readWithoutProps.properties),
+          equals(<String, dynamic>{'state': 'ok'}),
+        );
+
+        final update = await server.update(
+          call,
+          providerpb.UpdateRequest(
+            id: 'id-123',
+            urn: 'urn:pulumi:dev::proj::pkg:type::res',
+            olds: await StructConverter.toStruct(<String, dynamic>{
+              'name': 'res',
+              'version': 1,
+            }),
+            news: await StructConverter.toStruct(<String, dynamic>{
+              'name': 'res',
+              'version': 2,
+            }),
+          ),
+        );
+        expect(provider.updateId, equals('id-123'));
+        expect(provider.updateUrn, contains('pkg:type::res'));
+        expect(provider.updateOlds!['version'], equals(1.0));
+        expect(provider.updateNews!['version'], equals(2.0));
+        expect(
+          StructConverter.fromStruct(update.properties),
+          equals(<String, dynamic>{'name': 'res', 'version': 2.0}),
+        );
+
+        final deleted = await server.delete(
+          call,
+          providerpb.DeleteRequest(
+            id: 'id-123',
+            urn: 'urn:pulumi:dev::proj::pkg:type::res',
+            properties: await StructConverter.toStruct(<String, dynamic>{
+              'name': 'res',
+            }),
+          ),
+        );
+        expect(deleted, isA<Empty>());
+        expect(provider.deleteId, equals('id-123'));
+        expect(provider.deleteUrn, contains('pkg:type::res'));
+        expect(provider.deleteProps!['name'], equals('res'));
+      },
+    );
+
+    test('invoke and call preserve failure ordering', () async {
+      final monitor = await _startMonitorServer();
+      addTearDown(() async {
+        await monitor.server.shutdown();
+      });
+
+      final provider = _RecordingProvider()
+        ..invokeFailures = const <CheckFailure>[
+          CheckFailure(property: 'first', reason: 'f1'),
+          CheckFailure(property: 'second', reason: 'f2'),
+        ]
+        ..callFailures = const <CheckFailure>[
+          CheckFailure(property: 'firstCall', reason: 'c1'),
+          CheckFailure(property: 'secondCall', reason: 'c2'),
+        ];
+      final server = ProviderServer(provider, engineAddress: '127.0.0.1:7777');
+
+      final invoke = await server.invoke(
+        call,
+        providerpb.InvokeRequest(
+          tok: 'pkg:index:get',
+          args: await StructConverter.toStruct(<String, dynamic>{'arg': 'x'}),
+        ),
+      );
+      expect(invoke.failures, hasLength(2));
+      expect(invoke.failures[0].property, equals('first'));
+      expect(invoke.failures[1].property, equals('second'));
+
+      final callRequest = await _newCallRequest(monitor.endpoint);
+      final callResponse = await server.call(call, callRequest);
+      expect(callResponse.failures, hasLength(2));
+      expect(callResponse.failures[0].property, equals('firstCall'));
+      expect(callResponse.failures[1].property, equals('secondCall'));
     });
 
     test(
@@ -690,6 +1005,30 @@ void main() {
       }
     });
 
+    test('call maps InputPropertiesError into grpc status details', () async {
+      final monitor = await _startMonitorServer();
+      addTearDown(() async {
+        await monitor.server.shutdown();
+      });
+
+      final provider = _RecordingProvider()
+        ..failCallWithInputPropertiesError = true;
+      final server = ProviderServer(provider, engineAddress: '127.0.0.1:7777');
+
+      final request = await _newCallRequest(monitor.endpoint);
+      try {
+        await server.call(call, request);
+        fail('expected call to fail');
+      } on GrpcError catch (error) {
+        expect(error.code, equals(StatusCode.invalidArgument));
+        expect(error.message, equals('multiple invalid properties'));
+        final propertyErrors = _extractPropertyErrors(error);
+        expect(propertyErrors, hasLength(2));
+        expect(propertyErrors.first.propertyPath, equals('resource.a'));
+        expect(propertyErrors.last.propertyPath, equals('resource.b'));
+      }
+    });
+
     test(
       'construct maps InputPropertiesError into grpc status details',
       () async {
@@ -719,5 +1058,55 @@ void main() {
         }
       },
     );
+
+    test(
+      'construct maps InputPropertyError into grpc status details',
+      () async {
+        final monitor = await _startMonitorServer();
+        addTearDown(() async {
+          await monitor.server.shutdown();
+        });
+
+        final provider = _RecordingProvider()
+          ..failConstructWithInputPropertyError = true;
+        final server = ProviderServer(
+          provider,
+          engineAddress: '127.0.0.1:7777',
+        );
+
+        final request = await _newConstructRequest(monitor.endpoint);
+        try {
+          await server.construct(call, request);
+          fail('expected construct to fail');
+        } on GrpcError catch (error) {
+          expect(error.code, equals(StatusCode.invalidArgument));
+          final propertyErrors = _extractPropertyErrors(error);
+          expect(propertyErrors, hasLength(1));
+          expect(propertyErrors.single.propertyPath, equals('component.name'));
+          expect(propertyErrors.single.reason, equals('invalid'));
+        }
+      },
+    );
+
+    test('construct and call require engine address configuration', () async {
+      final monitor = await _startMonitorServer();
+      addTearDown(() async {
+        await monitor.server.shutdown();
+      });
+
+      final server = ProviderServer(_RecordingProvider());
+
+      expect(
+        () async => server.call(call, await _newCallRequest(monitor.endpoint)),
+        throwsA(isA<Exception>()),
+      );
+      expect(
+        () async => server.construct(
+          call,
+          await _newConstructRequest(monitor.endpoint),
+        ),
+        throwsA(isA<Exception>()),
+      );
+    });
   });
 }
